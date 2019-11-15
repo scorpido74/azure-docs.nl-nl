@@ -1,5 +1,5 @@
 ---
-title: 'Uw on-premises netwerk uitbreiden naar Azure via een privéverbinding - Overzicht van ExpressRoute: Azure | Microsoft Docs'
+title: 'Overzicht van Azure ExpressRoute: verbinding maken via een particuliere verbinding'
 description: In het technische overzicht van ExpressRoute wordt uitgelegd hoe een ExpressRoute-verbinding kan worden gebruikt om uw on-premises netwerk via een persoonlijke verbinding uit te breiden naar Azure.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: a068912857c16d2257d09e221477afc5d4a8d603
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: db728de120a50461257d8e85e708aa4c7f4d6190
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123322"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083410"
 ---
 # <a name="expressroute-overview"></a>Overzicht van ExpressRoute
 Met ExpressRoute kunt u uw on-premises netwerken in de Microsoft Cloud uitbreiden via een persoonlijke verbinding die wordt gefaciliteerd door een connectiviteitsprovider. Met ExpressRoute kunt u verbindingen tot stand brengen met micro soft-Cloud Services, zoals Microsoft Azure en Office 365.
@@ -80,7 +79,7 @@ ExpressRoute Direct biedt klanten de mogelijkheid om rechtstreeks verbinding te 
 Belangrijke functies die ExpressRoute rechtstreeks biedt, zijn onder andere de volgende:
 
 * Massale gegevensopname in services als Storage en Cosmos DB
-* Fysieke isolatie voor branches waarvoor bepaalde wettelijke regels gelden en waarvoor speciale en geïsoleerde verbindingen een vereiste zijn, zoals: het bankwezen, de overheid en de detailhandel
+* Fysieke isolatie voor branches waarvoor bepaalde wettelijke regels gelden waardoor speciale en geïsoleerde verbindingen een vereiste zijn, zoals het bankwezen, de overheid en de detailhandel
 * Gedetailleerde controle van circuitdistributie op basis van bedrijfsonderdelen
 
 Zie [About ExpressRoute Direct](https://go.microsoft.com/fwlink/?linkid=2022973) (Over ExpressRoute Direct) voor meer informatie.

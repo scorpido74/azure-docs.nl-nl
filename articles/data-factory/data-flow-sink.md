@@ -6,12 +6,12 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 7cfe0cf291e8c39a4600234632090c39ab5cd78e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: fa6a2fd853673493c93dbe65f889468c8e0c8617
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73519315"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082939"
 ---
 # <a name="sink-transformation-for-a-data-flow"></a>Sink-trans formatie voor een gegevens stroom
 
@@ -28,7 +28,7 @@ Als u alle binnenkomende velden wilt opvangen, schakelt u **automatische toewijz
 ## <a name="output"></a>Uitvoer 
 Voor Azure Blob Storage-of Data Lake Storage Sink-typen voert u de getransformeerde gegevens uit naar een map. Spark genereert gepartitioneerde uitvoer gegevens bestanden op basis van het partitie schema dat door de Sink-trans formatie wordt gebruikt. 
 
-U kunt het partitie schema instellen op het tabblad **optimaliseren** . Als u wilt dat Data Factory uw uitvoer in één bestand samenvoegt, selecteert u **één partitie**.
+U kunt het partitie schema instellen op het tabblad **optimaliseren** . Als u wilt dat Data Factory uw uitvoer in één bestand samenvoegt, selecteert u **één partitie**. Als u gepartitioneerde mappen wilt onderhouden of maken, gebruikt u **sleutel partities** en stelt u de sleutels in die u wilt gebruiken voor gepartitioneerde mappen structuren.
 
 ![Opties op het tabblad optimaliseren](media/data-flow/opt001.png "Sink-opties")
 

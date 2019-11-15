@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 18c85995c545e1b603333fd6788b70cd863865ce
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 4d64d556c96d29556ee36179623ff8cc24532b48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905017"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74085233"
 ---
 Galerie met gedeelde afbeeldingen is een service die u helpt bij het bouwen van structuur en organisatie rond uw beheerde installatie kopieën. Galerieën met gedeelde afbeeldingen bieden:
 
@@ -93,21 +93,21 @@ De bron regio's worden weer gegeven in de volgende tabel. Alle open bare regio's
 
 | Bron regio's        |                   |                    |                    |
 | --------------------- | ----------------- | ------------------ | ------------------ |
-| Australië - centraal     | China East        | India - zuid        | Europa - west        |
-| Australië - centraal 2   | China - oost 2      | Azië - zuidoost     | VK - zuid           |
+| Australië - centraal     | China East        | India - zuid        | Europa -west        |
+| Australië - centraal 2   | China - oost 2      | Azië - zuidoost     | Verenigd Koninkrijk Zuid           |
 | Australië - oost        | China - noord       | Japan - oost         | Verenigd Koninkrijk West            |
 | Australië - zuidoost   | China - noord 2     | Japan - west         | US DoD - centraal     |
 | Brazilië - zuid          | Azië - oost         | Korea - centraal      | US DoD - oost        |
-| Canada - midden        | VS - oost           | Korea - zuid        | VS (overheid) - Arizona     |
-| Canada - oost           | VS - oost 2         | VS - noord-centraal   | VS (overheid) - Texas       |
+| Canada - midden        | US - oost           | Korea - zuid        | VS (overheid) - Arizona     |
+| Canada - oost           | US - oost 2         | US - noord-centraal   | VS (overheid) - Texas       |
 | India - centraal         | VS-Oost 2 EUAP    | Europa - noord       | US Gov - Virginia    |
-| VS - centraal            | Frankrijk - centraal    | VS - zuid-centraal   | India - west         |
-| Centrale VS-EUAP       | Frankrijk - zuid      | VS - west-centraal    | VS - west            |
-|                       |                   |                    | VS - west 2          |
+| US - centraal            | Frankrijk - centraal    | US - zuid-centraal   | India - west         |
+| Centrale VS-EUAP       | Frankrijk - zuid      | US - west-centraal    | US - west            |
+|                       |                   |                    | US - west 2          |
 
 
 
-## <a name="limits"></a>Beperkingen 
+## <a name="limits"></a>Limieten 
 
 Er zijn limieten, per abonnement, voor het implementeren van resources met behulp van de galerie met gedeelde afbeeldingen:
 - 100 gedeelde afbeeldings galerieën, per abonnement, per regio
@@ -186,7 +186,7 @@ Met de volgende Sdk's wordt ondersteuning geboden voor het maken van gedeelde af
 
 - [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
 - [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/azure-arm-compute/?view=azure-node-latest)
+- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
 - [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
 - [Go](https://docs.microsoft.com/azure/go/)
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
-ms.date: 02/07/2019
-ms.openlocfilehash: af657d28bc3052ebefe25ea54891b8d3555692c9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 26aa9948a44727ff4c8092eb5131b1c054bf5442
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825841"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082435"
 ---
 # <a name="sql-database-application-development-overview"></a>Overzicht van het ontwikkelen van SQL Database toepassingen
 
@@ -32,7 +32,7 @@ U kunt verschillende [Programmeer talen en platformen](sql-database-connect-quer
 
 U kunt gebruikmaken van open-source hulpprogram ma's zoals [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli)en [VS code](https://code.visualstudio.com/). Daarnaast werkt Azure SQL Database met Microsoft-hulpprogramma's zoals [Visual Studio](https://www.visualstudio.com/downloads/) en [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). U kunt ook de Azure Portal, Power shell en REST Api's gebruiken om extra productiviteit te verkrijgen.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Toegang tot Azure SQL Database is beveiligd met aanmeldingen en firewalls. Azure SQL Database ondersteunt gebruikers en aanmeldingen voor zowel SQL Server als [Azure Active Directory (Aad)-verificatie](sql-database-aad-authentication.md) . AAD-aanmeldingen zijn alleen beschikbaar in een beheerd exemplaar. 
 
@@ -48,7 +48,7 @@ Vermijd langlopende trans acties omdat een infra structuur of verbindings fout d
 
 ## <a name="resiliency"></a>Flexibiliteit
 
-Azure SQL Database is een Cloud service waar u mogelijk tijdelijke fouten verwacht die zich voordoen in de onderliggende infra structuur of in de communicatie tussen Cloud entiteiten. Hoewel Azure SQL Database bestendig is op het mislukken van de transitieve infra structuur, kunnen deze storingen invloed hebben op uw verbinding. Wanneer er een tijdelijke fout optreedt tijdens het verbinden met SQL Database, moet uw code [de aanroep opnieuw proberen](sql-database-connectivity-issues.md). Het wordt aanbevolen om voor logica voor opnieuw proberen uitstellogica te gebruiken zodat de SQL Database niet overbelast raakt door meerdere clients die tegelijk opnieuw proberen. Pogings logica is afhankelijk van de [fout berichten voor SQL database-client Programma's](sql-database-develop-error-messages.md).
+Azure SQL Database is een Cloud service waar u mogelijk tijdelijke fouten verwacht die zich voordoen in de onderliggende infra structuur of in de communicatie tussen Cloud entiteiten. Hoewel Azure SQL Database bestendig is op het mislukken van de transitieve infra structuur, kunnen deze storingen invloed hebben op uw verbinding. Wanneer er een tijdelijke fout optreedt tijdens het verbinden met SQL Database, moet uw code [de aanroep opnieuw proberen](sql-database-connectivity-issues.md). Het wordt aanbevolen om voor logica voor opnieuw proberen uitstellogica te gebruiken zodat de SQL Database niet overbelast raakt door meerdere clients die tegelijk opnieuw proberen. Pogings logica is afhankelijk van de [fout berichten voor SQL database-client Programma's](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md).
 
 Voor meer informatie over het voorbereiden van geplande onderhouds gebeurtenissen in uw Azure SQL database raadpleegt u [Azure-onderhouds gebeurtenissen plannen in Azure SQL database](sql-database-planned-maintenance.md).
 

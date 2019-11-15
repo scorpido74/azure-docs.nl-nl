@@ -1,6 +1,7 @@
 ---
-title: Vervaldatum van Azure Blob-opslag in Azure Content Delivery Network beheren | Microsoft Docs
-description: Meer informatie over de opties voor het beheren van de time-to-live voor blobs in Azure CDN caching.
+title: Verlopen van Azure Blob Storage beheren
+titleSuffix: Azure Content Delivery Network
+description: Meer informatie over de opties voor het beheren van time-to-Live voor blobs in Azure CDN caching.
 services: cdn
 documentationcenter: ''
 author: zhangmanling
@@ -14,83 +15,83 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: edeb2a798031e34a8ee3f93fd104ebb221ce9c61
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593763"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083161"
 ---
-# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Vervaldatum van Azure Blob-opslag in Azure CDN beheren
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>De verval datum van Azure Blob-opslag in Azure CDN beheren
 > [!div class="op_single_selector"]
 > * [Azure-webinhoud](cdn-manage-expiration-of-cloud-service-content.md)
 > * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-De [Blob storage-service](../storage/common/storage-introduction.md#blob-storage) in Azure Storage is een van de verschillende Azure gebaseerde oorsprongen geïntegreerd met Azure Content Delivery Network (CDN). Kan een openbaar toegankelijke blobinhoud in cache worden opgeslagen in Azure CDN totdat de time-to-live (TTL) is verstreken. De TTL-waarde wordt bepaald door de `Cache-Control` -header in het HTTP-antwoord van de oorspronkelijke server. Dit artikel wordt beschreven op verschillende manieren kunt u instellen de `Cache-Control` header voor een blob in Azure Storage.
+De [Blob Storage-service](../storage/common/storage-introduction.md#blob-storage) in azure Storage is een van de verschillende op Azure gebaseerde oorsprong die is geïntegreerd met Azure Content Delivery Network (CDN). Alle openbaar toegankelijke blob-inhoud kan in de cache worden opgeslagen in Azure CDN totdat de TTL (time-to-Live) is verstreken. De TTL wordt bepaald door de `Cache-Control` header in het HTTP-antwoord van de oorspronkelijke server. In dit artikel worden verschillende manieren beschreven waarop u de `Cache-Control`-header kunt instellen voor een BLOB in Azure Storage.
 
-U kunt de cache-instellingen van de Azure-portal ook beheren door de instelling CDN caching-regels. Als u een regel voor opslaan in cache maken en het cachinggedrag ingesteld op **overschrijven** of **cache overslaan**, de oorsprong-opgegeven cache-instellingen die worden beschreven in dit artikel worden genegeerd. Zie voor meer informatie over algemene concepten voor opslaan in cache [hoe caching werkt](cdn-how-caching-works.md).
+U kunt ook de cache-instellingen van de Azure Portal beheren door de regels voor CDN-caching in te stellen. Als u een cache regel maakt en het cache gedrag instelt op het **overschrijven** of **overs Laan**van de cache, worden de door de bron opgegeven cache-instellingen die in dit artikel worden besproken genegeerd. Zie [How caching Works](cdn-how-caching-works.md)(Engelstalig) voor meer informatie over algemene cache concepten.
 
 > [!TIP]
-> U kunt geen TTL ingesteld voor een blob. In dit geval Azure CDN automatisch van toepassing is een standaard-TTL zeven dagen, tenzij u een caching-regels in de Azure-portal hebt ingesteld. Deze standaardwaarde voor TTL geldt alleen voor leveringsoptimalisatie gewoon op Internet. De standaard-TTL is één dag voor optimalisatie van grote bestanden, en voor optimalisaties voor streaming van media, de standaard-TTL is één jaar.
+> U kunt ervoor kiezen om geen TTL in te stellen voor een blob. In dit geval past Azure CDN automatisch een standaard-TTL van zeven dagen toe, tenzij u in de Azure Portal cache regels hebt ingesteld. Deze standaard-TTL geldt alleen voor algemene optimalisaties van webleveringen. Voor grote bestands optimalisaties is de standaard-TTL één dag en voor optimalisaties van mediastreaming, is de standaard-TTL één jaar.
 > 
-> Zie voor meer informatie over de werking van Azure CDN om toegang tot blobs en andere bestanden sneller [overzicht van het Azure Content Delivery Network](cdn-overview.md).
+> Zie [overzicht van Azure Content Delivery Network](cdn-overview.md)voor meer informatie over de werking van Azure CDN om de toegang tot blobs en andere bestanden sneller te maken.
 > 
-> Zie voor meer informatie over Azure Blob-opslag, [Inleiding tot Blob-opslag](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction).
+> Zie [Inleiding tot Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)voor meer informatie over Azure Blob-opslag.
  
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-Control-headers instellen met behulp van CDN-regels voor caching
-De aanbevolen methode voor het instellen van een blob `Cache-Control` header is met regels voor opslaan in cache in Azure portal. Zie voor meer informatie over CDN regels voor caching [Control Azure CDN caching-gedrag met regels voor caching](cdn-caching-rules.md).
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-control-headers instellen met behulp van CDN-cache regels
+De voorkeurs methode voor het instellen van de `Cache-Control` header van een blob is het gebruik van cache regels in de Azure Portal. Zie [beheer van Azure CDN caching met cache regels](cdn-caching-rules.md)voor meer informatie over de regels voor CDN-caching.
 
 > [!NOTE] 
-> Regels voor opslaan in cache zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** profielen. Voor **Azure CDN Premium van Verizon** profielen, moet u de [regels-engine van Azure CDN](cdn-rules-engine.md) in de **beheren** portal voor vergelijkbare functionaliteit.
+> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN Premium van Verizon** -profielen moet u de [engine Azure CDN Rules](cdn-rules-engine.md) in de portal **beheren** gebruiken voor vergelijk bare functionaliteit.
 
-**Om te navigeren naar de pagina CDN caching-regels**:
+**Ga naar de pagina regels voor CDN-caching**:
 
-1. In de Azure-portal, selecteert u een CDN-profiel, en selecteer vervolgens het eindpunt voor de blob.
+1. Selecteer in de Azure Portal een CDN-profiel en selecteer vervolgens het eind punt voor de blob.
 
 2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache**.
 
-   ![Knop voor opslaan in cache regels CDN](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
+   ![Knop regels voor CDN-caching](./media/cdn-manage-expiration-of-blob-content/cdn-caching-rules-btn.png)
 
    De pagina **Regels voor opslaan in cache** wordt weergegeven.
 
-   ![CDN caching-pagina](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
+   ![Pagina voor CDN-caching](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**Cache-Control-koppen die een Blob storage-service instellen met behulp van algemene regels voor opslaan in cache:**
+**De cache-control-headers van een Blob Storage-service instellen met behulp van algemene regels voor opslaan in cache:**
 
-1. Onder **algemene regels voor caching**, stel **queryreeks cachegedrag** naar **querytekenreeksen negeren** en stel **cachegedrag** naar  **Overschrijven**.
+1. Stel onder **algemene regels voor caching**het **in cache geheugen opslaan van de query reeks** in op het negeren van **query reeksen** en instellen dat **cache gedrag** wordt **overschreven**.
       
-2. Voor **Vervaltijd van de Cache**, voer 3600 in de **seconden** box of 1 in de **uur** vak. 
+2. Voer 3600 in het vak **seconden** of 1 in het vak **uren** in voor de **verloop tijd**van de cache. 
 
-   ![CDN algemene opslaan in cache regels voorbeeld](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
+   ![Voor beeld van globale CDN-cache regels](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   Deze algemene regel voor opslaan in cache wordt de Cacheduur van een van één uur en is van invloed op alle aanvragen naar het eindpunt. Dit vervangt alle `Cache-Control` of `Expires` HTTP-headers die worden verzonden door de originele server door het eindpunt opgegeven.   
+   Met deze algemene regel voor opslaan in cache wordt een cache duur van één uur ingesteld en is dit van invloed op alle aanvragen voor het eind punt. Het onderdrukt alle `Cache-Control` of `Expires` HTTP-headers die worden verzonden door de oorspronkelijke server die door het eind punt is opgegeven.   
 
 3. Selecteer **Opslaan**.
  
-**Een blob-Cache-Control-headers van het bestand met behulp van aangepaste cacheregels instellen:**
+**De cache-control-headers van een blob-bestand instellen met behulp van aangepaste regels voor opslaan in cache:**
 
-1. Onder **aangepaste cacheregels**, maakt u twee criteria voor overeenkomst:
+1. Maak onder **regels voor aangepaste caching**twee match-voor waarden:
 
-     A. Voor de eerste voorwaarde voor overeenkomst, stelt u **overeenkomen met de voorwaarde** naar **pad** en voer `/blobcontainer1/*` voor **overeenkomen met waarde**. Instellen **cachegedrag** naar **overschrijven** en voert u 4 in de **uur** vak.
+     A. Voor de eerste match-voor waarde stelt u de voor **waarde match** in op **Path** en voert u `/blobcontainer1/*` in voor de **overeenkomende waarde**. Stel **caching-gedrag** in op **overschrijven** en voer 4 in het vak **uren** in.
 
-    B. Voor de tweede voorwaarde voor overeenkomst, stelt u **overeenkomen met de voorwaarde** naar **pad** en voer `/blobcontainer1/blob1.txt` voor **overeenkomen met waarde**. Instellen **cachegedrag** naar **overschrijven** en voer 2 in de **uur** vak.
+    B. Voor de tweede voor waarde match stelt u de voor **waarde match** in op **Path** en voert u `/blobcontainer1/blob1.txt` in voor de **overeenkomende waarde**. Stel **caching-gedrag** in op **overschrijven** en voer 2 in het vak **uren** in.
 
-    ![Aangepaste caching regels voorbeeld van CDN](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
+    ![Voor beeld van regels voor aangepaste CDN-caching](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    De eerste aangepaste cacheregel Hiermee stelt u een Cacheduur van vier uur voor alle blob-bestanden in de `/blobcontainer1` map op de oorspronkelijke server door het eindpunt opgegeven. De tweede regel overschrijft de eerste regel voor de `blob1.txt` blob-bestand en stelt de Cacheduur van twee uur.
+    Met de eerste aangepaste regel voor opslaan in cache wordt een cache duur van vier uur ingesteld voor BLOB-bestanden in de `/blobcontainer1` map op de oorspronkelijke server die door het eind punt is opgegeven. Met de tweede regel wordt alleen de eerste regel voor het `blob1.txt` blob-bestand overschreven en wordt er een cache duur van twee uur ingesteld.
 
 2. Selecteer **Opslaan**.
 
 
-## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Cache-Control-headers instellen met behulp van Azure PowerShell
+## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Cache-control-headers instellen met behulp van Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-[Azure PowerShell](/powershell/azure/overview) is een van de snelste en krachtigste manieren voor het beheren van uw Azure-services. Gebruik de `Get-AzStorageBlob` cmdlet om op te halen van een verwijzing naar de blob, stel de `.ICloudBlob.Properties.CacheControl` eigenschap. 
+[Azure PowerShell](/powershell/azure/overview) is een van de snelste en krach tigste manieren om uw Azure-Services te beheren. Gebruik de cmdlet `Get-AzStorageBlob` om een verwijzing naar de BLOB op te halen en stel vervolgens de eigenschap `.ICloudBlob.Properties.CacheControl` in. 
 
 Bijvoorbeeld:
 
@@ -109,12 +110,12 @@ $blob.ICloudBlob.SetProperties()
 ```
 
 > [!TIP]
-> U kunt ook PowerShell gebruiken om te gebruiken [beheren van uw CDN-profielen en eindpunten](cdn-manage-powershell.md).
+> U kunt ook Power shell gebruiken voor [het beheren van uw CDN-profielen en-eind punten](cdn-manage-powershell.md).
 > 
 >
 
-## <a name="setting-cache-control-headers-by-using-net"></a>Cache-Control-headers instellen met behulp van .NET
-Om op te geven van een blob `Cache-Control` koptekst met behulp van .NET-code, gebruik de [Azure Storage-clientbibliotheek voor .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) om in te stellen de [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) eigenschap.
+## <a name="setting-cache-control-headers-by-using-net"></a>Cache-control-headers instellen met behulp van .NET
+Als u de `Cache-Control` header van een BLOB wilt opgeven met behulp van .NET-code, gebruikt u de [Azure Storage-client bibliotheek voor .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md) om de eigenschap [CloudBlob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) in te stellen.
 
 Bijvoorbeeld:
 
@@ -146,40 +147,40 @@ class Program
 ```
 
 > [!TIP]
-> Er zijn meer .NET-codevoorbeelden beschikbaar in [voorbeelden van Azure Blob Storage voor .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
+> Er zijn meer .NET-code voorbeelden beschikbaar in [Azure Blob Storage-voor beelden voor .net](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/).
 > 
 
-## <a name="setting-cache-control-headers-by-using-other-methods"></a>Cache-Control-headers instellen met behulp van andere methoden
+## <a name="setting-cache-control-headers-by-using-other-methods"></a>Cache-control-headers instellen met behulp van andere methoden
 
 ### <a name="azure-storage-explorer"></a>Azure Opslagverkenner
-Met [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), u kunt bekijken en bewerken van uw blob storage-resources, met inbegrip van eigenschappen zoals de *CacheControl* eigenschap. 
+Met [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)kunt u uw Blob Storage-resources weer geven en bewerken, inclusief eigenschappen zoals de eigenschap *CacheControl* . 
 
-Om bij te werken de *CacheControl* eigenschap van een blob met Azure Storage Explorer:
-   1. Selecteer een blob en vervolgens **eigenschappen** in het contextmenu. 
-   2. Schuif omlaag naar de *CacheControl* eigenschap.
-   3. Voer een waarde in en selecteer vervolgens **opslaan**.
+De eigenschap *CacheControl* van een BLOB bijwerken met Azure Storage Explorer:
+   1. Selecteer een BLOB en selecteer **Eigenschappen** in het context menu. 
+   2. Schuif omlaag naar de eigenschap *CacheControl* .
+   3. Voer een waarde in en selecteer vervolgens **Opslaan**.
 
 
-![Azure Storage Explorer-eigenschappen](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
+![Azure Storage Explorer eigenschappen](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure-opdrachtregelinterface
-Met de [Azure Command-Line Interface](https://docs.microsoft.com/cli/azure) (CLI), kunt u Azure blob-resources beheren vanaf de opdrachtregel. Om in te stellen de cache-control-header tijdens het uploaden van een blob met de Azure CLI, de *cacheControl* eigenschap met behulp van de `-p` overschakelen. Het volgende voorbeeld laat zien hoe de TTL-waarde instellen op één uur (3600 seconden):
+Met de [Azure-opdracht regel interface](https://docs.microsoft.com/cli/azure) (CLI) kunt u Azure Blob-resources beheren vanaf de opdracht regel. Als u de cache-Control-header wilt instellen wanneer u een blob met de Azure CLI uploadt, stelt u de eigenschap *cacheControl* in met behulp van de `-p` switch. In het volgende voor beeld ziet u hoe u de TTL instelt op één uur (3600 seconden):
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
-### <a name="azure-storage-services-rest-api"></a>REST-API van Azure-opslagservices
-U kunt de [REST-API van Azure-opslagservices](/rest/api/storageservices/) expliciet in te stellen de *x-ms-blob-cache-control* eigenschap met behulp van de volgende bewerkingen voor een aanvraag:
+### <a name="azure-storage-services-rest-api"></a>Azure Storage-services REST API
+U kunt de [Azure Storage-services rest API](/rest/api/storageservices/) om de eigenschap *x-MS-BLOB-cache-Control* expliciet in te stellen met behulp van de volgende bewerkingen op aanvraag:
   
-   - [Blob plaatsen](/rest/api/storageservices/Put-Blob)
-   - [Lijst met geblokkeerde websites plaatsen](/rest/api/storageservices/Put-Block-List)
-   - [Blobeigenschappen instellen](/rest/api/storageservices/Set-Blob-Properties)
+   - [BLOB plaatsen](/rest/api/storageservices/Put-Blob)
+   - [Blokkerings lijst plaatsen](/rest/api/storageservices/Put-Block-List)
+   - [BLOB-eigenschappen instellen](/rest/api/storageservices/Set-Blob-Properties)
 
-## <a name="testing-the-cache-control-header"></a>Testen van de Cache-Control-header
-U kunt eenvoudig de TTL-instellingen van uw blobs controleren. Met van uw browser [hulpprogramma's voor ontwikkelaars](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), test uw blob met de `Cache-Control` response-header. U kunt ook een hulpprogramma zoals gebruiken [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), of [Fiddler](https://www.telerik.com/fiddler) om te controleren van de antwoordheaders.
+## <a name="testing-the-cache-control-header"></a>De cache-Control-header testen
+U kunt de TTL-instellingen van uw blobs eenvoudig controleren. Test in de [ontwikkel hulpprogramma's](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)van uw browser of de blob de `Cache-Control`-antwoord header bevat. U kunt ook een hulp programma zoals [wget](https://www.gnu.org/software/wget/), [postman](https://www.getpostman.com/)of [Fiddler](https://www.telerik.com/fiddler) gebruiken om de antwoord headers te onderzoeken.
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Informatie over het beheren van de vervaldatum van Cloud Service-inhoud in Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
-* [Meer informatie over concepten opslaan in cache](cdn-how-caching-works.md)
+* [Meer informatie over het beheren van de verval datum van Cloud service-inhoud in Azure CDN](cdn-manage-expiration-of-cloud-service-content.md)
+* [Meer informatie over de cache concepten](cdn-how-caching-works.md)
 

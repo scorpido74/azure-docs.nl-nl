@@ -1,18 +1,18 @@
 ---
-title: Herstel na nood geval instellen op Azure voor een groot aantal virtuele VMware-machines of fysieke servers met Azure Site Recovery | Microsoft Docs
+title: VMware/fysieke nood herstel met Azure Site Recovery schalen
 description: Meer informatie over het instellen van herstel na nood gevallen voor Azure voor een groot aantal on-premises virtuele VMware-machines of fysieke servers met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 7ef4a9d5f63282736b010e67b467f82474bcf409
-ms.sourcegitcommit: f7998db5e6ba35cbf2a133174027dc8ccf8ce957
+ms.openlocfilehash: e08c7d5f794611a92688e931f35da7482c04407f
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/05/2019
-ms.locfileid: "68782661"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082224"
 ---
 # <a name="set-up-disaster-recovery-at-scale-for-vmware-vmsphysical-servers"></a>Herstel na nood geval op schaal instellen voor virtuele VMware-machines/fysieke servers
 
@@ -30,12 +30,12 @@ Als onderdeel van uw strategie voor bedrijfs continuïteit en herstel na nood ge
 
 Enkele algemene aanbevolen procedures voor grootschalig herstel na nood gevallen. Deze aanbevolen procedures worden uitgebreid beschreven in de volgende secties van het document.
 
-- **Doel vereisten identificeren**: U kunt een schatting maken van de capaciteits-en resource behoeften in azure voordat u herstel na nood gevallen instelt.
-- **Site Recovery onderdelen plannen**: Bepaal welke Site Recovery onderdelen (configuratie server, proces servers) u nodig hebt om te voldoen aan de geschatte capaciteit.
-- **Stel een of meer scale-out proces servers**in: Gebruik niet de proces server die standaard wordt uitgevoerd op de configuratie server. 
-- **Voer de nieuwste updates uit**: Het Site Recovery team brengt regel matig nieuwe versies van Site Recovery onderdelen uit en u moet ervoor zorgen dat u de nieuwste versies uitvoert. Houd bij het bijhouden van [wat er nieuw](site-recovery-whats-new.md) is voor updates en [Schakel updates in en installeer](service-updates-how-to.md) deze.
-- **Proactief controleren**: Wanneer u herstel na nood gevallen uitvoert, moet u de status en status van gerepliceerde machines en infrastructuur resources proactief controleren.
-- Inzoomen op **nood herstel**: U moet regel matig herstel na nood geval uitvoeren. Dit is niet van invloed op uw productie omgeving, maar helpt ervoor te zorgen dat failover naar Azure naar behoren werkt als dat nodig is.
+- **Doel vereisten identificeren**: geschatte capaciteit en resource behoeften in azure voordat u herstel na nood gevallen instelt.
+- **Site Recovery onderdelen plannen**: bepaal welke site Recovery onderdelen (configuratie server, proces servers) u nodig hebt om te voldoen aan de geschatte capaciteit.
+- **Stel een of meer scale-out proces servers**in: gebruik niet de proces server die standaard op de configuratie server wordt uitgevoerd. 
+- **Voer de nieuwste updates uit**: het site Recovery-team brengt regel matig nieuwe versies van site Recovery onderdelen uit en u moet ervoor zorgen dat u de nieuwste versies uitvoert. Houd bij het bijhouden van [wat er nieuw](site-recovery-whats-new.md) is voor updates en [Schakel updates in en installeer](service-updates-how-to.md) deze.
+- **Proactief controleren**: wanneer u herstel na nood gevallen uitvoert, moet u de status en status van gerepliceerde machines en infrastructuur resources proactief controleren.
+- **Inzoomen voor herstel na nood gevallen**: u moet regel matig herstel na nood geval uitvoeren. Dit is niet van invloed op uw productie omgeving, maar helpt ervoor te zorgen dat failover naar Azure naar behoren werkt als dat nodig is.
 
 
 
@@ -70,12 +70,12 @@ Voer de planner vervolgens als volgt uit:
 
 Met uw verzamelde schattingen en aanbevelingen kunt u de doel resources en-capaciteit plannen. Als u de Deployment Planner voor VMware-Vm's hebt uitgevoerd, kunt u een aantal van de aanbevelingen van het [rapport](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations) gebruiken om u te helpen.
 
-- **Compatibele vm's**: Gebruik dit nummer om het aantal Vm's te identificeren dat gereed is voor herstel na nood gevallen naar Azure. Aanbevelingen over netwerk bandbreedte en Azure cores zijn gebaseerd op dit aantal.
-- **Vereiste netwerk bandbreedte**: Let op de band breedte die u nodig hebt voor de Delta replicatie van compatibele Vm's. 
+- **Compatibele vm's**: gebruik dit nummer om het aantal vm's te identificeren dat gereed is voor herstel na nood gevallen naar Azure. Aanbevelingen over netwerk bandbreedte en Azure cores zijn gebaseerd op dit aantal.
+- **Vereiste netwerk bandbreedte**: Noteer de band breedte die u nodig hebt voor de Delta replicatie van compatibele vm's. 
     - Wanneer u de planner uitvoert, geeft u de gewenste RPO in minuten op. De aanbevelingen tonen u de band breedte die nodig is om te voldoen aan de RPO 100% en 90% van de tijd. 
     - Bij de aanbevelingen voor netwerk bandbreedte wordt rekening gehouden met de band breedte die nodig is voor het totale aantal configuratie servers en proces servers dat wordt aanbevolen in de planner.
-- **Vereiste Azure**-kernen: Noteer het aantal kernen dat u nodig hebt in de Azure-doel regio, op basis van het aantal compatibele Vm's. Als u niet genoeg kernen hebt, kunt u bij failover Site Recovery de vereiste Azure-Vm's niet maken.
-- **Aanbevolen VM-Batch grootte**: De aanbevolen Batch grootte is gebaseerd op de mogelijkheid om de initiële replicatie voor de batch binnen 72 uur standaard te volt ooien, terwijl een RPO van 100% is. De waarde van het uur kan worden gewijzigd.
+- **Vereiste Azure-kernen**: Noteer het aantal kern geheugens dat u nodig hebt in de Azure-doel regio, op basis van het aantal compatibele vm's. Als u niet genoeg kernen hebt, kunt u bij failover Site Recovery de vereiste Azure-Vm's niet maken.
+- **Aanbevolen VM-Batch grootte**: de aanbevolen Batch grootte is gebaseerd op de mogelijkheid om de initiële replicatie voor de batch binnen 72 uur standaard te volt ooien, terwijl een RPO van 100% wordt voltooid. De waarde van het uur kan worden gewijzigd.
 
 U kunt deze aanbevelingen gebruiken om Azure-resources, netwerk bandbreedte en VM-batch verwerking te plannen.
 
@@ -199,7 +199,7 @@ Bij een nood geval moet u mogelijk een failover uitvoeren van een groot aantal m
 Ga als volgt te voor bereiden voor failover:
 
 - [Bereid uw infra structuur en vm's](#plan-infrastructure-and-vm-connectivity) voor, zodat uw workloads na een failover beschikbaar zijn, zodat gebruikers toegang hebben tot de Azure-vm's.
-- Let op de [failover](#failover-limits) -limieten eerder in dit document. Zorg ervoor dat de failover binnen deze limieten valt.
+- Let op de [failover-limieten](#failover-limits) eerder in dit document. Zorg ervoor dat de failover binnen deze limieten valt.
 - Voer regel matig [nood herstel oefeningen](site-recovery-test-failover-to-azure.md)uit. Zoomt in op de volgende onderwerpen:
     - Zoek hiaten in uw implementatie voor een failover.
     - U kunt end-to-end-RTO voor uw apps ramen.
@@ -213,7 +213,7 @@ Als u een grootschalige failover wilt uitvoeren, raden we het volgende aan:
     - Elk herstel plan kan failover van Maxi maal 50 computers activeren.
     - [Meer informatie](recovery-plan-overview.md) over herstel plannen.
 2. Azure Automation runbook-scripts toevoegen aan herstel plannen om hand matige taken in azure te automatiseren. Veelvoorkomende taken zijn onder andere het configureren van load balancers, het bijwerken van DNS, enzovoort. [Meer informatie](site-recovery-runbook-automation.md)
-2. Voor failover moet u Windows-computers voorbereiden zodat deze voldoen aan de Azure-omgeving. [Failover](#plan-azure-subscriptions-and-quotas) -limieten zijn hoger voor computers die voldoen aan het oog. Meer [informatie](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) over runbooks.
+2. Voor failover moet u Windows-computers voorbereiden zodat deze voldoen aan de Azure-omgeving. [Failover-limieten](#plan-azure-subscriptions-and-quotas) zijn hoger voor computers die voldoen aan het oog. Meer [informatie](site-recovery-failover-to-azure-troubleshoot.md#failover-failed-with-error-id-170010) over runbooks.
 4.  Activeer failover met de Power shell [-cmdlet start-AzRecoveryServicesAsrPlannedFailoverJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/start-azrecoveryservicesasrplannedfailoverjob?view=azps-2.0.0&viewFallbackFrom=azps-1.1.0) , samen met een herstel plan.
 
 

@@ -7,12 +7,12 @@ ms.date: 08/30/2019
 ms.topic: conceptual
 ms.author: dacurwin
 manager: carmonm
-ms.openlocfilehash: 57e8eab6413efa25eb03c48a968ca2b671b8c8d6
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162115"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090552"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -58,11 +58,11 @@ Locatie wijzigingen | U kunt de locatie van de cache wijzigen door de back-upeng
 
 De MARS-agent moet toegang hebben tot deze Url's:
 
-- http://www.msftncsi.com/ncsi.txt
+- <http://www.msftncsi.com/ncsi.txt>
 - *.Microsoft.com
 - *.WindowsAzure.com
-- *. MicrosoftOnline.com
-- *. Windows.net
+- *.MicrosoftOnline.com
+- *.Windows.net
 
 ### <a name="throttling-support"></a>Ondersteuning voor beperking
 
@@ -73,13 +73,16 @@ Netwerk beperking | Niet beschikbaar voor back-ups van computers waarop Windows 
 
 ## <a name="support-for-direct-backups"></a>Ondersteuning voor directe back-ups
 
+>[!NOTE]
+> De MARS-agent biedt geen ondersteuning voor Windows Server Core-Sku's.
+
 U kunt de MARS-agent gebruiken om rechtstreeks een back-up naar Azure te maken op bepaalde besturings systemen die worden uitgevoerd op on-premises machines en Azure-Vm's. De besturings systemen moeten 64 bits zijn en moeten de nieuwste service packs en updates uitvoeren. De volgende tabel bevat een overzicht van deze besturings systemen:
 
 **Besturingssysteem** | **Bestanden/mappen** | **Systeem status** | **Vereisten voor software/modules**
 --- | --- | --- | ---
-Windows 10 (Enter prise, Pro, Home) | Ja | Nee |  Controleer de bijbehorende server versie voor vereisten voor software/modules
+Windows 10 (Enterprise, Pro, Home) | Ja | Nee |  Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows 8,1 (Enter prise, Pro)| Ja |Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
-Windows 8 (Enter prise, Pro) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
+Windows 8 (Enterprise, Pro) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows 7 (Ultimate, Enter prise, Pro, Home Premium/Basic, starter) | Ja | Nee | Controleer de bijbehorende server versie voor vereisten voor software/modules
 Windows Server 2016 (Standard, Data Center, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0
 Windows Server 2012 R2 (Standard, Data Center, Foundation, Essentials) | Ja | Ja | -.NET 4,5 <br> -Windows Power shell <br> -Nieuwste compatibele micro soft VC + + te distribueren pakket <br> -Micro soft Management Console (MMC) 3,0

@@ -1,5 +1,5 @@
 ---
-title: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een Azure IoT-hub | Microsoft Docs
+title: Metrische gegevens en diagnostische logboeken instellen en gebruiken met een Azure IoT-hub
 description: Meer informatie over het instellen en gebruiken van metrische gegevens en Diagnostische logboeken met een Azure IoT hub. Zo beschikt u over gegevens die u kunt analyseren om problemen met de hub op te sporen.
 author: robinsh
 ms.service: iot-hub
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 3/13/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 3bda78a54b0914465a50d664ab0323444203a387
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 88101aacab8b4745ce6bc9180521e66500086edd
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890363"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084366"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-diagnostic-logs-with-an-iot-hub"></a>Zelf studie: metrische gegevens en Diagnostische logboeken instellen en gebruiken met een IoT-hub
 

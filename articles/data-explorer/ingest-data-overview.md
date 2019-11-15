@@ -7,18 +7,18 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 35d3451327a0ce7bcaf567f93c48d532842b4f25
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 90387a033a43c627be4ce69a93ee37c5b959732d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285911"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091783"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Gegevens opname van Azure Data Explorer
 
 Gegevens opname is het proces dat wordt gebruikt om gegevens records uit een of meer bronnen te laden om een tabel in azure Data Explorer te maken of bij te werken. Zodra de gegevens zijn opgenomen, worden deze beschikbaar voor query's. In het onderstaande diagram ziet u de end-to-end-stroom voor het werken in azure Data Explorer, inclusief gegevens opname.
 
-![Gegevens stroom](media/ingest-data-overview/data-flow.png)
+![Gegevensstroom](media/ingest-data-overview/data-flow.png)
 
 De Azure Data Explorer Data Management-service, die verantwoordelijk is voor de opname van gegevens, biedt de volgende functionaliteit:
 
@@ -62,15 +62,15 @@ Azure Data Explorer biedt Sdk's die kunnen worden gebruikt voor query's en gegev
 
 Kusto biedt client-SDK die kan worden gebruikt voor het opnemen en opvragen van gegevens met:
 
-* [Python SDK](/azure/kusto/api/python/kusto-python-client-library)
+* [Python-SDK](/azure/kusto/api/python/kusto-python-client-library)
 
-* [.NET-SDK](/azure/kusto/api/netfx/about-the-sdk)
+* [.NET SDK](/azure/kusto/api/netfx/about-the-sdk)
 
-* [Java SDK](/azure/kusto/api/java/kusto-java-client-library)
+* [Java-SDK](/azure/kusto/api/java/kusto-java-client-library)
 
 * [Node-SDK](/azure/kusto/api/node/kusto-node-client-library)
 
-* [REST API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
+* [REST-API](/azure/kusto/api/netfx/kusto-ingest-client-rest)
 
 **Technieken voor opname op programmeer niveau**:
 
@@ -117,11 +117,9 @@ Voor organisaties met een bestaande infra structuur die is gebaseerd op een beri
 
 ## <a name="supported-data-formats"></a>Ondersteunde gegevens indelingen
 
-Voor alle opname methoden behalve opnemen vanuit query moet u de gegevens opmaken zodat deze door Azure Data Explorer kunnen worden geparseerd. De ondersteunde gegevens indelingen zijn:
-
-* TXT, CSV, TSV, TSVE, PSV, SCSV, SOH
-* JSON (lijn-gescheiden, meerdere regels), AVRO
-* ZIP en GZIP 
+Voor alle opname methoden behalve opnemen vanuit query moet u de gegevens opmaken zodat deze door Azure Data Explorer kunnen worden geparseerd. 
+* De ondersteunde gegevens indelingen zijn: TXT, CSV, TSV, TSVE, PSV, SCSV, SOH, JSON (line-separated, multi-line), AVRO en Parquet. 
+* Ondersteunt ZIP-en GZIP-compressie.
 
 > [!NOTE]
 > Wanneer gegevens worden opgenomen, worden gegevens typen afgeleid op basis van de kolommen van de doel tabel. Als een record onvolledig is of als een veld niet kan worden geparseerd als het vereiste gegevens type, worden de bijbehorende tabel kolommen gevuld met Null-waarden.

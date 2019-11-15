@@ -1,21 +1,24 @@
 ---
-title: Zoek vaardigheid van de cognitieve document extractie
+title: Cognitieve Zoek vaardigheid van document extractie (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Extraheert inhoud uit een bestand binnen de verrijkings pijplijn.
+description: Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. Deze vaardigheid is momenteel beschikbaar als open bare preview.
 manager: nitinme
 author: careyjmac
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: 8656896fe1a113ab143c43b4d1973e4196c5f087
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
+ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512195"
+ms.lasthandoff: 11/07/2019
+ms.locfileid: "73720120"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Cognitieve vaardigheid van document extractie
+
+> [!IMPORTANT] 
+> Deze vaardigheid is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) biedt preview-functies. Er is momenteel geen portal-of .NET SDK-ondersteuning.
 
 De vaardigheid van **document extractie** extraheert inhoud uit een bestand binnen de verrijkings pijplijn. Zo kunt u gebruikmaken van de stap voor document extractie die normaal gesp roken plaatsvindt voordat de vaardig heden-uitvoering wordt uitgevoerd op bestanden die door andere vaardig heden kunnen worden gegenereerd.
 
@@ -61,9 +64,9 @@ De ' file_data-invoer moet een object zijn dat als volgt is gedefinieerd:
 
 Dit bestands referentie object kan op een van de volgende drie manieren worden gegenereerd:
 
- - De para meter `allowSkillsetToReadFileData` in te stellen voor de definitie van de Indexeer functie op ' True '.  Hiermee maakt u een pad `/document/file_data` dat een object is dat de oorspronkelijke bestands gegevens vertegenwoordigt die zijn gedownload uit de BLOB-gegevens bron. Deze para meter is alleen van toepassing op gegevens in Blob Storage.
+ - De para meter `allowSkillsetToReadFileData` in te stellen voor de definitie van de Indexeer functie op ' True '.  Hiermee maakt u een pad `/document/file_data` dat een object vertegenwoordigt met de oorspronkelijke bestands gegevens die zijn gedownload uit de BLOB-gegevens bron. Deze para meter is alleen van toepassing op gegevens in Blob Storage.
 
- - Als u de para meter `imageAction` op de definitie van de Indexeer functie instelt op een andere waarde dan `none`.  Hiermee maakt u een matrix met installatie kopieën `/document/normalized_images` die de vereiste Conventie voor invoer naar deze vaardigheid volgen, indien deze afzonderlijk wordt door gegeven (bijvoorbeeld `/document/normalized_images/*`).
+ - Als u de para meter `imageAction` op de definitie van de Indexeer functie instelt op een andere waarde dan `none`.  Hiermee maakt u een matrix met installatie kopieën die de vereiste Conventie voor invoer naar deze vaardigheid volgen, indien deze afzonderlijk wordt door gegeven (bijvoorbeeld `/document/normalized_images/*`).
 
  - Als u een aangepaste vaardigheid hebt, retourneert u een JSON-object dat precies zo is gedefinieerd als hierboven.  De para meter `$type` moet worden ingesteld op exact `file` en de `data` para meter moet de basis 64 gecodeerde byte-matrix gegevens van de bestands inhoud zijn.
 

@@ -1,5 +1,5 @@
 ---
-title: On-premises netwerken verbinden met Microsoft Cloud met behulp van globaal bereik - Azure ExpressRoute | Microsoft Docs
+title: 'Azure-ExpressRoute: verbinding maken met Microsoft Cloud met behulp van Global Reach'
 description: In dit artikel wordt uitgelegd ExpressRoute globaal bereik.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: e522c7ea306667f675af4bbe7486e25fb7f4ec9f
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: e01b311d10dcf4216bfeea77ce8919f64ea2ef28
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71122808"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080331"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute is een privé- en flexibele manier om uw on-premises netwerken verbinden met Microsoft Cloud. U hebt toegang tot veel micro soft-Cloud Services, zoals Azure, en Office 365 vanuit uw privé Data Center of uw bedrijfs netwerk. Bijvoorbeeld, wellicht u een filiaal in San Francisco met een ExpressRoute-circuit in Silicon Valley en een ander filiaal in Londen met een ExpressRoute-circuit in dezelfde stad. Beide filialen kunnen zeer snelle verbindingen met Azure-resources in VS West en UK-Zuid hebben. Echter kunnen geen de filialen uitwisselen van gegevens met elkaar. Met andere woorden, 10.0.1.0/24 die gegevens kan verzenden, 10.0.3.0/24 en 10.0.4.0/24, maar niet aan 10.0.2.0/24.
@@ -24,7 +23,7 @@ Met **ExpressRoute globaal bereik**, kunt u ExpressRoute-circuits samen om te ma
 
 ![met][2]
 
-## <a name="use-case"></a>Use-case
+## <a name="use-case"></a>Toepassing
 ExpressRoute globaal bereik is ontworpen om een aanvulling vormen op de WAN-implementatie van de serviceprovider en verbinding maken met uw filialen over de hele wereld. Bijvoorbeeld, als uw serviceprovider voornamelijk werkt in de Verenigde Staten en al uw vertakkingen in de VS is gekoppeld, maar de service-provider niet in Japan en Hong Kong werkt, met globaal bereik van ExpressRoute kunt u werken met een lokale service-provider en Microsoft maakt uw vertakkingen er verbinding met de namen in de Verenigde Staten met behulp van ExpressRoute en ons wereldwijde netwerk.
 
 ![Use-case][3]
@@ -36,10 +35,10 @@ ExpressRoute globaal bereik wordt op dat moment ondersteund in de volgende locat
 * Canada
 * Frankrijk
 * Duitsland
-* Hongkong SAR
+* Hong Kong SAR
 * Ierland
 * Japan
-* Zuid-Korea
+* Korea
 * Nederland
 * Singapore
 * Zwitserland

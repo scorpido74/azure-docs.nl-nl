@@ -1,13 +1,10 @@
 ---
-title: Azure PowerShell-voorbeeldscript - verkeer routeren via een virtueel netwerkapparaat | Microsoft Docs
+title: Verkeer routeren via NVA-Azure PowerShell script-voor beeld
 description: Azure PowerShell-voorbeeldscript - verkeer routeren via een virtueel netwerkapparaat met firewall.
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: sample
@@ -15,16 +12,16 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 21ee52f0a9c3b5a6cc64bdaf92c05db4a18903ca
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 9a94249f75fc5b01663268fc4fa8cec016bc96bf
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717533"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091284"
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance-script-sample"></a>Voorbeeldscript voor verkeer routeren via een virtueel netwerkapparaat
 
-Met dit voorbeeldscript wordt een virtueel netwerk met front-end- en back-end-subnetten gemaakt. Er wordt ook een virtuele machine gemaakt waarvoor doorsturen via IP is ingeschakeld, voor het routeren van netwerkverkeer tussen de twee subnetten. Na het uitvoeren van het script kunt u netwerksoftware, bijvoorbeeld een firewalltoepassing, op de VM implementeren.
+Dit voorbeeldscript maakt een virtueel netwerk met front-end en back-end-subnetten. Er wordt ook een virtuele machine gemaakt waarvoor doorsturen via IP is ingeschakeld, voor het routeren van netwerkverkeer tussen de twee subnetten. Na het uitvoeren van het script kunt u netwerksoftware, bijvoorbeeld een firewalltoepassing, op de VM implementeren.
 
 U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.com/powershell) of vanuit een lokale installatie van PowerShell. Als u PowerShell lokaal gebruikt, vereist dit script de versie 5.4.1 of hoger van de Az PowerShell-module. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
@@ -46,7 +43,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtueel netwerk en netwerkbeveiligingsgroepen. Elke opdracht in de volgende tabel is een koppeling naar opdrachtspecifieke documentatie:
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtueel netwerk en netwerkbeveiligingsgroepen. Elke opdracht in onderstaande tabel is een link naar opdracht-specifieke documentatie:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -60,7 +57,7 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [Set-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/set-azvirtualnetworksubnetconfig)| Hiermee koppelt u de NSG's en routetabellen aan subnetten. |
 | [New-AzRouteTable](/powershell/module/az.network/new-azroutetable)| Hiermee maakt u een routetabel voor alle routes. |
 | [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)| Hiermee maakt u routes om verkeer tussen subnetten en internet via de VM te routeren. |
-| [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine en koppelt u de NIC hieraan. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, evenals de beheerdersreferenties. |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u een virtuele machine en koppelt u de NIC hieraan. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)  | Hiermee verwijdert u een resourcegroep en de bijhorende resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

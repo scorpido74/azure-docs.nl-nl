@@ -1,5 +1,5 @@
 ---
-title: De configuratie server voor herstel na nood gevallen van on-premises fysieke servers naar Azure beheren met Azure Site Recovery | Microsoft Docs '
+title: De configuratie server voor fysieke servers in Azure Site Recovery beheren
 description: In dit artikel wordt beschreven hoe u de Azure Site Recovery configuratie server voor herstel na nood gevallen van een fysieke server naar Azure beheert.
 services: site-recovery
 author: mayurigupta13
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: f87210cd14570687eebae88896830bb3ee00b74e
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: f443f0362ecad8448895322686a7175b2813141e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73242994"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084600"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>De configuratie server voor herstel na nood gevallen voor fysieke servers beheren
 
@@ -26,7 +26,7 @@ De tabel bevat een overzicht van de vereisten voor het implementeren van de on-p
 
 | **Onderdeel** | **Vereiste** |
 | --- |---|
-| Cpu-cores| 8 |
+| CPU-kernen| 8 |
 | RAM | 16 GB|
 | Aantal schijven | 3, met inbegrip van de besturingssysteem schijf, de cache schijf van de proces server en het Bewaar station voor failback |
 | Vrije schijfruimte (cache van de processerver) | 600 GB
@@ -39,7 +39,7 @@ De tabel bevat een overzicht van de vereisten voor het implementeren van de on-p
 | IIS | -Geen vooraf bestaande standaard website <br> - [Anonieme verificatie](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) inschakelen <br> - [Fastcgi](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -instelling inschakelen  <br> -Geen vooraf bestaande website/toepassing die luistert op poort 443<br>|
 | NIC-type | VMXNET3 (wanneer geïmplementeerd als een VMware-VM) |
 | Type IP-adres | Statisch |
-| Toegang tot het internet | De server moet toegang hebben tot deze Url's: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> -*. services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (niet vereist voor scale-out proces servers) <br> - time.nist.gov <br> - time.windows.com |
+| Toegang tot het internet | De server moet toegang hebben tot deze Url's: <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://management.azure.com <br> - *.services.visualstudio.com <br> - https://dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi (niet vereist voor scale-out proces servers) <br> - time.nist.gov <br> - time.windows.com |
 | Poorten | 443 (Orchestration-besturingselement)<br>9443 (Gegevenstransport)|
 
 ## <a name="download-the-latest-installation-file"></a>Down load het meest recente installatie bestand
@@ -110,19 +110,19 @@ Voer het installatie bestand als volgt uit:
 
 |Parameternaam| Type | Beschrijving| Waarden|
 |-|-|-|-|
-| /ServerMode|Verplicht|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
-|/InstallLocation|Verplicht|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
-|/MySQLCredsFilePath|Verplicht|Het bestandspad waarin de referenties voor de MySQL-server worden opgeslagen|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
-|/VaultCredsFilePath|Verplicht|Het pad naar het bestand met kluisreferenties|Geldig bestandspad|
-|/EnvType|Verplicht|Type omgeving dat u wilt beveiligen |VMware<br>NonVMware|
-|/PSIP|Verplicht|IP-adres van de NIC dat wordt gebruikt voor de overdracht van replicatiegegevens| Een geldig IP-adres|
-|/CSIP|Verplicht|Het IP-adres van de NIC waarop de configuratieserver luistert| Een geldig IP-adres|
-|/PassphraseFilePath|Verplicht|Het volledige pad naar het bestand met de wachtwoordzin|Geldig bestandspad|
+| /ServerMode|Vereist|Hiermee wordt aangegeven of zowel de configuratieserver als de processerver moet worden geïnstalleerd, of alleen de processerver|CS<br>PS|
+|/InstallLocation|Vereist|De map waarin de onderdelen worden geïnstalleerd| Een map op de computer|
+|/MySQLCredsFilePath|Vereist|Het bestandspad waarin de referenties voor de MySQL-server worden opgeslagen|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
+|/VaultCredsFilePath|Vereist|Het pad naar het bestand met kluisreferenties|Geldig bestandspad|
+|/EnvType|Vereist|Type omgeving dat u wilt beveiligen |VMware<br>NonVMware|
+|/PSIP|Vereist|IP-adres van de NIC dat wordt gebruikt voor de overdracht van replicatiegegevens| Een geldig IP-adres|
+|/CSIP|Vereist|Het IP-adres van de NIC waarop de configuratieserver luistert| Een geldig IP-adres|
+|/PassphraseFilePath|Vereist|Het volledige pad naar het bestand met de wachtwoordzin|Geldig bestandspad|
 |/BypassProxy|Optioneel|Hiermee wordt aangegeven dat de configuratieserver zonder proxy verbinding moet maken met Azure|Deze waarde moet van Venu worden opgehaald|
 |/ProxySettingsFilePath|Optioneel|Proxy-instellingen (de standaardproxy vereist verificatie of een aangepaste proxy)|Het bestand moet de indeling hebben die hieronder wordt aangegeven|
 |DataTransferSecurePort|Optioneel|Poortnummer van de PSIP dat wordt gebruikt voor replicatiegegevens| Geldig poortnummer (standaardwaarde is 9433)|
 |/SkipSpaceCheck|Optioneel|Hiermee wordt aangegeven dat de controle op vrije ruimte in de cacheschijf moet worden overgeslagen| |
-|/AcceptThirdpartyEULA|Verplicht|Een vlag impliceert acceptatie van de gebruiksrechtovereenkomst van derden| |
+|/AcceptThirdpartyEULA|Vereist|Een vlag impliceert acceptatie van de gebruiksrechtovereenkomst van derden| |
 |/ShowThirdpartyEULA|Optioneel|Hiermee wordt de gebruiksrechtovereenkomst van derden weergegeven. Indien opgegeven als invoer, worden alle andere parameters genegeerd| |
 
 
@@ -259,7 +259,7 @@ Voer als volgt een upgrade uit voor de server:
    * Site Recovery provider Microsoft Azure
    * Configuratie server of proces Server Microsoft Azure Site Recovery
    * Afhankelijkheden van Site Recovery configuratie Server Microsoft Azure
-   * MySQL-Server 5,5
+   * MySQL Server 5.5
 4. Voer de volgende opdracht uit en beheer opdracht prompt.
    ```
    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration

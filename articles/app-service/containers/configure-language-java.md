@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/26/2019
 ms.author: brendm
 ms.custom: seodec18
-ms.openlocfilehash: 8f6fb9737d3d8dad93a95f31d566f7cc4706ded3
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: e63d8f03b26c9039fe4093cf15b13522dbb49af9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73886051"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081476"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Een Linux java-app voor Azure App Service configureren
 
@@ -239,9 +239,9 @@ Volg eerst de instructies voor het [verlenen van toegang tot Key Vault van uw ap
 
 Als u deze geheimen wilt injecteren in het configuratie bestand voor de lente of het Tomcat, gebruikt u de syntaxis voor het injecteren van omgevings variabelen (`${MY_ENV_VAR}`). Raadpleeg deze documentatie over [externe configuraties](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)voor lente configuratie bestanden.
 
-## <a name="using-the-java-key-store"></a>Het Java-sleutel archief gebruiken
+### <a name="using-the-java-key-store"></a>Het Java-sleutel archief gebruiken
 
-Standaard worden alle open bare of persoonlijke certificaten [die zijn geüpload naar app service Linux](../configure-ssl-certificate.md) geladen in het Java-sleutel archief wanneer de container wordt gestart. Dit betekent dat uw geüploade certificaten beschikbaar zijn in de verbindings context bij het maken van uitgaande TLS-verbindingen.
+Standaard worden alle open bare of persoonlijke certificaten [die zijn geüpload naar app service Linux](../configure-ssl-certificate.md) geladen in het Java-sleutel archief wanneer de container wordt gestart. Dit betekent dat uw geüploade certificaten beschikbaar zijn in de verbindings context bij het maken van uitgaande TLS-verbindingen. Nadat u het certificaat hebt geüpload, moet u de App Service opnieuw opstarten zodat het in het Java-sleutel archief wordt geladen.
 
 U kunt het Java-sleutel programma interactief gebruiken of fouten opsporen door [een SSH-verbinding](app-service-linux-ssh-support.md) met uw app service te openen en de opdracht `keytool`uit te voeren. Raadpleeg de [documentatie van het belang rijk hulp programma](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html) voor een lijst met opdrachten. De certificaten worden opgeslagen in de standaard bestands locatie voor de opslag van een archief `$JAVA_HOME/jre/lib/security/cacerts`.
 
@@ -251,7 +251,7 @@ Er is mogelijk aanvullende configuratie nodig voor het versleutelen van uw JDBC-
 - [SQL Server](https://docs.microsoft.com/sql/connect/jdbc/connecting-with-ssl-encryption?view=sql-server-ver15)
 - [MySQL](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-reference-using-ssl.html)
 
-### <a name="manually-initialize-and-load-the-key-store"></a>De sleutel opslag hand matig initialiseren en laden
+#### <a name="manually-initialize-and-load-the-key-store"></a>De sleutel opslag hand matig initialiseren en laden
 
 U kunt de sleutel opslag initialiseren en certificaten hand matig toevoegen. Maak een app-instelling `SKIP_JAVA_KEYSTORE_LOAD`, met de waarde `1` om App Service uit te scha kelen voor het automatisch laden van de certificaten in de sleutel opslag. Alle open bare certificaten die zijn geüpload naar App Service via Azure Portal, worden opgeslagen onder `/var/ssl/certs/`. Persoonlijke certificaten worden opgeslagen onder `/var/ssl/private/`.
 
@@ -579,7 +579,7 @@ In de volgende stappen worden de vereisten voor het koppelen van uw bestaande Ap
 
 6. Gebruik de Azure CLI om instellingen toe te voegen aan uw App Service die uw database verbindings gegevens bevatten. Vervang `<resource group>` en `<webapp name>` door de waarden die uw App Service gebruikt. Vervang `<database server name>`, `<database name>`, `<admin name>`en `<admin password>` door de verbindings gegevens van uw data base. U kunt uw App Service en Data Base-informatie ophalen uit de Azure Portal.
 
-    **PostgreSQL**
+    **PostgreSQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -591,7 +591,7 @@ In de volgende stappen worden de vereisten voor het koppelen van uw bestaande Ap
             DATABASE_SERVER_ADMIN_PASSWORD=<admin password>
     ```
 
-    **MySQL**
+    **MySQL:**
 
     ```bash
     az webapp config appsettings set \
@@ -616,7 +616,7 @@ In de volgende stappen worden de vereisten voor het koppelen van uw bestaande Ap
     De DATABASE_CONNECTION_URL waarden verschillen voor elke database server en verschillen van de waarden op de Azure Portal. De URL-indelingen die hier worden weer gegeven (en in de bovenstaande fragmenten) zijn vereist voor gebruik door WildFly:
 
     * **Postgresql:** `jdbc:postgresql://<database server name>:5432/<database name>?ssl=true`
-    * **Mysql:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
+    * **MySQL:** `jdbc:mysql://<database server name>:3306/<database name>?ssl=true\&useLegacyDatetimeCode=false\&serverTimezone=GMT`
     * **SQL Server:** `jdbc:sqlserver://<database server name>:1433;database=<database name>;user=<admin name>;password=<admin password>;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;`
 
 7. Ga in het Azure Portal naar uw App Service en zoek de pagina **configuratie** > **algemene instellingen** . Stel het veld **Startup script** in op de naam en locatie van het opstart script, bijvoorbeeld */Home/startup.sh*.

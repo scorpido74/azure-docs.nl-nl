@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ePlatform | Microsoft Docs'
+title: 'Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ePlatform | Microsoft Docs'
 description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ePlatform.
 services: active-directory
 documentationCenter: na
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/13/2019
+ms.date: 10/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a822f1f5d781576102d874f33b31b698f4907a7d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: b9dd7781263887a21597f32c74bd51854cc0dcfc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71121555"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081917"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Zelfstudie: Azure Active Directory-integratie met eenmalige aanmelding (SSO) met ePlatform
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eplatform"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met ePlatform
 
 In deze zelf studie leert u hoe u ePlatform integreert met Azure Active Directory (Azure AD). Wanneer u ePlatform integreert met Azure AD, kunt u het volgende doen:
 
@@ -67,10 +67,10 @@ Azure AD SSO met ePlatform configureren en testen met behulp van een test gebrui
 Als u Azure AD SSO wilt configureren en testen met ePlatform, voltooit u de volgende bouw stenen:
 
 1. **[Configureer Azure AD SSO](#configure-azure-ad-sso)** -om uw gebruikers in staat te stellen deze functie te gebruiken.
-    1. **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
-    1. **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
+    * **[Een Azure AD-test gebruiker maken](#create-an-azure-ad-test-user)** : u kunt eenmalige aanmelding voor Azure AD testen met B. Simon.
+    * **[Wijs de Azure AD-test gebruiker](#assign-the-azure-ad-test-user)** toe, zodat B. Simon de eenmalige aanmelding van Azure AD kan gebruiken.
 1. **[EPLATFORM SSO configureren](#configure-eplatform-sso)** : voor het configureren van de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-    1. **[Maak een ePlatform-test gebruiker](#create-eplatform-test-user)** -om een equivalent van B. Simon in ePlatform te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+    * **[Maak een ePlatform-test gebruiker](#create-eplatform-test-user)** -om een equivalent van B. Simon in ePlatform te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 1. **[SSO testen](#test-sso)** : om te controleren of de configuratie werkt.
 
 ## <a name="configure-azure-ad-sso"></a>Azure AD SSO configureren
@@ -85,6 +85,16 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. In de sectie **basis configuratie van SAML** is de toepassing vooraf geconfigureerd en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop **Opslaan** .
 
+1. de ePlatform-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
+
+    ![installatiekopie](common/default-attributes.png)
+
+1. Daarnaast verwacht ePlatform toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereisten.
+
+    | Naam | Bronkenmerk |
+    | ---------------| --------------- |
+    | upn | user.userprincipalname |
+
 1. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
     ![SAML-handtekeningcertificaat bewerken](common/edit-certificate.png)
@@ -97,17 +107,17 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simon.
 
 1. Selecteer in het linkerdeel venster van de Azure Portal **Azure Active Directory**, selecteer **gebruikers**en selecteer vervolgens **alle gebruikers**.
-1. Selecteer **nieuwe gebruiker** aan de bovenkant van het scherm.
+1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** het username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Create**.
+   1. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -117,7 +127,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 1. Selecteer in de lijst toepassingen de optie **ePlatform**.
 1. Ga op de pagina overzicht van de app naar de sectie **beheren** en selecteer **gebruikers en groepen**.
 
-   ![De koppeling 'Gebruikers en groepen'](common/users-groups-blade.png)
+   ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
 1. Selecteer **gebruiker toevoegen**en selecteer vervolgens **gebruikers en groepen** in het dialoog venster **toewijzing toevoegen** .
 
@@ -129,15 +139,15 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 ## <a name="configure-eplatform-sso"></a>EPlatform SSO configureren
 
-Als u eenmalige aanmelding wilt configureren op **ePlatform** , moet u de **vingerafdruk waarde** en de juiste gekopieerde url's verzenden van Azure Portal naar [ePlatform ondersteunings team](https://help.eplatform.co/hc/en-us). Ze stelt u deze optie om de SAML SSO-verbinding instellen goed aan beide zijden.
+Als u eenmalige aanmelding wilt configureren op **ePlatform** , moet u de **vingerafdruk waarde** en de juiste gekopieerde url's verzenden van Azure Portal naar [ePlatform ondersteunings team](https://help.eplatform.co/hc/en-us). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-eplatform-test-user"></a>EPlatform-test gebruiker maken
 
-In deze sectie maakt u een gebruiker met de naam B. Simon in ePlatform. Werk samen met [ePlatform-ondersteunings team](https://help.eplatform.co/hc/en-us) om de gebruikers toe te voegen in het ePlatform-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In deze sectie maakt u een gebruiker met de naam B. Simon in ePlatform. Werk samen met [ePlatform-ondersteunings team](https://help.eplatform.co/hc/en-us) om de gebruikers toe te voegen in het ePlatform-platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
-## <a name="test-sso"></a>SSO testen 
+## <a name="test-sso"></a>SSO testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel ePlatform in het toegangs venster klikt, moet u automatisch worden aangemeld bij de ePlatform waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 

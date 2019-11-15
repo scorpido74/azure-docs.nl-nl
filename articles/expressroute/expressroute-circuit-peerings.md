@@ -1,5 +1,5 @@
 ---
-title: Azure ExpressRoute-circuits en peering | Microsoft Docs
+title: 'Azure-ExpressRoute: circuits en peering'
 description: Deze pagina bevat een overzicht van ExpressRoute-circuits en routering domeinen/peering.
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 864b834fcc6810b52f067d8e67b4a48febd0f787
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f6673e114c249cb86c648155b889e925554e9458
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123482"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083639"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute-circuits en -peering
 
@@ -31,7 +30,7 @@ Een ExpressRoute-circuit vertegenwoordigt een logische verbinding tussen uw on-p
 
 ExpressRoute-circuits toewijzen niet aan een fysieke entiteiten. Een circuit wordt uniek geïdentificeerd door een standaard die GPT als een servicesleutel (s-sleutel aangeroepen). De servicesleutel is de enige informatie die worden uitgewisseld tussen Microsoft en de connectiviteitsprovider. De s-sleutel is niet een geheim om veiligheidsredenen. Er is een 1:1-toewijzing tussen een ExpressRoute-circuit en de s-sleutel.
 
-Nieuwe ExpressRoute-circuits kunnen twee onafhankelijke peerings bevatten: Persoonlijke peering en micro soft-peering. Dat bestaande ExpressRoute-circuits drie peerings kunnen bevatten: Azure openbaar, Azure private en micro soft. Elke peering is een combinatie van een onafhankelijke BGP-sessies, elk van deze toch toe geconfigureerd voor hoge beschikbaarheid. Er is een 1: n (1 < = N < = 3) toewijzing tussen een ExpressRoute-circuit en routering van domeinen. Een ExpressRoute-circuit kan hebben een, twee of alle drie de peerings per ExpressRoute-circuit is ingeschakeld.
+Nieuwe ExpressRoute-circuits twee onafhankelijke peerings kunnen opnemen: persoonlijke peering en Microsoft-peering. Terwijl bestaande ExpressRoute-circuits drie de peerings kunnen bevatten: Azure openbare, persoonlijke Azure- en Microsoft. Elke peering is een combinatie van een onafhankelijke BGP-sessies, elk van deze toch toe geconfigureerd voor hoge beschikbaarheid. Er is een 1: n (1 < = N < = 3) toewijzing tussen een ExpressRoute-circuit en routering van domeinen. Een ExpressRoute-circuit kan hebben een, twee of alle drie de peerings per ExpressRoute-circuit is ingeschakeld.
 
 Elk circuit heeft een vaste bandbreedte (50 Mbps, 100 Mbps, 200 Mbps, 500 Mbps, 1 Gbps, 10 Gbps) en is toegewezen aan een connectiviteitsprovider en een locatie. De bandbreedte die u selecteert, wordt gedeeld door alle circuitpeerings
 
@@ -41,7 +40,7 @@ Standaardquota en limieten gelden voor elk ExpressRoute-circuit. Raadpleeg de [A
 
 ## <a name="routingdomains"></a>ExpressRoute-peering
 
-Aan een ExpressRoute-circuit zijn meerdere routerings domeinen/peerings gekoppeld: Azure openbaar, Azure private en micro soft. Elke peering identiek is geconfigureerd op twee routers (in actief / actief- of delen van belasting configureren) voor hoge beschikbaarheid. Azure-services worden aangemerkt als *openbare Azure* en *Azure privé* om weer te geven van de IP-adressen van schema's.
+Een ExpressRoute-circuit heeft meerdere Routering domeinen/peerings die ermee verbonden zijn: Azure openbare, Azure privé- en Microsoft. Elke peering identiek is geconfigureerd op twee routers (in actief / actief- of delen van belasting configureren) voor hoge beschikbaarheid. Azure-services worden aangemerkt als *openbare Azure* en *Azure privé* om weer te geven van de IP-adressen van schema's.
 
 ![](./media/expressroute-circuit-peerings/expressroute-peerings.png)
 

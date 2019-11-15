@@ -1,20 +1,21 @@
 ---
-title: 'Zelfstudie: Een Azure DNS-aliasrecord maken dat naar een resourcerecord in de zone verwijst.'
+title: 'Zelf studie: een alias record maken om te verwijzen naar een bron record in een zone'
+titleSuffix: Azure DNS
 description: In deze zelfstudie leert u hoe u een Azure DNS-aliasrecord zo configureert dat deze verwijst naar een resourcerecord in de zone.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 3b4ee688d6a5606ab6008b459fcf6331c24afaae
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 59ffe9781d97880044da5eedbdf84181bf1b2fa1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61429787"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082879"
 ---
-# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Zelfstudie: Een alias-record om te verwijzen naar een zone resourcerecord maken
+# <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Zelfstudie: Een aliasrecord maken dat naar een resourcerecord voor een zone verwijst
 
 Aliasrecords kunnen naar andere recordsets van hetzelfde type verwijzen. U kunt bijvoorbeeld een DNS CNAME-recordset hebben als alias voor een andere CNAME-recordset van hetzelfde type. Dit is handig als u wilt dat sommige recordsets zich gedragen als aliassen en andere als niet-aliassen.
 
@@ -30,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-Zie voor instructies voor het hosten van uw domein in Azure DNS [zelfstudie: Uw domein hosten in Azure DNS](dns-delegate-domain-azure-dns.md) voor meer informatie.
+Zie voor instructies voor het hosten van uw domein in Azure DNS [Zelfstudie: Uw domein in Azure DNS hosten](dns-delegate-domain-azure-dns.md).
 
 
 ## <a name="create-an-alias-record"></a>Een aliasrecord maken
@@ -57,7 +58,7 @@ Een aliasrecord maken dat verwijst naar een resourcerecord in de zone.
 ## <a name="test-the-alias-record"></a>De aliasrecord testen
 
 1. Start uw favoriete nslookup-hulpprogramma. U kunt ook naar [https://network-tools.com/nslook](https://network-tools.com/nslook) bladeren.
-2. Stel het querytype voor A-records in en zoek **test.\<uw domeinnaam\>**. Het antwoord is **10.10.10.10**.
+2. Stel het querytype voor A-records in en zoek **test.\<uw domeinnaam\>** . Het antwoord is **10.10.10.10**.
 3. Wijzig de A-record van de **server** in de Azure Portal naar **10.11.11.11**.
 4. Wacht een paar minuten en gebruik nslookup daarna opnieuw voor de **test**-record. Het antwoord is **10.11.11.11**.
 

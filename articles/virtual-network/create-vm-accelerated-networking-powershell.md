@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine van Azure maken met versneld netwerken | Microsoft Docs
+title: Een Azure-VM maken met versneld netwerken-Azure PowerShell
 description: Meer informatie over het maken van een virtuele Linux-machine met versneld netwerken.
 services: virtual-network
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: f8f4f55f2c2aa4a0f9cce08e10c9f12f81a54dba
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 16837782af2f08e27363091dc21587a100194cd8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677999"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083707"
 ---
-# <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Een virtuele Windows-machine maken met versneld netwerken
+# <a name="create-a-windows-virtual-machine-with-accelerated-networking-using-azure-powershell"></a>Maak een virtuele Windows-machine met versneld netwerken met behulp van Azure PowerShell
 
 In deze zelf studie leert u hoe u een virtuele Windows-machine (VM) kunt maken met versneld netwerken. Zie [een virtuele Linux-machine maken met versneld](create-vm-accelerated-networking-cli.md)netwerken voor het maken van een virtuele Linux-machine met versneld netwerken. Versneld netwerken maken gebruik van I/O-virtualisatie met één hoofdmap (SR-IOV) naar een virtuele machine, waardoor de netwerk prestaties aanzienlijk worden verbeterd. Dit pad met hoge prestaties omzeilt de host van de DataPath, vermindert latentie, jitter en CPU-gebruik, voor gebruik met de meest veeleisende netwerk workloads op ondersteunde VM-typen. In de volgende afbeelding ziet u communicatie tussen twee Vm's met en zonder versneld netwerken:
 
@@ -49,11 +49,11 @@ De volgende distributies worden ondersteund uit het vak van de Azure-galerie:
 ### <a name="supported-vm-instances"></a>Ondersteunde VM-exemplaren
 Versnelde netwerken worden ondersteund in de meeste algemene doel stellingen en met Compute geoptimaliseerde exemplaar grootten met twee of meer Vcpu's.  Deze ondersteunde reeksen zijn: D/DSv2 en F/FS
 
-Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/Dsv3, E-Esv3, Fsv2, Lsv2, MS/MMS en MS/Mmsv2.
+Op instanties die HyperThreading ondersteunen, wordt versneld netwerken ondersteund op VM-exemplaren met vier of meer Vcpu's. Ondersteunde reeksen zijn: D/Dsv3, E/Esv3, Fsv2, Lsv2, MS/MMS en MS/Mmsv2.
 
 Zie [Windows VM-grootten](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over VM-exemplaren.
 
-### <a name="regions"></a>Regions
+### <a name="regions"></a>Regio's
 Beschikbaar in alle open bare Azure-regio's en Azure Government Cloud.
 
 ### <a name="enabling-accelerated-networking-on-a-running-vm"></a>Versnelde netwerken inschakelen op een actieve virtuele machine
@@ -74,7 +74,7 @@ Nadat de virtuele machine is gemaakt, kunt u de versnelde netwerken bevestigen d
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Installeer [Azure PowerShell](/powershell/azure/install-az-ps) versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az` uit om de geïnstalleerde versie te vinden. Als u wilt installeren of upgraden, installeert u de nieuwste versie van de AZ-module vanaf de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az). Meld u in een Power shell-sessie aan bij een Azure [-account met Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
+Installeer [Azure PowerShell](/powershell/azure/install-az-ps) versie 1.0.0 of hoger. Voer `Get-Module -ListAvailable Az`uit om de momenteel geïnstalleerde versie te vinden. Als u wilt installeren of upgraden, installeert u de nieuwste versie van de AZ-module vanaf de [PowerShell Gallery](https://www.powershellgallery.com/packages/Az). Meld u in een Power shell-sessie aan bij een Azure [-account met Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 Vervang in de volgende voor beelden voorbeeld parameter namen door uw eigen waarden. Voor beelden van parameter namen zijn *myResourceGroup*, *myNic*en *myVM*.
 
@@ -165,13 +165,13 @@ $nic = New-AzNetworkInterface `
 
 ## <a name="create-the-virtual-machine"></a>De virtuele machine maken
 
-Stel uw VM-referenties in op de variabele `$cred` met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
+Stel uw VM-referenties in op de `$cred` variabele met [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential):
 
 ```powershell
 $cred = Get-Credential
 ```
 
-Definieer eerst uw virtuele machine met [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). In het volgende voor beeld wordt een virtuele machine gedefinieerd met de naam *myVM* met een VM-grootte die ondersteuning biedt voor versneld netwerken (*Standard_DS4_v2*):
+Definieer eerst uw virtuele machine met [New-AzVMConfig](/powershell/module/az.compute/new-azvmconfig). In het volgende voor beeld wordt een virtuele machine met de naam *myVM* gedefinieerd met een VM-grootte die ondersteuning biedt voor versneld netwerken (*Standard_DS4_v2*):
 
 ```powershell
 $vmConfig = New-AzVMConfig -VMName "myVm" -VMSize "Standard_DS4_v2"

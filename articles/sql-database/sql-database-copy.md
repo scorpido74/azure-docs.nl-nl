@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
-ms.date: 09/04/2019
-ms.openlocfilehash: ebf63d14a8fb883158d1ac3e0a8f3d6658920aa7
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: 0b8bfff03414dd02360cab1957ea2205e392235d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826658"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082481"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Een transactioneel consistente kopie van een Azure-SQL database kopiëren
 
@@ -156,6 +156,26 @@ Nadat de nieuwe Data Base online is op de doel server, gebruikt u de instructie 
 Alle gebruikers in de nieuwe data base behouden de machtigingen die ze in de bron database hadden. De gebruiker die de kopie van de data base heeft gestart, wordt de data base-eigenaar van de nieuwe data base en krijgt een nieuwe beveiligings-id (SID) toegewezen. Nadat het kopiëren is voltooid en voordat andere gebruikers opnieuw zijn toegewezen, kan alleen de aanmeldings gegevens die de Kopieer bewerking hebben gestart, de eigenaar van de data base aanmelden bij de nieuwe data base.
 
 Zie [Azure SQL database-beveiliging beheren na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie over het beheren van gebruikers en aanmeldingen wanneer u een Data Base naar een andere SQL database server kopieert.
+
+## <a name="database-copy-errors"></a>Database kopie fouten
+
+De volgende fouten zijn opgetreden tijdens het kopiëren van een data base in Azure SQL Database. Zie [Een Azure SQL Database kopiëren](sql-database-copy.md) voor meer informatie.
+
+| Foutcode | Severity | Beschrijving |
+| ---:| ---:|:--- |
+| 40635 |16 |Client met IP-adres "%.&#x2a;ls" is tijdelijk uitgeschakeld. |
+| 40637 |16 |Het maken van de data base is momenteel uitgeschakeld. |
+| 40561 |16 |Het kopiëren van de data base is mislukt. De bron-of doel database bestaat niet. |
+| 40562 |16 |Het kopiëren van de data base is mislukt. De bron database is verwijderd. |
+| 40563 |16 |Het kopiëren van de data base is mislukt. De doel database is verwijderd. |
+| 40564 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het opnieuw. |
+| 40565 |16 |Het kopiëren van de data base is mislukt. Er is niet meer dan één gelijktijdige database kopie van dezelfde bron toegestaan. Verwijder de doel database en probeer het later opnieuw. |
+| 40566 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het opnieuw. |
+| 40567 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het opnieuw. |
+| 40568 |16 |Het kopiëren van de data base is mislukt. De bron database is niet meer beschikbaar. Verwijder de doel database en probeer het opnieuw. |
+| 40569 |16 |Het kopiëren van de data base is mislukt. De doel database is niet meer beschikbaar. Verwijder de doel database en probeer het opnieuw. |
+| 40570 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het later opnieuw. |
+| 40571 |16 |Het kopiëren van de data base is mislukt vanwege een interne fout. Verwijder de doel database en probeer het later opnieuw. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

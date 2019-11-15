@@ -1,95 +1,95 @@
 ---
-title: Met behulp van de Azure CDN van Verizon Premium regels-engine HTTP-gedrag negeren | Microsoft Docs
-description: De regelengine kunt u aanpassen hoe HTTP-aanvragen worden verwerkt door Azure CDN van Verizon Premium, zoals het blokkeren van de levering van bepaalde soorten inhoud, het definiëren van een cachebeleid en het wijzigen van HTTP-headers.
+title: HTTP-gedrag negeren met Azure CDN-Verizon Premium-regel engine
+description: Met de regel engine kunt u aanpassen hoe HTTP-aanvragen worden verwerkt door Azure CDN van Verizon Premium, zoals het blok keren van de levering van bepaalde soorten inhoud, het opgeven van een cache beleid en het aanpassen van HTTP-headers.
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: magattus
-ms.openlocfilehash: fa08f59f3b69395d548649bb131e04c5071c053d
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: aa0606eafb8fe4c517b0c18e0137058a120115ba
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593183"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082961"
 ---
-# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>Met behulp van de Azure CDN van Verizon Premium regels-engine HTTP-gedrag negeren
+# <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-gedrag negeren met behulp van de Azure CDN van de Verizon Premium-regel engine
 
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
 
 ## <a name="overview"></a>Overzicht
 
-De regels-engine van Azure CDN kunt u aanpassen hoe HTTP-aanvragen worden verwerkt. Bijvoorbeeld, blokkeert de levering van bepaalde typen inhoud, het definiëren van een cachebeleid of het wijzigen van een HTTP-header. Deze zelfstudie wordt gedemonstreerd hoe u een regel maken waarmee het cachegedrag van CDN activa wordt gewijzigd. Zie voor meer informatie over de syntaxis voor regels-engine [naslaginformatie over Azure CDN de regelengine](cdn-verizon-premium-rules-engine-reference.md).
+Met de engine voor Azure CDN regels kunt u aanpassen hoe HTTP-aanvragen worden verwerkt. Bijvoorbeeld: het blok keren van de levering van bepaalde inhouds typen, het definiëren van een cache beleid of het wijzigen van een HTTP-header. In deze zelf studie wordt gedemonstreerd hoe u een regel maakt waarmee het cache gedrag van CDN-assets wordt gewijzigd. Zie voor meer informatie over de syntaxis van de regel engine de [referentie voor Azure CDN regels-engine](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Access
+## <a name="access"></a>Toegang
 
-Voor toegang tot de regelengine, moet u eerst selecteren **beheren** vanaf de bovenkant van de **CDN-profiel** pagina voor toegang tot de Azure CDN beheren pagina. Afhankelijk van of het eindpunt is geoptimaliseerd voor dynamic site acceleration (DSA), moet u vervolgens de regelengine met de set regels die geschikt is voor uw type eindpunt openen:
+Voor toegang tot de regel engine moet u eerst **beheren** selecteren vanaf de bovenkant van de pagina **CDN-profiel** om toegang te krijgen tot de Azure CDN-beheer pagina. Afhankelijk van of uw eind punt is geoptimaliseerd voor dynamische site versnelling (DSA), opent u de regel engine met de regels die geschikt zijn voor uw type eind punt:
 
-- Eindpunten die zijn geoptimaliseerd voor algemene webweergave of andere niet-DSA-optimalisatie:
+- Eind punten die zijn geoptimaliseerd voor algemene Internet levering of andere non-DSA-optimalisatie:
     
-    Selecteer de **HTTP grote** tabblad, en selecteer vervolgens **regels-Engine**.
+    Selecteer het tabblad **http groot** en selecteer vervolgens **regel engine**.
 
-    ![Regels-engine voor HTTP](./media/cdn-rules-engine/cdn-http-rules-engine.png)
+    ![Regel engine voor HTTP](./media/cdn-rules-engine/cdn-http-rules-engine.png)
 
-- Eindpunten die zijn geoptimaliseerd voor DSA:
+- Eind punten die zijn geoptimaliseerd voor DSA:
     
-    Selecteer de **ADN** tabblad, en selecteer vervolgens **regels-Engine**.
+    Selecteer het tabblad **ADN** en selecteer vervolgens **regel engine**.
     
-    ADN is een term die wordt gebruikt door Verizon DSA-inhoud opgeven. Alle regels die u hier maakt, worden genegeerd door alle eindpunten in uw profiel die niet zijn geoptimaliseerd voor DSA.
+    ADN is een term die door Verizon wordt gebruikt om DSA-inhoud op te geven. Alle regels die u hier maakt, worden genegeerd door eind punten in uw profiel die niet zijn geoptimaliseerd voor DSA.
 
-    ![Regels-engine voor DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
+    ![Regel engine voor DSA](./media/cdn-rules-engine/cdn-dsa-rules-engine.png)
 
 ## <a name="tutorial"></a>Zelfstudie
 
-1. Uit de **CDN-profiel** weergeeft, schakelt **beheren**.
+1. Selecteer op de pagina **CDN-profiel** de optie **beheren**.
    
-    ![Knop voor CDN-profiel beheren](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Beheer knop voor CDN-profiel](./media/cdn-rules-engine/cdn-manage-btn.png)
    
-    De CDN-beheerportal wordt geopend.
+    De CDN-beheer portal wordt geopend.
 
-2. Selecteer de **HTTP grote** tabblad, en selecteer vervolgens **regels-Engine**.
+2. Selecteer het tabblad **http groot** en selecteer vervolgens **regel engine**.
    
-    De opties voor een nieuwe regel worden weergegeven.
+    De opties voor een nieuwe regel worden weer gegeven.
    
-    ![Opties voor de CDN nieuwe regel](./media/cdn-rules-engine/cdn-new-rule.png)
+    ![Opties voor nieuwe CDN-regel](./media/cdn-rules-engine/cdn-new-rule.png)
    
    > [!IMPORTANT]
-   > De volgorde waarin meerdere regels worden weergegeven is van invloed op hoe ze worden verwerkt. Een volgende regel kan de handelingen die zijn opgegeven door een vorige regel negeren.
+   > De volg orde waarin meerdere regels worden weer gegeven, is van invloed op de manier waarop ze worden verwerkt. Een volgende regel kan de acties overschrijven die door een vorige regel zijn opgegeven.
    >
 
-3. Voer een naam in de **naam / beschrijving** tekstvak.
+3. Voer een naam in het tekstvak **naam/beschrijving** in.
 
-4. Identificeer het type van de regel geldt voor aanvragen. De voorwaarde van de overeenkomst standaard gebruiken **altijd**.
+4. Identificeer het type aanvragen waarop de regel van toepassing is. Gebruik de standaard voorwaarde matching **altijd**.
    
-   ![Voorwaarde voor overeenkomst CDN-regel](./media/cdn-rules-engine/cdn-request-type.png)
+   ![Voor waarde voor overeenkomst met CDN-regel](./media/cdn-rules-engine/cdn-request-type.png)
    
    > [!NOTE]
-   > Meerdere criteria voor overeenkomst zijn beschikbaar in de vervolgkeuzelijst. Voor informatie over de geselecteerde voorwaarde, selecteer het blauwe informatief pictogram aan de linkerkant.
+   > Er zijn meerdere match voorwaarden beschikbaar in de vervolg keuzelijst. Voor informatie over de momenteel geselecteerde match-voor waarde selecteert u het blauwe pictogram voor informatie aan de linkerkant.
    >
-   >  Zie voor een gedetailleerde lijst met voorwaardelijke expressies, [voorwaardelijke expressies regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   >  Zie [voorwaardelijke expressies voor regel engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)voor een gedetailleerde lijst met voorwaardelijke expressies.
    >  
-   > Zie voor een gedetailleerde lijst van criteria voor overeenkomst, [regels criteria voor overeenkomst regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
+   > Voor een gedetailleerde lijst met match-voor waarden raadpleegt u de [voor waarden van regels engine](cdn-verizon-premium-rules-engine-reference-match-conditions.md).
    >
    >
 
-5. Selecteren om toe te voegen een nieuwe functie, de **+** naast **functies**.  Selecteer in de vervolgkeuzelijst aan de linkerkant, **Force interne Max-Age**.  Voer in het tekstvak dat wordt weergegeven, **300**. De resterende standaardwaarden niet gewijzigd.
+5. Als u een nieuwe functie wilt toevoegen, selecteert u de knop **+** naast **functies**.  Selecteer in de vervolg keuzelijst aan de linkerkant de optie **interne Max. leeftijd forceren**.  Typ **300**in het tekstvak dat wordt weer gegeven. Wijzig de resterende standaard waarden niet.
    
-   ![Functie voor CDN-regel](./media/cdn-rules-engine/cdn-new-feature.png)
+   ![CDN-regel functie](./media/cdn-rules-engine/cdn-new-feature.png)
    
    > [!NOTE]
-   > Meerdere functies zijn beschikbaar in de vervolgkeuzelijst. Voor informatie over de momenteel geselecteerde functie, selecteer het blauwe informatief pictogram aan de linkerkant.
+   > Er zijn meerdere functies beschikbaar in de vervolg keuzelijst. Voor informatie over de momenteel geselecteerde functie selecteert u het blauwe informatie pictogram aan de linkerkant.
    >
-   > Voor **Force interne Max-Age**, van de asset `Cache-Control` en `Expires` headers worden overschreven om te bepalen wanneer de activa van de oorsprong in het CDN edge-knooppunt wordt vernieuwd. In dit voorbeeld Slaat het CDN edge-knooppunt de asset 300 seconden, of 5 minuten, voordat het de activa van de oorsprong wordt vernieuwd.
+   > Voor **interne maximale leeftijds duur**worden de `Cache-Control` van het activum en `Expires` kopteksten overschreven om te bepalen wanneer het knoop punt van de CDN-rand het activum van de oorsprong vernieuwt. In dit voor beeld slaat het element van de CDN-rand het activum gedurende 300 seconden of 5 minuten op in de cache voordat het het activum van de oorsprong vernieuwt.
    >
-   > Zie voor een gedetailleerd overzicht van functies, [functies regelengine](cdn-verizon-premium-rules-engine-reference-features.md).
+   > Zie [regels engine-functies](cdn-verizon-premium-rules-engine-reference-features.md)voor een gedetailleerde lijst met functies.
    >
    >
 
-6. Selecteer **toevoegen** naar de nieuwe regel niet opslaan.  De nieuwe regel is nu in afwachting van goedkeuring. Nadat deze is goedgekeurd, wordt de status verandert van **in behandeling XML** naar **Active XML**.
+6. Selecteer **toevoegen** om de nieuwe regel op te slaan.  De nieuwe regel is nu in afwachting van goed keuring. Nadat deze is goedgekeurd, wordt de status gewijzigd van **XML in behandeling** naar **actief XML**.
    
    > [!IMPORTANT]
-   > Regels wijzigingen kunnen maximaal tien minuten worden doorgegeven via de Azure CDN duren.
+   > Het kan Maxi maal tien minuten duren voordat de wijzigingen zijn doorgevoerd in Azure CDN.
    >
    >
 
@@ -100,4 +100,4 @@ Voor toegang tot de regelengine, moet u eerst selecteren **beheren** vanaf de bo
 - [Criteria voor overeenkomst regelengine](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Voorwaardelijke expressies regelengine](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Functies regelengine](cdn-verizon-premium-rules-engine-reference-features.md)
-- [Azure Fridays: Azure CDN krachtige nieuwe premium-functies](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)
+- [Azure vrijdag: de krachtige nieuwe Premium-functies van Azure CDN](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (video)

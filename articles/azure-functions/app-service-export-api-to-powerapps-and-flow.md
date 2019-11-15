@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: 2ed154d15176ed6706a69f0a6be4c60159d478c2
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70087699"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082852"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow
 
@@ -30,7 +30,7 @@ Op dezelfde manier kunnen ontwikkel aars die hun Api's breed willen weer geven b
 Voordat u een API exporteert, moet u de API beschrijven met behulp van een OpenAPI-definitie (voorheen bekend als een [Swagger](https://swagger.io/) -bestand). Deze definitie bevat informatie over welke bewerkingen beschikbaar zijn in een API en hoe de gegevens van de aanvraag en respons voor de API moeten worden opgebouwd. PowerApps en Microsoft Flow kunnen aangepaste connectors maken voor elke OpenAPI 2,0-definitie. Azure Functions en Azure App Service hebben ingebouwde ondersteuning voor het maken, hosten en beheren van OpenAPI definities. Zie [een resterende API hosten met CORS in azure app service](../app-service/app-service-web-tutorial-rest-api.md)voor meer informatie.
 
 > [!NOTE]
-> U kunt ook aangepaste connectors maken in de gebruikers interface van PowerApps en Microsoft Flow, zonder gebruik te maken van een OpenAPI-definitie. Zie [een aangepaste connector (PowerApps) registreren en gebruiken](https://powerapps.microsoft.com/tutorials/register-custom-api/) en [een aangepaste connector (Microsoft flow) registreren en gebruiken](https://flow.microsoft.com/documentation/register-custom-api/)voor meer informatie.
+> U kunt ook aangepaste connectors maken in de gebruikers interface van PowerApps en Microsoft Flow, zonder gebruik te maken van een OpenAPI-definitie. Zie [een aangepaste connector (PowerApps) registreren en gebruiken](https://powerapps.microsoft.com/tutorials/register-custom-api/) en [een aangepaste connector (Microsoft flow) registreren en gebruiken](/power-automate/developer/register-custom-api)voor meer informatie.
 
 Als u de API-definitie wilt exporteren, voert u de volgende stappen uit:
 
@@ -68,7 +68,7 @@ Voer de volgende stappen uit om de export in **Express** -modus te volt ooien:
 
 2. Gebruik de instellingen zoals opgegeven in de tabel.
 
-    |Instelling|Description|
+    |Instelling|Beschrijving|
     |--------|------------|
     |**Omgeving**|Selecteer de omgeving waarin de aangepaste connector moet worden opgeslagen. Zie [overzicht van omgevingen](https://powerapps.microsoft.com/tutorials/environments-overview/)voor meer informatie.|
     |**Aangepaste API-naam**|Voer een naam in, die PowerApps en Microsoft Flow bouwers worden weer geven in de lijst met connectors.|
@@ -101,7 +101,7 @@ Voer de volgende stappen uit om de API-definitie te importeren in PowerApps en M
 
 2. Klik in de rechter bovenhoek op het tandwiel pictogram en klik vervolgens op **aangepaste connectors**.
 
-   ![Tandwielpictogram in service](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
+   ![Tandwielpictogram in werking](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
 3. Klik op **aangepaste connector maken**en klik vervolgens op **een OpenAPI-definitie importeren**.
 
@@ -123,11 +123,11 @@ Voer de volgende stappen uit om de API-definitie te importeren in PowerApps en M
 
     ![Tabblad definities](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Dit voor beeld heeft één bewerking, `CalculateCosts`met de naam. De meta gegevens, zoals **Beschrijving**, zijn afkomstig uit het OpenAPI-bestand.
+    Dit voor beeld heeft één bewerking, met de naam `CalculateCosts`. De meta gegevens, zoals **Beschrijving**, zijn afkomstig uit het OpenAPI-bestand.
 
 7. Klik boven aan de pagina op **connector maken** .
 
-U kunt nu verbinding maken met de aangepaste connector in PowerApps en Microsoft Flow. Zie [uw aangepaste connector (PowerApps) registreren](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) en [uw aangepaste connector registreren (Microsoft flow)](https://flow.microsoft.com/documentation/register-custom-api/#register-your-custom-connector)voor meer informatie over het maken van connectors in PowerApps en Microsoft flow portals.
+U kunt nu verbinding maken met de aangepaste connector in PowerApps en Microsoft Flow. Zie [uw aangepaste connector (PowerApps) registreren](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) en [uw aangepaste connector registreren (Microsoft flow)](/power-automate/get-started-flow-dev#create-a-custom-connector)voor meer informatie over het maken van connectors in PowerApps en Microsoft flow portals.
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Verificatietype opgeven
@@ -156,14 +156,14 @@ Wanneer u Azure AD gebruikt, hebt u twee Azure AD-toepassings registraties nodig
 
 - Als u de registratie voor de API wilt configureren, gebruikt u de functie voor [app service verificatie/autorisatie](../app-service/configure-authentication-provider-aad.md) .
 
-- Als u registratie voor de connector wilt configureren, volgt u de stappen in [een Azure AD-toepassing toevoegen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). De registratie moet gedelegeerde toegang hebben tot uw API en een antwoord-URL `https://msmanaged-na.consent.azure-apim.net/redirect`van. 
+- Als u registratie voor de connector wilt configureren, volgt u de stappen in [een Azure AD-toepassing toevoegen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). De registratie moet gedelegeerde toegang hebben tot uw API en een antwoord-URL van `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 
-Zie de registratie voorbeelden van Azure AD voor [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) en [Microsoft flow](https://flow.microsoft.com/documentation/customapi-azure-resource-manager-tutorial/)voor meer informatie. In deze voor beelden wordt Azure Resource Manager als de API gebruikt. Vervang de API door de volgende stappen uit te voeren.
+Zie de registratie voorbeelden van Azure AD voor [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) en [Microsoft flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication)voor meer informatie. In deze voor beelden wordt Azure Resource Manager als de API gebruikt. Vervang de API door de volgende stappen uit te voeren.
 
 De volgende configuratie waarden zijn vereist:
 - **Client-id** : de client-id van de connector Azure AD-registratie
 - **Client geheim** : het client geheim van uw connector Azure AD-registratie
-- **Aanmeldings-URL** : de basis-URL voor Azure AD. In Azure is dit doorgaans `https://login.windows.net`.
+- **Aanmeldings-URL** : de basis-URL voor Azure AD. In azure wordt dit doorgaans `https://login.windows.net`.
 - **Tenant-id** : de id van de Tenant die moet worden gebruikt voor de aanmelding. Dit moet ' common ' zijn of de ID van de Tenant waarin de connector is gemaakt.
 - **Bron-URL** : de bron-URL van de Azure AD-registratie voor uw API
 

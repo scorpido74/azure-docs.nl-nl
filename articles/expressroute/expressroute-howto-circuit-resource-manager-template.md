@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 07/05/2019
+ms.date: 11/13/2019
 ms.author: cherylmc
 ms.reviewer: ganesr
-ms.openlocfilehash: d6d9a3b472e2a40bfacf25a0b8fe0accb7d62cb8
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 25ed38e72f5a21622a87e36ad811ffd66f6a4c90
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031974"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083513"
 ---
 # <a name="create-an-expressroute-circuit-by-using-azure-resource-manager-template"></a>Een ExpressRoute-circuit maken met behulp van Azure Resource Manager sjabloon
 
@@ -64,8 +64,8 @@ Een ExpressRoute-circuit maken door een sjabloon te implementeren:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-   * **Laag** bepaalt of een ExpressRoute-standard- of een premium-invoegtoepassing voor ExpressRoute is ingeschakeld. U kunt opgeven **Standard** om op te halen van de standaard-SKU of **Premium** voor de premium-invoegtoepassing.
-
+   * **SKU-laag** bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [Premium](expressroute-faqs.md#expressroute-premium)is. U kunt *lokaal*, *standaard* of *Premium*opgeven.
+   * De **SKU-familie** bepaalt het facturerings type. U kunt opgeven *Metereddata* voor een abonnement naar gebruik en *Unlimiteddata* voor een abonnement voor onbeperkt gebruik. Kunt u het type facturering van *Metereddata* naar *Unlimiteddata*, maar u kunt het type niet wijzigen *Unlimiteddata* naar *Metereddata*. Een *lokaal* circuit is alleen *Unlimiteddata* .
    * **Peeringlocatie** is de fysieke locatie waar u peering met Microsoft.
 
      > [!IMPORTANT]

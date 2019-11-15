@@ -1,5 +1,5 @@
 ---
-title: Snelstartgids voor Azure IoT Hub Device streams node. js voor SSH en RDP (preview) | Microsoft Docs
+title: Quick start voor Azure IoT Hub Device streams node. js voor SSH en RDP
 description: In deze Quick Start voert u een node. js-voorbeeld toepassing uit die fungeert als een proxy om SSH-en RDP-scenario's in te scha kelen via IoT Hub apparaten.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 676b05b94fad506fba7c5bd2bd00061ae8a0426b
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 7f2b98f196a0889406e7821c60db7066a21b9178
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900765"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084271"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Quick Start: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een node. js-proxy toepassing (preview)
 
@@ -41,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Azië - zuidoost
   * Europa - noord
@@ -65,7 +65,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-U kunt deze stap overslaan als u eerder deze zelfstudie hebt voltooid: [Snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub en de telemetriegegevens op de hub lezen met een back-endtoepassing (Node.js)](quickstart-send-telemetry-node.md).
+U kunt deze stap overslaan na het afronden van de voorgaande [ snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub](quickstart-send-telemetry-node.md).
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 

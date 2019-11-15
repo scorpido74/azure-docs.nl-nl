@@ -1,5 +1,5 @@
 ---
-title: Herstel na nood geval instellen voor SQL Server met SQL Server en Azure Site Recovery | Microsoft Docs
+title: Herstel na nood geval instellen voor SQL Server met Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u herstel na nood gevallen instelt voor SQL Server met behulp van SQL Server en Azure Site Recovery.
 services: site-recovery
 author: sujayt
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 08/02/2019
 ms.author: sutalasi
-ms.openlocfilehash: 79428520eed95e6e79f29e1676e2711e6ee24087
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
+ms.openlocfilehash: 429f46156da728bbc24108090eac8c04f68da71c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70934838"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084744"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Herstel na nood geval instellen voor SQL Server
 
@@ -43,7 +43,7 @@ SQL Server op een Azure IaaS-VM of on-premises.| Replicatie met Azure Site Recov
 
 > [!NOTE]
 > Enkele belang rijke overwegingen bij het beveiligen van SQL-workloads met Site Recovery:
-> * Site Recovery is neutraal van toepassing. Site Recovery kunt elke versie van SQL Server beveiligen die is geïmplementeerd op een ondersteund besturings systeem. Zie de ondersteunings [matrix voor het herstellen](vmware-physical-azure-support-matrix.md#replicated-machines) van gerepliceerde machines voor meer informatie.
+> * Site Recovery is neutraal van toepassing. Site Recovery kunt elke versie van SQL Server beveiligen die is geïmplementeerd op een ondersteund besturings systeem. Zie de [ondersteunings matrix voor het herstellen](vmware-physical-azure-support-matrix.md#replicated-machines) van gerepliceerde machines voor meer informatie.
 > * U kunt ervoor kiezen om Site Recovery te gebruiken voor elke implementatie op Azure, Hyper-V, VMware of fysieke infra structuur. Volg de richt lijnen aan het einde van dit artikel voor informatie over het [beveiligen van een SQL Server cluster](#how-to-help-protect-a-sql-server-cluster) met site Recovery.
 > * Zorg ervoor dat de wijzigings frequentie voor gegevens die op de computer is waargenomen, binnen [site Recovery limieten](vmware-physical-azure-support-matrix.md#churn-limits)valt. De wijzigings hoeveelheid wordt gemeten in geschreven bytes per seconde. Voor computers waarop Windows wordt uitgevoerd, kunt u dit wijzigings aantal weer geven door het tabblad **prestaties** in taak beheer te selecteren. Bekijk de schrijf snelheid voor elke schijf.
 > * Site Recovery ondersteunt replicatie van exemplaren van failoverclusters op Opslagruimten Direct. Zie [opslagruimten direct-replicatie inschakelen](azure-to-azure-how-to-enable-replication-s2d-vms.md)voor meer informatie.
@@ -58,14 +58,14 @@ Er zijn enkele vereisten om ervoor te zorgen dat uw herstel plan volledig kan wo
 
 Stel Active Directory op de secundaire herstel site in voor SQL Server om goed te kunnen worden uitgevoerd.
 
-* **Kleine onderneming**: U hebt een klein aantal toepassingen en één domein controller voor de on-premises site. Als u een failover wilt uitvoeren voor de hele site, gebruikt u Site Recovery-replicatie. Met deze service wordt de domein controller gerepliceerd naar het secundaire Data Center of naar Azure.
-* **Middel groot tot grote onderneming**: Mogelijk moet u extra domein controllers instellen.
+* **Kleine onderneming**: er zijn een klein aantal toepassingen en één domein controller voor de on-premises site. Als u een failover wilt uitvoeren voor de hele site, gebruikt u Site Recovery-replicatie. Met deze service wordt de domein controller gerepliceerd naar het secundaire Data Center of naar Azure.
+* **Gemiddeld naar groot bedrijf**: u moet mogelijk extra domein controllers instellen.
   - Als u een groot aantal toepassingen hebt, een Active Directory forest hebt en een failover wilt uitvoeren op basis van een toepassing of werk belasting, stelt u een andere domein controller in het secundaire Data Center of in Azure in.
   -  Als u AlwaysOn-beschikbaarheids groepen gebruikt om naar een externe site te herstellen, stelt u een andere domein controller in op de secundaire site of in Azure. Deze domein controller wordt gebruikt voor het herstelde SQL Server-exemplaar.
 
 In de instructies in dit artikel wordt ervan uitgegaan dat er een domein controller beschikbaar is op de secundaire locatie. Zie de procedures voor het [beveiligen van Active Directory met site Recovery](site-recovery-active-directory.md)voor meer informatie.
 
-### <a name="step-2-ensure-connectivity-with-other-tiers"></a>Stap 2: Connectiviteit met andere lagen garanderen
+### <a name="step-2-ensure-connectivity-with-other-tiers"></a>Stap 2: zorg voor de connectiviteit met andere lagen
 
 Wanneer de databaserol actief is in de Azure-doel regio, moet u verbinding hebben met de toepassing en de weblaags. Neem de nodige stappen vooraf om de connectiviteit met de testfailover te valideren.
 
@@ -74,7 +74,7 @@ Zie de volgende voor beelden om te begrijpen hoe u toepassingen kunt ontwerpen v
 * [Een toepassing ontwerpen voor nood herstel in de Cloud](../sql-database/sql-database-designing-cloud-solutions-for-disaster-recovery.md)
 * [Strategieën voor nood herstel voor elastische Pools](../sql-database/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 
-### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>Stap 3: Werk met Always on, actieve geo-replicatie en automatisch failover-groepen
+### <a name="step-3-interoperate-with-always-on-active-geo-replication-and-auto-failover-groups"></a>Stap 3: samenwerkt met Always on, actieve geo-replicatie en groepen van automatische failover
 
 BCDR Technologies always on, actieve groepen met geo-replicatie en automatische failover hebben secundaire replica's van SQL Server uitgevoerd in de Azure-doel regio. De eerste stap voor de failover van de toepassing is om deze replica als primair op te geven. Bij deze stap wordt ervan uitgegaan dat u al een domein controller in de secundaire hebt. De stap is mogelijk niet nodig als u ervoor kiest om een automatische failover uit te voeren. Failover van uw web-en toepassings lagen alleen als de data base-failover is voltooid.
 
@@ -85,13 +85,13 @@ BCDR Technologies always on, actieve groepen met geo-replicatie en automatische 
 
 1. Importeer de scripts voor een failover van de SQL-beschikbaarheids groep in zowel een [Resource Manager-virtuele machine](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1) als een [klassieke virtuele machine](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1). Importeer de scripts in uw Azure Automation-account.
 
-    [![Afbeelding van het logo ' implementeren naar Azure '](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [Afbeelding van het logo ' implementeren naar Azure ' ![](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 1. Voeg het ASR-SQL-FailoverAG-script toe als een pre-actie van de eerste groep van het herstel plan.
 
 1. Volg de instructies in het script om een Automation-variabele te maken. Deze variabele bevat de naam van de beschikbaarheids groepen.
 
-### <a name="step-4-conduct-a-test-failover"></a>Stap 4: Een testfailover uitvoeren
+### <a name="step-4-conduct-a-test-failover"></a>Stap 4: een testfailover uitvoeren
 
 Sommige BCDR-technologieën zoals SQL always on bieden geen systeem eigen ondersteuning voor de testfailover. We raden u aan de volgende aanpak *alleen te gebruiken bij het gebruik van dergelijke technologieën*.
 
@@ -109,7 +109,7 @@ Sommige BCDR-technologieën zoals SQL always on bieden geen systeem eigen onders
 
 1. De listener online zetten.
 
-    ![Scherm opname van het venster met de naam Content_AG met server namen en-statussen](./media/site-recovery-sql/bring-listener-online.png)
+    ![Scherm opname van het venster met de naam Content_AG server namen en-statussen worden weer gegeven](./media/site-recovery-sql/bring-listener-online.png)
 
 1. Zorg ervoor dat de load balancer in het failover-netwerk één IP-adres heeft, van de front-end-IP-adres groep die overeenkomt met elke beschikbaarheids groep-listener en met de SQL Server virtuele machine in de back-end-pool.
 
@@ -157,7 +157,7 @@ Site Recovery replicatie voor SQL Server valt onder het voor deel van het Softwa
 
 ### <a name="will-site-recovery-support-my-sql-server-version"></a>Site Recovery ondersteuning voor mijn SQL Server versie?
 
-Site Recovery is neutraal van toepassing. Site Recovery kunt elke versie van SQL Server beveiligen die is geïmplementeerd op een ondersteund besturings systeem. Zie de ondersteunings [matrix voor het herstellen](vmware-physical-azure-support-matrix.md#replicated-machines) van gerepliceerde machines voor meer informatie.
+Site Recovery is neutraal van toepassing. Site Recovery kunt elke versie van SQL Server beveiligen die is geïmplementeerd op een ondersteund besturings systeem. Zie de [ondersteunings matrix voor het herstellen](vmware-physical-azure-support-matrix.md#replicated-machines) van gerepliceerde machines voor meer informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

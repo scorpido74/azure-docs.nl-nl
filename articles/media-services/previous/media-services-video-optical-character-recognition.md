@@ -14,17 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 48b5136505c3d0cb5e2e2027f832655e4b3445bf
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 11f897852ce820e666d7403f42735b2ee3bdd73b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881745"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084826"
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics gebruiken om tekst inhoud in video bestanden te converteren naar digitale tekst  
-
-> [!IMPORTANT]
-> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
 
 ## <a name="overview"></a>Overzicht
 Als u tekst inhoud uit uw video bestanden wilt extra heren en een bewerkbaar, Doorzoek bare digitale tekst wilt genereren, moet u Azure Media Analytics OCR gebruiken (optische teken herkenning). Deze Azure media-processor detecteert tekst inhoud in uw video bestanden en genereert tekst bestanden voor uw gebruik. Met OCR kunt u het uitpakken van zinvolle meta gegevens van het video signaal van uw media automatiseren.
@@ -48,7 +45,7 @@ Taak configuratie (voor instelling). Wanneer u een taak met **Azure media OCR**m
 ### <a name="attribute-descriptions"></a>Kenmerk beschrijvingen
 | Kenmerk naam | Beschrijving |
 | --- | --- |
-|AdvancedOutput| Als u AdvancedOutput instelt op True, bevat de JSON-uitvoer positionele gegevens voor elk enkel woord (naast zinsdelen en regio's). Als u deze gegevens niet wilt weer geven, stelt u de vlag in op ONWAAR. De standaard waarde is False. Zie [deze blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)voor meer informatie.|
+|AdvancedOutput| Als u AdvancedOutput instelt op True, bevat de JSON-uitvoer positionele gegevens voor elk enkel woord (naast zinsdelen en regio's). Als u deze gegevens niet wilt weer geven, stelt u de vlag in op ONWAAR. De standaardwaarde is false. Zie [deze blog](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)voor meer informatie.|
 | Taal |(optioneel) Hiermee wordt de taal van de tekst beschreven waarnaar moet worden gezocht. Een van de volgende: automatische detectie (standaard), Arabisch, ChineseSimplified, ChineseTraditional, Tsjechisch, Nederlands, Engels, Fins, Frans, Duits, Grieks, Hong aars, Italiaans, Japans, Koreaans, Noors, Pools, Portugees, Roemeens, Russisch, SerbianCyrillic, SerbianLatin, Slowaaks, Spaans, Zweeds en Turks. |
 | TextOrientation |(optioneel) Hiermee wordt de richting van de tekst beschreven die moet worden gezocht.  "Links" betekent dat de bovenkant van alle letters naar links wordt gewijsd.  Standaard tekst (zoals die kan worden gevonden in een boek) kan worden aangeroepen.  Een van de volgende: automatisch detecteren (standaard), omhoog, rechts, omlaag, links. |
 | TimeInterval |(optioneel) Hiermee wordt de sampling frequentie beschreven.  De standaard waarde is elke 1/2 seconden.<br/>JSON-indeling – uu: mm: SS. SSS (standaard 00:00:00.500)<br/>XML-indeling-primitieve W3C-duur van de XSD (standaard PT 0,5) |
@@ -113,10 +110,10 @@ De uitvoer bevat de volgende kenmerken:
 | Offset |tijd verschuiving voor tijds tempels. In versie 1,0 van video-Api's is dit altijd 0. |
 | Framesnelheid |Frames per seconde van de video |
 | Breedte |de breedte van de video in pixels |
-| Hoogte |de hoogte van de video in pixels |
+| hoogte |de hoogte van de video in pixels |
 | Fragmenten |matrix van op tijd gebaseerde segmenten van video waarin de meta gegevens worden gesegmenteerd |
 | start |begin tijd van een fragment in ' Ticks ' |
-| Hebben |lengte van een fragment in ' Ticks ' |
+| duration |lengte van een fragment in ' Ticks ' |
 | interval |interval van elke gebeurtenis binnen het gegeven fragment |
 | events |matrix met regio's |
 | regio |object dat gedetecteerde woorden of zinsdelen voor stelt |

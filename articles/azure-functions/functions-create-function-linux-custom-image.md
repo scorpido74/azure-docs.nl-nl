@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 manager: gwallace
-ms.openlocfilehash: d4a72edbe762afd2a94962c1440357ce3ad46862
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: b8d82868788d831d4db68a35c032d3f81b545417
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329598"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082832"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>Een functie in Linux maken met behulp van een aangepaste installatie kopie
 
@@ -57,7 +57,7 @@ U kunt ook de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
 
 ## <a name="create-the-local-project"></a>Het lokale project maken
 
-Voer de volgende opdracht uit vanaf de opdrachtregel om een functie-app-project te maken in de map `MyFunctionProj` van de huidige lokale map. Voor een python-project [moet u in een virtuele omgeving worden uitgevoerd](functions-create-first-function-python.md#create-and-activate-a-virtual-environment-optional).
+Voer de volgende opdracht uit vanaf de opdrachtregel om een functie-app-project te maken in de map `MyFunctionProj` van de huidige lokale map. Voor een python-project [moet u in een virtuele omgeving worden uitgevoerd](functions-create-first-function-python.md#create-and-activate-a-virtual-environment).
 
 ```bash
 func init MyFunctionProj --docker
@@ -67,7 +67,7 @@ Wanneer u de optie `--docker` opneemt, wordt een dockerfile voor het project geg
 
 Wanneer u hierom wordt gevraagd, kiest u een runtime voor de werkrol uit de volgende talen:
 
-* `dotnet`: maakt een .NET core Class Library-project (. csproj).
+* `dotnet`: Hiermee maakt u een .NET core Class Library-project (. csproj).
 * `node`: hiermee maakt u een JavaScript-project.
 * `python`: hiermee maakt u een Python-project.  
 
@@ -106,7 +106,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 Wanneer de opdracht is voltooid, kunt u de nieuwe container lokaal uitvoeren.
 
 ### <a name="run-the-image-locally"></a>De installatie kopie lokaal uitvoeren
-Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poort specificeert met behulp van het argument `-p`.
+Controleer of de installatiekopie die u hebt gebouwd werkt door de Docker-installatiekopie uit te voeren in een lokale container. Geef de opdracht [docker run](https://docs.docker.com/engine/reference/commandline/run/) en geef de naam en het label van de installatiekopie door. Zorg ervoor dat u de poort opgeeft met behulp van het argument `-p`.
 
 ```bash
 docker run -p 8080:80 -it <docker-ID>/mydockerimage:v1.0.0
@@ -123,7 +123,7 @@ Nadat u de functie-app in de container hebt geverifieerd, stopt u de uitvoering.
 
 ## <a name="push-to-docker-hub"></a>Pushen naar docker hub
 
-Een register is een toepassing die als host fungeert voor installatiekopieën en installatiekopie- en containerservices biedt. Om uw installatiekopie te delen, moet u deze naar een register pushen. Docker Hub is een register voor de Docker-installatiekopieën waarmee u uw eigen openbare of particuliere opslagplaatsen kunt hosten.
+Een register is een toepassing die als host fungeert voor installatiekopieën en biedt installatiekopie- en containerservices. Om uw installatiekopie te delen, moet u deze naar een register pushen. Docker Hub is een register voor Docker-installatiekopieën waarmee u uw eigen openbare of particuliere opslagplaatsen kunt hosten.
 
 Voordat u een installatiekopie kunt pushen, moet u zich aanmelden bij Docker Hub met behulp van de opdracht [docker login](https://docs.docker.com/engine/reference/commandline/login/). Vervang `<docker-id>` door uw accountnaam en typ uw wachtwoord bij de opdrachtprompt in de console. Zie [documentatie bij de opdracht voor dockeraanmelding](https://docs.docker.com/engine/reference/commandline/login/) voor andere wachtwoordopties voor Docker Hub.
 
@@ -147,7 +147,7 @@ Nadat de push is voltooid, kunt u de installatie kopie gebruiken als de implemen
 
 Linux-hosting voor aangepaste functies containers wordt ondersteund op [speciale (app service) plannen](functions-scale.md#app-service-plan) en [Premium-abonnementen](functions-premium-plan.md#features). In deze zelf studie wordt een Premium-abonnement gebruikt dat naar behoefte kan worden geschaald. Zie [deze vergelijking van hostingabonnementen van Azure Functions](functions-scale.md) voor meer informatie over hosting.
 
-In het volgende voor beeld wordt een Premium-plan gemaakt met de naam `myPremiumPlan` in de prijs categorie **elastisch Premium 1** (`--sku EP1`), in de regio vs-West (`-location WestUS`) en in een Linux-container (`--is-linux`).
+In het volgende voor beeld wordt een Premium-plan gemaakt met de naam `myPremiumPlan` in de prijs categorie **elastisch Premium 1** (`--sku EP1`), in de regio vs West (`-location WestUS`) en in een Linux-container (`--is-linux`).
 
 ```azurecli-interactive
 az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan \
@@ -158,7 +158,7 @@ az functionapp plan create --resource-group myResourceGroup --name myPremiumPlan
 
 De functie-app beheert de uitvoering van uw functies in uw hosting abonnement. Een functie-app maken op basis van een Docker Hub-installatiekopie met behulp van de opdracht [az functionapp create](/cli/azure/functionapp#az-functionapp-create).
 
-Vervang in de volgende opdracht de plaatsaanduiding `<app_name>` door een unieke functie-appnaam en gebruik de naam van het opslagaccount voor `<storage_name>`. De `<app_name>` wordt gebruikt als het standaard DNS-domein voor de functie-app. Om die reden moet de naam uniek zijn in alle apps in Azure. Net als voorheen is `<docker-id>` de naam van uw Docker-account.
+Vervang in de volgende opdracht de plaatsaanduiding `<app_name>` en de opslagaccountnaam voor `<storage_name>` met een unieke functie-appnaam. De `<app_name>` wordt gebruikt als het standaard DNS-domein voor de functie-app. Om die reden moet de naam uniek zijn in alle apps in Azure. Net als voorheen is `<docker-id>` de naam van uw Docker-account.
 
 ```azurecli-interactive
 az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
@@ -195,18 +195,18 @@ AzureWebJobsStorage=$storageConnectionString
 
 <!-- we should replace this with a CLI or API-based approach, when we get something better than REST -->
 
-De door HTTP geactiveerde functie die u hebt gemaakt, vereist een [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) bij het aanroepen van het eind punt. Op dit moment is de gemakkelijkste manier om de URL van de functie, inclusief de sleutel, op te halen uit de [Azure-portal]. 
+De door HTTP geactiveerde functie die u hebt gemaakt, vereist een [functie sleutel](functions-bindings-http-webhook.md#authorization-keys) bij het aanroepen van het eind punt. Op dit moment is de gemakkelijkste manier om de URL van de functie, inclusief de sleutel, op te halen uit de [Azure Portal]. 
 
 > [!TIP]
 > U kunt ook uw functie sleutels verkrijgen met behulp van de [Key Management-api's](https://github.com/Azure/azure-functions-host/wiki/Key-management-API), waarvoor u een [Bearer-token moet gebruiken voor verificatie](/cli/azure/account#az-account-get-access-token).
 
-Zoek de nieuwe functie-app in het [Azure-portal] door de naam van uw functie-app in het **zoekvak** boven aan de pagina te typen en de **app service** resource te selecteren.
+Zoek de nieuwe functie-app in het [Azure Portal] door de naam van uw functie-app in het **zoekvak** boven aan de pagina te typen en de **app service** resource te selecteren.
 
-Selecteer de functie **MyHttpTrigger** , selecteer **</> functie-URL ophalen** > **default (functie toets)**  > **kopiëren**.
+Selecteer de functie **MyHttpTrigger** , selecteer **</> functie-URL ophalen** > **standaard (functie toets)**  > **kopiëren**.
 
 ![De functie-URL vanuit Azure Portal kopiëren](./media/functions-create-function-linux-custom-image/functions-portal-get-url-key.png)
 
-In deze URL is de functie sleutel de para meter `code`. 
+In deze URL is de functie sleutel de `code` query parameter. 
 
 > [!NOTE]  
 > Omdat uw functie-app als een container is geïmplementeerd, kunt u geen wijzigingen aanbrengen in uw functie code in de portal. U moet in plaats daarvan het project bijwerken in de lokale container en opnieuw publiceren naar Azure.
@@ -277,7 +277,7 @@ https://<app_name>.scm.azurewebsites.net/
 
 Meld u aan bij uw Azure-account en selecteer vervolgens het tabblad **SSH** om een SSH-verbinding in uw container te maken.
 
-Nadat de verbinding tot stand is gebracht, voert u de `top` opdracht uit om de processen die momenteel worden uitgevoerd weer te geven. 
+Nadat de verbinding tot stand is gebracht, voert u de `top` opdracht uit om de actieve processen weer te geven. 
 
 ![De bovenste Linux-opdracht die in een SSH-sessie wordt uitgevoerd.](media/functions-create-function-linux-custom-image/linux-custom-kudu-ssh-top.png)
 
@@ -317,7 +317,7 @@ U kunt nu een opslag-uitvoer binding toevoegen aan uw project.
 
 ### <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In functies moet voor elk type binding een `direction`, `type` en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
+In functies moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
 # <a name="javascript--pythontabnodejspython"></a>[Java script/python](#tab/nodejs+python)
 
@@ -363,7 +363,7 @@ docker push <docker-id>/mydockerimage:v1.0.0
 
 ### <a name="verify-the-updates-in-azure"></a>De updates in azure controleren
 
-Gebruik dezelfde URL als voorheen in de browser om uw functie te activeren. U ziet hetzelfde antwoord. Deze keer wordt de teken reeks die u doorgeeft als de para meter `name`, echter naar de `outqueue`-opslag wachtrij geschreven.
+Gebruik dezelfde URL als voorheen in de browser om uw functie te activeren. U ziet hetzelfde antwoord. Deze keer wordt echter de teken reeks die u doorgeeft als de `name` para meter, naar de `outqueue`-opslag wachtrij geschreven.
 
 [!INCLUDE [functions-storage-account-set-cli](../../includes/functions-storage-account-set-cli.md)]
 
@@ -379,4 +379,4 @@ Nu u uw aangepaste container hebt geïmplementeerd in een functie-app in azure, 
 + [Opties voor schalen en hosten](functions-scale.md)
 + [Op Kubernetes gebaseerde serverloze hosting](functions-kubernetes-keda.md)
 
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

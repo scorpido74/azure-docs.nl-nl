@@ -1,6 +1,6 @@
 ---
-title: Berichten met Azure IoT-hulpprogramma's voor Visual Studio Code op Azure IoT Hub cloudapparaten beheren | Microsoft Docs
-description: Informatie over het gebruik van Azure IoT-Tools voor Visual Studio Code om te controleren van apparaat naar cloud-berichten en cloud naar apparaat-berichten in Azure IoT Hub verzenden.
+title: Gebruik Azure IoT-Hulpprogram Ma's voor VSCode om IT hub Messa ging te beheren
+description: Informatie over het gebruik van Azure IoT-Hulpprogram Ma's voor Visual Studio code voor het controleren van apparaten op Cloud berichten en het verzenden van Cloud naar apparaat-berichten in azure IoT Hub.
 author: formulahendry
 ms.service: iot-hub
 services: iot-hub
@@ -8,78 +8,78 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 1289e9c8f8cfc9360c9b2325507b43bab3a69028
-ms.sourcegitcommit: 64798b4f722623ea2bb53b374fb95e8d2b679318
+ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67838512"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083257"
 ---
-# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Azure IoT-Tools voor Visual Studio Code gebruiken voor het verzenden en ontvangen van berichten tussen uw apparaat en IoT-Hub
+# <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code voor het verzenden en ontvangen van berichten tussen uw apparaat en IoT Hub
 
-![Diagram voor end-to-end](./media/iot-hub-vscode-iot-toolkit-cloud-device-messaging/e-to-e-diagram.png)
+![End-to-end-diagram](./media/iot-hub-vscode-iot-toolkit-cloud-device-messaging/e-to-e-diagram.png)
 
-[Azure IoT-hulpprogramma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) is een nuttig Visual Studio Code-extensie die IoT Hub beheer en ontwikkeling van IoT-toepassingen gemakkelijker maakt. In dit artikel richt zich op het Azure IoT-Tools voor Visual Studio Code gebruiken om te verzenden en ontvangen van berichten tussen uw apparaat en uw IoT-hub.
+[Azure IOT-Hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) is een handige Visual Studio code-extensie die het IOT hub beheer en IOT-toepassings ontwikkeling eenvoudiger maakt. In dit artikel wordt uitgelegd hoe u Azure IoT-Hulpprogram Ma's voor Visual Studio code gebruikt voor het verzenden en ontvangen van berichten tussen uw apparaat en uw IoT-hub.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="what-you-will-learn"></a>U leert
+## <a name="what-you-will-learn"></a>Wat u leert
 
-Leert u hoe u Azure IoT-Tools voor Visual Studio Code gebruiken voor het bewaken van apparaat-naar-cloud-berichten en het verzenden van berichten van cloud-naar-apparaat. Apparaat-naar-cloud-berichten mogelijk sensorgegevens die uw apparaat verzamelt en verzendt vervolgens naar uw IoT-hub. Cloud-naar-apparaat-berichten kunnen worden opdrachten die uw IoT-hub naar uw apparaat verzendt laten knipperen een LED die is verbonden met uw apparaat.
+U leert hoe u Azure IoT-Hulpprogram Ma's voor Visual Studio code kunt gebruiken om apparaat-naar-Cloud-berichten te bewaken en Cloud-naar-apparaat-berichten te verzenden. Apparaat-naar-Cloud-berichten kunnen sensor gegevens zijn die uw apparaat verzamelt en vervolgens verzendt naar uw IoT-hub. Cloud-naar-apparaat-berichten kunnen opdrachten zijn die uw IoT-hub naar uw apparaat verzendt om een LED te laten knipen die is verbonden met uw apparaat.
 
-## <a name="what-you-will-do"></a>Wat u doet
+## <a name="what-you-will-do"></a>Wat u moet doen
 
-* Azure IoT Tools voor Visual Studio Code gebruiken voor het bewaken van apparaat-naar-cloud-berichten.
+* Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code om apparaat-naar-Cloud-berichten te bewaken.
 
-* Azure IoT-Tools voor Visual Studio Code gebruiken om cloud-naar-apparaat-berichten te verzenden.
+* Gebruik Azure IoT-Hulpprogram Ma's voor Visual Studio code om Cloud-naar-apparaat-berichten te verzenden.
 
 ## <a name="what-you-need"></a>Wat u nodig hebt
 
 * Een actief Azure-abonnement.
 
-* Een Azure IoT-hub in uw abonnement.
+* Een Azure IoT hub onder uw abonnement.
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 
-* [Azure IoT-hulpprogramma's voor VS Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) of [koppeling niet openen in Visual Studio Code](vscode:extension/vsciot-vscode.azure-iot-tools).
+* [Azure IOT-Hulpprogram ma's voor VS code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) of [Open deze koppeling in Visual Studio code](vscode:extension/vsciot-vscode.azure-iot-tools).
 
 ## <a name="sign-in-to-access-your-iot-hub"></a>Meld u aan voor toegang tot uw IoT-hub
 
-1. In **Explorer** weergave van VS Code uit, vouw **Azure IoT Hub-apparaten** sectie in de linkerbenedenhoek.
+1. Vouw in de **Verkenner** -weer gave van VS code het gedeelte **Azure IOT Hub-apparaten** uit in de linkerbenedenhoek.
 
-2. Klik op **IoT-Hub selecteren** in het contextmenu.
+2. Klik op **IOT hub selecteren** in het context menu.
 
-3. Een pop-upvenster wordt weergegeven in de rechterbenedenhoek zodat u voor de eerste keer aanmelden bij Azure.
+3. Er wordt een pop-upvenster weer gegeven in de rechter benedenhoek om u voor de eerste keer aan te melden bij Azure.
 
-4. Nadat u zich hebt aangemeld, wordt de lijst met uw Azure-abonnement worden weergegeven en selecteer Azure-abonnement en IoT-Hub.
+4. Nadat u zich hebt aangemeld, wordt de lijst met Azure-abonnementen weer gegeven en selecteert u vervolgens Azure-abonnement en IoT Hub.
 
-5. De lijst met apparaten wordt weergegeven in **Azure IoT Hub-apparaten** tabblad in een paar seconden.
+5. De lijst met apparaten wordt weer gegeven in een paar seconden op het tabblad **apparaten van Azure IOT hub** .
 
    > [!Note]
-   > U kunt de installatie ook voltooien door **IoT Hub-verbindingsreeks instellen** te kiezen. Voer de **iothubowner** beleid-verbindingsreeks voor de IoT-hub die uw IoT-apparaat in verbinding met het pop-upvenster maakt.
+   > U kunt de installatie ook voltooien door **IoT Hub-verbindingsreeks instellen** te kiezen. Voer de **iothubowner** -beleids Connection String in voor de IOT-hub waarmee uw IOT-apparaat verbinding maakt in het pop-upvenster.
 
-## <a name="monitor-device-to-cloud-messages"></a>Bewaken van apparaat-naar-cloud-berichten
+## <a name="monitor-device-to-cloud-messages"></a>Apparaat-naar-Cloud-berichten bewaken
 
-Volg deze stappen voor het bewaken van berichten die van uw apparaat worden verzonden naar uw IoT-hub:
+Voer de volgende stappen uit om berichten te bewaken die worden verzonden vanaf uw apparaat naar uw IoT hub:
 
-1. Met de rechtermuisknop op uw apparaat en selecteer **Start Monitoring ingebouwde gebeurtenis eindpunt**.
+1. Klik met de rechter muisknop op het apparaat en selecteer **controle van het ingebouwde gebeurtenis-eind punt starten**.
 
-2. De bewaakte berichten worden weergegeven **uitvoer** > **Azure IoT Hub Toolkit** weergeven.
+2. De bewaakte berichten worden weer gegeven in de weer gave **uitvoer** > **Azure IOT hub-werkset** .
 
-3. Als u wilt de bewaking stopt, met de rechtermuisknop op de **uitvoer** weergeven en selecteren **Stop Monitoring ingebouwde gebeurtenis eindpunt**.
+3. Als u de bewaking wilt stoppen, klikt u met de rechter muisknop op de **uitvoer** weergave en selecteert u **controle stoppen ingebouwd gebeurtenis eindpunt**.
 
 ## <a name="send-cloud-to-device-messages"></a>Cloud-naar-apparaat-berichten verzenden
 
-Berichten van uw IoT-hub worden verzonden naar uw apparaat, de volgende stappen uit:
+Voer de volgende stappen uit om een bericht van uw IoT-hub naar uw apparaat te verzenden:
 
-1. Met de rechtermuisknop op uw apparaat en selecteer **C2D-bericht verzenden naar apparaat**.
+1. Klik met de rechter muisknop op het apparaat en selecteer **C2D-bericht naar apparaat verzenden**.
 
-2. Geef het bericht in het invoervak.
+2. Voer het bericht in het invoervak in.
 
-3. Resultaten worden weergegeven **uitvoer** > **Azure IoT Hub Toolkit** weergeven.
+3. De resultaten worden weer gegeven in de weer gave **OUTPUT** > **Azure IOT hub Toolkit** .
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt geleerd hoe u bewaken van apparaat-naar-cloud-berichten en cloud-naar-apparaat-berichten tussen uw IoT-apparaat en Azure IoT Hub verzendt.
+U hebt geleerd hoe u apparaat-naar-Cloud-berichten kunt bewaken en Cloud-naar-apparaat-berichten kunt verzenden tussen uw IoT-apparaat en Azure IoT Hub.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

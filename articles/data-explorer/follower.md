@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: a46cf78d902ec8391d7dc3667a6d66daa78927ab
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2306b6cbdd347e3be9921b196ae06385ef5ca90a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828563"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083197"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>De follower-Data Base gebruiken om data bases in azure Data Explorer te koppelen
 
@@ -242,7 +242,7 @@ resourceManagementClient.Clusters.DetachFollowerDatabases(leaderResourceGroupNam
 
 ### <a name="manage-principals"></a>Principals beheren
 
-Wanneer u een Data Base bijwerkt, geeft u de **standaard-principals voor de wijzigings soort**op. Met de standaard instelling wordt de Leader database verzameling van [geautoriseerde principals](/azure/kusto/management/access-control/index.md#authorization) behouden
+Wanneer u een Data Base bijwerkt, geeft u de **standaard-principals voor de wijzigings soort**op. Met de standaard instelling wordt de Leader database verzameling van [geautoriseerde principals](/azure/kusto/management/access-control/index#authorization) behouden
 
 |**Type** |**Beschrijving**  |
 |---------|---------|
@@ -250,7 +250,7 @@ Wanneer u een Data Base bijwerkt, geeft u de **standaard-principals voor de wijz
 |**Vervangen**   |    Geen overname van principals van de oorspronkelijke data base. Er moeten nieuwe principals worden gemaakt voor de gekoppelde data base. Ten minste één Principal moet worden toegevoegd om Principal-overname te blok keren.     |
 |**Geen**   |   De gekoppelde data base-principals bevatten alleen de principals van de oorspronkelijke data base zonder extra principals.      |
 
-Zie voor meer informatie over het gebruik van besturings opdrachten voor het configureren van de geautoriseerde principals [beheer opdrachten voor het beheren van een opvolg cluster](/azure/kusto/management/cluster-follower.md).
+Zie voor meer informatie over het gebruik van besturings opdrachten voor het configureren van de geautoriseerde principals [beheer opdrachten voor het beheren van een opvolg cluster](/azure/kusto/management/cluster-follower).
 
 ### <a name="manage-permissions"></a>Machtigingen beheren
 
@@ -258,7 +258,7 @@ Het beheren van een alleen-lezen database machtiging is hetzelfde als voor alle 
 
 ### <a name="configure-caching-policy"></a>Cache beleid configureren
 
-De beheerder van de follower-data base kan het [cache beleid](/azure/kusto/management/cache-policy) van de gekoppelde data base of een van de bijbehorende tabellen op het hosting cluster wijzigen. De standaard instelling is de Leader database verzameling van data base-en cache beleidsregels op tabel niveau. U kunt bijvoorbeeld een cache beleid van 30 dagen hebben op de Leader-Data Base voor het uitvoeren van maandelijkse rapportage en een cache beleid voor drie dagen op de follower-data base om alleen de recente gegevens op te vragen voor probleem oplossing. Zie voor meer informatie over het gebruik van besturings opdrachten voor het configureren van het cache beleid voor de follow-data base of-tabel de [besturings opdrachten voor het beheren van een follower-cluster](/azure/kusto/management/cluster-follower.md).
+De beheerder van de follower-data base kan het [cache beleid](/azure/kusto/management/cache-policy) van de gekoppelde data base of een van de bijbehorende tabellen op het hosting cluster wijzigen. De standaard instelling is de Leader database verzameling van data base-en cache beleidsregels op tabel niveau. U kunt bijvoorbeeld een cache beleid van 30 dagen hebben op de Leader-Data Base voor het uitvoeren van maandelijkse rapportage en een cache beleid voor drie dagen op de follower-data base om alleen de recente gegevens op te vragen voor probleem oplossing. Zie voor meer informatie over het gebruik van besturings opdrachten voor het configureren van het cache beleid voor de follow-data base of-tabel de [besturings opdrachten voor het beheren van een follower-cluster](/azure/kusto/management/cluster-follower).
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -270,4 +270,4 @@ De beheerder van de follower-data base kan het [cache beleid](/azure/kusto/manag
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [beheer opdrachten voor het beheren van een follower-cluster](/azure/kusto/management/cluster-follower.md)voor meer informatie over de configuratie van de follower-cluster.
+* Zie [beheer opdrachten voor het beheren van een follower-cluster](/azure/kusto/management/cluster-follower)voor meer informatie over de configuratie van de follower-cluster.

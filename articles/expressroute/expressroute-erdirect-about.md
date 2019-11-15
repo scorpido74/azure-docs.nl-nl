@@ -1,5 +1,5 @@
 ---
-title: Over ExpressRoute Direct - Azure | Microsoft Docs
+title: Over Azure ExpressRoute direct
 description: Op deze pagina vindt u een overzicht van ExpressRoute direct
 services: expressroute
 author: jaredr80
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jaredro
-ms.custom: seodec18
-ms.openlocfilehash: 916175401cd993392094b2bb16f8fc8746a4d2a8
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: f26fdd75e0a6c6228d329a8b9be4743072ae54c1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123400"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083591"
 ---
 # <a name="about-expressroute-direct"></a>Over ExpressRoute Direct
 
@@ -22,7 +21,7 @@ ExpressRoute Direct biedt de mogelijkheid om rechtstreeks in het wereldwijde net
 Belangrijke functies van ExpressRoute Direct bevatten, maar niet beperkt tot:
 
 * Massale gegevensopname in services als Storage en Cosmos DB
-* Fysieke isolatie voor sectoren die worden gereguleerd en die speciale en geïsoleerde connectiviteit vereisen, zoals: het bankwezen, de overheid en de detailhandel
+* Fysieke isolatie voor branches die worden geregeld en nodig toegewezen en geïsoleerd connectiviteit, zoals: bankieren-, overheids- en detailhandel
 * Gedetailleerde controle van circuitdistributie op basis van bedrijfsonderdelen
 
 ## <a name="onboard-to-expressroute-direct"></a>Onboarding naar ExpressRoute direct
@@ -74,7 +73,7 @@ ExpressRoute Direct biedt ondersteuning voor scenario's voor het opnemen van eno
     * Moet de buiten-VLAN-tag (STAG) toevoegen op basis van de VLAN-ID die door micro soft is opgegeven, *alleen van toepassing op QinQ*
     * Moet ondersteuning bieden voor meerdere BGP-sessies (VLAN'S) per poort en apparaat
     * IPv4-en IPv6-connectiviteit. *Voor IPv6 wordt geen extra subinterface gemaakt. Het IPv6-adres wordt toegevoegd aan de bestaande subinterface*. 
-    * Optioneel: Ondersteuning voor [bidirectionele forwarding-detectie (Bfd)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , die standaard wordt geconfigureerd voor alle particuliere peerings op ExpressRoute-circuits
+    * Optioneel: ondersteuning voor [bidirectionele forwarding-detectie (Bfd)](https://docs.microsoft.com/azure/expressroute/expressroute-bfd) , die standaard wordt geconfigureerd voor alle particuliere peerings op ExpressRoute-circuits
 
 ## <a name="vlan-tagging"></a>VLAN-Tagging
 
@@ -86,7 +85,7 @@ ExpressRoute Direct biedt ondersteuning voor zowel QinQ en Dot1Q VLAN-tagging.
 
 ## <a name="workflow"></a>Werkstroom
 
-[![workflowconfiguraties](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
+[![werk stroom](./media/expressroute-erdirect-about/workflow1.png)](./media/expressroute-erdirect-about/workflow1.png#lightbox)
 
 ## <a name="sla"></a>SLA
 

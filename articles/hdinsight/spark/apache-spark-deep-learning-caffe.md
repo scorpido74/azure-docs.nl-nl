@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: e0490913029efc17d12139378369646c286a276c
-ms.sourcegitcommit: b03516d245c90bca8ffac59eb1db522a098fb5e4
+ms.openlocfilehash: e5988bf1955502d89cc31bcc30672de983a399ec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71145712"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083347"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Caffe gebruiken in Azure HDInsight Spark voor gedistribueerde diep gaande lessen
 
@@ -21,7 +21,7 @@ ms.locfileid: "71145712"
 
 Grondige kennis is van invloed op alles van de gezondheids zorg tot het Trans Port naar productie, en nog veel meer. Bedrijven gaan dieper leren om harde problemen op te lossen, zoals [afbeeldings classificatie](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/), [spraak herkenning](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html), object herkenning en automatische vertaling.
 
-Er zijn [veel populaire Frameworks](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), waaronder [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [tensor flow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, enzovoort. [Caffe](https://caffe.berkeleyvision.org/) is een van de meest beroemde niet-symbolische (dwingende) Neural-netwerk kaders en wordt veel gebruikt in veel gebieden, waaronder computer vision. Daarnaast combineert [CaffeOnSpark](https://yahoohadoop.tumblr.com/post/139916563586/caffeonspark-open-sourced-for-distributed-deep) Caffe met Apache Spark, in welk geval een diep gaande leer gemak eenvoudig kan worden gebruikt op een bestaand Hadoop-cluster. U kunt dieper leren gebruiken in combi natie met Spark ETL-pijp lijnen, de systeem complexiteit verminderen en latentie voor het leren van de volledige oplossing.
+Er zijn [veel populaire Frameworks](https://en.wikipedia.org/wiki/Comparison_of_deep_learning_software), waaronder [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/research/product/cognitive-toolkit/), [tensor flow](https://www.tensorflow.org/), [Apache MXNet](https://mxnet.apache.org/), Theano, etc. [Caffe](https://caffe.berkeleyvision.org/) is een van de meest beroemde niet-symbolische (dwingende) Neural-netwerk frameworks en veel gebruikt op veel gebieden, waaronder computer vision. Daarnaast combineert [CaffeOnSpark](https://github.com/yahoo/CaffeOnSpark) Caffe met Apache Spark, in welk geval een diep gaande leer gemak eenvoudig kan worden gebruikt op een bestaand Hadoop-cluster. U kunt dieper leren gebruiken in combi natie met Spark ETL-pijp lijnen, de systeem complexiteit verminderen en latentie voor het leren van de volledige oplossing.
 
 [HDInsight](https://azure.microsoft.com/services/hdinsight/) is een Cloud Apache Hadoop aanbieding die geoptimaliseerde open-source analyse clusters biedt voor Apache Spark, Apache Hive, Apache Hadoop, Apache HBase, Apache Storm, Apache Kafka en ml Services. HDInsight wordt ondersteund door een SLA van 99,9%. Al deze big data technologieën en ISV-toepassingen zijn eenvoudig te implementeren als beheerde clusters met beveiliging en bewaking voor ondernemingen.
 
@@ -36,7 +36,7 @@ Er zijn vier stappen om de taak uit te voeren:
 
 Aangezien HDInsight een PaaS-oplossing is, biedt het fantastische platform functies, zodat het eenvoudig is om sommige taken uit te voeren. Een van de functies die in dit blog bericht worden gebruikt, wordt [script actie](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)genoemd, waarmee u shell opdrachten kunt uitvoeren om cluster knooppunten (hoofd knooppunt, Worker-knoop punt of Edge-knoop punt) aan te passen.
 
-## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Stap 1:  De vereiste afhankelijkheden op alle knoop punten installeren
+## <a name="step-1--install-the-required-dependencies-on-all-the-nodes"></a>Stap 1: de vereiste afhankelijkheden installeren op alle knoop punten
 
 Om aan de slag te gaan, moet u de afhankelijkheden installeren. De Caffe-site en de [CaffeOnSpark-site](https://github.com/yahoo/CaffeOnSpark/wiki/GetStarted_yarn) biedt een nuttige wiki voor het installeren van de afhankelijkheden voor Spark in de garen modus. HDInsight gebruikt ook Spark in de garen modus. U moet echter nog enkele afhankelijkheden toevoegen voor het HDInsight-platform. Hiervoor gebruikt u een script actie en voert u deze uit op alle hoofd knooppunten en worker-knoop punten. Deze script actie duurt ongeveer 20 minuten, omdat deze afhankelijkheden ook afhankelijk zijn van andere pakketten. U moet deze op een locatie die toegankelijk is voor uw HDInsight-cluster plaatsen, zoals een GitHub-locatie of het standaard-BLOB Storage-account.
 
@@ -112,7 +112,7 @@ Mogelijk moet u meer doen dan wat de documentatie van CaffeOnSpark vertelt. De w
 - Plaats de gegevens sets in de BLOB-opslag. Dit is een gedeelde locatie die toegankelijk is voor alle worker-knoop punten voor later gebruik.
 - Plaats de gecompileerde Caffe-bibliotheken in BLOB Storage en later kopieert u deze bibliotheken naar alle knoop punten met behulp van script acties om extra compilatie tijd te voor komen.
 
-### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Meer Er is een ant-BuildException opgetreden: exec heeft geretourneerd: 2
+### <a name="troubleshooting-an-ant-buildexception-has-occurred-exec-returned-2"></a>Problemen oplossen: er is een ant-BuildException opgetreden: exec heeft geretourneerd: 2
 
 Wanneer u voor het eerst probeert CaffeOnSpark te maken, wordt er soms
 
@@ -120,7 +120,7 @@ Wanneer u voor het eerst probeert CaffeOnSpark te maken, wordt er soms
 
 Reinig de code opslagplaats door schone maken en voer vervolgens build maken uit om dit probleem op te lossen, zolang u de juiste afhankelijkheden hebt.
 
-### <a name="troubleshooting-maven-repository-connection-time-out"></a>Meer Time-out voor maven-opslagplaats verbinding
+### <a name="troubleshooting-maven-repository-connection-time-out"></a>Problemen oplossen: time-out voor verbinding met maven-opslag plaats
 
 Soms bevat maven een time-outfout voor de verbinding, vergelijkbaar met het volgende code fragment:
 
@@ -131,7 +131,7 @@ Soms bevat maven een time-outfout voor de verbinding, vergelijkbaar met het volg
 
 U moet het over enkele minuten opnieuw proberen.
 
-### <a name="troubleshooting-test-failure-for-caffe"></a>Meer Test fout voor Caffe
+### <a name="troubleshooting-test-failure-for-caffe"></a>Problemen oplossen: test fouten voor Caffe
 
 Er wordt waarschijnlijk een test fout weer geven bij het uitvoeren van de laatste controle op CaffeOnSpark. Dit is waarschijnlijk gerelateerd aan UTF-8-code ring, maar mag niet van invloed zijn op het gebruik van Caffe
 
@@ -141,7 +141,7 @@ Er wordt waarschijnlijk een test fout weer geven bij het uitvoeren van de laatst
     Tests: succeeded 6, failed 1, canceled 0, ignored 0, pending 0
     *** 1 TEST FAILED ***
 
-## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>Stap 3: De vereiste bibliotheken naar alle worker-knoop punten distribueren
+## <a name="step-3-distribute-the-required-libraries-to-all-the-worker-nodes"></a>Stap 3: de vereiste bibliotheken naar alle worker-knoop punten distribueren
 
 De volgende stap is het distribueren van de bibliotheken (in principe de bibliotheken in CaffeOnSpark/Caffe-Public/Distribute/lib/en CaffeOnSpark/Caffe-distri/Distribute/lib/) naar alle knoop punten. In stap 2 plaatst u deze bibliotheken in BLOB Storage. in deze stap gebruikt u script acties om het naar alle hoofd knooppunten en worker-knoop punten te kopiëren.
 
@@ -154,17 +154,17 @@ Zorg ervoor dat u moet verwijzen naar de juiste locatie die specifiek is voor uw
 
 Omdat u in stap 2 de BLOB-opslag hebt geplaatst, die toegankelijk is voor alle knoop punten, kopieert u deze alleen naar alle knoop punten.
 
-## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>Stap 4: Een Caffe-model opstellen en dit op een gedistribueerde manier uitvoeren
+## <a name="step-4-compose-a-caffe-model-and-run-it-in-a-distributed-manner"></a>Stap 4: een Caffe model opstellen en dit op een gedistribueerde manier uitvoeren
 
 Caffe wordt geïnstalleerd nadat u de voor gaande stappen hebt uitgevoerd. De volgende stap is het schrijven van een Caffe-model. 
 
 Caffe maakt gebruik van een ' expresse-architectuur ', waarbij u voor het opstellen van een model alleen een configuratie bestand hoeft te definiëren en zonder te hoeven coderen (in de meeste gevallen). Laten we dit eens bekijken. 
 
-Het model dat u traint, is een voorbeeld model voor MNIST training. De MNIST-data base met handgeschreven cijfers bevat een Trainingsset met 60.000-voor beelden en een testset met 10.000-voor beelden. Het is een subset van een grotere set die beschikbaar is via het NIST. De cijfers zijn genormaliseerd en gecentreerd in een afbeelding met een vaste grootte. CaffeOnSpark heeft een aantal scripts om de gegevensset te downloaden en deze te converteren naar de juiste indeling.
+Het model dat u traint, is een voorbeeld model voor MNIST training. De MNIST-data base met handgeschreven cijfers bevat een Trainingsset met 60.000-voor beelden en een testset met 10.000-voor beelden. Het is een subset van een grotere set die beschikbaar is via het NIST. De grootte van de cijfers is genormaliseerd en worden gecentreerd weergegeven in een afbeelding met een vaste grootte. CaffeOnSpark heeft een aantal scripts om de gegevensset te downloaden en deze te converteren naar de juiste indeling.
 
 CaffeOnSpark biedt een aantal netwerk topologieën voor MNIST-training. Het is een goed ontwerp van het splitsen van de netwerk architectuur (de topologie van het netwerk) en Optima Lise ring. In dit geval zijn er twee bestanden vereist:
 
-het bestand ' Oplosser ' ($ {CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt) wordt gebruikt voor het overzien van de optimalisatie en het genereren van parameter updates. Hiermee definieert u bijvoorbeeld of CPU of GPU wordt gebruikt, wat de impuls, het aantal iteraties, enzovoort. Ook wordt gedefinieerd welke neuron-netwerk topologie het programma moet gebruiken (dit is het tweede bestand dat u nodig hebt). Zie [Caffe-documentatie](https://caffe.berkeleyvision.org/tutorial/solver.html)voor meer informatie over Oplosser.
+het bestand ' Oplosser ' ($ {CAFFE_ON_SPARK}/data/lenet_memory_solver. prototxt) wordt gebruikt voor het overzien van de optimalisatie en het genereren van parameter updates. Hiermee definieert u bijvoorbeeld of CPU of GPU wordt gebruikt, wat de impuls, het aantal iteraties, enzovoort. Ook wordt gedefinieerd welke neuron-netwerk topologie het programma moet gebruiken (dit is het tweede bestand dat u nodig hebt). Zie [Caffe-documentatie](https://caffe.berkeleyvision.org/tutorial/solver.html)voor meer informatie over Oplosser.
 
 Aangezien u in dit voor beeld CPU gebruikt in plaats van GPU, moet u de laatste regel wijzigen in:
 
@@ -176,10 +176,10 @@ Aangezien u in dit voor beeld CPU gebruikt in plaats van GPU, moet u de laatste 
 
 U kunt indien nodig andere regels wijzigen.
 
-Het tweede bestand ($ {CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt) definieert hoe het neuron-netwerk eruit ziet en het relevante invoer-en uitvoer bestand. u moet het bestand ook bijwerken om de locatie van de trainings gegevens weer te geven. Wijzig het volgende deel in lenet_memory_train_test. prototxt (u moet verwijzen naar de juiste locatie die specifiek is voor uw cluster):
+In het tweede bestand ($ {CAFFE_ON_SPARK}/data/lenet_memory_train_test. prototxt) wordt gedefinieerd hoe het neuron-netwerk eruitziet en het relevante invoer-en uitvoer bestand. u moet het bestand ook bijwerken om de locatie van de trainings gegevens weer te geven. Wijzig het volgende deel in lenet_memory_train_test. prototxt (u moet verwijzen naar de juiste locatie die specifiek is voor uw cluster):
 
 - Wijzig de "File:/users/mridul/bigml/demodl/mnist_train_lmdb" in "wasb:///projects/machine_learning/image_dataset/mnist_train_lmdb"
-- Wijzig ' File:/users/mridul/bigml/demodl/mnist_test_lmdb/' in ' wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb '
+- Wijzig "File:/users/mridul/bigml/demodl/mnist_test_lmdb/" in "wasb:///projects/machine_learning/image_dataset/mnist_test_lmdb"
 
 ![Voor beeld van HDInsight Caffe-configuratie](./media/apache-spark-deep-learning-caffe/caffe-configuration2.png)
 
@@ -189,7 +189,7 @@ Voor het doel van dit artikel gebruikt u dit MNIST-voor beeld. Voer de volgende 
 
     spark-submit --master yarn --deploy-mode cluster --num-executors 8 --files ${CAFFE_ON_SPARK}/data/lenet_memory_solver.prototxt,${CAFFE_ON_SPARK}/data/lenet_memory_train_test.prototxt --conf spark.driver.extraLibraryPath="${LD_LIBRARY_PATH}" --conf spark.executorEnv.LD_LIBRARY_PATH="${LD_LIBRARY_PATH}" --class com.yahoo.ml.caffe.CaffeOnSpark ${CAFFE_ON_SPARK}/caffe-grid/target/caffe-grid-0.1-SNAPSHOT-jar-with-dependencies.jar -train -features accuracy,loss -label label -conf lenet_memory_solver.prototxt -devices 1 -connection ethernet -model wasb:///mnist.model -output wasb:///mnist_features_result
 
-Met de voor gaande opdracht worden de vereiste bestanden (lenet_memory_solver. prototxt en lenet_memory_train_test. prototxt) gedistribueerd naar elke garen container. Met de opdracht wordt ook het relevante pad van elke Spark-stuur programma/-uitvoerder ingesteld op LD_LIBRARY_PATH. LD_LIBRARY_PATH wordt gedefinieerd in het vorige code fragment en verwijst naar de locatie met CaffeOnSpark-bibliotheken. 
+Met de voor gaande opdracht worden de vereiste bestanden (lenet_memory_solver. prototxt en lenet_memory_train_test. prototxt) gedistribueerd naar elke garen container. Met de opdracht wordt ook het relevante pad van elke Spark-stuur programma/uitvoerder ingesteld op LD_LIBRARY_PATH. LD_LIBRARY_PATH is gedefinieerd in het vorige code fragment en verwijst naar de locatie met CaffeOnSpark-bibliotheken. 
 
 ## <a name="monitoring-and-troubleshooting"></a>Bewaking en probleem oplossing
 
@@ -285,7 +285,7 @@ In deze documentatie hebt u geprobeerd CaffeOnSpark te installeren met een eenvo
 
 ## <a name="seealso"></a>Zie ook
 
-* [Krijgt Apache Spark in azure HDInsight](apache-spark-overview.md)
+* [Overzicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 
 ### <a name="scenarios"></a>Scenario's
 

@@ -1,5 +1,5 @@
 ---
-title: Replicatie inschakelen voor een schijf die is toegevoegd aan een Azure-VM die wordt gerepliceerd door Azure Site Recovery | Microsoft Docs
+title: Replicatie inschakelen voor een toegevoegde Azure VM-schijf in Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u replicatie inschakelt voor een schijf die is toegevoegd aan een virtuele Azure-machine die is ingeschakeld voor herstel na nood gevallen met Azure Site Recovery
 services: site-recovery
 author: asgang
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: asgang
-ms.openlocfilehash: 068464b8a3919d833418c8f3916ccf5c54835c6f
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 6cbe71d67417ce817d317b65f27d0e6ceabec983
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68934547"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084988"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Replicatie inschakelen voor een schijf die is toegevoegd aan een Azure VM
 

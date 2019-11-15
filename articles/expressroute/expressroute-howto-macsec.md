@@ -1,5 +1,5 @@
 ---
-title: 'MACsec configureren-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure-ExpressRoute: MACsec configureren'
 description: Dit artikel helpt u bij het configureren van MACsec om de verbindingen tussen uw Edge-routers en de Edge-routers van micro soft te beveiligen.
 services: expressroute
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 081c448ff09148668dbe5e244e80421a47d77152
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 626302845dfb4b19deb921675601818b35ab8edb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748272"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083554"
 ---
 # <a name="configure-macsec-on-expressroute-direct-ports"></a>MACsec op ExpressRoute direct-poorten configureren
 
@@ -137,4 +137,4 @@ Nadat u MACsec (inclusief MACsec-sleutel update) hebt geconfigureerd op uw Expre
 ## <a name="next-steps"></a>Volgende stappen
 1. [Een ExpressRoute-circuit maken op ExpressRoute direct](expressroute-howto-erdirect.md)
 2. [Een ExpressRoute-circuit koppelen aan een virtueel Azure-netwerk](expressroute-howto-linkvnet-arm.md)
-3. [ExpressRoute-connectiviteit controleren](expressroute-troubleshooting-expressroute-overview.md)
+3. [Controleer de ExpressRoute-verbinding](expressroute-troubleshooting-expressroute-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Weers voorspelling met Azure Machine Learning met gegevens van IoT Hub | Microsoft Docs
+title: Weers voorspelling met Azure Machine Learning met IoT Hub gegevens
 description: Gebruik Azure Machine Learning om de kans op een regen te voors pellen op basis van de Tempe ratuur en vochtigheids gegevens die uw IoT-hub van een sensor verzamelt.
 author: robinsh
 manager: philmea
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: robinsh
-ms.openlocfilehash: d7b71a6aa17e8eeae55fd6c8c6e9a5aa9e0ce524
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e7114febe85af4acaf94ef7fe64fe47988fd6321
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498888"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079271"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Weers pellen met behulp van de sensor gegevens van uw IoT-hub in Azure Machine Learning
 

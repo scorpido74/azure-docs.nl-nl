@@ -1,5 +1,5 @@
 ---
-title: Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met Azure Site Recovery | Microsoft Docs
+title: Ondersteunings matrix voor nood herstel voor VMware/fysiek in Azure Site Recovery
 description: Hierin wordt een overzicht gegeven van de ondersteuning voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure met behulp van Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9125c69f9d2f4d7289120f86059ffab3b7f9228a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961298"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082198"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -218,7 +218,7 @@ EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2
 |Offline seeding        |   Nee      |
 | Azure Data Box | Nee
 
-## <a name="azure-storage"></a>Azure-opslag
+## <a name="azure-storage"></a>Azure Storage
 
 **Onderdeel** | **Ondersteund**
 --- | ---

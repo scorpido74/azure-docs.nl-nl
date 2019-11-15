@@ -1,20 +1,21 @@
 ---
-title: 'Zelfstudie: een Azure DNS-aliasrecord maken ter ondersteuning van hoofddomeinnamen met Traffic Manager'
+title: 'Zelf studie: een alias record maken ter ondersteuning van domein Apex-namen-Traffic Manager'
+titleSuffix: Azure DNS
 description: In deze zelfstudie wordt uitgelegd hoe u een Azure DNS-aliasrecord kunt configureren om het gebruik van uw hoofddomeinnaam met Traffic Manager te ondersteunen.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
-ms.author: victorh
-ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: 3834b782be054611de67b782b7fcd0c46cbf3a19
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921408"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082255"
 ---
-# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Zelfstudie: Een alias-record ter ondersteuning van het toppunt van domeinnamen met Traffic Manager configureren 
+# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Zelfstudie: een Azure DNS-aliasrecord configureren om het gebruik van hoofddomeinnaam met Traffic Manager te ondersteunen 
 
 U kunt een aliasrecord maken voor uw hoofddomeinnaam om te verwijzen naar een Azure Traffic Manager-profiel. Bijvoorbeeld: contoso.com. In plaats van hiervoor een omleidingsservice te gebruiken, kunt u Azure DNS zo configureren dat deze rechtstreeks vanuit uw zone naar een Traffic Manager-profiel verwijst. 
 
@@ -23,8 +24,8 @@ In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een host-VM en netwerkinfrastructuur maken
-> * Een Traffic Manager-profiel maken
-> * Een aliasrecord maken
+> * Een Traffic Manager-profiel maken.
+> * Een aliasrecord maken.
 > * De aliasrecord testen.
 
 
@@ -33,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 ## <a name="prerequisites"></a>Vereisten
 U moet een beschikbare domeinnaam hebben die u in Azure DNS kunt hosten om te testen. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-Zie voor instructies over hoe u uw domein in Azure DNS hosten [zelfstudie: Uw domein hosten in Azure DNS](dns-delegate-domain-azure-dns.md) voor meer informatie.
+Zie voor instructies voor het hosten van uw domein in Azure DNS [Zelfstudie: Uw domein in Azure DNS hosten](dns-delegate-domain-azure-dns.md).
 
 Het voorbeelddomein dat wordt gebruikt voor deze zelfstudie is contoso.com, maar u moet uw eigen domeinnaam gebruiken.
 
@@ -47,7 +48,7 @@ Maak eerst een virtueel netwerk en een subnet waaraan u de webservers gaat toevo
 ## <a name="create-two-web-server-virtual-machines"></a>Maak twee virtuele machines die als webserver dienen
 1. Selecteer **Een resource maken** > **Windows Server 2016 VM**.
 2. Geef **Web-01** op als naam en plaats de virtuele machine in de resourcegroep **RG-DNS-Alias-TM**. Voer een gebruikersnaam en wachtwoord in en selecteer **OK**.
-3. Voor **grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
+3. Voor **Grootte**, selecteert u een SKU met 8 GB RAM-geheugen.
 4. Selecteer voor **Instellingen** het virtuele netwerk **VNet-Servers** en het subnet **SN-Web**.
 5. Selecteer **Openbaar IP-adres**. Bij **Toewijzing** selecteer t u **Statisch** en selecteert u vervolgens **OK**.
 6. Selecteer voor openbare inkomende poorten **HTTP** > **HTTPS** > **RDP (3389)** en selecteer vervolgens **OK**.
@@ -70,7 +71,7 @@ Installeer IIS op zowel **Web-01** als **Web-02**.
 
 1. Maak verbinding met **Web-01** en meld u aan.
 2. Selecteer op het dashboard **Serverbeheer** de optie **Functies en onderdelen toevoegen**.
-3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)**.
+3. Selecteer drie keer **Volgende**. Selecteer op de pagina **Serverfuncties** de optie **Webserver (IIS)** .
 4. Selecteer **Onderdelen toevoegen** en selecteer **Volgende**.
 5. Selecteer vier keer **Volgende**. Selecteer vervolgens **Installeren**. Deze procedure duurt een paar minuten.
 6. Als de installatie is voltooid, selecteert u **Sluiten**.

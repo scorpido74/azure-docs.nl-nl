@@ -1,5 +1,5 @@
 ---
-title: Verbinding maken met virtuele Azure-machines na een failover van on-premises naar Azure met Azure Site Recovery
+title: Verbinding maken met een on-premises failover van Azure Vm's met Azure Site Recovery
 description: Hierin wordt beschreven hoe u verbinding maakt met virtuele Azure-machines na een failover van on-premises naar Azure met Azure Site Recovery
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: mayg
-ms.openlocfilehash: f535a681ac3508aafc2823bcc9b9ae7f22cc2d8e
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: f222cdd315b79503b1bdea032f495c71df4682b5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333036"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084267"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Verbinding maken met virtuele Azure-machines na een failover van on-premises 
 
@@ -96,7 +96,7 @@ Voor het bewaren van IP-adressen zijn de volgende stappen vereist:
 
 ### <a name="failover-example"></a>Voor beeld van failover
 
-Laten we eens kijken naar een voor beeld.
+We bekijken een voorbeeld.
 
 - De fictieve onderneming Woodgrove Bank fungeert als host voor hun zakelijke apps on-premises, die hun mobiele apps in Azure.
 - Ze maken verbinding vanaf on-premises met Azure via site-naar-site-VPN. 

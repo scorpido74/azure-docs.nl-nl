@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-voorbeeldscript - Filter VM-netwerkverkeer | Microsoft Docs
+title: VM-netwerk verkeer filteren-Azure PowerShell script voorbeeld
 description: Azure PowerShell-voorbeeldscript - binnenkomend en uitgaand netwerkverkeer voor VM filteren.
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 1bebb81670b4e8cac5fb6f9ea1b60ef1cc6b60fe
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: c11a2249b66d56706783c865a77c14a276d870ed
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64717865"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091373"
 ---
-# <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Voorbeeldscript binnenkomend en uitgaand VM-netwerkverkeer filteren
+# <a name="filter-inbound-and-outbound-vm-network-traffic-script-sample"></a>Voorbeeldscript voor binnenkomend en uitgaand VM-netwerkverkeer filteren
 
 Dit voorbeeldscript maakt een virtueel netwerk met front-end en back-end-subnetten. Binnenkomend netwerkverkeer naar het front-end-subnet is beperkt tot HTTP en HTTPS, terwijl uitgaand verkeer naar internet vanuit het back-end-subnet is niet toegestaan. Nadat het script is uitgevoerd, hebt u een virtuele machine met twee NIC's. Elke NIC is verbonden met een ander subnet.
 
@@ -46,7 +46,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtueel netwerk en netwerkbeveiligingsgroepen. Elke opdracht in de volgende tabel is een koppeling naar opdrachtspecifieke documentatie:
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtueel netwerk en netwerkbeveiligingsgroepen. Elke opdracht in onderstaande tabel is een link naar opdracht-specifieke documentatie:
 
 | Opdracht | Opmerkingen |
 |---|---|

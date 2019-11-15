@@ -12,15 +12,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 9427b72faf36106602cb59dc271d72402453e81e
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821417"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083892"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics op het Media Services platform 
 
@@ -33,11 +33,7 @@ ms.locfileid: "72821417"
 |---|---|
 |[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 1 januari van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie [Migrate from Azure media indexer 2 to Azure Media Services video indexer](migrate-indexer-v1-v2.md)voor meer informatie.|
 |[Azure Media Indexer](media-services-index-content.md)|1 oktober van 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/). Zie voor meer informatie [migreren van Azure media indexer naar Azure Media Services video indexer](migrate-indexer-v1-v2.md)
-|[Azure Media Face Detector](media-services-face-and-emotion-detection.md)|1 februari 2020|Deze Media Analytics preview-processor wordt buiten gebruik gesteld en wordt niet verplaatst naar de algemene Beschik baarheid. We zullen de scenario's en gebruiks voorbeelden met klanten evalueren voor toekomstige investeringen.|
-|[Azure Media Motion Detector](media-services-motion-detection.md)|1 februari 2020|Deze Media Analytics preview-processor wordt buiten gebruik gesteld en wordt niet verplaatst naar de algemene Beschik baarheid. We zullen de scenario's en gebruiks voorbeelden met klanten evalueren voor toekomstige investeringen.|
-|[Azure media OCR](media-services-video-optical-character-recognition.md)|1 februari 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) en de [Azure Media Services v3 API video Analyzer vooraf](../latest/analyzing-video-audio-files-concept.md).|
-|[Azure Media Video Thumbnails](media-services-video-summarization.md)|1 februari 2020|Deze media processor wordt vervangen door [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) en de [Azure Media Services v3 API video Analyzer vooraf](../latest/analyzing-video-audio-files-concept.md).|
-
+ 
 ## <a name="overview"></a>Overzicht
 
 Meer organisaties gebruiken video als voorkeurs medium om hun werk nemers te trainen, hun klanten te laten deel nemen en zakelijke functies te documenteren. Cloud Computing biedt een manier om deze grote media bestanden op te slaan, te streamen en te openen. Maar als de bibliotheek met video-inhoud van een bedrijf groeit, heeft IT een even efficiënte manier nodig om inzichten uit de inhoud te halen. 
@@ -137,7 +133,7 @@ Reactie:
        ]
     }
 
-## <a name="demos"></a>Demo’s
+## <a name="demos"></a>Demo 's
 Zie [Azure Media Analytics demo's](https://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
 ## <a name="provide-feedback"></a>Feedback geven

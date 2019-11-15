@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 ms.date: 09/26/2019
-ms.openlocfilehash: ba961547bc46b0746997ea95ddd14f1a6d1d8a23
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1c8717614ec59ef210c7340f70ddedd7f7f86f88
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821214"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091979"
 ---
 # <a name="recover-an-azure-sql-database-by-using-automated-database-backups"></a>Een Azure-SQL database herstellen met behulp van automatische database back-ups
 
@@ -108,11 +108,13 @@ U kunt verwijderde data bases herstellen van de Azure Portal van de server en de
 
 Als u een enkele of een gegroepeerde verwijderde data base wilt herstellen met behulp van de Azure Portal, opent u de pagina overzicht van de server en selecteert u **Verwijderde data bases**. Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
 
-  ![Scherm opname van opties voor verwijderde data bases](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
+  ![Scherm opname van verwijderde Azure-SQL database herstellen](./media/sql-database-recovery-using-backups/restore-deleted-sql-database-annotated.png)
 
 #### <a name="managed-instance-database"></a>Data base van beheerd exemplaar
 
-U kunt de Azure Portal niet gebruiken om een verwijderde data base te herstellen op een beheerd exemplaar. U kunt Power shell gebruiken voor dit doel. 
+Als u een beheerde Data Base wilt herstellen met behulp van de Azure Portal, opent u de overzichts pagina van het beheerde exemplaar en selecteert u **Verwijderde data bases**. Selecteer een verwijderde data base die u wilt herstellen en typ de naam voor de nieuwe Data Base die wordt gemaakt met de gegevens die worden teruggezet vanuit de back-up.
+
+  ![Scherm opname van verwijderde Azure SQL-exemplaar database](./media/sql-database-recovery-using-backups/restore-deleted-sql-managed-instance-annotated.png)
 
 ### <a name="deleted-database-restore-by-using-powershell"></a>Verwijderde data base terugzetten met behulp van Power shell
 
@@ -224,7 +226,7 @@ Een enkele of gegroepeerde Data Base herstellen met behulp van de REST API:
 
 | API | Beschrijving |
 | --- | --- |
-| [REST (createMode = herstel)](https://docs.microsoft.com/rest/api/sql/databases) |Hiermee herstelt u een Data Base. |
+| [REST (createMode=Recovery)](https://docs.microsoft.com/rest/api/sql/databases) |Hiermee herstelt u een Data Base. |
 | [Database status van maken of bijwerken ophalen](https://docs.microsoft.com/rest/api/sql/operations) |Retourneert de status tijdens een herstel bewerking. |
 
 ### <a name="azure-cli"></a>Azure-CLI

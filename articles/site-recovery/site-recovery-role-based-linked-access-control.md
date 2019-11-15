@@ -1,21 +1,21 @@
 ---
-title: Azure Site Recovery toegang beheren met op rollen gebaseerd toegangs beheer (RBAC) | Microsoft Docs
+title: Toegangs beheer op basis van rollen beheren in Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u op rollen gebaseerd toegangs beheer (RBAC) toepast om Azure Site Recovery toegang te beheren.
 ms.service: site-recovery
 ms.date: 04/08/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 51c0d832a6d6d9b1cd148f765e68cb77c4679819
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: ce389f9281b02662f87353f00c9bca92cdf86937
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929220"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083763"
 ---
 # <a name="manage-site-recovery-access-with-role-based-access-control-rbac"></a>Site Recovery toegang beheren met op rollen gebaseerd toegangs beheer (RBAC)
 
-Met op rollen gebaseerd toegangsbeheer (RBAC) beschikt u over geavanceerd toegangsbeheer voor Azure. Met RBAC kunt u verantwoordelijkheden binnen uw team scheiden en alleen specifieke toegangs machtigingen verlenen aan gebruikers als dat nodig is om specifieke taken uit te voeren.
+Met toegangs beheer op basis van rollen (RBAC) van Azure kunt u toegang krijgen tot het verfijnen. Met RBAC kunt u verantwoordelijkheden binnen uw team scheiden en alleen specifieke toegangs machtigingen verlenen aan gebruikers als dat nodig is om specifieke taken uit te voeren.
 
 Azure Site Recovery biedt drie ingebouwde rollen om Site Recovery beheer bewerkingen te beheren. Meer informatie over [ingebouwde Azure RBAC-rollen](../role-based-access-control/built-in-roles.md)
 
@@ -43,31 +43,31 @@ Een gebruiker heeft de volgende machtigingen nodig om de replicatie van een nieu
 
 | **Resourcetype** | **Implementatie model** | **Hebt** |
 | --- | --- | --- |
-| Computing | Resource Manager | Micro soft. Compute/Availability sets/lezen |
-|  |  | Micro soft. Compute/informatie/lezen |
-|  |  | Micro soft. Compute/informatie/schrijven |
-|  |  | Micro soft. Compute/informatie/verwijderen |
-|  | Klassiek | Micro soft. ClassicCompute/domainName/lezen |
-|  |  | Micro soft. ClassicCompute/domein-en schrijf bewerkingen |
-|  |  | Micro soft. ClassicCompute/domainName/verwijderen |
-|  |  | Micro soft. ClassicCompute/informatie/lezen |
-|  |  | Micro soft. ClassicCompute/informatie/schrijven |
-|  |  | Micro soft. ClassicCompute/informatie/verwijderen |
-| Netwerk | Resource Manager | Micro soft. Network/networkInterfaces/lezen |
-|  |  | Micro soft. Network/networkInterfaces/schrijven |
-|  |  | Micro soft. Network/networkInterfaces/verwijderen |
-|  |  | Micro soft. Network/networkInterfaces/samen voegen/actie |
-|  |  | Micro soft. Network/virtualNetworks/lezen |
-|  |  | Micro soft. Network/virtualNetworks/subnetten/lezen |
-|  |  | Micro soft. Network/virtualNetworks/subnetten/toevoegen/actie |
+| Compute | Resource Manager | Microsoft.Compute/availabilitySets/read |
+|  |  | Microsoft.Compute/virtualMachines/read |
+|  |  | Microsoft.Compute/virtualMachines/write |
+|  |  | Microsoft.Compute/virtualMachines/delete |
+|  | Klassiek | Microsoft.ClassicCompute/domainNames/read |
+|  |  | Microsoft.ClassicCompute/domainNames/write |
+|  |  | Microsoft.ClassicCompute/domainNames/delete |
+|  |  | Microsoft.ClassicCompute/virtualMachines/read |
+|  |  | Microsoft.ClassicCompute/virtualMachines/write |
+|  |  | Microsoft.ClassicCompute/virtualMachines/delete |
+| Netwerk | Resource Manager | Microsoft.Network/networkInterfaces/read |
+|  |  | Microsoft.Network/networkInterfaces/write |
+|  |  | Microsoft.Network/networkInterfaces/delete |
+|  |  | Microsoft.Network/networkInterfaces/join/action |
+|  |  | Microsoft.Network/virtualNetworks/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/read |
+|  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | Klassiek | Micro soft. ClassicNetwork/virtualNetworks/lezen |
 |  |  | Micro soft. ClassicNetwork/virtualNetworks/deelname/actie |
-| Storage | Resource Manager | Micro soft. Storage/Storage accounts/lezen |
-|  |  | Micro soft. Storage/Storage accounts/listkeys ophalen/Action |
-|  | Klassiek | Micro soft. ClassicStorage/Storage accounts/lezen |
-|  |  | Micro soft. ClassicStorage/Storage accounts/Listkeys ophalen/Action |
-| Resourcegroep | Resource Manager | Micro soft. resources/implementaties/* |
-|  |  | Micro soft. resources/abonnementen/resourceGroups/lezen |
+| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
+|  |  | Microsoft.Storage/storageAccounts/listkeys/action |
+|  | Klassiek | Microsoft.ClassicStorage/storageAccounts/read |
+|  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
+| Resourcegroep | Resource Manager | Microsoft.Resources/deployments/* |
+|  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
 Overweeg het gebruik van de [ingebouwde rollen](../role-based-access-control/built-in-roles.md) ' virtual machine contributor ' en ' klassieke virtuele machine contributor ' voor respectievelijk Resource Manager en klassieke implementatie modellen.
 
@@ -76,5 +76,5 @@ Overweeg het gebruik van de [ingebouwde rollen](../role-based-access-control/bui
 * Meer informatie over het beheren van toegang met:
   * [PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Azure CLI](../role-based-access-control/role-assignments-cli.md)
-  * [REST API](../role-based-access-control/role-assignments-rest.md)
+  * [REST-API](../role-based-access-control/role-assignments-rest.md)
 * [Access Control probleem oplossing op basis van rollen](../role-based-access-control/troubleshooting.md): suggesties ophalen voor het oplossen van veelvoorkomende problemen.

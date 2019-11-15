@@ -1,20 +1,18 @@
 ---
-title: Beveiligings controles voor Azure ExpressRoute
+title: 'Azure-ExpressRoute: beveiligings controles'
 description: Een controle lijst met beveiligings controles voor het evalueren van Azure ExpressRoute
 services: expressroute
 ms.service: expressroute
-documentationcenter: ''
 author: msmbaldwin
-manager: barbkess
 ms.topic: conceptual
 ms.date: 06/05/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ab73ba6dd4b78d3cd0be5f4c7f7a502e5c58e08
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: a288b44c07bc2df8529f07264dcee648f3af379a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886341"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079931"
 ---
 # <a name="security-controls-for-azure-expressroute"></a>Beveiligings controles voor Azure ExpressRoute
 
@@ -26,10 +24,10 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Ondersteuning voor service-eind punten| N/A |  |
-| Ondersteuning voor VNet-injectie| N/A | |
+| Ondersteuning voor service-eind punten| N.v.t. |  |
+| Ondersteuning voor VNet-injectie| N.v.t. | |
 | Ondersteuning voor netwerk isolatie en firewalling| Ja | Elke klant is opgenomen in een eigen routerings domein en is getunneld naar het eigen VNet |
-| Ondersteuning voor geforceerde tunneling| N/A | Via Border Gateway Protocol (BGP). |
+| Ondersteuning voor geforceerde tunneling| N.v.t. | Via Border Gateway Protocol (BGP). |
 
 ## <a name="monitoring--logging"></a>& Logboek registratie controleren
 
@@ -43,16 +41,16 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|
-| Authentication| Ja | Service account voor de gateway voor micro soft (GWM) (controller); Just-in-time-toegang voor dev en OP. |
-| Authorization|  Ja |Service account voor de gateway voor micro soft (GWM) (controller); Just-in-time-toegang voor dev en OP. |
+| Verificatie| Ja | Service account voor de gateway voor micro soft (GWM) (controller); Just-in-time-toegang voor dev en OP. |
+| Autorisatie|  Ja |Service account voor de gateway voor micro soft (GWM) (controller); Just-in-time-toegang voor dev en OP. |
 
-## <a name="data-protection"></a>Gegevensbescherming
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
-| Versleuteling aan server zijde bij rest: Door micro soft beheerde sleutels |  N/A | ExpressRoute slaat geen klant gegevens op. |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | N/A |  |
-| Versleuteling op kolom niveau (Azure Data Services)| N/A | |
+| Versleuteling aan server zijde op rest: door micro soft beheerde sleutels |  N.v.t. | ExpressRoute slaat geen klant gegevens op. |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | N.v.t. |  |
+| Versleuteling op kolom niveau (Azure Data Services)| N.v.t. | |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Nee | |
 | Versleutelde API-aanroepen| Ja | Via [Azure Resource Manager](../azure-resource-manager/index.yml) en HTTPS. |
 

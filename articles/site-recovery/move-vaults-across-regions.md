@@ -1,6 +1,6 @@
 ---
-title: Een Azure Site Recovery configuratie verplaatsen naar een andere Azure-regio | Microsoft Docs
-description: Richt lijnen voor het verplaatsen van een Site Recovery configuratie naar een andere Azure-regio
+title: Een Azure Site Recovery kluis verplaatsen naar een andere regio
+description: Hierin wordt beschreven hoe u een Recovery Services kluis (Azure Site Recovery) verplaatst naar een andere Azure-regio
 services: site-recovery
 author: rajani-janaki-ram
 ms.service: site-recovery
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2cf06a0c4e35d22cbad260201183516db2f07436
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 32dff9a165125ab1949560ce36438ae266cd3036
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70013466"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090297"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Een Recovery Services kluis en Azure Site Recovery configuratie verplaatsen naar een andere Azure-regio
 
@@ -45,12 +45,12 @@ In dit document gaat u als volgt te werkt:
 ## <a name="identify-the-resources-that-were-used-by-azure-site-recovery"></a>De resources identificeren die zijn gebruikt door Azure Site Recovery
 U wordt aangeraden deze stap uit te voeren voordat u verdergaat met de volgende. Het is eenvoudiger om de relevante resources te identificeren terwijl de Vm's worden gerepliceerd.
 
-Voor elke virtuele machine van Azure die wordt gerepliceerd, gaat u naar **beveiligde items** > **Eigenschappen** van**gerepliceerde items** > en identificeert u de volgende bronnen:
+Voor elke virtuele machine van Azure die wordt gerepliceerd, gaat u naar **beveiligde items** > **gerepliceerde items** > **Eigenschappen** en identificeert u de volgende bronnen:
 
-- Doelresourcegroep
-- Cacheopslagaccount
+- Doel resource groep
+- Cache-opslag account
 - Doel opslag account (in het geval van een niet-beheerde op schijven gebaseerde Azure-VM) 
-- Doelnetwerk
+- Doelnet netwerk
 
 
 ## <a name="disable-the-existing-disaster-recovery-configuration"></a>De bestaande configuratie voor herstel na nood gevallen uitschakelen

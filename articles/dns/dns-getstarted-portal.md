@@ -1,22 +1,23 @@
 ---
-title: 'Snelstart: een Azure DNS-zone maken en vastleggen met behulp van de Azure portal'
+title: 'Snelstartgids: een DNS-zone en record-Azure Portal maken'
+titleSuffix: Azure DNS
 description: Gebruik deze stapsgewijze quickstart om te leren hoe u een Azure DNS-zone en -record maakt met behulp van de Azure-portal.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: quickstart
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: feb46114b3cf1b04e6a181f84bcdc41c17f1c0ba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: allensu
+ms.openlocfilehash: cb81b0ec2b5283ba242dd7c2dd549c330e230f0a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60563292"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082913"
 ---
-# <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Quickstart: Maak een Azure DNS-zone en -record met behulp van de Azure-portal
+# <a name="quickstart-create-an-azure-dns-zone-and-record-using-the-azure-portal"></a>Snelstartgids: een Azure DNS zone en-record maken met behulp van de Azure Portal
 
-U kunt Azure DNS configureren voor het omzetten van hostnamen in uw openbare domein. Bijvoorbeeld, als u hebt aangeschaft de *contoso.xyz* domeinnaam van een domeinnaamregistrar, kunt u Azure DNS configureren op de host de *contoso.xyz* domein en los *www.contoso.xyz* naar het IP-adres van uw webserver of web-app.
+U kunt Azure DNS configureren voor het omzetten van hostnamen in uw openbare domein. Als u bijvoorbeeld de domein naam *contoso. xyz* hebt aangeschaft vanuit een domein naam registratie, kunt u Azure DNS configureren voor het hosten van het domein *contoso. xyz* en *www. contoso. xyz* omzetten in het IP-adres van uw webserver of web-app.
 
 In deze quickstart maakt u een testdomein en maakt u vervolgens een adresrecord om *www* om te zetten in het IP-adres *10.10.10.10*.
 
@@ -41,8 +42,8 @@ Een DNS-zone bevat de DNS-vermeldingen voor een domein. Als u uw domein wilt hos
 
 1. Typ of selecteer op de pagina **DNS-zone maken** de volgende waarden:
 
-   - **Naam**: Voer *contoso.xyz* in voor het voorbeeld in deze snelstartgids. De naam van de DNS-zone mag elke waarde zijn die nog niet is geconfigureerd op de Azure DNS-servers. Een werkelijke waarde zou een domein zijn dat u hebt gekocht via een domeinnaamregistrar.
-   - **Resourcegroep**: Selecteer **nieuw**, voer *MyResourceGroup*, en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
+   - **Naam**: typ *contoso.xyz* voor het voorbeeld in deze quickstart. De naam van de DNS-zone mag elke waarde zijn die nog niet is geconfigureerd op de Azure DNS-servers. Een werkelijke waarde zou een domein zijn dat u hebt gekocht via een domeinnaamregistrar.
+   - **Resource groep**: Selecteer **nieuwe maken**, Voer *MyResourceGroup*in en selecteer **OK**. De naam van de resourcegroep moet uniek zijn binnen het Azure-abonnement. 
 
 1. Selecteer **Maken**.
 
@@ -56,19 +57,19 @@ DNS-vermeldingen of -records voor het domein maakt u binnen de DNS-zone. Maak ee
 
 **Een A-record maken:**
 
-1. In de Azure-portal onder **alle resources**, open de **contoso.xyz** DNS-zone in de **MyResourceGroup** resourcegroep. U kunt *contoso.xyz* invoeren in het vak **Filteren op naam**  om deze eenvoudiger te vinden.
+1. Open in de Azure Portal, onder **alle resources**, de DNS-zone **contoso. xyz** in de resource groep **MyResourceGroup** . U kunt *contoso.xyz* invoeren in het vak **Filteren op naam**  om deze eenvoudiger te vinden.
 
 1. Selecteer boven aan de pagina **DNS-zone** de optie **+ Recordset**.
 
 1. Typ of selecteer op de pagina **Recordset toevoegen** de volgende waarden:
 
-   - **Naam**: Voer *www* in. De recordnaam is de hostnaam die u wilt omzetten in het opgegeven IP-adres.
-   - **Type**: Selecteer **A**. A-records worden het meest gebruikt, maar er zijn andere recordtypen voor e-mailservers (MX), IPv6-adressen (AAAA), enzovoort. 
-   - **TTL**: Voer *1* in. *Time-to-live* van de DNS-aanvraag geeft aan hoelang DNS-servers en -clients een antwoord kunnen opslaan in de cache.
-   - **TTL-eenheid**: Selecteer **Uren**. Dit is de tijdseenheid voor de **TTL**-waarde. 
-   - **IP-adres**: Voer voor het voorbeeld in deze snelstartgids *10.10.10.10* in. Deze waarde is het IP-adres waarin de recordnaam wordt omgezet. In een praktijkscenario zou u het openbare IP-adres van de webserver invoeren.
+   - **Naam**: typ *www*. De recordnaam is de hostnaam die u wilt omzetten in het opgegeven IP-adres.
+   - **Type**: Selecteer **een**. A-records zijn het meest gangbaar, maar er zijn andere record typen voor e-mail servers (' MX '), IP V6-adressen (' AAAA '), enzovoort. 
+   - **TTL**: typ *1*. *Time-to-live* van de DNS-aanvraag geeft aan hoelang DNS-servers en -clients een antwoord kunnen opslaan in de cache.
+   - **TTL-eenheid**: selecteer **Uren**. Dit is de tijdseenheid voor de **TTL**-waarde. 
+   - **IP-adres**: typ voor het voorbeeld in deze quickstart *10.10.10.10*. Deze waarde is het IP-adres waarin de recordnaam wordt omgezet. In een praktijkscenario zou u het openbare IP-adres van de webserver invoeren.
 
-Omdat deze Quick Start alleen voor testdoeleinden snelle is, is er geen hoeft te configureren van de DNS-naamservers aan een domeinnaamregistrar. Met een echte productiedomein, moet u iedereen op Internet om op te lossen van de naam van de host verbinding maken met uw webserver of de app. U gaat naar uw domeinnaamregistrar om de naamserverrecords te vervangen door de Azure DNS-naamservers. Zie [Zelfstudie: Uw domein hosten in Azure DNS](dns-delegate-domain-azure-dns.md#delegate-the-domain) voor meer informatie.
+Omdat deze Snelstartgids alleen is bedoeld voor snelle test doeleinden, is het niet nodig om de Azure DNS naam servers te configureren op domein naam registratie. Met een echt productie domein wilt u dat iedereen op Internet de hostnaam kan omzetten om verbinding te maken met uw webserver of app. U gaat naar uw domeinnaamregistrar om de naamserverrecords te vervangen door de Azure DNS-naamservers. Zie [Zelfstudie: Uw domein in Azure DNS hosten](dns-delegate-domain-azure-dns.md#delegate-the-domain) voor meer informatie.
 
 ## <a name="test-the-name-resolution"></a>De naamomzetting testen
 
@@ -76,7 +77,7 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
 **DNS-naamomzetting testen:**
 
-1. In de Azure-portal onder **alle resources**, open de **contoso.xyz** DNS-zone in de **MyResourceGroup** resourcegroep. U kunt *contoso.xyz* invoeren in het vak **Filteren op naam**  om deze eenvoudiger te vinden.
+1. Open in de Azure Portal, onder **alle resources**, de DNS-zone **contoso. xyz** in de resource groep **MyResourceGroup** . U kunt *contoso.xyz* invoeren in het vak **Filteren op naam**  om deze eenvoudiger te vinden.
 
 1. Kopieer een van de namen van de naamservers uit de lijst op de pagina **Overzicht**. 
 
@@ -98,11 +99,11 @@ Nu u een testzone hebt met daarin een DNS-record, kunt u de naamomzetting testen
 
    ![nslookup](media/dns-getstarted-portal/nslookup.PNG)
 
-De hostnaam **www\.contoso.xyz** wordt omgezet naar **10.10.10.10**, net zoals u deze hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt. 
+De hostnaam **www\.contoso. xyz** wordt omgezet in **10.10.10.10**, net zoals u deze hebt geconfigureerd. Met dit resultaat wordt gecontroleerd of de naamomzetting juist werkt. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u de resources die u in deze Quick Start hebt gemaakt niet meer nodig hebt, verwijdert u deze door het verwijderen van de **MyResourceGroup** resourcegroep. Open de **MyResourceGroup** resource-groep, en selecteer **resourcegroep verwijderen**.
+Wanneer u de resources die u in deze Quick Start hebt gemaakt, niet meer nodig hebt, verwijdert u deze door de resource groep **MyResourceGroup** te verwijderen. Open de resource groep **MyResourceGroup** en selecteer **resource groep verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

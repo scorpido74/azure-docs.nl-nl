@@ -1,5 +1,5 @@
 ---
-title: 'ExpressRoute-connectiviteits modellen: Azure| Microsoft Docs'
+title: 'Azure-ExpressRoute: connectiviteits modellen'
 description: In dit artikel worden de verschillende modi van connectiviteit tussen het netwerk van de klant Microsoft Azure en de Office 365-Services beschreven. Klanten kunnen gebruikmaken van MPLS-providers, cloudexchanges en Ethernet-providers.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: c9cfe089cd486a822af192353b2a01a08f57d9e2
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 375d2f9d3b455c0495c69f2b23d62b1ab6522710
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123467"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080699"
 ---
 # <a name="expressroute-connectivity-models"></a>ExpressRoute-connectiviteitsmodellen
 U kunt op drie verschillende manieren een verbinding maken tussen uw on-premises netwerk en Microsoft Cloud: [CloudExchange-co-locatie](#CloudExchange), [point-to-point Ethernet-verbinding](#Ethernet) en [any-to-any (IPVPN) verbinding](#IPVPN). Connectiviteitsproviders kunnen een of meer connectiviteitsmodellen bieden. Overleg met uw connectiviteitsprovider om na te gaan welk model voor u het meest geschikt is.

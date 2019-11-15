@@ -7,12 +7,12 @@ ms.date: 10/02/2019
 ms.topic: quickstart
 ms.service: azure-functions
 manager: gwallace
-ms.openlocfilehash: 2307a296453247a5deee082aadb474f3641cce88
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: da3fb604bfb65f67e50d56a4520620cabc292b93
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329738"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082824"
 ---
 # <a name="add-an-azure-storage-queue-binding-to-your-python-function"></a>Een Azure Storage wachtrij binding toevoegen aan uw python-functie
 
@@ -40,7 +40,7 @@ U kunt nu de opslag-uitvoer binding toevoegen aan uw project.
 
 ## <a name="add-an-output-binding"></a>Een uitvoerbinding toevoegen
 
-In functies moet voor elk type binding een `direction`, `type` en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
+In functies moet voor elk type binding een `direction`, `type`en een unieke `name` worden gedefinieerd in het bestand function. json. De manier waarop u deze kenmerken definieert, is afhankelijk van de taal van uw functie-app.
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
@@ -73,13 +73,13 @@ Vervolgens gebruikt u de Azure CLI om de nieuwe wachtrij te bekijken en te contr
 
 ### <a name="redeploy-the-project"></a>Het project opnieuw implementeren 
 
-Als u uw gepubliceerde app wilt bijwerken, gebruikt u de opdracht [`func azure functionapp publish`-](functions-run-local.md#project-file-deployment) kern hulpprogramma's om uw project code te implementeren in Azure. Vervang in dit voor beeld `<APP_NAME>` door de naam van uw app.
+Als u uw gepubliceerde app wilt bijwerken, gebruikt u de opdracht [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) core-hulpprogram ma's om uw project code te implementeren in Azure. Vervang `<APP_NAME>` in dit voor beeld door de naam van uw app.
 
 ```command
 func azure functionapp publish <APP_NAME> --build remote
 ```
 
-U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te testen. Voeg de query reeks `&name=<yourname>` toe aan de URL, zoals in dit voor beeld:
+U kunt ook krul of een browser gebruiken om de geïmplementeerde functie te testen. Voeg, net als voorheen, de query reeks `&name=<yourname>` toe aan de URL, zoals in dit voor beeld:
 
 ```bash
 curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
@@ -91,7 +91,7 @@ U kunt [de opslag wachtrij opnieuw bekijken](#query-the-storage-queue) om te con
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt uw door HTTP geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van Azure Functions met python de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md) en [Azure functions triggers en bindingen](functions-triggers-bindings.md). Zie voor voor beelden van complete functie projecten in python de [python functions](/samples/browse/?products=azure-functions&languages=python)-voor beelden. 
+U hebt uw door HTTP geactiveerde functie bijgewerkt om gegevens naar een opslag wachtrij te schrijven. Zie voor meer informatie over het ontwikkelen van Azure Functions met python de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md) en [Azure functions triggers en bindingen](functions-triggers-bindings.md). Zie voor voor beelden van complete functie projecten in python de [python functions](/samples/browse/?products=azure-functions&languages=python)-voor beelden. Zie de [pagina met prijzen voor functies](https://azure.microsoft.com/pricing/details/functions/) en het artikel kosten voor het [schatten van verbruiks plannen](functions-consumption-costs.md) voor meer informatie over prijzen.
 
 Schakel vervolgens Application Insights bewaking in voor uw functie-app:
 

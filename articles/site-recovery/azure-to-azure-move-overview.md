@@ -1,33 +1,23 @@
 ---
-title: Azure MS verplaatsen naar een andere regio met Azure Site Recovery
-description: Azure Site Recovery gebruiken om Azure IaaS-VM’s te verplaatsen van de ene Azure-regio naar een andere.
+title: Virtuele Azure-machines verplaatsen naar een andere regio met Azure Site Recovery
+description: Azure Site Recovery gebruiken om virtuele Azure-machines te verplaatsen van de ene Azure-regio naar een andere.
 author: rajani-janaki-ram
 ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e3a3db66b4833a8ba21dc9d3c1938f645919221c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 05d0fcb9e689b8954bffaff402475762344c023d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954171"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091940"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
+# <a name="moving-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines verplaatsen naar een andere Azure-regio
 
-Azure groeit samen met de klanten basis en voegt ondersteuning toe voor nieuwe regio's om te groeien met stijgende vereisten. Nieuwe mogelijkheden worden ook maandelijks toegevoegd voor alle services. Misschien wilt u uw virtuele machines (Vm's) verplaatsen naar een andere regio of naar Beschikbaarheidszones om de beschik baarheid te verg Roten.
+In dit artikel vindt u een overzicht van de redenen en stappen voor het verplaatsen van virtuele Azure-machines naar een andere Azure-regio met behulp van [Azure site Recovery](site-recovery-overview.md). 
 
-In deze zelf studie worden verschillende scenario's beschreven waarin u uw Vm's wilt verplaatsen. Ook wordt beschreven hoe u de architectuur in de doel regio configureert om een hogere Beschik baarheid te bereiken. 
-
-In deze zelfstudie leert u:
-
-> [!div class="checklist"]
-> 
-> * Redenen voor het verplaatsen van Vm's
-> * Typische architecturen
-> * Vm's verplaatsen naar een doel regio
-> * Vm's verplaatsen om de beschik baarheid te verg Roten
 
 ## <a name="reasons-to-move-azure-vms"></a>Redenen voor het verplaatsen van virtuele Azure-machines
 

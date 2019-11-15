@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 42a97646a6881ead61ceeaff3fe8c0c8d73d6057
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a1d2fa083c0083423767484b20e296a3080e4ebe
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72929400"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092120"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Snelstartgids: een iOS-app maken met behulp van ruimtelijke Azure-ankers in SWIFT of objectief-C
 
-In deze quickstart wordt besproken hoe u een iOS-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in Swift of Objective-C. Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARKit iOS-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
+In deze quickstart wordt besproken hoe u een iOS-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in Swift of Objective-C. Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARKit iOS-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
 U leert het volgende:
 
@@ -32,7 +32,7 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een macOS-machine met ontwikkelaarstoegang met daarop <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10+</a> en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> geïnstalleerd.
+- Er is een macOS-computer ingeschakeld met de meest recente versie van <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> geïnstalleerd.
 - Git geïnstalleerd via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens `brew install git`uit.
 - Een door een ontwikkelaar geactiveerd en <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">met ARKit compatibel</a> iOS-apparaat.
 
@@ -85,7 +85,7 @@ open ./SampleObjC.xcworkspace
 
 ---
 
-## <a name="configure-account-identifier-and-key"></a>Configureer de account-id en -sleutel
+## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
 
 De volgende stap is het configureren van de app voor het gebruik van uw account-id en de account sleutel. U hebt deze in een tekst editor gekopieerd bij [het instellen van de bron voor ruimtelijke ankers](#create-a-spatial-anchors-resource).
 
@@ -95,7 +95,7 @@ Open `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
 Zoek het veld `spatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het veld `spatialAnchorsAccountId` en vervang `Set me` met de account-id.
+Zoek het `spatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
 
 # <a name="objective-ctabopenproject-objc"></a>[Objective-C](#tab/openproject-objc)
 
@@ -103,7 +103,7 @@ Open `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
 Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
+Zoek het `SpatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
 
 ---
 
@@ -120,7 +120,7 @@ Selecteer **Build and then run the current scheme** (Het huidige schema compiler
 > [!NOTE]
 > Als u de fout `library not found for -lPods-SampleObjC` ziet, hebt u waarschijnlijk het bestand `.xcodeproj` geopend in plaats van `.xcworkspace`. Open `.xcworkspace` en probeer het opnieuw.
 
-In Xcode stopt u de app door op **Stop** te klikken.
+In Xcode: stop de app door op **Stop** te drukken.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 

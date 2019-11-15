@@ -1,18 +1,18 @@
 ---
-title: Architectuur van Hyper-V naar Azure voor herstel na nood gevallen in Azure Site Recovery
+title: Architectuur van herstel na nood geval voor Hyper-V in Azure Site Recovery
 description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt bij het implementeren van herstel na nood gevallen voor on-premises virtuele Hyper-V-machines (zonder VMM) naar Azure met de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 08/07/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 1ce21ea6042bbe1191edede13f80455c8e669f3b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 022d6edad1e907173dfde3481e60d2523be087a1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030203"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082672"
 ---
 # <a name="hyper-v-to-azure-disaster-recovery-architecture"></a>Architectuur van Hyper-V naar Azure voor herstel na nood gevallen
 

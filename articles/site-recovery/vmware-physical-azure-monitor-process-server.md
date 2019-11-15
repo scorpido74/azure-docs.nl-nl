@@ -1,18 +1,18 @@
 ---
 title: De Azure Site Recovery process server bewaken
-description: In dit artikel wordt beschreven hoe u Azure Site Recovery process server bewaken.
+description: In dit artikel wordt beschreven hoe u Azure Site Recovery proces server bewaken die wordt gebruikt voor nood herstel van de virtuele VMware-machines/fysieke servers
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/05/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 00b424672b505a5bb3d576c0ca4d8e334e2a1753
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 54c161c40c881d7626f79fc9bfe1ec1c160480ae
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383210"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082233"
 ---
 # <a name="monitor-the-process-server"></a>De proces server bewaken
 

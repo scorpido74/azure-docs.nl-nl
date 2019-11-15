@@ -1,5 +1,5 @@
 ---
-title: Azure PowerShell-voorbeeldscript - Het maken van een netwerk voor toepassingen met meerdere lagen | Microsoft Docs
+title: Een VNet maken voor toepassingen met meerdere lagen-Azure PowerShell script voorbeeld
 description: Azure PowerShell-voorbeeldscript - Het maken van een netwerk voor toepassingen met meerdere lagen.
 services: virtual-network
 documentationcenter: virtual-network
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 12/13/2018
 ms.author: kumud
-ms.openlocfilehash: 2fad78db4fdc92f3dc9c0f320c36d12dea554a61
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 32140429d96d73100c4bd5a2ae274e508a15b7a8
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64725385"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091307"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Voorbeeldscript voor het maken van een netwerk voor toepassingen met meerdere lagen
 
@@ -35,7 +35,7 @@ U kunt het script uitvoeren vanuit de Azure [Cloud Shell](https://shell.azure.co
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
-Een subnet-ID is toegewezen, nadat u hebt gemaakt een virtueel netwerk. met name met behulp van de cmdlet New-AzVirtualNetwork met de - Subnet-optie. Als u het subnet configureert met de cmdlet New-AzVirtualNetworkSubnetConfig vóór de aanroep naar New-AzVirtualNetwork, ziet u de subnet-id pas nadat New-AzVirtualNetwork is aangeroepen.
+Er wordt een subnet-ID toegewezen nadat u een virtueel netwerk hebt gemaakt. met name met de cmdlet New-AzVirtualNetwork met de optie-subnet. Als u het subnet configureert met de cmdlet New-AzVirtualNetworkSubnetConfig vóór de aanroep naar New-AzVirtualNetwork, ziet u de subnet-id pas nadat New-AzVirtualNetwork is aangeroepen.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
@@ -49,7 +49,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtueel netwerk en netwerkbeveiligingsgroepen. Elke opdracht in de volgende tabel is een koppeling naar opdrachtspecifieke documentatie:
+In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtueel netwerk en netwerkbeveiligingsgroepen. Elke opdracht in onderstaande tabel is een link naar opdracht-specifieke documentatie:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -60,7 +60,7 @@ In dit script worden de volgende opdrachten gebruikt voor het maken van een reso
 | [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) | Hiermee maakt u virtuele netwerkinterfaces en koppelt u ze aan de front-end- en back-end-subnetten van het virtuele netwerk. |
 | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) | Hiermee maakt u netwerkbeveiligingsgroepen (NSG's) die zijn gekoppeld aan de front-end- en back-end-subnetten. |
 | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |Hiermee maakt u NSG-regels die bepaalde poorten tot specifieke subnetten blokkeren of toestaan. |
-| [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u virtuele machines en koppelt u een NIC aan elke virtuele machine. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, evenals de beheerdersreferenties. |
+| [New-AzVM](/powershell/module/az.compute/new-azvm) | Hiermee maakt u virtuele machines en koppelt u een NIC aan elke virtuele machine. Met deze opdracht geeft u ook de installatiekopie van de virtuele machine op die moet worden gebruikt, samen met beheerdersreferenties. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep en de bijhorende resources. |
 
 ## <a name="next-steps"></a>Volgende stappen

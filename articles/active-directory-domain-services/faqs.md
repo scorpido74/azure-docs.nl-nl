@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: iainfou
-ms.openlocfilehash: e8e6eb9be65b038780fa6e21cf20f4c5dda27a31
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 61c9d887f1b193258161cd96ccfa3618e8371890
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991461"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081010"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Veelgestelde vragen (FAQ)
 
@@ -62,7 +62,7 @@ De service zelf biedt geen rechtstreekse ondersteuning voor dit scenario. Uw beh
 Ja. Zie [Azure AD Domain Services inschakelen met behulp van Power shell](powershell-create-instance.md)voor meer informatie.
 
 ### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Kan ik Azure AD Domain Services inschakelen met een resource manager-sjabloon?
-Nee, het is momenteel niet mogelijk om Azure AD Domain Services in te scha kelen met behulp van een sjabloon. Raadpleeg [How to enable Azure AD Domain Services using Power shell](powershell-create-instance.md)(Engelstalig) voor een script-benadering.
+Ja, u kunt een Azure AD Domain Services beheerd domein maken met behulp van een resource manager-sjabloon. Een Service-Principal en een Azure AD-groep voor beheer moeten worden gemaakt met behulp van de Azure Portal of Azure PowerShell voordat de sjabloon wordt geïmplementeerd. Wanneer u een Azure AD Domain Services beheerd domein maakt in de Azure Portal, is er een optie om de sjabloon te exporteren voor gebruik met aanvullende implementaties. Er is ook een voorbeeld [sjabloon in de GitHub templates-voor](https://github.com/Azure/azure-quickstart-templates/tree/master/101-AAD-DomainServices)beeld-opslag plaats.
 
 ### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Kan ik domein controllers toevoegen aan een Azure AD Domain Services beheerd domein?
 Nee. Het door Azure AD Domain Services verschafte domein is een beheerd domein. U hoeft geen domein controllers in te richten, configureren of anderszins te beheren voor dit domein. Deze beheer activiteiten worden door micro soft als service verschaft. Daarom kunt u geen extra domein controllers (lezen/schrijven of alleen-lezen) toevoegen voor het beheerde domein.

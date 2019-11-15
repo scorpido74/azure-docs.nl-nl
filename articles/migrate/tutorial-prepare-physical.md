@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: df425f723aa6a5e261ed6dcd15abfe87b367ad68
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747967"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091904"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voor bereiding voor de evaluatie en migratie van fysieke servers naar Azure
 
@@ -99,25 +99,25 @@ Voor de voor bereiding op de beoordeling van de fysieke server moet u de instell
 
 ### <a name="verify-physical-server-settings"></a>Controleer de instellingen van de fysieke server
 
-1. Controleer de vereisten voor de [fysieke server](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) voor Server evaluatie.
-2. Zorg ervoor dat de [vereiste poorten](migrate-support-matrix-hyper-v.md#assessment-port-requirements) op fysieke servers zijn geopend.
+1. Controleer de vereisten voor de [fysieke server](migrate-support-matrix-physical.md#assessment-physical-server-requirements) voor Server evaluatie.
+2. Zorg ervoor dat de [vereiste poorten](migrate-support-matrix-physical.md#assessment-port-requirements) op fysieke servers zijn geopend.
 
 
 ### <a name="verify-appliance-settings"></a>Instellingen voor toestellen controleren
 
 Voordat u het Azure Migrate apparaat instelt en de evaluatie begint in de volgende zelf studie, moet u de implementatie van het apparaat voorbereiden.
 
-1. [Controleer](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) de vereisten van het apparaat.
-2. [Bekijk](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
+1. [Controleer](migrate-support-matrix-physical.md#assessment-appliance-requirements) de vereisten van het apparaat.
+2. [Bekijk](migrate-support-matrix-physical.md#assessment-appliance-url-access) de Azure-url's die het apparaat nodig heeft om toegang te krijgen.
 3. Bekijk de gegevens die door het apparaat worden verzameld tijdens de detectie en evaluatie.
-4. [Noteer](migrate-support-matrix-hyper-v.md#assessment-port-requirements) de toegangs vereisten voor poorten voor het apparaat.
+4. [Noteer](migrate-support-matrix-physical.md#assessment-port-requirements) de toegangs vereisten voor poorten voor het apparaat.
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Een account instellen voor detectie van fysieke servers
 
 Azure Migrate heeft machtigingen nodig om on-premises servers te detecteren.
 
-- **Windows:** Stel een lokale gebruikers account in op alle Windows-servers die u wilt toevoegen in de detectie. Het gebruikers account moet worden toegevoegd aan de volgende groepen:-Extern bureaublad gebruikers-prestatie meter gebruikers-prestatie logboek gebruikers
+- **Windows:** Stel een lokale gebruikers account in op alle Windows-servers die u wilt toevoegen in de detectie. Het gebruikers account moet worden toegevoegd aan de volgende groepen:-extern beheer gebruikers-prestatie meter gebruikers-prestaties logboek gebruikers
 - **Linux:** U hebt een hoofd account nodig op de Linux-servers die u wilt detecteren.
 
 

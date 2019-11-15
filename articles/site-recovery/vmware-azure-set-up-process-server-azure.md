@@ -1,5 +1,5 @@
 ---
-title: Een proces server in azure instellen voor VMware VM en fysieke server failback met Azure Site Recovery | Microsoft Docs
+title: Een VMware/fysieke failback van een proces server instellen in Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u een proces server in azure instelt om failback van virtuele Azure-machines in VMware te maken.
 services: site-recovery
 author: Rajeswari-Mamilla
@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: ramamill
-ms.openlocfilehash: 080edfc86848bb6c6579c177c72d3fbd3214a06a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 16214fa07b14c8db2f32fa2c69739b7fa3dc1907
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968843"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083954"
 ---
 # <a name="set-up-a-process-server-in-azure-for-failback"></a>Een proces server in azure instellen voor failback
 
@@ -37,7 +37,7 @@ Meer informatie over het proces voor opnieuw [beveiligen](vmware-azure-reprotect
 
 4. In **Server naam**, **gebruikers naam**en **wacht woord**, geeft u een naam op voor de proces server en referenties waaraan beheerders machtigingen op de server worden toegewezen.
 5. Geef een opslag account op dat moet worden gebruikt voor de VM-schijven van de server, het subnet waarin de virtuele machine van de proces server zich bevindt en het IP-adres van de server dat wordt toegewezen wanneer de virtuele machine wordt gestart.
-6. Klik op de knop **OK** om te beginnen met de implementatie van de proces Server-VM. De proces server wordt geïmplementeerd op de Standard_A8_v2-SKU. Zorg ervoor dat deze VM-SKU beschikbaar is voor uw abonnement.
+6. Klik op de knop **OK** om te beginnen met de implementatie van de proces Server-VM. De proces server wordt geïmplementeerd op Standard_A8_v2 SKU. Zorg ervoor dat deze VM-SKU beschikbaar is voor uw abonnement.
 
 >
 

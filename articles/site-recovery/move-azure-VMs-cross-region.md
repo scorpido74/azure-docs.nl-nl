@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: e0d55b3661e7dbff1519691bd396a30b8c527010
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 92388c54804d85d2825a25abd0c234081670e8d4
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936057"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092189"
 ---
-# <a name="move-azure-vms-to-another-region"></a>Virtuele Azure-machines verplaatsen naar een andere regio
+# <a name="move-azure-vms-to-another-azure-region"></a>Virtuele Azure-machines verplaatsen naar een andere Azure-regio
 
 Mogelijk wilt u Azure Infrastructure as a Service (IaaS) virtuele machines verplaatsen van de ene regio naar een andere om de betrouw baarheid, Beschik baarheid, beheer of governance te verbeteren. Deze zelf studie laat zien hoe u Vm's naar een andere regio kunt verplaatsen met behulp van Azure Site Recovery. U leert het volgende:
 

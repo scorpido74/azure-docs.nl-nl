@@ -1,5 +1,5 @@
 ---
-title: 'Een ExpressRoute-circuit maken en wijzigen-portal: Azure | Microsoft Docs'
+title: 'ExpressRoute: een circuit maken en wijzigen: Azure Portal'
 description: Maken, inrichten, controleren, bijwerken, verwijderen en de inrichting van een ExpressRoute-circuit ongedaan maken.
 services: expressroute
 author: cherylmc
@@ -7,21 +7,19 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc
-ms.reviewer: ganesr
-ms.custom: seodec18
-ms.openlocfilehash: 25821f60f47b1279e70cba2574901cd5df3d327f
-ms.sourcegitcommit: fa45c2bcd1b32bc8dd54a5dc8bc206d2fe23d5fb
+ms.openlocfilehash: 42fe0a91261453251d56f1c556083e93f5c76bec
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67846589"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083571"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Een ExpressRoute-circuit maken en wijzigen
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-circuit-arm.md)
-> * [Azure-CLI](howto-circuit-cli.md)
+> * [Azure CLI](howto-circuit-cli.md)
 > * [Azure Resource Manager-sjabloon](expressroute-howto-circuit-resource-manager-template.md)
 > * [Video - Azure portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-circuit-classic.md)
@@ -38,11 +36,11 @@ Dit artikel helpt u bij het maken van een ExpressRoute-circuit met behulp van de
 
 ## <a name="create"></a>Maken en inrichten van een ExpressRoute-circuit
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Aanmelden bij Azure Portal
+### <a name="1-sign-in-to-the-azure-portal"></a>1. Meld u aan bij de Azure Portal
 
 Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. Een nieuwe ExpressRoute-circuit maken
+### <a name="2-create-a-new-expressroute-circuit"></a>2. een nieuw ExpressRoute-circuit maken
 
 > [!IMPORTANT]
 > Uw ExpressRoute-circuit wordt in rekening gebracht vanaf het moment dat een servicesleutel wordt uitgegeven. Zorg ervoor dat u deze bewerking uitvoeren wanneer de connectiviteitsprovider gereed is voor de inrichting van het circuit.
@@ -58,14 +56,14 @@ Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan
    * **Gegevensmeters** bepaalt het gegevenstype van de facturering. U kunt opgeven **Metered** voor een abonnement naar gebruik en **onbeperkt** voor een abonnement voor onbeperkt gebruik. Houd er rekening mee dat u het facturerings type kunt wijzigen van **gemeten** naar **onbeperkt**.
 
      > [!IMPORTANT]
-     > U kunt het type niet wijzigen  van Unlimited in **Data limiet**.
+     > U kunt het type niet wijzigen van **Unlimited** in **Data limiet**.
 
    * **Peeringlocatie** is de fysieke locatie waar u peering met Microsoft.
 
      > [!IMPORTANT]
      > De Peeringlocatie geeft aan dat de [fysieke locatie](expressroute-locations.md) waar u peering met Microsoft. Dit is **niet** gekoppeld aan "Locatie" eigenschap, die verwijst naar de geografische locatie waar de Resourceprovider van de Azure-netwerk zich bevindt. Hoewel ze niet zijn gerelateerd, is het raadzaam een Netwerkresourceprovider geografisch dicht bij de locatie-Peering van het circuit kiezen.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. Circuits en -eigenschappen weergeven
+### <a name="3-view-the-circuits-and-properties"></a>3. de circuits en eigenschappen weer geven
 
 **Alle circuits weergeven**
 
@@ -79,41 +77,41 @@ U kunt de eigenschappen van het circuit weergeven door deze te selecteren. Op de
 
 ![Eigenschappen weergeven](./media/expressroute-howto-circuit-portal-resource-manager/servicekey1.png)
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. De servicesleutel verzenden naar uw connectiviteitsprovider om in te richten
+### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. Stuur de service sleutel naar uw connectiviteits provider voor het inrichten
 
 Op deze pagina **providerstatus** bevat informatie over de huidige status van inrichting aan de service-provider. **Status van circuit** biedt u de status aan de kant van Microsoft. Zie voor meer informatie over statussen inrichting circuit, de [werkstromen](expressroute-workflows.md#expressroute-circuit-provisioning-states) artikel.
 
 Wanneer u een nieuwe ExpressRoute-circuit maakt, wordt het circuit is in de volgende status:
 
-Provider status: Niet ingericht<BR>
-Status van circuit: Enabled
+De status van provider: niet ingericht<BR>
+Circuit status: ingeschakeld
 
 ![Inrichtingsproces initiëren](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Het circuit gewijzigd in de volgende status hebben de connectiviteitsprovider Bezig inschakelen voor u is:
 
-Provider status: Inrichten<BR>
-Status van circuit: Enabled
+De status van provider: inrichten<BR>
+Circuit status: ingeschakeld
 
 Voordat u kunt een ExpressRoute-circuit gebruiken, moet deze de status van de volgende zijn:
 
-Provider status: Ingericht<BR>
-Status van circuit: Enabled
+De status van provider: ingericht<BR>
+Circuit status: ingeschakeld
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Controleer regelmatig de status en de status van de sleutel van het circuit
+### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Controleer de status en de status van de circuit sleutel regel matig
 
 Hier vindt u de eigenschappen van het circuit waarin u geïnteresseerd bent door deze te selecteren. Controleer de **providerstatus** en zorg ervoor dat het is verplaatst naar **ingerichte** voordat u doorgaat.
 
 ![Status van het circuit en -provider](./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png)
 
-### <a name="6-create-your-routing-configuration"></a>6. De configuratie van de routering maken
+### <a name="6-create-your-routing-configuration"></a>6. uw routerings configuratie maken
 
 Voor stapsgewijze instructies raadpleegt u de [ExpressRoute-circuit routeringsconfiguratie](expressroute-howto-routing-portal-resource-manager.md) artikel maken en aanpassen-circuitpeerings.
 
 > [!IMPORTANT]
 > Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met serviceproviders die services op laag 2-connectiviteit aanbieden. Als u een serviceprovider die beheerde laag-3-services (meestal een IP VPN, zoals MPLS), uw connectiviteitsprovider configureert en beheert routering voor u.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. Een virtueel netwerk koppelen aan een ExpressRoute-circuit
+### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. een virtueel netwerk koppelen aan een ExpressRoute-circuit
 
 Vervolgens moet u een virtueel netwerk koppelen aan uw ExpressRoute-circuit. Gebruik de [virtuele netwerken koppelen aan ExpressRoute-circuits](expressroute-howto-linkvnet-arm.md) artikel als u met het Resource Manager-implementatiemodel werkt.
 

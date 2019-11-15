@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 author: revodavid
 ms.author: davidsmi
 ms.date: 11/04/2019
-ms.openlocfilehash: 690df14e4e09b4a35589446029468a7d757d2732
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 72ab2717cea479de6150f435398f164c7c9d5937
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888620"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092268"
 ---
 # <a name="tutorial-train-and-deploy-your-first-model-in-r-with-azure-machine-learning"></a>Zelf studie: uw eerste model trainen en implementeren in R met Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -70,7 +70,7 @@ We raden u aan RStudio te gebruiken om deze zelf studie uit te voeren. In RStudi
 > Als u ervaring hebt met RMarkdown, kunt u de code uit dat bestand gebruiken.  Of u kunt de code fragmenten uit deze of van dit artikel kopiëren/plakken in een R-script of de opdracht regel.
 
 
-## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
 De configuratie voor uw ontwikkel werkzaamheden in deze zelf studie bevat de volgende acties:
 
 * De vereiste pakketten installeren
@@ -108,7 +108,7 @@ experiment_name <- "accident-logreg"
 exp <- experiment(ws, experiment_name)
 ```
 
-### <a name="create-a-compute-target"></a>Een reken doel maken
+### <a name="create-a-compute-target"></a>Een compute-doel maken
 Met Azure Machine Learning Compute (AmlCompute), een beheerde service, kunnen gegevenswetenschappers Machine Learning-modellen trainen op clusters met virtuele Azure-machines. Voorbeelden hiervan zijn virtuele machines met GPU-ondersteuning. In deze zelf studie maakt u een AmlCompute-cluster met één knoop punt als uw trainings omgeving. Met de code hieronder wordt het berekenings cluster voor u gemaakt als dit nog niet in uw werk ruimte bestaat.
 
 Mogelijk moet u enkele minuten wachten totdat het berekenings cluster al is ingericht.
@@ -353,17 +353,17 @@ aci_service$scoring_uri
 Verwijder de resources wanneer u deze niet meer nodig hebt. Verwijder geen resources die u nog steeds wilt gebruiken. 
 
 De webservice verwijderen:
-```{r delete_service, eval=FALSE}
+```R
 delete_webservice(aci_service)
 ```
 
 Het geregistreerde model verwijderen:
-```{r delete_model, eval=FALSE}
+```R
 delete_model(model)
 ```
 
 Het berekenings cluster verwijderen:
-```{r delete_compute, eval=FALSE}
+```R
 delete_compute(compute)
 ```
 

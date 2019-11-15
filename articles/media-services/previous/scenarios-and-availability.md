@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 930420240d7b0f116f72056404e809ca94820f11
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5841826e1d8fcfd96ff5bf91b518df3b856d3ce5
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65991437"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083212"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenario's en de beschikbaarheid van Media Services-functies in datacenters
 
 > [!NOTE]
-> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [hulp bij de migratie van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
+> Er worden geen nieuwe functies of functionaliteit meer aan Media Services v2. toegevoegd. <br/>Maak kennis met de nieuwste versie, [Media Services v3](https://docs.microsoft.com/azure/media-services/latest/). Zie ook [migratie richtlijnen van v2 naar v3](../latest/migrate-from-v2-to-v3.md)
 
 Met Microsoft Azure Media Services (AMS) kunt u veilig video- of audio-inhoud uploaden, opslaan, coderen en verpakken, zowel voor levering on-demand als levering via livestreaming aan verschillende clients (bijvoorbeeld tv, pc en mobiele apparaten).
 
@@ -37,7 +37,7 @@ Dit onderwerp bevat algemene scenario's voor het [live](#live_scenarios) of on-d
 
 Als u Azure Media Services wilt gaan gebruiken, moet u over het volgende beschikken:
 
-* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een account voor de gratis proefversie maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
+* Een Azure-account. Als u geen account hebt, kunt u binnen een paar minuten een gratis proefaccount maken. Zie [Gratis proefversie van Azure](https://azure.microsoft.com) voor meer informatie.
 * Een Azure Media Services-account. Zie [Een account maken](media-services-portal-create-account.md) voor meer informatie.
 * Het streaming-eindpunt van waar u inhoud wilt streamen, moet de status **Wordt uitgevoerd** hebben.
 
@@ -149,9 +149,9 @@ AMS-klanten kunnen streaming-eindpunten, de mediaverwerking en de opslag in hun 
 
 * Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium-**streaming**-eindpunt kiezen. **Standard**-streaming-eindpunten zijn geschikt voor de meeste streaming-workloads. Deze hebben dezelfde kenmerken als **Premium**-streaming-eindpunten en de uitgaande bandbreedte wordt hiermee automatisch geschaald. 
 
-    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp [Streaming-eindpunten schalen](media-services-portal-scale-streaming-endpoints.md) voor meer informatie over het schalen van **Premium**-streaming-eindpunten.
+    **Premium**-streaming-eindpunten zijn geschikt voor geavanceerde workloads omdat er gebruik wordt gemaakt van toegewezen, schaalbare bandbreedtecapaciteit. Klanten met een **Premium**-streaming-eindpunt krijgen standaard één streaming-eenheid (SU). Het streaming-eindpunt kan worden geschaald door SU's toe te voegen. Elke SU biedt extra bandbreedtecapaciteit voor de toepassing. Zie het onderwerp **Streaming-eindpunten schalen** voor meer informatie over het schalen van [Premium](media-services-portal-scale-streaming-endpoints.md)-streaming-eindpunten.
 
-* Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2**, of **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**).
+* Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: **S1**, **S2** en **S3**. Een coderingstaak wordt bijvoorbeeld sneller uitgevoerd wanneer u het gereserveerde-eenheidstype **S2** gebruikt (in vergelijking met het type **S1**).
 
     Naast het opgeven van het gereserveerde-eenheidstype kunt u opgeven dat uw account moet worden ingericht met **gereserveerde eenheden** (RUs). Op basis van het aantal ingerichte RU's wordt bepaald hoeveel mediataken tegelijk kunnen worden verwerkt voor een bepaald account.
 
@@ -177,7 +177,7 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-|Name|Status|Datacenters
+|Naam|Status|Datacenters
 |---|---|---|
 |Standard|Algemene beschikbaarheid|Alle|
 |Premium|Algemene beschikbaarheid|Alle|
@@ -186,7 +186,7 @@ Media Services-klanten kunnen een **Standard**-streaming-eindpunt of een Premium
 
 #### <a name="availability"></a>Beschikbaarheid
 
-Beschikbaar in alle datacenters behalve: Duitsland, Brazilië - zuid, India - west, India - zuid en India - centraal. 
+Beschikbaar in alle datacenters, behalve in: Duitsland, BR - zuid, India - west, India - zuid en India - centraal. 
 
 ### <a name="encoding-media-processors"></a>Mediaprocessors coderen
 
@@ -212,7 +212,6 @@ Media Analytics is een verzameling spraakonderdelen en visuele onderdelen waarme
 |Azure Media Motion Detector|Preview|Alle|
 |Azure Media OCR|Preview|Alle|
 |Azure Media Redactor|Preview|Alle|
-|Azure Media Stabilizer|Preview|Alle|
 |Azure Media Video Thumbnails|Preview|Alle|
 |Azure Media Indexer 2|Preview|Overal behalve China en regio federale overheid|
 
@@ -224,7 +223,7 @@ Met Microsoft Azure Media Services kunt u uw media beveiligen vanaf het moment d
 
 |Versleuteling|Status|Datacenters|
 |---|---|---| 
-|Opslag|Algemene beschikbaarheid|Alle|
+|Storage|Algemene beschikbaarheid|Alle|
 |AES-128-sleutels|Algemene beschikbaarheid|Alle|
 |FairPlay|Algemene beschikbaarheid|Alle|
 |PlayReady|Algemene beschikbaarheid|Alle|
@@ -242,7 +241,7 @@ Beschikbaar in alle datacenters.
 
 ### <a name="reserved-unit-ru-type"></a>Gereserveerde-eenheidstype (RU)
 
-Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: S1, S2, or S3.
+Media Services-accounts worden gekoppeld aan een gereserveerde-eenheidstype, waarmee wordt bepaald hoe snel de mediaverwerkingstaken worden verwerkt. U kunt kiezen uit de volgende gereserveerde-eenheidstypen: S1, S2 en S3.
 
 Zie de sectie [Schalen](#scaling) voor meer informatie.
 

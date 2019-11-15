@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: dacurwin
-ms.openlocfilehash: 15bf955d6055ed91b486d34cf9d805de34e9f8f5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 92717e704fb3f9e79b364fcf47bbcc096c5dd1d0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074833"
+ms.locfileid: "74090743"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Opslag toevoegen aan Azure Backup Server
 
@@ -22,6 +22,8 @@ Azure Backup Server v2 en hoger ondersteunt Modern Backup Storage die opslag bes
 > [!NOTE]
 > Als u Modern Backup Storage wilt gebruiken, moet u back-upserver v2 of v3 uitvoeren op Windows Server 2016 of v3 op Windows Server 2019.
 > Als u back-upserver v2 uitvoert op een eerdere versie van Windows Server, kan Azure Backup Server niet profiteren van Modern Backup Storage. In plaats daarvan beveiligt de werk belasting zoals bij back-upserver v1. Zie voor meer informatie de matrix van de back-upserver versie [beveiliging](backup-mabs-protection-matrix.md).
+>
+> Om verbeterde back-upprestaties te bieden, raden we u aan om MABS v3 te implementeren met gelaagde opslag op Windows Server 2019. Raadpleeg het DPM-artikel '[MBS met tiered Storage instellen](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-2019#set-up-mbs-with-tiered-storage)' voor de stappen voor het configureren van gelaagde opslag.
 
 ## <a name="volumes-in-backup-server"></a>Volumes in back-upserver
 
@@ -64,6 +66,11 @@ Als u back-upserver v2 of nieuwer gebruikt met volumes als schijf opslag, kunt u
     ![De server en schijf selecteren](./media/backup-mabs-add-storage/mabs-add-storage-6.png)
 
 ## <a name="add-volumes-to-backup-server-disk-storage"></a>Volumes toevoegen aan de back-upserver schijf opslag
+
+> [!NOTE]
+>
+> - Voeg slechts één schijf toe aan de groep om de kolom telling op 1 te laten staan. Daarna kunt u een schijf toevoegen als dat nodig is.
+> - Als u onderweg meerdere schijven aan de opslag groep toevoegt, wordt het aantal schijven opgeslagen als het aantal kolommen. Wanneer er meer schijven worden toegevoegd, kunnen ze alleen een meervoud van het aantal kolommen zijn.
 
 Als u een volume wilt toevoegen aan de back-upserver, scant u in het deel venster **beheer** de opslag opnieuw en selecteert u vervolgens **toevoegen**. Er wordt een lijst weer gegeven met alle volumes die kunnen worden toegevoegd voor de opslag van back-upservers. Nadat de beschik bare volumes zijn toegevoegd aan de lijst met geselecteerde volumes, kunt u ze een beschrijvende naam geven om ze te beheren. Als u deze volumes wilt Format teren naar ReFS zodat de back-upserver de voor delen van Modern Backup Storage kan gebruiken, selecteert u **OK**.
 

@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2585b47d049047cc191bfc284c4486361917f1ed
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: c4c8f123eb8c32362219f21dc70d137f2cc9b4b1
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802063"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078826"
 ---
-# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: De Azure AD Graph API gebruiken
+# <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: de Azure AD-Graph API gebruiken
 
 Azure Active Directory B2C (Azure AD B2C)-tenants kunnen duizenden of miljoenen gebruikers hebben. Dit betekent dat veel veelvoorkomende Tenant beheer taken programmatisch moeten worden uitgevoerd. Een goed voorbeeld is gebruikersbeheer.
 
@@ -28,7 +28,7 @@ Voor B2C-tenants zijn er twee primaire modi om te communiceren met de Graph API:
 * Voor **interactieve**, eenmalige taken moet u als Administrator account in de B2C-Tenant fungeren wanneer u de taken uitvoert. In deze modus moet een beheerder zich aanmelden met referenties voordat de beheerder aanroepen naar de Graph API kan uitvoeren.
 * Voor **geautomatiseerde**, doorlopende taken moet u een type service account gebruiken dat u opgeeft met de benodigde bevoegdheden voor het uitvoeren van beheer taken. In azure AD kunt u dit doen door een toepassing te registreren en te verifiëren bij Azure AD. Dit wordt gedaan met behulp van een *toepassings-id* die gebruikmaakt van de [OAuth 2,0-client referenties toewijzen](../active-directory/develop/service-to-service.md). In dit geval fungeert de toepassing als zichzelf, niet als gebruiker, om de Graph API aan te roepen.
 
-In dit artikel leert u hoe u de geautomatiseerde use-case uitvoert. U maakt een .net 4,5 `B2CGraphClient` waarmee gebruikers ruwe, voor het maken, lezen, bijwerken en verwijderen van bewerkingen worden uitgevoerd. De client heeft een Windows-opdracht regel interface (CLI) waarmee u verschillende methoden kunt aanroepen. De code wordt echter geschreven zodat deze zich op een niet-interactieve, geautomatiseerde manier bevindt.
+In dit artikel leert u hoe u de geautomatiseerde use-case uitvoert. U bouwt een .NET 4,5-`B2CGraphClient` op waarmee gebruikers ruwe, lees-, update-en delete-bewerkingen (ruw) uitvoeren. De client heeft een Windows-opdracht regel interface (CLI) waarmee u verschillende methoden kunt aanroepen. De code wordt echter geschreven zodat deze zich op een niet-interactieve, geautomatiseerde manier bevindt.
 
 >[!IMPORTANT]
 > U **moet** de [Azure AD-Graph API](../active-directory/develop/active-directory-graph-api-quickstart.md) gebruiken om gebruikers in een Azure AD B2C Directory te beheren. De Azure AD-Graph API wijkt af van de Microsoft Graph-API. Meer informatie vindt u in dit MSDN-blog bericht: [Microsoft Graph of Azure AD Graph](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/).
@@ -77,7 +77,7 @@ Uw Azure AD B2C-toepassing heeft nu de extra machtigingen die vereist zijn om ge
 
 Het code voorbeeld is een .NET-console toepassing die gebruikmaakt van de [Active Directory Authentication Library (ADAL)](../active-directory/develop/active-directory-authentication-libraries.md) om te communiceren met Azure AD-Graph API. De code laat zien hoe u de API aanroept om gebruikers programmatisch te beheren in een Azure AD B2C-Tenant.
 
-U kunt [het voorbeeld archief](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) downloaden of de GitHub-opslag plaats klonen:
+U kunt [het voor beeld-archief](https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet/archive/master.zip) (\*. zip) downloaden of de GitHub-opslag plaats klonen:
 
 ```cmd
 git clone https://github.com/AzureADQuickStarts/B2C-GraphAPI-DotNet.git
@@ -87,7 +87,7 @@ Nadat u het code voorbeeld hebt verkregen, configureert u dit voor uw omgeving e
 
 1. Open de oplossing `B2CGraphClient\B2CGraphClient.sln` in Visual Studio.
 1. Open het bestand *app. config* in het project **B2CGraphClient** .
-1. Vervang de `<appSettings>` sectie door de volgende XML-code. Vervang `{your-b2c-tenant}` vervolgens door de naam van uw Tenant en `{Application ID}` en `{Client secret}` met de waarden die u eerder hebt vastgelegd.
+1. Vervang de sectie `<appSettings>` door de volgende XML-code. Vervang `{your-b2c-tenant}` door de naam van uw Tenant en `{Application ID}` en `{Client secret}` met de waarden die u eerder hebt vastgelegd.
 
     ```xml
     <appSettings>
@@ -99,29 +99,29 @@ Nadat u het code voorbeeld hebt verkregen, configureert u dit voor uw omgeving e
 
 1. Bouw de oplossing. Klik met de rechter muisknop op de **B2CGraphClient** -oplossing in de Solution Explorer en selecteer vervolgens **oplossing opnieuw bouwen**.
 
-Als de build is geslaagd, kan `B2C.exe` de console toepassing worden gevonden in `B2CGraphClient\bin\Debug`.
+Als de build is geslaagd, kunt u de `B2C.exe`-console toepassing vinden in `B2CGraphClient\bin\Debug`.
 
 ## <a name="review-the-sample-code"></a>De voorbeeldcode controleren
 
-Als u de B2CGraphClient wilt gebruiken, opent u een`cmd.exe`opdracht prompt () en gaat `Debug` u naar de map van het project. Voer vervolgens de `B2C Help` opdracht uit.
+Als u de B2CGraphClient wilt gebruiken, opent u een opdracht prompt (`cmd.exe`) en wijzigt u de `Debug` Directory van het project. Voer vervolgens de `B2C Help` opdracht uit.
 
 ```cmd
 cd B2CGraphClient\bin\Debug
 B2C Help
 ```
 
-De `B2C Help` opdracht geeft een korte beschrijving van de beschik bare subopdrachten. Telkens wanneer u een van de subopdrachten aanroept `B2CGraphClient` , verzendt een aanvraag naar de Azure AD-Graph API.
+De `B2C Help` opdracht geeft een korte beschrijving van de beschik bare subopdrachten. Telkens wanneer u een van de subopdrachten aanroept, stuurt `B2CGraphClient` een aanvraag naar de Azure AD-Graph API.
 
 In de volgende secties wordt beschreven hoe de code van de toepassing aanroepen naar de Azure AD-Graph API.
 
 ### <a name="get-an-access-token"></a>Een toegangstoken opvragen
 
-Elke aanvraag voor de Azure AD-Graph API vereist een toegangs token voor verificatie. `B2CGraphClient`maakt gebruik van open source Active Directory Authentication Library (ADAL) om toegangs tokens te verkrijgen. ADAL maakt het verkrijgen van tokens eenvoudiger door het aanbieden van een helper-API en het uitvoeren van een aantal belang rijke details zoals het opslaan van toegangs tokens in de cache. U hoeft ADAL echter niet te gebruiken om tokens op te halen. U kunt in plaats daarvan tokens ophalen door HTTP-aanvragen hand matig te gebruiken.
+Elke aanvraag voor de Azure AD-Graph API vereist een toegangs token voor verificatie. `B2CGraphClient` maakt gebruik van de open-source Active Directory Authentication Library (ADAL) om toegangs tokens te verkrijgen. ADAL maakt het verkrijgen van tokens eenvoudiger door het aanbieden van een helper-API en het uitvoeren van een aantal belang rijke details zoals het opslaan van toegangs tokens in de cache. U hoeft ADAL echter niet te gebruiken om tokens op te halen. U kunt in plaats daarvan tokens ophalen door HTTP-aanvragen hand matig te gebruiken.
 
 > [!NOTE]
 > U moet ADAL v2 of hoger gebruiken om toegang te krijgen tot tokens die kunnen worden gebruikt met de Azure AD-Graph API. U kunt ADAL v1 niet gebruiken.
 
-Wanneer `B2CGraphClient` wordt uitgevoerd, wordt er een exemplaar van de `B2CGraphClient` klasse gemaakt. Met de constructor voor deze klasse wordt de ADAL-verificatie steiger ingesteld:
+Wanneer `B2CGraphClient` wordt uitgevoerd, wordt er een instantie van de `B2CGraphClient`-klasse gemaakt. Met de constructor voor deze klasse wordt de ADAL-verificatie steiger ingesteld:
 
 ```csharp
 public B2CGraphClient(string clientId, string clientSecret, string tenant)
@@ -142,7 +142,7 @@ public B2CGraphClient(string clientId, string clientSecret, string tenant)
 
 Laten we de `B2C Get-User` opdracht als voor beeld gebruiken.
 
-Wanneer `B2C Get-User` wordt aangeroepen zonder aanvullende argumenten, roept de toepassing de `B2CGraphClient.GetAllUsers()` -methode aan. `GetAllUsers()`vervolgens worden `B2CGraphClient.SendGraphGetRequest()`aangeroepen, waarmee een HTTP GET-aanvraag naar de Azure AD-Graph API wordt verzonden. Voordat `B2CGraphClient.SendGraphGetRequest()` de GET-aanvraag wordt verzonden, verkrijgt deze eerst een toegangs token met behulp van ADAL:
+Wanneer `B2C Get-User` wordt aangeroepen zonder aanvullende argumenten, roept de toepassing de `B2CGraphClient.GetAllUsers()`-methode aan. `GetAllUsers()` roept vervolgens `B2CGraphClient.SendGraphGetRequest()`aan, waarmee een HTTP GET-aanvraag naar de Azure AD-Graph API wordt verzonden. Voordat `B2CGraphClient.SendGraphGetRequest()` de GET-aanvraag verzendt, verkrijgt het eerst een toegangs token met behulp van ADAL:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -153,11 +153,11 @@ public async Task<string> SendGraphGetRequest(string api, string query)
     ...
 ```
 
-U kunt een toegangs token voor de Graph API verkrijgen door de methode ADAL `AuthenticationContext.AcquireToken()` aan te roepen. ADAL retourneert vervolgens een `access_token` waarde die de identiteit van de toepassing vertegenwoordigt.
+U kunt een toegangs token voor de Graph API verkrijgen door de methode ADAL `AuthenticationContext.AcquireToken()` aan te roepen. ADAL retourneert vervolgens een `access_token` dat de identiteit van de toepassing vertegenwoordigt.
 
 ### <a name="read-users"></a>Gebruikers lezen
 
-Als u een lijst met gebruikers wilt ophalen of een bepaalde gebruiker wilt ophalen uit de Azure AD-Graph API, kunt u een http `GET` -aanvraag verzenden `/users` naar het eind punt. Een aanvraag voor alle gebruikers in een Tenant ziet er als volgt uit:
+Als u een lijst met gebruikers wilt ophalen of een bepaalde gebruiker van de Azure AD-Graph API wilt ontvangen, kunt u een HTTP-`GET` aanvraag verzenden naar het eind punt `/users`. Een aanvraag voor alle gebruikers in een Tenant ziet er als volgt uit:
 
 ```HTTP
 GET https://graph.windows.net/contosob2c.onmicrosoft.com/users?api-version=1.6
@@ -172,10 +172,10 @@ Als u deze aanvraag wilt bekijken, voert u de volgende opdracht uit:
 
 Er zijn twee belang rijke dingen die u moet weten:
 
-* Het toegangs token dat is verkregen met behulp van ADAL `Authorization` , wordt toegevoegd aan `Bearer` de koptekst met behulp van het schema.
+* Het toegangs token dat is verkregen met behulp van ADAL, wordt toegevoegd aan de `Authorization`-header door gebruik te maken van het `Bearer`-schema.
 * Voor B2C-tenants moet u de query parameter `api-version=1.6`gebruiken.
 
-Beide Details worden behandeld in de `B2CGraphClient.SendGraphGetRequest()` -methode:
+Beide gegevens worden verwerkt in de `B2CGraphClient.SendGraphGetRequest()` methode:
 
 ```csharp
 public async Task<string> SendGraphGetRequest(string api, string query)
@@ -200,7 +200,7 @@ public async Task<string> SendGraphGetRequest(string api, string query)
 
 ### <a name="create-consumer-user-accounts"></a>Gebruikers accounts voor consumenten maken
 
-Wanneer u gebruikers accounts maakt in uw B2C-Tenant, kunt u een http `POST` -aanvraag verzenden `/users` naar het eind punt. De volgende http `POST` -aanvraag toont een voor beeld van een gebruiker die moet worden gemaakt in de Tenant.
+Wanneer u gebruikers accounts maakt in uw B2C-Tenant, kunt u een HTTP-`POST` aanvraag verzenden naar het `/users`-eind punt. De volgende HTTP-`POST` aanvraag toont een voor beeld van een gebruiker die moet worden gemaakt in de Tenant.
 
 De meeste eigenschappen in de volgende aanvraag zijn vereist om consumenten gebruikers te maken. De `//` opmerkingen zijn opgenomen voor de illustratie. Neem deze niet op in een daad werkelijke aanvraag.
 
@@ -238,22 +238,22 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-De `Create-User` opdracht wordt gebruikt als een invoer parameter een JSON-bestand dat een JSON-weer gave van een gebruikers object bevat. Er zijn twee voor beelden van json-bestanden in het `usertemplate-email.json` code `usertemplate-username.json`voorbeeld: en. U kunt deze bestanden aanpassen aan uw behoeften. Naast de hierboven genoemde velden zijn er verschillende optionele velden opgenomen in de bestanden.
+De `Create-User` opdracht neemt als invoer parameter een JSON-bestand op dat een JSON-weer gave van een gebruikers object bevat. Er zijn twee voor beelden van JSON-bestanden in het code voorbeeld: `usertemplate-email.json` en `usertemplate-username.json`. U kunt deze bestanden aanpassen aan uw behoeften. Naast de hierboven genoemde velden zijn er verschillende optionele velden opgenomen in de bestanden.
 
 Zie voor meer informatie over verplichte en optionele velden de [verwijzing entiteit en complex type | Graph API verwijzing](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference).
 
 U kunt zien hoe de POST-aanvraag is geconstrueerd in `B2CGraphClient.SendGraphPostRequest()`:
 
-* Er wordt een toegangs token aan de `Authorization` header van de aanvraag gekoppeld.
-* Het wordt `api-version=1.6`ingesteld.
+* Hiermee wordt een toegangs token gekoppeld aan de `Authorization`-header van de aanvraag.
+* `api-version=1.6`wordt ingesteld.
 * Het bevat het JSON-gebruikers object in de hoofd tekst van de aanvraag.
 
 > [!NOTE]
-> Als de accounts die u wilt migreren vanuit een bestaand gebruikers archief een lagere wachtwoord sterkte hebben dan de [sterke wachtwoord sterkte die door Azure AD B2C wordt afgedwongen](active-directory-b2c-reference-password-complexity.md), kunt u de vereiste voor sterke wacht woorden uitschakelen `DisableStrongPassword` met behulp van de waarde in de `passwordPolicies`eigenschap. U kunt bijvoorbeeld de vorige aanvraag voor het maken van een gebruiker als volgt `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`wijzigen:.
+> Als de accounts die u wilt migreren vanuit een bestaand gebruikers archief een lagere wachtwoord sterkte hebben dan de [sterke wachtwoord sterkte die wordt afgedwongen door Azure AD B2C](active-directory-b2c-reference-password-complexity.md), kunt u de vereiste voor sterke wacht woorden uitschakelen met behulp van de `DisableStrongPassword` waarde in de `passwordPolicies` eigenschap. U kunt bijvoorbeeld de vorige aanvraag voor het maken van een gebruiker als volgt wijzigen: `"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`.
 
 ### <a name="update-consumer-user-accounts"></a>Gebruikers accounts van consumenten bijwerken
 
-Wanneer u gebruikers objecten bijwerkt, is het proces vergelijkbaar met het account dat u gebruikt om gebruikers objecten te maken, `PATCH` maar wordt de HTTP-methode gebruikt:
+Wanneer u gebruikers objecten bijwerkt, is het proces vergelijkbaar met het account dat u gebruikt om gebruikers objecten te maken, maar wordt de HTTP-`PATCH` methode gebruikt:
 
 ```HTTP
 PATCH https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
@@ -266,21 +266,22 @@ Content-Length: 37
 }
 ```
 
-Probeer een gebruiker bij te werken door bepaalde waarden in uw json-bestanden te wijzigen en `B2CGraphClient` gebruik vervolgens de om een van de volgende opdrachten uit te voeren:
+Probeer een gebruiker bij te werken door bepaalde waarden in uw JSON-bestanden te wijzigen en gebruik vervolgens de `B2CGraphClient` om een van de volgende opdrachten uit te voeren:
 
 ```cmd
 B2C Update-User <user-object-id> ..\..\..\usertemplate-email.json
 B2C Update-User <user-object-id> ..\..\..\usertemplate-username.json
 ```
 
-Inspecteer `B2CGraphClient.SendGraphPatchRequest()` de methode voor meer informatie over het verzenden van deze aanvraag.
+Controleer de `B2CGraphClient.SendGraphPatchRequest()` methode voor meer informatie over het verzenden van deze aanvraag.
 
 ### <a name="search-users"></a>Gebruikers zoeken
 
-U kunt op twee manieren zoeken naar gebruikers in uw B2C-Tenant:
+U kunt op de volgende manieren zoeken naar gebruikers in uw B2C-Tenant:
 
 * Verwijzing naar de **object-id**van de gebruiker.
-* Verwijzing naar de id van de aanmelding, `signInNames` de eigenschap.
+* Verwijzing naar de id van de aanmelding, de eigenschap `signInNames`.
+* Verwijs naar een van de geldige OData-para meters, zoals voor naam, roep, displayName, enzovoort.
 
 Voer een van de volgende opdrachten uit om een gebruiker te zoeken:
 
@@ -294,11 +295,14 @@ Bijvoorbeeld:
 ```cmd
 B2C Get-User 2bcf1067-90b6-4253-9991-7f16449c2d91
 B2C Get-User $filter=signInNames/any(x:x/value%20eq%20%27consumer@fabrikam.com%27)
+B2C get-user $filter=givenName%20eq%20%27John%27
+B2C get-user $filter=surname%20eq%20%27Doe%27
+B2C get-user $filter=displayName%20eq%20%27John%20Doe%27
 ```
 
 ### <a name="delete-users"></a>Gebruikers verwijderen
 
-Als u gebruikers wilt verwijderen, gebruikt `DELETE` u de HTTP-methode en maakt u de URL met de object-id van de gebruiker:
+Als u gebruikers wilt verwijderen, gebruikt u de HTTP-`DELETE` methode en maakt u de URL met de object-ID van de gebruiker:
 
 ```HTTP
 DELETE https://graph.windows.net/contosob2c.onmicrosoft.com/users/<user-object-id>?api-version=1.6
@@ -311,7 +315,7 @@ Als u een voor beeld wilt weer geven, voert u deze opdracht in en bekijkt u de a
 B2C Delete-User <object-id-of-user>
 ```
 
-Inspecteer `B2CGraphClient.SendGraphDeleteRequest()` de methode voor meer informatie over het verzenden van deze aanvraag.
+Controleer de `B2CGraphClient.SendGraphDeleteRequest()` methode voor meer informatie over het verzenden van deze aanvraag.
 
 U kunt naast gebruikers beheer veel andere acties uitvoeren met de Azure AD-Graph API. De [Naslag informatie voor Azure AD-Graph API](/previous-versions/azure/ad/graph/api/api-catalog) bevat details over elke actie, samen met voorbeeld aanvragen.
 
@@ -321,7 +325,7 @@ De meeste consumenten toepassingen moeten bepaalde soorten aangepaste gebruikers
 
 Als u een aangepast kenmerk wilt definiëren in uw B2C-Tenant, raadpleegt u de [verwijzing naar het aangepaste kenmerk B2C](active-directory-b2c-reference-custom-attr.md).
 
-U kunt de aangepaste kenmerken die zijn gedefinieerd in uw B2C-Tenant weer geven `B2CGraphClient` met behulp van de volgende opdrachten:
+U kunt de aangepaste kenmerken die zijn gedefinieerd in uw B2C-Tenant weer geven met behulp van de volgende `B2CGraphClient` opdrachten:
 
 ```cmd
 B2C Get-B2C-Application
@@ -354,11 +358,11 @@ B2C Update-User <object-id-of-user> <path-to-json-file>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-`B2CGraphClient`Met kunt u een service toepassing hebben waarmee uw B2C-Tenant gebruikers programmatisch kunnen worden beheerd. `B2CGraphClient`maakt gebruik van een eigen toepassings identiteit voor verificatie bij de Azure AD-Graph API. Er worden ook tokens verkregen met behulp van een client geheim.
+Als u `B2CGraphClient`gebruikt, hebt u een service toepassing waarmee u de B2C-Tenant gebruikers programmatisch kunt beheren. `B2CGraphClient` gebruikt een eigen toepassings-id om te verifiëren bij de Azure AD-Graph API. Er worden ook tokens verkregen met behulp van een client geheim.
 
 Als u deze functionaliteit in uw eigen toepassing opneemt, moet u enkele belang rijke punten onthouden voor B2C-toepassingen:
 
 * Ken de vereiste machtigingen toe aan de toepassing in de Tenant.
 * Voor Taan moet u ADAL (niet MSAL) gebruiken om toegangs tokens te verkrijgen. (U kunt ook protocol berichten rechtstreeks verzenden zonder een bibliotheek te gebruiken.)
-* Wanneer u de Graph API aanroept, `api-version=1.6`gebruikt u.
+* Wanneer u de Graph API aanroept, gebruikt u `api-version=1.6`.
 * Wanneer u consumenten gebruikers maakt en bijwerkt, zijn er enkele eigenschappen vereist, zoals hierboven wordt beschreven.

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: robinsh
-ms.openlocfilehash: 8d071d4cd6ae3f9a52433104075e396d70d5bc57
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4d8771d49f30d94aeb6dfa855f5c2ef107076afb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828693"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083270"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Een Azure IoT hub klonen naar een andere regio
 
@@ -383,7 +383,7 @@ Maak de nieuwe hub op de nieuwe locatie met behulp van de sjabloon. Als u router
 
    **Ik ga akkoord met selectie vakjes**: Dit betekent dat u akkoord gaat om te betalen voor de resource (s) die u maakt.
 
-1. Selecteer de knop **kopen** .
+1. Selecteer de **aankoop** knop.
 
 De portal valideert nu uw sjabloon en implementeert uw gekloonde hub. Als u routerings configuratie gegevens hebt, wordt deze opgenomen in de nieuwe hub, maar wordt de resource op de voor gaande locatie aangeleverd.
 
@@ -391,7 +391,7 @@ De portal valideert nu uw sjabloon en implementeert uw gekloonde hub. Als u rout
 
 Nu u uw kloon actief hebt, moet u alle apparaten van de oorspronkelijke hub kopiëren naar de kloon. 
 
-Er zijn meerdere manieren om dit te bereiken. U hebt de [Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps.md)al gebruikt om de apparaten in te richten, of u hebt er geen gedaan. Als u dit hebt gedaan, is dit niet lastig. Als dat niet het geval is, kan dit zeer gecompliceerd zijn. 
+Er zijn meerdere manieren om dit te bereiken. U hebt de [Device Provisioning Service (DPS)](/azure/iot-dps/about-iot-dps)al gebruikt om de apparaten in te richten, of u hebt er geen gedaan. Als u dit hebt gedaan, is dit niet lastig. Als dat niet het geval is, kan dit zeer gecompliceerd zijn. 
 
 Als u DPS niet hebt gebruikt voor het inrichten van uw apparaten, kunt u de volgende sectie overs Laan en beginnen met het [gebruik van importeren/exporteren om de apparaten te verplaatsen naar de nieuwe hub](#using-import-export-to-move-the-devices-to-the-new-hub).
 

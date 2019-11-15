@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: dacurwin
-ms.openlocfilehash: a86af57f49b91615cc453946b0b5d51d22f2d163
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 9e5103fad517e695198602a182574de964a9c504
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747440"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091127"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Recovery Services-kluizen beheren en controleren
 
@@ -100,7 +100,7 @@ Standaard worden alle details, met uitzonde ring van de **laatste tijdstippen**,
 * Beveiligde server
 * Severity
 * Duur
-* Aanmaak tijd
+* Aanmaaktijd
 * Status
 * Laatste tijdstip waarop de gebeurtenis is opgetreden
 
@@ -204,7 +204,7 @@ De filters wijzigen:
 
 2. Kies de filter instellingen en klik op **gereed**. De gefilterde lijst wordt vernieuwd op basis van de nieuwe instellingen.
 
-#### <a name="item-type"></a>Item type
+#### <a name="item-type"></a>Itemtype
 
 Het item type is het type back-upbeheer van het beveiligde exemplaar. Er zijn vier typen; Zie de volgende lijst. U kunt alle item typen of één item type weer geven. U kunt niet twee of drie item typen selecteren. De beschik bare typen items zijn:
 
@@ -221,7 +221,7 @@ U kunt één bewerking of alle bewerkingen weer geven. U kunt twee of drie bewer
 * Alle bewerkingen
 * Registreren
 * Back-up configureren
-* Back-up maken
+* Backup
 * Herstellen
 * Back-up uitschakelen
 * Back-upgegevens verwijderen

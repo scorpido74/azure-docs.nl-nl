@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/31/2019
 ms.author: victorh
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 63c3f2080a74142f3f9a68852092cbc527c4483b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f2cf69b456aeccd6da5ac393b88171fb3bb03cf2
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73470069"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082549"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Veelgestelde vragen over Application Gateway
 
@@ -91,7 +91,7 @@ Zie [Application Gateway de grootte](https://docs.microsoft.com/azure/applicatio
 
 Ja. Naast meerdere exemplaren van een bepaalde Application Gateway-implementatie, kunt u een andere unieke Application Gateway resource inrichten voor een bestaand subnet dat een andere Application Gateway resource bevat.
 
-Eén subnet ondersteunt niet zowel Standard_v2 als standaard Application Gateway samen.
+Eén subnet biedt geen ondersteuning voor zowel Standard_v2 als standaard Application Gateway samen.
 
 ### <a name="does-application-gateway-support-x-forwarded-for-headers"></a>Ondersteunt Application Gateway x-doorgestuurd-voor kopteksten?
 
@@ -290,10 +290,6 @@ Nee, gebruik alleen alfanumerieke tekens in het wacht woord voor het pfx-bestand
 
 Ja. WAF biedt ondersteuning voor alle functies in de standaard-SKU.
 
-### <a name="which-crs-versions-does-application-gateway-support"></a>Welke CRS-versies ondersteunt Application Gateway?
-
-Application Gateway ondersteunt CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) en CRS [3,0](application-gateway-crs-rulegroups-rules.md#owasp30).
-
 ### <a name="how-do-i-monitor-waf"></a>WAF Hoe kan ik controleren?
 
 Bewaak WAF via diagnostische logboek registratie. Zie [Diagnostische logboek registratie en metrische gegevens voor Application Gateway](application-gateway-diagnostics.md)voor meer informatie.
@@ -308,7 +304,7 @@ Ja. Zie [WAF-regel groepen en-regels aanpassen](application-gateway-customize-wa
 
 ### <a name="what-rules-are-currently-available-for-waf"></a>Welke regels zijn momenteel beschikbaar voor WAF?
 
-WAF biedt momenteel ondersteuning voor CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229) en [3,0](application-gateway-crs-rulegroups-rules.md#owasp30). Deze regels bieden basis beveiliging tegen de meeste van de Top-10 beveiligings problemen die OWASP (Web Application Security project) identificeren: 
+WAF biedt momenteel ondersteuning voor CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)en [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31). Deze regels bieden basis beveiliging tegen de meeste van de Top-10 beveiligings problemen die OWASP (Web Application Security project) identificeren: 
 
 * Beveiliging tegen SQL-injecties
 * Beveiliging voor cross-site scripting

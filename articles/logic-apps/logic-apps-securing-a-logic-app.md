@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 57bea93fd03dc19caa1ce29a34a40bc3cff06209
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: c9dfc4ed6fce186fea9474222875a072edb32f59
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039064"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084727"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Beveiligde toegang en gegevens in Azure Logic Apps
 
@@ -659,7 +659,7 @@ Als de optie [client certificaat](../active-directory/authentication/active-dire
 | Eigenschap (Designer) | Eigenschap (JSON) | Vereist | Waarde | Beschrijving |
 |---------------------|-----------------|----------|-------|-------------|
 | **Verificatie** | `type` | Ja | **Client certificaat** <br>of <br>`ClientCertificate` | Het verificatie type dat moet worden gebruikt voor client certificaten voor Secure Sockets Layer (SSL). Zelfondertekende certificaten worden ondersteund, maar zelfondertekende certificaten voor SSL worden niet ondersteund. |
-| **Pfx** | `pfx` | Ja | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) |
+| **Pfx** | `pfx` | Ja | <*encoded-pfx-bestand-inhoud*> | De met base64 gecodeerde inhoud van een PFX-bestand (Personal Information Exchange) <p><p>Als u het PFX-bestand wilt converteren naar een base64-gecodeerde indeling, kunt u Power shell gebruiken door de volgende stappen uit te voeren: <p>1. Sla de certificaat inhoud op in een variabele: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. Converteer de certificaat inhoud met behulp van de functie `ToBase64String()` en sla die inhoud op in een tekst bestand: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
 | **Wachtwoord** | `password`| Zie beschrijving | <*wacht woord voor pfx-bestand*> | Het wacht woord voor toegang tot het PFX-bestand. <p><p>**Opmerking**: deze eigenschaps waarde is vereist wanneer u werkt in de ontwerp functie voor logische apps en is *niet* vereist wanneer u in de code weergave werkt. |
 |||||
 

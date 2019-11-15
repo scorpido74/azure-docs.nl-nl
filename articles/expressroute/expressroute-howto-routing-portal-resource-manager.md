@@ -1,5 +1,5 @@
 ---
-title: 'Peering configureren voor een circuit-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure-ExpressRoute: peering configureren'
 description: In dit artikel worden de stappen beschreven voor het maken en inrichten van ExpressRoute persoonlijke en micro soft-peering. In dit artikel wordt ook gedemonstreerd hoe u de status van een circuit controleert, bijwerkt of verwijdert.
 services: expressroute
 author: mialdrid
@@ -7,25 +7,24 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/28/2019
 ms.author: mialdrid
-ms.custom: seodec18
-ms.openlocfilehash: 30b330d60d75896406cbdf2d1eb41537960c5be5
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 5fb728cccd77d0cefd10c124cb7215dc3b880fe3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965293"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083525"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Peering maken en wijzigen voor een ExpressRoute-circuit
+# <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>Peering voor een ExpressRoute-circuit maken en wijzigen
 
-Dit artikel helpt u bij het maken en beheren van routerings configuratie voor een ExpressRoute-circuit met Azure Resource Manager (ARM) met behulp van de Azure Portal. U kunt ook de status van peerings voor een ExpressRoute-circuit controleren, bijwerken of verwijderen en de inrichting ongedaan maken. Als u een andere methode wilt gebruiken om met uw circuit te werken, selecteert u een artikel in de volgende lijst:
+Dit artikel helpt u bij het maken en beheren van routerings configuratie voor een ExpressRoute-circuit met Azure Resource Manager (ARM) met behulp van de Azure Portal. U kunt ook controleren op de status, bijwerken of verwijderen en inrichting van peerings voor een ExpressRoute-circuit ongedaan maken. Als u wilt een andere methode gebruiken om te werken met uw circuit, selecteert u een artikel in de volgende lijst:
 
 > [!div class="op_single_selector"]
-> * [Azure-portal](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video-open bare peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Video - Privépeering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video - openbare peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video - Microsoft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
@@ -37,19 +36,19 @@ U kunt Azure private en micro soft-peering configureren voor een ExpressRoute-ci
 * U moet een actief ExpressRoute-circuit hebben. Volg de instructies voor het [maken van een ExpressRoute-circuit](expressroute-howto-circuit-portal-resource-manager.md) en laat het circuit inschakelen door de connectiviteitsprovider voordat u verder gaat. Als u peering (s) wilt configureren, moet het ExpressRoute-Circuit de status ingericht en ingeschakeld hebben. 
 * Als u een gedeelde sleutel/MD5-hash wilt gebruiken, moet u deze aan beide zijden van de tunnel gebruiken en het aantal alfanumerieke tekens beperken tot een maximum van 25. Speciale tekens worden niet ondersteund. 
 
-Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met serviceproviders die services met Laag-2-connectiviteit aanbieden. Als u een service provider gebruikt die Managed Layer 3-services biedt (meestal een IPVPN, zoals MPLS), wordt door uw connectiviteits provider route ring voor u geconfigureerd en beheerd. 
+Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met serviceproviders die services met Laag-2-connectiviteit aanbieden. Als u een serviceprovider die beheerde laag-3-services (meestal een IPVPN, zoals MPLS), uw connectiviteitsprovider configureert en beheert routering voor u. 
 
 > [!IMPORTANT]
-> Op dit moment bieden we nog geen peerings aan die door serviceproviders worden geconfigureerd via de beheerportal van de service. Deze mogelijkheid zal binnenkort worden ingeschakeld. Neem contact op met uw service provider voordat u BGP-peerings configureert.
+> Op dit moment bieden we nog geen peerings aan die door serviceproviders worden geconfigureerd via de beheerportal van de service. Deze mogelijkheid zal binnenkort worden ingeschakeld. Neem contact op met uw serviceprovider voordat u BGP-peerings configureert.
 > 
 > 
 
-## <a name="msft"></a>Micro soft-peering
+## <a name="msft"></a>Microsoft-peering
 
-In deze sectie leert u hoe u de micro soft-peering-configuratie voor een ExpressRoute-circuit maakt, ontvangt, bijwerkt en verwijdert.
+In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de configuratie voor de Microsoft-peering voor een ExpressRoute-circuit.
 
 > [!IMPORTANT]
-> Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017, heeft alle service voorvoegsels die worden geadverteerd via de micro soft-peering, zelfs als er geen route filters zijn gedefinieerd. Micro soft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017, heeft geen voor voegsels die worden geadverteerd totdat een route filter aan het circuit is gekoppeld. Zie [Configure a route filter for micro soft peering](how-to-routefilter-powershell.md)(Engelstalig) voor meer informatie.
+> Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd vóór 1 augustus 2017 hebben alle service-voorvoegsels geadverteerd via de Microsoft-peering, zelfs als routefilters zijn niet gedefinieerd. Microsoft-peering van ExpressRoute-circuits die zijn geconfigureerd op of na 1 augustus 2017 hebben geen voorvoegsels geadverteerd totdat een routefilter is gekoppeld aan het circuit. Zie voor meer informatie, [een routefilter voor Microsoft-peering configureren](how-to-routefilter-powershell.md).
 > 
 > 
 
@@ -57,7 +56,7 @@ In deze sectie leert u hoe u de micro soft-peering-configuratie voor een Express
 
 1. Configureer het ExpressRoute-circuit. Controleer de **provider status** om er zeker van te zijn dat het circuit volledig is ingericht door de connectiviteits provider voordat u verder gaat.
 
-   Als uw connectiviteits provider beheerde Layer 3-services biedt, kunt u uw connectiviteits provider vragen om micro soft-peering voor u in te scha kelen. In dat geval hoeft u de instructies in de volgende secties niet uit te voeren. Als uw connectiviteits provider echter geen route ring voor u beheert, voert u de volgende stappen uit nadat u het circuit hebt gemaakt.
+   Als uw connectiviteitsprovider beheerde laag-3-services biedt, kunt u uw connectiviteitsprovider om in te schakelen van Microsoft-peering voor u vragen. In dat geval hoeft u de instructies in de volgende secties niet uit te voeren. Als uw connectiviteits provider echter geen route ring voor u beheert, voert u de volgende stappen uit nadat u het circuit hebt gemaakt.
 
    **Status van circuit provider: niet ingericht**
 
@@ -68,20 +67,20 @@ In deze sectie leert u hoe u de micro soft-peering-configuratie voor een Express
    [![](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png "Provider status = Provisioned")](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 2. Configureer Microsoft-peering voor het circuit. Zorg ervoor dat u over de volgende informatie beschikt voordat u verder gaat.
 
-   * Een /30-subnet voor de primaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.
-   * Een /30-subnet voor de secundaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.
-   * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel primaire als secundaire koppelingen moet u dezelfde VLAN-ID gebruiken.
+   * Een /30-subnet voor de primaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. In dit subnet wordt u het eerste bruikbaar IP-adres toewijzen aan uw router, zoals Microsoft het tweede bruikbaar IP-adres voor de router gebruikt.
+   * Een /30-subnet voor de secundaire koppeling. Dit moet een geldig openbaar IPv4-voorvoegsel zijn waarvan u eigenaar bent en dat is geregistreerd in een RIR/IRR. In dit subnet wordt u het eerste bruikbaar IP-adres toewijzen aan uw router, zoals Microsoft het tweede bruikbaar IP-adres voor de router gebruikt.
+   * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel de primaire en secundaire koppelingen moet u de dezelfde VLAN-ID.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken.
-   * Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent een aantal voor voegsels te verzenden, kunt u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.
-   * **Optioneel-** Klant-ASN: als u voor voegsels adverteert die niet zijn geregistreerd voor het peering als-nummer, kunt u het AS-nummer opgeven waarop ze zijn geregistreerd.
+   * Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. Als u van plan bent om een set voorvoegsels te verzenden, kunt u een door komma's gescheiden lijst verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.
+   * **Optioneel:** klant-ASN: als u voorvoegsels adverteert die niet zijn geregistreerd op de AS-nummer peering, kunt u het AS-nummer waaraan ze zijn geregistreerd.
    * Naam van routeringsregister: u kunt het RIR/IRR opgeven waarbij het AS-nummer en de voorvoegsels zijn geregistreerd.
-   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
-3. U kunt de peering selecteren die u wilt configureren, zoals wordt weer gegeven in het volgende voor beeld. Selecteer de rij voor Microsoft-peering.
+   * **Optioneel:** een MD5-hash, als u ervoor kiest een te gebruiken.
+3. U kunt selecteren om de peering die u configureren, wilt zoals wordt weergegeven in het volgende voorbeeld. Selecteer de rij voor Microsoft-peering.
 
    [![Selecteer de rij met micro soft-peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m.png "Selecteer de rij met micro soft-peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-m-lightbox.png#lightbox)
 4. Configureer Microsoft-peering. **Sla** de configuratie op nadat u alle para meters hebt opgegeven. De volgende afbeelding toont een voorbeeld configuratie:
 
-   ![Micro soft-peering configureren](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
+   ![Microsoft-peering configureren](./media/expressroute-howto-routing-portal-resource-manager/configuration-m.png)
 
 > [!IMPORTANT]
 > Micro soft controleert of de opgegeven ' aangekondigde open bare voor voegsels ' en ' peer-ASN ' (of ' klant-ASN ') aan u zijn toegewezen in het Internet Routing REGI ster. Als u de open bare voor voegsels van een andere entiteit krijgt en de toewijzing niet is vastgelegd met het routerings register, wordt de automatische validatie niet voltooid en moet hand matig worden gevalideerd. Als de automatische validatie mislukt, wordt het bericht validatie vereist weer gegeven. 
@@ -89,7 +88,7 @@ In deze sectie leert u hoe u de micro soft-peering-configuratie voor een Express
 > Als u het bericht validatie vereist ziet, verzamelt u de documenten die de open bare voor voegsels bevatten, worden toegewezen aan uw organisatie door de entiteit die wordt vermeld als eigenaar van de voor voegsels in het routerings register en deze documenten voor hand matige validatie indienen door een ondersteunings ticket openen zoals hieronder wordt weer gegeven. 
 >
 
-   Als uw circuit een status ' validatie vereist ' krijgt, moet u een ondersteunings ticket openen om het eigendom van de voor voegsels van het ondersteunings team weer te geven. U kunt een ondersteunings ticket rechtstreeks vanuit de portal openen, zoals wordt weer gegeven in het volgende voor beeld:
+   Als uw circuit een status ' validatie vereist ' krijgt, moet u een ondersteunings ticket openen om het eigendom van de voor voegsels van het ondersteunings team weer te geven. U kunt een ondersteuningsticket rechtstreeks vanuit de portal, zoals wordt weergegeven in het volgende voorbeeld:
 
    ![Validatie vereist: ondersteunings ticket](./media/expressroute-howto-routing-portal-resource-manager/ticket-portal-m.png)
 
@@ -97,18 +96,18 @@ In deze sectie leert u hoe u de micro soft-peering-configuratie voor een Express
 
    ![Status van peering: geconfigureerd](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "Status van peering: geconfigureerd")]
 
-### <a name="getmsft"></a>Details van micro soft-peering weer geven
+### <a name="getmsft"></a>Details van Microsoft-peering weergeven
 
 U kunt de eigenschappen van micro soft-peering weer geven door de rij voor de peering te selecteren.
 
 [![Eigenschappen van micro soft-peering weer geven](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m.png "Eigenschappen weergeven")](./media/expressroute-howto-routing-portal-resource-manager/view-peering-m-lightbox.png#lightbox)
-### <a name="updatemsft"></a>De configuratie van micro soft-peering bijwerken
+### <a name="updatemsft"></a>Configuratie van Microsoft-peering bijwerken
 
 U kunt de rij selecteren voor de peering die u wilt wijzigen, vervolgens de eigenschappen van de peering wijzigen en uw wijzigingen opslaan.
 
 ![Rij met peering selecteren](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
-### <a name="deletemsft"></a>Micro soft-peering verwijderen
+### <a name="deletemsft"></a>Microsoft-peering verwijderen
 
 U kunt de peering-configuratie verwijderen door te klikken op het pictogram verwijderen, zoals wordt weer gegeven in de volgende afbeelding:
 
@@ -116,13 +115,13 @@ U kunt de peering-configuratie verwijderen door te klikken op het pictogram verw
 
 ## <a name="private"></a>Persoonlijke Azure-peering
 
-In deze sectie leert u hoe u de persoonlijke Azure-peering-configuratie voor een ExpressRoute-circuit maakt, ontvangt, bijwerkt en verwijdert.
+In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de Azure private peering configuratie voor een ExpressRoute-circuit.
 
 ### <a name="to-create-azure-private-peering"></a>Persoonlijke Azure-peering maken
 
 1. Configureer het ExpressRoute-circuit. Zorg dat het circuit volledig is ingericht door de connectiviteitsprovider voordat u verder gaat. 
 
-   Als uw connectiviteits provider beheerde Layer 3-services biedt, kunt u uw connectiviteits provider vragen om persoonlijke Azure-peering voor u in te scha kelen. In dat geval hoeft u de instructies in de volgende secties niet uit te voeren. Als uw connectiviteits provider echter geen route ring voor u beheert, gaat u na het maken van het circuit verder met de volgende stappen.
+   Als uw connectiviteitsprovider beheerde laag-3-services biedt, kunt u uw connectiviteitsprovider om in te schakelen persoonlijke Azure-peering voor u vragen. In dat geval hoeft u de instructies in de volgende secties niet uit te voeren. Als uw connectiviteits provider echter geen route ring voor u beheert, gaat u na het maken van het circuit verder met de volgende stappen.
 
    **Status van circuit provider: niet ingericht**
 
@@ -134,29 +133,29 @@ In deze sectie leert u hoe u de persoonlijke Azure-peering-configuratie voor een
 
 2. Configureer persoonlijke Azure-peering voor het circuit. Zorg ervoor dat u de volgende items hebt voordat u verdergaat met de volgende stappen:
 
-   * Een /30-subnet voor de primaire koppeling. Het subnet mag geen deel uitmaken van een adres ruimte die is gereserveerd voor virtuele netwerken. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.
-   * Een /30-subnet voor de secundaire koppeling. Het subnet mag geen deel uitmaken van een adres ruimte die is gereserveerd voor virtuele netwerken. Vanuit dit subnet wijst u het eerste bebruikbaar bare IP-adres toe aan uw router, aangezien micro soft gebruikmaakt van het tweede bebruikbaarde IP voor de router.
-   * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel primaire als secundaire koppelingen moet u dezelfde VLAN-ID gebruiken.
+   * Een /30-subnet voor de primaire koppeling. Het subnet moet deel uitmaken van een adresruimte gereserveerd voor virtuele netwerken niet. In dit subnet wordt u het eerste bruikbaar IP-adres toewijzen aan uw router, zoals Microsoft het tweede bruikbaar IP-adres voor de router gebruikt.
+   * Een /30-subnet voor de secundaire koppeling. Het subnet moet deel uitmaken van een adresruimte gereserveerd voor virtuele netwerken niet. In dit subnet wordt u het eerste bruikbaar IP-adres toewijzen aan uw router, zoals Microsoft het tweede bruikbaar IP-adres voor de router gebruikt.
+   * Een geldige VLAN-id waarop u deze peering wilt instellen. Controleer of er geen andere peering in het circuit is die dezelfde VLAN-id gebruikt. Voor zowel de primaire en secundaire koppelingen moet u de dezelfde VLAN-ID.
    * AS-nummer voor peering. U kunt 2-bytes en 4-bytes AS-nummers gebruiken. U kunt een privé AS-nummer gebruiken voor deze peering, behalve voor het aantal van 65515 tot 65520, inclusief.
    * U moet de routes van uw on-premises edge-router naar Azure aankondigen via BGP bij het instellen van de persoonlijke peering.
-   * **Optioneel-** Een MD5-hash als u ervoor kiest om er een te gebruiken.
+   * **Optioneel:** een MD5-hash, als u ervoor kiest een te gebruiken.
 3. Selecteer de rij met persoonlijke Azure-peering, zoals wordt weer gegeven in het volgende voor beeld:
 
    [![Selecteer de rij met persoonlijke peering](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p.png "Selecteer de rij met persoonlijke peering")](./media/expressroute-howto-routing-portal-resource-manager/select-peering-p-lightbox.png#lightbox)
 4. Configureer persoonlijke Azure-peering. **Sla** de configuratie op nadat u alle para meters hebt opgegeven.
 
-   ![privé-peering configureren](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
-5. Nadat de configuratie is geaccepteerd, ziet u iets zoals in het volgende voor beeld:
+   ![Configureer persoonlijke Azure-peering](./media/expressroute-howto-routing-portal-resource-manager/configuration-p.png)
+5. Nadat de configuratie is geaccepteerd, ziet er ongeveer uitzien als in het volgende voorbeeld:
 
    ![privé-peering opgeslagen](./media/expressroute-howto-routing-portal-resource-manager/save-p.png)
 
-### <a name="getprivate"></a>Details van persoonlijke Azure-peering weer geven
+### <a name="getprivate"></a>Details van een Azure private peering weergeven
 
 U kunt de eigenschappen van persoonlijke Azure-peering weergeven door de peering te selecteren.
 
 [![Eigenschappen van privé-peering weer geven](./media/expressroute-howto-routing-portal-resource-manager/view-p.png "Eigenschappen van privé-peering weer geven")](./media/expressroute-howto-routing-portal-resource-manager/view-p-lightbox.png#lightbox)
 
-### <a name="updateprivate"></a>De configuratie voor persoonlijke Azure-peering bijwerken
+### <a name="updateprivate"></a>Configuratie van een Azure private peering bijwerken
 
 U kunt de rij voor peering selecteren en de eigenschappen van de peering wijzigen. Sla uw wijzigingen na het bijwerken op.
 
@@ -164,38 +163,38 @@ U kunt de rij voor peering selecteren en de eigenschappen van de peering wijzige
 
 ### <a name="deleteprivate"></a>Persoonlijke Azure-peering verwijderen
 
-U kunt de peering-configuratie verwijderen door het pictogram verwijderen te selecteren, zoals wordt weer gegeven in de volgende afbeelding:
+U kunt de peeringconfiguratie verwijderen door het verwijderingspictogram te selecteren zoals wordt weergegeven in de volgende afbeelding:
 
 > [!WARNING]
-> U moet ervoor zorgen dat alle virtuele netwerken en ExpressRoute Global Reach verbindingen worden verwijderd voordat u dit voor beeld uitvoert. 
+> U moet ervoor zorgen dat alle virtuele netwerken en globale bereiken ExpressRoute-verbindingen worden verwijderd voordat u het volgende voorbeeld uitvoert. 
 > 
 > 
 
 ![privé-peering verwijderen](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
-## <a name="public"></a>Open bare Azure-peering
+## <a name="public"></a>Openbare Azure-peering
 
-In deze sectie leert u hoe u de open bare Azure-peering-configuratie voor een ExpressRoute-circuit maakt, ontvangt, bijwerkt en verwijdert.
+In deze sectie helpt u bij het maken, ophalen, bijwerken en verwijderen van de Azure openbare peering configuratie voor een ExpressRoute-circuit.
 
 > [!Note]
 > Open bare Azure-peering is afgeschaft voor nieuwe circuits. Zie [ExpressRoute peering](expressroute-circuit-peerings.md)(Engelstalig) voor meer informatie.
 >
 
-### <a name="getpublic"></a>Details van open bare Azure-peering weer geven
+### <a name="getpublic"></a>Details van een Azure openbare peering weergeven
 
 De eigenschappen van open bare Azure-peering weer geven door de peering te selecteren.
 
-### <a name="updatepublic"></a>De configuratie van open bare Azure-peering bijwerken
+### <a name="updatepublic"></a>Azure-configuratie in openbare peering bijwerken
 
 Selecteer de rij voor peering en wijzig vervolgens de eigenschappen van de peering.
 
-### <a name="deletepublic"></a>Open bare Azure-peering verwijderen
+### <a name="deletepublic"></a>Openbare Azure-peering verwijderen
 
 Verwijder de peering-configuratie door het pictogram verwijderen te selecteren.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Volgende stap [een VNet koppelen aan een ExpressRoute-circuit](expressroute-howto-linkvnet-portal-resource-manager.md)
+Volgende stap, [een VNet koppelen aan een ExpressRoute-circuit](expressroute-howto-linkvnet-portal-resource-manager.md)
 * Voor meer informatie over ExpressRoute-werkstromen raadpleegt u [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-werkstromen).
 * Voor meer informatie over circuitpeering raadpleegt u [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-circuits en -routeringsdomeinen).
 * Bekijk het [Virtual network overview](../virtual-network/virtual-networks-overview.md) (Virtual Network-overzicht) voor meer informatie over het gebruik van virtuele netwerken.

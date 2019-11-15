@@ -1,5 +1,5 @@
 ---
-title: Bericht routering voor Azure IoT Hub configureren met een Azure Resource Manager-sjabloon | Microsoft Docs
+title: Bericht routering voor Azure IoT Hub configureren met een Azure Resource Manager sjabloon
 description: Bericht routering voor Azure IoT Hub configureren met een Azure Resource Manager sjabloon
 author: robinsh
 manager: philmeagit st
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ef73aed577645af5af82c439abb57022b389d040
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: 8f245653a8b84944e1e8a3f48a49992f0065be58
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809721"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084391"
 ---
 # <a name="tutorial-use-an-azure-resource-manager-template-to-configure-iot-hub-message-routing"></a>Zelf studie: een Azure Resource Manager sjabloon gebruiken om IoT Hub bericht routering te configureren
 
@@ -44,35 +44,35 @@ In de volgende sectie worden de gebruikte para meters uitgelegd.
 
 ### <a name="parameters"></a>Parameters
 
-De meeste van deze para meters hebben standaard waarden. De taken die eindigen op **_in** , worden samengevoegd met *randomValue* om ze globaal uniek te maken. 
+De meeste van deze para meters hebben standaard waarden. De taken die eindigen met **_in** worden samengevoegd met *randomValue* om ze globaal uniek te maken. 
 
 **randomValue**: deze waarde wordt gegenereerd op basis van de huidige datum/tijd wanneer u de sjabloon implementeert. Dit veld bevindt zich niet in het parameter bestand, omdat het in de sjabloon zelf wordt gegenereerd.
 
 **subscriptionId**: dit veld wordt voor u ingesteld op het abonnement waarin u de sjabloon implementeert. Dit veld bevindt zich niet in het parameter bestand omdat het voor u is ingesteld.
 
-**IoTHubName_in**: dit veld is de naam van de basis IOT hub, die wordt samengevoegd met de randomValue globaal uniek is.
+**IoTHubName_in**: dit veld is de naam van de basis IOT hub die wordt samengevoegd met de randomValue die wereld wijd uniek moet zijn.
 
 **locatie**: dit veld is de Azure-regio waarin u implementeert, zoals ' westelijke '.
 
-**consumer_group**: dit veld is de gebruikers groep die is ingesteld voor berichten die worden verzonden via het eind punt van de route ring. Het wordt gebruikt voor het filteren van resultaten in Azure Stream Analytics. Zo is de hele stroom waar u alles krijgt, of als u gegevens hebt ontvangen via consumer_group ingesteld op **Contoso**, kunt u een Azure stream Analytics stroom (en Power bi rapport) instellen om alleen die vermeldingen weer te geven. Dit veld wordt gebruikt in deel 2 van deze zelf studie.
+**consumer_group**: dit veld is de gebruikers groep die is ingesteld voor berichten die worden verzonden via het eind punt van de route ring. Het wordt gebruikt voor het filteren van resultaten in Azure Stream Analytics. Zo is de hele stroom waar u alles krijgt, of als u gegevens hebt ontvangen via consumer_group is ingesteld op **Contoso**, kunt u een Azure stream Analytics stroom (en Power bi rapport) zo instellen dat alleen die vermeldingen worden weer gegeven. Dit veld wordt gebruikt in deel 2 van deze zelf studie.
 
 **sku_name**: dit veld is het formaat van de IOT hub. Deze waarde moet S1 of hoger zijn. een gratis laag werkt niet voor deze zelf studie omdat er geen meerdere eind punten zijn toegestaan.
 
-**sku_units**: dit veld gaat in op de **sku_name**en is het aantal IOT hub eenheden dat kan worden gebruikt.
+**sku_units**: dit veld bevat de **sku_name**en het aantal IOT hub eenheden dat kan worden gebruikt.
 
 **d2c_partitions**: dit veld is het aantal partities dat wordt gebruikt voor de gebeurtenis stroom.
 
-**storageAccountName_in**: dit veld bevat de naam van het opslag account dat moet worden gemaakt. Berichten worden doorgestuurd naar een container in het opslag account. Dit veld wordt samengevoegd met het randomValue om het globaal uniek te maken.
+**storageAccountName_in**: dit veld is de naam van het opslag account dat moet worden gemaakt. Berichten worden doorgestuurd naar een container in het opslag account. Dit veld wordt samengevoegd met het randomValue om het globaal uniek te maken.
 
 **storageContainerName**: dit veld bevat de naam van de container waarin de berichten worden opgeslagen die naar het opslag account worden doorgestuurd.
 
 **storage_endpoint**: dit veld is de naam voor het eind punt van het opslag account dat wordt gebruikt door de bericht routering.
 
-**service_bus_namespace_in**: dit veld bevat de naam van de service bus naam ruimte die u wilt maken. Deze waarde wordt samengevoegd met de randomValue om deze wereld wijd uniek te maken.
+**service_bus_namespace_in**: dit veld is de naam van de service bus naam ruimte die u wilt maken. Deze waarde wordt samengevoegd met de randomValue om deze wereld wijd uniek te maken.
 
 **service_bus_queue_in**: dit veld is de naam van de service bus wachtrij die wordt gebruikt voor de route ring van berichten. Deze waarde wordt samengevoegd met de randomValue om deze wereld wijd uniek te maken.
 
-**AuthRules_sb_queue**: dit veld bevat de autorisatie regels voor de service bus-wachtrij, die wordt gebruikt om de Connection String voor de wachtrij op te halen.
+**AuthRules_sb_queue**: dit veld bevat de autorisatie regels voor de service bus-wachtrij, die wordt gebruikt voor het ophalen van de Connection String voor de wachtrij.
 
 ### <a name="variables"></a>Variabelen
 

@@ -1,21 +1,21 @@
 ---
-title: Azure-resources voorbereiden op herstel na noodgevallen van on-premises machines
+title: Azure voorbereiden op herstel na nood geval voor Hyper-V met Azure Site Recovery
 description: Meer informatie over het voorbereiden van Azure voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines met behulp van Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6064c32e14ffba7edd51c2dae7787067d14e33c9
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ef623b95e104b485c6bfc8b2f489afeca436d81e
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814354"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084179"
 ---
-# <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-resources voorbereiden op herstel na noodgevallen van on-premises machines
+# <a name="prepare-azure-resources-for-hyper-v-disaster-recovery"></a>Azure-resources voorbereiden op herstel na nood geval voor Hyper-V
 
  [Azure site Recovery](site-recovery-overview.md) helpt bedrijfs continuïteit en herstel na nood gevallen (BCDR) door zakelijke apps uit te voeren tijdens geplande en ongeplande uitval. Site Recovery beheert en orkestreert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
 
@@ -36,7 +36,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in"></a>Aanmelden
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="verify-account-permissions"></a>Accountmachtigingen controleren
 
@@ -48,11 +48,11 @@ Als u zojuist een gratis Azure-account hebt gemaakt, bent u de beheerder van dat
 
 Voor het volt ooien van deze taken moet aan uw account de ingebouwde rol Inzender voor de virtuele machine worden toegewezen. Als u Site Recovery bewerkingen in een kluis wilt beheren, moet aan uw account de ingebouwde rol Site Recovery Inzender zijn toegewezen.
 
-## <a name="create-a-storage-account"></a>Create a storage account
+## <a name="create-a-storage-account"></a>Maak een opslagaccount
 
 Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. Azure VM's worden gemaakt vanuit de opslag wanneer u een failover van on-premises naar Azure uitvoert. Het opslagaccount moet zich in dezelfde regio bevinden als de Recovery Services-kluis.
 
-1. Selecteer in het menu [Azure Portal](https://portal.azure.com) **een resource** > -**opslag** > **account maken-blob, bestand, tabel, wachtrij**.
+1. Selecteer in het menu [Azure Portal](https://portal.azure.com) **een resource maken** > **opslag** > **opslag account-blob, bestand, tabel, wachtrij**.
 2. Voer in **Opslagaccount maken** een naam voor de account in.  De naam die u kiest, moet uniek zijn in azure, tussen 3 en 24 tekens lang zijn en mag alleen kleine letters en cijfers bevatten. Voor deze zelf studie gebruikt u **contosovmsacct1910171607**.
 3. Selecteer bij **implementatiemodel** **Resource Manager**.
 4. Selecteer in **rekening soort** **opslag (algemeen-doel v1)** . Selecteer niet blob-opslag.
@@ -63,7 +63,7 @@ Installatiekopieën van gerepliceerde machines worden bewaard in Azure Storage. 
 9. Kies bij **locatie**de geografische locatie voor uw opslag account. Gebruik **Europa-West**voor deze zelf studie.
 10. Selecteer **Maken** om het opslagaccount te maken.
 
-   ![Create a storage account](media/tutorial-prepare-azure/create-storageacct.png)
+   ![Maak een opslagaccount](media/tutorial-prepare-azure/create-storageacct.png)
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 

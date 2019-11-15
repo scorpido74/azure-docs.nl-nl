@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 8967b61115d2e2e644dea93cb236f8a7cdfcfcbd
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6a001d6b501a22b4b07599792a64af735c5d4d9b
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072301"
+ms.locfileid: "74090476"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -37,7 +37,7 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 1. Open het deel venster **API-machtigingen** voor de registratie van uw app. Selecteer **een machtigings knop toevoegen** . Selecteer in het deel venster **API-machtigingen voor aanvragen** de api's die **Mijn organisatie gebruikt** tabblad en zoek naar:
     
-    1. `Azure Digital Twins`. Selecteer de **Azure Digital apparaatdubbels** -API.
+    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`). Selecteer de **Azure Digital apparaatdubbels** -API.
 
         [![Search-API of Azure Digital Apparaatdubbels](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -61,6 +61,12 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 1. Configureer een tweede **omleidings-URI** naar `https://www.getpostman.com/oauth2/callback`.
 
     [een omleidings-URI voor postman ![toevoegen](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+
+1. Als u er zeker van wilt zijn dat [de app is geregistreerd als een **open bare client**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), opent u het deel venster **verificatie** voor uw app-registratie en schuift u omlaag in het deel venster. Kies in het gedeelte **standaard client type** de optie **Ja** voor **behandelen van toepassing als een open bare client**en druk op **Opslaan**.
+
+    Controleer **toegangs tokens** om de instelling **Oauth2AllowImplicitFlow** in uw manifest. json in te scha kelen.
+
+    [configuratie-instelling ![open bare client](../../includes/media/digital-twins-permissions/aad-public-client.png)](../../includes/media/digital-twins-permissions/aad-public-client.png#lightbox)
 
 1. Kopieer de **toepassings-id** van uw Azure Active Directory-app en bewaar deze. Dit wordt gebruikt in de volgende stappen.
 

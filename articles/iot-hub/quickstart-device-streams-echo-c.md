@@ -1,5 +1,5 @@
 ---
-title: Communiceren met een apparaat-app in C via Azure IoT Hub Device streams (preview) | Microsoft Docs
+title: Communiceren met de app apparaat in C met Azure IoT Hub Device streams
 description: In deze Snelstartgids voert u een C-toepassing voor apparaten uit die met een IoT-apparaat communiceert via een apparaatgegevens stroom.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: b0a23486d81ac6b48bf7bb256e3583973a338002
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: d53b36beeca2c5e0456965cf5af19e5324b31ad9
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900907"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084215"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app in C via IoT Hub Device streams (preview)
 
@@ -56,7 +56,7 @@ U hebt de volgende vereisten nodig:
 
 De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost

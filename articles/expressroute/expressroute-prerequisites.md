@@ -1,5 +1,5 @@
 ---
-title: 'Vereisten-ExpressRoute: Azure | Microsoft Docs'
+title: 'Azure-ExpressRoute: vereisten'
 description: Deze pagina bevat een lijst met vereisten waaraan moet worden voldaan voordat u een Azure ExpressRoute-circuit kunt bestellen. Het bevat een controlelijst.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 4ef1a768356078c160b798c1a96412adda0330f6
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: a72eba9bde0745e66bdf8e7efd8eaec7d6a0b186
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123298"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083360"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>Vereisten en controlelijst voor ExpressRoute
 Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-services, moet u controleren of er is voldaan aan de vereisten die in de volgende secties worden genoemd.
@@ -30,11 +29,11 @@ Als u ExpressRoute wilt gebruiken om verbinding te maken met Microsoft Cloud-ser
 * Als uw provider geen ExpressRoute-connectiviteitspartner is, kunt u via een [cloudexchange-provider](expressroute-locations.md#connectivity-through-exchange-providers) verbinding maken met de Microsoft Cloud.
 
 ## <a name="network-requirements"></a>Netwerkvereisten
-* **Redundantie op elke peering-locatie**: Micro soft vereist dat redundante BGP-sessies worden ingesteld tussen de routers van micro soft en de peering routers op elk ExpressRoute-circuit (zelfs wanneer u slechts [één fysieke verbinding hebt met een Cloud-Exchange](expressroute-faqs.md#onep2plink)).
-* **Redundantie voor nood herstel**: Micro soft raadt u ten zeerste aan om ten minste twee ExpressRoute-circuits in verschillende peering-locaties in te stellen om een Single Point of Failure te voor komen.
+* **Redundantie op elke peering-locatie**: micro soft vereist dat REDUNDANTe BGP-sessies worden ingesteld tussen de routers van micro soft en de peering routers op elk ExpressRoute-circuit (zelfs wanneer u slechts [één fysieke verbinding hebt met een Cloud-Exchange](expressroute-faqs.md#onep2plink)).
+* **Redundantie voor nood herstel**: micro soft raadt u ten zeerste aan om ten minste twee ExpressRoute-circuits in verschillende peering-locaties in te stellen om een single point of failure te voor komen.
 * **Routering**: afhankelijk van hoe u verbinding maakt met de Microsoft Cloud, moet u of uw provider de BGP-sessies voor [routeringsdomeinen](expressroute-circuit-peerings.md) instellen en beheren. Sommige Ethernet-connectiviteitsproviders of cloudexchange-providers bieden BGP-beheer aan als extra service.
-* **NAT**: Micro soft accepteert alleen open bare IP-adressen via micro soft-peering. Als u privé IP-adressen in uw on-premises netwerk gebruikt, moet u of uw provider de privé IP-adressen [met behulp van de NAT](expressroute-nat.md) vertalen naar openbare IP-adressen.
-* **QoS**: Skype voor bedrijven heeft verschillende services (bijvoorbeeld: spraak, video, tekst) waarvoor een gedifferentieerde QoS-behandeling is vereist. U en uw provider moeten de [QoS-vereisten](expressroute-qos.md) volgen.
+* **NAT**: Microsoft accepteert alleen openbare IP-adressen via Microsoft-peering. Als u privé IP-adressen in uw on-premises netwerk gebruikt, moet u of uw provider de privé IP-adressen [met behulp van de NAT](expressroute-nat.md) vertalen naar openbare IP-adressen.
+* **QoS**: Skype voor Bedrijven heeft verschillende services (zoals spraak, video, tekst) die allemaal een andere QoS-behandeling vereisen. U en uw provider moeten de [QoS-vereisten](expressroute-qos.md) volgen.
 * **Netwerkbeveiliging**: overweeg [netwerkbeveiliging](../best-practices-network-security.md) als u via ExpressRoute verbinding maakt met de Microsoft Cloud.
 
 ## <a name="office-365"></a>Office 365

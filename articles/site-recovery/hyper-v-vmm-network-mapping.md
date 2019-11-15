@@ -1,18 +1,18 @@
 ---
-title: Over netwerk toewijzing voor Hyper-V-VM (met VMM) nood herstel voor Azure met Site Recovery
+title: Informatie over Hyper-V (met VMM) netwerk toewijzing met Site Recovery
 description: Hierin wordt beschreven hoe u netwerk toewijzing instelt voor herstel na nood gevallen van virtuele Hyper-V-machines (beheerd in VMM-Clouds) naar Azure, met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 637f327b40341ac04f37baf9e43f136a0315b17f
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813672"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082562"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Netwerk toewijzing voorbereiden voor herstel na nood geval voor Hyper-V-VM naar Azure
 
@@ -53,7 +53,7 @@ Netwerk toewijzing werkt als volgt:
 
 Hier volgt een voor beeld om dit mechanisme te illustreren. We nemen een organisatie met twee locaties in New York en Chicago.
 
-**Location** | **VMM-server** | **VM-netwerken** | **Toegewezen aan**
+**Locatie** | **VMM-server** | **VM-netwerken** | **Toegewezen aan**
 ---|---|---|---
 New York | VMM-NewYork| VMNetwork1-NewYork | Toegewezen aan VMNetwork1-Chicago
  |  | VMNetwork2-NewYork | Niet toegewezen
@@ -78,7 +78,7 @@ SilverCloud2 | <p>N.v.t.</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNe
 
 ### <a name="logical-and-vm-network-settings"></a>Logische en VM-netwerk instellingen
 
-**Location** | **Logisch netwerk** | **Gekoppeld VM-netwerk**
+**Locatie** | **Logisch netwerk** | **Gekoppeld VM-netwerk**
 ---|---|---
 New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
 Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago

@@ -1,27 +1,26 @@
 ---
-title: Veelgestelde vragen over Azure Site Recovery
-description: In dit artikel worden populaire vragen over Azure Site Recovery beschreven.
-services: site-recovery
+title: Algemene vragen over de Azure Site Recovery-service
+description: In dit artikel worden populaire algemene vragen over Azure Site Recovery beschreven.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 9ab2466a201662cfde4655aedd12f9fd1b21c964
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: fb88d28ea47495dcbdb0844901a03ee7efa4e4eb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053711"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74078527"
 ---
-# <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: veelgestelde vragen (FAQ)
-In dit artikel vindt u een overzicht van veelgestelde vragen over Azure Site Recovery.</br>
-Voor specifieke query's over verschillende ASR-scenario's verwijzen we naar scenario-specifieke veelgestelde vragen.<br>
+# <a name="general-questions-about-azure-site-recovery"></a>Algemene vragen over Azure Site Recovery
 
-- [Herstel na nood gevallen voor Azure VM naar Azure](azure-to-azure-common-questions.md)
-- [Herstel na nood geval voor VMware VM naar Azure](vmware-azure-common-questions.md)
-- [Herstel na nood geval voor Hyper-V-VM naar Azure](hyper-v-azure-common-questions.md)
+In dit artikel vindt u een overzicht van veelgestelde vragen over Azure Site Recovery. Raadpleeg deze artikelen voor specifieke scenario's
+
+- [Vragen over herstel na nood gevallen voor Azure VM naar Azure](azure-to-azure-common-questions.md)
+- [Vragen over de nood herstel van een VMware-VM naar Azure](vmware-azure-common-questions.md)
+- [Vragen over herstel na nood gevallen voor Hyper-V-VM'S naar Azure](hyper-v-azure-common-questions.md)
  
 ## <a name="general"></a>Algemeen
 

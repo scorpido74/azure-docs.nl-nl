@@ -1,6 +1,7 @@
 ---
-title: 'Snelstart: een Azure Content Delivery Network-profiel en een eindpunt met behulp van Resource Manager-sjablonen maken | Microsoft Docs'
-description: Informatie over het maken van een Azure Content Delivery Network-profiel en een eindpunt met behulp van Resource Manager-sjablonen
+title: 'Quick Start: een profiel en een eind punt maken met behulp van Resource Manager-sjablonen'
+titleSuffix: Azure Content Delivery Network
+description: Meer informatie over het maken van een Azure content delivery-netwerk profiel en-eind punt met behulp van Resource Manager-sjablonen
 services: cdn
 documentationcenter: ''
 author: senthuransivananthan
@@ -15,47 +16,47 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: cbde4c7fd568e6d9ff9a0d90332da96926e08077
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: b711a12161bc134bdcbb8c1f3e74f2e5ae06e701
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593140"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083143"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Quickstart: Een Azure CDN-profiel en een eindpunt met behulp van Resource Manager-sjabloon maken
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint-using-resource-manager-template"></a>Snelstartgids: een Azure CDN profiel en eind punt maken met Resource Manager-sjabloon
 
-In deze quickstart implementeert u een Azure Resource Manager-sjabloon met behulp van CLI. De sjabloon die u implementeert een CDN-profiel en een CDN-eindpunt voor de front-end van uw webtoepassing.
-Het moet ongeveer tien minuten duren voordat deze stappen uitvoeren.
+In deze Quick Start implementeert u een Azure Resource Manager-sjabloon met behulp van CLI. De sjabloon die u maakt, implementeert een CDN-profiel en een CDN-eind punt voor de front-endwebserver.
+Het duurt ongeveer tien minuten om deze stappen uit te voeren.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prequisites"></a>Prequisites
 
-Voor de toepassing van deze Quick Start, moet u een Web-App om te gebruiken als de oorsprong hebben. De voorbeeld-webtoepassing die wordt gebruikt in deze Quick Start is geïmplementeerd op https://cdndemo.azurewebsites.net
+Voor deze Quick start moet u een webtoepassing hebben om te gebruiken als uw oorsprong. De voor beeld-webtoepassing die in deze Quick Start wordt gebruikt, is geïmplementeerd in https://cdndemo.azurewebsites.net
 
-Zie voor meer informatie, [een statische HTML-web-app maken in Azure](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html).
+Zie [een statische HTML-Web-app maken in azure](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)voor meer informatie.
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Alle resources moeten worden geïmplementeerd in dezelfde resourcegroep bevinden.
+Alle resources moeten worden geïmplementeerd in dezelfde resource groep.
 
-Maak de resourcegroep op de locatie die u selecteert. In dit voorbeeld toont het maken van een resourcegroep met de naam cdn in de locatie VS-Oost.
+Maak de resource groep op de locatie die u selecteert. In dit voor beeld wordt het maken van een resource groep met de naam CDN weer gegeven in de locatie VS-Oost.
 
 ```bash
 az group create --name cdn --location eastus
 ```
 
-![Nieuwe resourcegroep](./media/create-profile-resource-manager-template/cdn-create-resource-group.png)
+![Nieuwe resource groep](./media/create-profile-resource-manager-template/cdn-create-resource-group.png)
 
 ## <a name="create-the-resource-manager-template"></a>Het Resource Manager-sjabloon maken
 
-In deze stap maakt u een sjabloon voor bestanden die worden geïmplementeerd.
+In deze stap maakt u een sjabloon bestand dat de resources implementeert.
 
-In dit voorbeeld begeleidt bij een scenario voor het algemene Website versnelling, maar er zijn veel andere instellingen die kunnen worden geconfigureerd. Deze instellingen zijn beschikbaar in een verwijzing naar de Azure Resource Manager-sjabloon. Zie Naslaginformatie voor [CDN-profiel](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) en [CDN-profiel-eindpunt](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints).
+Hoewel in dit voor beeld een scenario voor een algemene website versnelling wordt door lopen, zijn er veel andere instellingen die kunnen worden geconfigureerd. Deze instellingen zijn beschikbaar in de verwijzing naar de Azure Resource Manager-sjabloon. Zie de verwijzingen voor het [CDN-profiel](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles) en het [eind punt](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)van het CDN-profiel.
 
-Houd er rekening mee dat Microsoft CDN biedt geen ondersteuning voor de lijst met inhoudstypen wijzigen.
+Houd er rekening mee dat micro soft CDN geen ondersteuning biedt voor het wijzigen van de lijst met inhouds typen.
 
-De sjabloon opslaan als **resource-manager-cdn.json**.
+Sla de sjabloon op als **Resource-Manager-CDN. json**.
 
 ```json
 {
@@ -177,16 +178,16 @@ De sjabloon opslaan als **resource-manager-cdn.json**.
 
 ## <a name="create-the-resources"></a>De resources maken
 
-Implementeer de sjabloon met behulp van Azure CLI. U wordt gevraagd voor 2-invoer:
+Implementeer de sjabloon met behulp van Azure CLI. U wordt gevraagd om 2 invoer:
 
-**cdnProfileSku** -de CDN-provider die u wilt gebruiken. De opties zijn:
+**cdnProfileSku** : de CDN-provider die u wilt gebruiken. De opties zijn:
 
 * Standard_Microsoft
 * Standard_Akamai
 * Standard_Verizon
 * Premium_Verizon.
 
-**endpointOriginHostName** -het eindpunt dat moet worden verzonden via het CDN, bijvoorbeeld cdndemo.azurewebsites.net.
+**endpointOriginHostName** : het eind punt dat wordt geleverd via het CDN, bijvoorbeeld cdndemo.azurewebsites.net.
 
 ```bash
 az group deployment create --resource-group cdn --template-file arm-cdn.json
@@ -194,38 +195,38 @@ az group deployment create --resource-group cdn --template-file arm-cdn.json
 
 ![Resource Manager-sjabloon implementeren](./media/create-profile-resource-manager-template/cdn-deploy-resource-manager.png)
 
-## <a name="view-the-cdn-profile"></a>Het CDN-profiel weergeven
+## <a name="view-the-cdn-profile"></a>Het CDN-profiel weer geven
 
 ```bash
 az cdn profile list --resource-group cdn -o table
 ```
 
-![CDN-profiel weergeven](./media/create-profile-resource-manager-template/cdn-view-profile.png)
+![CDN-profiel weer geven](./media/create-profile-resource-manager-template/cdn-view-profile.png)
 
-## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Het CDN-eindpunt voor de standard-microsoft-profiel weergeven
+## <a name="view-the-cdn-endpoint-for-the-profile-standard-microsoft"></a>Het CDN-eind punt voor de profiel standaard weer geven-micro soft
 
 ```bash
 az cdn endpoint list --profile-name standard-microsoft --resource-group cdn -o table
 ```
 
-![CDN-eindpunt weergeven](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
+![CDN-eind punt weer geven](./media/create-profile-resource-manager-template/cdn-view-endpoint.png)
 
-De hostnaam gebruiken om de inhoud weer te geven. Bijvoorbeeld toegang tot https://cdndemo-azurewebsites-net.azureedge.net met uw browser.
+Gebruik de hostnaam om de inhoud weer te geven. U kunt bijvoorbeeld toegang https://cdndemo-azurewebsites-net.azureedge.net met uw browser.
 
 ## <a name="clean-up"></a>Opruimen
 
-Als u de resourcegroep verwijdert, worden alle resources die zijn geïmplementeerd automatisch in het verwijderd.
+Als u de resource groep verwijdert, worden alle resources die erin zijn geïmplementeerd, automatisch verwijderd.
 
 ```bash
 az group delete --name cdn
 ```
 
-![Resourcegroep verwijderen](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
+![Resource groep verwijderen](./media/create-profile-resource-manager-template/cdn-delete-resource-group.png)
 
 ## <a name="references"></a>Verwijzingen
 
-* CDN-profiel - [naslaginformatie over Azure Resource Manager-sjabloon](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
-* CDN-eindpunt - [sjabloonverwijzing voor Azure Resource Manager-documentatie](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints)
+* CDN-profiel- [referentie voor Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles)
+* [Referentie documentatie voor Azure Resource Manager sjabloon](https://docs.microsoft.com/azure/templates/microsoft.cdn/2017-10-12/profiles/endpoints) voor CDN-eind punten
 
 ## <a name="next-steps"></a>Volgende stappen
 

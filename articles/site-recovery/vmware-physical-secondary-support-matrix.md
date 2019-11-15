@@ -1,19 +1,19 @@
 ---
-title: Ondersteunings matrix voor nood herstel van virtuele VMware-machines of fysieke servers naar een secundaire VMware-site met Azure Site Recovery | Microsoft Docs
+title: Ondersteuning voor VMware/fysieke nood herstel naar een secundaire site met Azure Site Recovery
 description: Geeft een samen vatting van de ondersteuning voor herstel na nood gevallen van virtuele VMware-machines en fysieke servers naar een secundaire site met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: 908d681b271aa8acdb0898676c33d396461d8f9a
-ms.sourcegitcommit: 1c2659ab26619658799442a6e7604f3c66307a89
+ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72255202"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082192"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar een secundaire site
 
@@ -51,7 +51,7 @@ De volgende tabel bevat een overzicht van de ondersteuning van besturings system
 **Besturingssysteem** | **Details**
 --- | ---
 Windows Server | 64-bits Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 met ten minste SP1.
-Linux | Red Hat Enterprise Linux 6,7, 6,8, 6,9, 7,1, 7,2 <br/><br/> CentOS 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enter prise Linux 6,4, 6,5, 6,8 met de Red Hat compatible kernel of een onherstelbare versie van de Enter prise kernel 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
+Linux | Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> Centos 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2 <br/><br/> Oracle Enter prise Linux 6,4, 6,5, 6,8 met de Red Hat compatible kernel of een onherstelbare versie van de Enter prise kernel 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
 
 
 ## <a name="linux-machine-storage"></a>Linux-machine opslag
@@ -70,7 +70,7 @@ Alleen Linux-machines met de volgende opslag kunnen worden gerepliceerd:
 --- | --- 
 Host-NIC-koppeling | Ja 
 Host-VLAN | Ja 
-Host-IPv4 | Ja 
+Host - IPv4 | Ja 
 Host-IPv6 | Nee 
 Gast-VM-NIC-koppeling | Nee
 Gast-VM-IPv4 | Ja
@@ -86,7 +86,7 @@ Gast-VM-multi-NIC | Ja
 **Opslag (host)** | **Ondersteund** 
 --- | --- 
 NFS | Ja 
-SMB 3.0 | N/A 
+SMB 3.0 | N.v.t. 
 SAN (ISCSI) | Ja 
 Meerdere paden (MPIO) | Ja 
 
@@ -95,8 +95,8 @@ Meerdere paden (MPIO) | Ja
 **Configuratie** | **Ondersteund** 
 --- | --- 
 VMDK | Ja 
-VHD/VHDX | N/A 
-VM van generatie 2 | N/A 
+VHD/VHDX | N.v.t. 
+VM van generatie 2 | N.v.t. 
 Gedeelde cluster schijf | Ja 
 Versleutelde schijf | Nee 
 UEFI| Ja 
@@ -108,7 +108,7 @@ Volume met gestripte schijf > 1 TB<br/><br/> LVM | Ja
 Opslag ruimten | Nee 
 Hot toevoegen/verwijderen schijf | Ja 
 Schijf uitsluiten | Ja 
-Meerdere paden (MPIO) | N/A 
+Meerdere paden (MPIO) | N.v.t. 
 
 ## <a name="vaults"></a>Kluizen
 

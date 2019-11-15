@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 11/14/2019
 ms.author: mimart
 ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddbb233bb9d0970169f040e3040b44a0b75aa1f8
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 8f8d1c9f53d08d017c6c07abf8e00ab77e6879e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68477178"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091401"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Eenmalige aanmelding voor toepassingen in Azure Active Directory
 
@@ -54,13 +54,13 @@ De volgende tabel geeft een overzicht van de methoden voor eenmalige aanmelding,
 
 Bij het ontwikkelen van nieuwe toepassingen gebruikt u moderne protocollen zoals OpenID Connect Connect en OAuth om de beste eenmalige aanmelding voor uw app op meerdere platformen te bieden. Met OAuth kunnen gebruikers of beheerders [toestemming geven](configure-user-consent.md) voor beveiligde bronnen zoals [Microsoft Graph](/graph/overview). We bieden u de mogelijkheid om [sdk's](../develop/reference-v2-libraries.md) voor uw app te nemen, en uw app is nu klaar voor gebruik van [Microsoft Graph](/graph/overview).
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 - [OAuth 2.0](../develop/v2-oauth2-auth-code-flow.md)
 - [OpenID Connect 1.0](../develop/v2-protocols-oidc.md)
 - [Ontwikkelaars handleiding voor micro soft Identity platform](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide).
 
-## <a name="saml-sso"></a>SAML-EENMALIGE AANMELDING
+## <a name="saml-sso"></a>Eenmalige aanmelding op basis van SAML
 
 Met **eenmalige aanmelding SAML**, Azure AD verifieert de toepassing met behulp van Azure AD-account van de gebruiker. Azure AD communiceert de informatie aanmelding voor de toepassing via een verbindingsprotocol. Met eenmalige aanmelding op basis van SAML kunt u gebruikers toewijzen aan specifieke toepassings rollen op basis van de regels die u in uw SAML-claims definieert.
 
@@ -73,7 +73,7 @@ SAML gebaseerde eenmalige aanmelding wordt ondersteund voor toepassingen die geb
 
 Als u een SaaS-toepassing wilt configureren voor eenmalige aanmelding op basis van SAML, raadpleegt u [eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md). Daarnaast beschikken veel SaaS-toepassingen (Software as a Service) over een [toepassingsspecifieke zelf studie](../saas-apps/tutorial-list.md) die u door de configuratie voor eenmalige aanmelding op basis van SAML.
 
-Als u een toepassing voor WS-Federation wilt configureren, volgt u dezelfde richt lijnen om de toepassing te configureren voor eenmalige aanmelding op basis van SAML. Zie [op SAML gebaseerde eenmalige aanmelding configureren](configure-single-sign-on-non-gallery-applications.md). In de stap om de toepassing te configureren voor het gebruik van Azure AD, moet u de Azure AD-aanmeldings-URL voor het WS-Federation- `https://login.microsoftonline.com/<tenant-ID>/wsfed`eind punt vervangen.
+Als u een toepassing voor WS-Federation wilt configureren, volgt u dezelfde richt lijnen om de toepassing te configureren voor eenmalige aanmelding op basis van SAML. Zie [op SAML gebaseerde eenmalige aanmelding configureren](configure-single-sign-on-non-gallery-applications.md). In de stap om de toepassing te configureren voor het gebruik van Azure AD, moet u de Azure AD-aanmeldings-URL voor het eind punt van de WS-Federation-`https://login.microsoftonline.com/<tenant-ID>/wsfed`vervangen.
 
 Als u een on-premises toepassing wilt configureren voor eenmalige aanmelding op basis van SAML, raadpleegt u SSO [eenmalige aanmelding voor on-premises toepassingen met toepassings proxy](application-proxy-configure-single-sign-on-on-premises-apps.md).
 
@@ -97,6 +97,8 @@ Wachtwoord gebaseerde eenmalige aanmelding wordt ondersteund voor alle cloud-geb
    > Internet Explorer heeft beperkte ondersteuning en ontvangt geen nieuwe software-updates meer. Micro soft Edge is de aanbevolen browser.
 
 - Micro soft Edge in Windows 10 jubileum Edition of hoger
+- Micro soft Edge voor iOS en Android
+- Intune Managed Browser
 - Chrome op Windows 7 of hoger, en op Mac OS X of hoger
 - Firefox 26,0 in Windows XP SP2 of hoger, en op Mac OS X 10.6 of hoger
 
@@ -188,9 +190,9 @@ Aangezien dit scenario wordt aangeboden via een partnerschap tussen Azure AD en 
 Zie [Azure Active Directory-edities](../fundamentals/active-directory-whatis.md) voor meer informatie.
 
 ## <a name="related-articles"></a>Verwante artikelen:
-* [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](../saas-apps/tutorial-list.md)
+* [Tutorials for integrating SaaS applications with Azure Active Directory](../saas-apps/tutorial-list.md) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 * [Eenmalige aanmelding op basis van SAML configureren](configure-single-sign-on-non-gallery-applications.md)
 * [Eenmalige aanmelding op basis van wacht woord configureren](configure-password-single-sign-on-non-gallery-applications.md)
 * [Een gekoppelde aanmelding configureren](configure-linked-sign-on.md)
 * [Inleiding tot beheer van toegang tot toepassingen](what-is-access-management.md)
-* Download koppeling: [Implementatie plan voor eenmalige aanmelding](https://aka.ms/SSODeploymentPlan).
+* Downloadkoppeling: [implementatieplan voor eenmalige aanmelding](https://aka.ms/SSODeploymentPlan).

@@ -1,13 +1,10 @@
 ---
-title: Azure PowerShell-voorbeeldscript - twee virtuele netwerken peeren | Microsoft Docs
+title: Peer twee virtuele netwerken-Azure PowerShell script voorbeeld
 description: Azure PowerShell-voorbeeldscript - twee virtuele netwerken peeren
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: powershell
 ms.topic: sample
@@ -15,12 +12,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 03/20/2018
 ms.author: kumud
-ms.openlocfilehash: 9f75d1078926772d71e10fe59e2759656aec9ab9
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 4061997aa2efbae250b30fc58cef06b1249c2b8f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64710226"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091291"
 ---
 # <a name="peer-two-virtual-networks-script-sample"></a>Voorbeeldscript voor peering van twee virtuele netwerken
 
@@ -46,7 +43,7 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-In dit script worden de volgende opdrachten gebruikt voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de volgende tabel is een koppeling naar specifieke documentatie over de opdracht:
+Dit script gebruikt de volgende opdrachten voor het maken van een resourcegroep, een virtuele machine en alle gerelateerde resources. Elke opdracht in de volgende tabel is een koppeling naar specifieke documentatie over de opdracht:
 
 | Opdracht | Opmerkingen |
 |---|---|

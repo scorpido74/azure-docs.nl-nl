@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 242cdcc07821151503dc6765f820187c0c3dfc53
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 2c2994c310369a0a6fe26ccc2c1e2e5de6680349
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515563"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084698"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Een virtueel netwerk maken, wijzigen of verwijderen
 
@@ -30,16 +30,16 @@ Meer informatie over het maken en verwijderen van een virtueel netwerk en het wi
 Voer de volgende taken uit voordat u de stappen in een van de secties van dit artikel uitvoert:
 
 - Als u nog geen Azure-account hebt, kunt u zich aanmelden voor een [gratis proef account](https://azure.microsoft.com/free).
-- Als u de portal gebruikt, opent u https://portal.azure.com en meldt u zich aan met uw Azure-account.
+- Als u de portal gebruikt, opent u https://portal.azure.comen meldt u zich aan met uw Azure-account.
 - Als u Power shell-opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/powershell)of Power shell uitvoeren vanaf uw computer. Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit artikel kunt uitvoeren. In deze shell zijn algemene Azure-hulpprogramma's vooraf geïnstalleerd en geconfigureerd voor gebruik met uw account. Voor deze zelf studie is de Azure PowerShell module versie 1.0.0 of hoger vereist. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 - Als u Azure-opdracht regel interface opdrachten gebruikt om taken in dit artikel te volt ooien, moet u de opdrachten uitvoeren in de [Azure Cloud shell](https://shell.azure.com/bash)of door de CLI vanaf uw computer uit te voeren. Voor deze zelf studie is de Azure CLI-versie 2.0.31 of hoger vereist. Voer `az --version` uit om te kijken welke versie is geïnstalleerd. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. Als u de Azure CLI lokaal uitvoert, moet u ook `az login` uitvoeren om een verbinding te maken met Azure.
 - Het account waarmee u zich aanmeldt of verbinding maakt met Azure met, moet worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de juiste acties zijn toegewezen die worden vermeld in [machtigingen](#permissions).
 
-## <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+## <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 1. Selecteer **+ een resource maken** > **netwerk** > **virtueel netwerk**.
 2. Typ of selecteer waarden voor de volgende instellingen en selecteer vervolgens **maken**:
-   - **Naam**: de naam moet uniek zijn in de [resource groep](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) die u selecteert voor het maken van het virtuele netwerk in. U kunt de naam niet wijzigen nadat het virtuele netwerk is gemaakt. U kunt meerdere virtuele netwerken gedurende een periode maken. Zie [naamgevings conventies](/azure/cloud-adoption-framework/ready/considerations/naming-and-tagging#resource-naming)voor naamgevings suggesties. Als u een naamgevings Conventie volgt, kunt u eenvoudiger meerdere virtuele netwerken beheren.
+   - **Naam**: de naam moet uniek zijn in de [resource groep](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) die u selecteert voor het maken van het virtuele netwerk in. U kunt de naam niet wijzigen nadat het virtuele netwerk is gemaakt. U kunt meerdere virtuele netwerken gedurende een periode maken. Zie [naamgevings conventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)voor naamgevings suggesties. Als u een naamgevings Conventie volgt, kunt u eenvoudiger meerdere virtuele netwerken beheren.
    - **Adres ruimte**: de adres ruimte voor een virtueel netwerk bestaat uit een of meer niet-overlappende adresbereiken die zijn opgegeven in CIDR-notatie. Het adres bereik dat u definieert, kan openbaar of privé zijn (RFC 1918). Of u het adres bereik als openbaar of privé definieert, het adres bereik is alleen bereikbaar vanuit het virtuele netwerk, van gekoppelde virtuele netwerken en van alle on-premises netwerken die u met het virtuele netwerk hebt verbonden. U kunt de volgende adresbereiken niet toevoegen:
      - 224.0.0.0/4 (multi cast)
      - 255.255.255.255/32 (broadcast)
@@ -171,11 +171,11 @@ U kunt een virtueel netwerk alleen verwijderen als er geen resources zijn verbon
 
 Als u taken wilt uitvoeren op virtuele netwerken, moet uw account worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rol waaraan de juiste acties in de volgende tabel zijn toegewezen:
 
-| Bewerking                                  |   Naam                                |
+| Actie                                  |   Naam                                |
 |---------------------------------------- |   --------------------------------    |
-|Micro soft. Network/virtualNetworks/lezen   |   Een virtueel netwerk lezen              |
-|Micro soft. Network/virtualNetworks/schrijven  |   Een virtueel netwerk maken of bijwerken  |
-|Micro soft. Network/virtualNetworks/verwijderen |   Een virtueel netwerk verwijderen            |
+|Microsoft.Network/virtualNetworks/read   |   Een virtueel netwerk lezen              |
+|Microsoft.Network/virtualNetworks/write  |   Een virtueel netwerk maken of bijwerken  |
+|Microsoft.Network/virtualNetworks/delete |   Een virtueel netwerk verwijderen            |
 
 ## <a name="next-steps"></a>Volgende stappen
 

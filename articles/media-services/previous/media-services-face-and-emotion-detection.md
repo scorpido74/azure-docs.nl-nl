@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: 6fa2495ee580bb8e74a0d026533fa90f20743510
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: b6cbca454d1463ffe6e73d7021ea563e7121b7be
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881770"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084624"
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Gezichts-en Emotion detecteren met Azure Media Analytics
 
-> [!IMPORTANT]
-> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
-
 ## <a name="overview"></a>Overzicht
+
 Met de **Azure media face detector** media processor (MP) kunt u het aantal bewegingen en de inschakeling van de publieks-en reactie activiteiten via gezichts uitdrukkingen tellen, bijhouden en meten. Deze service bevat twee functies: 
 
 * **Gezichts detectie**
@@ -166,8 +164,8 @@ Hieronder vindt u de aanbevolen waarden voor het aggregatie venster en de interv
 
 || Standaard waarden (s) | Max. (n) | Min (en) |
 |--- | --- | --- | --- |
-| AggregateEmotionWindowMs |0,5 |2 |0,25|
-| AggregateEmotionIntervalMs |0,5 |1 |0,25|
+| AggregateEmotionWindowMs |0.5 |2 |0.25|
+| AggregateEmotionIntervalMs |0.5 |1 |0.25|
 
 ### <a name="json-output"></a>JSON-uitvoer
 JSON-uitvoer voor cumulatieve Emotion (afgekapt):

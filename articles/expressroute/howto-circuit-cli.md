@@ -1,19 +1,18 @@
 ---
-title: 'Maken en wijzigen van een ExpressRoute-circuit: Azure CLI | Microsoft Docs'
+title: 'Een ExpressRoute-circuit maken en wijzigen: Azure CLI'
 description: In dit artikel laat zien hoe maken, inrichten, controleren, bijwerken, verwijderen en de inrichting van een ExpressRoute-circuit met behulp van CLI.
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/07/2018
+ms.date: 11/13/2019
 ms.author: cherylmc
-ms.reviewer: anzaman
-ms.openlocfilehash: e42190814b9365c7db054eb2b5f1842581b64009
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: 75729811b63e8de3047e45e9b90f5fa3ec657901
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67657075"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083226"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>Maken en aanpassen van een ExpressRoute-circuit met behulp van CLI
 
@@ -56,9 +55,9 @@ Selecteer het abonnement waarvoor u wenst te maken van een ExpressRoute-circuit.
 az account set --subscription "<subscription ID>"
 ```
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. De lijst met ondersteunde providers, locaties en bandbreedten
+### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. de lijst met ondersteunde providers, locaties en band breedten ophalen
 
-Voordat u een ExpressRoute-circuit maken, moet u de lijst met ondersteunde connectiviteitsproviders, locaties en bandbreedte-opties. De CLI-opdracht `az network express-route list-service-providers` retourneert deze informatie, die u in latere stappen gebruikt:
+Voordat u een ExpressRoute-circuit maken, moet u de lijst met ondersteunde connectiviteitsproviders, locaties en bandbreedte-opties. De CLI-opdracht `az network express-route list-service-providers` deze informatie weer gegeven, die u in latere stappen gaat gebruiken:
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -119,13 +118,13 @@ Het antwoord is vergelijkbaar met het volgende voorbeeld:
 
 Controleer het antwoord om te zien als uw connectiviteitsprovider wordt vermeld. Noteer de volgende informatie, u moet bij het maken van een circuit:
 
-* Name
+* Naam
 * PeeringLocations
 * BandwidthsOffered
 
 U bent nu klaar om te maken van een ExpressRoute-circuit.
 
-### <a name="3-create-an-expressroute-circuit"></a>3. Een ExpressRoute-circuit maken
+### <a name="3-create-an-expressroute-circuit"></a>3. een ExpressRoute-circuit maken
 
 > [!IMPORTANT]
 > Uw ExpressRoute-circuit wordt in rekening gebracht vanaf het moment dat een servicesleutel wordt uitgegeven. Deze bewerking niet uitvoeren wanneer de connectiviteitsprovider gereed is voor de inrichting van het circuit.
@@ -142,8 +141,8 @@ Het volgende voorbeeld ziet hoe u een 200 Mbps ExpressRoute-circuit via Equinix 
 
 Zorg ervoor dat u opgeeft dat de juiste SKU-laag en de SKU-serie:
 
-* SKU-laag wordt bepaald of een ExpressRoute-standard- of een premium-invoegtoepassing voor ExpressRoute is ingeschakeld. U kunt 'Standaard' voor de standard-SKU- of Premium om de premium-invoegtoepassing opgeven.
-* SKU-serie, bepaalt de facturering. U kunt 'Metereddata' voor een gecontroleerde data-abonnement en 'Unlimiteddata' opgeven voor een abonnement voor onbeperkt gebruik. U kunt de facturering type van 'Metereddata' naar 'Unlimiteddata' wijzigen, maar u kunt het type van 'Unlimiteddata' naar 'Metereddata' niet wijzigen.
+* SKU-laag bepaalt of een ExpressRoute-circuit [lokaal](expressroute-faqs.md#expressroute-local), standaard of [Premium](expressroute-faqs.md#expressroute-premium)is. U kunt *lokaal*, *standaard* of *Premium*opgeven.
+* SKU-serie, bepaalt de facturering. U kunt opgeven *Metereddata* voor een abonnement naar gebruik en *Unlimiteddata* voor een abonnement voor onbeperkt gebruik. Kunt u het type facturering van *Metereddata* naar *Unlimiteddata*, maar u kunt het type niet wijzigen *Unlimiteddata* naar *Metereddata*. Een *lokaal* circuit is alleen *Unlimiteddata* .
 
 
 Uw ExpressRoute-circuit wordt in rekening gebracht vanaf het moment dat een servicesleutel wordt uitgegeven. Het volgende voorbeeld wordt een aanvraag voor een nieuwe servicesleutel:
@@ -154,9 +153,9 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 Het antwoord bevat de sleutel van de service.
 
-### <a name="4-list-all-expressroute-circuits"></a>4. Lijst van alle ExpressRoute-circuits
+### <a name="4-list-all-expressroute-circuits"></a>4. alle ExpressRoute-circuits weer geven
 
-Uitvoeren als u een lijst met alle ExpressRoute-circuits die u hebt gemaakt, de `az network express-route list` opdracht. U kunt deze informatie op elk gewenst moment ophalen met behulp van deze opdracht. Als u alle circuits, moet u de aanroep zonder parameters.
+Als u een lijst wilt weer geven met alle ExpressRoute-circuits die u hebt gemaakt, voert u de `az network express-route list` opdracht uit. U kunt deze informatie op elk gewenst moment ophalen met behulp van deze opdracht. Als u alle circuits, moet u de aanroep zonder parameters.
 
 ```azurecli-interactive
 az network express-route list
@@ -199,7 +198,7 @@ U kunt gedetailleerde beschrijvingen van alle parameters ophalen door het uitvoe
 az network express-route list -h
 ```
 
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. De servicesleutel verzenden naar uw connectiviteitsprovider om in te richten
+### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. de service sleutel naar uw connectiviteits provider verzenden voor het inrichten
 
 'ServiceProviderProvisioningState' bevat informatie over de huidige status van inrichting aan de service-provider. De status bevat de status aan de kant van Microsoft. Zie voor meer informatie de [werkstromen artikel](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
@@ -224,7 +223,7 @@ Voordat u kunt een ExpressRoute-circuit gebruiken, moet deze de status van de vo
 "circuitProvisioningState": "Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Controleer regelmatig de status en de status van de sleutel van het circuit
+### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. Controleer de status en de status van de circuit sleutel regel matig
 
 De status en de status van de sleutel van het circuit controleren, laat u weten wanneer uw provider het circuit is ingeschakeld. Nadat het circuit is geconfigureerd, is 'ServiceProviderProvisioningState' wordt weergegeven als 'Ingericht', zoals wordt weergegeven in het volgende voorbeeld:
 
@@ -263,7 +262,7 @@ Het antwoord is vergelijkbaar met het volgende voorbeeld:
 "type": "Microsoft.Network/expressRouteCircuits]
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7. De configuratie van de routering maken
+### <a name="7-create-your-routing-configuration"></a>7. de routerings configuratie maken
 
 Zie voor stapsgewijze instructies, de [ExpressRoute-circuit routeringsconfiguratie](howto-routing-cli.md) artikel maken en aanpassen-circuitpeerings.
 
@@ -272,7 +271,7 @@ Zie voor stapsgewijze instructies, de [ExpressRoute-circuit routeringsconfigurat
 >
 >
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. Een virtueel netwerk koppelen aan een ExpressRoute-circuit
+### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. een virtueel netwerk koppelen aan een ExpressRoute-circuit
 
 Vervolgens moet u een virtueel netwerk koppelen aan uw ExpressRoute-circuit. Gebruik de [virtuele netwerken koppelen aan ExpressRoute-circuits](howto-linkvnet-cli.md) artikel.
 

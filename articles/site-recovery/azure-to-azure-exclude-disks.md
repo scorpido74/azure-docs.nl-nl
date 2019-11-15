@@ -1,5 +1,5 @@
 ---
-title: 'Azure Site Recovery: schijven uitsluiten tijdens de replicatie van virtuele Azure-machines met behulp van Azure PowerShell | Microsoft Docs'
+title: Azure VM-schijven uitsluiten van replicatie met Azure Site Recovery en Azure PowerShell
 description: Meer informatie over het uitsluiten van schijven van virtuele Azure-machines tijdens het Azure Site Recovery met behulp van Azure PowerShell.
 author: asgang
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: asgang
-ms.openlocfilehash: 317a8ba48851ebf65fe52e79f6cf9d9c45786f6f
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: beb4ee6fcf6413634d7d728e3f070294e8ce3787
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053411"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084979"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Schijven uitsluiten van de Power shell-replicatie van virtuele Azure-machines
 

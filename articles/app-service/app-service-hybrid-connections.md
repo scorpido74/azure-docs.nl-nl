@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/06/2019
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 72874e7b96e2ec8909a325b5ae598b900ebe8079
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.custom: fasttrack-edit
+ms.openlocfilehash: ff2dac5d27cfffb92922038c1d1c67cd5118557a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791885"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082395"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybride verbindingen #
 
@@ -220,6 +220,12 @@ Als u deze API wilt gebruiken, hebt u de resource-ID voor verzenden en relay nod
 
     armclient login
     armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+
+## <a name="secure-your-hybrid-connections"></a>Uw Hybride verbindingen beveiligen ##
+
+Een bestaande hybride verbinding kan worden toegevoegd aan andere App Service Web Apps door elke gebruiker die voldoende machtigingen heeft voor de onderliggende Azure Service Bus relay. Dit betekent dat als u moet voor komen dat andere gebruikers dezelfde hybride verbinding opnieuw gebruiken (bijvoorbeeld wanneer de doel resource een service is waarvoor geen extra beveiligings maatregelen gelden om onbevoegde toegang te voor komen), moet u de toegang tot Azure vergren delen. Service Bus Relay.
+
+Iedereen met `Reader` toegang tot de relay kan de hybride verbinding _zien_ wanneer deze probeert toe te voegen aan hun web-app in de Azure-Portal, maar deze kan niet worden _toegevoegd_ omdat ze geen machtigingen hebben om de Connection String op te halen die wordt gebruikt om de relay-verbinding tot stand te brengen. Om de hybride verbinding toe te voegen, moeten ze beschikken over de `listKeys` machtiging (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). Met de `Contributor` rol of een andere rol die deze machtiging voor de relay bevat, kunnen gebruikers de hybride verbinding gebruiken en toevoegen aan hun eigen Web Apps.
 
 ## <a name="troubleshooting"></a>Problemen oplossen ##
 

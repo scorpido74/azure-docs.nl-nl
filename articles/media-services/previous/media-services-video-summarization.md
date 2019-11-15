@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga
-ms.openlocfilehash: a546df73f316b4eb6c215a6f52d68f87ad09c1a2
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: da397c180b6ccaf91084a0ec22210c7bcc88a5dc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881698"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084801"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails gebruiken om een video samenvatting te maken  
-
-> [!IMPORTANT]
-> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
-
+ 
 ## <a name="overview"></a>Overzicht
+
 Met de **Azure Media video thumbnails** media processor (MP) kunt u een samen vatting maken van een video die nuttig is voor klanten die alleen een samen vatting van een lange video willen bekijken. Klanten willen bijvoorbeeld een korte ' samen vattings video ' zien wanneer ze op een miniatuur bewegen. Door de para meters van **Azure Media video thumbnails** te wijzigen via een vooraf ingestelde configuratie, kunt u de krachtige opname-en samenvoegings technologie van MP gebruiken om algorithmically een beschrijvende subclip te genereren.  
 
 De **Azure Media Video thumbnail** -MP is momenteel beschikbaar als preview-versie.
@@ -68,7 +66,7 @@ In de volgende tabel wordt de standaard duur beschreven, wanneer **maxMotionThum
 
 |  |  |  |
 | --- | --- | --- |
-| Video duur |d < 3 min. |3 min < d < 15 minuten |
+| Video duur |d < 3 min |3 min < d < 15 minuten |
 | Miniatuur duur |15 seconden (2-3 scènes) |30 seconden (3-5 scènes) |
 
 De volgende JSON-sets beschik bare para meters.

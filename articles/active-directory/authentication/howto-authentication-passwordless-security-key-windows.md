@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b57fe9241a6a29e6f5ce12b7a1412455df4a001
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 7b3aa2add128cfc11a638fe6c7e03cfb25189afc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603473"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081562"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-windows-10-devices-preview"></a>Aanmeldings wachtwoord zonder wacht woord inschakelen voor Windows 10-apparaten (preview-versie)
 
@@ -29,7 +29,7 @@ Dit document is gericht op het inschakelen van FIDO2-verificatie op basis van wa
 
 ## <a name="requirements"></a>Vereisten
 
-- [Azure Multi-Factor Authentication](howto-mfa-getstarted.md)
+- [Azure multi-factor Authentication](howto-mfa-getstarted.md)
 - [Preview van registratie van gecombineerde beveiligings gegevens](concept-registration-mfa-sspr-combined.md)
 - Compatibele [FIDO2-beveiligings sleutels](concept-authentication-passwordless.md#fido2-security-keys)
 - Webauthn vereist Windows 10 versie 1809 of hoger
@@ -88,7 +88,7 @@ Als u specifieke apparaatgroepen wilt instellen om de referentie provider in te 
 
 ### <a name="enable-with-a-provisioning-package"></a>Inschakelen met een inrichtings pakket
 
-Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket worden geïnstalleerd om de functionaliteit in te scha kelen. De app Windows Configuration Designer kan worden geïnstalleerd vanuit de [Microsoft Store](https://www.microsoft.com/store/apps/9nblggh4tx22).
+Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket worden geïnstalleerd om de functionaliteit in te scha kelen. De app Windows Configuration Designer kan worden geïnstalleerd vanuit de [Microsoft Store](https://www.microsoft.com/en-us/p/windows-configuration-designer/9nblggh4tx22).
 
 1. Start de ontwerp functie voor Windows-configuratie.
 1. Selecteer **bestand** > **Nieuw project**.
@@ -96,7 +96,7 @@ Voor apparaten die niet worden beheerd door intune, kan een inrichtings pakket w
 1. Selecteer **Volgende**.
 1. Verlaat het **inrichtings pakket** dat is geselecteerd als de **geselecteerde project werk stroom** en selecteer **volgende**.
 1. Selecteer **alle Windows Desktop-edities** onder **Kies welke instellingen u wilt weer geven en configureren** en selecteer **volgende**.
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 1. Blader in het zojuist gemaakte project naar **runtime-instellingen** > **WindowsHelloForBusiness** > **SecurityKeys** > **UseSecurityKeyForSignIn**.
 1. Stel **UseSecurityKeyForSignIn** in op **ingeschakeld**.
 1.  > **inrichtings pakket** voor **export** selecteren

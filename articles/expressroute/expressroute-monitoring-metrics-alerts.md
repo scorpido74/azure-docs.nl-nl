@@ -1,5 +1,5 @@
 ---
-title: 'Controleren, metrische gegevens en waarschuwingen: Azure ExpressRoute | Microsoft Docs'
+title: 'Azure-ExpressRoute: bewaking, metrische gegevens en waarschuwingen'
 description: Deze pagina bevat informatie over het controleren van ExpressRoute
 services: expressroute
 author: mialdrid
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 40e5561c9a55595340568ec660cbc6dd6e1eab51
-ms.sourcegitcommit: 2d9a9079dd0a701b4bbe7289e8126a167cfcb450
+ms.openlocfilehash: 95083809f8fcfe42ae76faa0af507c7ce4acd709
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/29/2019
-ms.locfileid: "71672058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083435"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Bewaking, metrische gegevens en waarschuwingen voor ExpressRoute
 
@@ -36,12 +35,12 @@ Zodra een metriek is geselecteerd, wordt de standaard aggregatie toegepast. U ku
 |BGP-Beschik baarheid|Beschikbaarheid|<ui><li> Peer (primaire/secundaire ExpressRoute-router)</ui></li><ui><li> Peering-type</ui></li>|ExpressRoute|
 |BitsInPerSecond|Verkeer|<ui><li> Peering-type (ExpressRoute)</ui></li><ui><li>Koppeling (ExpressRoute direct)</ui></li>| <li> ExpressRoute</li><li>ExpressRoute Direct|
 |BitsOutPerSecond|Verkeer| <ui><li>Peering-type (ExpressRoute)</ui></li><ui><li> Koppeling (ExpressRoute direct) | <ui><li>ExpressRoute<ui><li>ExpressRoute direct</ui></li> |
-|GlobalReachBitsInPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Globaal bereik|
-|GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey van gekoppeld circuit (Service sleutel)</ui></li>|Globaal bereik|
-|AdminState|Fysieke connectiviteit|Koppelen|ExpressRoute Direct|
-|LineProtocol|Fysieke connectiviteit|Koppelen|ExpressRoute Direct|
-|RxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
-|TxLightLevel|Fysieke connectiviteit|<ui><li>Gekoppeld</ui></li><ui><li>Straat</ui></li>|ExpressRoute Direct|
+|GlobalReachBitsInPerSecond|Verkeer|<ui><li>Skey (Service sleutel) gepeerd circuit</ui></li>|Globaal bereik|
+|GlobalReachBitsOutPerSecond|Verkeer|<ui><li>Skey (Service sleutel) gepeerd circuit</ui></li>|Globaal bereik|
+|AdminState|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
+|LineProtocol|Fysieke connectiviteit|Koppeling|ExpressRoute Direct|
+|RxLightLevel|Fysieke connectiviteit|<ui><li></ui> koppelen</li><ui><li>Lane-</ui></li>|ExpressRoute Direct|
+|TxLightLevel|Fysieke connectiviteit|<ui><li></ui> koppelen</li><ui><li>Lane-</ui></li>|ExpressRoute Direct|
 >[!NOTE]
 >Het gebruik van *GlobalGlobalReachBitsInPerSecond* en *GlobalGlobalReachBitsOutPerSecond* wordt alleen weer gegeven als er ten minste één Global Reach verbinding tot stand is gebracht.
 >

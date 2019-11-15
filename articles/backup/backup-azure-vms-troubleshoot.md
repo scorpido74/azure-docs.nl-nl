@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: dacurwin
-ms.openlocfilehash: 78de85cede228f4b1c6ff01388fd7a08f78aa74f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 0be9973aed1aaf5074c3b61d6249b95e8fd45a64
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747187"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090909"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Back-upfouten op virtuele machines van Azure oplossen
 
 U kunt fouten oplossen die zijn opgetreden tijdens het gebruik van Azure Backup met de onderstaande informatie:
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Backup
 
 In deze sectie wordt de back-upbewerking voor de virtuele machine van Azure beschreven.
 
@@ -50,7 +50,7 @@ Fout bericht: er is een time-out opgetreden tijdens het kopiëren van de back-up
 
 Dit kan gebeuren als gevolg van tijdelijke opslag fouten of onvoldoende opslag account-IOPS voor de back-upservice om binnen de time-outperiode gegevens over te dragen naar de kluis. Configureer VM-back-ups met behulp van deze [Aanbevolen procedures](backup-azure-vms-introduction.md#best-practices) en voer de back-upbewerking opnieuw uit.
 
-## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM heeft geen status die back-ups mogelijk maakt.
+## <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM heeft geen status die back-ups toestaat
 
 Fout code: UserErrorVmNotInDesirableState <br/>
 Fout bericht: de VM heeft geen status die back-ups mogelijk maakt.<br/>
@@ -161,7 +161,7 @@ De momentopname bewerking is mislukt omdat de limiet voor de moment opname is ov
   * Zorg ervoor dat de waarde van **isanysnapshotfailed** is ingesteld op False in/etc/Azure/vmbackup.conf
   * Plan Azure Site Recovery op een ander tijdstip, zodat de back-upbewerking geen conflict veroorzaakt.
 
-## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-momentopname bewerking is mislukt vanwege onvoldoende VM-resources.
+## <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-momentopname bewerking is mislukt vanwege onvoldoende VM-resources
 
 Fout code: ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
 Fout bericht: de momentopname bewerking is mislukt vanwege onvoldoende VM-resources.
@@ -194,7 +194,7 @@ Deze opdracht zorgt ervoor dat de momentopnamen worden gemaakt via host in plaat
 | **Fout code**: ExtensionSnapshotBitlockerError <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout in de Volume Shadow Copy service (VSS)-bewerking **Dit station is vergrendeld door BitLocker-stationsversleuteling. U moet dit station ontgrendelen via het configuratie scherm.** |Schakel BitLocker uit voor alle stations op de VM en controleer of het VSS-probleem is opgelost. |
 | **Fout code**: VmNotInDesirableState <br/> **Fout bericht**: de VM bevindt zich niet in een status waarin back-ups zijn toegestaan. |<ul><li>Als de virtuele machine zich in een tijdelijke status bevindt tussen het **uitvoeren** en **Afsluiten**, wacht u totdat de status is gewijzigd. Activeer vervolgens de back-uptaak. <li> Als de virtuele machine een virtuele Linux-machine is en **gebruikmaakt van de** Security Enhanced Linux kernel-module, sluit u het pad van de Azure Linux-agent uit het beveiligings beleid uit en zorgt u ervoor dat de back-upextensie is geïnstalleerd.  |
 | De VM-agent is niet aanwezig op de virtuele machine: <br>Installeer de vereiste onderdelen en de VM-agent. Start vervolgens de bewerking opnieuw. |Meer informatie over de installatie van de [VM-agent en het valideren](#vm-agent)van de installatie van de VM-agent. |
-| **Fout code**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout bij het maken van een beveiligd kanaal voor netwerk communicatie. | <ol><li> Open de REGI ster-editor door **regedit. exe** uit te voeren in een modus met verhoogde bevoegdheden. <li> Alle versies van de .NET Framework in uw systeem identificeren. Ze bevinden zich in de hiërarchie van register sleutel **HKEY_LOCAL_MACHINE \Software\Microsoft**. <li> Voor elke .NET Framework die in de register sleutel aanwezig is, voegt u de volgende sleutel toe: <br> **Schusestrongcrypto toe "= dword: 00000001**. </ol>|
+| **Fout code**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout bij het maken van een beveiligd kanaal voor netwerk communicatie. | <ol><li> Open de REGI ster-editor door **regedit. exe** uit te voeren in een modus met verhoogde bevoegdheden. <li> Alle versies van de .NET Framework in uw systeem identificeren. Ze bevinden zich in de hiërarchie van register sleutel **HKEY_LOCAL_MACHINE \Software\Microsoft**. <li> Voor elke .NET Framework die in de register sleutel aanwezig is, voegt u de volgende sleutel toe: <br> **SchUseStrongCrypto"=dword:00000001**. </ol>|
 | **Fout code**: ExtensionVCRedistInstallationFailure <br/> **Fout bericht**: de momentopname bewerking is mislukt vanwege een fout bij het C++ installeren van Visual redistributable voor Visual Studio 2012. | Navigeer naar C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion en installeer vcredist2013_x64.<br/>Zorg ervoor dat de waarde van de register sleutel die de service-installatie toestaat, is ingesteld op de juiste waarde. Stel de **begin** waarde in **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** in op **3** en niet **4**. <br><br>Als u nog steeds problemen ondervindt met de installatie, start u de installatie service opnieuw door **Msiexec/unregister** gevolgd door **Msiexec/register** vanaf een opdracht prompt met verhoogde bevoegdheid uit te voeren.  |
 
 ## <a name="jobs"></a>Taken

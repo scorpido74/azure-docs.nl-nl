@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: dbf2b4b5113598fee742c3864bede782a624773c
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72817456"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082734"
 ---
 # <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelf studie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
 
@@ -100,7 +100,7 @@ Een functie-app kan een of meer Azure Functions bevatten. Open de map *Start* in
 
 - [*Local. settings. json*](functions-run-local.md#local-settings-file): bevat toepassings instellingen die worden gebruikt voor lokale ontwikkeling
 - [*host. json*](functions-host-json.md): bevat instellingen voor de Azure functions-host en-extensies
-- [*Requirements. txt*](functions-reference-python.md#python-version-and-package-management): bevat Python-pakketten die vereist zijn voor deze toepassing
+- [*Requirements. txt*](functions-reference-python.md#package-management): bevat Python-pakketten die vereist zijn voor deze toepassing
 
 ## <a name="create-an-http-function"></a>Een HTTP-functie maken
 
@@ -221,7 +221,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Zorg ervoor dat u de wijzigingen opslaat.
+Zorg ervoor dat uw wijzigingen op te slaan.
 
 Deze functie ontvangt een afbeeldings-URL in een query reeks parameter met de naam `img`. Er wordt `predict_image_from_url` aangeroepen vanuit de helper-bibliotheek die de installatie kopie downloadt en een voor spelling retourneert met behulp van het tensor flow-model. De functie retourneert vervolgens een HTTP-antwoord met de resultaten.
 

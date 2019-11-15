@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub Device streams C Quick start voor SSH en RDP (preview) | Microsoft Docs
+title: Azure IoT Hub Device streams C Quick start voor SSH en RDP
 description: In deze Quick Start voert u een voorbeeld toepassing C uit die fungeert als een proxy voor het inschakelen van SSH-en RDP-scenario's via IoT Hub apparaten.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 5d610f14dc037d1585b7f8ec1e0dd28944847b7a
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: c8554fc3f691af05a2c6a660d07ffb9a6ff29f31
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900859"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084337"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Snelstartgids: SSH en RDP via een stroom van een IoT Hub apparaat inschakelen met behulp van een C-proxy toepassing (preview)
 
@@ -26,7 +26,7 @@ Azure IoT Hub ondersteunt momenteel het streamen van apparaten als een [Preview-
 
 In deze Quick Start wordt de configuratie beschreven voor het gebruik van trans porting Secure Shell (SSH)-verkeer (via poort 22) via apparaat stromen. Het Setup-verkeer voor Remote Desktop Protocol (RDP) is vergelijkbaar en vereist een eenvoudige configuratie wijziging. Omdat apparaatversleuteling het toepassings-en protocol-neutraal zijn, kunt u deze Snelstartgids aanpassen voor andere soorten toepassings verkeer.
 
-## <a name="how-it-works"></a>Het werkt als volgt
+## <a name="how-it-works"></a>Hoe werkt het?
 
 In de volgende afbeelding ziet u hoe de lokale proxy Programma's van het apparaat en de service end-to-end-connectiviteit mogelijk maken tussen de SSH-client en SSH-daemon-processen. Tijdens de open bare preview ondersteunt de C SDK alleen apparaatnamen op het apparaat. Als gevolg hiervan wordt in deze Snelstartgids beschreven hoe u alleen de apparaat-Local proxy toepassing uitvoert. Volg de instructies in een van de volgende Quick starts om de bijbehorende service-side toepassing te bouwen en uit te voeren:
 
@@ -54,7 +54,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost
@@ -151,7 +151,7 @@ In deze sectie maakt u een end-to-end-stroom voor het tunnelen van SSH-verkeer.
 
 ### <a name="run-the-device-local-proxy-application"></a>Voer de proxytoepassing in het apparaat uit
 
-1. Bewerk het bron bestand **iothub_client_c2d_streaming_proxy_sample. c** in de map `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`en geef uw apparaat Connection String, het IP-adres of de hostnaam van het doel apparaat en de SSH-poort 22:
+1. Bewerk het bron bestand **iothub_client_c2d_streaming_proxy_sample. c** in de map `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`en geef uw apparaat de Connection String, het IP-adres of de hostnaam van het doel apparaat en de SSH-poort 22:
 
    ```C
    /* Paste in your device connection string  */

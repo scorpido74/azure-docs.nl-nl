@@ -1,18 +1,18 @@
 ---
-title: Architectuur voor herstel na nood geval voor fysieke server naar Azure met behulp van Azure Site Recovery | Microsoft Docs
+title: Architectuur van herstel na nood geval voor fysieke server in Azure Site Recovery
 description: Dit artikel bevat een overzicht van de onderdelen en architectuur die worden gebruikt tijdens nood herstel van on-premises fysieke servers naar Azure met de Azure Site Recovery-service.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: a5d3dfe6457c4b70f0b23c2d8aa7ac5e58e68dc7
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: 23e8e4f9a092e871e62da27c8bf0c58a3bb8eb5b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70814467"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084690"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Architectuur van fysieke server naar Azure voor herstel na nood gevallen
 
@@ -54,7 +54,7 @@ De volgende tabel en afbeelding bieden een weer gave op hoog niveau van de onder
 
 ## <a name="failover-and-failback-process"></a>Failover- en failbackproces
 
-Nadat de replicatie is ingesteld en u een herstel analyse voor nood gevallen (testfailover) hebt uitgevoerd om te controleren of alles werkt zoals verwacht, kunt u failover en failback uitvoeren zoals u dat nodig hebt. Houd rekening met het volgende:
+Nadat de replicatie is ingesteld en u een herstel analyse voor nood gevallen (testfailover) hebt uitgevoerd om te controleren of alles werkt zoals verwacht, kunt u failover en failback uitvoeren zoals u dat nodig hebt. Opmerking:
 
 - Geplande failover wordt niet ondersteund.
 - U moet een failback uitvoeren naar een on-premises virtuele VMware-machine. Dit betekent dat u een on-premises VMware-infra structuur nodig hebt, zelfs wanneer u on-premises fysieke servers naar Azure repliceert.
@@ -63,15 +63,15 @@ Nadat de replicatie is ingesteld en u een herstel analyse voor nood gevallen (te
 - Nadat u de eerste failover hebt geactiveerd, voert u deze uit om toegang te krijgen tot de workload vanuit de Azure-VM.
 - Als uw primaire on-premises site weer beschikbaar is, kunt u een failback uitvoeren.
 - U moet een infra structuur voor failback instellen, waaronder:
-    - **Tijdelijke proces server in azure**: Als u een failback van Azure wilt uitvoeren, stelt u een Azure VM in om te fungeren als een proces server voor het afhandelen van replicatie vanuit Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid.
-    - **VPN-verbinding**: Als u failback wilt uitvoeren, hebt u een VPN-verbinding (of Azure ExpressRoute) nodig van het Azure-netwerk naar de on-premises site.
-    - **Afzonderlijke hoofddoel server**: De Master doel server die is geïnstalleerd met de configuratie server, op de on-premises VMware-VM, verwerkt standaard failback. Als u echter grote hoeveel heden verkeer wilt herstellen, moet u een afzonderlijke on-premises hoofddoel server voor dit doel instellen.
-    - **Failbackbeleid**: Als u terug wilt repliceren naar uw on-premises site, hebt u een failbackbeleid nodig. Deze is automatisch gemaakt bij het maken van uw replicatie beleid van on-premises naar Azure.
-    - **VMware-infra structuur**: U hebt een VMware-infra structuur nodig voor failback. U kunt geen failback uitvoeren naar een fysieke server.
+    - **Tijdelijke proces server in azure**: als u een failback van Azure wilt uitvoeren, stelt u een Azure vm in om te fungeren als een proces server voor het afhandelen van replicatie vanuit Azure. U kunt deze virtuele machine verwijderen wanneer de failback is voltooid.
+    - **VPN-verbinding**: als u een failback wilt uitvoeren, hebt u een VPN-verbinding (of Azure ExpressRoute) nodig van het Azure-netwerk naar de on-premises site.
+    - **Afzonderlijke hoofddoel server**: de Master doel server die is geïnstalleerd met de configuratie server, op de on-premises VMware-VM, verwerkt de failback. Als u echter grote hoeveel heden verkeer wilt herstellen, moet u een afzonderlijke on-premises hoofddoel server voor dit doel instellen.
+    - **Failbackbeleid**: als u wilt repliceren naar de on-premises site, hebt u een failbackbeleid nodig. Deze is automatisch gemaakt bij het maken van uw replicatie beleid van on-premises naar Azure.
+    - **VMware-infra structuur**: u hebt een VMware-infra structuur nodig voor failback. U kunt geen failback uitvoeren naar een fysieke server.
 - Nadat de onderdelen zijn geïmplementeerd, vindt failback plaats in drie fasen:
-    - Fase 1: Beveilig de Azure Vm's opnieuw, zodat ze worden gerepliceerd van Azure naar de on-premises VMware-Vm's.
-    - Fase 2: Voer een failover uit naar de on-premises site.
-    - Fase 3: Nadat de workloads weer zijn hersteld, schakelt u de replicatie opnieuw in.
+    - Fase 1: Beveilig de Azure Vm's opnieuw, zodat ze worden gerepliceerd van Azure naar de on-premises virtuele VMware-machines.
+    - Fase 2: een failover uitvoeren naar de on-premises site.
+    - Fase 3: nadat de workloads zijn hersteld, schakelt u de replicatie opnieuw in.
 
 **VMware-failback van Azure**
 

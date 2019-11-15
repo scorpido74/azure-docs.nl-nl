@@ -1,22 +1,22 @@
 ---
-title: Een herstelanalyse uitvoeren van Azure-VM's naar een secundaire Azure-regio met de Azure Site Recovery-service
-description: Leer hoe u een herstelanalyse kunt uitvoeren van Azure-VM's naar een secundaire Azure-regio voor Azure IaaS VM's met behulp van de Azure Site Recovery-service.
+title: Een Azure VM-nood herstel analyse uitvoeren met Azure Site Recovery
+description: Meer informatie over het uitvoeren van een nood herstel analyse naar een secundaire regio voor Azure-Vm's met behulp van de Azure Site Recovery-service.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: cb234f9fa2fc5df68fb2bf4dde3a377ea15532eb
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 817a220e36ac250b1d5a5aa90d0bddbfb155cc26
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053384"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091337"
 ---
-# <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region"></a>Een DR-herstelanalyse uitvoeren van Azure-VM’s naar een secundaire Azure-regio
+# <a name="run-a-disaster-recovery-drill-to-a-secondary-region-for-azure-vms"></a>Een nood herstel analyse uitvoeren naar een secundaire regio voor virtuele Azure-machines 
 
 De [Azure Site Recovery](site-recovery-overview.md) service draagt bij aan uw strategie voor zakelijke continuïteit en noodherstel (BCDR) door te zorgen dat uw zakelijke apps beschikbaar blijven tijdens geplande en ongeplande uitval. Site Recovery beheert en orkestreert noodherstel van on-premises machines en virtuele Azure-machines (VM's), met inbegrip van replicatie, failover en herstel.
 
@@ -33,7 +33,7 @@ Deze tutorial laat zien hoe u een DR-herstelanalyse kunt uitvoeren voor een Azur
 
 - Voordat u een failovertest uitvoert, wordt u aangeraden de VM-eigenschappen te controleren of alles is zoals verwacht.  Ga naar de VM-eigenschappen in **Gerepliceerde items**. In de **Essentials**-blade ziet u informatie over de instellingen en status van machines.
 - **Wij raden u aan om een apart VM-netwerk te gebruiken voor de failover** en niet het standaardnetwerk dat is ingesteld toen u replicatie inschakelde.
-- Afhankelijk van de configuratie van de bron netwerken voor elke NIC, kunt u optioneel **subnet, IP-adres, openbaar IP, netwerk beveiligings groep of interne Load Balancer** opgeven om aan elke NIC te koppelen onder de instellingen voor de Testfailover in compute &-netwerk vóór voor het uitvoeren van DR-oefeningen.
+- Afhankelijk van de configuratie van de bron netwerken voor elke NIC, kunt u optioneel **subnet, IP-adres, openbaar IP, netwerk beveiligings groep of interne Load Balancer** opgeven om aan elke NIC te koppelen onder de instellingen voor de Testfailover in compute &-netwerk voordat Dr-analyse wordt verricht.
 
 
 ## <a name="run-a-test-failover"></a>Een testfailover uitvoeren

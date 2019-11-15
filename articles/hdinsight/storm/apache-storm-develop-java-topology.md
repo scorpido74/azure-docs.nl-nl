@@ -2,19 +2,18 @@
 title: Voor beeld van een Java-topologie Apache Storm-Azure HDInsight
 description: Meer informatie over het maken van Apache Storm-topologieën in Java door een topologie voor een aantal woorden te maken.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
-keywords: Apache Storm, Apache Storm-voor beeld, Storm Java, Storm-topologie-voor beeld
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 41ed51fc0cec9843525275613cca211d2e1bf409
-ms.sourcegitcommit: 71db032bd5680c9287a7867b923bf6471ba8f6be
+ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71018616"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083299"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Een Apache Storm topologie maken in Java
 
@@ -23,7 +22,7 @@ Meer informatie over het maken van een Java-topologie voor [Apache Storm](https:
 Nadat u de stappen in dit document hebt voltooid, kunt u de topologie implementeren voor Apache Storm op HDInsight.
 
 > [!NOTE]  
-> Een voltooide versie van de Storm-topologie-voor beelden die in dit document [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount)zijn gemaakt, is beschikbaar op.
+> Een voltooide versie van de Storm-topologie-voor beelden die in dit document zijn gemaakt, is beschikbaar op [https://github.com/Azure-Samples/hdinsight-java-storm-wordcount](https://github.com/Azure-Samples/hdinsight-java-storm-wordcount).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,6 +31,7 @@ Nadat u de stappen in dit document hebt voltooid, kunt u de topologie implemente
 * [Apache Maven](https://maven.apache.org/download.cgi) is op de juiste wijze [geïnstalleerd](https://maven.apache.org/install.html) volgens Apache.  Maven is een project voor het maken van een systeem voor Java-projecten.
 
 ## <a name="test-environment"></a>Test omgeving
+
 De omgeving die voor dit artikel wordt gebruikt, is een computer met Windows 10.  De opdrachten zijn uitgevoerd in een opdracht prompt en de verschillende bestanden zijn bewerkt met Klad blok.
 
 Voer vanaf een opdracht prompt de onderstaande opdrachten in om een werk omgeving te maken:
@@ -52,15 +52,15 @@ cd WordCount
 mkdir resources
 ```
 
-Met deze opdracht maakt u een `WordCount` map met de naam op de huidige locatie, die een Basic Maven-project bevat. Met de tweede opdracht wordt de huidige werkmap gewijzigd `WordCount`in. Met de derde opdracht maakt u een nieuwe `resources`map, die later wordt gebruikt.  De `WordCount` map bevat de volgende items:
+Met deze opdracht maakt u een map met de naam `WordCount` op de huidige locatie, die een Basic Maven-project bevat. Met de tweede opdracht wordt de huidige werkmap gewijzigd in `WordCount`. Met de derde opdracht maakt u een nieuwe map, `resources`, die later wordt gebruikt.  De map `WordCount` bevat de volgende items:
 
-* `pom.xml`: Bevat instellingen voor het project maven.
-* `src\main\java\com\microsoft\example`: Bevat de code van uw toepassing.
-* `src\test\java\com\microsoft\example`: Bevat tests voor uw toepassing.  
+* `pom.xml`: bevat instellingen voor het project maven.
+* `src\main\java\com\microsoft\example`: bevat de code van uw toepassing.
+* `src\test\java\com\microsoft\example`: bevat tests voor uw toepassing.  
 
 ### <a name="remove-the-generated-example-code"></a>De gegenereerde voorbeeld code verwijderen
 
-Verwijder de gegenereerde test-en `AppTest.java`toepassings bestanden `App.java` en voer de volgende opdrachten in:
+Verwijder de gegenereerde test-en toepassings bestanden `AppTest.java`en `App.java` door de onderstaande opdrachten in te voeren:
 
 ```cmd
 DEL src\main\java\com\microsoft\example\App.java
@@ -77,7 +77,7 @@ Open `pom.xml` door de volgende opdracht in te voeren:
 notepad pom.xml
 ```
 
-Voeg vervolgens de volgende XML toe na `<url> https://maven.apache.org</url>` de regel:
+Voeg vervolgens de volgende XML toe na de `<url> https://maven.apache.org</url>` regel:
 
 ```xml
 <repositories>
@@ -118,7 +118,7 @@ Voeg vervolgens de volgende XML toe na `<url> https://maven.apache.org</url>` de
 
 ## <a name="add-properties"></a>Eigenschappen toevoegen
 
-Met maven kunt u waarden op project niveau met de naam eigenschappen definiëren. Voeg `pom.xml`in de volgende tekst toe na de `</repositories>` regel:
+Met maven kunt u waarden op project niveau met de naam eigenschappen definiëren. Voeg in `pom.xml`de volgende tekst toe na de `</repositories>` regel:
 
 ```xml
 <properties>
@@ -130,11 +130,11 @@ Met maven kunt u waarden op project niveau met de naam eigenschappen definiëren
 </properties>
 ```
 
-U kunt deze waarde nu in andere secties van de `pom.xml`gebruiken. Wanneer u bijvoorbeeld de versie van Storm-onderdelen opgeeft, kunt u in `${storm.version}` plaats van een waarde vaste code ring gebruiken.
+U kunt deze waarde nu in andere secties van de `pom.xml`gebruiken. Wanneer u bijvoorbeeld de versie van Storm-onderdelen opgeeft, kunt u `${storm.version}` gebruiken in plaats van een waarde vast te schrijven.
 
 ## <a name="add-dependencies"></a>Afhankelijkheden toevoegen
 
-Een afhankelijkheid voor Storm-onderdelen toevoegen. Voeg `pom.xml`in de `<dependencies>` sectie de volgende tekst toe:
+Een afhankelijkheid voor Storm-onderdelen toevoegen. In `pom.xml`voegt u de volgende tekst toe aan de sectie `<dependencies>`:
 
 ```xml
 <dependency>
@@ -146,14 +146,14 @@ Een afhankelijkheid voor Storm-onderdelen toevoegen. Voeg `pom.xml`in de `<depen
 </dependency>
 ```
 
-Tijdens het compileren gebruikt maven deze informatie om op te `storm-core` zoeken in de Maven-opslag plaats. Het controleert eerst op de opslag plaats op uw lokale computer. Als de bestanden niet aanwezig zijn, worden ze door maven gedownload uit de open bare maven-opslag plaats en opgeslagen in de lokale opslag plaats.
+Tijdens het compileren gebruikt maven deze informatie om `storm-core` op te zoeken in de Maven-opslag plaats. Het controleert eerst op de opslag plaats op uw lokale computer. Als de bestanden niet aanwezig zijn, worden ze door maven gedownload uit de open bare maven-opslag plaats en opgeslagen in de lokale opslag plaats.
 
 > [!NOTE]  
-> Let op `<scope>provided</scope>` de regel in deze sectie. Met deze instelling wordt aangegeven dat maven **Storm-kern** moet worden uitgesloten van alle JAR-bestanden die worden gemaakt, omdat deze worden verschaft door het systeem.
+> U ziet de `<scope>provided</scope>` regel in deze sectie. Met deze instelling wordt aangegeven dat maven **Storm-kern** moet worden uitgesloten van alle JAR-bestanden die worden gemaakt, omdat deze worden verschaft door het systeem.
 
 ## <a name="build-configuration"></a>Configuratie maken
 
-Met maven-invoeg toepassingen kunt u de build-fasen van het project aanpassen. Bijvoorbeeld hoe het project wordt gecompileerd of hoe het moet worden ingepakt in een JAR-bestand. Voeg `pom.xml`in de volgende tekst toe boven de `</project>` regel.
+Met maven-invoeg toepassingen kunt u de build-fasen van het project aanpassen. Bijvoorbeeld hoe het project wordt gecompileerd of hoe het moet worden ingepakt in een JAR-bestand. Voeg in `pom.xml`de volgende tekst toe direct boven de `</project>` regel.
 
 ```xml
 <build>
@@ -164,14 +164,14 @@ Met maven-invoeg toepassingen kunt u de build-fasen van het project aanpassen. B
 </build>
 ```
 
-Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configuratie opties voor het maken van een toepassing toe te voegen. `pom.xml` [Zie https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)voor een volledige referentie van het bestand.
+Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configuratie opties voor het maken van een toepassing toe te voegen. Zie [https://maven.apache.org/pom.html](https://maven.apache.org/pom.html)voor een volledige verwijzing naar het `pom.xml` bestand.
 
 ### <a name="add-plug-ins"></a>Invoeg toepassingen toevoegen
 
 * **Exec maven-invoeg toepassing**
 
-    Voor Apache Storm topologieën die in Java zijn geïmplementeerd, is de [exec maven-invoeg toepassing](https://www.mojohaus.org/exec-maven-plugin/) handig omdat u de topologie eenvoudig lokaal kunt uitvoeren in uw ontwikkel omgeving. Voeg het volgende toe aan `<plugins>` de sectie van `pom.xml` het bestand voor het toevoegen van de exec maven-invoeg toepassing:
-    
+    Voor Apache Storm topologieën die in Java zijn geïmplementeerd, is de [exec maven-invoeg toepassing](https://www.mojohaus.org/exec-maven-plugin/) handig omdat u de topologie eenvoudig lokaal kunt uitvoeren in uw ontwikkel omgeving. Voeg het volgende toe aan de sectie `<plugins>` van het `pom.xml` bestand om de exec maven-invoeg toepassing op te genomen:
+
     ```xml
     <plugin>
         <groupId>org.codehaus.mojo</groupId>
@@ -179,9 +179,9 @@ Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configura
         <version>1.6.0</version>
         <executions>
             <execution>
-            <goals>
-                <goal>exec</goal>
-            </goals>
+                <goals>
+                    <goal>exec</goal>
+                </goals>
             </execution>
         </executions>
         <configuration>
@@ -190,7 +190,7 @@ Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configura
             <includePluginDependencies>false</includePluginDependencies>
             <classpathScope>compile</classpathScope>
             <mainClass>${storm.topology}</mainClass>
-            <cleanupDaemonThreads>false</cleanupDaemonThreads> 
+            <cleanupDaemonThreads>false</cleanupDaemonThreads>
         </configuration>
     </plugin>
     ```
@@ -198,56 +198,56 @@ Deze sectie wordt gebruikt om invoeg toepassingen, resources en andere configura
 * **Apache Maven compiler-invoeg toepassing**
 
     Een andere handige invoeg toepassing is de [Apache Maven compiler-invoeg toepassing](https://maven.apache.org/plugins/maven-compiler-plugin/), die wordt gebruikt om de compilatie opties te wijzigen. Wijzig de Java-versie die maven gebruikt voor de bron en het doel voor uw toepassing.
-    
+
   * Voor HDInsight __3,4 of eerder__stelt u de bron-en doel-Java-versie in op __1,7__.
-    
+
   * Voor HDInsight __3,5__stelt u de bron-en doel-Java-versie in op __1,8__.
-    
-    Voeg de volgende tekst toe aan `<plugins>` de sectie van `pom.xml` het bestand, waarin de invoeg toepassing Apache Maven compiler wordt vermeld. In dit voor beeld wordt 1,8 opgegeven, dus is de HDInsight-versie van het doel 3,5.
-    
-    ```xml
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-compiler-plugin</artifactId>
-      <version>3.3</version>
-      <configuration>
-      <source>1.8</source>
-      <target>1.8</target>
-      </configuration>
-    </plugin>
-    ```
+
+  Voeg de volgende tekst toe aan de sectie `<plugins>` van het `pom.xml`-bestand om de invoeg toepassing Apache Maven compiler op te kunnen bevatten. In dit voor beeld wordt 1,8 opgegeven, dus is de HDInsight-versie van het doel 3,5.
+
+  ```xml
+  <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.8.1</version>
+    <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+    </configuration>
+  </plugin>
+  ```
 
 ### <a name="configure-resources"></a>Resources configureren
 
-In het gedeelte resources kunt u niet-code resources toevoegen, zoals configuratie bestanden die nodig zijn voor onderdelen in de topologie. Voor dit voor beeld voegt u de volgende tekst toe `<resources>` aan de sectie `pom.xml` van het bestand.
+In het gedeelte resources kunt u niet-code resources toevoegen, zoals configuratie bestanden die nodig zijn voor onderdelen in de topologie. Voor dit voor beeld voegt u de volgende tekst toe in het gedeelte `<resources>` van het `pom.xml` bestand. Sla het bestand op en sluit het.
 
 ```xml
 <resource>
     <directory>${basedir}/resources</directory>
     <filtering>false</filtering>
     <includes>
-        <include>log4j2.xml</include>
+            <include>log4j2.xml</include>
     </includes>
 </resource>
 ```
 
-In dit voor beeld wordt de map resources in de hoofdmap van het`${basedir}`project () toegevoegd als een locatie die bronnen bevat, en het `log4j2.xml`bestand met de naam. Dit bestand wordt gebruikt om te configureren welke gegevens worden geregistreerd door de topologie.
+In dit voor beeld wordt de map resources in de hoofdmap van het project (`${basedir}`) toegevoegd als een locatie die resources bevat, en wordt het bestand met de naam `log4j2.xml`opgenomen. Dit bestand wordt gebruikt om te configureren welke gegevens worden geregistreerd door de topologie.
 
 ## <a name="create-the-topology"></a>De topologie maken
 
 Een op Java gebaseerde Apache Storm topologie bestaat uit drie onderdelen die u als een afhankelijkheid (of referentie) moet maken.
 
-* **Spouts**: Gegevens uit externe bronnen worden gelezen en gegevens stromen worden verzonden naar de topologie.
+* **Spouts**: gegevens uit externe bronnen worden gelezen en gegevens stromen in de topologie worden verzonden.
 
-* **Bouten**: Voert de verwerking uit van stromen die worden verzonden door spouts of andere schichten, en levert een of meer streams.
+* **Bouten**: voert de verwerking uit van stromen die worden verzonden door spouts of andere schichten en levert een of meer streams.
 
-* **Topologie**: Hiermee wordt gedefinieerd hoe de spouts en schichten worden gerangschikt en wordt het toegangs punt voor de topologie geboden.
+* **Topologie**: definieert hoe de spouts en schichten worden gerangschikt en biedt het toegangs punt voor de topologie.
 
 ### <a name="create-the-spout"></a>De Spout maken
 
 Om de vereisten voor het instellen van externe gegevens bronnen te reduceren, worden in de volgende Spout alleen wille keurige zinnen gegeven. Het is een gewijzigde versie van een Spout die wordt meegeleverd met de [Storm-starter-voor beelden](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter).  Hoewel in deze topologie slechts één Spout wordt gebruikt, kunnen andere gegevens van andere bronnen in de topologie worden gefeedd.
 
-Voer de onderstaande opdracht in om een nieuw bestand `RandomSentenceSpout.java`te maken en te openen:
+Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `RandomSentenceSpout.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\RandomSentenceSpout.java
@@ -320,22 +320,20 @@ public class RandomSentenceSpout extends BaseRichSpout {
 > [!NOTE]  
 > Zie een van de volgende voor beelden voor een voor beeld van een Spout dat van een externe gegevens bron wordt gelezen:
 >
-> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): Een voor beeld van een Spout die van Twitter wordt gelezen.
-> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): Een Spout die van Kafka wordt gelezen.
-
+> * [TwitterSampleSPout](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter/spout/TwitterSampleSpout.java): een voor beeld van een Spout die van Twitter wordt gelezen.
+> * [Storm-Kafka](https://github.com/apache/storm/tree/0.10.x-branch/external/storm-kafka): een Spout die van Kafka wordt gelezen.
 
 ### <a name="create-the-bolts"></a>De bouten maken
 
 Bouten verwerken de gegevens verwerking. Schichten kunnen alles doen, bijvoorbeeld berekening, persistentie of praten met externe onderdelen. In deze topologie worden twee schichten gebruikt:
 
-* **SplitSentence**: Splitst de zinnen die worden verzonden door **RandomSentenceSpout** in afzonderlijke woorden.
+* **SplitSentence**: splitst de zinnen die worden verzonden door **RandomSentenceSpout** in afzonderlijke woorden.
 
-* **WordCount**: Telt het aantal keren dat elk woord heeft plaatsgevonden.
-
+* **WordCount**: telt het aantal keren dat elk woord heeft plaatsgevonden.
 
 #### <a name="splitsentence"></a>SplitSentence
 
-Voer de onderstaande opdracht in om een nieuw bestand `SplitSentence.java`te maken en te openen:
+Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `SplitSentence.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\SplitSentence.java
@@ -392,7 +390,7 @@ public class SplitSentence extends BaseBasicBolt {
 
 #### <a name="wordcount"></a>WordCount
 
-Voer de onderstaande opdracht in om een nieuw bestand `WordCount.java`te maken en te openen:
+Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `WordCount.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\WordCount.java
@@ -489,7 +487,7 @@ De volgende afbeelding is een basis diagram van de grafiek van onderdelen voor d
 
 ![diagram van de spouts-en bouten-indeling](./media/apache-storm-develop-java-topology/word-count-topology1.png)
 
-Als u de topologie wilt implementeren, voert u de onderstaande opdracht in om een nieuw `WordCountTopology.java`bestand te maken en te openen:
+Als u de topologie wilt implementeren, voert u de onderstaande opdracht in om een nieuw bestand te maken en te openen `WordCountTopology.java`:
 
 ```cmd
 notepad src\main\java\com\microsoft\example\WordCountTopology.java
@@ -561,7 +559,7 @@ public class WordCountTopology {
 
 ### <a name="configure-logging"></a>Logboek registratie configureren
 
-Storm gebruikt [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) om informatie te registreren. Als u geen logboek registratie configureert, verzendt de topologie diagnostische gegevens. Als u wilt bepalen wat er wordt geregistreerd, maakt `log4j2.xml` u een `resources` bestand met de naam in de map door de volgende opdracht in te voeren:
+Storm gebruikt [Apache Log4j 2](https://logging.apache.org/log4j/2.x/) om informatie te registreren. Als u geen logboek registratie configureert, verzendt de topologie diagnostische gegevens. Als u wilt bepalen wat er wordt geregistreerd, maakt u een bestand met de naam `log4j2.xml` in de map `resources` door de volgende opdracht in te voeren:
 
 ```cmd
 notepad resources\log4j2.xml
@@ -572,25 +570,25 @@ Kopieer en plak de onderstaande XML-tekst in het nieuwe bestand.  Sluit het best
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
-<Appenders>
-    <Console name="STDOUT" target="SYSTEM_OUT">
-        <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
-    </Console>
-</Appenders>
-<Loggers>
-    <Logger name="com.microsoft.example" level="trace" additivity="false">
-        <AppenderRef ref="STDOUT"/>
-    </Logger>
-    <Root level="error">
-        <Appender-Ref ref="STDOUT"/>
-    </Root>
-</Loggers>
+    <Appenders>
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.microsoft.example" level="trace" additivity="false">
+            <AppenderRef ref="STDOUT"/>
+        </Logger>
+        <Root level="error">
+            <Appender-Ref ref="STDOUT"/>
+        </Root>
+    </Loggers>
 </Configuration>
 ```
 
-Met deze XML wordt een nieuwe logboek registratie voor `com.microsoft.example` de klasse geconfigureerd, waaronder de onderdelen in deze voorbeeld topologie. Het niveau is ingesteld op tracering voor deze logger, waarmee logboek gegevens worden vastgelegd die worden gegenereerd door onderdelen in deze topologie.
+Met deze XML wordt een nieuwe logger geconfigureerd voor de klasse `com.microsoft.example`, die de onderdelen bevat in deze voorbeeld topologie. Het niveau is ingesteld op tracering voor deze logger, waarmee logboek gegevens worden vastgelegd die worden gegenereerd door onderdelen in deze topologie.
 
-De `<Root level="error">` sectie configureert het basis niveau van logboek registratie (alles niet in `com.microsoft.example`) om alleen fout gegevens te registreren.
+In het gedeelte `<Root level="error">` wordt het basis niveau van logboek registratie (wat niet in `com.microsoft.example`) geconfigureerd om alleen fout gegevens te registreren.
 
 Zie [https://logging.apache.org/log4j/2.x/manual/configuration.html](https://logging.apache.org/log4j/2.x/manual/configuration.html)voor meer informatie over het configureren van logboek registratie voor Log4j 2.
 
@@ -617,7 +615,7 @@ Terwijl deze wordt uitgevoerd, wordt in de topologie opstart gegevens weer gegev
 
 In dit voorbeeld logboek wordt aangegeven dat het woord ' en ' 113 keer is verzonden. De telling blijft bestaan, zolang de topologie wordt uitgevoerd, omdat de Spout continu dezelfde zinnen verzendt.
 
-Er is een interval van vijf seconden tussen de uitstoot van woorden en tellingen. Het **WordCount** -onderdeel is zo geconfigureerd dat alleen gegevens worden verzonden wanneer een Tick tuple arriveert. Er wordt gevraagd dat Tick-Tuples elke vijf seconden worden geleverd.
+Er is een interval van vijf seconden tussen de emissie van woorden en tellingen. Het **WordCount** -onderdeel is zo geconfigureerd dat alleen gegevens worden verzonden wanneer een Tick tuple arriveert. Er wordt gevraagd dat Tick-Tuples elke vijf seconden worden geleverd.
 
 ## <a name="convert-the-topology-to-flux"></a>De topologie omzetten naar stroom
 
@@ -628,15 +626,15 @@ Het YAML-bestand definieert de onderdelen die moeten worden gebruikt voor de top
 Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
 > [!WARNING]  
-> Als gevolg van een [bug https://issues.apache.org/jira/browse/STORM-2055) (](https://issues.apache.org/jira/browse/STORM-2055) met storm 1.0.1 moet u mogelijk een storm- [ontwikkel omgeving](https://storm.apache.org/releases/current/Setting-up-development-environment.html) installeren om de stroom topologie lokaal uit te voeren.
+> Als gevolg van een [bug (https://issues.apache.org/jira/browse/STORM-2055)](https://issues.apache.org/jira/browse/STORM-2055) met storm 1.0.1, moet u mogelijk een [Storm-ontwikkel omgeving](https://storm.apache.org/releases/current/Setting-up-development-environment.html) installeren om de stroom topologie lokaal uit te voeren.
 
-1. Voorheen, `WordCountTopology.java` de topologie gedefinieerd, maar is niet nodig met stroom. Verwijder het bestand met de volgende opdracht:
+1. Voorheen heeft `WordCountTopology.java` de topologie gedefinieerd, maar is deze niet nodig met stroom. Verwijder het bestand met de volgende opdracht:
 
     ```cmd
     DEL src\main\java\com\microsoft\example\WordCountTopology.java
     ```
 
-2. Voer de onderstaande opdracht in om een nieuw bestand `topology.yaml`te maken en te openen:
+1. Voer de onderstaande opdracht in om een nieuw bestand te maken en te openen `topology.yaml`:
 
     ```cmd
     notepad resources\topology.yaml
@@ -648,46 +646,46 @@ Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org
     name: "wordcount"       # friendly name for the topology
 
     config:                 # Topology configuration
-      topology.workers: 1     # Hint for the number of workers to create
-
+           topology.workers: 1     # Hint for the number of workers to create
+  
     spouts:                 # Spout definitions
     - id: "sentence-spout"
-      className: "com.microsoft.example.RandomSentenceSpout"
-      parallelism: 1      # parallelism hint
+           className: "com.microsoft.example.RandomSentenceSpout"
+           parallelism: 1      # parallelism hint
 
     bolts:                  # Bolt definitions
     - id: "splitter-bolt"
-      className: "com.microsoft.example.SplitSentence"
-      parallelism: 1
-        
+           className: "com.microsoft.example.SplitSentence"
+           parallelism: 1
+
     - id: "counter-bolt"
-      className: "com.microsoft.example.WordCount"
-      constructorArgs:
-        - 10
-      parallelism: 1
+           className: "com.microsoft.example.WordCount"
+           constructorArgs:
+             - 10
+           parallelism: 1
 
     streams:                # Stream definitions
     - name: "Spout --> Splitter" # name isn't used (placeholder for logging, UI, etc.)
-      from: "sentence-spout"       # The stream emitter
-      to: "splitter-bolt"          # The stream consumer
-      grouping:                    # Grouping type
-        type: SHUFFLE
-    
+           from: "sentence-spout"       # The stream emitter
+           to: "splitter-bolt"          # The stream consumer
+           grouping:                    # Grouping type
+             type: SHUFFLE
+
     - name: "Splitter -> Counter"
-      from: "splitter-bolt"
-      to: "counter-bolt"
-      grouping:
-        type: FIELDS
-        args: ["word"]           # field(s) to group on
+           from: "splitter-bolt"
+           to: "counter-bolt"
+           grouping:
+             type: FIELDS
+             args: ["word"]           # field(s) to group on
     ```
 
-3. Voer de onderstaande opdracht in om `pom.xml` de hieronder beschreven revisies te openen:
+1. Voer de onderstaande opdracht in om de hieronder beschreven revisies te openen `pom.xml`.
 
     ```cmd
     notepad pom.xml
     ```
 
-   * Voeg de volgende nieuwe afhankelijkheden toe `<dependencies>` aan de sectie:
+   1. Voeg de volgende nieuwe afhankelijkheden toe aan de sectie `<dependencies>`:
 
         ```xml
         <!-- Add a dependency on the Flux framework -->
@@ -698,7 +696,7 @@ Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org
         </dependency>
         ```
 
-   * Voeg de volgende invoeg toepassing toe `<plugins>` aan de sectie. Deze invoeg toepassing verwerkt het maken van een pakket (jar-bestand) voor het project en past enkele trans formaties toe die specifiek zijn voor stroom bij het maken van het pakket.
+   1. Voeg de volgende invoeg toepassing toe aan de sectie `<plugins>`. Deze invoeg toepassing verwerkt het maken van een pakket (jar-bestand) voor het project en past enkele trans formaties toe die specifiek zijn voor stroom bij het maken van het pakket.
 
         ```xml
         <!-- build an uber jar -->
@@ -739,9 +737,9 @@ Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org
         </plugin>
         ```
 
-   * Wijzig in de sectie **exec-maven-plugin** `<configuration>` de `org.apache.storm.flux.Flux`waarde voor `<mainClass>` van `${storm.topology}` in. Met deze instelling kan stroom worden verwerkt om de topologie lokaal uit te voeren in de ontwikkeling.
+   1. Ga voor de sectie exec maven-invoeg toepassing naar `<configuration>` > `<mainClass>` en wijzig `${storm.topology}` naar `org.apache.storm.flux.Flux`. Met deze instelling kan stroom worden verwerkt om de topologie lokaal uit te voeren in de ontwikkeling.
 
-   * Voeg in `<resources>` de sectie het volgende toe aan `<includes>`. Deze XML bevat het YAML-bestand dat de topologie definieert als onderdeel van het project.
+   1. Voeg in de sectie `<resources>` het volgende toe aan `<includes>`. Deze XML bevat het YAML-bestand dat de topologie definieert als onderdeel van het project.
 
         ```xml
         <include>topology.yaml</include>
@@ -765,38 +763,40 @@ Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org
     > storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local -R /topology.yaml
     > ```
 
-    Met `--local` de para meter wordt de topologie in de lokale modus uitgevoerd op uw ontwikkel omgeving. De `-R /topology.yaml` para meter gebruikt `topology.yaml` de bestands resource uit het jar-bestand om de topologie te definiëren.
+    Met de para meter `--local` wordt de topologie uitgevoerd in de lokale modus van uw ontwikkel omgeving. De `-R /topology.yaml`-para meter gebruikt de `topology.yaml` bestands resource uit het jar-bestand om de topologie te definiëren.
 
     Terwijl deze wordt uitgevoerd, wordt in de topologie opstart gegevens weer gegeven. De volgende tekst is een voor beeld van de uitvoer:
 
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
-        17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
-        17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
-        17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word snow
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 56 for word white
+    17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 112 for word seven
+    17:33:27 [Thread-16-count] INFO  com.microsoft.example.WordCount - Emitting a count of 195 for word the
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 113 for word and
+    17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
+    ```
 
     Er is een vertraging van 10 seconden tussen batches van geregistreerde gegevens.
 
 2. Een nieuwe topologie yaml maken op basis van het project.
- 
-    a. Voer de onderstaande opdracht in om `topology.xml`te openen:
+
+    1. Voer de onderstaande opdracht in om `topology.xml`te openen:
 
     ```cmd
     notepad resources\topology.yaml
     ```
 
-    b. Zoek de volgende sectie en wijzig de waarde van `10` in `5`. Deze wijziging wijzigt het interval tussen het verzenden van batches van woorden van 10 seconden naar 5.  
+    1. Zoek de volgende sectie en wijzig de waarde van `10` naar `5`. Deze wijziging wijzigt het interval tussen het verzenden van batches van woorden van 10 seconden naar 5.  
 
     ```yaml
     - id: "counter-bolt"
-      className: "com.microsoft.example.WordCount"
-      constructorArgs:
-        - 5
-      parallelism: 1  
-    ```  
+           className: "com.microsoft.example.WordCount"
+           constructorArgs:
+             - 5
+           parallelism: 1  
+    ```
 
-    c. Bestand opslaan als `newtopology.yaml`.
+    1. Sla het bestand op als `newtopology.yaml`.
 
 3. Voer de volgende opdracht in om de topologie uit te voeren:
 
@@ -810,9 +810,9 @@ Zie voor meer informatie over stroom [stroom Framework (https://storm.apache.org
     storm jar target/WordCount-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --local resources/newtopology.yaml
     ```
 
-     Met deze opdracht wordt `newtopology.yaml` de topologie definitie gebruikt. Omdat we de `compile` para meter niet hebben opgenomen, gebruikt maven de versie van het project dat in de vorige stappen is gemaakt.
+    Met deze opdracht wordt de `newtopology.yaml` als topologie definitie gebruikt. Omdat we de `compile`-para meter niet hebben opgenomen, gebruikt maven de versie van het project dat in de vorige stappen is gemaakt.
 
-    Zodra de topologie is gestart, ziet u dat de tijd tussen verzonden batches is gewijzigd, zodat deze overeenkomt met `newtopology.yaml`de waarde in. Zo kunt u zien dat u uw configuratie kunt wijzigen via een YAML-bestand zonder dat u de topologie opnieuw hoeft te compileren.
+    Zodra de topologie is gestart, ziet u dat de tijd tussen verzonden batches is gewijzigd, zodat deze overeenkomt met de waarde in `newtopology.yaml`. Zo kunt u zien dat u uw configuratie kunt wijzigen via een YAML-bestand zonder dat u de topologie opnieuw hoeft te compileren.
 
 Zie voor meer informatie over deze en andere functies van het stroom raamwerk [stroom (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 

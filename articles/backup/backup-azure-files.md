@@ -7,12 +7,12 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 5fc9463d5f5ea15f08378d4a0245174a366fa2b9
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6f1a793432fa6403639726dbe4340bae6804fb9f
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747477"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091094"
 ---
 # <a name="back-up-and-restore-azure-file-shares"></a>Back-ups maken van Azure-bestandsshares en deze terugzetten
 
@@ -117,7 +117,7 @@ Azure Backup biedt de mogelijkheid om naar een herstelpunt te bladeren binnen Az
 
 U kunt verschillende beheertaken voor back-ups van bestandsshares uitvoeren op de pagina **Back-uptaken**, met inbegrip van:
 
-* [Taken bewaken](backup-azure-files.md#monitor-jobs)
+* [Taken controleren](backup-azure-files.md#monitor-jobs)
 * [Een nieuw beleid maken](backup-azure-files.md#create-a-new-policy)
 * [De beveiliging voor een bestandsshare stoppen](backup-azure-files.md#stop-protecting-an-azure-file-share)
 * [De beveiliging voor een bestandsshare hervatten](backup-azure-files.md#resume-protection-for-azure-file-share)
@@ -201,7 +201,7 @@ U kunt de back-up van een bestands share verwijderen tijdens de taak back-up sto
 
 Bij de volgende procedure wordt ervan uitgegaan dat de back-uptaak voor de virtuele machine is gestopt. Nadat de back-uptaak is gestopt, zijn de opties Back-up hervatten en Back-upgegevens verwijderen beschikbaar in het dashboard Back-upitem. Klik op Back-upgegevens verwijderen en typ de naam van de bestandsshare om het verwijderen te bevestigen. Geef desgewenst een reden voor verwijdering of een opmerking op.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
 Zie voor meer informatie over Azure-bestands shares.
 

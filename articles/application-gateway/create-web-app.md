@@ -1,22 +1,23 @@
 ---
-title: WebApps beveiligen met Azure Application Gateway - PowerShell
+title: App Service configureren met Power shell
+titleSuffix: Azure Application Gateway
 description: In dit artikel biedt richtlijnen voor het configureren van web-apps (als back-endhosts) voor een bestaande of nieuwe application gateway.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: dcf21fe111ab742074ab4fe580a021338e1f7c43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4198c83a167ad8f2d52f4393c39625948e18e6e3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62122214"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089518"
 ---
-# <a name="configure-app-service-with-application-gateway"></a>App Service configureren met Application Gateway
+# <a name="configure-app-service-with-application-gateway-using-powershell"></a>App Service met Application Gateway configureren met behulp van Power shell
 
-Application gateway kunt u een App Service-app of andere service met meerdere tenants als lid van de back-end-pool. In dit artikel leert u een App Service-app configureren met Application Gateway. In het eerste voorbeeld ziet u hoe u een bestaande toepassingsgateway configureert voor het gebruik van een web-app als lid van een back-endpool. In het tweede voorbeeld ziet u hoe u een nieuwe toepassingsgateway maakt met een web-app als lid van een back-endpool.
+Met Application Gateway kunt u een App Service-app of een andere multi tenant-service als lid van een back-end-groep hebben. In dit artikel leert u hoe u een App Service-app kunt configureren met Application Gateway. In het eerste voorbeeld ziet u hoe u een bestaande toepassingsgateway configureert voor het gebruik van een web-app als lid van een back-endpool. In het tweede voorbeeld ziet u hoe u een nieuwe toepassingsgateway maakt met een web-app als lid van een back-endpool.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -159,10 +160,10 @@ DnsSettings              : {
 
 ## <a name="restrict-access"></a>Toegang beperken
 
-De web-apps geïmplementeerd in de volgende voorbeelden gebruiken openbare IP-adressen die kunnen worden benaderd rechtstreeks vanuit het Internet. Dit helpt bij het oplossen van problemen wanneer u een nieuwe functie zijn leren en probeer het nieuwe dingen. Maar als u van plan bent voor het implementeren van een functie in productie, moet u meer beperkingen toevoegen.
+In de web-apps die in deze voor beelden zijn geïmplementeerd, worden open bare IP-adressen gebruikt die rechtstreeks via internet toegankelijk zijn. Dit helpt bij het oplossen van problemen met een nieuwe functie en nieuwe dingen. Maar als u van plan bent een functie in productie te implementeren, wilt u meer beperkingen toevoegen.
 
-Een manier die u kunt toegang tot uw web-apps beperken, is met [statische IP-beperkingen van Azure App Service](../app-service/app-service-ip-restrictions.md). U kunt bijvoorbeeld de web-app beperken zodat deze alleen verkeer van de toepassingsgateway ontvangt. Gebruik de functie voor de IP-beperking van app service om de toepassingsgateway VIP als het enige-adres met toegang weer te geven.
+Een manier om de toegang tot uw web-apps te beperken, is door [Azure app service statische IP-beperkingen](../app-service/app-service-ip-restrictions.md)te gebruiken. Zo kunt u de Web-App zodanig beperken dat alleen verkeer van de toepassings gateway wordt ontvangen. Gebruik de functie IP-beperking van app service om de Application Gateway-VIP weer te geven als het enige adres met Access.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over het configureren van omleidingen: [Omleiding configureren in Application Gateway met PowerShell](redirect-overview.md).
+Zie [Omleiding configureren in Application Gateway met PowerShell](redirect-overview.md) voor meer informatie over het configureren van omleidingen.

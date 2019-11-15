@@ -8,18 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/10/2019
+ms.date: 11/13/2019
 ms.author: wellsi
-ms.openlocfilehash: 9421f730ea6480c9e4223dd9ddbd15852b1fce8f
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3a74f3eb9aece3535f5505d69833a074c2dd0ed2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072603"
+ms.locfileid: "74091200"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Release opmerkingen: SDK voor spraak apparaten
 
 De volgende secties bevatten een lijst met wijzigingen in de meest recente releases.
+
+## <a name="speech-devices-sdk-170"></a>Speech-apparaten SDK 1.7.0:
+
+*   Linux ARM wordt nu ondersteund.
+*   Initiële binaire bestanden voor Roobov2 worden gegeven (Linux ARM64).
+*   Windows-gebruikers kunnen AudioConfig. fromDefaultMicrophoneInput () of AudioConfig. fromMicrophoneInput (DeviceName) gebruiken om de microfoon op te geven die moet worden gebruikt.
+*   De grootte van de tape wisselaar is geoptimaliseerd.
+*   Ondersteuning voor multi-turn-herkenning met hetzelfde spraak/intentie Recognizer-object.
+*   Herstel af en toe is vastgelopen tijdens het stoppen van de herkenning.
+*   Voor beeld-apps bevatten nu een voor beeld van een deel nemers. eigenschappen bestand om de indeling van het bestand te demonstreren.
+*   Het [Speech SDK](https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-sdk-reference) -onderdeel is bijgewerkt naar versie 1.7.0. Zie de [release opmerkingen](https://aka.ms/csspeech/whatsnew)voor meer informatie.
 
 ## <a name="speech-devices-sdk-160"></a>Speech-apparaten SDK 1.6.0:
 

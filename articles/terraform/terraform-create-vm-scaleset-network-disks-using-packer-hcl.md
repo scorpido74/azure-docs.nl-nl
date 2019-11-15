@@ -1,37 +1,37 @@
 ---
-title: 'Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een pakket met behulp van terraform'
+title: 'Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een verpakker met behulp van terraform'
 description: Met behulp van Terraform een virtuele Azure-machineschaalset maken van een aangepaste installatiekopie die is gegenereerd met Packer (compleet met een virtueel netwerk en beheerde gekoppelde schijven).
 ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: 080fda3077a10d0605f061aca5226783457348f9
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7d2813a51e63d86b56712bb6d07efc2f65ec65a0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837528"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74077820"
 ---
-# <a name="tutorial-create-azure-virtual-machine-scale-set-from-a-packer-custom-image-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een pakket met terraform
+# <a name="tutorial-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image-by-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken op basis van een aangepaste installatie kopie van een verpakker met behulp van terraform
 
-In deze zelfstudie gebruikt u [Terraform](https://www.terraform.io/) voor het maken en implementeren van een [virtuele Azure-machineschaalset](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) die is gemaakt met een aangepaste installatiekopie die is geproduceerd met [Packer](https://www.packer.io/intro/index.html) met beheerde schijven met behulp van de [HashiCorp-configuratietaal](https://www.terraform.io/docs/configuration/syntax.html) (HCL).  
+In deze zelf studie gebruikt u [terraform](https://www.terraform.io/) voor het maken en implementeren van een [schaalset voor virtuele Azure-machines](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview) die is gemaakt met een aangepaste installatie kopie die wordt geproduceerd met behulp van de functie [Packer](https://www.packer.io/intro/index.html) met Managed disks die gebruikmaken van de [HashiCorp-configuratie taal](https://www.terraform.io/docs/configuration/syntax.html) (HCL). 
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een Terraform-implementatie instellen
-> * Variabelen en uitvoer voor Terraform-implementatie gebruiken 
-> * Een netwerkinfrastructuur maken en implementeren
-> * Een aangepaste installatiekopie van een virtuele machine maken met behulp van Packer
-> * Een virtuele-machineschaalset maken met behulp van de aangepaste installatiekopie
-> * Een jumpbox maken en implementeren 
+> * Stel uw terraform-implementatie in.
+> * Gebruik variabelen en uitvoer voor terraform-implementatie.
+> * Maak en implementeer een netwerk infrastructuur.
+> * Een aangepaste installatie kopie voor een virtuele machine maken met behulp van Packer.
+> * Een schaalset voor virtuele machines maken en implementeren met behulp van de aangepaste installatie kopie.
+> * Een JumpBox maken en implementeren.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-- **Terraform**: [terraform installeren en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
+- **Terraform**: [Installeer terraform en configureer de toegang tot Azure](/azure/virtual-machines/linux/terraform-install-configure).
 - **SSH-sleutel paar**: [Maak een SSH-sleutel paar](/azure/virtual-machines/linux/mac-create-ssh-keys).
 - **Verpakker**: [Installeer Packer](https://www.packer.io/docs/install/index.html).
 
@@ -47,7 +47,7 @@ Maak drie nieuwe bestanden in een lege map met de volgende namen:
 
 In deze stap definieert u de variabelen waarmee de met Terraform gemaakte resources worden aangepast.
 
-Bewerk het bestand `variables.tf`, kopieer de volgende code en sla de wijzigingen op.
+Bewerk het `variables.tf` bestand, kopieer de volgende code en sla de wijzigingen op.
 
 ```hcl
 variable "location" {
@@ -63,11 +63,11 @@ variable "resource_group_name" {
 ```
 
 > [!NOTE]
-> De standaardwaarde van de variabele resource_group_name is niet ingesteld. Definieer uw eigen waarde.
+> De standaard waarde van de variabele resource_group_name is opheffen. Definieer uw eigen waarde.
 
 Sla het bestand op.
 
-Wanneer u de Terraform-sjabloon implementeert, wilt u de volledig gekwalificeerde domeinnaam die wordt gebruikt voor toegang tot de toepassing ophalen. Gebruik het resourcetype `output` van Terraform en haal de eigenschap `fqdn` van de resource op. 
+Wanneer u uw terraform-sjabloon implementeert, wilt u de Fully Qualified Domain Name ophalen die wordt gebruikt voor toegang tot de toepassing. Gebruik het resourcetype `output` van Terraform en haal de eigenschap `fqdn` van de resource op. 
 
 Bewerk het bestand `output.tf` en kopieer de volgende code om de volledig gekwalificeerde domeinnaam voor de virtuele machines beschikbaar te maken. 
 
@@ -80,9 +80,9 @@ output "vmss_public_ip" {
 ## <a name="define-the-network-infrastructure-in-a-template"></a>De netwerkinfrastructuur definiëren in een sjabloon 
 
 In deze stap maakt u de volgende netwerkinfrastructuur in een nieuwe Azure-resourcegroep: 
-  - Eén VNET met de adresruimte 10.0.0.0/16 
-  - Eén subnet met de adresruimte 10.0.2.0/24
-  - Twee openbare IP-adressen. Eén hiervan wordt gebruikt door de load balancer van de virtuele-machineschaalset, en het andere wordt gebruikt om verbinding te maken met de SSH-jumpbox
+  - Eén virtueel netwerk met de adres ruimte van 10.0.0.0/16.
+  - Eén subnet met de adres ruimte van 10.0.2.0/24.
+  - Twee openbare IP-adressen. De ene wordt gebruikt door de virtuele-machine Scale set load balancer. De andere wordt gebruikt om verbinding te maken met de SSH-JumpBox.
 
 U hebt ook een resourcegroep nodig waarin alle resources worden gemaakt. 
 
@@ -132,7 +132,7 @@ resource "azurerm_public_ip" "vmss" {
 ``` 
 
 > [!NOTE]
-> Het is raadzaam om de resources die worden geïmplementeerd in Azure te taggen, zodat u ze in de toekomst eenvoudiger kunt herkennen.
+> Label de resources die worden geïmplementeerd in azure om de identificatie in de toekomst te vergemakkelijken.
 
 ## <a name="create-the-network-infrastructure"></a>De netwerkinfrastructuur maken
 
@@ -152,31 +152,31 @@ terraform apply
 
 Controleer of de volledig gekwalificeerde domeinnaam van het openbare IP-adres overeenkomt met uw configuratie.
 
-![Volledig gekwalificeerde domeinnaam Terraform van virtuele-machineschaalset voor openbaar IP-adres](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
+![Terraform voor de virtuele-machine Scale set Fully Qualified Domain Name voor openbaar IP-adres](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-fqdn.png)
 
 De resourcegroep bevat de volgende resources:
 
 ![Netwerkresources voor virtuele-machineschaalset Terraform](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-vmss-step4-rg.png)
 
 
-## <a name="create-an-azure-image-using-packer"></a>Een Azure-installatiekopie maken met behulp van Packer
-Maak een aangepaste Linux-installatiekopie met behulp van de stappen die worden beschreven in de zelfstudie [Installatiekopieën voor virtuele Linux-machines maken in Azure met Packer](/azure/virtual-machines/linux/build-image-with-packer).
+## <a name="create-an-azure-image-by-using-packer"></a>Een Azure-installatie kopie maken met behulp van Packer
+Maak een aangepaste Linux-installatie kopie door de stappen in de zelf studie te volgen [How to use Packer gebruiken om installatie kopieën van virtuele Linux-machines te maken in azure](/azure/virtual-machines/linux/build-image-with-packer).
  
-Volg de zelfstudie voor het maken van een Ubuntu-installatiekopie met NGINX geïnstalleerd waarvan de inrichting ongedaan is gemaakt.
+Volg de zelf studie voor het maken van een onvoorziene Ubuntu-installatie kopie met nginx geïnstalleerd.
 
-![Zodra u de Packer-installatiekopie hebt gemaakt, hebt u een installatiekopie](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
+![Nadat u de pakket afbeelding hebt gemaakt, hebt u een installatie kopie](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/packerimagecreated.png)
 
 > [!NOTE]
-> Voor het doel van deze zelfstudie wordt in de Packer-installatiekopie een opdracht uitgevoerd waarmee nginx wordt geïnstalleerd. Tijdens het maken kunt u ook uw eigen script uitvoeren.
+> In het kader van deze zelf studie wordt in de installatie kopie van de Packer een opdracht uitgevoerd om Nginx te installeren. Tijdens het maken kunt u ook uw eigen script uitvoeren.
 
 ## <a name="edit-the-infrastructure-to-add-the-virtual-machine-scale-set"></a>De infrastructuur bewerken om de virtuele-machineschaalset toe te voegen
 
 In deze stap maakt u de volgende resources in het netwerk dat eerder is geïmplementeerd:
-- Azure load balancer om de toepassing te leveren en te koppelen aan het open bare IP-adres dat u eerder hebt geïmplementeerd.
-- Eén Azure load balancer en regels voor het leveren van de toepassing en deze koppelen aan het eerder geconfigureerde openbare IP-adres.
-- Azure back-mailadres groep en wijs deze toe aan de load balancer.
+- Een Azure-load balancer voor het leveren van de toepassing. Koppel deze aan het open bare IP-adres dat eerder is geïmplementeerd.
+- Een Azure-load balancer en-regels voor het leveren van de toepassing. Koppel deze aan het open bare IP-adres dat eerder is geconfigureerd.
+- Een Azure back-end-adres groep. Wijs deze toe aan de load balancer.
 - Een status test poort die door de toepassing wordt gebruikt en die is geconfigureerd op de load balancer.
-- Een schaalset voor virtuele machines zit achter de load balancer, die wordt uitgevoerd op het VNET dat eerder is geïmplementeerd.
+- Een schaalset voor virtuele machines die zich achter de load balancer bevindt en wordt uitgevoerd op het virtuele netwerk dat eerder is geïmplementeerd.
 - [Nginx](https://nginx.org/) op de knoop punten van de schaal van de virtuele machine die is geïnstalleerd vanuit een aangepaste installatie kopie.
 
 
@@ -342,7 +342,7 @@ Open een browser en maak verbinding met de volledig gekwalificeerde domeinnaam d
 Met deze optionele stap wordt SSH-toegang toegestaan tot de exemplaren van de virtuele-machineschaalset met behulp van een jumpbox.
 
 Voeg de volgende resources toe aan uw bestaande implementatie:
-- Een netwerkinterface die is verbonden met hetzelfde subnet als de virtuele-machineschaalset
+- Een netwerk interface die is verbonden met hetzelfde subnet als de schaalset voor virtuele machines
 - Een virtuele machine met deze netwerkinterface
 
 Voeg de volgende code aan het einde van het bestand `vmss.tf` toe:
@@ -419,7 +419,7 @@ resource "azurerm_virtual_machine" "jumpbox" {
 }
 ```
 
-Bewerk `outputs.tf` om de volgende code toe te voegen die de hostnaam van de jumpbox weergeeft wanneer de implementatie is voltooid:
+Bewerk `outputs.tf` om de volgende code toe te voegen waarin de hostnaam van de JumpBox wordt weer gegeven wanneer de implementatie is voltooid:
 
 ```
 output "jumpbox_public_ip" {
@@ -435,12 +435,12 @@ Implementeer de jumpbox.
 terraform apply 
 ```
 
-Als de implementatie is voltooid, lijkt de inhoud van de resourcegroep op wat wordt weergegeven op de volgende afbeelding:
+Nadat de implementatie is voltooid, ziet de inhoud van de resource groep eruit als in de volgende afbeelding:
 
 ![Terraform virtuele-machineschaalset-resourcegroep](./media/terraform-create-vm-scaleset-network-disks-using-packer-hcl/tf-create-create-vmss-step8.png)
 
 > [!NOTE]
-> Aanmelding met een wachtwoord wordt uitgeschakeld op de jumpbox en de virtuele-machineschaalset die u hebt geïmplementeerd. Meld u aan met SSH om toegang te krijgen tot de virtuele machines.
+> Aanmelden met een wacht woord is uitgeschakeld op de JumpBox en de schaalset voor virtuele machines die u hebt geïmplementeerd. Meld u aan met SSH om toegang te krijgen tot de Vm's.
 
 ## <a name="clean-up-the-environment"></a>De omgeving opschonen
 
@@ -450,7 +450,7 @@ Met de volgende opdracht verwijdert u de resources die in deze zelfstudie hebt g
 terraform destroy
 ```
 
-Typ `yes` als u wordt gevraagd om het verwijderen van de resources te bevestigen. Het vernietigingsproces kan enkele minuten in beslag nemen.
+Voer *Ja* in als u wordt gevraagd om het verwijderen van de resources te bevestigen. Het vernietigingsproces kan enkele minuten in beslag nemen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

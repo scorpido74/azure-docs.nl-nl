@@ -12,13 +12,13 @@ author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab
-ms.date: 06/14/2019
-ms.openlocfilehash: a943ade4bfc46083fe84274640d979928357a492
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 11/14/2019
+ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826801"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082499"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Werken met SQL Database verbindings problemen en tijdelijke fouten
 
@@ -30,7 +30,7 @@ In dit artikel wordt beschreven hoe u verbindings fouten en tijdelijke fouten vo
 
 Een tijdelijke fout, ook wel bekend als een tijdelijke fout, heeft een onderliggende oorzaak die binnenkort wordt opgelost. Een incidentele oorzaak van tijdelijke fouten is wanneer het Azure-systeem snel hardwarebronnen verschuift voor een betere taak verdeling van verschillende werk belastingen. De meeste van deze herconfiguratie gebeurtenissen eindigen in minder dan 60 seconden. Tijdens deze herconfiguraties periode hebt u mogelijk verbindings problemen met SQL Database. Toepassingen die verbinding maken met SQL Database moeten worden gebouwd om deze tijdelijke fouten te verwachten. Als u deze wilt afhandelen, implementeert u de logica voor opnieuw proberen in hun code in plaats van deze te halen aan gebruikers als toepassings fouten.
 
-Als uw client programma ADO.NET gebruikt, wordt het programma op de tijdelijke fout gemeld door het genereren van **SQLException**. Vergelijk de eigenschap **Number** met de lijst met tijdelijke fouten die aan het begin van het artikel worden gevonden. [SQL-fout codes voor SQL database client toepassingen](sql-database-develop-error-messages.md).
+Als uw client programma ADO.NET gebruikt, wordt het programma op de tijdelijke fout gemeld door het genereren van **SQLException**. 
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 

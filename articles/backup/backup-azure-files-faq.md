@@ -7,16 +7,16 @@ ms.date: 07/29/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 9cb5d3ae02cb0d4a6e293207a736dced56ed8538
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: be6eb6f13d7abf80537d155472a4072f7d08c06c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747452"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091604"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Vragen over het maken back-ups van Azure-bestanden
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) ook vragen over de Azure Backup-service plaatsen.
+In dit artikel vindt u antwoorden op veelgestelde vragen over het maken back-ups van Azure-bestanden. Sommige antwoorden bevatten koppelingen naar artikelen met uitgebreide informatie over het onderwerp. U kunt ook in het [discussieforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup) vragen over de Azure Backup-service plaatsen.
 
 Als u kort de secties in dit artikel wilt bekijken, gebruikt u de koppelingen aan de rechterkant, onder **In dit artikel**.
 
@@ -85,7 +85,7 @@ Met de preview-versie kunt u Azure-bestandsshares van maximaal 50 opslagaccounts
 
 Nee. Alle bestandsshares in een opslagaccount kunnen alleen in dezelfde kluis worden beveiligd.
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Backup
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hoeveel geplande back-ups kan ik per bestands share configureren?
 
@@ -109,7 +109,7 @@ Ja. Als u **Back-upgegevens behouden** hebt gekozen toen u met de beveiliging st
 
 Als een actieve herstel taak wordt geannuleerd, wordt het herstel proces gestopt en alle bestanden die vóór de annulering zijn teruggezet, blijven de geconfigureerde bestemming (oorspronkelijke of alternatieve locatie) zonder terugdraai bewerkingen.
 
-## <a name="manage-backup"></a>Het maken van back-ups beheren
+## <a name="manage-backup"></a>Back-up beheren
 
 ### <a name="can-i-use-powershell-to-configuremanagerestore-backups-of-azure-file-shares"></a>Kan ik PowerShell gebruiken voor het configureren/beheren/terugzetten van back-ups van Azure-bestandsshares?
 
@@ -119,7 +119,7 @@ Ja. Raadpleeg de gedetailleerde documentatie [hier](backup-azure-afs-automation.
 
 Alle momentopnamen die zijn gemaakt met Azure Backup, zijn toegankelijk via Momentopnamen weergeven in de portal, in PowerShell of in CLI. Meer informatie over momentopnamen van Azure-bestandsshares vindt u in [Overzicht van share-momentopnamen voor Azure Files (preview)](../storage/files/storage-snapshots-files.md).
 
-### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Wat is de maximale bewaartermijn die ik voor back-ups kan configureren?
+### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Wat is de maximale Bewaar periode die ik voor back-ups kan configureren?
 
 Voor de back-ups voor Azure-bestandsshares kunt u beleidsregels configureren. Back-ups kunnen tot 180 dagen worden bewaard. Met de optie [On-demand backup (Back-ups on-demand) in PowerShell](backup-azure-afs-automation.md#trigger-an-on-demand-backup) kunt u herstelpunten echter tot zelfs tien jaar bewaren.
 
@@ -127,9 +127,9 @@ Voor de back-ups voor Azure-bestandsshares kunt u beleidsregels configureren. Ba
 
 Wanneer er op een of meer bestandsshares een nieuw beleid wordt toegepast, worden het schema en de retentie van het nieuwe beleid gevolgd. Als de retentie is uitgebreid, worden de bestaande herstelpunten gemarkeerd voor bewaring conform het nieuwe beleid. Als de retentie wordt beperkt, worden de bestaande herstelpunten gemarkeerd voor verwijdering in de eerstvolgende opschoontaak, waarna ze worden verwijderd.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
-Deze informatie heeft alleen betrekking op het maken van back-ups van Azure-bestanden. Voor meer informatie over andere gebieden van Azure Backup, wordt u aangeraden een aantal van een van deze overige veelgestelde vragen over het maken van back-ups te raadplegen:
+Zie enkele van deze veelgestelde vragen over back-ups voor meer informatie over andere gebieden van Azure Backup:
 
 - [Veelgestelde vragen over Recovery Services-kluis](backup-azure-backup-faq.md)
 - [Veelgestelde vragen over Azure VM-back-ups](backup-azure-vm-backup-faq.md)

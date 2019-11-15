@@ -1,20 +1,20 @@
 ---
-title: Problemen met failback naar on-premises oplossen tijdens een nood herstel van de VMware-VM naar Azure met Azure Site Recovery
-description: In dit artikel worden manieren beschreven voor het oplossen van problemen met failback en opnieuw beveiligen tijdens de nood herstel van een VMware-VM naar Azure met Azure Site Recovery.
+title: Problemen met VMware vCenter-detectie in Azure Site Recovery oplossen
+description: In dit artikel wordt beschreven hoe u problemen met VMware vCenter-detectie oplost in Azure Site Recovery.
 author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
-ms.openlocfilehash: e9213637f45a4761af60de9dfac7add6324f6b96
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: f00c7b12accde9df9a5708a2b8b378d70428318d
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053854"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091242"
 ---
-# <a name="troubleshoot-vcenter-discovery-failures"></a>vCenter-detectiefouten oplossen
+# <a name="troubleshoot-vcenter-server-discovery-failures"></a>Problemen met vCenter Server detectie oplossen
 
 Dit artikel helpt u bij het oplossen van problemen die zich voordoen als gevolg van fouten in VMware vCenter-detectie.
 
@@ -34,7 +34,7 @@ Om het probleem op te lossen:
 
 - Identificeer de virtuele machine en stel de waarde in op een numerieke waarde (VM-instellingen bewerken in vCenter).
 
-Of
+of
 
 - Voer een upgrade uit van uw configuratie server naar versie 9,20 of hoger.
 

@@ -1,39 +1,38 @@
 ---
-title: 'Circuits verplaatsen van klassiek naar Resource Manager-ExpressRoute: Power shell: Azure | Microsoft Docs'
-description: Op deze pagina wordt beschreven hoe u een klassiek circuit verplaatst naar het Resource Manager-implementatie model met behulp van Power shell.
+title: 'Azure ExpressRoute: klassieke circuits verplaatsen naar Resource Manager'
+description: Deze pagina wordt beschreven hoe u een klassieke circuit verplaatsen naar het Resource Manager-implementatiemodel met behulp van PowerShell.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 34dd7ed4c6352ed90793288f918d78b7fb07af80
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 4e49a3bc803733f5e78207fa3573c93395924d6a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748243"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080160"
 ---
-# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-circuits verplaatsen van klassiek naar Resource Manager-implementatie model met behulp van Power shell
+# <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>ExpressRoute-circuits verplaatsen van klassiek naar Resource Manager-implementatiemodel met behulp van PowerShell
 
-Als u een ExpressRoute-circuit voor het klassieke en Resource Manager-implementatie model wilt gebruiken, moet u het circuit verplaatsen naar het Resource Manager-implementatie type. In de volgende secties wordt beschreven hoe u uw circuit kunt verplaatsen met behulp van Power shell.
+Voor het gebruik van een ExpressRoute-circuit voor zowel het klassieke en Resource Manager-implementatiemodel, moet u het circuit verplaatsen naar het Resource Manager-implementatiemodel. De volgende secties helpen u uw circuit verplaatsen met behulp van PowerShell.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 [!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
 
 * Controleer of u de klassieke en AZ Azure PowerShell-modules lokaal op uw computer hebt geïnstalleerd. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie.
-* Zorg ervoor dat [u de vereisten](expressroute-prerequisites.md), [routerings behoeften](expressroute-routing.md)en [werk stromen](expressroute-workflows.md) hebt gecontroleerd voordat u begint met de configuratie.
-* Lees de informatie die wordt weer gegeven bij het [verplaatsen van een ExpressRoute-circuit van klassiek naar Resource Manager](expressroute-move.md). Zorg ervoor dat u de limieten en beperkingen volledig begrijpt.
-* Controleer of het circuit volledig operationeel is in het klassieke implementatie model.
-* Zorg ervoor dat u een resource groep hebt die is gemaakt in het Resource Manager-implementatie model.
+* Zorg ervoor dat u hebt bekeken de [vereisten](expressroute-prerequisites.md), [routeringsvereisten](expressroute-routing.md), en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
+* Lees de informatie die is opgegeven onder [een ExpressRoute-circuit verplaatsen van klassiek naar Resource Manager](expressroute-move.md). Zorg ervoor dat u volledig inzicht in limieten en beperkingen.
+* Controleer of het circuit volledig operationeel zijn in het klassieke implementatiemodel.
+* Zorg ervoor dat u hebt een resourcegroep die is gemaakt in het Resource Manager-implementatiemodel.
 
 ## <a name="move-an-expressroute-circuit"></a>Een ExpressRoute-circuit verplaatsen
 
-### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Stap 1: circuit details van het klassieke implementatie model verzamelen
+### <a name="step-1-gather-circuit-details-from-the-classic-deployment-model"></a>Stap 1: Circuit gegevens verzamelen vanuit het klassieke implementatiemodel
 
-Meld u aan bij de klassieke Azure-omgeving en verzamel de service sleutel.
+Aanmelden bij de klassieke Azure-omgeving en de servicesleutel verzamelen.
 
 1. Meld u aan bij uw Azure-account.
 
@@ -47,24 +46,24 @@ Meld u aan bij de klassieke Azure-omgeving en verzamel de service sleutel.
    Select-AzureSubscription "<Enter Subscription Name here>"
    ```
 
-3. Importeer de Power shell-modules voor Azure en ExpressRoute.
+3. Importeer de PowerShell-modules voor Azure en ExpressRoute.
 
    ```powershell
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
    Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\ExpressRoute\ExpressRoute.psd1'
    ```
 
-4. Gebruik de onderstaande cmdlet om de service sleutels voor al uw ExpressRoute-circuits op te halen. Nadat u de sleutels hebt opgehaald, kopieert u de **Service sleutel** van het circuit dat u wilt verplaatsen naar het Resource Manager-implementatie model.
+4. Gebruik de volgende cmdlet om de servicesleutels voor al uw ExpressRoute-circuits. Bij het ophalen van de sleutels, Kopieer de **servicesleutel** van het circuit die u wilt verplaatsen naar het Resource Manager-implementatiemodel.
 
    ```powershell
    Get-AzureDedicatedCircuit
    ```
 
-### <a name="step-2-sign-in-and-create-a-resource-group"></a>Stap 2: Meld u aan en maak een resource groep
+### <a name="step-2-sign-in-and-create-a-resource-group"></a>Stap 2: Aanmelden en een resourcegroep maken
 
-Meld u aan bij de Resource Manager-omgeving en maak een nieuwe resource groep.
+Aanmelden bij de Resource Manager-omgeving en maak een nieuwe resourcegroep.
 
-1. Meld u aan bij uw Azure Resource Manager-omgeving.
+1. Aanmelden bij uw Azure Resource Manager-omgeving.
 
    ```powershell
    Connect-AzAccount
@@ -76,33 +75,33 @@ Meld u aan bij de Resource Manager-omgeving en maak een nieuwe resource groep.
    Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
    ```
 
-3. Wijzig het onderstaande fragment om een nieuwe resource groep te maken als u nog geen resource groep hebt.
+3. Wijzig het codefragment hieronder om een nieuwe resourcegroep maken als u nog een resourcegroep hebt.
 
    ```powershell
    New-AzResourceGroup -Name "DemoRG" -Location "West US"
    ```
 
-### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Stap 3: het ExpressRoute-circuit verplaatsen naar het Resource Manager-implementatie model
+### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>Stap 3: Het ExpressRoute-circuit verplaatsen naar het Resource Manager-implementatiemodel
 
-U bent nu klaar om uw ExpressRoute-circuit te verplaatsen van het klassieke implementatie model naar het Resource Manager-implementatie model. Controleer voordat u verdergaat de informatie in [een ExpressRoute-circuit verplaatsen van het klassieke naar het Resource Manager-implementatie model](expressroute-move.md).
+U bent nu klaar om te verplaatsen van uw ExpressRoute-circuit vanuit het klassieke implementatiemodel naar het Resource Manager-implementatiemodel. Voordat u doorgaat, bekijk de informatie in [een ExpressRoute-circuit verplaatsen van het klassieke naar het Resource Manager-implementatiemodel](expressroute-move.md).
 
-Wijzig en voer het volgende code fragment uit om het circuit te verplaatsen:
+Uw circuit verplaatsen, wijzigen en voer het volgende codefragment:
 
 ```powershell
 Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-In de klassieke modus is een ExpressRoute-circuit niet in staat om te worden gekoppeld aan een regio. In Resource Manager moet elke resource echter worden toegewezen aan een Azure-regio. De regio die is opgegeven in de cmdlet Move-AzExpressRouteCircuit kan technisch een wille keurige regio zijn. Voor organisatie doeleinden wilt u mogelijk een regio kiezen die de locatie van uw peering nauw keurig weergeeft.
+Een ExpressRoute-circuit heeft in de klassieke modus geen het concept van wordt gekoppeld aan een regio. Echter, in Resource Manager elke resource moet worden toegewezen aan een Azure-regio. De regio die is opgegeven in de cmdlet Move-AzExpressRouteCircuit kan technisch een wille keurige regio zijn. Voor organisatie-doeleinden, kunt u een regio die nauw uw peeringlocatie vertegenwoordigt kiezen.
 
 > [!NOTE]
-> Nadat de verplaatsing is voltooid, wordt de nieuwe naam die wordt vermeld in de vorige cmdlet gebruikt voor het adresseren van de resource. De naam van het circuit wordt in feite gewijzigd.
+> Nadat de verplaatsing is voltooid, wordt de nieuwe naam die wordt vermeld in de vorige cmdlet worden gebruikt om het adres van de resource. Het circuit wordt in wezen worden gewijzigd.
 > 
 
-## <a name="modify-circuit-access"></a>De toegang tot het circuit wijzigen
+## <a name="modify-circuit-access"></a>Circuit wijzigen
 
-### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>ExpressRoute-circuit toegang inschakelen voor beide implementatie modellen
+### <a name="to-enable-expressroute-circuit-access-for-both-deployment-models"></a>Voor ExpressRoute-circuit toegang voor beide implementatiemodellen
 
-Nadat u uw klassieke ExpressRoute-circuit naar het Resource Manager-implementatie model hebt verplaatst, kunt u toegang tot beide implementatie modellen inschakelen. Voer de volgende cmdlets uit om toegang tot beide implementatie modellen mogelijk te maken:
+Na het verplaatsen van uw ExpressRoute-circuit van klassiek naar het Resource Manager-implementatiemodel, kunt u toegang tot beide implementatiemodellen. Voer de volgende cmdlets voor toegang tot beide implementatiemodellen:
 
 1. De details van het circuit ophalen.
 
@@ -110,46 +109,46 @@ Nadat u uw klassieke ExpressRoute-circuit naar het Resource Manager-implementati
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Stel klassieke bewerkingen toestaan in op waar.
+2. Ingesteld op 'Klassieke bewerkingen toestaan' op ' True '.
 
    ```powershell
    $ckt.AllowClassicOperations = $true
    ```
 
-3. Werk het circuit bij. Nadat deze bewerking is voltooid, kunt u het circuit bekijken in het klassieke implementatie model.
+3. Bijwerken van het circuit. Nadat u deze bewerking is voltooid, kunt u zich het circuit weergeven in het klassieke implementatiemodel.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
    ```
 
-4. Voer de volgende cmdlet uit om de details van het ExpressRoute-circuit op te halen. U moet de vermelde service sleutel kunnen zien.
+4. Voer de volgende cmdlet als u de details van het ExpressRoute-circuit. U moet mogelijk zijn om te zien van de sleutel weergegeven.
 
    ```powershell
    get-azurededicatedcircuit
    ```
 
-5. U kunt nu koppelingen naar het ExpressRoute-circuit beheren met de klassieke implementatie model opdrachten voor klassieke VNets, en de Resource Manager-opdrachten voor Resource Manager VNets. De volgende artikelen helpen u bij het beheren van koppelingen naar het ExpressRoute-circuit:
+5. U kunt nu koppelingen naar het ExpressRoute-circuit met behulp van de klassieke implementatie model-opdrachten voor klassieke VNets en het Resource Manager-opdrachten voor Resource Manager VNets beheren. De volgende artikelen helpen u bij het beheren van koppelingen naar het ExpressRoute-circuit:
 
-    * [Uw virtuele netwerk koppelen aan uw ExpressRoute-circuit in het Resource Manager-implementatie model](expressroute-howto-linkvnet-arm.md)
-    * [Uw virtuele netwerk koppelen aan uw ExpressRoute-circuit in het klassieke implementatie model](expressroute-howto-linkvnet-classic.md)
+    * [Uw virtueel netwerk koppelen aan uw ExpressRoute-circuit in het Resource Manager-implementatiemodel](expressroute-howto-linkvnet-arm.md)
+    * [Uw virtueel netwerk koppelen aan uw ExpressRoute-circuit in het klassieke implementatiemodel](expressroute-howto-linkvnet-classic.md)
 
-### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>ExpressRoute-circuit toegang tot het klassieke implementatie model uitschakelen
+### <a name="to-disable-expressroute-circuit-access-to-the-classic-deployment-model"></a>ExpressRoute-circuit toegang tot het klassieke implementatiemodel uitschakelen
 
-Voer de volgende cmdlets uit om de toegang tot het klassieke implementatie model uit te scha kelen.
+Voer de volgende cmdlets om uit te schakelen toegang tot het klassieke implementatiemodel.
 
-1. Meer informatie over het ExpressRoute-circuit.
+1. Details van het ExpressRoute-circuit ophalen.
 
    ```powershell
    $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
    ```
 
-2. Stel klassieke bewerkingen toestaan in op ONWAAR.
+2. Ingesteld op 'Klassieke bewerkingen toestaan' op FALSE.
 
    ```powershell
    $ckt.AllowClassicOperations = $false
    ```
 
-3. Werk het circuit bij. Nadat deze bewerking is voltooid, is het niet mogelijk om het circuit weer te geven in het klassieke implementatie model.
+3. Bijwerken van het circuit. Nadat u deze bewerking is voltooid, wordt het niet mogelijk om weer te geven van het circuit in het klassieke implementatiemodel.
 
    ```powershell
    Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
@@ -157,5 +156,5 @@ Voer de volgende cmdlets uit om de toegang tot het klassieke implementatie model
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Route ring voor uw ExpressRoute-circuit maken en wijzigen](expressroute-howto-routing-arm.md)
-* [Uw virtuele netwerk koppelen aan uw ExpressRoute-circuit](expressroute-howto-linkvnet-arm.md)
+* [Routering voor uw ExpressRoute-circuit maken en wijzigen](expressroute-howto-routing-arm.md)
+* [Uw virtueel netwerk koppelen aan uw ExpressRoute-circuit](expressroute-howto-linkvnet-arm.md)

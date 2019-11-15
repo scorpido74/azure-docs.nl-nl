@@ -1,6 +1,5 @@
 ---
-title: 'Zelfstudie: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS | Microsoft Docs'
-description: ''
+title: Toegang tot opslag-blobs met behulp van een Azure CDN aangepast domein via HTTPS
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,26 +14,26 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: e3b10760b95662570c8a6e802a57e1073e2faa0a
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593367"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083020"
 ---
-# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Zelfstudie: Toegang tot opslag-blobs met behulp van een aangepast Azure CDN-domein via HTTPS
+# <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Zelfstudie: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS
 
 Nadat u uw Azure-opslagaccount hebt geïntegreerd met Azure Content Delivery Network (CDN), kunt u een aangepast domein toevoegen en HTTPS in dat domein inschakelen voor uw aangepaste eindpunt voor blob-opslag. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst uw Azure-opslagaccount integreren met Azure CDN. Zie voor meer informatie [Snelstart: Een Azure storage-account integreren met Azure CDN](cdn-create-a-storage-account-with-cdn.md).
+Voordat u de stappen in deze zelfstudie kunt voltooien, moet u eerst uw Azure-opslagaccount integreren met Azure CDN. Zie [Quickstart: Een Azure Storage-account integreren met Azure CDN](cdn-create-a-storage-account-with-cdn.md) voor meer informatie hierover.
 
 ## <a name="add-a-custom-domain"></a>Een aangepast domein toevoegen
-Wanneer u een CDN-eindpunt maakt in uw profiel, wordt de naam van het eindpunt, wat een subdomein van azureedge.net is, standaard opgenomen in de URL voor het leveren van CDN-inhoud. U hebt ook de mogelijkheid om een aangepast domein te koppelen aan een CDN-eindpunt. In dat geval wordt de inhoud aangeboden via een aangepast domein in uw URL in plaats van de naam van een eindpunt. Als u wilt een aangepast domein toevoegen aan uw eindpunt, de instructies in deze zelfstudie te volgen: [Een aangepast domein toevoegen aan uw Azure CDN-eindpunt](cdn-map-content-to-custom-domain.md).
+Wanneer u een CDN-eindpunt maakt in uw profiel, wordt de naam van het eindpunt, wat een subdomein van azureedge.net is, standaard opgenomen in de URL voor het leveren van CDN-inhoud. U hebt ook de mogelijkheid om een aangepast domein te koppelen aan een CDN-eindpunt. In dat geval wordt de inhoud aangeboden via een aangepast domein in uw URL in plaats van de naam van een eindpunt. Als u een aangepast domein wilt toevoegen aan uw eindpunt, volgt u de instructies in deze zelfstudie: [Een aangepast domein toevoegen aan uw Azure CDN-eindpunt](cdn-map-content-to-custom-domain.md).
 
 ## <a name="configure-https"></a>HTTPS configureren
-Door het HTTPS-protocol in te schakelen voor uw aangepaste domein weet u zeker dat uw gegevens veilig worden afgeleverd op internet via TLS/SSL-versleuteling. Wanneer uw webbrowser is verbonden met een website via HTTPS, wordt het beveiligingscertificaat van de website gevalideerd en wordt er gecontroleerd of deze is uitgegeven door een legitieme certificeringsinstantie. Voor het configureren van HTTPS voor uw aangepaste domein, de instructies in deze zelfstudie te volgen: [HTTPS configureren op een aangepast Azure CDN-domein](cdn-custom-ssl.md).
+Door het HTTPS-protocol in te schakelen voor uw aangepaste domein weet u zeker dat uw gegevens veilig worden afgeleverd op internet via TLS/SSL-versleuteling. Wanneer uw webbrowser is verbonden met een website via HTTPS, wordt het beveiligingscertificaat van de website gevalideerd en wordt er gecontroleerd of deze is uitgegeven door een legitieme certificeringsinstantie. Instructies voor het configureren van HTTPS voor uw aangepaste domein vindt u in deze zelfstudie: [HTTPS op een aangepast Azure CDN-domein configureren](cdn-custom-ssl.md).
 
 ## <a name="shared-access-signatures"></a>Shared Access Signatures
 Als het eindpunt voor uw blobopslag zo is geconfigureerd dat anonieme leestoegang niet is toegestaan, moet u in elke aanvraag naar het aangepaste domein een [SAS-token (Shared Access Signature)](cdn-sas-storage-support.md) opnemen. De standaardinstelling is dat eindpunten voor blobopslag anonieme leestoegang niet toestaan. Zie [Anonieme leestoegang tot containers en blobs beheren](../storage/blobs/storage-manage-access-to-resources.md) voor meer informatie over SAS.

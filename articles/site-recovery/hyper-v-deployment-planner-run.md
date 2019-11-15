@@ -1,5 +1,5 @@
 ---
-title: De Azure Site Recovery Deployment Planner uitvoeren voor herstel na nood geval voor Hyper-V naar Azure | Microsoft Docs
+title: De Hyper-V-Deployment Planner uitvoeren in Azure Site Recovery
 description: In dit artikel wordt beschreven hoe u de Azure Site Recovery Deployment Planner uitvoert voor herstel na nood geval voor Hyper-V naar Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
-ms.openlocfilehash: 8d5857e1acdc5ba06cf70d67768100e21677c0c4
-ms.sourcegitcommit: aaa82f3797d548c324f375b5aad5d54cb03c7288
+ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70146983"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082610"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>De Azure Site Recovery Deployment planner uitvoeren voor herstel na nood geval in azure
 
@@ -35,19 +35,19 @@ Hieronder ziet u een tabel met verplichte en optionele parameters van het hulppr
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
 
-| Parameternaam | Description |
+| Parameternaam | Beschrijving |
 |---|---|
 | -Operation | GetVMList |
 | -User | De gebruikersnaam om verbinding te maken met de Hyper-V-host of het Hyper-V-cluster. De gebruiker moet beheerderstoegang hebben.|
-| -ServerListFile | Het bestand met de lijst met servers die de VM’s bevatten die moeten worden geprofileerd. Het bestandspad kan absoluut of relatief zijn. Dit bestand moet op elke regel een van de volgende items bevatten:<ul><li>Naam of IP-adres van Hyper-V-host</li><li>Naam of IP-adres van Hyper-V-cluster</li></ul><br>**Voorbeeld:** ServerList. txt bevat de volgende servers:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
+| -ServerListFile | Het bestand met de lijst met servers die de VM’s bevatten die moeten worden geprofileerd. Het bestandspad kan absoluut of relatief zijn. Dit bestand moet op elke regel een van de volgende items bevatten:<ul><li>Naam of IP-adres van Hyper-V-host</li><li>Naam of IP-adres van Hyper-V-cluster</li></ul><br>**Voorbeeld:** ServerList.txt bevat de volgende servers:<ul><li>Host_1</li><li>10.8.59.27</li><li>Cluster_1</li><li>Host_2</li>|
 | -Directory|(Optioneel) Het UNC-pad (Universal Naming Convention) of het pad naar de lokale directory voor het opslaan van gegevens die tijdens deze bewerking worden gegenereerd. Als er geen naam is opgegeven, wordt de directory met de naam ProfiledData onder het huidige pad gebruikt als de standaarddirectory.|
 |-OutputFile| Beschrijving Het bestand met de lijst met virtuele machines die op de Hyper-V-servers zijn opgehaald, wordt opgeslagen. Als er geen naam wordt vermeld, worden de details opgeslagen in VMList.txt.  Gebruik het bestand om met de profilering te starten nadat u de virtuele machines hebt verwijderd die niet hoeven te worden geprofileerd.|
 |-Password|(Optioneel) Het wachtwoord om verbinding te maken met de Hyper-V-host. Als u dit niet als een parameter opgeeft, wordt u om dit wachtwoord gevraagd wanneer u de opdracht uitvoert.|
 
 ### <a name="getvmlist-discovery"></a>GetVMList-detectie
 
-- **Hyper-V-cluster**: Wanneer de naam van het Hyper-V-cluster wordt vermeld in het lijst bestand van de server, vindt het hulp programma alle Hyper-V-knoop punten van het cluster en worden de virtuele machines opgehaald die aanwezig zijn op elk van de Hyper-V-hosts.
-**Hyper-V-host**: Wanneer de naam van de Hyper-V-host wordt opgegeven, wordt door het hulp programma eerst gecontroleerd of het deel uitmaakt van een cluster. Als dit het geval is, worden de knooppunten opgehaald die tot het cluster behoren. Vervolgens worden de virtuele machines van elke Hyper-V-host opgehaald. 
+- **Hyper-V-cluster**: als de naam van het Hyper-V-cluster wordt vermeld in het lijstbestand van de server, worden met het hulpprogramma alle Hyper-V-knooppunten van het cluster gevonden en worden de VM’s opgehaald die aanwezig zijn op elk van de Hyper-V-hosts.
+**Hyper-V-host**: als de naam van de Hyper-V-host is gegeven, wordt met het hulpprogramma eerst gecontroleerd of deze tot een cluster behoort. Als dit het geval is, worden de knooppunten opgehaald die tot het cluster behoren. Vervolgens worden de virtuele machines van elke Hyper-V-host opgehaald. 
 
 U kunt er ook voor kiezen om de beschrijvende namen of IP-adressen van de virtuele machines die u wilt profileren, handmatig toe te voegen aan een bestand.
 
@@ -85,11 +85,11 @@ De volgende tabel bevat verplichte en optionele parameters van het hulpprogramma
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Parameternaam | Description |
+| Parameternaam | Beschrijving |
 |---|---|
 | -Operation | StartProfiling |
 | -User | De gebruikersnaam om verbinding te maken met de Hyper-V-host of het Hyper-V-cluster. De gebruiker moet beheerderstoegang hebben.|
-| -VMListFile | Het bestand met de lijst met virtuele machines die moeten worden geprofileerd. Het bestandspad kan absoluut of relatief zijn. Voor Hyper-V is dit het uitvoerbestand voor de bewerking GetVMList. Als u de voorbereiding handmatig uitvoert, moet het bestand één servernaam of IP-adres bevatten, gevolgd door de naam van de VM (gescheiden door een \ per regel). De VM-naam die wordt opgegeven in het bestand, moet gelijk zijn aan de VM-naam op de Hyper-V host.<br><br>**Voorbeeld:** VMList. txt bevat de volgende Vm's:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+| -VMListFile | Het bestand met de lijst met virtuele machines die moeten worden geprofileerd. Het bestandspad kan absoluut of relatief zijn. Voor Hyper-V is dit het uitvoerbestand voor de bewerking GetVMList. Als u de voorbereiding handmatig uitvoert, moet het bestand één servernaam of IP-adres bevatten, gevolgd door de naam van de VM (gescheiden door een \ per regel). De VM-naam die wordt opgegeven in het bestand, moet gelijk zijn aan de VM-naam op de Hyper-V host.<br><br>**Voorbeeld:** VMList.txt bevat de volgende VM’s:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-NoOfMinutesToProfile|Het aantal minuten dat profilering wordt uitgevoerd. Het minimum is 30 minuten.|
 |-NoOfHoursToProfile|Het aantal uur dat profilering wordt uitgevoerd.|
 |-NoOfDaysToProfile |Het aantal dagen dat profilering wordt uitgevoerd. Het is raadzaam om de profilering gedurende meer dan 7 dagen uit te voeren. Deze duur zorgt ervoor dat het workloadpatroon in uw omgeving goed wordt aangehouden in de opgegeven periode, zodat er een nauwkeurige aanbeveling kan worden gedaan.|
@@ -98,7 +98,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Password|(Optioneel) Het wachtwoord om verbinding te maken met de Hyper-V-host. Als u dit niet als een parameter opgeeft, wordt u om dit wachtwoord gevraagd wanneer u de opdracht uitvoert.|
 |-StorageAccountName|(Optioneel) De naam van het opslagaccount dat wordt gebruikt om de bereikbare doorvoer te vinden voor gegevensreplicatie van on-premises naar Azure. Het hulpprogramma uploadt testgegevens naar dit opslagaccount om de doorvoer te berekenen. Het opslagaccount moet v1 (GPv1) voor algemene doeleinden zijn.|
 |-StorageAccountKey|(Optioneel) De sleutel die wordt gebruikt voor toegang tot het opslagaccount. Ga naar Azure Portal > **Opslagaccounts** > *naam van het opslagaccount* >  **Instellingen** > **Toegangssleutels** > **Sleutel1** (of primaire toegangssleutel voor een klassiek opslagaccount).|
-|-Environment|(Optioneel) Uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: Cloud, AzureUSGovernment of AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de para meter wanneer uw doel regio Azure US Government of Azure China 21Vianet is.|
+|-Environment|(Optioneel) Uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: AzureCloud, AzureUSGovernment of AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de para meter wanneer uw doel regio Azure US Government of Azure China 21Vianet is.|
 
 Het is raadzaam om de virtuele machines gedurende meer dan 7 dagen te profileren. Als het verlooppatroon binnen een maand varieert, raden wij u aan de profilering door de week uit te voeren wanneer zich het maximale verloop voordoet. Het beste is om de profilering gedurende 31 dagen uit te voeren, zodat u een betere aanbeveling krijgt. 
 
@@ -167,10 +167,10 @@ Hieronder ziet u een tabel met verplichte en optionele parameters van het hulppr
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
 
-| Parameternaam | Description |
+| Parameternaam | Beschrijving |
 |---|---|
 | -Operation | GenerateReport |
-|-VMListFile | Het bestand met de lijst met geprofileerde VM’s waarvoor het rapport moet worden gegenereerd. Het bestandspad kan absoluut of relatief zijn. Voor Hyper-V is dit het uitvoerbestand voor de bewerking GetVMList. Als u de voorbereiding handmatig uitvoert, moet het bestand één servernaam of IP-adres bevatten, gevolgd door de naam van de VM (gescheiden door een \ per regel). De VM-naam die wordt opgegeven in het bestand, moet gelijk zijn aan de VM-naam op de Hyper-V host.<br><br>**Voorbeeld:** VMList. txt bevat de volgende Vm's:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+|-VMListFile | Het bestand met de lijst met geprofileerde VM’s waarvoor het rapport moet worden gegenereerd. Het bestandspad kan absoluut of relatief zijn. Voor Hyper-V is dit het uitvoerbestand voor de bewerking GetVMList. Als u de voorbereiding handmatig uitvoert, moet het bestand één servernaam of IP-adres bevatten, gevolgd door de naam van de VM (gescheiden door een \ per regel). De VM-naam die wordt opgegeven in het bestand, moet gelijk zijn aan de VM-naam op de Hyper-V host.<br><br>**Voorbeeld:** VMList.txt bevat de volgende VM’s:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
 |-Virtualization|Het type virtualisatie (VMware of Hyper-V).|
 |-Directory|(Optioneel) De UNC-directory of de lokale directory waar de geprofileerde gegevens (bestanden die tijdens de profilering zijn gegenereerd) worden opgeslagen. Deze gegevens zijn vereist voor het genereren van het rapport. Als er geen naam wordt opgegeven, wordt de directory met de naam ProfiledData onder het huidige pad gebruikt als de standaarddirectory.|
 | -User | (Optioneel) De gebruikersnaam om verbinding te maken met de Hyper-V-host of het Hyper-V-cluster. De gebruiker moet beheerderstoegang hebben. De gebruikersnaam en het wachtwoord worden gebruikt voor het ophalen van de meest recente configuratiegegevens van de VM’s (zoals het aantal schijven, kernen of NIC's) die in het rapport moeten worden gebruikt. Als deze waarde niet is opgegeven, worden de configuratiegegevens gebruikt die tijdens de profilering zijn verzameld.|
@@ -180,7 +180,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 | -StartDate | (Optioneel) De begindatum en -tijd in de notatie MM-DD-JJJJ:UU:MM (in 24-uursindeling). Als u StartDate opgeeft, moet u ook EndDate opgeven. Het rapport wordt dan gegenereerd voor de geprofileerde gegevens die zijn verzameld tussen StartDate en EndDate. |
 | -EndDate | (Optioneel) De einddatum en -tijd in de notatie MM-DD-JJJJ:UU:MM (in 24 uursindeling). Als u EndDate opgeeft, moet u ook StartDate opgeven. Het rapport wordt dan gegenereerd voor de geprofileerde gegevens die zijn verzameld tussen StartDate en EndDate. |
 | -GrowthFactor | (Optioneel) De groeifactor, uitgedrukt als een percentage. De standaardwaarde is 30 procent. |
-| -UseManagedDisks | Beschrijving UseManagedDisks Ja/Nee. De standaardwaarde is Ja. Het aantal VM’s dat kan worden ondergebracht in een enkel opslagaccount, wordt berekend op basis van het feit of de failover/testfailover van VM’s is uitgevoerd op een beheerde schijf in plaats van op een niet-beheerde schijf. |
+| -UseManagedDisks | (Optioneel) UseManagedDisks: Ja/Nee. De standaardwaarde is Ja. Het aantal VM’s dat kan worden ondergebracht in een enkel opslagaccount, wordt berekend op basis van het feit of de failover/testfailover van VM’s is uitgevoerd op een beheerde schijf in plaats van op een niet-beheerde schijf. |
 |-SubscriptionId |(Optioneel) De abonnement-GUID. Gebruik deze parameter om het kostenramingsrapport te genereren met de meest recente prijzen op basis van uw abonnement, de aanbieding die aan uw abonnement is gekoppeld en de Azure-doelregio in de opgegeven valuta.|
 |-TargetRegion|(Optioneel) De Azure-regio waarop de replicatie is gericht. Omdat er voor Azure verschillende kosten per regio worden berekend, moet u deze parameter gebruiken om een rapport te genereren met een specifieke Azure-doelregio. De standaardwaarde is WestUS2 of de laatst gebruikte doelregio. Raadpleeg de lijst met [ondersteunde doelregio's](hyper-v-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Optioneel) De aanbieding is gekoppeld aan het abonnement. De standaardwaarde is MS-AZR-0003P (betalen naar gebruik).|
@@ -275,15 +275,15 @@ Open een opdrachtregelconsole en ga naar de map voor de Azure Site Recovery-impl
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
 
- Parameternaam | Description |
+ Parameternaam | Beschrijving |
 |---|---|
 | -Operation | GetThroughput |
 |-Virtualization|Het type virtualisatie (VMware of Hyper-V).|
 |-Directory|(Optioneel) De UNC-directory of de lokale directory waar de geprofileerde gegevens (bestanden die tijdens de profilering zijn gegenereerd) worden opgeslagen. Deze gegevens zijn vereist voor het genereren van het rapport. Als er geen naam wordt opgegeven, wordt de directory met de naam ProfiledData onder het huidige pad gebruikt als de standaarddirectory.|
 | -StorageAccountName | De naam van het opslagaccount dat wordt gebruikt om de bandbreedte te bepalen die wordt gebruikt voor gegevensreplicatie van on-premises naar Azure. Het hulpprogramma uploadt testgegevens naar dit opslagaccount om de gebruikte bandbreedte te bepalen. Het opslagaccount moet v1 (GPv1) voor algemene doeleinden zijn.|
 | -StorageAccountKey | De sleutel die wordt gebruikt voor toegang tot het opslagaccount. Ga naar Azure Portal > **Opslagaccounts** > *naam van opslagaccount* >  **Instellingen** > **Toegangssleutels** > **Sleutel1**.|
-| -VMListFile | Het bestand met de lijst met virtuele machines die moeten worden geprofileerd voor het berekenen van de gebruikte bandbreedte. Het bestandspad kan absoluut of relatief zijn. Voor Hyper-V is dit het uitvoerbestand voor de bewerking GetVMList. Als u de voorbereiding handmatig uitvoert, moet het bestand één servernaam of IP-adres bevatten, gevolgd door de naam van de VM (gescheiden door een \ per regel). De VM-naam die wordt opgegeven in het bestand, moet gelijk zijn aan de VM-naam op de Hyper-V host.<br><br>**Voorbeeld:** VMList. txt bevat de volgende Vm's:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
-|-Environment|(Optioneel) Uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: Cloud, AzureUSGovernment of AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de para meter wanneer uw Azure-doel regio een Azure-Amerikaanse overheid of een Azure-China 21Vianet is.|
+| -VMListFile | Het bestand met de lijst met virtuele machines die moeten worden geprofileerd voor het berekenen van de gebruikte bandbreedte. Het bestandspad kan absoluut of relatief zijn. Voor Hyper-V is dit het uitvoerbestand voor de bewerking GetVMList. Als u de voorbereiding handmatig uitvoert, moet het bestand één servernaam of IP-adres bevatten, gevolgd door de naam van de VM (gescheiden door een \ per regel). De VM-naam die wordt opgegeven in het bestand, moet gelijk zijn aan de VM-naam op de Hyper-V host.<br><br>**Voorbeeld:** VMList.txt bevat de volgende VM’s:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
+|-Environment|(Optioneel) Uw doelomgeving voor het Azure Storage-account. Dit kan een van de volgende drie waarden zijn: AzureCloud, AzureUSGovernment of AzureChinaCloud. De standaardwaarde is AzureCloud. Gebruik de para meter wanneer uw Azure-doel regio een Azure-Amerikaanse overheid of een Azure-China 21Vianet is.|
 
 ### <a name="example"></a>Voorbeeld
 ```

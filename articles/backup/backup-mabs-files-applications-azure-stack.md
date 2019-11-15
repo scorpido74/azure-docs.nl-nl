@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.author: dacurwin
-ms.openlocfilehash: dc498e08509280b0dcd19cb1556a3c5a152f6d97
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 70da426f1dff843f1e2515052431f54f8ea83780
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074096"
+ms.locfileid: "74091569"
 ---
 # <a name="back-up-files-and-applications-on-azure-stack"></a>Back-up van bestanden en toepassingen in Azure Stack
 
@@ -134,7 +134,7 @@ U kunt de volgende stappen volgen om Azure Backup Server entiteiten in de Azure 
 2. Klik op back-upinfrastructuur.
 3. Servers voor back-upbeheer weer geven.
 
-## <a name="see-also"></a>Zie ook
+## <a name="next-steps"></a>Volgende stappen
 
 Raadpleeg een van de volgende artikelen voor meer informatie over het gebruik van Azure Backup Server voor het beveiligen van andere werk belastingen:
 

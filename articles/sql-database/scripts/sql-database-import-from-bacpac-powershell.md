@@ -1,5 +1,5 @@
 ---
-title: 'PowerShell-voorbeeld: BACPAC-bestand importeren in een Azure SQL-database | Microsoft Docs'
+title: Power shell-voor beeld BACPAC-bestand importeren Azure SQL database
 description: Azure PowerShell-voorbeeldscript om een BACPAC-bestand te importeren in een SQL-database
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: 3c90cd19c5da3d98e894105e21b5e20cf6376c21
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 1cd7b94ac2717bbfa06d093d13fc201514cdc575
+ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68569951"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73691685"
 ---
 # <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>PowerShell gebruiken voor het importeren van een BACPAC-bestand naar een Azure SQL-database
 
@@ -46,11 +46,11 @@ In dit script worden de volgende opdrachten gebruikt. Elke opdracht in de tabel 
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee maakt u een resourcegroep waarin alle resources worden opgeslagen. |
+| [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Hiermee wordt een resourcegroep gemaakt waarin alle resources worden opgeslagen. |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Hiermee maakt u een SQL Database-server die individuele databases en elastische pools host. |
 | [New-AzSqlServerFirewallRule](/powershell/module/az.sql/new-azsqlserverfirewallrule) | Hiermee wordt een firewall-regel gemaakt voor de SQL Database-server om toegang te verlenen tot alle individuele databases en pooldatabases op de SQL Database-server vanuit het ingevoerde IP-adresbereik. |
 | [New-AzSqlDatabaseImport](/powershell/module/az.sql/new-azsqldatabaseimport) | Hiermee importeert u een BACPAC-bestand en maakt u een nieuwe database op de server. |
-| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle geneste resources. |
+| [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Hiermee verwijdert u een resourcegroep met inbegrip van alle ingesloten resources. |
 
 ## <a name="next-steps"></a>Volgende stappen
 

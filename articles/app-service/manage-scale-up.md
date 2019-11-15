@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 08/19/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2c3b09277963781b90f65705e03f936f81b14ee
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 91a6681c2ef4a6d0ac01889e6e92e752975e90a5
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232360"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74089461"
 ---
 # <a name="scale-up-an-app-in-azure-app-service"></a>Een app omhoog schalen in Azure App Service
 
 Dit artikel laat u zien hoe u uw app kunt schalen in Azure App Service. Er zijn twee werk stromen voor schalen, omhoog schalen en uitschalen, en in dit artikel wordt de werk stroom voor omhoog schalen uitgelegd.
 
-* [Omhoog schalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Profiteer van meer CPU, geheugen, schijf ruimte en extra functies zoals toegewezen virtuele machines (Vm's), aangepaste domeinen en certificaten, staging-sleuven, automatisch schalen en meer. U kunt omhoog schalen door de prijs categorie te wijzigen van het App Service plan waartoe uw app behoort.
-* [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal VM-exemplaren dat uw app uitvoert.
-  U kunt uitschalen tot Maxi maal 20 exemplaren, afhankelijk van uw prijs categorie. [App service omgevingen](environment/intro.md) in de geïsoleerde laag verg Roten het aantal uitschalen tot 100 exemplaren. Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)voor meer informatie over uitschalen. Daar vindt u meer informatie over het gebruik van automatisch schalen, waarmee u het aantal exemplaren op basis van vooraf gedefinieerde regels en planningen kunt schalen.
+* [Omhoog schalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Profiteer van meer CPU, geheugen, schijf ruimte en extra functies zoals toegewezen virtuele machines (vm's), aangepaste domeinen en certificaten, staging-sleuven, automatisch schalen en meer. U kunt omhoog schalen door de prijs categorie te wijzigen van het App Service plan waartoe uw app behoort.
+* [Uitschalen](https://en.wikipedia.org/wiki/Scalability#Horizontal_and_vertical_scaling): Verhoog het aantal VM-exemplaren waarop uw app wordt uitgevoerd.
+  U kunt uitschalen naar Maxi maal 30 exemplaren, afhankelijk van uw prijs categorie. [App service omgevingen](environment/intro.md) in de **geïsoleerde** laag verg Roten het aantal uitschalen tot 100 exemplaren. Zie [aantal exemplaren hand matig of automatisch schalen](../monitoring-and-diagnostics/insights-how-to-scale.md)voor meer informatie over uitschalen. Daar vindt u meer informatie over het gebruik van automatisch schalen, waarmee u het aantal exemplaren op basis van vooraf gedefinieerde regels en planningen kunt schalen.
 
 De schaal instellingen duren slechts enkele seconden en zijn van invloed op alle apps in uw [app service-abonnement](../app-service/overview-hosting-plans.md).
 U hoeft uw code niet te wijzigen of uw toepassing opnieuw te implementeren.
@@ -66,7 +66,7 @@ Als uw app afhankelijk is van andere services, zoals Azure SQL Database of Azure
    
     ![De gerelateerde resources van uw Azure-app omhoog schalen](./media/web-sites-scale/RGEssentialsLink.png)
 
-2. Selecteer een resource die u wilt schalen in het overzichts gedeelte van de pagina **resource groep** . De volgende scherm afbeelding toont een SQL Database resource.
+2. Selecteer een resource die u wilt schalen in het **overzichts** gedeelte van de pagina **resource groep** . De volgende scherm afbeelding toont een SQL Database resource.
    
     ![Ga naar de pagina van de resource groep om uw Azure-app omhoog te schalen](./media/web-sites-scale/ResourceGroup.png)
 

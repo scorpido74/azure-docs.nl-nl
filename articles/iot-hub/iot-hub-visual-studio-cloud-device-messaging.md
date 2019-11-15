@@ -1,5 +1,5 @@
 ---
-title: Azure IoT Hub Cloud apparaat-berichten beheren met Cloud Explorer voor Visual Studio | Microsoft Docs
+title: VS Cloud Explorer gebruiken voor het beheren van berichten van Azure IoT Hub-apparaten
 description: Meer informatie over het gebruik van Cloud Explorer voor Visual Studio voor het bewaken van apparaten in Cloud berichten en het verzenden van Cloud naar apparaat-berichten in azure IoT Hub.
 author: shizn
 ms.service: iot-hub
@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
-ms.openlocfilehash: b8ea705b55c1485cab2e1478d2d455f1d4a427d3
-ms.sourcegitcommit: bba811bd615077dc0610c7435e4513b184fbed19
+ms.openlocfilehash: c56bb7030b2ebc12e3afc24e2d8cb29ce2dda0bf
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/27/2019
-ms.locfileid: "70050256"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74079479"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>Gebruik Cloud Explorer voor Visual Studio om berichten tussen uw apparaat en IoT Hub te verzenden en te ontvangen.
 
@@ -54,7 +54,7 @@ Het onderdeel Cloud Explorer van Visual Studio Installer voor Visual Studio 2017
 
 Voer de volgende stappen uit om toegang te krijgen tot uw hub:
 
-1. Selecteer in Visual Studio**Cloud Explorer** **weer geven** > om Cloud Explorer te openen.
+1. Selecteer in Visual Studio **weer gave** > **Cloud Explorer** om Cloud Explorer te openen.
 
 1. Selecteer het pictogram account beheer om uw abonnementen weer te geven.
 
@@ -66,7 +66,7 @@ Voer de volgende stappen uit om toegang te krijgen tot uw hub:
 
 1. Breid uw abonnement uit en vouw **IOT-hubs**uit.  Onder elke hub kunt u uw apparaten weer geven voor die hub.
 
-    ![Apparatenlijst](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
+    ![Apparaten lijst](media/iot-hub-visual-studio-cloud-device-messaging/hub-device-list.png)
 
 ## <a name="monitor-device-to-cloud-messages"></a>Apparaat-naar-Cloud-berichten bewaken
 

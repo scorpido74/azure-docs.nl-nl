@@ -1,19 +1,19 @@
 ---
-title: Failover uitvoeren en failback uitvoeren van Hyper-V-Vm's die zijn gerepliceerd naar een secundair Data Center tijdens nood herstel met Azure Site Recovery | Microsoft Docs
+title: Failover/failback instellen op een secundaire Hyper-V-site met Azure Site Recovery
 description: Meer informatie over het uitvoeren van een failover van virtuele Hyper-V-machines naar uw secundaire on-premises site en failback naar de primaire site, tijdens nood herstel met Azure Site Recovery.
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f93c9bd679272f76665a6c8e4a0c611327699839
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: d31355bcb0ce42874c19988738ba06138c7a0b7c
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70813698"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082588"
 ---
 # <a name="fail-over-and-fail-back-hyper-v-vms-replicated-to-your-secondary-on-premises-site"></a>Failover en failback uitvoeren van Hyper-V-Vm's die zijn gerepliceerd naar uw secundaire on-premises site
 
@@ -30,8 +30,8 @@ In dit artikel wordt beschreven hoe u een failover van een Hyper-V-VM in een Sys
 
 Failover en failback hebben drie fasen:
 
-1. **Failover naar secundaire site**: Computers kunnen niet van de primaire site naar de secundaire worden gewerkt.
-2. **Failback van de secundaire site**: Repliceer Vm's van secundair naar primair en voer een geplande failover uit om een failback uit te voeren.
+1. **Failover naar secundaire site**: er worden geen computers meer van de primaire site naar de secundaire.
+2. **Failback van de secundaire site**: repliceer vm's van secundair naar primair en voer een geplande failover uit om een failback uit te voeren.
 3. Na de geplande failover begint optioneel met het repliceren van de primaire site naar de secundaire locatie.
 
 
@@ -58,7 +58,7 @@ U kunt een regel matige of geplande failover uitvoeren voor virtuele Hyper-V-mac
 3. Nadat u de virtuele machine hebt gecontroleerd, voert u de failover **door** . Hiermee verwijdert u alle beschikbare herstelpunten.
 
 > [!WARNING]
-> **Annuleer nooit een failover die in uitvoering is**: De VM-replicatie wordt gestopt voordat de failover is gestart. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar de VM wordt niet meer gerepliceerd.  
+> **Annuleer een failover die in voortgang is niet**: voordat de failover wordt gestart, wordt de VM-replicatie gestopt. Als u een failover die in voortgang is annuleert, wordt de failover gestopt, maar de VM wordt niet meer gerepliceerd.  
 
 
 ## <a name="reverse-replicate-and-failover"></a>Omgekeerde replicatie en failover

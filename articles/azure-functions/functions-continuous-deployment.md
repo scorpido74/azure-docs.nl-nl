@@ -1,21 +1,19 @@
 ---
-title: Continue implementatie voor Azure Functions | Microsoft Docs
+title: Doorlopende implementatie voor Azure Functions
 description: Gebruik de continue implementatie functies van Azure App Service om uw functies te publiceren.
-services: functions
-documentationcenter: na
 author: ggailey777
-manager: jeconnoc
+manager: gwallace
 ms.assetid: 361daf37-598c-4703-8d78-c77dbef91643
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/25/2016
+ms.date: 09/25/2019
 ms.author: glenga
-ms.openlocfilehash: fb3cd885c0a16b3dc3a79150043b25cb271040bd
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: dae75153cffbf2f0e836e1a28b78a9f05f54e6e0
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70097101"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091186"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Doorlopende implementatie voor Azure Functions
 
@@ -35,6 +33,9 @@ Voor een continue implementatie moet uw mapstructuur compatibel zijn met de basi
 
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
+>[!NOTE]  
+> Continue implementatie wordt nog niet ondersteund voor Linux-apps die worden uitgevoerd op een verbruiks abonnement. 
+
 ## <a name="credentials"></a>Continue implementatie instellen
 
 Voer de volgende stappen uit om een continue implementatie voor een bestaande functie-app te configureren. De stappen illustreren de integratie met een GitHub-opslag plaats, maar soort gelijke stappen zijn van toepassing voor Azure opslag plaatsen of andere opslag plaatsen voor bron codes.
@@ -43,11 +44,11 @@ Voer de volgende stappen uit om een continue implementatie voor een bestaande fu
 
     ![Implementatie centrum openen](./media/functions-continuous-deployment/platform-features.png)
 
-2. Selecteer **github**in het **implementatie centrum**en selecteer vervolgens autoriseren. Als u GitHub al hebt geautoriseerd, selecteert u **door gaan**. 
+2. Selecteer **github**in het **implementatie centrum**en selecteer vervolgens **autoriseren**. Als u GitHub al hebt geautoriseerd, selecteert u **door gaan**. 
 
     ![Azure App Service implementatie centrum](./media/functions-continuous-deployment/github.png)
 
-3. Selecteer in GitHub de knop **AzureAppService** autoriseren. 
+3. Selecteer in GitHub de knop **AzureAppService autoriseren** . 
 
     ![Azure App Service autoriseren](./media/functions-continuous-deployment/authorize.png)
     
@@ -55,8 +56,8 @@ Voer de volgende stappen uit om een continue implementatie voor een bestaande fu
 
 4. Selecteer een van de volgende Build-providers:
 
-    * **App service build-service**: Het is het beste wanneer u geen build nodig hebt of als u een generieke build nodig hebt.
-    * **Azure-pijp lijnen (preview-versie)** : Het beste wanneer u meer controle nodig hebt over de build. Deze provider is momenteel beschikbaar als preview-versie.
+    * **App service build-service**: het beste wanneer u geen build nodig hebt of als u een generieke build nodig hebt.
+    * **Azure-pijp lijnen (preview)** : het beste wanneer u meer controle nodig hebt over de build. Deze provider is momenteel beschikbaar als preview-versie.
 
     ![Een build-provider selecteren](./media/functions-continuous-deployment/build.png)
 

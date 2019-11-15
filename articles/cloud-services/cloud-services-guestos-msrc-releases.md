@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/1/2019
 ms.author: raiye
-ms.openlocfilehash: e1d27563d2181a8e094e00295f9506d88e694513
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
+ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73500264"
+ms.lasthandoff: 11/09/2019
+ms.locfileid: "73888314"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
@@ -64,11 +64,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4512574]: https://support.microsoft.com/kb/4512574
 [4512577]: https://support.microsoft.com/kb/4512577
 
-[6,12]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,36]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,71]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,78]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,91]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,12]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,36]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,71]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,78]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,91]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="september-2019-guest-os"></a>September 2019-gast besturingssysteem
@@ -106,11 +106,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4512488]: https://support.microsoft.com/kb/4512488
 [4512518]: https://support.microsoft.com/kb/4512518
 [4512506]: https://support.microsoft.com/kb/4512506
-[6,11]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,35]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,70]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,77]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,90]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,11]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,35]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,70]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,77]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,90]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="august-2019-guest-os"></a>Augustus 2019-gast besturingssysteem
@@ -163,11 +163,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 [4507001]: https://support.microsoft.com/kb/4507001
 [4507704]: https://support.microsoft.com/kb/4507704
 
-[6,1]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
-[5,34]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
-[4,69]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
-[3,76]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
-[2,89]: https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
+[6,1]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-6-releases
+[5,34]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-5-releases
+[4,69]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-4-releases
+[3,76]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-3-releases
+[2,89]: https://docs.microsoft.com/azure/cloud-services/cloud-services-guestos-update-matrix#family-2-releases
 
 
 ## <a name="july-2019-guest-os"></a>2019 juli-gast besturingssysteem
@@ -621,18 +621,18 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 18-08 | [4343887] | Windows 10-beveiliging | 5,22 | 14 augustus 2018 |
-| Rel 18-08 | [4343899] | Alleen Windows-beveiliging | 2,77 | 14 augustus 2018 |
+| Rel 18-08 | [4343899] | Alleen Windows-beveiliging | 2.77 | 14 augustus 2018 |
 | Rel 18-08 | [4343896] | Alleen Windows-beveiliging | 3,64 | 14 augustus 2018 |
 | Rel 18-08 | [4343888] | Alleen Windows-beveiliging | 4,57 | 14 augustus 2018 |
-| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 beveiliging | 2,77 | 14 augustus 2018 |
+| Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 beveiliging | 2.77 | 14 augustus 2018 |
 | Rel 18-08 | [4344175], [4344172] | .NET 3,5, 4. x-beveiliging | 3,64 | 14 augustus 2018 |
 | Rel 18-08 | [4344178], [4344171] | .NET 3,5, 4. x-beveiliging | 4,57 | 14 augustus 2018 |
 | Rel 18-08 | [4346742], [4346739] | Versie van .NET 3,5, 4. x OOB | 3,64 | 30 juli 2018 |
 | Rel 18-08 | [4346745], [4346408] | Versie van .NET 3,5, 4. x OOB | 4,57 | 30 juli 2018 |
 | Rel 18-08 | [4343902] | Flits | 3,64, 4,57, 5,22 | 14 augustus 2018 |
 | Rel 18-08 | [4343205] | Internet Explorer | 2,77, 3,64, 4,57 | 14 augustus 2018 |
-| N.v.t. | [4338818] |Niet-beveiligings update juli |2,77 | 10 juli 2018 |
-| N.v.t. | [4019990] |Update van D3D-compiler voor .NET |2,77 | 10 juli 2018 |
+| N.v.t. | [4338818] |Niet-beveiligings update juli |2.77 | 10 juli 2018 |
+| N.v.t. | [4019990] |Update van D3D-compiler voor .NET |2.77 | 10 juli 2018 |
 | N.v.t. | [4338830] |Niet-beveiligings update juli |3,64 | 10 juli 2018 |
 | N.v.t. | [4338421] |Niet-Security .NET 3,5-Rollup van juli |3,64 | 10 juli 2018 |
 | N.v.t. | [4338416] |Niet-beveiliging, .NET 4x Rollup |3,64 | 10 juli 2018 |
@@ -993,16 +993,16 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="september-2016-guest-os"></a>September 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-104 |[3183038] |Cumulatieve beveiligings update voor Internet Explorer |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| MS16-106 |[3185848] |Beveiligings update voor micro soft graphics-onderdeel |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| MS16-110 |[3178467] |Beveiligings update voor Windows |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| MS16-111 |[3186973] |Beveiligings update voor Windows-kernel |4,36, 3,43, 2,55 |Sept 13, 2016 |
+| MS16-104 |[3183038] |Cumulatieve beveiligings update voor Internet Explorer |4.36, 3.43, 2.55 |Sept 13, 2016 |
+| MS16-106 |[3185848] |Beveiligings update voor micro soft graphics-onderdeel |4.36, 3.43, 2.55 |Sept 13, 2016 |
+| MS16-110 |[3178467] |Beveiligings update voor Windows |4.36, 3.43, 2.55 |Sept 13, 2016 |
+| MS16-111 |[3186973] |Beveiligings update voor Windows-kernel |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | MS16-112 |[3178469] |Beveiligings update voor Windows vergrendelings scherm |4,36 |Sept 13, 2016 |
-| MS16-114 |[3185879] |Beveiligings update voor Windows SMB server |4,36, 3,43, 2,55 |Sept 13, 2016 |
+| MS16-114 |[3185879] |Beveiligings update voor Windows SMB server |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | MS16-115 |[3188733] |Beveiligings update voor PDF |4,35, 3,43 |Sept 13, 2016 |
-| MS16-116 |[3188724] |Beveiligings update in OLE Automation voor VBScript Scripting Engine |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman-sleutel uitwisseling is bijgewerkt |4,36, 3,43, 2,55 |Sept 13, 2016 |
-| N.v.t. |[3177723] |Update van tijd zone-Egypte annuleert zomer tijd |4,36, 3,43, 2,55 |Sept 13, 2016 |
+| MS16-116 |[3188724] |Beveiligings update in OLE Automation voor VBScript Scripting Engine |4.36, 3.43, 2.55 |Sept 13, 2016 |
+| N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman-sleutel uitwisseling is bijgewerkt |4.36, 3.43, 2.55 |Sept 13, 2016 |
+| N.v.t. |[3177723] |Update van tijd zone-Egypte annuleert zomer tijd |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | N.v.t. |[3179573] |Update pakket van augustus 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,55 |Sept 13, 2016 |
 | N.v.t. |[3179575] |Update pakket van augustus 2016 voor Windows Server 2012 |3,43 |Sept 13, 2016 |
 | N.v.t. |[3179574] |Update pakket van augustus 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,36 |Sept 13, 2016 |

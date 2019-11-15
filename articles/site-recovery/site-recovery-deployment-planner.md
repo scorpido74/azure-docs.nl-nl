@@ -1,5 +1,5 @@
 ---
-title: Over de Azure Site Recovery Deployment Planner voor nood herstel van virtuele VMware-machines naar Azure | Microsoft Docs
+title: Azure Site Recovery Deployment Planner voor nood herstel van VMware
 description: Meer informatie over de Azure Site Recovery Deployment Planner voor nood herstel van virtuele VMware-machines naar Azure.
 author: mayurigupta13
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: mayg
-ms.openlocfilehash: 4e1d27d133b2eb4e0d4d45a5de563e119513c79f
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 50a236154a0340bd49e84a8ca02f656e3cd9994a
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620058"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084529"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Over de Azure Site Recovery Deployment Planner voor VMware naar Azure
 Dit artikel is de gebruikershandleiding voor de Azure Site Recovery Deployment Planner voor productie-installaties van het type VMware-naar-Azure.
@@ -74,9 +74,9 @@ Aantal servers dat kan worden geprofileerd per actief exemplaar van de Site Reco
 ## <a name="prerequisites"></a>Vereisten
 Het hulpprogramma heeft twee belangrijke fasen: profileren en rapporten genereren. Er is ook een derde optie, waarmee alleen doorvoer wordt berekend. Raadpleeg de volgende tabel voor de vereisten voor de server waarop de profilering en meting van de doorvoersnelheid worden uitgevoerd.
 
-| Serververeiste | Description|
+| Serververeiste | Beschrijving|
 |---|---|
-|Profileren en meten van doorvoer| <ul><li>Besturingssysteem: Windows Server 2016 of Windows Server 2012 R2<br>(bij voorkeur met minimaal de [aanbevolen waarden voor de configuratieserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Machine configuratie: 8 Vcpu's, 16 GB RAM, 300 GB HDD</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable voor Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internettoegang tot Azure vanaf deze server</li><li>Azure Storage-account</li><li>Beheerderstoegang op de server</li><li>Minimaal 100 GB vrije schijfruimte (uitgaande van 1000 virtuele machines met een gemiddelde van elk drie schijven, geprofileerd voor 30 dagen)</li><li>Instellingen voor het niveau van VMware vCenter-statistieken kunnen 1 of hoger niveau zijn</li><li>VCenter-poort toestaan (standaard 443): Site Recovery Deployment Planner deze poort gebruikt om verbinding te maken met de vCenter-Server/ESXi-host</ul></ul>|
+|Profileren en meten van doorvoer| <ul><li>Besturingssysteem: Windows Server 2016 of Windows Server 2012 R2<br>(bij voorkeur met minimaal de [aanbevolen waarden voor de configuratieserver](https://aka.ms/asr-v2a-on-prem-components))</li><li>Machineconfiguratie: 8 vCPU's, 16 GB RAM, 300 GB harde schijf</li><li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual C++ Redistributable voor Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Internettoegang tot Azure vanaf deze server</li><li>Azure Storage-account</li><li>Beheerderstoegang op de server</li><li>Minimaal 100 GB vrije schijfruimte (uitgaande van 1000 virtuele machines met een gemiddelde van elk drie schijven, geprofileerd voor 30 dagen)</li><li>Instellingen voor het niveau van VMware vCenter-statistieken kunnen 1 of hoger niveau zijn</li><li>VCenter-poort toestaan (standaard 443): met Site Recovery Deployment Planner wordt deze poort gebruikt om verbinding te maken met de vCenter-Server/ESXi-host</ul></ul>|
 | Rapporten genereren | Een Windows-PC of Windows-Server met Excel 2013 of hoger.<li>[.NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Visual C++ Redistributable voor Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>[VMware vSphere PowerCLI 6,0 R3](https://aka.ms/download_powercli) is alleen vereist wanneer u de optie-gebruiker door geven in de opdracht rapport genereren voor het ophalen van de meest recente configuratie gegevens van de virtuele machine van de virtuele machines. De Deployment Planner maakt verbinding met de vCenter-Server. Poort voor vCenter-poort (standaard 443) toestaan verbinding te maken met vCenter Server.</li>|
 | Gebruikersmachtigingen | Alleen-lezen-machtiging voor het gebruikersaccount dat tijdens het profileren wordt gebruikt voor toegang tot de VMware vCenter-server of VMware vSphere ESXi-host |
 
@@ -97,7 +97,7 @@ U kunt het hulpprogramma uitvoeren vanuit Windows Server 2012 R2 als de server n
 3. Pak de gecomprimeerde map uit.
 De map bevat meerdere bestanden en submappen. Het uitvoerbare bestand is ASRDeploymentPlanner.exe in de map op het hoogste niveau.
 
-    Voorbeeld: Kopieer het ZIP-bestand naar station E:\ en pak het uit.
+    Voorbeeld: kopieer het ZIP-bestand naar station E:\ en pak het uit.
     E:\ASR Deployment Planner_v2.3.zip
 
     E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe

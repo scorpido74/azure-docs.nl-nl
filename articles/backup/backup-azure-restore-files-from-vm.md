@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: dacurwin
-ms.openlocfilehash: 13481788bce22876fa13080d0be34db29e2a72cb
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961590"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091630"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 
@@ -66,17 +66,13 @@ Als u bestanden of mappen van het herstel punt wilt herstellen, gaat u naar de v
     Als u het script uitvoert op een computer met beperkte toegang, controleert u of er toegang is tot:
 
     - download.microsoft.com
-    - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt)
-        - https:\/-pod01-rec2.geo-name.backup.windowsazure.com (voor de open bare geografische gebieden van Azure)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.cn (voor Azure China 21Vianet)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.us (voor Azure US Government)
-        - https:\//pod01-rec2.geo-name.backup.windowsazure.de (voor Azure Duitsland)
+    - Url's van de Recovery service (geo-naam verwijst naar de regio waar de Recovery service-kluis zich bevindt) - <https://pod01-rec2.geo-name.backup.windowsazure.com> (voor Azure Public geografische gebieden) - <https://pod01-rec2.geo-name.backup.windowsazure.cn> (voor Azure China 21Vianet) - <https://pod01-rec2.geo-name.backup.windowsazure.us> (voor Azure-Amerikaanse overheid) - <https://pod01-rec2.geo-name.backup.windowsazure.de> (voor Azure Duitsland)
     - uitgaande poort 3260
 
 > [!Note]
 >
-> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor beeld: de naam van het gedownloade script begint met \'VMname\'\_\'Geoname\'_\'GUID\', zoals ContosoVM_wcus_12345678....<br><br>
-> - De URL zou ' https:\//pod01-rec2.wcus.backup.windowsazure.com ' zijn
+> - De naam van het gedownloade script bestand krijgt de **geo-naam** die in de URL moet worden ingevuld. Voor beeld: de naam van het gedownloade script begint met \'VMname\'\_\'Geoname\'_\'GUID\', zoals ContosoVM_wcus_12345678
+> - De URL zou worden <https://pod01-rec2.wcus.backup.windowsazure.com>"
 
    Voor Linux is voor het script de onderdelen open-iscsi en lshw vereist om verbinding te maken met het herstel punt. Als de onderdelen niet bestaan op de computer waarop het script wordt uitgevoerd, vraagt het script om toestemming om de onderdelen te installeren. Geef toestemming om de benodigde onderdelen te installeren.
 
@@ -141,21 +137,21 @@ Om de namen van de volume groepen onder een fysiek volume weer te geven.
 
 ```bash
 #!/bin/bash
-$ pvs <volume name as shown above in the script output>
+pvs <volume name as shown above in the script output>
 ```
 
 Om alle logische volumes, namen en hun paden in een volume groep weer te geven.
 
 ```bash
 #!/bin/bash
-$ lvdisplay <volume-group-name from the pvs command’s results>
+lvdisplay <volume-group-name from the pvs command’s results>
 ```
 
 De logische volumes koppelen aan het pad naar keuze.
 
 ```bash
 #!/bin/bash
-$ mount <LV path> </mountpath>
+mount <LV path> </mountpath>
 ```
 
 #### <a name="for-raid-arrays"></a>Voor RAID-matrices
@@ -164,7 +160,7 @@ De volgende opdracht geeft informatie weer over alle RAID-schijven.
 
 ```bash
 #!/bin/bash
-$ mdadm –detail –scan
+mdadm –detail –scan
 ```
 
  De relevante RAID-schijf wordt weer gegeven als `/dev/mdm/<RAID array name in the protected VM>`
@@ -173,7 +169,7 @@ Gebruik de opdracht mount als de RAID-schijf fysieke volumes heeft.
 
 ```bash
 #!/bin/bash
-$ mount [RAID Disk Path] [/mountpath]
+mount [RAID Disk Path] [/mountpath]
 ```
 
 Als er een andere LVM in de RAID-schijf is geconfigureerd, gebruikt u de voor gaande procedure voor LVM-partities, maar gebruikt u de volume naam in plaats van de RAID-schijf naam

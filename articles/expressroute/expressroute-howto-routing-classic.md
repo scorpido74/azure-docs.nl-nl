@@ -1,5 +1,5 @@
 ---
-title: 'Peering configureren voor een circuit-ExpressRoute: Azure: klassiek | Microsoft Docs'
+title: 'Azure ExpressRoute: peering configureren: klassiek'
 description: Dit artikel begeleidt u stapsgewijs door de procedure voor het maken en inrichten van de persoonlijke, openbare en Microsoft-peering van een ExpressRoute-circuit. In dit artikel leest u hoe u de status controleert en peerings voor uw circuit bijwerkt of verwijdert.
 services: expressroute
 author: cherylmc
@@ -7,28 +7,27 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: 01ec721fb7e7dea0e4e31e0c3052cc4246cf14b0
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 814a73900b05b66d1bacc946b9f994135d3fc9f6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748189"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083444"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-classic"></a>Peering maken en wijzigen voor een ExpressRoute-circuit (klassiek)
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
-> * [Video-persoonlijke peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
-> * [Video-open bare peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
-> * [Video-micro soft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
+> * [Video - Privépeering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
+> * [Video - openbare peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-public-peering-for-your-expressroute-circuit)
+> * [Video - Microsoft-peering](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-microsoft-peering-for-your-expressroute-circuit)
 > * [PowerShell (klassiek)](expressroute-howto-routing-classic.md)
 > 
 
-Dit artikel begeleidt u stapsgewijs door de stappen voor het maken en beheren van peering/routerings configuratie voor een ExpressRoute-circuit met behulp van Power shell en het klassieke implementatie model. In de volgende stappen ziet u ook hoe u de status van een peering voor een ExpressRoute-circuit controleert en peerings bijwerkt of verwijdert en de inrichting ervan ongedaan maakt. U kunt een, twee of alle drie peerings (Azure private, Azure Public en micro soft) configureren voor een ExpressRoute-circuit. U kunt peerings configureren in elke gewenste volgorde. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. 
+Dit artikel begeleidt u stapsgewijs door de stappen voor het maken en beheren van peering/routerings configuratie voor een ExpressRoute-circuit met behulp van Power shell en het klassieke implementatie model. In de volgende stappen ziet u ook hoe u de status van een peering voor een ExpressRoute-circuit controleert en peerings bijwerkt of verwijdert en de inrichting ervan ongedaan maakt. U kunt een, twee of alle drie de peerings (Azure privé, Azure openbaar en Microsoft) voor een ExpressRoute-circuit configureren. U kunt peerings configureren in elke gewenste volgorde. U moet er echter wel voor zorgen dat u de configuratie van elke peering een voor een voltooit. 
 
-Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met service providers die Layer 2-verbindings services aanbieden. Als u een service provider gebruikt die Managed Layer 3-services biedt (meestal een IPVPN, zoals MPLS), zal uw connectiviteits provider route ring voor u configureren en beheren.
+Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met service providers die Layer 2-verbindings services aanbieden. Als u een serviceprovider die beheerde laag-3-services (meestal een IPVPN, zoals MPLS), uw connectiviteitsprovider configureren en beheren van routering voor u.
 
 [!INCLUDE [expressroute-classic-end-include](../../includes/expressroute-classic-end-include.md)]
 
@@ -43,7 +42,7 @@ Deze instructies zijn alleen van toepassing op circuits die zijn gemaakt met ser
 
 ### <a name="download-the-latest-powershell-cmdlets"></a>De meest recente Power shell-cmdlets downloaden
 
-Installeer de nieuwste versies van de Azure Service Management (SM) Power shell-modules en de ExpressRoute-module. Wanneer u het volgende voor beeld gebruikt, ziet u dat het versie nummer (in dit voor beeld 5.1.1) verandert als nieuwere versies van de cmdlets worden vrijgegeven.
+Installeer de nieuwste versies van de Azure SM (Service Management) PowerShell-modules en de ExpressRoute-module. Wanneer u het volgende voorbeeld, houd er rekening mee dat het versienummer (in dit voorbeeld 5.1.1) worden gewijzigd als nieuwere versies van de cmdlets worden vrijgegeven.
 
 ```powershell
 Import-Module 'C:\Program Files\WindowsPowerShell\Modules\Azure\5.1.1\Azure\Azure.psd1'
@@ -72,7 +71,7 @@ Gebruik de volgende voor beelden om u aan te melden bij uw Azure-account:
    Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
-4. Gebruik vervolgens de volgende cmdlet om uw Azure-abonnement toe te voegen aan Power shell voor het klassieke implementatie model.
+4. Gebruik vervolgens de volgende cmdlet uit uw Azure-abonnement toevoegen aan PowerShell voor het klassieke implementatiemodel.
 
    ```powershell
    Add-AzureAccount
@@ -274,7 +273,7 @@ VlanId                         : 200
 
 ### <a name="to-update-azure-public-peering-configuration"></a>De configuratie van openbare Azure-peering bijwerken
 
-Met de volgende cmdlet kunt u elk deel van de configuratie bijwerken. In dit voor beeld wordt de VLAN-ID van het circuit bijgewerkt van 200 naar 600.
+Met de volgende cmdlet kunt u elk deel van de configuratie bijwerken. In dit voorbeeld is de VLAN-ID van het circuit wordt bijgewerkt van 200 in 600.
 
 ```powershell
 Set-AzureBGPPeering -AccessType Public -ServiceKey "*********************************" -PrimaryPeerSubnet "131.107.0.0/30" -SecondaryPeerSubnet "131.107.0.4/30" -PeerAsn 1234 -VlanId 600 -SharedKey "A1B2C3D4"
@@ -283,7 +282,7 @@ Set-AzureBGPPeering -AccessType Public -ServiceKey "****************************
 Controleer of het circuit wordt weer gegeven als ingericht en ingeschakeld. 
 ### <a name="to-delete-azure-public-peering"></a>Openbare Azure-peering verwijderen
 
-U kunt de peering-configuratie verwijderen door de volgende cmdlet uit te voeren:
+U kunt de peeringconfiguratie verwijderen door de volgende cmdlet:
 
 ```powershell
 Remove-AzureBGPPeering -AccessType Public -ServiceKey "*********************************"
@@ -336,7 +335,7 @@ In deze sectie vindt u instructies voor het maken, verkrijgen, bijwerken en verw
    * Geadverteerde voorvoegsels: u moet een lijst verstrekken van alle voorvoegsels die u via de BGP-sessie wilt adverteren. Alleen openbare IP-adresvoorvoegsels worden geaccepteerd. U kunt een door komma's gescheiden lijst verzenden als u van plan bent om een set voor voegsels te verzenden. Deze voorvoegsels moeten voor u zijn geregistreerd in een RIR/IRR.
    * Klant-ASN: als u voorvoegsels adverteert die niet zijn geregistreerd op het AS-nummer van de peering, kunt u het AS-nummer opgeven waarop ze zijn geregistreerd. **Optioneel**.
    * Naam van routeringsregister: u kunt het RIR/IRR opgeven waarbij het AS-nummer en de voorvoegsels zijn geregistreerd.
-   * Een MD5-hash, als u er een wilt gebruiken. **Beschrijving.**
+   * Een MD5-hash, als u er een wilt gebruiken. **Optioneel.**
      
    Voer de volgende cmdlet uit om micro soft-peering voor uw circuit te configureren:
  
@@ -378,7 +377,7 @@ Set-AzureBGPPeering -AccessType Microsoft -ServiceKey "*************************
 
 ### <a name="to-delete-microsoft-peering"></a>Microsoft-peering verwijderen
 
-U kunt de peering-configuratie verwijderen door de volgende cmdlet uit te voeren:
+U kunt de peeringconfiguratie verwijderen door de volgende cmdlet:
 
 ```powershell
 Remove-AzureBGPPeering -AccessType Microsoft -ServiceKey "*********************************"

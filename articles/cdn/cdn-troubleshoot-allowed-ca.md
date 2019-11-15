@@ -1,6 +1,6 @@
 ---
-title: Certificeringsinstanties toegestaan voor het inschakelen van de aangepaste HTTPS voor Azure CDN | Microsoft Docs
-description: Als u uw eigen certificaat gebruikt voor het inschakelen van HTTPS op een aangepast domein, moet u een toegestane certificeringsinstantie (CA) gebruiken om deze te maken.
+title: Toegestane CA voor het inschakelen van aangepaste HTTPS op Azure CDN
+description: Als u uw eigen certificaat gebruikt om HTTPS in te scha kelen op een aangepast domein, moet u een toegestane certificerings instantie (CA) gebruiken om deze te maken.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 754941163ddce9512870f0b76a96207472e5b2aa
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 5462502514a3e327913122fe99fd699856891216
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67593365"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083108"
 ---
-# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Certificeringsinstanties toegestaan voor het inschakelen van de aangepaste HTTPS voor Azure CDN
+# <a name="allowed-certificate-authorities-for-enabling-custom-https-on-azure-cdn"></a>Toegestane certificerings instanties voor het inschakelen van aangepaste HTTPS op Azure CDN
 
-Voor een aangepaste domein in Azure Content Delivery Network (CDN) op een **Azure CDN Standard van Microsoft** eindpunt, wanneer u [de HTTPS-functie inschakelen met behulp van uw eigen certificaat](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates), moet u een toegestane certificeringsinstantie (CA) voor het maken van uw SSL-certificaat. Als u een niet-toegestane CA of een zelfondertekend certificaat gebruikt, kunnen uw aanvraag anders zal worden geweigerd.
+Wanneer u [de https-functie inschakelt met behulp van uw eigen certificaat](cdn-custom-ssl.md?tabs=option-2-enable-https-with-your-own-certificate#ssl-certificates), moet u een aangepaste certificerings instantie (CA) voor het maken van uw SSL-certificaat gebruiken voor een aangepast Azure Content Delivery Network (CDN)-domein op een **Azure CDN standaard van micro soft** endpoint. Anders wordt de aanvraag geweigerd als u een niet-toegestane CA of een zelfondertekend certificaat gebruikt.
 
 > [!NOTE]
-> De mogelijkheid om uw eigen certificaat gebruikt om aangepaste HTTPS inschakelen is alleen beschikbaar bij **Azure CDN Standard van Microsoft** profielen. 
+> De optie voor het gebruik van uw eigen certificaat om aangepaste HTTPS in te scha kelen is alleen beschikbaar voor **Azure CDN standaard van micro soft** -profielen. 
 >
 
 [!INCLUDE [cdn-front-door-allowed-ca](../../includes/cdn-front-door-allowed-ca.md)]

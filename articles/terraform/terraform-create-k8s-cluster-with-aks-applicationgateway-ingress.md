@@ -5,13 +5,13 @@ ms.service: terraform
 author: tomarchermsft
 ms.author: tarcher
 ms.topic: tutorial
-ms.date: 10/26/2019
-ms.openlocfilehash: 853175665ce16c9ec972b184f9e07838b407b628
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.date: 11/13/2019
+ms.openlocfilehash: 31faedf247f8dd0799a4ee52cabc8386f0363ff6
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969579"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082573"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Zelf studie: een Application Gateway ingangs controller maken in azure Kubernetes service
 
@@ -34,6 +34,8 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 - **Terraform configureren**: volg de aanwijzingen in het artikel [Terraform en toegang tot Azure configureren](/azure/virtual-machines/linux/terraform-install-configure)
 
+- **Azure-resource groep**: als u geen Azure-resource groep hebt die u voor de demo kunt gebruiken, [maakt u een Azure-resource groep](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Noteer de naam van de resource groep en de locatie waar deze waarden worden gebruikt in de demo.
+
 - **Azure service-principal**: volg de aanwijzingen in de sectie **Create the service principal** (de service-principal maken) in het artikel [Create an Azure service principal with Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) (een Azure-service-principal maken met Azure CLI). Noteer de waarden voor appId, displayName en password.
 
 - **De Service-Principal object-id ophalen**: Voer de volgende opdracht uit in Cloud Shell: `az ad sp list --display-name <displayName>`
@@ -42,7 +44,7 @@ In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 De eerste stap is het maken van een map voor de Terraform-configuratiebestanden voor de oefening.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview).
 
@@ -52,7 +54,7 @@ De eerste stap is het maken van een map voor de Terraform-configuratiebestanden 
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `terraform-aks-k8s`.
+1. Maak een map met de naam `terraform-aks-k8s`.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -86,7 +88,7 @@ Maak het Terraform-configuratiebestand waarin de Azure-provider wordt gedeclaree
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="define-input-variables"></a>Invoervariabelen definiëren
 
@@ -102,7 +104,7 @@ Maak het terraform-configuratie bestand met een lijst met alle variabelen die ve
     
     ```hcl
     variable "resource_group_name" {
-      description = "Name of the resource group already created."
+      description = "Name of the resource group."
     }
 
     variable "location" {
@@ -229,7 +231,7 @@ Maak het terraform-configuratie bestand met een lijst met alle variabelen die ve
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="define-the-resources"></a>De resources definiëren 
 Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt. 
@@ -312,7 +314,7 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
       name                         = "publicIp1"
       location                     = data.azurerm_resource_group.rg.location
       resource_group_name          = data.azurerm_resource_group.rg.name
-      public_ip_address_allocation = "static"
+      allocation_method            = "Static"
       sku                          = "Standard"
 
       tags = var.tags
@@ -470,7 +472,7 @@ Maak een Terraform-configuratiebestand waarin alle resources worden gemaakt.
 
     ```
 
-1. Sla het bestand op en sluit de editor af.
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 De code die in deze sectie wordt weer gegeven, stelt de naam in van het cluster, de locatie en de resource_group_name. De `dns_prefix` waarde: die deel uitmaakt van de Fully Qualified Domain Name (FQDN) die wordt gebruikt voor toegang tot het cluster, is ingesteld.
 
@@ -480,7 +482,7 @@ Met AKS betaalt u alleen voor de werkknooppunten. Met de `agent_pool_profile` re
 
 ## <a name="create-a-terraform-output-file"></a>Een Terraform-uitvoerbestand maken
 
-Met [terraform-uitvoer](https://www.terraform.io/docs/configuration/outputs.html) kunt u waarden definiëren die zijn gemarkeerd voor de gebruiker wanneer terraform een plan toepast, en kan worden opgevraagd met behulp van de opdracht `terraform output`. In deze sectie maakt u een uitvoerbestand waarmee via [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) toegang wordt verkregen tot het cluster.
+Met [terraform-uitvoer](https://www.terraform.io/docs/configuration/outputs.html) kunt u waarden definiëren die zijn gemarkeerd voor de gebruiker wanneer terraform een plan toepast, en kan worden opgevraagd met behulp van de `terraform output` opdracht. In deze sectie maakt u een uitvoerbestand waarmee via [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/) toegang wordt verkregen tot het cluster.
 
 1. Maak in Cloud Shell een bestand met de naam `output.tf`.
 
@@ -528,21 +530,19 @@ Met [terraform-uitvoer](https://www.terraform.io/docs/configuration/outputs.html
     }
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 ## <a name="configure-azure-storage-to-store-terraform-state"></a>Azure Storage configureren om de terraform-status op te slaan
 
 In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfstate`. Dit patroon werkt goed in een omgeving met één persoon. In een praktischere omgeving met meerdere personen moet u echter met behulp van [Azure Storage](/azure/storage/) de status bijhouden op de server. In deze sectie leert u hoe u de benodigde gegevens voor het opslag account ophaalt en een opslag container maakt. De gegevens over de status van de terraform worden vervolgens opgeslagen in die container.
 
-1. Selecteer in Azure Portal de optie **Alle services** in het linkermenu.
+1. Selecteer **opslag accounts**onder **Azure-services**in het Azure Portal. (Als de optie **opslag accounts** niet op de hoofd pagina wordt weer gegeven, selecteert u **meer services** en zoekt en selecteert u deze.)
 
-1. Selecteer **Opslagaccounts**.
-
-1. Selecteer op het tabblad **Opslagaccounts** de naam van het opslagaccount waarin de Terraform-status moet worden opgeslagen. U kunt bijvoorbeeld het opslagaccount gebruiken dat u hebt gemaakt toen u Cloud Shell de eerste keer opende.  De opslagaccountnaam die door Cloud Shell wordt gemaakt, begint gewoonlijk met `cs`, gevolgd door een willekeurige tekenreeks met cijfers en letters. 
+1. Selecteer op de pagina **opslag accounts** de naam van het opslag account waarin de status van de terraform moet worden opgeslagen. U kunt bijvoorbeeld het opslagaccount gebruiken dat u hebt gemaakt toen u Cloud Shell de eerste keer opende.  De opslagaccountnaam die door Cloud Shell wordt gemaakt, begint gewoonlijk met `cs`, gevolgd door een willekeurige tekenreeks met cijfers en letters. 
 
     Noteer het opslag account dat u hebt geselecteerd, zoals u dit later nodig hebt.
 
-1. Selecteer op het opslagaccounttabblad **Toegangssleutels**.
+1. Selecteer op de opslagaccountpagina de optie **Toegangssleutels**.
 
     ![Opslagaccountmenu](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
@@ -550,7 +550,7 @@ In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfsta
 
     ![Toegangssleutels voor opslagaccount](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 
-1. In Cloud Shell maakt u een container in uw Azure Storage-account (Vervang de tijdelijke aanduidingen &lt;YourAzureStorageAccountName > en &lt;YourAzureStorageAccountAccessKey > met de juiste waarden voor uw Azure Storage-account).
+1. In Cloud Shell maakt u een container in uw Azure Storage-account. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw Azure Storage-account.
 
     ```azurecli
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
@@ -559,7 +559,7 @@ In Terraform wordt de status lokaal bijgehouden via het bestand `terraform.tfsta
 ## <a name="create-the-kubernetes-cluster"></a>Het Kubernetes-cluster maken
 In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resources te maken die zijn gedefinieerd in de configuratiebestanden die u in de vorige secties hebt gemaakt.
 
-1. Initialiseer terraform in Cloud Shell (Vervang &lt;de tijdelijke aanduidingen YourAzureStorageAccountName > en &lt;YourAzureStorageAccountAccessKey > met de juiste waarden voor uw Azure Storage-account).
+1. Initialiseer terraform in Cloud Shell. Vervang de tijdelijke aanduidingen door de juiste waarden voor uw Azure Storage-account.
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
@@ -569,28 +569,28 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
 
     ![Voorbeeld van de resultaten van de opdracht 'terraform init'](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-init-complete.png)
 
-1. Maak in Cloud Shell een bestand met de naam `main.tf`:
+1. Maak in Cloud Shell een bestand met de naam `terraform.tfvars`:
 
     ```bash
     code terraform.tfvars
     ```
 
-1. Plak de volgende variabelen, die eerder zijn gemaakt, in de editor:
+1. Plak de volgende variabelen die u eerder in de editor hebt gemaakt. Gebruik `az account list-locations`om de locatie waarde voor uw omgeving op te halen.
 
     ```hcl
-    resource_group_name = <Name of the Resource Group already created>
+    resource_group_name = "<Name of the Resource Group already created>"
 
-    location = <Location of the Resource Group>
+    location = "<Location of the Resource Group>"
       
-    aks_service_principal_app_id = <Service Principal AppId>
+    aks_service_principal_app_id = "<Service Principal AppId>"
       
-    aks_service_principal_client_secret = <Service Principal Client Secret>
+    aks_service_principal_client_secret = "<Service Principal Client Secret>"
       
-    aks_service_principal_object_id = <Service Principal Object Id>
+    aks_service_principal_object_id = "<Service Principal Object Id>"
         
     ```
 
-1. Sla het bestand ( **&lt;Ctrl > S**) op en sluit de editor af ( **&lt;Ctrl > Q**).
+1. Sla het bestand op ( **&lt;Ctrl > S**) en sluit de editor af ( **&lt;CTRL > Q**).
 
 1. Voer de opdracht `terraform plan` uit om het Terraform-plan te maken waarmee de infrastructuurelementen worden gedefinieerd. 
 
@@ -598,7 +598,7 @@ In deze sectie ziet u hoe u de opdracht `terraform init` gebruikt om de resource
     terraform plan -out out.plan
     ```
 
-    De `terraform plan` opdracht geeft de resources weer die worden gemaakt wanneer u de `terraform apply` opdracht uitvoert:
+    Met de `terraform plan` opdracht worden de resources weer gegeven die worden gemaakt wanneer u de `terraform apply`-opdracht uitvoert:
 
     ![Voorbeeld van de resultaten van de opdracht 'terraform plan'](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
@@ -665,21 +665,21 @@ Azure Active Directory pod-identiteit biedt toegang tot [Azure Resource Manager]
 
 [Azure AD pod-identiteit](https://github.com/Azure/aad-pod-identity) voegt de volgende onderdelen toe aan uw Kubernetes-cluster:
 
-  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`, `AzureIdentityBinding`
+  - Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity``AzureIdentityBinding`
   - Onderdeel [Managed Identity controller (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
   - [NMI-onderdeel (node Managed Identity)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
 Als RBAC is **ingeschakeld**, voert u de volgende opdracht uit om de Azure AD pod-identiteit voor uw cluster te installeren:
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
-    ```
+```bash
+kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment-rbac.yaml
+```
 
 Als RBAC is **uitgeschakeld**, voert u de volgende opdracht uit om de Azure AD pod-identiteit voor uw cluster te installeren:
 
-    ```bash
-    kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
-    ```
+```bash
+kubectl create -f https://raw.githubusercontent.com/Azure/aad-pod-identity/master/deploy/infra/deployment.yaml
+```
 
 ## <a name="install-helm"></a>Helm installeren
 
@@ -717,26 +717,26 @@ De code in deze sectie maakt gebruik van [helm](/azure/aks/kubernetes-helm) -Kub
 1. Bewerk de `helm-config.yaml` en voer de juiste waarden in voor de secties `appgw` en `armAuth`.
 
     ```bash
-    nano helm-config.yaml
+    code helm-config.yaml
     ```
 
     De waarden worden als volgt beschreven:
 
-    - `verbosityLevel`: stelt het uitbreidings niveau in van de infra structuur voor AGIC-logboek registratie. Zie [registratie niveaus](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) voor mogelijke waarden.
+    - `verbosityLevel`: Hiermee stelt u het uitbreidings niveau in van de infra structuur voor AGIC-logboek registratie. Zie [registratie niveaus](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) voor mogelijke waarden.
     - `appgw.subscriptionId`: de ID van het Azure-abonnement voor de app-gateway. Voorbeeld: `a123b234-a3b4-557d-b2df-a0bc12de1234`
     - `appgw.resourceGroup`: de naam van de Azure-resource groep waarin de app-gateway is gemaakt. 
-    - `appgw.name`: de naam van de Application Gateway. Voor beeld: `applicationgateway1`.
-    - `appgw.shared`: deze Booleaanse vlag moet standaard worden ingesteld op `false`. Ingesteld op `true` moet u een [gedeelde app-gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)hebben.
-    - `kubernetes.watchNamespace`: Geef de naam ruimte op die AGIC moet volgen. De naam ruimte kan één teken reeks waarde of een door komma's gescheiden lijst met naam ruimten zijn.
-    - `armAuth.type`: een waarde van `aadPodIdentity` of `servicePrincipal`.
-    - `armAuth.identityResourceID`: Resource-ID van de beheerde identiteit.
+    - `appgw.name`: de naam van de Application Gateway. Voorbeeld: `applicationgateway1`.
+    - `appgw.shared`: deze Booleaanse vlag moet worden standaard ingesteld op `false`. Stel deze in op `true` als u een [gedeelde app-gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)nodig hebt.
+    - `kubernetes.watchNamespace`: Geef de naam ruimte op die AGIC moet volgen. De naam ruimte kan één teken reeks waarde of een door komma's gescheiden lijst met naam ruimten zijn. Als u deze variabele weglaat, of als u deze instelt op lege of lege teken reeks, worden alle toegankelijke naam ruimten door de ingangs controller geobserveerd.
+    - `armAuth.type`: een waarde van zowel `aadPodIdentity` als `servicePrincipal`.
+    - `armAuth.identityResourceID`: de resource-ID van de beheerde identiteit.
     - `armAuth.identityClientId`: de client-ID van de identiteit.
-    - `armAuth.secretJSON`: alleen nodig wanneer het geheim type van de Service-Principal is gekozen (als `armAuth.type` is ingesteld op `servicePrincipal`).
+    - `armAuth.secretJSON`: alleen nodig wanneer het geheim type van de Service-Principal is gekozen (wanneer `armAuth.type` is ingesteld op `servicePrincipal`).
 
     Opmerkingen bij de sleutel:
     - De `identityResourceID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_client_id)"`.
     - De `identityClientID` waarde wordt gemaakt in het terraform-script en kan worden gevonden door het volgende uit te voeren: `echo "$(terraform output identity_resource_id)"`.
-    - De `<resource-group>`-waarde is de resource groep van uw app-gateway.
+    - De `<resource-group>` waarde is de resource groep van uw app-gateway.
     - De `<identity-name>` waarde is de naam van de gemaakte identiteit.
     - Alle identiteiten voor een bepaald abonnement kunnen worden weer gegeven met behulp van: `az identity list`.
 
@@ -759,8 +759,18 @@ Zodra u de app-gateway, AKS en AGIC hebt geïnstalleerd, kunt u een voor beeld-a
 2. Het YAML-bestand Toep assen:
 
     ```bash
-    kubectl apply -f apsnetapp.yaml
+    kubectl apply -f aspnetapp.yaml
     ```
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u deze niet meer nodig hebt, verwijdert u de resources die u in dit artikel hebt gemaakt.  
+
+Vervang de tijdelijke aanduiding door de juiste waarde. Alle resources in de opgegeven resource groep worden verwijderd.
+
+```bash
+az group delete -n <resource-group>
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

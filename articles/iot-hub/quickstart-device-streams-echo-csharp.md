@@ -1,5 +1,5 @@
 ---
-title: Communiceren met een apparaat-app C# in via Azure IOT hub Device streams (preview) | Microsoft Docs
+title: Communiceren met de app apparaat C# in met Azure IOT hub Device streams
 description: In deze Quick Start voert u twee voorbeeld C# toepassingen uit die communiceren via een apparaat stroom die is ingesteld via IOT hub.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c994b77105fe94eef418c0befc4c135ec09ada14
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900932"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084300"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Snelstartgids: communiceren met een apparaat-app C# in via IOT hub Device streams (preview)
 
@@ -31,7 +31,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 ## <a name="prerequisites"></a>Vereisten
 
 * De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost

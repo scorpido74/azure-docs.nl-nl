@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: e0e649045e3efe488804fd37c030fe01991ad232
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 01d8560ee2752f21eb52c00f4c337d1dca59b8fb
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803613"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082704"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions python-ontwikkelaars handleiding
 
@@ -87,10 +87,10 @@ U kunt het standaard gedrag van een functie wijzigen door optioneel de eigenscha
 
 ## <a name="folder-structure"></a>Mapstructuur
 
-De mapstructuur voor een python functions-project ziet eruit als in het volgende voor beeld:
+De aanbevolen mapstructuur voor een python functions-project ziet eruit als in het volgende voor beeld:
 
 ```
- FunctionApp
+ __app__
  | - MyFirstFunction
  | | - __init__.py
  | | - function.json
@@ -103,23 +103,31 @@ De mapstructuur voor een python functions-project ziet eruit als in het volgende
  | | - mySecondHelperFunction.py
  | - host.json
  | - requirements.txt
+ tests
 ```
+De hoofdmap van het project (\_\_app\_\_) kan de volgende bestanden bevatten:
 
-Er is een gedeeld [host. json](functions-host-json.md) -bestand dat kan worden gebruikt voor het configureren van de functie-app. Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function. json). 
+* *Local. settings. json*: wordt gebruikt voor het opslaan van app-instellingen en verbindings reeksen bij het lokaal uitvoeren. Dit bestand wordt niet gepubliceerd naar Azure. Zie [Local. settings. File](functions-run-local.md#local-settings-file)voor meer informatie.
+* *Requirements. txt*: bevat de lijst met pakketten die door het systeem worden geïnstalleerd bij het publiceren naar Azure.
+* *host. json*: bevat globale configuratie opties die van invloed zijn op alle functies in een functie-app. Dit bestand wordt gepubliceerd naar Azure. Niet alle opties worden ondersteund bij het lokaal uitvoeren. Zie [host. json](functions-host-json.md)voor meer informatie.
+* *funcignore*: (optioneel) declareert bestanden die niet naar Azure mogen worden gepubliceerd.
+* *gitignore*: (optioneel) declareert bestanden die zijn uitgesloten van een Git-opslag plaats, zoals local. settings. json.
 
-Gedeelde code moet in een afzonderlijke map worden bewaard. Als u wilt verwijzen naar modules in de map SharedCode, kunt u de volgende syntaxis gebruiken:
+Elke functie heeft een eigen code bestand en een bindings configuratie bestand (function. json). 
 
-```
+Gedeelde code moet worden bewaard in een afzonderlijke map in \_\_app\_\_. Als u wilt verwijzen naar modules in de map SharedCode, kunt u de volgende syntaxis gebruiken:
+
+```python
 from __app__.SharedCode import myFirstHelperFunction
 ```
 
 Als u verwijst naar modules die lokaal zijn voor een functie, kunt u de relatieve import syntaxis als volgt gebruiken:
 
-```
+```python
 from . import example
 ```
 
-Wanneer u een functie project implementeert in uw functie-app in azure, moet de volledige inhoud van de map *FunctionApp* worden opgenomen in het pakket, maar niet in de map zelf.
+Wanneer u uw project implementeert in een functie-app in azure, moet de volledige inhoud van de map *FunctionApp* worden opgenomen in het pakket, maar niet in de map zelf. U wordt aangeraden uw tests te onderhouden in een map gescheiden van de projectmap, in dit voor beeld `tests`. Hierdoor kunt u geen test code implementeren met uw app. Zie [unit testen](#unit-testing)voor meer informatie.
 
 ## <a name="triggers-and-inputs"></a>Triggers en invoer
 
@@ -378,11 +386,13 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
 
 Voor lokale ontwikkeling worden toepassings instellingen [onderhouden in het bestand local. settings. json](functions-run-local.md#local-settings-file).  
 
-## <a name="python-version-and-package-management"></a>Python-versie en pakket beheer
+## <a name="python-version"></a>Python-versie 
 
-Momenteel ondersteunt Azure Functions alleen python 3.6. x (officiële CPython-distributie).
+Momenteel ondersteunt Azure Functions zowel python 3.6. x als 3.7. x (officiële CPython-distributies). Wanneer lokaal wordt uitgevoerd, gebruikt de runtime de beschik bare python-versie. Als u een specifieke python-versie wilt aanvragen wanneer u de functie-app in azure maakt, gebruikt u de optie `--runtime-version` van de [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) opdracht.  
 
-Wanneer u lokaal ontwikkelt met behulp van de Azure Functions Core Tools of Visual Studio code, voegt u de namen en versies van de vereiste pakketten toe aan het `requirements.txt` bestand en installeert u deze met behulp van `pip`.
+## <a name="package-management"></a>Pakketbeheer
+
+Wanneer u lokaal ontwikkelt met behulp van de Azure Functions Core Tools of Visual Studio code, voegt u de namen en versies van de vereiste pakketten toe aan het `requirements.txt` bestand en installeert u deze met behulp van `pip`. 
 
 De volgende vereisten bestand en PIP-opdracht kunnen bijvoorbeeld worden gebruikt om het `requests`-pakket te installeren vanuit PyPI.
 
@@ -396,35 +406,67 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Publiceren naar Azure
 
-Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat al uw afhankelijkheden worden weer gegeven in het bestand *Requirements. txt* , dat zich in de hoofdmap van de projectmap bevindt. Azure Functions kunt deze afhankelijkheden [op afstand bouwen](functions-deployment-technologies.md#remote-build) .
+Wanneer u klaar bent om te publiceren, moet u ervoor zorgen dat alle openbaar beschik bare afhankelijkheden worden vermeld in het bestand requirements. txt, dat zich in de hoofdmap van de projectmap bevindt. 
 
-Project bestanden en-mappen die zijn uitgesloten van publiceren, met inbegrip van de map virtuele omgeving, worden weer gegeven in het funcignore-bestand. 
+Project bestanden en-mappen die zijn uitgesloten van publiceren, met inbegrip van de map virtuele omgeving, worden weer gegeven in het funcignore-bestand.
 
-Zowel de [Azure functions core tools](functions-run-local.md#v2) als de [Azure functions uitbrei ding voor VS code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) voeren standaard een externe build uit. Gebruik bijvoorbeeld de volgende opdracht:
+Er zijn drie build-acties die worden ondersteund voor het publiceren van uw python-project naar Azure:
+
++ Externe build: afhankelijkheden worden op afstand opgehaald op basis van de inhoud van het bestand requirements. txt. [Externe build](functions-deployment-technologies.md#remote-build) is de aanbevolen methode build. Extern is ook de standaard optie voor het bouwen van Azure-hulpprogram ma's. 
++ Lokale build: afhankelijkheden worden lokaal opgehaald op basis van de inhoud van het bestand requirements. txt. 
++ Aangepaste afhankelijkheden: in uw project worden pakketten gebruikt die niet openbaar beschikbaar zijn voor onze tools. (Hiervoor is docker vereist.)
+
+Als u uw afhankelijkheden wilt maken en publiceren met behulp van een systeem voor continue levering (CD), [gebruikt u Azure-pijp lijnen](functions-how-to-azure-devops.md).
+
+### <a name="remote-build"></a>Externe build
+
+Standaard vraagt de Azure Functions Core Tools een externe build aan wanneer u de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht gebruikt om uw python-project naar Azure te publiceren. 
 
 ```bash
-func azure functionapp publish <app name>
+func azure functionapp publish <APP_NAME>
 ```
 
-Als u uw app lokaal wilt maken in plaats van in azure, [installeert u docker](https://docs.docker.com/install/) op uw lokale machine en voert u de volgende opdracht uit om te publiceren met behulp van de [Azure functions core tools](functions-run-local.md#v2) (func). Vergeet niet om `<app name>` te vervangen door de naam van uw functie-app in Azure. 
+Vergeet niet om `<APP_NAME>` te vervangen door de naam van uw functie-app in Azure.
 
-```bash
-func azure functionapp publish <app name> --build-native-deps
+Met de [extensie Azure functions voor Visual Studio code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) wordt ook standaard een externe build aangevraagd. 
+
+### <a name="local-build"></a>Lokale build
+
+U kunt voor komen dat een externe build wordt gemaakt met behulp van de volgende [func Azure functionapp Publish](functions-run-local.md#publish) -opdracht om te publiceren met een lokale build. 
+
+```command
+func azure functionapp publish <APP_NAME> --build local
 ```
 
-Onder de kaften gebruiken basis Hulpprogramma's docker om de [MCR.Microsoft.com/azure-functions/python](https://hub.docker.com/r/microsoft/azure-functions/) -installatie kopie uit te voeren als een container op uw lokale machine. Als u deze omgeving gebruikt, bouwt en installeert u de vereiste modules van de bron distributie, voordat u ze oppakt voor definitieve implementatie naar Azure.
+Vergeet niet om `<APP_NAME>` te vervangen door de naam van uw functie-app in Azure. 
 
-Als u uw afhankelijkheden wilt maken en publiceren met behulp van een systeem voor continue levering (CD), [gebruikt u Azure-pijp lijnen](functions-how-to-azure-devops.md). 
+Met de optie `--build local` worden Project afhankelijkheden uit het bestand requirements. txt gelezen en worden de afhankelijke pakketten lokaal gedownload en geïnstalleerd. Project bestanden en afhankelijkheden worden geïmplementeerd vanaf uw lokale computer naar Azure. Dit leidt ertoe dat een groter implementatie pakket wordt geüpload naar Azure. Als er om de een of andere reden geen afhankelijkheden van het bestand requirements. txt kunnen worden verkregen met de kern Hulpprogramma's, moet u de optie aangepaste afhankelijkheden gebruiken voor het publiceren. 
+
+### <a name="custom-dependencies"></a>Aangepaste afhankelijkheden
+
+Als uw project pakketten gebruikt die niet openbaar beschikbaar zijn voor onze tools, kunt u ze beschikbaar maken voor uw app door ze te plaatsen in de \_\_app\_\_/. python_packages Directory. Voordat u publiceert, voert u de volgende opdracht uit om de afhankelijkheden lokaal te installeren:
+
+```command
+pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
+```
+
+Wanneer u aangepaste afhankelijkheden gebruikt, moet u de optie `--no-build` Publishing gebruiken, omdat u de afhankelijkheden al hebt geïnstalleerd.  
+
+```command
+func azure functionapp publish <APP_NAME> --no-build
+```
+
+Vergeet niet om `<APP_NAME>` te vervangen door de naam van uw functie-app in Azure.
 
 ## <a name="unit-testing"></a>Eenheids tests
 
-Functies die zijn geschreven in python kunnen worden getest als andere python-code met behulp van standaard test raamwerken. Voor de meeste bindingen is het mogelijk om een invoer object voor een model te maken door een instantie van een geschikte klasse te maken vanuit het `azure.functions`-pakket. Omdat het [`azure.functions`](https://pypi.org/project/azure-functions/) -pakket niet onmiddellijk beschikbaar is, moet u het installeren via uw `requirements.txt`-bestand, zoals beschreven in de sectie [python-versie en pakket beheer](#python-version-and-package-management) hierboven.
+Functies die zijn geschreven in python kunnen worden getest als andere python-code met behulp van standaard test raamwerken. Voor de meeste bindingen is het mogelijk om een invoer object voor een model te maken door een instantie van een geschikte klasse te maken vanuit het `azure.functions`-pakket. Omdat het [`azure.functions`](https://pypi.org/project/azure-functions/) -pakket niet onmiddellijk beschikbaar is, moet u het installeren via uw `requirements.txt`-bestand, zoals beschreven in de sectie [pakket beheer](#package-management) hierboven. 
 
 Het volgende is bijvoorbeeld een model test van een door HTTP geactiveerde functie:
 
 ```json
 {
-  "scriptFile": "httpfunc.py",
+  "scriptFile": "__init__.py",
   "entryPoint": "my_function",
   "bindings": [
     {
@@ -447,7 +489,7 @@ Het volgende is bijvoorbeeld een model test van een door HTTP geactiveerde funct
 ```
 
 ```python
-# myapp/httpfunc.py
+# __app__/HttpTrigger/__init__.py
 import azure.functions as func
 import logging
 
@@ -473,12 +515,11 @@ def my_function(req: func.HttpRequest) -> func.HttpResponse:
 ```
 
 ```python
-# myapp/test_httpfunc.py
+# tests/test_httptrigger.py
 import unittest
 
 import azure.functions as func
-from httpfunc import my_function
-
+from __app__.HttpTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -501,22 +542,36 @@ class TestFunction(unittest.TestCase):
 
 Hier volgt nog een voor beeld van een door de wachtrij geactiveerde functie:
 
-```python
-# myapp/__init__.py
-import azure.functions as func
+```json
+{
+  "scriptFile": "__init__.py",
+  "entryPoint": "my_function",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "python-queue-items",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}
+```
 
+```python
+# __app__/QueueTrigger/__init__.py
+import azure.functions as func
 
 def my_function(msg: func.QueueMessage) -> str:
     return f'msg body: {msg.get_body().decode()}'
 ```
 
 ```python
-# myapp/test_func.py
+# tests/test_queuetrigger.py
 import unittest
 
 import azure.functions as func
-from . import my_function
-
+from __app__.QueueTrigger import my_function
 
 class TestFunction(unittest.TestCase):
     def test_my_function(self):
@@ -554,6 +609,8 @@ from os import listdir
    fp.write(b'Hello world!')              
    filesDirListInTemp = listdir(tempFilePath)     
 ```   
+
+U wordt aangeraden uw tests te onderhouden in een map gescheiden van de projectmap. Hierdoor kunt u geen test code implementeren met uw app. 
 
 ## <a name="known-issues-and-faq"></a>Bekende problemen en veelgestelde vragen
 

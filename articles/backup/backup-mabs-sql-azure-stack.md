@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: dacurwin
-ms.openlocfilehash: 28d4ad1a94cea6f21d1fe75483357d8788524b88
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 397de7d1de9acc657fa0fd0cb93bd6e26e5606e2
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747219"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74090894"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Back-up maken van SQL Server op Azure Stack
 
@@ -101,7 +101,7 @@ Het beheer van SQL Server database back-up naar Azure en het herstel van Azure b
 
     ![Bewaarbeleid](./media/backup-azure-backup-sql/pg-retentionschedule.png)
 
-    In dit voor beeld:
+    In dit voorbeeld:
 
     * Back-ups worden eenmaal per dag om 12:00 uur en 8 uur (onderste deel van het scherm) gemaakt en blijven 180 dagen bewaard.
     * De back-up op zaterdag om 12:00 uur wordt 104 weken bewaard

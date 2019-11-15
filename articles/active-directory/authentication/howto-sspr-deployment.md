@@ -11,14 +11,17 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330b02e3db6af90fcfeb962e78b043b04090116e
-ms.sourcegitcommit: 86d49daccdab383331fc4072b2b761876b73510e
+ms.openlocfilehash: b648d6f914b5e3004ea3b62019bbec33e5a4871d
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70743243"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74081526"
 ---
 # <a name="deploy-azure-ad-self-service-password-reset"></a>Self-service voor wachtwoordherstel van Azure AD implementeren
+
+> [!NOTE]
+> In deze hand leiding wordt uitgelegd hoe selfservice voor wacht woord opnieuw wordt ingesteld en hoe deze kan worden geïmplementeerd. Als u op zoek bent naar het hulp programma selfservice voor wachtwoord herstel om terug te gaan naar uw account, gaat u naar [https://aka.ms/sspr](https://aka.ms/sspr). 
 
 Self-service voor wachtwoord herstel (SSPR) is een Azure Active Directory functie waarmee werk nemers hun wacht woord opnieuw kunnen instellen zonder contact op te nemen met IT-personeel. Werk nemers moeten zich registreren voor de selfservice voor het opnieuw instellen van het wacht woord voordat ze de service kunnen gebruiken. Tijdens de registratie kiest de werk nemer een of meer authenticatie methoden die worden ingeschakeld door hun organisatie.
 
@@ -53,7 +56,7 @@ De gecombineerde registratie-ervaring vereist niet dat organisaties zowel SSPR a
 
 De volgende instellingen zijn vereist om SSPR samen met aanbevolen waarden in te scha kelen.
 
-| Onderwerp | Instelling | Value |
+| Onderwerp | Instelling | Waarde |
 | --- | --- | --- |
 | **SSPR-eigenschappen** | Self-service voor wacht woord opnieuw instellen is ingeschakeld | **Geselecteerde** groep voor pilot/ **all** voor productie |
 | **Verificatiemethoden** | Verificatie methoden die nodig zijn om te registreren | Altijd 1 meer dan vereist voor opnieuw instellen |
@@ -62,8 +65,8 @@ De volgende instellingen zijn vereist om SSPR samen met aanbevolen waarden in te
 |   | Aantal dagen waarna gebruikers wordt gevraagd om de verificatie gegevens opnieuw te bevestigen | 90 – 180 dagen |
 | **Meldingen** | Gebruikers een melding tonen over het opnieuw instellen van hun wachtwoord | Ja |
 |   | Alle beheerders waarschuwen wanneer andere beheerders hun wachtwoord opnieuw instellen | Ja |
-| **Aanpassing** | Helpdeskkoppeling aanpassen | Ja |
-|   | Aangepast e-mailadres of aangepaste URL van de helpdesk | Ondersteunings site of e-mail adres |
+| **Aanpassing** | Help Desk-koppeling aanpassen | Ja |
+|   | Aangepaste e-mail adres of URL voor de Help Desk | Ondersteunings site of e-mail adres |
 | **On-premises integratie** | Wacht woorden terugschrijven naar on-premises AD | Ja |
 |   | Gebruikers toestaan om het account te ontgrendelen zonder het wacht woord opnieuw in te stellen | Ja |
 
@@ -87,7 +90,7 @@ Stel **in dat gebruikers zich moeten registreren wanneer ze zich aanmelden** bij
 
 Stel het **aantal dagen in voordat gebruikers wordt gevraagd hun verificatie gegevens te bevestigen** tussen **90** en **180** dagen, tenzij uw organisatie voor een kortere periode een bedrijfs behoefte heeft.
 
-### <a name="notifications-settings"></a>Meldingsinstellingen
+### <a name="notifications-settings"></a>Instellingen voor meldingen
 
 Configureer de **gebruikers op de hoogte van het opnieuw instellen van wacht woorden** en stel **alle beheerders op de hoogte wanneer andere beheerders hun wacht woord opnieuw instellen** op **Ja**. Als u **Ja** selecteert, wordt de beveiliging verhoogd door ervoor te zorgen dat gebruikers op de hoogte zijn van het opnieuw instellen van het wacht woord en dat alle beheerders op de hoogte zijn wanneer een beheerder een wacht woord wijzigt. Als gebruikers of beheerders een dergelijke melding ontvangen en de wijziging niet hebben geïnitieerd, kunnen ze onmiddellijk een mogelijke schending van de beveiliging melden.
 
@@ -206,7 +209,7 @@ Windows 10-apparaten met versie 1803 of hoger die zijn toegevoegd aan Azure AD o
 
 ### <a name="configure-password-writeback"></a>Wacht woord terugschrijven configureren
 
-De stappen voor het terugschrijven van wacht woorden voor uw organisatie vindt u [in het artikel How to: Wacht woord terugschrijven](howto-sspr-writeback.md)configureren.
+De stappen voor het terugschrijven van wacht woorden voor uw organisatie vindt u in het artikel [How to: Configure Password writeing](howto-sspr-writeback.md).
 
 ## <a name="manage-sspr"></a>SSPR beheren
 
@@ -214,15 +217,15 @@ Vereiste rollen voor het beheren van functies die zijn gekoppeld aan selfservice
 
 | Zakelijke rol/persoona | Azure AD-rol (indien nodig) |
 | :---: | :---: |
-| Help Desk van niveau 1 | Wachtwoordbeheerder |
-| Help Desk van niveau 2 | Gebruikersbeheerder |
+| Help Desk van niveau 1 | Wachtwoord beheerder |
+| Help Desk van niveau 2 | Gebruikers beheerder |
 | SSPR-beheerder | Globale beheerder |
 
 ### <a name="support-scenarios"></a>Ondersteunings scenario's
 
 Als u het ondersteunings team wilt inschakelen, kunt u een veelgestelde vragen maken op basis van vragen die u van uw gebruikers ontvangt. De volgende tabel bevat algemene ondersteunings scenario's.
 
-| Scenario's | Description |
+| Scenario's | Beschrijving |
 | --- | --- |
 | De gebruiker heeft geen geregistreerde verificatie methoden beschikbaar | Een gebruiker probeert het wacht woord opnieuw in te stellen, maar heeft geen van de authenticatie methoden die ze beschikbaar hebben (voor beeld: ze hebben hun mobiele telefoon thuis verlaten en kunnen geen toegang krijgen tot e-mail) |
 | De gebruiker ontvangt geen tekst of oproep op hun kantoor of mobiele telefoon | Een gebruiker probeert zijn identiteit te verifiëren via tekst of oproep, maar ontvangt geen tekst/oproep. |

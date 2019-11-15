@@ -1,5 +1,5 @@
 ---
-title: Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager | Microsoft Docs
+title: Herstel na nood geval voor Hyper-V-VM'S met Azure Site Recovery en Power shell
 description: Automatiseer herstel na nood gevallen van virtuele Hyper-V-machines naar Azure met de Azure Site Recovery-service met behulp van Power shell en Azure Resource Manager.
 author: sujayt
 manager: rochakm
@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 06/18/2019
 ms.author: sutalasi
-ms.openlocfilehash: 1779a33e4ac021c1807ce10dc224e0b8c8c53ebb
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71200536"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082684"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Herstel na nood geval instellen op Azure voor Hyper-V-Vm's met behulp van Power shell en Azure Resource Manager
 
@@ -45,11 +45,11 @@ Daarnaast bevat het specifieke voor beeld dat in dit artikel wordt beschreven, d
 * Een Hyper-V-host met Windows Server 2012 R2 of Microsoft Hyper-V Server 2012 R2 met een of meer virtuele machines. Hyper-V-servers moeten zijn verbonden met internet, hetzij rechtstreeks, hetzij via een proxy.
 * De Vm's die u wilt repliceren, moeten voldoen aan [deze vereisten](hyper-v-azure-support-matrix.md#replicated-vms).
 
-## <a name="step-1-sign-in-to-your-azure-account"></a>Stap 1: Aanmelden bij uw Azure-account
+## <a name="step-1-sign-in-to-your-azure-account"></a>Stap 1: Meld u aan bij uw Azure-account
 
-1. Open een Power shell-console en voer deze opdracht uit om u aan te melden bij uw Azure-account. Met de cmdlet wordt u gevraagd om uw account referenties op te vragen: **Connect-AzAccount**.
+1. Open een Power shell-console en voer deze opdracht uit om u aan te melden bij uw Azure-account. Met de cmdlet wordt een webpagina weer gegeven waarin u wordt gevraagd om uw account referenties: **Connect-AzAccount**.
     - U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** toevoegen met behulp van de para meter **-Credential** .
-    - Als u een CSP-partner werkt namens een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Bijvoorbeeld: **Connect-AzAccount -Tenant "fabrikam.com"**
+    - Als u een CSP-partner werkt namens een Tenant, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Bijvoorbeeld: **Connect-AzAccount-Tenant "fabrikam.com"**
 2. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account meerdere abonnementen kan hebben:
 
     `Select-AzSubscription -SubscriptionName $SubscriptionName`
@@ -66,7 +66,7 @@ Daarnaast bevat het specifieke voor beeld dat in dit artikel wordt beschreven, d
 
     `Get-AzResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
-## <a name="step-2-set-up-the-vault"></a>Stap 2: De kluis instellen
+## <a name="step-2-set-up-the-vault"></a>Stap 2: de kluis instellen
 
 1. Maak een Azure Resource Manager resource groep waarin u de kluis wilt maken of gebruik een bestaande resource groep. Maak als volgt een nieuwe resource groep. De variabele $ResourceGroupName bevat de naam van de resource groep die u wilt maken en de $Geo variabele bevat de Azure-regio waarin de resource groep moet worden gemaakt (bijvoorbeeld ' Brazilië-zuid ').
 
@@ -80,13 +80,13 @@ Daarnaast bevat het specifieke voor beeld dat in dit artikel wordt beschreven, d
     U kunt een lijst met bestaande kluizen ophalen met de cmdlet **Get-AzRecoveryServicesVault** .
 
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>Stap 3: De Recovery Services kluis context instellen
+## <a name="step-3-set-the-recovery-services-vault-context"></a>Stap 3: de Recovery Services kluis context instellen
 
 Stel de context van de kluis als volgt in:
 
 `Set-AsrVaultSettings -Vault $vault`
 
-## <a name="step-4-create-a-hyper-v-site"></a>Stap 4: Een Hyper-V-site maken
+## <a name="step-4-create-a-hyper-v-site"></a>Stap 4: een Hyper-V-site maken
 
 1. Maak als volgt een nieuwe Hyper-V-site:
 
@@ -104,7 +104,7 @@ Stel de context van de kluis als volgt in:
 
 5. Kopieer de gedownloade sleutel naar de Hyper-V-host. U hebt de sleutel nodig om de Hyper-V-host te registreren bij de-site.
 
-## <a name="step-5-install-the-provider-and-agent"></a>Stap 5: De provider en de agent installeren
+## <a name="step-5-install-the-provider-and-agent"></a>Stap 5: de provider en de agent installeren
 
 1. Down load het installatie programma voor de nieuwste versie van de provider van [micro soft](https://aka.ms/downloaddra).
 2. Voer het installatie programma uit op de Hyper-V-host.
@@ -115,15 +115,15 @@ Stel de context van de kluis als volgt in:
         $server =  Get-AsrFabric -Name $siteName | Get-AsrServicesProvider -FriendlyName $server-friendlyname
 
 Als u een Hyper-V-kern server gebruikt, downloadt u het installatie bestand en voert u de volgende stappen uit:
-1. Pak de bestanden uit AzureSiteRecoveryProvider. exe uit naar een lokale map door deze opdracht uit te voeren:```AzureSiteRecoveryProvider.exe /x:. /q```
-2. Resultaten ```.\setupdr.exe /i``` van de uitvoering worden vastgelegd in%ProgramData%\ASRLogs\DRASetupWizard.log.
+1. Pak de bestanden uit AzureSiteRecoveryProvider. exe uit naar een lokale map door de volgende opdracht uit te voeren: ```AzureSiteRecoveryProvider.exe /x:. /q```
+2. Run ```.\setupdr.exe /i``` resultaten worden geregistreerd in%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Registreer de server door de volgende opdracht uit te voeren:
 
     ```cd  C:\Program Files\Microsoft Azure Site Recovery Provider\DRConfigurator.exe" /r /Friendlyname "FriendlyName of the Server" /Credentials "path to where the credential file is saved"```
 
 
-## <a name="step-6-create-a-replication-policy"></a>Stap 6: Een replicatiebeleid maken
+## <a name="step-6-create-a-replication-policy"></a>Stap 6: een replicatie beleid maken
 
 Houd er rekening mee dat het opgegeven opslag account zich in dezelfde Azure-regio als de kluis moet bevinden en dat geo-replicatie moet zijn ingeschakeld.
 
@@ -190,7 +190,7 @@ Houd er rekening mee dat het opgegeven opslag account zich in dezelfde Azure-reg
 
 
 
-## <a name="step-8-run-a-test-failover"></a>Stap 8: Een testfailover uitvoeren
+## <a name="step-8-run-a-test-failover"></a>Stap 8: een testfailover uitvoeren
 1. Voer een testfailover als volgt uit:
 
         $nw = Get-AzVirtualNetwork -Name "TestFailoverNw" -ResourceGroupName "MyRG" #Specify Azure vnet name and resource group

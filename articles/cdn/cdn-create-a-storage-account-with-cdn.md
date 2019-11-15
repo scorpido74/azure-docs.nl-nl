@@ -1,5 +1,5 @@
 ---
-title: 'Snelstart: Een Azure Storage-account integreren met Azure CDN | Microsoft Docs'
+title: 'Quick Start: een Azure-opslag account integreren met Azure CDN'
 description: Leer hoe u Azure Content Delivery Network (CDN) kunt gebruiken en hoe u inhoud met een hoge bandbreedte via CDN kunt leveren door blobs van Azure Storage in de cache op te slaan.
 services: cdn
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: d8e1c3f845af6edf274aa95797523ace07cf820c
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 729ae34d90fd2415fc44fc75391950f18fee6fc0
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594017"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083078"
 ---
-# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Quickstart: Een Azure storage-account integreren met Azure CDN
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Quickstart: Een Azure Storage-account integreren met Azure CDN
 In deze snelstart gaat u ervoor zorgen dat [Azure Content Delivery Network (CDN)](cdn-overview.md) inhoud van Azure Storage in de cache kan opslaan. Azure CDN biedt ontwikkelaars een mondiale oplossing voor het leveren van inhoud met hoge bandbreedte. Het kan worden gebruikt om blobs en statische inhoud van rekeninstanties in de cache op fysieke knooppunten in de Verenigde Staten, Europa, Azië, Australië en Zuid-Amerika op te slaan.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -31,7 +31,7 @@ In deze snelstart gaat u ervoor zorgen dat [Azure Content Delivery Network (CDN)
 Meld u met uw Azure-account aan bij het [Azure Portal](https://portal.azure.com).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
-Gebruik de volgende procedure om een nieuw opslagaccount voor een Azure-abonnement te maken. Een opslagaccount biedt toegang tot Azure Storage-services. Het opslagaccount dat staat voor het hoogste niveau van de naamruimte voor het openen van elk van de onderdelen van de Azure Storage-service: Azure Blob, Queue en Table-opslag. Zie [Inleiding tot Microsoft Azure Storage](../storage/common/storage-introduction.md) voor meer informatie.
+Gebruik de volgende procedure om een nieuw opslagaccount voor een Azure-abonnement te maken. Een opslagaccount biedt toegang tot Azure Storage-services. Het opslagaccount vertegenwoordigt het hoogste niveau van de naamruimte voor het verkrijgen van toegang tot elk van de onderdelen van de Azure Storage-service: Azure Blob Storage, Queue Storage en Table Storage. Zie [Inleiding tot Microsoft Azure Storage](../storage/common/storage-introduction.md) voor meer informatie.
 
 Als u een opslagaccount wilt maken, moet u de servicebeheerder of een co-beheerder voor het gekoppelde abonnement zijn.
 
@@ -69,7 +69,7 @@ U kunt verschillende methoden, waaronder Azure Portal en PowerShell gebruiken om
     | Instelling  | Waarde |
     | -------- | ----- |
     | **Implementatiemodel** | Gebruik de standaardwaarde. |
-    | **Type account** | Gebruik de standaardwaarde. |
+    | **Soort account** | Gebruik de standaardwaarde. |
     | **Location**    | Selecteer **US - centraal** in de vervolgkeuzelijst. |
     | **Replicatie** | Gebruik de standaardwaarde. |
     | **Prestaties** | Gebruik de standaardwaarde. |
@@ -94,11 +94,11 @@ U kunt Azure CDN voor uw opslagaccount rechtstreeks vanuit uw opslagaccount insc
     
 2. Maak een nieuw eindpunt door de vereiste informatie in te voeren die is weergegeven in de volgende tabel:
 
-    | Instelling  | Value |
+    | Instelling  | Waarde |
     | -------- | ----- |
-    | **CDN-profiel** | Selecteer **nieuw** en voer de profielnaam van uw, bijvoorbeeld: *my-cdn-profile-123*. Deze naam moet wereldwijd uniek zijn.  |
+    | **CDN-profiel** | Selecteer **nieuwe maken** en voer uw profiel naam in, bijvoorbeeld *mijn-CDN-profiel-123*. Deze naam moet wereldwijd uniek zijn.  |
     | **Prijscategorie** | Selecteer **Standard - Verizon** in de vervolgkeuzelijst. |
-    | **Naam van CDN-eindpunt** | Voer de hostnaam van uw eindpunt, dat wil zeggen *my-endpoint-123*. Deze naam moet wereldwijd uniek zijn. Deze naam wordt gebruikt voor toegang tot uw resources in de cache van de domein- _&lt;eindpuntnaam&gt;_ .azureedge.net. |
+    | **Naam van CDN-eindpunt** | Voer de hostnaam van het eind punt in, d.w.z. *mijn-eind punt-123*. Deze naam moet wereldwijd uniek zijn. Deze naam wordt gebruikt voor toegang tot uw resources in de cache van de domein- _&lt;eindpuntnaam&gt;_ .azureedge.net. |
     | **Hostnaam van oorsprong** | Een nieuw CDN-eindpunt gebruikt standaard de hostnaam van uw opslagaccount als de bronserver. |
 
 3. Selecteer **Maken**. Zodra het eindpunt is gemaakt, wordt dit weergegeven in de lijst met eindpunten.
@@ -146,5 +146,5 @@ In de voorgaande stappen hebt u een CDN-profiel en een eindpunt in een resourceg
 Zie voor meer informatie over het toevoegen van een aangepast domein aan en HTTPS in te schakelen op uw CDN-eindpunt, de volgende zelfstudie:
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Toegang tot opslag-blobs met behulp van een aangepast Azure CDN-domein via HTTPS](cdn-storage-custom-domain-https.md)
+> [Zelfstudie: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS](cdn-storage-custom-domain-https.md)
 

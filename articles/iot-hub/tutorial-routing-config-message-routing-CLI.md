@@ -1,5 +1,5 @@
 ---
-title: Bericht routering voor Azure IoT Hub configureren met behulp van Azure CLI | Microsoft Docs
+title: Bericht routering voor Azure IoT Hub configureren met behulp van Azure CLI
 description: Configureer bericht routering voor Azure IoT Hub met behulp van de Azure CLI. Route naar een opslag account of een Service Bus wachtrij, afhankelijk van de eigenschappen in het bericht.
 author: robinsh
 manager: philmea
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: 844ed44a588bfd789e7e2dcf2b9fecda3d51329b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 340ea35bc3ed0c889a1a851da47f7e955116e103
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890371"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74084466"
 ---
 # <a name="tutorial-use-the-azure-cli-to-configure-iot-hub-message-routing"></a>Zelf studie: de Azure CLI gebruiken om IoT Hub bericht routering te configureren
 

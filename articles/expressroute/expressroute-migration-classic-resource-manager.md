@@ -1,5 +1,5 @@
 ---
-title: 'Virtuele netwerken migreren van klassiek naar Resource Manager - ExpressRoute: Azure: PowerShell | Microsoft Docs'
+title: 'Azure ExpressRoute: klassieke VNets migreren naar Resource Manager'
 description: Deze pagina wordt beschreven hoe u ExpressRoute gekoppelde virtuele netwerken migreren naar Resource Manager na het verplaatsen van uw circuit.
 services: expressroute
 author: cherylmc
@@ -7,13 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: cherylmc
-ms.custom: seodec18
-ms.openlocfilehash: f73ab7b68e56f5303e84d86a2711b53ffc894276
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: 2b74523f42a1f57805388aa8c60cf1ad5b1d1331
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718164"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74080087"
 ---
 # <a name="migrate-expressroute-associated-virtual-networks-from-classic-to-resource-manager"></a>ExpressRoute-gekoppelde virtuele netwerken migreren van klassiek naar Resource Manager
 
@@ -23,7 +22,7 @@ In dit artikel wordt uitgelegd hoe u virtuele netwerken gekoppeld met een Expres
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Controleer of u de nieuwste versies van de Azure PowerShell-modules. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. Te installeren van de PowerShell Service Management-module (die nodig is voor het klassieke implementatiemodel), Zie [installeren van de Azure PowerShell Service Management-Module](/powershell/azure/servicemanagement/install-azure-ps).
+* Controleer of u de nieuwste versies van de Azure PowerShell-modules hebt. Zie [Azure PowerShell installeren en configureren](/powershell/azure/overview) voor meer informatie. Zie [de Azure PowerShell service management-module installeren](/powershell/azure/servicemanagement/install-azure-ps)voor het installeren van de Power shell-module voor Service beheer (die nodig is voor het klassieke implementatie model).
 * Zorg ervoor dat u hebt bekeken de [vereisten](expressroute-prerequisites.md), [routeringsvereisten](expressroute-routing.md), en [werkstromen](expressroute-workflows.md) voordat u begint met de configuratie.
 * Lees de informatie die is opgegeven onder [een ExpressRoute-circuit verplaatsen van klassiek naar Resource Manager](expressroute-move.md). Zorg ervoor dat u volledig inzicht in limieten en beperkingen.
 * Controleer of het circuit volledig operationeel zijn in het klassieke implementatiemodel.
@@ -41,7 +40,7 @@ In dit artikel wordt uitgelegd hoe u virtuele netwerken gekoppeld met een Expres
 * Virtuele netwerken, gateways en bijbehorende implementaties binnen het virtuele netwerk die zijn gekoppeld aan een ExpressRoute-circuit in hetzelfde abonnement kunnen worden gemigreerd naar de Resource Manager-omgeving zonder uitvaltijd. U kunt de stappen verderop beschreven voor het migreren van resources zoals virtuele netwerken, gateways en virtuele machines die binnen het virtuele netwerk is geïmplementeerd. U moet ervoor zorgen dat de virtuele netwerken correct zijn geconfigureerd voordat ze worden gemigreerd. 
 * Virtuele netwerken, gateways en bijbehorende implementaties binnen het virtuele netwerk die zich niet in hetzelfde abonnement bevinden als het ExpressRoute-circuit vereist enige uitvaltijd om de migratie te voltooien. De laatste sectie van het document beschrijft de stappen worden gevolgd voor het migreren van resources.
 * Een virtueel netwerk met zowel ExpressRoute-Gateway en VPN-Gateway kan niet worden gemigreerd.
-* ExpressRoute-circuit abonnementoverschrijdende migratie wordt niet ondersteund. Zie voor meer informatie, [Microsoft.Network verplaatsen ondersteuning](../azure-resource-manager/move-support-resources.md#microsoftnetwork).
+* Migratie van ExpressRoute-circuit voor meerdere abonnementen wordt niet ondersteund. Zie [ondersteuning voor micro soft. netwerk verplaatsing](../azure-resource-manager/move-support-resources.md#microsoftnetwork)voor meer informatie.
 
 ## <a name="move-an-expressroute-circuit-from-classic-to-resource-manager"></a>Een ExpressRoute-circuit van klassiek naar Resource Manager verplaatsen
 U moet een ExpressRoute-circuit verplaatsen van de klassieke naar de Resource Manager-omgeving voordat u probeert te migreren van resources die zijn gekoppeld aan het ExpressRoute-circuit. Als u wilt deze taak wordt uitgevoerd, Zie de volgende artikelen:

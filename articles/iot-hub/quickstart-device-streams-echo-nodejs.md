@@ -1,5 +1,5 @@
 ---
-title: Communiceren met een apparaat-app in node. js via IoT Hub apparaat streams (preview) | Microsoft Docs
+title: Communiceren met de app apparaat in node. js met Azure IoT Hub Device streams
 description: In deze Quick Start voert u een node. js-service-side-toepassing uit die met een IoT-apparaat communiceert via een apparaatgegevens stroom.
 author: robinsh
 ms.service: iot-hub
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 4acfe148e424d41308e310abd2a10e4e21133799
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 538e04d7ae4f6528c26762a8efac06d02b4f86bc
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72900850"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74083734"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>Quick Start: communiceren met een toepassings toepassing in node. js via IoT Hub apparaat streams (preview)
 
@@ -44,7 +44,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 De preview van Device streams wordt momenteel alleen ondersteund voor IoT-hubs die in de volgende regio's zijn gemaakt:
 
-  * VS - centraal
+  * US - centraal
   * Centrale VS-EUAP
   * Europa - noord
   * Azië - zuidoost
@@ -69,13 +69,13 @@ Als u dit nog niet hebt gedaan, downloadt u het voorbeeldproject met Node.js van
 
 ## <a name="create-an-iot-hub"></a>Een IoT Hub maken
 
-U kunt deze stap overslaan als u eerder deze zelfstudie hebt voltooid: [Snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub en de telemetriegegevens op de hub lezen met een back-endtoepassing (Node.js)](quickstart-send-telemetry-node.md).
+U kunt deze stap overslaan na het afronden van de voorgaande [ snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub](quickstart-send-telemetry-node.md).
 
 [!INCLUDE [iot-hub-include-create-hub-device-streams](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
 ## <a name="register-a-device"></a>Een apparaat registreren
 
-U kunt deze stap overslaan als u eerder deze zelfstudie hebt voltooid: [Snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub en de telemetriegegevens op de hub lezen met een back-endtoepassing (Node.js)](quickstart-send-telemetry-node.md).
+U kunt deze stap overslaan na het afronden van de voorgaande [ snelstartgids: Telemetriegegevens vanaf een apparaat verzenden naar een IoT-hub](quickstart-send-telemetry-node.md).
 
 Een apparaat moet zijn geregistreerd bij uw IoT-hub voordat het verbinding kan maken. In deze snelstart gebruikt u Azure Cloud Shell om een gesimuleerd apparaat te registreren.
 

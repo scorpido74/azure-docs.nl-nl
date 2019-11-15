@@ -7,12 +7,12 @@ ms.date: 11/05/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: a7cd61854176dc702f213211b14c2361b3e433ad
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5196dbbfb52ce75031a53764b371d6d34b43fba7
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825364"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091421"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-java"></a>Snelstartgids: Azure Blob Storage-client bibliotheek V12 voor Java
 
@@ -201,11 +201,11 @@ Het volgende diagram geeft de relatie tussen deze resources weer.
 
 Gebruik de volgende Java-klassen om te communiceren met deze resources:
 
-* [BlobServiceClient](/java/api/com.azure.storage.blob.blobserviceclient): met de klasse `BlobServiceClient` kunt u Azure storage resources en BLOB-containers bewerken. Het opslag account biedt de naam ruimte op het hoogste niveau voor de Blob service.
-* [BlobServiceClientBuilder](/java/api/com.azure.storage.blob.blobserviceclientbuilder): de klasse `BlobServiceClientBuilder` biedt een interface van Fluent Builder om de configuratie en instantiëring van `BlobServiceClient` objecten te helpen ondersteunen.
-* [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient): met de klasse `BlobContainerClient` kunt u Azure Storage containers en de bijbehorende blobs bewerken.
-* [BlobClient](/java/api/com.azure.storage.blob.blobclient): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
-* [BlobItem](/java/api/com.azure.storage.blob.blobitem): de klasse `BlobItem` vertegenwoordigt afzonderlijke blobs die zijn geretourneerd door een aanroep van `listBlobsFlat`.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): met de klasse `BlobServiceClient` kunt u Azure storage resources en BLOB-containers bewerken. Het opslag account biedt de naam ruimte op het hoogste niveau voor de Blob service.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): de klasse `BlobServiceClientBuilder` biedt een interface van Fluent Builder om de configuratie en instantiëring van `BlobServiceClient` objecten te helpen ondersteunen.
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): met de klasse `BlobContainerClient` kunt u Azure Storage containers en de bijbehorende blobs bewerken.
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): met de klasse `BlobClient` kunt u Azure Storage blobs bewerken.
+* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): de klasse `BlobItem` vertegenwoordigt afzonderlijke blobs die zijn geretourneerd door een aanroep van `listBlobsFlat`.
 
 ## <a name="code-examples"></a>Code voorbeelden
 
@@ -243,7 +243,7 @@ Kies een naam voor de nieuwe container. De onderstaande code voegt een UUID-waar
 > [!IMPORTANT]
 > Containernamen moeten uit kleine letters bestaan. Zie [Containers, blobs en metagegevens een naam geven en hiernaar verwijderen](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) voor meer informatie over de naamgeving van containers en blobs.
 
-Maak vervolgens een instantie van de klasse [BlobContainerClient](/java/api/com.azure.storage.blob.blobcontainerclient) en roep vervolgens de [Create](/java/api/com.azure.storage.blob.blobcontainerclient.create) -methode aan om de container in uw opslag account te maken.
+Maak vervolgens een instantie van de klasse [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) en roep vervolgens de [Create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) -methode aan om de container in uw opslag account te maken.
 
 Voeg deze code toe aan het einde van de `Main` methode:
 
@@ -263,8 +263,8 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 Het volgende code fragment:
 
 1. Hiermee maakt u een tekst bestand in de lokale *gegevens* Directory.
-1. Hiermee wordt een verwijzing naar een [BlobClient](/java/api/com.azure.storage.blob.blobclient) -object opgehaald door de methode [getBlobClient](/java/api/com.azure.storage.blob.blobcontainerclient.getblobclient) in de container aan te roepen vanuit de sectie [een container maken](#create-a-container) .
-1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de methode [uploadFromFile](/java/api/com.azure.storage.blob.blobclient.uploadfromfile) aan te roepen. Met deze methode wordt de blob gemaakt als deze nog niet bestaat, of overschreven als dat wel het geval is.
+1. Hiermee wordt een verwijzing naar een [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) -object opgehaald door de methode [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) in de container aan te roepen vanuit de sectie [een container maken](#create-a-container) .
+1. Hiermee wordt het lokale tekst bestand geüpload naar de BLOB door de methode [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) aan te roepen. Met deze methode wordt de BLOB gemaakt als deze nog niet bestaat, maar wordt deze niet overschreven als dat wel het geval is.
 
 Voeg deze code toe aan het einde van de `Main` methode:
 
@@ -290,7 +290,7 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>De blobs in een container in een lijst weergeven
 
-Vermeld de blobs in de container door de methode [listBlobsFlat](/java/api/com.azure.storage.blob.blobcontainerclient.listblobsflat) aan te roepen. In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
+Vermeld de blobs in de container door de methode [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) aan te roepen. In dit geval is er slechts één BLOB aan de container toegevoegd, zodat de vermelding in de lijst alleen die ene BLOB retourneert.
 
 Voeg deze code toe aan het einde van de `Main` methode:
 
@@ -305,7 +305,7 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blobs downloaden
 
-Down load de eerder gemaakte BLOB door de methode [downloadToFile](/java/api/com.azure.storage.blob.blobclient.downloadtofile) aan te roepen. De voorbeeld code voegt het achtervoegsel ' downloaden ' toe aan de naam van het bestand, zodat u beide bestanden in het lokale bestands systeem kunt zien.
+Down load de eerder gemaakte BLOB door de methode [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) aan te roepen. De voorbeeld code voegt het achtervoegsel ' downloaden ' toe aan de naam van het bestand, zodat u beide bestanden in het lokale bestands systeem kunt zien.
 
 Voeg deze code toe aan het einde van de `Main` methode:
 
@@ -322,7 +322,7 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Een container verwijderen
 
-Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met de methode [Delete](/java/api/com.azure.storage.blob.blobcontainerclient.delete) . Ook worden de lokale bestanden verwijderd die zijn gemaakt door de app.
+Met de volgende code wordt de resources opgeschoond die de app heeft gemaakt door de volledige container te verwijderen met de methode [Delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) . Ook worden de lokale bestanden verwijderd die zijn gemaakt door de app.
 
 De app wordt gepauzeerd voor gebruikers invoer door `System.console().readLine()` aan te roepen voordat de blob, container en lokale bestanden worden verwijderd. Dit is een goede kans om te controleren of de resources daad werkelijk zijn gemaakt, voordat ze worden verwijderd.
 

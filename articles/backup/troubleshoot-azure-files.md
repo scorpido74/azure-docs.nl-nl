@@ -7,12 +7,12 @@ ms.author: dacurwin
 ms.date: 08/20/2019
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: a6914fadcc69db534bb8476bbd8c89aa716a8bcb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c589cba1386433e13318dabbd2873f789ee42df3
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074699"
+ms.locfileid: "74091494"
 ---
 # <a name="troubleshoot-problems-backing-up-azure-file-shares"></a>Problemen bij het maken van back-ups van Azure-bestanden oplossen
 
@@ -44,7 +44,7 @@ De volgende tabel is bedoeld voor het configureren van de back-up:
 | Configuratie van de back-up van bestandsshares (of de configuratie van het beveiligingsbeleid) mislukt. | <ul><li>Voer de bewerking opnieuw uit om te kijken of het probleem zich blijft voordoen. <li> Controleer of de bestandsshare die u wilt beveiligen niet is verwijderd. <li> Als u probeert om meerdere bestandsshares tegelijk te beveiligen en sommige bestandsshares mislukken, kunt u de back-up van de mislukte bestandsshares opnieuw proberen te configureren. |
 | De Recovery Services-kluis kan niet worden verwijderd nadat de beveiliging van een bestandsshare is gestopt. | Open in Azure Portal uw kluis > **Back-upinfrastructuur** > **Opslagaccounts** en klik op **Registratie opheffen** om het opslagaccount uit de Recovery Services-kluis te verwijderen.|
 
-## <a name="error-messages-for-backup-or-restore-job-failures"></a>Foutberichten voor back-ups of fouten in hersteltaak
+## <a name="error-messages-for-backup-or-restore-job-failures"></a>Fout berichten voor mislukte back-up-of herstel taken
 
 | Foutberichten | Tips voor (tijdelijke) oplossing |
 | -------------- | ----------------------------- |

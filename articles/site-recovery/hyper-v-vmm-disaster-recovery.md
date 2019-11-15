@@ -1,19 +1,19 @@
 ---
-title: Herstel na nood geval instellen voor virtuele Hyper-V-machines tussen on-premises sites met Azure Site Recovery
+title: Herstel na nood geval voor Hyper-V instellen op een secundaire site met Azure Site Recovery
 description: Informatie over het instellen van herstel na noodgevallen voor Hyper-V-VM's tussen uw on-premises sites met Azure Site Recovery.
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 09/09/2019
+ms.date: 11/14/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d3fe578444b99cc7f8c762ae9e96766ca10aa305
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 559f29624ef0946374c3e87a26f0983f202a20d7
+ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039678"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74082636"
 ---
 # <a name="set-up-disaster-recovery-for-hyper-v-vms-to-a-secondary-on-premises-site"></a>Herstel na noodgevallen instellen voor Hyper-V-VM's naar een secundaire on-premises site
 
@@ -41,7 +41,7 @@ Vereisten om dit scenario te voltooien:
 - Controleren of de virtuele machines die u wilt repliceren voldoen aan [ondersteuning voor gerepliceerde machines](hyper-v-vmm-secondary-support-matrix.md#replicated-vm-support).
 - VMM-servers voorbereiden op netwerktoewijzing.
 
-### <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerktoewijzing
+### <a name="prepare-for-network-mapping"></a>Voorbereiden op netwerkkoppeling
 
 Bij [netwerktoewijzing](hyper-v-vmm-network-mapping.md) worden on-premises VMM-netwerken met virtuele machines toegewezen aan bron- en doelclouds. Bij toewijzing gebeurt het volgende:
 

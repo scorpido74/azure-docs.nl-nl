@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 10/14/2019
-ms.openlocfilehash: 24b40e5dfdef7bde65d326cb0d054365f730477e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 25e9848124b84822749d3be4d1ead7b86e6e584e
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555274"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091775"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure Monitor voor VM's inschakelen (preview) met behulp van Azure PowerShell-of Resource Manager-sjablonen
 
@@ -20,25 +20,25 @@ ms.locfileid: "72555274"
 
 In dit artikel wordt uitgelegd hoe u Azure Monitor voor VM's (preview) voor virtuele machines van Azure of virtuele-machine schaal sets inschakelt met behulp van Azure PowerShell-of Azure Resource Manager-sjablonen. Aan het einde van dit proces hebt u al uw virtuele machines gecontroleerd en leert u meer over problemen met prestaties of Beschik baarheid.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Een Log Analytics-werk ruimte instellen 
+## <a name="set-up-a-log-analytics-workspace"></a>Stel een Log Analytics-werkruimte 
 
 Als u geen Log Analytics-werk ruimte hebt, moet u er een maken. Bekijk de methoden die in de sectie [vereisten](vminsights-enable-overview.md#log-analytics) worden voorgesteld voordat u doorgaat met de stappen om deze te configureren. Daarna kunt u de implementatie van Azure Monitor voor VM's volt ooien met behulp van de Azure Resource Manager sjabloon methode.
 
-### <a name="enable-performance-counters"></a>Prestatie meter items inschakelen
+### <a name="enable-performance-counters"></a>Inschakelen van prestatiemeteritems
 
-Als de Log Analytics werk ruimte waarnaar wordt verwezen door de oplossing nog niet is geconfigureerd voor het verzamelen van de prestatie meter items die vereist zijn voor de oplossing, moet u deze inschakelen. U kunt dit op een van de volgende twee manieren doen:
-* Hand matig, zoals beschreven in [Windows-en Linux-prestatie gegevens bronnen in log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
+Als de Log Analytics-werkruimte waarnaar wordt verwezen door de oplossing niet is al geconfigureerd voor het verzamelen van de prestatiemeteritems die is vereist voor de oplossing, moet u ze inschakelen. U kunt dit op een van de volgende twee manieren doen:
+* Handmatig, zoals beschreven in [Windows en Linux-gegevensbronnen van de prestaties die u in Log Analytics](../../azure-monitor/platform/data-sources-performance-counters.md)
 * Een Power shell-script downloaden en uitvoeren dat beschikbaar is via de [Azure PowerShell galerie](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1)
 
 ### <a name="install-the-servicemap-solution"></a>De ServiceMap-oplossing installeren
 
-Deze methode bevat een JSON-sjabloon waarmee de configuratie wordt opgegeven voor het inschakelen van de oplossings onderdelen in uw Log Analytics-werk ruimte.
+Deze methode bevat een JSON-sjabloon waarmee de configuratie voor het inschakelen van de oplossingsonderdelen in uw Log Analytics-werkruimte.
 
 Als u niet weet hoe u resources kunt implementeren met behulp van een sjabloon, raadpleegt u:
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer `az --version` uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet worden uitgevoerd van Azure CLI versie 2.0.27 of hoger. Voor het identificeren van uw versie uitvoeren `az --version`. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Kopieer en plak de volgende JSON-syntaxis in het bestand:
 
@@ -86,13 +86,13 @@ Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebrui
     }
     ```
 
-1. Sla dit bestand op als *installsolutionsforvminsights. json* naar een lokale map.
+1. Sla dit bestand als *installsolutionsforvminsights.json* naar een lokale map.
 
-1. Leg de waarden vast voor de *werkruimte*, *ResourceGroupName*en *WorkspaceLocation*. De waarde voor *workspacenaam* is de naam van uw log Analytics-werk ruimte. De waarde voor *WorkspaceLocation* is de regio waarin de werk ruimte is gedefinieerd.
+1. Leg de waarden vast voor de *werkruimte*, *ResourceGroupName*en *WorkspaceLocation*. De waarde voor *workspacenaam* is de naam van uw log Analytics-werk ruimte. De waarde voor *WorkspaceLocation* is de regio in de werkruimte is gedefinieerd.
 
 1. U kunt deze sjabloon nu implementeren.
  
-    * Gebruik de volgende Power shell-opdrachten in de map die de sjabloon bevat:
+    * Gebruik de volgende PowerShell-opdrachten in de map met de sjabloon:
 
         ```powershell
         New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
@@ -104,7 +104,7 @@ Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebrui
         provisioningState       : Succeeded
         ```
 
-    * Als u de volgende opdracht wilt uitvoeren met behulp van de Azure CLI:
+    * De volgende opdracht uitvoeren met behulp van de Azure CLI:
     
         ```azurecli
         az login
@@ -129,7 +129,7 @@ Als u niet weet hoe u resources kunt implementeren met behulp van een sjabloon, 
 * [Resources implementeren met Resource Manager-sjablonen en Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)
 * [Resources implementeren met Resource Manager-sjablonen en Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet de Azure CLI-versie 2.0.27 of hoger uitvoeren. Voer `az --version` uit om uw versie te identificeren. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Als u Azure CLI wilt gebruiken, moet u de CLI eerst lokaal installeren en gebruiken. U moet worden uitgevoerd van Azure CLI versie 2.0.27 of hoger. Voor het identificeren van uw versie uitvoeren `az --version`. Als u de Azure CLI wilt installeren of upgraden, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="download-templates"></a>Sjablonen downloaden
 
@@ -175,7 +175,7 @@ De uitvoer ziet er ongeveer als volgt uit:
 provisioningState       : Succeeded
 ```
 
-## <a name="enable-with-powershell"></a>Inschakelen met Power shell
+## <a name="enable-with-powershell"></a>Inschakelen met PowerShell
 
 Als u Azure Monitor voor VM's wilt inschakelen voor meerdere Vm's of virtuele-machine schaal sets, gebruikt u het Power shell-script [install-VMInsights. ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0). Deze is beschikbaar in de galerie met Azure PowerShell. Dit script doorloopt over:
 
@@ -183,11 +183,11 @@ Als u Azure Monitor voor VM's wilt inschakelen voor meerdere Vm's of virtuele-ma
 - Het bereik van de resource groep die is opgegeven door *ResourceGroup*. 
 - Een enkele virtuele machine of VM-schaalset die is opgegeven met de *naam*.
 
-Voor elke VM of virtuele-machine schaalset wordt in het script gecontroleerd of de VM-extensie al is geïnstalleerd. Als de extensie van de virtuele machine niet is geïnstalleerd, probeert het script deze opnieuw te installeren. Als de VM-extensie is geïnstalleerd, installeert het script de Log Analytics en de VM-extensies van de afhankelijkheids agent.
+Voor elke virtuele machine of VM-schaalset het script wordt gecontroleerd of de VM-extensie al is geïnstalleerd. Als de VM-extensie is geïnstalleerd, probeert het script deze opnieuw te installeren. Als de extensie van de virtuele machine niet is geïnstalleerd, installeert het script de Log Analytics en de VM-extensies van de afhankelijkheids agent.
 
 Controleer of u Azure PowerShell module AZ version 1.0.0 of hoger gebruikt met `Enable-AzureRM` compatibiliteits aliassen ingeschakeld. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
-Voer `Get-Help` uit om een lijst op te halen met de argument Details van het script en een voor beeld van het gebruik.
+Uitvoeren als u een lijst van het script argument details en een voorbeeld, `Get-Help`.
 
 ```powershell
 Get-Help .\Install-VMInsights.ps1 -Detailed
@@ -289,7 +289,7 @@ PARAMETERS
     Specify to use a PolicyAssignmentName for source and to reinstall (move to a new workspace)
 ```
 
-In het volgende voor beeld ziet u hoe u de Power shell-opdrachten in de map kunt gebruiken om Azure Monitor voor VM's te maken en de verwachte uitvoer te begrijpen:
+Het volgende voorbeeld ziet u met behulp van de PowerShell-opdrachten in de map Azure Monitor inschakelen voor virtuele machines en begrijpen van de verwachte uitvoer:
 
 ```powershell
 $WorkspaceId = "<GUID>"
@@ -342,6 +342,6 @@ Failed: (0)
 
 Nu de bewaking voor uw virtuele machines is ingeschakeld, is deze informatie beschikbaar voor analyse met Azure Monitor voor VM's.
  
-- Zie [Azure monitor voor VM's kaart weer geven](vminsights-maps.md)om gedetecteerde toepassings afhankelijkheden weer te geven. 
+- Afhankelijkheden van gedetecteerde toepassingen, Zie [weergave Azure Monitor voor virtuele machines kaart](vminsights-maps.md). 
 
 - Zie [Azure-VM-prestaties weer geven](vminsights-performance.md)om knel punten en het algehele gebruik van de VM-prestaties te identificeren. 

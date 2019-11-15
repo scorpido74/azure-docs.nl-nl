@@ -5,21 +5,21 @@ author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
 ms.author: zarhoads
-ms.date: 03/22/2019
+ms.date: 11/13/2019
 ms.topic: quickstart
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 41dea16f7938d391f8cdf03e1a731e8082f74b26
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695474"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74091845"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio en .NET Core op Kubernetes met Azure dev Spaces
+# <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen met Visual Studio en .NET Core op Kubernetes met Azure dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -52,7 +52,7 @@ U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Een 
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
 
-Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.
+Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig *dev Spaces* in *Ja* en klik op *Opslaan*.
 
 ![Ontwikkel ruimten in de Azure Portal inschakelen](media/get-started-netcore-visualstudio/enable-dev-spaces-portal.png)
 
@@ -60,11 +60,11 @@ Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig 
 
 1. Open Visual Studio.
 1. Een nieuw project maken.
-1. Kies *ASP.net core webtoepassing* en geef uw project *webfrontend*een naam.
-1. Klik op *OK*.
+1. Kies *ASP.net core webtoepassing* en klik op *volgende*.
+1. Geef uw project *webfrontend* een naam en klik op *maken*.
 1. Als u hierom wordt gevraagd, kiest u *Web Application (model-view-controller)* voor de sjabloon.
-1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,0* .
-1. Klik op *OK*.
+1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,1* .
+1. Klik op *Create*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkel ruimte
 
@@ -93,12 +93,12 @@ Built container image in 39s
 Waiting for container...
 36s
 
-Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 'http' is available at http://default.webfrontend.1234567890abcdef1234.eus.azds.io/
 Service 'webfrontend' port 80 (http) is available at http://localhost:62266
 Completed warmup for project 'webfrontend' in 125 seconds.
 ```
 
-In het bovenstaande voor beeld is http://webfrontend.1234567890abcdef1234.eus.azds.io/ de open bare URL. Ga naar de open bare URL van uw service en communiceer met de service die wordt uitgevoerd in uw dev-ruimte.
+In het bovenstaande voor beeld is de open bare URL http://default.webfrontend.1234567890abcdef1234.eus.azds.io/. Ga naar de open bare URL van uw service en communiceer met de service die wordt uitgevoerd in uw dev-ruimte.
 
 Dit proces heeft mogelijk open bare toegang tot uw service uitgeschakeld. Als u open bare toegang wilt inschakelen, kunt u de [ingangs waarde bijwerken in de *waarden. yaml*][ingress-update].
 

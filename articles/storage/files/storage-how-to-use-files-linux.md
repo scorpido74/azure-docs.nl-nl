@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 70673dc7d42a0c7d9b60f3c3f877c1985dac3c98
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73097796"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092000"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
 [Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [SMB-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In dit artikel ziet u twee manieren om een Azure-bestands share te koppelen: op aanvraag met de `mount`-opdracht en de opstart procedure door een vermelding in `/etc/fstab`te maken.
@@ -22,11 +22,11 @@ De aanbevolen manier om een Azure-bestands share te koppelen aan Linux maakt geb
 | | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
 | --- | :---: | :---: |
 | Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7 + | 7.5 + |
-| CentOS | 7 + |  7.5 + |
+| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5 + |
+| CentOS | 7+ |  7.5 + |
 | Debian | 8 + | 10 + |
 | openSUSE | 13.2 + | 42.3 + |
-| SUSE Linux Enterprise Server | 12 + | 12 SP3 + |
+| SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
 Als u een Linux-distributie gebruikt die niet wordt vermeld in de bovenstaande tabel, kunt u controleren of uw Linux-distributie SMB 3,0 ondersteunt met versleuteling door de versie van de Linux-kernel te controleren. SMB 3,0 met versleuteling is toegevoegd aan linux-kernel versie 4,11. De `uname` opdracht retourneert de versie van de Linux-kernel die in gebruik is:
 
@@ -53,7 +53,7 @@ uname -r
     sudo dnf install cifs-utils
     ```
 
-    Gebruik de `dnf` Package Manager op oudere versies van **Red Hat Enterprise Linux** en **CentOS**:
+    Gebruik de `yum` Package Manager op oudere versies van **Red Hat Enterprise Linux** en **CentOS**:
 
     ```bash
     sudo yum install cifs-utils 
@@ -173,7 +173,7 @@ Wanneer u klaar bent met het gebruik van de Azure-bestands share, kunt u `sudo u
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **Gebruik de volgende opdracht om de volgende regel toe te voegen aan `/etc/fstab`** : in het onderstaande voor beeld zijn de machtigingen voor het lokale Linux-bestand en de map standaard 0755, wat betekent dat lezen, schrijven en uitvoeren voor de eigenaar (op basis van de Linux-eigenaar van het bestand of de map), lezen en Voer uit voor gebruikers in de groep eigenaar en lees en uitvoering voor anderen op het systeem. U kunt de opties `uid` en `gid` koppelen gebruiken om de gebruikers-ID en groeps-ID voor de koppeling in te stellen. U kunt ook `dir_mode` en `file_mode` gebruiken om aangepaste machtigingen naar wens in te stellen. Zie voor meer informatie over het instellen van machtigingen voor de [UNIX-numerieke notatie](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) op Wikipedia.
+1. **Gebruik de volgende opdracht om de volgende regel toe te voegen aan `/etc/fstab`** : in het volgende voor beeld is het lokale Linux-bestand en de mapmachtigingen standaard 0755, wat betekent dat lezen, schrijven en uitvoeren voor de eigenaar (op basis van de Linux-eigenaar van het bestand of de map), lezen en uitvoeren voor gebruikers in de groep eigenaar, en lezen en uitvoeren voor anderen op het systeem. U kunt de opties `uid` en `gid` koppelen gebruiken om de gebruikers-ID en groeps-ID voor de koppeling in te stellen. U kunt ook `dir_mode` en `file_mode` gebruiken om aangepaste machtigingen naar wens in te stellen. Zie voor meer informatie over het instellen van machtigingen voor de [UNIX-numerieke notatie](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) op Wikipedia.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -282,5 +282,5 @@ De groep Azure Files voor Linux-gebruikers biedt een forum waarmee u feedback ku
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
 
 * [Implementatie van Azure Files plannen](storage-files-planning.md)
-* [Veelgestelde vragen](../storage-files-faq.md)
+* [VEELGESTELDE VRAGEN](../storage-files-faq.md)
 * [Problemen oplossen](storage-troubleshoot-linux-file-connection-problems.md)

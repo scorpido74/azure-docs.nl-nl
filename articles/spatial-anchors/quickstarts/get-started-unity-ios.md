@@ -8,16 +8,16 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e2d64835d425e8fa273a2805f307833e071a3a62
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: a121cc7bcb9fba3a01c1e71c7b9e6fc67dce0572
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933499"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092163"
 ---
 # <a name="quickstart-create-a-unity-ios-app-with-azure-spatial-anchors"></a>Quick Start: een app Unitruimte maken met ruimtelijke Azure-ankers
 
-In deze Quick Start wordt beschreven hoe u een iOS-app unit maakt met behulp van [Azure spatiale ankers](../overview.md). Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARKit iOS-app met Unity gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
+In deze Quick Start wordt beschreven hoe u een iOS-app unit maakt met behulp van [Azure spatiale ankers](../overview.md). Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een ARKit iOS-app met Unity gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
 U leert het volgende:
 
@@ -34,7 +34,7 @@ U leert het volgende:
 
 Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
-- Een macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unit 2019.1 +</a>, <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode 10</a>en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> is geïnstalleerd.
+- Een macOS-computer met <a href="https://unity3d.com/get-unity/download" target="_blank">Unit 2019.1 +</a>, de nieuwste versie van <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a>en <a href="https://cocoapods.org" target="_blank">CocoaPods</a> is geïnstalleerd.
 - Git geïnstalleerd via HomeBrew. Voer de volgende opdracht in op één regel van de terminal: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. Voer vervolgens `brew install git`uit.
 - Een door een ontwikkelaar geactiveerd en <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">met ARKit compatibel</a> iOS-apparaat.
 
@@ -48,7 +48,7 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
 
 [!INCLUDE [iOS Unity Build Settings](../../../includes/spatial-anchors-unity-ios-build-settings.md)]
 
-## <a name="configure-account-identifier-and-key"></a>Configureer de account-id en -sleutel
+## <a name="configure-account-identifier-and-key"></a>Account-id en -sleutel configureren
 
 Ga in het deelvenster **Project** naar `Assets/AzureSpatialAnchors.Examples/Scenes` en open het scènebestand `AzureSpatialAnchorsBasicDemo.unity`.
 
