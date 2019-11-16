@@ -1,18 +1,14 @@
 ---
 title: Voorbeelden en sjablonen van Azure Lighthouse
 description: In deze voorbeelden en Azure Resource Manager-sjablonen ziet u hoe u klanten kunt onboarden voor in Azure gedelegeerd resourcebeheer en ondersteuning voor Azure Lighthouse-scenario’s.
-author: JnHs
-manager: carmonm
-ms.service: lighthouse
 ms.topic: sample
 ms.date: 10/17/2019
-ms.author: jenhayes
-ms.openlocfilehash: 6d47534026b6fe815f9756a74ba3438dc67a8e02
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 20c1fc62c83202f97ed9cff68fd285280d94a321
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553683"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132164"
 ---
 # <a name="azure-lighthouse-samples"></a>Azure Lighthouse-voorbeelden
 
