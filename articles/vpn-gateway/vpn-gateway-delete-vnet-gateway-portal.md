@@ -1,6 +1,6 @@
 ---
-title: 'Een virtuele netwerkgateway verwijderen: Azure Portal: Resource Manager | Microsoft Docs'
-description: De gateway van een virtueel netwerk met behulp van de Azure-portal in het Resource Manager-implementatiemodel verwijderen.
+title: 'Azure VPN Gateway: een gateway verwijderen: Portal'
+description: Verwijder een virtuele netwerk gateway met behulp van de Azure Portal in het Resource Manager-implementatie model.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -8,58 +8,58 @@ ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
 ms.topic: conceptual
-ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e8c7a9c7b6d38c5fee4f57f65dd61a71f9723c07
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60845683"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146339"
 ---
-# <a name="delete-a-virtual-network-gateway-using-the-portal"></a>De gateway van een virtueel netwerk met behulp van de portal verwijderen
+# <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Een virtuele netwerk gateway verwijderen met behulp van de portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (klassiek)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 
-In dit artikel bevat instructies voor het verwijderen van een Azure VPN-gateways geïmplementeerd met behulp van de Resource Manager-implementatiemodel. Er zijn een aantal verschillende methoden die u kunt uitvoeren wanneer u wilt verwijderen van een virtuele netwerkgateway voor de configuratie van een VPN-gateway.
+Dit artikel bevat de instructies voor het verwijderen van een Azure VPN-gateway die is geïmplementeerd met het Resource Manager-implementatie model. Er zijn een aantal verschillende benaderingen die u kunt nemen wanneer u een virtuele netwerk gateway wilt verwijderen voor een configuratie van een VPN-gateway.
 
-- Als u wilt Alles verwijderen en opnieuw beginnen, zoals in het geval van een testomgeving, kunt u de resourcegroep verwijderen. Wanneer u een resourcegroep verwijdert, worden alle resources binnen de groep verwijderd. Deze methode wordt alleen aanbevolen als u niet wilt dat een van de resources in de resourcegroep. U kunt slechts een paar resources met behulp van deze benadering selectief niet verwijderen.
+- Als u alles wilt verwijderen en opnieuw wilt beginnen, zoals in het geval van een test omgeving, kunt u de resource groep verwijderen. Wanneer u een resource groep verwijdert, worden alle resources in de groep verwijderd. Deze methode wordt alleen aanbevolen als u geen van de resources in de resource groep wilt blijven gebruiken. Het is niet mogelijk om slechts een paar resources te verwijderen met behulp van deze methode.
 
-- Als u wilt dat sommige van de resources in de resourcegroep, wordt het verwijderen van een virtuele netwerkgateway iets gecompliceerdere. Voordat u de virtuele netwerkgateway verwijderen kunt, moet u eerst alle resources die afhankelijk van de gateway zijn verwijderen. De stappen die u volgt, is afhankelijk van het type van de verbindingen die u hebt gemaakt en de afhankelijke resources voor elke verbinding.
+- Als u een aantal resources in uw resource groep wilt blijven gebruiken, wordt het verwijderen van een virtuele netwerk gateway iets gecompliceerder. Voordat u de gateway van het virtuele netwerk kunt verwijderen, moet u eerst alle resources verwijderen die afhankelijk zijn van de gateway. De stappen die u volgt, zijn afhankelijk van het type verbindingen dat u hebt gemaakt en de afhankelijke bronnen voor elke verbinding.
 
 > [!IMPORTANT]
-> De onderstaande instructies wordt beschreven hoe u Azure VPN-gateways die zijn geïmplementeerd met behulp van de Resource Manager-implementatiemodel te verwijderen. Als u wilt verwijderen van een VPN-gateway geïmplementeerd met behulp van het klassieke implementatiemodel,. Gebruik Azure PowerShell beschreven [hier](vpn-gateway-delete-vnet-gateway-classic-powershell.md).
+> In de onderstaande instructies wordt beschreven hoe u Azure VPN-gateways verwijdert die zijn geïmplementeerd met het Resource Manager-implementatie model. Als u een VPN-gateway wilt verwijderen die is geïmplementeerd met het klassieke implementatie model, gebruikt u Azure PowerShell zoals [hier](vpn-gateway-delete-vnet-gateway-classic-powershell.md)wordt beschreven.
 
 
 ## <a name="delete-a-vpn-gateway"></a>Een VPN-gateway verwijderen
 
-Als u wilt verwijderen van een virtuele netwerkgateway, moet u eerst elke resource die betrekking hebben op de virtuele netwerkgateway verwijderen. Resources moeten worden verwijderd in een bepaalde volgorde vanwege afhankelijkheden.
+Als u een virtuele netwerk gateway wilt verwijderen, moet u eerst elke resource verwijderen die betrekking heeft op de gateway van het virtuele netwerk. Resources moeten in een bepaalde volg orde worden verwijderd als gevolg van afhankelijkheden.
 
 [!INCLUDE [delete gateway](../../includes/vpn-gateway-delete-vnet-gateway-portal-include.md)]
 
-Op dit moment wordt de virtuele netwerkgateway verwijderd. De volgende stappen te verwijderen van alle resources die niet meer worden gebruikt.
+Op dit punt wordt de gateway van het virtuele netwerk verwijderd. Met de volgende stappen kunt u alle resources verwijderen die niet meer worden gebruikt.
 
-### <a name="to-delete-the-local-network-gateway"></a>De lokale netwerkgateway verwijderen
+### <a name="to-delete-the-local-network-gateway"></a>De lokale netwerk gateway verwijderen
 
-1. In **alle resources**, Ga naar de lokale netwerkgateways die gekoppeld aan elke verbinding zijn.
-2. Op de **overzicht** blade voor de lokale netwerkgateway, klikt u op **verwijderen**.
+1. Zoek in **alle bronnen**de lokale netwerk gateways die zijn gekoppeld aan elke verbinding.
+2. Klik op de Blade **overzicht** voor de gateway van het lokale netwerk op **verwijderen**.
 
-### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>De openbare IP-adresresource voor de gateway verwijderen
+### <a name="to-delete-the-public-ip-address-resource-for-the-gateway"></a>De resource voor het open bare IP-adres voor de gateway verwijderen
 
-1. In **alle resources**, zoek de resource van het openbare IP-adres dat gekoppeld aan de gateway is. Als de virtuele netwerkgateway actief / actief is, ziet u twee openbare IP-adressen. 
-2. Op de **overzicht** pagina voor het openbare IP-adres, klikt u op **verwijderen**, klikt u vervolgens **Ja** om te bevestigen.
+1. Zoek in **alle bronnen**de open bare IP-adres resource die aan de gateway is gekoppeld. Als de gateway van het virtuele netwerk actief was, worden er twee open bare IP-adressen weer geven. 
+2. Klik op de pagina **overzicht** voor het open bare IP-adres op **verwijderen**en vervolgens op **Ja** om te bevestigen.
 
-### <a name="to-delete-the-gateway-subnet"></a>Het gatewaysubnet verwijderen
+### <a name="to-delete-the-gateway-subnet"></a>Het gateway-subnet verwijderen
 
-1. In **alle resources**, zoek het virtuele netwerk. 
-2. Op de **subnetten** blade, klikt u op de **GatewaySubnet**, klikt u vervolgens op **verwijderen**. 
-3. Klik op **Ja** om te bevestigen dat u wilt verwijderen van het gatewaysubnet.
+1. Zoek het virtuele netwerk in **alle resources**. 
+2. Klik op de Blade **subnetten** op de **GatewaySubnet**en klik vervolgens op **verwijderen**. 
+3. Klik op **Ja** om te bevestigen dat u het gateway-subnet wilt verwijderen.
 
-## <a name="deleterg"></a>Een VPN-gateway verwijderen door de resourcegroep te verwijderen
+## <a name="deleterg"></a>Een VPN-gateway verwijderen door de resource groep te verwijderen
 
-Als u zich geen zorgen over een van uw resources in de resourcegroep te blijven en u alleen wilt beginnen, kunt u een hele resourcegroep verwijderen. Dit is een snelle manier om alles te verwijderen. De volgende stappen gelden alleen voor de Resource Manager-implementatiemodel.
+Als u zich geen zorgen maakt over het bewaren van uw resources in de resource groep en u alleen opnieuw wilt beginnen, kunt u een hele resource groep verwijderen. Dit is een snelle manier om alles te verwijderen. De volgende stappen zijn alleen van toepassing op het Resource Manager-implementatie model.
 
-1. In **alle resources**, zoek de resourcegroep en klik op om de blade te openen.
-2. Klik op **Verwijderen**. Bekijk de betrokken resources op de blade verwijderen. Zorg ervoor dat u wilt verwijderen van al deze resources. Als dit niet het geval is, gebruik dan de stappen in verwijderen een VPN-gateway aan de bovenkant van dit artikel.
-3. Als u wilt doorgaan, typ de naam van de resourcegroep die u wilt verwijderen en klik vervolgens op **verwijderen**.
+1. Zoek de resource groep in **alle resources**en klik op om de Blade te openen.
+2. Klik op **Verwijderen**. Bekijk de betrokken resources op de Blade verwijderen. Zorg ervoor dat u al deze resources wilt verwijderen. Als dat niet het geval is, gebruikt u de stappen in een VPN-gateway verwijderen boven aan dit artikel.
+3. Als u wilt door gaan, typt u de naam van de resource groep die u wilt verwijderen en klikt u vervolgens op **verwijderen**.

@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b5bf568e03d4949b8798dd2e0f4c2d8cbcbbe0c7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: f20d0d38a7fbd831d3e97a69373bac04b9b330aa
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936091"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133419"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Site Recovery bewaken met Azure Monitor-logboeken
 
@@ -28,7 +28,7 @@ Voor Site Recovery kunt u Logboeken Azure Monitor om u te helpen de volgende han
 Het gebruik van Azure Monitor-logboeken met Site Recovery wordt ondersteund voor **Azure naar Azure** -replicatie en **virtuele VMware-machines/fysieke servers naar Azure-** replicatie.
 
 > [!NOTE]
-> De logboeken voor de verloop gegevens en de upload frequentie zijn alleen beschikbaar voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio.
+> U moet een micro soft Monitoring Agent installeren op de proces server om de gegevens logboeken van het verloop en de upload frequentie logboeken voor VMware en fysieke machines te verkrijgen. Deze agent verzendt de logboeken van de replicerende machines naar de werk ruimte. Deze mogelijkheid is alleen beschikbaar voor de versie van 9,30 Mobility agent.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
@@ -54,6 +54,24 @@ U wordt aangeraden de [algemene controle vragen](monitoring-common-questions.md)
     ![Werkruimte selecteren](./media/monitoring-log-analytics/select-workspace.png)
 
 De Site Recovery logboeken beginnen met het feeden in een tabel (**AzureDiagnostics**) in de geselecteerde werk ruimte.
+
+## <a name="configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs"></a>Micro soft monitoring agent configureren op de proces server om verloop-en upload frequentie logboeken te verzenden
+
+U kunt de gegevens van het verloop snelheidgegevens en gegevens over de upload snelheid van de bron gegevens vastleggen voor uw VMware/fysieke machines on-premises. Om dit in te scha kelen, moet een micro soft Monitoring Agent worden geïnstalleerd op de proces server.
+
+1. Ga naar de werk ruimte Log Analytics en klik op **Geavanceerde instellingen**.
+2. Klik op de pagina **verbonden bronnen** en selecteer vervolgens **Windows-servers**.
+3. Down load de Windows-agent (64 bits) op de proces server. 
+4. [De werk ruimte-ID en-sleutel ophalen](../azure-monitor/platform/agent-windows.md#obtain-workspace-id-and-key)
+5. [Agent configureren voor het gebruik van TLS 1,2](../azure-monitor/platform/agent-windows.md#configure-agent-to-use-tls-12)
+6. [Voltooi de installatie van de agent](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard) door de opgehaalde werk ruimte-ID en-sleutel op te geven.
+7. Nadat de installatie is voltooid, gaat u naar Log Analytics werk ruimte en klikt u op **Geavanceerde instellingen**. Ga naar de pagina **gegevens** en klik op **Windows-prestatie meter items**. 
+8. Klik op **+** om de volgende twee tellers toe te voegen met een steekproef interval van 300 seconden:
+
+        ASRAnalytics(*)\SourceVmChurnRate 
+        ASRAnalytics(*)\SourceVmThrpRate 
+
+De gegevens voor het verloop en de upload frequentie worden gestart in de werk ruimte.
 
 
 ## <a name="query-the-logs---examples"></a>Query's uitvoeren op de logboeken-voor beelden
@@ -174,12 +192,9 @@ AzureDiagnostics  
 ```
 ![Query computer RPO](./media/monitoring-log-analytics/example2.png)
 
-### <a name="query-data-change-rate-churn-for-a-vm"></a>Wijzigings frequentie van query gegevens (verloop) voor een virtuele machine
+### <a name="query-data-change-rate-churn-and-upload-rate-for-an-azure-vm"></a>Query gegevens wijzigings frequentie (verloop) en upload frequentie voor een Azure-VM
 
-> [!NOTE] 
-> De gegevens van het verloop zijn alleen beschikbaar voor virtuele Azure-machines die worden gerepliceerd naar een secundaire Azure-regio.
-
-Met deze query wordt een trend grafiek getekend voor een specifieke Azure VM (ContosoVM123), die de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie van gegevens bijhoudt. 
+Met deze query wordt een trend grafiek getekend voor een specifieke Azure-VM (ContosoVM123), die de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie voor gegevens vertegenwoordigt. 
 
 ```
 AzureDiagnostics   
@@ -193,6 +208,23 @@ Category contains "Upload", "UploadRate", "none") 
 | render timechart  
 ```
 ![Wijziging in query gegevens](./media/monitoring-log-analytics/example3.png)
+
+### <a name="query-data-change-rate-churn-and-upload-rate-for-a-vmware-or-physical-machine"></a>Query gegevens wijzigings frequentie (verloop) en upload frequentie voor een VMware of fysieke machine
+
+> [!Note]
+> Zorg ervoor dat u de bewakings agent op de proces server instelt om deze logboeken op te halen. Raadpleeg de [stappen voor het configureren van de bewakings agent](#configure-microsoft-monitoring-agent-on-the-process-server-to-send-churn-and-upload-rate-logs).
+
+Met deze query wordt een trend grafiek getekend voor een specifieke schijf **disk0** van een gerepliceerd item **Win-9r7sfh9qlru**, dat de gegevens wijzigings frequentie (geschreven bytes per seconde) en de upload frequentie van gegevens vertegenwoordigt. U vindt de Blade schijf naam op **schijven** van het gerepliceerde item in de Recovery Services-kluis. De exemplaar naam die in de query moet worden gebruikt, is de DNS-naam van de computer gevolgd door _ en de naam van de schijf zoals in dit voor beeld.
+
+```
+Perf
+| where ObjectName == "ASRAnalytics"
+| where InstanceName contains "win-9r7sfh9qlru_disk0"
+| where TimeGenerated >= ago(4h) 
+| project TimeGenerated ,CounterName, Churn_MBps = todouble(CounterValue)/5242880 
+| render timechart
+```
+De proces server duwt deze gegevens elke vijf minuten naar de Log Analytics-werk ruimte. Deze gegevens punten vertegenwoordigen het gemiddelde berekenen gedurende 5 minuten.
 
 ### <a name="query-disaster-recovery-summary-azure-to-azure"></a>Samen vatting van herstel na nood geval query (Azure naar Azure)
 

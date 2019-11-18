@@ -1,17 +1,14 @@
 ---
 title: Klassieke Azure-implementatie resources verplaatsen
 description: Gebruik Azure Resource Manager om klassieke implementatie resources te verplaatsen naar een nieuwe resource groep of een nieuw abonnement.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 783fcdca7637f3f67cf146bb827760cb4cdd7cbe
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: b97496e4abfdf248b9f5010417e9284c643a74ad
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533477"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150852"
 ---
 # <a name="move-guidance-for-classic-deployment-model-resources"></a>Richt lijnen voor klassieke implementatie model resources verplaatsen
 
@@ -19,34 +16,34 @@ De stappen voor het verplaatsen van resources die via het klassieke model zijn g
 
 ## <a name="move-in-the-same-subscription"></a>In hetzelfde abonnement verplaatsen
 
-Bij het verplaatsen van resources van een resource groep naar een andere resource groep binnen hetzelfde abonnement gelden de volgende beperkingen:
+Bij het verplaatsen van resources van een resourcegroep naar een andere resourcegroep binnen hetzelfde abonnement, gelden de volgende beperkingen:
 
 * Virtuele netwerken (klassiek) kunnen niet worden verplaatst.
-* Virtuele machines (klassiek) moeten worden verplaatst met de Cloud service.
-* Cloud service kan alleen worden verplaatst wanneer de verplaatsing alle virtuele machines bevat.
-* Er kan slechts één Cloud service tegelijk worden verplaatst.
-* Er kan slechts één opslag account (klassiek) tegelijk worden verplaatst.
-* Het opslag account (klassiek) kan niet in dezelfde bewerking met een virtuele machine of een Cloud service worden verplaatst.
+* Virtuele machines (klassiek) moeten worden verplaatst met de cloudservice.
+* Cloudservice kan alleen worden verplaatst wanneer de verplaatsing alle virtuele machines bevat.
+* Slechts één cloudservice kan tegelijk worden verplaatst.
+* Slechts één opslagaccount (klassiek) kan tegelijk worden verplaatst.
+* Opslagaccount (klassiek) kan niet worden verplaatst in dezelfde bewerking met een virtuele machine of een service in de cloud.
 
-Als u klassieke resources wilt verplaatsen naar een nieuwe resource groep binnen hetzelfde abonnement, gebruikt u de [standaard verplaatsings bewerkingen](../resource-group-move-resources.md) via de portal, Azure PowerShell, Azure CLI of rest API. U gebruikt dezelfde bewerkingen als voor het verplaatsen van Resource Manager-resources.
+Als u klassieke resources wilt verplaatsen naar een nieuwe resource groep binnen hetzelfde abonnement, gebruikt u de [standaard verplaatsings bewerkingen](../resource-group-move-resources.md) via de portal, Azure PowerShell, Azure CLI of rest API. U dezelfde bewerkingen als die u gebruikt voor het verplaatsen van Resource Manager-resources.
 
 ## <a name="move-across-subscriptions"></a>Scha kelen tussen abonnementen
 
-Bij het verplaatsen van resources naar een nieuw abonnement gelden de volgende beperkingen:
+Wanneer u resources verplaatst naar een nieuw abonnement, gelden de volgende beperkingen:
 
-* Alle klassieke resources in het abonnement moeten in dezelfde bewerking worden verplaatst.
+* Alle klassieke resources in het abonnement moeten worden verplaatst in dezelfde bewerking.
 * Het doel abonnement mag geen andere klassieke resources hebben.
-* De verplaatsing kan alleen worden aangevraagd via een afzonderlijke REST API voor klassieke verplaatsingen. De standaard opdrachten van Resource Manager verplaatsen werken niet wanneer u klassieke resources naar een nieuw abonnement verplaatst.
+* De overstap kan alleen worden aangevraagd door een afzonderlijke REST-API voor klassieke verplaatst. De standaardopdrachten verplaatsen van Resource Manager werken niet bij het klassieke resources verplaatsen naar een nieuw abonnement.
 
-Als u klassieke resources wilt verplaatsen naar een nieuw abonnement, gebruikt u de REST-bewerkingen die specifiek zijn voor klassieke resources. Voer de volgende stappen uit om REST te gebruiken:
+Om klassieke resources verplaatsen naar een nieuw abonnement, de REST-bewerkingen die specifiek voor klassieke resources zijn te gebruiken. Voer de volgende stappen uit om REST te gebruiken:
 
-1. Controleer of het bron abonnement kan deel nemen aan een cross-abonnement verplaatsen. Gebruik de volgende bewerking:
+1. Controleer als van het bronabonnement deel uitmaken van een verplaatsing van kruislings abonnement. Gebruik de volgende bewerking:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{sourceSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     Neem in de hoofd tekst van de aanvraag het volgende op:
+     In de hoofdtekst van de aanvraag, zijn onder andere:
 
    ```json
    {
@@ -54,7 +51,7 @@ Als u klassieke resources wilt verplaatsen naar een nieuw abonnement, gebruikt u
    }
    ```
 
-     Het antwoord op de validatie bewerking heeft de volgende indeling:
+     Het antwoord voor de validatiebewerking is in de volgende indeling:
 
    ```json
    {
@@ -66,13 +63,13 @@ Als u klassieke resources wilt verplaatsen naar een nieuw abonnement, gebruikt u
    }
    ```
 
-1. Controleer of het doel abonnement kan deel nemen aan een cross-abonnement verplaatsen. Gebruik de volgende bewerking:
+1. Controleer als het doelabonnement deel uitmaken van een verplaatsing van kruislings abonnement. Gebruik de volgende bewerking:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{destinationSubscriptionId}/providers/Microsoft.ClassicCompute/validateSubscriptionMoveAvailability?api-version=2016-04-01
    ```
 
-     Neem in de hoofd tekst van de aanvraag het volgende op:
+     In de hoofdtekst van de aanvraag, zijn onder andere:
 
    ```json
    {
@@ -80,14 +77,14 @@ Als u klassieke resources wilt verplaatsen naar een nieuw abonnement, gebruikt u
    }
    ```
 
-     Het antwoord heeft dezelfde indeling als de validatie van het bron abonnement.
-1. Als beide abonnementen de validatie door geven, verplaatst u alle klassieke resources van het ene abonnement naar een ander abonnement met de volgende bewerking:
+     Het antwoord is in dezelfde indeling als de validatie van het abonnement.
+1. Als beide abonnementen zijn gevalideerd, alle klassieke resources wilt verplaatsen van één abonnement naar een ander abonnement met de volgende bewerking:
 
    ```HTTP
    POST https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft.ClassicCompute/moveSubscriptionResources?api-version=2016-04-01
    ```
 
-    Neem in de hoofd tekst van de aanvraag het volgende op:
+    In de hoofdtekst van de aanvraag, zijn onder andere:
 
    ```json
    {
@@ -95,7 +92,7 @@ Als u klassieke resources wilt verplaatsen naar een nieuw abonnement, gebruikt u
    }
    ```
 
-De bewerking kan enkele minuten worden uitgevoerd.
+De bewerking kan enkele minuten uitgevoerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

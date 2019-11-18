@@ -1,73 +1,89 @@
-### YamlMime:YamlDocument
-documentType: LandingData
+### YamlMime:Landing
 title: Documentatie voor Azure Container Registry
+summary: Met Azure Container Registry kunt u installatiekopieën en artefacten voor containers compileren, opslaan en beheren in een privéregister voor alle typen containerimplementaties. Gebruik Azure-containerregisters met uw bestaande pijplijnen voor containerontwikkeling en -implementatie. Gebruik Azure Container Registry-taken om containerinstallatiekopieën in Azure on-demand te bouwen of om builds te automatiseren, geactiveerd door broncode-updates, updates van de basis van de installatiekopie van een container of een timer.
 metadata:
-  title: Documentatie voor Azure Container Registry - zelfstudies | Microsoft Docs
-  description: 'Met Azure Container Registry kunt u installatiekopieën compileren, opslaan en beheren voor alle typen containerimplementaties. Ontdek met deze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Container Registry gebruikt.'
+  title: Documentatie voor Azure Container Registry
+  description: Meer informatie over de privéregisterservice van Azure voor het hosten van installatiekopieën voor Docker-containers en gerelateerde artefacten. De Azure Container Registry-service biedt ook ondersteuning voor ACR-taken, een suite met services voor het bouwen, beheren en patchen van containerinstallatiekopieën.
   services: container-registry
-  author: georgewallace
-  manager: gwallace
   ms.service: container-registry
+  ms.subservice: subservice
   ms.topic: landing-page
-  ms.date: 07/26/2017
-  ms.author: gwallace
-abstract:
-  description: 'Met Azure Container Registry kunt u installatiekopieën compileren, opslaan en beheren voor alle typen containerimplementaties. Ontdek met deze snelstartgidsen, zelfstudies en voorbeelden hoe u Azure Container Registry gebruikt.'
-sections:
-  - title: QuickStarts van vijf minuten
-    items:
-      - type: paragraph
-        text: Meer informatie over het implementeren van een Azure Container-register.
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_cligeneric.svg'
-            text: Azure-CLI
-            href: /azure/container-registry/container-registry-get-started-azure-cli
-          - image:
-              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
-            text: Azure-portal
-            href: /azure/container-registry/container-registry-get-started-portal
-          - image:
-              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
-            text: Azure PowerShell
-            href: /azure/container-registry/container-registry-get-started-powershell
-  - title: Zelfstudies met stapsgewijze instructies
-    items:
-      - type: paragraph
-        text: Ontdek met deze zelfstudies hoe u Azure Container Registry gebruikt.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-build">Containerinstallatiekopieën compileren met ACR-taken</a>
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Geo-replicatie voor Container Registry</a>
-          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Container Registry met Azure Container Instances</a>
-          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Container Registry met Azure Kubernetes Service (AKS)</a>
-          - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Container Registry met Service Fabric</a>
-  - title: Uw vaardigheden ontwikkelen met Microsoft Learn
-    items:
-      - type: list
-        style: cards
-        className: cardsFTitle
-        items:
-          - title: Bouw containerinstallatiekopieën en sla die op met Azure Container Registry
-            href: /learn/modules/build-and-store-container-images/
-            image:
-              src: /learn/achievements/build-and-store-container-images.svg
-              href: /learn/modules/build-and-store-container-images/
-      - type: paragraph
-        text: <a href="/learn/browse/?products=azure-container-registry">Meer interactief leren...</a>
-  - title: Naslaginformatie
-    items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Opdrachtregel
-            html: <p><a href="/cli/azure/acr">Azure-CLI</a></p><p><a href="/powershell/module/az.containerregistry">PowerShell</a></p>
-          - title: Talen
-            html: <p><a href="/dotnet/api/overview/azure/containerregistry">.NET</a></p><p><a href="/python/api/overview/azure/container-registry">Python</a></p><p><a href="/java/api/overview/azure/containerregistry">Java</a></p><p><a href="/javascript/api/overview/azure/container-registry">Node.js</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/containerregistry">Naslaginformatie over REST-API</a></p><p><a href="/azure/templates/microsoft.containerregistry/registries">Resource Manager-sjabloon</a></p><p><a href="/azure/container-registry/container-registry-webhook-reference">Webhook-schema</a></p>
+  ms.collection: collection
+  author: dlepow
+  ms.author: danlep
+  ms.date: 11/08/2019
+  ms.openlocfilehash: ace70edef26be143d8e2367818a3c4cc15bd769e
+  ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+  ms.translationtype: HT
+  ms.contentlocale: nl-NL
+  ms.lasthandoff: 11/17/2019
+  ms.locfileid: "74150082"
+landingContent:
+- title: Over Azure Container Registry
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Wat is Azure Container Registry?
+      url: container-registry-intro.md
+    - text: Registers, opslagplaatsen en installatiekopieën
+      url: container-registry-concepts.md
+- title: Aan de slag
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Een containerregister implementeren - CLI
+      url: container-registry-get-started-azure-cli.md
+    - text: Een containerregister implementeren - Portal
+      url: container-registry-get-started-portal.md
+    - text: Push- en pull-acties voor installatiekopie met Docker
+      url: container-registry-get-started-docker-cli.md
+  - linkListType: concept
+    links:
+    - text: Servicelagen
+      url: container-registry-skus.md
+  - linkListType: learn
+    links:
+    - text: Containerinstallatiekopieën bouwen en opslaan met Azure Container Registry
+      url: https://docs.microsoft.com/learn/modules/build-and-store-container-images/
+  - linkListType: video
+    links:
+    - text: Video's over Azure Container Registry
+      url: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
+- title: Registers beheren
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Opslagplaatsen en tags weergeven
+      url: container-registry-repositories.md
+    - text: Installatiekopieën importeren
+      url: container-registry-import-images.md
+    - text: Installatiekopieën vergrendelen
+      url: container-registry-image-lock.md
+    - text: Installatiekopieën verwijderen
+      url: container-registry-delete.md
+  - linkListType: concept
+    links:
+    - text: Geo-replicatie
+      url: container-registry-geo-replication.md
+    - text: Verificatie
+      url: container-registry-authentication.md
+    - text: Aanbevolen procedures
+      url: container-registry-best-practices.md
+    - text: Veelgestelde vragen
+      url: container-registry-faq.md
+- title: ACR-taken
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Over ACR-taken
+      url: container-registry-tasks-overview.md
+    - text: Taken met meerdere stappen
+      url: container-registry-tasks-multi-step.md
+  - linkListType: quickstart
+    links:
+    - text: Installatiekopie compileren in de cloud - CLI
+      url: container-registry-quickstart-task-cli.md
+  - linkListType: tutorial
+    links:
+    - text: Compileren van installatiekopieën automatiseren
+      url: container-registry-tutorial-quick-task.md

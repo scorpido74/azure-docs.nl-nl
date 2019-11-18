@@ -1,17 +1,14 @@
 ---
-title: '& Resource groep Azure-resources voor meerdere abonnementen implementeren'
+title: '& Resource groep voor het implementeren van resources voor meerdere abonnementen'
 description: Laat zien hoe u tijdens de implementatie meer dan één Azure-abonnement en-resource groep kunt bereiken.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/02/2018
-ms.author: tomfitz
-ms.openlocfilehash: c90096043f54eb8db5834fbe83ed1d6ae710d371
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 99c534e1c51dcdf32c2b3a3b779c01d71b8d0c24
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528324"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149550"
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-resources implementeren voor meer dan één abonnement of resource groep
 
@@ -158,11 +155,11 @@ Als u een koppeling naar een afzonderlijke sjabloon maakt, worden de functies in
 }
 ```
 
-## <a name="example-templates"></a>Voorbeeld sjablonen
+## <a name="example-templates"></a>Voorbeeldsjablonen
 
 De volgende sjablonen illustreren meerdere implementaties van resource groepen. Scripts voor het implementeren van de sjablonen worden weer gegeven na de tabel.
 
-|Sjabloon  |Beschrijving  |
+|Template  |Beschrijving  |
 |---------|---------|
 |[Sjabloon voor meerdere abonnementen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Hiermee wordt één opslag account geïmplementeerd in één resource groep en één opslag account naar een tweede resource groep. Neem een waarde op voor de abonnements-ID wanneer de tweede resource groep zich in een ander abonnement bevindt. |
 |[Sjabloon voor eigenschappen van meerdere bron groepen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Laat zien hoe de `resourceGroup()` functie wordt opgelost. Er worden geen resources geïmplementeerd. |
@@ -253,7 +250,7 @@ In het vorige voor beeld **parentRG** en **InlineRG** omgezet in **parentGroup**
                                              }
 ```
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 Voor Azure CLI, voor het implementeren van twee opslag accounts voor twee resource groepen in **hetzelfde abonnement**, gebruikt u:
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure VPN-gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten: Azure Resource Manager: Power shell | Microsoft Docs'
+title: 'Azure VPN Gateway: Gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten'
 description: Configureer een op Azure route gebaseerde VPN-gateway naar meerdere op beleid gebaseerde VPN-apparaten met behulp van Azure Resource Manager en Power shell.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: c753320b8d525e0c3ac031777bee15ba2050fcc0
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495676"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146717"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-gateways verbinden met meerdere on-premises op beleid gebaseerde VPN-apparaten met behulp van Power shell
 

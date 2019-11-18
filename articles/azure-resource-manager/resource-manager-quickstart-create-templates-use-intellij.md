@@ -1,24 +1,15 @@
 ---
-title: Azure Resource Manager-sjabloon implementeren-IntelliJ-idee
+title: Sjabloon implementeren-IntelliJ idee
 description: Meer informatie over het maken van uw eerste Azure Resource Manager-sjabloon met behulp van het IntelliJ-idee en hoe u deze implementeert.
-services: azure-resource-manager
-documentationcenter: ''
-author: yucwan
-manager: ''
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
 ms.devlang: java
 ms.date: 08/01/2019
 ms.topic: quickstart
-ms.author: yucwan
-ms.openlocfilehash: 137a87ad0314fad08f9af0eb567e1d31032ddcb9
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 62ea27236eec1a63b2a07dcb532f91cea7ead70b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533655"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149464"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-intellij-idea"></a>Snelstartgids: Azure Resource Manager sjablonen maken en implementeren met behulp van het IntelliJ-idee
 
@@ -42,13 +33,13 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 In plaats van een sjabloon helemaal opnieuw te maken, opent u een sjabloon in [Azure-snelstartsjablonen](https://azure.microsoft.com/resources/templates/). Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. De in deze snelstart gebruikte sjabloon wordt [Create a standard storage account](https://github.com/Azure/azure-quickstart-templates/tree/master/101-storage-account-create/) (Standaardopslagaccount maken) genoemd. Hiermee wordt een Azure Storage-account resource gedefinieerd.
 
-1. Klik met de rechter muisknop en sla [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) en [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) op uw lokale computer op.
+1. Klik met de rechter muisknop en sla de [`azuredeploy.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json) en [`azuredeploy.parameters.json`](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json) op uw lokale computer op.
 
 1. Als uw Azure-Toolkit correct is geïnstalleerd en aangemeld, ziet u Azure Explorer in de zijbalk van uw IntelliJ-idee. Klik met de rechter muisknop op het **resource beheer** en selecteer **implementatie maken**.
 
     ![Resource Manager-sjabloon met de rechter muisknop om implementatie te maken](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-right-click.png)
 
-1. Configuratie van de **implementatie naam**, het **abonnement**, de **resource groep**en de **regio**. Hier implementeren we de sjabloon in een nieuwe resource groep `testRG`. Selecteer vervolgens pad voor **resource sjabloon** als `azuredeploy.json`-en **Resource parameters** als `azuredeploy.parameters.json` die u hebt gedownload.
+1. Configuratie van de **implementatie naam**, het **abonnement**, de **resource groep**en de **regio**. Hier implementeren we de sjabloon in een nieuwe resource groep `testRG`. Selecteer vervolgens pad voor **resource sjabloon** als `azuredeploy.json` en **Resource parameters** als `azuredeploy.parameters.json` u hebt gedownload.
 
     ![Resource Manager-sjabloon bestanden selecteren om implementatie te maken](./media/resource-manager-quickstart-create-templates-use-intellij/resource-manager-create-deployment-select-files.png)
 

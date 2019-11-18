@@ -1,5 +1,6 @@
 ---
-title: 'Verbinding maken met een virtueel Azure-netwerk vanaf een computer met behulp van punt-naar-site-VPN en systeem eigen Azure-certificaat verificatie: Azure Portal | Microsoft Docs'
+title: 'Verbinding maken met een VNet met behulp van P2S VPN-& certificaat verificatie: Portal'
+titleSuffix: Azure VPN Gateway
 description: Verbind Windows-, Mac OS X-en Linux-clients veilig met een virtueel Azure-netwerk met behulp van P2S en zelfondertekende of door certificerings instanties uitgegeven certificaten. In dit artikel wordt gebruikgemaakt van Azure Portal.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 7d6941c347f1121654084c8d71ba7c0a293bf558
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: c1435a2295804a0ad43f640d7317a6e1d3f56aea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72333239"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150098"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Configureer een punt-naar-site-VPN-verbinding met een VNet met behulp van systeem eigen Azure-certificaat verificatie: Azure Portal
 
@@ -144,7 +145,7 @@ De configuratiebestanden van de VPN-clients bevatten de instellingen voor het co
 >
 >
 
-1. Als u met uw VNet wilt verbinden, gaat u op de clientcomputer naar de VPN-verbindingen en zoekt u de VPN-verbinding die u hebt gemaakt. Deze heeft dezelfde naam als het virtuele netwerk. Klik op **Verbinden**. Er verschijnt mogelijk een pop-upbericht dat verwijst naar het certificaat. Klik op **Doorgaan** om verhoogde bevoegdheden te gebruiken.
+1. Als u met uw VNet wilt verbinden, gaat u op de clientcomputer naar de VPN-verbindingen en zoekt u de VPN-verbinding die u hebt gemaakt. Deze heeft dezelfde naam als het virtuele netwerk. Klik op**Verbinden**. Er verschijnt mogelijk een pop-upbericht dat verwijst naar het certificaat. Klik op **Doorgaan** om verhoogde bevoegdheden te gebruiken.
 
 2. Klik op de pagina **Verbindingsstatus** op **Verbinden** om de verbinding te starten. Als het scherm **Certificaat selecteren** wordt geopend, controleert u of het weergegeven clientcertificaat het certificaat is dat u voor de verbinding wilt gebruiken. Als dat niet het geval is, gebruikt u de pijl-omlaag om het juiste certificaat te selecteren en klikt u op **OK**.
 

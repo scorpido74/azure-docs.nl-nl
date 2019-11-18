@@ -1,17 +1,14 @@
 ---
-title: Koppeling van sjablonen voor Azure-implementatie | Microsoft Docs
+title: Koppelings sjablonen voor implementatie
 description: Beschrijft hoe u gekoppelde sjablonen gebruiken in een Azure Resource Manager-sjabloon om een sjabloonoplossing modulaire te maken. Laat zien hoe u de parameterwaarden doorgeven, geeft u een parameterbestand en de dynamisch gemaakte URL's.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/02/2019
-ms.author: tomfitz
-ms.openlocfilehash: 59af553f4080ca86e964b75234e4d812297d8541
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: 985520963ba9fab1a7f71e1af76bba4390c751ad
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827331"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149705"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Met behulp van gekoppelde en geneste sjablonen bij het implementeren van Azure-resources
 
@@ -90,7 +87,7 @@ Als u wilt de sjabloon in de belangrijkste sjabloon nesten, gebruikt u de **sjab
 > ],
 > ```
 >
-> U kunt de `reference` functie niet gebruiken in het gedeelte outputs van een geneste sjabloon voor een resource die u in de geneste sjabloon hebt geïmplementeerd. Als u wilt de waarden voor een geïmplementeerde resource in een geneste sjabloon, uw geneste sjabloon te converteren naar een gekoppelde sjabloon.
+> U kunt de functie `reference` niet gebruiken in het gedeelte outputs van een geneste sjabloon voor een resource die u in de geneste sjabloon hebt geïmplementeerd. Als u wilt de waarden voor een geïmplementeerde resource in een geneste sjabloon, uw geneste sjabloon te converteren naar een gekoppelde sjabloon.
 
 De geneste sjabloon moet de [dezelfde eigenschappen](resource-group-authoring-templates.md) als een standaardsjabloon.
 
@@ -556,7 +553,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 De volgende voorbeelden ziet veelvoorkomende toepassingen van gekoppelde sjablonen.
 
-|Belangrijkste sjabloon  |Gekoppelde sjabloon |Description  |
+|Belangrijkste sjabloon  |Gekoppelde sjabloon |Beschrijving  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[Gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Retourneert de tekenreeks van gekoppelde sjabloon. |
 |[Load Balancer met openbare IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[Gekoppelde sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Openbare IP-adres van de gekoppelde sjabloon retourneert en stelt u die waarde in de load balancer. |

@@ -1,6 +1,6 @@
 ---
-title: Azure StorageAccountSelector UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Storage.StorageAccountSelector UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure StorageAccountSelector | Microsoft Docs
+description: Hierin wordt het element micro soft. storage. StorageAccountSelector UI voor Azure Portal beschreven.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,25 +13,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c6d4ef50645902aecd57ceb9fc48b7d99bf22d53
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e1f96b42e58bcb09cfc2836c993626a889669fc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62104853"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151458"
 ---
-# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft.Storage.StorageAccountSelector UI element
-Een besturingselement voor het selecteren van een nieuwe of bestaande storage-account.
+# <a name="microsoftstoragestorageaccountselector-ui-element"></a>Micro soft. storage. StorageAccountSelector UI-element
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
+Een besturings element voor het selecteren van een nieuw of bestaand opslag account.
 
-Het besturingselement toont de standaardwaarde.
+## <a name="ui-sample"></a>UI-voor beeld
+
+In het besturings element wordt de standaard waarde weer gegeven.
 
 ![Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector.png)
 
-Het besturingselement kan de gebruiker een nieuw opslagaccount maken of een bestaand opslagaccount selecteren.
+Met het besturings element kan de gebruiker een nieuw opslag account maken of een bestaand opslag account selecteren.
 
-![Nieuwe Microsoft.Storage.StorageAccountSelector](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
+![Micro soft. storage. StorageAccountSelector nieuw](./media/managed-application-elements/microsoft.storage.storageaccountselector-new.png)
 
 ## <a name="schema"></a>Schema
 
@@ -56,12 +57,6 @@ Het besturingselement kan de gebruiker een nieuw opslagaccount maken of een best
 }
 ```
 
-## <a name="remarks"></a>Opmerkingen
-- Als u opgeeft, `defaultValue.name` wordt automatisch gevalideerd voor uniekheid. Als naam van het opslagaccount niet uniek is, moet de gebruiker een andere naam geven of een bestaand opslagaccount kiezen.
-- De standaardwaarde voor `defaultValue.type` is **Premium_LRS**.
-- Elk type niet opgegeven in `constraints.allowedTypes` verborgen is, en elk type niet opgegeven in `constraints.excludedTypes` wordt weergegeven. `constraints.allowedTypes` en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet gelijktijdig worden gebruikt.
-- Als `options.hideExisting` is **waar**, de gebruiker een bestaand opslagaccount niet kiezen. De standaardwaarde is **false**.
-
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
 ```json
@@ -73,6 +68,13 @@ Het besturingselement kan de gebruiker een nieuw opslagaccount maken of een best
 }
 ```
 
+## <a name="remarks"></a>Opmerkingen
+
+- Indien opgegeven, wordt `defaultValue.name` automatisch gevalideerd voor uniekheid. Als de naam van het opslag account niet uniek is, moet de gebruiker een andere naam opgeven of een bestaand opslag account kiezen.
+- De standaard waarde voor `defaultValue.type` is **Premium_LRS**.
+- Elk type dat niet in `constraints.allowedTypes` is opgegeven, is verborgen en elk type dat niet in `constraints.excludedTypes` is opgegeven, wordt weer gegeven. `constraints.allowedTypes` en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt.
+- Als `options.hideExisting` is ingesteld op **True**, kan de gebruiker geen bestaand opslag account kiezen. De standaardwaarde is **false**.
+
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

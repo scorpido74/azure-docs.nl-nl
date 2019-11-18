@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Oracle Fusion ERP configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: Oracle Fusion ERP configureren voor het automatisch inrichten van gebruikers met Azure Active Directory | Microsoft Docs'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts tot Oracle Fusion ERP.
 services: active-directory
 documentationcenter: ''
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2019
-ms.author: zhchia
-ms.openlocfilehash: 4ecb0189736ca2787f0725fb471ef8a22252185c
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.author: Zhchia
+ms.openlocfilehash: 73991efa2e98ff033987f1ce172d24fe3ecddb96
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68642044"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144582"
 ---
-# <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Zelfstudie: Oracle Fusion ERP configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Zelf studie: Oracle Fusion ERP configureren voor het automatisch inrichten van gebruikers
 
 Het doel van deze zelf studie is het demonstreren van de stappen die moeten worden uitgevoerd in Oracle Fusion ERP en Azure Active Directory (Azure AD) om Azure AD te configureren voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers en/of groepen in Oracle Fusion ERP.
 
 > [!NOTE]
 >  In deze zelf studie wordt een connector beschreven die boven op de Azure AD User Provisioning-Service is gebouwd. Zie [Gebruikers inrichten en de inrichting ongedaan maken voor SaaS-toepassingen met Azure Active Directory](../manage-apps/user-provisioning.md)voor belang rijke informatie over de werking van deze service, hoe deze werkt en veelgestelde vragen.
 >
-> Deze connector is momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) previews voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies
+> Deze connector is momenteel beschikbaar als preview-versie. Zie [aanvullende gebruiksrecht overeenkomst voor Microsoft Azure previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie over de algemene Microsoft Azure gebruiksrecht overeenkomst voor preview-functies
 
 ## <a name="prerequisites"></a>Vereisten
 
 In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u al beschikt over de volgende vereisten:
 
 * Een Azure AD-Tenant
-* [Een Oracle Fusion ERP-Tenant](https://www.oracle.com/applications/erp/).
+* Een [Oracle Fusion ERP-Tenant](https://www.oracle.com/applications/erp/).
 * Een gebruikers account in Oracle Fusion ERP met beheerders machtigingen.
 
 ## <a name="assign-users-to-oracle-fusion-erp"></a>Gebruikers toewijzen aan Oracle Fusion ERP 
@@ -52,7 +52,7 @@ Voordat u automatische gebruikers inrichting configureert en inschakelt, moet u 
 
 * Wanneer u een gebruiker toewijst aan Oracle Fusion ERP, moet u een geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. Gebruikers met de rol standaard toegang worden uitgesloten van het inrichten.
 
-## <a name="setup-oracle-fusion-erp-for-provisioning"></a>Oracle Fusion ERP instellen voor inrichting
+## <a name="set-up-oracle-fusion-erp-for-provisioning"></a>Oracle Fusion ERP instellen voor het inrichten
 
 Voordat u Oracle Fusion ERP configureert voor het automatisch inrichten van gebruikers met Azure AD, moet u SCIM inrichten inschakelen op Oracle Fusion ERP.
 
@@ -76,15 +76,15 @@ Als u Oracle Fusion ERP wilt configureren voor het automatisch inrichten van geb
 
 1. Selecteer in de **[Azure Portal](https://portal.azure.com)** in het navigatie venster links **Azure Active Directory**.
 
-    ![De Azure Active Directory-knop](common/select-azuread.png)
+    ![De knop Azure Active Directory](common/select-azuread.png)
 
 2. Ga naar **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
-    ![De blade Enterprise-toepassingen](common/enterprise-applications.png)
+    ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
 3. Als u een nieuwe toepassing wilt toevoegen, selecteert u de knop **nieuwe toepassing** boven aan het deel venster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
 4. Voer in het zoekvak **Oracle Fusion ERP**in en selecteer **Oracle Fusion ERP** in het paneel resultaten.
 
@@ -95,11 +95,14 @@ Als u Oracle Fusion ERP wilt configureren voor het automatisch inrichten van geb
 In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azure AD-inrichtings service om gebruikers en/of groepen in Oracle Fusion ERP te maken, bij te werken en uit te scha kelen op basis van gebruikers-en/of groeps toewijzingen in azure AD.
 
 > [!TIP]
-> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Oracle Fusion ERP, gevolgd door de instructies in de [zelf studie Oracle Fusion ERP single sign-on](oracle-fusion-erp-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor Oracle Fusion ERP door de instructies te volgen die zijn opgenomen in de [zelf studie Oracle Fusion ERP single sign-on](oracle-fusion-erp-tutorial.md). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
+
+> [!NOTE]
+> Raadpleeg [rest API voor algemene functies in de cloud van Oracle-toepassingen](https://docs.oracle.com/en/cloud/saas/applications-common/18b/farca/index.html)voor meer informatie over het scim-eind punt van Oracle Fusion ERP.
 
 ### <a name="to-configure-automatic-user-provisioning-for-fuze-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor Fuze in azure AD:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -115,41 +118,55 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
     ![Tabblad inrichten](common/provisioning-automatic.png)
 
-5. Selecteer in de sectie **beheerders referenties** de `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` invoer in de **Tenant-URL**. Voer de gebruikers naam en het wacht woord voor de beheerder in die eerder zijn opgehaald in de velden **gebruikers naam** en **wacht** woord beheerder. Klik op **verbinding testen** tussen Azure AD en Oracle Fusion ERP. 
+5. Selecteer in de sectie **beheerders referenties** de invoer `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` in de **Tenant-URL**. Voer de gebruikers naam en het wacht woord voor de beheerder in die eerder zijn opgehaald in de velden **gebruikers naam** en **wacht** woord beheerder. Klik op **verbinding testen** tussen Azure AD en Oracle Fusion ERP. 
 
     ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
 
 6. Voer in het veld **e-mail melding** het e-mail adres in van een persoon of groep die de inrichtings fout meldingen moet ontvangen en schakel het selectie vakje in om **een e-mail bericht te verzenden wanneer er een fout optreedt**.
 
-    ![E-mailmelding](common/provisioning-notification-email.png)
+    ![E-mail melding](common/provisioning-notification-email.png)
 
 7. Klik op **Opslaan**.
 
 8. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Oracle Fusion ERP**.
 
     ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
-    
+
 9. Controleer de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Oracle Fusion ERP in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Oracle Fusion ERP voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
 
     ![Oracle Fusion ERP SCIM toevoegen](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
 
-10. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+10. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory groepen synchroniseren met Oracle Fusion ERP**.
 
-11. Als u de Azure AD-inrichtings service voor Oracle Fusion ERP wilt inschakelen, **wijzigt u de** inrichtings **status** in in het gedeelte **instellingen** .
+    ![Oracle Fusion ERP-groeps toewijzingen](media/oracle-fusion-erp-provisioning-tutorial/groupmappings.png)
+
+11. Controleer de groeps kenmerken die zijn gesynchroniseerd vanuit Azure AD naar Oracle Fusion ERP in de sectie **kenmerk toewijzing** . De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt voor het vergelijken van de groepen in Oracle Fusion ERP voor bijwerk bewerkingen. Selecteer de knop **Opslaan** om eventuele wijzigingen door te voeren.
+
+    ![Kenmerken van Oracle Fusion ERP-groep](media/oracle-fusion-erp-provisioning-tutorial/groupattributes.png)
+
+12. Raadpleeg de volgende instructies in de [zelf studie](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)voor het filteren op bereik voor het configureren van bereik filters.
+
+13. Als u de Azure AD-inrichtings service voor Oracle Fusion ERP wilt inschakelen, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen** .
 
     ![Inrichtings status inschakelt op](common/provisioning-toggle-on.png)
 
-12. Definieer de gebruikers en/of groepen die u wilt inrichten voor Oracle Fusion ERP door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
+14. Definieer de gebruikers en/of groepen die u wilt inrichten voor Oracle Fusion ERP door de gewenste waarden in het **bereik** te kiezen in de sectie **instellingen** .
 
     ![Inrichtings bereik](common/provisioning-scope.png)
 
-13. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
+15. Wanneer u klaar bent om in te richten, klikt u op **Opslaan**.
 
     ![Inrichtings configuratie opslaan](common/provisioning-configuration-save.png)
 
     Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op Oracle Fusion ERP.
 
-    Voor meer informatie over het lezen van de Azure AD-inrichtings logboeken raadpleegt u [rapportage over automatische gebruikers accounts inrichten](../manage-apps/check-status-user-account-provisioning.md)
+    Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+
+## <a name="connector-limitations"></a>Connector beperkingen
+
+* Oracle Fusion ERP ondersteunt alleen basis verificatie voor hun SCIM-eind punt.
+* Oracle Fusion ERP biedt geen ondersteuning voor het inrichten van groepen.
+* Rollen in Oracle Fusion ERP worden toegewezen aan groepen in azure AD. Als u rollen wilt toewijzen aan gebruikers in Oracle Fusion ERP vanuit Azure AD, moet u gebruikers toewijzen aan de gewenste Azure AD-groepen die zijn benoemd na rollen in Oracle Fusion ERP.
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

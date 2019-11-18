@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager sjabloon functies-Logical | Microsoft Docs
+title: Sjabloon functies-logisch
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om logische waarden te bepalen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.author: tomfitz
-ms.openlocfilehash: ea91798a1c0ca0aad729128ce4694a85165f3c3b
-ms.sourcegitcommit: 532335f703ac7f6e1d2cc1b155c69fc258816ede
+ms.openlocfilehash: df8433d167a166fe94d965f81e42cd0b3e8f0e54
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70194787"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150686"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Logische functies voor Azure Resource Manager sjablonen
 
@@ -31,11 +28,11 @@ Controleert of alle parameter waarden waar zijn.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |boolean |De eerste waarde om te controleren of deze waar is. |
-| Arg2 |Ja |boolean |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |Nee |boolean |Aanvullende argumenten om te controleren of deze waar zijn. |
+| arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -69,10 +66,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | Waar |
+| orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 ## <a name="bool"></a>bool
@@ -83,7 +80,7 @@ Zet de para meter om in een Boole-waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |teken reeks of int |De waarde die moet worden geconverteerd naar een Boole. |
 
@@ -122,11 +119,11 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| trueString | Bool | Waar |
+| trueString | Bool | True |
 | falseString | Bool | False |
-| trueInt | Bool | Waar |
+| trueInt | Bool | True |
 | falseInt | Bool | False |
 
 ## <a name="if"></a>if
@@ -137,9 +134,9 @@ Retourneert een waarde op basis van het feit of een voor waarde waar of onwaar i
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| condition |Ja |boolean |De waarde om te controleren of deze True of False is. |
+| condition |Ja |booleaans |De waarde om te controleren of deze True of False is. |
 | trueValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde waar is. |
 | falseValue |Ja | teken reeks, int, object of matrix |De waarde die moet worden geretourneerd als de voor waarde ONWAAR is. |
 
@@ -153,7 +150,7 @@ Als de voor waarde **waar**is, wordt alleen de waarde True geëvalueerd. Als de 
 
 ### <a name="examples"></a>Voorbeelden
 
-In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ziet u hoe u `if` de functie gebruikt.
+In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/if.json) ziet u hoe u de `if` functie gebruikt.
 
 ```json
 {
@@ -180,7 +177,7 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | yesOutput | Tekenreeks | ja |
 | geen uitvoer | Tekenreeks | nee |
@@ -242,9 +239,9 @@ Zet Boole-waarde om in tegenovergestelde waarde.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |boolean |De waarde die moet worden geconverteerd. |
+| arg1 |Ja |booleaans |De waarde die moet worden geconverteerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -278,10 +275,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | Waar |
+| orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) gebruikt **niet** met [gelijk aan](resource-group-template-functions-comparison.md#equals).
@@ -302,9 +299,9 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| checkNotEquals | Bool | Waar |
+| checkNotEquals | Bool | True |
 
 ## <a name="or"></a>of
 
@@ -314,11 +311,11 @@ Controleert of een parameter waarde waar is.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ja |boolean |De eerste waarde om te controleren of deze waar is. |
-| Arg2 |Ja |boolean |De tweede waarde om te controleren of waar is. |
-| aanvullende argumenten |Nee |boolean |Aanvullende argumenten om te controleren of deze waar zijn. |
+| arg1 |Ja |booleaans |De eerste waarde om te controleren of deze waar is. |
+| Arg2 |Ja |booleaans |De tweede waarde om te controleren of waar is. |
+| aanvullende argumenten |Nee |booleaans |Aanvullende argumenten om te controleren of deze waar zijn. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -352,10 +349,10 @@ In de volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sam
 
 De uitvoer van het vorige voor beeld is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | andExampleOutput | Bool | False |
-| orExampleOutput | Bool | Waar |
+| orExampleOutput | Bool | True |
 | notExampleOutput | Bool | False |
 
 ## <a name="next-steps"></a>Volgende stappen

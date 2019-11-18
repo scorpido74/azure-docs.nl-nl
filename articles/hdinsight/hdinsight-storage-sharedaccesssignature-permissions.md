@@ -2,18 +2,18 @@
 title: Toegang beperken met behulp van hand tekeningen voor gedeelde toegang-Azure HDInsight
 description: Meer informatie over het gebruik van hand tekeningen voor gedeelde toegang voor het beperken van HDInsight-toegang tot gegevens die zijn opgeslagen in azure Storage-blobs.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/29/2019
-ms.author: hrasheed
-ms.openlocfilehash: 031498119eb4f9feb92046d7d7a86cfd77f8f368
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/13/2019
+ms.openlocfilehash: 725bdfd4efe3be600c993e568f1a5c7edccc6952
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498118"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148236"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage-hand tekeningen voor gedeelde toegang gebruiken om de toegang tot gegevens in HDInsight te beperken
 
@@ -35,7 +35,7 @@ HDInsight heeft volledige toegang tot de gegevens in de Azure Storage accounts d
 
 * Als u Power shell gebruikt, hebt u de [AZ-module](https://docs.microsoft.com/powershell/azure/overview)nodig.
 
-* Als u Azure CLI wilt gebruiken en u dit nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+* Als u Azure CLI wilt gebruiken en u deze nog niet hebt geïnstalleerd, raadpleegt u [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 * Als u [python](https://www.python.org/downloads/), versie 2,7 of hoger gebruikt.
 
@@ -69,7 +69,7 @@ Het verschil tussen de twee formulieren is van belang voor een belang rijk scena
     * Het tijds interval is verstreken.
     * Het beleid voor opgeslagen toegang is gewijzigd om verloop tijd in het verleden te hebben. Het wijzigen van de verloop tijd is een manier om de SAS in te trekken.
 
-3. Het opgeslagen toegangs beleid waarnaar wordt verwezen door de SA'S, wordt verwijderd. Dit is een andere manier om de SAS in te trekken. Als u het opgeslagen toegangs beleid met dezelfde naam opnieuw maakt, zijn alle SAS-tokens voor het vorige beleid geldig (als de verloop tijd op de SAS niet is verstreken). Als u van plan bent om de SAS in te trekken, moet u een andere naam gebruiken als u het toegangs beleid opnieuw maakt met een verloop tijd in de toekomst.
+3. Het opgeslagen toegangs beleid waarnaar wordt verwezen door de SA'S, wordt verwijderd. Dit is een andere manier om de SAS in te trekken. Als u het opgeslagen toegangs beleid met dezelfde naam opnieuw maakt, zijn alle SAS-tokens voor het vorige beleid geldig (als de verloop tijd op de SA'S niet is verstreken). Als u van plan bent om de SAS in te trekken, moet u een andere naam gebruiken als u het toegangs beleid opnieuw maakt met een verloop tijd in de toekomst.
 
 4. De account sleutel die is gebruikt voor het maken van de SA'S, wordt opnieuw gegenereerd. Het opnieuw genereren van de sleutel zorgt ervoor dat alle toepassingen die de vorige sleutel gebruiken, niet kunnen worden geverifieerd. Werk alle onderdelen bij naar de nieuwe sleutel.
 
@@ -234,7 +234,6 @@ Als u een Shared Access Signature wilt gebruiken om de toegang tot een container
 Vervang `CLUSTERNAME`, `RESOURCEGROUP`, `DEFAULTSTORAGEACCOUNT`, `STORAGECONTAINER`, `STORAGEACCOUNT`en `TOKEN` met de juiste waarden. Voer de Power shell-opdrachten in:
 
 ```powershell
-
 $clusterName = 'CLUSTERNAME'
 $resourceGroupName = 'RESOURCEGROUP'
 
@@ -285,11 +284,10 @@ $defaultStorageContext = New-AzStorageContext `
                                 -StorageAccountName $defaultStorageAccountName `
                                 -StorageAccountKey $defaultStorageAccountKey
 
-
 # Create a blob container. This holds the default data store for the cluster.
 New-AzStorageContainer `
     -Name $clusterName `
-    -Context $defaultStorageContext 
+    -Context $defaultStorageContext
 
 # Cluster login is used to secure HTTPS services hosted on the cluster
 $httpCredential = Get-Credential `
@@ -302,9 +300,9 @@ $sshCredential = Get-Credential `
     -UserName "sshuser"
 
 # Create the configuration for the cluster
-$config = New-AzHDInsightClusterConfig 
+$config = New-AzHDInsightClusterConfig
 
-$config = $config | Add-AzHDInsightConfigValues `
+$config = $config | Add-AzHDInsightConfigValue `
     -Spark2Defaults @{} `
     -Core @{"fs.azure.sas.$SASContainerName.$SASStorageAccountName.blob.core.windows.net"=$SASToken}
 
@@ -358,29 +356,29 @@ Als u een bestaand cluster hebt, kunt u de SAS toevoegen aan de **kern site** co
 
 1. Open de Ambari-webgebruikersinterface voor uw cluster. Het adres voor deze pagina is `https://YOURCLUSTERNAME.azurehdinsight.net`. Wanneer u hierom wordt gevraagd, moet u zich bij het cluster aanmelden met de beheerders naam (admin) en het wacht woord dat u hebt gebruikt bij het maken van het cluster.
 
-2. Klik aan de linkerkant van de Ambari-webgebruikersinterface op **HDFS** en selecteer vervolgens het tabblad **configuraties** in het midden van de pagina.
+1. Navigeer naar **HDFS** > **configs** > **Geavanceerde** > **aangepaste kern-site**.
 
-3. Selecteer het tabblad **Geavanceerd** en schuif vervolgens tot u de sectie **aangepaste kern site** hebt gevonden.
+1. Vouw de sectie **aangepaste kern site** uit, blader naar het einde en selecteer vervolgens **eigenschap toevoegen...** . Gebruik de volgende waarden voor **sleutel** en **waarde**:
 
-4. Vouw de sectie **aangepaste kern site** uit, blader naar het einde en selecteer de koppeling **eigenschap toevoegen...** . Gebruik de volgende waarden voor de velden **sleutel** en **waarde** :
+    * **Sleutel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Waarde**: de sa's die door een van de eerder uitgevoerde methoden zijn geretourneerd.
 
-   * **Sleutel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-   * **Waarde**: de sa's die door een van de eerder uitgevoerde methoden zijn geretourneerd.
+    Vervang `CONTAINERNAME` door de naam van de container die u C# hebt gebruikt in combi natie met de of SAS-toepassing. Vervang `STORAGEACCOUNTNAME` door de naam van het opslag account dat u hebt gebruikt.
 
-     Vervang `CONTAINERNAME` door de naam van de container die u C# hebt gebruikt in combi natie met de of SAS-toepassing. Vervang `STORAGEACCOUNTNAME` door de naam van het opslag account dat u hebt gebruikt.
+    Selecteer **toevoegen** om deze sleutel en waarde op te slaan
 
-5. Klik op de knop **toevoegen** om deze sleutel en waarde op te slaan en klik vervolgens op de knop **Opslaan** om de configuratie wijzigingen op te slaan. Als u hierom wordt gevraagd, voegt u een beschrijving van de wijziging toe (bijvoorbeeld het toevoegen van SAS-opslag toegang) en klikt u vervolgens op **Opslaan**.
+1. Selecteer de knop **Opslaan** om de configuratie wijzigingen op te slaan. Als hierom wordt gevraagd, voegt u een beschrijving van de wijziging toe (bijvoorbeeld het toevoegen van SAS-opslag toegang) en selecteert u vervolgens **Opslaan**.
 
-    Klik op **OK** wanneer de wijzigingen zijn voltooid.
+    Selecteer **OK** wanneer de wijzigingen zijn voltooid.
 
    > [!IMPORTANT]  
    > U moet verschillende services opnieuw starten voordat de wijzigingen van kracht worden.
 
-6. Selecteer in de Ambari-webgebruikersinterface de optie **HDFS** in de lijst aan de linkerkant en selecteer vervolgens **alle betrokken onderdelen opnieuw opstarten** in de vervolg keuzelijst **service acties** aan de rechter kant. Selecteer __Bevestig opnieuw opstarten__als dit wordt gevraagd.
+1. Er wordt een vervolg keuzelijst **opnieuw opstarten** weer gegeven. Selecteer in de vervolg keuzelijst **alle betrokken opnieuw opstarten** en __Bevestig opnieuw opstarten__.
 
-    Herhaal dit proces voor MapReduce2 en GARENs.
+    Herhaal dit proces voor **MapReduce2** en **garens**.
 
-7. Zodra de services opnieuw zijn opgestart, selecteert u deze en schakelt u de onderhouds modus uit in de vervolg keuzelijst **service acties** .
+1. Zodra de services opnieuw zijn opgestart, selecteert u deze en schakelt u de onderhouds modus uit in de vervolg keuzelijst **service acties** .
 
 ## <a name="test-restricted-access"></a>Beperkte toegang testen
 
@@ -405,7 +403,7 @@ Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en we
 3. Gebruik de volgende opdracht om te controleren of u de inhoud van het bestand kunt lezen. Vervang de `SASCONTAINER` en `SASACCOUNTNAME` zoals in de vorige stap. Vervang `sample.log` door de naam van het bestand dat wordt weer gegeven in de vorige opdracht:
 
     ```bash
-    hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
+    hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/sample.log
     ```
 
     Met deze opdracht wordt de inhoud van het bestand weer gegeven.
@@ -441,6 +439,4 @@ Gebruik de volgende stappen om te controleren of u alleen items kunt lezen en we
 Nu u hebt geleerd hoe u opslag met beperkte toegang kunt toevoegen aan uw HDInsight-cluster, kunt u meer informatie krijgen over andere manieren om te werken met gegevens op uw cluster:
 
 * [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
-* [Apache Pig gebruiken met HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce gebruiken met HDInsight](hadoop/hdinsight-use-mapreduce.md)
-

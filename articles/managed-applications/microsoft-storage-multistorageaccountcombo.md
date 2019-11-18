@@ -1,6 +1,6 @@
 ---
-title: Azure MultiStorageAccountCombo UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Storage.MultiStorageAccountCombo UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure MultiStorageAccountCombo | Microsoft Docs
+description: Hierin wordt het element micro soft. storage. MultiStorageAccountCombo UI voor Azure Portal beschreven.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08b65770414e9ee1cb5e478427fe7654b2bb9a78
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e3fb6f474bfe56f54e6dc621a3893e184ebc71d9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64725440"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151436"
 ---
 # <a name="microsoftstoragemultistorageaccountcombo-ui-element"></a>Microsoft.Storage.MultiStorageAccountCombo UI element
-Een groep van besturingselementen voor het maken van verschillende opslagaccounts met namen die met een algemene voorvoegsel beginnen.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
+Een groep besturings elementen voor het maken van verschillende opslag accounts met namen die beginnen met een gemeen schappelijk voor voegsel.
+
+## <a name="ui-sample"></a>UI-voor beeld
+
 ![Microsoft.Storage.MultiStorageAccountCombo](./media/managed-application-elements/microsoft.storage.multistorageaccountcombo.png)
 
 ## <a name="schema"></a>Schema
+
 ```json
 {
   "name": "element1",
@@ -52,13 +55,6 @@ Een groep van besturingselementen voor het maken van verschillende opslagaccount
 }
 ```
 
-## <a name="remarks"></a>Opmerkingen
-- De waarde voor `defaultValue.prefix` is samengevoegd met een of meer gehele getallen voor het genereren van de volgorde van de namen van opslagaccounts. Bijvoorbeeld, als `defaultValue.prefix` is **sa** en `count` is **2**, klikt u vervolgens opslagaccountnamen **sa1** en **sa2** worden gegenereerd. Gegenereerde opslagaccountnamen zijn gevalideerd voor uniekheid automatisch.
-- De namen van opslagaccounts worden gegenereerd lexicographically op basis van `count`. Bijvoorbeeld, als `count` is 10 en vervolgens de namen van opslagaccounts eindigen met twee cijfers gehele getallen (01, 02, 03).
-- De standaardwaarde voor `defaultValue.prefix` is **null**, en voor `defaultValue.type` is **Premium_LRS**.
-- Elk type niet opgegeven in `constraints.allowedTypes` verborgen is, en elk type niet opgegeven in `constraints.excludedTypes` wordt weergegeven. `constraints.allowedTypes` en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet gelijktijdig worden gebruikt.
-- Naast het genereren van namen van opslagaccounts, `count` wordt gebruikt voor het instellen van de juiste vermenigvuldiger voor het element. Azureondersteunt een statische waarde, zoals **2**, of een dynamische waarde van een ander element, zoals `[steps('step1').storageAccountCount]`. De standaardwaarde is **1**.
-
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
 ```json
@@ -70,6 +66,15 @@ Een groep van besturingselementen voor het maken van verschillende opslagaccount
 }
 ```
 
+## <a name="remarks"></a>Opmerkingen
+
+- De waarde voor `defaultValue.prefix` wordt samengevoegd met een of meer gehele getallen om de volg orde van de namen van opslag accounts te genereren. Als `defaultValue.prefix` bijvoorbeeld **sa** is en `count` **2**is, worden de namen van opslag accounts **SA1** en **sa2** gegenereerd. De namen van gegenereerde opslag accounts worden automatisch voor uniekheid gevalideerd.
+- De namen van de opslag accounts worden gegenereerd lexicographically op basis van `count`. Als `count` bijvoorbeeld 10 is, wordt de naam van het opslag account end met gehele getallen van twee cijfers (01, 02, 03).
+- De standaard waarde voor `defaultValue.prefix` is **Null**en voor `defaultValue.type` is **Premium_LRS**.
+- Elk type dat niet in `constraints.allowedTypes` is opgegeven, is verborgen en elk type dat niet in `constraints.excludedTypes` is opgegeven, wordt weer gegeven. `constraints.allowedTypes` en `constraints.excludedTypes` zijn beide optioneel, maar kunnen niet tegelijkertijd worden gebruikt.
+- Naast het genereren van opslag accountnamen, wordt `count` gebruikt om de juiste vermenigvuldiger voor het element in te stellen. Het ondersteunt een statische waarde, zoals **2**, of een dynamische waarde van een ander element, zoals `[steps('step1').storageAccountCount]`. De standaard waarde is **1**.
+
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

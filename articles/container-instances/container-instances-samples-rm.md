@@ -1,6 +1,6 @@
 ---
 title: Voor beelden van Azure Resource Manager sjablonen-Azure Container Instances
-description: Voor beelden van Azure Resource Manager sjablonen voor Azure Container Instances
+description: Azure Resource Manager sjabloon voorbeelden zoeken om Azure Container Instances te implementeren in verschillende configuraties
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: 2089f024e1de2e92f6e401549c5876e26db17ebb
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7dead5cc83717a011120ef6c17b9268bd78ed171
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325694"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150154"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Resource Manager sjablonen voor Azure Container Instances
 
@@ -47,7 +47,7 @@ U hebt verschillende mogelijkheden voor het implementeren van resources met Reso
 
 [Azure PowerShell][deploy-powershell]
 
-[Azure-portal][deploy-portal]
+[Azure Portal][deploy-portal]
 
 [REST API][deploy-rest]
 

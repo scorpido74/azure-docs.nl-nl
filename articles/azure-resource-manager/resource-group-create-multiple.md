@@ -1,22 +1,18 @@
 ---
-title: Meerdere exemplaren van Azure-resources implementeren | Microsoft Docs
+title: Meerdere exemplaren van bronnen implementeren
 description: Gebruik kopieer bewerkingen en matrices in een Azure Resource Manager sjabloon om meerdere keren te herhalen bij het implementeren van resources.
-services: azure-resource-manager
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: f97f9dac76ac29cf295b5cedc08f916e85c4e317
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 3ee4b47dd6cb9043a4100d114c483d1feadbde38
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675086"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150804"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Herhaling van resources, eigenschappen of variabelen in Azure Resource Manager sjablonen
 
-In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon meer dan één exemplaar van een resource, variabele of eigenschap maakt. Als u meerdere exemplaren wilt maken, voegt u het object `copy` toe aan uw sjabloon.
+In dit artikel wordt beschreven hoe u in uw Azure Resource Manager-sjabloon meer dan één exemplaar van een resource, variabele of eigenschap maakt. Als u meerdere exemplaren wilt maken, voegt u het `copy`-object toe aan uw sjabloon.
 
 Bij gebruik in combi natie met een resource heeft het object kopiëren de volgende indeling:
 
@@ -86,7 +82,7 @@ De resource voor het maken van verschillende tijden heeft de volgende indeling:
 }
 ```
 
-U ziet dat de naam van elke resource de functie `copyIndex()` bevat, die de huidige iteratie in de lus retourneert. `copyIndex()` is gebaseerd op nul. Het volgende voor beeld:
+U ziet dat de naam van elke resource de `copyIndex()` functie bevat, waarmee de huidige iteratie in de lus wordt geretourneerd. `copyIndex()` is gebaseerd op nul. Het volgende voor beeld:
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -143,7 +139,7 @@ Hiermee maakt u deze namen:
 
 Resource Manager maakt standaard de resources parallel. Er geldt geen limiet voor het aantal resources dat parallel is geïmplementeerd, met uitzonde ring van de totale limiet van 800 resources in de sjabloon. De volg orde waarin ze worden gemaakt, is niet gegarandeerd.
 
-Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een resource op een seriële schaal wilt implementeren, stelt u `mode` in op **serie** en `batchSize` op het aantal exemplaren dat u tegelijk wilt implementeren. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
+Het is echter mogelijk dat u wilt opgeven dat de resources in de juiste volg orde worden geïmplementeerd. Wanneer u bijvoorbeeld een productie omgeving bijwerkt, wilt u mogelijk de updates spreiden zodat alleen een bepaald aantal tegelijk wordt bijgewerkt. Als u meer dan één exemplaar van een resource op een seriële schaal wilt implementeren, stelt u `mode` in op **serie** -en `batchSize` tot het aantal exemplaren dat tegelijk moet worden geïmplementeerd. Met de seriële modus maakt Resource Manager een afhankelijkheid van eerdere instanties in de lus, zodat deze geen batch Start totdat de vorige batch is voltooid.
 
 Als u opslag accounts bijvoorbeeld twee keer tegelijk wilt implementeren, gebruikt u:
 
@@ -180,7 +176,7 @@ Zie [using Copy](resource-group-linked-templates.md#using-copy)voor informatie o
 
 ## <a name="property-iteration"></a>Eigenschaps herhaling
 
-Als u meer dan één waarde voor een eigenschap voor een resource wilt maken, voegt u een `copy`-matrix toe aan het element Properties. Deze matrix bevat objecten en elk object heeft de volgende eigenschappen:
+Als u meer dan één waarde voor een eigenschap voor een resource wilt maken, voegt u een `copy` matrix toe in het element Properties. Deze matrix bevat objecten en elk object heeft de volgende eigenschappen:
 
 * naam: de naam van de eigenschap voor het maken van verschillende waarden voor
 * Count-het aantal waarden dat moet worden gemaakt.
@@ -207,7 +203,7 @@ In het volgende voor beeld ziet u hoe u `copy` toepast op de eigenschap data dis
       ...
 ```
 
-Let op: wanneer u `copyIndex` in een eigenschaps herhaling gebruikt, moet u de naam van de herhaling opgeven. U hoeft de naam niet op te geven wanneer u deze gebruikt met resource iteratie.
+Wanneer u `copyIndex` in een eigenschaps herhaling gebruikt, moet u de naam van de herhaling opgeven. U hoeft de naam niet op te geven wanneer u deze gebruikt met resource iteratie.
 
 Resource Manager breidt de `copy`-matrix uit tijdens de implementatie. De naam van de matrix wordt de naam van de eigenschap. De invoer waarden worden de object eigenschappen. De geïmplementeerde sjabloon wordt:
 
@@ -302,7 +298,7 @@ U kunt resource en eigenschaps herhaling samen gebruiken. Verwijzing naar eigens
 
 ## <a name="variable-iteration"></a>Variabele herhaling
 
-Als u meerdere exemplaren van een variabele wilt maken, gebruikt u de eigenschap `copy` in de sectie Varia bles. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap `input`. U kunt de eigenschap `copy` gebruiken binnen een variabele of op het hoogste niveau van de sectie Varia bles. Wanneer u `copyIndex` in een variabele iteratie gebruikt, moet u de naam van de herhaling opgeven.
+Als u meerdere exemplaren van een variabele wilt maken, gebruikt u de eigenschap `copy` in de sectie Varia bles. U maakt een matrix van elementen die zijn gemaakt op basis van de waarde in de eigenschap `input`. U kunt de eigenschap `copy` binnen een variabele of op het hoogste niveau van de sectie Varia bles gebruiken. Wanneer u `copyIndex` binnen een variabele herhaling gebruikt, moet u de naam van de herhaling opgeven.
 
 Zie [matrix sjabloon kopiëren](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)voor een eenvoudig voor beeld van het maken van een matrix van teken reeks waarden.
 
@@ -426,7 +422,7 @@ En retourneert de variabele met de naam **teken reeks-matrix op het hoogste nive
 
 ## <a name="depend-on-resources-in-a-loop"></a>Is afhankelijk van resources in een lus
 
-U geeft aan dat een resource wordt geïmplementeerd na een andere resource met behulp van het element `dependsOn`. Als u een resource wilt implementeren die afhankelijk is van de verzameling van resources in een lus, geeft u de naam van de Kopieer-lus op in het element dependsOn. In het volgende voor beeld ziet u hoe u drie opslag accounts implementeert voordat u de virtuele machine implementeert. De volledige definitie van de virtuele machine wordt niet weer gegeven. U ziet dat de naam van het element Copy is ingesteld op `storagecopy` en het element dependsOn voor de Virtual Machines ook is ingesteld op `storagecopy`.
+U geeft aan dat een resource wordt geïmplementeerd na een andere resource met behulp van het `dependsOn`-element. Als u een resource wilt implementeren die afhankelijk is van de verzameling van resources in een lus, geeft u de naam van de Kopieer-lus op in het element dependsOn. In het volgende voor beeld ziet u hoe u drie opslag accounts implementeert voordat u de virtuele machine implementeert. De volledige definitie van de virtuele machine wordt niet weer gegeven. U ziet dat de naam van het element Copy is ingesteld op `storagecopy` en dat het element dependsOn voor de Virtual Machines ook is ingesteld op `storagecopy`.
 
 ```json
 {
@@ -517,7 +513,7 @@ In het volgende voor beeld ziet u de implementatie:
 
 In de volgende voor beelden ziet u algemene scenario's voor het maken van meer dan één exemplaar van een resource of eigenschap.
 
-|Template  |Description  |
+|Template  |Beschrijving  |
 |---------|---------|
 |[Opslag kopiëren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Hiermee worden meer dan één opslag account met een index nummer in de naam geïmplementeerd. |
 |[Opslag van seriële kopieën](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Hiermee worden verschillende opslag accounts tegelijkertijd geïmplementeerd. De naam bevat het index nummer. |

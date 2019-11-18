@@ -1,5 +1,6 @@
 ---
-title: 'Een op een route gebaseerde VPN-gateway maken: Azure Portal | Microsoft Docs'
+title: 'Een op een route gebaseerde VPN-gateway maken: Portal'
+titleSuffix: Azure VPN Gateway
 description: Een VPN Gateway op basis van een route maken met behulp van de Azure Portal
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/24/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3ab662a4f06b2d73ab0dab52f562398fee23686c
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: a44bdf654842d964a02f6aebe60e3632aabcd64d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "71266525"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151686"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-the-azure-portal"></a>Een op een route gebaseerde VPN-gateway maken met behulp van de Azure Portal
 

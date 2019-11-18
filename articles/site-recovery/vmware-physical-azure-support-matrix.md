@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: b16b6bb8ad39f7f0a5f19a2e2d4280bb73def60a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5c20c280fdc9097692f98c83dcb3d310e9914ecf
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082198"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133361"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Ondersteunings matrix voor nood herstel van virtuele VMware-machines en fysieke servers naar Azure
 
@@ -208,7 +208,7 @@ Gast/server-schijf uitsluiten | Ja
 Meerdere paden gast/server (MPIO) | Nee
 GPT/server-GUID-partities | Er worden vijf partities ondersteund van [Update pakket 37](https://support.microsoft.com/help/4508614/) (versie 9,25 van de Mobility-service). Eerder werden er vier ondersteund.
 Referenties | Flexibel bestands systeem wordt ondersteund met Mobility Service versie 9,23 of hoger
-EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2012 of hoger, SLES SP4 en RHEL 8,0 <br/> -Secure UEFI-opstart type wordt niet ondersteund. 
+EFI/UEFI-opstart procedure voor gast/server | -Ondersteund voor Windows Server 2012 of hoger, SLES 12 SP4 en RHEL 8,0 met mobiliteits agent versie 9,30<br/> -Secure UEFI-opstart type wordt niet ondersteund. 
 
 ## <a name="replication-channels"></a>Replicatie kanalen
 

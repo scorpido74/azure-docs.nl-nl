@@ -1,21 +1,21 @@
 ---
-title: Logboekregistratie van containerinstanties met Azure Monitor-logboeken
-description: Meer informatie over het verzenden van logboeken van Azure container instances naar Azure Monitor logs.
+title: Resource logboeken voor container groepen-Azure Container Instances
+description: Meer informatie over het verzenden van resource logboeken en gebeurtenis gegevens van container groepen in Azure Container Instances naar Azure Monitor-logboeken
 services: container-instances
 author: dlepow
 manager: gwallace
 ms.service: container-instances
-ms.topic: overview
+ms.topic: article
 ms.date: 09/02/2019
 ms.author: danlep
-ms.openlocfilehash: 1c4846414036e86d460d9abe0bd93e785e710395
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: c9b986376884bf1536567d7b5211d93191ec7cc0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258475"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150170"
 ---
-# <a name="container-instance-logging-with-azure-monitor-logs"></a>Logboekregistratie van containerinstanties met Azure Monitor-logboeken
+# <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Logboek registratie van container groepen en instanties met Azure Monitor-logboeken
 
 Log Analytics-werk ruimten bieden een centrale locatie voor het opslaan en opvragen van logboek gegevens van niet alleen Azure-resources, maar ook on-premises resources en resources in andere Clouds. Azure Container Instances bevat ingebouwde ondersteuning voor het verzenden van Logboeken en gebeurtenis gegevens naar Azure Monitor-Logboeken.
 
@@ -50,11 +50,11 @@ De Log Analytics-werkruimte-id en de primaire sleutel verkrijgt u als volgt:
 
 Nu dat u de Log Analytics-werkruimte-id en de primaire sleutel hebt, kunt u een containergroep maken die geschikt is voor logboekregistratie.
 
-In de volgende voor beelden ziet u twee manieren om een container groep te maken met één [gefluente][fluentd] container: Azure CLI en Azure CLI met een YAML-sjabloon. In de standaardconfiguratie genereert de Fluentd-container verschillende regels met uitvoer. Omdat deze uitvoer naar de Log Analytics-werkruimte wordt verzonden, is deze heel geschikt is om te illustreren hoe logboeken kunnen worden weergegeven en hoe er query's op kunnen worden uitgevoerd.
+In de volgende voor beelden ziet u twee manieren om een container groep te maken met één [gefluente][fluentd] container: Azure CLI en Azure CLI met een yaml-sjabloon. In de standaardconfiguratie genereert de Fluentd-container verschillende regels met uitvoer. Omdat deze uitvoer naar de Log Analytics-werkruimte wordt verzonden, is deze heel geschikt is om te illustreren hoe logboeken kunnen worden weergegeven en hoe er query's op kunnen worden uitgevoerd.
 
 ### <a name="deploy-with-azure-cli"></a>Implementeren met Azure CLI
 
-Als u wilt implementeren met de Azure CLI, `--log-analytics-workspace` geeft `--log-analytics-workspace-key` u de para meters en op in de opdracht [AZ container Create][az-container-create] . Vervang de twee werkruimtewaarden door de waarden die u hebt verkregen in de vorige stap (en werk de naam van de resourcegroep bij) voordat u de volgende opdracht gaat uitvoeren.
+Als u wilt implementeren met de Azure CLI, geeft u de para meters `--log-analytics-workspace` en `--log-analytics-workspace-key` op in de opdracht [AZ container Create][az-container-create] . Vervang de twee werkruimtewaarden door de waarden die u hebt verkregen in de vorige stap (en werk de naam van de resourcegroep bij) voordat u de volgende opdracht gaat uitvoeren.
 
 ```azurecli-interactive
 az container create \
@@ -104,11 +104,11 @@ Kort nadat u de opdracht hebt opgegeven, zou u een reactie van Azure met impleme
 
 ## <a name="view-logs"></a>Logboeken weergeven
 
-Nadat u de containergroep hebt geïmplementeerd, kan het enkele minuten (wel tien minuten) duren voor de eerste logboekvermeldingen worden weergegeven in Azure Portal. De logboeken van de container groep in de `ContainerInstanceLog_CL` tabel weer geven:
+Nadat u de containergroep hebt geïmplementeerd, kan het enkele minuten (wel tien minuten) duren voor de eerste logboekvermeldingen worden weergegeven in Azure Portal. Als u de logboeken van de container groep wilt weer geven in de tabel `ContainerInstanceLog_CL`:
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Onder **Algemeen**selecteert u **Logboeken**  
-1. Typ de volgende query:`ContainerInstanceLog_CL | limit 50`
+1. Typ de volgende query: `ContainerInstanceLog_CL | limit 50`
 1. Selecteer **uitvoeren**
 
 U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst geen resultaten ziet, wacht u een paar minuten en selecteert u vervolgens de knop **uitvoeren** om de query opnieuw uit te voeren. Logboek vermeldingen worden standaard weer gegeven in **tabel** indeling. U kunt vervolgens een rij uitbreiden om de inhoud van een afzonderlijke logboekvermelding te zien.
@@ -117,11 +117,11 @@ U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst 
 
 ## <a name="view-events"></a>Gebeurtenissen weergeven
 
-U kunt ook gebeurtenissen weer geven voor container instanties in de Azure Portal. Gebeurtenissen bevatten het tijdstip waarop het exemplaar is gemaakt en wanneer het wordt gestart. De gebeurtenis gegevens in de `ContainerEvent_CL` tabel weer geven:
+U kunt ook gebeurtenissen weer geven voor container instanties in de Azure Portal. Gebeurtenissen bevatten het tijdstip waarop het exemplaar is gemaakt en wanneer het wordt gestart. De gebeurtenis gegevens in de tabel `ContainerEvent_CL` bekijken:
 
 1. Navigeer in Azure Portal naar uw Log Analytics-werkruimte.
 1. Onder **Algemeen**selecteert u **Logboeken**  
-1. Typ de volgende query:`ContainerEvent_CL | limit 50`
+1. Typ de volgende query: `ContainerEvent_CL | limit 50`
 1. Selecteer **uitvoeren**
 
 U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst geen resultaten ziet, wacht u een paar minuten en selecteert u vervolgens de knop **uitvoeren** om de query opnieuw uit te voeren. Vermeldingen worden standaard weer gegeven in **tabel** indeling. U kunt vervolgens een rij uitbreiden om de inhoud van een afzonderlijke vermelding weer te geven.
@@ -132,7 +132,7 @@ U ziet een aantal resultaten die door de query worden weer gegeven. Als u eerst 
 
 Azure Monitor-logboeken bevatten een uitgebreide [query taal][query_lang] voor het ophalen van gegevens uit mogelijk duizenden logboek uitvoer.
 
-De basis structuur van een query is de bron tabel (in dit artikel `ContainerInstanceLog_CL` `ContainerEvent_CL`), gevolgd door een reeks opera toren, gescheiden door het sluis teken (`|`). U kunt verschillende operatoren aan elkaar koppelen om de resultaten te verfijnen en geavanceerde functies uit te voeren.
+De basis structuur van een query is de bron tabel (in dit artikel `ContainerInstanceLog_CL` of `ContainerEvent_CL`), gevolgd door een reeks Opera Tors, gescheiden door het sluis teken (`|`). U kunt verschillende operatoren aan elkaar koppelen om de resultaten te verfijnen en geavanceerde functies uit te voeren.
 
 Als u voorbeeld query resultaten wilt weer geven, plakt u de volgende query in het tekstvak query en selecteert u de knop uitvoeren om de query **uit** te voeren. Deze query geeft alle logboekvermeldingen weer waarvan het veld 'Bericht' het woord 'waarschuwen' bevat:
 

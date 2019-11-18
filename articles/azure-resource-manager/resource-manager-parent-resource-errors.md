@@ -1,17 +1,14 @@
 ---
-title: Azure-fouten van bovenliggende resources | Microsoft Docs
+title: Fouten van bovenliggende resources
 description: Hierin wordt beschreven hoe u fouten oplost bij het werken met een bovenliggende resource in een Azure Resource Manager sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.author: tomfitz
-ms.openlocfilehash: 197554e16e28b4928cab351838f00e1631c269fd
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: f6e0eb678c6ebce17f168ac09f0777102aafc3d9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390240"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150555"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>Fouten voor bovenliggende resources oplossen
 
@@ -28,7 +25,7 @@ Message=Can not perform requested operation on nested resource. Parent resource 
 
 ## <a name="cause"></a>Oorzaak
 
-Wanneer een resource een onderliggend item van een andere resource is, moet de bovenliggende resource bestaan voordat de onderliggende resource wordt gemaakt. Met de naam van de onderliggende resource wordt de verbinding met de bovenliggende resource gedefinieerd. De naam van de onderliggende resource heeft de notatie `<parent-resource-name>/<child-resource-name>`. Een SQL Database kan bijvoorbeeld als volgt worden gedefinieerd:
+Wanneer een resource een onderliggend item van een andere resource is, moet de bovenliggende resource bestaan voordat de onderliggende resource wordt gemaakt. Met de naam van de onderliggende resource wordt de verbinding met de bovenliggende resource gedefinieerd. De naam van de onderliggende resource heeft de indeling `<parent-resource-name>/<child-resource-name>`. Een SQL Database kan bijvoorbeeld als volgt worden gedefinieerd:
 
 ```json
 {

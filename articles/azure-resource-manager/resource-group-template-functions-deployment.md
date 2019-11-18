@@ -1,17 +1,14 @@
 ---
-title: Azure Resource Manager-sjabloon functies-implementatie | Microsoft Docs
+title: Sjabloon functies-implementatie
 description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om implementatie gegevens op te halen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 12698d1655c414b1ee3b9866cc975dc53e4ef095
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983994"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149634"
 ---
 # <a name="deployment-functions-for-azure-resource-manager-templates"></a>Implementatie functies voor Azure Resource Manager sjablonen 
 
@@ -25,7 +22,7 @@ Zie [resource functies](resource-group-template-functions-resource.md)om waarden
 
 <a id="deployment" />
 
-## <a name="deployment"></a>deployment
+## <a name="deployment"></a>implementatie
 `deployment()`
 
 Retourneert informatie over de huidige implementatie bewerking.
@@ -78,7 +75,7 @@ Wanneer het object als een koppeling wordt door gegeven, bijvoorbeeld wanneer de
 }
 ```
 
-Wanneer u [implementeert in een Azure-abonnement](deploy-to-subscription.md)in plaats van een resource groep, bevat het retour `location` object een eigenschap. De locatie-eigenschap wordt opgenomen bij het implementeren van ofwel een lokale sjabloon of een externe sjabloon.
+Wanneer u [implementeert in een Azure-abonnement](deploy-to-subscription.md)in plaats van een resource groep, bevat het retour object een `location` eigenschap. De locatie-eigenschap wordt opgenomen bij het implementeren van ofwel een lokale sjabloon of een externe sjabloon.
 
 ### <a name="remarks"></a>Opmerkingen
 
@@ -90,7 +87,7 @@ U kunt implementatie () gebruiken om een koppeling naar een andere sjabloon te m
 }
 ```  
 
-Als u een sjabloon opnieuw implementeert vanuit de implementatie geschiedenis in de portal, wordt de sjabloon geïmplementeerd als een lokaal bestand. De `templateLink` eigenschap wordt niet geretourneerd in de implementatie functie. Als uw sjabloon afhankelijk is van `templateLink` het samen stellen van een koppeling naar een andere sjabloon, gebruikt u de portal niet om opnieuw te implementeren. Gebruik in plaats daarvan de opdrachten die u hebt gebruikt om de sjabloon oorspronkelijk te implementeren.
+Als u een sjabloon opnieuw implementeert vanuit de implementatie geschiedenis in de portal, wordt de sjabloon geïmplementeerd als een lokaal bestand. De eigenschap `templateLink` wordt niet geretourneerd in de implementatie functie. Als uw sjabloon afhankelijk is van `templateLink` om een koppeling naar een andere sjabloon te maken, moet u de portal niet meer gebruiken om opnieuw te implementeren. Gebruik in plaats daarvan de opdrachten die u hebt gebruikt om de sjabloon oorspronkelijk te implementeren.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -134,7 +131,7 @@ In het voor gaande voor beeld wordt het volgende object geretourneerd:
 }
 ```
 
-Zie [implementatie functie voor abonnementen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)voor een sjabloon op abonnements niveau die gebruikmaakt van de implementatie functie. Het wordt geïmplementeerd met een `az deployment create` of `New-AzDeployment` meer opdrachten.
+Zie [implementatie functie voor abonnementen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)voor een sjabloon op abonnements niveau die gebruikmaakt van de implementatie functie. Het wordt geïmplementeerd met een `az deployment create`-of `New-AzDeployment`-opdracht.
 
 <a id="parameters" />
 
@@ -145,9 +142,9 @@ Retourneert een parameter waarde. De opgegeven parameter naam moet worden gedefi
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |string |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
 
 ### <a name="return-value"></a>Retourwaarde
 
@@ -232,26 +229,26 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | stringOutput | Tekenreeks | Optie 1 |
 | intOutput | Int | 1 |
 | objectOutput | Object | {"een": "a", "twee": "b"} |
-| arrayOutput | Array | [1, 2, 3] |
+| arrayOutput | Matrix | [1, 2, 3] |
 | crossOutput | Tekenreeks | Optie 1 |
 
 Zie [para meters in azure Resource Manager sjabloon](template-parameters.md)voor meer informatie over het gebruik van para meters.
 
 <a id="variables" />
 
-## <a name="variables"></a>Variabelen
+## <a name="variables"></a>variabelen
 `variables(variableName)`
 
 Retourneert de waarde van variable. De opgegeven naam van de variabele moet worden gedefinieerd in de sectie Varia bles van de sjabloon.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Description |
+| Parameter | Vereist | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
 | variableName |Ja |Tekenreeks |De naam van de variabele die moet worden geretourneerd. |
 
@@ -325,10 +322,10 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 
 De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 
-| Name | Type | Value |
+| Naam | Type | Waarde |
 | ---- | ---- | ----- |
 | exampleOutput1 | Tekenreeks | myVariable |
-| exampleOutput2 | Array | [1, 2, 3, 4] |
+| exampleOutput2 | Matrix | [1, 2, 3, 4] |
 | exampleOutput3 | Tekenreeks | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 

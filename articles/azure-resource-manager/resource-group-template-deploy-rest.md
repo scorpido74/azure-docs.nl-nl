@@ -1,17 +1,14 @@
 ---
-title: Resources implementeren met REST API en sjabloon | Microsoft Docs
+title: Resources implementeren met REST API en sjabloon
 description: Gebruik Azure Resource Manager en Resource Manager-REST API om resources te implementeren in Azure. De resources zijn gedefinieerd in een Resource Manager-sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 0472510801f5827327ac06a3927ca597b6caa612
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 3b4242e1fec98b583d5204904bc1adbd388f7955
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834356"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149660"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Resources implementeren met Resource Manager-sjablonen en Resource Manager REST API
 

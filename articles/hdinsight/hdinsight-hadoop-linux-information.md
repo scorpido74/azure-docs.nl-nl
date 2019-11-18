@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.openlocfilehash: daaf5763bde560250ddf70e70466fc9f4ed3e1c2
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.date: 11/14/2019
+ms.openlocfilehash: 1fd59bd18947d2c7aaba787ff7ce286e76f4f890
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834095"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150047"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informatie over het gebruik van HDInsight in Linux
 
@@ -63,7 +63,7 @@ Met deze opdracht wordt een JSON-document geretourneerd dat de service beschrijf
     >
     > Als u de volledige functionaliteit van de Ambari-webgebruikersinterface wilt gebruiken, gebruikt u een SSH-tunnel om webverkeer te proxy naar het hoofd knooppunt van het cluster. Zie [ssh-tunneling gebruiken om toegang te krijgen tot Apache Ambari Web UI, Resource Manager, JobHistory, NameNode, Oozie en andere web-UIs](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (rest)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
+* **Ambari (REST)**  - https://CLUSTERNAME.azurehdinsight.net/ambari
 
     > [!NOTE]  
     > Verificatie met behulp van de gebruikers naam en het wacht woord van de Cluster beheerder.
@@ -88,14 +88,14 @@ Zie voor meer informatie de [poorten die worden gebruikt door Apache Hadoop Serv
 
 Hadoop-gerelateerde bestanden kunnen worden gevonden op de cluster knooppunten op `/usr/hdp`. Deze map bevat de volgende submappen:
 
-* **2.6.5.3006-29**: de directory naam is de versie van het Hadoop-platform dat wordt gebruikt door HDInsight. Het nummer op uw cluster kan afwijken van het aantal dat hier wordt vermeld.
-* **huidige**: deze map bevat koppelingen naar submappen onder de Directory **2.6.5.3006-29** . Deze map bestaat, zodat u het versie nummer niet hoeft te onthouden.
+* **2.6.5.3009-43**: de directory naam is de versie van het Hadoop-platform dat wordt gebruikt door HDInsight. Het nummer op uw cluster kan afwijken van het aantal dat hier wordt vermeld.
+* **huidige**: deze map bevat koppelingen naar submappen onder de Directory **2.6.5.3009-43** . Deze map bestaat, zodat u het versie nummer niet hoeft te onthouden.
 
 Voor beelden van gegevens-en JAR-bestanden vindt u op Hadoop Distributed File System op `/example` en `/HdiSamples`.
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage en Data Lake Storage
 
-In de meeste Hadoop-distributies worden de gegevens opgeslagen in HDFS, die wordt ondersteund door de lokale opslag op de computers in het cluster. Het gebruik van lokale opslag kan kostenbesparend zijn voor een oplossing op basis van de Cloud, waarbij u elk uur of per minuut in rekening wordt gebracht voor reken resources.
+In de meeste Hadoop-distributies worden de gegevens opgeslagen in HDFS, die wordt ondersteund door de lokale opslag op de computers in het cluster. Het gebruik van lokale opslag kan kostenbesparend zijn voor een Cloud oplossing waarbij u per uur of per minuut voor reken resources in rekening wordt gebracht.
 
 Wanneer u HDInsight gebruikt, worden de gegevens bestanden op een schaal bare en robuuste manier opgeslagen in de Cloud met behulp van Azure Blob Storage en optioneel Azure Data Lake Storage. Deze services bieden de volgende voor delen:
 
@@ -201,9 +201,9 @@ Als u __Azure data Lake Storage__gebruikt, raadpleegt u de volgende koppelingen 
 
 * [Webbrowser](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Azure CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
+* [Azure-CLI](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [WebHDFS REST API](../data-lake-store/data-lake-store-get-started-rest-api.md)
-* [Data Lake-Hulpprogram Ma's voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
+* [Data Lake Tools voor Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)
 * [Java](../data-lake-store/data-lake-store-get-started-java-sdk.md)
 * [Python](../data-lake-store/data-lake-store-get-started-python.md)
@@ -249,7 +249,7 @@ Zie voor specifieke informatie over het schalen van uw HDInsight-cluster:
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hoe kan ik tint installeren (of een ander Hadoop-onderdeel)?
 
-HDInsight is een beheerde service. Als Azure een probleem met het cluster detecteert, kan het het knoop punt dat niet werkt, verwijderen en een knoop punt maken om dit te vervangen. Als u hand matig dingen op het cluster installeert, worden deze niet behouden wanneer deze bewerking wordt uitgevoerd. Gebruik in plaats daarvan [HDInsight-script acties](hdinsight-hadoop-customize-cluster-linux.md). Een script actie kan worden gebruikt om de volgende wijzigingen aan te brengen:
+HDInsight is een beheerde service. Als Azure een probleem met het cluster detecteert, kan het het knoop punt dat niet werkt, verwijderen en een knoop punt maken om dit te vervangen. Als u hand matig dingen op het cluster installeert, worden deze niet bewaard wanneer deze bewerking wordt uitgevoerd. Gebruik in plaats daarvan [HDInsight-script acties](hdinsight-hadoop-customize-cluster-linux.md). Een script actie kan worden gebruikt om de volgende wijzigingen aan te brengen:
 
 * Een service of website installeren en configureren.
 * Installeer en configureer een onderdeel waarvoor configuratie wijzigingen moeten worden aangebracht op meerdere knoop punten in het cluster.
@@ -284,5 +284,4 @@ Als u een andere versie van een onderdeel wilt gebruiken, uploadt u de versie di
 
 * [HDInsight-clusters beheren met behulp van de Apache Ambari REST API](./hdinsight-hadoop-manage-ambari-rest-api.md)
 * [Apache Hive gebruiken met HDInsight](hadoop/hdinsight-use-hive.md)
-* [Apache Pig gebruiken met HDInsight](hadoop/hdinsight-use-pig.md)
 * [MapReduce-taken gebruiken met HDInsight](hadoop/hdinsight-use-mapreduce.md)

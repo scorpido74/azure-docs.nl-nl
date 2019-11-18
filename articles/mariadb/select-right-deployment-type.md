@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 819b8551650f2e0b484021638ab5554cb557a750
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.date: 11/15/2019
+ms.openlocfilehash: 59064c71d19f81a5edc322bc4c8158773a104b5d
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330038"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151981"
 ---
 # <a name="choose-the-right-mariadb-server-option-in-azure"></a>Kies de juiste MariaDB-Server optie in azure
 
@@ -31,14 +31,14 @@ Houd rekening met de volgende twee opties bij het nemen van uw beslissing:
 
 De belangrijkste verschillen tussen deze opties worden weer gegeven in de volgende tabel:
 
-|            | Azure Database voor MariaDB | MariaDB op Azure Vm's    |
+|            | Azure Database for MariaDB | MariaDB op Azure Vm's    |
 |:-------------------|:-----------------------------|:--------------------|
 | Serviceovereenkomst (SLA)                | Biedt een SLA van 99,99% Beschik baarheid| Maxi maal 99,95% Beschik baarheid met twee of meer exemplaren in dezelfde beschikbaarheidsset.<br/><br/>99,9% Beschik baarheid met een virtuele machine met één exemplaar met Premium Storage.<br/><br/>99,99% met Beschikbaarheidszones met meerdere exemplaren in meerdere beschikbaarheids sets.<br/><br/>Zie de [virtual machines Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/). |
 | Patches besturings systeem        | Automatisch  | Beheerd door klanten |
 | MariaDB-patching     | Automatisch  | Beheerd door klanten |
 | Hoge beschikbaarheid | Het model voor hoge Beschik baarheid (HA) is gebaseerd op ingebouwde failover-mechanismen voor wanneer een onderbreking op knooppunt niveau optreedt. In dergelijke gevallen maakt de service automatisch een nieuw exemplaar en koppelt de opslag aan dit exemplaar. | Klanten bouwen, implementeren, testen en onderhouden hoge Beschik baarheid. Mogelijkheden zijn onder meer Failover Clustering, altijd op groeps replicatie, logboek verzending of transactionele replicatie.|
 | Zone redundantie | Momenteel niet ondersteund | Virtuele Azure-machines kunnen worden ingesteld om te worden uitgevoerd in verschillende beschikbaarheids zones. Voor een on-premises oplossing moeten klanten hun eigen secundaire Data Center maken, beheren en onderhouden.|
-| Hybride scenario's | Met [replicatie van inkomende gegevens](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)kunt u gegevens van een externe MariaDB-server synchroniseren met de Azure database for MariaDB-service. De externe server kan on-premises, in virtuele machines of een database service worden gehost door andere cloud providers.<br/><br/> Met de functie [replica lezen](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas) kunt u gegevens van een Azure database for MariaDB hoofd server repliceren naar Maxi maal vijf alleen-lezen replica servers. De replica's bevinden zich in dezelfde Azure-regio of in verschillende regio's. Alleen-lezen replica's worden asynchroon bijgewerkt met behulp van binlog-replicatie technologie.<br/><br/>De Lees replicatie tussen regio's is momenteel beschikbaar als open bare preview.| Beheerd door klanten
+| Hybride scenario's | Met [replicatie van inkomende gegevens](https://docs.microsoft.com/azure/MariaDB/concepts-data-in-replication)kunt u gegevens van een externe MariaDB-server synchroniseren met de Azure database for MariaDB-service. De externe server kan on-premises, in virtuele machines of een database service worden gehost door andere cloud providers.<br/><br/> Met de functie [replica lezen](https://docs.microsoft.com/azure/mariadb/concepts-read-replicas) kunt u gegevens van een Azure database for MariaDB hoofd server repliceren naar Maxi maal vijf alleen-lezen replica servers. De replica's bevinden zich in dezelfde Azure-regio of in verschillende regio's. Alleen-lezen replica's worden asynchroon bijgewerkt met behulp van binlog-replicatie technologie.<br/><br/>De Lees replicatie tussen regio's is momenteel beschikbaar als open bare preview.| Beheerd door klanten
 | Back-ups maken en herstellen | Maakt automatisch [Server back-ups](https://docs.microsoft.com/azure/MariaDB/concepts-backup#backups) en slaat deze op in door de gebruiker geconfigureerde opslag die lokaal redundant of geo-redundant is. De service maakt gebruik van volledige, differentiële en back-ups van transactie logboeken | Beheerd door klanten |
 | Database bewerkingen bewaken | Biedt klanten de mogelijkheid om [waarschuwingen](https://docs.microsoft.com/azure/MariaDB/concepts-monitoring) in te stellen voor de database bewerking en om te reageren op drempel waarden. | Beheerd door klanten |
 | Advanced Threat Protection | Biedt [geavanceerde beveiliging tegen bedreigingen](https://docs.microsoft.com/azure/MariaDB/howto-database-threat-protection-portal). Deze beveiliging detecteert afwijkende activiteiten die ongebruikelijke en potentieel schadelijke pogingen voor toegang tot of exploiten van data bases aanduiden.<br/><br/>Advanced Threat Protection is momenteel beschikbaar als open bare preview.| Klanten moeten deze bescherming zelf bouwen.
@@ -84,7 +84,7 @@ In de volgende lijst worden administratieve aandachtspunten voor elke optie besc
   - Aanmelden
   - Indexafstemming
   - Query afstemmen
-  - Controle
+  - Controleren
   - Beveiliging
 
   Daarnaast is het configureren van hoge Beschik baarheid voor een ander Data Center Mini maal, zodat er geen configuratie of beheer nodig is.

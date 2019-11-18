@@ -1,21 +1,18 @@
 ---
-title: 'Zelf studie: uitvoer toevoegen aan Azure Resource Manager sjabloon'
+title: Zelf studie-uitvoer toevoegen aan sjabloon
 description: Voeg uitvoer toe aan uw Azure Resource Manager sjabloon om de syntaxis te vereenvoudigen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 458833372d5bd03a04e4df7d6e915cddb4bb05c7
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 0d89c1651e6b897da7538432d183a8ac003a51ac
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001532"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148270"
 ---
-# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Zelfstudie: Uitvoer toevoegen aan uw Resource Manager-sjabloon
+# <a name="tutorial-add-outputs-to-your-resource-manager-template"></a>Zelf studie: uitvoer toevoegen aan uw Resource Manager-sjabloon
 
 In deze zelf studie leert u hoe u een waarde uit uw sjabloon kunt ophalen. U gebruikt uitvoer wanneer u een waarde van een geïmplementeerde resource nodig hebt. Het volt ooien van deze zelf studie duurt **zeven minuten** .
 
@@ -97,7 +94,7 @@ U hebt in de laatste zes zelf studies een hoop gemaakt. Laten we even eens kijke
 
 Nu gaan we kijken naar de resource groep en de implementatie geschiedenis.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. Afhankelijk van de stappen die u hebt uitgevoerd, moet u ten minste één en mogelijk meerdere opslag accounts in de resource groep hebben.

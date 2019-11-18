@@ -223,8 +223,6 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: Indexeerfuncties bewaken
           href: search-howto-monitor-indexers.md
-        - name: Algemene problemen
-          href: search-indexer-troubleshooting.md
     - name: Verrijken met AI
       items:
         - name: Een Cognitive Services-resource toevoegen
@@ -249,7 +247,7 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: Voorbeeld - Containers
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
-        - name: Tips voor probleemoplossing
+        - name: Ontwerptips
           href: cognitive-search-concept-troubleshooting.md
         - name: Documentatielinks
           href: cognitive-search-resources-documentation.md
@@ -261,8 +259,6 @@
               href: knowledge-store-view-storage-explorer.md
             - name: Verbinden met Power BI
               href: knowledge-store-connect-power-bi.md
-        - name: Verrijkingsproblemen oplossen
-          href: cognitive-search-common-errors-warnings.md
     - name: Query's uitvoeren voor documenten
       items:
         - name: Querytypen en querysamenstelling
@@ -307,6 +303,12 @@
           href: search-manage-powershell.md
         - name: Activiteit en logboekregistratie bewaken
           href: search-monitor-usage.md
+    - name: Problemen oplossen
+      items:
+        - name: Indexeringsproblemen
+          href: search-indexer-troubleshooting.md
+        - name: Fouten en waarschuwingen voor indexeerfunctie
+          href: cognitive-search-common-errors-warnings.md
 - name: Naslaginformatie
   items:
     - name: Azure-CLI

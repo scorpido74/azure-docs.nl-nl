@@ -361,8 +361,8 @@
               href: hyper-v-azure-failback.md
         - name: Beheren
           items:
-            - name: Afschaffing van herstel na noodgevallen tussen sites van klanten
-              href: site-to-site-deprecation.md
+            - name: Afschaffing van Site Recovery-gegevensversleuteling
+              href: encryption-feature-deprecation.md
             - name: Windows-servers die zijn geconfigureerd met Site Recovery bijwerken
               href: upgrade-2012R2-to-2016.md
             - name: Servers verwijderen en beveiliging uitschakelen

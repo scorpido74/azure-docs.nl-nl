@@ -1,19 +1,15 @@
 ---
-title: Veelvoorkomende fouten bij Azure-implementatie oplossen | Microsoft Docs
+title: Veelvoorkomende implementatiefouten oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost wanneer u resources implementeert in azure met behulp van Azure Resource Manager.
 tags: top-support-issue
-author: tfitzmac
-keywords: implementatie fout, Azure-implementatie, implementeren naar Azure
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: bba59d024e253c8d05aa75123be5e3f13699f72e
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 27f3b9db40e00ea0a00e50333fe86248906d8560
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72263038"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150648"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Veelvoorkomende fouten bij Azure-implementatie met Azure Resource Manager oplossen
 
@@ -28,12 +24,12 @@ Als u op zoek bent naar informatie over een fout code en deze informatie niet in
 | Foutcode | Oplossing | Meer informatie |
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Volg de naam beperkingen voor opslag accounts. | [Naam van opslag account oplossen](resource-manager-storage-account-name-errors.md) |
-| AccountPropertyCannotBeSet | Controleer de beschik bare eigenschappen van het opslag account. | [Storage accounts](/azure/templates/microsoft.storage/storageaccounts) |
+| AccountPropertyCannotBeSet | Controleer de beschik bare eigenschappen van het opslag account. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Het cluster of de regio heeft geen resources beschikbaar of kan de aangevraagde VM-grootte niet ondersteunen. Voer de aanvraag op een later tijdstip opnieuw uit of vraag een andere VM-grootte aan. | [Problemen met inrichten en toewijzen voor Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [inrichting en toewijzing van problemen voor Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) en het [oplossen van toewijzings fouten](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Wacht tot de gelijktijdige bewerking is voltooid. | |
 | AuthorizationFailed | Uw account of Service-Principal heeft onvoldoende toegangs rechten om de implementatie te volt ooien. Controleer de rol waartoe uw account behoort en de toegang tot het implementatie bereik.<br><br>Deze fout kan optreden wanneer een vereiste resource provider niet is geregistreerd. | [Access Control op basis van rollen in azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Registratie oplossen](resource-manager-register-provider-errors.md) |
-| Onjuiste aanvraag | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
-| Conflicteren | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
+| BadRequest | U hebt implementatie waarden verzonden die niet overeenkomen met wat er wordt verwacht door Resource Manager. Controleer het binnenste status bericht voor hulp bij het oplossen van problemen. | [Sjabloon verwijzing](/azure/templates/) en [ondersteunde locaties](resource-location.md) |
+| conflicteren | U vraagt een bewerking aan die niet is toegestaan in de huidige status van de resource. Het wijzigen van de grootte van een schijf is bijvoorbeeld alleen toegestaan bij het maken van een virtuele machine of wanneer de toewijzing van de virtuele machine ongedaan wordt gemaakt. | |
 | DeploymentActiveAndUneditable | Wacht tot de gelijktijdige implementatie naar deze resource groep is voltooid. | |
 | DeploymentFailedCleanUp | Wanneer u in de volledige modus implementeert, worden alle resources die zich niet in de sjabloon bevinden, verwijderd. U krijgt deze fout melding wanneer u niet over de juiste machtigingen beschikt om alle resources te verwijderen die niet in de sjabloon staan. Als u de fout wilt voor komen, wijzigt u de implementatie modus in incrementeel. | [Implementatie modi Azure Resource Manager](deployment-modes.md) |
 | DeploymentNameInvalidCharacters | De implementatie naam mag alleen letter, cijfer, '-', '. ' of ' _ ' bevatten. | |
@@ -94,7 +90,7 @@ Validatiefouten ontstaan door scenario's en kunnen vóór de implementatie worde
 
 Beide typen fouten retourneren een foutcode die u gebruikt om de problemen met de implementatie op te lossen. Beide typen fouten worden weergegeven in het [activiteitenlogboek](resource-group-audit.md). Validatiefouten worden echter niet weergegeven in de implementatiegeschiedenis omdat de implementatie niet is gestart.
 
-### <a name="validation-errors"></a>validatie fouten
+### <a name="validation-errors"></a>Validatie fouten
 
 Wanneer u een implementatie uitvoert via de portal, ziet u een validatiefout na het indienen van uw waarden.
 
@@ -132,7 +128,7 @@ Het foutbericht en de foutcodes worden dan weergegeven. U ziet twee foutcodes. D
 
 ![Fout Details](./media/resource-manager-common-deployment-errors/error-details.png)
 
-## <a name="enable-debug-logging"></a>Logboek registratie voor fout opsporing inschakelen
+## <a name="enable-debug-logging"></a>Inschakelen van logboekregistratie voor foutopsporing
 
 Soms hebt u meer informatie nodig over de aanvraag en het antwoord om te ontdekken wat er mis ging. Tijdens de implementatie kunt u aanvragen dat er aanvullende informatie wordt geregistreerd tijdens een implementatie.
 
@@ -168,7 +164,7 @@ Of de antwoord inhoud met:
 
 Aan de hand van deze informatie kunt u bepalen of een waarde in de sjabloon onjuist is ingesteld.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-CLI
 
 Momenteel biedt Azure CLI geen ondersteuning voor het inschakelen van logboek registratie voor fout opsporing, maar u kunt logboek registratie voor fout opsporing ophalen.
 

@@ -1,20 +1,18 @@
 ---
-title: Zelf studie-een resource toevoegen aan Azure Resource Manager sjabloon
+title: Zelf studie-resource aan sjabloon toevoegen
 description: Hierin worden de stappen beschreven voor het maken van uw eerste Azure Resource Manager sjabloon. Meer informatie over de syntaxis van het sjabloon bestand en het implementeren van een opslag account.
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6b8bd73a1248168ff8f434afa0a9317a8fe0c618
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: 924c369465bf53ea5f58de906bd0894ce822cac3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71963903"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148191"
 ---
-# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Zelfstudie: Een resource toevoegen aan uw Resource Manager-sjabloon
+# <a name="tutorial-add-a-resource-to-your-resource-manager-template"></a>Zelf studie: een resource toevoegen aan uw Resource Manager-sjabloon
 
 In de [vorige zelf studie](template-tutorial-create-first-template.md)hebt u geleerd hoe u een lege sjabloon maakt en deze implementeert. U bent nu klaar om een werkelijke resource te implementeren. In deze zelf studie voegt u een opslag account toe. Het duurt ongeveer **9 minuten** om deze zelf studie te volt ooien.
 
@@ -40,9 +38,9 @@ U vraagt zich misschien af hoe u de eigenschappen voor elk resource type kunt vi
 
 Elke resource die u implementeert, heeft ten minste de volgende drie eigenschappen:
 
-- **type**: Het type van de resource. Deze waarde is een combi natie van de naam ruimte van de resource provider en het resource type (zoals micro soft. Storage/Storage accounts).
-- **apiVersion**: De versie van de REST API die moet worden gebruikt voor het maken van de resource. Elke resource provider heeft zijn eigen API-versies gepubliceerd, waardoor deze waarde specifiek is voor het type.
-- **name**: Naam van de resource.
+- **type**: het type van de resource. Deze waarde is een combi natie van de naam ruimte van de resource provider en het resource type (zoals micro soft. Storage/Storage accounts).
+- **apiVersion**: de versie van de rest API die moet worden gebruikt voor het maken van de resource. Elke resource provider heeft zijn eigen API-versies gepubliceerd, waardoor deze waarde specifiek is voor het type.
+- **naam**: naam van de resource.
 
 De meeste resources hebben ook een **locatie** -eigenschap, die de regio instelt waarin de resource wordt geïmplementeerd.
 
@@ -82,11 +80,11 @@ az group deployment create \
 
 Twee mogelijke implementatie fouten die kunnen optreden:
 
-- Fout: Code = AccountNameInvalid; Bericht = {Geef unieke naam} is geen geldige naam voor een opslag account. De naam van het opslag account moet tussen 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
+- Fout: code = AccountNameInvalid; Bericht = {Geef unieke naam} is geen geldige naam voor een opslag account. De naam van het opslag account moet tussen 3 en 24 tekens lang zijn en mag alleen cijfers en kleine letters bevatten.
 
     Vervang **{Geef unieke naam}** in de sjabloon door een unieke naam voor het opslag account.  Zie [resource toevoegen](#add-resource).
 
-- Fout: Code = StorageAccountAlreadyTaken; Bericht = het opslag account met de naam store1abc09092019 wordt al gebruikt.
+- Fout: code = StorageAccountAlreadyTaken; Bericht = het opslag account met de naam store1abc09092019 wordt al gebruikt.
 
     Probeer in de sjabloon een andere naam voor het opslag account.
 
@@ -96,11 +94,11 @@ Deze implementatie duurt langer dan de implementatie van de lege sjabloon omdat 
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. U ziet dat er een opslag account is geïmplementeerd.
-1. U ziet dat het label implementatie nu de volgende tekst bevat: **Deployments: 2 geslaagd @ no__t-0.
+1. U ziet dat het label implementatie nu de volgende tekst bevat: **implementaties: 2 geslaagd**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

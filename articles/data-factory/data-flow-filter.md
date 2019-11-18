@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.openlocfilehash: 77587d007d9bfcdc1461201f676c79880bd89d6b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 1daff431fc217c08f3bc3c5aeb3b4711691909c0
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73676177"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132536"
 ---
 # <a name="filter-transformation-in-mapping-data-flow"></a>Trans formatie filteren in gegevens stroom toewijzen
 
@@ -24,7 +24,7 @@ Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de f
 
 ![Filter transformatie](media/data-flow/filter1.png "Filter transformatie")
 
-## <a name="data-flow-script"></a>Gegevens stroom script
+## <a name="data-flow-script"></a>Script voor gegevensstroom
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -37,7 +37,7 @@ Gebruik de opbouw functie voor de data flow-expressie om een expressie voor de f
 
 ### <a name="example"></a>Voorbeeld
 
-Het onderstaande voor beeld is een Conditional Split-trans formatie met de naam `FilterBefore1960` die in de binnenkomende stream `CleanData`neemt. De filter voorwaarde is de expressie `year <= 1960`.
+Het onderstaande voor beeld is een filter transformatie met de naam `FilterBefore1960` die in de binnenkomende stream `CleanData`. De filter voorwaarde is de expressie `year <= 1960`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

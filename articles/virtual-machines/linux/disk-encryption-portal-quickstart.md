@@ -6,16 +6,16 @@ ms.author: mbaldwin
 ms.service: security
 ms.topic: quickstart
 ms.date: 10/02/2019
-ms.openlocfilehash: a480e459fdbbf135b00ee46d1513eddb0f36e09e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e777387437b572eb11ebb7999d87a172b54738bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479613"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151250"
 ---
 # <a name="quickstart-create-and-encrypt-a-virtual-machine-with-the-azure-portal"></a>Snelstartgids: een virtuele machine maken en versleutelen met de Azure Portal
 
-Virtuele Azure-machines (VM's) kunnen gemaakt worden via Azure Portal. De Azure-portal is een gebruikersinterface op basis van een browser voor het maken van VM's en alle verwante resources. In deze Quick Start gebruikt u de Azure Portal voor het implementeren van een virtuele Linux-machine (VM) met Ubuntu 18,04 LTS, het maken van een sleutel kluis voor de opslag van versleutelings sleutels en het versleutelen van de virtuele machine.
+Virtuele Azure-machines (VM's)kunnen worden gemaakt via Azure Portal. De Azure-portal is een gebruikersinterface op basis van een browser voor het maken van VM's en alle verwante resources. In deze Quick Start gebruikt u de Azure Portal voor het implementeren van een virtuele Linux-machine (VM) met Ubuntu 18,04 LTS, het maken van een sleutel kluis voor de opslag van versleutelings sleutels en het versleutelen van de virtuele machine.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -23,36 +23,9 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
-## <a name="create-a-key-vault"></a>Een sleutelkluis maken
-
-1. Selecteer de optie **Een resource maken** in de linkerbovenhoek van Azure Portal
-1. Typ **Sleutelkluis** in het zoekvak.
-1. Selecteer in de lijst met resultaten **Key Vault**.
-1. Selecteer **maken**in de sectie Key Vault.
-1. Kies in het scherm **sleutel kluis maken** een unieke naam voor uw nieuwe sleutel kluis.
-
-    > [!Important]
-    > Elk Key Vault moet een unieke naam hebben. In het volgende voor beeld wordt een Key Vault gemaakt met de naam *myADEKV*, maar u moet iets anders een naam hebben.
-
-1. Selecteer een **abonnement**.
-1.  Selecteer onder **resource groep**de optie **nieuwe maken**. Typ in het pop-upvenster *myResourceGroup* als naam voor de resourcegroep en kies **OK**. 
-
-    ![Scherm voor het maken van de resource groep](./media/disk-encryption/portal-qs-keyvaultcreation.png)
-
-1. Kies in het vervolg keuzemenu **locatie** de optie **VS Oost**.
-1. Houd voor de overige opties de standaardwaarden aan.
-1. Selecteer ' toegangs beleid ', waarmee u naar een nieuw scherm gaat.
-1. Schakel het selectie vakje in naast toegang tot Azure Disk Encryption inschakelen voor volume versleuteling.
-
-    ![Scherm ResourceGroup maken](./media/disk-encryption/portal-qs-keyvault-enable-encryption.png)
-
-1. Klik onder aan het scherm toegangs beleid op ' bekijken + maken '.
-1. Klik na het controleren op maken.
-
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
 1. Kies in de linkerbovenhoek van de Azure-portal **Een resource maken**.
-
 1. Op de nieuwe pagina, onder populair, selecteert u **Ubuntu Server 18,04 LTS**.
 1. Controleer op het tabblad **basis beginselen** onder **Project Details**of het juiste abonnement is geselecteerd.
 1. Voor **resource groep**selecteert u de resource groep die u hebt gemaakt bij het maken van uw sleutel kluis (bijvoorbeeld **myResourceGroup**).
@@ -73,15 +46,24 @@ Het duurt een paar minuten voor uw virtuele machine is geïmplementeerd. Wanneer
 1. Selecteer op de zijbalk links de optie **schijven**.
 1. Selecteer op het scherm schijven de optie **versleuteling**. 
 
-    ![schijven en versleutelings selectie](./media/disk-encryption/portal-qs-disks-to-encryption.png)
+    ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-disks-to-encryption.png)
 
 1. Kies op het scherm versleuteling onder **schijven die moeten worden versleuteld, het** **besturings systeem en de gegevens schijven**.
-1. Klik onder **versleutelings instellingen**op ' Selecteer een sleutel kluis en sleutel voor versleuteling '.
-1. Selecteer in de zijbalk aan de rechter kant de naam van de sleutel kluis die u eerder hebt gemaakt als de waarde voor **sleutel kluis**en klik op **selecteren**.
+1. Kies onder **versleutelings instellingen** **de optie Selecteer een sleutel kluis en sleutel voor versleuteling**.
+1. Selecteer **nieuwe maken**op het scherm **sleutel selecteren in azure Key Vault** .
 
-    ![schijven en versleutelings selectie](./media/disk-encryption/portal-qs-encrypt-vm-screen.png)
-1. Klik boven aan het scherm voor versleuteling op opslaan. Er wordt een waarschuwing weer gegeven dat de VM opnieuw moet worden opgestart. Klik op **Ja**.
+    ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-keyvault-create.png)
 
+1. Zorg ervoor dat in het scherm **sleutel kluis maken** de resource groep gelijk is aan die u hebt gebruikt om de virtuele machine te maken.
+1. Geef uw sleutel kluis een naam.  Elke sleutel kluis in azure moet een unieke naam hebben.
+1. Schakel op het tabblad **toegangs beleid** het selectie vakje **Azure Disk Encryption voor volume versleuteling** in.
+
+    ![schijven en versleutelings selectie](../media/disk-encryption/portal-qs-keyvault-enable.png)
+
+1. Selecteer **Controleren + maken**.  
+1. Nadat de sleutel kluis validatie heeft door gegeven, selecteert u **maken**. Hiermee keert u terug naar het scherm **sleutel selecteren in azure Key Vault** .
+1. Laat het **sleutel** veld leeg en kies **selecteren**.
+1. Klik boven aan het scherm voor versleuteling op **Opslaan**. Er wordt een waarschuwing weer gegeven dat de VM opnieuw moet worden opgestart. Klik op **Ja**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

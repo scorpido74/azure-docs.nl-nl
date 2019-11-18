@@ -1,21 +1,18 @@
 ---
-title: Zelf studie-para meters toevoegen aan Azure Resource Manager sjabloon
+title: Zelf studie-para meters aan sjabloon toevoegen
 description: Voeg para meters toe aan uw Azure Resource Manager sjabloon om deze opnieuw te kunnen bruikbaar maken.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f5e631994223d6362512ed0ddc89d1d3c884fbd4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7a4d8db57167bc82d13b4d46be1abc3518c340e4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001494"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150231"
 ---
-# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Zelfstudie: Para meters toevoegen aan uw Resource Manager-sjabloon
+# <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Zelf studie: para meters toevoegen aan uw Resource Manager-sjabloon
 
 In de [vorige zelf studie](template-tutorial-add-resource.md)hebt u geleerd hoe u een opslag account toevoegt aan de sjabloon en hoe u deze implementeert. In deze zelf studie leert u hoe u de sjabloon kunt verbeteren door para meters toe te voegen. Deze zelf studie duurt ongeveer **14 minuten** .
 
@@ -81,7 +78,7 @@ Deze manier van het afhandelen van updates betekent dat uw sjabloon alle resourc
 
 Met parameters kunt u de implementatie aanpassen door waarden op te geven die voor een specifieke omgeving zijn aangepast. U kunt bijvoorbeeld verschillende waarden door geven op basis van het feit of u implementeert in een omgeving voor ontwikkeling, testen en productie.
 
-In de vorige sjabloon is altijd een Standard_LRS-opslag account geïmplementeerd. Mogelijk wilt u de flexibiliteit om verschillende Sku's te implementeren, afhankelijk van de omgeving. In het volgende voor beeld ziet u de wijzigingen voor het toevoegen van een para meter voor SKU. Kopieer het hele bestand en plak over uw sjabloon.
+In de vorige sjabloon is altijd een Standard_LRS Storage-account geïmplementeerd. Mogelijk wilt u de flexibiliteit om verschillende Sku's te implementeren, afhankelijk van de omgeving. In het volgende voor beeld ziet u de wijzigingen voor het toevoegen van een para meter voor SKU. Kopieer het hele bestand en plak over uw sjabloon.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
 ms.author: radeltch
-ms.openlocfilehash: 333bc12c475cedbd98480e3b596bcc7ad4e30ecc
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba8dc3080f3b584ae3a60576e4cc670dc60c28a0
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824917"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151821"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Azure Virtual Machines hoge Beschik baarheid voor SAP NetWeaver op Red Hat Enterprise Linux met Azure NetApp Files voor SAP-toepassingen
 
@@ -166,11 +166,10 @@ In dit voor beeld hebben we Azure NetApp Files voor alle SAP NetWeaver-bestands 
 
 Houd rekening met de volgende belang rijke overwegingen bij het overwegen van Azure NetApp Files voor de SAP net-Weaver op SUSE-architectuur met hoge Beschik baarheid:
 
-- De minimale capaciteits pool is 4 TiB. De grootte van de capaciteits groep moet een veelvoud zijn van 4 TiB.
+- De minimale capaciteits pool is 4 TiB. De grootte van de capaciteits groep kan worden verhoogd in 1 TiB-stappen.
 - Het minimale volume is 100 GiB
 - Azure NetApp Files en alle virtuele machines, waarbij Azure NetApp Files volumes worden gekoppeld, moeten zich in dezelfde Azure-Virtual Network of in gekoppelde [virtuele netwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) in dezelfde regio bevinden. Azure NetApp Files toegang via VNET-peering in dezelfde regio wordt nu ondersteund. Toegang tot Azure NetApp via wereld wijde peering wordt nog niet ondersteund.
 - Het geselecteerde virtuele netwerk moet een subnet hebben, gedelegeerd aan Azure NetApp Files.
-- Azure NetApp Files ondersteunt momenteel alleen NFSv3 
 - Azure NetApp Files biedt [export beleid](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): u kunt de toegestane clients, het toegangs type (lezen & schrijven, alleen-lezen, enz.) beheren. 
 - Er is nog geen zone bewust van Azure NetApp Files-functie. Momenteel wordt Azure NetApp Files-functie niet geïmplementeerd in alle beschikbaarheids zones in een Azure-regio. Houd rekening met de mogelijke latentie implicaties in sommige Azure-regio's. 
 
@@ -268,18 +267,18 @@ Volg de stappen bij het [instellen van pacemaker op Red Hat Enterprise Linux in 
 
 ### <a name="prepare-for-sap-netweaver-installation"></a>Voorbereiden op SAP NetWeaver-installatie
 
-De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
+De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
 
-1. **[A]** omzetting van hostnaam van installatie
+1. **[A]**  Omzetten van de hostnaam instellen
 
-   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
+   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
     ```
     sudo vi /etc/hosts
     ```
 
-   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
+   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
 
     ```
     # IP address of cluster node 1
@@ -370,6 +369,9 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
     192.168.24.5:/sapQAS/usrsapQASsys /usr/sap/QAS/SYS nfs rw,hard,rsize=65536,wsize=65536,vers=3
     192.168.24.4:/transSAP /usr/sap/trans nfs rw,hard,rsize=65536,wsize=65536,vers=3
    ```
+
+   > [!NOTE]
+   > Zorg ervoor dat u voldoet aan de NFS-protocol versie van de Azure NetApp Files volumes bij het koppelen van de volumes. In dit voor beeld zijn de Azure NetApp Files volumes gemaakt als NFSv3-volumes.  
 
    De nieuwe shares koppelen
 
@@ -685,14 +687,14 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
 
    De volgende items worden voorafgegaan door **[A]** , van toepassing op zowel de voor-en aas, **[P]** -alleen van toepassing op pas of **[S]** -alleen van toepassing op aas.  
 
-1. **[A]** voor het instellen van de naam omzetting van de host kunt u een DNS-server gebruiken of de bestand/etc/hosts op alle knoop punten wijzigen. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
+1. **[A]** voor het instellen van de naam omzetting van de host kunt u een DNS-server gebruiken of de bestand/etc/hosts op alle knoop punten wijzigen. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:  
 
    ```
    sudo vi /etc/hosts
    ```
 
-   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving.
+   Voeg de volgende regels/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving.
 
    ```
    # IP address of the load balancer frontend configuration for SAP NetWeaver ASCS

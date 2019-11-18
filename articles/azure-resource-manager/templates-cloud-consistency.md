@@ -1,23 +1,17 @@
 ---
-title: Sjablonen hergebruiken in verschillende clouds - Azure Resource Manager
+title: Sjablonen opnieuw gebruiken voor verschillende Clouds
 description: Ontwikkel Azure Resource Manager-sjablonen die consistent worden gewerkt voor verschillende cloudomgevingen. Maak een nieuwe of bestaande sjablonen voor Azure Stack bijwerken.
-services: azure-resource-manager
-documentationcenter: na
 author: marcvaneijk
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 38da6d39d095ce27cdd26719d9b8b752d2921bc0
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 2964bb4365a2c153e7bc82c3292545ad4de985eb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164770"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143767"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager-sjablonen voor de consistentie van de cloud ontwikkelen
 
@@ -445,7 +439,7 @@ Eindpunt-naamruimten kan ook worden gebruikt in de uitvoer van een sjabloon als 
 * Verbindingsreeksen (MySql, SQL Server, systeemonderhoud plaatsvindt, aangepaste, NotificationHub, ServiceBus, Event hub, ApiHub, DocDb, RedisCache, PostgreSQL)
 * Traffic Manager
 * Domeinnaamlabel van een openbaar IP-adres
-* Cloud services
+* Cloudservices
 
 In het algemeen niet vastgelegd eindpunten in een sjabloon. De aanbevolen procedure is het gebruik van de sjabloonfunctie verwijzing naar de eindpunten dynamisch ophalen. Bijvoorbeeld, het eindpunt van de meest voorkomende vastgelegd is de naamruimte van het eindpunt voor storage-accounts. Elk opslagaccount heeft een unieke FQDN-naam die is samengesteld door de naam van de storage-account met de eindpunt-naamruimte. Een blob storage-account met de naam mystorageaccount1 resultaten in verschillende FQDN's, afhankelijk van de cloud:
 

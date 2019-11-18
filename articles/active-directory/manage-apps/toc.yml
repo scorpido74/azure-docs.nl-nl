@@ -70,10 +70,10 @@
               href: end-user-experiences.md
     - name: Toepassingsinrichting (SCIM)
       items:
-        - name: Automatisch inrichten voor apps die SCIM ondersteunen
-          href: use-scim-to-provision-users-and-groups.md
         - name: Implementatie van een automatische gebruikersinrichting plannen
           href: plan-auto-user-provisioning.md
+        - name: Handmatige en automatische inrichting
+          href: application-provisioning-config-how-to.md
     - name: Toepassingsproxy voor on-premises apps
       items:
         - name: Toepassingsproxy
@@ -227,28 +227,40 @@
                   href: access-panel-troubleshoot-self-service-access.md
     - name: Toepassingsinrichting (SCIM)
       items:
-        - name: Gebruikersinrichting configureren
+        - name: App-inrichting configureren
           items:
-            - name: Handmatige en automatische inrichting
-              href: application-provisioning-config-how-to.md
             - name: Automatische gebruikersinrichting configureren
               href: configure-automatic-user-provisioning-portal.md
+            - name: SCIM gebruiken voor automatische inrichting
+              href: use-scim-to-provision-users-and-groups.md
             - name: Kenmerktoewijzingen aanpassen
               href: Customize-application-attributes.md
+            - name: Expressies schrijven voor kenmerktoewijzingen
+              href: functions-for-customizing-application-data.md
             - name: Bereik van gebruikers of groepen die moeten worden ingericht
               href: define-conditional-rules-for-provisioning-user-accounts.md
             - name: Verwijdering overslaan voor gebruikers buiten het bereik
               href: skip-out-of-scope-deletions.md
             - name: Inrichtingsstatus en prestaties bewaken
               href: application-provisioning-when-will-provisioning-finish-specific-user.md
-            - name: Rapporteren over het automatisch inrichten van gebruikers
+            - name: Rapport over app-inrichting
               href: check-status-user-account-provisioning.md
             - name: Uw configuratie exporteren en importeren
               href: export-import-provisioning-configuration.md
+            - name: Configuratie automatiseren met behulp van MS Graph
+              href: application-provisioning-configure-api.md
         - name: Problemen met het automatisch inrichten van gebruikers oplossen
           items:
-            - name: Problemen met het automatisch inrichten van gebruikers oplossen
+            - name: Problemen met app-inrichting oplossen
               href: application-provisioning-config-problem.md
+            - name: Quarantinestatus
+              href: application-provisioning-quarantine-status.md
+            - name: Inrichtingslogboeken
+              href: /azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context
+            - name: Een kenmerk synchroniseren voor toewijzing - galerie-app
+              href: user-provisioning-sync-attributes-for-mapping.md
+            - name: Uurregistratie - galerie-app
+              href: application-provisioning-when-will-provisioning-finish.md
             - name: Autorisatieprobleem (kan beheerdersreferenties niet opslaan)
               href: application-provisioning-config-problem-storage-limit.md
             - name: Gebruikers zijn niet ingericht

@@ -171,6 +171,8 @@
           displayName: 'roles, import'
         - name: Vooraf gemaakte modellen gebruiken
           href: howto-add-prebuilt-models.md
+        - name: Entiteit in uiting labelen
+          href: label-entity-example-utterance.md
         - name: Met REST-API's
           items:
             - name: App bouwen met behulp van Node.js
@@ -188,8 +190,8 @@
         - name: Het dashboard gebruiken
           displayName: 'dashboard, analytics, charts, data, unclear predictions, incorrect predictions, imbalance, endpoint hits, status, evaluation, accuracy, active version, problematic intents, nearest rival, usage'
           href: luis-how-to-use-dashboard.md
-        - name: Frasenlijst toevoegen
-          displayName: 'synonym, interchange'
+        - name: Descriptor toevoegen
+          displayName: 'synonym, interchange, phrase list, descriptor'
           href: luis-how-to-add-features.md
         - name: Eindpuntuitingen controleren
           displayName: active learning

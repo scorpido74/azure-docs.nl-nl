@@ -1,25 +1,18 @@
 ---
-title: Overzicht van het SSL-beleid voor de Azure-toepassing-gateway | Microsoft Docs
-description: Meer informatie over hoe u met Azure-toepassing gateway SSL-beleid kunt configureren
+title: Overzicht van SSL-beleid voor Azure-toepassing gateway
+description: Meer informatie over het configureren van SSL-beleid voor Azure-toepassing gateway en het verminderen van de overhead voor versleuteling en ontsleuteling van een back-endserver.
 services: application gateway
-documentationcenter: na
 author: amsriva
-manager: ''
-editor: ''
-tags: azure resource manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure services
-ms.date: 08/03/2017
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 1710635f145136e564a2bad48d539f242c9bc228
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 6b3d52f1f6bd0390ab6ccafa80b2979cb0e498fd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68359910"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130407"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>Overzicht van Application Gateway SSL-beleid
 
@@ -33,27 +26,27 @@ Application Gateway heeft drie vooraf gedefinieerde beveiligings beleidsregels. 
 
 ### <a name="appgwsslpolicy20150501"></a>AppGwSslPolicy20150501
 
-|Eigenschap  |Value  |
+|Eigenschap  |Waarde  |
 |---|---|
-|Name     | AppGwSslPolicy20150501        |
+|Naam     | AppGwSslPolicy20150501        |
 |MinProtocolVersion     | TLSv1_0        |
 |Standaard| Waar (als er geen vooraf gedefinieerd beleid is opgegeven) |
 |CipherSuites     |TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_DHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_DHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_DHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA256<br>TLS_DHE_DSS_WITH_AES_256_CBC_SHA<br>TLS_DHE_DSS_WITH_AES_128_CBC_SHA<br>TLS_RSA_WITH_3DES_EDE_CBC_SHA<br>TLS_DHE_DSS_WITH_3DES_EDE_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401"></a>AppGwSslPolicy20170401
   
-|Eigenschap  |Value  |
+|Eigenschap  |Waarde  |
 |   ---      |  ---       |
-|Name     | AppGwSslPolicy20170401        |
+|Naam     | AppGwSslPolicy20170401        |
 |MinProtocolVersion     | TLSv1_1        |
 |Standaard| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA<br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA |
   
 ### <a name="appgwsslpolicy20170401s"></a>AppGwSslPolicy20170401S
 
-|Eigenschap  |Value  |
+|Eigenschap  |Waarde  |
 |---|---|
-|Name     | AppGwSslPolicy20170401S        |
+|Naam     | AppGwSslPolicy20170401S        |
 |MinProtocolVersion     | TLSv1_2        |
 |Standaard| False |
 |CipherSuites     |TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256 <br>    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384 <br>    TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA <br>TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256<br>TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384<br>TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384<br>TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256<br>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA<br>TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_256_GCM_SHA384<br>TLS_RSA_WITH_AES_128_GCM_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA256<br>TLS_RSA_WITH_AES_128_CBC_SHA256<br>TLS_RSA_WITH_AES_256_CBC_SHA<br>TLS_RSA_WITH_AES_128_CBC_SHA<br> |

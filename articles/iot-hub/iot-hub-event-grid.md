@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub en Event Grid | Microsoft Docs
 description: Gebruik Azure Event Grid om processen te activeren op basis van acties die in IoT Hub plaatsvinden.
-author: kgremban
+author: robinsh
 manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: kgremban
-ms.openlocfilehash: a2bb961989d5bb1cc879b197e45d25b566c56e83
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: robinsh
+ms.openlocfilehash: 2969791204474a7d73493ce6397c52255f7eab4a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73906777"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151310"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reageren op IoT Hub gebeurtenissen met behulp van Event Grid om acties te activeren
 
@@ -33,11 +33,11 @@ IoT Hub publiceert de volgende gebeurtenis typen:
 
 | Gebeurtenis type | Beschrijving |
 | ---------- | ----------- |
-| Micro soft. devices. DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
-| Micro soft. devices. DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. |
-| Micro soft. devices. DeviceConnected | Gepubliceerd wanneer een apparaat is verbonden met een IoT-hub. |
-| Micro soft. devices. DeviceDisconnected | Gepubliceerd wanneer een apparaat wordt losgekoppeld van een IoT-hub. |
-| Micro soft. devices. DeviceTelemetry | Gepubliceerd wanneer een telemetrie-bericht van een apparaat wordt verzonden naar een IoT-hub |
+| Microsoft.Devices.DeviceCreated | Gepubliceerd wanneer een apparaat wordt geregistreerd bij een IoT-hub. |
+| Microsoft.Devices.DeviceDeleted | Gepubliceerd wanneer een apparaat wordt verwijderd uit een IoT-hub. |
+| Microsoft.Devices.DeviceConnected | Gepubliceerd wanneer een apparaat is verbonden met een IoT-hub. |
+| Microsoft.Devices.DeviceDisconnected | Gepubliceerd wanneer een apparaat wordt losgekoppeld van een IoT-hub. |
+| Microsoft.Devices.DeviceTelemetry | Gepubliceerd wanneer een telemetrie-bericht van een apparaat wordt verzonden naar een IoT-hub |
 
 Gebruik de Azure Portal of de Azure CLI om te configureren welke gebeurtenissen van elke IoT-hub moeten worden gepubliceerd. Voor een voor beeld kunt u de zelf studie [gebruiken om e-mail meldingen over Azure IOT hub-gebeurtenissen te verzenden met Logic apps](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
@@ -176,13 +176,21 @@ devices/{deviceId}
 
 Met Event Grid kunt u ook kenmerken van elke gebeurtenis filteren, met inbegrip van de gegevens inhoud. Zo kunt u kiezen welke gebeurtenissen op basis van de inhoud van het telemetrie-bericht worden geleverd. Zie [Geavanceerde filters](../event-grid/event-filtering.md#advanced-filtering) om voor beelden te bekijken. Voor het filteren van de hoofd tekst van de telemetrie-berichten moet u het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de eigenschappen van het bericht [systeem](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties). Beide eigenschappen zijn niet hoofdletter gevoelig.
 
-Voor niet-telemetrie-gebeurtenissen zoals DeviceConnected, DeviceDisconnected, DeviceCreated en DeviceDeleted kan de Event Grid-filtering worden gebruikt bij het maken van het abonnement. Voor telemetrie-gebeurtenissen kunnen gebruikers naast het filteren in Event Grid ook filteren op apparaatdubbels, bericht eigenschappen en hoofd tekst via de routerings query voor berichten. We maken een standaard [route](iot-hub-devguide-messages-d2c.md) in IOT hub, op basis van uw event grid-abonnement op telemetrie van apparaten. Deze enkele route kan al uw Event Grid abonnementen afhandelen. Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt u uw [routerings query](iot-hub-devguide-routing-query-syntax.md)bijwerken. De routerings query kan alleen worden toegepast op de bericht tekst als de hoofd tekst JSON is. U moet ook het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de [Eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)van het bericht systeem.
+Voor niet-telemetrie-gebeurtenissen zoals DeviceConnected, DeviceDisconnected, DeviceCreated en DeviceDeleted kan de Event Grid-filtering worden gebruikt bij het maken van het abonnement. Voor telemetrie-gebeurtenissen kunnen gebruikers naast het filteren in Event Grid ook filteren op apparaatdubbels, bericht eigenschappen en hoofd tekst via de routerings query voor berichten. 
+
+Wanneer u zich abonneert op telemetrie-gebeurtenissen via Event Grid, maakt IoT Hub een standaard bericht route voor het verzenden van het gegevens bron type van de apparaat berichten naar Event Grid. Zie [IOT hub Message Routing](iot-hub-devguide-messages-d2c.md)(Engelstalig) voor meer informatie over het routeren van berichten. Deze route wordt weer gegeven in de portal onder IoT Hub > bericht routering. Er wordt slechts één route naar Event Grid gemaakt, ongeacht het aantal voor beeld-abonnementen dat voor telemetrie-gebeurtenissen is gemaakt. Als u bijvoorbeeld verschillende abonnementen met verschillende filters nodig hebt, kunt u de operator OR gebruiken in deze query's op dezelfde route. Het maken en verwijderen van de route wordt beheerd via het abonnement op telemetrie-gebeurtenissen via Event Grid. U kunt geen route naar Event Grid maken of verwijderen met behulp van IoT Hub-bericht routering.
+
+Als u berichten wilt filteren voordat telemetriegegevens worden verzonden, kunt u uw [routerings query](iot-hub-devguide-routing-query-syntax.md)bijwerken. De routerings query kan alleen worden toegepast op de bericht tekst als de hoofd tekst JSON is. U moet ook het content type instellen op **Application/JSON** en ContentEncoding naar **UTF-8** in de [Eigenschappen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax#system-properties)van het bericht systeem.
 
 ## <a name="limitations-for-device-connected-and-device-disconnected-events"></a>Beperkingen voor de verbinding met het apparaat en de verbroken gebeurtenissen van het apparaat
 
 U moet de koppeling D2C of de C2D-koppeling voor uw apparaat openen om verbonden apparaten met een apparaat te ontvangen. Als uw apparaat gebruikmaakt van het MQTT-protocol, blijft de C2D IoT Hub-koppeling geopend. Voor AMQP kunt u de koppeling C2D openen door de [API receive async](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.receiveasync?view=azure-dotnet)aan te roepen.
 
-De koppeling D2C is open als u telemetrie verzendt. Als de verbinding met het apparaat is Flik keren, wat betekent dat het apparaat regel matig verbinding maakt en de verbinding verbreekt, wordt niet elke verbindings status verzonden, maar wordt de verbindings status gepubliceerd waarvan een moment opname elke minuut wordt gemaakt. In het geval van een IoT Hub onderbreking publiceren we de status van de apparaat-verbinding zodra de storing is verlopen. Als het apparaat tijdens die onderbreking wordt losgekoppeld, wordt de verbroken gebeurtenis van het apparaat binnen tien minuten gepubliceerd.
+De koppeling D2C is open als u telemetrie verzendt. 
+
+Als de verbinding met het apparaat verloopt, wat betekent dat het apparaat regel matig verbinding maakt en de verbinding verbreekt, zullen we niet elke status van één verbinding verzenden, maar wordt de *laatste* verbindings status gepubliceerd, die uiteindelijk consistent is. Als uw apparaat in eerste instantie de status verbonden heeft, kunt u een paar seconden connectiviteits bewegingen maken en vervolgens weer in de status verbonden. Er worden geen nieuwe verbindings status gebeurtenissen voor apparaten gepubliceerd sinds de eerste verbindings status. 
+
+In het geval van een IoT Hub onderbreking publiceren we de status van de apparaat-verbinding zodra de storing is verlopen. Als het apparaat tijdens die onderbreking wordt losgekoppeld, wordt de verbroken gebeurtenis van het apparaat binnen tien minuten gepubliceerd.
 
 ## <a name="tips-for-consuming-events"></a>Tips voor het gebruiken van gebeurtenissen
 

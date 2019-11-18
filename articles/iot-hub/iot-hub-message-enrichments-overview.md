@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 83114023eb35221bfa53e3ce4de8a861948c7a3a
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a623c8d3ff755338ac8b40faa970f2f007115a02
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005827"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144871"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Verrijkingen van berichten voor IoT Hub berichten van apparaat-naar-Cloud
 
@@ -54,11 +54,21 @@ De berichten kunnen afkomstig zijn van elke gegevens bron die wordt ondersteund 
 
 U kunt verrijkingen toevoegen aan berichten die worden verzonden naar het ingebouwde eind punt van een IoT Hub, of berichten die worden doorgestuurd naar aangepaste eind punten, zoals Azure Blob Storage, een Service Bus wachtrij of een Service Bus onderwerp.
 
-U kunt ook verrijkingen toevoegen aan berichten die worden gepubliceerd naar Event Grid door het eind punt te selecteren als Event Grid. Zie [IOT hub en Event grid](iot-hub-event-grid.md)voor meer informatie.
+U kunt verrijkingen toevoegen aan berichten die worden gepubliceerd naar Event Grid door het eind punt te selecteren als Event Grid. We maken een standaard route in IoT Hub naar telemetrie van apparaten, op basis van uw Event Grid-abonnement. Deze enkele route kan al uw Event Grid abonnementen afhandelen. U kunt verrijkingen configureren voor het gebeurtenis raster [punt nadat u het event grid-abonnement hebt gemaakt voor telemetrie van apparaten. Zie [IOT hub en Event grid](iot-hub-event-grid.md)voor meer informatie.
 
 Verrijkingen worden toegepast per eind punt. Als u vijf verrijkingen voor een bepaald eind punt opgeeft, worden alle berichten die naar dat eind punt gaan, voorzien van dezelfde vijf verrijkingen.
 
-Zie de [zelf studie](tutorial-message-enrichments.md) over het gebruik van berichten voor meer informatie over hoe u verrijkingen van berichten kunt uitproberen
+Verrijkingen kunnen worden geconfigureerd met behulp van de volgende methoden:
+
+| **Methode** | **Opdracht** |
+| ----- | -----| 
+| Portal | [Azure Portal](https://portal.azure.com) | Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van een bericht | 
+| Azure-CLI   | [AZ IOT hub-bericht-verrijking](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
+| Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment?view=azps-2.8.0) |
+
+Het toevoegen van bericht verrijkingen voegt geen latentie toe aan de route ring van berichten.
+
+Raadpleeg de [zelf studie](tutorial-message-enrichments.md) voor het verbeteren van het bericht om verrijkingen van berichten te proberen
 
 ## <a name="limitations"></a>Beperkingen
 

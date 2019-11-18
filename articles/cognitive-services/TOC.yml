@@ -17,6 +17,8 @@
   items:
     - name: Ondersteuning voor containers
       href: cognitive-services-container-support.md
+    - name: Tags voor containerinstallatiekopieën
+      href: ./containers/container-image-tags.md
     - name: Veelgestelde vragen over containers
       href: ./containers/container-faq.md
     - name: Containerrecepten

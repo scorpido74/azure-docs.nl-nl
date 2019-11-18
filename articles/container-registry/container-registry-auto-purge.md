@@ -6,22 +6,22 @@ author: dlepow
 manager: gwallace
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 08/14/2019
 ms.author: danlep
-ms.openlocfilehash: 4fb9eb8a3ef937ce5ed222c7814a8f191e3874f2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6841bf18f57f514455f7680126c3cc58e7ebd7b1
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803608"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148931"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Afbeeldingen automatisch uit een Azure container Registry verwijderen
 
 Wanneer u een Azure container Registry gebruikt als onderdeel van een werk stroom voor ontwikkel aars, kan het REGI ster snel worden gevuld met afbeeldingen of andere artefacten die na een korte periode niet nodig zijn. Mogelijk wilt u alle labels verwijderen die ouder zijn dan een bepaalde duur of die overeenkomen met een opgegeven naam filter. Als u meerdere artefacten snel wilt verwijderen, wordt in dit artikel de `acr purge`-opdracht geïntroduceerd die u kunt uitvoeren als een taak op aanvraag of [geplande](container-registry-tasks-scheduled.md) ACR. 
 
-De `acr purge` opdracht wordt momenteel gedistribueerd in een open bare container installatie kopie (`mcr.microsoft.com/acr/acr-cli:0.1`), gebouwd op basis van de bron code in de [ACR-cli](https://github.com/Azure/acr-cli) opslag plaats in github. Voer in een ACR-taak de opdracht uit met behulp van de [alias](container-registry-tasks-reference-yaml.md#aliases)`acr purge`.
+De `acr purge` opdracht wordt momenteel gedistribueerd in een open bare container installatie kopie (`mcr.microsoft.com/acr/acr-cli:0.1`), gebouwd op basis van de bron code in de [ACR-cli](https://github.com/Azure/acr-cli) opslag plaats in github.
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de ACR-taak voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.76 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de ACR-taak voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.69 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
@@ -63,8 +63,8 @@ In dit en de volgende voor beelden wordt het REGI ster waarin de `acr purge` opd
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  filter 'hello-world:.*' --untagged --ago 1d"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --untagged --ago 1d"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -78,8 +78,8 @@ In het volgende voor beeld wordt de opdracht [AZ ACR Task Create][az-acr-task-cr
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  --filter 'hello-world:.*' --ago 7d"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 7d"
 
 az acr task create --name purgeTask \
   --cmd "$PURGE_CMD" \
@@ -98,8 +98,8 @@ Met de volgende on-demand taak wordt bijvoorbeeld een time-outperiode van 3600 s
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
-  --filter 'hello-world:.*' --ago 1d --untagged"
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} --filter 'hello-world:.*' --ago 1d --untagged"
 
 az acr run \
   --cmd "$PURGE_CMD" \
@@ -120,7 +120,8 @@ In het volgende voor beeld selecteert het filter in elke opslag plaats alle tags
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry \$Registry \
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged --dry-run"
 
@@ -160,7 +161,8 @@ Nadat u de droge uitvoering hebt gecontroleerd, maakt u een geplande taak om de 
 
 ```azurecli
 # Environment variable for container command line
-PURGE_CMD="acr purge --registry $Registry \
+PURGE_CMD="mcr.microsoft.com/acr/acr-cli:0.1 purge \
+  --registry {{.Run.Registry}} \
   --filter 'samples/devimage1:.*' --filter 'samples/devimage2:.*' \
   --ago 0d --untagged"
 

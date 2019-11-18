@@ -1,147 +1,178 @@
-- name: Azure Container Registry
+- name: Documentatie voor Azure Container Registry
   href: ./index.yml
-- name: Overzicht
-  items:
-    - name: Over Container Registry
-      href: container-registry-intro.md
-- name: Snelstartgidsen
+- name: Containerregisters
   expanded: true
   items:
-    - name: Een containerregister maken - CLI
-      href: container-registry-get-started-azure-cli.md
-    - name: Een containerregister maken - Portal
-      href: container-registry-get-started-portal.md
-    - name: Een containerregister maken - PowerShell
-      href: container-registry-get-started-powershell.md
-    - name: Installatiekopieën compileren en uitvoeren - CLI
-      href: container-registry-quickstart-task-cli.md
-    - name: Gebeurtenissen verzenden naar Event Grid - CLI
-      href: container-registry-event-grid-quickstart.md
-- name: Zelfstudies
-  items:
-    - name: Installatiekopieën compileren
+    - name: Overzicht
+      expanded: false
       items:
-        - name: 1 - Installatiekopieën in Azure compileren
-          href: container-registry-tutorial-quick-task.md
-        - name: 2a - Automatisch bouwen wanneer code is doorgevoerd
-          href: container-registry-tutorial-build-task.md
-        - name: 2b - Taak met meerdere stappen wanneer code is ingevoerd
-          href: container-registry-tutorial-multistep-task.md
-        - name: 3 - Updates van basisinstallatiekopieën compileren
-          href: container-registry-tutorial-base-image-update.md
-    - name: Geo-replicatie toepassen voor een register
+        - name: Over Container Registry
+          href: container-registry-intro.md
+    - name: Snelstartgidsen
+      expanded: true
       items:
-        - name: 1 - Containerregister voorbereiden
-          href: container-registry-tutorial-prepare-registry.md
-        - name: 2 - Webtoepassing implementeren
-          href: container-registry-tutorial-deploy-app.md
-        - name: 3 - Webtoepassing bijwerken
-          href: container-registry-tutorial-deploy-update.md
-- name: Concepten
-  items:
-    - name: Containerregister-SKU's en -limieten
-      href: container-registry-skus.md
-    - name: 'Registers, opslagplaatsen en installatiekopieën'
-      href: container-registry-concepts.md
-    - name: Afbeeldingopslag
-      href: container-registry-storage.md
-    - name: Indelingen voor inhoud
-      href: container-registry-image-formats.md
-    - name: Installatiekopieën taggen en versies beheren
-      href: container-registry-image-tag-version.md
-    - name: Geo-replicatie
-      href: container-registry-geo-replication.md
-    - name: Best practices voor het register
-      href: container-registry-best-practices.md
-- name: Handleidingen
-  items:
-    - name: Registerbewerkingen
+        - name: Een containerregister maken - CLI
+          href: container-registry-get-started-azure-cli.md
+        - name: Een containerregister maken - Portal
+          href: container-registry-get-started-portal.md
+        - name: Een containerregister maken - PowerShell
+          href: container-registry-get-started-powershell.md
+        - name: Gebeurtenissen verzenden naar Event Grid - CLI
+          href: container-registry-event-grid-quickstart.md
+    - name: Zelfstudies
+      expanded: false
       items:
-        - name: Een installatiekopie pushen en ophalen
-          href: container-registry-get-started-docker-cli.md
-        - name: Een OCI-certificaat pushen en ophalen
-          href: container-registry-oci-artifacts.md
-        - name: Opslagplaatsen weergeven
-          href: container-registry-repositories.md
-        - name: Containerinstallatiekopieën importeren
-          href: container-registry-import-images.md
-        - name: Containerinstallatiekopieën vergrendelen
-          href: container-registry-image-lock.md
-        - name: Containerinstallatiekopieën verwijderen
+        - name: Geo-replicatie toepassen voor een register
           items:
-            - name: Afbeeldingsgegevens verwijderen - CLI
-              href: container-registry-delete.md
-            - name: Bewaarbeleid voor manifesten zonder tags (preview)
-              href: container-registry-retention-policy.md
-            - name: Automatisch tags en manifesten leegmaken (preview)
-              href: container-registry-auto-purge.md
-        - name: ACR-webhooks gebruiken
-          href: container-registry-webhook.md
-        - name: Opslagplaatsen voor Helm-grafieken (preview)
-          href: container-registry-helm-repos.md
-    - name: Verificatie en beveiliging
+            - name: 1 - Containerregister voorbereiden
+              href: container-registry-tutorial-prepare-registry.md
+            - name: 2 - Webtoepassing implementeren
+              href: container-registry-tutorial-deploy-app.md
+            - name: 3 - Webtoepassing bijwerken
+              href: container-registry-tutorial-deploy-update.md
+    - name: Concepten
+      expanded: false
       items:
-        - name: Toegang beperken met een virtueel netwerk (preview)
-          href: container-registry-vnet.md
-        - name: Toegang achter een firewall
-          href: container-registry-firewall-access-rules.md
-        - name: Verificatie
+        - name: Containerregister-SKU's en -limieten
+          href: container-registry-skus.md
+        - name: 'Registers, opslagplaatsen en installatiekopieën'
+          href: container-registry-concepts.md
+        - name: Afbeeldingopslag
+          href: container-registry-storage.md
+        - name: Indelingen voor inhoud
+          href: container-registry-image-formats.md
+        - name: Installatiekopieën taggen en versies beheren
+          href: container-registry-image-tag-version.md
+        - name: Geo-replicatie
+          href: container-registry-geo-replication.md
+        - name: Best practices voor het register
+          href: container-registry-best-practices.md
+    - name: Handleidingen
+      expanded: false
+      items:
+        - name: Registerbewerkingen
           items:
-            - name: Verificatieoverzicht
-              href: container-registry-authentication.md
-            - name: Verificatie van service-principal
-              href: container-registry-auth-service-principal.md
-            - name: Verificatie van beheerde identiteit
-              href: container-registry-authentication-managed-identity.md
-            - name: Verificatie via Azure Container Instances
-              href: container-registry-auth-aci.md
-            - name: Verificatie via Azure Kubernetes Service (AKS)
-              href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-        - name: Op rollen gebaseerd toegangsbeheer
-          href: container-registry-roles.md
-        - name: Machtigingen voor opslagplaatsen (preview)
-          href: container-registry-repository-scoped-permissions.md
-        - name: Inhoud vertrouwen
-          href: container-registry-content-trust.md
-        - name: Scannen van afbeeldingen met Security Center (preview)
-          href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-    - name: ACR-taken
+            - name: Een installatiekopie pushen en ophalen
+              href: container-registry-get-started-docker-cli.md
+            - name: Een OCI-certificaat pushen en ophalen
+              href: container-registry-oci-artifacts.md
+            - name: Opslagplaatsen weergeven
+              href: container-registry-repositories.md
+            - name: Containerinstallatiekopieën importeren
+              href: container-registry-import-images.md
+            - name: Containerinstallatiekopieën vergrendelen
+              href: container-registry-image-lock.md
+            - name: Containerinstallatiekopieën verwijderen
+              items:
+                - name: Afbeeldingsgegevens verwijderen - CLI
+                  href: container-registry-delete.md
+                - name: Bewaarbeleid voor manifesten zonder tags (preview)
+                  href: container-registry-retention-policy.md
+                - name: Automatisch tags en manifesten leegmaken (preview)
+                  href: container-registry-auto-purge.md
+            - name: ACR-webhooks gebruiken
+              href: container-registry-webhook.md
+            - name: Opslagplaatsen voor Helm-grafieken (preview)
+              href: container-registry-helm-repos.md
+        - name: Verificatie en beveiliging
+          items:
+            - name: Toegang beperken met een virtueel netwerk (preview)
+              href: container-registry-vnet.md
+            - name: Toegang achter een firewall
+              href: container-registry-firewall-access-rules.md
+            - name: Verificatie
+              items:
+                - name: Verificatieoverzicht
+                  href: container-registry-authentication.md
+                - name: Verificatie van service-principal
+                  href: container-registry-auth-service-principal.md
+                - name: Verificatie van beheerde identiteit
+                  href: container-registry-authentication-managed-identity.md
+                - name: Verificatie via Azure Container Instances
+                  href: container-registry-auth-aci.md
+                - name: Verificatie via Azure Kubernetes Service (AKS)
+                  href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+            - name: Op rollen gebaseerd toegangsbeheer
+              href: container-registry-roles.md
+            - name: Machtigingen voor opslagplaatsen (preview)
+              href: container-registry-repository-scoped-permissions.md
+            - name: Inhoud vertrouwen
+              href: container-registry-content-trust.md
+            - name: Scannen van afbeeldingen met Security Center (preview)
+              href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+        - name: Registers en andere Azure-services
+          expanded: false
+          items:
+            - name: Azure Container Instances
+              href: ../container-instances/container-instances-tutorial-prepare-app.md
+            - name: Azure Kubernetes Service (AKS)
+              href: ../aks/tutorial-kubernetes-prepare-app.md
+            - name: Service Fabric
+              href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+        - name: Controleren
+          expanded: false
+          items:
+            - name: Diagnostische en auditlogboeken (preview)
+              href: container-registry-diagnostics-audit-logs.md
+        - name: Problemen oplossen
+          expanded: false
+          items:
+            - name: Algemene problemen detecteren
+              href: container-registry-check-health.md
+            - name: Veelgestelde vragen
+              href: container-registry-faq.md
+- name: Taken
+  expanded: true
+  items:
+    - name: Overzicht
+      expanded: false
       items:
-        - name: Overzicht van ACR-taken
+        - name: Over ACR-taken
           href: container-registry-tasks-overview.md
-        - name: Geplande taken
-          href: container-registry-tasks-scheduled.md
+    - name: Snelstartgidsen
+      expanded: true
+      items:
+        - name: 'Installatiekopieën compileren, pushen en uitvoeren - CLI'
+          href: container-registry-quickstart-task-cli.md
+    - name: Zelfstudies
+      expanded: false
+      items:
+        - name: Compileren van containerinstallatiekopieën automatiseren
+          items:
+            - name: Compileren vanuit broncontext
+              href: container-registry-tutorial-quick-task.md
+            - name: Compileren op basis van doorgevoerde code
+              href: container-registry-tutorial-build-task.md
+            - name: Taak met meerdere stappen wanneer code is doorgevoerd
+              href: container-registry-tutorial-multistep-task.md
+            - name: Compileren op basis van update aan basisinstallatiekopie
+              href: container-registry-tutorial-base-image-update.md
+            - name: Een taak plannen
+              href: container-registry-tasks-scheduled.md
+    - name: Voorbeelden
+      expanded: false
+      items:
+        - name: YAML en Dockerfiles
+          href: container-registry-tasks-samples.md
+    - name: Concepten
+      items:
         - name: Taken met meerdere stappen
           href: container-registry-tasks-multi-step.md
-        - name: Een installatiekopie maken met Buildpacks (preview)
-          href: container-registry-tasks-pack-build.md
+    - name: Handleidingen
+      expanded: false
+      items:
         - name: Toegang tot beveiligde resources met beheerde identiteiten
           items:
             - name: Een beheerde identiteit inschakelen voor een taak
               href: container-registry-tasks-authentication-managed-identity.md
-            - name: Verificatie tussen meerdere registers van een taak
+            - name: Verificatie tussen meerdere registers
               href: container-registry-tasks-cross-registry-authentication.md
             - name: Externe verificatie met behulp van een sleutelkluis
               href: container-registry-tasks-authentication-key-vault.md
-    - name: Registers en andere Azure-services
-      items:
-        - name: Azure Container Instances
-          href: ../container-instances/container-instances-tutorial-prepare-app.md
-        - name: Azure Kubernetes Service (AKS)
-          href: ../aks/tutorial-kubernetes-prepare-app.md
-        - name: Service Fabric
-          href: ../service-fabric/service-fabric-tutorial-create-container-images.md
-    - name: Controleren
-      items:
-        - name: Diagnostische en auditlogboeken (preview)
-          href: container-registry-diagnostics-audit-logs.md
-    - name: Problemen oplossen
-      items:
-        - name: Algemene problemen detecteren
-          href: container-registry-check-health.md
-        - name: Veelgestelde vragen
-          href: container-registry-faq.md
+        - name: Een installatiekopie maken met Buildpacks (preview)
+          href: container-registry-tasks-pack-build.md
 - name: Naslaginformatie
+  expanded: false
   items:
     - name: Azure-CLI
       href: /cli/azure/acr
@@ -159,19 +190,15 @@
       href: /javascript/api/overview/azure/container-registry
     - name: Resource Manager-sjabloon
       href: /azure/templates/microsoft.containerregistry/registries
-    - name: ACR-taken YAML
-      href: container-registry-tasks-reference-yaml.md
     - name: Webhook-schema
       href: container-registry-webhook-reference.md
     - name: Event Grid-schema
       href: ../event-grid/event-schema-container-registry.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
     - name: Fouten in statuscontrole
       href: container-registry-health-error-reference.md
-      maintainContext: true
 - name: Resources
+  expanded: false
   items:
-    - name: Uw vaardigheden ontwikkelen met Microsoft Learn
-      href: /learn/browse/?products=azure-container-registry
     - name: Beschikbaarheid in regio’s
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Prijzen

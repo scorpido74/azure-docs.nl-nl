@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 12/19/2018
-ms.openlocfilehash: bd42117b384b9e384d59f9f4298c937135cafd34
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f17c588d28d0904041970eee8e9aa2201f905836
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73810171"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151429"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance"></a>Intelligent Insights met behulp van AI om database prestaties te bewaken en op te lossen
 
@@ -66,6 +66,17 @@ Voor een praktische beschrijving over het gebruik van Intelligent Insights met A
 
 Intelligent Insights schijnen bij het detecteren en oplossen van problemen met SQL Database prestaties. Zie [problemen oplossen Azure SQL database prestatie problemen met intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md)om intelligent Insights te gebruiken voor het oplossen van problemen met de SQL database en de prestaties van de beheerde exemplaar database.
 
+## <a name="intelligent-insights-options"></a>Intelligent Insights opties
+
+Intelligent Insights beschik bare opties in Azure SQL Database zijn:
+
+| Intelligent Insights optie | Ondersteuning voor één data base en gepoolde data base | Ondersteuning voor instance data base |
+| :----------------------------- | ----- | ----- |
+| **Intelligent Insights configureren** : Configureer intelligent Insights analyse voor uw data bases. | Ja | Ja | 
+| **Stream inzichten op Azure SQL-analyse** --streamen naar Azure SQL-analyse bewakings oplossing voor Azure SQL database. | Ja | Ja | 
+| **Stream Insights naar Event hub** -stream insights naar Event hubs voor verdere aangepaste integraties. | Ja | Ja | 
+| **Stream inzichten om** inzicht te krijgen in azure Storage streamen om te Azure Storage voor verdere analyse en lange termijn archivering. | Ja | Ja |
+
 ## <a name="configure-intelligent-insights"></a>Intelligent Insights configureren
 
 De uitvoer van de Intelligent Insights is een slim logboek voor diagnostische gegevens over prestaties. Dit logboek kan op verschillende manieren worden gebruikt om het te streamen naar Azure SQL-analyse, Azure Event Hubs en Azure Storage of een product van derden.
@@ -92,7 +103,7 @@ Als u Intelligent Insights met Azure SQL-analyse wilt gebruiken, configureert u 
 
 In het volgende voor beeld ziet u een Intelligent Insights die wordt weer gegeven via Azure SQL-analyse:
 
-![Intelligent Insights rapport](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
+![Intelligent Insights-rapport](./media/sql-database-intelligent-insights/intelligent-insights-azure-sql-analytics.png)
 
 ### <a name="set-up-with-event-hubs"></a>Instellen met Event Hubs
 
@@ -112,7 +123,7 @@ Zie [het logboek voor diagnostische gegevens over de Intelligent Insights-data b
 
 De metrische gegevens die worden gebruikt voor detectie modellen die Intelligent Insights genereren, zijn gebaseerd op bewaking:
 
-- Query duur
+- Queryduur
 - Time-outaanvragen
 - Buitensporige wacht tijd
 - Aanvragen met fouten
@@ -127,7 +138,7 @@ Alle metrische gegevens worden beschouwd als samen in verschillende relaties via
 - Er is een analyse van de hoofd oorzaak van het probleem gedetecteerd.
 - Aanbevelingen voor het verbeteren van de prestaties van de bewaakte SQL database, waar mogelijk.
 
-## <a name="query-duration"></a>Query duur
+## <a name="query-duration"></a>Queryduur
 
 Het model voor het degraderen van de duur van de query analyseert afzonderlijke query's en detecteert de toename in de tijd die nodig is voor het compileren en uitvoeren van een query vergeleken met de basis lijn van de prestaties.
 

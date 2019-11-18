@@ -1,27 +1,24 @@
 ---
-title: Azure-resources verplaatsen naar een nieuw abonnement of een nieuwe resource groep | Microsoft Docs
+title: Resources verplaatsen naar een nieuw abonnement of een nieuwe resource groep
 description: Azure Resource Manager gebruiken voor resources verplaatsen naar een nieuwe resourcegroep of abonnement.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 08/19/2019
-ms.author: tomfitz
-ms.openlocfilehash: 69cd6031111c72d54cb87975c2040078a9965821
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.date: 11/08/2019
+ms.openlocfilehash: f106de7fd35bdbe91033af173b1f338dd251f4e8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70035558"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149684"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Resources verplaatsen naar een nieuwe resource groep of een nieuw abonnement
 
-In dit artikel wordt beschreven hoe u Azure-resources verplaatst naar een ander Azure-abonnement of een andere resource groep onder hetzelfde abonnement. U kunt de Azure Portal, Azure PowerShell, Azure CLI of de REST API gebruiken om resources te verplaatsen.
+In dit artikel wordt beschreven hoe u Azure-resources verplaatst naar een ander Azure-abonnement of een andere resource groep onder hetzelfde abonnement. U kunt resources verplaatsen via de Azure-portal, Azure PowerShell, Azure CLI of de REST API.
 
-Zowel de bron groep als de doel groep worden tijdens de verplaatsings bewerking vergrendeld. Schrijf en verwijderbewerkingen op de brongroepen zijn geblokkeerd totdat de verplaatsing is voltooid. Deze vergrendeling betekent dat u kunt geen toevoegen, bijwerken of verwijderen van resources in de resourcegroepen, maar dit betekent niet dat de resources zijn geblokkeerd. Als u een SQL-Server en de bijbehorende database naar een nieuwe resourcegroep verplaatsen, er een toepassing die gebruikmaakt van de database zonder uitvaltijd. Dit kan nog steeds lezen en schrijven naar de database.
+Zowel de bron groep als de doel groep worden tijdens de verplaatsings bewerking vergrendeld. Schrijf- en verwijderingsbewerkingen voor de resourcegroepen worden vergrendeld tot de bewerking is voltooid. Deze vergren deling betekent dat u geen resources in de resource groepen kunt toevoegen, bijwerken of verwijderen. Dit betekent niet dat de resources zijn geblokkeerd. Als u bijvoorbeeld een SQL-server en de bijbehorende database naar een nieuwe resourcegroep verplaatst, heeft de toepassing die gebruikmaakt van de database geen last van downtime. De server kan nog steeds naar de database schrijven en deze lezen. De vergren deling kan Maxi maal vier uur duren, maar de meeste verplaatsingen worden veel minder tijd in beslag.
 
-Als u een resource verplaatst, wordt deze alleen verplaatst naar een nieuwe resource groep of een nieuw abonnement. De locatie van de resource wordt niet gewijzigd.
+Als u een resource verplaatst, wordt deze alleen verplaatst naar een nieuwe resourcegroep of nieuw abonnement. Hierdoor wordt de locatie van de resource niet gewijzigd.
 
-## <a name="checklist-before-moving-resources"></a>Controlelijst voor het verplaatsen van resources
+## <a name="checklist-before-moving-resources"></a>Controlelijst voordat u de resource verplaatst
 
 Voordat u een resource verplaatst, moeten er enkele belangrijke stappen worden uitgevoerd. U kunt fouten voorkomen door te controleren of aan de volgende voorwaarden is voldaan.
 
@@ -108,9 +105,9 @@ Het verplaatsen van resources van het ene naar het andere abonnement is een proc
 
 Voor illustratie doeleinden hebben we slechts één afhankelijke resource.
 
-* Stap 1: Als afhankelijke resources over verschillende resource groepen worden gedistribueerd, moet u deze eerst verplaatsen naar één resource groep.
+* Stap 1: als afhankelijke resources worden gedistribueerd over verschillende resource groepen, moet u deze eerst verplaatsen naar één resource groep.
 * Stap 2: Verplaats de resource en afhankelijke resources samen van het bron abonnement naar het doel abonnement.
-* Stap 3: U kunt de afhankelijke resources eventueel opnieuw distribueren naar verschillende resource groepen binnen het doel abonnement. 
+* Stap 3: de afhankelijke resources eventueel opnieuw distribueren naar verschillende resource groepen binnen het doel abonnement. 
 
 ## <a name="validate-move"></a>Verplaatsen valideren
 
@@ -233,6 +230,51 @@ In de hoofdtekst van de aanvraag geeft u de doelresourcegroep die is en de resou
 ```
 
 Als er een fout optreedt, raadpleegt u [problemen met het verplaatsen van Azure-resources naar een nieuwe resource groep of een nieuw abonnement](troubleshoot-move.md).
+
+## <a name="frequently-asked-questions"></a>Veelgestelde vragen
+
+**Vraag: de bewerking voor het verplaatsen van resources, die meestal een paar minuten duurt, is bijna een uur actief. Is er iets mis?**
+
+Het verplaatsen van een resource is een complexe bewerking met verschillende fasen. Dit kan meer inhouden dan alleen de resource provider van de resource die u wilt verplaatsen. Vanwege de afhankelijkheden tussen resource providers, Azure Resource Manager 4 uur toegestaan om de bewerking te volt ooien. Deze tijds periode biedt resource providers de mogelijkheid om te herstellen van tijdelijke problemen. Als uw verplaatsings aanvraag binnen de periode van vier uur duurt, blijft de bewerking het volt ooien en kan het nog wel slagen. De bron-en doel resource groepen zijn tijdens deze periode vergrendeld om consistentie problemen te voor komen.
+
+**Vraag: Waarom is mijn resource groep gedurende vier uur vergrendeld tijdens het verplaatsen van de resource?**
+
+Het venster van vier uur is de maximale toegestane tijd voor het verplaatsen van resources. Om te voor komen dat de resources worden verplaatst, worden de bron-en doel resource groepen vergrendeld voor de duur van het verplaatsen van de resource.
+
+Er zijn twee fasen in een verplaatsings aanvraag. In de eerste fase wordt de resource verplaatst. In de tweede fase worden meldingen verzonden naar andere resource providers die afhankelijk zijn van de resource die wordt verplaatst. Een resource groep kan worden vergrendeld voor het hele venster van vier uur wanneer een resource provider niet in een fase werkt. Tijdens de toegestane tijd probeert Resource Manager de mislukte stap opnieuw.
+
+Als een resource niet binnen het venster van vier uur kan worden verplaatst, worden beide resource groepen ontgrendeld met Resource Manager. Resources die zijn verplaatst, bevinden zich in de doel resource groep. Resources die niet kunnen worden verplaatst, blijven de bron resource groep.
+
+**Vraag: wat zijn de gevolgen van de bron-en doel resource groepen die worden vergrendeld tijdens het verplaatsen van de resource?**
+
+Met de vergren deling wordt voor komen dat u een resource groep verwijdert, een nieuwe resource maakt in een van de resource groepen of een van de resources verwijdert die bij de verplaatsing betrokken zijn.
+
+In de volgende afbeelding ziet u een fout bericht van de Azure Portal wanneer een gebruiker een resource groep probeert te verwijderen die deel uitmaakt van een doorlopende verplaatsing.
+
+![Fout bericht bij poging tot verwijderen verplaatsen](./media/resource-group-move-resources/move-error-delete.png)
+
+**Vraag: wat betekent de fout code ' MissingMoveDependentResources '?**
+
+Bij het verplaatsen van een resource moeten de afhankelijke resources bestaan in de doel resource groep of het abonnement of worden opgenomen in de verplaatsings aanvraag. U krijgt de fout code MissingMoveDependentResources wanneer een afhankelijke resource niet aan deze vereiste voldoet. Het fout bericht bevat details over de afhankelijke resource die moet worden opgenomen in de verplaatsings aanvraag.
+
+Als u bijvoorbeeld een virtuele machine verplaatst, moet u zeven resource typen verplaatsen met drie verschillende resource providers. De resource providers en-typen zijn:
+
+* Microsoft.Compute
+   * Informatie
+   * cd's
+* Microsoft.Network
+  * networkInterfaces
+  * publicIPAddresses
+  * networkSecurityGroups
+  * virtualNetworks
+* Microsoft.Storage
+  * storageAccounts
+
+Een ander algemeen voor beeld is het verplaatsen van een virtueel netwerk. Mogelijk moet u enkele andere bronnen verplaatsen die aan het virtuele netwerk zijn gekoppeld. De verplaatsings aanvraag kan het verplaatsen van open bare IP-adressen, route tabellen, virtuele netwerk gateways, netwerk beveiligings groepen en andere vereisen.
+
+**Vraag: Waarom kan ik sommige resources niet verplaatsen in azure?**
+
+Momenteel kunnen niet alle resources in azure-ondersteuning worden verplaatst. Zie [ondersteuning voor het verplaatsen van resources voor bronnen](move-support-resources.md)voor een lijst met resources die kunnen worden verplaatst.
 
 ## <a name="next-steps"></a>Volgende stappen
 

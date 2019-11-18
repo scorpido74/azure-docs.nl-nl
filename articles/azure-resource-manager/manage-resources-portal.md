@@ -1,19 +1,16 @@
 ---
-title: Azure-resources beheren met behulp van de Azure Portal | Microsoft Docs
+title: Resources beheren-Azure Portal
 description: Gebruik de Azure Portal en Azure Resource Manager om uw resources te beheren. Laat zien hoe u resources implementeert en verwijdert.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: c52d54ca02436f7224346a65048244a5ec8d104c
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 5c0e09930ee53733b36e987356cef2963416006f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390402"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149823"
 ---
 # <a name="manage-azure-resources-by-using-the-azure-portal"></a>Azure-resources beheren met behulp van de Azure Portal
 
@@ -36,7 +33,7 @@ Azure-resources zijn georganiseerd door Azure-Services en resource groepen. De v
 
 Een resource openen met het Service type:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer de Azure-service in het linkerdeel venster. In dit geval **opslag accounts**.  Als de service niet wordt weer gegeven, selecteert u **alle services**en selecteert u vervolgens het Service type.
 
     ![Azure-resource openen in de portal](./media/manage-resources-portal/manage-azure-resources-portal-open-service.png)
@@ -51,7 +48,7 @@ Een resource openen met het Service type:
 
 Een resource openen per resource groep:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer **resource groepen** in het linkerdeel venster om de resource in de groep weer te geven.
 3. Selecteer de resource die u wilt openen. 
 
@@ -73,7 +70,7 @@ In de scherm afbeelding ziet u de beheer opties voor een virtuele Azure-machine.
 
 Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="move-resources"></a>Bronnen verplaatsen
+## <a name="move-resources"></a>Resources verplaatsen
 
 1. Open de resource in de portal. Zie [resources openen](#open-resources)voor de stappen.
 2. Selecteer **verplaatsen**. De volgende scherm afbeelding toont de beheer opties voor een opslag account.

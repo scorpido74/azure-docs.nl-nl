@@ -1,23 +1,14 @@
 ---
-title: Azure-resource providers en resource typen | Microsoft Docs
+title: Resource providers en resource typen
 description: Hierin worden de resource providers beschreven die ondersteuning bieden voor Resource Manager, hun schema's en beschik bare API-versies en de regio's die de resources kunnen hosten.
-services: azure-resource-manager
-documentationcenter: na
-author: tfitzmac
-ms.assetid: 3c7a6fe4-371a-40da-9ebe-b574f583305b
-ms.service: azure-resource-manager
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/29/2019
-ms.author: tomfitz
-ms.openlocfilehash: 2cbc8843d41b760c52b9ca5ccfb6d940bd454136
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 01550adbce51e3498f1167f6a4ebfd846ec316f3
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70164808"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149401"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure-resource providers en-typen
 
@@ -42,7 +33,7 @@ Zie [resource providers voor Azure-Services](azure-services-resource-providers.m
 
 Als u alle resource providers en de registratie status voor uw abonnement wilt weer geven:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer **Alle services**.
 
     ![abonnementen selecteren](./media/resource-manager-supported-services/select-subscriptions.png)
@@ -52,13 +43,13 @@ Als u alle resource providers en de registratie status voor uw abonnement wilt w
 
     ![resource providers weer geven](./media/resource-manager-supported-services/show-resource-providers.png)
 
-6. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor de registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om `/register/action` de bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Als u een resource provider wilt registreren, selecteert u **registreren**. In de vorige scherm afbeelding is de koppeling **registreren** gemarkeerd voor **micro soft. blauw druk**.
+6. Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor de registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Als u een resource provider wilt registreren, selecteert u **registreren**. In de vorige scherm afbeelding is de koppeling **registreren** gemarkeerd voor **micro soft. blauw druk**.
 
     U kunt de registratie van een resource provider niet ongedaan maken wanneer u nog steeds resource typen van die resource provider in uw abonnement hebt.
 
 Informatie weer geven voor een bepaalde resource provider:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer **Alle services**.
 
     ![Alle services selecteren](./media/resource-manager-supported-services/more-services.png)
@@ -102,7 +93,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor de registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om `/register/action` de bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
+Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor de registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -207,7 +198,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor de registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om `/register/action` de bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
+Als u een resource provider registreert, wordt uw abonnement geconfigureerd om te werken met de resource provider. Het bereik voor de registratie is altijd het abonnement. Standaard worden veel resource providers automatisch geregistreerd. Het is echter mogelijk dat u bepaalde resource providers hand matig moet registreren. Als u een resource provider wilt registreren, moet u gemachtigd zijn om de `/register/action` bewerking voor de resource provider uit te voeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar.
 
 ```azurecli
 az provider register --namespace Microsoft.Batch

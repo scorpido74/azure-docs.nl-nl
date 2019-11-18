@@ -1,24 +1,16 @@
 ---
-title: Veilige artefacten-Azure Resource Manager sjablonen
+title: Beveiligde artefacten in sjablonen
 description: Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d9570c30e2870a136bd97ed5fc2304d6f0d280c9
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 4aea85fe7f71d09c77b0596b4a8ec54922c8eee8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528272"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150430"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Zelf studie: veilige artefacten in Azure Resource Manager sjabloon implementaties
 

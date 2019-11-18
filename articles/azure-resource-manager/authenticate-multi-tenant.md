@@ -1,17 +1,14 @@
 ---
-title: Verifiëren via tenants-Azure Resource Manager
+title: Verifiëren in meerdere tenants
 description: Hierin wordt beschreven hoe Azure Resource Manager verificatie aanvragen afhandelt tussen tenants.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.author: tomfitz
-ms.openlocfilehash: b85ed32ac333402caeca4901e4d91bbe4d1d112c
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 1dccfc522179cd88e69bc5a58307b343aaef8f9e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300343"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149975"
 ---
 # <a name="authenticate-requests-across-tenants"></a>Aanvragen verifiëren via tenants
 
@@ -23,8 +20,8 @@ De aanvraag heeft de volgende waarden voor de verificatie-header:
 
 | Headernaam | Beschrijving | Voorbeeldwaarde |
 | ----------- | ----------- | ------------ |
-| Autorisatie | Primair token | Bearer-&lt;primary-token @ no__t-1 |
-| x-MS-autorisatie-hulp | Hulp tokens | Beer &lt;auxiliary-token1 @ no__t-1, EncryptedBearer &lt;auxiliary-token2 @ no__t-3, Bearer &lt;auxiliary-token3 @ no__t-5 |
+| Autorisatie | Primair token | &lt;primair token&gt; |
+| x-MS-autorisatie-hulp | Hulp tokens | Bearer &lt;hulp-token1&gt;, EncryptedBearer &lt;hulp token2&gt;, draagt &lt;hulp-token3&gt; |
 
 De hulp header kan Maxi maal drie hulp tokens bevatten. 
 

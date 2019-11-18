@@ -1,17 +1,14 @@
 ---
-title: Label Azure-resources voor logische organisatie | Microsoft Docs
+title: Label resources voor logische organisatie
 description: Laat zien hoe u Tags toepast om Azure-resources te organiseren voor facturering en beheer.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.author: tomfitz
-ms.openlocfilehash: e7763889ecf69231b7a4daf31e6899b33f3e2b36
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: b332ae86e714d4b642f921d217d80e802fa60572
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199146"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149585"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Tags gebruiken om uw Azure-resources te organiseren
 
@@ -21,7 +18,7 @@ Om labels toe te passen op resources, moet de gebruiker schrijf toegang hebben t
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-## <a name="policies"></a>Beleid
+## <a name="policies"></a>Beleidsregels
 
 U kunt [Azure Policy](../governance/policy/overview.md) gebruiken om regels en conventies voor code ring af te dwingen. Door een beleid te maken, vermijdt u het scenario van resources die worden geïmplementeerd in uw abonnement en die niet voldoen aan de verwachte Tags voor uw organisatie. In plaats van labels hand matig toe te passen of te zoeken naar resources die niet compatibel zijn, kunt u een beleid maken waarmee automatisch de benodigde Tags tijdens de implementatie worden toegepast. Labels kunnen nu ook worden toegepast op bestaande resources met het nieuwe [wijzigings](../governance/policy/concepts/effects.md#modify) effect en een [herstel taak](../governance/policy/how-to/remediate-resources.md). In de volgende sectie ziet u voor beelden van beleids regels voor Tags.
 
@@ -151,7 +148,7 @@ Geef een lege hash-tabel door om alle tags te verwijderen:
 Set-AzResourceGroup -Tag @{} -Name examplegroup
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
 Gebruik het volgende om de bestaande tags van een *resourcegroep* te bekijken:
 

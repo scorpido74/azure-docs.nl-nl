@@ -1,24 +1,16 @@
 ---
-title: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen | Microsoft Docs
+title: SQL BACPAC-bestanden met sjablonen importeren
 description: Meer informatie over het gebruik van SQL Database-extensie om SQL BACPAC-bestanden te importeren met Azure Resource Manager-sjablonen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 04/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 239bb77d486e8cb845ec439d84def5e34cf64348
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: a1454c1b551ee16303f8fda7297910ce8642b523
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170235"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150410"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Zelfstudie: SQL BACPAC-bestanden importeren met Azure Resource Manager-sjablonen
 

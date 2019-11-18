@@ -1,32 +1,22 @@
 ---
-title: Azure-opslag account naam fouten | Microsoft Docs
-description: Beschrijving van de fouten die optreden kunnen bij het opgeven van een storage-accountnaam.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Fout in de naam van het opslag account
+description: Hierin worden de fouten beschreven die u kunt tegen komen wanneer u de naam van een opslag account opgeeft.
 ms.topic: troubleshooting
 ms.date: 03/09/2018
-ms.author: tomfitz
-ms.openlocfilehash: c3d4d764b1076c8705cfa64d6c0b38e3b8c1a801
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6af75470ebab61a1eaf7afd0bf946564c5300611
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64716387"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149422"
 ---
-# <a name="resolve-errors-for-storage-account-names"></a>Los fouten voor de namen van opslagaccounts
+# <a name="resolve-errors-for-storage-account-names"></a>Fouten voor de namen van opslag accounts oplossen
 
-Dit artikel wordt beschreven naming fouten die optreden kunnen bij het implementeren van een storage-account.
+In dit artikel worden naam fouten beschreven die u kunt tegen komen bij het implementeren van een opslag account.
 
 ## <a name="symptom"></a>Symptoom
 
-Als de naam van uw opslagaccount niet-toegestane tekens bevat, ontvangt u een foutbericht wordt weergegeven als:
+Als de naam van uw opslag account verboden tekens bevat, ontvangt u een fout melding zoals:
 
 ```
 Code=AccountNameInvalid
@@ -34,29 +24,29 @@ Message=S!torageckrexph7isnoc is not a valid storage account name. Storage accou
 between 3 and 24 characters in length and use numbers and lower-case letters only.
 ```
 
-U moet een naam voor de resource die uniek is binnen Azure opgeven voor storage-accounts. Als u een unieke naam opgeeft, ontvangt u een foutbericht wordt weergegeven als:
+Voor opslag accounts moet u een naam opgeven voor de resource die uniek is binnen Azure. Als u geen unieke naam opgeeft, krijgt u een foutmelding als:
 
 ```
 Code=StorageAccountAlreadyTaken
 Message=The storage account named mystorage is already taken.
 ```
 
-Als u een opslagaccount met dezelfde naam als een bestaand opslagaccount in uw abonnement implementeren, maar een andere locatie bieden, ontvangt u een foutbericht met dat de storage-account bestaat al in een andere locatie. Verwijder het bestaande storage-account of geef dezelfde locatie als het bestaande storage-account.
+Als u een opslag account met dezelfde naam als een bestaand opslag account in uw abonnement implementeert, maar een andere locatie opgeeft, wordt er een fout bericht weer gegeven met de melding dat het opslag account al bestaat op een andere locatie. Verwijder het bestaande opslag account of geef dezelfde locatie op als het bestaande opslag account.
 
 ## <a name="cause"></a>Oorzaak
 
-Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en alleen cijfers en kleine letters gebruiken. De naam moet uniek zijn.
+Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. De naam moet uniek zijn.
 
 ## <a name="solution"></a>Oplossing
 
-Zorg ervoor dat de dat naam van het opslagaccount uniek is. U kunt een unieke naam maken door het samenvoegen van uw naamconventie met het resultaat van de [uniqueString](resource-group-template-functions-string.md#uniquestring) functie.
+Zorg ervoor dat de naam van het opslag account uniek is. U kunt een unieke naam maken door uw naam Conventie samen te voegen met het resultaat van de functie [Unique string](resource-group-template-functions-string.md#uniquestring) .
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
 
-Zorg ervoor dat de dat naam van uw opslagaccount niet langer zijn dan 24 tekens bestaan. De [uniqueString](resource-group-template-functions-string.md#uniquestring) functie 13 tekens retourneert. Als u samenvoegen van een voorvoegsel of achtervoegsel aan de **uniqueString** leiden, Geef een waarde die is 11 tekens of minder.
+Zorg ervoor dat de naam van uw opslag account niet langer is dan 24 tekens. De functie [Unique string](resource-group-template-functions-string.md#uniquestring) retourneert 13 tekens. Als u een voor voegsel of achtervoegsel aan het **Unique string** resultaat samenvoegt, geeft u een waarde op van 11 tekens of minder.
 
 ```json
 "parameters": {
@@ -71,4 +61,4 @@ Zorg ervoor dat de dat naam van uw opslagaccount niet langer zijn dan 24 tekens 
 }
 ```
 
-Zorg ervoor dat de dat naam van uw opslagaccount bevat geen geen hoofdletters of speciale tekens.
+Zorg ervoor dat de naam van uw opslag account geen hoofd letters of speciale tekens bevat.

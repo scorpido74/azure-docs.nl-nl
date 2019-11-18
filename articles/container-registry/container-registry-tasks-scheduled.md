@@ -1,6 +1,6 @@
 ---
 title: Azure Container Registry taken plannen
-description: Meer informatie over het uitvoeren van een Azure Container Registry taak volgens een gedefinieerde planning door een of meer timer triggers in te stellen
+description: In deze zelf studie leert u hoe u een Azure Container Registry taak uitvoert volgens een gedefinieerd schema door een of meer timer triggers in te stellen
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,16 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 06/27/2019
 ms.author: danlep
-ms.openlocfilehash: 6272b5467aff10171814152eb4188554a22c7a51
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ae36b8d67d02f8cae0007b7b06485932db851af5
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931467"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148638"
 ---
 # <a name="run-an-acr-task-on-a-defined-schedule"></a>Een ACR-taak uitvoeren volgens een gedefinieerd schema
 
-In dit artikel leest u hoe u een [ACR-taak](container-registry-tasks-overview.md) kunt uitvoeren volgens een schema. Een taak plannen door een of meer *Timer triggers*in te stellen.
+In deze zelf studie ziet u hoe u een [ACR-taak](container-registry-tasks-overview.md) kunt uitvoeren volgens een schema. Een taak plannen door een of meer *Timer triggers*in te stellen. Timer triggers kunnen alleen worden gebruikt of in combi natie met andere taak triggers.
+
+In deze zelf studie vindt u informatie over het plannen van taken en:
+
+> [!div class="checklist"]
+> * Een taak maken met een timer trigger
+> * Timer Triggers beheren
 
 Het plannen van een taak is handig voor scenario's zoals de volgende:
 
@@ -199,9 +205,11 @@ Elk veld kan een van de volgende typen waarden hebben:
 
 ## <a name="next-steps"></a>Volgende stappen
 
+In deze zelf studie hebt u geleerd hoe u Azure Container Registry-taken maakt die automatisch worden geactiveerd door een timer. 
+
 Zie [automatisch installatie kopieën verwijderen uit een Azure container Registry](container-registry-auto-purge.md)voor een voor beeld van het gebruik van een geplande taak om opslag plaatsen in een REGI ster op te schonen.
 
-Bekijk de [zelf studie over ACR-taken](container-registry-tutorial-quick-task.md)voor voor beelden van taken die worden geactiveerd door bron code door voeren of updates van de basis installatie kopie.
+Zie voor voor beelden van taken die worden geactiveerd door het door voeren van de bron code of het bijwerken van basis installatie kopieën andere artikelen in de [reeks zelf](container-registry-tutorial-quick-task.md)studies over ACR-taken.
 
 
 

@@ -1,5 +1,6 @@
 ---
-title: 'P2S VPN-client configuratie bestanden maken en installeren voor Azure-certificaat verificatie: Azure'
+title: 'P2S-configuratie bestanden voor VPN-client maken & installeren: certificaat verificatie'
+titleSuffix: Azure VPN Gateway
 description: Windows-, Linux-, Linux-, strongSwan-en Mac OS X VPN-client configuratie bestanden maken en installeren voor P2S-certificaat verificatie.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: fb6c484e234b4641a521bd876acdfeb4df562260
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: ad6e912f976095ae7d8fd5276b0f1365566c181a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73063123"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143792"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-client configuratie bestanden maken en installeren voor systeem eigen Azure-certificaat verificatie P2S-configuraties
 
@@ -27,7 +28,7 @@ Client configuratie bestanden zijn specifiek voor de VPN-configuratie voor het V
 >[!INCLUDE [TLS](../../includes/vpn-gateway-tls-change.md)]
 >
 
-## <a name="generate"></a>Configuratie bestanden voor VPN-clients genereren
+## <a name="generate"></a>Configuratiebestanden voor VPN-clients genereren
 
 Voordat u begint, moet u ervoor zorgen dat alle gebruikers met een verbinding een geldig certificaat hebben geïnstalleerd op het apparaat van de gebruiker. Zie [een client certificaat installeren](point-to-site-how-to-vpn-client-install-azure-cert.md)voor meer informatie over het installeren van een client certificaat.
 
@@ -94,7 +95,7 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
 
    De **Interface** waarde is ' VPN ' en de waarde van het **VPN-type** is ' IKEv2 '. Geef een naam op voor het profiel in het veld **service naam** en klik vervolgens op **maken** om het VPN-client verbindings profiel te maken.
 
-   ![Netwerk](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
+   ![netwerk](./media/point-to-site-vpn-client-configuration-azure-cert/network.png)
 4. Kopieer in de map **Algemeen** , in het bestand **VpnSettings. XML** , de waarde van de **VpnServer** -tag. Plak deze waarde in de velden **server adres** en **externe ID** van het profiel.
 
    ![Server gegevens](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
@@ -106,7 +107,7 @@ Voer de volgende stappen uit om de systeem eigen VPN-client te configureren voor
    ![certificaat](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 7. **Kies een identiteit** om een lijst met certificaten weer te geven waaruit u kunt kiezen. Selecteer het juiste certificaat en klik vervolgens op **door gaan**.
 
-   ![identiteit](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
+   ![identity](./media/point-to-site-vpn-client-configuration-azure-cert/identity.png)
 8. Geef in het veld **lokale id** de naam van het certificaat op (uit stap 6). In dit voor beeld is het ' ikev2Client.com '. Klik vervolgens op de knop **Toep assen** om de wijzigingen op te slaan.
 
    ![Toep assen](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
@@ -138,7 +139,7 @@ De volgende instructies zijn gemaakt op Ubuntu 18.0.4. Ubuntu 16.0.10 biedt geen
    ![verbindingen bewerken](./media/point-to-site-vpn-client-configuration-azure-cert/editconnections.png)
 3. Klik op de knop **+** om een nieuwe verbinding te maken.
 
-   ![Een verbinding toevoegen](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
+   ![een verbinding toevoegen](./media/point-to-site-vpn-client-configuration-azure-cert/addconnection.png)
 4. Selecteer **IPSec/IKEv2 (strongswan)** in het menu en dubbel klik op. In deze stap kunt u de naam van uw verbinding wijzigen.
 
    ![Kies een verbindings type](./media/point-to-site-vpn-client-configuration-azure-cert/choosetype.png)

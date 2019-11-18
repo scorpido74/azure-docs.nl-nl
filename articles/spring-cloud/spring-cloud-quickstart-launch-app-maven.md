@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: cb6032938379b632b743827153c61fd3e18c1cfe
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721596"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123820"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
 
@@ -52,8 +52,6 @@ az extension add --name spring-cloud
 ## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten op het Azure Portal
 
 1. Open in een webbrowser [deze koppeling naar Azure lente-Cloud in het Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)en meld u aan bij uw account.
-
-1. Selecteer **maken** op de pagina **overzicht** om het dialoog venster maken te openen.
 
 1. Geef de **Project Details** voor de voorbeeld toepassing als volgt op:
 
@@ -101,7 +99,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Selecteer de modules `gateway`, `auth-service` en `account-service`.
+    a. Selecteer de modules `gateway`,`auth-service`en `account-service`.
 
     b. Selecteer uw abonnement en Azure lente-Cloud service cluster.
 

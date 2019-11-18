@@ -1,5 +1,5 @@
 ---
-title: 'Problemen met een VPN-client voor Azure AD-verificatie oplossen: Azure VPN Gateway | Microsoft Docs'
+title: 'VPN Gateway: problemen met VPN-client oplossen-Azure AD-verificatie'
 description: Problemen met VPN Gateway P2S Azure AD-verificatie-clients oplossen
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: e239f283d5065e032e98e87a72a4bfe9fbafbdb1
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8871e92f0911c4d3cbcc1772bef1daeb5c70b5d7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517278"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151971"
 ---
 # <a name="troubleshoot-an-azure-ad-authentication-vpn-client"></a>Problemen met een VPN-client voor Azure AD-verificatie oplossen
 
@@ -22,7 +22,7 @@ Dit artikel helpt u bij het oplossen van problemen met een VPN-client om verbind
 
 Het status logboek weer geven voor fout berichten.
 
-![logboeken](./media/troubleshoot-ad-vpn-client/1.png)
+![logs](./media/troubleshoot-ad-vpn-client/1.png)
 
 1. Klik op het pictogram met de pijlen aan de rechter benedenhoek van het client venster om de **status logboeken**weer te geven.
 2. Controleer de logboeken op fouten die mogelijk duiden op het probleem.

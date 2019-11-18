@@ -1,157 +1,154 @@
 ---
-title: Ondersteuning voor het verplaatsen van bewerkingen door Azure-resource type
+title: Ondersteuning voor het verplaatsen van bewerkingen per resource type
 description: Een lijst met de Azure-resource typen die kunnen worden verplaatst naar een nieuwe resource groep of een nieuw abonnement.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 05f7d022588eee0e5e97f10d6300da04c4be6270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 182e5fdd081126500c04f44776c9e9b8fad61843
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161955"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149780"
 ---
 # <a name="move-operation-support-for-resources"></a>Ondersteuning voor het verplaatsen van resources voor bronnen
 Dit artikel geeft een overzicht van de vraag of een Azure-resource type de verplaatsings bewerking ondersteunt. Het bevat ook informatie over speciale voor waarden die u moet overwegen bij het verplaatsen van een resource.
 
 Ga naar de naam ruimte van een resource provider:
 > [!div class="op_single_selector"]
-> - [Micro soft. AAD](#microsoftaad)
-> - [micro soft. aadiam](#microsoftaadiam)
-> - [Micro soft. AlertsManagement](#microsoftalertsmanagement)
-> - [Micro soft. AnalysisServices](#microsoftanalysisservices)
-> - [Micro soft. ApiManagement](#microsoftapimanagement)
-> - [Micro soft. AppConfiguration](#microsoftappconfiguration)
-> - [Micro soft. AppService](#microsoftappservice)
+> - [Microsoft.AAD](#microsoftaad)
+> - [microsoft.aadiam](#microsoftaadiam)
+> - [Microsoft.AlertsManagement](#microsoftalertsmanagement)
+> - [Microsoft.AnalysisServices](#microsoftanalysisservices)
+> - [Microsoft.ApiManagement](#microsoftapimanagement)
+> - [Microsoft.AppConfiguration](#microsoftappconfiguration)
+> - [Microsoft.AppService](#microsoftappservice)
 > - [Microsoft.Authorization](#microsoftauthorization)
-> - [Micro soft. Automation](#microsoftautomation)
-> - [Micro soft. AzureActiveDirectory](#microsoftazureactivedirectory)
+> - [Microsoft.Automation](#microsoftautomation)
+> - [Microsoft.AzureActiveDirectory](#microsoftazureactivedirectory)
 > - [Micro soft. Azureworden](#microsoftazuredata)
-> - [Micro soft. AzureStack](#microsoftazurestack)
-> - [Micro soft. batch](#microsoftbatch)
-> - [Micro soft. BatchAI](#microsoftbatchai)
-> - [Micro soft. BingMaps](#microsoftbingmaps)
-> - [Micro soft. BizTalkServices](#microsoftbiztalkservices)
-> - [Micro soft. Block Chain](#microsoftblockchain)
-> - [Micro soft. blauw druk](#microsoftblueprint)
-> - [Micro soft. BotService](#microsoftbotservice)
-> - [Micro soft. cache](#microsoftcache)
-> - [Micro soft. CDN](#microsoftcdn)
-> - [Micro soft. CertificateRegistration](#microsoftcertificateregistration)
-> - [Micro soft. ClassicCompute](#microsoftclassiccompute)
-> - [Micro soft. ClassicNetwork](#microsoftclassicnetwork)
-> - [Micro soft. ClassicStorage](#microsoftclassicstorage)
-> - [Micro soft. CognitiveServices](#microsoftcognitiveservices)
-> - [Micro soft. compute](#microsoftcompute)
-> - [Micro soft. container](#microsoftcontainer)
-> - [Micro soft. ContainerInstance](#microsoftcontainerinstance)
-> - [Micro soft. ContainerRegistry](#microsoftcontainerregistry)
-> - [Micro soft. container service](#microsoftcontainerservice)
-> - [Micro soft. ContentModerator](#microsoftcontentmoderator)
-> - [Micro soft. CortanaAnalytics](#microsoftcortanaanalytics)
-> - [Micro soft. CostManagement](#microsoftcostmanagement)
-> - [Micro soft. CustomerInsights](#microsoftcustomerinsights)
+> - [Microsoft.AzureStack](#microsoftazurestack)
+> - [Microsoft.Batch](#microsoftbatch)
+> - [Microsoft.BatchAI](#microsoftbatchai)
+> - [Microsoft.BingMaps](#microsoftbingmaps)
+> - [Microsoft.BizTalkServices](#microsoftbiztalkservices)
+> - [Microsoft.Blockchain](#microsoftblockchain)
+> - [Microsoft.Blueprint](#microsoftblueprint)
+> - [Microsoft.BotService](#microsoftbotservice)
+> - [Microsoft.Cache](#microsoftcache)
+> - [Microsoft.Cdn](#microsoftcdn)
+> - [Microsoft.CertificateRegistration](#microsoftcertificateregistration)
+> - [Microsoft.ClassicCompute](#microsoftclassiccompute)
+> - [Microsoft.ClassicNetwork](#microsoftclassicnetwork)
+> - [Microsoft.ClassicStorage](#microsoftclassicstorage)
+> - [Microsoft.CognitiveServices](#microsoftcognitiveservices)
+> - [Microsoft.Compute](#microsoftcompute)
+> - [Microsoft.Container](#microsoftcontainer)
+> - [Microsoft.ContainerInstance](#microsoftcontainerinstance)
+> - [Microsoft.ContainerRegistry](#microsoftcontainerregistry)
+> - [Microsoft.ContainerService](#microsoftcontainerservice)
+> - [Microsoft.ContentModerator](#microsoftcontentmoderator)
+> - [Microsoft.CortanaAnalytics](#microsoftcortanaanalytics)
+> - [Microsoft.CostManagement](#microsoftcostmanagement)
+> - [Microsoft.CustomerInsights](#microsoftcustomerinsights)
 > - [Micro soft. CustomProviders](#microsoftcustomproviders)
-> - [Micro soft. DataBox](#microsoftdatabox)
-> - [Micro soft. DataBoxEdge](#microsoftdataboxedge)
-> - [Micro soft. Databricks](#microsoftdatabricks)
-> - [Micro soft. DataCatalog](#microsoftdatacatalog)
-> - [Micro soft. DataConnect](#microsoftdataconnect)
-> - [Micro soft. DataExchange](#microsoftdataexchange)
-> - [Micro soft. DataFactory](#microsoftdatafactory)
-> - [Micro soft. DataLake](#microsoftdatalake)
-> - [Micro soft. DataLakeAnalytics](#microsoftdatalakeanalytics)
-> - [Micro soft. data Lake Store](#microsoftdatalakestore)
-> - [Micro soft. DataMigration](#microsoftdatamigration)
+> - [Microsoft.DataBox](#microsoftdatabox)
+> - [Microsoft.DataBoxEdge](#microsoftdataboxedge)
+> - [Microsoft.Databricks](#microsoftdatabricks)
+> - [Microsoft.DataCatalog](#microsoftdatacatalog)
+> - [Microsoft.DataConnect](#microsoftdataconnect)
+> - [Microsoft.DataExchange](#microsoftdataexchange)
+> - [Microsoft.DataFactory](#microsoftdatafactory)
+> - [Microsoft.DataLake](#microsoftdatalake)
+> - [Microsoft.DataLakeAnalytics](#microsoftdatalakeanalytics)
+> - [Microsoft.DataLakeStore](#microsoftdatalakestore)
+> - [Microsoft.DataMigration](#microsoftdatamigration)
 > - [Micro soft. DataShare](#microsoftdatashare)
-> - [Micro soft. DBforMariaDB](#microsoftdbformariadb)
-> - [Micro soft. DBforMySQL](#microsoftdbformysql)
-> - [Micro soft. DBforPostgreSQL](#microsoftdbforpostgresql)
-> - [Micro soft. DeploymentManager](#microsoftdeploymentmanager)
-> - [Micro soft.-apparaten](#microsoftdevices)
-> - [Micro soft. DevSpaces](#microsoftdevspaces)
-> - [Micro soft. DevTestLab](#microsoftdevtestlab)
-> - [Micro soft. DocumentDB](#microsoftdocumentdb)
-> - [Micro soft. DomainRegistration](#microsoftdomainregistration)
-> - [Micro soft. EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
-> - [Micro soft. EventGrid](#microsofteventgrid)
-> - [Micro soft. EventHub](#microsofteventhub)
-> - [Micro soft. Genomics](#microsoftgenomics)
-> - [Micro soft. HanaOnAzure](#microsofthanaonazure)
-> - [Micro soft. HDInsight](#microsofthdinsight)
-> - [Micro soft. HealthcareApis](#microsofthealthcareapis)
-> - [Micro soft. HybridCompute](#microsofthybridcompute)
-> - [Micro soft. HybridData](#microsofthybriddata)
-> - [Micro soft. ImportExport](#microsoftimportexport)
-> - [micro soft. Insights](#microsoftinsights)
-> - [Micro soft. IoTCentral](#microsoftiotcentral)
-> - [Micro soft. IoTSpaces](#microsoftiotspaces)
-> - [Micro soft.-sleutel kluis](#microsoftkeyvault)
-> - [Micro soft. Kusto](#microsoftkusto)
-> - [Micro soft. LabServices](#microsoftlabservices)
-> - [Micro soft. LocationBasedServices](#microsoftlocationbasedservices)
-> - [Micro soft. bestand locationservices](#microsoftlocationservices)
-> - [Micro soft. Logic](#microsoftlogic)
-> - [Micro soft. MachineLearning](#microsoftmachinelearning)
-> - [Micro soft. MachineLearningCompute](#microsoftmachinelearningcompute)
-> - [Micro soft. MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
-> - [Micro soft. MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
-> - [Micro soft. MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
-> - [Micro soft. MachineLearningServices](#microsoftmachinelearningservices)
-> - [Micro soft. ManagedIdentity](#microsoftmanagedidentity)
-> - [Micro soft. Maps](#microsoftmaps)
-> - [Micro soft. MarketplaceApps](#microsoftmarketplaceapps)
-> - [Micro soft. Media](#microsoftmedia)
+> - [Microsoft.DBforMariaDB](#microsoftdbformariadb)
+> - [Microsoft.DBforMySQL](#microsoftdbformysql)
+> - [Microsoft.DBforPostgreSQL](#microsoftdbforpostgresql)
+> - [Microsoft.DeploymentManager](#microsoftdeploymentmanager)
+> - [Microsoft.Devices](#microsoftdevices)
+> - [Microsoft.DevSpaces](#microsoftdevspaces)
+> - [Microsoft.DevTestLab](#microsoftdevtestlab)
+> - [Microsoft.DocumentDB](#microsoftdocumentdb)
+> - [Microsoft.DomainRegistration](#microsoftdomainregistration)
+> - [Microsoft.EnterpriseKnowledgeGraph](#microsoftenterpriseknowledgegraph)
+> - [Microsoft.EventGrid](#microsofteventgrid)
+> - [Microsoft.EventHub](#microsofteventhub)
+> - [Microsoft.Genomics](#microsoftgenomics)
+> - [Microsoft.HanaOnAzure](#microsofthanaonazure)
+> - [Microsoft.HDInsight](#microsofthdinsight)
+> - [Microsoft.HealthcareApis](#microsofthealthcareapis)
+> - [Microsoft.HybridCompute](#microsofthybridcompute)
+> - [Microsoft.HybridData](#microsofthybriddata)
+> - [Microsoft.ImportExport](#microsoftimportexport)
+> - [microsoft.insights](#microsoftinsights)
+> - [Microsoft.IoTCentral](#microsoftiotcentral)
+> - [Microsoft.IoTSpaces](#microsoftiotspaces)
+> - [Microsoft.KeyVault](#microsoftkeyvault)
+> - [Microsoft.Kusto](#microsoftkusto)
+> - [Microsoft.LabServices](#microsoftlabservices)
+> - [Microsoft.LocationBasedServices](#microsoftlocationbasedservices)
+> - [Microsoft.LocationServices](#microsoftlocationservices)
+> - [Microsoft.Logic](#microsoftlogic)
+> - [Microsoft.MachineLearning](#microsoftmachinelearning)
+> - [Microsoft.MachineLearningCompute](#microsoftmachinelearningcompute)
+> - [Microsoft.MachineLearningExperimentation](#microsoftmachinelearningexperimentation)
+> - [Microsoft.MachineLearningModelManagement](#microsoftmachinelearningmodelmanagement)
+> - [Microsoft.MachineLearningOperationalization](#microsoftmachinelearningoperationalization)
+> - [Microsoft.MachineLearningServices](#microsoftmachinelearningservices)
+> - [Microsoft.ManagedIdentity](#microsoftmanagedidentity)
+> - [Microsoft.Maps](#microsoftmaps)
+> - [Microsoft.MarketplaceApps](#microsoftmarketplaceapps)
+> - [Microsoft.Media](#microsoftmedia)
 > - [Micro soft. Microservices4Spring](#microsoftmicroservices4spring)
-> - [Micro soft. migrate](#microsoftmigrate)
-> - [Micro soft. NetApp](#microsoftnetapp)
-> - [Micro soft. Network](#microsoftnetwork)
-> - [Micro soft. notification hubs](#microsoftnotificationhubs)
-> - [Micro soft. OperationalInsights](#microsoftoperationalinsights)
-> - [Micro soft. OperationsManagement](#microsoftoperationsmanagement)
-> - [Micro soft. peering](#microsoftpeering)
-> - [Micro soft. Portal](#microsoftportal)
-> - [Micro soft. PortalSdk](#microsoftportalsdk)
-> - [Micro soft. PowerBI](#microsoftpowerbi)
-> - [Micro soft. PowerBIDedicated](#microsoftpowerbidedicated)
-> - [Micro soft. ProjectOxford](#microsoftprojectoxford)
-> - [Micro soft. Recovery Services](#microsoftrecoveryservices)
-> - [Micro soft. relay](#microsoftrelay)
+> - [Microsoft.Migrate](#microsoftmigrate)
+> - [Microsoft.NetApp](#microsoftnetapp)
+> - [Microsoft.Network](#microsoftnetwork)
+> - [Microsoft.NotificationHubs](#microsoftnotificationhubs)
+> - [Microsoft.OperationalInsights](#microsoftoperationalinsights)
+> - [Microsoft.OperationsManagement](#microsoftoperationsmanagement)
+> - [Microsoft.Peering](#microsoftpeering)
+> - [Microsoft.Portal](#microsoftportal)
+> - [Microsoft.PortalSdk](#microsoftportalsdk)
+> - [Microsoft.PowerBI](#microsoftpowerbi)
+> - [Microsoft.PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft.ProjectOxford](#microsoftprojectoxford)
+> - [Microsoft.RecoveryServices](#microsoftrecoveryservices)
+> - [Microsoft.Relay](#microsoftrelay)
 > - [Micro soft. ResourceGraph](#microsoftresourcegraph)
-> - [Micro soft. SaaS](#microsoftsaas)
-> - [Micro soft. scheduler](#microsoftscheduler)
-> - [Micro soft. Search](#microsoftsearch)
-> - [Micro soft. Security](#microsoftsecurity)
-> - [Micro soft. ServerManagement](#microsoftservermanagement)
+> - [Microsoft.SaaS](#microsoftsaas)
+> - [Microsoft.Scheduler](#microsoftscheduler)
+> - [Microsoft.Search](#microsoftsearch)
+> - [Microsoft.Security](#microsoftsecurity)
+> - [Microsoft.ServerManagement](#microsoftservermanagement)
 > - [Microsoft.ServiceBus](#microsoftservicebus)
-> - [Micro soft. ServiceFabric](#microsoftservicefabric)
-> - [Micro soft. ServiceFabricMesh](#microsoftservicefabricmesh)
-> - [Micro soft. SignalRService](#microsoftsignalrservice)
-> - [Micro soft. Solutions](#microsoftsolutions)
-> - [Micro soft. SQL](#microsoftsql)
-> - [Micro soft. SqlVirtualMachine](#microsoftsqlvirtualmachine)
-> - [Micro soft. SqlVM](#microsoftsqlvm)
-> - [Micro soft. Storage](#microsoftstorage)
-> - [Micro soft. StorageCache](#microsoftstoragecache)
-> - [Micro soft. StorageSync](#microsoftstoragesync)
-> - [Micro soft. StorageSyncDev](#microsoftstoragesyncdev)
-> - [Micro soft. StorageSyncInt](#microsoftstoragesyncint)
-> - [Micro soft. StorSimple](#microsoftstorsimple)
-> - [Micro soft. StreamAnalytics](#microsoftstreamanalytics)
-> - [Micro soft. StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
-> - [Micro soft. TerraformOSS](#microsoftterraformoss)
-> - [Micro soft. TimeSeriesInsights](#microsofttimeseriesinsights)
-> - [Micro soft. token](#microsofttoken)
-> - [Micro soft. VirtualMachineImages](#microsoftvirtualmachineimages)
-> - [micro soft. Visual Studio](#microsoftvisualstudio)
-> - [Micro soft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
-> - [Micro soft. Web](#microsoftweb)
-> - [Micro soft. WindowsIoT](#microsoftwindowsiot)
-> - [Micro soft. WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
+> - [Microsoft.ServiceFabric](#microsoftservicefabric)
+> - [Microsoft.ServiceFabricMesh](#microsoftservicefabricmesh)
+> - [Microsoft.SignalRService](#microsoftsignalrservice)
+> - [Microsoft.Solutions](#microsoftsolutions)
+> - [Microsoft.Sql](#microsoftsql)
+> - [Microsoft.SqlVirtualMachine](#microsoftsqlvirtualmachine)
+> - [Microsoft.SqlVM](#microsoftsqlvm)
+> - [Microsoft.Storage](#microsoftstorage)
+> - [Microsoft.StorageCache](#microsoftstoragecache)
+> - [Microsoft.StorageSync](#microsoftstoragesync)
+> - [Microsoft.StorageSyncDev](#microsoftstoragesyncdev)
+> - [Microsoft.StorageSyncInt](#microsoftstoragesyncint)
+> - [Microsoft.StorSimple](#microsoftstorsimple)
+> - [Microsoft.StreamAnalytics](#microsoftstreamanalytics)
+> - [Microsoft.StreamAnalyticsExplorer](#microsoftstreamanalyticsexplorer)
+> - [Microsoft.TerraformOSS](#microsoftterraformoss)
+> - [Microsoft.TimeSeriesInsights](#microsofttimeseriesinsights)
+> - [Microsoft.Token](#microsofttoken)
+> - [Microsoft.VirtualMachineImages](#microsoftvirtualmachineimages)
+> - [microsoft.visualstudio](#microsoftvisualstudio)
+> - [Microsoft.VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft.Web](#microsoftweb)
+> - [Microsoft.WindowsIoT](#microsoftwindowsiot)
+> - [Microsoft.WindowsVirtualDesktop](#microsoftwindowsvirtualdesktop)
 
-## <a name="microsoftaad"></a>Micro soft. AAD
+## <a name="microsoftaad"></a>Microsoft.AAD
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -159,14 +156,14 @@ Ga naar de naam ruimte van een resource provider:
 > | domainservices | Nee | Nee |
 > | domainservices / replicasets | Nee | Nee |
 
-## <a name="microsoftaadiam"></a>micro soft. aadiam
+## <a name="microsoftaadiam"></a>microsoft.aadiam
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | Tenants | Nee | Nee |
 
-## <a name="microsoftalertsmanagement"></a>Micro soft. AlertsManagement
+## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -187,14 +184,14 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | service | Ja | Ja |
 
-## <a name="microsoftappconfiguration"></a>Micro soft. AppConfiguration
+## <a name="microsoftappconfiguration"></a>Microsoft.AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | configurationstores | Ja | Ja |
 
-## <a name="microsoftappservice"></a>Micro soft. AppService
+## <a name="microsoftappservice"></a>Microsoft.AppService
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -239,7 +236,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | sqlserverregistrations | Nee | Nee |
 
-## <a name="microsoftazurestack"></a>Micro soft. AzureStack
+## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -253,14 +250,14 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | batchaccounts | Ja | Ja |
 
-## <a name="microsoftbatchai"></a>Micro soft. BatchAI
+## <a name="microsoftbatchai"></a>Microsoft.BatchAI
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | clusters | Nee | Nee |
 > | fileservers | Nee | Nee |
-> | Functies | Nee | Nee |
+> | functies | Nee | Nee |
 > | werk ruimten | Nee | Nee |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -270,14 +267,14 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | mapapis | Nee | Nee |
 
-## <a name="microsoftbiztalkservices"></a>Micro soft. BizTalkServices
+## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | biztalk | Ja | Ja |
 
-## <a name="microsoftblockchain"></a>Micro soft. Block Chain
+## <a name="microsoftblockchain"></a>Microsoft.Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -285,14 +282,14 @@ Ga naar de naam ruimte van een resource provider:
 > | blockchainmembers | Ja | Ja |
 > | kijkers | Nee | Nee |
 
-## <a name="microsoftblueprint"></a>Micro soft. blauw druk
+## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | blueprintassignments | Nee | Nee |
 
-## <a name="microsoftbotservice"></a>Micro soft. BotService
+## <a name="microsoftbotservice"></a>Microsoft.BotService
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -304,18 +301,18 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Redis | Ja | Ja |
+> | redis | Ja | Ja |
 
 > [!IMPORTANT]
 > Als de Azure-cache voor redis-exemplaar is geconfigureerd met een virtueel netwerk, kan het exemplaar niet worden verplaatst naar een ander abonnement. Zie [beperkingen](./move-limitations/networking-move-limitations.md)voor het verplaatsen van netwerken.
 
-## <a name="microsoftcdn"></a>Micro soft. CDN
+## <a name="microsoftcdn"></a>Microsoft.Cdn
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | cdnwebapplicationfirewallpolicies | Nee | Nee |
-> | profielen | Ja | Ja |
+> | profiles | Ja | Ja |
 > | profielen/eind punten | Ja | Ja |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
@@ -351,7 +348,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!IMPORTANT]
 > Zie [richt lijnen](./move-limitations/classic-model-move-limitations.md)voor het verplaatsen van de klassieke implementatie. Klassieke implementatie resources kunnen worden verplaatst tussen abonnementen met een bewerking die specifiek is voor dat scenario.
 
-## <a name="microsoftclassicstorage"></a>Micro soft. ClassicStorage
+## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -394,14 +391,14 @@ Ga naar de naam ruimte van een resource provider:
 > [!IMPORTANT]
 > Zie [virtual machines richt lijnen voor verplaatsen](./move-limitations/virtual-machines-move-limitations.md).
 
-## <a name="microsoftcontainer"></a>Micro soft. container
+## <a name="microsoftcontainer"></a>Microsoft.Container
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | containergroups | Nee | Nee |
 
-## <a name="microsoftcontainerinstance"></a>Micro soft. ContainerInstance
+## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -435,14 +432,14 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | toepassingen | Ja | Ja |
 
-## <a name="microsoftcortanaanalytics"></a>Micro soft. CortanaAnalytics
+## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | accounts | Nee | Nee |
 
-## <a name="microsoftcostmanagement"></a>Micro soft. CostManagement
+## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -456,28 +453,28 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | bedrijfs | Ja | Ja |
 
-## <a name="microsoftcustomproviders"></a>Micro soft. CustomProviders
+## <a name="microsoftcustomproviders"></a>Microsoft.CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | resourceproviders | Ja | Ja |
 
-## <a name="microsoftdatabox"></a>Micro soft. DataBox
+## <a name="microsoftdatabox"></a>Microsoft.DataBox
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Functies | Nee | Nee |
+> | functies | Nee | Nee |
 
-## <a name="microsoftdataboxedge"></a>Micro soft. DataBoxEdge
+## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | databoxedgedevices | Nee | Nee |
 
-## <a name="microsoftdatabricks"></a>Micro soft. Databricks
+## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -492,14 +489,14 @@ Ga naar de naam ruimte van een resource provider:
 > | catalogi | Ja | Ja |
 > | datacatalogs | Nee | Nee |
 
-## <a name="microsoftdataconnect"></a>Micro soft. DataConnect
+## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | connectionmanagers | Nee | Nee |
 
-## <a name="microsoftdataexchange"></a>Micro soft. DataExchange
+## <a name="microsoftdataexchange"></a>Microsoft.DataExchange
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -515,7 +512,7 @@ Ga naar de naam ruimte van een resource provider:
 > | datafactories | Ja | Ja |
 > | factory's | Ja | Ja |
 
-## <a name="microsoftdatalake"></a>Micro soft. DataLake
+## <a name="microsoftdatalake"></a>Microsoft.DataLake
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -536,7 +533,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | accounts | Ja | Ja |
 
-## <a name="microsoftdatamigration"></a>Micro soft. DataMigration
+## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -552,21 +549,21 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | accounts | Nee | Nee |
 
-## <a name="microsoftdbformariadb"></a>Micro soft. DBforMariaDB
+## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | servers | Ja | Ja |
 
-## <a name="microsoftdbformysql"></a>Micro soft. DBforMySQL
+## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | servers | Ja | Ja |
 
-## <a name="microsoftdbforpostgresql"></a>Micro soft. DBforPostgreSQL
+## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -575,7 +572,7 @@ Ga naar de naam ruimte van een resource provider:
 > | servers | Ja | Ja |
 > | serversv2 | Ja | Ja |
 
-## <a name="microsoftdeploymentmanager"></a>Micro soft. DeploymentManager
+## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -597,12 +594,12 @@ Ga naar de naam ruimte van een resource provider:
 > | iothubs | Ja | Ja |
 > | provisioningservices | Ja | Ja |
 
-## <a name="microsoftdevspaces"></a>Micro soft. DevSpaces
+## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Fungeren | Ja | Ja |
+> | fungeren | Ja | Ja |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 
@@ -623,7 +620,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | databaseaccounts | Ja | Ja |
 
-## <a name="microsoftdomainregistration"></a>Micro soft. DomainRegistration
+## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -637,7 +634,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | services | Ja | Ja |
 
-## <a name="microsofteventgrid"></a>Micro soft. EventGrid
+## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -651,16 +648,16 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | clusters | Ja | Ja |
-> | Naam ruimten | Ja | Ja |
+> | naam ruimten | Ja | Ja |
 
-## <a name="microsoftgenomics"></a>Micro soft. Genomics
+## <a name="microsoftgenomics"></a>Microsoft.Genomics
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | accounts | Nee | Nee |
 
-## <a name="microsofthanaonazure"></a>Micro soft. HanaOnAzure
+## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -676,25 +673,25 @@ Ga naar de naam ruimte van een resource provider:
 > | clusters | Ja | Ja |
 
 > [!IMPORTANT]
-> U kunt HDInsight-clusters verplaatsen naar een nieuw abonnement of een nieuwe resource groep. U kunt echter niet overstappen op de netwerk resources die zijn gekoppeld aan het HDInsight-cluster (zoals het virtuele netwerk, de NIC of de load balancer). Daarnaast kunt u niet verplaatsen naar een nieuwe resource groep een NIC die is gekoppeld aan een virtuele machine voor het cluster.
+> U kunt de HDInsight-clusters verplaatsen naar een nieuw abonnement of resourcegroep. U kunt echter niet verplaatsen tussen abonnementen de netwerkresources die worden gekoppeld aan het HDInsight-cluster (zoals het virtuele netwerk, een NIC of een load balancer). Bovendien verplaatsen u niet naar een nieuwe resourcegroep een NIC die is gekoppeld aan een virtuele machine voor het cluster.
 >
-> Wanneer u een HDInsight-cluster naar een nieuw abonnement verplaatst, moet u eerst andere resources (zoals het opslag account) verplaatsen. Verplaats vervolgens het HDInsight-cluster zelf.
+> Bij het verplaatsen van een HDInsight-cluster naar een nieuw abonnement, verplaatst u eerst andere bronnen (zoals de storage-account). Verplaats het HDInsight-cluster op zichzelf.
 
-## <a name="microsofthealthcareapis"></a>Micro soft. HealthcareApis
+## <a name="microsofthealthcareapis"></a>Microsoft.HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | services | Ja | Ja |
 
-## <a name="microsofthybridcompute"></a>Micro soft. HybridCompute
+## <a name="microsofthybridcompute"></a>Microsoft.HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | apparaten | Nee | Nee |
 
-## <a name="microsofthybriddata"></a>Micro soft. HybridData
+## <a name="microsofthybriddata"></a>Microsoft.HybridData
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -706,9 +703,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Functies | Ja | Ja |
+> | functies | Ja | Ja |
 
-## <a name="microsoftinsights"></a>micro soft. Insights
+## <a name="microsoftinsights"></a>microsoft.insights
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -718,7 +715,7 @@ Ga naar de naam ruimte van een resource provider:
 > | activitylogalerts | Nee | Nee |
 > | alertrules | Ja | Ja |
 > | autoscalesettings | Ja | Ja |
-> | Materialen | Ja | Ja |
+> | materialen | Ja | Ja |
 > | guestdiagnosticsettings | Nee | Nee |
 > | metricalerts | Nee | Nee |
 > | notificationgroups | Nee | Nee |
@@ -730,20 +727,20 @@ Ga naar de naam ruimte van een resource provider:
 > [!IMPORTANT]
 > Zorg ervoor dat het verplaatsen naar een nieuw abonnement geen [abonnements quota's](../azure-subscription-service-limits.md#azure-monitor-limits)overschrijdt.
 
-## <a name="microsoftiotcentral"></a>Micro soft. IoTCentral
+## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | iotapps | Ja | Ja |
 
-## <a name="microsoftiotspaces"></a>Micro soft. IoTSpaces
+## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | checknameavailability | Ja | Ja |
-> | Graph | Ja | Ja |
+> | graph | Ja | Ja |
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 
@@ -763,21 +760,21 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | clusters | Ja | Ja |
 
-## <a name="microsoftlabservices"></a>Micro soft. LabServices
+## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | labaccounts | Nee | Nee |
 
-## <a name="microsoftlocationbasedservices"></a>Micro soft. LocationBasedServices
+## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | accounts | Nee | Nee |
 
-## <a name="microsoftlocationservices"></a>Micro soft. bestand locationservices
+## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -804,14 +801,14 @@ Ga naar de naam ruimte van een resource provider:
 > | webservices | Ja | Nee |
 > | werk ruimten | Ja | Ja |
 
-## <a name="microsoftmachinelearningcompute"></a>Micro soft. MachineLearningCompute
+## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | operationalizationclusters | Ja | Ja |
 
-## <a name="microsoftmachinelearningexperimentation"></a>Micro soft. MachineLearningExperimentation
+## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -823,14 +820,14 @@ Ga naar de naam ruimte van een resource provider:
 > | teamaccounts/werk ruimten | Nee | Nee |
 > | teamaccounts/werk ruimten/projecten | Nee | Nee |
 
-## <a name="microsoftmachinelearningmodelmanagement"></a>Micro soft. MachineLearningModelManagement
+## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | accounts | Nee | Nee |
 
-## <a name="microsoftmachinelearningoperationalization"></a>Micro soft. MachineLearningOperationalization
+## <a name="microsoftmachinelearningoperationalization"></a>Microsoft.MachineLearningOperationalization
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -844,21 +841,21 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | werk ruimten | Nee | Nee |
 
-## <a name="microsoftmanagedidentity"></a>Micro soft. ManagedIdentity
+## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | userassignedidentities | Nee | Nee |
 
-## <a name="microsoftmaps"></a>Micro soft. Maps
+## <a name="microsoftmaps"></a>Microsoft.Maps
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | accounts | Ja | Ja |
 
-## <a name="microsoftmarketplaceapps"></a>Micro soft. MarketplaceApps
+## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -881,7 +878,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | appclusters | Nee | Nee |
 
-## <a name="microsoftmigrate"></a>Micro soft. migrate
+## <a name="microsoftmigrate"></a>Microsoft.Migrate
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -890,7 +887,7 @@ Ga naar de naam ruimte van een resource provider:
 > | migrateprojects | Nee | Nee |
 > | projecten | Nee | Nee |
 
-## <a name="microsoftnetapp"></a>Micro soft. NetApp
+## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -911,7 +908,7 @@ Ga naar de naam ruimte van een resource provider:
 > | applicationsecuritygroups | Ja | Ja |
 > | azurefirewalls | Ja | Ja |
 > | bastionhosts | Nee | Nee |
-> | Inbel | Ja | Ja |
+> | inbel | Ja | Ja |
 > | ddoscustompolicies | Ja | Ja |
 > | ddosprotectionplans | Nee | Nee |
 > | dnszones | Ja | Ja |
@@ -960,7 +957,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Naam ruimten | Ja | Ja |
+> | naam ruimten | Ja | Ja |
 > | naam ruimten/notification hubs | Ja | Ja |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
@@ -982,42 +979,42 @@ Ga naar de naam ruimte van een resource provider:
 > | oplossingen | Ja | Ja |
 > | Weergaven | Ja | Ja |
 
-## <a name="microsoftpeering"></a>Micro soft. peering
+## <a name="microsoftpeering"></a>Microsoft.Peering
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | Peerings | Nee | Nee |
 
-## <a name="microsoftportal"></a>Micro soft. Portal
+## <a name="microsoftportal"></a>Microsoft.Portal
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | Dash boards | Ja | Ja |
 
-## <a name="microsoftportalsdk"></a>Micro soft. PortalSdk
+## <a name="microsoftportalsdk"></a>Microsoft.PortalSdk
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | rootresources | Nee | Nee |
 
-## <a name="microsoftpowerbi"></a>Micro soft. PowerBI
+## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | workspacecollections | Ja | Ja |
 
-## <a name="microsoftpowerbidedicated"></a>Micro soft. PowerBIDedicated
+## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | beschikt | Ja | Ja |
 
-## <a name="microsoftprojectoxford"></a>Micro soft. ProjectOxford
+## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1039,16 +1036,16 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Naam ruimten | Ja | Ja |
+> | naam ruimten | Ja | Ja |
 
-## <a name="microsoftresourcegraph"></a>Micro soft. ResourceGraph
+## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | query's | Ja | Ja |
 
-## <a name="microsoftsaas"></a>Micro soft. SaaS
+## <a name="microsoftsaas"></a>Microsoft.SaaS
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1060,7 +1057,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Terugloop | Ja | Ja |
+> | terugloop | Ja | Ja |
 > | jobcollections | Ja | Ja |
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
@@ -1094,9 +1091,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Naam ruimten | Ja | Ja |
+> | naam ruimten | Ja | Ja |
 
-## <a name="microsoftservicefabric"></a>Micro soft. ServiceFabric
+## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1111,7 +1108,7 @@ Ga naar de naam ruimte van een resource provider:
 > | secretstores | Nee | Nee |
 > | volumes | Nee | Nee |
 
-## <a name="microsoftservicefabricmesh"></a>Micro soft. ServiceFabricMesh
+## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1123,14 +1120,14 @@ Ga naar de naam ruimte van een resource provider:
 > | geheimen | Ja | Ja |
 > | volumes | Ja | Ja |
 
-## <a name="microsoftsignalrservice"></a>Micro soft. SignalRService
+## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | signalr | Ja | Ja |
 
-## <a name="microsoftsolutions"></a>Micro soft. Solutions
+## <a name="microsoftsolutions"></a>Microsoft.Solutions
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1155,9 +1152,9 @@ Ga naar de naam ruimte van een resource provider:
 > | virtualclusters | Ja | Ja |
 
 > [!IMPORTANT]
-> Een Data Base en server moeten zich in dezelfde resource groep bestaan. Wanneer u een SQL-Server verplaatst, worden alle bijbehorende data bases ook verplaatst. Dit gedrag is van toepassing op Azure SQL Database-en Azure SQL Data Warehouse-data bases.
+> Een Data Base en server moeten zich in dezelfde resource groep bestaan. Wanneer u een SQL-server hebt verplaatst, worden ook alle bijbehorende databases verplaatst. Dit gedrag is van toepassing op Azure SQL Database en Azure SQL Data Warehouse-databases.
 
-## <a name="microsoftsqlvirtualmachine"></a>Micro soft. SqlVirtualMachine
+## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1165,7 +1162,7 @@ Ga naar de naam ruimte van een resource provider:
 > | sqlvirtualmachinegroups | Ja | Ja |
 > | sqlvirtualmachines | Ja | Ja |
 
-## <a name="microsoftsqlvm"></a>Micro soft. SqlVM
+## <a name="microsoftsqlvm"></a>Microsoft.SqlVM
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1179,28 +1176,28 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | Storage accounts | Ja | Ja |
 
-## <a name="microsoftstoragecache"></a>Micro soft. StorageCache
+## <a name="microsoftstoragecache"></a>Microsoft.StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | caches | Nee | Nee |
 
-## <a name="microsoftstoragesync"></a>Micro soft. StorageSync
+## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | storagesyncservices | Ja | Ja |
 
-## <a name="microsoftstoragesyncdev"></a>Micro soft. StorageSyncDev
+## <a name="microsoftstoragesyncdev"></a>Microsoft.StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | storagesyncservices | Nee | Nee |
 
-## <a name="microsoftstoragesyncint"></a>Micro soft. StorageSyncInt
+## <a name="microsoftstoragesyncint"></a>Microsoft.StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1224,7 +1221,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!IMPORTANT]
 > Stream Analytics taken kunnen niet worden verplaatst wanneer de status actief is.
 
-## <a name="microsoftstreamanalyticsexplorer"></a>Micro soft. StreamAnalyticsExplorer
+## <a name="microsoftstreamanalyticsexplorer"></a>Microsoft.StreamAnalyticsExplorer
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1235,15 +1232,15 @@ Ga naar de naam ruimte van een resource provider:
 > | exemplaren/omgevingen | Nee | Nee |
 > | exemplaren/omgevingen/eventsources | Nee | Nee |
 
-## <a name="microsoftterraformoss"></a>Micro soft. TerraformOSS
+## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | providerregistrations | Nee | Nee |
-> | Resources | Nee | Nee |
+> | resources | Nee | Nee |
 
-## <a name="microsofttimeseriesinsights"></a>Micro soft. TimeSeriesInsights
+## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1259,14 +1256,14 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ---------- |
 > | opslaat | Nee | Nee |
 
-## <a name="microsoftvirtualmachineimages"></a>Micro soft. VirtualMachineImages
+## <a name="microsoftvirtualmachineimages"></a>Microsoft.VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | imagetemplates | Nee | Nee |
 
-## <a name="microsoftvisualstudio"></a>micro soft. Visual Studio
+## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1278,7 +1275,7 @@ Ga naar de naam ruimte van een resource provider:
 > [!IMPORTANT]
 > Als u het abonnement voor Azure DevOps wilt wijzigen, raadpleegt u [het Azure-abonnement wijzigen dat wordt gebruikt voor facturering](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json).
 
-## <a name="microsoftvmwarecloudsimple"></a>Micro soft. VMwareCloudSimple
+## <a name="microsoftvmwarecloudsimple"></a>Microsoft.VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
@@ -1292,9 +1289,9 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
-> | Bewijzen | Nee | Ja |
+> | bewijzen | Nee | Ja |
 > | connectiongateways | Ja | Ja |
-> | Inbel | Ja | Ja |
+> | inbel | Ja | Ja |
 > | customapis | Ja | Ja |
 > | hostingenvironments | Nee | Nee |
 > | server farms | Ja | Ja |
@@ -1305,14 +1302,14 @@ Ga naar de naam ruimte van een resource provider:
 > [!IMPORTANT]
 > Zie [app service richt lijnen voor verplaatsen](./move-limitations/app-service-move-limitations.md).
 
-## <a name="microsoftwindowsiot"></a>Micro soft. WindowsIoT
+## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |
 > | ------------- | ----------- | ---------- |
 > | deviceservices | Nee | Nee |
 
-## <a name="microsoftwindowsvirtualdesktop"></a>Micro soft. WindowsVirtualDesktop
+## <a name="microsoftwindowsvirtualdesktop"></a>Microsoft.WindowsVirtualDesktop
 
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Resourcegroep | Abonnement |

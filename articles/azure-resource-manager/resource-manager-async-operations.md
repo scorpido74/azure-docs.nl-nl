@@ -1,18 +1,15 @@
 ---
-title: Status van asynchrone bewerkingen - Azure Resource Manager
+title: Status van asynchrone bewerkingen
 description: Beschrijft hoe u voor het bijhouden van asynchrone bewerkingen in Azure. Het bevat de waarden die u gebruiken om de status van een langdurige bewerking.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 12/09/2018
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 56d55365a243a9e51e96985ee0035c43404f82f0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 39174010e5d5c71e1b9f09827f92a2c540d98e78
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206301"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149535"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Azure-asynchrone bewerkingen bijhouden
 Sommige Azure REST-bewerkingen worden asynchroon uitgevoerd omdat de bewerking snel kan niet worden voltooid. Dit artikel wordt beschreven hoe u kunt de status van asynchrone bewerkingen via waarden in het antwoord geretourneerd bijhouden.  

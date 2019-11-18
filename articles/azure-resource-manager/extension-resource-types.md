@@ -1,23 +1,20 @@
 ---
-title: Resource typen voor Azure-extensies
+title: Resourcetypen van extensies
 description: Een lijst met de Azure-resource typen wordt gebruikt om de mogelijkheden van andere resource typen uit te breiden.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: tomfitz
-ms.openlocfilehash: 00e8efaaa81ec0ce189d8cfe8a78285ded445c68
-ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
+ms.openlocfilehash: 16dcd4cccea4445b6839ac639094d18e29ed49a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72901922"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147032"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Resource typen die de mogelijkheden van andere resources uitbreiden
 
 Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden van een andere resource. Resource vergrendeling is bijvoorbeeld een uitbreidings resource. U past een resource vergrendeling toe op een andere resource om te voor komen dat deze wordt verwijderd of gewijzigd. Het is niet verstandig een resource vergrendeling zelf te maken. Een extensie resource wordt altijd toegepast op een andere resource.
 
-## <a name="extension-resource-types"></a>Resource typen voor extensies
+## <a name="extension-resource-types"></a>Resourcetypen van extensies
 
 - Micro soft. Advisor/configuraties
 - Micro soft. Advisor/aanbevelingen
@@ -75,8 +72,8 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. CostManagement/views
 - Micro soft. CostManagement/showbackRules
 - Micro soft. CustomProviders/Associations
-- Micro soft. EventGrid/eventSubscriptions
-- Micro soft. EventGrid/extensionTopics
+- Microsoft.EventGrid/eventSubscriptions
+- Microsoft.EventGrid/extensionTopics
 - Micro soft. GuestConfiguration/configurationProfileAssignments
 - Micro soft. GuestConfiguration/guestConfigurationAssignments
 - Micro soft. GuestConfiguration/software
@@ -110,7 +107,7 @@ Een extensie resource is een resource die wordt toegevoegd aan de mogelijkheden 
 - Micro soft. PolicyInsights/policyEvents
 - Micro soft. PolicyInsights/policyStates
 - Micro soft. PolicyInsights/policyTrackedResources
-- Micro soft. PolicyInsights/herstel bewerkingen
+- Microsoft.PolicyInsights/remediations
 - Micro soft. Recovery Services/backupProtectedItems
 - Micro soft. ResourceHealth/availabilityStatuses
 - Micro soft. ResourceHealth/childAvailabilityStatuses
