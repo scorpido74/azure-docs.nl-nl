@@ -15,10 +15,6 @@
   items:
     - name: Video Indexer-API gebruiken
       href: video-indexer-use-apis.md
-- name: Voorbeelden
-  items:
-    - name: Analyse van livestream
-      href: live-stream-analysis.md
 - name: Concepten
   items:
     - name: Overzicht
@@ -29,6 +25,8 @@
       href: manage-multiple-tenants.md
     - name: Taalidentificatiemodel
       href: language-identification-model.md
+    - name: Analyse van livestream
+      href: live-stream-analysis.md
     - name: Inhoudsmodellen aanpassen
       items:
         - name: Overzicht
