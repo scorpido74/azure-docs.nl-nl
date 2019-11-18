@@ -1,26 +1,18 @@
 ---
-title: Zelfstudie voor het maken van een web-app met Azure Cache voor Redis die gebruikmaakt van het cache-aside-patroon | Microsoft Docs
+title: Zelf studie voor het maken van een web-app met Azure cache voor redis die gebruikmaakt van het cache-leggings patroon
 description: Informatie over het maken van een web-app met Azure Cache voor Redis die gebruikmaakt van het cache-aside-patroon
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 3260bbbd858fecc8cc305a9fcab0b551fdf182dc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: dbd8250da46e640aaa9403430ae0fbfaa9b181c8
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73834111"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121508"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Zelfstudie: Een cache-aside-leaderboard maken in ASP.NET
 
@@ -711,7 +703,7 @@ In deze stap van de zelfstudie publiceert u de toepassingsupdate in Azure om dez
 
     | Actie | Beschrijving |
     | --- | --- |
-    | Create New |Een nieuw team maken |
+    | Nieuwe maken |Een nieuw team maken |
     | Play Season |Speel een seizoen wedstrijden, werk de teamstatistieken bij en wis eventuele verouderde teamgegevens uit de cache. |
     | Clear Cache |Wis de teamstatistieken uit de cache. |
     | List from Cache |Haal de teamstatistieken op uit de cache. Als er een cache ontbreekt, moet u de statistieken uit de database laden en in de cache opslaan voor later gebruik. |
@@ -731,7 +723,7 @@ Wanneer u klaar bent met de voorbeeldtoepassing uit de zelfstudie, kunt u de Azu
 > Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via de respectievelijke blades.
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
 2. Typ de naam van de resourcegroep in het tekstvak **Items filteren...** .
 3. Klik op **...** rechts van de resourcegroep en klik op **Resourcegroep verwijderen**.
 

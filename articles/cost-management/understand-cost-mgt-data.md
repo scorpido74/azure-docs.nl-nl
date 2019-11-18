@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 681ccc768b1fa3d5a968847d11987fbd83898b59
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: bf3c2224361cd2890a0b8b4686506eac6858d9cb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721366"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122997"
 ---
 # <a name="understand-cost-management-data"></a>Inzicht in gegevens van Cost Management
 
@@ -29,7 +29,7 @@ De volgende informatie bevat de momenteel ondersteunde [Microsoft Azure aanbiedi
 
 | **Categorie**  | **Naam van aanbieding** | **Quotum-ID** | **Aanbiedings nummer** | **Beschik bare gegevens van** |
 | --- | --- | --- | --- | --- |
-| **Azure Government** | Azure Government Enter prise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Mei 2014<sup>1</sup> |
+| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P | Mei 2014<sup>1</sup> |
 | **Enterprise Agreement (EA)** | Enterprise Dev/Test                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P | Mei 2014<sup>1</sup> |
 | **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P | Mei 2014<sup>1</sup> |
 | **Microsoft-klantovereenkomst** | [Microsoft Azure plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | N.v.t. | <sup>3</sup> maart 2019 |
@@ -58,9 +58,10 @@ _<sup>**4**</sup> historische gegevens voor tegoed-en kasvoorschot abonnementen 
 
 De volgende aanbiedingen worden nog niet ondersteund:
 
-| Category  | **Naam van aanbieding** | **Quotum-ID** | **Aanbiedings nummer** |
+| Categorie  | **Naam van aanbieding** | **Quotum-ID** | **Aanbiedings nummer** |
 | --- | --- | --- | --- |
 | **Azure Duitsland** | [Azure Duitsland-betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-de-0003p) | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government Pay-As-You-Go | PayAsYouGo_2014-09-01 | MS-AZR-USGOV-0003P |
 | **Cloud Solution Provider (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Government CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Duitsland in CSP voor Microsoft Cloud Duitsland   | CSP_2015-05-01 | MS-AZR-DE-0145P |
@@ -100,7 +101,7 @@ _<sup>**6**</sup> Marketplace-aankopen zijn op dit moment niet beschikbaar voor 
 
 _<sup>**7**</sup> reserve ringen zijn op dit moment alleen beschikbaar voor Enterprise Agreement (EA)-accounts._
 
-**Metagegevensarchiefmethode**
+**Metadata**
 
 | **Omvat** | **Niet inbegrepen** |
 | --- | --- |
@@ -127,79 +128,6 @@ Betalen per gebruik-abonnementen: als de facturerings maand eindigt op 15 mei, w
 
 Of u de [Cost Management-api's](index.yml), Power bi of de Azure Portal gebruikt om gegevens op te halen, de kosten van de huidige facturerings periode moeten worden geclassificeerd en daarom worden gewijzigd totdat de factuur is gesloten.
 
-## <a name="cost-management-data-fields"></a>Cost Management gegevens velden
-
-De volgende gegevens velden zijn te vinden in detail bestanden voor gebruik en Cost Management-Api's. Voor de volgende vetgedrukte velden kunnen partners filteren en groeperen op functies in Cost Analysis gebruiken om kosten te analyseren op basis van meerdere velden. Vetgedrukte velden zijn alleen van toepassing op micro soft-klant overeenkomsten die door partners worden ondersteund.
-
-| **Veld naam** | **Beschrijving** |
-| --- | --- |
-| InvoiceId | Factuur-ID die wordt weer gegeven op de factuur voor de specifieke trans actie. |
-| previousInvoiceID | Verwijzing naar een oorspronkelijke factuur er is een restitutie (negatieve kosten). Alleen ingevuld als er een restitutie is. |
-| billingAccountName | De naam van het facturerings account dat de partner voor stelt. Alle kosten worden in rekening gebracht voor alle klanten die hebben gekantt aan een micro soft-klant overeenkomst en de CSP-klanten die recht hebben op aankopen als SaaS, Azure Marketplace en reserve ringen. |
-| billingAccountID | De id voor het facturerings account dat de partner voor stelt. |
-| billingProfileID | De id voor het facturerings profiel waarmee de kosten voor facturen worden gegroepeerd in een enkele facturerings valuta voor klanten die hebben gereageerd op een micro soft-klant overeenkomst en de CSP-klanten die recht hebben op aankopen als SaaS, Azure Marketplace en ringen. |
-| billingProfileName | De naam van het facturerings profiel waarmee de kosten voor facturen worden gegroepeerd in een enkele facturerings valuta voor de klanten die een micro soft-klant overeenkomst hebben opgedaan en de CSP-klanten die recht hebben op aankopen als SaaS, Azure Marketplace en ringen. |
-| invoiceSectionName | De naam van het project dat in de factuur wordt gefactureerd. Niet van toepassing op micro soft-klant overeenkomsten die worden uitgevoerd door partners. |
-| invoiceSectionID | De id van het project dat in de factuur wordt gefactureerd. Niet van toepassing op micro soft-klant overeenkomsten die worden uitgevoerd door partners. |
-| **CustomerTenantID** | De id van de Azure Active Directory Tenant van het&#39;abonnement van de klant. |
-| **CustomerName** | De naam van de Azure Active Directory Tenant voor het&#39;abonnement van de klant s. |
-| **CustomerTenantDomainName** | De domein naam voor de Azure Active Directory-Tenant van&#39;het abonnement van de klant s. |
-| **PartnerTenantID** | De id voor de&#39;partner-Azure Active Directory Tenant. |
-| **PartnerName** | De naam van de partner Azure Active Directory Tenant. |
-| **ResellerMPNID** | MPNID voor de wederverkoper die aan het abonnement is gekoppeld. |
-| costCenter | Kosten plaats die aan het abonnement is gekoppeld. |
-| billingPeriodStartDate | De begin datum van de facturerings periode, zoals op de factuur wordt weer gegeven. |
-| billingPeriodEndDate | De eind datum van de facturerings periode, zoals op de factuur wordt weer gegeven. |
-| servicePeriodStartDate | De begin datum voor de beoordelings periode wanneer het service verbruik is beoordeeld op kosten. De prijzen voor Azure-Services worden bepaald voor de beoordelings periode. |
-| servicePeriodEndDate | Eind datum voor de periode waarin het service verbruik is beoordeeld op kosten. De prijzen voor Azure-Services worden bepaald op basis van de waarderings periode. |
-| date | Voor Azure-verbruiks gegevens wordt de datum van gebruik weer gegeven als geclassificeerd. Voor een gereserveerde instantie wordt de aangeschafte datum weer gegeven. Voor terugkerende kosten en eenmalige kosten, zoals Marketplace en ondersteuning, wordt de aankoop datum weer gegeven. |
-| productID | Id voor het product dat de transitorische kosten per verbruik of aankoop heeft. Het is de aaneengeschakelde sleutel van productID en SKuID, zoals wordt weer gegeven in het partner centrum. |
-| product | Naam van het product met transitorische kosten per verbruik of aankoop, zoals op de factuur wordt weer gegeven. |
-| serviceFamily | Toont de service familie voor het product dat is gekocht of in rekening wordt gebracht. Bijvoorbeeld Storage of compute. |
-| productOrderID | De id van de Asset of Azure-plan naam waarvan het abonnement deel uitmaakt. Bijvoorbeeld Azure-abonnement. |
-| productOrderName | De naam van het Azure-abonnement waarvan het abonnement deel uitmaakt. Bijvoorbeeld Azure-abonnement. |
-| consumedService | Verbruikte service (verouderde taxonomie) zoals gebruikt in verouderde EA-gebruiks gegevens. |
-| meterId | Gecontroleerde id voor het gemeten verbruik. |
-| meterName | Hiermee wordt de naam van de meter voor gemeten verbruik geïdentificeerd. |
-| meterCategory | Identificeert de service op het hoogste niveau voor gebruik. |
-| meterSubCategory | Hiermee wordt het type of de subcategorie van de Azure-service gedefinieerd die van invloed kan zijn op het aantal. |
-| meterRegion | De datacenterlocatie voor bepaalde services waarbij de prijs is gebaseerd op de datacenterlocatie. |
-| subscription ID | De unieke door micro soft gegenereerde id voor het Azure-abonnement. |
-| subscriptionName | De naam van het Azure-abonnement. |
-| Termijn | Hiermee wordt de geldigheidstermijn van de aanbieding weergegeven. Gereserveerde instanties tonen bijvoorbeeld 12 maanden van een jaar van de gereserveerde instantie. Voor eenmalige aankopen of terugkerende aankopen wordt voor de periode één maand voor SaaS, Azure Marketplace en ondersteuning weer gegeven. Niet van toepassing op Azure-verbruik. |
-| publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Type uitgever die de uitgever identificeert als eerste partij, wederverkoper van derden of Bureau van derden. |
-| PartNumber | Onderdeel nummer voor het niet-gebruikte gereserveerde exemplaar en Azure Marketplace-Services. |
-| publisherName | De naam van de uitgever van de service, inclusief micro soft-of uitgevers van derden. |
-| reservationId | De id voor de gereserveerde instantie aankoop. |
-| reservationName | De naam van de gereserveerde instantie. |
-| reservationOrderId | OrderID voor het gereserveerde exemplaar. |
-| frequency | De betalings frequentie voor een gereserveerde instantie. |
-| resourceGroup | De naam van de Azure-resource groep die wordt gebruikt voor levenscyclus resource beheer. |
-| instanceID (of) ResourceID | De id van het resource-exemplaar. |
-| resourceLocation | De naam van de resource locatie. |
-| Locatie | De genormaliseerde locatie van de resource. |
-| effectivePrice | De werkelijke eenheids prijs van de service, in de valuta prijs. Uniek voor een product, een service familie, een meter en een aanbieding. Wordt gebruikt met prijzen in het prijs overzicht voor het facturerings account. Als er gelaagde prijzen of een inbegrepen hoeveelheid zijn, wordt de overvloei prijs voor verbruik weer gegeven. |
-| Aantal | Gemeten hoeveelheid die is gekocht of verbruikt. De hoeveelheid meter die wordt gebruikt tijdens de facturerings periode. |
-| unitOfMeasure | Hiermee wordt de eenheid geïdentificeerd waarin de service wordt gefactureerd. Bijvoorbeeld GB en uren. |
-| pricingCurrency | De valuta waarin de eenheids prijs wordt gedefinieerd. |
-| billingCurrency | De valuta waarin de gefactureerde kosten worden gedefinieerd |
-| chargeType | Definieert het type kosten dat de kosten vertegenwoordigen in Azure Cost Management zoals aankoop en terugbetaling. |
-| costinBillingCurrency | ExtendedCost of overvloei kosten vóór belasting in de gefactureerde valuta. |
-| costinPricingCurrency | ExtendedCost of overvloei kosten voor BTW in de prijs valuta om te correleren met prijzen. |
-| **costinUSD** | Geschatte ExtendedCost of overvloei kosten vóór belasting in USD. |
-| **paygCostInBillingCurrency** | Hiermee worden de kosten weer gegeven als de prijzen een verkoop prijs zijn. Hiermee worden de prijzen voor betalen naar gebruik in de facturerings valuta weer gegeven. Alleen beschikbaar voor RBAC-bereiken. |
-| **paygCostInUSD** | Hiermee worden de kosten weer gegeven als de prijzen een verkoop prijs zijn. Toont de prijzen voor betalen naar gebruik in USD. Alleen beschikbaar voor RBAC-bereiken. |
-| exchangeRate | De wissel koers die wordt gebruikt om de prijs valuta om te zetten in de facturerings valuta. |
-| exchangeRateDate | De datum voor de wissel koers die&#39;wordt gebruikt om van de prijs valuta te converteren naar de facturerings valuta. |
-| isAzureCreditEligible | Geeft aan of de kosten in aanmerking komen voor betaling door Azure-tegoed. |
-| serviceInfo1 | Verouderd veld waarin optionele servicespecifieke meta gegevens worden vastgelegd. |
-| serviceInfo2 | Verouderd veld waarin optionele servicespecifieke meta gegevens worden vastgelegd. |
-| additionalInfo | Servicespecifieke metagegevens. Bijvoorbeeld een installatiekopie voor een virtuele machine. |
-| tags | Label dat u toewijst aan de meter. Tags gebruiken om facturerings records te groeperen. U kunt bijvoorbeeld Tags gebruiken om kosten te verdelen door de afdeling die gebruikmaakt van de meter. |
-| **partnerEarnedCreditRate** | Het tarief van de korting wordt toegepast als er een door de partner aangehaalde credit (PEC) is op basis van de toegang tot de partner beheerder. |
-| **partnerEarnedCreditApplied** | Geeft aan of het tegoed van de partner is toegepast. |
-
-
 ## <a name="usage-data-update-frequency-varies"></a>De update frequentie van gebruiks gegevens varieert
 
 De beschik baarheid van uw gemaakte gebruiks gegevens in Cost Management is afhankelijk van een aantal factoren, waaronder:
@@ -222,4 +150,4 @@ Historische gegevens voor aanbiedingen op basis van tegoed en voor uitbetalingen
 
 ## <a name="see-also"></a>Zie ook
 
-- Als u de eerste Snelstartgids voor Cost Management nog niet hebt voltooid, kunt u deze lezen bij het analyseren van de [kosten](quick-acm-cost-analysis.md).
+- Als u dit nog niet hebt al de eerste snelstartgids voltooid voor kostenbeheer, lezen via [kosten analyseren](quick-acm-cost-analysis.md).

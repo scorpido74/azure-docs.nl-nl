@@ -8,19 +8,16 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: c4669809f1efa1f69081da17bf5ccbeddc39a716
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f48c8712a2f4fbd69db7de5247e3293ad57ae1e6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077133"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112834"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Ondersteuning voor feed wijzigen in Azure Blob Storage (preview-versie)
 
 Het doel van de wijzigings feed is het bieden van transactie logboeken van alle wijzigingen die plaatsvinden in de blobs en de BLOB-meta gegevens in uw opslag account. De wijzigings feed biedt **besteld**, **gegarandeerd**, **duurzaam**, **onveranderbaar**, **alleen-lezen** logboek van deze wijzigingen. Client toepassingen kunnen deze logboeken op elk gewenst moment in streaming of in de batch modus lezen. Met de wijzigings feed kunt u efficiënte en schaal bare oplossingen bouwen die wijzigings gebeurtenissen verwerken die in uw Blob Storage-account tegen lage kosten optreden.
-
-> [!NOTE]
-> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **westcentralus** en **westus2** . Zie de sectie [voor waarden](#conditions) in dit artikel. Zie de sectie [uw abonnement registreren](#register) in dit artikel voor meer informatie over het inschrijven van de preview-versie.
 
 De wijzigings feed wordt opgeslagen als [blobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) in een speciale container in uw opslag account tegen standaard [prijs voor blobs](https://azure.microsoft.com/pricing/details/storage/blobs/) . U kunt de Bewaar periode van deze bestanden beheren op basis van uw vereisten (Zie de [voor waarden](#conditions) van de huidige versie). Wijzigings gebeurtenissen worden toegevoegd aan de wijzigings feed als records in de [Apache Avro](https://avro.apache.org/docs/1.8.2/spec.html) Format-specificatie: een compacte, snelle en binaire indeling die voorziet in uitgebreide gegevens structuren met inline-schema's. Deze indeling wordt veel gebruikt in de Hadoop-ecosysteem, Stream Analytics en Azure Data Factory.
 
@@ -32,9 +29,9 @@ De ondersteuning voor het wijzigen van feeds is heel geschikt voor scenario's wa
   
   - De inzichten en metrische gegevens van Business Analytics extra heren, op basis van wijzigingen die plaatsvinden in uw objecten, hetzij in een streaming-of in batch modus.
   
-  - Bewaar, Controleer en analyseer wijzigingen in uw objecten, gedurende een bepaalde periode, voor beveiliging, naleving of intelligentie voor ondernemings gegevens beheer.
+  - Bewaar, audit en analyseer wijzigingen in uw objecten, gedurende een bepaalde periode, voor beveiliging, naleving of intelligentie voor ondernemings gegevens beheer.
 
-  - Ontwikkel oplossingen voor het maken van een back-up, het spie gelen of repliceren van object status in uw account voor nood beheer of naleving.
+  - Ontwikkel oplossingen voor het maken van een back-up, Mirror of replicatie van object status in uw account voor nood beheer of naleving.
 
   - Bouw verbonden toepassings pijplijnen die reageren op wijzigings gebeurtenissen of het plannen van uitvoeringen op basis van een gemaakt of gewijzigd object.
 
@@ -54,6 +51,9 @@ Hier volgen enkele dingen die u moet onthouden wanneer u de wijzigings feed insc
 - De wijzigings feed legt *alle* wijzigingen vast voor alle beschik bare gebeurtenissen die op het account plaatsvinden. Client toepassingen kunnen gebeurtenis typen filteren zoals vereist. (Zie de [voor waarden](#conditions) van de huidige versie).
 
 - Alleen GPv2-en Blob Storage-accounts kunnen wijzigings toevoer inschakelen. GPv1-opslag accounts, Premium BlockBlobStorage-accounts en hiërarchische naam ruimte ingeschakelde accounts worden momenteel niet ondersteund.
+
+> [!IMPORTANT]
+> De wijzigings feed bevindt zich in de open bare preview en is beschikbaar in de regio's **westcentralus** en **westus2** . Zie de sectie [voor waarden](#conditions) in dit artikel. Zie de sectie [uw abonnement registreren](#register) in dit artikel voor meer informatie over het inschrijven van de preview-versie. U moet uw abonnement registreren voordat u feed voor wijzigen kunt inschakelen voor uw opslag accounts.
 
 ### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
@@ -246,7 +246,7 @@ Zie [Logboeken voor feed changes in Azure Blob Storage verwerken](storage-blob-c
 
 - De tijd die door het segment wordt weer gegeven, is bij **benadering** met een limiet van 15 minuten. Om ervoor te zorgen dat alle records binnen een opgegeven periode worden verbruikt, verbruikt u het opeenvolgende vorige en volgende uur segment.
 
-- Elk segment kan een verschillend aantal `chunkFilePaths`hebben. Dit wordt veroorzaakt door het interne partitioneren van de logboek stroom voor het beheren van de door Voer van de publicatie. De logboek bestanden in elke `chunkFilePath` zijn gegarandeerd dat ze wederzijds exclusieve blobs bevatten en kunnen worden gebruikt en gelijktijdig worden verwerkt zonder dat de volg orde van wijzigingen per BLOB tijdens de herhaling wordt geschonden.
+- Elk segment kan een verschillend aantal `chunkFilePaths`hebben. Dit wordt veroorzaakt door het interne partitioneren van de logboek stroom voor het beheren van de door Voer van de publicatie. De logboek bestanden in elke `chunkFilePath` zijn gegarandeerd dat elkaar uitsluitende blobs bevatten en kunnen worden gebruikt en gelijktijdig worden verwerkt zonder dat de volg orde van wijzigingen per BLOB tijdens de herhaling wordt geschonden.
 
 - De segmenten beginnen bij de `Publishing` status. Zodra het toevoegen van de records aan het segment is voltooid, wordt het `Finalized`. De logboek bestanden in een segment waarvan de datum na de date van de eigenschap `LastConsumable` in het `$blobchangefeed/meta/Segments.json` bestand valt, mogen niet worden gebruikt door uw toepassing. Hier volgt een voor beeld van de eigenschap `LastConsumable`in een `$blobchangefeed/meta/Segments.json`-bestand:
 
@@ -302,7 +302,16 @@ In deze sectie worden bekende problemen en voor waarden in de huidige open bare 
 - De eigenschap `url` van het logboek bestand is altijd leeg.
 - De eigenschap `LastConsumable` van het bestand segmenten. json vermeldt niet het eerste segment dat de wijzigings feed is voltooid. Dit probleem treedt pas op nadat het eerste segment is voltooid. Alle volgende segmenten na het eerste uur worden nauw keurig vastgelegd in de eigenschap `LastConsumable`.
 
+## <a name="faq"></a>Veelgestelde vragen
+
+### <a name="what-is-the-difference-between-change-feed-and-storage-analytics-logging"></a>Wat is het verschil tussen wijzigings invoer en Opslaganalyse logboek registratie?
+De wijzigings feed is geoptimaliseerd voor het ontwikkelen van toepassingen omdat alleen geslaagde blobs worden gemaakt, gewijzigd en verwijderd in het logboek voor wijzigings invoer. In Analytics-logboek registratie worden alle geslaagde en mislukte aanvragen geregistreerd voor alle bewerkingen, inclusief Lees-en lijst bewerkingen. Door gebruik te maken van wijzigings feed hoeft u zich geen zorgen te maken over het filteren van de logboek ruis op een transactie zware account en focussen op de wijzigings gebeurtenissen van de blob.
+
+### <a name="should-i-use-change-feed-or-storage-events"></a>Moet ik een wijzigings feed of opslag gebeurtenissen gebruiken?
+U kunt beide functies gebruiken als wijzigings feed en [Blob Storage-gebeurtenissen](storage-blob-event-overview.md) vergelijkbaar zijn, waarbij het belangrijkste verschil is dat de latentie, ordening en opslag van gebeurtenis records. Met Change feed worden records om de paar minuten in het wijzigingslog bestand opgeslagen, terwijl de volg orde van BLOB-wijzigings bewerkingen wordt gegarandeerd. Opslag gebeurtenissen worden in realtime gepusht en worden mogelijk niet besteld. Change feed-gebeurtenissen worden blijvend opgeslagen in uw opslag account, terwijl opslag gebeurtenissen tijdelijk zijn en worden gebruikt door de gebeurtenis-handler, tenzij u deze expliciet opslaat.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk een voor beeld van hoe u de wijzigings feed kunt lezen met behulp van een .NET-client toepassing. Zie [Logboeken voor feed changes in Azure Blob Storage verwerken](storage-blob-change-feed-how-to.md).
 - Meer informatie over het reageren op gebeurtenissen in realtime. Zie [reageren op Blob Storage gebeurtenissen](storage-blob-event-overview.md)
+- Meer informatie over gedetailleerde logboek gegevens voor zowel geslaagde als mislukte bewerkingen voor alle aanvragen. Zie [Azure Storage Analytics-logboek registratie](../common/storage-analytics-logging.md)

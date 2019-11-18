@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9bc01e0e703ea9f98d877be39011dcca7c7b284a
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 4fc0654aab1c68888e86dc95de658bc69a01e02d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521759"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123974"
 ---
 # <a name="azure-kubernetes-services-integration-with-security-center-preview"></a>Integratie van Azure Kubernetes Services met Security Center (preview-versie)
 Azure Kubernetes service (AKS) is de beheerde service van micro soft voor het ontwikkelen, implementeren en beheren van toepassingen in containers. 
@@ -41,7 +41,7 @@ Het gebruik van de twee services biedt samen:
 
 * **Environment hardening** -Security Center bewaakt voortdurend de configuratie van uw Kubernetes-clusters en genereert beveiligings aanbevelingen die de industrie normen weer spie gelen.
 
-* **Run-time beveiliging** : door doorlopende analyse van de volgende AKS bronnen, Security Center u op de hoogte van bedreigingen en schadelijke activiteiten die zijn gedetecteerd op de host *en* het AKS-cluster niveau (Zie [Azure container service) voor meer informatie. ](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-container-service-)):
+* **Run-time beveiliging** : door doorlopende analyse van de volgende AKS bronnen, Security Center u op de hoogte van bedreigingen en schadelijke activiteiten die zijn gedetecteerd op de host *en* het AKS-cluster niveau (Zie [Azure container service) voor meer informatie. ](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)):
     * Onbewerkte beveiligings gebeurtenissen, zoals netwerk gegevens en het maken van processen
     * Het Kubernetes-controle logboek
 

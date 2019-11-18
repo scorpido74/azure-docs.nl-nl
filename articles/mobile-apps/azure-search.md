@@ -7,12 +7,12 @@ ms.service: vs-appcenter
 ms.topic: article
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: 1e3e198c38215ceacbe43961bf93ab906e5ccc09
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 335df16e6a6436485521611aee0f0a62edca8a3b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846262"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123447"
 ---
 # <a name="ai-powered-cloud-service-with-azure-cognitive-search"></a>De Cloud service AI-Powered met Azure Cognitive Search
 [Azure Cognitive Search](https://azure.microsoft.com/services/search/) is een in-as-a-Service-Cloud oplossing die ontwikkel aars api's en hulpprogram ma's biedt voor het toevoegen van een uitgebreide zoek ervaring via persoonlijke, heterogene inhoud in web-, mobiele en zakelijke toepassingen. Met uw aangepaste code wordt gegevens opname (indexering) aangeroepen om een index te maken en te laden. Aan de andere kant worden met de toepassings code query aanvragen aangevraagd en worden antwoorden verwerkt. De zoek ervaring wordt gedefinieerd in uw client met behulp van de functionaliteit van Azure Cognitive Search, waarbij de query wordt uitgevoerd via een persistente index die u maakt, eigenaar en opslaat in uw service.
@@ -29,11 +29,11 @@ ms.locfileid: "73846262"
 
 Hier vindt u een gedetailleerde beschrijving van Azure Cognitive Search- [functies](/azure/search/search-what-is-azure-search#feature-descriptions).
 
-## <a name="references"></a>Verwijzingen
+## <a name="references"></a>Naslaginformatie
 - [Azure Portal](https://portal.azure.com) 
 - [Documentatie](/azure/search/)
 - [Ontwikkelaarsgids](https://azure.microsoft.com/resources/iot-developers-guide/)
-- [Azure Cognitive Search gebruiken](/azure/search/search-what-is-azure-search#how-to-use-azure-search)
+- [Azure Cognitive Search gebruiken](/azure/search/search-what-is-azure-search#how-to-use-azure-cognitive-search)
 - [Snelstartgidsen](/azure/search/search-create-service-portal)
 
   

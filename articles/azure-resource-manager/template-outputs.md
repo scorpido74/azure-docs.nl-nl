@@ -1,17 +1,14 @@
 ---
-title: Uitvoer in Azure Resource Manager sjabloon
+title: Uitvoer in sjablonen
 description: Hierin wordt beschreven hoe u uitvoer waarden definieert in een Azure Resource Manager sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 0ff1e3cb71bd1bf5ee947eb5204839d48103628b
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b4c652d71436202b9b6e551f9c582e5c98508259
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827929"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149179"
 ---
 # <a name="outputs-in-azure-resource-manager-template"></a>Uitvoer in Azure Resource Manager sjabloon
 
@@ -95,7 +92,7 @@ az group deployment show \
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van uitvoer.
 
-|Template  |Description  |
+|Template  |Beschrijving  |
 |---------|---------|
 |[Kopieer variabelen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Complexe variabelen maakt en deze waarden weergeeft. Niet alle resources niet implementeren. |
 |[Openbaar IP-adres](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Hiermee maakt u een openbaar IP-adres en de uitvoer van de resource-ID. |

@@ -8,12 +8,12 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 7fb436ef8d915898bc8f36dd10766e71f63e4a59
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: ca34a92dc69cb500efb55f575420d47607cd1a46
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575575"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132205"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application-preview"></a>Azure Monitor instellen voor uw python-toepassing (preview-versie)
 
@@ -109,7 +109,6 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
     tracer = Tracer(
         exporter=AzureExporter(
             connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000'),
-        ),
         sampler=ProbabilitySampler(1.0),
     )
 
@@ -215,7 +214,7 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
     # TODO: replace the all-zero GUID with your instrumentation key.
     exporter = metrics_exporter.new_metrics_exporter(
         connection_string='InstrumentationKey=00000000-0000-0000-0000-000000000000')
-    )
+
     view_manager.register_exporter(exporter)
 
     def prompt():
@@ -297,30 +296,6 @@ De SDK gebruikt drie Azure Monitor Exporters voor het verzenden van verschillend
 4. De export functie stuurt logboek gegevens naar Azure Monitor. U kunt de gegevens onder `traces`vinden.
 
 5. Zie voor meer informatie over het verrijken van uw logboeken met tracerings context gegevens integratie met opentellingen python [Logboeken](https://docs.microsoft.com/azure/azure-monitor/app/correlation#logs-correlation).
-
-## <a name="start-monitoring-in-the-azure-portal"></a>Beginnen met controleren in Azure Portal
-
-1. U kunt nu het Application Insights **overzichts** venster in de Azure Portal opnieuw openen om de details van de toepassing die momenteel wordt uitgevoerd, weer te geven. Selecteer **Live Metrics stream**.
-
-   ![Scherm opname van het deel venster overzicht met de Live Metrics Stream geselecteerd in een rood vak](./media/opencensus-python/0005-overview-live-metrics-stream.png)
-
-2. Ga terug naar het deel venster **overzicht** . Selecteer **toepassings toewijzing** voor een visuele indeling van de afhankelijkheids relaties en roep timing aan tussen de onderdelen van uw toepassing.
-
-   ![Scherm afbeelding van een basis toepassings toewijzing](./media/opencensus-python/0007-application-map.png)
-
-   Omdat er slechts één methode aanroep wordt bijgehouden, is onze toepassings toewijzing niet interessant. Maar een toepassings kaart kan worden geschaald om veel meer gedistribueerde toepassingen te visualiseren:
-
-   ![Overzicht van de toepassing](media/opencensus-python/application-map.png)
-
-3. Selecteer **prestaties onderzoeken** om de prestaties te analyseren en de hoofd oorzaak van trage prestaties te bepalen.
-
-   ![Scherm opname van prestatie Details](./media/opencensus-python/0008-performance.png)
-
-4. Als u de end-to-end-ervaring voor transactie details wilt openen, selecteert u voor **beelden**en selecteert u vervolgens een van de voor beelden die in het rechterdeel venster worden weer gegeven. 
-
-   Hoewel in de voor beeld-app slechts één gebeurtenis wordt weer gegeven, zou een complexere toepassing u in staat stellen de end-to-end-trans actie te verkennen tot het niveau van de aanroep stack van een afzonderlijke gebeurtenis.
-
-   ![Scherm afbeelding van de end-to-end-trans actie-interface](./media/opencensus-python/0009-end-to-end-transaction.png)
 
 ## <a name="view-your-data-with-queries"></a>Uw gegevens weer geven met query's
 

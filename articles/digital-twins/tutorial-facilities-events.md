@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: 3cb5d8a6cb605d2150be1e34a9f4b0ac7955aed6
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 545e1757f4f3669957d8f6755cdbd9a2b29513b6
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74107693"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129231"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Zelfstudie: Meldingen ontvangen uit uw Azure Digital Twins-ruimten met behulp van Logic Apps
 
@@ -38,7 +38,7 @@ In deze zelfstudie wordt ervan uitgegaan dat u de Azure Digital Twins-installati
 - Een actief exemplaar van Digital Twins.
 - De gedownloade en uitgepakte [Digital Twins C#-voorbeelden](https://github.com/Azure-Samples/digital-twins-samples-csharp) op een werkcomputer.
 - [.NET Core SDK-versie 2.1.403 of hoger](https://www.microsoft.com/net/download) op een ontwikkelcomputer om het voorbeeld uit te voeren. Voer `dotnet --version` uit om te controleren of de juiste versie is geïnstalleerd.
-- Een Office 365-account voor het verzenden van melding via e-mail.
+- Een [Office 365](https://products.office.com/home) -account voor het verzenden van e-mail meldingen.
 
 > [!TIP]
 > Gebruik een unieke Digital Apparaatdubbels-exemplaar naam als u een nieuw exemplaar inricht.
@@ -63,7 +63,7 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
 
 1. Blader naar het Event Grid-onderwerp in de resourcegroep, selecteer **Overzicht** en kopieer de waarde voor **Eindpunt onderwerp** naar een tijdelijk bestand. U hebt deze URL nodig in de volgende sectie. 
 
-1. Selecteer **Toegangssleutels** en kopieer **UW_SLEUTEL_1** en **UW_SLEUTEL_ 2** naar een tijdelijk bestand. U hebt deze waarden nodig om het eindpunt in de volgende sectie te maken.
+1. Selecteer **Toegangssleutels** en kopieer **Sleutel 1** en **Sleutel 2** naar een tijdelijk bestand. U hebt deze waarden nodig om het eindpunt in de volgende sectie te maken.
 
     [Event Grid sleutels ![](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
 
@@ -85,9 +85,9 @@ In deze sectie stelt u een [Event Grid](../event-grid/overview.md) in voor het v
       path: <Event Grid Topic Name without https:// and /api/events, e.g. eventgridname.region.eventgrid.azure.net>
     ```
 
-1. Vervang de tijdelijke aanduiding `<Primary connection string for your Event Grid>` door de waarde van **YOUR_KEY_1**.
+1. Vervang de tijdelijke aanduiding `<Primary connection string for your Event Grid>` door de waarde van **sleutel 1**.
 
-1. Vervang de tijdelijke aanduiding `<Secondary connection string for your Event Grid>` door de waarde van **YOUR_KEY_2**.
+1. Vervang de tijdelijke aanduiding `<Secondary connection string for your Event Grid>` door de waarde van **sleutel 2**.
 
 1. Vervang de tijdelijke aanduiding voor het **pad** door het pad naar het event grid-onderwerp. Haal dit pad op door **https://** en de daarop volgende resourcepaden uit de URL van het **Eindpunt onderwerp** te verwijderen. Het moet er uitzien zoals deze indeling: *yourEventGridName.yourLocation.eventgrid.azure.net*.
 
@@ -178,7 +178,7 @@ Met de [Azure Logic Apps](../logic-apps/logic-apps-overview.md)-service kunt u g
 
    a. Selecteer **Een actie toevoegen** en selecteer **Office 365 Outlook**.
 
-   b. Selecteer in de lijst **Acties** de optie **Een e-mail verzenden**. Selecteer **Aanmelden** en gebruik de referenties van uw e-mailaccount. Selecteer **toegang toestaan** als u hierom wordt gevraagd.
+   b. Selecteer in de lijst **acties** de optie **een E-mail verzenden (v2)** . Selecteer **Aanmelden** en gebruik de referenties van uw e-mailaccount. Selecteer **toegang toestaan** als u hierom wordt gevraagd.
 
    c. In het vak **Aan** voert u uw e-mail-ID in om meldingen te ontvangen. Voer bij **Onderwerp** de tekst **Digital Twins-melding voor slechte luchtkwaliteit in ruimte**. Selecteer vervolgens **TopologyObjectId** in de lijst **Dynamische inhoud** voor **JSON parseren**.
 

@@ -1,5 +1,5 @@
 ---
-title: Referentie-invoer en uitvoer in een AI-verrijkings pijplijn
+title: Referentie-invoer en uitvoer in vaardig heden
 titleSuffix: Azure Cognitive Search
 description: Hierin worden de syntaxis van aantekeningen beschreven en wordt uitgelegd hoe u kunt verwijzen naar een aantekening in de invoer en uitvoer van een vakkennisset in een AI-verrijkings pijplijn in azure Cognitive Search.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fe81ccb5324d75212763e20ac2514ade9ce50496
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e27f61239c0631fb248217777a311b13ee48a3f9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787780"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113869"
 ---
 # <a name="how-to-reference-annotations-in-an-azure-cognitive-search-skillset"></a>Verwijzen naar aantekeningen in een Azure Cognitive Search vaardig heden
 

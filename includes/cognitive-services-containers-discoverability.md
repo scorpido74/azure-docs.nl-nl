@@ -1,28 +1,28 @@
 ---
 author: IEvangelist
 ms.author: dapine
-ms.date: 06/25/2019
+ms.date: 11/15/2019
 ms.service: cognitive-services
 ms.topic: include
-ms.openlocfilehash: e36e65b90d560d7953992f875d390c123c8ae7f4
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: c414bfed40385c2bad6eaaff6b391f57c8d898cb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125456"
 ---
 ## <a name="blog-posts"></a>Blogberichten
 
-* [Cognitive Services-Containers uitvoeren](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
-* [Aan de slag met Cognitive Services-Language Understanding-container](https://azure.microsoft.com/blog/getting-started-with-cognitive-services-language-understanding-container/)
+* [Cognitive Services containers uitvoeren](https://azure.microsoft.com/blog/running-cognitive-service-containers/)
+* [Azure Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/)
 
 ## <a name="developer-samples"></a>Voorbeelden voor ontwikkelaars
 
-Voorbeelden voor ontwikkelaars zijn beschikbaar op onze [GitHub-opslagplaats](https://github.com/Azure-Samples/cognitive-services-containers-samples).
+Voor beelden van ontwikkel aars zijn beschikbaar in onze [github-opslag plaats](https://github.com/Azure-Samples/cognitive-services-containers-samples).
 
-## <a name="view-webinar"></a>Webinar bekijken 
+## <a name="view-webinar"></a>Webinar bekijken
 
-Deelnemen aan de [webinar](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) voor meer informatie over:
+Doe mee aan de [webinar](https://info.microsoft.com/AP-AZUREPLAT-WBNR-FY19-03Mar-20-Seamlesslyintegrateapplicationsdataandprocesses-MCW0012283_02OnDemandRegistration-ForminBody.html) voor meer informatie over:
 
-* Cognitive Services implementeren op elke machine met behulp van Docker
-* Cognitive Services implementeren naar AKS
+* Cognitive Services op elke machine implementeren met behulp van docker
+* Cognitive Services implementeren op AKS

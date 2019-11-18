@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: fmegen
-ms.openlocfilehash: e00feed416eb3e06b703a2ef4fe040f0c815716e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3039276a49e7bb41660d114e78ca047a3f77f279
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464299"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109933"
 ---
 # <a name="about-the-speech-sdk-audio-input-stream-api"></a>Over de Speech SDK audio input stream API
 
-De **Audio-invoer stroom** -API van de Speech-SDK biedt een manier om audio-streams naar de recognizers te streamen in plaats van de microfoon of de api's van het invoer bestand te gebruiken.
+De **Audio-invoer stroom** -API van de Speech-SDK biedt een manier om audio naar de recognizers te streamen in plaats van de microfoon of het invoer bestand-api's te gebruiken.
 
 De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
@@ -29,7 +29,7 @@ De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
   De bijbehorende code in de SDK voor het maken van de audio-indeling ziet er als volgt uit:
 
-  ```
+  ```csharp
   byte channels = 1;
   byte bitsPerSample = 16;
   int samplesPerSecond = 16000;
@@ -40,7 +40,7 @@ De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
 - Maak uw eigen stroom klasse voor audio-invoer die is afgeleid van `PullAudioInputStreamCallback`. Implementeer de `Read()` en `Close()` leden. De exacte functie handtekening is taal afhankelijk, maar de code ziet er ongeveer als volgt uit:
 
-  ```
+  ```csharp
    public class ContosoAudioStream : PullAudioInputStreamCallback {
       ContosoConfig config;
 
@@ -61,7 +61,7 @@ De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
 - Een audio configuratie maken op basis van de audio-indeling en de invoer stroom. Geef zowel uw normale spraak configuratie als de audio-invoer configuratie op wanneer u uw herkenner maakt. Bijvoorbeeld:
 
-  ```
+  ```csharp
   var audioConfig = AudioConfig.FromStreamInput(new ContosoAudioStream(config), audioFormat);
 
   var speechConfig = SpeechConfig.FromSubscription(...);
@@ -75,5 +75,5 @@ De volgende stappen zijn vereist voor het gebruik van audio-invoer stromen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Zie spraak herkennen inC#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)
+- [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
+- [Zie voor het herkennen van gesproken tekst in C#](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=dotnet)

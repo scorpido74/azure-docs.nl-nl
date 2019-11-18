@@ -1,5 +1,5 @@
 ---
-title: 'Instructies: automatische taal detectie voor spraak naar tekst spraak service gebruiken'
+title: Automatische taal detectie voor spraak naar tekst gebruiken
 titleSuffix: Azure Cognitive Services
 description: De Speech SDK ondersteunt automatische taal detectie voor spraak op tekst. Wanneer u deze functie gebruikt, wordt de opgegeven audio vergeleken met een opgegeven lijst met talen en wordt de meest waarschijnlijke overeenkomst bepaald. De geretourneerde waarde kan vervolgens worden gebruikt om het taal model te selecteren dat wordt gebruikt voor spraak naar tekst.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/26/2019
 ms.author: qiohu
-ms.openlocfilehash: e156704d3ad54c3437f921fae536a497e1d94868
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a72f477e64c856c545801533c131c397de627c00
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73506965"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110177"
 ---
 # <a name="automatic-language-detection-for-speech-to-text"></a>Automatische taal detectie voor spraak naar tekst
 
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u `AutoDetectSourceLanguageConfig` kunt gebruiken om 
 
 Automatische taal detectie heeft momenteel een limiet aan services zijde van twee talen per detectie. Houd deze beperking in acht wanneer u uw `AudoDetectSourceLanguageConfig`-object wilt bouwen. In de onderstaande voor beelden maakt u een `AutoDetectSourceLanguageConfig`en gebruikt u het voor het maken van een `SpeechRecognizer`.
 
->[!TIP]
+> [!TIP]
 > U kunt ook een aangepast model opgeven dat moet worden gebruikt voor het uitvoeren van spraak op tekst. Zie voor meer informatie [een aangepast model gebruiken voor automatische taal detectie](#use-a-custom-model-for-automatic-language-detection).
 
 De volgende code fragmenten laten zien hoe u automatische taal detectie in uw apps kunt gebruiken:
@@ -80,4 +80,4 @@ AutoDetectSourceLanguageConfig autoDetectSourceLanguageConfig = AutoDetectSource
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Naslag documentatie voor Speech SDK](speech-sdk.md)
+- [Naslag documentatie voor Speech SDK](speech-sdk.md)

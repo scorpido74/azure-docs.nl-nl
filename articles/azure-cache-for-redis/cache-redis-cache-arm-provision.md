@@ -1,71 +1,64 @@
 ---
-title: Een Azure-Cache in te richten voor Redis met Azure Resource Manager | Microsoft Docs
-description: Gebruik Azure Resource Manager-sjabloon voor het implementeren van een Azure-Cache voor Redis.
+title: Een Azure-cache inrichten voor redis met behulp van Azure Resource Manager
+description: Gebruik Azure Resource Manager sjabloon om een Azure-cache voor redis te implementeren.
 services: app-service
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: ce6f5372-7038-4655-b1c5-108f7c148282
 ms.service: cache
-ms.workload: web
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 5bdad61df732f0aeb1a758aacb5844204387e19b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f215cb79adc02da857f7aa93d8933bd12c06818a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66132820"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121777"
 ---
-# <a name="create-an-azure-cache-for-redis-using-a-template"></a>Een Azure-Cache voor Redis met behulp van een sjabloon maken
+# <a name="create-an-azure-cache-for-redis-using-a-template"></a>Een Azure-cache voor redis maken met behulp van een sjabloon
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In dit onderwerp leert u over het maken van een Azure Resource Manager-sjabloon die een Azure-Cache voor Redis implementeert. De cache kan worden gebruikt met een bestaand opslagaccount voor diagnostische gegevens. U leert ook hoe om te definiëren welke resources worden geïmplementeerd en over het definiëren van parameters die zijn opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
+In dit onderwerp leert u hoe u een Azure Resource Manager sjabloon maakt waarmee een Azure-cache voor redis wordt geïmplementeerd. De cache kan worden gebruikt met een bestaand opslag account om diagnostische gegevens te bewaren. U leert ook hoe u definieert welke resources worden geïmplementeerd en hoe u para meters definieert die worden opgegeven wanneer de implementatie wordt uitgevoerd. U kunt deze sjabloon gebruiken voor uw eigen implementaties of de sjabloon aanpassen aan uw eisen.
 
-Diagnostische instellingen worden op dit moment gedeeld voor alle caches in dezelfde regio voor een abonnement. Bijwerken van een cache in de regio is van invloed op alle caches in de regio.
+Op dit moment worden de diagnostische instellingen gedeeld voor alle caches in dezelfde regio voor een abonnement. Het bijwerken van een cache in de regio is van invloed op alle andere caches in de regio.
 
-Zie voor meer informatie over het maken van sjablonen, [Azure Resource Manager-sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md). Zie voor meer informatie over de JSON-syntaxis en de eigenschappen voor cache-resourcetypen, [Microsoft.Cache resourcetypen](/azure/templates/microsoft.cache/allversions).
+Zie [Azure Resource Manager sjablonen ontwerpen](../azure-resource-manager/resource-group-authoring-templates.md)voor meer informatie over het maken van sjablonen. Zie [resource typen van micro soft. cache](/azure/templates/microsoft.cache/allversions)voor meer informatie over de JSON-syntaxis en eigenschappen voor cache resource typen.
 
-Zie voor de volledige sjabloon, [Azure Cache voor Redis-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json).
+Zie [Azure cache for redis-sjabloon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-redis-cache/azuredeploy.json)voor de volledige sjabloon.
 
 > [!NOTE]
-> Resource Manager-sjablonen voor de nieuwe [Premium-laag](cache-premium-tier-intro.md) beschikbaar zijn. 
+> Resource Manager-sjablonen voor de nieuwe [Premium-laag](cache-premium-tier-intro.md) zijn beschikbaar. 
 > 
-> * [Maken van een Premium Azure Cache voor Redis met clustering](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
-> * [Premium Azure-Cache maken voor Redis met persistentie van gegevens](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
-> * [Premium Redis-Cache geïmplementeerd in een Virtueelnetwerk maken](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
+> * [Een Premium Azure-cache maken voor redis met clustering](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
+> * [Premium Azure-cache maken voor redis met gegevens persistentie](https://azure.microsoft.com/resources/templates/201-redis-premium-persistence/)
+> * [Premium-Redis Cache die zijn geïmplementeerd in een Virtual Network maken](https://azure.microsoft.com/resources/templates/201-redis-premium-vnet/)
 > 
-> Om te controleren of de meest recente sjablonen, Zie [Azure-Snelstartsjablonen](https://azure.microsoft.com/documentation/templates/) en zoek naar de `Azure Cache for Redis`.
+> Zie [Azure Quick](https://azure.microsoft.com/documentation/templates/) start-sjablonen en zoek naar `Azure Cache for Redis`om te controleren of er nieuwe sjablonen zijn.
 > 
 > 
 
-## <a name="what-you-will-deploy"></a>Wat u wilt implementeren
-In deze sjabloon implementeert u een Azure-Cache voor Redis die gebruikmaakt van een bestaand opslagaccount voor diagnostische gegevens.
+## <a name="what-you-will-deploy"></a>Wat u gaat implementeren
+In deze sjabloon implementeert u een Azure-cache voor redis die gebruikmaakt van een bestaand opslag account voor diagnostische gegevens.
 
 Klik op de volgende knop om de implementatie automatisch uit te voeren:
 
 [![Implementeren in Azure](./media/cache-redis-cache-arm-provision/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-redis-cache%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parameters
-Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie Parameters die alle parameterwaarden bevat.
+Met Azure Resource Manager kunt u parameters definiëren voor waarden die u wilt opgeven wanneer de sjabloon wordt geïmplementeerd. De sjabloon bevat een sectie met de naam para meters die alle parameter waarden bevat.
 U moet een parameter definiëren voor de waarden die variëren op basis van het project dat u wilt implementeren of op basis van de omgeving waarin u gaat implementeren. Definieer geen parameters voor waarden die altijd hetzelfde blijven. De waarde van elke parameter wordt gebruikt in de sjabloon voor het definiëren van de resources die worden geïmplementeerd. 
 
 [!INCLUDE [app-service-web-deploy-redis-parameters](../../includes/cache-deploy-parameters.md)]
 
 ### <a name="rediscachelocation"></a>redisCacheLocation
-De locatie van de Azure-Cache voor Redis. Voor de beste prestaties gebruikt u dezelfde locatie als de app moet worden gebruikt met de cache.
+De locatie van de Azure-cache voor redis. Voor de beste prestaties gebruikt u dezelfde locatie als de app die wordt gebruikt voor de cache.
 
     "redisCacheLocation": {
       "type": "string"
     }
 
 ### <a name="existingdiagnosticsstorageaccountname"></a>existingDiagnosticsStorageAccountName
-De naam van het bestaande storage-account moet worden gebruikt voor diagnostische gegevens. 
+De naam van het bestaande opslag account dat moet worden gebruikt voor diagnostische gegevens. 
 
     "existingDiagnosticsStorageAccountName": {
       "type": "string"
@@ -79,7 +72,7 @@ Een Booleaanse waarde die aangeeft of toegang via niet-SSL-poorten is toegestaan
     }
 
 ### <a name="diagnosticsstatus"></a>diagnosticsStatus
-Een waarde die aangeeft of de diagnostische gegevens is ingeschakeld. Gebruik aan of uit.
+Een waarde die aangeeft of diagnostische gegevens zijn ingeschakeld. Gebruiken in-of uitschakelen.
 
     "diagnosticsStatus": {
       "type": "string",
@@ -92,7 +85,7 @@ Een waarde die aangeeft of de diagnostische gegevens is ingeschakeld. Gebruik aa
 
 ## <a name="resources-to-deploy"></a>Resources om te implementeren
 ### <a name="azure-cache-for-redis"></a>Azure Cache voor Redis
-Hiermee maakt u de Azure Cache voor Redis.
+Hiermee maakt u het Azure-cache geheugen voor redis.
 
     {
       "apiVersion": "2015-08-01",

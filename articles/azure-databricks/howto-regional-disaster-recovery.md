@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 410b945f1a9a8d659f55668e272e2d9d08482bde
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: b9a5dbd8e24659493bbbefd50c3e234dca3dbdd9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73601751"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129338"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionale nood herstel voor Azure Databricks clusters
 
@@ -286,7 +286,7 @@ Als u uw eigen regionale nood herstel topologie wilt maken, volgt u deze vereist
 
 8. **Azure Blob-opslag en Azure Data Lake Storage-koppelingen migreren**
 
-   Koppel alle [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage.html) -en [Azure data Lake Storage (Gen 2)-](/azure/databricks/data/data-sources/azure/azure-datalake-gen2.html) koppel punten hand matig opnieuw met een oplossing op basis van een notitie blok. De opslag resources zouden zijn gekoppeld in de primaire werk ruimte en moeten worden herhaald in de secundaire werk ruimte. Er is geen externe API voor koppels.
+   Koppel alle [Azure Blob Storage](/azure/databricks/data/data-sources/azure/azure-storage) -en [Azure data Lake Storage (Gen 2)-](/azure/databricks/data/data-sources/azure/azure-datalake-gen2) koppel punten hand matig opnieuw met een oplossing op basis van een notitie blok. De opslag resources zouden zijn gekoppeld in de primaire werk ruimte en moeten worden herhaald in de secundaire werk ruimte. Er is geen externe API voor koppels.
 
 9. **Scripts voor het initialiseren van het cluster migreren**
 

@@ -11,12 +11,12 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3415522a6ae80723500ba2d38867322fdef0dd7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: caa23d3e86fba86aa45e677f7ab85859cda6ddce
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685342"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133163"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data warehouse units (Dwu's) en Compute data warehouse units (cDWUs)
 
@@ -46,7 +46,7 @@ De serviceniveau doelstelling (SLO) is de schaal baarheid-instelling waarmee de 
   > [!NOTE]
   > De SQL-groep van generatie 2 heeft onlangs extra schaal mogelijkheden toegevoegd voor het ondersteunen van reken lagen van 100 cDWU. Bestaande SQL-groepen op gen1 waarvoor de lagere reken lagen zijn vereist, kunnen nu worden bijgewerkt naar Gen2 in de regio's die momenteel beschikbaar zijn voor geen extra kosten.  Als uw regio nog niet wordt ondersteund, kunt u nog steeds een upgrade uitvoeren naar een ondersteunde regio. Zie [upgrade naar Gen2](upgrade-to-latest-generation.md)voor meer informatie.
 
-In T-SQL bepaalt de SERVICE_OBJECTIVE-instelling het service niveau en de prestatie-laag voor uw SQL-groep.
+In T-SQL bepaalt de SERVICE_OBJECTIVE instelling het service niveau en de prestatie-laag voor uw SQL-groep.
 
 ```sql
 --Gen1
@@ -107,7 +107,7 @@ De huidige DWU-instelling weer geven:
 
 1. Open SQL Server-objectverkenner in Visual Studio.
 2. Verbinding maken met de hoofd database die aan de logische SQL Database-Server is gekoppeld.
-3. Selecteer in de weer gave voor dynamische beheer van sys. database_service_objectives. Hier volgt een voorbeeld:
+3. Selecteer in de weer gave sys. database_service_objectives Dynamic Management. Hier volgt een voorbeeld:
 
 ```sql
 SELECT  db.name [Database]
@@ -204,7 +204,7 @@ De status van DWU-wijzigingen controleren:
     ;
     ```
     
-Deze DMV retourneert informatie over verschillende beheer bewerkingen in uw SQL-groep, zoals de bewerking en de status van de bewerking, ofwel IN_PROGRESS of voltooid.
+Deze DMV retourneert informatie over verschillende beheer bewerkingen in uw SQL-groep, zoals de bewerking en de status van de bewerking, die IN_PROGRESS of voltooid is.
 
 ## <a name="the-scaling-workflow"></a>De werk stroom voor schalen
 
@@ -215,4 +215,4 @@ Wanneer u een schaal bewerking start, beëindigt het systeem eerst alle geopende
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het beheren van prestaties [resource klassen voor workload Management](resource-classes-for-workload-management.md) en [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.MD).
+Zie [resource klassen voor workload Management](resource-classes-for-workload-management.md) en [geheugen-en gelijktijdigheids limieten](memory-concurrency-limits.md)voor meer informatie over het beheren van prestaties.

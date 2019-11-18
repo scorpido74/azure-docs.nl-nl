@@ -1,5 +1,5 @@
 ---
-title: Cognitieve Zoek vaardigheid van document extractie (preview-versie)
+title: Cognitieve vaardigheid van document extractie (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. Deze vaardigheid is momenteel beschikbaar als open bare preview.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: e4274f1cb2eacaf78ab83bfb9d637d044d2290bd
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720120"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113333"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Cognitieve vaardigheid van document extractie
 
@@ -53,7 +53,7 @@ Para meters zijn hoofdletter gevoelig.
 |--------------------|-------------|
 | file_data | Het bestand waaruit de inhoud moet worden opgehaald. |
 
-De ' file_data-invoer moet een object zijn dat als volgt is gedefinieerd:
+De invoer file_data moet een object zijn dat als volgt is gedefinieerd:
 
 ```json
 {

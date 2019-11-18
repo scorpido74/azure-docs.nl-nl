@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een aangepaste opdracht maken (preview)'
+title: 'Snelstartgids: een aangepaste opdracht maken (preview)-spraak service'
 titleSuffix: Azure Cognitive Services
 description: In dit artikel kunt u een toepassing met gehoste aangepaste opdrachten maken en testen.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: bfe871ce6f7cd2fbd6ada4b825e41ebdf5ac3f12
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80eb0a2018ece23de80e8eb9c4a68c149b590440
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507559"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111364"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Snelstartgids: een aangepaste opdracht maken (preview)
 
@@ -105,7 +105,7 @@ Voeg nu een voltooiings regel toe om te reageren op de gebruiker om aan te geven
 | Instelling    | Voorgestelde waarde                        | Beschrijving                                        |
 | ---------- | -------------------------------------- | -------------------------------------------------- |
 | Regelnaam  | "ConfirmationResponse"                 | Een naam die het doel van de regel beschrijft          |
-| Voorwaarden | Geen                                   | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
+| Voorwaarden | None                                   | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
 | Acties    | SpeechResponse "OK, inschakelen van de TV" | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
 
 ## <a name="try-it-out"></a>Uitproberen

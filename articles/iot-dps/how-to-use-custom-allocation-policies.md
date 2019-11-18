@@ -3,17 +3,17 @@ title: Aangepaste toewijzings beleidsregels gebruiken met de Azure-IoT Hub Devic
 description: Aangepaste toewijzings beleid gebruiken met de Azure-IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/10/2019
+ms.date: 11/14/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 11872f8efcebf39edef2f97cd30c225edbe74bb4
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 8f9cc48384e6e1e85a92b3f23c3a362db0df98e0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903575"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108287"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Aangepaste toewijzings beleid gebruiken
 
@@ -42,125 +42,141 @@ U voert de volgende stappen uit in dit artikel:
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volt ooien van het [instellen van IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md) Snelstartgids.
 * [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger met de [' Desktop C++Development '](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) -werk belasting ingeschakeld.
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-two-divisional-iot-hubs"></a>Twee divisie IoT-hubs maken
+## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>De inrichtings service en twee divisie IoT-hubs maken
 
-In deze sectie gebruikt u de Azure Cloud Shell om twee nieuwe IoT-hubs te maken die de **Divisie contoso-pop-upoperators** en de divisie van de **Contoso-hitte pompen**vertegenwoordigen.
+In deze sectie gebruikt u de Azure Cloud Shell voor het maken van een inrichtings service en twee IoT-hubs die de **Divisie contoso-pop-upoperators** en de divisie van de **Contoso-hitte pompen**vertegenwoordigen.
+
+> [!TIP]
+> De opdrachten die in dit artikel worden gebruikt, maken de inrichtings service en andere resources op de locatie vs-West. We raden u aan om uw resources te maken in de regio die de Device Provisioning Service ondersteunt. U kunt een lijst met beschikbare locaties weergeven door de opdracht `az provider show --namespace Microsoft.Devices --query "resourceTypes[?resourceType=='ProvisioningServices'].locations | [0]" --out table` uit te voeren of door naar de pagina [Status van Azure](https://azure.microsoft.com/status/) te gaan en te zoeken naar 'device provisioning service'. In opdrachten kunnen locaties worden opgegeven in één woord of in een indeling met meerdere woorden. bijvoorbeeld: westus, VS-West, VS-West, enzovoort. De waarde is niet hoofdletter gevoelig. Als u meerdere woorden gebruikt om een locatie op te geven, voeg dan de waarde toe tussen aanhalingstekens; bijvoorbeeld: `-- location "West US"`.
+>
 
 1. Gebruik de Azure Cloud Shell om een resource groep te maken met de opdracht [AZ Group Create](/cli/azure/group#az-group-create) . Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-    In het volgende voor beeld wordt een resource groep met de naam *Contoso-US-Resource-Group* in de regio *eastus* gemaakt. Het wordt aanbevolen deze groep te gebruiken voor alle resources die in dit artikel zijn gemaakt. Deze aanpak maakt het opschonen van de oplossing eenvoudiger nadat u klaar bent.
+    In het volgende voor beeld wordt een resource groep met de naam *Contoso-US-Resource-Group* in de regio *westus* gemaakt. Het wordt aanbevolen deze groep te gebruiken voor alle resources die in dit artikel zijn gemaakt. Deze aanpak maakt het opschonen van de oplossing eenvoudiger nadat u klaar bent.
 
     ```azurecli-interactive 
-    az group create --name contoso-us-resource-group --location eastus
+    az group create --name contoso-us-resource-group --location westus
     ```
 
-2. Gebruik de Azure Cloud Shell om de **Contoso-pop-Uptaaks te delen** IOT hub met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . De IoT-hub wordt toegevoegd aan *Contoso-US-Resource-Group*.
+2. Gebruik de Azure Cloud Shell voor het maken van een Device Provisioning Service met de opdracht [AZ IOT DPS Create](/cli/azure/iot/dps#az-iot-dps-create) . De inrichtings service wordt toegevoegd aan *Contoso-US-Resource-Group*.
 
-    In het volgende voor beeld wordt een IoT-hub gemaakt met de naam *Contoso--pop-upmodules-hub-1098* in de locatie *oostus* . U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid vereist `-toasters-` in de naam van de hub.
-
-    ```azurecli-interactive 
-    az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
-    ```
-
-    Het kan enkele minuten duren voordat deze opdracht is voltooid.
-
-3. Gebruik de Azure Cloud Shell voor het maken van de IOT-hub van de **Contoso hitte pompen** met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Deze IoT-hub wordt ook toegevoegd aan *Contoso-US-Resource-Group*.
-
-    In het volgende voor beeld wordt een IoT-hub gemaakt met de naam *Contoso-heatpumps-hub-1098* in de locatie *oostus* . U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid vereist `-heatpumps-` in de naam van de hub.
+    In het volgende voor beeld wordt een inrichtings service met de naam *Contoso-Provisioning-Service-1098* in de locatie *westus* gemaakt. U moet een unieke service naam gebruiken. Maak uw eigen achtervoegsel in de service naam in plaats van **1098**.
 
     ```azurecli-interactive 
-    az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location eastus --sku S1
+    az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
     ```
 
     Het kan enkele minuten duren voordat deze opdracht is voltooid.
 
-## <a name="create-the-enrollment"></a>De inschrijving maken
+3. Gebruik de Azure Cloud Shell om de **Contoso-pop-Uptaaks te delen** IOT hub met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . De IoT-hub wordt toegevoegd aan *Contoso-US-Resource-Group*.
 
-In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aangepaste toewijzings beleid. Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) met de inschrijving. Voor een veiligere oplossing kunt u het gebruik van [X. 509-certificaat attest](concepts-security.md#x509-certificates) met een vertrouwens keten gebruiken.
+    In het volgende voor beeld wordt een IoT-hub met de naam contoso--pop-upmodules *-hub-1098* in de locatie *westus* gemaakt. U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid vereist `-toasters-` in de naam van de hub.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw Device Provisioning service-exemplaar.
+    ```azurecli-interactive 
+    az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
+    ```
 
-2. Selecteer het tabblad **inschrijvingen beheren** en klik vervolgens op de knop **registratie groep toevoegen** boven aan de pagina. 
+    Het kan enkele minuten duren voordat deze opdracht is voltooid.
 
-3. Voer in **registratie groep toevoegen**de volgende gegevens in en klik op de knop **Opslaan** .
+4. Gebruik de Azure Cloud Shell voor het maken van de IOT-hub van de **Contoso hitte pompen** met de opdracht [AZ IOT hub Create](/cli/azure/iot/hub#az-iot-hub-create) . Deze IoT-hub wordt ook toegevoegd aan *Contoso-US-Resource-Group*.
 
-    **Groeps naam**: Voer **Contoso-Custom-allocated-devices**in.
+    In het volgende voor beeld wordt een IoT-hub met de naam *Contoso-heatpumps-hub-1098* in de locatie *westus* gemaakt. U moet een unieke naam voor de hub gebruiken. Maak uw eigen achtervoegsel in de naam van de hub in plaats van **1098**. De voorbeeld code voor het aangepaste toewijzings beleid vereist `-heatpumps-` in de naam van de hub.
 
-    **Attestation-type**: Selecteer **symmetrische sleutel**.
+    ```azurecli-interactive 
+    az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
+    ```
 
-    **Sleutels automatisch genereren**: dit selectie vakje moet al zijn ingeschakeld.
+    Het kan enkele minuten duren voordat deze opdracht is voltooid.
 
-    **Selecteer de manier waarop u apparaten aan hubs wilt toewijzen**: Selecteer **aangepast (gebruik Azure function)** .
+## <a name="create-the-custom-allocation-function"></a>De functie voor aangepaste toewijzing maken
 
-    ![Aangepaste toewijzings registratie groep voor symmetrische sleutel attest toevoegen](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+In deze sectie maakt u een Azure-functie waarmee u uw aangepaste toewijzings beleid implementeert. Deze functie bepaalt welke divisie een apparaat moet worden geregistreerd op basis van de vraag of de registratie-ID de teken reeks **-Contoso-tstrsd-007** of **-Contoso-hpsd-088**bevat. Ook wordt de initiële status van het apparaat bepaald op basis van het feit of het apparaat een pop-upprogramma of een hitte pomp is.
 
-4. Klik in de **groep inschrijving toevoegen**op **een nieuwe IOT-hub koppelen** om beide nieuwe onderdelen van IOT-hubs te koppelen. 
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer op uw start pagina **+ een resource maken**.
 
-    Voer deze stap uit voor zowel uw divisie IoT-hubs.
+2. Typ ' functie-app ' in het zoekvak *Zoeken in Marketplace* . Selecteer **functie-app**in de vervolg keuzelijst en selecteer vervolgens **maken**.
 
-    **Abonnement**: als u meerdere abonnementen hebt, kiest u het abonnement waarin u de uitgebrachte IOT-hubs hebt gemaakt.
+3. Voer op **functie-app** pagina maken op het tabblad **basis beginselen** de volgende instellingen in voor uw nieuwe functie-app en selecteer **controleren + maken**:
 
-    **IOT hub**: Selecteer een van de divisie hubs die u hebt gemaakt.
+    **Resource groep**: Selecteer de **groep contoso-US-Resource-Group** om alle resources die in dit artikel zijn gemaakt samen te laten.
 
-    **Toegangs beleid**: Kies **iothubowner**.
+    **Functie-app naam**: Voer een unieke naam in voor de functie-app. In dit voor beeld wordt **Contoso-function-app-1098**gebruikt.
 
-    ![De afdeling IoT-hubs koppelen met de inrichtings service](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+    **Publiceren**: Controleer of de **code** is geselecteerd.
 
-5. Wanneer beide onderdelen van IoT-hubs zijn gekoppeld aan de **registratie groep**, moet u deze als de IOT hub groep voor de registratie groep selecteren, zoals hieronder wordt weer gegeven:
+    **Runtime stack**: Selecteer **.net core** in de vervolg keuzelijst.
 
-    ![De divisie groep voor de inschrijving maken](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+    **Regio**: Selecteer dezelfde regio als uw resource groep. In dit voor beeld wordt **VS West**gebruikt.
 
-6. Ga in de **groep inschrijving toevoegen**naar het gedeelte **Azure function selecteren** en klik op **een nieuwe functie-app maken**.
+    > [!NOTE]
+    > Application Insights is standaard ingeschakeld. Application Insights is niet nodig voor dit artikel, maar het kan u helpen bij het begrijpen en onderzoeken van problemen die u tegen komt met de aangepaste toewijzing. Als u wilt, kunt u Application Insights uitschakelen door het tabblad **controle** te selecteren en vervolgens op **Nee** om **Application Insights in**te scha kelen.
 
-7. Voer op **functie-app** pagina maken die wordt geopend de volgende instellingen voor de nieuwe functie in en klik op **maken**:
+    ![Een Azure-functie-app maken om de aangepaste toewijzings functie te hosten](./media/how-to-use-custom-allocation-policies/create-function-app.png)
 
-    **App-naam**: Voer een unieke naam in voor de functie-app. **Contoso-function-app-1098** wordt als voor beeld weer gegeven.
+4. Selecteer op de pagina **samen vatting** de optie **maken** om de functie-app te maken. De implementatie kan enkele minuten duren. Wanneer de bewerking is voltooid, selecteert **u naar resource**.
 
-    **Resource groep**: Selecteer **bestaande gebruiken** en de **groep contoso-US-Resource-Group** om alle resources die in dit artikel zijn gemaakt, samen te laten.
+5. Selecteer in het linkerdeel venster van de pagina **overzicht** van functie-app **+** naast **functions** om een nieuwe functie toe te voegen.
 
-    **Application Insights**: voor deze oefening kunt u dit uitschakelen.
+    ![Een functie toevoegen aan de functie-app](./media/how-to-use-custom-allocation-policies/create-function.png)
 
-    ![De functie-app maken](./media/how-to-use-custom-allocation-policies/function-app-create.png)
+6. Selecteer op de pagina **Azure functions voor .net-aan** de slag voor de stap **een implementatie omgeving kiezen** de tegel **in de portal** en selecteer vervolgens **door gaan**.
 
-8. Ga terug naar de pagina **registratie groep toevoegen** en zorg ervoor dat de nieuwe functie-app is geselecteerd. Mogelijk moet u het abonnement opnieuw selecteren om de lijst met functie-apps te vernieuwen.
+    ![De portal-ontwikkelings omgeving selecteren](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-    Zodra de nieuwe functie-app is geselecteerd, klikt u op **een nieuwe functie maken**.
+7. Selecteer op de volgende pagina voor de stap **een functie maken** de tegel **webhook + API** en selecteer vervolgens **maken**. Er wordt een functie gemaakt met de naam **HttpTrigger1** , en in de portal wordt de inhoud van het code bestand **Run. CSX** weer gegeven.
 
-    ![De functie-app maken](./media/how-to-use-custom-allocation-policies/click-create-new-function.png)
+8. Referentie vereiste Nuget-pakketten. De functie voor aangepaste toewijzing maakt gebruik van klassen die zijn gedefinieerd in twee Nuget-pakketten die moeten worden geladen in de hostomgeving om het eerste apparaat te maken, twee. Met Azure Functions wordt verwezen naar Nuget-pakketten met behulp van een *Function. host* -bestand. In deze stap slaat u een *Function. host* -bestand op en uploadt u dit.
 
-    de nieuwe functie-app wordt geopend.
+    1. Kopieer de volgende regels naar uw favoriete editor en sla het bestand op uw computer op als *Function. host*.
 
-9. Klik in uw functie-app op **+** om een nieuwe functie te maken
+        ```xml
+        <Project Sdk="Microsoft.NET.Sdk">  
+            <PropertyGroup>  
+                <TargetFramework>netstandard2.0</TargetFramework>  
+            </PropertyGroup>  
+            <ItemGroup>  
+                <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Service" Version="1.5.0" />  
+                <PackageReference Include="Microsoft.Azure.Devices.Shared" Version="1.16.0" />  
+            </ItemGroup>  
+        </Project>
+        ```
 
-    ![De functie-app maken](./media/how-to-use-custom-allocation-policies/new-function.png)
+    2. Vouw in de functie **HttpTrigger1** het tabblad **bestanden weer geven** aan de rechter kant van het venster uit.
 
-    Voor de nieuwe functie gebruikt u de standaard instellingen om een nieuwe **webhook + API** te maken met behulp van de **csharp** -taal. Klik op **deze functie maken**.
+        ![Geopende bestanden weer geven](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    Hiermee maakt u een C# nieuwe functie met de naam **HttpTriggerCSharp1**.
+    3. Selecteer **uploaden**, blader naar het **functie. proj** -bestand en selecteer **openen** om het bestand te uploaden.
 
-10. Vervang de code voor de nieuwe C# functie door de volgende code en klik op **Opslaan**:
+        ![Bestand uploaden selecteren](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
+
+9. Vervang de code voor de functie **HttpTrigger1** door de volgende code en selecteer **Opslaan**:
 
     ```csharp
     #r "Newtonsoft.Json"
+
     using System.Net;
-    using System.Text;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Primitives;
     using Newtonsoft.Json;
 
-    public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter log)
+    using Microsoft.Azure.Devices.Shared;               // For TwinCollection
+    using Microsoft.Azure.Devices.Provisioning.Service; // For TwinState
+
+    public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
     {
-        // Just some diagnostic logging
-        log.Info("C# HTTP trigger function processed a request.");
-        log.Info("Request.Content:...");
-        log.Info(req.Content.ReadAsStringAsync().Result);
+        log.LogInformation("C# HTTP trigger function processed a request.");
 
         // Get request body
-        dynamic data = await req.Content.ReadAsAsync<object>();
+        string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+        dynamic data = JsonConvert.DeserializeObject(requestBody);
+
+        log.LogInformation("Request.Body:...");
+        log.LogInformation(requestBody);
 
         // Get registration ID of the device
         string regId = data?.deviceRuntimeContext?.registrationId;
@@ -172,7 +188,7 @@ In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aan
         if (regId == null)
         {
             message = "Registration ID not provided for the device.";
-            log.Info("Registration ID : NULL");
+            log.LogInformation("Registration ID : NULL");
             fail = true;
         }
         else
@@ -183,7 +199,7 @@ In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aan
             if (hubs == null)
             {
                 message = "No hub group defined for the enrollment.";
-                log.Info("linkedHubs : NULL");
+                log.LogInformation("linkedHubs : NULL");
                 fail = true;
             }
             else
@@ -201,8 +217,23 @@ In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aan
                     if (obj.iotHubHostName == null)
                     {
                         message = "No toasters hub found for the enrollment.";
-                        log.Info(message);
+                        log.LogInformation(message);
                         fail = true;
+                    }
+                    else
+                    {
+                        // Specify the initial tags for the device.
+                        TwinCollection tags = new TwinCollection();
+                        tags["deviceType"] = "toaster";
+
+                        // Specify the initial desired properties for the device.
+                        TwinCollection properties = new TwinCollection();
+                        properties["state"] = "ready";
+                        properties["darknessSetting"] = "medium";
+
+                        // Add the initial twin state to the response.
+                        TwinState twinState = new TwinState(tags, properties);
+                        obj.initialTwin = twinState;
                     }
                 }
                 // This is a Contoso Heat pump Model 008
@@ -218,8 +249,23 @@ In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aan
                     if (obj.iotHubHostName == null)
                     {
                         message = "No heat pumps hub found for the enrollment.";
-                        log.Info(message);
+                        log.LogInformation(message);
                         fail = true;
+                    }
+                    else
+                    {
+                        // Specify the initial tags for the device.
+                        TwinCollection tags = new TwinCollection();
+                        tags["deviceType"] = "heatpump";
+
+                        // Specify the initial desired properties for the device.
+                        TwinCollection properties = new TwinCollection();
+                        properties["state"] = "on";
+                        properties["temperatureSetting"] = "65";
+
+                        // Add the initial twin state to the response.
+                        TwinState twinState = new TwinState(tags, properties);
+                        obj.initialTwin = twinState;
                     }
                 }
                 // Unrecognized device.
@@ -227,41 +273,67 @@ In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aan
                 {
                     fail = true;
                     message = "Unrecognized device registration.";
-                    log.Info("Unknown device registration");
+                    log.LogInformation("Unknown device registration");
                 }
             }
         }
 
-        return (fail)
-            ? req.CreateResponse(HttpStatusCode.BadRequest, message)
-            : new HttpResponseMessage(HttpStatusCode.OK)
-            {
-                Content = new StringContent(JsonConvert.SerializeObject(obj, Formatting.Indented), Encoding.UTF8, "application/json")
-            };
-    }
+        log.LogInformation("\nResponse");
+        log.LogInformation((obj.iotHubHostName != null) ? JsonConvert.SerializeObject(obj) : message);
 
-    public class DeviceTwinObj
-    {
-        public string deviceId {get; set;}
+        return (fail)
+            ? new BadRequestObjectResult(message) 
+            : (ActionResult)new OkObjectResult(obj);
     }
 
     public class ResponseObj
     {
         public string iotHubHostName {get; set;}
-        public string IoTHub {get; set;}
-        public DeviceTwinObj initialTwin {get; set;}
-        public string[] linkedHubs {get; set;}
-        public string enrollment {get; set;}
+        public TwinState initialTwin {get; set;}
     }
     ```
 
-11. Ga terug naar de pagina **registratie groep toevoegen** en controleer of de nieuwe functie is geselecteerd. Mogelijk moet u de functie-app opnieuw selecteren om de lijst met functies te vernieuwen.
+## <a name="create-the-enrollment"></a>De inschrijving maken
 
-    Zodra de nieuwe functie is geselecteerd, klikt u op **Opslaan** om de registratie groep op te slaan.
+In deze sectie maakt u een nieuwe registratie groep die gebruikmaakt van het aangepaste toewijzings beleid. Ter vereenvoudiging maakt dit artikel gebruik van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) met de inschrijving. Voor een veiligere oplossing kunt u het gebruik van [X. 509-certificaat attest](concepts-security.md#x509-certificates) met een vertrouwens keten gebruiken.
 
-    ![Sla de registratie groep vervolgens op](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+1. Open uw inrichtings service nog steeds op de [Azure Portal](https://portal.azure.com).
 
-12. Nadat u de inschrijving hebt opgeslagen, opent u deze opnieuw en noteert u de **primaire sleutel**. U moet de inschrijving eerst opslaan om de sleutels te genereren. Deze sleutel wordt gebruikt voor het later genereren van unieke apparaatinstellingen voor gesimuleerde apparaten.
+2. Selecteer **inschrijvingen beheren** in het linkerdeel venster en selecteer vervolgens de knop **registratie groep toevoegen** boven aan de pagina.
+
+3. Voer bij **registratie groep toevoegen**de volgende gegevens in en selecteer de knop **Opslaan** .
+
+    **Groeps naam**: Voer **Contoso-Custom-allocated-devices**in.
+
+    **Attestation-type**: Selecteer **symmetrische sleutel**.
+
+    **Sleutels automatisch genereren**: dit selectie vakje moet al zijn ingeschakeld.
+
+    **Selecteer de manier waarop u apparaten aan hubs wilt toewijzen**: Selecteer **aangepast (gebruik Azure function)** .
+
+    ![Aangepaste toewijzings registratie groep voor symmetrische sleutel attest toevoegen](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
+
+4. Selecteer in **registratie groep toevoegen** **de optie een nieuwe IOT-hub koppelen** om beide nieuwe onderdelen van IOT-hubs te koppelen.
+
+    Voer deze stap uit voor zowel uw divisie IoT-hubs.
+
+    **Abonnement**: als u meerdere abonnementen hebt, kiest u het abonnement waarin u de uitgebrachte IOT-hubs hebt gemaakt.
+
+    **IOT hub**: Selecteer een van de divisie hubs die u hebt gemaakt.
+
+    **Toegangs beleid**: Kies **iothubowner**.
+
+    ![De afdeling IoT-hubs koppelen met de inrichtings service](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
+
+5. Wanneer beide onderdelen van IoT-hubs zijn gekoppeld aan de **registratie groep**, moet u deze als de IOT hub groep voor de registratie groep selecteren, zoals hieronder wordt weer gegeven:
+
+    ![De divisie groep voor de inschrijving maken](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
+
+6. Ga in de **groep inschrijving toevoegen**naar het gedeelte **Azure function selecteren** en selecteer de functie-app die u hebt gemaakt in de vorige sectie. Selecteer vervolgens de functie die u hebt gemaakt en selecteer Opslaan om de registratie groep op te slaan.
+
+    ![Selecteer de functie en sla de registratie groep op](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
+
+7. Nadat u de inschrijving hebt opgeslagen, opent u deze opnieuw en noteert u de **primaire sleutel**. U moet de inschrijving eerst opslaan om de sleutels te genereren. Deze sleutel wordt gebruikt voor het later genereren van unieke apparaatinstellingen voor gesimuleerde apparaten.
 
 ## <a name="derive-unique-device-keys"></a>Unieke Apparaatinstellingen afleiden
 
@@ -390,7 +462,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 2. Open in Visual Studio het oplossings bestand **azure_iot_sdks. SLN** dat is gegenereerd door cmake eerder uit te voeren. Het oplossingsbestand bevindt zich als het goed is op de volgende locatie:
 
     ```
-    \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
+    azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
 3. Navigeer in het deelvenster *Solution Explorer* van Visual Studio naar de map **Provision\_Samples**. Vouw het voorbeeldproject met de naam **prov\_dev\_client\_sample** uit. Vouw **Source Files** uit en open **prov\_dev\_client\_sample.c**.
@@ -410,7 +482,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Klik met de rechtermuisknop op het **prov\_dev\_client\_sample**-project en selecteer **Set as Startup Project**. 
+6. Klik met de rechtermuisknop op het **prov\_dev\_client\_sample**-project en selecteer **Set as Startup Project**.
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Het contoso-pop-upapparaat simuleren
 
@@ -430,12 +502,12 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
     Sla het bestand op.
 
-2. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. Klik in de prompt om het project opnieuw te bouwen op **Yes** om het project opnieuw te bouwen voordat het wordt uitgevoerd.
+2. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja**om het project opnieuw te bouwen voordat u het uitvoert.
 
     De volgende uitvoer is een voor beeld van het gesimuleerde computer apparaat dat wordt opgestart en verbinding maakt met het exemplaar van de inrichtings service dat moet worden toegewezen aan de opties voor de IoT-hub van de pop-up via het aangepaste toewijzings beleid:
 
     ```cmd
-    Provisioning API Version: 1.2.9
+    Provisioning API Version: 1.3.6
 
     Registering Device
 
@@ -459,12 +531,12 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
 
     Sla het bestand op.
 
-2. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, klikt u op **Ja** om het project opnieuw te bouwen voordat u het uitvoert.
+2. Selecteer in het menu van Visual Studio de optie **Debug** > **Start without debugging** om de oplossing uit te voeren. In de prompt om het project opnieuw op te bouwen, selecteert u **Ja** om het project opnieuw samen te stellen voordat u het uitvoert.
 
     De volgende uitvoer is een voor beeld van het gesimuleerde hitte pomp-apparaat dat wordt opgestart en er verbinding mee wordt gemaakt met het exemplaar van de inrichtings service dat moet worden toegewezen aan de groep van de aangepaste toewijzings beleid van de contoso hitte pompen IoT-hub:
 
     ```cmd
-    Provisioning API Version: 1.2.9
+    Provisioning API Version: 1.3.6
 
     Registering Device
 
@@ -502,13 +574,13 @@ In de volgende stappen wordt ervan uitgegaan dat u alle resources in dit artikel
 
 De resource groep op naam verwijderen:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com) en klik op **Resourcegroepen**.
+1. Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.
 
 2. Typ in het tekstvak **filteren op naam...** de naam van de resource groep met uw resources, **Contoso-US-Resource-Group**. 
 
-3. Klik rechts van de resourcegroep in de lijst met resultaten op **...** en vervolgens op **Resourcegroep verwijderen**.
+3. Selecteer in de lijst met resultaten rechts van uw resource groep de optie **...** en vervolgens de **resource groep verwijderen**.
 
-4. U wordt gevraagd om het verwijderen van de resource groep te bevestigen. Typ de naam van de resourcegroep nogmaals om te bevestigen en klik op **Verwijderen**. Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
+4. U wordt gevraagd om het verwijderen van de resource groep te bevestigen. Typ de naam van de resource groep nogmaals ter bevestiging en selecteer vervolgens **verwijderen**. Na enkele ogenblikken worden de resourcegroep en alle resources in de groep verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

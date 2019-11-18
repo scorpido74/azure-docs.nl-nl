@@ -1,6 +1,6 @@
 ---
-title: Azure PublicIpAddressCombo UI element | Microsoft Docs
-description: Beschrijft de Microsoft.Network.PublicIpAddressCombo UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure PublicIpAddressCombo | Microsoft Docs
+description: Hierin wordt het element micro soft. Network. PublicIpAddressCombo UI voor Azure Portal beschreven.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,24 +13,27 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: c3e8c99f6648f0f4927140f3215978566afb9eb8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 069a8ee1f019d1b21be996084e4902f94076fbf7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60251103"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151500"
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Microsoft.Network.PublicIpAddressCombo UI element
-Een groep van besturingselementen voor het selecteren van een nieuwe of bestaande openbare IP-adres.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
+Een groep besturings elementen voor het selecteren van een nieuw of bestaand openbaar IP-adres.
+
+## <a name="ui-sample"></a>UI-voor beeld
+
 ![Microsoft.Network.PublicIpAddressCombo](./media/managed-application-elements/microsoft.network.publicipaddresscombo.png)
 
-- Als de gebruiker geen voor de openbare IP-adres selecteert, is het tekstvak label domein verborgen.
-- Als de gebruiker een bestaande openbare IP-adres selecteert, is het tekstvak domein label uitgeschakeld. De waarde is het domeinnaamlabel van het geselecteerde IP-adres.
-- Het domein naam (bijvoorbeeld westus.cloudapp.azure.com)-achtervoegsel updates automatisch op basis van de geselecteerde locatie.
+- Als de gebruiker geen selecteert voor het open bare IP-adres, wordt het tekstvak domeinnaam label verborgen.
+- Als de gebruiker een bestaand openbaar IP-adres selecteert, wordt het tekstvak domeinnaam label uitgeschakeld. De waarde is het domein naam label van het geselecteerde IP-adres.
+- Het achtervoegsel voor de domein naam (bijvoorbeeld westus.cloudapp.azure.com) wordt automatisch bijgewerkt op basis van de geselecteerde locatie.
 
 ## <a name="schema"></a>Schema
+
 ```json
 {
   "name": "element1",
@@ -62,15 +65,9 @@ Een groep van besturingselementen voor het selecteren van een nieuwe of bestaand
 }
 ```
 
-## <a name="remarks"></a>Opmerkingen
-- Als `constraints.required.domainNameLabel` is ingesteld op **waar**, moet de gebruiker een domeinnaamlabel opgeven bij het maken van een nieuw openbaar IP-adres. Bestaande openbare IP-adressen zonder een label zijn niet beschikbaar voor selectie.
-- Als `options.hideNone` is ingesteld op **waar**, klikt u vervolgens de optie te selecteren **geen** voor het openbare IP-adres is verborgen. De standaardwaarde is **false**.
-- Als `options.hideDomainNameLabel` is ingesteld op **waar**, en vervolgens in het tekstvak voor domeinnaamlabel is verborgen. De standaardwaarde is **false**.
-- Als `options.hideExisting` is ingesteld op true, wordt de gebruiker kan geen tot een bestaande openbare IP-adres kiezen. De standaardwaarde is **false**.
-- Voor `zone`, alleen openbare IP-adressen voor de opgegeven zone of zone tegen openbare IP-adressen beschikbaar zijn.
-
 ## <a name="sample-output"></a>Voorbeelduitvoer
-Als de gebruiker geen openbaar IP-adres selecteert, retourneert het besturingselement in de volgende uitvoer:
+
+Als de gebruiker geen openbaar IP-adres selecteert, retourneert het besturings element de volgende uitvoer:
 
 ```json
 {
@@ -78,7 +75,7 @@ Als de gebruiker geen openbaar IP-adres selecteert, retourneert het besturingsel
 }
 ```
 
-Als de gebruiker een nieuwe of bestaande IP-adres selecteert, retourneert het besturingselement in de volgende uitvoer:
+Als de gebruiker een nieuw of bestaand IP-adres selecteert, retourneert het besturings element de volgende uitvoer:
 
 ```json
 {
@@ -91,9 +88,18 @@ Als de gebruiker een nieuwe of bestaande IP-adres selecteert, retourneert het be
 }
 ```
 
-- Wanneer `options.hideNone` is opgegeven als **waar**, `newOrExistingOrNone` heeft alleen een waarde van **nieuwe** of **bestaande**.
-- Wanneer `options.hideDomainNameLabel` is opgegeven als **waar**, `domainNameLabel` is niet gedeclareerd.
+- Als `options.hideNone` als **waar**is opgegeven, heeft `newOrExistingOrNone` alleen de waarde **Nieuw** of **bestaande**.
+- Als `options.hideDomainNameLabel` als **waar**is opgegeven, wordt `domainNameLabel` niet-gedeclareerd.
+
+## <a name="remarks"></a>Opmerkingen
+
+- Als `constraints.required.domainNameLabel` is ingesteld op **waar**, moet de gebruiker een domein naam label opgeven bij het maken van een nieuw openbaar IP-adres. Bestaande open bare IP-adressen zonder label zijn niet beschikbaar voor selectie.
+- Als `options.hideNone` is ingesteld op **True**, wordt de optie voor het selecteren van **geen** voor het open bare IP-adres verborgen. De standaardwaarde is **false**.
+- Als `options.hideDomainNameLabel` is ingesteld op **True**, wordt het tekstvak voor het domein naam label verborgen. De standaardwaarde is **false**.
+- Als `options.hideExisting` is ingesteld op True, kan de gebruiker geen bestaand openbaar IP-adres kiezen. De standaardwaarde is **false**.
+- Voor `zone`zijn alleen de open bare IP-adressen voor de opgegeven zone of zone flexibele open bare IP-adressen beschikbaar.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

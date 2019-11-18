@@ -18,16 +18,16 @@ ms.author: sagonzal
 ms.reviewer: navyasri.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bd8cb07d30aa5223cf3d78d636f0d593fefbecf
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 7274a1b6b5ebf5b55c2cad4b52dfe4c997e26314
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905496"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145901"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-java-msal4j"></a>Aangepaste serialisatie van token cache in MSAL voor Java (MSAL4J)
 
-Als u een permanente token cache toepassing wilt hebben, moet u de serialisatie aanpassen. De Java-klassen en interfaces die betrokken zijn bij de serialisatie van de token cache zijn de volgende:
+Als u de token cache tussen exemplaren van uw toepassing wilt behouden, moet u de serialisatie aanpassen. De Java-klassen en interfaces die betrokken zijn bij de serialisatie van de token cache zijn de volgende:
 
 - [ITokenCache](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCache.html): interface die de cache van het beveiligings token vertegenwoordigt.
 - [ITokenCacheAccessAspect](https://static.javadoc.io/com.microsoft.azure/msal4j/0.5.0-preview/com/microsoft/aad/msal4j/ITokenCacheAccessAspect.html): een interface die de werking van code voor en na Access weergeeft. U zou @Override *beforeCacheAccess* en *afterCacheAccess* met de logica die verantwoordelijk is voor het serialiseren en deserialiseren van de cache.

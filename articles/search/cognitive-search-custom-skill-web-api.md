@@ -1,5 +1,5 @@
 ---
-title: Aangepaste web API-vaardigheid in een verrijkings pijplijn
+title: Aangepaste web API-vaardigheid in vaardig heden
 titleSuffix: Azure Cognitive Search
 description: Breid mogelijkheden van Azure Cognitive Search vaardig heden uit door aan te roepen naar web-Api's. Gebruik de aangepaste web API-vaardigheid om uw aangepaste code te integreren.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 24b0d0caa9deb43bc198b3c09836ac94777cf154
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466734"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113790"
 ---
 # <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Aangepaste web API-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
 
@@ -28,7 +28,7 @@ De structuur van de JSON-nettoladingen wordt verder beschreven in dit document.
 > * `429 Too Many Requests`
 
 ## <a name="odatatype"></a>@odata.type  
-Micro soft. skills. custom. WebApiSkill
+Microsoft.Skills.Custom.WebApiSkill
 
 ## <a name="skill-parameters"></a>Vaardigheids parameters
 

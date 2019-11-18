@@ -1,17 +1,14 @@
 ---
-title: CI/CD met Azure-pijp lijnen en Resource Manager-sjablonen
+title: CI/CD met Azure-pijp lijnen en-sjablonen
 description: Hierin wordt beschreven hoe u doorlopende integratie in azure-pijp lijnen instelt met behulp van implementatie projecten van Azure-resource groepen in Visual Studio voor het implementeren van Resource Manager-sjablonen.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9306ff8787a4e2b873cb11458a4cf9a10589bf6b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 51122e314ebd0a97647fc4026b1f49619950c351
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597518"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143763"
 ---
 # <a name="integrate-resource-manager-templates-with-azure-pipelines"></a>Resource Manager-sjablonen integreren met Azure-pijp lijnen
 
@@ -82,14 +79,14 @@ steps:
 - task: AzurePowerShell@4
 ```
 
-Geef bij `azureSubscription` de naam op van de service verbinding die u hebt gemaakt.
+Geef bij `azureSubscription`de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 inputs:
     azureSubscription: '<your-connection-name>'
 ```
 
-Voor `scriptPath` geeft u het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
+Voor `scriptPath`geeft u het relatieve pad van het pijplijn bestand naar het script op. U kunt het pad bekijken in uw opslag plaats.
 
 ```yaml
 ScriptPath: '<your-relative-path>/<script-file-name>.ps1'
@@ -163,7 +160,7 @@ Er zijn verschillende onderdelen van deze taak voor het herzien van uw omgeving.
 SourcePath: '<path-to-artifacts>'
 ```
 
-Geef bij `azureSubscription` de naam op van de service verbinding die u hebt gemaakt.
+Geef bij `azureSubscription`de naam op van de service verbinding die u hebt gemaakt.
 
 ```yaml
 azureSubscription: '<your-connection-name>'

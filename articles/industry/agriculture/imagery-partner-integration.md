@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 232ade55350ad1ac85612cf8c69117c19cb20d0c
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 788ffd9e7036996f6ac1bc7fcbc33137aca40ee2
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927798"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132018"
 ---
 # <a name="imagery-partner-integration"></a>Partnerintegratie voor afbeeldingen
 
@@ -34,22 +34,22 @@ U moet de volgende referenties gebruiken in de drone-partner software voor het k
 - API-eindpunt
 - Tenant-id
 - Client-id
-- Client geheim
+- Clientgeheim
 
 ## <a name="api-development"></a>API-ontwikkeling
 
 De Api's bevatten technische documentatie voor Swagger. Raadpleeg [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) voor informatie over de api's en bijbehorende aanvragen/antwoorden.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
-FarmBeats maakt gebruik van de [Active Directory]((https://docs.microsoft.com/azure/app-service/overview-authentication-authorization))van Microsoft Azure. Verificatie Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
+FarmBeats maakt gebruik van de [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)van Microsoft Azure. Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
 
 Zie [Azure Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)voor meer informatie over.   
 
 De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft:
 
 - Client-id
-- Client geheim
+- Clientgeheim
 - Tenant-id
 
 Met de bovenstaande referenties kan de aanroeper een toegangs token aanvragen dat in de volgende API-aanvragen moet worden verzonden in de koptekst sectie:
@@ -86,7 +86,7 @@ Hier volgen de meest voorkomende aanvraag headers die moeten worden opgegeven bi
 --- | ---
 Content-Type  | De aanvraag indeling (content-type: Application/<format>) voor de indeling van de FarmBeats data hub-API is JSON. Content-type: Application/JSON
 Autorisatie | Hiermee geeft u het toegangs token op dat vereist is om een API-aanroep te maken. Autorisatie: Bearer < Access-token >
-zodat  | De antwoord indeling. Voor FarmBeats data hub-Api's is de indeling JSON Accept: Application/JSON
+Zodat  | De antwoord indeling. Voor FarmBeats data hub-Api's is de indeling JSON Accept: Application/JSON
 
 
 ## <a name="api-requests"></a>API-aanvragen

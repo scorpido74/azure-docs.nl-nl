@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 41332a76c3c4e8228e6827e1553d73da3a85fc09
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73522136"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123967"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -59,7 +59,7 @@ Zie [beveiliging van virtuele machines](security-center-virtual-machine-protecti
 
 Security Center voorziet in realtime detectie van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
 
-We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [Azure container service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-container-service-)voor meer informatie.
+We detecteren bedreigingen op het niveau van de host en het AKS-cluster. Zie [Azure container service](https://docs.microsoft.com/azure/security-center/security-center-alerts-compute#azure-containers-)voor meer informatie.
 
 
 ## <a name="to-view-the-security-posture-of-your-container-related-resources"></a>De beveiligings postuur van uw container bronnen weer geven

@@ -1,5 +1,5 @@
 ---
-title: Een Azure VPN-gateway maken en beheren met behulp van PowerShell | Microsoft Docs
+title: 'Azure VPN Gateway: een gateway maken en beheren: zelf studie'
 description: 'Zelfstudie: Een Azure VPN-gateway maken en beheren met behulp van Microsoft Azure PowerShell'
 services: vpn-gateway
 author: cherylmc
@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 11/04/2019
 ms.author: cherylmc
-ms.openlocfilehash: bfec1493492fb1e8e9bd7394aae3db8983f4cff9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 80fd4d707b8335d4edcc5a660569d25886054b6f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495658"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151831"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Zelf studie: een VPN-gateway maken en beheren met Power shell
 
-Azure VPN-gateways bieden veilige, cross-premises connectiviteit tussen de klanten-premises en Azure. Deze zelfstudie bevat informatie over implementatie-basiselementen voor Azure VPN-gateways, zoals het maken en beheren van een VPN-gateway. In deze zelfstudie leert u procedures om het volgende te doen:
+Azure VPN-gateways bieden veilige, cross-premises connectiviteit tussen de klanten-premises en Azure. Deze zelfstudie bevat informatie over implementatie-basiselementen voor Azure VPN-gateways, zoals het maken en beheren van een VPN-gateway. Procedures voor:
 
 > [!div class="checklist"]
 > * Een VPN-gateway maken

@@ -1,17 +1,14 @@
 ---
-title: Voorwaardelijke implementatie met Azure Resource Manager sjablonen
+title: Voorwaardelijke implementatie met sjablonen
 description: Hierin wordt beschreven hoe u een resource voorwaardelijk kunt implementeren in een Azure Resource Manager sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
-ms.openlocfilehash: b6d707fc4bbc5fa57ffb0c809d7f70efebef99e9
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: e3d78f875e39628194ac30310314e59e2ef19fdb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881663"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147182"
 ---
 # <a name="conditional-deployment-in-resource-manager-templates"></a>Voorwaardelijke implementatie in Resource Manager-sjablonen
 

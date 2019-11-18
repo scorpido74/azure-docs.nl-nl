@@ -11,12 +11,12 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 031482fc0b87e095fcb19046564e15642050f261
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 0ed0bd3544fff89c8230267e3d6d8826c5ae3c7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820804"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114613"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>SQL Data Sync controleren met Azure Monitor-logboeken 
 
@@ -137,7 +137,7 @@ Ga als volgt te werk om een waarschuwing te maken die gebruikmaakt van Azure Mon
 
 2.  Maak een query om de fouten en waarschuwingen te selecteren op basis van de synchronisatie groep binnen het interval dat u hebt geselecteerd. Bijvoorbeeld:
 
-    `DataSyncLog_CL | where TimeGenerated > ago(60m) | where LogLevel_s != "Success" | summarize count() by SyncGroupName_s`
+    `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 
 3.  Nadat de query is uitgevoerd, selecteert u de Bell met de **melding waarschuwing**.
 

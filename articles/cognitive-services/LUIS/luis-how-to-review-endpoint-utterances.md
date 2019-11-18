@@ -9,89 +9,49 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 4a77ac26076fc1b1e4e94ee24dafb28a0e88c858
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 67953f552b5b2bcdd7d13253548227e57dab8548
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669363"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132675"
 ---
-# <a name="how-to-review-endpoint-utterances-in-luis-portal-for-active-learning"></a>Endpoint uitingen in LUIS-Portal controleren voor actief leren
+# <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>De LUIS-app verbeteren door eind punt uitingen te controleren
 
-Met het [actieve leer proces](luis-concept-review-endpoint-utterances.md) worden eindpunt query's vastgelegd en wordt het uitingen van de gebruiker geselecteerd. U kunt deze uitingen bekijken om de intentie te selecteren en entiteiten te markeren voor deze uitingen met lees-of-wereld. Ga akkoord met deze wijzigingen in uw voor beeld uitingen en klik vervolgens op publiceren. LUIS identificeert uitingen nauw keuriger.
+Het proces voor het controleren van het eind punt uitingen voor de juiste voor spellingen wordt [actief leren](luis-concept-review-endpoint-utterances.md)genoemd. Met het actieve leer proces worden eindpunt query's vastgelegd en wordt het uitingen van de gebruiker geselecteerd. U kunt deze uitingen bekijken om de intentie te selecteren en entiteiten te markeren voor deze uitingen met lees-of-wereld. Ga akkoord met deze wijzigingen in uw voor beeld uitingen en klik vervolgens op publiceren. LUIS identificeert uitingen nauw keuriger.
 
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+Als er veel mensen bijdragen aan een LUIS-app, 
+
+[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="enable-active-learning"></a>Actief leren inschakelen
 
-Meld gebruikers query's om actief leren in te scha kelen. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen met de `log=true` query string-para meter en-waarde.
+Als u actief leren wilt inschakelen, moet u gebruikers query's registreren. Dit wordt bereikt door de query van het [eind punt](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) aan te roepen met de para meter en waarde van de `log=true` query string.
 
-## <a name="disable-active-learning"></a>Actief leren uitschakelen
+## <a name="correct-intent-predictions-to-align-utterances"></a>De intentie voorspellingen corrigeren om uitingen uit te lijnen
 
-Als u actief leren wilt uitschakelen, moet u geen gebruikers query's registreren. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen met de `log=false` query string-para meter en-waarde.
+Elke utterance heeft een voorgestelde bedoeling weergegeven in de **uitgelijnd bedoeling** kolom. 
 
-## <a name="filter-utterances"></a>Uitingen filteren
+> [!div class="mx-imgBorder"]
+> [![beoordeling van eind punt uitingen dat LUIS niet zeker is van](./media/label-suggested-utterances/review-endpoint-utterances.png)](./media/label-suggested-utterances/review-endpoint-utterances.png#lightbox)
 
-1. Open uw app (bijvoorbeeld TravelAgent) door de naam ervan te selecteren op **mijn apps** pagina en vervolgens **Build** te selecteren in de bovenste balk.
+Schakel het selectie vakje in als u met die intentie instemt. Als u niet eens met het voorstel bent, selecteert u het juiste doel in de uitgelijnde, intentie vervolgkeuzelijst en selecteer op het vinkje aan de rechterkant van het uitgelijnde doel. Nadat u op het vinkje hebt geklikt, wordt de utterance naar het doel verplaatst en verwijderd uit de lijst **beoordeling eind punt uitingen** . 
 
-1. Selecteer **uitingen endpoint controleren**onder de prestaties van de **app verbeteren**.
-
-1. Selecteer op de pagina **eind punt uitingen** in het tekstvak **filteren op intentie of entiteit** . Deze vervolg keuzelijst bevat alle intenties onder **INtenties** en alle entiteiten onder **entiteiten**.
-
-    ![Uitingen-filter](./media/label-suggested-utterances/filter.png)
-
-1. Selecteer een categorie (intenties of entiteiten) in de vervolg keuzelijst en controleer de uitingen.
-
-    ![Uitingen intentie](./media/label-suggested-utterances/intent-utterances.png)
-
-## <a name="label-entities"></a>Label entiteiten
-LUIS vervangt entiteits tokens (woorden) met entiteits namen die blauw zijn gemarkeerd. Als een utterance entiteiten zonder label heeft, labelt u ze in de utterance. 
-
-1. Selecteer een of meer woorden in het utterance. 
-
-1. Selecteer een entiteit in de lijst.
-
-    ![Entiteit labelen](./media/label-suggested-utterances/label-entity.png)
-
-## <a name="align-single-utterance"></a>Eén utterance uitlijnen
-
-Elke utterance heeft een voorgestelde intentie die wordt weer gegeven in de kolom **uitgelijnd intents** . 
-
-1. Als u akkoord gaat met die suggestie, selecteert u op het vinkje.
-
-    ![Uitgelijnd doel behouden](./media/label-suggested-utterances/align-intent-check.png)
-
-1. Als u niet akkoord gaat met het voor stel, selecteert u in de vervolg keuzelijst uitgelijnde intentie de juiste intentie en selecteert u vervolgens op het vinkje rechts van de uitgelijnde intentie. 
-
-    ![Intentie uitlijnen](./media/label-suggested-utterances/align-intent.png)
-
-1. Nadat u op het vinkje hebt geklikt, wordt de utterance uit de lijst verwijderd. 
-
-## <a name="align-several-utterances"></a>Meerdere uitingen uitlijnen
-
-Als u verschillende uitingen wilt uitlijnen, schakelt u het selectie vakje links van de uitingen in en selecteert u op de knop **selectie toevoegen** . 
-
-![Verschillende uitlijnen](./media/label-suggested-utterances/add-selected.png)
-
-## <a name="verify-aligned-intent"></a>Uitgelijnde intentie controleren
-
-U kunt controleren of de utterance is uitgelijnd met de juiste intentie door naar de pagina **intenties** te gaan, de naam van de doel groep te selecteren en de uitingen te controleren. De utterance van het **controle-eind punt uitingen** bevindt zich in de lijst.
+> [!TIP]
+> Het is belang rijk dat u naar de pagina Details van intentie gaat om de voor spellingen van de entiteit te controleren en te corrigeren uit alle voor beelden uitingen uit de lijst met uitingen van het **controle punt** .
 
 ## <a name="delete-utterance"></a>Utterance verwijderen
 
-Elk utterance kan worden verwijderd uit de controle lijst. Als de app eenmaal is verwijderd, wordt deze niet meer in de lijst weer gegeven. Dit geldt ook als de gebruiker dezelfde utterance van het eind punt opgeeft. 
+Elke utterance kan worden verwijderd uit de lijst controleren. Zodra verwijderd, wordt deze niet weergegeven in de lijst met het opnieuw. Dit geldt zelfs als de gebruiker de dezelfde utterance van het eindpunt voert. 
 
-Als u niet zeker weet of u de utterance moet verwijderen, verplaatst u deze naar de geen intentie of maakt u een nieuwe intentie zoals ' Diversen ' en verplaatst u de utterance naar dat doel. 
+Als u niet zeker weet of u het utterance moet verwijderen, verplaatst u het naar de geen intentie of maakt u een nieuw intentie, zoals `miscellaneous`, en verplaatst u de utterance naar die intentie. 
 
-## <a name="delete-several-utterances"></a>Meerdere uitingen verwijderen
+## <a name="disable-active-learning"></a>Actief leren uitschakelen
 
-Als u meerdere uitingen wilt verwijderen, selecteert u elk item en selecteert u op de Prullenbak rechts van de knop **geselecteerde toevoegen** .
-
-![Meerdere verwijderen](./media/label-suggested-utterances/delete-several.png)
-
+Als u actief leren wilt uitschakelen, moet u geen gebruikers query's registreren. Dit wordt bereikt door de [eindpunt query](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint) in te stellen met de para meter en de waarde van de `log=false` query string of niet met behulp van de waarde van de query string, omdat de standaard waarde False is.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt testen hoe de prestaties verbeteren nadat u het label gesuggereerde uitingen hebt, kunt u toegang krijgen tot de test console door **testen** te selecteren in het bovenste paneel. Zie [uw app trainen en testen](luis-interactive-test.md)voor instructies over het testen van uw app met behulp van de test console.
+Als u wilt testen hoe prestaties worden verbeterd wanneer u de voorgestelde uitingen labels, kunt u de testconsole openen door het selecteren van **testen** in het bovenste deelvenster. Zie voor instructies over het testen van uw app met behulp van de testconsole [trainen en testen van uw app](luis-interactive-test.md).

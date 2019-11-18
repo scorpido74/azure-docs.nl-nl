@@ -1,28 +1,20 @@
 ---
-title: Een ASP.NET-web-app maken met Azure Cache voor Redis | Microsoft Docs
+title: Een ASP.NET-Web-app maken met Azure cache voor redis
 description: In deze snelstart leert u hoe u een ASP.NET-web-app maakt met Azure Cache voor Redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 454e23d7-a99b-4e6e-8dd7-156451d2da7c
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 7cca9d020d5e999bda2c494853295957da5cca1a
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326499"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122579"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Quickstart: Azure cache gebruiken voor redis met een ASP.NET-Web-app 
+# <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Snelstartgids: Azure cache gebruiken voor redis met een ASP.NET-Web-app 
 
 In deze Quick Start gebruikt u Visual Studio 2019 voor het maken van een ASP.NET-webtoepassing die verbinding maakt met Azure cache voor redis om gegevens op te slaan en op te halen uit de cache. Vervolgens implementeert u de app om Azure App Service.
 
@@ -67,7 +59,7 @@ Maak vervolgens de cache voor de app.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>Het bestand *CacheSecrets.config* bewerken
 
-1. Maak op de computer een bestand met de naam *CacheSecrets.config*. Sla dit bestand op een locatie op waar het niet wordt ingecheckt met de broncode van de voorbeeldtoepassing. Voor deze snelstart bevindt het bestand *CacheSecrets.config* zich op *C:\AppSecrets\CacheSecrets.config*.
+1. Maak een bestand op de computer met de naam *CacheSecrets. config*. Plaats het op een locatie waar deze niet wordt ingecheckt met de bron code van uw voorbeeld toepassing. Voor deze snelstart bevindt het bestand *CacheSecrets.config* zich op *C:\AppSecrets\CacheSecrets.config*.
 
 1. Bewerk het bestand *CacheSecrets.config*. Voeg nu de volgende inhoud toe:
 
@@ -109,7 +101,7 @@ Omdat het bestand *CacheSecrets.config* niet in Azure wordt geïmplementeerd met
 2. Ga in het bestand *web.config* naar het element `<appSetting>`. Voeg vervolgens het volgende `file`-kenmerk toe. Als u een andere bestandsnaam of -locatie gebruikt, vervangt u deze waarden door de waarden die in het voorbeeld worden weergegeven.
 
 * Voor: `<appSettings>`
-* After`<appSettings file="C:\AppSecrets\CacheSecrets.config">`
+* Na: `<appSettings file="C:\AppSecrets\CacheSecrets.config">`
 
 De ASP.NET-runtime voegt de inhoud van het externe bestand samen met de opmaak van het element `<appSettings>`. Als het opgegeven bestand niet kan worden gevonden, negeert de runtime het bestandskenmerk. Uw geheimen (de verbindingsreeks naar uw cache) worden niet opgenomen in de broncode van de toepassing. Wanneer u de web-app implementeert in Azure, wordt het bestand *CacheSecrets.config* niet geïmplementeerd.
 
@@ -267,7 +259,7 @@ Nadat het lokaal testen van de app is geslaagd, implementeert u de app in Azure 
 
 3. Breng in het dialoogvenster**App Service maken** de volgende wijzigingen aan:
 
-    | Instelling | Aanbevolen waarde | Description |
+    | Instelling | Aanbevolen waarde | Beschrijving |
     | ------- | :---------------: | ----------- |
     | **Naam van app** | Gebruik de standaard. | De app-naam is de hostnaam voor de app wanneer deze is geïmplementeerd in Azure. Aan de naam is mogelijk een tijdstempel als achtervoegsel toegevoegd om deze uniek te maken, indien nodig. |
     | **Abonnement** | Kies uw Azure-abonnement. | Voor dit abonnement worden eventuele gerelateerde hostingkosten in rekening gebracht. Als u meerdere Azure-abonnementen hebt, controleert u of het gewenste abonnement is geselecteerd.|

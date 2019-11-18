@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 10/15/2019
-ms.openlocfilehash: e19ba55e48c537974ad4136d40505514b92d387d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 11/14/2019
+ms.openlocfilehash: 5fd5295e52f0fef5e1432fdb2f81d2ba0e1717e8
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162290"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109764"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines"></a>Inzicht in de status van uw virtuele machines in azure
 
@@ -26,11 +26,15 @@ In dit artikel wordt beschreven hoe u snel status problemen kunt evalueren, onde
 
 Zie [Azure monitor voor VM's inschakelen](vminsights-enable-overview.md)voor meer informatie over het configureren van Azure monitor voor VM's.
 
+>[!NOTE]
+>We hebben onlangs [Wijzigingen aangekondigd](https://azure.microsoft.com/updates/updates-to-azure-monitor-for-virtual-machines-preview-before-general-availability-release/
+) die zijn aangebracht in de status functie op basis van de feedback die we hebben ontvangen van onze open bare preview-klanten. Gezien het aantal wijzigingen dat we maken, zullen we de status functie voor nieuwe klanten niet meer aanbieden. Bestaande klanten kunnen het status onderdeel blijven gebruiken. Raadpleeg de [Veelgestelde vragen over algemene Beschik baarheid](vminsights-ga-release-faq.md)voor meer informatie. 
+
 ## <a name="monitoring-configuration-details"></a>Bewakings configuratie Details
 
 In deze sectie vindt u een overzicht van de standaard status criteria voor het bewaken van Azure Windows-en Linux-Vm's. Alle status criteria zijn vooraf geconfigureerd om een waarschuwing te verzenden wanneer ze een onjuiste voor waarde detecteren.
 
-| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Spreek | Waarschuwen over status | Ernst | Categorie workload | 
+| Monitor naam | Frequentie (min.) | Lookback duur (min) | Operator | Drempelwaarde | Waarschuwen over status | Severity | Categorie workload | 
 |--------------|-----------|----------|----------|-----------|----------------|----------|-------------------|
 | Logische schijf online | 5 | 15 | <> | 1 (waar) | Kritiek | Sev1 | Linux | 
 | Beschik bare ruimte op logische schijf | 5 | 15 | < | 200 MB (waarschuwing)<br> 100 MB (kritiek) | Waarschuwing | Sev1<br> Sev2 | Linux | 
@@ -75,7 +79,7 @@ In deze sectie vindt u een overzicht van de standaard status criteria voor het b
 >De duur Lookback geeft aan hoe vaak in het venster terugkijken de metrische waarden worden gecontroleerd, bijvoorbeeld de laatste vijf minuten.  
 
 >[!NOTE]
->Frequentie geeft aan hoe vaak de metrische waarschuwing controleert als aan de voor waarden wordt voldaan, bijvoorbeeld elke minuut.  Het is de frequentie waarmee het criterium van de status wordt uitgevoerd en lookback is de duur waarover het status criterium wordt geëvalueerd. Status criterium wordt bijvoorbeeld geëvalueerd als het **CPU-gebruik** van de voor waarde hoger is dan 95 procent met een frequentie van 5 minuten en gedurende 15 minuten langer dan 95% is (3 opeenvolgende evaluatie cycli), dan wordt de status bijgewerkt naar kritiek Ernst als dit nog niet is gebeurd.
+>Frequentie geeft aan hoe vaak de metrische waarschuwing controleert als aan de voor waarden wordt voldaan, bijvoorbeeld elke minuut.  Het is de frequentie waarmee het criterium van de status wordt uitgevoerd en lookback is de duur waarover het status criterium wordt geëvalueerd. Status criterium wordt bijvoorbeeld geëvalueerd als het **CPU-gebruik** van de voor waarde hoger is dan 95 procent met een frequentie van 5 minuten en gedurende 15 minuten langer dan 95% is (3 opeenvolgende evaluatie cycli), dan wordt de status bijgewerkt naar kritiek ernst als dat nog niet is gebeurd.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
@@ -99,7 +103,7 @@ Als u de status naast het onderdeel selecteert, wordt de status diagnose in de c
 
 De statussen die zijn gedefinieerd voor een virtuele machine, worden beschreven in de volgende tabel:
 
-|Diapictogram |Status |Betekenis |
+|Pictogram |Status |Betekenis |
 |-----|-------------|---------------|
 | |In orde |De virtuele machine bevindt zich binnen de gedefinieerde status voorwaarden. Deze status geeft aan dat er geen problemen zijn gedetecteerd en dat de virtuele machine normaal functioneert. Met een bovenliggende totaliserings monitor wordt de status samengevouwen en wordt de best mogelijke status van het onderliggende element weer gegeven.|
 | |Kritiek |De status bevindt zich niet in de gedefinieerde status, wat aangeeft dat er een of meer kritieke problemen zijn gedetecteerd. Deze problemen moeten worden opgelost om de normale functionaliteit te herstellen. Met een bovenliggende totaliserings monitor wordt de status weer gegeven en wordt de beste status van het onderliggende element weer gegeven.|
@@ -301,8 +305,8 @@ U kunt deze weer gave filteren door waarden te selecteren in de vervolg keuzelij
 |Abonnement |Selecteer een Azure-abonnement. Alleen waarschuwingen in het geselecteerde abonnement zijn opgenomen in de weer gave. |
 |Resourcegroep |Selecteer één resource groep. In de weer gave zijn alleen waarschuwingen met doelen in de geselecteerde resource groep opgenomen. |
 |Resourcetype |Selecteer een of meer resource typen. Standaard worden alleen waarschuwingen van virtuele doel **machines** geselecteerd en opgenomen in deze weer gave. Deze kolom is alleen beschikbaar nadat een resource groep is opgegeven. |
-|Bron |Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
-|Ernst |Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
+|Resource |Selecteer een resource. De weer gave bevat alleen waarschuwingen met die resource als doel. Deze kolom is alleen beschikbaar nadat een resource type is opgegeven. |
+|Severity |Selecteer een ernst van de waarschuwing of selecteer **Alles** om waarschuwingen van alle ernst op te neemt. |
 |Bewakings voorwaarde |Selecteer een monitor voorwaarde om waarschuwingen te filteren als deze zijn geactiveerd of opgelost door het systeem als de voor waarde niet langer actief is. U kunt ook **Alles** selecteren om waarschuwingen van alle voor waarden op te stellen. |
 |Waarschuwings status |Selecteer een waarschuwings status, **Nieuw**, **bevestigen**, **gesloten**of **Alles** om waarschuwingen van alle statussen op te genomen. |
 |Service bewaken |Selecteer een service of selecteer **Alles** om alle services op te laten gebruiken. Alleen waarschuwingen van VM Insights worden ondersteund voor deze functie.|
@@ -321,7 +325,7 @@ Zie [waarschuwingen maken, weer geven en beheren met Azure monitor](../../azure-
 U kunt de status van een waarschuwing wijzigen voor een of meer waarschuwingen door ze te selecteren en vervolgens **status wijzigen** te selecteren op de pagina **alle waarschuwingen** in de linkerbovenhoek. Selecteer een van de statussen in het deel venster **waarschuwings status wijzigen** , voeg een beschrijving van de wijziging in het veld **Opmerking** toe en selecteer **OK** om uw wijzigingen door te voeren. Wanneer de gegevens worden geverifieerd en de wijzigingen worden toegepast, houdt u de voortgang bij **meldingen** in het menu bij.
 
 ### <a name="configure-alerts"></a>Waarschuwingen configureren
-U kunt bepaalde waarschuwingen voor waarschuwings beheer niet beheren vanuit het Azure Portal. Deze taken moeten worden uitgevoerd met behulp van de [Azure Monitor rest API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Specifiek:
+U kunt bepaalde waarschuwingen voor waarschuwings beheer niet beheren vanuit het Azure Portal. Deze taken moeten worden uitgevoerd met behulp van de [Azure Monitor rest API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components). Met name:
 
 - Inschakelen of uitschakelen van een waarschuwing voor status criteria
 - Meldingen voor status criteria instellen

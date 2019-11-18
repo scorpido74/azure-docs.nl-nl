@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2019
 ms.author: atsenthi
-ms.openlocfilehash: 25aaad02cf8c90c67e87d49553a02cacf033281f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: a9e2a2c20a8de4bed3876f431566b293cbfa4ef5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819477"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109657"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Wijzig het cluster van de vinger afdruk van het certificaat in de algemene naam
 Er kunnen niet twee certificaten dezelfde vinger afdruk hebben, waardoor de rollover van het cluster certificaat of het beheer lastig wordt. Meerdere certificaten kunnen echter dezelfde algemene naam of hetzelfde onderwerp hebben.  Schakelen tussen een geïmplementeerd cluster vanuit vingerafdrukken voor certificaten naar het gebruik van gewone namen voor certificaten maakt het beheer van certificaten veel eenvoudiger. In dit artikel wordt beschreven hoe u een actief Service Fabric cluster bijwerkt om de algemene naam van het certificaat te gebruiken in plaats van de vinger afdruk van het certificaat.
@@ -189,7 +189,7 @@ Open vervolgens het sjabloon bestand in een tekst editor en maak drie updates te
         ...
     ```
 
-Zie [het cluster wijzigen van de vinger afdruk van een certificaat in een algemene naam](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-change-cert-thumbprint-to-cn) voor meer informatie.
+Zie [Deploy a Service Fabric cluster die de algemene naam van een certificaat gebruikt in plaats van een vinger afdruk](https://docs.microsoft.com/azure/service-fabric/service-fabric-create-cluster-using-cert-cn) voor meer informatie.
 
 ## <a name="deploy-the-updated-template"></a>De bijgewerkte sjabloon implementeren
 Implementeer de bijgewerkte sjabloon opnieuw nadat u de wijzigingen hebt aangebracht.

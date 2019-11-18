@@ -1,21 +1,18 @@
 ---
-title: Zelf studie-Azure Quick Start-sjablonen gebruiken | Microsoft Docs
+title: Zelf studie-Quick Start-sjablonen gebruiken
 description: Meer informatie over het gebruik van Azure Quick Start-sjablonen voor het volt ooien van uw sjabloon ontwikkeling.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a29d86d105579dda7c12b885e2977406f7b598a4
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: e38dfcd524a1b8fec8934a3a118147e358614a7b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001476"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143735"
 ---
-# <a name="tutorial-use-azure-quickstart-templates"></a>Zelfstudie: Sjablonen voor Azure Quick Start gebruiken
+# <a name="tutorial-use-azure-quickstart-templates"></a>Zelf studie: Azure Quick Start-sjablonen gebruiken
 
 [Sjablonen voor Azure Quick](https://azure.microsoft.com/resources/templates/) start is een opslag plaats van community-sjablonen. U kunt de voorbeeld sjablonen gebruiken in de ontwikkeling van uw sjabloon. In deze zelf studie vindt u een bron definitie van een website en voegt u deze toe aan uw eigen sjabloon. Het duurt ongeveer **12 minuten** om te volt ooien.
 
@@ -40,7 +37,7 @@ Deze sjabloon kan worden gebruikt voor het implementeren van opslag accounts en 
 1. Selecteer het abonnement met de titel **een basis-Linux-web-app implementeren**. Als u deze niet kunt vinden, volgt u de [direct-koppeling](https://azure.microsoft.com/resources/templates/101-webapp-basic-linux/).
 1. Selecteer **Bladeren op github**.
 1. Selecteer **azuredeploy. json**.
-1. Controleer de sjabloon. Zoek in het bijzonder naar de resource `Microsoft.Web/sites`.
+1. Controleer de sjabloon. Zoek in het bijzonder naar de `Microsoft.Web/sites`-resource.
 
     ![Snelstartgids voor de Resource Manager-sjabloon](./media/template-tutorial-quickstart-template/resource-manager-template-quickstart-template-web-site.png)
 
@@ -50,9 +47,9 @@ De Quick Start-sjabloon samen voegen met de bestaande sjabloon:
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
 
-De naam van de WebApp moet uniek zijn binnen Azure. Om te voor komen dat dubbele namen worden opgegeven, is de variabele **webAppPortalName** bijgewerkt van **' webAppPortalName ': ' [concat (para meters (' webapp naam '), '-webapp ')] '** naar **' webAppPortalName ': ' [concat (para meters (' webapp naam '), Unique string (resourceGroup (). id))] "** .
+De naam van de WebApp moet uniek zijn binnen Azure. Om te voor komen dat dubbele namen worden opgegeven, is de variabele **webAppPortalName** bijgewerkt van **' webAppPortalName ': ' [concat (para meters (' webapp naam '), '-webapp ')] '** naar **' webAppPortalName ': ' [concat (para meters (' webapp naam '), Unique string (resourceGroup (). id)] '** .
 
-Voeg aan het einde van de definitie van de `Microsoft.Web/serverfarms` een komma toe om de resource definitie te scheiden van de definitie van de `Microsoft.Web/sites`.
+Voeg aan het einde van de `Microsoft.Web/serverfarms` definitie een komma toe om de resource definitie te scheiden van de `Microsoft.Web/sites` definitie.
 
 Er zijn een aantal belang rijke functies om in deze nieuwe resource te noteren.
 

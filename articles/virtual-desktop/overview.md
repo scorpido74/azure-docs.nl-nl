@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 08/07/2019
 ms.author: helohr
-ms.openlocfilehash: 3781b71237f97cfd004805846f7c30f8cfe9b9f5
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013158"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74119994"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
@@ -117,8 +117,8 @@ De volgende Extern bureaublad-clients ondersteunen Windows virtueel bureau blad:
 
 Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieën van x64-besturings systemen:
 
-* Windows 10 Enter prise-meerdere sessies
-* Windows 10 Enter prise
+* Windows 10 Enter prise-meerdere sessies, versie 1809 of hoger
+* Windows 10 Enter prise, versie 1809 of hoger
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016

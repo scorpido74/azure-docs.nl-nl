@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 567110b2e0429930720abf6af5f2727e4ad9d3bb
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: ad1cb3b08f92923ef45b48d79ad8bbdc3277d370
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048280"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131972"
 ---
 # <a name="troubleshooting"></a>Problemen oplossen
 
@@ -196,7 +196,7 @@ Zoek in het dash board van de resource groep naar het opslag account (datahublog
     > [!NOTE]
     > Selecteer de resource groep Accelerator die is opgegeven op het moment van de FarmBeats-implementatie.
 
-3.  Zoek in het dash board van de resource groep naar opslag.... Opslag account. Bijvoorbeeld storagedop4k
+3.  Zoek in het dash board van de resource groep naar opslag.... opslag account. Bijvoorbeeld storagedop4k
 4.  Selecteer het opslag account in de kolom **naam** om het dash board van het opslag account weer te geven.
 5.  Selecteer in de pagina (opslag....) de optie **openen in Verkenner** om open Azure Storage Explorer-toepassing weer te geven.
 6.  Selecteer in het linkerpaneel, < Storage....), **BLOB-containers**, de optie **taak-logboeken**.
@@ -251,7 +251,7 @@ Zoek in het dash board van de resource groep naar het opslag account (datahublog
 
 **Betekenis**: de configuratie van de Azure AD-App-registratie is niet juist uitgevoerd.  
 
-**Corrigerende actie**: vraag de IT-beheerder (met lees toegang voor de Tenant) om het [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het genereren van de registratie van de Azure AD-app. Dit script neemt ook automatisch de configuratie stappen.
+**Corrigerende actie**: vraag de IT-beheerder (met lees toegang voor de Tenant) om het [script](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect/tree/master/AppCreationScripts) te gebruiken voor het maken van de registratie van de Azure AD-app. Dit script neemt ook automatisch de configuratie stappen.
 
 **Fout**: kan geen nieuwe Active Directory toepassing "dummy" maken in deze Tenant: er bestaat al een ander object met dezelfde waarde voor de eigenschaps-id-uri's
 

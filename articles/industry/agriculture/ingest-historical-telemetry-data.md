@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: e721a7818c5f2fcea23263b296912edf164036b2
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5ae64371bd114a898ddca874e23b499bc4a2b8a3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927800"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128775"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Historische telemetriegegevens opnemen
 
@@ -29,7 +29,7 @@ U moet de partner integratie inschakelen voor uw Azure FarmBeats-exemplaar. Met 
 - API-eind punt: dit is de data hub-URL, bijvoorbeeld https://<datahub>. azurewebsites.net
 - Tenant-id
 - Client-id
-- Client geheim
+- Clientgeheim
 - EventHub-verbindings reeks
 
 Volg de onderstaande stappen om deze te genereren:
@@ -74,7 +74,7 @@ Volg de onderstaande stappen om deze te genereren:
 - /**sensor** -sensor komt overeen met een fysieke sensor waarmee waarden worden vastgelegd. Een sensor is doorgaans verbonden met een apparaat met een apparaat-ID.  
 
 
-|        Modus apparaat   |  Suggesties   |
+|        Model apparaat   |  Suggesties   |
 | ------- | -------             |
 |     Type (knoop punt, gateway)        |          1 ster      |
 |          Fabrikant            |         2 sterren     |
@@ -107,7 +107,7 @@ Volg de onderstaande stappen om deze te genereren:
 |    **Sensoren**      |          |
 | HardwareId          |   Unieke ID voor de sensor die door de fabrikant is ingesteld |
 |  sensorModelId     |    ID van het gekoppelde sensor model   |
-| locatie          |  Sensor Latitude (-90 tot + 90)/Longitude (-180 tot 180)/Elevation (in meters)|
+| location          |  Sensor Latitude (-90 tot + 90)/Longitude (-180 tot 180)/Elevation (in meters)|
 |   naam van poort >        |  Naam en type van de poort waarop de sensor is aangesloten op het apparaat. Dit moet dezelfde naam zijn als die in het model van het apparaat is gedefinieerd. |
 |    DeviceID  |    ID van het apparaat waarmee de sensor is verbonden     |
 | Naam            |   Naam voor het identificeren van de resource. Bijvoorbeeld: naam van sensor/product naam en model nummer/product code.|
@@ -125,7 +125,7 @@ Als u een API-aanvraag wilt maken, combineert u de HTTP-methode (POST), de URL n
 De FarmBeats data hub maakt gebruik van Bearer-verificatie, die de volgende referenties nodig heeft die we in de bovenstaande sectie hebben gegenereerd.
 
 - Client-id
-- Client geheim
+- Clientgeheim
 - Tenant-id  
 
 Met behulp van de bovenstaande referenties kan de aanroeper een toegangs token aanvragen, dat in de volgende API-aanvragen in de koptekst sectie als volgt moet worden verzonden:

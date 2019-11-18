@@ -1,19 +1,16 @@
 ---
-title: Azure-resources beheren met behulp van Azure CLI | Microsoft Docs
+title: Resources beheren-Azure CLI
 description: Gebruik Azure CLI en Azure Resource Manager om uw resources te beheren. Laat zien hoe u resources implementeert en verwijdert.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: d3c3ca4a95cff8b9a81be8e75b011ca83799dcaa
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: a9148ada37886d8d9ee6d8e314b36f9b259082d8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390384"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146788"
 ---
 # <a name="manage-azure-resources-by-using-azure-cli"></a>Azure-resources beheren met Azure CLI
 
@@ -79,7 +76,7 @@ az storage account delete --resource-group $resourceGroupName --name $storageAcc
 
 Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="move-resources"></a>Bronnen verplaatsen
+## <a name="move-resources"></a>Resources verplaatsen
 
 Het volgende script toont hoe u een opslag account van een resource groep kunt verwijderen naar een andere resource groep.
 

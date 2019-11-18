@@ -1,28 +1,21 @@
 ---
 title: 'Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis'
 description: In deze Quick Start leert u hoe u een python-app maakt die gebruikmaakt van Azure cache voor redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: f186202c-fdad-4398-af8c-aee91ec96ba3
 ms.service: cache
 ms.devlang: python
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 11/05/2019
 ms.author: yegu
 ms.custom:
 - mvc
 - seo-python-october2019
-ms.openlocfilehash: 8cb5a47e884400f09111c6e40b387deea4fb158e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1ac1767d1ac3f6333d73a1e1c66ff7250942d266
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720305"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122663"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Snelstartgids: een python-app maken die gebruikmaakt van Azure cache voor redis
 
@@ -61,7 +54,7 @@ b'bar'
 ```
 
 > [!IMPORTANT]
-> Voor Azure cache voor redis versie 3,0 of hoger wordt de SSL-certificaat controle afgedwongen. ssl_ca_certs moet expliciet worden ingesteld bij het maken van verbinding met Azure cache voor redis. Ssl_ca_certs bevindt zich in de */etc/PKI/TLS/certs/ca-Bundle.CRT* -certificaat module voor RedHat Linux.
+> Voor Azure cache voor redis versie 3,0 of hoger wordt de SSL-certificaat controle afgedwongen. ssl_ca_certs moet expliciet worden ingesteld bij het maken van verbinding met Azure cache voor redis. Voor RedHat Linux bevinden ssl_ca_certs zich in de */etc/PKI/TLS/certs/ca-Bundle.CRT* -certificaat module.
 
 ## <a name="create-a-python-sample-app"></a>Een python-voor beeld-app maken
 

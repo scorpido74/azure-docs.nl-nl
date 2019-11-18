@@ -1,7 +1,7 @@
 ---
-title: 'MLOps: ML-modellen beheren, implementeren & bewaken'
+title: 'MLOps: ML model beheer'
 titleSuffix: Azure Machine Learning
-description: 'Meer informatie over het gebruik van Azure Machine Learning voor MLOps: uw modellen implementeren, beheren en bewaken om ze continu te verbeteren. U kunt de modellen implementeren die u hebt getraind met Azure Machine Learning, op uw lokale machine of vanuit andere bronnen.'
+description: 'Meer informatie over model beheer met Azure Machine Learning (MLOps). Implementeer, beheer en bewaak uw modellen om ze continu te verbeteren. '
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +11,14 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e567198fd25243b89245d54bbed5a658cc663
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716595"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123598"
 ---
-# <a name="mlops-manage-deploy-and-monitor-models-with-azure-machine-learning"></a>MLOps: modellen beheren, implementeren en bewaken met Azure Machine Learning
+# <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
 In dit artikel vindt u informatie over het gebruik van Azure Machine Learning voor het beheren van de levens cyclus van uw modellen. Azure Machine Learning maakt gebruik van een MLOps-benadering (Machine Learning Operations), waarmee de kwaliteit en consistentie van uw machine learning oplossingen worden verbeterd. 
 
@@ -47,7 +47,7 @@ Met model registratie kunt u uw modellen in de Azure-Cloud opslaan en versie, in
 > [!TIP]
 > Een geregistreerd model is een logische container voor een of meer bestanden die het model vormen. Als u bijvoorbeeld een model hebt dat is opgeslagen in meerdere bestanden, kunt u ze registreren als één model in uw Azure Machine Learning-werk ruimte. Na de registratie kunt u het geregistreerde model downloaden of implementeren en alle geregistreerde bestanden ontvangen.
  
-Geregistreerde modellen worden geïdentificeerd op naam en versie. Telkens wanneer u een model met dezelfde naam registreert als een bestaande, wordt de versie door het REGI ster verhoogd. U kunt ook extra labels voor meta gegevens opgeven tijdens de registratie die kan worden gebruikt bij het zoeken naar modellen. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
+Geregistreerde modellen worden geïdentificeerd op naam en versie. Telkens wanneer die u een model met dezelfde naam als een bestaande resourcegroep registreren in het register wordt het versienummer verhoogd. U kunt ook aanvullende metagegevenstags opgeven tijdens de registratie die kan worden gebruikt bij het zoeken naar voor modellen. Azure Machine Learning ondersteunt elk model dat kan worden geladen met python 3.5.2 of hoger.
 
 > [!TIP]
 > U kunt ook modellen die zijn getraind buiten Azure Machine Learning registreren.
@@ -121,7 +121,7 @@ U kunt modellen met IoT-apparaten gebruiken via **Azure IOT Edge-modules**. IoT 
 
 Zie [modellen implementeren](how-to-deploy-and-where.md)voor meer informatie.
 
-### <a name="analytics"></a>Analytische gegevens
+### <a name="analytics"></a>Analyse
 
 Micro soft Power BI ondersteunt het gebruik van machine learning modellen voor gegevens analyse. Zie [Azure machine learning integration in Power bi (preview)](https://docs.microsoft.com/power-bi/service-machine-learning-integration)voor meer informatie.
 
@@ -137,7 +137,7 @@ Zie [How to Enable model Data Collection](how-to-enable-data-collection.md)(Enge
 
 ## <a name="audit-trail-of-the-ml-lifecycle"></a>Audittrail van de levens cyclus van ML
 
-Azure ML biedt u de mogelijkheid om het end-to-end-audittrail van al uw ML-assets bij te houden. Specifiek:
+Azure ML biedt u de mogelijkheid om het end-to-end-audittrail van al uw ML-assets bij te houden. Met name:
 
 - Azure ML [integreert met git](how-to-set-up-training-targets.md#gitintegration) om informatie bij te houden over de opslag plaats/vertakking/het door voeren van uw code.
 - Met de [Azure ml](how-to-create-register-datasets.md) -gegevens sets kunt u gegevens bijhouden en versie.

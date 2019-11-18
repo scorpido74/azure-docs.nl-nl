@@ -1,7 +1,7 @@
 ---
-title: 'Filteren van zoekresultaten: Bing webzoekopdrachten-API'
+title: Zoek resultaten filteren-Bing Webzoekopdrachten-API
 titleSuffix: Azure Cognitive Services
-description: Informatie over het filteren en weer te geven resultaten van de Bing webzoekopdrachten-API.
+description: U kunt filteren op de typen antwoorden die Bing bevat in het antwoord (bijvoorbeeld afbeeldingen, Video's en nieuws) met behulp van de query parameter ' responseFilter '.
 services: cognitive-services
 author: swhite-msft
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
-ms.openlocfilehash: a89d73b63680415aa8e516926b8e1d6c59ffbbad
-ms.sourcegitcommit: c0419208061b2b5579f6e16f78d9d45513bb7bbc
+ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67626007"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111414"
 ---
-# <a name="filtering-the-answers-that-the-search-response-includes"></a>De antwoorden die antwoord van de zoekactie bevat filteren  
+# <a name="filtering-the-answers-that-the-search-response-includes"></a>De antwoorden filteren die het zoek antwoord bevat  
 
-Wanneer u het web zoeken, retourneert Bing de relevante inhoud voor de zoekopdracht gevonden. Als de zoekopdracht is 'varen + dinghies', kan het antwoord, bijvoorbeeld de volgende antwoorden bevatten:
+Wanneer u een query op het web uitvoert, retourneert Bing alle relevante inhoud die wordt gevonden voor de zoek opdracht. Als de zoek query bijvoorbeeld ' zeil-en dinghies ' is, kan het antwoord de volgende antwoorden bevatten:
 
 ```json
 {
@@ -47,19 +47,19 @@ Wanneer u het web zoeken, retourneert Bing de relevante inhoud voor de zoekopdra
 
 ## <a name="query-parameters"></a>Queryparameters
 
-Als u wilt filteren de antwoorden die wordt geretourneerd door Bing, gebruikt u de onderstaande queryparameters bij het aanroepen van de API.  
+Als u de antwoorden wilt filteren die worden geretourneerd door Bing, gebruikt u de onderstaande query parameters bij het aanroepen van de API.  
 
 ### <a name="responsefilter"></a>ResponseFilter
 
-U kunt de typen antwoorden Bing vindt u in het antwoord (bijvoorbeeld afbeeldingen, video's en nieuws) filteren met behulp van de [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) queryparameter, die een door komma's gescheiden lijst van antwoorden. Een antwoord worden opgenomen in het antwoord als Bing relevante inhoud voor het vindt. 
+U kunt filteren op de typen antwoorden die Bing bevat in het antwoord (bijvoorbeeld afbeeldingen, Video's en nieuws) door gebruik te maken van de [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) -query parameter, een door komma's gescheiden lijst met antwoorden. Er wordt een antwoord opgenomen in het antwoord als Bing relevante inhoud voor de zoek actie vindt. 
 
-Als u wilt uitsluiten van specifieke antwoorden uit het antwoord zoals afbeeldingen, Voeg een `-` teken naar het antwoordtype. Bijvoorbeeld:
+Voor het uitsluiten van specifieke antwoorden van het antwoord, zoals afbeeldingen, laten voorafgaan door een `-` teken naar het antwoord type. Bijvoorbeeld:
 
 ```
 &responseFilter=-images,-videos
 ```
 
-Het volgende laat zien hoe u `responseFilter` op verzoek-afbeeldingen, video's en nieuws van Zeilsloepen. Wanneer u de queryreeks coderen, wordt de komma's wijzigen in %2, C.  
+Hieronder ziet u hoe u `responseFilter` kunt gebruiken om afbeeldingen, Video's en nieuws van zeil dinghies aan te vragen. Wanneer u de query reeks codeert, veranderen de komma's in% 2C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -71,7 +71,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Hieronder ziet u de respons op de vorige query. Omdat Bing niet hebt gevonden relevante video's en nieuwsresultaten, het antwoord bevat geen ze.
+Hieronder ziet u de respons op de vorige query. Omdat Bing geen relevante video-en nieuws resultaten heeft gevonden, worden deze niet in het antwoord vermeld.
 
 ```json
 {
@@ -96,42 +96,42 @@ Hieronder ziet u de respons op de vorige query. Omdat Bing niet hebt gevonden re
 }
 ```
 
-Hoewel Bing heeft geen video's en nieuws resultaten geretourneerd in het vorige antwoord, betekent dit niet dat inhoud voor video's en nieuws niet bestaat. Het gewoon betekent dat de pagina niet opnemen. Echter, als u [pagina](./paging-webpages.md) door meer resultaten, de volgende pagina's wilt waarschijnlijk opnemen. Ook als u de [video's zoeken-API](../bing-video-search/search-the-web.md) en [nieuws zoeken-API](../bing-news-search/search-the-web.md) eindpunten direct, het antwoord zou waarschijnlijk resultaten bevatten.
+Bing heeft geen video-en nieuws resultaten in het vorige antwoord geretourneerd, maar dit betekent niet dat de inhoud van de video en het nieuws niet bestaat. Het betekent gewoon dat de pagina deze niet bevat. Als u echter door meer resultaten [bladert](./paging-webpages.md) , zullen de volgende pagina's waarschijnlijk deze bevatten. Als u de [VIDEO'S zoeken API](../bing-video-search/search-the-web.md) en [Nieuws zoeken API](../bing-news-search/search-the-web.md) -eind punten rechtstreeks aanroept, bevat het antwoord waarschijnlijk ook resultaten.
 
-Wordt afgeraden via `responseFilter` resultaten ophalen uit een enkele API. Als u wilt dat inhoud van een enkele API voor Bing, rechtstreeks die API aanroepen. Bijvoorbeeld, als u wilt ontvangen alleen afbeeldingen, een aanvraag verzenden naar het eindpunt van de afbeeldingen zoeken-API `https://api.cognitive.microsoft.com/bing/v7.0/images/search` of een van de andere [installatiekopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) eindpunten. Het aanroepen van één API is niet alleen belangrijk voor prestaties, maar omdat de inhoud-specifieke API's uitgebreidere resultaten bieden. Bijvoorbeeld, kunt u filters die zijn niet beschikbaar voor de webzoekopdrachten-API om de resultaten te filteren.  
+Het gebruik van `responseFilter` voor het ophalen van resultaten van een enkele API wordt afgeraden. Als u inhoud van één Bing-API wilt, moet u die API rechtstreeks aanroepen. Als u bijvoorbeeld alleen installatie kopieën wilt ontvangen, moet u een aanvraag verzenden naar het Afbeeldingen zoeken-API-eind punt, `https://api.cognitive.microsoft.com/bing/v7.0/images/search` of een van de andere [installatie kopieën](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#endpoints) -eind punten. Het aanroepen van de enkelvoudige API is niet alleen belang rijk voor de prestaties, maar omdat de leveranciersspecifieke Api's rijkere resultaten bieden. U kunt bijvoorbeeld filters gebruiken die niet beschikbaar zijn voor de Webzoekopdrachten-API om de resultaten te filteren.  
 
-### <a name="site"></a>Site
+### <a name="site"></a>site
 
-Als u zoekresultaten vanuit een specifiek domein, zijn de `site:` queryparameter in de query-tekenreeks.  
+Als u zoek resultaten wilt ophalen uit een specifiek domein, neemt u de `site:` query parameter op in de query teken reeks.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
 ```
 
 > [!NOTE]
-> Afhankelijk van de query, als u de `site:` query-operator, bestaat de kans dat het antwoord inhoud voor volwassen ongeacht bevatten de [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) instelling. Gebruik `site:` alleen als u zich bewust bent van de inhoud op de site en uw scenario de mogelijkheid van inhoud voor volwassenen ondersteunt.
+> Afhankelijk van de query, kunt u, als u de operator `site:` query gebruikt, de kans bestaat dat het antwoord inhoud voor volwassenen bevat, ongeacht de instelling van [SafeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Gebruik `site:` alleen als u zich bewust bent van de inhoud op de site en uw scenario de mogelijkheid van inhoud voor volwassenen ondersteunt.
 
 ### <a name="freshness"></a>Versheid
 
-Als u wilt beperken de resultaten van de web-antwoord in webpagina's die Bing gedetecteerd tijdens een bepaalde periode, stellen de [webdocumenten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) queryparameter op een van de volgende niet-hoofdlettergevoelige waarden:
+Als u de resultaten van webantwoorden wilt beperken tot webpagina's die Bing hebben gedetecteerd tijdens een bepaalde periode, stelt u de query parameter voor [vernieuwen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#freshness) in op een van de volgende niet-hoofdletter gevoelige waarden:
 
-* `Day` : De geretourneerde webpagina's die Bing gedetecteerd binnen de afgelopen 24 uur
-* `Week` : De geretourneerde webpagina's die Bing gedetecteerd binnen de afgelopen 7 dagen
-* `Month` : De geretourneerde webpagina's die gedetecteerd binnen de afgelopen 30 dagen
+* `Day`: webpagina's retour neren die zijn gedetecteerd in de afgelopen 24 uur
+* `Week`: webpagina's retour neren die zijn gedetecteerd in de afgelopen 7 dagen
+* `Month`: webpagina's retour neren die in de afgelopen 30 dagen zijn gedetecteerd
 
-U kunt ook deze parameter instellen op een aangepast datumbereik in het formulier `YYYY-MM-DD..YYYY-MM-DD`. 
+U kunt deze para meter ook instellen op een aangepast datum bereik in het formulier `YYYY-MM-DD..YYYY-MM-DD`. 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
-Als u wilt de resultaten naar een enkele datum beperken, door de parameter webdocumenten in te stellen op een specifieke datum:
+Als u de resultaten wilt beperken tot één datum, stelt u de para meter versheid in op een specifieke datum:
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-04`
 
-De resultaten kunnen webpagina's die buiten de opgegeven periode vallen als het nummer van webpagina's met Bing voor uw filtercriteria overeenkomsten is kleiner dan het aantal webpagina's die u hebt aangevraagd (of het standaardaantal die Bing retourneert) bevatten.
+De resultaten kunnen webpagina's bevatten die buiten de opgegeven periode vallen als het aantal webpagina's dat Bing overeenkomt met uw filter criteria, kleiner is dan het aantal webpagina's dat u hebt aangevraagd (of het standaard nummer dat door Bing wordt geretourneerd).
 
-## <a name="limiting-the-number-of-answers-in-the-response"></a>Het aantal antwoorden in de respons beperken
+## <a name="limiting-the-number-of-answers-in-the-response"></a>Het aantal antwoorden in het antwoord beperken
 
-Bing kan meerdere antwoord typen in het JSON-antwoord retourneren. Bijvoorbeeld, als u een query *varen + dinghies*, Bing retourneert mogelijk `webpages`, `images`, `videos`, en `relatedSearches`.
+Bing kan meerdere antwoord typen retour neren in het JSON-antwoord. Als u bijvoorbeeld een query uitvoert op *dinghies*, kan Bing `webpages`, `images`, `videos`en `relatedSearches`retour neren.
 
 ```json
 {
@@ -147,7 +147,7 @@ Bing kan meerdere antwoord typen in het JSON-antwoord retourneren. Bijvoorbeeld,
 }
 ```
 
-Het aantal antwoorden te beperken die Bing retourneert op de twee bovenste antwoorden (webpagina's en afbeeldingen), de [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) queryparameter naar 2.
+Als u het aantal antwoorden wilt beperken dat door Bing wordt teruggezet naar de twee beste antwoorden (webpagina's en afbeeldingen), stelt u de [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) -query parameter in op 2.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&mkt=en-us HTTP/1.1  
@@ -173,7 +173,7 @@ Het antwoord bevat alleen `webPages` en `images`.
 }
 ```
 
-Als u de `responseFilter` queryparameter op de vorige query en deze webpagina's en nieuws, het antwoord bevat alleen webpagina's omdat nieuws wordt niet beoordeeld.
+Als u de para meter `responseFilter` query toevoegt aan de vorige query en deze instelt op webpaginas en nieuws, bevat het antwoord alleen webpagina's omdat nieuws niet wordt geclassificeerd.
 
 ```json
 {
@@ -186,9 +186,9 @@ Als u de `responseFilter` queryparameter op de vorige query en deze webpagina's 
 }
 ```
 
-## <a name="promoting-answers-that-are-not-ranked"></a>Bevordering van de antwoorden die niet worden gerangschikt
+## <a name="promoting-answers-that-are-not-ranked"></a>Niet-geclassificeerde antwoorden promoten
 
-Als de antwoorden die Bing voor een query retourneert hebt beoordeeld boven webpagina's, afbeeldingen, video's en relatedSearches, kan het antwoord zou deze antwoorden bevatten. Als u instelt [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) aan twee (2), Bing, retourneert de eerste twee gerangschikte antwoorden: webpagina's en afbeeldingen. Als u wilt dat Bing afbeeldingen en video's opnemen in het antwoord, geeft u de [bevorderen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) queryparameter en stel deze in op de afbeeldingen en video's.
+Als de beste geclassificeerde antwoorden die Bing retourneert voor een query, zijn webpagina's, afbeeldingen, Video's en relatedSearches, bevat het antwoord deze antwoorden. Als u [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#answercount) instelt op twee (2), retourneert Bing de bovenste twee geclassificeerde antwoorden: webpagina's en installatie kopieën. Als u wilt dat Bing afbeeldingen en Video's in het antwoord bevat, geeft u de para meter voor de [niveau verhogen](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#promote) op en stelt u deze in op afbeeldingen en Video's.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&promote=images%2Cvideos&mkt=en-us HTTP/1.1  
@@ -200,7 +200,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Hier volgt het antwoord op de bovenstaande aanvraag. Bing retourneert de eerste twee antwoorden, webpagina's en afbeeldingen en video's in het antwoord te verhogen.
+Hier volgt de reactie op de bovenstaande aanvraag. Bing retourneert de twee beste antwoorden, webpagina's en afbeeldingen en bevordert de video in het antwoord.
 
 ```json
 {
@@ -215,8 +215,8 @@ Hier volgt het antwoord op de bovenstaande aanvraag. Bing retourneert de eerste 
 }
 ```
 
-Als u instelt `promote` nieuws, het antwoord bevat geen het nieuwsantwoord omdat het is niet een gerangschikte antwoord&mdash;kunt u alleen gerangschikt antwoorden promoveren.
+Als u `promote` op nieuws instelt, bevat het antwoord niet het nieuws antwoord omdat het geen geclassificeerd antwoord&mdash;u alleen geclassificeerde antwoorden kunt promo veren.
 
-De antwoorden die u wilt promoveren niet meegeteld in het `answerCount` limiet. Als de gerangschikte antwoorden zijn nieuws, afbeeldingen en video's en u stelt bijvoorbeeld `answerCount` op 1 en `promote` nieuws, het antwoord bevat nieuws en afbeeldingen. Of, als de gerangschikte antwoorden video's, afbeeldingen en nieuws zijn, het antwoord bevat video's en nieuws.
+De antwoorden die u wilt promoten, worden niet meegeteld op basis van de `answerCount` limiet. Als de geclassificeerde antwoorden bijvoorbeeld nieuws, afbeeldingen en Video's zijn, en u `answerCount` op 1 en `promote` aan Nieuws, het antwoord bevat nieuws en installatie kopieën. Of, als de geclassificeerde antwoorden Video's, afbeeldingen en nieuws zijn, bevat het antwoord Video's en nieuws.
 
-U kunt `promote` alleen als u opgeeft de `answerCount` queryparameter.
+U kunt `promote` alleen gebruiken als u de para meter `answerCount` query opgeeft.

@@ -1,48 +1,56 @@
 ---
-title: Aanbevolen procedures Developer - resourcebeheer in Azure Kubernetes Services (AKS)
-description: Informatie over de toepassing developer best practices voor resourcebeheer in Azure Kubernetes Service (AKS)
+title: Best practices voor ontwikkel aars-resource beheer in azure Kubernetes Services (AKS)
+description: Meer informatie over de aanbevolen procedures voor het ontwikkelen van toepassingen voor resource management in azure Kubernetes service (AKS)
 services: container-service
 author: zr-msft
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
+ms.date: 11/13/2019
 ms.author: zarhoads
-ms.openlocfilehash: 69f60036bd718264174bf1befe832305e250e77c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bfce7d77f214762a69857e74f0bb533ad1ce0f1b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65073955"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74107637"
 ---
-# <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor ontwikkelaars van toepassingen voor het beheren van resources in Azure Kubernetes Service (AKS)
+# <a name="best-practices-for-application-developers-to-manage-resources-in-azure-kubernetes-service-aks"></a>Aanbevolen procedures voor toepassings ontwikkelaars om resources te beheren in azure Kubernetes service (AKS)
 
-Als u toepassingen ontwikkelen en in Azure Kubernetes Service (AKS uitvoeren), zijn er enkele belangrijke gebieden te houden. Het beheren van uw implementaties van toepassingen kunnen een negatieve invloed hebben op de gebruikerservaring van services die u opgeeft. Als u wilt gebruiken om te laten slagen, houd er rekening mee enkele aanbevolen procedures kunt u volgen als u toepassingen ontwikkelen en in AKS uitvoeren.
+Wanneer u toepassingen ontwikkelt en uitvoert in azure Kubernetes service (AKS), zijn er enkele belang rijke gebieden die u moet overwegen. Hoe u uw toepassings implementaties beheert, kan een negatieve invloed hebben op de ervaring van de eind gebruiker van services die u opgeeft. Denk eraan dat u de aanbevolen procedures kunt volgen bij het ontwikkelen en uitvoeren van toepassingen in AKS om u te helpen slagen.
 
-Deze aanbevolen procedures voor richt zich voor het uitvoeren van uw cluster en de werkbelasting van een toepassing developer-perspectief. Zie voor meer informatie over best practices administratieve [operator aanbevolen procedures voor het beheer van isolatie en resource in Azure Kubernetes Service (AKS)-Cluster][operator-best-practices-isolation]. In dit artikel leert u:
+In deze best practices vindt u informatie over het uitvoeren van uw cluster en workloads vanuit een toepassings ontwikkelaars perspectief. Zie [Aanbevolen procedures voor de cluster operator voor isolatie en resource beheer in azure Kubernetes service (AKS)][operator-best-practices-isolation]voor meer informatie over aanbevolen procedures voor het beheer. In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Wat zijn de resourceaanvragen pod en limieten
-> * Manieren om te ontwikkelen en implementeren van toepassingen met Dev spaties en Visual Studio Code
-> * Het gebruik van de `kube-advisor` hulpprogramma om te controleren op problemen met implementaties
+> * Wat zijn pod-resource aanvragen en-limieten
+> * Manieren om toepassingen te ontwikkelen en implementeren met dev Spaces en Visual Studio code
+> * Het `kube-advisor`-hulp programma gebruiken om te controleren of er problemen zijn met implementaties
 
-## <a name="define-pod-resource-requests-and-limits"></a>Definieer pod resourceaanvragen en -limieten
+## <a name="define-pod-resource-requests-and-limits"></a>Pod-resource aanvragen en-limieten definiëren
 
-**Aanbevolen procedurerichtlijn** - ingesteld pod aanvragen en beperkingen met betrekking tot alle schillen in de manifesten YAML. Als de AKS-cluster maakt gebruik van *resourcequota*, uw implementatie kan worden geweigerd als u deze waarden niet definieert.
+**Richt lijnen voor best practices** : Stel pod-aanvragen en limieten in voor alle peulen in uw yaml-manifesten. Als het AKS-cluster *resource quota*gebruikt, wordt uw implementatie mogelijk geweigerd als u deze waarden niet definieert.
 
-Er is een primaire manier voor het beheren van de compute-resources binnen een AKS-cluster met pod aanvragen en -limieten. Deze aanvragen en -limieten kunnen de Kubernetes-scheduler weet wat rekenresources die een schil moet worden toegewezen.
+Een primaire methode voor het beheren van de reken bronnen binnen een AKS-cluster is het gebruik van pod-aanvragen en-limieten. Met deze aanvragen en limieten kan de Kubernetes scheduler weten welke reken resources een pod moet worden toegewezen.
 
-* **Pod aanvragen** definiëren van een vaste hoeveelheid CPU en geheugen die de schil nodig heeft. Deze aanvragen moet de hoeveelheid rekenresources die de schil hoeft op te geven van een aanvaardbaar niveau van de prestaties.
-    * Wanneer de Kubernetes-scheduler wil een schil op een knooppunt plaatst, wordt de schil-aanvragen worden gebruikt om te bepalen welk knooppunt voldoende bronnen beschikbaar heeft.
-    * Bewaak de prestaties van uw toepassing om aan te passen van deze aanvragen om te controleren of dat u minder bronnen die nodig voor het onderhouden van een aanvaardbaar niveau van de prestaties niet definiëren.
-* **Pod limieten** zijn de maximale hoeveelheid CPU en geheugen die een schil kunt gebruiken. Deze limieten te voorkomen dat één of twee overmatig schillen te veel CPU en geheugen van het knooppunt. In dit scenario zou verminderen de prestaties van het knooppunt en andere schillen die erop worden uitgevoerd.
-    * Stelt u niet een pod-limiet hoger dan de knooppunten kunnen ondersteunen. Elk knooppunt AKS behoudt een vaste hoeveelheid CPU en geheugen voor de belangrijkste onderdelen die Kubernetes. Uw toepassing probeert te verbruiken te veel bronnen op het knooppunt voor andere schillen moeten worden uitgevoerd.
-    * Nogmaals, de prestaties van uw toepassing op verschillende tijdstippen gedurende de dag of week controleren. Bepalen wanneer de vraag is, en de schil er gelden limieten voor bronnen die nodig zijn om te voldoen aan de behoeften van de toepassing uitlijnen.
+* **Pod CPU/memory-aanvragen** definiëren een ingestelde hoeveelheid CPU en geheugen die de pod regel matig nodig heeft.
+    * Wanneer de Kubernetes scheduler probeert een pod op een knoop punt te plaatsen, worden de pod-aanvragen gebruikt om te bepalen welk knoop punt voldoende bronnen beschikbaar heeft voor de planning.
+    * Als u geen pod-aanvraag instelt, wordt deze standaard ingesteld op de limiet die is gedefinieerd.
+    * Het is belang rijk om de prestaties van uw toepassing te bewaken om deze aanvragen aan te passen. Als er onvoldoende aanvragen worden gedaan, kan uw toepassing slechte prestaties ontvangen, omdat er een knoop punt wordt gepland. Als er sprake is van een overschatting van aanvragen, is de toepassing mogelijk niet meer gepland.
+* **Pod CPU-en geheugen limieten** zijn de maximale hoeveelheid CPU en geheugen die een pod kan gebruiken. Deze limieten helpen te bepalen welke peulen in het geval van instabiliteit van het knoop punt moeten worden gedood vanwege onvoldoende bronnen. Zonder dat de juiste limieten van Peul worden afgetrokken, wordt de belasting van de resource afgebroken.
+    * Pod beperkt de hulp bij het bepalen wanneer een pod het beheer van het resource gebruik heeft kwijt geraakt. Wanneer een limiet wordt overschreden, wordt de pod prioriteit gegeven voor doden om de status van het knoop punt te hand haven en zo weinig mogelijk gevolgen te hebben voor het delen van het knoop punt.
+    * Als u geen pod-limiet instelt, wordt deze standaard ingesteld op de hoogste beschik bare waarde op een bepaald knoop punt.
+    * Stel geen pod-limiet in die hoger is dan uw knoop punten kunnen ondersteunen. Elk AKS-knoop punt reserveert een ingestelde hoeveelheid CPU en geheugen voor de kern Kubernetes-onderdelen. Het kan voor komen dat uw toepassing te veel resources in het knoop punt gebruikt om het andere peul te kunnen uitvoeren.
+    * Het is ook belang rijk om de prestaties van uw toepassing te controleren op verschillende tijdstippen gedurende de dag of week. Bepaal wanneer de piek vraag is en lijn de limieten voor pod uit voor de resources die nodig zijn om te voldoen aan de maximale behoeften van de toepassing.
 
-In de specificaties van uw schil is het aanbevolen procedure voor het definiëren van deze aanvragen en -limieten. Als u deze waarden niet opgeeft, niet de Kubernetes-planner te begrijpen welke resources nodig zijn. De scheduler kan de schil op een knooppunt zonder voldoende bronnen zijn voor het opgeven van acceptabele prestaties plannen. Kan de Clusterbeheerder ingesteld *resourcequota* in een naamruimte die moet worden ingesteld van resourceaanvragen en -limieten. Zie voor meer informatie, [resourcequota in AKS clusters][resource-quotas].
+In uw Pod-specificaties is het **Best Practice en zeer belang rijk** om deze aanvragen en limieten te definiëren op basis van de bovenstaande gegevens. Als u deze waarden niet opneemt, kan de Kubernetes scheduler geen rekening houden met de resources die uw toepassingen nodig hebben voor het plannen van beslissingen.
 
-Wanneer u een aanvraag van de CPU of de limiet hebt gedefinieerd, wordt de waarde wordt gemeten in eenheden van de CPU. *1.0* CPU komt overeen met één onderliggende virtuele CPU-kern op het knooppunt. Dezelfde meting wordt gebruikt voor GPU's. Ook kunt u een decimale aanvraag of een limiet, doorgaans in millicpu. Bijvoorbeeld, *100 miljoen* is *0.1* van een onderliggende virtuele CPU-kern.
+Als de scheduler een pod plaatst op een knoop punt met onvoldoende resources, worden de prestaties van de toepassing gedegradeerd. Het wordt ten zeerste aanbevolen voor cluster beheerders om *resource quota* in te stellen voor een naam ruimte waarvoor u resource aanvragen en-limieten moet instellen. Zie [resource quota op AKS-clusters][resource-quotas]voor meer informatie.
 
-In het volgende eenvoudige voorbeeld voor een enkele NGINX-schil de schil aanvragen *100 miljoen* van CPU-tijd en *128Mi* van het geheugen. De resourcelimieten voor de schil zijn ingesteld op *250 miljoen* CPU en *256Mi* geheugen:
+Wanneer u een CPU-aanvraag of-limiet definieert, wordt de waarde gemeten in CPU-eenheden. 
+* *1,0* CPU is gelijk aan één onderliggende virtuele CPU-kern op het knoop punt. 
+* Dezelfde meting wordt gebruikt voor Gpu's.
+* U kunt breuken definiëren die worden gemeten in millicores. *100 miljoen* is bijvoorbeeld *0,1* van een onderliggende vCPU-kern.
+
+In het volgende eenvoudige voor beeld voor een enkele NGINX-Pod, Pod aanvragen *100 miljoen* van CPU-tijd en *128Mi* van geheugen. De resource limieten voor de pod zijn ingesteld op *250m* CPU en *256Mi* -geheugen:
 
 ```yaml
 kind: Pod
@@ -62,46 +70,46 @@ spec:
         memory: 256Mi
 ```
 
-Zie voor meer informatie over resource metingen en toewijzingen [beheren rekenbronnen voor containers][k8s-resource-limits].
+Zie [reken resources voor containers beheren][k8s-resource-limits]voor meer informatie over resource metingen en-toewijzingen.
 
-## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Ontwikkelen en testen van toepassingen op basis van een AKS-cluster
+## <a name="develop-and-debug-applications-against-an-aks-cluster"></a>Toepassingen ontwikkelen en fouten opsporen in een AKS-cluster
 
-**Aanbevolen procedurerichtlijn** -Development-teams te implementeren en er foutopsporing op basis van een AKS-cluster met behulp van Dev spaties. Dit ontwikkelingsmodel zorgt ervoor dat de op rollen gebaseerd toegangsbeheer, netwerk- of opslagbehoeften worden geïmplementeerd voordat de app wordt geïmplementeerd naar productie.
+**Best Practice-richt lijnen** : ontwikkel teams moeten een AKS-cluster implementeren en fouten opsporen met behulp van ontwikkel ruimten. Dit ontwikkel model zorgt ervoor dat op rollen gebaseerde toegangs beheer-, netwerk-of opslag behoeften worden geïmplementeerd voordat de app naar productie wordt geïmplementeerd.
 
-Met Azure Dev spaties, ontwikkelen, fouten opsporen en testen van toepassingen rechtstreeks op basis van een AKS-cluster. Ontwikkelaars in een team samenwerken om te bouwen en testen gedurende de levensduur van toepassingen. U kunt echter ook doorgaan met bestaande hulpprogramma's zoals Visual Studio of Visual Studio Code. Een extensie is geïnstalleerd voor Dev spaties waarmee een optie voor het uitvoeren en fouten opsporen in de toepassing in een AKS-cluster:
+Met Azure dev Spaces kunt u toepassingen rechtstreeks op een AKS-cluster ontwikkelen, fouten opsporen en testen. Ontwikkel aars in een team werken samen om te bouwen en testen gedurende de levens cyclus van de toepassing. U kunt bestaande hulpprogram ma's zoals Visual Studio of Visual Studio code blijven gebruiken. Er wordt een uitbrei ding geïnstalleerd voor dev-ruimten die een optie bieden om de toepassing uit te voeren en fouten op te sporen in een AKS-cluster:
 
-![Fouten opsporen in toepassingen in een AKS-cluster met opslagruimten ontwikkelen](media/developer-best-practices-resource-management/dev-spaces-debug.png)
+![Fouten opsporen in toepassingen in een AKS-cluster met ontwikkel ruimten](media/developer-best-practices-resource-management/dev-spaces-debug.png)
 
-Deze geïntegreerde ontwikkelings- en verwerken met Dev spaties vermindert de noodzaak voor lokale testomgevingen, zoals [minikube][minikube]. In plaats daarvan ontwikkelen en testen op basis van een AKS-cluster. Dit cluster kan worden beveiligd en dat staat vermeld in de vorige sectie over het gebruik van naamruimten voor het isoleren van een cluster logisch geïsoleerd. Als uw apps klaar om te implementeren naar productie zijn, kunt u vol vertrouwen omdat het ontwikkelen van apps is uitgevoerd op basis van een echte AKS-cluster implementeren.
+Dit geïntegreerde ontwikkelings-en test proces met ontwikkel ruimten vermindert de nood zaak van lokale test omgevingen, zoals [minikube][minikube]. In plaats daarvan ontwikkelt en test u op basis van een AKS-cluster. Dit cluster kan worden beveiligd en geïsoleerd, zoals wordt beschreven in de vorige sectie over het gebruik van naam ruimten om een cluster logisch te isoleren. Wanneer uw apps klaar zijn om te worden geïmplementeerd in productie, kunt u de implementatie van een echt AKS-cluster op vertrouwen uitvoeren.
 
-Azure Dev opslagruimten is bedoeld voor gebruik met toepassingen die worden uitgevoerd op Linux-schillen en knooppunten.
+Azure dev Spaces is bedoeld voor gebruik met toepassingen die worden uitgevoerd op Linux en knoop punten.
 
-## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>Gebruik de Visual Studio Code-extensie voor Kubernetes
+## <a name="use-the-visual-studio-code-extension-for-kubernetes"></a>De Visual Studio code Extension voor Kubernetes gebruiken
 
-**Aanbevolen procedurerichtlijn** -installeren en gebruiken de VS Code-extensie voor Kubernetes bij het schrijven van YAML-manifesten. U kunt ook de extensie voor geïntegreerde implementatieoplossing waarmee toepassingseigenaren die minder vaak communiceren met het AKS-cluster.
+**Richt lijnen voor best practices** : Installeer en gebruik de VS code-uitbrei ding voor Kubernetes wanneer u yaml-manifesten schrijft. U kunt ook de uitbrei ding voor een geïntegreerde implementatie oplossing gebruiken, die eigen aren van toepassingen kan helpen die niet regel matig communiceren met het AKS-cluster.
 
-De [Visual Studio Code-extensie voor Kubernetes] [ vscode-kubernetes] helpt u bij het ontwikkelen en implementeren van toepassingen voor AKS. De extensie biedt intellisense voor Kubernetes-resources, en Helm-grafieken en sjablonen. U kunt ook bladeren, implementeren en Kubernetes-resources van VS Code bewerken. De extensie biedt een intellisense-controle voor resourceaanvragen ook of beperkt in de specificaties pod wordt ingesteld:
+De [Visual Studio code Extension voor Kubernetes][vscode-kubernetes] helpt u bij het ontwikkelen en implementeren van toepassingen voor AKS. De uitbrei ding biedt IntelliSense voor Kubernetes-resources en helm-grafieken en-sjablonen. U kunt ook in VS code Kubernetes-resources zoeken, implementeren en bewerken. De uitbrei ding biedt ook een IntelliSense-controle op resource aanvragen of-limieten die zijn ingesteld in de pod-specificaties:
 
-![VS Code-extensie voor Kubernetes-waarschuwing over ontbrekende geheugenlimieten](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
+![VS-code-uitbrei ding voor Kubernetes-waarschuwing over ontbrekende geheugen limieten](media/developer-best-practices-resource-management/vs-code-kubernetes-extension.png)
 
-## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Regelmatig controleren op problemen in toepassingen met kube-advisor
+## <a name="regularly-check-for-application-issues-with-kube-advisor"></a>Regel matig controleren op toepassings problemen met uitvoeren-Advisor
 
-**Aanbevolen procedurerichtlijn** -Voer regelmatig de nieuwste versie van `kube-advisor` open source-hulpprogramma om problemen te detecteren in uw cluster. Als u resourcequota op een bestaand AKS-cluster toepast, voert u `kube-advisor` eerst te vinden schillen waarvoor geen resourceaanvragen en -limieten die zijn gedefinieerd.
+**Richt lijnen voor best practices** : Voer regel matig de meest recente versie van `kube-advisor` open source-hulp programma uit om problemen in uw cluster op te sporen. Als u resource quota toepast op een bestaand AKS-cluster, voert u `kube-advisor` eerst uit om een Peul te vinden waarvoor geen resource-aanvragen en-limieten zijn gedefinieerd.
 
-De [kube-advisor] [ kube-advisor] hulpprogramma is een bijbehorende AKS open source-project, die een Kubernetes-cluster wordt gescand en rapporten weergeven over problemen die worden gevonden. Een nuttige controle is het identificeren van schillen die niet over een bron aanvragen en -limieten in plaats.
+Het hulp programma [uitvoeren Advisor][kube-advisor] is een gekoppeld AKS open source-project waarmee een Kubernetes-cluster wordt gescand en rapporten worden gevonden over problemen die worden aangetroffen. Een nuttige controle is het identificeren van een Peul dat geen resource-aanvragen en limieten heeft.
 
-Het hulpprogramma kube-advisor kunt rapporteren resourceaanvraag en limieten ontbreekt in de PodSpecs voor Windows-toepassingen, evenals de Linux-toepassingen, maar het hulpprogramma kube-advisor zelf moet worden gepland op een Linux-schil. U kunt plannen dat een schil om uit te voeren op een knooppunt van toepassingen met een specifiek besturingssysteem met een [knooppunt selector] [ k8s-node-selector] in de configuratie van de schil.
+Het uitvoeren-hulp programma kan rapporteren over de resource aanvraag en limieten die ontbreken in PodSpecs voor Windows-toepassingen, evenals Linux-toepassingen, maar het hulp programma uitvoeren Advisor zelf moet op een Linux-pod worden gepland. U kunt een pod plannen om uit te voeren op een knooppunt groep met een specifiek besturings systeem met behulp van een [knooppunt kiezer][k8s-node-selector] in de configuratie van de pod.
 
-In een AKS-cluster die als host fungeert voor veel development-teams en toepassingen, kan het lastig zijn om bij te houden van schillen zonder deze resource-aanvragen en set beperkt. Als een best practice regelmatig uitgevoerd `kube-advisor` op uw AKS-clusters.
+In een AKS-cluster dat een groot aantal ontwikkel teams en toepassingen host, kan het lastig zijn om de aantallen te volgen zonder deze resource aanvragen en-limieten in te stellen. Als best practice, voert u regel matig `kube-advisor` uit op uw AKS-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Deze aanbevolen procedures voor gericht op het uitvoeren van uw cluster en werkbelastingen vanuit het oogpunt operator cluster. Zie voor meer informatie over best practices administratieve [operator aanbevolen procedures voor het beheer van isolatie en resource in Azure Kubernetes Service (AKS)-Cluster][operator-best-practices-isolation].
+Dit artikel Best practices is gericht op het uitvoeren van uw cluster en workloads vanuit een perspectief van een cluster operator. Zie [Aanbevolen procedures voor de cluster operator voor isolatie en resource beheer in azure Kubernetes service (AKS)][operator-best-practices-isolation]voor meer informatie over aanbevolen procedures voor het beheer.
 
-Voor het implementeren van sommige van deze aanbevolen procedures, Zie de volgende artikelen:
+Raadpleeg de volgende artikelen voor meer informatie over het implementeren van een aantal van deze aanbevolen procedures:
 
-* [Ontwikkelen met Dev-opslagruimten][dev-spaces]
-* [Controleren op problemen met kube-advisor][aks-kubeadvisor]
+* [Ontwikkelen met ontwikkel ruimten][dev-spaces]
+* [Controleren op problemen met uitvoeren-Advisor][aks-kubeadvisor]
 
 <!-- EXTERNAL LINKS -->
 [k8s-resource-limits]: https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/

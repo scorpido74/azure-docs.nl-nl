@@ -1,37 +1,42 @@
 ---
-title: Onboarding in azure-Sentinel | Microsoft Docs
-description: Meer informatie over het verzamelen van gegevens in azure Sentinel.
+title: 'Snelstartgids: onboarding in azure-Sentinel'
+description: Meer informatie over het verzamelen van gegevens in azure Sentinel door dit Quick Start-document te volgen.
 services: sentinel
-documentationcenter: na
 author: rkarlin
-manager: rkarlin
-editor: ''
+ms.author: rkarlin
 ms.assetid: d5750b3e-bfbd-4fa0-b888-ebfab7d9c9ae
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: quickstart
 ms.date: 09/23/2019
-ms.author: rkarlin
-ms.openlocfilehash: 7f042cfe10bd8ca57d9a2dae511a13a82f053a67
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 182dec35d515966ae883aca405cf3a95b6f1f72c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71316812"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133096"
 ---
-# <a name="on-board-azure-sentinel"></a>Azure-Sentinel op de trein
+# <a name="quickstart-on-board-azure-sentinel"></a>Snelstartgids: Azure-Sentinel op de trein
 
-
-
-In deze Quick Start leert u hoe u aan de trein Azure-Sentinel kunt gaan. 
+In deze Quick Start leert u hoe u een Azure-Sentinel op de trein kunt vinden. 
 
 Als u Azure Sentinel wilt gebruiken, moet u eerst Azure Sentinel inschakelen en vervolgens verbinding maken met uw gegevens bronnen. Azure Sentinel wordt geleverd met een aantal connectors voor micro soft-oplossingen, die beschikbaar zijn in de doos en die realtime-integratie bieden, waaronder oplossingen voor micro soft Threat Protection, Microsoft 365 sources, waaronder Office 365, Azure AD, Azure ATP en Microsoft Cloud App Security, en nog veel meer. Daarnaast zijn er ingebouwde connectors voor het bredere beveiligings ecosysteem voor niet-micro soft-oplossingen. U kunt ook algemene gebeurtenis indeling, syslog of REST-API gebruiken om uw gegevens bronnen met Azure Sentinel te verbinden.  
 
 Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie met deskundig gemaakte werkmappen op basis van uw gegevens. Deze werkmappen kunnen eenvoudig worden aangepast aan uw behoeften.
 
+>[!NOTE] 
+> De [prijs van Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) is gebaseerd op de hoeveelheid gegevens die is opgenomen in de gekoppelde Azure monitor log Analytics-werk ruimte. Voor sommige van de volgende gegevens connectors worden er nog geen kosten in rekening gebracht voor de opname wanneer u een wille keurige waarschuwing genereert met behulp van de opgenomen gegevens die zijn opgeslagen in Log Analytics werk ruimte waarvoor kosten in rekening worden Azure Monitor gebracht volgens de [prijzen voor log Analytics](https://azure.microsoft.com/pricing/details/monitor/). 
+  > - Azure-activiteit (activiteiten logboeken voor Azure-bewerkingen)
+  > - Azure Active Directory Identity Protection (voor tenants met AAD P2-licenties)
+  > - Azure Information Protection
+  > - Azure Advanced Threat Protection (waarschuwingen)
+  > - Azure Security Center (waarschuwingen)
+  > - Microsoft Cloud App Security (alleen waarschuwingen)
+  > - Micro soft Defender Advanced Threat Protection (waarschuwingen van bewakings agent)
+  > - Office 365 (Exchange-en share point-Logboeken)
+>
+> De audit logboeken van Azure AD/Office365 zijn niet gratis en worden niet aangeboden als Premium-laag, waardoor de opname van deze gegevens per GB is geprijsd. 
+  
 
 ## <a name="global-prerequisites"></a>Globale vereisten
 
@@ -49,12 +54,12 @@ Nadat u verbinding hebt gemaakt met uw gegevens bronnen, kiest u uit een galerie
 1. Ga naar het Azure Portal.
 2. Zorg ervoor dat het abonnement waarin Azure Sentinel is gemaakt, is geselecteerd. 
 3. Zoeken naar de Azure-Sentinel. 
-   ![opdracht](./media/quickstart-onboard/search-product.png)
+   ![Zoek](./media/quickstart-onboard/search-product.png)
 
 1. Klik op **+ toevoegen**.
 1. Selecteer de werk ruimte die u wilt gebruiken of maak een nieuwe. U kunt Azure Sentinel uitvoeren op meer dan één werk ruimte, maar de gegevens worden geïsoleerd voor één werk ruimte.
 
-   ![zoeken](./media/quickstart-onboard/choose-workspace.png)
+   ![Opdracht](./media/quickstart-onboard/choose-workspace.png)
 
    >[!NOTE] 
    > - Standaardwerk ruimten die zijn gemaakt door Azure Security Center worden niet weer gegeven in de lijst. u kunt geen Azure-Sentinel installeren.

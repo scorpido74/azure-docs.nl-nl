@@ -1,22 +1,16 @@
 ---
-title: VM-extensies implementeren-Azure Resource Manager sjablonen
+title: VM-extensies implementeren met een sjabloon
 description: Informatie over het implementeren van extensies voor virtuele machines met Azure Resource Manager-sjablonen
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5eb7a8d82f7f61e18afc49c61444354dcde77b5e
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 84e49190c9e6b0c464e58a32fc7c29cb21ddc53a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533429"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149262"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Zelfstudie: Extensies voor virtuele machines implementeren met Azure Resource Manager-sjablonen
 
@@ -74,7 +68,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
 
      Het is handig om enige basiskennis te hebben van de sjabloon voordat u deze gaat aanpassen.
 
-1. Selecteer **File** > **Save As** om een kopie van het bestand op uw lokale computer op te slaan als *azuredeploy.json*.
+1. Selecteer *File*Save As >  om een kopie van het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 

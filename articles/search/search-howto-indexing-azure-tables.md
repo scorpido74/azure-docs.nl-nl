@@ -1,5 +1,5 @@
 ---
-title: Inhoud indexeren vanuit Azure Table Storage voor zoeken in volledige tekst
+title: Zoeken in azure Table Storage-inhoud
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over het indexeren van gegevens die zijn opgeslagen in azure-tabel opslag met een Azure Cognitive Search indexer.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: ae99145178fba8e204267546dc1cedf42df412eb
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e8f6c0454497b1cb1d62417e566e9662469c56d0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793741"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112994"
 ---
 # <a name="how-to-index-tables-from-azure-table-storage-with-azure-cognitive-search"></a>Tabellen indexeren vanuit Azure-tabel opslag met Azure Cognitive Search
 
@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u Azure Cognitive Search gebruikt voor het i
 
 U kunt een Azure Table Storage-indexer instellen met behulp van de volgende resources:
 
-* [Azure-portal](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Cognitive Search [rest API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Cognitive Search [.NET SDK](https://aka.ms/search-sdk)
 
@@ -67,7 +67,7 @@ Zie [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/creat
 
 U kunt de referenties voor de tabel op een van de volgende manieren opgeven: 
 
-- **Volledig Access Storage-account Connection String**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` u de Connection String van de Azure Portal kunt verkrijgen door naar de **Blade opslag account** te gaan > **instellingen** > - **sleutels** (voor klassieke opslag accounts) of **Instellingen** > **toegangs sleutels** (voor Azure Resource Manager Storage-accounts).
+- **Volledig Access Storage-account Connection String**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` u de Connection String van de Azure Portal kunt verkrijgen door naar de **Blade opslag account** te gaan > **instellingen** > **sleutels** (voor klassieke opslag accounts) of **instellingen** > **toegangs sleutels** (voor Azure Resource Manager opslag accounts).
 - **Opslag account gedeelde toegangs handtekening Connection String**: `TableEndpoint=https://<your account>.table.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=t&sp=rl` de Shared Access-hand tekening moet de lijst-en lees machtigingen hebben voor containers (tabellen in dit geval) en objecten (tabel rijen).
 -  **Shared Access Signature**voor een tabel: `ContainerSharedAccessUri=https://<your storage account>.table.core.windows.net/<table name>?tn=<table name>&sv=2016-05-31&sig=<the signature>&se=<the validity end time>&sp=r` de Shared Access-hand tekening over de machtiging query (lezen) moet beschikken voor de tabel.
 
@@ -121,7 +121,7 @@ Zie [Indexeer functies plannen voor Azure Cognitive Search](search-howto-schedul
 Soms verschillen de veld namen in uw bestaande index van de eigenschaps namen in de tabel. U kunt veld toewijzingen gebruiken om de namen van eigenschappen van de tabel toe te wijzen aan de veld namen in uw zoek index. Zie voor meer informatie over veld toewijzingen [Azure Cognitive Search Indexeer functie veld Toewijzingen Bridget de verschillen tussen gegevens bronnen en zoek indexen](search-indexer-field-mappings.md).
 
 ## <a name="handle-document-keys"></a>Document sleutels verwerken
-In azure Cognitive Search is de document sleutel een unieke identificatie van een document. Elke zoek index moet precies één sleutel veld van het type `Edm.String` hebben. Het sleutel veld is vereist voor elk document dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
+In azure Cognitive Search is de document sleutel een unieke identificatie van een document. Elke zoek index moet precies één sleutel veld van het type `Edm.String`hebben. Het sleutel veld is vereist voor elk document dat wordt toegevoegd aan de index. (In feite is dit het enige vereiste veld.)
 
 Omdat tabel rijen een samengestelde sleutel hebben, genereert Azure Cognitive Search een synthetisch veld met de naam `Key` dat een samen voeging van partitie sleutel-en rijwaarden is. Als de PartitionKey van een rij bijvoorbeeld `PK1` is en RowKey is `RK1`, wordt de waarde van het `Key` veld `PK1RK1`.
 

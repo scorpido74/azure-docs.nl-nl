@@ -1,5 +1,5 @@
 ---
-title: Documenten indexeren in Azure Data Lake Storage Gen2 (preview-versie)
+title: Zoeken in Azure Data Lake Storage Gen2 (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over het indexeren van inhoud en meta gegevens in Azure Data Lake Storage Gen2. Deze functie is momenteel beschikbaar als open bare preview
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 390f45ce874e4e64d3a7b9a6c3944983e0ba9028
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 628b8bb5c3cb83ae6038a7150420893d7abe61d5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719914"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112284"
 ---
 # <a name="indexing-documents-in-azure-data-lake-storage-gen2"></a>Documenten indexeren in Azure Data Lake Storage Gen2
 

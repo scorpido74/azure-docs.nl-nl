@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c11d4648635e62ebc2e68734e14dd2bdc028a7c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 2b600edc4c360a2b2990be34e44bb8fbd1c8f721
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330670"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133173"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Een Lab instellen om ethische hacking-klasse te leren 
 In dit artikel wordt beschreven hoe u een klasse instelt die zich richt op forensischee-hacking. Indringings tests, een praktijk die wordt gebruikt door de ethische hacking-Community, treedt op wanneer iemand probeert toegang te krijgen tot het systeem of netwerk om beveiligings problemen te demonstreren die een kwaadwillende aanvaller kan misbruiken. 
 
-In een ethische hacking-klasse kunnen studenten moderne technieken leren voor het beschermen tegen beveiligings problemen. Elke student haalt een virtuele Windows Server-host op met twee geneste virtuele machines: één virtuele machine met **Metaspoiltable** -installatie kopie en een andere machine met [Kali Linux](https://www.kali.org/) -installatie kopie. De virtuele machine Metasploitable wordt gebruikt voor het exploiteren van toepassingen en Kali virtual machine biedt toegang tot de hulpprogram ma's die nodig zijn om forensische-taken uit te voeren.
+In een ethische hacking-klasse kunnen studenten moderne technieken leren voor het beschermen tegen beveiligings problemen. Elke student haalt een virtuele Windows Server-host op met twee geneste virtuele machines: één virtuele machine met [Metasploitable3](https://github.com/rapid7/metasploitable3) -installatie kopie en een andere machine met [Kali Linux](https://www.kali.org/) -installatie kopie. De virtuele machine Metasploitable wordt gebruikt voor het exploiteren van toepassingen en Kali virtual machine biedt toegang tot de hulpprogram ma's die nodig zijn om forensische-taken uit te voeren.
 
 Dit artikel bevat twee hoofd secties. In de eerste sectie wordt beschreven hoe u het leslokaal Lab maakt. In de tweede sectie wordt beschreven hoe u de sjabloon machine maakt waarvoor geneste virtualisatie is ingeschakeld en met de hulpprogram ma's en installatie kopieën die nodig zijn. In dit geval wordt een Metasploitable-installatie kopie en een Kali Linux-installatie kopie op een computer waarop Hyper-V is ingeschakeld voor het hosten van de installatie kopieën.
 
@@ -34,7 +34,7 @@ Volg [deze zelf studie](tutorial-setup-classroom-lab.md) voor het maken van een 
 
 | Grootte van virtuele machine | Installatiekopie |
 | -------------------- | ----- | 
-| Gemiddeld (geneste virtualisatie) | Windows Server 2019 Data Center |
+| Gemiddeld (geneste virtualisatie) | Windows Server 2019 Datacenter |
 
 ## <a name="template-machine"></a>Sjabloon machine 
 
@@ -44,6 +44,8 @@ Nadat de sjabloon machine is gemaakt, start u de machine en maakt u er verbindin
 2. Stel de [Kali](https://www.kali.org/) Linux-installatie kopie in. Kali is een Linux-distributie met hulpprogram ma's voor indringings tests en beveiligings controles.
 3. Stel de Metasploitable-installatie kopie in. Voor dit voor beeld wordt de [Metasploitable3](https://github.com/rapid7/metasploitable3) -afbeelding gebruikt. Deze installatie kopie is bedoeld om beveiligings problemen te ondervinden.
 
+Een script waarmee de hierboven beschreven taken kunnen worden geautomatiseerd, is beschikbaar in [ethische Hack scripts van Lab-Services](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/EthicalHacking).
+
 ### <a name="prepare-template-machine-for-nested-virtualization"></a>Sjabloon machine voorbereiden voor geneste virtualisatie
 Volg de instructies in [dit artikel](how-to-enable-nested-virtualization-template-vm.md) om de virtuele machine van de sjabloon voor te bereiden op geneste virtualisatie. 
 
@@ -52,7 +54,7 @@ Kali is een Linux-distributie met hulpprogram ma's voor indringings tests en bev
 
 1. Down load de installatie kopie van [https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/](https://www.offensive-security.com/kali-linux-vm-vmware-virtualbox-image-download/).  
     1. Down load de **Kali Linux hyper-v 64-bits** voor hyper-v.
-    1. Pak het. 7z-bestand uit.  Als u nog geen 7-zip hebt, kunt u deze downloaden van [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html). Onthoud de locatie van de uitgepakte map zoals u deze later nodig hebt.
+    1. Pak het. 7z-bestand uit.  Als u nog geen 7-post code hebt, kunt u deze downloaden van [https://www.7-zip.org/download.html](https://www.7-zip.org/download.html). Onthoud de locatie van de uitgepakte map zoals u deze later nodig hebt.
 2. Open **Hyper-V-beheer** vanuit systeem beheer.
 1. Selecteer **actie**en selecteer vervolgens **virtuele machine importeren**. 
 1. Kies op de pagina **map zoeken** van de wizard **virtuele machine importeren** de locatie van de uitgepakte map met de Kali Linux-installatie kopie.
@@ -69,7 +71,7 @@ Kali is een Linux-distributie met hulpprogram ma's voor indringings tests en bev
 
     ![Verbinding maken met netwerk pagina](../media/class-type-ethical-hacking/connect-network.png)
 1. Selecteer **volt ooien** op de pagina **samen vatting** . Wacht tot de kopieer-en import bewerkingen zijn voltooid. De virtuele machine met Kali Linux is nu beschikbaar in Hyper-V.
-1. Kies in **Hyper-V-beheer** **actie** -> **starten**en kies vervolgens **actie** -> **verbinding maken** om verbinding te maken met de virtuele machine.  
+1. Klik in **Hyper-V-beheer** **actie** -> **Start**en kies **actie** -> **verbinding maken** om verbinding te maken met de virtuele machine.  
 12. De standaard gebruikersnaam is `root` en het wacht woord is `toor`. 
 
     > [!NOTE]
@@ -82,7 +84,7 @@ De Rapid7 Metasploitable-installatie kopie is een installatie kopie die als doel
 1. Selecteer de knop **Metasploitable nu downloaden** .
 1. Wanneer het zip-bestand wordt gedownload, pakt u het zip-bestand uit en onthoud u de locatie.
 1. Converteer het uitgepakte VMDK-bestand naar een vhdx-bestand, zodat u het kunt gebruiken met Hyper-V. Hiertoe opent u Power shell met beheerders bevoegdheden, navigeert u naar de map waar het VMDK-bestand zich bevindt en volgt u deze instructies:
-    1. Down load het [conversie programma voor micro soft virtual machine](https://www.microsoft.com/download/details.aspx?id=42497)en voer het bestand mvmc_setup. msi uit wanneer u hierom wordt gevraagd.
+    1. Down load het [conversie programma voor micro soft virtual machine](https://www.microsoft.com/download/details.aspx?id=42497)en voer mvmc_setup. msi-bestand uit wanneer u hierom wordt gevraagd.
     1. Importeer de Power shell-module.  De standaard locatie waarin de module is geïnstalleerd, is C:\Program Files\Microsoft virtual machine Converter \
 
         ```powershell
@@ -111,7 +113,7 @@ De Rapid7 Metasploitable-installatie kopie is een installatie kopie die als doel
         ![Pagina virtuele netwerk schijf verbinden](../media/class-type-ethical-hacking/connect-virtual-network-disk.png)
     1. Op de pagina **de wizard Nieuwe virtuele machine volt** ooien en selecteer **volt ooien**.
     1. Wanneer de virtuele machine is gemaakt, selecteert u deze in de Hyper-V-beheer. Schakel de machine nog niet in.  
-    1. Kies **actie** -> -**instellingen**.
+    1. Kies **actie** -> **instellingen**.
     1. Selecteer **Hardware toevoegen**in het dialoog venster **instellingen voor Metasploitable** . 
     1. Selecteer **legacy netwerk adapter**en selecteer **toevoegen**.
 
@@ -119,7 +121,7 @@ De Rapid7 Metasploitable-installatie kopie is een installatie kopie die als doel
     1. Selecteer op de pagina **legacynetwerkadapter** de optie **LabServicesSwitch** voor de **virtuele switch** en selecteer **OK**. LabServicesSwitch is gemaakt tijdens het voorbereiden van de sjabloon machine voor Hyper-V in de sectie **sjabloon voorbereiden voor geneste virtualisatie** .
 
         ![Pagina verouderde netwerk adapter](../media/class-type-ethical-hacking/legacy-network-adapter-page.png)
-    1. De Metasploitable-installatie kopie is nu klaar voor gebruik. Kies in **Hyper-V-beheer** **actie** -> **starten**en kies vervolgens **actie** -> **verbinding maken** om verbinding te maken met de virtuele machine.  De standaard gebruikersnaam is **msfadmin** en het wacht woord is **msfadmin**. 
+    1. De Metasploitable-installatie kopie is nu klaar voor gebruik. Klik in **Hyper-V-beheer** **actie** -> **Start**en kies **actie** -> **verbinding maken** om verbinding te maken met de virtuele machine.  De standaard gebruikersnaam is **msfadmin** en het wacht woord is **msfadmin**. 
 
 
 De sjabloon is nu bijgewerkt en bevat installatie kopieën die nodig zijn voor een ethische test klasse met ingrijpende indringing, een afbeelding met hulpprogram ma's voor het uitvoeren van de indringings tests en een andere installatie kopie met beveiligings problemen die moeten worden gedetecteerd. De sjabloon afbeelding kan nu worden gepubliceerd naar de klasse. Selecteer de knop **publiceren** op de sjabloon pagina om de sjabloon te publiceren naar het lab.

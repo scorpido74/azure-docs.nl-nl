@@ -1,5 +1,5 @@
 ---
-title: Veld toewijzingen voor automatische indexering met Indexeer functies
+title: Veldtoewijzingen in indexeerfuncties
 titleSuffix: Azure Cognitive Search
 description: Configureer veld toewijzingen in een Indexeer functie om te zien wat de verschillen zijn in veld namen en gegevens representaties.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: cc863ee3dc7f2dc8049fcd22189acac94a855352
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 72623787cdb27c568fe2b4ec075010674a3996ef
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72786973"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123989"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Veld Toewijzingen en trans formaties met Azure Cognitive Search Indexeer functies
 
@@ -175,11 +175,14 @@ Azure Cognitive Search ondersteunt twee verschillende base64-code ringen. U moet
 
 #### <a name="base64-encoding-options"></a>opties voor Base64-code ring
 
-Azure Cognitive Search ondersteunt twee verschillende base64-code ringen: **HTTPSERVERUTILITY URL-token**en **URL-veilige base64-code ring zonder opvulling**. Een teken reeks die met base64 is gecodeerd tijdens het indexeren, moet later worden gedecodeerd met dezelfde coderings opties, anders wordt het resultaat niet met de oorspronkelijke waarde overeenkomen.
+Azure Cognitive Search ondersteunt URL-veilige base64-code ring en normale base64-code ring. Een teken reeks die met base64 is gecodeerd tijdens het indexeren, moet later worden gedecodeerd met dezelfde coderings opties, anders wordt het resultaat niet met de oorspronkelijke waarde overeenkomen.
 
 Als de para meters voor `useHttpServerUtilityUrlTokenEncode` of `useHttpServerUtilityUrlTokenDecode` voor respectievelijk coderen en decoderen worden ingesteld op `true`, wordt `base64Encode` gereageerd zoals [HttpServerUtility. UrlTokenEncode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokenencode.aspx) en `base64Decode` gedraagt zich als [HttpServerUtility. UrlTokenDecode](https://msdn.microsoft.com/library/system.web.httpserverutility.urltokendecode.aspx).
 
-Als u niet de volledige .NET Framework gebruikt (dat wil zeggen, u .NET core of een ander Framework gebruikt) om de sleutel waarden voor het emuleren van Azure Cognitive Search gedrag te maken, moet u `useHttpServerUtilityUrlTokenEncode` en `useHttpServerUtilityUrlTokenDecode` instellen op `false`. Afhankelijk van de tape wisselaar die u gebruikt, kunnen de base64-coderings-en decodeer functies verschillen van die van Azure Cognitive Search.
+> [!WARNING]
+> Als `base64Encode` wordt gebruikt om sleutel waarden te produceren, moet `useHttpServerUtilityUrlTokenEncode` worden ingesteld op True. Alleen URL-veilige base64-code ring kan worden gebruikt voor sleutel waarden. Zie de [naamgevings &#40;regels&#41; voor Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/naming-rules) voor de volledige set beperkingen voor tekens in sleutel waarden.
+
+De .NET-bibliotheken in azure Cognitive Search uitgaan van de volledige .NET Framework, dat ingebouwde code ring biedt. De opties `useHttpServerUtilityUrlTokenEncode` en `useHttpServerUtilityUrlTokenDecode` maken gebruik van deze ingebouwde functionaity. Als u .NET core of een ander Framework gebruikt, raden we u aan om die opties in te stellen op `false` en de functies code ring en decodering van uw Framework rechtstreeks aan te roepen.
 
 De volgende tabel vergelijkt verschillende base64-code ringen van de teken reeks `00>00?00`. Als u de vereiste aanvullende verwerking (indien van toepassing) voor uw base64-functies wilt bepalen, past u de functie voor het coderen van de bibliotheek toe op de teken reeks `00>00?00` en vergelijkt u de uitvoer met de verwachte uitvoer `MDA-MDA_MDA`.
 
@@ -188,7 +191,7 @@ De volgende tabel vergelijkt verschillende base64-code ringen van de teken reeks
 | Base64 met opvulling | `MDA+MDA/MDA=` | URL-veilige tekens gebruiken en opvulling verwijderen | Gebruik standaard base64-tekens en opvulling toevoegen |
 | Base64 zonder opvulling | `MDA+MDA/MDA` | Gebruik URL-veilige tekens | Gebruik standaard base64-tekens |
 | URL-veilig base64 met opvulling | `MDA-MDA_MDA=` | Opvulling verwijderen | Opvulling toevoegen |
-| URL-veilig base64 zonder opvulling | `MDA-MDA_MDA` | Geen | Geen |
+| URL-veilig base64 zonder opvulling | `MDA-MDA_MDA` | None | None |
 
 <a name="extractTokenAtPositionFunction"></a>
 
@@ -224,7 +227,7 @@ De gegevens bron bevat een `PersonName` veld en u wilt het indexeren als twee af
 
 <a name="jsonArrayToStringCollectionFunction"></a>
 
-### <a name="jsonarraytostringcollection-function"></a>de functie jsonArrayToStringCollection
+### <a name="jsonarraytostringcollection-function"></a>jsonArrayToStringCollection function
 
 Transformeert een teken reeks die is opgemaakt als een JSON-matrix met teken reeksen in een teken reeks matrix die kan worden gebruikt om een `Collection(Edm.String)` veld in de index te vullen.
 

@@ -7,12 +7,12 @@ ms.date: 06/19/2019
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 278e9ff68fa20a0a99a6447bb4cf7ac7fddbfb7b
-ms.sourcegitcommit: 961468fa0cfe650dc1bec87e032e648486f67651
+ms.openlocfilehash: 5cadd0479a6ddc97cc7ee7d9b5aee1bbffba02bb
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72249119"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120963"
 ---
 # <a name="networking-limit-increase"></a>Netwerklimiet verhoogd
 
@@ -20,11 +20,14 @@ Als u uw huidige netwerk gebruik en quotum wilt weer geven, gaat u naar de Blade
 
 U kunt een verhoging aanvragen via de Blade **Help en ondersteuning** of de Blade **gebruik + quotum** in de portal.
 
+> [!Note]
+> Als u de standaard grootte van voor het voor voegsel openbaar IP-adres wilt wijzigen, selecteert u ' min openbaar IP-adres voor voegsel lengte ' in de vervolg keuzelijst.
+
 ## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Netwerk quotum verhoging op abonnements niveau aanvragen met behulp van de Blade **Help en ondersteuning**
 
 Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de Blade Help en ondersteuning van Azure die beschikbaar zijn in de Azure Portal. 
 
-1. Selecteer in https://portal.azure.com **Help + ondersteuning**.
+1. Selecteer in https://portal.azure.com**Help + ondersteuning**.
 
     ![Help en ondersteuning](./media/resource-manager-core-quotas-request/helpsupport.png)
  
@@ -61,7 +64,7 @@ Volg de onderstaande instructies om een ondersteunings aanvraag te maken via de 
 
 Volg de onderstaande instructies voor het maken van een ondersteunings aanvraag via de Blade gebruik en quotum van Azure die beschikbaar is in de Azure Portal. 
 
-1. Selecteer in https://portal.azure.com **abonnementen**.
+1. Selecteer in https://portal.azure.com**abonnementen**.
 
     ![Abonnementen](./media/resource-manager-core-quotas-request/subscriptions.png)
 

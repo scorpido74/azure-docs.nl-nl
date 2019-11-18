@@ -1,17 +1,14 @@
 ---
-title: Activiteiten logboeken van Azure weer geven voor het bewaken van resources | Microsoft Docs
+title: Activiteiten logboeken van Azure weer geven voor het bewaken van resources
 description: Gebruik de activiteiten Logboeken om de gebruikers acties en-fouten te controleren. Toont Azure Portal Power shell, Azure CLI en REST.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.author: tomfitz
-ms.openlocfilehash: 25bce613ab45f20f7060447bcfc47f452f4d70f2
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 3ac407fa4cfef1530cb6bbfde2ec666b5a07e324
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329447"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150859"
 ---
 # <a name="view-activity-logs-to-monitor-actions-on-resources"></a>Activiteiten logboeken weer geven om acties op resources te controleren
 
@@ -139,7 +136,7 @@ Get-AzLog -ResourceGroup ExampleGroup | Where-Object {$_.OperationName.value -eq
 
 U kunt resource grafiek gebruiken om de wijzigings geschiedenis voor een resource weer te geven. Zie [resource wijzigingen ophalen](../governance/resource-graph/how-to/get-resource-changes.md)voor meer informatie.
 
-## <a name="azure-cli"></a>Azure CLI
+## <a name="azure-cli"></a>Azure-CLI
 
 Als u logboek vermeldingen wilt ophalen, voert u de opdracht [AZ monitor Activity-Log List](/cli/azure/monitor/activity-log#az-monitor-activity-log-list) uit met een offset om de tijds Panne aan te geven.
 

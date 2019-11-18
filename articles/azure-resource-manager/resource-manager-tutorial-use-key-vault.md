@@ -1,25 +1,17 @@
 ---
-title: Azure Key Vault gebruiken in de Resource Manager-sjabloon
+title: Azure Key Vault gebruiken in sjablonen
 description: Ontdek hoe u Azure Key Vault gebruikt om veilig parameterwaarden door te geven tijdens het implementeren van Resource Manager-sjablonen
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 05/23/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 5dfc186e5d047de76e16ec145f5f0afe94b8d2f4
-ms.sourcegitcommit: 6eecb9a71f8d69851bc962e2751971fccf29557f
+ms.openlocfilehash: 86625132e4ac4aa3ed2c42f1e94babcfbbf63a51
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72533610"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149277"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-your-resource-manager-template-deployment"></a>Zelf studie: Azure Key Vault integreren in de implementatie van de Resource Manager-sjabloon
 
@@ -126,7 +118,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
 
    Het is handig om een eenvoudige uitleg van de sjabloon te hebben voordat u deze aanpast.
 
-1. Selecteer **bestand**  > **Opslaan als**en sla een kopie van het bestand op uw lokale computer op met de naam *azuredeploy. json*.
+1. Selecteer **bestand** > **Opslaan als**en sla een kopie van het bestand op uw lokale computer op met de naam *azuredeploy. json*.
 
 1. Herhaal stap 1-3 om de volgende URL te openen en sla het bestand op als *azuredeploy. para meters. json*.
 
@@ -187,9 +179,9 @@ Wanneer u de sjabloon implementeert, gebruikt u dezelfde resource groep die u in
 
 Nadat u de virtuele machine hebt geïmplementeerd, moet u de aanmeldings referenties testen met behulp van het wacht woord dat is opgeslagen in de sleutel kluis.
 
-1. Open de [Azure-portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 
-1. Selecteer **resource groepen**  >  **\<*YourResourceGroupName* >**  > **simpleWinVM**.
+1. Selecteer **resource groepen** >  **\<*YourResourceGroupName*>**  > **simpleWinVM**.
 1. Selecteer bovenaan **verbinding maken** .
 1. Selecteer **RDP-bestand downloaden**en volg de instructies om u aan te melden bij de virtuele machine met behulp van het wacht woord dat is opgeslagen in de sleutel kluis.
 

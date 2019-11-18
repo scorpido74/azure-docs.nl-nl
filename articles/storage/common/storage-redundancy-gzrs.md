@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c8fc6c552920cf7790bf5c89531fc04ad4c57d36
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72333219"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111838"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -29,8 +29,9 @@ Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS e
 
 GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
-- Europa (noord)
-- Europa (west)
+- Europa - noord
+- Europa - west
+- Verenigd Koninkrijk Zuid
 - US - oost
 - US - oost 2
 - US - centraal
@@ -53,7 +54,7 @@ Wanneer u een opslag account maakt, geeft u op hoe gegevens in dat account moete
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>RA-GZRS gebruiken voor hoge Beschik baarheid
 
-Wanneer u RA-GZRS inschakelt voor uw opslag account, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor de Blob service bijvoorbeeld `myaccount.blob.core.windows.net` is, is het secundaire eind punt `myaccount-secondary.blob.core.windows.net`. De toegangs sleutels voor uw opslag account zijn hetzelfde voor zowel de primaire als de secundaire eind punten.
+Wanneer u RA-GZRS inschakelt voor uw opslag account, kunnen uw gegevens worden gelezen van het secundaire eind punt en van het primaire eind punt voor uw opslag account. Het secundaire eind punt voegt het achtervoegsel *(secundair* ) toe aan de account naam. Als uw primaire eind punt voor de Blob service is `myaccount.blob.core.windows.net`, is het secundaire eind punt bijvoorbeeld `myaccount-secondary.blob.core.windows.net`. De toegangs sleutels voor uw opslag account zijn hetzelfde voor zowel de primaire als de secundaire eind punten.
 
 Als u gebruik wilt maken van RA-GZRS in het geval van een regionale storing, moet u uw toepassing vooraf ontwerpen om dit scenario af te handelen. Uw toepassing moet lezen van en schrijven naar het primaire eind punt, maar overschakelen naar het gebruik van het secundaire eind punt in het geval dat de primaire regio niet beschikbaar is. Zie voor hulp bij het ontwerpen voor hoge Beschik baarheid met RA-GZRS [ontwerpen van Maxi maal beschik bare toepassingen met Ra-GZRS of Ra-GRS](https://docs.microsoft.com/azure/storage/common/storage-designing-ha-apps-with-ragrs).
 
@@ -135,14 +136,14 @@ Als u een Live migratie wilt aanvragen, gebruikt u de [Azure Portal](https://ms.
 
 1. Selecteer een **nieuwe ondersteunings aanvraag**.
 2. Voltooi de basis **beginselen** op basis van uw account gegevens. Selecteer in de sectie **service** **opslag account beheer** en geef het account op dat moet worden gemigreerd.
-3. Selecteer **Next**.
+3. Selecteer **Volgende**.
 4. Geef de volgende waarden op voor het **probleem** gedeelte:
     - **Ernst**: behoud de standaard waarde in.
     - **Probleem type**: **gegevens migratie**selecteren.
     - **Categorie**: Selecteer **migreren naar (RA) GZRS binnen een regio**.
     - **Titel**: Typ een beschrijvende titel, bijvoorbeeld **(RA-) GZRS-account migratie**.
-    - **Details**: Typ meer details in het vak **Details** , bijvoorbeeld ' Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_ @ no__t-3 '. of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_ @ no__t-1."
-5. Selecteer **Next**.
+    - **Details**: Typ aanvullende details in het vak **Details** , bijvoorbeeld "Ik wil migreren naar GZRS van [LRS, GRS] in de regio \_\_." of "Ik wil graag migreren naar RA-GZRS van [LRS, RA-GRS] in de regio \_\_."
+5. Selecteer **Volgende**.
 6. Controleer of de contact gegevens juist zijn op de Blade **contact gegevens** .
 7. Selecteer **Maken**.
 

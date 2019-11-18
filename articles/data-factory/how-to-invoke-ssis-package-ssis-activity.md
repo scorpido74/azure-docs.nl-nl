@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 11/14/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: b8ed0a04d2d13556f38873ef5f346d49ba4d1845
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ddb7cd06934c85243717dd2a34dc99bae582b6fa
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73673734"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122950"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Voer een SSIS-pakket uit met de activiteit voor het uitvoeren van SSIS-pakketten in Azure Data Factory
 In dit artikel wordt beschreven hoe u een SQL Server Integration Services (SSIS)-pakket uitvoert in een Azure Data Factory-pijp lijn met behulp van de activiteit voor het uitvoeren van SSIS-pakketten. 
@@ -57,7 +57,7 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
 
     Wanneer u uw Key kluis gekoppelde service maakt of bewerkt, kunt u uw bestaande sleutel kluis selecteren of bewerken of een nieuwe maken. Zorg ervoor dat u Data Factory beheerde identiteits toegang verleent aan uw sleutel kluis als u dit nog niet hebt gedaan. U kunt uw geheimen ook rechtstreeks invoeren in de volgende indeling: `<Key vault linked service name>/<secret name>/<secret version>`. Als uw pakket 32 bits-runtime nodig heeft om uit te voeren, schakelt u het selectie vakje **32-bits runtime** in.
 
-   Voor de **pakket locatie**selecteert u **SSISDB**, **Bestands systeem (pakket)** of **Bestands systeem (project)** . Als u **SSISDB** als uw pakket locatie selecteert, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL database server of beheerde instantie, geeft u op welk pakket moet worden uitgevoerd dat is geïmplementeerd in SSISDB. 
+   Voor **de pakket locatie**selecteert u **SSISDB**, **Bestands systeem (pakket)** , **Bestands systeem (project)** of **Inge sloten pakket**. Als u **SSISDB** als uw pakket locatie selecteert, die automatisch wordt geselecteerd als uw Azure-SSIS IR is ingericht met de SSIS-catalogus (SSISDB) die wordt gehost door een Azure SQL database server of beheerde instantie, geeft u op welk pakket moet worden uitgevoerd dat is geïmplementeerd in SSISDB. 
 
     Als uw Azure-SSIS IR actief is en het selectie vakje **hand matige invoer** is uitgeschakeld, bladert u naar uw bestaande mappen, projecten, pakketten of omgevingen en selecteert u deze in SSISDB. Selecteer **vernieuwen** om de zojuist toegevoegde mappen, projecten, pakketten of omgevingen van SSISDB op te halen, zodat deze beschikbaar zijn voor bladeren en selectie. Als u de omgevingen voor uw pakket uitvoeringen wilt zoeken of selecteren, moet u uw projecten vooraf configureren om deze omgevingen toe te voegen als verwijzingen van dezelfde mappen onder SSISDB. Zie [SSIS-omgevingen maken en toewijzen](https://docs.microsoft.com/sql/integration-services/create-and-map-a-server-environment?view=sql-server-2014)voor meer informatie.
 
@@ -82,6 +82,10 @@ In deze stap gebruikt u de Data Factory-gebruikers interface of-app om een pijp 
    Geef vervolgens de referenties op voor toegang tot uw project-, pakket-of configuratie bestanden. Als u de waarden voor de referenties voor het uitvoeren van het pakket hebt opgegeven (zie vorige), kunt u ze opnieuw gebruiken door hetzelfde selectie vakje voor het uitvoeren van de **pakket referenties** in te scha kelen. Voer anders de waarden in voor uw pakket toegangs referenties in de vakken **domein**, **gebruikers naam**en **wacht woord** . Als u bijvoorbeeld uw project, pakket of configuratie in Azure Files opslaat, wordt het domein `Azure`, is de gebruikers naam `<storage account name>`en wordt het wacht woord `<storage account key>`. 
 
    U kunt ook geheimen die zijn opgeslagen in uw sleutel kluis gebruiken als waarden (zie vorige). Deze referenties worden gebruikt om toegang te krijgen tot uw pakket en onderliggende pakketten in de taak pakket uitvoeren, allemaal vanaf hun eigen pad of hetzelfde project, evenals configuraties, die zijn opgegeven in uw pakketten. 
+
+   Als u **Inge sloten pakket** selecteert als uw pakket locatie, sleept u het pakket en verwijdert u **het uit** een bestandsmap naar het meegeleverde vak. Uw pakket wordt automatisch gecomprimeerd en Inge sloten in de nettolading van de activiteit. Als u het pakket hebt Inge sloten, kunt u het later **downloaden** om het te bewerken. U kunt ook uw Inge sloten pakket **para meters** door het toe te wijzen aan een pijplijn parameter die in meerdere activiteiten kan worden gebruikt, waardoor u de grootte van de pijplijn lading optimaliseert. Als uw Inge sloten pakket niet is versleuteld en het gebruik van de taak voor het uitvoeren van een pakket wordt gedetecteerd, wordt het selectie vakje **pakket taak uitvoeren** automatisch ingeschakeld en worden de relevante onderliggende pakketten met de bijbehorende bestandssysteem verwijzingen automatisch toegevoegd zodat u ze ook kunt insluiten. Als we het gebruik van de taak voor het uitvoeren van een pakket niet kunnen detecteren, moet u hand matig het selectie vakje **pakket taak uitvoeren** inschakelen en de relevante onderliggende pakketten toevoegen aan het bestands systeem, zodat u deze ook kunt insluiten. Als de onderliggende pakketten SQL Server verwijzingen gebruiken, moet u ervoor zorgen dat de SQL Server toegankelijk is voor uw Azure-SSIS IR.  Het gebruik van project verwijzingen voor onderliggende pakketten wordt momenteel niet ondersteund.
+   
+   ![Eigenschappen instellen op het tabblad instellingen-hand matig](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-settings5.png)
    
    Als u het beveiligings niveau **EncryptAllWithPassword** of **EncryptSensitiveWithPassword** hebt gebruikt toen u het pakket hebt gemaakt via SQL Server Data tools, voert u de waarde voor uw wacht woord in het vak **versleutelings wachtwoord** in. U kunt ook een geheim dat is opgeslagen in uw sleutel kluis gebruiken als waarde (zie vorige). Als u het beveiligings niveau **EncryptSensitiveWithUserKey** hebt gebruikt, voert u uw gevoelige waarden opnieuw in bij configuratie bestanden of op de **SSIS-para meters**, **verbindings beheer**functies of **Eigenschappen onderdrukkingen** tabbladen (zie later). 
 
@@ -281,7 +285,7 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
    }
    ```
 
-   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen, bestands shares of Azure Files, voert u de waarden voor uw pakket-of logboek locatie-eigenschappen als volgt in:
+   Als u pakketten wilt uitvoeren die zijn opgeslagen in bestands systemen, bestands shares of Azure Files, voert u de waarden voor uw pakket-en logboek locatie-eigenschappen als volgt in:
 
    ```json
    {
@@ -353,6 +357,31 @@ In deze stap maakt u een pijp lijn met een activiteit voor het uitvoeren van SSI
                                    "value": "MyAccountKey"
                                }
                            }
+                       }
+                   }
+               }
+           }
+       }
+   }
+   ```
+
+   Als u Inge sloten pakketten wilt uitvoeren, voert u de waarden voor de eigenschap pakket locatie als volgt in:
+
+   ```json
+   {
+       {
+           {
+               {
+                   "packageLocation": {
+                       "type": "InlinePackage",
+                       "typeProperties": {
+                           "packagePassword": {
+                               "type": "SecureString",
+                               "value": "MyEncryptionPassword"
+                           },
+                           "packageName": "MyPackage.dtsx",
+                           "packageContent":"My compressed/uncompressed package content",
+                           "packageLastModifiedDate": "YYYY-MM-DDTHH:MM:SSZ UTC-/+HH:MM"
                        }
                    }
                }

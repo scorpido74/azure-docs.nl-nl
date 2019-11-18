@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a302e723aa898a62bc43ecb38343bcf026dc769e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022943"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144310"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure-resource-rollen configureren in Privileged Identity Management
 
@@ -48,11 +48,19 @@ Volg deze stappen om de instellingen voor een Azure-resource functie te openen.
 
     ![Pagina Details van de functie-instelling met een lijst met verschillende toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-setting-details.png)
 
-1. Selecteer **bewerken** om het deel venster functie-instellingen te openen.
+1. Selecteer **bewerken** om het deel venster **functie-instellingen** te openen. Op het eerste tabblad kunt u de configuratie voor de functie activering in Privileged Identity Management bijwerken.
 
-    ![Pagina Rolinstellingen bewerken met opties voor het bijwerken van de toewijzings-en activerings instellingen](./media/pim-resource-roles-configure-role-settings/resources-role-settings-edit.png)
+    ![De pagina functie-instellingen bewerken met het tabblad Activering geopend](./media/pim-resource-roles-configure-role-settings/role-settings-activation-tab.png)
 
-    In het instellingen deel venster voor elke rol zijn er verschillende instellingen die u kunt configureren.
+1. Selecteer het tabblad **toewijzing** of de knop **volgende: toewijzing** onder aan de pagina om het tabblad toewijzings instelling te openen. Deze instellingen bepalen de roltoewijzingen die zijn gemaakt in de Privileged Identity Management-Interface.
+
+    ![Het tabblad roltoewijzing in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
+
+1. Gebruik het tabblad **melding** of de knop **volgende: activering** aan de onderkant van de pagina om naar het tabblad meldings instelling voor deze rol te gaan. Deze instellingen bepalen alle e-mail meldingen die betrekking hebben op deze rol.
+
+    ![Tabblad meldingen in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
+
+1. Selecteer de knop **bijwerken** op elk gewenst moment om de rolinstellingen bij te werken.
 
 ## <a name="assignment-duration"></a>Toewijzings duur
 

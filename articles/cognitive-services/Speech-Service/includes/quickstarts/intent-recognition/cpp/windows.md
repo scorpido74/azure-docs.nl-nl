@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b26b5edeaac1f6305ed2db920c711f906eb10384
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76b7c9436b8d1d466a69df7e5427991df0a9c63e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503904"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125460"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
+>
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Een LUIS-toepassing maken en een eindpunt sleutel ophalen](../../../../quickstarts/create-luis.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=windows)
@@ -42,16 +43,16 @@ Laten we een code toevoegen die als een skelet voor het project werkt. Houd er r
 
 ## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
 
-Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van uw LUIS Endpoing-sleutel en-regio. Voeg deze code in de methode `recognizeIntent()` toe.
+Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van uw LUIS-eindpunt sleutel en-regio. Voeg deze code in de methode `recognizeIntent()` toe.
 
 In dit voor beeld wordt de `FromSubscription()` methode gebruikt om de `SpeechConfig`te bouwen. Zie [SpeechConfig-klasse](https://docs.microsoft.com/cpp/cognitive-services/speech/speechconfig)voor een volledige lijst met beschik bare methoden.
 
 > [!NOTE]
-> Het is belang rijk dat u de LUIS-eindpunt sleutel gebruikt en niet de Starter-of Authroing-sleutels, omdat alleen de eindpunt sleutel geldig is voor spraak op intentie herkenning. Zie [een Luis-toepassing maken en een eindpunt sleutel ophalen](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) voor instructies over het ophalen van de juiste sleutel.
+> Het is belang rijk dat u de LUIS-eindpunt sleutel gebruikt en niet de Starter-of ontwerp sleutels, omdat alleen de eindpunt sleutel geldig is voor spraak op de intentie herkenning. Zie [een Luis-toepassing maken en een eindpunt sleutel ophalen](~/articles/cognitive-services/Speech-Service/quickstarts/create-luis.md) voor instructies over het ophalen van de juiste sleutel.
 
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=25)]
 
-## <a name="initialize-a-intentrecognizer"></a>Een IntentRecognizer initialiseren
+## <a name="initialize-an-intentrecognizer"></a>Een IntentRecognizer initialiseren
 
 Nu gaan we een `IntentRecognizer`maken. Voeg deze code in de `recognizeIntent()` methode toe, rechts onder uw spraak configuratie.
 [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=28)]
@@ -63,8 +64,8 @@ U moet nu een `LanguageUnderstandingModel` koppelen aan de intentie herkenning e
 
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
-Vanuit het `IntentRecognizer`-object roept u de `RecognizeOnceAsync()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verzendt voor herkenning en dat zodra de woord groep is geïdentificeerd om reconizinge speech te stoppen.
-Voor similicity wordt gewacht op de toekomstige keer dat de bewerking is voltooid.
+Vanuit het `IntentRecognizer`-object roept u de `RecognizeOnceAsync()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
+Voor de eenvoud zullen we wachten op het volt ooien van de toekomst.
 
 Voeg in de instructie using deze code toe: [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=44)]
 
@@ -76,13 +77,14 @@ Voeg in de instructie using onder `RecognizeOnceAsync()`de volgende code toe: [!
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien: (er zijn enkele opmerkingen aan deze versie toegevoegd) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
+Op dit moment moet uw code er als volgt uitzien:  
+(Er zijn enkele opmerkingen aan deze versie toegevoegd) [!code-cpp[](~/samples-cognitive-services-speech-sdk/quickstart/cpp/windows/intent-recognition/helloworld/helloworld.cpp?range=6-81)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 
 Nu bent u klaar om uw app te bouwen en de spraak herkenning te testen met behulp van de speech-service.
 
-1. **De code compileren** : Kies in de menu balk van Visual Stuio **Build** > **Build-oplossing**.
+1. **De code compileren** : Kies in de menu balk van Visual Studio **Build** > **Build-oplossing**.
 2. **Start uw app** -vanuit de menu balk, kies **fout opsporing** > **fout opsporing starten** of druk op **F5**.
 3. **Herkenning starten** : u wordt gevraagd om een woord groep in het Engels te spreken. Uw spraak wordt verzonden naar de spraak service, getranscribeerd als tekst en weer gegeven in de-console.
 

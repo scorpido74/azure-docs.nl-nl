@@ -1,7 +1,7 @@
 ---
-title: Eén BLOB indexeren in veel zoek index documenten van Azure Blob indexer voor zoeken in volledige tekst
+title: Index-blobs die meerdere documenten bevatten
 titleSuffix: Azure Cognitive Search
-description: Verken Azure-blobs voor tekst inhoud met behulp van de Azure Congitive Search BLOB indexer. Elke Blob kan een of meer documenten in de zoek index opleveren.
+description: Verken Azure-blobs voor tekst inhoud met behulp van de Azure Congitive Search BLOB-indexer, waarbij elke Blob een of meer documenten in de zoek index kan opleveren.
 manager: nitinme
 author: arv100kri
 ms.author: arjagann
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 127354e55a81e379825b41759f2b6150ba554a12
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1840bda0ecc9462a5d8f796b616d728d0bb412f7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818548"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112265"
 ---
 # <a name="indexing-blobs-to-produce-multiple-search-documents"></a>Blobs indexeren om meerdere zoek documenten te maken
 Een BLOB-Indexeer functie behandelt standaard de inhoud van een BLOB als één Zoek document. Bepaalde **parsingMode** -waarden ondersteunen scenario's waarbij een afzonderlijke Blob kan leiden tot meerdere zoek documenten. De verschillende soorten **parsingMode** waarmee een Indexeer functie meer dan één Zoek document uit een BLOB kan extra heren:
@@ -40,12 +40,12 @@ Stel dat u een index definitie hebt met de volgende velden:
 
 En uw BLOB-container heeft blobs met de volgende structuur:
 
-_Blob1. json_
+_Blob1.json_
 
     { "temperature": 100, "pressure": 100, "timestamp": "2019-02-13T00:00:00Z" }
     { "temperature" : 33, "pressure" : 30, "timestamp": "2019-02-14T00:00:00Z" }
 
-_Blob2. json_
+_Blob2.json_
 
     { "temperature": 1, "pressure": 1, "timestamp": "2018-01-12T00:00:00Z" }
     { "temperature" : 120, "pressure" : 3, "timestamp": "2013-05-11T00:00:00Z" }
@@ -71,13 +71,13 @@ Met deze instelling wordt de Azure Cognitive Search-index met de volgende inform
 
 Uitgaande van dezelfde index definitie als in het vorige voor beeld, zeggen uw BLOB-container blobs met de volgende structuur:
 
-_Blob1. json_
+_Blob1.json_
 
     recordid, temperature, pressure, timestamp
     1, 100, 100,"2019-02-13T00:00:00Z" 
     2, 33, 30,"2019-02-14T00:00:00Z" 
 
-_Blob2. json_
+_Blob2.json_
 
     recordid, temperature, pressure, timestamp
     1, 1, 1,"2018-01-12T00:00:00Z" 

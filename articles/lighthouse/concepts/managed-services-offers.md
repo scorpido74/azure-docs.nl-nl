@@ -1,18 +1,14 @@
 ---
 title: Aanbiedingen voor beheerde services in Azure Marketplace
 description: Met beheerde services kunnen service providers resource beheer aanbiedingen verkopen aan klanten in azure Marketplace.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 09/19/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 0a6371a1020182650d83d5e7ec9bb2378b44b557
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 0f1ba749a5477f0c006e6666b841e82f4eeb193f
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155257"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131869"
 ---
 # <a name="managed-services-offers-in-azure-marketplace"></a>Aanbiedingen voor beheerde services in Azure Marketplace
 
@@ -30,7 +26,7 @@ Elk managed services-aanbod omvat een of meer abonnementen. Deze abonnementen ku
 
 Als u uw aanbieding wilt beperken tot specifieke klanten, kunt u een privé-abonnement publiceren. Wanneer u dit doet, kan het abonnement alleen worden aangeschaft voor de specifieke] abonnements-Id's die u opgeeft. Zie voor meer informatie [persoonlijke aanbiedingen](https://docs.microsoft.com/azure/marketplace/private-offers).
 
-Met open bare abonnementen kunt u uw services promo veren tot nieuwe klanten. Dit zijn doorgaans handiger wanneer u alleen beperkte toegang tot de Tenant van de klant nodig hebt. Zodra u een relatie met een klant tot stand hebt gebracht, kunt u dit doen door een nieuw privé-abonnement alleen voor die klant te publiceren, of door het [onboarding voor meer toegang te geven met Azure resource Manager-sjablonen](../how-to/onboard-customer.md).
+Met open bare abonnementen kunt u uw services promo veren tot nieuwe klanten. Dit zijn doorgaans handiger wanneer u alleen beperkte toegang tot de Tenant van de klant nodig hebt. Zodra u een relatie met een klant tot stand hebt gebracht, kunt u dit doen door een nieuw privé-abonnement alleen voor die klant te publiceren of door [ze voor verdere toegang te gebruiken met behulp van Azure Resource Manager sjablonen](../how-to/onboard-customer.md).
 
 Houd er rekening mee dat wanneer een plan als openbaar is gepubliceerd, u het niet kunt wijzigen in persoonlijk. Daarnaast kunt u de beschik baarheid van een openbaar abonnement voor bepaalde klanten of zelfs voor een bepaald aantal klanten niet beperken, hoewel u de verkoop van het abonnement niet helemaal als u kiest.
 

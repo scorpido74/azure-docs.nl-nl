@@ -1,24 +1,18 @@
 ---
-title: Wat is Azure Cache voor Redis? | Microsoft Docs
+title: Wat is Azure Cache voor Redis?
 description: Hier vindt u informatie over Azure Cache voor Redis en hoe dit vaak wordt gebruikt.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: martinekuan
-editor: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
 ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 1f0c943bed473178dadb09cfb9d355821e5236e8
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 87e7505bddfce431b5e859fbbeee79f75867cfc9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066853"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122650"
 ---
 # <a name="azure-cache-for-redis-description"></a>Azure cache voor redis-beschrijving
 
@@ -32,10 +26,10 @@ Met Azure cache voor redis krijgt u toegang tot een beveiligde, toegewezen redis
 
 Er zijn veel algemene patronen waar Azure Cache voor Redis wordt gebruikt ter ondersteuning van toepassingsarchitectuur of ter verbetering van de prestaties van toepassingen. Sommige van de meest voorkomende zijn de volgende:
 
-| Patroon      | Description                                        |
+| Patroon      | Beschrijving                                        |
 | ------------ | -------------------------------------------------- |
 | [Cache-Aside](cache-web-app-cache-aside-leaderboard.md) | Aangezien een database groot kan zijn, is het laden van een volledige database in een cache niet de aanbevolen aanpak. Het is gebruikelijk om het [cache-aside](https://docs.microsoft.com/azure/architecture/patterns/cache-aside)-patroon te gebruiken voor het laden van gegevensitems in de cache, alleen indien dit nodig is. Als het systeem wijzigingen aanbrengt in de back-endgegevens, kan het op dat moment ook de cache bijwerken, die wordt gedistribueerd met andere clients. Het systeem kan bovendien een vervaldatum instellen voor gegevensitems of een verwijderingsbeleid gebruiken om te zorgen dat gegevensupdates opnieuw worden geladen in de cache.|
-| [Inhoud in cache opslaan](cache-aspnet-output-cache-provider.md) | De meeste webpagina's worden gegenereerd op basis van sjablonen met kopteksten, voetteksten, werkbalken, menu's, enzovoort. Ze worden feitelijk niet vaak gewijzigd en moeten niet dynamisch worden gegenereerd. Met behulp van een cache in het geheugen, zoals Azure Cache voor Redis, krijgen uw webservers snel toegang tot dit type statische inhoud vergeleken met de back-end-datastores. Dit patroon vermindert de verwerkingstijd en serverbelasting die nodig zouden zijn voor het dynamisch genereren van de inhoud. Hierdoor kunnen webservers sneller reageren en hebt u minder servers nodig voor het afhandelen van belasting. Azure Cache voor Redis biedt de Redis Output Cache Provider om dit patroon te ondersteunen met ASP.NET.|
+| [Inhoud in cache opslaan](cache-aspnet-output-cache-provider.md) | De meeste webpagina's worden gegenereerd op basis van sjablonen met kopteksten, voet teksten, werk balken, menu's, enzovoort. Ze worden niet vaak gewijzigd en mogen niet dynamisch worden gegenereerd. Met behulp van een cache in het geheugen, zoals Azure Cache voor Redis, krijgen uw webservers snel toegang tot dit type statische inhoud vergeleken met de back-end-datastores. Dit patroon vermindert de verwerkingstijd en serverbelasting die nodig zouden zijn voor het dynamisch genereren van de inhoud. Hierdoor kunnen webservers sneller reageren en hebt u minder servers nodig voor het afhandelen van belasting. Azure Cache voor Redis biedt de Redis Output Cache Provider om dit patroon te ondersteunen met ASP.NET.|
 | [Gebruikerssessie opslaan in cache](cache-aspnet-session-state-provider.md) | Dit patroon wordt vaak gebruikt met winkelwagens en andere informatie van het type gebruikersgeschiedenis, die een webapp mogelijk wil koppelen aan gebruikerscookies. Te veel informatie opslaan in een cookie kan negatieve gevolgen hebben voor de prestaties als de cookie groter wordt en bij elke aanvraag wordt doorgegeven en gevalideerd. Een gangbare oplossing is om de cookie als sleutel te gebruiken voor het opvragen van gegevens in een back-enddatabase. Het gebruik van een cache in het geheugen zoals Azure Cache voor Redis om gegevens te koppelen aan een gebruiker, is veel sneller dan interactie met een volledige relationele database. |
 | Wachtrij met taken en berichten | Wanneer toepassingen aanvragen ontvangen, nemen de bewerkingen die zijn gekoppeld aan de aanvraag vaak extra tijd in beslag. Het is gebruikelijk dat langdurige bewerkingen worden toegevoegd aan een wachtrij die later wordt verwerkt, en mogelijk door een andere server. Deze methode van werk uitstellen heet taken in de wachtrij plaatsen. Er zijn veel softwareonderdelen die zijn ontworpen ter ondersteuning van wachtrijen. Azure cache voor redis is ook geschikt voor deze doel einden als een gedistribueerde wachtrij.|
 | Gedistribueerde transacties | Een algemene vereiste is dat toepassingen een reeks opdrachten op basis van een back-endopslagplaats, evenals een enkele bewerking (atomisch) moeten kunnen uitvoeren. Alle opdrachten moeten slagen of alle moet worden teruggezet naar de beginstatus. Azure Cache voor Redis ondersteunt het uitvoeren van een batch met opdrachten als één bewerking in de vorm van [Transacties](https://redis.io/topics/transactions). |
@@ -44,7 +38,7 @@ Er zijn veel algemene patronen waar Azure Cache voor Redis wordt gebruikt ter on
 
 Azure Cache voor Redis is beschikbaar in de volgende lagen:
 
-| Laag | Description |
+| Laag | Beschrijving |
 |---|---|
 Basic | Een cache met één knooppunt. Deze laag biedt ondersteuning voor meerdere geheugengrootten (250 MB - 53 GB). Dit is een ideale laag voor het ontwikkelen/testen en voor niet-essentiële werkbelastingen. De Basic-laag heeft geen SLA (Service Level Agreement) |
 | Standard | Een gerepliceerde cache in een configuratie met twee knooppunten (primair/secundair) die door Microsoft wordt beheerd, met een SLA met hoge beschikbaarheid (99,9%). |

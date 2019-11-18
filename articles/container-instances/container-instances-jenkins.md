@@ -1,6 +1,6 @@
 ---
 title: Azure Container Instances gebruiken als een Jenkins-build-agent
-description: Meer informatie over het gebruik van Azure Container Instances als een Jenkins-build-agent.
+description: Meer informatie over het configureren van een Jenkins-server voor het uitvoeren van build-taken op aanvraag in Azure Container Instances
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: ed000779940d9af7b1384873bf9fddd1cde79c71
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 7e93457a182598a2e8d739f4d626b49ff57b30fb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326018"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150216"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Azure Container Instances gebruiken als een Jenkins-build-agent
 
@@ -29,22 +29,22 @@ Zie [About Azure container instances][about-aci](Engelstalig) voor meer informat
 
    - **Naam**: Voer een naam in voor de Jenkins-implementatie.
    - **Gebruikers naam**: Voer een naam in voor de gebruiker met beheerders rechten van de virtuele machine Jenkins.
-   - **Verificatietype**: U wordt aangeraden een open bare SSH-sleutel te verifiëren. Als u deze optie selecteert, plakt u een open bare SSH-sleutel die moet worden gebruikt voor aanmelding bij de virtuele machine Jenkins.
-   - **Abonnement**: Selecteer een Azure-abonnement.
-   - **Resourcegroep**: Maak een resourcegroep of selecteer een bestaande resourcegroep.
+   - **Verificatie type**: we raden u aan een open bare SSH-sleutel te verifiëren voor authenticatie. Als u deze optie selecteert, plakt u een open bare SSH-sleutel die moet worden gebruikt voor aanmelding bij de virtuele machine Jenkins.
+   - **Subscription**: selecteer een Azure-abonnement.
+   - **Resourcegroep**: maak een nieuwe resourcegroep of selecteer een bestaande.
    - **Locatie**: Selecteer een locatie voor de Jenkins-server.
 
    ![Basis instellingen voor de implementatie van de Jenkins-Portal](./media/container-instances-jenkins/jenkins-portal-01.png)
 
 3. Voer op het formulier **extra instellingen** de volgende items uit:
 
-   - **Grootte**: Selecteer de juiste formaat optie voor uw virtuele Jenkins-machine.
-   - **Type VM-schijf**: Geef een **HDD** (harde schijf station) of **SSD** (Solid-State Drive) voor de Jenkins-server op.
+   - **Grootte**: Selecteer de juiste formaat optie voor de virtuele Jenkins-machine.
+   - **VM-schijf type**: Geef **HDD** (harde schijf station) of **SSD** (Solid-State Drive) voor de Jenkins-server op.
    - **Virtueel netwerk**: Selecteer de pijl als u de standaard instellingen wilt wijzigen.
    - **Subnetten**: Selecteer de pijl, Controleer de gegevens en selecteer **OK**.
-   - **Openbaar IP-adres**: Selecteer de pijl om het open bare IP-adres een aangepaste naam te geven, de SKU te configureren en de toewijzings methode in te stellen.
-   - **Domein naam label**: Geef een waarde op om een volledig gekwalificeerde URL naar de virtuele Jenkins-machine te maken.
-   - **Release type Jenkins**: Selecteer het gewenste release type uit de opties: **LTS**, **wekelijks gebouwd**of door **Azure geverifieerd**.
+   - **Openbaar IP-adres**: Selecteer de pijl om het open bare IP-adres een aangepaste naam te geven, CONFIGUREER de SKU en stel de toewijzings methode in.
+   - **Domeinnaam label**: Geef een waarde op voor het maken van een volledig gekwalificeerde URL naar de virtuele Jenkins-machine.
+   - **Release type Jenkins**: Selecteer het gewenste release type uit de opties: **LTS**, **wekelijkse build**of **Azure geverifieerd**.
 
    ![Aanvullende instellingen voor de implementatie van de Jenkins-Portal](./media/container-instances-jenkins/jenkins-portal-02.png)
 
@@ -66,7 +66,7 @@ Zie [About Azure container instances][about-aci](Engelstalig) voor meer informat
 
    ![Jenkins-aanmeld instructies met SSH-teken reeks](./media/container-instances-jenkins/jenkins-portal-04.png)
 
-3. Open een terminal sessie in uw ontwikkel systeem en plak de SSH-teken reeks in de laatste stap. Update `username` naar de gebruikers naam die u hebt opgegeven tijdens de implementatie van de Jenkins-server.
+3. Open een terminal sessie in uw ontwikkel systeem en plak de SSH-teken reeks in de laatste stap. Werk `username` bij naar de gebruikers naam die u hebt opgegeven tijdens de implementatie van de Jenkins-server.
 
 4. Wanneer de sessie is verbonden, voert u de volgende opdracht uit om het eerste beheerders wachtwoord op te halen:
 
@@ -74,7 +74,7 @@ Zie [About Azure container instances][about-aci](Engelstalig) voor meer informat
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. Zorg ervoor dat `http://localhost:8080` de SSH-sessie en de tunnel actief blijven en ga naar in een browser. Plak het oorspronkelijke beheerders wachtwoord in het vak en selecteer vervolgens **door gaan**.
+5. Zorg ervoor dat de SSH-sessie en de tunnel actief blijven en ga naar `http://localhost:8080` in een browser. Plak het oorspronkelijke beheerders wachtwoord in het vak en selecteer vervolgens **door gaan**.
 
    ![Scherm ' Jenkins ontgrendelen ' met het vak voor het beheerders wachtwoord](./media/container-instances-jenkins/jenkins-portal-05.png)
 

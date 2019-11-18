@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 3bc1bfcf58d622151f0af9c6da693c5533bcf966
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9751435636519100ea13fd850508c99faeb87a92
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721606"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133307"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Snelstartgids: een Java-lente toepassing starten met Azure CLI
 
@@ -146,7 +146,16 @@ Voer ten slotte een query uit op de **Gateway** toepassing voor het open bare IP
 az spring-cloud app show --name gateway | grep url
 ```
 
-Ga naar de URL die u hebt gekregen van de vorige opdracht om te zien hoe de PiggyMetrics-toepassing wordt uitgevoerd.
+Ga naar de URL die door de vorige opdracht is gegeven om de PiggyMetrics-toepassing uit te voeren.
+    Scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/launch-app.png) ![
+
+U kunt ook door de Azure Portal bladeren om de URL te vinden. 
+1. Ga naar de service
+1. **Apps** selecteren
+1. **Gateway** selecteren
+
+    ![Scherm opname van PiggyMetrics die wordt uitgevoerd](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
+1. Zoek de URL op de pagina overzicht van de **gateway** ![scherm afbeelding van PiggyMetrics met](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

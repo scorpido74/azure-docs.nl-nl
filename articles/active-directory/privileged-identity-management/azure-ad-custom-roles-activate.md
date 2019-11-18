@@ -15,12 +15,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2ac8acf2193442de5c85e0a1134d46330821c77b
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 92ea116414e12cb231fdbaa5ec9ad375d2c0eea9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756449"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144997"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Een aangepaste Azure AD-rol activeren in Privileged Identity Management
 
@@ -33,12 +33,15 @@ Privileged Identity Management in Azure Active Directory (Azure AD) biedt nu ond
 
 Wanneer u een aangepaste Azure AD-rol moet activeren, kunt u de activering aanvragen door de optie mijn rollen navigatie in Privileged Identity Management te selecteren.
 
-1. Meld u aan bij [de Azure Portal](https://portal.azure.com).
+1. Aanmelden bij [de Azure-portal](https://portal.azure.com).
 1. Open Azure AD- [privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart).
 
 1. Selecteer **aangepaste Azure AD-rollen** om een lijst weer te geven met de aangepaste roltoewijzingen in azure AD.
 
    ![Bekijk de lijst met aangepaste roltoewijzingen die in aanmerking komen voor Azure AD](./media/azure-ad-custom-roles-activate/view-preview-roles.png)
+
+> [!Note] 
+>  Voordat u een rol toewijst, moet u een rol maken/configureren. Zie [hier] (https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-ad-custom-roles-configure) voor meer informatie over het configureren van aangepaste AAD-rollen.
 
 1. Zoek op de pagina **aangepaste rollen van Azure AD (preview)** de toewijzing die u nodig hebt.
 1. Selecteer **uw rol activeren** om de pagina **activeren** te openen.

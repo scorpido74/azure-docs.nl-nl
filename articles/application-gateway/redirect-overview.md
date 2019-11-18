@@ -1,52 +1,46 @@
 ---
-title: Overzicht van omleiden voor Azure Application Gateway
-description: Meer informatie over de mogelijkheden voor omleiding in Azure Application Gateway
+title: Omleidings overzicht voor Azure-toepassing gateway
+description: Meer informatie over de omleidings mogelijkheid in Azure-toepassing gateway om verkeer dat is ontvangen op de ene listener, om te leiden naar een andere listener of een externe site.
 services: application-gateway
-documentationcenter: na
 author: amsriva
-manager: jpconnock
-tags: azure-resource-manager
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 3/19/2018
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: 8e88e0e11b3ccab7cc2c68b2617df2d588680780
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5943d8aad4d5dd0d981fae9b2325dd3fc75b31e8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60715794"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129882"
 ---
-# <a name="application-gateway-redirect-overview"></a>Overzicht van Application Gateway redirect
+# <a name="application-gateway-redirect-overview"></a>Overzicht van Application Gateway omleiden
 
-Application gateway kunt u verkeer omleiden.  De service heeft een algemeen omleidingsmechanisme om verkeer dat is ontvangen door de ene listener om te leiden naar een andere listener of naar een externe site. Dit vereenvoudigt de configuratie van toepassing, optimaliseert het gebruik van bronnen en biedt ondersteuning voor nieuwe omleiding-scenario's, met inbegrip van omleiding van globale en op basis van een pad.
+U kunt Application gateway gebruiken om verkeer om te leiden.  De service heeft een algemeen omleidingsmechanisme om verkeer dat is ontvangen door de ene listener om te leiden naar een andere listener of naar een externe site. Dit vereenvoudigt de configuratie van de toepassing, optimaliseert het resource gebruik en ondersteunt nieuwe omleidings scenario's, waaronder globale en op pad gebaseerde omleiding.
 
-Een veelvoorkomend scenario omleiding voor veel webtoepassingen wordt voor de ondersteuning van automatische HTTP naar HTTPS-omleiding om te controleren of dat alle communicatie tussen de toepassing en de gebruikers daarvan vindt plaats via een gecodeerde pad. Klanten hebben in het verleden technieken zoals het maken van een toegewezen back endpool met als enig doel is om te leiden van HTTP naar HTTPS ontvangen aanvragen worden gebruikt. Met de ondersteuning van omleiding in Application Gateway, kunt u dit doen door een nieuwe omleidings-configuratie toe te voegen aan een regel voor het doorsturen en een ander listener met HTTPS-protocol als de doel-listener op te geven.
+Een veelvoorkomend omleidings scenario voor veel webtoepassingen is het ondersteunen van automatische HTTP-naar-HTTPS-omleiding om ervoor te zorgen dat alle communicatie tussen de toepassing en de gebruikers plaatsvindt via een versleuteld pad. In het verleden hebben klanten technieken gebruikt, zoals het maken van een specifieke back-end-pool waarvan het enige doel is om aanvragen te omleiden die worden ontvangen op HTTP voor HTTPS. Met ondersteuning voor omleiding in Application Gateway kunt u dit doen door een nieuwe omleidings configuratie toe te voegen aan een routerings regel en een andere listener met HTTPS-protocol als de doel-listener op te geven.
 
 De volgende typen omleiding worden ondersteund:
 
-- 301: permanente omleiding
+- 301 permanente omleiding
 - 302 gevonden
 - 303 Zie overige
-- 307 Temporary Redirect
+- 307 tijdelijke omleiding
 
 Ondersteuning voor Application Gateway-omleiding biedt de volgende mogelijkheden:
 
--  **Globale omleiding**
+-  **Wereld wijde omleiding**
 
-   Omleidingen van één listener voor een ander listener op de gateway. Hierdoor is HTTP-naar-HTTPS-omleiding op een site mogelijk.
-- **Op pad gebaseerde omleiding**
+   Omleiding van de ene listener naar een andere listener op de gateway. Hierdoor is HTTP-naar-HTTPS-omleiding op een site mogelijk.
+- **Omleiding op basis van pad**
 
-   Dit type omleiding kunt HTTP naar HTTPS-omleiding alleen op het gebied van een specifieke site, bijvoorbeeld een winkelwagentje winkelwagen gebied aangeduid met/winkelwagen / *.
-- **Omleiden naar de externe site**
+   Met dit type omleiding is HTTP-naar-HTTPS-omleiding alleen mogelijk voor een specifiek site gebied, bijvoorbeeld een winkel wagentje die wordt aangeduid met/cart/*.
+- **Omleiden naar externe site**
 
-![redirect](./media/redirect-overview/redirect.png)
+![Mappen](./media/redirect-overview/redirect.png)
 
-Met deze wijziging moeten klanten maken van een nieuwe omleiden configuration-object, dat aangeeft van de doel-listener of een externe site waarvoor omleiding is vereist. De configuratie-element ondersteunt ook opties voor het inschakelen van de URI-pad en de query-tekenreeks toe te voegen aan de omgeleide URL. U kunt ook het type van omleiding. Eenmaal gemaakt, wordt deze omleiding-configuratie is gekoppeld aan de bron-listener via een nieuwe regel. Wanneer u een basisregel, wordt de configuratie van de omleidings-is gekoppeld aan de listener van een bron en is een algemene omleiding. Als u een pad gebaseerde regel gebruikt, wordt de configuratie van de omleidings-is gedefinieerd in de URL-path-map. Zodat deze alleen van toepassing op het padgebied van het specifieke van een site.
+Met deze wijziging moeten klanten een nieuw omleidings configuratie object maken, waarmee de doel-listener of externe site wordt opgegeven waarnaar de omleiding gewenst is. Het configuratie-element biedt ook ondersteuning voor opties om het URI-pad en de query reeks toe te voegen aan de omgeleide URL. U kunt ook het type omleiding kiezen. Zodra deze omleidings configuratie is gemaakt, wordt deze doorgestuurd naar de bron-listener via een nieuwe regel. Wanneer u een basis regel gebruikt, wordt de omleidings configuratie gekoppeld aan een bronhost en is dit een globale omleiding. Wanneer een op een pad gebaseerde regel wordt gebruikt, wordt de omleidings configuratie gedefinieerd op het URL-pad met de toewijzing. Dit geldt alleen voor het specifieke pad van een site.
 
 ### <a name="next-steps"></a>Volgende stappen
 
-[URL-omleiding in een toepassingsgateway configureren](tutorial-url-redirect-powershell.md)
+[URL-omleiding configureren op een toepassings gateway](tutorial-url-redirect-powershell.md)

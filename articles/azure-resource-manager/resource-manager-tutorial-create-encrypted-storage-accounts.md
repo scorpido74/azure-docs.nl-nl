@@ -1,33 +1,25 @@
 ---
-title: De verwijzing voor Azure Resource Manager-sjablonen gebruiken | Microsoft Docs
+title: Sjabloonverwijzing gebruiken
 description: De verwijzing voor Azure Resource Manager-sjablonen gebruiken om een sjabloon te maken voor het implementeren van een versleuteld opslagaccount.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 81c02c5e39e23b49291561821b0732227feb5c05
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62103629"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149368"
 ---
-# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Zelfstudie: De verwijzing voor Azure Resource Manager-sjablonen gebruiken
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Zelf studie: de referentie voor de Azure Resource Manager-sjabloon gebruiken
 
 Meer informatie over het zoeken van de sjabloonschema-informatie en het gebruiken van deze informatie om Azure Resource Manager-sjablonen te maken.
 
 In deze zelfstudie gebruikt u een basissjabloon uit Azure-snelstartsjablonen. U past de sjabloon aan door middel van referentiemateriaal voor sjablonen om een versleuteld opslagaccount te maken.
 
-![Verwijzing naar het Resource Manager-sjabloon implementeren versleutelde storage-account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Resource Manager-sjabloon referentie implementeren versleuteld opslag account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -78,9 +70,9 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="find-the-template-reference"></a>De sjabloonverwijzing zoeken
 
-1. Blader naar [Azure sjabloonverwijzing](https://docs.microsoft.com/azure/templates/).
-2. In de **filteren op titel** Voer **opslagaccounts**.
-3. Selecteer **verwijzing/sjabloon verwijzing/opslag/&lt;versie > / Storage-Accounts** zoals wordt weergegeven in de volgende schermafbeelding:
+1. Blader naar de [Naslag informatie voor Azure-sjablonen](https://docs.microsoft.com/azure/templates/).
+2. Voer in het vak **filteren op titel** **opslag accounts**in.
+3. Selecteer **verwijzing/sjabloon verwijzing/opslag/&lt;versie >/Storage-accounts** , zoals in de volgende scherm afbeelding wordt weer gegeven:
 
     ![Resource Manager-sjabloon verwijzing opslagaccount](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 

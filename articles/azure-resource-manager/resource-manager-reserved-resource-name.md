@@ -1,32 +1,22 @@
 ---
-title: Voor Azure gereserveerde resource naam fouten | Microsoft Docs
-description: Beschrijft hoe u fouten oplossen bij het opgeven van de naam van een resource met een gereserveerd woord.
-services: azure-resource-manager
-documentationcenter: ''
-author: tfitzmac
-manager: timlt
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Gereserveerde resource naam fouten
+description: Hierin wordt beschreven hoe u fouten oplost bij het opgeven van een resource naam die een gereserveerd woord bevat.
 ms.topic: troubleshooting
 ms.date: 11/08/2017
-ms.author: tomfitz
-ms.openlocfilehash: 922389b7c6c1bb7ad1d9b8f6ec35ccc1c5656723
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683940"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150464"
 ---
-# <a name="resolve-reserved-resource-name-errors"></a>Gereserveerde bron naam fouten oplossen
+# <a name="resolve-reserved-resource-name-errors"></a>Problemen met gereserveerde resource namen oplossen
 
-Dit artikel beschrijft de fout die u ondervindt bij het implementeren van een resource met een gereserveerd woord in de naam ervan.
+In dit artikel wordt de fout beschreven die u tegen komt bij het implementeren van een resource die een gereserveerd woord bevat in de naam.
 
 ## <a name="symptom"></a>Symptoom
 
-Bij het implementeren van een resource die is beschikbaar via een openbaar eindpunt, wordt de volgende fout:
+Bij het implementeren van een resource die beschikbaar is via een openbaar eind punt, wordt mogelijk de volgende fout weer gegeven:
 
 ```
 Code=ReservedResourceName;
@@ -35,23 +25,23 @@ Message=The resource name <resource-name> or a part of the name is a trademarked
 
 ## <a name="cause"></a>Oorzaak
 
-Resources met een openbaar eindpunt gereserveerde woorden of handelsmerken in de naam niet gebruiken.
+Resources met een openbaar eind punt kunnen geen gereserveerde woorden of handels merken gebruiken in de naam.
 
 De volgende woorden zijn gereserveerd:
 
-* TOEGANG
+* ACCESS
 * AZURE
-* BING
+* Zoek
 * BIZSPARK
 * BIZTALK
 * CORTANA
 * DIRECTX
 * DOTNET
 * DYNAMICS
-* EXCEL
+* ER
 * EXCHANGE
 * FOREFRONT
-* GROOVE
+* STIFT
 * HOLOLENS
 * HYPERV
 * KINECT
@@ -59,23 +49,23 @@ De volgende woorden zijn gereserveerd:
 * MSDN
 * O365
 * OFFICE
-* OFFICE 365
+* OFFICE365
 * ONEDRIVE
-* ONENOTE
-* OUTLOOK
+* KOPIËREN
+* ER
 * POWERPOINT
-* SHAREPOINT
+* Point
 * SKYPE
 * VISIO
-* VISUALSTUDIO
+* Visual Studio
 
-De volgende tekst kunnen niet worden gebruikt als een woord of een subtekenreeks in de naam:
+De volgende woorden mogen niet worden gebruikt als een geheel woord of een subtekenreeks in de naam:
 
-* AANMELDING
+* NAMEN
 * MICROSOFT
 * WINDOWS
 * XBOX
 
 ## <a name="solution"></a>Oplossing
 
-Geef een naam die geen van een van de gereserveerde woorden gebruikmaakt.
+Geef een naam op die geen gebruik maakt van een van de gereserveerde woorden.

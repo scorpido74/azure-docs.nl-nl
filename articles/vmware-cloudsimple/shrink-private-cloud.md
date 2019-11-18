@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 1ae2f87a3719853f4a91cb8ba801be6d578597d3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 602dca105e91c55c591388a833a36e71f951da8b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825686"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108592"
 ---
 # <a name="shrink-a-cloudsimple-private-cloud"></a>Een CloudSimple-Privécloud verkleinen
 
@@ -24,7 +24,8 @@ CloudSimple biedt de flexibiliteit voor het dynamisch verkleinen van een Privéc
 Voor het verkleinen van een Privécloud moet aan de volgende voor waarden worden voldaan.  Het beheer cluster (eerste cluster) dat is gemaakt tijdens het maken van een Privécloud, kan niet worden verwijderd.
 
 * Een vSphere-cluster moet drie knoop punten hebben.  Een cluster met slechts drie knoop punten kan niet worden verkleind.
-* De totale capaciteit die wordt verbruikt, mag niet groter zijn dan het aantal te verkleinen van het cluster. 
+* De totale capaciteit die wordt verbruikt, mag niet groter zijn dan het aantal te verkleinen van het cluster.
+* Controleer of een DRS-regel (Distributed resource Scheduler) voor komt dat vMotion van een virtuele machine wordt verhinderd.  Als er regels aanwezig zijn, schakelt u de regels uit of verwijdert u deze.  DRS-regels bevatten virtuele machine voor regels voor affiniteit met de host.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -55,7 +56,8 @@ Meld u aan bij de Azure Portal op [https://portal.azure.com](https://portal.azur
 Het verkleinen van de Privécloud wordt gestart.  U kunt de voortgang in taken bewaken.  Het verkleinings proces kan enkele uren duren, afhankelijk van de gegevens, die opnieuw moeten worden gesynchroniseerd op vSAN.
 
 > [!NOTE]
-> Als u een privécloud verkleint door de laatste of het enige cluster in het Data Center te verwijderen, wordt het Data Center niet verwijderd.  
+> 1. Als u een privécloud verkleint door de laatste of het enige cluster in het Data Center te verwijderen, wordt het Data Center niet verwijderd.
+> 2. Als er sprake is van een schending van de DRS-regel, wordt het knoop punt niet verwijderd uit het cluster en wordt in de taak beschrijving aangegeven dat het verwijderen van een knoop punt in strijd is met DRS-regels op het cluster.    
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,7 +1,7 @@
 ---
 title: Verwijzing naar OData-vergelijkings operator
 titleSuffix: Azure Cognitive Search
-description: OData-vergelijkings operatoren, EQ, ne, gt, lt, ge en Le, in azure Cognitive Search query's.
+description: Syntaxis en referentie documentatie voor het gebruik van OData-vergelijkings operatoren (EQ, ne, gt, lt, ge en Le) in azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 068e2ec822f0a292ac83b3e48049830eb77b49f6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 62c8c93e07326e776cbe089042abc481544794bc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793389"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113217"
 ---
 # <a name="odata-comparison-operators-in-azure-cognitive-search---eq-ne-gt-lt-ge-and-le"></a>OData-vergelijkings operatoren in azure Cognitive Search-`eq`, `ne`, `gt`, `lt`, `ge`en `le`
 
@@ -81,13 +81,13 @@ De gegevens typen aan beide zijden van een vergelijkings operator moeten compati
 | --- | --- | --- |
 | `Edm.Double` | `Edm.Double` | De vergelijking is onderhevig aan [speciale regels voor `NaN`](#special-case-nan) |
 | `Edm.Double` | `Edm.Int64` | Constante wordt geconverteerd naar `Edm.Double`, wat resulteert in een precisie verlies voor waarden van grote grootte |
-| `Edm.Double` | `Edm.Int32` | n.v.t. |
+| `Edm.Double` | `Edm.Int32` | N.v.t. |
 | `Edm.Int64` | `Edm.Double` | Vergelijkingen met `NaN`, `-INF`of `INF` zijn niet toegestaan |
-| `Edm.Int64` | `Edm.Int64` | n.v.t. |
+| `Edm.Int64` | `Edm.Int64` | N.v.t. |
 | `Edm.Int64` | `Edm.Int32` | Constante wordt geconverteerd naar `Edm.Int64` vóór vergelijking |
 | `Edm.Int32` | `Edm.Double` | Vergelijkingen met `NaN`, `-INF`of `INF` zijn niet toegestaan |
-| `Edm.Int32` | `Edm.Int64` | n.v.t. |
-| `Edm.Int32` | `Edm.Int32` | n.v.t. |
+| `Edm.Int32` | `Edm.Int64` | N.v.t. |
+| `Edm.Int32` | `Edm.Int32` | N.v.t. |
 
 Voor vergelijkingen die niet zijn toegestaan, zoals het vergelijken van een veld van het type `Edm.Int64` naar `NaN`, retourneert de Azure Cognitive Search REST API de fout ' HTTP 400: onjuiste aanvraag '.
 

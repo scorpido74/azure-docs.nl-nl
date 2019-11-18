@@ -1,17 +1,14 @@
 ---
-title: Visual Studio Azure-resource groep-projecten maken & implementeren
+title: Visual Studio-resource groeps projecten maken & implementeren
 description: Gebruik Visual Studio om een Azure-resourcegroepproject te maken en de resources in Azure te implementeren.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.date: 10/16/2019
-ms.author: tomfitz
-ms.openlocfilehash: ae7ff9370bd289dfdec578e6daeb471bbd53a072
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 39ee16ac81ee1b163a4ed4c80152a063f7ee619c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597738"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149246"
 ---
 # <a name="creating-and-deploying-azure-resource-groups-through-visual-studio"></a>Azure-resourcegroepen maken en implementeren met Visual Studio
 
@@ -23,7 +20,7 @@ In dit artikel wordt beschreven hoe u [Visual Studio 2019 of hoger gebruikt met 
 
 In deze sectie maakt u een Azure-resource groep-project met een **Web-app** -sjabloon.
 
-1. Kies in Visual Studio **bestand** >**Nieuw** >**project**.
+1. Kies in Visual Studio **bestand**>**Nieuw**>**project**.
 1. Selecteer de project sjabloon **Azure-resource groep** en **volgende**.
 
     ![Project maken](./media/vs-azure-tools-resource-groups-deployment-projects-create-deploy/create-project.png)
@@ -47,8 +44,8 @@ In deze sectie maakt u een Azure-resource groep-project met een **Web-app** -sja
    | Bestandsnaam | Beschrijving |
    | --- | --- |
    | Deploy-AzureResourceGroup.ps1 |Een PowerShell-script waarmee PowerShell-opdrachten worden uitgevoerd om te worden geïmplementeerd in Azure Resource Manager. Visual Studio gebruikt dit Power shell-script voor het implementeren van uw sjabloon. |
-   | WebSite. json |Het Resource Manager-sjabloon dat de infrastructuur definieert die u in Azure wilt implementeren en de parameters die u kunt opgeven tijdens de implementatie. Hiermee worden ook de afhankelijkheden tussen resources gedefinieerd zodat deze in de juiste volgorde worden geïmplementeerd. |
-   | WebSite. para meters. json |Een parameterbestand dat de waarden bevat die nodig zijn voor de sjabloon. U geeft parameterwaarden door om elke implementatie aan te passen. |
+   | WebSite.json |Het Resource Manager-sjabloon dat de infrastructuur definieert die u in Azure wilt implementeren en de parameters die u kunt opgeven tijdens de implementatie. Hiermee worden ook de afhankelijkheden tussen resources gedefinieerd zodat deze in de juiste volgorde worden geïmplementeerd. |
+   | WebSite.parameters.json |Een parameterbestand dat de waarden bevat die nodig zijn voor de sjabloon. U geeft parameterwaarden door om elke implementatie aan te passen. |
 
     Alle implementatieprojecten voor resourcegroepen bevatten deze algemene bestanden. Andere projecten bevatten mogelijk extra bestanden ter ondersteuning van andere functies.
 
@@ -212,7 +209,7 @@ U hebt nu de infrastructuur geïmplementeerd voor uw app, maar er is nog geen co
 
    Sla uw sjabloon op.
 
-1. Uw sjabloon bevat enkele nieuwe para meters. Deze zijn toegevoegd in de vorige stap. U hoeft geen waarden op te geven voor **_artifactsLocation** of **_artifactsLocationSasToken** , omdat deze waarden automatisch worden gegenereerd. U moet echter de map en de bestands naam instellen op het pad dat het implementatie pakket bevat. De namen van deze para meters eindigen op **PackageFolder** en **PackageFileName**. Het eerste deel van de naam is de naam van de Web Deploy-resource die u hebt toegevoegd. In dit artikel heten ze **ExampleAppPackageFolder** en **ExampleAppPackageFileName**.
+1. Uw sjabloon bevat enkele nieuwe para meters. Deze zijn toegevoegd in de vorige stap. U hoeft geen waarden op te geven voor **_artifactsLocation** of **_artifactsLocationSasToken** omdat deze waarden automatisch worden gegenereerd. U moet echter de map en de bestands naam instellen op het pad dat het implementatie pakket bevat. De namen van deze para meters eindigen op **PackageFolder** en **PackageFileName**. Het eerste deel van de naam is de naam van de Web Deploy-resource die u hebt toegevoegd. In dit artikel heten ze **ExampleAppPackageFolder** en **ExampleAppPackageFileName**.
 
    Open **website. para meters. json** en stel deze para meters in op de waarden die u in de verwijzings eigenschappen hebt gezien. Stel **ExampleAppPackageFolder** in op de naam van de map. Stel **ExampleAppPackageFileName** in op de naam van het zip-bestand.
 

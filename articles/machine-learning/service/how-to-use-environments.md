@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 62f298e0efb5c54efdcd15cf470ed4640f720058
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b9b58c9b5f32d6ca714ac3ac940b91643fa8020c
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73957846"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123551"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Omgevingen hergebruiken voor training & implementatie met Azure Machine Learning.
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -333,7 +333,7 @@ run = experiment.submit(sk_est)
 
 U kunt omgevingen gebruiken bij het implementeren van uw model als een webservice. Hierdoor kan een reproduceer bare, verbonden werk stroom worden gebruikt voor het trainen, testen en implementeren van uw model met exact dezelfde bibliotheken in uw training en voor het afleiden van berekeningen.
 
-Als u een webservice wilt implementeren, moet u de omgeving combi neren, reken kracht, Score script en geregistreerd model in uw implementatie object [implementeren ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config--deployment-config-none--deployment-target-none-). Meer informatie over het [implementeren van webservices](how-to-deploy-and-where.md).
+Als u een webservice wilt implementeren, moet u de omgeving combi neren, reken kracht, Score script en geregistreerd model in uw implementatie object [implementeren ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-). Meer informatie over het [implementeren van webservices](how-to-deploy-and-where.md).
 
 In dit voor beeld wordt ervan uitgegaan dat u een trainings uitvoering hebt voltooid en dat model wilt implementeren in een Azure container instance (ACI). Bij het bouwen van de webservice worden het model en de Score bestanden gekoppeld aan de installatie kopie en wordt de Azure Machine Learning ring stack toegevoegd aan de installatie kopie.
 

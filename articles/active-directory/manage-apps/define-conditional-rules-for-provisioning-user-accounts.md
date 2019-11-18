@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bb1ed48d501ca3166e0b906c622507b59ef059a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 82360dacd68de512bc12ff5d39ddbd3a21578aa7
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "70812686"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120116"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Toewijzing van toepassingen op basis van kenmerken met bereik filters
 In dit artikel wordt uitgelegd hoe u bereik filters gebruikt voor het definiëren van op kenmerken gebaseerde regels die bepalen welke gebruikers worden ingericht voor een toepassing.
@@ -65,7 +65,7 @@ Op basis van dit bereik filter moeten gebruikers voldoen aan de volgende criteri
 Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen voor elke Azure AD-gebruikers inrichtings connector. In de volgende procedure wordt ervan uitgegaan dat u al automatisch inrichten hebt ingesteld voor [een van de ondersteunde toepassingen](../saas-apps/tutorial-list.md) en hoe u er een filter voor een bereik aan toevoegt.
 
 ### <a name="create-a-scoping-filter"></a>Een bereik filter maken
-1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise Applications** > -**alle toepassingen** .
+1. Ga in het [Azure Portal](https://portal.azure.com)naar de sectie **Azure Active Directory** > **Enter prise Applications** > **alle toepassingen** .
 
 2. Selecteer de toepassing waarvoor u automatische inrichting hebt geconfigureerd: bijvoorbeeld ' ServiceNow '.
 
@@ -110,6 +110,14 @@ Bereik filters worden geconfigureerd als onderdeel van de kenmerk toewijzingen v
 >[!IMPORTANT] 
 > Als u een nieuw bereik filter opslaat, wordt een nieuwe volledige synchronisatie voor de toepassing geactiveerd, waarbij alle gebruikers in het bron systeem opnieuw worden geëvalueerd op basis van het nieuwe bereik filter. Als een gebruiker in de toepassing eerder is ingericht voor het inrichten, maar buiten het bereik valt, wordt het account uitgeschakeld of in de toepassing onbeschikbaar gemaakt. Als u dit standaard gedrag wilt overschrijven, raadpleegt u [verwijdering overs laan voor gebruikers accounts die buiten het bereik vallen](skip-out-of-scope-deletions.md).
 
+
+## <a name="common-scoping-filters"></a>Algemene bereik filters
+| Doel kenmerk| Operator | Waarde | Beschrijving|
+|----|----|----|----|
+|userPrincipalName|OVEREENKOMENDE REGEX|.\*@domain.com |Alle gebruikers met userPrincipal die de domein @domain.com hebben, zijn binnen het bereik van de inrichting|
+|userPrincipalName|GEEN REGEX-OVEREENKOMST|.\*@domain.com|Alle gebruikers met userPrincipal die de domein @domain.com hebben, zijn buiten het bereik voor het inrichten|
+|department|GELIJK is aan|verkoop|Alle gebruikers van de verkoop afdeling vallen binnen het bereik van de inrichting|
+|workerID|OVEREENKOMENDE REGEX|(1[0-9][0-9][0-9][0-9][0-9][0-9])| Alle werk nemers met workerIDs tussen 1000000 en 2000000 zijn binnen het bereik van de inrichting.|
 
 ## <a name="related-articles"></a>Verwante artikelen:
 * [Gebruikers inrichten en het ongedaan maken van de inrichting van SaaS-toepassingen automatiseren](user-provisioning.md)

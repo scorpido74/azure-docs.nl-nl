@@ -1,5 +1,5 @@
 ---
-title: CSV-blobs indexeren met behulp van de delimitedText-verwerkings modus (preview)
+title: Zoeken in CSV-blobs
 titleSuffix: Azure Cognitive Search
 description: Pak CSV-bestand uit vanuit Azure Blob-opslag met behulp van de delimitedText-verwerkings modus, momenteel beschikbaar als open bare preview.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4edeb8d535504c305319aad35637bb1b09f65984
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 2166e100f03f21c218618d19dc37ee70c6ab29ef
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719248"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113025"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Het indexeren van CSV-blobs met behulp van de delimitedText-verwerkings modus en BLOB-Indexeer functies in azure Cognitive Search 
 

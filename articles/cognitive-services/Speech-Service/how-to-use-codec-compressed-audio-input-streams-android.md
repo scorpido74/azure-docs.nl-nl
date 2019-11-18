@@ -1,5 +1,5 @@
 ---
-title: Stream-codec gecomprimeerde audio met de Speech SDK voor Android-Speech-Service
+title: Stream-codec gecomprimeerde audio met de Speech SDK op Android
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het streamen van gecomprimeerde audio naar Azure speech Services met de Speech SDK op Android.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: amishu
-ms.openlocfilehash: 2e741e8a8df2cebff167a381cef41351ead4c6cf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 76a4b010dd54a9cc6224432adf615814520ef4fd
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464367"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109898"
 ---
-# <a name="using-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Gecomprimeerde audio-invoer van codec gebruiken met de Speech SDK op Android
+# <a name="how-to-use-codec-compressed-audio-input-with-the-speech-sdk-on-android"></a>Procedure: compressie van gecomprimeerde audio-invoer met de Speech SDK op Android gebruiken
 
 De **gecomprimeerde audio-invoer stroom** -API van de Speech SDK biedt een manier om gecomprimeerde audio naar de spraak service te streamen met behulp van PullStream of PushStream.
 
@@ -25,7 +25,7 @@ De **gecomprimeerde audio-invoer stroom** -API van de Speech SDK biedt een manie
 > Streaming gecomprimeerde invoer audio wordt momenteel ondersteund voor [ C++, C#en Java op Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9)](how-to-use-codec-compressed-audio-input-streams.md). Het wordt ook ondersteund voor java in Android en [objectief-C in Ios-](how-to-use-codec-compressed-audio-input-streams-ios.md) platform.
 > Speech SDK-versie 1.7.0 of hoger is vereist.
 
-Zie de mainline speech-documentatie voor WAV/PCM.  Buiten WAV/PCM worden de volgende in de codec gecomprimeerde invoer indelingen ondersteund:
+Zie de mainline speech-documentatie voor WAV/PCM. Buiten WAV/PCM worden de volgende in de codec gecomprimeerde invoer indelingen ondersteund:
 
 - MP3
 - OPUS/OGG
@@ -35,7 +35,7 @@ Zie de mainline speech-documentatie voor WAV/PCM.  Buiten WAV/PCM worden de volg
 
 ## <a name="prerequisites-to-using-codec-compressed-audio-input-on-android"></a>Vereisten voor het gebruik van gecomprimeerde audio-invoer voor de codec op Android
 
-Gecomprimeerde audio-codecs worden geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Uit het oogpunt van licenties worden gstreamer binaire bestanden niet gecompileerd met de SDK. U moet de vooraf gemaakte binaire bestanden voor Android gebruiken. Zie [installatie voor Android-ontwikkeling](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)voor informatie over het downloaden van de vooraf ontwikkelde bibliotheken. 
+Gecomprimeerde audio-codecs worden geïmplementeerd met behulp van [gstreamer](https://gstreamer.freedesktop.org). Uit het oogpunt van licenties worden gstreamer binaire bestanden niet gecompileerd met de SDK. U moet de vooraf gemaakte binaire bestanden voor Android gebruiken. Zie [installatie voor Android-ontwikkeling](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c)voor informatie over het downloaden van de vooraf ontwikkelde bibliotheken.
 
 `libgstreamer_android.so` is vereist. Zorg ervoor dat uw GStreamer-invoeg toepassingen zijn gekoppeld aan `libgstreamer_android.so`.
 
@@ -160,4 +160,4 @@ String text = result.getText();
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Uw proefabonnement voor Speech ophalen](https://azure.microsoft.com/try/cognitive-services/)
-* [Zie spraak herkennen in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)
+- [Zie spraak herkennen in Java](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-java)

@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: billgib
 ms.date: 09/24/2018
-ms.openlocfilehash: c4859554f361b262366bc2442d3819e2a029aa85
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 02682a18f14e7ecbf5b42783ab84a1b55a4bb77b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822094"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133125"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Nieuwe tenants inrichten en catalogiseren met behulp van de toepassing per Tenant SaaS-patroon
 
@@ -28,11 +28,11 @@ Dit artikel heeft twee belang rijke onderdelen:
 
 ## <a name="standalone-application-per-tenant-pattern"></a>Zelfstandige toepassing per Tenant patroon
 
-De zelfstandige app per Tenant patroon is een van de verschillende patronen voor SaaS-toepassingen met meerdere tenants.  In dit patroon wordt een zelfstandige app ingericht voor elke Tenant. De toepassing omvat onderdelen op toepassings niveau en een SQL database.  Elke Tenant-app kan worden geïmplementeerd in het abonnement van de leverancier.  Azure biedt ook een programma voor [beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/overview) waarin een app kan worden geïmplementeerd in het abonnement van een Tenant en door de leverancier kan worden beheerd voor de naam van de Tenant. 
+De zelfstandige app per Tenant patroon is een van de verschillende patronen voor SaaS-toepassingen met meerdere tenants.  In dit patroon wordt een zelfstandige app ingericht voor elke Tenant. De toepassing omvat onderdelen op toepassings niveau en een SQL database.  Elke Tenant-app kan worden geïmplementeerd in het abonnement van de leverancier.  Azure biedt ook een programma voor [beheerde toepassingen](https://docs.microsoft.com/azure/managed-applications/overview) waarin een app kan worden geïmplementeerd in het abonnement van een Tenant en door de leverancier kan worden beheerd voor de naam van de Tenant.
 
    ![app-per-Tenant patroon](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
-Wanneer u een toepassing implementeert voor een Tenant, worden de app en de data base ingericht in een nieuwe resource groep die voor de Tenant is gemaakt.  Door afzonderlijke resource groepen te gebruiken, worden de toepassings resources van elke Tenant geïsoleerd en kunnen ze onafhankelijk worden beheerd. Binnen elke resource groep is elk toepassings exemplaar geconfigureerd voor toegang tot de bijbehorende data base.  Dit verbindings model contrasteert met andere patronen die een catalogus gebruiken om verbindingen tussen de app en de data base te brokern.  En omdat er geen resources worden gedeeld, moet elke Tenant database worden ingericht met voldoende bronnen om de piek belasting te kunnen afhandelen. Dit patroon wordt meestal gebruikt voor SaaS-toepassingen met minder tenants, waarbij de nadruk ligt op de isolatie van tenants en minder nadruk op resource kosten.  
+Wanneer u een toepassing implementeert voor een Tenant, worden de app en de data base ingericht in een nieuwe resource groep die voor de Tenant is gemaakt.  Door afzonderlijke resource groepen te gebruiken, worden de toepassings resources van elke Tenant geïsoleerd en kunnen ze onafhankelijk worden beheerd. Binnen elke resource groep is elk toepassings exemplaar geconfigureerd voor toegang tot de bijbehorende data base.  Dit verbindings model contrasteert met andere patronen die een catalogus gebruiken om verbindingen tussen de app en de data base te brokern.  En omdat er geen resources worden gedeeld, moet elke Tenant database worden ingericht met voldoende bronnen om de piek belasting te kunnen afhandelen. Dit patroon wordt meestal gebruikt voor SaaS-toepassingen met minder tenants, waarbij de nadruk ligt op de isolatie van tenants en minder nadruk op resource kosten.
 
 ## <a name="using-a-tenant-catalog-with-the-application-per-tenant-pattern"></a>Een Tenant catalogus met de toepassing per Tenant patroon gebruiken
 
@@ -46,12 +46,12 @@ De Tenant catalogus bevat een toewijzing tussen een Tenant-id en een Tenant data
 
 In de voorbeeld toepassing Wingtip wordt de catalogus geïmplementeerd door de Shard-beheer functies van de [Elastic database-client bibliotheek](sql-database-elastic-database-client-library.md) (EDCL).  Met de bibliotheek kan een toepassing een Shard-toewijzing maken, beheren en gebruiken die is opgeslagen in een Data Base. In het Wingtip tickets-voor beeld wordt de catalogus opgeslagen in de catalogus database van de *Tenant* .  De Shard wijst een Tenant sleutel toe aan de Shard (data base) waarin de gegevens van de Tenant zijn opgeslagen.  Met EDCL-functies beheert u een *globale Shard-map* die is opgeslagen in tabellen in de *Tenant catalogus* database en een *lokale Shard-toewijzing* die is opgeslagen in elke Shard.
 
-EDCL-functies kunnen worden aangeroepen vanuit toepassingen of Power shell-scripts voor het maken en beheren van de vermeldingen in de Shard-toewijzing. Andere EDCL-functies kunnen worden gebruikt om de set Shards op te halen of om verbinding te maken met de juiste Data Base voor de opgegeven Tenant sleutel. 
+EDCL-functies kunnen worden aangeroepen vanuit toepassingen of Power shell-scripts voor het maken en beheren van de vermeldingen in de Shard-toewijzing. Andere EDCL-functies kunnen worden gebruikt om de set Shards op te halen of om verbinding te maken met de juiste Data Base voor de opgegeven Tenant sleutel.
 
 > [!IMPORTANT]
 > Bewerk de gegevens in de catalogus database of de lokale Shard-toewijzing in de Tenant databases niet rechtstreeks. Directe updates worden niet ondersteund vanwege het hoge risico op beschadiging van gegevens. Bewerk in plaats daarvan de toewijzings gegevens met behulp van EDCL-Api's.
 
-## <a name="tenant-provisioning"></a>Tenant inrichting 
+## <a name="tenant-provisioning"></a>Tenant inrichting
 
 Elke Tenant vereist een nieuwe Azure-resource groep, die moet worden gemaakt voordat er resources in kunnen worden ingericht. Zodra de resource groep bestaat, kunt u een Azure resource management-sjabloon gebruiken om de toepassings onderdelen en de data base te implementeren en vervolgens de database verbinding te configureren. Voor het initialiseren van het database schema, kan de sjabloon een Bacpac-bestand importeren.  De data base kan ook worden gemaakt als een kopie van een ' sjabloon '-data base.  De data base wordt vervolgens bijgewerkt met de eerste locatie gegevens en wordt geregistreerd in de catalogus.
 
@@ -69,31 +69,31 @@ Aan het einde van deze zelf studie hebt u een set zelfstandige Tenant toepassing
 
 ## <a name="prerequisites"></a>Vereisten
 
-U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt voldaan: 
+U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt voldaan:
 
 * Azure PowerShell is geïnstalleerd. Zie [Aan de slag met Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps) voor meer informatie.
 * De drie voor beelden van Tenant-apps worden geïmplementeerd. Als u deze apps in minder dan vijf minuten wilt implementeren, raadpleegt u [het patroon van de Wingtip tickets SaaS-zelfstandig toepassing implementeren en verkennen](saas-standaloneapp-get-started-deploy.md).
 
 ## <a name="provision-the-catalog"></a>De catalogus inrichten
 
-In deze taak leert u hoe u de catalogus inricht die wordt gebruikt voor het registreren van alle Tenant databases. U gaat het volgende doen: 
+In deze taak leert u hoe u de catalogus inricht die wordt gebruikt voor het registreren van alle Tenant databases. U gaat het volgende doen:
 
-* **Richt de catalogus database** in met behulp van een Azure resource management-sjabloon. De data base wordt geïnitialiseerd door het importeren van een Bacpac-bestand.  
+* **Richt de catalogus database** in met behulp van een Azure resource management-sjabloon. De data base wordt geïnitialiseerd door het importeren van een Bacpac-bestand.
 * **Registreer de voor beelden van Tenant-apps** die u eerder hebt geïmplementeerd.  Elke Tenant wordt geregistreerd met behulp van een sleutel die is gemaakt op basis van een hash van de Tenant naam.  De naam van de Tenant wordt ook opgeslagen in een uitbreidings tabel in de catalogus.
 
-1. Open in Power shell ISE *. ..\Learning Modules\UserConfig.psm* en werk de waarde van de **\<gebruiker\>** bij naar de waarde die u hebt gebruikt bij het implementeren van de drie voorbeeld toepassingen.  **Sla het bestand**op.  
+1. Open in Power shell ISE *. ..\Learning Modules\UserConfig.psm* en werk de waarde van de **\<gebruiker\>** bij naar de waarde die u hebt gebruikt bij het implementeren van de drie voorbeeld toepassingen.  **Sla het bestand**op.
 1. Open *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* in Power shell ISE en stel **$scenario = 1**in. Implementeer de Tenant catalogus en registreer de vooraf gedefinieerde tenants.
 
 1. Voeg een onderbrekings punt toe door de cursor ergens op de regel te plaatsen met de tekst, `& $PSScriptRoot\New-Catalog.ps1`en druk vervolgens op **F9**.
 
     ![een onderbrekings punt instellen voor tracering](media/saas-standaloneapp-provision-and-catalog/breakpoint.png)
 
-1. Voer het script uit door op **F5**te drukken. 
+1. Voer het script uit door op **F5**te drukken.
 1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het script New-Catalog. ps1 te Step into.
 1.  De uitvoering van het script traceren met behulp van de opties voor het menu fout opsporing, F10 en F11, om over te stappen of functies te noemen.
-    *   Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
+    *   Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
 
-Zodra het script is voltooid, bestaat de catalogus en worden alle voor beelden van tenants geregistreerd. 
+Zodra het script is voltooid, bestaat de catalogus en worden alle voor beelden van tenants geregistreerd.
 
 Bekijk nu de resources die u hebt gemaakt.
 
@@ -101,31 +101,31 @@ Bekijk nu de resources die u hebt gemaakt.
 1. Open de data base in de portal en selecteer *Data Explorer* in het menu aan de linkerkant.  Klik op de opdracht login en voer het wacht woord in = **P\@ssword1**.
 
 
-1. Verken het schema van de *tenantcatalog* -data base.  
+1. Verken het schema van de *tenantcatalog* -data base.
    * De objecten in het `__ShardManagement` schema worden allemaal door de Elastic Database-client bibliotheek verschaft.
    * De `Tenants` tabel en `TenantsExtended` weer gave zijn uitbrei dingen die in het voor beeld worden toegevoegd, en laten zien hoe u de catalogus kunt uitbreiden voor extra waarde.
-1. Voer de query uit `SELECT * FROM dbo.TenantsExtended`.          
+1. Voer de query uit `SELECT * FROM dbo.TenantsExtended`.
 
    ![Data Explorer](media/saas-standaloneapp-provision-and-catalog/data-explorer-tenantsextended.png)
 
-    Als alternatief voor het gebruik van de Data Explorer kunt u vanuit SQL Server Management Studio verbinding maken met de data base. Als u dit wilt doen, maakt u verbinding met de server Wingtip- 
+    Als alternatief voor het gebruik van de Data Explorer kunt u vanuit SQL Server Management Studio verbinding maken met de data base. Als u dit wilt doen, maakt u verbinding met de server Wingtip-
 
-    
-    Houd er rekening mee dat u gegevens niet rechtstreeks in de catalogus moet bewerken: gebruik altijd de Shard-beheer-Api's. 
+
+    Houd er rekening mee dat u gegevens niet rechtstreeks in de catalogus moet bewerken: gebruik altijd de Shard-beheer-Api's.
 
 ## <a name="provision-a-new-tenant-application"></a>Een nieuwe Tenant toepassing inrichten
 
-In deze taak leert u hoe u één Tenant toepassing inricht. U gaat het volgende doen:  
+In deze taak leert u hoe u één Tenant toepassing inricht. U gaat het volgende doen:
 
-* **Maak een nieuwe resource groep** voor de Tenant. 
-* **Richt de toepassing en data base** in de nieuwe resource groep in met behulp van een Azure resource management-sjabloon.  Deze actie omvat het initialiseren van de data base met algemene schema-en referentie gegevens door het importeren van een Bacpac-bestand. 
-* **Initialiseer de data base met de basis gegevens van de Tenant**. Deze actie omvat het opgeven van het type locatie, waarmee de foto wordt bepaald die wordt gebruikt als achtergrond op de website van de events. 
-* **Registreer de data base in de catalogus database**. 
+* **Maak een nieuwe resource groep** voor de Tenant.
+* **Richt de toepassing en data base** in de nieuwe resource groep in met behulp van een Azure resource management-sjabloon.  Deze actie omvat het initialiseren van de data base met algemene schema-en referentie gegevens door het importeren van een Bacpac-bestand.
+* **Initialiseer de data base met de basis gegevens van de Tenant**. Deze actie omvat het opgeven van het type locatie, waarmee de foto wordt bepaald die wordt gebruikt als achtergrond op de website van de events.
+* **Registreer de data base in de catalogus database**.
 
 1. Open *. ..\Learning Modules\ProvisionTenants\Demo-ProvisionAndCatalog.ps1* in Power shell ISE en stel **$scenario = 2**in. De Tenant catalogus implementeren en de vooraf gedefinieerde tenants registreren
 
 1. Voeg een onderbrekings punt in het script toe door de cursor ergens op regel 49 te plaatsen met de tekst `& $PSScriptRoot\New-TenantApp.ps1`en druk vervolgens op **F9**.
-1. Voer het script uit door op **F5**te drukken. 
+1. Voer het script uit door op **F5**te drukken.
 1.  Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om het script New-Catalog. ps1 te Step into.
 1.  De uitvoering van het script traceren met behulp van de opties voor het menu fout opsporing, F10 en F11, om over te stappen of functies te noemen.
 
@@ -133,7 +133,7 @@ Nadat de Tenant is ingericht, wordt de website van de nieuwe Tenant geopend.
 
    ![rode esdoorn race](media/saas-standaloneapp-provision-and-catalog/redmapleracing.png)
 
-Vervolgens kunt u de nieuwe resources die zijn gemaakt in de Azure Portal inspecteren. 
+Vervolgens kunt u de nieuwe resources die zijn gemaakt in de Azure Portal inspecteren.
 
    ![race bronnen voor Red esdoorn](media/saas-standaloneapp-provision-and-catalog/redmapleracing-resources.png)
 
@@ -142,7 +142,7 @@ Vervolgens kunt u de nieuwe resources die zijn gemaakt in de Azure Portal inspec
 
 Wanneer u klaar bent met het verkennen van het voor beeld, verwijdert u alle resource groepen die u hebt gemaakt om de gekoppelde facturering te stoppen.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 - Zie [ontwerp patronen voor SaaS-toepassingen met meerdere](saas-tenancy-app-design-patterns.md)tenants voor meer informatie over de SaaS-database toepassingen met meerdere tenants.
 
@@ -155,4 +155,4 @@ In deze zelfstudie hebt u het volgende geleerd:
 > * Over de servers en data bases die de app vormen.
 > * Voorbeeld resources verwijderen om gerelateerde facturering te stoppen.
 
-U kunt verkennen hoe de catalogus wordt gebruikt ter ondersteuning van verschillende scenario's voor meerdere tenants met behulp van de data base-per-Tenant-versie van de [SaaS-toepassing Wingtip tickets](saas-dbpertenant-wingtip-app-overview.md).  
+U kunt verkennen hoe de catalogus wordt gebruikt ter ondersteuning van verschillende scenario's voor meerdere tenants met behulp van de data base-per-Tenant-versie van de [SaaS-toepassing Wingtip tickets](saas-dbpertenant-wingtip-app-overview.md).

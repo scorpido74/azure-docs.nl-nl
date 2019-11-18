@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f095c962f08ab0207ffc51d1c898570d9be7ea9a
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d87f935f503098757e4efe402b37958283431b6e
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74047241"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120550"
 ---
 # <a name="tutorial-configure-salesforce-for-automatic-user-provisioning"></a>Zelf studie: Sales Force configureren voor het automatisch inrichten van gebruikers
 
@@ -55,7 +55,7 @@ Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welk
 
 ## <a name="enable-automated-user-provisioning"></a>Automatische gebruikers inrichting inschakelen
 
-In deze sectie wordt u begeleid bij het koppelen van de API voor het inrichten van de gebruikers account van Azure AD naar Sales Force en het configureren van de inrichtings service om toegewezen gebruikers accounts te maken, bij te werken en uit te scha kelen in Sales Force op basis van gebruikers-en groeps toewijzing in azure AD.
+In deze sectie wordt u begeleid bij het koppelen [van de API-V40 van uw Azure ad-account voor Sales Force](https://developer.salesforce.com/docs/atlas.en-us.208.0.api.meta/api/implementation_considerations.htm)en het configureren van de inrichtings service om toegewezen gebruikers accounts in Sales Force te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!Tip]
 > U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor Sales Force in te scha kelen, gevolgd door de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
@@ -120,9 +120,18 @@ Hiermee start u de initiële synchronisatie van gebruikers en/of groepen die zij
 Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
 ## <a name="common-issues"></a>Algemene problemen
-* De standaard kenmerk toewijzing voor het inrichten van Sales Force bevat de SingleAppRoleAssignments-expressie voor het inrichten van gebruikers rollen in Sales Force. Zorg ervoor dat de gebruikers niet meerdere rollen hebben toegewezen aan de toepassing omdat de kenmerk toewijzing alleen ondersteuning biedt voor het inrichten van één rol. 
+* Als u problemen ondervindt met het verlenen van toegang tot Sales Force, moet u het volgende doen:
+    * De gebruikte referenties hebben beheerders toegang tot Sales Force.
+    * De versie van Sales Force die u gebruikt, ondersteunt webtoegang (bijvoorbeeld ontwikkel aars, ondernemings-, sandbox-en onbeperkte edities van Sales Force.)
+    * Web-API-toegang is ingeschakeld voor de gebruiker.
+* De Azure AD-inrichtings service biedt ondersteuning voor het inrichten van taal, land instelling en tijd zone voor een gebruiker. Deze kenmerken bevinden zich in de standaard kenmerk toewijzingen, maar hebben geen standaard bron kenmerk. Zorg ervoor dat u het standaard bron kenmerk selecteert en dat het bron kenmerk in de indeling werd verwacht door Sales Force. Zo is localeSidKey voor Engels (Verenigde Staten) en_US. Bekijk de richt lijnen die [hier](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5) worden weer gegeven om de juiste localeSidKey-indeling te bepalen. De languageLocaleKey-indelingen kunt u [hier](https://help.salesforce.com/articleView?id=faq_getstart_what_languages_does.htm&type=5)vinden. U kunt er niet alleen voor zorgen dat de indeling juist is, maar u moet er ook voor zorgen dat de taal voor uw gebruikers is ingeschakeld, zoals [hier](https://help.salesforce.com/articleView?id=setting_your_language.htm&type=5)wordt beschreven. 
+* **SalesforceLicenseLimitExceeded:** De gebruiker kan niet worden gemaakt in de doel toepassing omdat er geen beschik bare licenties voor deze gebruiker zijn. U kunt aanvullende licenties voor de doel toepassing aanschaffen of uw gebruikers toewijzingen en configuratie van kenmerk toewijzing controleren om ervoor te zorgen dat de juiste gebruikers zijn toegewezen met de juiste kenmerken.
+* **SalesforceDuplicateUserName:** De gebruiker kan niet worden ingericht omdat deze een Salesforce.com-gebruikers naam heeft die is gedupliceerd in een andere Salesforce.com-Tenant.  In Salesforce.com moet de waarde voor het kenmerk ' username ' uniek zijn in alle Salesforce.com-tenants.  Standaard wordt de userPrincipalName van een gebruiker in Azure Active Directory de gebruikers naam in Salesforce.com.   U hebt twee opties.  U kunt ook de gebruiker met de dubbele gebruikers naam in de andere Salesforce.com-Tenant vinden en de naam ervan wijzigen als u de andere Tenant beheert.  De andere optie is om de toegang van de Azure Active Directory gebruiker te verwijderen tot de Salesforce.com-Tenant waarmee uw directory is geïntegreerd. Deze bewerking wordt opnieuw geprobeerd tijdens de volgende synchronisatie poging. 
+* **SalesforceRequiredFieldMissing:** Voor Sales Force moeten bepaalde kenmerken aanwezig zijn op de gebruiker om de gebruiker te kunnen maken of bij te werken. Er ontbreekt een van de vereiste kenmerken voor deze gebruiker. Zorg ervoor dat kenmerken zoals e-mail en alias worden ingevuld voor alle gebruikers die u wilt inrichten voor Sales Force. U kunt gebruikers die deze kenmerken niet hebben, bereiken met behulp [van filtering op basis van kenmerken](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+* De standaard kenmerk toewijzing voor het inrichten van Sales Force bevat de SingleAppRoleAssignments-expressie voor het toewijzen van appRoleAssignments in azure AD aan profilenaam in Sales Force. Zorg ervoor dat de gebruikers niet meerdere app-roltoewijzingen in azure AD hebben omdat de kenmerk toewijzing alleen ondersteuning biedt voor het inrichten van één rol. 
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](tutorial-list.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

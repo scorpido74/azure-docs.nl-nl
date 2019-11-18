@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d1b3961b61d45718e726b31ec406445b202a0adf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6b2546226d31334592034cfe0455fc32644a3900
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74034180"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132775"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Ondersteuning voor SQL Server 2008 en SQL Server 2008 R2 met Azure uitbreiden
 
@@ -60,11 +60,11 @@ SQL Server vereist toepassings consistente Azure Site Recovery moment opnamen om
 
 De [database Migration service](/azure/dms/dms-overview) is een optie voor klanten als ze worden gemigreerd van on-premises naar een virtuele Azure-machine door SQL Server te upgraden naar versie 2012 of hoger.
 
-## <a name="disaster-recovery"></a>Herstel na noodgevallen
+## <a name="disaster-recovery"></a>Herstel na noodgeval
 
 Oplossingen voor nood herstel voor EOS SQL Server op een Azure VM zijn als volgt:
 
-- **SQL Server back-ups**: gebruik Azure backup om uw EOS SQL Server te beschermen tegen Ransomware, onbedoeld verwijderen en beschadiging. De oplossing is momenteel als preview-versie beschikbaar voor EOS-SQL Server en ondersteunt SQL Server 2008 en 2008 R2 die worden uitgevoerd op Windows 2008 R2 SP1. Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#support-for-sql-server-2008-and-sql-server-2008-r2)voor meer informatie.
+- **SQL Server back-ups**: gebruik Azure backup om uw EOS SQL Server te beschermen tegen Ransomware, onbedoeld verwijderen en beschadiging. De oplossing is momenteel als preview-versie beschikbaar voor EOS-SQL Server en ondersteunt SQL Server 2008 en 2008 R2 die worden uitgevoerd op Windows 2008 R2 SP1. Zie [dit artikel](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#scenario-support)voor meer informatie.
 - **Logboek verzending**: u kunt een back-upreplica van het logboek maken in een andere zone of Azure-regio met doorlopende herstel bewerkingen om de RTO te verminderen. U moet de verzen ding van het logboek hand matig configureren.
 - **Azure site Recovery**: u kunt uw virtuele machine repliceren tussen zones en regio's via Azure site Recovery replicatie. SQL Server vereist app-consistente moment opnamen om herstel in het geval van een ramp te garanderen. Azure Site Recovery biedt een minimale RPO van 1 uur en een periode van twee uur (plus SQL Server herstel tijd) RTO voor EOS SQL Server herstel na nood gevallen.
 

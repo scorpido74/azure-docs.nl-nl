@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 442ceab68851dc108d327cdf212dcf58d5b31084
-ms.sourcegitcommit: a819209a7c293078ff5377dee266fa76fd20902c
+ms.openlocfilehash: 17906a7d0953d8b320301d74cda81d14c9ad340f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71008563"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123430"
 ---
 # <a name="capture-events-through-azure-event-hubs-in-azure-blob-storage-or-azure-data-lake-storage"></a>Vastleggen van gebeurtenissen tot en met Azure Event Hubs in Azure Blob Storage of Azure Data Lake Storage
 Azure Event Hubs kunt u automatisch vastleggen de streaminggegevens in Event Hubs in een [Azure Blob-opslag](https://azure.microsoft.com/services/storage/blobs/) of [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) -account van uw keuze, met de extra flexibiliteit een tijds- of grootte-interval op te geven. Instellen van Capture is snel, er zijn geen administratieve kosten uit te voeren en wordt automatisch geschaald met Event Hubs [doorvoereenheden](event-hubs-scalability.md#throughput-units). Event Hubs Capture is de eenvoudigste manier om het streaming-gegevens laden in Azure, en kunt u zich richten op gegevensverwerking in plaats van gegevensregistratie.
@@ -53,7 +53,7 @@ In het geval dat uw Azure Storage-BLOB tijdelijk niet beschikbaar is, behoudt Ev
 
 ### <a name="scaling-to-throughput-units"></a>Schalen naar doorvoereenheden
 
-Verkeer van Event Hubs wordt bepaald door [doorvoereenheden](event-hubs-scalability.md#throughput-units). Eén doorvoereenheid toestaat 1 MB per seconde of 1000 gebeurtenissen per seconde van inkomend verkeer en twee keer de omvang van uitgaand verkeer. Standard Event Hubs kunnen worden geconfigureerd met 1-20 doorvoer eenheden en u kunt meer kopen met een ondersteunings [aanvraag][support request]voor quotum verhoging. Gebruik bij meer dan uw aangeschafte doorvoereenheden wordt vertraagd. Event Hubs Capture kopieert gegevens rechtstreeks van de interne opslag van de Event Hubs voor het overslaan van doorvoer eenheid uitgaande quota en opslaan van uw uitgaand verkeer voor andere lezers van de verwerking, zoals Stream Analytics of Apache Spark.
+Verkeer van Event Hubs wordt bepaald door [doorvoereenheden](event-hubs-scalability.md#throughput-units). Eén doorvoereenheid toestaat 1 MB per seconde of 1000 gebeurtenissen per seconde van inkomend verkeer en twee keer de omvang van uitgaand verkeer. Standard Event Hubs kunnen worden geconfigureerd met 1-20 doorvoer eenheden en u kunt meer kopen met een [ondersteunings aanvraag][support request]voor quotum verhoging. Gebruik bij meer dan uw aangeschafte doorvoereenheden wordt vertraagd. Event Hubs Capture kopieert gegevens rechtstreeks van de interne opslag van de Event Hubs voor het overslaan van doorvoer eenheid uitgaande quota en opslaan van uw uitgaand verkeer voor andere lezers van de verwerking, zoals Stream Analytics of Apache Spark.
 
 Wanneer geconfigureerd, Event Hubs Capture wordt automatisch uitgevoerd wanneer u uw eerste gebeurtenis verzenden en verder wordt uitgevoerd. Event Hubs schrijft lege bestanden te vereenvoudigen voor uw downstream-verwerkingen weten of het proces werkt, als er geen gegevens. Deze procedure biedt een voorspelbare uitgebracht en markering waarin uw batch-processors.
 
@@ -81,7 +81,7 @@ Een eenvoudige manier om Avro-bestanden te verkennen, is met behulp van de [Avro
 
 Er is een systeem eigen ondersteuning beschikbaar voor Azure Blob Storage, waarmee u eenvoudig gegevens kunt opvragen in een AVRO-bestand, zoals beschreven in de documentatie:
 
-[Apache-detail weergave: Invoeg toepassing voor Azure Blob Storage][Apache Drill: Azure Blob Storage Plugin]
+[Apache-detail weergave: Azure Blob Storage-invoeg toepassing][Apache Drill: Azure Blob Storage Plugin]
 
 Als u snel vastgelegde bestanden wilt doorzoeken, kunt u een virtuele machine maken en uitvoeren met Apache-Drill ingeschakeld via een container om toegang te krijgen tot Azure Blob-opslag:
 
@@ -89,13 +89,13 @@ https://github.com/yorek/apache-drill-azure-blob
 
 Een volledig end-to-end-voor beeld is beschikbaar in het streamen in de opslag plaats op schaal:
 
-[Streaming op schaal: Event Hubs vastleggen]
+[Streaming op schaal: Event Hubs Capture]
 
 ### <a name="use-apache-spark"></a>Apache Spark gebruiken
 
 [Apache Spark][Apache Spark] is een geïntegreerde analyse-engine voor grootschalige gegevens verwerking. Het ondersteunt verschillende talen, waaronder SQL, en kan eenvoudig toegang krijgen tot Azure Blob-opslag. Er zijn twee opties om Apache Spark in azure uit te voeren en beide bieden eenvoudige toegang tot Azure Blob-opslag:
 
-- [HDInsight Adres bestanden in azure Storage][HDInsight: Address files in Azure storage]
+- [HDInsight: adres bestanden in azure Storage][HDInsight: Address files in Azure storage]
 - [Azure Databricks: Azure Blob-opslag][Azure Databricks: Azure Blob Storage]
 
 ### <a name="use-avro-tools"></a>Avro-Hulpprogram Ma's gebruiken
@@ -139,7 +139,7 @@ Houd er rekening mee dat bij het vastleggen geen quotum voor uitgaand verkeer wo
 
 ## <a name="integration-with-event-grid"></a>Integratie met Event Grid 
 
-U kunt een Azure Event Grid-abonnement maken met een Event Hubs-naamruimte als de bron. In de volgende zelf studie ziet u hoe u een Event Grid-abonnement met een Event Hub als een bron en een Azure Functions-app als sink maakt: [U kunt vastgelegde Event hubs gegevens verwerken en migreren naar een SQL data warehouse met behulp van Event grid en Azure functions](store-captured-data-data-warehouse.md).
+U kunt een Azure Event Grid-abonnement maken met een Event Hubs-naamruimte als de bron. De volgende zelfstudie leert u hoe u een Event Grid-abonnement maken met een event hub als een bron en een Azure Functions-app als een sink: [proces en de vastgelegde gegevens van Event Hubs migreren naar een SQL Data Warehouse met behulp van Event Grid en Azure Functions](store-captured-data-data-warehouse.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -160,7 +160,7 @@ U kunt meer informatie over Event Hubs vinden via de volgende koppelingen:
 [Java]: https://avro.apache.org/docs/current/gettingstartedjava.html
 [Python]: https://avro.apache.org/docs/current/gettingstartedpython.html
 [Event Hubs overview]: event-hubs-what-is-event-hubs.md
-[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage#address-files-in-azure-storage
+[HDInsight: Address files in Azure storage]:https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage
 [Azure Databricks: Azure Blob Storage]:https://docs.databricks.com/spark/latest/data-sources/azure/azure-storage.html
 [Apache Drill: Azure Blob Storage Plugin]:https://drill.apache.org/docs/azure-blob-storage-plugin/
-[Streaming op schaal: Event Hubs vastleggen]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture
+[Streaming op schaal: Event Hubs Capture]: https://github.com/yorek/streaming-at-scale/tree/master/event-hubs-capture

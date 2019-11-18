@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: d9b7a433dd7392e83719f09815f736dbd85f9c7f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0a28292ac95dca7b46d9f82c32b9881c18d74b87
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582895"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123542"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Bewakings Azure Machine Learning
 
@@ -38,7 +38,7 @@ Zie [verbruik en geschatte kosten](/azure/azure-monitor/platform/usage-estimated
 
 ## <a name="monitoring-data-from-azure-machine-learning"></a>Gegevens van Azure Machine Learning bewaken
 
-Azure Machine Learning worden dezelfde soorten bewakings gegevens verzameld als andere Azure-resources, die worden beschreven in [gegevens van Azure-resources bewaken](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data-from-Azure-resources). Zie [Azure machine learning monitoring data Naslag informatie](monitor-resource-reference.md) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens die door Azure machine learning zijn gemaakt.
+Azure Machine Learning worden dezelfde soorten bewakings gegevens verzameld als andere Azure-resources, die worden beschreven in [gegevens van Azure-resources bewaken](/azure/azure-monitor/insights/monitor-azure-resource#monitoring-data). Zie [Azure machine learning monitoring data Naslag informatie](monitor-resource-reference.md) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens die door Azure machine learning zijn gemaakt.
 
 ## <a name="analyzing-metric-data"></a>Metrische gegevens analyseren
 
@@ -62,7 +62,7 @@ U krijgt toegang tot waarschuwingen voor Azure Machine Learning door **waarschuw
 
 De volgende tabel bevat algemene en aanbevolen waarschuwings regels voor metrische gegevens voor Azure Machine Learning:
 
-| Waarschuwings type | Voorwaarde | Beschrijving |
+| Waarschuwingstype | Voorwaarde | Beschrijving |
 |:---|:---|:---|
 | Modelimplementatie is mislukt | Aggregatie type: Total, operator: groter dan, drempel waarde: 0 | Wanneer een of meer model implementaties zijn mislukt |
 | Percentage quotum gebruik | Aggregatie type: Average, operator: groter dan, drempel waarde: 90| Wanneer het percentage van het quota gebruik groter is dan 90% |
@@ -85,7 +85,7 @@ Zie voor meer informatie over het maken van een diagnostische instelling [Diagno
 
 U kunt de volgende logboeken configureren voor Azure Machine Learning:
 
-| Category | Beschrijving |
+| Categorie | Beschrijving |
 |:---|:---|
 | AmlComputeClusterEvent | Gebeurtenissen van Azure Machine Learning Reken clusters. |
 | AmlComputeClusterNodeEvent | Gebeurtenissen van knoop punten binnen een Azure Machine Learning Compute-Cluster. |
@@ -111,7 +111,7 @@ Gegevens in Azure Monitor logboeken worden opgeslagen in tabellen, waarbij elke 
 
 Zie [Azure machine learning monitoring data Reference](monitor-resource-reference.md)(Engelstalig) voor een gedetailleerde Naslag informatie over de logboeken en metrische gegevens.
 
-### <a name="sample-queries"></a>Voorbeeld query's
+### <a name="sample-queries"></a>Voorbeeldquery's
 
 Hieronder vindt u query's die u kunt gebruiken om uw Azure Machine Learning-resources te bewaken: 
 
@@ -131,7 +131,7 @@ Hieronder vindt u query's die u kunt gebruiken om uw Azure Machine Learning-reso
     | project  TimeGenerated , ClusterId , EventType , ExecutionState , ToolType
     ```
 
-+ Cluster gebeurtenissen in de afgelopen vijf dagen ophalen voor clusters waarbij de VM-grootte Standard_D1_V2 is:
++ In de afgelopen vijf dagen cluster gebeurtenissen ophalen voor clusters waarin de VM-grootte is Standard_D1_V2:
 
     ```Kusto
     AmlComputeClusterEvent

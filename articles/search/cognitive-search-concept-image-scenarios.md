@@ -1,5 +1,5 @@
 ---
-title: Tekst uit afbeeldingen in een verrijkings pijplijn verwerken en extra heren
+title: Extraheren van tekst uit afbeeldingen
 titleSuffix: Azure Cognitive Search
 description: Verwerk en extraheer tekst en andere informatie uit afbeeldingen in azure Cognitive Search-pijp lijnen.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5006bf5bc7eafd464861a3570654539386c5f837
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787742"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113849"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Informatie over het verwerken en extra heren van afbeeldingen in AI-verrijkings scenario's
 
@@ -31,7 +31,7 @@ U kunt het normaliseren van afbeeldingen niet uitschakelen. Vaardig heden die ov
 
 | Configuratie parameter | Beschrijving |
 |--------------------|-------------|
-| imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix te genereren van genormaliseerde installatie kopieën waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven in één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het veld *normalized_images* . <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
+| imageAction   | Stel deze waarde in op geen als er geen actie moet worden ondernomen wanneer Inge sloten afbeeldingen of afbeeldings bestanden worden aangetroffen. <br/>Ingesteld op ' generateNormalizedImages ' om een matrix van genormaliseerde installatie kopieën te genereren als onderdeel van het kraken van documenten.<br/>Ingesteld op ' generateNormalizedImagePerPage ' om een matrix te genereren van genormaliseerde installatie kopieën waarbij voor Pdf's in uw gegevens bron elke pagina wordt weer gegeven in één uitvoer afbeelding.  De functionaliteit is hetzelfde als ' generateNormalizedImages ' voor niet-PDF-bestands typen.<br/>Voor elke optie die niet ' geen ' is, worden de afbeeldingen weer gegeven in het *normalized_images* veld. <br/>De standaard waarde is geen. Deze configuratie is alleen relevant voor BLOB-gegevens bronnen, wanneer ' dataToExtract ' is ingesteld op ' contentAndMetadata '. <br/>Er worden Maxi maal 1000 installatie kopieën geëxtraheerd uit een bepaald document. Als er meer dan 1000 installatie kopieën in een document zijn, wordt de eerste 1000 geëxtraheerd en wordt er een waarschuwing gegenereerd. |
 |  normalizedImageMaxWidth | De maximum breedte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. De toegestane maximum waarde is 10000. | 
 |  normalizedImageMaxHeight | De maximum hoogte (in pixels) voor genormaliseerde afbeeldingen die worden gegenereerd. De standaard waarde is 2000. De toegestane maximum waarde is 10000.|
 
@@ -58,13 +58,13 @@ U geeft de imageAction op in de definitie van de [Indexeer functie](https://docs
 }
 ```
 
-Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat het nieuwe *normalized_images* -veld een matrix met installatie kopieën. Elke afbeelding is een complex type met de volgende leden:
+Wanneer de *imageAction* is ingesteld op een andere waarde dan ' geen ', bevat het veld nieuwe *normalized_images* een matrix met installatie kopieën. Elke afbeelding is een complex type met de volgende leden:
 
 | Onderdeel van installatie kopie       | Beschrijving                             |
 |--------------------|-----------------------------------------|
-| gegevens               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
+| data               | BASE64-gecodeerde teken reeks van de genormaliseerde afbeelding in JPEG-indeling.   |
 | Breedte              | Breedte van de genormaliseerde afbeelding in pixels. |
-| Hoogte             | De hoogte van de genormaliseerde afbeelding in pixels. |
+| hoogte             | De hoogte van de genormaliseerde afbeelding in pixels. |
 | originalWidth      | De oorspronkelijke breedte van de afbeelding vóór normalisatie. |
 | originalHeight      | De oorspronkelijke hoogte van de afbeelding vóór normalisatie. |
 | rotationFromOriginal |  Rotatie linksom in graden die is opgetreden tijdens het maken van de genormaliseerde afbeelding. Een waarde tussen 0 en 360 graden. Met deze stap worden de meta gegevens van de installatie kopie die wordt gegenereerd door een camera of scanner, gelezen. Doorgaans een veelvoud van 90 graden. |
@@ -105,11 +105,11 @@ De [OCR-vaardigheid](cognitive-search-skill-ocr.md) extraheert tekst uit afbeeld
 
 Een veelvoorkomend scenario bestaat uit het maken van een enkele teken reeks met alle bestands inhoud, tekst-en afbeeldings oorsprong, door de volgende stappen uit te voeren:  
 
-1. [Normalized_images extra heren](#get-normalized-images)
+1. [Uitpakken normalized_images](#get-normalized-images)
 1. De OCR-vaardigheid uitvoeren met `"/document/normalized_images"` als invoer
 1. De tekst weergave van deze afbeeldingen samen voegen met de onbewerkte tekst uit het bestand. U kunt de [tekst samenvoegings](cognitive-search-skill-textmerger.md) vaardigheid gebruiken om beide tekst segmenten samen te voegen tot één grote teken reeks.
 
-In het volgende voor beeld wordt een *merged_text* -veld gemaakt met daarin de tekstuele inhoud van uw document. Het bevat ook de OCRed-tekst van elk van de Inge sloten afbeeldingen. 
+In het volgende voor beeld wordt er een *merged_text* veld gemaakt met daarin de tekstuele inhoud van uw document. Het bevat ook de OCRed-tekst van elk van de Inge sloten afbeeldingen. 
 
 #### <a name="request-body-syntax"></a>Syntaxis van aanvraag tekst
 ```json
@@ -162,7 +162,7 @@ In het volgende voor beeld wordt een *merged_text* -veld gemaakt met daarin de t
 }
 ```
 
-Nu u een merged_text-veld hebt, kunt u dit als Zoek bare veld in uw indexerings definitie toewijzen. Alle inhoud van uw bestanden, met inbegrip van de tekst van de afbeeldingen, kan doorzoekbaar zijn.
+Nu u een merged_text veld hebt, kunt u dit als Zoek bare veld in uw indexerings definitie toewijzen. Alle inhoud van uw bestanden, met inbegrip van de tekst van de afbeeldingen, kan doorzoekbaar zijn.
 
 ## <a name="visualize-bounding-boxes-of-extracted-text"></a>Begrenzings vakken van geëxtraheerde tekst visualiseren
 

@@ -1,5 +1,5 @@
 ---
-title: Taal analyse functies toevoegen aan teken reeks velden in een index
+title: Taal analyse functies toevoegen aan teken reeks velden
 titleSuffix: Azure Cognitive Search
 description: Meertalige tekst analyse in meerdere talen voor niet-Engelse query's en indexen in azure Cognitive Search.
 manager: nitinme
@@ -19,14 +19,14 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f5833da5b15c893499b0d786972eff61c7391137
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ebdbcdda4efd7fdf9eb0e3e04cfa4d1987e03716
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790141"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111806"
 ---
-# <a name="add-language-analyzers-to-an-azure-cognitive-search-index"></a>Taal analyse functies toevoegen aan een Azure Cognitive Search-index
+# <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Taal analyse functies toevoegen aan teken reeks velden in een Azure Cognitive Search-index
 
 Een *taal analyse* is een specifiek type [tekst analyse](search-analyzers.md) dat lexicale analyses uitvoert met behulp van de taal kundige regels van de doel taal. Elk doorzoekbaar veld heeft een eigenschap **Analyzer** . Als uw index vertaalde teken reeksen bevat, zoals afzonderlijke velden voor Engelse en Chinese tekst, kunt u taal analysen opgeven voor elk veld om toegang te krijgen tot de uitgebreide taal mogelijkheden van die analyse functies.  
 
@@ -61,62 +61,62 @@ Zie [Create index &#40;Azure Cognitive Search rest API&#41;](https://docs.micros
 
 |Taal|Naam van micro soft Analyzer|Naam van Lucene Analyzer|  
 |--------------|-----------------------------|--------------------------|  
-|Arabisch|AR. micro soft|AR. lucene|  
+|Arabisch|ar.microsoft|AR. lucene|  
 |Armeens||HY. lucene|  
-|Bengalese|bn. micro soft||  
-|Baskisch||EU. lucene|  
-|Bulgaars|bg. micro soft|bg. lucene|  
-|Catalaans|ca. micro soft|ca. lucene|  
-|Vereenvoudigd Chinees|zh-Hans. micro soft|zh-Hans. lucene|  
-|Traditioneel Chinees|zh-hant. micro soft|zh-hant. lucene|  
-|Kroatisch|HR. micro soft||  
-|Tsjechisch|CS. micro soft|CS. lucene|  
-|Deens|da. micro soft|da. lucene|  
-|Nederlands|nl. micro soft|nl. lucene|  
-|Nederlands|en. micro soft|en. lucene|  
-|Estisch|et. micro soft||  
-|Fins|fi. micro soft|fi. lucene|  
-|Frans|fr. micro soft|fr. lucene|  
-|Galicisch||gl. lucene|  
-|Duits|de. micro soft|de. lucene|  
-|Grieks|El. micro soft|El. lucene|  
-|Gujarati|Gu. micro soft||  
-|Hebreeuws|he. micro soft||  
-|Hindi|Hallo. micro soft|Hallo. lucene|  
-|Hongaars|hu. micro soft|hu. lucene|  
-|IJslands|is. micro soft||  
-|Indonesisch (Bahasa)|id. micro soft|id. lucene|  
-|Iers||Ga. lucene|  
-|Italiaans|it. micro soft|it. lucene|  
-|Japans|Ja. micro soft|Ja. lucene|  
-|Kannada|kn. micro soft||  
-|Koreaans|ko. micro soft|ko. lucene|  
-|Lets|LV. micro soft|LV. lucene|  
-|Litouws|lt. micro soft||  
-|Malajalam|ml. micro soft||  
-|Maleis (Latijns)|MS. micro soft||  
-|Marathi|Mr. micro soft||  
-|Noors|NB. micro soft|No. lucene|  
-|Perzisch||FA. lucene|  
-|Pools|pl. micro soft|pl. lucene|  
-|Portugees (Brazilië)|pt-br. micro soft|pt-br. lucene|  
-|Portugees (Portugal)|pt-pt. micro soft|pt-pt. lucene|  
-|Punjabi|pa. micro soft||  
-|Roemeens|ro. micro soft|ro. lucene|  
-|Russisch|ru. micro soft|ru. lucene|  
+|Bengalees|bn.microsoft||  
+|Baskisch||eu.lucene|  
+|Bulgaars|bg.microsoft|bg.lucene|  
+|Catalaans|ca.microsoft|ca.lucene|  
+|Vereenvoudigd Chinees|zh-Hans.microsoft|zh-Hans.lucene|  
+|Traditioneel Chinees|zh-Hant.microsoft|zh-Hant.lucene|  
+|Kroatisch|hr.microsoft||  
+|Tsjechisch|cs.microsoft|cs.lucene|  
+|Deens|da.microsoft|da.lucene|  
+|Nederlands|nl.microsoft|nl.lucene|  
+|Nederlands|en.microsoft|en. lucene|  
+|Estisch|et.microsoft||  
+|Fins|fi.microsoft|fi.lucene|  
+|Frans|fr.microsoft|fr. lucene|  
+|Galicisch||gl.lucene|  
+|Duits|de.microsoft|de.lucene|  
+|Grieks|el.microsoft|el.lucene|  
+|Gujarati|gu.microsoft||  
+|Hebreeuws|he.microsoft||  
+|Hindi|hi.microsoft|hi.lucene|  
+|Hongaars|hu.microsoft|hu.lucene|  
+|IJslands|is.microsoft||  
+|Indonesisch (Bahasa)|id.microsoft|id.lucene|  
+|Iers||ga.lucene|  
+|Italiaans|it.microsoft|it.lucene|  
+|Japans|ja.microsoft|ja.lucene|  
+|Kanarees|kn.microsoft||  
+|Koreaans|ko.microsoft|ko.lucene|  
+|Lets|lv.microsoft|lv.lucene|  
+|Litouws|lt.microsoft||  
+|Malayalam|ml.microsoft||  
+|Maleis (Latijns)|ms.microsoft||  
+|Marathi|mr.microsoft||  
+|Noors|nb.microsoft|no.lucene|  
+|Perzisch||fa.lucene|  
+|Pools|pl.microsoft|pl.lucene|  
+|Portugees (Brazilië)|pt-Br.microsoft|pt-br. lucene|  
+|Portugees (Portugal)|pt-Pt.microsoft|pt-Pt.lucene|  
+|Punjabi|pa.microsoft||  
+|Roemeens|ro.microsoft|ro.lucene|  
+|Russisch|ru.microsoft|ru.lucene|  
 |Servisch (Cyrillisch)|SR-Cyrillisch. micro soft||  
-|Servisch (Latijns)|SR-Latijn. micro soft||  
-|Slowaaks|SK. micro soft||  
-|Sloveens|SL. micro soft||  
-|Spaans|es. micro soft|es. lucene|  
-|Zweeds|SV. micro soft|SV. lucene|  
-|Tamil|ta. micro soft||  
-|Telugu|te. micro soft||  
+|Servisch (Latijns)|sr-latin.microsoft||  
+|Slowaaks|sk.microsoft||  
+|Sloveens|sl.microsoft||  
+|Spaans|es.microsoft|es. lucene|  
+|Zweeds|sv.microsoft|sv.lucene|  
+|Tamil|ta.microsoft||  
+|Telugu|te.microsoft||  
 |Thais|th. micro soft|th. lucene|  
-|Turks|tr. micro soft|tr. lucene|  
-|Oekraïens|UK. micro soft||  
-|Urdu|uw. micro soft||  
-|Vietnamees|VI. micro soft||  
+|Turks|tr.microsoft|tr. lucene|  
+|Oekraïens|uk.microsoft||  
+|Urdu|ur.microsoft||  
+|Vietnamees|vi.microsoft||  
 
  Alle analyse functies met namen die zijn gekoppeld aan **lucene** , worden aangedreven door [de taal Analyseers van Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 

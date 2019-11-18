@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/11/2019
+ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: ed100c27d482065e244bb3dc2cca3b66dfc11986
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013408"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132685"
 ---
 # <a name="add-entities-to-extract-data"></a>Entiteiten toevoegen om gegevens op te halen 
 
@@ -26,15 +26,26 @@ De entiteit vertegenwoordigt een woord of zinsdeel in de utterance die u wilt da
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="creating-an-entity-is-different-from-labeling-an-entity"></a>Het maken van een entiteit wijkt af van het labelen van een entiteit
+## <a name="plan-entities-then-create-and-label"></a>Entiteiten plannen, vervolgens maken en labelen
 
-U moet eerst een entiteit maken voordat u de entiteit in het voor beeld utterance kunt labelen. 
+Door machines geleerde entiteiten kunnen worden gemaakt op basis van het voor beeld uitingen of gemaakt op basis van de pagina **entiteiten** . 
+
+Over het algemeen is een best practice tijd om de entiteiten te plannen voordat een door de machine geleerde entiteit in de portal wordt gemaakt. Maak vervolgens de door de machine geleerde entiteit uit het voor beeld-utterance met zo veel details in de subonderdelen en descriptors en beperkingen die u op dat moment kent. Met de [zelf studie voor het samen stellen](tutorial-machine-learned-entity.md) van de entiteit wordt gedemonstreerd hoe u deze methode gebruikt. 
+
+Als onderdeel van het plannen van de entiteiten weet u misschien dat u tekst-overeenkomende entiteiten (zoals vooraf gemaakte entiteiten, reguliere expressie-entiteiten of lijst entiteiten) nodig hebt. U kunt deze maken op de pagina **entiteiten** voordat ze worden gelabeld in voor beeld uitingen. 
+
+Wanneer u labels aanmaakt, kunt u afzonderlijke entiteiten labelen en vervolgens een entiteit maken die door een bovenliggende machine is geleerd. U kunt ook beginnen met een entiteit die door een bovenliggende machine is geleerd en de onderliggende entiteiten afbreken. 
+
+> [!TIP] 
+>Voorzie alle woorden die een entiteit kunnen aanduiden, zelfs als de woorden niet worden gebruikt als ze worden geëxtraheerd in de client toepassing. 
+
+## <a name="creating-an-entity-before-or-with-labeling"></a>Een entiteit maken voor of met een label
 
 Gebruik de volgende tabel om te begrijpen welke entiteiten voor het maken of toevoegen van elke entiteit aan de app. 
 
 |Entiteits type|Locatie voor het maken van een entiteit in de LUIS-Portal|
 |--|--|
-|Door de machine geleerde entiteit|Details van entiteiten of intentie|
+|Entiteit op basis van machine learning|Details van entiteiten of intentie|
 |Lijstentiteit|Details van entiteiten of intentie|
 |Een entiteit in de vorm van een reguliere expressie|Entiteiten|
 |Pattern.any-entiteit|Entiteiten|

@@ -1,195 +1,187 @@
 ---
-title: Geo-replicatie configureren voor Azure Cache voor Redis | Microsoft Docs
-description: Leer hoe u uw Azure-Cache voor instanties van Redis gerepliceerd in geografische regio's.
-services: cache
-documentationcenter: ''
+title: Geo-replicatie voor Azure cache instellen voor redis | Microsoft Docs
+description: Meer informatie over het repliceren van uw Azure-cache voor redis-instanties in verschillende geografische regio's.
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 375643dc-dbac-4bab-8004-d9ae9570440d
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 4254175955c3560c7bd0fdd08c6b60c318238b76
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: ce50c665fa79c361f638fda4ec373d5215c407f8
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60552288"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129428"
 ---
-# <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie configureren voor Azure Cache voor Redis
+# <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Geo-replicatie voor Azure cache instellen voor redis
 
-Geo-replicatie biedt een mechanisme voor het koppelen van twee Premium-laag Azure Cache voor instanties van Redis. Een cache is gekozen als de primaire gekoppelde cache, en de andere als de gekoppelde secundaire cache. De gekoppelde secundaire cache wordt alleen-lezen en gegevens geschreven naar de primaire cache gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt voor het repliceren van een cache Azure-regio's. Dit artikel bevat een handleiding voor het configureren van Geo-replicatie voor de Premium-laag Azure Cache voor instanties van Redis.
+Geo-replicatie biedt een mechanisme voor het koppelen van twee Premium-laag Azure-cache voor redis-exemplaren. Eén cache is geselecteerd als de primaire gekoppelde cache en de andere als de secundaire gekoppelde cache. De secundaire gekoppelde cache wordt alleen-lezen en de gegevens die naar de primaire cache worden geschreven, worden gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt om een cache te repliceren tussen Azure-regio's. Dit artikel bevat een hand leiding voor het configureren van geo-replicatie voor uw Azure-cache voor de Premium-laag voor redis-exemplaren.
 
 ## <a name="geo-replication-prerequisites"></a>Vereisten voor geo-replicatie
 
-Voor het configureren van Geo-replicatie tussen twee caches, moeten de volgende vereisten worden voldaan:
+Als u geo-replicatie tussen twee caches wilt configureren, moet aan de volgende vereisten worden voldaan:
 
-- Beide caches zijn [Premium-laag](cache-premium-tier-intro.md) in de cache opslaat.
-- Beide caches zijn in hetzelfde Azure-abonnement.
-- De gekoppelde secundaire cache is dezelfde grootte van de cache of een cache groter dan de primaire gekoppelde cache.
-- Beide caches worden gemaakt en in een status running doorbrengt.
+- Beide caches zijn [Premium-laag](cache-premium-tier-intro.md) caches.
+- Beide caches bevinden zich in hetzelfde Azure-abonnement.
+- De secundaire gekoppelde cache heeft dezelfde cache grootte of een grotere cache grootte dan de primaire gekoppelde cache.
+- Beide caches worden gemaakt en de status wordt uitgevoerd.
 
 Sommige functies worden niet ondersteund met geo-replicatie:
 
-- Geo-replicatie wordt niet ondersteund voor persistentie.
-- Clustering wordt ondersteund als beide caches clustering is ingeschakeld hebben en hetzelfde aantal shards.
+- Persistentie wordt niet ondersteund met geo-replicatie.
+- Clustering wordt ondersteund als Clustering is ingeschakeld voor beide caches en hetzelfde aantal Shards.
 - Caches in hetzelfde VNET worden ondersteund.
-- Caches in verschillende VNETs worden ondersteund met waarschuwingen. Zie [kan ik Geo-replicatie gebruiken met mijn caches in een VNET?](#can-i-use-geo-replication-with-my-caches-in-a-vnet) voor meer informatie.
+- Caches in verschillende VNETs worden ondersteund met aanvullende opmerkingen. Zie [kan ik geo-replicatie gebruiken met mijn caches in een VNET?](#can-i-use-geo-replication-with-my-caches-in-a-vnet) voor meer informatie.
 
-Nadat de Geo-replicatie is geconfigureerd, gelden de volgende beperkingen op de twee gekoppelde cache:
+Nadat geo-replicatie is geconfigureerd, zijn de volgende beperkingen van toepassing op uw gekoppelde cache paar:
 
-- De gekoppelde secundaire cache is alleen-lezen. u kunt lezen uit, maar u kunt geen gegevens kan niet schrijven naar het. 
-- Alle gegevens die in de gekoppelde secundaire cache was voordat de koppeling is toegevoegd wordt verwijderd. Als de Geo-replicatie later is verwijderd echter de gerepliceerde gegevens blijven in de gekoppelde secundaire cache.
-- U kunt geen [schaal](cache-how-to-scale.md) beide cache terwijl de caches zijn gekoppeld.
-- U kunt geen [wijzigen van het aantal shards](cache-how-to-premium-clustering.md) als de cache clustering is ingeschakeld heeft.
-- U kunt de persistentie van de cache niet inschakelen.
-- U kunt [exporteren](cache-how-to-import-export-data.md#export) uit de cache.
-- U kunt geen [importeren](cache-how-to-import-export-data.md#import) in de gekoppelde secundaire cache.
-- U kunt gekoppelde cache of de resourcegroep waarin ze, totdat u de caches ontkoppelen niet verwijderen. Zie voor meer informatie, [waarom is de bewerking mislukt bij het verwijderen van mijn gekoppelde cache?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
-- Als de cache zich in verschillende regio's, worden kosten voor uitgaand netwerkverkeer toepassen op de gegevens verplaatst tussen regio's. Zie voor meer informatie, [hoeveel kost het repliceren van mijn gegevens op Azure-regio's?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- Automatische failover optreden niet tussen de primaire en secundaire gekoppelde cache. Zie voor meer informatie en informatie over het failover een clienttoepassing [hoe werkt failover wordt uitgevoerd naar de secundaire gekoppelde cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- De secundaire gekoppelde cache heeft het kenmerk alleen-lezen. u kunt de gegevens lezen, maar niet naar een wille keurige data schrijven. 
+- Gegevens die zich in de secundaire gekoppelde cache bevonden voordat de koppeling werd toegevoegd, worden verwijderd. Als de geo-replicatie later echter wordt verwijderd, blijven de gerepliceerde gegevens in de secundaire gekoppelde cache.
+- U kunt geen cache [schalen](cache-how-to-scale.md) terwijl de caches zijn gekoppeld.
+- U kunt [het aantal Shards niet wijzigen](cache-how-to-premium-clustering.md) als Clustering is ingeschakeld voor de cache.
+- U kunt persistentie niet inschakelen voor beide caches.
+- U kunt vanuit beide caches [exporteren](cache-how-to-import-export-data.md#export) .
+- U kunt niet [importeren](cache-how-to-import-export-data.md#import) in de secundaire gekoppelde cache.
+- U kunt geen gekoppelde cache of de resource groep die deze bevat, verwijderen totdat u de koppeling tussen de caches ongedaan maakt. Zie [Waarom is de bewerking mislukt wanneer ik mijn gekoppelde cache probeerde te verwijderen?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache) voor meer informatie.
+- Als de caches zich in verschillende regio's bevinden, zijn de kosten voor het uitvallen van het netwerk van toepassing op de gegevens die worden verplaatst tussen regio's. Zie [hoeveel kost het om mijn gegevens te repliceren tussen Azure-regio's?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions) voor meer informatie.
+- Er wordt geen automatische failover uitgevoerd tussen de primaire en de secundaire gekoppelde cache. Voor meer informatie en informatie over het uitvoeren van een failover van een client toepassing raadpleegt u [Hoe werkt de secundaire gekoppelde cache niet?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
-## <a name="add-a-geo-replication-link"></a>Een Geo-replicatie-koppeling toevoegen
+## <a name="add-a-geo-replication-link"></a>Een geo-replicatie koppeling toevoegen
 
-1. Als u wilt koppelen twee caches samen voor geo-replicatie, klikt u op voor het eerst **Geo-replicatie** in het menu Resource van de cache die u van plan bent om te worden van de primaire cache gekoppeld. Klik vervolgens op **koppeling voor cachereplicatie toevoegen** uit de **Geo-replicatie** blade.
+1. Als u twee caches voor geo-replicatie wilt koppelen, klikt u op **geo-replicatie** in het menu resource van de cache die u als primair gekoppelde cache wilt maken. Klik vervolgens op **koppeling voor cache toevoegen** van de Blade **geo-replicatie** .
 
     ![Koppeling toevoegen](./media/cache-how-to-geo-replication/cache-geo-location-menu.png)
 
-2. Klik op de naam van uw beoogde secundaire cache van de **compatibele caches** lijst. Als uw secundaire cache niet wordt weergegeven in de lijst, Controleer de [Geo-replicatie vereisten](#geo-replication-prerequisites) voor de secundaire cache wordt voldaan. Als u wilt filteren de caches per regio, klikt u op de regio in de kaart om weer te geven alleen deze caches in de **compatibele caches** lijst.
+2. Klik op de naam van de gewenste secundaire cache in de lijst met **compatibele caches** . Als uw secundaire cache niet in de lijst wordt weer gegeven, controleert u of aan de [geo-replicatie vereisten](#geo-replication-prerequisites) voor de secundaire cache is voldaan. Als u de caches per regio wilt filteren, klikt u op de regio in de kaart om alleen de caches in de lijst met **compatibele caches** weer te geven.
 
-    ![Compatibele caches geo-replicatie](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
+    ![Caches die compatibel zijn met geo-replicatie](./media/cache-how-to-geo-replication/cache-geo-location-select-link.png)
     
-    U kunt ook het koppelingsproces starten of Geef details weer over de secundaire cache met behulp van het contextmenu.
+    U kunt ook het koppelings proces starten of Details over de secundaire cache weer geven met behulp van het context menu.
 
-    ![Contextmenu voor geo-replicatie](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
+    ![Context menu van geo-replicatie](./media/cache-how-to-geo-replication/cache-geo-location-select-link-context-menu.png)
 
-3. Klik op **koppeling** voor de twee caches aan elkaar koppelen en beginnen met het replicatieproces.
+3. Klik op **koppeling** om de twee caches samen te koppelen en het replicatie proces te starten.
 
     ![Caches koppelen](./media/cache-how-to-geo-replication/cache-geo-location-confirm-link.png)
 
-4. U kunt de voortgang van het replicatieproces weergeven op de **Geo-replicatie** blade.
+4. U kunt de voortgang van het replicatie proces bekijken op de Blade **geo-replicatie** .
 
-    ![Status koppelen](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
+    ![Koppelings status](./media/cache-how-to-geo-replication/cache-geo-location-linking.png)
 
-    U ziet ook de status van de koppeling op de **overzicht** blade voor de primaire en secundaire cache.
+    U kunt ook de koppelings status weer geven op de Blade **overzicht** voor de primaire en secundaire caches.
 
-    ![Status van de cache](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![Cache status](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
-    Zodra het replicatieproces voltooid is, de **status koppelen** wordt gewijzigd in **geslaagd**.
+    Zodra het replicatie proces is voltooid, verandert de status van de **koppeling** in **geslaagd**.
 
-    ![Status van de cache](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
+    ![Cache status](./media/cache-how-to-geo-replication/cache-geo-location-link-successful.png)
 
-    De primaire gekoppelde cache blijft beschikbaar voor gebruik tijdens het koppelen. De gekoppelde secundaire cache is niet beschikbaar totdat het koppelingsproces is voltooid.
+    De primaire gekoppelde cache blijft beschikbaar voor gebruik tijdens het koppelings proces. De secundaire gekoppelde cache is niet beschikbaar totdat het koppelings proces is voltooid.
 
-## <a name="remove-a-geo-replication-link"></a>Een Geo-replicatie-koppeling verwijderen
+## <a name="remove-a-geo-replication-link"></a>Een geo-replicatie koppeling verwijderen
 
-1. Als u wilt verwijderen van de koppeling tussen twee caches en Geo-replicatie beëindigen, klikt u op **caches ontkoppelen** uit de **Geo-replicatie** blade.
+1. Als u de koppeling tussen twee caches wilt verwijderen en geo-replicatie wilt stoppen, klikt u op **caches ontkoppelen** van de Blade **geo-replicatie** .
     
     ![Caches ontkoppelen](./media/cache-how-to-geo-replication/cache-geo-location-unlink.png)
 
-    Wanneer het proces voor de koppeling is voltooid, is de secundaire cache is beschikbaar voor zowel lees- en schrijfbewerkingen.
+    Wanneer het ontkoppelings proces is voltooid, is de secundaire cache beschikbaar voor zowel lees-als schrijf bewerkingen.
 
 >[!NOTE]
->Wanneer de koppeling voor Geo-replicatie wordt verwijderd, blijft de gerepliceerde gegevens uit de primaire gekoppelde cache in de secundaire cache.
+>Wanneer de koppeling geo-replicatie wordt verwijderd, blijven de gerepliceerde gegevens van de primaire gekoppelde cache in de secundaire cache.
 >
 >
 
 ## <a name="geo-replication-faq"></a>Veelgestelde vragen over geo-replicatie
 
-- [Kan ik Geo-replicatie gebruiken met een Standard- of Basic-laag-cache?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
-- [Mijn cache is beschikbaar voor gebruik tijdens het koppelen of ontkoppelen?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
-- [Kan ik meer dan twee caches koppelen?](#can-i-link-more-than-two-caches-together)
-- [Kan ik twee caches uit verschillende Azure-abonnementen koppelen?](#can-i-link-two-caches-from-different-azure-subscriptions)
-- [Kan ik twee caches met verschillende formaten koppelen?](#can-i-link-two-caches-with-different-sizes)
-- [Kan ik Geo-replicatie gebruiken met clustering is ingeschakeld?](#can-i-use-geo-replication-with-clustering-enabled)
-- [Kan ik Geo-replicatie met mijn caches in een VNET gebruiken?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
-- [Wat is het replicatieschema voor Redis geo-replicatie?](#what-is-the-replication-schedule-for-redis-geo-replication)
-- [Hoe lang duurt geo-replicatie-replicatie?](#how-long-does-geo-replication-replication-take)
-- [Kan het herstelpunt van de replicatie worden gegarandeerd?](#is-the-replication-recovery-point-guaranteed)
-- [Kan ik PowerShell of Azure CLI gebruiken voor het beheren van Geo-replicatie?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
-- [Hoeveel kost het repliceren van mijn gegevens in Azure-regio's?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
-- [Waarom is de bewerking mislukt bij het verwijderen van mijn gekoppelde cache?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
+- [Kan ik geo-replicatie met een Standard-of Basic-laag cache gebruiken?](#can-i-use-geo-replication-with-a-standard-or-basic-tier-cache)
+- [Is mijn cache beschikbaar voor gebruik tijdens het koppelen of ontkoppelen van het proces?](#is-my-cache-available-for-use-during-the-linking-or-unlinking-process)
+- [Kan ik meer dan twee caches tegelijk koppelen?](#can-i-link-more-than-two-caches-together)
+- [Kan ik twee caches van verschillende Azure-abonnementen koppelen?](#can-i-link-two-caches-from-different-azure-subscriptions)
+- [Kan ik twee caches met verschillende grootten koppelen?](#can-i-link-two-caches-with-different-sizes)
+- [Kan ik geo-replicatie gebruiken als Clustering is ingeschakeld?](#can-i-use-geo-replication-with-clustering-enabled)
+- [Kan ik geo-replicatie gebruiken met mijn caches in een VNET?](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [Wat is het replicatie schema voor redis geo-replicatie?](#what-is-the-replication-schedule-for-redis-geo-replication)
+- [Hoe lang duurt het repliceren van geo-replicatie?](#how-long-does-geo-replication-replication-take)
+- [Is het replicatie herstel punt gegarandeerd?](#is-the-replication-recovery-point-guaranteed)
+- [Kan ik Power shell of Azure CLI gebruiken voor het beheren van geo-replicatie?](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
+- [Wat kost het om mijn gegevens te repliceren tussen Azure-regio's?](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- [Waarom is de bewerking mislukt wanneer ik mijn gekoppelde cache probeerde te verwijderen?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [Welke regio moet ik voor mijn secundaire gekoppelde cache gebruiken?](#what-region-should-i-use-for-my-secondary-linked-cache)
-- [Hoe werkt de failover wordt uitgevoerd naar de secundaire gekoppelde cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Hoe werkt het uitvoeren van een failover naar de secundaire gekoppelde cache?](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
-### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Kan ik Geo-replicatie gebruiken met een Standard- of Basic-laag-cache?
+### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Kan ik geo-replicatie met een Standard-of Basic-laag cache gebruiken?
 
-Nee, Geo-replicatie is alleen beschikbaar voor Premium-laag-caches.
+Nee, geo-replicatie is alleen beschikbaar voor Premium-laag caches.
 
-### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>Mijn cache is beschikbaar voor gebruik tijdens het koppelen of ontkoppelen?
+### <a name="is-my-cache-available-for-use-during-the-linking-or-unlinking-process"></a>Is mijn cache beschikbaar voor gebruik tijdens het koppelen of ontkoppelen van het proces?
 
-- Wanneer u een koppeling, blijft de primaire gekoppelde cache beschikbaar terwijl het koppelingsproces is voltooid.
-- Wanneer u een koppeling, is de secundaire gekoppelde cache niet beschikbaar totdat het koppelingsproces is voltooid.
-- Bij het ontkoppelen, wordt met beide caches beschikbaar blijven tijdens het ontkoppelen proces is voltooid.
+- Wanneer u een koppeling maakt, blijft de primaire gekoppelde cache beschikbaar terwijl het koppelings proces is voltooid.
+- Wanneer u een koppeling maakt, is de secundaire gekoppelde cache niet beschikbaar totdat het koppelings proces is voltooid.
+- Wanneer het ontkoppelen is, blijven beide caches beschikbaar terwijl het ontkoppelen van het proces is voltooid.
 
-### <a name="can-i-link-more-than-two-caches-together"></a>Kan ik meer dan twee caches koppelen?
+### <a name="can-i-link-more-than-two-caches-together"></a>Kan ik meer dan twee caches tegelijk koppelen?
 
-Nee, u kunt alleen twee caches aan elkaar koppelen.
+Nee, u kunt slechts twee caches tegelijk koppelen.
 
-### <a name="can-i-link-two-caches-from-different-azure-subscriptions"></a>Kan ik twee caches uit verschillende Azure-abonnementen koppelen?
+### <a name="can-i-link-two-caches-from-different-azure-subscriptions"></a>Kan ik twee caches van verschillende Azure-abonnementen koppelen?
 
-Nee, beide caches moeten zich in hetzelfde Azure-abonnement.
+Nee, beide caches moeten zich in hetzelfde Azure-abonnement bevinden.
 
-### <a name="can-i-link-two-caches-with-different-sizes"></a>Kan ik twee caches met verschillende formaten koppelen?
+### <a name="can-i-link-two-caches-with-different-sizes"></a>Kan ik twee caches met verschillende grootten koppelen?
 
-Ja, zolang de gekoppelde secundaire cache groter dan de primaire gekoppelde cache is.
+Ja, zolang de secundaire gekoppelde cache groter is dan de primaire gekoppelde cache.
 
-### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Kan ik Geo-replicatie gebruiken met clustering is ingeschakeld?
+### <a name="can-i-use-geo-replication-with-clustering-enabled"></a>Kan ik geo-replicatie gebruiken als Clustering is ingeschakeld?
 
-Ja, zolang beide caches hetzelfde aantal shards hebben.
+Ja, zolang beide caches hetzelfde aantal Shards hebben.
 
-### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Kan ik Geo-replicatie met mijn caches in een VNET gebruiken?
+### <a name="can-i-use-geo-replication-with-my-caches-in-a-vnet"></a>Kan ik geo-replicatie gebruiken met mijn caches in een VNET?
 
-Ja, Geo-replicatie van caches in vnet's wordt ondersteund met aanvullende opmerkingen:
+Ja, geo-replicatie van caches in VNETs wordt ondersteund met aanvullende opmerkingen:
 
 - Geo-replicatie tussen caches in hetzelfde VNET wordt ondersteund.
 - Geo-replicatie tussen caches in verschillende VNETs wordt ook ondersteund.
-  - Als de VNETs zich in dezelfde regio bevinden, kunt u deze verbinden met behulp van [VNET-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) of een [VPN-Gateway VNET-naar-VNET-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
-  - Als de VNETs zich in verschillende regio's, geo-replicatie met behulp van VNET-peering wordt niet ondersteund vanwege een beperking met Basic interne load balancers. Zie voor meer informatie over VNET-peering beperkingen [Virtual Network - Peering - vereisten en beperkingen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints). De aanbevolen oplossing is het gebruik van een VPN-Gateway VNET-naar-VNET-verbinding.
+  - Als de VNETs zich in dezelfde regio bevinden, kunt u deze verbinden met [vnet-peering](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) of een [VPN gateway vnet-naar-vnet-verbinding](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#V2V).
+  - Als de VNETs zich in verschillende regio's bevinden, wordt geo-replicatie met behulp van VNET-peering niet ondersteund vanwege een beperking met basis interne load balancers. Zie [Virtual Network-peering-vereisten en beperkingen](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)voor meer informatie over de beperkingen voor VNET-peering. De aanbevolen oplossing is een VPN Gateway VNET-naar-VNET-verbinding te gebruiken.
 
-Met behulp van [deze Azure-sjabloon](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/), u kunt snel implementeren met twee caches met geo-replicatie in een VNET dat is verbonden met een VPN-Gateway VNET-naar-VNET-verbinding.
+Met [deze Azure-sjabloon](https://azure.microsoft.com/resources/templates/201-redis-vnet-geo-replication/)kunt u snel twee geo-gerepliceerde caches implementeren in een vnet dat is verbonden met een VPN gateway vnet-naar-vnet-verbinding.
 
-### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Wat is het replicatieschema voor Redis geo-replicatie?
+### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Wat is het replicatie schema voor redis geo-replicatie?
 
-Replicatie is continue en asynchrone en gebeurt niet op een specifiek schema. Alle schrijfbewerkingen naar de primaire gedaan worden onmiddellijk en asynchroon gerepliceerd op de secundaire server.
+Replicatie is doorlopend en asynchroon en gebeurt niet volgens een specifiek schema. Alle schrijf bewerkingen die naar de primaire worden uitgevoerd, worden onmiddellijk en asynchroon gerepliceerd op de secundaire.
 
-### <a name="how-long-does-geo-replication-replication-take"></a>Hoe lang duurt geo-replicatie-replicatie?
+### <a name="how-long-does-geo-replication-replication-take"></a>Hoe lang duurt het repliceren van geo-replicatie?
 
-Replicatie is incrementele, asynchrone en continue en de tijd die niet veel af van de latentie tussen regio's. Onder bepaalde omstandigheden de secundaire cache mogelijk moet een volledige synchronisatie van de gegevens van de primaire doen. De tijd van de replicatie in dit geval is afhankelijk van factoren zoals aantal: belasting van de primaire cache, de beschikbare netwerkbandbreedte en de latentie tussen regio's. We hebben gevonden tijd van de replicatie voor een volledige 53 GB geo-replicatie paar overal kan liggen tussen 5 tot 10 minuten.
+Replicatie is incrementeel, asynchroon en doorlopend en de gebruikte tijd is niet veel anders dan de latentie tussen de verschillende regio's. Onder bepaalde omstandigheden is de secundaire cache mogelijk vereist voor een volledige synchronisatie van de gegevens van de primaire. De replicatie tijd in dit geval is afhankelijk van het aantal factoren zoals: belasting voor de primaire cache, beschik bare netwerk bandbreedte en interregionale latentie. Er is een replicatie tijd gevonden voor een Maxi maal aantal van 53 GB gerepliceerde paar van Maxi maal vijf tot tien minuten.
 
-### <a name="is-the-replication-recovery-point-guaranteed"></a>Kan het herstelpunt van de replicatie worden gegarandeerd?
+### <a name="is-the-replication-recovery-point-guaranteed"></a>Is het replicatie herstel punt gegarandeerd?
 
-Voor caches in een modus voor geo-replicatie, persistentie uitgeschakeld. Als de combinatie van een geo-replicatie ontkoppeld, zoals een failover gestart door de klant is, blijft de secundaire cache van de gekoppelde de gesynchroniseerde gegevens op dat moment. Er is geen herstelpunt kan worden gegarandeerd in dergelijke situaties.
+Voor caches in een geo-gerepliceerde modus is persistentie uitgeschakeld. Als een geo-gerepliceerd paar is ontkoppeld, zoals een door de klant geïnitieerde failover, blijven de gesynchroniseerde gegevens van de secundaire gekoppelde cache tot dat moment. In dergelijke situaties wordt er geen herstel punt gegarandeerd.
 
-Verkrijgen van een herstelpunt [exporteren](cache-how-to-import-export-data.md#export) uit de cache. U kunt later [importeren](cache-how-to-import-export-data.md#import) in de primaire gekoppelde cache.
+Als u een herstel punt wilt verkrijgen, moet u uit de cache [exporteren](cache-how-to-import-export-data.md#export) . U kunt later [importeren](cache-how-to-import-export-data.md#import) in de primaire gekoppelde cache.
 
-### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Kan ik PowerShell of Azure CLI gebruiken voor het beheren van Geo-replicatie?
+### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>Kan ik Power shell of Azure CLI gebruiken voor het beheren van geo-replicatie?
 
-Geo-replicatie kan Ja, worden beheerd met behulp van de Azure portal, PowerShell of Azure CLI. Zie voor meer informatie de [PowerShell-documenten](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) of [Azure CLI-documenten](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest).
+Ja, geo-replicatie kan worden beheerd met behulp van de Azure Portal, Power shell of Azure CLI. Zie [Power shell docs](https://docs.microsoft.com/powershell/module/az.rediscache/?view=azps-1.4.0#redis_cache) of [Azure cli docs](https://docs.microsoft.com/cli/azure/redis/server-link?view=azure-cli-latest)(Engelstalig) voor meer informatie.
 
-### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Hoeveel kost het repliceren van mijn gegevens in Azure-regio's?
+### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Wat kost het om mijn gegevens te repliceren tussen Azure-regio's?
 
-Bij het gebruik van Geo-replicatie, worden gegevens uit de primaire gekoppelde cache wordt gerepliceerd naar de secundaire gekoppelde cache. Er zijn geen kosten voor de overdracht van gegevens als de twee gekoppelde caches in dezelfde regio zijn. Als de twee gekoppelde caches in verschillende regio's, is de kosten voor gegevensoverdracht met de netwerkkosten voor uitgaand verkeer van de gegevens verplaatst in beide regio. Zie voor meer informatie, [Bandwidth Pricing Details](https://azure.microsoft.com/pricing/details/bandwidth/).
+Wanneer u geo-replicatie gebruikt, worden gegevens van de primaire gekoppelde cache gerepliceerd naar de secundaire gekoppelde cache. Er worden geen kosten in rekening gebracht voor de gegevens overdracht als de twee gekoppelde caches zich in dezelfde regio bevinden. Als de twee gekoppelde caches zich in verschillende regio's bevinden, zijn de kosten voor de overdracht van gegevens het netwerk voor uitgaand verkeer van gegevens die over een van beide regio's worden verplaatst. Zie [prijs informatie voor band breedte](https://azure.microsoft.com/pricing/details/bandwidth/)voor meer informatie.
 
-### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Waarom is de bewerking mislukt bij het verwijderen van mijn gekoppelde cache?
+### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>Waarom is de bewerking mislukt wanneer ik mijn gekoppelde cache probeerde te verwijderen?
 
-Caches geo-replicatie en hun resourcegroepen kunnen niet worden verwijderd terwijl de gekoppelde totdat u de koppeling voor geo-replicatie. Als u probeert te verwijderen van de resourcegroep met een of beide van de gekoppelde caches, worden de andere resources in de resourcegroep verwijderd, maar de resourcegroep blijft de `deleting` systeemstatus- en alle gekoppelde caches in de resourcegroep in de blijven`running`staat. Als u wilt de resourcegroep en de gekoppelde caches binnen het volledig verwijdert, de caches ontkoppelen zoals beschreven in [verwijderen van een Geo-replicatie koppeling](#remove-a-geo-replication-link).
+Geo-gerepliceerde caches en hun resource groepen kunnen pas worden verwijderd wanneer u de koppeling geo-replicatie verwijdert. Als u probeert de resource groep te verwijderen die een of beide gekoppelde caches bevat, worden de andere resources in de resource groep verwijderd, maar de resource groep blijft in de `deleting` status en de gekoppelde caches in de resource groep blijven in de `running` status. Als u de resource groep en de gekoppelde caches erin volledig wilt verwijderen, ontkoppelt u de caches zoals beschreven in [een geo-replicatie koppeling verwijderen](#remove-a-geo-replication-link).
 
 ### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>Welke regio moet ik voor mijn secundaire gekoppelde cache gebruiken?
 
-Het verdient in het algemeen voor uw cache in dezelfde Azure-regio als de toepassing die toegang heeft tot deze voor te komen. Het raadzaam dat uw primaire en secundaire caches aanwezig zijn in dezelfde regio's voor toepassingen met afzonderlijke primaire en alternatieve regio's. Zie voor meer informatie over gekoppelde regio's, [aanbevolen procedures: Azure gekoppelde regio's](../best-practices-availability-paired-regions.md).
+Over het algemeen is het raadzaam om uw cache in dezelfde Azure-regio te bevinden als de toepassing die er toegang toe heeft. Voor toepassingen met afzonderlijke primaire en terugval regio's worden uw primaire en secundaire caches in dezelfde regio's aangeraden. Zie [Aanbevolen procedures-gekoppelde Azure-regio's](../best-practices-availability-paired-regions.md)voor meer informatie over gekoppelde regio's.
 
-### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Hoe werkt de failover wordt uitgevoerd naar de secundaire gekoppelde cache?
+### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Hoe werkt het uitvoeren van een failover naar de secundaire gekoppelde cache?
 
-Automatische failover Azure-regio's wordt niet ondersteund voor caches geo-replicatie. In een scenario voor herstel na noodgevallen weer klanten van de gehele toepassing-stack op een gecoördineerde manier in hun back-regio. Afzonderlijke toepassing componenten bepalen laten bij het overschakelen naar de back-ups op hun eigen kan de prestaties nadelig beïnvloeden. Een van de belangrijkste voordelen van Redis is een zeer lage latentie-store. Als de hoofdtoepassing van de klant zich in een andere regio dan de cache, zou de toegevoegde retourtijd een merkbare invloed hebben op prestaties. Om deze reden wordt voorkomen dat automatisch Failover-overschakeling uitvoeren vanwege problemen met de tijdelijke beschikbaarheid.
+Automatische failover tussen Azure-regio's wordt niet ondersteund voor geo-gerepliceerde caches. In een scenario voor herstel na nood gevallen moeten klanten de volledige toepassings stack op een gecoördineerde manier in hun back-upregio weer geven. Door afzonderlijke toepassings onderdelen toe te staan, kan dit een negatieve invloed hebben op de prestaties om te scha kelen naar hun eigen back-ups. Een van de belangrijkste voor delen van redis is dat dit een zeer lage latentie heeft. Als de hoofd toepassing van de klant zich in een andere regio bevindt dan de cache, zou de toegevoegde tijd van de round trip een merkbaar effect hebben op de prestaties. Daarom voor komt u dat er automatisch een failover wordt uitgevoerd vanwege problemen met de tijdelijke Beschik baarheid.
 
-Voor het starten van een failover gestart door de klant, moet u eerst de caches ontkoppelen. Wijzig uw Redis-client voor het gebruik van het verbindingseindpunt van het (voorheen gekoppelde) secundaire cache. Wanneer de twee caches losgekoppeld zijn, wordt de secundaire cache een reguliere lezen / schrijven-cache opnieuw wordt en accepteert aanvragen rechtstreeks vanuit de Redis-clients.
+Als u een door de klant geïnitieerde failover wilt starten, koppelt u de caches dan eerst. Wijzig vervolgens uw redis-client om het eind punt van de verbinding van de secundaire cache (voorheen gekoppeld) te gebruiken. Wanneer de twee caches zijn ontkoppeld, wordt de secundaire cache opnieuw een regel matige lees-/schrijftoegang en worden aanvragen rechtstreeks van redis-clients geaccepteerd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de [Azure Cache voor Premium-laag Redis](cache-premium-tier-intro.md).
+Meer informatie over de [Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md).

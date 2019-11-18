@@ -1,105 +1,97 @@
 ---
-title: Inleiding tot de Azure-Cache voor Premium-laag Redis | Microsoft Docs
-description: Informatie over het maken en beheren van Redis-persistentie, Redis-clustering en VNET-ondersteuning voor uw Premium-laag Azure Cache voor instanties van Redis
-services: cache
-documentationcenter: ''
+title: Inleiding tot de Azure-cache voor de Premium-laag van redis
+description: Meer informatie over het maken en beheren van redis-persistentie, redis clustering en VNET-ondersteuning voor uw Azure-cache voor de Premium-laag voor redis-instanties
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 6960c21091e0bc01c198e713c0c276984566ac41
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: aadcc13d2397f10ea40f06d1259c86b9a179c38b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786085"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121665"
 ---
-# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Inleiding tot de Azure-Cache voor Premium-laag Redis
-Azure Redis-Cache is een gedistribueerde beheerde cache waarmee u zeer schaalbare en snel reagerende toepassingen kunt maken met zeer snelle toegang tot uw gegevens. 
+# <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Inleiding tot de Azure-cache voor de Premium-laag van redis
+Azure cache voor redis is een gedistribueerde, beheerde cache waarmee u zeer schaal bare en snel reagerende toepassingen kunt bouwen door zeer snelle toegang tot uw gegevens te bieden. 
 
-De nieuwe Premium-laag is een Enterprise laag die geschikt is, alle functies van de Standard-laag en meer, zoals betere prestaties, grotere workloads, herstel na noodgevallen, import/export- en verbeterde beveiliging omvat. Lees verder voor meer informatie over de aanvullende functies van de Premium-laag voor cache.
+De nieuwe Premium-laag is een bedrijfs klare laag, die alle functies van de Standard-laag bevat, zoals betere prestaties, grotere workloads, herstel na nood gevallen, importeren/exporteren en verbeterde beveiliging. Blijf lezen voor meer informatie over de aanvullende functies van de laag Premium-cache.
 
-## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Betere prestaties in vergelijking met de Standard- of Basic-laag
-**Betere prestaties via Standard of Basic laag.** Caches in de Premium-laag worden geïmplementeerd op hardware die snellere processoren en biedt betere prestaties in vergelijking tot de Basic of Standard-laag. Premium-laag-Caches hebben een hogere doorvoer en een lagere latentie. 
+## <a name="better-performance-compared-to-standard-or-basic-tier"></a>Betere prestaties in vergelijking met de laag Standard of Basic
+**Betere prestaties ten opzichte van de laag standaard of Basic.** Caches in de Premium-laag worden geïmplementeerd op hardware met snellere processors en levert betere prestaties in vergelijking met de basis-of standaard-laag. Premium-laag caches hebben een hogere door Voer en een lagere latentie. 
 
-**Doorvoer voor de Cache met dezelfde grootte is hoger in Premium in vergelijking met de Standard-laag.** Bijvoorbeeld, de doorvoer van een 53 GB P4 (Premium)-cache is 250K aanvragen per seconde in vergelijking met 150 K voor C6 (Standard).
+**De door Voer voor dezelfde grootte cache is hoger in de Premium-fase, vergeleken met de Standard-laag.** Bijvoorbeeld: de door Voer van een Premium-cache van 53 GB is 250.000 aanvragen per seconde in vergelijking met 150K voor C6 (standaard).
 
-Zie voor meer informatie over de grootte, doorvoer en bandbreedte met premium-caches [Azure voor veelgestelde vragen over Redis-Cache](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
+Zie voor meer informatie over de grootte, de door Voer en de band breedte met Premium-caches [Veelgestelde vragen over Azure cache voor redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 ## <a name="redis-data-persistence"></a>Redis-gegevenspersistentie
-De Premium-laag kunt u het behoud van de cachegegevens in een Azure Storage-account. Alle de gegevens worden opgeslagen in een cache basis/standaard alleen in het geheugen. In het geval van onderliggende infrastructuur kunnen er problemen zijn mogelijk gegevensverlies. U wordt aangeraden de functie in de persistentie voor Redis-gegevens in de Premium-laag gebruik te maken om tolerantie tegen verlies van gegevens. Azure Redis-Cache biedt RDB en (binnenkort beschikbaar) AOF opties in [Redis-persistentie](https://redis.io/topics/persistence). 
+Met de Premium-laag kunt u de cache gegevens in een Azure Storage-account behouden. In een Basic-of Standard-cache worden alle gegevens alleen in het geheugen opgeslagen. In het geval van onderliggende infrastructuur problemen kan er sprake zijn van mogelijk gegevens verlies. We raden u aan de functie voor redis-gegevens persistentie in de Premium-laag te gebruiken om de tolerantie voor gegevens verlies te verg Roten. Azure-cache voor redis biedt de opties RDB en AOF (binnenkort beschikbaar) in [redis-persistentie](https://redis.io/topics/persistence). 
 
-Zie voor instructies over het configureren van persistentie [persistentie voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-persistence.md).
+Zie [persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)voor instructies over het configureren van persistentie.
 
 ## <a name="redis-cluster"></a>Redis-cluster
-Als u wilt caches maken die groter dan 53 GB of shard-gegevens over meerdere Redis-knooppunten wilt, kunt u Redis-clustering die beschikbaar is in de Premium-laag. Elk knooppunt bestaat uit een primaire/replica-cache-paar beheerd door Azure voor hoge beschikbaarheid. 
+Als u caches wilt maken die groter zijn dan 53 GB of als u gegevens wilt Shard op meerdere redis-knoop punten, kunt u redis clustering gebruiken die beschikbaar is in de laag Premium. Elk knoop punt bestaat uit een primair/replica-cache paar dat wordt beheerd door Azure voor hoge Beschik baarheid. 
 
-**Redis-clustering biedt u maximale schaal en doorvoer.** Doorvoer neemt lineair toe naarmate u het aantal shards (knooppunten) in het cluster vergroten. Bijvoorbeeld Als u een cluster P4 van 10 shards maakt, wordt de beschikbare doorvoer 250 kB is * 10 = 2,5 miljoen aanvragen per seconde. Raadpleeg de [Azure Cache voor veelgestelde vragen over Redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) voor meer informatie over de grootte, doorvoer en bandbreedte met premium-caches.
+**Redis Clustering biedt maximale schaal en door voer.** De door Voer wordt lineair verhoogd naarmate u het aantal Shards (knoop punten) in het cluster verhoogt. Bijvoorbeeld Als u een P4-cluster van 10 Shards maakt, is de beschik bare door Voer 250.000 * 10 = 2.500.000 aanvragen per seconde. Raadpleeg de [Veelgestelde vragen over Azure cache for redis](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use) voor meer informatie over de grootte, de door Voer en de band breedte met Premium-caches.
 
-Als u wilt beginnen met clustering, Zie [configureren voor een Premium Azure Cache voor Redis clustering](cache-how-to-premium-clustering.md).
+Zie [clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)om aan de slag te gaan met clusteren.
 
 ## <a name="enhanced-security-and-isolation"></a>Verbeterde veiligheid en isolatie
-Gemaakt in de laag Basic of Standard-caches zijn toegankelijk via het openbare internet. Toegang tot de Cache wordt beperkt op basis van de toegangssleutel. Met de Premium-laag kunt u verder ervoor zorgen dat alleen clients binnen een opgegeven netwerk toegang heeft tot de Cache. U kunt Azure-Cache implementeren voor Redis in een [Azure Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/). U kunt alle functies van VNet, zoals subnetten, toegangscontrolebeleid en andere functies, gebruiken om de toegang tot Redis verder te beperken.
+Caches die zijn gemaakt in de Basic-of Standard-laag, zijn toegankelijk via het open bare Internet. Toegang tot de cache wordt beperkt op basis van de toegangs sleutel. Met de Premium-laag kunt u er ook voor zorgen dat alleen clients binnen een opgegeven netwerk toegang hebben tot de cache. U kunt Azure-cache implementeren voor redis in een [Azure-Virtual Network (VNet)](https://azure.microsoft.com/services/virtual-network/). U kunt alle functies van VNet, zoals subnetten, toegangscontrolebeleid en andere functies, gebruiken om de toegang tot Redis verder te beperken.
 
-Zie voor meer informatie, [het configureren van Virtual Network-ondersteuning voor een Premium Azure Cache voor Redis](cache-how-to-premium-vnet.md).
+Zie [Virtual Network-ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)voor meer informatie.
 
 ## <a name="importexport"></a>Import/Export
-Import/Export wordt een Azure-Cache voor beheerbewerking van het Redis-gegevens waarmee u gegevens importeren in Azure voor Redis-Cache of exporteren van gegevens uit de Cache voor Redis door te importeren en exporteren van een Azure-Cache voor de momentopname Redis-Database (RDB) uit de cache van een premium Azure een pagina-blobs in een Azure Storage-Account. Hiermee kunt u om te migreren tussen verschillende Azure-Cache voor instanties van Redis of vullen van de cache met gegevens voor het gebruik.
+Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens kunt importeren in azure cache voor redis of gegevens uit Azure-cache exporteren voor redis door het importeren en exporteren van een Azure-cache voor de redis-data base (RDB) van een Premium-cache naar een pagina-Blob in een Azure Storage-account. Zo kunt u migreren tussen verschillende Azure-cache voor redis-instanties of de cache vullen met gegevens voor gebruik.
 
-Invoer kan worden gebruikt om Redis compatibel RDB-bestand(en) vanaf een willekeurige Redis-server die wordt uitgevoerd in een cloud of de omgeving, met inbegrip van Redis die worden uitgevoerd op Linux, Windows of elke andere cloudprovider, zoals Amazon Web Services en andere. Importeren van gegevens is een eenvoudige manier om te maken van een cache met vooraf ingevulde gegevens. Tijdens het importproces, Azure voor Redis-Cache laadt de RDB-bestanden van Azure storage in het geheugen en voegt vervolgens de sleutels in de cache.
+Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van elke redis-server die in een wille keurige Cloud of omgeving wordt uitgevoerd, waaronder redis die wordt uitgevoerd op Linux, Windows of een andere Cloud provider, zoals Amazon Web Services en anderen. Het importeren van gegevens is een eenvoudige manier om een cache met vooraf gevulde gegevens te maken. Tijdens het import proces laadt Azure cache voor redis de RDB-bestanden vanuit Azure Storage in het geheugen en voegt vervolgens de sleutels in de cache in.
 
-Export kunt u de gegevens die zijn opgeslagen in Azure Cache voor Redis-Redis compatibel RDB-bestand(en) exporteren. U kunt deze functie gebruiken om gegevens te verplaatsen van een Azure-Cache voor Redis-exemplaar naar een andere of naar een andere Redis-server. Tijdens het exportproces een tijdelijke bestand wordt gemaakt op de virtuele machine die als host fungeert voor de Azure-Cache voor Redis-server-exemplaar en het bestand is geüpload naar de aangewezen storage-account. Wanneer de exportbewerking is voltooid met de status geslaagd of mislukt, wordt het tijdelijke bestand verwijderd.
+Met exporteren kunt u de gegevens die zijn opgeslagen in azure cache exporteren voor redis naar redis-compatibele RDB-bestanden. U kunt deze functie gebruiken om gegevens van één Azure-cache te verplaatsen voor een redis-exemplaar naar een ander of een andere redis-server. Tijdens het export proces wordt er een tijdelijk bestand gemaakt op de virtuele machine die als host fungeert voor de Azure-cache voor redis server-exemplaar, en wordt het bestand geüpload naar het aangewezen opslag account. Wanneer de export bewerking is voltooid met de status geslaagd of mislukt, wordt het tijdelijke bestand verwijderd.
 
-Zie voor meer informatie, [gegevens importeren en exporteren van gegevens uit de Cache van Azure voor Redis](cache-how-to-import-export-data.md).
+Zie [gegevens importeren in en exporteren uit Azure cache voor redis](cache-how-to-import-export-data.md)voor meer informatie.
 
 ## <a name="reboot"></a>Opnieuw opstarten
-De premium-laag kunt u een of meer knooppunten van uw cache op aanvraag opnieuw. Hiermee kunt u voor het testen van uw toepassing voor tolerantie bij een storing. U kunt de volgende knooppunten opnieuw opstarten.
+Met de Premium-laag kunt u een of meer knoop punten van uw cache op aanvraag opnieuw opstarten. Zo kunt u uw toepassing testen op tolerantie in het geval van een storing. U kunt de volgende knoop punten opnieuw opstarten.
 
-* Hoofdknooppunt van uw cache
-* Secundair knooppunt van uw cache
-* Primaire en secundaire knooppunten van uw cache
-* Wanneer u een premium-cache met clustering, kunt u de primaire, secundaire of beide knooppunten voor afzonderlijke shards in de cache opnieuw
+* Hoofd knooppunt van uw cache
+* Secundair knoop punt van uw cache
+* Zowel primaire als secundaire knoop punten van uw cache
+* Wanneer u een Premium-cache gebruikt met clustering, kunt u de primaire, secundaire of beide knoop punten voor afzonderlijke Shards in de cache opnieuw opstarten.
 
-Zie voor meer informatie, [opnieuw opstarten](cache-administration.md#reboot) en [Veelgestelde vragen over het opnieuw opstarten](cache-administration.md#reboot-faq).
+Zie [Veelgestelde vragen over](cache-administration.md#reboot-faq) [opnieuw opstarten](cache-administration.md#reboot) en opnieuw opstarten voor meer informatie.
 
 >[!NOTE]
->Opnieuw opstarten functionaliteit is nu ingeschakeld voor alle Azure-Cache voor Redis-lagen.
+>De functionaliteit voor opnieuw opstarten is nu ingeschakeld voor alle Azure-cache voor redis-lagen.
 >
 >
 
 ## <a name="schedule-updates"></a>Updates plannen
-De functie voor geplande updates kunt u om een onderhoudsvenster voor uw cache toe te wijzen. Wanneer het onderhoudsvenster is opgegeven, worden eventuele updates van Redis-server gemaakt tijdens dit venster. Als u wilt aanwijzen van een onderhoudsvenster, selecteert u de gewenste dagen en geef het onderhoud starten venster uur per dag. Houd er rekening mee dat de duur van het onderhoudsvenster is ingesteld op UTC. 
+Met de functie geplande updates kunt u een onderhouds venster voor uw cache aanwijzen. Wanneer het onderhouds venster is opgegeven, worden er redis-server updates gemaakt tijdens dit venster. Als u een onderhouds venster wilt aanwijzen, selecteert u de gewenste dagen en geeft u het onderhouds venster voor elke dag op. Houd er rekening mee dat de tijd van het onderhouds venster in UTC is. 
 
-Zie voor meer informatie, [updates plannen](cache-administration.md#schedule-updates) en [updates plannen Veelgestelde vragen over](cache-administration.md#schedule-updates-faq).
+Zie [updates plannen](cache-administration.md#schedule-updates) en [Veelgestelde vragen over updates plannen](cache-administration.md#schedule-updates-faq)voor meer informatie.
 
 > [!NOTE]
-> Alleen Redis-server updates worden uitgevoerd tijdens het geplande onderhoudsvenster. Het onderhoudsvenster is niet van toepassing op Azure-updates of updates van het besturingssysteem van de virtuele machine.
+> Er worden alleen redis-server updates gemaakt tijdens het geplande onderhouds venster. Het onderhouds venster is niet van toepassing op Azure-updates of updates voor het VM-besturings systeem.
 > 
 > 
 
 ## <a name="geo-replication"></a>Geo-replicatie
 
-**Geo-replicatie** biedt een mechanisme voor het koppelen van twee Premium-laag Azure Cache voor instanties van Redis. Een cache is ingesteld als de primaire gekoppelde cache, en de andere als de gekoppelde secundaire cache. De gekoppelde secundaire cache wordt alleen-lezen en gegevens geschreven naar de primaire cache gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt voor het repliceren van een cache Azure-regio's.
+**Geo-replicatie** biedt een mechanisme voor het koppelen van twee Premium-laag Azure-cache voor redis-exemplaren. Eén cache wordt aangeduid als de primaire gekoppelde cache en de andere als de secundaire gekoppelde cache. De secundaire gekoppelde cache wordt alleen-lezen en de gegevens die naar de primaire cache worden geschreven, worden gerepliceerd naar de secundaire gekoppelde cache. Deze functionaliteit kan worden gebruikt om een cache te repliceren tussen Azure-regio's.
 
-Zie voor meer informatie, [Geo-replicatie configureren voor Azure Cache voor Redis](cache-how-to-geo-replication.md).
+Zie [geo-replicatie voor Azure cache configureren voor redis](cache-how-to-geo-replication.md)voor meer informatie.
 
 
-## <a name="to-scale-to-the-premium-tier"></a>Schalen om aan de premium-laag
-Als u wilt schalen naar de premium-laag, kiest u gewoon een van de premium-lagen in de **prijscategorie wijzigen** blade. U kunt uw cache naar de premiumlaag met behulp van PowerShell en CLI ook schalen. Zie voor stapsgewijze instructies [hoe Scale Azure Cache voor Redis](cache-how-to-scale.md) en [over het automatiseren van een bewerking voor vergroten/verkleinen](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
+## <a name="to-scale-to-the-premium-tier"></a>Schalen naar de Premium-laag
+Als u wilt schalen naar de Premium-laag, kiest u gewoon een van de Premium-lagen in de Blade **prijs categorie wijzigen** . U kunt uw cache ook schalen naar de Premium-laag met behulp van Power shell en CLI. Zie [Azure-cache schalen voor redis](cache-how-to-scale.md) en [hoe u een schaal bewerking automatiseert](cache-how-to-scale.md#how-to-automate-a-scaling-operation)voor stapsgewijze instructies.
 
 ## <a name="next-steps"></a>Volgende stappen
-Een cache maken en de nieuwe premium-functies verkennen.
+Maak een cache en verken de nieuwe functies van de Premium-laag.
 
-* [Persistentie voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-persistence.md)
-* [Het configureren van Virtual Network-ondersteuning voor een Premium Azure Cache voor Redis](cache-how-to-premium-vnet.md)
-* [Clustering voor een Premium Azure Cache voor Redis configureren](cache-how-to-premium-clustering.md)
-* [Het importeren van gegevens in en exporteren van gegevens van Azure voor Redis-Cache](cache-how-to-import-export-data.md)
-* [Azure Cache beheren voor Redis](cache-administration.md)
+* [Persistentie configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-persistence.md)
+* [Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-vnet.md)
+* [Clustering configureren voor een Premium Azure-cache voor redis](cache-how-to-premium-clustering.md)
+* [Gegevens importeren in en exporteren uit Azure cache voor redis](cache-how-to-import-export-data.md)
+* [Azure-cache beheren voor redis](cache-administration.md)
 

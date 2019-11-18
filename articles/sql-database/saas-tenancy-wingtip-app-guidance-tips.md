@@ -11,28 +11,28 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 3589310ff93aca3cec735d6b2f1609ee3d1d2e68
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 162d1f269c65ad98afa30e8e96370bbdceca99bd
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825782"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132290"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Algemene richt lijnen voor het werken met Wingtip tickets voor beelden van SaaS-apps
 
-Dit artikel bevat algemene richt lijnen voor het uitvoeren van de voor beelden van de SaaS-toepassingen van Wingtip tickets die gebruikmaken van Azure SQL Database. 
+Dit artikel bevat algemene richt lijnen voor het uitvoeren van de voor beelden van de SaaS-toepassingen van Wingtip tickets die gebruikmaken van Azure SQL Database.
 
 ## <a name="download-and-unblock-the-wingtip-tickets-saas-scripts"></a>De SaaS-scripts van de Wingtip tickets downloaden en de blok kering opheffen
 
 Uitvoer bare inhoud (scripts, dll's) wordt mogelijk door Windows geblokkeerd wanneer zip-bestanden worden gedownload vanaf een externe bron en geëxtraheerd. Wanneer u de scripts uit een zip-bestand uitpakt, **volgt u de onderstaande stappen om het zip-bestand te deblokkeren voordat het wordt geëxtraheerd**. Dit zorgt ervoor dat de scripts mogen worden uitgevoerd.
 
-1. Blader naar de Wingtip tickets SaaS GitHub opslag plaats voor het data base-pacht patroon dat u wilt verkennen: 
+1. Blader naar de Wingtip tickets SaaS GitHub opslag plaats voor het data base-pacht patroon dat u wilt verkennen:
     - [WingtipTicketsSaaS-StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp)
     - [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant)
     - [WingtipTicketsSaaS-MultiTenantDb](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb)
 2. Klik op **klonen of downloaden**.
 3. Klik op **zip downloaden** en sla het bestand op.
-4. Klik met de rechter muisknop op het zip-bestand en selecteer **Eigenschappen**. De naam van het zip-bestand komt overeen met de naam van de opslag plaats. kade. _WingtipTicketsSaaS-DbPerTenant-Master. zip_)
+4. Klik met de rechter muisknop op het zip-bestand en selecteer **Eigenschappen**. De naam van het zip-bestand komt overeen met de naam van de opslag plaats. kade. _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. Selecteer op het tabblad **Algemeen** de optie **blok kering opheffen**.
 6. Klik op **OK**.
 7. Pak de bestanden uit.
@@ -42,13 +42,13 @@ De scripts bevinden zich in de map *..\\learning modules* .
 
 ## <a name="working-with-the-wingtip-tickets-powershell-scripts"></a>Werken met de Power shell-scripts voor Wingtip tickets
 
-Als u het voor beeld optimaal wilt benutten, moet u zich in de meegeleverde scripts voordoen. Gebruik onderbrekings punten en bestudeer de scripts wanneer ze worden uitgevoerd en onderzoek hoe de verschillende SaaS-patronen worden geïmplementeerd. We raden u aan de [Power shell-ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise)te gebruiken om eenvoudig de meegeleverde scripts en modules voor de beste uitleg te door lopen.
+Als u het voor beeld optimaal wilt benutten, moet u zich in de meegeleverde scripts voordoen. Gebruik onderbrekings punten en bestudeer de scripts wanneer ze worden uitgevoerd en onderzoek hoe de verschillende SaaS-patronen worden geïmplementeerd. We raden u aan de [Power shell-ISE](https://docs.microsoft.com/powershell/scripting/components/ise/introducing-the-windows-powershell-ise)te gebruiken om eenvoudig de meegeleverde scripts en modules voor de beste uitleg te door lopen.
 
 ### <a name="update-the-configuration-file-for-your-deployment"></a>Het configuratie bestand voor uw implementatie bijwerken
 
 Bewerk het bestand **userconfig. psm1** met de resource groep en gebruikers waarde die u tijdens de implementatie hebt ingesteld:
 
-1. Open de *Power shell ISE* en load...\\Learning modules\\*userconfig. psm1* 
+1. Open de *Power shell ISE* en load...\\Learning modules\\*userconfig. psm1*
 2. *ResourceGroupName* en *naam* bijwerken met de specifieke waarden voor uw implementatie (alleen op regels 10 en 11).
 3. Sla de wijzigingen op.
 
@@ -76,7 +76,7 @@ Tips voor het verkennen en stapsgewijs door lopen van Power shell-scripts:
 
 Gebruik [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) om verbinding te maken en te bladeren door de toepassings servers en data bases.
 
-De implementatie heeft in eerste instantie tenants en catalogus SQL Database servers waarmee verbinding moet worden gemaakt. De naam van de servers is afhankelijk van het data base-pacht patroon (zie hieronder voor specifieke informatie). 
+De implementatie heeft in eerste instantie tenants en catalogus SQL Database servers waarmee verbinding moet worden gemaakt. De naam van de servers is afhankelijk van het data base-pacht patroon (zie hieronder voor specifieke informatie).
 
    - **Zelfstandige toepassing:** servers voor elke Tenant (bijvoorbeeld *contosoconcerthall-&lt;gebruiker&gt;* server) en *catalogus-sa-&lt;gebruikers&gt;*
    - **Data Base per Tenant:** *tenants1-dpt-&lt;gebruikers&gt;* en *catalogus-dpt&lt;gebruikers&gt;* servers
@@ -86,19 +86,19 @@ Om ervoor te zorgen dat de demo verbinding is geslaagd, hebben alle servers een 
 
 
 1. Open *SSMS* en maak verbinding met de tenants. De server naam is afhankelijk van het patroon van de data base dat u hebt geselecteerd (zie hieronder voor specifieke informatie):
-    - **Zelfstandige toepassing:** servers van afzonderlijke tenants (bv. *contosoconcerthall-&lt;gebruiker&gt;. database.Windows.net*) 
+    - **Zelfstandige toepassing:** servers van afzonderlijke tenants (bv. *contosoconcerthall-&lt;User&gt;.database.windows.net*)
     - **Data Base per Tenant:** *tenants1-dpt-&lt;gebruiker&gt;. database.Windows.net*
-    - **Multi tenant-Data Base:** *tenants1-MT-&lt;gebruiker&gt;. database.Windows.net* 
+    - **Multi tenant-Data Base:** *tenants1-MT-&lt;gebruiker&gt;. database.Windows.net*
 2. Klik op **Verbinding maken**  > **Database-engine...** :
 
    ![catalogusserver](media/saas-tenancy-wingtip-app-guidance-tips/connect.png)
 
 3. Demo referenties zijn: Login = *Developer*, password = *P\@ssword1*
 
-    In de onderstaande afbeelding ziet u de aanmeldings gegevens voor de *Data Base per Tenant* patroon. 
+    In de onderstaande afbeelding ziet u de aanmeldings gegevens voor de *Data Base per Tenant* patroon.
     ![verbinding](media/saas-tenancy-wingtip-app-guidance-tips/tenants1-connect.png)
-    
-   
+
+
 
 4. Herhaal de stappen 2-3 en maak verbinding met de catalogus server (zie hieronder voor specifieke server namen op basis van het patroon voor de data base-pacht geselecteerd)
     - **Zelfstandige toepassing:** *Catalog-sa-&lt;User&gt;. database.Windows.net*

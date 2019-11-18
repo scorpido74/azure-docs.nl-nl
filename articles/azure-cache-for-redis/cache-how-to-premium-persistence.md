@@ -1,189 +1,181 @@
 ---
-title: Het configureren van persistentie van de gegevens voor een Premium Azure Cache voor Redis
-description: Meer informatie over het configureren en beheren van uw Premium-laag Azure Cache voor instanties van Redis voor persistentie van gegevens
-services: cache
-documentationcenter: ''
+title: Gegevens persistentie configureren voor een Premium Azure-cache voor redis
+description: Meer informatie over het configureren en beheren van gegevens persistentie voor Azure-cache voor redis-instanties in uw Premium-laag
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: yegu
-ms.openlocfilehash: de0b2e3ef7b0268540ef4896ade132a297ee88ff
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b74a16735b44d081a79b17716bdbc72357a36013
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60543438"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122737"
 ---
-# <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Het configureren van persistentie van de gegevens voor een Premium Azure Cache voor Redis
-Azure Redis-Cache heeft een ander cache-aanbiedingen die over de benodigde flexibiliteit bij de keuze van de grootte van de cache en -onderdelen, met inbegrip van Premium-functies zoals clustering, persistentie en virtual network-ondersteuning. In dit artikel wordt beschreven hoe u persistentie configureren in een premium Azure Cache voor Redis-exemplaar.
+# <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Gegevens persistentie configureren voor een Premium Azure-cache voor redis
+Azure cache voor redis heeft verschillende cache aanbiedingen die flexibiliteit bieden bij het kiezen van cache grootte en-functies, waaronder functies voor de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u persistentie configureert in een Premium Azure-cache voor redis-instantie.
 
-Zie voor meer informatie over andere functies van de cache premium [Inleiding tot de Azure-Cache voor Premium-laag Redis](cache-premium-tier-intro.md).
+Zie [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)voor meer informatie over andere Premium-cache functies.
 
-## <a name="what-is-data-persistence"></a>Wat is de persistentie van gegevens?
-[Redis-persistentie](https://redis.io/topics/persistence) kunt u het behoud van gegevens die zijn opgeslagen in Redis. U kunt ook momentopnamen maken en back-up van de gegevens die u in het geval van een hardwarestoring optreedt laden kunt. Dit is een enorm voordeel ten opzichte van Basic of Standard-laag waarin alle gegevens worden opgeslagen in het geheugen en kunnen er mogelijk gegevensverlies in geval van een storing waar Cache-knooppunten niet beschikbaar zijn. 
+## <a name="what-is-data-persistence"></a>Wat is gegevens persistentie?
+Met [redis persistentie](https://redis.io/topics/persistence) kunt u gegevens bewaren die zijn opgeslagen in redis. U kunt ook moment opnamen maken en back-ups maken van de gegevens, die u in het geval van een hardwarestoring kunt laden. Dit is een enorm voor deel van de Basic-of Standard-laag waarbij alle gegevens worden opgeslagen in het geheugen en er mogelijk gegevens verlies kan optreden in het geval van een storing waarbij cache knooppunten niet beschikbaar zijn. 
 
-Azure Redis-Cache biedt Redis-persistentie met behulp van de volgende modellen:
+Azure cache voor redis biedt redis persistentie met de volgende modellen:
 
-* **De RDB-persistentie** -persistentie wanneer RDB (Redis-database) is geconfigureerd, Azure voor Redis-Cache voor Redis in een Redis die binaire indeling op schijf op basis van een configureerbaar back-upfrequentie een momentopname van de Azure-Cache zich blijft voordoen. Als er een catastrofale gebeurtenis optreedt die zowel de primaire en replica-cache wordt uitgeschakeld, kan de cache is opnieuw opgebouwd met behulp van de meest recente momentopname. Meer informatie over de [voordelen](https://redis.io/topics/persistence#rdb-advantages) en [nadelen](https://redis.io/topics/persistence#rdb-disadvantages) van RDB persistentie.
-* **AOF-persistentie** -persistentie wanneer AOF (alleen Append-bestand) is geconfigureerd, Azure Redis Cache slaat elke schrijfbewerking in een logboek dat ten minste één keer per seconde in een Azure Storage-account is opgeslagen. Als er een catastrofale gebeurtenis optreedt die zowel de primaire en replica-cache wordt uitgeschakeld, kan de cache is opnieuw opgebouwd met behulp van de opgeslagen schrijfbewerkingen. Meer informatie over de [voordelen](https://redis.io/topics/persistence#aof-advantages) en [nadelen](https://redis.io/topics/persistence#aof-disadvantages) van AOF persistentie.
+* **RDB-persistentie** : wanneer de persistentie van RDB (redis data base) is geconfigureerd, blijft Azure cache voor redis een moment opname van de Azure-cache voor redis in een redis binaire indeling op schijf op basis van een Configureer bare back-upfrequentie. Als er sprake is van een onherstelbare gebeurtenis die de primaire cache en de replica in de replicatie uitschakelt, wordt de cache opnieuw opgebouwd met de meest recente moment opname. Meer informatie over de [voor](https://redis.io/topics/persistence#rdb-advantages) -en [nadelen](https://redis.io/topics/persistence#rdb-disadvantages) van RDB-persistentie.
+* **AOF Persistence** : wanneer AOF (alleen bestand toevoegen) persistentie is geconfigureerd, slaat Azure cache voor redis elke schrijf bewerking op in een logboek dat ten minste eenmaal per seconde in een Azure Storage-account is opgeslagen. Als er sprake is van een onherstelbare gebeurtenis die de primaire cache en de replica in de replicatie uitschakelt, wordt de cache opnieuw opgebouwd met behulp van de opgeslagen schrijf bewerkingen. Meer informatie over de [voor](https://redis.io/topics/persistence#aof-advantages) -en [nadelen](https://redis.io/topics/persistence#aof-disadvantages) van AOF persistentie.
 
-Persistentie wordt geconfigureerd via de **nieuwe Azure-Cache voor Redis** blade tijdens het maken van de cache en klik op de **resourcemenu** voor bestaande premium in de cache opslaat.
+Persistentie wordt geconfigureerd op de Blade **nieuwe Azure-cache voor redis** tijdens het maken van de cache en in het **resource menu** voor bestaande Premium-caches.
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Nadat een premium-prijscategorie is geselecteerd, klikt u op **Redis-persistentie**.
+Zodra een premium-prijs categorie is geselecteerd, klikt u op **redis persistentie**.
 
 ![Redis-persistentie][redis-cache-persistence]
 
-De stappen in de volgende sectie wordt beschreven hoe u Redis-persistentie configureren op uw nieuwe premium-cache. Nadat de Redis-persistentie is geconfigureerd, klikt u op **maken** naar uw nieuwe premium-cache maken met Redis-persistentie.
+In de stappen in de volgende sectie wordt beschreven hoe u redis Persistence kunt configureren voor uw nieuwe Premium-cache. Zodra de redis-persistentie is geconfigureerd, klikt u op **maken** om uw nieuwe Premium-cache met redis-persistentie te maken.
 
 ## <a name="enable-redis-persistence"></a>Redis-persistentie inschakelen
 
-Redis-persistentie is ingeschakeld op de **Redis-gegevenspersistentie** blade door het kiezen van een **RDB** of **AOF** persistentie. Deze blade wordt geopend tijdens het maakproces cache voor nieuwe caches, zoals beschreven in de vorige sectie. Voor bestaande caches de **Redis-gegevenspersistentie** blade is toegankelijk vanuit de **resourcemenu** voor uw cache.
+Redis-persistentie wordt ingeschakeld op de Blade **gegevens persistentie redis** door ofwel **RDB** of **AOF** persistentie te kiezen. Voor nieuwe caches is deze Blade toegankelijk tijdens het proces voor het maken van de cache, zoals beschreven in de vorige sectie. Voor bestaande caches wordt de Blade **gegevens persistentie redis** geopend vanuit het **resource menu** voor uw cache.
 
 ![Redis-instellingen][redis-cache-settings]
 
 
-## <a name="configure-rdb-persistence"></a>De RDB-persistentie configureren
+## <a name="configure-rdb-persistence"></a>RDB-persistentie configureren
 
-Als de RDB-persistentie, klikt u op **RDB**. Als u wilt de RDB-persistentie op een eerder ingeschakelde premium-cache uitschakelen, klikt u op **uitgeschakelde**.
+Klik op **RDB**om RDB-persistentie in te scha kelen. Als u de RDB-persistentie wilt uitschakelen voor een eerder ingeschakelde Premium-cache, klikt u op **uitgeschakeld**.
 
-![Redis-persistentie RDB][redis-cache-rdb-persistence]
+![Redis RDB-persistentie][redis-cache-rdb-persistence]
 
-Voor het configureren van de back-upinterval, selecteer een **back-upfrequentie** uit de vervolgkeuzelijst. U kunt kiezen uit **15 minuten**, **30 minuten**, **60 minuten**, **6 uur**, **12 uur**, en **24 uur**. Dit interval begint te tellen omlaag nadat de vorige back-upbewerking is voltooid en wanneer deze is verstreken een nieuwe back-up wordt gestart.
+Als u het back-upinterval wilt configureren, selecteert u een **back-upfrequentie** in de vervolg keuzelijst. U kunt kiezen uit **15 minuten**, **30 minuten**, **60 minuten**, **6 uur**, **12 uur**en **24 uur**. Dit interval begint met tellen nadat de vorige back-upbewerking is voltooid en wanneer wordt gewacht tot een nieuwe back-up wordt gestart.
 
-Klik op **Storage-Account** om te selecteren van de storage-account te gebruiken, kiest u de **primaire sleutel** of **secundaire sleutel** gebruiken vanuit de **opslagsleutel** vervolgkeuzelijst. Moet u een opslagaccount in dezelfde regio als de cache en een **Premium Storage** account wordt aanbevolen omdat premium-opslag heeft een hogere doorvoer. 
+Klik op **opslag account** om het opslag account te selecteren dat u wilt gebruiken en kies ofwel de **primaire sleutel** of **secundaire sleutel** die u wilt gebruiken in de vervolg keuzelijst **opslag sleutel** . U moet een opslag account in dezelfde regio kiezen als de cache en een **Premium Storage** account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. 
 
 > [!IMPORTANT]
-> Als u de toegangssleutel voor uw account voor de persistentie opnieuw is gegenereerd, moet u opnieuw configureren de gewenste sleutel in de **opslagsleutel** vervolgkeuzelijst.
+> Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** .
 > 
 > 
 
-Klik op **OK** om op te slaan van de configuratie van de persistentie.
+Klik op **OK** om de persistentie configuratie op te slaan.
 
-De volgende back-up (of de eerste back-up voor nieuwe caches) wordt gestart zodra de back-upfrequentie-interval is verstreken.
+De volgende back-up (of de eerste back-up voor nieuwe caches) wordt gestart zodra het interval voor de back-upfrequentie is verstreken.
 
 ## <a name="configure-aof-persistence"></a>AOF-persistentie configureren
 
-Als AOF persistentie, klikt u op **AOF**. Als u wilt uitschakelen AOF-persistentie op een eerder ingeschakelde premium-cache, klikt u op **uitgeschakelde**.
+Als u AOF-persistentie wilt inschakelen, klikt u op **AOF**. Als u AOF-persistentie wilt uitschakelen voor een eerder ingeschakelde Premium-cache, klikt u op **uitgeschakeld**.
 
-![Redis-persistentie AOF][redis-cache-aof-persistence]
+![Redis AOF-persistentie][redis-cache-aof-persistence]
 
-Als u wilt configureren AOF persistentie, Geef een **eerste Opslagaccount**. Dit opslagaccount moet zich in dezelfde regio bevinden als de cache en een **Premium Storage** account wordt aanbevolen omdat premium-opslag heeft een hogere doorvoer. U kunt eventueel een extra opslagaccount met de naam **tweede Opslagaccount**. Als een tweede storage-account is geconfigureerd, worden de schrijfbewerkingen naar de replica-cache met deze tweede storage-account geschreven. Voor elke geconfigureerde storage-account, kiest u de **primaire sleutel** of **secundaire sleutel** gebruiken vanuit de **opslagsleutel** vervolgkeuzelijst. 
+Als u AOF-persistentie wilt configureren, geeft u een **eerste opslag account**op. Dit opslag account moet zich in dezelfde regio bevinden als de cache en een **Premium Storage** -account wordt aanbevolen omdat Premium Storage een hogere door Voer heeft. U kunt optioneel een extra opslag account met de naam **tweede opslag account**configureren. Als er een tweede opslag account is geconfigureerd, worden de schrijf bewerkingen naar de replica cache naar dit tweede opslag account geschreven. Voor elk geconfigureerd opslag account kiest u de **primaire sleutel** of **secundaire sleutel** die u wilt gebruiken in de vervolg keuzelijst **opslag sleutel** . 
 
 > [!IMPORTANT]
-> Als u de toegangssleutel voor uw account voor de persistentie opnieuw is gegenereerd, moet u opnieuw configureren de gewenste sleutel in de **opslagsleutel** vervolgkeuzelijst.
+> Als de opslag sleutel voor uw persistentie account opnieuw wordt gegenereerd, moet u de gewenste sleutel opnieuw configureren in de vervolg keuzelijst **opslag sleutel** .
 > 
 > 
 
-Wanneer AOF persistentie is ingeschakeld, schrijft u bewerkingen met de cache worden opgeslagen in de aangewezen storage-account (of de accounts als u een tweede storage-account hebt geconfigureerd). De opgeslagen AOF-logboek wordt gebruikt in het geval van een onherstelbare fout waarmee u zowel de primaire en replica-cache, opnieuw opbouwen van de cache.
+Wanneer AOF-persistentie is ingeschakeld, worden schrijf bewerkingen naar de cache opgeslagen in het toegewezen opslag account (of de accounts als u een tweede opslag account hebt geconfigureerd). In het geval van een onherstelbare fout die zowel de primaire als de replica cache inneemt, wordt het opgeslagen AOF-logboek gebruikt om de cache opnieuw op te bouwen.
 
 ## <a name="persistence-faq"></a>Veelgestelde vragen over persistentie
-De volgende lijst bevat antwoorden op veelgestelde vragen over Azure Cache voor Redis-persistentie.
+De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor redis persistentie.
 
-* [Kan ik de persistentie voor een eerder gemaakte cache inschakelen?](#can-i-enable-persistence-on-a-previously-created-cache)
-* [Kan ik AOF en RDB persistentie op hetzelfde moment inschakelen?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
-* [Welk model u persistentie moet ik kiezen?](#which-persistence-model-should-i-choose)
-* [Wat gebeurt er als ik naar een andere grootte hebt geschaald, en een back-up die is gemaakt voordat de bewerking vergroten/verkleinen is hersteld?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+* [Kan ik persistentie inschakelen voor een eerder gemaakte cache?](#can-i-enable-persistence-on-a-previously-created-cache)
+* [Kan ik AOF en RDB-persistentie op hetzelfde moment inschakelen?](#can-i-enable-aof-and-rdb-persistence-at-the-same-time)
+* [Welk persistentie model moet ik kiezen?](#which-persistence-model-should-i-choose)
+* [Wat gebeurt er als u een andere grootte hebt geschaald en een back-up wordt hersteld die is gemaakt vóór de schaal bewerking?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
 
 
-### <a name="rdb-persistence"></a>De RDB-persistentie
-* [Kan ik de RDB-back-upfrequentie wijzigen nadat ik de cache maken?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
-* [Waarom als ik een back-upfrequentie RDB van 60 minuten er meer dan 60 minuten tussen back-ups is?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
+### <a name="rdb-persistence"></a>RDB-persistentie
+* [Kan ik de frequentie van de RDB-back-up wijzigen nadat ik de cache heb gemaakt?](#can-i-change-the-rdb-backup-frequency-after-i-create-the-cache)
+* [Waarom is er meer dan 60 minuten tussen back-ups als ik een RDB-back-upfrequentie van 60 minuten heb?](#why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups)
 * [Wat gebeurt er met de oude RDB-back-ups wanneer een nieuwe back-up wordt gemaakt?](#what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made)
 
 ### <a name="aof-persistence"></a>AOF-persistentie
-* [Wanneer moet ik een tweede storage-account gebruiken?](#when-should-i-use-a-second-storage-account)
-* [AOF persistentie hebben invloed op in de gehele, latentie, of de prestaties van mijn cache gebruikt?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
-* [Hoe kan ik de tweede storage-account verwijderen?](#how-can-i-remove-the-second-storage-account)
-* [Wat is een herschrijven en wat betekent dat mijn cache voor?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
-* [Wat kan ik verwachten wanneer u een cache met AOF ingeschakeld?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
-* [Hoe wordt mijn AOF-gegevens georganiseerd in opslag?](#how-is-my-aof-data-organized-in-storage)
+* [Wanneer moet ik een tweede opslag account gebruiken?](#when-should-i-use-a-second-storage-account)
+* [Is AOF persistentie van invloed op de gehele, latentie of prestaties van mijn cache?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+* [Hoe kan ik het tweede opslag account verwijderen?](#how-can-i-remove-the-second-storage-account)
+* [Wat is een herschrijf bewerking en wat is van invloed op mijn cache?](#what-is-a-rewrite-and-how-does-it-affect-my-cache)
+* [Wat moet ik verwachten bij het schalen van een cache met AOF ingeschakeld?](#what-should-i-expect-when-scaling-a-cache-with-aof-enabled)
+* [Hoe worden mijn AOF-gegevens ingedeeld in opslag?](#how-is-my-aof-data-organized-in-storage)
 
 
-### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Kan ik de persistentie voor een eerder gemaakte cache inschakelen?
-Ja, Redis-persistentie kan worden geconfigureerd tijdens het maken van cache en bestaande premium-caches.
+### <a name="can-i-enable-persistence-on-a-previously-created-cache"></a>Kan ik persistentie inschakelen voor een eerder gemaakte cache?
+Ja, redis persistentie kan worden geconfigureerd bij het maken van de cache en op bestaande Premium-caches.
 
-### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Kan ik AOF en RDB persistentie op hetzelfde moment inschakelen?
+### <a name="can-i-enable-aof-and-rdb-persistence-at-the-same-time"></a>Kan ik AOF en RDB-persistentie op hetzelfde moment inschakelen?
 
-Nee, u kunt alleen RDB of AOF, maar niet beide op hetzelfde moment inschakelen.
+Nee, u kunt alleen RDB of AOF inschakelen, maar niet beide tegelijk.
 
-### <a name="which-persistence-model-should-i-choose"></a>Welk model u persistentie moet ik kiezen?
+### <a name="which-persistence-model-should-i-choose"></a>Welk persistentie model moet ik kiezen?
 
-AOF-persistentie slaat elke schrijven naar een logboek dat enige invloed op de doorvoer heeft, vergeleken met de RDB-persistentie Hiermee slaat u back-ups op basis van de geconfigureerde back-interval, met minimale gevolgen voor prestaties. AOF-persistentie kiezen als het primaire doel is om gegevensverlies te minimaliseren en u kunt een afname in de doorvoer voor uw cache verwerken. Kies de RDB-persistentie als u wilt optimale doorvoer voor uw cache behouden, maar toch een mechanisme voor het herstel van gegevens.
+AOF-persistentie slaat elke schrijf bewerking op in een logboek, wat invloed heeft op de door Voer, vergeleken met RDB-persistentie, waarmee back-ups worden opgeslagen op basis van het geconfigureerde back-upinterval, met minimale gevolgen voor de prestaties. Kies AOF-persistentie als uw primaire doel is om gegevens verlies te minimaliseren en u een afname van de door Voer voor uw cache kunt afnemen. Kies RDB-persistentie als u een optimale door Voer voor uw cache wilt behouden, maar toch een mechanisme wilt voor het herstellen van gegevens.
 
-* Meer informatie over de [voordelen](https://redis.io/topics/persistence#rdb-advantages) en [nadelen](https://redis.io/topics/persistence#rdb-disadvantages) van RDB persistentie.
-* Meer informatie over de [voordelen](https://redis.io/topics/persistence#aof-advantages) en [nadelen](https://redis.io/topics/persistence#aof-disadvantages) van AOF persistentie.
+* Meer informatie over de [voor](https://redis.io/topics/persistence#rdb-advantages) -en [nadelen](https://redis.io/topics/persistence#rdb-disadvantages) van RDB-persistentie.
+* Meer informatie over de [voor](https://redis.io/topics/persistence#aof-advantages) -en [nadelen](https://redis.io/topics/persistence#aof-disadvantages) van AOF persistentie.
 
-Zie voor meer informatie over de prestaties bij het gebruik van AOF persistentie [AOF wordt persistentie hebben invloed op in de gehele, latentie, of de prestaties van mijn cache?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
+Zie voor meer informatie over prestaties bij het gebruik van AOF-persistentie [de AOF persistentie is van invloed op de hele, latentie of prestaties van mijn cache?](#does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache)
 
-### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Wat gebeurt er als ik naar een andere grootte hebt geschaald, en een back-up die is gemaakt voordat de bewerking vergroten/verkleinen is hersteld?
+### <a name="what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation"></a>Wat gebeurt er als u een andere grootte hebt geschaald en een back-up wordt hersteld die is gemaakt vóór de schaal bewerking?
 
-Voor zowel RDB en AOF-persistentie:
+Voor zowel RDB-als AOF-persistentie:
 
-* Als u in een groter formaat hebt geschaald, zijn er geen gevolgen.
-* Als u op een kleinere grootte hebt geschaald, en u een aangepaste hebt [databases](cache-configure.md#databases) instellen die groter is dan de [databases limiet](cache-configure.md#databases) voor de grootte van uw nieuwe gegevens in deze databases wordt niet hersteld. Zie voor meer informatie, [Is mijn aangepaste databases betrokken instellen tijdens het schalen?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
-* Als u op een kleinere grootte hebt geschaald, en er niet genoeg ruimte is in de kleinere grootte voor alle van de gegevens van de laatste back-up, sleutels wordt onbeschikbaar gemaakt tijdens het herstelproces, meestal met behulp van de [allkeys lru](https://redis.io/topics/lru-cache) verwijderingsbeleid.
+* Als u naar een grotere grootte hebt geschaald, is er geen impact.
+* Als u naar een kleinere grootte hebt geschaald en u een aangepaste [Data Base](cache-configure.md#databases) -instelling hebt die groter is dan de limiet voor de [Data Base](cache-configure.md#databases) voor de nieuwe grootte, worden de gegevens in die data bases niet hersteld. Zie voor meer informatie [de instelling mijn aangepaste data bases wordt beïnvloed tijdens het schalen?](cache-how-to-scale.md#is-my-custom-databases-setting-affected-during-scaling)
+* Als u naar een kleinere grootte hebt geschaald en er onvoldoende ruimte is in de kleinere grootte om alle gegevens van de laatste back-up te bewaren, worden de sleutels tijdens het herstel proces verwijderd, meestal met behulp van het verwijderings beleid voor [AllKeys-LRU](https://redis.io/topics/lru-cache) .
 
-### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kan ik de RDB-back-upfrequentie wijzigen nadat ik de cache maken?
-Ja, kunt u de back-upfrequentie voor RDB persistentie wijzigen op de **Redis-gegevenspersistentie** blade. Zie configureren van Redis-persistentie voor instructies.
+### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kan ik de frequentie van de RDB-back-up wijzigen nadat ik de cache heb gemaakt?
+Ja, u kunt de back-upfrequentie voor RDB-persistentie op de Blade **gegevens persistentie redis** wijzigen. Zie redis-persistentie configureren voor instructies.
 
-### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Waarom als ik een back-upfrequentie RDB van 60 minuten er meer dan 60 minuten tussen back-ups is?
-De RDB-persistentie back-upfrequentie interval start niet totdat de vorige back-upproces is voltooid. Als de back-upfrequentie 60 minuten is en wordt een back-upproces 15 minuten te voltooien, start de volgende back-up niet tot 75 minuten na de starttijd van de vorige back-up.
+### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Waarom is er meer dan 60 minuten tussen back-ups als ik een RDB-back-upfrequentie van 60 minuten heb?
+Het interval voor de back-upfrequentie voor de RDB-persistentie wordt pas gestart als het vorige back-upproces is voltooid. Als de back-upfrequentie 60 minuten is en het back-upproces 15 minuten duurt, wordt de volgende back-up pas 75 minuten na de begin tijd van de vorige back-up gestart.
 
 ### <a name="what-happens-to-the-old-rdb-backups-when-a-new-backup-is-made"></a>Wat gebeurt er met de oude RDB-back-ups wanneer een nieuwe back-up wordt gemaakt?
-Alle RDB persistentie back-ups, behalve voor de meest recente worden automatisch verwijderd. Deze verwijdering mogelijk niet direct plaats, maar oudere back-ups zijn niet voor onbepaalde tijd bewaard.
+Alle RDB-persistentie back-ups, met uitzonde ring van de meest recente, worden automatisch verwijderd. Deze verwijdering gebeurt mogelijk niet onmiddellijk, maar oudere back-ups worden niet voor onbepaalde tijd bewaard.
 
 
-### <a name="when-should-i-use-a-second-storage-account"></a>Wanneer moet ik een tweede storage-account gebruiken?
+### <a name="when-should-i-use-a-second-storage-account"></a>Wanneer moet ik een tweede opslag account gebruiken?
 
-Als u denkt dat u hoger dan de verwachte set-bewerkingen op de cache hebt, moet u een tweede opslagaccount voor persistentie AOF.  Instellen van het secundaire opslagaccount zorgt ervoor dat uw cache bandbreedtelimieten opslag niet bereiken.
+U moet een tweede opslag account gebruiken voor AOF-persistentie wanneer u vermoedt dat u meer dan de verwachte set-bewerkingen op de cache hebt.  Het instellen van het secundaire opslag account helpt ervoor te zorgen dat uw cache geen limieten voor opslag bandbreedte bereikt.
 
-### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>AOF persistentie hebben invloed op in de gehele, latentie, of de prestaties van mijn cache gebruikt?
+### <a name="does-aof-persistence-affect-throughout-latency-or-performance-of-my-cache"></a>Is AOF persistentie van invloed op de gehele, latentie of prestaties van mijn cache?
 
-AOF-persistentie is van invloed op de doorvoer van ongeveer 15-20% wanneer de cache lager dan de maximale belasting is (CPU en Server laden beide onder 90%). Er mag niet zijn latentieproblemen wanneer de cache zich binnen deze limieten. Echter, de cache bereiken deze limieten sneller met AOF ingeschakeld.
+AOF persistentie is van invloed op de door Voer met ongeveer 15% – 20% wanneer de cache lager is dan de maximale belasting (CPU en server belasting onder 90%). Er mogen geen latentie problemen optreden wanneer de cache binnen deze limieten valt. De cache zal echter eerder deze limieten bereiken met AOF ingeschakeld.
 
-### <a name="how-can-i-remove-the-second-storage-account"></a>Hoe kan ik de tweede storage-account verwijderen?
+### <a name="how-can-i-remove-the-second-storage-account"></a>Hoe kan ik het tweede opslag account verwijderen?
 
-U kunt de AOF persistentie secundaire storage-account verwijderen door in te stellen van de tweede storage-account moet hetzelfde zijn als het eerste opslagaccount. Zie voor instructies [AOF configureren persistentie](#configure-aof-persistence).
+U kunt het secundaire opslag account AOF Persistence verwijderen door het tweede opslag account in te stellen op hetzelfde als het eerste opslag account. Zie [AOF-persistentie configureren](#configure-aof-persistence)voor instructies.
 
-### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Wat is een herschrijven en wat betekent dat mijn cache voor?
+### <a name="what-is-a-rewrite-and-how-does-it-affect-my-cache"></a>Wat is een herschrijf bewerking en wat is van invloed op mijn cache?
 
-Wanneer het bestand AOF groot genoeg is wordt, een herschrijven wordt automatisch in de wachtrij in de cache. Het herschrijven vergroot/verkleint de AOF-bestand met de minimale set bewerkingen die nodig zijn voor het maken van de huidige gegevensset. Tijdens de regeneraties, verwachten dat eerder prestatielimieten bereiken met name wanneer er sprake is van grote gegevenssets. Regeneraties optreden minder vaak als het bestand AOF groter wordt, maar duurt het een aanzienlijke hoeveelheid tijd wanneer het gebeurt.
+Wanneer het AOF-bestand groot genoeg wordt, wordt een herschrijf bewerking automatisch in de wachtrij geplaatst in de cache. Met de herschrijf bewerking wordt de grootte van het AOF-bestand aangepast met de minimale set bewerkingen die nodig zijn om de huidige gegevensset te maken. Tijdens het herschrijven verwachten de prestaties van de prestatie limieten eerder met name bij het omgaan met grote gegevens sets. Herschrijf bewerkingen worden minder vaak uitgevoerd, omdat het AOF-bestand groter wordt, maar een aanzienlijke hoeveelheid tijd in beslag neemt.
 
-### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Wat kan ik verwachten wanneer u een cache met AOF ingeschakeld?
+### <a name="what-should-i-expect-when-scaling-a-cache-with-aof-enabled"></a>Wat moet ik verwachten bij het schalen van een cache met AOF ingeschakeld?
 
-Als het AOF-bestand op het moment van de schaalbaarheid aanzienlijk groot is, klikt u vervolgens verwachten dat de schaalbewerking langer duren dan verwacht, omdat deze worden opnieuw van het bestand laden wordt nadat schalen is voltooid.
+Als het AOF-bestand op het moment van schalen aanzienlijk groot is, verwacht u dat de schaal bewerking langer duurt dan verwacht, omdat het bestand opnieuw wordt geladen nadat het schalen is voltooid.
 
-Zie voor meer informatie over het omhoog schalen [wat gebeurt er als ik naar een andere grootte hebt geschaald en een back-up is hersteld die is gemaakt voordat de bewerking vergroten/verkleinen?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation)
+Zie [Wat gebeurt er als ik een andere grootte heb geschaald en een back-up is hersteld die is gemaakt vóór de schaal bewerking?](#what-happens-if-i-have-scaled-to-a-different-size-and-a-backup-is-restored-that-was-made-before-the-scaling-operation) voor meer informatie over schalen.
 
-### <a name="how-is-my-aof-data-organized-in-storage"></a>Hoe wordt mijn AOF-gegevens georganiseerd in opslag?
+### <a name="how-is-my-aof-data-organized-in-storage"></a>Hoe worden mijn AOF-gegevens ingedeeld in opslag?
 
-Gegevens die zijn opgeslagen in AOF-bestanden is onderverdeeld in meerdere pagina-blobs per knooppunt voor betere prestaties van het opslaan van de gegevens naar de opslag. De volgende tabel geeft weer hoeveel pagina-blobs worden gebruikt voor elke prijscategorie:
+Gegevens die zijn opgeslagen in AOF-bestanden, worden onderverdeeld in meerdere pagina-blobs per knoop punt om de prestaties van het opslaan van de gegevens in de opslag te verbeteren. In de volgende tabel ziet u hoeveel pagina-blobs voor elke prijs categorie worden gebruikt:
 
-| Premiumlaag | Blobs |
+| Premium-laag | Blobs |
 |--------------|-------|
-| P1           | 4 per shard    |
-| P2           | 8 per shard    |
-| P3           | 16 per shard   |
-| P4           | 20 per shard   |
+| P1           | 4 per Shard    |
+| P2           | 8 per Shard    |
+| P3           | 16 per Shard   |
+| P4           | 20 per Shard   |
 
-Als clustering is ingeschakeld, heeft elke shard in de cache van een eigen set pagina-blobs, zoals aangegeven in de vorige tabel. Bijvoorbeeld, verdeeld een P2-cache met drie shards over de AOF-bestand 24 pagina-blobs (8 blobs per shard, met 3 shards).
+Wanneer Clustering is ingeschakeld, heeft elke Shard in de cache een eigen set pagina-blobs, zoals aangegeven in de vorige tabel. Een P2-cache met drie Shards verdeelt bijvoorbeeld het AOF-bestand over 24 pagina-blobs (8 blobs per Shard, met 3 Shards).
 
-Na een herschrijft bestaan twee sets AOF-bestanden in de opslag. Regeneraties plaatsvinden op de achtergrond en toevoegen aan de eerste set van bestanden, terwijl de set-bewerkingen die worden verzonden naar de cache tijdens het herschrijven toevoegen aan de tweede set. Een back-up wordt tijdelijk opgeslagen tijdens regeneraties in geval van storing, maar wordt onmiddellijk verwijderd nadat een herschrijven is voltooid.
+Na het opnieuw schrijven bestaan er twee sets met AOF-bestanden in de opslag. Herschrijf bewerkingen worden uitgevoerd op de achtergrond en worden toegevoegd aan de eerste set bestanden, terwijl tijdens het toevoegen van de herschrijf bewerking worden verzonden naar de cache. Een back-up wordt tijdelijk opgeslagen tijdens het herschrijven in geval van een storing, maar wordt onmiddellijk verwijderd nadat een herschrijf bewerking is voltooid.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-Informatie over het gebruik van meer functies voor premium-cache.
+Meer informatie over het gebruik van meer Premium-cache functies.
 
-* [Inleiding tot de Azure-Cache voor Premium-laag Redis](cache-premium-tier-intro.md)
+* [Inleiding tot de Azure-cache voor de Premium-laag van redis](cache-premium-tier-intro.md)
 
 <!-- IMAGES -->
 

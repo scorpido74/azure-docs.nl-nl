@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: eccf2a7a1b9c7ea7a21cd5d0cf0f60728284c05d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 8480299c2c889a243150028ac9651f4b62656aec
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579669"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110341"
 ---
-# <a name="voice-assistants-frequently-asked-questions"></a>Spraak assistenten: veelgestelde vragen
+# <a name="voice-assistants-frequently-asked-questions"></a>Veelgestelde vragen over spraak assistenten
 
 Als u geen antwoorden op uw vragen in dit document kunt vinden, Bekijk dan [Andere ondersteunings opties](support.md).
 
@@ -35,9 +35,9 @@ Als u geen antwoorden op uw vragen in dit document kunt vinden, Bekijk dan [Ande
 
 **A:** De beste manier om te beginnen met het maken van een aangepaste opdrachten (preview)-toepassing of basis-bot-raam werk.
 
-* [Een aangepaste opdrachten (preview)-toepassing maken](quickstart-custom-speech-commands-create-new.md)
-* [Een eenvoudige bot-Framework-bot maken](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
-* [Een bot aansluiten op het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Een aangepaste opdrachten (preview)-toepassing maken](quickstart-custom-speech-commands-create-new.md)
+- [Een eenvoudige bot-Framework-bot maken](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-basic-deploy?view=azure-bot-service-4.0)
+- [Een bot aansluiten op het directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
 
 ## <a name="debugging"></a>Foutopsporing
 
@@ -47,14 +47,13 @@ Als u geen antwoorden op uw vragen in dit document kunt vinden, Bekijk dan [Ande
 
 De nieuwste versie van direct line speech vereenvoudigt het proces van het maken van contact met uw bot vanaf een apparaat. Op de pagina kanaal registratie wordt de vervolg keuzelijst aan de bovenkant gekoppeld aan de registratie van uw directe lijn spraak kanaal met een spraak bron. Na de koppeling bevat de v 1.8 Speech SDK een `BotFrameworkConfig::FromSubscription` Factory-methode waarmee een `DialogServiceConnector` wordt geconfigureerd om contact op te nemen met de bot die aan uw abonnement is gekoppeld.
 
-Als u uw client toepassing nog steeds migreert van v 1.7 naar v 1.8, kan `DialogServiceConfig::FromBotSecret` blijven werken met een niet-lege, niet-null-waarde voor de geheime para meter van het kanaal, bijvoorbeeld het vorige geheime geheim dat u hebt gebruikt. Het wordt gewoon genegeerd wanneer u een spraak abonnement gebruikt dat is gekoppeld aan een nieuwe kanaal registratie. Houd er rekening mee dat de waarde *moet* niet-null en niet-leeg zijn, aangezien deze worden gecontroleerd op het apparaat voordat de koppeling aan de service zijde relevant is.
-
+Als u uw client toepassing nog steeds migreert van v 1.7 naar v 1.8, kan `DialogServiceConfig::FromBotSecret` blijven werken met een niet-lege, niet-null-waarde voor de geheime para meter van het kanaal, bijvoorbeeld het vorige geheime geheim dat u hebt gebruikt. Het wordt gewoon genegeerd wanneer u een spraak abonnement gebruikt dat is gekoppeld aan een nieuwe kanaal registratie. Houd er rekening mee dat de waarde _moet_ niet-null en niet-leeg zijn, aangezien deze worden gecontroleerd op het apparaat voordat de koppeling aan de service zijde relevant is.
 
 Raadpleeg de [sectie zelf studie](tutorial-voice-enable-your-bot-speech-sdk.md#register-the-direct-line-speech-channel) voor informatie over kanaal registratie voor een gedetailleerde hand leiding.
 
 **V: er wordt een 401-fout weer geven bij het maken van verbinding en niets werkt. Ik weet dat mijn spraak abonnement sleutel geldig is. Wat gebeurt er?**
 
-**A:** Wanneer u uw abonnement op de Azure Portal beheert, moet u ervoor zorgen dat u de **spraak** resource (micro soft. CognitiveServicesSpeechServices, ' Speech ') gebruikt en *niet* de **Cognitive Services** resource ( Micro soft. CognitiveServicesAllInOne, ' alle Cognitive Services '). Controleer ook de [ondersteuning voor spraak-service regio's voor spraak assistenten](regions.md#voice-assistants).
+**A:** Wanneer u uw abonnement op de Azure Portal beheert, moet u ervoor zorgen dat u de **spraak** resource (micro soft. CognitiveServicesSpeechServices, ' Speech ') gebruikt en _niet_ de **Cognitive Services** resource ( Micro soft. CognitiveServicesAllInOne, ' alle Cognitive Services '). Controleer ook de [ondersteuning voor spraak-service regio's voor spraak assistenten](regions.md#voice-assistants).
 
 ![juiste abonnement voor direct line speech](media/voice-assistants/faq-supported-subscription.png "voor beeld van een compatibel spraak abonnement")
 
@@ -62,8 +61,8 @@ Raadpleeg de [sectie zelf studie](tutorial-voice-enable-your-bot-speech-sdk.md#r
 
 **A:** Deze fout wijst op een communicatie probleem tussen uw assistent en de Voice Assistant-service.
 
-* Voor aangepaste opdrachten (preview) moet u ervoor zorgen dat uw aangepaste opdrachten (preview-toepassing) worden gepubliceerd
-* Zorg ervoor dat u [uw bot op het directe lijn spraak kanaal hebt aangesloten](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), het [Streaming-Protocol ondersteuning](https://aka.ms/botframework/addstreamingprotocolsupport) voor uw bot hebt toegevoegd (met de gerelateerde ondersteuning voor websockets) en controleer vervolgens of uw bot reageert op binnenkomende aanvragen van het kanaal.
+- Voor aangepaste opdrachten (preview) moet u ervoor zorgen dat uw aangepaste opdrachten (preview-toepassing) worden gepubliceerd
+- Zorg ervoor dat u [uw bot op het directe lijn spraak kanaal hebt aangesloten](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech), het [Streaming-Protocol ondersteuning](https://aka.ms/botframework/addstreamingprotocolsupport) voor uw bot hebt toegevoegd (met de gerelateerde ondersteuning voor websockets) en controleer vervolgens of uw bot reageert op binnenkomende aanvragen van het kanaal.
 
 **V: deze code werkt nog steeds niet en/of ik krijg een andere fout wanneer ik een `DialogServiceConnector`gebruik. Wat moet ik doen?**
 
@@ -71,5 +70,5 @@ Raadpleeg de [sectie zelf studie](tutorial-voice-enable-your-bot-speech-sdk.md#r
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Problemen oplossen](troubleshooting.md)
-* [Releaseopmerkingen](releasenotes.md)
+- [Problemen oplossen](troubleshooting.md)
+- [Releaseopmerkingen](releasenotes.md)

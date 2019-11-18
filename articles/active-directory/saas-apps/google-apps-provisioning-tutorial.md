@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54b158528a67dfe77f33f41f3bb4b4570eb4c508
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72802196"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120315"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Zelf studie: G Suite configureren voor automatische gebruikers inrichting
 
@@ -74,7 +74,7 @@ Voordat u G suite configureert voor het automatisch inrichten van gebruikers met
     ![Selecteer API-verwijzing.][16]
 
    > [!IMPORTANT]
-   > Voor elke gebruiker die u wilt inrichten voor G suite, **moet** de gebruikers naam in azure AD zijn gekoppeld aan een aangepast domein. Bijvoorbeeld: gebruikers namen die eruitzien als bob@contoso.onmicrosoft.com worden niet geaccepteerd door G suite. @No__t_0 wordt daarentegen geaccepteerd. U kunt een bestaand gebruikers domein wijzigen door de instructies [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)te volgen.
+   > Voor elke gebruiker die u wilt inrichten voor G suite, **moet** de gebruikers naam in azure AD zijn gekoppeld aan een aangepast domein. Bijvoorbeeld: gebruikers namen die eruitzien als bob@contoso.onmicrosoft.com worden niet geaccepteerd door G suite. bob@contoso.com wordt daarentegen geaccepteerd. U kunt een bestaand gebruikers domein wijzigen door de instructies [hier](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)te volgen.
 
 4.  Nadat u de gewenste aangepaste domeinen hebt toegevoegd en geverifieerd met Azure AD, moet u ze opnieuw controleren met G suite. Raadpleeg de volgende stappen om domeinen in G suite te controleren:
 
@@ -131,7 +131,7 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor G suite in azure AD:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
@@ -195,12 +195,18 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 
 Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op G suite.
 
-Zie [rapportage over het automatisch inrichten van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
 > [!NOTE]
 > Een andere levensvat bare optie voor het automatiseren van de gebruikers inrichting van G suite is het gebruik van [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Met deze optie worden uw on-premises Active Directory-identiteiten naar G suite ingericht.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="common-issues"></a>Algemene problemen
+* G suite vereist dat alle ingerichte gebruikers afkomstig zijn van geverifieerde domeinen. Zorg ervoor dat elke gebruiker die u wilt inrichten, een UPN heeft van een geverifieerd domein in G suite. Als een gebruiker van een niet-geverifieerd domein binnen het bereik van de inrichting valt, wordt er een fout melding weer geven in de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , zoals ' GoogleAppsInvalidDomain '. U kunt deze fouten voor komen en ervoor zorgen dat gebruikers van niet-geverifieerde domeinen zich buiten het bereik bevinden met behulp van een [filter voor bereik](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+    * Doel kenmerk: userPrincipalName
+    * Operator: REGEX MATCH of geen REGEX MATCH-overeenkomst
+    * Waarde:. *@domain.com
+
+## <a name="additional-resources"></a>Aanvullende resources
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

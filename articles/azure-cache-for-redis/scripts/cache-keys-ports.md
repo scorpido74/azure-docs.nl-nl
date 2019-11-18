@@ -1,26 +1,19 @@
 ---
-title: 'Azure CLI-Script voorbeeld: ophalen van de hostnaam, poorten en sleutels voor Azure Cache voor Redis | Microsoft Docs'
+title: Voor beeld van Azure CLI-script-de hostnaam, poorten en sleutels voor Azure cache ophalen voor redis
 description: 'Azure CLI-Script voorbeeld: ophalen van de hostnaam, poorten en sleutels voor een Azure-Cache voor Redis-exemplaar'
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
 tags: azure-service-management
-ms.assetid: 761eb24e-2ba7-418d-8fc3-431153e69a90
 ms.service: cache
 ms.devlang: azurecli
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: tbd
+ms.topic: sample
 ms.date: 08/30/2017
 ms.author: yegu
-ms.openlocfilehash: ff410db561879089c4c1f20acb7cb349f0484fda
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 604ec6de3b95a4bc289176d54d9c7b0a6c42eae6
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60234309"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122510"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>De hostnaam, poorten en sleutels voor Azure Cache voor Redis ophalen
 
@@ -45,6 +38,6 @@ Dit script worden de volgende opdrachten gebruikt om op te halen van de hostnaam
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](https://docs.microsoft.com/cli/azure) voor meer informatie over de Azure CLI.
 
 Aanvullende Azure-Cache voor Redis CLI-voorbeeldscripts vindt u de [Azure Cache voor Redis-documentatie](../cli-samples.md).

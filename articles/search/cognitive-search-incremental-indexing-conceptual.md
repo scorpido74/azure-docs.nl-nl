@@ -1,5 +1,5 @@
 ---
-title: Inleiding tot incrementele indexering (preview-versie)
+title: Incrementele indexering (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Configureer uw AI-verrijkings pijplijn om uw gegevens te laten voldoen aan de uiteindelijke consistentie van het verwerken van updates voor vaardig heden, vaardig heden, Indexeer functies of gegevens bronnen. Deze functie is momenteel beschikbaar als open bare preview
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 94ce056185ff6a804521bf583ac4f6ffaa513fb0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 76ab8784f04f3c67e4ea8062505931783048dea1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715432"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113600"
 ---
 # <a name="what-is-incremental-indexing-in-azure-cognitive-search"></a>Wat is incrementele indexering in azure Cognitive Search?
 
@@ -138,7 +138,7 @@ Bij sommige Indexeer functies (via [gegevens bronnen](https://docs.microsoft.com
 
 Vaardig heden biedt geen ondersteuning voor nieuwe bewerkingen, maar biedt wel ondersteuning voor een nieuwe query reeks parameter: `disableCacheReprocessingChangeDetection` moet worden ingesteld op `true` als u wilt dat bestaande documenten niet worden bijgewerkt op basis van de huidige actie.
 
-### <a name="datasources"></a>gegevens bronnen
+### <a name="datasources"></a>Gegevens bronnen
 
 Gegevens bronnen ondersteunen geen nieuwe bewerkingen, maar ondersteunen een nieuwe query reeks parameter: `ignoreResetRequirement` moet worden ingesteld op `true` wanneer de update-actie de cache niet moet valideren.
 

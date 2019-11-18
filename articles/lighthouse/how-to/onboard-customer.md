@@ -1,22 +1,18 @@
 ---
 title: Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 description: Meer informatie over hoe u een klant kunt vrijmaken voor het beheer van Azure-resources, zodat deze toegankelijk is en kan worden beheerd via uw eigen Tenant.
-author: JnHs
-ms.author: jenhayes
-ms.service: lighthouse
 ms.date: 11/7/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: 1d5e9c44fe7669a89c52d2ac14299c2687f11dc5
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 61b639a65d42d64a828db896b7c815c3d8f84734
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827239"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131252"
 ---
 # <a name="onboard-a-customer-to-azure-delegated-resource-management"></a>Een klant in gedelegeerd Azure-resourcebeheer plaatsen
 
-In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan opsturen naar een Azure-gedelegeerd resource beheer, zodat de gedelegeerde resources (abonnementen en/of resource groepen) kunnen worden geopend en beheerd via uw eigen Azure Active Directory ( Azure AD)-Tenant. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+In dit artikel wordt uitgelegd hoe u, als service provider, een klant kan opsturen naar een Azure-gedelegeerd resource beheer, zodat de gedelegeerde resources (abonnementen en/of resource groepen) kunnen worden geopend en beheerd via uw eigen Azure Active Directory (Azure AD)-Tenant. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
 
 U kunt dit proces herhalen als u resources beheert voor meerdere klanten. Wanneer een geautoriseerde gebruiker zich aanmeldt bij uw Tenant, kan die gebruiker worden geautoriseerd door de klant pacht bereiken om beheer bewerkingen uit te voeren zonder dat ze zich hoeven aan te melden bij elke afzonderlijke klant Tenant.
 
@@ -110,7 +106,7 @@ az role definition list --name "<roleName>" | grep name
 > [!TIP]
 > U kunt het beste de functie voor het verwijderen van de [registratie toewijzing beheerde services](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) toewijzen bij het voorbereiden van een klant, zodat gebruikers in uw Tenant [de toegang tot de overdracht](#remove-access-to-a-delegation) later indien nodig kunnen verwijderen. Als deze rol niet is toegewezen, kunnen gedelegeerde resources alleen worden verwijderd door een gebruiker in de Tenant van de klant.
 
-## <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager sjabloon maken
+## <a name="create-an-azure-resource-manager-template"></a>Een Azure Resource Manager-sjabloon maken
 
 Voor het onboarden van uw klant moet u een [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/) -sjabloon maken voor uw aanbieding met de volgende gegevens. De waarden **mspOfferName** en **mspOfferDescription** zijn zichtbaar voor de klant wanneer u details van de aanbieding bekijkt op de [pagina service providers](view-manage-service-providers.md) van de Azure Portal.
 

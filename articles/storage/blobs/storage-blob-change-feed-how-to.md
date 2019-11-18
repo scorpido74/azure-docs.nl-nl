@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 00805d6284c166d0ec03b9fe88482377a9488314
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 75995eeb3f8255cb4c60d5be267f9c343edfea89
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084851"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111868"
 ---
 # <a name="process-change-feed-in-azure-blob-storage-preview"></a>Wijzigings feed in Azure Blob Storage verwerken (preview-versie)
 
@@ -36,9 +36,9 @@ Zie [Change feed in Azure Blob Storage (preview)](storage-blob-change-feed.md)vo
 
 ## <a name="connect-to-the-storage-account"></a>Verbinding maken met het opslag account
 
-Parseer de connection string door de methode [Cloud Storage account. TryParse](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.tryparse) aan te roepen. 
+Parseer de connection string door de methode [Cloud Storage account. TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse) aan te roepen. 
 
-Maak vervolgens een object dat Blob Storage in uw opslag account vertegenwoordigt door de methode [Cloud Storage account. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet) aan te roepen.
+Maak vervolgens een object dat Blob Storage in uw opslag account vertegenwoordigt door de methode [Cloud Storage account. CreateCloudBlobClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.storage.blob.blobaccountextensions.createcloudblobclient) aan te roepen.
 
 ```cs
 public bool GetBlobClient(ref CloudBlobClient cloudBlobClient, string storageConnectionString)

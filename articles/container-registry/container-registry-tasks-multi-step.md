@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: 27321dbcdeae3a830b6ddf5ea70cbaa098d7e4e3
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 06bdcc1cd4f9bfcb1a77140d70435545fbe01079
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931497"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74148764"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>Meerdere stappen uitvoeren voor het bouwen, testen en patchen van taken in ACR-taken
 
@@ -84,7 +84,7 @@ steps:
   - cmd: {{.Run.Registry}}/functions/helm upgrade helloworld ./helm/helloworld/ --reuse-values --set helloworld.image={{.Run.Registry}}/helloworld:{{.Run.ID}}
 ```
 
-Zie [taak voorbeelden][task-examples] voor complete YAML-bestanden en Dockerfiles voor taken met meerdere stappen voor verschillende scenario's.
+Zie [taak voorbeelden](container-registry-tasks-samples.md) voor YAML-bestanden en Dockerfiles voor taken in meerdere stappen voor verschillende scenario's.
 
 ## <a name="run-a-sample-task"></a>Een voorbeeld taak uitvoeren
 
@@ -155,7 +155,7 @@ Zie voor meer informatie over geautomatiseerd builds van Git of basis installati
 U vindt hier een Naslag informatie en voor beelden voor taken in meerdere stappen:
 
 * [Taak verwijzing](container-registry-tasks-reference-yaml.md) -taak stap typen, eigenschappen en gebruik.
-* [Taak voorbeelden][task-examples] : voor beeld `task.yaml` bestanden voor verschillende scenario's, eenvoudig tot complex.
+* [Taak voorbeelden](container-registry-tasks-samples.md) : voor beeld `task.yaml` en docker-bestanden voor verschillende scenario's, eenvoudig naar complex.
 * [Cmd opslag plaats](https://github.com/AzureCR/cmd) : een verzameling containers als opdrachten voor ACR-taken.
 
 <!-- IMAGES -->

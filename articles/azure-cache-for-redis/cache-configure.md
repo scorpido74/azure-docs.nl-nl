@@ -1,25 +1,17 @@
 ---
-title: Azure-cache configureren voor redis | Microsoft Docs
+title: Azure-cache configureren voor redis
 description: Inzicht in de standaard redis-configuratie voor Azure cache voor redis en meer informatie over het configureren van uw Azure-cache voor redis-instanties
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: d0bf2e1f-6a26-4e62-85ba-d82b35fc5aa6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 6bc4b69122df7d29a611571a750229f47337015c
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7c0642377e75e621e1774936262ffddd166ff06d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756801"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122872"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Azure-cache configureren voor redis
 In dit onderwerp worden de configuraties beschreven die beschikbaar zijn voor uw Azure-cache voor redis-exemplaren. In dit onderwerp wordt ook de standaard redis-server configuratie voor Azure cache voor redis-exemplaren besproken.
@@ -201,7 +193,7 @@ Elke prijs categorie heeft verschillende limieten voor client verbindingen, gehe
 Als u uw cache wilt bijwerken, klikt u op **Nu bijwerken** om de prijs categorie te wijzigen en uw cache te [schalen](#scale) . Zie voor meer informatie over het kiezen van een prijs categorie [Wat is Azure cache voor redis aanbieding en grootte moet ik gebruiken?](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)
 
 
-### <a name="scale"></a>Schaal
+### <a name="scale"></a>Schalen
 Klik op **schalen** om de prijs categorie voor uw cache weer te geven of te wijzigen. Zie [Azure-cache schalen voor redis](cache-how-to-scale.md)voor meer informatie over schalen.
 
 ![Azure cache voor redis-prijs categorie](./media/cache-configure/pricing-tier.png)
@@ -308,7 +300,7 @@ Met de instellingen in de sectie **beheer** kunt u de volgende beheer taken voor
 * [Opnieuw opstarten](#reboot)
 
 
-### <a name="importexport"></a>Import/export
+### <a name="importexport"></a>Import/Export
 Import/export is een Azure cache voor redis-gegevens beheer bewerking, waarmee u gegevens in de cache kunt importeren en exporteren door een Azure-cache voor een redis-data base (RDB)-moment opname te importeren en exporteren van een Premium-cache naar een pagina-Blob in een Azure Storage-account. Met importeren/exporteren kunt u tussen verschillende Azure-caches migreren voor redis-exemplaren of de cache vullen met gegevens voor gebruik.
 
 Importeren kan worden gebruikt om redis compatibele RDB-bestanden te halen van elke redis-server die in een wille keurige Cloud of omgeving wordt uitgevoerd, waaronder redis die wordt uitgevoerd op Linux, Windows of een Cloud provider zoals Amazon Web Services en anderen. Het importeren van gegevens is een eenvoudige manier om een cache met vooraf gevulde gegevens te maken. Tijdens het import proces laadt Azure cache voor redis de RDB-bestanden vanuit Azure Storage in het geheugen en voegt vervolgens de sleutels in de cache in.
@@ -341,7 +333,7 @@ Als u een of meer knoop punten van uw cache opnieuw wilt opstarten, selecteert u
 
 In de sectie **bewaking** kunt u Diagnostische gegevens en bewaking configureren voor uw Azure-cache voor redis. Zie [Azure-cache bewaken voor redis](cache-how-to-monitor.md)voor meer informatie over Azure cache voor redis-controle en-diagnose.
 
-![Diagnostics](./media/cache-configure/redis-cache-diagnostics.png)
+![Diagnostiek](./media/cache-configure/redis-cache-diagnostics.png)
 
 * [Metrische gegevens van redis](#redis-metrics)
 * [Waarschuwings regels](#alert-rules)
@@ -354,7 +346,7 @@ Klik op **redis metrische gegevens** om de [metrische gegevens](cache-how-to-mon
 
 Klik op **waarschuwings regels** om waarschuwingen te configureren op basis van Azure cache voor redis metrische gegevens. Zie [waarschuwingen](cache-how-to-monitor.md#alerts)voor meer informatie.
 
-### <a name="diagnostics"></a>Diagnostics
+### <a name="diagnostics"></a>Diagnostiek
 
 Standaard worden de metrische gegevens in de cache van Azure Monitor [30 dagen opgeslagen](../azure-monitor/platform/data-platform-metrics.md) en vervolgens verwijderd. Als u de cache gegevens langer dan 30 dagen wilt behouden, klikt u op **diagnose** om [het opslag account te configureren](cache-how-to-monitor.md#export-cache-metrics) dat wordt gebruikt voor het opslaan van de diagnostische gegevens van de cache.
 
@@ -400,7 +392,7 @@ Nieuwe Azure-cache voor redis-exemplaren worden geconfigureerd met de volgende s
 
 | Instelling | Standaardwaarde | Beschrijving |
 | --- | --- | --- |
-| `databases` |16 |Het standaard aantal data bases is 16, maar u kunt een ander getal configureren op basis van de prijs categorie. <sup>1</sup> de standaard database is db 0, u kunt een andere maken per verbinding met `connection.GetDatabase(dbid)` waarbij `dbid` een getal tussen `0` en `databases - 1` is. |
+| `databases` |16 |Het standaard aantal data bases is 16, maar u kunt een ander getal configureren op basis van de prijs categorie. <sup>1</sup> de standaard database is db 0, u kunt een andere maken per verbinding met `connection.GetDatabase(dbid)` waarbij `dbid` een getal tussen `0` en `databases - 1`is. |
 | `maxclients` |Is afhankelijk van de prijs categorie<sup>2</sup> |Deze waarde is het maximum aantal aangesloten clients dat tegelijkertijd is toegestaan. Zodra de limiet is bereikt, sluit redis alle nieuwe verbindingen af en wordt de fout ' maximum aantal clients bereikt ' geretourneerd. |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory-beleid is de instelling voor hoe redis selecteert wat moet worden verwijderd wanneer `maxmemory` (de grootte van de cache aanbieding die u hebt geselecteerd tijdens het maken van de cache) is bereikt. Met Azure cache voor redis is de standaard instelling `volatile-lru`, waarmee de sleutels met een verlopende set met een LRU-algoritme worden verwijderd. Deze instelling kan worden geconfigureerd in de Azure Portal. Zie [geheugen beleid](#memory-policies)voor meer informatie. |
 | `maxmemory-samples` |3 |Voor het opslaan van geheugen zijn LRU en minimale TTL-algoritmen een geschatte algoritme in plaats van nauw keurige algoritmen. Standaard worden met redis drie sleutels gecontroleerd en wordt de versie gekozen die minder recent is gebruikt. |
@@ -434,7 +426,7 @@ Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor mee
 > 
 
 <a name="maxclients"></a>
-<sup>2</sup> `maxclients` verschilt voor elke Azure-cache voor redis prijs categorie.
+<sup>2</sup>`maxclients` verschilt voor elke Azure-cache voor redis prijs categorie.
 
 * Basic-en Standard-caches
   * C0 (250 MB) cache-Maxi maal 256 verbindingen
@@ -464,7 +456,7 @@ Zie [Wat zijn redis-data bases?](cache-faq.md#what-are-redis-databases) voor mee
 > * BGREWRITEAOF
 > * BGSAVE
 > * CONFIGURATIES
-> * FOUT opsporing
+> * DEBUG
 > * MIGRAT
 > * OPSLAAN
 > * MATIG

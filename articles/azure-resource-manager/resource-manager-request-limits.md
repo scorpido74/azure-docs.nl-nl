@@ -1,20 +1,17 @@
 ---
-title: Limieten en beperking van aanvragen-Azure Resource Manager
-description: Hierin wordt beschreven hoe u bandbreedte beperking gebruikt met Azure Resource Manager-aanvragen wanneer de abonnements limieten zijn bereikt.
-author: tfitzmac
-ms.service: azure-resource-manager
+title: Limieten en beperking van aanvragen
+description: Beschrijft hoe u gebruik van beperking met Azure Resource Manager-aanvragen wanneer de limieten voor een abonnement is bereikt.
 ms.topic: conceptual
 ms.date: 10/26/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 7d53e5749385499113d0dc5261398561d82347a0
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: b47943d69d209f5a0406c293b5a24c6ac0ad0c10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965569"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150472"
 ---
-# <a name="throttling-resource-manager-requests"></a>Resource Manager-aanvragen beperken
+# <a name="throttling-resource-manager-requests"></a>Beperking van Resource Manager-aanvragen
 
 In dit artikel wordt beschreven hoe Azure Resource Manager vertragings aanvragen opstuurt. U ziet hoe u het aantal aanvragen kunt bijhouden dat achterblijft voordat de limiet wordt bereikt en hoe u kunt reageren wanneer u de limiet hebt bereikt.
 
@@ -24,11 +21,11 @@ Beperking gebeurt op twee niveaus. Azure Resource Manager beperkt aanvragen voor
 
 ## <a name="subscription-and-tenant-limits"></a>Abonnement-en Tenant limieten
 
-Voor elke bewerking op abonnements niveau en op Tenant niveau gelden beperkingen voor het beperken van limieten. Er zijn abonnements aanvragen die moeten worden door gegeven aan uw abonnement-ID, zoals het ophalen van de resource groepen in uw abonnement. Tenant aanvragen bevatten niet uw abonnements-ID, zoals het ophalen van geldige Azure-locaties.
+Voor elke bewerking op abonnements niveau en op Tenant niveau gelden beperkingen voor het beperken van limieten. Er zijn abonnements aanvragen die moeten worden door gegeven aan uw abonnement-ID, zoals het ophalen van de resource groepen in uw abonnement. Tenant-aanvragen zijn niet opgenomen uw abonnements-ID, zoals het ophalen van geldige Azure-locaties.
 
 De standaard limieten voor beperking per uur worden weer gegeven in de volgende tabel.
 
-| Scope | Operations | Limiet |
+| Bereik | Bewerkingen | Limiet |
 | ----- | ---------- | ------- |
 | Abonnement | titel | 12000 |
 | Abonnement | Delete | 15.000 |
@@ -38,7 +35,7 @@ De standaard limieten voor beperking per uur worden weer gegeven in de volgende 
 
 Deze limieten zijn van toepassing op de beveiligingsprincipal (gebruiker of toepassing) die de aanvragen doet en de abonnements-id of tenant-id. Als uw aanvragen afkomstig zijn van meerdere beveiligingsprincipals, is uw limiet voor het abonnement of de tenant groter dan 12.000 en 1200 per uur.
 
-Deze limieten gelden voor elke Azure Resource Manager-instantie. Er zijn meerdere exemplaren in elke Azure-regio en Azure Resource Manager wordt geïmplementeerd in alle Azure-regio's.  In de praktijk zijn de limieten dus hoger dan deze limieten. De aanvragen van een gebruiker worden meestal verwerkt door verschillende exemplaren van Azure Resource Manager.
+Deze limieten gelden voor elk exemplaar van Azure Resource Manager. Er zijn meerdere exemplaren in elke Azure-regio en Azure Resource Manager wordt geïmplementeerd voor alle Azure-regio's.  In de praktijk zijn de limieten dus hoger dan deze limieten. De aanvragen van een gebruiker worden meestal verwerkt door verschillende exemplaren van Azure Resource Manager.
 
 ## <a name="resource-provider-limits"></a>Limieten van resource provider
 
@@ -75,7 +72,7 @@ Soms kunnen beperkings limieten worden verhoogd. Als u wilt weten of de beperkin
 
 ## <a name="error-code"></a>Foutcode
 
-Wanneer u de limiet bereikt, ontvangt u de HTTP-status code **429 te veel aanvragen**. Het antwoord bevat een **nieuwe waarde voor opnieuw proberen** , waarmee het aantal seconden wordt aangegeven dat de toepassing moet wachten (of slaap stand) voordat de volgende aanvraag wordt verzonden. Als u een aanvraag verzendt voordat de waarde voor opnieuw proberen is verstreken, wordt uw aanvraag niet verwerkt en wordt er een nieuwe waarde voor opnieuw proberen geretourneerd.
+Wanneer u de limiet is bereikt, ontvangt u de HTTP-statuscode **429 te veel aanvragen**. Het antwoord bevat een **nieuwe waarde voor opnieuw proberen** , waarmee het aantal seconden wordt aangegeven dat de toepassing moet wachten (of slaap stand) voordat de volgende aanvraag wordt verzonden. Als u een aanvraag verzendt voordat de waarde voor opnieuw proberen is verstreken, wordt uw aanvraag is niet verwerkt en wordt een nieuwe waarde voor opnieuw proberen wordt geretourneerd.
 
 Nadat u het opgegeven tijdstip hebt gewacht, kunt u de verbinding met Azure ook sluiten en opnieuw openen. Door de verbinding opnieuw in te stellen, kunt u verbinding maken met een ander exemplaar van Azure Resource Manager.
 
@@ -83,49 +80,49 @@ Als u een Azure SDK gebruikt, kan de SDK een automatische configuratie voor opni
 
 Sommige resource providers retour neren 429 om een tijdelijk probleem te melden. Het probleem kan een overbelasting voor waarde zijn die niet rechtstreeks wordt veroorzaakt door uw aanvraag. Het kan ook duiden op een tijdelijke fout over de status van de doel resource of afhankelijke resource. De netwerk resource provider retourneert bijvoorbeeld 429 met de fout code **RetryableErrorDueToAnotherOperation** wanneer de doel resource is vergrendeld door een andere bewerking. Bekijk de fout details in het antwoord om te bepalen of de fout afkomstig is van beperking of een tijdelijke voor waarde.
 
-## <a name="remaining-requests"></a>Resterende aanvragen
+## <a name="remaining-requests"></a>Overige aanvragen
 
-U kunt het aantal resterende aanvragen bepalen door de antwoord headers te controleren. Lees aanvragen retour neren een waarde in de koptekst voor het aantal resterende Lees aanvragen. Schrijf aanvragen bevatten een waarde voor het aantal resterende schrijf aanvragen. In de volgende tabel worden de antwoord headers beschreven die u kunt controleren op deze waarden:
+U kunt het aantal resterende aanvragen bepalen door onderzoeken antwoordheaders. Lees aanvragen retour neren een waarde in de koptekst voor het aantal resterende Lees aanvragen. Schrijf aanvragen bevatten een waarde voor het aantal resterende schrijf aanvragen. De volgende tabel beschrijft de reactieheaders die u voor deze waarden kunt bekijken:
 
-| Reactie header | Beschrijving |
+| Reactieheader | Beschrijving |
 | --- | --- |
-| x-MS-ratelimit-resterend abonnement-Lees bewerkingen |Resterende Lees bewerkingen voor het abonnement. Deze waarde wordt geretourneerd bij Lees bewerkingen. |
-| x-MS-ratelimit-resterend-abonnement-schrijf bewerkingen |Resterend aantal schrijf bewerkingen in het abonnement. Deze waarde wordt geretourneerd voor schrijf bewerkingen. |
-| x-MS-ratelimit-resterend-tenants-Lees bewerkingen |Resterende Lees bewerkingen in Tenant bereik |
-| x-MS-ratelimit-resterend-Tenant-schrijf bewerkingen |Resterende schrijf bewerkingen in het Tenant bereik |
-| x-MS-ratelimit-resterend abonnement-resource-aanvragen |Resterende aanvragen voor het resource type van het abonnement.<br /><br />Deze header waarde wordt alleen geretourneerd als een service de standaard limiet heeft overschreden. Resource Manager voegt deze waarde toe in plaats van het abonnement op lees-of schrijf bewerkingen. |
-| x-MS-ratelimit-resterend abonnement-resource-entiteiten-lezen |Aantal resterende aanvragen voor het resource type voor het abonnement.<br /><br />Deze header waarde wordt alleen geretourneerd als een service de standaard limiet heeft overschreden. Deze waarde geeft het aantal resterende verzamelings aanvragen (lijst resources). |
-| x-MS-ratelimit-resterend-Tenant-resource-aanvragen |Resterende aanvragen voor het resource type van het Tenant bereik.<br /><br />Deze header wordt alleen toegevoegd voor aanvragen op Tenant niveau en alleen als de standaard limiet is overschreven door een service. Resource Manager voegt deze waarde toe in plaats van de Tenant leest of schrijft. |
-| x-MS-ratelimit-resterend-Tenant-bron-entiteiten-lezen |Aantal resterende aanvragen van het resource type voor het Tenant bereik.<br /><br />Deze header wordt alleen toegevoegd voor aanvragen op Tenant niveau en alleen als de standaard limiet is overschreven door een service. |
+| x-MS-ratelimit-Remaining-Subscription-reads |Abonnement binnen het bereik van leest de resterende. Deze waarde wordt geretourneerd voor leesbewerkingen. |
+| x-MS-ratelimit-Remaining-Subscription-Writes |Abonnement binnen het bereik van schrijft resterende. Deze waarde wordt geretourneerd op schrijfbewerkingen. |
+| x-MS-ratelimit-Remaining-tenant-reads |Tenant binnen het bereik van leest resterend |
+| x-MS-ratelimit-Remaining-tenant-Writes |Tenant binnen het bereik van schrijft resterend |
+| x-MS-ratelimit-Remaining-Subscription-resource-Requests |Abonnement binnen het bereik van aanvragen van het type resource resterende.<br /><br />Deze headerwaarde wordt alleen geretourneerd als een service de standaardlimiet is opgeheven. Resource Manager wordt deze waarde in plaats van het abonnement lees- of schrijfbewerkingen toegevoegd. |
+| x-MS-ratelimit-Remaining-Subscription-resource-ENTITIES-Read |Abonnement binnen het bereik van type verzameling resourceaanvragen resterende.<br /><br />Deze headerwaarde wordt alleen geretourneerd als een service de standaardlimiet is opgeheven. Deze waarde geeft het aantal resterende verzameling aanvragen (lijst met resources). |
+| x-MS-ratelimit-Remaining-tenant-resource-Requests |Tenant binnen het bereik van aanvragen van het type resource resterende.<br /><br />Deze header is alleen voor aanvragen op tenantniveau toegevoegd en alleen als een service heeft de standaardlimiet overschreven. Resource Manager wordt deze waarde in plaats van de tenant lees- of schrijfbewerkingen toegevoegd. |
+| x-MS-ratelimit-Remaining-tenant-resource-ENTITIES-Read |Type verzameling resourceaanvragen resterende binnen het bereik van tenant.<br /><br />Deze header is alleen voor aanvragen op tenantniveau toegevoegd en alleen als een service heeft de standaardlimiet overschreven. |
 
 De resource provider kan ook antwoord headers retour neren met informatie over de resterende aanvragen. Voor informatie over reactie headers die door de compute resource provider worden geretourneerd, Zie [aanroep frequentie informatie-antwoord headers](../virtual-machines/troubleshooting/troubleshooting-throttling-errors.md#call-rate-informational-response-headers).
 
-## <a name="retrieving-the-header-values"></a>De header waarden worden opgehaald
+## <a name="retrieving-the-header-values"></a>Bij het ophalen van de waarden van de koptekst
 
-Het ophalen van deze header waarden in uw code of script wijkt af van het ophalen van elke header waarde. 
+Bij het ophalen van deze headerwaarden in uw code of het script is niet anders dan bij het ophalen van een headerwaarde. 
 
-In **C#** kunt u bijvoorbeeld de header waarde van een **HttpWebResponse** -object met de naam **Response** ophalen met de volgende code:
+Bijvoorbeeld, in **C#** , haalt u de headerwaarde van een **HttpWebResponse** object met de naam **antwoord** door de volgende code:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-In **Power shell**haalt u de waarde van de header op uit een bewerking invoke-webaanvraag.
+In **PowerShell**, haalt u de headerwaarde uit een Invoke-WebRequest-bewerking.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Zie [limieten voor Resource Manager voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)voor een volledig Power shell-voor beeld.
+Zie voor een compleet voorbeeld van PowerShell, [Resource Manager-limieten voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
 
-Als u de resterende aanvragen voor fout opsporing wilt zien, kunt u de para meter **-debug** opgeven voor uw **Power shell** -cmdlet.
+Als u zien van de resterende aanvragen wilt voor foutopsporing, kunt u opgeven de **-Debug** parameter op uw **PowerShell** cmdlet.
 
 ```powershell
 Get-AzResourceGroup -Debug
 ```
 
-Die een groot aantal waarden retourneert, met inbegrip van de volgende reactie waarde:
+Die veel waarden, met inbegrip van de waarde van het volgende antwoord geretourneerd:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -138,13 +135,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-reads: 11999
 ```
 
-Gebruik een schrijf bewerking om schrijf limieten op te halen: 
+Als u limieten voor schrijven, gebruikt u een schrijfbewerking: 
 
 ```powershell
 New-AzResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
-Voor het retour neren van een groot aantal waarden, met inbegrip van de volgende waarden:
+Die veel waarden, met inbegrip van de volgende waarden geretourneerd:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -157,13 +154,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-In **Azure cli**haalt u de waarde van de header op met behulp van de uitgebreidere optie.
+In **Azure CLI**, haalt u de headerwaarde met de uitgebreidere optie.
 
 ```azurecli
 az group list --verbose --debug
 ```
 
-Voor het retour neren van een groot aantal waarden, met inbegrip van de volgende waarden:
+Die veel waarden, met inbegrip van de volgende waarden geretourneerd:
 
 ```azurecli
 msrest.http_logger : Response status: 200
@@ -177,13 +174,13 @@ msrest.http_logger :     'Vary': 'Accept-Encoding'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-reads': '11998'
 ```
 
-Gebruik een schrijf bewerking om schrijf limieten op te halen: 
+Als u limieten voor schrijven, gebruikt u een schrijfbewerking: 
 
 ```azurecli
 az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
-Voor het retour neren van een groot aantal waarden, met inbegrip van de volgende waarden:
+Die veel waarden, met inbegrip van de volgende waarden geretourneerd:
 
 ```azurecli
 msrest.http_logger : Response status: 201
@@ -198,6 +195,6 @@ msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [limieten voor Resource Manager voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI)voor een volledig Power shell-voor beeld.
-* Zie [Azure-abonnement en service limieten, quota's en beperkingen](../azure-subscription-service-limits.md)voor meer informatie over limieten en quota's.
-* Zie [asynchrone Azure-bewerkingen volgen](resource-manager-async-operations.md)voor meer informatie over het verwerken van asynchrone rest-aanvragen.
+* Zie voor een compleet voorbeeld van PowerShell, [Resource Manager-limieten voor een abonnement controleren](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Zie voor meer informatie over limieten en quota [Azure-abonnement en Servicelimieten, quotums en beperkingen](../azure-subscription-service-limits.md).
+* Zie voor meer informatie over het verwerken van asynchrone REST-aanvragen, [asynchrone bewerkingen van Azure bijhouden](resource-manager-async-operations.md).

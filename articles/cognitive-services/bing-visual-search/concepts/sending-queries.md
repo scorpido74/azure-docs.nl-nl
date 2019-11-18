@@ -1,7 +1,7 @@
 ---
 title: Zoek query's naar de Bing Visual Search-API verzenden
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de REST API-para meters die worden gebruikt in de Bing Visual Search-API.
+description: In dit artikel worden de para meters en kenmerken van aanvragen beschreven die worden verzonden naar de Bing Visual Search-API, evenals het antwoord object.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 08/30/2019
 ms.author: aahi
-ms.openlocfilehash: 1c5c9b3af42dfa655c61af5a3aadbb47e0774b01
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 2a87bee4769111e01dc49e8fce14569233dfaef3
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835680"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111630"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Zoek query's naar de Bing Visual Search-API verzenden
 

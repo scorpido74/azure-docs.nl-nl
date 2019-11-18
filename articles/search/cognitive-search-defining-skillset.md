@@ -1,5 +1,5 @@
 ---
-title: Een vakkennisset maken in een verrijkings pijplijn
+title: Een set vaardigheden maken
 titleSuffix: Azure Cognitive Search
 description: Definieer de gegevens extractie, de verwerking van natuurlijke taal of de analyse van installatie kopieën om gestructureerde gegevens uit uw gegevens te verrijken en te extra heren voor gebruik in azure Cognitive Search.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a60298b02b02e375d7241acf15852a19f814d59a
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e9fd4602d661dd4223c8caa2ec02eaf56284735a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72787474"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114554"
 ---
 # <a name="how-to-create-a-skillset-in-an-ai-enrichment-pipeline-in-azure-cognitive-search"></a>Een vakkennisset maken in een AI-pijp lijn in azure Cognitive Search 
 
@@ -36,9 +36,9 @@ Een aanbevolen eerste stap is te bepalen welke gegevens moeten worden opgehaald 
 
 Stel dat u een set van financiële adviezen wilt verwerken. Voor elk bestand wilt u bedrijfs namen ophalen en de algemene sentiment van de opmerkingen. U kunt ook een aangepaste verrijker schrijven die gebruikmaakt van de Bing Entity Search-service om aanvullende informatie over het bedrijf te vinden, zoals het soort bedrijf waar het bedrijf mee wordt betrokken. In wezen wilt u informatie ophalen zoals de volgende, geïndexeerd voor elk document:
 
-| record-tekst | bedrijven | sentiment | bedrijfs beschrijvingen |
+| record-text | bedrijven | sentiment | bedrijfs beschrijvingen |
 |--------|-----|-----|-----|
-|voor beeld-record| ["Micro soft", "LinkedIn"] | 0,99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
+|voor beeld-record| ["Microsoft", "LinkedIn"] | 0,99 | ["Micro soft Corporation is een American Multi National Technology Company...", "LinkedIn is een zakelijk en werkend, arbeids gericht sociaal netwerk..."]
 
 Het volgende diagram illustreert een hypothetische verrijkings pijplijn:
 
@@ -163,9 +163,9 @@ Laten we eens kijken naar de eerste vaardigheid, de ingebouwde [vaardigheid voor
     }
 ```
 
-* Elke ingebouwde vaardigheid heeft `odata.type`, `input` en `output` eigenschappen. Specifieke eigenschappen bieden aanvullende informatie die van toepassing is op die kwalificatie. Voor entiteits herkenning is `categories` één entiteit tussen een vaste set entiteits typen die het voortrainde model kan herkennen.
+* Elke ingebouwde vaardigheid heeft `odata.type`, `input`en `output` eigenschappen. Specifieke eigenschappen bieden aanvullende informatie die van toepassing is op die kwalificatie. Voor entiteits herkenning is `categories` één entiteit tussen een vaste set entiteits typen die het voortrainde model kan herkennen.
 
-* Elke vaardigheid moet een ```"context"``` hebben. De context vertegenwoordigt het niveau waarop bewerkingen worden uitgevoerd. In de bovenstaande vaardigheid is de context het hele document, wat inhoudt dat de kwalificatie voor entiteits herkenning één keer per document wordt genoemd. Er worden ook outputs geproduceerd op dat niveau. In het bijzonder worden ```"organizations"``` gegenereerd als lid van ```"/document"```. In downstream-vaardig heden kunt u deze zojuist gemaakte informatie als ```"/document/organizations"``` raadplegen.  Als het ```"context"``` veld niet expliciet is ingesteld, is de standaard context het document.
+* Elke vaardigheid moet een ```"context"```hebben. De context vertegenwoordigt het niveau waarop bewerkingen worden uitgevoerd. In de bovenstaande vaardigheid is de context het hele document, wat inhoudt dat de kwalificatie voor entiteits herkenning één keer per document wordt genoemd. Er worden ook outputs geproduceerd op dat niveau. In het bijzonder worden ```"organizations"``` gegenereerd als lid van ```"/document"```. In downstream-vaardig heden kunt u deze zojuist gemaakte informatie als ```"/document/organizations"```raadplegen.  Als het ```"context"``` veld niet expliciet is ingesteld, is de standaard context het document.
 
 * De vaardigheid heeft één invoer met de naam ' text ', waarbij een bron invoer is ingesteld op ```"/document/content"```. De vaardigheid (entiteits herkenning) wordt uitgevoerd op het *inhouds* veld van elk document, een standaard veld dat wordt gemaakt door de indexer van Azure Blob. 
 

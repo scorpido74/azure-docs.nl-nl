@@ -1,25 +1,17 @@
 ---
-title: Managed Cache Service-toepassingen migreren naar redis-Azure | Microsoft Docs
+title: Managed Cache Service-toepassingen migreren naar redis-Azure
 description: Meer informatie over het migreren van Managed Cache Service en het In-Role Cache van toepassingen naar Azure cache voor redis
-services: cache
-documentationcenter: na
 author: yegu-ms
-manager: jhubbard
-editor: tysonn
-ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 05/30/2017
 ms.author: yegu
-ms.openlocfilehash: 05638e17c2f41806a5c8aa3e0c3020eae82bdb60
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 9596b8cb771f114cb09c5d6c6ae33b4fc4a8cada
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315957"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122682"
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-cache-for-redis"></a>Migreren van Managed Cache Service naar Azure cache voor redis
 Het migreren van uw toepassingen die gebruikmaken van Azure Managed Cache Service naar Azure cache voor redis, kan worden uitgevoerd met minimale wijzigingen in uw toepassing, afhankelijk van de Managed Cache Service functies die worden gebruikt door uw cache toepassing. Hoewel de Api's niet precies hetzelfde zijn, zijn ze vergelijkbaar en zijn veel van de bestaande code die Managed Cache Service gebruikt voor toegang tot een cache, opnieuw met minimale wijzigingen. In dit artikel wordt uitgelegd hoe u de benodigde configuratie-en toepassings wijzigingen kunt aanbrengen om uw Managed Cache Service-toepassingen te migreren voor het gebruik van Azure cache voor redis, en laat zien hoe sommige van de functies van Azure cache voor redis kunnen worden gebruikt voor het implementeren van de functionaliteit van een Managed Cache Service-cache.
@@ -51,7 +43,7 @@ Azure Managed Cache Service en Azure cache voor redis zijn vergelijkbaar, maar i
 | Hoge beschikbaarheid |Voorziet in hoge Beschik baarheid voor items in de cache in de standaard-en Premium-cache-aanbiedingen. Als items verloren zijn gegaan vanwege een fout, zijn back-upkopieën van de items in de cache nog steeds beschikbaar. Schrijf bewerkingen naar de secundaire cache worden synchroon gemaakt. |Hoge Beschik baarheid is beschikbaar in de Standard-en Premium-cache-aanbiedingen, die een primaire/replica-configuratie van twee knoop punten hebben (elke Shard in een Premium-cache heeft een primair/replica-paar). Schrijf bewerkingen naar de replica worden asynchroon uitgevoerd. Zie voor meer informatie [Azure cache for redis prijzen](https://azure.microsoft.com/pricing/details/cache/). |
 | Meldingen |Hiermee kunnen clients asynchrone meldingen ontvangen wanneer er diverse cache bewerkingen worden uitgevoerd op een benoemde cache. |Client toepassingen kunnen redis pub/sub-of keys [Space-meldingen](cache-configure.md#keyspace-notifications-advanced-settings) gebruiken om een vergelijk bare functionaliteit te krijgen voor meldingen. |
 | Lokale cache |Slaat een kopie van objecten in de cache lokaal op de client op voor extra snelle toegang. |Client toepassingen moeten deze functionaliteit implementeren met een woorden lijst of een vergelijk bare gegevens structuur. |
-| Verwijderingsbeleid |Geen of LRU. Het standaard beleid is LRU. |Azure cache voor redis ondersteunt het volgende verwijderings beleid: vluchtig-LRU, AllKeys-LRU, vluchtig-wille keurig, AllKeys-wille keurig, vluchtig-TTL, verwijderen. Het standaard beleid is vluchtig-LRU. Zie [default redis server Configuration](cache-configure.md#default-redis-server-configuration)(Engelstalig) voor meer informatie. |
+| Verwijderings beleid |Geen of LRU. Het standaard beleid is LRU. |Azure cache voor redis ondersteunt het volgende verwijderings beleid: vluchtig-LRU, AllKeys-LRU, vluchtig-wille keurig, AllKeys-wille keurig, vluchtig-TTL, verwijderen. Het standaard beleid is vluchtig-LRU. Zie [default redis server Configuration](cache-configure.md#default-redis-server-configuration)(Engelstalig) voor meer informatie. |
 | Verloop beleid |Het standaard verloop beleid is absoluut en het standaard verloop interval is 10 minuten. Er zijn ook verschuivende en nooit-beleids regels beschikbaar. |Standaard worden items in de cache niet verlopen, maar een verval datum kan worden geconfigureerd op basis van een schrijf bewerking met behulp van het aantal Overloads van de cache. |
 | Regio's en labels |Regio's zijn subgroepen voor items in de cache. Regio's bieden ook ondersteuning voor de annotatie van items in de cache met aanvullende beschrijvende teken reeksen met de naam tags. Regio's ondersteunen de mogelijkheid om Zoek bewerkingen uit te voeren op gelabelde items in die regio. Alle items in een regio bevinden zich in één knoop punt van het cache cluster. |een Azure-cache voor redis bestaat uit één knoop punt (tenzij redis-cluster is ingeschakeld), zodat het concept van Managed Cache Service regio's niet van toepassing is. Redis ondersteunt zoeken en Joker bewerkingen tijdens het ophalen van sleutels zodat beschrijvende Tags kunnen worden inge sloten in de sleutel namen en worden gebruikt om de items later op te halen. Zie [implementatie van cache tagging met redis](https://stackify.com/implementing-cache-tagging-redis/)voor een voor beeld van de implementatie van een tagging-oplossing met behulp van redis. |
 | Serialisatie |Managed cache biedt ondersteuning voor NetDataContractSerializer, BinaryFormatter en het gebruik van aangepaste serialisatiefunctie. De standaard waarde is NetDataContractSerializer. |Het is de verantwoordelijkheid van de client toepassing om .NET-objecten te serialiseren voordat u ze in de cache plaatst, met de keuze van de serialisatiefunctie tot de ontwikkelaar van de client toepassing. Zie [werken met .net-objecten in de cache](cache-dotnet-how-to-use-azure-redis-cache.md#work-with-net-objects-in-the-cache)voor meer informatie en voorbeeld code. |
@@ -86,7 +78,7 @@ Als u het NuGet-pakket van Managed Cache Service wilt verwijderen, klikt u met d
 
 Als u Managed Cache Service het NuGet-pakket verwijdert, worden de Managed Cache Service-assembly's en de Managed Cache Service vermeldingen in de app. config of web. config van de client toepassing verwijderd. Omdat sommige aangepaste instellingen mogelijk niet worden verwijderd wanneer u het NuGet-pakket verwijdert, opent u web. config of app. config en zorgt u ervoor dat de volgende elementen worden verwijderd.
 
-Zorg ervoor dat `dataCacheClients` de vermelding is verwijderd uit `configSections` het-element. Verwijder het hele `configSections` element niet; Verwijder de `dataCacheClients` vermelding alleen als deze aanwezig is.
+Zorg ervoor dat de `dataCacheClients` vermelding uit het `configSections`-element is verwijderd. Verwijder niet het volledige `configSections`-element. Verwijder alleen de `dataCacheClients` vermelding als deze aanwezig is.
 
 ```xml
 <configSections>
@@ -95,7 +87,7 @@ Zorg ervoor dat `dataCacheClients` de vermelding is verwijderd uit `configSectio
 </configSections>
 ```
 
-Zorg ervoor dat `dataCacheClients` de sectie wordt verwijderd. De `dataCacheClients` sectie ziet er ongeveer uit als in het volgende voor beeld.
+Zorg ervoor dat de sectie `dataCacheClients` is verwijderd. De sectie `dataCacheClients` is vergelijkbaar met het volgende voor beeld.
 
 ```xml
 <dataCacheClients>
@@ -122,7 +114,7 @@ Zodra de Managed Cache Service configuratie is verwijderd, kunt u de cache-clien
 De API voor de cache voor stack Exchange. Azure voor redis-client is vergelijkbaar met de Managed Cache Service. In deze sectie vindt u een overzicht van de verschillen.
 
 ### <a name="connect-to-the-cache-using-the-connectionmultiplexer-class"></a>Verbinding maken met de cache met behulp van de ConnectionMultiplexer-klasse
-In Managed cache service zijn verbindingen met de cache verwerkt door de `DataCacheFactory` klassen and. `DataCache` In azure cache voor redis worden deze verbindingen beheerd door de `ConnectionMultiplexer` -klasse.
+In Managed Cache Service zijn verbindingen met de cache verwerkt door de `DataCacheFactory`-en `DataCache`-klassen. In azure cache voor redis worden deze verbindingen beheerd door de klasse `ConnectionMultiplexer`.
 
 Voeg de volgende instructie toe aan het begin van elk bestand dat u wilt gebruiken voor toegang tot de cache.
 
@@ -130,14 +122,14 @@ Voeg de volgende instructie toe aan het begin van elk bestand dat u wilt gebruik
 using StackExchange.Redis
 ```
 
-Als deze naam ruimte niet wordt opgelost, moet u ervoor zorgen dat u het NuGet-pakket stack Exchange. redis [hebt toegevoegd, zoals beschreven in Quick Start: Gebruik Azure cache voor redis met een .NET-](cache-dotnet-how-to-use-azure-redis-cache.md)toepassing.
+Als deze naam ruimte niet wordt opgelost, moet u ervoor zorgen dat u het NuGet-pakket stack Exchange. redis hebt toegevoegd, zoals beschreven in [Quick Start: Azure cache gebruiken voor redis met een .NET-toepassing](cache-dotnet-how-to-use-azure-redis-cache.md).
 
 > [!NOTE]
 > Houd er rekening mee dat de stack Exchange. redis-client .NET Framework 4 of hoger vereist.
 > 
 > 
 
-Als u verbinding wilt maken met een Azure-cache voor redis- `ConnectionMultiplexer.Connect` exemplaar, roept u de statische-methode aan en geeft u het eind punt en de sleutel door. U kunt een exemplaar van `ConnectionMultiplexer` in uw toepassing delen door een statische eigenschap in te stellen die een verbonden exemplaar retourneert, zoals in het volgende voorbeeld. Deze benadering biedt een thread-veilige manier om één verbonden `ConnectionMultiplexer` exemplaar te initialiseren. In dit voor `abortConnect` beeld is ingesteld op False, wat betekent dat de aanroep slaagt, zelfs als er geen verbinding met de cache tot stand is gebracht. Een belangrijke functie van `ConnectionMultiplexer` is dat deze de verbinding met de cache automatisch herstelt als het netwerkprobleem of de andere oorzaken zijn opgelost.
+Als u verbinding wilt maken met een Azure-cache voor een redis-exemplaar, roept u de statische `ConnectionMultiplexer.Connect` methode aan en geeft u het eind punt en de sleutel door. U kunt een exemplaar van `ConnectionMultiplexer` in uw toepassing delen door een statische eigenschap in te stellen die een verbonden exemplaar retourneert, zoals in het volgende voorbeeld. Deze benadering biedt een thread-veilige manier om één verbonden `ConnectionMultiplexer` exemplaar te initialiseren. In dit voor beeld `abortConnect` is ingesteld op False, wat betekent dat de aanroep slaagt, zelfs als er geen verbinding met de cache tot stand is gebracht. Een belangrijke functie van `ConnectionMultiplexer` is dat deze de verbinding met de cache automatisch herstelt als het netwerkprobleem of de andere oorzaken zijn opgelost.
 
 ```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
@@ -156,7 +148,7 @@ public static ConnectionMultiplexer Connection
 
 Het cache-eind punt, sleutels en poorten kunnen worden opgehaald uit de **Azure-cache voor** de Blade redis voor uw cache-exemplaar. Zie [Azure cache voor redis-eigenschappen](cache-configure.md#properties)voor meer informatie.
 
-Als de verbinding tot stand is gebracht, retourneert u een verwijzing naar de Azure-cache voor de `ConnectionMultiplexer.GetDatabase` redis-data base door de methode aan te roepen. Het object dat door de `GetDatabase`-methode wordt geretourneerd, is een lichtgewicht doorvoerobject en hoeft niet te worden opgeslagen.
+Als de verbinding tot stand is gebracht, retourneert u een verwijzing naar de Azure-cache voor de redis-data base door de `ConnectionMultiplexer.GetDatabase`-methode aan te roepen. Het object dat door de `GetDatabase`-methode wordt geretourneerd, is een lichtgewicht doorvoerobject en hoeft niet te worden opgeslagen.
 
 ```csharp
 IDatabase cache = Connection.GetDatabase();
@@ -171,11 +163,11 @@ string key1 = cache.StringGet("key1");
 int key2 = (int)cache.StringGet("key2");
 ```
 
-De stack Exchange. redis-client gebruikt `RedisKey` de `RedisValue` -en-typen voor het openen en opslaan van items in de cache. Deze typen worden toegewezen aan de meeste primitieve taal typen, met inbegrip van teken reeksen, en worden vaak niet rechtstreeks gebruikt. Redis-teken reeksen zijn de meest eenvoudige soort redis-waarde en kunnen veel soorten gegevens bevatten, met inbegrip van geserialiseerde binaire streams, en terwijl u het type niet rechtstreeks gebruikt, gebruikt u de methoden `String` die in de naam staan. Voor de meeste primitieve gegevens typen kunt u items opslaan en ophalen uit de cache met behulp `StringGet` van de `StringSet` -en-methoden, tenzij u verzamelingen opslaat of andere redis-gegevens typen in de cache. 
+De stack Exchange. redis-client gebruikt de typen `RedisKey` en `RedisValue` voor het openen en opslaan van items in de cache. Deze typen worden toegewezen aan de meeste primitieve taal typen, met inbegrip van teken reeksen, en worden vaak niet rechtstreeks gebruikt. Redis teken reeksen zijn de meest eenvoudige soort redis-waarde en kunnen veel soorten gegevens bevatten, met inbegrip van geserialiseerde binaire stromen, en terwijl u het type niet rechtstreeks kunt gebruiken, gebruikt u methoden die `String` bevatten in de naam. Voor de meeste primitieve gegevens typen kunt u items opslaan en ophalen uit de cache met behulp van de methoden `StringSet` en `StringGet`, tenzij u verzamelingen of andere redis-gegevens typen opslaat in de cache. 
 
-`StringSet`en `StringGet` zijn vergelijkbaar met de Managed cache service `Put` en `Get` methoden, met één belang rijk verschil dat voordat u een .net-object in de cache instelt en ontvangt, het eerst moet worden geserialiseerd. 
+`StringSet` en `StringGet` zijn vergelijkbaar met de methoden Managed Cache Service `Put` en `Get`, met een belang rijk verschil dat voordat u een .NET-object in de cache instelt en ontvangt, het eerst moet worden geserialiseerd. 
 
-`StringGet`Als het object bestaat, wordt dit geretourneerd, en als dit niet het geval is, wordt Null geretourneerd. In dit geval kunt u de waarde van de gewenste gegevens bron ophalen en deze in de cache opslaan voor later gebruik. Dit patroon wordt het cache-leggings patroon genoemd.
+Bij het aanroepen van `StringGet`, als het object bestaat, wordt dit geretourneerd en als dit niet het geval is, wordt Null geretourneerd. In dit geval kunt u de waarde van de gewenste gegevens bron ophalen en deze in de cache opslaan voor later gebruik. Dit patroon wordt het cache-leggings patroon genoemd.
 
 Als u de vervaldatum van een item in de cache wilt opgeven, gebruikt u de parameter `TimeSpan` van `StringSet`.
 

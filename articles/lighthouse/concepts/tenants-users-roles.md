@@ -1,18 +1,14 @@
 ---
 title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
-author: JnHs
-ms.service: lighthouse
-ms.author: jenhayes
 ms.date: 11/05/2019
 ms.topic: overview
-manager: carmonm
-ms.openlocfilehash: b87ef8534dab2c8f08aa8cdee9d939e2d1a3a0e7
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 73c5cd592f07a23edaad23796e498ea9243c5d26
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615865"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131338"
 ---
 # <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
 

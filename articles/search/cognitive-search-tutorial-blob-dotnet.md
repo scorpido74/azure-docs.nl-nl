@@ -1,21 +1,21 @@
 ---
-title: C#Zelf studie voor het aanroepen van Cognitive Services-API's in een AI-verrijkings pijplijn
+title: 'Zelf studie: een vaardig heden maken C# in .net gebruiken'
 titleSuffix: Azure Cognitive Search
-description: Stap voor een voor beeld van het uitpakken van gegevens, natuurlijke taal en afbeelding AI-verwerking in azure Cognitive Search-indexerings pijplijn.
+description: Stap voor beeld van code voor het uitpakken van gegevens, natuurlijke taal en afbeeldings AI-verwerking in een Azure Cognitive Search-indexerings pijplijn.
 manager: nitinme
 author: MarkHeff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7a8146f524a6e6f9abed2440c98a83aa3878f0c7
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790229"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111745"
 ---
-# <a name="c-tutorial-call-cognitive-services-apis-in-an-azure-cognitive-search-indexing-pipeline"></a>C#Zelf studie: Cognitive Services-API's aanroepen in een Azure Cognitive Search Indexing-pijp lijn
+# <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Zelf studie: een AI-verrijkings pijplijn C# maken met en de .NET SDK
 
 In deze zelf studie leert u de mechanismen voor het verrijken van de programmering van gegevens in azure Cognitive Search met *cognitieve vaardig heden*. Vaardig heden worden ondersteund door NLP (natuurlijke taal verwerking) en mogelijkheden voor de analyse van installatie kopieën in Cognitive Services. Via de vaardig heden-compositie en-configuratie kunt u tekst-en tekst representaties van een afbeelding of gescand document bestand extra heren. U kunt ook taal, entiteiten, sleutel zinnen en meer detecteren. Het eind resultaat is uitgebreide aanvullende inhoud in een zoek index, gemaakt door een AI-indexerings pijplijn.
 
@@ -57,7 +57,7 @@ Als u wilt communiceren met uw Azure Cognitive Search-service, hebt u de service
 
 1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. Haal in **instellingen** > **sleutels**een beheerders sleutel op voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
 
    ![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
 
@@ -91,7 +91,7 @@ Begin met het openen van Visual Studio en het maken van een nieuw console-app-pr
 
 ### <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-De [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) bestaat uit een aantal client bibliotheken waarmee u uw indexen, gegevens bronnen, Indexeer functies en vaardig heden kunt beheren, maar ook documenten kunnen uploaden en beheren en query's kunt uitvoeren, zonder dat u hoeft te omgaan met de details van HTTP en JSON. Deze client bibliotheken zijn allemaal gedistribueerd als NuGet-pakketten.
+De [Azure Cognitive Search .NET SDK](https://aka.ms/search-sdk) bestaat uit een aantal client bibliotheken waarmee u uw indexen, gegevens bronnen, Indexeer functies en vaardig heden kunt beheren, evenals documenten uploaden en beheren en query's uitvoeren, zonder dat u de details van http en JSON hoeft te hoeven afhandelen. Deze client bibliotheken zijn allemaal gedistribueerd als NuGet-pakketten.
 
 Voor dit project moet u versie 9 van het `Microsoft.Azure.Search` NuGet-pakket en het meest recente `Microsoft.Extensions.Configuration.Json` NuGet-pakket installeren.
 

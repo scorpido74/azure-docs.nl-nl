@@ -1,5 +1,5 @@
 ---
-title: API-versie beheer voor .NET SDK en REST-Api's
+title: API-versie beheer voor .NET en REST
 titleSuffix: Azure Cognitive Search
 description: Versie beleid voor Azure Cognitive Search REST-Api's en de client bibliotheek in de .NET SDK.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a976655d0f634c7026f008d64516a629947e90c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 03dbb679c25ea692d2c52f80b9493889e367823d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793061"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112146"
 ---
 # <a name="api-versions-in-azure-cognitive-search"></a>API-versies in azure Cognitive Search
 
@@ -30,9 +30,9 @@ Dezelfde regel is van toepassing op SDK-updates. De Azure Cognitive Search SDK v
 Hieronder vindt u een moment opname van de huidige versies van alle programmeer interfaces naar Azure Cognitive Search.
 
 
-| Natie | Meest recente primaire versie | Status |
+| Interfaces | Meest recente primaire versie | Status |
 | --- | --- | --- |
-| [.NET-SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
+| [.NET SDK](https://aka.ms/search-sdk) |9.0 |Algemeen beschikbaar, uitgebracht 2019 |
 | [.NET SDK preview](https://aka.ms/search-sdk-preview) |8,0-Preview |Preview, uitgebracht: april 2019 |
 | [Service-REST-API](https://docs.microsoft.com/rest/api/searchservice/) |2019-05-06 |Algemeen verkrijgbaar |
 | [Service REST API 2019-05-06-preview](search-api-preview.md) |2019-05-06-preview |Preview |

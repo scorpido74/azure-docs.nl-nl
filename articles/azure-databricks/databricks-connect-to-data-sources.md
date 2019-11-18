@@ -9,12 +9,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: mamccrea
-ms.openlocfilehash: 932031f545ccc75cb12f368f5c7894c1b5e454cd
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 80ec9b2bbf10d8f500e7f9e0369faca3b9663633
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091693"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129385"
 ---
 # <a name="connect-to-data-sources-from-azure-databricks"></a>Verbinding maken met gegevens bronnen vanuit Azure Databricks
 
@@ -43,7 +43,7 @@ De volgende lijst bevat de gegevens bronnen in azure die u kunt gebruiken met Az
 
     Deze koppeling bevat instructies over het gebruik van de [Azure Cosmos DB Spark-connector](https://github.com/Azure/azure-cosmosdb-spark) van Azure Databricks om toegang te krijgen tot gegevens in azure Cosmos db.
 
-- [Azure Event Hubs](/azure/databricks/data/data-sources/azure/eventhubs-connector)
+- [Azure Event Hubs](/azure/event-hubs/event-hubs-spark-connector)
 
     Deze koppeling bevat instructies over het gebruik van de [azure Event hubs Spark-connector](https://github.com/Azure/azure-event-hubs-spark) van Azure Databricks om toegang te krijgen tot gegevens in azure Event hubs.
 

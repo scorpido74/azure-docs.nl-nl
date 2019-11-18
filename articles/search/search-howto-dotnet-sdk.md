@@ -1,5 +1,5 @@
 ---
-title: Azure Cognitive Search gebruiken vanuit een .NET-toepassing
+title: Azure-Cognitive Search in .NET gebruiken
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over het gebruik van Azure Cognitive Search in een .NET C# -toepassing met behulp van en de .NET SDK. Op code gebaseerde taken zijn het maken van een verbinding met de service, het indexeren van inhoud en het opvragen van query's in een index.
 manager: nitinme
@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e1903b3b33e1dde5178fadbc37feee191a2eaacd
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54fcd1fb936b5dd41715798408b604106a24bcf9
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792124"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112591"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Azure Cognitive Search gebruiken vanuit een .NET-toepassing
 

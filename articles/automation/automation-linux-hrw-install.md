@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 360fa750da054f9b126a8694f3dd2ce4b0b417b7
-ms.sourcegitcommit: 992e070a9f10bf43333c66a608428fcf9bddc130
+ms.openlocfilehash: 8e497d18e39a199f34ff76b11b0e6c2c213f35fb
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71240305"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129846"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Een Linux-Hybrid Runbook Worker implementeren
 
@@ -54,7 +54,7 @@ De minimale vereisten voor een Linux-Hybrid Runbook Worker zijn:
 |Python-ctypes | Python 2. x is vereist |
 |PAM | Pluggable verificatie modules|
 | **Optioneel pakket** | **Beschrijving** | **Minimale versie**|
-| PowerShell Core | Als u Power shell-runbooks wilt uitvoeren, moet Power shell zijn geïnstalleerd. Zie [Power shell Core installeren in Linux](/powershell/scripting/setup/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.  | 6.0.0 |
+| PowerShell Core | Als u Power shell-runbooks wilt uitvoeren, moet Power shell zijn geïnstalleerd. Zie [Power shell Core installeren in Linux](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.  | 6.0.0 |
 
 ### <a name="installation"></a>Installatie
 
@@ -69,7 +69,7 @@ Voordat u verder gaat, moet u de Log Analytics-werk ruimte zien waaraan uw Autom
          Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-1. Installeer de Log Analytics-agent voor Linux door de volgende opdracht uit te voeren. Vervang \<WorkspaceID\> en \<WorkspaceKeydoordejuistewaardenuituwwerkruimte.\>
+1. Installeer de Log Analytics-agent voor Linux door de volgende opdracht uit te voeren. Vervang \<WorkspaceID\> en \<WorkspaceKey\> door de juiste waarden uit uw werk ruimte.
 
    [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
 
@@ -86,7 +86,7 @@ Voordat u verder gaat, moet u de Log Analytics-werk ruimte zien waaraan uw Autom
 1. Nadat de opdracht is voltooid, worden in de pagina **Hybrid worker groepen** in het Azure Portal de nieuwe groep en het aantal leden weer gegeven. Als dit een bestaande groep is, wordt het aantal leden verhoogd. U kunt de groep selecteren in de lijst op de pagina **Hybrid worker groepen** en de tegel **Hybrid Workers** selecteren. Op de pagina **Hybrid Workers** ziet u elk lid van de groep die wordt weer gegeven.
 
 > [!NOTE]
-> Als u de extensie van de Azure monitor virtuele machine voor Linux gebruikt voor een Azure VM, wordt `autoUpgradeMinorVersion` u aangeraden om in te stellen op False als de versies van automatische upgrades de Hybrid Runbook Worker kunnen veroorzaken. Zie [Azure cli-implementatie ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)voor meer informatie over het hand matig bijwerken van de extensie.
+> Als u de Azure Monitor extensie van de virtuele machine voor Linux voor een Azure-VM gebruikt, wordt u aangeraden om `autoUpgradeMinorVersion` in te stellen op False als de versies van automatische upgrades de Hybrid Runbook Worker kunnen veroorzaken. Zie [Azure cli-implementatie ](../virtual-machines/extensions/oms-linux.md#azure-cli-deployment)voor meer informatie over het hand matig bijwerken van de extensie.
 
 ## <a name="turning-off-signature-validation"></a>Validatie van hand tekeningen uitschakelen
 
@@ -106,7 +106,7 @@ De volgende typen runbook werken op een Linux-Hybrid Worker:
 * PowerShell
 
   > [!NOTE]
-  > Power shell-runbooks vereisen dat Power shell core wordt geïnstalleerd op de Linux-machine. Zie [Power shell core in Linux installeren](/powershell/scripting/setup/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.
+  > Power shell-runbooks vereisen dat Power shell core wordt geïnstalleerd op de Linux-machine. Zie [Power shell core in Linux installeren](/powershell/scripting/install/installing-powershell-core-on-linux) voor meer informatie over het installeren ervan.
 
 De volgende typen runbook werken niet op een Linux-Hybrid Worker:
 

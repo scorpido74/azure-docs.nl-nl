@@ -1,5 +1,5 @@
 ---
-title: Ingebouwde vaardig heden voor het uitpakken van gegevens, natuurlijke taal, afbeeldings verwerking tijdens het indexeren.
+title: Ingebouwde tekst-en afbeeldings verwerking tijdens het indexeren
 titleSuffix: Azure Cognitive Search
 description: Gegevens extractie, natuurlijke taal, cognitieve vaardig heden voor afbeeldings verwerking Voeg semantiek en structuur toe aan onbewerkte inhoud in een Azure Cognitive Search-pijp lijn.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 2f03752c5fda366fc16b681d71ba68486527a30f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f419b19b576ebf6f7f853b41128908487f047df6
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466795"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113374"
 ---
-# <a name="built-in-cognitive-skills-for-content-enrichment-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor inhouds verrijking (Azure Cognitive Search)
+# <a name="built-in-cognitive-skills-for-text-and-image-processing-during-indexing-azure-cognitive-search"></a>Ingebouwde cognitieve vaardig heden voor tekst-en afbeeldings verwerking tijdens het indexeren (Azure Cognitive Search)
 
-In dit artikel vindt u meer informatie over de cognitieve vaardig heden die worden meegeleverd met Azure Cognitive Search. Een *cognitieve vaardigheid* is een bewerking waarmee inhoud op een of andere manier wordt getransformeerd. Vaak is het een onderdeel dat gegevens ophaalt of een structuur verkrijgt, waardoor we onze informatie over de invoer gegevens verg Roten. Bijna altijd is de uitvoer op basis van tekst. Een *vakkennisset* is het verzamelen van vaardig heden die de verrijkings pijplijn definiëren. 
+In dit artikel vindt u informatie over de cognitieve vaardig heden van Azure Cognitive Search die u in een vakkennisset kunt gebruiken om inhoud en structuur te extra heren. Een *cognitieve vaardigheid* is een module of bewerking waarmee inhoud op een of andere manier wordt getransformeerd. Vaak is het een onderdeel dat gegevens ophaalt of een structuur verkrijgt, waardoor we onze informatie over de invoer gegevens verg Roten. Bijna altijd is de uitvoer op basis van tekst. Een *vakkennisset* is het verzamelen van vaardig heden die de verrijkings pijplijn definiëren. 
 
 > [!NOTE]
 > Als u het bereik uitbreidt door de verwerkings frequentie te verhogen, meer documenten toe te voegen of meer AI-algoritmen toe te voegen, moet u [een factureer bare Cognitive Services resource koppelen](cognitive-search-attach-cognitive-services.md). Er worden kosten in rekening gebracht bij het aanroepen van Api's in Cognitive Services en voor het ophalen van afbeeldingen als onderdeel van de fase voor het kraken van documenten in azure Cognitive Search. Er worden geen kosten in rekening gebracht voor het ophalen van tekst uit documenten.
@@ -31,19 +31,19 @@ Verschillende vaardig heden zijn flexibel in wat ze gebruiken of produceren. Ove
 
 | Eigen | Beschrijving |
 |-------|-------------|
-| [Micro soft. skills. Text. KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het detecteren van belang rijke zinnen op basis van de term plaatsing, taal kundige regels, nabij de andere voor waarden en hoe ongebruikelijk de term binnen de bron gegevens valt. |
-| [Micro soft. skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om te detecteren welke taal wordt gebruikt (één taal-ID per document). Wanneer er meerdere talen worden gebruikt binnen dezelfde tekst segmenten, is de uitvoer de LCID van de taal die het meest in gebruik is.|
-| [Micro soft. skills. Text. MergeSkill](cognitive-search-skill-textmerger.md) | Consolideert tekst van een verzameling velden in één veld.  |
-| [Micro soft. skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het instellen van entiteiten voor een vaste set categorieën: personen, locatie, organisatie, e-mails, Url's, datum/tijd-velden. |
-| [Micro soft. skills. Text. SentimentSkill](cognitive-search-skill-sentiment.md)  | Deze vaardigheid maakt gebruik van een pretraind model om positieve of negatieve sentiment te beoordelen op basis van een record. De Score ligt tussen 0 en 1. Er treden neutrale scores op voor de null-case wanneer sentiment niet kan worden gedetecteerd en voor tekst die als neutraal wordt beschouwd.  |
-| [Micro soft. skills. Text. SplitSkill](cognitive-search-skill-textsplit.md) | Splitst tekst op pagina's zodat u inhoud stapsgewijs kunt verrijken of uitbreiden. |
+| [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het detecteren van belang rijke zinnen op basis van de term plaatsing, taal kundige regels, nabij de andere voor waarden en hoe ongebruikelijk de term binnen de bron gegevens valt. |
+| [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Deze vaardigheid maakt gebruik van een voortraind model om te detecteren welke taal wordt gebruikt (één taal-ID per document). Wanneer er meerdere talen worden gebruikt binnen dezelfde tekst segmenten, is de uitvoer de LCID van de taal die het meest in gebruik is.|
+| [Microsoft.Skills.Text.MergeSkill](cognitive-search-skill-textmerger.md) | Consolideert tekst van een verzameling velden in één veld.  |
+| [Microsoft.Skills.Text.EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het instellen van entiteiten voor een vaste set categorieën: personen, locatie, organisatie, e-mails, Url's, datum/tijd-velden. |
+| [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Deze vaardigheid maakt gebruik van een pretraind model om positieve of negatieve sentiment te beoordelen op basis van een record. De Score ligt tussen 0 en 1. Er treden neutrale scores op voor de null-case wanneer sentiment niet kan worden gedetecteerd en voor tekst die als neutraal wordt beschouwd.  |
+| [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Splitst tekst op pagina's zodat u inhoud stapsgewijs kunt verrijken of uitbreiden. |
 | [Micro soft. skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md) | Deze vaardigheid maakt gebruik van een voortraind model voor het vertalen van de invoer tekst in een groot aantal talen voor het gebruik van normalisatie-of lokalisatie-use cases. |
-| [Micro soft. skills. Vision. ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Deze vaardigheid maakt gebruik van een algoritme voor detectie van de afbeelding om de inhoud van een afbeelding te identificeren en een beschrijving van een tekst te genereren. |
-| [Micro soft. skills. Vision. OcrSkill](cognitive-search-skill-ocr.md) | Optische teken herkenning. |
+| [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Deze vaardigheid maakt gebruik van een algoritme voor detectie van de afbeelding om de inhoud van een afbeelding te identificeren en een beschrijving van een tekst te genereren. |
+| [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optische teken herkenning. |
 | [Micro soft. skills. util. ConditionalSkill](cognitive-search-skill-conditional.md) | Staat filteren toe, het toewijzen van een standaard waarde en het samen voegen van gegevens op basis van een voor waarde.|
 | [Micro soft. skills. util. DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) | Extraheert inhoud uit een bestand binnen de verrijkings pijplijn. |
-| [Micro soft. skills. util. ShaperSkill](cognitive-search-skill-shaper.md) | Wijst uitvoer toe aan een complex type (een gegevens type met meerdere delen, dat kan worden gebruikt voor een volledige naam, een adres van meerdere regels of een combi natie van achternaam en persoonlijke id). |
-| [Micro soft. skills. custom. WebApiSkill](cognitive-search-custom-skill-web-api.md) | Hiermee kan een AI-verrijkings pijplijn worden uitgebreid door een HTTP-aanroep naar een aangepaste web-API te maken |
+| [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Wijst uitvoer toe aan een complex type (een gegevens type met meerdere delen, dat kan worden gebruikt voor een volledige naam, een adres van meerdere regels of een combi natie van achternaam en persoonlijke id). |
+| [Microsoft.Skills.Custom.WebApiSkill](cognitive-search-custom-skill-web-api.md) | Hiermee kan een AI-verrijkings pijplijn worden uitgebreid door een HTTP-aanroep naar een aangepaste web-API te maken |
 
 
 Zie [een aangepaste interface definiëren](cognitive-search-custom-skill-interface.md) voor meer informatie over het maken van een aangepaste [vaardigheid](cognitive-search-custom-skill-web-api.md). voor [Beeld: een aangepaste vaardigheid maken voor AI-verrijking](cognitive-search-create-custom-skill-example.md).

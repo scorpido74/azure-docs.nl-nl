@@ -1,7 +1,7 @@
 ---
 title: Problemen met OData-verzamelings filters oplossen
 titleSuffix: Azure Cognitive Search
-description: Problemen met OData-verzamelings filter fouten in azure-Cognitive Search query's oplossen.
+description: Leer benaderingen voor het oplossen van filter fouten van OData-verzamelingen in azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 0af2525a15618c6bfd9022b4388c547209ee957b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e82fa00226c964d5ba774cdf06f5b0f3898bdc55
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793177"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113092"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Problemen met OData-verzamelings filters in azure Cognitive Search oplossen
 
@@ -64,7 +64,7 @@ De regels voor het schrijven van geldige verzamelings filters verschillen voor e
 In lambda-expressies voor teken reeks verzamelingen worden de enige vergelijkings operatoren die kunnen worden gebruikt, `eq` en `ne`.
 
 > [!NOTE]
-> Azure Cognitive Search biedt geen ondersteuning voor het `lt`/`le`/`gt`Opera tors voor teken reeksen, of binnen of buiten een lambda-expressie.
+> Azure Cognitive Search biedt geen ondersteuning voor het `lt`/`le`/`gt`Opera tors voor teken reeksen, of binnen of buiten een lambda-expressie./`ge`
 
 De hoofd tekst van een `any` kan alleen testen op gelijkheid terwijl de hoofd tekst van een `all` alleen kan testen op ongelijkheid.
 

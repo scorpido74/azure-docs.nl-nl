@@ -9,12 +9,12 @@ ms.author: mhopkins
 ms.date: 08/29/2019
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 3eb6f68a443e29a7d4c7b4dedad38783f838dee5
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 018a0405215d084962f6c107a607c8f82fae2500
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686680"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132012"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -254,7 +254,7 @@ createContainerButton.addEventListener("click", createContainer);
 deleteContainerButton.addEventListener("click", deleteContainer);
 ```
 
-Deze code roept de ContainerURL [maken](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#create-aborter--icontainercreateoptions-) en [verwijderen](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL#delete-aborter--icontainerdeletemethodoptions-) aan zonder een [Afbrekings](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) exemplaar te gebruiken. Voor deze Quick Start wordt ervan uitgegaan dat uw opslag account is gemaakt en is ingeschakeld. Gebruik in productie code een Afbrekings instantie om een time-outfunctie toe te voegen.
+Deze code roept de ContainerURL [maken](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#create-containercreateoptions-) en [verwijderen](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#delete-containerdeletemethodoptions-) aan zonder een [Afbrekings](https://docs.microsoft.com/javascript/api/@azure/storage-blob/aborter) exemplaar te gebruiken. Voor deze Quick Start wordt ervan uitgegaan dat uw opslag account is gemaakt en is ingeschakeld. Gebruik in productie code een Afbrekings instantie om een time-outfunctie toe te voegen.
 
 ### <a name="list-blobs"></a>Blobs vermelden
 
@@ -290,7 +290,7 @@ const listFiles = async () => {
 listButton.addEventListener("click", listFiles);
 ```
 
-Met deze code wordt de functie [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/ContainerURL?view=azure-node-preview#listblobflatsegment-aborter--undefined---string--icontainerlistblobssegmentoptions-) in een lus aangeroepen om ervoor te zorgen dat alle segmenten worden opgehaald. Voor elk segment wordt een lus op de lijst met Blob-items weer geven en wordt de lijst met **bestanden** bijgewerkt.
+Met deze code wordt de functie [ContainerURL. listBlobFlatSegment](https://docs.microsoft.com/javascript/api/@azure/storage-blob/containerclient#listblobsflat-containerlistblobsoptions-) in een lus aangeroepen om ervoor te zorgen dat alle segmenten worden opgehaald. Voor elk segment wordt een lus op de lijst met Blob-items weer geven en wordt de lijst met **bestanden** bijgewerkt.
 
 ### <a name="upload-blobs"></a>Blobs uploaden
 
@@ -318,7 +318,7 @@ selectButton.addEventListener("click", () => fileInput.click());
 fileInput.addEventListener("change", uploadFiles);
 ```
 
-Met deze code wordt de knop **bestanden selecteren en uploaden** verbonden met het verborgen `file-input` element. Op deze manier wordt met de gebeurtenis knop `click` de gebeurtenis file input `click` geactiveerd en wordt de bestands kiezer weer gegeven. Nadat u bestanden hebt geselecteerd en het dialoog venster hebt gesloten, treedt de gebeurtenis `input` op en wordt de functie `uploadFiles` aangeroepen. Deze functie roept de alleen- [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/#uploadbrowserdatatoblockblob-aborter--blob---arraybuffer---arraybufferview--blockbloburl--iuploadtoblockbloboptions-) functie voor elk bestand dat u hebt geselecteerd. Elke aanroep retourneert een Promise, die wordt toegevoegd aan een lijst, zodat ze allemaal tegelijk kunnen worden gewacht, waardoor de bestanden parallel worden geüpload.
+Met deze code wordt de knop **bestanden selecteren en uploaden** verbonden met het verborgen `file-input` element. Op deze manier wordt met de gebeurtenis knop `click` de gebeurtenis file input `click` geactiveerd en wordt de bestands kiezer weer gegeven. Nadat u bestanden hebt geselecteerd en het dialoog venster hebt gesloten, treedt de gebeurtenis `input` op en wordt de functie `uploadFiles` aangeroepen. Deze functie roept de alleen- [uploadBrowserDataToBlockBlob](https://docs.microsoft.com/javascript/api/@azure/storage-blob/blockblobclient#uploadbrowserdata-blob---arraybuffer---arraybufferview--blockblobparalleluploadoptions-) functie voor elk bestand dat u hebt geselecteerd. Elke aanroep retourneert een Promise, die wordt toegevoegd aan een lijst, zodat ze allemaal tegelijk kunnen worden gewacht, waardoor de bestanden parallel worden geüpload.
 
 ### <a name="delete-blobs"></a>Blobs verwijderen
 

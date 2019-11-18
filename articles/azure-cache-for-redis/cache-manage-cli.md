@@ -1,25 +1,17 @@
 ---
-title: Azure cache beheren voor redis met behulp van klassieke Azure-CLI | Microsoft Docs
+title: Azure cache beheren voor redis met behulp van klassieke Azure CLI
 description: Meer informatie over het installeren van de klassieke Azure CLI op elk platform, hoe u deze kunt gebruiken om verbinding te maken met uw Azure-account en hoe u een Azure-cache maakt en beheert voor redis vanuit de klassieke CLI.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 3b4756635ae0ab0d282975a6376e60da5f148917
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: e2b1ed693ea57e3414d465a57a5ba2b1203f67c5
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755429"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121896"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Azure-cache voor redis maken en beheren met behulp van de klassieke Azure-CLI
 > [!div class="op_single_selector"]
@@ -47,19 +39,19 @@ De volgende eigenschappen worden gebruikt bij het maken en bijwerken van Azure-c
 | Eigenschap | Switch | Beschrijving |
 | --- | --- | --- |
 | name |-n,--naam |De naam van de Azure-cache voor redis. |
-| resourcegroep |-g,--resource-Group |De naam van de resource groep. |
+| resourcegroep |-g, --resource-group |De naam van de resource groep. |
 | location |-l,--locatie |Locatie voor het maken van de cache. |
-| Size |-z,--grootte |Grootte van de Azure-cache voor redis. Geldige waarden: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| sku |-x,--SKU |Redis SKU. Moet een van de volgende zijn: [Basic, Standard, Premium] |
+| size |-z,--grootte |Grootte van de Azure-cache voor redis. Geldige waarden: [C0, C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
+| sku |-x, --sku |Redis SKU. Moet een van de volgende zijn: [Basic, Standard, Premium] |
 | EnableNonSslPort |-e,--inschakelen-niet-SSL-poort |De eigenschap EnableNonSslPort van de Azure-cache voor redis. Voeg deze markering toe als u de niet-SSL-poort voor uw cache wilt inschakelen |
 | Redis-configuratie |-c,--redis-configuratie |Redis-configuratie. Voer hier een JSON-teken reeks met configuratie sleutels en waarden in. Indeling: "{" ":" "," ":" "}" |
 | Redis-configuratie |-f,--redis-configuratie bestand |Redis-configuratie. Geef hier het pad op van een bestand met configuratie sleutels en-waarden. Indeling voor de bestands vermelding: {"": "", "": ""} |
 | Aantal Shard |-r,--Shard-Count |Het aantal Shards dat moet worden gemaakt in een Premium-cluster cache met clustering. |
 | Virtueel netwerk |-v,--virtueel-netwerk |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-Resource-ID van het virtuele netwerk op voor het implementeren van de Azure-cache voor redis in. Voorbeeld notatie:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | sleutel type |-t,--sleutel-type |Type sleutel dat moet worden verlengd. Geldige waarden: [Primary, Secondary] |
-| StaticIP |-p,--statisch-IP-\<static-IP-\> |Bij het hosten van uw cache in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet opgegeven, wordt er een gekozen uit het subnet. |
-| Subnet |t,--subnet \<subnet \> |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. |
-| VirtualNetwork |-v,--virtueel-netwerk \<virtual-netwerk \> |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-Resource-ID van het virtuele netwerk op voor het implementeren van de Azure-cache voor redis in. Voorbeeld notatie:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| StaticIP |-p,--statisch IP-\<statisch IP-\> |Bij het hosten van uw cache in een VNET, geeft u een uniek IP-adres op in het subnet voor de cache. Indien niet opgegeven, wordt er een gekozen uit het subnet. |
+| Subnet |t,--subnet \<subnet\> |Wanneer u uw cache host in een VNET, geeft u de naam op van het subnet waarin de cache moet worden geïmplementeerd. |
+| VirtualNetwork |-v,--virtueel-netwerk \<virtueel-netwerk\> |Wanneer u uw cache host in een VNET, geeft u de exacte ARM-Resource-ID van het virtuele netwerk op voor het implementeren van de Azure-cache voor redis in. Voorbeeld notatie:/subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
 | Abonnement |-s,--abonnement |De abonnements-id. |
 
 ## <a name="see-all-azure-cache-for-redis-commands"></a>Alle Azure-cache voor redis-opdrachten weer geven

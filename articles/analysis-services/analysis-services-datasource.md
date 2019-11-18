@@ -4,15 +4,15 @@ description: Hierin worden gegevens bronnen en connectors beschreven die worden 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/16/2019
+ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5539d290ea182e24a50a103a762f011202ebf33a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572963"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120016"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Gegevens bronnen die worden ondersteund in Azure Analysis Services
 
@@ -20,7 +20,7 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 
 ## <a name="azure-data-sources"></a>Azure-gegevensbronnen
 
-|Gegevens bron  |In het geheugen  |DirectQuery  |
+|Gegevensbron  |In het geheugen  |DirectQuery  |
 |---------|---------|---------|
 |Azure SQL Database<sup>[2](#azsqlmanaged)</sup>     |   Ja      |    Ja      |
 |Azure SQL Data Warehouse     |   Ja      |   Ja       |
@@ -35,29 +35,29 @@ Gegevens bronnen en connectors die worden weer gegeven in de wizard gegevens oph
 <a name="tab1400a">1</a> : alleen modellen in tabel vorm 1400 en hoger.   
 <a name="azsqlmanaged">2</a> -Azure SQL database beheerde instantie wordt ondersteund. Omdat beheerde exemplaren worden uitgevoerd in azure VNet met een privé-IP-adres, moet het open bare eind punt zijn ingeschakeld voor het exemplaar. Als deze niet is ingeschakeld, is een on-premises gegevens gateway vereist.    
 <a name="databricks">3</a> -Azure Databricks het gebruik van de Spark-connector wordt momenteel niet ondersteund.   
-<a name="gen2">4</a> -ADLS Gen2 wordt momenteel niet ondersteund.
+<a name="gen2">4</a> -ADLS Gen2-connector wordt momenteel niet ondersteund, maar Blob Storage-connector kan worden gebruikt met een ADLS Gen2-gegevens bron.
 
 
-  van **provider**  
+**Provider**   
 In-Memory-en DirectQuery-modellen die verbinding maken met Azure-gegevens bronnen, wordt .NET Framework gegevens provider gebruikt voor SQL Server.
 
 ## <a name="other-data-sources"></a>Andere gegevens bronnen
 
-Voor het maken van verbinding met on-premises gegevens bronnen van en Azure als server is een on-premises gateway vereist. Wanneer u een gateway gebruikt, zijn 64-bits-providers vereist.
+Voor het maken van verbinding met on-premises gegevens bronnen van een Azure Analysis Services-server is een on-premises gateway vereist. Wanneer u een gateway gebruikt, zijn 64-bits-providers vereist.
 
 ### <a name="in-memory-and-directquery"></a>In-Memory en DirectQuery
 
-|Gegevens bron | In-Memory provider | DirectQuery-provider |
+|Gegevensbron | In-Memory provider | DirectQuery-provider |
 |  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11,0, micro soft OLE DB provider voor SQL Server, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
-| SQL Server Data Warehouse |SQL Server Native Client 11,0, micro soft OLE DB provider voor SQL Server, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
+| SQL Server |Micro soft OLE DB-stuur programma voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
+| SQL Server datawarehouse |Micro soft OLE DB-stuur programma voor SQL Server MSOLEDBSQL (aanbevolen), SQL Server Native Client 11,0, .NET Framework gegevens provider voor SQL Server | .NET Framework gegevens provider voor SQL Server |
 | Oracle | OLE DB provider voor Oracle, Oracle-gegevens provider voor .NET |Oracle-gegevens provider voor .NET |
 | Teradata |OLE DB provider voor Teradata, Teradata-gegevens provider voor .NET |Teradata-gegevens provider voor .NET |
 | | | |
 
 ### <a name="in-memory-only"></a>Alleen in het geheugen
 
-|Gegevens bron  |  
+|Gegevensbron  |  
 |---------|
 |Access-Data Base     |  
 |Active Directory<sup>[1](#tab1400b)</sup>     |  

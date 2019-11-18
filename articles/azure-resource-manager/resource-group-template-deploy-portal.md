@@ -1,17 +1,14 @@
 ---
-title: Azure Portal gebruiken om Azure-resources te implementeren | Microsoft Docs
+title: Resources implementeren met Azure Portal
 description: Gebruik Azure Portal en Azure resource Manage om uw resources te implementeren in een resource groep in uw abonnement.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.author: tomfitz
-ms.openlocfilehash: 197bd14c425d80a814f370a2050c085b1eef143d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 6a8842a9fbda11bf48d45152c167d7b072f38119
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579022"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150769"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resources implementeren met Resource Manager-sjablonen en Azure Portal
 
@@ -34,7 +31,7 @@ In dit artikel worden beide methoden weer gegeven.
 
 1. Selecteer onder resource groepen de optie **toevoegen**.
 
-   ![Resource groep toevoegen](./media/resource-group-template-deploy-portal/add-resource-group.png)
+   ![resource groep toevoegen](./media/resource-group-template-deploy-portal/add-resource-group.png)
 
 1. Selecteer of voer de volgende eigenschaps waarden in:
 

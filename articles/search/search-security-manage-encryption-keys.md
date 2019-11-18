@@ -1,5 +1,5 @@
 ---
-title: 'Versleuteling: op rest met door de klant beheerde sleutels in Azure Key Vault (preview)'
+title: Versleuteling-at-rest met door de klant beheerde sleutels (preview-versie)
 titleSuffix: Azure Cognitive Search
 description: Aanvulling op server-side encryptie over indexen en synoniemen in azure Cognitive Search via sleutels die u in Azure Key Vault maakt en beheert. Deze functie is momenteel beschikbaar als openbare preview-versie.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.openlocfilehash: 1521abfa327c69648b38f02d1d6313baa369f304
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 4f78b4b7b38c6e67aa8aebf04e3a8ef0fdbd000f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721746"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112937"
 ---
-# <a name="content-encryption-of-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Inhouds versleuteling van Azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
+# <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Versleuteling: op rest van inhoud in azure Cognitive Search met door de klant beheerde sleutels in Azure Key Vault
 
 > [!IMPORTANT] 
 > Ondersteuning voor versleuteling-at-rest is momenteel beschikbaar als open bare preview. De Preview-functionaliteit wordt zonder service level agreement gegeven en wordt niet aanbevolen voor productie werkbelastingen. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie. De [rest API versie 2019-05-06-preview](search-api-preview.md) en [.net SDK versie 8,0-Preview](search-dotnet-sdk-migration-version-9.md) biedt deze functie. Er is momenteel geen ondersteuning voor de portal.

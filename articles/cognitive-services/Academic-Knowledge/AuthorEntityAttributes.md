@@ -3,37 +3,48 @@ title: Entiteits kenmerken van auteur-Academic Knowledge API
 titlesuffix: Azure Cognitive Services
 description: Meer informatie over de kenmerken die u kunt gebruiken met de entiteit auteur in de Academic Knowledge API.
 services: cognitive-services
-author: alch-msft
-manager: nitinme
+author: darrine
+manager: kuansanw
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
-ms.date: 03/23/2017
-ms.author: alch
+ms.date: 11/14/2019
+ms.author: darrine
 ROBOTS: NOINDEX
-ms.openlocfilehash: e63e9d3f8f17a2473caf3d31b83e318ddb132b43
-ms.sourcegitcommit: ad9120a73d5072aac478f33b4dad47bf63aa1aaa
+ms.openlocfilehash: d5fc770c380397f605f8810fa41d3a8907f2358e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68705095"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146488"
 ---
 # <a name="author-entity"></a>Entiteit Auteur
-<sub>* De volgende kenmerken zijn specifiek voor de auteur-entiteit. (Ty = ' 1 ')</sub>
 
-Name    |Description                            |type       | Bewerkingen
-------- | ------------------------------------- | --------- | ----------------------------
-ID      |Entiteits-id                              |Int64      |Is gelijk aan
-AuN     |Genormaliseerde naam schrijven                 |Reeks     |Is gelijk aan
-DAuN    |Weergave naam van auteur                    |Tekenreeks     |geen
-CC      |Totaal aantal bron vermeldingen van auteur            |Int32      |geen  
-ECC     |Totaal aantal geschatte bron vermeldingen van auteur  |Int32      |geen
-E       |Uitgebreide meta gegevens (Zie de tabel uitgebreide meta-kenmerken)  |Tekenreeks     |geen  
+> [!NOTE]
+> De volgende kenmerken zijn specifiek voor de auteur-entiteit. (Ty = ' 1 ')
 
+Naam | Beschrijving | Type | Bewerkingen
+--- | --- | --- | ---
+Id      | Entiteit-ID                             |Int64      |Is gelijk aan
+AuN     | Genormaliseerde naam schrijven                    |Tekenreeks     |Is gelijk aan
+CC      | Totaal aantal bron vermeldingen van auteur           |Int32      |None  
+DAuN    | Weergave naam van auteur                   |Tekenreeks     |None
+E | Uitgebreide meta gegevens</br></br>**Belang rijk**: dit kenmerk is afgeschaft en wordt alleen ondersteund voor oudere toepassingen. Als u dit kenmerk afzonderlijk aanvraagt (dat wil zeggen kenmerken = id, Ti, E), worden alle uitgebreide meta gegevens kenmerken geretourneerd in een *GESERIALISEERDE JSON-teken reeks*</br></br>Alle kenmerken in de uitgebreide meta gegevens zijn nu beschikbaar als kenmerk op het hoogste niveau en kunnen als dusdanig worden aangevraagd (bijvoorbeeld kenmerken = id, Ti, DOI, IA) | [Diakritische](#extended) | None
+ECC     | Totaal aantal geschatte bron vermeldingen van auteur |Int32      |None
+LKA. AfId | Entiteit-ID van de laatste bekende relatie die is gevonden voor de auteur | Int64 | None
+LKA. AfN | De genormaliseerde naam van de laatste bekende relatie die is gevonden voor de auteur | Tekenreeks | None
+Pc | Totaal aantal publicaties van auteur | Int32 | None
 
-## <a name="extended-metadata-attributes"></a>Uitgebreide meta gegevens kenmerken ##
+## <a name="extended"></a>Diakritische
 
-Name    | Description               
---------|---------------------------    
-LKA. Afn     | weergave naam van de relatie die aan de auteur is gekoppeld  
-LKA. AfId        | Entiteits-ID van relatie gekoppeld aan de auteur
+> [!IMPORTANT]
+> Dit kenmerk is afgeschaft en wordt alleen ondersteund voor oudere toepassingen. Als u dit kenmerk afzonderlijk aanvraagt (dat wil zeggen kenmerken = id, Ti, E), worden alle uitgebreide meta gegevens kenmerken geretourneerd in een *GESERIALISEERDE JSON-teken reeks*</br></br>Alle kenmerken in de uitgebreide meta gegevens zijn nu beschikbaar als kenmerk op het hoogste niveau en kunnen als dusdanig worden aangevraagd (bijvoorbeeld kenmerken = id, Ti, DOI, IA)
+
+> [!IMPORTANT]
+> Ondersteuning voor het aanvragen van afzonderlijke uitgebreide kenmerken met behulp van de ' E '. het bereik, d.w.z. ' E. DN ', wordt afgeschaft. Hoewel dit nog steeds technisch wordt ondersteund, worden afzonderlijke uitgebreide kenmerken aangevraagd met behulp van de ' E '. het bereik leidt ertoe dat de kenmerk waarde wordt geretourneerd op twee plaatsen in het JSON-antwoord als onderdeel van het object ' E ' en als kenmerk van het hoogste niveau.
+
+Naam | Beschrijving | Type | Bewerkingen
+--- | --- | --- | ---
+LKA. AfId | Entiteit-ID van de laatste bekende relatie die is gevonden voor de auteur | Int64 | None
+LKA. AfN | De genormaliseerde naam van de laatste bekende relatie die is gevonden voor de auteur | Tekenreeks | None
+Pc | Totaal aantal publicaties van auteur | Int32 | None

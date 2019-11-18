@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: 25846bb7a19d29a3a72146d4046b5205183a247e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720863"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132560"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Zelf studie: een .NET-console-app maken voor het beheren van gegevens in Azure Cosmos DB SQL-API-account
 
@@ -152,7 +152,7 @@ Goed gedaan. De configuratie is voltooid en u kunt nu aan de slag met het schrij
 
     In de console wordt het volgende bericht weer gegeven: **einde van demo, druk op een wille keurige toets om af te sluiten.** Dit bericht bevestigt dat uw toepassing een verbinding heeft gemaakt met Azure Cosmos DB. U kunt vervolgens het consolevenster sluiten.
 
-Gefeliciteerd! U hebt verbinding gemaakt met een Azure Cosmos DB-account.
+Gefeliciteerd. U hebt verbinding gemaakt met een Azure Cosmos DB-account.
 
 ## <a name="step-4-create-a-database"></a>Stap 4: een database maken
 
@@ -258,7 +258,17 @@ Een database is de logische container voor items die zijn gepartitioneerd in con
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos-data base gemaakt.  
+   > [!NOTE]
+   > Als u de uitzonde ring ' 503-Service niet beschikbaar ' krijgt, worden de vereiste [poorten](performance-tips.md#networking) voor de directe modus geblokkeerd door een firewall. U kunt dit probleem oplossen door de vereiste [poorten](performance-tips.md#networking) te openen of door de gateway modus te gebruiken zoals hieronder wordt weer gegeven.
+   ```csharp
+     // Create a new instance of the Cosmos Client in Gateway mode
+     this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()
+            {
+                ConnectionMode = ConnectionMode.Gateway
+            });
+   ```
+
+Gefeliciteerd. U hebt een Azure Cosmos-data base gemaakt.  
 
 ## <a id="CreateColl"></a>Stap 5: een container maken
 
@@ -289,7 +299,7 @@ Een container kan worden gemaakt met behulp van de methode [**CreateContainerIfN
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos-container gemaakt.  
+Gefeliciteerd. U hebt een Azure Cosmos-container gemaakt.  
 
 ## <a id="CreateDoc"></a>Stap 6: items toevoegen aan de container
 
@@ -328,7 +338,7 @@ Eerst gaan we een `Family` klasse maken die objecten vertegenwoordigt die zijn o
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt twee Azure Cosmos-items gemaakt.  
+Gefeliciteerd. U hebt twee Azure Cosmos-items gemaakt.  
 
 ## <a id="Query"></a>Stap 7: query's uitvoeren op Azure Cosmos DB-resources
 
@@ -356,7 +366,7 @@ Azure Cosmos DB biedt ondersteuning voor uitgebreide query's voor de JSON-docume
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een query uitgevoerd op een Azure Cosmos-container.
+Gefeliciteerd. U hebt een query uitgevoerd op een Azure Cosmos-container.
 
 ## <a id="ReplaceItem"></a>Stap 8: een JSON-item vervangen
 
@@ -385,7 +395,7 @@ Nu gaan we een item bijwerken in Azure Cosmos DB. We wijzigen de `IsRegistered` 
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos-item vervangen.
+Gefeliciteerd. U hebt een Azure Cosmos-item vervangen.
 
 ## <a id="DeleteDocument"></a>Stap 9: item verwijderen
 
@@ -415,7 +425,7 @@ Nu gaan we een item verwijderen uit Azure Cosmos DB.
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos-item verwijderd.
+Gefeliciteerd. U hebt een Azure Cosmos-item verwijderd.
 
 ## <a id="DeleteDatabase"></a>Stap 10: de database verwijderen
 
@@ -431,7 +441,7 @@ Nu gaan we onze data base verwijderen. Als u de gemaakte data base verwijdert, w
 
 1. Selecteer F5 om de toepassing uit te voeren.
 
-Gefeliciteerd! U hebt een Azure Cosmos-data base verwijderd.
+Gefeliciteerd. U hebt een Azure Cosmos-data base verwijderd.
 
 ## <a id="Run"></a>Stap 11: uw C#-consoletoepassing volledig uitvoeren
 
@@ -464,7 +474,7 @@ Deleted Database: FamilyDatabase
 End of demo, press any key to exit.
 ```
 
-Gefeliciteerd! U hebt de zelfstudie voltooid en beschikt nu over een werkende C#-consoletoepassing.
+Gefeliciteerd. U hebt de zelfstudie voltooid en beschikt nu over een werkende C#-consoletoepassing.
 
 ## <a id="GetSolution"></a> De volledige zelfstudieoplossing ophalen
 

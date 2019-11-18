@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 ms.date: 09/24/2018
-ms.openlocfilehash: cae0b2730a9426b183dc330a18a76122ac87cc66
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 4ea18ee23d845b2d16209b23de14dc3cd70aaa59
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73817931"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133148"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Nieuwe tenants inrichten en catalogiseren in een SaaS-toepassing met behulp van een Shard multi tenant Azure SQL database
 
@@ -63,11 +63,11 @@ De catalogus kan ook aangeven of een Tenant offline is voor onderhoud of andere 
 - De servicelaag of editie van een Data Base.
 - De versie van het database schema.
 - De naam van de Tenant en de SLA (service level agreement).
-- Informatie over het inschakelen van toepassings beheer, klant ondersteuning of devops-processen.  
+- Informatie over het inschakelen van toepassings beheer, klant ondersteuning of devops-processen.
 
-De catalogus kan ook worden gebruikt om multi tenant rapporten, schema beheer en gegevens extractie voor analyse doeleinden in te scha kelen. 
+De catalogus kan ook worden gebruikt om multi tenant rapporten, schema beheer en gegevens extractie voor analyse doeleinden in te scha kelen.
 
-### <a name="elastic-database-client-library"></a>Clientbibliotheek voor Elastic Database 
+### <a name="elastic-database-client-library"></a>Clientbibliotheek voor Elastic Database
 
 In Wingtip wordt de catalogus geïmplementeerd in de *tenantcatalog* -data base. De *tenantcatalog* wordt gemaakt met behulp van de Shard-beheer functies van de [Elastic database-client bibliotheek (EDCL)](sql-database-elastic-database-client-library.md). Met de bibliotheek kan een toepassing een *Shard-toewijzing* maken, beheren en gebruiken die is opgeslagen in een Data Base. Een Shard-toewijzing kruis verwijst naar de Tenant sleutel met de Shard, wat betekent dat de Shard-data base.
 
@@ -108,7 +108,7 @@ De scripts voor het inrichten van tenants in deze zelf studie ondersteunen de vo
 - Het inrichten van een Tenant in een bestaande data base die wordt gedeeld met andere tenants.
 - Een Tenant inrichten in een eigen data base.
 
-Tenant gegevens worden vervolgens geïnitialiseerd en geregistreerd in de catalogus Shard-toewijzing. In de voor beeld-app worden data bases die meerdere tenants bevatten, een algemene naam gegeven, zoals *tenants1* of *tenants2*. Data bases die één Tenant bevatten, krijgen de naam van de Tenant. De specifieke naamgevings conventies die in het voor beeld worden gebruikt, zijn geen essentieel onderdeel van het patroon. Als u een catalogus gebruikt, kan elke naam worden toegewezen aan de data base.  
+Tenant gegevens worden vervolgens geïnitialiseerd en geregistreerd in de catalogus Shard-toewijzing. In de voor beeld-app worden data bases die meerdere tenants bevatten, een algemene naam gegeven, zoals *tenants1* of *tenants2*. Data bases die één Tenant bevatten, krijgen de naam van de Tenant. De specifieke naamgevings conventies die in het voor beeld worden gebruikt, zijn geen essentieel onderdeel van het patroon. Als u een catalogus gebruikt, kan elke naam worden toegewezen aan de data base.
 
 <a name="goto_1_tutorial"/>
 
@@ -132,7 +132,7 @@ U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt vold
 
 - De Wingtip-scripts en-bron code ophalen:
     - De Wingtip tickets SaaS multi-tenant database scripts en toepassings bron code zijn beschikbaar in de [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) github opslag plaats.
-    - Raadpleeg de [algemene richt lijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor de stappen om de Wingtip-scripts te downloaden en de blok kering op te heffen. 
+    - Raadpleeg de [algemene richt lijnen](saas-tenancy-wingtip-app-guidance-tips.md) voor de stappen om de Wingtip-scripts te downloaden en de blok kering op te heffen.
 
 ## <a name="provision-a-tenant-into-a-database-shared-with-other-tenants"></a>Een Tenant inrichten in een Data Base die wordt *gedeeld* met andere tenants
 
@@ -144,8 +144,8 @@ Hieronder ziet u de belangrijkste elementen van de werk stroom voor het inrichte
 
 - **De nieuwe Tenant sleutel berekenen**: een hash-functie wordt gebruikt om de Tenant sleutel te maken op basis van de naam van de Tenant.
 - **Controleer of de Tenant sleutel al bestaat**: de catalogus wordt gecontroleerd om te controleren of de sleutel nog niet is geregistreerd.
-- **Tenant initialiseren in de standaard-Tenant database**: de Tenant database is bijgewerkt om de nieuwe Tenant gegevens toe te voegen.  
-- **Tenant in de catalogus registreren**: de toewijzing tussen de nieuwe Tenant sleutel en de bestaande tenants1-data base wordt toegevoegd aan de catalogus. 
+- **Tenant initialiseren in de standaard-Tenant database**: de Tenant database is bijgewerkt om de nieuwe Tenant gegevens toe te voegen.
+- **Tenant in de catalogus registreren**: de toewijzing tussen de nieuwe Tenant sleutel en de bestaande tenants1-data base wordt toegevoegd aan de catalogus.
 - **Voeg de naam van de Tenant toe aan een catalogus extensie tabel**: de naam van de locatie wordt toegevoegd aan de tabel tenants in de catalogus.  Deze toevoeging laat zien hoe de catalogus database kan worden uitgebreid om aanvullende toepassingsspecifieke gegevens te ondersteunen.
 - **Pagina met open gebeurtenissen voor de nieuwe Tenant**: de pagina *Bushwillow blauw* gebeurtenissen wordt geopend in de browser.
 
@@ -168,11 +168,11 @@ Als u wilt weten hoe de Wingtip-app nieuwe Tenant inrichting implementeert in ee
 
 4. Wanneer het uitvoeren van het script stopt bij het onderbrekings punt, drukt u op **F11** om de code te Step into.
 
-   ![Fout opsporing](media/saas-multitenantdb-provision-and-catalog/debug.png)
+   ![fout opsporing](media/saas-multitenantdb-provision-and-catalog/debug.png)
 
 5. De uitvoering van het script traceren met behulp van de opties voor het menu **fout opsporing** , **F10** en **F11**, om over te stappen of functies te noemen.
 
-Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
+Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>Een Tenant inrichten in een *eigen* data base
 
@@ -184,7 +184,7 @@ Hieronder vindt u belang rijke elementen van de werk stroom tijdens het traceren
 - **Controleer of de Tenant sleutel al bestaat**: de catalogus wordt gecontroleerd om te controleren of de sleutel nog niet is geregistreerd.
 - **Een nieuwe Tenant database maken**: de data base wordt gemaakt door de *basetenantdb* -data base te kopiëren met behulp van een resource manager-sjabloon.  De naam van de nieuwe Data Base is gebaseerd op de naam van de Tenant.
 - **Data Base toevoegen aan catalogus**: de nieuwe Tenant database is geregistreerd als een Shard in de catalogus.
-- **Tenant initialiseren in de standaard-Tenant database**: de Tenant database is bijgewerkt om de nieuwe Tenant gegevens toe te voegen.  
+- **Tenant initialiseren in de standaard-Tenant database**: de Tenant database is bijgewerkt om de nieuwe Tenant gegevens toe te voegen.
 - **Tenant registreren in de catalogus**: de toewijzing tussen de nieuwe Tenant sleutel en de *sequoiasoccer* -data base wordt toegevoegd aan de catalogus.
 - **Tenant naam wordt toegevoegd aan de catalogus**: de naam van de locatie wordt toegevoegd aan de extensie tabel voor tenants in de catalogus.
 - **Pagina met open gebeurtenissen voor de nieuwe Tenant**: de pagina *Sequoia voetbal* Events wordt geopend in de browser.
@@ -217,7 +217,7 @@ In deze oefening worden een batch van 17 tenants ingericht. Het is raadzaam deze
 
 2. Druk op **F5** om het script uit te voeren.
 
-### <a name="verify-the-deployed-set-of-tenants"></a>De geïmplementeerde set tenants controleren 
+### <a name="verify-the-deployed-set-of-tenants"></a>De geïmplementeerde set tenants controleren
 
 In deze fase hebt u een combi natie van tenants die zijn geïmplementeerd in een gedeelde data base en tenants die zijn geïmplementeerd in hun eigen data bases. De Azure Portal kan worden gebruikt om de gemaakte data bases te controleren. Open in de [Azure Portal](https://portal.azure.com)de **tenants1-MT-\<gebruiker\>-** server door te bladeren naar de lijst met SQL-servers.  De lijst met **SQL-data bases** moet de gedeelde **tenants1** -data base en de data bases voor de tenants in hun eigen data base bevatten:
 
@@ -227,7 +227,7 @@ Terwijl de Azure Portal de Tenant databases toont, kunt u de tenants *in* de ged
 
 #### <a name="using-wingtip-tickets-events-hub-page"></a>De pagina Wingtip tickets-gebeurtenissen hub gebruiken
 
-Open de pagina evenementen hub in de browser (http: Events. Wingtip-mt.\<USER\>. trafficmanager.net)  
+Open de pagina evenementen hub in de browser (http: Events. Wingtip-mt.\<USER\>. trafficmanager.net)
 
 #### <a name="using-catalog-database"></a>Catalog-Data Base gebruiken
 
@@ -245,7 +245,7 @@ De volledige lijst met tenants en de bijbehorende data base voor elk is beschikb
 3. Klik met de rechter muisknop op de weer gave *TenantsExtended* en kies **Top 1000-rijen selecteren**. Let op de toewijzing tussen de Tenant naam en de Data Base voor de verschillende tenants.
 
     ![Weer gave ExtendedTenants in SSMS](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
-      
+
 ## <a name="other-provisioning-patterns"></a>Andere inrichtingspatronen
 
 In deze sectie worden andere interessante inrichtings patronen besproken.
@@ -260,11 +260,11 @@ In het patroon voor automatische inrichting wordt een speciale inrichtings servi
 
 Dit type geautomatiseerde service kan eenvoudig of complex zijn. De automatisering kan bijvoorbeeld het inrichten voor meerdere geografische grafieken afhandelen en geo-replicatie voor nood herstel instellen. Met het automatisch inrichtings patroon zou een client toepassing of script een inrichtings aanvraag indienen bij een wachtrij die door een inrichtings service kan worden verwerkt. Het script wordt vervolgens gecontroleerd om de voltooiing te detecteren. Als vooraf inrichten wordt gebruikt, worden aanvragen snel verwerkt, terwijl een achtergrond service het inrichten van een vervangende data base beheert.
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 <!-- - Additional [tutorials that build upon the Wingtip SaaS application](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)-->
 - [Clientbibliotheek voor Elastic Database](sql-database-elastic-database-client-library.md)
-- [How to Debug Scripts in Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise) (Fouten opsporen in scripts met Windows PowerShell ISE)
+- [How to Debug Scripts in Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise) (Fouten opsporen in scripts met Windows PowerShell ISE)
 
 
 ## <a name="next-steps"></a>Volgende stappen

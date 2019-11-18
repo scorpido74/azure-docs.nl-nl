@@ -1,6 +1,6 @@
 ---
 title: Verificatie op basis van tokens (HTTP/2) voor APNS in azure Notification Hubs | Microsoft Docs
-description: In dit onderwerp wordt uitgelegd hoe u de nieuwe token verificatie gebruikt voor APNS
+description: In dit onderwerp wordt uitgelegd hoe u de nieuwe token verificatie voor APNS kunt gebruiken
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -11,118 +11,81 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/13/2019
-ms.openlocfilehash: a7fdaae33e28bd543b44c54868324339d1269bc2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 56689981d6c85c844fefbec6a4ec4aeb041dbc7f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213120"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111941"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Verificatie op basis van tokens (HTTP/2) voor APNS
 
 ## <a name="overview"></a>Overzicht
 
-In dit artikel vindt u informatie over het gebruik van het nieuwe APNS HTTP/2-protocol met verificatie op basis van tokens.
+In dit artikel wordt uitgelegd hoe u het nieuwe APNS HTTP/2-protocol gebruikt met verificatie op basis van tokens.
 
 De belangrijkste voor delen van het gebruik van het nieuwe protocol zijn:
 
-* Het genereren van tokens is relatief gedoe vrij (vergeleken met certificaten)
+* Het genereren van tokens is relatief eenvoudig (vergeleken met certificaten)
 * Geen verval datums meer: u hebt de controle over uw verificatie tokens en de intrekking ervan
 * Nettoladingen kunnen nu Maxi maal 4 KB groot zijn
 * Synchrone feedback
-* U bent het meest recente Protocol: certificaten gebruiken nog steeds het binaire protocol, dat is gemarkeerd voor afschaffing
+* U bevindt zich in het meest recente Protocol: certificaten gebruiken nog steeds het binaire protocol, dat is gemarkeerd voor afschaffing
 
-Dit nieuwe mechanisme kan in een paar minuten in twee stappen worden uitgevoerd:
+Het gebruik van dit nieuwe mechanisme kan in twee stappen worden uitgevoerd:
 
-1. De benodigde gegevens ophalen uit de Apple Developer-account Portal
-2. Uw notification hub configureren met de nieuwe gegevens
+* Haal de benodigde informatie op uit de Apple Developer-account Portal.
+* Configureer uw notification hub met de nieuwe informatie.
 
-Notification Hubs nu is ingesteld om het nieuwe verificatie systeem met APNS te gebruiken.
+Notification Hubs is nu ingesteld voor het gebruik van het nieuwe verificatie systeem met APNS.
 
-Houd er rekening mee dat als u de certificaat referenties voor APNS hebt gemigreerd:
-
-* de token eigenschappen overschrijven uw certificaat in ons systeem,
-* uw toepassing blijft echter naadloos meldingen ontvangen.
+Houd er rekening mee dat als u de certificaat referenties voor APNS hebt gemigreerd, de token eigenschappen uw certificaat overschrijft in het systeem, maar uw toepassing blijft meldingen naadloos ontvangen.
 
 ## <a name="obtaining-authentication-information-from-apple"></a>Verificatie gegevens verkrijgen van Apple
 
 Als u verificatie op basis van tokens wilt inschakelen, hebt u de volgende eigenschappen van uw Apple Developer-account nodig:
 
-### <a name="key-identifier"></a>Id van sleutel
+### <a name="key-identifier"></a>Sleutel-id
 
-De sleutel-id kan worden verkregen via de pagina sleutels in uw Apple Developer-account
+U kunt de sleutel-ID verkrijgen op de pagina **sleutels** onder **certificaten, id's & profielen**in uw Apple Developer-account:
+
+![](./media/notification-hubs-push-notification-http2-token-authentification/keys.png)
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/obtaining-auth-information-from-apple.png)
 
-### <a name="application-identifier--application-name"></a>Toepassings-id & toepassings naam
+### <a name="application-identifier-and-application-name"></a>Toepassings-id en toepassings naam
 
-De naam van de toepassing is beschikbaar via de pagina app-Id's in het ontwikkelaars account.
+De toepassings naam en-id zijn ook beschikbaar op de pagina **certificaten, id's & profielen** in het ontwikkelaars account:
 
 ![](./media/notification-hubs-push-notification-http2-token-authentification/app-name.png)
 
-De toepassings-id is beschikbaar via de pagina Membership Details in het ontwikkelaars account.
+### <a name="configure-via-the-net-sdk-or-the-azure-portal"></a>Configureren via de .NET SDK of de Azure Portal
 
-![](./media/notification-hubs-push-notification-http2-token-authentification/app-id.png)
+U kunt uw hub configureren voor het gebruik van verificatie op basis van tokens met behulp van onze [nieuwste client-SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs), of in de Azure Portal. Als u verificatie op basis van tokens in de portal wilt inschakelen, meldt u zich aan bij de Azure Portal en gaat u naar de instellingen van uw notification hub **> het Apple (APNS)** . Selecteer **token** van de eigenschap **authenticatie modus** om uw hub bij te werken met alle relevante token eigenschappen.
 
-### <a name="authentication-token"></a>Verificatie token
+![Token configureren](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
 
-Het verificatie token kan worden gedownload nadat u een token voor uw toepassing hebt gegenereerd. Raadpleeg [de Apple-documentatie voor ontwikkel aars](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1)voor meer informatie over het genereren van dit token.
+* Voer de eigenschappen in die u van uw Apple Developer-account hebt opgehaald.
+* Kies de toepassings modus (**productie** of **sandbox**).
+* Klik op de knop **Opslaan** om uw APNS-referenties bij te werken.
 
-## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Uw notification hub configureren voor het gebruik van verificatie op basis van tokens
+Op tokens gebaseerde referenties bestaan uit de volgende velden:
 
-### <a name="configure-via-the-azure-portal"></a>Configureren via de Azure Portal
-
-Als u verificatie op basis van tokens in de portal wilt inschakelen, meldt u zich aan bij de Azure Portal en gaat u naar uw notification hub > Notification Services > APNS-paneel.
-
-Er is een nieuwe eigenschap- *verificatie modus*. Als u token selecteert, kunt u uw hub bijwerken met alle relevante token eigenschappen.
-
-![](./media/notification-hubs-push-notification-http2-token-authentification/azure-portal-apns-settings.png)
-
-* Voer de eigenschappen in die u hebt opgehaald van uw Apple Developer-account
-* Kies de toepassings modus (productie of sandbox)
-* Klik op de knop **Opslaan** om uw APNS-referenties bij te werken
-
-### <a name="configure-via-management-api-rest"></a>Configureren via beheer-API (REST)
-
-U kunt onze [beheer-api's](https://msdn.microsoft.com/library/azure/dn495827.aspx) gebruiken om uw notification hub bij te werken voor het gebruik van verificatie op basis van tokens.
-Afhankelijk van of de toepassing die u wilt configureren een sandbox of productie-app is (opgegeven in uw Apple Developer-account), gebruikt u een van de volgende eind punten:
-
-* Sandbox-eind punt:[https://api.development.push.apple.com:443/3/device](https://api.development.push.apple.com:443/3/device)
-* Productie-eind punt:[https://api.push.apple.com:443/3/device](https://api.push.apple.com:443/3/device)
-
-> [!IMPORTANT]
-> Voor verificatie op basis van tokens is een API-versie van vereist: **2017-04 of hoger**.
-
-Hier volgt een voor beeld van een PUT-aanvraag voor het bijwerken van een hub met verificatie op basis van tokens:
-
-    ```text
-    PUT https://{namespace}.servicebus.windows.net/{Notification Hub}?api-version=2017-04
-      "Properties": {
-        "ApnsCredential": {
-          "Properties": {
-            "KeyId": "<Your Key Id>",
-            "Token": "<Your Authentication Token>",
-            "AppName": "<Your Application Name>",
-            "AppId": "<Your Application Id>",
-            "Endpoint":"<Sandbox/Production Endpoint>"
-          }
-        }
-      }
-    ```
-
-### <a name="configure-via-the-net-sdk"></a>Configureren via de .NET SDK
-
-U kunt uw hub configureren voor het gebruik van verificatie op basis van tokens met behulp van onze [nieuwste client-SDK](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.8).
+* **Sleutel-id**: de id van de persoonlijke sleutel die is gegenereerd in de Apple Developer-portal. bijvoorbeeld `2USFGKSKLT`.
+* **Team-ID**: ook wel het voor voegsel of het voor voegsel van de app genoemd. Dit is de id voor de organisatie in de Apple Developer-portal. bijvoorbeeld `S4V3D7CHJR`.
+* **Bundel-id**: ook wel de app-id genoemd. Dit is de bundel-id voor de toepassing. bijvoorbeeld `com.microsoft.nhubsample2019`. Houd er rekening mee dat u één sleutel voor veel apps kunt gebruiken. Deze waarde wordt toegewezen aan de `apns-topic` HTTP-header bij het verzenden van een melding en wordt gebruikt om de specifieke toepassing te richten.
+* **Token**: ook wel de ' sleutel ' of ' persoonlijke sleutel ' genoemd. Dit wordt opgehaald uit het. P8-bestand dat is gegenereerd op de Apple Developer-portal. Voor de sleutel moet APNS zijn ingeschakeld (deze is geselecteerd in de Apple-ontwikkelaars portal bij het genereren van de sleutel). Voor de waarde moet de PEM-kop/-voet tekst worden verwijderd wanneer u deze aan de NH-Portal/API levert.
+* **Eind punt**: dit is een wissel knop in de blade notification hubs Portal en een teken reeks veld in de API. Geldige waarden zijn `https://api.push.apple.com` of `https://api.sandbox.push.apple.com`. Notification Hubs gebruikt deze waarde voor de productie-of sandbox-omgeving voor het verzenden van meldingen. Dit moet overeenkomen met het `aps-environment` recht in de app, anders worden de gegenereerde tokens voor het APNS-apparaat niet in overeenstemming gebracht met de omgeving en kunnen de meldingen niet worden verzonden.
 
 Hier volgt een code voorbeeld dat het juiste gebruik illustreert:
 
 ```csharp
 NamespaceManager nm = NamespaceManager.CreateFromConnectionString(_endpoint);
-string token = "YOUR TOKEN HERE";
+string token = "YOUR PRIVATE KEY HERE";
 string keyId = "YOUR KEY ID HERE";
 string appName = "YOUR APP NAME HERE";
 string appId = "YOUR APP ID HERE";
@@ -132,6 +95,7 @@ desc.ApnsCredential.Endpoint = @"https://api.development.push.apple.com:443/3/de
 nm.UpdateNotificationHubAsync(desc);
 ```
 
-## <a name="reverting-to-using-certificate-based-authentication"></a>Herstellen met verificatie op basis van een certificaat
+## <a name="next-steps"></a>Volgende stappen
 
-U kunt op elk gewenst moment terugkeren naar het gebruik van verificatie op basis van certificaten door een van de voor gaande methoden te gebruiken en het certificaat door te geven in plaats van de eigenschappen van het token. Deze actie overschrijft de eerder opgeslagen referenties.
+* [Een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)
+* [Een notification hub configureren in de Azure Portal](create-notification-hub-portal.md)

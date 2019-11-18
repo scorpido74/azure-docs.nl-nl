@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: cd5b45093be6d7cc8745013f18c897251f89f454
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6ec8f8835e925663fc6ac21a6eb1df09d6927109
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822194"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132103"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Meer informatie over het inrichten van nieuwe tenants en registreren in de catalogus
 
@@ -25,7 +25,7 @@ In deze zelf studie leert u hoe u SaaS-patronen kunt inrichten en catalogiseren.
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> 
+>
 > * Richt één nieuwe Tenant in.
 > * Richt een batch met extra tenants in.
 
@@ -39,17 +39,17 @@ U kunt deze zelfstudie alleen voltooien als aan de volgende vereisten wordt vold
 
 In een door een Data Base ondersteunde multi tenant SaaS-toepassing is het belang rijk om te weten waar informatie voor elke Tenant is opgeslagen. In het SaaS-catalogus patroon wordt een catalogus database gebruikt om de toewijzing tussen elke Tenant en de Data Base waarin de gegevens zijn opgeslagen, op te slaan. Dit patroon is van toepassing wanneer Tenant gegevens over meerdere data bases worden gedistribueerd.
 
-Elke Tenant wordt geïdentificeerd aan de hand van een sleutel in de catalogus, die wordt toegewezen aan de locatie van de data base. In de Wingtip tickets-app wordt de sleutel gevormd door een hash van de naam van de Tenant. Met dit schema kan de app de sleutel maken op basis van de naam van de Tenant die is opgenomen in de URL van de toepassing. Andere Tenant sleutel schema's kunnen worden gebruikt.  
+Elke Tenant wordt geïdentificeerd aan de hand van een sleutel in de catalogus, die wordt toegewezen aan de locatie van de data base. In de Wingtip tickets-app wordt de sleutel gevormd door een hash van de naam van de Tenant. Met dit schema kan de app de sleutel maken op basis van de naam van de Tenant die is opgenomen in de URL van de toepassing. Andere Tenant sleutel schema's kunnen worden gebruikt.
 
 Met de catalogus kan de naam of locatie van de Data Base worden gewijzigd met minimale gevolgen voor de toepassing. In een model voor multi tenant-data bases is deze mogelijkheid ook geschikt voor het verplaatsen van een Tenant tussen data bases. De catalogus kan ook worden gebruikt om aan te geven of een Tenant of data base offline is voor onderhoud of andere acties. Deze mogelijkheid vindt u in de [zelf studie Eén Tenant herstellen](saas-dbpertenant-restore-single-tenant.md).
 
-De catalogus kan ook aanvullende Tenant-of data base-meta gegevens opslaan, zoals de schema versie, het service plan of de Sla's die aan tenants worden aangeboden. De catalogus kan andere informatie opslaan die toepassings beheer, klant ondersteuning of DevOps mogelijk maakt. 
+De catalogus kan ook aanvullende Tenant-of data base-meta gegevens opslaan, zoals de schema versie, het service plan of de Sla's die aan tenants worden aangeboden. De catalogus kan andere informatie opslaan die toepassings beheer, klant ondersteuning of DevOps mogelijk maakt.
 
-Buiten de SaaS-toepassing kan de catalogus database hulpprogramma's inschakelen. In de Wingtip tickets SaaS data base-per-Tenant-voor beeld wordt de catalogus gebruikt voor het inschakelen van query's tussen tenants, die in de [zelf studie voor AD-hocrapportage](saas-tenancy-cross-tenant-reporting.md)worden besproken. Taak beheer voor meerdere data bases wordt geverkennen in de zelf studies voor [schema beheer](saas-tenancy-schema-management.md) en [Tenant analyse](saas-tenancy-tenant-analytics.md) . 
+Buiten de SaaS-toepassing kan de catalogus database hulpprogramma's inschakelen. In de Wingtip tickets SaaS data base-per-Tenant-voor beeld wordt de catalogus gebruikt voor het inschakelen van query's tussen tenants, die in de [zelf studie voor AD-hocrapportage](saas-tenancy-cross-tenant-reporting.md)worden besproken. Taak beheer voor meerdere data bases wordt geverkennen in de zelf studies voor [schema beheer](saas-tenancy-schema-management.md) en [Tenant analyse](saas-tenancy-tenant-analytics.md) .
 
-In de Wingtip tickets SaaS-voor beelden wordt de catalogus geïmplementeerd met behulp van de Shard-beheer functies van de [Elastic database-client bibliotheek (EDCL)](sql-database-elastic-database-client-library.md). De EDCL is beschikbaar in Java en de .NET Framework. Met de EDCL kan een toepassing een Shard-toewijzing met een Data Base maken, beheren en gebruiken. 
+In de Wingtip tickets SaaS-voor beelden wordt de catalogus geïmplementeerd met behulp van de Shard-beheer functies van de [Elastic database-client bibliotheek (EDCL)](sql-database-elastic-database-client-library.md). De EDCL is beschikbaar in Java en de .NET Framework. Met de EDCL kan een toepassing een Shard-toewijzing met een Data Base maken, beheren en gebruiken.
 
-Een Shard-toewijzing bevat een lijst met Shards (data bases) en de toewijzing tussen sleutels (tenants) en Shards. EDCL-functies worden gebruikt tijdens het inrichten van de Tenant om de vermeldingen in de Shard-toewijzing te maken. Ze worden tijdens runtime gebruikt door toepassingen om verbinding te maken met de juiste data base. EDCL slaat de verbindings gegevens op om het verkeer naar de catalogus database te minimaliseren en de toepassing te versnellen. 
+Een Shard-toewijzing bevat een lijst met Shards (data bases) en de toewijzing tussen sleutels (tenants) en Shards. EDCL-functies worden gebruikt tijdens het inrichten van de Tenant om de vermeldingen in de Shard-toewijzing te maken. Ze worden tijdens runtime gebruikt door toepassingen om verbinding te maken met de juiste data base. EDCL slaat de verbindings gegevens op om het verkeer naar de catalogus database te minimaliseren en de toepassing te versnellen.
 
 > [!IMPORTANT]
 > De toewijzings gegevens zijn toegankelijk in de catalogus database, maar *u kunt deze niet bewerken*. Toewijzings gegevens bewerken door alleen Elastic Database-client bibliotheek-Api's te gebruiken. Het rechtstreeks bewerken van de toewijzings gegevens Risico's die de catalogus beschadigen, wordt niet ondersteund.
@@ -57,15 +57,15 @@ Een Shard-toewijzing bevat een lijst met Shards (data bases) en de toewijzing tu
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>Inleiding tot het SaaS-inrichtings patroon
 
-Wanneer u een nieuwe Tenant toevoegt aan een SaaS-toepassing die gebruikmaakt van een model met één Tenant database, moet u een nieuwe Tenant database inrichten. De data base moet worden gemaakt op de juiste locatie en servicelaag. Het moet ook worden geïnitialiseerd met het juiste schema en de bijbehorende referentie gegevens. En moet worden geregistreerd in de catalogus onder de juiste Tenant sleutel. 
+Wanneer u een nieuwe Tenant toevoegt aan een SaaS-toepassing die gebruikmaakt van een model met één Tenant database, moet u een nieuwe Tenant database inrichten. De data base moet worden gemaakt op de juiste locatie en servicelaag. Het moet ook worden geïnitialiseerd met het juiste schema en de bijbehorende referentie gegevens. En moet worden geregistreerd in de catalogus onder de juiste Tenant sleutel.
 
-Er kunnen verschillende benaderingen van het inrichten van data bases worden gebruikt. U kunt SQL-scripts uitvoeren, een Bacpac implementeren of een sjabloon database kopiëren. 
+Er kunnen verschillende benaderingen van het inrichten van data bases worden gebruikt. U kunt SQL-scripts uitvoeren, een Bacpac implementeren of een sjabloon database kopiëren.
 
-De inrichting van de data base moet deel uitmaken van uw schema beheer strategie. U moet ervoor zorgen dat er nieuwe data bases zijn ingericht met het meest recente schema. Deze vereiste wordt besproken in de [zelf studie schema beheer](saas-tenancy-schema-management.md). 
+De inrichting van de data base moet deel uitmaken van uw schema beheer strategie. U moet ervoor zorgen dat er nieuwe data bases zijn ingericht met het meest recente schema. Deze vereiste wordt besproken in de [zelf studie schema beheer](saas-tenancy-schema-management.md).
 
-De Wingtip tickets data base-per-Tenant app richt zich op nieuwe tenants door een sjabloon database te kopiëren met de naam _basetenantdb_, die op de catalogus server wordt geïmplementeerd. Het inrichten kan worden geïntegreerd in de toepassing als onderdeel van een registratie-ervaring. Het kan ook offline worden ondersteund met behulp van scripts. In deze zelf studie wordt het inrichten geverkennen met behulp van Power shell. 
+De Wingtip tickets data base-per-Tenant app richt zich op nieuwe tenants door een sjabloon database te kopiëren met de naam _basetenantdb_, die op de catalogus server wordt geïmplementeerd. Het inrichten kan worden geïntegreerd in de toepassing als onderdeel van een registratie-ervaring. Het kan ook offline worden ondersteund met behulp van scripts. In deze zelf studie wordt het inrichten geverkennen met behulp van Power shell.
 
-Inrichtings scripts Kopieer de _basetenantdb_ -data base om een nieuwe Tenant database in een elastische pool te maken. De Tenant-data base wordt gemaakt in de Tenant server die is toegewezen aan de DNS-alias van _newtenant_ . Deze alias houdt een verwijzing bij naar de server die wordt gebruikt voor het inrichten van nieuwe tenants en wordt bijgewerkt naar een herstel Tenant server in de zelf studies voor herstel na nood gevallen ([Dr met geoherstel](saas-dbpertenant-dr-geo-restore.md), [Dr met georeplicatie](saas-dbpertenant-dr-geo-replication.md)). De scripts initialiseeren de data base vervolgens met Tenant-specifieke gegevens en registreren deze in de catalogus Shard toewijzing. Tenant databases krijgen namen die zijn gebaseerd op de naam van de Tenant. Dit naamgevings schema is geen essentieel onderdeel van het patroon. De catalogus wijst de Tenant sleutel toe aan de naam van de data base, zodat elke naam Conventie kan worden gebruikt. 
+Inrichtings scripts Kopieer de _basetenantdb_ -data base om een nieuwe Tenant database in een elastische pool te maken. De Tenant-data base wordt gemaakt in de Tenant server die is toegewezen aan de DNS-alias van _newtenant_ . Deze alias houdt een verwijzing bij naar de server die wordt gebruikt voor het inrichten van nieuwe tenants en wordt bijgewerkt naar een herstel Tenant server in de zelf studies voor herstel na nood gevallen ([Dr met geoherstel](saas-dbpertenant-dr-geo-restore.md), [Dr met georeplicatie](saas-dbpertenant-dr-geo-replication.md)). De scripts initialiseeren de data base vervolgens met Tenant-specifieke gegevens en registreren deze in de catalogus Shard toewijzing. Tenant databases krijgen namen die zijn gebaseerd op de naam van de Tenant. Dit naamgevings schema is geen essentieel onderdeel van het patroon. De catalogus wijst de Tenant sleutel toe aan de naam van de data base, zodat elke naam Conventie kan worden gebruikt.
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>De scripts van de Wingtip tickets SaaS-data base-per-Tenant toepassing ophalen
@@ -95,7 +95,7 @@ Als u wilt weten hoe de toepassing Wingtip tickets nieuwe Tenant inrichting impl
 
 
 
-Traceer de uitvoering van het script met behulp van de opties in het menu **fout opsporing** . Druk op F10 en F11 om over te stappen of naar de aangeroepen functies te gaan. Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
+Traceer de uitvoering van het script met behulp van de opties in het menu **fout opsporing** . Druk op F10 en F11 om over te stappen of naar de aangeroepen functies te gaan. Zie [Tips voor het werken met en het opsporen van fouten in Power shell-scripts](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)voor meer informatie over fout opsporing in Power shell-scripts.
 
 
 U hoeft deze werk stroom niet expliciet te volgen. Hierin wordt uitgelegd hoe u fouten oplost in het script.
@@ -156,7 +156,7 @@ Andere inrichtings patronen die niet in deze zelf studie zijn opgenomen:
 
 **Provisioning data bases**: het vooraf inrichtings patroon exploiteert het feit dat data bases in een elastische pool geen extra kosten toevoegen. Facturering is voor de elastische pool, niet voor de data bases. Niet-actieve data bases nemen geen resources in beslag. Door data bases vooraf in te richten in een pool en ze toe te wijzen wanneer dat nodig is, kunt u de tijd beperken om tenants toe te voegen. Het aantal vooraf ingerichte data bases kan zo nodig worden aangepast om een buffer te houden die geschikt is voor de verwachte inrichtings frequentie.
 
-**Automatische inrichting**: in het automatisch inrichtings patroon, indien nodig, worden servers, Pools en data bases automatisch ingericht met een inrichtings service. Als u wilt, kunt u previsioning-data bases in elastische Pools insluiten. Als data bases uit bedrijf worden genomen en verwijderd, kunnen hiaten in elastische Pools worden gevuld door de inrichtings service. Een dergelijke service kan eenvoudig of complex zijn, zoals het afhandelen van inrichting in meerdere geographs en het instellen van geo-replicatie voor nood herstel. 
+**Automatische inrichting**: in het automatisch inrichtings patroon, indien nodig, worden servers, Pools en data bases automatisch ingericht met een inrichtings service. Als u wilt, kunt u previsioning-data bases in elastische Pools insluiten. Als data bases uit bedrijf worden genomen en verwijderd, kunnen hiaten in elastische Pools worden gevuld door de inrichtings service. Een dergelijke service kan eenvoudig of complex zijn, zoals het afhandelen van inrichting in meerdere geographs en het instellen van geo-replicatie voor nood herstel.
 
 Met het patroon voor automatische inrichting, verzendt een client toepassing of script een inrichtings aanvraag naar een wachtrij die moet worden verwerkt door de inrichtings service. Vervolgens wordt de service gecontroleerd om de voltooiing te bepalen. Als vooraf inrichten wordt gebruikt, worden aanvragen snel afgehandeld. De service richt een vervangende Data Base op de achtergrond.
 
@@ -166,15 +166,15 @@ Met het patroon voor automatische inrichting, verzendt een client toepassing of 
 In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
-> 
+>
 > * Richt één nieuwe Tenant in.
 > * Richt een batch met extra tenants in.
 > * Stap in de details van het inrichten van tenants en het registreren daarvan in de catalogus.
 
 Probeer de [zelf studie voor prestatie bewaking](saas-dbpertenant-performance-monitoring.md).
 
-## <a name="additional-resources"></a>Aanvullende bronnen
+## <a name="additional-resources"></a>Aanvullende resources
 
 * Aanvullende [zelf studies die voortbouwen op de Wingtip tickets SaaS data base-per-Tenant toepassing](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Clientbibliotheek voor Elastic Database](sql-database-elastic-database-client-library.md)
-* [Fouten opsporen in scripts in de Windows PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)
+* [Fouten opsporen in scripts in de Windows PowerShell ISE](https://docs.microsoft.com/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise)

@@ -1,5 +1,5 @@
 ---
-title: Aanbevelingen voor de SDK-microfoon matrix van speech-apparaten-Speech Service
+title: Aanbevelingen voor SDK-microfoon matrix voor speech-apparaten
 titleSuffix: Azure Cognitive Services
 description: Aanbevelingen voor de SDK van speech-apparaten. Deze matrix geometrie wordt aanbevolen voor gebruik met de micro soft audio-stack.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
-ms.openlocfilehash: 0a0bbbb59d09d35d0153f56f65b2ee1d9438e49d
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e39056d6ed1ced85e3f953bcbd7f04dd6311942c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072405"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111654"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Aanbevelingen voor SDK-microfoon matrix voor speech-apparaten
 
@@ -41,16 +41,16 @@ Microfoon onderdelen moeten worden geselecteerd om een signaal zonder ruis en ve
 
 De aanbevolen eigenschappen bij het selecteren van een microfoon zijn:
 
-| Parameter                     | Aanbevolen                                         |
-| ----------------------------- | --------------------------------------------------- |
-| SNR                           | \>= 65 dB (1 kHz signaal 94 dBSPL, A-gewogen lawaai) |
-| Amplitude overeenkomst            | ± 1 dB @ 1 kHz                                      |
-| Fase overeenkomst                | ± 2 ° @ 1 kHz                                        |
-| Geluids overbelasting punt (AOP) | \>= 120 dBSPL (THD = 10%)                           |
-| Bitrate                      | Mini maal 24 bits                                      |
-| Samplefrequentie                 | Mini maal 16 kHz\*                                    |
-| Antwoord op frequentie            | ± 3 dB, 200-8000 Hz zwevende masker\*                 |
-| Betrouwbaarheid                   | Opslag temperatuur bereik-40 °C tot 70 °C<br />Bereik van de bedrijfs temperatuur-20 °C tot 55 °C |
+| Parameter | Aanbevolen |
+| --------- | ----------- |
+| SNR | \>= 65 dB (1 kHz signaal 94 dBSPL, A-gewogen lawaai) |
+| Amplitude overeenkomst | ± 1 dB @ 1 kHz |
+| Fase overeenkomst | ± 2 ° @ 1 kHz |
+| Geluids overbelasting punt (AOP) | \>= 120 dBSPL (THD = 10%) |
+| Bitrate | Mini maal 24 bits |
+| Samplefrequentie | Mini maal 16 kHz\* |
+| Antwoord op frequentie | ± 3 dB, 200-8000 Hz zwevende masker\* |
+| Betrouwbaarheid | Opslag temperatuur bereik-40 °C tot 70 °C<br />Bereik van de bedrijfs temperatuur-20 °C tot 55 °C |
 
 \*_hogere sampling frequenties of ' bredere ' prijsbereiken kunnen nodig zijn voor VoIP-toepassingen (hoogwaardige communicatie)_
 
@@ -68,7 +68,7 @@ De prestaties van de microfoon matrix wanneer deze zijn geïntegreerd in een app
 | THD%\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, vijfde bestelling             |
 | Antwoord op frequentie | ± 6 dB, 200-8000 Hz zwevend masker\*\*              |
 
-_er \*een lage vervormings spreker vereist om THD te meten (bijvoorbeeld NEUMANN KH120)_
+\*\*_een spreker met lage vervorming vereist om THD te meten (bijvoorbeeld NEUMANN KH120)_
 
 \*\* _' bredere ' frequentie bereik kan nodig zijn voor VoIP-toepassingen (hoogwaardige communicatie)_
 

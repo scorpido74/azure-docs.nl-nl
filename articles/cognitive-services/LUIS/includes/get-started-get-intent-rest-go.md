@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/17/2019
 ms.author: diberry
-ms.openlocfilehash: 04e7f582920c4b328de39bda3d37e886e26f8bae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73499635"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125463"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -166,4 +166,4 @@ Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het best
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen en Train toevoegen](../luis-get-started-go-add-utterance.md)
+> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)

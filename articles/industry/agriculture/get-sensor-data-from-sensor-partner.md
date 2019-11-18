@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 424df8ac7145129dd70a9a5791648730189b528b
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 33fd2221d3f3a0562abf83f014a7b84df972eebc
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889659"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128839"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Sensor gegevens ophalen van sensor partners
 
@@ -35,7 +35,7 @@ Zodra u het streamen van sensor gegevens hebt gestart, kunt u het proces voor he
  - API-eindpunt  
  - Tenant-id  
  - Client-id  
- - Client geheim  
+ - Clientgeheim  
  - EventHub-verbindings reeks
 
 De bovenstaande informatie wordt door uw systeem integrator verstrekt. Neem contact op met uw systeem integrator voor problemen bij het inschakelen van de integratie van het apparaat.
@@ -72,7 +72,7 @@ Ga naar de partner portal van het apparaat om FarmBeats te koppelen met behulp v
  - API-eindpunt  
  - EventHub-verbindings reeks  
  - Client-id  
- - Client geheim  
+ - Clientgeheim  
  - Tenant-id  
 
  De provider van het apparaat bevestigt een geslaagde integratie. Na de bevestiging kunt u alle apparaten en Sens oren in azure FarmBeats bekijken.
@@ -86,7 +86,7 @@ Gebruik de volgende sectie om de apparaten en Sens oren in uw farm weer te geven
 Momenteel FarmBeats ondersteunt de volgende apparaten:
 
 - **Knoop punt**: een apparaat waaraan een of meer Sens oren zijn gekoppeld.
-- **Gateway**: een apparaat waaraan een of meer Sens oren zijn gekoppeld.
+- **Gateway**: een apparaat waaraan een of meer knoop punten zijn gekoppeld.
 
 Voer de volgende stappen uit:
 

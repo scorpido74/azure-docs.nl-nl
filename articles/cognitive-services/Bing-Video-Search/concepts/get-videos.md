@@ -1,7 +1,7 @@
 ---
 title: Zoeken naar Video's met behulp van de Bing Video's zoeken-API
 titleSuffix: Azure Cognitive Services
-description: Lees hier alles over het verzenden van zoekquery's naar de Bing Video's zoeken-API.
+description: De Bing Video Search APIfinds en retourneert relevante Video's van het web en biedt verschillende functies voor intelligente en gerichte video op het web.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: e3314efe0ea0367eb852fd17aadece17026ff4bb
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72512413"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111432"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Video's zoeken met de Bing Video's zoeken-API
 
@@ -114,7 +114,7 @@ Wanneer u op een miniatuur klikt, worden er drie opties voor het weergeven van d
 
 Vergeet niet om de kenmerken publisher en creator op te geven bij het afspelen van de video.
 
-Zie [Inzicht verkrijgen over een video](../video-insights.md) voor meer informatie over het gebruiken van [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) om inzichten te verkrijgen over de video.
+Zie [Inzicht verkrijgen over een video](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#video-videoid) voor meer informatie over het gebruiken van [videoId](../video-insights.md) om inzichten te verkrijgen over de video.
 
 ## <a name="filtering-videos"></a>Video's filteren
 

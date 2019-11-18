@@ -1,18 +1,18 @@
 ---
 title: Problemen met slechte gateway fouten oplossen-Azure-toepassing gateway
-description: Meer informatie over het oplossen van problemen met Application Gateway 502
+description: 'Informatie over het oplossen van Application Gateway server fout: 502-webserver heeft een ongeldig antwoord ontvangen terwijl deze als gateway of proxy server fungeert.'
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: amsriva
-ms.openlocfilehash: baf1eccdd6fe910bd98e8b39ef29b7bd8e88a7d5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 17bed17b536f6e88fc821fd83e09a1d6ea218bc3
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048159"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130484"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Problemen met ongeldige gateway fouten in Application Gateway oplossen
 

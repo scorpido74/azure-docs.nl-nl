@@ -1,7 +1,7 @@
 ---
 title: Meer informatie over OData-verzamelings filters
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over hoe OData-verzamelings filters werken in azure Cognitive Search query's.
+description: Meer informatie over de mechanismen van hoe OData-verzamelings filters werken in azure Cognitive Search query's, inclusief beperkingen en gedragingen die uniek zijn voor verzamelingen.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9a57e1d16b13d822b6f5b541a7f838b0dd3a69ad
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: f6e8ed5baef9b8594bb1fe03942e831fd8264a56
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72794393"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113065"
 ---
 # <a name="understanding-odata-collection-filters-in-azure-cognitive-search"></a>Meer informatie over OData-verzamelings filters in azure Cognitive Search
 
@@ -103,7 +103,7 @@ Hoe `Rooms/Description` worden opgeslagen voor Zoek opdrachten in volledige teks
 | serie | 1 |
 | weergeven | 1 |
 
-In tegens telling tot het bovenstaande filter, waarin in principe wordt aangegeven dat een kamer `Type` gelijk is aan ' Deluxe room ' en **dat dezelfde ruimte** `BaseRate` minder dan 100 ' is, worden in de zoek query ' overeenkomende documenten gevonden waarbij `Rooms/Type` de term ' Deluxe ' heeft en `Rooms/Description` heeft de zin "City View". Er is geen concept van afzonderlijke ruimtes waarvan de velden in het laatste geval kunnen worden gecorreleerd.
+In tegens telling tot het bovenstaande filter, waarin in principe wordt aangegeven dat een kamer `Type` gelijk is aan ' Deluxe room ' en **dat dezelfde ruimte** `BaseRate` minder dan 100 ' is, wordt in de zoek query ' overeenkomen met documenten waar `Rooms/Type` de term ' Deluxe ' heeft en `Rooms/Description` de zin ' City View ' heeft. Er is geen concept van afzonderlijke ruimtes waarvan de velden in het laatste geval kunnen worden gecorreleerd.
 
 > [!NOTE]
 > Als u ondersteuning wilt zien voor gecorreleerde Zoek opdrachten die zijn toegevoegd aan Azure Cognitive Search, kunt u stemmen voor [dit gebruikers spraak item](https://feedback.azure.com/forums/263029-azure-search/suggestions/37735060-support-correlated-search-on-complex-collections).

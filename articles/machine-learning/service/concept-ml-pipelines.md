@@ -1,7 +1,7 @@
 ---
 title: Wat zijn ML-pijp lijnen
 titleSuffix: Azure Machine Learning
-description: In dit artikel vindt u informatie over de voor delen van de machine learning pijp lijnen die u kunt bouwen met de Azure Machine Learning SDK voor python. Pijp lijnen voor machine learning (ML) worden gebruikt door gegevens wetenschappers om hun machine learning werk stromen te bouwen, te optimaliseren en te beheren.
+description: In dit artikel vindt u informatie over de voor delen van de machine learning pijp lijnen die u kunt bouwen met de Azure Machine Learning SDK voor python. Machine learning (ML) pijplijnen worden gebruikt door de datawetenschappers te bouwen, te optimaliseren en beheren van de machine learning-werkstromen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 11/06/2019
-ms.openlocfilehash: c42d2d308398d548df4b1c088819c024ff613564
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 21aa869d53a35ee974fb2f852b9be9b10eb929b0
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832488"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112400"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Wat zijn Azure Machine Learning pijp lijnen?
 
@@ -31,7 +31,7 @@ Met Azure Machine Learning pijp lijnen kunt u werk stromen maken in uw machine l
 
 Deze voor delen worden aanzienlijk zodra uw machine learning project wordt verplaatst naar een niet-versneld onderzoek en naar herhalingen. Zelfs eenvoudige pijp lijnen met één stap kunnen waardevol zijn. Machine learning-projecten zijn vaak in een complexe status en kunnen een vrijs telling zijn om een enkele werk stroom een trivial proces te maken.
 
-Meer informatie over het [maken van uw eerste pijp lijn](how-to-create-your-first-pipeline.md).
+Meer informatie over het [uw eerste pijplijn](how-to-create-your-first-pipeline.md).
 
 ![Machine learning-pijp lijnen in Azure Machine Learning](./media/concept-ml-pipelines/pipeline-flow.png)
 
@@ -85,7 +85,7 @@ Dit probleem wordt opgelost met pijp lijnen. Azure Machine Learning zijn automat
 
 Daarnaast kan de uitvoer van een stap, indien gewenst, opnieuw worden gebruikt. Als u hergebruik als een mogelijkheid opgeeft en er geen upstream-afhankelijkheden zijn waarmee herberekening wordt geactiveerd, gebruikt de pipeline-service een versie van de resultaten in de cache. Een dergelijk hergebruik kan de ontwikkelings tijd aanzienlijk verminderen. Als u een complexe gegevens voorbereidings taak hebt, moet u deze waarschijnlijk vaker opnieuw uitvoeren dan strikt nood zakelijk is. Met pijp lijnen hebt u het volgende gedaan: als dat nodig is, wordt de stap uitgevoerd, als dat niet het geval is.
 
-Al deze afhankelijkheids analyse, indeling en activering worden afgehandeld door Azure Machine Learning wanneer u een [pijplijn](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) object maakt, het aan een `Experiment`doorgeeft en `submit()`aanroept. 
+Al deze afhankelijkheids analyse, indeling en activering worden afgehandeld door Azure Machine Learning wanneer u een [pijplijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline(class)?view=azure-ml-py) object maakt, het aan een `Experiment`doorgeeft en `submit()`aanroept. 
 
 ### <a name="coordinating-the-steps-involved"></a>De betrokken stappen coördineren
 
@@ -107,7 +107,7 @@ Wanneer u een `Pipeline`-object maakt en uitvoert, worden de volgende stappen op
 
 ## <a name="building-pipelines-with-the-python-sdk"></a>Pijp lijnen bouwen met de python-SDK
 
-In de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)is een pijp lijn een python-object dat is gedefinieerd in de module `azureml.pipeline.core`. Een [pijplijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) object bevat een geordende sequentie van een of meer [PipelineStep](https://docs.microsoft.com/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) -objecten. De klasse `PipelineStep` is abstract en de daad werkelijke stappen zijn subklassen, zoals [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)of [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). De [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) -klasse bevat een herbruikbare reeks stappen die kunnen worden gedeeld tussen pijp lijnen. Een `Pipeline` wordt uitgevoerd als onderdeel van een `Experiment`.
+In de [Azure machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)is een pijp lijn een python-object dat is gedefinieerd in de module `azureml.pipeline.core`. Een [pijplijn](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) object bevat een geordende sequentie van een of meer [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) -objecten. De klasse `PipelineStep` is abstract en de daad werkelijke stappen zijn subklassen, zoals [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimatorstep?view=azure-ml-py), [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.pythonscriptstep?view=azure-ml-py)of [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py). De [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep?view=azure-ml-py) -klasse bevat een herbruikbare reeks stappen die kunnen worden gedeeld tussen pijp lijnen. Een `Pipeline` wordt uitgevoerd als onderdeel van een `Experiment`.
 
 Een Azure ML-pijp lijn is gekoppeld aan een Azure Machine Learning-werk ruimte en een pijplijn stap is gekoppeld aan een berekenings doel dat in die werk ruimte beschikbaar is. Zie [Azure machine learning-werk ruimten maken en beheren in de Azure Portal](https://docs.microsoft.com/azure/machine-learning/service/how-to-manage-workspace) of [Wat zijn reken doelen in azure machine learning?](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)voor meer informatie.
 
@@ -189,16 +189,16 @@ Het is eenvoudig om enthousiast te raken over het opnieuw gebruiken van in de ca
 
 Totdat een project een grote of bijnae implementatie krijgt, moeten uw pijp lijnen grof zijn in plaats van nauw keurig te zijn. Als u uw ML-project wilt beschouwen als _fasen_ en een pijp lijn als u een volledige werk stroom levert om u door een bepaalde fase te verplaatsen, bent u op het juiste pad. 
 
-## <a name="key-advantages"></a>Belangrijkste voor delen
+## <a name="key-advantages"></a>Belangrijkste voordelen
 
 De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine learning-werk stromen zijn:
 
-|Belangrijkste voor deel|Beschrijving|
+|Groot voordeel|Beschrijving|
 |:-------:|-----------|
-|**&nbsp;uitvoeringen zonder toezicht**|Stappen plannen om parallel of op een betrouw bare en zonder toezicht te worden uitgevoerd. De voor bereiding en het model leren van gegevens kunnen de afgelopen dagen of weken zijn en met pijp lijnen kunt u zich richten op andere taken terwijl het proces wordt uitgevoerd. |
+|**Zonder toezicht&nbsp;wordt uitgevoerd**|Stappen plannen om parallel of op een betrouw bare en zonder toezicht te worden uitgevoerd. De voor bereiding en het model leren van gegevens kunnen de afgelopen dagen of weken zijn en met pijp lijnen kunt u zich richten op andere taken terwijl het proces wordt uitgevoerd. |
 |**Heterogene compute**|Gebruik meerdere pijp lijnen die betrouwbaar zijn afgestemd op heterogene en schaal bare reken resources en opslag locaties. Maak efficiënt gebruik van beschik bare reken resources door afzonderlijke pijplijn stappen uit te voeren op verschillende reken doelen, zoals HDInsight, GPU data Science Vm's en Databricks.|
 |**Herbruikbaarheid**|Maak pijplijn sjablonen voor specifieke scenario's, zoals retraining en batch-scores. Activeer gepubliceerde pijp lijnen van externe systemen via eenvoudige REST-aanroepen.|
-|**Bijhouden en versie beheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
+|**Wijzigingen bijhouden en versiebeheer**|In plaats van gegevens en resultaat paden hand matig te traceren tijdens het herhalen, gebruikt u de SDK van de pijp lijnen om uw gegevens bronnen, invoer en uitvoer expliciet een naam en versie te gegeven. U kunt ook scripts en gegevens afzonderlijk beheren voor een verhoogde productiviteit.|
 | **Modulariteit** | Het scheiden van aandachtspunten en het isoleren van wijzigingen stelt software in staat om sneller te werken met een hogere kwaliteit. | 
 |**Werking**|Met pijp lijnen kunnen gegevens wetenschappers samen werken aan alle gebieden van het machine learning-ontwerp proces, terwijl ze gelijktijdig kunnen werken aan pijplijn stappen.|
 
@@ -207,7 +207,7 @@ De belangrijkste voor delen van het gebruik van pijp lijnen voor uw machine lear
 Azure ML-pijp lijnen vormen een krachtige faciliteit voor het leveren van de waarde in de vroege ontwikkel stadia. De waarde neemt toe naarmate het team en project groeien. In dit artikel wordt uitgelegd hoe u pijp lijnen kunt opgeven met de Azure Machine Learning python SDK en die zijn georganiseerd op Azure. U hebt een aantal Basic-bron code gezien en deze is geïntroduceerd in enkele van de beschik bare `PipelineStep` klassen. U moet een idee hebben van het gebruik van Azure ML-pijp lijnen en hoe Azure deze uitvoert. 
 
 
-+ Meer informatie over het [maken van uw eerste pijp lijn](how-to-create-your-first-pipeline.md).
++ Meer informatie over het [uw eerste pijplijn](how-to-create-your-first-pipeline.md).
 
 + Meer informatie over het [uitvoeren van batch voorspellingen voor grote gegevens](tutorial-pipeline-batch-scoring-classification.md ).
 

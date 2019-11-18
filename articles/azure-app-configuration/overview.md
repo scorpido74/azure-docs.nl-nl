@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 1db46e8562006e1b60e4f51ca88220aeca5fb2a8
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687033"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129696"
 ---
 # <a name="what-is-azure-app-configuration"></a>Wat is Azure-app configuratie?
 
@@ -30,7 +30,7 @@ App-configuratie is momenteel beschikbaar als open bare preview. Het is gratis v
 
 Cloudgebaseerde toepassingen worden vaak uitgevoerd op meerdere virtuele machines of containers in meerdere regio's en gebruiken meerdere externe services. Het maken van een dergelijke gedistribueerde toepassing die robuust en schaalbaar is, is een uitdaging.
 
-Verschillende programmeer methodieken helpen ontwikkel aars bij het verg Roten van de complexiteit van het bouwen van toepassingen. De 12-factor-app beschrijft bijvoorbeeld veel goed geteste architectuur patronen en best practices voor gebruik met Cloud toepassingen. Een belangrijke aanbeveling in deze handleiding is om de configuratie van de code te scheiden. In dit geval moeten de configuratie-instellingen van een toepassing buiten het uitvoer bare bestand worden bewaard en worden gelezen vanuit de runtime-omgeving of een externe bron.
+Verschillende programmeer methodieken helpen ontwikkel aars bij het verg Roten van de complexiteit van het bouwen van toepassingen. In de app met [twaalf factoren](https://12factor.net/) worden bijvoorbeeld veel goed geteste architectuur patronen en best practices voor gebruik met Cloud toepassingen beschreven. Een belangrijke aanbeveling in deze handleiding is om de configuratie van de code te scheiden. In dit geval moeten de configuratie-instellingen van een toepassing buiten het uitvoer bare bestand worden bewaard en worden gelezen vanuit de runtime-omgeving of een externe bron.
 
 Hoewel een toepassing gebruik kan maken van app-configuratie, zijn de volgende voor beelden de typen toepassing die het gebruik ervan kunnen doen:
 
@@ -65,7 +65,7 @@ De eenvoudigste manier om een appconfiguratiearchief toe te voegen aan uw toepas
 | .NET core en ASP.NET Core | App-configuratie provider voor .NET core |
 | .NET en ASP.NET | App Configuration Builder voor .NET |
 | Java Spring | App-configuratie client voor lente-Cloud |
-| Andere | REST API app-configuratie |
+| Overige | REST API app-configuratie |
 
 ## <a name="next-steps"></a>Volgende stappen
 

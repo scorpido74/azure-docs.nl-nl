@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 07/05/2019
 ms.author: travisw
-ms.openlocfilehash: 1de9283e1ad609a1f81d7e8a6d8171cc8052e3ae
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 58bc33c54a7bd878d717b2c6e44d9ac8657c245f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73504072"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111787"
 ---
 # <a name="quickstart-create-a-voice-assistant-in-java-on-android-by-using-the-speech-sdk"></a>Snelstartgids: een spraak assistent maken in Java op Android met behulp van de Speech SDK
 
@@ -30,9 +30,9 @@ Deze toepassing is gebouwd met het Speech SDK maven-pakket en Android Studio 3,3
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
-* Een eerder gemaakte bot die is geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
-* [Android Studio](https://developer.android.com/studio/) v 3.3 of hoger
+- Een Azure-abonnements sleutel voor spraak Services. [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com).
+- Een eerder gemaakte bot die is geconfigureerd met het [directe lijn spraak kanaal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech)
+- [Android Studio](https://developer.android.com/studio/) v 3.3 of hoger
 
     > [!NOTE]
     > Raadpleeg [de lijst met ondersteunde regio's voor spraak assistenten](regions.md#voice-assistants) om ervoor te zorgen dat uw resources in een van deze regio's worden geïmplementeerd.
@@ -96,9 +96,9 @@ Vervang vervolgens de inhoud van de `activity_main.xml` door de volgende code:
 
 Deze XML definieert een eenvoudige gebruikers interface voor interactie met uw bot.
 
-* Het `button`-element initieert een interactie en roept de methode `onBotButtonClicked` aan wanneer erop wordt geklikt.
-* Met het element `recoText` worden de resultaten van de spraak naar tekst weer gegeven wanneer u met uw bot praat.
-* In het element `activityText` wordt de JSON-nettolading weer gegeven voor de nieuwste bot-Framework activiteit vanuit uw bot.
+- Het `button`-element initieert een interactie en roept de methode `onBotButtonClicked` aan wanneer erop wordt geklikt.
+- Met het element `recoText` worden de resultaten van de spraak naar tekst weer gegeven wanneer u met uw bot praat.
+- In het element `activityText` wordt de JSON-nettolading weer gegeven voor de nieuwste bot-Framework activiteit vanuit uw bot.
 
 De tekst en de grafische weergave van uw gebruikersinterface moeten er nu ongeveer als volgt uitzien:
 

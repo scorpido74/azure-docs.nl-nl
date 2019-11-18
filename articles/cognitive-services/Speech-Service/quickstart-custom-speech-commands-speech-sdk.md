@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)'
+title: 'Quick Start: verbinding maken met een app voor aangepaste opdrachten met Speech SDK-Speech Service'
 titleSuffix: Azure Cognitive Services
 description: In dit artikel maakt u een Speech SDK-client toepassing met aangepaste opdrachten.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 5f395d37e0133a081a6fcb2e03821a97e4012316
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 890d2200a8047bc12c99eed97277e11776806def
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507493"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111152"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Quick Start: verbinding maken met een toepassing voor aangepaste opdrachten met de spraak-SDK (preview)
 
@@ -46,7 +46,7 @@ In deze Snelstartgids wordt stapsgewijs beschreven hoe u een client toepassing k
 
 1. Open uw [eerder gemaakte toepassing voor aangepaste opdrachten](./quickstart-custom-speech-commands-create-new.md) en selecteer **publiceren**
 
-   > [!div class="mx-imgBorder"]
+   > [!div class="mx-imgBorder"] 
    > ![](media/custom-speech-commands/fulfill-sdk-publish-application.png) toepassing publiceren
 
 1. De app-id uit de publicatie melding kopiëren voor later gebruik
@@ -320,7 +320,7 @@ Voeg als volgt de code-behind bron toe:
 
    ```csharp
    //
-   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities, 
+   // This code sets up handlers for events relied on by `DialogServiceConnector` to communicate its activities,
    // speech recognition results, and other information.
    //
    // ActivityReceived is the main way your client will receive messages, audio, and events
@@ -377,7 +377,7 @@ Voeg als volgt de code-behind bron toe:
 1. Voeg het volgende code fragment toe aan de hoofd tekst van de methode `ListenButton_ButtonClicked` in de klasse `MainPage`
 
    ```csharp
-   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and 
+   // This code sets up `DialogServiceConnector` to listen, since you already established the configuration and
    // registered the event handlers.
    if (connector == null)
    {
@@ -415,7 +415,7 @@ Voeg als volgt de code-behind bron toe:
 1. Selecteer **Talk**en spreek een Engelse zin of zin in op de microfoon van uw apparaat. Uw spraak wordt verzonden naar het directe lijn spraak kanaal en naar tekst getranscribeerd, die wordt weer gegeven in het venster.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 > [!div class="nextstepaction"]
 > [Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)
-

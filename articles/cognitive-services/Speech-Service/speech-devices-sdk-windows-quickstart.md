@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: de speech apparaten SDK uitvoeren op de Windows Speech-Service'
+title: 'Snelstartgids: de SDK voor spraak apparaten uitvoeren op Windows'
 titleSuffix: Azure Cognitive Services
 description: Vereisten en instructies om aan de slag te gaan met een Windows speech-apparaat-SDK.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: erhopf
-ms.openlocfilehash: e59cfaa1260cd33c8912437d56bbbb2ace2f43ed
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: e4da99d895ba7a6d9ce537ab513ce4cc248aff7a
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090455"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111667"
 ---
 # <a name="quickstart-run-the-speech-devices-sdk-sample-app-on-windows"></a>Snelstartgids: de voor beeld-app voor de speech-apparaten SDK uitvoeren in Windows
 
@@ -105,22 +105,21 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
     private static String LuisAppId = "<enter your LUIS AppId>";
    ```
 
-    Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en de regio gegevens ook nodig in `Cts.java`:
+   Als u gesprek transcriptie gebruikt, zijn uw spraak sleutel en de regio gegevens ook nodig in `Cts.java`:
 
    ```java
     private static final String CTSKey = "<Conversation Transcription Service Key>";
     private static final String CTSRegion="<Conversation Transcription Service Region>";// Region may be "centralus" or "eastasia"
-    ```
+   ```
 
 1. Het sleutel woord default (sleutel woord) is "computer". U kunt ook een van de andere beschik bare tref woorden, zoals ' machine ' of ' assistent ', proberen. De bron bestanden voor deze alternatieve tref woorden bevinden zich in de speech-apparaten-SDK in de map tref woorden. `C:\SDSDK\JRE-Sample-Release\keyword\Computer` bevat bijvoorbeeld de bestanden die worden gebruikt voor het tref woord "computer".
 
-   > [!TIP]
-   > U kunt ook [een aangepast tref woord maken](speech-devices-sdk-create-kws.md).
+    > [!TIP]
+    > U kunt ook [een aangepast tref woord maken](speech-devices-sdk-create-kws.md).
 
     Als u een nieuw tref woord wilt gebruiken, werkt u de volgende regel in `FunctionsList.java`en kopieert u het tref woord naar uw app. Als u bijvoorbeeld het tref woord ' machine ' van het trefwoord pakket `machine.zip`wilt gebruiken:
 
    * Kopieer het `kws.table`-bestand vanuit het zip-pakket naar de projectmap **/klassen**van het project.
-
    * Werk de `FunctionsList.java` bij met de naam van het tref woord:
 
      ```java
@@ -143,23 +142,23 @@ Als u van plan bent om de doel stellingen te gebruiken, hebt u een [Luis-abonnem
 
 ## <a name="create-and-run-a-standalone-application"></a>Een zelfstandige toepassing maken en uitvoeren
 
-1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies **exporteren**. 
+1. Klik in de **pakket Verkenner**met de rechter muisknop op uw project. Kies **exporteren**.
 
 1. Het venster **exporteren** wordt weer gegeven. Vouw **Java** uit en selecteer het **uitvoer bare jar-bestand** en selecteer vervolgens **volgende**.
 
-   ![Scherm opname van het venster exporteren](media/speech-devices-sdk/eclipse-export-windows.png) 
+   ![Scherm opname van het venster exporteren](media/speech-devices-sdk/eclipse-export-windows.png)
 
 1. Het venster **uitvoer bare JAR file export** wordt weer gegeven. Kies een **export doel** voor de toepassing en selecteer vervolgens **volt ooien**.
- 
+
    ![Scherm opname van uitvoer bare JAR-bestand exporteren](media/speech-devices-sdk/eclipse-export-jar-windows.png)
 
 1. Plaats `kws.table`, `participants.properties`, `unimic_runtime.dll`, `pma.dll` en `Microsoft.CognitiveServices.Speech.extension.pma.dll` in de hierboven gekozen doelmap, omdat deze bestanden nodig zijn voor de toepassing.
 
 1. De zelfstandige toepassing uitvoeren
 
-     ```powershell
-     java -jar SpeechDemo.jar
-     ```
+   ```powershell
+   java -jar SpeechDemo.jar
+   ```
 
 ## <a name="next-steps"></a>Volgende stappen
 

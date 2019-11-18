@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f53bf023346c4f494de5ab50e8beb185d9f97c91
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 6f6aa90553f3a69d2d287c7d59e166884a1a8f66
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882661"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113728"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Zacht verwijderen voor Azure Storage-blobs
 
@@ -23,7 +23,7 @@ Azure Storage biedt nu een tijdelijke verwijdering voor blob-objecten, zodat u u
 
 Wanneer deze optie is ingeschakeld, kunt u met zacht verwijderen uw gegevens opslaan en herstellen wanneer blobs of BLOB-moment opnamen worden verwijderd. Deze beveiliging wordt uitgebreid naar BLOB-gegevens die worden gewist als gevolg van een overschrijving.
 
-Wanneer gegevens worden verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van dat ze permanent worden gewist. Als zacht verwijderen is ingeschakeld en u gegevens overschrijft, wordt een voorlopig verwijderde moment opname gegenereerd om de status van de overschreven gegevens op te slaan. Voorlopig verwijderde objecten zijn onzichtbaar, tenzij expliciet wordt vermeld. U kunt de hoeveelheid tijd waarvoor tijdelijke verwijderde gegevens worden hersteld, configureren voordat deze permanent verlopen.
+Wanneer gegevens worden verwijderd, wordt deze overgezet naar een voorlopig verwijderde status in plaats van dat ze permanent worden gewist. Als zacht verwijderen is ingeschakeld en u gegevens overschrijft, wordt een voorlopig verwijderde moment opname gegenereerd om de status van de overschreven gegevens op te slaan. Voorlopig verwijderde objecten zijn onzichtbaar, tenzij expliciet wordt vermeld. U kunt configureren hoelang voorlopig verwijderde gegevens nog moeten kunnen worden hersteld voordat ze definitief verlopen.
 
 Zacht verwijderen is achterwaarts compatibel, dus u hoeft geen wijzigingen aan te brengen in uw toepassingen om te profiteren van de beveiligingen die deze functie biedt. Met [gegevens herstel](#recovery) wordt echter een nieuwe **undelete BLOB** API geïntroduceerd.
 
@@ -41,7 +41,7 @@ U kunt de tijdelijke Bewaar periode voor verwijderen op elk gewenst moment wijzi
 
 Met zacht verwijderen worden uw gegevens in veel gevallen bewaard, waarbij blobs of BLOB-moment opnamen worden verwijderd of overschreven.
 
-Wanneer een BLOB wordt overschreven met behulp van **put-BLOB**, **put**-blok, **put-blok lijst** of- **BLOB kopiëren** een moment opname van de status van de BLOB voordat de schrijf bewerking wordt uitgevoerd, wordt automatisch gegenereerd. Deze moment opname is een voorlopig verwijderde moment opname. het is onzichtbaar, tenzij tijdelijke verwijderde objecten expliciet worden weer gegeven. Zie de sectie [herstel](#recovery) voor meer informatie over het weer geven van zachte verwijderde objecten.
+Wanneer een BLOB wordt overschreven met behulp van **put-BLOB**, **put-blok**, **put-lijst**of- **BLOB kopiëren** een moment opname van de status van de BLOB voordat de schrijf bewerking wordt uitgevoerd, wordt automatisch gegenereerd. Deze moment opname is een voorlopig verwijderde moment opname. het is onzichtbaar, tenzij tijdelijke verwijderde objecten expliciet worden weer gegeven. Zie de sectie [herstel](#recovery) voor meer informatie over het weer geven van zachte verwijderde objecten.
 
 ![](media/storage-blob-soft-delete/storage-blob-soft-delete-overwrite.png)
 
@@ -79,7 +79,7 @@ De volgende tabel bevat details over het verwachte gedrag wanneer zacht verwijde
 | [BLOB plaatsen](/rest/api/storageservices/put-blob) | Blok-, toevoeg-en pagina-blobs | Hiermee maakt u een nieuwe BLOB of vervangt u een bestaande BLOB binnen een container | Als deze wordt gebruikt om een bestaande BLOB te vervangen, wordt automatisch een moment opname van de status van de BLOB vóór de aanroep gegenereerd. Dit geldt ook voor een eerder zachte verwijderde BLOB als en alleen als deze wordt vervangen door een BLOB van hetzelfde type (blok, toevoegen of pagina). Als deze wordt vervangen door een BLOB van een ander type, worden alle bestaande voorlopig verwijderde gegevens permanent verlopen. |
 | [BLOB verwijderen](/rest/api/storageservices/delete-blob) | Blok-, toevoeg-en pagina-blobs | Hiermee wordt een BLOB-of BLOB-moment opname gemarkeerd voor verwijdering. De BLOB of moment opname wordt later verwijderd tijdens het opschonen van de verzameling | Als deze wordt gebruikt om een BLOB-moment opname te verwijderen, wordt die moment opname gemarkeerd als zacht verwijderd. Als deze wordt gebruikt om een BLOB te verwijderen, wordt die BLOB gemarkeerd als zacht verwijderd. |
 | [BLOB kopiëren](/rest/api/storageservices/copy-blob) | Blok-, toevoeg-en pagina-blobs | Kopieert een bron-BLOB naar een bestemmings-Blob in hetzelfde opslag account of in een ander opslag account. | Als deze wordt gebruikt om een bestaande BLOB te vervangen, wordt automatisch een moment opname van de status van de BLOB vóór de aanroep gegenereerd. Dit geldt ook voor een eerder zachte verwijderde BLOB als en alleen als deze wordt vervangen door een BLOB van hetzelfde type (blok, toevoegen of pagina). Als deze wordt vervangen door een BLOB van een ander type, worden alle bestaande voorlopig verwijderde gegevens permanent verlopen. |
-| [Blok keren](/rest/api/storageservices/put-block) | Blok-blobs | Hiermee maakt u een nieuw blok dat moet worden doorgevoerd als onderdeel van een blok-blob. | Als wordt gebruikt om een blok door te voeren naar een blob die actief is, is er geen wijziging. Als wordt gebruikt om een blok door te voeren op een blob die zacht is verwijderd, wordt een nieuwe BLOB gemaakt en wordt automatisch een moment opname gegenereerd om de status van de zachte verwijderde BLOB vast te leggen. |
+| [Blok keren](/rest/api/storageservices/put-block) | Blok-blobs | Hiermee maakt u een nieuw blok dat moet worden doorgevoerd als onderdeel van een blok-blob. | Als wordt gebruikt om een blok door te voeren op een blob die actief is, is er geen wijziging. Als wordt gebruikt om een blok door te voeren op een blob die zacht is verwijderd, wordt een nieuwe BLOB gemaakt en wordt automatisch een moment opname gegenereerd om de status van de zachte verwijderde BLOB vast te leggen. |
 | [Blokkerings lijst plaatsen](/rest/api/storageservices/put-block-list) | Blok-blobs | Hiermee wordt een BLOB doorgevoerd door de set blok-Id's op te geven waaruit de blok-BLOB bestaat. | Als deze wordt gebruikt om een bestaande BLOB te vervangen, wordt automatisch een moment opname van de status van de BLOB vóór de aanroep gegenereerd. Dit geldt ook voor een eerder zachte verwijderde BLOB als en alleen als dit een blok-blob is. Als deze wordt vervangen door een BLOB van een ander type, worden alle bestaande voorlopig verwijderde gegevens permanent verlopen. |
 | [Pagina plaatsen](/rest/api/storageservices/put-page) | Pagina-blobs | Schrijft een bereik van pagina's naar een pagina-blob. | Geen wijziging. Pagina-BLOB-gegevens die worden overschreven of gewist met deze bewerking, worden niet opgeslagen en kunnen niet worden hersteld. |
 | [Blok toevoegen](/rest/api/storageservices/append-block) | Blobs toevoegen | Schrijft een gegevens blok naar het einde van een toevoeg-BLOB | Geen wijziging. |
@@ -293,9 +293,9 @@ blockBlob.StartCopy(copySource);
 
 ---
 
-## <a name="are-there-any-special-considerations-for-using-soft-delete"></a>Zijn er speciale overwegingen voor het gebruik van zacht verwijderen?
+## <a name="special-considerations"></a>Speciale overwegingen
 
-Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een andere gebruiker van het opslag account, wordt het inschakelen van de functie voor voorlopig verwijderen aanbevolen. Het inschakelen van zacht verwijderen voor vaak overschreven gegevens kan leiden tot hogere kosten voor opslag capaciteit en een grotere latentie bij het weer geven van blobs. U kunt deze extra kosten verlagen door de vaak overschreven gegevens op te slaan in een afzonderlijk opslag account, waar zacht verwijderen is uitgeschakeld. 
+Als er een kans is dat uw gegevens per ongeluk worden gewijzigd of verwijderd door een toepassing of een andere gebruiker van het opslag account, wordt het inschakelen van de functie voor voorlopig verwijderen aanbevolen. Het inschakelen van zacht verwijderen voor vaak overschreven gegevens kan leiden tot hogere kosten voor opslag capaciteit en een grotere latentie bij het weer geven van blobs. U kunt deze extra kosten en latentie verminderen door de vaak overschreven gegevens op te slaan in een afzonderlijk opslag account, waar zacht verwijderen is uitgeschakeld. 
 
 ## <a name="faq"></a>Veelgestelde vragen
 

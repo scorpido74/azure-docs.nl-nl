@@ -1,25 +1,17 @@
 ---
-title: Veelgestelde vragen over Azure cache voor redis | Microsoft Docs
+title: Veelgestelde vragen over Azure Cache voor Redis
 description: Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: c2c52b7d-b2d1-433a-b635-c20180e5cab2
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/29/2019
 ms.author: yegu
-ms.openlocfilehash: 5ccbfb75edc7fa0eabf5e647169ed2d3771326d8
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e497a5c54a80dbed2ea94f8251d198c1c8bc5043
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785843"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122795"
 ---
 # <a name="azure-cache-for-redis-faq"></a>Veelgestelde vragen over Azure Cache voor Redis
 Meer informatie over de antwoorden op veelgestelde vragen, patronen en aanbevolen procedures voor Azure cache voor redis.
@@ -94,7 +86,7 @@ Er zijn verschillende manieren om aan de slag te gaan met Azure cache voor redis
 
 Als u nog geen Azure-account hebt, kunt u het volgende doen:
 
-* [Gratis een Azure-account openen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). U ontvangt tegoed dat kan worden gebruikt om betaalde Azure-services uit te proberen. Zelfs nadat het tegoed is gebruikt, kunt u het account houden en de gratis Azure-services en -functies gebruiken.
+* [Gratis een Azure-account openen](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=redis_cache_hero). U ontvangt tegoed dat kan worden gebruikt om betaalde Azure-services te proberen. Zelfs nadat het tegoed is gebruikt, kunt u het account houden en de gratis Azure-services en -functies gebruiken.
 * [Uw voordelen als Visual Studio-abonnee activeren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=redis_cache_hero). Via uw MSDN-abonnement ontvangt u elke maand tegoeden die u voor betaalde Azure-services kunt gebruiken.
 
 <a name="cache-size"></a>
@@ -133,22 +125,22 @@ In deze tabel kunnen we de volgende conclusies tekenen:
 * Met redis clustering neemt de door Voer lineair toe als u het aantal Shards (knoop punten) in het cluster verhoogt. Als u bijvoorbeeld een P4-cluster van 10 Shards maakt, is de beschik bare door Voer 400.000 * 10 = 4.000.000 RPS.
 * De door Voer voor grotere sleutel grootten is hoger in de Premium-laag, vergeleken met de Standard-laag.
 
-| Prijscategorie | Grootte | Cpu-cores | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
+| Prijscategorie | Grootte | CPU-kernen | Beschik bare band breedte | 1-grootte van KB-waarde | 1-grootte van KB-waarde |
 | --- | --- | --- | --- | --- | --- |
 | **Standaard cache grootten** | | |**Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aantal aanvragen per seconde (RPS) niet-SSL** |**SSL-aanvragen per seconde (RPS)** |
-| C0 | 250 MB | Gedeeld | 100/12,5  |  15.000 |   7\.500 |
-| C1 |   1 GB | 1      | 500/62,5  |  38.000 |  20.720 |
-| C2 | 2,5 GB | 2      | 500/62,5  |  41.000 |  37.000 |
-| C3 |   6 GB | 4      | 1000/125  | 100.000 |  90.000 |
-| C4 |  13 GB | 2      | 500/62,5  |  60.000 |  55.000 |
-| C5 |  26 GB | 4      | 1\.000/125 | 102.000 |  93.000 |
-| C6 |  53 GB | 8      | 2\.000/250 | 126.000 | 120.000 |
+| C0 | 250 MB | Gedeeld | 100 / 12.5  |  15.000 |   7\.500 |
+| C1 |   1 GB | 1      | 500 / 62.5  |  38.000 |  20.720 |
+| C2 | 2,5 GB | 2      | 500 / 62.5  |  41.000 |  37.000 |
+| C3 |   6 GB | 4      | 1000/125  | 100.000 |  90,000 |
+| C4 |  13 GB | 2      | 500 / 62.5  |  60,000 |  55.000 |
+| C5 |  26 GB | 4      | 1,000 / 125 | 102.000 |  93.000 |
+| C6 |  53 GB | 8      | 2,000 / 250 | 126.000 | 120,000 |
 | **Premium-cache grootten** | |**CPU-kernen per Shard** | **Megabits per seconde (MB/s)/mega bytes per seconde (MB/s)** |**Aanvragen per seconde (RPS) niet-SSL, per Shard** |**SSL-aanvragen per seconde (RPS) per Shard** |
-| P1 |   6 GB |  2 | 1\.500/187,5 | 180.000 | 172.000 |
-| P2 |  13 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
-| P3 |  26 GB |  4 | 3\.000/375   | 350.000 | 341.000 |
-| P4 |  53 GB |  8 | 6\.000/750   | 400,000 | 373.000 |
-| P5 | 120 GB | 20 | 6\.000/750   | 400,000 | 373.000 |
+| P1 |   6 GB |  2 | 1,500 / 187.5 | 180,000 | 172.000 |
+| P2 |  13 GB |  4 | 3,000 / 375   | 350.000 | 341.000 |
+| P3 |  26 GB |  4 | 3,000 / 375   | 350.000 | 341.000 |
+| P4 |  53 GB |  8 | 6,000 / 750   | 400,000 | 373.000 |
+| P5 | 120 GB | 20 | 6,000 / 750   | 400,000 | 373.000 |
 
 Voor instructies voor het instellen van stunnel of het downloaden van de redis-hulpprogram ma's, zoals `redis-benchmark.exe`, raadpleegt u de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
@@ -167,10 +159,10 @@ Ja, Azure cache voor redis is beschikbaar in Azure Government Cloud, Azure China
 
 | Cloud   | DNS-achtervoegsel voor redis            |
 |---------|---------------------------------|
-| Public  | *. redis.cache.windows.net       |
-| Amerikaanse overheid  | *. redis.cache.usgovcloudapi.net |
-| Duitsland | *. redis.cache.cloudapi.de       |
-| China   | *. redis.cache.chinacloudapi.cn  |
+| Public  | *.redis.cache.windows.net       |
+| Amerikaanse overheid  | *.redis.cache.usgovcloudapi.net |
+| Duitsland | *.redis.cache.cloudapi.de       |
+| China   | *.redis.cache.chinacloudapi.cn  |
 
 Zie de volgende koppelingen voor meer informatie over overwegingen bij het gebruik van Azure cache voor redis met andere Clouds.
 
@@ -219,7 +211,7 @@ Een van de fantastische dingen over redis is dat er veel clients zijn die veel v
 <a name="cache-emulator"></a>
 
 ### <a name="is-there-a-local-emulator-for-azure-cache-for-redis"></a>Is er een lokale emulator voor Azure cache voor redis?
-Er is geen lokale emulator voor Azure cache voor redis, maar u kunt de MSOpenTech-versie van redis-server. exe uitvoeren vanaf de [opdracht regel Programma's van redis](https://github.com/MSOpenTech/redis/releases/) op uw lokale machine en er verbinding mee maken om een vergelijk bare ervaring te krijgen met een lokale cache-emulator, zoals wordt weer gegeven in de volgende voor beeld:
+Er is geen lokale emulator voor Azure cache voor redis, maar u kunt de MSOpenTech-versie van redis-server. exe uitvoeren vanaf de [opdracht regel Programma's van redis](https://github.com/MSOpenTech/redis/releases/) op uw lokale machine en er verbinding mee maken om een vergelijk bare ervaring te krijgen met een lokale cache-emulator, zoals wordt weer gegeven in het volgende voor beeld:
 
     private static Lazy<ConnectionMultiplexer>
           lazyConnection = new Lazy<ConnectionMultiplexer>
@@ -297,7 +289,7 @@ Redis server biedt geen systeem eigen ondersteuning voor SSL, maar Azure cache v
 >
 >
 
-Redis-hulpprogram ma's zoals `redis-cli` werken niet met de SSL-poort, maar u kunt een hulp programma zoals `stunnel` gebruiken om een beveiligde verbinding te maken tussen de hulpprogram ma's en de SSL-poort door de aanwijzingen in de aankondiging van de [ASP.net-sessie status provider voor redis preview-versie](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) te volgen. Verzenden.
+Redis-hulpprogram ma's zoals `redis-cli` werken niet met de SSL-poort, maar u kunt een hulp programma zoals `stunnel` gebruiken om een veilige verbinding te maken tussen de hulpprogram ma's en de SSL-poort door de aanwijzingen in de aankondiging van de [ASP.net-sessie status provider voor redis preview release](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) te volgen.
 
 Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de sectie [Hoe kan ik redis-opdrachten uitvoeren?](#cache-commands)
 
@@ -333,7 +325,7 @@ Voor instructies over het downloaden van de redis-hulpprogram ma's, zie de secti
 
 * Vermijd het gebruik van bepaalde redis-opdrachten die veel tijd in beslag nemen, tenzij u de impact van deze opdrachten volledig begrijpt. Voer bijvoorbeeld niet de opdracht [sleutels](https://redis.io/commands/keys) in productie uit. Afhankelijk van het aantal sleutels kan het lang duren om te retour neren. Redis is een server met één thread en verwerkt opdrachten een voor een. Als u andere opdrachten hebt uitgegeven na sleutels, worden ze niet verwerkt totdat redis de opdracht sleutels verwerkt. De [redis.io-site](https://redis.io/commands/) bevat details over de tijd complexiteit voor elke bewerking die wordt ondersteund. Klik op elke opdracht om de complexiteit van elke bewerking weer te geven.
 * Sleutel grootten: moet ik kleine sleutel/waarden of grote sleutel/waarden gebruiken? Dit is afhankelijk van het scenario. Als voor uw scenario grotere sleutels zijn vereist, kunt u de ConnectionTimeout aanpassen, vervolgens waarden opnieuw proberen en de logica voor opnieuw proberen aan te passen. In een redis-server perspectief bieden kleinere waarden betere prestaties.
-* Dit betekent niet dat u geen grotere waarden in redis kunt opslaan. u moet rekening houden met de volgende overwegingen. De latentie is hoger. Als u een set gegevens hebt die groter is en een kleiner aantal, kunt u meerdere ConnectionMultiplexer-instanties gebruiken, die allemaal zijn geconfigureerd met een andere set time-out-en nieuwe waarden, zoals beschreven in de vorige [Wat is de configuratie van de stack Exchange. redis. sectie opties](#cache-configuration) .
+* Dit betekent niet dat u geen grotere waarden in redis kunt opslaan. u moet rekening houden met de volgende overwegingen. De latentie is hoger. Als u een set gegevens hebt die groter is en een kleiner aantal, kunt u meerdere ConnectionMultiplexer-instanties gebruiken, die allemaal zijn geconfigureerd met een andere set time-out-en nieuwe waarden, zoals wordt beschreven in de vorige sectie [de configuratie opties voor de stack Exchange. redis](#cache-configuration) .
 
 <a name="cache-benchmarking"></a>
 

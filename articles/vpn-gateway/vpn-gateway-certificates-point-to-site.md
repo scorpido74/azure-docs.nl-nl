@@ -1,5 +1,6 @@
 ---
-title: 'Certificaten genereren en exporteren voor punt-naar-site: Power shell: Azure | Microsoft Docs'
+title: 'Certificaten genereren en exporteren voor P2S: Power shell'
+titleSuffix: Azure VPN Gateway
 description: Maak een zelfondertekend basis certificaat, Exporteer de open bare sleutel en Genereer client certificaten met behulp van Power shell op Windows 10 of Windows Server 2016.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f7d4f71853e1640146a38fb39384c20ca9553eb
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: f28e76e9dcaf1331fd26a2321cd4deca1027e693
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285740"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151378"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Certificaten voor punt-naar-site genereren en exporteren met Power shell
 
@@ -24,7 +25,7 @@ Als u geen toegang hebt tot een computer met Windows 10 of Windows Server 2016, 
 
 [!INCLUDE [generate and export certificates](../../includes/vpn-gateway-generate-export-certificates-include.md)]
 
-## <a name="install"></a>Een geëxporteerd client certificaat installeren
+## <a name="install"></a>Een geëxporteerde certificaat installeren
 
 Voor elke client die verbinding maakt met het VNet via een P2S-verbinding, moet een client certificaat lokaal worden geïnstalleerd.
 

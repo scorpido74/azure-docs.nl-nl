@@ -1,5 +1,5 @@
 ---
-title: Service beheer voor Azure-Cognitive Search in de portal
+title: Service beheer in de portal
 titleSuffix: Azure Cognitive Search
 description: Een Azure Cognitive Search-service beheren, een gehoste service voor zoeken in de Cloud op Microsoft Azure met behulp van de Azure Portal.
 manager: nitinme
@@ -9,20 +9,20 @@ tags: azure-portal
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 052d772c8ef885d594146d456ebb3cdcbbc0e383
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: e00a810e7977e1c45c1833e0b901ff6804f7fb32
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793506"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113286"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Service beheer voor Azure Cognitive Search in het Azure Portal
 > [!div class="op_single_selector"]
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
-> * [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Portal](search-manage.md)
-> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)-> 
+> * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Azure Cognitive Search is een volledig beheerde, op de cloud gebaseerde zoek service die wordt gebruikt voor het bouwen van een uitgebreide zoek ervaring in aangepaste apps. In dit artikel worden de Service beheer taken behandeld die u kunt uitvoeren in de [Azure Portal](https://portal.azure.com) voor een zoek service die u al hebt ingericht. Service beheer is lichter ontwerp, beperkt tot de volgende taken:
 
@@ -62,14 +62,14 @@ In het dash board is bron bewaking beperkt tot de informatie die wordt weer gege
 
 Met de REST API van de zoek service kunt u via programma code een aantal op documenten en indexen ontvangen: 
 
-* [Index statistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
-* [Documenten tellen](https://docs.microsoft.com/rest/api/searchservice/count-documents)
+* [Indexstatistieken ophalen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Aantal documenten](https://docs.microsoft.com/rest/api/searchservice/count-documents)
 
 ## <a name="disaster-recovery-and-service-outages"></a>Herstel na nood gevallen en service storingen
 
 Hoewel we uw gegevens kunnen bijvoegen, biedt Azure Cognitive Search geen directe failover van de service als er een storing optreedt op het niveau van het cluster of het Data Center. Als een cluster in het Data Center uitvalt, detecteert en werkt het operations-team de service te herstellen. U krijgt tijdens het herstellen van de service een uitval tijd, maar u kunt Service tegoed aanvragen om service niet-beschik baarheid per [Service Level Agreement (Sla)](https://azure.microsoft.com/support/legal/sla/search/v1_0/)te compenseren. 
 
-Als continue service vereist is in het geval van fatale storingen buiten de controle van micro soft, kunt u [een extra service](search-create-service-portal.md) in een andere regio inrichten en een strategie voor geo-replicatie implementeren om ervoor te zorgen dat indexen volledig redundant zijn in alle services.
+Als er een continue service vereist is in het geval van fatale storingen buiten de controle van micro soft, kunt u [een extra service](search-create-service-portal.md) in een andere regio inrichten en een geo-replicatie strategie implementeren om ervoor te zorgen dat indexen volledig redundant zijn in alle services.
 
 Klanten die [Indexeer functies](search-indexer-overview.md) gebruiken om indexen in te vullen en te vernieuwen, kunnen herstel na nood gevallen afhandelen via geo-specifieke Indexeer functies die gebruikmaken van dezelfde gegevens bron. Twee services in verschillende regio's, elk waarop een Indexeer functie wordt uitgevoerd, kunnen dezelfde gegevens bron indexeren om geo-redundantie te garanderen. Als u gegevens bronnen indexeert die ook geo-redundant zijn, moet u er rekening mee houden dat Azure Cognitive Search Indexeer functies alleen incrementele indexering van primaire replica's kunnen uitvoeren. Zorg er bij een failover-gebeurtenis voor dat u de Indexeer functie opnieuw naar de nieuwe primaire replica toewijst. 
 

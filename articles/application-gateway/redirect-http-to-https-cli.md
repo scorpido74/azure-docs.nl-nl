@@ -1,25 +1,23 @@
 ---
-title: Een toepassingsgateway maken met een certificaat - Azure CLI | Microsoft Docs
+title: HTTP-naar-HTTPS-omleiding via CLI
+titleSuffix: Azure Application Gateway
 description: Leer hoe u een toepassingsgateway maakt en een certificaat voor SSL-beëindiging toevoegt met behulp van de Azure CLI.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 7/14/2018
+ms.date: 11/15/2019
 ms.author: victorh
-ms.openlocfilehash: 1a5479cb54e15c0e740d800c8ee248a67e5ec5fc
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ff615507723b949105fc2b604d6bff869bdb33dc
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66133924"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108768"
 ---
-# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Een toepassingsgateway maken met HTTP naar HTTPS-omleiding met de Azure CLI
+# <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Een toepassings gateway met HTTP-naar-HTTPS-omleiding maken met behulp van Azure CLI
 
-U kunt de Azure CLI gebruiken om te maken een [toepassingsgateway](overview.md) met een certificaat voor SSL-beëindiging. Een regel voor doorsturen wordt gebruikt om HTTP-verkeer omleiden naar de HTTPS-poort in uw application gateway. In dit voorbeeld maakt u ook een [virtuele-machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-endpool van de toepassingsgateway met twee exemplaren van de virtuele machine.
+U kunt de Azure CLI gebruiken om een [toepassings gateway](overview.md) te maken met een certificaat voor SSL-beëindiging. Een regel voor doorsturen wordt gebruikt om HTTP-verkeer omleiden naar de HTTPS-poort in uw application gateway. In dit voorbeeld maakt u ook een [virtuele-machineschaalset](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) voor de back-endpool van de toepassingsgateway met twee exemplaren van de virtuele machine.
 
 In dit artikel leert u het volgende:
 
@@ -34,7 +32,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze snelstartgids de versie Azure CLI 2.0.4 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze Quickstart gebruikmaken van Azure CLI versie 2.0.4 of hoger. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren](/cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="create-a-self-signed-certificate"></a>Een zelfondertekend certificaat maken
 
@@ -54,7 +52,7 @@ Voer het wachtwoord voor het certificaat in. In dit voorbeeld wordt *Azure123456
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met de opdracht [az group create](/cli/azure/group).
+Een resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd. Maak een resourcegroep met [az group create](/cli/azure/group).
 
 In het volgende voorbeeld wordt de resourcegroep *myResourceGroupAG* gemaakt op de locatie *eastus*.
 
@@ -121,7 +119,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>De HTTP-poort toevoegen
 
-U kunt [az network application-gateway frontend-port maken](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) de HTTP-poort toevoegen aan de toepassingsgateway.
+U kunt [AZ Network Application-Gateway frontend-Port Create](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) gebruiken om de HTTP-poort toe te voegen aan de toepassings gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,7 +131,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>De HTTP-listener toevoegen
 
-U kunt [az network application-gateway http-listener maken](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) om toe te voegen van de listener met de naam *myListener* aan de toepassingsgateway.
+U kunt [AZ Network Application-Gateway HTTP-listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) gebruiken om de listener met de naam *myListener* toe te voegen aan de toepassings gateway.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -144,9 +142,9 @@ az network application-gateway http-listener create \
   --gateway-name myAppGateway
 ```
 
-### <a name="add-the-redirection-configuration"></a>De configuratie van omleiding toevoegen
+### <a name="add-the-redirection-configuration"></a>De configuratie van de omleiding toevoegen
 
-De HTTP toevoegen aan HTTPS-omleiding configuratie aan de application gateway met [az network application-gateway redirect-config maken](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Voeg de HTTP-naar-HTTPS-omleidings configuratie toe aan de toepassings gateway met [AZ Network Application-Gateway redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -159,9 +157,9 @@ az network application-gateway redirect-config create \
   --include-query-string true
 ```
 
-### <a name="add-the-routing-rule"></a>Toevoegen van de regel voor doorsturen
+### <a name="add-the-routing-rule"></a>De regel voor door sturen toevoegen
 
-Toevoegen van de routeringsregel met de naam *regel 2* met de application gateway met behulp van de configuratie van de omleiding [az network application-gateway-regel maken](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+Voeg de regel voor door sturen met de naam *firewallregel2* met de configuratie van de omleiding naar de toepassings gateway met [AZ Network Application-Gateway Rule Create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create)toe.
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -175,7 +173,7 @@ az network application-gateway rule create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Een virtuele-machineschaalset maken
 
-In dit voorbeeld maakt u een virtuele-machineschaalset met de naam *myvmss* die servers voor de back endpool in de application gateway biedt. De virtuele machines in de schaalset worden gekoppeld aan *myBackendSubnet* en *appGatewayBackendPool*. U kunt [az vmss create](/cli/azure/vmss#az-vmss-create) gebruiken om de schaalset te maken.
+In dit voor beeld maakt u een schaalset voor virtuele machines met de naam *myvmss* die servers biedt voor de back-end-groep in de toepassings gateway. De virtuele machines in de schaalset worden gekoppeld aan *myBackendSubnet* en *appGatewayBackendPool*. U kunt [az vmss create](/cli/azure/vmss#az-vmss-create) gebruiken om de schaalset te maken.
 
 ```azurecli-interactive
 az vmss create \

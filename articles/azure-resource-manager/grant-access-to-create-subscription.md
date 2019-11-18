@@ -1,43 +1,41 @@
 ---
-title: Toegang verlenen tot de Azure Enterprise-abonnementen maken | Microsoft Docs
-description: Leer hoe u een gebruiker of service-principal bieden de mogelijkheid Azure Enterprise-abonnementen via een programma te maken.
-services: azure-resource-manager
+title: Toegang verlenen voor het maken van Azure Enter prise-abonnementen
+description: Meer informatie over hoe u een gebruiker of Service-Principal kunt gebruiken om op een programmatische manier Azure Enter prise-abonnementen te maken.
 author: jureid
 manager: jureid
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: jureid
-ms.openlocfilehash: a7ed7dffd27b51c1314c4293820dc33be4d7e8e0
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 8f1f7837b6243f1af49d3b5eb0f3632c5e144f6c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67206642"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149840"
 ---
-# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Toegang verlenen tot het maken van Azure Enterprise-abonnementen (preview)
+# <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Toegang verlenen voor het maken van Azure Enter prise-abonnementen (preview-versie)
 
-Als klant van Azure op [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/), krijgt u een andere gebruiker of service-principal machtiging voor het maken van abonnementen in rekening gebracht op uw account. In dit artikel leert u hoe u [Role-Based Access Control (RBAC)](../active-directory/role-based-access-control-configure.md) voor het delen van de mogelijkheid om te maken van abonnementen en het controleren van bewerkingen voor het abonnement maken. U moet de rol van eigenaar hebben op het account dat u wilt delen.
+Als Azure-klant op [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)kunt u een andere gebruiker of Service-Principal toestemming geven om abonnementen te maken die aan uw account worden gefactureerd. In dit artikel leert u hoe u op [rollen gebaseerde Access Control (RBAC)](../active-directory/role-based-access-control-configure.md) kunt gebruiken voor het delen van abonnementen en het maken van een abonnement. U moet de rol van eigenaar hebben voor het account dat u wilt delen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="grant-access"></a>Toegang verlenen
 
-Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-create-subscription.md), moeten gebruikers hebben de [rol RBAC-eigenaar](../role-based-access-control/built-in-roles.md#owner) op dat account. U kunt verlenen van een gebruiker of een groep gebruikers de rol RBAC-eigenaar van een inschrijvingsaccount voor door de volgende stappen:
+Als u [abonnementen wilt maken onder een inschrijvings account](programmatically-create-subscription.md), moeten gebruikers de [rol RBAC-eigenaar](../role-based-access-control/built-in-roles.md#owner) hebben voor dat account. U kunt een gebruiker of een groep gebruikers de rol RBAC-eigenaar verlenen voor een inschrijvings account door de volgende stappen uit te voeren:
 
-1. Object-ID van de apparaatregistratie-account dat u wilt toegang verlenen tot ophalen
+1. De object-ID ophalen van het inschrijvings account waaraan u toegang wilt verlenen
 
-    Als u wilt verlenen aan anderen de rol RBAC-eigenaar voor een apparaatregistratie-account, moet u een eigenaar van het Account of een RBAC-eigenaar van het account zijn.
+    Als u anderen de rol RBAC-eigenaar wilt verlenen voor een inschrijvings account, moet u de eigenaar van het account of een RBAC-eigenaar van het account zijn.
 
     # <a name="resttabrest"></a>[REST](#tab/rest)
 
-    De aanvraag om alle inschrijvingsaccounts die u toegang tot hebt weer te geven:
+    Aanvraag voor een lijst met alle inschrijvings accounts waartoe u toegang hebt:
 
     ```json
     GET https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts?api-version=2018-03-01-preview
     ```
 
-    Azure reageert met een lijst met alle inschrijvingsaccounts u toegang tot hebt:
+    Azure reageert met een lijst met alle inschrijvings accounts waartoe u toegang hebt:
 
     ```json
     {
@@ -62,17 +60,17 @@ Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-cr
     }
     ```
 
-    Gebruik de `principalName` eigenschap voor het identificeren van het account dat u wilt RBAC-eigenaar toegang te verlenen. Kopieer de `name` van dat account. Bijvoorbeeld, als u wilt RBAC-eigenaar toegang verlenen tot de SignUpEngineering@contoso.com voor apparaatregistratie-account, die u wilt kopiëren ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-ID van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze in de volgende stap als gebruiken kunt `enrollmentAccountObjectId`.
+    Gebruik de eigenschap `principalName` om het account te identificeren waaraan u de RBAC-eigenaar toegang wilt verlenen. Kopieer de `name` van dat account. Als u bijvoorbeeld de RBAC-eigenaar toegang wilt verlenen tot de SignUpEngineering@contoso.com inschrijvings account, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-ID van het inschrijvings account. Plak deze waarde ergens anders, zodat u deze in de volgende stap als `enrollmentAccountObjectId`kunt gebruiken.
 
     # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 
-    Gebruik de [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet om alle inschrijvingsaccounts u toegang tot hebt weer te geven. Selecteer **uitproberen** openen [Azure Cloud Shell](https://shell.azure.com/). Als u de code, met de rechtermuisknop op de windows-shell en selecteer **plakken**.
+    Gebruik de cmdlet [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) om alle inschrijvings accounts weer te geven waartoe u toegang hebt. Selecteer **proberen** om [Azure Cloud shell](https://shell.azure.com/)te openen. Als u de code wilt plakken, klikt u met de rechter muisknop op de shell Vensters en selecteert u **Plakken**.
 
     ```azurepowershell-interactive
     Get-AzEnrollmentAccount
     ```
 
-    Azure reageert met een lijst met inschrijvingsaccounts u toegang tot hebt:
+    Azure reageert met een lijst met inschrijvings accounts waartoe u toegang hebt:
 
     ```azurepowershell
     ObjectId                               | PrincipalName
@@ -80,17 +78,17 @@ Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-cr
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    Gebruik de `principalName` eigenschap aangeven welk account u wilt RBAC-eigenaar toegang te verlenen. Kopieer de `ObjectId` van dat account. Bijvoorbeeld, als u wilt RBAC-eigenaar toegang verlenen tot de SignUpEngineering@contoso.com voor apparaatregistratie-account, die u wilt kopiëren ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Plak deze object-ID ergens zodat u deze in de volgende stap als gebruiken kunt de `enrollmentAccountObjectId`.
+    Gebruik de eigenschap `principalName` om het account te identificeren waartoe u de RBAC-eigenaar toegang wilt verlenen. Kopieer de `ObjectId` van dat account. Als u bijvoorbeeld de RBAC-eigenaar toegang wilt verlenen tot de SignUpEngineering@contoso.com inschrijvings account, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Plak deze object-ID ergens anders zodat u deze kunt gebruiken in de volgende stap als de `enrollmentAccountObjectId`.
 
     # <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
-    Gebruik de [az facturering inschrijvingsaccount lijst](https://aka.ms/EASubCreationPublicPreviewCLI) opdracht om een lijst van alle inschrijvingsaccounts u toegang tot hebt. Selecteer **uitproberen** openen [Azure Cloud Shell](https://shell.azure.com/). Als u de code, met de rechtermuisknop op de windows-shell en selecteer **plakken**.
+    Gebruik de opdracht [AZ facturering Enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) voor een lijst met alle inschrijvings accounts waartoe u toegang hebt. Selecteer **proberen** om [Azure Cloud shell](https://shell.azure.com/)te openen. Als u de code wilt plakken, klikt u met de rechter muisknop op de shell Vensters en selecteert u **Plakken**.
 
     ```azurecli-interactive
     az billing enrollment-account list
     ```
 
-    Azure reageert met een lijst met inschrijvingsaccounts u toegang tot hebt:
+    Azure reageert met een lijst met inschrijvings accounts waartoe u toegang hebt:
 
     ```json
     [
@@ -111,22 +109,22 @@ Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-cr
 
     ---
 
-    Gebruik de `principalName` eigenschap voor het identificeren van het account dat u wilt RBAC-eigenaar toegang te verlenen. Kopieer de `name` van dat account. Bijvoorbeeld, als u wilt RBAC-eigenaar toegang verlenen tot de SignUpEngineering@contoso.com voor apparaatregistratie-account, die u wilt kopiëren ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-ID van het inschrijvingsaccount. Plak deze waarde ergens zodat u deze in de volgende stap als gebruiken kunt `enrollmentAccountObjectId`.
+    Gebruik de eigenschap `principalName` om het account te identificeren waaraan u de RBAC-eigenaar toegang wilt verlenen. Kopieer de `name` van dat account. Als u bijvoorbeeld de RBAC-eigenaar toegang wilt verlenen tot de SignUpEngineering@contoso.com inschrijvings account, kopieert u ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Dit is de object-ID van het inschrijvings account. Plak deze waarde ergens anders, zodat u deze in de volgende stap als `enrollmentAccountObjectId`kunt gebruiken.
 
-1. <a id="userObjectId"></a>Object-ID van de gebruiker of groep die u wilt toekennen aan de rol RBAC-eigenaar aan ophalen
+1. <a id="userObjectId"></a>De object-ID ophalen van de gebruiker of groep waaraan u de RBAC-eigenaars functie wilt toekennen
 
-    1. Zoeken in de Azure-portal op **Azure Active Directory**.
-    1. Als u wilt dat gebruikers toegang geven, klikt u op **gebruikers** in het menu aan de linkerkant. Als u toegang verlenen aan een groep wilt, klikt u op **groepen**.
-    1. Selecteer de gebruiker of groep die u wilt toekennen aan de rol RBAC-eigenaar op.
-    1. Als u een gebruiker hebt geselecteerd, vindt u de object-ID op de pagina profileren. Als u een groep hebt geselecteerd, worden de object-ID in de pagina overzicht. Kopieer de **ObjectID** door te klikken op het pictogram aan de rechterkant van het tekstvak in. Plak deze ergens zodat u deze in de volgende stap als gebruiken kunt `userObjectId`.
+    1. Zoek in de Azure Portal op **Azure Active Directory**.
+    1. Als u een gebruiker toegang wilt verlenen, klikt u op **gebruikers** in het menu aan de linkerkant. Als u toegang wilt verlenen aan een groep, klikt u op **groepen**.
+    1. Selecteer de gebruiker of groep waaraan u de RBAC-eigenaars functie wilt toewijzen.
+    1. Als u een gebruiker hebt geselecteerd, vindt u de object-ID op de profiel pagina. Als u een groep hebt geselecteerd, wordt de object-ID op de pagina overzicht weer gegeven. Kopieer de **ObjectID** door te klikken op het pictogram rechts van het tekstvak. Plak dit ergens anders zodat u deze in de volgende stap als `userObjectId`kunt gebruiken.
 
-1. Verleen de gebruiker of groep van de rol RBAC-eigenaar voor de apparaatregistratie-account
+1. De gebruiker of groep de rol RBAC-eigenaar verlenen aan het inschrijvings account
 
-    Met behulp van de waarden die u hebt verzameld in de eerste twee stappen, Verleen de gebruiker of groep van de rol RBAC-eigenaar in het inschrijvingsaccount.
+    Ken met de waarden die u in de eerste twee stappen hebt verzameld, de gebruiker of groep de rol RBAC-eigenaar toe aan het inschrijvings account.
 
     # <a name="resttabrest-2"></a>[REST](#tab/rest-2)
 
-    Voer de volgende opdracht vervangt ```<enrollmentAccountObjectId>``` met de `name` u in de eerste stap hebt gekopieerd (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Vervang ```<userObjectId>``` met de object-ID die u hebt gekopieerd uit de tweede stap.
+    Voer de volgende opdracht uit en vervang ```<enrollmentAccountObjectId>``` door de `name` die u in de eerste stap hebt gekopieerd (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Vervang ```<userObjectId>``` door de object-ID die u uit de tweede stap hebt gekopieerd.
 
     ```json
     PUT  https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>/providers/Microsoft.Authorization/roleAssignments/<roleAssignmentGuid>?api-version=2015-07-01
@@ -139,7 +137,7 @@ Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-cr
     }
     ```
 
-    Wanneer de rol van eigenaar is bij de registratie-accountbereik wordt toegewezen, wordt Azure reageert met informatie van de toewijzing van rollen:
+    Wanneer de rol eigenaar is toegewezen aan het bereik van het inschrijvings account, reageert Azure met informatie van de roltoewijzing:
 
     ```json
     {
@@ -160,7 +158,7 @@ Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-cr
 
     # <a name="powershelltabazure-powershell-2"></a>[PowerShell](#tab/azure-powershell-2)
 
-    Voer de volgende [New-AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) opdracht, vervangt ```<enrollmentAccountObjectId>``` met de `ObjectId` verzameld in de eerste stap (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Vervang ```<userObjectId>``` met de object-ID in de tweede stap verzameld.
+    Voer de volgende opdracht [AzRoleAssignment](../active-directory/role-based-access-control-manage-access-powershell.md) uit en vervang ```<enrollmentAccountObjectId>``` door de `ObjectId` die in de eerste stap zijn verzameld (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Vervang ```<userObjectId>``` door de object-ID die in de tweede stap is verzameld.
 
     ```azurepowershell-interactive
     New-AzRoleAssignment -RoleDefinitionName Owner -ObjectId <userObjectId> -Scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
@@ -168,22 +166,22 @@ Naar [abonnementen maken die onder een inschrijvingsaccount](programmatically-cr
 
     # <a name="azure-clitabazure-cli-2"></a>[Azure-CLI](#tab/azure-cli-2)
 
-    Voer de volgende [az roltoewijzing maken](../active-directory/role-based-access-control-manage-access-azure-cli.md) opdracht, vervangt ```<enrollmentAccountObjectId>``` met de `name` u in de eerste stap hebt gekopieerd (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Vervang ```<userObjectId>``` met de object-ID in de tweede stap verzameld.
+    Voer de volgende opdracht [AZ Role Assignment Create](../active-directory/role-based-access-control-manage-access-azure-cli.md) uit en vervang ```<enrollmentAccountObjectId>``` door de `name` die u in de eerste stap hebt gekopieerd (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Vervang ```<userObjectId>``` door de object-ID die in de tweede stap is verzameld.
 
     ```azurecli-interactive
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Wanneer een gebruiker, een RBAC-eigenaar voor uw inschrijvingsaccount wordt, kunnen ze [abonnementen via een programma maken](programmatically-create-subscription.md) daaronder. Een abonnement dat is gemaakt door een gemachtigde gebruiker heeft nog steeds de eigenaar van het oorspronkelijke Account als servicebeheerder, maar heeft ook de gemachtigde gebruiker als de eigenaar van een RBAC standaard.
+    Zodra een gebruiker een RBAC-eigenaar wordt voor uw inschrijvings account, kunnen ze [via programma code abonnementen maken](programmatically-create-subscription.md) . Een abonnement dat is gemaakt door een gemachtigde gebruiker heeft nog steeds de oorspronkelijke eigenaar van het account als service beheerder, maar heeft standaard ook de gedelegeerde gebruiker als een RBAC-eigenaar.
 
     ---
 
-## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Controle die heeft gemaakt met behulp van activiteitenlogboeken abonnementen
+## <a name="audit-who-created-subscriptions-using-activity-logs"></a>Controleren wie abonnementen heeft gemaakt met behulp van activiteiten logboeken
 
-Voor het volgen van de abonnementen die zijn gemaakt via deze API, gebruikt u de [Tenant activiteit Log API](/rest/api/monitor/tenantactivitylogs). Het is momenteel niet mogelijk met gebruik van PowerShell, CLI of Azure-portal voor het bijhouden van het abonnement.
+Voor het bijhouden van de abonnementen die zijn gemaakt via deze API, gebruikt u de [API voor Tenant activiteiten logboeken](/rest/api/monitor/tenantactivitylogs). Het is momenteel niet mogelijk Power shell, CLI of Azure Portal te gebruiken om het maken van abonnementen bij te houden.
 
 1. [Verhoog het toegangsniveau](../active-directory/role-based-access-control-tenant-admin-access.md) als tenantbeheerder van de Azure AD-tenant en wijs vervolgens de rol van Lezer toe aan de controlerende gebruiker voor het bereik `/providers/microsoft.insights/eventtypes/management`.
-1. Als de controle gebruiker aanroepen de [Tenant activiteit Log-API](/rest/api/monitor/tenantactivitylogs) abonnement maken van activiteiten. Voorbeeld:
+1. Als controle gebruiker roept u de API voor het [Tenant activiteiten logboek](/rest/api/monitor/tenantactivitylogs) op om activiteiten voor het maken van abonnementen weer te geven. Voorbeeld:
 
     ```
     GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Subscription'"
@@ -193,8 +191,8 @@ Probeer [ARMClient](https://github.com/projectkudu/ARMClient) om deze API eenvou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Nu dat de gebruiker of service-principal gemachtigd om een abonnement te maken is, kunt u dat de identiteit van [programmatisch Azure Enterprise-abonnementen maken](programmatically-create-subscription.md).
-* Zie voor een voorbeeld over het maken van abonnementen met .NET, [voorbeeldcode op GitHub](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core).
-* Zie voor meer informatie over Azure Resource Manager en de API's, [overzicht van Azure Resource Manager](resource-group-overview.md).
-* Zie voor meer informatie over het beheren van grote aantallen abonnementen die gebruikmaken van beheergroepen, [organiseren van uw resources met Azure-beheergroepen](management-groups-overview.md)
-* Zie voor een uitgebreide richtlijnen voor best practices voor grote organisaties op abonnementsgovernance [Azure enterprise-platform - prescriptieve abonnementsgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance)
+* Nu de gebruiker of Service-Principal gemachtigd is om een abonnement te maken, kunt u die identiteit gebruiken om [via programma code Azure Enter prise-abonnementen te maken](programmatically-create-subscription.md).
+* Zie [voorbeeld code op github](https://github.com/Azure-Samples/create-azure-subscription-dotnet-core)voor een voor beeld van het maken van abonnementen met behulp van .net.
+* Zie [Azure Resource Manager Overview](resource-group-overview.md)voor meer informatie over Azure Resource Manager en de api's.
+* Zie [uw resources organiseren met Azure-beheer groepen](management-groups-overview.md) voor meer informatie over het beheren van een groot aantal abonnementen met behulp van beheer groepen
+* Voor een uitgebreide best practice richt lijnen voor grote organisaties op het beheer van abonnementen raadpleegt u [Azure Enter prise steigers-prescripted Subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance)

@@ -1,19 +1,16 @@
 ---
-title: Zelf studie-parameter bestand gebruiken om een Azure Resource Manager sjabloon te implementeren
+title: Zelf studie-parameter bestand voor de implementatie van de sjabloon gebruiken
 description: Gebruik parameter bestanden die de waarden bevatten die moeten worden gebruikt voor het implementeren van uw Azure Resource Manager-sjabloon.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fa29ea3d2f6edbbb016ce5c0c74415a5e765e85a
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 7ebf8a3eed81c8f5233f7212df7e245a27f7fd16
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177556"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149163"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Zelf studie: parameter bestanden gebruiken voor het implementeren van uw Resource Manager-sjabloon
 
@@ -41,13 +38,13 @@ Maak in VS code een nieuw bestand met de volgende inhoud. Sla het bestand op met
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
 
-Dit bestand is het parameter bestand voor de ontwikkel omgeving. U ziet dat er Standard_LRS wordt gebruikt voor het opslag account, de naam resources met een **dev** -voor voegsel en het **omgevings** label instelt op **dev**.
+Dit bestand is het parameter bestand voor de ontwikkel omgeving. U ziet dat deze Standard_LRS gebruikt voor het opslag account, namen van resources met een **dev** -voor voegsel en het **omgevings** label instelt op **dev**.
 
 Maak opnieuw een nieuw bestand met de volgende inhoud. Sla het bestand op met de naam **azuredeploy. para meters. Prod. json**.
 
 [!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
 
-Dit bestand is het parameter bestand voor de productie omgeving. U ziet dat de Standard_GRS voor het opslag account wordt gebruikt, resources met een **Contoso** -voor voegsel, en de **omgevings** label wordt ingesteld op **productie**. In een echte productie omgeving zou u ook een app service willen gebruiken met een andere SKU dan gratis, maar we blijven die SKU gebruiken voor deze zelf studie.
+Dit bestand is het parameter bestand voor de productie omgeving. U ziet dat deze Standard_GRS gebruikt voor het opslag account, resources benoemt met een voor voegsel van **Contoso** en de **omgevings** label instelt op **productie**. In een echte productie omgeving zou u ook een app service willen gebruiken met een andere SKU dan gratis, maar we blijven die SKU gebruiken voor deze zelf studie.
 
 ## <a name="deploy-the-template"></a>De sjabloon implementeren
 
@@ -72,7 +69,7 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 templateFile="{provide-the-path-to-the-template-file}"
@@ -104,7 +101,7 @@ New-AzResourceGroupDeployment `
   -TemplateParameterFile $parameterFile
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az group create \
@@ -123,7 +120,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groepen van de Azure Portal te verkennen.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. U ziet de twee nieuwe resource groepen die u in deze zelf studie hebt geïmplementeerd.
 1. Selecteer een resource groep en Bekijk de geïmplementeerde resources. U ziet dat ze overeenkomen met de waarden die u hebt opgegeven in het parameter bestand voor die omgeving.

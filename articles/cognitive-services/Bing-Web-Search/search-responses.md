@@ -1,7 +1,7 @@
 ---
 title: Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen
 titleSuffix: Azure Cognitive Services
-description: Meer informatie over de antwoord typen en reacties die worden gebruikt door de Bing Webzoekopdrachten-API.
+description: Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een `SearchResponse` object in de antwoord tekst geretourneerd.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: f19454868ad7be21777d725f61e09a84f6c7a313
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 95ebfaef863a1fa05e8a5d3b46fca9659c61f6b7
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68854729"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110613"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Bing Webzoekopdrachten-API-antwoord structuur en-antwoord typen  
 
-Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) object geretourneerd in de hoofd tekst van het antwoord. Het object bevat een veld voor elk antwoord dat door Bing is bepaald en dat van belang is voor de query. Dit voor beeld illustreert een reactie object als Bing alle antwoorden heeft geretourneerd:
+Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse`](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) object in de antwoord tekst geretourneerd. Het object bevat een veld voor elk antwoord dat door Bing is bepaald en dat van belang is voor de query. Dit voor beeld illustreert een reactie object als Bing alle antwoorden heeft geretourneerd:
 
 ```json
 {
@@ -38,7 +38,7 @@ Wanneer u Bing Web Search een zoek opdracht verzendt, wordt een [`SearchResponse
 }, ...
 ```
 
-Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies*is, kan de reactie het volgende omvatten `webPages`: `images`, en `rankingResponse`. Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
+Meestal retourneert Bing Web Search een subset van de antwoorden. Als de query term bijvoorbeeld *dinghies*is, kan de reactie `webPages`, `images`en `rankingResponse`bevatten. Tenzij u [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) hebt gebruikt om webpagina's te filteren, bevat het antwoord altijd de `webpages` en `rankingResponse` antwoorden.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -57,7 +57,7 @@ Het antwoord op [webpagina's](https://docs.microsoft.com/rest/api/cognitiveservi
 }, ...
 ```
 
-Gebruik `name` en`url` om een Hyper link te maken waarmee de gebruiker naar de webpagina gaat.
+Gebruik `name` en `url` om een Hyper link te maken waarmee de gebruiker naar de webpagina gaat.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display the webpage in a search results page.
@@ -99,19 +99,19 @@ Afhankelijk van het apparaat van de gebruiker, zou u normaal gesp roken een subs
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
 -->
 
-U kunt de miniatuur ook uitbreiden op het moment dat de gebruiker er met de cursor naar wijst. Vergeet niet om een geschikt kenmerk toe wijzen aan de afbeelding als u dat wilt doen. Bijvoorbeeld door de host uit `hostPageDisplayUrl` te pakken en deze onder de installatie kopie weer te geven. Zie [Formaat van miniaturen wijzigen en miniaturen bijsnijden](./resize-and-crop-thumbnails.md) voor informatie over het aanpassen van het formaat van de miniatuur.
+U kunt de miniatuur ook uitbreiden op het moment dat de gebruiker er met de cursor naar wijst. Vergeet niet om een geschikt kenmerk toe wijzen aan de afbeelding als u dat wilt doen. Bijvoorbeeld door de host uit te pakken van `hostPageDisplayUrl` en deze onder de installatie kopie weer te geven. Zie [Formaat van miniaturen wijzigen en miniaturen bijsnijden](./resize-and-crop-thumbnails.md) voor informatie over het aanpassen van het formaat van de miniatuur.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Expanded view of thumbnail image](./media/cognitive-services-bing-web-api/bing-web-image-thumbnail-expansion.PNG)
 -->
 
-Als de gebruiker op de miniatuur klikt, `webSearchUrl` kunt u gebruiken om de gebruiker naar de zoek resultaten pagina van Bing te gaan voor installatie kopieën, die een collage van de afbeeldingen bevat.
+Als de gebruiker op de miniatuur klikt, gebruikt u `webSearchUrl` om de gebruiker te laten zoeken naar de pagina met zoek resultaten voor installatie kopieën, die een collage van de afbeeldingen bevat.
 
 Zie [afbeeldingen zoeken-API](../bing-image-search/search-the-web.md)voor meer informatie over het antwoord en de installatie kopieën van de afbeelding.
 
 ## <a name="related-searches-answer"></a>Antwoord op verwante Zoek opdrachten
 
-Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) -antwoord bevat een lijst met de populairste gerelateerde query's die door andere gebruikers zijn gemaakt. Elke [query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) in de lijst bevat een query teken reeks`text`(), een query reeks met treffer markeringen (`displayText`) en een URL (`webSearchUrl`) naar de pagina Zoek resultaten van Bing voor die query.
+Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse-relatedsearches) -antwoord bevat een lijst met de populairste gerelateerde query's die door andere gebruikers zijn gemaakt. Elke [query](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query_obj) in de lijst bevat een query reeks (`text`), een query reeks met treffer markeringen (`displayText`) en een URL (`webSearchUrl`) naar de zoek resultaten pagina van Bing voor die query.
 
 ```json
 {
@@ -121,9 +121,9 @@ Het [relatedSearches](https://docs.microsoft.com/rest/api/cognitiveservices-bing
 }, ...
 ```
 
-Gebruik de `displayText` query teken reeks en `webSearchUrl` de URL voor het maken van een Hyper link waarmee de gebruiker naar de zoek resultaten pagina van Bing voor de gerelateerde query gaat. U kunt de `text` query reeks ook gebruiken in uw eigen webzoekopdrachten API-query en de resultaten zelf weer geven.
+Gebruik de `displayText` query teken reeks en de `webSearchUrl`-URL om een Hyper link te maken waarmee de gebruiker naar de zoek resultaten pagina van Bing voor de gerelateerde query gaat. U kunt ook de `text` query reeks gebruiken in uw eigen Webzoekopdrachten API-query en de resultaten zelf weer geven.
 
-Zie [treffers markeren](../bing-web-search/hit-highlighting.md)voor informatie over het afhandelen van `displayText`markeringen in.
+Zie [treffers](../bing-web-search/hit-highlighting.md)markeren voor informatie over het afhandelen van markeringen in `displayText`.
 
 Hieronder ziet u een voor beeld van het gebruik van gerelateerde query's in Bing.com.
 
@@ -169,7 +169,7 @@ Afhankelijk van het apparaat van de gebruiker, geeft u normaal gesp roken een de
 ![List of video thumbnails](./media/cognitive-services-bing-web-api/bing-web-video-thumbnails.PNG)
 -->
 
-Wanneer de gebruiker op de miniatuur beweegt, kunt u gebruiken `motionThumbnailUrl` om een miniatuur versie van de video af te spelen. Vergeet niet om het kenmerk motionThumbnailUrl in te stellen wanneer u de miniatuur weergeeft.
+Wanneer de gebruiker op de miniatuur beweegt, kunt u `motionThumbnailUrl` gebruiken om een miniatuur versie van de video af te spelen. Vergeet niet om het kenmerk motionThumbnailUrl in te stellen wanneer u de miniatuur weergeeft.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![Motion thumbnail of a video](./media/cognitive-services-bing-web-api/bing-web-video-motion-thumbnail.PNG)
@@ -177,9 +177,9 @@ Wanneer de gebruiker op de miniatuur beweegt, kunt u gebruiken `motionThumbnailU
 
 Als de gebruiker op de miniatuur klikt, zijn dit de opties voor het bekijken van de video:
 
-- Gebruiken `hostPageUrl` om de video op de host website weer te geven (bijvoorbeeld YouTube)
-- Gebruik `webSearchUrl` om de video in de Bing Video browser weer te geven
-- Gebruik `embedHtml` om de video in uw eigen ervaring in te sluiten
+- `hostPageUrl` gebruiken om de video op de host website weer te geven (bijvoorbeeld YouTube)
+- `webSearchUrl` gebruiken om de video in de Bing Video browser weer te geven
+- `embedHtml` gebruiken om de video in uw eigen ervaring in te sluiten
 
 Zie [Video's zoeken-API](../bing-video-search/search-the-web.md)voor meer informatie over het video antwoord en Video's.
 
@@ -208,7 +208,7 @@ Het [Nieuws](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bi
 }, ...
 ```
 
-Afhankelijk van het apparaat van de gebruiker, kunt u een subset van de nieuws artikelen weer geven met een optie voor de gebruiker om de resterende artikelen weer te geven. Gebruik `name` en `url` om een hyperlink te maken waarmee de gebruiker naar het nieuwsartikel op de site van de host gaat. Als het artikel een afbeelding bevat, kunt u de afbeelding klikken met `url`behulp van. Vergeet niet om met `provider` bronvermelding toe te passen voor het artikel.
+Afhankelijk van het apparaat van de gebruiker, kunt u een subset van de nieuws artikelen weer geven met een optie voor de gebruiker om de resterende artikelen weer te geven. Gebruik `name` en `url` om een hyperlink te maken waarmee de gebruiker naar het nieuwsartikel op de site van de host gaat. Als het artikel een afbeelding bevat, kunt u de afbeelding klikken met behulp van `url`. Vergeet niet om met `provider` bronvermelding toe te passen voor het artikel.
 
 <!-- Remove until this can be replaced with a sanitized version.
 The following shows an example of how you might display articles in a search results page.
@@ -224,7 +224,7 @@ Als de gebruiker een wiskundige expressie of een query voor de conversie van een
 
 Een query voor eenheids conversie is een query waarmee de ene eenheid naar een andere wordt geconverteerd. *Hoe groot bijvoorbeeld in 10 meters?* of *hoeveel tablespoons in een 1/4e Cup?*
 
-Hieronder ziet u het `computation` antwoord op het *aantal poten in 10 meters?*
+Hieronder wordt het `computation`s antwoord weer gegeven voor het *aantal poten in 10 meters?*
 
 ```json
 "computation": {
@@ -234,7 +234,7 @@ Hieronder ziet u het `computation` antwoord op het *aantal poten in 10 meters?*
 }, ...
 ```
 
-Hieronder ziet u voor beelden van wiskundige query's en hun `computation` bijbehorende antwoorden.
+Hieronder ziet u voor beelden van wiskundige query's en de bijbehorende `computation` antwoorden.
 
 ```
 Query: (5+3)(10/2)+8
@@ -290,21 +290,21 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 Een wiskundige expressie kan de volgende symbolen bevatten:
 
-|Valuta|Description|
+|Valuta|Beschrijving|
 |------------|-----------------|
-|+|Aanvulling|
+|+|Toevoegingen|
 |-|Aftrekken|
 |/|Daarvan|
 |*|Vermenigvuldigen|
-|^|/Uitschakelaar|
+|^|Power|
 |!|Faculteit|
 |.|Decimal|
 |()|Rang groepering|
-|[]|Function|
+|[]|Functie|
 
 Een wiskundige expressie kan de volgende constanten bevatten:
 
-|Valuta|Description|
+|Valuta|Beschrijving|
 |------------|-----------------|
 |IP|3,14159...|
 |Hoek|Hoek|
@@ -314,7 +314,7 @@ Een wiskundige expressie kan de volgende constanten bevatten:
 
 Een wiskundige expressie kan de volgende functies bevatten:
 
-|Valuta|Description|
+|Valuta|Beschrijving|
 |------------|-----------------|
 |Sorteren|Vierkantswortel|
 |Sin [x], COS [x], Tan [x]<br />CSC [x], SEC [x], Cot [x]|Trigonometrische functies (met argumenten in radialen)|
@@ -332,9 +332,9 @@ Als de gebruiker een tijd-of datum query invoert, kan het antwoord een tijd [zon
 
 Het `timeZone` antwoord bevat de naam van de locatie, de huidige UTC-datum en-tijd op de opgegeven locatie en de UTC-afwijking. Als de grens van de locatie zich binnen meerdere tijd zones bevindt, bevat het antwoord de huidige UTC-datum en-tijd van alle tijd zones binnen de grens. Omdat de provincie van Florida bijvoorbeeld binnen twee tijd zones valt, bevat het antwoord de lokale datum en tijd van beide tijd zones.  
 
-Als de query de tijd van een staat of land/regio aanvraagt, bepaalt Bing de primaire plaats binnen de geografische grens van de locatie en retourneert `primaryCityTime` deze in het veld. Als de grens meerdere tijd zones bevat, worden de resterende tijd zones in het `otherCityTimes` veld geretourneerd.
+Als de query de tijd van een staat of land/regio aanvraagt, bepaalt Bing de primaire plaats binnen de geografische grens van de locatie en retourneert deze in het veld `primaryCityTime`. Als de grens meerdere tijd zones bevat, worden de resterende tijd zones weer gegeven in het veld `otherCityTimes`.
 
-Hieronder ziet u voor beelden van query's waarmee `timeZone` het antwoord wordt geretourneerd.
+Hieronder ziet u voor beelden van query's die het `timeZone` antwoord retour neren.
 
 ```
 Query: What time is it?
@@ -431,7 +431,7 @@ Als Bing bepaalt dat de gebruiker mogelijk is bedoeld om iets anders te zoeken, 
 }, ...
 ```
 
-## <a name="response-headers"></a>Antwoordheaders
+## <a name="response-headers"></a>Antwoord headers
 
 Antwoorden van de Bing Webzoekopdrachten-API kunnen de volgende headers bevatten:
 

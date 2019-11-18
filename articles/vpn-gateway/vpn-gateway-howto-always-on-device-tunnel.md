@@ -1,5 +1,6 @@
 ---
-title: Een always on-VPN-tunnel configureren voor VPN Gateway
+title: Een tunnel voor altijd-op-VPN configureren
+titleSuffix: Azure VPN Gateway
 description: Stappen voor het configureren van de always on-VPN-tunnel voor VPN Gateway
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: cherylmc
-ms.openlocfilehash: bc2ec2b952b4f0c6e61fc4953559fa882edfff09
-ms.sourcegitcommit: 15e3bfbde9d0d7ad00b5d186867ec933c60cebe6
+ms.openlocfilehash: f22b29cfcaf1d4c4ce28b2b0557d70b281b6891f
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71841145"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146392"
 ---
 # <a name="configure-an-always-on-vpn-device-tunnel"></a>Een AlwaysOn-VPN-apparaattunnel configureren
 
@@ -28,11 +29,11 @@ Altijd op VPN-verbindingen zijn twee typen tunnels:
 
 Tunnels en gebruikers tunnels van apparaten worden onafhankelijk van hun VPN-profielen gebruikt. Ze kunnen tegelijkertijd worden verbonden en kunnen verschillende verificatie methoden en andere VPN-configuratie-instellingen gebruiken.
 
-## <a name="1-configure-the-gateway"></a>1. De gateway configureren
+## <a name="1-configure-the-gateway"></a>1. de gateway configureren
 
 Configureer de VPN-gateway voor gebruik van IKEv2 en verificatie op basis van certificaten met behulp van dit [punt-naar-site-artikel](vpn-gateway-howto-point-to-site-resource-manager-portal.md).
 
-## <a name="2-configure-the-device-tunnel"></a>2. De tunnel van het apparaat configureren
+## <a name="2-configure-the-device-tunnel"></a>2. de tunnel van het apparaat configureren
 
 Aan de volgende vereisten moet worden voldaan om een apparaat tunnel te kunnen instellen:
 
@@ -155,7 +156,7 @@ Nadat u de virtuele netwerk gateway hebt geconfigureerd en het client certificaa
    ![Rasphone](./media/vpn-gateway-howto-always-on-device-tunnel/rasphone.png)
 1. Zoek de vermelding **MachineCertTest** en klik op **verbinden**.
 
-   ![Verbinden](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
+   ![Verbinding maken](./media/vpn-gateway-howto-always-on-device-tunnel/connect.png)
 1. Als de verbinding is geslaagd, start u de computer opnieuw op. De tunnel wordt automatisch verbonden.
 
 ## <a name="cleanup"></a>Opschonen

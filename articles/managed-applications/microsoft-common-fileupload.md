@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: b7f73dcfe3e0e2827083feba906e2efcd0265305
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 03eff6afb22ea3306bf7f8191f4eca3ccad39938
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331698"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151564"
 ---
 # <a name="microsoftcommonfileupload-ui-element"></a>UI-element micro soft. common. FileUpload
+
 Een besturings element waarmee een gebruiker een of meer bestanden kan opgeven die moeten worden geüpload.
 
 ## <a name="ui-sample"></a>UI-voor beeld
-![Micro soft. common. FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
+
+![Microsoft.Common.FileUpload](./media/managed-application-elements/microsoft.common.fileupload.png)
 
 ## <a name="schema"></a>Schema
+
 ```json
 {
   "name": "element1",
@@ -47,16 +50,8 @@ Een besturings element waarmee een gebruiker een of meer bestanden kan opgeven d
 }
 ```
 
-## <a name="remarks"></a>Opmerkingen
-- `constraints.accept` geeft de typen bestanden aan die worden weer gegeven in het dialoog venster bestand van de browser. Zie de [HTML5-specificatie](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) voor toegestane waarden. De standaard waarde is **Null**.
-- Als `options.multiple` is ingesteld op **waar**, mag de gebruiker meer dan één bestand selecteren in het dialoog venster bestand van de browser. De standaard waarde is **False**.
-- Dit element ondersteunt het uploaden van bestanden in twee modi op basis van de waarde van `options.uploadMode`. Als het **bestand** is opgegeven, heeft de uitvoer de inhoud van het bestand als een blob. Als de **URL** is opgegeven, wordt het bestand geüpload naar een tijdelijke locatie en bevat de uitvoer de URL van de blob. Tijdelijke blobs worden na 24 uur leeg gemaakt. De standaard waarde is **File**.
-- Een geüpload bestand is beveiligd. De uitvoer-URL bevat een [SAS-token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor toegang tot het bestand tijdens de implementatie.
-- De waarde van `options.openMode` bepaalt hoe het bestand wordt gelezen. Als het bestand wordt verwacht als tekst zonder opmaak, geeft u **tekst**op. u kunt ook **binary**opgeven. De standaard waarde is **tekst**.
-- Als `options.uploadMode` is ingesteld op **File** en `options.openMode` is ingesteld op **binary**, is de uitvoer base64-gecodeerd.
-- `options.encoding` geeft de code ring aan die moet worden gebruikt bij het lezen van het bestand. De standaard waarde is **UTF-8**en wordt alleen gebruikt als `options.openMode` is ingesteld op **tekst**.
-
 ## <a name="sample-output"></a>Voorbeelduitvoer
+
 Als opties. Multiple is False en Options. uploadMode is bestand, dan heeft de uitvoer de inhoud van het bestand als een JSON-teken reeks:
 
 ```json
@@ -91,7 +86,17 @@ Als opties. Multiple de waarde True heeft en de opties. uploadMode is URL, dan h
 
 Bij het testen van een CreateUiDefinition kapten sommige browsers (zoals Google Chrome) Url's af die zijn gegenereerd door het element micro soft. common. FileUpload in de browser console. Mogelijk moet u met de rechter muisknop op afzonderlijke koppelingen klikken om de volledige Url's te kopiëren.
 
+## <a name="remarks"></a>Opmerkingen
+
+- `constraints.accept` geeft de typen bestanden aan die worden weer gegeven in het dialoog venster bestand van de browser. Zie de [HTML5-specificatie](https://html.spec.whatwg.org/multipage/input.html#attr-input-accept) voor toegestane waarden. De standaard waarde is **Null**.
+- Als `options.multiple` is ingesteld op **True**, mag de gebruiker meer dan één bestand selecteren in het dialoog venster bestand van de browser. De standaardwaarde is **false**.
+- Dit element ondersteunt het uploaden van bestanden in twee modi op basis van de waarde van `options.uploadMode`. Als het **bestand** is opgegeven, heeft de uitvoer de inhoud van het bestand als een blob. Als de **URL** is opgegeven, wordt het bestand geüpload naar een tijdelijke locatie en bevat de uitvoer de URL van de blob. Tijdelijke blobs worden na 24 uur leeg gemaakt. De standaard waarde is **File**.
+- Een geüpload bestand is beveiligd. De uitvoer-URL bevat een [SAS-token](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) voor toegang tot het bestand tijdens de implementatie.
+- De waarde van `options.openMode` bepaalt hoe het bestand wordt gelezen. Als het bestand wordt verwacht als tekst zonder opmaak, geeft u **tekst**op. u kunt ook **binary**opgeven. De standaard waarde is **tekst**.
+- Als `options.uploadMode` is ingesteld op **File** en `options.openMode` is ingesteld op **binary**, is de uitvoer base64-gecodeerd.
+- `options.encoding` geeft de code ring op die moet worden gebruikt bij het lezen van het bestand. De standaard waarde is **UTF-8**en wordt alleen gebruikt als `options.openMode` is ingesteld op **tekst**.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 * Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
 * Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

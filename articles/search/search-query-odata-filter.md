@@ -1,7 +1,7 @@
 ---
 title: Verwijzing naar OData-filter
 titleSuffix: Azure Cognitive Search
-description: Naslag informatie over OData-taal voor filter syntaxis in azure Cognitive Search query's.
+description: Naslag informatie over OData-taal en volledige syntaxis voor het maken van filter expressies in azure Cognitive Search query's.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: ba1f5e8f2369d3222b3c31738e252a20b6de8906
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: b966e9cfa3ef40666dbbd62135f8f964e5eb2023
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793376"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113201"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData-$filter syntaxis in azure Cognitive Search
 
@@ -77,10 +77,10 @@ Als u een filter expressie zonder haakjes schrijft rond de bijbehorende subexpre
 
 | Groep | Operator (s) |
 | --- | --- |
-| Logische Opera tors | `not` |
+| Logische operators | `not` |
 | Vergelijkingsoperators | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |
-| Logische Opera tors | `and` |
-| Logische Opera tors | `or` |
+| Logische operators | `and` |
+| Logische operators | `or` |
 
 Een operator die hoger in de bovenstaande tabel staat, wordt ' Binder meer ' aan de operanden dan andere opera tors. `and` heeft bijvoorbeeld een hogere prioriteit dan `or`, en vergelijkings operatoren hebben een hogere prioriteit dan een van beide, dus zijn de volgende twee expressies gelijkwaardig:
 

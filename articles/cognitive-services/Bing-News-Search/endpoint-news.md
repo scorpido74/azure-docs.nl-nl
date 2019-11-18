@@ -1,7 +1,7 @@
 ---
 title: Bing Nieuws zoeken-eindpunten
 titleSuffix: Azure Cognitive Services
-description: Samen vatting van het eind punt van News Search-API.
+description: In dit artikel vindt u een overzicht van de eind punten van de nieuws zoekopdracht-API. Nieuws, nieuws en frequente nieuws.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: 82e37e8fa47b467e7c2fe98f801482675809a266
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: dc7d16fe809e3e324f384b0d9e088dd7e6ab261c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423779"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111478"
 ---
 # <a name="bing-news-search-api-endpoints"></a>Bing Nieuws zoeken-API-eind punten
 
@@ -23,7 +23,7 @@ De **Nieuws zoeken-API** retourneert nieuws artikelen, webpagina's, afbeeldingen
 
 ## <a name="endpoints"></a>Eindpunten
 
-Als u zoek resultaten wilt ontvangen met behulp van de `GET` Bing Nieuws zoeken-API, verzendt u een aanvraag naar een van de volgende eind punten. De para meters headers en URL definiëren verdere specificaties.
+Als u zoek resultaten wilt ontvangen met behulp van de Bing Nieuws zoeken-API, verzendt u een `GET` aanvraag naar een van de volgende eind punten. De para meters headers en URL definiëren verdere specificaties.
 
 ### <a name="news-items-by-search-query"></a>Nieuws items per Zoek query
 
@@ -31,7 +31,7 @@ Als u zoek resultaten wilt ontvangen met behulp van de `GET` Bing Nieuws zoeken-
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-Hiermee worden nieuws items geretourneerd op basis van een zoek query. Als de zoek query leeg is, retourneert de API de meeste nieuws artikelen uit verschillende categorieën. Een query verzenden via URL uw zoek term coderen en toevoegen aan de`q=""` para meter. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-search-endpoint)voor de beschik baarheid.
+Hiermee worden nieuws items geretourneerd op basis van een zoek query. Als de zoek query leeg is, retourneert de API de meeste nieuws artikelen uit verschillende categorieën. Verzend een query via URL-code ring uw zoek term en voeg deze toe aan de para meter`q=""`. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-search-endpoint)voor de beschik baarheid.
 
 ### <a name="top-news-items-by-category"></a>Nieuws items van het hoogste niveau per categorie
 
@@ -39,7 +39,7 @@ Hiermee worden nieuws items geretourneerd op basis van een zoek query. Als de zo
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Retourneert de nieuws items van het hoogste niveau per categorie. U kunt de meest voorkomende artikelen van uw bedrijf, sport of ontspanning specifiek `category=business`aanvragen `category=sports`met, `category=entertainment`of.  De `category` para meter kan alleen worden gebruikt met `/news` de URL. Er zijn enkele formele vereisten voor het opgeven van categorieën. Raadpleeg de documentatie over de [query parameter.](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) `category` Een query verzenden via URL uw zoek term coderen en toevoegen aan de`q=""` para meter. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-endpoint)voor de beschik baarheid.
+Retourneert de nieuws items van het hoogste niveau per categorie. U kunt met behulp van `category=business`, `category=sports`of `category=entertainment`de belangrijkste artikelen van uw bedrijf, sport of ontspanning specifiek aanvragen.  De para meter `category` kan alleen worden gebruikt met de `/news`-URL. Er zijn enkele formele vereisten voor het opgeven van categorieën. Raadpleeg `category` in de documentatie over de [query parameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference#query-parameters) . Verzend een query via URL-code ring uw zoek term en voeg deze toe aan de para meter`q=""`. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-endpoint)voor de beschik baarheid.
 
 ### <a name="trending-news-topics"></a>Onderwerpen over trending nieuws 
 
@@ -47,7 +47,7 @@ Retourneert de nieuws items van het hoogste niveau per categorie. U kunt de mees
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-Hiermee worden nieuws onderwerpen geretourneerd die momenteel worden getrendd op sociale netwerken. Als de `/trendingtopics` optie is opgenomen, negeert Bing Search enkele andere para meters, `freshness` zoals `?q=""`en. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-trending-endpoint)voor de beschik baarheid.
+Hiermee worden nieuws onderwerpen geretourneerd die momenteel worden getrendd op sociale netwerken. Wanneer de `/trendingtopics` optie is opgenomen, negeert Bing Search enkele andere para meters, zoals `freshness` en `?q=""`. Zie [ondersteunde landen/regio's en markten](language-support.md#supported-markets-for-news-trending-endpoint)voor de beschik baarheid.
 
 ## <a name="next-steps"></a>Volgende stappen
 

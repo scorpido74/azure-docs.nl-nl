@@ -1,26 +1,19 @@
 ---
 title: 'Snelstartgids: Azure cache gebruiken voor redis met node. js'
 description: In deze snelstartgids leert u hoe u Azure Cache voor Redis gebruikt met Node.js en node_redis.
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: v-lincan
-ms.assetid: 06fddc95-8029-4a8d-83f5-ebd5016891d9
 ms.service: cache
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.tgt_pltfrm: cache
-ms.workload: tbd
 ms.date: 05/21/2018
 ms.author: yegu
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: bd31cf066b7844eeae02c24cb39ece686630b5ff
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: e0458fd257942a455daef911a303437fea03b11b
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329811"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122008"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-nodejs"></a>Snelstartgids: Azure cache gebruiken voor redis met node. js
 
@@ -29,7 +22,7 @@ In deze Snelstartgids neemt u Azure cache voor redis op in een node. js-app om t
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
-- [node_redis](https://github.com/mranney/node_redis), dat u met de opdracht `npm install redis` kunt installeren. 
+- [node_redis](https://github.com/mranney/node_redis), dat u kunt installeren met behulp van de opdracht `npm install redis`. 
 
 Voor voorbeelden van het gebruik van andere Node.js-clients, verwijzen wij u naar de afzonderlijke documentatie voor de Node.js-clients die staat vermeld op [Node.js Redis-clients](https://redis.io/clients#nodejs).
 
@@ -64,7 +57,7 @@ Maak geen nieuwe verbindingen voor elke bewerking in uw code. Probeer verbinding
 
 Maak een nieuw scriptbestand met de naam *redistest.js*.
 
-Voeg het volgende voorbeeld van JavaScript toe aan het bestand. Deze code laat zien hoe u verbinding kunt maken met een exemplaar van Azure Cache voor Redis via de omgevingsvariabelen voor hostnaam en sleutel. Met de code wordt ook een tekenreekswaarde opgeslagen in de cache en daaruit opgehaald. De opdrachten `PING` en `CLIENT LIST` worden ook uitgevoerd. Zie [https://redis.js.org/](https://redis.js.org/) voor meer voorbeelden van het gebruik van Redis met de [node_redis](https://github.com/mranney/node_redis)-client.
+Voeg het volgende voorbeeld van JavaScript toe aan het bestand. Deze code laat zien hoe u verbinding kunt maken met een instantie van Azure Cache voor Redis via de omgevingsvariabelen voor hostnaam en sleutel. Met de code wordt ook een tekenreekswaarde opgeslagen in de cache en daaruit opgehaald. De opdrachten `PING` en `CLIENT LIST` worden ook uitgevoerd. Zie [](https://github.com/mranney/node_redis)[ voor meer voorbeelden van het gebruik van Redis met de https://redis.js.org/node_redis](https://redis.js.org/)-client.
 
 ```js
 var redis = require("redis");
@@ -119,10 +112,10 @@ In het onderstaande voorbeeld ziet u dat de `Message`-sleutel eerder een waarde 
 
 Als u verder wilt gaan met de volgende zelfstudie, kunt u de resources die in deze snelstart zijn gemaakt behouden en opnieuw gebruiken.
 
-Als u niet verder wilt met de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
+Als u niet verder wilt met de voorbeeldtoepassing uit de snelstart, kunt u de Azure-resources verwijderen die in deze snelstart zijn gemaakt om kosten te voorkomen. 
 
 > [!IMPORTANT]
-> Het verwijderen van een resourcegroep kan niet ongedaan worden gemaakt. De resourcegroep en alle bijbehorende resources worden permanent verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
+> Houd er rekening mee dat het verwijderen van een resourcegroep niet ongedaan kan worden gemaakt, en dat de resourcegroep en alle bijbehorende resources permanent worden verwijderd. Zorg ervoor dat u niet per ongeluk de verkeerde resourcegroep of resources verwijdert. Als u de resources voor het hosten van dit voorbeeld in een bestaande resourcegroep hebt gemaakt en deze groep ook resources bevat die u wilt behouden, kunt u elke resource afzonderlijk verwijderen via hun respectievelijke blade.
 >
 
 Meld u aan bij [Azure Portal](https://portal.azure.com) en selecteer **Resourcegroepen**.

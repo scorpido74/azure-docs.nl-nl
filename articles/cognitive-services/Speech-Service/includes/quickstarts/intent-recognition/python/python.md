@@ -11,18 +11,19 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 9a226c17dd72d0dcd6403277054cf264f0094e65
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 4efa535118d075addf78b2e9be6a645c458d6bb4
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73850334"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74125459"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 Voordat u aan de slag gaat, moet u het volgende doen:
 
 > [!div class="checklist"]
+>
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
 > * [Een LUIS-toepassing maken en een eindpunt sleutel ophalen](../../../../quickstarts/create-luis.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md)
@@ -39,7 +40,7 @@ Laten we een code toevoegen die als een skelet voor het project werkt.
 
 ## <a name="create-a-speech-configuration"></a>Een spraak configuratie maken
 
-Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van uw LUIS Endpoing-sleutel en-regio. Voeg deze code toe volgende.
+Voordat u een `IntentRecognizer`-object kunt initialiseren, moet u een configuratie maken die gebruikmaakt van uw LUIS-eindpunt sleutel en-regio. Voeg deze code toe volgende.
 
 Met dit voor beeld wordt het `SpeechConfig`-object gebouwd met behulp van LUIS-sleutel en-regio. Zie [SpeechConfig-klasse](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech.speechconfig)voor een volledige lijst met beschik bare methoden.
 
@@ -48,7 +49,7 @@ Met dit voor beeld wordt het `SpeechConfig`-object gebouwd met behulp van LUIS-s
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=12)]
 
-## <a name="initialize-a-intentrecognizer"></a>Een IntentRecognizer initialiseren
+## <a name="initialize-an-intentrecognizer"></a>Een IntentRecognizer initialiseren
 
 Nu gaan we een `IntentRecognizer`maken. Voeg deze code toe aan de rechter kant onder uw spraak configuratie.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=15)]
@@ -60,7 +61,7 @@ U moet nu een `LanguageUnderstandingModel` koppelen aan de intentie herkenning e
 
 ## <a name="recognize-an-intent"></a>Een intentie herkennen
 
-Vanuit het `IntentRecognizer`-object roept u de `recognize_once()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verzendt voor herkenning en dat zodra de woord groep is geïdentificeerd om reconizinge speech te stoppen.
+Vanuit het `IntentRecognizer`-object roept u de `recognize_once()`-methode aan. Met deze methode kan de speech-service weten dat u één woord groep verstuurt voor herkenning en dat zodra de woord groep is geïdentificeerd om te stoppen met het herkennen van spraak.
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=35)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>De herkennings resultaten (of fouten) weer geven
@@ -71,7 +72,8 @@ Voeg in de instructie using onder uw aanroep naar `recognize_once()`de volgende 
 
 ## <a name="check-your-code"></a>Controleer uw code
 
-Op dit moment moet uw code er als volgt uitzien: (er zijn enkele opmerkingen aan deze versie toegevoegd) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
+Op dit moment moet uw code er als volgt uitzien:  
+(Er zijn enkele opmerkingen aan deze versie toegevoegd) [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/intent-recognition/quickstart.py?range=5-47)]
 
 ## <a name="build-and-run-your-app"></a>Uw app bouwen en uitvoeren
 

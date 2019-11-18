@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 6/1/2019
+ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: d67a14b1cbd3fb352ee1c4b271945ab347ee7fed
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 38d86a9ed82c3a242364e788cce371f83575c1ea
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389978"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108737"
 ---
 # <a name="application-gateway-configuration-overview"></a>Overzicht van Application Gateway configuratie
 
@@ -20,7 +20,7 @@ Azure-toepassing gateway bestaat uit verschillende onderdelen die u op verschill
 
 ![Stroom diagram van Application Gateway onderdelen](./media/configuration-overview/configuration-overview1.png)
 
-Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zijn multi-site listeners voor respectievelijk `http://acme.com/*` en `http://fabrikam.com/*`. Luister beide op poort 80. De derde is een basis-listener met end-to-end Secure Sockets Layer (SSL) beëindiging.
+Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zijn multi-site listeners voor `http://acme.com/*` en `http://fabrikam.com/*`. Luister beide op poort 80. De derde is een basis-listener met end-to-end Secure Sockets Layer (SSL) beëindiging.
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -32,7 +32,7 @@ Deze afbeelding illustreert een toepassing met drie listeners. De eerste twee zi
 Een toepassings gateway is een speciale implementatie in uw virtuele netwerk. In het virtuele netwerk is een toegewezen subnet vereist voor de toepassings gateway. U kunt meerdere exemplaren van een bepaalde toepassings gateway-implementatie in een subnet hebben. U kunt ook andere toepassings gateways implementeren in het subnet. Maar u kunt geen andere resources implementeren in het subnet van de toepassings gateway.
 
 > [!NOTE]
-> U kunt Standard_v2 en Standard Azure-toepassing gateway niet op hetzelfde subnet combi neren.
+> U kunt Standard_v2 en de standaard Azure-toepassing gateway niet op hetzelfde subnet combi neren.
 
 #### <a name="size-of-the-subnet"></a>Grootte van het subnet
 
@@ -42,7 +42,7 @@ Azure reserveert ook vijf IP-adressen in elk subnet voor intern gebruik: de eers
 
 Overweeg een subnet met 27 Application Gateway-instanties en een IP-adres voor een privé-front-end-IP. In dit geval hebt u 33 IP-adressen nodig: 27 voor de Application Gateway-instanties, 1 voor de privé-front-end en 5 voor intern gebruik. U hebt dus een/26-subnet groter of groter.
 
-U wordt aangeraden een subnet-grootte van Mini maal/28 te gebruiken. Met deze grootte beschikt u over elf bruikbare IP-adressen. Als het laden van de toepassing meer dan 10 IP-adressen vereist, moet u rekening houden met de grootte van een/27-of/26-subnet.
+U wordt aangeraden een subnet-grootte van Mini maal/28 te gebruiken. Met deze grootte beschikt u over elf bruikbare IP-adressen. Als het laden van de toepassing meer dan tien Application Gateway exemplaren vereist, moet u rekening houden met de grootte van een/27-of/26-subnet.
 
 #### <a name="network-security-groups-on-the-application-gateway-subnet"></a>Netwerk beveiligings groepen op het Application Gateway subnet
 
@@ -61,7 +61,7 @@ Netwerk beveiligings groepen (Nsg's) worden ondersteund op Application Gateway. 
 
 Voor dit scenario gebruikt u Nsg's in het subnet Application Gateway. Plaats de volgende beperkingen op het subnet in deze volg orde van prioriteit:
 
-1. Sta binnenkomend verkeer van een bron-IP/IP-bereik en naar het gehele Application Gateway subnet, of naar het specifieke geconfigureerde persoonlijke front-end-IP-adres toe. De NSG werkt niet op een openbaar IP-adres.
+1. Sta binnenkomend verkeer van een bron-IP of IP-bereik en de bestemming toe als het gehele Application Gateway subnet of op het specifieke geconfigureerde persoonlijke front-end-IP-adres. De NSG werkt niet op een openbaar IP-adres.
 2. Sta inkomende aanvragen van alle bronnen toe aan poorten 65503-65534 voor de Application Gateway v1-SKU en poorten 65200-65535 voor v2 SKU voor [back-end status communicatie](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics). Dit poort bereik is vereist voor de communicatie van Azure-infra structuur. Deze poorten worden beveiligd (vergrendeld) door Azure-certificaten. Zonder de juiste certificaten kunnen externe entiteiten geen wijzigingen op deze eind punten initiëren.
 3. Sta binnenkomende Azure Load Balancer tests (*AzureLoadBalancer* tag) en binnenkomend virtueel netwerk verkeer (*VirtualNetwork* -tag) toe aan de [netwerk beveiligings groep](https://docs.microsoft.com/azure/virtual-network/security-overview).
 4. Alle andere binnenkomende verkeer blok keren met behulp van de regel deny-all.
@@ -83,13 +83,13 @@ Voor de v2-SKU worden Udr's niet ondersteund op het Application Gateway subnet. 
 
 U kunt de toepassings gateway configureren voor een openbaar IP-adres, een privé IP-adres of beide. Een openbaar IP-adres is vereist wanneer u een back-end host dat clients via internet toegang moeten hebben via een virtueel IP-adres (VIP) op internet. 
 
-Een openbaar IP-adres is niet vereist voor een intern eind punt dat niet beschikbaar is op internet. Dit wordt ook wel een ILB-eind punt ( *interne Load Balancer* ) genoemd. Een Application Gateway ILB is handig voor interne line-of-business-toepassingen die niet worden blootgesteld aan Internet. Het is ook nuttig voor services en lagen in een toepassing met meerdere lagen binnen een beveiligings grens die niet beschikbaar is op internet, maar waarvoor Round Robin-taak verdeling, sessie persistentie of SSL-beëindiging vereist is.
+Een openbaar IP-adres is niet vereist voor een intern eind punt dat niet beschikbaar is op internet. Dit wordt ook wel een intern ILB-eind punt ( *Load-Balancer* ) of een persoonlijk frontend-IP-adres genoemd. Een Application Gateway ILB is handig voor interne line-of-business-toepassingen die niet worden blootgesteld aan Internet. Het is ook nuttig voor services en lagen in een toepassing met meerdere lagen binnen een beveiligings grens die niet beschikbaar is op internet, maar waarvoor Round Robin-taak verdeling, sessie persistentie of SSL-beëindiging vereist is.
 
 Er wordt slechts één openbaar IP-adres of één privé-IP-adres ondersteund. U kiest het front-end-IP-adres wanneer u de toepassings gateway maakt.
 
-- Voor een openbaar IP kunt u een nieuw openbaar IP-adres maken of een bestaande open bare IP gebruiken op dezelfde locatie als de toepassings gateway. Als u een nieuw openbaar IP-adres maakt, kan het door u geselecteerde type IP-adressen niet later worden gewijzigd. Zie [static versus Dynamic Public IP Address](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)(Engelstalig) voor meer informatie.
+- Voor een openbaar IP kunt u een nieuw openbaar IP-adres maken of een bestaande open bare IP gebruiken op dezelfde locatie als de toepassings gateway. Zie [static versus Dynamic Public IP Address](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#static-versus-dynamic-public-ip-address)(Engelstalig) voor meer informatie.
 
-- Voor een privé-IP kunt u een privé IP-adres opgeven in het subnet waarin de toepassings gateway is gemaakt. Als u er geen opgeeft, wordt er automatisch een wille keurig IP-adres geselecteerd in het subnet. Zie [een toepassings gateway maken met een interne Load Balancer](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)voor meer informatie.
+- Voor een privé-IP kunt u een privé IP-adres opgeven in het subnet waarin de toepassings gateway is gemaakt. Als u er geen opgeeft, wordt er automatisch een wille keurig IP-adres geselecteerd in het subnet. Het IP-adres type dat u selecteert (statisch of dynamisch) kan niet later worden gewijzigd. Zie [een toepassings gateway maken met een interne Load Balancer](https://docs.microsoft.com/azure/application-gateway/application-gateway-ilb-arm)voor meer informatie.
 
 Een front-end-IP-adres is gekoppeld aan een *listener*, waarmee wordt gecontroleerd op binnenkomende aanvragen op de front-end-IP.
 
@@ -97,19 +97,19 @@ Een front-end-IP-adres is gekoppeld aan een *listener*, waarmee wordt gecontrole
 
 Een listener is een logische entiteit die controleert op binnenkomende verbindings aanvragen met behulp van de poort, het Protocol, de host en het IP-adres. Wanneer u de listener configureert, moet u waarden opgeven voor deze die overeenkomen met de overeenkomende waarden in de inkomende aanvraag op de gateway.
 
-Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u ook een standaard-listener door het protocol en de poort voor de listener te kiezen. U kunt kiezen of u ondersteuning voor HTTP2 wilt inschakelen voor de listener. Nadat u de toepassings gateway hebt gemaakt, kunt u de instellingen van die standaard-listener (*appGatewayHttpListener*/*appGatewayHttpsListener*) bewerken of nieuwe listeners maken.
+Wanneer u een toepassings gateway maakt met behulp van de Azure Portal, maakt u ook een standaard-listener door het protocol en de poort voor de listener te kiezen. U kunt kiezen of u ondersteuning voor HTTP2 wilt inschakelen voor de listener. Nadat u de toepassings gateway hebt gemaakt, kunt u de instellingen van de standaard-listener (*appGatewayHttpListener*) bewerken of nieuwe listeners maken.
 
 ### <a name="listener-type"></a>Type listener
 
 Wanneer u een nieuwe listener maakt, kiest u tussen een [ *basis* en een *multi-site*](https://docs.microsoft.com/azure/application-gateway/application-gateway-components#types-of-listeners).
 
-- Als u één site host achter een toepassings gateway, kiest u basis. Meer informatie [over het maken van een toepassings gateway met een Basic-listener](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
+- Als u wilt dat al uw aanvragen (voor elk domein) worden geaccepteerd en doorgestuurd naar back-endservers, kiest u basis. Meer informatie [over het maken van een toepassings gateway met een Basic-listener](https://docs.microsoft.com/azure/application-gateway/quick-create-portal).
 
-- Als u meer dan een webtoepassing of meerdere subdomeinen van hetzelfde bovenliggende domein op hetzelfde exemplaar van de toepassings gateway configureert, kiest u multi-site-listener. Voor een multi-site-listener moet u ook een hostnaam invoeren. Dit komt omdat Application Gateway afhankelijk zijn van HTTP 1,1-hostheaders om meer dan één website op hetzelfde open bare IP-adres en dezelfde poort te hosten.
+- Als u aanvragen wilt door sturen naar verschillende back-Pools op basis van de *host* -header of hostnaam, kiest u multi-site listener, waarbij u ook een hostnaam moet opgeven die overeenkomt met de inkomende aanvraag. Dit komt omdat Application Gateway afhankelijk zijn van HTTP 1,1-hostheaders om meer dan één website op hetzelfde open bare IP-adres en dezelfde poort te hosten.
 
 #### <a name="order-of-processing-listeners"></a>Volg orde van de verwerkings listeners
 
-Voor de V1-SKU worden listeners verwerkt in de volg orde waarin ze worden weer gegeven. Als een basis-listener overeenkomt met een inkomende aanvraag, verwerkt de listener eerst de aanvraag. Configureer daarom multi-site listeners vóór Basic-listeners om ervoor te zorgen dat verkeer wordt doorgestuurd naar de juiste back-end.
+Voor de V1-SKU worden aanvragen vergeleken volgens de volg orde van de regels en het type listener. Als een regel met Basic listener het eerst in de aangegeven volg orde komt, wordt deze eerst verwerkt en wordt elke aanvraag voor die poort en IP-combi natie geaccepteerd. Om dit te voor komen, configureert u de regels met multi-site listeners eerst en pusht u de regel met de Basic-listener naar de laatste in de lijst.
 
 Voor de v2-SKU worden multi-site-listeners verwerkt vóór basis-listeners.
 
@@ -165,7 +165,7 @@ Als u een algemene aangepaste fout pagina wilt configureren, raadpleegt u [Azure
 
 U kunt het SSL-certificaat beheer centraliseren en de overhead voor het ontsleutelen van versleuteling voor een back-endserver verlagen. Met gecentraliseerde SSL-verwerking kunt u ook een centraal SSL-beleid opgeven dat geschikt is voor uw beveiligings vereisten. U kunt *standaard*, *vooraf gedefinieerd*of *aangepast* SSL-beleid kiezen.
 
-U configureert SSL-beleid om de SSL-protocol versies te beheren. U kunt een toepassings gateway configureren voor het weigeren van TLS 1.0, TLS 1.1 en TLS 1.2. SSL 2,0 en 3,0 zijn standaard uitgeschakeld en kunnen niet worden geconfigureerd. Zie [Application Gateway overzicht van SSL-beleid](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)voor meer informatie.
+U configureert SSL-beleid om de SSL-protocol versies te beheren. U kunt een toepassings gateway configureren voor het gebruik van een minimale-Protocol versie voor TLS-Handshakes van TLS 1.0, TLS 1.1 en TLS 1.2. SSL 2,0 en 3,0 zijn standaard uitgeschakeld en kunnen niet worden geconfigureerd. Zie [Application Gateway overzicht van SSL-beleid](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview)voor meer informatie.
 
 Nadat u een listener hebt gemaakt, koppelt u deze aan een regel voor het door sturen van aanvragen. Deze regel bepaalt hoe aanvragen die worden ontvangen op de listener worden doorgestuurd naar de back-end.
 
@@ -199,10 +199,6 @@ Koppel aan de regel de back-end-groep die de back-end-doelen bevat die aanvragen
  - Voor een regel op basis van een pad voegt u meerdere back-end-Pools toe die overeenkomen met elk URL-pad. De aanvragen die overeenkomen met het opgegeven URL-pad worden doorgestuurd naar de bijbehorende back-end-groep. Voeg ook een standaard back-end-pool toe. Aanvragen die niet overeenkomen met een URL-pad in de regel, worden doorgestuurd naar die groep.
 
 ### <a name="associated-back-end-http-setting"></a>Gekoppelde back-end-HTTP-instelling
-
-Voeg een back-end-HTTP-instelling voor elke regel toe. Aanvragen worden gerouteerd van de toepassings gateway naar de back-end-doelen met behulp van het poort nummer, het protocol en andere informatie die is opgegeven in deze instelling.
-
-Voor een eenvoudige regel is slechts één back-end HTTP-instelling toegestaan. Alle aanvragen voor de bijbehorende listener worden doorgestuurd naar de bijbehorende back-end-doelen met behulp van deze HTTP-instelling.
 
 Voeg een back-end-HTTP-instelling voor elke regel toe. Aanvragen worden gerouteerd van de toepassings gateway naar de back-end-doelen met behulp van het poort nummer, het protocol en andere informatie die is opgegeven in deze instelling.
 
@@ -245,10 +241,10 @@ Zie voor meer informatie over omleiding:
 
 #### <a name="rewrite-the-http-header-setting"></a>De HTTP-header-instelling opnieuw schrijven
 
-Met deze instelling worden HTTP-aanvragen en-antwoord headers toegevoegd, verwijderd of bijgewerkt, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. U kunt deze functie alleen configureren via Power shell. Azure Portal-en CLI-ondersteuning zijn nog niet beschikbaar. Zie voor meer informatie:
+Met deze instelling worden HTTP-aanvragen en-antwoord headers toegevoegd, verwijderd of bijgewerkt, terwijl de aanvraag-en antwoord pakketten tussen de client en de back-end-pool worden verplaatst. Ga voor meer informatie naar:
 
  - [Overzicht van HTTP-headers opnieuw schrijven](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers)
- - [Herschrijven van HTTP-header configureren](https://docs.microsoft.com/azure/application-gateway/add-http-header-rewrite-rule-powershell#specify-the-http-header-rewrite-rule-configuration)
+ - [Herschrijven van HTTP-header configureren](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-portal)
 
 ## <a name="http-settings"></a>HTTP-instellingen
 
@@ -260,7 +256,7 @@ Deze functie is handig als u een gebruikers sessie op dezelfde server wilt blijv
 
 ### <a name="connection-draining"></a>Verwerkingsstop voor verbindingen
 
-Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplande service-updates zonder problemen verwijderen. U kunt deze instelling Toep assen op alle leden van een back-end-groep tijdens het maken van de regel. Het zorgt ervoor dat alle exemplaren van een back-end-groep geen nieuwe aanvragen ontvangen. Ondertussen mogen bestaande aanvragen binnen een geconfigureerde tijds limiet worden voltooid. Het afbreken van de verbinding is van toepassing op back-end-exemplaren die expliciet worden verwijderd uit de back-end-pool door een API-aanroep. Dit geldt ook voor back-end-exemplaren die zijn gerapporteerd als *beschadigd* door de status controles.
+Met de verbinding verbreken kunt u de leden van de back-end groep tijdens geplande service-updates zonder problemen verwijderen. U kunt deze instelling Toep assen op alle leden van een back-end-groep tijdens het maken van de regel. Het zorgt ervoor dat alle exemplaren van een back-end-groep geen nieuwe aanvragen ontvangen. Ondertussen mogen bestaande aanvragen binnen een geconfigureerde tijds limiet worden voltooid. Het afbreken van de verbinding is van toepassing op back-end-exemplaren die expliciet uit de back-end-pool worden verwijderd.
 
 ### <a name="protocol"></a>Protocol
 
@@ -268,13 +264,13 @@ Application Gateway ondersteunt HTTP en HTTPS voor het routeren van aanvragen na
 
 Deze instelling in combi natie met HTTPS in de listener ondersteunt [end-to-end SSL](https://docs.microsoft.com/azure/application-gateway/ssl-overview). Zo kunt u veilig gevoelige gegevens die zijn versleuteld verzenden naar de back-end. Elke back-endserver in de back-end-groep waarvoor end-to-end SSL is ingeschakeld, moet worden geconfigureerd met een certificaat om beveiligde communicatie toe te staan.
 
-### <a name="port"></a>Port
+### <a name="port"></a>Poort
 
 Met deze instelling geeft u de poort op waarop de back-endservers worden geluisterd naar verkeer van de toepassings gateway. U kunt poorten configureren variërend van 1 tot en met 65535.
 
 ### <a name="request-timeout"></a>Time-out van aanvraag
 
-Deze instelling is het aantal seconden dat de toepassings gateway wacht om een reactie van de back-end-pool te ontvangen voordat het fout bericht ' time-out van verbinding ' wordt geretourneerd.
+Deze instelling is het aantal seconden dat de toepassings gateway wacht op het ontvangen van een reactie van de back-endserver.
 
 ### <a name="override-back-end-path"></a>Pad van back-end overschrijven
 
@@ -301,7 +297,7 @@ Met deze instelling kunt u een optioneel aangepast doorstuur traject configurere
 
 ### <a name="use-for-app-service"></a>Gebruiken voor app service
 
-Dit is een snelkoppeling naar een gebruikers interface die de twee vereiste instellingen voor de Azure App Service back-end selecteert. Hiermee kunt u de **hostnaam van het back-end-adres kiezen**en wordt er een nieuwe aangepaste test gemaakt. (Zie de sectie [hostnaam selecteren uit het back-end-adres in](#pick) dit artikel voor meer informatie.) Er wordt een nieuwe test gemaakt en de test header wordt opgehaald uit het adres van het back-end-lid.
+Dit is een snelkoppeling naar een gebruikers interface die de twee vereiste instellingen voor de Azure App Service back-end selecteert. Hiermee kunt u de **hostnaam van het back-end-adres kiezen**en wordt er een nieuwe aangepaste test gemaakt als u er nog geen hebt. (Zie de sectie [hostnaam selecteren uit het back-end-adres in](#pick) dit artikel voor meer informatie.) Er wordt een nieuwe test gemaakt en de test header wordt opgehaald uit het adres van het back-end-lid.
 
 ### <a name="use-custom-probe"></a>Aangepaste test gebruiken
 
@@ -310,26 +306,26 @@ Met deze instelling wordt een [aangepaste test](https://docs.microsoft.com/azure
 > [!NOTE]
 > De aangepaste test controleert de status van de back-end-groep niet, tenzij de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener.
 
-### <a id="pick"/> @ no__t-1Pick-hostnaam uit het back-end-adres
+### <a id="pick"/></a>Kies een hostnaam uit het back-end-adres
 
 Met deze mogelijkheid wordt de *host* -header in de aanvraag dynamisch ingesteld op de hostnaam van de back-end-pool. Er wordt gebruikgemaakt van een IP-adres of een FQDN-naam.
 
-Deze functie helpt wanneer de domein naam van de back-end afwijkt van de DNS-naam van de toepassings gateway en de back-end is afhankelijk van een specifieke host-header of Servernaamindicatie extensie (SNI) om naar het juiste eind punt te leiden.
+Deze functie helpt wanneer de domein naam van de back-end verschilt van de DNS-naam van de toepassings gateway en de back-end is afhankelijk van een specifieke host-header om naar het juiste eind punt te leiden.
 
 Een voor beeld is het gebruik van multi tenant Services als de back-end. Een app service is een multi tenant service die gebruikmaakt van een gedeelde ruimte met één IP-adres. Dit betekent dat een app service alleen toegankelijk is via de hostnamen die zijn geconfigureerd in de instellingen van het aangepaste domein.
 
-De aangepaste domein naam is standaard *bijvoorbeeld. azurewebsites.<i> </i> net*. Als u toegang wilt krijgen tot uw app service met behulp van een toepassings gateway via een hostnaam die niet expliciet is geregistreerd in de app service of via de FQDN van de toepassings gateway, overschrijft u de hostnaam in de oorspronkelijke aanvraag naar de hostnaam van de app-service. Als u dit wilt doen, schakelt u de optie **hostnaam van back-end-adres kiezen in** .
+De aangepaste domein naam is standaard *example.azurewebsites.net*. Als u toegang wilt krijgen tot uw app service met behulp van een toepassings gateway via een hostnaam die niet expliciet is geregistreerd in de app service of via de FQDN van de toepassings gateway, overschrijft u de hostnaam in de oorspronkelijke aanvraag naar de hostnaam van de app-service. Als u dit wilt doen, schakelt u de optie **hostnaam van back-end-adres kiezen in** .
 
 U hoeft deze instelling niet in te scha kelen voor een aangepast domein waarvan de bestaande aangepaste DNS-naam wordt toegewezen aan de app service.
 
 > [!NOTE]
-> Deze instelling is niet vereist voor App Service Environment voor PowerApps, een specifieke implementatie.
+> Deze instelling is niet vereist voor App Service Environment, een specifieke implementatie.
 
 ### <a name="host-name-override"></a>Hostnaam negeren
 
 Deze functie vervangt de *host* -header in de inkomende aanvraag op de toepassings gateway met de hostnaam die u opgeeft.
 
-Als bijvoorbeeld *www.<i></i>contoso. com* is opgegeven in de instelling voor de **hostnaam** , wordt de oorspronkelijke aanvraag *https:/<i></i>/appgw.eastus.cloudapp.net/path1* gewijzigd in *https:/<i></i>/www.contoso.com/path1* wanneer de aanvraag wordt doorgestuurd naar de back-endserver.
+Als bijvoorbeeld *www.contoso.com* is opgegeven in de instelling voor de **hostnaam** , wordt de oorspronkelijke aanvraag * https://appgw.eastus.cloudapp.azure.com/path1 gewijzigd in * https://www.contoso.com/path1 wanneer de aanvraag wordt doorgestuurd naar de back-endserver.
 
 ## <a name="back-end-pool"></a>Back-endgroep
 
@@ -342,7 +338,7 @@ Nadat u een back-end-pool hebt gemaakt, moet u deze koppelen aan een of meer aan
 Een toepassings gateway controleert standaard de status van alle resources in de back-end. We raden u echter ten zeerste aan een aangepaste test te maken voor elke back-end-HTTP-instelling om meer controle te krijgen over de status controle. Zie [aangepaste Health probe-instellingen](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe-settings)voor meer informatie over het configureren van een aangepaste test.
 
 > [!NOTE]
-> Nadat u een aangepaste status test hebt gemaakt, moet u deze koppelen aan een back-end-HTTP-instelling. Een aangepaste test controleert de status van de back-end-pool alleen als de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener.
+> Nadat u een aangepaste status test hebt gemaakt, moet u deze koppelen aan een back-end-HTTP-instelling. Een aangepaste test controleert de status van de back-end-pool alleen als de bijbehorende HTTP-instelling expliciet is gekoppeld aan een listener met behulp van een regel.
 
 ## <a name="next-steps"></a>Volgende stappen
 

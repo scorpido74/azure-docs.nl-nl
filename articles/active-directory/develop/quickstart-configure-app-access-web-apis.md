@@ -16,12 +16,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, aragra, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30b0649f23403363ca4ab4101a2d5cf7a42d505b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: afa757020ff6de3be23403b78fd9a12c2de97016
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473696"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106604"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis"></a>Snelstartgids: een client toepassing configureren voor toegang tot Web-Api's
 
@@ -45,7 +45,7 @@ In deze snelstart leert u hoe u uw toepassing kunt configureren voor het volgend
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u voordat u aan de slag gaat aan deze vereisten voldoet:
+Zorg ervoor dat u, voordat u aan de slag gaat, aan deze vereisten voldoet:
 
 * Lees de informatie over de ondersteunde [machtigingen en toestemming](v2-permissions-and-consent.md). Een goed begrip hiervan is belangrijk bij het bouwen van toepassingen die moeten worden gebruikt door andere gebruikers of met andere toepassingen.
 * U moet een tenant hebben waarvoor toepassingen zijn geregistreerd.
@@ -59,7 +59,7 @@ Voordat u de app kunt configureren, volgt u deze stappen:
 1. Als uw account u toegang geeft tot meer dan één Tenant, selecteert u uw account in de rechter bovenhoek en stelt u uw portal sessie in op de gewenste Azure AD-Tenant.
 1. Zoek en selecteer **Azure Active Directory**. 
 1. Selecteer **app-registraties**in het linkerdeel venster.
-1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u de pagina **Overzicht** of de hoofdregistratiepagina van de toepassing.
+1. Zoek en selecteer de toepassing die u wilt configureren. Wanneer u de app hebt geselecteerd, ziet u het **Overzicht** of de hoofdregistratiepagina van de toepassing.
 1. Volg de stappen om uw toepassing te configureren voor toegang tot web-API's:
     * [Omleidings-URI's toevoegen aan uw toepassing](#add-redirect-uris-to-your-application)
     * [Geavanceerde instellingen configureren voor uw toepassing](#configure-advanced-settings-for-your-application)
@@ -171,7 +171,7 @@ Ga als volgt te werk om een referentie aan uw webtoepassing toe te voegen:
 Ga als volgt te werk om machtiging(en) voor toegang tot resource-API's van uw client toe te voegen:
 
 1. Selecteer op de pagina **Overzicht** van de app de optie **API-machtigingen**.
-1. Selecteer de knop **Een machtiging toevoegen**.
+1. Selecteer de knop **een machtiging toevoegen** onder de sectie **geconfigureerde machtigingen** .
 1. Standaard kunt u in de weergave een keuze maken uit **Microsoft-API's**. Selecteer de sectie met API's waarin u geïnteresseerd bent:
     * **Microsoft-API's**: hier kunt u machtigingen selecteren voor Microsoft-API's, zoals Microsoft Graph.
     * **API's die in mijn organisatie worden gebruikt**: hier kunt u machtigingen selecteren voor de API's die beschikbaar zijn gemaakt door uw organisatie of API's waarmee uw organisatie is geïntegreerd.
@@ -179,14 +179,41 @@ Ga als volgt te werk om machtiging(en) voor toegang tot resource-API's van uw cl
 1. Wanneer u de API's hebt geselecteerd, ziet u de pagina **API-machtigingen aanvragen**. Als de API zowel gedelegeerde als toepassingsmachtigingen bevat, selecteert u het type machtiging dat uw toepassing nodig heeft.
 1. Selecteer **Machtigingen toevoegen** als u klaar bent. U keert terug naar de pagina **API-machtigingen**, waar de machtigingen zijn opgeslagen en toegevoegd aan de tabel.
 
+## <a name="understanding-api-permissions-and-admin-consent-ui"></a>Uitleg over API-machtigingen en gebruikers interface voor beheerders toestemming
+
+### <a name="configured-permissions"></a>Geconfigureerde machtigingen
+
+In deze sectie vindt u de machtigingen die expliciet zijn geconfigureerd voor het toepassings object (\the-machtigingen die deel uitmaken van de vereiste resource toegangs lijst van de app). U kunt machtigingen toevoegen aan of verwijderen uit deze tabel. Als beheerder kunt u ook toestemming van de beheerder verlenen/intrekken voor een set van een API-machtigingen of afzonderlijke machtigingen in deze sectie.
+
+### <a name="other-permissions-granted"></a>Andere verleende machtigingen
+
+Als uw toepassing is geregistreerd in een Tenant, ziet u mogelijk een extra sectie met de titel **andere machtigingen die zijn verleend voor de Tenant**. In deze sectie worden de machtigingen weer gegeven die zijn verleend voor de Tenant, maar die niet expliciet zijn geconfigureerd voor het toepassings object (bijvoorbeeld machtigingen die dynamisch zijn aangevraagd en gefactureerd). Deze sectie wordt alleen weer gegeven als er ten minste één machtiging is die van toepassing is.
+
+U kunt een set van de machtigingen van een API of afzonderlijke machtigingen die in deze sectie worden weer gegeven, toevoegen aan de sectie **geconfigureerde machtigingen** . Als beheerder kunt u de toestemming van de beheerder ook intrekken voor afzonderlijke Api's of machtigingen in deze sectie.
+
+### <a name="admin-consent-button"></a>Knop toestemming beheerder
+
+Als uw toepassing is geregistreerd in een Tenant, ziet u een **machtiging verlenen beheerder voor Tenant** . Het wordt uitgeschakeld als u geen beheerder bent of als er geen machtigingen zijn geconfigureerd voor de toepassing.
+Met deze knop kan een beheerder eenvoudig toestemming van de beheerder verlenen voor de machtigingen die voor de toepassing zijn geconfigureerd. Als u op de knop toestemming beheerder klikt, wordt er een nieuw venster geopend met de toestemming om alle geconfigureerde machtigingen weer te geven.
+
+> [!NOTE]
+> Er is een vertraging tussen de machtigingen die zijn geconfigureerd voor de toepassing en deze worden weer gegeven op de toestemming prompt. Als u niet alle geconfigureerde machtigingen in de toestemming prompt ziet, sluit u deze en start u deze opnieuw.
+
+Als u machtigingen hebt die zijn verleend, maar niet zijn geconfigureerd, wordt u gevraagd om te bepalen hoe u deze machtigingen wilt afhandelen wanneer u op de knop toestemming voor beheerder klikt. U kunt ze toevoegen aan geconfigureerde machtigingen of u kunt ze verwijderen.
+
+De prompt voor toestemming biedt de mogelijkheid om te **accepteren** of te **Annuleren**. Als u **accepteren**selecteert, wordt toestemming van de beheerder verleend. Als u **Annuleren**selecteert, wordt toestemming van de beheerder niet verleend en wordt er een fout melding weer gegeven dat de toestemming is afgewezen.
+
+> [!NOTE]
+> Er is een vertraging tussen het verlenen van de toestemming van de beheerder (selecteren **accepteren** op de toestemming prompt) en de status van de beheerder toestemming wordt weer gegeven in de gebruikers interface.
+
 ## <a name="next-steps"></a>Volgende stappen
 
 Lees meer over andere gerelateerde snelstarts voor app-beheer:
 
-* [Een toepassing registreren met het Microsoft Identity Platform](quickstart-register-app.md)
+* [Een toepassing registreren bij het Microsoft Identity Platform](quickstart-register-app.md)
 * [Een toepassing configureren voor het beschikbaar maken van web-API's](quickstart-configure-app-expose-web-apis.md)
-* [De accounts wijzigen die worden ondersteund door een toepassing](quickstart-modify-supported-accounts.md)
-* [Een geregistreerde toepassing verwijderen met het Microsoft Identity Platform](quickstart-remove-app.md)
+* [De accounts wijzigen die worden ondersteund in een toepassing](quickstart-modify-supported-accounts.md)
+* [Een geregistreerde toepassing verwijderen uit het Microsoft Identity Platform](quickstart-remove-app.md)
 
 Zie [Toepassingsobjecten en service-principal-objecten](app-objects-and-service-principals.md) voor meer informatie over de twee Azure Active Directory-objecten die een geregistreerde toepassing vertegenwoordigen en de relatie ertussen.
 

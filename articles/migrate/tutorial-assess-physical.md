@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7574e80101784961448ff3c3b5a49d9e2c2f9807
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720228"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123508"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fysieke servers beoordelen met Azure Migrate: Server evaluatie
 
@@ -43,7 +43,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 - [Voltooi](tutorial-prepare-physical.md) de eerste zelf studie in deze serie. Als dat niet het geval is, werken de instructies in deze zelf studie niet.
 - In de eerste zelf studie hebt u het volgende gedaan:
     - [Azure-machtigingen instellen](tutorial-prepare-physical.md#prepare-azure) voor Azure Migrate.
-    - [Fysieke servers voorbereiden](tutorial-prepare-physical.md#prepare-azure) voor evaluatie. De vereisten voor het apparaat moeten worden geverifieerd. U moet ook een account instellen voor detectie van fysieke servers. De vereiste poorten moeten beschikbaar zijn en u moet rekening houden met de Url's die nodig zijn voor toegang tot Azure.
+    - [Fysieke servers voorbereiden](tutorial-prepare-physical.md#prepare-for-physical-server-assessment) voor evaluatie. De vereisten voor het apparaat moeten worden geverifieerd. U moet ook een account instellen voor detectie van fysieke servers. De vereiste poorten moeten beschikbaar zijn en u moet rekening houden met de Url's die nodig zijn voor toegang tot Azure.
 
 
 ## <a name="set-up-an-azure-migrate-project"></a>Een Azure Migrate project instellen
@@ -104,9 +104,10 @@ Down load het zip-bestand voor het apparaat.
 Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
-2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
+2. Voer de volgende opdracht uit om de hash voor het zip-bestand te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
-    - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+    - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
+
 3.  Voor de toestel versie 1.19.05.10 moet de gegenereerde hash overeenkomen met deze instellingen.
 
   **Algoritme** | **Hash-waarde**
@@ -114,7 +115,8 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
   SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatie script uitvoeren
-= Het installatie script doet het volgende:
+
+Het installatie script doet het volgende:
 
 - Installeert agents en een webtoepassing voor detectie en evaluatie van fysieke servers.
 - Installeer Windows-rollen, waaronder Windows Activation service, IIS en Power shell ISE.
@@ -129,12 +131,16 @@ Voer het script als volgt uit:
 1. Pak het zip-bestand uit naar een map op de server die als host moet fungeren voor het apparaat.
 2. Start Power shell op de bovenstaande server met beheerders bevoegdheden (met verhoogde bevoegdheden).
 3. Wijzig de Power shell-map in de map waarin de inhoud is geëxtraheerd uit het gedownloade zip-bestand.
-4. Voer het script uit door de volgende opdracht uit te voeren:
+4. Voer het script met de naam **AzureMigrateInstaller. ps1** uit door de volgende opdracht uit te voeren:
     ```
-    PS C:\Users\Administrators\Desktop> AzureMigrateInstaller-physical.ps1
+    PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Met het script wordt de web-app voor het toestel gestart wanneer deze is voltooid.
+Met het script wordt de web-app voor het toestel gestart wanneer deze is voltooid. 
 
+In het geval van problemen kunt u de script Logboeken openen op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log voor het oplossen van problemen.
+
+> [!NOTE]
+> Voer het Azure Migrate-installatie script niet uit op een bestaand Azure Migrate apparaat.
 
 ### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
@@ -182,7 +188,7 @@ U kunt elk voor Windows-en Linux-servers één set referenties toevoegen.
     - Als u een server wilt verwijderen, selecteert u > **verwijderen**.
 4. Klik na validatie op **opslaan en start de detectie** om het detectie proces te starten.
 
-De detectie wordt gestart. Het duurt ongeveer 15 minuten voordat meta gegevens van gedetecteerde servers worden weer gegeven in de Azure Portal. 
+De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per server voor de meta gegevens van de gedetecteerde server die worden weer gegeven in de Azure Portal. 
 
 ### <a name="verify-servers-in-the-portal"></a>Servers in de portal controleren
 

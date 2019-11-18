@@ -1,17 +1,14 @@
 ---
-title: Resource locatie van Azure Resource Manager sjabloon
+title: Resource locatie van sjabloon
 description: Hierin wordt beschreven hoe u een resource locatie instelt in een Azure Resource Manager sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 6af5d82766533ef7bbacab04381db9a37502923e
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1e711b2cfeb42c33dbfa68b1fbdabd42cbd46d10
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70294202"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150620"
 ---
 # <a name="set-resource-location-in-resource-manager-template"></a>Resource locatie instellen in Resource Manager-sjabloon
 
@@ -41,7 +38,7 @@ az provider show \
 
 ## <a name="use-location-parameter"></a>Locatie parameter gebruiken
 
-Gebruik een para meter om de locatie voor resources op te geven om flexibiliteit te bieden bij het implementeren van uw sjabloon. Stel de standaard waarde van de para meter `resourceGroup().location`in op.
+Gebruik een para meter om de locatie voor resources op te geven om flexibiliteit te bieden bij het implementeren van uw sjabloon. Stel de standaard waarde van de para meter in op `resourceGroup().location`.
 
 In het volgende voor beeld ziet u een opslag account dat is geïmplementeerd op een locatie die is opgegeven als een para meter:
 

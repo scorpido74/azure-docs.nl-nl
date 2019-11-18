@@ -1,19 +1,19 @@
 ---
 title: Aangepaste v2-regels configureren met Power shell
 titleSuffix: Azure Web Application Firewall
-description: Meer informatie over het configureren van aangepaste WAF v2-regels met Azure PowerShell
+description: Meer informatie over het configureren van aangepaste WAF v2-regels met behulp van Azure PowerShell. U kunt uw eigen regels maken die worden geëvalueerd voor elke aanvraag die via de firewall wordt door gegeven.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/16/2019
 ms.author: victorh
-ms.openlocfilehash: 48f45629b82e63dfc3f098b68e1be2523a3a0e5c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1641b74e3b9e59253b2674b22dfd8cd1b6ca2c2c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075389"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133040"
 ---
 # <a name="configure-web-application-firewall-v2-on-application-gateway-with-a-custom-rule-using-azure-powershell"></a>Web Application firewall v2 op Application Gateway configureren met een aangepaste regel met behulp van Azure PowerShell
 

@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: aae502b350f2cf2e98849b2b6e25543516a0c547
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 1e9315195ceae435447739055105a66ee81e2a6a
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961840"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122918"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Trans formatie koppelen in gegevens stroom toewijzen
 
@@ -68,7 +68,7 @@ Als u een gegevens stroom met zichzelf wilt samen voegen, maakt u een alias voor
 
 Wanneer u de trans formaties van de koppeling met de preview-versie van gegevens in de foutopsporingsmodus test, moet u een kleine set bekende gegevens gebruiken. Wanneer u rijen van een grote gegevensset bemonstert, kunt u niet voors pellen welke rijen en sleutels worden gelezen voor testen. Het resultaat is niet-deterministisch, wat betekent dat uw samenvoegings voorwaarden geen overeenkomsten kunnen retour neren.
 
-## <a name="data-flow-script"></a>Gegevens stroom script
+## <a name="data-flow-script"></a>Script voor gegevensstroom
 
 ### <a name="syntax"></a>Syntaxis
 
@@ -105,7 +105,7 @@ TripData, TripFare
 
 ### <a name="cross-join-example"></a>Voor beeld van cross-koppeling
 
-Het onderstaande voor beeld is een koppelings transformatie met de naam `CartesianProduct` die links stream `TripData` en Right stream-`TripFare`gebruikt. Deze trans formatie heeft twee stromen en retourneert een Cartesisch product van de rijen. De voor waarde voor samen voegen is `true()`, omdat er een volledig Cartesisch product wordt uitgevoerd. De `joinType` in `cross`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
+Het onderstaande voor beeld is een koppelings transformatie met de naam `CartesianProduct` die links stream `TripData` en Right stream-`TripFare`gebruikt. Deze trans formatie heeft twee stromen en retourneert een Cartesisch product van de rijen. De voor waarde voor samen voegen is `true()`, omdat er een volledig Cartesisch product wordt uitgevoerd. De `joinType` is `cross`. Het inschakelen van de uitzending in alleen de linker stroom is `broadcast` waarde `'left'`.
 
 In de Data Factory UX ziet deze trans formatie er als volgt uit:
 

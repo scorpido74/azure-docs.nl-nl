@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 4a1b5f804986d2bda85980d01cdaaa130d86b50d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039740"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132938"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Een DR-analyse uitvoeren voor virtuele Hyper-V-machines naar een secundaire site
 
@@ -20,10 +20,6 @@ ms.locfileid: "74039740"
 In dit artikel wordt beschreven hoe u een DR-analyse (nood herstel) uitvoert voor Hyper-V-Vm's die worden beheerd in System Center Virtual Machine Manager V (MM)-Clouds, naar een secundaire on-premises site, met behulp van [Azure site Recovery](site-recovery-overview.md).
 
 U voert een testfailover uit om uw replicatie strategie te valideren en een DR-analyse uit te voeren zonder gegevens verlies of downtime. Een testfailover heeft geen invloed op de doorlopende replicatie of in uw productie omgeving. 
-
-> [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](site-to-site-deprecation.md) te lezen voordat u doorgaat.
-
 
 ## <a name="how-do-test-failovers-work"></a>Hoe werkt testfailover?
 

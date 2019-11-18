@@ -1,19 +1,16 @@
 ---
 title: Resource groepen beheren-Azure Portal
 description: Gebruik Azure Portal om uw resource groepen te beheren via Azure Resource Manager. Laat zien hoe u resource groepen kunt maken, weer geven en verwijderen.
-services: azure-resource-manager,azure-portal
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: jgao
-ms.openlocfilehash: b0fac4f618f742a13633473f00dbd24ff8411c44
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e3402f496371fe89c832dc22c8288a1b94378c82
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72528540"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147156"
 ---
 # <a name="manage-azure-resource-manager-resource-groups-by-using-the-azure-portal"></a>Azure Resource Manager resource groepen beheren met behulp van de Azure Portal
 
@@ -36,10 +33,10 @@ De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie 
 
 ## <a name="create-resource-groups"></a>Resource groepen maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. **Resource groepen** selecteren
 
-    ![Resource groep toevoegen](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
+    ![resource groep toevoegen](./media/manage-resource-groups-portal/manage-resource-groups-add-group.png)
 3. Selecteer **Toevoegen**.
 4. Voer de volgende waarden in:
 
@@ -47,7 +44,7 @@ De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie 
    - **Resource groep**: Voer een nieuwe naam voor de resource groep in. 
    - **Regio**: Selecteer een Azure-locatie, zoals **VS-centraal**.
 
-     ![Resource groep maken](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
+     ![resource groep maken](./media/manage-resource-groups-portal/manage-resource-groups-create-group.png)
 5. Selecteer **controleren + maken**
 6. Selecteer **Maken**. Het duurt een paar seconden om een resource groep te maken.
 7. Selecteer **vernieuwen** in het bovenste menu om de lijst met resource groepen te vernieuwen en selecteer vervolgens de zojuist gemaakte resource groep om deze te openen. Of selecteer de **melding**(het klok pictogram) bovenaan en selecteer vervolgens **Ga naar resource groep** om de zojuist gemaakte resource groep te openen
@@ -56,7 +53,7 @@ De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie 
 
 ## <a name="list-resource-groups"></a>Resource groepen weer geven
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Als u de resource groepen wilt weer geven, selecteert u **resource groepen**
 
     ![Bladeren in resource groepen](./media/manage-resource-groups-portal/manage-resource-groups-list-groups.png)
@@ -65,7 +62,7 @@ De resourcegroep slaat metagegevens op over de resources. Wanneer u een locatie 
 
 ## <a name="open-resource-groups"></a>Resource groepen openen
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer **Resourcegroepen**.
 3. Selecteer de resource groep die u wilt openen.
 

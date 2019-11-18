@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: 9ac1c5cb25d6b2ad396c2caed74942988a723a0e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824261"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111878"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Met Azure Machine Learning kunt u de invoer bewaken in een model dat is geïmple
 + Waarschuwingen verzenden naar gegevens via e-mail.
 
 > [!Note]
-> Deze service is in (preview) en beperkt in configuratie opties. Raadpleeg onze [API-documentatie](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/?view=azure-ml-py) en [opmerkingen](azure-machine-learning-release-notes.md) bij de release voor meer informatie en updates. 
+> Deze service is in (preview) en beperkt in configuratie opties. Raadpleeg onze [API-documentatie](https://docs.microsoft.com/python/api/azureml-datadrift/) en [opmerkingen](azure-machine-learning-release-notes.md) bij de release voor meer informatie en updates. 
 
 ### <a name="how-data-drift-is-monitored-in-azure-machine-learning"></a>Hoe gegevens drift wordt bewaakt in Azure Machine Learning
 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Een DataDriftDetector-uitvoering verzenden
 
-Wanneer het `DataDriftDetector`-object is geconfigureerd, kunt u een [gegevens-drift](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector%28class%29?view=azure-ml-py#run-target-date--services--compute-target-name-none--create-compute-target-false--feature-list-none--drift-threshold-none-) verzenden op een bepaalde datum voor het model. Als onderdeel van de uitvoering moet u DataDriftDetector-waarschuwingen inschakelen door de para meter `drift_threshold` in te stellen. Als de [datadrift_coefficient](#metrics) zich boven de opgegeven `drift_threshold`bevindt, wordt er een e-mail bericht verzonden.
+Wanneer het `DataDriftDetector`-object is geconfigureerd, kunt u een [gegevens-drift](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) verzenden op een bepaalde datum voor het model. Als onderdeel van de uitvoering moet u DataDriftDetector-waarschuwingen inschakelen door de para meter `drift_threshold` in te stellen. Als de [datadrift_coefficient](#visualize-drift-metrics) zich boven de opgegeven `drift_threshold`bevindt, wordt er een e-mail bericht verzonden.
 
 ```python
 # adhoc run today

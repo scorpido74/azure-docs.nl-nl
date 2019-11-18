@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 11/14/2019
 ms.author: swmachan
-ms.openlocfilehash: c07673e7b170170de4723a1232d2e7281feaaf99
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 172bf452cc5197db95e0e1e55c7c687971194899
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888082"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123062"
 ---
 # <a name="translator-text-api-v30"></a>Translator Text-API v 3.0
 
-## <a name="whats-new"></a>Nieuwe functies
+## <a name="whats-new"></a>Wat is nieuw?
 
 Versie 3 van de Translator Text-API biedt een moderne op JSON gebaseerde web-API. Het verbetert de bruikbaarheid en prestaties door bestaande functies te consolideren in minder bewerkingen en biedt nieuwe functies.
 
@@ -48,7 +48,7 @@ Als u wilt afdwingen dat de aanvraag wordt verwerkt door een specifieke Azure-ge
 |Azure|Europa|  api-eur.cognitive.microsofttranslator.com|
 |Azure|Azië en Stille Oceaan|    api-apc.cognitive.microsofttranslator.com|
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Verificatie
 
 Abonneer u op Translator Text-API of [Cognitive Services meerdere services](https://azure.microsoft.com/pricing/details/cognitive-services/) in azure Cognitive Services en gebruik uw abonnements sleutel (beschikbaar in de Azure Portal) om te verifiëren. 
 
@@ -56,14 +56,14 @@ Er zijn drie kopteksten die u kunt gebruiken om uw abonnement te verifiëren. In
 
 |Headers|Beschrijving|
 |:----|:----|
-|OCP-APIM-abonnements sleutel|*Gebruik with Cognitive Services-abonnement als u uw geheime sleutel door geven*.<br/>De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
+|OCP-Apim-Subscription-Key|*Gebruik with Cognitive Services-abonnement als u uw geheime sleutel door geven*.<br/>De waarde is de geheime Azure-sleutel voor uw abonnement Translator Text-API.|
 |Autorisatie|*Gebruik with Cognitive Services-abonnement als u een verificatie token doorgeeft.*<br/>De waarde is de Bearer-token: `Bearer <token>`.|
-|OCP-APIM-abonnement-regio|*Gebruik met met Cognitive Services abonnement voor meerdere services als u een geheime sleutel van meerdere services doorgeeft.*<br/>De waarde is de regio van het multi-service abonnement. Deze waarde is optioneel wanneer u geen multi-service-abonnement gebruikt.|
+|Ocp-Apim-Subscription-Region|*Gebruik met met Cognitive Services abonnement voor meerdere services als u een geheime sleutel van meerdere services doorgeeft.*<br/>De waarde is de regio van het multi-service abonnement. Deze waarde is optioneel wanneer u geen multi-service-abonnement gebruikt.|
 
 ###  <a name="secret-key"></a>Geheime sleutel
 De eerste optie is om te verifiëren met behulp van de `Ocp-Apim-Subscription-Key`-header. Voeg de `Ocp-Apim-Subscription-Key: <YOUR_SECRET_KEY>`-header toe aan uw aanvraag.
 
-### <a name="authorization-token"></a>Autorisatie token
+### <a name="authorization-token"></a>Autorisatietoken
 U kunt ook uw geheime sleutel voor een toegangs token uitwisselen. Dit token is opgenomen in elke aanvraag als de `Authorization`-header. Als u een autorisatie token wilt verkrijgen, moet u een `POST`-aanvraag indienen bij de volgende URL:
 
 | Omgeving     | URL van verificatie service                                |
@@ -163,5 +163,23 @@ De fout code is een getal van 6 cijfers, waarbij de HTTP-status code van 3 cijfe
 | 415000| De content-type-header ontbreekt of is ongeldig.|
 | 429000, 429001, 429002| De server heeft de aanvraag geweigerd omdat de aanvraag limieten voor de client is overschreden.|
 | 500000| Er is een onverwachte fout opgetreden. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
-| 503000| De service is tijdelijk niet beschikbaar. Probeer het opnieuw. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
+| 503000| Service is tijdelijk niet beschikbaar. Probeer het opnieuw. Als de fout zich blijft voordoen, meldt u deze met de datum/tijd van de fout, verzoekt u de aanvraag-id van de antwoord header X-id-aanvraag en de client-id van de aanvraag header X-ClientTraceId.|
 
+## <a name="metrics"></a>Metrische gegevens 
+Met metrische gegevens kunt u het gebruik van de Vertaler en beschik baarheid in Azure Portal weer geven, onder de sectie metrische gegevens, zoals wordt weer gegeven in de onderstaande scherm afbeelding. Zie [gegevens en platform metrieken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics)voor meer informatie.
+
+![Metrische gegevens van vertaler](../media/translatormetrics.png)
+
+Deze tabel bevat de beschik bare metrische gegevens met een beschrijving van hoe ze worden gebruikt voor het bewaken van API-aanroepen voor vertalingen.
+
+| Metrische gegevens | Beschrijving |
+|:----|:-----|
+| TotalCalls| Totaal aantal API-aanroepen.|
+| TotalTokenCalls| Totaal aantal API-aanroepen via token service met verificatie token.|
+| SuccessfulCalls| Aantal geslaagde aanroepen.|
+| TotalErrors| Het aantal aanroepen met een fout reactie.|
+| BlockedCalls| Aantal aanroepen dat de frequentie of quotum limiet heeft overschreden.|
+| ServerErrors| Aantal aanroepen met server interne fout (5XX).|
+| ClientErrors| Aantal aanroepen met een fout aan de client zijde (4XX).|
+| Latentie| De duur voor het volt ooien van de aanvraag in milliseconden.|
+| CharactersTranslated| Totaal aantal tekens in binnenkomende-tekst aanvraag.|

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: QnA Maker-client bibliotheek voor node. js'
+title: 'Snelstartgids: QnA Maker-client bibliotheek voor node. js'
 titleSuffix: Azure Cognitive Services
 description: Ga aan de slag met de QnA Maker-client bibliotheek voor node. js. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 09/26/2019
 ms.author: diberry
-ms.openlocfilehash: ab3fa02f7285fdbde918f9e365d1ee96ba5e71a1
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 7650dce9a3ef494815b8d7a326eb07e1e25f2da2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802996"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123087"
 ---
-# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Quickstart: QnA Maker-client bibliotheek voor node. js
+# <a name="quickstart-qna-maker-client-library-for-nodejs"></a>Snelstartgids: QnA Maker-client bibliotheek voor node. js
 
 Ga aan de slag met de QnA Maker-client bibliotheek voor node. js. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.  Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen. 
 
@@ -27,7 +27,7 @@ Gebruik de QnA Maker-client bibliotheek voor node. js voor het volgende:
 * Een kennis database beheren
 * Een kennisdatabase publiceren
 
-[Naslag informatie over](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics) | het[bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | pakket voor de documentatie bibliotheek[(NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) -voor beelden
+[Naslag documentatie](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/Knowledge.QnAMaker) | [pakket (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-qnamaker) | [node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) -voor beelden
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -42,7 +42,7 @@ Gebruik de QnA Maker-client bibliotheek voor node. js voor het volgende:
 
 Azure-Cognitive Services worden vertegenwoordigd door Azure-resources waarop u zich abonneert. Maak een resource voor QnA Maker met behulp van de [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) of [Azure cli](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) op uw lokale machine. 
 
-Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor `QNAMAKER_SUBSCRIPTION_KEY` de `QNAMAKER_HOST`resource met de naam en. Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **sleutels** en **overzichts** pagina's van de resource in de Azure Portal.
+Nadat u een sleutel van uw resource hebt opgehaald, [maakt u omgevings variabelen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de resource, met de naam `QNAMAKER_SUBSCRIPTION_KEY` en `QNAMAKER_HOST`. Gebruik de sleutel-en eindpunt waarden die zijn gevonden op de **sleutels** en **overzichts** pagina's van de resource in de Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Een nieuwe Node.js-toepassing maken
 
@@ -60,13 +60,13 @@ npm init -y
 
 ### <a name="install-the-client-library"></a>De client bibliotheek installeren
 
-Installeer de `ms-rest-azure` en `azure-cognitiveservices-qnamaker` NPM-pakketten:
+Installeer de `ms-rest-azure`-en `azure-cognitiveservices-qnamaker` NPM-pakketten:
 
 ```console
 npm install azure-cognitiveservices--qnamaker ms-rest-azure --save
 ```
 
-Het bestand van `package.json` uw app wordt bijgewerkt met de afhankelijkheden.
+Het `package.json`-bestand van uw app wordt bijgewerkt met de afhankelijkheden.
 
 
 ## <a name="object-model"></a>Object model
@@ -99,7 +99,7 @@ Maak variabelen voor het Azure-eind punt en de sleutel van uw resource. Als u de
 |Omgevingsvariabele|Node. js-variabele|Voorbeeld|
 |--|--|--|
 |`QNAMAKER_SUBSCRIPTION_KEY`|`subscription_key`|32 teken-GUID|
-|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com`: Vervang het subdomein `your-resource-name` door de waarde van de naam van uw resource|
+|`QNAMAKER_HOST`|`endpoint`|`https://your-resource-name.api.cognitive.microsoft.com`: Vervang de `your-resource-name` van het subdomein door de waarde van de naam van uw resource|
 ||||
 
 [!code-javascript[Azure resource variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=resourcekeys)]
@@ -123,7 +123,7 @@ Roep de [Create](https://docs.microsoft.com/javascript/api/@azure/cognitiveservi
 
 [!code-javascript[Create a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=createkb&highlight=15)]
 
-Zorg ervoor dat u de [`wait_for_operation`](#get-status-of-an-operation) functie include gebruikt, waarnaar wordt verwezen in de bovenstaande code om een Knowledge Base te kunnen maken. 
+Zorg ervoor dat de functie include [`wait_for_operation`](#get-status-of-an-operation) , waarnaar wordt verwezen in de bovenstaande code, om een Knowledge Base te kunnen maken. 
 
 ## <a name="update-a-knowledge-base"></a>Een kennisdatabase bijwerken
 
@@ -131,7 +131,7 @@ U kunt een Knowledge Base bijwerken door door te geven in de Knowledge Base-ID e
 
 [!code-javascript[Update a knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js?name=updatekb&highlight=19)]
 
-Zorg ervoor dat u de [`wait_for_operation`](#get-status-of-an-operation) functie include gebruikt, waarnaar wordt verwezen in de bovenstaande code om een Knowledge Base te kunnen bijwerken. 
+Zorg ervoor dat de functie [`wait_for_operation`](#get-status-of-an-operation) bevat, waarnaar wordt verwezen in de bovenstaande code, om een Knowledge Base te kunnen bijwerken. 
 
 ## <a name="publish-a-knowledge-base"></a>Een kennisdatabase publiceren
 
@@ -155,7 +155,7 @@ De _setTimeout_ -aanroep in het volgende code blok wordt gebruikt voor het simul
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Voer de toepassing uit `node index.js` met de opdracht uit de toepassingsmap.
+Voer de toepassing uit met `node index.js` opdracht uit de toepassingsmap.
 
 
 Alle code fragmenten in dit artikel zijn [beschikbaar](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/knowledgebase_quickstart/knowledgebase_quickstart.js) en kunnen als één bestand worden uitgevoerd.
@@ -174,7 +174,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
->[Zelfstudie: Een KB maken en beantwoorden](../tutorials/create-publish-query-in-portal.md)
+>[Zelf studie: een KB maken en beantwoorden](../tutorials/create-publish-query-in-portal.md)
 
 * [Wat is de QnA Maker-API?](../Overview/overview.md)
 * [Een kennisdatabase bewerken](../how-to/edit-knowledge-base.md)

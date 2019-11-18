@@ -1,5 +1,5 @@
 ---
-title: VM-verbinding van virtuele Azure SQL-machine voor zoek indexering
+title: Azure SQL-VM-verbinding voor zoek indexering
 titleSuffix: Azure Cognitive Search
 description: Schakel versleutelde verbindingen in en configureer de firewall om verbindingen met SQL Server op een virtuele Azure-machine (VM) toe te staan vanuit een Indexeer functie op Azure Cognitive Search.
 manager: nitinme
@@ -8,16 +8,16 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 57bea41d95b8859af55be777b17189861a445a12
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 426ec57b3dbce884e55ef7a11ccca32ed295d70d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792149"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111890"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Een verbinding van een Azure Cognitive Search Indexeer functie configureren om te SQL Server op een Azure VM
 
-Zoals beschreven in het [verbinden van Azure SQL database met azure Cognitive Search met Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), wordt het maken van Indexeer functies voor **SQL Server op Azure-vm's** (of **SQL Azure vm's** voor korte) ondersteund door Azure Cognitive Search, maar er zijn enkele vereisten voor beveiliging die het eerst moeten worden uitgevoerd. 
+Zoals beschreven in het [verbinden van Azure SQL database met azure Cognitive Search met Indexeer functies](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), wordt het maken van Indexeer functies op basis **van SQL Server op Azure-vm's** (of **SQL Azure vm's** voor kort) ondersteund door Azure Cognitive Search, maar er zijn een paar aan beveiligings vereisten verbonden voor waarden die u eerst moet uitvoeren. 
 
 Verbindingen van Azure Cognitive Search naar SQL Server op een VM is een open bare Internet verbinding. Alle beveiligings maatregelen die u normaal gesp roken uitvoert, zijn hier ook van toepassing:
 

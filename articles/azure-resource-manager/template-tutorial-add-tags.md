@@ -1,19 +1,16 @@
 ---
-title: Zelf studie-Tags toevoegen aan resources in een Azure Resource Manager sjabloon
+title: Zelf studie-Tags toevoegen aan resources in een sjabloon
 description: Tags toevoegen aan resources die u in uw Azure Resource Manager-sjabloon implementeert. Met tags kunt u resources logisch indelen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8b6ff50f7254a51bcdf37ecb0afd8f0041a2c5da
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 663de1e341815eac039c49cee63f8a492b0cb7a9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177568"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150186"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Zelf studie: Tags toevoegen in uw Resource Manager-sjabloon
 
@@ -59,7 +56,7 @@ New-AzResourceGroupDeployment `
   -webAppName demoapp
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -75,7 +72,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. Selecteer een van de resources, zoals de resource van het opslag account. U ziet dat deze nu labels bevat.

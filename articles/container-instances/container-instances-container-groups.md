@@ -1,6 +1,6 @@
 ---
 title: Azure Container Instances container groepen
-description: Meer informatie over het werken met groepen met meerdere containers in Azure Container Instances
+description: Meer informatie over container groepen in Azure Container Instances, een verzameling van exemplaren die een levens cyclus delen, zoals opslag en netwerk
 services: container-instances
 author: dlepow
 manager: gwallace
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: a785ecbfa09c54d3affa97c220d4808f9fe8d90b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: ef6745e18a0df3ee0a572f106d1507d0fca32ac2
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904451"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150201"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Container groepen in Azure Container Instances
 
 De resource op het hoogste niveau in Azure Container Instances is de *container groep*. In dit artikel wordt beschreven wat de container groepen zijn en welke scenario's er worden ingeschakeld.
 
-## <a name="how-a-container-group-works"></a>Hoe een container groep werkt
+## <a name="what-is-a-container-group"></a>Wat is een container groep?
 
 Een container groep is een verzameling van containers die op dezelfde hostcomputer worden gepland. De containers in een container groep delen een levens cyclus, bronnen, lokaal netwerk en opslag volumes. Het is vergelijkbaar met het concept van een *pod* in [Kubernetes][kubernetes-pod].
 

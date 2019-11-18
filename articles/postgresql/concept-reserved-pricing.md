@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: 795ca6f1ee45f11fe44f9c14efda1d3463dc9e7c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 753d962cbefd38ec991fb9e63805760fe07a8f2d
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076817"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123871"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vooruitbetalen voor Azure Database for PostgreSQL Compute-resources met gereserveerde capaciteit
 
@@ -20,7 +20,7 @@ Azure Database for PostgreSQL helpt u bij het besparen van geld door vooraf te b
 U hoeft de reserve ring niet toe te wijzen aan specifieke Azure Database for PostgreSQL-servers. Een Azure Database for PostgreSQL die al wordt uitgevoerd, krijgt automatisch het voor deel van gereserveerde prijzen. Als u een reserve ring aanschaft, betaalt u de reken kosten vooraf voor een periode van één jaar. Zodra u een reserve ring koopt, worden de Azure data base for PostgreSQL-reken kosten die overeenkomen met de reserverings kenmerken, niet meer in rekening gebracht tegen de betalen naar gebruik-tarieven. Een reserve ring geldt niet voor software-, netwerk-of opslag kosten die zijn gekoppeld aan de PostgreSQL-database servers. Aan het einde van de reserverings termijn verloopt het facturerings voordeel en de Azure Database for PostgreSQL worden gefactureerd op basis van de betalen naar gebruik-prijs. Reserve ringen worden niet automatisch vernieuwd. Voor prijs informatie raadpleegt u de [Azure database for PostgreSQL gereserveerde capaciteits aanbieding](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
-> Prijzen voor gereserveerde capaciteit zijn alleen beschikbaar voor de implementatie van Azure Database for PostgreSQL [één server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) en niet voor de implementatie van [grootschalige Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus-preview) .
+> Prijzen voor gereserveerde capaciteit zijn alleen beschikbaar voor de implementatie van Azure Database for PostgreSQL [één server](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) en niet voor de implementatie van [grootschalige Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) .
 
 U kunt Azure Database for PostgreSQL gereserveerde capaciteit kopen in de [Azure Portal](https://portal.azure.com/). De gereserveerde capaciteit kopen:
 
@@ -63,7 +63,7 @@ In de volgende tabel worden de vereiste velden beschreven.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Annulering, omwisseling of terugbetaling van reserveringen
 
-Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor omruiling en terugbetaling van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
+Annulering, ruiling of terugbetaling van reserveringen is mogelijk met bepaalde beperkingen. Zie [Selfservice voor ruiling en terugbetaling van Azure-reserveringen](https://docs.microsoft.com/azure/billing/billing-azure-reservations-self-service-exchange-and-refund) voor meer informatie.
 
 ## <a name="vcore-size-flexibility"></a>flexibiliteit van vCore-grootte
 

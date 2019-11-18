@@ -1,17 +1,14 @@
 ---
-title: Terugkeren naar de fout bij een geslaagde Azure-implementatie
+title: Fout bij het terugdraaien naar een geslaagde implementatie
 description: Geef op dat een mislukte implementatie moet worden teruggedraaid naar een geslaagde implementatie.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 10/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 035b684bb9f5fbc10eb13e642c3fd5945b85c561
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0978d2547e23a9ac6f920c76be3e877ec236d9ed
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71975444"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150345"
 ---
 # <a name="rollback-on-error-to-successful-deployment"></a>Ongedaan maken bij fout bij geslaagde implementatie
 
@@ -27,7 +24,7 @@ Als u deze optie wilt gebruiken, moeten uw implementaties unieke namen hebben zo
 
 ## <a name="powershell"></a>PowerShell
 
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de para meter `-RollbackToLastDeployment` toe als een vlag.
+Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de para meter `-RollbackToLastDeployment` als een vlag toe.
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -Name ExampleDeployment02 `
@@ -47,7 +44,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment02 `
 
 ## <a name="azure-cli"></a>Azure-CLI
 
-Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de para meter `--rollback-on-error` toe als een vlag.
+Als u de laatste geslaagde implementatie opnieuw wilt implementeren, voegt u de para meter `--rollback-on-error` als een vlag toe.
 
 ```azurecli-interactive
 az group deployment create \

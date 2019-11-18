@@ -1,5 +1,6 @@
 ---
-title: 'IPsec/IKE-beleid configureren voor S2S VPN-of VNet-naar-VNet-verbindingen: Azure Resource Manager: Power shell | Microsoft Docs'
+title: IPsec/IKE-beleid voor S2S VPN-& VNet-naar-VNet-verbindingen
+titleSuffix: Azure VPN Gateway
 description: Configureer IPsec/IKE-beleid voor S2S-of VNet-naar-VNet-verbindingen met Azure VPN-gateways met behulp van Azure Resource Manager en Power shell.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: a4a0431a8d40f7905805e0a7d902988b7eb26208
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0dabf0ee3370abab3d0f9d6f1bf26dd622862cf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035039"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151782"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-beleid configureren voor S2S VPN-of VNet-naar-VNet-verbindingen
 
@@ -93,7 +94,7 @@ De volgende tabel bevat de ondersteunde cryptografische algoritmen en sleutel st
 >    * DH-groep specificeert de Diffie-Hellmen-groep die wordt gebruikt in de hoofd modus of fase 1
 >    * PFS-groep opgegeven de Diffie-Hellmen-groep die wordt gebruikt in de snelle modus of fase 2
 > 4. SA-levensduur voor IKEv2 Main Mode staat vastgesteld op 28.800 seconden op de Azure VPN-gateways
-> 5. Als u ' UsePolicyBasedTrafficSelectors ' instelt op $True voor een verbinding, wordt de Azure VPN-gateway geconfigureerd om verbinding te maken met op beleid gebaseerde VPN-Firewall on-premises. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat op uw VPN-apparaat de overeenkomende verkeers selectie is gedefinieerd met alle combi Naties van de voor voegsels van uw on-premises netwerk (lokale netwerk gateway) naar/van de voor voegsels van het virtuele Azure-netwerk (in plaats van any-to-any. Als uw lokale netwerkvoorvoegsels bijvoorbeeld 10.1.0.0/16 en 10.2.0.0/16 zijn, en de voorvoegsels van uw virtuele netwerk 192.168.0.0/16 en 172.16.0.0/16, moet u de volgende verkeersselectoren opgeven:
+> 5. Als u ' UsePolicyBasedTrafficSelectors ' instelt op $True voor een verbinding, wordt de Azure VPN-gateway geconfigureerd om verbinding te maken met op beleid gebaseerde VPN-Firewall on-premises. Als u PolicyBasedTrafficSelectors inschakelt, moet u ervoor zorgen dat op uw VPN-apparaat de overeenkomende verkeers selectie is gedefinieerd met alle combi Naties van de voor voegsels van uw on-premises netwerk (lokale netwerk gateway) naar/van de voor voegsels van het virtuele Azure-netwerk (in plaats van any). Als uw lokale netwerkvoorvoegsels bijvoorbeeld 10.1.0.0/16 en 10.2.0.0/16 zijn, en de voorvoegsels van uw virtuele netwerk 192.168.0.0/16 en 172.16.0.0/16, moet u de volgende verkeersselectoren opgeven:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
 >    * 10.1.0.0/16 <====> 172.16.0.0/16
 >    * 10.2.0.0/16 <====> 192.168.0.0/16
@@ -129,7 +130,7 @@ Zie [een S2S-VPN-verbinding maken](vpn-gateway-create-site-to-site-rm-powershell
 
 ### <a name="createvnet1"></a>Stap 1: het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken
 
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 
 Voor deze oefening beginnen we met het declareren van onze variabelen. Zorg dat u de waarden door uw eigen waarden vervangt wanneer u configureert voor productie.
 
@@ -158,7 +159,7 @@ $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
 
-#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Verbinding maken met uw abonnement en een nieuwe resource groep maken
+#### <a name="2-connect-to-your-subscription-and-create-a-new-resource-group"></a>2. Maak verbinding met uw abonnement en maak een nieuwe resource groep
 
 Zorg ervoor dat u overschakelt naar de PowerShell-modus als u de Resource Manager-cmdlets wilt gebruiken. Zie [Using Windows PowerShell with Resource Manager](../powershell-azure-resource-manager.md) (Windows PowerShell gebruiken met Resource Manager) voor meer informatie.
 
@@ -170,7 +171,7 @@ Select-AzSubscription -SubscriptionName $Sub1
 New-AzResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="3-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>3. Het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken
+#### <a name="3-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>3. het virtuele netwerk, de VPN-gateway en de lokale netwerk gateway maken
 
 In het volgende voor beeld wordt het virtuele netwerk, TestVNet1, met drie subnetten en de VPN-gateway gemaakt. Wanneer u de waarden vervangt, is het belangrijk dat u de juiste namen voor de gatewaysubnets gebruikt, in het bijzonder GatewaySubnet. Als u een andere naam kiest, mislukt het maken van de gateway.
 
@@ -193,7 +194,7 @@ New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Loc
 
 ### <a name="s2sconnection"></a>Stap 2: een S2S-VPN-verbinding maken met een IPsec/IKE-beleid
 
-#### <a name="1-create-an-ipsecike-policy"></a>1. Een IPsec/IKE-beleid maken
+#### <a name="1-create-an-ipsecike-policy"></a>1. een IPsec/IKE-beleid maken
 
 Met het volgende voorbeeld script maakt u een IPsec/IKE-beleid met de volgende algoritmen en para meters:
 
@@ -206,7 +207,7 @@ $ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -Dh
 
 Als u GCMAES voor IPsec gebruikt, moet u hetzelfde GCMAES-algoritme en dezelfde sleutel lengte gebruiken voor IPsec-versleuteling en-integriteit. De overeenkomstige para meters zijn bijvoorbeeld '-IpsecEncryption GCMAES256-IpsecIntegrity GCMAES256 ' bij gebruik van GCMAES256.
 
-#### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2. De S2S-VPN-verbinding maken met het IPsec/IKE-beleid
+#### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2. de S2S-VPN-verbinding met het IPsec/IKE-beleid maken
 
 Maak een S2S-VPN-verbinding en pas het IPsec/IKE-beleid toe dat u eerder hebt gemaakt.
 
@@ -233,7 +234,7 @@ Zie [een vnet-naar-vnet-verbinding maken](vpn-gateway-vnet-vnet-rm-ps.md) voor m
 
 ### <a name="createvnet2"></a>Stap 1: het tweede virtuele netwerk en de VPN-gateway maken
 
-#### <a name="1-declare-your-variables"></a>1. De variabelen declareren
+#### <a name="1-declare-your-variables"></a>1. Declareer de variabelen
 
 Zorg ervoor dat u de waarden vervangt door de waarden die u voor uw configuratie wilt gebruiken.
 
@@ -257,7 +258,7 @@ $Connection21 = "VNet2toVNet1"
 $Connection12 = "VNet1toVNet2"
 ```
 
-#### <a name="2-create-the-second-virtual-network-and-vpn-gateway-in-the-new-resource-group"></a>2. Het tweede virtuele netwerk en de VPN-gateway maken in de nieuwe resource groep
+#### <a name="2-create-the-second-virtual-network-and-vpn-gateway-in-the-new-resource-group"></a>2. Maak het tweede virtuele netwerk en de VPN-gateway in de nieuwe resource groep
 
 ```powershell
 New-AzResourceGroup -Name $RG2 -Location $Location2
@@ -280,11 +281,11 @@ New-AzVirtualNetworkGateway -Name $GWName2 -ResourceGroupName $RG2 -Location $Lo
 
 Net als bij de S2S-VPN-verbinding maakt u een IPsec/IKE-beleid en vervolgens op beleid Toep assen op de nieuwe verbinding.
 
-#### <a name="1-create-an-ipsecike-policy"></a>1. Een IPsec/IKE-beleid maken
+#### <a name="1-create-an-ipsecike-policy"></a>1. een IPsec/IKE-beleid maken
 
 Het volgende voorbeeldscript maakt een ander beleid voor IPsec/IKE met de volgende algoritmen en parameters:
 * IKEv2: AES128, SHA1, DHGroup14
-* IPsec: GCMAES128, GCMAES128, PFS14, levens duur van de SA 14400 seconden & 102400000KB
+* IPsec: GCMAES128, GCMAES128, PFS14, levens duur van 14400 seconden & 102400000KB
 
 ```powershell
 $ipsecpolicy2 = New-AzIpsecPolicy -IkeEncryption AES128 -IkeIntegrity SHA1 -DhGroup DHGroup14 -IpsecEncryption GCMAES128 -IpsecIntegrity GCMAES128 -PfsGroup PFS14 -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
@@ -324,7 +325,7 @@ Dezelfde stappen zijn van toepassing op S2S-en VNet-naar-VNet-verbindingen.
 > [!IMPORTANT]
 > IPsec/IKE-beleid wordt alleen ondersteund op *standaard* en *High Performance* VPN-gateways op basis van route ring. Het werkt niet op de Basic gateway-SKU of de op beleid gebaseerde VPN-gateway.
 
-#### <a name="1-show-the-ipsecike-policy-of-a-connection"></a>1. Het IPsec/IKE-beleid van een verbinding weer geven
+#### <a name="1-show-the-ipsecike-policy-of-a-connection"></a>1. het IPsec/IKE-beleid van een verbinding weer geven
 
 In het volgende voor beeld ziet u hoe u het IPsec/IKE-beleid kunt ophalen dat is geconfigureerd voor een verbinding. De scripts worden ook door lopen van de bovenstaande oefeningen.
 
@@ -350,7 +351,7 @@ PfsGroup            : PFS24
 
 Als er geen IPsec/IKE-beleid is geconfigureerd, haalt de opdracht (PS > $connection 6. Policy) een lege retour waarde op. Dit betekent niet dat IPsec/IKE niet is geconfigureerd voor de verbinding, maar dat er geen aangepast IPsec/IKE-beleid is. De werkelijke verbinding maakt gebruik van het standaard beleid dat wordt onderhandeld tussen uw on-premises VPN-apparaat en de Azure VPN-gateway.
 
-#### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. Een IPsec/IKE-beleid voor een verbinding toevoegen of bijwerken
+#### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. een IPsec/IKE-beleid voor een verbinding toevoegen of bijwerken
 
 De stappen voor het toevoegen van een nieuw beleid of het bijwerken van een bestaand beleid voor een verbinding zijn hetzelfde: Maak een nieuw beleid en pas het nieuwe beleid toe op de verbinding.
 
@@ -390,7 +391,7 @@ DhGroup             : DHGroup14
 PfsGroup            : None
 ```
 
-#### <a name="3-remove-an-ipsecike-policy-from-a-connection"></a>3. Een IPsec/IKE-beleid uit een verbinding verwijderen
+#### <a name="3-remove-an-ipsecike-policy-from-a-connection"></a>3. een IPsec/IKE-beleid uit een verbinding verwijderen
 
 Wanneer u het aangepaste beleid van een verbinding verwijdert, wordt de Azure VPN-gateway teruggezet naar de [standaard lijst met IPSec/IKE-Voorst Ellen](vpn-gateway-about-vpn-devices.md) en opnieuw onderhandeld met uw on-PREMISES VPN-apparaat.
 

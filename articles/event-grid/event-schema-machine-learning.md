@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: jenns
-ms.openlocfilehash: 6c2a8fa57bf6e3a552da57588bdbe752ef0d22e2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 5f2d23b3fe33691d37dc00b2d4e79036293252d9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73609565"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132870"
 ---
 # <a name="azure-event-grid-event-schema-for-azure-machine-learning"></a>Azure Event Grid-gebeurtenis schema voor Azure Machine Learning
 
@@ -155,11 +155,11 @@ Een gebeurtenis heeft de volgende gegevens op het hoogste niveau:
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | onderwerp | tekenreeks | Volledige bronpad naar de bron van de gebeurtenis. Dit veld kan niet worden geschreven. Event Grid levert deze waarde. |
-| Onderwerp | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
-| Type | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
+| subject | tekenreeks | Het door de uitgever gedefinieerde pad naar het gebeurtenis onderwerp. |
+| eventType | tekenreeks | Een van de geregistreerde gebeurtenis typen voor deze gebeurtenis bron. |
 | eventTime | tekenreeks | Het tijdstip waarop de gebeurtenis is gegenereerd op basis van de UTC-tijd van de provider. |
 | id | tekenreeks | De unieke id voor de gebeurtenis. |
-| gegevens | object | Gebeurtenis gegevens van Blob-opslag. |
+| data | object | Gebeurtenis gegevens van Blob-opslag. |
 | dataVersion | tekenreeks | De schema versie van het gegevens object. De uitgever definieert de schema versie. |
 | metadataVersion | tekenreeks | De schema versie van de meta gegevens van de gebeurtenis. Event Grid definieert het schema van de eigenschappen op het hoogste niveau. Event Grid levert deze waarde. |
 
@@ -180,7 +180,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 | -------- | ---- | ----------- |
 | ServiceName | tekenreeks | De naam van de geïmplementeerde service. |
 | ServiceComputeType | tekenreeks | Het reken type (bijvoorbeeld ACI, AKS) van de geïmplementeerde service. |
-| ModelIds | tekenreeks | Een algemene, gescheiden lijst met model-Id's. De Id's van de modellen die in de service zijn geïmplementeerd. |
+  | ModelIds | tekenreeks | Een door komma's gescheiden lijst met model-Id's. De Id's van de modellen die in de service zijn geïmplementeerd. |
 | ServiceTags | object | De tags van de geïmplementeerde service. |
 | ServiceProperties | object | De eigenschappen van de geïmplementeerde service. |
 
@@ -189,7 +189,7 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 | Eigenschap | Type | Beschrijving |
 | -------- | ---- | ----------- |
 | ExperimentId | tekenreeks | De ID van het experiment waarvan de uitvoering deel uitmaakt. |
-| experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
+| Experimentnaam | tekenreeks | De naam van het experiment waarvan de uitvoering deel uitmaakt. |
 | RunId | tekenreeks | De ID van de uitvoering die is voltooid. |
 | RunType | tekenreeks | Het type uitvoering van de voltooide uitvoering. |
 | RunTags | object | De labels van de voltooide uitvoering. |
@@ -214,4 +214,4 @@ Het gegevens object heeft de volgende eigenschappen voor elk gebeurtenis type:
 * Zie [Wat is Event grid?](overview.md) voor een inleiding tot Azure Event grid.
 * Zie [Event grid-abonnements schema](subscription-creation-schema.md) voor meer informatie over het maken van een Azure Event grid-abonnement
 * Zie voor een inleiding tot het gebruik van Azure Event Grid met Azure Machine Learning [Azure machine learning gebeurtenissen gebruiken](/azure/machine-learning/service/concept-event-grid-integration)
-* Zie [gebeurtenis gerichte machine learning werk stromen maken](/azure/machine-learning/service/event-schema-machine-learning) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.
+* Zie [gebeurtenis gerichte machine learning werk stromen maken](/azure/machine-learning/service/how-to-use-event-grid) voor een voor beeld van het gebruik van Azure Event Grid met Azure machine learning.

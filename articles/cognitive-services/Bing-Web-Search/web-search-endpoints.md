@@ -1,7 +1,7 @@
 ---
 title: Eind punt voor zoeken op Internet
 titleSuffix: Azure Cognitive Services
-description: Samen vatting van het Web Search API-eind punt.
+description: Als u zoek resultaten op het web wilt ophalen, stuurt u een `GET` aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
-ms.openlocfilehash: be622c5636c253c48bec4d67fba58319262c2603
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68883564"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111332"
 ---
 # <a name="web-search-endpoint"></a>Webzoekopdrachten-eind punt
 
@@ -23,15 +23,15 @@ De **webzoekopdrachten-API** retourneert webpagina's, nieuws, afbeeldingen, Vide
 
 ## <a name="endpoint"></a>Eindpunt
 
-Als u zoek resultaten wilt ophalen met behulp van de Bing `GET` API, verzendt u een aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
+Als u zoek resultaten wilt ophalen met behulp van de Bing API, stuurt u een `GET` aanvraag naar het volgende eind punt. De para meters headers en URL definiëren verdere specificaties.
 
-**Eindpunt**: Retourneert Webresultaten die relevant zijn voor de zoek query van de gebruiker die `?q=""`is gedefinieerd door.
+**Eind punt**: retourneert Webresultaten die relevant zijn voor de zoek query van de gebruiker die is gedefinieerd door `?q=""`.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
 
-Endpoints Zie de naslag informatie voor [Bing Web API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) voor meer informatie over kopteksten, para meters, markt codes, reactie objecten, fouten en meer.
+Eind punt: Zie de naslag informatie voor [Bing Web API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference) voor meer informatie over kopteksten, para meters, markt codes, reactie objecten, fouten en meer.
 
 ## <a name="response-json"></a>JSON van antwoord
 

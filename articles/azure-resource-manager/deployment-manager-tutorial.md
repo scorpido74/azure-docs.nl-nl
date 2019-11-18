@@ -1,19 +1,16 @@
 ---
 title: Azure Deployment Manager gebruiken met Resource Manager-sjablonen | Microsoft Docs
 description: Resource Manager-sjablonen met Azure Deployment Manager gebruiken om Azure-resources te implementeren.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.date: 10/10/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3f10093b1d3087e87279258d04d86fc3d47ba313
-ms.sourcegitcommit: e0a1a9e4a5c92d57deb168580e8aa1306bd94723
+ms.openlocfilehash: 6a05e45c5dc60cf26b2fb4f50cb4699c0fde142a
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72285906"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147416"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-public-preview"></a>Zelfstudie: Azure Deployment Manager gebruiken met Resource Manager-sjablonen (openbare preview)
 
@@ -192,7 +189,7 @@ U moet een door de gebruiker toegewezen beheerde identiteit maken en toegangsbeh
 > [!IMPORTANT]
 > De door de gebruiker toegewezen beheerde identiteit moet zich op dezelfde locatie als de [implementatie](#create-the-rollout-template) bevinden. Momenteel kunnen de Deployment Manager-resources, met inbegrip van de implementatie, alleen worden gemaakt in US - centraal of US - oost 2. Dit geldt echter alleen voor de Deployment Manager-resources (zoals de servicetopologie, services, service-eenheden, implementatie en stappen). De doelresources kunnen worden geïmplementeerd in elke ondersteunde Azure-regio. In deze zelfstudie worden de Deployment Manager-resources bijvoorbeeld geïmplementeerd in US - centraal, maar worden de services geïmplementeerd in US - oost en US - west. Deze beperking wordt in de toekomst opgeheven.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Maak een [door de gebruiker toegewezen beheerde identiteit](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md).
 3. Selecteer in de portal **Abonnementen** in het linkermenu en selecteer vervolgens uw abonnement.
 4. Selecteer **Toegangsbeheer (IAM)** en selecteer vervolgens **Roltoewijzing toevoegen**.
@@ -433,7 +430,7 @@ Azure PowerShell kan worden gebruikt om de sjablonen te implementeren.
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Open de [Azure-portal](https://portal.azure.com).
+1. Open de [Azure Portal](https://portal.azure.com).
 2. Blader naar de zojuist gemaakte webtoepassingen onder de nieuwe resourcegroepen die zijn gemaakt door de implementatie.
 3. Open de webtoepassing in een webbrowser. Controleer de locatie en de versie in het index.html-bestand.
 
