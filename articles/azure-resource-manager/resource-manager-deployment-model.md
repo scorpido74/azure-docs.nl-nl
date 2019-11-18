@@ -1,19 +1,16 @@
 ---
-title: Resource Manager en klassieke implementatie | Microsoft Docs
+title: Resource Manager en klassieke implementatie
 description: Lees hier wat de verschillen zijn tussen het implementatiemodel van Resource Manager en het klassieke implementatiemodel (of Service Management).
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 08/22/2019
-ms.author: tomfitz
-ms.openlocfilehash: 9356a1603a39f2ac4d18b27445bf0f8d3a555d7e
-ms.sourcegitcommit: 6d2a147a7e729f05d65ea4735b880c005f62530f
+ms.openlocfilehash: 3cca9c71c754b39d065a599c5bb116176ec89408
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69982462"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150605"
 ---
-# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager versus klassieke implementatie: begrip van implementatiemodellen en de status van uw resources
+# <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager vergeleken met klassieke implementatie: implementatiemodellen en de status van uw resources begrijpen
 
 > [!NOTE]
 > De informatie in dit artikel wordt alleen gebruikt wanneer u een migratie van de klassieke implementatie naar de Azure Resource Manager-implementatie uitvoert.

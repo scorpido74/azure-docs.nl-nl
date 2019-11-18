@@ -1,7 +1,7 @@
 ---
 title: Verwijzing naar OData-verzamelings operator
 titleSuffix: Azure Cognitive Search
-description: OData-verzamelings operators, alle en alle en Lambda-expressies in azure Cognitive Search query's.
+description: Bij het maken van filter expressies in azure Cognitive Search query's gebruikt u ' any ' en ' alle ' Opera tors in lambda-expressies wanneer het filter zich op een verzameling of een complexe verzamelings veld bevindt.
 manager: nitinme
 author: brjohnstmsft
 ms.author: brjohnst
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: fdb250a844b70cef4f6941debbb1fa7450874932
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 54ddc8222816831b5b436297bbb1b40d03230f0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793404"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113231"
 ---
 # <a name="odata-collection-operators-in-azure-cognitive-search---any-and-all"></a>OData-verzamelings operators in azure Cognitive Search-`any` en `all`
 

@@ -1,6 +1,6 @@
 ---
-title: Maken en beheren van claimbare virtuele machines in een lab in Azure DevTest Labs | Microsoft Docs
-description: Meer informatie over het toevoegen van een claimbare virtuele machine aan een lab in Azure DevTest Labs
+title: Bewering bare Vm's maken en beheren in een lab in Azure DevTest Labs | Microsoft Docs
+description: Meer informatie over het toevoegen van een claim bare virtuele machine aan een lab in Azure DevTest Labs
 services: devtest-lab,virtual-machines
 documentationcenter: na
 author: spelluru
@@ -14,89 +14,89 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: fdffa3862f45b99c2c3f2ed41934e09247808ca7
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 7ad10a1763b4882aa3bb6aec7447f57ebaf07369
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311783"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123714"
 ---
-# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Maken en beheren van claimbare virtuele machines in Azure DevTest Labs
-U een claimbare virtuele machine toevoegen aan een lab op een vergelijkbare manier met de manier waarop u [toevoegen van een standard VM](devtest-lab-add-vm.md) – in een *basis* dat wil zeggen een een [aangepaste installatiekopie](devtest-lab-create-template.md), [formule](devtest-lab-manage-formulas.md) , of [Marketplace-installatiekopie](devtest-lab-configure-marketplace-images.md). Deze zelfstudie leidt u stapsgewijs door de Azure-portal een claimbare virtuele machine toevoegen aan een lab in DevTest Labs en geeft de processen dat voor het claimen en de virtuele machine aanvrager een gebruiker heeft gevolgd.
+# <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Bewering bare Vm's maken en beheren in Azure DevTest Labs
+U voegt een claim bare virtuele machine toe aan een lab op ongeveer dezelfde manier om [een standaard-VM toe te voegen](devtest-lab-add-vm.md) : van een *basis* die een [aangepaste afbeelding](devtest-lab-create-template.md), [formule](devtest-lab-manage-formulas.md)of [Marketplace-installatie kopie](devtest-lab-configure-marketplace-images.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een claim bare virtuele machine toe te voegen aan een lab in DevTest Labs en worden de processen weer gegeven die een gebruiker volgt om de virtuele machine te claimen en te claimen.
 
-## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Stappen voor het toevoegen van een claimbare virtuele machine aan een lab in Azure DevTest Labs
-1. Meld u aan bij [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Selecteer **alle Services**, en selecteer vervolgens **DevTest Labs** in de **DEVOPS** sectie. Als u * (star) naast **DevTest Labs** in de **DEVOPS** sectie. Deze actie worden toegevoegd **DevTest Labs** naar het menu aan de linkerkant navigatie zodat u toegang hebben tot deze eenvoudig de volgende keer. Vervolgens kunt u **DevTest Labs** in het linkermenu van de navigatie.
+## <a name="steps-to-add-a-claimable-vm-to-a-lab-in-azure-devtest-labs"></a>Stappen om een claim bare virtuele machine toe te voegen aan een lab in Azure DevTest Labs
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Selecteer **alle services**en selecteer vervolgens **DevTest Labs** in de sectie **DEVOPS** . Als u * (Star) selecteert naast **DevTest Labs** in de sectie **DEVOPS** . Met deze actie worden **DevTest Labs** toegevoegd aan het navigatie menu aan de linkerkant, zodat u de volgende keer snel toegang kunt krijgen. Vervolgens kunt u **DevTest Labs** selecteren in het navigatie menu aan de linkerkant.
 
     ![Alle services: Selecteer DevTest Labs](./media/devtest-lab-create-lab/all-services-select.png)
-1. Selecteer in de lijst met labs, in het lab waarin u wilt maken van de virtuele machine.
-2. Op van het lab **overzicht** weergeeft, schakelt **+ toevoegen**.
+1. Selecteer in de lijst met Labs het lab waarin u de virtuele machine wilt maken.
+2. Op de **overzichts** pagina van het lab selecteert u **+ toevoegen**.
 
-    ![VM-knop toevoegen](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
-1. Op de **kiest u een base** pagina, selecteert u een marketplace-installatiekopie voor de virtuele machine.
-1. Op de **basisinstellingen** tabblad van de **virtuele machine** pagina, de volgende acties uitvoeren:
-    1. Voer een naam voor de virtuele machine in de **virtuele-machinenaam** in het tekstvak. In het tekstvak is voor u door een unieke naam voor het automatisch gegenereerde vooraf ingevuld. De naam overeenkomt met de gebruikersnaam van de in uw e-mailadres gevolgd door een unieke nummer 3 cijfers. Deze functie bespaart u de tijd te denken van een computernaam en typt u dit telkens wanneer u een virtuele machine. Als u wilt, kunt u dit veld automatisch gevuld met een naam van uw keuze overschrijven. Als u wilt overschrijven de automatisch ingevulde naam voor de virtuele machine, voer een naam in de **virtuele-machinenaam** in het tekstvak.
-    2. Voer een **gebruikersnaam** die administrator-bevoegdheden op de virtuele machine wordt verleend. De **gebruikersnaam** voor de machine vooraf ingevuld met een unieke naam voor het automatisch gegenereerde is. De naam overeenkomt met de gebruikersnaam van de in uw e-mailadres. Deze functie bespaart u tijd om te beslissen over een gebruikersnaam, telkens wanneer u een nieuwe virtuele machine. Nogmaals, kunt u dit veld automatisch gevuld met een gebruikersnaam van uw keuze als u wilt onderdrukken. Als u wilt overschrijven de automatisch ingevulde waarde voor de gebruikersnaam van de, typt u een waarde in de **gebruikersnaam** in het tekstvak. Deze gebruiker is verleend **beheerder** bevoegdheden op de virtuele machine.
-    3. Als u de eerste virtuele machine in het lab maakt, voert u een **wachtwoord** voor de gebruiker. Sla dit wachtwoord als een standaardwachtwoord in de Azure-sleutelkluis die is gekoppeld aan het lab, selecteer **opslaan als standaardwachtwoord**. Het standaardwachtwoord wordt opgeslagen in de key vault met de naam: **VmPassword**. Wanneer u probeert te maken van latere virtuele machines in het lab **VmPassword** wordt automatisch geselecteerd voor de **wachtwoord**. Als u wilt overschrijven de waarde, schakelt u de **een geheim opgeslagen** selectievakje en voer een wachtwoord.
+    ![Knop virtuele machine toevoegen](./media/devtest-lab-add-vm/devtestlab-home-blade-add-vm.png)
+1. Selecteer op de pagina **een basis kiezen** een Marketplace-installatie kopie voor de virtuele machine.
+1. Voer op het tabblad **basis instellingen** van de pagina **virtuele machine** de volgende acties uit:
+    1. Voer in het tekstvak **naam van virtuele machine** een naam in voor de VM. Het tekstvak wordt vooraf ingevuld met een unieke, automatisch gegenereerde naam. De naam komt overeen met de gebruikers naam in uw e-mail adres gevolgd door een uniek nummer van drie cijfers. Met deze functie slaat u de computer naam op en typt u deze telkens wanneer u een computer maakt. Als u wilt, kunt u deze automatisch ingevulde veld overschrijven met de gewenste naam. Als u de automatisch ingevulde naam voor de virtuele machine wilt overschrijven, voert u een naam in het tekstvak **naam** van de VM in.
+    2. Voer een **gebruikers naam** in die Administrator bevoegdheden voor de virtuele machine heeft. De **gebruikers naam** voor de machine is vooraf ingevuld met een unieke automatisch gegenereerde naam. De naam komt overeen met de gebruikers naam in uw e-mail adres. Met deze functie bespaart u de tijd om elke keer dat u een nieuwe machine maakt een gebruikers naam te kiezen. U kunt dit automatisch gevulde veld vervangen door een gebruikers naam van uw keuze als u dat wilt. Als u de automatisch ingevulde waarde voor de gebruikers naam wilt overschrijven, voert u een waarde in het tekstvak **gebruikers naam** in. Aan deze gebruiker zijn **beheerders** bevoegdheden voor de virtuele machine verleend.
+    3. Als u de eerste virtuele machine in het Lab maakt, voert u een **wacht woord** voor de gebruiker in. Als u dit wacht woord wilt opslaan als een standaard wachtwoord in de Azure-sleutel kluis die is gekoppeld aan het lab, selecteert u **Opslaan als standaard wachtwoord**. Het standaard wachtwoord wordt opgeslagen in de sleutel kluis met de naam: **VmPassword**. Wanneer u een volgende virtuele machine in het lab probeert te maken, wordt **VmPassword** automatisch geselecteerd voor het **wacht woord**. Als u de waarde wilt overschrijven, schakelt u het selectie vakje **een opgeslagen geheim gebruiken** uit en voert u een wacht woord in.
 
-        U kunt ook geheimen eerst in de key vault opslaan en vervolgens worden gebruikt tijdens het maken van een virtuele machine in het lab. Zie voor meer informatie, [Store geheimen in een key vault](devtest-lab-store-secrets-in-key-vault.md). Selecteer voor het gebruik van het wachtwoord die zijn opgeslagen in de key vault, **een geheim opgeslagen**, en geeft u de waarde van een sleutel die overeenkomt met uw geheim (wachtwoord).
-    4. In de **meer opties** sectie, selecteer **grootte wijzigen**. Selecteer een van de vooraf gedefinieerde items die u opgeeft de processor-cores, RAM-geheugen en de grootte van de vaste schijf van de virtuele machine te maken.
-    5. Selecteer **toevoegen of verwijderen van artefacten**. Selecteert en configureert u de artefacten die u wilt toevoegen aan de basisinstallatiekopie.
-    **Opmerking:** Als u geen ervaring hebt met DevTest Labs of configureren van artefacten, raadpleegt u de [een bestaande artefact toevoegen aan een virtuele machine](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) uit en keer vervolgens hier terug wanneer u klaar bent.
-2. Schakel over naar de **geavanceerde instellingen** tabblad aan de bovenkant en de volgende acties uitvoeren:
-    1. Als u wilt wijzigen van het virtuele netwerk waarin de virtuele machine zich bevindt, selecteert u **wijzigen VNet**.
-    2. Als het subnet wijzigen, selecteert u **wijzigen van subnet**.
-    3. Geef op of het IP-adres van de virtuele machine is **openbare, persoonlijke of gedeelde**.
-    4. Als de virtuele machine automatisch verwijderen, geef de **datum en tijd**.
-    5. Als u de virtuele machine claimbare door een lab-gebruiker, schakelt u **Ja** voor **maken deze machine claimbare** optie.
-    6. Geef het aantal van de **exemplaren van virtuele machine** dat u wilt deze beschikbaar maakt voor uw labgebruikers.
-3. Selecteer **maken** opgegeven virtuele machine toevoegen aan het lab.
+        U kunt ook geheimen opslaan in de sleutel kluis en deze vervolgens gebruiken tijdens het maken van een virtuele machine in het lab. Zie [geheimen opslaan in een sleutel kluis](devtest-lab-store-secrets-in-key-vault.md)voor meer informatie. Als u het wacht woord wilt gebruiken dat is opgeslagen in de sleutel kluis, selecteert u **een opgeslagen geheim gebruiken**en geeft u een sleutel waarde op die overeenkomt met uw geheim (wacht woord).
+    4. Selecteer in het gedeelte **meer opties** de optie **grootte wijzigen**. Selecteer een van de vooraf gedefinieerde items waarmee de processor kernen, de RAM-grootte en de grootte van de harde schijf van de virtuele machine worden opgegeven die u wilt maken.
+    5. Selecteer **artefacten toevoegen of verwijderen**. Selecteer en configureer de artefacten die u wilt toevoegen aan de basis installatie kopie.
+    **Opmerking:** Als u geen ervaring hebt met DevTest Labs of als u artefacten configureert, raadpleegt u de sectie [een bestaand artefact toevoegen aan een VM](./devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm) en vervolgens keert u terug wanneer u klaar bent.
+2. Ga bovenaan naar het tabblad **Geavanceerde instellingen** en voer de volgende acties uit:
+    1. Als u het virtuele netwerk wilt wijzigen waarin de VM zich bevindt, selecteert u **VNet wijzigen**.
+    2. Als u het subnet wilt wijzigen, selecteert u **subnet wijzigen**.
+    3. Geef op of het IP-adres van de virtuele machine **openbaar, privé of gedeeld**is.
+    4. Als u de virtuele machine automatisch wilt verwijderen, geeft u de **verval datum en-tijd**op.
+    5. Als u de VM wilt claimen door een test gebruiker, selecteert u **Ja** om **deze computer claimbaar te maken** .
+    6. Geef het aantal **exemplaren van de virtuele machine** op dat u beschikbaar wilt maken voor uw Lab-gebruikers.
+3. Selecteer **maken** om de opgegeven virtuele machine toe te voegen aan het lab.
 
-   De pagina lab geeft de status van het maken van de VM - eerst als **maken**, klikt u vervolgens als **met** als de virtuele machine al is gestart.
+   Op de pagina Lab wordt de status van het maken van de virtuele machine weer gegeven: eerst als **Er wordt gemaakt**en vervolgens **uitgevoerd** nadat de virtuele machine is gestart.
 
 > [!NOTE]
-> Als u een lab-virtuele machines via implementeert [Azure Resource Manager-sjablonen](devtest-lab-create-environment-from-arm.md), kunt u claimbare virtuele machines maken door in te stellen de **allowClaim** eigenschap op ' True ' in de sectie met eigenschappen.
+> Als u Lab-Vm's implementeert via [Azure Resource Manager sjablonen](devtest-lab-create-environment-from-arm.md), kunt u claim bare vm's maken door de eigenschap **allowClaim** in te stellen op waar in de sectie eigenschappen.
 
 
-## <a name="using-a-claimable-vm"></a>Met behulp van een claimbare virtuele machine
+## <a name="using-a-claimable-vm"></a>Een claim bare VM gebruiken
 
-Een gebruiker kan een virtuele machine in de lijst 'Claimbare virtuele machines' claim op een van deze stappen:
+Een gebruiker kan een van de volgende stappen uitvoeren om een wille keurige VM te claimen vanuit de lijst met ' claim bare virtuele machines ':
 
-* In de lijst met 'Claimbare virtuele machines' aan de onderkant van van het lab "Overview" deelvenster, met de rechtermuisknop op een van de virtuele machines in de lijst en kies **Claim machine**.
+* Klik met de rechter muisknop op een van de virtuele machines in de lijst onder aan het deel venster Overzicht van de lijst met bewering bare Vm's en kies **computer claimen**.
 
-  ![Vragen om een specifieke claimbare virtuele machine.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
-
-
-* Kies aan de bovenkant van het deelvenster 'Overzicht' **een Claim**. Een willekeurige virtuele machine wordt toegewezen uit de lijst met claimbare virtuele machines.
-
-  ![Vragen om alle claimbare virtuele machines.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Vraag een specifieke claim bare VM aan.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
-Nadat een gebruiker claims van een virtuele machine, wordt verplaatst van in de lijst met 'Mijn virtuele machines' en is niet langer claimbare door een andere gebruiker.
+* Kies aan de bovenkant van het deel venster Overzicht de optie **claim elke**. Een wille keurige virtuele machine wordt toegewezen uit de lijst met claim bare Vm's.
 
-## <a name="unclaim-a-vm"></a>Aanvrager van een virtuele machine
+  ![Een claim bare VM aanvragen.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
-Wanneer een gebruiker klaar is met een geclaimde virtuele machine en het beschikbaar maken voor iemand anders wil, kunnen ze de geclaimde VM terugkeren naar de lijst van claimbare virtuele machines op een van deze stappen:
 
-- In de lijst 'Mijn virtuele machines', met de rechtermuisknop op een van de virtuele machines in de lijst met – of Selecteer het weglatingsteken (...) – en kies **Unclaim**.
+Nadat een gebruiker een virtuele machine heeft geclaimd, wordt de machine door DevTest Labs gestart en wordt deze in de lijst met ' mijn virtuele machines ' van de test gebruiker geplaatst. Dit betekent dat de test gebruiker nu eigenaar privilegdes op deze mahcine heeft. De tijd die nodig is voor deze stap kan variëren, afhankelijk van de opstart tijd en eventuele andere aangepaste acties die worden uitgevoerd tijdens de claim gebeurtenis. Zodra de computer is geclaimd, is deze niet meer beschikbaar in de claim bare groep.  
 
-  ![Aanvrager van een virtuele machine in de lijst met virtuele machine.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
+## <a name="unclaim-a-vm"></a>De claim van een virtuele machine ongedaan maken
 
-- Selecteer een virtuele machine naar het deelvenster beheer openen en selecteer vervolgens in de lijst 'Mijn virtuele machines', **Unclaim** in de bovenste menubalk.
+Wanneer een gebruiker klaar is met een geclaimde virtuele machine en deze beschikbaar wil maken voor iemand anders, kunnen ze de geclaimde VM retour neren naar de lijst met claim bare virtuele machines door een van de volgende stappen uit te voeren:
 
-  ![Aanvrager van een virtuele machine in het deelvenster van de VM-beheer.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
+- Klik in de lijst met ' mijn virtuele machines ' met de rechter muisknop op een van de Vm's in de lijst. u kunt ook het weglatings teken (...) selecteren en vervolgens **unclaim**kiezen.
 
-Wanneer een gebruiker een virtuele machine unclaims, hebben ze niet meer machtigingen voor die specifieke lab-VM.
+  ![Maak een virtuele machine in de lijst met virtuele machines op.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM2.png)
 
-### <a name="transferring-the-data-disk"></a>Overdracht van de gegevensschijf
-Als een claimbare virtuele machine heeft een gegevensschijf die is gekoppeld aan een gebruiker en het unclaims, de gegevensschijf blijft van toepassing op de virtuele machine. Wanneer claims een andere gebruiker vervolgens dat de virtuele machine, die nieuwe gebruiker claims de gegevensschijf, evenals de virtuele machine.
+- Selecteer in de lijst met mijn virtuele machines een virtuele machine om het deel venster beheer te openen en selecteer vervolgens **claim** vrijmaken in de bovenste menu balk.
 
-Dit staat bekend als 'overdragen van de gegevensschijf'. De gegevensschijf wordt vervolgens beschikbaar in de lijst met de nieuwe gebruiker **Moje datové disky** kunnen beheren.
+  ![Maak een virtuele machine in het beheer deel venster van de virtuele machine vrij.](./media/devtest-lab-add-vm/devtestlab-unclaim-VM.png)
 
-![Aanvrager gegevensschijven.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
+Wanneer een gebruiker een virtuele machine uitgeeft, hebben ze geen eigenaars machtigingen meer voor die specifieke Lab-VM en is deze beschikbaar om te worden geclaimd door een andere Lab-gebruiker in de staat dat deze is retured aan de groep. 
+
+### <a name="transferring-the-data-disk"></a>De gegevens schijf overdragen
+Als er aan een claim bare virtuele machine een gegevens schijf is gekoppeld en een gebruiker deze vrijgeeft, blijft de gegevens schijf bij de virtuele machine. Wanneer een andere gebruiker vervolgens die virtuele machine aanmeldt, claimt die nieuwe gebruiker de gegevens schijf en de virtuele machine.
+
+Dit wordt ook wel ' de gegevens schijf overdragen ' genoemd. De gegevens schijf wordt vervolgens beschikbaar in de lijst met **mijn gegevens schijven** van de nieuwe gebruiker zodat deze kan worden beheerd.
+
+![Gegevens schijven inwinnen.](./media/devtest-lab-add-vm/devtestlab-unclaim-datadisks.png)
 
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zodra deze is gemaakt, kunt u verbinding met de virtuele machine met selecteren **Connect** in het deelvenster Beheer.
-* Verken de [DevTest Labs Azure Resource Manager-sjabloon snelstartgalerie](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates).
+* Zodra de VM is gemaakt, kunt u verbinding maken met de virtuele machine door **verbinding maken** te selecteren in het deel venster beheer.
+* Verken de [DevTest Labs Azure Resource Manager-sjabloon galerie voor Quick](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)start.

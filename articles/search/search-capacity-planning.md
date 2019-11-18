@@ -1,5 +1,5 @@
 ---
-title: Partities en replica's schalen om capaciteit toe te voegen voor de werk belasting van query's en indexen
+title: Schaal capaciteit voor werk belastingen voor query's en indexen
 titleSuffix: Azure Cognitive Search
 description: Pas de resources van de partitie en de replica computer aan in azure Cognitive Search, waarbij elke resource wordt geprijsd in factureer bare Zoek eenheden.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8613ddc668df338c4f96a9d37f32120718513925
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 4020a40b87c32bdbd07e390a0d04769cb3d47f7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792508"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112125"
 ---
 # <a name="scale-up-partitions-and-replicas-to-add-capacity-for-query-and-index-workloads-in-azure-cognitive-search"></a>Partities en replica's schalen om capaciteit toe te voegen voor de werk belasting van query's en indexen in azure Cognitive Search
 
@@ -29,10 +29,10 @@ Als u minder SUs-resultaten gebruikt, wordt er een proportionele lagere factuur 
 ## <a name="terminology-replicas-and-partitions"></a>Terminologie: replica's en partities
 Replica's en partities zijn de primaire resources die back-ups maken van een zoek service.
 
-| Bron | Definitie |
+| Resource | Definitie |
 |----------|------------|
 |*Partities* | Biedt index opslag en I/O voor lees-en schrijf bewerkingen (bijvoorbeeld bij het opnieuw samen stellen of vernieuwen van een index).|
-|*Replica's* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica fungeert altijd als host voor één exemplaar van een index. Als u 12 replica's hebt, hebt u 12 kopieën van elke index die in de service is geladen.|
+|*Replicas* | Exemplaren van de zoek service, worden voornamelijk gebruikt voor taak verdeling van query bewerkingen. Elke replica fungeert altijd als host voor één exemplaar van een index. Als u 12 replica's hebt, hebt u 12 kopieën van elke index die in de service is geladen.|
 
 > [!NOTE]
 > Het is niet mogelijk om rechtstreeks te manipuleren of te beheren welke indexen worden uitgevoerd op een replica. Eén exemplaar van elke index op elke replica maakt deel uit van de service architectuur.
@@ -89,10 +89,10 @@ Alle standaard-en opslag geoptimaliseerde zoek services kunnen de volgende combi
 | **1 replica** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replica's** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replica's** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replica's** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 replica's** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
-| **6 replica's** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
-| **12 replica's** |12 SU |24 SU |36 SU |N/A |N/A |N/A |
+| **4 replica's** |4 SU |8 SU |12 SU |16 SU |24 SU |N.v.t. |
+| **5 replica's** |5 SU |10 SU |15 SU |20 SU |30 SU |N.v.t. |
+| **6 replica's** |6 SU |12 SU |18 SU |24 SU |36 SU |N.v.t. |
+| **12 replica's** |12 SU |24 SU |36 SU |N.v.t. |N.v.t. |N.v.t. |
 
 SUs, prijzen en capaciteit worden gedetailleerd beschreven op de Azure-website. Zie [prijs informatie](https://azure.microsoft.com/pricing/details/search/)voor meer informatie.
 

@@ -1,5 +1,5 @@
 ---
-title: Voer een upgrade uit naar de nieuwste versie van de Azure Cognitive Search-service REST API
+title: REST API versies bijwerken
 titleSuffix: Azure Cognitive Search
 description: Bekijk de verschillen in API-versies en ontdek welke acties vereist zijn voor het migreren van bestaande code naar de nieuwste versie van de Azure Cognitive Search-service REST API.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: a9bffb41cce030b7a63e600e5ffaf65130261b4c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: edb45eebc2c4eacc2f30d13988943f097a7190fa
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791162"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112164"
 ---
 # <a name="upgrade-to-the-latest-azure-cognitive-search-service-rest-api-version"></a>Voer een upgrade uit naar de nieuwste versie van de Azure Cognitive Search-service REST API
 

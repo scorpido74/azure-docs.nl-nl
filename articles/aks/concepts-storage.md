@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: fb15063e41e83b4c9a9f2e01b6ad18c8afed7f5f
-ms.sourcegitcommit: d060947aae93728169b035fd54beef044dbe9480
+ms.openlocfilehash: 70272413ef4952cfeed558dd313f12096204d569
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68740993"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74120489"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opslag opties voor toepassingen in azure Kubernetes service (AKS)
 
@@ -33,7 +33,7 @@ Toepassingen moeten vaak gegevens kunnen opslaan en ophalen. Net als Kubernetes 
 
 Traditionele volumes voor het opslaan en ophalen van gegevens worden gemaakt als Kubernetes bronnen die door Azure Storage worden ondersteund. U kunt deze gegevens volumes hand matig maken en deze rechtstreeks aan een Peul toewijzen, of Kubernetes automatisch laten maken. Deze gegevens volumes kunnen gebruikmaken van Azure-schijven of Azure Files:
 
-- *Azure-schijven* kunnen worden gebruikt om een Kubernetes *DataDisk* -resource te maken. Schijven kunnen gebruikmaken van Azure Premium Storage, ondersteund door Ssd's met hoge prestaties of Azure Standard-opslag, ondersteund door gewone Hdd's. Voor de meeste werk belastingen voor productie en ontwikkeling gebruikt u Premium Storage. Azure-schijven zijn gekoppeld als *ReadWriteOnce*, dus zijn alleen beschikbaar voor één knoop punt. Gebruik Azure Files voor opslag volumes die gelijktijdig kunnen worden gebruikt door meerdere knoop punten.
+- *Azure-schijven* kunnen worden gebruikt om een Kubernetes *DataDisk* -resource te maken. Schijven kunnen gebruikmaken van Azure Premium Storage, ondersteund door Ssd's met hoge prestaties of Azure Standard-opslag, ondersteund door gewone Hdd's. Voor de meeste werk belastingen voor productie en ontwikkeling gebruikt u Premium Storage. Azure-schijven zijn gekoppeld als *ReadWriteOnce*, dus zijn alleen beschikbaar voor één pod. Gebruik Azure Files voor opslag volumes die gelijktijdig toegankelijk zijn voor meerdere peulen.
 - *Azure files* kan worden gebruikt om een SMB 3,0-share die wordt ondersteund door een Azure Storage-account, te koppelen aan het gehele volume. Met bestanden kunt u gegevens delen op meerdere knoop punten en een Peul. Bestanden kunnen Azure Standard-opslag gebruiken die wordt ondersteund door gewone Hdd's of Azure Premium Storage, ondersteund door Ssd's met hoge prestaties.
 > [!NOTE] 
 > Azure Files Premium-opslag wordt ondersteund in AKS-clusters met Kubernetes 1,13 of hoger.
@@ -63,7 +63,7 @@ In AKS worden twee initiële StorageClasses gemaakt:
 - *standaard* : maakt gebruik van Azure Standard-opslag voor het maken van een beheerde schijf. Het beleid voor opnieuw claim geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer de pod die deze gebruikt, wordt verwijderd.
 - *Managed-Premium* : maakt gebruik van Azure Premium Storage voor het maken van een beheerde schijf. Het beleid voor opnieuw claimen geeft aan dat de onderliggende Azure-schijf wordt verwijderd wanneer de pod die deze gebruikt, wordt verwijderd.
 
-Als er geen StorageClass is opgegeven voor een permanent volume, wordt de standaard StorageClass gebruikt. Wees voorzichtig bij het aanvragen van permanente volumes, zodat ze de juiste opslag gebruiken die u nodig hebt. U kunt een StorageClass maken voor extra behoeften met `kubectl`. In het volgende voor beeld wordt Premium Managed Disks gebruikt en wordt aangegeven dat de onderliggende Azure-schijf *behouden moet blijven* wanneer de Pod wordt verwijderd:
+Als er geen StorageClass is opgegeven voor een permanent volume, wordt de standaard StorageClass gebruikt. Wees voorzichtig bij het aanvragen van permanente volumes, zodat ze de juiste opslag gebruiken die u nodig hebt. U kunt een StorageClass maken voor extra behoeften met behulp van `kubectl`. In het volgende voor beeld wordt Premium Managed Disks gebruikt en wordt aangegeven dat de onderliggende Azure-schijf *behouden moet blijven* wanneer de Pod wordt verwijderd:
 
 ```yaml
 kind: StorageClass

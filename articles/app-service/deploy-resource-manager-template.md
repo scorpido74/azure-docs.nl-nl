@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 196aeb69a1948a44afb8170fa5f48d42b978854d
-ms.sourcegitcommit: 82499878a3d2a33a02a751d6e6e3800adbfa8c13
+ms.openlocfilehash: 2af3ec61537dc28ab652b669ff46500db19ab307
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70070458"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74130606"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Richt lijnen voor het implementeren van web-apps met behulp van Azure Resource Manager sjablonen
 
@@ -46,7 +46,7 @@ U implementeert resources in de volgende volg orde:
 **Tier 3**
 * Broncode beheer: is afhankelijk van de web-app.
 * Site-uitbrei ding MSDeploy--is afhankelijk van de web-app.
-* Application Insights exemplaar dat de server farm bedoelt, is afhankelijk van de web-app.
+* Azure-toepassing Insights-exemplaar dat de web-app bedoelt, is afhankelijk van de web-app.
 
 **Tier 4**
 * App Service certificaat: afhankelijk van broncode beheer of MSDeploy, indien aanwezig. Anders is dit afhankelijk van de web-app.
@@ -87,7 +87,7 @@ In het volgende voor beeld ziet u een deel van een sjabloon. De waarde van de co
 }
 ```
 
-Zie [voor een kant-en-klaar voor beeld dat gebruikmaakt van de bovenstaande code sjabloon: Bouw een eenvoudige Umbraco-web](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple)-app.
+Zie voor een kant-en-klaar voor beeld dat gebruikmaakt van de bovenstaande code [sjabloon: een eenvoudige Umbraco-web-app bouwen](https://github.com/Azure/azure-quickstart-templates/tree/master/umbraco-webapp-simple).
 
 ## <a name="find-information-about-msdeploy-errors"></a>Informatie over MSDeploy-fouten zoeken
 
@@ -132,7 +132,7 @@ Selecteer in uw Key Vault **certificaten** en **genereren/importeren** om het ce
 
 ![Certificaat importeren](media/web-sites-rm-template-guidance/import-certificate.png)
 
-Geef in uw sjabloon de naam op van het certificaat voor `keyVaultSecretName`.
+Geef in uw sjabloon de naam op van het certificaat voor de `keyVaultSecretName`.
 
 Zie [een web-app-certificaat implementeren vanuit Key Vault Secret en dit gebruiken voor het maken van SSL-binding](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-certificate-from-key-vault)voor een voorbeeld sjabloon.
 

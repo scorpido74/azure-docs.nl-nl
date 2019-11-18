@@ -2,13 +2,13 @@
 title: Overzicht van Azure Management-Azure governance
 description: Overzicht van de gebieden van beheer voor Azure-toepassingen en bronnen met koppelingen naar inhoud op Azure-beheerhulpprogramma's.
 ms.date: 12/06/2018
-ms.topic: article
-ms.openlocfilehash: e85d5162146fb716ed9f846dc5a828d83c669627
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.topic: overview
+ms.openlocfilehash: f91e439a5fb7c330fb29d300e83779083641875b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013910"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132841"
 ---
 # <a name="overview-of-management-services-in-azure"></a>Overzicht van beheer Services in azure
 
@@ -42,7 +42,7 @@ Governance in Azure wordt hoofdzakelijk geïmplementeerd via twee services. [Azu
 
 De beveiliging van uw resources en -gegevens beheren. Een beveiligingsprogramma omvat het beoordelen van bedreigingen, verzamelen en analyseren van gegevens en naleving van uw toepassingen en resources. Beveiligingsanalyse beveiligingsbewaking en bedreigingsanalyse worden geleverd door [Azure Security Center](../security-center/security-center-intro.md), dat ook geïntegreerd beveiligingsbeheer en geavanceerde bedreigingsbeveiliging voor hybride cloudworkloads. Zie [Inleiding tot Azure-beveiliging](../security/fundamentals/overview.md) voor uitgebreide informatie over en richtlijnen voor het beveiligen van Azure-resources.
 
-## <a name="protect"></a>Beschermen
+## <a name="protect"></a>beveiligen
 
 Beveiliging verwijst naar het houden van uw toepassingen en gegevens beschikbaar, zelfs bij storingen die buiten het besturingselement. Bescherming in Azure wordt door twee services geboden. [Azure Backup](../backup/backup-introduction-to-azure-backup.md) biedt back-ups en herstel van uw gegevens in de cloud of on-premises. [Azure Site Recovery](../site-recovery/site-recovery-overview.md) zorgt voor bedrijfscontinuïteit en onmiddellijk herstel tijdens een noodgeval.
 

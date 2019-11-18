@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 087f1d76aaab4b05425262e0c1fb87b168c99b95
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: bc4a64985d19daf9d2f6bb86b6cfb4814f141e4b
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931220"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74152053"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-linux"></a>Snelstartgids: een mogelijkheidsprofiel gebruiken voor het maken van een IoT Plug en Play preview-apparaat (Linux)
 
@@ -57,7 +57,7 @@ Als u zich aanmeldt met een micro soft-werk-of school account, of uw micro soft-
 
 ## <a name="prepare-an-iot-hub"></a>Een IoT-hub voorbereiden
 
-U hebt ook een Azure IoT hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. Als u geen IoT hub hebt, zijn er stappen die hieronder worden gemaakt.
+U hebt ook een Azure IoT hub in uw Azure-abonnement nodig om deze Quick Start te volt ooien. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. Als u nog geen IoT-hub hebt om te gebruiken, volgt u de rest van deze sectie om er een te maken.
 
 Als u de Azure CLI lokaal gebruikt, moet de `az` versie **2.0.75** of hoger zijn, de Azure Cloud Shell maakt gebruik van de nieuwste versie. Gebruik de `az --version` opdracht om de versie te controleren die op uw computer is geïnstalleerd.
 
@@ -82,13 +82,13 @@ Met de vorige opdrachten maakt u een resource groep met de naam `pnpquickstarts_
 > [!IMPORTANT]
 > Tijdens de open bare preview zijn IoT-Plug en Play-functies alleen beschikbaar voor IoT-hubs die zijn gemaakt in de regio's **VS-centraal**, **Europa-Noord**en **Japan-Oost** .
 
-Voer de volgende opdracht uit om een apparaat-id in uw IoT-hub te maken. Vervang de tijdelijke aanduidingen **YourIoTHubName** en **YourDevice** door uw werkelijke namen.
+Voer de volgende opdracht uit om een apparaat-id in uw IoT-hub te maken. Vervang de tijdelijke aanduidingen **YourIoTHubName** en **YourDeviceID** door uw eigen _IOT hub naam_ en de _apparaat-id_ van uw keuze.
 
 ```azurecli-interactive
-az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDevice>
+az iot hub device-identity create --hub-name <YourIoTHubName> --device-id <YourDeviceID>
 ```
 
-Voer de volgende opdrachten uit om de _apparaat-Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd.
+Voer de volgende opdrachten uit om de _apparaat-Connection String_ op te halen voor het apparaat dat u zojuist hebt geregistreerd (Houd er rekening mee voor later gebruik).
 
 ```azurecli-interactive
 az iot hub device-identity show-connection-string --hub-name <YourIoTHubName> --device-id <YourDevice> --output table
@@ -173,7 +173,7 @@ U gebruikt de SDK-bron code van het apparaat om de gegenereerde stub voor de app
 
     ```sh
     cd ~/pnp_app/sample_device/cmake
-    ./sample_device "<device connection string>"
+    ./sample_device "<YourDeviceConnectionString>"
     ```
 
 1. De toepassing wordt gestart met het verzenden van gegevens naar IoT Hub.
@@ -213,8 +213,9 @@ az iot dt monitor-events --hub-name <YourIoTHubNme> --device-id <YourDevice>
 Gebruik de volgende opdracht om alle eigenschappen weer te geven die zijn verzonden door het apparaat:
 
 ```azurecli-interactive
-az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<Your company model repository connection string>"
+az iot dt list-properties --device-id <YourDevice> --hub-name <YourIoTHubNme> --source private --repo-login "<YourCompanyModelRepositoryConnectionString>"
 ```
+[!INCLUDE [iot-pnp-clean-resources.md](../../includes/iot-pnp-clean-resources.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
 

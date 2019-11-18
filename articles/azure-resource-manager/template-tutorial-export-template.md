@@ -1,19 +1,16 @@
 ---
-title: 'Zelf studie: Azure Resource Manager sjabloon vanuit de Azure Portal exporteren'
+title: 'Zelf studie: sjabloon exporteren uit de Azure Portal'
 description: Meer informatie over het gebruik van een geëxporteerde sjabloon om de ontwikkeling van uw sjabloon te volt ooien.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6e4f246cac0ecc1ab5942e522595f59c3625db8f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 6dae5d494ac71ace41586e89de5aab745962cc90
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243214"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147917"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Zelf studie: geëxporteerde sjabloon uit het Azure Portal gebruiken
 
@@ -35,7 +32,7 @@ Deze sjabloon werkt goed voor het implementeren van opslag accounts, maar mogeli
 
 ## <a name="create-app-service-plan"></a>Een App Service-plan maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **Een resource maken**.
 1. In **de Marketplace doorzoeken**voert u **app service plan**in en selecteert u vervolgens **app service plan**.  Selecteer geen **app service plan (klassiek)**
 1. Selecteer **Maken**.
@@ -98,7 +95,7 @@ New-AzResourceGroupDeployment `
   -storageSKU Standard_LRS
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli
 az group deployment create \
@@ -114,7 +111,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. De resource groep bevat een opslag account en een App Service plan.

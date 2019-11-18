@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/29/2019
-ms.openlocfilehash: ad9ec8e97827fb6158476165a610c9d69b12a528
-ms.sourcegitcommit: 3486e2d4eb02d06475f26fbdc321e8f5090a7fac
+ms.openlocfilehash: 124d5586180258589c5db17454b8fbf1e465fc24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73241165"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106484"
 ---
 # <a name="apache-spark-job-fails-with-invalidclassexception-class-version-mismatch-in-azure-hdinsight"></a>Apache Spark taak mislukt met InvalidClassException, niet-overeenkomende klasse versies in azure HDInsight
 
@@ -34,9 +34,12 @@ org.apache.commons.lang3.time.FastDateFormat; local class incompatible: stream c
 
 ## <a name="cause"></a>Oorzaak
 
-Deze fout kan worden veroorzaakt door een extra jar toe te voegen aan de `spark.yarn.jars` config. Dit is een ' gearceerd ' jar met een andere versie van `commons-lang3` pakket en introduceert een niet-overeenkomende klasse. Spark 2.1/2/3 maakt standaard gebruik van versie 3,5 van `commons-lang3`.
+Deze fout kan worden veroorzaakt door een extra jar toe te voegen aan de `spark.yarn.jars` config, met name een geschakeerd jar met een andere versie van het `commons-lang3`-pakket en introduceert een niet-overeenkomende klasse. Spark 2.1/2/3 maakt standaard gebruik van versie 3,5 van `commons-lang3`.
 
-## <a name="resolution"></a>Resolutie
+> [!TIP]
+> Als u een bibliotheek wilt arceren, moet u de inhoud ervan in uw eigen jar plaatsen, waardoor het pakket wordt gewijzigd. Dit verschilt van het verpakken van de bibliotheek, die de bibliotheek in uw eigen jar plaatst zonder opnieuw te verpakken.
+
+## <a name="resolution"></a>Oplossing
 
 Verwijder het JAR of compileer het aangepaste JAR opnieuw (AzureLogAppender) en gebruik [maven-Shade-invoeg toepassing](https://maven.apache.org/plugins/maven-shade-plugin/examples/class-relocation.html) om klassen te verplaatsen.
 
@@ -48,4 +51,4 @@ Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u na
 
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport) -het officiële Microsoft Azure account voor het verbeteren van de gebruikers ervaring door de Azure-community te verbinden met de juiste resources: antwoorden, ondersteuning en experts.
 
-* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Lees voor meer gedetailleerde informatie [hoe u een ondersteunings aanvraag voor Azure maakt](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). De toegang tot abonnementen voor abonnements beheer en facturering is inbegrepen bij uw Microsoft Azure-abonnement en technische ondersteuning wordt geleverd via een van de [ondersteunings abonnementen voor Azure](https://azure.microsoft.com/support/plans/).
+* Als u meer hulp nodig hebt, kunt u een ondersteunings aanvraag indienen via de [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Selecteer **ondersteuning** in de menu balk of open de hub **Help en ondersteuning** . Zie [Een ondersteuningsaanvraag maken voor Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) voor meer informatie. Toegang tot abonnementsbeheer en factuurbeheer is in uw Microsoft Azure-abonnement inbegrepen, en technische ondersteuning wordt verstrekt via een van de [Azure-ondersteuningsplannen](https://azure.microsoft.com/support/plans/).

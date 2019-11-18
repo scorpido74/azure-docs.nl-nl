@@ -1,24 +1,16 @@
 ---
-title: Gekoppelde Azure Resource Manager-sjablonen maken | Microsoft Docs
+title: Gekoppelde sjablonen maken
 description: Informatie over het maken van gekoppelde Azure Resource Manager-sjablonen voor het maken van een virtuele machine
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: dougeby
-editor: tysonn
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 869e59aea9b78c44b1a920e58ecefab5e0ca4920
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 7caae8f749cf89832740f9b5f71f6a8931a835c9
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169416"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149315"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Zelfstudie: Azure Resource Manager-sjablonen maken
 
@@ -69,7 +61,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Selecteer **Openen** om het bestand te openen.
-4. Er worden vijf resources gedefinieerd met de sjabloon:
+4. Er worden vijf resources gedefinieerd door de sjabloon:
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
    * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
@@ -83,7 +75,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
 
 ## <a name="create-the-linked-template"></a>De gekoppelde sjabloon maken
 
-De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worden gebruikt als een zelfstandige sjabloon voor het maken van een opslag account. In deze zelf studie heeft de gekoppelde sjabloon twee para meters en wordt er een waarde weer gegeven in de hoofd sjabloon. Deze return-waarde is gedefinieerd in het element `outputs`.
+De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worden gebruikt als een zelfstandige sjabloon voor het maken van een opslag account. In deze zelf studie heeft de gekoppelde sjabloon twee para meters en wordt er een waarde weer gegeven in de hoofd sjabloon. Deze return-waarde is gedefinieerd in het `outputs`-element.
 
 1. Open **linkedTemplate. json** in Visual Studio code als het bestand niet wordt geopend.
 2. Breng de volgende wijzigingen aan:

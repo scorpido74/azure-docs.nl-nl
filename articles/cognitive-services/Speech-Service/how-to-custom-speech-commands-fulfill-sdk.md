@@ -1,5 +1,5 @@
 ---
-title: 'Procedure: aangepaste opdrachten op de client uitvoeren met de Speech-SDK (preview)'
+title: Aangepaste opdrachten op de client uitvoeren met de Speech SDK
 titleSuffix: Azure Cognitive Services
 description: In dit artikel worden de activiteiten voor aangepaste opdrachten op de client verwerkt met de Speech SDK
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: a986da74a668075457e28a9a37b6a11fd04a84e4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2da8ef2c29bd6afdaf49e000bf964d119f1e99f1
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507020"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74110069"
 ---
 # <a name="how-to-fulfill-commands-on-the-client-with-the-speech-sdk-preview"></a>Procedure: opdrachten op de client uitvoeren met de Speech-SDK (preview)
 
@@ -30,11 +30,11 @@ In dit artikel voert u de volgende handelingen uit:
 
 - [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 - Een Azure-abonnements sleutel voor spraak Services
-   - [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
+  - [Ontvang een gratis versie](get-started.md) of maak deze op de [Azure Portal](https://portal.azure.com)
 - Een eerder gemaakte aangepaste opdrachten-app
-   - [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
+  - [Snelstartgids: een aangepaste opdracht maken met para meters (preview)](./quickstart-custom-speech-commands-create-parameters.md)
 - Een Speech SDK met ingeschakelde client toepassing
-   - [Quick Start: verbinding maken met een aangepaste opdracht toepassing met de spraak-SDK (preview)](./quickstart-custom-speech-commands-speech-sdk.md)
+  - [Quick Start: verbinding maken met een aangepaste opdracht toepassing met de spraak-SDK (preview)](./quickstart-custom-speech-commands-speech-sdk.md)
 
 ## <a name="optional-get-started-fast"></a>Optioneel: snel aan de slag
 
@@ -45,14 +45,15 @@ In dit artikel wordt stapsgewijs beschreven hoe u een client toepassing kunt mak
 1. Open de eerder gemaakte toepassing voor aangepaste opdrachten vanuit de [Speech Studio](https://speech.microsoft.com/)
 1. Controleer de sectie **voltooiings regels** om ervoor te zorgen dat u de eerder gemaakte regel hebt die terugkeert naar de gebruiker
 1. Als u een Payload rechtstreeks naar de client wilt verzenden, maakt u een nieuwe regel met de actie activiteit verzenden
+
    > [!div class="mx-imgBorder"]
    > ![de voltooiings regel voor het verzenden van de activiteit](media/custom-speech-commands/fulfill-sdk-completion-rule.png)
 
-   | Instelling    | Voorgestelde waarde                                  | Beschrijving                                        |
-   | ---------- | ------------------------------------------------ | -------------------------------------------------- |
-   | Regelnaam  | UpdateDeviceState                                | Een naam die het doel van de regel beschrijft          |
-   | Voorwaarden | Vereiste para meter-`OnOff` en `SubjectDevice` | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd    |
-   | Acties    | `SendActivity` (zie hieronder)                        | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
+   | Instelling | Voorgestelde waarde | Beschrijving |
+   | ------- | --------------- | ----------- |
+   | Regelnaam | UpdateDeviceState | Een naam die het doel van de regel beschrijft |
+   | Voorwaarden | Vereiste para meter-`OnOff` en `SubjectDevice` | Voor waarden die bepalen wanneer de regel kan worden uitgevoerd |
+   | Acties | `SendActivity` (zie hieronder) | De actie die moet worden uitgevoerd wanneer de regel voorwaarde waar is |
 
    > [!div class="mx-imgBorder"]
    > ![payload van activiteit verzenden](media/custom-speech-commands/fulfill-sdk-send-activity-action.png)
@@ -139,6 +140,6 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. De visuele status van de TV moet worden gewijzigd in aan
 
 ## <a name="next-steps"></a>Volgende stappen
+
 > [!div class="nextstepaction"]
 > [Procedure: validaties toevoegen aan aangepaste opdracht parameters (preview-versie)](./how-to-custom-speech-commands-validations.md)
-

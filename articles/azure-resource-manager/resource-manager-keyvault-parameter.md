@@ -1,17 +1,14 @@
 ---
-title: Key Vault geheim met Azure Resource Manager sjabloon | Microsoft Docs
+title: Geheim Key Vault met sjabloon
 description: Laat zien hoe u tijdens de implementatie een geheim kunt door geven van een sleutel kluis als een para meter.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 05/09/2019
-ms.author: tomfitz
-ms.openlocfilehash: 489b09d2523393ae67668ed13c651c9b7b0217b4
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 37d21e295eca2b40e91f92d65d6e927ee6857d0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70998890"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149488"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Azure Key Vault gebruiken om een beveiligde parameter waarde door te geven tijdens de implementatie
 
@@ -19,7 +16,7 @@ In plaats van een beveiligde waarde (zoals een wacht woord) rechtstreeks in uw s
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Sleutel kluizen en geheimen implementeren
 
-Als u toegang wilt krijgen tot een sleutel kluis tijdens `enabledForTemplateDeployment` het implementeren van de sjabloon `true`, stelt u de sleutel kluis in op.
+Als u toegang wilt krijgen tot een sleutel kluis tijdens het implementeren van de sjabloon, stelt u `enabledForTemplateDeployment` op de sleutel kluis in op `true`.
 
 De volgende Azure CLI-en Azure PowerShell-voor beelden laten zien hoe u de sleutel kluis maakt en een geheim toevoegt.
 
@@ -72,7 +69,7 @@ Zie voor meer informatie over het maken van sleutel kluizen en het toevoegen van
 
 ## <a name="grant-access-to-the-secrets"></a>Toegang verlenen tot de geheimen
 
-De gebruiker die de sjabloon implementeert, moet beschikken `Microsoft.KeyVault/vaults/deploy/action` over de machtiging voor het bereik van de resource groep en de sleutel kluis. De rollen [eigenaar](../role-based-access-control/built-in-roles.md#owner) en [Inzender](../role-based-access-control/built-in-roles.md#contributor) verlenen deze toegang. Als u de sleutel kluis hebt gemaakt, bent u de eigenaar, zodat u over de juiste machtigingen beschikt.
+De gebruiker die de sjabloon implementeert, moet over de machtiging `Microsoft.KeyVault/vaults/deploy/action` beschikken voor het bereik van de resource groep en de sleutel kluis. De rollen [eigenaar](../role-based-access-control/built-in-roles.md#owner) en [Inzender](../role-based-access-control/built-in-roles.md#contributor) verlenen deze toegang. Als u de sleutel kluis hebt gemaakt, bent u de eigenaar, zodat u over de juiste machtigingen beschikt.
 
 De volgende procedure laat zien hoe u een rol met de minimale machtiging maakt en hoe u de gebruiker toewijst
 
@@ -124,7 +121,7 @@ Met deze methode verwijst u naar de sleutel kluis in het parameter bestand, niet
 
 ![Diagram van de statische ID van de Resource Manager-sleutel kluis integratie](./media/resource-manager-keyvault-parameter/statickeyvault.png)
 
-[Zelfstudie: Azure Key Vault integreren in Resource Manager Sjabloonimlementatie](./resource-manager-tutorial-use-key-vault.md) gebruikt deze methode.
+[Zelf studie: Azure Key Vault integreren in Resource Manager Sjabloonimlementatie](./resource-manager-tutorial-use-key-vault.md) gebruikt deze methode.
 
 Met de volgende sjabloon wordt een SQL-Server geïmplementeerd met een beheerders wachtwoord. De wachtwoord parameter is ingesteld op een veilige teken reeks. Maar de sjabloon geeft niet op waar de waarde vandaan komt.
 
@@ -189,7 +186,7 @@ In het volgende parameter bestand moet het sleutel kluis geheim al bestaan en ku
 }
 ```
 
-Als u een andere versie van het geheim wilt gebruiken dan de huidige versie, gebruikt u de `secretVersion` eigenschap.
+Als u een andere versie van het geheim wilt gebruiken dan de huidige versie, gebruikt u de eigenschap `secretVersion`.
 
 ```json
 "secretName": "ExamplePassword",

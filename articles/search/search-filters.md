@@ -1,5 +1,5 @@
 ---
-title: Filters voor het bereik van zoek resultaten in een index
+title: Filteren op zoek resultaten
 titleSuffix: Azure Cognitive Search
 description: Filteren op beveiligings identiteit, taal, geografische locatie of numerieke waarden van de gebruiker om Zoek resultaten te verminderen voor query's in azure Cognitive Search, een gehoste service voor zoeken in de Cloud op Microsoft Azure.
 manager: nitinme
@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 7dd289005e91323010cfa2a0298c351b3e757d1d
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792861"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132923"
 ---
 # <a name="filters-in-azure-cognitive-search"></a>Filters in azure Cognitive Search 
 
 Een *filter* biedt criteria voor het selecteren van documenten die worden gebruikt in een Azure Cognitive search-query. Niet-gefilterde Zoek opdrachten bevatten alle documenten in de index. Een filter bereikt een zoek query op een subset van documenten. Een filter kan bijvoorbeeld de zoek opdracht in volledige tekst beperken tot alleen die producten met een specifiek merk of dezelfde kleur, tegen prijs punten boven een bepaalde drempel waarde.
 
-Bij sommige zoek functies worden filter vereisten opgelegd als onderdeel van de implementatie, maar u kunt filters op elk gewenst moment gebruiken om de zoek actie te beperken met behulp van *op waarden gebaseerde* criteria (met bereik zoeken naar product type "boeken" voor categorie "niet-fictief" gepubliceerd door " Simon & Schuster ").
+Bij sommige zoek functies worden filter vereisten opgelegd als onderdeel van de implementatie, maar u kunt filters op elk gewenst moment gebruiken om de zoek actie te beperken met criteria *op basis van waarden* (bereik zoeken naar product type "boeken" voor categorie "niet-fictief" gepubliceerd door "Simon & Schuster").
 
 Als uw doel in plaats daarvan gericht is op specifieke gegevens *structuren* (bereik zoeken naar een klant-beoordelingen veld), zijn er alternatieve methoden die hieronder worden beschreven.
 
@@ -157,7 +157,7 @@ Teken reeksen zijn hoofdletter gevoelig. Er bevindt zich geen kleine letters in 
 
 ### <a name="approaches-for-filtering-on-text"></a>Benaderingen voor het filteren op tekst
 
-| Hanter | Beschrijving | Wanneer gebruikt u dit? |
+| Methode | Beschrijving | Wanneer gebruikt u dit? |
 |----------|-------------|-------------|
 | [`search.in`](search-query-odata-search-in-function.md) | Een functie die overeenkomt met een veld in een gescheiden lijst met teken reeksen. | Aanbevolen voor [beveiligings filters](search-security-trimming-for-azure-search.md) en voor filters waarbij veel onbewerkte tekst waarden moeten overeenkomen met een teken reeks veld. De functie **Search.in** is ontworpen voor de snelheid en is veel sneller dan het veld expliciet vergelijken met elke teken reeks met behulp van `eq` en `or`. | 
 | [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Een functie waarmee u Zoek opdrachten in volledige tekst kunt combi neren met strikt Booleaanse filter bewerkingen in dezelfde filter-expressie. | Gebruik **Search. ismatch** (of het equivalente Score-item **Search. ismatchscoring**) als u meerdere zoek filter combinaties wilt gebruiken in één aanvraag. U kunt deze ook voor een *contains* -filter gebruiken om te filteren op een gedeeltelijke teken reeks binnen een grotere teken reeks. |

@@ -1,5 +1,5 @@
 ---
-title: Zoek opdracht Verkenner gebruiken voor het opvragen van gegevens in Azure Portal
+title: Query hulp programma voor zoeken in Verkenner in Azure Portal
 titleSuffix: Azure Cognitive Search
 description: Search Explorer is ingebouwd in de Azure Portal, handig voor het verkennen van inhoud en het valideren van query's in azure Cognitive Search. Voer teken reeksen in voor de term of woordgroepen zoeken, of volledig gekwalificeerde Zoek expressies met een geavanceerde syntaxis.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bb50bd50c58b85f1d5de100c34d00d114a9ed77
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: ff2986c4e90cb997df250d647bdfbd068d70e51f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792968"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112092"
 ---
 # <a name="use-search-explorer-in-the-azure-portal-for-querying-documents-in-azure-cognitive-search"></a>Zoek Verkenner gebruiken in de Azure Portal voor het opvragen van documenten in azure Cognitive Search 
 

@@ -1,19 +1,19 @@
 ---
-title: Facet navigatie implementeren in een categorie hiërarchie
+title: Een facet navigatie categorie hiërarchie toevoegen
 titleSuffix: Azure Cognitive Search
-description: Voeg facet navigatie toe aan toepassingen die worden geïntegreerd met Azure Cognitive Search, een in de Cloud gehoste zoek service op Microsoft Azure.
+description: Voeg facet navigatie toe voor Self-gerichte filters in zoek toepassingen die worden geïntegreerd met Azure Cognitive Search.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d10a049f7a4c7da7a75054acd442269adc74b948
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 927f57ae3ca90f5701791022b68c4bf0d91d4e7d
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73496521"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112078"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-cognitive-search"></a>Facet navigatie in azure Cognitive Search implementeren
 
@@ -70,7 +70,7 @@ Nauw keurigheid, gezien als de mogelijkheid om irrelevante treffers te filteren,
 -   **Search =**  
     De waarde van deze para meter vormt de zoek expressie. Het kan een enkel tekst fragment zijn of een complexe Zoek expressie die meerdere voor waarden en Opera tors bevat. Op de-server wordt een zoek expressie gebruikt voor Zoek opdrachten in volledige tekst, query's uitvoeren op Doorzoek bare velden in de index voor overeenkomende termen, waarbij resultaten worden geretourneerd in rang orde. Als u `search` instelt op NULL, heeft de uitvoering van de query de volledige index (dat wil zeggen `search=*`). In dit geval zijn andere elementen van de query, zoals een `$filter` of Score profiel, de primaire factoren die van invloed zijn op welke documenten worden geretourneerd `($filter`) en in welke volg orde (`scoringProfile` of `$orderby`).
 
--   **$filter =**  
+-   **$filter=**  
     Een filter is een krachtig mechanisme voor het beperken van de grootte van de zoek resultaten op basis van de waarden van specifieke document kenmerken. Een `$filter` wordt het eerst geëvalueerd, gevolgd door de facet logica die de beschik bare waarden en de bijbehorende aantallen voor elke waarde genereert
 
 Complexe Zoek expressies verminderen de prestaties van de query. Gebruik waar mogelijk goed opgebouwde filter expressies om de nauw keurigheid te verhogen en de query prestaties te verbeteren.
@@ -243,7 +243,7 @@ if (businessTitleFacet != "")
 
 <a name="tips"></a> 
 
-## <a name="tips-and-best-practices"></a>Tips en aanbevolen procedures
+## <a name="tips-and-best-practices"></a>Tips en best practices
 
 ### <a name="indexing-tips"></a>Indexerings tips
 **De efficiëntie van de index verbeteren als u geen zoekvak gebruikt**

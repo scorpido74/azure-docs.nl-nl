@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 812daaf42a987e9dd63bbc39b60c517d8f0cc761
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: af24a6b6d165ba60a0d88a4ddf74a4f18836e813
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882499"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111753"
 ---
 # <a name="get-started-with-azcopy"></a>Aan de slag met AzCopy
 
@@ -51,7 +51,7 @@ tar -xf azcopy.tar.gz
 
 Voor het gemak kunt u de maplocatie van het uitvoer bare bestand AzCopy toevoegen aan het systeempad om gebruiks gemak te gebruiken. Op die manier kunt u `azcopy` typen vanuit een wille keurige map op uw systeem.
 
-Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het uitvoer bare AzCopy-bestand. Typ `azcopy` of `.\azcopy` in Windows Power shell-opdracht prompts.
+Als u ervoor kiest om de AzCopy-map niet aan uw pad toe te voegen, moet u de mappen wijzigen op de locatie van het uitvoer bare AzCopy-bestand en typen `azcopy` of `.\azcopy` in Windows Power shell-opdracht prompts.
 
 Als u een lijst met opdrachten wilt zien, typt u `azcopy -h` en drukt u vervolgens op ENTER.
 
@@ -284,7 +284,7 @@ Voer de volgende opdracht uit om de koppeling te verkrijgen:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
 
 > [!NOTE]
-> Voor Linux, `--strip-components=1` in de `tar`-opdracht, wordt de map op het hoogste niveau met de versie naam verwijderd en wordt het binaire bestand in plaats daarvan rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door alleen de URL van de `wget` bij te werken.
+> Voor Linux wordt `--strip-components=1` op de `tar`-opdracht de map op het hoogste niveau met de versie naam verwijderd. in plaats daarvan wordt het binaire bestand rechtstreeks naar de huidige map geëxtraheerd. Hierdoor kan het script worden bijgewerkt met een nieuwe versie van `azcopy` door de `wget`-URL alleen bij te werken.
 
 De URL wordt weer gegeven in de uitvoer van deze opdracht. Uw script kan vervolgens AzCopy downloaden met behulp van deze URL.
 
@@ -305,16 +305,9 @@ Als u van plan bent [Jenkins](https://jenkins.io/) te gebruiken om scripts uit t
 /usr/bin/keyctl new_session
 ```
 
-## <a name="use-azcopy-in-storage-explorer"></a>AzCopy gebruiken in Storage Explorer
+## <a name="use-azcopy-in-azure-storage-explorer"></a>AzCopy gebruiken in Azure Storage Explorer
 
-Als u de prestatie voordelen van AzCopy wilt benutten, maar u liever Storage Explorer gebruikt in plaats van de opdracht regel om met uw bestanden te communiceren, schakelt u AzCopy in Storage Explorer.
-
-**Kies In**Storage Explorer ->**AzCopy gebruiken voor verbeterde BLOB uploaden en downloaden**.
-
-![AzCopy inschakelen als een overdrachts engine in Azure Storage Explorer](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
-
-> [!NOTE]
-> U hoeft deze instelling niet in te scha kelen als u een hiërarchische naam ruimte hebt ingeschakeld in uw opslag account. Dat komt omdat Storage Explorer automatisch AzCopy gebruikt voor opslag accounts die een hiërarchische naam ruimte hebben.  
+[Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruikt AzCopy om alle bewerkingen voor gegevens overdracht uit te voeren. U kunt [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) gebruiken als u de prestatie voordelen van AzCopy wilt benutten, maar u liever een graphical user interface gebruikt in plaats van de opdracht regel om te communiceren met uw bestanden.
 
 Storage Explorer gebruikt uw account sleutel voor het uitvoeren van bewerkingen, dus nadat u zich hebt aangemeld bij Storage Explorer, hoeft u geen aanvullende autorisatie referenties op te geven.
 

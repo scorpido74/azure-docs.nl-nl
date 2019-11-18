@@ -1,5 +1,5 @@
 ---
-title: Werken met vaardig heden
+title: Vaardig heden en werk stroom van vakkennisset
 titleSuffix: Azure Cognitive Search
 description: Met vaardig heden kunt u een AI-verrijkings pijplijn ontwerpen in azure Cognitive Search. Meer informatie over belang rijke concepten en informatie over het samen stellen van vaardig heden.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8fa20608f09b4e3006dad685d2fc52bcc9207b5a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: acf7305a46e9fc3d19f96f88cf2e9ab5eacddd7c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890152"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113645"
 ---
-# <a name="working-with-skillsets-in-azure-cognitive-search"></a>Werken met vaardig heden in azure Cognitive Search
+# <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Concepten en samen stelling van vaardig heden in azure Cognitive Search
 
 Dit artikel is voor ontwikkel aars die een beter begrip moeten hebben van de werking van de verrijkings pijplijn en ervan uitgaan dat er een conceptueel inzicht is in het proces van de AI-verrijking. Als u geen ervaring hebt met dit concept, begint u met:
 + [AI-verrijking in azure Cognitive Search](cognitive-search-concept-intro.md)
@@ -43,9 +43,9 @@ Zodra een document zich in de verrijkings pijplijn bevindt, wordt het weer gegev
 
 |Modus data Source\Parsing|Standaard|JSON, JSON-lijnen & CSV|
 |---|---|---|
-|Blob Storage|/document/content<br>/document/normalized_images/*<br>...|/document/{key1}<br>/document/{key2}<br>...|
-|SQL|/document/{column1}<br>/document/{column2}<br>...|N.v.t. |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>...|N.v.t.|
+|Blob Storage|/document/content<br>/document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|N.v.t. |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N.v.t.|
 
  Wanneer vaardig heden worden uitgevoerd, voegen ze nieuwe knoop punten toe aan de verrijkings structuur. Deze nieuwe knoop punten kunnen vervolgens worden gebruikt als invoer voor downstream-vaardig heden, projecteren naar het kennis archief of toewijzing aan index velden. Verrijkingen zijn niet onveranderbaar: als u deze eenmaal hebt gemaakt, kunnen knoop punten niet worden bewerkt. Naarmate uw vaardig heden ingewik kelder wordt, is uw verrijkings structuur, maar niet alle knoop punten in de verrijkings structuur nodig om deze naar de index of het kennis archief te brengen. U kunt slechts een subset van de verrijkingen van de index of het kennis archief selectief blijven.
 

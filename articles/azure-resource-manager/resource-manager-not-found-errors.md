@@ -1,17 +1,14 @@
 ---
-title: Fouten in de Azure-resource niet gevonden | Microsoft Docs
+title: Fouten bij niet-gevonden resources
 description: Hierin wordt beschreven hoe u fouten oplost wanneer een resource niet kan worden gevonden bij het implementeren met een Azure Resource Manager sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: troubleshooting
 ms.date: 06/06/2018
-ms.author: tomfitz
-ms.openlocfilehash: 4db50bbb3073fe98599923843e6afdded3a8ca62
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: c6dbe0e494e59017cda166c0785a187ab07c3b54
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390281"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150584"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Niet-gevonden fouten voor Azure-resources oplossen
 

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: a4d8cd9f8198002b0b9ade8fe5058de1fcacc68f
-ms.sourcegitcommit: f2d9d5133ec616857fb5adfb223df01ff0c96d0a
+ms.openlocfilehash: 695c2da9313f768b3d176176ed677c63b5ad858e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71937355"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74143731"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql---single-server"></a>Back-ups maken en herstellen in Azure Database for PostgreSQL-één server
 
@@ -19,13 +19,13 @@ Azure Database for PostgreSQL maakt automatisch server back-ups en slaat ze op i
 
 ## <a name="backups"></a>Back-ups
 
-Azure Database for PostgreSQL volledige, differentiële en back-ups van transactie Logboeken. Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+Azure Database for PostgreSQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of momentopname back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt deze optioneel configureren tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
-Over het algemeen worden volledige back-ups wekelijks uitgevoerd, differentiële back-ups twee keer per dag uitgevoerd en worden back-ups van transactie Logboeken om de vijf minuten uitgevoerd. De eerste volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid.
+Over het algemeen worden volledige back-ups wekelijks uitgevoerd, differentiële back-ups twee keer per dag voor servers met een Maxi maal ondersteunde opslag van 4 TB. Back-ups van moment opnamen worden minstens één keer per dag uitgevoerd voor servers die ondersteuning bieden voor Maxi maal 16 TB aan opslag ruimte. Back-ups van transactie Logboeken in beide gevallen worden elke vijf minuten uitgevoerd. De eerste moment opname van een volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid. Als moment opnamen zijn instantanious, kunnen servers met ondersteuning van Maxi maal 16 TB aan opslag worden hersteld.
 
-### <a name="backup-redundancy-options"></a>Redundantieopties voor back-up
+### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
 
 Azure Database for PostgreSQL biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
 
@@ -62,7 +62,9 @@ Mogelijk moet u wachten totdat de back-up van het volgende transactie logboek wo
 
 ### <a name="geo-restore"></a>Geo-herstel
 
-U kunt een server herstellen naar een andere Azure-regio waar de service beschikbaar is als u uw server hebt geconfigureerd voor geografisch redundante back-ups. Als een grootschalig incident in een regio resulteert in niet-beschik baarheid van uw database toepassing, kunt u een server herstellen van de geo-redundante back-ups naar een server in een andere regio. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan tot een uur duren, dus als er sprake is van een nood geval, kan er Maxi maal één uur gegevens verlies zijn.
+U kunt een server herstellen naar een andere Azure-regio waar de service beschikbaar is als u uw server hebt geconfigureerd voor geografisch redundante back-ups. Voor servers die Maxi maal 16 TB aan opslag ondersteunen, kunnen geo-back-ups alleen worden hersteld in regio's die ook 16 TB-servers ondersteunen. Bekijk [Azure database for MySQL prijs categorieën](concepts-pricing-tiers.md) voor de lijst met ondersteunde regio's.
+
+Geo-Restore is de standaard herstel optie als uw server niet beschikbaar is vanwege een incident in de regio waarin de server wordt gehost. Als een grootschalig incident in een regio resulteert in niet-beschik baarheid van uw database toepassing, kunt u een server herstellen van de geo-redundante back-ups naar een server in een andere regio. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan tot een uur duren, dus als er sprake is van een nood geval, kan er Maxi maal één uur gegevens verlies zijn.
 
 Tijdens de geo-herstel bewerking kunnen de volgende server configuraties worden gewijzigd: Compute Generation, vCore, Bewaar periode voor back-up en opties voor back-redundantie. Het wijzigen van de prijs categorie (Basic, Algemeen of Optimized memory) of opslag grootte wordt niet ondersteund.
 

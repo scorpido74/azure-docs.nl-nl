@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: dab79f1d63a20e12f148766db5fcc3fc313a1f3a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 1dc66ae0f69c19524b32b55c654f7c8fd2d32762
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076896"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123206"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Problemen met Azure Machine Learning Azure Kubernetes-service en Azure Container Instances-implementatie oplossen
 
@@ -56,7 +56,7 @@ Meer informatie over dit proces in de [Modelbeheer](concept-model-management-and
 
 Als u een probleem ondervindt, het eerste wat te doen is de Implementatietaak opdelen (vorige beschreven) in afzonderlijke stappen het probleem te isoleren.
 
-Het verbreken van de implementatie in taken is handig als u de API van de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none-) -API of [webservice (web. deploy_from_model)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none-) gebruikt, omdat beide functies de bovengenoemde stappen als één actie uitvoeren. Deze Api's zijn meestal handig, maar het helpt bij het opruimen van de stappen bij het oplossen van problemen door ze te vervangen door de onderstaande API-aanroepen.
+Het verbreken van de implementatie in taken is handig als u de API van de [webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) -API of [webservice (web. deploy_from_model)](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) gebruikt, omdat beide functies de bovengenoemde stappen als één actie uitvoeren. Deze Api's zijn meestal handig, maar het helpt bij het opruimen van de stappen bij het oplossen van problemen door ze te vervangen door de onderstaande API-aanroepen.
 
 1. Registreer het model. Hier volgt een voorbeeld van code:
 

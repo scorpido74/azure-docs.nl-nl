@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/4/2019
 ms.author: jeconnoc
-ms.openlocfilehash: bc8b834e0dd128457910c46cc1a62382bbc28ee1
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39a249fb75249505189e2af4872c3a3f61ebe2af
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721565"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133252"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-application-using-the-azure-portal"></a>Snelstartgids: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal
 
@@ -56,14 +56,16 @@ az extension add --name spring-cloud
 
 1. Open in een webbrowser [deze koppeling naar Azure lente Cloud in de Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform).
 
-1. Selecteer **Azure veer Cloud** om naar de overzichts pagina te gaan. Selecteer de knop **maken** om aan de slag te gaan.
-
-1. Vul het formulier in, waarbij u rekening moet houden met de volgende richt lijnen:
+1. Vul het formulier in op de pagina Azure lente-Cloud **maken** .  Houd rekening met de volgende richt lijnen:
     - Service naam: Geef de naam van uw service-exemplaar op.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten.  Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.
     - Abonnement: Selecteer het abonnement dat u voor deze resource wilt factureren.  Zorg ervoor dat dit abonnement is toegevoegd aan onze acceptatie lijst voor Azure lente-Cloud.
     - Resource groep: het maken van nieuwe resource groepen voor nieuwe resources is een best practice.
     - Locatie: Selecteer de locatie voor uw service-exemplaar. Op dit moment worden de volgende locaties ondersteund: VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
-    
+
+1. Klik op **controleren en maken**.
+
+1. Controleer uw specificaties en klik op **maken**.
+
 Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodra de app is geïmplementeerd, wordt de **overzichts** pagina voor het service-exemplaar weer gegeven.
 
 ## <a name="set-up-your-configuration-server"></a>De configuratie server instellen
@@ -72,7 +74,7 @@ Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd.  Zodr
 
 1. In de sectie **standaard opslagplaats** stelt u de **URI** in op ' https\://github.com/azure-samples/piggymetrics ', stelt u een **Label** in op ' config ' en selecteert u **Toep assen** om uw wijzigingen op te slaan.
 
-    ![Scherm opname van ASC-Portal](media/spring-cloud-tutorial-config-server/portal-config-server.png)
+    ![Scherm opname van ASC-Portal](media/spring-cloud-quickstart-launch-app-portal/portal-config.png)
 
 ## <a name="build-and-deploy-microservice-applications"></a>Micro service-toepassingen bouwen en implementeren
 

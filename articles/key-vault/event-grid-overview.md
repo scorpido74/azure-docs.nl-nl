@@ -1,21 +1,21 @@
 ---
-title: Key Vault bewaken met Azure Event Grid
-description: Azure Event Grid gebruiken om u te abonneren op Key Vault gebeurtenissen
+title: 'Zelf studie: Key Vault bewaken met Azure Event Grid'
+description: 'Zelf studie: Azure Event Grid gebruiken om u te abonneren op Key Vault gebeurtenissen'
 services: media-services
 author: msmbaldwin
 manager: rkarlin
 ms.service: key-vault
-ms.topic: article
-ms.date: 10/25/2019
+ms.topic: tutorial
+ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1fa554e03188c4d8d6227a6d2c0a560c3080b0fe
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 5771af365b763d2152eea4ef4f662e08769b378c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73033496"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133346"
 ---
-# <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault bewaken met Azure Event Grid (preview-versie)
+# <a name="tutorial-monitoring-key-vault-with-azure-event-grid-preview"></a>Zelf studie: Key Vault bewaken met Azure Event Grid (preview-versie)
 
 Key Vault integratie met Event Grid is momenteel beschikbaar als preview-versie. Hiermee kunnen gebruikers worden gewaarschuwd wanneer de status van een geheim dat is opgeslagen in de sleutel kluis is gewijzigd. Een status wijziging wordt gedefinieerd als een geheim dat bijna verloopt (binnen 30 dagen van verloop tijd), een geheim dat is verlopen of een geheim met een nieuwe versie die beschikbaar is. Meldingen voor alle drie de geheime typen (sleutel, certificaat en geheim) worden ondersteund.
 
@@ -45,6 +45,7 @@ Toepassingen die Key Vault gebeurtenissen verwerken, moeten een aantal aanbevole
 
 - [Overzicht van Azure Key Vault](key-vault-overview.md)
 - [Overzicht van Azure Event Grid](../event-grid/overview.md)
-- [Procedure: Key Vault-gebeurtenissen naar Automation-Runbook routeren (preview)](event-grid-tutorial.md).
+- Procedure: [Key Vault-gebeurtenissen naar Automation-Runbook routeren (preview)](event-grid-tutorial.md).
+- Procedure: [E-mail ontvangen wanneer een sleutel kluis geheim verandert](event-grid-logicapps.md)
 - [Azure Event Grid-gebeurtenis schema voor Azure Key Vault (preview-versie)](../event-grid/event-schema-key-vault.md)
 - [Overzicht van Azure Automation](../automation/index.yml)

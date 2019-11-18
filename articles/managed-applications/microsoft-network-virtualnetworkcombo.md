@@ -1,6 +1,6 @@
 ---
-title: Azure VirtualNetworkCombo UI-element | Microsoft Docs
-description: Beschrijft de Microsoft.Network.VirtualNetworkCombo UI-element voor Azure-portal.
+title: Gebruikers interface-element van Azure VirtualNetworkCombo | Microsoft Docs
+description: Hierin wordt het element micro soft. Network. VirtualNetworkCombo UI voor Azure Portal beschreven.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -13,26 +13,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: b0437338b403ff19761173d08be3938d07f13f55
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d325230f603be4ccfe4fe42f1b58c6ad892fdb2c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64708359"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74151476"
 ---
 # <a name="microsoftnetworkvirtualnetworkcombo-ui-element"></a>Microsoft.Network.VirtualNetworkCombo UI element
-Een groep van besturingselementen voor het selecteren van een nieuw of bestaand virtueel netwerk.
 
-## <a name="ui-sample"></a>Voorbeeld van de gebruikersinterface
-Wanneer de gebruiker een nieuw virtueel netwerk kiest, kan de gebruiker de naam van elk subnet en adresvoorvoegsel aanpassen. Configureren van subnetten is optioneel.
+Een groep besturings elementen voor het selecteren van een nieuw of bestaand virtueel netwerk.
+
+## <a name="ui-sample"></a>UI-voor beeld
+
+Wanneer de gebruiker een nieuw virtueel netwerk kiest, kan de gebruiker de naam en het adres voorvoegsel van elk subnet aanpassen. Het configureren van subnetten is optioneel.
 
 ![Microsoft.Network.VirtualNetworkCombo new](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-new.png)
 
-Wanneer de gebruiker kiest een bestaand virtueel netwerk, moet de gebruiker elk subnet dat de sjabloon voor de implementatie moet worden toegewezen aan een bestaand subnet. Configureren van subnetten is in dit geval vereist.
+Wanneer de gebruiker een bestaand virtueel netwerk kiest, moet de gebruiker elk subnet toewijzen de implementatie sjabloon vereist een bestaand subnet. In dit geval moeten subnetten worden geconfigureerd.
 
 ![Microsoft.Network.VirtualNetworkCombo existing](./media/managed-application-elements/microsoft.network.virtualnetworkcombo-existing.png)
 
 ## <a name="schema"></a>Schema
+
 ```json
 {
   "name": "element1",
@@ -85,16 +88,6 @@ Wanneer de gebruiker kiest een bestaand virtueel netwerk, moet de gebruiker elk 
 }
 ```
 
-## <a name="remarks"></a>Opmerkingen
-- Indien opgegeven voorvoegsel van de grootte van het eerste niet-overlappende adres `defaultValue.addressPrefixSize` automatisch op basis van de bestaande virtuele netwerken in het abonnement van de gebruiker wordt bepaald.
-- De standaardwaarde voor `defaultValue.name` en `defaultValue.addressPrefixSize` is **null**.
-- `constraints.minAddressPrefixSize` moet worden opgegeven. Een bestaande virtuele netwerken met een adresruimte die kleiner is dan de opgegeven waarde zijn niet beschikbaar voor selectie.
-- `subnets` Er moet worden opgegeven en `constraints.minAddressPrefixSize` moet worden opgegeven voor elk subnet.
-- Bij het maken van een nieuw virtueel netwerk, adresvoorvoegsel van elk subnet wordt automatisch berekend op basis van het adresvoorvoegsel van het virtuele netwerk en de desbetreffende `addressPrefixSize`.
-- Wanneer u een bestaande virtuele netwerk, alle subnetten die kleiner is dan de desbetreffende `constraints.minAddressPrefixSize` zijn niet beschikbaar voor selectie. Bovendien, als u opgeeft, subnetten waarvoor geen ten minste `minAddressCount` beschikbare adressen zijn niet beschikbaar voor selectie. De standaardwaarde is **0**. Om ervoor te zorgen dat de beschikbare adressen aaneengesloten, geef **waar** voor `requireContiguousAddresses`. De standaardwaarde is **waar**.
-- Het maken van subnetten in een bestaand virtueel netwerk wordt niet ondersteund.
-- Als `options.hideExisting` is **waar**, de gebruiker een bestaand virtueel netwerk niet kiezen. De standaardwaarde is **false**.
-
 ## <a name="sample-output"></a>Voorbeelduitvoer
 
 ```json
@@ -118,6 +111,18 @@ Wanneer de gebruiker kiest een bestaand virtueel netwerk, moet de gebruiker elk 
 }
 ```
 
+## <a name="remarks"></a>Opmerkingen
+
+- Indien opgegeven, wordt het eerste niet-overlappende adres voorvoegsel van grootte `defaultValue.addressPrefixSize` automatisch vastgesteld op basis van de bestaande virtuele netwerken in het abonnement van de gebruiker.
+- De standaard waarde voor `defaultValue.name` en `defaultValue.addressPrefixSize` is **Null**.
+- `constraints.minAddressPrefixSize` moet worden opgegeven. Bestaande virtuele netwerken met een adres ruimte die kleiner is dan de opgegeven waarde, zijn niet beschikbaar voor selectie.
+- `subnets` moet worden opgegeven en `constraints.minAddressPrefixSize` moet worden opgegeven voor elk subnet.
+- Wanneer u een nieuw virtueel netwerk maakt, wordt het adres voorvoegsel van elk subnet automatisch berekend op basis van het adres voorvoegsel van het virtuele netwerk en de respectieve `addressPrefixSize`.
+- Wanneer u een bestaand virtueel netwerk gebruikt, zijn alle subnetten die kleiner zijn dan de respectieve `constraints.minAddressPrefixSize` niet beschikbaar voor selectie. Daarnaast kunt u, indien opgegeven, subnetten die niet ten minste `minAddressCount` beschik bare adressen hebben, niet beschikbaar zijn voor selectie. De standaard waarde is **0**. Geef **True** op voor `requireContiguousAddresses`om ervoor te zorgen dat de beschik bare adressen aaneengesloten zijn. De standaard waarde is **True**.
+- Het maken van subnetten in een bestaand virtueel netwerk wordt niet ondersteund.
+- Als `options.hideExisting` is ingesteld op **True**, kan de gebruiker geen bestaand virtueel netwerk kiezen. De standaardwaarde is **false**.
+
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een inleiding tot het maken van definities van de gebruikersinterface, [aan de slag met CreateUiDefinition](create-uidefinition-overview.md).
-* Zie voor een beschrijving van de algemene eigenschappen in de UI-elementen, [CreateUiDefinition elementen](create-uidefinition-elements.md).
+
+* Zie aan de slag [met CreateUiDefinition](create-uidefinition-overview.md)voor een inleiding tot het maken van UI-definities.
+* Zie [CreateUiDefinition-elementen](create-uidefinition-elements.md)voor een beschrijving van algemene eigenschappen in UI-elementen.

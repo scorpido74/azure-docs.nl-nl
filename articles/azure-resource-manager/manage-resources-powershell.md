@@ -1,19 +1,16 @@
 ---
-title: Azure-resources beheren met behulp van Azure PowerShell | Microsoft Docs
+title: Resources beheren-Azure PowerShell
 description: Gebruik Azure PowerShell en Azure Resource Manager om uw resources te beheren. Laat zien hoe u resources implementeert en verwijdert.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: jgao
-ms.openlocfilehash: aa215555fdd39e9d756d5fc925282b1eaffc9ebf
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: d9714c90af326c34a64ac13b0d10e21fbe5469d4
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390354"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74146511"
 ---
 # <a name="manage-azure-resources-by-using-azure-powershell"></a>Azure-resources beheren met behulp van Azure PowerShell
 
@@ -81,7 +78,7 @@ Remove-AzStorageAccount -ResourceGroupName $resourceGroupName -AccountName $stor
 
 Zie [Azure Resource Manager resource groep verwijderen](./resource-group-delete.md)voor meer informatie over de manier waarop Azure Resource Manager het verwijderen van resources ordent.
 
-## <a name="move-resources"></a>Bronnen verplaatsen
+## <a name="move-resources"></a>Resources verplaatsen
 
 Het volgende script toont hoe u een opslag account van een resource groep kunt verwijderen naar een andere resource groep.
 

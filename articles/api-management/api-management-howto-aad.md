@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 5d2b43599c1e1f95f505d7987675e5fd40810fa4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b0c3487bb77f32483d6d65cd0a4b1f637267eabf
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012952"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74144347"
 ---
 # <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Ontwikkel ontwikkelaars accounts met behulp van Azure Active Directory in azure API Management
 
@@ -81,12 +81,16 @@ Nadat de wijzigingen zijn opgeslagen, kunnen gebruikers in de opgegeven Azure AD
 
 ## <a name="add-an-external-azure-ad-group"></a>Een externe Azure AD-groep toevoegen
 
-Nadat u toegang hebt ingeschakeld voor gebruikers in een Azure AD-exemplaar, kunt u Azure AD-groepen toevoegen in API Management. Vervolgens kunt u de koppeling van de ontwikkel aars in de groep gemakkelijker beheren met de gewenste producten.
+Nadat u toegang hebt ingeschakeld voor gebruikers in een Azure AD-Tenant, kunt u Azure AD-groepen toevoegen aan API Management. Hierdoor kunt u de product zichtbaarheid beheren met Azure AD-groepen.
 
- > [!IMPORTANT]
- > Als u een externe Azure AD-groep wilt toevoegen, moet u eerst de Azure AD-instantie op het tabblad **Identities** configureren door de procedure in de vorige sectie te volgen. Daarnaast moet aan de toepassing toegang worden verleend tot Azure AD Graph API met `Directory.Read.All` machtiging. 
+Als u een externe Azure AD-groep wilt toevoegen aan APIM, moet u eerst de vorige sectie volt ooien. Daarnaast moet de toepassing die u hebt geregistreerd, toegang krijgen tot de Azure Active Directory Graph API met `Directory.ReadAll` machtiging door de volgende stappen te volgen: 
 
-U voegt externe Azure AD-groepen toe op het tabblad **groepen** van uw API Management-exemplaar.
+1. Ga terug naar de registratie van uw app die in de vorige sectie is gemaakt
+2. Klik op het tabblad **API-machtigingen** en vervolgens op **+ een machtigings knop toevoegen** 
+3. Selecteer in het deel venster **API-machtigingen aanvragen** het tabblad **micro soft api's** en schuif naar beneden om de tegel **Azure Active Directory grafiek** te vinden in de sectie Ondersteunde verouderde api's en klik erop. Klik vervolgens op de knop **toepassings machtigingen** en selecteer **Directory. ReadAll** -machtiging en voeg vervolgens die machtiging toe met behulp van de knop aan de onderkant. 
+4. Klik op de **beheerder toestemming geven voor {tenantnaam}** zodat u toegang verleent aan alle gebruikers in deze map. 
+
+U kunt nu externe Azure AD-groepen toevoegen via het tabblad **groepen** van uw API Management-exemplaar.
 
 1. Selecteer de tab **Groepen**.
 2. Selecteer de knop **Aad-groep toevoegen** .

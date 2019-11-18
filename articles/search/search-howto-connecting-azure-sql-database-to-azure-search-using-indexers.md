@@ -1,5 +1,5 @@
 ---
-title: Azure SQL Database inhoud verbinden en indexeren met Indexeer functies
+title: Zoeken in Azure SQL-gegevens
 titleSuffix: Azure Cognitive Search
 description: Gegevens importeren uit Azure SQL Database met Indexeer functies, voor zoeken in volledige tekst in azure Cognitive Search. In dit artikel worden de verbindingen, de configuratie van de Indexeer functie en gegevens opname beschreven.
 manager: nitinme
@@ -9,14 +9,14 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 012f555f3837086946eb4581dadc74011a3acc09
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792199"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113302"
 ---
-# <a name="connect-to-and-index-azure-sql-database-content-using-azure-cognitive-search-indexers"></a>Verbinding maken met Azure SQL Database inhoud met behulp van Azure Cognitive Search Indexeer functies en deze indexeren
+# <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Verbinding maken met Azure SQL Database inhoud en deze indexeren met behulp van een Azure Cognitive Search Indexeer functie
 
 Voordat u een query kunt uitvoeren op een [Azure Cognitive search-index](search-what-is-an-index.md), moet u deze vullen met uw gegevens. Als de gegevens zich in een Azure-SQL database bevinden, kan een **azure Cognitive Search indexer voor Azure SQL database** (of **Azure SQL indexeerer** voor kort) het indexerings proces automatiseren, wat betekent dat er minder code moet worden geschreven en dat de infra structuur minder goed is.
 
@@ -271,25 +271,25 @@ De **softDeleteMarkerValue** moet een teken reeks zijn: gebruik de teken reeks r
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Toewijzing tussen SQL-en Azure Cognitive Search-gegevens typen
 | SQL-gegevens type | Toegestane doel index veld typen | Opmerkingen |
 | --- | --- | --- |
-| bitmask |EDM. Boolean, EDM. String | |
-| int, smallint, tinyint |EDM. Int32, EDM. Int64, EDM. String | |
+| bit |EDM. Boolean, EDM. String | |
+| int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
 | bigint |EDM. Int64, EDM. String | |
 | Real, float |Edm.Double, Edm.String | |
 | smallmoney, geld decimaal numeriek |Edm.String |Azure Cognitive Search biedt geen ondersteuning voor het converteren van decimale typen naar EDM. double, omdat dit de precisie zou verliezen |
-| char, NCHAR, varchar, nvarchar |Edm.String<br/>Collection(EDM.String) |Een SQL-teken reeks kan worden gebruikt voor het vullen van een verzamelings veld (EDM. String) als de teken reeks een JSON-matrix met teken reeksen vertegenwoordigt: `["red", "white", "blue"]` |
+| char, NCHAR, varchar, nvarchar |Edm.String<br/>Verzameling (Edm.String) |Een SQL-teken reeks kan worden gebruikt voor het vullen van een verzamelings veld (EDM. String) als de teken reeks een JSON-matrix met teken reeksen vertegenwoordigt: `["red", "white", "blue"]` |
 | Smalldatetime, datetime, DATETIME2, date, date time offset |Edm.DateTimeOffset, Edm.String | |
 | uniqueidentifer |Edm.String | |
 | Geografie |Edm.GeographyPoint |Alleen geografie-exemplaren van het type POINT met SRID 4326 (dit is de standaard instelling) worden ondersteund |
-| rowversion |N/A |Rij-versie kolommen kunnen niet worden opgeslagen in de zoek index, maar kunnen worden gebruikt voor het bijhouden van wijzigingen |
-| tijd, time span, binary, varbinary, afbeelding, XML, geometrie, CLR-typen |N/A |Niet ondersteund |
+| rowversion |N.v.t. |Rij-versie kolommen kunnen niet worden opgeslagen in de zoek index, maar kunnen worden gebruikt voor het bijhouden van wijzigingen |
+| tijd, time span, binary, varbinary, afbeelding, XML, geometrie, CLR-typen |N.v.t. |Niet ondersteund |
 
 ## <a name="configuration-settings"></a>Configuratie-instellingen
 SQL Indexeer functie maakt verschillende configuratie-instellingen beschikbaar:
 
 | Instelling | Gegevenstype | Doel | Standaardwaarde |
 | --- | --- | --- | --- |
-| queryTimeout |string |Hiermee stelt u de time-out voor de uitvoering van SQL-query's |5 minuten ("00:05:00") |
-| disableOrderByHighWaterMarkColumn |bool |Zorgt ervoor dat de SQL-query die wordt gebruikt door het beleid voor hoog water merk, de component ORDER BY weglaat. Zie [beleid voor hoog water merk](#HighWaterMarkPolicy) |onwaar |
+| queryTimeout |tekenreeks |Hiermee stelt u de time-out voor de uitvoering van SQL-query's |5 minuten ("00:05:00") |
+| disableOrderByHighWaterMarkColumn |bool |Zorgt ervoor dat de SQL-query die wordt gebruikt door het beleid voor hoog water merk, de component ORDER BY weglaat. Zie [beleid voor hoog water merk](#HighWaterMarkPolicy) |false |
 
 Deze instellingen worden gebruikt in het `parameters.configuration`-object in de definitie van de Indexeer functie. Als u de time-out van de query bijvoorbeeld wilt instellen op 10 minuten, moet u de Indexeer functie maken of bijwerken met de volgende configuratie:
 

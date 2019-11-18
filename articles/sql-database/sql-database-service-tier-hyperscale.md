@@ -11,19 +11,19 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: 3a448147390ff2dd6a8049e8338a4cbf2bd94ce3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c71fb8a7e18439817023874146e22c29a5af3b12
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821105"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123686"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperscale-servicelaag
 
 Azure SQL Database is gebaseerd op SQL Server data base engine-architectuur die is aangepast voor de cloud omgeving om 99,99% Beschik baarheid te garanderen, zelfs in het geval van infrastructuur fouten. Er zijn drie architectuur modellen die worden gebruikt in Azure SQL Database:
 - Algemeen/standaard 
 -  Hyperscale
--  Bedrijfskritiek/Premium
+-  Business Critical/Premium
 
 De grootschalige van de servicelaag in Azure SQL Database is de nieuwste servicelaag in het op vCore gebaseerde aankoop model. Deze servicelaag is een zeer schaal bare laag voor opslag en reken prestaties die gebruikmaakt van de Azure-architectuur voor het uitschalen van de opslag en de reken resources voor een Azure SQL Database die groter zijn dan de limieten die beschikbaar zijn voor de Algemeen en de onderneming Kritieke service lagen.
 
@@ -78,7 +78,7 @@ Zie [Azure SQL database prijzen](https://azure.microsoft.com/pricing/details/sql
 
 ## <a name="distributed-functions-architecture"></a>Architectuur van gedistribueerde functies
 
-In tegens telling tot traditionele data base-engines die alle gegevens beheer functies op één locatie/proces hebben gecentraliseerd (ook wel gedistribueerde data bases in productie hebben, hebben meerdere exemplaren van een monolithische-gegevens engine), een grootschalige-data base gescheiden de engine voor het verwerken van query's, waarbij de semantiek van verschillende gegevens engines afwijkt, van de onderdelen die opslag en duurzaamheid op lange termijn bieden voor de gegevens. Op deze manier kan de opslag capaciteit zo ver mogelijk naar behoefte worden geschaald (het eerste doel is 100 TB). Alleen-lezen replica's delen dezelfde opslag onderdelen, zodat er geen gegevens kopie vereist is om een nieuwe Lees bare replica te maken. 
+In tegens telling tot traditionele data base-engines die alle gegevens beheer functies op één locatie/proces hebben gecentraliseerd (ook wel gedistribueerde data bases in productie hebben, hebben meerdere exemplaren van een monolithische-gegevens engine), is een grootschalige-data base gescheiden van de engine voor de verwerking van query's, waarbij de semantiek van verschillende gegevens engines afwijkt, van de onderdelen die opslag Op deze manier kan de opslag capaciteit zo ver mogelijk naar behoefte worden geschaald (het eerste doel is 100 TB). Alleen-lezen replica's delen dezelfde opslag onderdelen, zodat er geen gegevens kopie vereist is om een nieuwe Lees bare replica te maken. 
 
 In het volgende diagram ziet u de verschillende typen knoop punten in een grootschalige-Data Base:
 
@@ -98,11 +98,11 @@ Pagina servers zijn systemen die een scale-out opslag engine vertegenwoordigen. 
 
 De logboek service accepteert logboek records van de primaire Compute-replica, slaat ze op in een duurzame cache en stuurt de logboek records door naar de rest van reken replica's (zodat ze hun caches kunnen bijwerken) en de relevante pagina ('s), zodat de gegevens kunnen worden bijgewerkt kent. Op deze manier worden alle gegevens wijzigingen van de primaire Compute-replica door de logboek service door gegeven aan alle secundaire reken replica's en pagina servers. Ten slotte worden de logboek records gepusht naar lange termijn opslag in Azure Storage. Dit is een bijna oneindige opslag opslagplaats. Dit mechanisme verwijdert de nood zaak van een veelvuldige afkap ping van het logboek. De logboek service heeft ook lokale cache om de toegang tot logboek records te versnellen.
 
-### <a name="azure-storage"></a>Azure-opslag
+### <a name="azure-storage"></a>Azure Storage
 
 Azure Storage bevat alle gegevens bestanden in een Data Base. Pagina servers houden gegevens bestanden in Azure Storage up-to-date. Deze opslag wordt gebruikt voor back-updoeleinden en voor replicatie tussen Azure-regio's. Back-ups worden geïmplementeerd met behulp van opslag momentopnamen van gegevens bestanden. Herstel bewerkingen met behulp van moment opnamen zijn snel, ongeacht de grootte van de gegevens. Gegevens kunnen worden hersteld naar elk gewenst moment binnen de Bewaar periode van de back-up van de data base.
 
-## <a name="backup-and-restore"></a>Back-ups en herstellen
+## <a name="backup-and-restore"></a>Back-up maken en terugzetten
 
 Back-ups zijn gebaseerd op bestands momentopnamen en daarom zijn ze bijna direct. Met opslag-en Compute-schei ding kunt u de bewerking voor back-up/herstel naar de opslaglaag beperken om de verwerkings belasting van de primaire Compute replica te verminderen. Als gevolg hiervan is het maken van een back-up van de data base geen invloed op de prestaties van het primaire reken knooppunt. op dezelfde manier worden herstel bewerkingen uitgevoerd door terug te keren naar moment opnamen van bestanden. Dit is geen grootte van de gegevens bewerking. Herstellen is een constante tijd, en zelfs meerdere terabyte-data bases kunnen binnen enkele minuten worden hersteld in plaats van uren of dagen. Het maken van nieuwe data bases door het herstellen van een bestaande back-up maakt ook gebruik van deze functie: het maken van database kopieën binnen dezelfde logische server voor ontwikkelings-en test doeleinden, zelfs op terabyte-formaat databases, is doable binnen enkele minuten.
 
@@ -114,7 +114,7 @@ Met de mogelijkheid om snel extra alleen-lezen Compute-knoop punten in te zetten
 
 Een grootschalige-data base kan worden gemaakt met behulp van de [Azure Portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Power shell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) of [cli](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Grootschalige-data bases zijn alleen beschikbaar via het [op vCore gebaseerde aankoop model](sql-database-service-tiers-vcore.md).
 
-Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de instructie `CREATE DATABASE`. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale-service-tier-for-provisioned-compute) voor een lijst met geldige service doelstellingen.
+Met de volgende T-SQL-opdracht maakt u een grootschalige-data base. U moet zowel de editie als de service doelstelling opgeven in de instructie `CREATE DATABASE`. Raadpleeg de [resource limieten](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen5) voor een lijst met geldige service doelstellingen.
 
 ```sql
 -- Create a HyperScale Database
@@ -137,7 +137,7 @@ GO
 
 ## <a name="connect-to-a-read-scale-replica-of-a-hyperscale-database"></a>Verbinding maken met een lees bare replica van een grootschalige-data base
 
-In grootschalige-data bases wordt het argument `ApplicationIntent` in de connection string dat door de client is bepaald, bepaald of de verbinding wordt doorgestuurd naar de schrijf replica of naar een secundaire alleen-lezen replica. Als de `ApplicationIntent` ingesteld op `READONLY` en de data base heeft geen secundaire replica, wordt de verbinding doorgestuurd naar de primaire replica en wordt de standaard instelling `ReadWrite` gedrag.
+In grootschalige-data bases wordt met het argument `ApplicationIntent` in de connection string dat door de client wordt gegeven, bepaald of de verbinding wordt doorgestuurd naar de schrijf replica of naar een secundaire alleen-lezen replica. Als de `ApplicationIntent` ingesteld op `READONLY` en de data base heeft geen secundaire replica, wordt de verbinding doorgestuurd naar de primaire replica en wordt de standaard instelling `ReadWrite` gedrag.
 
 ```cmd
 -- Connection string with application intent

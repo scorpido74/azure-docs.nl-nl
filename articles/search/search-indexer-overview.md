@@ -1,5 +1,5 @@
 ---
-title: Indexeer functies voor het verkennen van gegevens bronnen tijdens het indexeren
+title: Indexeer functies voor het verkennen van gegevens tijdens het importeren
 titleSuffix: Azure Cognitive Search
 description: Verken Azure SQL database, Azure Cosmos DB of Azure Storage om Doorzoek bare gegevens op te halen en een Azure Cognitive Search-index te vullen.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5e5d43909dc0e65c12c053515ba534ce5cfa121f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 1fd667e14501355f2567712d13b10dd7fbc7ee19
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793663"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74112685"
 ---
 # <a name="indexers-in-azure-cognitive-search"></a>Indexeer functies in azure Cognitive Search
 
@@ -31,7 +31,7 @@ U kunt op de volgende manieren indexeerfuncties maken en beheren:
 
 * [Wizard Portal-> gegevens importeren](search-import-data-portal.md)
 * [Service-REST-API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
-* [.NET-SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
+* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
 Een nieuwe indexeerfunctie wordt in eerste instantie aangekondigd als preview-functie. Preview-functies worden geïntroduceerd in API's (REST en .NET) en vervolgens geïntegreerd in de portal nadat ze geleidelijk algemeen beschikbaar zijn gesteld. Als u een nieuwe indexeerfunctie evalueert, moet u er rekening mee houden dat u code moet schrijven.
 

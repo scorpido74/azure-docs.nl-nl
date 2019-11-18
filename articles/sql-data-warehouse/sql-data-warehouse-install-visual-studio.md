@@ -12,12 +12,12 @@ ms.subservice: development
 ms.date: 11/06/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 96d66e6190732d88ba9a33094b6c27bbadfd4aae
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 758c9b323e78e7e86312555f5fabdcc9c4c28330
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747805"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123729"
 ---
 # <a name="getting-started-with-visual-studio-2019-for-sql-data-warehouse"></a>Aan de slag met Visual Studio 2019 voor SQL Data Warehouse
 Visual Studio **2019** SQL Server Data tools (SSDT) is één hulp programma waarmee u het volgende kunt doen:
@@ -32,7 +32,22 @@ Visual Studio **2019** SQL Server Data tools (SSDT) is één hulp programma waar
 ## <a name="install-visual-studio-2019"></a>Installeer Visual Studio 2019
 Zie [Down load Visual Studio 2019][] om visual studio **16,3 en hoger**te downloaden en te installeren. Selecteer tijdens de installatie de werk belasting gegevens opslag en-verwerking. Zelfstandige installatie van SSDT is niet meer vereist in Visual Studio 2019.
 
+## <a name="unsupported-features-in-ssdt"></a>Niet-ondersteunde functies in SSDT
+
+Er zijn momenten waarop functie releases voor SQL Data Warehouse mogelijk geen ondersteuning voor SSDT bevatten. De volgende functies worden momenteel niet ondersteund:
+
+- [Gerealiseerde weer gaven](https://docs.microsoft.com/sql/t-sql/statements/create-materialized-view-as-select-transact-sql?view=azure-sqldw-latest) (wordt uitgevoerd)
+- [Geordende geclusterde column Store-indexen](https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?view=azure-sqldw-latest#examples--and-) (wordt uitgevoerd)
+- [Instructie kopiëren](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest) (wordt uitgevoerd)
+- [Workload Management](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-workload-management) : werkbelasting groepen en classificaties (wordt uitgevoerd)
+- [Beveiliging op rijniveau](https://docs.microsoft.com/sql/relational-databases/security/row-level-security?view=sql-server-ver15)
+  - Verzend [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040057-ssdt-row-level-security) een ondersteunings ticket om de functie op te halen.
+- [Dynamische gegevensmaskering](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json&view=sql-server-2017#defining-a-dynamic-data-mask)
+  - Verzend [hier](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking) een ondersteunings ticket om de functie op te halen. 
+- Functie voors [pellen](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=sql-server-ver15&viewFallbackFrom=azure-sqldw-latest) 
+
 ## <a name="next-steps"></a>Volgende stappen
+
 Nu u de nieuwste versie van SSDT hebt, bent u klaar om [verbinding te maken][connect] met uw SQL Data Warehouse.
 
 <!--Anchors-->

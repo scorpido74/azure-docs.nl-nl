@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.author: jeconnoc
 author: jpconnock
 ms.date: 10/06/2019
-ms.openlocfilehash: 31b2322bdf7b7c03ae8974d57ee1b44c2f6137b9
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: cce7562c74577f6fd545bcaed3ee3e0968fd40b4
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607517"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132908"
 ---
 # <a name="tutorial-scale-an-application-in-azure-spring-cloud"></a>Zelf studie: een toepassing schalen in een Azure lente-Cloud
 
@@ -31,11 +31,13 @@ Voor deze zelfstudie hebt u het volgende nodig:
 
 1. Ga naar de **overzichts** pagina van Azure lente Cloud.
 
+1. Selecteer de resource groep die uw service bevat.
+
 1. Ga naar het tabblad **apps** onder de kop **instellingen** in het menu aan de linkerkant.
 
 1. Selecteer de toepassing die u wilt schalen. In dit voor beeld wordt de toepassing met de naam ' account-service ' geschaald. Hiervoor gaat u naar de **overzichts** pagina van de toepassing.
 
-1. Ga naar het tabblad **schalen** onder de kop **instellingen** in het menu aan de linkerkant. Er wordt een formulier weer geven met regels voor elk van de eerder genoemde schaal kenmerken.
+1. Ga naar het tabblad **schalen** onder de kop **instellingen** in het menu aan de linkerkant. U ziet de opties voor de schaal kenmerken die in de volgende sectie worden weer gegeven.
 
 ## <a name="scale-your-application"></a>Schaal aanpassen van uw toepassing
 
@@ -45,9 +47,11 @@ U kunt de schaal kenmerken wijzigen. Houd de volgende opmerkingen in het oog.
 
 * **Geheugen/GB**: de Maxi maal toegestane hoeveelheid geheugen is 8 GB per toepassings exemplaar.  De totale hoeveelheid geheugen voor een toepassing is de waarde die hier is ingesteld, vermenigvuldigd met het aantal toepassings exemplaren.
 
-* **Aantal instanties**: u kunt Maxi maal 20 exemplaren uitschalen in de laag standaard. Met deze waarde wordt het aantal afzonderlijke actieve exemplaren van de micro service-toepassing gewijzigd.
+* **Aantal app-exemplaren**: u kunt Maxi maal 20 exemplaren uitschalen in de laag standaard. Met deze waarde wordt het aantal afzonderlijke actieve exemplaren van de micro service-toepassing gewijzigd.
 
 Zorg ervoor dat u op de knop **Opslaan** klikt om uw schaal instellingen toe te passen.
+
+![Service schalen in Azure Portal](media/spring-cloud-tutorial-scale-manual/scale-up-out.png)
 
 Na enkele seconden worden de wijzigingen die u hebt aangebracht, weer gegeven op de **overzichts** pagina, met meer details die beschikbaar zijn op het tabblad **toepassings exemplaren** . voor het schalen is geen code wijzigingen of herimplementatie vereist.
 

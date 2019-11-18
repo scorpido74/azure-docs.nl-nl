@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 40543f55dc0cb56f6bc575f926456faf2d0ae5a3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c82edde98242ffe130c2022c428c86de80e3b034
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73719201"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111780"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-nodejs-and-the-azure-sb-package"></a>Snelstartgids: Service Bus-onderwerpen en-abonnementen gebruiken met node. js en het pakket Azure-SB
 > [!div class="op_multi_selector" title1="Programmeertaal" title2="Node. js pakket"]
@@ -150,7 +150,7 @@ Er worden ook abonnementen van het onderwerp gemaakt met het **ServiceBusService
 > [!NOTE]
 > Standaard zijn abonnementen permanent totdat ze zijn, of het onderwerp waaraan ze zijn gekoppeld, worden verwijderd. Als uw toepassing logica bevat om een abonnement te maken, moet u eerst controleren of het abonnement bestaat door de `getSubscription` methode te gebruiken.
 >
-> U kunt de abonnementen automatisch laten verwijderen door de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle)in te stellen.
+> U kunt de abonnementen automatisch laten verwijderen door de [eigenschap AutoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle)in te stellen.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Een abonnement maken met het standaardfilter (MatchAll)
 Het **MatchAll** -filter is het standaard filter dat wordt gebruikt wanneer een abonnement wordt gemaakt. Bij gebruik van het **MatchAll**-filter worden alle berichten die naar het onderwerp worden gepubliceerd, in de virtuele wachtrij van het abonnement geplaatst. In het volgende voor beeld wordt een abonnement met de naam AllMessages gemaakt en wordt het standaard **MatchAll** -filter gebruikt.
@@ -314,7 +314,7 @@ Er is ook een time-out gekoppeld aan een bericht dat in het abonnement is vergre
 In de gebeurtenis die de toepassing vastloopt na het verwerken van het bericht, maar voordat de `deleteMessage` methode wordt aangeroepen, wordt het bericht opnieuw aan de toepassing bezorgd wanneer het opnieuw wordt gestart. Dit gedrag wordt vaak *ten minste eenmaal in de verwerking*genoemd. Dat wil zeggen dat elk bericht ten minste één keer wordt verwerkt, maar in bepaalde situaties kan hetzelfde bericht opnieuw worden bezorgd. Als het scenario dubbele verwerking niet kan verdragen, moet u logica aan uw toepassing toevoegen om de dubbele bericht bezorging af te handelen. U kunt de **MessageId** -eigenschap van het bericht gebruiken, dat constant blijft tijdens bezorgings pogingen.
 
 ## <a name="delete-topics-and-subscriptions"></a>Onderwerpen en abonnementen verwijderen
-Onderwerpen en abonnementen zijn permanent, tenzij de [eigenschap autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/azure-arm-sb/sbsubscription?view=azure-node-latest#autodeleteonidle) is ingesteld, en moet expliciet worden verwijderd via de [Azure Portal][Azure portal] of via een programma.
+Onderwerpen en abonnementen zijn permanent, tenzij de [eigenschap autoDeleteOnIdle](https://docs.microsoft.com/javascript/api/@azure/arm-servicebus/sbsubscription?view=azure-node-latest#autodeleteonidle) is ingesteld, en moet expliciet worden verwijderd via de [Azure Portal][Azure portal] of via een programma.
 In het volgende voor beeld ziet u hoe u het onderwerp met de naam `MyTopic`verwijdert:
 
 ```javascript

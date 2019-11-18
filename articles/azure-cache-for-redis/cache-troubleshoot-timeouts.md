@@ -1,25 +1,17 @@
 ---
-title: Problemen met Azure-cache oplossen voor redis-outs | Microsoft Docs
+title: Problemen met Azure-cache oplossen voor redis-outs
 description: Meer informatie over het oplossen van veelvoorkomende time-outproblemen met Azure cache voor redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 4f577e6497e853d9b75f81b5da4f7121064a9d07
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e58b305a43cc5ad339fb87b9b8a09af04c410839
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826343"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74121383"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problemen met Azure-cache oplossen voor redis-outs
 
@@ -51,7 +43,7 @@ Dit fout bericht bevat metrische gegevens die u kunnen helpen bij de oorzaak en 
 | wachtrij |Er zijn 73 totaal aantal bewerkingen in uitvoering |
 | qu |6 van de bewerkingen in uitvoering bevinden zich in de niet-verzonden wachtrij en zijn nog niet naar het uitgaande netwerk geschreven |
 | qs |67 van de bewerkingen die momenteel worden uitgevoerd, zijn verzonden naar de server, maar er is nog geen antwoord beschikbaar. Het antwoord kan worden `Not yet sent by the server` of `sent by the server but not yet processed by the client.` |
-| QC |0 van de bewerkingen die worden uitgevoerd, hebben geen antwoorden gezien, maar zijn nog niet als voltooid gemarkeerd, omdat ze wachten op de voltooiings lus |
+| qc |0 van de bewerkingen die worden uitgevoerd, hebben geen antwoorden gezien, maar zijn nog niet als voltooid gemarkeerd, omdat ze wachten op de voltooiings lus |
 | WR |Er is een actieve schrijver (wat betekent dat de 6 niet-verzonden aanvragen niet worden genegeerd) bytes/activewriters |
 | Naast |Er zijn geen actieve lezers en er zijn geen null-bytes beschikbaar om te worden gelezen op het NIC-aantal bytes/activereaders |
 

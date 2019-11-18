@@ -1,18 +1,15 @@
 ---
-title: 'Verwijderen van de resourcegroep en resources: Azure Resource Manager'
+title: Resource groep en-resources verwijderen
 description: Hierin wordt beschreven hoe u resource groepen en-resources verwijdert. Hierin wordt beschreven hoe Azure Resource Manager het verwijderen van resources ordent bij het verwijderen van een resource groep. Beschrijft de responscodes en hoe Resource Manager worden verwerkt om te bepalen of de verwijdering is geslaagd.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/03/2019
-ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 30a394fd33ed5d928175fc27e003661c2b53de9a
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: c84dcf64555f40f45dbdaeedb05d4cc461f2cbb7
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70275074"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150808"
 ---
 # <a name="azure-resource-manager-resource-group-and-resource-deletion"></a>Azure Resource Manager resource groep en verwijderen van resources
 
@@ -67,7 +64,7 @@ Gebruik een van de volgende methoden om de resource groep te verwijderen.
 Remove-AzResourceGroup -Name ExampleResourceGroup
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az group delete --name ExampleResourceGroup
@@ -85,7 +82,7 @@ az group delete --name ExampleResourceGroup
 
 ---
 
-## <a name="delete-resource"></a>Bron verwijderen
+## <a name="delete-resource"></a>Resource verwijderen
 
 Gebruik een van de volgende methoden om een resource te verwijderen.
 
@@ -98,7 +95,7 @@ Remove-AzResource `
   -ResourceType Microsoft.Compute/virtualMachines
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
 
 ```azurecli-interactive
 az resource delete \
@@ -113,7 +110,7 @@ az resource delete \
 
 1. Selecteer **Verwijderen**. Op de volgende scherm afbeelding ziet u de beheer opties voor een virtuele machine.
 
-   ![Bron verwijderen](./media/resource-group-delete/delete-resource.png)
+   ![Resource verwijderen](./media/resource-group-delete/delete-resource.png)
 
 1. Bevestig de verwijdering als u daarom wordt gevraagd.
 

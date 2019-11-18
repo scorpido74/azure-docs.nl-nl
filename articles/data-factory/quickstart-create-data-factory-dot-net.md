@@ -13,20 +13,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 24cba4b02bb046a16db04635a1bf5ef4f6b619a6
-ms.sourcegitcommit: b2db98f55785ff920140f117bfc01f1177c7f7e2
+ms.openlocfilehash: 3282106651f9ec101251d7d35369040df9572b06
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68234485"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122857"
 ---
-# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Quickstart: Een data factory en pijplijn maken met behulp van .NET SDK
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Snelstartgids: een data factory en pijp lijn maken met behulp van .NET SDK
 
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
 > * [Versie 1:](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Huidige versie](quickstart-create-data-factory-dot-net.md)
 
-In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Meer informatie over het **transformeren** van gegevens met behulp van Azure Data Factory vindt u in [Zelfstudie: Gegevens transformeren met Spark](tutorial-transform-data-spark-portal.md).
+In deze snelstartgids wordt beschreven hoe u .NET SDK kunt gebruiken om een Azure data factory te maken. Met de pijplijn die u in deze data factory maakt, worden gegevens **gekopieerd** van één map naar een andere map in een Azure Blob Storage. Zie **Zelfstudie: Gegevens transformeren met Spark** voor meer informatie over het [transformeren](tutorial-transform-data-spark-portal.md) van gegevens met Azure Data Factory.
 
 > [!NOTE]
 > Dit artikel is geen gedetailleerde introductie tot de Data Factory-service. Zie [Inleiding tot Azure Data Factory](introduction.md) voor een inleiding tot Azure Data Factory-service.
@@ -43,7 +43,7 @@ Download en installeer [Azure .NET SDK](https://azure.microsoft.com/downloads/) 
 
 ## <a name="create-an-application-in-azure-active-directory"></a>Een toepassing maken in Azure Active Directory
 
-In de secties in *How to: Gebruik de portal om een Azure AD-toepassing en Service-Principal te maken die*toegang hebben tot resources. Volg de instructies om deze taken uit te voeren:
+In de secties in *How to: gebruik de portal om een Azure AD-toepassing en Service-Principal te maken die toegang hebben tot resources*. Volg de instructies voor het uitvoeren van deze taken:
 
 1. Maak in [een Azure Active Directory-toepassing maken](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)een toepassing die de .NET-toepassing vertegenwoordigt die u in deze zelf studie maakt. Voor de aanmeldings-URL kunt u een dummy-URL opgeven, zoals wordt getoond in het artikel (`https://contoso.org/exampleapp`).
 2. Haal de **toepassings-id** en **Tenant-id**op in [waarden ophalen voor aanmelden](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)en noteer deze waarden die u later in deze zelf studie gebruikt. 
@@ -55,13 +55,13 @@ In de secties in *How to: Gebruik de portal om een Azure AD-toepassing en Servic
 Vervolgens maakt u een C# .net-console toepassing in Visual Studio:
 
 1. Start **Visual Studio**.
-2. Selecteer in het Start venster **een nieuwe project** > **console-app maken (.NET Framework)** . .NET versie 4.5.2 of hoger is vereist.
+2. Selecteer in het Start venster **een nieuw project maken** > **console-app (.NET Framework)** . .NET versie 4.5.2 of hoger is vereist.
 3. Voer in **project naam** **ADFv2QuickStart**in.
 4. Selecteer **Maken** om het project te maken.
 
 ## <a name="install-nuget-packages"></a>NuGet-pakketten installeren
 
-1. Selecteer **extra** > **NuGet package manager** > Package Manager-**console**.
+1. Selecteer **Hulpprogram ma's** > **NuGet package manager** > **Package Manager-console**.
 2. Voer in het deel venster **Package Manager-console** de volgende opdrachten uit om pakketten te installeren. Zie het [micro soft. Azure. Management. DataFactory nuget-pakket](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/)voor meer informatie.
 
     ```powershell
@@ -85,7 +85,7 @@ Vervolgens maakt u een C# .net-console toepassing in Visual Studio:
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Voeg de volgende code toe aan de methode **Main** waarmee de variabelen worden ingesteld. Vervang de tijdelijke aanduidingen door uw eigen waarden. Voor een lijst met Azure-regio's waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio's waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevens archieven (Azure Storage, Azure SQL Database en meer) en berekeningen (HDInsight en anderen) die door data factory worden gebruikt, kunnen zich in andere regio's bevindt.
+2. Voeg de volgende code toe aan de methode **Main** waarmee de variabelen worden ingesteld. Vervang de tijdelijke aanduidingen door uw eigen waarden. Voor een lijst met Azure-regio’s waarin Data Factory momenteel beschikbaar is, selecteert u op de volgende pagina de regio’s waarin u geïnteresseerd bent, vouwt u vervolgens **Analytics** uit en gaat u naar **Data Factory**: [Beschikbare producten per regio](https://azure.microsoft.com/global-infrastructure/services/). De gegevens archieven (Azure Storage, Azure SQL Database en meer) en berekeningen (HDInsight en anderen) die door data factory worden gebruikt, kunnen zich in andere regio's bevindt.
 
    ```csharp
    // Set variables
@@ -287,7 +287,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
        pipelineRun = client.PipelineRuns.Get(
            resourceGroup, dataFactoryName, runResponse.RunId);
        Console.WriteLine("Status: " + pipelineRun.Status);
-       if (pipelineRun.Status == "InProgress")
+       if (pipelineRun.Status == "InProgress" || pipelineRun.Status == "Queued")
            System.Threading.Thread.Sleep(15000);
        else
            break;
@@ -445,4 +445,4 @@ client.Factories.Delete(resourceGroup, dataFactoryName);
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene locatie naar een andere locatie in een Azure Blob-opslag. Doorloop de [zelfstudies](tutorial-copy-data-dot-net.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's. 
+Met de pijplijn in dit voorbeeld worden gegevens gekopieerd van de ene naar de andere locatie in Azure Blob Storage. Doorloop de [zelfstudies](tutorial-copy-data-dot-net.md) voor meer informatie over het gebruiken van Data Factory in andere scenario's. 

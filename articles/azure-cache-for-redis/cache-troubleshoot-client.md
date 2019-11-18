@@ -1,25 +1,17 @@
 ---
-title: Problemen met Azure-cache oplossen voor redis aan de client zijde | Microsoft Docs
+title: Problemen met Azure-cache oplossen voor redis aan client zijde
 description: Meer informatie over het oplossen van veelvoorkomende problemen aan de client zijde met Azure cache voor redis
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/18/2019
 ms.author: yegu
-ms.openlocfilehash: 18fb2f7c5a411ff2026437b647be56812b4d2521
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: a4fdbe9c0943e77719a9ee9da7dc358696284d99
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72819628"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122612"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Problemen met Azure-cache oplossen voor redis aan client zijde
 
@@ -57,7 +49,7 @@ Bewaak hoe uw `ThreadPool` statistieken in de loop van de tijd worden gewijzigd 
 In de voor gaande uitzonde ring zijn er verschillende problemen die interessant zijn:
 
 - U ziet dat in de sectie `IOCP` en de sectie `WORKER` een `Busy` waarde is die groter is dan de `Min` waarde. Dit verschil betekent dat uw `ThreadPool`-instellingen moeten worden aangepast.
-- U kunt ook `in: 64221` bekijken. Deze waarde geeft aan dat 64.211 bytes zijn ontvangen op de kernel-laag van de client, maar niet zijn gelezen door de toepassing. Dit verschil betekent meestal dat uw toepassing (bijvoorbeeld stack Exchange. redis) geen gegevens van het netwerk leest zodra de server deze naar u verzendt.
+- U kunt ook `in: 64221`bekijken. Deze waarde geeft aan dat 64.211 bytes zijn ontvangen op de kernel-laag van de client, maar niet zijn gelezen door de toepassing. Dit verschil betekent meestal dat uw toepassing (bijvoorbeeld stack Exchange. redis) geen gegevens van het netwerk leest zodra de server deze naar u verzendt.
 
 U kunt [uw `ThreadPool` instellingen configureren](https://gist.github.com/JonCole/e65411214030f0d823cb) om ervoor te zorgen dat uw thread pool snel omhoog wordt geschaald onder burst-scenario's.
 

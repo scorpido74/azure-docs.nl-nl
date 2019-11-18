@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 11/12/2019
-ms.openlocfilehash: d9a88a40a85ce4be9222f45d3bce53e91346040b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 44ef646328f5f55d16dfa2d6906b78866292ebd9
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039362"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74123194"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Snelstart: beschikbare ruimten zoeken met behulp van Azure Digital Twins
 
@@ -76,7 +76,7 @@ De ruimtelijke grafiek wordt ingericht met behulp van het bestand [provisionSamp
 1. Voer `dotnet run ProvisionSample` uit.
 
     >[!NOTE]
-    >Het programma voor apparaataanmelding van de Azure CLI wordt gebruikt om de gebruiker bij Azure AD te verifiëren. De gebruiker moet een bepaalde code invoeren om zich te verifiëren met behulp van [de Microsoft-aanmeldingspagina](https://microsoft.com/devicelogin). Nadat de code is ingevoerd, volgt u de stappen voor verificatie. De gebruiker moet zich verifiëren als het hulpprogramma wordt uitgevoerd.
+    >Het programma voor apparaataanmelding van de Azure CLI wordt gebruikt om de gebruiker bij Azure AD te verifiëren. De gebruiker moet een bepaalde code invoeren om zich te verifiëren met behulp van [de Microsoft-aanmeldingspagina](https://microsoft.com/devicelogin). Nadat de code is ingevoerd, volgt u de stappen om te verifiëren. De gebruiker moet zich verifiëren als het hulpprogramma wordt uitgevoerd.
 
     >[!TIP]
     > Als u deze stap uitvoert, controleert u of de variabelen correct zijn gekopieerd als u dit foutbericht ziet: `EXIT: Unexpected error: The input is not a valid Base-64 string ...`

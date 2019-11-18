@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 11/15/2019
 ms.author: dapine
-ms.openlocfilehash: efb2fd8fd6b77a27130b834c2b192c1e88eec97c
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4170db596d3d4f4b197120770afa2f6e8b0f8a1c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578386"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132597"
 ---
 # <a name="install-and-run-speech-service-containers"></a>Speech Service-containers installeren en uitvoeren
 
@@ -41,7 +41,7 @@ De volgende vereisten voordat u spraak containers gebruikt:
 
 | Vereist | Doel |
 |--|--|
-| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
+| Docker-engine | De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br> |
 | Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten. |
 | Spraak resource | Als u deze containers wilt gebruiken, hebt u het volgende nodig:<br><br>Een Azure- _spraak_ bron om de bijbehorende API-sleutel en eind punt-URI op te halen. Beide waarden zijn beschikbaar op het **spraak** overzicht van de Azure Portal en op de pagina sleutels. Ze zijn beide nodig om de container te starten.<br><br>**{API_KEY}** : een van de twee beschik bare bron sleutels op de pagina **sleutels**<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina **overzicht** |
 
@@ -69,7 +69,7 @@ grep -q avx2 /proc/cpuinfo && echo AVX2 supported || echo No AVX2 support detect
 > [!WARNING]
 > De hostcomputer is *vereist* voor de ondersteuning van AVX2. De container werkt *niet* correct zonder ondersteuning voor AVX2.
 
-### <a name="container-requirements-and-recommendations"></a>Container vereisten en aanbevelingen
+### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
 
 In de volgende tabel wordt de minimale en aanbevolen toewijzing van resources voor elke spraak container beschreven.
 
@@ -112,25 +112,25 @@ Container installatie kopieën voor spraak zijn beschikbaar in de volgende Conta
 
 # <a name="speech-to-texttabstt"></a>[Spraak naar tekst](#tab/stt)
 
-| Container | Opslag plaats |
+| Container | Opslagplaats |
 |-----------|------------|
 | Spraak naar tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest` |
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
-| Container | Opslag plaats |
+| Container | Opslagplaats |
 |-----------|------------|
 | Custom Speech-naar-tekst | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text:latest` |
 
 # <a name="text-to-speechtabtts"></a>[Tekst naar spraak](#tab/tts)
 
-| Container | Opslag plaats |
+| Container | Opslagplaats |
 |-----------|------------|
 | Tekst naar spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-text-to-speech:latest` |
 
 # <a name="custom-text-to-speechtabctts"></a>[Aangepaste tekst-naar-spraak](#tab/ctts)
 
-| Container | Opslag plaats |
+| Container | Opslagplaats |
 |-----------|------------|
 | Aangepaste tekst-naar-spraak | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-text-to-speech:latest` |
 
@@ -151,7 +151,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 ```
 
 > [!IMPORTANT]
-> De `latest` tag haalt de `en-US` land instellingen en `jessarus` stem op. Zie voor aanvullende land instellingen voor [spraak naar tekst](#speech-to-text-locales).
+> De `latest` tag trekt de `en-US` land instelling. Zie voor aanvullende land instellingen voor [spraak naar tekst](#speech-to-text-locales).
 
 #### <a name="speech-to-text-locales"></a>Spraak-naar-tekst-land instellingen
 
@@ -167,7 +167,7 @@ De volgende code is een voor beeld van de indeling:
 2.0.0-amd64-en-us-preview
 ```
 
-Voor alle ondersteunde land instellingen in de 2.0.0-versie van de **instem-naar-tekst-** container raadpleegt u de kolom **container ondersteuning** van de [ondersteunings tabel voor spraak naar tekst](language-support.md#speech-to-text) .
+Zie voor alle ondersteunde land instellingen van de **spraak-naar-tekst** -container Tags voor [spraak-naar-tekst-afbeelding](../containers/container-image-tags.md#speech-to-text).
 
 # <a name="custom-speech-to-texttabcstt"></a>[Custom Speech-naar-tekst](#tab/cstt)
 
@@ -209,7 +209,7 @@ De volgende code is een voor beeld van de indeling:
 1.3.0-amd64-en-us-jessarus-preview
 ```
 
-Zie de kolom **container ondersteuning** van de tabel met [standaard stemmen voor talen](language-support.md#standard-voices) voor alle ondersteunde land instellingen en bijbehorende stemmen in de 1.3.0-versie van de **tekst-naar-spraak** -container.
+Zie [tekst-naar-spraak-afbeeldings Tags](../containers/container-image-tags.md#text-to-speech)voor alle ondersteunde land instellingen en overeenkomstige stemmen van de **tekst-naar-spraak** -container.
 
 > [!IMPORTANT]
 > Bij het maken van een *standaard tekst-naar-spraak* -http post moet het [SSML-bericht (Speech synthese Markup Language)](speech-synthesis-markup.md) een `voice`-element met een `name` kenmerk hebben. De waarde is de overeenkomstige land instellingen voor containers en spraak, ook wel bekend als de [' short name '](language-support.md#standard-voices). Het `latest` label zou bijvoorbeeld een spraak naam van `en-US-JessaRUS`hebben.
@@ -367,7 +367,7 @@ Deze opdracht:
 ***
 
 > [!IMPORTANT]
-> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
+> De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>Query uitvoeren op het prediction-eind punt van de container
 
@@ -404,13 +404,13 @@ Wanneer u de container start of uitvoert, kunnen er problemen optreden. Gebruik 
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
 
-## <a name="billing"></a>Facturering
+## <a name="billing"></a>Billing
 
 De spraak containers verzenden facturerings gegevens naar Azure met behulp van een *spraak* bron op uw Azure-account.
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie [containers configureren](speech-container-configuration.md)voor meer informatie over deze opties.
+Zie voor meer informatie over deze opties [containers configureren](speech-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 
@@ -426,12 +426,12 @@ In dit artikel hebt u concepten en werk stromen geleerd om spraak containers te 
   * *Tekst naar spraak*
   * *Aangepaste tekst-naar-spraak*
 * Container installatie kopieën worden gedownload uit het container register in Azure.
-* Container installatie kopieën worden uitgevoerd in docker.
+* Containerinstallatiekopieën uitvoeren in Docker.
 * U kunt de REST API of SDK gebruiken voor het aanroepen van bewerkingen in spraak containers door de URI van de host op te geven van de container.
 * U moet facturerings gegevens opgeven bij het instantiëren van een container.
 
 > [!IMPORTANT]
->  Cognitive Services-containers mogen niet worden uitgevoerd zonder te zijn verbonden met Azure voor meting. Klanten moeten de containers in staat stellen om de facturerings gegevens te allen tijde met de meet service te communiceren. Cognitive Services containers verzenden geen klant gegevens (zoals de afbeelding of tekst die wordt geanalyseerd) naar micro soft.
+>  Cognitive Services-containers zijn geen licentie om uit te voeren zonder verbinding met Azure voor het meten. Klanten moeten de containers om te communiceren factureringsgegevens met de softwarelicentiecontrole-service te allen tijde inschakelen. Cognitive Services-containers verzenden klantgegevens (zoals de afbeelding of tekst die wordt geanalyseerd) niet naar Microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

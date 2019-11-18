@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 40fb44857126c3562e01585c3131afec87f01e42
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 7064496b89143f467ea63fe38233724a7b0af96d
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430056"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131013"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure PowerShell gebruiken met Azure Storage
 
 Azure PowerShell wordt gebruikt om Azure-resources te maken en te beheren via de Power shell-opdracht regel of in scripts. Voor Azure Storage worden deze cmdlets onderverdeeld in twee categorieën: het besturings vlak en het gegevens vlak. De Control vlak-cmdlets worden gebruikt voor het beheren van het opslag account, voor het maken van opslag accounts, het instellen van eigenschappen, het verwijderen van opslag accounts, het draaien van de toegangs sleutels, enzovoort. De data vlak-cmdlets worden gebruikt voor het beheren van de gegevens die zijn opgeslagen *in* het opslag account. Bijvoorbeeld: het uploaden van blobs, het maken van bestands shares en het toevoegen van berichten aan een wachtrij.
 
-In dit artikel wordt beschreven hoe u algemene bewerkingen kunt gebruiken voor het beheren van opslag accounts met behulp van de management plan-cmdlets. In deze zelfstudie leert u procedures om het volgende te doen:
+In dit artikel wordt beschreven hoe u algemene bewerkingen kunt gebruiken voor het beheren van opslag accounts met behulp van de management plan-cmdlets. Procedures voor:
 
 > [!div class="checklist"]
 > * Opslag accounts weer geven
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Deze oefening vereist de Azure PowerShell-module AZ versie 0,7 of hoger. Voer `Get-Module -ListAvailable Az` uit om de versie te bekijken. Als u PowerShell wilt installeren of upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps).
 
-Voor deze oefening kunt u de opdrachten in een normaal Power shell-venster typen, of u kunt de [Windows Power shell Integrated Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) gebruiken en de opdrachten typen in een editor, en vervolgens een of meer opdrachten tegelijk testen tijdens het door lopen van de vindt. U kunt de rijen markeren die u wilt uitvoeren en op geselecteerde uitvoeren klikken om deze opdrachten uit te voeren.
+Voor deze oefening kunt u de opdrachten in een normaal Power shell-venster typen, maar u kunt ook de [Windows Power shell Integrated Scripting Environment (ISE)](/powershell/scripting/components/ise/exploring-the-windows-powershell-ise) gebruiken en de opdrachten in een editor typen en vervolgens een of meer opdrachten tegelijk testen door de voor beelden door te lopen. U kunt de rijen markeren die u wilt uitvoeren en op geselecteerde uitvoeren klikken om deze opdrachten uit te voeren.
 
 Zie [Inleiding tot opslag](storage-introduction.md) en [over Azure Storage-accounts](storage-create-storage-account.md)voor meer informatie over opslag accounts.
 
@@ -109,7 +109,7 @@ Het script maakt gebruik van de volgende Power shell-cmdlets:
 
 *   [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) --maakt een nieuwe resource groep. Een resource groep is een logische container waarin uw Azure-resources worden geïmplementeerd en beheerd. Ren heet `teststoragerg`.
 
-*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) : maakt het opslag account. In het voor beeld wordt `testpshstorage` gebruikt.
+*   [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) : maakt het opslag account. In het voor beeld wordt `testpshstorage`gebruikt.
 
 De SKU-naam geeft het type replicatie voor het opslag account aan, zoals LRS (lokaal redundante opslag). Zie [Azure storage-replicatie](storage-redundancy.md)voor meer informatie over replicatie.
 
@@ -131,7 +131,7 @@ Als u de instellingen voor een opslag account wilt wijzigen, gebruikt u [set-AzS
 
 * De **labels** die aan het opslag account zijn toegewezen. Tags worden vaak gebruikt om resources te categoriseren voor facturerings doeleinden.
 
-* De **SKU** is de replicatie-instelling voor het opslag account, zoals LRS voor lokaal redundante opslag. U kunt bijvoorbeeld wijzigen van Standard @ no__t-0LRS naar Standard @ no__t-1GRS of Standard @ no__t-2RAGRS. Houd er rekening mee dat u standaard @ no__t-0ZRS, Standard @ no__t-1GZRS, Standard @ no__t-2RAGZRS of Premium @ no__t-3LRS naar andere Sku's niet kunt wijzigen of andere Sku's kunt wijzigen.
+* De **SKU** is de replicatie-instelling voor het opslag account, zoals LRS voor lokaal redundante opslag. U kunt bijvoorbeeld wijzigen van Standard\_LRS naar Standard\_GRS of Standard\_RAGRS. Houd er rekening mee dat u standaard\_ZRS, Standard\_GZRS, Standard\_RAGZRS of Premium\_LRS naar andere Sku's niet kunt wijzigen of andere Sku's kunt wijzigen.
 
 * De **toegangs laag** voor Blob Storage-accounts. De waarde voor de toegangs laag is ingesteld op **dynamisch** of **koud**en Hiermee kunt u de kosten tot een minimum beperken door de toegangs laag te selecteren die wordt uitgelijnd met de manier waarop u het opslag account gebruikt. Zie [opslag lagen dynamisch, koud en archief](../blobs/storage-blob-storage-tiers.md)voor meer informatie.
 
@@ -156,7 +156,7 @@ New-AzStorageAccountKey -ResourceGroupName $resourceGroup `
   -KeyName key1
 ```
 
-Als u de andere sleutel opnieuw wilt genereren, gebruikt u `key2` als sleutel naam in plaats van `key1`.
+Als u de andere sleutel opnieuw wilt genereren, gebruikt u `key2` als de sleutel naam in plaats van `key1`.
 
 Genereer een van de sleutels opnieuw en haal deze opnieuw op om de nieuwe waarde weer te geven.
 
@@ -185,7 +185,7 @@ In dit artikel wordt beschreven hoe u deze instellingen beheert met behulp van d
 * [Update-AzStorageAccountNetworkRuleSet](/powershell/module/az.storage/update-azstorageaccountnetworkruleset)
 * [Remove-AzStorageAccountNetworkRule](https://docs.microsoft.com/powershell/module/az.storage/remove-azstorageaccountnetworkrule)
 
-## <a name="use-storage-analytics"></a>Opslag analyse gebruiken  
+## <a name="use-storage-analytics"></a>Opslag analyse gebruiken
 
 [Azure Opslaganalyse](storage-analytics.md) bestaat uit [Opslaganalyse metrische gegevens](/rest/api/storageservices/about-storage-analytics-metrics) en [Opslaganalyse logboek registratie](/rest/api/storageservices/about-storage-analytics-logging).
 
@@ -252,4 +252,4 @@ In dit artikel vindt u ook verwijzingen naar verschillende andere artikelen, zoa
 
 * [Power shell-cmdlets voor Azure Storage Control vlak](/powershell/module/az.storage/)
 * [Power shell-cmdlets voor Azure Storage Data-vlak](/powershell/module/azure.storage/)
-* [Naslag informatie voor Windows Power shell](/powershell/scripting/developer/windows-powershell)
+* [Naslag informatie voor Windows Power shell](/powershell/scripting/overview)

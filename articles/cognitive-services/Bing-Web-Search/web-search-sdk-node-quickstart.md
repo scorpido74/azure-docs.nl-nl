@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: De Bing Web Search SDK voor Node.js gebruiken'
+title: 'Snelstartgids: de Bing Web Search SDK voor Node.js gebruiken'
 titleSuffix: Azure Cognitive Services
-description: Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie maakt voor een client, een aanvraag verzendt en het antwoord weergeeft.
+description: Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie kunt maken voor een client, een aanvraag kunt verzenden en het antwoord kunt afdrukken.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: 96848e30c13d226978a6be1a1786e9ed2b4ab7c2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 79f0630c65aa438ac5d831b03842cc74b609cd3b
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60498913"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132732"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Quickstart: De Bing Web Search SDK voor Node.js gebruiken
+# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Snelstartgids: de Bing Web Search SDK voor Node.js gebruiken
 
 Met de Bing Web Search SDK kunt u Bing Web Search eenvoudig integreren in uw Node.js-toepassing. In deze snelstartgids leert u hoe u een instantie kunt maken voor een client, een aanvraag kunt verzenden en het antwoord kunt afdrukken.
 
@@ -28,12 +28,12 @@ Wilt u de code nu zien? De [voorbeelden voor de Bing Web Search SDK voor Node.js
 Zie ook [Prijsinformatie Cognitive Services - Bing Zoeken-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
 
 ## <a name="prerequisites"></a>Vereisten
-Voordat u verdergaat met deze snelstart moet u beschikken over:
+U moet over het volgende beschikken voordat u verdergaat met deze snelstartgids:
 
 * [Node.js 6](https://nodejs.org/en/download/) of later
 * Een abonnementssleutel  
 
-## <a name="set-up-your-development-environment"></a>De ontwikkelomgeving instellen
+## <a name="set-up-your-development-environment"></a>Uw ontwikkelomgeving instellen
 
 U moet eerst de ontwikkelomgeving voor het Node.js-project opzetten.
 
@@ -111,4 +111,4 @@ Wanneer u klaar bent met dit project, moet u uw abonnementssleutel verwijderen u
 
 ## <a name="see-also"></a>Zie ook
 
-* [Naslaginformatie over Azure Node SDK](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)
+* [Naslaginformatie over Azure Node SDK](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-websearch/)

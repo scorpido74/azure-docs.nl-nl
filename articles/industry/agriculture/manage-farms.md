@@ -5,14 +5,14 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: c83ac8a42a91c9db06726e917ed142e20995b987
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 929672dceabc7d9b591f05ef3f4f716f2117e09c
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797970"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74128670"
 ---
-# <a name="manage-farms"></a>Farms beheren
+# <a name="manage-farms"></a>Een boerderij beheren
 
 U kunt uw farms beheren in azure FarmBeats. In dit artikel vindt u informatie over het maken van Farms, het installeren van apparaten, Sens oren en drones waarmee u uw Farms kunt beheren.
 
@@ -58,7 +58,7 @@ Op de lijst pagina met farms wordt een lijst met gemaakte Farms weer gegeven. Se
 Op de pagina **Farms** wordt een lijst met gemaakte Farms weer gegeven.
 
 1.  Selecteer een farm om de farm weer te geven en te bewerken.
-2.  Selecteer **Farm bewerken** om de farm gegevens te bewerken. In het venster **Farm Details** kunt u de grens **velden naam**, **gewas**, **adres**en **Farm** bewerken.
+2.  Selecteer **Farm bewerken** om de farm gegevens te bewerken. In het venster **Farm Details** kunt u de grens velden voor de **naam**, het **gewas**, het **adres**en de **Farm** definitie bewerken.
 
     ![Maten van project-Farm](./media/create-farms/edit-farm-1.png)
 

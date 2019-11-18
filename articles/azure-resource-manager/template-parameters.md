@@ -1,17 +1,14 @@
 ---
-title: Para meters in Azure Resource Manager sjablonen
+title: Para meters in sjablonen
 description: Hierin wordt beschreven hoe u para meters definieert in een Azure Resource Manager sjabloon.
-author: tfitzmac
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/05/2019
-ms.author: tomfitz
-ms.openlocfilehash: 4947b00d6fad5007751cd97d43ad6aca8d775330
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 3ef87a6f24f99564d0c55ae0bc496045b7011eea
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383278"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74150270"
 ---
 # <a name="parameters-in-azure-resource-manager-templates"></a>Para meters in Azure Resource Manager sjablonen
 
@@ -155,7 +152,7 @@ U verwijst naar de eigenschappen van het object met behulp van de punt operator.
 
 In de volgende voor beelden ziet u scenario's voor het gebruik van para meters.
 
-|Template  |Description  |
+|Template  |Beschrijving  |
 |---------|---------|
 |[para meters met functies voor standaard waarden](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | Demonstreert hoe u sjabloon functies gebruikt bij het definiëren van standaard waarden voor para meters. De sjabloon implementeert geen resources. Er worden parameter waarden gemaakt en deze waarden worden geretourneerd. |
 |[parameter object](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | Laat zien hoe u een object gebruikt voor een para meter. De sjabloon implementeert geen resources. Er worden parameter waarden gemaakt en deze waarden worden geretourneerd. |

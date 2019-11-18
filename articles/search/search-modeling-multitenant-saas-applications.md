@@ -1,5 +1,5 @@
 ---
-title: Meerdere pacht modellen voor inhouds isolatie in één service
+title: Multitenancy en isolatie van inhoud
 titleSuffix: Azure Cognitive Search
 description: Meer informatie over veelgebruikte ontwerp patronen voor SaaS-toepassingen met meerdere tenants tijdens het gebruik van Azure Cognitive Search.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0332443997fbc58781f99e3b4e6d9776dd23926b
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d37abd1b5d212c3d920cb68b6236029b2112ae24
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793519"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113273"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Ontwerp patronen voor SaaS-toepassingen met meerdere tenants en Azure Cognitive Search
 Een multi tenant-toepassing biedt dezelfde services en mogelijkheden voor elk aantal tenants dat de gegevens van een andere Tenant niet kan zien of delen. In dit document worden de isolatie strategieën voor tenants besproken voor multi tenant-toepassingen die zijn gebouwd met Azure Cognitive Search.
@@ -125,7 +125,7 @@ Deze methode kan worden gebruikt voor het bezorgen van de functionaliteit van af
 > 
 
 ## <a name="next-steps"></a>Volgende stappen
-Azure Cognitive Search is een fascinerende keuze voor veel toepassingen. Bij het evalueren van de verschillende ontwerp patronen voor multi tenant-toepassingen, moet u rekening houden met de [verschillende prijs categorieën](https://azure.microsoft.com/pricing/details/search/) en de bijbehorende [service limieten](search-limits-quotas-capacity.md) voor het Best passend maken van Azure Cognitive Search voor het aanpassen van werk belastingen en architecturen van elk formaat .
+Azure Cognitive Search is een fascinerende keuze voor veel toepassingen. Bij het evalueren van de verschillende ontwerp patronen voor multi tenant-toepassingen, moet u rekening houden met de [verschillende prijs categorieën](https://azure.microsoft.com/pricing/details/search/) en de bijbehorende [service limieten](search-limits-quotas-capacity.md) voor het Best passend maken van Azure Cognitive Search voor het aanpassen van werk belastingen en architecturen van elke omvang.
 
 Vragen over Azure Cognitive Search en multi tenant scenario's kunnen worden omgeleid naar azuresearch_contact@microsoft.com.
 

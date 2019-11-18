@@ -8,23 +8,23 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 94cae186cee099618772f53d2b820e12f20cad64
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 7069a3c8b266938e974d1b7130a349e0c9b66b5c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68562409"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111825"
 ---
-# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Quickstart: HoloLens-app maken met Azure Spatial Anchors, in C++/WinRT en DirectX
+# <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>Snelstartgids: een HoloLens-app maken met behulp van Azure spatiale ankers, in C++/WinRT en DirectX
 
-In deze quickstart wordt besproken hoe u een HoloLens-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in C++/WinRT en DirectX. Azure Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een HoloLens-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
+In deze quickstart wordt besproken hoe u een HoloLens-app maakt met behulp van [Azure Spatial Anchors](../overview.md) in C++/WinRT en DirectX. Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Als u klaar bent, hebt u een HoloLens-app gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
 U leert het volgende:
 
 > [!div class="checklist"]
 > * Een Spatial Anchors-account maken
 > * De Spatial Anchors-account-id en -accountsleutel configureren
-> * Implementeren en uitvoeren op een HoloLens-apparaat
+> * Het project implementeren en uitvoeren in een HoloLens-apparaat
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -52,13 +52,13 @@ Open `HoloLens\DirectX\SampleHoloLens\ViewController.cpp`.
 
 Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
+Zoek het `SpatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
 
 ## <a name="deploy-the-app-to-your-hololens"></a>De app implementeren op uw HoloLens
 
 Wijzig **Solution Configuration** in **Release**, wijzig **Solution Platform** in **x86** en selecteer **Device** uit de opties voor het implementatiedoel.
 
-Als u HoloLens 2 gebruikt, gebruikt u **arm** als het **oplossings platform**in plaats van **x86**.
+Als u HoloLens 2 gebruikt, gebruikt u **ARM64** als het **oplossings platform**in plaats van **x86**.
 
 ![Configuratie van Visual Studio](./media/get-started-hololens/visual-studio-configuration.png)
 
@@ -75,4 +75,4 @@ Stop de app in Visual Studio door **Stop Debugging** te selecteren of door op **
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Spatial Anchors met meerdere apparaten delen](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)

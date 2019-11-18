@@ -1,5 +1,5 @@
 ---
-title: Een audio-invoer apparaat selecteren met de Speech SDK-Speech-Service
+title: Een audio-invoerapparaat selecteren met de Speech-SDK
 titleSuffix: Azure Cognitive Services
 description: Meer informatie over het selecteren van audio-invoer apparaten inC++de C#Speech SDK (, Python, objectief-C, Java, java script) door de id's te verkrijgen van de audio apparaten die zijn verbonden met een systeem.
 services: cognitive-services
@@ -10,18 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.openlocfilehash: 967e4fbc5484c152867fe5558040631d21e6c0b3
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9891cdb59c757035afd17339b052d5587ac99b0c
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072441"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74109972"
 ---
-# <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Een audio-invoerapparaat selecteren met de Speech-SDK
+# <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Procedure: een audio-invoer apparaat selecteren met de Speech SDK
 
-Versie 1.3.0 van de Speech SDK introduceert een API voor het selecteren van de audio-invoer.
-In dit artikel wordt beschreven hoe u de Id's kunt ophalen van de audio apparaten die zijn verbonden met een systeem.
-Deze kunnen vervolgens worden gebruikt in de Speech-SDK door het audioapparaat via het `AudioConfig`-object te configureren:
+Versie 1.3.0 van de Speech SDK introduceert een API voor het selecteren van de audio-invoer. In dit artikel wordt beschreven hoe u de Id's kunt ophalen van de audio apparaten die zijn verbonden met een systeem. Deze kunnen vervolgens worden gebruikt in de Speech-SDK door het audioapparaat via het `AudioConfig`-object te configureren:
 
 ```C++
 audioConfig = AudioConfig.FromMicrophoneInput("<device id>");
@@ -53,6 +51,7 @@ audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>Id's van audioapparaten onder Windows voor bureaublad-toepassingen
 
 [Eindpunt-id-tekenreeksen](/windows/desktop/CoreAudio/endpoint-id-strings) voor audioapparaten kunnen worden opgehaald via het [`IMMDevice`](/windows/desktop/api/mmdeviceapi/nn-mmdeviceapi-immdevice)-object in Windows voor bureaublad-toepassingen.
+
 Het volgende codevoorbeeld illustreert hoe u deze kunt gebruiken om audioapparaten in C++ op te sommen:
 
 ```cpp
@@ -177,6 +176,7 @@ Een voorbeeld van een apparaat-id is `{0.0.1.00000000}.{5f23ab69-6181-4f4a-81a4-
 ## <a name="audio-device-ids-on-uwp"></a>Audioapparaat-id's op UWP
 
 Op het Universeel Windows-platform (UWP) kunt u audio-invoerapparaten verkrijgen met de eigenschap `Id()` van het corresponderende [`DeviceInformation`](/uwp/api/windows.devices.enumeration.deviceinformation)-object.
+
 In de volgende codevoorbeelden kunt u zien hoe u dit in C++ en C# kunt doen:
 
 ```cpp
@@ -227,13 +227,16 @@ Een voorbeeld van een apparaat-id is `\\\\?\\SWD#MMDEVAPI#{0.0.1.00000000}.{5f23
 ## <a name="audio-device-ids-on-linux"></a>Audioapparaat-id's onder Linux
 
 De apparaat-id's worden geselecteerd met standaard-ALSA-apparaat-id's.
+
 De id's van de invoer die aan het systeem is gekoppeld, worden opgenomen in de uitvoer van de opdracht `arecord -L`.
 Ze kunnen ook worden verkregen met de [ALSA C-bibliotheek](https://www.alsa-project.org/alsa-doc/alsa-lib/).
+
 Voorbeeld-id's zijn `hw:1,0` en `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>Audioapparaat-id's onder macOS
 
 Met de volgende, in Objective-C geïmplementeerde functie wordt een lijst gemaakt met de namen en id's van de audioapparaten die aan een Mac zijn gekoppeld.
+
 De tekenreeks `deviceUID` wordt gebruikt om een apparaat in de Speech-SDK voor macOS te identificeren.
 
 ```objc
@@ -362,8 +365,8 @@ Zo is `BuiltInMicrophoneDevice` de UID voor de ingebouwde microfoon.
 
 ## <a name="audio-device-ids-on-ios"></a>Audioapparaat-id's onder iOS
 
-Selectie van audioapparaten met de Speech-SDK wordt onder iOS niet ondersteund.
-De apps die van de SDK gebruikmaken, kunnen echter audioroutering via het [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)-framework beïnvloeden.
+Selectie van audioapparaten met de Speech-SDK wordt onder iOS niet ondersteund. De apps die van de SDK gebruikmaken, kunnen echter audioroutering via het [`AVAudioSession`](https://developer.apple.com/documentation/avfoundation/avaudiosession?language=objc)-framework beïnvloeden.
+
 Bijvoorbeeld: de instructie
 
 ```objc

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 9c0ed5a28f865d5dd53b01f22eb69c7d1b332ecf
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: db334b873358fdab6671877dd66e7f49c334ac44
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74030097"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74133027"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Ondersteunings matrix voor herstel na nood gevallen van on-premises virtuele Hyper-V-machines naar Azure
 
@@ -25,7 +25,7 @@ In dit artikel vindt u een overzicht van de ondersteunde onderdelen en instellin
 
 **Scenario** | **Details**
 --- | ---
-Hyper-V met Virtual Machine Manager <br> **Dit scenario bevindt zich in het pad van de afschaffing.** <br>| U kunt herstel na nood geval uitvoeren op Azure voor virtuele machines die worden uitgevoerd op Hyper-V-hosts die worden beheerd in de System Center Virtual Machine Manager infrastructuur resources.<br/><br/> U kunt dit scenario implementeren in de Azure Portal of met behulp van Power shell.<br/><br/> Wanneer Hyper-V-hosts door Virtual Machine Manager worden beheerd, kunt u herstel na nood gevallen ook uitvoeren op een secundaire on-premises site. Lees [deze zelf studie](hyper-v-vmm-disaster-recovery.md)voor meer informatie over dit scenario.
+Hyper-V met Virtual Machine Manager <br> <br>| U kunt herstel na nood geval uitvoeren op Azure voor virtuele machines die worden uitgevoerd op Hyper-V-hosts die worden beheerd in de System Center Virtual Machine Manager infrastructuur resources.<br/><br/> U kunt dit scenario implementeren in de Azure Portal of met behulp van Power shell.<br/><br/> Wanneer Hyper-V-hosts door Virtual Machine Manager worden beheerd, kunt u herstel na nood gevallen ook uitvoeren op een secundaire on-premises site. Lees [deze zelf studie](hyper-v-vmm-disaster-recovery.md)voor meer informatie over dit scenario.
 Hyper-V zonder Virtual Machine Manager | U kunt herstel na nood geval uitvoeren op Azure voor virtuele machines die worden uitgevoerd op Hyper-V-hosts die niet worden beheerd door Virtual Machine Manager.<br/><br/> U kunt dit scenario implementeren in de Azure Portal of met behulp van Power shell.
 
 ## <a name="on-premises-servers"></a>On-premises servers

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 76b34e11bba00105792ac5163c5163184c185e09
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 1126a85ed22ee17879767a93ca75dc76dd04b747
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74039624"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74132960"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Ondersteunings matrix voor herstel na nood gevallen van virtuele Hyper-V-machines naar een secundaire site
 
@@ -20,9 +20,6 @@ In dit artikel wordt een overzicht gegeven van wat er wordt ondersteund wanneer 
 
 > [!NOTE]
 > U kunt alleen repliceren naar een secundaire site wanneer uw Hyper-V-hosts worden beheerd in VMM-Clouds.
-
-> [!WARNING]
-> ASR-ondersteuning voor het gebruik van SCVMM-configuratie in account wordt binnenkort afgeschaft en daarom raden we u aan de details van de [afschaffing](site-to-site-deprecation.md) te lezen voordat u doorgaat.
 
 
 ## <a name="host-servers"></a>Hostservers

@@ -1,21 +1,18 @@
 ---
-title: Zelf studie-een variabele toevoegen aan Azure Resource Manager sjabloon
+title: Zelf studie-variabele aan sjabloon toevoegen
 description: Voeg variabelen toe aan uw Azure Resource Manager sjabloon om de syntaxis te vereenvoudigen.
-services: azure-resource-manager
 author: mumian
-manager: carmonmills
-ms.service: azure-resource-manager
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: fb577c0c0f00da3735da98fc2e94f3610c9bd80d
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 9af6b9028dbc5b01c3d0ec9dc41f145e37c31b0e
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001461"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147973"
 ---
-# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Zelfstudie: Variabelen toevoegen aan uw Resource Manager-sjabloon
+# <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Zelf studie: variabelen toevoegen aan uw Resource Manager-sjabloon
 
 In deze zelf studie leert u hoe u een variabele kunt toevoegen aan uw sjabloon. Variabelen vereenvoudigen uw sjablonen door u in te scha kelen een expressie één keer te schrijven en opnieuw te gebruiken in de sjabloon. Het volt ooien van deze zelf studie duurt **zeven minuten** .
 
@@ -86,7 +83,7 @@ az group deployment create \
 
 U kunt de implementatie controleren door de resource groep te verkennen van de Azure Portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **resource groepen**in het menu links.
 1. Selecteer de resource groep die u hebt geïmplementeerd.
 1. U ziet dat er een opslag account resource is geïmplementeerd. De naam van het opslag account is **Store** plus een teken reeks van wille keurige tekens.

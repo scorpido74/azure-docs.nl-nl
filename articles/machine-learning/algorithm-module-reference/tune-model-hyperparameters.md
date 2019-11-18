@@ -1,5 +1,5 @@
 ---
-title: Model Hyper parameters afstemmen
+title: Model Hyperparameters afstemmen
 titleSuffix: Azure Machine Learning service
 description: Meer informatie over het gebruik van de module Tune model Hyper parameters in de Azure Machine Learning-service om een parameter opruiming uit te voeren op een model om de optimale parameter instellingen te bepalen.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: fd796297bafeb437b55eca7f38cbd7ae55e19b93
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 834907528e4062de583197cf91e98372b96451d7
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716715"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74131219"
 ---
-# <a name="tune-model-hyperparameters"></a>Model Hyper parameters afstemmen
+# <a name="tune-model-hyperparameters"></a>Model Hyperparameters afstemmen
 
 In dit artikel wordt beschreven hoe u de module Tune model Hyper parameters gebruikt in Azure Machine Learning Designer (preview). Het doel is om de optimale Hyper parameters te bepalen voor een machine learning model. De module bouwt en test meerdere modellen met behulp van verschillende combi Naties van instellingen. Hiermee worden metrische gegevens van alle modellen vergeleken om de combi Naties van instellingen te verkrijgen. 
 
@@ -69,7 +69,7 @@ In deze sectie wordt beschreven hoe u een eenvoudige para meter-sweep uitvoert, 
 
 8.  Voor de **rang schikking**kiest u één metrische waarde voor het classificeren van de modellen.
 
-    Wanneer u een para meter sweep uitvoert, berekent de module alle toepasselijke metrische gegevens voor het model type en retourneert deze in het rapport met opschonings **resultaten** . In de module worden afzonderlijke metrische gegevens gebruikt voor regressie-en classificatie modellen.
+    Wanneer u een parameter sweep uitvoert, berekent de module alle toepasselijke metrische gegevens voor het model type en retourneert deze in het rapport met **resultaten van opruimen** . In de module worden afzonderlijke metrische gegevens gebruikt voor regressie-en classificatie modellen.
 
     De metriek die u kiest, bepaalt echter hoe de modellen worden gerangschikt. Alleen het bovenste model, zoals geclassificeerd door de gekozen metriek, wordt uitgevoerd als een getraind model om te gebruiken voor een score.
 

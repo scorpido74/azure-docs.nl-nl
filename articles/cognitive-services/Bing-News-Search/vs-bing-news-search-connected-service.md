@@ -1,7 +1,7 @@
 ---
 title: Verbinding maken met de Bing Nieuws zoeken-API met behulp van Connected Services in Visual Studio en C#
 titleSuffix: Azure Cognitive Services
-description: Verbinding maken met de Bing Nieuws zoeken-API vanuit een ASP.NET Core webtoepassing.
+description: Met behulp van de Bing Nieuws zoeken-API kunt u apps en services de mogelijkheid bieden om gebruik te maken van de kracht van een zoekprogramma voor het internet zonder advertenties.
 services: cognitive-services
 author: ghogen
 manager: nitinme
@@ -10,14 +10,14 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 06/18/2019
 ms.author: ghogen
-ms.openlocfilehash: 85afae087b1b1e572759943142412743744ee806
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 0a8a4f69c94f217cb40146b022adf2b2d56c8d42
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203425"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111509"
 ---
-# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Zelfstudie: Verbinding maken met de Bing Nieuws zoeken-API met behulp van Connected Services in Visual Studio en C#
+# <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Zelf studie: verbinding maken met Bing Nieuws zoeken-API met verbonden services in Visual Studio enC#
 
 Met behulp van de Bing Nieuws zoeken-API kunt u apps en services de mogelijkheid bieden om gebruik te maken van de kracht van een zoekprogramma voor het internet zonder advertenties. Bing News Search is een van de zoekservices die beschikbaar is met Cognitive Services.
 
@@ -26,7 +26,7 @@ Dit artikel bevat informatie voor het gebruik van de functie Connected Services 
 ## <a name="prerequisites"></a>Vereisten
 
 - Een Azure-abonnement. Als u nog geen abonnement hebt, kunt u zich aanmelden voor een [gratis account](https://azure.microsoft.com/pricing/free-trial/).
-- Visual 2019 van het Studio, in de met de ontwikkeling van Web-werkbelasting geïnstalleerd. [Download nu](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
+- Visual Studio 2019, waarbij de werk belasting voor Web Development is geïnstalleerd. [Nu downloaden](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 
 [!INCLUDE [vs-install-cognitive-services-vsix](../../../includes/vs-install-cognitive-services-vsix.md)]
 
@@ -260,7 +260,7 @@ Nu u ondersteuning voor de Bing Nieuws zoeken-API hebt toegevoegd aan uw project
            
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resourcegroep niet meer nodig hebt, kunt u deze verwijderen. Hiermee verwijdert u de Cognitive Service en gerelateerde resources. De resourcegroep verwijderen via de portal:
+Als u de resourcegroep niet meer nodig hebt, kunt u deze verwijderen. Hiermee verwijdert u ook de Cognitive Service en gerelateerde resources. De resourcegroep verwijderen via de portal:
 
 1. Typ de naam van uw resourcegroep in het zoekvak bovenaan de portal. Selecteer de resourcegroep die u wilt verwijderen.
 2. Selecteer **Resourcegroep verwijderen**.

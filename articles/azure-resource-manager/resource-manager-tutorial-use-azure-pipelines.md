@@ -1,24 +1,16 @@
 ---
-title: Continue integratie met Azure-pijp lijnen | Microsoft Docs
+title: Continue integratie met Azure-pijplijnen
 description: Meer informatie over het continu bouwen, testen en implementeren van Azure Resource Manager sjablonen.
-services: azure-resource-manager
-documentationcenter: ''
 author: mumian
-manager: carmonm
-editor: ''
-ms.service: azure-resource-manager
-ms.workload: multiple
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.date: 10/29/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: daf1e85835401f618d2804285cdb9579360aef15
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: 73ab01b5e4ea923b990932986a938f8c1fb25629
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73052204"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149306"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Zelf studie: doorlopende integratie van Azure Resource Manager sjablonen met Azure-pijp lijnen
 
@@ -126,7 +118,7 @@ De azuredeploy. json is toegevoegd aan de lokale opslag plaats. Vervolgens uploa
     ```
 
     Er kan een waarschuwing over LF worden weer gegeven. U kunt de waarschuwing negeren. **Master** is de Master vertakking.  Doorgaans maakt u een vertakking voor elke update. Voor het vereenvoudigen van de zelf studie gebruikt u de hoofd vertakking rechtstreeks.
-1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is **https://github.com/ [YourAccountName]/[YourGitHubRepository]** . De map **CreateAzureStorage** en **Azuredeploy. json** worden weer geven in de map.
+1. Blader vanuit een browser naar uw GitHub-opslag plaats.  De URL is **https://github.com/[YourAccountName]/[YourGitHubRepository]** . De map **CreateAzureStorage** en **Azuredeploy. json** worden weer geven in de map.
 
 Tot nu toe hebt u een GitHub-opslag plaats gemaakt en een sjabloon geüpload naar de opslag plaats.
 
@@ -220,7 +212,7 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
 
 ## <a name="verify-the-deployment"></a>De implementatie controleren
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Open de resource groep. De naam is wat u hebt opgegeven in het YAML-bestand van de pijp lijn.  U ziet dat er één opslag account is gemaakt.  De naam van het opslag account begint met **Store**.
 1. Selecteer de naam van het opslag account om deze te openen.
 1. Selecteer **Eigenschappen**. Let op: de **replicatie** is **lokaal redundante opslag (LRS)** .
@@ -232,7 +224,7 @@ Een pijp lijn maken met een stap voor het implementeren van een sjabloon:
 Wanneer u de sjabloon bijwerkt en de wijzigingen naar de externe opslag plaats pusht, worden de resources, het opslag account in dit geval automatisch bijgewerkt door de pijp lijn.
 
 1. Open **azuredeploy. json** van uw lokale opslag plaats in Visual Studio code.
-1. Werk de **DefaultValue** van **StorageAccountType** bij naar **Standard_GRS**. Zie de volgende schermafbeelding:
+1. Werk de **DefaultValue** van **storageAccountType** bij naar **Standard_GRS**. Zie de volgende schermafbeelding:
 
     ![Azure Resource Manager Azure DevOps Azure pipelines-update yaml](./media/resource-manager-tutorial-use-azure-pipelines/azure-resource-manager-devops-pipelines-update-yml.png)
 

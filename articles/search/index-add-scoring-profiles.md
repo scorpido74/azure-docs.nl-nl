@@ -1,5 +1,5 @@
 ---
-title: Score profielen toevoegen om relevante documenten in Zoek resultaten te stimuleren
+title: Zoek classificatie verhogen met behulp van Score profielen
 titleSuffix: Azure Cognitive Search
 description: Verhoog de zoek positie scores voor Azure Cognitive Search resultaten door Score profielen toe te voegen.
 manager: nitinme
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 2b92f8031a0d35696447f8ab796d24c504d57457
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 60442ab101423d0a91fa35a7a12a0b930417af71
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72790125"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74113618"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Score profielen toevoegen aan een Azure Cognitive Search-index
 
@@ -243,16 +243,16 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 |`Fieldname`|Vereist voor Score functies. Een score functie kan alleen worden toegepast op velden die deel uitmaken van de veld verzameling van de index en die kunnen worden gefilterd. Daarnaast introduceert elk functie type extra beperkingen (de versheid wordt gebruikt met datum-en tijd velden, een grootte met gehele getallen of dubbele velden en de afstand met locatie velden). U kunt slechts één veld per functie definitie opgeven. Als u bijvoorbeeld twee keer in hetzelfde profiel een bepaalde grootte wilt gebruiken, moet u twee definities per veld hebben.|  
 |`Interpolation`|Vereist voor Score functies. Definieert de helling waarvoor de score wordt verhoogd van het begin van het bereik tot het einde van het bereik. Geldige waarden zijn onder andere lineair (standaard), constante, kwadratisch en logaritmisch. Zie [interpolatie instellen](#bkmk_interpolation) voor meer informatie.|  
 |`magnitude`|De functie magnitude wordt gebruikt om de classificaties te wijzigen op basis van het bereik van waarden voor een numeriek veld. Enkele van de meest voorkomende gebruiks voorbeelden hiervan zijn:<br /><br /> -   **ster waardering:** Wijzig de score op basis van de waarde in het veld ster waardering. Wanneer twee items relevant zijn, wordt het item met de hogere classificatie eerst weer gegeven.<br />-   **marge:** wanneer twee documenten relevant zijn, kan een detail handelaar documenten met hogere marges eerst stimuleren.<br />-   **klikt u op aantallen:** voor toepassingen die volgen op acties voor producten of pagina's, kunt u de grootte gebruiken om items te verhogen die meestal het grootste verkeer krijgen.<br />aantal -   - **down loads:** voor toepassingen die down loads volgen, kunt u met de functie magnitude items verhogen die de meeste down loads hebben.|  
-|`magnitude` &#124;`boostingRangeStart`|Hiermee wordt de begin waarde ingesteld van het bereik waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 1 zijn. Voor marges van meer dan 50% zou dit 50 zijn.|  
-|`magnitude` &#124;`boostingRangeEnd`|Hiermee wordt de eind waarde van het bereik ingesteld waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 4 zijn.|  
-|`magnitude` &#124;`constantBoostBeyondRange`|Geldige waarden zijn True of False (standaard). Als deze optie is ingesteld op True, blijft de volledige boost van toepassing op documenten met een waarde voor het doel veld die hoger is dan het bovenste einde van het bereik. Indien onwaar, wordt de boost van deze functie niet toegepast op documenten met een waarde voor het doel veld die buiten het bereik valt.|  
+|`magnitude` &#124; `boostingRangeStart`|Hiermee wordt de begin waarde ingesteld van het bereik waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 1 zijn. Voor marges van meer dan 50% zou dit 50 zijn.|  
+|`magnitude` &#124; `boostingRangeEnd`|Hiermee wordt de eind waarde van het bereik ingesteld waarvan de grootte wordt gescoord. De waarde moet een geheel getal zijn of een getal met een drijvende komma. Voor ster waarderingen van 1 tot en met 4 zou dit 4 zijn.|  
+|`magnitude` &#124; `constantBoostBeyondRange`|Geldige waarden zijn True of False (standaard). Als deze optie is ingesteld op True, blijft de volledige boost van toepassing op documenten met een waarde voor het doel veld die hoger is dan het bovenste einde van het bereik. Indien onwaar, wordt de boost van deze functie niet toegepast op documenten met een waarde voor het doel veld die buiten het bereik valt.|  
 |`freshness`|De functie versheids score wordt gebruikt om de classificatie scores voor items te wijzigen op basis van waarden in `DateTimeOffset` velden. Een item met een recentere datum kan bijvoorbeeld hoger zijn dan oudere items.<br /><br /> Het is ook mogelijk om items zoals Agenda gebeurtenissen te rangschikken met toekomstige datums, zodat items die dichter bij de huidige aanwezig zijn, hoger kunnen worden gerangschikt dan items in de toekomst.<br /><br /> In de huidige service release wordt één einde van het bereik vastgesteld op de huidige tijd. De andere kant is een tijd in het verleden op basis van de `boostingDuration`. Gebruik een negatieve `boostingDuration`om een aantal malen in de toekomst te stimuleren.<br /><br /> De snelheid waarmee de versterking van een maximum-en minimum bereik wordt bepaald door de interpolatie die wordt toegepast op het Score Profiel (Zie de afbeelding hieronder). Als u de verg Roten factor wilt omkeren, kiest u een boost factor kleiner dan 1.|  
-|`freshness` &#124;`boostingDuration`|Hiermee stelt u een verval periode in waarna versterking van een bepaald document wordt gestopt. Zie [set boostingDuration](#bkmk_boostdur) in de volgende sectie voor de syntaxis en voor beelden.|  
+|`freshness` &#124; `boostingDuration`|Hiermee stelt u een verval periode in waarna versterking van een bepaald document wordt gestopt. Zie [set boostingDuration](#bkmk_boostdur) in de volgende sectie voor de syntaxis en voor beelden.|  
 |`distance`|De functie voor afstands bepaling wordt gebruikt om de Score van documenten te beïnvloeden op basis van hoe dicht of ten opzichte van de geografische locatie van een referentie. De referentie locatie wordt gegeven als onderdeel van de query in een para meter (met de optie `scoringParameterquery` teken reeks) als een Lon, lat-argument.|  
-|`distance` &#124;`referencePointParameter`|Een para meter die moet worden door gegeven in query's die als referentie locatie moeten worden gebruikt. `scoringParameter` is een query parameter. Zie [Zoeken in &#40;documenten Azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
-|`distance` &#124;`boostingDistance`|Een getal dat de afstand in kilo meters aangeeft van de referentie locatie waar het Boosting-bereik eindigt.|  
+|`distance` &#124; `referencePointParameter`|Een para meter die moet worden door gegeven in query's die als referentie locatie moeten worden gebruikt. `scoringParameter` is een query parameter. Zie [Zoeken in &#40;documenten Azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
+|`distance` &#124; `boostingDistance`|Een getal dat de afstand in kilo meters aangeeft van de referentie locatie waar het Boosting-bereik eindigt.|  
 |`tag`|De tag Score functie wordt gebruikt om de Score van documenten te beïnvloeden op basis van tags in documenten en zoek query's. Documenten met een gemeen schappelijke label met de zoek query worden verhoogd. De labels voor de zoek query worden als een score parameter in elke zoek opdracht gegeven (met behulp van de optie voor de `scoringParameterquery` reeks).|  
-|`tag` &#124;`tagsParameter`|Een para meter die in query's moet worden door gegeven om labels voor een bepaalde aanvraag op te geven. `scoringParameter` is een query parameter. Zie [Zoeken in &#40;documenten Azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
+|`tag` &#124; `tagsParameter`|Een para meter die in query's moet worden door gegeven om labels voor een bepaalde aanvraag op te geven. `scoringParameter` is een query parameter. Zie [Zoeken in &#40;documenten Azure Cognitive Search&#41; rest API](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) voor beschrijvingen van query parameters.|  
 |`functionAggregation`|Optioneel. Is alleen van toepassing wanneer de functies zijn opgegeven. Geldige waarden zijn: Sum (standaard), Average, minimum, maximum en firstMatching. Een zoek Score is één waarde die wordt berekend op basis van meerdere variabelen, met inbegrip van meerdere functies. Dit kenmerk geeft aan hoe de boosts van alle functies worden gecombineerd tot één statistische boost die vervolgens wordt toegepast op de basis document Score. De basis score is gebaseerd op de waarde [TF-IDF](http://www.tfidf.com/) die is berekend op basis van het document en de zoek query.|  
 |`defaultScoringProfile`|Bij het uitvoeren van een zoek opdracht als er geen score profiel is opgegeven, wordt de standaard Score gebruikt ([TF-IDF](http://www.tfidf.com/) only).<br /><br /> Een standaard naam voor het Score profiel kan hier worden ingesteld, waardoor Azure Cognitive Search dat profiel gebruiken wanneer er geen specifiek profiel is opgegeven in de zoek opdracht.|  
 
@@ -280,7 +280,7 @@ De zoek score wordt berekend op basis van de statistische eigenschappen van de g
 |1 dag|"P1D"|  
 |2 dagen en 12 uur|"P2DT12H"|  
 |15 minuten|"PT15M"|  
-|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M 6.334 S"|  
+|30 dagen, 5 uur, 10 minuten en 6,334 seconden|"P30DT5H10M6.334S"|  
 
  Zie [XML-schema: data types (w3.org-website)](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration)voor meer voor beelden.  
 

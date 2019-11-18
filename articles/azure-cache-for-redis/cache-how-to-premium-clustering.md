@@ -1,25 +1,17 @@
 ---
-title: Redis-clustering configureren voor een Premium Azure-cache voor redis | Microsoft Docs
+title: Redis-clustering configureren voor een Premium Azure-cache voor redis
 description: Meer informatie over het maken en beheren van redis-Clustering voor uw Azure-cache voor de Premium-laag voor redis-instanties
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/13/2018
 ms.author: yegu
-ms.openlocfilehash: d81647e8d09d8f10827e8eb6038363db73395c1e
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 1f0c97d6c0854254026e194ffd5030976fc506b2
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596911"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122159"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Redis-clustering configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. In dit artikel wordt beschreven hoe u clustering configureert in een Premium Azure-cache voor redis-exemplaar.
@@ -111,7 +103,7 @@ De volgende lijst bevat antwoorden op veelgestelde vragen over Azure cache voor 
 ### <a name="how-are-keys-distributed-in-a-cluster"></a>Hoe worden sleutels gedistribueerd in een cluster?
 Volgens de redis-documentatie over het [distributie model voor sleutels](https://redis.io/topics/cluster-spec#keys-distribution-model) : de sleutel ruimte is opgesplitst in 16384 sleuven. Elke sleutel wordt gehasht en toegewezen aan een van deze sleuven, die over de knoop punten van het cluster worden gedistribueerd. U kunt configureren welk deel van de sleutel wordt gehasht om ervoor te zorgen dat meerdere sleutels zich in dezelfde Shard bevinden via hash-tags.
 
-* Sleutels met een hash-tag: als een deel van de sleutel wordt Inge sloten in `{` en `}`, wordt alleen dat gedeelte van de sleutel gehasht om de hash-sleuf van een sleutel te bepalen. De volgende drie sleutels bevinden zich bijvoorbeeld in dezelfde Shard: `{key}1`, `{key}2` en `{key}3` omdat alleen het `key` deel van de naam wordt gehasht. Zie [hash-tags voor sleutels](https://redis.io/topics/cluster-spec#keys-hash-tags)voor een volledige lijst met de specificaties van hash-labels.
+* Sleutels met een hash-tag: als een deel van de sleutel wordt Inge sloten in `{` en `}`, wordt alleen dat gedeelte van de sleutel gehasht om de hash-sleuf van een sleutel te bepalen. De volgende drie sleutels bevinden zich bijvoorbeeld in dezelfde Shard: `{key}1`, `{key}2`en `{key}3` omdat alleen het `key` deel van de naam wordt gehasht. Zie [hash-tags voor sleutels](https://redis.io/topics/cluster-spec#keys-hash-tags)voor een volledige lijst met de specificaties van hash-labels.
 * Sleutels zonder hash-code-de volledige sleutel naam wordt gebruikt voor hashing. Dit resulteert in een statistische, gelijkmatige verdeling over de Shards van de cache.
 
 Voor de beste prestaties en door Voer wordt u aangeraden de sleutels gelijkmatig te verdelen. Als u sleutels met een hash-code gebruikt, is het de verantwoordelijkheid van de toepassing om ervoor te zorgen dat de sleutels gelijkmatig worden gedistribueerd.

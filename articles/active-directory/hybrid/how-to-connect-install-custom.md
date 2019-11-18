@@ -10,18 +10,18 @@ ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/25/2019
+ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2711127c7bdf58e61f2d688c51e0e639d00cda5
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73883077"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74106943"
 ---
-# <a name="custom-installation-of-azure-ad-connect"></a>Custom installation of Azure AD Connect (Engelstalig)
+# <a name="custom-installation-of-azure-ad-connect"></a>Aangepaste installatie van Azure AD Connect
 Voor meer opties voor de installatie gaat u naar **Aangepaste instellingen**. Deze instellingen gebruikt u wanneer u meerdere forests hebt of als u optionele functies wilt configureren die niet in de snelle installatie voorkomen. De aangepaste instellingen worden gebruikt in alle gevallen waarin de optie [**snelle installatie**](how-to-connect-install-express.md) niet aan uw implementatie of topologie voldoet.
 
 Zorg voordat u begint met de installatie van Azure AD Connect dat u [Azure AD Connect downloadt](https://go.microsoft.com/fwlink/?LinkId=615771) en de vereiste stappen in [Azure AD Connect: Hardware en vereisten](how-to-connect-install-prerequisites.md) voltooit. Zorg er ook voor dat de benodigde accounts beschikbaar zijn, zoals beschreven in [Azure AD Connect accounts and permissions](reference-connect-accounts-permissions.md).
@@ -87,7 +87,9 @@ Nadat u de forestnaam hebt ingevoerd en op **Map toevoegen** hebt geklikt, wordt
 ![Verbinding maken met Directory](./media/how-to-connect-install-custom/connectdir02.png)
 
 #### <a name="enterprise-admin-and-domain-admin-accounts-not-supported"></a>Ondernemings Administrator-en domein beheerders accounts worden niet ondersteund
-Vanaf build 1.4. # # #. # het is niet meer mogelijk om een ondernemings Administrator of een domein beheerders account te gebruiken als AD DS Connector-account.  Als u probeert een account in te voeren dat een ondernemings beheerder of domein beheerder is wanneer u **bestaand account gebruiken**opgeeft, wordt er een fout bericht weer gegeven.
+Vanaf build 1.4.18.0 wordt niet meer ondersteund voor het gebruik van een ondernemings Administrator of een domein beheerders account als AD DS Connector-account.  Als u probeert een account in te voeren dat een ondernemings beheerder of domein beheerder is wanneer u **bestaand account gebruiken**opgeeft, wordt de volgende fout weer gegeven:
+
+  **Het gebruik van een ondernemings-of domein beheerders account voor uw AD-forest-account is niet toegestaan.  Laat Azure AD Connect het account voor u maken of geef een synchronisatie account op met de juiste machtigingen.  &lt;meer informatie&gt;"**
 
 ### <a name="azure-ad-sign-in-configuration"></a>Aanmeldconfiguratie Azure AD
 Op deze pagina kunt u bekijken welke UPN-domeinen zich in de on-premises AD DS bevinden en in Azure AD zijn geverifieerd. Daarnaast kunt u op deze pagina het kenmerk configureren dat voor de userPrincipalName moet worden gebruikt.
@@ -105,7 +107,7 @@ Bekijk elk domein waarbij **Niet toegevoegd** en **Niet geverifieerd** staat. Zo
 >
 >
 
-### <a name="domain-and-ou-filtering"></a>Domein- en OE-filters
+### <a name="domain-and-ou-filtering"></a>Domein en OE filteren
 Standaard worden alle domeinen en OE's gesynchroniseerd. Van domeinen of OE’s die u niet wilt synchroniseren naar Azure AD kunt u de selectie opheffen.  
 ![Domein- en OE-filters](./media/how-to-connect-install-custom/domainoufiltering.png)  
 Op deze pagina in de wizard configureert u filteren op basis van een domein en OE. Als u wijzigingen wilt aanbrengen, gaat u naar [domain-based filtering](how-to-connect-sync-configure-filtering.md#domain-based-filtering) en [OE filteren](how-to-connect-sync-configure-filtering.md#organizational-unitbased-filtering) voordat u deze wijzigingen aanbrengt. Sommige OE's zijn essentieel voor de functionaliteit en mogen niet worden uitgeschakeld.
@@ -357,7 +359,7 @@ De configuratie wordt op deze pagina uitgevoerd.
 >
 
 
-![Klaar om te configureren](./media/how-to-connect-install-custom/readytoconfigure2.png)
+![Gereed voor configuratie](./media/how-to-connect-install-custom/readytoconfigure2.png)
 
 ### <a name="staging-mode"></a>Faseringsmodus
 Het is mogelijk om een nieuwe synchronisatieserver parallel met de faseringsmodus in te stellen. Het is alleen ondersteund als u één synchronisatieserver naar één map in de cloud laat exporteren. Als u echter vanaf een andere server wilt verplaatsen, bijvoorbeeld een server met DirSync, dan kunt u Azure AD Connect in de faseringsmodus inschakelen. Wanneer dit is ingeschakeld, importeert en synchroniseert de synchronisatie-engine zoals gewoonlijk, maar hij exporteert niets naar Azure AD of AD. De functies Wachtwoordsynchronisatie en Wachtwoord terugschrijven zijn uitgeschakeld in de faseringsmodus.
@@ -380,7 +382,7 @@ Azure AD Connect verifieert de DNS-instellingen voor u wanneer u op Verifiëren 
 
 * Federatie-FQDN omzetten: Azure AD Connect controleert of de FQDN van de federatie via DNS kan worden omgezet om de connectiviteit te controleren.
 
-![Voltooien](./media/how-to-connect-install-custom/completed.png)
+![Compleet](./media/how-to-connect-install-custom/completed.png)
 
 ![Verifiëren](./media/how-to-connect-install-custom/adfs7.png)
 
@@ -416,10 +418,10 @@ Nadat u de **ADSync**-database hebt verwijderd, kunt u op de knop **Installeren*
 ## <a name="next-steps"></a>Volgende stappen
 Nadat de installatie is voltooid, dient u zich af te melden en weer aan te melden bij Windows voordat u de Synchronization Service Manager of Synchronization Rule Editor gaat gebruiken.
 
-Nu u Azure AD Connect geïnstalleerd hebt kunt u [de installatie verifiëren en licenties toewijzen](how-to-connect-post-installation.md).
+Nu u Azure AD Connect geïnstalleerd hebt, kunt u [de installatie verifiëren en licenties toewijzen](how-to-connect-post-installation.md).
 
 Meer informatie over deze functies, die tijdens de installatie zijn ingeschakeld: [Prevent accidental deletes](how-to-connect-sync-feature-prevent-accidental-deletes.md) en [Azure AD Connect Health](how-to-connect-health-sync.md).
 
-Meer informatie over deze algemene onderwerpen: [scheduler and how to trigger sync](how-to-connect-sync-feature-scheduler.md).
+Lees meer over deze veelvoorkomende onderwerpen: [Scheduler en het activeren van de synchronisatie](how-to-connect-sync-feature-scheduler.md).
 
 Lees meer over het [integreren van uw on-premises identiteiten met Azure Active Directory](whatis-hybrid-identity.md).

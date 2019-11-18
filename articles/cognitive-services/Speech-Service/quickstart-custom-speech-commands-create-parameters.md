@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een aangepaste opdracht maken met para meters (preview)'
+title: 'Snelstartgids: een aangepaste opdracht maken met para meters (preview)-spraak service'
 titleSuffix: Azure Cognitive Services
 description: In dit artikel voegt u para meters toe aan een toepassing voor aangepaste opdrachten.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: 010a9331bb4533bc84957261f312993c4cc7ffe8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: caa1959ec64bb3a123c60763750267b107685b82
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507515"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74111247"
 ---
 # <a name="quickstart-create-a-custom-command-with-parameters-preview"></a>Snelstartgids: een aangepaste opdracht maken met para meters (preview)
 

@@ -1,5 +1,6 @@
 ---
-title: ADAL naar MSAL-migratie handleiding voor Java-micro soft Identity platform | Azure
+title: Migratie handleiding voor ADAL naar MSAL voor Java | Azure
+titleSuffix: Microsoft identity platform
 description: Meer informatie over het migreren van uw ADAL-java-app (Azure Active Directory Authentication Library) naar de micro soft Authentication Library (MSAL).
 services: active-directory
 author: sangonzal
@@ -16,12 +17,12 @@ ms.author: sagonzal
 ms.reviewer: navyari.canumalla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8bddf787ce2c654da99b16387ae347f51600c8dd
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 158cbe4f2598722abe3b2ed3a0dd179a21dc1e1c
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73905522"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74145268"
 ---
 # <a name="adal-to-msal-migration-guide-for-java"></a>Migratie handleiding voor ADAL naar MSAL voor Java
 
@@ -67,7 +68,7 @@ De volgende tabel laat zien hoe ADAL4J-functies worden toegewezen aan de nieuwe 
 
 Gemanipuleerde gebruikers ADAL4J. Hoewel een gebruiker één persoon of software-agent vertegenwoordigt, kan deze een of meer accounts hebben in het micro soft-identiteits systeem. Een gebruiker kan bijvoorbeeld meerdere Azure AD-, Azure AD B2C-of micro soft-accounts hebben.
 
-MSAL4J definieert het concept van het account via de `IAccount`-interface. Dit is een belang rijke wijziging ten opzichte van ADAL4J, maar het is een goed idee omdat er wordt vastgelegd dat dezelfde gebruiker meerdere accounts kan hebben, en zelfs in verschillende Azure AD-directory's. MSAL4J biedt betere informatie in gast scenario's, omdat informatie over het privé-account wordt verstrekt.
+MSAL4J definieert het concept van het account via de `IAccount`-interface. Dit is een belang rijke wijziging ten opzichte van ADAL4J, maar het is wel een goed idee omdat er wordt vastgelegd dat dezelfde gebruiker meerdere accounts kan hebben, en zelfs in verschillende Azure AD-directory's. MSAL4J biedt betere informatie in gast scenario's, omdat informatie over het privé-account wordt verstrekt.
 
 ## <a name="cache-persistence"></a>Cache persistentie
 

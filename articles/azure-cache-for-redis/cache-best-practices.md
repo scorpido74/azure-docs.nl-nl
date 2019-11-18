@@ -1,25 +1,17 @@
 ---
 title: Aanbevolen procedures voor Azure cache voor redis
 description: Meer informatie over het gebruik van uw Azure-cache voor redis door deze aanbevolen procedures te volgen.
-services: cache
-documentationcenter: na
 author: joncole
-manager: jhubbard
-editor: tysonn
-ms.assetid: 3e4905e3-89e3-47f7-8cfb-12caf1c6e50e
 ms.service: cache
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: cache
-ms.workload: tbd
+ms.topic: conceptual
 ms.date: 06/21/2019
 ms.author: joncole
-ms.openlocfilehash: 29e5a81c438a7aa834fc002b916739a952c9a270
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 136c29245c63b2f2feed79a10a09fb57a379736f
+ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785875"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74122392"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Aanbevolen procedures voor Azure cache voor redis 
 Door deze aanbevolen procedures te volgen, kunt u de prestaties en het rendabele gebruik van uw Azure-cache voor redis-instantie maximaliseren.
@@ -55,7 +47,7 @@ Er zijn verschillende dingen die betrekking hebben op het gebruik van het geheug
  * **Stel een verloop waarde in voor uw sleutels.**  Hiermee worden sleutels proactief verwijderd in plaats van te wachten totdat er geheugen druk is.  Als het verwijderen wordt gestart vanwege geheugen belasting, kan dit een extra belasting voor uw server veroorzaken.  Zie de documentatie voor de opdrachten [Expires](https://redis.io/commands/expire) en [ExpireAt](https://redis.io/commands/expireat) voor meer informatie.
  
 ## <a name="client-library-specific-guidance"></a>Specifieke richt lijnen voor de client bibliotheek
- * [Stack Exchange. redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
+ * [StackExchange.Redis (.NET)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-stackexchange-redis-md)
  * [Java-welke client moet ik gebruiken?](https://gist.github.com/warrenzhu25/1beb02a09b6afd41dff2c27c53918ce7#file-azure-redis-java-best-practices-md)
  * [Sla (Java)](https://gist.github.com/warrenzhu25/181ccac7fa70411f7eb72aff23aa8a6a#file-azure-redis-lettuce-best-practices-md)
  * [Jedis (Java)](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#file-redis-bestpractices-java-jedis-md)

@@ -1,19 +1,14 @@
 ---
-title: Beveiligings controles voor Azure Resource Manager
+title: Beveiligingsmaatregelen
 description: Een controle lijst met ingebouwde beveiligings controles voor het evalueren van de Azure Resource Manager-service.
-services: azure-resource-manager
-author: msmbaldwin
-manager: rkarlin
-ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 78f3f41ca2f0aa45d295fd9846cf3aa96cccea72
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: b2916a87c5cef01605054569285362fcf1c649c8
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390470"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74147567"
 ---
 # <a name="security-controls-for-azure-resource-manager"></a>Beveiligings controles voor Azure Resource Manager
 
@@ -21,13 +16,13 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="data-protection"></a>Databeveiliging
+## <a name="data-protection"></a>Gegevensbeveiliging
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen |
 |---|---|--|
 | Versleuteling aan server zijde op rest: door micro soft beheerde sleutels | Ja |  |
 | Versleuteling in transit (zoals ExpressRoute-versleuteling, in VNet-versleuteling en VNet-VNet-versleuteling)| Ja | HTTPS/TLS. |
-| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | N/A | Azure Resource Manager slaat geen klant inhoud op, alleen gegevens beheren. |
+| Versleuteling aan server zijde op rest: door de klant beheerde sleutels (BYOK) | N.v.t. | Azure Resource Manager slaat geen klant inhoud op, alleen gegevens beheren. |
 | Versleuteling op kolom niveau (Azure Data Services)| Ja | |
 | Versleutelde API-aanroepen| Ja | |
 
@@ -46,9 +41,9 @@ In dit artikel worden de beveiligings besturings elementen gedocumenteerd die zi
 |---|---|--|
 | Ondersteuning voor Azure-bewaking (log Analytics, app Insights, enz.)| Nee | |
 | Logboek registratie en controle op het vlak van controle en beheer| Ja | Met activiteiten logboeken worden alle schrijf bewerkingen (PUT, POST, DELETE) die zijn uitgevoerd op uw resources beschikbaar gesteld. Zie [activiteiten logboeken weer geven om acties op resources te controleren](resource-group-audit.md). |
-| Logboek registratie en controle van het gegevens vlak| N/A | |
+| Logboek registratie en controle van het gegevens vlak| N.v.t. | |
 
-## <a name="identity"></a>Identity
+## <a name="identity"></a>Identiteit
 
 | Beveiligings beheer | Ja/Nee | Opmerkingen|
 |---|---|--|

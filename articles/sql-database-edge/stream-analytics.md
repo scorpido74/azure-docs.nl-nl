@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 11/04/2019
-ms.openlocfilehash: 1b6b3f4e4be9d056bc53fac2eb2f1f3fcd768085
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: c3ed84e06f693925ed8b484070616e223929e401
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73514990"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74108744"
 ---
 # <a name="using-sql-database-dac-package-and-stream-analytics-job-with-sql-database-edge"></a>SQL Database DAC-pakket en Stream Analytics-taak gebruiken met SQL Database Edge
 
@@ -37,7 +37,7 @@ Azure SQL Database Edge geeft twee optionele para meters door de *gewenste eigen
 |Veld | Beschrijving |
 |------|-------------|
 | SQLPackage | Azure Blob Storage-URI voor het *. zip-bestand met het SQL Database DAC-pakket.
-| ASAJobInfo | Azure Blob Storage URI voor de ASA Edge-taak. Zie voor meer informatie over het publiceren van de ASA Edge-taak [een ASA-taak publiceren voor SQL database Edge]().
+| ASAJobInfo | Azure Blob Storage URI voor de ASA Edge-taak. Zie voor meer informatie over het publiceren van de ASA Edge-taak [een ASA-taak publiceren voor SQL database Edge](/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
 
 ## <a name="using-sql-database-dac-packages-with-sql-database-edge"></a>SQL Database DAC-pakketten gebruiken met SQL Database Edge
 

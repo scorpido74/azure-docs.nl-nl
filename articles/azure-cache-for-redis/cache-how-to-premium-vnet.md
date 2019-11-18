@@ -1,25 +1,17 @@
 ---
-title: Een Virtual Network configureren voor een Premium Azure-cache voor redis | Microsoft Docs
+title: Een Virtual Network configureren voor een Premium Azure-cache voor redis
 description: Meer informatie over het maken en beheren van Virtual Network ondersteuning voor uw Azure-cache voor de Premium-laag voor redis-instanties
-services: cache
-documentationcenter: ''
 author: yegu-ms
-manager: jhubbard
-editor: ''
-ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
 ms.service: cache
-ms.workload: tbd
-ms.tgt_pltfrm: cache
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: 6fc17f08db5951a3d693c7a5e3d5556d848d2efb
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b2ddac9439183321691104d4eedccb0c971d19c9
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74075046"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129412"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Virtual Network ondersteuning configureren voor een Premium Azure-cache voor redis
 Azure cache voor redis heeft verschillende cache aanbiedingen, die flexibiliteit bieden bij het kiezen van de cache grootte en-functies, inclusief functies van de Premium-laag, zoals clustering, persistentie en ondersteuning voor virtuele netwerken. Een VNet is een privé netwerk in de Cloud. Wanneer een Azure-cache voor redis-exemplaar is geconfigureerd met een VNet, is het niet openbaar adresseerbaar en is deze alleen toegankelijk vanaf virtuele machines en toepassingen binnen het VNet. In dit artikel wordt beschreven hoe u ondersteuning voor virtuele netwerken kunt configureren voor een Premium Azure-cache voor een redis-exemplaar.
@@ -112,15 +104,15 @@ Er zijn negen uitgaande poort vereisten.
 
 | Poort (en) | Richting | Transport Protocol | Doel | Lokaal IP-adres | Extern IP-adres |
 | --- | --- | --- | --- | --- | --- |
-| 80, 443 |Uitgaand |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
-| 443 | Uitgaand | TCP | Afhankelijkheid van redis op Azure Key Vault | (Redis-subnet) | AzureKeyVault <sup>1</sup> |
-| 53 |Uitgaand |TCP/UDP |Redis-afhankelijkheden op DNS (Internet/VNet) | (Redis-subnet) | 168.63.129.16 en 169.254.169.254 <sup>2</sup> en een aangepaste DNS-server voor het subnet <sup>3</sup> |
-| 8443 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
-| 10221-10231 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
-| 20226 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
-| 13000-13999 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
-| 15000-15999 |Uitgaand |TCP |Interne communicatie voor redis en geo-replicatie | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
-| 6379-6380 |Uitgaand |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
+| 80, 443 |Uitgaande |TCP |Afhankelijkheden van redis op Azure Storage/PKI (Internet) | (Redis-subnet) |* |
+| 443 | Uitgaande | TCP | Afhankelijkheid van redis op Azure Key Vault | (Redis-subnet) | AzureKeyVault <sup>1</sup> |
+| 53 |Uitgaande |TCP/UDP |Redis-afhankelijkheden op DNS (Internet/VNet) | (Redis-subnet) | 168.63.129.16 en 169.254.169.254 <sup>2</sup> en een aangepaste DNS-server voor het subnet <sup>3</sup> |
+| 8443 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
+| 10221-10231 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) | (Redis-subnet) |
+| 20226 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
+| 13000-13999 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
+| 15000-15999 |Uitgaande |TCP |Interne communicatie voor redis en geo-replicatie | (Redis-subnet) |(Redis-subnet) (Geo-replica peer-subnet) |
+| 6379-6380 |Uitgaande |TCP |Interne communicatie voor redis | (Redis-subnet) |(Redis-subnet) |
 
 <sup>1</sup> u kunt de service label ' AzureKeyVault ' gebruiken met netwerk beveiligings groepen van Resource Manager.
 
@@ -161,7 +153,7 @@ Er zijn vereisten voor de netwerk verbinding voor Azure cache voor redis die in 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Hoe kan ik controleren of mijn cache werkt in een VNET?
 
 >[!IMPORTANT]
->Wanneer u verbinding maakt met een Azure-cache voor een redis-exemplaar dat wordt gehost in een VNET, moeten uw cache-clients zich in hetzelfde VNET of in een VNET bevinden waarvoor VNET-peering is ingeschakeld. Dit omvat alle test toepassingen of diagnostische hulpprogram ma's voor diagnose. Ongeacht waar de client toepassing wordt gehost, moeten netwerk beveiligings groepen zodanig worden geconfigureerd dat het netwerk verkeer van de client het redis-exemplaar kan bereiken.
+>Wanneer u verbinding maakt met een Azure-cache voor een redis-exemplaar dat wordt gehost in een VNET, moeten uw cache-clients zich in hetzelfde VNET of in een VNET bevinden dat VNET-peering is ingeschakeld in dezelfde Azure-regio. Globale VNET-peering worden momenteel niet ondersteund. Dit omvat alle test toepassingen of diagnostische hulpprogram ma's voor diagnose. Ongeacht waar de client toepassing wordt gehost, moeten netwerk beveiligings groepen zodanig worden geconfigureerd dat het netwerk verkeer van de client het redis-exemplaar kan bereiken.
 >
 >
 

@@ -8,14 +8,14 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56f9901a1468207a295f8223e990f7a926b2d76e
-ms.sourcegitcommit: 7c4de3e22b8e9d71c579f31cbfcea9f22d43721a
+ms.openlocfilehash: 9e8196c9561465930fc9723c9b8f8a0d02668ef5
+ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68561428"
+ms.lasthandoff: 11/15/2019
+ms.locfileid: "74114094"
 ---
-# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Quickstart: Een unit HoloLens-app maken die gebruikmaakt van ruimtelijke-ankers van Azure
+# <a name="quickstart-create-a-unity-hololens-app-that-uses-azure-spatial-anchors"></a>Snelstartgids: een unit HoloLens-app maken die gebruikmaakt van ruimtelijke ankers van Azure
 
 In deze Quick Start maakt u een unit HoloLens-app die gebruikmaakt van [Azure spatiale ankers](../overview.md). Ruimtelijke ankers is een platformoverschrijdende ontwikkelaars service die u in staat stelt om toepassingen met gemengde realiteit te maken met objecten die hun locatie in de loop van de tijd op verschillende apparaten blijven zetten. Als u klaar bent, hebt u een HoloLens-app met Unity gemaakt waarmee een ruimtelijk anker kan worden opgeslagen en teruggehaald.
 
@@ -31,12 +31,12 @@ U leert het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 - U hebt een Windows-computer nodig waarop <a href="https://unity3d.com/get-unity/download" target="_blank">eenheid 2019,1</a> of hoger en <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2019</a> of hoger zijn geïnstalleerd. Uw Visual Studio-installatie moet de **universeel Windows-platform Development** -werk belasting en het onderdeel **Windows 10 SDK (10.0.18362.0 of recenter)** bevatten. U moet ook <a href="https://git-scm.com/download/win" target="_blank">git voor Windows</a>installeren.
-- U hebt een HoloLens-apparaat nodig waarop de [ontwikkelaars modus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) is ingeschakeld. [Update voor Windows 10 oktober 2018](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (ook wel bekend als RS5) moet op het apparaat zijn geïnstalleerd. Als u wilt bijwerken naar de nieuwste versie van HoloLens, opent u de app **instellingen** , gaat u naar **Update & Security**en selecteert u vervolgens **controleren op updates**.
-- In uw app moet u de **SpatialPerception** -mogelijkheid inschakelen. Deze instelling bevindt zich in instellingen voor het >  **maken** > van instellingen voor de**publicatie** > -**instellingen.**
-- In uw app moet u **Virtual Reality** inschakelen die wordt ondersteund met de **SDK voor Windows Mixed Reality**. Deze instelling bevindt zich in instellingen voor **Build Settings** >  > **XR Settings**.
+- U hebt een HoloLens-apparaat nodig waarop de [ontwikkelaars modus](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) is ingeschakeld. [Windows 10 oktober 2018-update](https://docs.microsoft.com/windows/mixed-reality/release-notes-october-2018) (ook wel bekend als RS5) moet op het apparaat zijn geïnstalleerd. Als u wilt bijwerken naar de nieuwste versie van HoloLens, opent u de app **instellingen** , gaat u naar **Update & Security**en selecteert u vervolgens **controleren op updates**.
+- In uw app moet u de **SpatialPerception** -mogelijkheid inschakelen. Deze instelling bevindt zich in de instellingen voor **Build** -instellingen > **Player** > **publicatie-instellingen** > **mogelijkheden**.
+- In uw app moet u **Virtual Reality** inschakelen die wordt ondersteund met de **SDK voor Windows Mixed Reality**. Deze instelling bevindt zich in instellingen voor **Build** -instellingen > **Player** > **XR-instellingen**.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
 
@@ -58,7 +58,7 @@ Sluit het venster **Build Settings**.
 
 ## <a name="configure-the-account-identifier-and-key"></a>De account-id en-sleutel configureren
 
-`AzureSpatialAnchorsBasicDemo.unity`  Ga`Assets/AzureSpatialAnchors.Examples/Scenes` in het deel venster Project naar het scène bestand en open het.
+Ga in het deel venster **project** naar `Assets/AzureSpatialAnchors.Examples/Scenes` en open het `AzureSpatialAnchorsBasicDemo.unity` scène bestand.
 
 [!INCLUDE [Configure Unity Scene](../../../includes/spatial-anchors-unity-configure-scene.md)]
 
@@ -78,7 +78,7 @@ Dubbel klik in de map op **HELLOAR U3D. SLN** om het project te openen in Visual
 
 Wijzig de **oplossings configuratie** in **release**, wijzig het platform van de **oplossing** in **x86**en selecteer **apparaat** in de doel opties voor de implementatie.
 
-Als u HoloLens 2 gebruikt, gebruikt u **arm** als het **oplossings platform**in plaats van **x86**.
+Als u HoloLens 2 gebruikt, gebruikt u **ARM64** als het **oplossings platform**in plaats van **x86**.
 
    ![Visual Studio-configuratie](./media/get-started-unity-hololens/visual-studio-configuration.png)
 
@@ -95,4 +95,4 @@ In Visual Studio stopt u de app door **fout opsporing** of SHIFT + F5 te selecte
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Ruimtelijke ankers delen tussen apparaten](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)

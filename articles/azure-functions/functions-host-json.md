@@ -7,23 +7,23 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/08/2018
 ms.author: glenga
-ms.openlocfilehash: 584fb7b97b8342289d7ca2f23b0479eb1169867a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 222ca8781ae9532f10ed7d113b93eac78c6a3bba
+ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575898"
+ms.lasthandoff: 11/16/2019
+ms.locfileid: "74129073"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x"></a>host. json-verwijzing voor Azure Functions 2. x  
 
 > [!div class="op_single_selector" title1="Selecteer de versie van de Azure Functions runtime die u gebruikt: "]
-> * [Versie 1](functions-host-json-v1.md)
+> * [Versie 1:](functions-host-json-v1.md)
 > * [Versie 2](functions-host-json.md)
 
 Het meta gegevensbestand van de *host. json* bevat globale configuratie opties die van invloed zijn op alle functies voor een functie-app. In dit artikel vindt u de instellingen die beschikbaar zijn voor de v2-runtime.  
 
 > [!NOTE]
-> Dit artikel is voor Azure Functions 2. x.  Zie [host. json Reference voor Azure functions 1. x](functions-host-json-v1.md)voor een verwijzing naar de host. json in functions 1. x.
+> Dit artikel is voor Azure Functions 2. x.  Voor een verwijzing van host.json in functies 1.x, Zie [naslaginformatie over host.json voor Azure Functions 1.x](functions-host-json-v1.md).
 
 Andere opties voor de configuratie van de functie-app worden beheerd in de [app-instellingen](functions-app-settings.md).
 
@@ -48,6 +48,10 @@ Voor de volgende voor beeld- *JSON* -bestanden zijn alle mogelijke opties opgege
         "queues": {},
         "sendGrid": {},
         "serviceBus": {}
+    },
+    "extensionBundle": {
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[1.*, 2.0.0)"
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
@@ -135,6 +139,12 @@ U kunt configuratie-instellingen vinden in [Event hub-triggers en-bindingen](fun
 
 Eigenschap die een object retourneert dat alle binding-specifieke instellingen bevat, zoals [http](#http) en [eventHub](#eventhub).
 
+## <a name="extensionbundle"></a>extensionBundle 
+
+Met uitbreidings bundels kunt u een compatibele set van functies bindings extensies toevoegen aan uw functie-app. Zie [uitbreidings bundels voor lokale ontwikkeling voor](functions-bindings-register.md#extension-bundles)meer informatie.
+
+[!INCLUDE [functions-extension-bundles-json](../../includes/functions-extension-bundles-json.md)]
+
 ## <a name="functions"></a>functions
 
 Een lijst met functies die de taak host uitvoert. Een lege matrix houdt in dat alle functies worden uitgevoerd. Alleen bedoeld voor gebruik bij [lokaal uitvoeren](functions-run-local.md). In functie-apps in azure moet u in plaats daarvan de stappen volgen in [het uitschakelen van functies in azure functions](disable-function.md) om specifieke functies uit te scha kelen in plaats van deze instelling te gebruiken.
@@ -174,7 +184,7 @@ Configuratie-instellingen voor de [host Health Monitor](https://github.com/Azure
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|ingeschakeld|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
+|enabled|true|Hiermee wordt aangegeven of de functie is ingeschakeld. | 
 |healthCheckInterval|10 seconden|Het tijds interval tussen de periodieke status controles voor de achtergrond. | 
 |healthCheckWindow|2 minuten|Een schuif tijd venster dat wordt gebruikt in combi natie met de instelling `healthCheckThreshold`.| 
 |healthCheckThreshold|6|Maximum aantal keer dat de status controle kan mislukken voordat een host recyclen wordt gestart.| 
@@ -229,7 +239,7 @@ Deze instelling is een onderliggend item van [logboek registratie](#logging). He
 
 |Eigenschap  |Standaard | Beschrijving |
 |---------|---------|---------| 
-|isEnabled|onwaar|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
+|isEnabled|false|Hiermee wordt de logboek registratie van de console in-of uitgeschakeld.| 
 
 ## <a name="manageddependency"></a>managedDependency
 
@@ -279,7 +289,7 @@ Configuratie-instellingen voor het gedrag van Singleton-vergren deling. Zie [git
 |lockAcquisitionTimeout|00:01:00|De maximale hoeveelheid tijd die de runtime probeert een vergren deling te verkrijgen.| 
 |lockAcquisitionPollingInterval|N.v.t.|Het interval tussen overname pogingen voor vergren delen.| 
 
-## <a name="version"></a>versie
+## <a name="version"></a>version
 
 De versie teken reeks `"version": "2.0"` is vereist voor een functie-app die de v2-runtime bedoelt.
 
