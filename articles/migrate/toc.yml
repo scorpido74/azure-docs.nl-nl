@@ -32,10 +32,16 @@
           href: tutorial-migrate-hyper-v.md
     - name: Fysieke servers evalueren en migreren
       items:
-        - name: Fysieke servers voorbereiden op migratie
+        - name: Fysieke servers voorbereiden voor evaluatie en migratie
           href: tutorial-prepare-physical.md
+        - name: Fysieke servers evalueren
+          href: tutorial-assess-physical.md
         - name: Fysieke servers migreren
           href: tutorial-migrate-physical-virtual-machines.md
+    - name: Geïmporteerde servers evalueren voor migratie
+      items:
+        - name: Geïmporteerde servers evalueren voor migratie
+          href: tutorial-assess-import.md
 - name: Concepten
   items:
     - name: Veelgestelde vragen
@@ -74,6 +80,8 @@
       href: how-to-set-up-appliance-hyper-v.md
     - name: Een apparaat voor fysieke server implementeren
       href: how-to-set-up-appliance-physical.md
+    - name: Toepassingen/rollen/functies detecteren
+      href: how-to-discover-applications.md
     - name: Een hulpprogramma voor de eerste keer toevoegen
       href: how-to-add-tool-first-time.md
     - name: Evaluatiehulpprogramma's toevoegen
@@ -82,6 +90,8 @@
       href: how-to-create-a-group.md
     - name: Machines groeperen met afhankelijkheidsvisualisatie
       href: how-to-create-group-machine-dependencies.md
+    - name: Machines groeperen met afhankelijkheidsvisualisatie zonder agent
+      href: how-to-create-group-machine-dependencies-agentless.md
     - name: Een evaluatie maken
       href: how-to-create-assessment.md
     - name: Een SQL Server-database evalueren
