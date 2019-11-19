@@ -10,12 +10,12 @@ ms.date: 09/19/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 9f0bdbf69336f792479c0089be351e468d3babe2
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: b67e7bf0b6b79d2ae29c2ba8ed7c337f152faebc
+ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128691"
+ms.lasthandoff: 11/14/2019
+ms.locfileid: "74092084"
 ---
 ::: zone target="chromeless"
 
@@ -137,11 +137,25 @@ Zo nodig kunt u contact opnemen met de ondersteuning van Quantium Solutions (in 
     - Ga naar **Overzicht > Verzendlabel downloaden** en download een retourlabel.
     - Bevestig het label op het apparaat. Zorg ervoor dat het label zichtbaar is.
 
-2. Ophalen aanvragen:
-    - Bel de hotline van **SingPost** op **68456485** (tijdens kantooruren, 9 tot 17 uur, maandag t/m vrijdag).  
-    - Vermeld *Microsoft Azure pickup* en het serviceaanvraagnummer (trackingnummer op het retourlabel) om een ophaalafspraak te maken. 
-    - U krijgt een mondelinge bevestiging over de ophaalafspraak. 
-    - Als de koerier niet komt om het pakket op te halen, belt u **SingPost** op **6845 6485** voor een alternatieve oplossing. 
+2. Als u een ophaalaanvraag wilt indienen, stuurt u een mail naar de SingPost-klantenservice met de volgende sjabloon met volgnummer (het volgnummer vindt u op het retourlabel in het bezorgde pakket).
+
+    ```
+    To: kadcustcare@singpost.com
+    Subject: Microsoft Azure Pick-up - XZ00001234567 
+    Body: 
+     a. Requestor name
+     b. Requestor contact number
+     c. Requestor collection address
+     d. Preferred collection date
+    ```
+
+   > [!NOTE]
+   > Voor boekingsaanvragen op een werkdag:
+   > - Vóór 15.00 uur is de ophaaltijd op de volgende werkdag tussen 09.00 en 13.00.
+   > - Na 15.00 uur is de ophaaltijd op de volgende werkdag tussen 14.00 en 18.00.
+
+   Als u problemen ondervindt, neemt u contact op met Data Box Operations Asia via adbo@microsoft.com. Geef de naam van de taak op in het onderwerp en het probleem dat is opgetreden.
+
 3. Overhandig het pakket aan de koerier. 
 
 

@@ -3326,8 +3326,8 @@ U kunt een on-premises bestands systeem koppelen aan een Azure-data factory met 
 
 | Scenario | Host in de definitie van de gekoppelde service | folderPath in de definitie van de gegevensset |
 | --- | --- | --- |
-| Lokale map op Data Management Gateway computer: <br/><br/>Voor beelden: D:\\\* of D:\folder\subfolder\\* |D:\\\\ (voor Data Management Gateway 2,0 en hoger) <br/><br/> localhost (voor eerdere versies dan Data Management Gateway 2,0) |.\\\\ of map\\\\submap (voor Data Management Gateway 2,0 en hoger) <br/><br/>D:\\\\ of D:\\\\map\\\\submap (voor de gateway versie onder 2,0) |
-| Externe gedeelde map: <br/><br/>Voor beelden: \\\\mijn server\\share\\\* of \\\\mijn server\\share\\map\\submap\\* |\\\\\\\\mijn server\\\\share |.\\\\ of map\\\\submap |
+| Lokale map op Data Management Gateway computer: <br/><br/>Voor beelden: D:\\\* of D:\folder\subfolder\\\* |D:\\\\ (voor Data Management Gateway 2,0 en hoger) <br/><br/> localhost (voor eerdere versies dan Data Management Gateway 2,0) |.\\\\ of map\\\\submap (voor Data Management Gateway 2,0 en hoger) <br/><br/>D:\\\\ of D:\\\\map\\\\submap (voor de gateway versie onder 2,0) |
+| Externe gedeelde map: <br/><br/>Voor beelden: \\\\mijn server\\share\\\* of \\\\mijn server\\share\\map\\submap\\\* |\\\\\\\\mijn server\\\\share |.\\\\ of map\\\\submap |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>Voor beeld: gebruikers naam en wacht woord gebruiken als tekst zonder opmaak

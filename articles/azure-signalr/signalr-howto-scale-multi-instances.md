@@ -1,17 +1,17 @@
 ---
-title: Schalen met meerdere exemplaren voor de Azure signalerings service
+title: Schalen met meerdere exemplaren-Azure signalerings service
 description: In veel schaal scenario's moet de klant vaak meerdere instanties inrichten en configureren om ze samen te gebruiken om een grootschalige implementatie te maken. Voor sharding is bijvoorbeeld ondersteuning voor meerdere instanties vereist.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: zhshang
-ms.openlocfilehash: 1e31bc4133cced793d793c07d2e0ee3df29efddb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 43d703312cbc1fc067a2d51d5623ed028ba01405
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672339"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158154"
 ---
 # <a name="how-to-scale-signalr-service-with-multiple-instances"></a>Hoe kan de signaal service met meerdere exemplaren schalen?
 De nieuwste signalerings Service-SDK ondersteunt meerdere eind punten voor de seingevings service-exemplaren. U kunt deze functie gebruiken om de gelijktijdige verbindingen te schalen of deze te gebruiken voor berichten in meerdere regio's.

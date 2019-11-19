@@ -1,47 +1,43 @@
 ---
-title: Met behulp van Chef met Azure
-description: Inleiding tot het gebruik van Chef configureren en testen van uw Azure-infrastructuur
-ms.service: virtual-machines-linux
-keywords: Azure, chef, devops, virtuele machines, overzicht, automatiseren
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Chef gebruiken met Azure
+description: Inleiding tot het gebruik van chef voor het configureren en testen van uw Azure-infra structuur
+keywords: Azure, chef, devops, virtual machines, overzicht, automatiseren
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4ad8b79b42c9d8d7942f391223c052f63579b11b
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60656571"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158003"
 ---
-# <a name="using-chef-with-azure"></a>Met behulp van Chef met Azure
-[Chef](https://www.chef.io) is een krachtige automatisering-platform waarmee VM-infrastructuur in Azure worden getransformeerd in code. Chef automatiseert hoe infrastructuur is geconfigureerd, geïmplementeerd en beheerd via het netwerk, ongeacht de grootte ervan.
+# <a name="using-chef-with-azure"></a>Chef gebruiken met Azure
+[Chef](https://www.chef.io) is een krachtig automatiserings platform dat de infra structuur van virtuele machines op Azure transformeert in code. Chef automatiseert de manier waarop de infra structuur wordt geconfigureerd, geïmplementeerd en beheerd in uw netwerk, ongeacht de grootte.
 
-Dit artikel beschrijft de voordelen van het gebruik van Chef voor het beheren van Azure-infrastructuur.
+In dit artikel worden de voor delen beschreven van het gebruik van chef voor het beheren van Azure-infra structuur.
 
 ## <a name="chef-extension-on-azure"></a>Chef-extensie op Azure
-Een virtuele machine inrichten met Chef-Client die wordt uitgevoerd als een achtergrondservice met de [Chef extensie](https://docs.microsoft.com/azure/chef/chef-extension-portal) in de Azure Portal. Eenmaal ingericht, worden deze virtuele machines kunnen worden beheerd door een Chef-server.
+Richt een virtuele machine in met chef-client die als een achtergrond service wordt uitgevoerd met de [extensie chef](https://docs.microsoft.com/azure/chef/chef-extension-portal) in azure Portal. Zodra de virtuele machines zijn ingericht, zijn ze klaar om te worden beheerd door een chef-server.
 
 ## <a name="chef-cloud-shell"></a>Chef Cloud Shell
-Gebruik Chef werkstation rechtstreeks in Azure Cloudshell. Uitvoeren van al uw Chef-hulpprogramma's en InSpec rechts van Cloud Shell. U kunt gebruikmaken van de Chef-opdrachten uit:
+Gebruik chef-werk station rechtstreeks in Azure Cloud Shell! Voer al uw chef-hulpprogram ma's en inspecies uit Cloud Shell. U kunt de chef-opdrachten gebruiken van:
 
 * [chef](https://docs.chef.io/ctl_chef.html)
 * [keuken](https://docs.chef.io/ctl_kitchen.html)
 * [inspec](https://www.inspec.io/docs/reference/cli/)
-* [knife](https://docs.chef.io/knife.html)
+* [gereedschap](https://docs.chef.io/knife.html)
 * [cookstyle](https://docs.chef.io/cookstyle.html)
 * [foodcritic](https://docs.chef.io/foodcritic.html)
 * [chef-run](https://www.chef.sh/docs/chef-workstation/getting-started/)
 
-Onze hulpprogramma's voor opdracht worden gecombineerd met de andere hulpprogramma's beschikbaar in Cloud Shell, zoals `git`, `az-cli`, en `terraform`, en het schrijven van uw automation-infrastructuur en naleving van de browser.
+Combi neer onze opdracht hulpprogramma's met de andere hulpprogram ma's die beschikbaar zijn in Cloud Shell, zoals `git`, `az-cli`en `terraform`, en schrijf uw infra structuur en compatibiliteits automatisering vanuit de browser.
 
-## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Infrastructuur, apps en de naleving van één platform automatiseren
-Bedrijven moeten snelheid, snelheid en veiligheid voor deelname in de digital marketplace. Samen Chef en Microsoft helpen personen, teams en ondernemingen die al deze dingen doen. U kunt met één platform, Chef Automate, automatiseren en continu afleveren van uw infrastructuur, toepassingen en naleving via uw Microsoft-omgeving.
+## <a name="automate-infrastructure-apps-and-compliance-with-one-platform"></a>Infra structuur, apps en naleving automatiseren met één platform
+Bedrijven hebben snelheid, snelheid en veiligheid nodig om in de digitale Marketplace te concurreren. Chef en micro soft helpen individuen, teams en ondernemingen al deze dingen uit te voeren. Met één platform, chef automatiseren, kunt u uw infra structuur, toepassingen en naleving van uw micro soft-account automatiseren en continu bezorgen.
 
-## <a name="test-drive-chef-automate-on-azure"></a>Probeer Chef automate op Azure
-Ondersteund door Chef, de [Chef automatiseren van Azure Marketplace-oplossing](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) kunt u bouwen, implementeren en beheren van uw infrastructuur en toepassingen samen. Met één klik kunt u direct toegang tot alle commerciële functies die zijn opgenomen in Chef Automate; end-to-end inzicht in uw gehele apparatenpark, continue naleving en beheert elke wijziging met een uniforme werkstroom.
+## <a name="test-drive-chef-automate-on-azure"></a>Chef automatisch op Azure testen
+Met de chef-oplossing voor het [automatiseren van Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate) kunt u met chef de infra structuur en toepassingen gezamenlijk bouwen, implementeren en beheren. Met één klik krijgt u direct toegang tot alle commerciële functies die zijn opgenomen in chef-automatisering; Profiteer van end-to-end zicht baarheid in uw gehele vloot, schakel voortdurende naleving in en beheer alle wijzigingen met een uniforme werk stroom.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Een Windows-machine maken op Azure met Chef](/azure/virtual-machines/windows/chef-automation)
+* [Een virtuele Windows-machine maken in azure met behulp van chef](/azure/virtual-machines/windows/chef-automation)

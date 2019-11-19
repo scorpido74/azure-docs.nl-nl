@@ -1,19 +1,19 @@
 ---
 title: Azure CLI-voorbeeldscript - Een SignalR-service maken
-description: Azure CLI-voorbeeldscript - Een SignalR-service maken
+description: Meer informatie over het voorbeeld script voor het maken van een nieuwe Azure signalerings service in een nieuwe resource groep met een wille keurige naam.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
 ms.topic: sample
-ms.date: 04/20/2018
+ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
-ms.openlocfilehash: c6adda618282370b291ea2037ebee959628c9e93
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73578956"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158075"
 ---
 # <a name="create-a-signalr-service"></a>Een SignalR-service maken 
 
@@ -76,6 +76,6 @@ Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
 Extra CLI-voorbeeldscripts voor de Azure SignalR-service vindt u in de [documentatie van de Azure SignalR-service](../signalr-reference-cli.md).

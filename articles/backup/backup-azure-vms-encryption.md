@@ -1,19 +1,14 @@
 ---
-title: Back-up en herstel van versleutelde virtuele Azure-machines met Azure Backup
+title: Back-up en herstel van versleutelde virtuele Azure-machines
 description: Hierin wordt beschreven hoe u back-ups van versleutelde virtuele Azure-machines maakt en herstelt met de Azure Backup-service.
-ms.reviewer: geg
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004f15a1af11e3ed27f792e245888671b94fbb1a
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c4bc413e70d8e19f8006580c0631641651dcaf92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074932"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172525"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Back-up en herstel van versleutelde Azure VM
 
@@ -21,7 +16,7 @@ In dit artikel wordt beschreven hoe u back-ups maakt van Windows of Linux Azure 
 
 Als u meer wilt weten over de werking van Azure Backup interactie met Azure-Vm's voordat u begint, controleert u deze bronnen:
 
-- [Bekijk](backup-architecture.md#architecture-direct-backup-of-azure-vms) de Azure VM-back-uparchitectuur.
+- [Bekijk](backup-architecture.md#architecture-built-in-azure-vm-backup) de Azure VM-back-uparchitectuur.
 - [Meer informatie over](backup-azure-vms-introduction.md) Azure VM-back-up en de uitbrei ding Azure Backup.
 
 ## <a name="encryption-support"></a>Ondersteuning voor versleuteling

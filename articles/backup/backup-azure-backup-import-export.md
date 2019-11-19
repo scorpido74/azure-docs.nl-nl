@@ -1,19 +1,15 @@
 ---
-title: Een offline back-up met de Azure Backup import/export-service
+title: Offline back-ups maken met de import/export-service
 description: Meer informatie over hoe u met behulp van Azure Backup gegevens via het netwerk kunt verzenden met de Azure import/export-service. In dit artikel wordt uitgelegd hoe u de offline seeding van de eerste back-upgegevens maakt met behulp van de Azure import-export service.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.author: dacurwin
-ms.openlocfilehash: 15a5a67209552134969c01220e8412d0c9dace15
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 331d5528c8f124f4d43142ff7be4daa3169b0381
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968523"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173291"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Werkstroom voor offline back-ups maken in Azure Backup
 
@@ -40,7 +36,7 @@ De volgende Azure Backup-functies of-workloads ondersteunen het gebruik van offl
 > * Back-ups van bestanden en mappen met de Microsoft Azure Recovery Services-agent (MARS), ook wel de Azure Backup-Agent genoemd.
 > * Back-ups van alle werk belastingen en bestanden met System Center Data Protection Manager (SC DPM)
 > * Back-ups maken van alle werk belastingen en bestanden met Microsoft Azure Backup Server
-
+ 
    > [!NOTE]
    > Offline back-ups worden niet ondersteund voor systeem status back-ups die zijn uitgevoerd met behulp van de Azure Backup-Agent.
 
@@ -109,7 +105,7 @@ In deze sectie wordt de werk stroom voor offline back-ups beschreven, zodat uw g
 
 Het hulp programma *AzureOfflineBackupDiskPrep* bereidt de SATA-stations voor die naar het dichtstbijzijnde Azure-Data Center worden verzonden. Dit hulp programma is beschikbaar in de installatiemap van de Azure Backup Agent (in het volgende pad):
 
-   *\Microsoft Azure Recovery Services Agent\Utils\\*
+    *\Microsoft Azure Recovery Services Agent\Utils\\*
 
 1. Ga naar de map en kopieer de **AzureOfflineBackupDiskPrep** -map naar een andere computer waarop de SATA-schijven zijn aangesloten. Zorg ervoor dat op de computer met de aangesloten SATA-schijven:
 

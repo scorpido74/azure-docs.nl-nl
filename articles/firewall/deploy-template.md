@@ -1,18 +1,18 @@
 ---
 title: Azure Firewall implementeren met behulp van een sjabloon
-description: Azure Firewall implementeren met behulp van een sjabloon
+description: Azure Firewall implementeren met behulp van een sjabloon. Het gemaakte netwerk heeft één VNet met drie subnetten. Er worden twee virtuele Windows Server-machines met twee kernen geïmplementeerd.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 7/9/2018
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: c0a6cda54a58e3cc03ba31e221fb57fc725dd779
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: b9e82998283bf44eede88148a12d88aae521b1ca
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839392"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169199"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Azure Firewall implementeren met behulp van een sjabloon
 

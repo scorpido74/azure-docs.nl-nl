@@ -4,19 +4,19 @@ description: Veelgestelde vragen en antwoorden met betrekking tot Azure Multi-Fa
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
-ms.topic: conceptual
-ms.date: 07/11/2018
+ms.topic: troubleshooting
+ms.date: 11/18/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae7390afead843fa0784454f7e0374bedf735ad
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 37f375b6d4284b4728b2337dc5ab5186ce22772c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74081536"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167764"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Veelgestelde vragen over Azure Multi-Factor Authentication
 
@@ -142,13 +142,11 @@ Als uw organisatie geen verouderde clients heeft, mag u uw gebruikers niet toest
 >
 > App-wacht woorden zijn alleen nodig voor apps die moderne authenticatie niet ondersteunen. Office 2013-clients ondersteunen moderne verificatie protocollen, maar moeten worden geconfigureerd. Moderne verificatie is nu beschikbaar voor elke klant die de update van 2015 maart of hoger voor Office 2013 uitvoert. Zie het blog bericht [Updated Office 365 moderne authenticatie](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)voor meer informatie.
 
-**V: mijn gebruikers zeggen dat ze het SMS-bericht soms niet ontvangen of dat ze reageren op tekst berichten in twee richtingen, maar dat er een time-out optreedt voor de verificatie.**
+**V: mijn gebruikers zeggen dat ze het tekst bericht soms niet ontvangen of dat de verificatie een time-out heeft.**
 
-Het leveren van SMS-berichten en de ontvangst van antwoorden in twee richtings SM'S worden niet gegarandeerd omdat er niet-instel bare factoren zijn die van invloed kunnen zijn op de betrouw baarheid van de service. Deze factoren zijn onder andere het doel land/de regio, de mobiele telefoon provider en de signaal sterkte.
+Het leveren van SMS-berichten wordt niet gegarandeerd omdat er niet-instel bare factoren zijn die van invloed kunnen zijn op de betrouw baarheid van de service. Deze factoren zijn onder andere het doel land/de regio, de mobiele telefoon provider en de signaal sterkte.
 
 Als uw gebruikers vaak problemen ondervinden met het betrouw bare ontvangen van SMS-berichten, kunt u ze vertellen dat ze de mobiele app of de telefoon gesprek methode moeten gebruiken. De mobiele app kan meldingen ontvangen via mobiele en Wi-Fi-verbindingen. Daarnaast kan de mobiele app verificatie codes genereren, zelfs wanneer het apparaat helemaal geen signaal heeft. De Microsoft Authenticator-app is beschikbaar voor [Android](https://go.microsoft.com/fwlink/?Linkid=825072), [IOS](https://go.microsoft.com/fwlink/?Linkid=825073)en [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6).
-
-Als u tekst berichten moet gebruiken, raden we u aan om in een eenrichtings-SMS te gebruiken in plaats van twee richtings SM'S wanneer dat mogelijk is. Eenrichtings-SMS is betrouwbaarder en Hiermee wordt voor komen dat gebruikers algemene SMS-kosten in rekening worden gebracht bij het beantwoorden van een SMS-bericht dat is verzonden vanuit een ander land/regio.
 
 **V: kan ik de hoeveelheid tijd wijzigen die gebruikers nodig hebben om de verificatie code van een SMS-bericht in te voeren voordat het systeem time-out heeft?**
 
@@ -162,7 +160,7 @@ Voor eenrichtings-SMS met Azure MFA server v 7.0 of hoger kunt u de time-outinst
 >[!TIP] 
 >Als u meerdere MFA-servers hebt, kent alleen het account dat de oorspronkelijke verificatie aanvraag heeft verwerkt, de verificatie code die naar de gebruiker is verzonden. Wanneer de gebruiker de code invoert, moet de verificatie aanvraag om deze te valideren naar dezelfde server worden verzonden. Als de code validatie naar een andere server wordt verzonden, wordt de verificatie geweigerd. 
 
-Voor twee richtings-SMS-servers met Azure MFA-server kunt u de time-outinstelling configureren in de MFA-Beheerportal. Als gebruikers niet binnen de gedefinieerde time-outperiode reageren op het SMS, wordt de verificatie geweigerd. 
+Als gebruikers niet binnen de gedefinieerde time-outperiode reageren op het SMS, wordt de verificatie geweigerd. 
 
 U kunt de time-outinstelling niet configureren voor SMS-eenrichtings verificatie met Azure MFA in de Cloud (met inbegrip van de AD FS adapter of de Network Policy Server extensie). Azure AD slaat de verificatie code voor 180 seconden op. 
 

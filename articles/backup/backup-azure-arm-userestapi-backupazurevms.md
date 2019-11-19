@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Maak een back-up van virtuele Azure-machines met REST API'
+title: Back-ups van virtuele Azure-machines maken met REST API
 description: In dit artikel vindt u informatie over het configureren, initiëren en beheren van back-upbewerkingen van Azure VM-back-ups met behulp van REST API.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Back-ups van Azure-VM'S; Azure VM herstellen;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2018
-ms.author: dacurwin
 ms.assetid: b80b3a41-87bf-49ca-8ef2-68e43c04c1a3
-ms.openlocfilehash: 6f64f45aca6948665c088279002d3d8054ef8d80
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: c929f820862f5d041b4a63a1ca9c083abf1a1e4c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929177"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173445"
 ---
 # <a name="back-up-an-azure-vm-using-azure-backup-via-rest-api"></a>Maak een back-up van een Azure-VM met behulp van Azure Backup via REST API
 
@@ -41,7 +35,7 @@ De POST-URI heeft `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}``
 POST https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupFabrics/Azure/refreshContainers?api-version=2016-12-01
 ```
 
-#### <a name="responses"></a>Antwoorden
+#### <a name="responses"></a>Responses
 
 De bewerking vernieuwen is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
@@ -208,7 +202,7 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor h
 
 De `{sourceResourceId}` is de `{virtualMachineId}` die hierboven wordt vermeld, van het antwoord op de [lijst met Beveilig bare items](#example-responses-1).
 
-#### <a name="responses"></a>Antwoorden
+#### <a name="responses"></a>Responses
 
 Het maken van een beveiligd item is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
@@ -319,7 +313,7 @@ De volgende aanvraag hoofdtekst definieert eigenschappen die vereist zijn voor h
 }
 ```
 
-### <a name="responses"></a>Antwoorden
+### <a name="responses"></a>Responses
 
 Het activeren van een back-up op aanvraag is een [asynchrone bewerking](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations). Dit betekent dat met deze bewerking een andere bewerking wordt gemaakt die afzonderlijk moet worden bijgehouden.
 
@@ -447,7 +441,7 @@ Er worden twee antwoorden geretourneerd: 202 (geaccepteerd) wanneer een andere b
 
 |Naam  |Type  |Beschrijving  |
 |---------|---------|---------|
-|204-tekst     |         |  Geen inhoud       |
+|204-tekst     |         |  NoContent       |
 |202 geaccepteerd     |         |     Afgewezen    |
 
 ## <a name="next-steps"></a>Volgende stappen

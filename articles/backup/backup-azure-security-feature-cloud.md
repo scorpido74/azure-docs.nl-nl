@@ -1,18 +1,14 @@
 ---
-title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
+title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.author: dacurwin
-ms.openlocfilehash: f0e4540f3f5ab3fdbb5953cbf100c5fdc2b2542a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622008"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172721"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -95,7 +91,7 @@ Als u zacht verwijderen wilt uitschakelen, controleert u of aan de vereisten wor
 
 ## <a name="other-security-features"></a>Andere beveiligings functies
 
-### <a name="storage-side-encryption"></a>Versleuteling van opslag side
+### <a name="storage-side-encryption"></a>Versleuteling van opslag aan de serverzijde
 
 Azure Storage worden uw gegevens automatisch versleuteld wanneer deze persistent worden gemaakt in de Cloud. Versleuteling beschermt uw gegevens en helpt u om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. Gegevens in Azure Storage worden transparant versleuteld en ontsleuteld met 256-bits AES-versleuteling, een van de krach tigste blok cijfers die beschikbaar zijn en is compatibel met FIPS 140-2. Azure Storage versleuteling lijkt op BitLocker-versleuteling in Windows. Azure Backup versleutelt gegevens automatisch voordat ze worden opgeslagen. Azure Storage worden gegevens ontsleuteld voordat ze worden opgehaald.  
 

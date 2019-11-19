@@ -1,21 +1,15 @@
 ---
-title: "Azure Backup: Azure-Vm's herstellen met behulp van REST API"
+title: Virtuele Azure-machines terugzetten met behulp van REST API
 description: In dit artikel vindt u informatie over het beheren van herstel bewerkingen van back-ups van virtuele Azure-machines met behulp van REST API.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Back-ups van Azure-VM'S; Azure VM herstellen;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/12/2018
-ms.author: dacurwin
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
-ms.openlocfilehash: eecee01ffc78ec8cc0e60b517e9d5b4f0e6baa25
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 4990d815721ddbdde8e6eb6ebf8d6d3b49adc700
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929144"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173373"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>Virtuele Azure-machines herstellen met behulp van REST API
 
@@ -35,7 +29,7 @@ De `{containerName}` en `{protectedItemName}` zijn [zo gemaakt.](backup-azure-ar
 
 De *Get* -URI heeft alle vereiste para meters. Er is geen aanvullende aanvraag tekst nodig
 
-### <a name="responses"></a>Antwoorden
+### <a name="responses"></a>Responses
 
 |Naam  |Type  |Beschrijving  |
 |---------|---------|---------|

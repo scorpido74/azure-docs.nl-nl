@@ -3,17 +3,13 @@ title: 'Zelf studie: apps schalen in Azure App Service met behulp van Ansible'
 description: Meer informatie over het opschalen van een app in Azure App Service
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, web-app, schalen, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 0adcddb8afa4f0e3d0b9288f351dae7d77922612
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9eb50922361c817de8047dece4849a9b221677f0
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241493"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155911"
 ---
 # <a name="tutorial-scale-apps-in-azure-app-service-using-ansible"></a>Zelf studie: apps schalen in Azure App Service met behulp van Ansible
 
@@ -84,7 +80,7 @@ Sla het volgende playbook op als `webapp_scaleup.yml`:
       var: facts.appserviceplans[0].sku
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook webapp_scaleup.yml

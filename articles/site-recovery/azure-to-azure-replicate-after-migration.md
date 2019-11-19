@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: cd15b562c3707a28b54bc59166d54871120909e2
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 874c282ff878126297dc46ca0e7a4c19910e40a1
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084940"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159110"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>Herstel na noodgevallen instellen voor virtuele Azure-machines na migratie naar Azure 
 
@@ -30,7 +30,7 @@ Voordat u herstel na nood gevallen instelt, controleert u of de migratie is volt
 
 Op elke virtuele machine van Azure moet de [Azure VM-agent](../virtual-machines/extensions/agent-windows.md) zijn geïnstalleerd. Als u virtuele Azure-machines wilt repliceren, wordt door Site Recovery een uitbrei ding op de agent geïnstalleerd.
 
-- Als op de machine versie 9.7.0.0 of hoger van de Site Recovery Mobility-service wordt uitgevoerd, wordt de Azure VM-agent automatisch geïnstalleerd door de Mobility-service op Windows-Vm's. In eerdere versies van de Mobility-service moet u de agent hand matig installeren.
+- Als op de machine versie 9.7.0.0 of hoger van de Site Recovery Mobility-service wordt uitgevoerd, wordt de Azure VM-agent automatisch geïnstalleerd door de Mobility-service op Windows-Vm's. In eerdere versies van de Mobility-service installeert u de agent hand matig.
 - Voor virtuele Linux-machines moet u de Azure VM-agent hand matig installeren. U hoeft alleen de Azure VM-agent te installeren als de Mobility-service op de gemigreerde machine v 9.6 of eerder is geïnstalleerd.
 
 

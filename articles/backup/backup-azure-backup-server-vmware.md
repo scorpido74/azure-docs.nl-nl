@@ -1,18 +1,14 @@
 ---
 title: Back-ups maken van VMware-Vm's met Azure Backup Server
 description: In dit artikel leert u hoe u Azure Backup Server kunt gebruiken om een back-up te maken van virtuele VMware-machines die op een VMware vCenter/ESXi-server worden uitgevoerd.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.author: dacurwin
-ms.openlocfilehash: df41907ee10b54ab3bfaeb548e085617f7d79084
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903235"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173361"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Back-ups maken van VMware-Vm's met Azure Backup Server
 
@@ -132,26 +128,26 @@ De Azure Backup Server moet een gebruikers account met machtigingen hebben voor 
 
 ### <a name="role-permissions"></a>Rolmachtigingen
 
-**6.5/6.0** | **5,5**
+**6.5/6.0** | **5.5**
 --- | ---
-Data Store. AllocateSpace | Data Store. AllocateSpace
-Global. ManageCustomFields | Global. ManageCustomFields
-Global. SetCustomField |
+Datastore.AllocateSpace | Datastore.AllocateSpace
+Global.ManageCustomFields | Global.ManageCustomFields
+Global.SetCustomField |
 Host. local. CreateVM | Netwerk. assign
 Netwerk. assign |
-Resource. AssignVMToPool |
-VirtualMachine. config. AddNewDisk  | VirtualMachine. config. AddNewDisk
-VirtualMachine. config. AdvancedConfig| VirtualMachine. config. AdvancedConfig
-VirtualMachine. config. change tracking| VirtualMachine. config. change tracking
-VirtualMachine. config. HostUSBDevice |
-VirtualMachine. config. QueryUnownedFiles |
-VirtualMachine. config. SwapPlacement| VirtualMachine. config. SwapPlacement
+Resource.AssignVMToPool |
+VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
+VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
+VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
+VirtualMachine.Config.HostUSBDevice |
+VirtualMachine.Config.QueryUnownedFiles |
+VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
 VirtualMachine. interactie. uitgeschakeld| VirtualMachine. interactie. uitgeschakeld
 VirtualMachine. Inventory. Create| VirtualMachine. Inventory. Create
-VirtualMachine. provisioning. DiskRandomAccess |
+VirtualMachine.Provisioning.DiskRandomAccess |
 VirtualMachine. provisioning. DiskRandomRead | VirtualMachine. provisioning. DiskRandomRead
-VirtualMachine. State. CreateSnapshot | VirtualMachine. State. CreateSnapshot
-VirtualMachine. State. RemoveSnapshot | VirtualMachine. State. RemoveSnapshot
+VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
+VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
 
 ## <a name="create-a-vmware-account"></a>Een VMware-account maken
 

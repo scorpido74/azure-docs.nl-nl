@@ -1,25 +1,20 @@
 ---
-title: Back-ups maken en herstellen Azure Files met Azure Backup en Power shell
+title: Back-ups maken en herstellen Azure Files met Power shell
 description: In dit artikel vindt u informatie over het maken van back-ups en het herstellen van Azure Files met behulp van de Azure Backup-service en Power shell.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.author: dacurwin
-ms.reviewer: pullabhk
-ms.openlocfilehash: 4642549dcdd455c97ea3e8fd8a8b5440779b923c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 18c7340d1cb782ba41c472156259170f37139a74
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903615"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173480"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Back-ups maken en herstellen Azure Files met Power shell
 
 In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt voor het maken van back-ups en het herstellen van een Azure Files bestands share met behulp van een [Azure Backup](backup-overview.md) Recovery Services kluis.
 
-In deze zelfstudie wordt het volgende uitgelegd:
+In dit artikel wordt uitgelegd hoe u:
 
 > [!div class="checklist"]
 >

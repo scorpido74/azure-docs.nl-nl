@@ -1,198 +1,216 @@
 ---
-title: Azure CDN van voldoen aan de voor waarden van de micro soft Standard Rules engine | Microsoft Docs
-description: Referentie documentatie voor Azure Content Delivery Network van de overeenkomst voor waarden van de micro soft Standard Rules engine.
+title: Voldoen aan de voor waarden in de standaard regels-engine voor Azure CDN | Microsoft Docs
+description: Referentie documentatie voor de matching voorwaarden in de Standard Rules engine voor Azure Content Delivery Network (Azure CDN).
 services: cdn
 author: mdgattuso
 ms.service: azure-cdn
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: magattus
-ms.openlocfilehash: a72452d37b152a9463a5aee0e199fd42ea852236
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c4c2b1f334e37691655b18d2c629fbd8edc95382
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73615960"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171610"
 ---
-# <a name="azure-cdn-from-microsoft-standard-rules-engine-match-conditions"></a>Azure CDN van voldoen aan de voor waarden van de micro soft Standard Rules engine
+# <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>Voldoen aan de voor waarden in de standaard regels-engine voor Azure CDN
 
-In dit artikel vindt u gedetailleerde beschrijvingen van de beschik bare Matchings voorwaarden voor de Azure Content Delivery Network (CDN) van de micro soft [Standard Rules engine](cdn-standard-rules-engine.md).
+In de [standaard regels-engine](cdn-standard-rules-engine.md) voor Azure Content Delivery Network (Azure CDN) bestaat een regel uit een of meer match-voor waarden en een actie. In dit artikel vindt u gedetailleerde beschrijvingen van de match-voor waarden die u kunt gebruiken in de Standard Rules engine voor Azure CDN.
 
-Het eerste deel van een regel is een set match-voor waarden. Elke regel kan voldoen aan Maxi maal vier match voorwaarden. Een match-voor waarde identificeert specifieke typen aanvragen waarvoor de acties worden uitgevoerd die in de regel zijn gedefinieerd. Als u meerdere match-voor waarden gebruikt, worden deze gegroepeerd met en logica.
+Het eerste deel van een regel is een match-voor waarde of een set matching voorwaarden. In de standaard regels-engine voor Azure CDN kan elke regel Maxi maal vier match voorwaarden hebben. Een match-voor waarde identificeert specifieke typen aanvragen waarvoor gedefinieerde acties worden uitgevoerd. Als u meerdere match voorwaarden gebruikt, worden de match-voor waarden samen gegroepeerd met behulp van en logica.
 
 U kunt bijvoorbeeld een match-voor waarde gebruiken voor het volgende:
 
-- Aanvragen filteren die zijn gegenereerd op basis van een bepaald IP-adres of specifieke land/regio.
+- Aanvragen filteren op basis van een specifiek IP-adres, land of regio.
 - Aanvragen filteren op header-informatie.
-- Aanvragen van mobiele of desktop apparaten filteren.
+- Aanvragen filteren op mobiele apparaten of desktop apparaten.
 
 ## <a name="match-conditions"></a>Overeenkomst voorwaarden
 
-De volgende overeenkomende voor waarden zijn beschikbaar voor gebruik. 
+De volgende match-voor waarden zijn beschikbaar voor gebruik in de standaard regels-engine voor Azure CDN. 
 
 ### <a name="device-type"></a>Apparaattype 
 
-De voor waarde matching van het apparaattype identificeert aanvragen die zijn gemaakt van een mobiel of desktop apparaat op basis van de eigenschappen.  
+Hiermee worden aanvragen geïdentificeerd van een mobiel apparaat of desktop apparaat.  
 
-**Vereiste velden**
+#### <a name="required-fields"></a>Vereiste velden
 
-Operator | Ondersteunde waarde
+Operator | Ondersteunde waarden
 ---------|----------------
 Is gelijk aan, niet gelijk aan | Mobiel, bureau blad
 
-
 ### <a name="http-version"></a>HTTP-versie
 
-De voor waarde matching HTTP-versie identificeert aanvragen op basis van de HTTP-versie waarvan de aanvraag arriveert.
+Identificeert aanvragen op basis van de HTTP-versie van de aanvraag.
 
-**Vereiste velden**
+#### <a name="required-fields"></a>Vereiste velden
 
-Operator | Ondersteunde waarde
+Operator | Ondersteunde waarden
 ---------|----------------
 Is gelijk aan, niet gelijk aan | 2,0, 1,1, 1,0, 0,9, alle
 
-
 ### <a name="request-cookies"></a>Cookies aanvragen
 
-De voor waarde voor het vergelijken van aanvraag cookies identificeert aanvragen op basis van cookie-informatie in de binnenkomende aanvraag.
+Identificeert aanvragen op basis van cookie-informatie in de binnenkomende aanvraag.
 
-**Vereiste velden**
+#### <a name="required-fields"></a>Vereiste velden
 
-Cookie naam | Operator | Cookie waarde | Case-trans formatie
+Naam van cookie | Operator | Cookie waarde | Case-trans formatie
 ------------|----------|--------------|---------------
 Tekenreeks | [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-Belang rijke informatie
-- Joker tekens, inclusief sterretjes (*), worden niet ondersteund bij het opgeven van een cookie naam, maar alleen exacte cookie naam overeenkomsten komen in aanmerking voor vergelijking.
-- Er kan slechts één cookie naam worden opgegeven per exemplaar van deze match-voor waarde.
+#### <a name="key-information"></a>Belang rijke informatie
+
+- U kunt geen joker tekens (inclusief sterretjes (\*)) gebruiken wanneer u een cookie naam opgeeft. u Muse de naam van een exacte cookie gebruiken.
+- U kunt slechts één cookie naam per exemplaar van deze match-voor waarde opgeven.
 - Cookie naam vergelijkingen zijn niet hoofdletter gevoelig.
-- Geef meerdere cookie waarden op door één enkele spatie te scheiden. 
+- Als u meerdere cookie waarden wilt opgeven, gebruikt u één spatie tussen elke cookie waarde. 
 - Cookie waarden kunnen gebruikmaken van Joker teken waarden.
-- Als er geen joker teken waarde is opgegeven, voldoet alleen een exacte overeenkomst aan deze match-voor waarde. Als u bijvoorbeeld ' waarde ' opgeeft, komt dit overeen met ' waarde ', maar niet ' waarde1 '. 
+- Als er geen joker teken waarde is opgegeven, voldoet alleen een exacte overeenkomst aan deze match-voor waarde. ' Waarde ' komt bijvoorbeeld overeen met ' waarde ', maar niet ' waarde1 '. 
 
 ### <a name="post-argument"></a>Post-argument
 
-**Vereiste velden**
+Identificeert aanvragen op basis van argumenten die zijn gedefinieerd voor de POST-aanvraag methode die wordt gebruikt in de aanvraag. 
 
-Argument naam | Operator | Argument waarde | Case-trans formatie
+#### <a name="required-fields"></a>Vereiste velden
+
+Argumentnaam | Operator | Argumentwaarde | Case-trans formatie
 --------------|----------|----------------|---------------
 Tekenreeks | [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-### <a name="query-string"></a>Queryreeksen
+### <a name="query-string"></a>Query reeks
 
-De voor waarden van de query reeks overeenkomst identificeren aanvragen met een opgegeven query teken reeks parameter. Deze para meter wordt ingesteld op een waarde die overeenkomt met een opgegeven patroon. Query reeks parameters (bijvoorbeeld para meter = waarde) in de aanvraag-URL bepalen of aan deze voor waarde wordt voldaan. Deze match-voor waarde identificeert een query reeks parameter met de naam en accepteert een of meer waarden voor de waarde van de para meter.
+Hiermee worden aanvragen geïdentificeerd die een specifieke query teken reeks parameter bevatten. Deze para meter wordt ingesteld op een waarde die overeenkomt met een specifiek patroon. Query reeks parameters (bijvoorbeeld **para meter = waarde**) in de aanvraag-URL bepalen of aan deze voor waarde wordt voldaan. Deze match-voor waarde identificeert een query reeks parameter met de naam en accepteert een of meer waarden voor de waarde van de para meter.
 
-**Vereiste velden**
+#### <a name="required-fields"></a>Vereiste velden
 
-Operator | Queryreeksen | Case-trans formatie
+Operator | Query reeks | Case-trans formatie
 ---------|--------------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
 ### <a name="remote-address"></a>Extern adres
 
-De voor waarde voor het afstemmen van het externe adres identificeert aanvragen op basis van de locatie of het IP-adres van de aanvrager.
+Hiermee worden aanvragen geïdentificeerd op basis van de locatie of het IP-adres van de aanvrager.
 
-**Vereiste velden**
+#### <a name="required-fields"></a>Vereiste velden
 
 Operator | Ondersteunde waarden
 ---------|-----------------
 Alle | N.v.t.
-Geo-overeenkomst | Land codes
-Overeenkomende IP | IP-adressen (ruimte gescheiden)
+Geo-overeenkomst | Landnummer
+Overeenkomende IP | IP-adres (door spaties gescheiden)
 Geen | N.v.t.
-Geen geo-overeenkomst | Land codes
-Geen overeenkomst met het IP-adres | IP-adressen (ruimte gescheiden)
+Geen geo-overeenkomst | Landnummer
+Geen overeenkomst met het IP-adres | IP-adres (door spaties gescheiden)
 
-Belang rijke informatie:
+#### <a name="key-information"></a>Belang rijke informatie
 
 - Gebruik CIDR-notatie.
-- Geef meerdere IP-adressen en/of IP-adres blokken op door één spatie te scheiden. Bijvoorbeeld:
-  - **IPv4-voor beeld**: 1.2.3.4 10.20.30.40 komt overeen met alle aanvragen die binnenkomen bij een van de adressen 1.2.3.4 of 10.20.30.40.
-  - **IPv6-voor beeld**: 1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80 komt overeen met aanvragen die afkomstig zijn van een van de adressen 1:2:3:4:5:6:7:8 of 10:20:30:40:50:60:70:80.
+- Als u meerdere IP-adressen en IP-adres blokken wilt opgeven, gebruikt u één spatie tussen de waarden:
+  - **IPv4-voor beeld**: *1.2.3.4 10.20.30.40* komt overeen met alle aanvragen die binnenkomen bij een van de adressen 1.2.3.4 of 10.20.30.40.
+  - **IPv6-voor beeld**: *1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:8*0 komt overeen met aanvragen die afkomstig zijn van een van de adressen 1:2:3:4:5:6:7:8 of 10:20:30:40:50:60:70:80.
 - De syntaxis voor een IP-adres blok is het basis-IP-adres, gevolgd door een slash en de grootte van het voor voegsel. Bijvoorbeeld:
-  - **IPv4-voor beeld**: 5.5.5.64/26 komt overeen met de aanvragen die afkomstig zijn van 5.5.5.64 via 5.5.5.127.
-  - **IPv6-voor beeld**: 1:2:3:/48 komt overeen met aanvragen die afkomstig zijn van de adressen 1:2:3:0:0:0:0:0 tot en met 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF.
+  - **IPv4-voor beeld**: *5.5.5.64/26* komt overeen met de aanvragen die afkomstig zijn van 5.5.5.64 via 5.5.5.127.
+  - **IPv6-voor beeld**: *1:2:3:/48* komt overeen met aanvragen die afkomstig zijn van de adressen 1:2:3:0:0:0:0:0 tot en met 1:2: 3: FFFF: FFFF: FFFF: FFFF: FFFF.
 
-### <a name="request-body"></a>Aanvraagtekst
+### <a name="request-body"></a>Aanvraagbody
 
-**Vereiste velden**
+Identificeert aanvragen op basis van specifieke tekst die wordt weer gegeven in de hoofd tekst van de aanvraag.
 
-Operator | Aanvraagtekst | Case-trans formatie
+#### <a name="required-fields"></a>Vereiste velden
+
+Operator | Aanvraagbody | Case-trans formatie
 ---------|--------------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
 ### <a name="request-header"></a>Aanvraagheader
 
-**Vereiste velden**
-Header naam | Operator | Header waarde | Case-trans formatie
+Identificeert aanvragen die gebruikmaken van een specifieke header in de aanvraag.
+
+#### <a name="required-fields"></a>Vereiste velden
+
+Headernaam | Operator | Headerwaarde | Case-trans formatie
 ------------|----------|--------------|---------------
 Tekenreeks | [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
 ### <a name="request-method"></a>Aanvraag methode
 
-**Vereiste velden**
+Identificeert aanvragen die gebruikmaken van de opgegeven aanvraag methode.
 
-Operator | Ondersteunde waarde
+#### <a name="required-fields"></a>Vereiste velden
+
+Operator | Ondersteunde waarden
 ---------|----------------
 Is gelijk aan, niet gelijk aan | GET, POST, PUT, DELETE, HEAD, OPTIONS, TRACE
 
-Belang rijke informatie:
+#### <a name="key-information"></a>Belang rijke informatie
 
-- Alleen de GET-aanvraag methode kan inhoud in de cache in het CDN genereren. Alle andere aanvraag methoden worden via het netwerk geproxyeerd. 
+- Alleen de GET-aanvraag methode kan inhoud in de cache in Azure CDN genereren. Alle andere aanvraag methoden worden via het netwerk geproxyeerd. 
 
 ### <a name="request-protocol"></a>Aanvraag Protocol
 
-**Vereiste velden**
+Identificeert aanvragen waarvoor het opgegeven protocol wordt gebruikt.
 
-Operator | Ondersteunde waarde
+#### <a name="required-fields"></a>Vereiste velden
+
+Operator | Ondersteunde waarden
 ---------|----------------
 Is gelijk aan, niet gelijk aan | HTTP, HTTPS
 
 ### <a name="request-url"></a>Aanvraag-URL
 
-**Vereiste velden**
+Hiermee worden aanvragen geïdentificeerd die overeenkomen met de opgegeven URL.
+
+#### <a name="required-fields"></a>Vereiste velden
 
 Operator | Aanvraag-URL | Case-trans formatie
 ---------|-------------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-Belang rijke informatie:
+#### <a name="key-information"></a>Belang rijke informatie
 
-- Wanneer u een aanvraag-URL opgeeft, moet u protocol gegevens toevoegen. Bijvoorbeeld 'https://www. [webdomeine]. com "
+- Wanneer u deze regel voorwaarde gebruikt, moet u protocol gegevens toevoegen. Bijvoorbeeld: *https://www.\<yourdomain\>.com* .
 
 ### <a name="url-file-extension"></a>URL-bestands extensie
 
-**Vereiste velden**
+Hiermee worden aanvragen geïdentificeerd die de opgegeven bestands extensie bevatten in de bestands naam in de aanvraag-URL.
+
+#### <a name="required-fields"></a>Vereiste velden
 
 Operator | Toestelnummer | Case-trans formatie
 ---------|-----------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-Belang rijke informatie:
+#### <a name="key-information"></a>Belang rijke informatie
 
-- Voor uitbrei ding geldt geen voorloop periode. Gebruik bijvoorbeeld HTML in plaats van HTML.
+- Voor uitbrei ding geldt geen voorloop periode. Gebruik bijvoorbeeld *HTML* in plaats van *HTML*.
 
 ### <a name="url-file-name"></a>URL-bestands naam
 
-**Vereiste velden**
+Identificeert aanvragen met de opgegeven bestands naam in de aanvraag-URL.
+
+#### <a name="required-fields"></a>Vereiste velden
 
 Operator | Bestandsnaam | Case-trans formatie
 ---------|-----------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-Belang rijke informatie:
+#### <a name="key-information"></a>Belang rijke informatie
 
 - Als u meerdere bestands namen wilt opgeven, moet u elke bestands naam scheiden met één spatie. 
 
 ### <a name="url-path"></a>URL-pad
 
-**Vereiste velden**
+Hiermee worden aanvragen geïdentificeerd die het opgegeven pad bevatten in de aangevraagde URL.
+
+#### <a name="required-fields"></a>Vereiste velden
 
 Operator | Waarde | Case-trans formatie
 ---------|-------|---------------
 [Lijst met standaard operators](#standard-operator-list) | Teken reeks, int | Geen trans formatie, naar hoofd letters, naar kleine letters
 
-Belang rijke informatie:
+#### <a name="key-information"></a>Belang rijke informatie
 
 - De waarde van een bestands naam kan gebruikmaken van joker tekens. Elk bestands naam patroon kan bijvoorbeeld bestaan uit een of meer sterretjes (*), waarbij elk sterretje overeenkomt met een reeks van een of meer tekens.
 
@@ -200,13 +218,13 @@ Belang rijke informatie:
 
 ### <a name="standard-operator-list"></a>Lijst met standaard operators
 
-Voor regels die de lijst met standaard operators bevatten, zijn de volgende Opera tors geldig:
+De volgende Opera tors zijn geldig voor regels die waarden accepteren van de standaard operator lijst:
 
 - Alle
 - Is gelijk aan 
 - Contains 
 - Begint met 
-- Eindigt op 
+- eindigt met 
 - Kleiner dan
 - Kleiner dan of gelijk aan
 - Groter dan
@@ -220,17 +238,11 @@ Voor regels die de lijst met standaard operators bevatten, zijn de volgende Oper
 - Niet groter dan
 - Niet groter dan of gelijk aan
 
-Voor numerieke Opera Tors, zoals ' kleiner dan ' of ' groter dan of gelijk aan ', wordt de gebruikte vergelijking gebaseerd op lengte. In dit geval moet de waarde in de overeenkomst voor waarde een geheel getal zijn, gelijk aan de lengte die u wilt vergelijken. 
-
----
-
-[Terug naar boven](#match-conditions)
-
-</br>
+Voor numerieke Opera tors zoals *kleiner dan* en *groter dan of gelijk aan*, wordt de gebruikte vergelijking gebaseerd op lengte. In dit geval moet de waarde in de overeenkomst voor waarde een geheel getal zijn dat gelijk is aan de lengte die u wilt vergelijken. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van Azure Content Delivery Network](cdn-overview.md)
-- [Verwijzing regelengine](cdn-standard-rules-engine-reference.md)
-- [Engine acties voor regels](cdn-standard-rules-engine-actions.md)
-- [HTTPS afdwingen met de standaard regels-engine](cdn-standard-rules-engine.md)
+- [Overzicht van Azure CDN](cdn-overview.md)
+- [Naslag informatie voor standaard regels-engine](cdn-standard-rules-engine-reference.md)
+- [Acties in de standaard regels-engine](cdn-standard-rules-engine-actions.md)
+- [HTTPS afdwingen met behulp van de standaard regels-engine](cdn-standard-rules-engine.md)

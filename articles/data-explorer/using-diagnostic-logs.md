@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/18/2019
-ms.openlocfilehash: 7d0fec56791c0d3e7ae60d78da83cf286532b9ab
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 13f86f0156299619d8bf8d92eb92bbcf8b4cb76c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71124004"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173801"
 ---
 # <a name="monitor-azure-data-explorer-ingestion-operations-using-diagnostic-logs-preview"></a>Azure Data Explorer opname bewerkingen bewaken met Diagnostische logboeken (preview)
 
@@ -25,13 +25,13 @@ Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalys
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="set-up-diagnostic-logs-for-an-azure-data-explorer-cluster"></a>Diagnostische logboeken instellen voor een Azure Data Explorer-cluster
 
 Diagnostische logboeken kunnen worden gebruikt om de verzameling van de volgende logboek gegevens te configureren:
-* Geslaagde opname bewerkingen: Deze logboeken bevatten informatie over het volt ooien van opname bewerkingen.
-* Mislukte opname bewerkingen: Deze logboeken bevatten gedetailleerde informatie over mislukte opname bewerkingen, waaronder fout Details. 
+* Geslaagde opname bewerkingen: deze logboeken bevatten informatie over het volt ooien van opname bewerkingen.
+* Mislukte opname bewerkingen: deze logboeken bevatten gedetailleerde informatie over mislukte opname bewerkingen, waaronder fout Details. 
 
 De gegevens worden vervolgens gearchiveerd in een opslag account, gestreamd naar een event hub of verzonden naar Log Analytics, conform uw specificaties.
 
@@ -51,7 +51,7 @@ Diagnostische logboeken zijn standaard uitgeschakeld. Voer de volgende stappen u
 
     1. Selecteer een **naam** voor de diagnostische instelling.
     1. Selecteer een of meer doelen: een opslag account, Event hub of Log Analytics.
-    1. Selecteer de logboeken die moeten `SucceededIngestion` worden `FailedIngestion`verzameld: of.
+    1. Selecteer de logboeken die moeten worden verzameld: `SucceededIngestion` of `FailedIngestion`.
     1. Selecteer de [metrische gegevens](using-metrics.md) die moeten worden verzameld (optioneel).   
     1. Selecteer **Opslaan** om de nieuwe instellingen en metrische gegevens van de diagnostische logboeken op te slaan.
     1. Maak een **nieuwe ondersteunings aanvraag** in de Azure Portal om de activering van Diagnostische logboeken aan te vragen.
@@ -66,13 +66,13 @@ Alle [Azure monitor Diagnostische logboeken delen een gemeen schappelijk schema 
 
 JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel worden weer gegeven:
 
-|Name               |Description
+|Naam               |Beschrijving
 |---                |---
-|time               |Tijd van het rapport
+|tijd               |Tijd van het rapport
 |resourceId         |Resource-ID Azure Resource Manager
-|operationName      |De naam van de bewerking: MICRO SOFT. KUSTO/CLUSTERS/OPNAME/ACTIE
+|operationName      |De naam van de bewerking: ' micro soft. KUSTO/CLUSTERS/OPNAME/ACTIE
 |operationVersion   |Schema versie: ' 1,0 ' 
-|category           |De categorie van de bewerking. `SucceededIngestion`of `FailedIngestion`. Eigenschappen wijken af van een [geslaagde bewerking](#successful-ingestion-operation-log) of [mislukte bewerking](#failed-ingestion-operation-log).
+|category           |De categorie van de bewerking. `SucceededIngestion` of `FailedIngestion`. Eigenschappen wijken af van een [geslaagde bewerking](#successful-ingestion-operation-log) of [mislukte bewerking](#failed-ingestion-operation-log).
 |properties         |Gedetailleerde informatie over de bewerking.
 
 #### <a name="successful-ingestion-operation-log"></a>Geslaagd opname bewerkings logboek
@@ -100,7 +100,7 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
 ```
 **Eigenschappen van een geslaagde bewerking diagnostisch logboek**
 
-|Name               |Description
+|Naam               |Beschrijving
 |---                |---
 |succeededOn        |Voltooiings tijd van opname
 |operationId        |Bewerkings-ID van Azure Data Explorer opname
@@ -141,7 +141,7 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
 
 **Eigenschappen van een mislukte bewerking diagnose logboek**
 
-|Name               |Description
+|Naam               |Beschrijving
 |---                |---
 |failedOn           |Voltooiings tijd van opname
 |operationId        |Bewerkings-ID van Azure Data Explorer opname
@@ -152,10 +152,12 @@ JSON-teken reeksen in het logboek bevatten elementen die in de volgende tabel wo
 |rootActivityId     |Activiteit-id
 |details informatie            |Gedetailleerde beschrijving van de fout en het fout bericht
 |Code          |Foutcode 
-|failureStatus      |`Permanent`of `Transient`. Het opnieuw proberen van een tijdelijke fout is mislukt.
+|failureStatus      |`Permanent` of `Transient`. Het opnieuw proberen van een tijdelijke fout is mislukt.
 |originatesFromUpdatePolicy|Waar als de fout is opgetreden vanuit een update beleid
 |shouldRetry        |Waar als de nieuwe poging slaagt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Metrische gegevens gebruiken voor het bewaken van de cluster status](using-metrics.md)
+* [Zelf studie: gegevens opnemen en controleren in azure Data Explorer](ingest-data-no-code.md)
+* [Metrische gegevens gebruiken voor het bewaken van de cluster status](using-metrics.md)
+

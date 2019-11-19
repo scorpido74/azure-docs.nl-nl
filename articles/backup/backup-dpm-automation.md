@@ -1,19 +1,14 @@
 ---
-title: Azure Backup-Power shell gebruiken om back-ups te maken van DPM-werk belastingen
+title: Power shell gebruiken voor het maken van back-ups van DPM-workloads
 description: Meer informatie over het implementeren en beheren van Azure Backup voor Data Protection Manager (DPM) met behulp van Power shell
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/23/2017
-ms.author: dacurwin
-ms.openlocfilehash: ef20de40433542c1ed0780f198b10d6a1fb78789
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d3a8b2ff95957b69bab4932ce8a7e5a1ab4bfa44
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162136"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172403"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-data-protection-manager-dpm-servers-using-powershell"></a>Met behulp van PowerShell back-ups implementeren en beheren in Azure voor Data Protection Manager (DPM)-servers
 
@@ -106,7 +101,6 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-
 ## <a name="installing-the-azure-backup-agent-on-a-dpm-server"></a>De Azure Backup-Agent op een DPM-server installeren
 
 Voordat u de Azure Backup-Agent installeert, moet u het installatie programma downloaden en op de Windows-Server presen teren. U kunt de meest recente versie van het installatie programma downloaden van het [micro soft Download centrum](https://aka.ms/azurebackup_agent) of van de pagina dash board van de Recovery Services kluis. Sla het installatie programma op een gemakkelijk toegankelijke locatie op, zoals * C:\Downloads\*.
@@ -125,7 +119,7 @@ De agent wordt weer gegeven in de lijst met geïnstalleerde Program ma's. Ga naa
 
 ### <a name="installation-options"></a>Installatie opties
 
-Gebruik de volgende opdracht om alle opties te zien die beschikbaar zijn via de commandline:
+Als u alle beschik bare opties wilt weer geven via de opdracht regel, gebruikt u de volgende opdracht:
 
 ```powershell
 MARSAgentInstaller.exe /?
@@ -135,7 +129,7 @@ De beschik bare opties zijn onder andere:
 
 | Optie | Details | Standaard |
 | --- | --- | --- |
-| q |Stille installatie |- |
+| /q |Stille installatie |- |
 | /p: "locatie" |Het pad naar de installatiemap voor de Azure Backup-Agent. |C:\Program Files\Microsoft Azure Recovery Services-agent |
 | /s: "locatie" |Het pad naar de cachemap voor de Azure Backup-Agent. |C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch |
 | /m |Opt-in Microsoft Update |- |
@@ -189,7 +183,7 @@ Alle wijzigingen worden aangebracht in dit lokale Power shell-object ```$setting
 Set-DPMCloudSubscriptionSetting -DPMServerName "TestingServer" -SubscriptionSetting $setting -Commit
 ```
 
-## <a name="networking"></a>Networking
+## <a name="networking"></a>Netwerken
 
 Als de verbinding van de DPM-computer met de Azure Backup-service op Internet via een proxy server wordt uitgevoerd, moeten de proxyserver instellingen worden ingesteld voor geslaagde back-ups. Dit wordt gedaan met behulp van de ```-ProxyServer```en ```-ProxyPort```, ```-ProxyUsername``` en de ```ProxyPassword``` parameters met de cmdlet [set-DPMCloudSubscriptionSetting](https://technet.microsoft.com/library/jj612791) . In dit voor beeld is er geen proxy server, dus we verwijderen expliciet informatie die betrekking heeft op de proxy.
 
@@ -346,7 +340,7 @@ Set-DPMReplicaCreationMethod -ProtectionGroup $MPG -NOW
 
 ### <a name="changing-the-size-of-dpm-replica--recovery-point-volume"></a>De grootte van het herstel punt volume van de DPM-replica & wijzigen
 
-U kunt ook de grootte van het DPM-replica volume en het schaduw kopie volume wijzigen met de cmdlet [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , zoals in het volgende voor beeld: Get-DatasourceDiskAllocation-data source $DS set-DatasourceDiskAllocation-data source $DS- ProtectionGroup $MPG-hand matig-ReplicaArea (2GB)-ShadowCopyArea (2 GB)
+U kunt ook de grootte van het DPM-replica volume en het schaduw kopie volume wijzigen met de cmdlet [set-DPMDatasourceDiskAllocation](https://technet.microsoft.com/library/hh881618.aspx) , zoals in het volgende voor beeld: Get-DatasourceDiskAllocation-data source $DS set-DatasourceDiskAllocation-data source $DS-ProtectionGroup $MPG-Manual-ReplicaArea (2 GB)-ShadowCopyArea (2GB)
 
 ### <a name="committing-the-changes-to-the-protection-group"></a>De wijzigingen door voeren in de beveiligings groep
 

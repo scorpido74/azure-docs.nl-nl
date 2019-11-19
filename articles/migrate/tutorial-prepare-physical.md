@@ -8,20 +8,16 @@ ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 176dfdabeee6299bba0eb17085be25ced3e97993
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091904"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158581"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voor bereiding voor de evaluatie en migratie van fysieke servers naar Azure
 
 In dit artikel wordt beschreven hoe u de evaluatie van on-premises fysieke servers kunt voorbereiden met [Azure migrate](migrate-services-overview.md).
-
-
-> [!NOTE]
-> Als u nog enkele van deze functies in de Azure Migrate Portal ziet, loopt u vast. Deze worden in de volgende week weer gegeven.
 
 [Azure migrate](migrate-overview.md) biedt een hub aan hulpprogram ma's waarmee u apps, infra structuur en werk belastingen op Microsoft Azure kunt detecteren, evalueren en migreren. De hub bevat Azure Migrate-hulpprogram ma's en ISV-aanbiedingen (Independent Software Vendor) van derden. 
 
@@ -45,7 +41,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 U moet machtigingen instellen voor Azure Migrate-implementatie.
 
-- Machtigingen voor uw Azure-account om een Azure Migrate project te maken. 
+- Machtigingen voor uw Azure-account om een Azure Migrate project te maken.
 - Machtigingen voor uw account om het Azure Migrate apparaat te registreren. Het apparaat wordt gebruikt voor Hyper-V-detectie en-migratie. Tijdens de registratie van het apparaat maakt Azure Migrate twee Azure Active Directory (Azure AD)-apps waarmee het apparaat op unieke wijze wordt geïdentificeerd:
     - De eerste app communiceert met Azure Migrate service-eind punten.
     - De tweede app heeft toegang tot een Azure Key Vault die tijdens de registratie is gemaakt voor het opslaan van Azure AD-app-informatie en toestel configuratie-instellingen.
@@ -73,7 +69,7 @@ Met een van de volgende methoden kunt u machtigingen voor Azure Migrate toewijze
 Het is een goed idee dat:
 
 - De apps hebben geen andere toegangs machtigingen voor het abonnement dan de hierboven beschreven.
-- U hebt deze machtigingen alleen nodig wanneer u een nieuw apparaat registreert. U kunt de machtigingen verwijderen nadat het apparaat is ingesteld. 
+- U hebt deze machtigingen alleen nodig wanneer u een nieuw apparaat registreert. U kunt de machtigingen verwijderen nadat het apparaat is ingesteld.
 
 
 #### <a name="grant-account-permissions"></a>Account machtigingen verlenen
@@ -88,7 +84,7 @@ De Tenant/globale beheerder kan machtigingen als volgt verlenen:
 > [!NOTE]
 > Dit is een standaard instelling die niet gevoelig is. [Meer informatie](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
-#### <a name="assign-application-developer-role"></a>Rol toepassings ontwikkelaar toewijzen 
+#### <a name="assign-application-developer-role"></a>Rol toepassings ontwikkelaar toewijzen
 
 De Tenant/globale beheerder kan de rol van toepassings ontwikkelaar toewijzen aan een account. [Meer informatie](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
@@ -124,12 +120,12 @@ Azure Migrate heeft machtigingen nodig om on-premises servers te detecteren.
 ## <a name="next-steps"></a>Volgende stappen
 
 In deze zelfstudie hebt u:
- 
-> [!div class="checklist"] 
+
+> [!div class="checklist"]
 > * Stel de machtigingen voor het Azure-account in.
 > * Voor bereide fysieke servers voor evaluatie.
 
 Ga door naar de volgende zelf studie om een Azure Migrate project te maken en fysieke servers te beoordelen voor migratie naar Azure
 
-> [!div class="nextstepaction"] 
-> [Fysieke servers beoordelen](./tutorial-assess-physical.md) 
+> [!div class="nextstepaction"]
+> [Fysieke servers beoordelen](./tutorial-assess-physical.md)

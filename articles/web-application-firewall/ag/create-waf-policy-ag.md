@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: conceptual
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 10/26/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: 31a5ad92942b40e42b66e404df2d09cd8158f7a2
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3f7d213aed82d1cb94bb96b9e212d3b255851afd
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606490"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171225"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Een firewall beleid voor webtoepassingen voor Application Gateway maken
 
@@ -64,13 +64,13 @@ Wanneer u een WAF-beleid maakt, is dit standaard in de *detectie* modus. In de d
 
 Door Azure beheerde OWASP-regels zijn standaard ingeschakeld. Als u een afzonderlijke regel binnen een regel groep wilt uitschakelen, vouwt u de regels binnen die regel groep uit, selecteert u het selectie vakje vóór het regel nummer en selecteert u **uitschakelen** op het bovenstaande tabblad.
 
-![Beheerde regels](../media/create-waf-policy-ag/managed-rules.png)
+[Beheerde regels ![](../media/create-waf-policy-ag/managed-rules.png)](../media/create-waf-policy-ag/managed-rules-lrg.png#lightbox)
 
 ## <a name="custom-rules"></a>Aangepaste regels
 
 Als u een aangepaste regel wilt maken, selecteert u **aangepaste regel toevoegen** onder het tabblad **aangepaste regels** . Hiermee opent u de pagina aangepaste regel configuratie. De volgende scherm afbeelding toont een voor beeld van een aangepaste regel die is geconfigureerd voor het blok keren van een aanvraag als de query reeks de tekst *blockme*bevat.
 
-![Aangepaste regel bewerken](../media/create-waf-policy-ag/edit-custom-rule.png)
+[aangepaste regel ![bewerken](../media/create-waf-policy-ag/edit-custom-rule.png)](../media/create-waf-policy-ag/edit-custom-rule-lrg.png#lightbox)
 
 ## <a name="migrate"></a>Uw WAF-configuratie migreren naar een WAF-beleid
 
@@ -82,7 +82,7 @@ Als u een bestaande WAF hebt, hebt u mogelijk enkele wijzigingen in de portal ge
 
 U kunt zien in welke staat uw WAF zich bevindt door deze te bekijken in de portal. Als de WAF-instellingen zichtbaar zijn en vanuit de Application Gateway weer gave kunnen worden gewijzigd, is uw WAF de status 1.
 
-![WAF-configuratie](../media/create-waf-policy-ag/waf-configure.png)
+[![WAF-configuratie](../media/create-waf-policy-ag/waf-configure.png)](../media/create-waf-policy-ag/waf-configure-lrg.png#lightbox)
 
 Als u **Web Application firewall** selecteert en er een bijbehorend beleid wordt weer gegeven, is de WAF status 2 of State 3. Als er is genavigeerd naar het beleid, worden **alleen** aangepaste regels en gekoppelde toepassings gateways weer gegeven, dan is het beleid voor aangepaste regels alleen van toepassing.
 
@@ -98,9 +98,9 @@ Als u een aangepaste regel alleen WAF-beleid hebt, kunt u het beste overschakele
 
 Wijzigingen in de aangepaste regel worden alleen WAF-beleid uitgeschakeld. Voor het bewerken van WAF-instellingen, zoals het uitschakelen van regels, het toevoegen van uitsluitingen, enzovoort, moet u migreren naar een nieuwe firewall-beleids bron op het hoogste niveau.
 
-Als u dit wilt doen, maakt u een *firewall beleid voor webtoepassingen* en koppelt u dit aan uw Application Gateway (en) en luister (en). Dit nieuwe beleid **moet** exact hetzelfde zijn als de huidige WAF-configuratie, wat betekent dat elke aangepaste regel, uitsluiting, uitgeschakelde regel, enzovoort moet worden gekopieerd naar het nieuwe beleid dat u maakt. Zodra er een beleid is gekoppeld aan uw Application Gateway, kunt u door gaan met het wijzigen van uw WAF-regels en-instellingen. 
+Als u dit wilt doen, maakt u een *firewall beleid voor webtoepassingen* en koppelt u dit aan uw Application Gateway (en) en luister (en). Dit nieuwe beleid **moet** exact hetzelfde zijn als de huidige WAF-configuratie, wat betekent dat elke aangepaste regel, uitsluiting, uitgeschakelde regel, enzovoort moet worden gekopieerd naar het nieuwe beleid dat u maakt. Zodra er een beleid is gekoppeld aan uw Application Gateway, kunt u door gaan met het wijzigen van uw WAF-regels en-instellingen. U kunt dit ook doen met Azure PowerShell. Zie [een WAF-beleid koppelen aan een bestaande Application Gateway](associate-waf-policy-existing-gateway.md)voor meer informatie.
 
-U kunt dit ook doen met Azure PowerShell. Zie [een WAF-beleid koppelen aan een bestaande Application Gateway](associate-waf-policy-existing-gateway.md)voor meer informatie.
+U kunt eventueel een migratie script gebruiken om te migreren naar een WAF-beleid. Zie voor meer informatie [Web Application firewall-beleid migreren met behulp van Azure PowerShell](migrate-policy.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,20 +1,15 @@
 ---
-title: Back-ups op schaal maken van virtuele Azure-machines
+title: 'Zelf studie: een back-up maken van virtuele Azure-machines op schaal'
 description: In deze zelf studie leert u hoe u een Recovery Services kluis kunt maken, een back-upbeleid kunt definiëren en tegelijkertijd meerdere virtuele machines kunt maken.
-keywords: back-up van virtuele machine; virtuele machine back-up; back-up van vm; back-up vm; back-up Azure vm; back-up en herstel na noodgevallen
-author: dcurwin
-manager: carmonm
-ms.author: dacurwin
 ms.date: 01/31/2019
 ms.topic: tutorial
-ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 99a842704325e38cbf1ab9203a56a25bc2273827
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 6034202649e6d9bce75f0069316b79b55e533490
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747012"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171857"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal gebruiken voor het maken van een back-up van meerdere virtuele machines
 
@@ -37,7 +32,7 @@ De Recovery Services-kluis bevat de back-upgegevens en het back-upbeleid dat wor
 
 1. Selecteer in het menu links **Alle services** en typ *Recovery Services* in de lijst met services. Terwijl u typt, wordt de lijst met resources gefilterd. Wanneer u Recovery Services-kluizen in de lijst ziet, selecteert u deze optie om het menu Recovery Services-kluizen te openen.
 
-    ![Het menu Recovery Services-kluizen openen](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
+    ![Het menu Recovery Services-kluizen openen](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png)
 
 2. Klik in het menu **Recovery Services-kluizen** op **Toevoegen** om het menu Recovery Services-kluizen te openen.
 

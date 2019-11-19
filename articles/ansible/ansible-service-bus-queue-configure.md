@@ -3,17 +3,13 @@ title: 'Zelf studie: wacht rijen configureren in Azure Service Bus met behulp va
 description: Meer informatie over het gebruik van Ansible voor het maken van een Azure Service Bus wachtrij
 keywords: ansible, azure, devops, bash, Playbook, service bus, Queue
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: a48796c2177a8b5b818553bf8aa0ff36f712d4e0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 9903419a52be61cd7ec74214858bce81df7e727e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241383"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155822"
 ---
 # <a name="tutorial-configure-queues-in-azure-service-bus-using-ansible"></a>Zelf studie: wacht rijen configureren in Azure Service Bus met behulp van Ansible
 
@@ -72,7 +68,7 @@ Sla het volgende playbook op als `servicebus_queue.yml`:
           var: queue
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue.yml
@@ -107,9 +103,9 @@ Sla het volgende playbook op als `servicebus_queue_policy.yml`:
 ```
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde voor @no__t 0 vertegenwoordigt de bevoegdheid die een gebruiker heeft met de wachtrij. Geef een van de volgende waarden op: `manage`, `listen`, `send` of `listen_send`.
+- De `rights` waarde vertegenwoordigt de bevoegdheid die een gebruiker heeft met de wachtrij. Geef een van de volgende waarden op: `manage`, `listen`, `send`of `listen_send`.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_policy.yml
@@ -140,9 +136,9 @@ Sla het volgende playbook op als `servicebus_namespace_info.yml`:
 ```
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde @no__t 0 geeft aan of de SAS-beleids regels onder de opgegeven naam ruimte moeten worden weer gegeven. Standaard is de waarde `False` om extra netwerk overhead te voor komen.
+- De waarde `show_sas_policies` geeft aan of de SAS-beleids regels onder de opgegeven naam ruimte moeten worden weer gegeven. Standaard is de waarde `False` om extra netwerk overhead te voor komen.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
@@ -175,9 +171,9 @@ Sla het volgende playbook op als `servicebus_queue_info.yml`:
 ```
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde @no__t 0 geeft aan of de SAS-beleids regels in de opgegeven wachtrij moeten worden weer gegeven. Deze waarde is standaard ingesteld op `False` om extra netwerk overhead te voor komen.
+- De waarde `show_sas_policies` geeft aan of de SAS-beleids regels in de opgegeven wachtrij moeten worden weer gegeven. Deze waarde is standaard ingesteld op `False` om extra netwerk overhead te voor komen.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_info.yml
@@ -206,7 +202,7 @@ Sla het volgende playbook op als `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_queue_policy_delete.yml
@@ -244,7 +240,7 @@ Sla de volgende code op als `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

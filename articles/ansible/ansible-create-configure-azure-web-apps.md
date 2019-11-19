@@ -3,17 +3,13 @@ title: 'Zelf studie: apps configureren in Azure App Service met behulp van Ansib
 description: Meer informatie over het maken van een app in Azure App Service met Java 8 en de Tomcat-container runtime
 keywords: ansible, azure, devops, bash, playbook, Azure App Service, web-app, Java
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 5104db6bd7fa57600c7212e041263971ca4c91d4
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 2891ff47b17900c4c1c8e1c21f22495b65108fd5
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242052"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156569"
 ---
 # <a name="tutorial-configure-apps-in-azure-app-service-using-ansible"></a>Zelf studie: apps in Azure App Service configureren met behulp van Ansible
 
@@ -75,7 +71,7 @@ Sla het volgende playbook op als `firstwebapp.yml`:
               java_container_version: 8.5
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook firstwebapp.yml
@@ -199,7 +195,7 @@ Sla het volgende playbook op als `webapp.yml`:
       target_resource_id: "{{ webapp.webapps[0].id }}"
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook webapp.yml

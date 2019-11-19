@@ -7,19 +7,16 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 856f7f7735435579ac14918ee8026f27b222773e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715510"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158647"
 ---
 # <a name="assess-servers-using-imported-data"></a>Servers beoordelen met behulp van geïmporteerde gegevens
 
-> [!NOTE]
-> Als u deze functie nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze wordt in de volgende week weer gegeven.
-
-In dit artikel wordt uitgelegd hoe u on-premises servers kunt beoordelen met [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool)door meta gegevens van de server te importeren met CSV. Bij deze evaluatie methode hoeft u het Azure Migrate apparaat niet in te stellen om een evaluatie te maken. Dit is handig als: 
+In dit artikel wordt uitgelegd hoe u on-premises servers kunt beoordelen met [Azure migrate: Server evaluatie](migrate-services-overview.md#azure-migrate-server-assessment-tool)door meta gegevens van de server te importeren met CSV. Bij deze evaluatie methode hoeft u het Azure Migrate apparaat niet in te stellen om een evaluatie te maken. Dit is handig als:
 
 - U wilt een snelle, initiële evaluatie maken voordat u het apparaat implementeert.
 - U kunt het Azure Migrate apparaat niet in uw organisatie implementeren.
@@ -49,7 +46,7 @@ In deze zelfstudie leert u het volgende:
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/pricing/free-trial/) aan voordat u begint.
 
 
-## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-machtigingen instellen voor Azure Migrate 
+## <a name="set-azure-permissions-for-azure-migrate"></a>Azure-machtigingen instellen voor Azure Migrate
 
 Uw Azure-account moet machtigingen hebben om een Azure Migrate project te maken.
 
@@ -116,7 +113,7 @@ De volgende tabel bevat een overzicht van de bestands velden die moeten worden i
 
 **Veld naam** | **Ingevuld** | **Details**
 --- | --- | ---
-**Servernaam** | Ja | U wordt aangeraden de FQDN op te geven. 
+**Servernaam** | Ja | U wordt aangeraden de FQDN op te geven.
 **IP-adres** | Nee | Server adres.
 **Aantal kernen** | Ja | Het aantal processor kernen dat aan de server is toegewezen.
 **Geheugenmetabase** | Ja | Totale hoeveelheid RAM-geheugen (MB) die aan de server is toegewezen.
@@ -138,13 +135,13 @@ De volgende tabel bevat een overzicht van de bestands velden die moeten worden i
 **Netwerk-uitgaand doorvoer** | Nee | Gegevens die door de server worden verzonden in MB per seconde.
 **Type firmware** | Nee | Server firmware. Waarden kunnen "BIOS" of "UEFI" zijn
 **Servertype** | Nee | Waarden kunnen fysiek of virtueel zijn.
-**Visor** | Nee | Hyper Visor waarop een machine wordt uitgevoerd. <br/> Waarden kunnen "VMware", "Hyper-V", "xen", "AWS", "GCP" of "other" zijn.
+**Hypervisor** | Nee | Hyper Visor waarop een machine wordt uitgevoerd. <br/> Waarden kunnen "VMware", "Hyper-V", "xen", "AWS", "GCP" of "other" zijn.
 **Versie nummer van Hyper Visor** | Nee | Versie van Hyper Visor.
 **ID van virtuele machine** | Nee | VM-id. Dit is de **InstanceUUid** voor de VMware VCENTER-VM of de **hyper-v-VM-id** voor Hyper-V.
 **Virtual Machine Manager-ID** | Nee | Dit is de **InstanceUUid** voor VMware vCenter. Niet nodig voor Hyper-V.
 **MAC-adres**| Nee | MAC-adres van de server.
 **BIOS-ID** | Nee | Server-BIOS-ID.
-**Aangepaste Server-ID**| Nee | Lokale unieke server-Id's on-premises. <br/> Nuttig voor het bijhouden van de geïmporteerde server op lokale ID. 
+**Aangepaste Server-ID**| Nee | Lokale unieke server-Id's on-premises. <br/> Nuttig voor het bijhouden van de geïmporteerde server op lokale ID.
 **Naam toepassing 1** | Nee | Naam van workloads die worden uitgevoerd op de server.<br/> U kunt Details voor meer apps toevoegen door [kolommen toe te voegen](#add-multiple-applications) aan de sjabloon. U kunt Maxi maal vijf toepassingen toevoegen.
 **Type toepassing 1** | Nee | Type werk belasting die wordt uitgevoerd op de server
 **Versie van toepassing 1** | Nee | De versie van de werk belasting die wordt uitgevoerd op de server.
@@ -162,7 +159,7 @@ Beoordeling herkent specifieke namen van besturings systemen. De naam van het be
 
 ### <a name="add-multiple-disks"></a>Meerdere schijven toevoegen
 
-De sjabloon biedt standaard velden voor de eerste schijf.  U kunt vergelijk bare kolommen voor Maxi maal 8 schijven toevoegen. 
+De sjabloon biedt standaard velden voor de eerste schijf.  U kunt vergelijk bare kolommen voor Maxi maal 8 schijven toevoegen.
 
 Als u bijvoorbeeld alle velden voor een tweede schijf wilt opgeven, voegt u de kolommen toe:
 
@@ -192,10 +189,10 @@ Nadat u informatie aan de CSV-sjabloon hebt toegevoegd, importeert u de servers 
 
 1. Blader in Azure Migrate > **computers detecteren**de ingevulde sjabloon.
 2. Klik op **Import**.
-3. De import status wordt weer gegeven. 
+3. De import status wordt weer gegeven.
     - Als er waarschuwingen worden weer gegeven in de status, kunt u deze corrigeren of door gaan zonder ze te adresseren.
     - Het verbeteren van de server gegevens zoals aanbevolen in waarschuwingen verbetert de nauw keurigheid van de beoordeling.
-    - Klik op waarschuwings Details downloaden om waarschuwingen weer te geven en te herstellen als deze worden weer gegeven **. CSV**. Hiermee downloadt u het CSV-bestand met waarschuwingen die zijn toegevoegd. U kunt de waarschuwingen bekijken en zo nodig problemen oplossen. 
+    - Klik op waarschuwings Details downloaden om waarschuwingen weer te geven en te herstellen als deze worden weer gegeven **. CSV**. Hiermee downloadt u het CSV-bestand met waarschuwingen die zijn toegevoegd. U kunt de waarschuwingen bekijken en zo nodig problemen oplossen.
     Als fouten worden weer gegeven in de status (de import status is **mislukt**), moet u deze oplossen voordat u kunt door gaan met het importeren. U kunt dit doen door het CSV-bestand te downloaden. er zijn nu fout gegevens toegevoegd. Controleer de fouten en los ze op. Upload het gewijzigde bestand vervolgens opnieuw.
 4. Wanneer de status van importeren is **voltooid**, worden de server gegevens geïmporteerd.
 
@@ -205,7 +202,7 @@ Nadat u informatie aan de CSV-sjabloon hebt toegevoegd, importeert u de servers 
 
 ## <a name="updating-server-information"></a>Server gegevens bijwerken
 
-U kunt een server gegevens bijwerken door de gegevens voor de server opnieuw te uploaden met dezelfde **Server naam**. U kunt het veld **Server naam** niet wijzigen. 
+U kunt een server gegevens bijwerken door de gegevens voor de server opnieuw te uploaden met dezelfde **Server naam**. U kunt het veld **Server naam** niet wijzigen.
 
 Het verwijderen van servers wordt momenteel niet ondersteund.
 
@@ -300,21 +297,21 @@ In deze weer gave ziet u de geschatte berekenings-en opslag kosten voor het uitv
 
 Naam | Naam
 --- | ---
-**A-H** | 
+**A-H** |
 Apple Mac OS X 10 | Asianux 3<br/>Asianux 4<br/>Asianux 5
-CentOS<br/>CentOS 4/5 | CoreOS Linux 
-Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD 
-**I-R** | 
+CentOS<br/>CentOS 4/5 | CoreOS Linux
+Debian GNU/Linux 4<br/>Debian GNU/Linux 5<br/>Debian GNU/Linux 6<br/>Debian GNU/Linux 7<br/>Debian GNU/Linux 8 | FreeBSD
+**I-R** |
 IBM-BESTURINGS SYSTEEM/2 | opdracht |
-Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11 
-Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora | 
-**S-T** | 
+Novell NetWare 5<br/>Novell NetWare 6 | Oracle Linux<br/> Oracle Linux 4/5<br/>Oracle Solaris 10<br/> Oracle Solaris 11
+Red Hat Enterprise Linux 2<br/>Red Hat Enterprise Linux 3<br/>Red Hat Enterprise Linux 4<br/>Red Hat Enterprise Linux 5<br/>Red Hat Enterprise Linux 6<br/>Red Hat Enterprise Linux 7<br/>Red Hat Fedora |
+**S-T** |
 SCO Openserver 5<br/>SCO Openserver 6<br/>SCO UnixWare 7 | Serenity Systems eComStation 1<br/>Serenity Systems eComStation 2
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enter prise 10<br/> SUSE Linux Enter prise 11<br/>SUSE Linux Enter prise 12<br/>SUSE Linux Enter prise 8/9<br/>SUSE Linux Enter prise 11<br/>SUSE openSUSE
-**U-Z** | 
+**U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
 Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Drempel waarde voor Windows Server<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
-    
+
 
 ## <a name="next-steps"></a>Volgende stappen
 

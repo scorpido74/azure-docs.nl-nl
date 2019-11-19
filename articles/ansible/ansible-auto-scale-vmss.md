@@ -3,17 +3,13 @@ title: 'Zelf studie: virtuele-machine schaal sets automatisch schalen in azure m
 description: Meer informatie over hoe u Ansible kunt gebruiken om schaal sets voor virtuele machines te schalen met automatisch schalen in azure
 keywords: ansible, azure, devops, bash, playbook, schalen, automatische schaalaanpassing, virtuele machine, virtuele-machineschaalset, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 784cb532c11b16c820336ceeaf8d38f0225c832f
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: fb8d2a4bfca32be4575ca8f11018e5cab17cd9a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242095"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156816"
 ---
 # <a name="tutorial-autoscale-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelf studie: schaal sets voor virtuele machines automatisch schalen in azure met behulp van Ansible
 
@@ -81,7 +77,7 @@ Sla het volgende playbook op als `vmss-auto-scale.yml`:
               - '10'
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-auto-scale.yml
@@ -175,7 +171,7 @@ Sla het volgende playbook op als `vmss-auto-scale-metrics.yml`:
             value: '1'
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-auto-scale-metrics.yml
@@ -183,7 +179,7 @@ ansible-playbook vmss-auto-scale-metrics.yml
 
 ## <a name="get-autoscale-settings-information"></a>Informatie over instellingen voor automatisch schalen ophalen 
 
-De Playbook-code in deze sectie maakt gebruik van de module `azure_rm_autoscale_facts` om de details van de instelling voor automatisch schalen op te halen.
+In de Playbook-code in deze sectie wordt gebruikgemaakt van de module `azure_rm_autoscale_facts` om de details van de instelling voor automatisch schalen op te halen.
 
 Sla het volgende playbook op als `vmss-auto-scale-get-settings.yml`:
 
@@ -203,7 +199,7 @@ Sla het volgende playbook op als `vmss-auto-scale-get-settings.yml`:
         var: autoscale_query.autoscales[0]
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook vmss-auto-scale-get-settings.yml
@@ -211,7 +207,7 @@ ansible-playbook vmss-auto-scale-get-settings.yml
 
 ## <a name="disable-autoscale-settings"></a>Instellingen voor automatisch schalen uitschakelen
 
-Er zijn twee manieren om instellingen voor automatisch schalen uit te scha kelen. Een manier is om de `enabled`-sleutel van `true` te wijzigen in `false`. De tweede manier is de instelling verwijderen.
+Er zijn twee manieren om instellingen voor automatisch schalen uit te scha kelen. Een manier is om de `enabled` sleutel te wijzigen van `true` in `false`. De tweede manier is de instelling verwijderen.
 
 De Playbook-code in deze sectie verwijdert de instelling voor automatisch schalen. 
 
@@ -230,7 +226,7 @@ Sla het volgende playbook op als `vmss-auto-scale-delete-setting.yml`:
          state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 vmss-auto-scale-delete-setting.yml

@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: b2514eaaf70d13d3be63963f24ea7be99c4fbcce
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fc397088e46f0d2b623080f3deed24c386e7d8b4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582288"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168484"
 ---
 # <a name="azure-hpc-cache-data-ingest---manual-copy-method"></a>Gegevens opname van de Azure HPC-cache-hand matige Kopieer methode
 
 In dit artikel vindt u gedetailleerde instructies voor het hand matig kopiëren van gegevens naar een BLOB storage-container voor gebruik met de Azure HPC-cache. Er wordt gebruikgemaakt van parallelle bewerkingen met meerdere threads om de Kopieer snelheid te optimaliseren.
 
-Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache [gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache](hpc-cache-ingest.md).
+Lees [gegevens verplaatsen naar Azure Blob Storage](hpc-cache-ingest.md)voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache.
 
 ## <a name="simple-copy-example"></a>Voor beeld van eenvoudige kopie
 

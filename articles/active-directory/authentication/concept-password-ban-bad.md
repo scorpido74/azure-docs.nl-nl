@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77309a73f3c5641aa8a7667015ed02808e376348
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 27530b143e46acad4152e8333836cbe9c79fab17
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70032882"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168093"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Ongeldige wacht woorden in uw organisatie elimineren
 
@@ -39,7 +39,7 @@ Wanneer een nieuw wacht woord wordt gewijzigd of opnieuw wordt ingesteld voor ee
 > [!NOTE]
 > Cyber criminelen gebruiken vergelijk bare strategieën in hun aanvallen. Daarom publiceert micro soft de inhoud van deze lijst openbaar niet.
 
-## <a name="custom-banned-password-list"></a>Aangepaste lijst met verboden wachtwoorden
+## <a name="custom-banned-password-list"></a>Aangepaste lijst met verboden wacht woorden
 
 Sommige organisaties willen de beveiliging nog verder verbeteren door hun eigen aanpassingen toe te voegen boven op de lijst met algemene verboden wacht woorden in wat micro soft de aangepaste lijst met geblokkeerde wacht woorden aanroept. Micro soft adviseert dat de voor waarden die zijn toegevoegd aan deze lijst voornamelijk gericht zijn op organisatie-specifieke voor waarden, zoals:
 
@@ -98,7 +98,7 @@ Wanneer een gebruiker het wacht woord wijzigt of opnieuw instelt, wordt het nieu
 
 Zelfs als het wacht woord van een gebruiker een verboden wacht woord bevat, kan het wacht woord nog steeds worden geaccepteerd als het algemene wacht woord sterk genoeg is. Een nieuw geconfigureerd wacht woord gaat door de volgende stappen om de algehele sterkte te beoordelen om te bepalen of het moet worden geaccepteerd of afgewezen.
 
-### <a name="step-1-normalization"></a>Stap 1: Normaliserings
+### <a name="step-1-normalization"></a>Stap 1: normalisatie
 
 Een nieuw wacht woord gaat eerst door een normalisatie proces. Met deze techniek kan een klein aantal verboden wacht woorden worden toegewezen aan een veel grotere set van mogelijk zwakke wacht woorden.
 
@@ -111,9 +111,9 @@ Normalisatie bestaat uit twee delen.  Als eerste worden alle hoofd letters gewij
 | '$'  | maatschappij |
 | '\@'  | één |
 
-Voor beeld: Stel dat het wacht woord ' leeg ' is verboden en dat een gebruiker het wacht woord wil wijzigenBl@nKin ' '. Hoewel "Bl@nk" niet specifiek is verboden, wordt dit wacht woord door het normalisatie proces geconverteerd naar "blank", een verboden wacht woord.
+Voor beeld: Stel dat het wacht woord ' leeg ' is verboden en dat een gebruiker het wacht woord probeert te wijzigen inBl@nK. Hoewel "Bl@nk" niet specifiek is verboden, wordt dit wacht woord door het normalisatie proces geconverteerd naar "blank", een verboden wacht woord.
 
-### <a name="step-2-check-if-password-is-considered-banned"></a>Stap 2: Controleren of het wacht woord wordt beschouwd als verboden
+### <a name="step-2-check-if-password-is-considered-banned"></a>Stap 2: controleren of het wacht woord wordt beschouwd als verboden
 
 #### <a name="fuzzy-matching-behavior"></a>Gedrag bij benadering treffers
 
@@ -133,7 +133,7 @@ Voor beeld: Stel dat we een gebruiker, Pol, hebben die hun wacht woord opnieuw w
 
 #### <a name="score-calculation"></a>Score berekening
 
-De volgende stap is het identificeren van alle instanties van verboden wacht woorden in het genormaliseerde nieuwe wacht woord van de gebruiker. Kies
+De volgende stap is het identificeren van alle instanties van verboden wacht woorden in het genormaliseerde nieuwe wacht woord van de gebruiker. Daarna kunt u het volgende doen:
 
 1. Elk verboden wacht woord dat is gevonden in het wacht woord van een gebruiker wordt één punt gegeven.
 2. Elk resterend uniek teken wordt op één punt gegeven.
@@ -147,7 +147,7 @@ Na normalisatie wordt dit wacht woord "contosoblank12". Het overeenkomende proce
 
 [contoso] + [lege] + [1] + [2] = 4 punten omdat dit wacht woord minder is dan vijf (5) punten, wordt het geweigerd.
 
-Voor beeld: een gebruiker wijzigt het wacht woordContoS0Bl@nkf9in "!".
+Voor beeld: een gebruiker wijzigt het wacht woord inContoS0Bl@nkf9!.
 
 Na normalisatie wordt dit wacht woord "contosoblankf9!". Het overeenkomende proces vindt dat dit wacht woord twee verboden wacht woorden bevat: contoso en blank. Dit wacht woord krijgt vervolgens een score:
 
@@ -164,7 +164,7 @@ Na normalisatie wordt dit wacht woord "contosoblankf9!". Het overeenkomende proc
 | Gebruikers die zijn gesynchroniseerd vanuit een on-premises Windows Server-Active Directory | Azure AD Premium P1 of P2 | Azure AD Premium P1 of P2 |
 
 > [!NOTE]
-> On-premises Windows Server Active Directory gebruikers die niet zijn gesynchroniseerd met Azure Active Directory ook profiteren van de voor delen van Azure AD-wachtwoord beveiliging op basis van bestaande licenties voor gesynchroniseerde gebruikers.
+> On-premises Windows Server Active Directory gebruikers die niet zijn gesynchroniseerd met Azure Active Directory ook voor delen van Azure AD-wachtwoord beveiliging op basis van bestaande licenties voor gesynchroniseerde gebruikers.
 
 Meer informatie over licenties, waaronder kosten, vindt u op de [Azure Active Directory prijs site](https://azure.microsoft.com/pricing/details/active-directory/).
 

@@ -1,71 +1,72 @@
 ---
-title: De prestaties, de status en het gebruik met metrische gegevens over Azure Data Explorer controleren
-description: Informatie over het gebruik van Azure Data Explorer metrische gegevens voor het bewaken van de prestaties, de status en het gebruik van het cluster.
+title: Prestaties, status en gebruik van Azure Data Explorer controleren met metrische gegevens
+description: Meer informatie over het gebruik van Azure Data Explorer metrieken voor het bewaken van de prestaties, de status en het gebruik van het cluster.
 author: orspod
 ms.author: orspodek
 ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/01/2019
-ms.openlocfilehash: cb59fa0fe9094943dfc942d1d6e664891996c9e3
-ms.sourcegitcommit: 1e347ed89854dca2a6180106228bfafadc07c6e5
+ms.openlocfilehash: f5b47a5ae9d13711233d0e4852ec487af7344622
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67569280"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173793"
 ---
-# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>De prestaties, de status en het gebruik met metrische gegevens over Azure Data Explorer controleren
+# <a name="monitor-azure-data-explorer-performance-health-and-usage-with-metrics"></a>Prestaties, status en gebruik van Azure Data Explorer controleren met metrische gegevens
 
-Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. Metrische gegevens van Azure Data Explorer bieden KPI's over de status en prestaties van de clusterresources. Gebruik de metrische gegevens die worden beschreven in dit artikel voor het bewaken van Azure Data Explorer clusterstatus en prestaties in uw specifieke scenario als zelfstandige metrische gegevens. U kunt metrische gegevens ook gebruiken als basis voor operationele [Azure-Dashboards](/azure/azure-portal/azure-portal-dashboards) en [Azure-waarschuwingen](/azure/azure-monitor/platform/alerts-metric-overview).
+Azure Data Explorer is een snelle, volledig beheerde service voor gegevensanalyses waarmee grote hoeveelheden gegevens van toepassingen, websites, IoT-apparaten en dergelijke in real-time kunnen worden geanalyseerd. Als u Azure Data Explorer wilt gebruiken, maakt u eerst een cluster. Daarna maakt u een of meer databases in het cluster. De volgende stap is het opnemen (laden) van gegevens in een database, zodat u er query's op kunt uitvoeren. Azure Data Explorer metrische gegevens geven belang rijke indica toren voor de status en prestaties van de cluster bronnen. Gebruik de metrische gegevens die in dit artikel worden beschreven om de status en prestaties van Azure Data Explorer cluster in uw specifieke scenario als zelfstandige metrische gegevens te controleren. U kunt metrische gegevens ook gebruiken als basis voor operationele [Azure-Dash boards](/azure/azure-portal/azure-portal-dashboards) en [Azure-waarschuwingen](/azure/azure-monitor/platform/alerts-metric-overview).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Als u geen Azure-abonnement hebt, maakt u een [gratis Azure-account](https://azure.microsoft.com/free/).
 
-* Maak een [cluster en de database](create-cluster-database-portal.md).
+* Een [cluster en data base](create-cluster-database-portal.md)maken.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
-## <a name="using-metrics"></a>Met metrische gegevens
+## <a name="using-metrics"></a>Metrische gegevens gebruiken
 
-Selecteer in het cluster Azure Data Explorer **metrische gegevens** voor het openen van het deelvenster met metrische gegevens en beginnen met de analyse op uw cluster.
+Selecteer in uw Azure Data Explorer-cluster **metrische gegevens** om het deel venster metrieken te openen en de analyse van het cluster te starten.
 
 ![Metrische gegevens selecteren](media/using-metrics/select-metrics.png)
 
-In het deelvenster met metrische gegevens:
+In het deel venster metrische gegevens:
 
-![Deelvenster van de metrische gegevens](media/using-metrics/metrics-pane.png)
+![Deel venster metrische gegevens](media/using-metrics/metrics-pane.png)
 
-1. Voor het maken van een grafiek met metrische gegevens selecteert **Metric** naam en het relevante **aggregatie** per metrisch gegeven als gedetailleerde hieronder. De **Resource** en **metriek Namespace** kleurenkiezer zijn vooraf geselecteerde met uw Azure Data Explorer-cluster.
+1. Als u een metrische grafiek wilt maken, selecteert u **metrische** naam en relevante **aggregatie** per metriek, zoals hieronder wordt beschreven. De **resource** -en **metrische naam ruimte** -kiezers zijn vooraf geselecteerd voor uw Azure Data Explorer-cluster.
 
-    **Gegevens** | **Eenheid** | **Aggregatie** | **Beschrijving van metrische gegevens**
+    **Gegevens** | **Teleenheid** | **Aggregatie** | **Beschrijving van metrische gegevens**
     |---|---|---|---|
-    | Cache-gebruik | Percent | Avg, Max, Min | Percentage van de resources toegewezen cache die momenteel in gebruik door het cluster. Cache verwijst naar de grootte van SSD voor gebruikersactiviteit op basis van het beleid gedefinieerde cache toegewezen. Een gemiddelde cache gebruik van 80% of minder is een duurzame status voor een cluster. Als de gemiddelde cache-gebruik hoger is dan 80%, het cluster moet [opgeschaald](manage-cluster-vertical-scaling.md) naar een opslag geoptimaliseerd prijscategorie of [uitgeschaalde](manage-cluster-horizontal-scaling.md) meer exemplaren. U kunt ook aan te passen de cache-beleid (minder dagen in de cache). Als cache gebruik meer dan 100% is, de grootte van gegevens in de cache opgeslagen, op basis van het cachebeleid groter is dat de totale grootte van de cache op het cluster. |
-    | CPU | Percent | Avg, Max, Min | Percentage van de toegewezen rekenresources die momenteel in gebruik door machines in het cluster. Er is een gemiddelde CPU van 80% of minder duurzame voor een cluster. De maximumwaarde van CPU is 100%, wat betekent dat er zijn geen extra rekenresources om gegevens te verwerken. Wanneer een cluster is niet goed presteert, controleert u de maximale waarde van de CPU om te bepalen of er specifieke CPU's die zijn geblokkeerd. |
-    | Gebeurtenissen die worden verwerkt (voor Event Hubs) | Count | Max, Min, Sum | Totaal aantal gebeurtenissen van eventhubs gelezen en verwerkt door het cluster. De gebeurtenissen worden onderverdeeld in geweigerd en gebeurtenissen die worden geaccepteerd door de engine voor het cluster. |
-    | Opnamelatentie | Seconden | Avg, Max, Min | Latentie van gegevens die zijn opgenomen, vanaf het moment dat de gegevens in het cluster is ontvangen totdat deze klaar voor de query is. De opname latentieperiode is afhankelijk van het scenario voor gegevensopname. |
-    | Opname-resultaat | Count | Count | Totaal aantal opname-bewerkingen die zijn mislukt en is voltooid. Gebruik **toepassen splitsen** maken van buckets van slagen en mislukken van de resultaten en analyseren van de dimensies (**waarde** > **Status**).|
-    | Opname-gebruik | Percent | Avg, Max, Min | Percentage van de werkelijke hoeveelheid resources die worden gebruikt voor opname van gegevens van het totaal aan resources in het beleid van de capaciteit, om uit te voeren van gegevensopname toegewezen. Het standaardbeleid voor capaciteit is niet meer dan 512 gelijktijdige opname bewerkingen of 75% van de clusterbronnen geïnvesteerd in de opname. Gemiddelde opname gebruik van 80% of minder is een duurzame status voor een cluster. Maximale waarde van het gebruik van gegevensopname is 100%, wat betekent dat alle cluster opname-mogelijkheid wordt gebruikt en kan leiden tot een opname-wachtrij. |
-    | Opname-volume (in MB) | Count | Max, Min, Sum | De totale grootte van de gegevens die worden opgenomen in het cluster (in MB) voor compressie. |
-    | Actief houden | Count | Avg | Houdt de reactiesnelheid van het cluster. Een cluster met heel snel reageert, retourneert de waarde 1 en een cluster geblokkeerd of niet-verbonden retourneert 0. |
-    | Queryduur | Seconden | Count, Avg, Min, Max, Sum | Totale tijd totdat de queryresultaten worden ontvangen (niet de netwerklatentie bevatten). |
+    | Cache gebruik | Procent | Avg, Max, Min | Het percentage toegewezen cache resources dat momenteel door het cluster wordt gebruikt. Cache verwijst naar de grootte van SSD toegewezen voor gebruikers activiteit volgens het gedefinieerde cache beleid. Een gemiddeld cache gebruik van 80% of minder is een duurzame status voor een cluster. Als het gemiddelde cache gebruik hoger is dan 80%, moet het cluster worden [geschaald](manage-cluster-vertical-scaling.md) naar een prijs categorie geoptimaliseerd voor opslag of worden [uitgeschaald](manage-cluster-horizontal-scaling.md) naar meer exemplaren. U kunt het cache beleid ook aanpassen (minder dagen in de cache). Als het cache gebruik meer dan 100% is, is de grootte van de gegevens die in de cache moeten worden opgeslagen volgens het cache beleid groter dan de totale grootte van de cache op het cluster. |
+    | CPU | Procent | Avg, Max, Min | Het percentage toegewezen reken resources dat momenteel wordt gebruikt door machines in het cluster. Een gemiddeld CPU van 80% of minder is duurzaam voor een cluster. De maximale waarde van CPU is 100%, wat betekent dat er geen extra reken resources zijn om gegevens te verwerken. Wanneer een cluster niet goed presteert, controleert u de maximum waarde van de CPU om te bepalen of er specifieke Cpu's zijn die worden geblokkeerd. |
+    | Verwerkte gebeurtenissen (voor Event Hubs) | Count | Max, min, Sum | Totaal aantal gebeurtenissen dat is gelezen vanuit Event hubs en verwerkt door het cluster. De gebeurtenissen worden gesplitst in gebeurtenissen die zijn afgewezen en gebeurtenissen die door de Cluster-Engine worden geaccepteerd. |
+    | Opname latentie | Seconden | Avg, Max, Min | Latentie van opgenomen gegevens, vanaf het moment dat de gegevens in het cluster worden ontvangen totdat deze klaar is voor de query. De latentie van de opname vertraging is afhankelijk van het opname scenario. |
+    | Opname resultaat | Count | Count | Totaal aantal opname bewerkingen dat is mislukt en geslaagd. Gebruik **splitsen Toep assen** om buckets van geslaagde en mislukte resultaten te maken en de dimensies (**waarde** > **status**) te analyseren.|
+    | Opname gebruik | Procent | Avg, Max, Min | Het percentage werkelijke bronnen dat wordt gebruikt om gegevens op te nemen uit het totale aantal toegewezen resources, in het capaciteits beleid, om opname uit te voeren. Het standaard capaciteits beleid is niet meer dan 512 gelijktijdige opname bewerkingen of 75% van de cluster bronnen die zijn belegd in opname. Het gemiddelde opname gebruik van 80% of minder is een duurzame status voor een cluster. De maximale waarde voor opname gebruik is 100%. Dit betekent dat alle mogelijkheden voor het opnemen van het cluster worden gebruikt en dat een opname wachtrij kan resulteren. |
+    | Opname volume (in MB) | Count | Max, min, Sum | De totale grootte van de gegevens die zijn opgenomen in het cluster (in MB) vóór compressie. |
+    | Actief houden | Count | Gemiddeld | Houdt de reactie tijd bij van het cluster. Een volledig reagerende cluster retourneert waarde 1 en een geblokkeerd of niet-verbonden cluster retourneert 0. |
+    | Queryduur | Seconden | Count, Avg, Min, Max, Sum | Totale tijd tot de query resultaten zijn ontvangen (geen netwerk latentie inbegrepen). |
     | | | |
 
-    Aanvullende informatie met betrekking tot [ondersteunde metrische gegevens van Azure Data Explorer-cluster](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
+    Aanvullende informatie over [ondersteunde metrische gegevens van Azure Data Explorer cluster](/azure/azure-monitor/platform/metrics-supported#microsoftkustoclusters)
 
-2. Selecteer de **metrische waarde toevoegen** om weer te geven meerdere metrische gegevens in dezelfde grafiek getekend.
-3. Selecteer de **+ nieuwe grafiek** om weer te geven meerdere diagrammen in één weergave.
-4. Gebruik de tijdkiezer om te wijzigen van het tijdsbereik (standaard: afgelopen 24 uur).
-5. Gebruik [ **filter toevoegen** en **toepassen splitsen** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) voor metrische gegevens die dimensies hebben.
-6. Selecteer **vastmaken aan dashboard** uw configuratie van de grafiek toevoegen aan de dashboards, zodat u deze opnieuw kunt bekijken.
-7. Stel **nieuwe waarschuwingsregel** voor het visualiseren van uw metrische gegevens met behulp van de set criteria. De nieuwe waarschuwingsregel bevat de doelresource, metrische gegevens, opsplitsen en filterdimensies van de grafiek. Wijzig deze instellingen in de [waarschuwingsregel maken van het deelvenster](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
+2. Selecteer de knop **metriek toevoegen** om meerdere metrische gegevens weer te geven die in dezelfde grafiek zijn getekend.
+3. Selecteer de knop **+ nieuwe grafiek** om meerdere grafieken in één weer gave te zien.
+4. Gebruik de tijd kiezer om het tijds bereik te wijzigen (standaard: afgelopen 24 uur).
+5. Gebruik [ **filter toevoegen** en **pas splitsen toe** ](/azure/azure-monitor/platform/metrics-getting-started#apply-dimension-filters-and-splitting) voor metrische gegevens met dimensies.
+6. Selecteer **vastmaken aan dash board** om de grafiek configuratie toe te voegen aan de Dash boards zodat u het opnieuw kunt bekijken.
+7. Stel een **nieuwe waarschuwings regel** in om uw metrische gegevens te visualiseren met de ingestelde criteria. De nieuwe waarschuwings regel bevat uw doel resource, metrische gegevens, opsplitsen en filter dimensies uit uw diagram. Wijzig deze instellingen in het [deel venster waarschuwings regel maken](/azure/azure-monitor/platform/metrics-charts#create-alert-rules).
 
-Als u meer informatie over het gebruik van de [Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started).
+Aanvullende informatie over het gebruik van de [Metrics Explorer](/azure/azure-monitor/platform/metrics-getting-started).
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-> [!div class="nextstepaction"]
-> [Snelstart: query's uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)
+* [Zelf studie: gegevens opnemen en controleren in azure Data Explorer](/azure/data-explorer/ingest-data-no-code)
+* [Azure Data Explorer opname bewerkingen bewaken met Diagnostische logboeken](/azure/data-explorer/using-diagnostic-logs)
+* [Snelstart: query’s uitvoeren op gegevens in Azure Data Explorer](web-query-data.md)

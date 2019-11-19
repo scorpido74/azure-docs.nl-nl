@@ -2,13 +2,13 @@
 title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
-ms.date: 10/27/2019
-ms.openlocfilehash: c0f36568bbbf824285cfaa3385d2225e0a989639
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/18/2019
+ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149211"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173556"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](resource-group-using-tags.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport.
@@ -1364,14 +1364,12 @@ Ga naar de naam ruimte van een resource provider:
 > [!div class="mx-tableFixed"]
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Ja | Ja |
-> | netAppAccounts/backupPolicies | Ja | Ja |
-> | netAppAccounts/capacityPools | Ja | Ja |
-> | netAppAccounts/capacityPools/volumes | Ja | Ja |
-> | netAppAccounts/capacityPools/volumes/back-ups | Nee | Nee |
-> | netAppAccounts/capacityPools/volumes/mountTargets | Ja | Ja |
-> | netAppAccounts/capacityPools/volumes/moment opnamen | Ja | Ja |
-> | netAppAccounts/kluizen | Nee | Nee |
+> | netAppAccounts | Ja | Nee |
+> | netAppAccounts/capacityPools | Ja | Nee |
+> | netAppAccounts/capacityPools/volumes | Ja | Nee |
+> | netAppAccounts/capacityPools/volumes/mountTargets | Ja | Nee |
+> | netAppAccounts/capacityPools/volumes/moment opnamen | Ja | Nee |
+
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]

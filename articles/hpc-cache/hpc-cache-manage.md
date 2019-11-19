@@ -4,14 +4,14 @@ description: De Azure HPC-cache beheren en bijwerken met behulp van de Azure Por
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 11/18/2019
 ms.author: rohogue
-ms.openlocfilehash: 62b54bfe120acdde1fd22c4a0d04165ea7243b50
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582204"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166697"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Uw cache beheren via de Azure Portal
 
@@ -19,7 +19,7 @@ Op de pagina cache-overzicht in de Azure Portal worden project details, de cache
 
 Als u de overzichts pagina wilt openen, selecteert u uw cache resource in het Azure Portal. Laad bijvoorbeeld de pagina **alle resources** en klik op de naam van de cache.
 
-![scherm afbeelding van de overzichts pagina van een Azure HPC-cache-exemplaar](media/hpc-cache-overview.png) <!-- placeholder is identical to hpc-cache-new-overview.png; replace with better image (showing graphs, full sidebar) when available -->
+![scherm afbeelding van de overzichts pagina van een Azure HPC-cache-exemplaar](media/hpc-cache-overview.png)
 
 Met de knoppen boven aan de pagina kunt u de cache beheren:
 
@@ -37,15 +37,17 @@ Met de knop **leegmaken** op de overzichts pagina wordt aan de cache meegedeeld 
 > [!NOTE]
 > Tijdens het leegmaak proces kan de cache geen client aanvragen verwerken. De toegang tot de cache wordt onderbroken en hervat nadat de bewerking is voltooid.
 
+![scherm afbeelding van de bovenste knoppen met flush gemarkeerd en een pop-upbericht waarin de actie Flush wordt beschreven en u wordt gevraagd om door te gaan? met Ja (standaard) en geen knoppen](media/hpc-cache-flush.png)
+
 Wanneer u de cache-leegmaak bewerking start, wordt het accepteren van client aanvragen door de cache gestopt en wordt de cache status op de overzichts pagina gewijzigd in **leegmaken**.
 
-De gegevens in de cache worden opgeslagen in de juiste opslag doelen. Het proces kan een paar minuten duren of het kan een uur of langer duren, afhankelijk van hoeveel gegevens er onlangs naar de cache zijn geschreven.
+De gegevens in de cache worden opgeslagen in de juiste opslag doelen. Afhankelijk van de hoeveelheid gegevens die moet worden leeg gemaakt, kan het proces enkele minuten of meer tijd in beslag nemen.
 
 Nadat alle gegevens zijn opgeslagen in opslag doelen, begint de cache automatisch met het uitvoeren van client aanvragen. De cache status wordt teruggezet naar **in orde**.
 
 ## <a name="upgrade-cache-software"></a>Cache software bijwerken
 
-Als er een nieuwe software versie beschikbaar is, wordt de knop **bijwerken** actief. Er wordt ook een bericht weer gegeven boven aan de pagina over het bijwerken van software.
+Als er een nieuwe software versie beschikbaar is, wordt de knop **bijwerken** actief. Boven aan de pagina wordt ook een bericht weer gegeven over het bijwerken van software.
 
 ![scherm afbeelding van de bovenste rij met knoppen waarop de knop bijwerken is ingeschakeld](media/hpc-cache-upgrade-button.png)
 
@@ -53,7 +55,7 @@ Client toegang wordt niet onderbroken tijdens een software-upgrade, maar de pres
 
 Het kan enkele uren duren voordat de software-update is uitgevoerd. Caches die zijn geconfigureerd met een hogere door Voer, nemen meer tijd in beslag dan caches met kleinere waarden voor piek doorvoer.
 
-Wanneer een software-upgrade beschikbaar is, hebt u enkele dagen nodig om deze hand matig toe te passen. De eind datum wordt vermeld in het upgrade bericht. Als u tijdens die tijd niet bijwerkt, past Azure automatisch de update toe op uw cache. De timing van de automatische upgrade kan niet worden geconfigureerd. Als u zich zorgen maakt over de prestaties van de cache, moet u de software zelf upgraden voordat de periode verloopt.
+Wanneer een software-upgrade beschikbaar is, hebt u een week of zodat deze hand matig kan worden toegepast. De eind datum wordt vermeld in het upgrade bericht. Als u tijdens die tijd niet bijwerkt, past Azure automatisch de update toe op uw cache. De timing van de automatische upgrade kan niet worden geconfigureerd. Als u zich zorgen maakt over de invloed op de cache prestaties, moet u de software zelf upgraden voordat de periode verloopt.
 
 Klik op de knop **bijwerken** om de software-update te starten. De cache status verandert in **een upgrade** totdat de bewerking is voltooid.
 

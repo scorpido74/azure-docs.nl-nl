@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 09/16/2019
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: b39c1596dd16f8ec6235878abdbf37492abd1ea8
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: c9db4cb8b7c0a12b802d75ac78bd465dda650f6d
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177077"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156054"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>Zelfstudie: De Azure SQL Database-verbinding vanuit App Service beveiligen met een beheerde identiteit
 
@@ -64,16 +64,16 @@ Schakel eerst Azure AD-verificatie in om SQL Database door een Azure AD-gebruike
 
 Als uw Azure AD-Tenant nog geen gebruiker heeft, maakt u er een door de stappen te volgen op [gebruikers toevoegen of verwijderen met Azure Active Directory](../active-directory/fundamentals/add-users-azure-active-directory.md).
 
-Zoek de object-ID van de Azure AD-gebruiker met behulp van de [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) en vervang *\<user-principal-name >* . Het resultaat wordt opgeslagen in een variabele.
+Zoek de object-ID van de Azure AD-gebruiker met behulp van de [`az ad user list`](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-list) en vervang *\<gebruiker-principal-naam >* . Het resultaat wordt opgeslagen in een variabele.
 
 ```azurecli-interactive
 azureaduser=$(az ad user list --filter "userPrincipalName eq '<user-principal-name>'" --query [].objectId --output tsv)
 ```
 > [!TIP]
-> Als u de lijst met alle UPN-namen in azure AD wilt zien, voert u `az ad user list --query [].userPrincipalName` uit.
+> Als u de lijst met alle principal-namen van gebruikers in azure AD wilt zien, voert u `az ad user list --query [].userPrincipalName`uit.
 >
 
-Voeg deze Azure AD-gebruiker toe als Active Directory beheerder met behulp van de [`az sql server ad-admin create`-](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) opdracht in de Cloud shell. Vervang in de volgende opdracht *\<server-name >* door de naam van de SQL database-server (zonder het achtervoegsel `.database.windows.net`).
+Voeg deze Azure AD-gebruiker toe als Active Directory beheerder met behulp van [`az sql server ad-admin create`](/cli/azure/sql/server/ad-admin?view=azure-cli-latest#az-sql-server-ad-admin-create) -opdracht in de Cloud shell. Vervang in de volgende opdracht *\<server naam >* door de naam van de SQL database-server (zonder het achtervoegsel `.database.windows.net`).
 
 ```azurecli-interactive
 az sql server ad-admin create --resource-group myResourceGroup --server-name <server-name> --display-name ADMIN --object-id $azureaduser
@@ -84,9 +84,9 @@ Zie [een Azure Active Directory beheerder voor uw Azure SQL database server inri
 ## <a name="set-up-visual-studio"></a>Visual Studio instellen
 
 ### <a name="windows"></a>Windows
-Visual Studio voor Windows is geïntegreerd met Azure AD-verificatie. Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker toe in Visual Studio door **bestand** > **account instellingen** te selecteren in het menu en op **een account toevoegen**te klikken.
+Visual Studio voor Windows is geïntegreerd met Azure AD-verificatie. Als u de ontwikkeling en fout opsporing in Visual Studio wilt inschakelen, voegt u uw Azure AD-gebruiker in Visual Studio toe door **bestand** > **account instellingen** te selecteren in het menu en op **een account toevoegen**te klikken.
 
-Als u de Azure AD-gebruiker voor Azure-service verificatie wilt instellen, selecteert u **extra** > **Opties** in het menu en selecteert u vervolgens **Azure-service verificatie** > -**account selecteren**. Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK**.
+Als u de Azure AD-gebruiker voor Azure-service verificatie wilt instellen, selecteert u **extra** > **Opties** in het menu en selecteert u vervolgens **Azure-service verificatie** > **account selecteren**. Selecteer de Azure AD-gebruiker die u hebt toegevoegd en klik op **OK**.
 
 U kunt nu uw app ontwikkelen en fouten opsporen met de SQL Database als back-end, met behulp van Azure AD-verificatie.
 
@@ -118,13 +118,13 @@ Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.3.0
 
 In *Web. config*werkt u vanaf de bovenkant van het bestand en brengt u de volgende wijzigingen aan:
 
-- In `<configSections>` voegt u de volgende sectie declaratie toe:
+- Voeg in `<configSections>`de volgende sectie declaratie toe:
 
     ```xml
     <section name="SqlAuthenticationProviders" type="System.Data.SqlClient.SqlAuthenticationProviderConfigurationSection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     ```
 
-- Voeg onder de code `</configSections>` sluiten de volgende XML-code toe voor `<SqlAuthenticationProviders>`.
+- Voeg onder de tag voor het sluiten van `</configSections>` de volgende XML-code toe voor `<SqlAuthenticationProviders>`.
 
     ```xml
     <SqlAuthenticationProviders>
@@ -134,7 +134,7 @@ In *Web. config*werkt u vanaf de bovenkant van het bestand en brengt u de volgen
     </SqlAuthenticationProviders>
     ```    
 
-- Zoek de connection string met de naam `MyDbConnection` en vervang de waarde van `connectionString` door `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Vervang _\<server-name >_ en _\<db-name >_ door de naam van de server en de data base.
+- Zoek de connection string met de naam `MyDbConnection` en vervang de `connectionString` waarde door `"server=tcp:<server-name>.database.windows.net;database=<db-name>;UID=AnyString;Authentication=Active Directory Interactive"`. Vervang _\<server naam >_ en _\<db-name >_ door de naam van de server en de data base.
 
 Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app.
 
@@ -184,13 +184,13 @@ var conn = (System.Data.SqlClient.SqlConnection)Database.GetDbConnection();
 conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
 ```
 
-> [!TIP]
-> Deze demonstratie code is synchroon voor duidelijkheid. Zie voor meer informatie [asynchrone hand leiding voor constructors](https://github.com/davidfowl/AspNetCoreDiagnosticScenarios/blob/master/AsyncGuidance.md#constructors).
+> [!NOTE]
+> Deze demonstratie code is synchroon voor duidelijkheid en eenvoud.
 
-Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app. De klasse `AzureServiceTokenProvider` slaat het token in de cache op in het geheugen en haalt dit net vóór de verval datum op uit Azure AD. U hebt geen aangepaste code nodig om het token te vernieuwen.
+Dat is alles wat u nodig hebt om verbinding te maken met SQL Database. Als u fouten opspoort in Visual Studio, gebruikt de code de Azure AD-gebruiker die u hebt geconfigureerd in [Visual Studio instellen](#set-up-visual-studio). U stelt de SQL Database Server later in om verbinding te maken met de beheerde identiteit van uw App Service-app. De `AzureServiceTokenProvider`-klasse slaat het token in de cache op en haalt het op voor het verstrijken van Azure AD. U hebt geen aangepaste code nodig om het token te vernieuwen.
 
 > [!TIP]
-> Als de Azure AD-gebruiker die u hebt geconfigureerd, toegang heeft tot meerdere tenants, roept u `GetAccessTokenAsync("https://database.windows.net/", tenantid)` aan met de gewenste Tenant-ID om het juiste toegangs token op te halen.
+> Als de Azure AD-gebruiker die u hebt geconfigureerd toegang heeft tot meerdere tenants, roept u `GetAccessTokenAsync("https://database.windows.net/", tenantid)` aan met de gewenste Tenant-ID om het juiste toegangs token op te halen.
 
 Typ `Ctrl+F5` om de app opnieuw uit te voeren. Dezelfde ruwe app in uw browser is nu rechtstreeks verbonden met de Azure SQL Database, met behulp van Azure AD-verificatie. Met deze installatie kunt u database migraties uitvoeren vanuit Visual Studio.
 
@@ -232,7 +232,7 @@ Als u de volledige JSON-uitvoer voor elke opdracht wilt zien, haal dan de `--que
 
 ### <a name="grant-permissions-to-azure-ad-group"></a>Machtigingen verlenen aan de Azure AD-groep
 
-Meld u in de Cloud Shell aan bij SQL Database met behulp van de SQLCMD-opdracht. Vervang _\<server-naam >_ door de naam van uw SQL database-server, _\<db-name >_ met de database naam die uw app gebruikt en _\<aad-user-name >_ en _\<AAD-Password >_ met uw Azure AD-gebruikers aanmeldings.
+Meld u in de Cloud Shell aan bij SQL Database met behulp van de SQLCMD-opdracht. Vervang _\<server naam >_ door de naam van uw SQL database-server, _\<db-naam >_ met de database naam die uw app gebruikt en _\<aad-user-name >_ en _\<Aad-Password_ > met de referenties van uw Azure AD-gebruiker.
 
 ```azurecli-interactive
 sqlcmd -S <server-name>.database.windows.net -d <db-name> -U <aad-user-name> -P "<aad-password>" -G -l 30
@@ -252,7 +252,7 @@ Typ `EXIT` om terug te keren naar de Cloud Shell-prompt.
 
 ### <a name="modify-connection-string"></a>De verbindingsreeks wijzigen
 
-Houd er rekening mee dat dezelfde wijzigingen die u hebt aangebracht in *Web. config* of *appSettings. json* werkt met de beheerde identiteit, dus het enige wat u moet doen, is om de bestaande connection string te verwijderen in app service, waarmee Visual Studio de eerste keer wordt geïmplementeerd met de implementatie van uw app. tegelijk. Gebruik de volgende opdracht, maar vervang *\<app-name >* door de naam van uw app.
+Houd er rekening mee dat dezelfde wijzigingen die u hebt aangebracht in *Web. config* of *appSettings. json* werkt met de beheerde identiteit, dus het enige wat u moet doen, is om de bestaande connection string te verwijderen in app service, waarmee Visual Studio de eerste keer uw app implementeert. Gebruik de volgende opdracht, maar vervang *\<app-naam >* door de naam van uw app.
 
 ```azurecli-interactive
 az webapp config connection-string delete --resource-group myResourceGroup --name <app-name> --setting-names MyDbConnection

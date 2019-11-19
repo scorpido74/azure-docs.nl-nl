@@ -1,18 +1,14 @@
 ---
-title: Antwoorden op veelgestelde vragen over Azure Backup-functies
+title: Antwoorden op veelgestelde vragen
 description: 'Antwoorden op veelgestelde vragen over de functies van Azure Backup, waaronder de Recovery Services-kluis, waarvan een back-up kan worden gemaakt, hoe het werkt, versleuteling en limieten. '
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.author: dacurwin
-ms.openlocfilehash: efd2959547e13872bfa73a0a8e4b9fda62ea5728
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: f95a4e7e9084c304838b01bdfaceee261d8151cf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074324"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173232"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Veelgestelde vragen over Azure Backup
 
@@ -96,6 +92,8 @@ Windows Storage Server 2012 R2 64 bits | Standard, Workgroup, Essential | Met de
 Windows Storage Server 2012 64 bits | Standard, Workgroup | Met de nieuwste service packs/updates.
 Windows Server 2008 R2 SP1 64 bits | Standard, Enterprise, Datacenter, Foundation | Met de nieuwste updates.
 Windows Server 2008 64-bits | Standard, Enter prise, Data Center | Met de nieuwste updates.
+
+Azure Backup biedt geen ondersteuning voor 32-bits besturings systemen.
 
 Voor Azure VM Linux-back-ups ondersteunt Azure Backup [de lijst met distributies die zijn goedgekeurd door Azure](../virtual-machines/linux/endorsed-distros.md), met uitzonde ring van het kern besturingssysteem Linux en 32-bits besturings systeem. Andere uw eigen Linux-distributies kunnen werken zolang de VM-agent op de virtuele machine beschikbaar is, en er is ondersteuning voor python.
 

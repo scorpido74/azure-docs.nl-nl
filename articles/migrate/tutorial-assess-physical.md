@@ -5,20 +5,16 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 9339a03fcb3f67402c0aab030cb69a45e1b42b45
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 7f840a99ab76548c16389955cf49791036cc63a2
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123508"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158359"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fysieke servers beoordelen met Azure Migrate: Server evaluatie
-
-> [!NOTE]
-> Als u deze functie nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze wordt in de volgende week weer gegeven.
- 
 
 In dit artikel leest u hoe u on-premises fysieke servers kunt beoordelen met behulp van het Azure Migrate: Server assessment tool.
 
@@ -112,7 +108,8 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
 
   **Algoritme** | **Hash-waarde**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 5b98cf68dad495696c789bdad8f0d91b
+  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatie script uitvoeren
 
@@ -135,7 +132,7 @@ Voer het script als volgt uit:
     ```
     PS C:\Users\administrator\Desktop\AzureMigrateInstaller> AzureMigrateInstaller.ps1
     ```
-Met het script wordt de web-app voor het toestel gestart wanneer deze is voltooid. 
+Met het script wordt de web-app voor het toestel gestart wanneer deze is voltooid.
 
 In het geval van problemen kunt u de script Logboeken openen op C:\ProgramData\Microsoft Azure\Logs\ AzureMigrateScenarioInstaller_<em>Time Stamp</em>. log voor het oplossen van problemen.
 
@@ -166,7 +163,7 @@ Het apparaat voor de eerste keer instellen.
 ### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
 1. Klik op **Aanmelden**. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
-2. Meld u aan met uw Azure-referenties op het tabblad Nieuw. 
+2. Meld u aan met uw Azure-referenties op het tabblad Nieuw.
     - Meld u aan met uw gebruikers naam en wacht woord.
     - Aanmelden met een pincode wordt niet ondersteund.
 3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
@@ -188,7 +185,7 @@ U kunt elk voor Windows-en Linux-servers één set referenties toevoegen.
     - Als u een server wilt verwijderen, selecteert u > **verwijderen**.
 4. Klik na validatie op **opslaan en start de detectie** om het detectie proces te starten.
 
-De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per server voor de meta gegevens van de gedetecteerde server die worden weer gegeven in de Azure Portal. 
+De detectie wordt gestart. Het duurt ongeveer 1,5 minuten per server voor de meta gegevens van de gedetecteerde server die worden weer gegeven in de Azure Portal.
 
 ### <a name="verify-servers-in-the-portal"></a>Servers in de portal controleren
 

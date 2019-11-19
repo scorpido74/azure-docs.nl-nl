@@ -1,20 +1,15 @@
 ---
-title: Een back-up maken van een Windows-server naar Azure
+title: 'Zelf studie: back-up maken van Windows Server naar Azure'
 description: In deze zelfstudie wordt beschreven hoe u een back-up maakt van een on-premises Windows-server naar een Recovery Services-kluis.
-author: dcurwin
-manager: carmonm
-keywords: windows-server back-up; back-up windows-server; back-up en herstel na noodgevallen
-ms.service: backup
 ms.topic: tutorial
 ms.date: 08/22/2018
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: d57d25eff9548bea9d29f8aa908e9e1721495bd9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073949"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171833"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Een back-up maken van een Windows-server naar Azure
 

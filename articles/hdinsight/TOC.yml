@@ -225,9 +225,9 @@
           items:
             - name: Nieuw in HDInsight 4.0
               href: ./hdinsight-version-release.md
-            - name: Alle opmerkingen bij de release van HDInsight 4.0
+            - name: Releaseopmerkingen
               href: ./hdinsight-release-notes.md
-            - name: Alle opmerkingen bij de release van HDInsight 3.6
+            - name: Gearchiveerde opmerkingen bij de release van Azure HDInsight
               href: ./hdinsight-release-notes-archive.md
         - name: Veelgestelde vragen
           href: ./hdinsight-faq.md
@@ -837,6 +837,8 @@
           href: ./hdinsight-plan-virtual-network-deployment.md
         - name: Vereiste IP-adressen voor NSG's en UDR's
           href: ./hdinsight-management-ip-addresses.md
+        - name: Servicetags voor Azure Firewall
+          href: ./hdinsight-service-tags.md
     - name: Procedures
       items:
         - name: ESP-clusters maken en synchroniseren met on-premises

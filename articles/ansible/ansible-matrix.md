@@ -3,17 +3,13 @@ title: Ansible-module en versie matrix voor Azure | Microsoft Docs
 description: Overzicht met Ansible-modules en -versies voor Azure
 keywords: ansible, rollen, matrix, versie, azure, devops
 ms.topic: reference
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 275dca40ab20c222da2b9115f9a5dc141228c766
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 54e27c7570ba1cdbce7355740181d68a2f3efbac
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72385467"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155980"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Overzicht met Ansible-modules en -versies
 
@@ -26,11 +22,11 @@ De volgende modules kunnen rechtstreeks worden uitgevoerd op externe hosts of vi
 Deze modules zijn beschikbaar via de officiële release van Ansible en uit de volgende micro soft Playbook-rollen.
 
 > [!NOTE]
-> Vanaf Ansible 2,9 worden de namen van alle * _facts-modules gewijzigd in * _info om te voldoen aan de naamgevings Conventie van Ansible. De oude en hernoemde modules worden zodanig gekoppeld dat er een afschaffing waarschuwing wordt weer gegeven. alle modules werken net als voorheen.
+> Vanaf Ansible 2,9 worden de namen van alle * _facts modules gewijzigd in * _info om te voldoen aan de naamgevings Conventie van Ansible. De oude en hernoemde modules worden zodanig gekoppeld dat er een afschaffing waarschuwing wordt weer gegeven. alle modules werken net als voorheen.
 
 | Ansible-module voor Azure                   |  Ansible 2,4 |  Ansible 2,5 |  Ansible 2,6 | Ansible 2,7 | Ansible 2,8 | Ansible 2,9 | Ansible-rol | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|--------------|--------------|--------------|  
-| **Compute**                    |           |                          |                          |                            |           |           |           |
+| **Computing**                    |           |                          |                          |                            |           |           |           |
 | azure_rm_availabilityset                   | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_availabilityset_info              | Ja          | Ja                         | Ja          | Ja          | Ja          | Ja          | Ja          |
 | azure_rm_batchaccount                       | -            | -                           | -            | -            | -            | Ja          | Ja          |
@@ -221,9 +217,9 @@ Deze modules zijn beschikbaar via de officiële release van Ansible en uit de vo
 
 ## <a name="introduction-to-playbook-role-for-azure"></a>Inleiding tot de Playbook-rol voor Azure
 
-De [azure_preview_module Playbook-rol](https://galaxy.ansible.com/Azure/azure_preview_modules/) omvat alle meest recente Azure-modules. De updates en oplossingen voor fouten worden op een meer wijze uitgevoerd dan de officiële Ansible-release. Als u Ansible gebruikt voor het inrichten van Azure-resources, raden we u aan de `azure_preview_module` Playbook-functie te installeren.
+De [azure_preview_module rol Playbook](https://galaxy.ansible.com/Azure/azure_preview_modules/) omvat alle meest recente Azure-modules. De updates en oplossingen voor fouten worden op een meer wijze uitgevoerd dan de officiële Ansible-release. Als u Ansible gebruikt voor het inrichten van Azure-resources, raden we u aan om de `azure_preview_module` Playbook-functie te installeren.
 
-De Playbook-rol @no__t 0 wordt elke drie weken vrijgegeven.
+De `azure_preview_module` Playbook-rol wordt elke drie weken vrijgegeven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

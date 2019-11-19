@@ -1,157 +1,158 @@
 ---
-title: Instellen van een apparaat voor Azure Migrate evaluatie/servermigratie voor Hyper-V-machines | Microsoft Docs
-description: Beschrijft hoe u voor het instellen van een apparaat voor detectie, beoordeling en zonder agents migratie van Hyper-V-machines met behulp van Azure Migrate evaluatie/servermigratie.
+title: Een apparaat instellen voor Azure Migrate server evaluatie/migratie voor Hyper-V-Vm's | Microsoft Docs
+description: Hierin wordt beschreven hoe u een apparaat instelt voor detectie, evaluatie en migratie zonder agents van Hyper-V-Vm's met Azure Migrate server evaluatie/migratie.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: raynew
-ms.openlocfilehash: c531fe49ebff6c021547c2d1c2f382bcd6c9caef
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
-ms.translationtype: MT
+ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811763"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158626"
 ---
-# <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor Hyper-V-machines
+# <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
 
-Dit artikel wordt beschreven hoe u het apparaat Azure Migrate instelt als u beoordeling van de Hyper-V-machines met het hulpprogramma Azure Migrate-evaluatie-Server of VMware-VM's migreren naar Azure met behulp van het hulpprogramma voor migratie van Azure-Server migreren.
+In dit artikel wordt beschreven hoe u het Azure Migrate apparaat instelt als u virtuele Hyper-V-machines wilt beoordelen met het hulp programma Azure Migrate server Assessment, of virtuele VMware-machines naar Azure migreert met behulp van het hulp programma voor migratie van Azure Migrate server.
 
-De Hyper-V-VM-apparaat is een lichtgewicht apparaat die wordt gebruikt door Azure Migrate evaluatie/servermigratie het volgende doen:
+Het Hyper-V-VM-apparaat is een licht gewicht apparaat dat wordt gebruikt door Azure Migrate server-evaluatie/-migratie om het volgende te doen:
 
-- On-premises Hyper-V virtuele machines detecteren.
-- Metagegevens-en prestatiegegevens voor gedetecteerde virtuele machines naar Azure migreren evaluatie/servermigratie verzenden.
+- On-premises Hyper-V-Vm's detecteren.
+- Meta gegevens en prestatie gegevens voor gedetecteerde Vm's verzenden naar Azure Migrate server evaluatie/migratie.
 
-[Meer informatie](migrate-appliance.md) over het apparaat Azure Migrate.
+Meer [informatie](migrate-appliance.md) over het Azure migrate apparaat.
 
 
-## <a name="appliance-deployment-steps"></a>Stappen voor de implementatie van apparaat
+## <a name="appliance-deployment-steps"></a>Implementatie stappen voor het apparaat
 
-Instellen van het apparaat u:
-- Download een gecomprimeerde Hyper-V-VHD vanuit Azure portal.
-- Maken van het apparaat en controleer dat deze verbinding met Azure Migrate-Server-evaluatie maken kan. 
-- Het apparaat voor het eerst configureren en registreren bij de Azure Migrate-project.
+Als u het apparaat wilt instellen, doet u het volgende:
+- Down load een gecomprimeerde Hyper-V VHD vanuit het Azure Portal.
+- Maak het apparaat en controleer of het verbinding kan maken met Azure Migrate server beoordeling.
+- Configureer het apparaat voor de eerste keer en registreer het bij het Azure Migrate-project.
 
-## <a name="download-the-vhd"></a>Downloaden van de VHD
+## <a name="download-the-vhd"></a>De VHD downloaden
 
-Download de ingepakte VHD-sjabloon voor het apparaat.
+Down load de sjabloon voor de gezipte VHD voor het apparaat.
 
-1. In **migratie doelstellingen** > **Servers** > **Azure Migrate: Server-evaluatie**, klikt u op **ontdekken**.
-2. In **machines detecteren** > **zijn de machines gevirtualiseerd?** , klikt u op **Ja, met Hyper-V**.
-3. Klik op **downloaden** om de VHD-bestand te downloaden.
+1. In **migratie doelen** > **servers** > **Azure migrate: Server evaluatie**, klikt u op **ontdekken**.
+2. In **computers detecteren** > **zijn uw machines gevirtualiseerd? klikt u**op **Ja, met Hyper-V**.
+3. Klik op **downloaden** om het VHD-bestand te downloaden.
 
     ![Virtuele machine downloaden](./media/how-to-set-up-appliance-hyper-v/download-appliance-hyperv.png)
 
 
 ### <a name="verify-security"></a>Beveiliging controleren
 
-Controleer of het ZIP-bestand beveiligd, is voordat u deze implementeert.
+Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementeert.
 
 1. Open op de machine waarop u het bestand hebt gedownload een opdrachtvenster voor beheerders.
-2. Voer de volgende opdracht uit voor het genereren van de hash voor de VHD
+2. Voer de volgende opdracht uit om de hash voor de VHD te genereren
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
-3.  Voor versie 1.19.05.10 van het toestel, de gegenereerde hash moet overeenkomen met deze instellingen.
+3.  Voor de toestel versie 2.19.11.12 moet de gegenereerde hash overeenkomen met deze instellingen.
 
   **Algoritme** | **Hash-waarde**
   --- | ---
-  SHA256 | 598d2e286f9c972bb7f7382885e79e768eddedfe8a3d3460d6b8a775af7d7f79
+  MD5 | 29a7531f32bcf69f32d964fa5ae950bc
+  SHA256 | 37b3f27bc44f475872e355f04fcb8f38606c84534c117d1609f2d12444569b31
 
 
-  
-## <a name="create-the-appliance-vm"></a>De VM-toepassing maken
 
-Importeer het gedownloade bestand en de virtuele machine maken.
+## <a name="create-the-appliance-vm"></a>De apparaat-VM maken
 
-1. Pak het gezipte VHD-bestand naar een map op de Hyper-V-host die als voor de virtuele machine van het apparaat host fungeert. Drie mappen worden geëxtraheerd.
-2. Open Hyper-V-beheer. In **acties**, klikt u op **virtuele Machine importeren**.
+Importeer het gedownloade bestand en maak de virtuele machine.
+
+1. Pak het gecomprimeerde VHD-bestand uit in een map op de Hyper-V-host die als host fungeert voor de toestel-VM. Er worden drie mappen geëxtraheerd.
+2. Open Hyper-V-beheer. Klik in **acties**op **virtuele machine importeren**.
 
     ![VHD implementeren](./media/how-to-set-up-appliance-hyper-v/deploy-vhd.png)
 
-2. In de Wizard virtuele Machine importeren > **voordat u begint met**, klikt u op **volgende**.
-3. In **vinden map**, geeft u de map met de uitgepakte VHD. Klik op **Volgende**.
-1. In **virtuele Machine selecteren**, klikt u op **volgende**.
-2. In **importtype Kies**, klikt u op **de virtuele machine kopiëren (Maak een nieuwe unieke ID)** . Klik op **Volgende**.
-3. In **doel kiezen**, laat de standaardinstelling. Klik op **Volgende**.
-4. In **opslagmappen**, laat de standaardinstelling. Klik op **Volgende**.
-5. In **netwerk kiezen**, geef de virtuele switch die de virtuele machine wilt gebruiken. De switch moet verbinding met internet om gegevens te verzenden naar Azure.
-6. In **samenvatting**, Controleer de instellingen. Klik vervolgens op **voltooien**.
-7. In Hyper-V-beheer > **virtuele Machines**, start de virtuele machine.
+2. Klik in de wizard virtuele machine importeren > **voordat u begint**op **volgende**.
+3. In **map zoeken**geeft u de map op die de geëxtraheerde VHD bevat. Klik op **Volgende**.
+1. Klik in **virtuele machine selecteren**op **volgende**.
+2. In **import type kiezen**klikt u op **de virtuele machine kopiëren (een nieuwe unieke id maken)** . Klik op **Volgende**.
+3. Laat in **doel kiezen**de standaard instelling ongewijzigd. Klik op **Volgende**.
+4. In **opslag mappen**, behoud de standaard instelling. Klik op **Volgende**.
+5. Geef in **netwerk kiezen**de virtuele switch op die door de VM moet worden gebruikt. De switch heeft Internet connectiviteit nodig om gegevens naar Azure te verzenden.
+6. Controleer de instellingen in **samen vatting**. Klik vervolgens op **volt ooien**.
+7. Start de virtuele machine in Hyper-V-beheer > **virtual machines**.
 
 
-### <a name="verify-appliance-access-to-azure"></a>Apparaat toegang tot Azure controleren
+### <a name="verify-appliance-access-to-azure"></a>Toestel toegang tot Azure controleren
 
-Zorg ervoor dat het apparaat VM verbinding met maken kan [Azure-URL's](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
+Zorg ervoor dat de virtuele machine van het apparaat verbinding kan maken met [Azure-url's](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access).
 
-## <a name="configure-the-appliance"></a>Configureer het apparaat
+## <a name="configure-the-appliance"></a>Het apparaat configureren
 
 Het apparaat voor de eerste keer instellen.
 
-1. In Hyper-V-beheer > **virtuele Machines**, met de rechtermuisknop op de virtuele machine > **Connect**.
-2. Geef de taal, de tijdzone en het wachtwoord voor het apparaat.
-3. Open een browser op elke computer die u kunt verbinding maken met de virtuele machine en open de URL van de web-app van het apparaat: **https://*apparaatnaam of IP-adres*: 44368**.
+1. Klik in Hyper-V-beheer > **virtual machines**met de rechter muisknop op de virtuele machine > **verbinding maken**.
+2. Geef de taal, de tijd zone en het wacht woord op voor het apparaat.
+3. Open een browser op een computer die verbinding kan maken met de virtuele machine en open de URL van de Web-App van het apparaat: **https:// *-apparaatnaam of IP-adres*: 44368**.
 
-   U kunt ook de app openen vanaf het bureaublad apparaat door te klikken op de snelkoppeling naar de app.
-1. In de web-app > **vereisten instellen**, doet u het volgende:
-    - **Licentie**: Accepteer de licentievoorwaarden en lees de informatie van derden.
-    - **Connectiviteit**: De app controleert of de virtuele machine toegang heeft tot internet heeft. Als de virtuele machine gebruikmaakt van een proxy:
-        - Klik op **Proxy-instellingen**, en geeft u het proxyadres en de luisterende poorten in het formulier http://ProxyIPAddress of http://ProxyFQDN.
+   U kunt de app ook vanuit het toestel bureau blad openen door te klikken op de snelkoppeling naar de app.
+1. Ga als volgt te werk in de web-app > vereisten in te **stellen**:
+    - **Licentie**: accepteer de licentie voorwaarden en lees de informatie van derden.
+    - **Connectiviteit**: de app controleert of de virtuele machine toegang heeft tot internet. Als de virtuele machine gebruikmaakt van een proxy:
+        - Klik op **proxy-instellingen**en geef het proxy adres en de luister poort op in de notatie http://ProxyIPAddress of http://ProxyFQDN.
         - Geef referenties op als de proxy verificatie nodig heeft.
         - Alleen HTTP-proxy wordt ondersteund.
-    - **Tijd synchronisatie**: Tijd is geverifieerd. De tijd op het apparaat moet worden gesynchroniseerd met de tijd voor internet voor VM-detectie goed te laten werken.
-    - **Updates installeren**: Azure Migrate-Server-evaluatie controleert of het apparaat de meest recente updates zijn geïnstalleerd.
+    - **Tijd synchronisatie**: tijd wordt gecontroleerd. De tijd op het apparaat moet zijn gesynchroniseerd met internet tijd zodat de machine detectie goed werkt.
+    - **Updates installeren**: Azure migrate server beoordeling controleert of de meest recente updates zijn geïnstalleerd op het apparaat.
 
-### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren met Azure Migrate
+### <a name="register-the-appliance-with-azure-migrate"></a>Het apparaat registreren bij Azure Migrate
 
-1. Klik op **aanmelden**. Als deze niet wordt weergegeven, zorg er dan voor dat u uitgeschakeld hebt met het pop-upblokkering in de browser.
-2. Meld u aan met uw Azure-referenties op het nieuwe tabblad. 
-    - Meld u aan met uw gebruikersnaam en wachtwoord.
-    - Aanmelden met een PINCODE wordt niet ondersteund.
-3. Wanneer is aangemeld, gaat u terug naar de web-app.
-4. Selecteer het abonnement waarin de Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
-5. Geef een naam voor het apparaat. De naam moet alfanumeriek met 14 tekens of minder.
+1. Klik op **Aanmelden**. Als deze niet wordt weer gegeven, controleert u of de pop-upblokkering in de browser is uitgeschakeld.
+2. Meld u aan met uw Azure-referenties op het tabblad Nieuw.
+    - Meld u aan met uw gebruikers naam en wacht woord.
+    - Aanmelden met een pincode wordt niet ondersteund.
+3. Nadat u zich hebt aangemeld, gaat u terug naar de web-app.
+4. Selecteer het abonnement waarin het Azure Migrate-project is gemaakt. Selecteer vervolgens het project.
+5. Geef een naam op voor het apparaat. De naam moet alfanumeriek zijn met 14 tekens of minder.
 6. Klik op **registreren**.
 
 
-### <a name="delegate-credentials-for-smb-vhds"></a>Gemachtigde referenties voor SMB-VHD 's
+### <a name="delegate-credentials-for-smb-vhds"></a>Referenties voor SMB-Vhd's delegeren
 
-Als u VHD's op midden-en kleinbedrijf uitvoert, moet u de overdracht van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Om dit te doen met het apparaat:
+Als u virtuele harde schijven uitvoert op Smb's, moet u de overdracht van referenties van het apparaat naar de Hyper-V-hosts inschakelen. Als u dit wilt doen vanaf het apparaat:
 
-1. Op het apparaat VM, moet u deze opdracht uitvoeren. HyperVHost1/HyperVHost2 zijn voorbeeldnamen host.
+1. Voer de volgende opdracht uit op de apparaat-VM. HyperVHost1/HyperVHost2 zijn voor beelden van hostnamen.
 
     ```
     Enable-WSManCredSSP -Role Client -DelegateComputer HyperVHost1.contoso.com HyperVHost2.contoso.com -Force
     ```
 
-2. U kunt ook dit doen in de Editor voor lokaal groepsbeleid op het apparaat:
-    - In **lokaal computerbeleid** > **Computerconfiguratie**, klikt u op **Beheersjablonen** > **System**  >  **Delegatie referenties**.
-    - Dubbelklik op **delegeren van nieuwe referenties toestaan**, en selecteer **ingeschakeld**.
-    - In **opties**, klikt u op **weergeven**, en Voeg elke Hyper-V-host die u detecteren aan de lijst wilt met **wsman /** als voorvoegsel.
-    - In **referenties**, dubbelklikt u op **toestaan delegeren van nieuwe referenties met alleen NTLM-server-verificatie**. Opnieuw toevoegen van elke Hyper-V-host die u detecteren aan de lijst wilt met **wsman /** als voorvoegsel.
+2. U kunt dit ook doen in het Lokale groepsbeleidsobjecteditor op het apparaat:
+    - Klik **in beleid voor lokale computer** > **Computer configuratie**op **Beheersjablonen** > **systeem** > **referenties voor delegeren**.
+    - Dubbel klik op **delegeren van nieuwe referenties toestaan**en selecteer **ingeschakeld**.
+    - Klik in **Opties**op **weer geven**en voeg elke Hyper-V-host die u wilt detecteren, toe aan de lijst met **wsman/** als voor voegsel.
+    - Dubbel klik in het overdragen van **referenties**op het **delegeren van nieuwe referenties toestaan met NTLM-Server verificatie**. Voeg nogmaals elke Hyper-V-host die u wilt detecteren, toe aan de lijst met **wsman/** als voor voegsel.
 
 ## <a name="start-continuous-discovery"></a>Continue detectie starten
 
-Verbinding maken tussen het apparaat en Hyper-V-hosts of clusters, en start de VM-detectie.
+Maak verbinding van het apparaat met Hyper-V-hosts of-clusters en start de VM-detectie.
 
-1. In **gebruikersnaam** en **wachtwoord**, geef de accountreferenties die het apparaat wordt gebruikt voor het detecteren van virtuele machines. Geef een beschrijvende naam voor de referenties op en klikt u op **details opslaan**.
-2. Klik op **toevoegen host**, en geef de details van Hyper-V-host/het cluster.
-3. Klik op **valideren**. Na de validatie, wordt het aantal VM's die kunnen worden gedetecteerd op elke host/het cluster weergegeven.
-    - Als validatie voor een host mislukt, controleert u de fout door de muiswijzer op het pictogram in de **Status** kolom. Los problemen op en Valideer opnieuw.
-    - Als u wilt verwijderen van hosts of clusters, selecteer > **verwijderen**.
+1. Geef bij **gebruikers naam** en **wacht woord**de account referenties op die door het apparaat worden gebruikt voor het detecteren van vm's. Geef een beschrijvende naam op voor de referenties en klik op **Details opslaan**.
+2. Klik op **host toevoegen**en geef de gegevens van de Hyper-V-host/het cluster op.
+3. Klik op **valideren**. Na validatie wordt het aantal Vm's weer gegeven dat op elke host/het cluster kan worden gedetecteerd.
+    - Als de validatie voor een host mislukt, controleert u de fout door de muis aanwijzer boven het pictogram in de kolom **status** te bewegen. Los problemen op en valideer opnieuw.
+    - Als u hosts of clusters wilt verwijderen, selecteert u > **verwijderen**.
     - U kunt een specifieke host niet verwijderen uit een cluster. U kunt alleen het hele cluster verwijderen.
-    - U kunt een cluster kunt toevoegen, zelfs als er problemen met specifieke hosts in het cluster zijn.
-4. Na de validatie, klikt u op **opslaan en detectie starten** om de detectieproces te starten.
+    - U kunt een cluster toevoegen, zelfs als er problemen zijn met specifieke hosts in het cluster.
+4. Klik na validatie op **opslaan en start de detectie** om het detectie proces te starten.
 
-Hiermee start u detectie. Het duurt ongeveer 15 minuten voor metagegevens van de gedetecteerde virtuele machines in Azure portal worden weergegeven. 
+De detectie wordt gestart. Het duurt ongeveer 15 minuten voor de meta gegevens van gedetecteerde Vm's die in de Azure Portal worden weer gegeven.
 
 ## <a name="verify-vms-in-the-portal"></a>VM's verifiëren in de portal
 
-Wanneer de detectie is voltooid, kunt u controleren of de virtuele machines worden weergegeven in de portal.
+Nadat de detectie is voltooid, kunt u controleren of de virtuele machines in de portal worden weer gegeven.
 
-1. Open het dashboard Azure Migrate.
-2. In **Azure Migrate - Servers** > **Azure Migrate: Server-evaluatie** pagina, klikt u op het pictogram met het aantal voor **ontdekte servers**. 
+1. Open het Azure Migrate dash board.
+2. Klik in **Azure migrate-Servers** > pagina **Azure migrate: Server beoordeling** op het pictogram met het aantal voor **gedetecteerde servers**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer [evaluatie van de Hyper-V](tutorial-assess-hyper-v.md) met Azure Migrate-Server-evaluatie.
+Probeer de [Hyper-V-evaluatie](tutorial-assess-hyper-v.md) uit met Azure migrate server-evaluatie.

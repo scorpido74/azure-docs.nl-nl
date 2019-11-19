@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 05/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: c789d48656173721432779aeaba0530950527fa1
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b91554269ab7ddf15458545715e7a3a40cc1ceb6
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646928"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158705"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v4)
 
@@ -25,7 +25,7 @@ Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen di
 - Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
 - Gebruik FIPS 140-2 level 2 Validated Hsm's.
 
-[API-referentie documentatie](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API-referentie documentatie](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [pakket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -39,10 +39,7 @@ In deze Quick Start wordt ervan uitgegaan dat u `dotnet`-, [Azure cli](/cli/azur
 
 ### <a name="create-new-net-console-app"></a>Nieuwe .NET-console-app maken
 
-Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE.
-
-Gebruik in een console venster de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `akv-dotnet`.
-
+Gebruik in een console venster de opdracht `dotnet new` om een nieuwe .NET-console-app te maken met de naam `akv-dotnet`.
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -91,7 +88,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie. Deze Quick starts maken echter een .NET-console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
+De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie. Deze Quick Start maakt echter een .NET-console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
 
 Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 

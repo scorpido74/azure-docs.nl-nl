@@ -1,20 +1,20 @@
 ---
 title: Overzicht van Azure Firewall logboeken en metrische gegevens
-description: Dit artikel bevat een overzicht van de Azure Firewall Diagnostische logboeken en metrische gegevens.
+description: U kunt Azure Firewall bewaken met behulp van firewall-logboeken. U kunt ook activiteitenlogboeken gebruiken om bewerkingen in Azure Firewall-resources te controleren.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: fea00358fc21cf6f57673e14ebd0feafe532b620
-ms.sourcegitcommit: b3bad696c2b776d018d9f06b6e27bffaa3c0d9c3
+ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69876565"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167000"
 ---
-# <a name="azure-firewall-logs-and-metrics"></a>Logboeken en metrische gegevens Azure Firewall
+# <a name="azure-firewall-logs-and-metrics"></a>Azure Firewall-logboeken en metrische gegevens
 
 U kunt Azure Firewall bewaken met behulp van firewall-logboeken. U kunt ook activiteitenlogboeken gebruiken om bewerkingen in Azure Firewall-resources te controleren.
 
@@ -75,9 +75,9 @@ Metrische gegevens zijn licht gewicht en kunnen bijna realtime-scenario's onders
 
 U hebt drie opties voor het opslaan van uw logboeken:
 
-* **Opslagaccount**: Opslag accounts worden het beste gebruikt voor Logboeken wanneer logboeken worden opgeslagen voor een langere duur en worden gecontroleerd wanneer dit nodig is.
-* **Event hubs**: Event hubs zijn een uitstekende optie om te integreren met andere hulpprogram ma's voor SEIM (Security Information and Event Management) om waarschuwingen over uw resources te krijgen.
-* **Azure monitor logboeken**: Azure Monitor logboeken worden het beste gebruikt voor algemene realtime-bewaking van uw toepassing of voor het bekijken van trends.
+* **Opslagaccount**: opslagaccounts kunnen het best worden gebruikt wanneer logboeken voor een langere periode worden opgeslagen en moeten kunnen worden bekeken wanneer dat nodig is.
+* **Event Hubs**: Event Hubs zijn een geweldige optie voor integratie met andere SIEM-hulpprogramma’s (Security Information and Event Management) om waarschuwingen over uw resources te krijgen.
+* **Azure monitor-logboeken**: Azure monitor-logboeken worden het beste gebruikt voor algemene realtime-bewaking van uw toepassing of voor het bekijken van trends.
 
 ## <a name="activity-logs"></a>Activiteitenlogboeken
 
@@ -91,7 +91,7 @@ Metrische gegevens in Azure Monitor zijn numerieke waarden die een aspect van ee
 
 De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
 
-- **Aantal op toepassings regels** gebaseerde treffers-het aantal keren dat een toepassings regel is bereikt.
+- **Aantal op toepassings regels gebaseerde treffers** -het aantal keren dat een toepassings regel is bereikt.
 
     Eenheid: aantal
 
@@ -108,8 +108,8 @@ De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
     Eenheid: percentage
 
    Deze metriek heeft twee dimensies:
-  - **Status**: Mogelijke waarden zijn *in orde*, gedegradeerd, beschadigd.
-  - **Reden**: Hiermee wordt de reden aangegeven van de bijbehorende status van de firewall. Het kan bijvoorbeeld duiden op *SNAT-poorten* als de firewall status wordt gedegradeerd of beschadigd.
+  - **Status**: mogelijke waarden zijn *in orde*, *gedegradeerd*, *beschadigd.*
+  - **Reden**: geeft de reden aan van de bijbehorende status van de firewall. Het kan bijvoorbeeld duiden op *SNAT-poorten* als de firewall status wordt gedegradeerd of beschadigd.
 
 
 
@@ -124,6 +124,6 @@ De volgende metrische gegevens zijn beschikbaar voor Azure Firewall:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [zelf studie voor meer informatie over het bewaken van Azure firewall logboeken en metrische gegevens: Azure Firewall logboeken](tutorial-diagnostics.md)bewaken.
+- Zie [zelf studie: Azure firewall logboeken controleren](tutorial-diagnostics.md)voor meer informatie over het bewaken van Azure firewall logboeken en metrische gegevens.
 
 - Zie [metrische gegevens in azure monitor](../azure-monitor/platform/data-platform-metrics.md)voor meer informatie over metrische gegevens in azure monitor.

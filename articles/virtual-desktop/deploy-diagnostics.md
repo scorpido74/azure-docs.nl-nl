@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: helohr
-ms.openlocfilehash: 4718ee7943b4130bb977d5eefeb82bb385c71835
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 27231dc25604e9031f0456d787530bf2a29616f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72332836"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167431"
 ---
 # <a name="deploy-the-diagnostics-tool"></a>Het diagnosehulpprogramma implementeren
 
@@ -108,11 +108,11 @@ U kunt als volgt de aanbevolen prestatie meter items hand matig configureren:
 3. Selecteer in de sectie **instellingen** de optie **Geavanceerde instellingen**.
 4. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items** en voegt u de volgende tellers toe:
 
-    -   Logische schijf (\*) \%Free ruimte
-    -   Logische schijf (C:) \\Avg. wachtrij lengte voor schijf
-    -   Geheugen (\*) \\Available Mbytes
-    -   Processor informatie (\*) \\Processor tijd
-    -   Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 1Max
+    -   Logische schijf (\*)\\percentage beschik bare ruimte
+    -   Logische schijf (C:)\\gemiddelde lengte van de wachtrij.
+    -   Geheugen (\*)\\beschik bare mega bytes
+    -   Processor informatie (\*)\\processor tijd
+    -   Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
 
 Meer informatie over de prestatie meter items [in Windows-en Linux-prestatie gegevens bronnen in azure monitor](/azure/azure-monitor/platform/data-sources-performance-counters).
 
@@ -142,11 +142,11 @@ Zorg ervoor dat uw Log Analytics-werk ruimte de vooraf geconfigureerde Windows-p
 3. Daarna gaat u naar **gegevens** > **Windows-prestatie meter items**.
 4. Zorg ervoor dat de volgende prestatie meter items zijn geconfigureerd:
 
-   - Logische schijf (\*) \%Free ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage.
-   - Logische schijf (C:) \\Avg. wachtrij lengte voor de schijf: de lengte van de aanvraag voor de overdracht van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
-   - Geheugen (\*) @no__t 1Available Mbytes: het beschik bare geheugen voor het systeem in mega bytes.
-   - Processor informatie (\*) \\Processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
-   - Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 1Max
+   - Logische schijf (\*)\\% beschik bare ruimte: geeft de hoeveelheid beschik bare ruimte van de totale bruikbare ruimte op de schijf als een percentage weer.
+   - Logische schijf (C:)\\gemiddelde wachtrij lengte voor schijven: de lengte van de aanvraag voor het overdragen van schijven voor uw C-station. De waarde mag niet langer zijn dan 2 gedurende een korte periode.
+   - Geheugen (\*)\\beschik bare Mbytes: het beschik bare geheugen voor het systeem in mega bytes.
+   - Processor informatie (\*)\\processor tijd: het percentage van de verstreken tijd dat de processor nodig heeft om een niet-inactieve thread uit te voeren.
+   - Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging
 
 ### <a name="connect-to-vms-in-your-log-analytics-workspace"></a>Verbinding maken met virtuele machines in uw Log Analytics-werk ruimte
 
@@ -189,7 +189,7 @@ De omleidings-URI instellen:
 
    ![De omleidings-URI-pagina](media/redirect-uri-page.png)
 
-8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt, bijvoorbeeld is `contosoapp45`, is de gekoppelde URL <https://contosoapp45.azurewebsites.net>).
+8. Ga nu naar uw Azure-resources, selecteer de Azure-app Services-resource met de naam die u hebt ingevoerd in de sjabloon en navigeer naar de URL die eraan is gekoppeld. (Als de naam van de app die u in de sjabloon hebt gebruikt, bijvoorbeeld is `contosoapp45`, wordt de bijbehorende URL <https://contosoapp45.azurewebsites.net>).
 9. Meld u aan met het juiste Azure Active Directory gebruikers account.
 10.   Selecteer **Accepteren**.
 
@@ -234,25 +234,25 @@ U kunt ook communiceren met gebruikers op de sessiehost:
 
 ### <a name="windows-performance-counter-thresholds"></a>Drempel waarden voor prestatie meter items voor Windows
 
-- Logische schijf (\*) \|% beschik bare ruimte:
+- Logische schijf (\*)\\percentage beschik bare ruimte:
 
     - Hiermee wordt het percentage van de totale bruikbare ruimte op de logische schijf weer gegeven die vrij is.
     - Drempel waarde: minder dan 20% is gemarkeerd als beschadigd.
 
-- Logische schijf (C:) \\Avg. wachtrij lengte voor schijf:
+- Logische schijf (C:)\\Gem. wachtrij lengte voor schijven:
 
     - Geeft de voor waarden van het opslag systeem aan.
     - Drempel waarde: hoger dan 5 is gemarkeerd als beschadigd.
 
-- Geheugen (\*) @no__t 1Available Mbytes:
+- Geheugen (\*)\\beschik bare Mbytes:
 
     - Het beschik bare geheugen voor het systeem.
     - Drempel waarde: minder dan 500 mega bytes, gemarkeerd als beschadigd.
 
-- Processor informatie (\*) \\Processor tijd:
+- Processor informatie (\*)\\processor tijd:
 
     - Drempel waarde: hoger dan 80% is gemarkeerd als beschadigd.
 
-- [Gebruikers invoer vertraging per sessie (\*) @no__t-invoer vertraging 2Max](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
+- [Gebruikers invoer vertraging per sessie (\*)\\maximale invoer vertraging](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-rdsh-performance-counters):
 
     - Drempel waarde: hoger dan 2000 MS is gemarkeerd als beschadigd.

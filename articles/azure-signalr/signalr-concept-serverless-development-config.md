@@ -1,17 +1,17 @@
 ---
-title: Azure Functions signalerings service toepassingen ontwikkelen en configureren
+title: Azure Functions app-Azure-Signaalr ontwikkelen & configureren
 description: Meer informatie over het ontwikkelen en configureren van serverloze realtime-toepassingen met behulp van Azure Functions en de Azure signalerings service
 author: anthonychu
 ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: be77704f562a1e05485e6f3704dff265635b1dc2
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: 68ada90699fe9a9db6faeb32a04e8eb02c176944
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68882309"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157648"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Azure Functions ontwikkeling en configuratie met de Azure signalerings service
 
@@ -21,9 +21,9 @@ In dit artikel worden de concepten beschreven voor het ontwikkelen en configurer
 
 ## <a name="signalr-service-configuration"></a>Signaal service configuratie
 
-De Azure signalerings service kan in verschillende modi worden geconfigureerd. Bij gebruik in combi natie met Azure Functions moet de service worden geconfigureerd in de serverloze modus.
+De Azure signalerings service kan in verschillende modi worden geconfigureerd. Bij gebruik in combi natie met Azure Functions moet de service worden geconfigureerd in de *serverloze* modus.
 
-Ga in het Azure Portal naar de pagina *instellingen* van de bron van de signaal service. Stel de *Service modus* inop serverloos.
+Ga in het Azure Portal naar de pagina *instellingen* van de bron van de signaal service. Stel de *Service modus* in op *serverloos*.
 
 ![Seingevings service-modus](media/signalr-concept-azure-functions/signalr-service-mode.png)
 
@@ -38,7 +38,7 @@ Een serverloze realtime-toepassing die is gebouwd met Azure Functions en de Azur
 
 Een client toepassing vereist een geldig toegangs token om verbinding te maken met de Azure signalerings service. Een toegangs token kan anoniem zijn of worden geverifieerd op basis van een gebruikers-ID. Voor serverloze seingevings signalen is een HTTP-eind punt met de naam ' onderhandelen ' vereist voor het verkrijgen van een token en andere verbindings informatie, zoals de URL van het seingevings service-eind punt.
 
-Gebruik een door HTTP geactiveerde Azure-functie en de *SignalRConnectionInfo* -invoer binding om het object verbindings gegevens te genereren. De functie moet een HTTP-route hebben die eindigt `/negotiate`op.
+Gebruik een door HTTP geactiveerde Azure-functie en de *SignalRConnectionInfo* -invoer binding om het object verbindings gegevens te genereren. De functie moet een HTTP-route hebben die eindigt op `/negotiate`.
 
 Zie voor meer informatie over het maken van de onderhandelings functie de referentie voor [ *SignalRConnectionInfo* -invoer binding](../azure-functions/functions-bindings-signalr-service.md#signalr-connection-info-input-binding).
 
@@ -64,10 +64,10 @@ Seingevings client toepassingen kunnen gebruikmaken van de seingevings client-SD
 
 Een client kan alleen verbinding maken met de signalerings service als een geslaagde verbindings onderhandeling bestaat uit de volgende stappen:
 
-1. Een aanvraag indienen bij het onderhandelings-http-eind punt dat hierboven wordt beschreven om geldige verbindings gegevens op te halen
-1. Verbinding maken met de signaal service via de URL van het service-eind punt en het toegangs token dat is verkregen van het Negotiate-eind punt
+1. Een aanvraag indienen bij het *onderhandelings* -http-eind punt dat hierboven wordt beschreven om geldige verbindings gegevens op te halen
+1. Verbinding maken met de signaal service via de URL van het service-eind punt en het toegangs token dat is verkregen van het *Negotiate* -eind punt
 
-De client-Sdk's van de seingevings bevatten al de logica die nodig is om de onderhandelings-Handshake uit te voeren. Geef de URL van het onderhandelings eindpunt `negotiate` , min het segment, door `HubConnectionBuilder`aan de SDK. Hier volgt een voor beeld in Java script:
+De client-Sdk's van de seingevings bevatten al de logica die nodig is om de onderhandelings-Handshake uit te voeren. Geef de URL van het onderhandelings eindpunt, min het `negotiate` segment, door aan de `HubConnectionBuilder`van de SDK. Hier volgt een voor beeld in Java script:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -75,7 +75,7 @@ const connection = new signalR.HubConnectionBuilder()
   .build()
 ```
 
-Per Conventie voegt `/negotiate` de SDK automatisch toe aan de URL en gebruikt deze om te beginnen met de onderhandeling.
+Per Conventie voegt de SDK automatisch `/negotiate` toe aan de URL en gebruikt deze om de onderhandeling te starten.
 
 > [!NOTE]
 > Als u de Java script-type script-SDK in een browser gebruikt, moet u de [functie Cross-Origin Resource Sharing (CORS) inschakelen](#enabling-cors) op uw functie-app.
@@ -102,10 +102,10 @@ De Java script-type script-client maakt HTTP-aanvragen aan de onderhandelings fu
 
 #### <a name="localhost"></a>Lokalehost
 
-Wanneer u de functie-app op uw lokale computer uitvoert, kunt u `Host` een sectie toevoegen aan *lokaal. settings. json* om CORS in te scha kelen. Voeg in `Host` de sectie twee eigenschappen toe:
+Wanneer u de functie-app op uw lokale computer uitvoert, kunt u een sectie `Host` toevoegen aan *lokaal. settings. json* om CORS in te scha kelen. Voeg in de sectie `Host` twee eigenschappen toe:
 
-* `CORS`-Voer de basis-URL in die de oorsprong is van de client toepassing
-* `CORSCredentials`-Stel deze instelling `true` in op ' withCredentials-aanvragen toestaan
+* `CORS`: Voer de basis-URL in die de oorsprong is van de client toepassing
+* `CORSCredentials`: Stel dit in op `true` om "withCredentials"-aanvragen toe te staan
 
 Voorbeeld:
 
@@ -167,9 +167,9 @@ Azure Functions heeft ingebouwde verificatie, die populaire providers ondersteun
 
 Open het venster *verificatie/autorisatie-* instellingen in het Azure Portal op het tabblad *platform functies* van uw functie-app. Volg de documentatie voor [app service verificatie](../app-service/overview-authentication-authorization.md) voor het configureren van verificatie met behulp van een id-provider van uw keuze.
 
-Na de configuratie worden geverifieerde http- `x-ms-client-principal-name` aanvragen `x-ms-client-principal-id` inclusief en kopteksten die respectievelijk de gebruikers naam en gebruikers-id van de geverifieerde identiteit bevatten.
+Eenmaal geconfigureerd, bevatten geverifieerde HTTP-aanvragen `x-ms-client-principal-name` en `x-ms-client-principal-id` headers die respectievelijk de gebruikers naam en gebruikers-ID van de geverifieerde identiteit bevatten.
 
-U kunt deze headers gebruiken in uw *SignalRConnectionInfo* bindings configuratie om geverifieerde verbindingen te maken. Hier volgt een voor C# beeld van de functie Negotiate die gebruikmaakt van de `x-ms-client-principal-id` -header.
+U kunt deze headers gebruiken in uw *SignalRConnectionInfo* bindings configuratie om geverifieerde verbindingen te maken. Hier volgt een voor C# beeld van een functie die gebruikmaakt van de `x-ms-client-principal-id`-header.
 
 ```csharp
 [FunctionName("negotiate")]
@@ -184,7 +184,7 @@ public static SignalRConnectionInfo Negotiate(
 }
 ```
 
-U kunt vervolgens berichten naar die gebruiker verzenden door de `UserId` eigenschap van een signalerings bericht in te stellen.
+U kunt vervolgens berichten naar die gebruiker verzenden door de eigenschap `UserId` van een signaal bericht in te stellen.
 
 ```csharp
 [FunctionName("SendMessage")]
@@ -207,4 +207,4 @@ Zie voor informatie over andere talen de [Azure signalerings service bindingen](
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u serverloze signalerings service toepassingen kunt ontwikkelen en configureren met behulp van Azure Functions. Probeer zelf een toepassing te maken met behulp van een van de Quick starts of zelf studies op de overzichts pagina van de [signalerings service](index.yml).
+In dit artikel hebt u geleerd hoe u serverloze signalerings service toepassingen kunt ontwikkelen en configureren met behulp van Azure Functions. Probeer zelf een toepassing te maken met behulp van een van de Quick starts of zelf studies op de [overzichts pagina van de signalerings service](index.yml).

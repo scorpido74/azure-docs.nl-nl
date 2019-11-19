@@ -3,23 +3,19 @@ title: 'Zelf studie: webverkeer beheren met Azure-toepassing gateway met behulp 
 description: Meer informatie over hoe u Ansible gebruikt om een Azure Application Gateway te maken en te configureren voor het beheren van webverkeer
 keywords: ansible, azure, devops, bash, playbook, application gateway, load balancer, webverkeer
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 1dd547fb59a41a90de18d595a392b64ef518023a
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 07f75e39b8c6f592ecd4c48697527493b1109bb9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241891"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156611"
 ---
 # <a name="tutorial-manage-web-traffic-with-azure-application-gateway-using-ansible"></a>Zelf studie: webverkeer beheren met Azure-toepassing gateway met behulp van Ansible
 
 [!INCLUDE [ansible-27-note.md](../../includes/ansible-27-note.md)]
 
-[Azure Application Gateway](/azure/application-gateway/overview) is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren. Op basis van het bron-IP-adres en de poort, routert traditionele load balancers verkeer naar een doel-IP-adres en-poort. Application Gateway geeft u een nauw keuriger niveau van het beheer van verkeer op basis van de URL. U kunt bijvoorbeeld definiëren dat als `images` het pad van de URL is, verkeer wordt doorgestuurd naar een specifieke set servers (ook wel een groep genoemd) die is geconfigureerd voor installatie kopieën.
+[Azure Application Gateway](/azure/application-gateway/overview) is een load balancer voor webverkeer waarmee u het verkeer naar uw webapps kunt beheren. Op basis van het bron-IP-adres en de poort, routert traditionele load balancers verkeer naar een doel-IP-adres en-poort. Application Gateway geeft u een nauw keuriger niveau van het beheer van verkeer op basis van de URL. U kunt bijvoorbeeld definiëren dat als `images` een URL-pad is, verkeer wordt doorgestuurd naar een specifieke set servers (ook wel een groep genoemd) die is geconfigureerd voor installatie kopieën.
 
 [!INCLUDE [ansible-tutorial-goals.md](../../includes/ansible-tutorial-goals.md)]
 
@@ -55,9 +51,9 @@ Sla het volgende playbook op als `rg.yml`:
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
 - De naam van de resource groep is `myResourceGroup`. Deze waarde wordt in de zelf studie gebruikt.
-- De resource groep wordt gemaakt op de locatie @no__t 0.
+- De resource groep wordt gemaakt op de locatie `eastus`.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook rg.yml
@@ -110,7 +106,7 @@ Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 * De sectie `vars` bevat de waarden die worden gebruikt voor het maken van de netwerk resources. 
 * U moet deze waarden wijzigen voor uw specifieke omgeving.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook vnet_create.yml
@@ -163,7 +159,7 @@ Sla het volgende playbook op als `aci_create.yml`:
               - 80
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook aci_create.yml
@@ -259,14 +255,14 @@ Sla het volgende playbook op als `appgw_create.yml`:
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 
-* `appGatewayIP` is gedefinieerd in het `gateway_ip_configurations`-blok. Er is een subnetverwijzing vereist voor de IP-configuratie van de gateway.
-* `appGatewayBackendPool` is gedefinieerd in het `backend_address_pools`-blok. Een toepassingsgateway moet ten minste één back-endadresgroep hebben.
-* `appGatewayBackendHttpSettings` is gedefinieerd in het `backend_http_settings_collection`-blok. Hiermee geeft u op dat poort 80 en een HTTP-protocol worden gebruikt voor communicatie.
-* `appGatewayHttpListener` is gedefinieerd in het `backend_http_settings_collection`-blok. Dit is de standaard-listener die aan appGatewayBackendPool is gekoppeld.
-* `appGatewayFrontendIP` is gedefinieerd in het `frontend_ip_configurations`-blok. Hiermee wordt myAGPublicIPAddress aan appGatewayHttpListener toegewezen.
-* `rule1` is gedefinieerd in het `request_routing_rules`-blok. Dit is de standaardregel voor doorsturen die aan appGatewayHttpListener is gekoppeld.
+* `appGatewayIP` is gedefinieerd in het `gateway_ip_configurations` blok. Er is een subnetverwijzing vereist voor de IP-configuratie van de gateway.
+* `appGatewayBackendPool` is gedefinieerd in het `backend_address_pools` blok. Een toepassingsgateway moet ten minste één back-endadresgroep hebben.
+* `appGatewayBackendHttpSettings` is gedefinieerd in het `backend_http_settings_collection` blok. Hiermee geeft u op dat poort 80 en een HTTP-protocol worden gebruikt voor communicatie.
+* `appGatewayHttpListener` is gedefinieerd in het `backend_http_settings_collection` blok. Dit is de standaard-listener die aan appGatewayBackendPool is gekoppeld.
+* `appGatewayFrontendIP` is gedefinieerd in het `frontend_ip_configurations` blok. Hiermee wordt myAGPublicIPAddress aan appGatewayHttpListener toegewezen.
+* `rule1` is gedefinieerd in het `request_routing_rules` blok. Dit is de standaardregel voor doorsturen die aan appGatewayHttpListener is gekoppeld.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook appgw_create.yml
@@ -305,7 +301,7 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

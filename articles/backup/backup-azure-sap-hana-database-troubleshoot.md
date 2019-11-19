@@ -1,19 +1,14 @@
 ---
-title: Back-upfouten van SAP HANA data bases oplossen-Azure Backup
+title: Back-upfouten van SAP HANA databases oplossen
 description: Hierin wordt beschreven hoe u veelvoorkomende fouten oplost die zich kunnen voordoen wanneer u Azure Backup gebruikt om back-ups te maken van SAP HANA-data bases.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 004d10b794c6eca2e078e437880f44d91ca30acb
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: cbffa7415f315fd396e57afa355d2415c4612eb5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968459"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172749"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>Problemen met back-ups van SAP HANA-data bases in azure oplossen
 
@@ -50,9 +45,9 @@ Nadat een Data Base is gekozen voor back-up, configureert de Azure Backup-Servic
 
 - [catalog_backup_using_backint: True]
 - [enable_accumulated_catalog_backup: False]
-- [parallel_data_backup_backint_channels: 1]
-- [log_backup_timeout_s: 900)]
-- [backint_response_timeout: 7200]
+- [parallel_data_backup_backint_channels:1]
+- [log_backup_timeout_s:900)]
+- [backint_response_timeout:7200]
 
 > [!NOTE]
 > Zorg ervoor dat deze para meters *niet* aanwezig zijn op het niveau van de host. Met para meters op hostniveau worden deze para meters overschreven en kan dit leiden tot onverwacht gedrag.
@@ -82,7 +77,7 @@ In meerdere container databases voor HANA is de standaard configuratie SYSTEMDB 
 
 ### <a name="usererrorinopeninghanaodbcconnection"></a>UserErrorInOpeningHanaOdbcConnection
 
-gegevens| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
+data| Foutbericht | Mogelijke oorzaken | Aanbevolen actie |
 |---|---|---|
 | Kan geen verbinding maken met het HANA-systeem. Controleer of uw systeem actief is.| De Azure Backup-service kan geen verbinding maken met HANA omdat de HANA-data base niet beschikbaar is. Of HANA wordt uitgevoerd, maar staat niet toe dat de Azure Backup-service verbinding maakt. | Controleer of de HANA-data base of service niet beschikbaar is. Als de HANA-data base of-service actief is, controleert u of [alle machtigingen zijn ingesteld](#setting-up-permissions). Als de sleutel ontbreekt, voert u het script voor de voorafgaande registratie opnieuw uit om een nieuwe sleutel te maken. |
 

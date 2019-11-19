@@ -1,19 +1,15 @@
 ---
-title: DPM/Azure Backup Server-beveiliging van een share point-Farm naar Azure
+title: Een back-up maken van een share point-Farm naar Azure met DPM
 description: Dit artikel bevat een overzicht van DPM/Azure Backup Server-beveiliging van een share point-Farm naar Azure
 ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: dacurwin
-ms.openlocfilehash: 830dc313ea321f74c495f46c7c2d4ea5f9d4e5b5
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 1750270b3383e815b9255273923b50d2879fdba6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968547"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173323"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>Een back-up maken van een share point-Farm naar Azure met DPM
 
@@ -23,7 +19,7 @@ U maakt een back-up van een share point-Farm naar Microsoft Azure met behulp van
 
 Azure Backup voor DPM ondersteunt de volgende scenario's:
 
-| Werkbelasting | Version | Share point-implementatie | DPM-implementatie type | DPM-System Center 2012 R2 | Beveiliging en herstel |
+| Workload | Versie | Share point-implementatie | DPM-implementatie type | DPM-System Center 2012 R2 | Beveiliging en herstel |
 | --- | --- | --- | --- | --- | --- |
 | SharePoint |Share point 2013, share point 2010, share Point 2007, share Point 3,0 |Share point is geïmplementeerd als een fysieke server of Hyper-V/VMware-virtuele machine <br> -------------- <br> SQL AlwaysOn |Fysieke server of een on-premises Hyper-V-virtuele machine |Ondersteunt back-ups naar Azure via update pakket 5 |Opties voor herstel van share point-Farm beveiligen: herstel Farm, Data Base, en bestand of lijst item van schijf herstel punten.  Farm-en database herstel van Azure-herstel punten. |
 
@@ -74,8 +70,8 @@ U kunt **ConfigureSharePoint. exe** vinden in de map [DPM-installatiepad] \Bin o
 1. Ga op de WFE-server, vanaf een opdracht prompt, naar [DPM-installatie locatie] \bin\
 2. Voer ConfigureSharePoint-EnableSharePointProtection in.
 3. Voer de referenties van de farm beheerder in. Dit account moet lid zijn van de lokale beheerders groep op de WFE-server. Als de farm beheerder geen lokale beheerder is, wijst u de volgende machtigingen toe op de WFE-server:
-   * Ken de groep WSS_Admin_WPG volledig beheer toe aan de DPM-map (% Program Files%\Microsoft Data Protection Manager\DPM).
-   * Verleen de groep WSS_Admin_WPG Lees toegang tot de DPM-register sleutel (HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager).
+   * Ken de WSS_Admin_WPG groep volledig beheer toe aan de DPM-map (% Program Files%\Microsoft Data Protection Manager\DPM).
+   * Verleen de WSS_Admin_WPG groep lees toegang tot de DPM-register sleutel (HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft Data Protection Manager).
 
 > [!NOTE]
 > U moet ConfigureSharePoint. exe opnieuw uitvoeren wanneer er een wijziging is in de beheerders referenties van de share point-farm.

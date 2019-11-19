@@ -1,19 +1,14 @@
 ---
-title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis met Azure Backup
+title: Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 description: Hierin wordt beschreven hoe u back-ups maakt van virtuele Azure-machines in een Recovery Services kluis met behulp van de Azure Backup
-service: backup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.author: dacurwin
-ms.openlocfilehash: 2ef8e7e77481c0df6e85545d16c3859949184d2f
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: dc47aa2b4da08a0fc2c9a91b4d547a0d19e1869a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968541"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173343"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Back-ups maken van virtuele Azure-machines in een Recovery Services kluis
 
@@ -34,7 +29,7 @@ In dit artikel leert u het volgende:
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-* [Bekijk](backup-architecture.md#architecture-direct-backup-of-azure-vms) de Azure VM-back-uparchitectuur.
+* [Bekijk](backup-architecture.md#architecture-built-in-azure-vm-backup) de Azure VM-back-uparchitectuur.
 * [Meer informatie over](backup-azure-vms-introduction.md) Back-ups van Azure-VM'S en de uitbrei ding van back-ups.
 * [Raadpleeg de ondersteunings matrix](backup-support-matrix-iaas.md) voordat u een back-up configureert.
 
@@ -47,7 +42,7 @@ Daarnaast zijn er een aantal dingen die u in bepaalde omstandigheden mogelijk mo
 
  Een kluis slaat back-ups en herstel punten op die gedurende een periode zijn gemaakt en slaat back-upbeleid op dat is gekoppeld aan back-upcomputers. Maak als volgt een kluis:
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Typ **Recovery Services**in zoeken. Klik onder **Services**op **Recovery Services kluizen**.
 
      ![Recovery Services kluizen zoeken](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
@@ -199,7 +194,7 @@ Azure Backup maakt back-ups van virtuele Azure-machines door een uitbrei ding te
 De back-upextensie die op de virtuele machine wordt uitgevoerd, heeft uitgaande toegang tot open bare IP-adressen van Azure nodig.
 
 * Over het algemeen hoeft u geen expliciete netwerk toegang voor een Azure-VM toe te staan, zodat deze kan communiceren met Azure Backup.
-* Als u problemen ondervindt met het verbinden van Vm's, of als u de fout **ExtensionSnapshotFailedNoNetwork** ziet wanneer u probeert verbinding te maken, moet u de toegang expliciet toestaan, zodat de back-upextensie kan communiceren met open bare IP-adressen van Azure voor back-up vervoer. De volgende tabel bevat een overzicht van de toegangs methoden.
+* Als u problemen ondervindt met het verbinden van Vm's, of als u de fout **ExtensionSnapshotFailedNoNetwork** ziet wanneer u probeert verbinding te maken, moet u de toegang expliciet toestaan, zodat de back-upextensie kan communiceren met open bare IP-adressen van Azure voor back-upverkeer. De volgende tabel bevat een overzicht van de toegangs methoden.
 
 **Optie** | **Actie** | **Details**
 --- | --- | ---
@@ -227,7 +222,7 @@ Als een NSG de toegang tot de virtuele machine beheert, moet u uitgaande toegang
 7. Selecteer in **protocol** **TCP**.
 8. Geef bij **prioriteit**een prioriteits waarde op die kleiner is dan een hogere regels voor weigeren.
 
-   Als u een regel hebt waarmee de toegang wordt geweigerd, moet de nieuwe regel voor toestaan hoger zijn. Als u bijvoorbeeld een **Deny_All** -regel hebt ingesteld op prioriteit 1000, moet uw nieuwe regel worden ingesteld op minder dan 1000.
+   Als u een regel hebt waarmee de toegang wordt geweigerd, moet de nieuwe regel voor toestaan hoger zijn. Als u bijvoorbeeld een **Deny_All** regel hebt ingesteld op prioriteit 1000, moet uw nieuwe regel worden ingesteld op minder dan 1000.
 9. Geef een naam en beschrijving op voor de regel en selecteer **OK**.
 
 U kunt de NSG-regel Toep assen op meerdere virtuele machines om uitgaande toegang toe te staan. In deze video wordt u begeleid bij het proces.

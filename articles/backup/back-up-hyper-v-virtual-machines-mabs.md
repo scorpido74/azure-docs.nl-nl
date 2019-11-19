@@ -1,18 +1,14 @@
 ---
-title: Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
-description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup-Server.
-author: dcurwin
-manager: carmonm
-ms.service: backup
+title: Back-up maken van Hyper-V virtuele machines met MABS
+description: Dit artikel bevat de procedures voor het maken van back-ups en het herstellen van virtuele machines met behulp van Microsoft Azure Backup Server (MABS).
 ms.topic: conceptual
 ms.date: 07/18/2019
-ms.author: dacurwin
-ms.openlocfilehash: f15606c83c221e4591a2a1f6a71fc7141bdf3daf
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3bca1b46a867c2967dfcebe4bc8477d5f9c9447d
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074966"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173536"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Back-up maken van virtuele Hyper-V-machines met Azure Backup Server
 

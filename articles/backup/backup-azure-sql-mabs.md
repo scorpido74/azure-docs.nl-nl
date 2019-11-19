@@ -1,19 +1,14 @@
 ---
-title: Azure Backup voor het SQL Server van werk belastingen met Azure Backup Server
+title: Back-upSQL Server met Azure Backup Server
 description: In dit artikel leert u de configuratie stappen voor het maken van back-ups van SQL Server-data bases met behulp van Microsoft Azure Backup-Server (MABS).
-ms.reviewer: kasinh
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.author: dacurwin
-ms.openlocfilehash: bd16cefff66c727ad9de6331a311796cf9521192
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: d5e0c49e2cad77e42960fafec9311b31d4cf2601
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091049"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172667"
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Back-ups maken van SQL Server naar Azure met Azure Backup Server
 

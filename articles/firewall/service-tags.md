@@ -1,29 +1,29 @@
 ---
-title: Overzicht van de Firewall van Azure service-tags
-description: In dit artikel wordt een overzicht van de Firewall van Azure service-codes.
+title: Overzicht van Azure Firewall-service Tags
+description: Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 6/27/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d0ac36e415c056dffc9c75d00968ff74c2156e63
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: ec9fb3c9b27d21ac65888379f59d51ecc8042eb0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67450175"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168687"
 ---
-# <a name="azure-firewall-service-tags"></a>Azure Firewall servicetags
+# <a name="azure-firewall-service-tags"></a>Azure Firewall-service Tags
 
 Een servicetag vertegenwoordigt een groep IP-adresvoorvoegsels die het maken van beveiligingsregel vereenvoudigt. U kunt niet uw eigen servicetag maken en ook niet opgeven welke IP-adressen zijn opgenomen in een tag. Microsoft beheert de adresvoorvoegsels die de servicetag omvat en werkt de servicetag automatisch bij wanneer adressen veranderen.
 
-Tags van de service Azure Firewall kunnen worden gebruikt in het veld bestemming van netwerk-regels. U kunt deze gebruiken in plaats van specifieke IP-adressen.
+Azure Firewall service tags kunnen worden gebruikt in het doel veld netwerk regels. U kunt deze gebruiken in plaats van specifieke IP-adressen.
 
-## <a name="supported-service-tags"></a>Servicetags ondersteund
+## <a name="supported-service-tags"></a>Ondersteunde service Tags
 
-Zie [beveiligingsgroepen](../virtual-network/security-overview.md#service-tags) voor een lijst met servicetags die beschikbaar voor gebruik in Azure-netwerk firewallregels zijn.
+Zie [beveiligings groepen](../virtual-network/security-overview.md#service-tags) voor een lijst met Service tags die beschikbaar zijn voor gebruik in azure firewall-netwerk regels.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over Azure-Firewall-regels, [Azure firewallregel verwerking van logica](rule-processing.md).
+Zie [Azure firewall logica voor regel verwerking](rule-processing.md)voor meer informatie over Azure firewall-regels.

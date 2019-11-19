@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: glenga
-ms.openlocfilehash: 0d398e9848559e70883c07498057d1807651a867
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: ae3b8294c7bd91bcd6a2e0e533f5903f44e8aaea
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515669"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173664"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions Power shell-ontwikkelaars handleiding
 
 In dit artikel vindt u informatie over hoe u Azure Functions schrijft met behulp van Power shell.
-
-[!INCLUDE [functions-powershell-preview-note](../../includes/functions-powershell-preview-note.md)]
 
 Een Power shell Azure-functie (functie) wordt weer gegeven als een Power shell-script dat wordt uitgevoerd wanneer het wordt geactiveerd. Elk functie script heeft een gerelateerd `function.json`-bestand dat definieert hoe de functie zich gedraagt, zoals hoe deze wordt geactiveerd en de invoer-en uitvoer parameters. Zie het [artikel triggers en binding](functions-triggers-bindings.md)voor meer informatie. 
 
@@ -81,9 +79,9 @@ $TriggerMetadata.sys
 
 | Eigenschap   | Beschrijving                                     | Type     |
 |------------|-------------------------------------------------|----------|
-| UtcNow     | Wanneer, in UTC, de functie is geactiveerd        | Datum/tijd |
-| MethodName | De naam van de functie die is geactiveerd     | string   |
-| RandGuid   | een unieke GUID voor deze uitvoering van de functie | string   |
+| utcNow     | Wanneer, in UTC, de functie is geactiveerd        | DateTime |
+| MethodName | De naam van de functie die is geactiveerd     | tekenreeks   |
+| RandGuid   | een unieke GUID voor deze uitvoering van de functie | tekenreeks   |
 
 Elk trigger type heeft een andere set meta gegevens. De `$TriggerMetadata` voor `QueueTrigger` bevat bijvoorbeeld de `InsertionTime`, `Id`, `DequeueCount`, onder andere. Ga naar de [officiële documentatie voor wachtrij Triggers](functions-bindings-storage-queue.md#trigger---message-metadata)voor meer informatie over de meta gegevens van de trigger van de wachtrij. Raadpleeg de documentatie op de [Triggers](functions-triggers-bindings.md) waarmee u werkt om te zien wat er in de meta gegevens van de trigger zit.
 
@@ -93,7 +91,7 @@ In Power shell worden [bindingen](functions-triggers-bindings.md) geconfigureerd
 
 ### <a name="reading-trigger-and-input-data"></a>Trigger-en invoer gegevens lezen
 
-Trigger-en invoer bindingen worden gelezen als para meters die zijn door gegeven aan de functie. Voor invoer bindingen is een `direction` ingesteld op `in` in function. json. De `name` eigenschap die in `function.json` is gedefinieerd, is de naam van de para meter in het blok `param`. Aangezien Power shell benoemde para meters voor binding gebruikt, is de volg orde van de para meters niet van belang. Het is echter een best practice om de volg orde te volgen van de bindingen die in de `function.json` zijn gedefinieerd.
+Trigger-en invoer bindingen worden gelezen als para meters die zijn door gegeven aan de functie. Voor invoer bindingen is een `direction` ingesteld op `in` in function. json. De `name` eigenschap die in `function.json` is gedefinieerd, is de naam van de para meter in het blok `param`. Aangezien Power shell benoemde para meters voor binding gebruikt, is de volg orde van de para meters niet van belang. Het is echter een best practice om de volg orde te volgen van de bindingen die in de `function.json`zijn gedefinieerd.
 
 ```powershell
 param($MyFirstInputBinding, $MySecondInputBinding)
@@ -131,7 +129,7 @@ Produce-MyOutputValue | Push-OutputBinding -Name myQueue
 
 Hier volgen enkele geldige para meters voor het aanroepen van `Push-OutputBinding`:
 
-| Naam | Type | Positie | Beschrijving |
+| Naam | Type | positie | Beschrijving |
 | ---- | ---- |  -------- | ----------- |
 | **`-Name`** | Tekenreeks | 1 | De naam van de uitvoer binding die u wilt instellen. |
 | **`-Value`** | Object | 2 | De waarde van de uitvoer binding die u wilt instellen, die wordt geaccepteerd vanuit de pipeline-ByValue. |
@@ -170,7 +168,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 })
 ```
 
-Voor uitvoer die alleen Singleton-waarden accepteert, kunt u de para meter `-Clobber` gebruiken om de oude waarde te overschrijven, in plaats van te proberen toe te voegen aan een verzameling. In het volgende voor beeld wordt ervan uitgegaan dat u al een waarde hebt toegevoegd. Als `-Clobber` wordt gebruikt, vervangt de reactie van het volgende voor beeld de bestaande waarde om de waarde ' uitvoer #3 ' te retour neren:
+Voor uitvoer die alleen Singleton-waarden accepteert, kunt u de para meter `-Clobber` gebruiken om de oude waarde te overschrijven, in plaats van te proberen toe te voegen aan een verzameling. In het volgende voor beeld wordt ervan uitgegaan dat u al een waarde hebt toegevoegd. Als `-Clobber`wordt gebruikt, vervangt de reactie van het volgende voor beeld de bestaande waarde om de waarde ' uitvoer #3 ' te retour neren:
 
 ```powershell
 PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
@@ -241,7 +239,7 @@ Logboek registratie in Power shell-functies werkt zoals bij normale Power shell-
 | Fout | **`Write-Error`** |
 | Waarschuwing | **`Write-Warning`**  | 
 | Informatie | **`Write-Information`** <br/> **`Write-Host`** <br /> **`Write-Output`**      | Informatie | Schrijft naar logboek registratie op _informatie_ niveau. |
-| Foutopsporing | **`Write-Debug`** |
+| Fouten opsporen | **`Write-Debug`** |
 | Tracering | **`Write-Progress`** <br /> **`Write-Verbose`** |
 
 Naast deze cmdlets wordt alles wat naar de pijp lijn is geschreven, omgeleid naar het `Information` logboek niveau en weer gegeven met de standaard Power shell-opmaak.
@@ -281,8 +279,8 @@ Er zijn een aantal triggers en bindingen die u kunt gebruiken met uw functie-app
 Alle triggers en bindingen worden in code weer gegeven als enkele echte gegevens typen:
 
 * Hashtabel
-* string
-* byte []
+* tekenreeks
+* byte[]
 * int
 * double
 * HttpRequestContext
@@ -303,11 +301,11 @@ Het object Request dat is door gegeven aan het script, is van het type `HttpRequ
 | Eigenschap  | Beschrijving                                                    | Type                      |
 |-----------|----------------------------------------------------------------|---------------------------|
 | **`Body`**    | Een object dat de hoofd tekst van de aanvraag bevat. `Body` wordt geserialiseerd in het beste type op basis van de gegevens. Als de gegevens bijvoorbeeld JSON zijn, wordt deze als een hashtabel door gegeven. Als de gegevens een teken reeks is, wordt deze als een teken reeks door gegeven. | object |
-| **`Headers`** | Een woorden lijst die de aanvraag headers bevat.                | Dictionary < teken reeks, teken reeks ><sup> *</sup> |
-| **`Method`** | De HTTP-methode van de aanvraag.                                | string                    |
-| **`Params`**  | Een object dat de routerings parameters van de aanvraag bevat. | Dictionary < teken reeks, teken reeks ><sup> *</sup> |
-| **`Query`** | Een object dat de query parameters bevat.                  | Dictionary < teken reeks, teken reeks ><sup> *</sup> |
-| **`Url`** | De URL van de aanvraag.                                        | string                    |
+| **`Headers`** | Een woorden lijst die de aanvraag headers bevat.                | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
+| **`Method`** | De HTTP-methode van de aanvraag.                                | tekenreeks                    |
+| **`Params`**  | Een object dat de routerings parameters van de aanvraag bevat. | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
+| **`Query`** | Een object dat de query parameters bevat.                  | Dictionary < teken reeks, teken reeks ><sup>*</sup> |
+| **`Url`** | De URL van de aanvraag.                                        | tekenreeks                    |
 
 <sup>*</sup> Alle `Dictionary<string,string>` sleutels zijn niet hoofdletter gevoelig.
 
@@ -318,7 +316,7 @@ Het antwoord object dat u moet terugsturen, is van het type `HttpResponseContext
 | Eigenschap      | Beschrijving                                                 | Type                      |
 |---------------|-------------------------------------------------------------|---------------------------|
 | **`Body`**  | Een object dat de hoofd tekst van het antwoord bevat.           | object                    |
-| **`ContentType`** | Een korte hand voor het instellen van het inhouds type voor de reactie. | string                    |
+| **`ContentType`** | Een korte hand voor het instellen van het inhouds type voor de reactie. | tekenreeks                    |
 | **`Headers`** | Een object dat de antwoord headers bevat.               | Woorden lijst of hashtabel   |
 | **`StatusCode`**  | De HTTP-status code van het antwoord.                       | teken reeks of int             |
 
@@ -424,13 +422,13 @@ Wanneer u het bestand requirements. psd1 bijwerkt, worden bijgewerkte modules ge
 > [!NOTE]
 > Voor beheerde afhankelijkheden is toegang tot www.powershellgallery.com nodig om modules te downloaden. Wanneer u lokaal uitvoert, moet u ervoor zorgen dat de runtime toegang heeft tot deze URL door de vereiste firewall regels toe te voegen. 
 
-De volgende toepassings instellingen kunnen worden gebruikt om te wijzigen hoe de beheerde afhankelijkheden worden gedownload en geïnstalleerd. De upgrade van uw app begint binnen `MDMaxBackgroundUpgradePeriod` en het upgrade proces is binnen ongeveer de `MDNewSnapshotCheckPeriod` voltooid.
+De volgende toepassings instellingen kunnen worden gebruikt om te wijzigen hoe de beheerde afhankelijkheden worden gedownload en geïnstalleerd. De upgrade van uw app begint binnen `MDMaxBackgroundUpgradePeriod`en het upgrade proces is binnen ongeveer de `MDNewSnapshotCheckPeriod`voltooid.
 
 | functie-app instelling              | Standaardwaarde             | Beschrijving                                         |
 |   -----------------------------   |   -------------------     |  -----------------------------------------------    |
 | **`MDMaxBackgroundUpgradePeriod`**      | `7.00:00:00` (7 dagen)     | Elk Power shell-werk proces initieert het controleren op module-upgrades op de PowerShell Gallery bij het starten van het proces en op elke `MDMaxBackgroundUpgradePeriod`. Wanneer een nieuwe module versie beschikbaar is in de PowerShell Gallery, wordt deze geïnstalleerd in het bestands systeem en beschikbaar gesteld voor Power shell-werk rollen. Als u deze waarde verlaagt, kan uw functie-app sneller nieuwe module versies krijgen, maar ook het resource gebruik van de app (netwerk-I/O, CPU, opslag) wordt verhoogd. Door deze waarde te verhogen, vermindert het resource gebruik van de app, maar kan er ook vertraging optreden bij het leveren van nieuwe module versies aan uw app. | 
-| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 uur)       | Nadat er nieuwe module versies in het bestands systeem zijn geïnstalleerd, moet elk Power shell-werk proces opnieuw worden gestart. Het opnieuw starten van Power shell-werk rollen heeft invloed op de beschik baarheid van de app, omdat de uitvoering van de huidige functie kan Totdat alle Power shell-werk processen opnieuw zijn gestart, kunnen functie aanroepen gebruikmaken van de oude of de nieuwe module versie. Het opnieuw starten van alle Power shell-werk rollen binnen `MDNewSnapshotCheckPeriod` is voltooid. Als u deze waarde verhoogt, wordt de frequentie van onderbrekingen verminderd, maar kan ook de periode worden verlengd wanneer de functie aanroepen de oude of de nieuwe module versies niet-deterministisch gebruiken. |
-| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 dag)     | Om te voor komen dat er buitensporige module-upgrades worden uitgevoerd bij het opnieuw opstarten van werk nemers, worden er geen modules gecontroleerd wanneer een werk nemer de laatste `MDMinBackgroundUpgradePeriod` heeft gecontroleerd. |
+| **`MDNewSnapshotCheckPeriod`**         | `01:00:00` (1 uur)       | Nadat er nieuwe module versies in het bestands systeem zijn geïnstalleerd, moet elk Power shell-werk proces opnieuw worden gestart. Het opnieuw starten van Power shell-werk rollen heeft invloed op de beschik baarheid van de app, omdat de uitvoering van de huidige functie kan Totdat alle Power shell-werk processen opnieuw zijn gestart, kunnen functie aanroepen gebruikmaken van de oude of de nieuwe module versie. Het opnieuw starten van alle Power shell-werk rollen binnen `MDNewSnapshotCheckPeriod`is voltooid. Als u deze waarde verhoogt, wordt de frequentie van onderbrekingen verminderd, maar kan ook de periode worden verlengd wanneer de functie aanroepen de oude of de nieuwe module versies niet-deterministisch gebruiken. |
+| **`MDMinBackgroundUpgradePeriod`**      | `1.00:00:00` (1 dag)     | Om te voor komen dat er buitensporige module-upgrades worden uitgevoerd bij het opnieuw opstarten van werk nemers, worden er geen modules gecontroleerd wanneer een werk nemer de laatste `MDMinBackgroundUpgradePeriod`heeft gecontroleerd. |
 
 Het gebruik van uw eigen aangepaste modules wijkt af van de manier waarop u het normaal zou doen.
 
@@ -479,7 +477,7 @@ Diverse modules worden vaak gebruikt door de Power shell-werk nemer. Deze module
 
 De huidige lijst met modules is als volgt:
 
-* [Micro soft. Power shell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): module die wordt gebruikt voor het werken met archieven, zoals `.zip`, `.nupkg` en anderen.
+* [Micro soft. Power shell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive): module die wordt gebruikt voor het werken met archieven, zoals `.zip`, `.nupkg`en anderen.
 * **ThreadJob**: een implementatie op basis van een thread van de Power shell-taak-api's.
 
 Functies gebruiken standaard de meest recente versie van deze modules. Als u een specifieke module versie wilt gebruiken, plaatst u die specifieke versie in de map `Modules` van uw functie-app.

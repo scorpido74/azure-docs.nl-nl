@@ -1,19 +1,14 @@
 ---
 title: Waarvan kan Azure Backup Server back-ups maken?
 description: In dit artikel wordt een ondersteunings matrix weer gegeven met alle werk belastingen, gegevens typen en installaties die Azure Backup Server beveiligt.
-author: dcurwin
-ms.service: backup
-keywords: ''
 ms.date: 11/13/2018
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: 37f284f9a3dfe06e4d306b8d56a63d4b18d6cc2e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: b375dd5869da85f09a58c77742b7246c5c25c605
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012092"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172297"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Beveiligingsmatrix voor Azure Backup Server
 

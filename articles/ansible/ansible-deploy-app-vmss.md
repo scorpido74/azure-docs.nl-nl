@@ -3,17 +3,13 @@ title: Zelf studie-Apps implementeren in schaal sets voor virtuele machines in a
 description: Meer informatie over het gebruik van Ansible voor het configureren van virtuele-machine schaal sets van Azure en het implementeren van de toepassing op de schaalset
 keywords: ansible, azure, devops, bash, playbook, virtuele machine, schaalset voor virtuele machines, vmss
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: f9035259d466a50b83fe0094d43bc0fe985e8c4e
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 7c54790a3d988341caa65bdf0ce33c240f0580fb
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241751"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156388"
 ---
 # <a name="tutorial-deploy-apps-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Zelf studie: Apps implementeren in schaal sets voor virtuele machines in azure met behulp van Ansible
 
@@ -71,7 +67,7 @@ Sla het volgende voorbeeld-playbook op als `get-hosts-tasks.yml`:
 
 ## <a name="prepare-an-application-for-deployment"></a>Een toepassing voorbereiden voor implementatie
 
-De Playbook-code in deze sectie maakt gebruik van `git` om een Java-voorbeeld project te klonen vanuit GitHub en het project te opbouwen. 
+De Playbook-code in deze sectie maakt gebruik van `git` voor het klonen van een Java-voorbeeld project van GitHub en het project bouwt. 
 
 Sla het volgende playbook op als `app.yml`:
 
@@ -170,7 +166,7 @@ Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
 * Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ admin_password }}` door uw eigen wacht woord.
 * Als u het SSH-verbindings type wilt gebruiken met wacht woorden, installeert u het sshpass-programma:
 
-    Ubuntu
+    Ubuntu:
 
     ```bash
     apt-get install sshpass

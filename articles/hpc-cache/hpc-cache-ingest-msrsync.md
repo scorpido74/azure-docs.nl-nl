@@ -6,18 +6,18 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: 3e5937a036763fab57f9e37494ace33e8452b1f2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4f8863d706d623d613ac156cf202c3b7b12f2ae0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582274"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168423"
 ---
 # <a name="azure-hpc-cache-data-ingest---msrsync-method"></a>Azure HPC cache data opname-msrsync-methode
 
 In dit artikel vindt u gedetailleerde instructies voor het gebruik van het hulp programma ``msrsync`` om gegevens te kopiëren naar een Azure Blob Storage-container voor gebruik met de Azure HPC-cache.
 
-Lees voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache [gegevens verplaatsen naar Azure Blob-opslag voor Azure HPC-cache](hpc-cache-ingest.md).
+Lees [gegevens verplaatsen naar Azure Blob Storage](hpc-cache-ingest.md)voor meer informatie over het verplaatsen van gegevens naar Blob Storage voor uw Azure HPC-cache.
 
 Het ``msrsync``-hulp programma kan worden gebruikt om gegevens te verplaatsen naar een back-end-opslag doel voor de Azure HPC-cache. Dit hulp programma is ontworpen om het bandbreedte gebruik te optimaliseren door meerdere parallelle ``rsync`` processen uit te voeren. Het is beschikbaar via GitHub op https://github.com/jbd/msrsync.
 

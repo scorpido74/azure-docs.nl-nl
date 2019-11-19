@@ -1,19 +1,15 @@
 ---
 title: Implementeren naar Azure App Service met behulp van de Jenkins-invoegtoepassing
 description: Leer hoe u de Jenkins-invoegtoepassing voor Azure App Service kunt gebruiken om een Java-web-app te implementeren naar Azure in Jenkins
-ms.service: jenkins
 keywords: jenkins, azure, devops, app service
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 9f7e0e23a04c6b141c6e0c5ff88b3d5ff2d76e1d
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: de1bf0ea06210c86ff1da21dcac667754f11d7f4
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840428"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158515"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Implementeren naar Azure App Service met behulp van de Jenkins-invoegtoepassing 
 
@@ -163,7 +159,7 @@ Geef bij **Docker-register-URL** de URL op in de indeling https://&lt;uwRegister
 
 10. De naam en tagwaarde van de Docker-installatiekopie op het tabblad **Geavanceerd** zijn optioneel. De waarde voor de installatiekopienaam wordt standaard opgehaald uit de installatiekopienaam die u in de Azure-portal in de instelling **Docker-container** hebt geconfigureerd. De tag wordt gegenereerd uit $BUILD_NUMBER.
     > [!NOTE]
-    > Zorg dat u de installatiekopienaam opgeeft in de Azure-portal of een waarde voor **Docker-installatiekopie** opgeeft op het tabblad **Geavanceerd**. In dit voorbeeld stelt u **Docker-installatiekopie** in op de waarde &lt;uw_Register>.azurecr.io/calculator en laat u **Tag voor Docker-installatiekopie** leeg.
+    > Zorg ervoor dat u de naam van de installatie kopie opgeeft in de Azure Portal of geef een **docker-installatie kopie** op op het tabblad **Geavanceerd** . Voor dit voor beeld stelt u de waarde van de **docker-installatie kopie** in op &lt;your_Registry >. azurecr. io/Calculator en laat u de waarde van de **docker-tag** leeg.
 
 11. De implementatie mislukt als u een ingebouwde instelling voor de Docker-installatiekopie gebruikt. Wijzig de Docker-configuratie zodanig dat er een aangepaste installatiekopie wordt gebruikt in de instelling **Docker-container** in de Azure-portal. Voor een ingebouwde installatiekopie gebruikt u de bestandsuploadbenadering voor de implementatie.
 12. Net zoals bij de bestandsuploadbenadering kunt u een andere **Site**-naam dan **productie** kiezen.

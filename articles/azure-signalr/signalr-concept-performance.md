@@ -1,17 +1,17 @@
 ---
 title: Prestatie handleiding voor de Azure signalerings service
-description: Een overzicht van de prestaties van de Azure signalerings service.
+description: Een overzicht van de prestaties en Bench Mark van de Azure signalerings service. Belang rijke metrische gegevens waarmee u rekening moet houden bij het plannen van de capaciteit.
 author: sffamily
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 027f9f99161a0e4f76a39a15780bc840380a61ba
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 68cad32be177fa20794399157fca89e87c2f8f59
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232532"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157663"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Prestatie handleiding voor de Azure signalerings service
 
@@ -21,15 +21,15 @@ In deze hand leiding worden de factoren die van invloed zijn op de prestaties va
 
 ## <a name="term-definitions"></a>Term definities
 
-Inkomend: Het inkomende bericht voor de Azure signalerings service.
+*Inkomend*: het binnenkomende bericht naar de Azure signalerings service.
 
-Uitgaand: Het uitgaande bericht van de Azure signalerings service.
+*Uitgaand*: het uitgaande bericht van de Azure signalerings service.
 
-*Band breedte*: De totale grootte van alle berichten in 1 seconde.
+*Band breedte*: de totale grootte van alle berichten in 1 seconde.
 
-*Standaard modus*: De standaard werk modus wanneer een exemplaar van de Azure signalerings service is gemaakt. De Azure signalerings service verwacht dat de app server een verbinding tot stand brengt voordat client verbindingen worden geaccepteerd.
+*Standaard modus*: de standaardwerk modus wanneer een exemplaar van de Azure signalerings service is gemaakt. De Azure signalerings service verwacht dat de app server een verbinding tot stand brengt voordat client verbindingen worden geaccepteerd.
 
-*Serverloze modus*: Een modus waarin de Azure signalerings service alleen client verbindingen accepteert. Er is geen server verbinding toegestaan.
+*Serverloze modus*: een modus waarin de Azure signalerings service alleen client verbindingen accepteert. Er is geen server verbinding toegestaan.
 
 ## <a name="overview"></a>Overzicht
 
@@ -68,7 +68,7 @@ In de standaard modus van de Azure signalerings service worden app server-Vm's g
 
 Theoretisch is de capaciteit van de Azure signalerings service beperkt door de reken resources: CPU, geheugen en netwerk. Meer verbindingen met de Azure signalerings service zorgen er bijvoorbeeld voor dat de service meer geheugen gebruikt. Voor groter bericht verkeer (bijvoorbeeld elk bericht groter is dan 2.048 bytes), moet de Azure signalerings service meer CPU-cycli best Eden om verkeer te verwerken. Ondertussen legt Azure-netwerk bandbreedte ook een limiet voor het maximale verkeer.
 
-Het transport type is een andere factor die van invloed is op de prestaties. De drie typen zijn [](https://en.wikipedia.org/wiki/WebSocket)websockets, door de [server verzonden gebeurtenissen](https://en.wikipedia.org/wiki/Server-sent_events)en [lange polling](https://en.wikipedia.org/wiki/Push_technology). 
+Het transport type is een andere factor die van invloed is op de prestaties. De drie typen zijn [Websockets](https://en.wikipedia.org/wiki/WebSocket), door de [server verzonden gebeurtenissen](https://en.wikipedia.org/wiki/Server-sent_events)en [lange polling](https://en.wikipedia.org/wiki/Push_technology). 
 
 WebSocket is een bidirectionele en full-duplex communicatie protocol via één TCP-verbinding. Server-sent-event is een onwaar-protocol om berichten van de server naar de client te pushen. Voor lange polling moeten clients periodiek gegevens van de server via een HTTP-aanvraag pollen. Voor dezelfde API onder dezelfde voor waarden biedt WebSocket de beste prestaties, de door de server verzonden gebeurtenis is langzamer en lange polling is het langzaamst. De Azure signalerings service beveelt standaard WebSocket aan.
 
@@ -122,14 +122,14 @@ De gemarkeerde waarden in de volgende twee tabellen mogen *niet* worden overschr
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen                       | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen                       | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | **Inkomende band breedte** | **2 MBps**    | **4 MBps**    | **10 MBps**   | **20 MBps**    | **40 MBps**    | **100 MBps**   | **200 MBps**    |
 | Uitgaande band breedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 
 |     Uitzenden             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Verbindingen               | 1000 | 2,000 | 5\.000  | 10.000 | 20,000 | 50,000  | 100.000 |
 | Inkomende band breedte  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps    |
 | **Uitgaande band breedte** | **4 MBps**    | **8 MBps**    | **20 MBps**    | **40 MBps**    | **80 MBps**    | **200 MBps**    | **400 MBps**   |
 
@@ -139,15 +139,15 @@ De gemarkeerde waarden in de volgende twee tabellen mogen *niet* worden overschr
   outboundBandwidth = outboundConnections * messageSize / sendInterval
 ```
 
-- *inboundConnections*: Het aantal verbindingen dat het bericht verzendt.
+- *inboundConnections*: het aantal verbindingen dat het bericht verzendt.
 
-- *outboundConnections*: Het aantal verbindingen dat het bericht ontvangt.
+- *outboundConnections*: het aantal verbindingen dat het bericht ontvangt.
 
-- *messageSize*: De grootte van één bericht (gemiddelde waarde). Een klein bericht van minder dan 1.024 bytes heeft een invloed op de prestaties die vergelijkbaar is met een bericht van 1.024 bytes.
+- *messageSize*: de grootte van één bericht (gemiddelde waarde). Een klein bericht van minder dan 1.024 bytes heeft een invloed op de prestaties die vergelijkbaar is met een bericht van 1.024 bytes.
 
-- *sendInterval*: De tijd van het verzenden van één bericht. Normaal gesp roken is het 1 seconde per bericht, wat betekent dat u elke seconde één bericht verzendt. Een kleiner interval betekent dat er meer berichten worden verzonden in een tijds periode. Zo betekent 0,5 seconden per bericht dat elke seconde twee berichten verzendt.
+- *sendInterval*: de tijd voor het verzenden van één bericht. Normaal gesp roken is het 1 seconde per bericht, wat betekent dat u elke seconde één bericht verzendt. Een kleiner interval betekent dat er meer berichten worden verzonden in een tijds periode. Zo betekent 0,5 seconden per bericht dat elke seconde twee berichten verzendt.
 
-- *Verbindingen*: De toegezegde maximale drempel waarde voor de Azure signalerings service voor elke laag. Als het verbindings nummer verder toeneemt, wordt de verbindings beperking in rekening gebracht.
+- *Verbindingen*: de toegewezen maximale drempel waarde voor de Azure signalerings service voor elke laag. Als het verbindings nummer verder toeneemt, wordt de verbindings beperking in rekening gebracht.
 
 #### <a name="evaluation-for-complex-use-cases"></a>Evaluatie voor complexe use cases
 
@@ -159,7 +159,7 @@ In de volgende tabel ziet u een real use-case van **broadcast**. Maar de bericht
 
 | Uitzenden  | Berichtgrootte | Inkomende berichten per seconde | Verbindingen | Intervallen verzenden |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 1                        | 100,000     | 5 sec                      |
+| 1 | 20 KB                | 1                        | 100.000     | 5 sec                      |
 | 2 | 256 kB               | 1                        | 8,000       | 5 sec                      |
 
 De volgende formule is gemakkelijk te afleiden op basis van de vorige formule:
@@ -213,8 +213,8 @@ Het gedrag van **echo** bepaalt dat de maximale binnenkomende band breedte gelij
 
 |       Echo                        | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |-----------------------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen                       | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
-| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen                       | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
+| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Inkomende/uitgaande band breedte | 2 Mbps   | 4 Mbps   | 10 Mbps  | 20 MBps   | 40 MBps   | 100 MBps  | 200 MBps   |
 
 In dit geval roept elke client de hub aan die is gedefinieerd in de app-server. De hub roept alleen de methode aan die is gedefinieerd in de oorspronkelijke client zijde. Deze hub is de meest licht gewicht hub voor **echo's**.
@@ -231,7 +231,7 @@ Zelfs voor deze eenvoudige hub is de verkeers druk op de app-server prominent, o
 
 |    Echo          | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -239,7 +239,7 @@ Zelfs voor deze eenvoudige hub is de verkeers druk op de app-server prominent, o
 
 #### <a name="broadcast"></a>Uitzenden
 
-Wanneerde web-app het bericht ontvangt, wordt deze verzonden naar alle clients. Hoe meer clients er worden uitgezonden, des te meer berichten verkeer naar alle clients. Zie het volgende diagram.
+Wanneer de **Web-app**het bericht ontvangt, wordt deze verzonden naar alle clients. Hoe meer clients er worden uitgezonden, des te meer berichten verkeer naar alle clients. Zie het volgende diagram.
 
 ![Verkeer voor de use-case van de uitzending](./media/signalr-concept-performance/broadcast.png)
 
@@ -249,9 +249,9 @@ De volgende tabel bevat een overzicht van de maximale client verbindingen, het i
 
 |     Uitzenden             | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Verbindingen               | 1000 | 2,000 | 5\.000  | 10.000 | 20,000 | 50,000  | 100.000 |
 | Inkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100,000 | 200.000 |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100.000 | 200.000 |
 | Inkomende band breedte  | 4 KBps   | 4 KBps   | 4 KBps    | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     |
 | Uitgaande band breedte | 4 Mbps   | 8 MBps   | 20 MBps   | 40 MBps   | 80 MBps   | 200 MBps   | 400 MBps   |
 
@@ -259,7 +259,7 @@ De omroep clients die berichten posten, zijn niet meer dan vier. Ze hebben minde
 
 |   Uitzenden      | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -269,15 +269,15 @@ De omroep clients die berichten posten, zijn niet meer dan vier. Ze hebben minde
 
 #### <a name="send-to-group"></a>Verzenden naar groep
 
-De use-case **voor verzenden naar groep** heeft een vergelijkbaar verkeerspatroon om te broadcasten. Het verschil is dat nadat clients WebSocket-verbindingen met de Azure signalerings service hebben tot stand zijn gebracht, ze lid moeten worden van groepen voordat ze een bericht kunnen verzenden naar een specifieke groep. In het volgende diagram ziet u de verkeers stroom.
+De use-case **voor verzenden naar groep** heeft een vergelijkbaar verkeers patroon om te **broadcasten**. Het verschil is dat nadat clients WebSocket-verbindingen met de Azure signalerings service hebben tot stand zijn gebracht, ze lid moeten worden van groepen voordat ze een bericht kunnen verzenden naar een specifieke groep. In het volgende diagram ziet u de verkeers stroom.
 
 ![Verkeer voor de gebruiks Case voor verzenden naar groep](./media/signalr-concept-performance/sendtogroup.png)
 
 Groepslid en aantal groepen zijn twee factoren die van invloed zijn op de prestaties. Voor het vereenvoudigen van de analyse definieert u twee soorten groepen:
 
-- **Kleine groep**: Elke groep heeft 10 verbindingen. Het groeps nummer is gelijk aan (maximum aantal verbindingen)/10. Bijvoorbeeld: voor Unit1, als er 1.000-verbindings aantallen zijn, hebben we 1000/10 = 100 groepen.
+- **Kleine groep**: elke groep heeft 10 verbindingen. Het groeps nummer is gelijk aan (maximum aantal verbindingen)/10. Bijvoorbeeld: voor Unit1, als er 1.000-verbindings aantallen zijn, hebben we 1000/10 = 100 groepen.
 
-- **Big groep**: Het groeps nummer is altijd 10. Het aantal leden van de groep is gelijk aan (maximum aantal verbindingen)/10. Bijvoorbeeld: voor Unit1, als er 1.000-verbindings aantallen zijn, heeft elke groep 1000/10 = 100 leden.
+- **Grote groep**: het groeps nummer is altijd 10. Het aantal leden van de groep is gelijk aan (maximum aantal verbindingen)/10. Bijvoorbeeld: voor Unit1, als er 1.000-verbindings aantallen zijn, heeft elke groep 1000/10 = 100 leden.
 
 De **groep verzenden naar** levert de bewerkings kosten van de Azure signalerings service, omdat deze de doel verbindingen via een gedistribueerde gegevens structuur moet vinden. Naarmate de verzend verbindingen toenemen, nemen de kosten toe.
 
@@ -287,9 +287,9 @@ De bewerkings kosten zijn belang rijk voor het verzenden van berichten naar een 
 
 |   Naar kleine groep verzenden     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50 | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|--------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000 | 100,000
+| Verbindingen               | 1000 | 2,000 | 5\.000  | 10.000 | 20,000 | 50,000 | 100.000
 | Groepslid aantal leden        | 10    | 10    | 10     | 10     | 10     | 10     | 10 
-| Aantal groepen               | 100   | 200   | 500    | 1000  | 2,000  | 5,000  | 10.000 
+| Aantal groepen               | 100   | 200   | 500    | 1000  | 2,000  | 5\.000  | 10.000 
 | Inkomende berichten per seconde  | 200   | 400   | 1000  | 2,500  | 4,000  | 7,000  | 7,000   |
 | Inkomende band breedte  | 400 KBps  | 800 KBps  | 2 Mbps     | 5 Mbps     | 8 MBps     | 14 MBps    | 14 MBps     |
 | Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 25,000 | 40,000 | 70.000 | 70.000  |
@@ -299,7 +299,7 @@ Veel client verbindingen bellen de hub, waardoor het nummer van de app-server oo
 
 |  Naar kleine groep verzenden   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -311,19 +311,19 @@ Voor de **groep verzenden naar Big**wordt de uitgaande band breedte het knel pun
 
 |    Naar grote groep verzenden      | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000
-| Groepslid aantal leden        | 100   | 200   | 500    | 1000  | 2,000  | 5,000   | 10.000 
+| Verbindingen               | 1000 | 2,000 | 5\.000  | 10.000 | 20,000 | 50,000  | 100.000
+| Groepslid aantal leden        | 100   | 200   | 500    | 1000  | 2,000  | 5\.000   | 10.000 
 | Aantal groepen               | 10    | 10    | 10     | 10     | 10     | 10      | 10
 | Inkomende berichten per seconde  | 20    | 20    | 20     | 20     | 20     | 20      | 20      |
 | Inkomende band breedte  | 80 KBps   | 40 KBps   | 40 KBps    | 20 KBps    | 40 KBps    | 40 KBps     | 40 KBps     |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100,000 | 200.000 |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100.000 | 200.000 |
 | Uitgaande band breedte | 8 MBps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
 Het aantal verzonden verbindingen is niet groter dan 40. De belasting op de app-server is klein, dus het voorgestelde aantal web-apps is klein.
 
 |  Naar grote groep verzenden  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 > [!NOTE]
@@ -333,7 +333,7 @@ Het aantal verzonden verbindingen is niet groter dan 40. De belasting op de app-
 
 #### <a name="send-to-connection"></a>Verzenden naar verbinding
 
-Wanneer clients de verbindingen met de Azure signalerings service tot stand brengen, roept elke client een speciale hub aan om hun eigen verbindings-id op te halen. Met de Bench Mark voor prestaties worden alle verbindings-Id's verzameld, worden deze in wille keurige volg orde en opnieuw toegewezen aan alle clients als een verzend doel. De clients verzenden het bericht naar de doel verbinding totdat de prestatie test is voltooid.
+Wanneer clients de verbindingen **met de Azure** signalerings service tot stand brengen, roept elke client een speciale hub aan om hun eigen verbindings-id op te halen. Met de Bench Mark voor prestaties worden alle verbindings-Id's verzameld, worden deze in wille keurige volg orde en opnieuw toegewezen aan alle clients als een verzend doel. De clients verzenden het bericht naar de doel verbinding totdat de prestatie test is voltooid.
 
 ![Verkeer voor de gebruiks case van send-to-client](./media/signalr-concept-performance/sendtoclient.png)
 
@@ -345,15 +345,15 @@ De volgende tabel is een statistische samen vatting na veel rondingen van het ui
 
 |   Verzenden naar verbinding   | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50          | Unit100         |
 |------------------------------------|-------|-------|-------|--------|--------|-----------------|-----------------|
-| Verbindingen                        | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000          | 100,000         |
-| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5,000 | 8,000  | 9\.000  | 20,000 | 20,000 |
+| Verbindingen                        | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000          | 100.000         |
+| Inkomende/uitgaande berichten per seconde | 1000 | 2,000 | 5\.000 | 8,000  | 9\.000  | 20,000 | 20,000 |
 | Inkomende/uitgaande band breedte | 2 Mbps    | 4 Mbps    | 10 Mbps   | 16 MBps    | 18 MBps    | 40 MBps       | 40 MBps       |
 
 Voor deze use-case moet hoge belasting aan de kant van de app-server worden gebruikt. Zie het aantal voorgestelde app-servers in de volgende tabel.
 
 |  Verzenden naar verbinding  | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 3      | 3      | 10     | 20      |
 
 > [!NOTE]
@@ -369,21 +369,21 @@ In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signal
 
 |   Echo           | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalerings **broadcast**.
 
 |  Uitzenden       | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 2     | 2      | 2      | 2      | 2       |
 
 In de volgende tabel ziet u het aantal voorgestelde web-apps voor ASP.NET signalering **verzenden naar een kleine groep**.
 
 |  Naar kleine groep verzenden     | Unit1 | Unit2 | Unit5 | Unit10 | Unit20 | Unit50 | Unit100 |
 |------------------|-------|-------|-------|--------|--------|--------|---------|
-| Verbindingen      | 1000 | 2,000 | 5,000 | 10.000 | 20,000 | 50,000 | 100,000 |
+| Verbindingen      | 1000 | 2,000 | 5\.000 | 10.000 | 20,000 | 50,000 | 100.000 |
 | Aantal app-servers | 2     | 2     | 4     | 4      | 8      | 32      | 40       |
 
 ### <a name="serverless-mode"></a>Serverloze modus
@@ -397,9 +397,9 @@ Alle clients maken WebSocket-verbindingen met de Azure signalerings service. Ver
 
 |   Uitzenden via REST API     | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Verbindingen               | 1000 | 2,000 | 5\.000  | 10.000 | 20,000 | 50,000  | 100.000 |
 | Inkomende berichten per seconde  | 2     | 2     | 2      | 2      | 2      | 2       | 2       |
-| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100,000 | 200.000 |
+| Uitgaande berichten per seconde | 2,000 | 4,000 | 10.000 | 20,000 | 40,000 | 100.000 | 200.000 |
 | Inkomende band breedte  | 4 KBps    | 4 KBps    | 4 KBps     | 4 KBps     | 4 KBps     | 4 KBps      | 4 KBps      |
 | Uitgaande band breedte | 4 Mbps    | 8 MBps    | 20 MBps    | 40 MBps    | 80 MBps    | 200 MBps    | 400 MBps    |
 
@@ -408,7 +408,7 @@ De Bench Mark wijst gebruikers namen toe aan alle clients voordat ze verbinding 
 
 |   Naar gebruiker verzenden via REST API | Unit1 | Unit2 | Unit5  | Unit10 | Unit20 | Unit50  | Unit100 |
 |---------------------------|-------|-------|--------|--------|--------|---------|---------|
-| Verbindingen               | 1000 | 2,000 | 5,000  | 10.000 | 20,000 | 50,000  | 100,000 |
+| Verbindingen               | 1000 | 2,000 | 5\.000  | 10.000 | 20,000 | 50,000  | 100.000 |
 | Inkomende berichten per seconde  | 300   | 600   | 900    | 1\.300  | 2,000  | 10.000  | 18.000  |
 | Uitgaande berichten per seconde | 300   | 600   | 900    | 1\.300  | 2,000  | 10.000  | 18.000 |
 | Inkomende band breedte  | 600 KBps  | 1,2 MBps  | 1,8 MBps   | 2,6 MBps   | 4 Mbps     | 10 Mbps     | 36 MBps    |
@@ -418,9 +418,9 @@ De Bench Mark wijst gebruikers namen toe aan alle clients voordat ze verbinding 
 
 Voor alle use-cases die eerder zijn vermeld, hebben we de prestatie tests uitgevoerd in een Azure-omgeving. We hebben meestal 50-client-Vm's en 20 app server-Vm's gebruikt. Hier volgen enkele details:
 
-- VM-grootte van client: StandardDS2V2 (2 vCPU, 7G-geheugen)
+- VM-grootte van client: StandardDS2V2 (2 vCPU, 7G geheugen)
 
-- VM-grootte van app-server: StandardF4sV2 (4 vCPU, 8G-geheugen)
+- VM-grootte van de app-server: StandardF4sV2 (4 vCPU, 8G geheugen)
 
 - Azure signalering SDK-server verbindingen: 15
 

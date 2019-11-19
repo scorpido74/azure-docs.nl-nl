@@ -1,19 +1,15 @@
 ---
-title: Azure Backup-offline back-up voor DPM en Azure Backup Server
+title: Offline back-ups voor DPM en Azure Backup Server
 description: Met Azure Backup kunt u gegevens van het netwerk verzenden met behulp van de Azure import/export-service. In dit artikel wordt de werk stroom voor offline back-ups voor DPM en Azure Backup Server (MABS) uitgelegd.
 ms.reviewer: saurse
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/08/2018
-ms.author: dacurwin
-ms.openlocfilehash: 0763cbd4345dca39f37b77a0f3d991a7d77e30c4
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4c62fed98a37a821907a889e45d582c452961203
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074295"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173251"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Werk stroom voor offline back-ups voor DPM en Azure Backup Server
 
@@ -108,7 +104,7 @@ De informatie in deze sectie helpt u bij het volt ooien van de werk stroom voor 
 
 Het hulp programma *AzureOfflineBackupDiskPrep* wordt gebruikt om de SATA-schijven voor te bereiden die worden verzonden naar het dichtstbijzijnde Azure-Data Center. Dit hulp programma is beschikbaar in de installatiemap van de Recovery Services agent in het volgende pad:
 
-*\\Microsoft Azure Recovery Services agent\\hulppr.\\*
+    *\\Microsoft Azure Recovery Services Agent\\Utils\\*
 
 1. Ga naar de map en kopieer de Directory **AzureOfflineBackupDiskPrep** naar een kopie van de computer waarop de SATA-schijven die moeten worden voor bereid, zijn verbonden. Zorg ervoor dat het volgende betrekking heeft op de Kopieer computer:
 

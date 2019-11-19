@@ -1,18 +1,14 @@
 ---
-title: Ondersteunings matrix voor de Microsoft Azure Recovery Services-agent
+title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
-author: dcurwin
-ms.service: backup
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.author: dacurwin
-manager: carmonm
-ms.openlocfilehash: a4372a66caaa8af807980a2f58f344cbf8fb1be9
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090552"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172060"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -54,7 +50,7 @@ Locatie wijzigingen | U kunt de locatie van de cache wijzigen door de back-upeng
 
 ## <a name="networking-and-access-support"></a>Ondersteuning voor netwerken en toegang
 
-### <a name="url-access"></a>URL-toegang
+### <a name="url-and-ip-access"></a>URL-en IP-toegang
 
 De MARS-agent moet toegang hebben tot deze Url's:
 
@@ -63,6 +59,11 @@ De MARS-agent moet toegang hebben tot deze Url's:
 - *.WindowsAzure.com
 - *.MicrosoftOnline.com
 - *.Windows.net
+
+En naar deze IP-adressen:
+
+- 20.190.128.0/18
+- 40.126.0.0/18
 
 ### <a name="throttling-support"></a>Ondersteuning voor beperking
 
@@ -76,7 +77,12 @@ Netwerk beperking | Niet beschikbaar voor back-ups van computers waarop Windows 
 >[!NOTE]
 > De MARS-agent biedt geen ondersteuning voor Windows Server Core-Sku's.
 
-U kunt de MARS-agent gebruiken om rechtstreeks een back-up naar Azure te maken op bepaalde besturings systemen die worden uitgevoerd op on-premises machines en Azure-Vm's. De besturings systemen moeten 64 bits zijn en moeten de nieuwste service packs en updates uitvoeren. De volgende tabel bevat een overzicht van deze besturings systemen:
+U kunt de MARS-agent gebruiken om rechtstreeks een back-up naar Azure te maken op de volgende besturings systemen die worden uitgevoerd op:
+
+1. On-premises Windows-servers
+2. Virtuele Azure-machines waarop Windows wordt uitgevoerd
+
+De besturings systemen moeten 64 bits zijn en moeten de nieuwste service packs en updates uitvoeren. De volgende tabel bevat een overzicht van deze besturings systemen:
 
 **Besturingssysteem** | **Bestanden/mappen** | **Systeem status** | **Vereisten voor software/modules**
 --- | --- | --- | ---
@@ -128,7 +134,7 @@ OneDrive (gesynchroniseerde bestanden zijn sparse-streams)| Wordt niet ondersteu
 Alleen-lezen volumes| Niet ondersteund | Volume Copy Shadow Service (VSS) werkt alleen als het volume schrijfbaar is.
 Offline volumes| Niet ondersteund |VSS werkt alleen als het volume online is.
 Netwerk share| Niet ondersteund |Het volume moet lokaal op de server zijn.
-Met BitLocker beveiligde volumes| Niet ondersteund |Het volume moet worden ontgrendeld voordat de back-up wordt gestart.
+Met BitLocker vergrendelde volumes| Niet ondersteund |Het volume moet worden ontgrendeld voordat de back-up wordt gestart.
 Bestandssysteem identificatie| Niet ondersteund |Alleen NTFS wordt ondersteund.
 Verwissel bare media| Niet ondersteund |Alle bronnen van back-upitems moeten een *vaste* status hebben.
 Ontdubbelde stations | Ondersteund | Azure Backup converteert ontdubbelde gegevens naar normale gegevens. De gegevens worden geoptimaliseerd, versleuteld, opgeslagen en verzonden naar de kluis.

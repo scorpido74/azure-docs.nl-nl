@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: e276340041e69101190645caad9dbf6de57abd95
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.date: 11/17/2019
+ms.openlocfilehash: 5d3d752f549fe336f584fa3534b61cb5a009c3bd
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996497"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158800"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replica's lezen in Azure Database for PostgreSQL-één server
 
@@ -35,7 +35,7 @@ U kunt een lees replica maken in een andere regio dan de hoofd server. Replicati
 
 U kunt een hoofd server in een [Azure database for PostgreSQL regio](https://azure.microsoft.com/global-infrastructure/services/?products=postgresql)hebben. Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's. In de onderstaande afbeelding ziet u welke replica regio's er beschikbaar zijn, afhankelijk van de hoofd regio.
 
-[![Replica regio's lezen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[replica regio's ![lezen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt altijd een lees replica maken in een van de volgende regio's, ongeacht waar uw master server zich bevindt. Dit zijn de universele replica regio's:
@@ -50,14 +50,14 @@ Als u verschillende regio's replica's gebruikt voor het plannen van herstel na n
 
 U moet rekening houden met de volgende beperkingen: 
 
-* Regionale beschikbaarheid: Azure Database for PostgreSQL is beschikbaar in VS-West 2, Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
+* Regionale Beschik baarheid: Azure Database for PostgreSQL is beschikbaar in VS-West 2, Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
     
-* Uni-directionele paren: Sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid. 
+* Uni-directionele paren: sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid. 
    Dit betekent dat een master-server in West-India een replica kan maken in India-zuid. Een hoofd server in India-zuid kan echter geen replica maken in West-India. Dit komt doordat de secundaire regio van West-India India-zuid is, India-zuid maar de secundaire regio van het westen is niet West-India.
 
 
 ## <a name="create-a-replica"></a>Replica's maken
-De `azure.replication_support` para meter moet zijn ingesteld op **replica**van de hoofd server. Als deze para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. (De `azure.replication_support` para meter is alleen van toepassing op de lagen algemeen en geoptimaliseerd voor geheugen).
+Voor de hoofd server moet de para meter `azure.replication_support` zijn ingesteld op **replica**. Als deze para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. (De para meter `azure.replication_support` is alleen van toepassing op de lagen Algemeen en geoptimaliseerd voor geheugen).
 
 Wanneer u de werk stroom voor het maken van de replica start, wordt er een lege Azure Database for PostgreSQL-server gemaakt. De nieuwe server wordt gevuld met de gegevens die zich op de hoofd server bevonden. De aanmaak tijd is afhankelijk van de hoeveelheid gegevens op de Master en de tijd sinds de laatste wekelijkse volledige back-up. De tijd kan variëren van een paar minuten tot enkele uren.
 
@@ -85,7 +85,7 @@ Azure Database for PostgreSQL biedt twee metrische gegevens voor het controleren
 
 De **maximale vertraging** voor de metrische gegevens van replica's toont de vertraging in bytes tussen het hoofd en de meest bewaarde replica. Deze metriek is alleen beschikbaar op de hoofd server.
 
-De metriek van de **replica vertraging** toont de tijd sinds de laatste geplayte trans actie. Als er geen trans acties worden uitgevoerd op de hoofd server, wordt deze tijds vertraging door de metriek aangegeven. Deze metriek is alleen beschikbaar voor replica servers. Replica vertraging wordt berekend op basis `pg_stat_wal_receiver` van de weer gave:
+De metriek van de **replica vertraging** toont de tijd sinds de laatste geplayte trans actie. Als er geen trans acties worden uitgevoerd op de hoofd server, wordt deze tijds vertraging door de metriek aangegeven. Deze metriek is alleen beschikbaar voor replica servers. De replica vertraging wordt berekend op basis van de weer gave `pg_stat_wal_receiver`:
 
 ```SQL
 EXTRACT (EPOCH FROM now() - pg_last_xact_replay_timestamp());
@@ -147,7 +147,7 @@ Zodra uw toepassing Lees-en schrijf bewerkingen heeft verwerkt, hebt u de failov
 In deze sectie vindt u een overzicht van de overwegingen voor de functie replica lezen.
 
 ### <a name="prerequisites"></a>Vereisten
-Voordat u een lees replica maakt, moet `azure.replication_support` de para meter worden ingesteld op **replica** op de hoofd server. Als deze para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. De `azure.replication_support` para meter is alleen van toepassing op de lagen algemeen en geoptimaliseerd voor geheugen.
+Voordat u een lees replica maakt, moet de para meter `azure.replication_support` worden ingesteld op **replica** op de hoofd server. Als deze para meter wordt gewijzigd, moet de server opnieuw worden opgestart om de wijziging van kracht te laten worden. De para meter `azure.replication_support` is alleen van toepassing op de lagen Algemeen en geoptimaliseerd voor geheugen.
 
 ### <a name="new-replicas"></a>Nieuwe replica's
 Er wordt een lees replica gemaakt als een nieuwe Azure Database for PostgreSQL-server. Een bestaande server kan niet worden gemaakt in een replica. Het is niet mogelijk om een replica van een andere Lees replica te maken.
@@ -158,12 +158,14 @@ Een replica wordt gemaakt met behulp van dezelfde berekenings-en opslag instelli
 > [!IMPORTANT]
 > Voordat een Master-instelling wordt bijgewerkt naar een nieuwe waarde, moet u de replica configuratie bijwerken naar een gelijke of hogere waarde. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
-PostgreSQL vereist dat de waarde van `max_connections` de para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. In azure database for PostgreSQL is de `max_connections` waarde van de para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
+PostgreSQL vereist dat de waarde van de para meter `max_connections` op de Lees replica groter dan of gelijk aan de hoofd waarde is. anders wordt de replica niet gestart. In Azure Database for PostgreSQL is de waarde van de `max_connections`-para meter gebaseerd op de SKU. Zie [limieten in azure database for PostgreSQL](concepts-limits.md)voor meer informatie. 
 
-Als u de server waarden probeert bij te werken, maar niet aan de limieten voldoet, wordt er een fout bericht weer gegeven.
+Als u de hierboven beschreven server waarden wilt bijwerken, maar niet aan de limieten wilt voldoen, treedt er een fout op.
+
+Firewall regels, regels voor virtuele netwerken en parameter instellingen worden niet overgenomen van de hoofd server naar de replica wanneer de replica wordt gemaakt of daarna.
 
 ### <a name="max_prepared_transactions"></a>max_prepared_transactions
-[Postgresql vereist](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van `max_prepared_transactions` de para meter op de Lees replica groter dan of gelijk aan de Master waarde is. anders wordt de replica niet gestart. Als u wijzigingen wilt aanbrengen `max_prepared_transactions` op de Master, wijzigt u deze eerst op de replica's.
+[Postgresql vereist](https://www.postgresql.org/docs/current/runtime-config-resource.html#GUC-MAX-PREPARED-TRANSACTIONS) dat de waarde van de para meter `max_prepared_transactions` op de Lees replica groter dan of gelijk aan de hoofd waarde is. anders wordt de replica niet gestart. Als u `max_prepared_transactions` op de master wilt wijzigen, wijzigt u deze eerst op de replica's.
 
 ### <a name="stopped-replicas"></a>Gestopte replica's
 Als u de replicatie tussen een hoofd server en een lees replica stopt, wordt de replica opnieuw gestart om de wijziging toe te passen. De gestopte replica wordt een zelfstandige server die zowel lees-als schrijf bewerkingen accepteert. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.

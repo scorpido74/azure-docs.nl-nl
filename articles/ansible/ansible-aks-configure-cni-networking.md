@@ -3,17 +3,13 @@ title: 'Zelf studie: Azure CNI-netwerken configureren in azure Kubernetes servic
 description: Meer informatie over het gebruik van Ansible voor het configureren van kubenet-netwerken in azure Kubernetes service (AKS)-cluster
 keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 04da0e8fb06d0a32c8e8bdc39d7722fc1c3fcdba
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: e3667ad7a561f56d5fddaacad705c53d1de9ac36
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242036"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156910"
 ---
 # <a name="tutorial-configure-azure-cni-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: Azure CNI-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible
 
@@ -45,7 +41,7 @@ Zie [Network concepten for Applications in AKS](/azure/aks/concepts-network)(Eng
 
 De voorbeeld code van de Playbook in deze sectie wordt gebruikt voor het volgende:
 
-- Maak een virtueel netwerk
+- Een virtueel netwerk maken
 - Een subnet binnen het virtuele netwerk maken
 
 Sla het volgende playbook op als `vnet.yml`:
@@ -109,9 +105,9 @@ Sla het volgende playbook op als `aks.yml`:
 Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
 - Gebruik de module `azure_rm_aks_version` om de ondersteunde versie te vinden.
-- De `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
+- Het `vnet_subnet_id` is het subnet dat in de vorige sectie is gemaakt.
 - De Playbook laadt `ssh_key` van `~/.ssh/id_rsa.pub`. Als u het wijzigt, gebruikt u de indeling met één regel, te beginnen met ' ssh-rsa ' (zonder de aanhalings tekens).
-- De waarden `client_id` en `client_secret` worden geladen van `~/.azure/credentials`. Dit is het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
+- De waarden `client_id` en `client_secret` worden geladen vanuit `~/.azure/credentials`, het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -152,9 +148,9 @@ Sla het volgende playbook op als `aks-azure-cni.yml`:
 
 Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
-- Wijzig de `aksansibletest`-waarde in de naam van de resource groep.
-- Wijzig de `aksansibletest`-waarde in de naam van uw AKS.
-- Wijzig de `eastus`-waarde in de locatie van de resource groep.
+- Wijzig de `aksansibletest` waarde in de naam van de resource groep.
+- Wijzig de `aksansibletest` waarde in de naam van uw AKS.
+- Wijzig de `eastus` waarde in de locatie van de resource groep.
 
 Voer de Playbook uit met behulp van de ansible-Playbook opdracht:
 

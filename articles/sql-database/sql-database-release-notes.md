@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 56830e20b190958c1c411f5daa1d2a7e928f0f3d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821202"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166252"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -79,6 +79,8 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 ## <a name="fixed-known-issues"></a>Opgeloste bekende problemen
 
 - **Aug 2019** -Inge sloten data bases worden volledig ondersteund in een beheerd exemplaar.
+- **Oct 2019** : ingebouwde Point-in-time database herstel van bedrijfskritiek laag naar algemeen laag mislukt als de bron database in-Memory OLTP-objecten bevat.
+- **Nov 2019** : database consistentie wordt gecontroleerd met `DBCC CHECKDB` na het herstellen van de data base van Azure Blob Storage.
 
 ## <a name="updates"></a>Updates
 

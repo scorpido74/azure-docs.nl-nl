@@ -1,25 +1,21 @@
 ---
-title: 'Veelgestelde vragen: back-ups maken van virtuele Azure-machines met Azure Backup'
+title: 'Veelgestelde vragen: back-ups maken van virtuele Azure-machines'
 description: In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de Azure Backup-service.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.author: dacurwin
-ms.openlocfilehash: ad5e715de2f3467d4530759cbb2acec0358e5597
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 30036d6cf241e1ac840b2be67ca78fbda6c60061
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747279"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172562"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Veelgestelde vragen: back-ups maken van virtuele Azure-machines
 
 In dit artikel vindt u antwoorden op veelgestelde vragen over het maken van back-ups van virtuele Azure-machines met de [Azure backup](backup-introduction-to-azure-backup.md) -service.
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Backup
 
 ### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>Welke VM-installatie kopieën kunnen worden ingeschakeld voor back-up wanneer ik ze Maak?
 
@@ -33,15 +29,15 @@ Nee. De back-upkosten zijn gescheiden van de kosten van de virtuele machine. Mee
 
 Als u een VM-bijdrager bent, kunt u back-up inschakelen op de VM. Als u een aangepaste rol gebruikt, hebt u de volgende machtigingen nodig voor het inschakelen van back-ups op de VM:
 
-- Micro soft. Recovery Services/kluizen/schrijven
-- Micro soft. Recovery Services/kluizen/lezen
-- Micro soft. Recovery Services/locaties/*
-- Micro soft. Recovery Services/kluizen/backupFabrics/protectionContainers/protectedItems/*/Read
-- Micro soft. Recovery Services/kluizen/backupFabrics/protectionContainers/protectedItems/lezen
-- Micro soft. Recovery Services/kluizen/backupFabrics/protectionContainers/protectedItems/write
-- Micro soft. Recovery Services/kluizen/backupFabrics/backupProtectionIntent/schrijven
-- Micro soft. Recovery Services/kluizen/backupPolicies/lezen
-- Micro soft. Recovery Services/kluizen/backupPolicies/schrijven
+- Microsoft.RecoveryServices/Vaults/write
+- Microsoft.RecoveryServices/Vaults/read
+- Microsoft.RecoveryServices/locations/*
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/read
+- Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/write
+- Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write
+- Microsoft.RecoveryServices/Vaults/backupPolicies/read
+- Microsoft.RecoveryServices/Vaults/backupPolicies/write
 
 Als uw Recovery Services kluis en VM verschillende resource groepen hebben, moet u ervoor zorgen dat u schrijf machtigingen hebt in de resource groep voor de Recovery Services kluis.  
 

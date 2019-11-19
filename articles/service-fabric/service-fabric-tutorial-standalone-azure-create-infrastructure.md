@@ -3,7 +3,7 @@ title: Zelf studie voor het maken van de infra structuur voor een Service Fabric
 description: In deze zelf studie leert u hoe u de Azure VM-infra structuur kunt instellen om een Service Fabric cluster uit te voeren.
 services: service-fabric
 documentationcenter: .net
-author: v-vasuke
+author: jpconnock
 manager: jpconnock
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/22/2019
-ms.author: v-vasuke
+ms.author: jeconnoc
 ms.custom: mvc
-ms.openlocfilehash: c9dd9cf0f0fb6d20d6837b07ab46d376e379ca25
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: b24b4d95827dbd398c0eba43dcbad9fbfeb51469
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177725"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166278"
 ---
 # <a name="tutorial-create-azure-vm-infrastructure-to-host-a-service-fabric-cluster"></a>Zelf studie: een Azure VM-infra structuur maken om een Service Fabric cluster te hosten
 
@@ -90,12 +90,18 @@ Start twee meer **virtual machines**en zorg ervoor dat u dezelfde instellingen b
  
 4. Open het RDP-bestand en voer de gebruikers naam en het wacht woord in die u hebt opgegeven tijdens de installatie van de virtuele machine.
 
-5. Zodra u verbinding hebt gemaakt met een exemplaar, moet u controleren of het externe REGI ster actief is en de vereiste poorten openen.
+5. Zodra u verbinding hebt gemaakt met een exemplaar, moet u controleren of het externe REGI ster actief is, SMB inschakelen en de vereiste poorten openen voor het SMB en het externe REGI ster.
+
+   Als u SMB wilt inschakelen, is dit de Power shell-opdracht:
+
+   ```powershell
+   netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+   ```
 
 6. Dit is de PowerShell-opdracht voor het openen van de poorten in de firewall:
 
    ```powershell
-   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139
+   New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
    ```
 
 7. Herhaal dit proces voor uw andere instanties en pas de privé-IP-adressen opnieuw uit.
@@ -111,6 +117,15 @@ Start twee meer **virtual machines**en zorg ervoor dat u dezelfde instellingen b
    ```
 
    Als de uitvoer er gedurende vier pogingen uitziet zoals `Reply from 172.31.20.163: bytes=32 time<1ms TTL=128`, werkt de verbinding tussen de exemplaren.
+
+3. Gebruik nu de volgende opdracht om te controleren of delen via SMB werkt:
+
+   ```
+   net use * \\172.31.20.163\c$
+   ```
+
+   De uitvoer moet gelijk zijn aan `Drive Z: is now connected to \\172.31.20.163\c$.`.
+
 
    Uw instanties zijn nu voor bereid voor Service Fabric.
 

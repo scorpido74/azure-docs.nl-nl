@@ -1,19 +1,14 @@
 ---
-title: Gegevens model voor Azure Backup
+title: Power BI gegevens model
 description: In dit artikel vindt u informatie over Power BI gegevens model voor Azure Backup-rapporten.
-ms.reviewer: adigan
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.author: dacurwin
-ms.openlocfilehash: f3db0e6a78eada52f2b5936f5194138d97ebcca6
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: a2f06da16280070448d7b42dc5e1dcfc46354cfa
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074896"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172803"
 ---
 # <a name="data-model-for-azure-backup-reports"></a>Gegevensmodel voor Azure Backup-rapporten
 
@@ -79,7 +74,7 @@ Deze tabel bevat details over kalender velden.
 | Wekelijks |Tekst |De week die is geselecteerd voor het filteren van gegevens, begint op zondag en eindigt op zaterdag |
 | WeekDate |Date |De datum in de week waarop de week eindigt, geselecteerd voor het filteren van gegevens |
 | WeekDiff |Decimaal getal |Verschil in de week voor het filteren van gegevens. Bijvoorbeeld: 0 geeft de gegevens van de huidige week aan,-1 geeft de gegevens van de vorige week aan, 0 en-1 geven gegevens voor de huidige en vorige week aan |
-| Year |Tekst |Kalender jaar geselecteerd voor het filteren van gegevens |
+| Jaar |Tekst |Kalender jaar geselecteerd voor het filteren van gegevens |
 | YearDate |Date |De datum in het jaar waarin het jaar eindigt, geselecteerd voor het filteren van gegevens |
 
 ### <a name="job"></a>Taak
@@ -124,7 +119,7 @@ Deze tabel bevat basis velden en aggregaties over diverse aan het beleid gerelat
 | MonthlyRetentionFormat |Tekst |Type configuratie voor maandelijkse retentie. Bijvoorbeeld dagelijks voor dag, wekelijks op basis van een week |
 | MonthlyRetentionTimes |Tekst |De datum en tijd waarop de maandelijkse retentie is geconfigureerd |
 | MonthlyRetentionWeeksOfTheMonth |Tekst |Weken van de maand waarin de maandelijkse retentie is geconfigureerd. Bijvoorbeeld eerste, laatste enz. |
-| policyName |Tekst |De naam van het beleid dat is gedefinieerd |
+| PolicyName |Tekst |De naam van het beleid dat is gedefinieerd |
 | PolicyUniqueId |Tekst |Unieke ID voor het identificeren van het beleid |
 | RetentionType |Tekst |Type Bewaar beleid. Bijvoorbeeld dagelijks, wekelijks, maandelijks, jaarlijks |
 | WeeklyRetentionDaysOfTheWeek |Tekst |Dagen van de week geselecteerd voor een wekelijkse Bewaar periode |

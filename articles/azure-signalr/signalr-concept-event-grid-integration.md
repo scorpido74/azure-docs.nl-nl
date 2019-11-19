@@ -1,19 +1,19 @@
 ---
 title: Reageren op gebeurtenissen van de Azure signalerings service
-description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van de Azure signalerings service.
+description: Gebruik Azure Event Grid om u te abonneren op gebeurtenissen van de Azure signalerings service. Andere downstream-Services kunnen worden geactiveerd door deze gebeurtenissen.
 services: azure-signalr,event-grid
 author: chenyl
 ms.author: chenyl
 ms.reviewer: zhshang
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.topic: conceptual
 ms.service: signalr
-ms.openlocfilehash: a3d0669a1a89f2fc5aaca0a96e00b731d2d40830
-ms.sourcegitcommit: a8b638322d494739f7463db4f0ea465496c689c6
+ms.openlocfilehash: a8e25907b40b910f2b91884d355b6ac85eeaa250
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68296833"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158191"
 ---
 # <a name="reacting-to-azure-signalr-service-events"></a>Reageren op gebeurtenissen van de Azure signalerings service
 
@@ -29,7 +29,7 @@ Gebeurtenissen van de Azure signalerings service zijn alleen actief wanneer clie
 ## <a name="available-azure-signalr-service-events"></a>Beschik bare gebeurtenissen van de Azure signalerings service
 Event grid gebruikt [gebeurtenis abonnementen](../event-grid/concepts.md#event-subscriptions) om gebeurtenis berichten te routeren naar abonnees. Gebeurtenis abonnementen van de Azure signalerings service ondersteunen twee typen gebeurtenissen:  
 
-|Gebeurtenis naam|Description|
+|Gebeurtenis naam|Beschrijving|
 |----------|-----------|
 |`Microsoft.SignalRService.ClientConnectionConnected`|Deze gebeurtenis treedt op wanneer een verbinding met een client tot stand is gebracht.|
 |`Microsoft.SignalRService.ClientConnectionDisconnected`|Deze gebeurtenis treedt op wanneer de verbinding van een client verbinding wordt verbroken.|
@@ -63,5 +63,5 @@ Zie voor meer informatie [schema voor seingevings service-gebeurtenissen](../eve
 Meer informatie over Event Grid en het geven van Azure signalerings service-gebeurtenissen een try:
 
 > [!div class="nextstepaction"]
-> [Probeer een voor beeld-Event grid integratie met de Azure signalerings service](./signalr-howto-event-grid-integration.md)
+> [Probeer een voor beeld Event grid integratie met de Azure signalerings Service](./signalr-howto-event-grid-integration.md)
 > [over Event grid](../event-grid/overview.md)

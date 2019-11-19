@@ -1,76 +1,76 @@
 ---
-title: Bewaking op afstand gegevens visualiseren met Power BI - Azure | Microsoft Docs
-description: In deze zelfstudie maakt gebruik van Power BI Desktop en Cosmos DB integerate gegevens van een oplossing voor externe controle in een aangepaste visualisatie. Deze manier waarop gebruikers kunnen hun eigen aangepaste dashboards kunt bouwen en delen van deze gebruikers niet op de oplossing.
-author: asdonald
+title: Externe bewakings gegevens visualiseren met Power BI-Azure | Microsoft Docs
+description: In deze zelf studie wordt gebruikgemaakt van Power BI Desktop en Cosmos DB voor het integerate van gegevens van een oplossing voor externe controle in een aangepaste visualisatie. Op deze manier kunnen gebruikers hun eigen aangepaste Dash boards bouwen en deze delen met gebruikers die geen oplossing hebben.
+author: dominicbetts
 manager: hegate
-ms.author: asdonald
+ms.author: dobett
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3398c6d318e0e3c51d3f6cfe8af651a6e3f55c9c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61448051"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74166297"
 ---
-# <a name="visualize-remote-monitoring-data-using-power-bi"></a>Bewaking op afstand gegevens visualiseren met Power BI
+# <a name="visualize-remote-monitoring-data-using-power-bi"></a>Externe bewakings gegevens visualiseren met behulp van Power BI
 
-In deze zelfstudie begeleidt u stapsgewijs door van hoe u aan te sluiten in uw oplossing voor bewaking op afstand gegevens uit cosmos DB in Power BI. Met deze verbinding tot stand gebracht, kunt u vervolgens uw eigen aangepaste dashboards maken en ze terug op uw oplossing voor externe bewaking dashboard toevoegen. Deze workstream kunt u meer gespecialiseerde grafieken worden gemaakt, aanvulling op het gebruiksklaar. Vervolgens kunt u deze zelfstudie om te integreren met andere data-stromen of aangepaste dashboards om te worden verbruikt buiten uw oplossing voor externe controle kunt bouwen. Het bouwen van dashboards in Power BI, betekent dat u elk deelvenster met elkaar samenwerken, terwijl u specifieke selecteert ook kunt maken. Bijvoorbeeld, kan er een filter dat laat u alleen informatie over uw gesimuleerde vrachtwagens zien en elk onderdeel van uw dashboard zodat u alleen informatie van de vrachtwagen gesimuleerde zou werken. Als u wilt een Power BI-hulpprogramma te gebruiken, kunt u deze stappen voor het gebruik van uw Visualisatieprogramma van keuze en koppelen in de Cosmos-Database of aangepaste database als u een hebt ingesteld ook uitbreiden. 
+In deze zelf studie leert u hoe u uw gegevens voor uw externe bewakings oplossing kunt aansluiten bij CosmosDB in Power BI. Als deze verbinding tot stand is gebracht, kunt u vervolgens uw eigen aangepaste Dash boards maken en deze weer toevoegen aan het dash board van de externe bewakings oplossing. Met deze workstream kunnen er meer gespecialiseerde grafieken worden gemaakt, naast het vak. U kunt deze zelf studie vervolgens gebruiken om te integreren met andere gegevens stromen of om aangepaste Dash boards te bouwen die buiten uw oplossing voor externe controle worden verbruikt. Als u Dash boards in Power BI bouwt, kunt u elk paneel ook met elkaar communiceren wanneer u specifieke onderdelen selecteert. U kunt bijvoorbeeld een filter hebben dat alleen informatie over uw gesimuleerde vracht wagens laat zien en elk deel van uw dash board zou er alleen voor hebben gesimuleerde truck gegevens weer te geven. Als u een andere hulp middelen wilt gebruiken dan Power BI, kunt u deze stappen ook uitvoeren om uw visualisatie hulpmiddel van Choice en Hook in de Cosmos-data base of aangepaste data base te gebruiken als u er een hebt ingesteld. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Hebt u een oplossing voor externe controle momenteel wordt uitgevoerd
-- U moet toegang hebben tot [Azure Portal](https://portal.azure.com) en uw abonnement waarin de IoT Hub en de oplossing worden uitgevoerd
-- U moet hebben [Power BI desktop](https://powerbi.microsoft.com) geïnstalleerd, elke versie doet
+- Er moet een externe bewakings oplossing op dit moment worden uitgevoerd
+- U moet toegang hebben tot de [Azure-Portal](https://portal.azure.com) en uw abonnement waarop de IOT hub en de oplossing worden uitgevoerd
+- U moet [Power bi bureau blad](https://powerbi.microsoft.com) hebben geïnstalleerd, alle versies kunnen
 
 
-## <a name="information-needed-from-azure-portal"></a>Informatie die nodig is in Azure Portal
+## <a name="information-needed-from-azure-portal"></a>Informatie die nodig is vanuit Azure Portal
 
-1. Navigeer naar [Azure Portal](https://portal.azure.com) en meld u indien nodig
+1. Ga naar [Azure Portal](https://portal.azure.com) en meld u indien nodig aan
 
-2. Klik in het linkerdeelvenster op resourcegroepen
+2. Klik in het linkerdeel venster op resource groepen
 
-    ![Zijde deelvenster Nav](./media/iot-accelerators-integrate-data-powerbi/side_panel.png)
+    ![Navigatie van het paneel aan de zijkant](./media/iot-accelerators-integrate-data-powerbi/side_panel.png)
 
-3. Navigeer naar de resourcegroep die uw Iot-oplossing wordt uitgevoerd op en klik op gaat u naar de pagina overzicht van de groep van die Resource. 
+3. Ga naar de resource groep waar uw IOT-oplossing wordt uitgevoerd en klik op de pagina overzicht van de resource groep. 
 
-4. Op die overzichtspagina klikt u op het item, dat is van het type 'Azure Cosmos DB-Account', klikt u vervolgens gaat u naar de overzichtspagina van de Cosmos DB-stroom voor die IoT-oplossing.
+4. Klik op de pagina overzicht op het item met het type Azure Cosmos DB account. vervolgens wordt u naar de pagina overzicht van de Cosmos DB-stroom geleid voor die IoT-oplossing.
 
     ![Resourcegroep](./media/iot-accelerators-integrate-data-powerbi/resource_groups.png)
 
-5. In het paneel aan de linkerkant, klik op de sectie 'Sleutels' en noteer de volgende waarden op die moet worden gebruikt in Power BI:
+5. Klik in het deel venster aan de linkerkant op de sectie ' sleutels ' en noteer de volgende waarden die moeten worden gebruikt in Power BI:
 
    - URI
    - Primaire sleutel
 
      ![keys](./media/iot-accelerators-integrate-data-powerbi/keys.png)
 
-## <a name="setting-up-the-stream-in-power-bi"></a>Instellen van de Stream in Power BI
+## <a name="setting-up-the-stream-in-power-bi"></a>De stroom instellen in Power BI
   
-1. Open de Power BI desktop-app en klikt u op 'Gegevens ophalen' in de linkerbovenhoek. 
+1. Open de Power BI bureau blad-app en klik op gegevens ophalen in de linkerbovenhoek. 
 
     ![Gegevens ophalen](./media/iot-accelerators-integrate-data-powerbi/get_data.png)
 
-2. Wanneer u wordt gevraagd om in te voeren van gegevens, ervoor kiezen om te zoeken naar 'Azure Cosmos DB' en selecteert u deze connector. Deze connector worden gegevens rechtstreeks vanuit de cosmos-database van uw Azure-IoT-oplossing in feite opgehaald
+2. Wanneer u wordt gevraagd gegevens in te voeren, kiest u voor ' Azure Cosmos DB ' en selecteert u deze connector. Met deze connector worden gegevens in feite direct opgehaald uit de Cosmos-data base van uw Azure IoT-oplossing
   
     ![Cosmos DB](./media/iot-accelerators-integrate-data-powerbi/cosmos_db.png)
   
-3. Voer de gegevens die u hierboven hebt genoteerd:
+3. Voer de informatie in die u hierboven hebt vastgelegd:
 
     * URI
     * Primaire sleutel
 
-4. Selecteer de tabellen worden geïmporteerd in Power BI. Deze actie wordt het laden van de gegevens gestart. Hoe langer uw oplossing actief is geweest, hoe langer duurt om de gegevens te laden (maximaal een paar uur). 
+4. Selecteer alle tabellen die u wilt importeren in Power BI. Met deze actie wordt het laden van de gegevens gestart. Hoe langer uw oplossing actief is, hoe langer het duurt om de gegevens te laden (tot een paar uur). 
 
     ![Tabellen importeren](./media/iot-accelerators-integrate-data-powerbi/import_tables.png)
 
-5. Nadat de gegevens is voltooid wordt geladen, klikt u op 'Query's bewerken' op de bovenste rij van Power BI en alle tabellen uitvouwen door te klikken op de pijlen in de gele balk voor elke tabel. Dit wordt in feite uitgebreid om alle kolommen weer te geven. U ziet hoe de gegevens voor zaken zoals vochtigheid, sneller, enzovoort zijn niet van het juiste type.
+5. Zodra de gegevens zijn geladen, klikt u op Query's bewerken in de bovenste rij van Power BI en vouwt u alle tabellen uit door te klikken op de pijlen in de gele balk voor elke tabel. Dit wordt in wezen uitgebreid om alle kolommen weer te geven. U zult merken dat gegevens voor zaken zoals vochtigheid, snelheid, enzovoort, niet van het juiste type zijn.
 
     ![Nieuwe kolom](./media/iot-accelerators-integrate-data-powerbi/new_column.png)
   
-    Bijvoorbeeld, is de gegevens die afkomstig zijn in Power BI gewijzigd in de UNIX-tijd waarop het afkomstig via de connector is. Als u wilt aanpassen voor deze conversie, kunt voortaan u een nieuwe kolom maken en gebruiken deze vergelijking zodat deze in datum-tijdnotatie: 
+    De gegevens die in Power BI worden ontvangen, zijn bijvoorbeeld gewijzigd in UNIX-tijd, toen deze zich bevond via de connector. Als u deze conversie wilt aanpassen, kunt u een nieuwe kolom maken en deze vergelijking gebruiken om deze op te halen in datum-en tijd notatie: 
 
     ```text
     #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, [Document.device.msg.received]/1000)
@@ -78,33 +78,33 @@ In deze zelfstudie begeleidt u stapsgewijs door van hoe u aan te sluiten in uw o
 
     ![Bijgewerkte tabel](./media/iot-accelerators-integrate-data-powerbi/updated_table.png)
   
-    Document.Device.msg.Received is slechts een van de kolommen bij het opmaken van UNIX en met anderen die conversie moet kunnen worden vervangen. 
+    Document. device. msg. Receive is slechts een van de kolommen met UNIX-indeling en kan worden vervangen door anderen die moeten worden geconverteerd. 
   
-    Andere gegevenspunten zijn geconverteerd naar het type die tekenreeks kan worden gewijzigd in verdubbelt of Int waar juiste met behulp van dezelfde als hierboven stappen.
+    Andere gegevens punten zijn geconverteerd naar een type teken reeks kunnen waar nodig worden gewijzigd in dubbels of int, indien van toepassing, met behulp van dezelfde stappen als hierboven.
 
-## <a name="creating-a-dashboard"></a>Een dashboard maken
+## <a name="creating-a-dashboard"></a>Een dash board maken
 
-Als de stroom is verbonden, bent u klaar om uw persoonlijke dashboards te maken! Het dashboard Hieronder volgt een voorbeeld van het nemen van de telemetrie wordt verzonden door onze gesimuleerde apparaten en andere gegevensfuncties rond het zoals weergegeven: 
+Zodra de stroom is verbonden, bent u klaar om uw persoonlijke Dash boards te maken. Het onderstaande dash board is een voor beeld van het maken van de telemetrie die door onze gesimuleerde apparaten wordt verzonden en het weer geven van verschillende draaiingen eromheen, zoals: 
 
-* Locatie van het apparaat op een kaart (rechts)
+* De locatie van het apparaat op een kaart (rechts)
 * Apparaten met hun status en ernst. (linksboven)
-* Apparaten met regels aanwezig is, en als er geen waarschuwingen gaan uitschakelen voor deze (onderaan, links)
+* Apparaten met regels en als er waarschuwingen voor hen worden uitgevoerd (linksonder)
 
-![Power BI-visualisatie](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
+![Power bi-visualisatie](./media/iot-accelerators-integrate-data-powerbi/visual_data.png)
 
-## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Publiceren van het dashboard en de gegevens vernieuwen
+## <a name="publishing-the-dashboard-and-refreshing-the-data"></a>Het dash board publiceren en de gegevens vernieuwen
 
-Nadat u uw dashboards hebt gemaakt, raden we u [publiceren van uw Power BI-dashboards](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) worden gedeeld met anderen.
+Nadat u uw Dash boards hebt gemaakt, raden we u aan om [uw Power bi-Dash boards te publiceren](https://docs.microsoft.com/power-bi/desktop-upload-desktop-files) en te delen met anderen.
 
-Ook moet u [de gegevens vernieuwen](https://docs.microsoft.com/power-bi/refresh-data) op de gepubliceerde dashboard om ervoor te zorgen dat u de meest recente gegevensset hebt.
+U moet ook [de gegevens](https://docs.microsoft.com/power-bi/refresh-data) op het gepubliceerde dash board vernieuwen om ervoor te zorgen dat u over de nieuwste gegevensset beschikt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd over het externe bewaking gegevens visualiseren met Power BI
+In dit artikel hebt u geleerd hoe u externe bewakings gegevens kunt visualiseren met behulp van Power BI
 
 Zie voor meer informatie over het aanpassen van de oplossing voor externe controle:
 
-* [De oplossing voor externe controle gebruikersinterface aanpassen](iot-accelerators-remote-monitoring-customize.md)
+* [De gebruikers interface van de oplossing voor externe controle aanpassen](iot-accelerators-remote-monitoring-customize.md)
 * [Snelzoekgids voor ontwikkelaars](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Reference-Guide)
 * [Ontwikkelaarsgids voor het oplossen van problemen](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Developer-Troubleshooting-Guide)
 

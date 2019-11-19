@@ -3,17 +3,13 @@ title: 'Zelf studie: kubenet-netwerken configureren in azure Kubernetes service 
 description: Meer informatie over het gebruik van Ansible voor het configureren van kubenet-netwerken in azure Kubernetes service (AKS)-cluster
 keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/23/2019
-ms.openlocfilehash: 67b4eb9e9ee53613ec8b54b2bf8d3bbdb89778c7
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: bfb19371ad651439c087cebd03023d48852ee2df
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881529"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156889"
 ---
 # <a name="tutorial-configure-kubenet-networking-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: kubenet-netwerken configureren in azure Kubernetes service (AKS) met behulp van Ansible
 
@@ -213,10 +209,10 @@ Sla het volgende playbook op als `aks-kubenet.yml`:
 Breng de volgende wijzigingen aan in de sectie `vars`:
 
 - Wijzig de `aksansibletest` waarde voor de `resource_group` sleutel in de naam van de resource groep.
-- Voor de `name`-sleutel wijzigt u de `aksansibletest`-waarde in uw AKS-naam.
-- Voor de `Location`-sleutel wijzigt u de `eastus`-waarde in de locatie van de resource groep.
+- Wijzig de `aksansibletest`-waarde voor de `name` sleutel in de naam van uw AKS.
+- Wijzig de `eastus`-waarde voor de `Location` sleutel in de locatie van de resource groep.
 
-Voer de volledige Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de volledige Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook aks-kubenet.yml
@@ -348,7 +344,7 @@ Sla de volgende code op als `cleanup.yml`:
 
 Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

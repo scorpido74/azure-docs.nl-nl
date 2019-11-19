@@ -1,18 +1,18 @@
 ---
 title: Overzicht van FQDN-labels voor Azure Firewall
-description: Meer informatie over de FQDN-Tags in Azure Firewall
+description: Een FQDN-label vertegenwoordigt een groep FQDN-namen (FULLy Qualified Domain names) die zijn gekoppeld aan bekende micro soft-Services.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 4/23/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: d78f67b96776fa3fb1d13fbf7b385e41ca3aa59a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 6396f8292a4c54f7fce237439f37c3e8156d59e8
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665548"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74169039"
 ---
 # <a name="fqdn-tags-overview"></a>Overzicht van FQDN-labels
 

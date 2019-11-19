@@ -1,19 +1,14 @@
 ---
-title: Systeem status beveiligen & bare metal Restore-Azure Backup Server
+title: Systeem status-en Bare Metal Recovery-beveiliging
 description: Gebruik Azure Backup Server om een back-up te maken van uw systeem status en BMR-beveiliging (Bare Metal Recovery) te bieden.
-author: dcurwin
-manager: carmonm
-keywords: ''
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: dacurwin
-ms.openlocfilehash: 50f534a5a682cd9e4f6aeb040b897e7aae48dddd
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 2940ef5b8c0c2a7d751c46209253d4f4dbe6d13f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969035"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172252"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>Maak een back-up van de systeem status en herstel op bare metal met Azure Backup Server
 
@@ -42,7 +37,7 @@ De volgende tabel bevat een overzicht van waar u een back-up kunt maken en herst
 |Hyper-V<br /><br />Azure Backup Server back-up van Hyper-V-host of gast<br /><br />BMR/systeem status back-up van host|Verloren Hyper-V-host (Vm's intact)|N|N|J|
 |Hyper-V<br /><br />Azure Backup Server back-up van Hyper-V-host of gast<br /><br />BMR/systeem status back-up van host|Verloren Hyper-V-host (Vm's verloren)|N|N|J<br /><br />BMR, gevolgd door regulier Azure Backup Server herstel|
 |SQL Server/Exchange<br /><br />Azure Backup Server app-back-up<br /><br />BMR/systeem status back-up|Verloren app-gegevens|J|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Server app-back-up<br /><br />BMR/systeem status back-up|Verloren of beschadigd besturings systeem|N|Vorig|J|
+|SQL Server/Exchange<br /><br />Azure Backup Server app-back-up<br /><br />BMR/systeem status back-up|Verloren of beschadigd besturings systeem|N|Y|J|
 |SQL Server/Exchange<br /><br />Azure Backup Server app-back-up<br /><br />BMR/systeem status back-up|Verloren server (data base/transactie logboeken intact)|N|N|J|
 |SQL Server/Exchange<br /><br />Azure Backup Server app-back-up<br /><br />BMR/systeem status back-up|Verloren server (data base/transactie logboeken verloren)|N|N|J<br /><br />BMR-herstel, gevolgd door het normale Azure Backup Server herstel|
 
@@ -95,7 +90,7 @@ Wanneer de back-up is voltooid, wordt het bestand overgebracht naar de back-upse
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-1. **Azure backup server implementeren**. Controleer of de back-upserver op de juiste wijze is geïmplementeerd. Zie voor meer informatie:
+1. **Azure backup server implementeren**. Controleer of de back-upserver op de juiste wijze is geïmplementeerd. Ga voor meer informatie naar:
     * [Systeem vereisten voor Azure Backup Server](https://docs.microsoft.com/system-center/dpm/install-dpm#setup-prerequisites)
     * [Beveiligings matrix van de back-upserver](backup-mabs-protection-matrix.md)
 

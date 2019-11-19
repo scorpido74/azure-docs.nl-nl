@@ -1,17 +1,14 @@
 ---
 title: 'Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register'
 description: Leer hoe u Terraform-modules kunt gebruiken om een cluster met ​​virtuele Windows-machines in Azure te maken
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: ba99f9cdc20448398b339041aeab41fb75495e5d
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
-ms.translationtype: MT
+ms.openlocfilehash: 939c34eae63b89108102ed8f766a4260ce2f24bd
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969480"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159063"
 ---
 # <a name="tutorial-create-an-azure-vm-cluster-with-terraform-using-the-module-registry"></a>Zelf studie: een Azure VM-cluster met terraform maken met behulp van het module register
 

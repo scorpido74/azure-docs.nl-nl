@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Azure Backup beveiligde werk belastingen bewaken'
+title: Azure Backup beveiligde werk belastingen bewaken
 description: In dit artikel vindt u informatie over de bewakings-en meldings mogelijkheden voor Azure Backup werk belastingen met behulp van de Azure Portal.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; Berichten
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/05/2019
-ms.author: dacurwin
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: cd9e4e14771744b6275bb1dfe0a96bbef475a123
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: ea5102a95a9bef17f25219e00dec4654bf7f06d6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090964"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172863"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Bewaking Azure Backup werk belastingen
 
@@ -63,7 +57,7 @@ Er zijn enkele uitzonde ringen wanneer een waarschuwing niet wordt gegenereerd b
 
 De bovenstaande uitzonde ringen zijn ontworpen op basis van de uitleg dat het resultaat van deze bewerkingen (voornamelijk door de gebruiker geactiveerd) direct wordt weer gegeven op de portal-of PS/CLI-clients. Daarom is de gebruiker onmiddellijk op de hoogte en heeft deze geen melding nodig.
 
-### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Waarschuwingen van de volgende Azure Backup oplossingen worden hier weer gegeven:
+### <a name="alerts-from-the-following-azure-backup-solutions-are-shown-here"></a>Waarschuwingen van de volgende Azure Backup oplossingen worden hier weer gegeven
 
 - Back-ups van Azure-VM's
 - Azure-bestandsback-ups

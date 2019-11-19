@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: kirankk
-ms.openlocfilehash: a8af36da7b9043492f1ed3c77dcc1b35dc2936fe
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 78b88f4e4e60d1f79263bfd9d7dfaf0cabc70de6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132560"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173914"
 ---
 # <a name="tutorial-build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>Zelf studie: een .NET-console-app maken voor het beheren van gegevens in Azure Cosmos DB SQL-API-account
 
@@ -259,7 +259,7 @@ Een database is de logische container voor items die zijn gepartitioneerd in con
 1. Selecteer F5 om de toepassing uit te voeren.
 
    > [!NOTE]
-   > Als u de uitzonde ring ' 503-Service niet beschikbaar ' krijgt, worden de vereiste [poorten](performance-tips.md#networking) voor de directe modus geblokkeerd door een firewall. U kunt dit probleem oplossen door de vereiste [poorten](performance-tips.md#networking) te openen of door de gateway modus te gebruiken zoals hieronder wordt weer gegeven.
+   > Als u de fout melding ' 503-Service niet beschikbaar ' krijgt, is het mogelijk dat de vereiste [poorten](performance-tips.md#networking) voor de directe connectiviteits modus worden geblokkeerd door een firewall. Als u dit probleem wilt oplossen, opent u de vereiste poorten of gebruikt u de connectiviteit van de gateway modus, zoals wordt weer gegeven in de volgende code:
    ```csharp
      // Create a new instance of the Cosmos Client in Gateway mode
      this.cosmosClient = new CosmosClient(EndpointUri, PrimaryKey, new CosmosClientOptions()

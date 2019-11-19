@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c0a73f5257bf763633052aab89f92ea0e5d5c000
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 317efa17b294e859ef8a092451aca70b5b836fe7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927115"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167791"
 ---
 # <a name="authentication-basics"></a>Basisbeginselen van verificatie
 
@@ -148,7 +148,7 @@ Met dit kenmerk wordt ASP.NET gecontroleerd op de aanwezigheid van een sessie co
 ### <a name="how-a-web-app-delegates-sign-in-to-azure-ad-and-obtains-a-token"></a>Hoe een web-app zich aanmeldt bij Azure AD en een token verkrijgt
 
 Gebruikers verificatie gebeurt via de browser. Het OpenID Connect-protocol gebruikt standaard berichten van het HTTP-protocol.
-- De web-app stuurt een HTTP 202 (omleiding) naar de browser om Azure AD te gebruiken.
+- De web-app stuurt een HTTP 302 (omleiding) naar de browser om Azure AD te gebruiken.
 - Wanneer de gebruiker is geverifieerd, verzendt Azure AD het token naar de web-app met behulp van een omleiding via de browser.
 - De omleiding wordt verzorgd door de web-app in de vorm van een omleidings-URI. Deze omleidings-URI is geregistreerd bij het Azure AD-toepassings object. Er kunnen verschillende omleidings-Uri's zijn omdat de toepassing kan worden geïmplementeerd op verschillende Url's. De web-app moet dus ook de omleidings-URi opgeven die moet worden gebruikt.
 - Azure AD controleert of de omleidings-URI die door de web-app is verzonden, een van de geregistreerde omleidings-Uri's voor de app is.
@@ -159,7 +159,7 @@ De hierboven beschreven stroom geldt, met kleine verschillen, voor desktop-en mo
 
 Desktop-en mobiele toepassingen kunnen een Inge sloten Webbe sturings element of een systeem browser gebruiken voor verificatie. In het volgende diagram ziet u hoe een bureau blad of een mobiele app de micro soft Authentication Library (MSAL) gebruikt om toegangs tokens te verkrijgen en Web-Api's aan te roepen.
 
-![Bureau blad-app hoe deze eruitziet](media/authentication-scenarios/web-app-how-it-appears-to-be.png)
+![Bureau blad-app hoe deze eruitziet](media/authentication-scenarios/desktop-app-how-it-appears-to-be.png)
 
 MSAL maakt gebruik van een browser voor het ophalen van tokens en net als bij Web apps, delegeert verificatie aan Azure AD.
 

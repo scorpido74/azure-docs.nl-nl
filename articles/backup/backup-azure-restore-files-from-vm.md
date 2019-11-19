@@ -1,20 +1,14 @@
 ---
-title: 'Azure Backup: bestanden en mappen herstellen vanuit een back-up van Azure VM'
+title: Bestanden en mappen herstellen vanuit een back-up van Azure VM
 description: In dit artikel vindt u informatie over het herstellen van bestanden en mappen vanaf een herstel punt van een virtuele Azure-machine.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: herstel op item niveau; bestands herstel vanuit Azure VM-back-up; bestanden herstellen vanuit een Azure VM
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.author: dacurwin
-ms.openlocfilehash: 07ec5b76756b462e03e9349edd2daff96933588c
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3fff957e542a039fcc5121f13c062f710f9292c9
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091630"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172848"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Bestanden herstellen vanuit back-up van virtuele Azure-machine
 

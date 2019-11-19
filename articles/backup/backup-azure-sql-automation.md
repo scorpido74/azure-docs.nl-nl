@@ -1,27 +1,21 @@
 ---
-title: SQL-data base in azure VM Backup & herstellen via Power shell-Azure Backup
+title: SQL-data base in azure VM Backup & herstellen via Power shell
 description: Back-ups maken van SQL-data bases in azure-Vm's en deze herstellen met Azure Backup en Power shell.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: Azure Backup; SQL;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 03/15/2019
-ms.author: dacurwin
 ms.assetid: 57854626-91f9-4677-b6a2-5d12b6a866e1
-ms.openlocfilehash: 2622fc9b7b7bc5caedc560af64a5d6b2971b814f
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 115eef3619f76f83f63c5e69e86393c032e0844e
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090936"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172629"
 ---
 # <a name="back-up-and-restore-sql-databases-in-azure-vms-with-powershell"></a>Back-up en herstel van SQL-data bases in azure Vm's met Power shell
 
 In dit artikel wordt beschreven hoe u Azure PowerShell kunt gebruiken om een back-up te maken van een SQL-data base en deze te herstellen in een Azure VM met behulp van [Azure Backup](backup-overview.md) Recovery Services
 
-In deze zelfstudie wordt het volgende uitgelegd:
+In dit artikel wordt uitgelegd hoe u:
 
 > [!div class="checklist"]
 >

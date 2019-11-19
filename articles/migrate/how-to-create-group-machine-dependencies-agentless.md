@@ -4,27 +4,25 @@ description: Hierin wordt beschreven hoe u groepen maakt met behulp van computer
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: e9f9e812d5463f0a503b100780f9b988e43f748d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: d0e002f0f1e620c108b23790dfc81574bee23795
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720267"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158433"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Visualisatie van de afhankelijkheid van agents instellen voor evaluatie
-
-> [!NOTE]
-> Als u deze functie nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze wordt in de volgende week weer gegeven.
 
 In dit artikel wordt beschreven hoe u afhankelijkheids toewijzing zonder agent instelt in Azure Migrate: Server evaluatie. Deze functie is momenteel beschikbaar als preview-versie voor VMware-machines die zijn gedetecteerd met een Azure Migrate apparaat. 
 
 > [!IMPORTANT]
 > Visualisatie van de afhankelijkheid van agents is momenteel beschikbaar als preview-versie voor Azure VMware-Vm's die zijn gedetecteerd met een Azure Migrate apparaat.
-> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt. Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
+> Deze preview-versie wordt aangeboden zonder service level agreement en wordt niet aanbevolen voor productieworkloads. Misschien worden bepaalde functies niet ondersteund of zijn de mogelijkheden ervan beperkt.
+> Zie [Supplemental Terms of Use for Microsoft Azure Previews (Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews)](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.
 
-## <a name="about-dependency-mapping"></a>Over afhankelijkheids toewijzing 
+## <a name="about-dependency-mapping"></a>Over afhankelijkheids toewijzing
 
 Met afhankelijkheids toewijzing kunt u afhankelijkheden visualiseren tussen computers die u wilt beoordelen en migreren. U gebruikt meestal afhankelijkheids toewijzing als u computers wilt beoordelen met een hoger vertrouwens niveau.
 
@@ -46,7 +44,7 @@ Voor visualisatie zonder agent hoeft u geen agents op computers te installeren. 
 ## <a name="current-limitations"></a>Huidige beperkingen
 
 - Visualisatie zonder agent is momenteel alleen beschikbaar voor virtuele VMware-machines.
-- Nu kunt u een server niet toevoegen aan of verwijderen uit een groep in de weer gave afhankelijkheids analyse. 
+- Nu kunt u een server niet toevoegen aan of verwijderen uit een groep in de weer gave afhankelijkheids analyse.
 - Afhankelijkheids toewijzing voor een groep servers is momenteel niet beschikbaar.
 - De afhankelijkheids gegevens kunnen momenteel niet worden gedownload in de indeling tabellair.
 
@@ -60,12 +58,12 @@ Voor visualisatie zonder agent hoeft u geen agents op computers te installeren. 
 
 
 ### <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
- 
+
 De volgende besturings systemen worden ondersteund voor visualisatie van agentloze afhankelijkheden.
 
 **Type** | **Ondersteunde besturingssystemen**
---- | --- 
-**Windows** | Micro soft Windows Server 2016 <br/> Micro soft Windows Server 2012 R2 <br/> Micro soft Windows Server 2012 <br/> Micro soft Windows Server 2008 R2 (64-bits) 
+--- | ---
+**Windows** | Micro soft Windows Server 2016 <br/> Micro soft Windows Server 2012 R2 <br/> Micro soft Windows Server 2012 <br/> Micro soft Windows Server 2008 R2 (64-bits)
 **Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
@@ -84,7 +82,7 @@ Voeg het account als volgt toe:
 
 1. Open de app voor het beheren van apparaten. Navigeer naar het deel venster **vCenter-gegevens opgeven** .
 2. Klik in de sectie **toepassing en afhankelijkheden detecteren op vm's** op **referenties toevoegen** .
-3. Kies het **besturings systeem**. 
+3. Kies het **besturings systeem**.
 4. Geef een beschrijvende naam op voor het account.
 5. Geef de **gebruikers naam** en het **wacht woord** op
 6. Klik op **Opslaan**.
@@ -113,8 +111,8 @@ U kunt afhankelijkheden 6 uur na het starten van de detectie van afhankelijkhede
 2. Zoek naar de machine waarvoor u de afhankelijkheids toewijzing wilt weer geven.
 3. Klik op **afhankelijkheden weer geven** in de kolom **afhankelijkheden** .
 4. Wijzig de tijds periode waarvoor u de kaart wilt weer geven met de vervolg keuzelijst **tijd duur** .
-5. Vouw de **client** groep uit om de computers weer te geven die een afhankelijkheid hebben op de geselecteerde computer. 
-6. Vouw de **poort** groep uit om de computers weer te geven die een afhankelijkheid hebben van de geselecteerde computer. 
+5. Vouw de **client** groep uit om de computers weer te geven die een afhankelijkheid hebben op de geselecteerde computer.
+6. Vouw de **poort** groep uit om de computers weer te geven die een afhankelijkheid hebben van de geselecteerde computer.
 7. Als u naar de kaart weergave van een van de afhankelijke computers wilt gaan, klikt u op de naam van de computer en vervolgens op **Server toewijzing laden**
 
     ![Server poort groep uitvouwen en server toewijzing laden](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

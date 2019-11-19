@@ -1,21 +1,21 @@
 ---
-title: Replica's in Azure Database for MariaDB lezen
+title: Leesreplica's in Azure Database for MariaDB
 description: "Meer informatie over het lezen van replica's in Azure Database for MariaDB: het kiezen van regio's, het maken van replica's, het verbinden van replica's, het bewaken van replicatie en het stoppen van de replicatie."
 author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/06/2019
-ms.openlocfilehash: 29725c302887448689f4aafd86f1f834d81c23ed
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.date: 11/17/2019
+ms.openlocfilehash: f761cb1c4e895cd0960a0a07033e609acf9ef601
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973581"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158411"
 ---
-# <a name="read-replicas-in-azure-database-for-mariadb"></a>Replica's in Azure Database for MariaDB lezen
+# <a name="read-replicas-in-azure-database-for-mariadb"></a>Leesreplica's in Azure Database for MariaDB
 
-Met de functie replica lezen kunt u gegevens van een Azure Database for MariaDB server repliceren naar een alleen-lezen server. U kunt van de hoofdserver naar maximaal vijf replica's repliceren. Replica's worden asynchroon bijgewerkt met behulp van de MariaDB-engine van het binaire logboek bestand (binlog) met de globale trans actie-ID (GTID). Zie het [overzicht van binlog-replicatie](https://mariadb.com/kb/en/library/replication-overview/)voor meer informatie over binlog-replicatie.
+Met de functie leesreplica kunt u gegevens van een Azure Database for MariaDB-server repliceren naar een alleen-lezen server. U kunt van de hoofdserver naar maximaal vijf replica's repliceren. Replica's worden asynchroon bijgewerkt met behulp van de MariaDB-engine van het binaire logboek bestand (binlog) met de globale trans actie-ID (GTID). Zie het [overzicht van binlog-replicatie](https://mariadb.com/kb/en/library/replication-overview/)voor meer informatie over binlog-replicatie.
 
 Replica's zijn nieuwe servers die u op dezelfde manier beheert als gewone Azure Database for MariaDB servers. Voor elke Lees replica wordt u gefactureerd voor de ingerichte Compute in vCores en Storage in GB/maand.
 
@@ -40,7 +40,7 @@ U kunt een lees replica maken in een andere regio dan de hoofd server. Replicati
 
 U kunt een hoofd server in een [Azure database for MariaDB regio](https://azure.microsoft.com/global-infrastructure/services/?products=mariadb)hebben.  Een hoofd server kan een replica hebben in het gekoppelde gebied of in de universele replica regio's. In de onderstaande afbeelding ziet u welke replica regio's er beschikbaar zijn, afhankelijk van de hoofd regio.
 
-[![Read-replica regio's](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
+[replica regio's ![lezen](media/concepts-read-replica/read-replica-regions.png)](media/concepts-read-replica/read-replica-regions.png#lightbox)
 
 ### <a name="universal-replica-regions"></a>Universele replica regio's
 U kunt in een van de volgende regio's een lees replica maken, ongeacht waar uw master server zich bevindt. De ondersteunde regio's voor universele replica's zijn:
@@ -55,9 +55,9 @@ Als u verschillende regio's replica's gebruikt voor het plannen van herstel na n
 
 Er zijn echter beperkingen om rekening mee te houden: 
 
-* Regionale beschikbaarheid: Azure Database for MariaDB is beschikbaar in VS-West 2, Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
+* Regionale Beschik baarheid: Azure Database for MariaDB is beschikbaar in VS-West 2, Frankrijk-centraal, UAE-noord en Duitsland-centraal. De gekoppelde regio's zijn echter niet beschikbaar.
     
-* Uni-directionele paren: Sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid en US Gov-Virginia. 
+* Uni-directionele paren: sommige Azure-regio's zijn in slechts één richting gekoppeld. Deze regio's omvatten West-India, Brazilië-zuid en US Gov-Virginia. 
    Dit betekent dat een master-server in West-India een replica kan maken in India-zuid. Een hoofd server in India-zuid kan echter geen replica maken in West-India. Dit komt doordat de secundaire regio van West-India India-zuid is, India-zuid maar de secundaire regio van het westen is niet West-India.
 
 
@@ -74,7 +74,7 @@ Meer informatie over [het maken van een lees replica in de Azure Portal](howto-r
 
 ## <a name="connect-to-a-replica"></a>Verbinding maken met een replica
 
-Wanneer u een replica maakt, neemt deze de firewall regels of het VNet-service-eind punt van de hoofd server niet over. Deze regels moeten onafhankelijk worden ingesteld voor de replica.
+Bij het maken neemt een replica de firewall regels of het VNet-service-eind punt van de hoofd server over. Daarna zijn deze regels onafhankelijk van de hoofd server.
 
 De replica neemt het beheerders account over van de hoofd server. Alle gebruikers accounts op de hoofd server worden gerepliceerd naar de replica's die worden gelezen. U kunt alleen verbinding maken met een lees replica met behulp van de gebruikers accounts die beschikbaar zijn op de master server.
 
@@ -90,7 +90,7 @@ Voer bij de prompt het wacht woord voor het gebruikers account in.
 
 Azure Database for MariaDB levert de **replicatie vertraging in seconden** metric in azure monitor. Deze metriek is alleen beschikbaar voor replica's.
 
-Deze metrische gegevens worden berekend met behulp van de beschik bare `seconds_behind_master` in de `SHOW SLAVE STATUS` opdracht van MariaDB.
+Deze metrische gegevens worden berekend met behulp van de `seconds_behind_master` metrische gegevens die beschikbaar zijn in de `SHOW SLAVE STATUS` opdracht van MariaDB.
 
 Stel een waarschuwing in om u te informeren wanneer de replicatie vertraging een waarde bereikt die niet geschikt is voor uw werk belasting.
 
@@ -127,6 +127,8 @@ Een replica wordt gemaakt met behulp van dezelfde server configuratie als de Mas
 > [!IMPORTANT]
 > Voordat een configuratie van een hoofdserver wordt bijgewerkt naar nieuwe waarden, moet u de configuratie van de replica bijwerken naar gelijke of hogere waarden. Met deze actie wordt ervoor gezorgd dat in de replica alle wijzigingen worden doorgevoerd die in de hoofdserver zijn aangebracht.
 
+Firewall regels, regels voor virtuele netwerken en parameter instellingen worden overgenomen van de hoofd server naar de replica wanneer de replica wordt gemaakt. Daarna zijn de regels van de replica onafhankelijk.
+
 ### <a name="stopped-replicas"></a>Gestopte replica's
 
 Als u de replicatie tussen een hoofd server en een lees replica stopt, wordt de gestopte replica een zelfstandige server die zowel lees-als schrijf bewerkingen accepteert. De zelfstandige server kan niet opnieuw in een replica worden gemaakt.
@@ -139,7 +141,7 @@ Wanneer een master server wordt verwijderd, wordt replicatie gestopt voor alle r
 
 Gebruikers op de hoofd server worden gerepliceerd naar de Lees replica's. U kunt alleen verbinding maken met een lees replica met behulp van de beschik bare gebruikers accounts op de master server.
 
-### <a name="server-parameters"></a>Serverparameters
+### <a name="server-parameters"></a>Server parameters
 
 Om problemen met de synchronisatie van gegevens en mogelijk verlies of beschadiging van gegevens te voorkomen, worden bepaalde serverparameters vergrendeld zodat ze niet kunnen worden bijgewerkt bij gebruik van replica's voor lezen.
 
@@ -147,7 +149,7 @@ De volgende server parameters zijn vergrendeld op de Master-en replica servers:
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-De para meter [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) wordt op de replica servers vergrendeld.
+De para meter [`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) is vergrendeld op de replica servers.
 
 ### <a name="other"></a>Overige
 

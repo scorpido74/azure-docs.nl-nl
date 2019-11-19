@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: toepassings consistente back-ups van virtuele Linux-machines'
+title: Toepassings consistente back-ups van virtuele Linux-machines
 description: Maak toepassings consistente back-ups van uw virtuele Linux-machines naar Azure. In dit artikel wordt uitgelegd hoe u het script Framework kunt configureren voor het maken van back-ups van door Azure geïmplementeerde Linux-Vm's Dit artikel bevat ook informatie over het oplossen van problemen.
 ms.reviewer: anuragm
-author: dcurwin
-manager: carmonm
-keywords: app-consistente back-up; toepassings consistente Azure VM-back-up; Back-up van Linux-VM'S; Azure Backup
-ms.service: backup
 ms.topic: conceptual
 ms.date: 01/12/2018
-ms.author: dacurwin
-ms.openlocfilehash: 1835c6968bfdfcc3f3ce4d8a624e8f6bd62e224c
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 36eeb9f63c67a01bf37412101e23be035596de94
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72375953"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173009"
 ---
 # <a name="application-consistent-backup-of-azure-linux-vms"></a>Toepassings consistente back-up van virtuele Azure Linux-machines
 
@@ -84,8 +79,8 @@ Zorg ervoor dat u de juiste logboek registratie toevoegt tijdens het schrijven v
 | Post-ScriptNotFound |Het post script is niet gevonden op de locatie die is opgegeven in het configuratie bestand **VMSnapshotScriptPluginConfig. json** . |Zorg ervoor dat het post script aanwezig is op het pad dat is opgegeven in het configuratie bestand om te zorgen voor toepassings consistente back-up.|
 | IncorrectPluginhostFile |Het **Pluginhost** -bestand, dat wordt meegeleverd met de uitbrei ding VmSnapshotLinux, is beschadigd, dus pre-script en post-script kan niet worden uitgevoerd en de back-up is niet toepassings consistent.| Verwijder de **VmSnapshotLinux** -extensie en wordt deze automatisch opnieuw geïnstalleerd met de volgende back-up om het probleem op te lossen. |
 | IncorrectJSONConfigFile | Het bestand **VMSnapshotScriptPluginConfig. json** is onjuist, dus pre-script en post-script kan niet worden uitgevoerd en de back-up is niet toepassings consistent. | Down load het exemplaar van [github](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) en configureer het opnieuw. |
-| InsufficientPermissionforPre-script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
-| InsufficientPermissionforPost-script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
+| InsufficientPermissionforPre-Script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
+| InsufficientPermissionforPost-Script | Voor het uitvoeren van scripts moet de hoofd gebruiker de eigenaar van het bestand zijn en moet het bestand ' 700 ' machtigingen hebben (dat wil zeggen dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft). | Zorg ervoor dat ' root ' gebruiker de ' eigenaar ' van het script bestand is en dat alleen ' eigenaar ' de machtigingen lezen, schrijven en uitvoeren heeft. |
 | Pre-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in het bestand **VMSnapshotScriptPluginConfig. json** dat zich op **/etc/Azure**bevindt. |
 | Post-ScriptTimeout | Er is een time-out opgetreden tijdens het uitvoeren van de toepassings consistente back-up. | Controleer het script en verhoog de time-out in het bestand **VMSnapshotScriptPluginConfig. json** dat zich op **/etc/Azure**bevindt. |
 

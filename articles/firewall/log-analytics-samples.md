@@ -1,18 +1,18 @@
 ---
 title: Voor beelden van Azure Firewall log Analytics
-description: Voor beelden van Azure Firewall log Analytics
+description: Azure Monitor-logboeken kunnen worden gebruikt voor het analyseren van uw Azure Firewall. Een voorbeeld bestand is ingebouwd in de ontwerp functie voor weer gaven in Azure Monitor.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: a4ab1263abac67714357594e5bd87a4b910953b1
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033982"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168884"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Voor beelden van Azure Firewall log Analytics
 
@@ -26,9 +26,9 @@ Hier kunt u een voor beeld van een visualisatie Azure Monitor logboeken configur
 
 Voer de volgende stappen uit om de weer gave toe te voegen aan uw Log Analytics-werk ruimte:
 
-1. Open de werk ruimte Log Analytics in azure Portal.
+1. Open de werk ruimte Log Analytics in het Azure Portal.
 2. Open de **weer gave Designer** onder **Algemeen**.
-3. Klik op **importeren**.
+3. Klik op **Import**.
 4. Blader en selecteer het **AzureFirewall. omsview** -bestand dat u eerder hebt gedownload.
 5. Klik op **Opslaan**.
 
@@ -40,7 +40,7 @@ En voor de logboek gegevens van de netwerk regel:
 
 ![Logboek gegevens van netwerk regel]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Azure Firewall registreert de gegevens onder AzureDiagnostics met categorie als **AzureFirewallApplicationRule** of **AzureFirewallNetworkRule**. De gegevens met de details worden opgeslagen in het veld msg_s. Met de operator [parseren](https://docs.microsoft.com/azure/kusto/query/parseoperator) kunnen we de verschillende interessante eigenschappen uit het veld msg_s ophalen. De onderstaande query's extra heren de informatie voor beide categorieën.
+Azure Firewall registreert de gegevens onder AzureDiagnostics met categorie als **AzureFirewallApplicationRule** of **AzureFirewallNetworkRule**. De gegevens met de details worden opgeslagen in het veld msg_s. Met de operator [parseren](https://docs.microsoft.com/azure/kusto/query/parseoperator) kunnen we de verschillende interessante eigenschappen uit het msg_s veld extra heren. De onderstaande query's extra heren de informatie voor beide categorieën.
 
 ## <a name="application-rules-log-data-query"></a>Query voor logboek gegevens van toepassings regels
 
@@ -168,4 +168,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [zelf studie voor meer informatie over Azure firewall bewaking en diagnostische gegevens: Azure Firewall logboeken en metrische gegevens](tutorial-diagnostics.md)bewaken.
+Zie [zelf studie: Azure firewall logboeken en metrische gegevens controleren](tutorial-diagnostics.md)voor meer informatie over Azure firewall bewaking en diagnostische gegevens.

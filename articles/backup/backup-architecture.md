@@ -1,18 +1,14 @@
 ---
-title: Azure Backup architectuur
+title: Architectuur overzicht
 description: Hierin wordt een overzicht gegeven van de architectuur, onderdelen en processen die door de Azure Backup-service worden gebruikt.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
-ms.author: dacurwin
-ms.openlocfilehash: d914c2988b5f28940021de24dcfe1183c68b15cc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: ae7b0c2b81bd3d393b7e749e077a6f5fa0379562
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074351"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173508"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architectuur en onderdelen van Azure Backup
 
@@ -96,7 +92,7 @@ Het opslag verbruik, de beoogde herstel tijd (RTO) en het netwerk verbruik vari√
 
 De volgende tabel bevat een overzicht van de ondersteunde functies voor de verschillende typen back-ups:
 
-**Functie** | **On-premises Windows Server-computers (direct)** | **Azure VM's** | **Computers of apps met DPM/MABS**
+**Functie** | **Directe back-ups van bestanden en mappen (met behulp van de MARS-agent)** | **Back-up van Azure VM** | **Computers of apps met DPM/MABS**
 --- | --- | --- | ---
 Back-up naar kluis maken | ![Ja][green] | ![Ja][green] | ![Ja][green]
 Back-up naar DPM/MABS-schijf en vervolgens naar Azure | | | ![Ja][green]
@@ -106,7 +102,7 @@ Back-ups maken van ontdubbelde schijven | | | ![Gedeeltelijk][yellow]<br/><br/> 
 
 ![Tabel sleutel](./media/backup-architecture/table-key.png)
 
-## <a name="architecture-direct-backup-of-azure-vms"></a>Architectuur: directe back-ups van virtuele Azure-machines
+## <a name="architecture-built-in-azure-vm-backup"></a>Architectuur: ingebouwde Azure VM-back-up
 
 1. Wanneer u back-up voor een virtuele machine van Azure inschakelt, wordt een back-up uitgevoerd volgens het schema dat u opgeeft.
 1. Tijdens de eerste back-up wordt een back-upextensie op de VM ge√Ønstalleerd als de virtuele machine wordt uitgevoerd.

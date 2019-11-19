@@ -1,17 +1,14 @@
 ---
 title: 'Zelf studie: een on-premises virtueel netwerk maken in azure met behulp van terraform'
 description: Zelf studie waarin wordt uitgelegd hoe u een on-premises VNet in azure implementeert dat lokale bronnen bevat
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: df96b9340e9961387fd727eba898fe4db6a18821
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 361f9919fdd406a1fef6bbf2b7512dbc20266a54
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969392"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159214"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-in-azure-using-terraform"></a>Zelf studie: een on-premises virtueel netwerk maken in azure met behulp van terraform
 
@@ -33,7 +30,7 @@ De volgende taken worden uitgelegd:
 
 Als u een on-premises netwerk wilt simuleren, maakt u een virtueel Azure-netwerk. De demo VNet neemt de plaats van een echt privé on-premises netwerk. Als u hetzelfde wilt doen met uw bestaande on-premises netwerk, wijst u de juiste IP-adressen toe aan de subnetten.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 

@@ -1,17 +1,14 @@
 ---
 title: 'Zelf studie: een hub virtueel netwerk apparaat maken in azure met behulp van terraform'
 description: Zelf studie implementeert het maken van een hub-VNet dat fungeert als een algemeen verbindings punt tussen alle andere netwerken
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 5696ee20f6f306d45c5d7ba04552b9206f2a5429
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 28ccb89d237cbe21dd0433da5f7fbb32883f6550
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969373"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159244"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-appliance-in-azure-using-terraform"></a>Zelf studie: een hub virtueel netwerk apparaat maken in azure met behulp van terraform
 
@@ -35,7 +32,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 ## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 

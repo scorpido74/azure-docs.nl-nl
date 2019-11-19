@@ -1,18 +1,14 @@
 ---
-title: Back-ups van virtuele Azure-machines maken en herstellen met behulp van Azure Backup met Power shell
+title: Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 description: Hierin wordt beschreven hoe u back-ups van virtuele Azure-machines maakt en herstelt met Azure Backup met Power shell
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.author: dacurwin
-ms.openlocfilehash: 91e71e2ab4c028e44f667133237cefb2263ae49a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 7afa791c4a98ca5e40c0ee3983ba8650268c00ee
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969061"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172552"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Back-ups van virtuele Azure-machines maken en herstellen met Power shell
 
@@ -21,6 +17,7 @@ In dit artikel wordt uitgelegd hoe u een back-up maakt van een Azure-VM en deze 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
+>
 > * Maak een Recovery Services kluis en stel de kluis context in.
 > * Een back-upbeleid definiëren
 > * Het back-upbeleid toepassen voor de beveiliging van meerdere virtuele machines
@@ -29,7 +26,7 @@ In dit artikel leert u het volgende:
 ## <a name="before-you-start"></a>Voordat u begint
 
 * [Meer informatie](backup-azure-recovery-services-vault-overview.md) over Recovery Services-kluizen.
-* [Bekijk](backup-architecture.md#architecture-direct-backup-of-azure-vms) de architectuur voor Azure VM-back-ups, [Lees meer over](backup-azure-vms-introduction.md) het back-upproces en [Bekijk](backup-support-matrix-iaas.md) de ondersteuning, beperkingen en vereisten.
+* [Bekijk](backup-architecture.md#architecture-built-in-azure-vm-backup) de architectuur voor Azure VM-back-ups, [Lees meer over](backup-azure-vms-introduction.md) het back-upproces en [Bekijk](backup-support-matrix-iaas.md) de ondersteuning, beperkingen en vereisten.
 * Controleer de Power shell-object hiërarchie voor Recovery Services.
 
 ## <a name="recovery-services-object-hierarchy"></a>Object hiërarchie Recovery Services
@@ -44,7 +41,7 @@ Raadpleeg de naslag informatie **AZ. Recovery Services** [cmdlet](https://docs.m
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Beginnen:
+U gaat als volgt aan de slag:
 
 1. [De nieuwste versie van Power shell downloaden](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
@@ -131,7 +128,7 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-## <a name="back-up-azure-vms"></a>Back-up maken van Azure-VM's
+## <a name="back-up-azure-vms"></a>Back-ups maken van Azure-VM's
 
 Gebruik een Recovery Services kluis om uw virtuele machines te beveiligen. Voordat u de beveiliging toepast, stelt u de kluis context (het type gegevens dat in de kluis wordt beveiligd) in en controleert u het beveiligings beleid. Het beveiligings beleid is het schema wanneer de back-uptaken worden uitgevoerd en hoe lang elke moment opname van de back-up wordt bewaard.
 
@@ -152,7 +149,7 @@ $targetVault = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" 
 $targetVault.ID
 ```
 
-Of
+of
 
 ```powershell
 $targetVaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -605,7 +602,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
      }
       ```
 
-   * **Niet-beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/geheim niet beschikbaar** is, herstelt u de geheimen in de sleutel kluis met behulp van de procedure in [ Een niet-versleutelde virtuele machine herstellen vanaf een Azure Backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor de gegevens-blob). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.<br>
+   * **Niet-beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen naar de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor de gegevens-blob). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.<br>
 
    Het onderstaande script moet alleen worden uitgevoerd als de bron sleutel kluis/het geheim niet beschikbaar is.
 
@@ -632,7 +629,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
       }
       ```
 
-   * **Niet-beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de source **-kluis/sleutel/geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor de gegevens-blob). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
+   * **Niet-beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor niet-beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de bron **sleutel kluis/-geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf Azure Backup een](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om versleutelings Details in te stellen op de teruggezette OS-BLOB (deze stap is niet vereist voor de gegevens-blob). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
 
    Het onderstaande script hoeft alleen te worden uitgevoerd als de bron sleutel kluis/-geheim niet beschikbaar is.
 
@@ -666,7 +663,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
 
    * **Beheerde en versleutelde vm's met Azure AD (bek en KEK)** : voor beheerde versleutelde Vm's met Azure AD (versleuteld met bek en KEK), koppelt u de herstelde beheerde schijven. Zie [een gegevens schijf koppelen aan een Windows-VM met behulp van Power shell](../virtual-machines/windows/attach-disk-ps.md)voor gedetailleerde informatie.
 
-   * **Beheerde en versleutelde virtuele machines zonder Azure AD (alleen bek)** : voor beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/geheim niet beschikbaar** is, herstelt u de geheimen in de sleutel kluis met behulp van de procedure in [herstel a niet-versleutelde virtuele machine van een Azure Backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor de gegevens schijf). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
+   * **Beheerde en versleutelde vm's zonder Azure AD (alleen bek)** : voor beheerde, versleutelde virtuele machines zonder Azure AD (alleen versleuteld met bek), als de bron sleutel **kluis/het geheim niet beschikbaar is** , herstelt u de geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor de gegevens schijf). De $dekurl kan worden opgehaald uit de herstelde sleutel kluis.
 
      Het onderstaande script moet alleen worden uitgevoerd als de bron sleutel kluis/het geheim niet beschikbaar is.  
 
@@ -680,7 +677,7 @@ In de volgende sectie worden de stappen beschreven die nodig zijn om een virtuel
 
      Nadat de geheimen beschikbaar zijn en de versleutelings Details zijn ingesteld op de besturingssysteem schijf, raadpleegt u [een gegevens schijf koppelen aan een Windows-VM met behulp van Power shell](../virtual-machines/windows/attach-disk-ps.md)om de herstelde beheerde schijven te koppelen.
 
-   * **Beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de source **-kluis/sleutel/geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de procedure in [Een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md). Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor de gegevens schijf). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
+   * **Beheerde en versleutelde vm's zonder Azure AD (bek en KEK)** -voor beheerde, versleutelde virtuele machines zonder Azure AD (versleuteld met bek & KEK), als de source **-kluis/sleutel/geheim niet beschikbaar is** , herstelt u de sleutel en geheimen in de sleutel kluis met behulp van de procedure in [een niet-versleutelde virtuele machine herstellen vanaf een Azure backup herstel punt](backup-azure-restore-key-secret.md) Voer vervolgens de volgende scripts uit om de versleutelings gegevens op de teruggezette besturingssysteem schijf in te stellen (deze stap is niet vereist voor de gegevens schijf). De $dekurl en $kekurl kunnen worden opgehaald uit de herstelde sleutel kluis.
 
    Het onderstaande script hoeft alleen te worden uitgevoerd als de bron sleutel kluis/-geheim niet beschikbaar is.
 

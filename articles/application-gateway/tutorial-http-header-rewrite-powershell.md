@@ -1,22 +1,22 @@
 ---
-title: Herschrijf de HTTP-headers in Azure Application Gateway
-description: Dit artikel bevat informatie over het maken van een Azure Application Gateway en Herschrijf de HTTP-headers met behulp van Azure PowerShell
+title: Een Azure-toepassing gateway maken & HTTP-headers opnieuw schrijven
+description: Dit artikel bevat informatie over het maken van een Azure-toepassing gateway en het herschrijven van HTTP-headers met Azure PowerShell
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/30/2019
+ms.date: 11/19/2019
 ms.author: absha
-ms.openlocfilehash: ba74bb8970949a15425a66f7cd4475749fd183df
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2663c049245a7025b5948a64fc5008bb9e7dee90
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64947094"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173720"
 ---
-# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Een toepassingsgateway maken en te herschrijven van HTTP-headers
+# <a name="create-an-application-gateway-and-rewrite-http-headers"></a>Een toepassings gateway maken en HTTP-headers opnieuw schrijven
 
-U kunt Azure PowerShell gebruiken om te configureren [regels voor het herschrijven van HTTP-aanvraag- en reactieheaders](rewrite-http-headers.md) bij het maken van de nieuwe [automatisch schalen en zone-redundante application gateway-SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+U kunt Azure PowerShell gebruiken om [regels te configureren voor het herschrijven van HTTP-aanvragen en-antwoord headers](rewrite-http-headers.md) wanneer u de nieuwe automatisch [schalen en zone-redundante Application Gateway-SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) maakt
 
 In dit artikel leert u het volgende:
 
@@ -25,7 +25,7 @@ In dit artikel leert u het volgende:
 > * Een virtueel netwerk automatisch schalen
 > * Een gereserveerd openbaar IP-adres maken
 > * De infrastructuur van de toepassingsgateway instellen
-> * Geef de HTTP-header herschrijven regelconfiguratie
+> * De configuratie van de regel voor het opnieuw schrijven van http-headers opgeven
 > * Automatisch schalen configureren
 > * De toepassingsgateway maken
 > * De toepassingsgateway testen
@@ -34,7 +34,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-In dit artikel is vereist dat u Azure PowerShell lokaal worden uitgevoerd. U moet Az moduleversie 1.0.0 of hoger is geïnstalleerd. Voer `Import-Module Az` en vervolgens`Get-Module Az` de versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
+Voor dit artikel moet u Azure PowerShell lokaal uitvoeren. U moet AZ module version 1.0.0 of later hebben geïnstalleerd. Voer `Import-Module Az` uit en`Get-Module Az` om de versie te vinden. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](https://docs.microsoft.com/powershell/azure/install-az-ps). Nadat u de versie van PowerShell hebt gecontroleerd, voert u `Login-AzAccount` uit om een verbinding op te zetten met Azure.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -89,7 +89,7 @@ $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork
 
 ## <a name="configure-the-infrastructure"></a>Infrastructuur configureren
 
-Configureer de IP-config, front-end-IP-config back-end-pool, HTTP-instellingen, certificaten, poort en listener in een indeling identiek zijn aan de bestaande standaard application-gateway. De nieuwe SKU volgt hetzelfde objectmodel als de standaard-SKU.
+Configureer de IP-configuratie, front-end IP-configuratie, back-end-pool, HTTP-instellingen, certificaat, poort en listener in een identieke indeling voor de bestaande standaard toepassings gateway. De nieuwe SKU volgt hetzelfde objectmodel als de standaard-SKU.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet
@@ -105,15 +105,15 @@ $setting = New-AzApplicationGatewayBackendHttpSettings -Name "BackendHttpSetting
           -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
-## <a name="specify-your-http-header-rewrite-rule-configuration"></a>Geef de HTTP-header herschrijven regelconfiguratie
+## <a name="specify-your-http-header-rewrite-rule-configuration"></a>De configuratie van de regel voor het opnieuw schrijven van HTTP-headers opgeven
 
-De nieuwe objecten die zijn vereist voor het herschrijven van de http-headers configureren:
+Configureer de nieuwe objecten die vereist zijn voor het herschrijven van de HTTP-headers:
 
-- **RequestHeaderConfiguration**: dit object wordt gebruikt om velden in de aanvraagheader die u van plan bent om te schrijven en de nieuwe waarde die de oorspronkelijke kopteksten worden herschreven moeten aan te geven.
-- **ResponseHeaderConfiguration**: dit object wordt gebruikt om de antwoord-header-velden die u van plan bent te herschrijven en de nieuwe waarde die de oorspronkelijke kopteksten worden herschreven moeten aan te geven.
-- **ActionSet**: dit object bevat de configuratie van de aanvraag- en reactieheaders hierboven opgegeven. 
-- **RewriteRule**: dit object bevat alle de *actionSets* hierboven opgegeven. 
-- **RewriteRuleSet**-dit object bevat alle de *rewriteRules* en moet worden gekoppeld aan een aanvraag routeringsregel - basis of op basis van een pad.
+- **RequestHeaderConfiguration**: dit object wordt gebruikt om de velden van de aanvraag header op te geven die u wilt herschrijven en de nieuwe waarde waarnaar de oorspronkelijke headers moeten worden geschreven.
+- **ResponseHeaderConfiguration**: dit object wordt gebruikt om de velden van de antwoord header op te geven die u wilt herschrijven en de nieuwe waarde waarnaar de oorspronkelijke headers moeten worden geschreven.
+- **Actieset**: dit object bevat de configuraties van de hierboven opgegeven aanvraag-en antwoord headers. 
+- **RewriteRule**: dit object bevat alle hierboven opgegeven *actionSets* . 
+- **RewriteRuleSet**: dit object bevat alle *rewriteRules* en moet worden gekoppeld aan een regel voor aanvraag routering-basis-of op basis van een pad.
 
    ```azurepowershell
    $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-isThroughProxy" -HeaderValue "True"
@@ -123,9 +123,9 @@ De nieuwe objecten die zijn vereist voor het herschrijven van de http-headers co
    $rewriteRuleSet = New-AzApplicationGatewayRewriteRuleSet -Name rewriteRuleSet1 -RewriteRule $rewriteRule
    ```
 
-## <a name="specify-the-routing-rule"></a>Geef de regel voor doorsturen
+## <a name="specify-the-routing-rule"></a>De routerings regel opgeven
 
-Maak een regel voor het doorsturen van aanvragen. Eenmaal gemaakt, wordt deze configuratie opnieuw schrijven is gekoppeld aan de bron-listener via de regel voor doorsturen. Wanneer u een basisregel voor routering, wordt de configuratie van de herschrijven header is gekoppeld aan de listener van een bron en is een algemene header herschrijven. Wanneer een regel op pad gebaseerde routering wordt gebruikt, wordt de configuratie van de koptekst opnieuw schrijven is gedefinieerd in de URL-path-map. Dus dit alleen van toepassing op het padgebied van het specifieke van een site. Hieronder is een eenvoudige regel voor doorsturen wordt gemaakt en de regelset herschrijven is gekoppeld.
+Een regel voor het door sturen van aanvragen maken. Nadat deze herschrijf configuratie is gemaakt, wordt deze aan de bron-listener gekoppeld via de routerings regel. Wanneer u een eenvoudige routerings regel gebruikt, wordt de configuratie voor het opnieuw schrijven van kopteksten gekoppeld aan een bronhost en is het herschrijven van de globale header. Wanneer een op een pad gebaseerde routerings regel wordt gebruikt, wordt de configuratie voor het opnieuw schrijven van de header gedefinieerd op de URL-pad toewijzing. Dit is dus alleen van toepassing op het specifieke pad naar het gebied van een site. Hieronder wordt een basis routerings regel gemaakt en de regelset herschrijven is gekoppeld.
 
 ```azurepowershell
 $rule01 = New-AzApplicationGatewayRequestRoutingRule -Name "Rule1" -RuleType basic `
@@ -159,7 +159,7 @@ $appgw = New-AzApplicationGateway -Name "AutoscalingAppGw" -Zone 1,2,3 -Resource
 
 ## <a name="test-the-application-gateway"></a>De toepassingsgateway testen
 
-Gebruik Get-AzPublicIPAddress om het openbare IP-adres van de toepassingsgateway. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
+Gebruik Get-AzPublicIPAddress om het open bare IP-adres van de toepassings gateway op te halen. Kopieer het openbare IP-adres of de DNS-naam en plak het adres of de naam in de adresbalk van de browser.
 
 ```azurepowershell
 Get-AzPublicIPAddress -ResourceGroupName $rg -Name AppGwVIP

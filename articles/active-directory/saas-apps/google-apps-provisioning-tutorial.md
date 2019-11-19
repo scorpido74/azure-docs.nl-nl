@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d4c08802b9a19398e7968901974cad86d9d946a
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: beaa8561028a9e21d0623c0eb8e19592f3cad055
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120315"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167856"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Zelf studie: G Suite configureren voor automatische gebruikers inrichting
 
@@ -32,7 +32,7 @@ Het doel van deze zelf studie is om te demonstreren welke stappen moeten worden 
 > [!NOTE]
 > De G suite-connector is onlangs bijgewerkt op oktober 2019. De volgende wijzigingen zijn aangebracht in de G suite-connector:
 - Er is ondersteuning toegevoegd voor aanvullende gebruikers-en groeps kenmerken van G suite. 
-- De namen van de doel kenmerken van G suite zijn bijgewerkt zodat deze overeenkomen met wat [hier](/azure/active-directory/manage-apps/customize-application-attributes)is gedefinieerd.
+- De namen van de doel kenmerken van G suite zijn bijgewerkt zodat deze overeenkomen met wat [hier](https://developers.google.com/admin-sdk/directory)is gedefinieerd.
 - De standaard kenmerk toewijzingen zijn bijgewerkt.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -129,6 +129,9 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 > [!TIP]
 > U kunt er ook voor kiezen om op SAML gebaseerde eenmalige aanmelding voor G suite in te scha kelen, gevolgd door de instructies in de [zelf studie over het eenmalige aanmelden bij de G suite](https://docs.microsoft.com/azure/active-directory/saas-apps/google-apps-tutorial). Eenmalige aanmelding kan onafhankelijk van automatische gebruikers inrichting worden geconfigureerd, hoewel deze twee functies elkaar behoeven.
 
+> [!NOTE]
+> Raadpleeg [Directory API](https://developers.google.com/admin-sdk/directory)voor meer informatie over het Directory-API-eind punt van G suite.
+
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>Automatische gebruikers inrichting configureren voor G suite in azure AD:
 
 1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **bedrijfs toepassingen**en selecteer **alle toepassingen**.
@@ -196,15 +199,6 @@ In deze sectie wordt u begeleid bij de stappen voor het configureren van de Azur
 Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die in het **bereik** zijn gedefinieerd in de sectie **instellingen** . Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan volgende synchronisaties, die ongeveer elke 40 minuten optreden, zolang de Azure AD-inrichtings service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen naar het rapport inrichtings activiteiten te volgen, waarin alle acties worden beschreven die worden uitgevoerd door de Azure AD Provisioning-Service op G suite.
 
 Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
-
-> [!NOTE]
-> Een andere levensvat bare optie voor het automatiseren van de gebruikers inrichting van G suite is het gebruik van [Google Cloud Directory Sync](https://support.google.com/a/answer/106368?hl=en). Met deze optie worden uw on-premises Active Directory-identiteiten naar G suite ingericht.
-
-## <a name="common-issues"></a>Algemene problemen
-* G suite vereist dat alle ingerichte gebruikers afkomstig zijn van geverifieerde domeinen. Zorg ervoor dat elke gebruiker die u wilt inrichten, een UPN heeft van een geverifieerd domein in G suite. Als een gebruiker van een niet-geverifieerd domein binnen het bereik van de inrichting valt, wordt er een fout melding weer geven in de [inrichtings logboeken](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) , zoals ' GoogleAppsInvalidDomain '. U kunt deze fouten voor komen en ervoor zorgen dat gebruikers van niet-geverifieerde domeinen zich buiten het bereik bevinden met behulp van een [filter voor bereik](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
-    * Doel kenmerk: userPrincipalName
-    * Operator: REGEX MATCH of geen REGEX MATCH-overeenkomst
-    * Waarde:. *@domain.com
 
 ## <a name="additional-resources"></a>Aanvullende resources
 

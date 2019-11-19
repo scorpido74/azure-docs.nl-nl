@@ -2,14 +2,14 @@
 author: paulbouwer
 ms.service: container-service
 ms.topic: include
-ms.date: 10/09/2019
+ms.date: 11/15/2019
 ms.author: pabouwer
-ms.openlocfilehash: abc8727c2a9ad7bb6621b8c8e019e14fb8cdec97
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: e2dd45f778bd5e596b5bcc91c63984742237ad4c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530405"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170866"
 ---
 ## <a name="download-and-install-the-istio-istioctl-client-binary"></a>Down load en installeer het binaire bestand voor de Istio istioctl-client
 
@@ -17,12 +17,12 @@ In een bash shell op Linux of Windows- [subsysteem voor Linux][install-wsl]gebru
 
 ```bash
 # Specify the Istio version that will be leveraged throughout these instructions
-ISTIO_VERSION=1.3.2
+ISTIO_VERSION=1.4.0
 
 curl -sL "https://github.com/istio/istio/releases/download/$ISTIO_VERSION/istio-$ISTIO_VERSION-linux.tar.gz" | tar xz
 ```
 
-De `istioctl` binaire-client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Istio service-net. Gebruik de volgende opdrachten om de Istio `istioctl`-client-binary te installeren in een bash shell op een Linux-of [Windows-subsysteem voor Linux][install-wsl]. Met deze opdrachten wordt het `istioctl` binaire client bestand naar de standaard locatie van het gebruikers programma in uw `PATH` gekopieerd.
+De `istioctl` binaire-client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Istio service-net. Gebruik de volgende opdrachten om de Istio `istioctl`-client-binary te installeren in een bash shell op een Linux-of [Windows-subsysteem voor Linux][install-wsl]. Met deze opdrachten wordt het `istioctl` binaire client bestand naar de standaard locatie van het gebruikers programma in uw `PATH`gekopieerd.
 
 ```bash
 cd istio-$ISTIO_VERSION

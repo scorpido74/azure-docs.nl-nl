@@ -1,17 +1,14 @@
 ---
 title: Zelf studie-een schaalset voor virtuele Azure-machines maken met behulp van terraform
 description: Meer informatie over het gebruik van terraform voor het configureren en instellen van een schaalset voor virtuele Azure-machines.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/07/2019
-ms.openlocfilehash: e2b7d816a02eaf47ef50bfd2d814f7b26a813446
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: ef2ce0a3ea8c50123cd51ab60a6b98894739d859
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838394"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159076"
 ---
 # <a name="tutorial-create-an-azure-virtual-machine-scale-set-using-terraform"></a>Zelf studie: een schaalset voor virtuele Azure-machines maken met behulp van terraform
 
@@ -37,9 +34,9 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
 
 - **Een SSH-sleutel paar maken**: Zie [een openbaar en persoonlijk SSH-sleutel paar maken en gebruiken voor Linux-vm's in azure](/azure/virtual-machines/linux/mac-create-ssh-keys)voor meer informatie.
 
-## <a name="create-the-directory-structure"></a>De mapstructuur maken
+## <a name="create-the-directory-structure"></a>De directorystructuur maken
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -57,7 +54,7 @@ In deze zelf studie leert u hoe u [Azure Cloud shell](/azure/cloud-shell/overvie
     mkdir vmss
     ```
 
-1. Ga naar de nieuwe map:
+1. Maak de nieuwe directory de actieve directory:
 
     ```bash
     cd vmss

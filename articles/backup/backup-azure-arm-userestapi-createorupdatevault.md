@@ -1,21 +1,15 @@
 ---
-title: 'Azure Backup: Recovery Services kluizen maken met behulp van REST API'
+title: Recovery Services kluizen maken met behulp van REST API
 description: In dit artikel vindt u informatie over het beheren van back-up-en herstel bewerkingen van Azure VM-back-ups met behulp van REST API.
-ms.reviewer: pullabhk
-author: dcurwin
-manager: carmonm
-keywords: REST API; Back-ups van Azure-VM'S; Azure VM herstellen;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: dacurwin
 ms.assetid: e54750b4-4518-4262-8f23-ca2f0c7c0439
-ms.openlocfilehash: 7c9d165f623367d1c888b90f76e96ce8fa2e8f89
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 1901c35d2b4d8bcd02cc064fcfc844e19969e3b5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747564"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173417"
 ---
 # <a name="create-azure-recovery-services-vault-using-rest-api"></a>Azure Recovery Services-kluis maken met behulp van REST API
 
@@ -47,7 +41,7 @@ De volgende algemene definities worden gebruikt voor het bouwen van een aanvraag
 |Naam  |Vereist  |Type  |Beschrijving  |
 |---------|---------|---------|---------|
 |eTag     |         |   Tekenreeks      |  Optionele eTag       |
-|location     |  true       |Tekenreeks         |   Resource locatie      |
+|locatie     |  true       |Tekenreeks         |   Resource locatie      |
 |properties     |         | [VaultProperties](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#vaultproperties)        |  Eigenschappen van de kluis       |
 |sku     |         |  [SKU](https://docs.microsoft.com/rest/api/recoveryservices/vaults/createorupdate#sku)       |    Identificeert de unieke systeem-id voor elke Azure-resource     |
 |tags     |         | Object        |     Resourcetags    |
@@ -68,7 +62,7 @@ De volgende voorbeeld tekst wordt gebruikt voor het maken van een kluis in ' vs-
 }
 ```
 
-## <a name="responses"></a>Antwoorden
+## <a name="responses"></a>Responses
 
 Er zijn twee geslaagde reacties voor de bewerking om een Recovery Services kluis te maken of bij te werken:
 

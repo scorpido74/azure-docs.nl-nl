@@ -1,19 +1,15 @@
 ---
 title: Wat is Azure Backup?
 description: Biedt een overzicht van de Azure Backup-service en hoe deze bijdraagt aan uw strategie voor bedrijfs continuïteit en herstel na nood gevallen (BCDR).
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: overview
 ms.date: 04/24/2019
-ms.author: dacurwin
 ms.custom: mvc
-ms.openlocfilehash: 29e0b05ee9cb8f7dc67f90b54081bca4db0691b6
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 49ef90c874e920ef92dd5206447081a6aa4f7988
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035237"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172213"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Wat is de Azure Backup-Service?
 
@@ -23,15 +19,15 @@ De Azure Backup-service maakt back-ups van gegevens naar de Microsoft Azure-clou
 
 Azure Backup biedt deze belangrijke voordelen:
 
-- **Geen on-premises back-up meer nodig**: Azure Backup biedt een eenvoudige oplossing voor het maken van back-ups van uw on-premises resources naar de cloud. Back-ups op korte en lange termijn zonder de noodzaak om complexe on-premises back-upoplossingen te implementeren.
-- **Back-ups van Azure IaaS-VM's**: Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te voorkomen dat oorspronkelijke gegevens per ongeluk worden vernietigd. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwde beheerde herstelpunten. Configuratie en schaal baarheid zijn eenvoudig, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
+- **On-premises back-up op locatie**: Azure Backup biedt een eenvoudige oplossing voor het maken van back-ups van uw on-premises resources naar de Cloud. Back-ups op korte en lange termijn zonder de noodzaak om complexe on-premises back-upoplossingen te implementeren.
+- **Back-ups maken van Azure IaaS vm's**: Azure Backup biedt onafhankelijke en geïsoleerde back-ups om te beschermen tegen onbedoelde vernietiging van originele gegevens. Back-ups worden opgeslagen in een Recovery Services-kluis met ingebouwde beheerde herstelpunten. Configuratie en schaal baarheid zijn eenvoudig, back-ups worden geoptimaliseerd en u kunt zo nodig eenvoudig herstellen.
 - **Gemakkelijk schalen**: Azure Backup gebruikt de onderliggende kracht en onbeperkte schaal van de Azure-cloud voor hoge beschikbaarheid, zonder overhead voor onderhoud of bewaking.
-- **Onbeperkte gegevens overdracht ophalen**: Azure Backup beperkt de hoeveelheid inkomende of uitgaande gegevens die u overdraagt of kosten voor de gegevens die worden overgedragen.
+- **Onbeperkte gegevens overdracht ophalen**: Azure backup beperkt de hoeveelheid inkomende of uitgaande gegevens die u overdraagt of factureert voor de gegevens die worden overgedragen.
   - Uitgaande gegevens zijn gegevens die tijdens een herstelbewerking worden overgebracht uit een Recovery Services-kluis.
   - Als u met de Azure Import/Exportservice een offline eerste back-up uitvoert voor het importeren van grote hoeveelheden gegevens, zijn er kosten verbonden aan inkomende gegevens.  [Meer informatie](backup-azure-backup-import-export.md).
-- **Gegevens veilig houden**: Azure Backup biedt oplossingen voor het beveiligen van gegevens onderweg en op rest.
-- **App-consistente back-ups**: Een app-consistente back-up betekent dat een herstelpunt alle vereiste gegevens heeft om de back-up te kunnen herstellen. Azure Backup biedt toepassingsconsistente back-ups, om ervoor te zorgen dat er geen aanvullende correcties nodig zijn om de gegevens te herstellen. Herstellen van toepassingsconsistente gegevens verkort de hersteltijd, zodat u snel weer normaal aan het werk kunt.
-- **Korte- en langetermijngegevens bewaren**: u kunt de Recovery Services-kluizen gebruiken voor het bewaren van gegevens voor de korte en de lange termijn. Azure heeft geen beperkingen voor hoelang gegevens bewaard blijven in een Recovery Services-kluis. U kunt gegevens zo lang bewaren als u wilt. Azure Backup heeft een limiet van 9999 herstelpunten per beveiligd exemplaar.
+- Beveilig **uw gegevens**: Azure Backup biedt oplossingen voor het beveiligen van gegevens die onderweg en in rust zijn.
+- **App-consistente back-ups ophalen**: een toepassings consistente back-up betekent dat een herstel punt alle vereiste gegevens heeft om de back-up te herstellen. Azure Backup biedt toepassingsconsistente back-ups, om ervoor te zorgen dat er geen aanvullende correcties nodig zijn om de gegevens te herstellen. Herstellen van toepassingsconsistente gegevens verkort de hersteltijd, zodat u snel weer normaal aan het werk kunt.
+- **Gegevens over korte en lange termijn behouden**: u kunt Recovery Services kluizen gebruiken voor het bewaren van gegevens op de korte en lange termijn. Azure heeft geen beperkingen voor hoelang gegevens bewaard blijven in een Recovery Services-kluis. U kunt gegevens zo lang bewaren als u wilt. Azure Backup heeft een limiet van 9999 herstelpunten per beveiligd exemplaar.
 - **Automatisch opslagbeheer**: voor hybride omgevingen is vaak heterogene opslag vereist, soms on-premises en soms in de cloud. Met Azure Backup zijn er geen kosten voor het gebruik van on-premises opslagapparaten. De back-upopslag wordt automatisch door Azure Backup toegewezen en beheerd en u betaalt naar gebruik. Dat betekent dat u alleen betaalt voor de opslag die u verbruikt. [Lees meer](https://azure.microsoft.com/pricing/details/backup) over prijzen.
 - **Meerdere opslagopties**: Azure Backup biedt twee typen replicatie om uw opslag/gegevens maximaal beschikbaar te houden.
   - Met [lokaal redundante opslag LRS](../storage/common/storage-redundancy-lrs.md) worden uw gegevens drie keer gerepliceerd (er worden drie kopieën gemaakt van uw gegevens) in een opslagschaaleenheid in een datacenter. Alle kopieën van de gegevens komen binnen dezelfde regio voor. LRS is een goedkope optie voor het beschermen van uw gegevens tegen lokale hardwarefouten.
@@ -46,8 +42,8 @@ Azure Backup en Azure Site Recovery dragen beide bij aan een strategie voor bedr
 
 Beide services bieden complementaire maar verschillende functionaliteit.
 
-- **Azure Site Recovery**: Site Recovery biedt een oplossing voor herstel na noodgevallen voor on-premises machines en virtuele Azure-machines. U repliceert machines vanaf een primaire naar een secundaire locatie. Wanneer er zich een noodgeval voordoet, voert u een failover naar de secundaire locatie uit en zijn de machines van daaruit toegankelijk. Wanneer alles weer normaal functioneert, voert u een failback uit om ze te herstellen naar de primaire locatie.
-- **Azure Backup**: De Azure Backup-service maakt back-ups van gegevens van on-premises machines en Azure-VM's. Gegevens kunnen op een gedetailleerd niveau worden geback-upt en hersteld, inclusief back-up van bestanden, mappen, de status van het computersysteem en appbewuste gegevensback-up. Azure Backup verwerkt gegevens op een gedetailleerder niveau dan Site Recovery. Als er bijvoorbeeld een presentatie op uw laptop beschadigd raakt, kunt u Azure Backup gebruiken om de presentatie te herstellen. Als u een VM-configuratie en gegevens veilig en toegankelijk wilt houden, kunt u Site Recovery gebruiken.  
+- **Azure site Recovery**: site Recovery biedt een oplossing voor herstel na nood gevallen voor on-premises machines en voor Azure-vm's. U repliceert machines vanaf een primaire naar een secundaire locatie. Wanneer er zich een noodgeval voordoet, voert u een failover naar de secundaire locatie uit en zijn de machines van daaruit toegankelijk. Wanneer alles weer normaal functioneert, voert u een failback uit om ze te herstellen naar de primaire locatie.
+- **Azure backup**: de Azure backup-service maakt een back-up van gegevens van on-premises machines en Azure-vm's. Gegevens kunnen op een gedetailleerd niveau worden geback-upt en hersteld, inclusief back-up van bestanden, mappen, de status van het computersysteem en appbewuste gegevensback-up. Azure Backup verwerkt gegevens op een gedetailleerder niveau dan Site Recovery. Als er bijvoorbeeld een presentatie op uw laptop beschadigd raakt, kunt u Azure Backup gebruiken om de presentatie te herstellen. Als u een VM-configuratie en gegevens veilig en toegankelijk wilt houden, kunt u Site Recovery gebruiken.  
 
 Gebruik de tabel om uw behoeften op BCDR-gebied te bepalen.
 
@@ -114,7 +110,7 @@ Azure Backup heeft een limiet van 9999 herstelpunten, ook wel back-ups of moment
 - Een beveiligd exemplaar is een computer, een server (fysiek of virtueel) of een werkbelasting die is geconfigureerd voor het opslaan van back-ups van gegevens in Azure. Een exemplaar is beveiligd zodra er een back-up van de gegevens is opgeslagen.
 - De back-up van de gegevens biedt beveiliging. Als de brongegevens verloren gaan of beschadigd raken, kunt u met de back-up de brongegevens herstellen.
 
-In de volgende tabel wordt de maximale back-upfrequentie voor elk onderdeel weergegeven. De configuratie van uw back-upbeleid bepaalt hoe snel u de herstelpunten verbruikt. Als u bijvoorbeeld één herstelpunt per dag maakt, kunt u 27 jaar gebruikmaken van herstelpunten voordat ze opraken. Als u één herstelpunt per maand maakt, duurt het maar liefst 833 jaar voordat uw herstelpunten op zijn. In de Backup-service worden geen verlooptijden ingesteld voor herstelpunten.
+In de volgende tabel wordt de maximale back-upfrequentie voor elk onderdeel weergegeven. De configuratie van uw back-upbeleid bepaalt hoe snel u de herstelpunten verbruikt. Als u bijvoorbeeld elke dag een herstel punt maakt, kunt u de herstel punten voor 27 jaar bewaren voordat u de service uitvoert. Als u een maandelijks herstel punt neemt, kunt u de herstel punten voor 833 jaar bewaren voordat u de service uitvoert. De back-upservice heeft geen verval tijd ingesteld voor een herstel punt.
 
 |  | Azure Backup-agent (MARS)| System Center DPM | Azure Backup-server | Back-up van virtuele machines van Azure IaaS |
 | --- | --- | --- | --- | --- |

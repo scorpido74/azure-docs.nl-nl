@@ -3,17 +3,13 @@ title: Zelf studie-functies op basis van op rollen gebaseerde toegangs beheer (R
 description: Meer informatie over het gebruik van Ansible voor het configureren van RBAC in azure Kubernetes service (AKS)-cluster
 keywords: ansible, azure, devops, bash, Cloud shell, Playbook, AKS, container, AKS, kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 36a6f5ade7a60a989d2e80f2405aaa2d1d50b756
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242343"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156870"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Zelf studie: functies op basis van op rollen gebaseerde toegangs beheer (RBAC) configureren in azure Kubernetes service (AKS) met behulp van Ansible
 
@@ -35,7 +31,7 @@ AKS kan worden geconfigureerd om [Azure Active Directory (AD)](/azure/active-dir
 [!INCLUDE [open-source-devops-prereqs-azure-subscription.md](../../includes/open-source-devops-prereqs-azure-subscription.md)]
 [!INCLUDE [open-source-devops-prereqs-create-service-principal.md](../../includes/open-source-devops-prereqs-create-service-principal.md)]
 [!INCLUDE [ansible-prereqs-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-cloudshell-use-or-vm-creation2.md)]
-- **Installeer de RedHat open Shift-bibliotheek** -  @ no__t-2
+- **Installeer de - van de RedHat** -open Shift-bibliotheek `pip install openshift`
 
 ## <a name="configure-azure-ad-for-aks-authentication"></a>Azure AD configureren voor AKS-verificatie
 
@@ -57,7 +53,7 @@ In deze sectie maakt u een AKS met de [Azure AD-toepassing](#configure-azure-ad-
 Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanneer u werkt met de voor beeld-Playbook:
 
 - De Playbook laadt `ssh_key` van `~/.ssh/id_rsa.pub`. Als u het wijzigt, gebruikt u de indeling met één regel, te beginnen met ' ssh-rsa ' (zonder de aanhalings tekens).
-- De waarden `client_id` en `client_secret` worden geladen van `~/.azure/credentials`. Dit is het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
+- De waarden `client_id` en `client_secret` worden geladen vanuit `~/.azure/credentials`, het standaard referentie bestand. U kunt deze waarden instellen voor uw service-principal of deze waarden laden vanuit omgevings variabelen:
 
     ```yml
     client_id: "{{ lookup('env', 'AZURE_CLIENT_ID') }}"
@@ -123,9 +119,9 @@ Sla het volgende playbook op als `aks-create.yml`:
 
 Als u een RBAC-binding wilt maken, moet u eerst de object-ID van Azure AD ophalen. 
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Voer in het zoek veld boven aan de pagina `Azure Active Directory` in. 
+1. Voer in het zoek veld boven aan de pagina `Azure Active Directory`in. 
 
 1. Klik op `Enter`.
 
@@ -162,7 +158,7 @@ subjects:
 
 Vervang de tijdelijke aanduiding `&lt;your-aad-account>` door de [object-id](#get-the-azure-ad-object-id)van uw Azure AD-Tenant.
 
-Sla de volgende Playbook op die uw nieuwe rol implementeert naar AKS-as `aks-kube-deploy.yml`:
+Sla de volgende Playbook op die uw nieuwe rol implementeert naar AKS-als `aks-kube-deploy.yml`:
 
 ```yml
 - name: Apply role to AKS
@@ -209,7 +205,7 @@ Vervang in het gedeelte `vars` de volgende tijdelijke aanduidingen door uw Azure
 - `<server secret>`
 - `<tenant id>`
 
-Voer de volledige Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de volledige Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook aks-rbac.yml
@@ -261,7 +257,7 @@ Sla de volgende code op als `cleanup.yml`:
             path: "aks-{{ name }}-kubeconfig"
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

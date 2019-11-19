@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/12/2019
 ms.author: b-juche
-ms.openlocfilehash: eefa54806d9f5ec9ef3a0c02e4abbaf6b4bf22e2
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 815ac261a29f710914347443f7882b9fe682229f
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72298484"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173594"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Veelgestelde vragen over Azure NetApp Files
 
@@ -103,16 +103,9 @@ Azure NetApp Files biedt meet waarden voor de volume prestaties. U kunt Azure Mo
 
 ### <a name="i-want-to-have-a-volume-mounted-automatically-when-an-azure-vm-is-started-or-rebooted--how-do-i-configure-my-host-for-persistent-nfs-volumes"></a>Ik wil een volume automatisch koppelen wanneer een virtuele machine van Azure wordt gestart of opnieuw wordt opgestart.  Hoe kan ik mijn host configureren voor permanente NFS-volumes?
 
-Als een NFS-volume automatisch moet worden gekoppeld bij het starten of opnieuw opstarten van de VM, voegt u een vermelding toe aan het bestand `/etc/fstab` op de host. 
+Als een NFS-volume automatisch moet worden gekoppeld bij het starten of opnieuw opstarten van de VM, voegt u een vermelding toe aan het `/etc/fstab`-bestand op de host. 
 
-Bijvoorbeeld: `$ANFIP:/$FILEPATH      /$MOUNTPOINT    nfs bg,rw,hard,noatime,nolock,rsize=65536,wsize=65536,vers=3,tcp,_netdev 0 0`
-
-- $ANFIP  
-    Het IP-adres van het Azure NetApp Files volume dat is gevonden op de Blade volume eigenschappen
-- $FILEPATH  
-    Het exportpad van het Azure NetApp Files volume
-- $MOUNTPOINT  
-    De map die is gemaakt op de Linux-host die wordt gebruikt om de NFS-export te koppelen
+Zie [een volume koppelen of ontkoppelen voor virtuele Windows-of Linux-machines](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md) voor meer informatie.  
 
 ### <a name="why-does-the-df-command-on-nfs-client-not-show-the-provisioned-volume-size"></a>Waarom wordt de ingerichte grootte van het volume niet weer gegeven met de DF-opdracht op de NFS-client?
 
@@ -123,7 +116,7 @@ De grootte van het volume dat in VG wordt gerapporteerd, is de maximale grootte 
 Azure NetApp Files ondersteunt NFSv3 en NFSv 4.1. U kunt een volume maken met behulp van de NFS-versie. 
 
 > [!IMPORTANT] 
-> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, moet u een aanvraag indienen bij <anffeedback@microsoft.com>. 
+> Voor toegang tot de functie NFSv 4.1 is white list vereist.  Als u White List wilt aanvragen, dient u een aanvraag in bij <anffeedback@microsoft.com>. 
 
 
 ### <a name="how-do-i-enable-root-squashing"></a>Hoe kan ik root Squashing inschakelen?

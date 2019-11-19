@@ -3,17 +3,13 @@ title: 'Zelf studie: onderwerpen configureren in Azure Service Bus met behulp va
 description: Meer informatie over het gebruik van Ansible voor het maken van een Azure Service Bus onderwerp
 keywords: ansible, azure, devops, bash, Playbook, service bus, topics, abonnementen
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 952779db582f9437f10608bf86b0b80560ded2c0
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d07c7622043353a79d5a82994c2fab4f0835b453
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241219"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155792"
 ---
 # <a name="tutorial-configure-topics-in-azure-service-bus-using-ansible"></a>Zelf studie: onderwerpen configureren in Azure Service Bus met behulp van Ansible
 
@@ -73,7 +69,7 @@ Sla het volgende playbook op als `servicebus_topic.yml`:
           var: topic
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_topic.yml
@@ -106,7 +102,7 @@ Met de voorbeeld code Playbook wordt het abonnement gemaakt onder een Service Bu
 
 Sla het volgende playbook op als `servicebus_subscription.yml`:
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_subscription.yml
@@ -143,7 +139,7 @@ Sla het volgende playbook op als `servicebus_topic_policy.yml`:
           var: policy
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_topic_policy.yml
@@ -174,9 +170,9 @@ Sla het volgende playbook op als `servicebus_namespace_info.yml`:
 ```
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde @no__t 0 geeft aan of de SAS-beleids regels onder de opgegeven naam ruimte moeten worden weer gegeven. Standaard is de waarde `False` om extra netwerk overhead te voor komen.
+- De waarde `show_sas_policies` geeft aan of de SAS-beleids regels onder de opgegeven naam ruimte moeten worden weer gegeven. Standaard is de waarde `False` om extra netwerk overhead te voor komen.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_namespace_info.yml
@@ -221,9 +217,9 @@ Sla het volgende playbook op als `servicebus_list.yml`:
 ```
 
 Voor het uitvoeren van de Playbook raadpleegt u de volgende opmerkingen:
-- De waarde @no__t 0 geeft aan of de SAS-beleids regels in de opgegeven wachtrij moeten worden weer gegeven. Deze waarde is standaard ingesteld op `False` om extra netwerk overhead te voor komen.
+- De waarde `show_sas_policies` geeft aan of de SAS-beleids regels in de opgegeven wachtrij moeten worden weer gegeven. Deze waarde is standaard ingesteld op `False` om extra netwerk overhead te voor komen.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_list.yml
@@ -252,7 +248,7 @@ Sla het volgende playbook op als `servicebus_queue_policy_delete.yml`:
           state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook servicebus_topic_policy_delete.yml
@@ -298,7 +294,7 @@ Sla de volgende code op als `cleanup.yml`:
           force_delete_nonempty: yes
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

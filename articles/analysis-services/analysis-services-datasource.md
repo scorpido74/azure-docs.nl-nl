@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 038773b41d84a7b2b4f845a8bf70e9eed849bc80
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c92baf5c97597a0161f402cc458e90bb3e637d6c
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74120016"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170663"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Gegevens bronnen die worden ondersteund in Azure Analysis Services
 
@@ -91,7 +91,7 @@ Voor het maken van verbinding met on-premises gegevens bronnen van een Azure Ana
 
 ## <a name="specifying-a-different-provider"></a>Een andere provider opgeven
 
-Gegevens modellen in Azure Analysis Services kunnen verschillende gegevens providers vereisen bij het verbinden met bepaalde gegevens bronnen. In sommige gevallen wordt er een fout geretourneerd door tabellaire modellen die verbinding maken met gegevens bronnen die gebruikmaken van systeem eigen providers, zoals SQL Server Native Client (SQLNCLI11). Als u systeem eigen providers gebruikt, met uitzonde ring van SQLOLEDB, ziet u mogelijk het volgende fout bericht: **de provider SQLNCLI is niet geregistreerd**. Als u een DirectQuery-model hebt om verbinding te maken met on-premises gegevens bronnen en u systeem eigen providers gebruikt, ziet u mogelijk het volgende fout bericht: **Fout bij het maken van OLE DB Row set. De syntaxis bij ' LIMIT ' is onjuist**.
+Gegevens modellen in Azure Analysis Services kunnen verschillende gegevens providers vereisen bij het verbinden met bepaalde gegevens bronnen. In sommige gevallen wordt er een fout geretourneerd door tabellaire modellen die verbinding maken met gegevens bronnen die gebruikmaken van systeem eigen providers, zoals SQL Server Native Client (SQLNCLI11). Als u andere systeem eigen providers dan MSOLEDBSQL gebruikt, ziet u mogelijk het volgende fout bericht: **de provider SQLNCLI is niet geregistreerd**. Als u een DirectQuery-model hebt om verbinding te maken met on-premises gegevens bronnen en u systeem eigen providers gebruikt, ziet u mogelijk het volgende fout bericht: **Fout bij het maken van OLE DB Row set. De syntaxis bij ' LIMIT ' is onjuist**.
 
 Bij het migreren van een on-premises SQL Server Analysis Services tabellaire model naar Azure Analysis Services, kan het nodig zijn om de provider te wijzigen.
 

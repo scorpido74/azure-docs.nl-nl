@@ -1,20 +1,20 @@
 ---
 title: Wat is Azure Firewall?
-description: Meer informatie over Azure Firewall-functies.
+description: Azure Firewall is een beheerde, cloudgebaseerde netwerkbeveiligingsservice die uw Azure Virtual Network-resources beschermt.
 author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 10/08/2019
+ms.date: 11/19/2019
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 5be1a673ac456b0896ce83afcb469e4ac6b8b40a
-ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+ms.openlocfilehash: 7b44597b24adce05498eed273c9494cae3360ed6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "72001337"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74168804"
 ---
 # <a name="what-is-azure-firewall"></a>Wat is Azure Firewall?
 
@@ -94,13 +94,13 @@ Alle gebeurtenissen zijn geïntegreerd met Azure Monitor, zodat u logboeken kunt
 
 Azure Firewall zijn betaal kaart Industry (PCI), service organisatie Controls (SOC) en International Organization for Standardization (ISO)-compatibel. Het biedt momenteel ondersteuning voor SOC 1 type 2, SOC 2, SOC 3, PCI DSS en ISO 27001, 27018, 20000-1, 22301, 9001, 27017.
 
-Zie de [micro soft compliance Guide (Engelstalig](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide)) voor meer informatie.
+Zie de [Microsoft Compliance Guide](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide) voor meer informatie.
 
 ## <a name="known-issues"></a>Bekende problemen
 
 Azure Firewall heeft de volgende bekende problemen:
 
-|Probleem  |Description  |Oplossing  |
+|Probleem  |Beschrijving  |Oplossing  |
 |---------|---------|---------|
 Netwerkfilterregels voor niet-TCP/UDP-protocollen (bijvoorbeeld ICMP) werken niet voor internetverkeer|Netwerkfilterregels voor niet-TCP/UDP-protocollen werken niet met SNAT naar uw openbare IP-adres. Niet-TCP/UDP-protocollen worden ondersteund tussen spoke-subnetten en VNets.|Azure Firewall maakt gebruik van de standaardversie van Standard Load Balancer, [die momenteel geen ondersteuning biedt voor SNAT voor IP-protocollen](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). We verkennen opties om dit scenario in een toekomstige versie te ondersteunen.|
 |Ontbrekende PowerShell- en CLI-ondersteuning voor ICMP|Azure PowerShell en CLI bieden geen ondersteuning voor ICMP als een geldig protocol in netwerkregels.|Het is nog steeds mogelijk om ICMP als protocol te gebruiken via de portal en de REST API. We werken binnenkort met het toevoegen van ICMP in Power shell en CLI.|

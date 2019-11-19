@@ -1,18 +1,14 @@
 ---
-title: Een Microsoft Azure Backup Recovery Services kluis verwijderen
+title: Een Microsoft Azure Recovery Services kluis verwijderen
 description: In dit artikel vindt u informatie over het verwijderen van afhankelijkheden en het verwijderen van een Microsoft Azure Backup Recovery Services (MARS)-kluis.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 09/20/2019
-ms.author: dacurwin
-ms.openlocfilehash: 469d6532449df8327389b8117904b078d9340e5b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 23e0d2874229616037c44800639411f66bc4d1b6
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73747584"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74173176"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Een Azure Backup Recovery Services kluis verwijderen
 

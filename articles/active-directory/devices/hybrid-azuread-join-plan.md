@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c016ce349acdfff6145286d9fc07e08db4ed9516
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 5a188349e15c5e4c486d37daed9f8b611a325dcf
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73882814"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167333"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Procedure: uw hybride Azure Active Directory deelname-implementatie plannen
 
@@ -93,7 +93,8 @@ Als uw Windows 10-domein aangesloten apparaten zijn die zijn [geregistreerd](ove
 - U kunt voor komen dat uw domein dat lid is van Azure AD, wordt geregistreerd door de register sleutel HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, ' BlockAADWorkplaceJoin ' = DWORD: 00000001 toe te voegen.
 - Als u Windows hello voor bedrijven hebt geconfigureerd in Windows 10 1803, moet de gebruiker Windows hello voor bedrijven opnieuw instellen na het opschonen van de dubbele status. Dit probleem is opgelost met KB4512509
 
-
+> [!NOTE]
+> Het geregistreerde Azure AD-apparaat wordt niet automatisch verwijderd als het wordt beheerd door intune.
 
 ## <a name="review-controlled-validation-of-hybrid-azure-ad-join"></a>Gecontroleerde validatie van hybride Azure AD-deelname controleren
 
@@ -129,7 +130,7 @@ Een gefedereerde omgeving moet een id-provider hebben die de volgende vereisten 
 > [!NOTE]
 > Azure AD biedt geen ondersteuning voor Smart Cards of certificaten in beheerde domeinen.
 
-Vanaf versie 1.1.819.0 biedt Azure AD Connect u een wizard om hybride Azure AD-koppeling te configureren. Met de wizard kunt u het configuratieproces aanzienlijk vereenvoudigen. Als het installeren van de vereiste versie van Azure AD Connect geen optie voor u is, raadpleegt u [apparaatregistratie hand matig configureren](hybrid-azuread-join-manual.md). 
+Vanaf versie 1.1.819.0 bevat Azure AD Connect een wizard om hybride Azure AD-koppeling te configureren. Met de wizard kunt u het configuratieproces aanzienlijk vereenvoudigen. Als het installeren van de vereiste versie van Azure AD Connect geen optie voor u is, raadpleegt u [apparaatregistratie hand matig configureren](hybrid-azuread-join-manual.md). 
 
 Ga op basis van het scenario dat overeenkomt met uw identiteits infrastructuur naar:
 

@@ -3,17 +3,13 @@ title: 'Zelf studie: een VM of virtuele-machine schaalset maken vanuit de galeri
 description: Meer informatie over het gebruik van Ansible voor het maken van VM-of virtuele-machine schaal sets op basis van een gegeneraliseerde installatie kopie in de galerie met gedeelde afbeeldingen.
 keywords: ansible, azure, devops, bash, Playbook, virtual machine, virtuele-machine schaalset, Galerie voor gedeelde afbeeldingen
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 10/14/2019
-ms.openlocfilehash: 4b4190ddabe90af135ea64a8ba3d5905f23c457e
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: f784419736854095cc1bc5da14f3867ac3f7eb12
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72808958"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74155839"
 ---
 # <a name="tutorial-create-a-vm-or-virtual-machine-scale-set-from-the-azure-shared-image-gallery-using-ansible"></a>Zelf studie: een VM of virtuele-machine schaalset maken vanuit de galerie met gedeelde Azure-installatie kopieën met Ansible
 
@@ -44,7 +40,7 @@ Er zijn twee manieren om de volledige set voor beeld-playbooks op te halen:
 - [Down load de SIG-map](https://github.com/Azure-Samples/ansible-playbooks/tree/master/SIG_generalized_image) en sla deze op uw lokale computer op.
 - Maak een nieuw bestand voor elke sectie en kopieer de voorbeeld Playbook hierin.
 
-Het `vars.yml`-bestand bevat de variabelen die worden gebruikt door alle voorbeeld playbooks voor deze zelf studie. U kunt het bestand bewerken om unieke namen en waarden op te geven.
+Het `vars.yml` bestand bevat de variabelen die worden gebruikt door alle voor beeld-playbooks voor deze zelf studie. U kunt het bestand bewerken om unieke namen en waarden op te geven.
 
 Het eerste voor beeld Playbook `00-prerequisites.yml` maakt wat u nodig hebt om deze zelf studie te volt ooien:
 - Een resource groep, een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
@@ -104,13 +100,13 @@ Het eerste voor beeld Playbook `00-prerequisites.yml` maakt wat u nodig hebt om 
           version: latest
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 00-prerequisites.yml
 ```
 
-Controleer in de [Azure Portal](https://portal.azure.com)de resource groep die u in `vars.yml` hebt opgegeven om de nieuwe virtuele machine en de verschillende resources die u hebt gemaakt weer te geven.
+Controleer in de [Azure Portal](https://portal.azure.com)de resource groep die u hebt opgegeven in `vars.yml` om de nieuwe virtuele machine en de verschillende resources die u hebt gemaakt weer te geven.
 
 ## <a name="generalize-the-vm-and-create-a-custom-image"></a>De virtuele machine generaliseren en een aangepaste installatie kopie maken
 
@@ -136,17 +132,17 @@ De volgende Playbook, `01a-create-generalized-image.yml`, generaliseert de bron-
         source: "{{ source_vm_name }}"
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 01a-create-generalized-image.yml
 ```
 
-Controleer de resource groep en zorg ervoor dat `testimagea` wordt weer gegeven.
+Controleer de resource groep en zorg dat `testimagea` wordt weer gegeven.
 
 ## <a name="create-the-shared-image-gallery"></a>De galerie met gedeelde afbeeldingen maken
 
-De afbeeldings galerie is de opslag plaats voor het delen en beheren van installatie kopieën. Met de voorbeeld code Playbook in `02-create-shared-image-gallery.yml` wordt een galerie met gedeelde afbeeldingen gemaakt in de resource groep.
+De afbeeldings galerie is de opslag plaats voor het delen en beheren van installatie kopieën. Met de voorbeeld code Playbook in `02-create-shared-image-gallery.yml` maakt u een galerie met gedeelde afbeeldingen in uw resource groep.
 
 ```yml
 - hosts: localhost
@@ -163,17 +159,17 @@ De afbeeldings galerie is de opslag plaats voor het delen en beheren van install
         description: This is the gallery description.
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 02-create-shared-image-gallery.yml
 ```
 
-U ziet nu een nieuwe galerie, `myGallery`, in de resource groep.
+U ziet nu een nieuwe galerie, `myGallery`, in uw resource groep.
 
 ## <a name="create-a-shared-image-and-image-version"></a>Een gedeelde installatie kopie en installatie kopie versie maken
 
-De volgende Playbook, `03a-create-shared-image-generalized.yml`, maakt een definitie van de installatie kopie en een installatie kopie versie.
+De volgende Playbook, `03a-create-shared-image-generalized.yml` maakt een definitie van de installatie kopie en een versie van de installatie kopie.
 
 Afbeeldings definities zijn onder andere het type installatie kopie (Windows of Linux), de release opmerkingen en de minimale en maximale geheugen vereisten. De versie van de installatie kopie is de versie van de installatie kopie. Met de galerie, afbeeldings definitie en afbeeldings versie kunt u afbeeldingen in logische groepen indelen. 
 
@@ -225,7 +221,7 @@ Afbeeldings definities zijn onder andere het type installatie kopie (Windows of 
         var: output
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 03a-create-shared-image-generalized.yml
@@ -235,7 +231,7 @@ De resource groep heeft nu een definitie van de installatie kopie en een afbeeld
 
 ## <a name="create-a-vm-based-on-the-generalized-image"></a>Een virtuele machine maken op basis van de gegeneraliseerde installatie kopie
 
-Voer ten slotte `04a-create-vm-using-generalized-image.yml` uit om een virtuele machine te maken op basis van de gegeneraliseerde installatie kopie die u in de vorige stap hebt gemaakt.
+Voer ten slotte `04a-create-vm-using-generalized-image.yml` uit om een virtuele machine te maken op basis van de algemene installatie kopie die u in de vorige stap hebt gemaakt.
 
 ```yml
 - hosts: localhost
@@ -256,7 +252,7 @@ Voer ten slotte `04a-create-vm-using-generalized-image.yml` uit om een virtuele 
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 04a-create-vm-using-generalized-image.yml
@@ -264,7 +260,7 @@ ansible-playbook 04a-create-vm-using-generalized-image.yml
 
 ## <a name="create-a-virtual-machine-scale-sets-based-on-the-generalized-image"></a>Een schaalset voor virtuele machines maken op basis van de gegeneraliseerde installatie kopie
 
-U kunt ook een schaalset voor virtuele machines maken op basis van de gegeneraliseerde installatie kopie. Voer `05a-create-vmss-using-generalized-image.yml` uit.
+U kunt ook een schaalset voor virtuele machines maken op basis van de gegeneraliseerde installatie kopie. Voer `05a-create-vmss-using-generalized-image.yml` uit om dit te doen.
 
 ```yml
 - hosts: localhost
@@ -289,7 +285,7 @@ U kunt ook een schaalset voor virtuele machines maken op basis van de gegenerali
         id: "/subscriptions/{{ lookup('env', 'AZURE_SUBSCRIPTION_ID') }}/resourceGroups/{{ resource_group }}/providers/Microsoft.Compute/galleries/{{ shared_gallery_name }}/images/{{ shared_image_name }}/versions/{{ shared_image_version }}"
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 05a-create-vmss-using-generalized-image.yml
@@ -297,7 +293,7 @@ ansible-playbook 05a-create-vmss-using-generalized-image.yml
 
 ## <a name="get-information-about-the-gallery"></a>Informatie over de galerie ophalen
 
-U kunt informatie over de galerie, de definitie van de installatie kopie en de versie ophalen door `06-get-info.yml` uit te voeren.
+U kunt informatie over de galerie, de definitie van de installatie kopie en de versie ophalen door `06-get-info.yml`uit te voeren.
 
 ```yml
 - hosts: localhost
@@ -323,7 +319,7 @@ U kunt informatie over de galerie, de definitie van de installatie kopie en de v
       name: "{{ shared_image_version }}"
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 06-get-info.yml
@@ -331,7 +327,7 @@ ansible-playbook 06-get-info.yml
 
 ## <a name="delete-the-shared-image"></a>De gedeelde installatie kopie verwijderen
 
-Als u de galerie resources wilt verwijderen, raadpleegt u voor beeld Playbook `07-delete-gallery.yml`. Verwijder resources in omgekeerde volg orde. Begin met het verwijderen van de installatie kopie versie. Nadat u alle versies van de installatie kopie hebt verwijderd, kunt u de definitie van de installatie kopie verwijderen. Nadat u alle afbeeldings definities hebt verwijderd, kunt u de galerie verwijderen.
+Als u de galerie resources wilt verwijderen, raadpleegt u voor beeld-Playbook `07-delete-gallery.yml`. Verwijder resources in omgekeerde volg orde. Begin met het verwijderen van de installatie kopie versie. Nadat u alle versies van de installatie kopie hebt verwijderd, kunt u de definitie van de installatie kopie verwijderen. Nadat u alle afbeeldings definities hebt verwijderd, kunt u de galerie verwijderen.
 
 ```yml
 - hosts: localhost
@@ -362,7 +358,7 @@ Als u de galerie resources wilt verwijderen, raadpleegt u voor beeld Playbook `0
       state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook 07-delete-gallery.yml
@@ -395,7 +391,7 @@ Hier volgen enkele belang rijke opmerkingen waarmee u rekening moet houden wanne
 - Vervang de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 - Alle resources binnen de twee opgegeven resource groepen worden verwijderd.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

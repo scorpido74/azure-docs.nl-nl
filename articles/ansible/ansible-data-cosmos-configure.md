@@ -3,17 +3,13 @@ title: Zelf studie-Azure Cosmos DB accounts configureren met Ansible
 description: Meer informatie over het gebruik van Ansible voor het maken en configureren van een Azure Cosmos DB
 keywords: ansible, azure, devops, bash, Playbook, Cosmo DB, data base
 ms.topic: tutorial
-ms.service: ansible
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.date: 04/30/2019
-ms.openlocfilehash: 82cb29cfe3aeb7b6ca43fceca4c900b2eeb148c2
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8c898e3cb0747a442d50b7241ebfcf401148817e
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72242076"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156486"
 ---
 # <a name="tutorial-configure-azure-cosmos-db-accounts-using-ansible"></a>Zelf studie: Azure Cosmos DB accounts configureren met behulp van Ansible
 
@@ -235,9 +231,9 @@ In deze sectie voert u de Playbook uit om verschillende functies te testen die i
 
 Voordat u de Playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
 - Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
-- Zorg ervoor dat de ' cosmosdbaccount_name alleen kleine letters bevat en wereld wijd uniek is.
+- Zorg ervoor dat de cosmosdbaccount_name alleen kleine letters bevat en wereld wijd uniek is.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cosmosdb.yml
@@ -261,7 +257,7 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

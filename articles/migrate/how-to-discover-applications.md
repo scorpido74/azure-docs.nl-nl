@@ -4,25 +4,22 @@ description: Hierin wordt beschreven hoe u apps, functies en onderdelen detectee
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 11/18/2019
 ms.author: snehaa
-ms.openlocfilehash: 40cb73848bab97ef9030cb0c4f3f17c984a1e0ec
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73715780"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158632"
 ---
-# <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren 
-
-> [!NOTE]
-> Als u deze functie nog niet ziet in de Azure Migrate Portal, loopt u vast. Deze wordt in de volgende week weer gegeven.
+# <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
 In dit artikel wordt beschreven hoe u toepassingen, functies en onderdelen detecteert op on-premises servers met behulp van Azure Migrate: Server evaluatie.
 
-Het detecteren van de inventaris van apps en rollen/functies die op uw on-premises machines worden uitgevoerd, helpt u bij het identificeren en plannen van een migratie naar Azure dat is afgestemd op uw workloads. 
+Het detecteren van de inventaris van apps en rollen/functies die op uw on-premises machines worden uitgevoerd, helpt u bij het identificeren en plannen van een migratie naar Azure dat is afgestemd op uw workloads.
 
-App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets te worden geïnstalleerd op machines en Vm's. Server Assessment gebruikt het Azure Migrate apparaat om detectie uit te voeren samen met de referenties van de computer gast. Het apparaat heeft op afstand toegang tot computers met WMI-en SSH-aanroepen. 
+App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets te worden geïnstalleerd op machines en Vm's. Server Assessment gebruikt het Azure Migrate apparaat om detectie uit te voeren samen met de referenties van de computer gast. Het apparaat heeft op afstand toegang tot computers met WMI-en SSH-aanroepen.
 
 > [!NOTE]
 > App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines en is beperkt tot detectie. We bieden nog geen evaluatie op basis van een app.  Momenteel wordt door server evaluatie op dit moment een overzicht van on-premises VMware-Vm's, virtuele Hyper-V-machines en fysieke servers op computer niveau geëvalueerd voor liften en verschuivingen.
@@ -50,7 +47,7 @@ Nadat het apparaat is geïmplementeerd en u referenties hebt gegeven, start het 
 
 ## <a name="review-and-export-the-inventory"></a>De inventaris controleren en exporteren
 
-Nadat de detectie is voltooid, kunt u de app-inventaris in het Azure Portal bekijken en exporteren als u referenties hebt ingevoerd voor app-detectie. 
+Nadat de detectie is voltooid, kunt u de app-inventaris in het Azure Portal bekijken en exporteren als u referenties hebt ingevoerd voor app-detectie.
 
 1. Klik in **Azure migrate-Servers** > **Azure migrate: Server evaluatie**op de weer gegeven aantal om de pagina **gedetecteerde servers** te openen.
 

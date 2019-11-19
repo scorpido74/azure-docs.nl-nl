@@ -1,17 +1,14 @@
 ---
 title: 'Zelf studie: een spoke-netwerk maken in azure met behulp van terraform'
 description: Meer informatie over het implementeren van twee spoke VNets die zijn verbonden met een hub in een hub-spoke-topologie
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: e717424330706a6a4ebcadc543cdb2cf9bebe774
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 2a36b8ac22fb52f6b8f1246fd254d9c3ff22fc82
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969349"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159008"
 ---
 # <a name="tutorial-create-a-spoke-network-in-azure-using-terraform"></a>Zelf studie: een spoke-netwerk maken in azure met behulp van terraform
 
@@ -35,7 +32,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 In deze sectie worden twee spoke-scripts gemaakt. Elk script definieert een spoke-virtueel netwerk en een virtuele machine voor de werk belasting. Vervolgens wordt er een gekoppeld virtueel netwerk van hub naar spoke gemaakt.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 

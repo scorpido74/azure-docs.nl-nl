@@ -1,6 +1,6 @@
 ---
-title: Levering van Azure Event Grid berichten bewaken
-description: Beschrijft hoe u voor het bewaken van de bezorging van berichten van de Azure Event Grid.
+title: Bezorging van Azure Event Grid bericht bewaken
+description: Hierin wordt beschreven hoe u de levering van Azure Event Grid berichten bewaakt.
 services: event-grid
 author: spelluru
 manager: timlt
@@ -8,73 +8,79 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: spelluru
-ms.openlocfilehash: fdd18b833794c25cb90188ba8bc418d4785492ba
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60824093"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170014"
 ---
-# <a name="monitor-event-grid-message-delivery"></a>Levering van berichten van Event Grid bewaken 
+# <a name="monitor-event-grid-message-delivery"></a>Bezorging van Event Grid bericht bewaken 
 
-In dit artikel wordt beschreven hoe u de portal gebruiken om te zien van de status van de gebeurtenis leveringen.
+In dit artikel wordt beschreven hoe u de portal kunt gebruiken om de status van de gebeurtenis leveringen te bekijken.
 
-Event Grid biedt duurzame levering. Het biedt een elk bericht ten minste eenmaal voor elk abonnement. Gebeurtenissen worden onmiddellijk verzonden naar de geregistreerde webhook van elk abonnement. Als een webhook niet Bevestig de ontvangst van een gebeurtenis binnen 60 seconden na de eerste poging voor de levering, pogingen Event Grid levering van de gebeurtenis.
+Event Grid biedt een duurzame levering. Het levert elk bericht ten minste één keer per abonnement. Gebeurtenissen worden direct naar de geregistreerde webhook van elk abonnement verzonden. Als een webhook de ontvangst van een gebeurtenis binnen 60 seconden van de eerste bezorgings poging niet bevestigt, Event Grid nieuwe pogingen van de gebeurtenis.
 
 Voor informatie over de bezorging van gebeurtenissen en nieuwe pogingen, [bezorging van berichten van Event Grid en probeer het opnieuw](delivery-and-retry.md).
 
-## <a name="delivery-metrics"></a>Levering van metrische gegevens
+## <a name="delivery-metrics"></a>Metrische leverings gegevens
 
-De portal wordt weergegeven metrische gegevens voor de status van het leveren van gebeurtenisberichten.
+In de portal worden metrische gegevens weer gegeven voor de status van het leveren van gebeurtenis berichten.
 
-Onderwerpen worden de metrische gegevens:
+Voor onderwerpen zijn de metrische gegevens:
 
-* **Publicatie is voltooid**: Gebeurtenis is verzonden naar het onderwerp en verwerkt met een 2xx-antwoord.
-* **Publiceren is mislukt**: Gebeurtenis verzonden naar het onderwerp, maar geweigerd met een foutcode.
-* **Niet-overeenkomende**: Gebeurtenis is gepubliceerd naar het onderwerp, maar niet overeenkomen met een gebeurtenisabonnement. De gebeurtenis is verwijderd.
+* **Publiceren is voltooid**: de gebeurtenis is verzonden naar het onderwerp en verwerkt met een 2xx-antwoord.
+* **Publiceren is mislukt**: de gebeurtenis is verzonden naar het onderwerp, maar er is een fout code afgewezen.
+* Niet- **overeenkomende**: de gebeurtenis is gepubliceerd naar het onderwerp, maar is niet gekoppeld aan een gebeurtenis abonnement. De gebeurtenis is verwijderd.
 
-Voor abonnementen worden de metrische gegevens:
+Voor abonnementen zijn de metrische gegevens:
 
-* **Levering is voltooid**: Gebeurtenis is geleverd aan het eindpunt van het abonnement en 2xx antwoord ontvangen.
-* **Levering mislukt**: Gebeurtenis verzonden naar het eindpunt van het abonnement, maar 4xx of 5xx antwoord ontvangen.
-* **Gebeurtenissen verlopen**: Gebeurtenis is niet bezorgd en alle nieuwe pogingen zijn verzonden. De gebeurtenis is verwijderd.
-* **Overeenkomende gebeurtenissen**: Gebeurtenis in het onderwerp overeen met het gebeurtenisabonnement.
+* De **levering is voltooid**: de gebeurtenis is bezorgd bij het eind punt van het abonnement en er is een 2xx-antwoord ontvangen.
+* De **Bezorging is mislukt**: de gebeurtenis is verzonden naar het eind punt van het abonnement, maar er is een 4xx-of 5xx-antwoord ontvangen.
+* **Verlopen gebeurtenissen**: de gebeurtenis is niet bezorgd en alle nieuwe pogingen zijn verzonden. De gebeurtenis is verwijderd.
+* **Overeenkomende gebeurtenissen**: de gebeurtenis in het onderwerp is afgestemd op het gebeurtenis abonnement.
 
-## <a name="event-subscription-status"></a>Status van abonnement
+## <a name="event-subscription-status"></a>Status van gebeurtenis abonnement
 
-Overzicht van metrische gegevens voor een gebeurtenisabonnement, kunt u ofwel zoeken door het abonnementstype of abonnementen voor een specifieke resource.
+Als u de metrische gegevens voor een gebeurtenis abonnement wilt bekijken, kunt u zoeken op abonnements type of op abonnementen voor een specifieke resource.
 
-Selecteer om te zoeken op abonnement gebeurtenistype, **alle services**.
+Als u wilt zoeken op type gebeurtenis abonnement, selecteert u **alle services**.
 
 ![Alle services selecteren](./media/monitor-event-delivery/all-services.png)
 
-Zoeken naar **gebeurtenisraster** en selecteer **Event Grid-abonnementen** uit de beschikbare opties.
+Zoek naar **Event grid** en selecteer **Event grid-abonnementen** uit de beschik bare opties.
 
-![Zoeken naar gebeurtenisabonnementen](./media/monitor-event-delivery/search-and-select.png)
+![Zoeken naar gebeurtenis abonnementen](./media/monitor-event-delivery/search-and-select.png)
 
-Filteren op het type gebeurtenis, het abonnement en locatie. Selecteer **metrische gegevens** voor het abonnement om weer te geven.
+Filteren op het type gebeurtenis, het abonnement en de locatie. Selecteer **metrische gegevens** voor het abonnement dat u wilt weer geven.
 
-![Abonnementen filteren](./media/monitor-event-delivery/filter-events.png)
+![Gebeurtenis abonnementen filteren](./media/monitor-event-delivery/filter-events.png)
 
-Bekijk de metrische gegevens voor het onderwerp over de gebeurtenis en het abonnement.
+De metrische gegevens weer geven voor het onderwerp en het abonnement van de gebeurtenis.
 
-![Metrische gegevens weergeven-gebeurtenis](./media/monitor-event-delivery/subscription-metrics.png)
+![Metrische gebeurtenis gegevens weer geven](./media/monitor-event-delivery/subscription-metrics.png)
 
-U vindt de metrische gegevens voor een specifieke resource, selecteert u die bron. Selecteer **gebeurtenissen**.
+Als u de metrische gegevens voor een specifieke resource wilt vinden, selecteert u die resource. Selecteer vervolgens **gebeurtenissen**.
 
 ![Gebeurtenissen voor een resource selecteren](./media/monitor-event-delivery/select-events.png)
 
-Ziet u de metrische gegevens voor abonnementen voor die bron.
+U ziet de metrische gegevens voor abonnementen voor die bron.
 
-## <a name="custom-event-status"></a>Status van het aangepaste gebeurtenis
+## <a name="custom-event-status"></a>Aangepaste gebeurtenis status
 
-Als u een aangepast onderwerp hebt gepubliceerd, kunt u de metrische gegevens weergeven voor deze. Selecteer de resourcegroep voor het onderwerp en selecteert u het onderwerp.
+Als u een aangepast onderwerp hebt gepubliceerd, kunt u de metrische gegevens weer geven. Selecteer de resource groep voor het onderwerp en selecteer het onderwerp.
 
 ![Aangepaste onderwerp selecteren](./media/monitor-event-delivery/select-custom-topic.png)
 
-Bekijk de metrische gegevens voor het onderwerp van het aangepaste gebeurtenis.
+Bekijk de metrische gegevens voor het onderwerp van de aangepaste gebeurtenis.
 
-![Metrische gegevens weergeven-gebeurtenis](./media/monitor-event-delivery/custom-topic-metrics.png)
+![Metrische gebeurtenis gegevens weer geven](./media/monitor-event-delivery/custom-topic-metrics.png)
+
+## <a name="set-alerts"></a>Waarschuwingen instellen
+
+U kunt waarschuwingen instellen voor het onderwerp en metrische gegevens op domein niveau voor aangepaste onderwerpen en gebeurtenis domeinen. Selecteer in de Blade overzicht voor de optie **waarschuwingen** aan de linkerkant had resource menu om waarschuwings regels weer te geven, te beheren en te maken. [Meer informatie over Azure Monitor-waarschuwingen](../azure-monitor/platform/alerts-overview.md)
+
+![Metrische gebeurtenis gegevens weer geven](./media/monitor-event-delivery/select-alerts.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

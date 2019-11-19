@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: c2d652b31c264d7b17fcf303564c327d09d416f9
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ef826239bc916b4ccf25785f92397286017d00f7
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929142"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74171392"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Een standaard SKU-load balancer gebruiken in azure Kubernetes service (AKS)
 
-Om toegang te bieden tot uw toepassingen in azure Kubernetes service (AKS), kunt u een Azure Load Balancer maken en gebruiken. Een load balancer die wordt uitgevoerd op AKS kan worden gebruikt als een intern of een extern load balancer. Een interne load balancer maakt een Kubernetes-service alleen toegankelijk voor toepassingen die worden uitgevoerd in hetzelfde virtuele netwerk als het AKS-cluster. Een externe load balancer ontvangt een of meer open bare Ip's voor binnenkomend verkeer en maakt een Kubernetes-service extern toegankelijk met behulp van de open bare Ip's.
+Als u toegang wilt verlenen tot toepassingen via Kubernetes services van het type `LoadBalancer` in azure Kubernetes service (AKS), kunt u een Azure Load Balancer gebruiken. Een load balancer die wordt uitgevoerd op AKS kan worden gebruikt als een intern of een extern load balancer. Een interne load balancer maakt een Kubernetes-service alleen toegankelijk voor toepassingen die worden uitgevoerd in hetzelfde virtuele netwerk als het AKS-cluster. Een externe load balancer ontvangt een of meer open bare Ip's voor binnenkomend verkeer en maakt een Kubernetes-service extern toegankelijk met behulp van de open bare Ip's.
 
 Azure Load Balancer is beschikbaar in twee Sku's: *Basic* en *Standard*. Standaard wordt de *standaard* -SKU gebruikt wanneer u een AKS-cluster maakt. Het gebruik van een *standaard* -SKU Load Balancer biedt extra functies en functionaliteit, zoals een grotere back-end-pool grootte en Beschikbaarheidszones. Het is belang rijk dat u de verschillen tussen de load balancers *Standard* en *Basic* begrijpt voordat u kiest voor gebruik. Wanneer u een AKS-cluster hebt gemaakt, kunt u de load balancer SKU voor dat cluster niet wijzigen. Zie voor meer informatie over de *Basic* -en *Standard* -sku's [Azure Load Balancer SKU-vergelijking][azure-lb-comparison].
 
@@ -29,9 +29,18 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor dit artikel de Azure CLI-versie 2.0.74 of hoger uitvoeren. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][install-azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 ## <a name="before-you-begin"></a>Voordat u begint
+
 In dit artikel wordt ervan uitgegaan dat u een AKS-cluster hebt met de *standaard* SKU Azure Load Balancer. Als u een AKS-cluster nodig hebt, raadpleegt u de AKS Quick Start [met behulp van de Azure cli][aks-quickstart-cli] of [met behulp van de Azure Portal][aks-quickstart-portal].
 
 De AKS-Cluster service-principal moet ook machtigingen hebben om netwerk bronnen te beheren als u een bestaand subnet of een bestaande resource groep gebruikt. In het algemeen wijst u de rol *netwerk bijdrage* toe aan uw service-principal op de gedelegeerde resources. Zie [AKS toegang tot andere Azure-resources delegeren][aks-sp]voor meer informatie over machtigingen.
+
+### <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Verplaatsen van een basis-SKU Load Balancer naar standaard-SKU
+
+Als u een bestaand cluster hebt met de basis-SKU Load Balancer, zijn er belang rijke verschillen in de gedrags bij het migreren om een cluster te gebruiken met de standaard-SKU Load Balancer.
+
+Als u bijvoorbeeld een blauw/groen-implementatie wilt maken voor het migreren van clusters, kunt u het beste de `load-balancer-sku` type van een cluster definiëren tijdens het maken van een cluster. *Basic SKU* load balancers maken echter gebruik van *elementaire SKU* -IP-adressen die niet compatibel zijn met *Standard SKU* load balancers, aangezien hiervoor *standaard-SKU* -IP-adressen zijn vereist. Bij het migreren van clusters om Load Balancer Sku's te upgraden, is een nieuw IP-adres met een compatibele IP-adres-SKU vereist.
+
+Voor meer overwegingen over het migreren van clusters raadpleegt u de [documentatie over migratie overwegingen](acs-aks-migration.md) om een lijst met belang rijke onderwerpen weer te geven waarmee u rekening moet houden bij de migratie. De onderstaande beperkingen zijn ook belang rijke verschillen in de situatie bij het gebruik van standaard SKU load balancers in AKS.
 
 ### <a name="limitations"></a>Beperkingen
 
@@ -41,9 +50,10 @@ De volgende beperkingen zijn van toepassing wanneer u AKS-clusters maakt en behe
     * Geef uw eigen open bare Ip's op.
     * Geef uw eigen open bare IP-voor voegsels op.
     * Geef een waarde op van Maxi maal 100 zodat het AKS-cluster ervoor kan zorgen dat veel *standaard* -SKU open bare ip's in dezelfde resource groep zijn gemaakt als het AKS-cluster. Dit is meestal een naam met *MC_* aan het begin. AKS wijst het open bare IP-adres toe aan de *standaard* -SKU Load Balancer. Standaard wordt één openbaar IP-adres automatisch gemaakt in dezelfde resource groep als het AKS-cluster als er geen openbaar IP-adres, openbaar IP-voor voegsel of aantal Ip's is opgegeven. U moet ook open bare adressen toestaan en voor komen dat u een Azure Policy maakt waardoor het IP-adres niet kan worden gemaakt.
-* Wanneer u de *standaard* -SKU voor een Load Balancer gebruikt, moet u Kubernetes versie 1,13 of hoger gebruiken.
+* Wanneer u de *standaard* -SKU voor een Load Balancer gebruikt, moet u Kubernetes versie *1,13 of hoger*gebruiken.
 * Het definiëren van de load balancer SKU kan alleen worden uitgevoerd wanneer u een AKS-cluster maakt. U kunt de load balancer SKU niet wijzigen nadat er een AKS-cluster is gemaakt.
-* U kunt slechts één load balancer SKU in één cluster gebruiken.
+* U kunt slechts één type load balancer SKU (Basic of Standard) gebruiken in één cluster.
+* *Standaard* Load balancers van SKU bieden alleen ondersteuning voor *standaard* -SKU-IP-adressen.
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>Configureer de load balancer intern
 

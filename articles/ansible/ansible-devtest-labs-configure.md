@@ -1,19 +1,15 @@
 ---
 title: 'Zelf studie: Labs configureren in Azure DevTest Labs met behulp van Ansible'
 description: Meer informatie over het configureren van een lab in Azure DevTest Labs met behulp van Ansible
-ms.service: ansible
 keywords: ansible, azure, devops, bash, Playbook, devtest Labs
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: d035c76a811df45af5ed8183b86e14a2ee6218b7
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: b6981ee94c4d82997c574db037befb9782465d08
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72241660"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74156277"
 ---
 # <a name="tutorial-configure-labs-in-azure-devtest-labs-using-ansible"></a>Zelf studie: Labs configureren in Azure DevTest Labs met behulp van Ansible
 
@@ -77,10 +73,10 @@ U kunt beleids instellingen voor het lab instellen. De volgende waarden kunnen w
 - `user_owned_lab_premium_vm_count` is het aantal Premium-Vm's waarvan een gebruiker eigenaar kan zijn
 - `lab_vm_count` is het maximum aantal Lab-Vm's
 - `lab_premium_vm_count` is het maximum aantal Lab Premium-Vm's
-- `lab_vm_size` is de toegestane Lab-VM-grootte (s)
+- `lab_vm_size` is de toegestane VM-grootte (s) voor Lab
 - `gallery_image` is de toegestane galerie afbeelding (en)
 - `user_owned_lab_vm_count_in_subnet` is het maximum aantal virtuele machines van de gebruiker in een subnet
-- `lab_target_cost` is de doel kosten van het lab
+- `lab_target_cost` zijn de doel kosten van het lab
 
 ```yml
 - name: Set the lab policies
@@ -97,7 +93,7 @@ U kunt beleids instellingen voor het lab instellen. De volgende waarden kunnen w
 
 Met de voorbeeld taak in deze sectie wordt het lab-schema geconfigureerd. 
 
-In het volgende code fragment wordt de waarde @no__t 0 gebruikt om de opstart tijd van de VM op te geven. Op dezelfde manier stelt de `lab_vms_shutdown`-waarde de afsluit tijd van de test-VM in.
+In het volgende code fragment wordt de waarde `lab_vms_startup` gebruikt om de opstart tijd van de VM op te geven. Op dezelfde manier bepaalt het instellen van de `lab_vms_shutdown` waarde de test tijd voor het lab van de VM.
 
 ```yml
 - name: Set the lab schedule
@@ -202,7 +198,7 @@ De volgende taak bevat een lijst met alle artefacten:
 
 ## <a name="get-azure-resource-manager-information-for-the-artifact-sources"></a>Azure Resource Manager informatie ophalen voor de artefact bronnen
 
-Als u wilt weer geven van alle Azure Resource Manager sjablonen in `public environment repository`, de vooraf gedefinieerde opslag plaats met sjablonen:
+Als u alle Azure Resource Manager sjablonen in `public environment repository`wilt weer geven, moet u de vooraf gedefinieerde opslag plaats met sjablonen:
 
 ```yml
 - name: List the Azure Resource Manager template facts
@@ -452,7 +448,7 @@ Voordat u de Playbook uitvoert, moet u de volgende wijzigingen aanbrengen:
 - Vervang in het gedeelte `vars` de tijdelijke aanduiding `{{ resource_group_name }}` door de naam van uw resource groep.
 - Sla het GitHub-token op als een omgevings variabele met de naam `GITHUB_ACCESS_TOKEN`.
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook devtestlab-create.yml
@@ -476,7 +472,7 @@ Sla de volgende code op als `cleanup.yml`:
         state: absent
 ```
 
-Voer de Playbook uit met behulp van de `ansible-playbook`-opdracht:
+Voer de Playbook uit met de opdracht `ansible-playbook`:
 
 ```bash
 ansible-playbook cleanup.yml

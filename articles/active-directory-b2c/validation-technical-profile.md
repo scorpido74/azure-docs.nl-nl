@@ -1,6 +1,6 @@
 ---
-title: Een profiel van de technische definiëren in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
-description: Definieer het technische profiel van een Azure Active Directory in een aangepast beleid in Azure Active Directory B2C.
+title: Definieer een technische validatie profiel in een aangepast beleid in Azure Active Directory B2C | Microsoft Docs
+description: Definieer een Azure Active Directory technisch profiel in een aangepast beleid in Azure Active Directory B2C.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3f20c3c6d6821b5a8bbdb74101095431f6f7f18f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ad15342e6d35a5c6101beb1ddc09d4ce1f2089d5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66511914"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167574"
 ---
-# <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een profiel van de technische definiëren in een aangepast beleid voor Azure Active Directory B2C
+# <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Een technische validatie profiel definiëren in een Azure Active Directory B2C aangepast beleid
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Het technische profiel van een validatie is een gewone technisch profiel van een protocol, zoals [Azure Active Directory](active-directory-technical-profile.md) of een [REST-API](restful-technical-profile.md). Het technische validatieprofiel uitvoerclaims resultaat of een foutbericht HTTP 409 (Conflict antwoordstatuscode), met de volgende gegevens:
+Een technische validatie profiel is een normaal technisch profiel van elk protocol, zoals [Azure Active Directory](active-directory-technical-profile.md) of een [rest API](restful-technical-profile.md). Het technische profiel voor validatie retourneert uitvoer claims of retourneert een HTTP 409-fout bericht (status code voor de conflict reactie) met de volgende gegevens:
 
 ```JSON
 {
@@ -31,57 +31,60 @@ Het technische profiel van een validatie is een gewone technisch profiel van een
 }
 ```
 
-Claims die zijn geretourneerd door een profiel van de technische worden terug naar de eigenschappenverzameling claims toegevoegd. U kunt deze claims in de volgende technische validatie-profielen.
+Claims die worden geretourneerd op basis van een validatie technische profiel, worden toegevoegd aan de verzameling claims. U kunt deze claims gebruiken in de volgende validatie technische profielen.
 
-Technische profielen validatie worden uitgevoerd in de volgorde waarin ze worden weergegeven in de **ValidationTechnicalProfiles** element. U kunt configureren in een profiel van de technische of de uitvoering van de volgende validatie technische profielen moet nog steeds als de validatie van technisch profiel wordt een fout gegenereerd of voltooid is.
+Validatie van technische profielen worden uitgevoerd in de volg orde waarin ze worden weer gegeven in het **ValidationTechnicalProfiles** -element. U kunt configureren in een technisch profiel voor validatie, ongeacht of de uitvoering van de volgende validatie technische profielen moet worden voortgezet als er een fout optreedt in het technische profiel van de validatie.
 
-Een validatie technisch profiel voorwaardelijk kan worden uitgevoerd op basis van voorwaarden die zijn gedefinieerd in de **ValidationTechnicalProfile** element. U kunt bijvoorbeeld controleren of een bepaalde claims aanwezig is, of als een claim gelijk is of niet aan de opgegeven waarde.
+Een validatie technische profiel kan voorwaardelijk worden uitgevoerd op basis van de voor waarden die zijn gedefinieerd in het **ValidationTechnicalProfile** -element. U kunt bijvoorbeeld controleren of een specifieke claim bestaat of of een claim gelijk is aan of niet aan de opgegeven waarde.
 
-Een zelf-gecontroleerde technisch profiel kan een validatie technisch profiel moet worden gebruikt voor het valideren van sommige of alle van de uitvoerclaims definiëren. Alle van de invoer claims van de waarnaar wordt verwezen, technisch profiel moet worden weergegeven in de uitvoerclaims van de verwijzende validatie technisch profiel.
+Een zelf-bevestigd technisch profiel kan een technisch profiel voor validatie definiëren dat moet worden gebruikt voor het valideren van sommige of alle bijbehorende uitvoer claims. Alle invoer claims van het technische profiel waarnaar wordt verwezen, moeten worden weer gegeven in de uitvoer claims van het referentie-technische profiel voor validatie.
+
+> [!NOTE]
+> Alleen zelf-beweringen technische profielen kunnen validatie technische profielen gebruiken. Als u de uitvoer claims van niet-zelfondertekende technische profielen moet valideren, kunt u overwegen om een aanvullende indelings stap in uw gebruikers traject te gebruiken om het technische profiel dat verantwoordelijk is voor de validatie, toe te passen.    
 
 ## <a name="validationtechnicalprofiles"></a>ValidationTechnicalProfiles
 
-De **ValidationTechnicalProfiles** element bevat de volgende elementen:
+Het **ValidationTechnicalProfiles** -element bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| ValidationTechnicalProfile | 1: n | Een technisch profiel moet worden gebruikt voor het valideren van sommige of alle van de uitvoerclaims van de verwijzende technisch profiel. |
+| ValidationTechnicalProfile | 1: n | Een technisch profiel dat moet worden gebruikt voor het valideren van een aantal of alle uitvoer claims van het referentie-technische profiel. |
 
-De **ValidationTechnicalProfile** element bevat het volgende kenmerk:
+Het element **ValidationTechnicalProfile** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| referenceId | Ja | Een id van een technisch profiel al gedefinieerd in het beleid of het bovenliggende beleid. |
-|ContinueOnError|Nee| Geeft aan of validatie van de validatie van de volgende technische profielen blijven moet als deze validatie technisch profiel wordt een fout gegenereerd. Mogelijke waarden: `true` of `false` (standaard de verwerking van verdere validatie profielen wordt gestopt en is een fout geretourneerd). |
-|ContinueOnSuccess | Nee | Geeft aan of validatie van de validatie van de volgende profielen blijven moet als deze technische validatieprofiel is geslaagd. Mogelijke waarden: `true` of `false`. De standaardwaarde is `true`, wat inhoudt dat de verwerking van verdere validatie profielen blijft. |
+| ReferenceId | Ja | Een id van een technisch profiel is al gedefinieerd in het beleid of het bovenliggende beleid. |
+|ContinueOnError|Nee| Hiermee wordt aangegeven of de validatie van de volgende validatie technische profielen moet worden voortgezet als het technische profiel voor de validatie een fout veroorzaakt. Mogelijke waarden: `true` of `false` (standaard, verwerking van verdere validatie profielen wordt gestopt en er wordt een fout geretourneerd). |
+|ContinueOnSuccess | Nee | Hiermee wordt aangegeven of de validatie van de volgende validatie profielen moet worden voortgezet als het technische profiel voor de validatie is geslaagd. Mogelijke waarden: `true` of `false`. De standaard waarde is `true`, wat inhoudt dat de verwerking van verdere validatie profielen zal worden voortgezet. |
 
-De **ValidationTechnicalProfile** element bevat het volgende element:
+Het element **ValidationTechnicalProfile** bevat het volgende element:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| Voorwaarden | 0:1 | Een lijst met voorwaarden waaraan moet worden voldaan voor het technische validatieprofiel uit te voeren. |
+| Voor waarden | 0:1 | Een lijst met voor waarden waaraan moet worden voldaan om het technische profiel voor validatie te kunnen uitvoeren. |
 
-De **voorwaarde** element bevat het volgende kenmerk:
+Het element **voor waarde** bevat het volgende kenmerk:
 
-| Kenmerk | Vereist | Description |
+| Kenmerk | Vereist | Beschrijving |
 | --------- | -------- | ----------- |
-| `Type` | Ja | Het type selectievakje of de query uit te voeren voor de voorwaarde. Een van beide `ClaimsExist` om ervoor te zorgen dat de acties moeten worden uitgevoerd als de opgegeven claims aanwezig is in de huidige een claimset van de gebruiker is opgegeven of `ClaimEquals` is opgegeven dat de acties die moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde gelijk is aan de opgegeven waarde. |
-| `ExecuteActionsIf` | Ja | Geeft aan of de acties in de eerste voorwaarde moeten worden uitgevoerd als de test true of false is. |
+| `Type` | Ja | Het type controle of query dat moet worden uitgevoerd voor de voor waarde. `ClaimsExist` is opgegeven om ervoor te zorgen dat er acties moeten worden uitgevoerd als de opgegeven claims bestaan in de huidige claimset van de gebruiker, of `ClaimEquals` is opgegeven dat de acties moeten worden uitgevoerd als de opgegeven claim bestaat en de waarde ervan gelijk is aan de opgegeven waarde. |
+| `ExecuteActionsIf` | Ja | Hiermee wordt aangegeven of de acties in de voor waarde moeten worden uitgevoerd als de test True of False is. |
 
-De **voorwaarde** element bevat de volgende elementen:
+Het element **voor waarde** bevat de volgende elementen:
 
-| Element | Exemplaren | Description |
+| Element | Instanties | Beschrijving |
 | ------- | ----------- | ----------- |
-| Value | 1: n | De gegevens die wordt gebruikt door de controle. Als het type van deze controle is `ClaimsExist`, dit veld geeft aan dat een ClaimTypeReferenceId om op te vragen. Als het type van controle is `ClaimEquals`, dit veld geeft aan dat een ClaimTypeReferenceId om op te vragen. Terwijl een andere waarde-element de waarde bevat moet worden gecontroleerd.|
-| Bewerking | 1:1 | De actie die moet worden uitgevoerd als de controle van de voorwaarde in een orchestration-stap ingesteld op true is. De waarde van de **actie** is ingesteld op `SkipThisValidationTechnicalProfile`. Hiermee geeft u de gekoppelde validatieregels technisch profiel moet niet worden uitgevoerd. |
+| Waarde | 1: n | De gegevens die worden gebruikt door de controle. Als het type van deze controle is `ClaimsExist`, geeft dit veld een ClaimTypeReferenceId op dat moet worden opgevraagd. Als het type controle is `ClaimEquals`, geeft dit veld een ClaimTypeReferenceId op dat moet worden opgevraagd. Een ander value-element bevat de waarde die moet worden gecontroleerd.|
+| Actie | 1:1 | De actie die moet worden uitgevoerd als de voor waarde wordt gecontroleerd binnen een Orchestration-stap. De waarde van de **actie** is ingesteld op `SkipThisValidationTechnicalProfile`. Hiermee geeft u op dat het bijbehorende technische profiel voor validatie niet moet worden uitgevoerd. |
 
 ### <a name="example"></a>Voorbeeld
 
-Volgende voorbeeld wordt met deze technische validatie-profielen:
+In het volgende voor beeld worden deze technische profielen voor validatie gebruikt:
 
-1. De eerste validatie van technisch profiel gebruikersreferenties controleert en als er een fout, zoals een ongeldige gebruikersnaam of onjuist wachtwoord optreedt wordt niet voortgezet.
-2. De volgende technische validatieprofiel, niet worden uitgevoerd als de claim userType niet bestaat of als de waarde van het userType `Partner`. Het technische validatieprofiel probeert te lezen van het gebruikersprofiel in de database interne klant bent en doorgaan als een fout, zoals REST API-service niet beschikbaar of een interne fout optreedt.
-3. De laatste validatie technisch profiel, wordt niet uitgevoerd als de claim userType niet al bestond, of als de waarde van het userType `Customer`. Het technische validatieprofiel probeert te lezen van het gebruikersprofiel in de interne partnerdatabase en wordt voortgezet als een fout, zoals REST API-service niet beschikbaar of een interne fout optreedt.
+1. Het eerste validatie profiel controleert de gebruikers referenties en gaat niet verder als er een fout optreedt, zoals een ongeldige gebruikers naam of een onjuist wacht woord.
+2. Het volgende validatie technische profiel wordt niet uitgevoerd als de User type-claim niet bestaat of als de waarde van de User type is `Partner`. Het technische profiel voor validatie probeert het gebruikers profiel te lezen uit de interne klanten database en door te gaan als er een fout optreedt, zoals REST API service niet beschikbaar of een interne fout.
+3. Het laatste validatie-technische profiel wordt niet uitgevoerd als de User type-claim niet bestaat of als de waarde van de User type is `Customer`. Het validatie technische profiel probeert het gebruikers profiel te lezen uit de interne partner database en gaat door als er een fout optreedt, zoals REST API service niet beschikbaar of een interne fout.
 
 ```XML
 <ValidationTechnicalProfiles>

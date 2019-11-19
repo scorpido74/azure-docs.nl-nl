@@ -1,18 +1,14 @@
 ---
-title: Back-ups maken van een SAP HANA Data Base naar Azure met Azure Backup | Microsoft Docs
+title: Back-up maken van een SAP HANA Data Base naar Azure
 description: In deze zelf studie wordt uitgelegd hoe u een back-up maakt van een SAP HANA Data Base naar Azure met de Azure Backup-service.
-author: dcurwin
-manager: carmonm
-ms.service: backup
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.author: dacurwin
-ms.openlocfilehash: 8d99ff6f2d8a21a501631a3a062be6b05130c05b
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 519e47c6b6793c638e64c4e4bcc4fafdb678c9fb
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931802"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172728"
 ---
 # <a name="back-up-an-sap-hana-database-to-azure"></a>Back-up maken van een SAP HANA Data Base naar Azure
 
@@ -25,7 +21,7 @@ ms.locfileid: "72931802"
 
 **Ondersteuning** | **Details**
 --- | ---
-**Ondersteunde geografische gebieden** | Australië-Zuid-Oost, Oost-Australië <br> Brazilië - Zuid <br> Canada-centraal, Canada-oost <br> Zuid-Azië-oost, Azië-oost <br> VS-Oost, VS-Oost 2, West-Centraal VS, VS-West, VS-West 2, Noord-Centraal VS, centraal VS, Zuid-Centraal VS<br> India, midden, India Zuid <br> Japan (oost), Japan (west)<br> Korea Centraal, Korea Zuid <br> Europa - noord, Europa - west <br> UK-zuid, UK-west
+**Ondersteunde geografische gebieden** | Australië-Zuid-Oost, Oost-Australië <br> Brazilië - zuid <br> Canada-centraal, Canada-oost <br> Zuid-Azië-oost, Azië-oost <br> VS-Oost, VS-Oost 2, West-Centraal VS, VS-West, VS-West 2, Noord-Centraal VS, centraal VS, Zuid-Centraal VS<br> India, midden, India Zuid <br> Japan (oost), Japan (west)<br> Korea Centraal, Korea Zuid <br> Europa - noord, Europa - west <br> UK-zuid, UK-west
 **Ondersteunde VM-besturings systemen** | SLES 12 met SP2, SP3 of SP4.
 **Ondersteunde HANA-versies** | Dit SDC op HANA 1. x, MDC op HANA 2. x < = SPS04 Rev 43
 
@@ -40,7 +36,7 @@ ms.locfileid: "72931802"
 - U kunt om de 15 minuten een back-up maken van database Logboeken. Logboek back-ups gaan alleen naar de stroom nadat een volledige back-up voor de data base is voltooid.
 - U kunt volledige en differentiële back-ups maken. Incrementele back-up wordt momenteel niet ondersteund.
 - U kunt het back-upbeleid niet wijzigen nadat u het hebt toegepast voor SAP HANA back-ups. Als u een back-up met andere instellingen wilt maken, maakt u een nieuw beleid of wijst u een ander beleid toe.
-  - Als u een nieuw beleid wilt maken, klikt u in de kluis op **beleid** > **back-upbeleid** >  **+**  > -**SAP Hana toevoegen in azure VM**en geeft u beleids instellingen op.
+  - Als u een nieuw beleid wilt maken, klikt u in de kluis op **beleids regels** > **back-upbeleid** >  **+**  > **SAP Hana toevoegen in azure VM**en geeft u beleids instellingen op.
   - Als u een ander beleid wilt toewijzen, klikt u in de eigenschappen van de virtuele machine waarop de data base wordt uitgevoerd op de huidige beleids naam. Vervolgens kunt u op de pagina **back-upbeleid** een ander beleid selecteren dat u wilt gebruiken voor de back-up.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -104,7 +100,7 @@ Schakel nu back-up in.
 
 1. Klik in stap 2 op **back-up configureren**.
 2. Selecteer in **items selecteren waarvan u een back**-up wilt maken de data bases die u wilt beveiligen > **OK**.
-3. In **back-upbeleid** > **Kies back-** upbeleid, maakt u een nieuw back-upbeleid voor de data bases, in overeenstemming met de onderstaande instructies.
+3. Maak in **back-upbeleid** > **back-upbeleid kiezen**een nieuw back-upbeleid voor de data bases, in overeenstemming met de onderstaande instructies.
 4. Nadat u het beleid hebt gemaakt, klikt u in het menu **back-up** op **back-up inschakelen**.
 5. Volg de voortgang van de configuratie van de back-up in het gebied **meldingen** van de portal.
 
@@ -170,14 +166,14 @@ Ga als volgt te werk als u een lokale back-up wilt maken (met behulp van HANA St
 
 1. Wacht totdat alle volledige of logboek back-ups voor de Data Base zijn voltooid. Controleer de status in SAP HANA Studio.
 2. Schakel logboek back-ups uit en stel de back-catalogus in op het bestands systeem voor de relevante data base.
-3. U doet dit door te dubbel klikken op **systemdb** > **configuratie** >  database  > **filter (logboek)** te**selecteren**.
+3. U doet dit door te dubbel klikken op **systemdb** > **configuratie** > **Data Base** > **filter (logboek)** te selecteren.
 4. Stel **enable_auto_log_backup** in op **Nee**.
 5. Stel **log_backup_using_backint** in op **False**.
 6. Maak een ad-hoc volledige back-up van de data base.
 7. Wacht tot de volledige back-up en catalogus back-up zijn voltooid.
 8. De vorige instellingen herstellen voor Azure:
     - Stel **enable_auto_log_backup** in op **Ja**.
-    - Stel **log_backup_using_backint** in op **True**.
+    - Stel **log_backup_using_backint** in op **waar**.
 
 
 ## <a name="upgrading-protected-10-dbs-to-20"></a>Een upgrade van beveiligde 1,0 Db's naar 2,0

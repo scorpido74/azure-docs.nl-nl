@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/23/2019
 ms.author: zarhoads
-ms.openlocfilehash: bc74ac660c5bba0624416d0a1724d959a4c385a7
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: fc808fee66dee573aecd423e375d30bf3f5b696a
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70305279"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74170715"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Toepassingen installeren met helm in azure Kubernetes service (AKS)
 
@@ -33,7 +33,7 @@ U hebt ook de helm CLI geïnstalleerd. Dit is de client die wordt uitgevoerd op 
 
 Voordat u helm kunt implementeren in een AKS-cluster met RBAC, hebt u een service account en een rol-koppeling voor de Tiller-service nodig. Zie voor meer informatie over het beveiligen van helm/Tiller in een op RBAC ingeschakeld cluster [Tiller, naam ruimten en RBAC][tiller-rbac]. Als op uw AKS-cluster geen RBAC is ingeschakeld, slaat u deze stap over.
 
-Maak een bestand met `helm-rbac.yaml` de naam en kopieer de volgende YAML:
+Maak een bestand met de naam `helm-rbac.yaml` en kopieer de volgende YAML:
 
 ```yaml
 apiVersion: v1
@@ -56,7 +56,7 @@ subjects:
     namespace: kube-system
 ```
 
-Maak het service account en de functie binding met `kubectl apply` de opdracht:
+Maak het service account en de functie binding met de opdracht `kubectl apply`:
 
 ```console
 kubectl apply -f helm-rbac.yaml
@@ -70,15 +70,15 @@ Met een Kubernetes-cluster met RBAC kunt u het niveau van de toegangs Tiller beh
 
 ## <a name="configure-helm"></a>Helm configureren
 
-Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm-init] . Als op uw cluster geen RBAC is ingeschakeld, verwijdert `--service-account` u het argument en de waarde. In de volgende voor beelden wordt ook de [geschiedenis ingesteld: Maxi maal][helm-history-max] 200.
+Als u een Basic-Tiller in een AKS-cluster wilt implementeren, gebruikt u de opdracht [helm init][helm-init] . Als op uw cluster geen RBAC is ingeschakeld, verwijdert u het argument en de waarde `--service-account`. In de volgende voor beelden wordt ook de [geschiedenis ingesteld: Maxi maal][helm-history-max] 200.
 
-Als u TLS/SSL hebt geconfigureerd voor Tiller en helm, kunt u deze eenvoudige initialisatie stap overs Laan en `--tiller-tls-` in plaats daarvan de vereiste opgeven, zoals wordt weer gegeven in het volgende voor beeld.
+Als u TLS/SSL hebt geconfigureerd voor Tiller en helm, kunt u deze eenvoudige initialisatie stap overs Laan en in plaats daarvan de vereiste `--tiller-tls-` opgeven, zoals in het volgende voor beeld wordt weer gegeven.
 
 ```console
 helm init --history-max 200 --service-account tiller --node-selectors "beta.kubernetes.io/os=linux"
 ```
 
-Als u TLS/SSL hebt geconfigureerd tussen helm en Tiller, `--tiller-tls-*` geeft u de para meters en namen van uw eigen certificaten op, zoals wordt weer gegeven in het volgende voor beeld:
+Als u TLS/SSL hebt geconfigureerd tussen helm en Tiller, geeft u de `--tiller-tls-*` para meters en namen van uw eigen certificaten op, zoals wordt weer gegeven in het volgende voor beeld:
 
 ```console
 helm init \
@@ -148,7 +148,7 @@ Update Complete.
 
 ## <a name="run-helm-charts"></a>Helm-grafieken uitvoeren
 
-Als u grafieken met helm wilt installeren, gebruikt u de opdracht [helm installeren][helm-install] en geeft u de naam van de grafiek op die u wilt installeren. Als u de installatie van een helm-diagram in actie wilt zien, kunt u een eenvoudige nginx-implementatie installeren met behulp van een helm-grafiek. Als u TLS/SSL hebt geconfigureerd, voegt `--tls` u de para meter toe om uw helm-client certificaat te gebruiken.
+Als u grafieken met helm wilt installeren, gebruikt u de opdracht [helm installeren][helm-install] en geeft u de naam van de grafiek op die u wilt installeren. Als u de installatie van een helm-diagram in actie wilt zien, kunt u een eenvoudige nginx-implementatie installeren met behulp van een helm-grafiek. Als u TLS/SSL hebt geconfigureerd, voegt u de para meter `--tls` toe om uw helm-client certificaat te gebruiken.
 
 ```console
 helm install stable/nginx-ingress \
@@ -187,7 +187,7 @@ Het duurt een paar minuten voordat het *externe IP-* adres van de nginx-ingress-
 
 ## <a name="list-helm-releases"></a>Helm releases weer geven
 
-Gebruik de [lijst opdracht helm][helm-list] voor een overzicht van de versies die op uw cluster zijn geïnstalleerd. In het volgende voor beeld ziet u de release van de nginx-ingang die in de vorige stap is geïmplementeerd. Als u TLS/SSL hebt geconfigureerd, voegt `--tls` u de para meter toe om uw helm-client certificaat te gebruiken.
+Gebruik de [lijst opdracht helm][helm-list] voor een overzicht van de versies die op uw cluster zijn geïnstalleerd. In het volgende voor beeld ziet u de release van de nginx-ingang die in de vorige stap is geïmplementeerd. Als u TLS/SSL hebt geconfigureerd, voegt u de para meter `--tls` toe om uw helm-client certificaat te gebruiken.
 
 ```console
 $ helm list
@@ -198,7 +198,7 @@ flailing-alpaca   1         Thu May 23 12:55:21 2019    DEPLOYED    nginx-ingres
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u een helm-grafiek implementeert, worden er een aantal Kubernetes-resources gemaakt. Deze resources omvatten Peul, implementaties en services. Als u deze resources wilt opschonen `helm delete` , gebruikt u de opdracht en geeft u de naam van uw `helm list` release op, zoals gevonden in de vorige opdracht. In het volgende voor beeld wordt de release met de naam *flailing-Alpaca*verwijderd:
+Wanneer u een helm-grafiek implementeert, worden er een aantal Kubernetes-resources gemaakt. Deze resources omvatten Peul, implementaties en services. Als u deze resources wilt opschonen, gebruikt u de opdracht `helm delete` en geeft u de naam van uw release op, zoals gevonden in de vorige `helm list` opdracht. In het volgende voor beeld wordt de release met de naam *flailing-Alpaca*verwijderd:
 
 ```console
 $ helm delete flailing-alpaca
@@ -215,18 +215,18 @@ Zie de helm-documentatie voor meer informatie over het beheren van Kubernetes-to
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/
-[helm-documentation]: https://docs.helm.sh/
-[helm-init]: https://docs.helm.sh/helm/#helm-init
-[helm-install]: https://docs.helm.sh/using_helm/#installing-helm
+[helm-documentation]: https://v2.helm.sh/docs/
+[helm-init]: https://v2.helm.sh/docs/helm/#helm-init
+[helm-install]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [helm-install-options]: https://github.com/kubernetes/helm/blob/master/docs/install.md
-[helm-list]: https://docs.helm.sh/helm/#helm-list
-[helm-history-max]: https://helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
-[helm-rbac]: https://docs.helm.sh/using_helm/#role-based-access-control
-[helm-repo-update]: https://docs.helm.sh/helm/#helm-repo-update
-[helm-search]: https://docs.helm.sh/helm/#helm-search
-[tiller-rbac]: https://docs.helm.sh/using_helm/#tiller-namespaces-and-rbac
-[helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
-
+[helm-list]: https://v2.helm.sh/docs/helm/#helm-list
+[helm-history-max]: https://v2.helm.sh/docs/using_helm/#initialize-helm-and-install-tiller
+[helm-rbac]: https://v2.helm.sh/docs/using_helm/#role-based-access-control
+[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-search]: https://v2.helm.sh/docs/helm/#helm-search
+[tiller-rbac]: https://v2.helm.sh/docs/using_helm/#tiller-namespaces-and-rbac
+[helm-ssl]: https://v2.helm.sh/docs/using_helm/#using-ssl-between-helm-and-tiller
+            
 <!-- LINKS - internal -->
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md

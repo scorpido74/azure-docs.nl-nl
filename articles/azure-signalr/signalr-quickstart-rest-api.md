@@ -1,19 +1,19 @@
 ---
 title: 'Snelstart: Azure SignalR Service REST-API'
-description: Een snelstartgids voor het gebruik van de Azure SignalR Service REST-API.
+description: Meer informatie over het gebruik van REST API met de Azure signalerings service volgende voor beelden. Details van REST API specificatie zoeken.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.date: 03/01/2019
+ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 999d44e394d47e350187f9175389e04e68567d5e
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 17371e3bd426ea81b5e7e07610aac0073ea972c9
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64724664"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74157677"
 ---
-# <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snelstart: In realtime berichten verzenden via de console-app
+# <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snelstartgids: Realtimeberichten verzenden via de console-app
 
 Azure SignalR-service biedt [REST-API](https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md) ter ondersteuning van server-naar-client-communicatie, zoals broadcasting. U kunt elke programmeertaal kiezen die een REST-API kan aanroepen. U kunt berichten verzenden naar alle verbonden clients, een specifieke client op basis van naam of een groep clients.
 
@@ -178,7 +178,7 @@ Versie | API HTTP-methode | Aanvraag-URL
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze snelstartgids hebt u geleerd hoe u REST API gebruiken om uit te zenden van realtime bericht van SignalR-Service voor clients. Vervolgens meer informatie over het ontwikkelen en implementeren van Azure Functions met SignalR Service binding die is gebaseerd op REST-API.
+In deze Quick Start hebt u geleerd hoe u REST API kunt gebruiken om real-time berichten van de signaal service te verzenden naar clients. Vervolgens vindt u meer informatie over het ontwikkelen en implementeren van Azure Functions met de service binding van de signalering, die boven op REST API is gebouwd.
 
 > [!div class="nextstepaction"]
-> [Azure Functions met Azure SignalR Service bindingen ontwikkelen](signalr-quickstart-azure-functions-csharp.md)
+> [Azure Functions ontwikkelen met behulp van Azure signalerings service bindingen](signalr-quickstart-azure-functions-csharp.md)

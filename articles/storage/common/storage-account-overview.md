@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 308809a9b78de9d3c0e77ed6028e62c42ff4e1c5
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: f1b2bdcecac0aade21c6c770b2495a1e15ba9bc5
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72882569"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74174005"
 ---
 # <a name="azure-storage-account-overview"></a>Overzicht van Azure Storage-account
 
@@ -30,9 +30,10 @@ Zie [een opslag account maken](storage-quickstart-create-account.md)voor meer in
 V2-opslag accounts voor algemeen gebruik ondersteunen de nieuwste functies van Azure Storage en bevatten alle functionaliteit van v1-en Blob Storage-accounts voor algemeen gebruik. Bij v2-accounts voor algemeen gebruik worden de laagste capaciteits prijzen per GB voor Azure Storage en de prijzen voor de toonaangevende trans acties geleverd. V2-opslag accounts voor algemeen gebruik ondersteunen deze Azure Storage services:
 
 - Blobs (alle typen: blok keren, toevoegen, pagina)
+- Data Lake Gen2
 - Bestanden
-- Schijven
-- Queues
+- Disks
+- Wachtrijen
 - Tabellen
 
 > [!NOTE]
@@ -48,8 +49,8 @@ V1-opslag accounts voor algemeen gebruik bieden toegang tot alle Azure Storage-s
 
 - Blobs (alle typen)
 - Bestanden
-- Schijven
-- Queues
+- Disks
+- Wachtrijen
 - Tabellen
 
 In de meeste gevallen worden v2-accounts voor algemeen gebruik aanbevolen voor de volgende scenario's:

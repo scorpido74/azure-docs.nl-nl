@@ -9,13 +9,13 @@ manager: cshankar
 ms.topic: quickstart
 ms.workload: big-data
 ms.custom: mvc seodec18
-ms.date: 09/23/2019
-ms.openlocfilehash: 0253a46cd73679c7c2f50a1e37d26d67578e342e
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/15/2019
+ms.openlocfilehash: 7bccc75b4a70e98f069d1ffb86909368105b9a32
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74006422"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74167730"
 ---
 # <a name="quickstart-explore-azure-time-series-insights"></a>Quickstart: Azure Time Series Insights verkennen
 
@@ -38,45 +38,47 @@ Deze Quick Start van Time Series Insights Explorer biedt een rond leiding door d
 
 1. De pagina met Time Series Insights snelle rond leiding wordt weer gegeven. Selecteer **volgende** om de rond leiding te starten.
 
-   [![volgende selecteren](media/quickstart/quickstart1.png)](media/quickstart/quickstart1.png#lightbox)
+   [Welkom bij ![Snelstartgids: Selecteer volgende](media/quickstart/quickstart-welcome.png)](media/quickstart/quickstart-welcome.png#lightbox)
 
 ## <a name="explore-the-demo-environment"></a>De demo omgeving verkennen
 
 1. Het **deel venster tijd selecteren** wordt weer gegeven. Gebruik dit venster om het tijdsbestek te selecteren dat u wilt visualiseren.
 
-   [deel venster ![tijd selecteren](media/quickstart/quickstart2.png)](media/quickstart/quickstart2.png#lightbox)
+   [deel venster ![tijd selecteren](media/quickstart/quickstart-time-selection-panel.png)](media/quickstart/quickstart-time-selection-panel.png#lightbox)
 
 1. Selecteer een tijds bestek en sleep dit in de regio. Selecteer vervolgens **zoeken**.
 
-   [een tijds bestek ![selecteren](media/quickstart/quickstart3.png)](media/quickstart/quickstart3.png#lightbox)
+   [een tijds bestek ![selecteren](media/quickstart/quickstart-select-time.png)](media/quickstart/quickstart-select-time.png#lightbox)
 
    U ziet in Time Series Insights een grafiek met een visualisatie voor het opgegeven tijdsbestek. U kunt verschillende acties uitvoeren in het lijn diagram. U kunt bijvoorbeeld filteren, vastmaken, sorteren en stapelen.
 
    Als u wilt terugkeren naar het **deel venster tijd**selecteren, selecteert u de pijl-omlaag zoals weer gegeven:
 
-   [Grafiek ![](media/quickstart/quickstart4.png)](media/quickstart/quickstart4.png#lightbox)
+   [Grafiek ![](media/quickstart/quickstart-select-down-arrow.png)](media/quickstart/quickstart-select-down-arrow.png#lightbox)
 
 1. Selecteer **toevoegen** in het **deel venster voor waarden** om een nieuwe zoek term toe te voegen.
 
-   [item ![toevoegen](media/quickstart/quickstart5.png)](media/quickstart/quickstart5.png#lightbox)
+   [paneel zoek termen ![toevoegen](media/quickstart/quickstart-add-terms.png)](media/quickstart/quickstart-add-terms.png#lightbox)
 
 1. In de grafiek kunt u een regio selecteren, hier met de rechtermuisknop op klikken en vervolgens **Explore Events** selecteren.
 
-   [Gebeurtenissen ![verkennen](media/quickstart/quickstart6.png)](media/quickstart/quickstart6.png#lightbox)
+   [Gebeurtenissen ![verkennen](media/quickstart/quickstart-explore-events.png)](media/quickstart/quickstart-explore-events.png#lightbox)
 
    Een raster van uw onbewerkte gegevens wordt weer gegeven in de regio die u wilt verkennen.
 
-   [Raster weergave ![](media/quickstart/quickstart7.png)](media/quickstart/quickstart7.png#lightbox)
+   [gebeurtenissen ![verkennen-raster gegevens weergave](media/quickstart/quickstart-explore-events-grid-data.png)](media/quickstart/quickstart-explore-events-grid-data.png#lightbox)
 
 ## <a name="select-and-filter-data"></a>Gegevens selecteren en filteren
 
 1. Bewerk uw voor waarden om de waarden in de grafiek te wijzigen. Voeg een andere term toe om verschillende soorten waarden kruislings te correleren.
 
-   [![een term toevoegen](media/quickstart/quickstart8.png)](media/quickstart/quickstart8.png#lightbox)
+   [![een term toevoegen](media/quickstart/quickstart-add-a-term.png)](media/quickstart/quickstart-add-a-term.png#lightbox)
 
-1. Geef een filter term op in het vak **filter reeksen** voor filteren op Improvised-serie. Voor deze quickstart voeren we **Station5** in om de temperatuur- en drukwaarden voor dat station kruislings te correleren.
+1. Laat het vak **filter reeks** leeg om alle geselecteerde zoek termen te zien of geef een filter term op in het vak **filter reeksen** voor filteren op Improvised-serie.
 
-   [![-filter reeksen](media/quickstart/quickstart9.png)](media/quickstart/quickstart9.png#lightbox)
+   [![-filter reeksen](media/quickstart/quickstart-filter-series.png)](media/quickstart/quickstart-filter-series.png#lightbox)
+
+   Voor deze quickstart voeren we **Station5** in om de temperatuur- en drukwaarden voor dat station kruislings te correleren.
 
 Als u klaar bent met de quickstart, kunt u experimenteren met de set voorbeeldgegevens om verschillende visualisaties te maken.
 

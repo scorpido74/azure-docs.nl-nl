@@ -1,45 +1,41 @@
 ---
-title: InSpec gebruiken voor het automatiseren van de naleving van uw Azure-infrastructuur
-description: Informatie over het gebruik van InSpec om problemen te detecteren in uw Azure-implementaties
-keywords: Azure, chef, devops, virtuele machines, overzicht, automatiseren, inspectie mogelijk
-ms.service: virtual-machines-linux
-author: tomarchermsft
-manager: jeconnoc
-ms.author: tarcher
+title: Gebruik de inspecheid voor de compatibiliteits automatisering van uw Azure-infra structuur
+description: Meer informatie over het gebruik van de specificaties voor het detecteren van problemen in uw Azure-implementaties
+keywords: Azure, chef, devops, virtual machines, overzicht, automatiseren, inspec
 ms.date: 03/19/2019
 ms.topic: article
-ms.openlocfilehash: bdfa30b48c79a8910d503bb9e54a42c30e5adba6
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2531277eb1aa6048c93240031652e09582409e56
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60629795"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158221"
 ---
-# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>InSpec gebruiken voor het automatiseren van de naleving van uw Azure-infrastructuur
+# <a name="use-inspec-for-compliance-automation-of-your-azure-infrastructure"></a>Gebruik de inspecheid voor de compatibiliteits automatisering van uw Azure-infra structuur
 
-[Inspectie mogelijk](https://www.chef.io/inspec/) Chef van open source-taal voor het beschrijven van regels voor beveiliging en naleving die kunnen worden gedeeld tussen software-engineers, bewerkingen en beveiliging engineers is. InSpec werkt door het vergelijken van de huidige status van uw infrastructuur met de gewenste status die u snelle in gemakkelijk te lezen en eenvoudig te schrijven inspectie mogelijk code. InSpec schendingen detecteert en worden resultaten weergegeven in de vorm van een rapport, maar staat u controle over herstel.
+[Inspec](https://www.chef.io/inspec/) is de open-source taal van chef voor het beschrijven van beveiliging & nalevings regels die kunnen worden gedeeld tussen software technici, Operations en beveiligings technici. Inspecies werkt door de werkelijke status van uw infra structuur te vergelijken met de gewenste status die u in eenvoudig te lezen en eenvoudig te schrijven code kunt gebruiken. Met Inspec worden schendingen gedetecteerd en worden de bevindingen in de vorm van een rapport weer gegeven, maar wordt u aangeraden om het herstel uit te voeren.
 
-U kunt InSpec gebruiken voor het valideren van de status van resources en resourcegroepen in een abonnement, met inbegrip van virtuele machines, configuraties en instellingen van Azure Active Directory.
+U kunt Inspec gebruiken om de status van resources en resource groepen in een abonnement te valideren, zoals virtuele machines, netwerk configuraties, Azure Active Directory instellingen en meer.
 
-Dit artikel beschrijft de voordelen van het gebruik van InSpec beveiliging en naleving om gemakkelijker te maken op Azure.
+In dit artikel worden de voor delen van het gebruik van inspecers beschreven om de beveiliging en naleving van Azure gemakkelijker te maken.
 
-## <a name="make-compliance-easy-to-understand-and-assess"></a>Controleer naleving eenvoudig te begrijpen en beoordelen
+## <a name="make-compliance-easy-to-understand-and-assess"></a>Naleving gemakkelijk te begrijpen en te beoordelen
 
-Naleving-documentatie die zijn geschreven in spreadsheets of Word-documenten blijft vereisten met interpretatie geopend. Met InSpec, moet u de vereisten in de code is samengesteld, uitvoerbare, leesbare transformeren. Code vervangt gesprekken over wat moet worden beoordeeld en vervangen door concrete tests met de bedoeling duidelijk.
+In werk bladen of Word-documenten zijn de vereisten voor naleving open voor interpretatie. Met de specificatie transformeert u uw vereisten in gecodeerde, uitvoer bare, door de mens lees bare code. Code vervangt gesp rekken over wat er moet worden beoordeeld in het voor deel van concrete tests met een duidelijke intentie.
 
-## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Hele vloot problemen detecteren en prioriteren van hun herstel
+## <a name="detect-fleet-wide-issues-and-prioritize-their-remediation"></a>Problemen met betrekking tot het hele vloot detecteren en hun herstel prioriteiten toekennen
 
-InSpec de zonder agent detecteren modus kunt u snel beoordelen - geschaalde - niveau van uw blootstelling. Ingebouwde metagegevens voor het scoren van impact/ernst kunt u bepalen welke gebieden kunnen concentreren op voor herstel. U kunt ook snel regels schrijven in reactie op nieuwe beveiligingsproblemen of regelgeving en ze onmiddellijk uitgerold.
+Met de detectie modus zonder agents kunt u snel op schaal beoordelen-uw blootstellings niveau. Dankzij de ingebouwde meta gegevens voor de impact/Ernst Score kunt u bepalen op welke gebieden u zich kunt richten op herstel. U kunt regels ook snel schrijven in reactie op nieuwe beveiligings problemen of voor schriften en deze onmiddellijk samen vouwen.
 
-## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Controle uitvoeren op Azure virtual machines met gast-beleidsconfiguratie
+## <a name="audit-azure-virtual-machines-with-policy-guest-configuration"></a>Virtuele Azure-machines controleren met beleids gast configuratie
 
-Azure ondersteunt rechtstreeks gebruik van Chef inspectie mogelijk definities om te controleren via virtuele Azure-machines [Azure Gast beleidsconfiguratie](/azure/governance/policy/concepts/guest-configuration). Configuratie van de Gast wordt geëvalueerd als een virtuele Linux-machine naar een opgegeven Chef inspectie mogelijk definitie en naleving voor rapporten via Azure Policy. De resultaten van deze controles worden ook gerapporteerd via Azure Monitor-Logboeken; inschakelen van waarschuwingen en andere automation-scenario's.
+Azure biedt rechtstreeks ondersteuning voor het gebruik van chef-Inspec-definities om virtuele Azure-machines te controleren via [Azure Policy-gast configuratie](/azure/governance/policy/concepts/guest-configuration). Gast configuratie evalueert een virtuele Linux-machine naar een geleverde chef-specificatie definitie en rapporteert de compatibiliteit weer via Azure Policy. De resultaten van deze controles worden ook gerapporteerd via Azure Monitor-Logboeken. waarschuwingen en andere scenario's voor automatisering inschakelen.
 
-## <a name="satisfy-audits"></a>Voldoen aan controles
+## <a name="satisfy-audits"></a>Voldoet aan controles
 
-U kunt reageren met InSpec, om te controleren van vragen op elk gewenst moment - niet alleen met een vooraf vastgestelde intervallen zoals per kwartaal of per jaar. Continu inspectie mogelijk tests uitvoert, u een controlecyclus van een weten de exacte naleving kunnen verbeteren en de geschiedenis, in plaats van wordt verbaasd door een revisor van de bevindingen.
+Met de specificatie kunt u op elk gewenst moment reageren op vragen over controle, niet alleen met vooraf vastgestelde intervallen zoals elk kwar taal of jaarlijks. Door continue Inspec-tests uit te voeren, voert u een controle cyclus in die precies overeenkomt met uw nauw keurige postuur en geschiedenis, in plaats van te ververbaasden door de bevindingen van een auditor.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Probeer inspectie mogelijk in de Azure Cloudshell](https://shell.azure.com)
+> [Voer de specificatie uit in de Azure Cloud Shell](https://shell.azure.com)

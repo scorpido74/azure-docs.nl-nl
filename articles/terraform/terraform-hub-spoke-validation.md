@@ -1,17 +1,14 @@
 ---
 title: Zelf studie-een hub-en spoke-netwerk in azure valideren met behulp van terraform
 description: Zelf studie voor het valideren van hub-en spoke-netwerk topologie met alle virtuele netwerken die met elkaar zijn verbonden.
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: b0b761fcd79f7129befefa37ce11d9c70cf7cb96
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 9ba4780c59e5e9da4999573abbc08ecd2738a2cd
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969343"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159206"
 ---
 # <a name="tutorial-validate-a-hub-and-spoke-network-in-azure-using-terraform"></a>Zelf studie: een hub-en spoke-netwerk in azure valideren met behulp van terraform
 
@@ -38,7 +35,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 
 Controleer na het volt ooien van de [vereisten](#prerequisites)of de juiste configuratie bestanden aanwezig zijn.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -100,7 +97,7 @@ In deze sectie wordt uitgelegd hoe u de connectiviteit van de gesimuleerde on-pr
 
 1. Kopieer de **SSH** -opdracht naar het klem bord naast de tekst **aanmelding met een lokaal VM-account**.
 
-1. Voer `ssh` uit vanaf een Linux-prompt om verbinding te maken met de gesimuleerde on-premises omgeving. Gebruik het wacht woord dat is opgegeven in het `on-prem.tf` parameter bestand.
+1. Uitvoeren vanaf een Linux-prompt `ssh` verbinding maken met de gesimuleerde on-premises omgeving. Gebruik het wacht woord dat is opgegeven in het `on-prem.tf` parameter bestand.
 
 1. Voer de `ping` opdracht uit om de verbinding met de JumpBox-VM in het hub-VNet te testen:
 

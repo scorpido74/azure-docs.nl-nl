@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 7546d5c6089a7867b1f8b5bf45d23c81bddd0da9
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 660235331c2c2d800b52f6e29d0011b9616a748c
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648228"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158490"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor .NET (SDK v3)
 
@@ -46,9 +46,7 @@ In deze Quick Start wordt ervan uitgegaan dat u `dotnet`-, [Azure cli](/cli/azur
 
 ### <a name="create-new-net-console-app"></a>Nieuwe .NET-console-app maken
 
-Maak een nieuwe .NET core-toepassing in uw voorkeurs editor of IDE.
-
-Gebruik in een console venster de opdracht `dotnet new` om een nieuwe console-app te maken met de naam `akv-dotnet`.
+Gebruik in een console venster de opdracht `dotnet new` om een nieuwe .NET-console-app te maken met de naam `akv-dotnet`.
 
 
 ```console
@@ -100,7 +98,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie. Deze Quick starts maken echter een .NET-console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
+De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie. Deze Quick Start maakt echter een .NET-console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
 
 Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
@@ -169,7 +167,7 @@ Wijs deze omgevings variabelen toe aan teken reeksen in uw code en verifieer uw 
 
 ### <a name="save-a-secret"></a>Een geheim opslaan
 
-Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [SetSecretAsync-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) hiervoor moet u de URL van de Key kluis in de vorm `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Er is ook een naam voor het geheim vereist: we gebruiken ' mySecret '.  Mogelijk wilt u deze teken reeksen toewijzen aan een variabele voor hergebruik.
+Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de [SetSecretAsync-methode](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) hiervoor moet u de URL van de Key kluis in de vorm `https://<your-unique-keyvault-name>.vault.azure.net/secrets/`. Er is ook een naam voor het geheim vereist: we gebruiken ' mySecret '. 
 
 [!code-csharp[Set secret](~/samples-key-vault-dotnet-quickstart/akvdotnet/Program.cs?name=setsecret)]
 

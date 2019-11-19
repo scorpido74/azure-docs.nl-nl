@@ -1,17 +1,14 @@
 ---
 title: 'Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform'
 description: Zelf studie waarin wordt uitgelegd hoe u een volledige referentie architectuur van een hybride netwerk maakt in azure met behulp van terraform
-ms.service: terraform
-author: tomarchermsft
-ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/26/2019
-ms.openlocfilehash: 8d85163e746f1d2d0713a9a4f247a2061e0029b8
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 90a60fc4fe98397c903e3e8a460806d6a2edb908
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72969395"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74159031"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-in-azure-using-terraform"></a>Zelf studie: een hybride netwerk topologie voor hub en spoke maken in azure met behulp van terraform
 
@@ -78,7 +75,7 @@ Tijdens het uitvoeren van elke zelf studie in deze reeks worden verschillende on
 
 Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
 
-1. Blader naar [Azure Portal](https://portal.azure.com).
+1. Blader naar de [Azure-portal](https://portal.azure.com).
 
 1. Open [Azure Cloud Shell](/azure/cloud-shell/overview). Als u nog geen omgeving hebt geselecteerd, selecteert u **Bash** als uw omgeving.
 
@@ -90,7 +87,7 @@ Maak de map die uw terraform-configuratie bestanden bevat voor de demo.
     cd clouddrive
     ```
 
-1. Maak een directory met de naam `hub-spoke`.
+1. Maak een map met de naam `hub-spoke`.
 
     ```bash
     mkdir hub-spoke

@@ -5,14 +5,14 @@ services: signalr
 author: chenyl
 ms.service: signalr
 ms.topic: conceptual
-ms.date: 06/12/2019
+ms.date: 11/13/2019
 ms.author: chenyl
-ms.openlocfilehash: 100c7120889f88c1bab3418822835e8d4ece9826
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: f89fcdd50d958269b5c79c41ebabd69331c905aa
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68839294"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158209"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Gebeurtenissen van de Azure signalerings service naar Event Grid verzenden
 
@@ -26,7 +26,7 @@ De Azure CLI-opdrachten in dit artikel zijn ingedeeld voor de **bash** -shell. A
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
-Een Azure-resource groep is een logische container waarin u Azure-resources implementeert en beheert. Met de volgende opdracht [AZ Group Create][az-group-create] wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . Als u een andere naam voor de resource groep wilt gebruiken, stelt `RESOURCE_GROUP_NAME` u deze in op een andere waarde.
+Een Azure-resource groep is een logische container waarin u Azure-resources implementeert en beheert. Met de volgende opdracht [AZ Group Create][az-group-create] wordt een resource groep met de naam *myResourceGroup* gemaakt in de regio *eastus* . Als u een andere naam voor de resource groep wilt gebruiken, stelt u `RESOURCE_GROUP_NAME` in op een andere waarde.
 
 ```azurecli-interactive
 RESOURCE_GROUP_NAME=myResourceGroup
@@ -75,7 +75,7 @@ Zodra de seingevings service is gemaakt, retourneert de Azure CLI uitvoer die er
 
 In deze sectie gebruikt u een resource manager-sjabloon die zich in een GitHub-opslag plaats bevindt om een vooraf gemaakte voorbeeld webtoepassing te implementeren op Azure App Service. Later abonneert u zich op de Event Grid gebeurtenissen van uw REGI ster en geeft u deze app op als het eind punt waarnaar de gebeurtenissen worden verzonden.
 
-Als u de voor beeld-app `SITE_NAME` wilt implementeren, stelt u een unieke naam in voor de web-app en voert u de volgende opdrachten uit. De site naam moet uniek zijn binnen Azure omdat deze deel uitmaakt van de Fully Qualified Domain Name (FQDN) van de web-app. In een latere sectie gaat u naar de FQDN van de app in een webbrowser om de gebeurtenissen van het REGI ster weer te geven.
+Als u de voor beeld-app wilt implementeren, stelt u `SITE_NAME` in op een unieke naam voor uw web-app en voert u de volgende opdrachten uit. De site naam moet uniek zijn binnen Azure omdat deze deel uitmaakt van de Fully Qualified Domain Name (FQDN) van de web-app. In een latere sectie gaat u naar de FQDN van de app in een webbrowser om de gebeurtenissen van het REGI ster weer te geven.
 
 ```azurecli-interactive
 SITE_NAME=<your-site-name>
@@ -141,7 +141,7 @@ Wanneer het abonnement is voltooid, ziet de uitvoer er ongeveer als volgt uit:
 
 ## <a name="trigger-registry-events"></a>Register gebeurtenissen activeren
 
-Schakel over naar de service modus `Serverless Mode` en stel een client verbinding met de signalerings service in. U kunt voor [beeld zonder server](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) als referentie nemen.
+Schakel over naar de service modus naar `Serverless Mode` en stel een client verbinding met de signalerings service in. U kunt voor [beeld zonder server](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/Serverless) als referentie nemen.
 
 ```bash
 git clone git@github.com:aspnet/AzureSignalR-samples.git
@@ -162,7 +162,7 @@ dotnet run
 
 ## <a name="view-registry-events"></a>Register gebeurtenissen weer geven
 
-U hebt nu een client verbonden met de signalerings service. Ga naar de Web-App van Event grid viewer en Bekijk een `ClientConnectionConnected` gebeurtenis. Als u de client beëindigt, wordt er ook een `ClientConnectionDisconnected` gebeurtenis weer geven.
+U hebt nu een client verbonden met de signalerings service. Ga naar de Web-App van Event Grid viewer en u moet een `ClientConnectionConnected` gebeurtenis zien. Als u de client beëindigt, wordt er ook een `ClientConnectionDisconnected` gebeurtenis weer geven.
 
 <!-- LINKS - External -->
 [azure-account]: https://azure.microsoft.com/free/?WT.mc_id=A261C142F

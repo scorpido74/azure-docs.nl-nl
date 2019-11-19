@@ -1,20 +1,15 @@
 ---
-title: 'Azure Backup: Recovery Services kluizen maken'
+title: Recovery Services kluizen maken
 description: In dit artikel leert u hoe u Recovery Services kluizen maakt waarin de back-ups en herstel punten worden opgeslagen.
 ms.reviewer: sogup
-author: dcurwin
-manager: carmonm
-keywords: Recovery Services kluis; Back-ups van Azure-VM'S; Azure VM herstellen;
-ms.service: backup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.author: dacurwin
-ms.openlocfilehash: 30e2f8812b14f27b57ef22e30aea89f19fa56e58
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: c678452cd65d0b03d923659e380c1dcef3540ce1
+ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074882"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74172433"
 ---
 # <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 

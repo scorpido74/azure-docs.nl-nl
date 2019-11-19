@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/11/2019
+ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 46bf756a729441bd3bc4b2b00aaa2c79fa06c0b8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
+ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521235"
+ms.lasthandoff: 11/18/2019
+ms.locfileid: "74158669"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Virtuele VMware-machines beoordelen met Azure Migrate: Server evaluatie
 
@@ -108,8 +108,8 @@ Controleer of het bestand van de eicellen veilig is voordat u het implementeert.
 
   **Algoritme** | **Hash-waarde**
   --- | ---
-  MD5 | 27230f3b012187860281b912ee661709
-  SHA256 | c0a5b5998b7f38ac6e57ea9a808ecc4295795e18f9ca99c367585068883f06e7
+  MD5 | c06ac2a2c0f870d3b274a0b7a73b78b1
+  SHA256 | 4ce4faa3a78189a09a26bfa5b817c7afcf5b555eb46999c2fad9d2ebc808540c
 
 
 ### <a name="create-the-appliance-vm"></a>De apparaat-VM maken
@@ -185,7 +185,7 @@ Voor de detectie van toepassingen, functies en onderdelen en het visualiseren va
 2. Selecteer het **besturings systeem**.
 3. Geef een beschrijvende naam op voor de referentie.
 4. Geef in **gebruikers naam** en **wacht woord**een account op met ten minste gast toegang op de vm's.
-5. Klik op **Toevoegen**.
+5. Klik op **Add**.
 
 Nadat u de vCenter Server-en VM-referenties (optioneel) hebt opgegeven, klikt u op **opslaan en detectie starten** om de detectie van de on-premises omgeving te starten.
 
@@ -220,7 +220,7 @@ Als u het bereik wilt instellen, moet u de volgende stappen uitvoeren:
 Er zijn twee methoden voor het toewijzen van machtigingen aan inventaris objecten in vCenter aan het vCenter-gebruikers account waaraan een rol is toegewezen.
 - Voor Server evaluatie moet de rol **alleen-lezen** worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de vm's worden gehost die moeten worden gedetecteerd. Alle bovenliggende objecten-host, map van hosts, cluster, map met clusters in de hiërarchie tot aan het Data Center moeten worden opgenomen. Deze machtigingen moeten worden door gegeven aan onderliggende objecten in de hiërarchie.
 
-    Net als bij server migratie moet een door de gebruiker gedefinieerde rol (met de naam <em>Azure _Migrate</em>) worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden [gehost die worden](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) gemigreerd.
+    Net als bij server migratie moet een door de gebruiker gedefinieerde rol ( [met de naam](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) <em>Azure _Migrate</em>) worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden gehost die moeten worden gemigreerd.
 
 ![Machtigingen toewijzen](./media/tutorial-assess-vmware/assign-perms.png)
 
