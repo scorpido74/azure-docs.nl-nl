@@ -8,20 +8,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2019
+ms.date: 10/24/2019
 ms.author: banders
-ms.openlocfilehash: 9c6c28ef296f3b1346fd82641d8c557a500273d8
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 6bb0f3ea1b4e3bf17ed3bf26b838da8f2a694673
+ms.sourcegitcommit: 5acd8f33a5adce3f5ded20dff2a7a48a07be8672
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72376685"
+ms.lasthandoff: 10/24/2019
+ms.locfileid: "72898548"
 ---
 # <a name="get-started-with-your-microsoft-partner-agreement-billing-account"></a>Aan de slag met uw factureringsrekening voor Microsoft Partner-overeenkomst
 
 Er wordt een factureringsaccount gemaakt wanneer u zich aanmeldt om Azure te gebruiken. U gebruikt uw factureringsaccount om facturen en betalingen te beheren en kosten bij te houden. U kunt toegang hebben tot meerdere factureringsaccounts. Stel dat u zich voor uw persoonlijke projecten hebt geregistreerd voor Azure. U kunt ook toegang hebben tot Azure via de Enterprise Agreement van uw organisatie of uw Microsoft-klantovereenkomst of Microsoft Partner-overeenkomst. Voor elk van deze scenario's hebt u een afzonderlijk factureringsaccount.
 
-Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-overeenkomsten. Deze rekeningen worden gemaakt voor Cloud Solution Providers (CSP's) voor het beheren van de facturering voor hun klanten in de nieuwe commerce-ervaring. De nieuwe ervaring is alleen beschikbaar voor partners, die ten minste één klant hebben die een Microsoft-klantovereenkomst (MCA) heeft geaccepteerd en een Azure-plan heeft. [Controleer of u toegang hebt tot een Microsoft Partner-overeenkomst](#check-access-to-a-microsoft-partner-agreement).
+Dit artikel is van toepassing op factureringsrekeningen voor Microsoft Partner-overeenkomsten. Deze rekeningen worden gemaakt voor Cloud Solution Providers (CSP's) voor het beheren van de facturering voor hun klanten in de nieuwe commerce-ervaring. De nieuwe ervaring is alleen beschikbaar voor partners, die ten minste één klant hebben die een Microsoft-klantovereenkomst heeft geaccepteerd en een Azure-plan heeft. [Controleer of u toegang hebt tot een Microsoft Partner-overeenkomst](#check-access-to-a-microsoft-partner-agreement). Een [Azure-plan](https://azure.microsoft.com/pricing/purchase-options/microsoft-customer-agreement/) biedt klanten toegang tot Azure-services tegen tarieven voor betalen per gebruik onder een Microsoft-klantovereenkomst.
 
 ## <a name="your-billing-account"></a>Uw factureringsaccount
 
@@ -35,7 +35,7 @@ Gebruikers met de rol **Globale beheerder** en **Beheerderagent** in uw organisa
 
 ## <a name="billing-profiles"></a>Factureringsprofielen
 
-Gebruik een factureringsprofiel om uw facturen in een valuta te beheren. Aan het begin van de maand wordt voor elk factureringsprofiel in uw account een maandelijkse factuur gegenereerd. De factuur bevat de kosten voor alle Azure-abonnementen en andere aankopen van de vorige maand in de valuta van het factureringsprofiel. 
+Gebruik een factureringsprofiel om uw facturen in een valuta te beheren. Aan het begin van de maand wordt voor elk factureringsprofiel in uw account een maandelijkse factuur gegenereerd. De factuur bevat de kosten voor alle Azure-abonnementen en andere aankopen van de vorige maand in de valuta van het factureringsprofiel.
 
 U kunt de factuur bekijken en de gerelateerde documenten, zoals het bestand met gebruiksgegevens en het prijzenoverzicht, downloaden in de Azure Portal. Zie [Facturen voor een Microsoft Partner-overeenkomst downloaden](billing-download-azure-invoice.md) voor meer informatie.
 
@@ -45,11 +45,11 @@ U kunt de factuur bekijken en de gerelateerde documenten, zoals het bestand met 
 
 ## <a name="customers"></a>Customers
 
-U kunt klanten bekijken en beheren die een Microsoft-klantovereenkomst hebben geaccepteerd en een Azure-plan hebben in de Azure-portal. U kunt kosten en transacties bekijken en Azure-abonnementen voor deze klanten maken en beheren. 
+U kunt klanten bekijken en beheren die een Microsoft-klantovereenkomst hebben geaccepteerd en een Azure-plan hebben in de Azure-portal. U kunt kosten en transacties bekijken en Azure-abonnementen voor deze klanten maken en beheren.
 
 ### <a name="enable-policy-to-give-visibility-into-cost"></a>Beleid inschakelen om kosten zichtbaar te maken
 
-U kunt beleid toepassen om te bepalen of gebruikers in de organisatie van de klant kosten kunnen bekijken en analyseren op basis van betalen-per-gebruik-tarieven voor hun Azure-verbruik. Standaard is dit beleid uitgeschakeld en kunnen gebruikers de kosten niet bekijken. Als dit beleid is ingeschakeld, kunnen de gebruikers met de juiste [Azure RBAC ](https://docs.microsoft.com/azure/role-based-access-control/overview)-toegang tot een abonnement de kosten voor het abonnement bekijken en analyseren. 
+U kunt beleid toepassen om te bepalen of gebruikers in de organisatie van de klant kosten kunnen bekijken en analyseren op basis van betalen-per-gebruik-tarieven voor hun Azure-verbruik. Standaard is dit beleid uitgeschakeld en kunnen gebruikers de kosten niet bekijken. Als dit beleid is ingeschakeld, kunnen de gebruikers met de juiste [Azure RBAC ](https://docs.microsoft.com/azure/role-based-access-control/overview)-toegang tot een abonnement de kosten voor het abonnement bekijken en analyseren.
 
 Het beleid inschakelen:
 
@@ -60,7 +60,7 @@ Het beleid inschakelen:
    ![Schermopname van de zoekopdracht in de Azure-portal](./media/mpa-overview/search-cmb.png)
 
 1. Selecteer **Klanten** aan de linkerkant en selecteer vervolgens een klant in de lijst.
-   
+
    ![Schermopname van het selecteren van een klant](./media/mpa-overview/mpa-customers.png)
 
 1. Selecteer **Beleidsregels** aan de linkerkant.

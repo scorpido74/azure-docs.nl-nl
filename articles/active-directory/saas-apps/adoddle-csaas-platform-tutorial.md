@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Adoddle cSaas Platform | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Adoddle cSaas-platform | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Adoddle cSaas Platform.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1b946fdc-f7f3-4d53-a095-692027ad4311
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa82bf6e1dab87c21335b9cfb8f889549535c14a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: a5020c9a32443992b46c404ebb913209ca17be20
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107246"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73153918"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Zelfstudie: Azure Active Directory-integratie met Adoddle cSaas Platform
+# <a name="tutorial-azure-active-directory-integration-with-adoddle-csaas-platform"></a>Zelf studie: integratie Azure Active Directory met Adoddle cSaas-platform
 
 In deze zelfstudie leert u hoe u Adoddle cSaas Platform met Azure Active Directory (Azure AD) kunt integreren.
 De integratie van Adoddle cSaas Platform met Azure AD biedt u de volgende voordelen:
@@ -55,7 +56,7 @@ Voor het configureren van de integratie van Adoddle cSaas Platform met Azure AD 
 
 **Als u Adoddle cSaas Platform uit de galerie wilt toevoegen, moet u de volgende stappen uitvoeren:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -143,16 +144,16 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure gebruik kan maken door haar toegang te verlenen tot Adoddle cSaas Platform.
+In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure{b> <b}gebruik kan maken door haar toegang te verlenen tot Adoddle cSaas Platform.
 
 1. Selecteer in Azure Portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **Adoddle cSaas Platform**.
 
@@ -162,7 +163,7 @@ In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azur
 
     ![De Adoddle cSaas Platform-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -182,11 +183,11 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in Adoddle 
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel SAP Cloud Platform klikt in het toegangsvenster, wordt u automatisch aangemeld bij de instantie van Adoddle cSaas Platform waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

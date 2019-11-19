@@ -1,23 +1,19 @@
 ---
 title: Live Azure-Cloud Services profiel met Application Insights | Microsoft Docs
 description: Schakel Application Insights Profiler in voor Azure Cloud Services.
-services: application-insights
-documentationcenter: ''
-author: cweining
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
+ms.service: azure-monitor
+ms.subservice: application-insights
 ms.topic: conceptual
-ms.reviewer: mbullwin
-ms.date: 08/06/2018
+author: cweining
 ms.author: cweining
-ms.openlocfilehash: 93392e379cbb03508fefc1877d5d50e04436b79c
-ms.sourcegitcommit: c662440cf854139b72c998f854a0b9adcd7158bb
+ms.date: 08/06/2018
+ms.reviewer: mbullwin
+ms.openlocfilehash: 682711d7681e3646ae14686b01542bc5d7432179
+ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/02/2019
-ms.locfileid: "68737218"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72820492"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Live Azure-Cloud Services profiel met Application Insights
 
@@ -29,7 +25,7 @@ U kunt ook Application Insights Profiler op deze services implementeren:
 Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensie. U hoeft alleen Azure Diagnostics te configureren om Profiler te installeren en profielen naar uw Application Insights-bron te verzenden.
 
 ## <a name="enable-profiler-for-azure-cloud-services"></a>Profiler inschakelen voor Azure Cloud Services
-1. Controleer of u [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) of nieuwer gebruikt. Als u OS Family 4 gebruikt, moet u .NET Framework 4.6.1 of nieuwer installeren met een [opstart taak](https://docs.microsoft.com/en-us/azure/cloud-services/cloud-services-dotnet-install-dotnet). BESTURINGSSYSTEEM familie 5 bevat standaard een compatibele versie van .NET Framework. 
+1. Controleer of u [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) of nieuwer gebruikt. Als u OS Family 4 gebruikt, moet u .NET Framework 4.6.1 of nieuwer installeren met een [opstart taak](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-install-dotnet). BESTURINGSSYSTEEM familie 5 bevat standaard een compatibele versie van .NET Framework. 
 
 1. [Application INSIGHTS SDK toevoegen aan Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
 
@@ -49,7 +45,7 @@ Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensi
 
       Als u het bestand niet kunt vinden, raadpleegt u [Diagnostische gegevens instellen voor Azure Cloud Services en virtual machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
 
-    b. Voeg de volgende `SinksConfig` sectie toe als onderliggend `WadCfg`element van:  
+    b. Voeg de volgende `SinksConfig` sectie toe als onderliggend element van `WadCfg`:  
 
       ```xml
       <WadCfg>
@@ -69,7 +65,7 @@ Application Insights Profiler is geïnstalleerd met de Azure Diagnostics extensi
     > * De sleutel die wordt gebruikt door de ApplicationInsights-sink. 
     > * De sleutel die wordt gebruikt door de ApplicationInsightsProfiler-sink. 
     >
-    > U vindt de daadwerkelijke instrumentation sleutelwaarde die wordt gebruikt door de `ApplicationInsights` sink in de *ServiceConfiguration.\*.cscfg* bestanden. 
+    > U kunt de waarde van de werkelijke instrumentatie sleutel die wordt gebruikt door de `ApplicationInsights` sink, vinden in de *ServiceConfiguration.\*. cscfg* -bestanden. 
     > Na de Visual Studio 15,5 Azure SDK-versie moeten alleen de instrumentatie sleutels die worden gebruikt door de toepassing en de ApplicationInsightsProfiler-sink, overeenkomen met elkaar.
 
 1. Implementeer uw service met de nieuwe diagnostische configuratie en Application Insights Profiler is geconfigureerd om te worden uitgevoerd op uw service.

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met 8x8 Virtual Office | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met 8X8 Virtual Office | Microsoft Docs'
 description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en 8x8 Virtual Office.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: b34a6edf-e745-4aec-b0b2-7337473d64c5
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1fb9ee12c0373f2d7038417935709caae4a6eb43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 87728a5ff9690df6f47a2721ad4a51b5c2388877
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67107492"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73154587"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Zelfstudie: Azure Active Directory-integratie met 8x8 Virtual Office
+# <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Zelf studie: integratie met 8X8 Virtual Office Azure Active Directory
 
 In deze zelfstudie leert u hoe u 8x8 Virtual Office integreert met Azure Active Directory (Azure AD).
 Het integreren van 8x8 Virtual Office met Azure AD biedt de volgende voordelen:
@@ -56,7 +57,7 @@ Als u de integratie van 8x8 Virtual Office met Azure AD wilt configureren, moet 
 
 **Voer de volgende stappen uit als u 8x8 Virtual Office wilt toevoegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -110,7 +111,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met 8x8 Virtual Office, 
 
     a. In het tekstvak **Id** typt u een URL met het volgende patroon: `https://sso.8x8.com/saml2`
 
-    b. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://sso.8x8.com/saml2`
+    b. In het tekstvak **Antwoord-URL** typt u een URL met de volgende notatie: `https://sso.8x8.com/saml2`
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Raw)** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
@@ -182,16 +183,16 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure gebruik kan maken door haar toegang te verlenen tot 8x8 Virtual Office.
+In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure{b> <b}gebruik kan maken door haar toegang te verlenen tot 8x8 Virtual Office.
 
 1. Selecteer in de Azure-portal **Bedrijfstoepassingen**, selecteer **Alle toepassingen** en selecteer vervolgens **8x8 Virtual Office**.
 
@@ -201,7 +202,7 @@ In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azur
 
     ![De koppeling voor 8x8 Virtual Office in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -224,11 +225,11 @@ In dit gedeelte wordt een gebruiker met de naam Britta Simon gemaakt in 8x8 Virt
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de 8x8 Virtual Office-tegel in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van 8x8 Virtual Office waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

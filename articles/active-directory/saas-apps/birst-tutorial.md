@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Birst Agile Business Analytics | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Birst Agile business analytics | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Birst Agile Business Analytics configureert.
 services: active-directory
 documentationCenter: na
@@ -8,6 +8,7 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 677183b1-5348-4302-88cc-5c8ab63a3c6c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd936c823501dfe53dd81ba64b56bfb491fc85e4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 46bea4afcd59a385a8e9d2ccf1aa0d70fdae198c
+ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67106236"
+ms.lasthandoff: 10/30/2019
+ms.locfileid: "73158845"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Zelfstudie: Azure Active Directory-integratie met Birst Agile Business Analytics
+# <a name="tutorial-azure-active-directory-integration-with-birst-agile-business-analytics"></a>Zelf studie: integratie Azure Active Directory met Birst Agile business analytics
 
 In deze zelfstudie leert u hoe u Birst Agile Business Analytics kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Birst Agile Business Analytics met Azure AD heeft de volgende voordelen:
@@ -53,7 +54,7 @@ Om de integratie van Birst Agile Business Analytics in Azure AD te configureren,
 
 **Ga als volgt te werk om Birst Agile Business Analytics toe te voegen vanuit de galerie:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -105,7 +106,7 @@ Ga als volgt te werk om Azure AD-eenmalige aanmelding met Birst Agile Business A
 
     ![Domein- en URL-gegevens voor eenmalige aanmelding bij Birst flexibele Business Analytics](common/sp-intiated.png)
 
-    In de **aanmeldings-URL** tekstvak, een URL met behulp van het volgende patroon: `https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
+    Typ in het tekstvak **Aanmeldings-URL** een URL met het volgende patroon: `https://login.bws.birst.com/SAMLSSO/Services.aspx?birst.idpid=TENANTIDPID`
 
     De URL is afhankelijk van het datacenter waar uw Birst-account zich bevindt:
 
@@ -155,16 +156,16 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype **brittasimon\@yourcompanydomain.extension**  
+    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure gebruik kan maken door haar toegang te verlenen tot Birst Agile Business Analytics.
+In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azure{b> <b}gebruik kan maken door haar toegang te verlenen tot Birst Agile Business Analytics.
 
 1. Selecteer in de Azure-portal achtereenvolgens **Bedrijfstoepassingen**, **Alle toepassingen** en **Birst Agile Business Analytics**.
 
@@ -174,7 +175,7 @@ In deze sectie zorgt u ervoor dat Britta Simon van eenmalige aanmelding met Azur
 
     ![De koppeling Birst Agile Business Analytics in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -194,11 +195,11 @@ In deze sectie gaat u in Birst Agile Business Analytics een gebruiker maken met 
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
 Wanneer u op de tegel Birst Agile Business Analytics in het toegangsvenster klikt, zou u automatisch moeten worden aangemeld bij de instantie van Birst Agile Business Analytics waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

@@ -137,8 +137,6 @@
       href: functions-networking-options.md
     - name: IP-adressen
       href: ip-addresses.md
-    - name: Functies in Kubernetes
-      href: functions-kubernetes-keda.md
 - name: Handleidingen
   items:
     - name: Ontwikkelen
@@ -228,6 +226,9 @@
           href: deployment-zip-push.md
         - name: Uitvoeren uit pakket
           href: run-functions-from-deployment-package.md
+        - name: Functies in Kubernetes
+          href: functions-kubernetes-keda.md
+          displayName: keda
         - name: Resource-implementatie automatiseren
           href: functions-infrastructure-as-code.md
         - name: On-premises functies

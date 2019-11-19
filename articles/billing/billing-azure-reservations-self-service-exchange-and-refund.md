@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/05/2019
 ms.author: banders
-ms.openlocfilehash: 828bc3784a118a81adc4391b1bf222c00ee2025a
-ms.sourcegitcommit: 3e7646d60e0f3d68e4eff246b3c17711fb41eeda
+ms.openlocfilehash: 9e3c999de1804684e77a6224330b2d7077046964
+ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "69543017"
+ms.lasthandoff: 10/29/2019
+ms.locfileid: "73052174"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Selfserviceopties voor inwisselen en retourneren van Azure-reserveringen
 
@@ -44,7 +44,7 @@ Microsoft annuleert eerst de bestaande reservering en restitueert het aangepaste
 
 ### <a name="enterprise-agreement-customers"></a>Enterprise Agreement-klanten
 
-Geld wordt toegevoegd aan de financiële toezegging voor uitwisselingen en restituties als de oorspronkelijke aankoop hiermee is gedaan. Eventuele overschrijdingsfacturen sinds de oorspronkelijke aankopen worden opnieuw geopend en geëvalueerd om ervoor te zorgen dat de financiële toezegging wordt gebruikt. Als de financiële toezeggingstermijn die gebruikmaakt van de reservering niet langer actief is, wordt tegoed toegevoegd aan uw huidige financiële toezeggingsperiode van de Enterprise Agreement.
+Geld wordt toegevoegd aan de financiële toezegging voor uitwisselingen en restituties als de oorspronkelijke aankoop hiermee is gedaan. Eventuele overschrijdingsfacturen sinds de oorspronkelijke aankopen worden opnieuw geopend en geëvalueerd om ervoor te zorgen dat de financiële toezegging wordt gebruikt. Als de financiële toezeggingstermijn die gebruikmaakt van de reservering niet langer actief is, wordt tegoed toegevoegd aan uw huidige financiële toezeggingsperiode van de Enterprise Agreement. Het tegoed is 90 dagen vanaf de terugbetalingsdatum geldig. Ongebruikt tegoed verloopt na 90 dagen.
 
 Als de oorspronkelijke aankoop is gemaakt als een overschrijding, geeft Microsoft een creditnota uit.
 
@@ -97,4 +97,4 @@ Als u vragen hebt of hulp nodig hebt, [kunt u een ondersteuningsaanvraag maken](
     - [Inzicht in het gebruik van reserveringen voor uw abonnement met betalen per gebruik](billing-understand-reserved-instance-usage.md)
     - [Inzicht in het gebruik van reserveringen voor Enterprise-inschrijvingen](billing-understand-reserved-instance-usage-ea.md)
     - [Kosten van Windows-software zijn niet inbegrepen in reserveringen](billing-reserved-instance-windows-software-costs.md)
-    - [Azure-reserveringen in het CSP-programma (Cloud Solution Provider) van het Partnercentrum](/partner-center/azure-reservations)
+    - [Azure-reserveringen in CSP-programma (Cloud Solution Provider) van partnercentrum](/partner-center/azure-reservations)

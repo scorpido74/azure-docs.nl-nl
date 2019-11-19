@@ -81,7 +81,7 @@ In deze details wordt uitgelegd waarom een resource momenteel niet compatibel is
 
 De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [voor waarde](../concepts/definition-structure.md#conditions) in de beleids definitie:
 
-|Reden | Voorwaarde |
+|Reden | voorwaarde |
 |-|-|
 |De huidige waarde moet de doel waarde als sleutel bevatten. |containsKey of **niet** notContainsKey |
 |De huidige waarde moet de doel waarde bevatten. |bevat of **niet** notContains |
@@ -111,7 +111,7 @@ Voor _auditIfNotExists_ -beleid in de categorie _gast configuratie_ kunnen er me
 
 Het is ook mogelijk dat u niet rechtstreeks toegang hebt tot de virtuele machine, maar u moet rapporteren waarom de virtuele machine _niet compatibel_is.
 
-### <a name="azure-portal"></a>Azure-portal
+### <a name="azure-portal"></a>Azure Portal
 
 Volg dezelfde stappen in de bovenstaande sectie voor het weer geven van nalevings Details van het beleid.
 
