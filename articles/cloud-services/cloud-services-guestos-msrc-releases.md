@@ -10,17 +10,57 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 11/1/2019
+ms.date: 11/15/2019
 ms.author: raiye
-ms.openlocfilehash: 22e833a1d555057c7e6a2ce46e7a1bb136260851
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: fd4936357035d8163130064bd6f0600c9d2b08bb
+ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888314"
+ms.lasthandoff: 11/17/2019
+ms.locfileid: "74149993"
 ---
 # <a name="azure-guest-os"></a>Azure-gast besturingssysteem
 In de volgende tabellen ziet u de micro soft Security Response Center-updates (MSRC) die zijn toegepast op het Azure-gast besturingssysteem. Zoek in dit artikel om te bepalen of een bepaalde update van toepassing is op het gast besturingssysteem dat u gebruikt. Updates worden altijd uitgevoerd voor de desbetreffende [familie][family-explain] waarin ze zijn geïntroduceerd.
+
+## <a name="november-2019-guest-os"></a>November 2019-gast besturingssysteem
+
+>[!NOTE]
+>Het besturings systeem november gast wordt momenteel geïmplementeerd naar Cloud service-Vm's die zijn geconfigureerd voor automatische updates. Wanneer de implementatie is voltooid, wordt deze versie beschikbaar gesteld voor hand matige updates via de Azure Portal-en configuratie bestanden. De volgende patches zijn opgenomen in het besturings systeem november gast. Deze lijst is onderhevig aan wijzigingen.
+
+| Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
+| --- | --- | --- | --- | --- |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  2,92  |  12 november 2019  |
+|  Rel 19-11   |  [4525233]  |  Windows-beveiliging   |  2,92  |  12 november 2019  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  3,79  |  12 november 2019  |
+|  Rel 19-11   |  [4525253]  |  Windows-beveiliging   |  3,79  |  12 november 2019  |
+|  Rel 19-11   |  [4525106]  |  Internet Explorer   |  4,72  |  12 november 2019  |
+|  Rel 19-11   |  [4525250]  |  Windows-beveiliging   |  4,72  |  12 november 2019  |
+|  Rel 19-11   |  [4525236]  |  Meest recente cumulatieve update   |  5,37  |  12 november 2019  |
+|  Rel 19-11   |  [4523205]  |  Meest recente cumulatieve update   |  6,13  |  12 november 2019  |
+|  Rel 19-11   |  [4519976]  |  Niet-beveiliging   |  2,92  |  8 oktober 2019  |
+|  Rel 19-11   |  [4520007]  |  Niet-beveiliging   |  3,79  |  8 oktober 2019  |
+|  Rel 19-11   |  [4521857]  |  ServicingStackUpdate   |  3,79  |  8 oktober 2019  |
+|  Rel 19-11   |  [4520005]  |  Niet-beveiliging   |  4,72  |  8 oktober 2019  |
+|  Rel 19-11   |  [4521864]  |  ServicingStackUpdate   |  4,72  |  8 oktober 2019  |
+|  Rel 19-11   |  [4521858]  |  ServicingStackUpdate   |  5,37  |  8 oktober 2019  |
+|  Rel 19-11   |  [4521862]  |  ServicingStackUpdate   |  6,13  |  8 oktober 2019  |
+
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525233]: https://support.microsoft.com/kb/4525233
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525253]: https://support.microsoft.com/kb/4525253
+[4525106]: https://support.microsoft.com/kb/4525106
+[4525250]: https://support.microsoft.com/kb/4525250
+[4525236]: https://support.microsoft.com/kb/4525236
+[4523205]: https://support.microsoft.com/kb/4523205
+[4519976]: https://support.microsoft.com/kb/4519976
+[4520007]: https://support.microsoft.com/kb/4520007
+[4521857]: https://support.microsoft.com/kb/4521857
+[4520005]: https://support.microsoft.com/kb/4520005
+[4521864]: https://support.microsoft.com/kb/4521864
+[4521858]: https://support.microsoft.com/kb/4521858
+[4521862]: https://support.microsoft.com/kb/4521862
+
 
 ## <a name="october-2019-guest-os"></a>2019-gast besturingssysteem van oktober
 
@@ -76,7 +116,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 |  Rel 19-09   |  [4516046]  |  Internet Explorer   |  [2,90], [3,77], [4,70]  |  Sept 10, 2019  |
-|  Rel 19-09   |  [4516115]  |  Flits   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  Sept 10, 2019  |
+|  Rel 19-09   |  [4516115]  |  Flash   |  [2,90], [3,77], [4,70], [5,35], [6,11]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4512578]  |  Meest recente cumulatieve update   |  [6,11]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4514366]  |  .NET Framework 3,5 en 4.7.2   |  [6,11]  |  Sept 10, 2019  |
 |  Rel 19-09   |  [4516044]  |  Meest recente cumulatieve update   |  [5,35]  |  Sept 10, 2019  |
@@ -178,19 +218,19 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  Rel 19-07   |  [4506966]  |  .NET 4.5.2-beveiliging   |  2,88  |  9 juli 2019  |
 |  Rel 19-07   |  [4506976]  |  .NET 3.5.1-beveiliging   |  2,88  |  9 juli 2019  |
 |  Rel 19-07   |  [4507456]  |  Windows-beveiliging   |  2,88  |  9 juli 2019  |
-|  Rel 19-07   |  [4506965]  |  .NET 4.5.2-beveiliging   |  3,75  |  9 juli 2019  |
-|  Rel 19-07   |  [4506974]  |  .NET 3,5-beveiliging   |  3,75  |  9 juli 2019  |
-|  Rel 19-07   |  [4507464]  |  Windows-beveiliging   |  3,75  |  9 juli 2019  |
+|  Rel 19-07   |  [4506965]  |  .NET 4.5.2-beveiliging   |  3.75  |  9 juli 2019  |
+|  Rel 19-07   |  [4506974]  |  .NET 3,5-beveiliging   |  3.75  |  9 juli 2019  |
+|  Rel 19-07   |  [4507464]  |  Windows-beveiliging   |  3.75  |  9 juli 2019  |
 |  Rel 19-07   |  [4506964]  |  .NET 4.5.2-beveiliging   |  4,68  |  9 juli 2019  |
 |  Rel 19-07   |  [4506977]  |  .NET 3,5-beveiliging   |  4,68  |  9 juli 2019  |
 |  Rel 19-07   |  [4507457]  |  Windows-beveiliging   |  4,68  |  9 juli 2019  |
-|  Rel 19-07   |  [4507460]  |  Windows-beveiliging   |  5,33  |  9 juli 2019  |
-|  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2-beveiliging   |  6,9  |  9 juli 2019  |
-|  Rel 19-07   |  [4507469]  |  Windows-beveiliging   |  6,9  |  9 juli 2019  |
-|  N.v.t.  |  [4503537]  |  Update van juni 19-onderhouds stack voor (Server 2016)   |  5,33  |  14 mei 2019  |
-|  N.v.t.  |  [4504369]  |  Update van juni 19-onderhouds stack voor (Server 2019)   |  6,9  |  14 mei 2019  |
+|  Rel 19-07   |  [4507460]  |  Windows-beveiliging   |  5.33  |  9 juli 2019  |
+|  Rel 19-07   |  [4506998]  |  .NET 3,5 & 4.7.2-beveiliging   |  6.9  |  9 juli 2019  |
+|  Rel 19-07   |  [4507469]  |  Windows-beveiliging   |  6.9  |  9 juli 2019  |
+|  N.v.t.  |  [4503537]  |  Update van juni 19-onderhouds stack voor (Server 2016)   |  5.33  |  14 mei 2019  |
+|  N.v.t.  |  [4504369]  |  Update van juni 19-onderhouds stack voor (Server 2019)   |  6.9  |  14 mei 2019  |
 |  N.v.t.  |  [4503292]  |  Juni ' 19 niet-beveiliging (Server 2008 R2)   |  2,88  |  20 mei 2019  |
-|  N.v.t.  |  [4503285]  |  Juni ' 19 niet-beveiliging (Server 2012)   |  3,75  |  14 mei 2019  |
+|  N.v.t.  |  [4503285]  |  Juni ' 19 niet-beveiliging (Server 2012)   |  3.75  |  14 mei 2019  |
 |  N.v.t.  |  [4503276]  |  Juni ' 19 niet-beveiliging (Server 2012 R2)   |  4,68  |  14 mei 2019  |
 
 [4507434]: https://support.microsoft.com/kb/4507434
@@ -225,7 +265,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 |  Rel 19-06   |  [4503269]  |  Windows-beveiliging   |  2,87  |  11 juni 2019  |
 |  Rel 19-06   |  [4494174]  |  Micro code-update   |  6.8  |  11 juni 2019  |
 |  Rel 19-06   |  [4494175]  |  Micro code-update   |  5,32  |  3 juni 2019  |
-|  Rel 19-06   |  [4503308]  |  Flits   |  3,74, 4,67, 5,32, 6,8  |  11 juni 2019  |
+|  Rel 19-06   |  [4503308]  |  Flash   |  3.74, 4.67, 5.32, 6.8  |  11 juni 2019  |
 |  Rel 19-06   |  [4503259]  |  Internet Explorer   |  2,87, 3,74, 4,67  |  13 juni 2019  |
 |  N.v.t.  |  [4499164]  |  19 mei niet-beveiliging  |  2,87  |  14 mei 2019  |
 |  N.v.t.  |  [4495606]  |  19 .NET 3,5 is niet-beveiliging  |  2,87  |  14 mei 2019  |
@@ -270,14 +310,14 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | --- | --- | --- | --- | --- |
 |  Rel 19-05   |  [4498206]  |  Mei IE Rollup   |  2,86, 3,73, 4,66  |  14 mei 2019  |
 |  Rel 19-05   |  [4505050]  |  Mei IE Rollup   |  2,86, 3,73, 4,66  |  18 mei 2019  |
-|  Rel 19-05   |  [4497932]  |  Kan Flash bijwerken   |  3,73, 4,66, 5,31  |  14 mei 2019  |
+|  Rel 19-05   |  [4497932]  |  Kan Flash bijwerken   |  3.73, 4.66, 5.31  |  14 mei 2019  |
 |  Rel 19-05   |  [4499175]  |  Security Rollup mogelijk   |  2,86  |  14 mei 2019  |
 |  Rel 19-05   |  [4495612]  |  Security Rollup .NET 3,5   |  2,86  |  14 mei 2019  |
 |  Rel 19-05   |  [4495593]  |  Kan Security Rollup .NET 4.5.2   |  2,86  |  14 mei 2019  |
-|  Rel 19-05   |  [4499158]  |  Security Rollup mogelijk   |  3,73  |  14 mei 2019  |
-|  Rel 19-05   |  [4495607]  |  Security Rollup .NET 3,5   |  3,73  |  14 mei 2019  |
-|  Rel 19-05   |  [4495591]  |  Kan Security Rollup .NET 4.5.2   |  3,73  |  14 mei 2019  |
-|  Rel 19-05   |  [4492872]  |  IE Rollup   |  3,73  |  16 april 2019  |
+|  Rel 19-05   |  [4499158]  |  Security Rollup mogelijk   |  3.73  |  14 mei 2019  |
+|  Rel 19-05   |  [4495607]  |  Security Rollup .NET 3,5   |  3.73  |  14 mei 2019  |
+|  Rel 19-05   |  [4495591]  |  Kan Security Rollup .NET 4.5.2   |  3.73  |  14 mei 2019  |
+|  Rel 19-05   |  [4492872]  |  IE Rollup   |  3.73  |  16 april 2019  |
 |  Rel 19-05   |  [4499165]  |  Security Rollup van maart   |  4,66  |  14 mei 2019  |
 |  Rel 19-05   |  [4495615]  |  Security Rollup .NET 3,5   |  4,66  |  14 mei 2019  |
 |  Rel 19-05   |  [4495589]  |  Kan Security Rollup .NET 4.5.2   |  4,66  |  14 mei 2019  |
@@ -320,7 +360,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 19-04 | [4493467] | Windows-beveiliging | 4,65 | 9 april 2019 |
 | Rel 19-04 | [4493450] | Windows-beveiliging | 3,72 | 9 april 2019 |
 | Rel 19-04 | [4493448] | Windows-beveiliging | 2,85 | 9 april 2019 |
-| Rel 19-04 | [4493478] | Flits | 3,72, 4,65, 5,30, 6,6 | 9 april 2019 |
+| Rel 19-04 | [4493478] | Flash | 3.72, 4.65, 5.30, 6.6 | 9 april 2019 |
 | Rel 19-04 | [4493435] | Internet Explorer | 2,85, 3,72, 4,65 | 9 april 2019 |
 | Rel 19-04 | [4490628] | Onderhouds stack-update | 2,85 | 12 maart 2019 |
 | Rel 19-04 | [4474419] | SHA2-ondersteuning | 2,85 | 12 maart 2019 |
@@ -346,7 +386,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 19-03 | [4489873] | Internet Explorer | 2,84, 3,71, 4,64 | 12 maart 2019 |
-| Rel 19-03 | [4489907] | Flits | 3,71, 4,64, 5,29, 6,5 | 12 maart 2019 |
+| Rel 19-03 | [4489907] | Flash | 3.71, 4.64, 5.29, 6.5 | 12 maart 2019 |
 | Rel 19-03 | [4489885] | Windows-beveiliging | 2,84 | 12 maart 2019 |
 | Rel 19-03 | [4489884] | Windows-beveiliging | 3,71 | 12 maart 2019 |
 | Rel 19-03 | [4489883] | Windows-beveiliging | 4,64 | 12 maart 2019 |
@@ -388,7 +428,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 19-02 | [4486474] | Internet Explorer | 2,83, 3,70, 4,63 | 12 februari 2019 |
-| Rel 19-02 | [4487038] | Flits | 3,70, 4,63, 5,28, 6,4 | 12 februari 2019 |
+| Rel 19-02 | [4487038] | Flash | 3.70, 4.63, 5.28, 6.4 | 12 februari 2019 |
 | Rel 19-02 | [4486564] | Windows-beveiliging | 2,83 | 12 februari 2019 |
 | Rel 19-02 | [4483483] | .NET 3.5.1-beveiliging | 2,83 | 12 februari 2019 |
 | Rel 19-02 | [4483474] | .NET 4.5.2-beveiliging | 2,83 | 12 februari 2019 |
@@ -398,7 +438,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 19-02 | [4487028] | Windows-beveiliging | 4,63 | 12 februari 2019 |
 | Rel 19-02 | [4483484] | .NET 3,5-beveiliging | 4,63 | 12 februari 2019 |
 | Rel 19-02 | [4483472] | .NET 4.5.2-beveiliging | 4,63 | 12 februari 2019 |
-| Rel 19-02 | [4487026] | Windows-beveiliging | 5,28 | 12 februari 2019 |
+| Rel 19-02 | [4487026] | Windows-beveiliging | 5.28 | 12 februari 2019 |
 | Rel 19-02 | [4487044] | Windows-beveiliging | 6.4 | 12 februari 2019 |
 | Rel 19-02 | [4483452] | .NET 3,5, 4.7.2 Security | 6.4 | 12 februari 2019 |
 | N.v.t. | [4480970] | Niet-beveiligings Rollup januari | 2,83 | 8 januari 2019 |
@@ -451,7 +491,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 19-01 | [4480086] | .NET 3. x-beveiliging | 4,62 | 8 januari 2019 |
 | Rel 19-01 | [4480083] | .NET 3. x-beveiliging | 3,69 | 8 januari 2019 |
 | Rel 19-01 | [4480085] | .NET 3. x-beveiliging | 2,82 | 8 januari 2019 |
-| Rel 19-01 | [4480979] | Flits | 3,69, 4,62, 5,27, 6,3 | 8 januari 2019 |
+| Rel 19-01 | [4480979] | Flash | 3.69, 4.62, 5.27, 6.3 | 8 januari 2019 |
 | Rel 19-01 | [4480965] | Internet Explorer | 2,82, 3,69, 4,62 | 8 januari 2019 |
 | N.v.t. | [4471318] | Niet-beveiligings Update december | 2,82 | 11 december 2018 |
 | N.v.t. | [4470641] | December niet-Security Rollup .NET 3. x | 2,82 | 11 december 2018 |
@@ -501,7 +541,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-12 | [4470493] | .NET 4. x-beveiliging  | 2,81 | 11 december 2018 |
 | Rel 18-12 | [4470492] | .NET 4. x-beveiliging  | 3,68 | 11 december 2018 |
 | Rel 18-12 | [4470491] | .NET 4. x-beveiliging  | 4,61| 11 december 2018 |
-| Rel 18-12 | [4471331] | Flits  | 3,68, 4,61, 5,26 | 5 december 2018  |
+| Rel 18-12 | [4471331] | Flash  | 3,68, 4,61, 5,26 | 5 december 2018  |
 | Rel 18-12 | [4470199] | Internet Explorer  | 2,81, 3,68, 4,61 | 11 december 2018 |
 | N.v.t. | [4468323] | Time zone-update    | 2,81, 3,68, 4,61 | 13 december 2018 |
 | N.v.t. | [4467107] | November niet-beveiligings update   | 2,81 | 13 november 2018 |
@@ -530,7 +570,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 18-11 | [4466536] | Internet Explorer | 2,80, 3,67, 4,60 | 13 november 2018 |
-| Rel 18-11 | [4467694] | Flits | 3,67, 4,60, 5,25 | 13 november 2018 |
+| Rel 18-11 | [4467694] | Flash | 3,67, 4,60, 5,25 | 13 november 2018 |
 | Rel 18-11 | [4467106] | Windows-beveiliging | 2,80 | 13 november 2018 |
 | Rel 18-11 | [4467678] | Windows-beveiliging | 3,67 | 13 november 2018 |
 | Rel 18-11 | [4467703] | Windows-beveiliging | 4,60 | 13 november 2018 |
@@ -565,7 +605,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-10 | [4462915] | Windows-beveiliging | 2,79 | 9 oktober 2018 |
 | Rel 18-10 | [4462931] | Windows-beveiliging | 3,66 | 9 oktober 2018 |
 | Rel 18-10 | [4462941] | Windows-beveiliging | 4,59 | 9 oktober 2018 |
-| Rel 18-10 | [4462930] | Flits | 3,66, 4,59, 5,24 | 9 oktober 2018 |
+| Rel 18-10 | [4462930] | Flash | 3.66, 4.59, 5.24 | 9 oktober 2018 |
 | Rel 18-10 | [4462949] | Internet Explorer | 2,79, 3,66, 4,59 | 9 oktober 2018 |
 | N.v.t. | [4339284] | Tijd zone bijwerken | 2,79, 3,66, 4,59 | 24 juli 2018 |
 | N.v.t. | [4457144] | Niet-beveiligings Update september | 2,79 | 11 september 2018 |
@@ -603,9 +643,9 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-09 | [4457140] | Alleen Windows-beveiliging | 3,65 | 11 september 2018 |
 | Rel 18-09 | [4457143] | Alleen Windows-beveiliging | 4,58 | 11 september 2018 |
 | Rel 18-09 | [4457055], [4457030] | .NET 3,5, 4,5 beveiliging | 2,78 | 11 september 2018 |
-| Rel 18-09 | [4457053], [4457029] | .NET 3,5, 4. x-beveiliging | 3,65 | 11 september 2018 |
-| Rel 18-09 | [4457056], [4457028] | .NET 3,5, 4. x-beveiliging | 4,58 | 11 september 2018 |
-| Rel 18-09 | [4457146] | Flits | 3,65, 4,58, 5,23 | 11 september 2018 |
+| Rel 18-09 | [4457053], [4457029] | .NET 3.5, 4.x Security | 3,65 | 11 september 2018 |
+| Rel 18-09 | [4457056], [4457028] | .NET 3.5, 4.x Security | 4,58 | 11 september 2018 |
+| Rel 18-09 | [4457146] | Flash | 3.65, 4.58, 5.23 | 11 september 2018 |
 | Rel 18-09 | [4457426] | Internet Explorer | 2,78, 3,65, 4,58 | 11 september 2018 |
 | N.v.t. | [4343900] | Niet-beveiligings Rollup in augustus | 2,78 | 14 augustus 2018 |
 | N.v.t. | [4344152] | Niet-beveiligings update voor .NET 3,5 augustus | 2,78 | 14 augustus 2018 |
@@ -625,11 +665,11 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-08 | [4343896] | Alleen Windows-beveiliging | 3,64 | 14 augustus 2018 |
 | Rel 18-08 | [4343888] | Alleen Windows-beveiliging | 4,57 | 14 augustus 2018 |
 | Rel 18-08 | [4344177], [4344173] | .NET 3,5, 4,5 beveiliging | 2.77 | 14 augustus 2018 |
-| Rel 18-08 | [4344175], [4344172] | .NET 3,5, 4. x-beveiliging | 3,64 | 14 augustus 2018 |
-| Rel 18-08 | [4344178], [4344171] | .NET 3,5, 4. x-beveiliging | 4,57 | 14 augustus 2018 |
+| Rel 18-08 | [4344175], [4344172] | .NET 3.5, 4.x Security | 3,64 | 14 augustus 2018 |
+| Rel 18-08 | [4344178], [4344171] | .NET 3.5, 4.x Security | 4,57 | 14 augustus 2018 |
 | Rel 18-08 | [4346742], [4346739] | Versie van .NET 3,5, 4. x OOB | 3,64 | 30 juli 2018 |
 | Rel 18-08 | [4346745], [4346408] | Versie van .NET 3,5, 4. x OOB | 4,57 | 30 juli 2018 |
-| Rel 18-08 | [4343902] | Flits | 3,64, 4,57, 5,22 | 14 augustus 2018 |
+| Rel 18-08 | [4343902] | Flash | 3,64, 4,57, 5,22 | 14 augustus 2018 |
 | Rel 18-08 | [4343205] | Internet Explorer | 2,77, 3,64, 4,57 | 14 augustus 2018 |
 | N.v.t. | [4338818] |Niet-beveiligings update juli |2.77 | 10 juli 2018 |
 | N.v.t. | [4019990] |Update van D3D-compiler voor .NET |2.77 | 10 juli 2018 |
@@ -651,10 +691,10 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-07 | [4345425] |Beveiligings update vernieuwen |3,63 |10 juli 2018 |
 | Rel 18-07 | [4345424] |Beveiligings update vernieuwen |4,56 |10 juli 2018 |
 | Rel 18-07 | [4345418] |Beveiligings update vernieuwen |5,21 |10 juli 2018 |
-| Rel 18-07 | [4338612], [4338602] |.NET 3,5, 4. x-beveiliging |2,76 |10 juli 2018 |
-| Rel 18-07 | [4338601], [4338604] |.NET 3,5, 4. x, 4,5 x beveiliging |3,63 |10 juli 2018 |
-| Rel 18-07 | [4338613], [4338600], [4338605] |.NET 3,5, 4. x, 4,5 x beveiliging |4,56|10 juli 2018 |
-| Rel 18-07 | [4338832] |Flits |3,63, 4,76, 5,21 |10 juli 2018 |
+| Rel 18-07 | [4338612], [4338602] |.NET 3.5, 4.x Security |2,76 |10 juli 2018 |
+| Rel 18-07 | [4338601], [4338604] |.NET 3.5, 4.x, 4.5x Security |3,63 |10 juli 2018 |
+| Rel 18-07 | [4338613], [4338600], [4338605] |.NET 3.5, 4.x, 4.5x Security |4,56|10 juli 2018 |
+| Rel 18-07 | [4338832] |Flash |3,63, 4,76, 5,21 |10 juli 2018 |
 | Rel 18-07 | [4339093] |Internet Explorer |2,76, 3,63, 4,76 |10 juli 2018 |
 | N.v.t. | [4284826] |Rollup van juni non-Security |2,76 |12 juni 2018 |
 | N.v.t. | [4284855] |Rollup van juni non-Security |3,63 |12 juni 2018 |
@@ -666,12 +706,12 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-06 | [4284880] |Windows 10-beveiliging |5,20 |12 juni 2018 |
 | Rel 18-06 | [4284867] |Alleen Windows-beveiliging |2,75 |12 juni 2018 |
 | Rel 18-06 | [4284846] |Alleen Windows-beveiliging |3,62 |12 juni 2018 |
-| Rel 18-06 | [4284878] |Alleen Windows-beveiliging |4,55 |12 juni 2018 |
+| Rel 18-06 | [4284878] |Alleen Windows-beveiliging |4.55 |12 juni 2018 |
 | Rel 18-06 | [4230450] |Internet Explorer |2,75, 3,62, 4,75 |12 juni 2018 |
-| Rel 18-06 | [4287903] |Flits |3,62, 4,75, 5,20 |12 juni 2018 |
+| Rel 18-06 | [4287903] |Flash |3,62, 4,75, 5,20 |12 juni 2018 |
 | N.v.t. | [4103718] |Niet-beveiligings update mogelijk |2,75 |8 mei 2018 |
 | N.v.t. | [4103730] |Niet-beveiligings update mogelijk |3,62 |8 mei 2018 |
-| N.v.t. | [4103725] |Niet-beveiligings update mogelijk |4,55 |8 mei 2018 |
+| N.v.t. | [4103725] |Niet-beveiligings update mogelijk |4.55 |8 mei 2018 |
 | N.v.t. | [4040980], [4040977] |Sept ' 17 .NET non-Security Rollup |2,75 |14 november 2017 |
 | N.v.t. | [4095874] |Kan .NET 3,5 niet-beveiligings release |2,75 |8 mei 2018 |
 | N.v.t. | [4096495] |Kan .NET 4. x niet-beveiligings release |2,75 |8 mei 2018 |
@@ -679,10 +719,10 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | N.v.t. | [4095872] |Kan .NET 3,5 niet-beveiligings release |3,62 |8 mei 2018 |
 | N.v.t. | [4096494] |Kan .NET 4. x niet-beveiligings release |3,62 |8 mei 2018 |
 | N.v.t. | [4096416] |Kan .NET 4.5 x niet-beveiligings release |3,62 |8 mei 2018 |
-| N.v.t. | [4040974], [4040972] |Sept ' 17 .NET non-Security Rollup |4,55 |14 november 2017 |
-| N.v.t. | [4043763] |Oct ' 17 .NET, non-Security Rollup |4,55 |12 september 2017 |
-| N.v.t. | [4095876] |Kan .NET 4. x niet-beveiligings release |4,55 |8 mei 2018 |
-| N.v.t. | [4096417] |Kan .NET 4.5 x niet-beveiligings release |4,55 |8 mei 2018 |
+| N.v.t. | [4040974], [4040972] |Sept ' 17 .NET non-Security Rollup |4.55 |14 november 2017 |
+| N.v.t. | [4043763] |Oct ' 17 .NET, non-Security Rollup |4.55 |12 september 2017 |
+| N.v.t. | [4095876] |Kan .NET 4. x niet-beveiligings release |4.55 |8 mei 2018 |
+| N.v.t. | [4096417] |Kan .NET 4.5 x niet-beveiligings release |4.55 |8 mei 2018 |
 | N.v.t. | [4132216] |Kan SSU |5,20 |8 mei 2018 |
 
 ## <a name="may-2018-guest-os"></a>Mei 2018-gast besturingssysteem
@@ -692,17 +732,17 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-05 | [4103712] |Alleen Windows-beveiliging |2,74 |8 mei 2018 |
 | Rel 18-05 | [4103726] |Alleen Windows-beveiliging |3,61 |8 mei 2018 |
 | Rel 18-05 | [4103715] |Alleen Windows-beveiliging |4,54 |8 mei 2018 |
-| Rel 18-05 | [4095514], [4095519] |.NET 3,5, 4. x-beveiliging |2,74 |8 mei 2018 |
-| Rel 18-05 | [4095512], [4095518], [4096235] |.NET 3,5, 4. x, 4,5 x beveiliging |3,61 |8 mei 2018 |
-| Rel 18-05 | [4095515], [4095517], [4096236] |.NET 3,5, 4. x, 4,5 x beveiliging |4,74|8 mei 2018 |
+| Rel 18-05 | [4095514], [4095519] |.NET 3.5, 4.x Security |2,74 |8 mei 2018 |
+| Rel 18-05 | [4095512], [4095518], [4096235] |.NET 3.5, 4.x, 4.5x Security |3,61 |8 mei 2018 |
+| Rel 18-05 | [4095515], [4095517], [4096236] |.NET 3.5, 4.x, 4.5x Security |4,74|8 mei 2018 |
 | Rel 18-05 | [4054856] |.NET 4.7 x-beveiliging |5,19 |8 mei 2018 |
-| Rel 18-05 | [4103768] |Internet Explorer |2,74, 3,61, 4,74 |8 mei 2018 |
-| Rel 18-05 | [4103729] |Flits |3,61, 4,74, 5,19 |8 mei 2018 |
+| Rel 18-05 | [4103768] |Internet Explorer |2.74, 3.61, 4.74 |8 mei 2018 |
+| Rel 18-05 | [4103729] |Flash |3.61, 4.74, 5.19 |8 mei 2018 |
 | N.v.t. | [4093118] |Niet-beveiligings Update april |2,73 |10 april 2018 |
 | N.v.t. | [4093123] |Niet-beveiligings Update april |3,61 |10 april 2018 |
 | N.v.t. | [4093114] |Niet-beveiligings Update april |4,74 |10 april 2018 |
 | N.v.t. | [4093137] |SSU april |5,19 |10 april 2018 |
-| N.v.t. | [4093753] |Time zone-update |2,74, 3,61, 4,74 |10 april 2018 |
+| N.v.t. | [4093753] |Time zone-update |2.74, 3.61, 4.74 |10 april 2018 |
 
 
 ## <a name="april-2018-guest-os"></a>April 2018-gast besturingssysteem
@@ -713,7 +753,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-04 | [4093122] |Alleen Windows-beveiliging |3,60 |10 april 2018 |
 | Rel 18-04 | [4093115] |Alleen Windows-beveiliging |4,53 |10 april 2018 |
 | Rel 18-04 | [4092946] |Internet Explorer |2,73, 3,60, 4,53 |10 april 2018 |
-| Rel 18-04 | [4093110] |Flits |3,60, 4,53, 5,18 |10 april 2018 |
+| Rel 18-04 | [4093110] |Flash |3,60, 4,53, 5,18 |10 april 2018 |
 | N.v.t. | [4088875] |Niet-beveiligings Rollup van maart |2,73 |13 maart 2018 |
 | N.v.t. | [4099950] |Vereist een vereiste voor het niet-beveiligings update pakket|2,73 |13 maart 2018 |
 | N.v.t. | [4088877] |Niet-beveiligings Rollup van maart |3,60 |13 maart 2018 |
@@ -725,7 +765,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-03 | [4088787], [4088776] |Windows 10-beveiliging |5,17 |13 maart 2018 |
 | Rel 18-03 | [4088878], [4088880], [4088879] |Alleen Windows-beveiliging |2,72, 3,59, 4,52 |13 maart 2018 |
 | Rel 18-03 | [4089187] |Internet Explorer |2,72, 3,59, 4,52 |13 maart 2018 |
-| Rel 18-03 | [4074595] |Flits |3,59, 4,52, 5,17 |13 maart 2018 |
+| Rel 18-03 | [4074595] |Flash |3,59, 4,52, 5,17 |13 maart 2018 |
 | N.v.t. | [4074598] |Niet-beveiligings Update februari |2,72 |13 februari 2018 |
 | N.v.t. | [4074593] |Niet-beveiligings Update februari |3,59 |13 februari 2018 |
 | N.v.t. | [4074594] |Niet-beveiligings Update februari |4,52 |13 februari 2018 |
@@ -738,7 +778,7 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Rel 18-02 | [4074590], [4074588] |Windows 10-beveiliging |5,16 |13 februari 2018 |
 | Rel 18-02 | [4074587], [4074589], [4074597] |Alleen Windows-beveiliging |2,71, 3,58, 4,51 |13 februari 2018 |
 | Rel 18-02 | [4074736] |Internet Explorer |2,71, 3,58, 4,51 |13 februari 2018 |
-| Rel 18-02 | [4074595] |Flits |3,58, 4,51, 5,16 |13 februari 2018 |
+| Rel 18-02 | [4074595] |Flash |3,58, 4,51, 5,16 |13 februari 2018 |
 | N.v.t. | [4056894] |Niet-beveiligings Rollup januari |2,71 |4 januari 2018 |
 | N.v.t. | [4056896] |Niet-beveiligings Rollup januari |3,58 |4 januari 2018 |
 | N.v.t. | [4056895] |Niet-beveiligings Rollup januari |4,51 |4 januari 2018 |
@@ -750,10 +790,10 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 18-01 | [4056898], [4056897], [4056899] |Alleen Windows-beveiliging |2,70, 3,57, 4,50 |3 januari 2018 |
-| Rel 18-01 | [4056890], [4056892] |Alleen Windows-beveiliging |5,15 |3 januari 2018 |
+| Rel 18-01 | [4056890], [4056892] |Alleen Windows-beveiliging |5.15 |3 januari 2018 |
 | N.v.t. | [4054518] |Niet-beveiligings Update december |2,70 |12 december 2017 |
 | N.v.t. | [4054520] |Niet-beveiligings Update december |3,57 |12 december 2017 |
-| N.v.t. | [4054519] |Niet-beveiligings Update december |4,50 |12 december 2017 |
+| N.v.t. | [4054519] |Niet-beveiligings Update december |4.50 |12 december 2017 |
 | N.v.t. | [4051956] |Update van januari-tijd zone |2,70, 3,57, 4,50 |12 december 2017 |
 
 
@@ -761,233 +801,233 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="december-2017-guest-os"></a>December 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-12 | [4053579], [4054517] |Windows 10-beveiligings updates |4,49, 5,14 |12 december 2017 |
-| Rel 17-12 | [4054521], [4054522], [4054523] |Alleen Windows-beveiliging |2,69, 3,56, 4,49 |12 december 2017 |
-| Rel 17-12 | [4052978] |Internet Explorer |2,69, 3,56, 4,49 |12 december 2017 |
-| Rel 17-12 | [4052978] |Flits |3,56, 4,49, 5,14 |12 december 2017 |
+| Rel 17-12 | [4053579], [4054517] |Windows 10-beveiligings updates |4.49, 5.14 |12 december 2017 |
+| Rel 17-12 | [4054521], [4054522], [4054523] |Alleen Windows-beveiliging |2.69, 3.56, 4.49 |12 december 2017 |
+| Rel 17-12 | [4052978] |Internet Explorer |2.69, 3.56, 4.49 |12 december 2017 |
+| Rel 17-12 | [4052978] |Flash |3.56, 4.49, 5.14 |12 december 2017 |
 | N.v.t. | [4048957] |November niet-beveiligings update |2,69 |14 november 2017 |
-| N.v.t. | [4048959] |November niet-beveiligings update |3,56 |14 november 2017 |
-| N.v.t. | [4048958] |November niet-beveiligings update |4,49 |14 november 2017 |
-| N.v.t. | [4049068] |Update van de tijd zone december |2,69, 3,56, 4,49 |12 december 2017 |
+| N.v.t. | [4048959] |November niet-beveiligings update |3.56 |14 november 2017 |
+| N.v.t. | [4048958] |November niet-beveiligings update |4.49 |14 november 2017 |
+| N.v.t. | [4049068] |Update van de tijd zone december |2.69, 3.56, 4.49 |12 december 2017 |
 
 ## <a name="november-2017-guest-os"></a>November 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-11 | [4048953] |Windows 10-updates |5,13 |14 november 2017 |
-| Rel 17-11 | [4048960], [4048962], [4048961] |Alleen Windows-beveiliging |2,68, 3,55, 4,48 |14 november 2017 |
-| Rel 17-11 | [4047206] |Internet Explorer |2,68, 3,55, 4,48 |14 november 2017 |
-| Rel 17-11 | [4048951] |Flits |3,55, 4,48, 5,13 |14 november 2017 |
-| N.v.t. | [4041681] |Oktober niet-beveiligings update |2,68 |10 oktober 2017 |
-| N.v.t. | [4041690] |Oktober niet-beveiligings update |3,55 |10 oktober 2017 |
-| N.v.t. | [4041693] |Oktober niet-beveiligings update |4,48 |10 oktober 2017 |
-| N.v.t. | [3191566] |Update voor Windows Management Framework 5,1  |2,68 |14 november 2017 |
-| N.v.t. | [3191565] |Update voor Windows Management Framework 5,1  |3,55 |14 november 2017 |
-| N.v.t. | [3191564] |Update voor Windows Management Framework 5,1  |4,48 |14 november 2017 |
+| Rel 17-11 | [4048953] |Windows 10-updates |5.13 |14 november 2017 |
+| Rel 17-11 | [4048960], [4048962], [4048961] |Alleen Windows-beveiliging |2.68, 3.55, 4.48 |14 november 2017 |
+| Rel 17-11 | [4047206] |Internet Explorer |2.68, 3.55, 4.48 |14 november 2017 |
+| Rel 17-11 | [4048951] |Flash |3.55, 4.48, 5.13 |14 november 2017 |
+| N.v.t. | [4041681] |Oktober niet-beveiligings update |2.68 |10 oktober 2017 |
+| N.v.t. | [4041690] |Oktober niet-beveiligings update |3.55 |10 oktober 2017 |
+| N.v.t. | [4041693] |Oktober niet-beveiligings update |4.48 |10 oktober 2017 |
+| N.v.t. | [3191566] |Update voor Windows Management Framework 5,1  |2.68 |14 november 2017 |
+| N.v.t. | [3191565] |Update voor Windows Management Framework 5,1  |3.55 |14 november 2017 |
+| N.v.t. | [3191564] |Update voor Windows Management Framework 5,1  |4.48 |14 november 2017 |
 
 ## <a name="october-2017-guest-os"></a>2017-gast besturingssysteem van oktober
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-10 | [4041691] |Windows 10-updates |5,12 |10 oktober 2017 |
-| Rel 17-10 | [4041678], [4041679], [4041687] |Alleen Windows-beveiliging |2,67, 3,54, 4,47 |10 oktober 2017 |
-| Rel 17-10 | [4040685], |Internet Explorer |2,67, 3,54, 4,47 |10 oktober 2017 |
-| Rel 17-10 | [4041681], [4041690], [4041693] |Maandelijkse rollups van Windows |2,67, 3,54, 4,47 |10 oktober 2017 |
-| N.v.t. | [4038777] |Niet-beveiligings Update september |2,67 |12 september 2017 |
-| N.v.t. | [4038799] |Niet-beveiligings Update september |3,54 |12 september 2017 |
-| N.v.t. | [4038792] |Niet-beveiligings Update september |4,47 |12 september 2017 |
-| N.v.t. | [4040980] |Niet-beveiligings update van september .NET |2,67 |12 september 2017 |
-| N.v.t. | [4040979] |Niet-beveiligings update van september .NET |3,54 |12 september 2017 |
-| N.v.t. | [4040981] |Niet-beveiligings update van september .NET |4,47 |12 september 2017 |
+| Rel 17-10 | [4041691] |Windows 10-updates |5.12 |10 oktober 2017 |
+| Rel 17-10 | [4041678], [4041679], [4041687] |Alleen Windows-beveiliging |2.67, 3.54, 4.47 |10 oktober 2017 |
+| Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |10 oktober 2017 |
+| Rel 17-10 | [4041681], [4041690], [4041693] |Maandelijkse rollups van Windows |2.67, 3.54, 4.47 |10 oktober 2017 |
+| N.v.t. | [4038777] |Niet-beveiligings Update september |2.67 |12 september 2017 |
+| N.v.t. | [4038799] |Niet-beveiligings Update september |3.54 |12 september 2017 |
+| N.v.t. | [4038792] |Niet-beveiligings Update september |4.47 |12 september 2017 |
+| N.v.t. | [4040980] |Niet-beveiligings update van september .NET |2.67 |12 september 2017 |
+| N.v.t. | [4040979] |Niet-beveiligings update van september .NET |3.54 |12 september 2017 |
+| N.v.t. | [4040981] |Niet-beveiligings update van september .NET |4.47 |12 september 2017 |
 
 ## <a name="september-2017-guest-os"></a>September 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 17-09 | [4038782] |Windows 10-updates |5.11 |12 september 2017 |
-| Rel 17-09 | [4038779], [4038786], [4038793] |Alleen Windows-beveiliging |2,66, 3,53, 4,46 |12 september 2017 |
-| Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Update van september .NET |2,66, 3,53, 4,46 |12 september 2017 |
-| Rel 17-09 | [4036586] |Internet Explorer |2,66, 3,53, 4,46 |12 september 2017 |
+| Rel 17-09 | [4038779], [4038786], [4038793] |Alleen Windows-beveiliging |2.66, 3.53, 4.46 |12 september 2017 |
+| Rel 17-09 | [4040966], [4040960], [4040965], [4040959], [4033988], [4040955], [4040967], [4040958]|Update van september .NET |2.66, 3.53, 4.46 |12 september 2017 |
+| Rel 17-09 | [4036586] |Internet Explorer |2.66, 3.53, 4.46 |12 september 2017 |
 | CVE-2017-8704 | [4038782] |Denial of service (DoS) |5.11 |12 september 2017 |
-| N.v.t. | [4034664] |Niet-beveiligings Rollup in augustus  |2,66 |8 augustus 2017 |
+| N.v.t. | [4034664] |Niet-beveiligings Rollup in augustus  |2.66 |8 augustus 2017 |
 | N.v.t. | [4034665] |Niet-beveiligings Rollup in augustus |5.11 |8 augustus 2017 |
-| N.v.t. | [4034681] |Niet-beveiligings Rollup in augustus |4,46 |8 augustus 2017 |
+| N.v.t. | [4034681] |Niet-beveiligings Rollup in augustus |4.46 |8 augustus 2017 |
 
 ## <a name="august-2017-guest-os"></a>Augustus 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 17-07 | [4034658] |Windows 10-updates |5.10 |8 augustus 2017 |
-| Rel 17-07 | [4034679] |Alleen Windows-beveiliging |2,65 |8 augustus 2017 |
-| Rel 17-07 | [4034672] |Alleen Windows-beveiliging |4,45 |8 augustus 2017 |
-| Rel 17-07 | [4034666] |Alleen Windows-beveiliging |3,52 |8 augustus 2017 |
-| Rel 17-07 | [4034733] |Internet Explorer |2,65, 3,52, 4,45, 5,10 |8 augustus 2017 |
-| Rel 17-07 | [4034664], [4034665], [4034681] |Maandelijkse rollups van Windows |2,65, 3,52, 4,45 |8 augustus 2017 |
+| Rel 17-07 | [4034679] |Alleen Windows-beveiliging |2.65 |8 augustus 2017 |
+| Rel 17-07 | [4034672] |Alleen Windows-beveiliging |4.45 |8 augustus 2017 |
+| Rel 17-07 | [4034666] |Alleen Windows-beveiliging |3.52 |8 augustus 2017 |
+| Rel 17-07 | [4034733] |Internet Explorer |2.65, 3.52, 4.45, 5.10 |8 augustus 2017 |
+| Rel 17-07 | [4034664], [4034665], [4034681] |Maandelijkse rollups van Windows |2.65, 3.52, 4.45 |8 augustus 2017 |
 | Rel 17-07 | [4034668], [4034660], [4034658], [4034674] |Nieuwe versie van CVE-2017-0071, nieuwe versie van CVE-2017-0228 |5.10 |8 augustus 2017 |
-| Rel 17-07 | [4025341] |Niet-beveiligings update juli |2,65 |11 juli 2017 |
-| Rel 17-07 | [4025331] |Niet-beveiligings update juli |3,52 |11 juli 2017 |
-| Rel 17-07 | [4025336] |Niet-beveiligings update juli |4,45 |11 juli 2017 |
+| Rel 17-07 | [4025341] |Niet-beveiligings update juli |2.65 |Op 11 juli 2017 |
+| Rel 17-07 | [4025331] |Niet-beveiligings update juli |3.52 |Op 11 juli 2017 |
+| Rel 17-07 | [4025336] |Niet-beveiligings update juli |4.45 |Op 11 juli 2017 |
 
 ## <a name="july-2017-guest-os"></a>2017 juli-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-07 | [4025339] |Windows 10-updates |5.9 |11 juli 2017 |
-| Rel 17-07 | [4025337] |Alleen Windows-beveiliging |2,64 |11 juli 2017 |
-| Rel 17-07 | [4025333] |Alleen Windows-beveiliging |4,44 |11 juli 2017 |
-| Rel 17-07 | [4025343] |Alleen Windows-beveiliging |3,51 |11 juli 2017 |
-| Rel 17-07 | [4025376] |Flits |3,51, 4,44, 5,9 |11 juli 2017 |
-| Rel 17-07 | [4025252] |Internet Explorer |2,64, 3,51, 4,44 |11 juli 2017 |
-| N.v.t. | [4020322] |Time zone-update |2,64, 3,51, 4,44 |11 juli 2017 |
-| N.v.t. | [4022719] |Rollup van juni non-Security |2,64 |13 juni 2017 |
-| N.v.t. | [4022724] |Rollup van juni non-Security |3,51 |13 juni 2017 |
-| N.v.t. | [4022726] |Rollup van juni non-Security |4,44 |13 juni 2017 |
+| Rel 17-07 | [4025339] |Windows 10-updates |5.9 |Op 11 juli 2017 |
+| Rel 17-07 | [4025337] |Alleen Windows-beveiliging |2.64 |Op 11 juli 2017 |
+| Rel 17-07 | [4025333] |Alleen Windows-beveiliging |4.44 |Op 11 juli 2017 |
+| Rel 17-07 | [4025343] |Alleen Windows-beveiliging |3.51 |Op 11 juli 2017 |
+| Rel 17-07 | [4025376] |Flash |3.51, 4.44, 5.9 |Op 11 juli 2017 |
+| Rel 17-07 | [4025252] |Internet Explorer |2.64, 3.51, 4.44 |Op 11 juli 2017 |
+| N.v.t. | [4020322] |Time zone-update |2.64, 3.51, 4.44 |Op 11 juli 2017 |
+| N.v.t. | [4022719] |Rollup van juni non-Security |2.64 |13 juni 2017 |
+| N.v.t. | [4022724] |Rollup van juni non-Security |3.51 |13 juni 2017 |
+| N.v.t. | [4022726] |Rollup van juni non-Security |4.44 |13 juni 2017 |
 
 ## <a name="june-2017-guest-os"></a>Juni 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 17-06 | [4019472] |Kwaliteits verbeteringen van het besturings systeem WS 2016 |5.8 |9 mei 2017 |
-| Rel 17-06 | [4022722] |Alleen Windows-beveiliging |2,63 |13 juni 2017 |
-| Rel 17-06 | [4022717] |Alleen Windows-beveiliging |4,43 |13 juni 2017 |
-| Rel 17-06 | [4022718] |Alleen Windows-beveiliging |3,50 |13 juni 2017 |
-| Rel 17-06 | [4021558] |Internet Explorer|2,63, 3,50, 4,43 |13 juni 2017 |
-| Rel 17-06 | [4022719], [4022724], [4022726] |Maandelijkse rollups van Windows |2,63, 3,50, 4,43 |13 juni 2017 |
-| Rel 17-06 | [4022730] |Beveiligings update voor Adobe Flash Player |3,50, 4,43, 5,8 |13 juni 2017 |
-| Rel 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Nieuwe versie van CVE-2017-0167 |4,43, 5,8 |11 april 2017 |
-| N.v.t. | [4023136] |Time zone-update  |2,63, 3,50, 4,43 |13 juni 2017 |
-| N.v.t. | [4019264] |Niet-beveiligings update mogelijk |2,63 |13 juni 2017 |
-| N.v.t. | [4014545] |Niet-beveiligings update voor .NET is mogelijk |2,63 |11 april 2017 |
-| N.v.t. | [4014508] |Niet-beveiligings update voor .NET is mogelijk |2,63 |9 mei 2017 |
-| N.v.t. | [4014511] |Niet-beveiligings update voor .NET is mogelijk |2,63 |9 mei 2017 |
-| N.v.t. | [4014514] |Niet-beveiligings update voor .NET is mogelijk |2,63 |9 mei 2017 |
-| N.v.t. | [4019216] |Niet-beveiligings update mogelijk |3,50 |9 mei 2017 |
-| N.v.t. | [4014503] |Niet-beveiligings update voor .NET is mogelijk |3,50 |9 mei 2017 |
-| N.v.t. | [4014506] |Niet-beveiligings update voor .NET is mogelijk |3,50 |9 mei 2017 |
-| N.v.t. | [4014509] |Niet-beveiligings update voor .NET is mogelijk |3,50 |9 mei 2017 |
-| N.v.t. | [4014513] |Niet-beveiligings update voor .NET is mogelijk |3,50 |9 mei 2017 |
-| N.v.t. | [4019215] |Niet-beveiligings update mogelijk |4,43 |9 mei 2017 |
-| N.v.t. | [4014505] |Niet-beveiligings update voor .NET is mogelijk |4,43 |9 mei 2017 |
-| N.v.t. | [4014507] |Niet-beveiligings update voor .NET is mogelijk |4,43 |9 mei 2017 |
-| N.v.t. | [4014510] |Niet-beveiligings update voor .NET is mogelijk |4,43 |9 mei 2017 |
-| N.v.t. | [4014512] |Niet-beveiligings update voor .NET is mogelijk |4,43 |9 mei 2017 |
+| Rel 17-06 | [4022722] |Alleen Windows-beveiliging |2.63 |13 juni 2017 |
+| Rel 17-06 | [4022717] |Alleen Windows-beveiliging |4.43 |13 juni 2017 |
+| Rel 17-06 | [4022718] |Alleen Windows-beveiliging |3.50 |13 juni 2017 |
+| Rel 17-06 | [4021558] |Internet Explorer|2.63, 3.50, 4.43 |13 juni 2017 |
+| Rel 17-06 | [4022719], [4022724], [4022726] |Maandelijkse rollups van Windows |2.63, 3.50, 4.43 |13 juni 2017 |
+| Rel 17-06 | [4022730] |Beveiligings update voor Adobe Flash Player |3.50, 4.43, 5.8 |13 juni 2017 |
+| Rel 17-06 | [4015217], [4015221], [4015583], [4015550], [4015219] |Nieuwe versie van CVE-2017-0167 |4.43, 5.8 |11 april 2017 |
+| N.v.t. | [4023136] |Time zone-update  |2.63, 3.50, 4.43 |13 juni 2017 |
+| N.v.t. | [4019264] |Niet-beveiligings update mogelijk |2.63 |13 juni 2017 |
+| N.v.t. | [4014545] |Niet-beveiligings update voor .NET is mogelijk |2.63 |11 april 2017 |
+| N.v.t. | [4014508] |Niet-beveiligings update voor .NET is mogelijk |2.63 |9 mei 2017 |
+| N.v.t. | [4014511] |Niet-beveiligings update voor .NET is mogelijk |2.63 |9 mei 2017 |
+| N.v.t. | [4014514] |Niet-beveiligings update voor .NET is mogelijk |2.63 |9 mei 2017 |
+| N.v.t. | [4019216] |Niet-beveiligings update mogelijk |3.50 |9 mei 2017 |
+| N.v.t. | [4014503] |Niet-beveiligings update voor .NET is mogelijk |3.50 |9 mei 2017 |
+| N.v.t. | [4014506] |Niet-beveiligings update voor .NET is mogelijk |3.50 |9 mei 2017 |
+| N.v.t. | [4014509] |Niet-beveiligings update voor .NET is mogelijk |3.50 |9 mei 2017 |
+| N.v.t. | [4014513] |Niet-beveiligings update voor .NET is mogelijk |3.50 |9 mei 2017 |
+| N.v.t. | [4019215] |Niet-beveiligings update mogelijk |4.43 |9 mei 2017 |
+| N.v.t. | [4014505] |Niet-beveiligings update voor .NET is mogelijk |4.43 |9 mei 2017 |
+| N.v.t. | [4014507] |Niet-beveiligings update voor .NET is mogelijk |4.43 |9 mei 2017 |
+| N.v.t. | [4014510] |Niet-beveiligings update voor .NET is mogelijk |4.43 |9 mei 2017 |
+| N.v.t. | [4014512] |Niet-beveiligings update voor .NET is mogelijk |4.43 |9 mei 2017 |
 
 ## <a name="may-2017-guest-os"></a>Mei 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
 | Rel 17-05 | [4019472] |Kwaliteits verbeteringen van het besturings systeem WS 2016 |5.7 | 9 mei 2017 |
-| Rel 17-05 | [4019263] |Alleen Windows-beveiliging |2,62 | 9 mei 2017 |
-| Rel 17-05 | [4019213] |Alleen Windows-beveiliging |4,42 | 9 mei 2017 |
-| Rel 17-05 | [4019214] |Alleen Windows-beveiliging |3,49 | 9 mei 2017 |
-| Rel 17-05 | [4018271] |Cumulatieve beveiligings update voor Internet Explorer |3,49 | 9 mei 2017 |
-| Rel 17-05 | [4010323] |SHA1-advies |2,62, 4,42, 5,7 | 9 mei 2017 |
-| Rel 17-05 | [4022344] |Micro soft-beveiligings advies |5.7 | 9 mei 2017 |
-| Rel 17-05 | [4022345] |Micro soft-beveiligings advies |5.7 | 9 mei 2017 |
-| Rel 17-05 | [4021279] |.NET/ASP.NET Core-advies |2,62, 3,49, 4,42, 5,7 | 9 mei 2017 |
-| N.v.t. | [4012864] |Time zone-update |2,62, 3,49, 4,42 | 9 mei 2017 |
-| N.v.t. | [4014565] |Niet-beveiligings Update april. |2,62 | 11 april 2017 |
-| N.v.t. | [4014559] |Niet-beveiligings Update april. |2,62 | 11 april 2017 |
-| N.v.t. | [4015549] |Niet-beveiligings Update april |2,62 | 11 april 2017 |
-| N.v.t. | [4019990] |D3DCompiler-update-vereiste voor .NET 4,7 |3,49 | 9 mei 2017 |
-| N.v.t. | [4014563] |Niet-beveiligings Update april. |3,49 | 11 april 2017 |
-| N.v.t. | [4014557] |Niet-beveiligings Update april. |3,49 | 11 april 2017 |
-| N.v.t. | [4014545] |Niet-beveiligings Update april. |3,49 | 11 april 2017 |
-| N.v.t. | [4014548] |Niet-beveiligings Update april. |3,49 | 11 april 2017 |
-| N.v.t. | [4015551] |Niet-beveiligings Update april |3,49 | 11 april 2017 |
-| N.v.t. | [3173424] |Onderhouds stack-update  |4,42 | 12 juli 2016 |
-| N.v.t. | [4014555] |Niet-beveiligings Update april.  |4,42 | 11 april 2017 |
-| N.v.t. | [4014567] |Niet-beveiligings Update april. |4,42 | 11 april 2017 |
-| N.v.t. | [4015550] |Niet-beveiligings Update april |4,42 | 11 april 2017 |
+| Rel 17-05 | [4019263] |Alleen Windows-beveiliging |2.62 | 9 mei 2017 |
+| Rel 17-05 | [4019213] |Alleen Windows-beveiliging |4.42 | 9 mei 2017 |
+| Rel 17-05 | [4019214] |Alleen Windows-beveiliging |3.49 | 9 mei 2017 |
+| Rel 17-05 | [4018271] |Cumulatieve beveiligings update voor Internet Explorer |3.49 | 9 mei 2017 |
+| Rel 17-05 | [4010323] |SHA1-advies |2.62, 4.42, 5.7 | 9 mei 2017 |
+| Rel 17-05 | [4022344] |Microsoft Security Advisory |5.7 | 9 mei 2017 |
+| Rel 17-05 | [4022345] |Microsoft Security Advisory |5.7 | 9 mei 2017 |
+| Rel 17-05 | [4021279] |.NET/ASP.NET Core-advies |2.62, 3.49, 4.42, 5.7 | 9 mei 2017 |
+| N.v.t. | [4012864] |Time zone-update |2.62, 3.49, 4.42 | 9 mei 2017 |
+| N.v.t. | [4014565] |Niet-beveiligings Update april. |2.62 | 11 april 2017 |
+| N.v.t. | [4014559] |Niet-beveiligings Update april. |2.62 | 11 april 2017 |
+| N.v.t. | [4015549] |Niet-beveiligings Update april |2.62 | 11 april 2017 |
+| N.v.t. | [4019990] |D3DCompiler-update-vereiste voor .NET 4,7 |3.49 | 9 mei 2017 |
+| N.v.t. | [4014563] |Niet-beveiligings Update april. |3.49 | 11 april 2017 |
+| N.v.t. | [4014557] |Niet-beveiligings Update april. |3.49 | 11 april 2017 |
+| N.v.t. | [4014545] |Niet-beveiligings Update april. |3.49 | 11 april 2017 |
+| N.v.t. | [4014548] |Niet-beveiligings Update april. |3.49 | 11 april 2017 |
+| N.v.t. | [4015551] |Niet-beveiligings Update april |3.49 | 11 april 2017 |
+| N.v.t. | [3173424] |Onderhouds stack-update  |4.42 | 12 juli 2016 |
+| N.v.t. | [4014555] |Niet-beveiligings Update april.  |4.42 | 11 april 2017 |
+| N.v.t. | [4014567] |Niet-beveiligings Update april. |4.42 | 11 april 2017 |
+| N.v.t. | [4015550] |Niet-beveiligings Update april |4.42 | 11 april 2017 |
 | N.v.t. | [4013418] |Onderhouds stack-update |5.7 | 14 maart 2017 |
 
 ## <a name="april-2017-guest-os"></a>April 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-04 |  [4015217]  |Kwaliteits verbeteringen van het besturings systeem WS 2016 | 5,6 | 11 april 2017 |
-| Rel 17-04 |  [4015546]  |Alleen Windows-beveiliging |2,61 | 11 april 2017 |
-| Rel 17-04 |  [4015547]  |Alleen Windows-beveiliging |4,41 | 11 april 2017 |
-| Rel 17-04 |  [4015548]  |Alleen Windows-beveiliging |3,48 | 11 april 2017 |
-| Rel 17-04 |  [4014661]  |Internet Explorer |2,61, 3,48, 4,41 | 11 april 2017 |
-| Rel 17-04 |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |.NET-beveiliging |4,41 | 11 april 2017 |
-| Rel 17-04 |  [4014564]; [4014572]; [4014549] |.NET-beveiliging |3,48 | 11 april 2017 |
-| Rel 17-04 |  [4014566]; [4014552]; [4014573]; [4014558]  |.NET-beveiliging |2,61 | 11 april 2017 |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5,6 | 11 april 2017 |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2,61, 3,48, 4,41 | 11 april 2017 |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4,41 | 11 april 2017 |
-| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0182; CVE-2017-0186; CVE-2017-0191 |2,61, 3,48, 4,41, 5,6 | 11 april 2017 |
-| Rel 17-04 |  [4015193]  |ZOMERtijd wijzigingen in Windows voor Magallanes (Chili) |2,61, 3,48, 4,41 | 11 april 2017 |
-| Rel 17-04 |  [4012215]  |Rollup van de 6 beveiligings maand van maart 2017 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,61 | 11 april 2017 |
-| Rel 17-04 |  [4012217]  |Rollup van de maandelijkse beveiligings update van maart 2017 voor Windows Server 2012 |3,48 | 11 april 2017 |
-| Rel 17-04 |  [4012216]  |Rollup van de maandelijkse beveiliging van maart 2017 voor Windows 8,1 en Windows Server 2012 R2 |4,41 | 11 april 2017 |
+| Rel 17-04 |  [4015217]  |Kwaliteits verbeteringen van het besturings systeem WS 2016 | 5.6 | 11 april 2017 |
+| Rel 17-04 |  [4015546]  |Alleen Windows-beveiliging |2.61 | 11 april 2017 |
+| Rel 17-04 |  [4015547]  |Alleen Windows-beveiliging |4.41 | 11 april 2017 |
+| Rel 17-04 |  [4015548]  |Alleen Windows-beveiliging |3.48 | 11 april 2017 |
+| Rel 17-04 |  [4014661]  |Internet Explorer |2.61, 3.48, 4.41 | 11 april 2017 |
+| Rel 17-04 |  [4014550]; [4014560]; [4014562]; [4014556]; [4014574] |.NET-beveiliging |4.41 | 11 april 2017 |
+| Rel 17-04 |  [4014564]; [4014572]; [4014549] |.NET-beveiliging |3.48 | 11 april 2017 |
+| Rel 17-04 |  [4014566]; [4014552]; [4014573]; [4014558]  |.NET-beveiliging |2.61 | 11 april 2017 |
+| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0181 |5.6 | 11 april 2017 |
+| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0163; CVE-2017-0183; CVE-2017-0184; CVE-2017-0184; CVE-2017-0185; CVE-2017-0168 |2.61, 3.48, 4.41 | 11 april 2017 |
+| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0178; CVE-2017-0179; CVE-2017-0162; CVE-2017-0169 |4.41 | 11 april 2017 |
+| Rel 17-04 |  [4015546]; [4015547]; [4015548]; [4015217]  |CVE-2017-0182; CVE-2017-0186; CVE-2017-0191 |2.61, 3.48, 4.41, 5.6 | 11 april 2017 |
+| Rel 17-04 |  [4015193]  |ZOMERtijd wijzigingen in Windows voor Magallanes (Chili) |2.61, 3.48, 4.41 | 11 april 2017 |
+| Rel 17-04 |  [4012215]  |Rollup van de 6 beveiligings maand van maart 2017 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.61 | 11 april 2017 |
+| Rel 17-04 |  [4012217]  |Rollup van de maandelijkse beveiligings update van maart 2017 voor Windows Server 2012 |3.48 | 11 april 2017 |
+| Rel 17-04 |  [4012216]  |Rollup van de maandelijkse beveiliging van maart 2017 voor Windows 8,1 en Windows Server 2012 R2 |4.41 | 11 april 2017 |
 
 ## <a name="march-2017-guest-os"></a>Maart 2017-gast besturingssysteem
 | Productcategorie | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| Rel 17-03 |  [4013429] |Verbeteringen en oplossingen | 5,5 | 14 maart 2017 |
-| Rel 17-03 |  [4012212] |Update van 2017 maart voor alleen de kwaliteit van beveiliging voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,60 |14 maart 2017 |
-| Rel 17-03 |  [4012213] |Update van maart 2017 voor alleen beveiliging van de kwaliteit van Windows 8,1 en Windows Server 2012 R2 |4,40 |14 maart 2017 |
-| Rel 17-03 |  [4012214] |Update van maart 2017 voor alleen beveiligings kwaliteit voor Windows Server 2012|3,47 |14 maart 2017 |
-| Rel 17-03 |  [4012204] |Beveiligings update voor Internet Explorer |2,60, 3,47, 4,40, 5,5 |14 maart 2017 |
-| N.v.t. |  [4012864] |ZOMERtijd wijzigingen in Windows voor de regio Noord-Cypress, Mongolië en Russische Saratov |2,60, 3,47, 4,40 |14 maart 2017 |
-| N.v.t. |  [3212646] |6 januari 2017 Security Monthly Rollup voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,60 |14 maart 2017 |
-| N.v.t. |  [3205409] |Update van december 2016 Security Monthly voor Windows Server 2012 |3,47 |14 maart 2017 |
-| N.v.t. |  [3205401] |Update van december 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4,40 |14 maart 2017 |
-| N.v.t. |  [3211320] |Service stack update voor Windows 10 versie 1607 en Windows Server 2016:24 januari 2017 |5,5 |14 maart 2017 |
+| Rel 17-03 |  [4013429] |Verbeteringen en oplossingen | 5.5 | 14 maart 2017 |
+| Rel 17-03 |  [4012212] |Update van 2017 maart voor alleen de kwaliteit van beveiliging voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.60 |14 maart 2017 |
+| Rel 17-03 |  [4012213] |Update van maart 2017 voor alleen beveiliging van de kwaliteit van Windows 8,1 en Windows Server 2012 R2 |4.40 |14 maart 2017 |
+| Rel 17-03 |  [4012214] |Update van maart 2017 voor alleen beveiligings kwaliteit voor Windows Server 2012|3.47 |14 maart 2017 |
+| Rel 17-03 |  [4012204] |Beveiligings update voor Internet Explorer |2.60, 3.47, 4.40, 5.5 |14 maart 2017 |
+| N.v.t. |  [4012864] |ZOMERtijd wijzigingen in Windows voor de regio Noord-Cypress, Mongolië en Russische Saratov |2.60, 3.47, 4.40 |14 maart 2017 |
+| N.v.t. |  [3212646] |6 januari 2017 Security Monthly Rollup voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.60 |14 maart 2017 |
+| N.v.t. |  [3205409] |Update van december 2016 Security Monthly voor Windows Server 2012 |3.47 |14 maart 2017 |
+| N.v.t. |  [3205401] |Update van december 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4.40 |14 maart 2017 |
+| N.v.t. |  [3211320] |Service stack update voor Windows 10 versie 1607 en Windows Server 2016:24 januari 2017 |5.5 |14 maart 2017 |
 
 ## <a name="january-2017-guest-os"></a>Januari 2017-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS17-004 | [3216771] |Beveiligings update voor Subsysteemservice voor lokale beveiligingsautoriteit |2,59 |10 januari 2017 |
+| MS17-004 | [3216771] |Beveiligings update voor Subsysteemservice voor lokale beveiligingsautoriteit |2.59 |10 januari 2017 |
 
 ## <a name="december-2016-guest-os"></a>December 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-144 |[3204059] |Cumulatieve beveiligings update voor Internet Explorer |2,58, 3,46, 4,39 |13 december 2016 |
-| MS16-145 |[3204062] |Cumulatieve beveiligings update voor micro soft Edge |5,4 |13 december 2016 |
-| MS16-146 |[3204066]   |Beveiligings update voor micro soft graphics-onderdeel|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
-| MS16-147 |[3204063]   |Beveiligings update voor micro soft Uniscribe|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
-| MS16-149 |[3205655]   |Beveiligings update voor micro soft Windows|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
-| MS16-150 |[3205642]   |Beveiligings update voor beveiligde kernelmodus |5,4 |13 december 2016 |
-| MS16-151 |[3205651]   |Beveiligings update voor Stuur Programma's in kernelmodus|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
-| MS16-152 |[3199709]   |Beveiligings update voor Windows-kernel |5,4 |13 december 2016 |
-| MS16-153 |[3207328] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand|2,58, 3,46, 4,39, 5,4 |13 december 2016 |
-| MS16-155 |[3205640]   |Beveiligings update voor .NET Framework |5,4 |13 december 2016 |
-| N.v.t. |[3197868] |Update van november 2016 Security Monthly voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,58 |13 december 2016 |
-| N.v.t. |[3197877] |Update van november 2016 Security Monthly voor Windows Server 2012 |3,46 |13 december 2016 |
-| N.v.t. |[3197874] |Update van november 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4,39 |13 december 2016 |
+| MS16-144 |[3204059] |Cumulatieve beveiligings update voor Internet Explorer |2.58, 3.46, 4.39 |13 december 2016 |
+| MS16-145 |[3204062] |Cumulatieve beveiligings update voor micro soft Edge |5.4 |13 december 2016 |
+| MS16-146 |[3204066]   |Beveiligings update voor micro soft graphics-onderdeel|2.58, 3.46, 4.39, 5.4 |13 december 2016 |
+| MS16-147 |[3204063]   |Beveiligings update voor micro soft Uniscribe|2.58, 3.46, 4.39, 5.4 |13 december 2016 |
+| MS16-149 |[3205655]   |Beveiligings update voor micro soft Windows|2.58, 3.46, 4.39, 5.4 |13 december 2016 |
+| MS16-150 |[3205642]   |Beveiligings update voor beveiligde kernelmodus |5.4 |13 december 2016 |
+| MS16-151 |[3205651]   |Beveiligings update voor Stuur Programma's in kernelmodus|2.58, 3.46, 4.39, 5.4 |13 december 2016 |
+| MS16-152 |[3199709]   |Beveiligings update voor Windows-kernel |5.4 |13 december 2016 |
+| MS16-153 |[3207328] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand|2.58, 3.46, 4.39, 5.4 |13 december 2016 |
+| MS16-155 |[3205640]   |Beveiligings update voor .NET Framework |5.4 |13 december 2016 |
+| N.v.t. |[3197868] |Update van november 2016 Security Monthly voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.58 |13 december 2016 |
+| N.v.t. |[3197877] |Update van november 2016 Security Monthly voor Windows Server 2012 |3.46 |13 december 2016 |
+| N.v.t. |[3197874] |Update van november 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4.39 |13 december 2016 |
 
 ## <a name="november-2016-guest-os"></a>November 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-129 |[3199057] |Cumulatieve beveiligings update voor micro soft Edge |5,3 |8 november 2016 |
-| MS16-130 |[3199172] |Beveiligings update voor micro soft Windows |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-131 |[3199151]   |Beveiligings update voor micro soft video Control |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-132 |[3199120] |Beveiligings update voor micro soft-onderdeel |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-134 |[3193706] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-135 |[3199135] |Beveiligings update voor Stuur Programma's in kernelmodus |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-137 |[3199173]   |Beveiligings update voor Windows-verificatie methoden |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| MS16-138 |[3199647] |Beveiligings update voor de virtuele harde schijf van micro soft |5,3, 4,38, 3,45 |8 november 2016 |
-| MS16-139 |[3199720] |Beveiligings update voor Windows-kernel |2,57 |Nov 8,2016 |
-| MS16-140 |[3193479] |Beveiligings update voor opstart beheer |5,3, 4,38, 3,45 |8 november 2016 |
-| MS16-142 |[3198467] |Cumulatieve beveiligings update voor Internet Explorer |2,57, 4,38, 5,3 |8 november 2016 |
-| N.v.t. |[3192321] |Turkije eindigt de ZOMERtijd naleving |5,3, 4,38, 3,45, 2,57 |8 november 2016 |
-| N.v.t. |[3185330] |Update van oktober 2016 Security Monthly voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,57 |8 november 2016 |
-| N.v.t. |[3192403] |Preview-versie van de maandelijkse kwaliteit van oktober 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,57 |8 november 2016 |
-| N.v.t. |[3177467] |Service stack update voor Windows 7 SP1 en Windows Server 2008 R2 SP1: september 20, 2016 |2,57 |8 november 2016 |
-| N.v.t. |[3185332] |Update van oktober 2016 Security Monthly voor Windows Server 2012 |3,45 |8 november 2016 |
-| N.v.t. |[3192406] |Preview-versie van de maandelijkse kwaliteit van oktober 2016 voor Windows Server 2012 |3,45 |8 november 2016 |
-| N.v.t. |[3185331] |Update van oktober 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4,38 |8 november 2016 |
-| N.v.t. |[3192404] |Preview-versie van de maandelijkse kwaliteit van oktober 2016 voor Windows 8,1 en Windows Server 2012 R2 |4,38 |8 november 2016 |
-| N.v.t. |[3199986] |Service stack update voor Windows 10 versie 1607:27 oktober 2016 |5,3 |8 november 2016 |
-| N.v.t. |[3197954] |Cumulatieve update voor Windows 10 versie 1607 en Windows Server 2016:27 oktober 2016 |5,3 |8 november 2016 |
+| MS16-129 |[3199057] |Cumulatieve beveiligings update voor micro soft Edge |5.3 |8 november 2016 |
+| MS16-130 |[3199172] |Beveiligings update voor micro soft Windows |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| MS16-131 |[3199151]   |Beveiligings update voor micro soft video Control |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| MS16-132 |[3199120] |Beveiligings update voor micro soft-onderdeel |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| MS16-134 |[3193706] |Beveiligings update voor algemeen systeem stuur programma voor het logboek bestand |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| MS16-135 |[3199135] |Beveiligings update voor Stuur Programma's in kernelmodus |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| MS16-137 |[3199173]   |Beveiligings update voor Windows-verificatie methoden |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| MS16-138 |[3199647] |Beveiligings update voor de virtuele harde schijf van micro soft |5.3, 4.38, 3.45 |8 november 2016 |
+| MS16-139 |[3199720] |Beveiligings update voor Windows-kernel |2.57 |Nov 8,2016 |
+| MS16-140 |[3193479] |Beveiligings update voor opstart beheer |5.3, 4.38, 3.45 |8 november 2016 |
+| MS16-142 |[3198467] |Cumulatieve beveiligings update voor Internet Explorer |2.57, 4.38, 5.3 |8 november 2016 |
+| N.v.t. |[3192321] |Turkije eindigt de ZOMERtijd naleving |5.3, 4.38, 3.45, 2.57 |8 november 2016 |
+| N.v.t. |[3185330] |Update van oktober 2016 Security Monthly voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.57 |8 november 2016 |
+| N.v.t. |[3192403] |Preview-versie van de maandelijkse kwaliteit van oktober 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.57 |8 november 2016 |
+| N.v.t. |[3177467] |Service stack update voor Windows 7 SP1 en Windows Server 2008 R2 SP1: september 20, 2016 |2.57 |8 november 2016 |
+| N.v.t. |[3185332] |Update van oktober 2016 Security Monthly voor Windows Server 2012 |3.45 |8 november 2016 |
+| N.v.t. |[3192406] |Preview-versie van de maandelijkse kwaliteit van oktober 2016 voor Windows Server 2012 |3.45 |8 november 2016 |
+| N.v.t. |[3185331] |Update van oktober 2016 Security Monthly voor Windows 8,1 en Windows Server 2012 R2 |4.38 |8 november 2016 |
+| N.v.t. |[3192404] |Preview-versie van de maandelijkse kwaliteit van oktober 2016 voor Windows 8,1 en Windows Server 2012 R2 |4.38 |8 november 2016 |
+| N.v.t. |[3199986] |Service stack update voor Windows 10 versie 1607:27 oktober 2016 |5.3 |8 november 2016 |
+| N.v.t. |[3197954] |Cumulatieve update voor Windows 10 versie 1607 en Windows Server 2016:27 oktober 2016 |5.3 |8 november 2016 |
 
 ## <a name="october-2016-guest-os"></a>2016-gast besturingssysteem van oktober
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-118 |[3192887] |Cumulatieve beveiligings update voor Internet Explorer |4,37, 3,44, 2,56 |11 oktober 2016 |
-| MS16-120 |[3192884] |Beveiligings update voor micro soft graphics-onderdeel |4,37, 3,44, 2,56 |11 oktober 2016 |
-| MS16-123 |[3192892] |Beveiligings update voor Stuur Programma's in kernelmodus |4,37, 3,44, 2,56 |11 oktober 2016 |
-| MS16-124 |[3193227] |Beveiligings update voor Windows-REGI ster |4,37, 3,44, 2,56 |11 oktober 2016 |
-| MS16-126 |[3196067] |Beveiligings update voor micro soft Internet Messa ging API |2,56 |11 oktober 2016 |
-| MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4,37, 3,44, 2,56 |11 oktober 2016 |
-| N.v.t. |[3182203] |Wijziging in de tijd zone van september 2016 voor Novosibirsk |4,37, 3,44, 2,56 |11 oktober 2016 |
-| N.v.t. |[3185278] |Update pakket van september 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,56 |11 oktober 2016 |
-| N.v.t. |[3185280] |Update pakket van september 2016 voor Windows Server 2012 |3,44 |11 oktober 2016 |
-| N.v.t. |[3185279] |Update pakket van september 2016 voor Windows 8,1 en Windows Server 2012 R2 |4,37 |11 oktober 2016 |
+| MS16-118 |[3192887] |Cumulatieve beveiligings update voor Internet Explorer |4.37, 3.44, 2.56 |11 oktober 2016 |
+| MS16-120 |[3192884] |Beveiligings update voor micro soft graphics-onderdeel |4.37, 3.44, 2.56 |11 oktober 2016 |
+| MS16-123 |[3192892] |Beveiligings update voor Stuur Programma's in kernelmodus |4.37, 3.44, 2.56 |11 oktober 2016 |
+| MS16-124 |[3193227] |Beveiligings update voor Windows-REGI ster |4.37, 3.44, 2.56 |11 oktober 2016 |
+| MS16-126 |[3196067] |Beveiligings update voor micro soft Internet Messa ging API |2.56 |11 oktober 2016 |
+| MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4.37, 3.44, 2.56 |11 oktober 2016 |
+| N.v.t. |[3182203] |Wijziging in de tijd zone van september 2016 voor Novosibirsk |4.37, 3.44, 2.56 |11 oktober 2016 |
+| N.v.t. |[3185278] |Update pakket van september 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.56 |11 oktober 2016 |
+| N.v.t. |[3185280] |Update pakket van september 2016 voor Windows Server 2012 |3.44 |11 oktober 2016 |
+| N.v.t. |[3185279] |Update pakket van september 2016 voor Windows 8,1 en Windows Server 2012 R2 |4.37 |11 oktober 2016 |
 | N.v.t. |[3194798] |Cumulatieve update voor Windows 10 versie 1607 en Windows Server 2016 |5.2 |11 oktober 2016 |
 
 ## <a name="september-2016-guest-os"></a>September 2016-gast besturingssysteem
@@ -997,271 +1037,271 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 | MS16-106 |[3185848] |Beveiligings update voor micro soft graphics-onderdeel |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | MS16-110 |[3178467] |Beveiligings update voor Windows |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | MS16-111 |[3186973] |Beveiligings update voor Windows-kernel |4.36, 3.43, 2.55 |Sept 13, 2016 |
-| MS16-112 |[3178469] |Beveiligings update voor Windows vergrendelings scherm |4,36 |Sept 13, 2016 |
+| MS16-112 |[3178469] |Beveiligings update voor Windows vergrendelings scherm |4.36 |Sept 13, 2016 |
 | MS16-114 |[3185879] |Beveiligings update voor Windows SMB server |4.36, 3.43, 2.55 |Sept 13, 2016 |
-| MS16-115 |[3188733] |Beveiligings update voor PDF |4,35, 3,43 |Sept 13, 2016 |
+| MS16-115 |[3188733] |Beveiligings update voor PDF |4.35, 3.43 |Sept 13, 2016 |
 | MS16-116 |[3188724] |Beveiligings update in OLE Automation voor VBScript Scripting Engine |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | N.v.t. |[3174644] |Ondersteuning voor Diffie-Hellman-sleutel uitwisseling is bijgewerkt |4.36, 3.43, 2.55 |Sept 13, 2016 |
 | N.v.t. |[3177723] |Update van tijd zone-Egypte annuleert zomer tijd |4.36, 3.43, 2.55 |Sept 13, 2016 |
-| N.v.t. |[3179573] |Update pakket van augustus 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,55 |Sept 13, 2016 |
-| N.v.t. |[3179575] |Update pakket van augustus 2016 voor Windows Server 2012 |3,43 |Sept 13, 2016 |
-| N.v.t. |[3179574] |Update pakket van augustus 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,36 |Sept 13, 2016 |
+| N.v.t. |[3179573] |Update pakket van augustus 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.55 |Sept 13, 2016 |
+| N.v.t. |[3179575] |Update pakket van augustus 2016 voor Windows Server 2012 |3.43 |Sept 13, 2016 |
+| N.v.t. |[3179574] |Update pakket van augustus 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4.36 |Sept 13, 2016 |
 
 ## <a name="august-2016-guest-os"></a>Augustus 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-095 |[3177356] |Cumulatieve beveiligings update voor Internet Explorer |4,35, 3,42, 2,54 |9 augustus 2016 |
-| MS16-097 |[3177393] |Beveiligings update voor micro soft graphics-onderdeel |4,35, 3,42, 2,54 |9 augustus 2016 |
-| MS16-098 |[3178466] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's |4,35, 3,42, 2,54 |9 augustus 2016 |
-| MS16-100 |[3179577] |Beveiligings update voor beveiligd opstarten |4,35, 3,42 |9 augustus 2016 |
-| MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4,35, 3,42, 2,54 |9 augustus 2016 |
-| MS16-102 |[3182248] |Beveiligings update voor micro soft Windows PDF-bibliotheek |4,35, 3,42 |9 augustus 2016 |
-| MS16-077 opnieuw uitgeven |[3165191] |Beveiligings update voor Web Proxy AutoDiscovery (WPAD) |4,35, 3,42, 2,54 |9 augustus 2016 |
-| N.v.t. |[3172605] |Update pakket van juli 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,54 |9 augustus 2016 |
-| N.v.t. |[3172615] |Update pakket van juli 2016 voor Windows Server 2012 |3,42 |9 augustus 2016 |
-| N.v.t. |[3172614] |Update pakket van juli 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,35 |9 augustus 2016 |
+| MS16-095 |[3177356] |Cumulatieve beveiligings update voor Internet Explorer |4.35, 3.42, 2.54 |9 augustus 2016 |
+| MS16-097 |[3177393] |Beveiligings update voor micro soft graphics-onderdeel |4.35, 3.42, 2.54 |9 augustus 2016 |
+| MS16-098 |[3178466] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's |4.35, 3.42, 2.54 |9 augustus 2016 |
+| MS16-100 |[3179577] |Beveiligings update voor beveiligd opstarten |4.35, 3.42 |9 augustus 2016 |
+| MS16-101 |[3178465] |Beveiligings update voor Windows-verificatie methoden |4.35, 3.42, 2.54 |9 augustus 2016 |
+| MS16-102 |[3182248] |Beveiligings update voor micro soft Windows PDF-bibliotheek |4.35, 3.42 |9 augustus 2016 |
+| MS16-077 opnieuw uitgeven |[3165191] |Beveiligings update voor Web Proxy AutoDiscovery (WPAD) |4.35, 3.42, 2.54 |9 augustus 2016 |
+| N.v.t. |[3172605] |Update pakket van juli 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.54 |9 augustus 2016 |
+| N.v.t. |[3172615] |Update pakket van juli 2016 voor Windows Server 2012 |3.42 |9 augustus 2016 |
+| N.v.t. |[3172614] |Update pakket van juli 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4.35 |9 augustus 2016 |
 
 ## <a name="july-2016-guest-os"></a>2016 juli-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-084 |[3169991] |Cumulatieve beveiligings update voor Internet Explorer |4,34, 3,41, 2,53 |12 juli 2016 |
-| MS16-087 |[3170005] |Beveiligings update voor micro soft afdrukspooler |4,34, 3,41, 2,53 |12 juli 2016 |
-| MS16-090 |[3171481] |Beveiligings update voor Stuur Programma's voor kernelmodus |4,34, 3,41, 2,53 |12 juli 2016 |
-| MS16-091 |[3170048] |Beveiligings update voor .NET Framework |4,34, 3,41, 2,53 |12 juli 2016 |
-| MS16-092 |[3171910] |Beveiligings update voor Windows-kernel |4,34, 3,41 |12 juli 2016 |
-| MS16-094 |[3177404] |Beveiligings update voor beveiligd opstarten |4,34, 3,41 |12 juli 2016 |
-| N.v.t. |[3162835] |Update voor DST en time zone van juni 2016 voor Windows |4,34, 3,41, 2,53 |12 juli 2016 |
-| N.v.t. |[3156417] |Mei 2016 update pakket voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,53 |12 juli 2016 |
-| N.v.t. |[3161608] |Update pakket van juni 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,53 |12 juli 2016 |
-| N.v.t. |[3161609] |Update pakket van juni 2016 voor Windows Server 2012 |3,41 |12 juli 2016 |
-| N.v.t. |[3161606] |Update pakket van juni 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,34 |12 juli 2016 |
-| N.v.t. |[3139923] |Reparatie van Windows Installer (MSI) werkt niet wanneer MSI-pakket is geïnstalleerd op een HTTP-share in Windows |4,34 |12 juli 2016 |
+| MS16-084 |[3169991] |Cumulatieve beveiligings update voor Internet Explorer |4.34, 3.41, 2.53 |12 juli 2016 |
+| MS16-087 |[3170005] |Beveiligings update voor micro soft afdrukspooler |4.34, 3.41, 2.53 |12 juli 2016 |
+| MS16-090 |[3171481] |Beveiligings update voor Stuur Programma's voor kernelmodus |4.34, 3.41, 2.53 |12 juli 2016 |
+| MS16-091 |[3170048] |Beveiligings update voor .NET Framework |4.34, 3.41, 2.53 |12 juli 2016 |
+| MS16-092 |[3171910] |Beveiligings update voor Windows-kernel |4.34, 3.41 |12 juli 2016 |
+| MS16-094 |[3177404] |Beveiligings update voor beveiligd opstarten |4.34, 3.41 |12 juli 2016 |
+| N.v.t. |[3162835] |Update voor DST en time zone van juni 2016 voor Windows |4.34, 3.41, 2.53 |12 juli 2016 |
+| N.v.t. |[3156417] |Mei 2016 update pakket voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.53 |12 juli 2016 |
+| N.v.t. |[3161608] |Update pakket van juni 2016 voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.53 |12 juli 2016 |
+| N.v.t. |[3161609] |Update pakket van juni 2016 voor Windows Server 2012 |3.41 |12 juli 2016 |
+| N.v.t. |[3161606] |Update pakket van juni 2016 voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4.34 |12 juli 2016 |
+| N.v.t. |[3139923] |Reparatie van Windows Installer (MSI) werkt niet wanneer MSI-pakket is geïnstalleerd op een HTTP-share in Windows |4.34 |12 juli 2016 |
 
 ## <a name="june-2016-guest-os"></a>Juni 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-035 |[3141780] |Beveiligings update voor .NET Framework voor het omzeilen van beveiligings functies |4,33, 3,40, 2,52 |14 juni 2016 |
-| Advies |[3155527] |Bijwerken naar coderings suites voor FalseStart |4,33, 3,40 |14 juni 2016 |
-| MS16-063 |[3163649] |Cumulatieve beveiligings update voor Internet Explorer |4,33, 3,40, 2,52 |14 juni 2016 |
-| MS16-069 |[3163640] |Cumulatieve beveiligings update voor JScript en VBScript |2,52 |14 juni 2016 |
-| MS16-071 |[3164065] |Beveiligings update voor micro soft Windows DNS-server |4,33, 3,40 |14 juni 2016 |
-| MS16-072 |[3163622] |Beveiligings update voor groepsbeleid |4,33, 3,40, 2,52 |14 juni 2016 |
-| MS16-073 |[3164028] |Beveiligings update voor Stuur Programma's voor kernelmodus |4,33, 3,40, 2,52 |14 juni 2016 |
-| MS16-074 |[3164036] |Beveiligings update voor micro soft graphics-onderdeel |4,33, 3,40, 2,52 |14 juni 2016 |
-| MS16-075 |[3164038] |Beveiligings update voor Windows SMB server |4,33, 3,40, 2,52 |14 juni 2016 |
-| MS16-076 |[3167691] |Beveiligings update voor Netlogon |4,33 |14 juni 2016 |
-| MS16-077 |[3165191] |Beveiligings update voor WPAD |4,33, 3,40, 2,52 |14 juni 2016 |
-| MS16-080 |[3164302] |Beveiligings update voor micro soft Windows PDF |4,33, 3,40 |14 juni 2016 |
-| MS16-081 |[3160352] |Beveiligings update voor Active Directory |4,33, 3,40, 2,52 |14 juni 2016 |
-| N.v.t. |[2922223] |U kunt de systeem tijd niet wijzigen als de register vermelding RealTimeIsUniversal is ingeschakeld in Windows |2,52 |14 juni 2016 |
-| N.v.t. |[3121255] |"0x00000024" Stop-fout in FsRtlNotifyFilterReportChange-en kopieer bestand kan mislukken in Windows |2,52 |14 juni 2016 |
-| N.v.t. |[3125424] |LSASS-deadlocks zorgen ervoor dat Windows Server 2012 R2 of Windows Server 2012 niet reageert |4,33, 3,40 |14 juni 2016 |
-| N.v.t. |[3125574] |Gebruiks gemak update voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2,52 |14 juni 2016 |
-| N.v.t. |[3140245] |Update om TLS 1,1 en TLS 1,2 in te scha kelen als standaard beveiligde protocollen in WinHTTP in Windows |3,40, 2,52 |14 juni 2016 |
-| N.v.t. |[3146604] |WMI-service reageert wille keurig in Windows Server 2012 R2 of Windows Server 2012 |4,33, 3,40 |14 juni 2016 |
-| N.v.t. |[3149157] |Verbeteringen op het gebied van betrouw baarheid en schaal baarheid in TCP/IP voor Windows 8,1 en Windows Server 2012 R2 |4,33 |14 juni 2016 |
-| N.v.t. |[3156416] |Update pakket voor Windows Server 2012 mei 2016 |3,40 |14 juni 2016 |
-| N.v.t. |[3156418] |Mei 2016 update pakket voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4,33 |14 juni 2016 |
-| N.v.t. |[3153731] |Kan 2016 DST-update voor Azerbeidzjan, Chili, Haïti en Marokko in Windows |4,33, 3,40, 2,52 |14 juni 2016 |
+| MS16-035 |[3141780] |Beveiligings update voor .NET Framework voor het omzeilen van beveiligings functies |4.33, 3.40, 2.52 |14 juni 2016 |
+| Advies |[3155527] |Bijwerken naar coderings suites voor FalseStart |4.33, 3.40 |14 juni 2016 |
+| MS16-063 |[3163649] |Cumulatieve beveiligings update voor Internet Explorer |4.33, 3.40, 2.52 |14 juni 2016 |
+| MS16-069 |[3163640] |Cumulatieve beveiligings update voor JScript en VBScript |2.52 |14 juni 2016 |
+| MS16-071 |[3164065] |Beveiligings update voor micro soft Windows DNS-server |4.33, 3.40 |14 juni 2016 |
+| MS16-072 |[3163622] |Beveiligings update voor groepsbeleid |4.33, 3.40, 2.52 |14 juni 2016 |
+| MS16-073 |[3164028] |Beveiligings update voor Stuur Programma's voor kernelmodus |4.33, 3.40, 2.52 |14 juni 2016 |
+| MS16-074 |[3164036] |Beveiligings update voor micro soft graphics-onderdeel |4.33, 3.40, 2.52 |14 juni 2016 |
+| MS16-075 |[3164038] |Beveiligings update voor Windows SMB server |4.33, 3.40, 2.52 |14 juni 2016 |
+| MS16-076 |[3167691] |Beveiligings update voor Netlogon |4.33 |14 juni 2016 |
+| MS16-077 |[3165191] |Beveiligings update voor WPAD |4.33, 3.40, 2.52 |14 juni 2016 |
+| MS16-080 |[3164302] |Beveiligings update voor micro soft Windows PDF |4.33, 3.40 |14 juni 2016 |
+| MS16-081 |[3160352] |Beveiligings update voor Active Directory |4.33, 3.40, 2.52 |14 juni 2016 |
+| N.v.t. |[2922223] |U kunt de systeem tijd niet wijzigen als de register vermelding RealTimeIsUniversal is ingeschakeld in Windows |2.52 |14 juni 2016 |
+| N.v.t. |[3121255] |"0x00000024" Stop-fout in FsRtlNotifyFilterReportChange-en kopieer bestand kan mislukken in Windows |2.52 |14 juni 2016 |
+| N.v.t. |[3125424] |LSASS-deadlocks zorgen ervoor dat Windows Server 2012 R2 of Windows Server 2012 niet reageert |4.33, 3.40 |14 juni 2016 |
+| N.v.t. |[3125574] |Gebruiks gemak update voor Windows 7 SP1 en Windows Server 2008 R2 SP1 |2.52 |14 juni 2016 |
+| N.v.t. |[3140245] |Update om TLS 1,1 en TLS 1,2 in te scha kelen als standaard beveiligde protocollen in WinHTTP in Windows |3.40, 2.52 |14 juni 2016 |
+| N.v.t. |[3146604] |WMI-service reageert wille keurig in Windows Server 2012 R2 of Windows Server 2012 |4.33, 3.40 |14 juni 2016 |
+| N.v.t. |[3149157] |Verbeteringen op het gebied van betrouw baarheid en schaal baarheid in TCP/IP voor Windows 8,1 en Windows Server 2012 R2 |4.33 |14 juni 2016 |
+| N.v.t. |[3156416] |Update pakket voor Windows Server 2012 mei 2016 |3.40 |14 juni 2016 |
+| N.v.t. |[3156418] |Mei 2016 update pakket voor Windows RT 8,1, Windows 8,1 en Windows Server 2012 R2 |4.33 |14 juni 2016 |
+| N.v.t. |[3153731] |Kan 2016 DST-update voor Azerbeidzjan, Chili, Haïti en Marokko in Windows |4.33, 3.40, 2.52 |14 juni 2016 |
 
 ## <a name="may-2016-guest-os"></a>Mei 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-051 |[3155533] |Cumulatieve beveiligings update voor Internet Explorer |4,32, 3,39, 2,51 |10 mei 2016 |
-| MS16-053 |[3156764] |Cumulatieve beveiligings update voor JScript en VBScript |2,51 |10 mei 2016 |
-| MS16-055 |[3156754] |Beveiligings update voor micro soft graphics-onderdeel |4,32, 3,39, 2,51 |10 mei 2016 |
-| MS16-057 |[3156987] |Beveiligings update voor Windows shell |4,32 |10 mei 2016 |
-| MS16-060 |[3154846] |Beveiligings update voor Windows-kernel |4,32, 3,39, 2,51 |10 mei 2016 |
-| MS16-061 |[3155520] |Beveiligings update voor RPC |4,32, 3,39, 2,51 |10 mei 2016 |
-| MS16-062 |[3158222] |Beveiligings update voor Stuur Programma's voor kernelmodus |4,32, 3,39, 2,51 |10 mei 2016 |
-| MS16-065 |[3156757] |Beveiligings update voor .NET Framework |4,32, 3,39, 2,51 |10 mei 2016 |
-| MS16-067 |[3155784] |Beveiligings update voor het volume manager-stuur programma |4,32, 3,39 |10 mei 2016 |
-| N.v.t. |[3148851] |Tijd zone wijzigingen voor Rusland in Windows  |4,32, 3,39, 2,51 |10 mei 2016 |
-| N.v.t. |[3133977] |BitLocker kan geen stations versleutelen vanwege service fouten in het proces Svchost. exe in Windows 7 of Windows Server 2008 R2  |2,51 |10 mei 2016 |
-| N.v.t. |[3133681] |Virtuele machines reageren niet op uw bewerking in SCVMM in Windows Server 2012 R2  |4,32 |10 mei 2016 |
-| N.v.t. |[3123245] |Update verbetert de identificatie van de poort uitgeput in Windows Server 2012 R2  |4,32 |10 mei 2016 |
-| N.v.t. |[RC4 uitschakelen] | Micro soft-beveiligings advies: update voor het uitschakelen van RC4  |4,32, 3,39, 2,51 |10 mei 2016 |
+| MS16-051 |[3155533] |Cumulatieve beveiligings update voor Internet Explorer |4.32, 3.39, 2.51 |10 mei 2016 |
+| MS16-053 |[3156764] |Cumulatieve beveiligings update voor JScript en VBScript |2.51 |10 mei 2016 |
+| MS16-055 |[3156754] |Beveiligings update voor micro soft graphics-onderdeel |4.32, 3.39, 2.51 |10 mei 2016 |
+| MS16-057 |[3156987] |Beveiligings update voor Windows shell |4.32 |10 mei 2016 |
+| MS16-060 |[3154846] |Beveiligings update voor Windows-kernel |4.32, 3.39, 2.51 |10 mei 2016 |
+| MS16-061 |[3155520] |Beveiligings update voor RPC |4.32, 3.39, 2.51 |10 mei 2016 |
+| MS16-062 |[3158222] |Beveiligings update voor Stuur Programma's voor kernelmodus |4.32, 3.39, 2.51 |10 mei 2016 |
+| MS16-065 |[3156757] |Beveiligings update voor .NET Framework |4.32, 3.39, 2.51 |10 mei 2016 |
+| MS16-067 |[3155784] |Beveiligings update voor het volume manager-stuur programma |4.32, 3.39 |10 mei 2016 |
+| N.v.t. |[3148851] |Tijd zone wijzigingen voor Rusland in Windows  |4.32, 3.39, 2.51 |10 mei 2016 |
+| N.v.t. |[3133977] |BitLocker kan geen stations versleutelen vanwege service fouten in het proces Svchost. exe in Windows 7 of Windows Server 2008 R2  |2.51 |10 mei 2016 |
+| N.v.t. |[3133681] |Virtuele machines reageren niet op uw bewerking in SCVMM in Windows Server 2012 R2  |4.32 |10 mei 2016 |
+| N.v.t. |[3123245] |Update verbetert de identificatie van de poort uitgeput in Windows Server 2012 R2  |4.32 |10 mei 2016 |
+| N.v.t. |[RC4 uitschakelen] | Micro soft-beveiligings advies: update voor het uitschakelen van RC4  |4.32, 3.39, 2.51 |10 mei 2016 |
 
 ## <a name="april-2016-guest-os"></a>April 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-037 |[3148531] |Cumulatieve beveiligings update voor Internet Explorer |4,31, 3,38, 2,50 |12 april 2016 |
-| MS16-039 |[3148522] |Beveiligings update voor micro soft graphics-onderdeel |4,31, 3,38, 2,50 |12 april 2016 |
-| MS16-040 |[3148541] |Beveiligings update voor micro soft XML Core Service |4,31, 3,38, 2,50 |12 april 2016 |
-| MS16-044 |[3146706] |Beveiligings update voor Windows OLE |4,31, 3,38, 2,50 |12 april 2016 |
-| MS16-045 |[3143118] |Beveiligings update voor Windows Hyper-V |4,31, 3,38 |12 april 2016 |
-| MS16-047 |[3148527] |Beveiligings update voor het externe Protocol van de beveiligings account manager |4,31, 3,38, 2,50 |12 april 2016 |
-| MS16-048 |[3148528] |Beveiligings update voor CSRSS |4,31, 3,38 |12 april 2016 |
+| MS16-037 |[3148531] |Cumulatieve beveiligings update voor Internet Explorer |4.31, 3.38, 2.50 |12 april 2016 |
+| MS16-039 |[3148522] |Beveiligings update voor micro soft graphics-onderdeel |4.31, 3.38, 2.50 |12 april 2016 |
+| MS16-040 |[3148541] |Beveiligings update voor micro soft XML Core Service |4.31, 3.38, 2.50 |12 april 2016 |
+| MS16-044 |[3146706] |Beveiligings update voor Windows OLE |4.31, 3.38, 2.50 |12 april 2016 |
+| MS16-045 |[3143118] |Beveiligings update voor Windows Hyper-V |4.31, 3.38 |12 april 2016 |
+| MS16-047 |[3148527] |Beveiligings update voor het externe Protocol van de beveiligings account manager |4.31, 3.38, 2.50 |12 april 2016 |
+| MS16-048 |[3148528] |Beveiligings update voor CSRSS |4.31, 3.38 |12 april 2016 |
 
 ## <a name="march-2016-guest-os"></a>Maart 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-023 |[3142015] |Cumulatieve beveiligings update voor Internet Explorer |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-026 |[3143148] |Beveiligings update voor grafische letter typen om de uitvoering van externe code te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-027 |[3143146] |Beveiligings updates voor Windows Media Player het uitvoeren van externe code op te lossen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-028 |[3143081] |Beveiligings update voor micro soft Windows PDF-bibliotheek om het uitvoeren van externe code te verhelpen |4,30, 3,37 |8 maart 2016 |
-| MS16-030 |[3143136] |Beveiligings update voor Windows OLE om het uitvoeren van externe code te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-031 |[3140410] |Beveiligings update voor micro soft Windows om het uitbrei ding van bevoegdheden te verhelpen |2,49 |8 maart 2016 |
-| MS16-032 |[3143141] |Beveiligings update voor secundaire aanmelding om uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-033 |[3143142] |Beveiligings update voor USB-klassestuurprogramma voor massa opslag om uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
-| MS16-034 |[3143145] |Beveiligings updates voor het kernelmodus-stuur programma om de uitbrei ding van bevoegdheden te verhelpen |4,30, 3,37, 2,49 |8 maart 2016 |
+| MS16-023 |[3142015] |Cumulatieve beveiligings update voor Internet Explorer |4.30, 3.37, 2.49 |8 maart 2016 |
+| MS16-026 |[3143148] |Beveiligings update voor grafische letter typen om de uitvoering van externe code te verhelpen |4.30, 3.37, 2.49 |8 maart 2016 |
+| MS16-027 |[3143146] |Beveiligings updates voor Windows Media Player het uitvoeren van externe code op te lossen |4.30, 3.37, 2.49 |8 maart 2016 |
+| MS16-028 |[3143081] |Beveiligings update voor micro soft Windows PDF-bibliotheek om het uitvoeren van externe code te verhelpen |4.30, 3.37 |8 maart 2016 |
+| MS16-030 |[3143136] |Beveiligings update voor Windows OLE om het uitvoeren van externe code te verhelpen |4.30, 3.37, 2.49 |8 maart 2016 |
+| MS16-031 |[3140410] |Beveiligings update voor micro soft Windows om het uitbrei ding van bevoegdheden te verhelpen |2.49 |8 maart 2016 |
+| MS16-032 |[3143141] |Beveiligings update voor secundaire aanmelding om uitbrei ding van bevoegdheden te verhelpen |4.30, 3.37, 2.49 |8 maart 2016 |
+| MS16-033 |[3143142] |Beveiligings update voor USB-klassestuurprogramma voor massa opslag om uitbrei ding van bevoegdheden te verhelpen |4.30, 3.37, 2.49 |8 maart 2016 |
+| MS16-034 |[3143145] |Beveiligings updates voor het kernelmodus-stuur programma om de uitbrei ding van bevoegdheden te verhelpen |4.30, 3.37, 2.49 |8 maart 2016 |
 
 ## <a name="february-2016-guest-os"></a>Februari 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-009 |[3134220] |Cumulatieve beveiligings update voor Internet Explorer |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-013 |[3134811] |Beveiligings update voor Windows Journal om uitvoering van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-014 |[3134228] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-016 |[3136041] |Beveiligings update naar WebDAV om misbruik van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-018 |[3136082] |Beveiligings update voor Windows-kernelmodus-stuur programma voor het uitpakken van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-019 |[3137893] |Beveiligings update voor .NET Framework om het uitvoeren van externe code te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| MS16-021 |[3133043] |Beveiligings update voor NPS RADIUS-server voor denial-of-service |4,29, 3,36, 2,48 |9 februari 2016 |
-| Micro soft-beveiligings advies |[3109853] |Update voor het verbeteren van TLS-interoperabiliteit |4,29, 3,36 |9 februari 2016 |
-| Nieuwe release-MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,29, 3,36, 2,48 |9 februari 2016 |
-| Nieuwe versie-MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4,29, 3,36, 2,48 |9 februari 2016 |
-| Nieuwe versie-MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4,29, 3,36, 2,48 |9 februari 2016 |
+| MS16-009 |[3134220] |Cumulatieve beveiligings update voor Internet Explorer |4.29, 3.36, 2.48 |9 februari 2016 |
+| MS16-013 |[3134811] |Beveiligings update voor Windows Journal om uitvoering van externe code te verhelpen |4.29, 3.36, 2.48 |9 februari 2016 |
+| MS16-014 |[3134228] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4.29, 3.36, 2.48 |9 februari 2016 |
+| MS16-016 |[3136041] |Beveiligings update naar WebDAV om misbruik van bevoegdheden te verhelpen |4.29, 3.36, 2.48 |9 februari 2016 |
+| MS16-018 |[3136082] |Beveiligings update voor Windows-kernelmodus-stuur programma voor het uitpakken van bevoegdheden |4.29, 3.36, 2.48 |9 februari 2016 |
+| MS16-019 |[3137893] |Beveiligings update voor .NET Framework om het uitvoeren van externe code te verhelpen |4.29, 3.36, 2.48 |9 februari 2016 |
+| MS16-021 |[3133043] |Beveiligings update voor NPS RADIUS-server voor denial-of-service |4.29, 3.36, 2.48 |9 februari 2016 |
+| Microsoft Security Advisory |[3109853] |Update voor het verbeteren van TLS-interoperabiliteit |4.29, 3.36 |9 februari 2016 |
+| Nieuwe release-MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4.29, 3.36, 2.48 |9 februari 2016 |
+| Nieuwe versie-MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4.29, 3.36, 2.48 |9 februari 2016 |
+| Nieuwe versie-MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4.29, 3.36, 2.48 |9 februari 2016 |
 
 ## <a name="january-2016-guest-os"></a>Januari 2016-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS16-001 |[3124903] |Cumulatieve beveiligings update voor Internet Explorer |4,28, 3,35, 2,47 |12 januari 2016 |
-| MS16-003 |[3125540] |Cumulatieve beveiligings update voor JScript en VBScript |2,47 |12 januari 2016 |
-| MS16-005 |[3124584] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's voor het uitvoeren van externe code-uitvoering |4,28, 3,35, 2,47 |12 januari 2016 |
-| MS16-007 |[3124901] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
-| MS16-008 |[3124605] |Beveiligings update voor kernel om uitbrei ding van bevoegdheden te verhelpen |4,28, 3,35, 2,47 |12 januari 2016 |
-| Revisie van micro soft-beveiligings advies |[2755801] |Update voor beveiligings problemen in Adobe Flash Player in Internet Explorer (pakket KB: TBD)-Aanbevelings aanduiding |4,28, 3,35 |12 januari 2016 |
-| Micro soft-beveiligings advies |[3109853] |Update voor het verbeteren van TLS-interoperabiliteit |4,28, 3,35 |12 januari 2016 |
-| Micro soft-beveiligings advies |[3123479] |Afschaffing van het SHA-1-hash-algoritme voor het micro soft Root Certificate Program |4,28, 3,35, 2,47 |12 januari 2016 |
-| Micro soft-beveiligings advies |[2736233] |Updates voor ActiveX-kill-bits |4,28, 3,35, 2,47 |12 januari 2016 |
+| MS16-001 |[3124903] |Cumulatieve beveiligings update voor Internet Explorer |4.28, 3.35, 2.47 |12 januari 2016 |
+| MS16-003 |[3125540] |Cumulatieve beveiligings update voor JScript en VBScript |2.47 |12 januari 2016 |
+| MS16-005 |[3124584] |Beveiligings update voor Windows-kernelmodus-Stuur Programma's voor het uitvoeren van externe code-uitvoering |4.28, 3.35, 2.47 |12 januari 2016 |
+| MS16-007 |[3124901] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4.28, 3.35, 2.47 |12 januari 2016 |
+| MS16-008 |[3124605] |Beveiligings update voor kernel om uitbrei ding van bevoegdheden te verhelpen |4.28, 3.35, 2.47 |12 januari 2016 |
+| Revisie van micro soft-beveiligings advies |[2755801] |Update voor beveiligings problemen in Adobe Flash Player in Internet Explorer (pakket KB: TBD)-Aanbevelings aanduiding |4.28, 3.35 |12 januari 2016 |
+| Microsoft Security Advisory |[3109853] |Update voor het verbeteren van TLS-interoperabiliteit |4.28, 3.35 |12 januari 2016 |
+| Microsoft Security Advisory |[3123479] |Afschaffing van het SHA-1-hash-algoritme voor het micro soft Root Certificate Program |4.28, 3.35, 2.47 |12 januari 2016 |
+| Microsoft Security Advisory |[2736233] |Updates voor ActiveX-kill-bits |4.28, 3.35, 2.47 |12 januari 2016 |
 
 ## <a name="december-2015-guest-os"></a>December 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-124 |[3116180] |Cumulatieve beveiligings update voor Internet Explorer |4,27, 3,34, 2,46 |8 december 2015 |
-| MS15-126 |[3116178] |Beveiligings update voor micro soft VBScript en JScript om het uitvoeren van externe code te verhelpen |2,46 |8 december 2015 |
-| MS15-127 |[3100465] |Beveiligings update voor micro soft Windows DNS om uitvoering van externe code te verhelpen |4,27, 3,34, 2,46 |8 december 2015 |
-| MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4,27, 3,34, 2,46 |8 december 2015 |
-| MS15-132 |[3116162] |Beveiligings update voor Windows om het uitvoeren van externe code te verhelpen |4,27, 3,34, 2,46 |8 december 2015 |
-| MS15-133 |[3116130] |Beveiligings update voor Windows PGM voor het oplossen van misbruik van bevoegdheden |4,27, 3,34, 2,46 |8 december 2015 |
-| MS15-134 |[3108669] |Beveiligings update voor Windows Media Center om het uitvoeren van externe code te verhelpen |4,27, 3,34, 2,46 |8 december 2015 |
-| MS15-135 |[3119075] |Beveiligings update voor Windows kernel-modus Stuur Programma's voor het uitpakken van bevoegdheden |4,27, 3,34, 2,46 |8 december 2015 |
+| MS15-124 |[3116180] |Cumulatieve beveiligings update voor Internet Explorer |4.27, 3.34, 2.46 |8 december 2015 |
+| MS15-126 |[3116178] |Beveiligings update voor micro soft VBScript en JScript om het uitvoeren van externe code te verhelpen |2.46 |8 december 2015 |
+| MS15-127 |[3100465] |Beveiligings update voor micro soft Windows DNS om uitvoering van externe code te verhelpen |4.27, 3.34, 2.46 |8 december 2015 |
+| MS15-128 |[3104503] |Beveiligings updates voor micro soft graphics component voor het uitvoeren van externe uitvoering van code |4.27, 3.34, 2.46 |8 december 2015 |
+| MS15-132 |[3116162] |Beveiligings update voor Windows om het uitvoeren van externe code te verhelpen |4.27, 3.34, 2.46 |8 december 2015 |
+| MS15-133 |[3116130] |Beveiligings update voor Windows PGM voor het oplossen van misbruik van bevoegdheden |4.27, 3.34, 2.46 |8 december 2015 |
+| MS15-134 |[3108669] |Beveiligings update voor Windows Media Center om het uitvoeren van externe code te verhelpen |4.27, 3.34, 2.46 |8 december 2015 |
+| MS15-135 |[3119075] |Beveiligings update voor Windows kernel-modus Stuur Programma's voor het uitpakken van bevoegdheden |4.27, 3.34, 2.46 |8 december 2015 |
 
 ## <a name="november-2015-guest-os"></a>November 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-112 |[3104517] |Cumulatieve beveiligings update voor Internet Explorer |4,26, 3,33, 2,45 |10 november 2015 |
-| MS15-114 |[3100213] |Beveiligings update voor Windows Journal om uitvoering van externe code te verhelpen |2,45 |10 november 2015 |
-| MS15-115 |[3105864] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4,26, 3,33, 2,45 |10 november 2015 |
-| MS15-117 |[3101722] |Beveiligings update voor NDIS om misbruik van bevoegdheden te verhelpen |2,45 |10 november 2015 |
-| MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4,26, 3,33, 2,45 |10 november 2015 |
-| MS15-119 |[3104521] |Beveiligings update voor Winsock om uitbrei ding van bevoegdheden te verhelpen |4,26, 3,33, 2,45 |10 november 2015 |
-| MS15-120 |[3102939] |Beveiligings update voor IPSec om denial of service op te lossen |4,26, 3,33 |10 november 2015 |
-| MS15-121 |[3081320] |Beveiligings update voor Schannel voor het adresseren van spoofing |4,26, 3,33, 2,45 |10 november 2015 |
-| MS15-122 |[3105256] |Beveiligings update voor Kerberos voor het omzeilen van beveiligings functies |4,26, 3,33, 2,45 |10 november 2015 |
-| Micro soft-beveiligings advies |[3097966] |Ongewild gesluite digitale certificaten kunnen leiden tot spoofing |4,26, 3,33, 2,45 |10 november 2015 |
+| MS15-112 |[3104517] |Cumulatieve beveiligings update voor Internet Explorer |4.26, 3.33, 2.45 |10 november 2015 |
+| MS15-114 |[3100213] |Beveiligings update voor Windows Journal om uitvoering van externe code te verhelpen |2.45 |10 november 2015 |
+| MS15-115 |[3105864] |Beveiligings update voor micro soft Windows om het uitvoeren van externe code te verhelpen |4.26, 3.33, 2.45 |10 november 2015 |
+| MS15-117 |[3101722] |Beveiligings update voor NDIS om misbruik van bevoegdheden te verhelpen |2.45 |10 november 2015 |
+| MS15-118 |[3104507] |Beveiligings updates voor .NET Framework om uitbrei ding van bevoegdheden te verhelpen |4.26, 3.33, 2.45 |10 november 2015 |
+| MS15-119 |[3104521] |Beveiligings update voor Winsock om uitbrei ding van bevoegdheden te verhelpen |4.26, 3.33, 2.45 |10 november 2015 |
+| MS15-120 |[3102939] |Beveiligings update voor IPSec om denial of service op te lossen |4.26, 3.33 |10 november 2015 |
+| MS15-121 |[3081320] |Beveiligings update voor Schannel voor het adresseren van spoofing |4.26, 3.33, 2.45 |10 november 2015 |
+| MS15-122 |[3105256] |Beveiligings update voor Kerberos voor het omzeilen van beveiligings functies |4.26, 3.33, 2.45 |10 november 2015 |
+| Microsoft Security Advisory |[3097966] |Ongewild gesluite digitale certificaten kunnen leiden tot spoofing |4.26, 3.33, 2.45 |10 november 2015 |
 
 ## <a name="october-2015-guest-os"></a>2015-gast besturingssysteem van oktober
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-106 |[3096441] |Cumulatieve beveiligings update voor Internet Explorer |4,25, 3,32, 2,44 |13 oktober 2015 |
-| MS15-108 |[3089659] |Beveiligings update voor JScript en VBScript om potentiële uitvoering van externe code te verhelpen |2,44 |13 oktober 2015 |
-| MS15-109 |[3096443] |Beveiligings update voor Windows shell om het uitvoeren van externe code te verhelpen |4,25, 3,32, 2,44 |13 oktober 2015 |
-| MS15-111 |[3096447] |Beveiligings update voor Windows-kernel om uitbrei ding van bevoegdheden te verhelpen |4,25, 3,32, 2,44 |13 oktober 2015 |
-| Micro soft-beveiligings advies |[3092627] |Update van september 2015 voor het oplossen van Windows of toepassing wordt geblokkeerd na de installatie van beveiligings update 3076895 |4,25, 3,32, 2,44 |13 oktober 2015 |
+| MS15-106 |[3096441] |Cumulatieve beveiligings update voor Internet Explorer |4.25, 3.32, 2.44 |13 oktober 2015 |
+| MS15-108 |[3089659] |Beveiligings update voor JScript en VBScript om potentiële uitvoering van externe code te verhelpen |2.44 |13 oktober 2015 |
+| MS15-109 |[3096443] |Beveiligings update voor Windows shell om het uitvoeren van externe code te verhelpen |4.25, 3.32, 2.44 |13 oktober 2015 |
+| MS15-111 |[3096447] |Beveiligings update voor Windows-kernel om uitbrei ding van bevoegdheden te verhelpen |4.25, 3.32, 2.44 |13 oktober 2015 |
+| Microsoft Security Advisory |[3092627] |Update van september 2015 voor het oplossen van Windows of toepassing wordt geblokkeerd na de installatie van beveiligings update 3076895 |4.25, 3.32, 2.44 |13 oktober 2015 |
 
 ## <a name="september-2015-guest-os"></a>September 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-093 |[3088903] |Beveiligings update voor Internet Explorer |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-094 |[3089548] |Cumulatieve beveiligings update voor Internet Explorer |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-096 |[3072595] |Beveiligings probleem in Active Directory service kan leiden tot denial of service |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-097 |[3089656] |Beveiligings problemen in micro soft graphics-onderdelen kunnen leiden tot uitbrei ding van bevoegdheden |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-098 |[3089669] |Beveiligings problemen in Windows Journal kunnen leiden tot uitvoering van externe code |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-102 |[3089657] |Beveiligings problemen in Windows taak beheer kunnen leiden tot uitbrei ding van bevoegdheden |4,24, 3,31, 2,43 |8 september 2015 |
-| MS15-105 |[3091287] |Beveiligings probleem in Windows Hyper-V kan leiden tot het omzeilen van functies |4,24 |8 september 2015 |
+| MS15-093 |[3088903] |Beveiligings update voor Internet Explorer |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-094 |[3089548] |Cumulatieve beveiligings update voor Internet Explorer |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-096 |[3072595] |Beveiligings probleem in Active Directory service kan leiden tot denial of service |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-097 |[3089656] |Beveiligings problemen in micro soft graphics-onderdelen kunnen leiden tot uitbrei ding van bevoegdheden |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-098 |[3089669] |Beveiligings problemen in Windows Journal kunnen leiden tot uitvoering van externe code |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-101 |[3089662] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-102 |[3089657] |Beveiligings problemen in Windows taak beheer kunnen leiden tot uitbrei ding van bevoegdheden |4.24, 3.31, 2.43 |8 september 2015 |
+| MS15-105 |[3091287] |Beveiligings probleem in Windows Hyper-V kan leiden tot het omzeilen van functies |4.24 |8 september 2015 |
 
 ## <a name="august-2015-guest-os"></a>Augustus 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-079 |[3082442] |Cumulatieve beveiligings update voor Internet Explorer |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-080 |[3078662] |Beveiligings problemen in micro soft graphics component kunnen leiden tot uitvoering van externe code |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-082 |[3080348] |Beveiligings problemen in RDP kunnen leiden tot uitvoering van externe code |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-084 |[3080129] |Beveiligings problemen in XML Core Services kunnen leiden tot vrijgeven van informatie |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-085 |[3082487] |Beveiligings probleem in Mount Manager kan leiden tot uitbrei ding van bevoegdheden |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-088 |[3082458] |Onveilige opdracht regel parameter door geven kan leiden tot vrijgeven van informatie |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-089 |[3060716] |Beveiligings problemen in micro soft Windows kunnen leiden tot uitbrei ding van bevoegdheden |4,23, 3,30, 2,42 |11 augustus 2015 |
-| MS15-090 |[3076949] |Beveiligingslek in WebDAV kan leiden tot vrijgeven van informatie |4,23, 3,30, 2,42 |11 augustus 2015 |
+| MS15-079 |[3082442] |Cumulatieve beveiligings update voor Internet Explorer |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-080 |[3078662] |Beveiligings problemen in micro soft graphics component kunnen leiden tot uitvoering van externe code |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-082 |[3080348] |Beveiligings problemen in RDP kunnen leiden tot uitvoering van externe code |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-084 |[3080129] |Beveiligings problemen in XML Core Services kunnen leiden tot vrijgeven van informatie |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-085 |[3082487] |Beveiligings probleem in Mount Manager kan leiden tot uitbrei ding van bevoegdheden |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-088 |[3082458] |Onveilige opdracht regel parameter door geven kan leiden tot vrijgeven van informatie |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-089 |[3060716] |Beveiligings problemen in micro soft Windows kunnen leiden tot uitbrei ding van bevoegdheden |4.23, 3.30, 2.42 |11 augustus 2015 |
+| MS15-090 |[3076949] |Beveiligingslek in WebDAV kan leiden tot vrijgeven van informatie |4.23, 3.30, 2.42 |11 augustus 2015 |
 
 ## <a name="july-2015-guest-os"></a>2015 juli-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-065 |[3076321] |Cumulatieve beveiligings update voor Internet Explorer |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-066 |[3072604] |Beveiligings probleem in VBScript kan leiden tot uitvoering van externe code |2,41 |14 juli 2015 |
-| MS15-067 |[3073094] |Beveiligings probleem in RDP kan leiden tot uitvoering van externe code |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-068 |[3072000] |Beveiligings probleem in Windows Hyper-V kan leiden tot uitvoering van externe code |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-069 |[3072631] |Beveiligings problemen in Windows kunnen leiden tot uitvoering van externe code |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-071 |[3068457] |Beveiligings probleem in NETLOGON kan leiden tot spoofing |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-072 |[3069392] |Beveiligings probleem in grafisch stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-073 |[3070102] |Beveiligings problemen in het kernelmodusstuurprogramma kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-074 |[3072630] |Beveiligings probleem in Windows Installer service kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| MS15-077 |[3077657] |Beveiligings probleem in het ATM-letter type-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,22, 3,29, 2,41 |14 juli 2015 |
-| N.v.t. |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4,22, 3,29, 2,41 |14 juli 2015 |
+| MS15-065 |[3076321] |Cumulatieve beveiligings update voor Internet Explorer |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-066 |[3072604] |Beveiligings probleem in VBScript kan leiden tot uitvoering van externe code |2.41 |14 juli 2015 |
+| MS15-067 |[3073094] |Beveiligings probleem in RDP kan leiden tot uitvoering van externe code |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-068 |[3072000] |Beveiligings probleem in Windows Hyper-V kan leiden tot uitvoering van externe code |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-069 |[3072631] |Beveiligings problemen in Windows kunnen leiden tot uitvoering van externe code |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-071 |[3068457] |Beveiligings probleem in NETLOGON kan leiden tot spoofing |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-072 |[3069392] |Beveiligings probleem in grafisch stuur programma kan leiden tot uitbrei ding van bevoegdheden |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-073 |[3070102] |Beveiligings problemen in het kernelmodusstuurprogramma kunnen leiden tot uitbrei ding van bevoegdheden |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-074 |[3072630] |Beveiligings probleem in Windows Installer service kan leiden tot uitbrei ding van bevoegdheden |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-075 |[3072633] |Beveiligings problemen in OLE kunnen leiden tot uitbrei ding van bevoegdheden |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-076 |[3067505] |Beveiligings probleem in Windows Remote Procedure Call kan leiden tot uitbrei ding van bevoegdheden |4.22, 3.29, 2.41 |14 juli 2015 |
+| MS15-077 |[3077657] |Beveiligings probleem in het ATM-letter type-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4.22, 3.29, 2.41 |14 juli 2015 |
+| N.v.t. |[3057154] |Bijwerken om het gebruik van DES-versleuteling te beperken |4.22, 3.29, 2.41 |14 juli 2015 |
 
 ## <a name="june-2015-guest-os"></a>Juni 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-056 |[3058515] |Cumulatieve beveiligings update voor Internet Explorer |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-057 |[3033890] |Beveiligings probleem in Windows Media Player kan leiden tot uitvoering van externe code |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-060 |[3059317] |Beveiligings probleem in micro soft common controls kan leiden tot uitvoering van externe code |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-061 |[3057839] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-062 |[3062577] |Beveiligings probleem in Active Directory Federation Services kan leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
-| MS15-063 |[3063858] |Beveiligings probleem in Windows-kernel kan leiden tot uitbrei ding van bevoegdheden |4,21, 3,28, 2,40 |9 juni 2015 |
+| MS15-056 |[3058515] |Cumulatieve beveiligings update voor Internet Explorer |4.21, 3.28, 2.40 |9 juni 2015 |
+| MS15-057 |[3033890] |Beveiligings probleem in Windows Media Player kan leiden tot uitvoering van externe code |4.21, 3.28, 2.40 |9 juni 2015 |
+| MS15-060 |[3059317] |Beveiligings probleem in micro soft common controls kan leiden tot uitvoering van externe code |4.21, 3.28, 2.40 |9 juni 2015 |
+| MS15-061 |[3057839] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4.21, 3.28, 2.40 |9 juni 2015 |
+| MS15-062 |[3062577] |Beveiligings probleem in Active Directory Federation Services kan leiden tot uitbrei ding van bevoegdheden |4.21, 3.28, 2.40 |9 juni 2015 |
+| MS15-063 |[3063858] |Beveiligings probleem in Windows-kernel kan leiden tot uitbrei ding van bevoegdheden |4.21, 3.28, 2.40 |9 juni 2015 |
 
 ## <a name="may-2015-guest-os"></a>Mei 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-043 |[3049563] |Cumulatieve beveiligings update voor Internet Explorer |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-044 |[3057110] |Beveiligings problemen in micro soft font-Stuur Programma's kunnen leiden tot uitvoering van externe code |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-045 |[3046002] |Beveiligings probleem in Windows Journal kan leiden tot uitvoering van externe code |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-048 |[3057134] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-050 |[3055642] |Beveiligings probleem in service besturings beheer kan leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-051 |[3057191] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-052 |[3050514] |Beveiligings probleem in Windows-kernel kan leiden tot het omzeilen van functies |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-053 |[3057263] |Beveiligings problemen in JScript en VBScript Scripting Engine kunnen leiden tot het omzeilen van beveiligings functies |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-054 |[3051768] |Beveiligings probleem in micro soft Management Console-bestands indeling kan denial-of-service tot gevolg hebben |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-055 |[3061518] |Beveiligings probleem in Schannel kan leiden tot het omzeilen van belang rijke gegevens vrijgeven |4,20, 3,27, 2,39 |12 mei 2015 |
-| MS15-032 |[3038314] |Cumulatieve beveiligings update voor Internet Explorer |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-035 |[3046306] |Beveiligings probleem in micro soft graphics component kan leiden tot uitvoering van externe code |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-037 |[3046269] |Beveiligings probleem in Windows taak planner kan leiden tot uitbrei ding van bevoegdheden |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-038 |[3049576] |Beveiligings problemen in micro soft Windows kunnen leiden tot uitbrei ding van bevoegdheden belang rijk |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-039 |[3046482] |Beveiligingslek in XML Core Services kan leiden tot bypass van beveiligings functies |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-040 |[3045711] |Beveiligings probleem in ADFS kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-041 |[3048010] |Beveiligings probleem in .NET Framework kan leiden tot vrijgeven van informatie |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| MS15-042 |[3047234] |Beveiligings probleem in Windows Hyper-V kan denial of service toestaan |4,20, 3,27, 2,39 |Apr 17, 2015 |
-| N.v.t. |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4,20, 3,27, 2,39 |Apr 17, 2015 |
+| MS15-043 |[3049563] |Cumulatieve beveiligings update voor Internet Explorer |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-044 |[3057110] |Beveiligings problemen in micro soft font-Stuur Programma's kunnen leiden tot uitvoering van externe code |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-045 |[3046002] |Beveiligings probleem in Windows Journal kan leiden tot uitvoering van externe code |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-048 |[3057134] |Beveiligings problemen in .NET Framework kunnen leiden tot uitbrei ding van bevoegdheden |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-050 |[3055642] |Beveiligings probleem in service besturings beheer kan leiden tot uitbrei ding van bevoegdheden |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-051 |[3057191] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitbrei ding van bevoegdheden |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-052 |[3050514] |Beveiligings probleem in Windows-kernel kan leiden tot het omzeilen van functies |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-053 |[3057263] |Beveiligings problemen in JScript en VBScript Scripting Engine kunnen leiden tot het omzeilen van beveiligings functies |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-054 |[3051768] |Beveiligings probleem in micro soft Management Console-bestands indeling kan denial-of-service tot gevolg hebben |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-055 |[3061518] |Beveiligings probleem in Schannel kan leiden tot het omzeilen van belang rijke gegevens vrijgeven |4.20, 3.27, 2.39 |12 mei 2015 |
+| MS15-032 |[3038314] |Cumulatieve beveiligings update voor Internet Explorer |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-035 |[3046306] |Beveiligings probleem in micro soft graphics component kan leiden tot uitvoering van externe code |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-037 |[3046269] |Beveiligings probleem in Windows taak planner kan leiden tot uitbrei ding van bevoegdheden |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-038 |[3049576] |Beveiligings problemen in micro soft Windows kunnen leiden tot uitbrei ding van bevoegdheden belang rijk |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-039 |[3046482] |Beveiligingslek in XML Core Services kan leiden tot bypass van beveiligings functies |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-040 |[3045711] |Beveiligings probleem in ADFS kan leiden tot vrijgeven van informatie |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-041 |[3048010] |Beveiligings probleem in .NET Framework kan leiden tot vrijgeven van informatie |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| MS15-042 |[3047234] |Beveiligings probleem in Windows Hyper-V kan denial of service toestaan |4.20, 3.27, 2.39 |Apr 17, 2015 |
+| N.v.t. |[3045755] |Bijwerken om PKU2U-verificatie te verbeteren |4.20, 3.27, 2.39 |Apr 17, 2015 |
 
 ## <a name="april-2015-guest-os"></a>April 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| [MS15-034] |[3042553] |Beveiligings probleem in HTTP. sys kan leiden tot uitvoering van externe code |4,19, 3,26, 2,38 |Apr 17, 2015 |
+| [MS15-034] |[3042553] |Beveiligings probleem in HTTP. sys kan leiden tot uitvoering van externe code |4.19, 3.26, 2.38 |Apr 17, 2015 |
 
 ## <a name="march-2015-guest-os"></a>Maart 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-018 |[3032359] |Cumulatieve beveiligings update voor Internet Explorer |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-019 |[3040297] |Beveiligings probleem in VBScript Scripting Engine kan leiden tot uitvoering van externe code |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-020 |[3041836] |Beveiligings problemen in Windows kunnen leiden tot uitvoering van externe code |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-021 |[3032323] |Beveiligings problemen Adobe Font stuur programma kan uitvoering van externe code mogelijk maken |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-023 |[3034344] |Beveiligings problemen in het kernelmodusstuurprogramma kunnen leiden tot uitbrei ding van bevoegdheden |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-024 |[3035132] |Beveiligingslek in PNG-verwerking kan leiden tot vrijgeven van informatie |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-025 |[3038680] |Beveiligings problemen in Windows-kernel kunnen leiden tot uitbrei ding van bevoegdheden |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-027 |[3002657] |Beveiligings probleem in NETLOGON kan leiden tot spoofing |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-028 |[3030377] |Beveiligings probleem in Windows taak planner kan de functie overs Laan |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-029 |[3035126] |Beveiligings probleem in Windows Photo decoder-onderdeel kan leiden tot vrijgeven van informatie |4,18, 3,25, 2,37 |N.v.t. |
-| MS15-030 |[3039976] |Beveiligings probleem in Remote Desktop Protocol kan denial of service toestaan |4,18, 3,25, 2,37 |N.v.t. |
+| MS15-018 |[3032359] |Cumulatieve beveiligings update voor Internet Explorer |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-019 |[3040297] |Beveiligings probleem in VBScript Scripting Engine kan leiden tot uitvoering van externe code |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-020 |[3041836] |Beveiligings problemen in Windows kunnen leiden tot uitvoering van externe code |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-021 |[3032323] |Beveiligings problemen Adobe Font stuur programma kan uitvoering van externe code mogelijk maken |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-023 |[3034344] |Beveiligings problemen in het kernelmodusstuurprogramma kunnen leiden tot uitbrei ding van bevoegdheden |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-024 |[3035132] |Beveiligingslek in PNG-verwerking kan leiden tot vrijgeven van informatie |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-025 |[3038680] |Beveiligings problemen in Windows-kernel kunnen leiden tot uitbrei ding van bevoegdheden |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-027 |[3002657] |Beveiligings probleem in NETLOGON kan leiden tot spoofing |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-028 |[3030377] |Beveiligings probleem in Windows taak planner kan de functie overs Laan |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-029 |[3035126] |Beveiligings probleem in Windows Photo decoder-onderdeel kan leiden tot vrijgeven van informatie |4.18, 3.25, 2.37 |N.v.t. |
+| MS15-030 |[3039976] |Beveiligings probleem in Remote Desktop Protocol kan denial of service toestaan |4.18, 3.25, 2.37 |N.v.t. |
 
 > [!NOTE]
 > Bulletin MS15-031 wordt mogelijk weer gegeven als verwijderd. Het is echter niet van toepassing op deze versie van het gast besturingssysteem.
@@ -1271,44 +1311,44 @@ In de volgende tabellen ziet u de micro soft Security Response Center-updates (M
 ## <a name="february-2015-guest-os"></a>Februari 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-009 |[3034682] |Beveiligings update voor Internet Explorer |4,17, 3,24, 2,36 |N.v.t. |
-| MS15-010 |[3036220] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitvoering van externe code |4,17, 3,24, 2,36 |N.v.t. |
-| MS15-011 |[3000483] |Beveiligings probleem in groepsbeleid kan leiden tot uitvoering van externe code |4,17, 3,24, 2,36 |N.v.t. |
-| MS15-014 |[3004361] |Beveiligingslek in SMB kan leiden tot bypass van beveiligings functies |4,17, 3,24, 2,36 |N.v.t. |
-| MS15-015 |[3031432] |Beveiligings probleem in micro soft Windows kan leiden tot uitbrei ding van bevoegdheden |4,17, 3,24, 2,36 |N.v.t. |
-| MS15-016 |[3029944] |Beveiligings probleem in micro soft graphics component kan leiden tot vrijgeven van informatie |4,17, 3,24, 2,36 |N.v.t. |
-| N.v.t. |[3004375] |Update voor het verbeteren van de controle van Windows-opdracht regel<p/>**Opmerking**: dit is geïnstalleerd, maar de register sleutel om deze in te scha kelen is uitgeschakeld |4,17, 3,24, 2,36 |N.v.t. |
+| MS15-009 |[3034682] |Beveiligings update voor Internet Explorer |4.17, 3.24, 2.36 |N.v.t. |
+| MS15-010 |[3036220] |Beveiligings problemen in Windows-kernelmodus-Stuur Programma's kunnen leiden tot uitvoering van externe code |4.17, 3.24, 2.36 |N.v.t. |
+| MS15-011 |[3000483] |Beveiligings probleem in groepsbeleid kan leiden tot uitvoering van externe code |4.17, 3.24, 2.36 |N.v.t. |
+| MS15-014 |[3004361] |Beveiligingslek in SMB kan leiden tot bypass van beveiligings functies |4.17, 3.24, 2.36 |N.v.t. |
+| MS15-015 |[3031432] |Beveiligings probleem in micro soft Windows kan leiden tot uitbrei ding van bevoegdheden |4.17, 3.24, 2.36 |N.v.t. |
+| MS15-016 |[3029944] |Beveiligings probleem in micro soft graphics component kan leiden tot vrijgeven van informatie |4.17, 3.24, 2.36 |N.v.t. |
+| N.v.t. |[3004375] |Update voor het verbeteren van de controle van Windows-opdracht regel<p/>**Opmerking**: dit is geïnstalleerd, maar de register sleutel om deze in te scha kelen is uitgeschakeld |4.17, 3.24, 2.36 |N.v.t. |
 
 ## <a name="january-2015-guest-os"></a>Januari 2015-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| MS15-001 |[3023266] |Beveiligings probleem in Windows AppCompatCache kan leiden tot uitbrei ding van bevoegdheden |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-002 |[3020393] |Beveiligings probleem in Windows Telnet-service kan leiden tot uitvoering van externe code |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-003 |[3021674] |Beveiligings probleem in Windows user profile service kan leiden tot uitbrei ding van bevoegdheden |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-004 |[3019978] |Beveiligings probleem in Windows-onderdelen kan leiden tot uitbrei ding van bevoegdheden |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-005 |[3022777] |Door een beveiligingslek in NLA kan beveiligings functies worden omzeild |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-006 |[3004365] |Door een beveiligingslek in Windows Foutrapportage kan beveiligings functies worden omzeild |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-007 |[3014029] |Beveiligings probleem in Network Policy Server RADIUS kan leiden tot DOS (Denial of service) |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-008 |[3019215] |Beveiligings probleem in Windows kernel mode-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS14-080 |[3008923] |Cumulatieve beveiligings update voor Internet Explorer |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-002 |[3020393] |Beveiligings probleem in Windows Telnet-service kan leiden tot uitvoering van externe code |4,16, 3,23, 2,35 |Jan 19 2015 |
-| MS15-002 |[3020393] |Beveiligings probleem in Windows Telnet-service kan leiden tot uitvoering van externe code |4,16, 3,23, 2,35 |Jan 19 2015 |
+| MS15-001 |[3023266] |Beveiligings probleem in Windows AppCompatCache kan leiden tot uitbrei ding van bevoegdheden |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-002 |[3020393] |Beveiligings probleem in Windows Telnet-service kan leiden tot uitvoering van externe code |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-003 |[3021674] |Beveiligings probleem in Windows user profile service kan leiden tot uitbrei ding van bevoegdheden |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-004 |[3019978] |Beveiligings probleem in Windows-onderdelen kan leiden tot uitbrei ding van bevoegdheden |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-005 |[3022777] |Door een beveiligingslek in NLA kan beveiligings functies worden omzeild |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-006 |[3004365] |Door een beveiligingslek in Windows Foutrapportage kan beveiligings functies worden omzeild |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-007 |[3014029] |Beveiligings probleem in Network Policy Server RADIUS kan leiden tot DOS (Denial of service) |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-008 |[3019215] |Beveiligings probleem in Windows kernel mode-stuur programma kan leiden tot uitbrei ding van bevoegdheden |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS14-080 |[3008923] |Cumulatieve beveiligings update voor Internet Explorer |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-002 |[3020393] |Beveiligings probleem in Windows Telnet-service kan leiden tot uitvoering van externe code |4.16, 3.23, 2.35 |Jan 19 2015 |
+| MS15-002 |[3020393] |Beveiligings probleem in Windows Telnet-service kan leiden tot uitvoering van externe code |4.16, 3.23, 2.35 |Jan 19 2015 |
 
 
 ## <a name="december-2014-guest-os"></a>December 2014-gast besturingssysteem
 | Bulletin-ID | Bovenliggend KB-artikel | Beschrijving van het beveiligingslek | Gastbesturingssysteem | Datum eerste geïntroduceerd |
 | --- | --- | --- | --- | --- |
-| N.v.t. |[3013776] |Het systeem wordt geblokkeerd wanneer u een domein account gebruikt om een toepassing te starten |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[3013043] |Bestandssysteem gegevens zijn beschadigd op een Windows-computer met meer dan één NUMA-knoop punt |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[3012712] |Nieuwe gegevens blokken worden onjuist geïnitialiseerd wanneer een differentiërende VHD wordt uitgevouwen |4,15, 3,22, 2,34 |Jan 13 201 |
-| N.v.t. |[3004905] |Windows Hyper-V-verbetering voor virtuele Linux-machines met bestands systemen die groter zijn dan 2 TB |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[3004394] |Update van december 2014 voor Windows Root Certificate Program in Windows |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[2999323] |De tekst voor gebeurtenis-ID 17 wordt gewijzigd |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[3013488] |Lang wachten op het opnieuw instellen van de WSUS-server bij het importeren van CSA bestanden in Windows Server 2012 R2 of Windows Server 2012 |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[3012325] |Update voor Windows APN data base-vermeldingen voor DIGI, Vodafone en Telekom Mobile Opera tors in Windows 8,1 en Windows 8 |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[3007054] |De optie voor het afdrukken met een pincode wordt altijd weer gegeven wanneer u een document afdrukt in een Windows Store-toepassing in Windows |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[2999802] |Ononderbroken lijnen in plaats van stippel lijnen worden afgedrukt in Windows |4,15, 3,22, 2,34 |Jan 13 2015 |
-| N.v.t. |[2896881] |Lange aanmeldings tijd wanneer u de AddPrinterConnection VBScript-opdracht gebruikt om printers voor gebruikers toe te wijzen tijdens het aanmeldings proces in Windows |4,15, 3,22, 2,34 |Jan 13 2015 |
+| N.v.t. |[3013776] |Het systeem wordt geblokkeerd wanneer u een domein account gebruikt om een toepassing te starten |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[3013043] |Bestandssysteem gegevens zijn beschadigd op een Windows-computer met meer dan één NUMA-knoop punt |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[3012712] |Nieuwe gegevens blokken worden onjuist geïnitialiseerd wanneer een differentiërende VHD wordt uitgevouwen |4.15, 3.22, 2.34 |Jan 13 201 |
+| N.v.t. |[3004905] |Windows Hyper-V-verbetering voor virtuele Linux-machines met bestands systemen die groter zijn dan 2 TB |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[3004394] |Update van december 2014 voor Windows Root Certificate Program in Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[2999323] |De tekst voor gebeurtenis-ID 17 wordt gewijzigd |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[3013488] |Lang wachten op het opnieuw instellen van de WSUS-server bij het importeren van CSA bestanden in Windows Server 2012 R2 of Windows Server 2012 |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[3012325] |Update voor Windows APN data base-vermeldingen voor DIGI, Vodafone en Telekom Mobile Opera tors in Windows 8,1 en Windows 8 |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[3007054] |De optie voor het afdrukken met een pincode wordt altijd weer gegeven wanneer u een document afdrukt in een Windows Store-toepassing in Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[2999802] |Ononderbroken lijnen in plaats van stippel lijnen worden afgedrukt in Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
+| N.v.t. |[2896881] |Lange aanmeldings tijd wanneer u de AddPrinterConnection VBScript-opdracht gebruikt om printers voor gebruikers toe te wijzen tijdens het aanmeldings proces in Windows |4.15, 3.22, 2.34 |Jan 13 2015 |
 
 [4457131]: https://support.microsoft.com/kb/4457131
 [4457145]: https://support.microsoft.com/kb/4457145
