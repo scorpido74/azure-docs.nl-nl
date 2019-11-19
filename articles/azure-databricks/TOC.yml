@@ -573,10 +573,10 @@
             - name: Gegevens laden
               href: /azure/databricks/spark/latest/spark-sql/language-manual/load-data
               maintainContext: true
-            - name: Samenvoegen tot (Delta Lake op Azure Databricks)
+            - name: Samenvoegen tot (Delta Lake op Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/merge-into
               maintainContext: true
-            - name: Optimaliseren (Delta Lake op Azure Databricks)
+            - name: Optimaliseren (Delta Lake op Azure Databricks
               href: /azure/databricks/spark/latest/spark-sql/language-manual/optimize
               maintainContext: true
             - name: Tabel vernieuwen
@@ -714,9 +714,9 @@
             - name: Voorbeeld van een geavanceerde MLlib
               href: /azure/databricks/applications/machine-learning/mllib/advanced-mllib
               maintainContext: true
-        - name: Geautomatiseerde ML
+        - name: AutoML
           items:
-            - name: Overzicht van geautomatiseerde ML
+            - name: Overzicht van AutoML
               href: /azure/databricks/applications/machine-learning/automl/index
               maintainContext: true
             - name: Hyperopt
@@ -1609,6 +1609,12 @@
               items:
                 - name: Ondersteunde runtimereleases
                   href: /azure/databricks/release-notes/runtime/supported
+                  maintainContext: true
+                - name: Databricks Runtime 6.2
+                  href: /azure/databricks/release-notes/runtime/6.2
+                  maintainContext: true
+                - name: Databricks Runtime 6.2 ML
+                  href: /azure/databricks/release-notes/runtime/6.2ml
                   maintainContext: true
                 - name: Databricks Runtime 6.1
                   href: /azure/databricks/release-notes/runtime/6.1

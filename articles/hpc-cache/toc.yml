@@ -40,6 +40,8 @@
   items:
     - name: Een ondersteuningsticket openen
       href: hpc-cache-support-ticket.md
+    - name: Rond firewallinstellingen van Blob-opslag werken
+      href: hpc-cache-blob-firewall-fix.md
     - name: Herstellen na een regionale storing
       href: hpc-region-recovery.md
     - name: Azure NetApp Files gebruiken met Azure HPC Cache

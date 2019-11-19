@@ -133,11 +133,13 @@
             - name: VPN-clientconfiguratiebestanden maken en installeren
               href: point-to-site-vpn-client-configuration-radius.md
             - name: P2S VPN RADIUS-verificatie integreren met NPS-server
-              href: vpn-gateway-radiuis-mfa-nsp.md
+              href: vpn-gateway-radius-mfa-nsp.md
         - name: Azure Active Directory-verificatie
           items:
             - name: Een tenant configureren
               href: openvpn-azure-ad-tenant.md
+            - name: Meervoudige verificatie (MFA) instellen
+              href: openvpn-azure-ad-mfa.md
             - name: Een VPN-client configureren
               href: openvpn-azure-ad-client.md
         - name: OpenVPN

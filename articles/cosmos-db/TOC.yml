@@ -672,6 +672,8 @@
               href: mongodb-readpreference.md
             - name: Time To Live - MongoDB
               href: mongodb-time-to-live.md
+            - name: Stromen wijzigen
+              href: mongodb-change-streams.md
             - name: Gegevensindexering beheren
               href: mongodb-indexing.md
             - name: Spring-gegevens opslaan en beheren

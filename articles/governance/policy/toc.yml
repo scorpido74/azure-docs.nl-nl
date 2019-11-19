@@ -331,6 +331,14 @@
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policyassignment
         - name: Definities voor beleid
           href: /dotnet/api/microsoft.azure.management.resourcemanager.models.policydefinition
+    - name: Azure-SDK voor Python
+      items:
+        - name: Beleid
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policy
+        - name: Beleidsclient
+          href: /python/api/azure-mgmt-resource/azure.mgmt.resource.policyclient
+        - name: Policy Insights
+          href: /python/api/azure-mgmt-policyinsights/azure.mgmt.policyinsights
     - name: REST
       items:
         - name: Gebeurtenissen

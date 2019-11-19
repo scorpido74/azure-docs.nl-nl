@@ -1,8 +1,8 @@
-- name: Documentatie voor CDN
+- name: Documentatie voor Content Delivery Network
   href: index.yml
 - name: Overzicht
   items:
-    - name: Wat is Azure CDN?
+    - name: Wat is Azure Content Delivery Network (Azure CDN)?
       href: cdn-overview.md
     - name: Productfuncties vergelijken
       href: cdn-features.md
@@ -40,9 +40,9 @@
       href: cdn-china-delivery.md
     - name: Ondersteuning voor HTTP/2
       href: cdn-http2.md
-    - name: Verizon POP-lijst ophalen
+    - name: Een Verizon POP-lijst ophalen
       href: cdn-pop-list-api.md
-    - name: Migreren van Standard Verizon naar Premium Verizon
+    - name: Migreren van Verizon naar Premium Verizon
       href: cdn-migrate.md
     - name: DDoS-bescherming
       href: cdn-ddos.md
@@ -61,9 +61,9 @@
       items:
         - name: Een eindpunt maken
           href: cdn-create-endpoint-how-to.md
-        - name: Beheren met Azure PowerShell
+        - name: Beheren met behulp van Azure PowerShell
           href: cdn-manage-powershell.md
-        - name: Toegang beperken per land/regio
+        - name: Toegang beperken per land of regio
           href: cdn-restrict-access-by-country.md
         - name: De prestaties verbeteren door bestanden te comprimeren
           href: cdn-improve-performance.md
@@ -89,13 +89,13 @@
               href: cdn-manage-expiration-of-blob-content.md
         - name: Tokenverificatie
           href: cdn-token-auth.md
-        - name: Ondersteuning voor SAS-opslag
+        - name: Shared Access Signature-opslagondersteuning (SAS)
           href: cdn-sas-storage-support.md
         - name: Cross-origin-resources delen
           href: cdn-cors.md
         - name: Resources controleren
           href: cdn-resource-health.md
-        - name: Gedrag overschrijven met regels
+        - name: Regels gebruiken om gedrag te overschrijven
           href: cdn-verizon-premium-rules-engine.md
         - name: Traffic Manager gebruiken
           href: cdn-traffic-manager.md
@@ -110,7 +110,7 @@
               href: cdn-analyze-usage-patterns.md
             - name: Aangepaste Verizon-rapporten
               href: cdn-verizon-custom-reports.md
-        - name: Analysehulpprogramma's voor Azure CDN Premium van Verizon
+        - name: Analytische hulpprogramma's voor Premium Azure CDN van Verizon
           items:
             - name: Geavanceerde HTTP-rapporten genereren
               href: cdn-advanced-http-reports.md
@@ -136,7 +136,7 @@
           href: cdn-troubleshoot-allowed-ca.md
 - name: Naslaginformatie
   items:
-    - name: Naslaginformatie over Microsoft-standaardregelengine
+    - name: Naslaginformatie over standaardregelengine
       href: cdn-standard-rules-engine-reference.md
       items:
         - name: Overeenkomende voorwaarden van standaardregelengine
@@ -177,7 +177,7 @@
           href: cdn-pop-locations.md
         - name: POP-locaties op afkorting
           href: cdn-pop-abbreviations.md
-    - name: Inzicht in facturering voor Azure CDN
+    - name: Facturering van Azure Content Delivery Network
       href: cdn-billing.md
     - name: Azure-roadmap
       href: 'https://azure.microsoft.com/roadmap/'
