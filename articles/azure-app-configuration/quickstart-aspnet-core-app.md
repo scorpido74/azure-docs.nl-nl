@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 10/11/2019
 ms.author: yegu
-ms.openlocfilehash: 4e08192788329e7a835ddb0b6b3f1aa01b2c73e1
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 91712b3f730317e65cda7b48c8f5636b2fb9ab2c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299933"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185093"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Snelstartgids: een ASP.NET Core-app maken met Azure-app configuratie
 
@@ -30,7 +30,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een ASP.NET Core-app 
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [.NET Core-SDK](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -83,7 +83,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Voeg een verwijzing naar het NuGet-pakket van @no__t 0 toe door de volgende opdracht uit te voeren:
+1. Voeg een verwijzing naar het NuGet-pakket van `Microsoft.Azure.AppConfiguration.AspNetCore` toe door de volgende opdracht uit te voeren:
 
     ```CLI
         dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
@@ -104,7 +104,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
     ```
 
     > [!IMPORTANT]
-    > Bij sommige shells worden de connection string afgekapt, tenzij deze tussen aanhalings tekens staan. Zorg ervoor dat de uitvoer van de `dotnet user-secrets`-opdracht de volledige connection string toont. Als dat niet het geval is, voert u de opdracht opnieuw uit en plaatst u de connection string tussen aanhalings tekens.
+    > Bij sommige shells worden de connection string afgekapt, tenzij deze tussen aanhalings tekens staan. Zorg ervoor dat de uitvoer van de `dotnet user-secrets` opdracht de volledige connection string toont. Als dat niet het geval is, voert u de opdracht opnieuw uit en plaatst u de connection string tussen aanhalings tekens.
 
     Geheime beheerder wordt alleen gebruikt om de web-app lokaal te testen. Wanneer de app is geïmplementeerd op [Azure app service](https://azure.microsoft.com/services/app-service/web), gebruikt u bijvoorbeeld een toepassings instelling **verbindings reeksen** in app service in plaats van met de geheime beheerder om de Connection String op te slaan.
 
@@ -216,7 +216,7 @@ Dit hulpprogramma slaat gevoelige gegevens voor ontwikkeltaken op buiten de proj
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een ASP.NET Core-web-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Voor meer informatie over het gebruik van app-configuratie gaat u verder met de volgende zelf studie waarin wordt getoond hoe u uw web-app kunt configureren om configuratie-instellingen dynamisch te vernieuwen.
+In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een ASP.NET Core-web-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Ga door naar de volgende zelf studie voor meer informatie over het configureren van uw ASP.NET Core-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
-> [Dynamische configuratie in een ASP.NET Core-app gebruiken](./enable-dynamic-configuration-aspnet-core.md)
+> [Dynamische configuratie inschakelen](./enable-dynamic-configuration-aspnet-core.md)

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/08/2019
 ms.author: dapine
-ms.openlocfilehash: a47e363e2b51b271c8103ac426362a61fc332601
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: c15602163ee1916047b9cb35a516a049f951b302
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901896"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195959"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>LUIS docker-containers installeren en uitvoeren
  
@@ -24,7 +24,7 @@ De Language Understanding-container (LUIS) laadt uw getrainde of gepubliceerd La
 
 In de volgende video ziet u hoe u deze container gebruikt.
 
-[demonstratie van ![container voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![Demonstratie van de container voor Cognitive Services](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
@@ -34,7 +34,7 @@ Als u de LUIS-container wilt uitvoeren, moet u rekening houden met de volgende v
 
 |Vereist|Doel|
 |--|--|
-|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie het [docker-overzicht](https://docs.docker.com/engine/docker-overview/)voor een primer op basis van docker en container.<br><br> Docker moet worden geconfigureerd zodat de containers verbinding kunnen maken met en facturerings gegevens kunnen verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
+|Docker-engine| De docker-engine moet zijn geïnstalleerd op een [hostcomputer](#the-host-computer). Docker biedt pakketten voor het configureren van de docker-omgeving op [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/)en [Linux](https://docs.docker.com/engine/installation/#supported-platforms). Zie voor een uitleg van de basisprincipes van Docker en containers, de [dockeroverzicht](https://docs.docker.com/engine/docker-overview/).<br><br> Docker moet worden geconfigureerd, zodat de containers om te verbinden met en facturering gegevens verzenden naar Azure. <br><br> **In Windows**moet docker ook worden geconfigureerd voor de ondersteuning van Linux-containers.<br><br>|
 |Vertrouwd met docker | U moet een basis kennis hebben van docker-concepten, zoals registers, opslag plaatsen, containers en container installatie kopieën, en kennis van basis `docker`-opdrachten.| 
 |App-bestand voor Azure `Cognitive Services` resource en LUIS- [pakket](luis-how-to-start-new-app.md) |Als u de container wilt gebruiken, hebt u het volgende nodig:<br><br>* Een _Cognitive Services_ Azure-resource en de gekoppelde facturerings sleutel de URI van het facturerings eindpunt. Beide waarden zijn beschikbaar op de pagina overzicht en sleutels voor de resource en zijn vereist om de container te starten. <br>* Een getrainde of gepubliceerde app is verpakt als gekoppelde invoer voor de container met de bijbehorende App-ID. U kunt het verpakte bestand ophalen uit de LUIS-portal of de ontwerp-Api's. Als u een LUIS-app-pakket van de [ontwerp-api's](#authoring-apis-for-package-file)krijgt, hebt u ook uw _ontwerp sleutel_nodig.<br><br>Deze vereisten worden gebruikt om opdracht regel argumenten door te geven aan de volgende variabelen:<br><br>**{AUTHORING_KEY}** : deze sleutel wordt gebruikt om de verpakte app uit de Luis-service in de Cloud op te halen en uploadt de query logboeken terug naar de Cloud. De indeling is `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`.<br><br>**{APP_ID}** : deze id wordt gebruikt om de app te selecteren. De indeling is `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.<br><br>**{API_KEY}** : deze sleutel wordt gebruikt om de container te starten. U kunt de eindpunt sleutel op twee plaatsen vinden. De eerste is de Azure Portal in de lijst sleutels van de _Cognitive Services_ resource. De eindpunt sleutel is ook beschikbaar in de LUIS-Portal op de pagina sleutels en eindpunt instellingen. Gebruik niet de start sleutel.<br><br>**{ENDPOINT_URI}** : het eind punt op de pagina overzicht.<br><br>De [ontwerp sleutel en de eindpunt sleutel](luis-boundaries.md#key-limits) hebben verschillende doel einden. Gebruik deze niet om te zetten. |
 
@@ -51,11 +51,11 @@ Api's voor verpakte apps ontwerpen:
 
 [!INCLUDE [Host Computer requirements](../../../includes/cognitive-services-containers-host-computer.md)]
 
-### <a name="container-requirements-and-recommendations"></a>Container vereisten en aanbevelingen
+### <a name="container-requirements-and-recommendations"></a>Containervereisten en aanbevelingen
 
 Deze container ondersteunt minimale en aanbevolen waarden voor de instellingen:
 
-|Container| Minimum | Aanbevolen | TPS<br>(Mini maal, Maxi maal)|
+|Container| Minimum | Aanbevolen | TPS<br>(Minimum, Maximum)|
 |-----------|---------|-------------|--|
 |LUIS|1 Core, 2 GB geheugen|1 kern geheugen van 4 GB|20, 40|
 
@@ -71,8 +71,6 @@ Gebruik de [`docker pull`](https://docs.docker.com/engine/reference/commandline/
 ```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
-
-Gebruik de opdracht [`docker pull`](https://docs.docker.com/engine/reference/commandline/pull/) om een container installatie kopie te downloaden.
 
 Zie [Luis](https://go.microsoft.com/fwlink/?linkid=2043204) in docker hub voor een volledige beschrijving van de beschik bare Tags, zoals `latest` gebruikt in de voor gaande opdracht.
 
@@ -214,7 +212,7 @@ Billing={ENDPOINT_URI} ^
 ApiKey={API_KEY}
 ```
 
-* In dit voor beeld wordt de Directory uit het `C:` station gebruikt om eventuele toegangs conflicten in Windows te voor komen. Als u een specifieke directory moet gebruiken als de invoer Directory, moet u mogelijk de machtiging docker-service verlenen. 
+* In dit voor beeld wordt de Directory uit het `C:` station gebruikt om eventuele toegangs conflicten in Windows te voor komen. Als u gebruiken van een specifieke map als de invoermap wilt, moet u mogelijk de docker verlenen machtiging-service. 
 * Wijzig de volg orde van de argumenten niet, tenzij u bekend bent met docker-containers.
 * Als u een ander besturings systeem gebruikt, gebruikt u de juiste console/terminal, syntaxis voor koppelingen en een regel vervolg teken voor uw systeem. In deze voor beelden wordt ervan uitgegaan dat een Windows-console met een regel vervolg teken `^`. Omdat de container een Linux-besturings systeem is, gebruikt de doel koppeling een syntaxis voor de Linux-stijl.
 
@@ -223,14 +221,14 @@ Deze opdracht:
 * Hiermee wordt een container uit de installatie kopie van de LUIS-container uitgevoerd
 * Hiermee wordt de LUIS-app geladen vanuit de invoer koppeling op *C:\Input*, die zich op de container host bevindt
 * Wijst twee CPU-kernen en 4 gigabyte (GB) aan geheugen toe
-* Beschrijft TCP-poort 5000 en wijst een pseudo-TTY toe voor de container
+* Gebruikt TCP-poort 5000 en wijst er een pseudo-TTY voor de container
 * Slaat container-en LUIS-logboeken op naar de uitvoer koppeling op *C:\output*, dat zich op de container host bevindt
 * Verwijdert de container automatisch nadat deze is afgesloten. De container installatie kopie is nog steeds beschikbaar op de hostcomputer. 
 
 Er zijn meer [voor beelden](luis-container-configuration.md#example-docker-run-commands) van de `docker run`-opdracht beschikbaar. 
 
 > [!IMPORTANT]
-> De opties `Eula`, `Billing`en `ApiKey` moeten worden opgegeven om de container uit te voeren. anders wordt de container niet gestart.  Zie [facturering](#billing)voor meer informatie.
+> De `Eula`, `Billing`, en `ApiKey` opties moeten worden opgegeven voor het uitvoeren van de container; anders wordt de container niet start.  Zie voor meer informatie, [facturering](#billing).
 > De ApiKey-waarde is de **sleutel** van de **Azure-resources** -pagina in de Luis-Portal en is ook beschikbaar op de pagina Azure `Cognitive Services` resource sleutels.  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
@@ -249,8 +247,8 @@ Gebruik de host, `http://localhost:5000`voor container-Api's.
 
 |Pakkettype|HTTP-term|Route|Queryparameters|
 |--|--|--|--|
-|Gepubliceerd|GET, POST|`/luis/prediction/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
-|Versie|GET, POST|`/luis/prediction/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|Gepubliceerd|GET, POST|`/luis/v3.0/apps/{appId}/slots/{slotName}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
+|Versie|GET, POST|`/luis/v3.0/apps/{appId}/versions/{versionId}/predict?`|`query={query}`<br>[`&verbose`]<br>[`&log`]<br>[`&show-all-intents`]|
 
 De query parameters configureren hoe en wat wordt geretourneerd in de query-antwoord:
 
@@ -293,12 +291,12 @@ curl -G \
 -d verbose=false \
 -d log=true \
 --data-urlencode "query=turn the lights on" \
-"http://localhost:5000/luis/prediction/v3.0/apps/{APP_ID}/slots/production/predict"
+"http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/production/predict"
 ```
 
 Als u query's wilt uitvoeren naar de **faserings** omgeving, vervangt u `production` in de route door `staging`:
 
-`http://localhost:5000/luis/prediction/v3.0/apps/{APP_ID}/slots/staging/predict`
+`http://localhost:5000/luis/v3.0/apps/{APP_ID}/slots/staging/predict`
 
 Voor het uitvoeren van een query op een versie model gebruikt u de volgende API:
 
@@ -307,7 +305,7 @@ curl -G \
 -d verbose=false \
 -d log=false \
 --data-urlencode "query=turn the lights on" \
-"http://localhost:5000/luis/prediction/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
+"http://localhost:5000/luis/v3.0/apps/{APP_ID}/versions/{APP_VERSION}/predict"
 ```
 
 # <a name="v2-prediction-endpointtabv2"></a>[V2-Voorspellings eindpunt](#tab/v2)
@@ -369,7 +367,7 @@ De LUIS-container verzendt facturerings gegevens naar Azure met behulp van een _
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
-Zie [containers configureren](luis-container-configuration.md)voor meer informatie over deze opties.
+Zie voor meer informatie over deze opties [containers configureren](luis-container-configuration.md).
 
 <!--blogs/samples/video courses -->
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
@@ -380,12 +378,12 @@ In dit artikel hebt u concepten en werk stromen geleerd voor het downloaden, ins
 
 * Language Understanding (LUIS) biedt een Linux-container voor docker voor de voor spellingen van eindpunt query's van uitingen.
 * Container installatie kopieën worden gedownload uit de micro soft-Container Registry (MCR).
-* Container installatie kopieën worden uitgevoerd in docker.
+* Containerinstallatiekopieën uitvoeren in Docker.
 * U kunt REST API gebruiken om de container-eind punten te doorzoeken door de URI van de host op te geven.
-* U moet factuur gegevens opgeven bij het instantiëren van een container.
+* Bij het instantiëren van een container, moet u informatie over facturering opgeven.
 
 > [!IMPORTANT]
-> Cognitive Services-containers mogen niet worden uitgevoerd zonder te zijn verbonden met Azure voor meting. Klanten moeten de containers in staat stellen om de facturerings gegevens te allen tijde met de meet service te communiceren. Cognitive Services containers verzenden geen klant gegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar micro soft.
+> Cognitive Services-containers zijn geen licentie om uit te voeren zonder verbinding met Azure voor het meten. Klanten moeten de containers om te communiceren factureringsgegevens met de softwarelicentiecontrole-service te allen tijde inschakelen. Cognitive Services containers verzenden geen klant gegevens (bijvoorbeeld de afbeelding of tekst die wordt geanalyseerd) naar micro soft.
 
 ## <a name="next-steps"></a>Volgende stappen
 

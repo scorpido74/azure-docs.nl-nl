@@ -1,5 +1,5 @@
 ---
-title: Beheerde identiteiten configureren voor Azure-resources op een schaalset voor virtuele machines met behulp van Power shell
+title: Beheerde identiteiten op virtuele-machine schaal sets configureren met Power shell-Azure AD
 description: Stapsgewijze instructies voor het configureren van een door een systeem en de gebruiker toegewezen beheerde identiteiten op een schaalset voor virtuele machines met behulp van Power shell.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5fa3100cae9b1a2c9ca320776cc357f3720b3473
-ms.sourcegitcommit: 0486aba120c284157dfebbdaf6e23e038c8a5a15
+ms.openlocfilehash: a09780ae117beb1a8d601b8fd88d43191321854f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71309999"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183986"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-virtual-machine-scale-sets-using-powershell"></a>Beheerde identiteiten configureren voor Azure-resources op schaal sets voor virtuele machines met behulp van Power shell
 
@@ -56,7 +56,7 @@ In deze sectie leert u hoe u een door het systeem toegewezen beheerde identiteit
 
 Een schaalset voor virtuele machines maken waarbij de door het systeem toegewezen beheerde identiteit is ingeschakeld:
 
-1. Raadpleeg *voor beeld 1* in het naslag artikel [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet voor meer informatie over het maken van een schaalset voor virtuele machines met een door het systeem toegewezen beheerde identiteit.  Voeg de para `-IdentityType SystemAssigned` meter toe `New-AzVmssConfig` aan de cmdlet:
+1. Raadpleeg *voor beeld 1* in het naslag artikel [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) cmdlet voor meer informatie over het maken van een schaalset voor virtuele machines met een door het systeem toegewezen beheerde identiteit.  Voeg de para meter `-IdentityType SystemAssigned` toe aan de `New-AzVmssConfig`-cmdlet:
 
     ```powershell
     $VMSS = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg -IdentityType SystemAssigned`
@@ -68,13 +68,13 @@ Een schaalset voor virtuele machines maken waarbij de door het systeem toegeweze
 
 Als u een door het systeem toegewezen beheerde identiteit wilt inschakelen op een bestaande schaalset voor virtuele Azure-machines:
 
-1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de schaalset voor virtuele machines bevat. Zorg er ook voor dat uw account deel uitmaakt van een rol die u schrijf machtigingen biedt voor de schaalset voor virtuele machines, zoals ' Inzender voor virtuele machines ':
+1. Meld u aan bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de schaalset voor virtuele machines bevat. Zorg er ook voor dat uw account deel uitmaakt van een rol die u schrijf machtigingen biedt voor de schaalset voor virtuele machines, zoals ' Inzender voor virtuele machines ':
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Haal eerst de eigenschappen van de schaalset voor virtuele [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) machines op met behulp van de-cmdlet. Gebruik vervolgens de `-IdentityType` Schakel optie voor de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) om een door het systeem toegewezen beheerde identiteit in te scha kelen:
+2. Haal eerst de eigenschappen van de schaalset voor virtuele machines op met behulp van de cmdlet [`Get-AzVmss`](/powershell/module/az.compute/get-azvmss) . Als u vervolgens een door het systeem toegewezen beheerde identiteit wilt inschakelen, gebruikt u de `-IdentityType` switch op de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) :
 
    ```powershell
    Update-AzVmss -ResourceGroupName myResourceGroup -Name -myVmss -IdentityType "SystemAssigned"
@@ -86,7 +86,7 @@ Als u een door het systeem toegewezen beheerde identiteit wilt inschakelen op ee
 
 Als u een schaalset voor virtuele machines hebt die de door het systeem toegewezen beheerde identiteit niet meer nodig heeft, maar nog steeds door de gebruiker toegewezen beheerde identiteiten nodig hebt, gebruikt u de volgende cmdlet:
 
-1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat. Zorg er ook voor dat uw account deel uitmaakt van een rol die u schrijf machtigingen biedt voor de schaalset voor virtuele machines, zoals ' Inzender voor virtuele machines ':
+1. Meld u aan bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat. Zorg er ook voor dat uw account deel uitmaakt van een rol die u schrijf machtigingen biedt voor de schaalset voor virtuele machines, zoals ' Inzender voor virtuele machines ':
 
 2. Voer de volgende cmdlet uit:
 
@@ -112,13 +112,13 @@ Het maken van een nieuwe schaalset voor virtuele machines met een door de gebrui
 
 Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een bestaande schaalset voor virtuele Azure-machines:
 
-1. Meld u aan bij Azure `Connect-AzAccount`met. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de schaalset voor virtuele machines bevat. Zorg er ook voor dat uw account deel uitmaakt van een rol die u schrijf machtigingen biedt voor de schaalset voor virtuele machines, zoals ' Inzender voor virtuele machines ':
+1. Meld u aan bij Azure met `Connect-AzAccount`. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de schaalset voor virtuele machines bevat. Zorg er ook voor dat uw account deel uitmaakt van een rol die u schrijf machtigingen biedt voor de schaalset voor virtuele machines, zoals ' Inzender voor virtuele machines ':
 
    ```powershell
    Connect-AzAccount
    ```
 
-2. Haal eerst de eigenschappen van de schaalset voor virtuele `Get-AzVM` machines op met behulp van de-cmdlet. Vervolgens kunt u een door de gebruiker toegewezen beheerde identiteit toewijzen aan de schaalset voor virtuele machines `-IdentityType` met `-IdentityID` behulp van de-en-switch in de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) . Vervang `<VM NAME>` ,`<SUBSCRIPTION ID>`, ,`USER ASSIGNED ID2` door uw eigen waarden. `<USER ASSIGNED ID1>` `<RESROURCE GROUP>`
+2. Haal eerst de eigenschappen van de schaalset voor virtuele machines op met behulp van de cmdlet `Get-AzVM`. U wijst een door de gebruiker toegewezen beheerde identiteit toe aan de schaalset voor virtuele machines met behulp van de schakel optie `-IdentityType` en `-IdentityID` van de cmdlet [Update-AzVmss](/powershell/module/az.compute/update-azvmss) . Vervang `<VM NAME>`, `<SUBSCRIPTION ID>`, `<RESROURCE GROUP>``<USER ASSIGNED ID1>``USER ASSIGNED ID2` met uw eigen waarden.
 
    [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -128,7 +128,7 @@ Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een bestaande
 
 ### <a name="remove-a-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een schaalset voor virtuele Azure-machines
 
-Als uw schaalset voor virtuele machines meerdere door de gebruiker toegewezen beheerde identiteiten heeft, kunt u alle, behalve de laatste, verwijderen met de volgende opdrachten. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VIRTUAL MACHINE SCALE SET NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY NAME>` is de naam eigenschap van de door de gebruiker toegewezen beheerde identiteit, die op de virtuele-machine schaalset moet blijven. Deze informatie vindt u in het gedeelte identiteit van de virtuele-machine schaalset met `az vmss show`behulp van:
+Als uw schaalset voor virtuele machines meerdere door de gebruiker toegewezen beheerde identiteiten heeft, kunt u alle, behalve de laatste, verwijderen met de volgende opdrachten. Vervang de parameterwaarden `<RESOURCE GROUP>` en `<VIRTUAL MACHINE SCALE SET NAME>` door uw eigen waarden. De `<USER ASSIGNED IDENTITY NAME>` is de naam eigenschap van de door de gebruiker toegewezen beheerde identiteit, die op de virtuele-machine schaalset moet blijven. Deze informatie kunt u vinden in de sectie identiteit van de schaalset voor virtuele machines met behulp van `az vmss show`:
 
 ```powershell
 Update-AzVmss -ResourceGroupName myResourceGroup -Name myVmss -IdentityType UserAssigned -IdentityID "<USER ASSIGNED IDENTITY NAME>"

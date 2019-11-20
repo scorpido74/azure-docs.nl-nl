@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 6b51581b5a8f94419dba60eee72669a3e1261b24
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151574"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185707"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -29,6 +29,16 @@ Als u wilt dat Indexeer functies deze fouten negeren (en overs Laan over ' mislu
 De fout informatie in dit artikel kan u helpen bij het oplossen van fouten, waardoor het indexeren kan worden voortgezet.
 
 Waarschuwingen worden niet gestopt met indexeren, maar ze doen wel voor waarden die kunnen leiden tot onverwachte resultaten. Of u actie onderneemt of niet afhankelijk is van de gegevens en uw scenario.
+
+Met ingang van API-versie `2019-05-06`worden indexerings fouten en waarschuwingen op item niveau gestructureerd, zodat u meer duidelijkheid krijgt over oorzaken en de volgende stappen. Ze bevatten de volgende eigenschappen:
+
+| Eigenschap | Beschrijving | Voorbeeld |
+| --- | --- | --- |
+| key | De document-id van het document dat wordt beïnvloed door de fout of waarschuwing. | https://coromsearch.blob.core.windows.net/jfk-1k/docid-32112954.pdf |
+| name | De naam van de bewerking waarin wordt beschreven waar de fout of waarschuwing zich voordeed. Dit wordt gegenereerd door de volgende structuur: [categorie]. [subcategorie]. [resource type]. ResourceName | DocumentExtraction. azureblob. myBlobContainerName-verrijking. WebApiSkill. mySkillName projectie. SearchIndex. OutputFieldMapping. myOutputFieldName-projectie. SearchIndex. MergeOrUpload. myIndexName Projectie. KnowledgeStore. table. myTableName |
+| message | Een beschrijving van de fout of waarschuwing op hoog niveau. | Kan de vaardigheid niet uitvoeren omdat de Web-API-aanvraag is mislukt. |
+| details informatie | Aanvullende informatie die nuttig kan zijn bij het vaststellen van het probleem, zoals het WebApi-antwoord als het uitvoeren van een aangepaste kwalificatie is mislukt. | `link-cryptonyms-list - Error processing the request record : System.ArgumentNullException: Value cannot be null. Parameter name: source at System.Linq.Enumerable.All[TSource](IEnumerable`1 bron, func`2 predicate) at Microsoft.CognitiveSearch.WebApiSkills.JfkWebApiSkills.`... rest van Stack tracering... |
+| documentationLink | Een koppeling naar relevante documentatie met gedetailleerde informatie voor het opsporen van fouten en het oplossen van het probleem. Deze koppeling wijst vaak naar een van de onderstaande secties op deze pagina. | https://go.microsoft.com/fwlink/?linkid=2106475 |
 
 <a name="could-not-read-document"/>
 
@@ -73,8 +83,6 @@ De Indexeer functie kan geen vaardigheid uitvoeren in de vaardig heden.
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| Een veld bevat een term die te groot is | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
-| Het document is te groot om te worden geïndexeerd | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | [Grote gegevens sets indexeren](search-howto-large-index.md)
 | Problemen met de tijdelijke verbinding | Er is een tijdelijke fout opgetreden. Probeer het later opnieuw. | Af en toe zijn er onverwachte verbindings problemen. Probeer het document later opnieuw uit te voeren via uw Indexeer functie. |
 | Mogelijke product bug | Er is een onverwachte fout opgetreden. | Dit duidt op een onbekende klasse fout. Dit kan betekenen dat er een product fout is opgetreden. Neem een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) op om hulp te krijgen. |
 | Er is een fout opgetreden tijdens de uitvoering van een kwalificatie | (Van vaardigheid samen voegen) Een of meer offset waarden zijn ongeldig en kunnen niet worden geparseerd. Items zijn ingevoegd aan het einde van de tekst | Gebruik de informatie in het fout bericht om het probleem op te lossen. Voor dit soort storingen moet actie worden uitgevoerd. |
@@ -96,6 +104,8 @@ Er zijn twee gevallen waarin u dit fout bericht kunt tegen komen, die elk anders
 
 ### <a name="built-in-cognitive-service-skills"></a>Ingebouwde cognitieve service vaardigheden
 Veel van de ingebouwde cognitieve vaardig heden, zoals taal detectie, entiteits herkenning of OCR, worden ondersteund door een API-eind punt van de cognitieve service. Soms zijn er tijdelijke problemen met deze eind punten en treedt er een time-out op voor de aanvraag. Voor tijdelijke problemen is er geen oplossing, behalve dat u wilt wachten en probeer het opnieuw. Als oplossing kunt u overwegen om de Indexeer functie in te stellen [op een schema](search-howto-schedule-indexers.md). De geplande indexering wordt opgehaald wanneer deze is gestopt. Als tijdelijke problemen zijn opgelost, moeten indexerings-en cognitieve vaardigheids verwerking de volgende geplande uitvoering kunnen voortzetten.
+
+Als deze fout blijft optreden in hetzelfde document voor een ingebouwde cognitieve vaardigheid, kunt u een [ondersteunings ticket](https://ms.portal.azure.com/#create/Microsoft.Support) indienen om hulp te krijgen, omdat dit niet wordt verwacht.
 
 ### <a name="custom-skills"></a>Aangepaste vaardigheden
 Als er een time-outfout optreedt bij een aangepaste vaardigheid die u hebt gemaakt, kunt u het volgende proberen. Controleer eerst uw aangepaste vaardigheid en zorg ervoor dat deze niet vastloopt in een oneindige lus en dat het resultaat consistent wordt geretourneerd. Nadat u hebt bevestigd dat het het geval is, bepaalt u wat de uitvoerings tijd van uw vaardigheid is. Als u een `timeout` waarde niet expliciet hebt ingesteld voor uw aangepaste vaardigheids definitie, is de standaard `timeout` 30 seconden. Als 30 seconden niet lang genoeg is om uw vaardigheid uit te voeren, kunt u een hogere `timeout` waarde opgeven op uw aangepaste vaardigheids definitie. Hier volgt een voor beeld van een aangepaste vaardigheids definitie waarbij de time-out is ingesteld op 90 seconden:
@@ -132,8 +142,8 @@ Het document is gelezen en verwerkt, maar de Indexeer functie kan het niet toevo
 
 | Reden | Details/voor beeld | Oplossing |
 | --- | --- | --- |
-| Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | Een veld bevat een term die te groot is | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
-| Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | Het document is te groot om te worden geïndexeerd | [Grote gegevens sets indexeren](search-howto-large-index.md)
+| Een veld bevat een term die te groot is | Een term in uw document is groter dan de [limiet van 32 KB](search-limits-quotas-capacity.md#api-request-limits) | U kunt deze beperking vermijden door ervoor te zorgen dat het veld niet is geconfigureerd als filterbaar, facetable of sorteerbaar.
+| Het document is te groot om te worden geïndexeerd | Een document is groter dan de [maximale grootte](search-limits-quotas-capacity.md#api-request-limits) van de API-aanvraag | [Grote gegevens sets indexeren](search-howto-large-index.md)
 | Het document bevat te veel objecten in de verzameling | Een verzameling in uw document overschrijdt het [maximum aantal elementen voor alle complexe verzamelings limieten](search-limits-quotas-capacity.md#index-limits) | We raden u aan de grootte van de complexe verzameling in het document onder de limiet te verminderen en gebruik van hoge opslag te voor komen.
 | Er is een probleem opgetreden bij het maken van verbinding met de doel index (die blijft bestaan na nieuwe pogingen), omdat de service wordt uitgevoerd onder andere belasting, zoals het uitvoeren van query's of het indexeren. | Kan geen verbinding maken met update-index. De zoek service wordt zwaar belast. | [De zoek service omhoog schalen](search-capacity-planning.md)
 | De zoek service wordt bijgewerkt voor service-updates of bevindt zich in het midden van de herconfiguratie van een topologie. | Kan geen verbinding maken met update-index. De zoek service is momenteel niet beschikbaar en de zoek service gaat naar een overgang. | Service configureren met ten minste 3 replica's voor een Beschik baarheid van 99,9% per [Sla-documentatie](https://azure.microsoft.com/support/legal/sla/search/v1_0/)

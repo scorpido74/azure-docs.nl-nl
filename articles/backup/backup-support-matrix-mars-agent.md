@@ -3,12 +3,12 @@ title: Ondersteunings matrix voor de MARS-agent
 description: Dit artikel bevat een overzicht van Azure Backup ondersteuning bij het maken van een back-up van computers waarop de Microsoft Azure Recovery Services-agent (MARS) wordt uitgevoerd.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6e37951dd00b999f59a1b3c08a6852cbc1929630
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 43f11bb73578187bd851f58cb6311c95b8648d08
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172060"
+ms.locfileid: "74195009"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Ondersteunings matrix voor back-up met de Microsoft Azure Recovery Services-agent (MARS)
 
@@ -64,6 +64,8 @@ En naar deze IP-adressen:
 
 - 20.190.128.0/18
 - 40.126.0.0/18
+
+De toegang tot alle hierboven vermelde Url's en IP-adressen maakt gebruik van het HTTPS-protocol op poort 443.
 
 ### <a name="throttling-support"></a>Ondersteuning voor beperking
 

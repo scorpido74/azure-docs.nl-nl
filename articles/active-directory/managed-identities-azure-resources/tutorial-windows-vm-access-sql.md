@@ -1,5 +1,5 @@
 ---
-title: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure SQL
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure SQL-Windows-Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure SQL.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 10/16/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a11c5489c97e1050e525c0b83c160c1360119b60
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: b0a743df545450f87a01785f6f8a15fe08b8eafe
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72433169"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181181"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure SQL
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure SQL-server met een door het systeem toegewezen identiteit voor een virtuele Windows-machine (VM). Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
+Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure SQL-server met een door het systeem toegewezen identiteit voor een virtuele Windows-machine (VM). Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
 
 > [!div class="checklist"]
 > * Uw virtuele machine toegang verlenen tot een Azure SQL-server
@@ -73,7 +73,7 @@ Voor SQL DB zijn unieke AAD-weergavenamen vereist. Hiermee moeten de AAD-account
 4. Voer in het veld **Gebruikersnaam** de naam in van het Azure AD-account dat u hebt ingesteld als de beheerder van de server, bijvoorbeeld helen@woodgroveonline.com
 5. Klik op **Opties**.
 6. Voer in het veld **Verbinding maken met database** de naam in van de niet-systeemdatabase die u wilt configureren.
-7. Klik op **Verbinden**. Voltooi het aanmeldingsproces.
+7. Klik op**Verbinden**. Voltooi het aanmeldingsproces.
 8. Vouw in **Objectverkenner** de map **Databases** uit.
 9. Klik met de rechtermuisknop op een gebruikersdatabase en klik op **Nieuwe query**.
 10. Voer in het queryvenster de volgende regel in en klik op **Uitvoeren** in de werkbalk:
@@ -103,7 +103,7 @@ Code die wordt uitgevoerd op de VM kan nu een token verkrijgen via de door het s
 
 Azure SQL biedt systeemeigen ondersteuning voor Azure AD-verificatie, zodat toegangstokens die zijn verkregen met behulp van beheerde identiteiten voor Azure-resources direct kunnen worden geaccepteerd. U gebruikt de toegangsmethode met het **toegangstoken** voor het maken van een verbinding met SQL. Dit maakt deel uit van de integratie van Azure SQL met Azure AD en wijkt af van het opgeven van referenties in de verbindingsreeks.
 
-Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met SQL met behulp van een toegangs token. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de door het systeem toegewezen beheerde identiteit van de virtuele machine. **.NET Framework 4,6** of hoger of **.net Core 2,2** of hoger is vereist voor het gebruik van de methode voor toegangs tokens. Vervang AZURE-SQL-SERVERNAME en DATABASE door de benodigde waarden. Houd er rekening mee dat de resource-ID voor Azure SQL `https://database.windows.net/` is.
+Hier volgt een voor beeld van een .NET-code voor het openen van een verbinding met SQL met behulp van een toegangs token. Deze code moet worden uitgevoerd op de virtuele machine om toegang te krijgen tot het eindpunt van de door het systeem toegewezen beheerde identiteit van de virtuele machine. **.NET Framework 4,6** of hoger of **.net Core 2,2** of hoger is vereist voor het gebruik van de methode voor toegangs tokens. Vervang AZURE-SQL-SERVERNAME en DATABASE door de benodigde waarden. Opmerking de resource-ID voor Azure SQL is `https://database.windows.net/`.
 
 ```csharp
 using System.Net;

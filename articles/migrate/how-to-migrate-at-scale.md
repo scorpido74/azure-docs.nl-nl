@@ -1,70 +1,72 @@
 ---
-title: Migratie van een groot aantal virtuele machines naar Azure automatiseren | Microsoft Docs
-description: Hierin wordt beschreven hoe u kunt scripts gebruiken voor het migreren van een groot aantal virtuele machines met Azure Site Recovery
+title: Migratie machine migratie automatiseren in Azure Migrate
+description: Hierin wordt beschreven hoe u scripts gebruikt voor het migreren van een groot aantal machines in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
-ms.openlocfilehash: b45a158569b3be8250728293c1bf73c1a860a0f6
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: 317b6e8aa799b7982e9897c6a504d6092491c7ec
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67808026"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196367"
 ---
-# <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Migratie van de schaal van virtuele machines met Azure Site Recovery
+# <a name="scale-migration-of-vms"></a>Migratie van Vm's schalen 
 
-In dit artikel helpt u begrijpen hoe u kunt scripts gebruiken voor het migreren van groot aantal virtuele machines met Azure Site Recovery. Deze scripts zijn beschikbaar voor het downloaden op [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) op GitHub. De scripts kunnen worden gebruikt voor het migreren van VMware, AWS, GCP virtuele machines en fysieke servers naar beheerde schijven in Azure. U kunt ook deze scripts gebruiken voor het migreren van Hyper-V-machines als u de virtuele machines als fysieke servers migreren. De scripts die gebruikmaken van Azure Site Recovery PowerShell zijn gedocumenteerd [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell).
+Dit artikel helpt u inzicht in het gebruik van scripts voor het migreren van een groot aantal virtuele machines (Vm's). Als u de migratie wilt schalen, gebruikt u [Azure site Recovery](../site-recovery/site-recovery-overview.md). 
 
-## <a name="current-limitations"></a>Huidige beperkingen:
-- Ondersteuning voor het statische IP-adres op te geven alleen voor de primaire NIC van de doel-VM
-- De scripts worden pas van kracht Azure Hybrid Benefit gerelateerde invoer, moet u de eigenschappen van de gerepliceerde virtuele machine in de portal handmatig bijwerken
+Site Recovery scripts zijn beschikbaar voor uw down load op [Azure PowerShell samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) opslag plaats op github. De scripts kunnen worden gebruikt om VMware-, AWS-, GCP-Vm's en fysieke servers te migreren naar beheerde schijven in Azure. U kunt deze scripts ook gebruiken om virtuele Hyper-V-machines te migreren als u de virtuele machines als fysieke servers migreert. De scripts die gebruikmaken van Azure Site Recovery Power shell, worden [hier](https://docs.microsoft.com/azure/site-recovery/vmware-azure-disaster-recovery-powershell)beschreven.
+
+## <a name="current-limitations"></a>Huidige beperkingen
+- Ondersteuning voor het opgeven van het statische IP-adres voor de primaire NIC van de doel-VM
+- De scripts nemen geen Azure Hybrid Benefit gerelateerde invoer. u moet de eigenschappen van de gerepliceerde VM hand matig bijwerken in de portal
 
 ## <a name="how-does-it-work"></a>Hoe werkt het?
 
 ### <a name="prerequisites"></a>Vereisten
-Voordat u begint, moet u de volgende stappen uit:
-- Zorg ervoor dat de Site Recovery-kluis is gemaakt in uw Azure-abonnement
-- Zorg ervoor dat de configuratieserver en processerver worden geïnstalleerd in de bronomgeving en de kluis kan voor het detecteren van de omgeving
-- Zorg ervoor dat een replicatiebeleid is gemaakt en die zijn gekoppeld aan de configuratieserver
-- Zorg ervoor dat u de VM-beheerdersaccount hebt toegevoegd aan de configuratieserver (die wordt gebruikt voor het repliceren van de on-premises VM's)
-- Zorg ervoor dat de doel-artefacten in Azure worden gemaakt
-    - Doelresourcegroep
-    - Doelopslagaccount (en de resourcegroep) - maken een premium storage-account als u van plan bent om te migreren naar premium-beheerde schijven
-    - Cache-Opslagaccount (en de resourcegroep) - maken een standard storage-account in dezelfde regio als de kluis
-    - Virtueelnetwerk voor failover (en de resourcegroep)
-    - Target Subnet
-    - Virtueelnetwerk voor Test-failover (en de resourcegroep)
+Voordat u aan de slag gaat, moet u de volgende stappen uitvoeren:
+- Zorg ervoor dat de Site Recovery kluis is gemaakt in uw Azure-abonnement
+- Zorg ervoor dat de configuratie server en de proces server zijn geïnstalleerd in de bron omgeving en dat de kluis de omgeving kan detecteren
+- Zorg ervoor dat er een replicatie beleid is gemaakt en gekoppeld aan de configuratie server
+- Zorg ervoor dat u het VM-beheerders account hebt toegevoegd aan de configuratie server (die wordt gebruikt om de on-premises Vm's te repliceren)
+- Zorg ervoor dat de doel artefacten in azure zijn gemaakt
+    - Doel resource groep
+    - Doel-opslag account (en de bijbehorende resource groep): Maak een Premium-opslag account als u van plan bent om te migreren naar Premium-beheerde schijven
+    - Cache-opslag account (en de bijbehorende resource groep): Maak een standaard-opslag account in dezelfde regio als de kluis
+    - Doel Virtual Network voor failover (en de bijbehorende resource groep)
+    - Doel-subnet
+    - Doel Virtual Network voor testfailover (en de bijbehorende resource groep)
     - Beschikbaarheidsset (indien nodig)
-    - Doel-Netwerkbeveiligingsgroep en de resourcegroep
-- Zorg ervoor dat u hebt besloten in de eigenschappen van de doel-VM
-    - Naam van de doel-VM
-    - Doel-VM-grootte in Azure (kan worden gemaakt met behulp van Azure Migrate-evaluatie)
-    - Privé IP-adres van de primaire NIC in de virtuele machine
-- De scripts downloaden [Azure PowerShell Samples](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) op GitHub
+    - De netwerk beveiligings groep van het doel en de bijbehorende resource groep
+- Zorg ervoor dat u hebt besloten over de eigenschappen van de doel-VM
+    - Doel-VM-naam
+    - Grootte van de doel-VM in azure (kan worden besloten met Azure Migrate beoordeling)
+    - Privé-IP-adres van de primaire NIC in de VM
+- De scripts downloaden van [Azure PowerShell](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-with-site-recovery) -voor beelden opslag plaats op github
 
-### <a name="csv-input-file"></a>Invoer van de CSV-bestand
-Zodra u alle vereisten is voltooid hebt, moet u maken van een CSV-bestand met gegevens voor elke bron-VM die u wilt migreren. De invoer CSV beschikken over een headerregel met de details van de invoer en een rij met details voor elke machine die moet worden gemigreerd. Alle scripts zijn ontworpen om te werken op hetzelfde CSV-bestand. Een CSV-voorbeeldsjabloon is beschikbaar in de scriptmap ter referentie.
+### <a name="csv-input-file"></a>CSV-invoer bestand
+Zodra alle vereisten zijn voltooid, moet u een CSV-bestand maken dat gegevens bevat voor elke bron machine die u wilt migreren. De invoer CSV moet een kopregel met de invoer gegevens en een rij met details bevatten voor elke machine die moet worden gemigreerd. Alle scripts zijn ontworpen om te werken met hetzelfde CSV-bestand. Een voor beeld van een CSV-sjabloon is beschikbaar in de map scripts voor uw verwijzing.
 
-### <a name="script-execution"></a>Uitvoering van script
-Zodra de CSV gereed is, kunt u de volgende stappen uit om uit te voeren van de migratie van de on-premises VM's kunt uitvoeren:
+### <a name="script-execution"></a>Script uitvoering
+Zodra het CSV is voltooid, kunt u de volgende stappen uitvoeren om de migratie van de on-premises Vm's uit te voeren:
 
-**Stap #** | **Scriptnaam** | **Beschrijving**
+**Wizardstap #** | **Script naam** | **Beschrijving**
 --- | --- | ---
-1 | asr_startmigration.ps1 | Replicatie inschakelen voor alle virtuele machines die worden vermeld in de csv, het script maakt u een CSV-uitvoer met de taakdetails voor elke virtuele machine
-2 | asr_replicationstatus.ps1 | Controleer de status van replicatie, het script maakt u een csv met de status voor elke virtuele machine
-3 | asr_updateproperties.ps1 | Zodra de virtuele machines gerepliceerd/beveiligde zijn, dit script gebruiken voor het bijwerken van de eigenschappen van het doel van de virtuele machine (eigenschappen van berekening en netwerk)
-4 | asr_propertiescheck.ps1 | Controleer of als de eigenschappen op de juiste wijze zijn bijgewerkt
-5 | asr_testmigration.ps1 |  Start de testfailover van de virtuele machines die worden vermeld in de csv, het script maakt u een CSV-uitvoer met de taakdetails voor elke virtuele machine
-6 | asr_cleanuptestmigration.ps1 | Wanneer u handmatig controleren of de virtuele machines die zijn failover testen, kunt u dit script gebruiken voor het opschonen van de testfailover-VM 's
-7 | asr_migration.ps1 | Een niet-geplande failover uitvoeren voor de virtuele machines die worden vermeld in de csv, het script maakt u een CSV-uitvoer met de taakdetails voor elke virtuele machine. Het script wordt niet afgesloten de on-premises VM's voordat u activeert de failover, voor consistentie van toepassingen, is het raadzaam dat u handmatig de VM's af voordat het script wordt uitgevoerd.
-8 | asr_completemigration.ps1 | Voer de doorvoerbewerking is op de virtuele machines en de Azure Site Recovery-entiteiten verwijderen
-9 | asr_postmigration.ps1 | Als u van plan bent om toe te wijzen netwerkbeveiligingsgroepen op de NIC's nadat failover is uitgevoerd, kunt u dit script gebruiken om dat te doen. Een NSG wilt toewijzen aan een één-NIC's in de doel-VM.
+1 | asr_startmigration.ps1 | Replicatie inschakelen voor alle virtuele machines die worden vermeld in het CSV-bestand, maakt het script een CSV-uitvoer met de taak Details voor elke VM
+2 | asr_replicationstatus.ps1 | Controleer de status van de replicatie, het script maakt een CSV met de status voor elke VM
+3 | asr_updateproperties.ps1 | Zodra de Vm's zijn gerepliceerd/beveiligd, gebruikt u dit script om de doel eigenschappen van de virtuele machine bij te werken (reken-en netwerk eigenschappen)
+4 | asr_propertiescheck.ps1 | Controleren of de eigenschappen op de juiste manier zijn bijgewerkt
+5 | asr_testmigration.ps1 |  Start de testfailover van de virtuele machines die worden vermeld in het CSV-bestand. het script maakt een CSV-uitvoer met de taak Details voor elke VM
+6 | asr_cleanuptestmigration.ps1 | Wanneer u de virtuele machines die zijn getest van een geslaagd hand matig hebt gevalideerd, kunt u dit script gebruiken om de Vm's voor de testfailover op te schonen
+7 | asr_migration.ps1 | Een niet-geplande failover uitvoeren voor de Vm's die worden vermeld in het CSV-bestand, maakt het script een CSV-uitvoer met de taak Details voor elke virtuele machine. Het script sluit de on-premises Vm's niet af voordat de failover wordt geactiveerd. voor toepassings consistentie wordt aanbevolen dat u de virtuele machines hand matig afsluit voordat u het script uitvoert.
+8 | asr_completemigration. ps1 | Voer de doorvoer bewerking op de Vm's uit en verwijder de Azure Site Recovery entiteiten
+9 | asr_postmigration.ps1 | Als u van plan bent om netwerk beveiligings groepen toe te wijzen aan de Nic's na failover, kunt u dit script hiervoor gebruiken. Er wordt een NSG toegewezen aan een NIC in de doel-VM.
 
-## <a name="how-to-migrate-to-managed-disks"></a>Hoe kan ik migreren naar managed disks?
-Het script, migreert standaard, u de VM's naar beheerde schijven in Azure. Als de doel-opslagaccount dat is opgegeven, een premium storage-account is, premium-beheerde schijven gemaakt na migratie. Het cacheopslagaccount is nog steeds een standard-account. Als het doelopslagaccount een standaardopslagaccount is, standaardschijven gemaakt nadat de migratie. 
+## <a name="how-to-migrate-to-managed-disks"></a>Hoe kan ik migreren naar Managed disks?
+Met het script worden standaard de virtuele machines gemigreerd naar beheerde schijven in Azure. Als het beschik bare doel opslag account een Premium-opslag account is, worden Premium-beheerde schijven gemaakt na migratie. Het cache-opslag account kan nog steeds een standaard account zijn. Als het doel opslag account een Standard-opslag account is, worden standaard schijven gemaakt na migratie. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) over servers migreren naar Azure met Azure Site Recovery
+[Meer informatie](https://docs.microsoft.com/azure/site-recovery/migrate-tutorial-on-premises-azure) over het migreren van servers naar Azure met Azure site Recovery

@@ -1,73 +1,73 @@
 ---
-title: Azure Migrate replicatie toestel-architectuur | Microsoft Docs
-description: Biedt een overzicht van het apparaat Azure Migrate-replicatie
+title: Architectuur van replicatie-apparaat Azure Migrate
+description: Biedt een overzicht van het Azure Migrate replicatie-apparaat voor migratie op basis van een agent.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4f4dc307bee4190a0e94ace493053e0cfd01150e
-ms.sourcegitcommit: 47ce9ac1eb1561810b8e4242c45127f7b4a4aa1a
+ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/11/2019
-ms.locfileid: "67811438"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186559"
 ---
-# <a name="replication-appliance"></a>Replicatie-apparaat
+# <a name="replication-appliance"></a>Replicatie apparaat
 
-Dit artikel wordt de replicatie-apparaat gebruikt door Azure Migrate beschreven: Evaluatie van de server wanneer de migratie van VMware VM's, fysieke machines en persoonlijke/openbare cloud-machines naar Azure, met behulp van een migratie op basis van een agent. 
+In dit artikel wordt het replicatie apparaat beschreven dat wordt gebruikt door Azure Migrate: Server evaluatie bij het migreren van virtuele VMware-machines, fysieke machines en persoonlijke/open bare Cloud-Vm's naar Azure, met behulp van een migratie op basis van een agent. 
 
-Het hulpprogramma is beschikbaar in de [Azure Migrate](migrate-overview.md) hub. De hub biedt systeemeigen hulpprogramma's voor evaluatie en migratie, evenals hulpprogramma's van andere Azure-services en van derden independent software vendors (ISV).
+Het hulp programma is beschikbaar in de [Azure migrate](migrate-overview.md) hub. De hub biedt systeem eigen hulpprogram ma's voor evaluatie en migratie, evenals hulpprogram ma's van andere Azure-Services en onafhankelijke software leveranciers (Isv's) van derden.
 
 
-## <a name="appliance-overview"></a>Overzicht van apparaat
+## <a name="appliance-overview"></a>Overzicht van apparaten
 
-De replicatie-apparaat wordt geïmplementeerd als een enkele on-premises machine, als een VMware-VM of een fysieke server. Deze wordt uitgevoerd:
-- **Replicatie toestel**: De replicatie-toepassing coördineert de communicatie en beheert de gegevensreplicatie, voor on-premises VMware-machines en fysieke servers repliceren naar Azure.
-- **Processerver**: De processerver, die standaard op het apparaat van de replicatie is geïnstalleerd, en doet het volgende:
-    - **Replicatiegateway**: Het fungeert als replicatiegateway. Deze ontvangt replicatiegegevens van computers die zijn ingeschakeld voor replicatie. Het optimaliseert de gegevens van replicatie met caching, compressie en codering, en verzendt ze naar Azure.
-    - **Het installatieprogramma van agent**: Voert een push-installatie van de Mobility-Service. Deze service moet worden geïnstalleerd en uitgevoerd op elk on-premises machine die u wilt repliceren voor migratie.
+Het replicatie apparaat wordt geïmplementeerd als één on-premises computer, hetzij als een virtuele VMware-machine of een fysieke server. Deze wordt uitgevoerd:
+- **Replicatie apparaat**: het replicatie apparaat coördineert communicatie en beheert gegevens replicatie voor on-premises virtuele VMware-machines en fysieke servers die repliceren naar Azure.
+- **Proces server**: de proces server, die standaard wordt geïnstalleerd op het replicatie apparaat, en doet het volgende:
+    - **Replicatie gateway**: deze fungeert als replicatie gateway. Het ontvangt replicatie gegevens van machines die zijn ingeschakeld voor replicatie. Het optimaliseert replicatie gegevens met caching, compressie en versleuteling, en verzendt deze naar Azure.
+    - **Agent installatie programma**: voert een push-installatie van de Mobility-service uit. Deze service moet zijn geïnstalleerd en worden uitgevoerd op elke on-premises machine die u voor migratie wilt repliceren.
 
-## <a name="appliance-deployment"></a>Implementatie van apparaat
+## <a name="appliance-deployment"></a>Implementatie van het apparaat
 
 **Implementeren als** | **Gebruikt voor** | **Details**
 --- | --- |  ---
-Virtuele VMware-machine | Doorgaans gebruikt bij het migreren van virtuele VMware-machines met behulp van het hulpprogramma voor migratie van Azure migreren met de migratie op basis van een agent. | U OVA-sjabloon downloaden van de Azure Migrate-hub en importeren met vCenter-Server te maken van de virtuele machine van het apparaat.
-Een fysieke computer | Gebruikt bij het migreren van on-premises fysieke servers als u een VMware-infrastructuur hebt, of als u niet om een VMware-VM met behulp van een OVA-sjabloon te maken. | U een software-installatieprogramma downloaden van de Azure Migrate-hub en de App uitvoeren voor het instellen van de apparaat-machine.
+VMware-VM | Wordt meestal gebruikt bij het migreren van virtuele VMware-machines met behulp van het hulp programma voor Azure Migrate migratie met migratie op basis van een agent. | U kunt de eicellen-sjabloon downloaden van de Azure Migrate hub en importeren in vCenter Server om de apparaat-VM te maken.
+Een fysieke computer | Wordt gebruikt bij het migreren van on-premises fysieke servers als u geen VMware-infra structuur hebt of als u geen virtuele VMware-machine kunt maken met behulp van een eicellen-sjabloon. | U downloadt een software-installatie programma van de Azure Migrate hub en voert het uit om de apparaatapparaat in te stellen.
 
-## <a name="appliance-deployment-requirements"></a>Vereisten voor implementatie van apparaat
+## <a name="appliance-deployment-requirements"></a>Vereisten voor de implementatie van het apparaat
 
-[Beoordeling](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) de implementatievereisten.
+[Controleer](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) de implementatie vereisten.
 
 
 
-## <a name="appliance-license"></a>Apparaat-licentie
-Het apparaat wordt geleverd met een licentie van de evaluatie van Windows Server 2016, die 180 dagen geldig is. Als de evaluatieperiode bijna verlopen is, raden wij u downloaden en implementeren van een nieuw toestel of u de licentie van het besturingssysteem van de virtuele machine van het apparaat te activeren.
+## <a name="appliance-license"></a>Toestel licentie
+Het apparaat wordt geleverd met een evaluatie licentie voor Windows Server 2016, die voor 180 dagen geldig is. Als de evaluatie periode bijna is verlopen, raden wij aan dat u een nieuw apparaat downloadt en implementeert, of dat u de licentie voor het besturings systeem van de apparaat-VM activeert.
 
 ## <a name="replication-process"></a>Replicatieproces
 
-1. Wanneer u replicatie voor een virtuele machine inschakelt, begint initiële replicatie naar Azure-opslag, met behulp van het opgegeven replicatiebeleid. 
-2. Verkeer repliceert naar Azure storage-openbare eindpunten via internet. Het repliceren van verkeer via een site-naar-site virtueel particulier netwerk (VPN) van een on-premises site naar Azure wordt niet ondersteund.
-3. Nadat de initiële replicatie is voltooid, begint de replicatie van verschillen. Bijgehouden wijzigingen voor een virtuele machine worden geregistreerd.
-4. Communicatie gebeurt er als volgt uit:
-    - Virtuele machines communiceren met het apparaat van de replicatie op poort 443 voor HTTPS inkomende, voor het replicatiebeheer van.
-    - De replicatie-apparaat stuurt replicatie met Azure via HTTPS-poort 443 uitgaande.
-    - Virtuele machines verzenden replicatiegegevens naar de processerver (die wordt uitgevoerd op het apparaat replicatie) op HTTPS-poort 9443 inkomende. Deze poort kan worden gewijzigd.
-    - De processerver ontvangt replicatiegegevens, optimaliseert en versleutelt deze en verzendt ze naar Azure storage via poort 443 uitgaande.
-5. De replicatiegegevens registreert eerste land in een cache-opslagaccount in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen in een door Azure beheerde schijf.
+1. Wanneer u replicatie voor een virtuele machine inschakelt, begint de initiële replicatie naar Azure Storage met behulp van het opgegeven replicatie beleid. 
+2. Verkeer wordt gerepliceerd naar open bare eind punten van Azure Storage via internet. Het repliceren van verkeer via een site-naar-site virtueel particulier netwerk (VPN) van een on-premises site naar Azure wordt niet ondersteund.
+3. Nadat de initiële replicatie is voltooid, begint de replicatie van verschillen. Bijgehouden wijzigingen voor een machine worden vastgelegd.
+4. Communicatie gebeurt als volgt:
+    - Vm's communiceren met het replicatie apparaat op poort HTTPS 443 inkomend voor replicatie beheer.
+    - Het replicatie apparaat organiseert de replicatie met Azure via poort HTTPS 443 uitgaand.
+    - Vm's verzenden replicatie gegevens naar de proces server (die wordt uitgevoerd op het replicatie apparaat) op poort HTTPS 9443-binnenkomend. Deze poort kan worden gewijzigd.
+    - De proces server ontvangt replicatie gegevens, optimaliseert en versleutelt deze en verzendt deze naar Azure Storage via poort 443 uitgaand.
+5. De replicatie gegevens melden het eerste land in een cache-opslag account in Azure. Deze logboeken worden verwerkt en de gegevens worden opgeslagen op een door Azure beheerde schijf.
 
 ![Architectuur](./media/migrate-replication-appliance/architecture.png)
 
-## <a name="appliance-upgrades"></a>Upgrades van apparaat
+## <a name="appliance-upgrades"></a>Toestel-upgrades
 
-Het apparaat is handmatig bijgewerkt vanuit de Azure Migrate-hub. Het is raadzaam dat u altijd de nieuwste versie uitvoeren.
+Het apparaat wordt hand matig geüpgraded vanuit de Azure Migrate hub. U wordt aangeraden altijd de meest recente versie uit te voeren.
 
-1. In Azure Migrate > Servers > Azure Migrate: Evaluatie van de server, infrastructuurservers, klikt u op **configuratieservers**.
-2. In **configuratieservers**, een koppeling wordt weergegeven in **Agentversie** als een nieuwe versie van het toestel replicatie beschikbaar is. 
-3. Download het installatieprogramma voor de replicatie-cloudapparaat-machine en de upgrade te installeren. Het installatieprogramma detecteert de versie huidige die wordt uitgevoerd op het apparaat.
+1. In Azure Migrate > servers > Azure Migrate: Server evaluatie, infrastructuur servers, klik op **configuratie servers**.
+2. In **configuratie servers**wordt een koppeling weer gegeven in de **Agent versie** wanneer er een nieuwe versie van het replicatie apparaat beschikbaar is. 
+3. Down load het installatie programma naar de replicatie apparaat computer en installeer de upgrade. Het installatie programma detecteert de versie die momenteel wordt uitgevoerd op het apparaat.
  
 ## <a name="next-steps"></a>Volgende stappen
 
-[Informatie over hoe](tutorial-assess-vmware.md#set-up-the-appliance-vm) kunt u het apparaat instellen voor VMware.
-[Informatie over hoe](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) het instellen van het apparaat voor Hyper-V.
+[Meer informatie over](tutorial-assess-vmware.md#set-up-the-appliance-vm) het instellen van het apparaat voor VMware.
+[Meer informatie over](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) het instellen van het apparaat voor Hyper-V.
 

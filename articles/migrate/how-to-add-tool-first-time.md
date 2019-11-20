@@ -1,17 +1,17 @@
 ---
-title: Een hulp programma voor evaluatie/migratie voor de eerste keer in Azure Migrate toevoegen | Microsoft Docs
+title: Een hulp programma voor beoordeling/migratie toevoegen in Azure Migrate
 description: Hierin wordt beschreven hoe u een Azure Migrate project maakt en een hulp programma voor evaluatie/migratie toevoegt.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/06/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: a4e66175b20552e632702cb2ba46d0ae6c0956d4
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 319d97d96bd054aed90079777e2ff83d0e308e5e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720240"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185942"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Voor de eerste keer een evaluatie-/migratiehulpprogramma toevoegen
 
@@ -50,7 +50,7 @@ Stel een nieuw Azure Migrate project in een Azure-abonnement in en voeg een hulp
     Japan  | Japan-Oost of Japan-West
     Verenigd Koninkrijk | UK-zuid of UK-west
     Verenigde Staten | VS-midden, VS-West 2
-    Canada | Canada - centraal
+    Canada | Canada - midden
     India  | India centraal of India-Zuid
     Australië | Australië-Zuidoost
 

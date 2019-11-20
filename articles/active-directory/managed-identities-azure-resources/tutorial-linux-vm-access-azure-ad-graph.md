@@ -1,5 +1,5 @@
 ---
-title: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure AD Graph-API
+title: Zelf studie`:` een beheerde identiteit voor Linux-VM'S gebruiken voor toegang tot Azure AD Graph API
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure AD Graph-API.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 481cb560daa26e59de2c78cc64bab9fb168eed58
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 68d560e7d326cc2ddc47ed9f689dc8e31f8ab9ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307508"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183646"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Zelfstudie: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure AD Graph-API
 
@@ -67,7 +67,7 @@ In deze zelfstudie verleent u uw VM-identiteit toestemming om query's voor groep
 Azure AD Graph:
 - App-id van de service-principal (gebruikt om een app toestemming te geven): 00000002-0000-0000-c000-000000000000
 - Resource-id (gebruikt om toegangstokens voor beheerde identiteiten aan te vragen voor Azure-resources): https://graph.windows.net
-- Naslaginformatie over machtigingsbereik: [Naslaginformatie over Azure Active Directory Graph-machtigingen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Verwijzing toestemmingsbereik: [Azure AD Graph-toestemmingsverwijzing](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-curl"></a>Toepassingstoestemmingen verlenen met CURL
 

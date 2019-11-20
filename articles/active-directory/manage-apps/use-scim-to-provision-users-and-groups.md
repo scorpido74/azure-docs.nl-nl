@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a24ebd8aca3cebab7898689b00e590298a8d1e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144757"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195454"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-gebruikers inrichten met Azure Active Directory (Azure AD)
 
@@ -1306,6 +1306,24 @@ Zodra de eerste cyclus is gestart, kunt u **inrichtings logboeken** selecteren i
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Stap 5: Publiceer uw toepassing in de Azure AD-toepassings galerie
 
 Als u een toepassing bouwt die wordt gebruikt door meer dan één Tenant, kunt u deze beschikbaar maken in de Azure AD-toepassings galerie. Dit maakt het eenvoudig voor organisaties om de toepassing te detecteren en inrichtingen te configureren. Het publiceren van uw app in de Azure AD-galerie en het beschikbaar maken van de inrichting voor anderen is eenvoudig. Bekijk de stappen die [hier](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)worden beschreven. Micro soft werkt samen met u om uw toepassing te integreren in onze galerie, uw eind punt te testen en onboarding- [documentatie](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) voor klanten te publiceren. 
+
+
+### <a name="authorization-for-provisioning-connectors-in-the-application-gallery"></a>Autorisatie voor het inrichten van connectors in de toepassings galerie
+De SCIM spec definieert geen SCIM-specifiek schema voor verificatie en autorisatie. Het is afhankelijk van het gebruik van bestaande industrie normen. De Azure AD-inrichtings client ondersteunt twee autorisatie methoden voor toepassingen in de galerie. 
+
+**Overdrachts stroom OAuth-autorisatie code:** De inrichtings service ondersteunt de [toekenning van autorisatie code](https://tools.ietf.org/html/rfc6749#page-24). Na het verzenden van uw aanvraag voor het publiceren van uw app in de galerie, zal ons team met u samen werken om de volgende informatie te verzamelen:
+*  Autorisatie-URL: een URL door de client voor het verkrijgen van autorisatie van de resource-eigenaar via omleiding van gebruikers agent. De gebruiker wordt omgeleid naar deze URL om toegang te autoriseren. 
+*  Token Exchange-URL: een URL door de client voor het uitwisselen van een autorisatie machtiging voor een toegangs token, meestal met client verificatie.
+*  Client-ID: de autorisatie server geeft de geregistreerde client een client-id. Dit is een unieke teken reeks die de registratie gegevens vertegenwoordigt die door de client worden verstrekt.  De client-id is geen geheim. het wordt blootgesteld aan de resource-eigenaar en **mag niet** alleen voor client verificatie worden gebruikt.  
+*  Client geheim: het client geheim is een geheim dat is gegenereerd door de autorisatie server. Dit moet een unieke waarde zijn die alleen bekend is bij de autorisatie server. 
+
+Aanbevolen procedures (aanbevolen maar niet vereist):
+* Ondersteuning voor meerdere omleidings-Url's. Beheerders kunnen het inrichten configureren van zowel ' portal.azure.com ' als ' aad.portal.azure.com '. Ondersteuning voor meerdere omleidings-Url's zorgt ervoor dat gebruikers toegang kunnen verlenen vanuit een van de portals.
+* Meerdere geheimen ondersteunen om te zorgen voor een soepele geheime verlenging, zonder uitval tijd. 
+
+**Lange levens duur van OAuth Bearer-tokens:** Als uw toepassing geen ondersteuning biedt voor de overdrachts stroom van de OAuth-autorisatie code, kunt u ook een lang bewaarde OAuth Bearer-token genereren dan die een beheerder kan gebruiken om de inrichtings integratie in te stellen. Het token moet permanent zijn, anders wordt de inrichtings taak in [quarantaine geplaatst](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status) wanneer het token verloopt. Dit token moet kleiner zijn dan 1 KB.  
+
+Laat het ons weten op [UserVoice](https://aka.ms/appprovisioningfeaturerequest)voor aanvullende verificatie-en autorisatie methoden.
 
 ### <a name="allow-ip-addresses-used-by-the-azure-ad-provisioning-service-to-make-scim-requests"></a>IP-adressen die worden gebruikt door de Azure AD-inrichtings service toestaan om SCIM-aanvragen te maken
 

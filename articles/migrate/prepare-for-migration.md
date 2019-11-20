@@ -1,19 +1,19 @@
 ---
-title: On-premises machines voorbereiden voor migratie naar Azure met Azure Migrate
-description: In dit artikel wordt beschreven hoe u on-premises machines voorbereidt voor migratie naar Azure met Azure Migrate.
+title: Machines voorbereiden voor migratie met Azure Migrate
+description: Meer informatie over het voorbereiden van on-premises machines voor migratie met Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 61b4f41a0b36945413e45a357a5ca73ac75ceb98
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2c13bc79fccc74da431ba1a6399870b261b24c57
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73480125"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196423"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>On-premises machines voorbereiden voor migratie naar Azure
 
@@ -46,8 +46,7 @@ In dit artikel leert u het volgende:
 
 - Voor virtuele VMware-machines ondersteunt Azure Migrate server migratie zonder [agents of migratie op basis van een agent](server-migrate-overview.md). Controleer de vereisten voor VMware-VM'S en ondersteuning voor migraties zonder [agent](migrate-support-matrix-vmware.md#migration---limitations) en [op basis van agents](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) .
 - Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) voor virtuele Hyper-V-machines.
-- Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) voor on-premises fysieke machines of andere gevirtualiseerde servers. Deze vereisten zijn vergelijkbaar met de vereisten voor VMware-VM'S.
-
+- Controleer de [migratie vereisten en ondersteuning](migrate-support-matrix-physical.md) voor on-premises fysieke machines of andere gevirtualiseerde servers. 
 
 
 
@@ -65,10 +64,10 @@ Computers hebben mogelijk Internet toegang nodig tijdens de migratie.
 ## <a name="verify-required-changes-before-migration"></a>Controleer de vereiste wijzigingen vóór de migratie
 
 Voor sommige Vm's zijn mogelijk wijzigingen vereist zodat ze kunnen worden uitgevoerd in Azure. Azure Migrate worden deze wijzigingen automatisch aangebracht voor virtuele machines waarop deze besturings systemen worden uitgevoerd:
-- Red Hat Enterprise Linux 6.5 +, 7.0 +
-- CentOS 6.5 +, 7.0 +
+- Red Hat Enterprise Linux 6.5+, 7.0+
+- CentOS 6.5+, 7.0+
 - SUSE Linux Enterprise Server 12 SP1 +
-- Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS
+- Ubuntu 14.04LTS, 16.04LTS, 18.04LTS
 - Debian 7, 8
 
 Voor andere besturings systemen moet u de computers hand matig voorbereiden vóór de migratie. 

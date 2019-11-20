@@ -1,79 +1,79 @@
 ---
-title: Onboarding een basis- of apex domein naar een bestaande voordeur met behulp van de Azure portal
-description: Informatie over hoe moet worden vrijgegeven een basis- of apex domein naar een bestaande voordeur met behulp van de Azure portal.
+title: Een root-of Apex-domein onboarden naar een bestaande front-deur-Azure Portal
+description: Meer informatie over het voorbereiden van een root-of Apex-domein naar een bestaande front-deur met behulp van de Azure Portal.
 services: front-door
 author: sharad4u
 ms.service: frontdoor
 ms.topic: article
 ms.date: 5/21/2019
 ms.author: sharadag
-ms.openlocfilehash: 8fe8da95a61d2f2bb35095236131670cb6ef0e70
-ms.sourcegitcommit: f10ae7078e477531af5b61a7fe64ab0e389830e8
+ms.openlocfilehash: bb1042e15d4366923174996388eeb2fb99aef429
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67605780"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184620"
 ---
-# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Onboarding een basis- of het toppunt van domein op de voordeur
-Azure voordeur maakt gebruik van CNAME-records voor het valideren van domeineigendom voor het voorbereiden van aangepaste domeinen. Ook voordeur het frontend-IP-adres dat is gekoppeld aan uw profiel voordeur niet beschikbaar en zodat u niet kan uw apex domein toewijzen aan een IP-adres als het doel om onboarding deze aan de voordeur voor Azure is.
+# <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Een root-of Apex-domein op de voor deur onboarden
+Azure front-deur gebruikt CNAME-records om het domein eigendom te valideren voor de onboarding van aangepaste domeinen. Bovendien geeft front deur niet het frontend-IP-adres weer dat is gekoppeld aan uw front deur-profiel. u kunt uw Apex-domein niet toewijzen aan een IP-adres als het doel is om het in te stellen op Azure front deur.
 
-Het DNS-protocol wordt voorkomen dat de toewijzing van CNAME-records in de apex van de zone. Bijvoorbeeld, als uw domein is `contoso.com`; u kunt maken van CNAME-records voor `somelabel.contoso.com`; maar u kunt geen CNAME voor maken `contoso.com` zelf. Deze beperking geeft een probleem voor toepassingseigenaren van die toepassingen met load balancing achter Azure voordeur hebben. Omdat het maken van een CNAME-record met behulp van een profiel voordeur worden vereist, is het niet mogelijk om te verwijzen naar de voordeur-profiel in het toppunt van de zone.
+Het DNS-protocol voor komt dat de toewijzing van CNAME-records op de zone Apex. Als uw domein bijvoorbeeld is `contoso.com`, u kunt CNAME-records maken voor `somelabel.contoso.com`; maar u kunt geen CNAME maken voor `contoso.com` zelf. Deze beperking geeft een probleem met de eigen aren van toepassingen die toepassingen met taak verdeling achter de Azure front-deur hebben. Omdat voor het gebruik van een front-deur profiel een CNAME-record moet worden gemaakt, is het niet mogelijk om naar het voorste deur Profiel van de zone Apex te wijzen.
 
-Dit probleem is opgelost met aliasrecords in Azure DNS. In tegenstelling tot de CNAME-records, aliasrecords zijn gemaakt in de apex van de zone en toepassingseigenaren kunnen deze gebruiken om hun apexrecord zone verwijzen naar een voordeur-profiel met openbare eindpunten. Toepassingseigenaren verwijzen naar hetzelfde voordeur profiel dat wordt gebruikt voor andere domeinen in hun DNS-zone. Bijvoorbeeld, `contoso.com` en `www.contoso.com` kan verwijzen naar hetzelfde voordeur profiel. 
+Dit probleem wordt opgelost met behulp van alias records op Azure DNS. In tegens telling tot CNAME-records worden alias records gemaakt op de zone Apex en de eigen aren van toepassingen kunnen deze gebruiken om hun zone Apex-record te laten wijzen naar een front-deur profiel met open bare eind punten. Toepassings eigenaren verwijzen naar hetzelfde deur profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone. `contoso.com` en `www.contoso.com` kunnen bijvoorbeeld verwijzen naar hetzelfde front-deur profiel. 
 
-Uw domein het toppunt van of het basiscertificaat in feite toewijzen aan uw profiel voordeur vereist CNAME plat maken of DNS-chasing, dit is een mechanisme waarbij in de DNS-Server provider recursief oplossing voor de CNAME-vermelding totdat deze komt binnen via een IP-adres. Deze functionaliteit wordt ondersteund door Azure DNS voor de voordeur eindpunten. 
+Voor het toewijzen van uw Apex of hoofd domein aan het voorste deur profiel is in principe CNAME-afvlakking of DNS-Chasing vereist. Dit is een mechanisme waarbij de CNAME-vermelding in de DNS-provider recursief wordt opgelost, totdat deze een IP-adres heeft gevonden. Deze functionaliteit wordt ondersteund door Azure DNS voor eind punten van de voor deur. 
 
 > [!NOTE]
-> Er zijn andere DNS-providers ook die ondersteuning bieden voor CNAME plat maken of DNS chasing, echter Azure voordeur raadt het gebruik van Azure DNS zijn klanten voor het hosten van hun domeinen.
+> Er zijn ook andere DNS-providers die ondersteuning bieden voor CNAME afvlakking of DNS-Chasing, maar Azure front-deur raadt u aan om Azure DNS voor de klanten te gebruiken voor het hosten van hun domeinen.
 
-U kunt het gebruiken van de Azure portal voor onboarding een apex-domein op uw voordeur en HTTPS hebt ingeschakeld voor het door deze te koppelen met een certificaat voor SSL-beëindiging. Het toppunt van domeinen worden ook wel aangeduid als root of zonder voorvoegsel zijn domeinen.
+U kunt de Azure Portal gebruiken om een Apex-domein op uw voor deur uit te voeren en HTTPS in te scha kelen door het te koppelen aan een certificaat voor SSL-beëindiging. Apex-domeinen worden ook wel root-of onwaar-domeinen genoemd.
 
 In dit artikel leert u het volgende:
 
 > [!div class="checklist"]
-> * Maak een alias-record die naar uw profiel voordeur verwijst
-> * Het hoofddomein toevoegen aan de voordeur
-> * HTTPS voor het hoofddomein instellen
+> * Een alias record maken die naar uw voorste deur profiel wijst
+> * Het hoofd domein toevoegen aan de voor deur
+> * HTTPS instellen op het hoofd domein
 
 > [!NOTE]
-> Deze zelfstudie vereist dat u al een voordeur profiel hebt gemaakt. Raadpleeg andere zelfstudies, zoals [Quick Start: Maken van een voordeur](./quickstart-create-front-door.md) of [een voordeur maken via HTTP naar HTTPS-omleiding](./front-door-how-to-redirect-https.md) aan de slag.
+> Voor deze zelf studie moet u al een voor deur profiel maken. Raadpleeg andere zelf studies zoals [Quick Start: Maak een front](./quickstart-create-front-door.md) -deur of [Maak een voor deur met HTTP-naar-https-omleiding](./front-door-how-to-redirect-https.md) om aan de slag te gaan.
 
-## <a name="create-an-alias-record-for-zone-apex"></a>Een alias-record voor het toppunt van zone maken
+## <a name="create-an-alias-record-for-zone-apex"></a>Een alias record maken voor de zone Apex
 
-1. Open **Azure DNS** configuratie voor het domein waarvoor onboarding moet worden.
-2. Maak of bewerk de record voor het toppunt van de zone.
-3. Selecteer de record **type** als _A_ opnemen en selecteer vervolgens _Ja_ voor **Alias-Recordset**. **Aliastype** moet worden ingesteld op _Azure-resource_.
-4. Kies het Azure-abonnement waar uw profiel voordeur wordt gehost en selecteer vervolgens de voordeur-resource in de **Azure-resource** vervolgkeuzelijst.
-5. Klik op **OK** uw wijzigingen wilt indienen.
+1. Open **Azure DNS** configuratie van het domein dat u onboarding wilt uitvoeren.
+2. De record voor de zone Apex maken of bewerken.
+3. Selecteer het record **type** als _record_ en selecteer vervolgens _Ja_ voor **alias records instellen**. Het **alias type** moet worden ingesteld op de _Azure-resource_.
+4. Kies het Azure-abonnement waarin uw front-deur profiel wordt gehost en selecteer vervolgens de voor deur van de **Azure-resource** vervolg keuzelijst.
+5. Klik op **OK** om uw wijzigingen in te dienen.
 
-    ![Voor het toppunt van zone-alias-record](./media/front-door-apex-domain/front-door-apex-alias-record.png)
+    ![Alias record voor zone Apex](./media/front-door-apex-domain/front-door-apex-alias-record.png)
 
-6. De bovenstaande stap maakt u een zone apex-record die verwijst naar de voordeur-bron en ook een toewijzing CNAME-record afdverify (voorbeeld: `afdverify.contosonews.com`) naar `afdverify.<name>.azurefd.net` die worden gebruikt voor de voorbereiding op het domein in uw profiel voordeur.
+6. Met de bovenstaande stap maakt u een zone Apex-record die verwijst naar de voor deur en ook een CNAME-record met de naam ' afdverify ' (bijvoorbeeld `afdverify.contosonews.com`) naar `afdverify.<name>.azurefd.net` die wordt gebruikt voor het voorbereiden van het domein op uw front-deur profiel.
 
-## <a name="onboard-the-custom-domain-on-your-front-door"></a>Onboarding het aangepaste domein in de voordeur
+## <a name="onboard-the-custom-domain-on-your-front-door"></a>Het aangepaste domein onboarden op de voor deur
 
-1. Op het tabblad van de voordeur-ontwerper, klikt u op '+' pictogram op de front-hosts deel een nieuw aangepast domein toevoegt.
-2. Voer de basis- of apex domain-name in het naamveld aangepaste host voorbeeld `contosonews.com`.
-3. Als de CNAME-toewijzing van het domein aan de deur wordt gevalideerd, klikt u op **toevoegen** om toe te voegen van het aangepaste domein.
-4. Klik op **opslaan** de wijzigingen verzendt.
+1. Klik op het tabblad front deur Designer op het pictogram ' + ' op de sectie frontend-hosts om een nieuw aangepast domein toe te voegen.
+2. Voer de root-of Apex-domein naam in het veld aangepaste hostnaam in, bijvoorbeeld `contosonews.com`.
+3. Zodra de CNAME-toewijzing van het domein naar uw voor deur is gevalideerd, klikt u op **toevoegen** om het aangepaste domein toe te voegen.
+4. Klik op **Opslaan** om de wijzigingen te verzenden.
 
 ![Menu voor aangepaste domeinen](./media/front-door-apex-domain/front-door-onboard-apex-domain.png)
 
-## <a name="enable-https-on-your-custom-domain"></a>HTTPS voor uw aangepaste domein inschakelen
+## <a name="enable-https-on-your-custom-domain"></a>HTTPS inschakelen voor uw aangepaste domein
 
-1. Klik op het aangepaste domein dat is toegevoegd en onder de sectie **HTTPS voor aangepaste domeinen**, wijzigt de status van de **ingeschakeld**.
-2. Selecteer de **management certificaattype** naar _'Mijn eigen certificaat gebruiken'_ .
-
-> [!WARNING]
-> Front klep van beheerde certificaatbeheertype is momenteel niet ondersteund voor apex of het basiscertificaat domeinen. De enige optie die beschikbaar zijn voor het inschakelen van HTTPS op een domein apex of het basiscertificaat voor de voordeur maakt gebruik van uw eigen aangepaste SSL-certificaat die wordt gehost op Azure Key Vault.
-
-3. Zorg ervoor dat u ingesteld de juiste machtigingen voor de voordeur hebt voor toegang tot uw key Vault, zoals vermeld in de gebruikersinterface, voordat u doorgaat met de volgende stap.
-4. Kies een **Key Vault-account** van uw huidige abonnement en selecteer vervolgens de juiste **geheim** en **geheime versie** om toe te wijzen aan het juiste certificaat.
-5. Klik op **Update** opslaan van de selectie en klik vervolgens op **opslaan**.
-6. Klik op **vernieuwen** na een paar minuten en klik vervolgens op het aangepaste domein opnieuw om te zien van de voortgang van de inrichting van certificaten. 
+1. Klik op het aangepaste domein dat is toegevoegd en klik onder de sectie HTTPS van het **aangepaste domein**, wijzig de status in **ingeschakeld**.
+2. Selecteer het **type certificaat beheer** om _mijn eigen certificaat te gebruiken_.
 
 > [!WARNING]
-> Zorg ervoor dat u hebt gemaakt van de juiste routeringsregels voor uw domein het toppunt van of het domein toegevoegd aan bestaande regels voor doorsturen.
+> Het beheer type van de front-deur wordt momenteel niet ondersteund voor Apex-of hoofd domeinen. De enige optie die beschikbaar is om HTTPS in te scha kelen op een Apex of hoofd domein voor de voor deur, gebruikt uw eigen aangepaste SSL-certificaat dat wordt gehost op Azure Key Vault.
+
+3. Zorg ervoor dat u de juiste machtigingen hebt ingesteld voor de voor deur om toegang te krijgen tot uw sleutel kluis, zoals vermeld in de gebruikers interface, voordat u verdergaat met de volgende stap.
+4. Kies een **Key Vault-account** in uw huidige abonnement en selecteer vervolgens de juiste **geheime** en **geheime versie** om aan het juiste certificaat toe te wijzen.
+5. Klik op **bijwerken** om de selectie op te slaan en klik vervolgens op **Opslaan**.
+6. Klik na een paar minuten op **vernieuwen** en klik vervolgens nogmaals op het aangepaste domein om de voortgang van het inrichten van het certificaat te bekijken. 
+
+> [!WARNING]
+> Zorg ervoor dat u de juiste routerings regels hebt gemaakt voor het Apex-domein of het domein aan bestaande routerings regels hebt toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen
 

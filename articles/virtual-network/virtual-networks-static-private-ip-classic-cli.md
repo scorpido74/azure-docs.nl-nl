@@ -1,5 +1,5 @@
 ---
-title: Privé IP-adressen voor virtuele machines (klassiek) configureren-klassieke Azure-CLI
+title: Privé IP-adressen configureren voor Vm's (klassiek)-CLI
 titlesuffix: Azure Virtual Network
 description: Informatie over het configureren van privé IP-adressen voor virtuele machines (klassiek) met behulp van de Azure classic-opdrachtregelinterface (CLI).
 services: virtual-network
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 64342c6dcf4c9a052442a6f4b0afb7a56994f496
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 9deaf4b1d80ad4e55e7c971998e8b1f5ea562257
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059223"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196586"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-classic-using-the-azure-classic-cli"></a>Privé IP-adressen voor een virtuele machine (klassiek) met de klassieke Azure-CLI configureren
 

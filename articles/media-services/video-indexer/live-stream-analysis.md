@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
-ms.openlocfilehash: 4766d48a748fedd82532f2ac49223ab0460b9ef7
-ms.sourcegitcommit: fa41a56357de487b10e54711fbbdbd4a373fa67c
-ms.translationtype: HT
+ms.openlocfilehash: 89d0254fc758834c437f347e6ecb7bcafc1fe467
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74153553"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185998"
 ---
 # <a name="live-stream-analysis-with-video-indexer"></a>Live Stream-analyse met Video Indexer
 
@@ -27,7 +27,7 @@ Met een oplossing die in dit artikel wordt beschreven, kunnen klanten Video Inde
 
 *Afbeelding 1: voor beeld-Player de Video Indexer meta gegevens in de Live Stream weer geven*
 
-De [oplossing voor analyse van streams](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/blob/master/media-functions-for-logic-app/LiveStreamAnalysis.md) maakt gebruik van Azure functions en twee Logic apps om een live-programma van een live kanaal in Azure Media Services met video indexer te verwerken en het resultaat weer te geven met Azure Media Player de stroom van de bijna real-time gegevens stromen weer gegeven.
+De [oplossing voor analyse van streams](https://aka.ms/livestreamanalysis) maakt gebruik van Azure functions en twee Logic apps om een live-programma van een live kanaal in Azure Media Services met video indexer te verwerken en het resultaat weer te geven met Azure Media Player de stroom van de bijna real-time gegevens stromen weer gegeven.
 
 Op hoog niveau bestaat het uit twee belang rijke stappen. De eerste stap wordt elke 60 seconden uitgevoerd en er wordt een subclip van de laatste 60 seconden afgespeeld, er wordt een activum van gemaakt en geïndexeerd via Video Indexer. Vervolgens wordt de tweede stap aangeroepen wanneer het indexeren is voltooid. De vastgelegde inzichten worden verwerkt, verzonden naar Azure Cosmos DB en de index van het subfragment wordt verwijderd.
 

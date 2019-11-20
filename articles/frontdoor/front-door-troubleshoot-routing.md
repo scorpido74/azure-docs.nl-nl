@@ -1,5 +1,5 @@
 ---
-title: Problemen oplossen-problemen met de Azure front-deur service configuratie oplossen | Microsoft Docs
+title: Configuratie problemen met de Azure-front-deur service oplossen
 description: In deze zelf studie leert u hoe u zelf een aantal veelvoorkomende problemen met uw voor deur kunt oplossen.
 services: frontdoor
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 420d7afe0d825da9149f2cb2ae1540a2805b357c
-ms.sourcegitcommit: e9c866e9dad4588f3a361ca6e2888aeef208fc35
+ms.openlocfilehash: c0d6303620b92368e422b54beab4f9c346d022a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68335891"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184564"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Veelvoorkomende problemen met route ring oplossen
 In dit artikel wordt beschreven hoe u een aantal veelvoorkomende problemen met route ring kunt oplossen voor de configuratie van de Azure front-deur-service. 

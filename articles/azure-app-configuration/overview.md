@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b26fa822e17ad7e9444b75d4db516ea2ccf5340b
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 01644054868ffc08738e67654ba181c76e7aed39
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129696"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185070"
 ---
 # <a name="what-is-azure-app-configuration"></a>Wat is Azure-app configuratie?
 
@@ -58,12 +58,12 @@ App-configuratie complementen [Azure Key Vault](https://azure.microsoft.com/serv
 
 ## <a name="use-app-configuration"></a>App-configuratie gebruiken
 
-De eenvoudigste manier om een appconfiguratiearchief toe te voegen aan uw toepassing is via een door Microsoft aangeboden clientbibliotheek. Op basis van de programmeer taal en het Framework zijn de volgende beste methoden voor u beschikbaar.
+De eenvoudigste manier om een app-configuratie archief toe te voegen aan uw toepassing, is via een client bibliotheek die door micro soft wordt verstrekt. Op basis van de programmeer taal en het Framework zijn de volgende beste methoden voor u beschikbaar.
 
 | Computertaal en framework | Verbinding maken |
 |---|---|
 | .NET core en ASP.NET Core | App-configuratie provider voor .NET core |
-| .NET en ASP.NET | App Configuration Builder voor .NET |
+| .NET Framework en ASP.NET | App Configuration Builder voor .NET |
 | Java Spring | App-configuratie client voor lente-Cloud |
 | Overige | REST API app-configuratie |
 
@@ -72,7 +72,7 @@ De eenvoudigste manier om een appconfiguratiearchief toe te voegen aan uw toepas
 * [Snelstartgids ASP.NET Core](./quickstart-aspnet-core-app.md)
 * [Snelstartgids voor .NET core](./quickstart-dotnet-core-app.md)
 * [Snelstartgids .NET Framework](./quickstart-dotnet-app.md)
-* [Snelstartgids voor Azure function](./quickstart-azure-function-csharp.md)
+* [Snelstartgids Azure Functions](./quickstart-azure-functions-csharp.md)
 * [Snelstartgids voor Java Spring](./quickstart-java-spring-app.md)
 * [Quick start voor functie vlag ASP.NET Core](./quickstart-feature-flag-aspnet-core.md)
 * [Snelstartgids voor Spring boot-functie](./quickstart-feature-flag-spring-boot.md)

@@ -1,5 +1,5 @@
 ---
-title: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage-Linux-Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -15,21 +15,21 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 815e1a811d16e4c630e455e9c684c2b6b094a5d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66236163"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183413"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Zelfstudie: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage 
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Storage met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Procedures voor:
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Maak een opslagaccount
 > * Een blobcontainer in een opslagaccount maken
 > * De beheerde identiteit van de Linux-VM toegang geven tot een Azure Storage-container
 > * Een toegangstoken ophalen en daarmee Azure Storage aanroepen
@@ -46,7 +46,7 @@ Als u de CLI-scriptvoorbeelden in deze zelfstudie wilt uitvoeren, hebt u twee op
 - Gebruik [Azure Cloud Shell](~/articles/cloud-shell/overview.md) vanuit Azure Portal of via de knop **Uitproberen** in de rechterbovenhoek van elk codeblok.
 - [Installeer de nieuwste versie van CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.23 of later) als u liever een lokale CLI-console gebruikt.
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Maak een opslagaccount 
 
 In deze sectie maakt u een opslagaccount. 
 
@@ -55,7 +55,7 @@ In deze sectie maakt u een opslagaccount.
 3. Geef onder **Naam** een naam voor het opslagaccount op.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op **Resource Manager** en **Storage (algemeen gebruik v1)** . 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -84,7 +84,7 @@ U kunt de beheerde identiteit van de virtuele machine gebruiken om de gegevens i
 1. Navigeer terug naar het zojuist gemaakte opslagaccount.  
 2. Klik op de koppeling **Toegangsbeheer (IAM)** in het linkerpaneel.  
 3. Klik op **+ Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen.
-4. Onder **rol**, in de vervolgkeuzelijst, selecteer **gegevenslezer voor Opslagblob**. 
+4. Selecteer onder **rol**in de vervolg keuzelijst **Storage BLOB data Reader**. 
 5. In de volgende vervolgkeuzelijst, onder **Toegang toewijzen aan**, kiest u **Virtuele machine**.  
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op **Alle resourcegroepen**.  
 7. Kies onder **Selecteren** uw virtuele machine en klik vervolgens op **Opslaan**.

@@ -1,6 +1,7 @@
 ---
-title: Video's analyseren met Azure Media Services | Microsoft Docs
-description: Volg de stappen van deze zelfstudie om video’s te analyseren met Azure Media Services.
+title: Video's analyseren met Media Services v3
+titleSuffix: Azure Media Services
+description: Meer informatie over het analyseren van Video's met behulp van Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,40 +13,40 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d31d102300cf23e068aee6bec9ea6d253e874dca
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: f803bcafb1966e32e894b4caeaa8fafb5f73e8e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67653958"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186290"
 ---
-# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Zelfstudie: Video's met Media Services v3 analyseren
+# <a name="tutorial-analyze-videos-with-media-services-v3"></a>Zelf studie: Video's analyseren met Media Services v3
 
 > [!NOTE]
-> Hoewel de zelfstudie wordt gebruikgemaakt van de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) voorbeelden van de algemene stappen zijn hetzelfde voor [REST-API](https://docs.microsoft.com/rest/api/media/liveevents), [CLI](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest), of een andere ondersteunde [SDK's](media-services-apis-overview.md#sdks) .
+> Hoewel deze zelf studie de [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet) -voor beelden gebruikt, zijn de algemene stappen hetzelfde [voor rest API](https://docs.microsoft.com/rest/api/media/liveevents), [cli](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)of andere ondersteunde [sdk's](media-services-apis-overview.md#sdks).
 
-In deze zelfstudie ziet u hoe u video's kunt analyseren met Azure Media Services. Er zijn veel scenario's waarin u misschien inzicht wilt krijgen in opgenomen video's of audio-inhoud. Voor het bereiken van een hogere klanttevredenheid kunnen organisaties bijvoorbeeld spraak-naar-tekstverwerking uitvoeren om opnamen van de klantenondersteuning om te zetten in een catalogus van zoekmachines, met indexen en dashboards. Vervolgens kunnen zij inzicht verkrijgen in hun bedrijf, zoals een lijst met veelvoorkomende klachten, bronnen van dergelijke klachten, en andere nuttige informatie.
+In deze zelfstudie ziet u hoe u video's kunt analyseren met Azure Media Services. Er zijn veel scenario's waarin u misschien inzicht wilt krijgen in opgenomen video's of audio-inhoud. Voor het bereiken van een hogere klanttevredenheid kunnen organisaties bijvoorbeeld spraak-naar-tekstverwerking uitvoeren om opnamen van de klantenondersteuning om te zetten in een catalogus van zoekmachines, met indexen en dashboards. Vervolgens kunnen ze inzicht krijgen in hun bedrijf. Deze inzichten bevatten een lijst met algemene klachten, bronnen van dergelijke klachten en andere nuttige informatie.
 
-In deze zelfstudie ontdekt u hoe u:    
- 
+In deze handleiding ontdekt u hoe u:
+
 > [!div class="checklist"]
-> * Downloaden van de voorbeeld-app zoals beschreven in het onderwerp
-> * De code onderzoeken die de opgegeven video analyseert
-> * De app kunt uitvoeren
-> * De uitvoer kunt controleren
-> * Resources opschonen
+> * Down load de voor beeld-app die wordt beschreven in het onderwerp.
+> * Controleer de code die de opgegeven video analyseert.
+> * Voer de app uit.
+> * Bekijk de uitvoer.
+> * Resources opschonen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet beschikt over Visual Studio, kunt u [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) downloaden.
+- Als Visual Studio niet is geïnstalleerd, kunt u [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)downloaden.
 - [Een Azure Media Services-account maken](create-account-cli-how-to.md).<br/>Vergeet niet de waarden die u hebt gebruikt voor de namen van de resourcegroep en het Media Services-account.
-- Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U hebt deze nodig voor toegang tot de API.
+- Volg de stappen in [Access Azure Media Services API with the Azure CLI](access-api-cli-how-to.md) (Toegang tot de Azure Media Services-API met de Azure CLI) en sla de referenties op. U moet deze gebruiken om toegang te krijgen tot de API.
 
 ## <a name="download-and-configure-the-sample"></a>Het voorbeeld downloaden en configureren
 
-Kloon met de volgende opdracht een GitHub-opslagplaats met het .NET-voorbeeld op de computer:  
+Klonen van een GitHub-opslagplaats met het .NET-voorbeeld op de computer met de volgende opdracht:  
 
  ```bash
  git clone https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git
@@ -53,20 +54,20 @@ Kloon met de volgende opdracht een GitHub-opslagplaats met het .NET-voorbeeld op
 
 Het voorbeeld bevindt zich in de map [AnalyzeVideos](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/AnalyzeVideos).
 
-Open [appsettings.json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) in het project dat u hebt gedownload. Vervang de waarden door referenties die u hebt verkregen via [toegang tot API's](access-api-cli-how-to.md).
+Open [appSettings. json](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/appsettings.json) in het gedownloade project. Vervang de waarden door de referenties die u hebt gekregen van [toegang tot api's](access-api-cli-how-to.md).
 
 ## <a name="examine-the-code-that-analyzes-the-specified-video"></a>De code onderzoeken die de opgegeven video analyseert
 
 In dit gedeelte worden de functies bekeken die zijn gedefinieerd in het bestand [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/AnalyzeVideos/Program.cs) van het project *AnalyzeVideos*.
 
-In het voorbeeld worden de volgende acties uitgevoerd:
+Het voor beeld heeft de volgende acties voltooid:
 
 1. Een **Transformatie** en een **Taak** maken voor het analyseren van de video.
 2. Een invoer**asset** maken en de video uploaden naar deze asset. De asset wordt gebruikt als de invoer voor de taak.
-3. Een uitvoerasset maken waarin de uitvoer van de taak wordt opgeslagen. 
+3. Een uitvoerasset maken waarin de uitvoer van de taak wordt opgeslagen.
 4. De taak verzenden.
 5. De status van de taak controleren.
-6. De bestanden downloaden die het resultaat zijn van het uitvoeren van de taak. 
+6. De bestanden downloaden die het resultaat zijn van het uitvoeren van de taak.
 
 > [!NOTE]
 > Wanneer u voorinstellingen voor een Video of Audio Analyzer gebruikt, moet u de Azure-portal gebruiken om uw account in te stellen op 10 S3 Door media gereserveerde eenheden. Zie [Mediaverwerking schalen](media-reserved-units-cli-how-to.md) voor meer informatie.
@@ -79,19 +80,19 @@ Als u wilt starten met Media Services API's met .NET, moet u een **AzureMediaSer
 
 ### <a name="create-an-input-asset-and-upload-a-local-file-into-it"></a>Een invoerasset maken en er een lokaal bestand in uploaden 
 
-Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](https://docs.microsoft.com/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze asset wordt gebruikt als invoer voor uw coderingstaak. In Media Services-v3 kan de invoer voor een taak een asset zijn of inhoud die u beschikbaar maakt voor uw Media Services-account via HTTPS-URL's. Ga naar [dit artikel ](job-input-from-http-how-to.md) als u meer informatie wilt over het coderen van een HTTPS-URL.  
+Met de functie **CreateInputAsset** wordt een nieuwe [invoerasset](https://docs.microsoft.com/rest/api/media/assets) gemaakt en het opgegeven lokale videobestand wordt hierin geladen. Deze asset wordt gebruikt als invoer voor uw coderingstaak. In Media Services-v3 kan de invoer voor een taak een asset zijn of inhoud die u beschikbaar maakt voor uw Media Services-account via HTTPS-URL's. Zie [Dit](job-input-from-http-how-to.md) artikel voor meer informatie over het coderen van een HTTPS-URL.  
 
 In Media Services v3 kunt u Azure Storage-API's gebruiken om bestanden te uploaden. Het volgende .NET-fragment laat zien hoe.
 
-De volgende functie voert deze acties uit:
+Met de volgende functie worden deze acties voltooid:
 
-* Maakt een asset 
-* Haalt een beschrijfbare [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) voor de [container in opslag](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container) van de asset
-* Uploadt het bestand naar de container in opslag met de SAS-URL
+* Hiermee maakt u een Asset.
+* Hiermee wordt een Beschrijf bare [SAS-URL](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) opgehaald naar de container van het activum [in de opslag](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet#upload-blobs-to-a-container).
+* Hiermee wordt het bestand geüpload naar de container in Storage met behulp van de SAS-URL.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CreateInputAsset)]
 
-### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Een uitvoerasset maken voor het opslaan van het resultaat van de taak 
+### <a name="create-an-output-asset-to-store-the-result-of-the-job"></a>Een uitvoerasset maken voor het opslaan van het resultaat van de taak
 
 In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het resultaat van de taak opgeslagen. Het project definieert de functie **DownloadResults** die de resultaten van deze uitvoerasset naar de uitvoermap downloadt zodat u kunt zien wat u hebt gekregen.
 
@@ -99,19 +100,19 @@ In de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) wordt het
 
 ### <a name="create-a-transform-and-a-job-that-analyzes-videos"></a>Een transformatie en een taak maken die video's analyseert
 
-Bij het coderen of verwerken van inhoud in Media Services is het een gangbaar patroon om de coderingsinstellingen als recept in te stellen. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door het indienen van nieuwe taken voor elke nieuwe video past u het recept toe op alle video's in de bibliotheek. Een recept in Media Services wordt aangeroepen als een **transformatie**. Zie voor meer informatie [Transformaties en taken](transform-concept.md). Met het voorbeeld dat wordt beschreven in deze zelfstudie wordt een recept gedefinieerd waarmee de opgegeven video wordt geanalyseerd. 
+Wanneer u inhoud codeert of verwerkt in Media Services, is dit een gemeen schappelijk patroon voor het instellen van de coderings instellingen als een recept. U dient vervolgens een **taak** in te dienen om het recept toe te passen op een video. Door nieuwe taken voor elke nieuwe video in te dienen, past u dat recept toe op alle Video's in uw bibliotheek. Een recept in Media Services wordt een **trans formatie**genoemd. Zie voor meer informatie [transformaties en taken](transform-concept.md). Met het voorbeeld dat wordt beschreven in deze zelfstudie wordt een recept gedefinieerd waarmee de opgegeven video wordt geanalyseerd.
 
 #### <a name="transform"></a>Transformeren
 
-Bij het maken van een nieuwe [transformeren](https://docs.microsoft.com/rest/api/media/transforms) exemplaar, moet u opgeven wat u wilt dat als een uitvoer produceren **TransformOutput** is een vereiste parameter. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. In dit voorbeeld wordt de **VideoAnalyzerPreset** definitie wordt gebruikt en de taal ("en-US") wordt doorgegeven aan de constructor (`new VideoAnalyzerPreset("en-US")`). Met deze voorinstelling kunt u meerdere audio- en video-inzichten uit een video extraheren. U kunt de voorinstelling **AudioAnalyzerPreset** gebruiken als u meerdere audio-inzichten wilt extraheren uit een video. 
+Bij het maken van een nieuw [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-exemplaar, moet u opgeven wat u als uitvoer wilt maken. **TransformOutput** is een vereiste para meter. Elke **transformatie-uitvoer** bevat een **voorinstelling**. **Voorinstelling** bevat stapsgewijze instructies van de video- en/of audioverwerkingen die moeten worden gebruikt voor het genereren van de gewenste **TransformOutput**. In dit voor beeld wordt de **VideoAnalyzerPreset** -voor instelling gebruikt en de taal (en-US) wordt door gegeven aan de constructor (`new VideoAnalyzerPreset("en-US")`). Met deze voorinstelling kunt u meerdere audio- en video-inzichten uit een video extraheren. U kunt de voorinstelling **AudioAnalyzerPreset** gebruiken als u meerdere audio-inzichten wilt extraheren uit een video.
 
-Bij het maken van een **transformatie** moet u controleren of er al een bestaat met de methode **Ophalen** zoals weergegeven in de volgende code.  In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
+Wanneer u een **trans formatie**maakt, moet u eerst controleren of er al een bestaat met de **Get** -methode, zoals wordt weer gegeven in de volgende code. In Media Services-v3 retourneert de methode **Ophalen** van entiteiten **null** als de entiteit (een hoofdlettergevoelige controle van de naam).
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#EnsureTransformExists)]
 
 #### <a name="job"></a>Taak
 
-Zoals eerder vermeld, is het [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-object het recept en is de [taak](https://docs.microsoft.com/rest/api/media/jobs) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** bevat informatie zoals de locatie van de invoervideo en de locatie voor de uitvoer. U kunt de locatie van uw video opgeven met behulp van: HTTPS-URL's, SAS-URL's of activa die zich in uw Media Services-account bevinden. 
+Zoals eerder vermeld, is het [transformatie](https://docs.microsoft.com/rest/api/media/transforms)-object het recept en is de [taak](https://docs.microsoft.com/rest/api/media/jobs) de werkelijke aanvraag bij Media Services om deze **transformatie** toe te passen op een bepaalde invoervideo of audio-inhoud. De **taak** geeft informatie op zoals de locatie van de invoer video en de locatie voor de uitvoer. U kunt de locatie van uw video opgeven met: HTTPS-URL's, SAS-URL's of assets die zich in uw Media Service-account bevinden.
 
 In dit voorbeeld is de taakinvoer een lokale video.  
 
@@ -119,16 +120,15 @@ In dit voorbeeld is de taakinvoer een lokale video.
 
 ### <a name="wait-for-the-job-to-complete"></a>Wacht tot de taak is voltooid
 
-De taak neemt enige tijd in beslag en wanneer deze is voltooid, wordt u hiervan op de hoogte gesteld. U kunt op verschillende manieren een melding ontvangen over de voltooiing van de [taak](https://docs.microsoft.com/rest/api/media/jobs). De eenvoudigste optie (die hier wordt getoond) is het gebruik van polling. 
+Het duurt enige tijd voordat de taak is voltooid. Wanneer dit het geval is, wilt u een melding ontvangen. U kunt op verschillende manieren een melding ontvangen over de voltooiing van de [taak](https://docs.microsoft.com/rest/api/media/jobs). De eenvoudigste optie (die hier wordt weer gegeven) is om polling te gebruiken.
 
-Polling is geen aanbevolen best practice voor productietoepassingen vanwege mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken.
+Polling is geen aanbevolen best practice voor productie-apps vanwege een mogelijke latentie. Polling kan worden beperkt bij een te intensief gebruik op een account. Ontwikkelaars moeten in plaats daarvan Event Grid gebruiken.
 
-Event Grid is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamisch schalen. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen. Zie [Gebeurtenissen routeren naar een aangepast eindpunt](job-state-events-cli-how-to.md).
+Event Grid is ontworpen voor hoge beschikbaarheid, consistente prestaties en dynamisch schalen. Met Event Grid kunnen uw apps luisteren naar en reageren op gebeurtenissen uit vrijwel alle Azure-services, evenals aangepaste bronnen. Eenvoudige, op HTTP gebaseerde reactieve gebeurtenisafhandeling maakt het mogelijk om efficiënte oplossingen te bouwen met intelligente filtering en routering van gebeurtenissen. Zie voor meer informatie [route gebeurtenissen naar een aangepast webeindpunt](job-state-events-cli-how-to.md).
 
-De **taak** doorloopt meestal de volgende statussen: **Gepland**, **In de wachtrij geplaatst**, **Verwerken**, **Voltooid** (de eindstatus). Als bij de taak een fout is opgetreden is, krijgt u de status **Fout**. Als de taak momenteel wordt geannuleerd, krijgt u de melding **Wordt geannuleerd** en **Geannuleerd** wanneer het annuleren is voltooid.
+De **taak** doorloopt meestal de volgende statussen: **gepland**, **in wachtrij**, **wordt verwerkt**, **voltooid** (definitieve status). Als er een fout is opgetreden in de taak, krijgt u de **fout** status. Als de taak wordt geannuleerd, wordt deze **geannuleerd** en vervolgens **geannuleerd** zodra deze is voltooid...
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#WaitForJobToFinish)]
-
 
 ### <a name="job-error-codes"></a>Foutcodes in taak
 
@@ -136,19 +136,19 @@ Zie [Foutcodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)
 
 ### <a name="download-the-result-of-the-job"></a>Het resultaat van de taak downloaden
 
-Met de volgende functie worden de resultaten van de [uitvoerasset](https://docs.microsoft.com/rest/api/media/assets) gedownload naar de uitvoermap, zodat u de resultaten van de taak kunt bekijken. 
+Met de volgende functie worden de resultaten van de uitvoer [Asset](https://docs.microsoft.com/rest/api/media/assets) gedownload naar de map output, zodat u de resultaten van de taak kunt onderzoeken.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#DownloadResults)]
 
 ### <a name="clean-up-resource-in-your-media-services-account"></a>Opschonen van resources in uw Media Services-account
 
-Over het algemeen moet u alles opschonen, behalve objecten die u van plan bent te hergebruiken (meestal gebruikt u transformaties opnieuw en behoudt u StreamingLocators). Als u wilt dat uw account na het experiment is opgeschoond, moet u de resources verwijderen die u niet van plan bent te hergebruiken. Met de volgende code verwijdert u bijvoorbeeld taken.
+Over het algemeen moet u alles opschonen, behalve objecten die u wilt hergebruiken (meestal kunt u trans formaties opnieuw gebruiken en StreamingLocators behouden). Als u wilt dat uw account wordt gereinigd na het experimenteren, verwijdert u de resources die u niet wilt hergebruiken. Met de volgende code worden bijvoorbeeld taken verwijderd:
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/AnalyzeVideos/Program.cs#CleanUp)]
 
 ## <a name="run-the-sample-app"></a>De voorbeeld-app uitvoeren
 
-Druk op Ctrl+F5 om de toepassing *AnalyzeVideos*  te starten.
+Druk op CTRL + F5 om de *AnalyzeVideos* -app uit te voeren.
 
 Wanneer we het programma uitvoeren, produceert de taak miniaturen voor elk gezicht dat in de video wordt gevonden. Het produceert ook het insights.json-bestand.
 
@@ -158,7 +158,7 @@ Het uitvoerbestand van het analyseren van video's heet insights.json. Dit bestan
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u de resources van de resourcegroep niet meer nodig hebt, met inbegrip van de Media Services en opslagaccounts die u hebt gemaakt voor deze zelfstudie, verwijdert u de resourcegroep die u eerder hebt gemaakt. 
+Als u de resources van de resourcegroep niet meer nodig hebt, met inbegrip van de Media Services en opslagaccounts die u hebt gemaakt voor deze zelfstudie, verwijdert u de resourcegroep die u eerder hebt gemaakt.
 
 Voer de volgende CLI-opdracht uit:
 
@@ -166,13 +166,13 @@ Voer de volgende CLI-opdracht uit:
 az group delete --name amsResourceGroup
 ```
 
-## <a name="multithreading"></a>Multithreading
+## <a name="multithreading"></a>Multi-threading
 
-De SDK's van Azure Media Services v3 zijn niet thread-safe. Als u werkt met een multi-threaded toepassing, moet u per thread een nieuw AzureMediaServicesClient-object genereren.
+De Azure Media Services v3-Sdk's zijn niet thread-veilig. Wanneer u werkt met een app met meerdere threads, moet u een nieuw AzureMediaServicesClient-object per thread genereren.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Stel vragen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
-Bekijk de [Azure Media Services-community](media-services-community.md) artikel om te zien van verschillende manieren kunt u vragen stellen, feedback te geven en updates over Media Services ophalen.
+Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 

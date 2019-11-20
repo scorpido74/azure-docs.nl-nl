@@ -10,77 +10,59 @@ tags: azure-resource-manager
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 10/17/2019
 ms.author: amverma
-ms.openlocfilehash: 7218fceae71969f204c6c25ba4793a7c94341693
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 7f7907482da886d9da17ef1e7844b205f3e4b906
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70858482"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196769"
 ---
 # <a name="enable-infiniband-with-sr-iov"></a>InfiniBand inschakelen met SR-IOV
 
-De eenvoudigste en aanbevolen manier om aan de slag te gaan met IaaS Vm's voor HPC is het gebruik van de CentOS-HPC 7,6 VM-installatie kopie van het besturings systeem. Als u uw aangepaste VM-installatie kopie gebruikt, kunt u deze het beste configureren met InfiniBand (IB) door de InfiniBandDriverLinux-of InfiniBandDriverWindows-VM-extensie toe te voegen aan uw implementatie.
-Meer informatie over het gebruik van deze VM-extensies met [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) en [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances)
+De Azure NC-, ND-en H-serie Vm's worden allemaal ondersteund door een speciaal InfiniBand-netwerk. Alle RDMA-ingeschakelde grootten kunnen gebruikmaken van het netwerk met behulp van Intel MPI. Sommige VM-reeksen bieden uitgebreide ondersteuning voor alle MPI-implementaties en RDMA-werk woorden via SR-IOV. Virtuele machines die geschikt zijn voor RDMA, zijn [geoptimaliseerd voor GPU](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) en [HPC-vm's (High-Performance Compute)](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc) .
 
-Volg de onderstaande stappen om InfiniBand hand matig te configureren op Vm's met SR-IOV ingeschakeld (huidige HB-en HC-serie). Deze stappen gelden alleen voor RHEL/CentOS. Voor Ubuntu (16,04 en 18,04) en SLES (12 SP4 en 15) werken de Stuur Programma's voor het postvak in goed.
+## <a name="choose-your-installation-path"></a>Kies uw installatiepad
 
-## <a name="manually-install-ofed"></a>OFED hand matig installeren
+Om aan de slag te gaan, is het gebruik van een platform installatie kopie vooraf geconfigureerd voor InfiniBand, waar beschikbaar:
 
-Installeer de meest recente MLNX_OFED-Stuur Programma's voor Connectx-5 van [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=26).
+- **HPC IaaS vm's** : om aan de slag te gaan met IaaS VM'S voor HPC, is de eenvoudigste oplossing het gebruik van de [CentOS-HPC 7,6 VM OS-installatie kopie](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557), die al is geconfigureerd met Infiniband. Omdat deze installatie kopie al is geconfigureerd met InfiniBand, hoeft u deze niet hand matig te configureren. Zie voor compatibele Windows-versies [Windows RDMA-compatibele exemplaren](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-Voor RHEL/CentOS (voor beeld hieronder voor 7,6):
+- **GPU IaaS vm's** : er zijn momenteel geen platform installatie kopieën geconfigureerd voor door GPU geoptimaliseerde vm's, met uitzonde ring van [CentOS-HPC 7,6 VM-installatie kopie van het besturings systeem](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557). Als u een aangepaste installatie kopie met InfiniBand wilt configureren, raadpleegt u [MELLANOX OFED hand matig installeren](#manually-install-mellanox-ofed).
 
-```bash
-sudo yum install -y kernel-devel python-devel
-sudo yum install -y redhat-rpm-config rpm-build gcc-gfortran gcc-c++
-sudo yum install -y gtk2 atk cairo tcl tk createrepo
-wget --retry-connrefused --tries=3 --waitretry=5 http://content.mellanox.com/ofed/MLNX_OFED-4.5-1.0.1.0/MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-tar zxvf MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64.tgz
-sudo ./MLNX_OFED_LINUX-4.5-1.0.1.0-rhel7.6-x86_64/mlnxofedinstall --add-kernel-support
-```
+Als u een aangepaste VM-installatie kopie of een door [GPU geoptimaliseerde](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-gpu) virtuele machine gebruikt, moet u deze configureren met InfiniBand door de VM-extensie InfiniBandDriverLinux of InfiniBandDriverWindows toe te voegen aan uw implementatie. Meer informatie over het gebruik van deze VM-extensies met [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-hpc#rdma-capable-instances) en [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-hpc#rdma-capable-instances).
 
-Voor Windows downloadt en installeert u de WinOF-2-Stuur Programma's voor Connectx-5 van [Mellanox](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34)
+## <a name="manually-install-mellanox-ofed"></a>Mellanox OFED hand matig installeren
 
-## <a name="enable-ipoib"></a>IPoIB inschakelen
+Als u InfiniBand met SR-IOV hand matig wilt configureren, gebruikt u de volgende stappen. In het voor beeld in deze stappen ziet u de syntaxis voor RHEL/CentOS, maar de stappen zijn algemeen en kunnen worden gebruikt voor elk compatibel besturings systeem zoals Ubuntu (16,04, 18,04 19,04) en SLES (12 SP4 en 15). De Stuur Programma's voor het postvak in werken ook, maar de Mellanox-Stuur Programma's voor openfabrics bieden meer functies.
+
+Voor meer informatie over de ondersteunde distributies voor het Mellanox-stuur programma raadpleegt u de meest recente [Mellanox-Stuur Programma's](https://www.mellanox.com/page/products_dyn?product_family=26)voor een open Fabric-apparaat. Zie de [Mellanox-gebruikers handleiding](https://docs.mellanox.com/category/mlnxofedib)voor meer informatie over het Mellanox-stuur programma van de gebruiker.
+
+Zie het volgende voor beeld voor het configureren van InfiniBand op Linux:
 
 ```bash
-sudo sed -i 's/LOAD_EIPOIB=no/LOAD_EIPOIB=yes/g' /etc/infiniband/openib.conf
-sudo /etc/init.d/openibd restart
-if [ $? -eq 1 ]
-then
-  sudo modprobe -rv  ib_isert rpcrdma ib_srpt
-  sudo /etc/init.d/openibd restart
-fi
+# Modify the variable to desired Mellanox OFED version
+MOFED_VERSION=#4.7-1.0.0.1
+# Modify the variable to desired OS
+MOFED_OS=#rhel7.6
+pushd /tmp
+curl -fSsL https://www.mellanox.com/downloads/ofed/MLNX_OFED-${MOFED_VERSION}/MLNX_OFED_LINUX-${MOFED_VERSION}-${MOFED_OS}-x86_64.tgz | tar -zxpf -
+cd MLNX_OFED_LINUX-*
+sudo ./mlnxofedinstall
+popd
 ```
 
-## <a name="assign-an-ip-address"></a>Een IP-adres toewijzen
+Voor Windows downloadt en installeert u de [MELLANOX OFED voor Windows-Stuur Programma's](https://www.mellanox.com/page/products_dyn?product_family=32&menu_section=34).
 
-Wijs een IP-adres toe aan de ib0-interface, met behulp van:
+## <a name="enable-ip-over-infiniband"></a>IP via InfiniBand inschakelen
 
-- Wijs het IP-adres hand matig toe aan de ib0-interface (als basis).
+Gebruik de volgende opdrachten om IP via InfiniBand in te scha kelen.
 
-    ```bash
-    ifconfig ib0 $(sed '/rdmaIPv4Address=/!d;s/.*rdmaIPv4Address="\([0-9.]*\)".*/\1/' /var/lib/waagent/SharedConfig.xml)/16
-    ```
-
-OR
-
-- Gebruik WALinuxAgent om IP-adres toe te wijzen en het persistent te maken.
-
-    ```bash
-    yum install -y epel-release
-    yum install -y python-pip
-    python -m pip install --upgrade pip setuptools wheel
-    wget "https://github.com/Azure/WALinuxAgent/archive/release-2.2.36.zip"
-    unzip release-2.2.36.zip
-    cd WALinuxAgent*
-    python setup.py install --register-service --force
-    sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
-    sed -i -e 's/# AutoUpdate.Enabled=y/AutoUpdate.Enabled=y/g' /etc/waagent.conf
-    systemctl restart waagent
-    ```
+```bash
+sudo sed -i -e 's/# OS.EnableRDMA=y/OS.EnableRDMA=y/g' /etc/waagent.conf
+sudo systemctl restart waagent
+```
 
 ## <a name="next-steps"></a>Volgende stappen
 

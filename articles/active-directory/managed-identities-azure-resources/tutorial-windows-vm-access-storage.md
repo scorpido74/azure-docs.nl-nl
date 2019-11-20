@@ -1,5 +1,5 @@
 ---
-title: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Storage-Windows-Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Storage.
 services: active-directory
 documentationcenter: ''
@@ -15,27 +15,27 @@ ms.workload: identity
 ms.date: 01/24/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 147ee2450a6a67f8ca02149105533401d038a53a
-ms.sourcegitcommit: 0568c7aefd67185fd8e1400aed84c5af4f1597f9
+ms.openlocfilehash: 2449307936839d50fe0d48a0536ca4dd9c8d85c3
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/06/2019
-ms.locfileid: "65191086"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181908"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage via een toegangssleutel
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Storage via een toegangssleutel
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
 > [!IMPORTANT] 
-> Azure Storage biedt nu ondersteuning voor Azure AD-verificatie. Als een best practice gebruiken [Azure AD-verificatie](tutorial-vm-windows-access-storage.md) in plaats van toegangssleutels. 
+> Azure Storage ondersteunt nu Azure AD-verificatie. Als best practice gebruikt u [Azure AD-verificatie](tutorial-vm-windows-access-storage.md) in plaats van toegangs sleutels. 
 
 
 Deze zelfstudie laat zien hoe u toegangssleutels voor opslagaccounts kunt ophalen met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). U kunt toegangssleutels voor opslag gebruiken zoals u gewend bent bij opslagbewerkingen, bijvoorbeeld bij het gebruik van de Storage-SDK. Voor deze zelfstudie uploaden en downloaden we blobs met behulp van PowerShell voor Azure Storage. U leert het volgende:
 
 
 > [!div class="checklist"]
-> * Create a storage account
+> * Maak een opslagaccount
 > * Uw virtuele machine toegang verlenen tot toegangssleutels voor opslagaccounts in Resource Manager 
 > * Een toegangstoken ophalen met de identiteit van de virtuele machine, en daarmee de toegangssleutels voor opslag ophalen uit Resource Manager 
 
@@ -45,7 +45,7 @@ Deze zelfstudie laat zien hoe u toegangssleutels voor opslagaccounts kunt ophale
 
 [!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
-## <a name="create-a-storage-account"></a>Create a storage account 
+## <a name="create-a-storage-account"></a>Maak een opslagaccount 
 
 Als u nog geen opslagaccount hebt, maakt u er nu een. U kunt deze stap ook overslaan en de door het systeem toegewezen beheerde identiteit voor uw VM toegang verlenen tot de sleutels van een bestaand opslagaccount. 
 
@@ -54,7 +54,7 @@ Als u nog geen opslagaccount hebt, maakt u er nu een. U kunt deze stap ook overs
 3. Voer een naam voor het opslagaccount in. U gaat deze gegevens later gebruiken.  
 4. **Implementatiemodel** en **Soort account** moeten respectievelijk worden ingesteld op Resource Manager en Algemeen gebruik. 
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
     ![Nieuw opslagaccount maken](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
@@ -75,7 +75,7 @@ Azure Storage biedt geen systeemeigen ondersteuning voor Azure AD-verificatie.  
 
 1. Navigeer terug naar het zojuist gemaakte opslagaccount.  
 2. Klik op de koppeling **Toegangsbeheer (IAM)** in het linkerpaneel.  
-3. Klik op **+ Roltoewijzing toevoegen** bovenaan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen
+3. Klik op **+ Roltoewijzing toevoegen** boven aan de pagina om een nieuwe roltoewijzing voor de VM toe te voegen
 4. Stel **Rol** in op 'De servicerol Sleuteloperator voor opslagaccounts', aan de rechterkant van de pagina. 
 5. Stel in de volgende vervolgkeuzelijst **Toegang toewijzen aan** de resource in op Virtuele machine.  
 6. Controleer vervolgens of het juiste abonnement wordt weergegeven in de vervolgkeuzelijst **Abonnement**, en stel **Resourcegroep** in op Alle resourcegroepen.  
@@ -160,7 +160,7 @@ U kunt de blob die u zojuist hebt geüpload, ook downloaden met de `Get-AzStorag
 Get-AzStorageBlobContent -Blob testblob -Container <CONTAINER-NAME> -Destination test2.txt -Context $ctx
 ```
 
-Antwoord:
+Reactie:
 
 ```powershell
 ICloudBlob        : Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob

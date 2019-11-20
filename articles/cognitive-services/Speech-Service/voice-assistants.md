@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: travisw
-ms.openlocfilehash: bd808c0c71e02483b4c4b06e612720c1802869a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 403768bc81b476dd144d5e4496f3501a3001da8a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577991"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195944"
 ---
 # <a name="about-voice-assistants"></a>Over spraak assistenten
 
@@ -39,13 +39,14 @@ De eerste stap bij het maken van een spraak assistent is bepalen wat het moet do
 U wordt aangeraden [regel spraak direct](direct-line-speech.md) als de beste standaard keuze te gebruiken als u nog niet zeker weet wat uw assistent moet verwerken. Het biedt integratie met een uitgebreide set hulpprogram ma's en ontwerp hulpmiddelen, zoals de [Virtual assistent-oplossing en ondernemings sjabloon](https://docs.microsoft.com/azure/bot-service/bot-builder-enterprise-template-overview) en de [QnA Maker-service](https://docs.microsoft.com/azure/cognitive-services/QnAMaker/Overview/overview) voor het bouwen van algemene patronen en het gebruik van uw bestaande kennis bronnen.
 
 [Aangepaste opdrachten (preview-versie)](custom-commands.md) bieden een gestroomlijnde ontwerp-en hosting-ervaring die specifiek is afgestemd op de opdracht-en controle scenario's in natuurlijke taal.
-   ![Vergelijking van assistent-oplossingen](media/voice-assistants/assistant-solution-comparison.png "Comparison van Assistant-oplossingen ")
+
+   ![Vergelijking van assistent-oplossingen](media/voice-assistants/assistant-solution-comparison.png "Vergelijking van assistent-oplossingen")
 
 ## <a name="core-features"></a>Kern functies
 
 Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrachten (preview)](custom-commands.md) kiest om uw assistent-interacties te maken, kunt u een uitgebreide set aanpassings functies gebruiken om uw assistent aan uw merk, product en persoonlijkheid aan te passen.
 
-| Category | Functies |
+| Categorie | Functies |
 |----------|----------|
 |[Aangepast tref woord](speech-devices-sdk-create-kws.md) | Gebruikers kunnen gesp rekken met assistenten starten met een aangepast tref woord zoals ' Hey Contoso '. Dit is een app met een aangepaste trefwoord engine in de Speech SDK, die kan worden geconfigureerd met een aangepast tref woord [dat u hier kunt genereren](speech-devices-sdk-create-kws.md). Spraak assistenten kunnen verificatie op service zijde gebruiken om de nauw keurigheid van de activering van het tref woord te verbeteren (alleen voor het apparaat).
 |[Spraak naar tekst](speech-to-text.md) | Via spraak [-naar-tekst](speech-to-text.md) van Azure speech Services kunt u in spraak assistenten realtime audio omzetten in herkende tekst. Deze tekst is beschikbaar, omdat deze is getranscribeerd, naar de implementatie van uw assistent en uw client toepassing.
@@ -55,7 +56,7 @@ Ongeacht of u [direct lijn spraak](direct-line-speech.md) of [aangepaste opdrach
 
 We bieden Quick starts die zijn ontworpen om code in minder dan 10 minuten uit te voeren. Deze tabel bevat een lijst met Quick starts voor de Voice Assistant, geordend op taal.
 
-| Snelstartgids | Platform | API-verwijzing |
+| Snelstart | Platform | API-verwijzing |
 |------------|----------|---------------|
 | C#, UWP | Windows | [Door](https://aka.ms/csspeech/csharpref) |
 | Java | Windows, macOS, Linux | [Door](https://aka.ms/csspeech/javaref) |

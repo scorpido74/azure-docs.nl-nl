@@ -5,13 +5,13 @@ author: kromerm
 ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 872c7ce6a0c39ab19165a5f16ea3e4f6ef8bd6a5
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.date: 11/17/2019
+ms.openlocfilehash: 3664a7c311e15ce3aa61fc71f98a46e3f2618143
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72388056"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184694"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Opbouw functie voor gegevens stroom expressie koppelen
 
@@ -49,11 +49,11 @@ Klik op de knop Vernieuwen om de resultaten van uw expressie bij te werken met e
 
 Voeg opmerkingen toe aan uw expressies met behulp van de syntaxis voor één regel en een opmerking met meerdere regels:
 
-![Opmerkingen](media/data-flow/comments.png "Opmerkingen")
+![opmerkingen](media/data-flow/comments.png "Opmerkingen")
 
 ## <a name="regular-expressions"></a>Reguliere expressies
 
-In de Azure Data Factory data flow-expressie taal, [volledige referentie documentatie](https://aka.ms/dataflowexpressions), kunt u hier functies gebruiken die een reguliere expressie syntaxis bevatten. Wanneer u reguliere-expressie functies gebruikt, probeert de opbouw functie voor expressies backslashes (@no__t 0) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in Ticks (\`) of een dubbele back slash gebruiken.
+In de Azure Data Factory data flow-expressie taal, [volledige referentie documentatie](https://aka.ms/dataflowexpressions), kunt u hier functies gebruiken die een reguliere expressie syntaxis bevatten. Wanneer reguliere-expressie functies worden gebruikt, probeert de opbouw functie voor expressies backslashes (\\) als escape-teken reeks te interpreteren. Wanneer u backslashes in uw reguliere expressie gebruikt, moet u de volledige regex insluiten in Ticks (\`) of een dubbele back slash gebruiken.
 
 Voor beeld met behulp van maat streepjes
 
@@ -77,6 +77,40 @@ Met expressie functies die matrices retour neren, gebruikt u vier Kante haken []
 
 Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades.
 * ```{[dbo].this_is my complex name$$$}```
+
+## <a name="keyboard-shortcuts"></a>Sneltoetsen
+
+* ```Ctrl-K Ctrl-C```: volledige regel commentaar
+* ```Ctrl-K Ctrl-U```: Opmerking opheffen
+* ```F1```: Help-opdrachten voor de editor opgeven
+* ```Alt-Down Arrow```: huidige regel omlaag verplaatsen
+* ```Alt-Up Arrow```: huidige regel omhoog verplaatsen
+* ```Cntrl-Space```: context afhankelijke Help weer geven
+
+## <a name="manual-comments"></a>Hand matige opmerkingen
+
+* ```/* This is my comment */```
+
+* ```/* This is a```
+*   ```multi-line comment */```
+   
+* ```// This is a single line comment```
+
+Als u een opmerking boven aan de expressie plaatst, wordt deze weer gegeven in het tekstvak trans formatie om uw transformatie expressies te documenteren:
+
+![opmerkingen](media/data-flow/comments2.png "Opmerkingen")
+
+## <a name="convert-to-dates-or-timestamps"></a>Converteren naar datums of tijds tempels
+
+```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
+
+Als u letterlijke teken reeksen in de uitvoer van de tijds tempel wilt gebruiken, moet u de conversie binnen een toString () afronden.
+
+## <a name="handling-column-names-with-special-characters"></a>Verwerken van kolom namen met speciale tekens
+
+Wanneer u kolom namen hebt die speciale tekens of spaties bevatten, plaatst u de naam tussen accolades.
+
+```{[dbo].this_is my complex name$$$}```
 
 ## <a name="next-steps"></a>Volgende stappen
 

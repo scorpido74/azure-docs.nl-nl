@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 3482cc14e73801af6d0db910ded84adf722bc6f4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0983e7d68e7ad01683d588ef89827eaf79754d07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60234341"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184912"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Een Azure App Configuration-archief verwijderen
 
@@ -40,7 +40,7 @@ U moet eerst de CLI-extensie voor het Azure App Configuration-archief installere
 ```azurecli-interactive
 #/bin/bash
 
-# Delete an app configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
+# Delete an App Configuration store named myTestAppConfigStore from the Resource Group myResourceGroup
 az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 ```
 
@@ -48,14 +48,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script maakt gebruik van de volgende opdrachten om een app-configuratiearchief te verwijderen. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt om een app-configuratie archief te verwijderen. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Resource voor app-configuratiearchief verwijderen. |
+| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-delete) | Hiermee verwijdert u een bron voor het configuratie archief van de app. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
+Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Meer voorbeelden van CLI-scripts voor een App Configuration-archief vindt u in de [documentatie over Azure App-configuratie](../cli-samples.md).
+Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).

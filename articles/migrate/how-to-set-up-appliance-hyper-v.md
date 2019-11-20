@@ -1,17 +1,17 @@
 ---
-title: Een apparaat instellen voor Azure Migrate server evaluatie/migratie voor Hyper-V-Vm's | Microsoft Docs
-description: Hierin wordt beschreven hoe u een apparaat instelt voor detectie, evaluatie en migratie zonder agents van Hyper-V-Vm's met Azure Migrate server evaluatie/migratie.
+title: Een Azure Migrate apparaat instellen voor Hyper-V
+description: Meer informatie over het instellen van een Azure Migrate apparaat om Hyper-V-Vm's te beoordelen en te migreren.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 00473519ad324d34d1fd595b2fb08408ad991f4c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 1676ad3dde5a97d2afdb64595d51f5502f9dcc3d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158626"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185920"
 ---
 # <a name="set-up-an-appliance-for-hyper-v-vms"></a>Een apparaat instellen voor virtuele Hyper-V-machines
 

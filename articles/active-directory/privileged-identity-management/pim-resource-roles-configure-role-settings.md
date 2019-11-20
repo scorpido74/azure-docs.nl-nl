@@ -15,12 +15,12 @@ ms.date: 11/08/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abb6c2212549c3d92f9c1dbc42c31f838a704af2
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 8c9acc1487fcbf8398b7a556c63f97963b264451
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144310"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74182716"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Instellingen voor Azure-resource-rollen configureren in Privileged Identity Management
 
@@ -57,6 +57,9 @@ Volg deze stappen om de instellingen voor een Azure-resource functie te openen.
     ![Het tabblad roltoewijzing in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-assignment-tab.png)
 
 1. Gebruik het tabblad **melding** of de knop **volgende: activering** aan de onderkant van de pagina om naar het tabblad meldings instelling voor deze rol te gaan. Deze instellingen bepalen alle e-mail meldingen die betrekking hebben op deze rol.
+
+    > [!NOTE]
+    > Deze meldingen GEBRUIKERSINTERFACE wordt momenteel doorgevoerd in azure-regio's en-abonnementen. Als u deze gedetailleerde meldingen niet kunt configureren, kunt u een van de twee dagen controleren.
 
     ![Tabblad meldingen in de pagina rolinstellingen](./media/pim-resource-roles-configure-role-settings/role-settings-notification-tab.png)
 

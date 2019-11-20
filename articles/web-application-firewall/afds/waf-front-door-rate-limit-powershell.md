@@ -1,5 +1,5 @@
 ---
-title: Een frequentie limiet regel voor webtoepassingen configureren voor front-deur-Azure PowerShell
+title: De WAF-frequentie limiet regel voor de front-deur configureren-Azure PowerShell
 description: Meer informatie over het configureren van een frequentie limiet regel voor een bestaand eind punt van de voor deur.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 08/21/2019
 ms.author: victorh
-ms.openlocfilehash: ce9ace445d87479da4047da205b59e79402ece07
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 831d0876c67aa36248a54f3935e5ce7884c736ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517135"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186628"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Een regel voor het instellen van een firewall frequentie van webtoepassingen met behulp van Azure PowerShell
 De frequentie limiet regel voor Azure Web Application firewall (WAF) voor Azure front-deur bepaalt het aantal aanvragen dat is toegestaan vanaf één client-IP gedurende een duur van één minuut.
@@ -75,7 +75,7 @@ Zoek de naam van de resource groep die het voorste deur profiel bevat met behulp
 
 In het onderstaande voor beeld wordt de naam van de resource groep *myResourceGroupFD1* met de veronderstelling dat u het voorste deur profiel hebt gemaakt met behulp van de instructies in de [Quick Start: een front deur](../../frontdoor/quickstart-create-front-door.md) -artikel maken.
 
- met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+ using [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `

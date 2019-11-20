@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 11/08/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: d89fa4c067e511e6210e8c1473bf1856297fc1de
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 51697aa426a638ad536390c4114df5faa18a41ef
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904077"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184872"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Werken met sleutelwaarden in een Azure-app-configuratiearchief
 
@@ -84,16 +84,16 @@ az appconfig kv list --name $appConfigName
 
 ## <a name="script-explanation"></a>Uitleg van het script
 
-Dit script maakt gebruik van de volgende opdrachten om te werken met sleutelwaarden in een app-configuratiearchief. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
+In dit script worden de volgende opdrachten gebruikt voor het uitvoeren van sleutel waarden in een app-configuratie archief. Elke opdracht in de tabel is een koppeling naar specifieke documentatie over de opdracht.
 
 | Opdracht | Opmerkingen |
 |---|---|
-| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig) | Hiermee wordt een sleutelwaarde gemaakt of bijgewerkt. |
-| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig) | Hiermee worden sleutelwaarden in een app-configuratiearchief bijgewerkt. |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Hiermee wordt een sleutelwaarde verwijderd. |
+| [az appconfig kv set](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-set) | Hiermee wordt een sleutelwaarde gemaakt of bijgewerkt. |
+| [az appconfig kv list](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-list) | Geeft een lijst met sleutel waarden in een app-configuratie archief. |
+| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig/kv#ext-appconfig-az-appconfig-kv-delete) | Hiermee wordt een sleutelwaarde verwijderd. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de [documentatie van Azure CLI](/cli/azure) voor meer informatie over de Azure CLI.
 
-Meer voorbeelden van CLI-scripts voor een App Configuration-archief vindt u in de [documentatie over Azure App-configuratie](../cli-samples.md).
+Extra CLI-script voorbeelden voor configuratie van apps vindt u in de voor beelden van de [Azure-app configuratie-cli](../cli-samples.md).

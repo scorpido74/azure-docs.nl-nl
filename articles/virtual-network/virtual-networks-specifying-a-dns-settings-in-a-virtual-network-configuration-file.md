@@ -1,5 +1,5 @@
 ---
-title: DNS-instellingen opgeven in een virtueel-netwerk configuratie bestand | Microsoft Docs
+title: DNS-instellingen in azure VNet-configuratie bestand opgeven
 description: DNS-server instellingen wijzigen in een virtueel netwerk met behulp van een configuratie bestand voor een virtueel netwerk in het klassieke implementatie model
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2016
 ms.author: genli
-ms.openlocfilehash: c15d73673c19383deabe15ef30026990dfd138b9
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: db8b1817bb14d293632d16fe02792dbb85766559
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71059096"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196644"
 ---
 # <a name="specifying-dns-settings-in-a-virtual-network-configuration-file"></a>DNS-instellingen opgeven in een virtueel-netwerk configuratie bestand
 Een netwerk configuratie bestand heeft twee elementen die u kunt gebruiken om Domain Name System (DNS)-instellingen op te geven: **DnsServers** en **DnsServerRef**. U kunt een lijst met DNS-servers toevoegen door hun IP-adressen en referentie namen op te geven in het **DnsServers** -element. U kunt vervolgens een **DnsServerRef** -element gebruiken om op te geven welke DNS-server vermeldingen van het DnsServers-element worden gebruikt voor verschillende netwerk sites in uw virtuele netwerk.

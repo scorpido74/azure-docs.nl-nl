@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: juliako
-ms.openlocfilehash: 645d40e51b69272f1883f5ad1fb73c425f7b4b8f
-ms.sourcegitcommit: 3f78a6ffee0b83788d554959db7efc5d00130376
+ms.openlocfilehash: d2ed1d5e0cf0e42c3f916ab33f860039b5d5f781
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70019353"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196465"
 ---
 # <a name="migrate-from-azure-media-encoder-to-media-encoder-standard"></a>Migreren van Azure Media Encoder naar Media Encoder Standard
 
 In dit artikel worden de stappen beschreven voor het migreren van de verouderde media processor van Azure Media Encoder (AAM), die wordt buiten gebruik gesteld op 30 november 2019, naar de Media Encoder Standard-media processor.  
 
-Bij het coderen van bestanden met AAM gebruiken klanten meestal een teken reeks met `H264 Adaptive Bitrate MP4 Set 1080p`een naam zoals. Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van AAM en een van de equivalente [systeem voorinstellingen](media-services-mes-presets-overview.md) zoals `H264 Multiple Bitrate 1080p`. 
+Bij het coderen van bestanden met AAM gebruiken klanten doorgaans een vooraf ingestelde teken reeks, zoals `H264 Adaptive Bitrate MP4 Set 1080p`. Als u wilt migreren, moet uw code worden bijgewerkt om gebruik te kunnen maken van de **Media Encoder Standard** media processor in plaats van AAM en een van de equivalente [systeem voorinstellingen](media-services-mes-presets-overview.md) zoals `H264 Multiple Bitrate 1080p`. 
 
 ## <a name="migrating-to-media-encoder-standard"></a>Migreren naar Media Encoder Standard
 
@@ -58,13 +58,13 @@ IMediaProcessor processor = GetLatestMediaProcessorByName("Media Encoder Standar
 // In this case " H264 Multiple Bitrate 1080p" preset is used. 
 ITask task = job.Tasks.AddNew("My encoding task", 
     processor, 
-    " H264 Multiple Bitrate 1080p", 
+    "H264 Multiple Bitrate 1080p", 
     TaskOptions.None); 
 ```
 
 ### <a name="advanced-scenarios"></a>Geavanceerde scenario's 
 
-Als u uw eigen coderings voorinstelling voor AAM hebt gemaakt met behulp van het bijbehorende schema, is er een [gelijkwaardig schema voor Media Encoder Standard](media-services-mes-schema.md). Als u vragen hebt over het toewijzen van de oudere instellingen aan de nieuwe encoder, kunt u contact met ons opnemen viamailto:amshelp@microsoft.com  
+Als u uw eigen coderings voorinstelling voor AAM hebt gemaakt met behulp van het bijbehorende schema, is er een [gelijkwaardig schema voor Media Encoder Standard](media-services-mes-schema.md). Als u vragen hebt over het toewijzen van de oudere instellingen aan de nieuwe encoder, kunt u contact met ons opnemen via mailto:amshelp@microsoft.com  
 ## <a name="known-differences"></a>Bekende verschillen 
 
 Media Encoder Standard is robuuster, betrouwbaarder, heeft betere prestaties en levert een betere kwaliteit van de uitvoer dan het oudere AAM-coderings programma. Daarnaast: 

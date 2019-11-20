@@ -1,5 +1,5 @@
 ---
-title: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Data Lake Store-Windows-Azure AD
 description: Een zelfstudie die laat zien hoe u toegang krijgt tot Azure Data Lake Storage met een door het Windows-VM-systeem toegewezen beheerde identiteit.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/13/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd03ccdab6a7120dc59e42ab62c1d3b2d1e5bc3
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f3909e80ea36ed7aab638d717ecf8404d80beb59
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60304892"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74181889"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Data Lake Store
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure Data Lake Store met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
+Deze zelfstudie laat zien hoe u toegang krijgt tot een Azure Data Lake Store met een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM). Managed Service Identity's worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
 
 > [!div class="checklist"]
 > * Uw virtuele machine toegang verlenen tot Azure Data Lake Storage

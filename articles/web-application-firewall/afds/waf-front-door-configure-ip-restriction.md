@@ -1,5 +1,5 @@
 ---
-title: Een IP-beperkings regel configureren met een firewall regel voor webtoepassingen voor de Azure front-deur service
+title: WAF-regel voor IP-beperking configureren voor de Azure front-deur service
 description: Meer informatie over het configureren van een firewall regel voor webtoepassingen om IP-adressen te beperken voor een bestaand Azure front deur-service-eind punt.
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: d0a32c4d59d580cb82ad6174c57ebbf677ac75b3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2917b2f04e7c5a4896c52861ab7eab4e0eb00b5d
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517161"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186683"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door-service"></a>Een IP-beperkings regel configureren met een Web Application Firewall voor de Azure front-deur service
 In dit artikel wordt beschreven hoe u IP-beperkings regels configureert in een Web Application firewall (WAF) voor de Azure front-deur service met behulp van de Azure CLI-, Azure PowerShell-of Azure Resource Manager-sjabloon.

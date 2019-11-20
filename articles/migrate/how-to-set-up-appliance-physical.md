@@ -1,17 +1,17 @@
 ---
-title: Stel een apparaat in voor de evaluatie van fysieke servers met Azure Migrate server-evaluatie
-description: Hierin wordt beschreven hoe u een apparaat instelt voor de evaluatie van fysieke servers met behulp van Azure Migrate server-evaluatie.
+title: Een Azure Migrate apparaat instellen voor fysieke servers
+description: Meer informatie over het instellen van een Azure Migrate apparaat voor de evaluatie van fysieke servers.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 1e67c36753239940b15e3cb47b5b75820ea43689
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: ade2a76c168002e573a6504e31769b83f0c6eb37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158342"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185894"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Een apparaat instellen voor fysieke servers
 

@@ -1,5 +1,5 @@
 ---
-title: Een WAF-beleid (Web Application firewall) configureren met aangepaste regels en standaard Ruse ingesteld voor de voor deur-Azure PowerShell
+title: Aangepaste regels voor WAF configureren & standaardregelset voor Azure front deur
 description: Meer informatie over het configureren van een WAF-beleid bestaat uit zowel aangepaste als beheerde regels voor een bestaand eind punt voor deuren.
 services: web-application-firewall
 author: vhorne
@@ -7,12 +7,12 @@ ms.service: web-application-firewall
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: victorh
-ms.openlocfilehash: fec1ed5d51c4afe43df513b54595b4ce1e2f4bbb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 493ed1a31a23366a90b80d3ab510218c8dce0e9c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512546"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186640"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>Een firewall beleid voor webtoepassingen configureren met behulp van Azure PowerShell
 

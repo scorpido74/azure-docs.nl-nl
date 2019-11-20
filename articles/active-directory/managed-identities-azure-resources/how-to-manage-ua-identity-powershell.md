@@ -1,6 +1,6 @@
 ---
-title: Het maken, weergeven en verwijderen van een gebruiker toegewezen beheerde identiteit met Azure PowerShell
-description: Stap voor stap beheerde instructies voor het maken, weergeven en verwijderen door de gebruiker toegewezen identiteit met Azure PowerShell.
+title: Een door de gebruiker toegewezen beheerde identiteit maken, weer geven & verwijderen met behulp van Azure PowerShell-Azure AD
+description: Stapsgewijze instructies voor het maken, weer geven en verwijderen van een door de gebruiker toegewezen beheerde identiteit met behulp van Azure PowerShell.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 04/16/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886b56de194f38fbb4b94f96b92bff11f2288b37
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
-ms.translationtype: MT
+ms.openlocfilehash: 3aa6a929ef6e3d23cab81cfb199bf733ac25927f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60293508"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184171"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Maken, weergeven of verwijderen van een gebruiker toegewezen beheerde identiteit met Azure PowerShell
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met behulp van Azure PowerShell
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Beheerde identiteiten voor Azure-resources biedt Azure-services met een beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij services die ondersteuning bieden voor Azure AD-verificatie, zonder de referenties in uw code. 
+Beheerde identiteiten voor Azure-resources bieden Azure-Services met een beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij services die ondersteuning bieden voor Azure AD-verificatie, zonder dat er referenties in uw code nodig zijn. 
 
-In dit artikel leert u hoe u kunt maken, weergeven en verwijderen van een gebruiker toegewezen beheerde identiteit met Azure PowerShell.
+In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identiteit kunt maken, weer geven en verwijderen met behulp van Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -41,44 +41,44 @@ In dit artikel leert u hoe u kunt maken, weergeven en verwijderen van een gebrui
     - Voer `Connect-AzAccount` uit om een verbinding op te zetten met Azure.
     - Installeer de [nieuwste versie van PowerShellGet](/powershell/gallery/installing-psget#for-systems-with-powershell-50-or-newer-you-can-install-the-latest-powershellget).
     - Voer `Install-Module -Name PowerShellGet -AllowPrerelease` uit om de voorlopige versie van de `PowerShellGet`-module op te halen (mogelijk moet u met `Exit` de huidige PowerShell-sessie afsluiten nadat u met deze opdracht de `Az.ManagedServiceIdentity`-module hebt geïnstalleerd).
-    - Voer `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` voor het installeren van de voorlopige versie van de `Az.ManagedServiceIdentity` module om uit te voeren van de gebruiker toegewezen identiteit bewerkingen in dit artikel worden beheerd.
+    - Voer `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` uit om de voorlopige versie van de module `Az.ManagedServiceIdentity` te installeren en de door de gebruiker toegewezen beheerde identiteits bewerkingen in dit artikel uit te voeren.
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken
 
-Voor het maken van een gebruiker toegewezen beheerde identiteit, uw account moet de [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roltoewijzing.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Gebruik voor het maken van een gebruiker toegewezen beheerde identiteit het `New-AzUserAssignedIdentity` opdracht. De `ResourceGroupName` parameter geeft u de resourcegroep waar moet worden gemaakt van de gebruiker toegewezen beheerde identiteit, en de `-Name` parameter geeft u de naam ervan. Vervang de `<RESOURCE GROUP>` en `<USER ASSIGNED IDENTITY NAME>` parameterwaarden door uw eigen waarden:
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, gebruikt u de opdracht `New-AzUserAssignedIdentity`. Met de para meter `ResourceGroupName` geeft u de resource groep op waar de door de gebruiker toegewezen beheerde identiteit moet worden gemaakt, en de para meter `-Name` de naam ervan opgeeft. Vervang de `<RESOURCE GROUP>` en `<USER ASSIGNED IDENTITY NAME>` parameter waarden door uw eigen waarden:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurepowershell-interactive
 New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>Lijst met door de gebruiker toegewezen identiteiten beheren
+## <a name="list-user-assigned-managed-identities"></a>Door de gebruiker toegewezen beheerde identiteiten weer geven
 
-Als u wilt lezen/lijst met een gebruiker toegewezen beheerde identiteit, uw account moet de [beheerde identiteit Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) of [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roltoewijzing.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt weer geven/lezen, moet uw account beschikken over de rol [Managed Identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) of [Managed id contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Beheerde lijst door de gebruiker toegewezen identiteiten, gebruik de [Get-AzUserAssigned] opdracht.  De `-ResourceGroupName` parameter geeft u de resourcegroep waarin de gebruiker toegewezen beheerde identiteit is gemaakt. Vervang de `<RESOURCE GROUP>` door uw eigen waarde:
+Als u door de gebruiker toegewezen beheerde identiteiten wilt weer geven, gebruikt u de opdracht [Get-AzUserAssigned].  Met de para meter `-ResourceGroupName` wordt de resource groep opgegeven waarin de door de gebruiker toegewezen beheerde identiteit is gemaakt. Vervang de `<RESOURCE GROUP>` door uw eigen waarde:
 
 ```azurepowershell-interactive
 Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-In het antwoord door de gebruiker toegewezen beheerde identiteiten hebben `"Microsoft.ManagedIdentity/userAssignedIdentities"` waarde geretourneerd voor de sleutel, `Type`.
+In het antwoord hebben de door de gebruiker toegewezen beheerde identiteiten de `"Microsoft.ManagedIdentity/userAssignedIdentities"` waarde die wordt geretourneerd voor de sleutel `Type`.
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Verwijderen van een gebruiker toegewezen beheerde identiteit
+## <a name="delete-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen
 
-Als u wilt verwijderen van een gebruiker toegewezen beheerde identiteit, uw account moet de [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roltoewijzing.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
-Als u wilt verwijderen van een gebruiker toegewezen beheerde identiteit, gebruikt u de `Remove-AzUserAssignedIdentity` opdracht.  De `-ResourceGroupName` parameter geeft u de resourcegroep waarin de gebruiker toegewezen identiteit is gemaakt en de `-Name` parameter geeft u de naam ervan. Vervang de `<RESOURCE GROUP>` en de `<USER ASSIGNED IDENTITY NAME>` parameterwaarden door uw eigen waarden:
+Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, gebruikt u de opdracht `Remove-AzUserAssignedIdentity`.  Met de para meter `-ResourceGroupName` wordt de resource groep opgegeven waarin de door de gebruiker toegewezen identiteit is gemaakt en de para meter `-Name` de naam. Vervang de waarden voor de `<RESOURCE GROUP>` en de `<USER ASSIGNED IDENTITY NAME>`-para meters door uw eigen waarden:
 
  ```azurepowershell-interactive
 Remove-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
 > [!NOTE]
-> Verwijderen van een gebruiker toegewezen beheerde identiteit, wordt de verwijzing van een willekeurige resource die deze is toegewezen aan niet verwijderen. Toewijzingen van de identiteit moeten afzonderlijk worden verwijderd.
+> Als u een door de gebruiker toegewezen beheerde identiteit verwijdert, wordt de verwijzing niet verwijderd uit een resource waaraan deze is toegewezen. Identiteits toewijzingen moeten afzonderlijk worden verwijderd.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer details van de Azure PowerShell en een volledige lijst met beheerde identiteiten voor opdrachten van Azure-resources, [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).
+Zie [AZ. ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity)voor een volledige lijst en meer informatie over de Azure PowerShell beheerde identiteiten voor Azure-resources-opdrachten.

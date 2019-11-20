@@ -1,19 +1,19 @@
 ---
-title: Fysieke servers voorbereiden voor evaluatie met Azure Migrate server-evaluatie
-description: Hierin wordt beschreven hoe u de evaluatie en migratie van fysieke servers naar Azure voorbereidt met behulp van Azure Migrate server-evaluatie.
+title: Fysieke servers voorbereiden voor evaluatie/migratie met Azure Migrate
+description: Meer informatie over het voorbereiden van de evaluatie/migratie van fysieke servers met Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 075c60aed458be8a4bf45fafb2d06757862ff5ba
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158581"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196401"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Voor bereiding voor de evaluatie en migratie van fysieke servers naar Azure
 

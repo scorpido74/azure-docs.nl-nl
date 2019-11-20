@@ -1,17 +1,17 @@
 ---
-title: Architectuur van Azure Migrate apparaat | Microsoft Docs
-description: Biedt een overzicht van het Azure Migrate apparaat
+title: Architectuur van Azure Migrate apparaat
+description: Biedt een overzicht van het Azure Migrate apparaat dat in Server evaluatie en-migratie wordt gebruikt.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 07/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 249cbea173afe1671118446e0714b721b8c7f72b
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
-ms.translationtype: MT
+ms.openlocfilehash: bdc81820b1ac9867d45fd26e26d24c65e20641e4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685093"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185821"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-apparaat
 
@@ -62,10 +62,10 @@ Dit zijn de prestatie gegevens van de VMware-VM die door het apparaat worden ver
 --- | --- | ---
 CPU-gebruik | CPU. usage. Average | Aanbevolen VM-grootte/kosten
 Geheugen gebruik | mem. usage. Average | Aanbevolen VM-grootte/kosten
-Lees doorvoer schijf (MB per seconde) | virtualDisk. Read. Average | Berekening voor schijf grootte, opslag kosten, VM-grootte
+Lees doorvoer schijf (MB per seconde) | virtualDisk.read.average | Berekening voor schijf grootte, opslag kosten, VM-grootte
 Schrijf doorvoer schijf (MB per seconde) | virtualDisk. write. Average | Berekening voor schijf grootte, opslag kosten, VM-grootte
-Lees bewerkingen op de schijf per seconde | virtualDisk. numberReadAveraged. Average | Berekening voor schijf grootte, opslag kosten, VM-grootte
-Schrijf bewerkingen per seconde van schijf | virtualDisk. numberWriteAveraged. Average  | Berekening voor schijf grootte, opslag kosten, VM-grootte
+Lees bewerkingen op de schijf per seconde | virtualDisk.numberReadAveraged.average | Berekening voor schijf grootte, opslag kosten, VM-grootte
+Schrijf bewerkingen per seconde van schijf | virtualDisk.numberWriteAveraged.average  | Berekening voor schijf grootte, opslag kosten, VM-grootte
 Lees doorvoer van NIC (MB per seconde) | net. received. Average | Berekening voor VM-grootte
 Schrijf doorvoer van NIC (MB per seconde) | net. verzonden. gemiddeld  |Berekening voor VM-grootte
 
@@ -80,15 +80,15 @@ Hier ziet u de volledige lijst met virtuele VMware-VM-meta gegevens die door het
 **Gegevens** | **Item**
 --- | --- 
 **Computer Details** | 
-VM-ID | VM. Config. InstanceUuid 
-VM-naam | VM. Config.Name
+VM-ID | vm.Config.InstanceUuid 
+VM-naam | vm.Config.Name
 vCenter Server-ID | VMwareClient.Instance.Uuid
-VM-beschrijving | VM. Summary. config. annotatie
-Licentie product naam | VM. Client. ServiceContent. about. LicenseProductName
+VM-beschrijving | vm.Summary.Config.Annotation
+Licentie product naam | vm.Client.ServiceContent.About.LicenseProductName
 Type besturings systeem | vm.SummaryConfig.GuestFullName
-Opstart type | VM. Config. firmware
-Aantal kerngeheugens | VM. Config. hardware. NumCPU
-Geheugen (MB) | VM. Config. hardware. MemoryMB
+Opstart type | vm.Config.Firmware
+Aantal kerngeheugens | vm.Config.Hardware.NumCPU
+Geheugen (MB) | vm.Config.Hardware.MemoryMB
 Aantal schijven | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk). Count
 Lijst met schijf grootte | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualDisk)
 Lijst met netwerk adapters | VM. Config. hardware. device. ToList (). FindAll (x = > is VirtualEthernet). Count
@@ -97,27 +97,27 @@ Geheugen gebruik |mem. usage. Average
 **Details per schijf** | 
 Waarde van schijf sleutel | schijf. Prestatie
 Dikunit-nummer | schijf. UnitNumber
-Sleutel waarde van schijf controller | schijf. ControllerKey. waarde
+Sleutel waarde van schijf controller | disk.ControllerKey.Value
 Gigabytes ingericht | virtualDisk. DeviceInfo. summary
 Schijf naam | De waarde die is gegenereerd met de schijf. UnitNumber, schijf. Sleutel, schijf. ControllerKey. waarde
-Lees bewerkingen per seconde | virtualDisk. numberReadAveraged. Average
-Schrijf bewerkingen per seconde | virtualDisk. numberWriteAveraged. Average
-Lees doorvoer (MB per seconde) | virtualDisk. Read. Average
+Lees bewerkingen per seconde | virtualDisk.numberReadAveraged.average
+Schrijf bewerkingen per seconde | virtualDisk.numberWriteAveraged.average
+Lees doorvoer (MB per seconde) | virtualDisk.read.average
 Schrijf doorvoer (MB per seconde) | virtualDisk. write. Average
 **Details van de NIC** | 
 Naam van netwerk adapter | adapter. Prestatie
-MAC-adres | ((VirtualEthernetCard) NIC). MacAddress
-IPv4-adressen | VM. Guest.Net
-IPv6-adressen | VM. Guest.Net
+MAC-adres | ((VirtualEthernetCard)nic).MacAddress
+IPv4-adressen | vm.Guest.Net
+IPv6-adressen | vm.Guest.Net
 Lees doorvoer (MB per seconde) | net. received. Average
 Schrijf doorvoer (MB per seconde) | net. verzonden. gemiddeld
 **Details van configuratiepad** | 
-Naam | verpakking. GetType (). Naam
+Naam | container.GetType().Name
 Type onderliggend object | verpakking. ChildType
 Referentie Details | verpakking. MoRef
-Details van bovenliggend item | Container. Parent
-Details van map per VM | ((Map) container). ChildEntity. type
-Details van Data Center per VM | (Container (Data Center)). VmFolder
+Details van bovenliggend item | Container.Parent
+Details van map per VM | ((Folder)container).ChildEntity.Type
+Details van Data Center per VM | ((Datacenter)container).VmFolder
 Details van Data Center per host-map | (Container (Data Center)). HostFolder
 Cluster Details per host | ((ClusterComputeResource) container). Hostsite
 Details van host per VM | ((HostSystem) container). VM
@@ -206,7 +206,7 @@ Het apparaat wordt bijgewerkt wanneer de Azure Migrate agents die op het apparaa
 
 - Dit gebeurt automatisch omdat de automatische update standaard is ingeschakeld op het apparaat.
 - U kunt deze standaard instelling wijzigen om de agents hand matig bij te werken.
-- Als u de automatische update wilt uitschakelen, gaat u naar de REGI ster-editor > HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureAppliance en stelt u de register sleutel-"auto update" in op 0 (DWORD).
+- Als u de automatische update wilt uitschakelen, gaat u naar de REGI ster-editor > HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureAppliance en stelt u de register sleutel-"auto update" in op 0 (DWORD).
  
 ### <a name="set-agent-updates-to-manual"></a>Agent updates instellen op hand matig
 

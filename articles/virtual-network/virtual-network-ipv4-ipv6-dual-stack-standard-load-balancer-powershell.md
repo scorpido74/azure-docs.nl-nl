@@ -1,11 +1,11 @@
 ---
-title: Een IPv6-toepassing met dubbele stack implementeren in het virtuele netwerk van Azure-Power shell
+title: Een IPv6-toepassing met dubbele stack implementeren-Standard Load Balancer-Power shell
 titlesuffix: Azure Virtual Network
 description: In dit artikel wordt beschreven hoe u een IPv6-toepassing met dubbele stack implementeert met Standard Load Balancer in een virtueel Azure-netwerk met behulp van Azure Power shell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: c924e59a50994827eb2e9be40caa7021c7e4ac3c
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: b1506c40d83e1483980c368db1659c9470b9a46a
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72174469"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185474"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-in-azure---powershell-preview"></a>Een IPv6-toepassing met dubbele stack implementeren in azure-Power shell (preview)
 
@@ -61,7 +61,7 @@ Voordat u een virtueel netwerk met twee stacks kunt maken, moet u een resource g
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>Open bare IPv4-en IPv6-adressen maken
-Als u toegang wilt krijgen tot uw virtuele machines via internet, moet u de open bare IPv4-en IPv6-adressen voor de load balancer. Open bare IP-adressen maken met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). In het volgende voor beeld wordt het IPv4-en IPv6-open bare IP-adres gemaakt met de naam *dsPublicIP_v4* en *dsPublicIP_v6* in de resource groep *dsRG1* :
+Als u toegang wilt krijgen tot uw virtuele machines via internet, moet u de open bare IPv4-en IPv6-adressen voor de load balancer. Open bare IP-adressen maken met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). In het volgende voor beeld worden het IPv4-en IPv6-open bare IP-adres gemaakt met de naam *dsPublicIP_v4* en *dsPublicIP_v6* in de resource groep *dsRG1* :
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -104,9 +104,9 @@ Als u toegang wilt krijgen tot uw virtuele machines met behulp van een RDP-verbi
 
 In deze sectie configureert u dual front-end-IP (IPv4 en IPv6) en de back-end-adres groep voor de load balancer en maakt u vervolgens een Standard Load Balancer.
 
-### <a name="create-front-end-ip"></a>Het front-end-IP-adres maken
+### <a name="create-front-end-ip"></a>Maak een front-end IP-adres
 
-Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voor beeld worden IPv4-en IPv6-front-end IP-configuraties gemaakt met de naam *dsLbFrontEnd_v4* en *dsLbFrontEnd_v6*:
+Maak een front-end IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voor beeld worden IPv4-en IPv6-front-end IP-configuraties met de naam *dsLbFrontEnd_v4* en *dsLbFrontEnd_v6*gemaakt:
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -135,7 +135,7 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 
 Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de VM's te definiëren. U definieert de front-end-IP-configuratie voor het inkomende verkeer en de back-end-IP-groep om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Om ervoor te zorgen dat alleen gezonde Vm's verkeer ontvangen, kunt u eventueel een status test definiëren. Basic load balancer gebruikt een IPv4-test om de status van IPv4-en IPv6-eind punten op de Vm's te beoordelen. Standard load balancer biedt ondersteuning voor expliciete IPv6-status controles.
 
-Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). In het volgende voor beeld worden load balancer-regels gemaakt met de naam *dsLBrule_v4* en *dsLBrule_v6* en wordt verkeer op *TCP* -poort *80* gebalanceerd naar de IPv4-en IPv6-frontend IP-configuraties:
+Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). In het volgende voor beeld worden load balancer-regels met de naam *dsLBrule_v4* en *dsLBrule_v6* en wordt het verkeer op *TCP* -poort *80* gebalanceerd naar de IPv4-en IPv6-front-end IP-configuraties:
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -237,7 +237,7 @@ $nsg = New-AzNetworkSecurityGroup `
 -Name "dsNSG1"  `
 -SecurityRules $rule1,$rule2
 ```
-### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
+### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
 
 Maak een virtueel netwerk met [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). In het volgende voor beeld wordt een virtueel netwerk gemaakt met de naam *dsVnet* met *mySubnet*:
 

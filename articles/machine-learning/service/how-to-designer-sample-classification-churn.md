@@ -1,7 +1,7 @@
 ---
-title: 'Designer: classificeren, voors pellen'
+title: 'Ontwerp: voor beeld van het verloop van voor spel'
 titleSuffix: Azure Machine Learning
-description: Deze ontwerp pijplijn (preview-versie) toont de voor spelling van een binaire classificeerder van het verloop, een algemene taak voor Customer Relationship Management (CRM).
+description: Volg dit voor beeld van de classificatie om verloop met Azure Machine Learning Designer te voors pellen & gestimuleerde beslissings structuren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: a09060e16b877df4412b785edbb60930cb4122bc
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647177"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196043"
 ---
-# <a name="sample-5---classification-predict-churn"></a>Voor beeld 5-classificatie: voor spel verloop
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Versterkte beslissings structuur gebruiken om verloop te voors pellen met Azure Machine Learning Designer
+
+**Voor beeld van Designer (preview) 5**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Meer informatie over het bouwen van een complexe machine learning pijp lijn zonder dat u een regel code hoeft te schrijven met behulp van de ontwerp functie (preview).

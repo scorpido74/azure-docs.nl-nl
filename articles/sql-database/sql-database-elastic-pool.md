@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 08/06/2019
-ms.openlocfilehash: 1b3ee75d1b24cab8211337cf1cdbd053327e16b8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ba309b864056b10fe6540e85ffbc4c013af00455
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823837"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186473"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Elastische Pools helpen u bij het beheren en schalen van meerdere Azure SQL-data bases
 
@@ -143,7 +143,7 @@ Pooldatabases ondersteunen in het algemeen dezelfde [bedrijfscontinuïteitsfunct
 
   Herstel naar een bepaald tijdstip maakt gebruik van automatische database back-ups om een data base in een groep te herstellen naar een specifiek tijdstip. Zie [Herstel naar een bepaald tijdstip](sql-database-recovery-using-backups.md#point-in-time-restore)
 
-- **Geo-herstel**
+- **Geo-restore**
 
   Geo-Restore biedt de standaard herstel optie wanneer een Data Base niet beschikbaar is vanwege een incident in de regio waarin de data base wordt gehost. Zie [Restore an Azure SQL Database or failover to a secondary](sql-database-disaster-recovery.md) (Een Azure SQL Database of herstellen of een failover uitvoeren naar een secundaire server)
 
@@ -226,3 +226,4 @@ Zie [SQL database-waarschuwingen in azure portal maken](sql-database-insights-al
 - Zie voor een video [micro soft Virtual Academy-video cursus over Azure SQL database Elastic-mogelijkheden](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 - Zie [Ontwerppatronen voor SaaS-toepassingen met meerdere tenants met behulp van Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) voor meer informatie over ontwerppatronen voor SaaS-toepassingen met elastische pools.
 - Zie [Introduction to the Wingtip SaaS Application](sql-database-wtp-overview.md)voor een SaaS-zelf studie over het gebruik van elastische Pools.
+- Zie [resource management in dense elastische Pools](sql-database-elastic-pool-resource-management.md)voor meer informatie over resource beheer in elastische Pools met veel data bases.

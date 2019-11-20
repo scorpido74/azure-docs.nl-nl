@@ -11,15 +11,15 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 11/18/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 820e979c41ddc1c1cf14456ed77a4a55e353ab12
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 866f2e5e1ba9df9e8e63b77250d6c94635bbc009
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094282"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74194961"
 ---
 > [!NOTE] 
 > De gebruikers accounts die in dit artikel worden besproken, verschillen van gebruikers accounts die worden gebruikt voor Remote Desktop Protocol (RDP) of Secure Shell (SSH) om veiligheids redenen. 
@@ -59,7 +59,7 @@ Zie [grootschalige parallelle reken oplossingen ontwikkelen met batch](batch-api
 
 Het niveau van de verhoging van het gebruikers account geeft aan of een taak wordt uitgevoerd met verhoogde toegang. Zowel een account voor automatische gebruikers als een benoemd gebruikers account kan worden uitgevoerd met verhoogde toegang. De twee opties voor verhogings niveau zijn:
 
-- **NonAdmin** De taak wordt uitgevoerd als een standaard gebruiker zonder verhoogde toegang. Het standaard niveau voor uitbrei ding van bevoegdheden voor een batch-gebruikers account is altijd niet- **beheerder**.
+- Niet- **beheerder:** De taak wordt uitgevoerd als een standaard gebruiker zonder verhoogde toegang. Het standaard niveau voor uitbrei ding van bevoegdheden voor een batch-gebruikers account is altijd niet- **beheerder**.
 - **Beheerder:** De taak wordt uitgevoerd als een gebruiker met verhoogde toegang en werkt met volledige beheerders machtigingen. 
 
 ## <a name="auto-user-accounts"></a>Automatische gebruikers accounts
@@ -94,7 +94,7 @@ U kunt de automatische gebruikers specificatie voor beheerders bevoegdheden conf
 >
 >
 
-De volgende code fragmenten laten zien hoe de automatische gebruikers specificatie moet worden geconfigureerd. In de voor beelden is het verhogings `Admin` niveau ingesteld op en `Task`het bereik. Het taak bereik is de standaard instelling, maar is wel opgenomen in het voor beeld.
+De volgende code fragmenten laten zien hoe de automatische gebruikers specificatie moet worden geconfigureerd. In de voor beelden wordt het verhogings niveau ingesteld op `Admin` en de scope op `Task`. Het taak bereik is de standaard instelling, maar is wel opgenomen in het voor beeld.
 
 #### <a name="batch-net"></a>Batch .NET
 
@@ -159,7 +159,7 @@ Een gebruikers account met een naam is handig als u alle taken in een taak wilt 
 
 U kunt ook een benoemd gebruikers account gebruiken om een taak uit te voeren waarmee machtigingen worden ingesteld voor externe resources, zoals bestands shares. Met een benoemde gebruikers account beheert u de gebruikers identiteit en kunt u deze gebruikers-id gebruiken om machtigingen in te stellen.  
 
-Met benoemde gebruikers accounts schakelt u wacht woord-minder SSH tussen Linux-knoop punten in. U kunt een benoemd gebruikers account gebruiken met Linux-knoop punten die taken met meerdere instanties moeten uitvoeren. Elk knoop punt in de pool kan taken uitvoeren onder een gebruikers account dat is gedefinieerd in de hele groep. Zie voor meer informatie over taken met meerdere instanties [multi\-instance-taken gebruiken voor het uitvoeren van MPI-toepassingen](batch-mpi.md).
+Met benoemde gebruikers accounts schakelt u wacht woord-minder SSH tussen Linux-knoop punten in. U kunt een benoemd gebruikers account gebruiken met Linux-knoop punten die taken met meerdere instanties moeten uitvoeren. Elk knoop punt in de pool kan taken uitvoeren onder een gebruikers account dat is gedefinieerd in de hele groep. Zie voor meer informatie over taken met meerdere instanties [multi\--instantie taken gebruiken voor het uitvoeren van MPI-toepassingen](batch-mpi.md).
 
 ### <a name="create-named-user-accounts"></a>Benoemde gebruikers accounts maken
 
@@ -280,7 +280,7 @@ users = [
     batchmodels.UserAccount(
         name='pool-nonadmin',
         password='******',
-        elevation_level=batchmodels.ElevationLevel.nonadmin)
+        elevation_level=batchmodels.ElevationLevel.non_admin)
 ]
 pool = batchmodels.PoolAddParameter(
     id=pool_id,
@@ -295,7 +295,7 @@ batch_client.pool.add(pool)
 
 ### <a name="run-a-task-under-a-named-user-account-with-elevated-access"></a>Een taak uitvoeren onder een benoemd gebruikers account met verhoogde toegang
 
-Als u een taak wilt uitvoeren als een verhoogde gebruiker, stelt u de eigenschap **UserIdentity** van de taak in op een benoemd gebruikers account dat is gemaakt met de `Admin`eigenschap **ElevationLevel** ingesteld op.
+Als u een taak wilt uitvoeren als een verhoogde gebruiker, stelt u de eigenschap **UserIdentity** van de taak in op een benoemd gebruikers account dat is gemaakt met de eigenschap **ElevationLevel** ingesteld op `Admin`.
 
 Dit code fragment geeft aan dat de taak moet worden uitgevoerd onder een benoemd gebruikers account. Dit benoemde gebruikers account is gedefinieerd in de groep toen de groep werd gemaakt. In dit geval is het benoemde gebruikers account met beheerders machtigingen gemaakt:
 
@@ -314,7 +314,7 @@ De batch-Service versie 2017 -01-01.4.0 introduceert een belang rijke wijziging,
 |---------------------------------------|------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.RunElevated = true;`       | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.Admin));`    |
 | `CloudTask.RunElevated = false;`      | `CloudTask.UserIdentity = new UserIdentity(new AutoUserSpecification(elevationLevel: ElevationLevel.NonAdmin));` |
-| `CloudTask.RunElevated`niet opgegeven | Er is geen update vereist                                                                                               |
+| `CloudTask.RunElevated` niet opgegeven | Er is geen update vereist                                                                                               |
 
 ### <a name="batch-java"></a>Batch java
 
@@ -322,15 +322,15 @@ De batch-Service versie 2017 -01-01.4.0 introduceert een belang rijke wijziging,
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `CloudTask.withRunElevated(true);`        | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.ADMIN));`    |
 | `CloudTask.withRunElevated(false);`       | `CloudTask.withUserIdentity(new UserIdentity().withAutoUser(new AutoUserSpecification().withElevationLevel(ElevationLevel.NONADMIN));` |
-| `CloudTask.withRunElevated`niet opgegeven | Er is geen update vereist                                                                                                                     |
+| `CloudTask.withRunElevated` niet opgegeven | Er is geen update vereist                                                                                                                     |
 
 ### <a name="batch-python"></a>Batch Python
 
 | Als uw code gebruikmaakt van...                      | Bijwerken naar....                                                                                                                       |
 |-------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | `run_elevated=True`                       | `user_identity=user`, waarbij <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.admin))`                |
-| `run_elevated=False`                      | `user_identity=user`, waarbij <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.nonadmin))`             |
-| `run_elevated`niet opgegeven | Er is geen update vereist                                                                                                                                  |
+| `run_elevated=False`                      | `user_identity=user`, waarbij <br />`user = batchmodels.UserIdentity(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`auto_user=batchmodels.AutoUserSpecification(`<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`elevation_level=batchmodels.ElevationLevel.non_admin))`             |
+| `run_elevated` niet opgegeven | Er is geen update vereist                                                                                                                                  |
 
 
 ## <a name="next-steps"></a>Volgende stappen

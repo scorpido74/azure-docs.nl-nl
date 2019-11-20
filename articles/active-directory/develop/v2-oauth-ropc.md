@@ -17,20 +17,23 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fb475a5d88547cc5f39cb269cc1cbf72fcd25b3
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
-ms.translationtype: MT
+ms.openlocfilehash: 322e0e5f740bd416c7831f32e0d74f9290335fe3
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72295393"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195753"
 ---
-# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Referentie voor het micro soft Identity-platform en de OAuth 2,0 Resource owner-wacht woord
+# <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credentials"></a>Referenties voor het micro soft Identity-platform en de OAuth 2,0 Resource owner-wacht woord
 
-Het micro soft Identity-platform biedt ondersteuning voor de toekenning van de [ROPC-machtiging (Password owner Credential)](https://tools.ietf.org/html/rfc6749#section-4.3), waarmee een toepassing zich kan aanmelden bij de gebruiker door rechtstreeks hun wacht woord te verwerken. Voor de ROPC-stroom is een hoge mate van vertrouwen en gebruikers belichting vereist. u moet deze stroom alleen gebruiken wanneer andere, veiligere stromen niet kunnen worden gebruikt.
+Het micro soft Identity-platform biedt ondersteuning voor de [OAuth 2,0 Resource owner password credentials-toekenning (ROPC)](https://tools.ietf.org/html/rfc6749#section-4.3), waarmee een toepassing zich kan aanmelden bij de gebruiker door rechtstreeks hun wacht woord te verwerken.
+
+> [!WARNING]
+> Micro soft raadt u aan om de ROPC-stroom _niet_ te gebruiken. In de meeste scenario's zijn veiligere alternatieven beschikbaar en aanbevolen. Deze stroom vereist een zeer hoge mate van vertrouwen in de toepassing en voert Risico's uit die niet aanwezig zijn in andere stromen. Gebruik deze stroom alleen wanneer andere beveiligde stromen niet kunnen worden gebruikt.
 
 > [!IMPORTANT]
 >
-> * Het micro soft Identity platform-eind punt ondersteunt alleen ROPC voor Azure AD-tenants, niet voor persoonlijke accounts. Dit betekent dat u een Tenant-specifiek eind punt (@no__t 0) of het `organizations`-eind punt moet gebruiken.
+> * Het micro soft Identity platform-eind punt ondersteunt alleen ROPC voor Azure AD-tenants, niet voor persoonlijke accounts. Dit betekent dat u een Tenant-specifiek eind punt (`https://login.microsoftonline.com/{TenantId_or_Name}`) of het `organizations`-eind punt moet gebruiken.
 > * Persoonlijke accounts die worden uitgenodigd voor een Azure AD-Tenant, kunnen ROPC niet gebruiken.
 > * Accounts die geen wacht woorden hebben, kunnen zich niet aanmelden via ROPC. Voor dit scenario raden we u aan om in plaats daarvan een andere stroom te gebruiken voor uw app.
 > * Als gebruikers multi-factor Authentication (MFA) moeten gebruiken om zich aan te melden bij de toepassing, zullen ze in plaats daarvan worden geblokkeerd.
@@ -48,7 +51,7 @@ De ROPC-stroom is een enkele aanvraag: de client-id en de referenties van de geb
 
 > [!TIP]
 > Probeer deze aanvraag uit te voeren in postman!
-> [![Try het uitvoeren van deze aanvraag in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
+> [![probeer deze aanvraag uit te voeren in postman](./media/v2-oauth2-auth-code-flow/runInPostman.png)](https://app.getpostman.com/run-collection/f77994d794bab767596d)
 
 
 ```
@@ -67,13 +70,13 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parameter | Voorwaarde | Beschrijving |
 | --- | --- | --- |
-| `tenant` | Verplicht | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers`, maar kan worden ingesteld op `organizations`. |
-| `client_id` | Verplicht | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. | 
-| `grant_type` | Verplicht | Moet worden ingesteld op `password`. |
-| `username` | Verplicht | Het e-mail adres van de gebruiker. |
-| `password` | Verplicht | Het wacht woord van de gebruiker. |
+| `tenant` | Vereist | De Directory-Tenant waarvan u de gebruiker wilt registreren. Dit kan een GUID of beschrijvende naam zijn. Deze para meter kan niet worden ingesteld op `common` of `consumers`, maar kan worden ingesteld op `organizations`. |
+| `client_id` | Vereist | De ID van de toepassing (client) die de [Azure Portal-app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) pagina die aan uw app is toegewezen. | 
+| `grant_type` | Vereist | Moet worden ingesteld op `password`. |
+| `username` | Vereist | Het e-mail adres van de gebruiker. |
+| `password` | Vereist | Het wacht woord van de gebruiker. |
 | `scope` | Aanbevolen | Een door spaties gescheiden lijst met [bereiken](v2-permissions-and-consent.md)of machtigingen die voor de app zijn vereist. In een interactieve stroom moet de beheerder of de gebruiker vóór de tijd toestemming geven aan deze bereiken. |
-| `client_secret`| Soms vereist | Als uw app een open bare client is, kan de `client_secret` of `client_assertion` niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. | 
+| `client_secret`| Soms vereist | Als uw app een open bare client is, kunnen de `client_secret` of `client_assertion` niet worden opgenomen.  Als de app een vertrouwelijke client is, moet deze worden opgenomen. | 
 | `client_assertion` | Soms vereist | Een andere vorm van `client_secret`, gegenereerd met een certificaat.  Zie [certificaat referenties](active-directory-certificate-credentials.md) voor meer informatie. | 
 
 ### <a name="successful-authentication-response"></a>Geslaagde verificatie reactie
@@ -97,8 +100,8 @@ In het volgende voor beeld ziet u een geslaagd token antwoord:
 | `scope` | Door spaties gescheiden teken reeksen | Als er een toegangs token is geretourneerd, worden in deze para meter de scopes vermeld waarvoor het toegangs token geldig is. |
 | `expires_in`| int | Aantal seconden dat het opgenomen toegangs token geldig is voor. |
 | `access_token`| Dekkende teken reeks | Uitgegeven voor de aangevraagde [bereiken](v2-permissions-and-consent.md) . |
-| `id_token` | JWT | Verleend als de oorspronkelijke para meter `scope` de `openid`-bereik bevat. |
-| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke para meter `scope` is opgenomen `offline_access`. |
+| `id_token` | JWT | Verleend als de para meter voor de oorspronkelijke `scope` het `openid` bereik bevat. |
+| `refresh_token` | Dekkende teken reeks | Verleend als de oorspronkelijke `scope`-para meter `offline_access`is opgenomen. |
 
 U kunt het vernieuwings token gebruiken om nieuwe toegangs tokens te verkrijgen en tokens te vernieuwen met behulp van dezelfde stroom die wordt beschreven in de [documentatie over de OAuth-code stroom](v2-oauth2-auth-code-flow.md#refresh-the-access-token).
 
@@ -108,8 +111,8 @@ Als de gebruiker geen juiste gebruikers naam of wacht woord heeft opgegeven, of 
 
 | Fout | Beschrijving | Client actie |
 |------ | ----------- | -------------|
-| `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client heeft geen toestemming voor de aangevraagde bereiken. Als de bereiken niet worden verleend, wordt een `consent_required`-fout geretourneerd. Als dit het geval is, moet de client de gebruiker naar een interactieve prompt verzenden met een webweergave of browser. |
-| `invalid_request` | De aanvraag is onjuist samengesteld | Het toekennings type wordt niet ondersteund voor de `/common`-of `/consumers`-verificatie contexten.  Gebruik in plaats daarvan `/organizations` of een Tenant-ID. |
+| `invalid_grant` | De verificatie is mislukt | De referenties zijn onjuist of de client heeft geen toestemming voor de aangevraagde bereiken. Als de bereiken niet worden verleend, wordt er een `consent_required` fout geretourneerd. Als dit het geval is, moet de client de gebruiker naar een interactieve prompt verzenden met een webweergave of browser. |
+| `invalid_request` | De aanvraag is onjuist samengesteld | Het toekennings type wordt niet ondersteund voor de contexten `/common` of `/consumers`-verificatie.  Gebruik in plaats daarvan `/organizations` of een Tenant-ID. |
 
 ## <a name="learn-more"></a>Meer informatie
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 11/12/2019
 ms.author: swmachan
-ms.openlocfilehash: b4daa04a4dbf87006147fb0d44d7b128a6d8ecf4
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d58383b20e4311f8ab9490dc241722eee2e44ad6
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73835789"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184795"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text-API 3,0: vertalen
 
@@ -33,21 +33,30 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
 
+### <a name="required-parameters"></a>Vereiste para meters
+
 <table width="100%">
   <th width="20%">Query parameter</th>
   <th>Beschrijving</th>
   <tr>
-    <td>API-versie</td>
+    <td>api-version</td>
     <td><em>Vereiste para meter</em>.<br/>De versie van de API die door de client is aangevraagd. De waarde moet <code>3.0</code>zijn.</td>
-  </tr>
-  <tr>
-    <td>Van</td>
-    <td><em>Optionele para meter</em>.<br/>Geeft de taal van de invoer tekst aan. Ga na welke talen kunnen worden vertaald door <a href="./v3-0-languages.md">ondersteunde talen</a> te zoeken met behulp van het <code>translation</code> bereik. Als de para meter <code>from</code> niet is opgegeven, wordt automatische taal detectie toegepast om de bron taal te bepalen. <br/><br/>U moet de para meter <code>from</code> gebruiken in plaats van automatische detectie wanneer u de functie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamische woorden lijst</a> gebruikt.</td>
   </tr>
   <tr>
     <td>tot</td>
     <td><em>Vereiste para meter</em>.<br/>Hiermee geeft u de taal van de uitvoer tekst op. De doel taal moet een van de <a href="./v3-0-languages.md">ondersteunde talen</a> zijn die is opgenomen in het <code>translation</code> bereik. Gebruik bijvoorbeeld <code>to=de</code> om naar Duits te vertalen.<br/>Het is mogelijk om naar meerdere talen tegelijk te vertalen door de para meter in de query teken reeks te herhalen. Gebruik bijvoorbeeld <code>to=de&to=it</code> om te vertalen naar Duits en Italiaans.</td>
   </tr>
+</table>
+
+### <a name="optional-parameters"></a>Optionele parameters
+
+<table width="100%">
+  <th width="20%">Query parameter</th>
+  <th>Beschrijving</th>
+  <tr>
+    <td>from</td>
+    <td><em>Optionele para meter</em>.<br/>Geeft de taal van de invoer tekst aan. Ga na welke talen kunnen worden vertaald door <a href="./v3-0-languages.md">ondersteunde talen</a> te zoeken met behulp van het <code>translation</code> bereik. Als de para meter <code>from</code> niet is opgegeven, wordt automatische taal detectie toegepast om de bron taal te bepalen. <br/><br/>U moet de para meter <code>from</code> gebruiken in plaats van automatische detectie wanneer u de functie <a href="https://docs.microsoft.com/azure/cognitive-services/translator/dynamic-dictionary">dynamische woorden lijst</a> gebruikt.</td>
+  </tr>  
   <tr>
     <td>textType</td>
     <td><em>Optionele para meter</em>.<br/>Hiermee wordt bepaald of de tekst die wordt vertaald tekst zonder opmaak of HTML-tekst is. Een HTML-bestand moet een goed gevormd, volledig element zijn. Mogelijke waarden zijn: <code>plain</code> (standaard) of <code>html</code>.</td>
@@ -57,7 +66,7 @@ Aanvraag parameters die zijn door gegeven voor de query reeks zijn:
     <td><em>Optionele para meter</em>.<br/>Een teken reeks waarmee de categorie (domein) van de vertaling wordt opgegeven. Deze para meter wordt gebruikt voor het ophalen van vertalingen van een aangepast systeem dat is gebouwd met <a href="../customization.md">aangepaste vertaler</a>. Voeg de categorie-ID uit de <a href="https://docs.microsoft.com/azure/cognitive-services/translator/custom-translator/how-to-create-project#view-project-details">Project gegevens</a> van uw aangepaste vertaler toe aan deze para meter om uw geïmplementeerde aangepaste systeem te gebruiken. De standaard waarde is: <code>general</code>.</td>
   </tr>
   <tr>
-    <td>ProfanityAction</td>
+    <td>profanityAction</td>
     <td><em>Optionele para meter</em>.<br/>Hiermee geeft u op hoe scheld woorden moeten worden behandeld in vertalingen. Mogelijke waarden zijn: <code>NoAction</code> (standaard), <code>Marked</code> of <code>Deleted</code>. Zie voor het <a href="#handle-profanity">afhandelen</a>van scheld woorden.</td>
   </tr>
   <tr>
@@ -155,7 +164,7 @@ Een geslaagde reactie is een JSON-matrix met één resultaat voor elke teken ree
 
     Het `transliteration`-object wordt niet opgenomen als het vele niet wordt uitgevoerd.
 
-    * `alignment`: een object met een enkele teken reeks eigenschap met de naam `proj`, waarmee invoer tekst wordt toegewezen aan de vertaalde tekst. De uitlijnings informatie wordt alleen gegeven wanneer de aanvraag parameter `includeAlignment` is `true`. Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende indeling: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  De dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spatie scheidt de woorden. Eén woord kan worden uitgelijnd met nul, één of meerdere woorden in de andere taal en de uitgelijnde woorden kunnen niet-aaneengesloten zijn. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. Zie [informatie over uitlijning verkrijgen](#obtain-alignment-information) voor een voor beeld en beperkingen.
+    * `alignment`: een object met een enkele teken reeks eigenschap met de naam `proj`, waarmee invoer tekst wordt toegewezen aan de vertaalde tekst. De uitlijnings informatie wordt alleen gegeven wanneer de aanvraag parameter `includeAlignment` is `true`. Uitlijning wordt geretourneerd als een teken reeks waarde van de volgende indeling: `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]`.  De dubbele punt scheidt begin-en eind index, het streepje scheidt de talen en de spatie scheidt de woorden. Een woord kan uitlijnen met nul, één of meerdere woorden in de andere taal en het is mogelijk dat de uitgelijnde woorden niet-aaneengesloten. Als er geen uitlijnings gegevens beschikbaar zijn, is het element uitlijning leeg. Zie [informatie over uitlijning verkrijgen](#obtain-alignment-information) voor een voor beeld en beperkingen.
 
     * `sentLen`: een object dat de grenzen van een zin retourneert in de invoer-en uitvoer teksten.
 
@@ -175,7 +184,7 @@ Voor beeld van JSON-antwoorden vindt u in de sectie [voor beelden](#examples) .
   <th width="20%">Headers</th>
   <th>Beschrijving</th>
     <tr>
-    <td>X-aanvraag-}</td>
+    <td>X-RequestId</td>
     <td>De waarde die door de service is gegenereerd om de aanvraag te identificeren. Dit wordt gebruikt voor het oplossen van problemen.</td>
   </tr>
   <tr>
@@ -205,7 +214,7 @@ Hier volgen de mogelijke HTTP-status codes die een aanvraag retourneert.
   </tr>
   <tr>
     <td>403</td>
-    <td>De aanvraag is niet geautoriseerd. Controleer het fout bericht Details. Dit betekent vaak dat alle gratis vertalingen van een proef abonnement zijn gebruikt.</td>
+    <td>De aanvraag is niet gemachtigd. Controleer het fout bericht Details. Dit betekent vaak dat alle gratis vertalingen van een proef abonnement zijn gebruikt.</td>
   </tr>
   <tr>
     <td>408</td>
@@ -353,11 +362,11 @@ Normaal gesp roken behoudt de Translator-service inhoud die aanwezig is in de br
 Als u wilt voor komen dat de vertaling in het gemoeds oog komt, ongeacht de aanwezigheid van scheld woorden in de bron tekst, kunt u de filter optie voor scheld woorden gebruiken. Met deze optie kunt u kiezen of u ongepaste woorden wilt weer geven, of u woorden met de juiste tags wilt markeren (zodat u de optie hebt om uw eigen verwerking toe te voegen) of u wilt geen actie ondernemen. De geaccepteerde waarden van `ProfanityAction` zijn `Deleted`, `Marked` en `NoAction` (standaard).
 
 <table width="100%">
-  <th width="20%">ProfanityAction</th>
+  <th width="20%">profanityAction</th>
   <th>Actie</th>
   <tr>
     <td><code>NoAction</code></td>
-    <td>Dit is het standaard gedrag. Scheld is van bron naar doel.<br/><br/>
+    <td>Dit is de standaardinstelling. Scheld is van bron naar doel.<br/><br/>
     <strong>Voorbeeld bron (Japans)</strong>: 彼はジャッカスです Marketplace.<br/>
     <strong>Voor beeld van vertaling (Engels)</strong>: He is een Jackass.
     </td>
@@ -474,7 +483,7 @@ Houd rekening met de volgende beperkingen:
 
 * Uitlijning is niet beschikbaar voor tekst in HTML-indeling, dat wil zeggen textType = HTML
 * Uitlijning wordt alleen geretourneerd voor een subset van de taal paren:
-  - van het Engels naar een andere taal;
+  - in het Engels in een andere taal;
   - van een andere taal in het Engels, met uitzonde ring van vereenvoudigd Chinees, traditioneel Chinees en Lets in het Engels.
   - van Japans naar Koreaans of van Koreaans tot Japans.
 * U ontvangt geen uitlijning als de zin een ingeblikte vertaling is. Een voor beeld van een ingestelde vertaling is ' Dit is een test ', ' Ik ben gek ' en andere hoge frequentie zinnen.

@@ -1,7 +1,7 @@
 ---
-title: 'Designer: krediet risico voors pellen (kosten gevoelig)'
+title: 'Ontwerp functie: voor beeld van krediet risico voors pellen'
 titleSuffix: Azure Machine Learning
-description: In dit artikel wordt beschreven hoe u een complexe machine learning pijp lijn bouwt met behulp van de ontwerp functie (preview). U leert hoe u aangepaste python-scripts implementeert en hoe u meerdere modellen vergelijkt om de beste optie te kiezen.
+description: Bouw een classificatie en gebruik aangepaste python-scripts om het krediet risico te voors pellen met behulp van Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 7af0ee31c7d7e5dae4a38db7f6c74ff3e5f964bb
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647994"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196091"
 ---
-# <a name="sample-4---classification-with-custom-python-script-predict-credit-risk"></a>Voor beeld 4: classificatie met aangepast python-script: krediet risico voors pellen
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Een classificatie bouwen & python-scripts gebruiken om het krediet risico te voors pellen met behulp van Azure Machine Learning Designer
+
+**Voor beeld van Designer (preview) 4**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 In dit artikel wordt beschreven hoe u een complexe machine learning pijp lijn bouwt met behulp van de ontwerp functie (preview). U leert hoe u aangepaste logica implementeert met behulp van python-scripts en meerdere modellen vergelijkt om de beste optie te kiezen.

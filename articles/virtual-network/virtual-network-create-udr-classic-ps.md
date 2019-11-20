@@ -1,5 +1,5 @@
 ---
-title: Route ring beheren in een Azure Virtual Network-Power shell-klassiek | Microsoft Docs
+title: Route ring beheren in een Azure-VNet-Power shell-klassiek
 description: Meer informatie over het beheren van route ring in VNets met Power shell | Klassieke
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: f2f2c17740bd94629209c2bffb82689ecc931fc8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 4170418b4f53277a8f4306fe2835286c8ac99dee
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058773"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186345"
 ---
 # <a name="control-routing-and-use-virtual-appliances-classic-using-powershell"></a>Route ring en virtuele apparaten (klassiek) met Power shell beheren
 
@@ -33,7 +33,7 @@ ms.locfileid: "71058773"
 [!INCLUDE [virtual-network-create-udr-intro-include.md](../../includes/virtual-network-create-udr-intro-include.md)]
 
 > [!IMPORTANT]
-> Voordat u met Azure-resources gaat werken, is het belang rijk te weten dat Azure momenteel twee implementatie modellen heeft: Azure Resource Manager en klassiek. Zorg ervoor dat u begrijpt wat [implementatiemodellen en hulpprogramma's](../azure-resource-manager/resource-manager-deployment-model.md) zijn voordat u met een Azure-resource gaat werken. U kunt de documentatie voor verschillende hulpprogram ma's weer geven door een optie boven in dit artikel te selecteren. Dit artikel is van toepassing op het klassieke implementatiemodel.
+> Voordat u met Azure-resources gaat werken, is het belangrijk om te weten dat Azure momenteel twee implementatiemodellen heeft: Azure Resource Manager en het klassieke model. Zorg ervoor dat u begrijpt wat [implementatiemodellen en hulpprogramma's](../azure-resource-manager/resource-manager-deployment-model.md) zijn voordat u met een Azure-resource gaat werken. U kunt de documentatie voor verschillende hulpprogram ma's weer geven door een optie boven in dit artikel te selecteren. Dit artikel is van toepassing op het klassieke implementatiemodel.
 > 
 
 [!INCLUDE [virtual-network-create-udr-scenario-include.md](../../includes/virtual-network-create-udr-scenario-include.md)]

@@ -13,12 +13,12 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: 7e28cdacce8eac4774683013ae1c30ca34ebfaad
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 7cb76d5836055ce352373fa13449e27d81e84022
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821709"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185236"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Zelf studie: dynamische configuratie in een .NET Framework-app gebruiken
 
@@ -31,16 +31,15 @@ In deze zelfstudie leert hoe u dynamische configuratie-updates kunt implementere
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Stel uw toepassing in om de configuratie bij te werken met een app-configuratie archief op aanvraag.
-> * Injecteer de meest recente configuratie in de controllers van uw toepassing.
-
+> * Stel uw .NET Framework-app in om de configuratie bij te werken als reactie op wijzigingen in een app-configuratie archief.
+> * Injecteer de meest recente configuratie in uw toepassing.
 ## <a name="prerequisites"></a>Vereisten
 
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.1 of hoger](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -52,9 +51,9 @@ In deze zelfstudie leert u het volgende:
 
     Laat het **Label** en het **inhouds type** nu leeg.
 
-## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
+## <a name="create-a-net-framework-console-app"></a>Een .NET Framework-console-app maken
 
-1. Start Visual Studio en selecteer **bestand** > **Nieuw** > -**project**.
+1. Start Visual Studio en selecteer **bestand** > **Nieuw** > **project**.
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
@@ -135,7 +134,7 @@ In deze zelfstudie leert u het volgende:
 
     ![App-lokaal starten](./media/dotnet-app-run.png)
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com). Selecteer **alle resources**en selecteer de app-configuratie Store-instantie die u hebt gemaakt in de Quick Start.
 
 1. Selecteer **Configuration Explorer**en werk de waarden van de volgende sleutels bij:
 
@@ -148,7 +147,7 @@ In deze zelfstudie leert u het volgende:
     ![App-lokale gegevens vernieuwen](./media/dotnet-app-run-refresh.png)
     
     > [!NOTE]
-    > Omdat de verval tijd van de cache is ingesteld op 10 seconden met behulp van de `SetCacheExpiration` methode terwijl u de configuratie voor de vernieuwings bewerking opgeeft, wordt de waarde voor de configuratie-instelling alleen bijgewerkt als er ten minste tien seconden zijn verstreken sinds de laatste vernieuwing voor deze instelling.
+    > Omdat de verval tijd van de cache is ingesteld op 10 seconden met behulp van de `SetCacheExpiration` methode terwijl u de configuratie voor de vernieuwings bewerking opgeeft, wordt de waarde voor de configuratie-instelling alleen bijgewerkt als er ten minste tien seconden zijn verstreken sinds de laatste vernieuwing voor die instelling.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -156,7 +155,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een beheerde Azure-service-identiteit toegevoegd om toegang tot app-configuratie te stroomlijnen en het beheer van referenties voor uw app te verbeteren. Ga door naar de volgende zelf studie voor meer informatie over het toevoegen van een door Azure beheerde service-identiteit die de toegang tot de app-configuratie stroomlijnt.
+In deze zelf studie hebt u uw .NET Framework-app ingeschakeld om de configuratie-instellingen van de app-configuratie dynamisch te vernieuwen. Ga verder met de volgende zelf studie als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot de app-configuratie te stroom lijnen.
 
 > [!div class="nextstepaction"]
 > [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)

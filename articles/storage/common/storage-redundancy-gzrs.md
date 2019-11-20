@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e040533acdd8979b7b43358c74d1b729dafa2c66
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: b47c80f3c23c26828037954c01608cc502c017c9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111838"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186600"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Bouw Maxi maal beschik bare Azure Storage toepassingen met geo-zone-redundante opslag (GZRS) (preview)
 
@@ -29,8 +29,9 @@ Alleen voor algemeen gebruik v2-opslag accounts bieden ondersteuning voor GZRS e
 
 GZRS en RA-GZRS zijn momenteel beschikbaar als preview-versie in de volgende regio's:
 
-- Europa - noord
-- Europa - west
+- Azië (zuidoost)
+- Europa - Noord
+- Europa - West
 - Verenigd Koninkrijk Zuid
 - US - oost
 - US - oost 2

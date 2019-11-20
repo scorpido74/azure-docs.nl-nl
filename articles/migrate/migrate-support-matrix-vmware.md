@@ -1,19 +1,18 @@
 ---
-title: Azure Migrate-ondersteunings matrix voor VMware-evaluatie en-migratie
-description: Een overzicht van de ondersteunings instellingen en beperkingen voor de evaluatie en migratie van virtuele VMware-machines naar Azure met behulp van de Azure Migrate service.
-services: backup
+title: Ondersteuning voor VMware-evaluatie en-migratie in Azure Migrate
+description: Meer informatie over ondersteuning voor VMware VM-evaluatie/migratie in Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4b07252aed2205917f6b43e3e09a2877663e5bab
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 135680a9b0b6c8b5520958c884d99a83f1f87c88
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838916"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196280"
 ---
 # <a name="support-matrix-for-vmware-assessment-and-migration"></a>Ondersteuningsmatrix voor VMware-evaluatie en -migratie
 
@@ -40,7 +39,7 @@ De tabel bevat een overzicht van de ondersteunde scenario's voor virtuele VMware
 
 **Geografie** | **Opslag locatie van meta gegevens**
 --- | ---
-Azure Government | VS (overheid) - Virginia
+Azure Government | US Gov - Virginia
 Azië en Stille Oceaan | Azië Azië-oost of Zuidoost
 Australië | Australië-oost of Australië-zuidoost
 Brazilië | Brazilië - zuid
@@ -79,7 +78,13 @@ Deze tabel geeft een overzicht van de evaluatie-ondersteuning en beperkingen voo
 
 ## <a name="assessment-vcenter-server-permissions"></a>Beoordeling-vCenter Server machtigingen
 
-Voor evaluatie hebt u een alleen-lezen-account nodig voor de vCenter Server.
+Azure Migrate moet toegang hebben tot de vCenter Server om Vm's te ontdekken voor de evaluatie en migratie zonder agent.
+
+- Als u van plan bent toepassingen te detecteren of afhankelijkheden te visualiseren, moet u een vCenter Server account met alleen-lezen toegang maken naast de bevoegdheden die zijn ingeschakeld voor **virtuele machines** > **gast bewerkingen**.
+
+  ![machtigingen voor vCenter Server-account](./media/tutorial-prepare-vmware/vcenter-server-permissions.png)
+
+- Als u niet van plan bent om toepassings detectie en de visualisatie van de afhankelijkheid van agents uit te voeren, stelt u een alleen-lezen-account in voor de vCenter Server.
 
 ## <a name="assessment-appliance-requirements"></a>Beoordeling-vereisten voor apparaten
 
@@ -105,7 +110,7 @@ Het Azure Migrate-apparaat heeft verbinding met internet nodig.
 --- | --- |
 *.portal.azure.com  | Ga naar de Azure Migrate in het Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com | Meld u aan bij uw Azure-abonnement.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
 management.azure.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
 dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
 *.vault.azure.net | Geheimen beheren in de Azure Key Vault.
@@ -208,7 +213,7 @@ Het Azure Migrate-apparaat heeft Internet verbinding met internet nodig.
 --- | ---
 *.portal.azure.com | Ga naar de Azure Migrate in het Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *. microsoft.com <br/> *. live.com  | Meld u aan bij uw Azure-abonnement.
-*.microsoftonline.com <br/> *. microsoftonline-p.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
+*.microsoftonline.com <br/> *.microsoftonline-p.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
 management.azure.com | Maak Active Directory apps voor het apparaat om te communiceren met de Azure Migrate-service.
 dc.services.visualstudio.com | App-logboeken uploaden die worden gebruikt voor interne bewaking.
 *.vault.azure.net | Geheimen beheren in de Azure Key Vault.
@@ -289,8 +294,8 @@ https:\//management.azure.com | Gebruikt voor replicatie beheer bewerkingen en c
 *.services.visualstudio.com | Gebruikt voor telemetrische doel einden (deze is optioneel)
 time.nist.gov | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
 time.windows.com | Wordt gebruikt om de tijdsynchronisatie tussen de systeemtijd en de algemene tijd te controleren.
-https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\/-login.live.com <br/> https:\/-graph.windows.net <br/> https:\//login.windows.net <br/> https:\/-www.live.com <br/> https:\/-www.microsoft.com  | OVF Setup heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
-https:\/-dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | De MySQL-down load volt ooien
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\/-login.live.com <br/> https:\/-graph.windows.net <br/> https:\//login.windows.net <br/> https:\/-www.live.com <br/> https:\//www.microsoft.com  | OVF Setup heeft toegang tot deze Url's nodig. Ze worden gebruikt voor toegangs beheer en identiteits beheer door Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | De MySQL-down load volt ooien
 
 
 #### <a name="mysql-installation-options"></a>Installatie opties voor MySQL
@@ -324,7 +329,7 @@ Downloaden en installeren in Azure Migrate | Wanneer u het apparaat installeert 
 **Onafhankelijke schijven** | Ondersteund.
 **Passthrough-schijven** | Ondersteund.
 **NFS** | NFS-volumes die zijn gekoppeld als volumes op de Vm's, worden niet gerepliceerd.
-iSCSI-doelen | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
+**iSCSI-doelen** | Vm's met iSCSI-doelen worden niet ondersteund voor migratie zonder agent.
 **Multipath IO** | Wordt niet ondersteund.
 **Storage vMotion** | Ondersteund
 **Team kaarten** | Wordt niet ondersteund.

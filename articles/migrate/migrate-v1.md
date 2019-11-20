@@ -1,18 +1,18 @@
 ---
-title: Werken met de vorige versie van Azure Migrate | Microsoft Docs
-description: Biedt een samen vatting voor het werken met de oude versie van Azure Migrate
+title: Werken met de vorige versie van Azure Migrate
+description: Hierin wordt beschreven hoe u kunt werken met de vorige versie van Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 07/11/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2c63d63e57a23963f17b6773f244973b051b57eb
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162457"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186544"
 ---
 # <a name="work-with-the-previous-version-of-azure-migrate"></a>Werken met de vorige versie van Azure Migrate
 
@@ -21,8 +21,8 @@ Dit artikel bevat informatie over het werken met de vorige versie van Azure Migr
 
 Er zijn twee versies van de Azure Migrate-service:
 
-- **Huidige versie**: Gebruik deze versie om Azure Migrate projecten te maken, on-premises machines te detecteren en beoordelingen en migraties te organiseren. Meer [informatie](whats-new.md) over wat er nieuw is in deze versie.
-- **Vorige versie**: Als u de vorige versie van Azure Migrate gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines wordt ondersteund), moet u nu de huidige versie gebruiken. Als u nog steeds Azure Migrate projecten moet gebruiken die in de vorige versie zijn gemaakt, kunt u dit op de volgende manieren doen:
+- **Huidige versie**: gebruik deze versie om Azure migrate projecten te maken, on-premises machines te detecteren en beoordelingen en migraties te organiseren. Meer [informatie](whats-new.md) over wat er nieuw is in deze versie.
+- **Vorige versie**: als u de vorige versie van Azure migrate gebruikt (alleen de evaluatie van on-premises virtuele VMware-machines wordt ondersteund), moet u nu de huidige versie gebruiken. Als u nog steeds Azure Migrate projecten moet gebruiken die in de vorige versie zijn gemaakt, kunt u dit op de volgende manieren doen:
     - U kunt geen migratie projecten meer maken.
     - U wordt aangeraden geen nieuwe detecties uit te voeren.
     - U kunt nog steeds toegang krijgen tot bestaande projecten.
@@ -84,7 +84,7 @@ Niet gereed voor Azure |  De virtuele machine wordt niet opgestart in Azure. Als
 Gereedheid onbekend | Azure Migrate kunt de gereedheid van Azure niet identificeren, meestal omdat er geen gegevens beschikbaar zijn.
 
 
-#### <a name="azure-vm-properties"></a>Azure VM-eigenschappen
+#### <a name="azure-vm-properties"></a>Eigenschappen van Azure VM
 Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de virtuele machine kan worden uitgevoerd in Azure.
 
 
@@ -92,7 +92,7 @@ Gereedheid houdt rekening met een aantal VM-eigenschappen om te bepalen of de vi
 --- | --- | ---
 **Opstart type** | BIOS ondersteund. UEFI wordt niet ondersteund. | Voorwaardelijk gereed als het opstart type UEFI is.
 **Kernen** | Kern < van machines = het maximum aantal kern geheugens (128) dat wordt ondersteund voor een virtuele machine van Azure.<br/><br/> Als er een prestatie geschiedenis beschikbaar is, wordt Azure Migrate beschouwd als de gebruikte kernen.<br/>Als er een comfort factor is opgegeven in de evaluatie-instellingen, wordt het aantal gebruikte kern geheugens vermenigvuldigd met de comfort factor.<br/><br/> Als er geen prestatie geschiedenis is, gebruikt Azure Migrate de toegewezen kernen zonder de comfort factor toe te passen. | Gereed als deze kleiner dan of gelijk aan de limieten zijn.
-**Geheugenmetabase** | De grootte van het computer geheugen < = de maximale hoeveelheid geheugen (3892 GB op Azure&nbsp;M-serie Standard_M128m<sup>2</sup>) voor een virtuele machine van Azure. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte geheugen.<br/><br/>Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat u de comfort factor hoeft toe te passen.<br/><br/> | Gereed indien binnen de limieten.
+**Geheugenmetabase** | De grootte van het computer geheugen < = de maximale hoeveelheid geheugen (3892 GB op de Azure M-serie Standard_M128m&nbsp;<sup>2</sup>) voor een virtuele machine van Azure. [Meer informatie](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Als de prestatie geschiedenis beschikbaar is, Azure Migrate beschouwt het gebruikte geheugen.<br/><br/>Als er een comfort factor is opgegeven, wordt het gebruikte geheugen vermenigvuldigd met de comfort factor.<br/><br/> Als er geen geschiedenis is, wordt het toegewezen geheugen gebruikt, zonder dat u de comfort factor hoeft toe te passen.<br/><br/> | Gereed indien binnen de limieten.
 **Opslag schijf** | De toegewezen grootte van een schijf moet 4 TB (4096 GB) of minder zijn.<br/><br/> Het aantal schijven dat is gekoppeld aan de computer, moet 65 of minder zijn, inclusief de besturingssysteem schijf. | Gereed indien binnen de limieten.
 **Netwerken** | Aan een machine moet 32 of minder Nic's zijn gekoppeld. | Gereed indien binnen de limieten.
 
@@ -210,9 +210,9 @@ Als u afhankelijkheids visualisatie wilt gebruiken, koppelt u een Log Analytics-
 
 Nadat u een werk ruimte hebt geconfigureerd, downloadt en installeert u agents op elke on-premises computer die u wilt evalueren. Als u bovendien computers hebt zonder Internet verbinding, moet u de [log Analytics-gateway](../azure-monitor/platform/gateway.md) hierop downloaden en installeren.
 
-1. Klik in **overzicht**op**machines** **beheren** > en selecteer de gewenste computer.
-2. Klik in de kolom afhankelijkheden op **agents installeren**.
-3. Down load en installeer micro soft Monitoring Agent (MMA) en de afhankelijkheids agent op elke virtuele machine die u wilt beoordelen op de pagina afhankelijkheden.
+1. Klik in **overzicht**op > **machines** **beheren** en selecteer de gewenste computer.
+2. Klik in de kolom **afhankelijkheden** op **agents installeren**.
+3. Down load en installeer micro soft Monitoring Agent (MMA) en de afhankelijkheids agent op elke virtuele machine die u wilt beoordelen op de pagina **afhankelijkheden** .
 4. Kopieer de werkruimte-id en -sleutel. U hebt deze nodig wanneer u de MMA installeert op de on-premises machine.
 
 > [!NOTE]
@@ -226,7 +226,7 @@ De agent installeren op een Windows-computer:
 1. Dubbelklik op de gedownloade agent.
 2. Klik op de pagina **Welkom** op **Volgende**. Klik op de pagina **Licentievoorwaarden** op **Akkoord** om de licentie te accepteren.
 3. Bewaar of wijzig in **doelmap**de standaardinstallatiemap > **volgende**.
-4. In **installatie opties voor agent**selecteert u **Azure log Analytics** > **volgende**.
+4. Selecteer in **installatie opties voor agent**de optie **Azure log Analytics** > **volgende**.
 5. Klik op **toevoegen** om een nieuwe log Analytics-werk ruimte toe te voegen. Plak de werk ruimte-ID en-sleutel die u hebt gekopieerd uit de portal. Klik op **Volgende**.
 
 U kunt de agent installeren vanaf de opdracht regel of met behulp van een geautomatiseerde methode zoals System Center Configuration Manager. Meer [informatie](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) over het gebruik van deze methoden om de MMA-agent te installeren.
@@ -261,9 +261,9 @@ Voor computers die worden bewaakt met System Center Operations Manager 2012 R2 o
 
 ### <a name="create-a-group-with-dependency-mapping"></a>Een groep met afhankelijkheids toewijzing maken
 
-1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op**machines** **beheren** > .
+1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op > **machines** **beheren** .
 2. Zoek naar de computer waarop u de agents hebt geïnstalleerd.
-3. De kolom afhankelijkheden voor de machine moet nu als **weergave afhankelijkheden**worden weer gegeven. Klik op de kolom om de afhankelijkheden van de machine weer te geven.
+3. De kolom **afhankelijkheden** voor de machine moet nu als **weergave afhankelijkheden**worden weer gegeven. Klik op de kolom om de afhankelijkheden van de machine weer te geven.
 4. De afhankelijkheids toewijzing voor de machine bevat de volgende details:
     - Inkomende (clients) en uitgaande (servers) TCP-verbindingen van de computer
         - De afhankelijke computers waarop geen MMA en een afhankelijkheids agent is geïnstalleerd, worden gegroepeerd op poort nummers.
@@ -295,7 +295,7 @@ De Kusto-query's uitvoeren:
 
 1. Nadat u de agents hebt geïnstalleerd, gaat u naar de portal en klikt u op **overzicht**.
 2. Ga in **overzicht**naar het gedeelte **essentiële** elementen van het project en klik op de werkruimte naam die wordt vermeld naast de **OMS-werk ruimte**.
-3. Klik op de pagina log Analytics werk ruimte op **algemene** > **Logboeken**.
+3. Klik op de pagina Log Analytics werk ruimte op **algemene** > **Logboeken**.
 4. Schrijf uw query om afhankelijkheids gegevens te verzamelen met behulp van Azure Monitor Logboeken. Zoek voorbeeld query's in de volgende sectie.
 5. Voer de query uit door te klikken op uitvoeren. 
 

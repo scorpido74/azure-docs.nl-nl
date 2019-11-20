@@ -1,11 +1,11 @@
 ---
-title: Gebeurtenis van de netwerk beveiligings groep en regel teller Azure Diagnostische logboeken
+title: Diagnostische logboek registratie voor een netwerk beveiligings groep
 titlesuffix: Azure Virtual Network
 description: Meer informatie over het inschakelen van Diagnostische logboeken voor gebeurtenis-en regel items voor een Azure-netwerk beveiligings groep.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 047c92f1c50409e6a1716f0ef2f774464bd12a0a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 55fc18a718d0c69ba90a86ff6aea00d32a8f465b
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972764"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196735"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>Diagnostische logboek registratie voor een netwerk beveiligings groep
 
 Een netwerk beveiligings groep (NSG) bevat regels voor het toestaan of weigeren van verkeer naar een subnet van een virtueel netwerk, een netwerk interface of beide. Wanneer u diagnostische logboek registratie voor een NSG inschakelt, kunt u de volgende categorieën met gegevens vastleggen:
 
-* **Gebeurtenislog** Vermeldingen worden vastgelegd waarvoor NSG-regels worden toegepast op Vm's, op basis van een MAC-adres.
+* **Gebeurtenis:** Vermeldingen worden vastgelegd waarvoor NSG-regels worden toegepast op Vm's, op basis van een MAC-adres.
 * **Regel teller:** Bevat vermeldingen voor het aantal keren dat elke NSG regel wordt toegepast om verkeer te weigeren of toe te staan. De status voor deze regels wordt elke 60 seconden verzameld.
 
 Diagnostische logboeken zijn alleen beschikbaar voor Nsg's die zijn geïmplementeerd via het Azure Resource Manager-implementatie model. U kunt geen diagnostische logboek registratie inschakelen voor Nsg's die zijn geïmplementeerd via het klassieke implementatie model. Zie [Wat is Azure-implementatie modellen](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)? voor een beter inzicht in de twee modellen.
@@ -48,7 +48,7 @@ U kunt de [Azure-Portal](#azure-portal), [Power shell](#powershell)of de [Azure 
 
     | Instelling                                                                                     | Waarde                                                          |
     | ---------                                                                                   |---------                                                       |
-    | Name                                                                                        | Een naam van uw keuze.  Bijvoorbeeld: *myNsgDiagnostics*      |
+    | Naam                                                                                        | Een naam van uw keuze.  Bijvoorbeeld: *myNsgDiagnostics*      |
     | **Archiveren naar een opslag account**, **streamen naar een event hub**en **verzenden naar log Analytics** | U kunt zoveel bestemmingen selecteren als u kiest. Zie [logboek doelen](#log-destinations)voor meer informatie over elk van deze.                                                                                                                                           |
     | LOG                                                                                         | Selecteer een van beide of beide logboek categorieën. Zie [logboek categorieën](#log-categories)voor meer informatie over de gegevens die voor elke categorie worden vastgelegd.                                                                                                                                             |
 6. Logboeken weer geven en analyseren. Zie [Logboeken weer geven en analyseren](#view-and-analyze-logs)voor meer informatie.
@@ -134,7 +134,7 @@ Diagnostische gegevens kunnen zijn:
 - [Gestreamd naar een event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) voor opname door een service van derden of een aangepaste analyse oplossing, zoals PowerBI.
 - [Naar Azure monitor-logboeken geschreven](../azure-monitor/platform/resource-logs-collect-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
-## <a name="log-categories"></a>Logboekcategorieën
+## <a name="log-categories"></a>Logboek Categorieën
 
 Gegevens in JSON-indeling worden geschreven voor de volgende logboek Categorieën:
 
@@ -199,8 +199,9 @@ Het logboek regel item bevat informatie over elke regel die wordt toegepast op r
 ## <a name="view-and-analyze-logs"></a>Logboeken weer geven en analyseren
 
 Zie [overzicht van Azure Diagnostische logboeken](../azure-monitor/platform/resource-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)voor meer informatie over het weer geven van diagnostische logboek gegevens. Als u Diagnostische gegevens verzendt naar:
-- **Azure monitor logboeken**: U kunt de [network-oplossing voor beveiligings groepen van no__t-1 gebruiken voor uitgebreidere inzichten. De oplossing biedt visualisaties voor NSG-regels waarmee verkeer, per MAC-adres, van de netwerk interface in een virtuele machine wordt toegestaan of geweigerd.
-- **Azure Storage account**: Gegevens worden naar een PT1H. JSON-bestand geschreven. U kunt het volgende vinden:
+- **Azure monitor logboeken**: u kunt de [analyse oplossing voor netwerk beveiligings groepen](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-security-group-analytics-solution-in-azure-monitor
+) gebruiken voor uitgebreid inzicht. De oplossing biedt visualisaties voor NSG-regels waarmee verkeer, per MAC-adres, van de netwerk interface in een virtuele machine wordt toegestaan of geweigerd.
+- **Azure Storage account**: gegevens worden geschreven naar een PT1H. JSON-bestand. U kunt het volgende vinden:
   - Gebeurtenis logboek in het volgende pad: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
   - Logboek regel items in het volgende pad: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 

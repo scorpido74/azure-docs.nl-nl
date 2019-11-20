@@ -8,12 +8,12 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 84b98b637236213cdd5b87c6b0a38d87c110c21b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: beea911c9bb938458d8bd12e091e6c908ebb1566
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111745"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185696"
 ---
 # <a name="tutorial-create-an-ai-enrichment-pipeline-using-c-and-the-net-sdk"></a>Zelf studie: een AI-verrijkings pijplijn C# maken met en de .NET SDK
 
@@ -103,7 +103,7 @@ Als u het `Microsoft.Extensions.Configuration.Json` NuGet-pakket in Visual Studi
 
 Als u verbinding wilt maken met uw Azure Cognitive Search-service, moet u de gegevens van de zoek service toevoegen aan uw project. Klik met de rechter muisknop op het project in de Solution Explorer en selecteer > **Nieuw item toevoegen...** . Geef het bestands `appsettings.json` een naam en selecteer **toevoegen**. 
 
-Dit bestand moet worden opgenomen in de uitvoermap. Hiertoe klikt u met de rechter muisknop op `appsettings.json` en selecteert u **Eigenschappen**. Wijzig de waarde van **kopiëren naar uitvoermap** naar een **nieuwere versie**.
+Dit bestand moet worden opgenomen in de uitvoermap. Hiertoe klikt u met de rechter muisknop op `appsettings.json` en selecteert u **Eigenschappen**. Wijzig de waarde van **kopiëren naar uitvoermap** naar **kopiëren indien nieuwer**.
 
 Kopieer de onderstaande JSON naar het nieuwe JSON-bestand.
 

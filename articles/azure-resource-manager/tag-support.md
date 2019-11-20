@@ -3,12 +3,12 @@ title: Label ondersteuning voor bronnen
 description: Hier wordt weer gegeven welke Azure-resource typen tags ondersteunen. Geeft Details voor alle Azure-Services.
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.openlocfilehash: aa8736310a5c18a1f94d3920a4f88632212c7af4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: MT
+ms.openlocfilehash: 2799784ad449304a7790ad5f83d8ed1c94dd3547
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173556"
+ms.locfileid: "74194981"
 ---
 # <a name="tag-support-for-azure-resources"></a>Ondersteuning voor labels voor Azure-resources
 In dit artikel wordt beschreven of een resource type [labels](resource-group-using-tags.md)ondersteunt. De kolom met de naam **ondersteunt labels** geeft aan of het resource type een eigenschap voor de tag heeft. De kolom label **in het kosten rapport** geeft aan of dit resource type de tag doorgeeft aan het kosten rapport.
@@ -758,7 +758,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ExternalSubscriptions/prognose | Nee | Nee |
 > | ExternalSubscriptions/query | Nee | Nee |
 > | Functies | Nee | Nee |
-> | Query's uitvoeren | Nee | Nee |
+> | Query | Nee | Nee |
 > | inschrijving | Nee | Nee |
 > | Reportconfigs | Nee | Nee |
 > | Rapporten | Nee | Nee |
@@ -1227,7 +1227,7 @@ Ga naar de naam ruimte van een resource provider:
 > | ------------- | ----------- | ----------- |
 > | commitmentPlans | Ja | Ja |
 > | webServices | Ja | Ja |
-> | Workspaces | Ja | Ja |
+> | Werkruimten | Ja | Ja |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
@@ -1818,7 +1818,7 @@ Ga naar de naam ruimte van een resource provider:
 > | Resourcetype | Ondersteunt labels | Label in kosten rapport |
 > | ------------- | ----------- | ----------- |
 > | managedInstances | Ja | Ja |
-> | managedInstances/data bases | Ja (Zie [Opmerking hieronder](#sqlnote)) | Ja |
+> | managedInstances/data bases | Nee | Nee |
 > | managedInstances/databases/backupShortTermRetentionPolicies | Nee | Nee |
 > | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nee | Nee |
 > | managedInstances/data bases/vulnerabilityAssessments | Nee | Nee |

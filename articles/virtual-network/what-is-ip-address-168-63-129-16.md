@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/15/2019
 ms.author: genli
-ms.openlocfilehash: 0ea8a8ec1a92a7dbc01dddc175f7116825ba00f9
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: e061d503254ba7aa7735a97a060fc63f96b3fb61
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71067785"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196675"
 ---
 # <a name="what-is-ip-address-1686312916"></a>Wat is het IP-adres 168.63.129.16?
 
@@ -35,6 +35,7 @@ IP-adres 168.63.129.16 is een virtueel openbaar IP-adres dat wordt gebruikt om e
 ## <a name="scope-of-ip-address-1686312916"></a>Bereik van IP-adres 168.63.129.16
 
 Het open bare IP-adres 168.63.129.16 wordt gebruikt in alle regio's en alle nationale Clouds. Dit speciale open bare IP-adres is eigendom van micro soft en kan niet worden gewijzigd. Het wordt toegestaan door de standaard regel voor de netwerk beveiligings groep. U wordt aangeraden dit IP-adres in alle lokale firewall-beleids regels in zowel binnenkomende als uitgaande richting toe te staan. De communicatie tussen dit speciale IP-adres en de bronnen is veilig, omdat alleen het interne Azure-platform een bericht kan bron van dit IP-adres. Als dit adres wordt geblokkeerd, kan onverwacht gedrag optreden in verschillende scenario's.
+De volgende poorten moeten worden geopend om communicatie met WireServer: 80, 443 en 32526 toe te staan.
 
 [Azure Load Balancer status tests](../load-balancer/load-balancer-custom-probe-overview.md) zijn afkomstig van dit IP-adres. Als u dit IP-adres blokkeert, zullen uw tests mislukken.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7730dc1143586eb4c5c05fd475b8412546b7a6
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
-ms.translationtype: MT
+ms.openlocfilehash: f593d5ea621ad450eb82388416534e40df36e2d5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809256"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184192"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Veelgestelde vragen over het beheer van apparaten Azure Active Directory
 
@@ -119,7 +119,7 @@ Hieronder ziet u hoe deze acties kunnen worden verholpen.
 
 ### <a name="q-does-windows-10-device-registration-in-azure-ad-support-tpms-in-fips-mode"></a>V: registratie van Windows 10-apparaten in azure AD support Tpm's in de FIPS-modus?
 
-**A:** Nee, momenteel registratie van apparaten in Windows 10 voor alle Apparaatstatus-hybride Azure AD-deelname, Azure AD-deelname en Azure AD geregistreerd-biedt geen ondersteuning voor Tpm's in de FIPS-modus. Om aan te melden bij Azure AD, moet de FIPS-modus worden uitgeschakeld voor de Tpm's op die apparaten
+**A:** Registratie van Windows 10-apparaten wordt alleen ondersteund voor FIPS-compatibele TPM 2,0 en niet ondersteund voor TPM 1,2. Als uw apparaten FIPS-compatibele TPM 1,2 hebben, moet u ze uitschakelen voordat u verdergaat met Azure AD-deelname of hybride Azure AD-deelname. Micro soft biedt geen hulpprogram ma's voor het uitschakelen van de FIPS-modus voor Tpm's omdat deze afhankelijk is van de TPM-fabrikant. Neem contact op met uw OEM voor ondersteuning. 
 
 ---
 

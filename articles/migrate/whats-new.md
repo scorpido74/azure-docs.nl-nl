@@ -1,18 +1,18 @@
 ---
-title: Wat is er nieuw in Azure Migrate | Microsoft Docs
-description: Biedt een overzicht van de service Azure Migrate.
+title: Wat is er nieuw in Azure Migrate
+description: Meer informatie over nieuwe en recente updates in de Azure Migrate-service.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
 ms.date: 11/18/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9eb70d74752b3db5fcbc185f596d518100992672
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: b3b8e24e7d84e492aeaba64573b6e909707bc5a5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158571"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185755"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Wat is er nieuw in Azure Migrate
 

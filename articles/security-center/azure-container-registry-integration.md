@@ -1,5 +1,5 @@
 ---
-title: Azure Security Center en Azure Container Registry | Microsoft Docs
+title: Azure Security Center en Azure Container Registry
 description: Meer informatie over de integratie van Azure Security Center met Azure Container Registry
 services: security-center
 documentationcenter: na
@@ -10,22 +10,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/04/2019
+ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f0de56f968488f0e5d551ad705cc6f8ca6e7bc47
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
-ms.translationtype: MT
+ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73521863"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196385"
 ---
 # <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integratie met Security Center (preview-versie)
 
 Azure Container Registry (ACR) is een beheerde, persoonlijke docker-register service waarmee uw container installatie kopieën voor Azure-implementaties in een centraal REGI ster worden opgeslagen en beheerd. Het is gebaseerd op de open-source docker Registry 2,0.
 
-Wanneer u ACR gebruikt in combi natie met de standaardlaag van Azure Security Center (Zie [prijzen](security-center-pricing.md)), krijgt u meer inzicht in de beveiligings lekken van uw REGI ster en installatie kopieën.
+Gebruikers Azure Security Center van de Standard-laag van het REGI ster en de installatie kopieën kunnen de optionele versie van de container registers inschakelen voor een diepere zicht baarheid in uw register-en afbeeldings problemen. Ga voor meer informatie naar het overzicht van [prijzen](security-center-pricing.md). Als de bundel is ingeschakeld, worden afbeeldingen in uw ACR-service automatisch door Security Center gescand wanneer een installatie kopie naar het REGI ster wordt gepusht. Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten), zijn er conclusies beschikbaar in Security Center in aanbevelingen als volgt:
 
-[aanbevelingen voor ![Azure Container Registry (ACR) in Azure Security Center](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+[![voor beeld Azure Security Center aanbeveling over beveiligings problemen gedetecteerd in een gehoste installatie kopie van een Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
 ## <a name="benefits-of-integration"></a>Voor delen van integratie
 

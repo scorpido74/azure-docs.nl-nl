@@ -1,7 +1,7 @@
 ---
-title: 'Designer: prijs voors pellen (regressie)'
+title: 'Ontwerp: voor beeld van prijzen voors pellen (Geavanceerd)'
 titleSuffix: Azure Machine Learning
-description: In dit artikel wordt beschreven hoe u een complexe machine learning pijp lijn bouwt zonder dat u een regel code hoeft te schrijven met behulp van de ontwerp functie (preview). Meer informatie over het trainen en vergelijken van meerdere regressie modellen voor het voors pellen van de prijs van een auto op basis van technische functies
+description: Bouw & meerdere ML regressie modellen vergelijkt om de prijs van een auto te voors pellen op basis van technische functies met Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: d73f6d67afff13696de78d026ff65228fd68fb28
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 5eb701af90125e2654d6f908b28512aba3ad37aa
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647954"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196069"
 ---
-# <a name="sample-2---regression-predict-price-and-compare-algorithms"></a>Voor beeld 2-regressie: prijs voors pellen en algoritmen vergelijken
+# <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>Train & meerdere regressie modellen vergelijken om de prijzen van auto's te voors pellen met Azure Machine Learning Designer
+
+**Voor beeld van Designer (preview) 2**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Meer informatie over het bouwen van een machine learning pijp lijn zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). Dit voor beeld van treinen en vergelijkt meerdere regressie modellen om de prijs van een auto te voors pellen op basis van de technische functies. We bieden de reden voor de keuzes die u in deze pijp lijn hebt gemaakt zodat u uw eigen machine learning problemen kunt aanpakken.

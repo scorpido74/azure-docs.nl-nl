@@ -1,11 +1,11 @@
 ---
-title: Een IPv6-toepassing met dubbele stack implementeren met behulp van basis Load Balancer in azure-Power shell
+title: Een IPv6-toepassing met dubbele stack implementeren-basis Load Balancer-Power shell
 titlesuffix: Azure Virtual Network
 description: In dit artikel wordt beschreven hoe u een IPv6 Dual stack-toepassing implementeert in een virtueel Azure-netwerk met behulp van Azure Power shell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/08/2019
 ms.author: kumud
-ms.openlocfilehash: 0ce051892cde9cb50b43a6d4f66ed3d461e71285
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
+ms.openlocfilehash: 0b7f7a9198664693819143c306eeb1a020d22b7c
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70011438"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185492"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---powershell-preview"></a>Een IPv6-toepassing met dubbele stack implementeren met behulp van Basic Load Balancer-Power shell (preview)
 
-In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert met een basis Load Balancer met behulp van Azure CLI met een dual stack virtueel netwerk en subnet, een basis Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's met een dubbele IP-configuratie, netwerk beveiligings groep en open bare Ip's.
+In dit artikel wordt beschreven hoe u een dual stack (IPv4 + IPv6)-toepassing implementeert met een basis Load Balancer met behulp van Azure PowerShell met een dual stack virtueel netwerk en subnet, een basis Load Balancer met dubbele (IPv4 + IPv6) front-end configuraties, Vm's met Nic's die een dubbele IP-configuratie, netwerk beveiligings groep en open bare Ip's hebben.
 
 Als u een toepassing met dubbele stack (IPV4 + IPv6) wilt implementeren met behulp van Standard Load Balancer, gaat u naar [een IPv6-toepassing met dubbele stack implementeren met Standard Load Balancer met behulp van Azure PowerShell](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md).
 
@@ -42,7 +42,7 @@ Meld u als volgt aan:
 Register-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Register-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
 ```
-Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure PowerShell opdracht uit te voeren: Controleer op de volgende manier de registratie:
+Het duurt Maxi maal 30 minuten voordat de functie registratie is voltooid. U kunt de registratie status controleren door de volgende Azure PowerShell opdracht uit te voeren: Controleer de registratie als volgt:
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowIPv6VirtualNetwork -ProviderNamespace Microsoft.Network
 Get-AzProviderFeature -FeatureName AllowIPv6CAOnStandardLB -ProviderNamespace Microsoft.Network
@@ -64,7 +64,7 @@ Voordat u een virtueel netwerk met twee stacks kunt maken, moet u een resource g
 ```
 
 ## <a name="create-ipv4-and-ipv6-public-ip-addresses"></a>Open bare IPv4-en IPv6-adressen maken
-Als u toegang wilt krijgen tot uw virtuele machines via internet, moet u de open bare IPv4-en IPv6-adressen voor de load balancer. Open bare IP-adressen maken met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). In het volgende voor beeld wordt het IPv4-en IPv6-open bare IP-adres gemaakt met de naam *dsPublicIP_v4* en *dsPublicIP_v6* in de resource groep *dsRG1* :
+Als u toegang wilt krijgen tot uw virtuele machines via internet, moet u de open bare IPv4-en IPv6-adressen voor de load balancer. Open bare IP-adressen maken met [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). In het volgende voor beeld worden het IPv4-en IPv6-open bare IP-adres gemaakt met de naam *dsPublicIP_v4* en *dsPublicIP_v6* in de resource groep *dsRG1* :
 
 ```azurepowershell-interactive
 $PublicIP_v4 = New-AzPublicIpAddress `
@@ -103,9 +103,9 @@ Als u toegang wilt krijgen tot uw virtuele machines met behulp van een RDP-verbi
 
 In deze sectie configureert u dual front-end-IP (IPv4 en IPv6) en de back-end-adres groep voor de load balancer en maakt u vervolgens een basis Load Balancer.
 
-### <a name="create-front-end-ip"></a>Het front-end-IP-adres maken
+### <a name="create-front-end-ip"></a>Maak een front-end IP-adres
 
-Maak een front-end-IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voor beeld worden IPv4-en IPv6-front-end IP-configuraties gemaakt met de naam *dsLbFrontEnd_v4* en *dsLbFrontEnd_v6*:
+Maak een front-end IP-adres met [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). In het volgende voor beeld worden IPv4-en IPv6-front-end IP-configuraties met de naam *dsLbFrontEnd_v4* en *dsLbFrontEnd_v6*gemaakt:
 
 ```azurepowershell-interactive
 $frontendIPv4 = New-AzLoadBalancerFrontendIpConfig `
@@ -134,7 +134,7 @@ $backendPoolv6 = New-AzLoadBalancerBackendAddressPoolConfig `
 
 Een load balancer-regel wordt gebruikt om de verdeling van het verkeer over de VM's te definiëren. U definieert de front-end-IP-configuratie voor het inkomende verkeer en de back-end-IP-groep om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Om ervoor te zorgen dat alleen gezonde Vm's verkeer ontvangen, kunt u eventueel een status test definiëren. Basic load balancer gebruikt een IPv4-test om de status van IPv4-en IPv6-eind punten op de Vm's te beoordelen. Standard load balancer biedt ondersteuning voor expliciete IPv6-status controles.
 
-Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). In het volgende voor beeld worden load balancer-regels gemaakt met de naam *dsLBrule_v4* en *dsLBrule_v6* en wordt verkeer op *TCP* -poort *80* gebalanceerd naar de IPv4-en IPv6-frontend IP-configuraties:
+Maak een load balancer-regel met [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig). In het volgende voor beeld worden load balancer-regels met de naam *dsLBrule_v4* en *dsLBrule_v6* en wordt het verkeer op *TCP* -poort *80* gebalanceerd naar de IPv4-en IPv6-front-end IP-configuraties:
 
 ```azurepowershell-interactive
 $lbrule_v4 = New-AzLoadBalancerRuleConfig `
@@ -322,7 +322,7 @@ $VM2 = New-AzVM -ResourceGroupName $rg.ResourceGroupName  -Location $rg.Location
 ```
 
 ## <a name="determine-ip-addresses-of-the-ipv4-and-ipv6-endpoints"></a>IP-adressen van de IPv4-en IPv6-eind punten bepalen
-Alle netwerk interface objecten in de resource groep ophalen om het gebruikte IP-adres in deze implementatie samen te `get-AzNetworkInterface`vatten met. U kunt ook de front-end adressen van de Load Balancer van de IPv4-en `get-AzpublicIpAddress`IPv6-eind punten ophalen met.
+Alle netwerk interface objecten in de resource groep ophalen om het gebruikte IP-adres in deze implementatie samen te vatten met `get-AzNetworkInterface`. Haal ook de front-end-adressen van de Load Balancer van de IPv4-en IPv6-eind punten op met `get-AzpublicIpAddress`.
 
 ```azurepowershell-interactive
 $rgName= "dsRG1"
@@ -363,7 +363,7 @@ In de volgende afbeelding ziet u een voor beeld van een uitvoer met een lijst me
 ## <a name="view-ipv6-dual-stack-virtual-network-in-azure-portal"></a>Virtueel IPv6-netwerk met dubbele stack in Azure Portal weer geven
 U kunt het virtuele IPv6-netwerk met dubbele stack als volgt weer geven in Azure Portal:
 1. Voer in de zoek balk van de portal *dsVnet*in.
-2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de overzichts pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*.
+2. Wanneer **myVirtualNetwork** wordt weergegeven in de zoekresultaten, selecteert u dit. Hiermee opent u de **overzichts** pagina van het virtuele netwerk met dubbele stack met de naam *dsVnet*. Het virtuele netwerk met dubbele stack toont de twee Nic's met zowel IPv4-als IPv6-configuraties die zich bevinden in het dubbele stack-subnet met de naam *dsSubnet*.
 
   ![Virtueel IPv6-netwerk met dubbele stack in azure](./media/virtual-network-ipv4-ipv6-dual-stack-powershell/dual-stack-vnet.png)
 

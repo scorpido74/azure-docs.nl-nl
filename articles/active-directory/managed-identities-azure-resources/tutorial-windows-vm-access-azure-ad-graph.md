@@ -1,5 +1,5 @@
 ---
-title: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot de Azure AD Graph API
+title: Zelf studie`:`een door Windows VM beheerde identiteit gebruiken om toegang te krijgen tot Azure AD Graph
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot de Azure AD Graph API.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60938f26c27b9f94046b1be8e3d0cb6b247017c9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 43ef467adb8970d410404c151d0028ee4cda92b9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60307791"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183008"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot de Azure AD Graph API
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot de Azure AD Graph API
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice.md)]
 
-Deze zelfstudie leert u hoe u een systeem toegewezen beheerde identiteit voor een Windows virtuele machine (VM) gebruikt voor toegang tot de Azure AD Graph API om op te halen van de groepslidmaatschappen. Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen.  Tijdens deze zelfstudie gaat u voor uw VM-identiteitsabonnement query's uitvoeren in Azure AD-groepen. Groepsgegevens worden vaak gebruikt bij het nemen van autorisatiebeslissingen. Achter de schermen wordt de beheerde identiteit van uw VM in Azure AD vertegenwoordigd door een **service-principal**. Voordat u de groepsquery uitvoert, voegt u de service-principal van de VM-identiteit toe aan een groep in Azure AD. U kunt dit doen met Azure PowerShell, Azure AD PowerShell of Azure CLI.
+Deze zelf studie laat zien hoe u een door het systeem toegewezen beheerde identiteit voor een virtuele Windows-machine (VM) gebruikt om toegang te krijgen tot de Azure AD-Graph API om de groepslid maatschappen op te halen. Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen.  Tijdens deze zelfstudie gaat u voor uw VM-identiteitsabonnement query's uitvoeren in Azure AD-groepen. Groepsgegevens worden vaak gebruikt bij het nemen van autorisatiebeslissingen. Achter de schermen wordt de beheerde identiteit van uw VM in Azure AD vertegenwoordigd door een **service-principal**. Voordat u de groepsquery uitvoert, voegt u de service-principal van de VM-identiteit toe aan een groep in Azure AD. U kunt dit doen met Azure PowerShell, Azure AD PowerShell of Azure CLI.
 
 > [!div class="checklist"]
 > * Verbinding maken met Azure AD
@@ -72,7 +72,7 @@ In deze zelfstudie verleent u uw VM-identiteit toestemming om query's voor groep
 Azure AD Graph:
 - App-id van de service-principal (gebruikt om een app toestemming te geven): 00000002-0000-0000-c000-000000000000
 - Resource-id (gebruikt om toegangstokens voor beheerde identiteiten aan te vragen voor Azure-resources): https://graph.windows.net
-- Naslaginformatie over machtigingsbereik: [Naslaginformatie over Azure Active Directory Graph-machtigingen](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
+- Verwijzing toestemmingsbereik: [Azure AD Graph-toestemmingsverwijzing](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
 
 ### <a name="grant-application-permissions-using-azure-ad-powershell"></a>Toepassingstoestemmingen verlenen met Azure AD PowerShell
 
@@ -165,7 +165,7 @@ Als u de door het systeem toegewezen beheerde identiteit van de virtuele machine
    $AccessToken = $content.access_token
    ```
 
-5. Met de object-id van de service-principal van uw VM-identiteit (deze waarde is op te halen via de variabele uit de vorige stappen: ``$ManagedIdentitiesServicePrincipal.ObjectId``) kunt u een query uitvoeren voor de Azure AD Graph API om de groepslidmaatschappen op te halen. Vervang `<OBJECT ID>` met de Object-ID uit de vorige stap en <`ACCESS-TOKEN>` met het toegangstoken van de eerder verkregen:
+5. Met de object-id van de service-principal van uw VM-identiteit (deze waarde is op te halen via de variabele uit de vorige stappen: ``$ManagedIdentitiesServicePrincipal.ObjectId``) kunt u een query uitvoeren voor de Azure AD Graph API om de groepslidmaatschappen op te halen. Vervang `<OBJECT ID>` door de object-ID uit de vorige stap en <`ACCESS-TOKEN>` met het eerder verkregen toegangs token:
 
    ```powershell
    Invoke-WebRequest 'https://graph.windows.net/<Tenant ID>/servicePrincipals/<VM Object ID>/getMemberGroups?api-version=1.6' -Method POST -Body '{"securityEnabledOnly":"false"}' -Headers @{Authorization="Bearer $AccessToken"} -ContentType "application/json"

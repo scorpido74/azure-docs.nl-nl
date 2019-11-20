@@ -6,16 +6,16 @@ author: rothja
 manager: jeffreyg
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
-ms.service: billing
+ms.service: azure-policy
 ms.topic: article
 ms.date: 05/30/2019
 ms.author: byvinyal
-ms.openlocfilehash: f9fe540611b1b773867e1f92439e13df91ad4bd3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: b6ce20196b6ffdcd6699611998260dc981cc4f44
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818361"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185044"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure-abonnement en servicelimieten, quota's en beperkingen
 Dit document bevat enkele van de meest voorkomende Microsoft Azure limieten, ook wel quota's genoemd. Dit document geldt momenteel niet voor alle Azure-Services. De lijst wordt na verloop van tijd uitgebreid en bijgewerkt om meer services te kunnen behandelen.
@@ -25,7 +25,7 @@ Zie [overzicht van Azure-prijzen](https://azure.microsoft.com/pricing/)voor meer
 > [!NOTE]
 > Als u de limiet of het quotum boven de standaard limiet wilt verhogen, kunt u gratis [een online klant ondersteuning-aanvraag openen](azure-resource-manager/resource-manager-quota-errors.md). De limieten kunnen niet hoger zijn dan de limiet waarde die in de volgende tabellen wordt weer gegeven. Als er geen kolom maximum limiet is, heeft de resource geen aanpas bare limieten.
 >
-> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u een [gratis proef abonnement](https://azure.microsoft.com/offers/ms-azr-0044p)hebt, kunt u een upgrade uitvoeren naar een abonnement met [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) . Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
+> [Gratis proef abonnementen](https://azure.microsoft.com/offers/ms-azr-0044p) komen niet in aanmerking voor limiet of quotum verhoging. Als u hebt een [gratis proefabonnement](https://azure.microsoft.com/offers/ms-azr-0044p), kunt u upgraden naar een [betalen per gebruik](https://azure.microsoft.com/offers/ms-azr-0003p/) abonnement. Zie voor meer informatie [uw abonnement op gratis proef versie van Azure bijwerken naar een betalen per gebruik-abonnement](billing/billing-upgrade-azure-subscription.md) en de [Veelgestelde vragen over het gratis proef abonnement](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-azure-resource-manager"></a>Limieten en Azure Resource Manager
@@ -45,7 +45,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [API Management](#api-management-limits)
 * [App Service](#app-service-limits)
 * [Application Gateway](#application-gateway-limits)
-* [Automatisering](#automation-limits)
+* [Automation](#automation-limits)
 * [Azure Cache voor Redis](#azure-cache-for-redis-limits)
 * [Azure Cloud Services](#azure-cloud-services-limits)
 * [Azure Cognitive Search](#azure-cognitive-search-limits)
@@ -89,12 +89,12 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
   * [Azure Front Door Service](#azure-front-door-service-limits)
   * [Azure Firewall](#azure-firewall-limits)
   * [ExpressRoute](#expressroute-limits)
-  * [Load balancer](#load-balancer)
+  * [Load Balancer](#load-balancer)
   * [Network Watcher](#network-watcher-limits)
   * [Openbaar IP-adres](#publicip-address)
-  * [Persoonlijke koppeling](#private-link-limits)
+  * [Private Link](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtueel netwerk](#networking-limits)
+  * [Virtual Network](#networking-limits)
   * [Virtueel WAN](#virtual-wan-limits)
 * [Notification Hubs](#notification-hubs-limits)
 * [Resourcegroep](#resource-group-limits)
@@ -104,7 +104,7 @@ In de volgende lijst met limieten wordt een nieuwe tabel weer gegeven met versch
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
-* [Opslag](#storage-limits)
+* [Storage](#storage-limits)
 * [StorSimple systeem](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Abonnement](#subscription-limits)

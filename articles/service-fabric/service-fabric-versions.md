@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: troubleshooting
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/03/2019
+ms.date: 11/18/2019
 ms.author: atsenthi
-ms.openlocfilehash: 6b29eb31f5d425fc063c8c42e7911272e63167c8
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: c2453167bbdabbb201f2463e1eec8206be6d4223
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72331088"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186483"
 ---
 # <a name="supported-service-fabric-versions"></a>Ondersteunde Service Fabric versies
 
@@ -37,18 +37,18 @@ De volgende tabel bevat de versies van Service Fabric en de bijbehorende eind da
 | Service Fabric runtime in het cluster | Kan rechtstreeks upgraden vanaf Cluster versie |Versie van compatibele SDK of NuGet-pakket | Einde van ondersteuning |
 | --- | --- |--- | --- |
 | Alle cluster versies vóór 5.3.121 | 5.1.158.* |Kleiner dan of gelijk aan versie 2,3 |20 januari 2017 |
-| 5,3. * | 5.1.158.* |Kleiner dan of gelijk aan versie 2,3 |24 februari 2017 |
-| 5,4. * | 5.1.158.* |Kleiner dan of gelijk aan versie 2,4 |10 mei 2017       |
-| 5,5. * | 5.4.164.* |Kleiner dan of gelijk aan versie 2,5 |10 augustus 2017    |
-| 5,6. * | 5.4.164.* |Kleiner dan of gelijk aan versie 2,6 |13 oktober 2017   |
-| 5,7. * | 5.4.164.* |Kleiner dan of gelijk aan versie 2,7 |15 december 2017  |
-| 6,0. * | 5.6.205.* |Kleiner dan of gelijk aan versie 2,8 |30 maart 2018     |
-| 6,1. * | 5.7.221.* |Kleiner dan of gelijk aan versie 3,0 |15 juli 2018      |
+| 5.3.* | 5.1.158.* |Kleiner dan of gelijk aan versie 2,3 |24 februari 2017 |
+| 5.4.* | 5.1.158.* |Kleiner dan of gelijk aan versie 2,4 |10 mei 2017       |
+| 5.5.* | 5.4.164.* |Kleiner dan of gelijk aan versie 2,5 |10 augustus 2017    |
+| 5.6.* | 5.4.164.* |Kleiner dan of gelijk aan versie 2,6 |13 oktober 2017   |
+| 5.7.* | 5.4.164.* |Kleiner dan of gelijk aan versie 2,7 |15 december 2017  |
+| 6.0.* | 5.6.205.* |Kleiner dan of gelijk aan versie 2,8 |30 maart 2018     |
+| 6.1.* | 5.7.221.* |Kleiner dan of gelijk aan versie 3,0 |15 juli 2018      |
 | 6,2. * | 6.0.232.* |Kleiner dan of gelijk aan versie 3,1 |26 oktober 2018   |
 | 6,3. * | 6.1.480.* |Kleiner dan of gelijk aan versie 3,2 |31 maart 2019  |
 | 6,4. * | 6.2.301.* |Kleiner dan of gelijk aan versie 3,3 |15 september 2019 |
-| 6,5. * | 6.4.617.* |Kleiner dan of gelijk aan versie 3,4 |Huidige versie, dus geen eind datum |
-
+| 6,5. * | 6.4.617.* |Kleiner dan of gelijk aan versie 3,4 |1 mei 2020 |
+| 7,0. * | 6.4.664. # |Kleiner dan of gelijk aan versie 4,0 |Huidige versie, dus geen eind datum |
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor de ondersteunde Service Fabric versies.
@@ -58,10 +58,10 @@ De volgende tabel geeft een lijst van de ondersteunde besturings systemen voor d
 | Windows Server 2012 R2 | Alle versies |
 | Windows Server 2016 | Alle versies |
 | Windows Server 1709 | 6.0 |
-| Windows Server 1803 | 6.4 |
+| WindowsServer 1803 | 6.4 |
 | Windows Server 1809 | 6.4.654.9590 |
 | Windows Server 2019 | 6.4.654.9590 |
-| Linux Ubuntu 16,04 | 6.0 |
+| Linux Ubuntu 16.04 | 6.0 |
 
 ## <a name="supported-version-names"></a>Ondersteunde versie namen
 
@@ -110,3 +110,4 @@ De volgende tabel bevat de versie namen van Service Fabric en de bijbehorende ve
 | 6,5 CU2 | 6.5.658.9590 | 6.5.460.1 |
 | 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
+| 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |

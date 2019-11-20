@@ -14,14 +14,14 @@ ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
 ms.date: 09/26/2019
 ms.author: mametcal
-ms.openlocfilehash: fe943913f9d33923438efb91630c5a85c4d1b748
-ms.sourcegitcommit: 6013bacd83a4ac8a464de34ab3d1c976077425c7
+ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71687183"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184955"
 ---
-# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Quickstart: Functie vlaggen toevoegen aan een Spring boot-app
+# <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Snelstartgids: functie vlaggen toevoegen aan een Spring boot-app
 
 In deze Snelstartgids neemt u Azure-app configuratie op in een Spring boot-web-app om een end-to-end-implementatie van functie beheer te maken. U kunt de app Configuration-service gebruiken om al uw functie vlaggen centraal op te slaan en hun status te bepalen.
 
@@ -37,9 +37,9 @@ De bron voor het beheer van Spring boot-onderdelen breidt het Framework uit met 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **feature Manager** >  **+ maken** om de volgende functie vlaggen toe te voegen:
+6. Selecteer **functie beheer** >  **+ maken** om de volgende functie vlaggen toe te voegen:
 
-    | Sleutel | State |
+    | Sleutel | Status |
     |---|---|
     | Bèta | Uit |
 
@@ -62,7 +62,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 
 1. Nadat u de bestanden op het lokale systeem hebt uitgepakt, kunt u de toepassing voor het uitvoeren van een eenvoudige Spring boot bewerken. Zoek het bestand *pom.xml* in de hoofdmap van uw app.
 
-2. Open het bestand *pom. XML* in een tekst editor en voeg de lente Cloud Azure config starter en het onderdeel beheer toe aan de lijst met `<dependencies>`:
+2. Open het bestand *pom. XML* in een tekst editor en voeg de lente Cloud Azure config starter en het functie beheer toe aan de lijst met `<dependencies>`:
 
     ```xml
     <dependency>
@@ -86,13 +86,13 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Open `bootstrap.properties`, dat zich in de map resources van uw app bevindt, en voeg de volgende regels toe aan het bestand. Voeg de informatie over de app-configuratie toe.
+1. Open `bootstrap.properties` die zich bevindt in de map resources van uw app en voeg de volgende regels toe aan het bestand. Voeg de informatie over de app-configuratie toe.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. Ga in de app-configuratie portal voor uw configuratie archief naar toegangs sleutels. Selecteer het tabblad alleen-lezen sleutels. Kopieer op dit tabblad de waarde van een van de verbindings reeksen en voeg deze toe als een nieuwe omgevings variabele met variabele naam `APP_CONFIGURATION_CONNECTION_STRING`.
+2. Ga in de app-configuratie portal voor uw configuratie archief naar toegangs sleutels. Selecteer het tabblad alleen-lezen sleutels. Op dit tabblad kopieert u de waarde van een van de verbindings reeksen en voegt u deze toe als een nieuwe omgevings variabele met de naam van de variabele `APP_CONFIGURATION_CONNECTION_STRING`.
 
 3. Open het Java-bestand van de hoofdtoepassing en voeg `@EnableConfigurationProperties` toe om deze functie in te schakelen.
 
@@ -217,7 +217,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Maak een Spring boot-toepassing met maven en voer deze uit, bijvoorbeeld:
 
@@ -232,7 +232,7 @@ U gebruikt de [lente initialisatie functie](https://start.spring.io/) om een nie
 
 3. Selecteer in de portal voor app-configuratie **functie beheer**en wijzig de status van de **bèta** sleutel in **op**:
 
-    | Sleutel | State |
+    | Sleutel | Status |
     |---|---|
     | Bèta | Aan |
 

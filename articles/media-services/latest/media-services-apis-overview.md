@@ -1,6 +1,7 @@
 ---
-title: Ontwikkelen met v3-Api's-Azure | Microsoft Docs
-description: In dit artikel worden regels beschreven die van toepassing zijn op entiteiten en Api's bij het ontwikkelen met Media Services v3.
+title: Ontwikkelen met v3-Api's
+titleSuffix: Azure Media Services
+description: Meer informatie over regels die van toepassing zijn op entiteiten en Api's bij het ontwikkelen met Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,14 +13,14 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 79f1bd95451709485f92050a882c790f9e281eb5
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4a3b699c90e1fefb834f8ddfe3a23fc2a97354ec
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049016"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186132"
 ---
-# <a name="developing-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
+# <a name="develop-with-media-services-v3-apis"></a>Ontwikkelen met Media Services v3-Api's
 
 Als een ontwikkelaar kunt u de [REST-API](https://aka.ms/ams-v3-rest-ref) van Media Services gebruiken, of clientbibliotheken waarmee u kunt communiceren met de REST-API, om eenvoudig aangepaste mediawerkstromen te maken, beheren en onderhouden. De API van [Media Services versie 3](https://aka.ms/ams-v3-rest-sdk) is gebaseerd op de OpenAPI-specificatie (voorheen bekend als een Swagger).
 
@@ -29,31 +30,31 @@ In dit artikel worden regels beschreven die van toepassing zijn op entiteiten en
 
 Als u toegang wilt hebben tot Media Services resources en de Media Services-API, moet u eerst worden geverifieerd. Media Services ondersteunt [Azure Active Directory (op Azure AD) gebaseerde](../../active-directory/fundamentals/active-directory-whatis.md) verificatie. Twee algemene verificatie opties zijn:
  
-* **Service-Principal-verificatie** : wordt gebruikt om een service te verifiëren (bijvoorbeeld: Web apps, functie-apps, Logic apps, API en micro Services). Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren. Voor webtoepassingen moet er bijvoorbeeld altijd een mid-tier zijn die verbinding maakt met Media Services met een service-principal.
-* **Gebruikers verificatie** : wordt gebruikt voor de verificatie van een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve toepassing moet eerst de gebruiker vragen naar de referenties van de gebruiker. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen.
+* **Service-Principal-verificatie**: wordt gebruikt voor het verifiëren van een service (bijvoorbeeld: Web apps, functie-apps, Logic apps, API en micro Services). Toepassingen die meestal gebruikmaken van deze verificatie methode zijn apps die daemon services, middelste laag Services of geplande taken uitvoeren. Voor web-apps moet er bijvoorbeeld altijd een mid-tier zijn die verbinding maakt met Media Services met een service-principal.
+* **Gebruikers verificatie**: wordt gebruikt voor het verifiëren van een persoon die de app gebruikt om te communiceren met Media Services-resources. De interactieve app moet eerst de gebruiker vragen naar de referenties van de gebruiker. Een voor beeld is een beheer console-app die door geautoriseerde gebruikers wordt gebruikt voor het bewaken van coderings taken of live streamen.
 
-De Media Services-API vereist dat de gebruiker of toepassing die de REST API aanvragen maakt toegang tot de resource van het Media Services-account heeft en een rol voor **Inzender** of **eigenaar** kan gebruiken. De API kan worden geopend met de rol **lezer** , maar er zijn alleen **Get** -of **List** -bewerkingen beschikbaar. Zie [op rollen gebaseerd toegangs beheer voor Media Services accounts](rbac-overview.md)voor meer informatie.
+De Media Services-API vereist dat de gebruiker of app die de REST API aanvragen maakt toegang tot de resource van het Media Services-account heeft en een rol voor **Inzender** of **eigenaar** kan gebruiken. De API kan worden geopend met de rol **lezer** , maar er zijn alleen **Get** -of **List** -bewerkingen beschikbaar. Zie [op rollen gebaseerd toegangs beheer voor Media Services accounts](rbac-overview.md)voor meer informatie.
 
 In plaats van een service-principal te maken, kunt u overwegen beheerde identiteiten te gebruiken voor Azure-resources om toegang te krijgen tot de Media Services-API via Azure Resource Manager. Zie [Wat is beheerde identiteiten voor Azure](../../active-directory/managed-identities-azure-resources/overview.md)-resources voor meer informatie over beheerde identiteiten voor Azure-resources.
 
-### <a name="azure-ad-service-principal"></a>Service-Principal van Azure AD 
+### <a name="azure-ad-service-principal"></a>Service-Principal van Azure AD
 
-Als u een Azure AD-toepassing en Service-Principal maakt, moet de toepassing zich in een eigen Tenant bevinden. Nadat u de toepassing hebt gemaakt, geeft u de rol app **Inzender** of **eigenaar** toegang tot het Media Services-account. 
+Als u een Azure AD-app en Service-Principal maakt, moet de app zich in een eigen Tenant bevindt. Nadat u de app hebt gemaakt, geeft u de rol app **Inzender** of **eigenaar** toegang tot het Media Services-account.
 
-Zie [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)als u niet zeker weet of u gemachtigd bent om een Azure AD-toepassing te maken.
+Zie [vereiste machtigingen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)als u niet zeker weet of u gemachtigd bent om een Azure AD-app te maken.
 
 In de volgende afbeelding vertegenwoordigen de cijfers de stroom van de aanvragen in chronologische volg orde:
 
-![Toepassingen op middelste laag](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+![App-verificatie op middelste laag met AAD vanuit een web-API](./media/use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
 
 1. Een middelste laag-app vraagt een Azure AD-toegangs token met de volgende para meters:  
 
    * Azure AD-Tenant eindpunt.
    * Media Services resource-URI.
    * Resource-URI voor REST-Media Services.
-   * Azure AD-toepassings waarden: de client-ID en het client geheim.
-   
-   Als u alle benodigde waarden wilt ophalen, raadpleegt u [de Access Azure Media Services-API met de Azure cli](access-api-cli-how-to.md)
+   * Azure AD-App-waarden: de client-ID en het client geheim.
+
+   Als u alle benodigde waarden wilt ophalen, raadpleegt u [de Access Azure Media Services-API met de Azure cli](access-api-cli-how-to.md).
 
 2. Het Azure AD-toegangs token wordt verzonden naar de middelste laag.
 4. De middelste laag verzendt een aanvraag naar de Azure media-REST API met het Azure AD-token.
@@ -71,11 +72,11 @@ Bekijk de volgende voor beelden die laten zien hoe u verbinding maakt met de Azu
 
 ## <a name="naming-conventions"></a>Naamconventies
 
-Namen van Azure Media Services v3-resources (bijvoorbeeld activa, taken, transformaties) zijn onderhevig aan de naamgevingsbeperkingen van Azure Resource Manager. In overeenstemming met Azure Resource Manager zijn de resourcenamen altijd uniek. U kunt dus alle unieke id-strings (bijvoorbeeld GUID's) gebruiken voor uw resourcenamen. 
+Namen van Azure Media Services v3-resources (bijvoorbeeld activa, taken, transformaties) zijn onderhevig aan de naamgevingsbeperkingen van Azure Resource Manager. In overeenstemming met Azure Resource Manager zijn de resourcenamen altijd uniek. U kunt dus alle unieke id-strings (bijvoorbeeld GUID's) gebruiken voor uw resourcenamen.
 
-Namen van Media Services-resources mogen niet de volgende tekens bevatten: '<', '>', '%', '&', ':', '&#92;', '?', '/', '*', '+', '.', enkele aanhalingstekens of besturingstekens. Alle andere tekens zijn toegestaan. De maximale lengte van een resourcenaam is 260 tekens. 
+Media Services resource namen mogen niet de volgende tekens bevatten: ' < ', ' > ', '% ', ' & ', '&#92;: ', ' ', '? ', '/', ' * ', ' + ', '. ', het enkele aanhalings teken of de Stuur codes. Alle andere tekens zijn toegestaan. De maximale lengte van een resourcenaam is 260 tekens.
 
-Zie voor meer informatie over naamgeving voor Azure Resource Manager: [Naamgevingsvereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [Naamgevingsconventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Zie [naamgevings vereisten](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) en [naam conventies](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)voor meer informatie over de naamgeving van Azure Resource Manager.
 
 ### <a name="names-of-filesblobs-within-an-asset"></a>Namen van bestanden/blobs in een Asset
 
@@ -106,7 +107,7 @@ Media Services heeft de volgende langlopende bewerkingen:
 * [StreamingEndpoint stoppen](https://docs.microsoft.com/rest/api/media/streamingendpoints/stop)
 * [StreamingEndpoint schalen](https://docs.microsoft.com/rest/api/media/streamingendpoints/scale)
 
-Bij een geslaagde verzen ding van een lange bewerking ontvangt u een ' 202 geaccepteerd ' en moet er worden gecontroleerd of de bewerking is voltooid met de geretourneerde bewerkings-ID.
+Wanneer een lange bewerking is ingediend, ontvangt u een ' 202 accepted ' en moet u de bewerking volt ooien met de geretourneerde bewerkings-ID.
 
 In het artikel [asynchrone Azure-bewerkingen bijhouden](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations) wordt uitgelegd hoe u de status van asynchrone bewerkingen van Azure kunt volgen met de waarden die in het antwoord worden geretourneerd.
 
@@ -115,11 +116,11 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 ## <a name="sdks"></a>SDK's
 
 > [!NOTE]
-> De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een toepassing met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
+> De Azure Media Services v3 Sdk's zijn niet gegarandeerd thread-safe. Wanneer u een app met meerdere threads ontwikkelt, moet u uw eigen thread synchronisatie logica toevoegen om de client te beveiligen of een nieuw AzureMediaServicesClient-object per thread te gebruiken. Wees ook voorzichtig met het oplossen van problemen met meerdere threads die worden geïntroduceerd door de optionele objecten die door uw code worden verstrekt aan de client (zoals een httpclient maakt-exemplaar in .NET).
 
-|SDK|Naslaginformatie|
+|SDK|Referentie|
 |---|---|
-|[.NET-SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
+|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-ref](https://aka.ms/ams-v3-dotnet-ref)|
 |[Java-SDK](https://aka.ms/ams-v3-java-sdk)|[Java-ref](https://aka.ms/ams-v3-java-ref)|
 |[Python-SDK](https://aka.ms/ams-v3-python-sdk)|[Python-ref](https://aka.ms/ams-v3-python-ref)|
 |[Node.js-SDK](https://aka.ms/ams-v3-nodejs-sdk) |[Node.js-ref](/javascript/api/overview/azure/mediaservices/management)| 
@@ -135,11 +136,11 @@ Er wordt slechts één langlopende bewerking ondersteund voor een bepaalde live 
 
 [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) is een hulpprogramma beschikbaar voor Windows-klanten die kennis willen maken met Media Services. AMSE is een Winforms/C#-toepassing voor het uploaden, downloaden, coderen en streamen van VOD en live-inhoud met Media Services. Het AMSE-hulpprogramma is voor clients die Media Services willen testen zonder code te schrijven. De AMSE-code wordt geleverd als een bron voor klanten die willen ontwikkelen met Media Services.
 
-AMSE is een Open-Source-project, en dus wordt er ondersteuning geboden door de community (problemen kunnen worden gemeld aan https://github.com/Azure/Azure-Media-Services-Explorer/issues). Op dit project is de [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Open Source-gedragscode) van toepassing. Raadpleeg voor meer informatie de [veelgestelde vragen over de gedragscode](https://opensource.microsoft.com/codeofconduct/faq/) of neem contact op met opencode@microsoft.com als u aanvullende vragen of opmerkingen hebt.
+AMSE is een Open-Source-project, en dus wordt er ondersteuning geboden door de community (problemen kunnen worden gemeld aan https://github.com/Azure/Azure-Media-Services-Explorer/issues). Op dit project is de [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Microsoft Open Source-gedragscode) van toepassing. Voor meer informatie raadpleegt u de [Veelgestelde vragen over de gedrags code](https://opensource.microsoft.com/codeofconduct/faq/) of neemt u contact op met opencode@microsoft.com met andere vragen of opmerkingen.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Filteren, ordenen, paginering van Media Services entiteiten
 
-Zie [filteren, ordenen, paginering van Azure Media Services entiteiten](entities-overview.md)
+Zie [filteren, ordenen, pagineren van Azure Media Services entiteiten](entities-overview.md).
 
 ## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
 
@@ -147,7 +148,7 @@ Bekijk het [Azure Media Services Community](media-services-community.md) -artike
 
 ## <a name="see-also"></a>Zie ook
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+[Azure-CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
 
 ## <a name="next-steps"></a>Volgende stappen
 

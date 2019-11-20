@@ -1,19 +1,19 @@
 ---
-title: On-premises virtuele VMware-machines migreren naar Azure met Azure Migrate server migratie op basis van een agent | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u een op agents gebaseerde migratie van on-premises machines naar Azure uitvoert met Azure Migrate server migratie
+title: Virtuele VMware-machines migreren met Azure Migrate server migratie op basis van een agent
+description: Meer informatie over het uitvoeren van een op agents gebaseerde migratie van VMware-Vm's met Azure Migrate.
 author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 09/04/2019
+ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07e91abc1130505abc84f6687be7edd04522fa76
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720172"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196299"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>Virtuele VMware-machines migreren naar Azure (op basis van een agent)
 
@@ -165,7 +165,7 @@ De Mobility-service moet zijn geïnstalleerd op de machines die u wilt replicere
 U bereidt het account als volgt voor:
 
 1. Bereid een domein of lokaal account met machtigingen voor om op de VM te installeren.
-2. Als u voor Windows-Vm's geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer uit door de DWORD-vermelding **LocalAccountTokenFilterPolicy**toe te voegen met een waarde in het REGI ster onder **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\ Windows\CurrentVersion\Policies\System**
+2. Als u voor Windows-Vm's geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer uit door de DWORD-vermelding **LocalAccountTokenFilterPolicy**toe te voegen met een waarde in het REGI ster onder **HKEY_LOCAL_MACHINE \Software\Microsoft\Windows\CurrentVersion\Policies\System**
 3. Voor Linux-Vm's bereidt u een hoofd account voor op de Linux-bron server.
 
 

@@ -1,6 +1,6 @@
 ---
 title: Externe bewakings gegevens visualiseren met Power BI-Azure | Microsoft Docs
-description: In deze zelf studie wordt gebruikgemaakt van Power BI Desktop en Cosmos DB voor het integerate van gegevens van een oplossing voor externe controle in een aangepaste visualisatie. Op deze manier kunnen gebruikers hun eigen aangepaste Dash boards bouwen en deze delen met gebruikers die geen oplossing hebben.
+description: In deze zelf studie wordt gebruikgemaakt van Power BI Desktop en Cosmos DB voor het integreren van gegevens van een oplossing voor externe controle in een aangepaste visualisatie. Op deze manier kunnen gebruikers hun eigen aangepaste Dash boards bouwen en deze delen met gebruikers die geen oplossing hebben.
 author: dominicbetts
 manager: hegate
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 05/01/2018
 ms.topic: conceptual
-ms.openlocfilehash: 13b10aa4f40b7c4b62b35e8580c2826c10e6683f
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: 8b0f395936c8628ff7b8dab601168538f97ccdb7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166297"
+ms.locfileid: "74184245"
 ---
 # <a name="visualize-remote-monitoring-data-using-power-bi"></a>Externe bewakings gegevens visualiseren met behulp van Power BI
 
@@ -22,13 +22,13 @@ In deze zelf studie leert u hoe u uw gegevens voor uw externe bewakings oplossin
 ## <a name="prerequisites"></a>Vereisten
 
 - Er moet een externe bewakings oplossing op dit moment worden uitgevoerd
-- U moet toegang hebben tot de [Azure-Portal](https://portal.azure.com) en uw abonnement waarop de IOT hub en de oplossing worden uitgevoerd
+- U moet toegang hebben tot [Azure Portal](https://portal.azure.com) en uw abonnement waarop de IOT hub en de oplossing worden uitgevoerd
 - U moet [Power bi bureau blad](https://powerbi.microsoft.com) hebben geïnstalleerd, alle versies kunnen
 
 
-## <a name="information-needed-from-azure-portal"></a>Informatie die nodig is vanuit Azure Portal
+## <a name="information-needed-from-azure-portal"></a>Informatie die nodig is van Azure Portal
 
-1. Ga naar [Azure Portal](https://portal.azure.com) en meld u indien nodig aan
+1. Ga naar [Azure Portal](https://portal.azure.com) en meld u indien nodig aan.
 
 2. Klik in het linkerdeel venster op resource groepen
 

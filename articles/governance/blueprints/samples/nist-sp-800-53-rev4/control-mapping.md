@@ -1,14 +1,14 @@
 ---
 title: Voor beeld van NIST SP 800-53 R4 blauw druk-besturings element
 description: De toewijzing van het NIST SP 800-53 R4 blauw druk-voor beeld beheren. Elk besturings element wordt toegewezen aan een of meer Azure-beleids regels die helpen bij de evaluatie.
-ms.date: 06/24/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 1197c6153c0252d8b6738f0e4909e32ca2ddf94e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 94011cf5bbebf0278fa66d4c2ad97e3918679ca4
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037843"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184490"
 ---
 # <a name="control-mapping-of-the-nist-sp-800-53-r4-blueprint-sample"></a>De toewijzing van het NIST SP 800-53 R4 blauw druk-voor beeld
 

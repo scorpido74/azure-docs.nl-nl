@@ -1,6 +1,6 @@
 ---
-title: Stoppen met het gebruik van de beheerde identiteit VM-extensie en start met behulp van de Azure Instance Metadata Service-eindpunt
-description: Voor stap door stapsgewijze instructies voor het gebruik van de VM-extensie stoppen en starten met behulp van Azure Instance Metadata Service (IMDS) voor verificatie.
+title: Stoppen met het gebruik van een beheerde identiteit VM-extensie-Azure AD
+description: Stapsgewijze instructies om het gebruik van de VM-extensie te stoppen en de Azure Instance Metadata Service (IMDS) te gebruiken voor verificatie.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -14,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/25/2018
 ms.author: markvi
-ms.openlocfilehash: 6ee8891eae108256875660cc3f2256b65703a1aa
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3440713c287967655678e1cde2c000a6ed28b900
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65406789"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183957"
 ---
-# <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Stoppen met het gebruik van de virtuele machine beheerde identiteiten-extensie en start met behulp van Azure Instance Metadata Service
+# <a name="how-to-stop-using-the-virtual-machine-managed-identities-extension-and-start-using-the-azure-instance-metadata-service"></a>Stoppen met het gebruik van de extensie voor beheerde identiteiten van de virtuele machine en het gebruik van Azure Instance Metadata Service
 
-## <a name="virtual-machine-extension-for-managed-identities"></a>Virtuele machine-extensie voor beheerde identiteiten
+## <a name="virtual-machine-extension-for-managed-identities"></a>Extensie van de virtuele machine voor beheerde identiteiten
 
-De extensie van de virtuele machine voor beheerde identiteit wordt gebruikt om aan te vragen van tokens voor een beheerde identiteit binnen de virtuele machine. De werkstroom bestaat uit de volgende stappen uit:
+De extensie van de virtuele machine voor beheerde identiteiten wordt gebruikt om tokens aan te vragen voor een beheerde identiteit in de virtuele machine. De werk stroom bestaat uit de volgende stappen:
 
-1. Eerst de werkbelasting binnen de resource het lokale eindpunt roept `http://localhost/oauth2/token` om aan te vragen van een toegangstoken.
-2. De virtuele machine-extensie gebruikt vervolgens de referenties voor de beheerde identiteit, om aan te vragen van een toegangstoken van Azure AD... 
-3. Het toegangstoken wordt geretourneerd naar de aanroeper en kan worden gebruikt om de services die ondersteuning bieden voor Azure AD-verificatie, zoals Azure Key Vault of Azure Storage te verifiëren.
+1. Ten eerste roept de werk belasting binnen de resource het lokale eind punt aan `http://localhost/oauth2/token` om een toegangs token aan te vragen.
+2. De extensie van de virtuele machine gebruikt vervolgens de referenties voor de beheerde identiteit om een toegangs token aan te vragen bij Azure AD. 
+3. Het toegangs token wordt geretourneerd naar de aanroeper en kan worden gebruikt om te verifiëren bij services die ondersteuning bieden voor Azure AD-verificatie, zoals Azure Key Vault of Azure Storage.
 
-Door verschillende beperkingen die worden beschreven in de volgende sectie, is de beheerde identiteit VM-extensie afgeschaft en vervangen door met behulp van het gelijkwaardige eindpunt in de Azure Instance Metadata Service (IMDS)
+Als gevolg van verschillende beperkingen die in de volgende sectie worden beschreven, is de beheerde identiteits-VM-extensie vervangen door het gebruik van het equivalente eind punt in azure Instance Metadata Service (IMDS)
 
-### <a name="provision-the-extension"></a>De extensie inrichten 
+### <a name="provision-the-extension"></a>De uitbrei ding inrichten 
 
-Wanneer u een virtuele machine of virtuele-machineschaalset om een beheerde identiteit configureert, kunt u eventueel voor het inrichten van de beheerde identiteiten voor het gebruik van Azure-resources VM extension de `-Type` parameter op de [ Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) cmdlet. U kunt een doorgeven `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux`, afhankelijk van het type van de virtuele machine en de naam met behulp van de `-Name` parameter. De `-Settings` parameter geeft u de poort die door het eindpunt van de OAuth-token gebruikt voor het ophalen van tokens:
+Wanneer u een schaalset voor een virtuele machine of virtuele machine configureert voor een beheerde identiteit, kunt u eventueel de beheerde identiteiten voor de VM-extensie van Azure-resources inrichten met de para meter `-Type` van de cmdlet [set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension) . U kunt `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux`door geven, afhankelijk van het type virtuele machine en de naam met behulp van de `-Name`-para meter. De para meter `-Settings` specificeert de poort die wordt gebruikt door het OAuth-token eindpunt voor het ophalen van tokens:
 
 ```powershell
    $settings = @{ "port" = 50342 }
    Set-AzVMExtension -ResourceGroupName myResourceGroup -Location WestUS -VMName myVM -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Settings $settings 
 ```
 
-U kunt ook de sjabloon van Azure Resource Manager-implementatie gebruiken voor het inrichten van de VM-extensie door toe te voegen van de volgende JSON naar de `resources` sectie aan de sjabloon (Gebruik `ManagedIdentityExtensionForLinux` voor de naam en type-elementen voor de Linux-versie).
+U kunt ook de sjabloon Azure Resource Manager implementatie gebruiken om de VM-extensie in te richten door de volgende JSON toe te voegen aan de sectie `resources` (gebruik `ManagedIdentityExtensionForLinux` voor de naam en type-elementen voor de Linux-versie).
 
     ```json
     {
@@ -66,14 +66,14 @@ U kunt ook de sjabloon van Azure Resource Manager-implementatie gebruiken voor h
     ```
     
     
-Als u met virtual machine scale sets werkt, kunt u de beheerde identiteiten ook inrichten voor Azure-resources virtuele-met behulp van extensie machineschaalset de [toevoegen AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) cmdlet. U kunt een doorgeven `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux`, afhankelijk van het type virtuele-machineschaalset instellen en de naam met behulp van de `-Name` parameter. De `-Settings` parameter geeft u de poort die door het eindpunt van de OAuth-token gebruikt voor het ophalen van tokens:
+Als u werkt met schaal sets voor virtuele machines, kunt u ook de beheerde identiteiten voor de virtuele-machine Scale set-extensie van Azure-resources inrichten met de cmdlet [add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) . U kunt `ManagedIdentityExtensionForWindows` of `ManagedIdentityExtensionForLinux`door geven, afhankelijk van het type schaalset voor virtuele machines en de naam met behulp van de `-Name`-para meter. De para meter `-Settings` specificeert de poort die wordt gebruikt door het OAuth-token eindpunt voor het ophalen van tokens:
 
    ```powershell
    $setting = @{ "port" = 50342 }
    $vmss = Get-AzVmss
    Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ManagedIdentityExtensionForWindows" -Type "ManagedIdentityExtensionForWindows" -Publisher "Microsoft.ManagedIdentity" -TypeHandlerVersion "1.0" -Setting $settings 
    ```
-Voor het inrichten van de virtuele-machineschaalset extensie met de sjabloon van Azure Resource Manager-implementatie instellen toevoegen de volgende JSON naar de `extensionpProfile` sectie aan de sjabloon (Gebruik `ManagedIdentityExtensionForLinux` voor de naam en type-elementen voor de Linux-versie).
+Als u de extensie voor virtuele-machine schaal sets wilt inrichten met de sjabloon voor de Azure Resource Manager-implementatie, voegt u de volgende JSON toe aan de sectie `extensionpProfile` (gebruik `ManagedIdentityExtensionForLinux` voor de naam en type-elementen voor de Linux-versie).
 
     ```json
     "extensionProfile": {
@@ -93,10 +93,10 @@ Voor het inrichten van de virtuele-machineschaalset extensie met de sjabloon van
             }
     ```
 
-Inrichting van de extensie van de virtuele machine kan mislukken vanwege DNS-lookup-fouten. Als dit het geval is, start de virtuele machine en probeer het opnieuw. 
+Het inrichten van de extensie van de virtuele machine kan mislukken vanwege fouten in de DNS-zoek actie. Als dit het geval is, start u de virtuele machine opnieuw op en probeert u het opnieuw. 
 
-### <a name="remove-the-extension"></a>Verwijder de extensie 
-U kunt de extensie verwijderen `-n ManagedIdentityExtensionForWindows` of `-n ManagedIdentityExtensionForLinux` overschakelen (afhankelijk van het type virtuele machine) met [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/), of [az vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) voor virtuele-machineschaalsets Hiermee stelt u met behulp van Azure CLI, of `Remove-AzVMExtension` voor Powershell:
+### <a name="remove-the-extension"></a>De extensie verwijderen 
+Als u de uitbrei ding wilt verwijderen, gebruikt u `-n ManagedIdentityExtensionForWindows` of `-n ManagedIdentityExtensionForLinux` switch (afhankelijk van het type virtuele machine) met [AZ VM extension delete](https://docs.microsoft.com/cli/azure/vm/)of [AZ vmss extension delete](https://docs.microsoft.com/cli/azure/vmss) voor Virtual Machine Scale sets met behulp van Azure CLI of `Remove-AzVMExtension` voor Power shell:
 
 ```azurecli-interactive
 az vm identity --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -110,26 +110,26 @@ az vmss extension delete -n ManagedIdentityExtensionForWindows -g myResourceGrou
 Remove-AzVMExtension -ResourceGroupName myResourceGroup -Name "ManagedIdentityExtensionForWindows" -VMName myVM
 ```
 
-### <a name="acquire-a-token-using-the-virtual-machine-extension"></a>Een token met behulp van de extensie van de virtuele machine ophalen
+### <a name="acquire-a-token-using-the-virtual-machine-extension"></a>Een token verkrijgen met de extensie van de virtuele machine
 
-Hier volgt een voorbeeld van een aanvraag met behulp van de beheerde identiteiten voor Azure-resources VM-extensie-eindpunt:
+Hier volgt een voor beeld van een aanvraag met behulp van het eind punt beheerde identiteiten voor Azure-resources VM Extension:
 
 ```
 GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F HTTP/1.1
 Metadata: true
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
-| `GET` | De HTTP-term, die aangeeft dat u wilt ophalen van gegevens uit het eindpunt. In dit geval een OAuth-toegangstoken. | 
-| `http://localhost:50342/oauth2/token` | De beheerde identiteiten voor het eindpunt van de Azure-resources, waarbij 50342 is de standaardpoort en kan worden geconfigureerd. |
-| `resource` | Een queryreeks-parameter, die wijzen op de URI van de App-ID van de doelresource. Het verschijnt ook in de `aud` claim (doelgroep) van de uitgegeven tokens. In dit voorbeeld vraagt een token voor toegang tot Azure Resource Manager heeft een URI van de App-ID van https://management.azure.com/. |
-| `Metadata` | Een HTTP-aanvraag veld header wordt vereist door beheerde identiteiten voor Azure-resources als een bescherming tegen aanvallen van Server Side aanvraag kunnen worden vervalst (SSRF). Deze waarde moet worden ingesteld op "true", volledig in kleine letters.|
-| `object_id` | (Optioneel) Een queryreeks-parameter, die de object_id van de beheerde identiteit die u wilt dat het token voor aangeeft. Vereist, als uw virtuele machine meerdere beheerde identiteiten gebruiker toegewezen heeft.|
-| `client_id` | (Optioneel) Een queryreeks-parameter, die de client_id van de beheerde identiteit die u wilt dat het token voor aangeeft. Vereist, als uw virtuele machine meerdere beheerde identiteiten gebruiker toegewezen heeft.|
+| `GET` | De HTTP-term waarmee wordt aangegeven dat u gegevens wilt ophalen uit het eind punt. In dit geval een OAuth-toegangs token. | 
+| `http://localhost:50342/oauth2/token` | Het eind punt Managed Identities voor Azure resources, waarbij 50342 de standaard poort is en kan worden geconfigureerd. |
+| `resource` | Een query teken reeks parameter, waarmee de App-ID-URI van de doel resource wordt aangegeven. Het wordt ook weer gegeven in de claim van de `aud` (doel groep) van het uitgegeven token. In dit voor beeld wordt een token aangevraagd voor toegang tot Azure Resource Manager, dat een app-ID-URI van https://management.azure.com/heeft. |
+| `Metadata` | Een veld met een HTTP-aanvraag header, dat door beheerde identiteiten voor Azure-resources wordt vereist als risico op aanvallen op server zijde vervalsing (SSRF). Deze waarde moet in alle kleine letters worden ingesteld op ' True '.|
+| `object_id` | Beschrijving Een query reeks parameter, waarmee de object_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
+| `client_id` | Beschrijving Een query reeks parameter, waarmee de client_id van de beheerde identiteit wordt aangegeven waarvoor u het token wilt voor. Vereist als uw virtuele machine meerdere door de gebruiker toegewezen beheerde identiteiten heeft.|
 
 
-Het voorbeeldantwoord:
+Voorbeeld antwoord:
 
 ```
 HTTP/1.1 200 OK
@@ -145,71 +145,71 @@ Content-Type: application/json
 }
 ```
 
-| Element | Description |
+| Element | Beschrijving |
 | ------- | ----------- |
-| `access_token` | Het aangevraagde toegangstoken. Bij het aanroepen van een beveiligde REST-API, het token is ingesloten in de `Authorization` headerveld aanvraag als een token 'bearer', zodat de API voor verificatie van de oproepende functie. | 
-| `refresh_token` | Niet gebruikt door beheerde identiteiten voor Azure-resources. |
-| `expires_in` | Het aantal seconden dat het toegangstoken nog steeds geldig zijn voordat het verloopt na uitgifte. Tijd van uitgifte kunt u vinden in van het token `iat` claim. |
-| `expires_on` | De timespan wanneer het toegangstoken is verlopen. De datum wordt weergegeven als het aantal seconden van ' 1970-01-01T0:0:0Z UTC ' (komt overeen met van het token `exp` claim). |
-| `not_before` | De timespan wanneer het toegangstoken wordt van kracht en kan worden geaccepteerd. De datum wordt weergegeven als het aantal seconden van ' 1970-01-01T0:0:0Z UTC ' (komt overeen met van het token `nbf` claim). |
-| `resource` | De resource het toegangstoken is aangevraagd voor, die overeenkomt met de `resource` query-tekenreeksparameter van de aanvraag. |
-| `token_type` | Het type token, dat een toegangstoken 'Bearer', wat betekent dat de resource kan toegang geven tot de houder van dit token is. |
+| `access_token` | Het aangevraagde toegangs token. Wanneer u een beveiligd REST API aanroept, wordt het token Inge sloten in het veld `Authorization` aanvraag header als een Bearer-token, waardoor de API de aanroeper kan verifiëren. | 
+| `refresh_token` | Wordt niet gebruikt door beheerde identiteiten voor Azure-resources. |
+| `expires_in` | Het aantal seconden dat het toegangs token geldig blijft, vóór verloop tijd, vanaf tijdstip van uitgifte. De tijd van de uitgifte vindt u in de `iat` claim van het token. |
+| `expires_on` | De time span op het moment dat het toegangs token verloopt. De datum wordt weer gegeven als het aantal seconden van ' 1970-01-01T0:0: 0Z UTC ' (komt overeen met de `exp` claim van het token). |
+| `not_before` | De time span wanneer het toegangs token van kracht is en kan worden geaccepteerd. De datum wordt weer gegeven als het aantal seconden van ' 1970-01-01T0:0: 0Z UTC ' (komt overeen met de `nbf` claim van het token). |
+| `resource` | De bron waarvoor het toegangs token is aangevraagd, dat overeenkomt met de `resource` query teken reeks parameter van de aanvraag. |
+| `token_type` | Het type token, een ' Bearer ' toegangs token, wat betekent dat de bron toegang kan verlenen aan de Bearer van dit token. |
 
 
-### <a name="troubleshoot-the-virtual-machine-extension"></a>Problemen met de virtuele machine-extensie oplossen 
+### <a name="troubleshoot-the-virtual-machine-extension"></a>Problemen met de extensie van de virtuele machine oplossen 
 
-#### <a name="restart-the-virtual-machine-extension-after-a-failure"></a>Opnieuw opstarten van de extensie van de virtuele machine na een storing
+#### <a name="restart-the-virtual-machine-extension-after-a-failure"></a>De extensie van de virtuele machine opnieuw starten na een fout
 
-Op Windows en bepaalde versies van Linux, als de extensie wordt gestopt, kan de volgende cmdlet worden gebruikt om handmatig opnieuw starten:
+In Windows en bepaalde versies van Linux, als de extensie stopt, kan de volgende cmdlet worden gebruikt om deze hand matig opnieuw te starten:
 
 ```powershell
 Set-AzVMExtension -Name <extension name>  -Type <extension Type>  -Location <location> -Publisher Microsoft.ManagedIdentity -VMName <vm name> -ResourceGroupName <resource group name> -ForceRerun <Any string different from any last value used>
 ```
 
 Waar: 
-- Naam van de uitbreiding en het type voor Windows is: `ManagedIdentityExtensionForWindows`
-- Naam van de uitbreiding en het type voor Linux is: `ManagedIdentityExtensionForLinux`
+- De naam en het type van de extensie voor Windows is: `ManagedIdentityExtensionForWindows`
+- De naam en het type van de extensie voor Linux is: `ManagedIdentityExtensionForLinux`
 
-#### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>"Automatiseringsscript" is mislukt bij het schema exporteren voor beheerde identiteiten voor uitbreiding van de Azure-resources
+#### <a name="automation-script-fails-when-attempting-schema-export-for-managed-identities-for-azure-resources-extension"></a>Automatiserings script mislukt bij het proberen van schema export voor beheerde identiteiten voor Azure-bronnen uitbreiding
 
-Als beheerde identiteiten voor Azure-resources op een virtuele machine is ingeschakeld, wordt de volgende fout weergegeven bij het gebruik van de functie 'Automatiseringsscript' voor de virtuele machine of de resourcegroep:
+Wanneer beheerde identiteiten voor Azure-resources zijn ingeschakeld op een virtuele machine, wordt de volgende fout weer gegeven wanneer u probeert de functie Automation script te gebruiken voor de virtuele machine of de bijbehorende resource groep:
 
-![Beheerde identiteiten voor een Azure-resources automatiseringsscript exportfout](./media/howto-migrate-vm-extension/automation-script-export-error.png)
+![Export fout van beheerde identiteiten voor het automatiserings script van Azure-resources](./media/howto-migrate-vm-extension/automation-script-export-error.png)
 
-De beheerde identiteiten voor virtuele machine-extensie voor Azure-resources biedt momenteel geen ondersteuning voor de mogelijkheid waarvan het schema exporteren naar een resourcegroepsjabloon. Als gevolg hiervan weergegeven de gegenereerde sjabloon niet. configuratieparameters voor het inschakelen van beheerde identiteiten voor Azure-resources op de resource. Deze secties kunnen handmatig worden toegevoegd aan de hand van de voorbeelden in [configureren beheerde identiteiten voor een Azure-resources op een Azure-machine met behulp van een sjablonen](qs-configure-template-windows-vm.md).
+De beheerde identiteiten voor de extensie van de virtuele machine van Azure-resources ondersteunen momenteel niet de mogelijkheid om het schema te exporteren naar een sjabloon voor een resource groep. Als gevolg hiervan worden door de gegenereerde sjabloon geen configuratie parameters weer gegeven voor het inschakelen van beheerde identiteiten voor Azure-resources op de resource. Deze secties kunnen hand matig worden toegevoegd met behulp van de voor beelden in [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met een sjabloon](qs-configure-template-windows-vm.md).
 
-Wanneer de schema-export-functionaliteit beschikbaar is voor de beheerde identiteiten voor virtuele machine-extensie voor Azure-resources (gepland voor de afschaffing in januari 2019), wordt deze weergegeven in [exporteren van resourcegroepen met VM-extensies ](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
+Wanneer de functie voor het exporteren van het schema beschikbaar wordt voor de extensie van de virtuele machine van Azure-resources (gepland voor afschaffing in januari 2019), wordt deze weer gegeven bij het [exporteren van resource groepen die VM-extensies bevatten](../../virtual-machines/extensions/export-templates.md#supported-virtual-machine-extensions).
 
 ## <a name="limitations-of-the-virtual-machine-extension"></a>Beperkingen van de extensie van de virtuele machine 
 
-Er zijn enkele belangrijke beperkingen voor het gebruik van de extensie van de virtuele machine. 
+Er zijn enkele belang rijke beperkingen bij het gebruik van de extensie van de virtuele machine. 
 
- * De meest ernstige beperking is het feit dat de referenties gebruikt voor het aanvragen van tokens worden opgeslagen op de virtuele machine. Een aanvaller is kiezen oplossingen de virtuele machine kunt gegevens te exfiltreren de referenties. 
- * Bovendien de extensie van de virtuele machine wordt nog steeds niet ondersteund door verschillende Linux-distributies, met de ontwikkeling van een enorme kosten als u wilt wijzigen, ontwikkelen en testen van de extensie op elk van deze distributies. Op dit moment worden alleen de volgende Linux-distributies ondersteund: 
-    * Stable van CoreOS
+ * De meest ernstige beperking is het feit dat de referenties die worden gebruikt voor het aanvragen van tokens, worden opgeslagen op de virtuele machine. Een aanvaller die een inbreuk op de virtuele machine heeft, kan de referenties exfiltreren. 
+ * Bovendien wordt de extensie van de virtuele machine nog steeds niet ondersteund door verschillende Linux-distributies, met een enorme ontwikkelings kosten voor het wijzigen, bouwen en testen van de uitbrei ding voor elk van deze distributies. Op dit moment worden alleen de volgende Linux-distributies ondersteund: 
+    * CoreOS stabiel
     * CentOS 7.1 
-    * Red Hat 7.2 
+    * Red Hat 7,2 
     * Ubuntu 15.04 
     * Ubuntu 16.04
- * Er is een prestatie-impact op de implementatie van virtuele machines met beheerde identiteiten, omdat de extensie van de virtuele machine ook moeten worden ingericht. 
- * Ten slotte kan de extensie van de virtuele machine alleen ondersteuning voor 32 gebruiker toegewezen beheerde identiteiten per virtuele machine. 
+ * Het implementeren van virtuele machines met beheerde identiteiten heeft invloed op de prestaties, omdat de extensie van de virtuele machine ook moet worden ingericht. 
+ * Ten slotte kan de extensie van de virtuele machine alleen ondersteuning 32 bieden voor door de gebruiker toegewezen beheerde identiteiten per virtuele machine. 
 
 ## <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
-De [Azure Instance Metadata Service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) is een REST-eindpunt waarmee u informatie over het uitvoeren van de virtuele machine-instanties die kunnen worden gebruikt om te beheren en configureren uw virtuele machines. Het eindpunt is beschikbaar op een bekende niet-routeerbare IP-adres (`169.254.169.254`) die kunnen worden gebruikt alleen de virtuele machine.
+[Azure instance metadata service (IMDS)](/azure/virtual-machines/windows/instance-metadata-service) is een rest-eind punt dat informatie bevat over het uitvoeren van virtuele machine-instanties die kunnen worden gebruikt voor het beheren en configureren van uw virtuele machines. Het eind punt is beschikbaar via een bekend, niet-routeerbaar IP-adres (`169.254.169.254`) dat alleen vanuit de virtuele machine kan worden geopend.
 
-Er zijn diverse voordelen voor het gebruik van Azure IMDS naar aanvragen van tokens. 
+Er zijn verschillende voor delen van het gebruik van Azure IMDS voor het aanvragen van tokens. 
 
-1. De service bevindt zich buiten de virtuele machine, de referenties die worden gebruikt door beheerde identiteiten zijn daarom niet meer aanwezig zijn op de virtuele machine. In plaats daarvan worden ze gehost en beveiligd op de hostcomputer van de virtuele machine van Azure.   
-2. Alle Windows en Linux-besturingssystemen ondersteund op Azure IaaS kunt beheerde identiteiten gebruiken.
-3. Implementatie is sneller en eenvoudiger, omdat de VM-extensie niet meer moet worden ingericht.
-4. Met de IMDS kan eindpunt maximaal 1000 toegewezen gebruiker beheerde identiteiten worden toegewezen aan één virtuele machine.
-5. Er is geen belangrijke wijziging aan de aanvragen met behulp van IMDS in plaats van die met behulp van de extensie van de virtuele machine, dus het is redelijk eenvoudig naar poort via bestaande implementaties die momenteel gebruikmaken van de extensie van de virtuele machine.
+1. De service is extern voor de virtuele machine. Daarom zijn de referenties die worden gebruikt door beheerde identiteiten niet meer aanwezig op de virtuele machine. In plaats daarvan worden ze gehost en beveiligd op de hostcomputer van de virtuele Azure-machine.   
+2. Alle Windows-en Linux-besturings systemen die worden ondersteund op Azure IaaS, kunnen beheerde identiteiten gebruiken.
+3. De implementatie is sneller en eenvoudiger, omdat de VM-extensie niet meer hoeft te worden ingericht.
+4. Met het IMDS-eind punt kunnen Maxi maal 1000 door de gebruiker toegewezen beheerde identiteiten worden toegewezen aan één virtuele machine.
+5. Er is geen belang rijke wijziging in de aanvragen met behulp van IMDS, in tegens telling tot die van de extensie van de virtuele machine. Daarom is het redelijk eenvoudig om de bestaande implementaties te gebruiken die momenteel gebruikmaken van de extensie van de virtuele machine.
 
-Daarom is de service Azure IMDS de facto manier om aanvragen van tokens, nadat de extensie van de virtuele machine is afgeschaft. 
+Daarom is de Azure IMDS-service de enige manier om tokens aan te vragen, zodra de extensie van de virtuele machine is afgeschaft. 
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Over het gebruik van beheerde identiteiten voor Azure-resources op een Azure-machine naar een toegangstoken verkrijgen](how-to-use-vm-token.md)
+* [Beheerde identiteiten voor Azure-resources gebruiken op een virtuele machine van Azure om een toegangs token te verkrijgen](how-to-use-vm-token.md)
 * [Azure Instance Metadata Service](https://docs.microsoft.com/azure/virtual-machines/windows/instance-metadata-service)

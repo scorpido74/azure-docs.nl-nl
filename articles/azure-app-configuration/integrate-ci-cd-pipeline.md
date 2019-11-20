@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e2f682a2782eb1a61dd44e02d665175e31c441f8
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: e9b81baed14b18c6db736bd94a2aba43a4e671ad
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357014"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185108"
 ---
 # <a name="integrate-with-a-cicd-pipeline"></a>Integreren met een CI/CD-pijplijn
 
@@ -56,7 +56,7 @@ Als u een Cloud-build wilt maken, kunt u met Azure DevOps bijvoorbeeld controler
 
     Voeg de *Connections Tring* gekoppeld aan uw app-configuratie archief toe als een omgevings variabele.
 
-2. Open *Program.cs*en werk de `CreateWebHostBuilder` methode bij om het geëxporteerde JSON-bestand te gebruiken `config.AddJsonFile()` door de methode aan te roepen.
+2. Open *Program.cs*en werk de `CreateWebHostBuilder`-methode bij om het GEËXPORTEERDe JSON-bestand te gebruiken door de `config.AddJsonFile()`-methode aan te roepen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -72,7 +72,7 @@ Als u een Cloud-build wilt maken, kunt u met Azure DevOps bijvoorbeeld controler
             .UseStartup<Startup>();
     ```
 
-### <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+### <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 

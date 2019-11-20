@@ -1,6 +1,6 @@
 ---
-title: Service Fabric Cluster Resource Manager - integratie van Onkostenbeheer | Microsoft Docs
-description: Een overzicht van de integratiepunten tussen de Cluster Resource Manager en Service Fabric-beheer.
+title: Cluster resource Manager Service Fabric-beheer integratie | Microsoft Docs
+description: Een overzicht van de integratie punten tussen cluster bron beheer en Service Fabric beheer.
 services: service-fabric
 documentationcenter: .net
 author: masnider
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c201945e94474d54b8a19918f3b55a0b40995a97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2b3ccf16aca04ebd398e2f97007b817cc0a6ef8d
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60743510"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196500"
 ---
-# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager-integratie met beheer van Service Fabric-clusters
-De Service Fabric Cluster Resource Manager biedt geen upgrades station in Service Fabric, maar het is betrokken. De eerste manier die met Cluster Resource Manager met management is door bij te houden van de gewenste status van het cluster en de services binnen het. Cluster Resource Manager verzendt statusrapporten wanneer deze het cluster kan niet in de gewenste configuratie. Bijvoorbeeld, als er onvoldoende capaciteit is verzendt met Cluster Resource Manager waarschuwingen en fouten die wijzen op het probleem. Een ander deel van de integratie van heeft te maken met de werking van upgrades. Cluster Resource Manager verandert het gedrag van het iets tijdens upgrades.  
+# <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Cluster resource manager-integratie met Service Fabric Cluster beheer
+Het Service Fabric cluster resource manager kan geen upgrades uitvoeren in Service Fabric, maar is wel betrokken. De eerste manier waarop cluster resource Manager helpt bij het beheer, is door de gewenste status van het cluster en de services erin bij te houden. De cluster resource manager verzendt status rapporten wanneer het cluster niet in de gewenste configuratie kan worden geplaatst. Als er bijvoorbeeld onvoldoende capaciteit is, verzendt cluster resource manager status waarschuwingen en fouten die het probleem aangeven. Een ander integratie pakket heeft te maken met de werking van upgrades. Het gedrag van cluster resource manager wordt enigszins gewijzigd tijdens de upgrade.  
 
-## <a name="health-integration"></a>Health-integratie
-Cluster Resource Manager houdt voortdurend de regels die u hebt gedefinieerd voor het plaatsen van uw services. Deze ook houdt de resterende capaciteit voor alle gegevens op de knooppunten en in het cluster en in het cluster als geheel. Als deze niet voldoen aan deze regels of als er onvoldoende capaciteit, worden status, waarschuwingen en fouten uitgezonden. Bijvoorbeeld, als een knooppunt over capaciteit en de Cluster Resource Manager wordt geprobeerd de situatie oplossen door het verplaatsen van services. Als deze niet de situatie oplossen verzendt deze een status-waarschuwing die aangeeft welk knooppunt is dan de capaciteit en voor welke metrische gegevens.
+## <a name="health-integration"></a>Status integratie
+De regels die u hebt gedefinieerd voor het plaatsen van uw services worden door de cluster resource manager voortdurend bijgehouden. Ook wordt de resterende capaciteit bijgehouden voor elke metriek op de knoop punten en in het cluster en in het cluster als geheel. Als deze niet aan deze regels kan voldoen of als er onvoldoende capaciteit is, worden status waarschuwingen en fouten verzonden. Bijvoorbeeld, als een knoop punt over capaciteit is en de cluster resource manager probeert de situatie op te lossen door services te verplaatsen. Als de situatie niet kan worden opgelost, wordt er een status waarschuwing gegeven die aangeeft welk knoop punt de capaciteit overschrijdt, en wat de metrische gegevens zijn.
 
-Een ander voorbeeld van de Resource Manager-waarschuwingen is schendingen van plaatsingsbeperkingen. Bijvoorbeeld, als u een beperking voor de plaatsing hebt gedefinieerd (zoals `“NodeColor == Blue”`) en de Resource Manager een schending van deze beperking wordt gedetecteerd, wordt deze een status-waarschuwing verzendt. Dit geldt voor aangepaste beperkingen en de default-beperkingen (zoals de beperkingen voor Foutdomein en het upgraden van domein).
+Een ander voor beeld van de status waarschuwingen van Resource Manager is schendingen van plaatsings beperkingen. Als u bijvoorbeeld een plaatsings beperking hebt gedefinieerd (zoals `“NodeColor == Blue”`) en de Resource Manager een schending van die beperking detecteert, wordt er een status waarschuwing gegeven. Dit geldt voor aangepaste beperkingen en de standaard beperkingen (zoals het fout domein en de upgrade van domein beperkingen).
 
-Hier volgt een voorbeeld van een dergelijke statusrapport. In dit geval is het statusrapport voor een van de partities van de systeemservice. De health-bericht geeft aan dat de replica's van de betreffende partitie tijdelijk zijn verpakt in te weinig Upgrade-domeinen.
+Hier volgt een voor beeld van een dergelijk status rapport. In dit geval is het status rapport een van de systeem service partities. In het status bericht wordt aangegeven dat de replica's van die partitie tijdelijk zijn verpakt in te weinig upgrade domeinen.
 
 ```posh
 PS C:\Users\User > Get-ServiceFabricPartitionHealth -PartitionId '00000000-0000-0000-0000-000000000001'
@@ -71,67 +71,67 @@ HealthEvents          :
                         Transitions           : Ok->Warning = 8/10/2015 7:13:02 PM, LastError = 1/1/0001 12:00:00 AM
 ```
 
-Dit is wat deze health-bericht is laat ons weten dat is:
+Dit status bericht vertelt ons het volgende:
 
-1. Alle replica's zelf zijn in orde: Elk heeft AggregatedHealthState: OK
-2. De beperking van het upgraden van domein distributie wordt op dit moment wordt geschonden. Dit betekent dat een bepaald domein voor Upgrade heeft meer replica's van deze partitie dan nodig.
-3. Welk knooppunt bevat de replica de schending veroorzaakt. In dit geval is het knooppunt met de naam "Node.8"
-4. Of een upgrade op dat moment plaatsvindt voor deze partitie ("momenteel upgraden--onwaar")
-5. Het distributiebeleid voor deze service: 'Distributiebeleid--verpakken'. Dit is onderhevig aan de `RequireDomainDistribution` [plaatsing beleid](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). 'Verpakking' geeft aan dat in dit geval DomainDistribution _niet_ vereist, zodat we weten dat het beleid voor plaatsing is niet opgegeven voor deze service. 
-6. Wanneer het rapport is er gebeurd - 8-10-2015 19:13:02 uur
+1. Alle replica's zelf zijn in orde: elk heeft AggregatedHealthState: OK
+2. De distributie beperking voor het upgrade domein wordt momenteel geschonden. Dit betekent dat een bepaald upgrade domein meer replica's uit deze partitie heeft dan het zou moeten.
+3. Welk knoop punt bevat de replica die de schending veroorzaakt. In dit geval is het het knoop punt met de naam ' node. 8 '
+4. Hiermee wordt aangegeven of er momenteel een upgrade voor deze partitie plaatsvindt (' momenteel bijwerken--onwaar ')
+5. Het distributie beleid voor deze service: "distributie beleid---pakken". Dit is onderworpen aan het `RequireDomainDistribution`- [plaatsings beleid](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). ' Verpakking ' geeft aan dat in dit geval DomainDistribution _niet_ is vereist, dus we weten dat er geen plaatsings beleid is opgegeven voor deze service. 
+6. Wanneer het rapport is opgetreden: 8/10/2015 7:13:02 uur
 
-Informatie, zoals deze bevoegdheden waarschuwingen die worden geactiveerd in productie te laten u weten dat er iets is iets verkeerd gegaan en wordt ook gebruikt om te detecteren en onjuiste upgrades stoppen. In dit geval gaan we bekijken als we waarom de Resource Manager achterhalen kunt om de replica's in het domein Upgrade had. Meestal verpakken is tijdelijk omdat de knooppunten in de andere Upgrade domeinen, bijvoorbeeld zijn.
+Informatie zoals deze bevoegdheid waarschuwt dat in productie wordt geactiveerd zodat u weet dat er iets mis is en ook wordt gebruikt voor het detecteren en stoppen van ongeldige upgrades. In dit geval willen we zien of we kunnen nagaan waarom de Resource Manager de replica's moest inpakken in het upgrade domein. Normaal gesp roken is verpakking tijdelijk, omdat de knoop punten in de andere upgrade domeinen bijvoorbeeld uitgeschakeld waren.
 
-Stel met Cluster Resource Manager wordt geprobeerd om bepaalde services, maar er zijn oplossingen die werken niet. Als services kunnen niet worden geplaatst, komt dit meestal voor een van de volgende redenen:
+Stel dat cluster resource manager probeert bepaalde services te plaatsen, maar er zijn geen oplossingen die werken. Wanneer Services niet kunnen worden geplaatst, is dit meestal een van de volgende redenen:
 
-1. Sommige tijdelijke toestand is het moeilijk geworden onmogelijk is om deze service-exemplaar of de replica correct plaatsen
-2. Vereisten voor de plaatsing van de service zijn ongeldig.
+1. Bij een bepaalde tijdelijke situatie is het onmogelijk om deze service-instantie of replica correct te plaatsen
+2. De plaatsings vereisten van de service zijn Unsatisfiable.
 
-In dergelijke gevallen kunnen statusrapporten van Cluster Resource Manager u bepalen waarom de service kan niet worden geplaatst. We noemen dit proces de volgorde van de opheffing beperking. Tijdens deze helpt het systeem via de geconfigureerde beperkingen die betrekking hebben op de service en -records wat ze te elimineren. Deze manier als services niet kunnen worden geplaatst, kunt u zien welke knooppunten zijn uitgesloten en waarom.
+In dergelijke gevallen kunt u met status rapporten van cluster resource manager bepalen waarom de service niet kan worden geplaatst. We noemen dit proces de eliminatie volgorde van de beperking. Tijdens deze stap passeren het systeem de geconfigureerde beperkingen die van invloed zijn op de service en wordt vastgelegd wat ze elimineren. Op deze manier kunt u zien welke knoop punten zijn geëlimineerd en waarom de services niet kunnen worden geplaatst.
 
-## <a name="constraint-types"></a>Beperkingstypen
-Laten we eens over elk van de verschillende beperkingen in deze health-rapporten. Hier ziet u de gezondheid van berichten met betrekking tot deze beperkingen als replica's kunnen niet worden geplaatst.
+## <a name="constraint-types"></a>Beperkings typen
+Laten we de verschillende beperkingen in deze status rapporten bespreken. Er worden status berichten met betrekking tot deze beperkingen weer geven wanneer replica's niet kunnen worden geplaatst.
 
-* **ReplicaExclusionStatic** en **ReplicaExclusionDynamic**: Deze beperkingen geeft aan dat een oplossing is geweigerd, omdat twee serviceobjecten van dezelfde partitie zou hebben op hetzelfde knooppunt worden geplaatst. Dit is niet toegestaan omdat en uitval van dat knooppunt overmatig gevolgen zou hebben voor deze partitie. ReplicaExclusionStatic en ReplicaExclusionDynamic zijn bijna dezelfde regel en de verschillen niet echt toe doen. Als er een beperking opheffing reeks die de ReplicaExclusionStatic of ReplicaExclusionDynamic beperking bevat, met Cluster Resource Manager u denkt dat er niet voldoende knooppunten. Hiervoor moet de resterende oplossingen voor het gebruik van deze ongeldige plaatsingen die zijn niet toegestaan. De andere beperkingen in de reeks wordt meestal Vertel ons waarom knooppunten in de eerste plaats worden worden geëlimineerd.
-* **PlacementConstraint**: Als u dit bericht ziet, betekent dit dat we sommige knooppunten verwijderd, omdat ze niet overeenkomen met de plaatsingsbeperkingen van de service. We traceren van de momenteel geconfigureerde plaatsingsbeperkingen als onderdeel van dit bericht. Dit is normaal als er een plaatsing-beperking gedefinieerd. Echter, als de beperking van de plaatsing van onjuist wordt veroorzaakt door te veel knooppunten die moeten worden uitgesloten dit is hoe u ziet.
-* **NodeCapacity**: Deze beperking betekent dat de Cluster Resource Manager de replica's op de aangegeven knooppunten kan niet worden plaatsen omdat dat ze over capaciteit plaatst.
-* **Affiniteit**: Deze beperking geeft aan dat we de replica kan niet plaats op de betrokken knooppunten omdat dit leiden een schending van de beperking affiniteit tot zou. Meer informatie over de affiniteit is in [in dit artikel](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-* **FaultDomain** en **UpgradeDomain**: Deze beperking wordt voorkomen dat knooppunten als het plaatsen van de replica op de aangegeven knooppunten zou veroorzaken verpakken in een specifieke fout of een upgradedomein. Enkele voorbeelden bespreken van deze beperking worden weergegeven in het onderwerp op [fout- en beperkingen van domein en het resulterende gedrag](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: U mag niet normaal gesproken deze beperking verwijderen van knooppunten van de oplossing, omdat deze wordt uitgevoerd als een optimalisatie standaard zien. De beperking van de gewenste locatie is ook aanwezig zijn tijdens de upgrade. Tijdens de upgrade wordt gebruikt voor services verplaatsen naar waar ze zijn wanneer de upgrade wordt gestart.
+* **ReplicaExclusionStatic** en **ReplicaExclusionDynamic**: deze beperkingen duidt erop dat een oplossing is afgewezen, omdat twee service objecten van dezelfde partitie op hetzelfde knoop punt moeten worden geplaatst. Dit is niet toegestaan omdat vervolgens het mislukken van het knoop punt deze partitie zou beïnvloeden. ReplicaExclusionStatic en ReplicaExclusionDynamic zijn bijna dezelfde regel en de verschillen zijn daar niet echt van belang. Als u een schrappings volgorde voor beperkingen ziet die de beperking ReplicaExclusionStatic of ReplicaExclusionDynamic bevat, denkt het cluster resource manager voor dat er onvoldoende knoop punten zijn. Hiervoor moeten de andere oplossingen gebruikmaken van deze ongeldige plaatsingen die niet zijn toegestaan. De andere beperkingen in de reeks geven meestal aan waarom knoop punten in de eerste plaats worden verwijderd.
+* **PlacementConstraint**: als u dit bericht ziet, betekent dit dat er enkele knoop punten zijn verwijderd omdat ze niet overeenkomen met de plaatsings beperkingen van de service. We traceren de momenteel geconfigureerde plaatsings beperkingen als onderdeel van dit bericht. Dit is normaal als er een plaatsings beperking is gedefinieerd. Als de plaatsings beperking echter onjuist zorgt voor te veel knoop punten die moeten worden verwijderd, ziet u dat.
+* **NodeCapacity**: deze beperking betekent dat de cluster resource manager de replica's op de aangegeven knoop punten niet kan plaatsen, omdat deze de capaciteit zou overschrijden.
+* **Affiniteit**: deze beperking geeft aan dat de replica niet kan worden geplaatst op de betrokken knoop punten, omdat dit een schending van de affiniteits beperking zou veroorzaken. Meer informatie over affiniteit vindt u in [dit artikel](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+* **FaultDomain** en **upgrade Domain**: deze beperking elimineert knoop punten als het plaatsen van de replica op de aangegeven knoop punten zou leiden tot inpakken in een bepaald probleem of een upgrade domein. Enkele voor beelden die deze beperking volgen, worden weer gegeven in het onderwerp over [fout-en upgrade domein beperkingen en resulterende gedrag](service-fabric-cluster-resource-manager-cluster-description.md)
+* **PreferredLocation**: u hoeft deze beperking normaal gesp roken niet te zien bij het verwijderen van knoop punten uit de oplossing omdat deze standaard als optimalisatie wordt uitgevoerd. De voorkeurs locatie beperking is ook aanwezig tijdens de upgrade. Tijdens de upgrade wordt het gebruikt om services terug te zetten naar waar ze zich bevonden toen de upgrade werd gestart.
 
-## <a name="blocklisting-nodes"></a>Blocklisting knooppunten
-Een andere health-bericht is de Cluster Resource Manager-rapporten wanneer knooppunten zijn blocklisted. U kunt blocklisting beschouwen als een tijdelijke beperking die automatisch voor u is toegepast. Knooppunten ontvangen blocklisted wanneer ze herhaalde fouten optreden bij het starten van exemplaren van het type van die service. Knooppunten zijn blocklisted op basis van de per-service-type. Een knooppunt is mogelijk blocklisted voor één servicetype maar niet nog een. 
+## <a name="blocklisting-nodes"></a>Blocklisting-knoop punten
+Een ander status bericht is dat cluster resource Manager-rapporten worden gegenereerd wanneer knoop punten blocklisted zijn. U kunt blocklisting beschouwen als een tijdelijke beperking die automatisch voor u wordt toegepast. Knoop punten krijgen blocklisted wanneer ze herhaalde fouten ondervinden bij het starten van instanties van dat Service type. Knoop punten zijn blocklisted per service-type. Een knoop punt kan blocklisted zijn voor één service type, maar niet een ander. 
 
-U ziet blocklisting worden gehouden, trappen vaak tijdens de ontwikkeling: bepaalde bug zorgt ervoor dat de ServiceHost vastloopt tijdens het opstarten. Service Fabric probeert te maken van de ServiceHost een paar keer, en de fout blijft optreden. Het knooppunt opgehaald blocklisted na een paar pogingen, en met Cluster Resource Manager wordt geprobeerd om de service elders te maken. Als deze fout op meerdere knooppunten plaatsvinden blijft, is het mogelijk dat alle knooppunten in de cluster-end van geldige geblokkeerd. Blocklisting kan ook zo veel knooppunten dat kan niet voldoende is Start de service om te voldoen aan de gewenste schaal verwijderen. U ziet doorgaans fouten of waarschuwingen van de Cluster Resource Manager die aangeeft dat de service lager is dan de gewenste replica of aantal exemplaren, evenals de gezondheid van berichten die aangeven wat de fout is dat leidt tot de blocklisting in de eerste plaats.
+Tijdens de ontwikkeling zult u zien dat blocklisting vaak worden gestart. bij een bepaalde fout wordt uw servicehost gecrasht bij het opstarten. Service Fabric probeert de servicehost een paar keer te maken en de fout blijft optreden. Na een paar pogingen krijgt het knoop punt blocklisted en probeert de cluster resource manager de service elders te maken. Als deze fout zich blijft voordoen op meerdere knoop punten, is het mogelijk dat alle geldige knoop punten in het cluster worden beëindigd. Met Blocklisting kunnen ook zoveel knoop punten worden verwijderd die niet genoeg zijn om de service te starten om te voldoen aan de gewenste schaal. Normaal gesp roken worden er aanvullende fouten of waarschuwingen van de cluster resource manager weer gegeven die aangeven dat de service lager is dan de gewenste replica of het aantal instanties, evenals status berichten die aangeven wat de fout is in de eerste brengen.
 
-Blocklisting is niet een permanente voorwaarde. Het knooppunt wordt verwijderd uit de blokkeringslijst na een paar minuten en Service Fabric kunnen de services op dat knooppunt opnieuw activeren. Services kunnen blijven mislukken, dan is het knooppunt opnieuw blocklisted voor die service. 
+Blocklisting is geen permanente voor waarde. Na een paar minuten wordt het knoop punt uit de blokkerings lijst verwijderd en kunnen de services op dat knoop punt opnieuw worden geactiveerd door Service Fabric. Als de services blijven mislukken, wordt het knoop punt blocklisted voor dat Service type opnieuw. 
 
-### <a name="constraint-priorities"></a>Beperking prioriteiten
+### <a name="constraint-priorities"></a>Prioriteiten voor beperkingen
 
 > [!WARNING]
-> Veranderende prioriteiten in uw beperking wordt niet aangeraden en mogelijk aanzienlijke nadelige gevolgen hebben voor uw cluster. De onderstaande informatie is opgegeven voor de verwijzing naar de standaard beperking prioriteiten en hun gedrag. 
+> Het wijzigen van beperkings prioriteiten wordt niet aanbevolen en kan aanzienlijke nadelige gevolgen hebben voor uw cluster. De onderstaande informatie is bedoeld voor referentie van de standaard prioriteiten voor beperkingen en hun gedrag. 
 >
 
-Met al deze beperkingen kan hebben is denkt u 'Hallo, ik denk dat dat fouten domein beperkingen het belangrijkste in mijn systeem zijn. Om ervoor te zorgen voor dat de beperking van fout met betrekking tot domein niet wordt geschonden, ik wil andere beperkingen schenden."
+Met al deze beperkingen is het mogelijk dat u denken dat fout domein beperkingen het belangrijkst zijn in mijn systeem. Om ervoor te zorgen dat de beperking van het fout domein niet wordt geschonden, wil ik andere beperkingen schenden. "
 
-Beperkingen kunnen worden geconfigureerd met verschillende prioriteitsniveaus. Dit zijn:
+Beperkingen kunnen worden geconfigureerd met verschillende prioriteits niveaus. Dit zijn:
 
-   - "vaste" (0)
-   - 'soft' (1)
-   - "optimalisatie' (2)
-   - 'uit' (-1). 
+   - "hard" (0)
+   - "zacht" (1)
+   - "optimalisatie" (2)
+   - ' uit ' (-1). 
    
-De meeste van de beperkingen zijn standaard geconfigureerd als harde beperkingen.
+De meeste beperkingen zijn standaard geconfigureerd als vaste beperkingen.
 
-De prioriteit van beperkingen wijzigen is niet gebruikelijk. Er zijn tijden wanneer beperking prioriteiten nodig om te wijzigen, meestal als tijdelijke oplossing voor sommige andere fout of het gedrag is van invloed op de omgeving. In het algemeen de flexibiliteit van de beperking prioriteit infrastructuur zeer goed heeft gewerkt, maar het is niet vaak nodig. De meeste gevallen alles bevindt zich op hun Standaardprioriteiten. 
+Het wijzigen van de prioriteit van beperkingen is ongebruikelijk. Er zijn momenten waarop de prioriteits prioriteiten moeten worden gewijzigd, meestal om een andere bug of gedrag te omzeilen die van invloed is op de omgeving. Over het algemeen is de flexibiliteit van de infra structuur voor de beperkings prioriteit zeer goed geweest, maar het is vaak niet nodig. Het grootste deel van de tijd is dat alles de standaard prioriteiten heeft. 
 
-De prioriteitsniveaus niet betekenen dat een bepaalde beperking _wordt_ worden geschonden, noch wordt altijd voldaan. Beperking prioriteiten definieert een waarin u beperkingen gelden. Prioriteiten definiëren afwegingen wanneer het is niet mogelijk om te voldoen aan alle beperkingen. Alle beperkingen kunnen doorgaans worden voldaan, tenzij er is iets anders in de omgeving gebeurt. Enkele voorbeelden van scenario's die tot schendingen van plaatsingsbeperkingen leiden zijn conflicterende beperkingen of grote aantallen gelijktijdige fouten.
+De prioriteits niveaus betekenen niet dat een bepaalde beperking _wordt_ geschonden en of er altijd aan wordt voldaan. Prioriteiten van beperkingen definiëren een volg orde waarin de beperkingen worden afgedwongen. Prioriteiten definiëren de afwegingen wanneer het onmogelijk is om aan alle beperkingen te voldoen. Normaal gesp roken kunnen aan alle beperkingen worden voldaan, tenzij er iets anders gaat in de omgeving. Enkele voor beelden van scenario's die leiden tot beperkings schendingen zijn conflicterende beperkingen of grote aantallen gelijktijdige storingen.
 
-U kunt de prioriteiten beperking wijzigen in geavanceerde situaties. Stel dat u wilt om ervoor te zorgen dat affiniteit altijd zouden worden geschonden, wanneer die nodig zijn voor het oplossen van problemen met knooppunt-capaciteit. U kunt hiervoor de prioriteit van de beperking affiniteit 'soft' (1) instellen en laat u de capaciteit beperking is ingesteld op 'harde' (0).
+In geavanceerde situaties kunt u de prioriteiten van de beperking wijzigen. Stel dat u ervoor wilt zorgen dat de affiniteit altijd wordt geschonden wanneer dit nodig is voor het oplossen van problemen met knooppunt capaciteit. Hiervoor kunt u de prioriteit van de affiniteits beperking instellen op ' zacht ' (1) en de capaciteits beperking ingesteld op ' hard ' (0).
 
-De standaardwaarden van de prioriteit voor de verschillende beperkingen die zijn opgegeven in de volgende configuratie:
+De standaard prioriteits waarden voor de verschillende beperkingen worden opgegeven in de volgende configuratie:
 
-ClusterManifest.xml
+ClusterManifest. XML
 
 ```xml
         <Section Name="PlacementAndLoadBalancing">
@@ -144,7 +144,7 @@ ClusterManifest.xml
         </Section>
 ```
 
-via ClusterConfig.json voor implementaties met zelfstandige of Template.json voor Azure die worden gehost clusters:
+via ClusterConfig. json voor zelfstandige implementaties of sjabloon. json voor door Azure gehoste clusters:
 
 ```json
 "fabricSettings": [
@@ -180,33 +180,33 @@ via ClusterConfig.json voor implementaties met zelfstandige of Template.json voo
 ]
 ```
 
-## <a name="fault-domain-and-upgrade-domain-constraints"></a>Beperkingen voor fouttolerantie domein- en upgrade-domein
-Cluster Resource Manager wil dat services die zijn verdeeld over fout- en upgradedomeinen te behouden. Dit bepaalt als een beperking in de Cluster Resource Manager-engine. Voor meer informatie over hoe ze worden gebruikt en hun specifieke gedrag, Zie het artikel op [clusterconfiguratie](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior).
+## <a name="fault-domain-and-upgrade-domain-constraints"></a>Domein beperkingen voor fout domeinen en upgrades
+De cluster resource manager wil de services gelijkmatig over de fout-en upgrade domeinen laten vallen. Dit modeleert deze als een beperking binnen de engine van de cluster resource manager. Raadpleeg het artikel over [cluster configuratie](service-fabric-cluster-resource-manager-cluster-description.md#fault-and-upgrade-domain-constraints-and-resulting-behavior)voor meer informatie over hoe ze worden gebruikt en hun specifieke gedrag.
 
-Cluster Resource Manager mogelijk om een aantal replica's om u te bekommeren om upgrades, fouten of andere schendingen van plaatsingsbeperkingen in een upgradedomein. Normaal gesproken verpakken in domeinen met fouten of upgrade gebeurt alleen als er zijn meerdere fouten of andere verloop in het systeem te voorkomen dat de juiste plaatsing. Als u wenst te verpakken, zelfs tijdens deze situaties voorkomen, u kunt gebruikmaken van de `RequireDomainDistribution` [plaatsing beleid](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). Houd er rekening mee dat dit kan mogelijk van invloed op servicebeschikbaarheid en betrouwbaarheid als een neveneffect, dus zorgvuldig overwegen.
+Het kan zijn dat cluster resource manager een aantal replica's moet inpakken in een upgrade domein om te kunnen omgaan met upgrades, fouten of andere beperkings schendingen. Het inpakken van een fout-of upgrade domein gebeurt normaal gesp roken alleen wanneer er sprake is van een aantal storingen of andere verloop bewerkingen in het systeem waardoor de juiste plaatsing wordt voor komen Als u wilt voor komen dat u zelfs tijdens deze situaties inpakt, kunt u het `RequireDomainDistribution`- [plaatsings beleid](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing)gebruiken. Houd er rekening mee dat dit kan van invloed zijn op de beschik baarheid van de service en de betrouw baarheid als een neven effect. Overweeg daarom zorgvuldig
 
-Als de omgeving goed is geconfigureerd, alle beperkingen zijn volledig in acht genomen, zelfs tijdens upgrades. Het belangrijkste is dat de Cluster Resource Manager is Let op de beperkingen. Wanneer er een fout wordt gedetecteerd het onmiddellijk gerapporteerd en probeert het probleem te corrigeren.
+Als de omgeving correct is geconfigureerd, worden alle beperkingen volledig geëerbiedigd, zelfs tijdens upgrades. Het belangrijkste is dat de cluster resource manager voor uw beperkingen bekijkt. Wanneer er een schending wordt gedetecteerd, wordt deze onmiddellijk gerapporteerd en wordt geprobeerd het probleem te verhelpen.
 
-## <a name="the-preferred-location-constraint"></a>De beperking van de gewenste locatie
-De beperking PreferredLocation is enigszins anders, omdat er twee verschillende manieren worden gebruikt. Er is een gebruik van deze beperking tijdens upgrades van toepassingen. Cluster Resource Manager beheert automatisch deze beperking tijdens upgrades. Het wordt gebruikt om ervoor te zorgen dat wanneer upgrades voltooid zijn of replica's terug naar hun oorspronkelijke locatie. Het gebruik van de beperking PreferredLocation is voor de [ `PreferredPrimaryDomain` plaatsing beleid](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Beide zijn optimalisaties en kan daarom de PreferredLocation-beperking is de enige beperking is standaard ingesteld op 'Optimalisatie'.
+## <a name="the-preferred-location-constraint"></a>De voorkeurs locatie beperking
+De beperking PreferredLocation is enigszins anders, omdat deze twee verschillende toepassingen heeft. Een gebruik van deze beperking is tijdens de upgrade van de toepassing. Deze beperking wordt door cluster resource manager automatisch beheerd tijdens upgrades. Dit wordt gebruikt om ervoor te zorgen dat de replica's worden teruggestuurd naar de oorspronkelijke locaties wanneer de upgrade is voltooid. Het andere gebruik van de PreferredLocation-beperking is voor het [`PreferredPrimaryDomain`-plaatsings beleid](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md). Beide zijn optimalisaties, en daarom is de beperking PreferredLocation de enige beperking die standaard is ingesteld op ' Optimization '.
 
-## <a name="upgrades"></a>Upgrades
-Cluster Resource Manager helpt ook bij de toepassing en cluster, upgrades, waarin deze twee taken heeft:
+## <a name="upgrades"></a>Uitvoeren
+Het cluster resource Manager helpt ook tijdens het upgraden van toepassingen en clusters, waarbij het twee taken heeft:
 
-* Zorg ervoor dat de regels van het cluster niet worden gecompromitteerd
-* Probeer te helpen bij de upgrade soepel verloopt
+* Zorg ervoor dat de regels van het cluster niet zijn aangetast
+* Probeer de upgrade probleemloos te helpen
 
-### <a name="keep-enforcing-the-rules"></a>Houd de regels afdwingen
-Het belangrijkste dat u moet weten is dat de regels – de strikte beperkingen, zoals plaatsingsbeperkingen en capaciteiten - nog steeds tijdens upgrades afgedwongen wordt. Plaatsingsbeperkingen ervoor te zorgen dat uw workloads alleen worden uitgevoerd waar ze zijn toegestaan, zelfs tijdens upgrades. Als services zeer beperkte zijn, kunnen dit upgrades langer duren. Wanneer de service of het knooppunt waarop het wordt uitgevoerd is verbroken voor een update is het mogelijk dat er enkele opties voor waar het gaat.
+### <a name="keep-enforcing-the-rules"></a>De regels blijven afdwingen
+Het belangrijkste om op de hoogte te zijn van de regels: de strikte beperkingen, zoals plaatsings beperkingen en capaciteit, worden nog steeds afgedwongen tijdens upgrades. Plaatsings beperkingen zorgen ervoor dat uw workloads alleen worden uitgevoerd wanneer ze worden toegestaan, zelfs tijdens upgrades. Wanneer Services zeer beperkt zijn, kunnen upgrades langer duren. Wanneer de service of het knoop punt waarop deze wordt uitgevoerd, wordt afgesloten voor een update, kunnen er slechts enkele opties zijn voor waar deze kunnen worden gebruikt.
 
 ### <a name="smart-replacements"></a>Slimme vervangingen
-Wanneer een upgrade wordt gestart, wordt de Resource Manager een momentopname van de huidige indeling van het cluster. Omdat elk domein bijwerken is voltooid, wordt geprobeerd om te retourneren van de services die in dat domein een upgrade uitvoert naar hun oorspronkelijke indeling zijn. Op deze manier zijn er maximaal twee overgangen voor een service tijdens de upgrade. Er is één verplaatsen uit van de betrokken knooppunt en een terug in. Retourneren van het cluster of de service aan hoe voordat de upgrade was zorgt er ook voor de upgrade geen invloed heeft op de indeling van het cluster. 
+Wanneer een upgrade wordt gestart, neemt de Resource Manager een moment opname van de huidige rang schikking van het cluster. Wanneer elk upgrade domein is voltooid, probeert het de services te retour neren die zich in dat upgrade domein bevonden naar hun oorspronkelijke rang schikking. Op deze manier zijn er tijdens de upgrade Maxi maal twee overgangen voor een service. Er is een verplaatsing van het betrokken knoop punt en één zet terug in. Het retour neren van het cluster of de service naar de manier waarop de upgrade werd uitgevoerd, zorgt er ook voor dat de upgrade niet van invloed is op de indeling van het cluster. 
 
-### <a name="reduced-churn"></a>Verminderde verloop
-Een andere wat er tijdens upgrades gebeurt is die de Cluster Resource Manager schakelt netwerktaakverdeling. Zo wordt voorkomen dat balancing voorkomt dat onnodige reacties naar de upgrade zelf, zoals het verplaatsen van services in knooppunten die u voor de upgrade verwijderd. Als de upgrade in kwestie een clusterupgrade van een is, klikt u vervolgens het volledige cluster is niet in evenwicht tijdens de upgrade. Beperking controles blijven actief, alleen verkeer op basis van de proactieve verdeling van metrische gegevens is uitgeschakeld.
+### <a name="reduced-churn"></a>Gereduceerd verloop
+Een ander wat er gebeurt tijdens upgrades is dat cluster resource manager de taak verdeling uitschakelt. Voor komen van Balancing voor komt onnodige reacties op de upgrade zelf, zoals het verplaatsen van services in knoop punten die zijn leeg gemaakt voor de upgrade. Als de betreffende upgrade een cluster upgrade is, wordt het hele cluster niet in balans gebracht tijdens de upgrade. Beperkings controles blijven actief, alleen verplaatsing op basis van de proactieve verdeling van metrische gegevens is uitgeschakeld.
 
-### <a name="buffered-capacity--upgrade"></a>Gebufferde capaciteit & Upgrade
-Doorgaans wilt u de upgrade te voltooien, zelfs als het cluster wordt beperkt of dicht bij volledige. Beheren van de capaciteit van het cluster is zelfs belangrijker tijdens upgrades dan normaal. Afhankelijk van het aantal upgradedomeinen, moeten tussen 5 en 20 procent van de capaciteit worden gemigreerd als de upgrade via het cluster wordt. Dit werk heeft om te gaan op een locatie. Dit is de locatie waar het concept van [gebufferde capaciteiten](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) is handig. Gebufferde capaciteit in acht wordt genomen tijdens normale werking. Cluster Resource Manager kunnen knooppunten tot hun totale capaciteit (verbruikt de buffer) tijdens upgrades vullen indien nodig.
+### <a name="buffered-capacity--upgrade"></a>Gebufferde capaciteit & upgrade
+Over het algemeen wilt u de upgrade volt ooien, zelfs als het cluster beperkt is of bijna vol is. Het beheren van de capaciteit van het cluster is nog belang rijker tijdens de upgrade dan normaal. Afhankelijk van het aantal upgrade domeinen moet er tussen 5 en 20 procent van de capaciteit worden gemigreerd, omdat de upgrade via het cluster wordt uitgevoerd. Dat werk moet ergens naartoe gaan. Dit is de plaats waar het begrip van de [buffer capaciteit](service-fabric-cluster-resource-manager-cluster-description.md#buffered-capacity) nuttig is. De gebufferde capaciteit wordt geëerbiedigd tijdens de normale werking. Cluster resource manager kan knoop punten opvullen tot de totale capaciteit (waarbij de buffer wordt verbruikt), indien nodig.
 
 ## <a name="next-steps"></a>Volgende stappen
-* Vanaf het begin starten en [een inleiding tot de Service Fabric Cluster Resource Manager](service-fabric-cluster-resource-manager-introduction.md)
+* Begin vanaf het begin en [krijg een inleiding tot de service Fabric cluster resource manager](service-fabric-cluster-resource-manager-introduction.md)

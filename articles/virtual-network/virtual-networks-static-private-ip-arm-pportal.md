@@ -1,6 +1,6 @@
 ---
-title: Privé-IP-adressen voor VM's - Azure-portal configureren | Microsoft Docs
-description: Informatie over het configureren van privé IP-adressen voor virtuele machines met Azure portal.
+title: Privé IP-adressen voor Vm's configureren-Azure Portal
+description: Meer informatie over het configureren van privé-IP-adressen voor virtuele machines met behulp van de Azure Portal.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -15,20 +15,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: kumud
-ms.openlocfilehash: 31aeab946b9ad740e2f56eb1ecaafd3e76cc42b3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bd734f171f4e10c4227fbab77485a788f02848b3
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64723788"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196635"
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Privé IP-adressen voor een virtuele machine met behulp van de Azure-portal configureren
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Privé IP-adressen configureren voor een virtuele machine met behulp van de Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](virtual-networks-static-private-ip-arm-pportal.md)
 > * [PowerShell](virtual-networks-static-private-ip-arm-ps.md)
 > * [Azure-CLI](virtual-networks-static-private-ip-arm-cli.md)
-> * [Azure portal (klassiek)](virtual-networks-static-private-ip-classic-pportal.md)
+> * [Azure Portal (klassiek)](virtual-networks-static-private-ip-classic-pportal.md)
 > * [PowerShell (klassiek)](virtual-networks-static-private-ip-classic-ps.md)
 > * [Azure CLI (klassiek)](virtual-networks-static-private-ip-classic-cli.md)
 
@@ -37,79 +37,79 @@ ms.locfileid: "64723788"
 
 [!INCLUDE [azure-arm-classic-important-include](../../includes/azure-arm-classic-important-include.md)]
 
-Dit artikel is van toepassing op het Resource Manager-implementatiemodel. U kunt ook [statisch privé IP-adres in het klassieke implementatiemodel beheren](virtual-networks-static-private-ip-classic-pportal.md).
+Dit artikel is van toepassing op het Resource Manager-implementatiemodel. U kunt ook [een statisch privé-IP-adres beheren in het klassieke implementatie model](virtual-networks-static-private-ip-classic-pportal.md).
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-De volgende stappen uit voor voorbeeld verwachten dat een eenvoudige omgeving al gemaakt. Als u uitvoeren van de stappen wilt zoals ze worden weergegeven in dit document, eerst samenstellen van de testomgeving die wordt beschreven [maken van een virtueel netwerk](quick-create-portal.md).
+In de volgende voorbeeld stappen wordt verwacht dat er al een eenvoudige omgeving is gemaakt. Als u de stappen wilt uitvoeren zoals ze worden weer gegeven in dit document, bouwt u eerst de test omgeving op die wordt beschreven in [een virtueel netwerk maken](quick-create-portal.md).
 
-## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Over het maken van een virtuele machine voor het testen van statische privé IP-adressen
-U kunt een statisch privé IP-adres niet instellen tijdens het maken van een virtuele machine in de implementatiemodus Resource Manager-met behulp van de Azure-portal. U moet eerst de virtuele machine maken, en stel vervolgens de privé IP-adres niet statisch.
+## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>Een virtuele machine maken voor het testen van statische privé-IP-adressen
+Het is niet mogelijk om een statisch privé-IP-adres in te stellen tijdens het maken van een virtuele machine in de Resource Manager-implementatie modus met behulp van de Azure Portal. U moet eerst de virtuele machine maken en vervolgens het bijbehorende privé-IP-adres instellen op statisch.
 
-Het maken van een virtuele machine met de naam *DNS01* in de *FrontEnd* subnet van een VNet met de naam *TestVNet*, als volgt te werk:
+Voer de volgende stappen uit om een virtuele machine met de naam *DNS01* in het *frontend* -subnet van een VNet met de naam *TestVNet*te maken:
 
 1. Navigeer in een browser naar https://portal.azure.com en meld u, indien nodig, aan met uw Azure-account.
-2. Klik op **een resource maken** > **Compute** > **Windows Server 2012 R2 Datacenter**, zoals u ziet de **selecteert u een implementatie model** lijst met al wordt weergegeven **Resource Manager**, en klik vervolgens op **maken**, zoals te zien is in de volgende afbeelding.
+2. Klik op **een resource maken** > **Compute** > **Windows Server 2012 R2 Data Center**, ziet u dat in de lijst **een implementatie model selecteren** al **Resource Manager**wordt weer gegeven en klik vervolgens op **maken**, zoals in de volgende afbeelding wordt weer gegeven.
    
-    ![Virtuele machine maken in Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
-3. In de **basisbeginselen** deelvenster, voer de naam van de virtuele machine te maken (*DNS01* in het scenario), wordt het lokale administrator-account en wachtwoord, zoals te zien is in de volgende afbeelding.
+    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-arm-pportal/figure01.png)
+3. Voer in het deel venster **basis beginselen** de naam in van de virtuele machine die u wilt maken (*DNS01* in het scenario), het lokale beheerders account en het wacht woord, zoals in de volgende afbeelding wordt weer gegeven.
    
-    ![Grondbeginselen van deelvenster](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
-4. Zorg ervoor dat de **locatie** geselecteerd is *VS-midden*, klikt u vervolgens op **Selecteer een bestaande** onder **resourcegroep**, klikt u vervolgens op **Resourcegroep** opnieuw, klikt u vervolgens op *TestRG*, en klik vervolgens op **OK**.
+    ![Het deel venster basis principes](./media/virtual-networks-static-ip-arm-pportal/figure02.png)
+4. Zorg ervoor dat de geselecteerde locatie *Central VS*is en klik vervolgens op **bestaande selecteren** onder **resource groep**. Klik vervolgens nogmaals op **resource groep** en vervolgens op *TestRG*en vervolgens op **OK**.
    
-    ![Grondbeginselen van deelvenster](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
-5. In de **Kies een grootte** venster **Standard A1**, en klik vervolgens op **Selecteer**.
+    ![Het deel venster basis principes](./media/virtual-networks-static-ip-arm-pportal/figure03.png)
+5. Selecteer in het deel venster **een grootte kiezen** de optie **a1 Standard**en klik vervolgens op **selecteren**.
    
-    ![Kies een grootte van deelvenster](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
-6. In de **instellingen** deelvenster, controleert u of de eigenschappen worden ingesteld met de volgende waarden en klik vervolgens op **OK**.
+    ![Een deel venster grootte kiezen](./media/virtual-networks-static-ip-arm-pportal/figure04.png)    
+6. Controleer in het deel venster **instellingen** of de eigenschappen zijn ingesteld met de volgende waarden en klik vervolgens op **OK**.
    
     -**Storage-account**: *vnetstorage*
    
    * **Netwerk**: *TestVNet*
-   * **Subnet**: *FrontEnd*
+   * **Subnet**: front- *End*
      
-     ![Kies een grootte van deelvenster](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
-7. In de **samenvatting** deelvenster, klikt u op **OK**. U ziet de volgende tegel weergegeven in uw dashboard.
+     ![Een deel venster grootte kiezen](./media/virtual-networks-static-ip-arm-pportal/figure05.png)     
+7. Klik in het deel venster **samen vatting** op **OK**. U ziet de volgende tegel die wordt weer gegeven in het dash board.
    
-    ![Virtuele machine maken in Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
+    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-arm-pportal/figure06.png)
 
-Het verdient aanbeveling dat u geen statisch het privé IP-adres toegewezen aan de virtuele machine van Azure binnen het besturingssysteem van een virtuele machine, toewijst tenzij die nodig zijn, bijvoorbeeld wanneer [meerdere IP-adressen toewijzen aan een Windows-VM](virtual-network-multiple-ip-addresses-portal.md). Als u het particuliere IP-adres binnen het besturingssysteem handmatig instellen wilt, controleert u of deze hetzelfde adres als de privé IP-adres toegewezen aan de Azure [netwerkinterface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of het verlies van connectiviteit met de virtuele machine. Meer informatie over [privé IP-adres](virtual-network-network-interface-addresses.md#private) instellingen. U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
+Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dit nodig is, bijvoorbeeld wanneer [u meerdere IP-adressen toewijst aan een Windows-VM](virtual-network-multiple-ip-addresses-portal.md). Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](virtual-network-network-interface-addresses.md#private) . U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
 
 ## <a name="how-to-retrieve-static-private-ip-address-information-for-a-vm"></a>Het statische privé IP-adresgegevens voor een virtuele machine ophalen
-Als u wilt weergeven met de statische privé IP-adresgegevens voor de virtuele machine gemaakt met de bovenstaande stappen, voer de volgende stappen uit.
+Voer de volgende stappen uit om de gegevens van het statische privé-IP-adres te bekijken voor de virtuele machine die is gemaakt met de bovenstaande stappen.
 
-1. Vanuit de Azure-portal, klikt u op **door alles bladeren** > **virtuele machines** > **DNS01** > **alle instellingen**  >  **Netwerkinterfaces** en klik vervolgens op de alleen-netwerkinterface die worden vermeld.
+1. Klik in het Azure Portal op **Bladeren alle** > **virtuele machines** > **DNS01** > **alle instellingen** > **netwerk interfaces** en klik vervolgens op de enige netwerk interface die wordt weer gegeven.
    
-    ![Tegel VM implementeren](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
-2. In de **netwerkinterface** deelvenster, klikt u op **alle instellingen** > **IP-adressen** en u ziet de **toewijzing** en  **IP-adres** waarden.
+    ![VM-tegel implementeren](./media/virtual-networks-static-ip-arm-pportal/figure07.png)
+2. Klik in het deel venster **netwerk interface** op **alle instellingen** > **IP-adressen** en Let op de waarden van de **toewijzing** en het **IP-adres** .
    
-    ![Tegel VM implementeren](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
+    ![VM-tegel implementeren](./media/virtual-networks-static-ip-arm-pportal/figure08.png)
 
-## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Een statisch privé IP-adres toevoegen aan een bestaande virtuele machine
-Een statisch privé IP-adres toevoegen aan de virtuele machine gemaakt met behulp van de bovenstaande stappen, de volgende stappen uit:
+## <a name="how-to-add-a-static-private-ip-address-to-an-existing-vm"></a>Een statisch privé-IP-adres toevoegen aan een bestaande virtuele machine
+Voer de volgende stappen uit om een statisch privé-IP-adres toe te voegen aan de virtuele machine die is gemaakt met behulp van de bovenstaande stappen:
 
-1. Uit de **IP-adressen** deelvenster hierboven, klikt u op **statische** onder **toewijzing**.
-2. Type *192.168.1.101* voor **IP-adres**, en klik vervolgens op **opslaan**.
+1. Klik in het deel venster **IP-adressen** hierboven weer gegeven op **statisch** onder **toewijzing**.
+2. Typ *192.168.1.101* voor **IP-adres**en klik vervolgens op **Opslaan**.
    
-    ![Virtuele machine maken in Azure portal](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
+    ![Een VM maken in Azure Portal](./media/virtual-networks-static-ip-arm-pportal/figure09.png)
 
 > [!NOTE]
-> Als na het klikken op **opslaan**, ziet u dat de toewijzing nog steeds is ingesteld op **dynamische**, betekent dit dat het IP-adres dat u hebt getypt, wordt al gebruikt. Probeer een ander IP-adres.
+> Als nadat u op **Opslaan**hebt geklikt, u ziet dat de toewijzing nog steeds op **dynamisch**is ingesteld, betekent dit dat het IP-adres dat u hebt getypt al in gebruik is. Probeer een ander IP-adres.
 > 
 > 
 
-Het verdient aanbeveling dat u geen statisch het privé IP-adres toegewezen aan de virtuele machine van Azure binnen het besturingssysteem van een virtuele machine, toewijst tenzij die nodig zijn, bijvoorbeeld wanneer [meerdere IP-adressen toewijzen aan een Windows-VM](virtual-network-multiple-ip-addresses-portal.md). Als u het particuliere IP-adres binnen het besturingssysteem handmatig instellen wilt, controleert u of deze hetzelfde adres als de privé IP-adres toegewezen aan de Azure [netwerkinterface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of het verlies van connectiviteit met de virtuele machine. Meer informatie over [privé IP-adres](virtual-network-network-interface-addresses.md#private) instellingen. U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
+Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dit nodig is, bijvoorbeeld wanneer [u meerdere IP-adressen toewijst aan een Windows-VM](virtual-network-multiple-ip-addresses-portal.md). Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](virtual-network-network-interface-addresses.md#private) . U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
 
 ## <a name="how-to-remove-a-static-private-ip-address-from-a-vm"></a>Het verwijderen van een statisch privé IP-adres van een virtuele machine
-Als u wilt verwijderen van het statische privé IP-adres van de virtuele machine die eerder is gemaakt, voert u de volgende stap:
+Als u het statische privé-IP-adres uit de hierboven gemaakte virtuele machine wilt verwijderen, voert u de volgende stap uit:
 
-Uit de **IP-adressen** deelvenster hierboven, klikt u op **dynamische** onder **toewijzing**, en klik vervolgens op **opslaan**.
+Klik in het deel venster **IP-adressen** dat hierboven wordt weer gegeven op **dynamisch** onder **toewijzing**en klik vervolgens op **Opslaan**.
 
 ## <a name="set-ip-addresses-within-the-operating-system"></a>IP-adressen binnen het besturingssysteem instellen
 
-Het verdient aanbeveling dat u geen statisch het privé IP-adres toegewezen aan de virtuele machine van Azure binnen het besturingssysteem van een virtuele machine, toewijst tenzij die nodig zijn, bijvoorbeeld wanneer [meerdere IP-adressen toewijzen aan een Windows-VM](virtual-network-multiple-ip-addresses-portal.md). Als u het particuliere IP-adres binnen het besturingssysteem handmatig instellen wilt, controleert u of deze hetzelfde adres als de privé IP-adres toegewezen aan de Azure [netwerkinterface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of het verlies van connectiviteit met de virtuele machine. Meer informatie over [privé IP-adres](virtual-network-network-interface-addresses.md#private) instellingen. U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
+Het is raadzaam dat u het privé-IP-adres dat is toegewezen aan de virtuele machine van Azure niet statisch toewijst in het besturings systeem van een VM, tenzij dit nodig is, bijvoorbeeld wanneer [u meerdere IP-adressen toewijst aan een Windows-VM](virtual-network-multiple-ip-addresses-portal.md). Als u het privé-IP-adres hand matig instelt in het besturings systeem, moet u ervoor zorgen dat het hetzelfde adres is als het privé-IP-adres dat is toegewezen aan de Azure- [netwerk interface](virtual-network-network-interface-addresses.md#change-ip-address-settings), of u kunt de verbinding met de virtuele machine verliezen. Meer informatie over instellingen voor [privé-IP-adressen](virtual-network-network-interface-addresses.md#private) . U moet het openbare IP-adres toegewezen aan een virtuele machine van Azure binnen het besturingssysteem van de virtuele machine nooit handmatig toewijzen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het beheren van [IP-adresinstellingen](virtual-network-network-interface-addresses.md).
+Meer informatie over het beheren van [IP-adres instellingen](virtual-network-network-interface-addresses.md).
 

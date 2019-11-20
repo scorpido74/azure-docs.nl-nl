@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d41ce06279536e3479b96d8d7afedf81624dbc9b
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 32a3131c8ff6a01a35fbe42750384dd303a23140
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68326605"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185180"
 ---
-# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Quickstart: Azure-app configuratie gebeurtenissen naar een webeindpunt routeren met Azure CLI
+# <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Snelstartgids: Azure-app configuratie gebeurtenissen naar een webeindpunt routeren met Azure CLI
 
 In deze Quick Start leert u hoe u Azure-app configuratie gebeurtenis abonnementen kunt instellen om gebeurtenissen voor het wijzigen van de sleutel waarde naar een webeindpunt te verzenden. Azure-app configuratie gebruikers kunnen zich abonneren op gebeurtenissen die worden verzonden wanneer de sleutel waarden worden gewijzigd. Deze gebeurtenissen kunnen webhooks, Azure Functions, Azure Storage wacht rijen of andere gebeurtenis-handlers activeren die door Azure Event Grid worden ondersteund. Normaal gesproken verzendt u gebeurtenissen naar een eindpunt dat de gebeurtenisgegevens verwerkt en vervolgens in actie komt. Ter vereenvoudiging van dit artikel stuurt u hier de gebeurtenissen echter naar een web-app die de berichten verzamelt en weergeeft.
 
@@ -40,7 +40,7 @@ Event Grid-onderwerpen zijn Azure-resources en moeten in een Azure-resourcegroep
 
 Een resourcegroep maken met de opdracht [az group create](/cli/azure/group). 
 
-In het volgende voor beeld wordt een resource `<resource_group_name>` groep met de naam op de locatie *westus* gemaakt.  Vervang `<resource_group_name>` door een unieke naam voor uw resourcegroep.
+In het volgende voor beeld wordt een resource groep met de naam `<resource_group_name>` op de locatie *westus* gemaakt.  Vervang `<resource_group_name>` door een unieke naam voor uw resourcegroep.
 
 ```azurecli-interactive
 az group create --name <resource_group_name> --location westus
@@ -48,7 +48,7 @@ az group create --name <resource_group_name> --location westus
 
 ## <a name="create-an-app-configuration"></a>Een app-configuratie maken
 
-Vervang `<appconfig_name>` door een unieke naam voor uw app-configuratie en `<resource_group_name>` met de resource groep die u eerder hebt gemaakt. De naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
+Vervang `<appconfig_name>` door een unieke naam voor de app-configuratie en `<resource_group_name>` met de resource groep die u eerder hebt gemaakt. De naam moet uniek zijn omdat deze wordt gebruikt als een DNS-naam.
 
 ```azurecli-interactive
 az appconfig create \
@@ -100,7 +100,7 @@ Bekijk opnieuw uw web-app en u zult zien dat er een validatiegebeurtenis voor ee
 
 ## <a name="trigger-an-app-configuration-event"></a>Een configuratie gebeurtenis voor een app activeren
 
-Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid naar het eindpunt wordt gedistribueerd. Maak een sleutel waarde met behulp `<appconfig_name>` van de vorige.
+Nu gaan we een gebeurtenis activeren om te zien hoe het bericht via Event Grid naar het eindpunt wordt gedistribueerd. Maak een sleutel waarde met behulp van de `<appconfig_name>` uit eerdere versies.
 
 ```azurecli-interactive
 az appconfig kv set --name <appconfig_name> --key Foo --value Bar --yes

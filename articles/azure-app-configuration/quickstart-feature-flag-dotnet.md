@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/21/2019
 ms.author: lcozzens
-ms.openlocfilehash: cba0a9a003b53eeb102e14c00cb91f344ebbe3d6
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 0aecf2284e448f879bc20391c8528f8efde42d94
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821730"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184975"
 ---
 # <a name="quickstart-add-feature-flags-to-a-net-framework-app"></a>Snelstartgids: functie vlaggen toevoegen aan een .NET Framework-app
 
@@ -33,13 +33,13 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
 ## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
 
-1. Start Visual Studio en selecteer **bestand** > **Nieuw** > -**project**.
+1. Start Visual Studio en selecteer **bestand** > **Nieuw** > **project**.
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
@@ -91,7 +91,7 @@ De beheer bibliotheken van .NET-onderdelen breiden het Framework uit met uitgebr
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
-1. Stel een omgevingsvariabele met de naam **ConnectionString** in en stel deze in op de toegangssleutel van uw app-configuratiearchief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
+1. Stel een omgevings variabele met de naam **Connections Tring** in op de Connection String van de app-configuratie opslag. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 

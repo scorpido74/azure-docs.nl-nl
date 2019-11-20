@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 3a5517c31cdac0bf6f5ea386a8614d15521d4479
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: b0c6e39aebe7864ab132805b78aa7be2d61c5160
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035534"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185147"
 ---
-# <a name="integrate-with-azure-managed-identities"></a>Integreren met door Azure beheerde identiteiten
+# <a name="integrate-with-azure-managed-identities"></a>Integreren met Azure Managed Identities
 
-Met Azure Active Directory [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kunt u het beheer van geheimen vereenvoudigen voor uw Cloud toepassing. Met een beheerde identiteit kunt u uw code instellen voor het gebruik van de service-principal die is gemaakt voor de service Azure Compute waarop deze wordt uitgevoerd. U gebruikt een beheerde identiteit in plaats van een afzonderlijke referentie die is opgeslagen in Azure Key Vault of een lokale connection string. 
+Met Azure Active Directory [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) kunt u het beheer van geheimen vereenvoudigen voor uw Cloud toepassing. Met een beheerde identiteit kunt u uw code instellen voor het gebruik van de service-principal die is gemaakt voor de Azure-service waarop deze wordt uitgevoerd. U gebruikt een beheerde identiteit in plaats van een afzonderlijke referentie die is opgeslagen in Azure Key Vault of een lokale connection string. 
 
-Azure-app configuratie en de .NET core-, .NET-en Java lente-client bibliotheken worden geleverd met beheerde service-identiteit (MSI) ingebouwde ondersteuning. Hoewel u dit niet nodig hebt, kunt u met MSI geen toegangs tokens meer gebruiken die geheimen bevatten. De code heeft toegang tot de app-configuratie opslag door alleen het service-eind punt te gebruiken. U kunt deze URL rechtstreeks insluiten in uw code, zonder dat u een geheim weergeeft.
+Azure-app configuratie en de bijbehorende .NET core-, .NET Framework-en Java lente-client bibliotheken worden geleverd met de ingebouwde ondersteuning voor beheerde identiteiten. Hoewel u deze niet hoeft te gebruiken, elimineert de beheerde identiteit geen toegangs token dat geheimen bevat. De code heeft toegang tot de app-configuratie opslag door alleen het service-eind punt te gebruiken. U kunt deze URL rechtstreeks insluiten in uw code, zonder dat u een geheim weergeeft.
 
-In deze zelfstudie leert hoe u kunt profiteren van MSI voor toegang tot App-configuratie. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
+In deze zelf studie ziet u hoe u kunt profiteren van de beheerde identiteit om toegang te krijgen tot de app-configuratie. Dit is gebaseerd op de web-app die is geïntroduceerd in de quickstarts. Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configuratie](./quickstart-aspnet-core-app.md) .
 
-Daarnaast ziet u in deze zelf studie hoe u MSI kunt gebruiken in combi natie met de Key Vault verwijzingen van de app-configuratie. Zo kunt u probleemloos toegang krijgen tot geheimen die zijn opgeslagen in Key Vault en configuratie waarden in app-configuratie. Als u deze functie wilt verkennen, kunt u het [gebruik van Key Vault verwijzingen met ASP.net core](./use-key-vault-references-dotnet-core.md) eerst volt ooien.
+Daarnaast ziet u in deze zelf studie hoe u de beheerde identiteit kunt gebruiken in combi natie met de Key Vault verwijzingen van de app-configuratie. Zo kunt u probleemloos toegang krijgen tot geheimen die zijn opgeslagen in Key Vault en configuratie waarden in app-configuratie. Als u deze functie wilt verkennen, kunt u het [gebruik van Key Vault verwijzingen met ASP.net core](./use-key-vault-references-dotnet-core.md) eerst volt ooien.
 
 U kunt elke code-editor gebruiken om de stappen in deze zelf studie uit te voeren. [Visual Studio code](https://code.visualstudio.com/) is een uitstekende optie die beschikbaar is op de Windows-, macOS-en Linux-platformen.
 
@@ -66,7 +66,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
 1. Selecteer in het [Azure Portal](https://portal.azure.com) **alle resources** en selecteer de app-configuratie opslag die u hebt gemaakt in de Quick Start.
 
-1. Selecteer **toegangsbeheer (IAM)** .
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **toegang controleren** op **toevoegen** in de gebruikers interface van de **roltoewijzing toevoegen** .
 
@@ -78,13 +78,13 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
 
     ![Een beheerde identiteit toevoegen](./media/add-managed-identity.png)
 
-1. Optioneel: Als u ook toegang tot Key Vault wilt verlenen, volgt u de instructies in [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity).
+1. Optioneel: als u ook toegang tot Key Vault wilt verlenen, volgt u de instructies in [Key Vault verificatie bieden met een beheerde identiteit](https://docs.microsoft.com/azure/key-vault/managed-identity).
 
 ## <a name="use-a-managed-identity"></a>Een beheerde identiteit gebruiken
 
 1. Zoek de URL naar de app-configuratie in het configuratie scherm van de Azure Portal en klik vervolgens op het tabblad **toegangs toetsen** .
 
-1. Open *appSettings. json*en voeg het volgende script toe. Vervang *\<service_endpoint >* , met inbegrip van de haakjes, door de URL naar uw app-configuratie archief. 
+1. Open *appSettings. json*en voeg het volgende script toe. Vervang *\<service_endpoint >* , met inbegrip van de vier Kante haken, door de URL naar uw app-configuratie archief. 
 
     ```json
     "AppConfig": {
@@ -92,7 +92,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
     }
     ```
 
-1. Als u alleen toegang wilt krijgen tot waarden die rechtstreeks in de app-configuratie zijn opgeslagen, opent u *Program.cs*en werkt u de `CreateWebHostBuilder`-methode bij door de `config.AddAzureAppConfiguration()`-methode te vervangen.
+1. Als u alleen toegang wilt krijgen tot waarden die rechtstreeks in de app-configuratie zijn opgeslagen, opent u *Program.cs*en werkt u de `CreateWebHostBuilder` methode bij door de `config.AddAzureAppConfiguration()`-methode te vervangen.
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -106,7 +106,7 @@ Als u een beheerde identiteit in de portal wilt instellen, maakt u eerst een toe
             .UseStartup<Startup>();
     ```
 
-1. Als u app-configuratie waarden wilt gebruiken, evenals Key Vault verwijzingen, opent u *Program.cs*en werkt u de `CreateWebHostBuilder`-methode bij, zoals hieronder wordt weer gegeven. Hiermee wordt een nieuwe `KeyVaultClient` gemaakt met behulp van een `AzureServiceTokenProvider` en wordt deze verwijzing door gegeven aan een aanroep van de methode `UseAzureKeyVault`.
+1. Als u app-configuratie waarden wilt gebruiken, evenals Key Vault verwijzingen, opent u *Program.cs*en werkt u de methode `CreateWebHostBuilder` bij, zoals hieronder wordt weer gegeven. Hiermee wordt een nieuwe `KeyVaultClient` gemaakt met behulp van een `AzureServiceTokenProvider` en wordt deze verwijzing door gegeven aan een aanroep van de `UseAzureKeyVault`-methode.
 
     ```csharp
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -145,7 +145,7 @@ git add .
 git commit -m "Initial version"
 ```
 
-Als u lokale Git-implementatie voor uw app met de kudu-build-server wilt inschakelen, voert u [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) in Cloud shell uit.
+Als u lokale Git-implementatie voor uw app wilt inschakelen met de kudu-buildserver, voert u [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config-local-git) uit in Cloud shell.
 
 ```azurecli-interactive
 az webapp deployment source config-local-git --name <app_name> --resource-group <group_name>
@@ -228,6 +228,7 @@ App-configuratie-providers voor .NET Framework en Java Spring hebben ook ingebou
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Volgende stappen
+In deze zelf studie hebt u een door Azure beheerde identiteit toegevoegd om de toegang tot de app-configuratie te stroom lijnen en het referentie beheer voor uw app te verbeteren. Ga verder met de voor beelden van Azure CLI voor meer informatie over het gebruik van app-configuratie.
 
 > [!div class="nextstepaction"]
 > [CLI-voorbeelden](./cli-samples.md)

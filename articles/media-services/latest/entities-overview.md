@@ -1,6 +1,7 @@
 ---
-title: Filters, ordening en paginering van Media Services entiteiten-Azure | Microsoft Docs
-description: In dit artikel wordt het filteren, ordenen en pagineren van Azure Media Services entiteiten beschreven.
+title: Filters, ordening en paginering van Media Services entiteiten
+titleSuffix: Azure Media Services
+description: Meer informatie over het filteren, ordenen en pagineren van Azure Media Services entiteiten.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,12 +13,12 @@ ms.topic: article
 ms.date: 10/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d13ff3944e53f103c03a92e03d217b0066bc97df
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.openlocfilehash: 22b8c4e2454d6130ebcaf85346b767c843fbc1f0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72693312"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186253"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Filters, ordening en paginering van Media Services entiteiten
 
@@ -41,10 +42,10 @@ Bereik operatoren:
 
 - `gt`: testen of een veld *groter is dan* een constante waarde.
 - `lt`: testen of een veld *kleiner is dan* een constante waarde.
-- `ge`: test of een veld *groter is dan of gelijk is aan* een constante. waarde
+- `ge`: testen of een veld *groter is dan of gelijk is aan* een constante waarde.
 - `le`: testen of een veld *kleiner is dan of gelijk is aan* een constante waarde.
 
-## <a name="filter"></a>Filter
+## <a name="filter"></a>Filteren
 
 Gebruik `$filter` om een OData-filter parameter op te geven om alleen de objecten te vinden waarin u bent geïnteresseerd.
 
@@ -59,11 +60,11 @@ In het C# volgende voor beeld wordt gefilterd op de aangemaakte datum van het ac
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
-```    
+```
 
 ## <a name="order-by"></a>Sorteren op
 
-Gebruik `$orderby` om de geretourneerde objecten te sorteren op basis van de opgegeven para meter. Bijvoorbeeld:    
+Gebruik `$orderby` om de geretourneerde objecten te sorteren op basis van de opgegeven para meter. Bijvoorbeeld:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -77,7 +78,7 @@ Als een query antwoord veel items bevat, retourneert de service de waarde `$skip
 
 In Media Services v3 kunt u de pagina grootte niet configureren. De pagina grootte is afhankelijk van het type entiteit. Lees de afzonderlijke secties die volgen voor meer informatie.
 
-Als entiteiten worden gemaakt of verwijderd terwijl u door de verzameling wisselt, worden de wijzigingen weer gegeven in de geretourneerde resultaten (als deze wijzigingen zich in het deel van de verzameling bevinden dat nog niet is gedownload). 
+Als entiteiten worden gemaakt of verwijderd terwijl u door de verzameling wisselt, worden de wijzigingen weer gegeven in de geretourneerde resultaten (als deze wijzigingen zich in het deel van de verzameling bevinden dat nog niet is gedownload).
 
 > [!TIP]
 > U moet altijd `nextLink` gebruiken om de verzameling op te sommen en niet afhankelijk van een bepaalde pagina grootte.
@@ -94,7 +95,7 @@ x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
 Content-Type: application/json; charset=utf-8
 ```
 
-U krijgt een antwoord dat er ongeveer als volgt uitziet:
+U krijgt een antwoord dat vergelijkbaar is met het volgende:
 
 ```
 HTTP/1.1 200 OK
@@ -155,29 +156,29 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 In de volgende tabel ziet u hoe u de opties voor filteren en ordenen kunt Toep assen op verschillende entiteiten:
 
-|Naam van entiteit|Naam van eigenschap|Filter|Bestelling|
+|Naam van de entiteit|Naam van eigenschap|Filteren|Bestelling|
 |---|---|---|---|
 |[Assets](https://docs.microsoft.com/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` en `desc`|
-||Eigenschappen. alternateId |`eq`||
-||Eigenschappen. assetId |`eq`||
-||Eigenschappen. gemaakt| `eq`, `gt`, `lt`| `asc` en `desc`|
+||properties.alternateId |`eq`||
+||properties.assetId |`eq`||
+||Properties.created| `eq`, `gt`, `lt`| `asc` en `desc`|
 |[Beleid voor inhouds sleutels](https://docs.microsoft.com/rest/api/media/contentkeypolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-||Eigenschappen. Beschrijving    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
-||Eigenschappen. lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-||Eigenschappen. policyId|`eq`, `ne`||
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Properties.Description    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`||
+||properties.lastModified|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||properties.policyId|`eq`, `ne`||
 |[Taken](https://docs.microsoft.com/rest/api/media/jobs)| name  | `eq`            | `asc` en `desc`|
 ||Eigenschappen. State        | `eq`, `ne`        |                         |
-||Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
-||Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le` | `asc` en `desc`| 
+||Properties.created      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
+||properties.lastModified | `gt`, `ge`, `lt`, `le` | `asc` en `desc`| 
 |[Streaming-Locators](https://docs.microsoft.com/rest/api/media/streaminglocators)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-||Eigenschappen. endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||properties.endTime    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 |[Streaming-beleid](https://docs.microsoft.com/rest/api/media/streamingpolicies)|name|`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
-||Eigenschappen. gemaakt    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
+||Properties.created    |`eq`, `ne`, `ge`, `le`, `gt`, `lt`|`asc` en `desc`|
 |[Transformeert](https://docs.microsoft.com/rest/api/media/transforms)| name | `eq`            | `asc` en `desc`|
-|| Eigenschappen. gemaakt      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
-|| Eigenschappen. lastModified | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
+|| Properties.created      | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
+|| properties.lastModified | `gt`, `ge`, `lt`, `le`| `asc` en `desc`|
 
 ## <a name="next-steps"></a>Volgende stappen
 

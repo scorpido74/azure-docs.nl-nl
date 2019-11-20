@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
-ms.openlocfilehash: 8b1a4a8a6c808348ca17a9eebac17c5821ceefe5
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: a4090172e926f21db01a8e374d8c4bb1c80402c7
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72530080"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74197357"
 ---
 ## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Down load en installeer het binaire bestand voor de Linkerd Linkerd-client
 
@@ -22,10 +22,10 @@ LINKERD_VERSION=stable-2.6.0
 curl -sLO "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-darwin"
 ```
 
-De `linkerd` binaire-client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Linkerd service-net. Gebruik de volgende opdrachten om de Linkerd `linkerd`-client-binary te installeren in een op bash gebaseerde shell op MacOS. Met deze opdrachten wordt het `linkerd` binaire client bestand naar de standaard locatie van het gebruikers programma in uw `PATH` gekopieerd.
+De `linkerd` binaire-client wordt uitgevoerd op uw client computer en maakt het mogelijk om te communiceren met het Linkerd service-net. Gebruik de volgende opdrachten om de Linkerd `linkerd`-client-binary te installeren in een op bash gebaseerde shell op MacOS. Met deze opdrachten wordt het `linkerd` binaire client bestand naar de standaard locatie van het gebruikers programma in uw `PATH`gekopieerd.
 
 ```bash
-sudo cp ./linkerd2-cli-$LINKERD_VERSION-linux /usr/local/bin/linkerd
+sudo cp ./linkerd2-cli-$LINKERD_VERSION-darwin /usr/local/bin/linkerd
 sudo chmod +x /usr/local/bin/linkerd
 ```
 

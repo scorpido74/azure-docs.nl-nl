@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 10/09/2019
 ms.author: lcozzens
-ms.openlocfilehash: 17b2e7272d499ce99d40d2ee52de1c7a5a1d0d04
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 36cfe79f5c2735e6d6737d471430deb989905cdc
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329802"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185063"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Snelstartgids: een .NET Framework-app maken met Azure-app configuratie
 
@@ -31,7 +31,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 - [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
 - [.NET Framework 4.7.2](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
@@ -45,7 +45,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="create-a-net-console-app"></a>Een .NET Core-consoletoepassing maken
 
-1. Start Visual Studio en selecteer **bestand** > **Nieuw** > -**project**.
+1. Start Visual Studio en selecteer **bestand** > **Nieuw** > **project**.
 
 1. In **een nieuw project maken**filtert u op het type **console** project en klikt u op **console-app (.NET Framework)** . Klik op **Volgende**.
 
@@ -83,7 +83,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
    De connection string van uw app-configuratie archief wordt gelezen uit de omgevings variabele `ConnectionString`. Voeg de `Environment` Configuration Builder toe vóór de `MyConfigStore` in de eigenschap `configBuilders` van de sectie `appSettings`.
 
-1. Open *Program.cs*en werk de `Main`-methode bij om de app-configuratie te gebruiken door het aanroepen van `ConfigurationManager`.
+1. Open *Program.cs*en werk de `Main`-methode bij om app-configuratie te gebruiken door `ConfigurationManager`aan te roepen.
 
     ```csharp
     static void Main(string[] args)
@@ -96,7 +96,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
-1. Stel een omgevingsvariabele met de naam **ConnectionString** in en stel deze in op de toegangssleutel van uw app-configuratiearchief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
+1. Stel een omgevings variabele met de naam **Connections Tring** in op de Connection String van de app-configuratie opslag. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit:
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
@@ -112,7 +112,7 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een op .NET Framework
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Framework-console-app. Voor meer informatie over het gebruik van app-configuratie gaat u verder met de volgende zelf studie waarin verificatie wordt gedemonstreerd.
+In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Framework-console-app. De waarde `AppSettings` van `ConfiguratoinManager` wordt niet gewijzigd nadat de toepassing is gestart. De bibliotheek van de app-configuratie provider .NET Standard kan echter ook worden gebruikt in een .NET Framework-app. Ga door naar de volgende zelf studie voor meer informatie over het inschakelen van uw .NET Framework-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)
+> [Dynamische configuratie inschakelen](./enable-dynamic-configuration-dotnet.md)
