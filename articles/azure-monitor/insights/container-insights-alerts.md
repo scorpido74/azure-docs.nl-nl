@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/26/2019
-ms.openlocfilehash: c71893ec9eae844fb213114f6a3805815ff5894f
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: dd92f5aedd1fbc51531730e6a7826322570cd1b1
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555444"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195020"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>Waarschuwingen instellen voor prestatie problemen in Azure Monitor voor containers
 Azure Monitor voor containers bewaakt de prestaties van container werkbelastingen die zijn geïmplementeerd op Azure Container Instances of op beheerde Kubernetes-clusters die worden gehost op Azure Kubernetes service (AKS).
@@ -102,7 +102,7 @@ KubeNodeInventory
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize), ClusterName
 ```
 >[!IMPORTANT]
->De volgende query's gebruiken de waarden van de tijdelijke aanduiding \<your-cluster naam > en \<your-controller naam > om uw cluster en controller weer te geven. Vervang deze door de waarden die specifiek zijn voor uw omgeving bij het instellen van waarschuwingen.
+>De volgende query's gebruiken de waarden van de tijdelijke aanduiding \<uw cluster naam > en \<uw-controller naam > om uw cluster en controller weer te geven. Vervang deze door de waarden die specifiek zijn voor uw omgeving bij het instellen van waarschuwingen.
 
 De volgende query berekent het gemiddelde CPU-gebruik van alle containers in een controller als gemiddeld CPU-gebruik van elke container instantie in een controller per minuut. De meting is een percentage van de limiet die voor een container is ingesteld.
 
@@ -284,12 +284,12 @@ Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behu
 >Met de volgende procedure voor het maken van een waarschuwings regel voor container resource gebruik moet u overschakelen naar een nieuwe API voor logboek waarschuwingen, zoals beschreven in de voor [keur voor de switch-API voor logboek waarschuwingen](../platform/alerts-log-api-switch.md).
 >
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Selecteer **monitor** in het deel venster aan de linkerkant. Onder **inzichten**selecteert u **containers**.
 3. Selecteer op het tabblad **bewaakte clusters** een cluster in de lijst.
 4. Selecteer **Logboeken** in het deel venster aan de linkerkant onder **bewaking**om de pagina Azure monitor logboeken te openen. U gebruikt deze pagina om Azure Log Analytics-query's te schrijven en uit te voeren.
 5. Selecteer op de pagina **Logboeken** **+ nieuwe waarschuwings regel**.
-6. Selecteer in de sectie **voor waarde** de **wanneer de aangepaste zoek opdracht voor logboeken is \<logic niet-gedefinieerd >** vooraf gedefinieerde aangepaste logboek voorwaarde. Het waarschuwings type voor de **aangepaste zoek opdracht voor logboeken** wordt automatisch geselecteerd omdat er rechtstreeks vanuit de pagina logboeken van Azure monitor een waarschuwing wordt gemaakt.  
+6. Selecteer in de sectie **voor waarde** het **tijdstip waarop de aangepaste logboek zoekactie \<logica niet gedefinieerd >** vooraf gedefinieerde aangepaste logboek voorwaarde. Het waarschuwings type voor de **aangepaste zoek opdracht voor logboeken** wordt automatisch geselecteerd omdat er rechtstreeks vanuit de pagina logboeken van Azure monitor een waarschuwing wordt gemaakt.  
 7. Plak een van de [query's](#resource-utilization-log-search-queries) die eerder zijn gegeven in het veld **Zoek query** .
 8. Configureer de waarschuwing als volgt:
 
@@ -308,4 +308,4 @@ Volg deze stappen om een logboek waarschuwing in Azure Monitor te maken met behu
 ## <a name="next-steps"></a>Volgende stappen
 
 - Bekijk de [voor beelden van logboek query's](container-insights-log-search.md#search-logs-to-analyze-data) om vooraf gedefinieerde query's en voor beelden te bekijken voor het evalueren of aanpassen van waarschuwingen, het visualiseren of analyseren van uw clusters.
-- Zie [Azure Kubernetes service Health weer geven](container-insights-analyze.md)voor meer informatie over Azure monitor en het bewaken van andere aspecten van uw AKS-cluster.
+- Zie [Kubernetes cluster prestaties weer geven](container-insights-analyze.md) en [Kubernetes-cluster status weer geven](container-insights-health.md)voor meer informatie over Azure monitor en het bewaken van andere aspecten van uw Kubernetes-cluster.
