@@ -5,14 +5,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: azure-migrate
 ms.topic: tutorial
-ms.date: 11/18/2019
+ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 7187cb41fa7ea499035c57e83e04038b1269b418
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 595b6705b4e876ce5b42a7de831136cb0b62b1f5
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158669"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196450"
 ---
 # <a name="assess-vmware-vms-with-azure-migrate-server-assessment"></a>Virtuele VMware-machines beoordelen met Azure Migrate: Server evaluatie
 
@@ -172,7 +172,7 @@ Het apparaat moet verbinding maken met vCenter Server om de configuratie-en pres
 
 ### <a name="specify-vcenter-server-details"></a>vCenter Server-gegevens opgeven
 1. Geef in **vCenter Server Details opgeven**de naam (FQDN) of het IP-adres van de vCenter Server op. U kunt de standaard poort verlaten of een aangepaste poort opgeven waarop uw vCenter Server luistert.
-2. Geef bij **gebruikers naam** en **wacht woord**de alleen-lezen account referenties op die het apparaat gebruikt voor het detecteren van vm's op de vCenter-Server. Zorg ervoor dat het account de [vereiste machtigingen voor detectie](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)heeft. U kunt de detectie bereiken door de toegang tot het vCenter-account dienovereenkomstig te beperken. meer informatie over het detecteren van scopes [vindt u hier](tutorial-assess-vmware.md#scoping-discovery).
+2. Geef bij **gebruikers naam** en **wacht woord**de referenties van het vCenter Server-account op die het apparaat gaat gebruiken om vm's op de vCenter-Server te detecteren. Zorg ervoor dat het account de [vereiste machtigingen voor detectie](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions)heeft. U kunt de detectie bereiken door de toegang tot het vCenter-account dienovereenkomstig te beperken. meer informatie over het detecteren van scopes [vindt u hier](tutorial-assess-vmware.md#scoping-discovery).
 3. Klik op **verbinding valideren** om te controleren of het apparaat verbinding kan maken met vCenter Server.
 
 ### <a name="specify-vm-credentials"></a>VM-referenties opgeven
@@ -222,7 +222,7 @@ Er zijn twee methoden voor het toewijzen van machtigingen aan inventaris objecte
 
     Net als bij server migratie moet een door de gebruiker gedefinieerde rol ( [met de naam](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) <em>Azure _Migrate</em>) worden toegepast op het vCenter-gebruikers account voor alle bovenliggende objecten waar de virtuele machines worden gehost die moeten worden gemigreerd.
 
-![Machtigingen toewijzen](./media/tutorial-assess-vmware/assign-perms.png)
+  ![Machtigingen toewijzen](./media/tutorial-assess-vmware/assign-perms.png)
 
 - De alternatieve methode is het toewijzen van het gebruikers account en de rol op het datacenter niveau en het door geven van deze aan de onderliggende objecten. Geef vervolgens voor elk object (zoals Vm's) dat u niet wilt detecteren of migreren het account een **Access** -rol. Deze configuratie is omslachtig. Het biedt onbedoelde toegangs controles, omdat voor elk nieuw onderliggend object ook automatisch toegang wordt verleend die wordt overgenomen van de bovenliggende. Daarom wordt u aangeraden de eerste benadering te gebruiken.
 

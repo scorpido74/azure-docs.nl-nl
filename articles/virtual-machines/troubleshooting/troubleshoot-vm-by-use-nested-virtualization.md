@@ -11,14 +11,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 11/01/2018
+ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: ad359a19cb42bf115189aca7905d1908d0dc5284
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087061"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185514"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Een probleem met een Azure-VM oplossen met geneste virtualisatie in azure
 
@@ -34,13 +34,13 @@ Als u de probleem-VM wilt koppelen, moet de virtuele machine voor herstel voldoe
 
 -   De herstel-VM moet gebruikmaken van hetzelfde type opslag account (Standard of Premium) als de probleem-VM.
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Stap 1: Een herstel-VM maken en de Hyper-V-functie installeren
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>Stap 1: een herstel-VM maken en de Hyper-V-functie installeren
 
 1.  Een nieuwe herstel-VM maken:
 
-    -  Besturingssysteem: Windows Server 2016 Datacenter
+    -  Besturings systeem: Windows Server 2016 Data Center
 
-    -  Grootte: Een v3-serie met ten minste twee kernen die ondersteuning bieden voor geneste virtualisatie. Zie [Inleiding tot de nieuwe Dv3-en EV3 VM-grootten](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)voor meer informatie.
+    -  Grootte: elke V3-serie met ten minste twee kernen die ondersteuning bieden voor geneste virtualisatie. Zie [Inleiding tot de nieuwe Dv3-en EV3 VM-grootten](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)voor meer informatie.
 
     -  Dezelfde locatie, hetzelfde opslag account en dezelfde resource groep als de probleem-VM.
 
@@ -48,13 +48,13 @@ Als u de probleem-VM wilt koppelen, moet de virtuele machine voor herstel voldoe
 
 2.  Nadat de herstel-VM is gemaakt, wordt extern bureau blad naar de virtuele machine voor herstel.
 
-3.  In Serverbeheer klikt u op **beheer** > **toevoegen rollen en onderdelen**.
+3.  Selecteer in Serverbeheer de optie **beheren** > **functies en onderdelen toevoegen**.
 
 4.  Selecteer in de sectie **type installatie** de optie installatie die op de **functie of het onderdeel is gebaseerd**.
 
 5.  Controleer in de sectie de **doel server selecteren** of de virtuele machine voor herstel is geselecteerd.
 
-6.  Selecteer de **Hyper-V-functie** > **onderdelen toevoegen**.
+6.  Selecteer de **Hyper-V-rol** > **onderdelen toe te voegen**.
 
 7.  Selecteer **volgende** in het gedeelte **functies** .
 
@@ -70,72 +70,57 @@ Als u de probleem-VM wilt koppelen, moet de virtuele machine voor herstel voldoe
 
 13. Hiermee staat u toe dat de server de Hyper-V-functie installeert. Dit duurt enkele minuten en de server wordt automatisch opnieuw opgestart.
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Stap 2: De probleem-VM maken op de Hyper-V-Server van de virtuele machine voor herstel
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>Stap 2: de probleem-VM maken op de Hyper-V-Server van de herstel-VM
 
-1.  Noteer de naam van de schijf in de probleem-VM en verwijder vervolgens de probleem-VM. Zorg ervoor dat u alle bijgevoegde schijven behoudt. 
+1.  [Maak een momentopname schijf](troubleshoot-recovery-disks-portal-windows.md#take-a-snapshot-of-the-os-disk) voor de besturingssysteem schijf van de virtuele machine met een probleem en voeg de momentopname schijf vervolgens toe aan de RECUSE-VM.
 
-2.  Koppel de besturingssysteem schijf van uw probleem-VM als een gegevens schijf van de virtuele machine voor herstel.
+2.  Extern bureau blad naar de virtuele machine voor herstel.
 
-    1.  Nadat de probleem-VM is verwijderd, gaat u naar de virtuele machine voor herstel.
+3.  Open schijf beheer (diskmgmt. msc). Zorg ervoor dat de schijf van de probleem-VM is ingesteld op **offline**.
 
-    2.  Selecteer **schijven**en voeg vervolgens **gegevens schijf toe**.
+4.  Open Hyper-V-beheer: in **Serverbeheer**selecteert u de **hyper-v-rol**. Klik met de rechter muisknop op de server en selecteer **Hyper-V-beheer**.
 
-    3.  Selecteer de schijf van de virtuele machine van het probleem en selecteer vervolgens **Opslaan**.
+5.  Klik in Hyper-V-beheer met de rechter muisknop op de **virtuele** machine voor herstel en selecteer vervolgens **nieuwe** >  > **volgende**.
 
-3.  Nadat de schijf is gekoppeld, is het externe bureau blad naar de virtuele machine voor herstel.
+6.  Typ een naam voor de virtuele machine en selecteer vervolgens **volgende**.
 
-4.  Open schijf beheer (diskmgmt. msc). Zorg ervoor dat de schijf van de probleem-VM is ingesteld op **offline**.
+7.  Selecteer **generatie 1**.
 
-5.  Open Hyper-V-beheer: In **Serverbeheer**selecteert u de **Hyper-V-rol**. Klik met de rechter muisknop op de server en selecteer **Hyper-V-beheer**.
+8.  Stel het opstart geheugen in op 1024 MB of meer.
 
-6.  Klik in Hyper-V-beheer met de rechter muisknop op de**virtuele** > machine voor herstel en selecteer vervolgens **nieuwe** > VM**volgende**.
+9. Als dit van toepassing is, selecteert u de Hyper-V-netwerk switch die is gemaakt. Ga anders naar de volgende pagina.
 
-7.  Typ een naam voor de virtuele machine en selecteer vervolgens **volgende**.
-
-8.  Selecteer **generatie 1**.
-
-9.  Stel het opstart geheugen in op 1024 MB of meer.
-
-10. Als dit van toepassing is, selecteert u de Hyper-V-netwerk switch die is gemaakt. Ga anders naar de volgende pagina.
-
-11. Selecteer **later een virtuele harde schijf koppelen**.
+10. Selecteer **later een virtuele harde schijf koppelen**.
 
     ![de afbeelding over de optie later een virtuele harde schijf koppelen](media/troubleshoot-vm-by-use-nested-virtualization/attach-disk-later.png)
 
-12. Selecteer **volt ooien** wanneer de virtuele machine wordt gemaakt.
+11. Selecteer **volt ooien** wanneer de virtuele machine wordt gemaakt.
 
-13. Klik met de rechter muisknop op de virtuele machine die u hebt gemaakt en selecteer **instellingen**.
+12. Klik met de rechter muisknop op de virtuele machine die u hebt gemaakt en selecteer **instellingen**.
 
-14. Selecteer **IDE-controller 0**, selecteer **harde schijf**en klik vervolgens op **toevoegen**.
+13. Selecteer **IDE-controller 0**, selecteer **harde schijf**en klik vervolgens op **toevoegen**.
 
     ![de afbeelding over het toevoegen van nieuwe harde schijf](media/troubleshoot-vm-by-use-nested-virtualization/create-new-drive.png)    
 
-15. Selecteer bij **fysieke harde schijf**de schijf van de probleem-VM die u hebt gekoppeld aan de Azure VM. Als er geen schijven worden weer gegeven, controleert u of de schijf is ingesteld op offline met behulp van schijf beheer.
+14. Selecteer bij **fysieke harde schijf**de schijf van de probleem-VM die u hebt gekoppeld aan de Azure VM. Als er geen schijven worden weer gegeven, controleert u of de schijf is ingesteld op offline met behulp van schijf beheer.
 
     ![de afbeelding over het koppelen van de schijf](media/troubleshoot-vm-by-use-nested-virtualization/mount-disk.png)  
 
 
-17. Selecteer **Apply** en vervolgens **OK**.
+15. Selecteer **Apply** en vervolgens **OK**.
 
-18. Dubbel klik op de virtuele machine en start deze.
+16. Dubbel klik op de virtuele machine en start deze.
 
-19. Nu kunt u op de virtuele machine werken als de on-premises VM. U kunt de stappen voor probleem oplossing volgen die u nodig hebt.
+17. Nu kunt u op de virtuele machine werken als de on-premises VM. U kunt de stappen voor probleem oplossing volgen die u nodig hebt.
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>Stap 3: Uw Azure-VM opnieuw maken in azure
+## <a name="step-3-replace-the-os-disk-used-by-the-problem-vm"></a>Stap 3: de besturingssysteem schijf vervangen die wordt gebruikt door de probleem-VM
 
 1.  Nadat u de VM weer online hebt gezet, sluit u de virtuele machine in Hyper-V-beheer af.
 
-2.  Ga naar de [Azure Portal](https://portal.azure.com) en selecteer de virtuele machine voor herstel > schijven, kopieer de naam van de schijf. U gebruikt de naam in de volgende stap. Ontkoppel de vaste schijf van de virtuele machine voor herstel.
-
-3.  Ga naar **alle resources**, zoek naar de naam van de schijf en selecteer de schijf.
-
-     ![de afbeelding over het zoeken naar de schijf](media/troubleshoot-vm-by-use-nested-virtualization/search-disk.png)     
-
-4. Klik op **virtuele machine maken**.
-
-     ![de afbeelding over het maken van een VM op basis van de schijf](media/troubleshoot-vm-by-use-nested-virtualization/create-vm-from-vhd.png) 
-
-U kunt Azure PowerShell ook gebruiken om de virtuele machine te maken op basis van de schijf. Zie [de nieuwe virtuele machine maken op basis van een bestaande schijf met behulp van Power shell](../windows/create-vm-specialized.md#create-the-new-vm)voor meer informatie. 
+2.  [Ontkoppel de gerepareerde besturingssysteem schijf en ontkoppel deze](troubleshoot-recovery-disks-portal-windows.md#unmount-and-detach-original-virtual-hard-disk
+).
+3.  [Vervang de besturingssysteem schijf die wordt gebruikt door de virtuele machine door de gerepareerde besturingssysteem schijf](troubleshoot-recovery-disks-portal-windows.md#swap-the-os-disk-for-the-vm
+).
 
 ## <a name="next-steps"></a>Volgende stappen
 

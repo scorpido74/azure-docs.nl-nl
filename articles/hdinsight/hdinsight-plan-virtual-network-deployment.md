@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 61b929756cbc4cf13103faa67a667128eaffeec8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
-ms.translationtype: MT
+ms.openlocfilehash: 8d89031a3b27742149d450ab79c9febf0aaef1ff
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498175"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185629"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Een virtueel netwerk voor Azure HDInsight plannen
 
@@ -221,7 +221,7 @@ Als u van plan bent om **netwerk beveiligings groepen** te gebruiken om netwerk 
 
 1. Bepaal de Azure-regio die u wilt gebruiken voor HDInsight.
 
-2. Identificeer de IP-adressen die zijn vereist voor HDInsight. Zie voor meer informatie [HDInsight management IP addresses](hdinsight-management-ip-addresses.md) (IP-adressen voor HDInsight-beheer).
+2. Bepaal welke service Tags vereist zijn voor HDInsight voor uw regio. Zie [NSG-service tags (netwerk beveiligings groep) voor Azure HDInsight](hdinsight-service-tags.md)voor meer informatie.
 
 3. Maak of wijzig de netwerk beveiligings groepen voor het subnet waarop u HDInsight wilt installeren.
 

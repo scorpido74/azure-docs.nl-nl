@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 61cb6003549530f381b9cbbed74c1cb62c91431c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73512897"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184257"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Veelgestelde vragen over Azure Internet Analyzer (preview-versie)
 
@@ -69,16 +69,16 @@ De volgende vooraf geconfigureerde eind punten zijn beschikbaar tijdens de previ
     * India - centraal
     * US - centraal
     * Azië - oost
-    * US - oost
+    * VS - oost
     * Japan - west
     * Europa - noord
     * Zuid-Afrika - noord
     * Azië - zuidoost
     * VAE - noord
     * Verenigd Koninkrijk West  
-    * Europa -west
-    * US - west
-    * US - west 2
+    * Europa - west
+    * VS - west
+    * VS - west 2
 * **Meerdere Azure-regio combinaties**
     * VS-Oost, Brazilië-zuid
     * VS-Oost, Azië-oost
@@ -98,6 +98,10 @@ De volgende vooraf geconfigureerde eind punten zijn beschikbaar tijdens de previ
 ## <a name="how-is-internet-analyzer-different-from-other-monitoring-services-provided-by-azure"></a>Hoe wijkt Internet Analyzer af van andere bewakings services die door Azure worden ondersteund?
 
 Internet Analyzer helpt u inzicht te krijgen in de prestaties van uw eind gebruikers en helpt bij het nemen van beslissingen om de prestaties te verbeteren. Terwijl andere Azure-bewakings Programma's inzicht bieden in uw Azure-Services, is Internet Analyzer gericht op het meten van end-to-end Internet prestaties voor uw gebruikers.
+
+## <a name="how-is-measurement-data-handled-by-internet-analyzer"></a>Hoe worden meet gegevens verwerkt door Internet Analyzer?
+
+Azure heeft [sterke beveiligings processen en voldoet aan een breed scala aan nalevings standaarden](https://azure.microsoft.com/support/trust-center/). Alleen u en uw specifieke team hebben toegang tot uw gegevens. Micro soft-mede werkers kunnen beperkte toegang hebben tot alleen onder specifieke beperkte omstandigheden met uw kennis. Het is versleuteld onderweg en in rust.
 
 ## <a name="next-steps"></a>Volgende stappen
 

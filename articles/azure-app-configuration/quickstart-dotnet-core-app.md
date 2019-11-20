@@ -14,14 +14,14 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 149542965737b2703bc18e985bfaf4d90c8dab29
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 986bda4ab95985820e61c93bbe82431fb50c983b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709415"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185017"
 ---
-# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Quickstart: Een .NET core-app maken met app-configuratie
+# <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Quick Start: een .NET core-app maken met app-configuratie
 
 In deze Snelstartgids neemt u Azure-app configuratie op in een .NET Core-Console-app om opslag en beheer van toepassings instellingen gescheiden van uw code te centraliseren.
 
@@ -30,13 +30,13 @@ In deze Snelstartgids neemt u Azure-app configuratie op in een .NET Core-Console
 - Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/)
 - [.NET Core-SDK](https://dotnet.microsoft.com/download)
 
-## <a name="create-an-app-configuration-store"></a>Een app-configuratiearchief maken
+## <a name="create-an-app-configuration-store"></a>Een app-configuratie archief maken
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Selecteer **configuratie Explorer** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
+6. Selecteer **configuratie verkenner** >  **+ maken** om de volgende sleutel-waardeparen toe te voegen:
 
-    | Sleutel | Value |
+    | Sleutel | Waarde |
     |---|---|
     | TestApp:Settings:Message | Gegevens van Azure App Configuration |
 
@@ -54,7 +54,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Verbinding maken met een app-configuratie archief
 
-1. Voeg een verwijzing naar het `Microsoft.Extensions.Configuration.AzureAppConfiguration` NuGet-pakket toe door de volgende opdracht uit te voeren:
+1. Voeg een verwijzing naar het NuGet-pakket van `Microsoft.Extensions.Configuration.AzureAppConfiguration` toe door de volgende opdracht uit te voeren:
 
         dotnet add package Microsoft.Extensions.Configuration.AzureAppConfiguration --version 2.0.0-preview-009470001-1371
 
@@ -69,7 +69,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
     ```
 
-4. Werk de `Main` methode bij voor het gebruik van app- `builder.AddAzureAppConfiguration()` configuratie door de methode aan te roepen.
+4. Werk de `Main`-methode bij om app-configuratie te gebruiken door de `builder.AddAzureAppConfiguration()`-methode aan te roepen.
 
     ```csharp
     static void Main(string[] args)
@@ -82,7 +82,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
     }
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Stel een omgevings variabele met de naam **Connections Tring**in en stel deze in op de toegangs sleutel voor uw app-configuratie archief. Als u de Windows-opdracht prompt gebruikt, voert u de volgende opdracht uit en start u de opdracht prompt zodat de wijziging kan worden doorgevoerd:
 
@@ -110,7 +110,7 @@ U gebruikt de [.net core-opdracht regel interface (CLI)](https://docs.microsoft.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Core-Console-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Voor meer informatie over het gebruik van app-configuratie gaat u verder met de volgende zelf studie waarin verificatie wordt gedemonstreerd.
+In deze Snelstartgids hebt u een nieuwe app-configuratie opgeslagen gemaakt en gebruikt met een .NET Core-Console-app via de [app-configuratie provider](https://go.microsoft.com/fwlink/?linkid=2074664). Ga door naar de volgende zelf studie voor meer informatie over het configureren van uw .NET core-app om configuratie-instellingen dynamisch te vernieuwen.
 
 > [!div class="nextstepaction"]
-> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)
+> [Dynamische configuratie inschakelen](./enable-dynamic-configuration-dotnet-core.md)

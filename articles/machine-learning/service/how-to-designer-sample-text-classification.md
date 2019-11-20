@@ -1,7 +1,7 @@
 ---
-title: Ontwerp&#58; beoordelingen van classificatie boek
+title: 'Ontwerper: voor beeld van classificatie van boekings overzichten'
 titleSuffix: Azure Machine Learning
-description: Bouw een machine learning model classificatie boek beoordelingen in verschillende categorieën.
+description: Bouw een logistiek-classificatie van meer dan een klasse om de bedrijfs categorie te voors pellen met de Wikipedia SP 500-gegevensset met behulp van Azure Machine Learning Designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,20 +10,24 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 949ddc847a6011d460f2a3685008d12e64868767
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 43545c2d3bb3afe4e1c458f14c1ba30e41eea721
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647132"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196009"
 ---
-# <a name="sample-7---text-classification-predict-company-category"></a>Voor beeld 7-tekst classificatie: bedrijfs categorie voors pellen 
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Bouw een classificatie om de bedrijfs categorie te voors pellen met behulp van Azure Machine Learning Designer.
+
+**Voor beeld van Designer (preview) 7**
+
+[!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Dit voor beeld laat zien hoe u met behulp van tekst analyse modules een pijp lijn met tekst classificatie kunt bouwen in Azure Machine Learning Designer (preview).
 
 Het doel van tekst classificatie is het toewijzen van een stuk tekst aan een of meer vooraf gedefinieerde klassen of categorieën. Het stuk tekst kan een document, nieuws artikel, zoek query, e-mail, Tweet, ondersteunings tickets, feedback van klanten, beoordeling van gebruikers producten, enzovoort zijn. Toepassingen van tekst classificatie zijn onder andere het categoriseren van kranten artikelen en de inhoud van nieuws draden in onderwerpen, het organiseren van webpagina's in hiërarchische categorieën, het filteren van ongewenste e-mail, sentiment analyse, het voors pellen van de gebruikers intentie van zoek query's, route ring ondersteunings tickets en analyse van feedback van klanten. 
 
-Deze pijp lijn traint een classificatie van een **logistiek-regressie** met een meer klasse om de bedrijfs categorie te voors pellen met wikipedia SP 500-gegevensset die is afgeleid van Wikipedia.  
+Deze pijp lijn traint een classificatie van een **logistiek-regressie** met een meer klasse om de bedrijfs categorie te voors pellen met **Wikipedia SP 500-gegevensset die is afgeleid van Wikipedia**.  
 
 De belangrijkste stappen van een cursus machine learning model met tekst gegevens zijn:
 

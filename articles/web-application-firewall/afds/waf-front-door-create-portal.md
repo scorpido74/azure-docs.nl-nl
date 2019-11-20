@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: een firewall beleid voor de web-app maken voor Azure front deur met behulp van de Azure Portal'
+title: 'Zelf studie: WAF-beleid maken voor Azure front-deur-Azure Portal'
 description: In deze zelf studie leert u hoe u een WAF-beleid (Web Application firewall) kunt maken met behulp van de Azure Portal.
 author: vhorne
 ms.service: web-application-firewall
@@ -7,12 +7,12 @@ services: web-application-firewall
 ms.topic: tutorial
 ms.date: 09/07/2019
 ms.author: victorh
-ms.openlocfilehash: 602a8620ef35ea247c5865d97495ea43a7d7d93c
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 991111e01713afe48355aac44a151b98fa828c5f
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501111"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186730"
 ---
 # <a name="tutorial-create-a-web-application-firewall-policy-on-azure-front-door-using-the-azure-portal"></a>Zelf studie: een firewall beleid voor webtoepassingen maken op de voor deur van Azure met behulp van de Azure Portal
 

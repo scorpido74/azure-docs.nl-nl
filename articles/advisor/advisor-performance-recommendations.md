@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: sagupt
-ms.openlocfilehash: 08af119e7f9e72de4a8ae4a1842289a4fd5d925e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 82c77568a2c62a0e02bf00c164f4600e221376da
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144144"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183122"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Verbeter de prestaties van Azure-toepassingen met Azure Advisor
 
@@ -122,7 +122,7 @@ Zie voor meer informatie over Advisor-aanbevelingen:
 
 * [Inleiding tot Advisor](advisor-overview.md)
 * [Aan de slag met Advisor](advisor-get-started.md)
-* [Aanbevelingen voor Advisor-kosten](advisor-performance-recommendations.md)
+* [Aanbevelingen voor Advisor-kosten](advisor-cost-recommendations.md)
 * [Aanbevelingen voor hoge Beschik baarheid van Advisor](advisor-high-availability-recommendations.md)
 * [Aanbevelingen voor de beveiliging van Advisor](advisor-security-recommendations.md)
 * [Aanbevelingen voor operationele uitmuntendheid van Advisor](advisor-operational-excellence-recommendations.md)

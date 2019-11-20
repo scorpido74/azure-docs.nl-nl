@@ -1,7 +1,7 @@
 ---
-title: 'Designer: classificeren, inkomen voors pellen'
+title: 'Ontwerp functie: classificeren, voor beeld van inkomen'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het bouwen van een machine learning classificatie zonder het schrijven van één regel code met behulp van de ontwerp functie (preview).
+description: In dit voor beeld wordt een classificatie zonder code gemaakt om de inkomsten met Azure Machine Learning Designer te voors pellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,17 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 383cbc11955598505730a4613c50536afac75f95
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
-ms.translationtype: MT
+ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647964"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196056"
 ---
-# <a name="sample-3---classification-with-feature-selection-income-prediction"></a>Voor beeld 3: classificatie met functie selectie: inkomen voor spelling
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Bouw een classificatie & gebruik functie selectie om inkomsten te voors pellen met Azure Machine Learning Designer
+
+**Voor beeld van Designer (preview) 3**
+
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
 Meer informatie over het bouwen van een machine learning classificatie zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). In dit voor beeld wordt een **geboostte beslissings structuur met twee klassen** getraind om inkomsten te voors pellen (> = 50.000 of < = 50.000).

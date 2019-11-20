@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 11/16/2019
 ms.author: srchi
-ms.openlocfilehash: b32eb7a7236871a06e1fbed5b9f1aac91675c6f3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
-ms.translationtype: HT
+ms.openlocfilehash: fbfce1c107fcf4b6f7d0b5f590a8ddfa64e69190
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
 ms.lasthandoff: 11/19/2019
-ms.locfileid: "74174731"
+ms.locfileid: "74184726"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Streams wijzigen in de API van Azure Cosmos DB voor MongoDB
 
@@ -35,7 +35,7 @@ while (!cursor.isExhausted()) {
 }
 ```
 
-In het volgende voor beeld ziet u hoe u wijzigingen kunt aanbrengen in de items in één Shard, zoals Shard ' a ' die items met de waarde ' 1 ' bevat.
+In het volgende voor beeld ziet u hoe u wijzigingen kunt aanbrengen in de items in één Shard. In dit voor beeld worden de wijzigingen van items met de Shard-sleutel gelijk aan "a" en de waarde van de Shard-sleutel gelijk aan "1".
 
 ```javascript
 var cursor = db.coll.watch(

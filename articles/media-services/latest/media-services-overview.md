@@ -17,12 +17,12 @@ ms.workload: media
 ms.date: 09/17/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 61ffd4857ca9a330a4cb0eeace89791fc0973f70
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c17f1094e562960e851204b40281f5b04c1d40ce
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73575096"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186064"
 ---
 # <a name="azure-media-services-v3-overview"></a>Overzicht van Azure Media Services v3
 
@@ -54,6 +54,10 @@ Meer informatie over het coderen en inpakken van inhoud, het streamen van Video'
 > [!TIP]
 > Controleer het volgende voordat u begint met ontwikkelen:<br/>* [basis concepten](concepts-overview.md) (incudes belang rijke concepten, zoals verpakking, code ring en bescherming)<br/>* [ontwikkelen met Media Services v3-api's](media-services-apis-overview.md) (bevat informatie over het openen van api's, naam conventies, enzovoort)
 
+### <a name="sdks"></a>SDK's
+
+Begin met ontwikkelen met [Azure Media Services v3 client-sdk's](media-services-apis-overview.md#sdks).
+
 ### <a name="quickstarts"></a>Snelstartgidsen  
 
 In de Quick starts worden de belangrijkste dag-1 instructies voor nieuwe klanten weer gegeven om Media Services snel uit te proberen.
@@ -62,7 +66,7 @@ In de Quick starts worden de belangrijkste dag-1 instructies voor nieuwe klanten
 * [Video bestanden streamen-CLI](stream-files-cli-quickstart.md)
 * [Video bestanden streamen: node. js](stream-files-nodejs-quickstart.md)
 
-### <a name="tutorials"></a>Zelfstudie
+### <a name="tutorials"></a>Zelfstudies
 
 De zelf studies tonen op scenario's gebaseerde procedures voor een aantal van de belangrijkste Media Services taken.
 

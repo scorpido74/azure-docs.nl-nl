@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 11/04/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 3283cfe9455ba29679d7c741941aa8863c47b1c0
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
-ms.translationtype: HT
+ms.openlocfilehash: 636fd5fd17838c729cdbc9e2a322c1f991d93948
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158292"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186431"
 ---
 # <a name="managed-instance-t-sql-differences-limitations-and-known-issues"></a>T-SQL-verschillen, beperkingen en bekende problemen met beheerde exemplaren
 
@@ -80,7 +80,7 @@ Zie [back-up](/sql/t-sql/statements/backup-transact-sql)voor informatie over bac
 
 ## <a name="security"></a>Beveiliging
 
-### <a name="auditing"></a>Controleren
+### <a name="auditing"></a>Controle
 
 De belangrijkste verschillen tussen controles in data bases in Azure SQL Database en data bases in SQL Server zijn:
 
@@ -572,14 +572,6 @@ Voortdurende `RESTORE`-instructie, migratie proces van gegevens migratie service
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) functie waarmee u de resources die aan de werk belasting van de gebruiker zijn toegewezen, kunt beperken, kan de werk belasting van een bepaalde gebruiker onjuist worden geclassificeerd na een failover of door de gebruiker geïnitieerde wijziging van de servicelaag (bijvoorbeeld de wijziging van de maximale vCore of het maximale aantal exemplaren opslag grootte).
 
 **Tijdelijke oplossing**: Voer `ALTER RESOURCE GOVERNOR RECONFIGURE` regel matig of als onderdeel van de SQL-Agent taak uit die de SQL-taak uitvoert wanneer het exemplaar wordt gestart als u [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)gebruikt.
-
-### <a name="cannot-authenticate-to-external-mail-servers-using-secure-connection-ssl"></a>Kan niet verifiëren bij externe e-mail servers met behulp van een beveiligde verbinding (SSL)
-
-**Datum:** Aug 2019
-
-Data base mail die is [geconfigureerd met behulp van beveiligde verbinding (SSL)](/sql/relational-databases/database-mail/configure-database-mail) kan niet worden geverifieerd op sommige e-mail servers buiten Azure. Dit is een beveiligings configuratie probleem dat binnenkort wordt opgelost.
-
-**Tijdelijke oplossing:** De tijdelijke Verwijder beveiligde verbinding (SSL) van de configuratie van de data base mail totdat het probleem is opgelost. 
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>Meerdere data base-Service Broker dialoog vensters moeten opnieuw worden geïnitialiseerd na de upgrade van de servicelaag
 

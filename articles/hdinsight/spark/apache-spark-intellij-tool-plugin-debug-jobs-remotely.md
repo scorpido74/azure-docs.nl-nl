@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: ac8ef620948048ae26ef6f408b4bc86b2a2bfbdc
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5fede76fbc97b31cbbcdaec1b17f838100d35511
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494582"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195839"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-apache-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure-toolkit voor IntelliJ gebruiken om fout opsporing uit te Apache Spark toepassingen op afstand in HDInsight via VPN
 
@@ -35,7 +35,7 @@ In dit artikel vindt u stapsgewijze richt lijnen voor het gebruik van de HDInsig
 * **IntelliJ-idee**. In dit artikel wordt versie 2017,1 gebruikt. U kunt deze installeren vanaf de [JetBrains-website](https://www.jetbrains.com/idea/download/).
 * **HDInsight-Hulpprogram ma's in azure-Toolkit voor IntelliJ**. HDInsight-hulpprogram ma's voor IntelliJ zijn beschikbaar als onderdeel van Azure-toolkit voor IntelliJ. Zie [install Azure-Toolkit voor IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)voor instructies over het installeren van Azure Toolkit.
 * **Meld u aan bij uw Azure-abonnement vanuit het IntelliJ-idee**. Volg de instructies in het [Azure-Toolkit voor IntelliJ gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken](apache-spark-intellij-tool-plugin.md).
-* **Tijdelijke uitzonde ring**. Tijdens het uitvoeren van de Spark scala-toepassing voor externe fout opsporing op een Windows-computer, kan er een uitzonde ring optreden. Deze uitzonde ring wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) en treedt op als gevolg van een ontbrekend WinUtils. exe-bestand in Windows. U kunt deze fout omzeilen door [het uitvoer bare bestand te downloaden](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) naar een locatie zoals **C:\WinUtils\bin**. Voeg een **HADOOP_HOME** -omgevings variabele toe en stel vervolgens de waarde van de variabele in op **C\WinUtils**.
+* **Tijdelijke uitzonde ring**. Tijdens het uitvoeren van de Spark scala-toepassing voor externe fout opsporing op een Windows-computer, kan er een uitzonde ring optreden. Deze uitzonde ring wordt uitgelegd in [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356) en treedt op als gevolg van een ontbrekend WinUtils. exe-bestand in Windows. U kunt deze fout omzeilen door [het uitvoer bare bestand te downloaden](https://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) naar een locatie zoals **C:\WinUtils\bin**. Voeg een **HADOOP_HOME** omgevings variabele toe en stel de waarde van de variabele in op **C\WinUtils**.
 
 ## <a name="step-1-create-an-azure-virtual-network"></a>Stap 1: een virtueel Azure-netwerk maken
 
@@ -59,7 +59,7 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
 
     ![Hosts in Apache Ambari selecteren](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/apache-ambari-hosts1.png)
 
-1. U ziet een lijst met hoofd knooppunten, Worker-knoop punten en Zookeeper-knoop punten. De hoofd knooppunten hebben een voor voegsel van **HN***. Selecteer het eerste hoofd knooppunt.
+1. U ziet een lijst met hoofd knooppunten, Worker-knoop punten en Zookeeper-knoop punten. De hoofd knooppunten hebben een voor voegsel van **HN**\*. Selecteer het eerste hoofd knooppunt.
 
     ![Het hoofd knooppunt zoeken in Apache Ambari](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/ambari-cluster-headnodes.png)
 
@@ -203,9 +203,9 @@ Het is raadzaam om ook een Apache Spark cluster in azure HDInsight te maken dat 
                             "wasb:///HVACOut")
         }
     }
-        ```
+    ```
 
-1. Repeat steps 8 and 9 to add a new Scala object called `*SparkSample`. Add the following code to this class. This code reads the data from the HVAC.csv (available in all HDInsight Spark clusters). It retrieves the rows that only have one digit in the seventh column in the CSV file, and then writes the output to **/HVACOut** under the default storage container for the cluster.
+1. Herhaal stap 8 en 9 om een nieuw scala-object met de naam `*SparkSample`toe te voegen. Voeg de volgende code toe aan deze klasse. Deze code leest de gegevens uit het HVAC. CSV (beschikbaar in alle HDInsight Spark-clusters). Hiermee worden de rijen die slechts één cijfer bevatten in de zevende kolom in het CSV-bestand opgehaald en wordt de uitvoer naar **/HVACOut** onder de standaard opslag container voor het cluster geschreven.
 
     ```scala
     import org.apache.spark.SparkContext

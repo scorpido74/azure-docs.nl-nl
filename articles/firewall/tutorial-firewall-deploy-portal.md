@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Azure Firewall implementeren en configureren met de Azure-portal'
+title: 'Zelf studie: Azure Firewall implementeren met behulp van de Azure Portal & configureren'
 description: In deze zelfstudie leert u hoe u Azure Firewall kunt implementeren en configureren via de Azure-portal.
 services: firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/28/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 124a87728a8d201c329b15d94ae7e61a225646ab
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: be39449c1c11acdbdc99bd96f917c51eebda44ae
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468445"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195781"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Zelfstudie: Azure Firewall implementeren en configureren met de Azure-portal
 

@@ -1,5 +1,5 @@
 ---
-title: Een Azure SDK gebruiken voor het configureren van een virtuele machine met beheerde identiteiten voor Azure-resources
+title: Een SDK gebruiken om beheerde identiteiten op een virtuele machine te configureren-Azure AD
 description: Stapsgewijze instructies voor het configureren en gebruiken van beheerde identiteiten voor Azure-resources op een Azure-VM met behulp van een Azure-SDK.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b4f5a26f240656911fb9627d273de8b69edff6a
-ms.sourcegitcommit: ec2b75b1fc667c4e893686dbd8e119e7c757333a
+ms.openlocfilehash: d11cd51984f82bc20c02669e796d9ba21b9ed5d7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72809168"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183483"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Een virtuele machine met beheerde identiteiten configureren voor Azure-resources met behulp van een Azure SDK
 

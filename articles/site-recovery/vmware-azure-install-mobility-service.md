@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: f1a96302d180f3b4b179f42013232f3b48d4e2b0
-ms.sourcegitcommit: df7942ba1f28903ff7bef640ecef894e95f7f335
+ms.openlocfilehash: a2f4bdb96b8d1ecb23ddcec844726439ec46fff2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69016367"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186458"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>Bron machine voorbereiden voor de push-installatie van de Mobility-agent
 
@@ -24,15 +24,15 @@ Ga als volgt te werk op elke Windows-computer die u wilt beveiligen:
 1. Zorg ervoor dat er een netwerk verbinding is tussen de computer en de proces server. Als u geen afzonderlijke proces server hebt ingesteld, wordt deze standaard uitgevoerd op de configuratie server.
 1. Maak een account dat op de processerver kan worden gebruikt voor toegang tot de computer. Het account moet beheerders rechten, lokaal of domein, hebben. Gebruik dit account alleen voor de push-installatie en voor agent-updates.
 2. Als u geen domein account gebruikt, schakelt u toegangs beheer voor externe gebruikers op de lokale computer als volgt uit:
-    - Onder de register sleutel HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System voegt u een nieuwe DWORD toe: **LocalAccountTokenFilterPolicy**. Stel de waarde in op **1**.
+    - Voeg onder HKEY_LOCAL_MACHINE register sleutel \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System een nieuwe DWORD toe: **LocalAccountTokenFilterPolicy**. Stel de waarde in op **1**.
     -  Voer de volgende opdracht uit vanaf een opdracht prompt:  
-   ' REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
+   ' REG ADD HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System/v LocalAccountTokenFilterPolicy/t REG_DWORD/d
 3. Selecteer in Windows Firewall op de computer die u wilt beveiligen, **een app of onderdeel toestaan via de firewall**. Schakel **Bestands-en printer deling** en **Windows Management Instrumentation (WMI)** in. Voor computers die tot een domein behoren, kunt u de firewall instellingen configureren met behulp van een groepsbeleid-object (GPO).
 
    ![Firewallinstellingen](./media/vmware-azure-install-mobility-service/mobility1.png)
 
 4. Voeg het account toe dat u hebt gemaakt in CSPSConfigtool. Hiertoe meldt u zich aan bij uw configuratie server.
-5. Open **cspsconfigtool.exe**. Het is beschikbaar als snelkoppeling op het bureau blad en in de map%ProgramData%\home\svsystems\bin.
+5. Open **cspsconfigtool.exe**. Het is beschikbaar als snelkoppeling op het bureau blad en in de map%ProgramData%\ASR\home\svsystems\bin.
 6. Klik op het tabblad **accounts beheren** op **account toevoegen**.
 7. Voeg het account toe dat u hebt gemaakt.
 8. Voer de referenties in die u gebruikt wanneer u replicatie voor een computer inschakelt.
@@ -46,7 +46,7 @@ Ga als volgt te werk op elke Linux-computer die u wilt beveiligen:
 3. Controleer of het bestand /etc/hosts op de Linux-bronserver vermeldingen bevat die de lokale hostnaam toewijzen aan IP-adressen die zijn gekoppeld aan alle netwerkadapters.
 4. Installeer de meest recente openssh, openssh-server en openssl-pakketten op de computer die u wilt repliceren.
 5. Zorg ervoor dat SSH (Secure Shell) is ingeschakeld en wordt uitgevoerd op poort 22.
-4. Schakel het SFTP-subsysteem en de verificatie van wacht woorden in het sshd_config-bestand in. Als u dit wilt doen, meldt u zich aan als **root**.
+4. Schakel het SFTP-subsysteem en de wachtwoord verificatie in het sshd_config bestand in. Als u dit wilt doen, meldt u zich aan als **root**.
 5. Zoek in het bestand **/etc/ssh/sshd_config** de regel die begint met **PasswordAuthentication**.
 6. Verwijder de opmerking bij de regel en wijzig de waarde in **Ja**.
 7. Zoek de regel die begint met **subsysteem**en verwijder de opmerking over de regel.

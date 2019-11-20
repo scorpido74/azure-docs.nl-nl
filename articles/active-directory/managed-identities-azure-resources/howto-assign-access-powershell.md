@@ -1,5 +1,5 @@
 ---
-title: Een beheerde identiteit toegang toewijzen aan een Azure-resource met behulp van PowerShell
+title: Een beheerde identiteits toegang toewijzen aan een resource met behulp van Power shell-Azure AD
 description: Stapsgewijze toegang instructies voor het toewijzen van een beheerde identiteit op een resource, tot een andere bron, met behulp van PowerShell.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff36be7f87d0dd9e5cac5ee7f788eec0cda5a9fd
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 82fa5019e740d16d0b97111fcf8dbc4f6c91d57b
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60290682"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184005"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Een beheerde identiteit toegang toewijzen aan een resource met behulp van PowerShell
 
@@ -45,7 +45,7 @@ Nadat u de beheerde identiteit op een Azure-resource hebt ingeschakeld [, zoals 
    ```powershell
    Connect-AzAccount
    ```
-2. In dit voorbeeld geeft we een Azure VM-toegang om een storage-account. Eerst gebruiken we [Get-AzVM](/powershell/module/az.compute/get-azvm) om op te halen van de service-principal voor de virtuele machine met de naam `myVM`, die is gemaakt toen we ingeschakeld beheerde identiteit. Vervolgens gebruikt u [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) te geven van de virtuele machine **lezer** toegang tot een opslagaccount met de naam `myStorageAcct`:
+2. In dit voorbeeld geeft we een Azure VM-toegang om een storage-account. Eerst gebruiken we [Get-AzVM](/powershell/module/az.compute/get-azvm) om de Service-Principal op te halen voor de virtuele machine met de naam `myVM`, die is gemaakt toen de beheerde identiteit werd ingeschakeld. Gebruik vervolgens [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) om de VM- **lezer** toegang te geven tot een opslag account met de naam `myStorageAcct`:
 
     ```powershell
     $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid

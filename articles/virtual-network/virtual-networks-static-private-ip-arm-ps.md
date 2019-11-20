@@ -1,6 +1,6 @@
 ---
-title: Een virtuele machine maken met een statisch privé IP-adres - Azure PowerShell | Microsoft Docs
-description: Informatie over het maken van een virtuele machine met een privé IP-adres met behulp van PowerShell.
+title: Een virtuele machine maken met een statisch privé-IP-adres-Azure PowerShell
+description: Meer informatie over het maken van een virtuele machine met een privé-IP-adres met behulp van Power shell.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -16,25 +16,25 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9115386b0543e1ac840aec29fc7f57e7c98c03bb
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64685338"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196600"
 ---
-# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Een virtuele machine maken met een statisch privé IP-adres met behulp van PowerShell
+# <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Een virtuele machine met een statisch privé-IP-adres maken met behulp van Power shell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-U kunt een virtuele machine (VM) maken met een statisch privé IP-adres. Een statisch privé IP-adres, in plaats van een dynamisch adres toewijzen als u wilt selecteren welk adres van een subnet is toegewezen aan een virtuele machine. Meer informatie over [statische privé IP-adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Een privé IP-adres toegewezen aan een bestaande virtuele machine van dynamisch in statisch of om te werken met openbare IP-adressen, Zie [toevoegen, wijzigen of verwijderen-IP-adressen](virtual-network-network-interface-addresses.md).
+U kunt een virtuele machine (VM) met een statisch privé-IP-adres maken. Wijs een statisch privé-IP-adres toe in plaats van een dynamisch adres als u wilt selecteren welk adres van een subnet aan een virtuele machine wordt toegewezen. Meer informatie over [statische privé-IP-adressen](virtual-network-ip-addresses-overview-arm.md#allocation-method). Zie [IP-adressen toevoegen, wijzigen of verwijderen](virtual-network-network-interface-addresses.md)voor meer informatie over het wijzigen van een privé-IP-adres dat is toegewezen aan een bestaande virtuele machine van dynamisch naar statisch of voor het werken met open bare IP-adressen.
 
 ## <a name="create-a-virtual-machine"></a>Een virtuele machine maken
 
-U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van de Azure Cloud Shell. Voor het gebruik van uw lokale computer, zorg ervoor dat u hebt de [Azure PowerShell is geïnstalleerd](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Selecteer voor het gebruik van de Azure Cloud Shell, **uitproberen** in de rechterbovenhoek van een willekeurige opdracht box die volgt. De Cloud Shell meldt u zich bij Azure.
+U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van de Azure Cloud Shell. Als u de lokale computer wilt gebruiken, controleert u of de [Azure PowerShell zijn geïnstalleerd](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Als u de Azure Cloud Shell wilt gebruiken, selecteert u **deze** in de rechter bovenhoek van een wille keurig opdracht venster. De Cloud Shell meldt u aan bij Azure.
 
-1. Als de Cloud Shell gebruikt, gaat u verder met stap 2. Open een sessie en meld u in Azure met `Connect-AzAccount`.
-2. Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Het volgende voorbeeld wordt een resourcegroep gemaakt in de regio Oost VS Azure:
+1. Als u de Cloud Shell gebruikt, gaat u verder met stap 2. Open een opdracht sessie en meld u aan bij Azure met `Connect-AzAccount`.
+2. Maak een resourcegroep met de opdracht [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). In het volgende voor beeld wordt een resource groep gemaakt in de regio VS Oost Azure:
 
    ```azurepowershell-interactive
    $RgName = "myResourceGroup"
@@ -42,7 +42,7 @@ U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van 
    New-AzResourceGroup -Name $RgName -Location $Location
    ```
 
-3. Maak een subnetconfiguratie en een virtueel netwerk met de [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) en [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) opdrachten:
+3. Maak een subnet-configuratie en een virtueel netwerk met de opdrachten [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) en [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) :
 
    ```azurepowershell-interactive
    # Create a subnet configuration
@@ -62,7 +62,7 @@ U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van 
    $Subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetConfig.Name -VirtualNetwork $VNet
    ```
 
-4. Een netwerkinterface maken in het virtuele netwerk en een privé IP-adres van het subnet toewijzen aan de netwerkinterface met de [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) en [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) opdrachten:
+4. Maak een netwerk interface in het virtuele netwerk en wijs een persoonlijk IP-adres uit het subnet toe aan de netwerk interface met de opdrachten [New-AzNetworkInterfaceIpConfig](/powershell/module/Az.Network/New-AzNetworkInterfaceIpConfig) en [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) :
 
    ```azurepowershell-interactive
    $IpConfigName1 = "IPConfig-1"
@@ -79,7 +79,7 @@ U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van 
      -IpConfiguration $IpConfig1
    ```
 
-5. Maak een VM-configuratie met [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig), en maak vervolgens de virtuele machine met [New-AzVM](/powershell/module/az.Compute/New-azVM). Geef desgevraagd een gebruikersnaam en wachtwoord moet worden gebruikt als de aanmelding referenties voor de virtuele machine:
+5. Maak een VM-configuratie met [New-AzVMConfig](/powershell/module/Az.Compute/New-AzVMConfig)en maak de virtuele machine met [New-AzVM](/powershell/module/az.Compute/New-azVM). Wanneer u hierom wordt gevraagd, geeft u een gebruikers naam en wacht woord op die moeten worden gebruikt als aanmeldings referenties voor de virtuele machine:
 
    ```azurepowershell-interactive
    $VirtualMachine = New-AzVMConfig -VMName MyVM -VMSize "Standard_DS3"
@@ -90,17 +90,17 @@ U kunt de volgende stappen uitvoeren vanaf uw lokale computer of met behulp van 
    ```
 
 > [!WARNING]
-> Hoewel u privé IP-adresinstellingen aan het besturingssysteem toevoegen kunt, wordt aangeraden niet in dat geval pas na het lezen [een privé IP-adres toevoegen aan een besturingssysteem](virtual-network-network-interface-addresses.md#private).
+> Hoewel u persoonlijke IP-adres instellingen kunt toevoegen aan het besturings systeem, raden we u aan dit pas te doen nadat [een persoonlijk IP-adres aan een besturings systeem is toegevoegd](virtual-network-network-interface-addresses.md#private).
 > 
 > 
 > <a name = "change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface"></a>
 > 
 > [!IMPORTANT]
-> Voor toegang tot de virtuele machine via internet, moet u een openbaar IP-adres toewijzen aan de virtuele machine. U kunt ook een dynamisch privé IP-adrestoewijzing aan een statische toewijzing wijzigen. Zie voor meer informatie, [toevoegen of wijzigen van IP-adressen](virtual-network-network-interface-addresses.md). Het bovendien raadzaam het netwerkverkeer te beperken tot de virtuele machine te koppelen van een netwerkbeveiligingsgroep naar de netwerkinterface, het subnet dat u hebt gemaakt met de netwerkinterface in of beide. Zie voor meer informatie, [netwerkbeveiligingsgroepen beheren](manage-network-security-group.md).
+> Als u toegang wilt krijgen tot de virtuele machine via internet, moet u een openbaar IP-adres toewijzen aan de VM. U kunt ook een dynamisch persoonlijk IP-adres toewijzen aan een statische toewijzing. Zie [IP-adressen toevoegen of wijzigen](virtual-network-network-interface-addresses.md)voor meer informatie. Daarnaast is het raadzaam om het netwerk verkeer naar uw virtuele machine te beperken door een netwerk beveiligings groep te koppelen aan de netwerk interface, het subnet dat u hebt gemaakt voor de netwerk interface in of beide. Zie [netwerk beveiligings groepen beheren](manage-network-security-group.md)voor meer informatie.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle resources die deze bevat te verwijderen:
+Wanneer u deze niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat te verwijderen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force
@@ -108,5 +108,5 @@ Remove-AzResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [privé IP-adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) en het toewijzen van een [statisch privé IP-adres](virtual-network-network-interface-addresses.md#add-ip-addresses) met een Azure-machine.
-- Meer informatie over het maken van [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) en [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) virtuele machines.
+- Meer informatie over [privé-IP-adressen](virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) en het toewijzen van een [statisch privé-IP-adres](virtual-network-network-interface-addresses.md#add-ip-addresses) aan een virtuele Azure-machine.
+- Meer informatie over het maken van virtuele [Linux](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -en [Windows](../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) -machines.

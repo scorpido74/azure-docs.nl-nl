@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 7fc7bd6fa0067857bde64d43be5799bd50712490
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f49161531753c217e31d0681bcd19043cb47de75
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469678"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185266"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Zelf studie: dynamische configuratie in een ASP.NET Core-app gebruiken
 
@@ -181,7 +181,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
     </html>
     ```
 
-## <a name="build-and-run-the-app-locally"></a>De app lokaal compileren en uitvoeren
+## <a name="build-and-run-the-app-locally"></a>De app lokaal bouwen en uitvoeren
 
 1. Als u de app wilt bouwen met behulp van de .NET Core SLI, voert u de volgende opdracht uit in de opdracht shell:
 
@@ -201,7 +201,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 
     | Sleutel | Waarde |
     |---|---|
-    | TestApp:Settings:BackgroundColor | green |
+    | TestApp:Settings:BackgroundColor | groen |
     | TestApp:Settings:FontColor | lightGray |
     | TestApp:Settings:Message | Gegevens uit Azure-app-configuratie - nu met live updates! |
 
@@ -218,7 +218,7 @@ Voordat u doorgaat, moet u eerst [een ASP.net core-app maken met de app-configur
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een beheerde Azure-service-identiteit toegevoegd om toegang tot app-configuratie te stroomlijnen en het beheer van referenties voor uw app te verbeteren. Ga verder met de voor beelden van Azure CLI voor meer informatie over het gebruik van app-configuratie.
+In deze zelf studie hebt u uw ASP.NET Core web-app ingeschakeld om de configuratie-instellingen van de app-configuratie dynamisch te vernieuwen. Ga verder met de volgende zelf studie als u wilt weten hoe u een door Azure beheerde identiteit kunt gebruiken om de toegang tot de app-configuratie te stroom lijnen.
 
 > [!div class="nextstepaction"]
-> [CLI-voorbeelden](./cli-samples.md)
+> [Beheerde identiteits integratie](./howto-integrate-azure-managed-service-identity.md)

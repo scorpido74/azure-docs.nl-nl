@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: 4ed23beae6edb13efabf034c1e87b9cb76048f82
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3d15afc26c876c6e4d2d7244e26f0b13ced59a58
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73648465"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184745"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Apache Spark code voor U-SQL-ontwikkel aars begrijpen
 
@@ -128,7 +128,7 @@ De volgende tabel geeft de equivalente typen in Spark, scala en PySpark voor de 
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-Zie voor meer informatie:
+Ga voor meer informatie naar:
 
 - [org. apache. Spark. SQL. types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Spark SQL-en DataFrames-typen](https://spark.apache.org/docs/latest/sql-reference.html#data-types)
@@ -143,13 +143,13 @@ In Spark geeft NULL aan dat de waarde onbekend is. Een vonk NULL-waarde wijkt af
 
 Dit gedrag wijkt af van U-SQL. Dit is C# de semantiek waarbij `null` afwijkt van een wille keurige waarde, maar gelijk is aan zichzelf.  
 
-Een SparkSQL `SELECT`-instructie die gebruikmaakt van `WHERE column_name = NULL` nul rijen retourneert, zelfs als er NULL-waarden in `column_name`zijn, wordt in U-SQL de rijen geretourneerd waarin `column_name` is ingesteld op `null`. Op dezelfde manier wordt een Spark-`SELECT`-instructie die gebruikmaakt van `WHERE column_name != NULL` nul rijen retourneert, zelfs als er niet-Null-waarden in `column_name`zijn, terwijl U in U-SQL de rijen zou retour neren die niet null zijn. Als u de u-SQL-controle semantiek wilt, moet u dus [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull)gebruiken) en [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (of het bijbehorende DSL-equivalent).
+Een SparkSQL `SELECT`-instructie die gebruikmaakt van `WHERE column_name = NULL` nul rijen retourneert, zelfs als er NULL-waarden in `column_name`zijn, wordt in U-SQL de rijen geretourneerd waarin `column_name` is ingesteld op `null`. Op dezelfde manier wordt een Spark-`SELECT`-instructie die gebruikmaakt van `WHERE column_name != NULL` nul rijen retourneert, zelfs als er niet-Null-waarden in `column_name`zijn, terwijl U in U-SQL de rijen zou retour neren die niet null zijn. Als u wilt dat de u-SQL-controle semantiek is, moet u de respectievelijk [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) en [isnotnull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (of het bijbehorende DSL-equivalent) gebruiken.
 
 ## <a name="transform-u-sql-catalog-objects"></a>U-SQL-catalogus objecten transformeren
 
 Een belang rijk verschil is dat U-SQL-scripts gebruik kunnen maken van de catalogus objecten, waarvan er veel zijn die geen direct Spark-equivalent hebben.
 
-Spark biedt ondersteuning voor de concepten van het meta Store-Hive, voornamelijk data bases en tabellen, zodat u U-SQL-data bases en-schema's kunt toewijzen aan Hive-data bases en U-SQL-tabellen in Spark-tabellen (Zie [gegevens verplaatsen die zijn opgeslagen in U-SQL-tabellen](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables)), maar deze geen ondersteuning biedt voor weer gaven, functies met tabel waarden (TVFs), opgeslagen procedures, U-SQL-assembly's, externe gegevens bronnen, enzovoort.
+Spark biedt ondersteuning voor de concepten van het Hive-meta archief, voornamelijk data bases en tabellen, zodat u U-SQL-data bases en schema's kunt toewijzen aan Hive-data bases en U-SQL-tabellen in Spark-tabellen (Zie [gegevens verplaatsen die zijn opgeslagen in U-SQL-tabellen](understand-spark-data-formats.md#move-data-stored-in-u-sql-tables), maar deze functie biedt geen ondersteuning voor weer gaven, TVFs), opgeslagen procedures, U-SQL-assembly's, externe gegevens bronnen, enzovoort.
 
 De U-SQL-code objecten zoals weer gaven, TVFs, opgeslagen procedures en assembly's kunnen worden gemodelleerd via code functies en bibliotheken in Spark en ernaar wordt verwezen met behulp van de functie en procedurele abstractie mechanismen van de host-taal (bijvoorbeeld door middel van importeren Python-modules of verwijzen naar scala-functies).
 

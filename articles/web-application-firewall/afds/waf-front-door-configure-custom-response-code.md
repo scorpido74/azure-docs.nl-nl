@@ -1,5 +1,5 @@
 ---
-title: Een aangepast antwoord configureren voor Web Application Firewall met Azure front-deur
+title: Een aangepast antwoord configureren voor WAF met behulp van de voor deur van Azure
 description: Meer informatie over het configureren van een aangepaste respons code en een bericht wanneer WAF (Web Application firewall) een aanvraag blokkeert.
 services: web-application-firewall
 author: vhorne
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/21/2019
 ms.author: victorh
 ms.reviewer: tyao
-ms.openlocfilehash: ae3099373bbaece57c2896eb0fb4e7d59d817f25
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 215d4058937ad5fded6bef7a36e873b52a1b5ae9
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73517148"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185350"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall"></a>Een aangepast antwoord configureren voor de firewall van Azure Web Application
 
@@ -50,7 +50,7 @@ New-AzResourceGroup -Name myResourceGroupWAF
 
 ## <a name="create-a-new-waf-policy-with-custom-response"></a>Een nieuw WAF-beleid maken met een aangepast antwoord 
 
-Hieronder ziet u een voor beeld van het maken van een nieuw WAF-beleid met een aangepaste antwoord status code ingesteld op 405 en bericht aan **u geblokkeerd.** met behulp van [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+Hieronder ziet u een voor beeld van het maken van een nieuw WAF-beleid met een aangepaste antwoord status code ingesteld op 405 en bericht aan **u geblokkeerd.** using [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
 
 ```azurepowershell
 # WAF policy setting

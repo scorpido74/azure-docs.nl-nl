@@ -1,5 +1,5 @@
 ---
-title: Een virtueel Azure-netwerk (klassiek) migreren van een affiniteits groep naar een regio | Microsoft Docs
+title: Virtueel Azure-netwerk (klassiek) migreren van affiniteits groep naar regio
 description: Meer informatie over het migreren van een virtueel netwerk (klassiek) van een affiniteits groep naar een regio.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: d33d9ec4eadeaa3a082103f1ad699e2fc3010e3b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 57e6c551e1377425dab5509a886a0454b9410a32
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058403"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196699"
 ---
 # <a name="migrate-a-virtual-network-classic-from-an-affinity-group-to-a-region"></a>Een virtueel netwerk (klassiek) migreren van een affiniteits groep naar een regio
 
@@ -50,7 +50,7 @@ U wordt aangeraden geen affiniteits groepen te gebruiken in het algemeen. Afgezi
    
     Bewerk de volgende regels in het netwerk configuratie bestand door uw eigen waarden te vervangen: 
    
-    **Oude waarde:** \<VirtualNetworkSitename="VNetUSWest" AffinityGroup="VNetDemoAG"\> 
+    **Oude waarde:** \<VirtualNetworkSitename = "VNetUSWest" AffinityGroup = "VNetDemoAG"\> 
    
     **Nieuwe waarde:** \<VirtualNetworkSitename = "VNetUSWest" Location = "VS-West"\>
 3. Sla uw wijzigingen op en [Importeer](virtual-networks-using-network-configuration-file.md#import) de netwerk configuratie in Azure.

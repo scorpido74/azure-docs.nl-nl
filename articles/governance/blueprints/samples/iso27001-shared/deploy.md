@@ -1,14 +1,14 @@
 ---
 title: Voor beeld van ISO 27001 Shared Services blauw druk-stappen voor implementatie
 description: Implementeer stappen voor het voor beeld van de ISO 27001 Shared Services-blauw druk, inclusief para meters voor de artefact parameter.
-ms.date: 03/14/2019
+ms.date: 11/18/2019
 ms.topic: sample
-ms.openlocfilehash: 54f53e13e6d4561cb46f62318203c41c504ee60b
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 3f6928666dc098de81e20555cc1164338331fa90
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037335"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184396"
 ---
 # <a name="deploy-the-iso-27001-shared-services-blueprint-sample"></a>Het voor beeld van de ISO 27001-gedeelde services gebruiken
 
@@ -113,7 +113,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Blauw druk-initiatief voor ISO 27001|Beleidstoewijzing|Bron typen voor het controleren van Diagnostische logboeken|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
 |Log Analytics resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvsc-log-rg` om de resource groep uniek te maken.|
 |Log Analytics resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Log Analytics sjabloon|Resource Manager-sjabloon|Servicelaag|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
+|Log Analytics sjabloon|Resource Manager-sjabloon|Serviceniveau|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Locatie|De regio die wordt gebruikt voor het maken van de Log Analytics-werk ruimte. De standaard waarde is _VS-West 2_.|
 |Netwerk resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvcs-net-rg` om de resource groep uniek te maken.|

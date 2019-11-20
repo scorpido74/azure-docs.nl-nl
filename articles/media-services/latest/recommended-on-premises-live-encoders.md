@@ -6,15 +6,15 @@ keywords: code ring; encoders; media
 author: johndeu
 manager: johndeu
 ms.author: johndeu
-ms.date: 10/10/2019
+ms.date: 11/18/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: aa5eae3e40b8578f826b1b275995bbb3d346e586
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 32ff975aa200e51e6a555f892a53b0ab9c73a84e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300945"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186024"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Aanbevolen code ring voor live streamen
 
@@ -49,6 +49,9 @@ Media Services raadt het gebruik aan van een van de volgende live-encoders met R
 - Tricaster Mini HD-4
 - VMIX
 - xStream
+- [Ffmpeg](https://www.ffmpeg.org)
+- [GoPro](https://gopro.com/help/articles/block/getting-started-with-live-streaming) Helden 7 en held 8
+- [Restream.io](https://restream.io/)
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Live coderings Programma's die gefragmenteerde MP4 uitvoeren
 
@@ -60,9 +63,11 @@ Media Services raadt u aan om een van de volgende Live coderings Programma's te 
 - Envivio 4Caster C4 Gen III
 - Denk aan de communicatie selenio MCP3
 - Media Excel Hero Live en Hero 4K (UHD/HEVC)
+- [Ffmpeg](https://www.ffmpeg.org)
 
 > [!TIP]
 >  Als u live-gebeurtenissen in meerdere talen wilt streamen (bijvoorbeeld een Engels audio nummer en één Spaans audio spoor), kunt u dit doen met de media Excel live encoder die is geconfigureerd voor het verzenden van live feeds naar een Pass-through live-gebeurtenis.
+
 
 ## <a name="configuring-on-premises-live-encoder-settings"></a>Instellingen voor on-premises Live coderings Programma's configureren
 
@@ -74,9 +79,9 @@ Als u de inhoud wilt afspelen, moet zowel een audio-als een video stroom aanwezi
 
 ### <a name="configuration-tips"></a>Configuratie tips
 
-- Gebruik, indien mogelijk, een hardwired-Internet verbinding.
+- Gebruik indien mogelijk een internetverbinding ' hardwired '.
 - Wanneer u de vereisten voor de band breedte bepaalt, verdubbelt u de streaming bitrates. Hoewel het niet verplicht is, kunt u met deze eenvoudige regel de impact van de netwerk congestie verminderen.
-- Wanneer u software encoders gebruikt, moet u overbodige Program ma's sluiten.
+- Wanneer u coderingsprogramma's op basis van software, sluit u alle onnodige programma's.
 - Het wijzigen van de encoder configuratie nadat deze is gestart, heeft negatieve gevolgen voor de gebeurtenis. Configuratie wijzigingen kunnen ertoe leiden dat de gebeurtenis Insta Biel wordt. 
 - Zorg ervoor dat u uw gebeurtenis in ruime tijd kunt instellen. Voor grootschalige gebeurtenissen raden we u aan om de installatie een uur voor uw gebeurtenis te starten.
 
@@ -128,7 +133,7 @@ Volg dezelfde stappen als in [Pass-through live-gebeurtenis verificatie](#pass-t
 
 ### <a name="email-your-recorded-settings"></a>Uw vastgelegde instellingen per e-mail verzenden
 
-Ten slotte moet u uw vastgelegde instellingen en de para meters van uw Live-Archief per e-mail verzenden naar Azure Media Services amshelp@microsoft.com als melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
+Ten slotte moet u uw vastgelegde instellingen en de para meters van uw Live-Archief per e-mail naar Azure Media Services op amshelp@microsoft.com als een melding dat alle verificatie controles zelf zijn geslaagd. Neem ook uw contact gegevens op voor elke follow-up. U kunt contact opnemen met het Azure Media Services team met vragen over dit proces.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,18 +1,18 @@
 ---
-title: Azure Firewall met meerdere open bare IP-adressen implementeren met behulp van Azure PowerShell
+title: Azure Firewall met meerdere open bare IP-adressen implementeren met behulp van Power shell
 description: In dit artikel leert u hoe u een Azure Firewall met meerdere open bare IP-adressen kunt implementeren met behulp van de Azure PowerShell.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: ba2736ae69d0bf7feff5f852da2446bfa7a722a6
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: ad54b60d8f15e36636f887015d97967740123669
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325238"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195871"
 ---
 # <a name="deploy-an-azure-firewall-with-multiple-public-ip-addresses-using-azure-powershell"></a>Een Azure Firewall met meerdere open bare IP-adressen implementeren met behulp van Azure PowerShell
 

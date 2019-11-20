@@ -1,5 +1,5 @@
 ---
-title: Azure CLI-voorbeelden - Azure App-configuratie | Microsoft Docs
+title: Azure CLI-voor beelden-Azure-app configuratie | Microsoft Docs
 description: Bevat informatie over de beschikbare voorbeeldscripts voor Azure-app-configuratie
 services: azure-app-configuration
 documentationcenter: ''
@@ -14,25 +14,25 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a8a60f23511f71128bea4cc560ad8401b238732d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9b9d4c6447b8030c2ae5f7dc22857f77b57f91ea
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60741407"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74185311"
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-voorbeelden
 
-De volgende tabel bevat koppelingen naar bash-scripts voor de configuratie van Azure-App met behulp van de Azure CLI.
+De volgende tabel bevat koppelingen naar bash-scripts voor Azure-app configuratie met behulp van de Azure CLI.
 
 | | |
 |-|-|
 |**Maken**||
-| [Een app-configuratiearchief maken](./scripts/cli-create-service.md) | Hiermee maakt u een resourcegroep en een exemplaar van een app-configuratiearchief.  |
+| [Een app-configuratie archief maken](./scripts/cli-create-service.md) | Hiermee maakt u een resource groep en een exemplaar van de app-configuratie opslag.  |
 |**Gebruiken**||
-| [Werken met sleutelwaarden](./scripts/cli-work-with-keys.md) | Maakt, weergaven, updates, en sleutelwaarden die zijn verwijderd. |
-| [Sleutelwaarden importeren](./scripts/cli-import.md) | Sleutelwaarden die zijn geïmporteerd uit andere bronnen. |
-| [Sleutelwaarden exporteren](./scripts/cli-export.md) | Sleutelwaarden exporteert naar andere doelen. |
+| [Werken met sleutel waarden](./scripts/cli-work-with-keys.md) | Hiermee worden sleutel waarden gemaakt, weer gegeven, bijgewerkt en verwijderd. |
+| [Sleutel waarden importeren](./scripts/cli-import.md) | Hiermee worden sleutel waarden uit andere bronnen geïmporteerd. |
+| [Sleutel waarden exporteren](./scripts/cli-export.md) | Hiermee exporteert u de sleutel waarden naar andere doelen. |
 |**Verwijderen**||
-| [Een app-configuratiearchief verwijderen](./scripts/cli-delete-service.md) | Hiermee verwijdert u een exemplaar van een app-configuratiearchief.  |
+| [Een app-configuratie archief verwijderen](./scripts/cli-delete-service.md) | Hiermee verwijdert u een exemplaar van de app-configuratie opslag.  |
 | | |

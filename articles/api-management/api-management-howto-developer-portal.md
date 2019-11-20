@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 6bf8c8690977ef1036c853d8c1c01a3a366b50df
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 377ed8f17cfcf67f10cbdec77199c69c606afa3e
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74011483"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74180692"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Overzicht van Azure API Management-ontwikkelaars Portal
 
@@ -115,7 +115,7 @@ Nee.
 
 Nee.
 
-### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console. Wat moet ik doen?
+### <a name="im-getting-a-cors-error-when-using-the-interactive-console-what-should-i-do"></a>Ik krijg een CORS-fout bij het gebruik van de interactieve console. Wat zal ik doen?
 
 De interactieve console maakt een API aan de client zijde via de browser. U kunt het CORS-probleem oplossen door [een CORS-beleid](https://docs.microsoft.com/azure/api-management/api-management-cross-domain-policies#CORS) toe te voegen aan uw API (s). U kunt alle para meters hand matig opgeven of Joker `*` waarden gebruiken. Bijvoorbeeld:
 
@@ -142,6 +142,14 @@ De interactieve console maakt een API aan de client zijde via de browser. U kunt
     </expose-headers>
 </cors>
 ```
+
+> [!NOTE]
+> 
+> Als u het CORS-beleid toepast in het product bereik, in plaats van de API (s)-scope, en uw API gebruikmaakt van abonnements sleutel verificatie via een header, werkt de console niet.
+>
+> De browser verleent automatisch een HTTP-aanvraag voor opties, die geen header met de abonnements sleutel bevat. Vanwege de ontbrekende abonnements sleutel kan API Management de aanroep van de opties niet koppelen aan een product, zodat het CORS-beleid niet kan worden toegepast.
+>
+> Als tijdelijke oplossing kunt u de abonnements sleutel in een query parameter door geven.
 
 ## <a name="next-steps"></a>Volgende stappen
 

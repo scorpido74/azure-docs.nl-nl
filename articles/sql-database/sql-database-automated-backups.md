@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 09/26/2019
-ms.openlocfilehash: 114a5bbfd71fc0847c2b1bc65a8ba0bfa0df1add
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1cdd8fdac03c25bf28db94867891fef4c2846fcd
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821948"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196568"
 ---
 # <a name="automated-backups"></a>Automatische back-ups
 
@@ -46,7 +46,7 @@ U kunt enkele van deze bewerkingen uitproberen met de volgende voor beelden:
 
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
-| Retentie van back-ups wijzigen | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-azure-portal) <br/> [Beheerd exemplaar](sql-database-automated-backups.md#managed-instance-database) | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Retentie van back-ups wijzigen | [Individuele database](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) <br/> [Beheerd exemplaar](sql-database-automated-backups.md?tabs=managed-instance#change-pitr-backup-retention-period-using-azure-portal) | [Individuele database](sql-database-automated-backups.md#change-pitr-backup-retention-period-using-powershell) <br/>[Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
 | Lange termijn retentie van back-ups wijzigen | [Individuele database](sql-database-long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Beheerd exemplaar-N.v.t.  | [Individuele database](sql-database-long-term-backup-retention-configure.md#use-powershell-to-manage-long-term-backups)<br/>Beheerd exemplaar-N.v.t.  |
 | Data base terugzetten vanaf een bepaald tijdstip | [Individuele database](sql-database-recovery-using-backups.md#point-in-time-restore) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
 | Verwijderde database herstellen | [Individuele database](sql-database-recovery-using-backups.md) | [Individuele database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Beheerd exemplaar](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
@@ -84,6 +84,15 @@ Zie [lange termijn retentie van back-ups](sql-database-long-term-retention.md)vo
 ## <a name="storage-costs"></a>Opslagkosten
 Voor afzonderlijke data bases en beheerde instanties geldt een minimum hoeveelheid voor back-upopslag die gelijk is aan 100% van de database grootte, zonder extra kosten. Voor elastische Pools worden er geen extra kosten in rekening gebracht voor een minimale back-upopslag die gelijk is aan 100% van de toegewezen gegevens opslag voor de pool. Voor aanvullend verbruik van back-upopslag worden GB/maand berekend. Dit extra verbruik is afhankelijk van de werk belasting en de grootte van de afzonderlijke data bases.
 
+U kunt kosten analyse van Azure-abonnement gebruiken om uw huidige uitgaven op back-upopslag te bepalen.
+
+![Kosten analyse back-upopslag](./media/sql-database-automated-backup/check-backup-storage-cost-sql-mi.png)
+
+Als u naar uw abonnement gaat en de Blade kosten analyse openen, kunt u de meter subcategorie **mi pitr back-upopslag** selecteren om uw huidige back-upkosten en kosten prognose te bekijken. U kunt ook andere subcategorieën van de meter, zoals het **Managed instance-** opslag of het **beheerde exemplaar algemeen gebruik,** gebruiken om de opslag kosten voor back-ups te vergelijken met andere kosten categorieën.
+
+> [!Note]
+> U kunt de [Bewaar periode wijzigen in 7 dagen](#change-pitr-backup-retention-period-using-azure-portal) om de kosten voor back-upopslag te verlagen.
+
 Zie de pagina met [prijzen](https://azure.microsoft.com/pricing/details/sql-database/single/) voor meer informatie over opslag prijzen. 
 
 ## <a name="are-backups-encrypted"></a>Zijn back-ups versleuteld
@@ -118,17 +127,19 @@ U kunt de standaard retentie periode voor PITR-back-ups wijzigen met behulp van 
 
 Als u de retentie periode voor PITR-back-ups wilt wijzigen met behulp van de Azure Portal, gaat u naar het Server object waarvan u de Bewaar periode wilt wijzigen in de portal en selecteert u vervolgens de juiste optie op basis van het Server object dat u wilt wijzigen.
 
-#### <a name="single-azure-sql-database"></a>Enkele Azure SQL Database
+#### <a name="single-database--elastic-poolstabsingle-database"></a>[Eén data base & elastische Pools](#tab/single-database)
 
 De wijziging van de PITR-back-upbewaaring voor één Azure SQL-Data Base wordt uitgevoerd op server niveau. Wijzigingen die zijn aangebracht op server niveau, zijn van toepassing op data bases op die server. Als u PITR voor Azure SQL Database Server wilt wijzigen vanuit Azure Portal, gaat u naar de Blade Server overzicht, klikt u op back-ups beheren in het navigatie menu en klikt u vervolgens op retentie configureren op de navigatie balk.
 
 ![PITR wijzigen Azure Portal](./media/sql-database-automated-backup/configure-backup-retention-sqldb.png)
 
-#### <a name="managed-instance-database"></a>Data base van beheerd exemplaar
+#### <a name="managed-instancetabmanaged-instance"></a>[Beheerd exemplaar](#tab/managed-instance)
 
 De wijziging van de PITR-back-upbewaaring voor SQL Database beheerde instantie wordt uitgevoerd op het niveau van een afzonderlijke data base. Als u de retentie van een PITR voor een exemplaar database van Azure Portal wilt wijzigen, gaat u naar de Blade overzicht van de afzonderlijke data base en klikt u vervolgens op back-up configureren op de navigatie balk.
 
 ![PITR wijzigen Azure Portal](./media/sql-database-automated-backup/configure-backup-retention-sqlmi.png)
+
+---
 
 ### <a name="change-pitr-backup-retention-period-using-powershell"></a>De retentie periode voor PITR-back-ups wijzigen met Power shell
 

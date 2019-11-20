@@ -1,5 +1,5 @@
 ---
-title: Een virtuele machine (klassiek) of Cloud Services rolinstantie verplaatsen naar een ander subnet-Azure PowerShell | Microsoft Docs
+title: Virtuele Azure-machines (klassiek) of Cloud Services rolinstanties naar een ander subnet verplaatsen
 description: Meer informatie over het verplaatsen van Vm's (klassiek) en het Cloud Services van rolinstanties naar een ander subnet met behulp van Power shell.
 services: virtual-network
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 275d59a7bddd8b2b609169218afcd15e9a0ce913
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: e2a92355632ef0d7059c9e5294448de0ca591b82
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058377"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74196692"
 ---
 # <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>Een virtuele machine (klassiek) of Cloud Services rolinstantie naar een ander subnet verplaatsen met behulp van Power shell
 U kunt Power shell gebruiken om uw virtuele machines (klassiek) van het ene subnet naar het andere te verplaatsen in hetzelfde virtuele netwerk (VNet). U kunt rolinstanties verplaatsen door het CSCFG-bestand te bewerken in plaats van Power shell te gebruiken.

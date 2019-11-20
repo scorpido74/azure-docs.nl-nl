@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 2952f7f24e92b952daafa682eee9d4605537a37b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: d474442086e2a114f26df279ab2682cd7628a5f5
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839525"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184269"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Een Internet Analyzer-test maken met CLI (preview)
 
@@ -132,5 +132,6 @@ De Internet Analyzer CLI maakt de volgende typen resources beschikbaar:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Lees de [Veelgestelde vragen over Internet analyse](internet-analyzer-faq.md)
+* Blader door de [Internet Analyzer cli-referentie](https://docs.microsoft.com/cli/azure/ext/internet-analyzer/internet-analyzer?view=azure-cli-latest) voor de volledige lijst met ondersteunde opdrachten en gebruiks voorbeelden.
+* Lees de [Veelgestelde vragen over Internet Analyzer](internet-analyzer-faq.md).
 * Meer informatie over het insluiten van de [Internet Analyzer-client](internet-analyzer-embed-client.md) en het maken van een [aangepast eind punt](internet-analyzer-custom-endpoint.md). 

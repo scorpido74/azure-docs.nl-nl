@@ -1,19 +1,19 @@
 ---
-title: Binnenkomend verkeer filteren met Azure Firewall DNAT via de Azure-portal
+title: Inkomend verkeer filteren met Azure Firewall DNAT met behulp van de portal
 description: In deze zelfstudie leert u hoe u Azure Firewall DNAT kunt implementeren en configureren via de Azure-portal.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 11/19/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f0a58382b9825a7b32aee69c00b9801d1c77251a
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: 2f390f3ad540a2a25055dfcc97cc3af1f22c2b73
+ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114631"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74195724"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Zelfstudie: Binnenkomend verkeer filteren met Azure Firewall DNAT via de Azure-portal
 
@@ -42,7 +42,7 @@ In deze zelfstudie maakt u twee VNets die peer zijn van elkaar:
 3. Bij **Resourcegroepnaam** typt u **RG-DNAT-Test**.
 4. Bij **Abonnement** selecteert u uw abonnement.
 5. Bij **Resourcegroeplocatie** selecteert u een locatie. Alle volgende resources die u maakt, moeten zich op dezelfde locatie bevinden.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 ## <a name="set-up-the-network-environment"></a>De netwerkomgeving instellen
 
@@ -52,7 +52,7 @@ Maak eerst de VNets en peer ze.
 
 1. Klik op de startpagina van de Azure-portal op **Alle services**.
 2. Klik onder **Netwerken** op **Virtuele netwerken**.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Bij **Naam** typt u **VN-Hub**.
 5. Bij **Adresruimte** typt u **10.0.0.0/16**.
 6. Bij **Abonnement** selecteert u uw abonnement.
@@ -71,7 +71,7 @@ Maak eerst de VNets en peer ze.
 
 1. Klik op de startpagina van de Azure-portal op **Alle services**.
 2. Klik onder **Netwerken** op **Virtuele netwerken**.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Bij **Naam** typt u **VN-Spoke**.
 5. Bij **Adresruimte** typt u **192.168.0.0/16**.
 6. Bij **Abonnement** selecteert u uw abonnement.
@@ -91,7 +91,7 @@ Nu gaat u de twee VNets als peer van elkaar instellen.
 
 1. Klik op het virtuele netwerk **VN-Hub**.
 2. Klik onder **Instellingen** op **Peerings**.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Typ **Peer-HubSpoke** als de naam.
 5. Selecteer **VN-Spoke** voor het virtuele netwerk.
 6. Klik op **OK**.
@@ -100,7 +100,7 @@ Nu gaat u de twee VNets als peer van elkaar instellen.
 
 1. Klik op het virtuele netwerk **VN-Spoke**.
 2. Klik onder **Instellingen** op **Peerings**.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Typ **Peer-SpokeHub** als de naam.
 5. Selecteer **VN-Hub** voor het virtuele netwerk.
 6. Klik op **Doorgestuurd verkeer toestaan**.
@@ -151,10 +151,10 @@ Als de implementatie is voltooid, ziet u het privé IP-adres voor de virtuele ma
 
    |Instelling  |Waarde  |
    |---------|---------|
-   |Name     |FW-DNAT-test|
-   |Subscription     |\<uw abonnement\>|
-   |Resource group     |**Bestaande gebruiken**: RG-DNAT-test |
-   |Location     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
+   |Naam     |FW-DNAT-test|
+   |Abonnement     |\<uw abonnement\>|
+   |Resourcegroep     |**Bestaande gebruiken**: RG-DNAT-Test |
+   |Locatie     |Selecteer dezelfde locatie die u eerder hebt gebruikt|
    |Een virtueel netwerk kiezen     |**Bestaande gebruiken**: VN-Hub|
    |Openbaar IP-adres     |**Nieuwe maken**. Het openbare IP-adres moet van het type Standaard-SKU zijn.|
 
@@ -171,12 +171,12 @@ Voor het subnet **SN-Workload** configureert u dat de standaardroute voor uitgaa
 
 1. Klik op de startpagina van de Azure-portal op **Alle services**.
 2. Klik onder **Netwerken** op **Routetabellen**.
-3. Klik op **Toevoegen**.
+3. Klik op **Add**.
 4. Bij **Naam** typt u **RT-FWroute**.
 5. Bij **Abonnement** selecteert u uw abonnement.
 6. Bij **Resourcegroep** selecteert u **Bestaande gebruiken** en selecteert u **RG-DNAT-Test**.
 7. Bij **Locatie** selecteert u dezelfde locatie die u eerder hebt gebruikt.
-8. Klik op **Create**.
+8. Klik op **Maken**.
 9. Klik op **Vernieuwen** en klik vervolgens op de routetabel **RT-FWroute**.
 10. Klik op **Subnetten** en klik vervolgens op **Koppelen**.
 11. Klik op **Virtueel netwerk** en selecteer vervolgens **VN-Spoke**.
@@ -205,7 +205,7 @@ Voor het subnet **SN-Workload** configureert u dat de standaardroute voor uitgaa
 10. Bij **Doelpoorten** typt u **3389**. 
 11. Bij **Omgezet adres** typt u het privé-IP-adres voor de virtuele machine Srv-Workload. 
 12. Bij **Vertaalde poort** typt u **3389**. 
-13. Klik op **Toevoegen**. 
+13. Klik op **Add**. 
 
 ## <a name="test-the-firewall"></a>De firewall testen
 

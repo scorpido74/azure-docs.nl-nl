@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 11/18/2019
 ms.author: swmachan
-ms.openlocfilehash: f3bf784898f7f51beea890d8d2a8401af1403fbc
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: dd3684cbd7c03851bfcc75293a9690f77b4652b2
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888120"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184823"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator-text-api"></a>Omzetting van inhoud met de Translator Text-API voor komen
 
 Met de Translator Text-API kunt u inhoud labelen zodat deze niet wordt vertaald. Stel dat u code, een merk naam of een woord/zin wilt labelen die niet zinvol is wanneer deze wordt gelokaliseerd.
 
 ## <a name="methods-for-preventing-translation"></a>Methoden voor het voor komen van vertalingen
-1. Escape naar een Twitter-tag @somethingtopassthrough of #somethingtopassthrough. Escape na omzetting ongedaan maken.
+1. Escape naar een Twitter-tag @somethingtopassthrough of #somethingtopassthrough. Escape na omzetting ongedaan maken. Dit is de reguliere expressie voor geldige Twitter-Labels: `\B@[A-Za-z]+[A-Za-z0-9_]+)`. Een tag moet beginnen met een @-teken, gevolgd door een teken en vervolgens gevolgd door een of meer tekens, cijfers of een liggend streepje. Het is raadzaam Tags kort te blijven en de openings label moet worden voorafgegaan door een spatie.
 
 2. Label uw inhoud met `notranslate`.
 

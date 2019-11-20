@@ -1,5 +1,5 @@
 ---
-title: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB
+title: Zelf studie`:`een beheerde identiteit gebruiken om toegang te krijgen tot Azure Cosmos DB-Linux-Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit voor toegang tot Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -15,19 +15,19 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b79c4e1ddb84213ce9000236727d9bca298a0cd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8eb77802a4d6c29bb16912f1d74d950b6461b598
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66231878"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74183342"
 ---
-# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB 
+# <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
 
-Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). In deze zelfstudie leert u procedures om het volgende te doen:
+Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Cosmos DB met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Procedures voor:
 
 > [!div class="checklist"]
 > * Cosmos DB-account maken
@@ -55,7 +55,7 @@ Maak een Cosmos DB-account als u er nog geen hebt. U kunt deze stap overslaan en
 3. Voer een **Id** in voor het Cosmos DB-account, die u later zult gebruiken.  
 4. **API** moet worden ingesteld op 'SQL'. De aanpak die in deze zelfstudie wordt beschreven, kan worden gebruikt met de andere beschikbare API-typen, maar de stappen in deze zelfstudie zijn voor de SQL-API.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.  Selecteer een **Locatie** waar Cosmos DB beschikbaar is.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Een verzameling maken in het Cosmos DB-account
 

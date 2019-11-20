@@ -1,5 +1,5 @@
 ---
-title: 'Azure Snelstart: een Front Door-profiel maken in de Azure Portal voor hoge beschikbaarheid van toepassingen'
+title: 'Quick Start: profiel voor voor deur maken voor hoge Beschik baarheid van toepassingen'
 description: In dit snelstartartikel wordt beschreven hoe u een Front Door-profiel maakt voor een webtoepassing met hoge beschikbaarheid en uitstekende prestaties.
 services: front-door
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2018
 ms.author: sharadag
-ms.openlocfilehash: 6bcd5bcc2463ec1ab9dcc97644d5046c31bfc78b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 67a4f9eb3290ba09a2c19325464cf7ad224856e7
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61461983"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184520"
 ---
-# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Quickstart: Een voordeur voor een maximaal beschikbare globale webtoepassing maken
+# <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Snelstart: een Front Door maken voor een webtoepassing met hoge beschikbaarheid
 
 In deze snelstart wordt beschreven hoe u een Front Door-profiel maakt dat hoge beschikbaarheid en uitstekende prestaties biedt voor uw webtoepassing. 
 
@@ -39,10 +39,10 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
 
      | Instelling         | Waarde     |
      | ---              | ---  |
-     | Name           | Voer een unieke naam voor de web-app in  |
+     | Naam           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD1* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanEastUS* in en selecteer **OK**. 
-     |      Locatie  |   US - oost        |
+     |      Locatie  |   VS - oost        |
     |||
 
 3. Selecteer **Maken**.
@@ -51,10 +51,10 @@ Voor deze snelstart moeten twee exemplaren van een webtoepassing worden geïmple
 
      | Instelling         | Waarde     |
      | ---              | ---  |
-     | Name           | Voer een unieke naam voor de web-app in  |
+     | Naam           | Voer een unieke naam voor de web-app in  |
      | Resourcegroep          | Selecteer **Nieuw** en typ *myResourceGroupFD2* |
      | App Service-plan/-locatie         | Selecteer **Nieuw**.  Voer in het App Service-plan *myAppServicePlanWestEurope* in en selecteer **OK**. 
-     |      Locatie  |   Europa -west      |
+     |      Locatie  |   Europa - west      |
     |||
 
 
@@ -82,7 +82,7 @@ Vervolgens moet u uw toepassings-back-end(s) configureren in een back-endpool, z
 Klik als laatste op het pictogram '+' voor Routeringsregels om van een regel voor doorsturen te configureren. Dit is nodig om de front-end-host te koppelen aan de back-endpool. Wat u doet, is instellen dat een aanvraag afkomstig van `myappfrontend.azurefd.net` wordt doorgestuurd naar de back-endpool `myBackendPool`. Klik op **Toevoegen** om de regel voor doorsturen toe te voegen voor de Front Door. U kunt de Front Door nu maken als het goed is, dus klik op **Beoordelen en maken**.
 
 >[!WARNING]
-> U **moet** ervoor zorgen dat elk van de front-endhosts in de Front Door is geconfigureerd met een regel voor doorsturen waaraan een standaardpad ('/\*') is gekoppeld. Dat wil zeggen dat er ten minste één regel voor doorsturen moet zijn voor elk van de front-endhosts die is gedefinieerd in het standaardpad ('/\*'). Als dit niet het geval is, kan dit tot gevolg hebben dat het verkeer van uw eindgebruikers niet goed wordt gerouteerd.
+> U **moet** ervoor zorgen dat elk van de front-endhosts in de Front Door is geconfigureerd met een regel voor doorsturen waaraan een standaardpad ('/\*') is gekoppeld. Dat wil zeggen dat er ten minste één regel voor doorsturen moet zijn voor elk van de front-endhosts die is gedefinieerd in het standaardpad ('/\*'). Als u dit niet doet, wordt uw eindgebruikersverkeer mogelijk niet goed gerouteerd.
 
 ## <a name="view-front-door-in-action"></a>Front Door in actie zien
 Als u een Front Door hebt gemaakt, duurt het een paar minuten voordat de configuratie wereldwijd is geïmplementeerd. Als dat is gebeurd, gaat u naar de front-endhost die u hebt gemaakt. Dit doet u door in een webbrowser de URL `myappfrontend.azurefd.net` op te geven. Uw aanvraag wordt automatisch gerouteerd naar de back-end uit de opgegeven back-ends in de back-endpool die zich het dichtst bij u in de buurt bevindt. 

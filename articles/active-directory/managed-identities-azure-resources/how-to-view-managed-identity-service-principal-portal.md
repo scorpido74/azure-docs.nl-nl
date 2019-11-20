@@ -1,5 +1,5 @@
 ---
-title: De service-principal van een beheerde identiteit weer geven in de Azure Portal
+title: De service-principal van een beheerde identiteit weer geven in de Azure Portal-Azure AD
 description: Stapsgewijze instructies voor het weer geven van de service-principal van een beheerde identiteit in de Azure Portal.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/29/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a8db0254f85980022115cab5d73f7f329b57001
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.openlocfilehash: b51aeabaa4bb7fa9884c95cf0da2dc68ba5b64b0
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827555"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74184106"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-in-the-azure-portal"></a>De service-principal van een beheerde identiteit weer geven in de Azure Portal
 

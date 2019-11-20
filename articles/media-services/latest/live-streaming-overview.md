@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: juliako
-ms.openlocfilehash: 8d7db428d7f71383abf5425d7cc1ddbbab3b7a52
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7e3d0f4ba178ef2cf44b9c5c3dd5b8c212f1c133
+ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037882"
+ms.lasthandoff: 11/19/2019
+ms.locfileid: "74186150"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Live streamen met Azure Media Services v3
 
@@ -63,7 +63,7 @@ Wanneer u de gebeurtenis Pass-Through **Live**gebruikt, vertrouwt u met uw on-pr
 
 Wanneer u Cloud codering met Media Services gebruikt, configureert u uw on-premises Live coderings programma voor het verzenden van een video met één bitsnelheid als de contributie invoer (Maxi maal 32Mbps aggregatie) naar de live gebeurtenis (met RTMP of gefragmenteerd-MP4 invoer Protocol). De live-gebeurtenis transcodeert de binnenkomende single-bitrate stream in [meerdere bitrate video streams](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) met verschillende resoluties om de levering te verbeteren en maakt deze beschikbaar voor levering aan het afspelen van apparaten via industrie standaard protocollen zoals MPEG-Dash, Apple http live streaming (HLS) en micro soft Smooth streaming. 
 
-### <a name="live-transcription"></a>Live-transcriptie
+### <a name="live-transcription-preview"></a>Live transcriptie (preview-versie)
 
 Live transcriptie is een functie die u kunt gebruiken met Live-gebeurtenissen die door Pass-Through of Live-code ring zijn. Zie [Live transcriptie](live-transcription.md)voor meer informatie. Als deze functie is ingeschakeld, gebruikt de service de functie voor [spraak-naar-tekst](../../cognitive-services/speech-service/speech-to-text.md) van Cognitive Services om de gesp roken woorden in de binnenkomende audio naar tekst te transcriberen. Deze tekst wordt vervolgens beschikbaar gesteld voor levering en video en audio in MPEG-DASH-en HLS-protocollen.
 
