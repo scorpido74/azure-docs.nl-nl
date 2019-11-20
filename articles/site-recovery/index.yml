@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Site Recovery
-summary: Gebruik Azure Site Recovery voor herstel na noodgevallen van on-premises computers en workloads in Azure, en Azure-VM’s in een secundaire Azure-regio. Als replicatie naar Azure is ingesteld, kunt u failovers organiseren wanneer er storingen optreden, en hebt u nog steeds toegang tot workloads en apps in Azure. Als de primaire locatie weer beschikbaar is, kunt u een failback uitvoeren, indien nodig.
+summary: Gebruik Azure Site Recovery voor herstel na noodgevallen van on-premises workloads en Azure-VM's.
 metadata:
   title: Documentatie voor Azure Site Recovery
-  description: Gebruik Azure Site Recovery voor herstel na noodgevallen van on-premises computers en workloads in Azure, en Azure-VM’s in een secundaire Azure-regio. Als replicatie naar Azure is ingesteld, kunt u failovers organiseren wanneer er storingen optreden, en hebt u nog steeds toegang tot workloads en apps in Azure. Als de primaire locatie weer beschikbaar is, kunt u een failback uitvoeren, indien nodig.
+  description: Stel herstel na noodgevallen in Azure in voor on-premises workloads en Azure-VM's.
   ms.service: site-recovery
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 0d4405e447c7624e4d6cc714209ffc86451a74bd
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: ccbc4c92a6d0db9d5baf8a226ba79405a2b824ff
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001087"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74186587"
 landingContent:
 - title: Site Recovery
   linkLists:

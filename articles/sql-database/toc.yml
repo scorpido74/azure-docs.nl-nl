@@ -278,6 +278,8 @@
                   href: sql-database-xevent-code-ring-buffer.md
         - name: Prestatiediagnoses hyperschalen
           href: sql-database-hyperscale-performance-diagnostics.md
+        - name: Resourcebeheer in dichte elastische pools
+          href: sql-database-elastic-pool-resource-management.md
     - name: Schaalbaarheid
       items:
         - name: Documentatie voor schaalbaarheid

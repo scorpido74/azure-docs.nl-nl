@@ -798,12 +798,14 @@
               items:
                 - name: Bewakingsoverzicht inschakelen
                   href: insights/container-insights-onboard.md
-                - name: Inschakelen voor nieuw cluster
+                - name: Inschakelen voor nieuw AKS-cluster
                   href: insights/container-insights-enable-new-cluster.md
-                - name: Inschakelen voor bestaand cluster
+                - name: Inschakelen voor bestaand AKS-cluster
                   href: insights/container-insights-enable-existing-clusters.md
                 - name: Inschakelen voor een hybride cluster
                   href: insights/container-insights-hybrid-setup.md
+                - name: Inschakelen voor Azure Red Hat OpenShift
+                  href: insights/container-insights-azure-redhat-setup.md
                 - name: Regiotoewijzingen
                   href: insights/container-insights-region-mapping.md
             - name: Prestaties bewaken

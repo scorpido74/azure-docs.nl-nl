@@ -1,21 +1,21 @@
 ### YamlMime:Landing
 title: Documentatie voor Azure Migrate
-summary: Gebruik Azure Migrate om te migreren naar de Azure-cloud. Azure Migrate biedt een centrale hub voor detectie, evaluatie en migratie van on-premises workloads naar Azure. De hub biedt Azure Migrate-hulpprogramma's, en ook geïntegreerde hulpprogramma's van onafhankelijke softwareverkopers (ISV's).
+summary: Azure Migrate biedt een centrale hub van hulpprogramma's voor detectie, evaluatie en migratie van on-premises workloads naar Azure.
 metadata:
   title: Documentatie voor Azure Migrate
-  description: Gebruik Azure Migrate om te migreren naar de Azure-cloud. Azure Migrate biedt een centrale hub voor detectie, evaluatie en migratie van on-premises workloads naar Azure. De hub biedt Azure Migrate-hulpprogramma's, en ook geïntegreerde hulpprogramma's van onafhankelijke softwareverkopers (ISV's).
+  description: Gebruik Azure Migrate om on-premises workloads naar Azure te migreren.
   ms.service: azure-migrate
   ms.topic: landing-page
   ms.collection: collection
   author: rayne-wiselman
   ms.author: raynew
-  ms.date: 10/07/2019
-  ms.openlocfilehash: 494bb2f7ec6076bbc7b3b891cd0cb525ae53c5d1
-  ms.sourcegitcommit: be344deef6b37661e2c496f75a6cf14f805d7381
+  ms.date: 11/19/2019
+  ms.openlocfilehash: e49bfdefe08b3a8f4598e809fd44b57f3f93de67
+  ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/07/2019
-  ms.locfileid: "72001151"
+  ms.lasthandoff: 11/19/2019
+  ms.locfileid: "74185839"
 landingContent:
 - title: Over Azure Migrate
   linkLists:
@@ -35,6 +35,10 @@ landingContent:
       url: ./tutorial-prepare-vmware.md
     - text: Hyper-V-VM’s evalueren met Serverevaluatie
       url: ./tutorial-prepare-hyper-v.md
+    - text: Fysieke servers evalueren met Serverevaluatie
+      url: ./tutorial-prepare-physical.md
+    - text: Servers evalueren met geïmporteerde gegevens
+      url: tutorial-assess-import.md
     - text: VMware-VM's migreren met Servermigratie
       url: ./server-migrate-overview.md
     - text: Hyper-V-VM's migreren met Servermigratie
@@ -52,13 +56,19 @@ landingContent:
     - text: De ondersteuningsmatrix voor Azure Migrate bekijken
       url: migrate-support-matrix.md
     - text: De ondersteuningsmatrix voor VMware bekijken
-      url: migrate-support-matrix-vmware.md
+      url: ./migrate-support-matrix-vmware.md
     - text: De ondersteuningsmatrix voor Hyper-V bekijken
-      url: migrate-support-matrix-hyper-v.md
+      url: ./migrate-support-matrix-hyper-v.md
+    - text: De ondersteuningsmatrix voor fysieke servers bekijken
+      url: ./migrate-support-matrix-physical.md
 - title: Beheren
   linkLists:
   - linkListType: how-to-guide
     links:
+    - text: Evaluatiehulpprogramma's toevoegen
+      url: ./how-to-assess.md
+    - text: Inventaris van toepassingen ontdekken
+      url: ./how-to-discover-applications.md
     - text: Migratiehulpprogramma's toevoegen
       url: ./how-to-migrate.md
     - text: VMware-evaluatie schalen
@@ -71,9 +81,9 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: Migratiearchitectuur op basis van een VMware-agent
+    - text: Meer informatie over migratie van VMware/fysieke agents
       url: ./agent-based-migration-architecture.md
-    - text: Hyper-V-migratiearchitectuur
+    - text: Meer informatie over Hyper-V-migratie
       url: ./hyper-v-migration-architecture.md
     - text: Meer informatie over evaluaties
       url: ./concepts-assessment-calculation.md

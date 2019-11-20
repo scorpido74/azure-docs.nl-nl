@@ -974,21 +974,19 @@
       items:
         - name: Gegevens herstellen vanaf back-up
           href: how-to-backup-and-restore.md
-    - name: Logboekregistratie
+    - name: Controleren
       items:
-        - name: Diagnostische logboeken
-          href: logging.md
+        - name: Cosmos DB bewaken
+          href: monitor-cosmos-db.md
+        - name: Azure Monitor voor Cosmos (preview)
+          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json
+        - name: Metrische gegevens weergeven vanuit Cosmos DB-account
+          href: use-metrics.md
         - name: Toepassingslogboeken bijhouden met Logische apps
           href: /azure/logic-apps/logic-apps-scenario-error-and-exception-handling
           maintainContext: true
-    - name: Bewaken met metrische gegevens
-      items:
-        - name: Metrische gegevens weergeven vanuit Cosmos DB-account
-          href: use-metrics.md
-        - name: Metrische gegevens weergeven vanuit Azure Monitor
-          href: cosmos-db-azure-monitor-metrics.md
-        - name: SLA's bewaken
-          href: monitor-accounts.md
+        - name: Referentiegegevens voor bewaking
+          href: monitor-cosmos-db-reference.md
     - name: Lokaal ontwikkelen
       items:
         - name: De emulator gebruiken
