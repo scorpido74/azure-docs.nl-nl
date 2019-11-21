@@ -1,6 +1,6 @@
 ---
-title: Fivetran Quick Start
-description: Ga snel aan de slag met Fivetran en Azure SQL Data Warehouse.
+title: Fivetran quickstart
+description: Get started quickly with Fivetran and Azure SQL Data Warehouse.
 services: sql-data-warehouse
 author: mlee3gsd
 manager: craigg
@@ -11,43 +11,43 @@ ms.date: 10/12/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 250df3e106ae65cafc84a412c155e3a27c535c79
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 715f891484458f3bf3febc6807c3490b88062d50
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686114"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229093"
 ---
-# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Snel aan de slag met Fivetran en SQL Data Warehouse
+# <a name="get-started-quickly-with-fivetran-and-sql-data-warehouse"></a>Get started quickly with Fivetran and SQL Data Warehouse
 
-In deze Quick Start wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt om met Azure SQL Data Warehouse te werken. In dit artikel wordt ervan uitgegaan dat u een bestaand exemplaar van SQL Data Warehouse hebt.
+This quickstart describes how to set up a new Fivetran user to work with Azure SQL Data Warehouse. The article assumes that you have an existing instance of SQL Data Warehouse.
 
-## <a name="set-up-a-connection"></a>Een verbinding instellen
+## <a name="set-up-a-connection"></a>Set up a connection
 
-1. Zoek de volledig gekwalificeerde server naam en database naam die u gebruikt om verbinding te maken met SQL Data Warehouse.
+1. Find the fully qualified server name and database name that you use to connect to SQL Data Warehouse.
     
-    Zie [verbinding maken met Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md)als u hulp nodig hebt bij het vinden van deze informatie.
+    If you need help finding this information, see [Connect to Azure SQL Data Warehouse](sql-data-warehouse-connect-overview.md).
 
-2. Kies in de installatie wizard of u rechtstreeks verbinding wilt maken met uw data base of met behulp van een SSH-tunnel.
+2. In the setup wizard, choose whether to connect your database directly or by using an SSH tunnel.
 
-   Als u ervoor kiest om rechtstreeks verbinding te maken met uw data base, moet u een firewall regel maken om toegang toe te staan. Deze methode is de eenvoudigste en veiligste methode.
+   If you choose to connect directly to your database, you must create a firewall rule to allow access. This method is the simplest and most secure method.
 
-   Als u ervoor kiest om verbinding te maken met behulp van een SSH-tunnel, maakt Fivetran verbinding met een afzonderlijke server in uw netwerk. De server biedt een SSH-tunnel voor uw data base. U moet deze methode gebruiken als uw data base zich in een niet-toegankelijk subnet in een virtueel netwerk bevindt.
+   If you choose to connect by using an SSH tunnel, Fivetran connects to a separate server on your network. The server provides an SSH tunnel to your database. You must use this method if your database is in an inaccessible subnet on a virtual network.
 
-3. Voeg het IP-adres **52.0.2.4** toe aan de firewall op server niveau om binnenkomende verbindingen met uw SQL Data Warehouse-exemplaar toe te staan vanaf Fivetran.
+3. Add the IP address **52.0.2.4** to your server-level firewall to allow incoming connections to your SQL Data Warehouse instance from Fivetran.
 
    Zie [Een serverfirewallregel maken](create-data-warehouse-portal.md#create-a-server-level-firewall-rule) voor meer informatie.
 
-## <a name="set-up-user-credentials"></a>Gebruikers referenties instellen
+## <a name="set-up-user-credentials"></a>Set up user credentials
 
-1. Maak verbinding met uw Azure SQL Data Warehouse met behulp van SQL Server Management Studio of het hulp programma dat u wilt gebruiken. Meld u aan als een server beheerder gebruiker. Voer vervolgens de volgende SQL-opdrachten uit om een gebruiker te maken voor Fivetran:
-    - In de hoofd database: 
+1. Connect to your Azure SQL Data Warehouse by using SQL Server Management Studio or the tool that you prefer. Sign in as a server admin user. Then, run the following SQL commands to create a user for Fivetran:
+    - In the master database: 
     
       ```
       CREATE LOGIN fivetran WITH PASSWORD = '<password>'; 
       ```
 
-    - In SQL Data Warehouse Data Base:
+    - In SQL Data Warehouse database:
 
       ```
       CREATE USER fivetran_user_without_login without login;
@@ -55,31 +55,31 @@ In deze Quick Start wordt beschreven hoe u een nieuwe Fivetran-gebruiker instelt
       GRANT IMPERSONATE on USER::fivetran_user_without_login to fivetran;
       ```
 
-2. Ken de Fivetran-gebruiker de volgende machtigingen toe aan uw magazijn:
+2. Grant the Fivetran user the following permissions to your warehouse:
 
     ```
     GRANT CONTROL to fivetran;
     ```
 
-    De machtiging beheren is vereist voor het maken van data base-Scope-referenties die worden gebruikt wanneer een gebruiker bestanden uit Azure Blob-opslag laadt met poly base.
+    CONTROL permission is required to create database-scoped credentials that are used when a user loads files from Azure Blob storage by using PolyBase.
 
-3. Voeg een geschikte resource klasse toe aan de Fivetran-gebruiker. De resource klasse die u gebruikt, is afhankelijk van het geheugen dat vereist is voor het maken van een column store-index. Integraties met producten als Marketo en Sales Force vereisen bijvoorbeeld een hogere resource klasse vanwege het grote aantal kolommen en de grotere hoeveelheid gegevens die de producten gebruiken. Een hogere resource klasse vereist meer geheugen voor het maken van Column Store-indexen.
+3. Add a suitable resource class to the Fivetran user. The resource class you use depends on the memory that's required to create a columnstore index. For example, integrations with products like Marketo and Salesforce require a higher resource class because of the large number of columns and the larger volume of data the products use. A higher resource class requires more memory to create columnstore indexes.
 
-    U wordt aangeraden statische resource klassen te gebruiken. U kunt beginnen met de resource klasse `staticrc20`. De resource klasse `staticrc20` wijst 200 MB toe voor elke gebruiker, ongeacht het prestatie niveau dat u gebruikt. Als column Store-indexering mislukt op het eerste niveau van de resource klasse, verhoogt u de resource klasse.
+    We recommend that you use static resource classes. You can start with the `staticrc20` resource class. The `staticrc20` resource class allocates 200 MB for each user, regardless of the performance level you use. If columnstore indexing fails at the initial resource class level, increase the resource class.
 
     ```
     EXEC sp_addrolemember '<resource_class_name>', 'fivetran';
     ```
 
-    Lees voor meer informatie over [geheugen en gelijktijdigheids limieten] geheugen-gelijktijdigheids limits.md) en [resource klassen](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
+    For more information, read about [memory and concurrency limits](memory-concurrency-limits.md) and [resource classes](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md#ways-to-allocate-more-memory).
 
 
-## <a name="sign-in-to-fivetran"></a>Aanmelden bij Fivetran
+## <a name="sign-in-to-fivetran"></a>Sign in to Fivetran
 
-Als u zich wilt aanmelden bij Fivetran, voert u de referenties in die u gebruikt voor toegang tot SQL Data Warehouse: 
+To sign in to Fivetran, enter the credentials that you use to access SQL Data Warehouse: 
 
-* Host (uw server naam).
-* Importeer.
+* Host (your server name).
+* Port.
 * Database.
-* Gebruiker (de gebruikers naam moet **fivetran\@_naam server_**  zijn waarbij *Server* naam deel uitmaakt van de URI van uw Azure-host: ***Server naam *. data base. Windows. net**).
-* Wacht woord.
+* User (the user name should be **fivetran\@_server_name_** where *server_name* is part of your Azure host URI: ***server_name*.database.windows.net**).
+* Password.

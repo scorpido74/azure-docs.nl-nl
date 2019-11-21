@@ -2,36 +2,36 @@
 title: bestand opnemen
 description: bestand opnemen
 services: notification-hubs
-author: spelluru
+author: sethmanheim
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 03/30/2018
-ms.author: spelluru
+ms.date: 11/07/2019
+ms.author: sethm
 ms.custom: include file
-ms.openlocfilehash: 299f92484000cb5c59291a5af87f24d89a771fee
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 48907713082ebb1008ad963121671b36af7f2731
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72296744"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228156"
 ---
 In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen vanuit een .NET-console-app.
 
 1. Maak in Visual Studio een nieuwe Visual C#-consoletoepassing:
-    1. Selecteer in het menu **bestand** > **Nieuw** > -**project**.
-    1. Selecteer in **een nieuw project maken**de optie **console-app (.NET Framework)** voor C# in de lijst met sjablonen en selecteer **volgende**.
-    1. Voer een naam in voor de app.
-    1. Voor **oplossing**kiest **u toevoegen aan oplossing**en selecteert u **maken** om het project te maken.
+    1. On the menu, select **File** > **New** > **Project**.
+    1. In **Create a new project**, select **Console App (.NET Framework)** for C# in the list of templates, and select **Next**.
+    1. Enter a name for the app.
+    1. For **Solution**, choose **Add to solution**, and select **Create** to create the project.
 
-1. Selecteer **extra** > **NuGet package manager** > **Package Manager-console** en voer vervolgens in het console venster de volgende opdracht uit:
+1. Select **Tools** > **NuGet Package Manager** > **Package Manager Console** and then, in the console window, run the following command:
 
    ```powershell
    Install-Package Microsoft.Azure.NotificationHubs
    ```
 
-   Met deze actie wordt een verwijzing toegevoegd aan de Azure Notification Hubs SDK met behulp van het pakket [micro soft. Azure. notification hubs] .
+   This action adds a reference to the Azure Notification Hubs SDK by using the [Microsoft.Azure.NotificationHubs] package.
 
-1. Open het *Program.cs* -bestand en voeg de volgende `using`-instructie toe:
+1. Open the *Program.cs* file, and add the following `using` statement:
 
    ```csharp
    using Microsoft.Azure.NotificationHubs;
@@ -45,12 +45,15 @@ In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen van
         // Define the notification hub.
         NotificationHubClient hub = NotificationHubClient.CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
 
+        // Apple requires the apns-push-type header for all requests
+        var headers = new Dictionary<string, string> {{"apns-push-type", "alert"}};
+
         // Create an array of breaking news categories.
         var categories = new string[] { "World", "Politics", "Business", "Technology", "Science", "Sports"};
 
         // Send the notification as a template notification. All template registrations that contain
         // "messageParam" and the proper tags will receive the notifications.
-        // This includes APNS, GCM, WNS, and MPNS template registrations.
+        // This includes APNS, GCM/FCM, WNS, and MPNS template registrations.
 
         Dictionary<string, string> templateParams = new Dictionary<string, string>();
 
@@ -66,7 +69,7 @@ In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen van
 
 1. Vervang in de voorgaande code de tijdelijke aanduidingen `<hub name>` en `<connection string with full access>` door de naam van de meldingenhub en de verbindingsreeks voor *DefaultFullSharedAccessSignature* uit het dashboard van de meldingenhub.
 
-1. Voeg in de methode `Main()` de volgende regels toe:
+1. In the `Main()` method, add the following lines:
 
    ```csharp
     SendTemplateNotificationAsync();
@@ -83,4 +86,4 @@ In deze sectie verzendt u het laatste nieuws als gelabelde sjabloonmeldingen van
 [Notification Hubs REST interface]: https://msdn.microsoft.com/library/windowsazure/dn223264.aspx
 [Add push notifications for Mobile Apps]: ../articles/app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md
 [How to use Notification Hubs from Java or PHP]: ../articles/notification-hubs/notification-hubs-java-push-notification-tutorial.md
-[Micro soft. Azure. notification hubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/
+[Microsoft.Azure.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/

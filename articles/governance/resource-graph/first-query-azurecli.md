@@ -1,16 +1,16 @@
 ---
-title: Uw eerste query uitvoeren met Azure CLI
-description: Dit artikel helpt u bij de stappen om de Resource Graph-extensie voor Azure CLI in te schakelen en uw eerste query uit te voeren.
+title: 'Quickstart: Your first Azure CLI query'
+description: In this quickstart, you follow the steps to enable the Resource Graph extension for Azure CLI and run your first query.
 ms.date: 10/18/2019
 ms.topic: quickstart
-ms.openlocfilehash: b74e4314a7755bb067831f955ca02d62485abe4f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a3ef32b2c2dcaa7a043bbb3e1e859ee295f02f2f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958958"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216612"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure CLI
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-cli"></a>Quickstart: Run your first Resource Graph query using Azure CLI
 
 De eerste stap voor het gebruik van Azure Resource Graph bestaat uit het controleren of de extensie voor [Azure CLI](/cli/azure/) is geïnstalleerd. In deze snelstartgids doorloopt u het proces voor het toevoegen van de extensie aan uw Azure CLI-installatie. U kunt de extensie gebruiken met een lokale installatie van Azure CLI of via de [Azure Cloud Shell](https://shell.azure.com).
 
@@ -31,7 +31,7 @@ De extensie moet worden toegevoegd opdat Azure CLI query's kan uitvoeren voor Az
    az extension add --name resource-graph
    ```
 
-1. Controleer of de uitbrei ding is geïnstalleerd en de verwachte versie is (ten minste **1.0.0**):
+1. Validate that the extension has been installed and is the expected version (at least **1.0.0**):
 
    ```azurecli-interactive
    # Check the extension list (note that you may have other extensions installed)
@@ -57,7 +57,7 @@ Nu de Azure CLI-extensie is toegevoegd aan uw gewenste omgeving, kunt u een eenv
    > [!NOTE]
    > Omdat deze voorbeeldquery geen sorteermodificator geeft, bijvoorbeeld `order by`, zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd.
 
-1. Werk de query als volgt bij om de eigenschap `order by`naam**te**:
+1. Werk de query als volgt bij om de eigenschap **naam** te `order by`:
 
    ```azurecli-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -87,10 +87,10 @@ az extension remove -n resource-graph
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [query taal](./concepts/query-language.md).
-- Meer informatie over hoe u [resources kunt verkennen](./concepts/explore-resources.md).
-- Voer uw eerste query uit met behulp van de [Azure Portal](first-query-portal.md).
-- Voer uw eerste query uit met [Azure PowerShell](first-query-powershell.md).
-- Bekijk voor beelden van [Start query's](./samples/starter.md).
-- Bekijk voor beelden van [Geavanceerde query's](./samples/advanced.md).
-- Feedback geven over [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+- Get more information about the [query language](./concepts/query-language.md).
+- Learn more about how to [explore resources](./concepts/explore-resources.md).
+- Run your first query by using the [Azure portal](first-query-portal.md).
+- Run your first query with [Azure PowerShell](first-query-powershell.md).
+- See samples of [Starter queries](./samples/starter.md).
+- See samples of [Advanced queries](./samples/advanced.md).
+- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).

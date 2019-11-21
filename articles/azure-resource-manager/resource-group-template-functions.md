@@ -1,20 +1,20 @@
 ---
 title: Sjabloonfuncties
-description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om waarden op te halen, te werken met teken reeksen en cijfers en implementatie gegevens op te halen.
+description: Describes the functions to use in an Azure Resource Manager template to retrieve values, work with strings and numerics, and retrieve deployment information.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: a9501517672d3ea80a29979ce6b1439c4cc0010e
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/19/2019
+ms.openlocfilehash: cf263bff72677778433d4ef2f3cee8135fe3ab06
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150658"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224187"
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager-sjabloon functies
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager template functions
 
-In dit artikel worden alle functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon. Zie de [syntaxis van sjablonen](template-expressions.md)voor meer informatie over het gebruik van functies in uw sjabloon.
+This article describes all the functions you can use in an Azure Resource Manager template. For information about using functions in your template, see [template syntax](template-expressions.md).
 
-Zie door de [gebruiker gedefinieerde functies](resource-group-authoring-templates.md#functions)om uw eigen functies te maken.
+To create your own functions, see [User-defined functions](resource-group-authoring-templates.md#functions).
 
 <a id="array" aria-hidden="true" />
 <a id="coalesce" aria-hidden="true" />
@@ -35,7 +35,7 @@ Zie door de [gebruiker gedefinieerde functies](resource-group-authoring-template
 <a id="union" aria-hidden="true" />
 
 ## <a name="array-and-object-functions"></a>Matrix- en objectfuncties
-Resource Manager biedt verschillende functies voor het werken met matrices en objecten.
+Resource Manager provides several functions for working with arrays and objects.
 
 * [array](resource-group-template-functions-array.md#array)
 * [coalesce](resource-group-template-functions-array.md#coalesce)
@@ -62,7 +62,7 @@ Resource Manager biedt verschillende functies voor het werken met matrices en ob
 <a id="greaterorequals" aria-hidden="true" />
 
 ## <a name="comparison-functions"></a>Vergelijkingsfuncties
-Resource Manager biedt verschillende functies voor het maken van vergelijkingen in uw sjablonen.
+Resource Manager provides several functions for making comparisons in your templates.
 
 * [equals](resource-group-template-functions-comparison.md#equals)
 * [less](resource-group-template-functions-comparison.md#less)
@@ -74,12 +74,13 @@ Resource Manager biedt verschillende functies voor het maken van vergelijkingen 
 <a id="parameters" aria-hidden="true" />
 <a id="variables" aria-hidden="true" />
 
-## <a name="deployment-value-functions"></a>Implementatie waarden functies
-Resource Manager biedt de volgende functies voor het ophalen van waarden uit secties van de sjabloon en waarden die betrekking hebben op de implementatie:
+## <a name="deployment-value-functions"></a>Deployment value functions
+Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
 
-* [inhoudsdistributiepad](resource-group-template-functions-deployment.md#deployment)
+* [deployment](resource-group-template-functions-deployment.md#deployment)
+* [environment](resource-group-template-functions-deployment.md#environment)
 * [parameters](resource-group-template-functions-deployment.md#parameters)
-* [variabelen](resource-group-template-functions-deployment.md#variables)
+* [variables](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" aria-hidden="true" />
 <a id="bool" aria-hidden="true" />
@@ -88,7 +89,7 @@ Resource Manager biedt de volgende functies voor het ophalen van waarden uit sec
 <a id="or" aria-hidden="true" />
 
 ## <a name="logical-functions"></a>Logische functies
-Resource Manager biedt de volgende functies voor het werken met logische voor waarden:
+Resource Manager provides the following functions for working with logical conditions:
 
 * [and](resource-group-template-functions-logical.md#and)
 * [bool](resource-group-template-functions-logical.md#bool)
@@ -108,7 +109,7 @@ Resource Manager biedt de volgende functies voor het werken met logische voor wa
 <a id="sub" aria-hidden="true" />
 
 ## <a name="numeric-functions"></a>Numerieke functies
-Resource Manager biedt de volgende functies voor het werken met gehele getallen:
+Resource Manager provides the following functions for working with integers:
 
 * [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
@@ -133,17 +134,17 @@ Resource Manager biedt de volgende functies voor het werken met gehele getallen:
 <a id="tenantResourceId" aria-hidden="true" />
 
 ## <a name="resource-functions"></a>Resourcefuncties
-Resource Manager biedt de volgende functies voor het ophalen van waarden van resources:
+Resource Manager provides the following functions for getting resource values:
 
 * [extensionResourceId](resource-group-template-functions-resource.md#extensionresourceid)
 * [listAccountSas](resource-group-template-functions-resource.md#list)
 * [listKeys](resource-group-template-functions-resource.md#listkeys)
 * [listSecrets](resource-group-template-functions-resource.md#list)
-* [lijst met *](resource-group-template-functions-resource.md#list)
-* [Providers](resource-group-template-functions-resource.md#providers)
-* [Verwijzing](resource-group-template-functions-resource.md#reference)
+* [list*](resource-group-template-functions-resource.md#list)
+* [providers](resource-group-template-functions-resource.md#providers)
+* [reference](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
-* [ResourceId](resource-group-template-functions-resource.md#resourceid)
+* [resourceId](resource-group-template-functions-resource.md#resourceid)
 * [abonnement](resource-group-template-functions-resource.md#subscription)
 * [subscriptionResourceId](resource-group-template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](resource-group-template-functions-resource.md#tenantresourceid)
@@ -180,7 +181,7 @@ Resource Manager biedt de volgende functies voor het ophalen van waarden van res
 <a id="uricomponenttostring" aria-hidden="true" />
 
 ## <a name="string-functions"></a>Tekenreeksfuncties
-Resource Manager biedt de volgende functies voor het werken met teken reeksen:
+Resource Manager provides the following functions for working with strings:
 
 * [base64](resource-group-template-functions-string.md#base64)
 * [base64ToJson](resource-group-template-functions-string.md#base64tojson)
@@ -204,7 +205,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 * [skip](resource-group-template-functions-string.md#skip)
 * [split](resource-group-template-functions-string.md#split)
 * [startsWith](resource-group-template-functions-string.md#startswith)
-* [Tekenreeks](resource-group-template-functions-string.md#string)
+* [string](resource-group-template-functions-string.md#string)
 * [substring](resource-group-template-functions-string.md#substring)
 * [take](resource-group-template-functions-string.md#take)
 * [toLower](resource-group-template-functions-string.md#tolower)
@@ -218,7 +219,7 @@ Resource Manager biedt de volgende functies voor het werken met teken reeksen:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [Azure Resource Manager sjablonen ontwerpen](resource-group-authoring-templates.md) voor een beschrijving van de secties in een Azure Resource Manager sjabloon
-* Zie voor het samen voegen van meerdere sjablonen [gekoppelde sjablonen gebruiken met Azure Resource Manager](resource-group-linked-templates.md)
-* Als u een bepaald aantal keer wilt herhalen bij het maken van een type resource, raadpleegt u [meerdere exemplaren van resources maken in azure Resource Manager](resource-group-create-multiple.md)
-* Zie [een toepassing implementeren met Azure Resource Manager sjabloon](resource-group-template-deploy.md) voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt.
+* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md)
+* To merge multiple templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md)
+* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md)
+* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md)

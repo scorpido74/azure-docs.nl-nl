@@ -1,16 +1,16 @@
 ---
-title: Een blauwdruk maken met de REST-API
-description: Gebruik Azure Blueprints om artefacten te maken, te definiëren en te implementeren met de REST API.
+title: 'Quickstart: Create a blueprint with REST API'
+description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the REST API.
 ms.date: 02/04/2019
 ms.topic: quickstart
-ms.openlocfilehash: 9b711a6359ed9ecb45f25c460ece095af46ad8c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 40ae1eb3647f1eba6df920459fcc3673b31bfa01
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960413"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217060"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met REST API
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Quickstart: Define and Assign an Azure Blueprint with REST API
 
 Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
@@ -66,7 +66,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
 > [!NOTE]
-> Blauw drukken kan ook worden gemaakt op abonnements niveau. Zie [voor beeld Blue maken bij abonnement](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint)voor meer informatie.
+> Blueprints may also be created at the subscription level. To see an example, see [create blueprint at subscription example](/rest/api/blueprints/blueprints/createorupdate#subscriptionblueprint).
 
 1. Maak het eerste _blauwdruk_object. De **Aanvraagbody** bevat eigenschappen van de blauwdruk, te maken resourcegroepen en alle parameters op blauwdrukniveau. De parameters worden tijdens het toewijzen ingesteld en gebruikt door de artefacten die in latere stappen worden toegevoegd.
 
@@ -332,7 +332,7 @@ In elke REST API-URI zijn er verschillende variabelen die worden gebruikt en die
 - Vervang `{YourMG}` door de ID van uw beheergroep
 - Vervang `{subscriptionId}` door uw abonnements-ID
 
-1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. De AppId is statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), maar de ID van de Service-Principal is afhankelijk van de Tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
+1. Geef in de Azure Blueprint-service-principal de rol **Eigenaar** op in het doelabonnement. The AppId is static (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), but the service principal ID varies by tenant. U kunt voor uw tenant details aanvragen met de volgende REST API. Deze gebruikt [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md), die een andere autorisatie heeft.
 
    - REST API-URI
 

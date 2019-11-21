@@ -448,12 +448,12 @@
           href: control-flow-get-metadata-activity.md
         - name: If Condition Activity
           href: control-flow-if-condition-activity.md
-        - name: Activiteit wisselen
-          href: control-flow-switch-activity.md
         - name: Opzoekactiviteit
           href: control-flow-lookup-activity.md
         - name: Activiteit variabele instellen
           href: control-flow-set-variable-activity.md
+        - name: Activiteit wisselen
+          href: control-flow-switch-activity.md
         - name: Until-activiteit
           href: control-flow-until-activity.md
         - name: Validatie-activiteit

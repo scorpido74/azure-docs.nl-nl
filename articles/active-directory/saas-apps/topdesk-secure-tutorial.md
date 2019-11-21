@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met TOPdesk-Secure | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with TOPdesk - Secure | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en TOPdesk - Secure.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3125f5b9075a69289bd6a44d62c3d06d5e6d910d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 393557531fe69a494a16e0f4c49ac07891e490ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73161123"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233407"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Zelf studie: integratie Azure Active Directory met TOPdesk-Secure
+# <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>Tutorial: Azure Active Directory integration with TOPdesk - Secure
 
 In deze zelfstudie leert u hoe u TOPdesk - Secure kunt integreren met Azure Active Directory (Azure AD).
 Integratie van TOPdesk - Secure met Azure AD biedt de volgende voordelen:
@@ -108,7 +108,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met TOPdesk - Secu
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met het volgende patroon: `https://<companyname>.topdesk.net`
 
-    b. In het vak **ID-URL** vult u de URL van de TopDesk-meta gegevens in die u kunt ophalen uit de TopDesk-configuratie. Het moet het volgende patroon gebruiken: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
+    b. In the **Identifier URL** box, fill in the TOPdesk metadata URL that you can retrieve from the TOPdesk configuration. It should use the following pattern: `https://<companyname>.topdesk.net/saml-metadata/<identifier>`
 
     c. In het tekstvak **Antwoord-URL** typt u een URL met het volgende patroon: `https://<companyname>.topdesk.net/tas/secure/login/verify`
 
@@ -139,7 +139,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met TOPdesk - Secu
 
 3. Klik op **Login Settings**.
 
-    ![Aanmeldings instellingen](./media/topdesk-secure-tutorial/ic790599.png "Aanmeldings instellingen")
+    ![Login Settings](./media/topdesk-secure-tutorial/ic790599.png "Login Settings")
 
 4. Vouw het menu **Login Settings** uit en klik op **General**.
 
@@ -147,7 +147,7 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met TOPdesk - Secu
 
 5. Voer de volgende stappen uit in de sectie **Secure** van de configuratiesectie **SAML login**:
 
-    ![Technische instellingen](./media/topdesk-secure-tutorial/ic790855.png "Technische instellingen")
+    ![Technical Settings](./media/topdesk-secure-tutorial/ic790855.png "Technical Settings")
 
     a. Klik op **Downloaden** om het openbare metagegevensbestand te downloaden en sla het lokaal op uw computer op.
 
@@ -171,11 +171,11 @@ Voer de volgende stappen uit om Azure AD-eenmalige aanmelding met TOPdesk - Secu
 
 7. Klik in de sectie **Public** op **Add**.
 
-    ![Toe](./media/topdesk-secure-tutorial/ic790607.png "Toevoegen")
+    ![Add](./media/topdesk-secure-tutorial/ic790607.png "Toevoegen")
 
 8. Voer de volgende stappen uit in het dialoogvenster **SAML configuration assistant**:
 
-    ![SAML-configuratie-assistent](./media/topdesk-secure-tutorial/ic790608.png "SAML-configuratie-assistent")
+    ![SAML Configuration Assistant](./media/topdesk-secure-tutorial/ic790608.png "SAML Configuration Assistant")
 
     a. Klik onder **Federatieve metagegevens** op **Bladeren** om het gedownloade metagegevensbestand te uploaden vanuit de Azure-portal.
 
@@ -209,7 +209,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -253,11 +253,11 @@ Het inrichten moet handmatig worden uitgevoerd in TOPdesk - Secure.
 
 2. Klik in het menu aan de bovenkant op **TOPdesk \> New \> Support Files \> Operator**.
 
-    ![And](./media/topdesk-secure-tutorial/ic790610.png "Operator")
+    ![Operator](./media/topdesk-secure-tutorial/ic790610.png "Operator")
 
 3. Voer de volgende stappen uit in het dialoogvenster **New Operator**:
 
-    ![Nieuwe operator](./media/topdesk-secure-tutorial/ic790611.png "Nieuwe operator")
+    ![New Operator](./media/topdesk-secure-tutorial/ic790611.png "New Operator")
 
     a. Klik op het tabblad **General**.
 
@@ -270,7 +270,7 @@ Het inrichten moet handmatig worden uitgevoerd in TOPdesk - Secure.
     e. Klik op **Opslaan**.
 
 > [!NOTE]
-> U kunt ook AAD-gebruikersaccounts inrichten met alle andere door TOPdesk - Secure geleverde hulpprogramma's of API's voor het maken van gebruikersaccounts.
+> You can use any other TOPdesk - Secure user account creation tools or APIs provided by TOPdesk - Secure to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -284,5 +284,5 @@ Wanneer u op de tegel TOPdesk - Secure in het toegangsvenster klikt, zou u autom
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

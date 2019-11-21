@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Integratie met ZIVVER Azure Active Directory | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en ZIVVER.
+title: 'Tutorial: Azure Active Directory integration with ZIVVER | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and ZIVVER.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: cc78b08c25ada2bf1ed67f4c27246bc873823516
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.openlocfilehash: 02b292c5db3d20f56d7b8291ea31d8da9863809b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68943121"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233240"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Zelfstudie: Integratie met ZIVVER Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-zivver"></a>Tutorial: Azure Active Directory integration with ZIVVER
 
-In deze zelf studie leert u hoe u ZIVVER integreert met Azure Active Directory (Azure AD).
-Het integreren van ZIVVER met Azure AD biedt de volgende voor delen:
+In this tutorial, you learn how to integrate ZIVVER with Azure Active Directory (Azure AD).
+Integrating ZIVVER with Azure AD provides you with the following benefits:
 
-* U kunt beheren in azure AD die toegang heeft tot ZIVVER.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij ZIVVER (eenmalige aanmelding) met hun Azure AD-accounts.
-* U kunt uw accounts in één centrale locatie - Azure portal beheren.
+* You can control in Azure AD who has access to ZIVVER.
+* You can enable your users to be automatically signed-in to ZIVVER (Single Sign-On) with their Azure AD accounts.
+* U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met ZIVVER wilt configureren, hebt u de volgende items nodig:
+To configure Azure AD integration with ZIVVER, you need the following items:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
-* Abonnement voor eenmalige aanmelding ZIVVER ingeschakeld
+* Een Azure AD-abonnement If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* ZIVVER single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* ZIVVER ondersteunt door **IDP** GEÏNITIEERDe SSO
+* ZIVVER supports **IDP** initiated SSO
 
-## <a name="adding-zivver-from-the-gallery"></a>ZIVVER toevoegen uit de galerie
+## <a name="adding-zivver-from-the-gallery"></a>Adding ZIVVER from the gallery
 
-Als u de integratie van ZIVVER in azure AD wilt configureren, moet u ZIVVER uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of ZIVVER into Azure AD, you need to add ZIVVER from the gallery to your list of managed SaaS apps.
 
-**Voer de volgende stappen uit om ZIVVER toe te voegen uit de galerie:**
+**To add ZIVVER from the gallery, perform the following steps:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -61,37 +61,37 @@ Als u de integratie van ZIVVER in azure AD wilt configureren, moet u ZIVVER uit 
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Nieuwe toepassing toevoegen, klikt u op **nieuwe toepassing** knop boven aan het dialoogvenster.
+3. Als u de nieuwe toepassing wilt toevoegen, klikt u op de knop **Nieuwe toepassing** boven aan het dialoogvenster.
 
-    ![De knop nieuwe toepassing](common/add-new-app.png)
+    ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **ZIVVER**in het zoekvak, selecteer **ZIVVER** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. In the search box, type **ZIVVER**, select **ZIVVER** from result panel then click **Add** button to add the application.
 
-     ![ZIVVER in de lijst met resultaten](common/search-new-app.png)
+     ![ZIVVER in the results list](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met ZIVVER op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in ZIVVER tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with ZIVVER based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in ZIVVER needs to be established.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met ZIVVER, moet u de volgende bouw stenen volt ooien:
+To configure and test Azure AD single sign-on with ZIVVER, you need to complete the following building blocks:
 
-1. **[Azure AD eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)**  : als u wilt dat uw gebruikers kunnen deze functie gebruiken.
-2. **[ZIVVER eenmalige aanmelding configureren](#configure-zivver-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
-3. **[Maak een Azure AD-testgebruiker](#create-an-azure-ad-test-user)**  - voor het testen van Azure AD eenmalige aanmelding met Britta Simon.
-4. **[Toewijzen van de Azure AD-testgebruiker](#assign-the-azure-ad-test-user)**  - Britta Simon gebruik van Azure AD eenmalige aanmelding inschakelen.
-5. **[Maak een ZIVVER-test gebruiker](#create-zivver-test-user)** -om een equivalent van Julia Simon in ZIVVER te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
-6. **[Eenmalige aanmelding testen](#test-single-sign-on)**  : als u wilt controleren of de configuratie werkt.
+1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
+2. **[Configure ZIVVER Single Sign-On](#configure-zivver-single-sign-on)** - to configure the Single Sign-On settings on application side.
+3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
+4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
+5. **[Create ZIVVER test user](#create-zivver-test-user)** - to have a counterpart of Britta Simon in ZIVVER that is linked to the Azure AD representation of user.
+6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met ZIVVER:
+To configure Azure AD single sign-on with ZIVVER, perform the following steps:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **ZIVVER** Application Integration de optie **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **ZIVVER** application integration page, select **Single sign-on**.
 
-    ![Koppeling voor eenmalige aanmelding configureren](common/select-sso.png)
+    ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
 2. In het dialoogvenster **Een methode voor eenmalige aanmelding selecteren** selecteert u de modus **SAML/WS-Federation** om eenmalige aanmelding in te schakelen.
 
@@ -103,22 +103,22 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor ZIVVER domein en Url's](common/idp-identifier.png)
+    ![ZIVVER Domain and URLs single sign-on information](common/idp-identifier.png)
 
     In het tekstvak **Id** typt u een URL: `https://app.zivver.com/SAML/Zivver`
 
-5. De ZIVVER-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. ZIVVER-toepassing verwacht dat **nameidentifier** moeten worden toegewezen aan **User. mail**, dus u moet de kenmerk toewijzing bewerken door op het pictogram **bewerken** te klikken en de kenmerk toewijzing te wijzigen.
+5. ZIVVER application expects the SAML assertions in a specific format, which requires you to add custom attribute mappings to your SAML token attributes configuration. In de volgende schermafbeelding ziet u de lijst met standaardkenmerken, waarbij **nameidentifier** is toegewezen aan **user.userprincipalname**. ZIVVER application expects **nameidentifier** to be mapped with **user.mail**, so you need to edit the attribute mapping by clicking on **Edit** icon and change the attribute mapping.
 
     ![image](common/edit-attribute.png)
 
-6. Daarnaast verwacht ZIVVER toepassing nog enkele kenmerken die in het SAML-antwoord weer worden door gegeven. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
+6. In addition to above, ZIVVER application expects few more attributes to be passed back in SAML response. In de sectie **Gebruikersclaims** in het dialoogvenster **Gebruikerskenmerken** voert u de volgende stappen uit om het kenmerk van het SAML-token toe te voegen zoals wordt weergegeven in de onderstaande tabel:
 
-    | Name | Naamruimte | Bronkenmerk|
+    | Naam | Naamruimte | Bronkenmerk|
     | ---------------| --------------- |
     | ZivverAccountKey | https:\//zivver.com/SAML/Attributes | user.objectid |
 
     >[!NOTE]
-    >Als u een hybride installatie met Active Directory on-premises-en Azure AD Connect-hulp programma gebruikt, moet u de waarde instellen op`user.objectGUID`
+    >If you are using a hybrid setup with Active Directory on-premises and Azure AD Connect Tool, VALUE should be set to `user.objectGUID`
 
     a. Klik op **Nieuwe claim toevoegen** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
@@ -136,11 +136,11 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     f. Klik op **Opslaan**.
 
-7. Klik op de pagina **eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekening certificaat** op **downloaden** om het **XML-bestand met federatieve meta gegevens** te downloaden en klik op pictogram **kopiëren** om de URL van de **app Federation meta data** te kopiëren van de gewenste opties volgens uw vereiste en sla deze op uw computer op.
+7. On the **Set up Single Sign-On with SAML** page, in the **SAML Signing Certificate** section, click **Download** to download the **Federation Metadata XML** and click **Copy** icon to copy the **App Federation Metadata url** from the given options as per your requirement and save it on your computer.
 
-    ![De koppeling voor het downloaden van de certificaat-URL](./media/zivver-tutorial/metadataxmlurl.png)
+    ![The Certificate URL download link](./media/zivver-tutorial/metadataxmlurl.png)
 
-8. Kopieer op de sectie **ZIVVER instellen** de gewenste URL ('s) volgens uw vereiste.
+8. On the **Set up ZIVVER** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -148,25 +148,25 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     b. Azure AD-id
 
-    c. URL voor afmelden
+    c. Afmeldings-URL
 
-### <a name="configure-zivver-single-sign-on"></a>Eenmalige aanmelding voor ZIVVER configureren
+### <a name="configure-zivver-single-sign-on"></a>Configure ZIVVER Single Sign-On
 
-1. Meld u in een ander webbrowser venster als beheerder aan bij uw ZIVVER-bedrijfs [site](https://app.zivver.com/login) .
+1. In a different web browser window, sign in to your ZIVVER company [site](https://app.zivver.com/login) as an administrator.
 
-2. Klik op het pictogram **organisatie-instellingen** linksonder in het browser venster.
+2. Click the **Organization settings** icon at the bottom left of your browser window.
 
-3. Ga naar **eenmalige aanmelding**.
+3. Go to **Single sign-on**.
 
-4. Open het XML-bestand met federatieve meta gegevens dat u hebt gedownload van Azure Portal.
+4. Open the Federation Metadata XML file that you downloaded from Azure portal.
 
-5. Plak de URL voor de **app-federatieve meta gegevens** die u eerder hebt opgeslagen in het Azure portal van de **URL-provider voor meta gegevens** in het tekstvak.
+5. In the **Identity Provider metadata URL** text box, paste the **App Federation Metadata URL** you have saved previously from the Azure portal.
 
-6. Schakel het selectie vakje **SSO inschakelen in**.
+6. Check the checkbox **Turn on SSO**.
 
 7. Klik op **OPSLAAN**.
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD 
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
 Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam Britta Simon te maken.
 
@@ -184,25 +184,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ`brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan ZIVVER.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to ZIVVER.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **ZIVVER**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **ZIVVER**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **ZIVVER**.
+2. In the applications list, select **ZIVVER**.
 
-    ![De koppeling ZIVVER in de lijst met toepassingen](common/all-applications.png)
+    ![The ZIVVER link in the Applications list](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -216,21 +216,21 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-zivver-test-user"></a>ZIVVER-test gebruiker maken
+### <a name="create-zivver-test-user"></a>Create ZIVVER test user
 
-In deze sectie maakt u een gebruiker met de naam Julia Simon in ZIVVER. Werk samen met ZIVVER-ondersteunings [team](https://support.zivver.com/) om de gebruikers toe te voegen in het ZIVVER-platform. Gebruikers moeten worden gemaakt en worden geactiveerd voordat u eenmalige aanmelding gebruiken.
+In this section, you create a user called Britta Simon in ZIVVER. Work with [ZIVVER support team](https://support.zivver.com/) to add the users in the ZIVVER platform. Er moeten gebruikers worden gemaakt en geactiveerd voordat u eenmalige aanmelding kunt gebruiken.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel ZIVVER in het toegangs venster klikt, moet u automatisch worden aangemeld bij de ZIVVER waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the ZIVVER tile in the Access Panel, you should be automatically signed in to the ZIVVER for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

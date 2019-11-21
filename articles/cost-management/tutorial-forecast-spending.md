@@ -7,24 +7,24 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: ef9bb41c36e4bfa59f30e2666a26a7e200bfd17b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: f0656d9454483c7ee76660050bbd067bef4c9296
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967136"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219084"
 ---
-# <a name="tutorial-forecast-future-spending"></a>Zelfstudie: Toekomstige uitgaven voorspellen
+# <a name="tutorial-forecast-future-spending"></a>Zelfstudie: toekomstige uitgaven voorspellen
 
 Cloudyn helpt u bij het voorspellen van toekomstige uitgaven aan de hand van historische gegevens van gebruik en uitgaven. U gebruikt rapporten van Cloudyn om gegevens van alle geschatte kosten weer te geven. De voorbeelden in deze zelfstudie laten zien hoe u kostenschattingen kunt controleren met behulp van de rapporten. In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Toekomstige uitgaven voorspellen
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -59,7 +59,7 @@ In de afbeelding hierboven worden de jaarlijkse kosten van virtuele machines van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Toekomstige uitgaven voorspellen

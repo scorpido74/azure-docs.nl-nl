@@ -1,6 +1,6 @@
 ---
-title: Informatie met betrekking tot privacy weer geven in de portal van mijn account-Azure AD
-description: Uw privacy-informatie weer geven op de pagina privacy van de portal van mijn account.
+title: View privacy-related info from the My Account portal - Azure AD
+description: Learn how your organization uses your privacy-related information from the Privacy page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,41 +12,41 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dfb05bdb3aa2cf89328051b196475338eb5a3b3b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820357"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231826"
 ---
-# <a name="view-your-privacy-related-info-from-the-my-account-portal"></a>Bekijk uw privacy-gerelateerde informatie in de portal van mijn account
+# <a name="view-how-your-organization-uses-your-privacy-related-data"></a>View how your organization uses your privacy-related data
 
-U kunt zien hoe uw organisatie uw gegevens gebruikt op de pagina **Privacy** van de portal van **Mijn account** .
+You can view how your organization uses your data from the **Privacy** page of the **My Account** portal.
 
 ## <a name="view-your-privacy-related-info"></a>Uw aan privacy gerelateerde informatie bekijken
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. Selecteer **Privacy** in het navigatie deel venster links of selecteer de koppeling **Privacy controleren** in het **Privacybeleid** blok.
+2. Select **Privacy** from the left navigation pane or select the **Review privacy** link from the **Privacy** block.
 
-    ![Pagina Mijn account, met gemarkeerde privacy-koppelingen](media/my-account-portal/my-account-portal-privacy.png)
+    ![My Account page, showing highlighted Privacy links](media/my-account-portal/my-account-portal-privacy.png)
 
-3. Bekijk de informatie, met inbegrip van:
+3. Review the information, including:
 
-    - **Services.** Een lijst met onlineservices waarmee u bent verbonden met uw werk-of school account.
+    - **Services.** A list of online services you're connected to using your work or school account.
 
-    - **Gebruiksvoorwaarden**. De gebruiks voorwaarden van uw organisatie.
+    - **Terms of use**. Your organization's terms of use.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u hebt bekeken hoe uw organisatie uw gegevens gebruikt, kunt u het volgende doen:
+After viewing how your organization uses your data, you can:
 
-- Je [beveiligings gegevens](user-help-security-info-overview.md)weer geven of beheren.
+- View or manage your [security info](user-help-security-info-overview.md).
 
-- Uw verbonden [apparaten](my-account-portal-devices-page.md)weer geven of beheren.
+- View or manage your connected [devices](my-account-portal-devices-page.md).
 
-- Uw [organisaties](my-account-portal-organizations-page.md)weer geven of beheren.
+- View or manage your [organizations](my-account-portal-organizations-page.md).
 
-- Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- U kunt ook uw Microsoft Office-gerelateerde contact voorkeuren en privacy-informatie weer geven op de [pagina Office-Portal, beveiliging & privacy](https://portal.office.com/account/#security).
+- You can also view your Microsoft Office-related contact preferences and privacy information from the [Office portal, Security & privacy page](https://portal.office.com/account/#security).

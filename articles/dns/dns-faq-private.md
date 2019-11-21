@@ -1,86 +1,86 @@
 ---
 title: Veelgestelde vragen over privé-DNS in Azure
-description: Veelgestelde vragen over Azure Privé-DNS
+description: In this article, learn frequently asked questions about Azure Private DNS
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 10/05/2019
-ms.author: victorh
-ms.openlocfilehash: cb0cc5e99cc07728d475a9f9e54c7eb6a8c7554e
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.author: allensu
+ms.openlocfilehash: de63799400a10afc1930cd373df0c8dd86320f78
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71959911"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212017"
 ---
 # <a name="azure-private-dns-faq"></a>Veelgestelde vragen over privé-DNS in Azure
 
-Hieronder vindt u veelgestelde vragen over Azure private DNS.
+The following are frequently asked questions about Azure private DNS.
 
-## <a name="does-azure-dns-support-private-domains"></a>Ondersteunt Azure DNS persoonlijke domeinen?
+## <a name="does-azure-dns-support-private-domains"></a>Does Azure DNS support private domains?
 
-Privé domeinen worden ondersteund met behulp van de functie Azure Privé-DNS-zones. Privé-DNS zones kunnen alleen worden omgezet vanuit opgegeven virtuele netwerken. Zie het [overzicht](private-dns-overview.md)voor meer informatie.
+Private domains are supported using the Azure Private DNS zones feature. Private DNS zones are resolvable only from within specified virtual networks. For more information, see the [overview](private-dns-overview.md).
 
-Zie [naam omzetting voor vm's en rolinstanties](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)voor informatie over andere interne DNS-opties in Azure.
+For information on other internal DNS options in Azure, see [Name resolution for VMs and role instances](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
-## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Werken Azure Privé-DNS zones over Azure-regio's?
+## <a name="will-azure-private-dns-zones-work-across-azure-regions"></a>Will Azure Private DNS zones work across Azure regions?
 
-Ja. Persoonlijke zones worden ondersteund voor DNS-omzetting tussen virtuele netwerken in azure-regio's. Persoonlijke zones werken zelfs zonder expliciet peering van de virtuele netwerken. Alle virtuele netwerken moeten zijn gekoppeld aan de privé-DNS-zone.
+Ja. Private Zones is supported for DNS resolution between virtual networks across Azure regions. Private Zones works even without explicitly peering the virtual networks. All the virtual networks must be linked to the private DNS zone.
 
-## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Is er verbinding met Internet via virtuele netwerken die vereist zijn voor persoonlijke zones?
+## <a name="is-connectivity-to-the-internet-from-virtual-networks-required-for-private-zones"></a>Is connectivity to the Internet from virtual networks required for private zones?
 
-Nee. Persoonlijke zones werken samen met virtuele netwerken. U kunt ze gebruiken om domeinen te beheren voor virtuele machines of andere resources binnen en tussen virtuele netwerken. Internet connectiviteit is niet vereist voor naam omzetting.
+Nee. Private zones work along with virtual networks. You use them to manage domains for virtual machines or other resources within and across virtual networks. Internet connectivity isn't required for name resolution.
 
-## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Kan dezelfde privé zone worden gebruikt voor verschillende virtuele netwerken voor oplossing?
+## <a name="can-the-same-private-zone-be-used-for-several-virtual-networks-for-resolution"></a>Can the same private zone be used for several virtual networks for resolution?
 
-Ja. U kunt een privé-DNS-zone koppelen aan duizenden virtuele netwerken. Zie [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie
+Ja. You can link a private DNS zone with thousands of virtual networks. For more information, see [Azure DNS Limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits)
 
-## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Kan een virtueel netwerk dat tot een ander abonnement behoort, worden gekoppeld aan een privé zone?
+## <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-linked-to-a-private-zone"></a>Can a virtual network that belongs to a different subscription be linked to a private zone?
 
-Ja. U moet beschikken over de machtiging schrijf bewerking voor de virtuele netwerken en de particuliere DNS-zone. De schrijf machtiging kan worden toegekend aan verschillende RBAC-rollen. De rol klassieke netwerkinzender RBAC heeft bijvoorbeeld schrijf machtigingen voor virtuele netwerken en de rol Inzender voor Privé-DNS-zones heeft schrijf machtigingen voor de privé-DNS-zones. Zie op [rollen gebaseerd toegangs beheer](../role-based-access-control/overview.md)voor meer informatie over RBAC-rollen.
+Ja. You must have write operation permission on the virtual networks and the private DNS zone. The write permission can be granted to several RBAC roles. For example, the Classic Network Contributor RBAC role has write permissions to virtual networks and Private DNS zones Contributor role has write permissions on the private DNS zones. For more information on RBAC roles, see [Role-based access control](../role-based-access-control/overview.md).
 
-## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Worden de automatisch geregistreerde DNS-records van virtuele machines in een privé zone automatisch verwijderd wanneer u de virtuele machine verwijdert?
+## <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-you-delete-the-virtual-machine"></a>Will the automatically registered virtual machine DNS records in a private zone be automatically deleted when you delete the virtual machine?
 
-Ja. Als u een virtuele machine in een gekoppeld virtueel netwerk verwijdert waarvoor automatische registratie is ingeschakeld, worden de geregistreerde records automatisch verwijderd.
+Ja. If you delete a virtual machine within a linked virtual network with autoregistration enabled, the registered records are automatically deleted.
 
-## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>Kan een automatisch geregistreerde virtuele-machine record in een privé zone van een gekoppeld virtueel netwerk hand matig worden verwijderd?
+## <a name="can-an-automatically-registered-virtual-machine-record-in-a-private-zone-from-a-linked-virtual-network-be-deleted-manually"></a>Can an automatically registered virtual machine record in a private zone from a linked virtual network be deleted manually?
 
-Ja. U kunt de automatisch geregistreerde DNS-records overschrijven met een hand matig gemaakte DNS-record in de zone. In dit onderwerp worden de volgende vraag en dit antwoord adres beschreven.
+Ja. You can overwrite the automatically registered DNS records with a manually created DNS record in the zone. The following question and answer address this topic.
 
-## <a name="what-happens-when-i-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-linked-virtual-network"></a>Wat gebeurt er wanneer ik hand matig een nieuwe DNS-record wil maken in een persoonlijke zone die dezelfde hostnaam heeft als een automatisch geregistreerde bestaande virtuele machine in een gekoppeld virtueel netwerk?
+## <a name="what-happens-when-i-try-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-linked-virtual-network"></a>What happens when I try to manually create a new DNS record into a private zone that has the same hostname as an automatically registered existing virtual machine in a linked virtual network?
 
-U probeert hand matig een nieuwe DNS-record te maken in een persoonlijke zone die dezelfde hostnaam heeft als een bestaande, automatisch geregistreerde virtuele machine in een gekoppeld virtueel netwerk. Wanneer u dit doet, overschrijft de nieuwe DNS-record de automatisch geregistreerde virtuele-machine record. Als u probeert deze hand matig gemaakte DNS-record opnieuw uit de zone te verwijderen, slaagt de verwijdering. De automatische registratie gebeurt opnieuw zolang de virtuele machine nog bestaat en waaraan een persoonlijk IP-adres is gekoppeld. De DNS-record wordt automatisch opnieuw gemaakt in de zone.
+You try to manually create a new DNS record into a private zone that has the same hostname as an existing, automatically registered virtual machine in a linked virtual network. When you do, the new DNS record overwrites the automatically registered virtual machine record. If you try to delete this manually created DNS record from the zone again, the delete succeeds. The automatic registration happens again as long as the virtual machine still exists and has a private IP attached to it. The DNS record is re-created automatically in the zone.
 
-## <a name="what-happens-when-we-unlink-a-linked-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>Wat gebeurt er wanneer we een gekoppeld virtueel netwerk ontkoppelen van een privé zone? Worden de automatisch geregistreerde virtuele-machine records uit het virtuele netwerk ook uit de zone verwijderd?
+## <a name="what-happens-when-we-unlink-a-linked-virtual-network-from-a-private-zone-will-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-too"></a>What happens when we unlink a linked virtual network from a private zone? Will the automatically registered virtual machine records from the virtual network be removed from the zone too?
 
-Ja. Als u een gekoppeld virtueel netwerk wilt ontkoppelen van een privé zone, werkt u de DNS-zone bij om de gekoppelde virtuele netwerk koppeling te verwijderen. In dit proces worden de records van virtuele machines die automatisch zijn geregistreerd, uit de zone verwijderd.
+Ja. To unlink a linked virtual network from a private zone, you update the DNS zone to remove the associated virtual network link. In this process, virtual machine records that were automatically registered are removed from the zone.
 
-## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>Wat gebeurt er wanneer we een gekoppeld virtueel netwerk verwijderen dat is gekoppeld aan een privé zone? Moeten we de privé zone hand matig bijwerken om het virtuele netwerk als een gekoppeld virtueel netwerk van de zone te ontkoppelen?
+## <a name="what-happens-when-we-delete-a-linked-virtual-network-thats-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-linked-virtual-network-from-the-zone"></a>What happens when we delete a linked virtual network that's linked to a private zone? Do we have to manually update the private zone to unlink the virtual network as a linked virtual network from the zone?
 
-Nee. Wanneer u een gekoppeld virtueel netwerk verwijdert zonder het eerst van een privé zone te ontkoppelen, wordt uw verwijderings bewerking voltooid en worden de koppelingen naar de DNS-zone automatisch gewist.
+Nee. When you delete a linked virtual network without unlinking it from a private zone first, your deletion operation succeeds and the links to the DNS zone are automatically cleared.
 
-## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Werkt de DNS-omzetting met behulp van de standaard-FQDN (internal.cloudapp.net) nog steeds, zelfs wanneer een privé zone (bijvoorbeeld private.contoso.com) is gekoppeld aan een virtueel netwerk?
+## <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>Will DNS resolution by using the default FQDN (internal.cloudapp.net) still work even when a private zone (for example, private.contoso.com) is linked to a virtual network?
 
-Ja. Persoonlijke zones vervangen de standaard internal.cloudapp.net-zone van Azure niet. Of u nu afhankelijk bent van de door Azure verschafte internal.cloudapp.net of uw eigen privé zone, gebruikt u de FQDN van de zone die u wilt oplossen.
+Ja. Private Zones don't replace the default Azure-provided internal.cloudapp.net zone. Whether you rely on the Azure-provided internal.cloudapp.net or on your own private zone, use the FQDN of the zone you want to resolve against.
 
-## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Wordt het DNS-achtervoegsel op virtuele machines in een gekoppeld virtueel netwerk gewijzigd in dat van de privé zone?
+## <a name="will-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Will the DNS suffix on virtual machines within a linked virtual network be changed to that of the private zone?
 
-Nee. Het DNS-achtervoegsel op de virtuele machines in het gekoppelde virtuele netwerk blijft als standaard achtervoegsel van Azure (' *. internal.cloudapp.net '). U kunt dit DNS-achtervoegsel hand matig wijzigen op uw virtuele machines naar dat van de privé zone.
-Zie voor meer informatie over het wijzigen van dit achtervoegsel [dynamische DNS gebruiken om hostnamen te registreren in uw eigen DNS-server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
+Nee. The DNS suffix on the virtual machines in your linked virtual network stays as the default Azure-provided suffix ("*.internal.cloudapp.net"). You can manually change this DNS suffix on your virtual machines to that of the private zone.
+For guidance on how to change this suffix refer to [Use dynamic DNS to register hostnames in your own DNS server](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-ddns#windows-clients)
 
-## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>Wat zijn de gebruiks limieten voor Azure DNS privé zones?
+## <a name="what-are-the-usage-limits-for-azure-dns-private-zones"></a>What are the usage limits for Azure DNS Private zones?
 
-Raadpleeg [Azure DNS limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) voor meer informatie over de gebruiks limieten voor Azure DNS persoonlijke zones.
+Refer to [Azure DNS limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#azure-dns-limits) for details on the usage limits for Azure DNS private zones.
 
-## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Waarom worden mijn bestaande privé-DNS-zones niet weer gegeven in de nieuwe portal?
+## <a name="why-dont-my-existing-private-dns-zones-show-up-in-new-portal-experience"></a>Why don’t my existing private DNS zones show up in new portal experience?
 
-Als uw bestaande privé-DNS-zone is gemaakt met behulp van preview-API, moet u deze zones migreren naar een nieuw resource model. Privé-DNS zones die zijn gemaakt met de preview-API, worden niet weer gegeven in de nieuwe portal-ervaring. Hieronder vindt u instructies voor het migreren naar een nieuw resource model.
+If your existing private DNS zone were created using preview API, you must migrate these zones to new resource model. Private DNS zones created using preview API will not show up in new portal experience. See below for instructions on how to migrate to new resource model.
 
-## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>Hoe kan ik mijn bestaande privé-DNS-zones naar het nieuwe model migreren?
+## <a name="how-do-i-migrate-my-existing-private-dns-zones-to-the-new-model"></a>How do I migrate my existing private DNS zones to the new model?
 
-We raden u ten zeerste aan om zo snel mogelijk naar het nieuwe resource model te migreren. Verouderd resource model wordt ondersteund, maar er worden echter geen verdere functies op dit model ontwikkeld. In de toekomst nemen we de bedoeling af om het nieuwe resource model voor te nemen. Zie[migratie handleiding voor Azure DNS particuliere zones](private-dns-migration-guide.md)voor meer informatie over het migreren van uw bestaande privé-DNS-zones naar een nieuw resource model.
+We strongly recommend that you migrate to the new resource model as soon as possible. Legacy resource model will be supported, however, further features will not be developed on top of this model. In future, we intend to deprecate it in favor of new resource model. For guidance on how to migrate your existing private DNS zones to new resource model see[migration guide for Azure DNS private zones](private-dns-migration-guide.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Meer informatie over Azure Privé-DNS](private-dns-overview.md)
+- [Learn more about Azure Private DNS](private-dns-overview.md)

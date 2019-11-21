@@ -1,5 +1,5 @@
 ---
-title: 'Quick Start: X. 509-apparaten registreren bij de Azure Device Provisioning Service met behulp van Java'
+title: Enroll X.509 devices to Azure Device Provisioning Service using Java
 description: In deze quickstart wordt gebruikgemaakt van zowel groepsregistraties als afzonderlijke registraties. In deze quickstart registreert u X.509-apparaten bij Azure IoT Hub Device Provisioning Service met behulp van Java.
 author: wesmc7777
 ms.author: wesmc
@@ -7,15 +7,14 @@ ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 8a1accf232b022bc3028f91d2151c00b98969f1f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 076e1e10a704451d657e4d18afedb6bd388f7686
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904771"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229523"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van Java
 
@@ -67,7 +66,7 @@ In de volgende stappen wordt gedemonstreerd hoe u de inrichtingsgegevens van het
 
             ![De verbindingsreeks voor de inrichting ophalen uit de portal](./media/quick-enroll-device-x509-java/provisioning-string.png)  
 
-        4. Vervang  **in het voorbeeldcodebestandServiceEnrollmentGroupSample.java**`[Provisioning Connection String]` door de **Verbindingsreeks van de primaire sleutel**.
+        4. Vervang `[Provisioning Connection String]` in het voorbeeldcodebestand **_ServiceEnrollmentGroupSample.java_** door de **Verbindingsreeks van de primaire sleutel**.
 
             ```Java
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -207,7 +206,7 @@ Als u van plan bent om het voorbeeld van de Java.js-service te verkennen, verwij
 
 1. Sluit het uitvoervenster van het Java-voorbeeld op de computer.
 1. Sluit het venster voor de _X.509-certificaatgenerator_ op de computer.
-1. Navigeer naar uw Device Provisioning Service in de Azure Portal, klik op **inschrijvingen beheren**en selecteer vervolgens het tabblad **inschrijvings groepen** . Selecteer de *groeps naam* voor de X. 509-apparaten die u hebt Inge schreven met behulp van deze Quick Start en klik op de knop **verwijderen** boven aan de Blade.  
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *GROUP NAME* for the X.509 devices you enrolled using this Quickstart, and click the **Delete** button at the top of the blade.  
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze quickstart hebt u een gesimuleerde groep met X.509-apparaten ingeschreven met Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 

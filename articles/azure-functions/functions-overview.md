@@ -1,32 +1,27 @@
 ---
-title: Overzicht van Azure Functions | Microsoft Docs
+title: Overzicht van Azure Functions
 description: Informatie over het gebruik van Azure Functions voor het optimaliseren van asynchrone workloads.
-documentationcenter: na
 author: mattchenderson
-manager: jeconnoc
-keywords: Azure-functies, functies, gebeurtenisverwerking, webhooks, dynamisch berekenen, architectuur zonder server
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
-ms.service: azure-functions
 ms.topic: overview
 ms.date: 10/03/2017
-ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: f3fc7691fc3afa3a1fe886655353d9ed41f631cc
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 28a2732965ee0a19f69dcd0fc2cd7705cb5f94a1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096082"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230434"
 ---
 # <a name="an-introduction-to-azure-functions"></a>Een inleiding tot Azure Functions  
-Azure Functions is een oplossing voor het eenvoudig uitvoeren van kleine stukjes code, ofwel ‘functies’, in de cloud. U hoeft alleen de code te schrijven die u op dat moment nodig hebt, zonder dat u een complete toepassing of de bijbehorende infrastructuur nodig hebt. Met functies kunnen ontwikkel aars nog productiever worden en kunt u de gewenste programmeer taal gebruiken, zoals C#Java, java script, Power shell en python. U betaalt alleen voor de tijd dat uw code wordt uitgevoerd en Azure zorgt het eventuele schalen. Met Azure Functions kunt u [serverloze](https://azure.microsoft.com/solutions/serverless/) toepassingen ontwikkelen in Microsoft Azure.
+Azure Functions is een oplossing voor het eenvoudig uitvoeren van kleine stukjes code, ofwel ‘functies’, in de cloud. U hoeft alleen de code te schrijven die u op dat moment nodig hebt, zonder dat u een complete toepassing of de bijbehorende infrastructuur nodig hebt. Functions can make development even more productive, and you can use your development language of choice, such as C#, Java, JavaScript, PowerShell, and Python. U betaalt alleen voor de tijd dat uw code wordt uitgevoerd en Azure zorgt het eventuele schalen. Met Azure Functions kunt u [serverloze](https://azure.microsoft.com/solutions/serverless/) toepassingen ontwikkelen in Microsoft Azure.
 
 Dit onderwerp bevat een globaal overzicht van Azure Functions. Als u meteen aan de slag wilt met Functions, kunt u beginnen met [Uw eerste Azure-functie maken](functions-create-first-azure-function.md). Als u behoefte hebt aan meer technische informatie over Functions, raadpleegt u de [naslaginformatie voor ontwikkelaars](functions-reference.md).
 
 ## <a name="features"></a>Functies
 Hier volgen een aantal belangrijke kenmerken van Functions:
 
-* **Keuze uit taal** : schrijf functies met behulp van C#uw keuze van, Java, java script, python en andere talen. Zie [ondersteunde talen](supported-languages.md) voor de volledige lijst.
+* **Choice of language** - Write functions using your choice of C#, Java, Javascript, Python, and other languages. See [Supported languages](supported-languages.md) for the complete list.
 * **Betalen per gebruik**: betaal alleen voor de tijd die nodig is voor het uitvoeren van uw code. Raadpleeg de optie voor het hostingabonnement Consumption in de sectie over [prijzen](#pricing).  
 * **Breng uw eigen afhankelijkheden mee**: Functions ondersteunt NuGet en NPM, zodat u uw favoriete bibliotheken kunt gebruiken.  
 * **Geïntegreerde beveiliging**: beveilig HTTP-geactiveerde functies met OAuth-providers zoals Azure Active Directory, Facebook, Google, Twitter en Microsoft-account.  

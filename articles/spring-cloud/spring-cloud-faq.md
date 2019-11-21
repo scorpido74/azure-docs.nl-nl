@@ -1,126 +1,126 @@
 ---
-title: Veelgestelde vragen over Azure lente Cloud | Microsoft Docs
-description: In dit artikel vindt u antwoorden op veelgestelde vragen over Azure veer Cloud.
+title: Frequently asked questions about Azure Spring Cloud | Microsoft Docs
+description: This article answers frequently asked questions about Azure Spring Cloud.
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 40275b3f643517236db26be8c2784144526fb7a1
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151744"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229240"
 ---
-# <a name="azure-spring-cloud-faq"></a>Veelgestelde vragen over Azure veer Cloud
+# <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud FAQ
 
-In dit artikel vindt u antwoorden op veelgestelde vragen over Azure veer Cloud. 
+This article answers frequently asked questions about Azure Spring Cloud. 
 
 ## <a name="general"></a>Algemeen
 
-### <a name="why-azure-spring-cloud"></a>Waarom Azure lente Cloud?
+### <a name="why-azure-spring-cloud"></a>Why Azure Spring Cloud?
 
-Azure lente Cloud biedt een platform als een service (PaaS) voor veer-Cloud ontwikkelaars. Azure lente-Cloud beheert uw toepassings infrastructuur zodat u zich kunt concentreren op toepassings code en bedrijfs logica. De belangrijkste functies die zijn ingebouwd in azure lente Cloud zijn onder andere Eureka, configuratie server, service register server, Pivotal build service, Blue-groen implementaties en meer. Met deze service kunnen ontwikkel aars ook hun toepassingen koppelen aan andere Azure-Services, zoals Azure Cosmos DB, Azure Database for MySQL en Azure cache voor redis.
+Azure Spring Cloud provides a platform as a service (PaaS) for Spring Cloud developers. Azure Spring Cloud manages your application infrastructure so that you can focus on application code and business logic. Core features built into Azure Spring Cloud include Eureka, Config Server, Service Registry Server, Pivotal Build Service, Blue-green deployments, and more. This service also enables developers to bind their applications with other Azure services, such as Azure Cosmos DB, Azure Database for MySQL, and Azure Cache for Redis.
 
-Azure veer Cloud verbetert de diagnostische ervaring van toepassingen voor ontwikkel aars en Opera tors door Azure Monitor, Application Insights en Log Analytics te integreren.
+Azure Spring Cloud enhances the application diagnostics experience for developers and operators by integrating Azure Monitor, Application Insights, and Log Analytics.
 
-### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>Welke service plannen biedt Azure lente-Cloud aanbieding?
+### <a name="what-service-plans-does-azure-spring-cloud-offer"></a>What service plans does Azure Spring Cloud offer?
 
-Azure lente-Cloud biedt een service abonnement tijdens de preview-periode.  Een lente-Cloud implementatie bevat 16 vCPU-kernen en 32 gigabytes (GB) aan geheugen.  De bovengrens voor elk micro service-exemplaar binnen een implementatie is 4 vCPU-kernen met 8 GB geheugen.
+Azure Spring Cloud offers one service plan during the preview period.  A Spring Cloud deployment contains 16 vCPU cores and 32 gigabytes (GB) of memory.  The upper bound for each microservice instance within a deployment is 4 vCPU cores with 8 GB of memory.
 
-Resource | Aantal
+Bron | Bedrag
 ------- | -------
-App-exemplaren per lente-Cloud toepassing | 20
-Totaal aantal app-exemplaren per Azure veer Cloud service-exemplaar | 50 *
-Azure veer Cloud service-instanties per regio per abonnement | twee
-Permanente volumes | 10 x 50 GB
+App instances per Spring application | 20
+Total app instances per Azure Spring Cloud service instance | 500
+Azure Spring Cloud service instances per region per subscription | 10
+Persistent volumes | 10 x 50 GBytes
 
-_Als u de limiet wilt verhogen, opent u een [ondersteunings ticket](https://azure.microsoft.com/support/faq/)._ \*
+\* _To raise the limit, open a [support ticket](https://azure.microsoft.com/support/faq/)._
 
-Zie [Veelgestelde vragen over Azure-ondersteuning](https://azure.microsoft.com/support/faq/)voor meer informatie.
+For more information, see [Azure Support FAQ](https://azure.microsoft.com/support/faq/).
 
-### <a name="how-secure-is-azure-spring-cloud"></a>Hoe veilig is Azure lente-Cloud?
+### <a name="how-secure-is-azure-spring-cloud"></a>How secure is Azure Spring Cloud?
 
-Beveiliging en privacy zijn een van de belangrijkste prioriteiten voor Azure-klanten en Azure lente-Cloud gebruikers. Azure zorgt ervoor dat alleen klanten toegang hebben tot toepassings gegevens,-Logboeken of-configuraties door al deze gegevens veilig te versleutelen. Alle service-exemplaren in azure lente Cloud zijn van elkaar geïsoleerd.
+Security and privacy are among the top priorities for Azure and Azure Spring Cloud customers. Azure helps ensure that only customers have access to application data, logs, or configurations by securely encrypting all of this data. All the service instances in Azure Spring Cloud are isolated from each other.
 
-Azure lente Cloud biedt volledige SSL-en certificaat beheer.
+Azure Spring Cloud provides complete SSL and certificate management.
 
-Essentiële beveiligings patches voor OpenJDK en lente-Cloud Runtimes worden zo snel mogelijk toegepast op Azure veer Cloud.
+Critical security patches for OpenJDK and Spring Cloud runtimes are applied to Azure Spring Cloud as soon as possible.
 
-### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In welke regio's is Azure lente-Cloud beschikbaar?
+### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In which regions is Azure Spring Cloud available?
 
-VS-Oost, VS-West 2, Europa-west en Zuidoost-Azië.
+East US, West US 2, West Europe, and Southeast Asia.
 
-### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Wat zijn de bekende beperkingen van Azure lente-Cloud?
+### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>What are the known limitations of Azure Spring Cloud?
 
-Tijdens de preview-versie heeft Azure lente Cloud de volgende bekende beperkingen:
+During preview release, Azure Spring Cloud has the following known limitations:
 
-* `spring.application.name` wordt overschreven door de naam van de toepassing die wordt gebruikt voor het maken van elke toepassing.
-* `server.port` is niet toegestaan in het configuratie bestand van de Git-opslag plaats. Als u het toevoegt aan het configuratie bestand, wordt uw toepassing waarschijnlijk onbereikbaar van andere toepassingen of Internet.
-* De Azure Portal-en Azure Resource Manager-sjablonen bieden geen ondersteuning voor het uploaden van toepassings pakketten. U kunt toepassings pakketten alleen uploaden door de toepassing te implementeren via de Azure CLI.
-* Als u meer wilt weten over quotum beperkingen, raadpleegt u [welke service plannen Azure lente Cloud offers?](#what-service-plans-does-azure-spring-cloud-offer).
+* `spring.application.name` will be overridden by the application name that's used to create each application.
+* `server.port` is not allowed in the configuration file from the Git repo. Adding it to the configuration file will likely render your application unreachable from other applications or the internet.
+* The Azure portal and Azure Resource Manager templates do not support uploading application packages. You can upload application packages only by deploying the application via the Azure CLI.
+* To learn about quota limitations, see [What service plans does Azure Spring Cloud offer?](#what-service-plans-does-azure-spring-cloud-offer).
 
-### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hoe kan ik feedback geven en problemen melden?
+### <a name="how-can-i-provide-feedback-and-report-issues"></a>How can I provide feedback and report issues?
 
-Als u problemen ondervindt met Azure lente Cloud, maakt u een [ondersteunings aanvraag voor Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Als u een functie aanvraag wilt verzenden of feedback wilt geven, gaat u naar [Azure feedback](https://feedback.azure.com/forums/34192--general-feedback).
+If you encounter any issues with Azure Spring Cloud, create an [Azure Support Request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). To submit a feature request or provide feedback, go to [Azure Feedback](https://feedback.azure.com/forums/34192--general-feedback).
 
 ## <a name="development"></a>Ontwikkeling
 
-### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>Ik ben een lente-Cloud ontwikkelaar, maar er is nog geen ervaring met Azure. Wat is de snelste manier om te leren hoe u een Azure lente-Cloud toepassing kunt ontwikkelen?
+### <a name="i-am-a-spring-cloud-developer-but-new-to-azure-what-is-the-quickest-way-for-me-to-learn-how-to-develop-an-azure-spring-cloud-application"></a>I am a Spring Cloud developer but new to Azure. What is the quickest way for me to learn how to develop an Azure Spring Cloud application?
 
-Voor de snelste manier om aan de slag te gaan met Azure lente Cloud, volgt u de instructies in [Quick Start: een Azure lente-Cloud toepassing starten met behulp van de Azure Portal](spring-cloud-quickstart-launch-app-portal.md).
+For the quickest way to get started with Azure Spring Cloud, follow the instructions in [Quickstart: Launch an Azure Spring Cloud application by using the Azure portal](spring-cloud-quickstart-launch-app-portal.md).
 
-### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Wat Java runtime ondersteunt Azure lente-Cloud ondersteuning?
+### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>What Java runtime does Azure Spring Cloud support?
 
-Azure lente-Cloud ondersteunt Java 8 en 11.
+Azure Spring Cloud supports Java 8 and 11.
 
-### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Waar kan ik de logboeken en metrische gegevens van mijn lente-Cloud weer geven?
+### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Where can I view my Spring Cloud application logs and metrics?
 
-Zoek metrische gegevens op het tabblad Overzicht van de app en het tabblad [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) .
+Find metrics in the App Overview tab and the [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics#interacting-with-azure-monitor-metrics) tab.
 
-Azure lente Cloud ondersteunt het exporteren van Lente-Cloud toepassings logboeken en-metrische gegevens naar Azure Storage, EventHub en [log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). De tabel naam in Log Analytics is *AppPlatformLogsforSpring*. Zie [diagnostische services](diagnostic-services.md)voor meer informatie over het inschakelen van deze functie.
+Azure Spring Cloud supports exporting Spring Cloud application logs and metrics to Azure Storage, EventHub, and [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-logs#log-queries). The table name in Log Analytics is *AppPlatformLogsforSpring*. To learn how to enable it, see [Diagnostic services](diagnostic-services.md).
 
-### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Wordt gedistribueerde tracering door Azure lente Cloud ondersteund?
+### <a name="does-azure-spring-cloud-support-distributed-tracing"></a>Does Azure Spring Cloud support distributed tracing?
 
-Ja. Zie [zelf studie: gedistribueerde tracering gebruiken met Azure lente-Cloud](spring-cloud-tutorial-distributed-tracing.md)voor meer informatie.
+Ja. For more information, see [Tutorial: Use Distributed Tracing with Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md).
 
-### <a name="what-resource-types-does-service-binding-support"></a>Welke resource typen worden ondersteund door service binding?
+### <a name="what-resource-types-does-service-binding-support"></a>What resource types does Service Binding support?
 
-Er worden momenteel drie services ondersteund: Azure Cosmos DB, Azure Database for MySQL en Azure cache voor redis.
+Three services are currently supported: Azure Cosmos DB, Azure Database for MySQL, and Azure Cache for Redis.
 
-### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kan ik permanente volumes weer geven, toevoegen of verplaatsen vanuit mijn toepassingen?
+### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Can I view, add, or move persistent volumes from inside my applications?
 
 Ja.
 
 ## <a name="deployment"></a>Implementatie
 
-### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Biedt Azure lente Cloud ondersteuning voor blauw-groen-implementatie?
-Ja. Zie [een faserings omgeving instellen](spring-cloud-howto-staging-environment.md)voor meer informatie.
+### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Does Azure Spring Cloud support blue-green deployment?
+Ja. For more information, see [Set up a staging environment](spring-cloud-howto-staging-environment.md).
 
-### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Kan ik Kubernetes gebruiken om mijn toepassings containers te bewerken?
+### <a name="can-i-access-kubernetes-to-manipulate-my-application-containers"></a>Can I access Kubernetes to manipulate my application containers?
 
-Nee.  Azure lente-Cloud is een samen vatting van de ontwikkelaar van de onderliggende architectuur, zodat u zich kunt concentreren op toepassings code en bedrijfs logica.
+Nee.  Azure Spring Cloud abstracts the developer from the underlying architecture, allowing you to concentrate on application code and business logic.
 
-### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Biedt Azure lente Cloud ondersteuning voor het bouwen van containers van de bron?
+### <a name="does-azure-spring-cloud-support-building-containers-from-source"></a>Does Azure Spring Cloud support building containers from source?
 
-Ja. Zie [de lente Cloud toepassing vanuit de bron code starten](spring-cloud-launch-from-source.md)voor meer informatie.
+Ja. For more information, see [Launch your Spring Cloud application from source code](spring-cloud-launch-from-source.md).
 
-### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Biedt Azure lente Cloud ondersteuning voor automatisch schalen in app-exemplaren?
+### <a name="does-azure-spring-cloud-support-autoscaling-in-app-instances"></a>Does Azure Spring Cloud support autoscaling in app instances?
 
 Nee.
 
-### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>Wat zijn de aanbevolen procedures voor het migreren van bestaande lente-Cloud micro Services naar Azure veer Cloud?
+### <a name="what-are-the-best-practices-for-migrating-existing-spring-cloud-microservices-to-azure-spring-cloud"></a>What are the best practices for migrating existing Spring Cloud microservices to Azure Spring Cloud?
 
-Wanneer u bestaande lente-Cloud micro Services migreert naar Azure lente-Cloud, is het een goed idee om de volgende best practices te bekijken:
-* Alle toepassings afhankelijkheden moeten worden opgelost.
-* Bereid uw configuratie vermeldingen, omgevings variabelen en JVM-para meters voor, zodat u ze kunt vergelijken met de implementatie in azure lente Cloud.
-* Als u de service binding wilt gebruiken, gaat u door uw Azure-Services en zorgt u ervoor dat u de juiste toegangs machtigingen hebt ingesteld.
-* U wordt aangeraden alle Inge sloten services te verwijderen of uit te scha kelen die mogelijk conflicteren met services die worden beheerd door Azure lente Cloud, zoals onze service discovery-service, configuratie server, enzovoort.
-* U wordt aangeraden officiële, stabiele Pivot-veer bibliotheken te gebruiken. Niet-officiële, bèta-of gevorkeerde versies van Pivot-lente bibliotheken hebben geen SLA-ondersteuning (Service Level Agreement).
+As you're migrating existing Spring Cloud microservices to Azure Spring Cloud, it's a good idea to observe the following best practices:
+* All application dependencies need to be resolved.
+* Prepare your configuration entries, environment variables, and JVM parameters so that you can compare them with the deployment in Azure Spring Cloud.
+* If you want to use Service Binding, go through your Azure services and ensure that you've set the appropriate access permissions.
+* We recommend that you remove or disable any embedded services that might conflict with services that are managed by Azure Spring Cloud, such as our Service Discovery service, Config Server, and so on.
+* We recommend that you use official, stable Pivotal Spring libraries. Unofficial, beta, or forked versions of Pivotal Spring libraries have no service-level agreement (SLA) support.
 
-Controleer na de migratie de CPU/RAM-metrische gegevens en het netwerk verkeer om ervoor te zorgen dat de toepassings exemplaren op de juiste wijze worden geschaald.
+After the migration, monitor your CPU/RAM metrics and network traffic to ensure that the application instances are scaled appropriately.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u meer vragen hebt, raadpleegt u de [Azure lente-probleemoplossings gids voor Clouds](spring-cloud-troubleshoot.md).
+If you have further questions, see the [Azure Spring Cloud troubleshooting guide](spring-cloud-troubleshoot.md).

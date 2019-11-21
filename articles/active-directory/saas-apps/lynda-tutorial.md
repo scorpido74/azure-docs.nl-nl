@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Lynda.com | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Lynda.com.
+title: 'Tutorial: Azure Active Directory integration with Lynda.com | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Lynda.com.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef24d55089938f6721eb6461f57797bca9ed82fe
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7550ba7f375cb7d8b291c0adf7f0ebded16f0990
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159477"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227518"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Zelf studie: integratie Azure Active Directory met Lynda.com
+# <a name="tutorial-azure-active-directory-integration-with-lyndacom"></a>Tutorial: Azure Active Directory integration with Lynda.com
 
-In deze zelf studie leert u hoe u Lynda.com integreert met Azure Active Directory (Azure AD).
-Het integreren van Lynda.com met Azure AD biedt de volgende voor delen:
+In this tutorial, you learn how to integrate Lynda.com with Azure Active Directory (Azure AD).
+Integrating Lynda.com with Azure AD provides you with the following benefits:
 
-* U kunt beheren in azure AD die toegang heeft tot Lynda.com.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Lynda.com (eenmalige aanmelding) met hun Azure AD-accounts.
+* You can control in Azure AD who has access to Lynda.com.
+* You can enable your users to be automatically signed-in to Lynda.com (Single Sign-On) with their Azure AD accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -37,23 +37,23 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Lynda.com wilt configureren, hebt u de volgende items nodig:
+To configure Azure AD integration with Lynda.com, you need the following items:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding Lynda.com ingeschakeld
+* Lynda.com single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Lynda.com ondersteunt door **SP** GEÏNITIEERDe SSO
-* Lynda.com ondersteunt **just-in-time** -gebruikers inrichting
+* Lynda.com supports **SP** initiated SSO
+* Lynda.com supports **Just In Time** user provisioning
 
-## <a name="adding-lyndacom-from-the-gallery"></a>Lynda.com toevoegen uit de galerie
+## <a name="adding-lyndacom-from-the-gallery"></a>Adding Lynda.com from the gallery
 
-Als u de integratie van Lynda.com in azure AD wilt configureren, moet u Lynda.com uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of Lynda.com into Azure AD, you need to add Lynda.com from the gallery to your list of managed SaaS apps.
 
-**Voer de volgende stappen uit om Lynda.com toe te voegen uit de galerie:**
+**To add Lynda.com from the gallery, perform the following steps:**
 
 1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -67,31 +67,31 @@ Als u de integratie van Lynda.com in azure AD wilt configureren, moet u Lynda.co
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Lynda.com**in het zoekvak, selecteer **Lynda.com** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. In the search box, type **Lynda.com**, select **Lynda.com** from result panel then click **Add** button to add the application.
 
-     ![Lynda.com in de lijst met resultaten](common/search-new-app.png)
+     ![Lynda.com in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Lynda.com op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Lynda.com tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with Lynda.com based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Lynda.com needs to be established.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Lynda.com, moet u de volgende bouw stenen volt ooien:
+To configure and test Azure AD single sign-on with Lynda.com, you need to complete the following building blocks:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Lynda.com eenmalige aanmelding configureren](#configure-lyndacom-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+2. **[Configure Lynda.com Single Sign-On](#configure-lyndacom-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Lynda.com-test gebruiker](#create-lyndacom-test-user)** -om een equivalent van Julia Simon in Lynda.com te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+5. **[Create Lynda.com test user](#create-lyndacom-test-user)** - to have a counterpart of Britta Simon in Lynda.com that is linked to the Azure AD representation of user.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Lynda.com:
+To configure Azure AD single sign-on with Lynda.com, perform the following steps:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Lynda.com** Application Integration de optie **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Lynda.com** application integration page, select **Single sign-on**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,18 +105,18 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Lynda.com domein en Url's](common/sp-signonurl.png)
+    ![Lynda.com Domain and URLs single sign-on information](common/sp-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<subdomain>.lynda.com/Shibboleth.sso/InCommon?providerId=<url>&target=<url>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van Lynda.com](https://www.linkedin.com/help/lynda/ask) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Contact  [Lynda.com Client support team](https://www.linkedin.com/help/lynda/ask) to get the value. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **Lynda.com instellen** de gewenste URL ('s) volgens uw vereiste.
+6. On the **Set up Lynda.com** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-lyndacom-single-sign-on"></a>Eenmalige aanmelding voor Lynda.com configureren
+### <a name="configure-lyndacom-single-sign-on"></a>Configure Lynda.com Single Sign-On
 
-Als u eenmalige aanmelding wilt configureren op **Lynda.com** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Lynda.com ondersteunings team](https://www.linkedin.com/help/lynda/ask). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+To configure single sign-on on **Lynda.com** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Lynda.com support team](https://www.linkedin.com/help/lynda/ask). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -148,7 +148,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -157,15 +157,15 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Lynda.com.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Lynda.com.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Lynda.com**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Lynda.com**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Lynda.com**.
+2. In the applications list, select **Lynda.com**.
 
-    ![De koppeling Lynda.com in de lijst met toepassingen](common/all-applications.png)
+    ![The Lynda.com link in the Applications list](common/all-applications.png)
 
 3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
@@ -181,21 +181,21 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-lyndacom-test-user"></a>Lynda.com-test gebruiker maken
+### <a name="create-lyndacom-test-user"></a>Create Lynda.com test user
 
-Er is geen actie-item voor het configureren van de gebruikers inrichting voor Lynda.com.  
-Wanneer een toegewezen gebruiker zich probeert aan te melden bij Lynda.com met behulp van het toegangs venster, controleert Lynda.com of de gebruiker bestaat.  
+There is no action item for you to configure user provisioning to Lynda.com.  
+When an assigned user tries to log in to Lynda.com using the access panel, Lynda.com checks whether the user exists.  
 
-Als er nog geen gebruikers account beschikbaar is, wordt deze automatisch gemaakt door Lynda.com.
+If there is no user account available yet, it is automatically created by Lynda.com.
 
 > [!NOTE]
-> U kunt alle andere hulpprogram ma's voor het maken van Lynda.com-gebruikers accounts of Api's die worden geleverd door Lynda.com, gebruiken om AAD-gebruikers accounts in te richten.
+> You can use any other Lynda.com user account creation tools or APIs provided by Lynda.com to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Lynda.com in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Lynda.com waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the Lynda.com tile in the Access Panel, you should be automatically signed in to the Lynda.com for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
@@ -203,5 +203,5 @@ Wanneer u op de tegel Lynda.com in het toegangs venster klikt, moet u automatisc
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,35 +1,30 @@
 ---
 title: Uw eerste functie maken in Azure met behulp van Visual Studio
 description: Lees hoe u een via HTTP geactiveerde Azure-functie maakt en publiceert met Visual Studio.
-author: ggailey777
-manager: gwallace
-keywords: azure-functies, functies, gebeurtenisverwerking, berekenen, architectuur zonder server
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 07/19/2019
-ms.author: glenga
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: 1d798be3a0cde39de208105c4b3d4458fa5b124c
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 6d09453db0fdf8c09ad6d90c63b27f48508302be
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329496"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230717"
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Uw eerste functie maken met Visual Studio
 
 Met Azure Functions kunt u uw code in een [serverloze](https://azure.microsoft.com/solutions/serverless/) omgeving uitvoeren zonder dat u eerst een virtuele machine moet maken of een webtoepassing publiceren.
 
-In dit artikel leert u hoe u Visual Studio 2019 kunt gebruiken om lokaal een ' Hallo wereld ' te maken en te testen en vervolgens naar Azure te publiceren. Deze Quick start is ontworpen voor Visual Studio 2019. Wanneer u een functions-project maakt met behulp van Visual Studio 2017, moet u eerst de [nieuwste Azure functions-hulpprogram ma's](functions-develop-vs.md#check-your-tools-version)installeren.
+In this article, you learn how to use Visual Studio 2019 to locally create and test a "hello world" function and then publish it to Azure. This quickstart is designed for Visual Studio 2019. When creating a Functions project using Visual Studio 2017, you must first install the [latest Azure Functions tools](functions-develop-vs.md#check-your-tools-version).
 
 ![De reactie van de lokale host van de functie in de browser](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u deze zelf studie wilt volt ooien, moet u eerst [Visual Studio 2019](https://azure.microsoft.com/downloads/)installeren. Zorg ervoor dat de werkbelasting **Azure development** ook is geïnstalleerd.
+To complete this tutorial, you must first install [Visual Studio 2019](https://azure.microsoft.com/downloads/). Zorg ervoor dat de werkbelasting **Azure development** ook is geïnstalleerd.
 
-![Visual Studio installeren met de werk belasting Azure Development](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+![Install Visual Studio with the Azure development workload](media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -37,15 +32,15 @@ Als u deze zelf studie wilt volt ooien, moet u eerst [Visual Studio 2019](https:
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio maakt een project en een klasse die standaard code voor het functie type HTTP-trigger bevatten. Met het kenmerk `FunctionName` van de methode wordt de naam van de functie ingesteld. deze is standaard `HttpTrigger`. Het kenmerk `HttpTrigger` geeft aan dat de functie wordt geactiveerd door een HTTP-aanvraag. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
+Visual Studio creates a project and class that contains boilerplate code for the HTTP trigger function type. The `FunctionName` attribute on the method sets the name of the function, which by default is `HttpTrigger`. The `HttpTrigger` attribute specifies that the function is triggered by an HTTP request. De standaardcode verzendt een HTTP-reactie met een waarde uit de hoofdtekst van de aanvraag of uit de query-tekenreeks.
 
-U kunt de mogelijkheden van uw functie uitbreiden met behulp van invoer-en uitvoer bindingen door de juiste kenmerken toe te passen op de-methode. Zie de sectie [Triggers en bindingen](functions-dotnet-class-library.md#triggers-and-bindings) van de [Azure Functions C#-referentie voor ontwikkelaars](functions-dotnet-class-library.md) voor meer informatie.
+You can expand the capabilities of your function using input and output bindings by applying the appropriate attributes to the method. Zie de sectie [Triggers en bindingen](functions-dotnet-class-library.md#triggers-and-bindings) van de [Azure Functions C#-referentie voor ontwikkelaars](functions-dotnet-class-library.md) voor meer informatie.
 
 Nu u uw functieproject en een HTTP-geactiveerde functie hebt gemaakt, kunt u deze testen op uw lokale computer.
 
 ## <a name="run-the-function-locally"></a>De functie lokaal uitvoeren
 
-Visual Studio kan worden geïntegreerd met Azure Functions Core Tools zodat u uw functies lokaal kunt testen met behulp van de volledige functions-runtime.  
+Visual Studio integrates with Azure Functions Core Tools so that you can test your functions locally using the full Functions runtime.  
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
@@ -53,7 +48,7 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 ## <a name="publish-the-project-to-azure"></a>Het project naar Azure publiceren
 
-Voordat u uw project kunt publiceren, moet u een functie-app in uw Azure-abonnement hebben. Visual Studio Publishing maakt een functie-app voor u de eerste keer dat u uw project publiceert.
+Voordat u uw project kunt publiceren, moet u een functie-app in uw Azure-abonnement hebben. Visual Studio publishing creates a function app for you the first time you publish your project.
 
 [!INCLUDE [Publish the project to Azure](../../includes/functions-vstools-publish.md)]
 
@@ -71,7 +66,7 @@ Voordat u uw project kunt publiceren, moet u een functie-app in uw Azure-abonnem
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt Visual Studio gebruikt voor het maken en publiceren C# van een functie-app in azure met een eenvoudige, door http geactiveerde functie. Zie [Azure functions C# Naslag informatie voor ontwikkel aars](functions-dotnet-class-library.md)voor meer informatie over het ontwikkelen van functies als .net-klassen bibliotheken.
+You have used Visual Studio to create and publish a C# function app in Azure with a simple HTTP triggered function. To learn more about developing functions as .NET class libraries, see [Azure Functions C# developer reference](functions-dotnet-class-library.md).
 
 > [!div class="nextstepaction"]
-> [Een Azure Storage wachtrij binding aan uw functie toevoegen](functions-add-output-binding-storage-queue-vs.md)
+> [Add an Azure Storage queue binding to your function](functions-add-output-binding-storage-queue-vs.md)

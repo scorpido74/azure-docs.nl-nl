@@ -1,7 +1,7 @@
 ---
-title: Taak verdeling van zone-redundante Vm's met behulp van Azure CLI
-titlesuffix: Azure Load Balancer
-description: Meer informatie over het maken van een openbaar Standard Load Balancer met een zone-redundante frontend met Azure CLI
+title: Load balance zone-redundant VMs using Azure CLI
+titleSuffix: Azure Load Balancer
+description: Learn how to create a public Standard Load Balancer with zone redundant frontend using Azure CLI
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/09/2018
 ms.author: allensu
-ms.openlocfilehash: 6a22ac9a2727c537d98e692e67076637fe8cc457
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: af327f751a0af67b6d17330dbaeb717df8660bfd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68274335"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225272"
 ---
-#  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Taak verdeling van virtuele machines in alle beschikbaarheids zones met behulp van Azure CLI
+#  <a name="load-balance-vms-across-all-availability-zones-using-azure-cli"></a>Load balance VMs across all availability zones using Azure CLI
 
-In dit artikel wordt beschreven hoe u een open bare [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) maakt met een zone-redundante front-end om zone-redundantie te bieden zonder afhankelijk te zijn van meerdere DNS-records. Eén front-end-IP-adres is automatisch zone-redundant.  Het gebruik van een zone-redundante front-end voor uw load balancer, met één IP-adres, kunt u nu elke VM in een virtueel netwerk bereiken binnen een regio die voor alle Beschikbaarheidszones. Gebruik beschikbaarheidszones om uw apps en gegevens te beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter.
+This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zone-redundant frontend to achieve zone-redundancy without dependency on multiple DNS records. A single front-end IP address is automatically zone-redundant.  Using a zone redundant frontend for your load balancer, with a single IP address you can now reach any VM in a virtual network within a region that is across all Availability Zones. Gebruik beschikbaarheidszones om uw apps en gegevens te beschermen tegen het onwaarschijnlijke risico van een storing of het verloren gaan van een heel datacenter.
 
 Zie [Standard Load Balancer en beschikbaarheidszones](load-balancer-standard-availability-zones.md) voor meer informatie over het gebruik van beschikbaarheidszones met Standard Load Balancer.
 
@@ -31,16 +31,16 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
-Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor deze zelf studie gebruikmaken van Azure CLI versie 2.0.17 of hoger.  Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
+If you choose to install and use the CLI locally, this tutorial requires that you are running Azure CLI version 2.0.17 or higher.  Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren]( /cli/azure/install-azure-cli) als u de CLI wilt installeren of een upgrade wilt uitvoeren. 
 
 > [!NOTE]
-> Ondersteuning voor Beschikbaarheidszones is beschikbaar voor geselecteerde Azure-resources en regio's en groottefamilies van de virtuele machine. Zie voor meer informatie over hoe u aan de slag en welke Azure-resources, -regio's en VM-groottefamilies u ze met uitproberen kunt, [overzicht van Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview). Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
+> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).  
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
 Maak een resourcegroep maken met [az group create](/cli/azure/group#az-group-create). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam *myResourceGroupSLB* gemaakt op de locatie *Europa West* :
+The following example creates a resource group named *myResourceGroupSLB* in the *westeurope* location:
 
 ```azurecli-interactive
 az group create \
@@ -48,10 +48,10 @@ az group create \
 --location westeurope
 ```
 
-## <a name="create-a-zone-redundant-public-ip-standard"></a>Een zone maken met redundante open bare IP-standaard
-Om toegang te krijgen tot uw app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Een zone-redundante front-end wordt door alle beschikbaarheids zones in een regio tegelijk bediend. Maak een zone-redundant openbaar IP-adres met [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create). Wanneer u een standaard openbaar IP-adres maakt, is het standaard zone redundant.
+## <a name="create-a-zone-redundant-public-ip-standard"></a>Create a zone redundant public IP Standard
+Om toegang te krijgen tot uw app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. A zone-redundant front-end is served by all availability zones in a region simultaneously. Create a zone redundant public IP address with [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). When you create a Standard Public  IP address, it is zone redundant by default.
 
-In het volgende voor beeld wordt een zone onnodig openbaar IP-adres gemaakt met de naam *myPublicIP* in de resource groep *myresourcegrouploadbalancer gemaakt* .
+The following example creates a zone redundant public IP address named *myPublicIP* in the *myResourceGroupLoadBalancer* resource group.
 
 ```azurecli-interactive
 az network public-ip create \
@@ -60,15 +60,15 @@ az network public-ip create \
 --sku Standard
 ```
 
-## <a name="create-azure-standard-load-balancer"></a>Azure-Standard Load Balancer maken
+## <a name="create-azure-standard-load-balancer"></a>Create Azure Standard Load Balancer
 In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
 - een front-end IP-pool die het binnenkomende netwerkverkeer op de load balancer ontvangt.
-- een back-end IP-pool waar de front-endpool het netwerkverkeer op de load balancer heen stuurt.
+- een back-end-IP-pool waar de front-end-pool het netwerkverkeer op de load balancer naartoe stuurt.
 - een statustest die de status van de back-end-VM-exemplaren vaststelt.
 - een load balancer-regel die bepaalt hoe het verkeer over de VM's wordt verdeeld.
 
 ### <a name="create-the-load-balancer"></a>Load balancer maken
-Maak een standaard load balancer met [AZ Network lb Create](/cli/azure/network/lb#az-network-lb-create). In het volgende voor beeld wordt een load balancer gemaakt met de naam *myLoadBalancer* en wordt het *myPublicIP* -adres toegewezen aan de front-end-IP-configuratie.
+Create a Standard load balancer with [az network lb create](/cli/azure/network/lb#az-network-lb-create). The following example creates a load balancer named *myLoadBalancer* and assigns the *myPublicIP* address to the front-end IP configuration.
 
 ```azurecli-interactive
 az network lb create \
@@ -80,9 +80,9 @@ az network lb create \
 --sku Standard
 ```
 
-## <a name="create-health-probe-on-port-80"></a>Status test maken op poort 80
+## <a name="create-health-probe-on-port-80"></a>Create health probe on port 80
 
-Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoor te zorgen dat deze netwerkverkeer kunnen verzenden. Het exemplaar van een virtuele machine met mislukte testcontroles wordt uit de load balancer verwijderd totdat deze weer online komt en een testcontrole bepaalt of deze in orde is. Maak een status test met AZ Network lb probe Create om de status van de virtuele machines te bewaken. U gebruikt [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) om een TCP-statustest te maken. In het volgende voorbeeld wordt een statustest gemaakt met de naam *myHealthProbe*:
+Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoor te zorgen dat deze netwerkverkeer kunnen verzenden. Het exemplaar van een virtuele machine met mislukte testcontroles wordt uit de load balancer verwijderd totdat deze weer online komt en een testcontrole bepaalt of deze in orde is. Create a health probe with az network lb probe create to monitor the health of the virtual machines. U gebruikt [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) om een TCP-statustest te maken. In het volgende voorbeeld wordt een statustest gemaakt met de naam *myHealthProbe*:
 
 ```azurecli-interactive
 az network lb probe create \
@@ -93,8 +93,8 @@ az network lb probe create \
 --port 80
 ```
 
-## <a name="create-load-balancer-rule-for-port-80"></a>load balancer regel maken voor poort 80
-Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEndPool* en het verzenden van netwerkverkeer met evenredige taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt.
+## <a name="create-load-balancer-rule-for-port-80"></a>Create load balancer rule for port 80
+Een load balancer-regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-IP-pool om het verkeer te ontvangen, samen met de gewenste bron- en doelpoort. Maak met [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) de regel *myLoadBalancerRuleWeb* voor het luisteren naar poort 80 in de front-endpool *myFrontEnd* en het verzenden van netwerkverkeer met evenredige taakverdeling naar de back-endadresgroep *myBackEndPool* waarbij ook van poort 80 gebruik wordt gemaakt.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -112,9 +112,9 @@ az network lb rule create \
 ## <a name="configure-virtual-network"></a>Virtueel netwerk configureren
 Voordat u enkele VM's implementeert en uw load balancer test, maakt u de ondersteunende virtuele-netwerkbronnen.
 
-### <a name="create-a-virtual-network"></a>Een virtueel netwerk maken
+### <a name="create-a-virtual-network"></a>Maak een virtueel netwerk
 
-Maak een virtueel netwerk met de naam *myVnet* met een subnet met de naam *MySubnet* in de myResourceGroup met [AZ Network vnet Create](/cli/azure/network/vnet#az-network-vnet-create).
+Create a virtual network named *myVnet* with a subnet named *mySubnet* in the myResourceGroup using [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create).
 
 
 ```azurecli-interactive
@@ -127,7 +127,7 @@ az network vnet create \
 
 ### <a name="create-a-network-security-group"></a>Een netwerkbeveiligingsgroep maken
 
-Maak een netwerk beveiligings groep met de naam *myNetworkSecurityGroup* om binnenkomende verbindingen met uw virtuele netwerk te definiëren met [AZ Network NSG Create](/cli/azure/network/nsg#az-network-nsg-create).
+Create network security group named *myNetworkSecurityGroup* to define inbound connections to your virtual network  with [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create).
 
 ```azurecli-interactive
 az network nsg create \
@@ -135,7 +135,7 @@ az network nsg create \
 --name myNetworkSecurityGroup
 ```
 
-Maak een regel voor de netwerk beveiligings groep met de naam *myNetworkSecurityGroupRule* voor poort 80 met [AZ Network NSG Rule Create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
+Create a network security group rule named *myNetworkSecurityGroupRule* for port 80 with [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create).
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -152,7 +152,7 @@ az network nsg rule create \
 --priority 200
 ```
 ### <a name="create-nics"></a>NIC's maken
-Maak drie virtuele Nic's met [AZ Network NIC Create](/cli/azure/network/nic#az-network-nic-create) en koppel deze aan het open bare IP-adres en de netwerk beveiligings groep. In het volgende voor beeld worden zes virtuele Nic's gemaakt. (Eén virtuele NIC voor elke VM die u in de volgende stappen voor uw app maakt). U kunt op elk gewenst moment extra virtuele NIC's en VM's maken en toevoegen aan de load balancer:
+Create three virtual NICs with [az network nic create](/cli/azure/network/nic#az-network-nic-create) and associate them with the Public IP address and the network security group. The following example creates six virtual NICs. (Eén virtuele NIC voor elke VM die u in de volgende stappen voor uw app maakt). U kunt op elk gewenst moment extra virtuele NIC's en VM's maken en toevoegen aan de load balancer:
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -167,7 +167,7 @@ for i in `seq 1 3`; do
 done
 ```
 ## <a name="create-backend-servers"></a>Back-endservers maken
-In dit voor beeld maakt u drie virtuele machines in zone 1, zone 2 en zone 3 die moeten worden gebruikt als back-endservers voor de load balancer. U installeert ook NGINX op de virtuele machines om te controleren of de load balancer is gemaakt.
+In this example, you create three virtual machines located in zone 1, zone 2, and zone 3 to be used as backend servers for the load balancer. You also install NGINX on the virtual machines to verify that the load balancer was successfully created.
 
 ### <a name="create-cloud-init-config"></a>Een cloud-init-configuratiebestand maken
 
@@ -215,10 +215,10 @@ runcmd:
   - nodejs index.js
 ```
 
-### <a name="create-the-zonal-virtual-machines"></a>De virtuele zonegebonden-machines maken
-Maak de virtuele machines met [AZ VM Create](/cli/azure/vm#az-vm-create) in zone 1, zone 2 en zone 3. In het volgende voor beeld wordt een virtuele machine gemaakt in elke zone en worden SSH-sleutels gegenereerd als deze nog niet bestaan:
+### <a name="create-the-zonal-virtual-machines"></a>Create the zonal virtual machines
+Create the VMs with [az vm create](/cli/azure/vm#az-vm-create) in zone 1, zone 2, and zone 3. The following example creates a VM in each zone and generates SSH keys if they do not already exist:
 
-Maak een virtuele machine in elke zone (zone 1, zone2 en zone 3) van de locatie *Europa West* .
+Create a VM in each zone (zone 1, zone2, and zone 3) of the *westeurope* location.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do
@@ -234,7 +234,7 @@ done
 ```
 ## <a name="test-the-load-balancer"></a>Load balancer testen
 
-Haal het open bare IP-adres van de load balancer met [AZ Network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
+Get the public IP address of the load balancer using [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). 
 
 ```azurecli-interactive
   az network public-ip show \
@@ -247,7 +247,7 @@ Vervolgens kunt u het openbare IP-adres invoeren in een webbrowser. Het duurt en
 
 ![Node.js-app uitvoeren](./media/load-balancer-standard-public-zone-redundant-cli/running-nodejs-app.png)
 
-Als u de load balancer het distribueren van verkeer tussen virtuele machines in alle drie de beschikbaarheids zones met uw app wilt zien, kunt u een virtuele machine in een bepaalde zone stoppen en uw browser vernieuwen.
+To see the load balancer distribute traffic across VMs in all three availability zones running your app, you can stop a VM in a particular zone and refresh your browser.
 
 ## <a name="next-steps"></a>Volgende stappen
 - Meer informatie over [Standard Load Balancer](./load-balancer-standard-overview.md)

@@ -1,33 +1,28 @@
 ---
-title: Aangepaste indelings status in Durable Functions-Azure
-description: Meer informatie over het configureren en gebruiken van een aangepaste indelings status voor Durable Functions.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Custom orchestration status in Durable Functions - Azure
+description: Learn how to configure and use custom orchestration status for Durable Functions.
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: d3b3ee1fabf59ae3b87185c4c9eb2f85aa8acd91
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 22242a40a29a1a014a7ab88ed705c7ca3e5ba288
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614928"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232956"
 ---
-# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Aangepaste indelings status in Durable Functions (Azure Functions)
+# <a name="custom-orchestration-status-in-durable-functions-azure-functions"></a>Custom orchestration status in Durable Functions (Azure Functions)
 
-Met de aangepaste indelings status kunt u een aangepaste status waarde instellen voor uw Orchestrator-functie. Deze status wordt gegeven via de HTTP GetStatus-API of de `DurableOrchestrationClient.GetStatusAsync`-API.
+Custom orchestration status lets you set a custom status value for your orchestrator function. This status is provided via the HTTP GetStatus API or the `DurableOrchestrationClient.GetStatusAsync` API.
 
-## <a name="sample-use-cases"></a>Voorbeeld Cases gebruiken
+## <a name="sample-use-cases"></a>Sample use cases
 
 > [!NOTE]
-> De volgende voor beelden laten zien hoe u een aangepaste status C# functie kunt gebruiken in en Java script. De C# voor beelden zijn geschreven voor Durable functions 2. x en zijn niet compatibel met Durable functions 1. x. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> The following samples show how to use custom status feature in C# and JavaScript. The C# examples are written for Durable Functions 2.x and are not compatible with Durable Functions 1.x. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="visualize-progress"></a>Voortgang visualiseren
+### <a name="visualize-progress"></a>Visualize progress
 
-Clients kunnen het eind punt van de status controleren en een voortgangs GEBRUIKERSINTERFACE weer geven die de huidige uitvoerings fase visualiseert. In het volgende voor beeld ziet u de voortgang van het delen:
+Clients can poll the status end point and display a progress UI that visualizes the current execution stage. The following sample demonstrates progress sharing:
 
 #### <a name="c"></a>C#
 
@@ -56,7 +51,7 @@ public static string SayHello([ActivityTrigger] string name)
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -82,7 +77,7 @@ module.exports = async function(context, name) {
 };
 ```
 
-De client ontvangt de uitvoer van de indeling alleen wanneer `CustomStatus` veld is ingesteld op Amsterdam:
+And then the client will receive the output of the orchestration only when `CustomStatus` field is set to "London":
 
 #### <a name="c"></a>C#
 
@@ -117,7 +112,7 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -147,11 +142,11 @@ module.exports = async function(context, req) {
 ```
 
 > [!NOTE]
-> In Java script wordt het `customStatus` veld ingesteld wanneer de volgende `yield` of `return` actie wordt gepland.
+> In JavaScript, the `customStatus` field will be set when the next `yield` or `return` action is scheduled.
 
-### <a name="output-customization"></a>Aanpassing van de uitvoer
+### <a name="output-customization"></a>Output customization
 
-Een ander interessant scenario is het segmenteren van gebruikers door een aangepaste uitvoer te retour neren op basis van unieke kenmerken of interacties. Met behulp van de aangepaste indelings status blijft de client-side-code algemeen. Alle belang rijke wijzigingen worden aangebracht aan de server zijde, zoals wordt weer gegeven in het volgende voor beeld:
+Another interesting scenario is segmenting users by returning customized output based on unique characteristics or interactions. With the help of custom orchestration status, the client-side code will stay generic. All main modifications will happen on the server side as shown in the following sample:
 
 #### <a name="c"></a>C#
 
@@ -191,7 +186,7 @@ public static void Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -224,9 +219,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-### <a name="instruction-specification"></a>Instructie specificatie
+### <a name="instruction-specification"></a>Instruction specification
 
-De Orchestrator kan unieke instructies bieden aan de clients via de aangepaste status. De aangepaste status instructies worden toegewezen aan de stappen in de indelings code:
+The orchestrator can provide unique instructions to the clients via the custom state. The custom status instructions will be mapped to the steps in the orchestration code:
 
 #### <a name="c"></a>C#
 
@@ -256,7 +251,7 @@ public static async Task<bool> Run(
 }
 ```
 
-#### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+#### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -285,7 +280,7 @@ module.exports = df.orchestrator(function*(context) {
 
 ## <a name="sample"></a>Voorbeeld
 
-In het volgende voor beeld wordt de aangepaste status eerst ingesteld.
+In the following sample, the custom status is set first;
 
 ### <a name="c"></a>C#
 
@@ -302,7 +297,7 @@ public static async Task SetStatusTest([OrchestrationTrigger] IDurableOrchestrat
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```javascript
 const df = require("durable-functions");
@@ -318,13 +313,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-Terwijl de Orchestration wordt uitgevoerd, kunnen externe clients deze aangepaste status ophalen:
+While the orchestration is running, external clients can fetch this custom status:
 
 ```http
 GET /runtime/webhooks/durabletask/instances/instance123
 ```
 
-Clients ontvangen het volgende antwoord:
+Clients will get the following response:
 
 ```json
 {
@@ -338,9 +333,9 @@ Clients ontvangen het volgende antwoord:
 ```
 
 > [!WARNING]
-> De nettolading van de aangepaste status is beperkt tot 16 KB aan UTF-16-JSON-tekst omdat deze moet kunnen passen in een Azure Table Storage-kolom. U wordt aangeraden externe opslag te gebruiken als u een grotere Payload nodig hebt.
+> The custom status payload is limited to 16 KB of UTF-16 JSON text because it needs to be able to fit in an Azure Table Storage column. We recommend you use external storage if you need a larger payload.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over duurzame timers](durable-functions-timers.md)
+> [Learn about durable timers](durable-functions-timers.md)

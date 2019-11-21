@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met FreshDesk | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with FreshDesk | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en FreshDesk configureert.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: add43f081ca6059651725cd6f817d4cce127b74b
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: e75a45bc4ccd2614520fda39e09996c2286bdbd0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73155756"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227620"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Zelf studie: integratie Azure Active Directory met FreshDesk
+# <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Tutorial: Azure Active Directory integration with FreshDesk
 
 In deze zelfstudie leert u hoe u FreshDesk kunt integreren met Azure Active Directory (Azure AD).
 De integratie van FreshDesk met Azure AD biedt de volgende voordelen:
@@ -202,7 +202,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -246,19 +246,19 @@ In het geval van FreshDesk is dat een handmatige taak.
 
 2. Klik in het menu bovenaan op **Admin**.
 
-    ![Beheerder](./media/freshdesk-tutorial/IC776772.png "Beheerder")
+    ![Admin](./media/freshdesk-tutorial/IC776772.png "Admin")
 
 3. Klik op het tabblad **General Settings** op **Agents**.
   
-    ![Middelen](./media/freshdesk-tutorial/IC776773.png "Agents")
+    ![Agents](./media/freshdesk-tutorial/IC776773.png "Agents")
 
 4. Klik op **New Agent**.
 
-    ![Nieuwe agent](./media/freshdesk-tutorial/IC776774.png "Nieuwe agent")
+    ![New Agent](./media/freshdesk-tutorial/IC776774.png "New Agent")
 
 5. Voer de volgende stappen uit in het dialoogvenster Agent Information:
 
-    ![Agent gegevens](./media/freshdesk-tutorial/IC776775.png "Agent gegevens")
+    ![Agent Information](./media/freshdesk-tutorial/IC776775.png "Agent Information")
 
     a. Typ in het tekstvak **Email** het e-mailadres van het Azure AD-account dat u wilt inrichten.
 
@@ -272,7 +272,7 @@ In het geval van FreshDesk is dat een handmatige taak.
     >De houder van het Azure AD-account krijgt een e-mailbericht met een koppeling om het account te bevestigen voordat dit wordt geactiveerd.
     >
     >[!NOTE]
-    >U kunt de AAD-gebruikersaccounts ook inrichten met behulp van andere hulpprogramma's of API's van Freshdesk voor het maken van gebruikersaccounts.
+    >You can use any other Freshdesk user account creation tools or APIs provided by Freshdesk to provision Azure AD user accounts to FreshDesk.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -286,5 +286,5 @@ Wanneer u in het toegangsvenster op de tegel FreshDesk klikt, wordt u automatisc
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

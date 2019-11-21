@@ -1,74 +1,81 @@
 ---
-title: Connectiviteits architectuur in Azure Database for MySQL
-description: Beschrijft de connectiviteits architectuur voor uw Azure Database for MySQL-server.
+title: Connectivity architecture in Azure Database for MySQL
+description: Describes the connectivity architecture for your Azure Database for MySQL server.
 author: kummanish
 ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: 664d3d4333f8c34a8c5dc6648da2beccc4d7a6a2
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: c4fecfadefedf10f7e11534b4efbd197c4d7fdae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498447"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213142"
 ---
-# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Connectiviteits architectuur in Azure Database for MySQL
-In dit artikel wordt uitgelegd wat de Azure Database for MySQL connectiviteits architectuur is en hoe het verkeer wordt omgeleid naar uw Azure Database for MySQL exemplaar van clients, zowel binnen als buiten Azure.
+# <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Connectivity architecture in Azure Database for MySQL
+This article explains the Azure Database for MySQL connectivity architecture as well as how the traffic is directed to your Azure Database for MySQL instance from clients both within and outside Azure.
 
 ## <a name="connectivity-architecture"></a>Connectiviteitsarchitectuur
-De verbinding met uw Azure Database for MySQL wordt tot stand gebracht via een gateway die verantwoordelijk is voor de route ring van binnenkomende verbindingen naar de fysieke locatie van uw server in onze clusters. In het volgende diagram ziet u de verkeers stroom.
+Connection to your Azure Database for MySQL is established through a gateway that is responsible for routing incoming connections to the physical location of your server in our clusters. The following diagram illustrates the traffic flow.
 
-![Overzicht van de connectiviteits architectuur](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
+![Overview of the connectivity architecture](./media/concepts-connectivity-architecture/connectivity-architecture-overview-proxy.png)
 
-Wanneer een client verbinding maakt met de data base, krijgen ze een connection string die verbinding maakt met de gateway. Deze gateway heeft een openbaar IP-adres dat luistert naar poort 3306. Binnen het database cluster wordt verkeer doorgestuurd naar de juiste Azure Database for MySQL. Daarom is het nodig om verbinding te maken met uw server, zoals van bedrijfs netwerken, het is nood zakelijk om de firewall aan de client zijde te openen zodat uitgaand verkeer de gateways kan bereiken. Hieronder vindt u een volledige lijst met de IP-adressen die worden gebruikt door onze gateways per regio.
+As client connect to the database, they get a connection string which connects to the gateway. This gateway has a public IP address that listens to port 3306. Inside the database cluster, traffic is forwarded to appropriate Azure Database for MySQL. Therefore, in order to connect to your server, such as from corporate networks, it is necessary to open up the client side firewall to allow outbound traffic to be able to reach our gateways. Below you can find a complete list of the IP addresses used by our gateways per region.
 
-## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>IP-adressen van Azure Database for MySQL gateway
-De volgende tabel geeft een lijst van de primaire en secundaire IP-adressen van de Azure Database for MySQL gateway voor alle gegevens regio's. Het primaire IP-adres is het huidige IP-adres van de gateway en het tweede IP-adres is een failover-IP-adres in geval van een storing van de primaire. Zoals gezegd, moeten klanten uitgaande berichten toestaan voor de IP-adressen. Het tweede IP-adres luistert op geen enkele services totdat het wordt geactiveerd door Azure Database for MySQL om verbindingen te accepteren.
+## <a name="azure-database-for-mysql-gateway-ip-addresses"></a>Azure Database for MySQL gateway IP addresses
+The following table lists the primary and secondary IPs of the Azure Database for MySQL gateway for all data regions. The primary IP address is the current IP address of the gateway and the second IP address is a failover IP address in case of failure of the primary. As mentioned, customers should allow outbound to both the IP addresses. The second IP address does not listen in on any services until it is activated by Azure Database for MySQL to accept connections.
 
-| **Regio naam** | **Primair IP-adres** | **Secundair IP-adres** |
+| **Region Name** | **Primary IP Address** | **Secondary IP Address** |
 |:----------------|:-------------|:------------------------|
-| Australië - oost | 13.75.149.87 | 40.79.161.1 |
+| Australië Oost | 13.75.149.87 | 40.79.161.1 |
 | Australië - zuidoost | 191.239.192.109 | 13.73.109.251 |
-| Brazilië - zuid | 104.41.11.5 | |
-| Canada - centraal | 40.85.224.249 | |
-| Canada - oost | 40.86.226.166 | |
-| US - centraal | 23.99.160.139 | 13.67.215.62 |
-| China-oost 1 | 139.219.130.35 | |
+| Brazilië - Zuid | 104.41.11.5 | |
+| Canada-Midden | 40.85.224.249 | |
+| Canada-Oost | 40.86.226.166 | |
+| VS - centraal | 23.99.160.139 | 13.67.215.62 |
+| China East 1 | 139.219.130.35 | |
 | China - oost 2 | 40.73.82.1 | |
-| China-noord 1 | 139.219.15.17 | |
+| China North 1 | 139.219.15.17 | |
 | China - noord 2 | 40.73.50.0 | |
 | Azië - oost | 191.234.2.139 | 52.175.33.150 |
-| VS-Oost 1 | 191.238.6.43 | 40.121.158.30 |
-| US - oost 2 | 191.239.224.107 | 40.79.84.180 * |
+| East US 1 | 191.238.6.43 | 40.121.158.30 |
+| VS - oost 2 | 191.239.224.107 | 40.79.84.180 * |
 | Frankrijk - centraal | 40.79.137.0 | 40.79.129.1 |
 | Duitsland - centraal | 51.4.144.100 | |
 | India - centraal | 104.211.96.159 | |
 | India - zuid | 104.211.224.146 | |
 | India - west | 104.211.160.80 | |
 | Japan - Oost | 191.237.240.43 | 13.78.61.196 |
-| Japan - west | 191.238.68.11 | 104.214.148.156 |
+| Japan - West | 191.238.68.11 | 104.214.148.156 |
 | Korea - centraal | 52.231.32.42 | |
-| Korea - zuid | 52.231.200.86 |  |
+| Korea (Zuid) | 52.231.200.86 |  |
 | VS - noord-centraal | 23.98.55.75 | 23.96.178.199 |
 | Europa - noord | 191.235.193.75 | 40.113.93.91 |
-| US - zuid-centraal | 23.98.162.75 | 13.66.62.124 |
+| VS - zuid-centraal | 23.98.162.75 | 13.66.62.124 |
 | Azië - zuidoost | 23.100.117.95 | 104.43.15.0 |
 | Zuid-Afrika - noord | 102.133.152.0 | |
 | Zuid-Afrika - west | 102.133.24.0 | |
 | VAE - noord | 65.52.248.0 | |
 | VK - zuid | 51.140.184.11 | |
-| Verenigd Koninkrijk West | 51.141.8.11| |
-| Europa -west | 191.237.232.75 | 40.68.37.158 |
-| VS-West 1 | 23.99.34.75 | 104.42.238.205 |
-| US - west 2 | 13.66.226.202 | |
+| VK - west | 51.141.8.11| |
+| Europa - west | 191.237.232.75 | 40.68.37.158 |
+| West US 1 | 23.99.34.75 | 104.42.238.205 |
+| VS - west 2 | 13.66.226.202 | |
 ||||
 
 > [!NOTE]
-> *VS-Oost 2* heeft ook een tertiair IP-adres van `52.167.104.0`.
+> *East US 2* has also a tertiary IP address of `52.167.104.0`.
+
+## <a name="connection-redirection"></a>Connection redirection
+
+Azure Database for MySQL supports an additional connection policy, **redirection**, that helps to reduce network latency between client applications and MySQL servers. With this feature, after the initial TCP session is established to the Azure Database for MySQL server, the server returns the backend address of the node hosting the MySQL server to the client. Thereafter, all subsequent packets flow directly to the server, bypassing the gateway. As packets flow directly to the server, latency and throughput have improved performance.
+
+This feature is supported in Azure Database for MySQL servers with engine versions 5.6, 5.7, and 8.0.
+
+Preview support for redirection is available in the [PHP mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) extension, developed by Microsoft, and is available on [PECL](https://pecl.php.net/package/mysqlnd_azure). See the [configuring redirection](./howto-redirection.md) article for more information on how to use redirection in your applications. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Azure Database for MySQL firewall regels maken en beheren met behulp van de Azure Portal](./howto-manage-firewall-using-portal.md)
-* [Azure Database for MySQL firewall regels maken en beheren met Azure CLI](./howto-manage-firewall-using-cli.md)
-
+* [Create and manage Azure Database for MySQL firewall rules using the Azure portal](./howto-manage-firewall-using-portal.md)
+* [Create and manage Azure Database for MySQL firewall rules using Azure CLI](./howto-manage-firewall-using-cli.md)

@@ -2,21 +2,21 @@
 title: 'Zelfstudie: aangepaste Azure DNS-records voor een web-app maken'
 description: In deze zelfstudie maakt u DNS-records voor een web-app in een aangepast domein met behulp van Azure DNS.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 9d7a277db7550c1850ec0c9d555553064ab19f7c
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.author: allensu
+ms.openlocfilehash: e0a0129f45e5e7612b6ecd79475a49822b42ba19
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66730272"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211205"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Zelfstudie: DNS-records voor een web-app in een aangepast domein maken 
 
-U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. U kunt bijvoorbeeld een Azure-web-app maken en uw gebruikerstoegang hebben met behulp van een van beide www\.contoso.com of contoso.com als een volledig gekwalificeerde domeinnaam (FQDN).
+U kunt Azure DNS configureren voor het hosten van een aangepast domein voor uw web-apps. For example, you can create an Azure web app and have your users access it using either www\.contoso.com or contoso.com as a fully qualified domain name (FQDN).
 
 > [!NOTE]
 > Contoso.com wordt in de hele zelfstudie als voorbeeld gebruikt. Vervang uw eigen domeinnaam door contoso.com.
@@ -47,7 +47,7 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* U kunt een beschikbaar om mee te testen die u in Azure DNS hosten kunt-domeinnaam moet hebben. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+* You must have a domain name available to test with that you can host in Azure DNS . U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 * [Maak een App Service-app](../app-service/app-service-web-get-started-html.md), of gebruik een app die u hebt gemaakt voor een andere zelfstudie.
 
 * Maak een DNS-zone in Azure DNS en delegeer de zone in uw registrar naar Azure DNS.
@@ -84,7 +84,7 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 App Services gebruikt dit record alleen tijdens de configuratie, om te controleren of u de eigenaar bent van het aangepaste domein. Nadat uw aangepaste domein is gevalideerd en geconfigureerd in App Service, kunt u dit TXT-record verwijderen.
 
 > [!NOTE]
-> Als u wilt controleren of de domeinnaam, maar niet productieverkeer gerouteerd naar de web-app, moet u alleen de TXT-record voor de verificatiestap opgeven.  Verificatie is niet vereist voor een A of CNAME-record naast de TXT-record.
+> If you want to verify the domain name, but not route production traffic to the web app, you only need to specify the TXT record for the verification step.  Verification does not require an A or CNAME record in addition to the TXT record.
 
 ```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
@@ -92,7 +92,7 @@ New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
-## <a name="create-the-cname-record"></a>Het CNAME-record maken
+## <a name="create-the-cname-record"></a>De CNAME-record maken
 
 Als uw domein al wordt beheerd door Azure DNS (zie [DNS domain delegation](dns-domain-delegation.md) (Delegering van DNS-domeinen)) kunt u het volgende voorbeeld gebruiken om een CNAME-record voor contoso.azurewebsites.net te maken.
 
@@ -121,7 +121,7 @@ Het volgende voorbeeld is het antwoord:
 
 ## <a name="test-the-new-records"></a>De nieuwe records testen
 
-U kunt controleren of de records correct zijn gemaakt door een query uit te voeren op „www.contoso.com“ en contoso.com met behulp van nslookup, zoals hieronder wordt weergegeven:
+U kunt controleren of de records correct zijn gemaakt door een query uit te voeren op www.contoso.com en contoso.com met behulp van nslookup, zoals hieronder wordt weergegeven:
 
 ```
 PS C:\> nslookup
@@ -173,7 +173,7 @@ set-AzWebApp `
 Open een browser en browse naar `http://www.<your domainname>` en `http://<you domain name>`.
 
 > [!NOTE]
-> Zorg ervoor dat u de `http://` voorvoegsel, anders wordt uw browser proberen kan te voorspellen van een URL voor u!
+> Make sure you include the `http://` prefix, otherwise your browser may attempt to predict a URL for you!
 
 U zou voor beide URL's dezelfde pagina moeten zien. Bijvoorbeeld:
 

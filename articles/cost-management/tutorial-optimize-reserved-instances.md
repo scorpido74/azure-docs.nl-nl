@@ -7,20 +7,20 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 6af6a6b334d29c6ff813a9b2ff35153aed239b1b
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: ade3b63116337ae7b4678b459b1a0c388092f409
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967148"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229864"
 ---
 <!-- Intent: As a cloud-consuming administrator, I need to ensure that my reserved instances are optimized for cost and usage
 -->
 
-# <a name="tutorial-optimize-reserved-instances"></a>Zelfstudie: Gereserveerde instanties optimaliseren
+# <a name="tutorial-optimize-reserved-instances"></a>Zelfstudie: gereserveerde instanties optimaliseren
 
 In deze zelfstudie leert u hoe u de kosten en het gebruik van gereserveerde instanties voor Azure en Amazon Web Services (AWS) kunt optimaliseren met Cloudyn. Een gereserveerde instantie bij een provider van cloudservices is een verplichting tot een langetermijncontract waarbij u zich vooraf verplicht tot toekomstig gebruik van de virtuele machine. Dit kan mogelijk aanzienlijke besparingen bieden in vergelijking met het prijsmodel voor virtuele machines waarbij u betaalt op basis van gebruik. Mogelijke besparingen worden alleen gerealiseerd wanneer u de capaciteit van uw gereserveerde instanties volledig gebruikt.
 
@@ -36,7 +36,7 @@ In deze zelfstudie wordt uitgelegd hoe gereserveerde instanties van Azure en AWS
 > * Aanbevolen gereserveerde instanties aanschaffen
 > * Niet-gebruikte gereserveerde instanties aanpassen
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 

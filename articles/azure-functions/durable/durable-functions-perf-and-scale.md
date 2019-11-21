@@ -1,67 +1,63 @@
 ---
-title: Prestaties en schaal in Durable Functions-Azure
+title: Performance and scale in Durable Functions - Azure
 description: Inleiding tot de extensie Durable Functions voor Azure Functions.
-services: functions
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5efe571e2c7ff75ace584755324964003176b5f0
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: 15302eb4f89c854210d4fc1aba292c57d4757278
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614715"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231350"
 ---
-# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Prestaties en schaal in Durable Functions (Azure Functions)
+# <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Performance and scale in Durable Functions (Azure Functions)
 
-Als u de prestaties en schaal baarheid wilt optimaliseren, is het belang rijk dat u de unieke schaal kenmerken van [Durable functions](durable-functions-overview.md)begrijpt.
+To optimize performance and scalability, it's important to understand the unique scaling characteristics of [Durable Functions](durable-functions-overview.md).
 
-Om het schaal gedrag te begrijpen, moet u enkele details van de onderliggende Azure Storage Provider begrijpen.
+To understand the scale behavior, you have to understand some of the details of the underlying Azure Storage provider.
 
-## <a name="history-table"></a>Geschiedenis tabel
+## <a name="history-table"></a>History table
 
-De **geschiedenis** tabel is een Azure Storage tabel die de geschiedenis gebeurtenissen bevat voor alle Orchestration-instanties binnen een task hub. De naam van deze tabel bevindt zich in de vorm *TaskHubName*geschiedenis. Als instanties worden uitgevoerd, worden nieuwe rijen toegevoegd aan deze tabel. De partitie sleutel van deze tabel is afgeleid van de exemplaar-ID van de indeling. Een exemplaar-ID is in de meeste gevallen wille keurig. Dit zorgt ervoor dat interne partities in Azure Storage optimaal worden gedistribueerd.
+The **History** table is an Azure Storage table that contains the history events for all orchestration instances within a task hub. The name of this table is in the form *TaskHubName*History. As instances run, new rows are added to this table. The partition key of this table is derived from the instance ID of the orchestration. An instance ID is random in most cases, which ensures optimal distribution of internal partitions in Azure Storage.
 
-Wanneer een Orchestration-exemplaar moet worden uitgevoerd, worden de juiste rijen van de geschiedenis tabel in het geheugen geladen. Deze *geschiedenis gebeurtenissen* worden vervolgens opnieuw afgespeeld in de Orchestrator-functie code om deze terug te krijgen in de status van het eerder vastgelegde controle punt. Het gebruik van de uitvoerings geschiedenis om de status op deze manier opnieuw op te bouwen, wordt beïnvloed door het [patroon gebeurtenis bronnen](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
+When an orchestration instance needs to run, the appropriate rows of the History table are loaded into memory. These *history events* are then replayed into the orchestrator function code to get it back into its previously checkpointed state. The use of execution history to rebuild state in this way is influenced by the [Event Sourcing pattern](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
-## <a name="instances-table"></a>Tabel met exemplaren
+## <a name="instances-table"></a>Instances table
 
-De tabel **instances** is een andere Azure Storage tabel die de statussen bevat van alle indelings-en entiteits instanties binnen een task hub. Als er exemplaren worden gemaakt, worden er nieuwe rijen aan deze tabel toegevoegd. De partitie sleutel van deze tabel is de indelings exemplaar-ID of entiteits sleutel en de rij is een vaste constante. Er is één rij per indelings-of entiteits exemplaar.
+The **Instances** table is another Azure Storage table that contains the statuses of all orchestration and entity instances within a task hub. As instances are created, new rows are added to this table. The partition key of this table is the orchestration instance ID or entity key and the row key is a fixed constant. There is one row per orchestration or entity instance.
 
-Deze tabel wordt gebruikt om te voldoen aan de instantie query aanvragen van de Api's `GetStatusAsync` (.NET) en `getStatus` (Java script), evenals de [http API-status query](durable-functions-http-api.md#get-instance-status). Het wordt uiteindelijk consistent met de inhoud van de eerder genoemde **geschiedenis** tabel. Het gebruik van een afzonderlijke Azure Storage tabel om op deze manier efficiënt te voldoen aan de instantie query bewerkingen, wordt beïnvloed door het [CQRS-patroon (Command and query Responsibility segregation)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
+This table is used to satisfy instance query requests from the `GetStatusAsync` (.NET) and `getStatus` (JavaScript) APIs as well as the [status query HTTP API](durable-functions-http-api.md#get-instance-status). It is kept eventually consistent with the contents of the **History** table mentioned previously. The use of a separate Azure Storage table to efficiently satisfy instance query operations in this way is influenced by the [Command and Query Responsibility Segregation (CQRS) pattern](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
-## <a name="internal-queue-triggers"></a>Interne wachtrij Triggers
+## <a name="internal-queue-triggers"></a>Internal queue triggers
 
-Orchestrator-functies en-activiteit functies worden beide geactiveerd door interne wacht rijen in de taak hub van de functie-app. Met behulp van wacht rijen op deze manier beschikt u over betrouw bare leverings garanties voor ' ten minste één keer '. Er zijn twee typen wacht rijen in Durable Functions: de **controle wachtrij** en de **wachtrij met werk items**.
+Orchestrator functions and activity functions are both triggered by internal queues in the function app's task hub. Using queues in this way provides reliable "at-least-once" message delivery guarantees. There are two types of queues in Durable Functions: the **control queue** and the **work-item queue**.
 
-### <a name="the-work-item-queue"></a>De wachtrij voor werk items
+### <a name="the-work-item-queue"></a>The work-item queue
 
-Er bevindt zich één werk item wachtrij per taak-hub in Durable Functions. Het is een eenvoudige wachtrij en gedraagt zich op dezelfde manier als een andere `queueTrigger` wachtrij in Azure Functions. Deze wachtrij wordt gebruikt voor het activeren van stateless *activiteiten functies* door één bericht tegelijk te delegeren. Elk van deze berichten bevat invoer van de functie activiteit en aanvullende meta gegevens, zoals welke functie moet worden uitgevoerd. Wanneer een Durable Functions toepassing wordt geschaald naar meerdere Vm's, zijn deze Vm's allemaal concurrerend om werk te verkrijgen vanuit de werk wachtrij.
+There is one work-item queue per task hub in Durable Functions. It is a basic queue and behaves similarly to any other `queueTrigger` queue in Azure Functions. This queue is used to trigger stateless *activity functions* by dequeueing a single message at a time. Each of these messages contains activity function inputs and additional metadata, such as which function to execute. When a Durable Functions application scales out to multiple VMs, these VMs all compete to acquire work from the work-item queue.
 
-### <a name="control-queues"></a>Controle wachtrij (en)
+### <a name="control-queues"></a>Control queue(s)
 
-Er zijn meerdere *controle wachtrijen* per taak hub in Durable functions. Een *controle wachtrij* is geavanceerder dan de vereenvoudigde wachtrij voor werk items. Controle wachtrijen worden gebruikt voor het activeren van stateful Orchestrator-en Entity-functies. Omdat de functie instanties van Orchestrator en Entity stateful Singleton zijn, is het niet mogelijk een concurrerend consument model te gebruiken om de belasting over Vm's te verdelen. In plaats daarvan worden Orchestrator-en entiteits berichten verdeeld over de controle wachtrijen. Meer informatie over dit gedrag vindt u in de volgende secties.
+There are multiple *control queues* per task hub in Durable Functions. A *control queue* is more sophisticated than the simpler work-item queue. Control queues are used to trigger the stateful orchestrator and entity functions. Because the orchestrator and entity function instances are stateful singletons, it's not possible to use a competing consumer model to distribute load across VMs. Instead, orchestrator and entity messages are load-balanced across the control queues. More details on this behavior can be found in subsequent sections.
 
-Controle wachtrijen bevatten diverse indelings levenscyclus bericht typen. Voor beelden zijn [Orchestrator-besturings berichten](durable-functions-instance-management.md), *antwoord* berichten over de functie van de activiteit en timer berichten. Net als 32 berichten worden in een enkele poll van een controle wachtrij uit de wachtrij verwijderd. Deze berichten bevatten payload-gegevens en meta gegevens met inbegrip van de indeling waarvoor deze is bedoeld. Als meerdere uit de wachtrij geplaatste berichten zijn bedoeld voor hetzelfde exemplaar van de indeling, worden deze verwerkt als een batch.
+Control queues contain a variety of orchestration lifecycle message types. Examples include [orchestrator control messages](durable-functions-instance-management.md), activity function *response* messages, and timer messages. As many as 32 messages will be dequeued from a control queue in a single poll. These messages contain payload data as well as metadata including which orchestration instance it is intended for. If multiple dequeued messages are intended for the same orchestration instance, they will be processed as a batch.
 
-### <a name="queue-polling"></a>Polling voor wachtrij
+### <a name="queue-polling"></a>Queue polling
 
-De uitbrei ding duurzame taak implementeert een wille keurig exponentiële uitstel algoritme om het effect van polling bij een niet-actieve wachtrij op kosten voor opslag transacties te verminderen. Wanneer een bericht wordt gevonden, controleert de runtime onmiddellijk op een ander bericht. Wanneer er geen bericht wordt gevonden, wordt gewacht tot een bepaalde tijd voordat u het opnieuw probeert. Na volgende mislukte pogingen om een wachtrij bericht op te halen, blijft de wacht tijd toenemen totdat de maximale wacht tijd is bereikt. de standaard waarde is 30 seconden.
+The durable task extension implements a random exponential back-off algorithm to reduce the effect of idle-queue polling on storage transaction costs. When a message is found, the runtime immediately checks for another message; when no message is found, it waits for a period of time before trying again. After subsequent failed attempts to get a queue message, the wait time continues to increase until it reaches the maximum wait time, which defaults to 30 seconds.
 
-De maximale polling vertraging kan worden geconfigureerd via de eigenschap `maxQueuePollingInterval` in het [bestand host. json](../functions-host-json.md#durabletask). Als u deze eigenschap instelt op een hogere waarde, kan dit leiden tot hogere latenties voor bericht verwerking. Hogere latenties worden alleen verwacht na Peri Oden van inactiviteit. Als u deze eigenschap instelt op een lagere waarde, kan dit leiden tot hogere opslag kosten als gevolg van grotere opslag transacties.
+The maximum polling delay is configurable via the `maxQueuePollingInterval` property in the [host.json file](../functions-host-json.md#durabletask). Setting this property to a higher value could result in higher message processing latencies. Higher latencies would be expected only after periods of inactivity. Setting this property to a lower value could result in higher storage costs due to increased storage transactions.
 
 > [!NOTE]
-> Bij het uitvoeren van de Azure Functions verbruiks-en Premium-abonnementen, wordt elke regel van elk besturings element en elke werk item elke 10 seconden gecontroleerd door de [Azure functions Scale-controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) . Deze extra polling is nodig om te bepalen wanneer u functie-app-exemplaren wilt activeren en schaal beslissingen wilt maken. Op het moment van schrijven is dit 10 seconden interval constant en kan het niet worden geconfigureerd.
+> When running in the Azure Functions Consumption and Premium plans, the [Azure Functions Scale Controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) will poll each control and work-item queue once every 10 seconds. This additional polling is necessary to determine when to activate function app instances and to make scale decisions. At the time of writing, this 10 second interval is constant and cannot be configured.
 
-## <a name="storage-account-selection"></a>Opslag account selecteren
+## <a name="storage-account-selection"></a>Storage account selection
 
-De wacht rijen, tabellen en blobs die door Durable Functions worden gebruikt, worden gemaakt in een geconfigureerd Azure Storage-account. Het account dat moet worden gebruikt, kan worden opgegeven met behulp van de `durableTask/storageProvider/connectionStringName` instelling (of `durableTask/azureStorageConnectionStringName` instelling in Durable Functions 1. x) in het bestand **host. json** .
+The queues, tables, and blobs used by Durable Functions are created in a configured Azure Storage account. The account to use can be specified using the `durableTask/storageProvider/connectionStringName` setting (or `durableTask/azureStorageConnectionStringName` setting in Durable Functions 1.x) in the **host.json** file.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -75,7 +71,7 @@ De wacht rijen, tabellen en blobs die door Durable Functions worden gebruikt, wo
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -87,13 +83,13 @@ De wacht rijen, tabellen en blobs die door Durable Functions worden gebruikt, wo
 }
 ```
 
-Als deze niet wordt opgegeven, wordt de standaard `AzureWebJobsStorage` Storage-account gebruikt. Voor prestatie gevoelige workloads wordt het configureren van een niet-standaard opslag account echter aanbevolen. Durable Functions maakt gebruik van Azure Storage intensief, en met behulp van een toegewezen opslag account wordt het gebruik geïsoleerd van Durable Functions opslag van het interne gebruik door de Azure Functions-host.
+If not specified, the default `AzureWebJobsStorage` storage account is used. For performance-sensitive workloads, however, configuring a non-default storage account is recommended. Durable Functions uses Azure Storage heavily, and using a dedicated storage account isolates Durable Functions storage usage from the internal usage by the Azure Functions host.
 
-## <a name="orchestrator-scale-out"></a>Orchestrator-uitschalen
+## <a name="orchestrator-scale-out"></a>Orchestrator scale-out
 
-Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe te voegen. Orchestrator-functies en-entiteiten zijn daarentegen *gepartitioneerd* over een of meer controle wachtrijen. Het aantal controle wachtrijen wordt gedefinieerd in het **host. json** -bestand. In het volgende voor beeld van een host. json-fragment wordt de `durableTask/storageProvider/partitionCount` eigenschap (of `durableTask/partitionCount` in Durable Functions 1. x) ingesteld op `3`.
+Activity functions are stateless and scaled out automatically by adding VMs. Orchestrator functions and entities, on the other hand, are *partitioned* across one or more control queues. The number of control queues is defined in the **host.json** file. The following example host.json snippet sets the `durableTask/storageProvider/partitionCount` property (or `durableTask/partitionCount` in Durable Functions 1.x) to `3`.
 
-### <a name="durable-functions-2x"></a>Durable Functions 2. x
+### <a name="durable-functions-2x"></a>Durable Functions 2.x
 
 ```json
 {
@@ -107,7 +103,7 @@ Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe
 }
 ```
 
-### <a name="durable-functions-1x"></a>Durable Functions 1. x
+### <a name="durable-functions-1x"></a>Durable Functions 1.x
 
 ```json
 {
@@ -119,44 +115,44 @@ Activiteit functies zijn stateless en worden automatisch geschaald door Vm's toe
 }
 ```
 
-Een task hub kan worden geconfigureerd met tussen de 1 en 16 partities. Als deze niet is opgegeven, is het standaard aantal partities **4**.
+A task hub can be configured with between 1 and 16 partitions. If not specified, the default partition count is **4**.
 
-Bij het uitschalen naar meerdere functie-instanties (meestal op verschillende Vm's), krijgt elk exemplaar een vergren deling van een van de controle wachtrijen. Deze vergren delingen worden intern geïmplementeerd als Blob Storage-leases en zorgen ervoor dat een Orchestrator-exemplaar of-entiteit alleen op één exemplaar van een host tegelijk wordt uitgevoerd. Als een taak hub is geconfigureerd met drie controle wachtrijen, kunnen indelings instanties en entiteiten worden verdeeld over Maxi maal drie Vm's. Er kunnen extra Vm's worden toegevoegd om de capaciteit voor de uitvoering van de activiteit functie te verhogen.
+When scaling out to multiple function host instances (typically on different VMs), each instance acquires a lock on one of the control queues. These locks are internally implemented as blob storage leases and ensure that an orchestration instance or entity only runs on a single host instance at a time. If a task hub is configured with three control queues, orchestration instances and entities can be load-balanced across as many as three VMs. Additional VMs can be added to increase capacity for activity function execution.
 
-In het volgende diagram ziet u hoe de Azure Functions host communiceert met de opslag entiteiten in een geschaalde omgeving.
+The following diagram illustrates how the Azure Functions host interacts with the storage entities in a scaled out environment.
 
-![Diagram schalen](./media/durable-functions-perf-and-scale/scale-diagram.png)
+![Scale diagram](./media/durable-functions-perf-and-scale/scale-diagram.png)
 
-Zoals u in het vorige diagram ziet, concurreren alle Vm's met berichten in de werk wachtrij. Er kunnen echter maar drie Vm's berichten van controle wachtrijen ophalen en elke VM vergrendelt één controle wachtrij.
+As shown in the previous diagram, all VMs compete for messages on the work-item queue. However, only three VMs can acquire messages from control queues, and each VM locks a single control queue.
 
-Indelings instanties en entiteiten worden gedistribueerd over alle exemplaren van de controle wachtrij. De distributie wordt uitgevoerd door hashing van de exemplaar-ID van de indeling of de naam en sleutel paar van de entiteit. Indelings exemplaar-Id's zijn standaard wille keurige GUID'S, zodat exemplaren gelijkmatig over alle controle wachtrijen worden verdeeld.
+Orchestration instances and entities are distributed across all control queue instances. The distribution is done by hashing the instance ID of the orchestration or the entity name and key pair. Orchestration instance IDs by default are random GUIDs, ensuring that instances are equally distributed across all control queues.
 
-Over het algemeen zijn Orchestrator-functies lichter en zijn ze niet vereist voor een grote hoeveelheid reken kracht. Daarom is het niet nodig om een groot aantal controle wachtrij partities te maken om een goede door Voer voor de integratie te verkrijgen. De meeste zware werkzaamheden moeten worden uitgevoerd in stateless activiteiten functies, die oneindig kunnen worden uitgebreid.
+Generally speaking, orchestrator functions are intended to be lightweight and should not require large amounts of computing power. It is therefore not necessary to create a large number of control queue partitions to get great throughput for orchestrations. Most of the heavy work should be done in stateless activity functions, which can be scaled out infinitely.
 
 ## <a name="auto-scale"></a>Automatisch schalen
 
-Net als bij alle Azure Functions die worden uitgevoerd in het verbruiks-en elastische Premium-abonnement, Durable Functions ondersteunt automatisch schalen via de [Azure functions Scale-controller](../functions-scale.md#runtime-scaling). De schaal controller bewaakt de latentie van alle wacht rijen door regel matig de opdracht _Peek_ te geven. Op basis van de latentie van de gepeekte berichten, bepaalt de schaal controller of Vm's moeten worden toegevoegd of verwijderd.
+As with all Azure Functions running in the Consumption and Elastic Premium plans, Durable Functions supports auto-scale via the [Azure Functions scale controller](../functions-scale.md#runtime-scaling). The Scale Controller monitors the latency of all queues by periodically issuing _peek_ commands. Based on the latencies of the peeked messages, the Scale Controller will decide whether to add or remove VMs.
 
-Als de schaal controller bepaalt dat de bericht latenties van de controle wachtrij te hoog zijn, worden er VM-exemplaren toegevoegd totdat de bericht latentie afneemt naar een acceptabel niveau of het aantal partities van de controle wachtrij bereikt. De schaal controller voegt voortdurend VM-exemplaren toe als wacht tijden voor werk items in de wachtrij hoog zijn, ongeacht het aantal partities.
+If the Scale Controller determines that control queue message latencies are too high, it will add VM instances until either the message latency decreases to an acceptable level or it reaches the control queue partition count. Similarly, the Scale Controller will continually add VM instances if work-item queue latencies are high, regardless of the partition count.
 
 > [!NOTE]
-> Vanaf Durable Functions 2,0 kunnen functie-apps worden geconfigureerd om te worden uitgevoerd binnen met VNET beveiligde service-eind punten in het elastische Premium-abonnement. In deze configuratie activeert de Durable Functions schaal aanvragen te initiëren in plaats van de schaal controller.
+> Starting with Durable Functions 2.0, function apps can be configured to run within VNET-protected service endpoints in the Elastic Premium plan. In this configuration, the Durable Functions triggers initiate scale requests instead of the Scale Controller.
 
-## <a name="thread-usage"></a>Thread gebruik
+## <a name="thread-usage"></a>Thread usage
 
-Orchestrator-functies worden uitgevoerd op één thread om ervoor te zorgen dat de uitvoering deterministisch kan worden uitgevoerd in veel herhalingen. Als gevolg van deze uitvoering met één thread is het belang rijk dat Orchestrator functions-threads geen CPU-intensieve taken uitvoeren, I/O of blok keren om een wille keurige reden. Werk waarvoor I/O, blok keren of meerdere threads nodig zijn, moet worden verplaatst naar activiteiten functies.
+Orchestrator functions are executed on a single thread to ensure that execution can be deterministic across many replays. Because of this single-threaded execution, it's important that orchestrator function threads do not perform CPU-intensive tasks, do I/O, or block for any reason. Any work that may require I/O, blocking, or multiple threads should be moved into activity functions.
 
-Activiteit functies hebben hetzelfde gedrag als normale, door de wachtrij geactiveerde functies. Ze kunnen I/O, CPU-intensieve bewerkingen uitvoeren en meerdere threads gebruiken. Omdat activiteit triggers stateless zijn, kunnen ze vrij uitschalen naar een niet-gebonden aantal Vm's.
+Activity functions have all the same behaviors as regular queue-triggered functions. They can safely do I/O, execute CPU intensive operations, and use multiple threads. Because activity triggers are stateless, they can freely scale out to an unbounded number of VMs.
 
-Entiteits functies worden ook uitgevoerd op één thread en bewerkingen worden één voor een tijd verwerkt. Entiteits functies hebben echter geen beperkingen voor het type code dat kan worden uitgevoerd.
+Entity functions are also executed on a single thread and operations are processed one-at-a-time. However, entity functions do not have any restrictions on the type of code that can be executed.
 
-## <a name="concurrency-throttles"></a>Gelijktijdigheids beperking
+## <a name="concurrency-throttles"></a>Concurrency throttles
 
-Azure Functions ondersteunt het uitvoeren van meerdere functies gelijktijdig in één app-exemplaar. Met deze gelijktijdige uitvoering wordt de parallelle afkorting verbeterd en wordt het aantal ' koude start ' geminimaliseerd dat een typische app in de loop van de tijd zal werken. Een hoge gelijktijdigheid kan echter per VM worden uitgeput systeem bronnen die netwerk verbindingen of beschik bare geheugen. Afhankelijk van de behoeften van de functie-app, kan het nodig zijn om de gelijktijdigheid per exemplaar te beperken om te voor komen dat er onvoldoende geheugen beschikbaar is in situaties met hoge belasting.
+Azure Functions supports executing multiple functions concurrently within a single app instance. This concurrent execution helps increase parallelism and minimizes the number of "cold starts" that a typical app will experience over time. However, high concurrency can exhaust per-VM system resources such network connections or available memory. Depending on the needs of the function app, it may be necessary to throttle the per-instance concurrency to avoid the possibility of running out of memory in high-load situations.
 
-De limieten voor de functie voor gelijktijdige uitvoering van activiteiten, Orchestrator en entiteiten kunnen worden geconfigureerd in het bestand **host. json** . De relevante instellingen zijn `durableTask/maxConcurrentActivityFunctions` voor activiteit functies en `durableTask/maxConcurrentOrchestratorFunctions` voor functies van Orchestrator en Entity.
+Activity, orchestrator, and entity function concurrency limits can be configured in the **host.json** file. The relevant settings are `durableTask/maxConcurrentActivityFunctions` for activity functions and `durableTask/maxConcurrentOrchestratorFunctions` for both orchestrator and entity functions.
 
-### <a name="functions-20"></a>Functies 2,0
+### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -180,18 +176,18 @@ De limieten voor de functie voor gelijktijdige uitvoering van activiteiten, Orch
 }
 ```
 
-In het vorige voor beeld kunnen Maxi maal 10 Orchestrator-of entiteits functies en tien activiteit functies gelijktijdig worden uitgevoerd op één virtuele machine. Als dat niet is opgegeven, wordt het aantal uitvoeringen van gelijktijdige activiteit en Orchestrator of entiteits functies beperkt bij 10X het aantal kern geheugens op de virtuele machine.
+In the previous example, a maximum of 10 orchestrator or entity functions and 10 activity functions can run on a single VM concurrently. If not specified, the number of concurrent activity and orchestrator or entity function executions is capped at 10X the number of cores on the VM.
 
 > [!NOTE]
-> Deze instellingen zijn handig voor het beheren van geheugen en CPU-gebruik op één virtuele machine. Als er echter meer dan meerdere Vm's zijn uitgebreid, heeft elke virtuele machine een eigen set limieten. Deze instellingen kunnen niet worden gebruikt voor het beheren van gelijktijdigheid op een globaal niveau.
+> These settings are useful to help manage memory and CPU usage on a single VM. However, when scaled out across multiple VMs, each VM has its own set of limits. These settings can't be used to control concurrency at a global level.
 
-## <a name="extended-sessions"></a>Uitgebreide sessies
+## <a name="extended-sessions"></a>Extended sessions
 
-Uitgebreide sessies is een instelling die ervoor zorgt dat de integratie en entiteiten in het geheugen worden bewaard, zelfs nadat de berichten zijn verwerkt. Het standaard effect van het inschakelen van uitgebreide sessies is dat I/O wordt beperkt tegen het Azure Storage-account en de algehele door voer te verbeteren.
+Extended sessions is a setting that keeps orchestrations and entities in memory even after they finish processing messages. The typical effect of enabling extended sessions is reduced I/O against the Azure Storage account and overall improved throughput.
 
-U kunt uitgebreide sessies inschakelen door `durableTask/extendedSessionsEnabled` in te stellen op `true` in het bestand **host. json** . De instelling `durableTask/extendedSessionIdleTimeoutInSeconds` kan worden gebruikt om te bepalen hoe lang een niet-actieve sessie in het geheugen wordt gehouden:
+You can enable extended sessions by setting `durableTask/extendedSessionsEnabled` to `true` in the **host.json** file. The `durableTask/extendedSessionIdleTimeoutInSeconds` setting can be used to control how long an idle session will be held in memory:
 
-**Functies 2,0**
+**Functions 2.0**
 ```json
 {
   "extensions": {
@@ -203,7 +199,7 @@ U kunt uitgebreide sessies inschakelen door `durableTask/extendedSessionsEnabled
 }
 ```
 
-**Functies 1,0**
+**Functions 1.0**
 ```json
 {
   "durableTask": {
@@ -213,64 +209,64 @@ U kunt uitgebreide sessies inschakelen door `durableTask/extendedSessionsEnabled
 }
 ```
 
-Er zijn twee mogelijke nadelen van deze instelling om rekening te houden met het volgende:
+There are two potential downsides of this setting to be aware of:
 
-1. Er is een algehele toename in het geheugen gebruik van de functie-app.
-2. Als er veel gelijktijdige, langdurige Orchestrator-of entiteits functies worden uitgevoerd, kan dit een groot deel uitmaken van de door voer.
+1. There's an overall increase in function app memory usage.
+2. There can be an overall decrease in throughput if there are many concurrent, short-lived orchestrator or entity function executions.
 
-Als `durableTask/extendedSessionIdleTimeoutInSeconds` bijvoorbeeld is ingesteld op 30 seconden, dan wordt een korte functie van Orchestrator of entiteits functies die in minder dan 1 seconde wordt uitgevoerd, gedurende 30 seconden nog steeds geheugen in beslag neemt. Het telt ook af op basis van het `durableTask/maxConcurrentOrchestratorFunctions` quotum dat eerder is vermeld, waardoor er mogelijk geen andere Orchestrator-of entiteits functies kunnen worden uitgevoerd.
+As an example, if `durableTask/extendedSessionIdleTimeoutInSeconds` is set to 30 seconds, then a short-lived orchestrator or entity function episode that executes in less than 1 second still occupies memory for 30 seconds. It also counts against the `durableTask/maxConcurrentOrchestratorFunctions` quota mentioned previously, potentially preventing other orchestrator or entity functions from running.
 
-De specifieke effecten van uitgebreide sessies voor Orchestrator-en entiteits functies worden in de volgende secties beschreven.
+The specific effects of extended sessions on orchestrator and entity functions are described in the next sections.
 
-### <a name="orchestrator-function-replay"></a>Orchestrator-functie opnieuw afspelen
+### <a name="orchestrator-function-replay"></a>Orchestrator function replay
 
-Zoals eerder vermeld, worden Orchestrator-functies opnieuw afgespeeld met de inhoud van de **geschiedenis** tabel. De functie code van Orchestrator wordt standaard elke keer dat een batch berichten uit een controle wachtrij wordt verwijderd, opnieuw afgespeeld. Wanneer uitgebreide sessies zijn ingeschakeld, worden Orchestrator-functie exemplaren in het geheugen langer bewaard en kunnen er nieuwe berichten worden verwerkt zonder dat een volledige geschiedenis wordt afgespeeld.
+As mentioned previously, orchestrator functions are replayed using the contents of the **History** table. By default, the orchestrator function code is replayed every time a batch of messages are dequeued from a control queue. When extended sessions are enabled, orchestrator function instances are held in memory longer and new messages can be processed without a full history replay.
 
-De verbeterde prestaties van uitgebreide sessies worden meestal in de volgende situaties waargenomen:
+The performance improvement of extended sessions is most often observed in the following situations:
 
-* Wanneer er een beperkt aantal Orchestrator-exemplaren gelijktijdig wordt uitgevoerd.
-* Wanneer indelingen een groot aantal sequentiële acties hebben (bijvoorbeeld honderden activiteiten functie aanroepen) die snel zijn voltooid.
-* Wanneer de indelingen uitwaaieren en uitwaaieren, in een groot aantal acties die rond hetzelfde tijdstip zijn voltooid.
-* Wanneer de Orchestrator-functies grote berichten moeten verwerken of een CPU-intensieve gegevens verwerking moeten uitvoeren.
+* When there are a limited number of orchestration instances running concurrently.
+* When orchestrations have large number of sequential actions (e.g. hundreds of activity function calls) that complete quickly.
+* When orchestrations fan-out and fan-in a large number of actions that complete around the same time.
+* When orchestrator functions need to process large messages or do any CPU-intensive data processing.
 
-In alle andere situaties is er doorgaans geen waarneem bare prestatie verbetering voor Orchestrator-functies.
+In all other situations, there is typically no observable performance improvement for orchestrator functions.
 
 > [!NOTE]
-> Deze instellingen mogen alleen worden gebruikt nadat een Orchestrator-functie volledig is ontwikkeld en getest. Het standaard gedrag voor agressief opnieuw afspelen kan handig zijn voor het detecteren van [Orchestrator-functie code beperkingen](durable-functions-code-constraints.md) tijdens de ontwikkelings tijd en is daarom standaard uitgeschakeld.
+> These settings should only be used after an orchestrator function has been fully developed and tested. The default aggressive replay behavior can useful for detecting [orchestrator function code constraints](durable-functions-code-constraints.md) violations at development time, and is therefore disabled by default.
 
-### <a name="entity-function-unloading"></a>Entiteit functie uit het geheugen verwijderen
+### <a name="entity-function-unloading"></a>Entity function unloading
 
-Met entiteits functies worden Maxi maal 20 bewerkingen in één batch verwerkt. Zodra een entiteit klaar is met de verwerking van een batch met bewerkingen, wordt de status ervan persistent gemaakt en uit het geheugen verwijderd. U kunt het verwijderen van entiteiten uit het geheugen uitstellen met de instelling uitgebreide sessies. Entiteiten blijven hun status wijzigingen behouden als voorheen, maar blijven in het geheugen voor de geconfigureerde periode om het aantal belastingen van Azure Storage te verminderen. Deze verlaging van de belasting van Azure Storage kan de algemene door Voer van veelgebruikte entiteiten verbeteren.
+Entity functions process up to 20 operations in a single batch. As soon as an entity finishes processing a batch of operations, it persists its state and unloads from memory. You can delay the unloading of entities from memory using the extended sessions setting. Entities continue to persist their state changes as before, but remain in memory for the configured period of time to reduce the number of loads from Azure Storage. This reduction of loads from Azure Storage can improve the overall throughput of frequently accessed entities.
 
-## <a name="performance-targets"></a>Prestatie doelen
+## <a name="performance-targets"></a>Performance targets
 
-Bij het plannen van het gebruik van Durable Functions voor een productie toepassing is het belang rijk om de prestatie vereisten vroeg in het plannings proces in overweging te nemen. In deze sectie worden enkele eenvoudige gebruiks scenario's en de verwachte maximum doorvoer aantallen besproken.
+When planning to use Durable Functions for a production application, it is important to consider the performance requirements early in the planning process. This section covers some basic usage scenarios and the expected maximum throughput numbers.
 
-* **Uitvoering van sequentiële activiteit**: in dit scenario wordt een Orchestrator-functie beschreven waarmee een reeks activiteit wordt uitgevoerd, één na de andere. Het lijkt veel op het voor beeld van een [functie](durable-functions-sequence.md) koppeling.
-* **Uitvoering van parallelle activiteit**: in dit scenario wordt een Orchestrator-functie beschreven waarmee veel activiteit functies parallel worden uitgevoerd met behulp van het [uitwaaieren van](durable-functions-cloud-backup.md) de ventilator.
-* **Verwerking van parallelle antwoorden**: dit scenario is de tweede helft van het [ventilator patroon.](durable-functions-cloud-backup.md) Het is gericht op de prestaties van de ventilator. Het is belang rijk te weten dat in tegens telling tot uitwaaiers de ventilator wordt uitgevoerd door één functie-exemplaar van Orchestrator en daarom alleen op één virtuele machine kan worden uitgevoerd.
-* **Externe gebeurtenis verwerking**: dit scenario is een exemplaar van een Orchestrator-functie dat op een bepaald moment op [externe gebeurtenissen](durable-functions-external-events.md)wacht.
-* **Verwerking van entiteits bewerkingen**: in dit scenario wordt getest hoe snel een _enkele_ [item entiteit](durable-functions-entities.md) een constante stroom van bewerkingen kan verwerken.
+* **Sequential activity execution**: This scenario describes an orchestrator function that runs a series of activity functions one after the other. It most closely resembles the [Function Chaining](durable-functions-sequence.md) sample.
+* **Parallel activity execution**: This scenario describes an orchestrator function that executes many activity functions in parallel using the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern.
+* **Parallel response processing**: This scenario is the second half of the [Fan-out, Fan-in](durable-functions-cloud-backup.md) pattern. It focuses on the performance of the fan-in. It's important to note that unlike fan-out, fan-in is done by a single orchestrator function instance, and therefore can only run on a single VM.
+* **External event processing**: This scenario represents a single orchestrator function instance that waits on [external events](durable-functions-external-events.md), one at a time.
+* **Entity operation processing**: This scenario tests how quickly a _single_ [Counter entity](durable-functions-entities.md) can process a constant stream of operations.
 
 > [!TIP]
-> In tegens telling tot uitwaaiers zijn ventilatoren beperkt tot één virtuele machine. Als uw toepassing gebruikmaakt van het uitwaaieren, een ventilator patroon en u zich zorgen maakt over de prestaties van de ventilator, kunt u overwegen om de activiteit functie te verdelen over meerdere [onderliggende](durable-functions-sub-orchestrations.md)indelingen.
+> Unlike fan-out, fan-in operations are limited to a single VM. If your application uses the fan-out, fan-in pattern and you are concerned about fan-in performance, consider sub-dividing the activity function fan-out across multiple [sub-orchestrations](durable-functions-sub-orchestrations.md).
 
-De volgende tabel bevat de verwachte *maximum* waarden voor door Voer voor de eerder beschreven scenario's. ' Instance ' verwijst naar één exemplaar van een Orchestrator-functie die wordt uitgevoerd op een enkele kleine ([a1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM in azure app service. In alle gevallen wordt ervan uitgegaan dat [uitgebreide sessies](#orchestrator-function-replay) zijn ingeschakeld. De werkelijke resultaten kunnen variëren, afhankelijk van de CPU of het I/O-werk dat door de functie code wordt uitgevoerd.
+The following table shows the expected *maximum* throughput numbers for the previously described scenarios. "Instance" refers to a single instance of an orchestrator function running on a single small ([A1](../../virtual-machines/windows/sizes-previous-gen.md#a-series)) VM in Azure App Service. In all cases, it is assumed that [extended sessions](#orchestrator-function-replay) are enabled. Actual results may vary depending on the CPU or I/O work performed by the function code.
 
 | Scenario | Maximumdoorvoer |
 |-|-|
-| Uitvoering van sequentiële activiteit | 5 activiteiten per seconde, per instantie |
-| Uitvoering van parallelle activiteit (uitwaaieren) | 100 activiteiten per seconde, per instantie |
-| Verwerking van parallelle antwoorden (ventilator-in) | 150 reacties per seconde, per instantie |
-| Externe gebeurtenis verwerking | 50 gebeurtenissen per seconde, per instantie |
-| Verwerking van entiteits bewerkingen | 64 bewerkingen per seconde |
+| Sequential activity execution | 5 activities per second, per instance |
+| Parallel activity execution (fan-out) | 100 activities per second, per instance |
+| Parallel response processing (fan-in) | 150 responses per second, per instance |
+| External event processing | 50 events per second, per instance |
+| Entity operation processing | 64 operations per second |
 
 > [!NOTE]
-> Deze nummers zijn actueel vanaf de release van de v 1.4.0 (GA) van de uitbrei ding Durable Functions. Deze getallen kunnen na verloop van tijd veranderen naarmate het onderdeel verloopt en als er optimalisaties worden uitgevoerd.
+> These numbers are current as of the v1.4.0 (GA) release of the Durable Functions extension. These numbers may change over time as the feature matures and as optimizations are made.
 
-Als u de door u verwachte doorvoer nummers niet ziet en het CPU-en geheugen gebruik op de juiste manier wordt weer gegeven, controleert u of de oorzaak is gerelateerd aan [de status van uw opslag account](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). De uitbrei ding van de Durable Functions kan een Azure Storage account aanzienlijk laden en voldoende hoge belasting kan leiden tot beperking van het opslag account.
+If you are not seeing the throughput numbers you expect and your CPU and memory usage appears healthy, check to see whether the cause is related to [the health of your storage account](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance). The Durable Functions extension can put significant load on an Azure Storage account and sufficiently high loads may result in storage account throttling.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over herstel na nood gevallen en geo-distributie](durable-functions-disaster-recovery-geo-distribution.md)
+> [Learn about disaster recovery and geo-distribution](durable-functions-disaster-recovery-geo-distribution.md)

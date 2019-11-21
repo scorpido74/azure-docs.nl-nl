@@ -1,18 +1,18 @@
 ---
-title: 'Zelfstudie: uw domein en subdomein in Azure DNS hosten'
-description: In deze zelfstudie wordt uitgelegd hoe u Azure DNS kunt configureren om uw DNS-zones te hosten.
+title: 'Tutorial: Host your domain and subdomain - Azure DNS'
+description: In this article, learn how to configure Azure DNS to host your DNS zones.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: tutorial
 ms.date: 3/11/2019
-ms.author: victorh
-ms.openlocfilehash: 99a3ca0115611f45ed080c39767d13e087b8efb8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: allensu
+ms.openlocfilehash: 062a5beaec30d510d37af436e00f4d57785245cd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73464210"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212196"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Zelfstudie: uw domein hosten in Azure DNS
 
@@ -34,17 +34,17 @@ Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://az
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een domein naam hebben om te kunnen testen met die u in Azure DNS kunt hosten. U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
+You must have a domain name available to test with that you can host in Azure DNS . U moet het volledige beheer over dit domein hebben. Volledig beheer betekent ook de mogelijkheid om naamserverrecords (NS) voor het domein in te stellen.
 
-Het voorbeeld domein dat voor deze zelf studie wordt gebruikt, is contoso.net, maar u kunt uw eigen domein naam gebruiken.
+The example domain used for this tutorial is contoso.net, but use your own domain name.
 
 ## <a name="create-a-dns-zone"></a>Een DNS-zone maken
 
-1. Ga naar de [Azure Portal](https://portal.azure.com/) om een DNS-zone te maken. Zoek en selecteer **DNS-zones**.
+1. Go to the [Azure portal](https://portal.azure.com/) to create a DNS zone. Search for and select **DNS zones**.
 
    ![DNS-zone](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Selecteer **DNS-zone maken**.
+1. Select **Create DNS zone**.
 1. Voer op de pagina **DNS-zone maken** de volgende waarden in en selecteer **Maken**:
 
    | **Instelling** | **Waarde** | **Details** |
@@ -52,7 +52,7 @@ Het voorbeeld domein dat voor deze zelf studie wordt gebruikt, is contoso.net, m
    |**Naam**|[uw domeinnaam] |De domeinnaam die u hebt gekocht. In deze zelfstudie wordt contoso.net als voorbeeld gebruikt.|
    |**Abonnement**|[Uw abonnement]|Selecteer een abonnement waarin u de zone wilt maken.|
    |**Resourcegroep**|**Nieuwe maken:** contosoRG|Maak een resourcegroep. De naam van de resourcegroep moet uniek zijn binnen het abonnement dat u hebt geselecteerd.<br>De locatie van de resourcegroep heeft geen invloed op de DNS-zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.|
-   |**Locatie**|US - oost||
+   |**Locatie**|VS - oost||
 
 ## <a name="retrieve-name-servers"></a>Naamservers ophalen
 

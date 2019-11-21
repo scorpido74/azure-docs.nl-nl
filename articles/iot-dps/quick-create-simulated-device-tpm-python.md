@@ -1,44 +1,43 @@
 ---
-title: 'Snelstartgids: een gesimuleerd TPM-apparaat inrichten voor Azure IoT Hub met behulp van python'
-description: 'Azure-quickstart: een gesimuleerd TPM-apparaat maken en inrichten voor IoT Hub Device Provisioning Service met de SDK voor Java. Voor deze quickstart worden afzonderlijke registraties gebruikt.'
+title: Quickstart - Provision simulated TPM device to Azure IoT Hub using Python
+description: Quickstart - Create and provision a simulated TPM device using Java device SDK for IoT Hub Device Provisioning Service. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 423b04c15bcc2d73a33d7ecde736724168d28025
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
-ms.translationtype: MT
+ms.openlocfilehash: 874c3f1b1cf023515cc8c5898f8371935f687f0a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904843"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229607"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Quick Start: een gesimuleerd TPM-apparaat maken en inrichten met behulp van python Device SDK voor IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-tpm-device-using-python-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated TPM device using Python device SDK for IoT Hub Device Provisioning Service
 
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-tpm](../../includes/iot-dps-selector-quick-create-simulated-device-tpm.md)]
 
 In deze stappen wordt getoond hoe u een gesimuleerd apparaat maakt op een ontwikkelcomputer met Windows OS, de Windows TPM-simulator uitvoert als de [HSM (Hardware Security Module)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) van het apparaat en het Python-codevoorbeeld gebruikt om dit gesimuleerde apparaat te verbinden met Device Provisioning Service en uw IoT-hub. 
 
-Als u niet bekend bent met het proces van automatisch inrichten, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
+Als u niet bekend bent met het proces van automatische inrichting, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
 
 Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om een enkel apparaat in te schrijven.
 
-In dit artikel worden afzonderlijke registraties gedemonstreerd.
+In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 > [!NOTE]
-> Deze hand leiding is alleen van toepassing op de nu afgeschafte v1 python SDK. Gesimuleerde TPM-apparaten worden nog niet ondersteund in v2. Het team is momenteel in staat om v2 te gebruiken voor de functie pariteit.
+> This guide only applies to the now-deprecated V1 Python SDK. Simulated TPM devices are not yet been supported in V2. The team is currently hard at work bringing V2 to feature parity.
 
 ## <a name="prepare-the-environment"></a>De omgeving voorbereiden 
 
-1. Zorg ervoor dat u [Visual studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger hebt geïnstalleerd met de optie ' Desktop Development with C++' voor de installatie van Visual Studio.
+1. Make sure you have installed either [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later, with the 'Desktop development with C++' workload enabled for your Visual Studio installation.
 
 1. Download en installeer het [CMake-bouwsysteem](https://cmake.org/download/).
 
@@ -151,7 +150,7 @@ Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze be
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
 1. Sluit het TPM-simulatorvenster op de computer.
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Open de Blade **inschrijvingen beheren** voor uw service en klik vervolgens op het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* van het apparaat dat u in deze Quick Start hebt Inge schreven en klik bovenaan op de knop **verwijderen** . 
+1. Klik in het linkermenu in Azure Portal op **All resources** en selecteer uw Device Provisioning-service. Open the **Manage Enrollments** blade for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
 1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Open de blade **IoT-apparaten** voor uw hub, selecteer de *apparaat-id* van het apparaat dat u hebt geregistreerd in deze quickstart en klik vervolgens bovenaan op de knop **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen

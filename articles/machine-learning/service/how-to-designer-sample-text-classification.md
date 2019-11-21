@@ -1,7 +1,7 @@
 ---
-title: 'Ontwerper: voor beeld van classificatie van boekings overzichten'
+title: 'Designer: classify book reviews example'
 titleSuffix: Azure Machine Learning
-description: Bouw een logistiek-classificatie van meer dan een klasse om de bedrijfs categorie te voors pellen met de Wikipedia SP 500-gegevensset met behulp van Azure Machine Learning Designer.
+description: Build a multiclass logistic regression classifier to predict the company category with wikipedia SP 500 dataset using Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,98 +10,98 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 43545c2d3bb3afe4e1c458f14c1ba30e41eea721
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 16253abce2940690a80f84aa5b68521c09212bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196009"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213781"
 ---
-# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Bouw een classificatie om de bedrijfs categorie te voors pellen met behulp van Azure Machine Learning Designer.
+# <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Build a classifier to predict company category using Azure Machine Learning designer.
 
-**Voor beeld van Designer (preview) 7**
+**Designer (preview) sample 7**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Dit voor beeld laat zien hoe u met behulp van tekst analyse modules een pijp lijn met tekst classificatie kunt bouwen in Azure Machine Learning Designer (preview).
+This sample demonstrates how to use text analytics modules to build a text classification pipeline in Azure Machine Learning designer (preview).
 
-Het doel van tekst classificatie is het toewijzen van een stuk tekst aan een of meer vooraf gedefinieerde klassen of categorieën. Het stuk tekst kan een document, nieuws artikel, zoek query, e-mail, Tweet, ondersteunings tickets, feedback van klanten, beoordeling van gebruikers producten, enzovoort zijn. Toepassingen van tekst classificatie zijn onder andere het categoriseren van kranten artikelen en de inhoud van nieuws draden in onderwerpen, het organiseren van webpagina's in hiërarchische categorieën, het filteren van ongewenste e-mail, sentiment analyse, het voors pellen van de gebruikers intentie van zoek query's, route ring ondersteunings tickets en analyse van feedback van klanten. 
+The goal of text classification is to assign some piece of text to one or more predefined classes or categories. The piece of text could be a document, news article, search query, email, tweet, support tickets, customer feedback, user product review etc. Applications of text classification include categorizing newspaper articles and news wire contents into topics, organizing web pages into hierarchical categories, filtering spam email, sentiment analysis, predicting user intent from search queries, routing support tickets, and analyzing customer feedback. 
 
-Deze pijp lijn traint een classificatie van een **logistiek-regressie** met een meer klasse om de bedrijfs categorie te voors pellen met **Wikipedia SP 500-gegevensset die is afgeleid van Wikipedia**.  
+This pipeline trains a **multiclass logistic regression classifier** to predict the company category with **Wikipedia SP 500 dataset derived from Wikipedia**.  
 
-De belangrijkste stappen van een cursus machine learning model met tekst gegevens zijn:
+The fundamental steps of a training machine learning model with text data are:
 
 1. De gegevens ophalen
 
-1. De tekst gegevens vooraf verwerken
+1. Pre-process the text data
 
-1. Functie techniek
+1. Feature Engineering
 
-   Tekst functie converteren naar de numerieke functie met de functie voor het uitpakken van functies, zoals functie-hashing, extra heren n-gram-functie uit de tekst gegevens.
+   Convert text feature into the numerical feature with feature extracting module such as feature hashing, extract n-gram feature from the text data.
 
 1. Het model trainen
 
-1. Gegevensset voor Score
+1. Score dataset
 
 1. Het model evalueren
 
-Hier volgt de uiteindelijke, voltooide grafiek van de pijp lijn waaraan we werken. We bieden de motivering voor alle modules, zodat u op uw eigen wijze vergelijk bare beslissingen kunt nemen.
+Here's the final, completed graph of the pipeline we'll be working on. We'll provide the rationale for all the modules so you can make similar decisions on your own.
 
-[Grafiek van de pijp lijn ![](./media/how-to-ui-sample-text-classification/nlp-modules-overall.png)](./media/how-to-ui-sample-text-classification/nlp-modules-overall.png#lightbox)
+[![Graph of the pipeline](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png)](./media/how-to-designer-sample-text-classification/nlp-modules-overall.png#lightbox)
 
 ## <a name="data"></a>Gegevens
 
-In deze pijp lijn gebruiken we de **Wikipedia SP 500** -gegevensset. De gegevensset is afgeleid van Wikipedia (https://www.wikipedia.org/) op basis van artikelen van elke S & P 500-bedrijf. Voordat u naar Azure Machine Learning Designer uploadt, is de gegevensset als volgt verwerkt:
+In this pipeline, we use the **Wikipedia SP 500** dataset. The dataset is derived from Wikipedia (https://www.wikipedia.org/) based on articles of each S&P 500 company. Before uploading to Azure Machine Learning designer, the dataset was processed as follows:
 
-- Tekst inhoud voor elk specifiek bedrijf extra heren
-- Wiki-opmaak verwijderen
-- Niet-alfanumerieke tekens verwijderen
-- Alle tekst naar kleine letters converteren
-- Er zijn bekende bedrijfs categorieën toegevoegd
+- Extract text content for each specific company
+- Remove wiki formatting
+- Remove non-alphanumeric characters
+- Convert all text to lowercase
+- Known company categories were added
 
-Er zijn geen artikelen voor sommige bedrijven gevonden. het aantal records is dus kleiner dan 500.
+Articles could not be found for some companies, so the number of records is less than 500.
 
-## <a name="pre-process-the-text-data"></a>De tekst gegevens vooraf verwerken
+## <a name="pre-process-the-text-data"></a>Pre-process the text data
 
-We gebruiken de **tekst module preprocess** om de tekst gegevens voor te verwerken, met inbegrip van de zinnen, Tokenize, enzovoort. U vindt alle ondersteunde opties in het artikel voor [**verwerking van tekst**](../algorithm-module-reference/preprocess-text.md) . Nadat de TeX-gegevens vooraf zijn verwerkt, gebruiken we de module voor het **splitsen van gegevens** om de invoer gegevens wille keurig te verdelen, zodat de trainings gegevensset 50% van de oorspronkelijke gegevens bevat en de test-gegevensset 50% van de oorspronkelijke gegevens bevat.
+We use the **Preprocess Text** module to preprocess the text data, including detect the sentences, tokenize sentences and so on. You would found all supported options in the [**Preprocess Text**](../algorithm-module-reference/preprocess-text.md) article. After pre-processing tex data, we use the **Split Data** module to randomly divide the input data so that the training dataset contains 50% of the original data and the testing dataset contains 50% of the original data.
 
-## <a name="feature-engineering"></a>Functie techniek
-In dit voor beeld gebruiken we twee methoden voor het uitvoeren van functie techniek.
+## <a name="feature-engineering"></a>Feature Engineering
+In this sample, we will use two methods performing feature engineering.
 
 ### <a name="feature-hashing"></a>Functie-hashing
-We hebben de [**functie hashing**](../algorithm-module-reference/feature-hashing.md) module gebruikt om de onbewerkte tekst van de artikelen te converteren naar gehele getallen en de waarden van het gehele getal als invoer functies voor het model te gebruiken. 
+We used the [**Feature Hashing**](../algorithm-module-reference/feature-hashing.md) module to convert the plain text of the articles to integers and used the integer values as input features to the model. 
 
-De **functie hashing** module kan worden gebruikt om tekst documenten met een variabele lengte te converteren naar numerieke functie vectoren van gelijke lengte, met behulp van de 32-bits murmurhash v3-hash methode die wordt verschaft door de Vowpal Wabbit-bibliotheek. De doel stelling van het gebruik van functie-hashing is het beperken van de dimensionaliteit; ook functie-hashing maakt het opzoeken van functie-gewichten sneller op classificatie tijd, omdat de vergelijking van hash-waarden wordt gebruikt in plaats van teken reeks vergelijking.
+The **Feature Hashing** module can be used to convert variable-length text documents to equal-length numeric feature vectors, using the 32-bit murmurhash v3 hashing method provided by the Vowpal Wabbit library. The objective of using feature hashing is dimensionality reduction; also feature hashing makes the lookup of feature weights faster at classification time because it uses hash value comparison instead of string comparison.
 
-In de voorbeeld pijplijn stellen we het aantal hash-bits in op 14 en stellen we het aantal n-gram in op 2. Met deze instellingen kan de hash-tabel 2 ^ 14 vermeldingen bevatten, waarbij elke hash-functie een of meer n-gram-functies vertegenwoordigt en de waarde ervan de frequentie van het exemplaar van die n-gram in het tekst exemplaar vertegenwoordigt. Een hash-tabel van deze omvang is voor veel problemen meer dan voldoende, maar in sommige gevallen is er mogelijk meer ruimte nodig om conflicten te voor komen. Evalueer de prestaties van uw machine learning oplossing met behulp van een ander aantal bits. 
+In the sample pipeline, we set the number of hashing bits to 14 and set the number of n-grams to 2. With these settings, the hash table can hold 2^14 entries, in which each hashing feature represents one or more n-gram features and its value represents the occurrence frequency of that n-gram in the text instance. For many problems, a hash table of this size is more than adequate, but in some cases, more space might be needed to avoid collisions. Evaluate the performance of your machine learning solution using different number of bits. 
 
-### <a name="extract-n-gram-feature-from-text"></a>N-gram-functie uit tekst extra heren
+### <a name="extract-n-gram-feature-from-text"></a>Extract N-Gram Feature from Text
 
-Een n-gram is een aaneengesloten reeks n voor waarden van een bepaalde tekst reeks. Een n-gram van grootte 1 wordt een unigram genoemd. een n-gram van grootte 2 is een bigram. een n-gram van grootte 3 is een Trigram. N-g van grotere grootten wordt soms aangeduid met de waarde n, bijvoorbeeld ' vier-gram ', ' vijf-gram ', enzovoort.
+An n-gram is a contiguous sequence of n terms from a given sequence of text. An n-gram of size 1 is referred to as a unigram; an n-gram of size 2 is a bigram; an n-gram of size 3 is a trigram. N-grams of larger sizes are sometimes referred to by the value of n, for instance, "four-gram", "five-gram", and so on.
 
-We gebruiken de [**functie N-gram van de tekst module uitpakken**](../algorithm-module-reference/extract-n-gram-features-from-text.md)als een andere oplossing voor functie techniek. In deze module wordt eerst de set van n-gram geëxtraheerd, naast het n-gram nummer, het aantal documenten waarbij elke n-gram wordt weer gegeven in de tekst, geteld (DF). In dit voor beeld wordt TF-IDF metric gebruikt om onderdeel waarden te berekenen. Vervolgens worden ongestructureerde tekst gegevens geconverteerd naar numerieke functie vectoren met gelijke lengte, waarbij elke functie de TF-IDF van een n-gram in een tekst-exemplaar vertegenwoordigt.
+We used [**Extract N-Gram Feature from Text**](../algorithm-module-reference/extract-n-gram-features-from-text.md)module as another solution for feature engineering. This module first extracts the set of n-grams, in addition to the n-grams, the number of documents where each n-gram appears in the text is counted(DF). In this sample, TF-IDF metric is used to calculate feature values. Then, it converts unstructured text data into equal-length numeric feature vectors where each feature represents the TF-IDF of an n-gram in a text instance.
 
-Nadat u tekst gegevens hebt geconverteerd naar numerieke functie vectoren, wordt een **Select column** -module gebruikt om de tekst gegevens uit de gegevensset te verwijderen. 
+After converting text data into numeric feature vectors, A **Select Column** module is used to remove the text data from the dataset. 
 
 ## <a name="train-the-model"></a>Het model trainen
 
-Uw keuze van algoritme is vaak afhankelijk van de vereisten van de use-case. Omdat het doel van deze pijp lijn het voors pellen van de categorie van het bedrijf is, is een classificatie model met meerdere klassen een goede keuze. Als u overweegt dat het aantal functies groot is en deze functies verspreid zijn, gebruiken we een **logistiek regressie** model met multi klasse voor deze pijp lijn.
+Your choice of algorithm often depends on the requirements of the use case. Because the goal of this pipeline is to predict the category of company, a multi-class classifier model is a good choice. Considering that the number of features is large and these features are sparse, we use **Multiclass Logistic Regression** model for this pipeline.
 
-## <a name="test-evaluate-and-compare"></a>Testen, evalueren en vergelijken
+## <a name="test-evaluate-and-compare"></a>Test, evaluate, and compare
 
- We splitsen de gegevensset en gebruiken verschillende gegevens sets om het model te trainen en te testen, zodat de evaluatie van het model meer doel gericht is.
+ We split the dataset and use different datasets to train and test the model to make the evaluation of the model more objective.
 
-Nadat het model is getraind, gebruiken we het **score model** en **evalueren we model** modules om voorspelde resultaten te genereren en de modellen te evalueren. Voordat u de module **score model** gebruikt, is het echter nodig om functie-engineering uit te voeren, wat we hebben gedaan tijdens de training. 
+After the model is trained, we would use the **Score Model** and **Evaluate Model** modules to generate predicted results and evaluate the models. However, before using the **Score Model** module, performing feature engineering as what we have done during training is required. 
 
-Voor de **functie hashing** -module is het eenvoudig om functie-Engineer uit te voeren op Score stroom als trainings stroom. Gebruik de **functie hashing** module rechtstreeks om de invoer tekst gegevens te verwerken.
+For **Feature Hashing** module, it is easy to perform feature engineer on scoring flow as training flow. Use **Feature Hashing** module directly to process the input text data.
 
-Voor het **extra heren van de functie N-gram van de tekst** module, zouden we de **Resultaten woordenlijst uitvoer** van de trainings gegevensstroom koppelen aan de **invoer woordenlijst** op de score gegevensstroom, en de **woordenlijst modus** para meter instellen op **alleen-lezen** .
-[![grafiek van n-gram-Score](./media/how-to-ui-sample-text-classification/n-gram.png)](./media/how-to-ui-sample-text-classification/n-gram.png)
+For **Extract N-Gram Feature from Text** module, we would connect the **Result Vocabulary output** from the training dataflow to the **Input Vocabulary** on the scoring dataflow, and set the **Vocabulary mode** parameter to **ReadOnly**.
+[![Graph of n-gram score](./media/how-to-designer-sample-text-classification/n-gram.png)](./media/how-to-designer-sample-text-classification/n-gram.png)
 
-Nadat de technische stap is voltooid, kan het **score model** worden gebruikt voor het genereren van voor spellingen voor de test gegevensset met behulp van het getrainde model. Als u het resultaat wilt controleren, selecteert u de uitvoer poort van het **score model** en selecteert u vervolgens **visualiseren**.
+After finishing the engineering step, **Score Model** could be used to generate predictions for the test dataset by using the trained model. To check the result, select the output port of **Score Model** and then select **Visualize**.
 
-Vervolgens worden de scores door gegeven aan de module **Evaluate model** voor het genereren van metrische gegevens voor de evaluatie. Het **Evalueer model** heeft twee invoer poorten, zodat we gescoorde gegevens sets kunnen evalueren en vergelijken die met verschillende methoden worden gegenereerd. In dit voor beeld vergelijken we de prestaties van het resultaat dat is gegenereerd met de functie hashing methode en n-gram-methode.
-Als u het resultaat wilt controleren, selecteert u de uitvoer poort van het **Evalueer model** en selecteert u vervolgens **visualiseren**.
+We then pass the scores to the **Evaluate Model** module to generate evaluation metrics. **Evaluate Model** has two input ports, so that we could evaluate and compare scored datasets that are generated with different methods. In this sample, we compare the performance of the result generated with feature hashing method and n-gram method.
+To check the result, select the output port of the **Evaluate Model** and then select **Visualize**.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -109,10 +109,10 @@ Als u het resultaat wilt controleren, selecteert u de uitvoer poort van het **Ev
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de andere voor beelden die beschikbaar zijn voor de ontwerp functie:
-- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Voor beeld 3: classificatie met functie selectie: inkomen voor spelling](how-to-designer-sample-classification-predict-income.md)
-- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Voor beeld 5-classificatie: voor spel verloop](how-to-designer-sample-classification-churn.md)
-- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-designer-sample-classification-flight-delay.md)
+Explore the other samples available for the designer:
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)

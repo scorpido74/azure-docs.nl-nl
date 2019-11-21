@@ -1,29 +1,27 @@
 ---
-title: Een HTTP-eind punt in Azure Functions aanpassen
-description: Meer informatie over het aanpassen van een HTTP trigger-eind punt in Azure Functions
+title: Customize an HTTP endpoint in Azure Functions
+description: Learn how to customize an HTTP trigger endpoint in Azure Functions
 author: mattchenderson
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: f7729f5acb8b7b95004265f6802ba2feb1bc3cd7
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8bb30da9be5a025f87e5c6d17e0233d0793f3acb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096762"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230686"
 ---
-# <a name="customize-an-http-endpoint-in-azure-functions"></a>Een HTTP-eind punt in Azure Functions aanpassen
+# <a name="customize-an-http-endpoint-in-azure-functions"></a>Customize an HTTP endpoint in Azure Functions
 
-In dit artikel leert u hoe u met Azure Functions uiterst schaal bare Api's kunt bouwen. Azure Functions wordt geleverd met een aantal ingebouwde HTTP-triggers en -bindingen waarmee u gemakkelijk een eindpunt in een groot aantal talen kunt maken, waaronder Node.JS, C# en meer. In dit artikel gaat u een HTTP-trigger aanpassen voor het verwerken van specifieke acties in het API-ontwerp. Ook treft u voorbereidingen voor het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en mock-API's in te stellen. Dit doet u allemaal in de serverloze Functions-rekenomgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources: u hoeft zich alleen te richten op uw API-logica.
+In this article, you learn how Azure Functions allows you to build highly scalable APIs. Azure Functions wordt geleverd met een aantal ingebouwde HTTP-triggers en -bindingen waarmee u gemakkelijk een eindpunt in een groot aantal talen kunt maken, waaronder Node.JS, C# en meer. In this article, you will customize an HTTP trigger to handle specific actions in your API design. Ook treft u voorbereidingen voor het uitbreiden van uw API door deze te integreren met Azure Functions-proxy's en mock-API's in te stellen. Dit doet u allemaal in de serverloze Functions-rekenomgeving, zodat u zich geen zorgen hoeft te maken over het schalen van resources: u hoeft zich alleen te richten op uw API-logica.
 
 ## <a name="prerequisites"></a>Vereisten 
 
 [!INCLUDE [Previous quickstart note](../../includes/functions-quickstart-previous-topics.md)]
 
-De resulterende functie wordt gebruikt voor de rest van dit artikel.
+The resulting function will be used for the rest of this article.
 
 ### <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
@@ -39,12 +37,12 @@ Standaard is uw functie die wordt geactiveerd via HTTP geconfigureerd voor het a
 
 1. Gebruik de HTTP-triggerinstellingen zoals die zijn opgegeven in de tabel.
 
-    | Veld | Voorbeeldwaarde | Description |
+    | Veld | Voorbeeldwaarde | Beschrijving |
     |---|---|---|
     | Toegestane HTTP-methoden | Geselecteerde methoden | Hiermee wordt bepaald welke HTTP-methoden kunnen worden gebruikt om deze functie aan te roepen |
     | Geselecteerde HTTP-methoden | GET | Hiermee is het alleen geselecteerde HTTP-methoden toegestaan om deze functie aan te roepen |
     | Routesjabloon | /hello | Hiermee wordt bepaald welke route wordt gebruikt om deze functie aan te roepen |
-    | Autorisatieniveau | Anoniem | Optioneel: Optioneel: hierdoor is uw functie toegankelijk zonder een API-sleutel |
+    | Autorisatieniveau | Anoniem | Optioneel: dit maakt uw functie toegankelijk zonder een API-sleutel |
 
     > [!NOTE] 
     > U hebt het basispadvoorvoegsel `/api` niet in de routesjabloon opgenomen, aangezien dit wordt verwerkt door een algemene instelling.
@@ -99,15 +97,15 @@ Herhaal de stappen uit [Een functie-app maken](https://docs.microsoft.com/azure/
     ![Een proxy maken](./media/functions-create-serverless-api/creating-proxy.png)
 1. Gebruik proxyinstellingen zoals aangegeven in de tabel. 
 
-    | Veld | Voorbeeldwaarde | Description |
+    | Veld | Voorbeeldwaarde | Beschrijving |
     |---|---|---|
-    | Name | HelloProxy | Een beschrijvende naam die alleen wordt gebruikt voor beheer |
+    | Naam | HelloProxy | Een beschrijvende naam die alleen wordt gebruikt voor beheer |
     | Routesjabloon | /api/remotehello | Hiermee wordt bepaald welke route wordt gebruikt om deze proxy aan te roepen |
     | URL van back-end | https://%HELLO_HOST%/api/hello | Geeft het eindpunt aan waarnaar de aanvraag moet worden geproxied |
     
 1. Houd er rekening mee dat Azure Functions-proxy's niet het basispadvoorvoegsel `/api` verstrekken en dat dit moet worden opgenomen in de routesjabloon.
 1. De syntaxis van `%HELLO_HOST%` verwijst naar de app-instelling die u eerder hebt gemaakt. De omgezette URL verwijst naar uw oorspronkelijke functie.
-1. Klik op **Create**.
+1. Klik op **Maken**.
 1. U kunt uw nieuwe proxy uitproberen door de proxy-URL kopiëren en deze te testen in de browser of met de HTTP-client van uw voorkeur.
     1. Gebruik voor een anonieme functie:
         1. `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"`
@@ -174,13 +172,13 @@ U gaat nu uw mock-API toevoegen. Vervang het proxies.json-bestand door het volge
 }
 ```
 
-Hiermee wordt een nieuwe proxy 'GetUserByName' toegevoegd, zonder de eigenschap backendUri. In plaats van een andere resource aan te roepen, wordt de standaardreactie van Azure Functions-proxy's gewijzigd via het negeren van een antwoord. Het negeren van aanvragen en antwoorden kan ook worden gebruikt in combinatie met een back-end-URL. Dit is met name handig wanneer u een proxy uitvoert met een ouder systeem, waar u mogelijk headers, queryparameters, enzovoort moet wijzigen. Zie [Aanvragen en antwoorden negeren in proxy's](https://docs.microsoft.com/azure/azure-functions/functions-proxies) voor meer informatie over het negeren van aanvragen en antwoorden.
+Hiermee wordt een nieuwe proxy 'GetUserByName' toegevoegd, zonder de eigenschap backendUri. In plaats van een andere resource aan te roepen, wordt de standaardreactie van Azure Functions-proxy's gewijzigd via het negeren van een antwoord. Het negeren van aanvragen en antwoorden kan ook worden gebruikt in combinatie met een back-end-URL. This is particularly useful when proxying to a legacy system, where you might need to modify headers, query parameters, etc. To learn more about request and response overrides, see [Modifying requests and responses in Proxies](https://docs.microsoft.com/azure/azure-functions/functions-proxies).
 
 Test uw mock-API door het `<YourProxyApp>.azurewebsites.net/api/users/{username}`-eindpunt aan te roepen met behulp van een browser of de REST-client van uw voorkeur. Vervang _{username}_ door een tekenreekswaarde die een gebruikersnaam vertegenwoordigt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een API kunt bouwen en aanpassen op Azure Functions. U hebt ook geleerd hoe u meerdere API's, inclusief mocks, kunt samenbrengen als een geïntegreerd API-gebied. U kunt deze technieken gebruiken om meer en minder complexe API's te ontwikkelen, die alle worden uitgevoerd op het serverloze rekenmodel dat wordt geleverd door Azure Functions.
+In this article, you learned how to build and customize an API on Azure Functions. U hebt ook geleerd hoe u meerdere API's, inclusief mocks, kunt samenbrengen als een geïntegreerd API-gebied. U kunt deze technieken gebruiken om meer en minder complexe API's te ontwikkelen, die alle worden uitgevoerd op het serverloze rekenmodel dat wordt geleverd door Azure Functions.
 
 De volgende informatiebronnen kunnen nuttig zijn als u uw API verder ontwikkelt:
 

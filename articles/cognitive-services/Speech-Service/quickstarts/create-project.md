@@ -1,29 +1,29 @@
 ---
-title: 'Quick Start: een project maken'
+title: 'Quickstart: Create a project'
 titleSuffix: Azure Cognitive Services
-description: In deze Quick Start maakt u een leeg project voor uw programmeer taal die u gaat gebruiken om een Snelstartgids te volt ooien of een toepassing te maken.
+description: In this quickstart, you'll create an empty project for your preferred programming language that you'll use to complete a quickstart or create an application.
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/04/2019
+ms.date: 11/19/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-three
-ms.openlocfilehash: 276dbcdfe3f40122b6a7a14e78aeee4d6ab2fbe9
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: db2a25098bf9b7bf985783c8b2d5bf63e023669b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721011"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74221844"
 ---
-# <a name="quickstart-create-a-project"></a>Quick Start: een project maken
+# <a name="quickstart-create-a-project"></a>Quickstart: Create a project
 
-In deze Quick Start maakt u een leeg project voor uw programmeer taal die u gaat gebruiken om een Snelstartgids te volt ooien of een toepassing te maken.
+In this quickstart, you'll create an empty project for your preferred programming language that you'll use to complete a quickstart or create an application.
 
 ::: zone pivot="programming-language-csharp"
-**Kies uw doel omgeving**
+**Choose your target environment**
 #### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 [!INCLUDE [vs](~/includes/cognitive-services-speech-service-create-speech-project-vs-csharp.md)]
 #### <a name="unitytabunity"></a>[Unity](#tab/unity)
@@ -35,18 +35,18 @@ In deze Quick Start maakt u een leeg project voor uw programmeer taal die u gaat
 ::: zone-end
 
 ::: zone pivot="programming-language-cpp"
-**Kies uw doel omgeving**
+**Choose your target environment**
 #### <a name="linuxtablinux"></a>[Linux](#tab/linux)
-Voor dit voor beeld wordt het compileren met g + +, zodat u alleen een leeg project nodig hebt om een bestand HelloWorld. cpp te maken met uw favoriete tekst editor.
+For this sample, we'll be compiling with g++, so all you need for an empty project is to create a helloworld.cpp with your favorite text editor.
 #### <a name="macostabmacos"></a>[MacOS](#tab/macos)
-Voor dit voor beeld wordt het compileren met g + +, zodat u alleen een leeg project nodig hebt om een bestand HelloWorld. cpp te maken met uw favoriete tekst editor.
+For this sample, we'll be compiling with g++, so all you need for an empty project is to create a helloworld.cpp with your favorite text editor.
 #### <a name="windowstabwindows"></a>[Windows](#tab/windows)
 [!INCLUDE [C++ quickstart](~/includes/cognitive-services-speech-service-quickstart-cpp-create-proj.md)]
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-**Kies uw doel omgeving**
-#### <a name="java-runtimetabjre"></a>[Java-runtime](#tab/jre)
+**Choose your target environment**
+#### <a name="java-runtimetabjre"></a>[Java Runtime](#tab/jre)
 [!INCLUDE [jre](~/includes/cognitive-services-speech-service-quickstart-java-create-proj.md)]
 #### <a name="androidtabandroid"></a>[Android](#tab/android)
 [!INCLUDE [android](~/includes/cognitive-services-speech-service-quickstart-java-android-create-proj.md)]
@@ -55,14 +55,14 @@ Voor dit voor beeld wordt het compileren met g + +, zodat u alleen een leeg proj
 
 ::: zone pivot="programming-language-python"
 
-Voor de op python gebaseerde Snelstartgids hoeft u alleen maar een bestand met de naam `helloworld.py` te maken met uw favoriete tekst editor of IDE.
+For the Python-based quickstarts, all you'll need to do is create a file named `helloworld.py` with your favorite text editor or IDE.
 
 ::: zone-end
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Snelstartgids: spraak van een microfoon herkennen](speech-to-text-from-microphone.md)
-- [Quick Start: spraak herkennen vanuit een bestand](speech-to-text-from-file.md)
-- [Snelstartgids: vertalen van spraak naar tekst](translate-speech-to-text.md)
-- [Quick Start: spraak op tekst bekunsten](text-to-speech.md)
-- [Quick Start: intenties herkennen](intent-recognition.md)
+- [Quickstart: Recognize speech from a microphone](speech-to-text-from-microphone.md)
+- [Quickstart: Recognize speech from a file](speech-to-text-from-file.md)
+- [Quickstart: Translate speech-to-text](translate-speech-to-text.md)
+- [Quickstart: Synthesize speech to text](text-to-speech.md)
+- [Quickstart: Recognize Intents](intent-recognition.md)

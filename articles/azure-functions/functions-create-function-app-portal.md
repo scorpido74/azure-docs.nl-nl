@@ -1,23 +1,19 @@
 ---
-title: Een functie-app maken vanuit Azure Portal | Microsoft Azure Docs
-description: Maak vanuit de portal een nieuwe functie-app in Azure.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
+title: Create a function app from the Azure Portal
+description: Create a new function app in Azure from the portal.
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 93bce0404c9b3bf630416557726dca0c856528c3
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 74eaa6837f362c849277a761da3ae79c3a8ac353
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70170790"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230775"
 ---
 # <a name="create-a-function-app-from-the-azure-portal"></a>Een functie-app maken vanuit Azure Portal
 
-In dit onderwerp wordt beschreven hoe u Azure Functions kunt gebruiken om een functie-app te maken in de Azure Portal. Een functie-app is de container die als host fungeert voor het uitvoeren van afzonderlijke functies. 
+This topic shows you how to use Azure Functions to create a function app in the Azure portal. Een functie-app is de container die als host fungeert voor het uitvoeren van afzonderlijke functies. 
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
@@ -31,15 +27,15 @@ Nadat de functie-app is gemaakt, kunt u afzonderlijke functies in een of meer ve
 
 ## <a name="service-plans"></a>Service-abonnementen
 
-Azure Functions heeft drie verschillende service plannen: Plan voor verbruik, Premium plan en toegewezen (App Service). U moet uw service plan kiezen wanneer uw functie-app wordt gemaakt en deze vervolgens niet meer kan worden gewijzigd. Zie [Een Azure Functions-hostingabonnement kiezen](functions-scale.md) voor meer informatie.
+Azure Functions has three different service plans: Consumption plan, Premium plan, and Dedicated (App Service) plan. You must choose your service plan when your function app is created, and it cannot subsequently be changed. Zie [Een Azure Functions-hostingabonnement kiezen](functions-scale.md) voor meer informatie.
 
-Als u van plan bent java script-functies uit te voeren op een speciaal (App Service)-abonnement, kiest u een abonnement met minder kernen. Zie de [JavaScript-naslaginformatie voor Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans) voor meer informatie.
+If you are planning to run JavaScript functions on a Dedicated (App Service) plan, you should choose a plan with fewer cores. Zie de [JavaScript-naslaginformatie voor Functions](functions-reference-node.md#choose-single-vcpu-app-service-plans) voor meer informatie.
 
 <a name="storage-account-requirements"></a>
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 
-Wanneer u een functie-app maakt, moet u een Azure Storage-account voor algemeen gebruik maken of koppelen dat ondersteuning biedt voor blob-, wachtrij-en tabel opslag. Intern maakt Functions gebruik van Storage voor bewerkingen zoals het beheren van triggers en het vastleggen van functie-uitvoeringen in logboeken. Sommige opslagaccounts bieden geen ondersteuning voor wachtrijen en tabellen, zoals accounts alleen voor blobs, Azure Premium Storage en opslagaccounts voor algemeen gebruik met ZRS-replicatie (zone-redundante opslag). Deze accounts worden niet op de blade Opslagaccount vermeld als er een functie-app wordt gemaakt.
+When creating a function app, you must create or link to a general-purpose Azure Storage account that supports Blob, Queue, and Table storage. Intern maakt Functions gebruik van Storage voor bewerkingen zoals het beheren van triggers en het vastleggen van functie-uitvoeringen in logboeken. Sommige opslagaccounts bieden geen ondersteuning voor wachtrijen en tabellen, zoals accounts alleen voor blobs, Azure Premium Storage en opslagaccounts voor algemeen gebruik met ZRS-replicatie (zone-redundante opslag). Deze accounts worden niet op de blade Opslagaccount vermeld als er een functie-app wordt gemaakt.
 
 >[!NOTE]
 >Als u gebruikmaakt van het hostingabonnement Consumption worden uw functiecode en uw bindingsconfiguratiebestanden opgeslagen in het belangrijkste opslagaccount in Azure File Storage. Wanneer u het belangrijkste opslagaccount verwijdert, wordt de inhoud verwijderd en kan deze niet worden hersteld.
@@ -48,7 +44,7 @@ Zie [Introductie van de Azure Storage-services](../storage/common/storage-introd
 
 ## <a name="next-steps"></a>Volgende stappen
 
-De Azure Portal maakt het eenvoudig om functies te maken en uit te proberen, maar we raden u aan de [lokale ontwikkeling te ontwikkelen](functions-develop-local.md). Nadat u een functie-app in de portal hebt gemaakt, moet u nog steeds een functie toevoegen. 
+While the Azure portal makes it easy to create and try out Functions, we recommend [local development](functions-develop-local.md). After creating a function app in the portal, you still need to add a function. 
 
 > [!div class="nextstepaction"]
-> [Een door HTTP geactiveerde functie toevoegen](functions-create-first-azure-function.md#create-function)
+> [Add an HTTP triggered function](functions-create-first-azure-function.md#create-function)

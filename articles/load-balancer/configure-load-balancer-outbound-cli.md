@@ -1,7 +1,7 @@
 ---
-title: Taak verdeling en regels voor uitgaande verbindingen configureren met behulp van Azure CLI
-titlesuffix: Azure Load Balancer
-description: In dit artikel wordt beschreven hoe u taak verdeling en uitgaande regels configureert in een Standard Load Balancer met behulp van de Azure CLI.
+title: Configure load balancing and outbound rules using Azure CLI
+titleSuffix: Azure Load Balancer
+description: This article shows how to configure load balancing and outbound rules in a Standard Load Balancer using the Azure CLI.
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: allensu
-ms.openlocfilehash: 503c8f71b7e26cfe6803a6df1d3fec9ef55cd5c3
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 7230b0c2b80137b068bbeacf43ab2133491a69b0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571135"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225476"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Taakverdeling en uitgaande regels in Standard Load Balancer configureren met Azure CLI
 
-In deze Quick start ziet u hoe u uitgaande regels configureert in Standard Load Balancer met behulp van Azure CLI.  
+This quickstart shows you how to configure outbound rules in Standard Load Balancer using Azure CLI.  
 
-Wanneer u klaar bent, bevat de Load Balancer resource twee front-end-en-regels die eraan zijn gekoppeld: één voor inkomend en een andere voor uitgaand verkeer.  Elke front-end bevat een verwijzing naar een openbaar IP-adres. dit scenario maakt gebruik van een ander openbaar IP-adres voor inkomend verkeer versus uitgaand verkeer.   De taakverdelings regel biedt alleen binnenkomende taak verdeling en de uitgaande regel bepaalt de uitgaande NAT voor de virtuele machine.  In deze Quick Start worden twee afzonderlijke back-endservers gebruikt, één voor inkomend en één voor uitgaand, om de mogelijkheid te illustreren en flexibiliteit te bieden voor dit scenario.
+When you are done, the Load Balancer resource contains two frontends and rules associated with them: one for inbound and another for outbound.  Each frontend has a reference to a public IP address and this scenario uses a different public IP address for inbound versus outbound.   The load balancing rule provides only inbound load balancing and the outbound rule controls the outbound NAT provided for the VM.  This quickstart uses two separate backend pools, one for inbound and one for outbound, to illustrate capability and allow for flexibility for this scenario.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)] 
 
@@ -34,7 +34,7 @@ Als u ervoor kiest om de CLI lokaal te installeren en te gebruiken, moet u voor 
 
 Maak een resourcegroep maken met [az group create](https://docs.microsoft.com/cli/azure/group). Een Azure-resourcegroep is een logische container waarin Azure-resources worden geïmplementeerd en beheerd.
 
-In het volgende voor beeld wordt een resource groep met de naam *myresourcegroupoutbound* gemaakt op de locatie *eastus2* :
+The following example creates a resource group named *myresourcegroupoutbound* in the *eastus2* location:
 
 ```azurecli-interactive
   az group create \
@@ -42,7 +42,7 @@ In het volgende voor beeld wordt een resource groep met de naam *myresourcegroup
     --location eastus2
 ```
 ## <a name="create-virtual-network"></a>Virtueel netwerk maken
-Maak een virtueel netwerk met de naam *myvnetoutbound* met een subnet met de naam *mysubnetoutbound* in de *myresourcegroupoutbound* met [AZ Network vnet Create](https://docs.microsoft.com/cli/azure/network/vnet).
+Create a virtual network named *myvnetoutbound* with a subnet named *mysubnetoutbound* in the *myresourcegroupoutbound* using [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet).
 
 ```azurecli-interactive
   az network vnet create \
@@ -53,35 +53,35 @@ Maak een virtueel netwerk met de naam *myvnetoutbound* met een subnet met de naa
     --subnet-prefix 192.168.0.0/24
 ```
 
-## <a name="create-inbound-public-ip-address"></a>Inkomend openbaar IP-adres maken 
+## <a name="create-inbound-public-ip-address"></a>Create inbound Public IP address 
 
-Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Een Standard Load Balancer biedt alleen ondersteuning voor standaard, openbare IP-adressen. Gebruik [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip) om een standaard openbaar IP-adres te maken met de naam *mypublicipinbound* in *myresourcegroupoutbound*.
+Om toegang te krijgen tot uw web-app op internet, hebt u een openbaar IP-adres nodig voor de load balancer. Een Standard Load Balancer biedt alleen ondersteuning voor standaard, openbare IP-adressen. Use [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip) to create a Standard Public IP address named *mypublicipinbound* in *myresourcegroupoutbound*.
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipinbound --sku standard
 ```
 
-## <a name="create-outbound-public-ip-address"></a>Uitgaand openbaar IP-adres maken 
+## <a name="create-outbound-public-ip-address"></a>Create outbound public IP address 
 
-Maak een standaard-IP-adres voor de uitgaande configuratie van de front-end van de Load Balancer met [AZ Network Public-IP Create](https://docs.microsoft.com/cli/azure/network/public-ip).
+Create a Standard IP address for Load Balancer's frontend outbound configuration using [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip).
 
 ```azurecli-interactive
   az network public-ip create --resource-group myresourcegroupoutbound --name mypublicipoutbound --sku standard
 ```
 
-## <a name="create-azure-load-balancer"></a>Azure Load Balancer maken
+## <a name="create-azure-load-balancer"></a>Create Azure Load Balancer
 
 In deze sectie wordt beschreven hoe u de volgende onderdelen van de load balancer kunt maken en configureren:
-  - Een frontend-IP die het binnenkomende netwerk verkeer op de load balancer ontvangt.
-  - Een back-end-groep waarbij het frontend-IP-netwerk verkeer met gelijke taak verdeling verzendt.
-  - Een back-end-groep voor uitgaande verbindingen. 
-  - Een status test die de status van de back-end-VM-exemplaren bepaalt.
-  - Een load balancer binnenkomende regel waarmee wordt gedefinieerd hoe verkeer naar de virtuele machines wordt gedistribueerd.
-  - Een load balancer uitgaande regel waarmee wordt gedefinieerd hoe verkeer van de virtuele machines wordt gedistribueerd.
+  - A frontend IP that receives the incoming network traffic on the load balancer.
+  - A backend pool where the frontend IP sends the load balanced network traffic.
+  - A backend pool for outbound connectivity. 
+  - A health probe that determines health of the backend VM instances.
+  - A load balancer inbound rule that defines how traffic is distributed to the VMs.
+  - A load balancer outbound rule that defines how traffic is distributed from the VMs.
 
-### <a name="create-load-balancer"></a>Load Balancer maken
+### <a name="create-load-balancer"></a>Create Load Balancer
 
-Maak een Load Balancer met het inkomende IP-adres met [AZ Network lb Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named *lb* dat een inkomende frontend-IP-configuratie bevat en een back- *bepoolinbound* die is gekoppeld aan het open bare IP-adres  *mypublicipinbound* die u in de vorige stap hebt gemaakt.
+Create a Load Balancer with the inbound IP address using [az network lb create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) named *lb* that includes an inbound frontend IP configuration and a backend pool *bepoolinbound* that is associated with the public IP address *mypublicipinbound* that you created in the preceding step.
 
 ```azurecli-interactive
   az network lb create \
@@ -94,9 +94,9 @@ Maak een Load Balancer met het inkomende IP-adres met [AZ Network lb Create](htt
     --public-ip-address mypublicipinbound   
   ```
 
-### <a name="create-outbound-pool"></a>Uitgaande pool maken
+### <a name="create-outbound-pool"></a>Create outbound pool
 
-Maak een extra back-end-adres groep om de uitgaande connectiviteit voor een groep Vm's te definiëren met [AZ Network lb address-pool Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met de naam *bepooloutbound*.  Het maken van een afzonderlijke uitgaande groep biedt maximale flexibiliteit, maar u kunt deze stap overs Laan en ook alleen de inkomende *bepoolinbound* gebruiken.
+Create an additional backend address pool to define outbound connectivity for a pool of VMs with [az network lb address-pool create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) with the name *bepooloutbound*.  Creating a separate outbound pool provides maximum flexibility, but you can omit this step and only use the inbound *bepoolinbound* as well.
 
 ```azurecli-interactive
   az network lb address-pool create \
@@ -105,8 +105,8 @@ Maak een extra back-end-adres groep om de uitgaande connectiviteit voor een groe
     --name bepooloutbound
 ```
 
-### <a name="create-outbound-frontend-ip"></a>Uitgaand frontend-IP maken
-Maak de uitgaande front-end-IP-configuratie voor de Load Balancer met [AZ Network lb frontend-IP Create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) met en de uitgaande frontend-IP-configuratie met de naam *myfrontendoutbound* die is gekoppeld aan het open bare IP-adres  *mypublicipoutbound*
+### <a name="create-outbound-frontend-ip"></a>Create outbound frontend IP
+Create the outbound frontend IP configuration for the Load Balancer with [az network lb frontend-ip create](https://docs.microsoft.com/cli/azure/network/lb?view=azure-cli-latest) that includes and outbound frontend IP configuration named *myfrontendoutbound* that is associated to the public IP address *mypublicipoutbound*
 
 ```azurecli-interactive
   az network lb frontend-ip create \
@@ -116,7 +116,7 @@ Maak de uitgaande front-end-IP-configuratie voor de Load Balancer met [AZ Networ
     --public-ip-address mypublicipoutbound 
   ```
 
-### <a name="create-health-probe"></a>Status test maken
+### <a name="create-health-probe"></a>Create health probe
 
 Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoor te zorgen dat deze netwerkverkeer kunnen verzenden. Het exemplaar van een virtuele machine met mislukte testcontroles wordt uit de load balancer verwijderd totdat deze weer online komt en een testcontrole bepaalt of deze in orde is. Maak met [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) een statustest om de status van de virtuele machines te bewaken. 
 
@@ -130,12 +130,12 @@ Een statuscontrole controleert alle exemplaren van de virtuele machines om ervoo
     --path /  
 ```
 
-### <a name="create-load-balancing-rule"></a>Taak verdelings regel maken
+### <a name="create-load-balancing-rule"></a>Create load balancing rule
 
-Een load balancer regel definieert de front-end-IP-configuratie voor het binnenkomende verkeer en de back-end-groep om het verkeer te ontvangen, samen met de vereiste bron-en doel poort. Maak een load balancer regel *myinboundlbrule* met [AZ Network lb regel Create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) voor het Luis teren naar poort 80 in de front- *myfrontendinbound* en verzend netwerk verkeer met gelijke taak verdeling naar de back-end-adres groep *bepool* ook met behulp van poort 80. 
+A load balancer rule defines the frontend IP configuration for the incoming traffic and the backend pool to receive the traffic, along with the required source and destination port. Create a load balancer rule *myinboundlbrule* with [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) for listening to port 80 in the frontend pool *myfrontendinbound* and sending load-balanced network traffic to the backend address pool *bepool* also using port 80. 
 
 >[!NOTE]
->Met deze taakverdelings regel worden de Automatic outbound (S) NAT uitgeschakeld als gevolg van deze regel met de para meter--Disable-outbound-SNAT. Uitgaande NAT wordt alleen door de uitgaande regel verschaft.
+>This load balancing rule disables automatic outbound (S)NAT as a result of this rule with the --disable-outbound-snat parameter. Outbound NAT is only provided by the outbound rule.
 
 ```azurecli-interactive
 az network lb rule create \
@@ -151,9 +151,9 @@ az network lb rule create \
 --disable-outbound-snat
 ```
 
-### <a name="create-outbound-rule"></a>Uitgaande regel maken
+### <a name="create-outbound-rule"></a>Create outbound rule
 
-Een uitgaande regel definieert het open bare frontend-IP-adres dat wordt vertegenwoordigd door de front- *myfrontendoutbound*, die wordt gebruikt voor al het uitgaande NAT-verkeer en de back-endadresgroep waarop deze regel van toepassing is.  Maak een uitgaande regel *myoutboundrule* voor uitgaande netwerk vertaling van alle virtuele machines (NIC IP-configuraties) in *bepool* back-end-pool.  Met de onderstaande opdracht wordt ook de uitgaande time-out voor inactiviteit van 4 tot 15 minuten gewijzigd en worden er 10000 SNAT-poorten toegewezen in plaats van 1024.  Lees de [regels voor uitgaande verbindingen](https://aka.ms/lboutboundrules) voor meer informatie.
+An outbound rule defines the frontend public IP, represented by the frontend *myfrontendoutbound*, which will be used for all outbound NAT traffic as well as the backend pool to which this rule applies.  Create an outbound rule *myoutboundrule* for outbound network translation of all virtual machines (NIC IP configurations) in *bepool* backend pool.  The command below also changes the outbound idle timeout from 4 to 15 minutes and allocates 10000 SNAT ports instead of 1024.  Review [outbound rules](https://aka.ms/lboutboundrules) for more details.
 
 ```azurecli-interactive
 az network lb outbound-rule create \
@@ -167,9 +167,9 @@ az network lb outbound-rule create \
  --address-pool bepooloutbound
 ```
 
-Als u geen afzonderlijke uitgaande pool wilt gebruiken, kunt u in plaats daarvan het argument adres groep wijzigen in de voor gaande opdracht om *bepoolinbound* op te geven.  We raden u aan om afzonderlijke groepen te gebruiken voor flexibiliteit en lees baarheid van de resulterende configuratie.
+If you do not want to use a separate outbound pool, you can change the address pool argument in the preceding command to specify *bepoolinbound* instead.  We recommend to use separate pools for flexibility and readability of the resulting configuration.
 
-U kunt nu door gaan met het toevoegen van uw VM aan de back- *bepoolinbound* __en__ *bepooloutbound* door de IP-configuratie van de betreffende NIC-bronnen bij te werken met [AZ Network NIC IP-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
+At this point, you can proceed with adding your VM's to the backend pool *bepoolinbound* __and__ *bepooloutbound* by updating the IP configuration of the respective NIC resources using [az network nic ip-config address-pool add](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest).
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -180,7 +180,7 @@ U kunt de opdracht [az group delete](/cli/azure/group#az-group-delete) gebruiken
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-In dit artikel hebt u Standard Load Balancer gemaakt en hebt u de regels voor binnenkomend load balancer-verkeer, geconfigureerd en de status test voor de virtuele machines in de back-endadresgroep geconfigureerd. Voor meer informatie over Azure Load Balancer gaat u verder met de zelfstudies voor Azure Load Balancer.
+In this article, you created Standard Load Balancer, configured both inbound load balancer traffic rules, configured and health probe for the VMs in the backend pool. Voor meer informatie over Azure Load Balancer gaat u verder met de zelfstudies voor Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Zelfstudies voor Azure Load Balancer](tutorial-load-balancer-standard-public-zone-redundant-portal.md)

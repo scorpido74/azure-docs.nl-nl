@@ -1,6 +1,6 @@
 ---
-title: Configureren van beheerde identiteiten voor Azure-resources op een VM-schaalset met behulp van een sjabloon
-description: Stapsgewijze instructies voor het configureren van beheerde identiteiten voor Azure-resources op een virtuele-machineschaalset instellen met behulp van een Azure Resource Manager-sjabloon.
+title: Configure template to use managed identities on virtual machine scale sets - Azure AD
+description: Step-by-step instructions for configuring managed identities for Azure resources on a virtual machine scale set, using an Azure Resource Manager template.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,55 +15,55 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ecbac8af86c3c2c76b7710eb61f71481b86291b
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: f80134620bd1db0a0d802aff94a701fd32bb0e9e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66112516"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232197"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Configureren van beheerde identiteiten voor Azure-resources op de schaal van een virtuele machine van Azure met behulp van een sjabloon
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Configure managed identities for Azure resources on an Azure virtual machine scale using a template
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Beheerde identiteiten voor Azure-resources biedt Azure-services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken om te verifiëren bij een service die ondersteuning biedt voor Azure AD-verificatie, zonder referenties in uw code. 
+Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
 
-In dit artikel leert u hoe u voor het uitvoeren van de volgende beheerde identiteiten voor bewerkingen op een schaalset voor virtuele machine van Azure, Azure-resources met behulp van Azure Resource Manager-implementatiesjabloon:
-- In- en uitschakelen van de door het systeem toegewezen beheerde identiteit in een schaalset voor virtuele Azure-machine
-- Toevoegen en verwijderen van een gebruiker toegewezen beheerde identiteit in een schaalset voor virtuele Azure-machine
+In this article, you learn how to perform the following managed identities for Azure resources operations on an Azure virtual machine scale set, using Azure Resource Manager deployment template:
+- Enable and disable the system-assigned managed identity on an Azure virtual machine scale set
+- Add and remove a user-assigned managed identity on an Azure virtual machine scale set
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-it-work)** .
+- If you're unfamiliar with managed identities for Azure resources, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u wilt de beheerbewerkingen in dit artikel uitvoert, moet uw account de volgende Azure op basis van rollen access control-toewijzingen:
+- To perform the management operations in this article, your account needs the following Azure role based access control assignments:
 
     > [!NOTE]
-    > Er zijn geen extra Azure AD directory-roltoewijzingen is vereist.
+    > No additional Azure AD directory role assignments required.
 
-    - [Inzender voor virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) aan een virtuele-machineschaalset maken en inschakelen en verwijderen van systeem en/of de gebruiker toegewezen beheerde identiteit van een virtuele-machineschaalset.
-    - [Beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) rol te maken van een gebruiker toegewezen beheerde identiteit.
-    - [Beheerde identiteit Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) rol die u wilt toewijzen en verwijderen van een gebruiker toegewezen beheerde identiteit van en naar een virtuele-machineschaalset.
+    - [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) to create a virtual machine scale set and enable and remove system and/or user-assigned managed identity from a virtual machine scale set.
+    - [Managed Identity Contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) role to create a user-assigned managed identity.
+    - [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role to assign and remove a user-assigned managed identity from and to a virtual machine scale set.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-Net als bij Azure portal en uitvoeren van scripts, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) sjablonen bieden de mogelijkheid om nieuwe of gewijzigde resources die zijn gedefinieerd door een Azure-resourcegroep te implementeren. Er zijn diverse opties beschikbaar voor het bewerken van de sjabloon en implementatie, zowel lokaal als portal-gebaseerd, met inbegrip van:
+As with the Azure portal and scripting, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) templates provide the ability to deploy new or modified resources defined by an Azure resource group. Several options are available for template editing and deployment, both local and portal-based, including:
 
-   - Met behulp van een [aangepaste sjabloon vanuit Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), waarmee u een sjabloon maken van een volledig nieuwe of baseren op een bestaande gemeenschappelijke of [quickstart-sjabloon](https://azure.microsoft.com/documentation/templates/).
-   - Die is afgeleid van een bestaande resourcegroep door een sjabloon exporteren vanuit een [de oorspronkelijke implementatie](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), of vanuit de [huidige status van de implementatie van](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-   - Met behulp van een lokale [JSON-editor (zoals VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), en vervolgens uploaden en implementeren met behulp van PowerShell of CLI.
-   - Met Visual Studio [Azure-resourcegroepproject](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) te maken en implementeren van een sjabloon.  
+   - Using a [custom template from the Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), which allows you to create a template from scratch, or base it on an existing common or [quickstart template](https://azure.microsoft.com/documentation/templates/).
+   - Deriving from an existing resource group, by exporting a template from either [the original deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), or from the [current state of the deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - Using a local [JSON editor (such as VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), and then uploading and deploying by using PowerShell or CLI.
+   - Using the Visual Studio [Azure Resource Group project](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) to both create and deploy a template.  
 
-Ongeacht welke optie die u kiest, is de sjabloonsyntaxis van de hetzelfde tijdens de initiële implementatie en opnieuw implementeren. Inschakelen van beheerde identiteiten voor Azure-resources op een nieuwe of bestaande virtuele machine wordt uitgevoerd op dezelfde manier. Bovendien standaard Azure Resource Manager biedt een [incrementele update](../../azure-resource-manager/deployment-modes.md) implementaties.
+Regardless of the option you choose, template syntax is the same during initial deployment and redeployment. Enabling managed identities for Azure resources on a new or existing VM is done in the same manner. Also, by default, Azure Resource Manager does an [incremental update](../../azure-resource-manager/deployment-modes.md) to deployments.
 
-## <a name="system-assigned-managed-identity"></a>Het systeem toegewezen beheerde identiteit
+## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
 
-In deze sectie maakt u inschakelen en uitschakelen van de door het systeem toegewezen beheerde identiteit met een Azure Resource Manager-sjabloon.
+In this section, you will enable and disable the system-assigned managed identity using an Azure Resource Manager template.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Inschakelen door het systeem toegewezen beheerd identiteit tijdens het maken van het maken van een schaalset voor virtuele machines of een bestaande virtuele-machineschaalset
+### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-an-existing-virtual-machine-scale-set"></a>Enable system-assigned managed identity during creation the creation of a virtual machines scale set or an existing virtual machine scale set
 
-1. Of u zich aanmeldt bij Azure lokaal of via de Azure portal, gebruikt u een account dat is gekoppeld aan het Azure-abonnement met de virtuele-machineschaalset.
-2. Om in te schakelen op het systeem toegewezen beheerde identiteit, het laden van de sjabloon in een editor, Ga naar de `Microsoft.Compute/virtualMachinesScaleSets` resource van belang zijn binnen de resources sectie en voeg de `identity` eigenschap op hetzelfde niveau als het `"type": "Microsoft.Compute/virtualMachinesScaleSets"` eigenschap. Gebruik de volgende syntaxis:
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the virtual machine scale set.
+2. To enable the system-assigned managed identity, load the template into an editor, locate the `Microsoft.Compute/virtualMachinesScaleSets` resource of interest within the resources section and add the `identity` property at the same level as the `"type": "Microsoft.Compute/virtualMachinesScaleSets"` property. Use the following syntax:
 
    ```JSON
    "identity": { 
@@ -72,10 +72,10 @@ In deze sectie maakt u inschakelen en uitschakelen van de door het systeem toege
    ```
 
 > [!NOTE]
-> U mag de beheerde identiteiten (optioneel) inrichten voor virtuele-machineschaalset in Azure-resources extensie instellen door op te geven in de `extensionProfile` element van de sjabloon. Deze stap is optioneel als u het eindpunt van de identiteit Azure Instance Metadata Service (IMDS) gebruiken kunt voor het ophalen en tokens.  Zie voor meer informatie, [migreren van VM-extensie naar Azure IMDS voor verificatie](howto-migrate-vm-extension.md).
+> You may optionally provision the managed identities for Azure resources virtual machine scale set extension by specifying it in the `extensionProfile` element of the template. This step is optional as you can use the Azure Instance Metadata Service (IMDS) identity endpoint, to retrieve tokens as well.  For more information, see [Migrate from VM extension to Azure IMDS for authentication](howto-migrate-vm-extension.md).
 
 
-4. Wanneer u klaar bent, wordt de volgende secties moeten toegevoegd aan de resource-sectie van uw sjabloon en is vergelijkbaar met het volgende:
+4. When you're done, the following sections should added to the resource section of your template  and should resemble the following:
 
    ```json
     "resources": [
@@ -115,25 +115,25 @@ In deze sectie maakt u inschakelen en uitschakelen van de door het systeem toege
     ]
    ``` 
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Een systeem toegewezen beheerde identiteit van een schaalset voor virtuele Azure-machine uitschakelen
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Disable a system-assigned managed identity from an Azure virtual machine scale set
 
-Als u een virtuele-machineschaalset die een door het systeem toegewezen beheerde identiteit niet meer nodig hebt:
+If you have a virtual machine scale set that no longer needs a system-assigned managed identity:
 
-1. Of u zich aanmeldt bij Azure lokaal of via de Azure portal, gebruikt u een account dat is gekoppeld aan het Azure-abonnement met de virtuele-machineschaalset.
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the virtual machine scale set.
 
-2. Laden van de sjabloon in een [editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachineScaleSets` resource van belang zijn binnen de `resources` sectie. Hebt u een virtuele machine die alleen door het systeem toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het wijzigen van het identiteitstype aan `None`.
+2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachineScaleSets` resource of interest within the `resources` section. If you have a VM that only has system-assigned managed identity, you can disable it by changing the identity type to `None`.
 
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
 
-   Als uw apiVersion `2018-06-01` en uw virtuele machine heeft zowel system en beheerde identiteiten gebruiker toegewezen verwijderen `SystemAssigned` van de id-type en blijf aan de `UserAssigned` samen met de waarden van de woordenlijst userAssignedIdentities.
+   If your apiVersion is `2018-06-01` and your VM has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the userAssignedIdentities dictionary values.
 
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
 
-   Als uw apiVersion `2017-12-01` en uw virtuele-machineschaalset is zowel system als beheerde identiteiten gebruiker toegewezen verwijderen `SystemAssigned` van de id-type en blijf aan de `UserAssigned` samen met de `identityIds` matrix van de gebruiker toegewezen beheerd identiteiten. 
+   If your apiVersion is `2017-12-01` and your virtual machine scale set has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the `identityIds` array of the user-assigned managed identities. 
    
     
 
-   Het volgende voorbeeld ziet u hoe een systeem toegewezen beheerde identiteit verwijderen uit een virtuele-machineschaalset met geen beheerde gebruiker toegewezen identiteiten:
+   The following example shows you how remove a system-assigned managed identity from a virtual machine scale set with no user-assigned managed identities:
    
    ```json
    {
@@ -149,18 +149,18 @@ Als u een virtuele-machineschaalset die een door het systeem toegewezen beheerde
 
 ## <a name="user-assigned-managed-identity"></a>Door een gebruiker toegewezen beheerde identiteit
 
-In deze sectie maakt toewijzen u een gebruiker toegewezen beheerde identiteit aan een VM-schaalset met behulp van Azure Resource Manager-sjabloon.
+In this section, you assign a user-assigned managed identity to a virtual machine scale set using Azure Resource Manager template.
 
 > [!Note]
-> Zie voor het maken van een gebruiker toegewezen beheerde identiteit met een Azure Resource Manager-sjabloon, [maken van een gebruiker toegewezen beheerde identiteit](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
+> To create a user-assigned managed identity using an Azure Resource Manager Template, see [Create a user-assigned managed identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Een gebruiker toegewezen beheerde identiteit toewijzen aan een virtuele-machineschaalset
+### <a name="assign-a-user-assigned-managed-identity-to-a-virtual-machine-scale-set"></a>Assign a user-assigned managed identity to a virtual machine scale set
 
-1. Onder de `resources` -element, voeg de volgende vermelding voor het toewijzen van een beheerde identiteit voor de gebruiker toegewezen aan uw virtuele-machineschaalset.  Vervang `<USERASSIGNEDIDENTITY>` beheerd door de naam van de gebruiker toegewezen identiteit die u hebt gemaakt.
+1. Under the `resources` element, add the following entry to assign a user-assigned managed identity to your virtual machine scale set.  Be sure to replace `<USERASSIGNEDIDENTITY>` with the name of the user-assigned managed identity you created.
    
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
 
-   Als uw apiVersion `2018-06-01`, uw beheerde gebruiker toegewezen identiteiten worden opgeslagen in de `userAssignedIdentities` woordenlijst indeling en de `<USERASSIGNEDIDENTITYNAME>` waarde moet worden opgeslagen in een variabele die is gedefinieerd in de `variables` gedeelte van uw sjabloon.
+   If your apiVersion is `2018-06-01`, your user-assigned managed identities are stored in the `userAssignedIdentities` dictionary format and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the `variables` section of your template.
 
    ```json
    {
@@ -177,9 +177,9 @@ In deze sectie maakt toewijzen u een gebruiker toegewezen beheerde identiteit aa
    }
    ```   
 
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2017-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API version 2017-12-01**
     
-   Als uw `apiVersion` is `2017-12-01` of eerder, uw beheerde gebruiker toegewezen identiteiten worden opgeslagen in de `identityIds` matrix en de `<USERASSIGNEDIDENTITYNAME>` waarde moet worden opgeslagen in een variabele die is gedefinieerd in de sectie met variabelen van uw sjabloon.
+   If your `apiVersion` is `2017-12-01` or earlier, your user-assigned managed identities are stored in the `identityIds` array and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the variables section of your template.
 
    ```json
    {
@@ -196,11 +196,11 @@ In deze sectie maakt toewijzen u een gebruiker toegewezen beheerde identiteit aa
    }
    ``` 
 > [!NOTE]
-> U mag de beheerde identiteiten (optioneel) inrichten voor virtuele-machineschaalset in Azure-resources extensie instellen door op te geven in de `extensionProfile` element van de sjabloon. Deze stap is optioneel als u het eindpunt van de identiteit Azure Instance Metadata Service (IMDS) gebruiken kunt voor het ophalen en tokens.  Zie voor meer informatie, [migreren van VM-extensie naar Azure IMDS voor verificatie](howto-migrate-vm-extension.md).
+> You may optionally provision the managed identities for Azure resources virtual machine scale set extension by specifying it in the `extensionProfile` element of the template. This step is optional as you can use the Azure Instance Metadata Service (IMDS) identity endpoint, to retrieve tokens as well.  For more information, see [Migrate from VM extension to Azure IMDS for authentication](howto-migrate-vm-extension.md).
 
-3. Wanneer u klaar bent, is de sjabloon ziet die vergelijkbaar is met het volgende:
+3. When you are done, your template should look similar to the following:
    
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2018-06-01**   
+   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**   
 
    ```json
    "resources": [
@@ -243,7 +243,7 @@ In deze sectie maakt toewijzen u een gebruiker toegewezen beheerde identiteit aa
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines API-versie 2017-12-01**
+   **Microsoft.Compute/virtualMachines API version 2017-12-01**
 
    ```json
    "resources": [
@@ -285,15 +285,15 @@ In deze sectie maakt toewijzen u een gebruiker toegewezen beheerde identiteit aa
         }
     ]
    ```
-   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Verwijder de gebruiker toegewezen beheerde identiteit van een schaalset voor virtuele Azure-machine
+   ### <a name="remove-user-assigned-managed-identity-from-an-azure-virtual-machine-scale-set"></a>Remove user-assigned managed identity from an Azure virtual machine scale set
 
-Als u een virtuele-machineschaalset die een gebruiker toegewezen beheerde identiteit niet meer nodig hebt:
+If you have a virtual machine scale set that no longer needs a user-assigned managed identity:
 
-1. Of u zich aanmeldt bij Azure lokaal of via de Azure portal, gebruikt u een account dat is gekoppeld aan het Azure-abonnement met de virtuele-machineschaalset.
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the virtual machine scale set.
 
-2. Laden van de sjabloon in een [editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachineScaleSets` resource van belang zijn binnen de `resources` sectie. Hebt u een virtuele-machineschaalset waarvoor alleen beheerde identiteit aan een gebruiker zijn toegewezen, kunt u deze uitschakelen door het wijzigen van het identiteitstype aan `None`.
+2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachineScaleSets` resource of interest within the `resources` section. If you have a virtual machine scale set that only has user-assigned managed identity, you can disable it by changing the identity type to `None`.
 
-   Het volgende voorbeeld ziet u hoe alle beheerde identiteiten die door de gebruiker toegewezen verwijderen uit een virtuele machine met geen systeem toegewezen beheerde identiteiten:
+   The following example shows you how remove all user-assigned managed identities from a VM with no system-assigned managed identities:
 
    ```json
    {
@@ -306,19 +306,19 @@ Als u een virtuele-machineschaalset die een gebruiker toegewezen beheerde identi
    }
    ```
    
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
     
-   Als u een enkele gebruiker toegewezen beheerde identiteit van een virtuele-machineschaalset, wilt verwijderen uit de `userAssignedIdentities` woordenlijst.
+   To remove a single user-assigned managed identity from a virtual machine scale set, remove it from the `userAssignedIdentities` dictionary.
 
-   Als u een systeem toegewezen identiteit hebt, moet u deze de in de `type` waarde onder de `identity` waarde.
+   If you have a system-assigned identity, keep it in the in the `type` value under the `identity` value.
 
-   **Microsoft.Compute/virtualMachineScaleSets API-versie 2017-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API version 2017-12-01**
 
-   Als u een enkele gebruiker toegewezen beheerde identiteit van een virtuele-machineschaalset, wilt verwijderen uit de `identityIds` matrix.
+   To remove a single user-assigned managed identity from a virtual machine scale set, remove it from the `identityIds` array.
 
-   Als u een beheerde identiteit voor het systeem toegewezen hebt, moet u deze de in de `type` waarde onder de `identity` waarde.
+   If you have a system-assigned managed identity, keep it in the in the `type` value under the `identity` value.
    
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Identiteiten voor een overzicht van Azure-resources beheerd](overview.md).
+- [Managed identities for Azure resources overview](overview.md).
 

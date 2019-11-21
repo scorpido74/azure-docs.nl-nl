@@ -1,103 +1,111 @@
 ---
-title: Betrouwbaarheids Score-QnA Maker
+title: Confidence Score - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: Met de betrouwbaarheids score wordt het vertrouwen aangegeven dat het antwoord het juiste resultaat voor de opgegeven gebruikers query is.
+description: The confidence score indicates the confidence that the answer is the right match for the given user query.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/19/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a80c61efbcbff569f5fed53734def3979ed70616
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e2f7136ea7b973386eeb746a74ad09fadb490e83
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820749"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229104"
 ---
-# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Betrouwbaarheids Score van een QnA Maker Knowledge Base
-Wanneer een gebruikers query wordt vergeleken met een Knowledge Base, retourneert QnA Maker relevante antwoorden, samen met een betrouwbaarheids Score. Met deze score wordt het vertrouwen aangegeven dat het antwoord het juiste resultaat voor de opgegeven gebruikers query is. 
+# <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Confidence score of a QnA Maker knowledge base
+When a user query is matched against a knowledge base, QnA Maker returns relevant answers, along with a confidence score. This score indicates the confidence that the answer is the right match for the given user query. 
 
-De betrouwbaarheids Score is een getal tussen 0 en 100. Een Score van 100 is waarschijnlijk een exacte overeenkomst, terwijl een Score van 0 betekent dat er geen overeenkomend antwoord is gevonden. Hoe hoger de score, hoe groter het vertrouwen in het antwoord is. Er kunnen meerdere antwoorden voor een bepaalde query worden geretourneerd. In dat geval worden de antwoorden geretourneerd op volg orde van afname van de betrouwbaarheids Score.
+The confidence score is a number between 0 and 100. A score of 100 is likely an exact match, while a score of 0 means, that no matching answer was found. The higher the score- the greater the confidence in the answer. For a given query, there could be multiple answers returned. In that case, the answers are returned in order of decreasing confidence score.
 
-In het onderstaande voor beeld ziet u een QnA-entiteit, met twee vragen. 
-
-
-![Voor beeld van QnA-paar](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
-
-Voor het bovenstaande voor beeld: u kunt scores zoals het onderstaande voor beeld Score bereik verwachten voor verschillende soorten gebruikers query's:
+In the example below, you can see one QnA entity, with 2 questions. 
 
 
-![Score bereik van de rang schikking](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
+![Sample QnA pair](../media/qnamaker-concepts-confidencescore/ranker-example-qna.png)
+
+For the above example- you can expect scores like the sample score range below- for different types of user queries:
 
 
-De volgende tabel geeft een typische betrouw baarheid aan dat is gekoppeld aan een bepaalde score.
+![Ranker score range](../media/qnamaker-concepts-confidencescore/ranker-score-range.png)
 
-|Score waarde|Betekenis van Score|Voorbeeld query|
+
+The following table indicates typical confidence associated for a given score.
+
+|Score Value|Score Meaning|Example Query|
 |--|--|--|
-|90-100|Bijna exacte overeenkomst met de gebruikers query en een KB-vraag|' Mijn wijzigingen worden na het publiceren niet bijgewerkt in KB '|
-|> 70|Hoge betrouw baarheid: doorgaans een goed antwoord dat de query van de gebruiker volledig beantwoordt|"Ik heb mijn KB gepubliceerd, maar dit is niet bijgewerkt"|
-|50-70|Gemiddeld betrouw baarheid-meestal een redelijk goed antwoord dat de hoofd intentie van de gebruikers query moet beantwoorden|"Moet ik mijn updates opslaan voordat ik mijn KB Publiceer?"|
-|30 - 50|Lage betrouw baarheid: doorgaans een verwant antwoord dat de bedoeling van de gebruiker gedeeltelijk beantwoordt|' Wat doet het opslaan en trainen? '|
-|< 30|Zeer lage betrouw baarheid: beantwoordt doorgaans niet de query van de gebruiker, maar heeft een aantal overeenkomende woorden of zinsdelen |"Waar kan ik synoniemen toevoegen aan mijn KB"|
-|0|Geen overeenkomst, dus het antwoord wordt niet geretourneerd.|Wat is de kosten van de service?|
+|90 - 100|A near exact match of user query and a KB question|"My changes aren't updated in KB after publish"|
+|> 70|High confidence - typically a good answer that completely answers the user's query|"I published my KB but it's not updated"|
+|50 - 70|Medium confidence - typically a fairly good answer that should answer the main intent of the user query|"Should I save my updates before I publish my KB?"|
+|30 - 50|Low confidence - typically a related answer, that partially answers the user's intent|" What does the save and train do?"|
+|< 30|Very low confidence - typically does not answer the user's query, but has some matching words or phrases |" Where can I add synonyms to my KB"|
+|0|No match, so the answer is not returned.|"How much does the service cost"|
 
-## <a name="choose-a-score-threshold"></a>Een score drempelwaarde kiezen
-In de bovenstaande tabel worden de scores weer gegeven die op de meeste Kb's worden verwacht. Omdat elke KB echter anders is en verschillende soorten woorden, intenties en doel stellingen heeft, raden we u aan om de drempel waarde te testen en te kiezen die het beste geschikt is voor u. De drempel waarde is standaard ingesteld op 0, zodat alle mogelijke antwoorden worden geretourneerd. De aanbevolen drempel waarde die moet worden gebruikt voor de meeste Kb's, is **50**.
+## <a name="choose-a-score-threshold"></a>Choose a score threshold
+The table above shows the scores that are expected on most KBs. However, since every KB is different, and has different types of words, intents, and goals- we recommend you test and choose the threshold that best works for you. By default the threshold is set to 0, so that all possible answers are returned. The recommended threshold that should work for most KBs, is **50**.
 
-Houd bij het kiezen van de drempel waarde rekening met het evenwicht tussen nauw keurigheid en dekking en pas uw drempel aan op basis van uw vereisten.
+When choosing your threshold, keep in mind the balance between Accuracy and Coverage, and tweak your threshold based on your requirements.
 
-- Als **nauw keurigheid** (of precisie) belang rijker is voor uw scenario, verhoogt u de drempel waarde. Op deze manier wordt elke keer dat u een antwoord retourneert, een veel meer VERTROUWENs situatie en veel waarschijnlijker zijn de antwoord gebruikers op zoek naar. In dit geval is het mogelijk dat u uiteindelijk nog meer vragen hebt. *Bijvoorbeeld:* als u de drempel waarde **70**maakt, kunt u enkele ambigue voor beelden missen ' wat is opslaan en trainen? '.
+- If **Accuracy** (or precision) is more important for your scenario, then increase your threshold. This way, every time you return an answer, it will be a much more CONFIDENT case, and much more likely to be the answer users are looking for. In this case, you might end up leaving more questions unanswered. *For example:* if you make the threshold **70**, you might miss some ambiguous examples likes "what is save and train?".
 
-- Als **dekking** (of intrekken) belang rijker is en u zo veel mogelijk vragen wilt beantwoorden, zelfs als er slechts een gedeeltelijke relatie is met de vraag van de gebruiker, moet u de drempel waarde verlagen. Dit betekent dat er meer gevallen zijn waarin het antwoord niet de daad werkelijke query van de gebruiker beantwoordt, maar een ander, iets verwant antwoord geeft. *Bijvoorbeeld:* als u de drempel waarde **30**maakt, kunt u antwoorden geven op query's zoals ' waar kan ik mijn KB bewerken? '
+- If **Coverage** (or recall) is more important- and you want to answer as many questions as possible, even if there is only a partial relation to the user's question- then LOWER the threshold. This means there could be more cases where the answer does not answer the user's actual query, but gives some other somewhat related answer. *For example:* if you make the threshold **30**, you might give answers for queries like "Where can I edit my KB?"
 
 > [!NOTE]
-> Nieuwere versies van QnA Maker bevatten verbeteringen in de Score logica en kunnen van invloed zijn op de drempel waarde. Telkens wanneer u de service bijwerkt, moet u ervoor zorgen dat de drempel waarde wordt getest en zo nodig wordt verfijnd. U kunt [hier](https://www.qnamaker.ai/UserSettings)de QnA-Service versie controleren en bekijken hoe u de meest recente updates [hier](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates)ophaalt.
+> Newer versions of QnA Maker include improvements to scoring logic, and could affect your threshold. Any time you update the service, make sure to test and tweak the threshold if necessary. You can check your QnA Service version [here](https://www.qnamaker.ai/UserSettings), and see how to get the latest updates [here](../How-To/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates).
 
-## <a name="set-threshold"></a>Drempel waarde instellen 
+## <a name="set-threshold"></a>Set threshold 
 
-Stel de drempel Score in als een eigenschap van de [JSON-hoofd tekst](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration)van de GENERATEANSWER-API. Dit betekent dat u deze instelt voor elke aanroep van GenerateAnswer. 
+Set the threshold score as a property of the [GenerateAnswer API JSON body](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration). This means you set it for each call to GenerateAnswer. 
 
-Stel in het bot-Framework de score in als onderdeel van het object Options [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) met of [node. js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
+From the bot framework, set the score as part of the options object with [C#](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-c) or [Node.js](../how-to/metadata-generateanswer-usage.md?#use-qna-maker-with-a-bot-in-nodejs).
 
-## <a name="improve-confidence-scores"></a>Betrouwbaarheids scores verbeteren
-Als u de betrouwbaarheids Score van een bepaalde reactie op een gebruikers query wilt verbeteren, kunt u de gebruikers query toevoegen aan de Knowledge Base als een andere vraag over dat antwoord. U kunt ook hoofdletter gevoelige [woord wijzigingen](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) gebruiken om synoniemen toe te voegen aan tref woorden in uw KB.
-
-
-## <a name="similar-confidence-scores"></a>Vergelijk bare betrouwbaarheids scores
-Wanneer meerdere antwoorden een vergelijk bare betrouwbaarheids score hebben, is het waarschijnlijk dat de query te algemeen is en daarom overeenkomt met een gelijke kans met meerdere antwoorden. Probeer uw QnAs beter te structureren zodat elke QnA-entiteit een DISTINCT-intentie heeft.
+## <a name="improve-confidence-scores"></a>Improve confidence scores
+To improve the confidence score of a particular response to a user query, you can add the user query to the knowledge base as an alternate question on that response. You can also use case-insensitive [word alterations](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) to add synonyms to keywords in your KB.
 
 
-## <a name="confidence-score-differences"></a>Verschillen in Betrouwbaarheids Score
-De betrouwbaarheids Score van een antwoord kan negligibly wijzigen tussen de test en de gepubliceerde versie van de Knowledge Base, zelfs als de inhoud hetzelfde is. Dit komt doordat de inhoud van de test en de gepubliceerde Knowledge Base zich bevinden in verschillende Azure Cognitive Search-indexen. Wanneer u een kennis database publiceert, wordt de vraag en antwoord inhoud van uw kennis basis verplaatst van de test index naar een productie-index in azure Search. Bekijk hoe de [publicatie](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) bewerking werkt.
-
-Als u een Knowledge Base hebt in verschillende regio's, gebruikt elke regio een eigen Azure Cognitive Search-index. Omdat er verschillende indexen worden gebruikt, zijn de scores niet precies hetzelfde. 
+## <a name="similar-confidence-scores"></a>Similar confidence scores
+When multiple responses have a similar confidence score, it is likely that the query was too generic and therefore matched with equal likelihood with multiple answers. Try to structure your QnAs better so that every QnA entity has a distinct intent.
 
 
-## <a name="no-match-found"></a>Geen overeenkomst gevonden
-Wanneer de rang schikking geen goede overeenkomst heeft gevonden, wordt de betrouwbaarheids Score van 0,0 of ' geen ' geretourneerd en wordt het standaard antwoord ' geen goede overeenkomst gevonden in de KB '. U kunt deze [standaard reactie](#change-default-answer) overschrijven in de bot of toepassings code die het eind punt aanroept. U kunt ook het overschrijvings antwoord in azure instellen en dit wijzigt de standaard waarde voor alle Knowledge bases die zijn geïmplementeerd in een bepaalde QnA Maker service.
+## <a name="confidence-score-differences-between-test-and-production"></a>Confidence score differences between test and production
+The confidence score of an answer may change negligibly between the test and published version of the knowledge base even if the content is the same. This is because the content of the test and the published knowledge base are located in different Azure Cognitive Search indexes. 
 
-## <a name="change-default-answer"></a>Standaard antwoord wijzigen
+The test index holds all the QnA pairs of your knowledge bases. When querying the test index, the query applies to the entire index then results are restricted to the partition for that specific knowledge base. If the test query results are negatively impacting your ability to validate the knowledge base, you can:
+* organize your knowledge base using one of the following:
+    * 1 resource restricted to 1 KB: restrict your single QnA resource (and the resulting Azure Cognitive Search test index) to a single knowledge base. 
+    * 2 resources - 1 for test, 1 for production: have two QnA Maker resources, using one for testing (with its own test and  production indexes) and one for product (also having its own test and production indexes)
+* and, always use the same parameters, such as **[top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)** when querying both your test and production knowledge base
 
-1. Ga naar de [Azure Portal](https://portal.azure.com) en navigeer naar de resource groep die de QnA Maker-service vertegenwoordigt die u hebt gemaakt.
+When you publish a knowledge base, the question and answer contents of your knowledge base moves from the test index to a production index in Azure search. See how the [publish](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) operation works.
 
-2. Klik om de **app service**te openen.
+If you have a knowledge base in different regions, each region uses its own Azure Cognitive Search index. Because different indexes are used, the scores will not be exactly the same. 
 
-    ![In de Azure Portal Access app service for QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Klik op **Toepassings instellingen** en bewerk het veld **DefaultAnswer** naar de gewenste standaard reactie. Klik op **Opslaan**.
+## <a name="no-match-found"></a>No match found
+When no good match is found by the ranker, the confidence score of 0.0 or "None" is returned and the default response is "No good match found in the KB". You can override this [default response](#change-default-answer) in the bot or application code calling the endpoint. Alternately, you can also set the override response in Azure and this changes the default for all knowledge bases deployed in a particular QnA Maker service.
 
-    ![Selecteer toepassings instellingen en bewerk vervolgens DefaultAnswer voor QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+## <a name="change-default-answer"></a>Change Default Answer
 
-4. Uw app service opnieuw starten
+1. Go to the [Azure portal](https://portal.azure.com) and navigate to the resource group that represents the QnA Maker service you created.
 
-    ![Nadat u de DefaultAnswer hebt gewijzigd, start u de QnA Maker appservice opnieuw](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+2. Click to open the **App Service**.
+
+    ![In the Azure portal, access App service for QnA Maker](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+
+3. Click on **Application Settings** and edit the **DefaultAnswer** field to the desired default response. Klik op **Opslaan**.
+
+    ![Select Application Settings and then edit DefaultAnswer for QnA Maker](../media/qnamaker-concepts-confidencescore/change-response.png)
+
+4. Restart your App service
+
+    ![After you change the DefaultAnswer, restart the QnA Maker appservice](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen
 > [!div class="nextstepaction"]
-> [Ondersteunde gegevens bronnen](./data-sources-supported.md)
+> [Data sources supported](./data-sources-supported.md)
 

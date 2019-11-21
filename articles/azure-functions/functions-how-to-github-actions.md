@@ -1,81 +1,79 @@
 ---
-title: GitHub-acties gebruiken om code-updates te maken in Azure Functions
-description: Leer hoe u GitHub-acties kunt gebruiken om een werk stroom te definiëren voor het bouwen en implementeren van Azure Functions projecten in GitHub.
+title: Use GitHub Actions to make code updates in Azure Functions
+description: Learn how to use GitHub Actions to define a workflow to build and deploy Azure Functions projects in GitHub.
 author: ahmedelnably
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: aelnably
-ms.openlocfilehash: 681d7a5eab3306a4067ea49bcf8a038e8627f60e
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 18ba99077592a7d03e19fda86bc61e5839b82b5e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091386"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226919"
 ---
-# <a name="continuous-delivery-by-using-github-action"></a>Continue levering met behulp van GitHub-actie
+# <a name="continuous-delivery-by-using-github-action"></a>Continuous delivery by using GitHub Action
 
-Met [github acties](https://github.com/features/actions) kunt u een werk stroom definiëren om automatisch uw functions-code te bouwen en te implementeren in functie-app in Azure. 
+[GitHub Actions](https://github.com/features/actions) lets you define a workflow to automatically build and deploy your functions code to function app in Azure. 
 
-In GitHub acties is een [werk stroom](https://help.github.com/articles/about-github-actions#workflow) een geautomatiseerd proces dat u in uw github-opslag plaats definieert. Dit proces vertelt u GitHub hoe u uw functions-app-project bouwt en implementeert op GitHub. 
+In GitHub Actions, a [workflow](https://help.github.com/articles/about-github-actions#workflow) is an automated process that you define in your GitHub repository. This process tells GitHub how to build and deploy your functions app project on GitHub. 
 
-Een werk stroom wordt gedefinieerd door een YAML-bestand (. yml) in het pad `/.github/workflows/` in uw opslag plaats. Deze definitie bevat de verschillende stappen en para meters die deel uitmaken van de werk stroom. 
+A workflow is defined by a YAML (.yml) file in the `/.github/workflows/` path in your repository. This definition contains the various steps and parameters that make up the workflow. 
 
-Voor een Azure Functions werk stroom heeft het bestand drie secties: 
+For an Azure Functions workflow, the file has three sections: 
 
 | Sectie | Taken |
 | ------- | ----- |
-| **Verificatie** | <ol><li>Definieer een service-principal.</li><li>Publicatie profiel downloaden.</li><li>Maak een GitHub-geheim.</li></ol>|
-| **PE** | <ol><li>Stel de omgeving in.</li><li>De functie-app bouwen.</li></ol> |
-| **Implementeren** | <ol><li>Implementeer de functie-app.</li></ol>|
+| **Verificatie** | <ol><li>Define a service principal.</li><li>Download publishing profile.</li><li>Create a GitHub secret.</li></ol>|
+| **Build** | <ol><li>Set up the environment.</li><li>Build the function app.</li></ol> |
+| **Implementeren** | <ol><li>Deploy the function app.</li></ol>|
 
 > [!NOTE]
-> U hoeft geen service-principal te maken als u het publicatie profiel voor verificatie wilt gebruiken.
+> You do not need to create a service principal if you decide to use publishing profile for authentication.
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
-U kunt een [Service-Principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) maken met behulp van de opdracht [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) in de [Azure cli](/cli/azure/). U kunt deze opdracht uitvoeren met behulp van [Azure Cloud shell](https://shell.azure.com) in het Azure portal of door de knop **try it** te selecteren.
+You can create a [service principal](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) by using the [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command in the [Azure CLI](/cli/azure/). You can run this command using [Azure Cloud Shell](https://shell.azure.com) in the Azure portal or by selecting the **Try it** button.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP>/providers/Microsoft.Web/sites/<APP_NAME> --sdk-auth
 ```
 
-In dit voor beeld vervangt u de tijdelijke aanduidingen in de resource door uw abonnements-ID, resource groep en naam van de functie-app. De uitvoer is de roltoewijzings referenties die toegang bieden tot uw functie-app. Kopieer dit JSON-object, dat u kunt gebruiken om te verifiëren vanuit GitHub.
+In this example, replace the placeholders in the resource with your subscription ID, resource group, and function app name. The output is the role assignment credentials that provides access to your function app. Copy this JSON object, which you can use to authenticate from GitHub.
 
 > [!IMPORTANT]
-> Het is altijd een goed idee om minimale toegang te verlenen. Daarom is de scope in het vorige voor beeld beperkt tot de specifieke functie-app en niet de hele resource groep.
+> It is always a good practice to grant minimum access. This is why the scope in the previous example is limited to the specific function app and not the entire resource group.
 
-## <a name="download-the-publishing-profile"></a>Het publicatie profiel downloaden
+## <a name="download-the-publishing-profile"></a>Download the publishing profile
 
-U kunt het publicatie Profiel van uw functionapp downloaden door naar de pagina **overzicht** van uw app te gaan en te klikken op **publicatie profiel ophalen**.
+You can download the publishing profile of your functionapp, by going to the **Overview** page of your app and clicking **Get publish profile**.
 
-   ![Publicatie profiel downloaden](media/functions-how-to-github-actions/get-publish-profile.png)
+   ![Download publish profile](media/functions-how-to-github-actions/get-publish-profile.png)
 
-Kopieer de inhoud van het bestand.
+Copy the content of the file.
 
-## <a name="configure-the-github-secret"></a>Het GitHub-geheim configureren
+## <a name="configure-the-github-secret"></a>Configure the GitHub secret
 
-1. In [github](https://github.com)gaat u naar uw opslag plaats, selecteert u **instellingen** > **geheimen** > **een nieuw geheim toe te voegen**.
+1. In [GitHub](https://github.com), browse your repository, select **Settings** > **Secrets** > **Add a new secret**.
 
-   ![Geheim toevoegen](media/functions-how-to-github-actions/add-secret.png)
+   ![Add Secret](media/functions-how-to-github-actions/add-secret.png)
 
-1. Gebruik `AZURE_CREDENTIALS` voor de **naam** en de gekopieerde uitvoer van de opdracht voor **waarde**. Als u vervolgens **geheim toevoegen**selecteert. Als u een publicatie profiel gebruikt, gebruikt u `SCM_CREDENTIALS` voor de **naam** en de bestands inhoud voor **waarde**.
+1. Use `AZURE_CREDENTIALS` for the **Name** and the copied command output for **Value**, if you then select **Add secret**. If you are using publishing profile, use `SCM_CREDENTIALS` for the **Name** and the file content for **Value**.
 
-GitHub kan nu worden geverifieerd bij uw functie-app in Azure.
+GitHub can now authenticate to your function app in Azure.
 
 ## <a name="set-up-the-environment"></a>De omgeving instellen 
 
-Het instellen van de omgeving kan worden uitgevoerd met behulp van een van de instellingen voor het publiceren van de publicatie.
+Setting up the environment can be done using one of the publish setup actions.
 
-|Taal | Installatie actie |
+|Taal | Setup Action |
 |---------|---------|
 |**.NET**     | `actions/setup-dotnet` |
 |**Java**    | `actions/setup-java` |
 |**JavaScript**     | `actions/setup-node` |
 |**Python**   | `actions/setup-python` |
 
-In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgeving voor de verschillende ondersteunde talen wordt ingesteld:
+The following examples show the part of the workflow that sets up the environment for the various supported languages:
 
 **JavaScript**
 
@@ -131,11 +129,11 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de omgevi
         java-version: '1.8.x'
 ```
 
-## <a name="build-the-function-app"></a>De functie-app bouwen
+## <a name="build-the-function-app"></a>Build the function app
 
-Dit is afhankelijk van de taal en voor talen die door Azure Functions worden ondersteund. dit gedeelte moet de standaard stappen voor het bouwen van elke taal zijn.
+This depends on the language and for languages supported by Azure Functions, this section should be the standard build steps of each language.
 
-In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functie-app wordt gebouwd in de verschillende ondersteunde talen.:
+The following examples show the part of the workflow that builds the function app, in the various supported languages.:
 
 **JavaScript**
 
@@ -195,15 +193,15 @@ In de volgende voor beelden ziet u het deel van de werk stroom waarmee de functi
 
 ## <a name="deploy-the-function-app"></a>De functie-app implementeren
 
-Als u uw code wilt implementeren in een functie-app, moet u de actie `Azure/functions-action` gebruiken. Deze actie heeft twee para meters:
+To deploy your code to a function app, you will need to use the `Azure/functions-action` action. This action has two parameters:
 
 |Parameter |Uitleg  |
 |---------|---------|
-|**_app-naam_** | Ingevuld De naam van de functie-app. |
-|_**sleuf naam**_ | Beschrijving De naam van de [implementatie sleuf](functions-deployment-slots.md) waarnaar u wilt implementeren. De sleuf moet al zijn gedefinieerd in uw functie-app. |
+|**_app-name_** | (Mandatory) The name of your function app. |
+|_**slot-name**_ | (Optional) The name of the [deployment slot](functions-deployment-slots.md) you want to deploy to. The slot must already be defined in your function app. |
 
 
-In het volgende voor beeld wordt versie 1 van de `functions-action`gebruikt:
+The following example uses version 1 of the `functions-action`:
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -215,7 +213,7 @@ In het volgende voor beeld wordt versie 1 van de `functions-action`gebruikt:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een volledige werk stroom. yaml wilt weer geven, raadpleegt u een van de bestanden in de [werk stroom voor beelden van Azure github actions opslag plaats](https://aka.ms/functions-actions-samples) die `functionapp` in de naam hebben. U kunt deze voor beelden gebruiken als uitgangs punt voor uw werk stroom.
+To view a complete workflow .yaml, see one of the files in the [Azure GitHub Actions workflow samples repo](https://aka.ms/functions-actions-samples) that have `functionapp` in the name. You can use these samples a starting point for your workflow.
 
 > [!div class="nextstepaction"]
-> [Meer informatie over GitHub-acties](https://help.github.com/en/articles/about-github-actions)
+> [Learn more about GitHub Actions](https://help.github.com/en/articles/about-github-actions)

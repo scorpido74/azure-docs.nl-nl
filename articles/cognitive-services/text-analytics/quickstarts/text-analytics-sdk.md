@@ -1,33 +1,33 @@
 ---
-title: 'Snelstartgids: Text Analytics-client bibliotheek | Microsoft Docs'
+title: 'Quickstart: Text Analytics client library | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
-description: In deze Snelstartgids kunt u de taal detecteren met behulp van de Text Analytics-API van Azure Cognitive Services.
+description: In this quickstart, detect language by using the Text Analytics API from Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 11/06/2019
+ms.date: 11/19/2019
 ms.author: aahi
 zone_pivot_groups: programming-languages-set-five
-ms.openlocfilehash: 8b07e6b08e34e701aa4c3b254aee7245926085b6
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 93912ef93ab1065bf3b7c5010c485f99229a06a6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73750216"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220786"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-for-detecting-language"></a>Snelstartgids: de Text Analytics-client bibliotheek gebruiken voor het detecteren van taal
+# <a name="quickstart-use-the-text-analytics-client-library"></a>Quickstart: Use the Text Analytics client library
 
-Aan de slag met de Text Analytics-client bibliotheek. Volg deze stappen om het pakket te installeren en de voorbeeld code voor basis taken uit te proberen.
+Get started with the Text Analytics client library. Follow these steps to install the package and try out the example code for basic tasks.
 
-De Text Analytics-client bibliotheek gebruiken om uit te voeren:
+Use the Text Analytics client library to perform:
 
 * Sentimentanalyse
 * Taaldetectie
 * Herkenning van entiteiten
-* Sleuteltermextractie
+* Sleuteluitdrukkingen extraheren
 
 ::: zone pivot="programming-language-csharp"
 
@@ -61,7 +61,7 @@ De Text Analytics-client bibliotheek gebruiken om uit te voeren:
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de resource of resource groep verwijderen. Als u de resource groep verwijdert, worden ook alle bijbehorende resources verwijderd.
+If you want to clean up and remove a Cognitive Services subscription, you can delete the resource or resource group. Deleting the resource group also deletes any other resources associated with it.
 
 * [Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
@@ -73,7 +73,7 @@ Als u een Cognitive Services-abonnement wilt opschonen en verwijderen, kunt u de
 
 
 * [Overzicht van Text Analytics](../overview.md)
-* [Sentiment analyse](../how-tos/text-analytics-how-to-sentiment-analysis.md)
-* [Entiteit herkenning](../how-tos/text-analytics-how-to-entity-linking.md)
-* [Taal detecteren](../how-tos/text-analytics-how-to-keyword-extraction.md)
-* [Taal herkenning](../how-tos/text-analytics-how-to-language-detection.md)
+* [Sentiment analysis](../how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Entity recognition](../how-tos/text-analytics-how-to-entity-linking.md)
+* [Detect language](../how-tos/text-analytics-how-to-keyword-extraction.md)
+* [Language recognition](../how-tos/text-analytics-how-to-language-detection.md)

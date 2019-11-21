@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Wikispaces | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Wikispaces.
+title: 'Tutorial: Azure Active Directory integration with Wikispaces | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Wikispaces.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: d2c03143eca9f335c440dfcaee766e205b5c0730
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a683923ba48b1f354f90ac94d746cb92f359e7a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087156"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233310"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Zelfstudie: Azure Active Directory-integratie met Wikispaces
+# <a name="tutorial-azure-active-directory-integration-with-wikispaces"></a>Tutorial: Azure Active Directory integration with Wikispaces
 
-In deze zelfstudie leert u hoe u Wikispaces integreren met Azure Active Directory (Azure AD).
-Wikispaces integreren met Azure AD biedt u de volgende voordelen:
+In this tutorial, you learn how to integrate Wikispaces with Azure Active Directory (Azure AD).
+Integrating Wikispaces with Azure AD provides you with the following benefits:
 
-* U kunt beheren in Azure AD die toegang tot Wikispaces heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Wikispaces (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* You can control in Azure AD who has access to Wikispaces.
+* You can enable your users to be automatically signed-in to Wikispaces (Single Sign-On) with their Azure AD accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Wikispaces, moet u de volgende items:
+To configure Azure AD integration with Wikispaces, you need the following items:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Wikispaces eenmalige aanmelding ingeschakeld abonnement
+* Een Azure AD-abonnement If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* Wikispaces single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Wikispaces **SP** gestart door SSO
+* Wikispaces supports **SP** initiated SSO
 
-## <a name="adding-wikispaces-from-the-gallery"></a>Wikispaces uit de galerie toe te voegen
+## <a name="adding-wikispaces-from-the-gallery"></a>Adding Wikispaces from the gallery
 
-Voor het configureren van de integratie van Wikispaces in Azure AD, moet u Wikispaces uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of Wikispaces into Azure AD, you need to add Wikispaces from the gallery to your list of managed SaaS apps.
 
-**Als u wilt toevoegen Wikispaces uit de galerie, moet u de volgende stappen uitvoeren:**
+**To add Wikispaces from the gallery, perform the following steps:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Wikispaces in Azure AD, moet u Wikis
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Wikispaces**, selecteer **Wikispaces** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. In the search box, type **Wikispaces**, select **Wikispaces** from result panel then click **Add** button to add the application.
 
-     ![Wikispaces in de lijst met resultaten](common/search-new-app.png)
+     ![Wikispaces in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Wikispaces op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Wikispaces tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with Wikispaces based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Wikispaces needs to be established.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Wikispaces, moet u de volgende bouwstenen voltooien:
+To configure and test Azure AD single sign-on with Wikispaces, you need to complete the following building blocks:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Wikispaces](#configure-wikispaces-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Configure Wikispaces Single Sign-On](#configure-wikispaces-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Wikispaces](#create-wikispaces-test-user)**  : als u wilt een equivalent van Britta Simon in Wikispaces die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Create Wikispaces test user](#create-wikispaces-test-user)** - to have a counterpart of Britta Simon in Wikispaces that is linked to the Azure AD representation of user.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Wikispaces, moet u de volgende stappen uitvoeren:
+To configure Azure AD single sign-on with Wikispaces, perform the following steps:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Wikispaces** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Wikispaces** application integration page, select **Single sign-on**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Voor het configureren van Azure AD eenmalige aanmelding met Wikispaces, moet u d
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Wikispaces domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![Wikispaces Domain and URLs single sign-on information](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.wikispaces.net`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://session.wikispaces.net/<instancename>`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Wikispaces Client ondersteuningsteam](https://www.wikispaces.com/site/help) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact [Wikispaces Client support team](https://www.wikispaces.com/site/help) to get these values. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **Wikispaces instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. On the **Set up Wikispaces** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Wikispaces, moet u d
 
     c. Afmeldings-URL
 
-### <a name="configure-wikispaces-single-sign-on"></a>Wikispaces voor eenmalige aanmelding configureren
+### <a name="configure-wikispaces-single-sign-on"></a>Configure Wikispaces Single Sign-On
 
-Het configureren van eenmalige aanmelding op **Wikispaces** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [Wikispaces ondersteuningsteam](https://www.wikispaces.com/site/help). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+To configure single sign-on on **Wikispaces** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Wikispaces support team](https://www.wikispaces.com/site/help). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -148,25 +148,25 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. In the **User name** field type brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Wikispaces.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Wikispaces.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Wikispaces**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Wikispaces**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Wikispaces**.
+2. In the applications list, select **Wikispaces**.
 
-    ![De koppeling Wikispaces in de lijst met toepassingen](common/all-applications.png)
+    ![The Wikispaces link in the Applications list](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -180,47 +180,47 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-wikispaces-test-user"></a>Wikispaces testgebruiker maken
+### <a name="create-wikispaces-test-user"></a>Create Wikispaces test user
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij Wikispaces, moeten ze worden ingericht voor Wikispaces. In het geval van Wikispaces is inrichten een handmatige taak.
+In order to enable Azure AD users to sign in to Wikispaces, they must be provisioned into Wikispaces. In the case of Wikispaces, provisioning is a manual task.
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Ga als volgt te werk om een gebruikersaccount in te richten:
 
-1. Aanmelden bij uw **Wikispaces** bedrijf site als beheerder.
+1. Sign in to your **Wikispaces** company site as an administrator.
 
-2. Ga naar **leden**.
+2. Go to **Members**.
    
     ![Members](./media/wikispaces-tutorial/ic787193.png "Members")
 
-3. Klik op de **anderen uitnodigen**.
+3. Click the **Invite People**.
    
     ![Invite People](./media/wikispaces-tutorial/ic787194.png "Invite People")
 
-4. In de **personen uitnodigen** sectie, voert u de volgende stappen uit:
+4. In the **Invite People** section, perform the following steps:
    
     ![Invite People](./media/wikispaces-tutorial/ic787208.png "Invite People")
    
-    a. Type de **gebruikersnamen of e-mailadres** van een geldige AAD-account dat u inrichten in de bijbehorende tekstvakken wilt.
+    a. Type the **Usernames or Email Address** of a valid Azure AD account you want to provision into the related textboxes.
    
-    b. Klik op **verzenden**.  
+    b. Klik op **Verzenden**.  
       
     > [!NOTE]
-    > De houder van Azure Active Directory-account ontvangt een e-mailbericht ook een koppeling voor het account te bevestigen voordat deze geactiveerd wordt.
+    > The Azure Active Directory account holder receives an email including a link to confirm the account before it becomes active.
     
 > [!NOTE]
-> U kunt alle andere Wikispaces gebruiker-account maken van hulpprogramma's of API's geleverd door Wikispaces aan inrichten AAD-gebruikersaccounts.
+> You can use any other Wikispaces user account creation tools or APIs provided by Wikispaces to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Wikispaces in het toegangsvenster, moet u worden automatisch aangemeld bij de Wikispaces waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the Wikispaces tile in the Access Panel, you should be automatically signed in to the Wikispaces for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

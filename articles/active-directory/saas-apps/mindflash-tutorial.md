@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Mindflash | Microsoft Docs'
-description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Mindflash.
+title: 'Tutorial: Azure Active Directory integration with Mindflash | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Mindflash.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: a7e7498411e68b83f8c05d50f52f73f97df9f797
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 78d4f44e9fe2310fab485804e0aaf70aa0dfbdb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160584"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233544"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Zelf studie: integratie Azure Active Directory met Mindflash
+# <a name="tutorial-azure-active-directory-integration-with-mindflash"></a>Tutorial: Azure Active Directory integration with Mindflash
 
-In deze zelf studie leert u hoe u Mindflash integreert met Azure Active Directory (Azure AD).
-Het integreren van Mindflash met Azure AD biedt de volgende voor delen:
+In this tutorial, you learn how to integrate Mindflash with Azure Active Directory (Azure AD).
+Integrating Mindflash with Azure AD provides you with the following benefits:
 
-* U kunt beheren in azure AD die toegang heeft tot Mindflash.
-* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij Mindflash (eenmalige aanmelding) met hun Azure AD-accounts.
+* You can control in Azure AD who has access to Mindflash.
+* You can enable your users to be automatically signed-in to Mindflash (Single Sign-On) with their Azure AD accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,22 +36,22 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u Azure AD-integratie met Mindflash wilt configureren, hebt u de volgende items nodig:
+To configure Azure AD integration with Mindflash, you need the following items:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Abonnement voor eenmalige aanmelding Mindflash ingeschakeld
+* Mindflash single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Mindflash ondersteunt door **SP** GEÏNITIEERDe SSO
+* Mindflash supports **SP** initiated SSO
 
-## <a name="adding-mindflash-from-the-gallery"></a>Mindflash toevoegen uit de galerie
+## <a name="adding-mindflash-from-the-gallery"></a>Adding Mindflash from the gallery
 
-Als u de integratie van Mindflash in azure AD wilt configureren, moet u Mindflash uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of Mindflash into Azure AD, you need to add Mindflash from the gallery to your list of managed SaaS apps.
 
-**Voer de volgende stappen uit om Mindflash toe te voegen uit de galerie:**
+**To add Mindflash from the gallery, perform the following steps:**
 
 1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
@@ -65,31 +65,31 @@ Als u de integratie van Mindflash in azure AD wilt configureren, moet u Mindflas
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ **Mindflash**in het zoekvak, selecteer **Mindflash** in het resultaten paneel en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
+4. In the search box, type **Mindflash**, select **Mindflash** from result panel then click **Add** button to add the application.
 
-     ![Mindflash in de lijst met resultaten](common/search-new-app.png)
+     ![Mindflash in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Mindflash op basis van een test gebruiker met de naam **Julia Simon**.
-Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Mindflash tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with Mindflash based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Mindflash needs to be established.
 
-Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met Mindflash, moet u de volgende bouw stenen volt ooien:
+To configure and test Azure AD single sign-on with Mindflash, you need to complete the following building blocks:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Mindflash eenmalige aanmelding configureren](#configure-mindflash-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
+2. **[Configure Mindflash Single Sign-On](#configure-mindflash-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak een Mindflash-test gebruiker](#create-mindflash-test-user)** -om een equivalent van Julia Simon in Mindflash te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
+5. **[Create Mindflash test user](#create-mindflash-test-user)** - to have a counterpart of Britta Simon in Mindflash that is linked to the Azure AD representation of user.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met Mindflash:
+To configure Azure AD single sign-on with Mindflash, perform the following steps:
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **Mindflash** Application Integration de optie **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Mindflash** application integration page, select **Single sign-on**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Informatie over eenmalige aanmelding voor Mindflash domein en Url's](common/sp-identifier.png)
+    ![Mindflash Domain and URLs single sign-on information](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.mindflash.com`
 
     b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<companyname>.mindflash.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Mindflash-clients](https://www.mindflash.com/contact/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact [Mindflash Client support team](https://www.mindflash.com/contact/) to get these values. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Kopieer op de sectie **Mindflash instellen** de gewenste URL ('s) volgens uw vereiste.
+6. On the **Set up Mindflash** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
     c. Afmeldings-URL
 
-### <a name="configure-mindflash-single-sign-on"></a>Eenmalige aanmelding voor Mindflash configureren
+### <a name="configure-mindflash-single-sign-on"></a>Configure Mindflash Single Sign-On
 
-Als u eenmalige aanmelding wilt configureren op **Mindflash** , moet u het gedownloade **XML-bestand met federatieve meta gegevens** en de juiste gekopieerde url's verzenden van Azure Portal naar [Mindflash ondersteunings team](https://www.mindflash.com/contact/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+To configure single sign-on on **Mindflash** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Mindflash support team](https://www.mindflash.com/contact/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -148,7 +148,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -157,15 +157,15 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan Mindflash.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Mindflash.
 
-1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Mindflash**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Mindflash**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst toepassingen de optie **Mindflash**.
+2. In the applications list, select **Mindflash**.
 
-    ![De koppeling Mindflash in de lijst met toepassingen](common/all-applications.png)
+    ![The Mindflash link in the Applications list](common/all-applications.png)
 
 3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
@@ -181,41 +181,41 @@ In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te ge
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-mindflash-test-user"></a>Mindflash-test gebruiker maken
+### <a name="create-mindflash-test-user"></a>Create Mindflash test user
 
-Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij Mindflash, moeten ze worden ingericht in Mindflash. In het geval van Mindflash is inrichting een hand matige taak.
+In order to enable Azure AD users to log into Mindflash, they must be provisioned into Mindflash. In the case of Mindflash, provisioning is a manual task.
 
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>Ga als volgt te werk om een gebruikersaccount in te richten:
 
-1. Meld u als beheerder aan bij de **Mindflash** -bedrijfs site.
+1. Log in to your **Mindflash** company site as an administrator.
 
 1. Ga naar **Gebruikers beheren**.
    
-    ![Gebruikers beheren](./media/mindflash-tutorial/ic787140.png "Gebruikers beheren")
+    ![Manage Users](./media/mindflash-tutorial/ic787140.png "Manage Users")
 
-1. Klik op **gebruikers toevoegen**en klik vervolgens op **Nieuw**.
+1. Click the **Add Users**, and then click **New**.
 
-1. Voer in de sectie **nieuwe gebruikers toevoegen** de volgende stappen uit voor een geldig Azure ad-account dat u wilt inrichten:
+1. In the **Add New Users** section, perform the following steps of a valid Azure AD account you want to provision:
    
-    ![Nieuwe gebruikers toevoegen](./media/mindflash-tutorial/ic787141.png "Nieuwe gebruikers toevoegen")
+    ![Add New Users](./media/mindflash-tutorial/ic787141.png "Add New Users")
    
-    a. Typ in het tekstvak **voor naam** de **voor naam** van de gebruiker als **Julia**.
+    a. In the **First name** textbox, type **First name** of the user as **Britta**.
 
-    b. Typ in het tekstvak **Achternaam** de **Achternaam** van de gebruiker als **Simon**.
+    b. In the **Last name** textbox, type **Last name** of the user as **Simon**.
     
-    c. Typ in het tekstvak **e-mail** het **e-mail adres** van de gebruiker als **BrittaSimon\@contoso.com**.
+    c. In the **Email** textbox, type **Email Address** of the user as **BrittaSimon\@contoso.com**.
 
     b. Klik op **Add**.
 
 >[!NOTE]
->U kunt alle andere hulpprogram ma's voor het maken van Mindflash-gebruikers accounts of Api's die worden geleverd door Mindflash, gebruiken om AAD-gebruikers accounts in te richten. 
+>You can use any other Mindflash user account creation tools or APIs provided by Mindflash to provision Azure AD user accounts. 
 > 
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
 In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Mindflash in het toegangs venster klikt, moet u automatisch worden aangemeld bij de Mindflash waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the Mindflash tile in the Access Panel, you should be automatically signed in to the Mindflash for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 
@@ -223,5 +223,5 @@ Wanneer u op de tegel Mindflash in het toegangs venster klikt, moet u automatisc
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

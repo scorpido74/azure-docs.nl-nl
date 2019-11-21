@@ -1,16 +1,16 @@
 ---
-title: Beleid maken om resources te controleren met Azure CLI
-description: Gebruik Azure CLI om een Azure Policy-toewijzing te maken om niet-conforme resources te identificeren.
+title: 'Quickstart: New policy assignment with Azure CLI'
+description: In this quickstart, you use Azure CLI to create an Azure Policy assignment to identify non-compliant resources.
 ms.date: 01/23/2019
 ms.topic: quickstart
-ms.openlocfilehash: 589038bb2b5e96c252e19fc0552d4f9ac19dc83a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2d26135735803a74eda71a6ea82c26946724e1f2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960214"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210236"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met Azure CLI
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-azure-cli"></a>Quickstart: Create a policy assignment to identify non-compliant resources with Azure CLI
 
 De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources.
 In deze quickstart gaat u een beleidstoewijzing maken voor het identificeren van virtuele machines die geen beheerde schijven gebruiken.
@@ -27,7 +27,7 @@ Voor deze quickstart moet u versie 2.0.4 of hoger van Azure CLI uitvoeren om de 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Registreer de Azure Policy Insights-resource provider met behulp van Azure CLI. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
+Register the Azure Policy Insights resource provider using Azure CLI. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
 
 ```azurecli-interactive
 az provider register --namespace 'Microsoft.PolicyInsights'

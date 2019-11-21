@@ -1,38 +1,33 @@
 ---
-title: Timers in Durable Functions-Azure
-description: Meer informatie over het implementeren van duurzame timers in de Durable Functions-extensie voor Azure Functions.
-services: functions
-author: ggailey777
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
+title: Timers in Durable Functions - Azure
+description: Learn how to implement durable timers in the Durable Functions extension for Azure Functions.
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: a24d6e96df3abf385b0a64ec4bc7e1f1c248998b
-ms.sourcegitcommit: b2fb32ae73b12cf2d180e6e4ffffa13a31aa4c6f
+ms.openlocfilehash: c477a81801c1345d5be5f5f45419bb4776c875e0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73614626"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231273"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timers in Durable Functions (Azure Functions)
 
-[Durable functions](durable-functions-overview.md) biedt *duurzame timers* voor gebruik in Orchestrator-functies voor het implementeren van vertragingen of het instellen van time-outs voor asynchrone acties. Duurzame timers moeten worden gebruikt in Orchestrator-functies in plaats van `Thread.Sleep` en `Task.Delay`C#(), of `setTimeout()` en `setInterval()` (Java script).
+[Durable Functions](durable-functions-overview.md) provides *durable timers* for use in orchestrator functions to implement delays or to set up timeouts on async actions. Durable timers should be used in orchestrator functions instead of `Thread.Sleep` and `Task.Delay` (C#), or `setTimeout()` and `setInterval()` (JavaScript).
 
-U maakt een duurzame timer door de methode van de `CreateTimer` (.NET) of de methode `createTimer` (Java script) van de [Orchestration-trigger binding](durable-functions-bindings.md#orchestration-trigger)aan te roepen. De methode retourneert een taak die op een opgegeven datum en tijd wordt voltooid.
+You create a durable timer by calling the `CreateTimer` (.NET) method or the `createTimer` (JavaScript) method of the [orchestration trigger binding](durable-functions-bindings.md#orchestration-trigger). The method returns a task that completes on a specified date and time.
 
-## <a name="timer-limitations"></a>Beperkingen van de timer
+## <a name="timer-limitations"></a>Timer limitations
 
-Wanneer u een timer maakt die om 4:30 uur verloopt, in het onderliggende duurzame taak raamwerk een bericht dat alleen op 4:30 uur zichtbaar wordt. Bij het uitvoeren van het Azure Functions verbruiks abonnement zorgt het nieuw zicht bare timer bericht ervoor dat de functie-app wordt geactiveerd op een geschikte VM.
+When you create a timer that expires at 4:30 pm, the underlying Durable Task Framework enqueues a message that becomes visible only at 4:30 pm. When running in the Azure Functions Consumption plan, the newly visible timer message will ensure that the function app gets activated on an appropriate VM.
 
 > [!NOTE]
-> * Duurzame timers zijn momenteel beperkt tot 7 dagen. Als er langere vertragingen nodig zijn, kunnen ze worden gesimuleerd met behulp van de timer-Api's in een `while`-lus.
-> * Gebruik altijd `CurrentUtcDateTime` in plaats van `DateTime.UtcNow` in .NET of `currentUtcDateTime` in plaats van `Date.now` of `Date.UTC` in Java script bij het berekenen van de brand tijd voor duurzame timers. Zie het artikel [Orchestrator functie code constraints](durable-functions-code-constraints.md) voor meer informatie.
+> * Durable timers are currently limited to 7 days. If longer delays are needed, they can be simulated using the timer APIs in a `while` loop.
+> * Always use `CurrentUtcDateTime` instead of `DateTime.UtcNow` in .NET or `currentUtcDateTime` instead of `Date.now` or `Date.UTC` in JavaScript when computing the fire time for durable timers. For more information, see the [orchestrator function code constraints](durable-functions-code-constraints.md) article.
 
-## <a name="usage-for-delay"></a>Gebruik voor vertraging
+## <a name="usage-for-delay"></a>Usage for delay
 
-In het volgende voor beeld ziet u hoe u duurzame timers gebruikt voor het vertragen van de uitvoering. In het voor beeld wordt elke dag 10 dagen een facturerings melding uitgegeven.
+The following example illustrates how to use durable timers for delaying execution. The example is issuing a billing notification every day for 10 days.
 
 ### <a name="c"></a>C#
 
@@ -51,9 +46,9 @@ public static async Task Run(
 ```
 
 > [!NOTE]
-> Het vorige C# voor beeld is gericht Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> The previous C# example targets Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```js
 const df = require("durable-functions");
@@ -70,11 +65,11 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Vermijd oneindige lussen in Orchestrator-functies. Zie [eeuwige Orchestrations](durable-functions-eternal-orchestrations.md)(Engelstalig) voor informatie over het veilig en efficiënt implementeren van oneindige lussen scenario's.
+> Avoid infinite loops in orchestrator functions. For information about how to safely and efficiently implement infinite loop scenarios, see [Eternal Orchestrations](durable-functions-eternal-orchestrations.md).
 
-## <a name="usage-for-timeout"></a>Gebruik voor time-out
+## <a name="usage-for-timeout"></a>Usage for timeout
 
-In dit voor beeld ziet u hoe u met duurzame timers time-outs implementeert.
+This example illustrates how to use durable timers to implement timeouts.
 
 ### <a name="c"></a>C#
 
@@ -108,9 +103,9 @@ public static async Task<bool> Run(
 ```
 
 > [!NOTE]
-> Het vorige C# voor beeld is gericht Durable functions 2. x. Voor Durable Functions 1. x moet u `DurableOrchestrationContext` gebruiken in plaats van `IDurableOrchestrationContext`. Zie het artikel [Durable functions versies](durable-functions-versions.md) voor meer informatie over de verschillen tussen versies.
+> The previous C# example targets Durable Functions 2.x. For Durable Functions 1.x, you must use `DurableOrchestrationContext` instead of `IDurableOrchestrationContext`. For more information about the differences between versions, see the [Durable Functions versions](durable-functions-versions.md) article.
 
-### <a name="javascript-functions-20-only"></a>Java script (alleen voor de functies 2,0)
+### <a name="javascript-functions-20-only"></a>JavaScript (Functions 2.0 only)
 
 ```js
 const df = require("durable-functions");
@@ -137,13 +132,13 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Gebruik een `CancellationTokenSource` om een duurzame timer (.NET) te annuleren of `cancel()` aan te roepen op de geretourneerde `TimerTask` (Java script) als uw code niet wacht totdat de bewerking is voltooid. Het duurzame taak raamwerk wijzigt de status van de Orchestrator naar voltooid totdat alle openstaande taken zijn voltooid of geannuleerd.
+> Use a `CancellationTokenSource` to cancel a durable timer (.NET) or call `cancel()` on the returned `TimerTask` (JavaScript) if your code will not wait for it to complete. The Durable Task Framework will not change an orchestration's status to "completed" until all outstanding tasks are completed or canceled.
 
-Met dit annulerings mechanisme wordt de functie voor het uitvoeren van activiteiten of suborchestration-uitvoeringen niet beëindigd. In plaats daarvan kan de Orchestrator-functie het resultaat negeren en verplaatsen. Als uw functie-app gebruikmaakt van het verbruiks abonnement, worden er nog steeds kosten in rekening gebracht voor elk tijdstip en geheugen dat door de functie voor afgebroken activiteit wordt verbruikt. Functies die in het verbruiks abonnement worden uitgevoerd, hebben standaard een time-out van vijf minuten. Als deze limiet wordt overschreden, wordt de Azure Functions-host gerecycled om alle bewerkingen te stoppen en te voor komen dat er een overmatige facturerings situatie is. De [time-out van de functie kan worden geconfigureerd](../functions-host-json.md#functiontimeout).
+This cancellation mechanism doesn't terminate in-progress activity function or sub-orchestration executions. Rather, it simply allows the orchestrator function to ignore the result and move on. If your function app uses the Consumption plan, you'll still be billed for any time and memory consumed by the abandoned activity function. By default, functions running in the Consumption plan have a timeout of five minutes. If this limit is exceeded, the Azure Functions host is recycled to stop all execution and prevent a runaway billing situation. The [function timeout is configurable](../functions-host-json.md#functiontimeout).
 
-Voor een uitgebreidere voor beeld van het implementeren van time-outs in Orchestrator-functies raadpleegt u het artikel [Human interactie & time-outs-telefoon verificatie](durable-functions-phone-verification.md) .
+For a more in-depth example of how to implement timeouts in orchestrator functions, see the [Human Interaction & Timeouts - Phone Verification](durable-functions-phone-verification.md) article.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over het verhogen en verwerken van externe gebeurtenissen](durable-functions-external-events.md)
+> [Learn how to raise and handle external events](durable-functions-external-events.md)

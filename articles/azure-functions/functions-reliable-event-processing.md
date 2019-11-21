@@ -1,137 +1,134 @@
 ---
-title: Azure Functions betrouw bare gebeurtenis verwerking
-description: Voor komen dat Event hub-berichten in Azure Functions ontbreken
-services: functions
+title: Azure Functions reliable event processing
+description: Avoid missing Event Hub messages in Azure Functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: d38ef46abae12886fb04a30f5efc26992cde4443
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: 019c44cedba166dc1ac06a0244fa2b2e7930e673
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71955534"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230375"
 ---
-# <a name="azure-functions-reliable-event-processing"></a>Azure Functions betrouw bare gebeurtenis verwerking
+# <a name="azure-functions-reliable-event-processing"></a>Azure Functions reliable event processing
 
-Gebeurtenis verwerking is een van de meest voorkomende scenario's die zijn gekoppeld aan serverloze architectuur. In dit artikel wordt beschreven hoe u een betrouw bare berichten processor maakt met Azure Functions om verlies van berichten te voor komen.
+Event processing is one of the most common scenarios associated with serverless architecture. This article describes how to create a reliable message processor with Azure Functions to avoid losing messages.
 
-## <a name="challenges-of-event-streams-in-distributed-systems"></a>Uitdagingen van gebeurtenis stromen in gedistribueerde systemen
+## <a name="challenges-of-event-streams-in-distributed-systems"></a>Challenges of event streams in distributed systems
 
-Overweeg een systeem dat gebeurtenissen verzendt met een constant snelheid van 100 gebeurtenissen per seconde. Op basis van dit aantal minuten kunnen meerdere parallelle functions-instanties elke seconde de binnenkomende 100 gebeurtenissen gebruiken.
+Consider a system that sends events at a constant rate  of 100 events per second. At this rate, within minutes multiple parallel Functions instances can consume the incoming 100 events every second.
 
-De volgende minder optimale voor waarden zijn echter mogelijk:
+However, any of the following less-optimal conditions are possible:
 
-- Wat gebeurt er als de gebeurtenis-uitgever een beschadigde gebeurtenis verzendt?
-- Wat gebeurt er als uw functions-exemplaar niet-verwerkte uitzonde ringen tegen komt?
-- Wat gebeurt er als een downstream-systeem offline gaat?
+- What if the event publisher sends a corrupt event?
+- What if your Functions instance encounters unhandled exceptions?
+- What if a downstream system goes offline?
 
-Hoe kunt u deze situaties afhandelen en de door Voer van uw toepassing behouden?
+How do you handle these situations while preserving the throughput of your application?
 
-Met wacht rijen is betrouw bare berichten natuurlijk. Bij het koppelen met een functions-trigger maakt de functie een vergren deling van het bericht in de wachtrij. Als de verwerking mislukt, wordt de vergren deling vrijgegeven zodat een andere instantie de verwerking opnieuw kan uitvoeren. De verwerking gaat vervolgens door totdat het bericht is geëvalueerd of het wordt toegevoegd aan een verontreinigde wachtrij.
+With queues, reliable messaging comes naturally. When paired with a Functions trigger, the function creates a lock on the queue message. If processing fails, the lock is released to allow another instance to retry processing. Processing then continues until either the message is evaluated successfully, or it is added to a poison queue.
 
-Hoewel één wachtrij bericht in een nieuwe cyclus kan blijven, blijven andere parallelle uitvoeringen behouden om de resterende berichten uit de wachtrij te verwijderen. Het resultaat is dat de algehele door Voer grotendeels niet wordt beïnvloed door één onjuist bericht. Opslag wachtrijen garanderen echter geen bestellingen en zijn niet geoptimaliseerd voor de hoge doorvoer vereisten die vereist zijn voor Event Hubs.
+Even while a single queue message may remain in a retry cycle, other parallel executions continue to keep to dequeueing remaining messages. The result is that the overall throughput remains largely unaffected by one bad message. However, storage queues don’t guarantee ordering and aren’t optimized for the high throughput demands required by Event Hubs.
 
-Azure Event Hubs daarentegen geen vergrendelings concept bevat. Event Hubs-gebeurtenissen werken als een video speler om functies als hoge door Voer, meerdere consumenten groepen en replay-mogelijkheid mogelijk te maken. Gebeurtenissen worden op één punt in de stream per partitie gelezen. Vanaf de wijzer kunt u voorwaarts of achterwaarts lezen vanaf die locatie, maar u moet ervoor kiezen om de aanwijzer te verplaatsen op gebeurtenissen die moeten worden verwerkt.
+By contrast, Azure Event Hubs doesn't include a locking concept. To allow for features like high-throughput, multiple consumer groups, and replay-ability, Event Hubs events behave more like a video player. Events are read from a single point in the stream per partition. From the pointer you can read forwards or backwards from that location, but you have to choose to move the pointer for events to process.
 
-Wanneer er fouten optreden in een stroom, wordt de verwerking van gebeurtenissen geblokkeerd totdat de aanwijzer Geavanceerd is als u besluit de aanwijzer op dezelfde plaats te houden. Met andere woorden, als de wijzer is gestopt voor het oplossen van problemen met het verwerken van één gebeurtenis, beginnen de niet-verwerkte gebeurtenissen Piling omhoog.
+When errors occur in a stream, if you decide to keep the pointer in the same spot, event processing is blocked until the pointer is advanced. In other words, if the pointer is stopped to deal with problems processing a single event, the unprocessed events begin piling up.
 
-Azure Functions maakt deadlocken ongedaan door de aanwijzer van de stream te verrijken, ongeacht het slagen of mislukken. Omdat de aanwijzer steeds goed gaat, moeten uw functies de juiste problemen oplossen.
+Azure Functions avoids deadlocks by advancing the stream's pointer regardless of success or failure. Since the pointer keeps advancing, your functions need to deal with failures appropriately.
 
-## <a name="how-azure-functions-consumes-event-hubs-events"></a>Hoe Azure Functions Event Hubs gebeurtenissen verbruikt?
+## <a name="how-azure-functions-consumes-event-hubs-events"></a>How Azure Functions consumes Event Hubs events
 
-Azure Functions gebruikt Event hub-gebeurtenissen tijdens het uitvoeren van de volgende stappen:
+Azure Functions consumes Event Hub events while cycling through the following steps:
 
-1. Er wordt een wijzer gemaakt en opgeslagen in Azure Storage voor elke partitie van de Event Hub.
-2. Wanneer er nieuwe berichten worden ontvangen (in een batch standaard), probeert de host de functie te activeren met de batch berichten.
-3. Als de functie wordt uitgevoerd (met of zonder uitzonde ring), worden de wijzer voorschotten en een controle punt opgeslagen in het opslag account.
-4. Als er omstandigheden zijn waardoor de uitvoering van de functie niet kan worden voltooid, mislukt de host de aanwijzer. Als de aanwijzer niet geavanceerd is, controleert later de verwerking van dezelfde berichten.
-5. Herhaal stap 2 tot en met 4
+1. A pointer is created and persisted in Azure Storage for each partition of the event hub.
+2. When new messages are received (in a batch by default), the host attempts to trigger the function with the batch of messages.
+3. If the function completes execution (with or without exception) the pointer advances and a checkpoint is saved to the storage account.
+4. If conditions prevent the function execution from completing, the host fails to progress the pointer. If the pointer isn't advanced, then later checks end up processing the same messages.
+5. Repeat steps 2–4
 
-Dit gedrag toont enkele belang rijke punten:
+This behavior reveals a few important points:
 
-- *Onverwerkte uitzonde ringen kunnen ertoe leiden dat berichten verloren gaan.* Uitvoeringen die leiden tot een uitzonde ring, blijven de wijzers volgen.
-- *Functions garanderen mini maal eenmalige levering.* Uw code en afhankelijke systemen moeten mogelijk worden [verwerkt om het feit dat hetzelfde bericht twee keer kan worden ontvangen](./functions-idempotent.md).
+- *Unhandled exceptions may cause you to lose messages.* Executions that result in an exception will continue to progress the pointer.
+- *Functions guarantees at-least-once delivery.* Your code and dependent systems may need to [account for the fact that the same message could be received twice](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Afhandeling van uitzonderingen
 
-Als algemene regel moet elke functie een [try/catch-blok](./functions-bindings-error-pages.md) op het hoogste niveau van code bevatten. Met name alle functies die gebruikmaken van Event Hubs gebeurtenissen moeten een blok van `catch` hebben. Op die manier wordt, wanneer er een uitzonde ring wordt gegenereerd, de fout door de blok kering verwerkt voordat de aanwijzer in voortgang is.
+As a general rule, every function should include a [try/catch block](./functions-bindings-error-pages.md) at the highest level of code. Specifically, all functions that consume Event Hubs events should have a `catch` block. That way, when an exception is raised, the catch block handles the error before the pointer progresses.
 
-### <a name="retry-mechanisms-and-policies"></a>Mechanismen en beleids regels voor opnieuw proberen
+### <a name="retry-mechanisms-and-policies"></a>Retry mechanisms and policies
 
-Sommige uitzonde ringen zijn tijdelijk van aard en worden niet opnieuw weer gegeven wanneer een bewerking later opnieuw wordt geprobeerd. Daarom is de eerste stap altijd om de bewerking opnieuw uit te voeren. U kunt de regels voor het opnieuw proberen van de verwerking zelf schrijven, maar ze zijn zo gebruikelijke dat er een aantal hulpprogram ma's beschikbaar is. Met deze bibliotheken kunt u een robuuste nieuwe beleids regels definiëren, waarmee u de verwerkings volgorde ook kunt behouden.
+Some exceptions are transient in nature and don't reappear when an operation is attempted again moments later. This is why the first step is always to retry the operation. You could write retry processing rules yourself, but they are so commonplace that a number of tools available. Using these libraries allow you to define robust retry-policies, which can also help preserve processing order.
 
-Door bibliotheken voor fout afhandeling te maken met uw functies kunt u het basis beleid voor opnieuw proberen te definiëren. U kunt bijvoorbeeld een beleid implementeren dat volgt op een werk stroom die wordt geïllustreerd door de volgende regels:
+Introducing fault-handling libraries to your functions allow you to define both basic and advanced retry policies. For instance, you could implement a policy that follows a workflow illustrated by the following rules:
 
-- Probeer een bericht drie keer in te voegen (mogelijk met een vertraging tussen nieuwe pogingen).
-- Als het uiteindelijke resultaat van alle nieuwe pogingen een fout is, voegt u een bericht toe aan een wachtrij, zodat de verwerking kan door gaan op de stroom.
-- Beschadigde of niet-verwerkte berichten worden later verwerkt.
+- Try to insert a message three times (potentially with a delay between retries).
+- If the eventual outcome of all retries is a failure, then add a message to a queue so processing can continue on the stream.
+- Corrupt or unprocessed messages are then handled later.
 
 > [!NOTE]
-> [Polly](https://github.com/App-vNext/Polly) is een voor beeld van een tape wisselaar voor C# tolerantie en tijdelijke afhandeling van toepassingen.
+> [Polly](https://github.com/App-vNext/Polly) is an example of a resilience and transient-fault-handling library for C# applications.
 
-Bij het werken met vooraf gedefinieerde C# klassen bibliotheken kunt u met [uitzonderings filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) code uitvoeren wanneer er een onverwerkte uitzonde ring optreedt.
+When working with pre-complied C# class libraries, [exception filters](https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/try-catch) allow you to run code whenever an unhandled exception occurs.
 
-Voor beelden die laten zien hoe u uitzonderings filters kunt gebruiken, zijn beschikbaar in de [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) -opslag plaats.
+Samples that demonstrate how to use exception filters are available in the [Azure WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) repo.
 
-## <a name="non-exception-errors"></a>Niet-uitzonderings fouten
+## <a name="non-exception-errors"></a>Non-exception errors
 
-Er treden problemen op, zelfs wanneer er geen fout is gevonden. Neem bijvoorbeeld een fout op die in het midden van een uitvoering optreedt. Als de uitvoering van een functie niet is voltooid, wordt de verschuivings verwijzing nooit uitgevoerd. Als de wijzer niet verder gaat, blijft elke instantie die wordt uitgevoerd nadat de uitvoering is mislukt, dezelfde berichten lezen. Deze situatie biedt een garantie van Mini maal één keer.
+Some issues arise even when an error is not present. For example, consider a failure that occurs in the middle of an execution. In this case, if a function doesn’t complete execution, the offset pointer is never progressed. If the pointer doesn't advance, then any instance that runs after a failed execution continues to read the same messages. This situation provides an "at-least-once" guarantee.
 
-De zekerheid dat elk bericht ten minste één keer wordt verwerkt, houdt in dat sommige berichten meermaals kunnen worden verwerkt. Uw functie-apps moeten op de hoogte zijn van deze mogelijkheid en moeten worden gebouwd rond de [beginselen van idempotentie](./functions-idempotent.md).
+The assurance that every message is processed at least one time implies that some messages may be processed more than once. Your function apps need to be aware of this possibility and must be built around the [principles of idempotency](./functions-idempotent.md).
 
-## <a name="stop-and-restart-execution"></a>Uitvoering stoppen en opnieuw starten
+## <a name="stop-and-restart-execution"></a>Stop and restart execution
 
-Maar een paar fouten kunnen acceptabel zijn, wat als uw app aanzienlijke problemen ondervindt? U kunt het activeren van gebeurtenissen stoppen totdat het systeem een goede status heeft bereikt. Als de verwerking van de kans wordt onderbroken, wordt vaak gebruikgemaakt van een circuit onderbreker patroon. Met het patroon circuit onderbreker kan uw app het circuit van het gebeurtenis proces ' verbreekt ' en op een later tijdstip hervatten.
+While a few errors may be acceptable, what if your app experiences significant failures? You may want to stop triggering on events until the system reaches a healthy state. Having the opportunity pause processing is often achieved with a circuit breaker pattern. The circuit breaker pattern allows your app to "break the circuit" of the event process and resume at a later time.
 
-Er zijn twee onderdelen vereist voor het implementeren van een circuit onderbreker in een gebeurtenis proces:
+There are two pieces required to implement a circuit breaker in an event process:
 
-- Gedeelde status voor alle exemplaren om de status van het circuit bij te houden en te bewaken
-- Hoofd proces dat de status van het circuit kan beheren (open of gesloten)
+- Shared state across all instances to track and monitor health of the circuit
+- Master process that can manage the circuit state (open or closed)
 
-Implementatie details kunnen variëren, maar als u de status wilt delen tussen instanties, hebt u een opslag mechanisme nodig. U kunt ervoor kiezen om de status op te slaan in Azure Storage, een redis-cache of een ander account dat toegankelijk is voor een verzameling functies.
+Implementation details may vary, but to share state among instances you need a storage mechanism. You may choose to store state in Azure Storage, a Redis cache, or any other account that is accessible by a collection of functions.
 
-[Azure Logic apps](../logic-apps/logic-apps-overview.md) of [duurzame entiteiten](./durable/durable-functions-overview.md) zijn natuurlijk geschikt voor het beheren van de werk stroom en de status van het circuit. Andere services werken mogelijk net zo goed, maar logische apps worden gebruikt voor dit voor beeld. Met Logic apps kunt u de uitvoering van een functie onderbreken en opnieuw starten, zodat u de controle hebt die vereist is voor het implementeren van het patroon circuit onderbreker.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) or [durable entities](./durable/durable-functions-overview.md) are a natural fit to manage the workflow and circuit state. Other services may work just as well, but logic apps are used for this example. Using logic apps, you can pause and restart a function's execution giving you the control required to implement the circuit breaker pattern.
 
-### <a name="define-a-failure-threshold-across-instances"></a>Een drempel waarde voor fouten voor alle instanties definiëren
+### <a name="define-a-failure-threshold-across-instances"></a>Define a failure threshold across instances
 
-Voor het verwerken van meerdere instanties waarbij gebeurtenissen tegelijkertijd worden verwerkt, is de status van het circuit te controleren.
+To account for multiple instances processing events simultaneously, persisting shared external state is needed to monitor the health of the circuit.
 
-Een regel die u kunt implementeren, kan afdwingen dat:
+A rule you may choose to implement might enforce that:
 
-- Als er binnen 30 seconden meer dan 100 storingen optreden, verbreekt u het circuit en stopt u het activeren van nieuwe berichten.
+- If there are more than 100 eventual failures within 30 seconds across all instances, then break the circuit and stop triggering on new messages.
 
-De implementatie details zijn afhankelijk van uw behoeften, maar in het algemeen kunt u een systeem maken dat:
+The implementation details will vary given your needs, but in general you can create a system that:
 
-1. Fouten vastleggen in een opslag account (Azure Storage, redis, enzovoort)
-1. Als er een nieuwe fout wordt geregistreerd, inspecteert u het aantal rollen om te zien of aan de drempel waarde is voldaan (bijvoorbeeld meer dan 100 in de afgelopen 30 seconden).
-1. Als aan de drempel waarde wordt voldaan, moet u een gebeurtenis verzenden om Azure Event Grid te vertellen dat het systeem het circuit verbreekt.
+1. Log failures to a storage account (Azure Storage, Redis, etc.)
+1. When new failure is logged, inspect the rolling count to see if the threshold is met (for example, more than 100 in last 30 seconds).
+1. If the threshold is met, emit an event to Azure Event Grid telling the system to break the circuit.
 
-### <a name="managing-circuit-state-with-azure-logic-apps"></a>De status van een circuit beheren met Azure Logic Apps
+### <a name="managing-circuit-state-with-azure-logic-apps"></a>Managing circuit state with Azure Logic Apps
 
-De volgende beschrijving geeft een manier waarop u een Azure Logic-app kunt maken om de verwerking van een functions-app te stoppen.
+The following description highlights one way you could create an Azure Logic App to halt a Functions app from processing.
 
-Azure Logic Apps wordt geleverd met ingebouwde connectors voor verschillende services, kenmerken stateful en is een natuurlijke keuze om de status van een circuit te beheren. Nadat het circuit is gedetecteerd dat moet worden onderbroken, kunt u een logische app maken om de volgende werk stroom te implementeren:
+Azure Logic Apps comes with built-in connectors to different services, features stateful orchestrations, and is a natural choice to manage circuit state. After detecting the circuit needs to break, you can build a logic app to implement the following workflow:
 
-1. Een Event Grid werk stroom activeren en de Azure-functie stoppen (met de Azure resource connector)
-1. Een e-mail melding verzenden met een optie om de werk stroom opnieuw te starten
+1. Trigger an Event Grid workflow and stop the Azure Function (with the Azure Resource connector)
+1. Send a notification email that includes an option to restart the workflow
 
-De ontvanger van het e-mail bericht kan de status van het circuit onderzoeken en, indien nodig, het circuit opnieuw starten via een koppeling in de e-mail melding. Als de werk stroom de functie opnieuw start, worden berichten van het laatste event hub-controle punt verwerkt.
+The email recipient can investigate the health of the circuit and, when appropriate, restart the circuit via a link in the notification email. As the workflow restarts the function, messages are processed from the last Event Hub checkpoint.
 
-Wanneer u deze methode gebruikt, gaan er geen berichten verloren, worden alle berichten in de juiste volg orde verwerkt en kunt u het circuit zo lang als nodig verstoren.
+Using this approach, no messages are lost, all messages are processed in order, and you can break the circuit as long as necessary.
 
-## <a name="resources"></a>Resources
+## <a name="resources"></a>Bronnen
 
-- [Voor beelden van betrouw bare gebeurtenis verwerking](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Circuit onderbreker van Azure Durable Functions](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Reliable event processing samples](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
+- [Azure Durable Functions Circuit Breaker](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 Zie de volgende bronnen voor meer informatie:
 
-- [Azure Functions-foutafhandeling](./functions-bindings-error-pages.md)
+- [Azure Functions error handling](./functions-bindings-error-pages.md)
 - [Het wijzigen van het formaat van geüploade afbeeldingen automatiseren met behulp van Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2Fazure%2Fazure-functions%2Ftoc.json&tabs=dotnet)
 - [Een functie maken die kan worden geïntegreerd met Azure Logic Apps](./functions-twitter-email.md)

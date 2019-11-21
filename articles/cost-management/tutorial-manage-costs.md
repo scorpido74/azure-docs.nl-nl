@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: b72e03f6901fbb2b904328992107e31021c76be6
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d4117e8a40f277c6ac0213272176b75a1c161eb1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969121"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229809"
 ---
 # <a name="tutorial-manage-costs-by-using-cloudyn"></a>Zelfstudie: kosten beheren met Cloudyn
 
@@ -23,7 +23,7 @@ In Cloudyn kunt u kosten beheren en showback-rapporten maken door kosten toe te 
 
 Stel dat u engineering-kosten vergoed wilt hebben. U moet aan het engineering-team laten zien dat u een bepaald bedrag nodig hebt, op basis van resourcekosten. U kunt ze een rapport laten zien voor alle verbruikte resources met de tag *engineering*.
 
-In dit artikel worden de termen 'tags' en 'categorieën' soms door elkaar gebruikt. Categorieën zijn grote verzamelingen en kunnen veel zaken bevatten. Ze kunnen bedrijfsonderdelen, kostenplaatsen, webservices en andere zaken bevatten die worden getagd. Labels zijn naam/waarde-paren waarmee u resources indelen en weergeven en beheren van factureringsgegevens geconsolideerd door dezelfde tag toe te passen op meerdere resources en resourcegroepen. In eerdere versies van de Azure-portal werd naar een *tagnaam* verwezen als *sleutel*. Tags worden gemaakt en opgeslagen door één Azure-abonnement. Tags in AWS bestaan uit sleutel/waarde-paren. Omdat voor zowel Azure als AWS gebruik wordt gemaakt van de term *sleutel*, wordt in Cloudyn die term ook gebruikt. In Category Manager worden sleutels (tagnamen) gebruikt om tags samen te voegen.
+In dit artikel worden de termen 'tags' en 'categorieën' soms door elkaar gebruikt. Categorieën zijn grote verzamelingen en kunnen veel zaken bevatten. Ze kunnen bedrijfsonderdelen, kostenplaatsen, webservices en andere zaken bevatten die worden getagd. Tags are name/value pairs that enable you to categorize resources and to view and manage consolidated billing information by applying the same tag to multiple resources and resource groups. In eerdere versies van de Azure-portal werd naar een *tagnaam* verwezen als *sleutel*. Tags worden gemaakt en opgeslagen door één Azure-abonnement. Tags in AWS bestaan uit sleutel/waarde-paren. Omdat voor zowel Azure als AWS gebruik wordt gemaakt van de term *sleutel*, wordt in Cloudyn die term ook gebruikt. In Category Manager worden sleutels (tagnamen) gebruikt om tags samen te voegen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -31,7 +31,7 @@ In deze zelfstudie leert u het volgende:
 > * Aangepaste tags gebruiken voor het toewijzen van kosten.
 > * Showback- en chargeback-rapporten maken.
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -87,9 +87,9 @@ In de lijst met kostenmodellen wordt het nieuwe kostenmodel vermeld met de statu
 
 Category Manager is een hulpprogramma voor het opschonen van gegevens waarmee u de waarden van verschillende categorieën (tags) kunt samenvoegen om nieuwe categorieën te maken. Het is een eenvoudig, op regels gebaseerd hulpprogramma: u selecteert een categorie en maakt regels voor het samenvoegen van bestaande waarden. Stel dat u bestaande categorieën hebt voor **R&amp;D** en **dev**, die allebei dezelfde ontwikkelingsgroep vertegenwoordigen.
 
-Klik in de rechterbovenhoek van de portal van Cloudyn op het tandwielpictogram en selecteer **Category Manager**. Als u een nieuwe categorie wilt maken, selecteert u het plusteken (**+**). Voer een naam in voor de categorie en voer vervolgens onder **Keys** de categoriesleutels in die u wilt opnemen in de nieuwe categorie.
+Klik in de rechterbovenhoek van de portal van Cloudyn op het tandwielpictogram en selecteer **Category Manager**. Als u een nieuwe categorie wilt maken, selecteert u het plusteken ( **+** ). Voer een naam in voor de categorie en voer vervolgens onder **Keys** de categoriesleutels in die u wilt opnemen in de nieuwe categorie.
 
-Wanneer u een regel definieert, kunt u meerdere waarden toevoegen met behulp van een OR-voorwaarde. U kunt ook enkele eenvoudige bewerkingen op tekenreeksen uitvoeren. In beide gevallen klikt u op het beletselteken (**...** ) rechts van **Rule**.
+Wanneer u een regel definieert, kunt u meerdere waarden toevoegen met behulp van een OR-voorwaarde. U kunt ook enkele eenvoudige bewerkingen op tekenreeksen uitvoeren. In beide gevallen klikt u op het beletselteken ( **...** ) rechts van **Rule**.
 
 Als u een nieuwe regel wilt definiëren, kan dat in het gebied **Rules**. Voer bijvoorbeeld eerst **dev** in onder **Rules** en vervolgens **R&amp;D** onder **Actions**. Als u dat hebt gedaan, kunt u de nieuwe categorie opslaan.
 
@@ -131,7 +131,7 @@ Als u momentopname van de gegevens beschikbaar wilt stellen aan andere teams, ku
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Aangepaste tags gebruiken voor het toewijzen van kosten.

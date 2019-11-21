@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: node. js gebruiken om te zoeken'
+title: 'Quickstart: Use Node.js to query data from an Azure SQL database'
 description: Node.js gebruiken om een programma te maken dat is verbonden met een Azure SQL-database, en een query voor deze database uitvoeren met behulp van T-SQL-instructies.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: b996b380195b8b339424c8d716c139072a98303f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
-ms.translationtype: MT
+ms.openlocfilehash: bf63cd1fb81dace477b7d9062831f0b563314f8b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827020"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228013"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Snelstart: Node.js gebruiken om een query uit te voeren voor een Azure SQL-database
 
-In deze Quick start ziet u hoe u [node. js](https://nodejs.org) kunt gebruiken om verbinding te maken met een Azure-SQL database. Vervolgens kunt u T-SQL-instructies gebruiken om een query uit te voeren voor de gegevens.
+This quickstart demonstrates how to use [Node.js](https://nodejs.org) to connect to an Azure SQL database. Vervolgens kunt u T-SQL-instructies gebruiken om een query uit te voeren voor de gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -28,19 +28,19 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
 
 - Een Azure SQL-database. U kunt een van deze quickstarts gebruiken om een database te maken en vervolgens te configureren in Azure SQL Database:
 
-  || Individuele database | Beheerd exemplaar |
+  || Afzonderlijke database | Beheerd exemplaar |
   |:--- |:--- |:---|
-  | Maken| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  | Create| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
   || [CLI](scripts/sql-database-create-and-configure-database-cli.md) | [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
   | Configureren | [IP-firewallregel op serverniveau](sql-database-server-level-firewall-rule.md)| [Connectiviteit vanaf een VM](sql-database-managed-instance-configure-vm.md)|
   |||[Connectiviteit vanaf locatie](sql-database-managed-instance-configure-p2s.md)
   |Gegevens laden|Adventure Works geladen volgens de quickstart|[Wide World Importers herstellen](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works herstellen of importeren vanuit [BACPAC](sql-database-import.md) -bestand vanuit [github](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||Restore or import Adventure Works from [BACPAC](sql-database-import.md) file from [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
 
   > [!IMPORTANT]
-  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database importeren in een exemplaardatabase of de scripts in dit artikel wijzigen voor gebruik van de Wide World Importers-database.
+  > De scripts in dit artikel zijn geschreven voor gebruik met de Adventure Works-database. Met een beheerd exemplaar moet u de Adventure Works-database in een exemplaardatabase importeren of de scripts in dit artikel wijzigen zodat deze de Wide World Importers-database gebruiken.
 
 
 - Node.js-software voor uw besturingssysteem:
@@ -55,20 +55,19 @@ Zorg dat u aan de volgende vereisten voldoet als u dit voorbeeld wilt uitvoeren:
 
 Haal de verbindingsgegevens op die u nodig hebt om verbinding te maken met de Azure SQL-database. U hebt de volledig gekwalificeerde servernaam of hostnaam, databasenaam en aanmeldingsgegevens nodig voor de volgende procedures.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
-2. Ga naar de pagina **SQL-data bases** of **SQL Managed instances** .
+2. Go to the **SQL databases**  or **SQL managed instances** page.
 
-3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erop en selecteert u het pictogram **Kopiëren**. 
+3. Bekijk op de pagina **Overzicht** de volledig gekwalificeerde servernaam naast **Servernaam** voor een individuele database, of de volledig gekwalificeerde servernaam naast **Host** voor een beheerd exemplaar. Als u de servernaam of hostnaam wilt kopiëren, plaatst u de muisaanwijzer erboven en selecteert u het pictogram **Kopiëren**. 
 
 ## <a name="create-the-project"></a>Het project maken
 
-Open een opdrachtprompt en maak een map met de naam *sqltest*. Open de map die u hebt gemaakt en voer de volgende opdracht uit:
+Open een opdrachtprompt en maak een map met de naam *sqltest*. Open the folder you created and run the following command:
 
   ```bash
   npm init -y
-  npm install tedious@5.0.3
-  npm install async@2.6.2
+  npm install tedious
   ```
 
 ## <a name="add-code-to-query-database"></a>Code toevoegen om een query uit te voeren op de database
@@ -78,63 +77,61 @@ Open een opdrachtprompt en maak een map met de naam *sqltest*. Open de map die u
 1. Vervang de inhoud ervan door de volgende code. Voeg vervolgens de juiste waarden toe voor uw server, database, gebruiker en wachtwoord.
 
     ```js
-    var Connection = require('tedious').Connection;
-    var Request = require('tedious').Request;
+    const Connection = require("tedious").Connection;
+    const Request = require("tedious").Request;
 
     // Create connection to database
-    var config =
-    {
-        authentication: {
-            options: {
-                userName: 'userName', // update me
-                password: 'password' // update me
-            },
-            type: 'default'
+    const config = {
+      authentication: {
+        options: {
+          userName: "username", // update me
+          password: "password" // update me
         },
-        server: 'your_server.database.windows.net', // update me
-        options:
-        {
-            database: 'your_database', //update me
-            encrypt: true
-        }
-    }
-    var connection = new Connection(config);
+        type: "default"
+      },
+      server: "your_server.database.windows.net", // update me
+      options: {
+        database: "your_database", //update me
+        encrypt: true
+      }
+    };
+
+    const connection = new Connection(config);
 
     // Attempt to connect and execute queries if connection goes through
-    connection.on('connect', function(err)
-        {
-            if (err)
-            {
-                console.log(err)
-            }
-            else
-            {
-                queryDatabase()
-            }
+    connection.on("connect", err => {
+      if (err) {
+        console.error(err.message);
+      } else {
+        queryDatabase();
+      }
+    });
+
+    function queryDatabase() {
+      console.log("Reading rows from the Table...");
+
+      // Read all rows from table
+      const request = new Request(
+        `SELECT TOP 20 pc.Name as CategoryName,
+                       p.name as ProductName
+         FROM [SalesLT].[ProductCategory] pc
+         JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid`,
+        (err, rowCount) => {
+          if (err) {
+            console.error(err.message);
+          } else {
+            console.log(`${rowCount} row(s) returned`);
+          }
         }
-    );
+      );
 
-    function queryDatabase()
-    {
-        console.log('Reading rows from the Table...');
-
-        // Read all rows from table
-        var request = new Request(
-            "SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName FROM [SalesLT].[ProductCategory] pc "
-                + "JOIN [SalesLT].[Product] p ON pc.productcategoryid = p.productcategoryid",
-            function(err, rowCount, rows)
-            {
-                console.log(rowCount + ' row(s) returned');
-                process.exit();
-            }
-        );
-
-        request.on('row', function(columns) {
-            columns.forEach(function(column) {
-                console.log("%s\t%s", column.metadata.colName, column.value);
-            });
+      request.on("row", columns => {
+        columns.forEach(column => {
+          console.log("%s\t%s", column.metadata.colName, column.value);
         });
-        connection.execSql(request);
+      });
+      
+      connection.execSql(request);
     }
     ```
 

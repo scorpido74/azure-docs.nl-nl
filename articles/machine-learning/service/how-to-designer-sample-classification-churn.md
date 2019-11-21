@@ -1,7 +1,7 @@
 ---
-title: 'Ontwerp: voor beeld van het verloop van voor spel'
+title: 'Designer: Predict churn example'
 titleSuffix: Azure Machine Learning
-description: Volg dit voor beeld van de classificatie om verloop met Azure Machine Learning Designer te voors pellen & gestimuleerde beslissings structuren.
+description: Follow this classification example to predict churn with Azure Machine Learning designer & boosted decision trees.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: sgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 5cf61d3446f960b65eb85538be9ea020671cced2
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 1fe3598fd15424ab2593e3d236146c7566493743
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196043"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225128"
 ---
-# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Versterkte beslissings structuur gebruiken om verloop te voors pellen met Azure Machine Learning Designer
+# <a name="use-boosted-decision-tree-to-predict-churn-with-azure-machine-learning-designer"></a>Use boosted decision tree to predict churn with Azure Machine Learning designer
 
-**Voor beeld van Designer (preview) 5**
+**Designer (preview) sample 5**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een complexe machine learning pijp lijn zonder dat u een regel code hoeft te schrijven met behulp van de ontwerp functie (preview).
+Learn how to build a complex machine learning pipeline without writing a single line of code using the designer (preview).
 
-Deze pijp lijn treinen 2 **gestimuleerde classificaties voor de beslissings structuur van twee klassen** voor het voors pellen van algemene taken voor CRM-systemen (Customer Relationship Management)-klant verloop. De gegevens waarden en labels zijn gesplitst over meerdere gegevens bronnen en worden versleuteld naar anoniem maken klant gegevens. we kunnen de Designer echter nog steeds gebruiken om gegevens sets te combi neren en een model te trainen met behulp van de verborgen waarden.
+This pipeline trains 2 **two-class boosted decision tree** classifiers to predict common tasks for customer relationship management (CRM) systems - customer churn. The data values and labels are split across multiple data sources and scrambled to anonymize customer information, however, we can still use the designer to combine data sets and train a model using the obscured values.
 
-Omdat u probeert de vraag "welke?" te beantwoorden Dit wordt een probleem met de classificatie genoemd, maar u kunt ook dezelfde logica Toep assen die in dit voor beeld wordt weer gegeven om elk type machine learning probleem aan te pakken, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
+Because you're trying to answer the question "Which one?" this is called a classification problem, but you can apply the same logic shown in this sample to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
 
-Hier is de voltooide grafiek voor deze pijp lijn:
+Here's the completed graph for this pipeline:
 
-![Pipeline-grafiek](./media/how-to-ui-sample-classification-predict-churn/pipeline-graph.png)
+![Pipeline graph](./media/how-to-designer-sample-classification-predict-churn/pipeline-graph.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Klik op voor beeld 5 om het te openen. 
+4. Click sample 5 to open it. 
 
 ## <a name="data"></a>Gegevens
 
-De gegevens voor deze pijp lijn zijn afkomstig uit KDDe Cup 2009. Het bevat 50.000 rijen en kolommen met 230-functies. De taak is het voors pellen van verloop, verlangen en het verkopen van klanten die gebruikmaken van deze functies. Zie de [KDD-website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009)voor meer informatie over de gegevens en de taak.
+The data for this pipeline is from KDD Cup 2009. It has 50,000 rows and 230 feature columns. The task is to predict churn, appetency, and up-selling for customers who use these features. For more information about the data and the task, see the [KDD website](https://www.kdd.org/kdd-cup/view/kdd-cup-2009).
 
-## <a name="pipeline-summary"></a>Pijplijn overzicht
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Deze voorbeeld pijplijn in de ontwerp functie bevat een veelvoorkomende taak voor de voor spelling van het verloop, de verlangen en de verkoop van de gemeen schappelijke taken voor Customer Relationship Management (CRM).
+This sample pipeline in the designer shows binary classifier prediction of churn, appetency, and up-selling, a common task for customer relationship management (CRM).
 
-Ten eerste, een eenvoudige gegevens verwerking.
+First, some simple data processing.
 
-- De onbewerkte gegevensset heeft veel ontbrekende waarden. Gebruik de module **clean Missing Data** om de ontbrekende waarden te vervangen door 0.
+- The raw dataset has many missing values. Use the **Clean Missing Data** module to replace the missing values with 0.
 
-    ![De gegevensset opschonen](./media/how-to-ui-sample-classification-predict-churn/cleaned-dataset.png)
+    ![Clean the dataset](./media/how-to-designer-sample-classification-predict-churn/cleaned-dataset.png)
 
-- De functies en het bijbehorende verloop bevinden zich in verschillende gegevens sets. Gebruik de module **add columns** om de label kolommen toe te voegen aan de functie kolommen. De eerste kolom, **Kol1**, is de kolom Label. Vanuit het visualisatie resultaat kunnen we zien dat de gegevensset niet in balans is. Er zijn meer negatieve (-1) voor beelden dan positieve voor beelden (+ 1). We gebruiken de **SMOTE** -module om later gepaarde cases te verg Roten.
+- The features and the corresponding churn are in different datasets. Use the **Add Columns** module to append the label columns to the feature columns. The first column, **Col1**, is the label column. From the visualization result we can see the dataset is unbalanced. There way more negative (-1) examples than positive examples (+1). We will use **SMOTE** module to increase underrepresented cases later.
 
-    ![De kolom gegevensset toevoegen](./media/how-to-ui-sample-classification-predict-churn/added-column1.png)
+    ![Add the column dataset](./media/how-to-designer-sample-classification-predict-churn/added-column1.png)
 
 
 
-- Gebruik de **gesplitste gegevens** module om de gegevensset te splitsen in Train-en test sets.
+- Use the **Split Data** module to split the dataset into train and test sets.
 
-- Gebruik vervolgens de gestimuleerde binaire classificatie van de beslissings structuur met de standaard parameters voor het bouwen van de Voorspellings modellen. Bouw één model per taak, dat wil zeggen, één model waarmee u de verkoop, verlangen en het verloop kunt voors pellen.
+- Then use the Boosted Decision Tree binary classifier with the default parameters to build the prediction models. Build one model per task, that is, one model each to predict up-selling, appetency, and churn.
 
-- In het rechter deel van de pijp lijn gebruiken we de **SMOTE** -module om het percentage positieve voor beelden te verhogen. Het percentage SMOTE wordt ingesteld op 100 om de positieve voor beelden te verdubbelen. Meer informatie over de werking van de SMOTE-module met [SMOTE-module reference0](../././algorithm-module-reference/SMOTE.md).
+- In the right part of the pipeline, we use **SMOTE** module to increase the percentage of positive examples. The SMOTE percentage is set to 100 to double the positive examples. Learn more on how SMOTE module works with [SMOTE module reference0](../././algorithm-module-reference/SMOTE.md).
 
 ## <a name="results"></a>Resultaten
 
-Visualiseer de uitvoer van de module **Evaluate model** om de prestaties van het model in de testset te bekijken. 
+Visualize the output of the **Evaluate Model** module to see the performance of the model on the test set. 
 
-![De resultaten evalueren](./media/how-to-ui-sample-classification-predict-churn/evaluate-result.png)
+![Evaluate the results](./media/how-to-designer-sample-classification-predict-churn/evaluate-result.png)
 
- U kunt de schuif regelaar **drempelwaarde** verplaatsen en de wijziging van metrische gegevens voor de binaire classificatie taak bekijken. 
+ You can move the **Threshold** slider and see the metrics change for the binary classification task. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -79,11 +79,11 @@ Visualiseer de uitvoer van de module **Evaluate model** om de prestaties van het
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de andere voor beelden die beschikbaar zijn voor de ontwerp functie:
+Explore the other samples available for the designer:
 
-- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Voor beeld 3: classificatie met functie selectie: inkomen voor spelling](how-to-designer-sample-classification-predict-income.md)
-- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-designer-sample-classification-flight-delay.md)
-- [Voor beeld 7-tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

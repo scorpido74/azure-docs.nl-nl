@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een symmetrische sleutel gebruiken om een gesimuleerd apparaat in te richten op Azure IoT Hub met C'
+title: Quickstart - Use symmetric key to provision simulated device to Azure IoT Hub using C
 description: In deze snelstartgids gebruikt u het Apparaat-SDK voor C om een gesimuleerd apparaat te maken dat gebruik maakt van een symmetrische sleutel met de Azure IoT Hub Device Provisioning Service
 author: wesmc7777
 ms.author: wesmc
@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 8a5016587240dfcc0813b7f1e23cd574e82bb935
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
-ms.translationtype: MT
+ms.openlocfilehash: 152e09c0644c5193f5f356a0fbdf8f72bd65956d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904867"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229663"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels
 
@@ -34,7 +34,7 @@ Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedure
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger met de [' Desktop C++Development '](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) -werk belasting ingeschakeld.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
 
@@ -46,7 +46,7 @@ In deze sectie bereidt u een ontwikkelomgeving voor die wordt gebruikt om de [Az
 
 De SDK bevat de voorbeeldcode voor een gesimuleerd apparaat. Dit gesimuleerde apparaat probeert de inrichting uit te voeren tijdens de opstartprocedure van het apparaat.
 
-1. Down load het [cmake build-systeem](https://cmake.org/download/).
+1. Download the [CMake build system](https://cmake.org/download/).
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
@@ -187,7 +187,7 @@ In deze sectie werkt u de voorbeeldcode voor het verzenden van de opstartvolgord
     Press enter key to exit:
     ```
 
-9. Navigeer in de portal naar de IoT-hub waaraan uw gesimuleerde apparaat is toegewezen en klik op het tabblad **IOT-apparaten** . Wanneer het inrichten van het gesimuleerde naar de hub is geslaagd, wordt de apparaat-ID weer gegeven op de Blade **IOT-apparaten** , met de *status* **ingeschakeld**. Mogelijk moet u bovenaan op de knop **Vernieuwen** klikken. 
+9. In the portal, navigate to the IoT hub your simulated device was assigned to and click the **IoT Devices** tab. On successful provisioning of the simulated to the hub, its device ID appears on the **IoT Devices** blade, with *STATUS* as **enabled**. Mogelijk moet u bovenaan op de knop **Vernieuwen** klikken. 
 
     ![Apparaat wordt geregistreerd voor de IoT-hub](./media/quick-create-simulated-device/hub-registration.png) 
 
@@ -197,7 +197,7 @@ In deze sectie werkt u de voorbeeldcode voor het verzenden van de opstartvolgord
 Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze beter wilt leren kennen, wis de resources die in deze Snelstartgids zijn gemaakt dan niet. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources die via deze Snelstartgids zijn gemaakt, te verwijderen.
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Open **inschrijvingen beheren** voor uw service en klik vervolgens op het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* van het apparaat dat u in deze Quick Start hebt geregistreerd en klik bovenaan op de knop **verwijderen** . 
+1. Klik in het linkermenu in Azure Portal op **All resources** en selecteer uw Device Provisioning-service. Open **Manage Enrollments** for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
 1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Open **IoT-apparaten** voor uw hub, selecteer de *apparaat-id* van het apparaat dat u hebt geregistreerd in deze snelstart en klik vervolgens bovenaan op de knop **Verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen

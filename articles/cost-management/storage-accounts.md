@@ -1,71 +1,71 @@
 ---
-title: Storage-accounts configureren voor Cloudyn in Azure | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure storage-accounts en AWS opslag buckets voor Cloudyn configureren.
+title: Configure storage accounts for Cloudyn in Azure | Microsoft Docs
+description: This article describes how you configure Azure storage accounts and AWS storage buckets for Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: secdec18
-ms.openlocfilehash: 91377c41699f01eaf57a085ea82e9d7289549990
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ac4442aa5a7e5e4367a03d33169412d37b3f1ea
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969137"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229933"
 ---
-# <a name="configure-storage-accounts-for-cloudyn"></a>Storage-accounts voor Cloudyn configureren
+# <a name="configure-storage-accounts-for-cloudyn"></a>Configure storage accounts for Cloudyn
 
 <!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-U kunt de Cloudyn-rapporten opslaan in de Cloudyn-portal, Azure storage of buckets voor AWS-opslag. Uw rapporten opslaan in de Cloudyn-portal is gratis. Echter, uw rapporten opslaan in uw cloudserviceprovider opslag is optioneel en worden extra kosten in rekening gebracht. Dit artikel helpt u bij het configureren van Azure storage-accounts en Amazon Web Services (AWS) opslag buckets voor het opslaan van uw rapporten.
+You can save Cloudyn reports in the Cloudyn portal, Azure storage, or AWS storage buckets. Saving your reports to the Cloudyn portal is free of charge. However, saving your reports to your cloud service provider's storage is optional and incurs additional cost. This article helps you configure Azure storage accounts and Amazon Web Services (AWS) storage buckets to store your reports.
 
 ## <a name="prerequisites"></a>Vereisten
 
-U moet een Azure storage-account of een bucket van Amazon opslag hebben.
+You must have either an Azure storage account or an Amazon storage bucket.
 
-Als u geen Azure storage-account hebt, moet u er een maken. Zie voor meer informatie over het maken van een Azure storage-account [een opslagaccount maken](../storage/common/storage-quickstart-create-account.md).
+If you don't have an Azure storage account, you need to create one. For more information about creating an Azure storage account, see [Create a storage account](../storage/common/storage-quickstart-create-account.md).
 
-Als u een AWS geen bucket simple storage-service (S3), moet u er een maken. Zie voor meer informatie over het maken van een S3-bucket [maken van een Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+If you don't have an AWS simple storage service (S3) bucket, you need to create one. For more information about creating an S3 bucket, see [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
-## <a name="configure-your-azure-storage-account"></a>Uw Azure storage-account configureren
+## <a name="configure-your-azure-storage-account"></a>Configure your Azure storage account
 
-Configureert u is Azure storage voor gebruik door Cloudyn vrij eenvoudig. Verzamelen van gegevens over de storage-account en kopieer deze in de Cloudyn-portal.
+Configuring you Azure storage for use by Cloudyn is straightforward. Gather details about the storage account and copy them in the Cloudyn portal.
 
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
-2. Klik op **alle Services**, selecteer **opslagaccounts**, blader naar het opslagaccount dat u wilt gebruiken, en selecteer vervolgens het account.
-3. Op de pagina van uw storage-account onder **instellingen**, klikt u op **toegangssleutels**.
-4. Kopieer uw **opslagaccountnaam** en **Connection string** onder key1.  
-   ![Opslag account naam en de verbindingsreeks kopiëren](./media/storage-accounts/azure-storage-access-keys.png)  
+2. Click **All Services**, select **Storage accounts**, scroll to the storage account that you want to use, and then select the account.
+3. On your storage account page under **Settings**, click **Access Keys**.
+4. Copy your **Storage account name** and **Connection string** under key1.  
+   ![Copy storage account name and connection string](./media/storage-accounts/azure-storage-access-keys.png)  
 5. Open de Cloudyn-portal vanuit Azure Portal of ga naar https://azure.cloudyn.com en meld u aan.
-6. Klik op het tandwiel-symbool en selecteer vervolgens **rapporten opslagbeheer**.
-7. Klik op **nieuwe toevoegen +** en ervoor te zorgen dat Microsoft Azure is geselecteerd. Plak de naam van uw Azure storage-account in de **naam** gebied. Plak uw **verbindingsreeks** in het desbetreffende gebied. Voer een containernaam in en klik vervolgens op **opslaan**.  
-   ![Azure storage-account en de tekenreeks in de toevoegen een nieuw rapport opslag vak plakken](./media/storage-accounts/azure-cloudyn-storage.png)
+6. Click the cog symbol and then select **Reports Storage Management**.
+7. Click **Add new +** and ensure that Microsoft Azure is selected. Paste your Azure storage account name in the **Name** area. Paste your **connection string** in the corresponding area. Enter a container name and then click **Save**.  
+   ![Paste Azure storage account name and connection string in the Add a new report storage box](./media/storage-accounts/azure-cloudyn-storage.png)
 
-   Uw nieuwe rapport van Azure storage-vermelding wordt weergegeven in de lijst met storage-account.  
-    ![Nieuwe Azure-rapport opslag vermelding in lijst](./media/storage-accounts/azure-storage-entry.png)
+   Your new Azure report storage entry appears in the storage account list.  
+    ![New Azure report storage entry in list](./media/storage-accounts/azure-storage-entry.png)
 
 
-U kunt nu rapporten opslaan naar Azure storage. Klik in een rapport op **acties** en selecteer vervolgens **rapport plant**. Het rapport een naam en voeg uw eigen URL of de automatisch gemaakte URL gebruiken. Selecteer **opslaan in storage** en selecteer vervolgens het opslagaccount. Voer een voorvoegsel dat wordt toegevoegd aan de naam van het rapport. Selecteer CSV of JSON-indeling en sla het rapport.
+You can now save reports to Azure storage. In any report, click **Actions** and then select **Schedule report**. Name the report and then either add your own URL or use the automatically created URL. Select  **Save to storage**  and then select the storage account. Enter a prefix that gets appended to the report file name. Select either CSV or JSON file format and then save the report.
 
-## <a name="configure-an-aws-storage-bucket"></a>Een bucket van AWS-opslag configureren
+## <a name="configure-an-aws-storage-bucket"></a>Configure an AWS storage bucket
 
-De Cloudyn maakt gebruik van bestaande AWS-referenties: Gebruiker of rol, de rapporten opslaan naar de bucket. Als u wilt testen van de toegang, Cloudyn probeert op te slaan een klein tekstbestand dat aan de bucket met de naam van het _controle-bucket-permission.txt_.
+The Cloudyn uses existing AWS credentials: User or Role, to save the reports to your bucket. To test the access, Cloudyn tries to save a small text file to the bucket with the file name _check-bucket-permission.txt_.
 
-U opgeven de Cloudyn-rol of de gebruiker met de machtiging PutObject aan de bucket. Vervolgens gebruikt u een bestaande bucket of een nieuwe maken om op te slaan van rapporten. Ten slotte bepalen hoe u de opslagklasse beheren, levenscyclus regels instellen of verwijder onnodige bestanden.
+You provide the Cloudyn role or user with the PutObject permission to your bucket. Then, use an existing bucket or create a new one to save reports. Finally, decide how to manage the storage class, set lifecycle rules, or remove any unnecessary files.
 
-###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Machtigingen toewijzen aan uw AWS-gebruiker of rol
+###  <a name="assign-permissions-to-your-aws-user-or-role"></a>Assign permissions to your AWS user or role
 
-Wanneer u een nieuw beleid maakt, kunt u de exacte machtigingen die nodig zijn voor een rapport opslaan in een S3-bucket opgeven.
+When you create a new policy, you provide the exact permissions needed to save a report to a S3 bucket.
 
-1. Meld u aan bij de AWS-console en selecteer **Services**.
-2. Selecteer **IAM** uit de lijst met services.
-3. Selecteer **beleid** aan de linkerkant van de console en klik vervolgens op **beleid maken**.
-4. Klik op de **JSON** tabblad.
-5. Het volgende beleid kunt u een rapport opslaan in een S3-bucket. Kopieer en plak het volgende voorbeeld van beleid om de **JSON** tabblad. Vervang &lt;bucketname&gt; met de Bucketnaam van uw.
+1. Sign in to the AWS console and select **Services**.
+2. Select **IAM** from the list of services.
+3. Select **Policies** on the left side of the console and then click **Create Policy**.
+4. Click the **JSON** tab.
+5. The following policy allows you to save a report to a S3 bucket. Copy and paste the following policy example to the **JSON** tab. Replace &lt;bucketname&gt; with your bucket name.
 
    ```json
    {
@@ -85,42 +85,42 @@ Wanneer u een nieuw beleid maakt, kunt u de exacte machtigingen die nodig zijn v
    }
    ```
 
-6. Klik op **controlebeleid**.  
-    ![Voorbeeld van AWS JSON-beleid](./media/storage-accounts/aws-policy.png)  
-7. Typ een naam voor het beleid op de pagina van het beleid controleren. Bijvoorbeeld, _CloudynSaveReport2S3_.
-8. Klik op **beleid maken**.
+6. Click **Review policy**.  
+    ![AWS JSON policy showing example information](./media/storage-accounts/aws-policy.png)  
+7. On the Review policy page, type a name for your policy. For example, _CloudynSaveReport2S3_.
+8. Click **Create policy**.
 
-### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Het beleid te koppelen aan een Cloudyn-functie of een gebruiker in uw account
+### <a name="attach-the-policy-to-a-cloudyn-role-or-user-in-your-account"></a>Attach the policy to a Cloudyn role or user in your account
 
-Als u wilt koppelen het nieuwe beleid, de AWS-console openen en bewerken van de Cloudyn-rol of de gebruiker.
+To attach the new policy, you open the AWS console and edit the Cloudyn role or user.
 
-1. Meld u aan bij de AWS-console en selecteer **Services**en selecteer vervolgens **IAM** uit de lijst met services.
-2. Selecteer een **rollen** of **gebruikers** vanaf de linkerkant van de console.
+1. Sign in to the AWS console and select **Services**, then select **IAM** from the list of services.
+2. Select either **Roles** or **Users** from the left side of the console.
 
-**Voor rollen:**
+**For roles:**
 
-  1. Klik op de naam van uw Cloudyn-rol.
-  2. Op de **machtigingen** tabblad **beleid koppelen**.
-  3. Zoeken naar het beleid dat u hebt gemaakt, selecteert u deze en klik op **beleid koppelen**.
-    ![Van voorbeeldbeleid dat is gekoppeld aan uw Cloudyn-rol](./media/storage-accounts/aws-attach-policy-role.png)
+  1. Click your Cloudyn role name.
+  2. On the **Permissions** tab, click **Attach Policy**.
+  3. Search for the policy that you created and select it, then click **Attach Policy**.
+    ![Example policy attached to your Cloudyn role](./media/storage-accounts/aws-attach-policy-role.png)
 
-**Voor gebruikers:**
+**For users:**
 
-1. Selecteer de Cloudyn-gebruiker.
-2. Op de **machtigingen** tabblad **machtigingen toevoegen**.
-3. In de **machtiging verlenen** sectie, selecteer **bestaande beleidsregels rechtstreeks koppelen**.
-4. Zoeken naar het beleid dat u hebt gemaakt, selecteert u deze en klik op **volgende: Review**.
-5. Klik op de machtigingen toevoegen aan de pagina voor de naam van de rol, **machtigingen toevoegen**.  
-    ![Van voorbeeldbeleid dat is gekoppeld aan uw Cloudyn-gebruiker](./media/storage-accounts/aws-attach-policy-user.png)
+1. Select the Cloudyn User.
+2. On the **Permissions** tab, click **Add permissions**.
+3. In the **Grant Permission** section, select **Attach existing policies directly**.
+4. Search for the policy that you created and select it, then click **Next: Review**.
+5. On the Add permissions to role name page, click **Add permissions**.  
+    ![Example policy attached to your Cloudyn user](./media/storage-accounts/aws-attach-policy-user.png)
 
 
-### <a name="optional-set-permission-with-bucket-policy"></a>Optioneel: De machtiging instellen met bucket-beleid
+### <a name="optional-set-permission-with-bucket-policy"></a>Optional: Set permission with bucket policy
 
-U kunt ook de machtiging voor het maken van rapporten op uw S3-bucket op basis van beleid bucket instellen. In de klassieke S3-weergave:
+You can also set permission to create reports on your S3 bucket using a bucket policy. In the classic S3 view:
 
-1. Maak of Selecteer een bestaande bucket.
-2. Selecteer de **machtigingen** tabblad en klik vervolgens op **Bucket beleid**.
-3. Kopieer en plak het volgende voorbeeld van beleid. Vervang &lt;bucket\_naam&gt; en &lt;Cloudyn\_principe&gt; met de informatie van uw bucket. Vervang de informatie van de rol of de gebruiker die door Cloudyn worden gebruikt.
+1. Create or select an existing bucket.
+2. Select the **Permissions** tab and then click **Bucket policy**.
+3. Copy and paste the following policy sample. Replace &lt;bucket\_name&gt; and &lt;Cloudyn\_principle&gt; with the ARN of your bucket. Replace the ARN of either the role or user used by Cloudyn.
 
    ```
    {
@@ -144,23 +144,23 @@ U kunt ook de machtiging voor het maken van rapporten op uw S3-bucket op basis v
    }
    ```
 
-4. Klik in de beleidseditor Bucket **opslaan**.
+4. In the Bucket policy editor, click **Save**.
 
-### <a name="add-aws-report-storage-to-cloudyn"></a>Archiefopslag van AWS-rapport toevoegen aan Cloudyn
+### <a name="add-aws-report-storage-to-cloudyn"></a>Add AWS report storage to Cloudyn
 
 1. Open de Cloudyn-portal vanuit Azure Portal of ga naar https://azure.cloudyn.com en meld u aan.
-2. Klik op het tandwiel-symbool en selecteer vervolgens **rapporten opslagbeheer**.
-3. Klik op **nieuwe toevoegen +** en zorg ervoor dat de AWS is geselecteerd.
-4. Selecteer een bucket-account en de opslag. De naam van de bucket van AWS-opslag wordt automatisch ingevuld.  
-    ![Van de voorbeeldinformatie in het toevoegen van een nieuw rapport opslag vak](./media/storage-accounts/aws-cloudyn-storage.png)  
-5. Klik op **opslaan** en klik vervolgens op **Ok**.
+2. Click the cog symbol and then select **Reports Storage Management**.
+3. Click **Add new +** and ensure that AWS is selected.
+4. Select an account and storage bucket. The name of the AWS storage bucket is automatically filled-in.  
+    ![Example information in the Add a new report storage box](./media/storage-accounts/aws-cloudyn-storage.png)  
+5. Click **Save** and then click **Ok**.
 
-    Uw nieuwe AWS rapport opslag vermelding wordt weergegeven in de lijst met storage-account.  
-    ![Nieuwe AWS rapport opslag vermelding weergegeven in de lijst met storage-account](./media/storage-accounts/aws-storage-entry.png)
+    Your new AWS report storage entry appears in the storage account list.  
+    ![New AWS report storage entry show in storage account list](./media/storage-accounts/aws-storage-entry.png)
 
 
-U kunt nu rapporten opslaan naar Azure storage. Klik in een rapport op **acties** en selecteer vervolgens **rapport plant**. Het rapport een naam en voeg uw eigen URL of de automatisch gemaakte URL gebruiken. Selecteer **opslaan in storage** en selecteer vervolgens het opslagaccount. Voer een voorvoegsel dat wordt toegevoegd aan de naam van het rapport. Selecteer CSV of JSON-indeling en sla het rapport.
+You can now save reports to Azure storage. In any report, click **Actions**  and then select **Schedule report**. Name the report and then either add your own URL or use the automatically created URL. Select  **Save to storage**  and then select the storage account. Enter a prefix that gets appended to the report file name. Select either CSV or JSON file format and then save the report.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Beoordeling [inzicht in Cloudyn-rapporten](understanding-cost-reports.md) voor meer informatie over de basisstructuur en functies van Cloudyn-rapporten.
+- Review [Understanding Cloudyn reports](understanding-cost-reports.md) to learn about the basic structure and functions of Cloudyn reports.

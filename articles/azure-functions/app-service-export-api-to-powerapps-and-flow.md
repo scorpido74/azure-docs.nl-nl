@@ -1,138 +1,132 @@
 ---
-title: Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow | Microsoft Docs
-description: Overzicht van het beschikbaar maken van een API die wordt gehost in App Service naar PowerApps en Microsoft Flow
-services: app-service
-author: ggailey777
-manager: jeconnoc
-ms.assetid: ''
-ms.service: app-service
+title: Exporting an Azure-hosted API to PowerApps and Microsoft Flow
+description: Overview of how to expose an API hosted in App Service to PowerApps and Microsoft Flow
 ms.topic: conceptual
 ms.date: 12/15/2017
-ms.author: glenga
 ms.reviewer: sunayv
-ms.openlocfilehash: b12d1fec9b7852835d3d5b5346d64868d2ee8c46
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 632818bf82e41e6be0a96d30cc1c4fa631718a3b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082852"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233075"
 ---
-# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Een door Azure gehoste API exporteren naar PowerApps en Microsoft Flow
+# <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exporting an Azure-hosted API to PowerApps and Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) is een service voor het maken en gebruiken van aangepaste zakelijke apps die verbinding maken met uw gegevens en werken op verschillende platforms. Met [Microsoft flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) kunt u eenvoudig werk stromen en bedrijfs processen automatiseren tussen uw favoriete apps en services. Zowel PowerApps als Microsoft Flow worden geleverd met een aantal ingebouwde connectors voor gegevens bronnen zoals Office 365, Dynamics 365, Sales Force en meer. In sommige gevallen willen app-en flow-Builders ook verbinding maken met gegevens bronnen en Api's die zijn gebouwd door hun organisatie.
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) is a service for building and using custom business apps that connect to your data and work across platforms. [Microsoft Flow](/learn/modules/get-started-with-flow/index) makes it easy to automate workflows and business processes between your favorite apps and services. Both PowerApps and Microsoft Flow come with a variety of built-in connectors to data sources such as Office 365, Dynamics 365, Salesforce, and more. In some cases, app and flow builders also want to connect to data sources and APIs built by their organization.
 
-Op dezelfde manier kunnen ontwikkel aars die hun Api's breed willen weer geven binnen een organisatie, hun Api's beschikbaar maken voor app-en flow-Builders. In dit onderwerp wordt beschreven hoe u een API exporteert die is gebouwd met [Azure functions](../azure-functions/functions-overview.md) of [Azure app service](../app-service/overview.md). De geëxporteerde API wordt een *aangepaste connector*die wordt gebruikt in PowerApps en Microsoft flow net als een ingebouwde connector.
+Similarly, developers that want to expose their APIs more broadly within an organization can make their APIs available to app and flow builders. This topic shows you how to export an API built with [Azure Functions](../azure-functions/functions-overview.md) or [Azure App Service](../app-service/overview.md). The exported API becomes a *custom connector*, which is used in PowerApps and Microsoft Flow just like a built-in connector.
 
 > [!IMPORTANT]
-> De API-definitie functionaliteit die in dit artikel wordt weer gegeven, wordt alleen ondersteund voor [versie 1. x van de Azure functions runtime](functions-versions.md#creating-1x-apps) -en app Services-apps. Versie 2. x van functions integreert met API Management voor het maken en onderhouden van OpenAPI definities. Zie [een OpenAPI-definitie maken voor een functie met Azure API Management voor](functions-openapi-definition.md)meer informatie. 
+> The API definition functionality shown in this article is only supported for [version 1.x of the Azure Functions runtime](functions-versions.md#creating-1x-apps) and App Services apps. Version 2.x of Functions integrates with API Management to create and maintain OpenAPI definitions. To learn more, see [Create an OpenAPI definition for a function with Azure API Management](functions-openapi-definition.md). 
 
-## <a name="create-and-export-an-api-definition"></a>Een API-definitie maken en exporteren
-Voordat u een API exporteert, moet u de API beschrijven met behulp van een OpenAPI-definitie (voorheen bekend als een [Swagger](https://swagger.io/) -bestand). Deze definitie bevat informatie over welke bewerkingen beschikbaar zijn in een API en hoe de gegevens van de aanvraag en respons voor de API moeten worden opgebouwd. PowerApps en Microsoft Flow kunnen aangepaste connectors maken voor elke OpenAPI 2,0-definitie. Azure Functions en Azure App Service hebben ingebouwde ondersteuning voor het maken, hosten en beheren van OpenAPI definities. Zie [een resterende API hosten met CORS in azure app service](../app-service/app-service-web-tutorial-rest-api.md)voor meer informatie.
-
-> [!NOTE]
-> U kunt ook aangepaste connectors maken in de gebruikers interface van PowerApps en Microsoft Flow, zonder gebruik te maken van een OpenAPI-definitie. Zie [een aangepaste connector (PowerApps) registreren en gebruiken](https://powerapps.microsoft.com/tutorials/register-custom-api/) en [een aangepaste connector (Microsoft flow) registreren en gebruiken](/power-automate/developer/register-custom-api)voor meer informatie.
-
-Als u de API-definitie wilt exporteren, voert u de volgende stappen uit:
-
-1. Navigeer in het [Azure Portal](https://portal.azure.com)naar uw Azure functions of een andere app service-toepassing.
-
-    Als u Azure Functions gebruikt, selecteert u de functie-app, kiest u **platform functies**en vervolgens **API-definitie**.
-
-    ![Azure Functions API-definitie](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
-
-    Als u Azure App Service gebruikt, selecteert u **API-definitie** in de lijst instellingen.
-
-    ![App Service API-definitie](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
-
-2. De knop **exporteren naar PowerApps + Microsoft flow** moet beschikbaar zijn (als dat niet het geval is, moet u eerst een OpenAPI-definitie maken). Klik op deze knop om het export proces te starten.
-
-    ![Knop exporteren naar PowerApps + Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
-
-3. Selecteer de **export modus**:
-
-    Met **Express** kunt u de aangepaste connector maken in de Azure Portal. Hiervoor moet u zijn aangemeld bij PowerApps of Microsoft Flow en gemachtigd zijn om connectors te maken in de doel omgeving. Dit is de aanbevolen benadering als aan deze twee vereisten kan worden voldaan. Als u deze modus gebruikt, volgt u de onderstaande instructies voor het [exporteren van snelle uitvoer](#express) .
-
-    **Hand matig** kunt u de API-definitie exporteren, die u vervolgens importeert met behulp van de PowerApps-of Microsoft flow portals. Dit is de aanbevolen benadering als de gebruiker van Azure en de gebruiker die gemachtigd is om connectors te maken verschillende personen zijn of als de connector moet worden gemaakt in een andere Azure-Tenant. Als u deze modus gebruikt, volgt [u de onderstaande hand matige export](#manual) instructies.
-
-    ![Export modus](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
+## <a name="create-and-export-an-api-definition"></a>Create and export an API definition
+Before exporting an API, you must describe the API using an OpenAPI definition (formerly known as a [Swagger](https://swagger.io/) file). Deze definitie bevat informatie over welke bewerkingen beschikbaar zijn in een API en hoe de gegevens van de aanvraag en respons voor de API moeten worden opgebouwd. PowerApps and Microsoft Flow can create custom connectors for any OpenAPI 2.0 definition. Azure Functions and Azure App Service have built-in support for creating, hosting, and managing OpenAPI definitions. For more information, see [Host a RESTful API with CORS in Azure App Service](../app-service/app-service-web-tutorial-rest-api.md).
 
 > [!NOTE]
-> De aangepaste connector gebruikt een *kopie* van de API-definitie, zodat PowerApps en Microsoft flow niet meteen weten of u wijzigingen aanbrengt in de toepassing en de bijbehorende API-definitie. Als u wijzigingen aanbrengt, herhaalt u de export stappen voor de nieuwe versie.
+> You can also build custom connectors in the PowerApps and Microsoft Flow UI, without using an OpenAPI definition. For more information, see [Register and use a custom connector (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/) and [Register and use a custom connector (Microsoft  Flow)](/power-automate/developer/register-custom-api).
+
+To export the API definition, follow these steps:
+
+1. In the [Azure portal](https://portal.azure.com), navigate to your Azure Functions or another App Service application.
+
+    If using Azure Functions, select your function app, choose **Platform features**, and then **API definition**.
+
+    ![Azure Functions API definition](media/app-service-export-api-to-powerapps-and-flow/api-definition-function.png)
+
+    If using Azure App Service, select **API definition** from the settings list.
+
+    ![App Service API definition](media/app-service-export-api-to-powerapps-and-flow/api-definition-app.png)
+
+2. The **Export to PowerApps + Microsoft Flow** button should be available (if not, you must first create an OpenAPI definition). Click this button to begin the export process.
+
+    ![Export to PowerApps + Microsoft Flow button](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
+
+3. Select the **Export Mode**:
+
+    **Express** lets you create the custom connector from within the Azure portal. It requires that you are signed into PowerApps or Microsoft Flow and have permission to create connectors in the target environment. This is the recommended approach if these two requirements can be met. If using this mode, follow the [Use express export](#express) instructions below.
+
+    **Manual** lets you export the API definition, which you then import using the PowerApps or Microsoft Flow portals. This is the recommended approach if the Azure user and the user with permission to create connectors are different people or if the connector needs to be created in another Azure tenant. If using this mode, follow the [Use manual export](#manual) instructions below.
+
+    ![Export mode](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
+
+> [!NOTE]
+> The custom connector uses a *copy* of the API definition, so PowerApps and Microsoft Flow will not immediately know if you make changes to the application and its API definition. If you do make changes, repeat the export steps for the new version.
 
 <a name="express"></a>
-## <a name="use-express-export"></a>Snelle export gebruiken
+## <a name="use-express-export"></a>Use express export
 
-Voer de volgende stappen uit om de export in **Express** -modus te volt ooien:
+To complete the export in **Express** mode, follow these steps:
 
-1. Zorg ervoor dat u bent aangemeld bij de PowerApps of Microsoft Flow Tenant waarnaar u wilt exporteren. 
+1. Make sure you're signed in to the PowerApps or Microsoft Flow tenant to which you want to export. 
 
-2. Gebruik de instellingen zoals opgegeven in de tabel.
+2. Use the settings as specified in the table.
 
     |Instelling|Beschrijving|
     |--------|------------|
-    |**Omgeving**|Selecteer de omgeving waarin de aangepaste connector moet worden opgeslagen. Zie [overzicht van omgevingen](https://powerapps.microsoft.com/tutorials/environments-overview/)voor meer informatie.|
-    |**Aangepaste API-naam**|Voer een naam in, die PowerApps en Microsoft Flow bouwers worden weer geven in de lijst met connectors.|
-    |**Beveiligings configuratie voorbereiden**|Geef indien nodig de beveiligings configuratie gegevens op die nodig zijn om gebruikers toegang te verlenen tot uw API. Dit voor beeld toont een API-sleutel. Zie voor meer informatie [verificatie type opgeven](#auth) hieronder.|
+    |**Omgeving**|Select the environment that the custom connector should be saved to. For more information, see [Environments overview](https://powerapps.microsoft.com/tutorials/environments-overview/).|
+    |**Custom API Name**|Enter a name, which PowerApps and Microsoft Flow builders will see in their connector list.|
+    |**Prepare security configuration**|If required, provide the security configuration details needed to grant users access to your API. This example shows an API key. For more information, see [Specify authentication type](#auth) below.|
  
-    ![Snelle export naar PowerApps en Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
+    ![Express export to PowerApps and Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-express.png)
 
-3. Klik op **OK**. De aangepaste connector is nu gemaakt en toegevoegd aan de omgeving die u hebt opgegeven.
+3. Klik op **OK**. The custom connector is now built and added to the environment you specified.
 
 <a name="manual"></a>
-## <a name="use-manual-export"></a>Hand matig exporteren gebruiken
+## <a name="use-manual-export"></a>Use manual export
 
-Voer de volgende stappen uit om het exporteren in de **hand matige** modus te volt ooien:
+To complete the export in **Manual** mode, follow these steps:
 
-1. Klik op **downloaden** en sla het bestand op, of klik op de knop kopiëren en sla de URL op. U gebruikt het Download bestand of de URL tijdens het importeren.
+1. Click **Download** and save the file, or click the copy button and save the URL. You will use the download file or the URL during import.
  
-    ![Hand matig exporteren naar PowerApps en Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
+    ![Manual export to PowerApps and Microsoft Flow](media/app-service-export-api-to-powerapps-and-flow/export-manual.png)
  
-2. Als uw API-definitie beveiligings definities bevat, worden deze in stap #2 genoemd. Tijdens het importeren worden deze door PowerApps en Microsoft Flow gedetecteerd en wordt u gevraagd om beveiligings gegevens op te vragen. Verzamel de referenties die zijn gerelateerd aan elke definitie voor gebruik in de volgende sectie. Zie voor meer informatie [verificatie type opgeven](#auth) hieronder.
+2. If your API definition includes any security definitions, these are called out in step #2. During import, PowerApps and Microsoft Flow detects these and prompts for security information. Gather the credentials related to each definition for use in the next section. For more information, see [Specify authentication type](#auth) below.
 
-    ![Beveiliging voor hand matig exporteren](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
+    ![Security for manual export](media/app-service-export-api-to-powerapps-and-flow/export-manual-security.png)
 
-    Dit voor beeld toont de definitie van de API-sleutel beveiliging die is opgenomen in de OpenAPI-definitie.
+    This example shows the API key security definition that was included in the OpenAPI definition.
 
-Nu u de API-definitie hebt geëxporteerd, importeert u deze voor het maken van een aangepaste connector in PowerApps en Microsoft Flow. Aangepaste connectors worden gedeeld tussen de twee services, zodat u de definitie slechts eenmaal hoeft te importeren.
+Now that you've exported the API definition, you import it to create a custom connector in PowerApps and Microsoft Flow. Custom connectors are shared between the two services, so you only need to import the definition once.
 
-Voer de volgende stappen uit om de API-definitie te importeren in PowerApps en Microsoft Flow:
+To import the API definition into PowerApps and Microsoft Flow, follow these steps:
 
 1. Ga naar [powerapps.com](https://web.powerapps.com) of [flow.microsoft.com](https://flow.microsoft.com).
 
-2. Klik in de rechter bovenhoek op het tandwiel pictogram en klik vervolgens op **aangepaste connectors**.
+2. In the upper right corner, click the gear icon, then click **Custom connectors**.
 
    ![Tandwielpictogram in werking](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. Klik op **aangepaste connector maken**en klik vervolgens op **een OpenAPI-definitie importeren**.
+3. Click **Create custom connector**, then click **Import an OpenAPI definition**.
 
    ![Een aangepaste connector maken](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-4. Voer een naam in voor de aangepaste connector, navigeer naar de OpenAPI-definitie die u hebt geëxporteerd en klik op **door gaan**.
+4. Enter a name for the custom connector, then navigate to the OpenAPI definition that you exported, and click **Continue**.
 
-   ![OpenAPI definitie uploaden](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
+   ![Upload OpenAPI definition](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
 
-4. Controleer op het tabblad **Algemeen** de informatie die afkomstig is van de OpenAPI-definitie.
+4. On the **General** tab, review the information that comes from the OpenAPI definition.
 
-5. Als u wordt gevraagd om verificatie gegevens op het tabblad **beveiliging** op te geven, voert u de juiste waarden voor het verificatie type in. Klik op **Doorgaan**.
+5. On the **Security** tab, if you are prompted to provide authentication details, enter the values appropriate for the authentication type. Klik op **Doorgaan**.
 
-    ![Tabblad Beveiliging](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
+    ![Security tab](media/app-service-export-api-to-powerapps-and-flow/tab-security.png)
 
-    In dit voor beeld worden de vereiste velden voor API-sleutel verificatie weer gegeven. De velden variëren afhankelijk van het verificatie type.
+    This example shows the required fields for API key authentication. The fields differ depending on the authentication type.
 
-6. Op het tabblad **definities** worden alle bewerkingen die zijn gedefinieerd in uw OpenAPI-bestand automatisch ingevuld. Als alle vereiste bewerkingen zijn gedefinieerd, kunt u naar de volgende stap gaan. Als dat niet het geval is, kunt u hier bewerkingen toevoegen en wijzigen.
+6. On the **Definitions** tab, all the operations defined in your OpenAPI file are auto-populated. If all your required operations are defined, you can go to the next step. If not, you can add and modify operations here.
 
-    ![Tabblad definities](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
+    ![Definitions tab](media/app-service-export-api-to-powerapps-and-flow/tab-definitions.png)
 
-    Dit voor beeld heeft één bewerking, met de naam `CalculateCosts`. De meta gegevens, zoals **Beschrijving**, zijn afkomstig uit het OpenAPI-bestand.
+    This example has one operation, named `CalculateCosts`. The metadata, like **Description**, all comes from the OpenAPI file.
 
-7. Klik boven aan de pagina op **connector maken** .
+7. Click **Create connector** at the top of the page.
 
-U kunt nu verbinding maken met de aangepaste connector in PowerApps en Microsoft Flow. Zie [uw aangepaste connector (PowerApps) registreren](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) en [uw aangepaste connector registreren (Microsoft flow)](/power-automate/get-started-flow-dev#create-a-custom-connector)voor meer informatie over het maken van connectors in PowerApps en Microsoft flow portals.
+You can now connect to the custom connector in PowerApps and Microsoft Flow. For more information on creating connectors in the PowerApps and Microsoft Flow portals, see [Register your custom connector (PowerApps)](https://powerapps.microsoft.com/tutorials/register-custom-api/#register-your-custom-connector) and [Register your custom connector (Microsoft  Flow)](/power-automate/get-started-flow-dev#create-a-custom-connector).
 
 <a name="auth"></a>
 ## <a name="specify-authentication-type"></a>Verificatietype opgeven
 
-PowerApps en Microsoft Flow bieden ondersteuning voor een verzameling id-providers die verificatie bieden voor aangepaste connectors. Als voor uw API verificatie is vereist, moet u ervoor zorgen dat deze wordt vastgelegd als een _beveiligings definitie_ in uw OpenAPI-document, zoals in het volgende voor beeld:
+PowerApps and Microsoft Flow support a collection of identity providers that provide authentication for custom connectors. If your API requires authentication, ensure that it is captured as a _security definition_ in your OpenAPI document, like the following example:
 
 ```json
 "securityDefinitions": {
@@ -144,40 +138,40 @@ PowerApps en Microsoft Flow bieden ondersteuning voor een verzameling id-provide
     }
 }
 ``` 
-Tijdens het exporteren geeft u de configuratie waarden op waarmee PowerApps en Microsoft Flow gebruikers kunnen verifiëren.
+During export, you provide configuration values that allow PowerApps and Microsoft Flow to authenticate users.
 
-In deze sectie worden de verificatie typen beschreven die worden ondersteund in de **Express** -modus: API-sleutel, Azure Active Directory en algemene OAuth 2,0. PowerApps en Microsoft Flow ondersteunen ook basis verificatie en OAuth 2,0 voor specifieke services zoals Dropbox, Facebook en Sales Force.
+This section covers the authentication types that are supported in **Express** mode: API key, Azure Active Directory, and Generic OAuth 2.0. PowerApps and Microsoft Flow also support Basic Authentication, and OAuth 2.0 for specific services like Dropbox, Facebook, and SalesForce.
 
-### <a name="api-key"></a>API-sleutel
-Wanneer u een API-sleutel gebruikt, worden de gebruikers van uw connector gevraagd de sleutel op te geven wanneer ze een verbinding maken. U geeft de naam van een API-sleutel op om ze te helpen begrijpen welke sleutel nodig is. In het vorige voor beeld gebruiken we de naam `API Key (contact meganb@contoso.com)` zodat mensen weten waar ze informatie over de API-sleutel moeten ophalen. Voor Azure Functions is de sleutel doorgaans een van de sleutels van de host, die betrekking hebben op verschillende functies in de functie-app.
+### <a name="api-key"></a>API key
+When using an API key, the users of your connector are prompted to provide the key when they create a connection. You specify an API key name to help them understand which key is needed. In the earlier example, we use the name `API Key (contact meganb@contoso.com)` so people know where to get information about the API key. For Azure Functions, the key is typically one of the host keys, covering several functions within the function app.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
-Wanneer u Azure AD gebruikt, hebt u twee Azure AD-toepassings registraties nodig: een voor de API zelf en één voor de aangepaste connector:
+When using Azure AD, you need two Azure AD application registrations: one for the API itself, and one for the custom connector:
 
-- Als u de registratie voor de API wilt configureren, gebruikt u de functie voor [app service verificatie/autorisatie](../app-service/configure-authentication-provider-aad.md) .
+- To configure registration for the API, use the [App Service Authentication/Authorization](../app-service/configure-authentication-provider-aad.md) feature.
 
-- Als u registratie voor de connector wilt configureren, volgt u de stappen in [een Azure AD-toepassing toevoegen](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). De registratie moet gedelegeerde toegang hebben tot uw API en een antwoord-URL van `https://msmanaged-na.consent.azure-apim.net/redirect`. 
+- To configure registration for the connector, follow the steps in [Adding an Azure AD application](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications). The registration must have delegated access to your API and a reply URL of `https://msmanaged-na.consent.azure-apim.net/redirect`. 
 
-Zie de registratie voorbeelden van Azure AD voor [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) en [Microsoft flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication)voor meer informatie. In deze voor beelden wordt Azure Resource Manager als de API gebruikt. Vervang de API door de volgende stappen uit te voeren.
+For more information, see the Azure AD registration examples for [PowerApps](https://powerapps.microsoft.com/tutorials/customapi-azure-resource-manager-tutorial/) and [Microsoft Flow](https://docs.microsoft.com/connectors/custom-connectors/azure-active-directory-authentication). These examples use Azure Resource Manager as the API; substitute your API if you follow the steps.
 
-De volgende configuratie waarden zijn vereist:
-- **Client-id** : de client-id van de connector Azure AD-registratie
-- **Client geheim** : het client geheim van uw connector Azure AD-registratie
-- **Aanmeldings-URL** : de basis-URL voor Azure AD. In azure wordt dit doorgaans `https://login.windows.net`.
-- **Tenant-id** : de id van de Tenant die moet worden gebruikt voor de aanmelding. Dit moet ' common ' zijn of de ID van de Tenant waarin de connector is gemaakt.
-- **Bron-URL** : de bron-URL van de Azure AD-registratie voor uw API
+The following configuration values are required:
+- **Client ID** - the client ID of your connector Azure AD registration
+- **Client secret** - the client secret of your connector Azure AD registration
+- **Login URL** - the base URL for Azure AD. In Azure, this is typically `https://login.windows.net`.
+- **Tenant ID** - the ID of the tenant to be used for the login. This should be "common" or the ID of the tenant in which the connector is created.
+- **Resource URL** - the resource URL of the Azure AD registration for your API
 
 > [!IMPORTANT]
-> Als iemand anders de API-definitie gaat importeren in PowerApps en Microsoft Flow als onderdeel van de hand matige stroom, moet u deze opgeven met de client-ID en het client geheim van de registratie van de *connector*, evenals de bron-URL van uw API. Zorg ervoor dat deze geheimen veilig worden beheerd. **Deel de beveiligings referenties van de API zelf niet.**
+> If someone else will import the API definition into PowerApps and Microsoft Flow as part of the manual flow, you must provide them with the client ID and client secret of the *connector registration*, as well as the resource URL of your API. Make sure that these secrets are managed securely. **Do not share the security credentials of the API itself.**
 
-### <a name="generic-oauth-20"></a>Algemene OAuth 2,0
-Wanneer u algemene OAuth 2,0 gebruikt, kunt u integreren met elke OAuth 2,0-provider. Zo kunt u werken met aangepaste providers die niet systeem eigen worden ondersteund.
+### <a name="generic-oauth-20"></a>Generic OAuth 2.0
+When using generic OAuth 2.0, you can integrate with any OAuth 2.0 provider. This allows you to work with custom providers that are not natively supported.
 
-De volgende configuratie waarden zijn vereist:
-- **Client-id** : de OAuth 2,0-client-id
-- **Client geheim** : het OAuth 2,0-client geheim
-- **Autorisatie-URL** : de OAuth 2,0-autorisatie-URL
-- **URL van token** : de URL van het OAuth 2,0-token
-- **URL vernieuwen** -de OAuth 2,0-vernieuwings-URL
+The following configuration values are required:
+- **Client ID** - the OAuth 2.0 client ID
+- **Client secret** - the OAuth 2.0 client secret
+- **Authorization URL** - the OAuth 2.0 authorization URL
+- **Token URL** - the OAuth 2.0 token URL
+- **Refresh URL** - the OAuth 2.0 refresh URL
 
 

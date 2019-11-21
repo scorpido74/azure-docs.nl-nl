@@ -1,6 +1,6 @@
 ---
-title: Aanvraag proces en e-mail meldingen in het beheer van rechten van Azure AD-Azure Active Directory
-description: Meer informatie over het aanvraag proces voor een toegangs pakket en wanneer e-mail meldingen worden verzonden in Azure Active Directory rechten beheer.
+title: Request process and email notifications in Azure AD entitlement management - Azure Active Directory
+description: Learn about the request process for an access package and when email notifications are sent in Azure Active Directory entitlement management.
 services: active-directory
 documentationCenter: ''
 author: msaburnley
@@ -12,121 +12,147 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/30/2019
+ms.date: 11/11/2019
 ms.author: ajburnle
 ms.reviewer: mamkumar
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e34d2c69cc808552a3b0c604804f3cd2597b379b
-ms.sourcegitcommit: fa5ce8924930f56bcac17f6c2a359c1a5b9660c9
+ms.openlocfilehash: f336e9f2bdf1553a72bdc35fecc1b0b735fad274
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/31/2019
-ms.locfileid: "73199924"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74206942"
 ---
-# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Aanvraag proces en e-mail meldingen in het beheer van rechten van Azure AD
+# <a name="request-process-and-email-notifications-in-azure-ad-entitlement-management"></a>Request process and email notifications in Azure AD entitlement management
 
-Wanneer een gebruiker een aanvraag indient bij een toegangs pakket, begint een proces met het leveren van die toegangs aanvraag. Het Azure AD-rechts beheer verzendt e-mail meldingen naar goed keurders en aanvragers wanneer er belang rijke gebeurtenissen optreden tijdens het proces. In dit artikel worden het aanvraag proces en de e-mail meldingen beschreven die worden verzonden.
+When a user submits a request to an access package, a process begins to deliver that access request. Azure AD entitlement management sends email notifications to approvers and requestors when key events occur during the process. This article describes the request process and the email notifications that are sent.
 
-## <a name="request-process"></a>Aanvraag proces
+## <a name="request-process"></a>Request process
 
-Een gebruiker die toegang tot een toegangs pakket nodig heeft, kan een toegangs aanvraag indienen. Afhankelijk van de configuratie van het beleid, kan de aanvraag een goed keuring vereisen. Wanneer een aanvraag wordt goedgekeurd, begint een proces met het toewijzen van de gebruikers toegang tot elke resource in het toegangs pakket. In het volgende diagram ziet u een overzicht van het proces en de verschillende statussen:
+A user that needs access to an access package can submit an access request. Depending on the configuration of the policy, the request might require an approval. When a request is approved, a process begins to assign the user access to each resource in the access package. The following diagram shows an overview of the process and the different states:
 
-![Diagram goedkeurings proces](./media/entitlement-management-process/request-process.png)
+![Approval process diagram](./media/entitlement-management-process/request-process.png)
 
 | Staat | Beschrijving |
 | --- | --- |
-| Gestelde | Gebruiker een aanvraag indient. |
-| Goed keuring in behandeling | Als voor het beleid voor een toegangs pakket goed keuring is vereist, wordt een aanvraag verplaatst naar wachtende goed keuring. |
-| Verlopen | Als geen goed keurders een aanvraag binnen de time-out van de goedkeurings aanvraag goed keuren, verloopt de aanvraag. Als u het opnieuw wilt proberen, moet de gebruiker de aanvraag opnieuw verzenden. |
-| Verboden | Goed keurder weigert een aanvraag. |
-| Goedgekeurd | Goed keurder keurt een aanvraag goed. |
-| Leveren | Aan de gebruiker is **geen** toegang toegewezen tot alle resources in het toegangs pakket. Als dit een externe gebruiker is, heeft de gebruiker mogelijk nog geen toegang tot de resource directory en heeft hij de toestemming prompt geaccepteerd. |
-| Afgeleverd | Aan de gebruiker is toegang toegewezen tot alle resources in het toegangs pakket. |
-| Toegang uitgebreid | Als de uitbrei dingen in het beleid zijn toegestaan, wordt de toewijzing door de gebruiker uitgebreid. |
-| Toegang is verlopen | De toegang van de gebruiker tot het toegangs pakket is verlopen. Als u opnieuw toegang wilt krijgen, moet de gebruiker een aanvraag indienen. |
+| Submitted | User submits a request. |
+| Pending approval | If the policy for an access package requires approval, a request moves to pending approval. |
+| Verlopen | If no approvers approve a request within the approval request timeout, the request expires. To try again, the user will have to resubmit their request. |
+| Denied | Approver denies a request. |
+| Goedgekeurd | Approver approves a request. |
+| Delivering | User has **not** been assigned access to all the resources in the access package. If this is an external user, the user may not have accessed the resource directory yet. They also may not have accepted the consent prompt. |
+| Afgeleverd | User has been assigned access to all the resources in the access package. |
+| Access extended | If extensions are allowed in the policy, the user extended the assignment. |
+| Access expired | User's access to the access package has expired. To get access again, the user will have to submit a request. |
 
 ## <a name="email-notifications"></a>E-mailmeldingen
 
-Als u een goed keurder bent, ontvangt u e-mail meldingen wanneer u een toegangs aanvraag moet goed keuren en wanneer een toegangs aanvraag is voltooid. Als u een aanvrager bent, worden er e-mail meldingen verzonden die de status van uw aanvraag aangeven.
+If you're an approver, you're sent email notifications when you need to approve an access request. You also receive notifications when an access request has been completed. You're also sent email notifications that indicate the status of your request if you're a requestor.
 
-In de volgende diagrammen ziet u wanneer deze e-mail meldingen worden verzonden naar de goed keurders of de aanvrager. Raadpleeg de [tabel e-mail meldingen](entitlement-management-process.md#email-notifications-table) om het overeenkomende nummer te vinden voor de e-mail meldingen die in de diagrammen worden weer gegeven.
+The following diagrams show when these email notifications are sent to either the approvers or the requestor. Reference the [email notifications table](entitlement-management-process.md#email-notifications-table) to find the corresponding number to the email notifications displayed in the diagrams.
 
-### <a name="primary-approvers-and-alternate-approvers"></a>Primaire goed keurders en alternatieve goed keurders
-In het volgende diagram ziet u de ervaring van primaire goed keurders en alternatieve goed keurders en de e-mail meldingen die ze ontvangen tijdens het aanvraag proces:
+### <a name="first-approvers-and-alternate-approvers"></a>First approvers and alternate approvers
+The following diagram shows the experience of first approvers and alternate approvers, and the email notifications they receive during the request process:
 
-![Proces stroom voor primaire en alternatieve goed keurders](./media/entitlement-management-process/primary-approvers-and-alternate-with-escalation-flow.png)
+![First and alternate approvers process flow](./media/entitlement-management-process/first-approvers-and-alternate-with-escalation-flow.png)
 
 ### <a name="requestors"></a>Aanvragers
-In het volgende diagram ziet u de ervaring van aanvragers en de e-mail meldingen die worden ontvangen tijdens het aanvraag proces:
+The following diagram shows the experience of requestors and the email notifications they receive during the request process:
 
-![Proces stroom van de aanvrager](./media/entitlement-management-process/requestor-approval-and-expiration-request-flow.png)
+![Requestor process flow](./media/entitlement-management-process/requestor-approval-request-flow.png)
 
-### <a name="email-notifications-table"></a>Tabel met e-mail meldingen
-De volgende tabel bevat meer details over elk van deze e-mail meldingen. Als u deze e-mail berichten wilt beheren, kunt u regels gebruiken. In Outlook kunt u bijvoorbeeld regels maken om de e-mail berichten naar een map te verplaatsen als het onderwerp woorden uit deze tabel bevat:
+### <a name="2-stage-approval"></a>2-stage approval
+The following diagram shows the experience of stage-1 and stage-2 approvers and the email notifications they receive during the request process:
 
-| # | E-mail onderwerp | Na verzen ding | Verzonden naar |
+![2-stage approval process flow](./media/entitlement-management-process/2stage-approval-with-request-timeout-flow.png)
+
+### <a name="email-notifications-table"></a>Email notifications table
+The following table provides more detail about each of these email notifications. To manage these emails, you can use rules. For example, in Outlook, you can create rules to move the emails to a folder if the subject contains words from this table:
+
+| # | Email subject | When sent | Sent to |
 | --- | --- | --- | --- |
-| 1 | Actie vereist: doorgestuurde aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar fase-1 alternatieve goed keurders (nadat de aanvraag is geëscaleerd) om actie te ondernemen. | Fase-1 alternatieve fiatteur |
-| 2 | Actie vereist: aanvraag goed keuren of weigeren voor *[date]* | Deze e-mail wordt verzonden naar fase 1 primaire goed keurders, als escalatie is uitgeschakeld, om actie te ondernemen. | Fase-1 primaire goed keurder |
-| 3 | Herinnering: de aanvraag goed keuren of weigeren voor *[date]* voor *[aanvrager]* | Deze herinnerings-e-mail wordt verzonden naar fase 1 primaire goed keurders, als escalatie is uitgeschakeld, om actie te ondernemen, alleen wanneer er nog geen actie is ondernomen. | Fase-1 primaire goed keurder |
-| 4 | De aanvraag wordt goedgekeurd of geweigerd door *[time]* op *[date]* | Deze e-mail wordt verzonden naar fase 1 primaire goed keurders (als escalatie is ingeschakeld) om actie te ondernemen. | Fase-1 primaire goed keurder |
-| 5 | Herinnering voor actie vereist: Hiermee wordt de aanvraag goedgekeurd of geweigerd voor [ *date]* voor *[aanvrager]* | Deze herinnerings-e-mail wordt verzonden naar fase 1 primaire goed keurders, als escalatie is ingeschakeld, om actie te ondernemen, alleen wanneer ze nog geen actie hebben ondernomen. | Fase-1 primaire goed keurder |
-| 6 | De aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar fase 1 primaire goed keurders en/of fase 1 alternatieve goed keurders, van een aanvraag voor één of meerdere fase, nadat de aanvraag is verlopen. | Fase-1 primaire goed keurder, fase-1 alternatieve fiatteur |
-| 7 | Aanvraag goedgekeurd voor *[aanvrager]* in *[access_package]* | Deze e-mail wordt verzonden naar de fase-1 primaire goed keurders en/of fase-1 alternatieve goed keurders, nadat een aanvraag is voltooid. | Fase-1 primaire goed keurder, fase-1 alternatieve fiatteur |
-| 8 | Aanvraag goedgekeurd voor *[aanvrager]* in *[access_package]* | Deze e-mail wordt verzonden naar de fase-1 primaire goed keurders en/of fase 1 alternatieve goed keurders, van een aanvraag met twee fasen, alleen als fase-1 wordt goedgekeurd. | Fase-1 primaire goed keurder, fase-1 alternatieve fiatteur |
-| 9 | De aanvraag is geweigerd voor *[access_package]* | Deze e-mail wordt alleen naar de aanvrager verzonden wanneer zijn aanvraag is geweigerd | Aanvrager |
-| 10 | Uw aanvraag is verlopen voor *[access_package]* | Deze e-mail wordt verzonden naar de aanvrager aan het einde van fase 1, van een aanvraag voor één of meerdere fase, nadat de aanvraag is verlopen. | Aanvrager |
-| 18 | U hebt nu toegang tot *[access_package]* | Deze e-mail wordt verzonden naar de eind gebruikers om te beginnen met het gebruik van hun toegang. | Aanvrager |
-| 19 | Toegang voor *[access_package]* uitbreiden op *[date]* | Deze e-mail wordt verzonden naar de eind gebruiker voordat de toegang verloopt. | Aanvrager |
-| 20 | De toegang is beëindigd voor *[access_package]* | Deze e-mail wordt verzonden naar de eind gebruikers nadat de toegang is verlopen. | Aanvrager |
+| 1 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to Stage-1 alternate approvers (after the request has been escalated) to take action. | Stage-1 alternate approvers |
+| 2 | Action required: Approve or deny request by *[date]* | This email will be sent to the first approver, if escalation is disabled, to take action. | First approver |
+| 3 | Reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is disabled. The email asks them to take action if they haven't. | First approver |
+| 4 | Approve or deny the request by *[time]* on *[date]* | This email will be sent to the first approver (if escalation is enabled) to take action. | First approver |
+| 5 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the first approver, if escalation is enabled. The email asks them to take action if they haven't. | First approver |
+| 6 | Request has expired for *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers after the request has expired. | First approver, stage-1 alternate approvers |
+| 7 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers upon request completion. | First approver, stage-1 alternate approvers |
+| 8 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the first approver and stage-1 alternate approvers of a 2-stage request when the stage-1 request is approved. | First approver, stage-1 alternate approvers |
+| 9 | Request denied to *[access_package]* | This email will be sent to the requestor when their request is denied | Requestor |
+| 10 | Your request has expired for *[access_package]* | This email will be sent to the requestor at the end of a single or 2-stage request. The email notifies the requestor that the request expired. | Requestor |
+| 11 | Action required: Approve or deny request by *[date]* | This email will be sent to the second approver, if escalation is disabled, to take action. | Second approver |
+| 12 | Action required reminder: Approve or deny the request by *[date]* | This reminder email will be sent to the second approver, if escalation is disabled. The notification asks them to take action if they haven't yet. | Second approver |
+| 13 | Action required: Approve or deny the request by *[date]* for *[requestor]* | This email will be sent to second approver, if escalation is enabled, to take action. | Second approver |
+| 14 | Action required reminder: Approve or deny the request by *[date]* for *[requestor]* | This reminder email will be sent to the second approver, if escalation is enabled. The notification asks them to take action if they haven't yet. | Second approver |
+| 15 | Action required: Approve or deny forwarded request by *[date]* | This email will be sent to stage-2 alternate approvers, if escalation is enabled, to take action. | Stage-2 alternate approvers |
+| 16 | Request approved for *[requestor]* to *[access_package]* | This email will be sent to the second approver and stage-2 alternate approvers upon approving the request. | Second approver, Stage-2 alternate approvers |
+| 17 | A request has expired for *[access_package]* | This email will be sent to the second approver or alternate approvers, after the request expires. | Second approver, stage-2 alternate approvers |
+| 18 | You now have access to *[access_package]* | This email will be sent to the end users to start using their access. | Requestor |
+| 19 | Extend access for *[access_package]* by *[date]* | This email will be sent to the end users before their access expires. | Requestor |
+| 20 | Access has ended for *[access_package]* | This email will be sent to the end users after their access expires. | Requestor |
 
-### <a name="access-request-emails"></a>E-mail berichten voor toegang
+### <a name="access-request-emails"></a>Access request emails
 
-Wanneer een aanvrager een toegangs aanvraag indient voor een toegangs pakket dat is geconfigureerd om goed keuring te vereisen, ontvangt alle goed keurders die zijn toegevoegd aan het beleid een e-mail melding met de details van de aanvraag. Details bevatten de naam van de aanvrager, de organisatie, de start-en eind datum van de toegang (indien opgegeven), zakelijke rechtvaardiging, wanneer de aanvraag is ingediend en wanneer de aanvraag verloopt.
+When a requestor submits an access request for an access package configured to require approval, all approvers added to the policy will receive an email notification with details of the request. The details in the email include: requestor's name organization, and business justification; and the requested access start and end date (if provided). The details will also include when the request was submitted and when the request will expire.
 
-Het e-mail bericht bevat een koppeling goed keurders kunnen klikken om naar Myaccess te gaan om de toegangs aanvraag goed te keuren of te weigeren. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een goed keurder wanneer een aanvrager een toegangs aanvraag indient:
+The email includes a link approvers can click on to go to My Access to approve or deny the access request. Here is a sample email notification that is sent to the first approver or second approver (if 2-stage approval is enabled) to complete an access request:
 
-![Aanvraag voor toegang tot pakket e-mail goed keuren](./media/entitlement-management-shared/approver-request-email.png)
+![Approve request to access package email](./media/entitlement-management-shared/approver-request-email.png)
 
-De primaire goed keurders worden ook een e-mail melding verzonden met een herinnering om actie te ondernemen en een beslissing te nemen voor de aanvraag. Hier volgt een voor beeld van een e-mail bericht van de primaire fiatteurs van de melding om hen te herinneren actie te ondernemen:
+Approvers can also receive a reminder email. The email asks the approver to make a decision on the request. Here is a sample email notification the approver receives to remind them to take action:
 
-![E-mail voor herinnerings toegang](./media/entitlement-management-process/approver-access-request-reminder-email.png)
+![Reminder access request email](./media/entitlement-management-process/approver-access-request-reminder-email.png)
 
-### <a name="alternate-approver-request-emails"></a>E-mail berichten alternatieve fiatteur aanvraag
+### <a name="alternate-approvers-request-emails"></a>Alternate approvers request emails
 
-Als het door sturen naar alternatieve goed keurders is ingeschakeld, per doorstuur beleid, wordt de aanvraag doorgestuurd als de aanvraag nog in behandeling is. De alternatieve goed keurder ontvangt een e-mail melding voor het goed keuren of weigeren van de aanvraag. Hier volgt een voor beeld van een e-mail bericht van de melding dat de alternatieve goed keurders worden ontvangen:
+If the alternate approvers setting is enabled and the request is still pending, it will be forwarded. Alternate approvers will receive an email to approve or deny the request. You can enable alternate approvers in stage-1 and stage-2. Here is a sample email of the notification the alternate approvers receive:
 
-![Alternatieve aanvraag e-mail voor goed keurder](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
+![Alternate approvers request email](./media/entitlement-management-process/alternate-approver-email-fwd-request.png)
 
-Beide, de primaire goed keurders en de alternatieve goed keurders kunnen de aanvraag goed keuren of weigeren.
+Both the approver and the alternate approvers can approve or deny the request.
 
-### <a name="approved-or-denied-emails"></a>Goedgekeurde of geweigerde e-mail berichten
+### <a name="approved-or-denied-emails"></a>Approved or denied emails
 
-Aanvragers worden gewaarschuwd wanneer hun toegangs aanvraag wordt goedgekeurd en beschikbaar voor toegang, of wanneer hun toegangs aanvraag wordt geweigerd. Wanneer een goed keurder een toegangs aanvraag ontvangt die door een aanvrager is ingediend, kan hij of zij de toegangs aanvraag goed keuren of weigeren. De fiatteur moet een zakelijke rechtvaardiging toevoegen voor hun beslissing. Hier volgt een voor beeld van een e-mail bericht dat wordt verzonden naar primaire of alternatieve goed keurders nadat een aanvraag is goedgekeurd:
+ When an approver receives an access request submitted by a requestor, they can approve or deny the access request. The approver needs to add a business justification for their decision. Here is a sample email sent to the approvers and alternate approvers after a request is approved:
 
-![E-mail van toegangs aanvraag controleren](./media/entitlement-management-process/approver-request-email-approved.png)
+![Approved request to access package email](./media/entitlement-management-process/approver-request-email-approved.png)
 
-Wanneer een toegangs aanvraag wordt goedgekeurd en de toegang is ingericht, wordt er een e-mail melding verzonden naar de aanvrager dat ze nu toegang tot het toegangs pakket hebben. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een aanvrager wanneer ze toegang krijgen tot een toegangs pakket:
+When an access request is approved, and their access is provisioned, an email notification is sent to the requestor that they now have access to the access package. Here is a sample email notification that is sent to a requestor when they're granted access to an access package:
 
-![Verlopen e-mail met toegangs aanvraag](./media/entitlement-management-process/requestor-email-approved.png)
+![Approved requestor access request email](./media/entitlement-management-process/requestor-email-approved.png)
 
-Wanneer een toegangs aanvraag wordt geweigerd, wordt een e-mail melding verzonden naar de aanvrager. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een aanvrager wanneer hun toegangs aanvraag wordt geweigerd:
+When an access request is denied, an email notification is sent to the requestor. Here is a sample email notification that is sent to a requestor when their access request is denied:
 
-![E-mail afgewezen aanvraag geweigerd](./media/entitlement-management-process/requestor-email-denied.png)
+![Requestor request denied email](./media/entitlement-management-process/requestor-email-denied.png)
 
-### <a name="expired-access-request-emails"></a>Verlopen e-mail berichten voor toegang
+### <a name="2-stage-approval-access-request-emails"></a>2-stage approval access request emails
 
-Toegangs aanvragen kunnen verlopen als geen fiatteur de aanvraag heeft goedgekeurd of geweigerd. 
+If 2-stage approval is enabled, at least two approvers must approve the request, one from each stage, before the requestor can receive access.
 
-Wanneer de aanvraag de geconfigureerde verloop datum bereikt en verloopt, kan deze niet meer worden goedgekeurd of geweigerd door de goed keurders. Hier volgt een voor beeld van een e-mail bericht van de melding die wordt verzonden naar alle primaire en alternatieve goed keurders:
+During stage-1, the first approver will receive the access request email and make a decision. If they approve the request, all first approvers and alternate approvers in stage-1 (if escalation is enabled) will receive notification that stage-1 is complete. Here is a sample email of the notification that is sent when stage-1 is complete:
 
- ![E-mail met verlopen toegang aanvragen voor goed keurders](./media/entitlement-management-process/approver-request-email-expired.png)
+![2-stage access request email](./media/entitlement-management-process/approver-request-email-2stage.png)
 
- Er wordt ook een e-mail melding verzonden naar de aanvrager, waarin wordt gemeld dat hun toegangs aanvraag is verlopen en dat de toegangs aanvraag opnieuw moet worden ingediend. Hier volgt een voor beeld van een e-mail melding die wordt verzonden naar een aanvrager wanneer hun toegangs aanvraag is verlopen:
+After the first or alternate approvers approve the request in stage-1, stage-2 begins. During stage-2, the second approver will receive the access request notification email. After the second approver or alternate approvers in stage-2 (if escalation is enabled) decide to approve or deny the request, notification emails are sent to the first and second approvers, and all alternate approvers in stage-1 and stage-2, as well as the requestor.
 
-![E-mail met verlopen verzoeken voor aanvrager](./media/entitlement-management-process/requestor-email-request-expired.png)
+### <a name="expired-access-request-emails"></a>Expired access request emails
+
+Access requests could expire if no approver has approved or denied the request. 
+
+When the request reaches its configured expiration date and expires, it can no longer be approved or denied by the approvers. Here is a sample email of the notification sent to all of the first, second (if 2-stage approval is enabled), and alternate approvers:
+
+![Approvers expired access request email](./media/entitlement-management-process/approver-request-email-expired.png)
+
+An email notification is also sent to the requestor, notifying them that their access request has expired, and that they need to resubmit the access request. The following diagram shows the experience of the requestor and the email notifications they receive when they request to extend access:
+
+![Requestor extend access process flow](./media/entitlement-management-process/requestor-expiration-request-flow.png) 
+
+Here is a sample email notification that is sent to a requestor when their access request has expired:
+
+![Requestor expired access request email](./media/entitlement-management-process/requestor-email-request-expired.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toegang aanvragen tot een toegangs pakket](entitlement-management-request-access.md)
-- [Toegangs aanvragen goed keuren of weigeren](entitlement-management-request-approve.md)
+- [Request access to an access package](entitlement-management-request-access.md)
+- [Approve or deny access requests](entitlement-management-request-approve.md)

@@ -1,6 +1,6 @@
 ---
-title: Metrische waarschuwingen maken voor logboeken in Azure Monitor
-description: Zelf studie over het maken van waarschuwingen voor bijna realtime metrische gegevens op de populaire log Analytics-Data.
+title: Creating Metric Alerts for Logs in Azure Monitor
+description: Tutorial on creating near-real time metric alerts on popular log analytics data.
 author: yanivlavi
 services: monitoring
 ms.service: azure-monitor
@@ -8,83 +8,83 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 80ad38856686229c259730bb4e4a8fcd38d5df4f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: d6b65b76138cb180ab105631ebc0f19b7d38f206
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677785"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226523"
 ---
-# <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrische waarschuwingen maken voor logboeken in Azure Monitor
+# <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Create Metric Alerts for Logs in Azure Monitor
 
 ## <a name="overview"></a>Overzicht
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Azure Monitor ondersteunt het [type metrische waarschuwing](../../azure-monitor/platform/alerts-metric-near-real-time.md) dat voor delen heeft ten opzichte van de [klassieke waarschuwingen](../../azure-monitor/platform/alerts-classic-portal.md). Metrische gegevens zijn beschikbaar voor een [grote lijst met Azure-Services](../../azure-monitor/platform/metrics-supported.md). In dit artikel wordt het gebruik van een subset (dat wil zeggen) voor resource-`Microsoft.OperationalInsights/workspaces` uitgelegd.
+Azure Monitor supports [metric alert type](../../azure-monitor/platform/alerts-metric-near-real-time.md) which has benefits over the [classic alerts](../../azure-monitor/platform/alerts-classic-portal.md). Metrics are available for [large list of Azure services](../../azure-monitor/platform/metrics-supported.md). This article explains usage of a subset (that is) for resource - `Microsoft.OperationalInsights/workspaces`.
 
-U kunt metrische waarschuwingen gebruiken in populaire Log Analytics logboeken die als meet waarden worden geëxtraheerd als onderdeel van de gegevens in Logboeken, inclusief resources in azure of on-premises. De ondersteunde Log Analytics oplossingen worden hieronder weer gegeven:
+You can use metric alerts on popular Log Analytics logs extracted as metrics as part of Metrics from Logs including resources in Azure or on-premises. The supported Log Analytics solutions are listed below:
 
-- [Prestatie meter items](../../azure-monitor/platform/data-sources-performance-counters.md) voor Windows & Linux-machines
-- [Heartbeat-records voor Status van agent](../../azure-monitor/insights/solution-agenthealth.md)
-- [Update beheer](../../automation/automation-update-management.md) records
-- Logboeken met [gebeurtenis gegevens](../../azure-monitor/platform/data-sources-windows-events.md)
+- [Performance counters](../../azure-monitor/platform/data-sources-performance-counters.md) for Windows & Linux machines
+- [Heartbeat records for Agent Health](../../azure-monitor/insights/solution-agenthealth.md)
+- [Update management](../../automation/automation-update-management.md) records
+- [Event data](../../azure-monitor/platform/data-sources-windows-events.md) logs
 
-Er zijn veel voor delen voor het gebruik van **metrische waarschuwingen voor logboeken** die zijn gebaseerd op query [waarschuwingen](../../azure-monitor/platform/alerts-log.md) in Azure. enkele hiervan worden hieronder weer gegeven:
+There are many benefits for using **Metric Alerts for Logs** over query based [Log Alerts](../../azure-monitor/platform/alerts-log.md) in Azure; some of them are listed below:
 
-- Metrische waarschuwingen bieden bijna realtime bewakings mogelijkheden en metrische waarschuwingen voor logboeken worden gegevens uit de logboek bron gevorken om ervoor te zorgen.
-- Metrische waarschuwingen zijn stateful-slechts eenmaal meldingen wanneer een waarschuwing wordt geactiveerd en eenmaal wanneer de waarschuwing is opgelost; in tegens telling tot logboek waarschuwingen, die stateless zijn en tijdens elk interval worden geactiveerd als aan de voor waarde van de waarschuwing wordt voldaan.
-- Metrische waarschuwingen voor het logboek bieden meerdere dimensies, waardoor filteren kan worden toegepast op specifieke waarden, zoals computers, type besturings systeem, enzovoort. zonder de behoefte aan penning-query in Analytics.
-
-> [!NOTE]
-> Specifieke metriek en/of dimensie worden alleen weer gegeven als de gegevens in de gekozen periode aanwezig zijn. Deze metrische gegevens zijn beschikbaar voor klanten met Azure Log Analytics-werk ruimten.
-
-## <a name="metrics-and-dimensions-supported-for-logs"></a>Metrische gegevens en dimensies die worden ondersteund voor logboeken
-
- Metrische waarschuwingen ondersteunen waarschuwingen voor metrische gegevens die gebruikmaken van dimensies. U kunt dimensies gebruiken om uw metrische gegevens te filteren op het juiste niveau. De volledige lijst met metrische gegevens die worden ondersteund voor logboeken vanuit [log Analytics werk ruimten](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) wordt vermeld. over ondersteunde oplossingen.
+- Metric Alerts offer near-real time monitoring capability and Metric Alerts for Logs forks data from log source to ensure the same.
+- Metric Alerts are stateful - only notifying once when alert is fired and once when alert is resolved; as opposed to Log alerts, which are stateless and keep firing at every interval if the alert condition is met.
+- Metric Alerts for Log provide multiple dimensions, allowing filtering to specific values like Computers, OS Type, etc. simpler; without the need for penning query in analytics.
 
 > [!NOTE]
-> Om ondersteunde metrische gegevens weer te geven die worden geëxtraheerd uit Log Analytics werk ruimte via [Azure monitor metrieken](../../azure-monitor/platform/metrics-charts.md); Er moet een metrische waarschuwing voor het logboek worden gemaakt voor de bedoelde metriek. De dimensies die u hebt gekozen in metrische waarschuwing voor logboeken, worden alleen weer gegeven voor verkennen via Azure Monitor metrieken.
+> Specific metric and/or dimension will only be shown if data for it exists in chosen period. These metrics are available for customers with Azure Log Analytics workspaces.
 
-## <a name="creating-metric-alert-for-log-analytics"></a>Waarschuwing voor metrische gegevens maken voor Log Analytics
+## <a name="metrics-and-dimensions-supported-for-logs"></a>Metrics and dimensions supported for logs
 
-Metrische gegevens uit populaire logboeken worden gepiped voordat deze in Log Analytics wordt verwerkt, in Azure Monitor metrieke waarden. Op deze manier kunnen gebruikers gebruikmaken van de mogelijkheden van het metrische platform en de metrische waarschuwing, met inbegrip van waarschuwingen met een frequentie van minder dan 1 minuut.
-Hieronder ziet u de mogelijkheid om een metrische waarschuwing voor logboeken te maken.
-
-## <a name="prerequisites-for-metric-alert-for-logs"></a>Vereisten voor de metrische waarschuwing voor logboeken
-
-Voordat de metriek wordt vastgelegd voor logboeken die zijn verzameld op Log Analytics gegevens, moet het volgende worden ingesteld en beschikbaar zijn:
-
-1. **Actieve log Analytics-werk ruimte**: Er moet een geldige en actieve Log Analytics-werk ruimte aanwezig zijn. Zie [een log Analytics-werk ruimte maken in azure Portal](../../azure-monitor/learn/quick-create-workspace.md)voor meer informatie.
-2. De **agent is geconfigureerd voor log Analytics-werk ruimte**: De agent moet worden geconfigureerd voor virtuele Azure-machines (en/of) op lokale Vm's om gegevens te verzenden naar de Log Analytics werk ruimte die in de vorige stap wordt gebruikt. Zie [log Analytics-agent Overview (](../../azure-monitor/platform/agents-overview.md)Engelstalig) voor meer informatie.
-3. **Ondersteunde log Analytics oplossingen is geïnstalleerd**: Log Analytics oplossing moet worden geconfigureerd en het verzenden van gegevens naar Log Analytics werkruimte ondersteunde oplossingen zijn [prestatie meter items voor Windows & Linux](../../azure-monitor/platform/data-sources-performance-counters.md), [heartbeat-records voor status van agent](../../azure-monitor/insights/solution-agenthealth.md), [Update beheer](../../automation/automation-update-management.md)en [ Gebeurtenis gegevens](../../azure-monitor/platform/data-sources-windows-events.md).
-4. **Log Analytics oplossingen die zijn geconfigureerd voor het verzenden van Logboeken**: Log Analytics-oplossing moet de vereiste Logboeken/gegevens hebben die overeenkomen met [metrische waarden die worden ondersteund voor log Analytics-werk ruimten](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) . Bijvoorbeeld: voor het aantal *% beschik bare geheugen* van de functie moet eerst worden geconfigureerd in de oplossing voor [prestatie meter items](../../azure-monitor/platform/data-sources-performance-counters.md) .
-
-## <a name="configuring-metric-alert-for-logs"></a>Waarschuwing voor metrische gegevens voor logboeken configureren
-
- Metrische waarschuwingen kunnen worden gemaakt en beheerd met behulp van de Azure Portal, Resource Manager-sjablonen, REST API, Power shell en Azure CLI. Aangezien metrische waarschuwingen voor logboeken een variant van metrische waarschuwingen zijn: zodra de vereisten zijn uitgevoerd, kunnen er metrische waarschuwingen voor logboeken worden gemaakt voor de opgegeven Log Analytics-werk ruimte. Alle kenmerken en functies van [metrische waarschuwingen](../../azure-monitor/platform/alerts-metric-near-real-time.md) zijn ook van toepassing op metrische waarschuwingen voor Logboeken. inclusief Payload-schema, toepasselijke quotum limieten en gefactureerde prijzen.
-
-Zie [metrische waarschuwingen maken en beheren](https://aka.ms/createmetricalert)voor stapsgewijze Details en voor beelden. In het bijzonder, voor metrische waarschuwingen voor logboeken, volgt u de instructies voor het beheren van metrische waarschuwingen en zorgt u voor het volgende:
-
-- Doel voor metrische waarschuwing is een geldige *log Analytics-werk ruimte*
-- Het signaal dat is gekozen voor de metrische waarschuwing voor de geselecteerde *log Analytics werk ruimte* is van het type **metric**
-- Filteren op specifieke voor waarden of resources met behulp van dimensie filters; metrische gegevens voor logboeken zijn meerdere dimensies
-- Bij het configureren van de *signaal logica*kan één waarschuwing worden gemaakt om meerdere dimensie waarden (zoals computer) te omvatten
-- Als er **geen** Azure portal wordt gebruikt voor het maken van een metrische waarschuwing voor de geselecteerde *log Analytics werk ruimte*; vervolgens moet de gebruiker hand matig een expliciete regel maken voor het converteren van logboek gegevens naar een metriek met behulp van [Azure monitor geplande query regels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules).
+ Metric alerts support alerting for metrics that use dimensions. You can use dimensions to filter your metric to the right level. The full list of metrics supported for Logs from [Log Analytics workspaces](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) is listed; across supported solutions.
 
 > [!NOTE]
-> Bij het maken van een metrische waarschuwing voor Log Analytics werk ruimte via Azure Portal-overeenkomende regel voor het converteren van logboek gegevens naar metriek via [Azure monitor geplande query regels](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) worden automatisch op de achtergrond gemaakt, *zonder dat er een gebruiker nodig is interventie of actie*. Voor een metrische waarschuwing voor het maken van logboeken met behulp van een andere methode dan Azure Portal, Zie [resource sjabloon voor metrische waarschuwingen voor logboeken](#resource-template-for-metric-alerts-for-logs) in voor beeld van een ScheduledQueryRule op basis van metrische conversie regel voordat de metrische waarschuwing kan worden gemaakt. Er worden geen gegevens weer gegeven voor de metrische waarschuwing voor logboeken die zijn gemaakt.
+> To view supported metrics for being extracted from Log Analytics workspace via [Azure Monitor - Metrics](../../azure-monitor/platform/metrics-charts.md); a metric alert for log must be created for the said metric. The dimensions chosen in Metric Alert for logs - will only appear for exploration via Azure Monitor - Metrics.
 
-## <a name="resource-template-for-metric-alerts-for-logs"></a>Resource sjabloon voor metrische waarschuwingen voor logboeken
+## <a name="creating-metric-alert-for-log-analytics"></a>Creating metric alert for Log Analytics
 
-Zoals eerder vermeld, is het proces voor het maken van metrische waarschuwingen uit logboeken twee ledige:
+Metric data from popular logs is piped before it is processed in Log Analytics, into Azure Monitor - Metrics. This allows users to leverage the capabilities of the Metric platform as well as metric alert - including having alerts with frequency as low as 1 minute.
+Listed below are the means of crafting a metric alert for logs.
 
-1. Een regel maken voor het extra heren van metrische gegevens uit de ondersteunde logboeken met behulp van de scheduledQueryRule-API
-2. Een waarschuwing voor metrische gegevens maken voor metrische gegevens die zijn geëxtraheerd uit het logboek (in stap 1-4) en Log Analytics werk ruimte als doel resource
+## <a name="prerequisites-for-metric-alert-for-logs"></a>Prerequisites for Metric Alert for Logs
 
-### <a name="metric-alerts-for-logs-with-static-threshold"></a>Metrische waarschuwingen voor logboeken met statische drempel waarde
+Before Metric for Logs gathered on Log Analytics data works, the following must be set up and available:
 
-Om hetzelfde te krijgen, kunt u de voor beeld-Azure Resource Manager onderstaande sjabloon gebruiken, waarbij het maken van een waarschuwing voor een statische drempel waarde is afhankelijk van het maken van de regel voor het extra heren van metrische gegevens uit logboeken via scheduledQueryRule.
+1. **Active Log Analytics Workspace**: A valid and active Log Analytics workspace must be present. For more information, see [Create a Log Analytics Workspace in Azure portal](../../azure-monitor/learn/quick-create-workspace.md).
+2. **Agent is configured for Log Analytics Workspace**: Agent needs to be configured for Azure VMs (and/or) on-premises VMs to send data into the Log Analytics Workspace used in earlier step. For more information, see [Log Analytics - Agent Overview](../../azure-monitor/platform/agents-overview.md).
+3. **Supported Log Analytics Solutions is installed**: Log Analytics solution should be configured and sending data into Log Analytics workspace - supported solutions are [Performance counters for Windows & Linux](../../azure-monitor/platform/data-sources-performance-counters.md), [Heartbeat records for Agent Health](../../azure-monitor/insights/solution-agenthealth.md), [Update management](../../automation/automation-update-management.md), and [Event data](../../azure-monitor/platform/data-sources-windows-events.md).
+4. **Log Analytics solutions configured to send logs**: Log Analytics solution should have the required logs/data corresponding to [metrics supported for Log Analytics workspaces](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces) enabled. For example, for *% Available Memory* counter of it must be configured in [Performance counters](../../azure-monitor/platform/data-sources-performance-counters.md) solution first.
+
+## <a name="configuring-metric-alert-for-logs"></a>Configuring Metric Alert for Logs
+
+ Metric alerts can be created and managed using the Azure portal, Resource Manager Templates, REST API, PowerShell, and Azure CLI. Since Metric Alerts for Logs, is a variant of metric alerts - once the prerequisites are done, metric alert for logs can be created for specified Log Analytics workspace. All characteristics and functionalities of [metric alerts](../../azure-monitor/platform/alerts-metric-near-real-time.md) will be applicable to metric alerts for logs, as well; including payload schema, applicable quota limits, and billed price.
+
+For step-by-step details and samples - see [creating and managing metric alerts](https://aka.ms/createmetricalert). Specifically, for Metric Alerts for Logs - follow the instructions for managing metric alerts and ensure the following:
+
+- Target for metric alert is a valid *Log Analytics workspace*
+- Signal chosen for metric alert for selected *Log Analytics workspace* is of type **Metric**
+- Filter for specific conditions or resource using dimension filters; metrics for logs are multi-dimensional
+- When configuring *Signal Logic*, a single alert can be created to span multiple values of dimension (like Computer)
+- If **not** using Azure portal for creating metric alert for selected *Log Analytics workspace*; then user must manually first create an explicit rule for converting log data into a metric using [Azure Monitor - Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules).
+
+> [!NOTE]
+> When creating metric alert for Log Analytics workspace via Azure portal - corresponding rule for converting log data into metric via [Azure Monitor - Scheduled Query Rules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) is automatically created in background, *without the need of any user intervention or action*. For metric alert for logs creation using means other than Azure portal, see [Resource Template for Metric Alerts for Logs](#resource-template-for-metric-alerts-for-logs) section on sample means of creating a ScheduledQueryRule based log to metric conversion rule before metric alert creation - else there will be no data for the metric alert on logs created.
+
+## <a name="resource-template-for-metric-alerts-for-logs"></a>Resource Template for Metric Alerts for Logs
+
+As stated earlier, the process for creation of metric alerts from logs is two pronged:
+
+1. Create a rule for extracting metrics from supported logs using scheduledQueryRule API
+2. Create a metric alert for metric extracted from log (in step1) and Log Analytics workspace as a target resource
+
+### <a name="metric-alerts-for-logs-with-static-threshold"></a>Metric Alerts for Logs with static threshold
+
+To achieve the same, one can use the sample Azure Resource Manager Template below - where creation of a static threshold metric alert depends on successful creation of the rule for extracting metrics from logs via scheduledQueryRule.
 
 ```json
 {
@@ -301,7 +301,7 @@ Om hetzelfde te krijgen, kunt u de voor beeld-Azure Resource Manager onderstaand
 }
 ```
 
-Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertStatic. json. vervolgens kan deze worden gecombineerd met een JSON-parameter bestand voor het maken van een resource sjabloon. Hieronder vindt u een voor beeld van een JSON-bestand voor de para meter:
+Say the above JSON is saved as metricfromLogsAlertStatic.json - then it can be coupled with a parameter JSON file for Resource Template based creation. A sample parameter JSON file is listed below:
 
 ```json
 {
@@ -357,23 +357,23 @@ Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertStatic. json.
 }
 ```
 
-Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertStatic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Assuming the above parameter file is saved as metricfromLogsAlertStatic.parameters.json; then one can create metric alert for logs using [Resource Template for creation in Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-U kunt ook de Azure Power shell-opdracht hieronder ook gebruiken:
+Alternatively, one can use the Azure Powershell command below as well:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
-Of gebruik een resource sjabloon implementeren met behulp van Azure CLI:
+Or use deploy Resource Template using Azure CLI:
 
 ```CLI
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
-### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>Metrische waarschuwingen voor logboeken met dynamische drempel waarden
+### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>Metric Alerts for Logs with Dynamic Thresholds
 
-Om hetzelfde te halen, kunt u de voor beeld-Azure Resource Manager sjabloon hieronder gebruiken, waarbij een waarschuwing voor een dynamische drempel waarde wordt gemaakt, afhankelijk is van het maken van de regel voor het extra heren van metrische gegevens uit logboeken via scheduledQueryRule.
+To achieve the same, one can use the sample Azure Resource Manager Template below - where creation of a Dynamic Thresholds metric alert depends on successful creation of the rule for extracting metrics from logs via scheduledQueryRule.
 
 ```json
 {
@@ -611,7 +611,7 @@ Om hetzelfde te halen, kunt u de voor beeld-Azure Resource Manager sjabloon hier
 }
 ```
 
-Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertDynamic. json. vervolgens kan deze worden gecombineerd met een JSON-parameter bestand voor het maken van een resource sjabloon. Hieronder vindt u een voor beeld van een JSON-bestand voor de para meter:
+Say the above JSON is saved as metricfromLogsAlertDynamic.json - then it can be coupled with a parameter JSON file for Resource Template based creation. A sample parameter JSON file is listed below:
 
 ```json
 {
@@ -673,15 +673,15 @@ Stel dat de bovenstaande JSON is opgeslagen als metricfromLogsAlertDynamic. json
 }
 ```
 
-Ervan uitgaande dat het bovenstaande parameter bestand is opgeslagen als metricfromLogsAlertDynamic. para meters. json; vervolgens kan een metrische waarschuwing voor logboeken worden gemaakt met behulp van een [resource sjabloon om te maken in azure Portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Assuming the above parameter file is saved as metricfromLogsAlertDynamic.parameters.json; then one can create metric alert for logs using [Resource Template for creation in Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md).
 
-U kunt ook de Azure Power shell-opdracht hieronder ook gebruiken:
+Alternatively, one can use the Azure Powershell command below as well:
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 
-Of gebruik een resource sjabloon implementeren met behulp van Azure CLI:
+Or use deploy Resource Template using Azure CLI:
 
 ```CLI
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertDynamic.json --parameters @metricfromLogsAlertDynamic.parameters.json
@@ -689,6 +689,6 @@ az group deployment create --resource-group myRG --template-file metricfromLogsA
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [metrische waarschuwingen](alerts-metric.md).
-- Meer informatie over [logboek waarschuwingen in azure](../../azure-monitor/platform/alerts-unified-log.md).
-- Meer informatie over [waarschuwingen in azure](alerts-overview.md).
+- Learn more about the [metric alerts](alerts-metric.md).
+- Learn about [log alerts in Azure](../../azure-monitor/platform/alerts-unified-log.md).
+- Learn about [alerts in Azure](alerts-overview.md).

@@ -1,5 +1,5 @@
 ---
-title: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Key Vault
+title: Tutorial`:` Use a managed identity to access Azure Key Vault - Windows - Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Windows-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Key Vault.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6f144eb16c2b898750d699b659fc88b2dd8c12a
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 106252b7c77f9ee3d6b9bdebafce3441d9c4b090
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71000033"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224231"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Key Vault 
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Key Vault 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -41,7 +41,7 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Uw virtuele machine toegang verlenen tot een geheim dat is opgeslagen in een sleutelkluis 
  
-Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Microsoft Azure AD-verificatie.  Niet alle Azure-services bieden echter ondersteuning voor Azure AD-verificatie. Als u bij deze services beheerde identiteiten voor Azure-resources wilt gebruiken, slaat u de servicereferenties op in Azure Key Vault en gebruikt u de beheerde identiteit van de VM om toegang te krijgen tot Key Vault en de referenties op te halen. 
+Met behulp van beheerde identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Microsoft Azure AD-verificatie.  However, not all Azure services support Azure AD authentication. To use managed identities for Azure resources with those services, store the service credentials in Azure Key Vault, and use the VM's managed identity to access Key Vault to retrieve the credentials. 
 
 Eerst moeten we een sleutelkluis maken en de door het systeem toegewezen beheerde identiteit van onze VM toegang tot de sleutelkluis verlenen.   
 
@@ -50,7 +50,7 @@ Eerst moeten we een sleutelkluis maken en de door het systeem toegewezen beheerd
 3. Zoek de sleutelkluis in hetzelfde abonnement en dezelfde resourcegroep als de virtuele machine die u eerder hebt gemaakt. 
 4. Selecteer **Toegangsbeleid** en klik op de knop **Nieuwe toevoegen**. 
 5. Selecteer **Geheimenbeheer** in Configureren met sjabloon. 
-6. Kies **Principal selecteren**, en voer in het zoekveld de naam in van de virtuele machine die u eerder hebt gemaakt.  Selecteer de virtuele machine in de lijst met resultaten en klik op **Selecteren**. 
+6. Kies **Principal selecteren**, en voer in het zoekveld de naam in van de virtuele machine die u eerder hebt gemaakt.  Select the VM in the result list and click **Select**. 
 7. Klik op **OK** om het nieuwe toegangsbeleid toe te voegen en klik op **OK** om de selectie van het toegangsbeleid te voltooien. 
 8. Klik op **Maken** om het maken van de sleutelkluis te voltooien. 
 
@@ -62,7 +62,7 @@ Voeg vervolgens een geheim toe aan de sleutelkluis, zodat u het geheim later kun
 1. Selecteer **Alle resources** en zoek en selecteer de sleutelkluis die u hebt gemaakt. 
 2. Selecteer **Geheimen** en klik op **Toevoegen**. 
 3. Selecteer **Handmatig** in **Opties uploaden**. 
-4. Voer een naam en een waarde in voor de geheime sleutel.  De waarde mag elke gewenste waarde zijn. 
+4. Voer een naam en een waarde in voor de geheime sleutel.  The value can be anything you want. 
 5. Laat de activeringsdatum en vervaldatum leeg en laat **Ingeschakeld** ingesteld staan op **Ja**. 
 6. Klik op **Maken** om het geheim te maken. 
  
@@ -95,7 +95,7 @@ Eerst gebruiken we de door het systeem toegewezen beheerde identiteit van de VM 
     $KeyVaultToken = $content.access_token 
     ```
     
-    Gebruik ten slotte de Invoke-WebRequest-opdracht van Powershell om het geheim op te halen dat u eerder in de sleutelkluis hebt gemaakt, waarbij u het toegangstoken doorgeeft in de autorisatie-header.  U hebt de URL van uw sleutelkluis nodig. Deze vindt u in de sectie **Essentials** van de pagina **Overzicht** van de sleutelkluis.  
+    Gebruik ten slotte de Invoke-WebRequest-opdracht van Powershell om het geheim op te halen dat u eerder in de sleutelkluis hebt gemaakt, waarbij u het toegangstoken doorgeeft in de autorisatie-header.  You’ll need the URL of your Key Vault, which is in the **Essentials** section of the **Overview** page of the Key Vault.  
     
     ```powershell
     (Invoke-WebRequest -Uri https://<your-key-vault-URL>/secrets/<secret-name>?api-version=2016-10-01 -Method GET -Headers @{Authorization="Bearer $KeyVaultToken"}).content 

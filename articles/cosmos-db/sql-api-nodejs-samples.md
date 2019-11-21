@@ -1,5 +1,5 @@
 ---
-title: Node.js-voorbeelden voor Azure Cosmos DB
+title: Node.js examples to manage data in Azure Cosmos database
 description: Zoek Node.js-voorbeelden op GitHub voor veelvoorkomende taken in Azure Cosmos DB, zoals CRUD-bewerkingen.
 author: deborahc
 ms.service: cosmos-db
@@ -7,17 +7,18 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 08/23/2019
 ms.author: dech
-ms.openlocfilehash: c009084c4623391c299239feb5f95d7c2b4d2061
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: d79ac0e368ad824f6ceaea7bbcba151ecec72336
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72170122"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220158"
 ---
-# <a name="azure-cosmos-db-nodejs-examples"></a>Node.js-voorbeelden voor Azure Cosmos DB
+# <a name="nodejs-examples-to-manage-data-in-azure-cosmos-db"></a>Node.js examples to manage data in Azure Cosmos DB
+
 > [!div class="op_single_selector"]
-> * [Voor beelden van .NET v2 SDK](sql-api-dotnet-samples.md)
-> * [Voor beelden van .NET v3 SDK](sql-api-dotnet-v3sdk-samples.md)
+> * [.NET V2 SDK Examples](sql-api-dotnet-samples.md)
+> * [.NET V3 SDK Examples](sql-api-dotnet-v3sdk-samples.md)
 > * [Java-voorbeelden](sql-api-java-samples.md)
 > * [Async Java-voorbeelden](sql-api-async-java-samples.md)
 > * [Node.js-voorbeelden](sql-api-nodejs-samples.md)
@@ -48,7 +49,7 @@ U hebt ook de [JavaScript SDK](sql-api-sdk-node.md) nodig.
 
 ## <a name="database-examples"></a>Voorbeelden voor databases
 
-In het [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) -bestand ziet u hoe de ruwe bewerkingen op de Data Base worden uitgevoerd. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-data bases voordat u de volgende voor beelden uitvoert. 
+The [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement.ts) file shows how to perform the CRUD operations on the database. To learn about the Azure Cosmos databases before running the following samples, see [Working with databases, containers, and items](databases-containers-items.md) conceptual article. 
 
 | Taak | API-referentie |
 | --- | --- |
@@ -59,18 +60,18 @@ In het [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/blob/master
 
 ## <a name="container-examples"></a>Voorbeelden van containers
 
-Het [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) -bestand laat zien hoe u de ruwe bewerkingen op de container uitvoert. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-verzamelingen voordat u de volgende voor beelden uitvoert. 
+The [ContainerManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts) file shows how to perform the CRUD operations on the container. To learn about the Azure Cosmos collections before running the following samples, see [Working with databases, containers, and items](databases-containers-items.md) conceptual article. 
 
 | Taak | API-referentie |
 | --- | --- |
 | [Container maken indien deze niet bestaat](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L14-L15) |[Containers.createIfNotExists](/javascript/api/@azure/cosmos/containers?view=azure-node-latest#createifnotexists-containerrequest--requestoptions-) |
 | [Containers voor een account weergeven](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L17-L21) |[Containers.readAll](/javascript/api/@azure/cosmos/containers?view=azure-node-latest#readall-feedoptions-) |
-| [Een container definitie lezen](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L23-L26) |[Container.read](/javascript/api/@azure/cosmos/container?view=azure-node-latest#read-requestoptions-) |
+| [Read a container definition](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L23-L26) |[Container.read](/javascript/api/@azure/cosmos/container?view=azure-node-latest#read-requestoptions-) |
 | [Container verwijderen](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement.ts#L28-L30) |[Container.delete](/javascript/api/@azure/cosmos/container?view=azure-node-latest#delete-requestoptions-) |
 
 ## <a name="item-examples"></a>Voorbeelden van items
 
-In het [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) -bestand ziet u hoe de ruwe bewerkingen op het item worden uitgevoerd. Zie [werken met data bases, containers en](databases-containers-items.md) artikel concepten voor meer informatie over de Azure Cosmos-documenten voordat u de volgende voor beelden uitvoert. 
+The [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) file shows how to perform the CRUD operations on the item. To learn about the Azure Cosmos documents before running the following samples, see [Working with databases, containers, and items](databases-containers-items.md) conceptual article. 
 
 | Taak | API-referentie |
 | --- | --- |
@@ -85,19 +86,19 @@ In het [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/sam
 
 ## <a name="indexing-examples"></a>Voorbeelden van indexen
 
-Het [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) -bestand bevat informatie over het beheren van indexeren. Zie [Indexing policies](index-policy.md), [Indexing types](index-types.md)en [Indexing Path](index-paths.md) conceptuele articles (Engelstalig) voor meer informatie over het indexeren in azure Cosmos DB voordat u de volgende voor beelden uitvoert. 
+The [IndexManagement](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts) file shows how to manage indexing. To learn about indexing in Azure Cosmos DB before running the following samples, see [indexing policies](index-policy.md), [indexing types](index-types.md), and [indexing paths](index-paths.md) conceptual articles. 
 
 | Taak | API-referentie |
 | --- | --- |
-| [Een specifiek item hand matig indexeren](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L52-L75) |[RequestOptions.indexingDirective: 'include'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
-| [Hand matig een specifiek item uit de index uitsluiten](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L17-L29) |[RequestOptions.indexingDirective: 'exclude'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
+| [Manually index a specific item](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L52-L75) |[RequestOptions.indexingDirective: 'include'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
+| [Manually exclude a specific item from the index](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L17-L29) |[RequestOptions.indexingDirective: 'exclude'](https://docs.microsoft.com/javascript/api/%40azure/cosmos/requestoptions?view=azure-node-latest#indexingdirective) |
 | [Een pad uitsluiten van de index](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L142-L167) |[IndexingPolicy.ExcludedPath](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexingpolicy?view=azure-node-latest#excludedpaths) |
 | [Een bereikindex maken op een tekenreekspad](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L87-L112) |[IndexKind.Range](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexkind?view=azure-node-latest), [IndexingPolicy](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexingpolicy?view=azure-node-latest), [Items.query](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest) |
 | [Een container maken met standaard indexPolicy en vervolgens online bijwerken](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement.ts#L13-L15) |[Containers.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest)
 
 ## <a name="server-side-programming-examples"></a>Voorbeelden van programmering op de server
 
-In het bestand [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) van het project [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) ziet u hoe de volgende taken worden uitgevoerd. Zie voor meer informatie over het Program meren van de server in Azure Cosmos DB voordat u de volgende voor beelden uitvoert, [opgeslagen procedures, triggers en](stored-procedures-triggers-udfs.md) conceptueel artikel over door de gebruiker gedefinieerde functies. 
+In het bestand [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) van het project [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) ziet u hoe de volgende taken worden uitgevoerd. To learn about Server-side programming  in Azure Cosmos DB before running the following samples, see [Stored procedures, triggers, and user-defined functions](stored-procedures-triggers-udfs.md) conceptual article. 
 
 | Taak | API-referentie |
 | --- | --- |

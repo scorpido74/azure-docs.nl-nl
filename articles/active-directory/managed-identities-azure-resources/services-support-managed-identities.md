@@ -1,6 +1,6 @@
 ---
-title: Azure-Services die beheerde identiteiten voor Azure-resources ondersteunen
-description: Lijst met services die beheerde identiteiten voor Azure-resources en Azure AD-verificatie ondersteunen
+title: Azure Services that support managed identities - Azure AD
+description: List of services that support managed identities for Azure resources and Azure AD authentication
 services: active-directory
 author: MarkusVi
 ms.author: markvi
@@ -10,139 +10,139 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0731510977c01b08d9aa557246dce3bd92b2f826
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8ead9b53f530a309d6bdb3bd384c29650bf5c8e6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73473212"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224295"
 ---
-# <a name="services-that-support-managed-identities-for-azure-resources"></a>Services die beheerde identiteiten voor Azure-resources ondersteunen
+# <a name="services-that-support-managed-identities-for-azure-resources"></a>Services that support managed identities for Azure resources
 
-Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. Met een beheerde identiteit kunt u zich verifiëren bij elke service die ondersteuning biedt voor Azure AD-verificatie zonder referenties in uw code. We zijn bezig met het integreren van beheerde identiteiten voor Azure-resources en Azure AD-verificatie in Azure. Controleer regel matig of er updates zijn.
+Managed identities for Azure resources provide Azure services with an automatically managed identity in Azure Active Directory. Using a managed identity, you can authenticate to any service that supports Azure AD authentication without having credentials in your code. We are in the process of integrating managed identities for Azure resources and Azure AD authentication across Azure. Check back often for updates.
 
 > [!NOTE]
 > Beheerde identiteiten voor Azure-resources is de nieuwe naam voor de service die eerder de naam Managed Service Identity (MSI) had.
 
 ## <a name="azure-services-that-support-managed-identities-for-azure-resources"></a>Azure-services die beheerde identiteiten voor Azure-resources ondersteunen
 
-De volgende Azure-Services ondersteunen beheerde identiteiten voor Azure-resources:
+The following Azure services support managed identities for Azure resources:
 
 ### <a name="azure-virtual-machines"></a>Azure Virtual Machines
 
-| Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Preview | Preview | Preview | 
-| Gebruiker toegewezen | Beschikbaar | Preview | Preview | Preview |
+| System assigned | Beschikbaar | Preview | Preview | Preview | 
+| User assigned | Beschikbaar | Preview | Preview | Preview |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machines te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Virtual Machines (in regions where available):
 
-- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [Azure-portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sjablonen](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager templates](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-virtual-machine-scale-sets"></a>Azure Virtual Machine Scale Sets
 
-|Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+|Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Preview | Preview | Preview |
-| Gebruiker toegewezen | Beschikbaar | Preview | Preview | Preview |
+| System assigned | Beschikbaar | Preview | Preview | Preview |
+| User assigned | Beschikbaar | Preview | Preview | Preview |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Virtual Machine Scale Sets te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Virtual Machine Scale Sets (in regions where available):
 
-- [Azure Portal](qs-configure-portal-windows-vm.md)
+- [Azure-portal](qs-configure-portal-windows-vm.md)
 - [PowerShell](qs-configure-powershell-windows-vm.md)
 - [Azure CLI](qs-configure-cli-windows-vm.md)
-- [Azure Resource Manager sjablonen](qs-configure-template-windows-vm.md)
+- [Azure Resource Manager templates](qs-configure-template-windows-vm.md)
 - [REST](qs-configure-rest-vm.md)
 
 ### <a name="azure-app-service"></a>Azure App Service
 
-| Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+| Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
-| Gebruiker toegewezen | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
+| User assigned | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure App Service te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure App Service (in regions where available):
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure-portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sjabloon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
-### <a name="azure-blueprints"></a>Azure Blueprints
+### <a name="azure-blueprints"></a>Azure-blauwdrukken
 
-|Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+|Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Beschikbaar | Niet beschikbaar | Niet beschikbaar |
-| Gebruiker toegewezen | Beschikbaar | Beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Beschikbaar | Beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| User assigned | Beschikbaar | Beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst voor het gebruik van een beheerde identiteit met [Azure-blauw drukken](../../governance/blueprints/overview.md):
+Refer to the following list to use a managed identity with [Azure Blueprints](../../governance/blueprints/overview.md):
 
-- [Azure Portal-blauw druk toewijzen](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
-- [REST API-blauw druk toewijzen](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
+- [Azure portal - blueprint assignment](../../governance/blueprints/create-blueprint-portal.md#assign-a-blueprint)
+- [REST API - blueprint assignment](../../governance/blueprints/create-blueprint-rest-api.md#assign-a-blueprint)
 
 ### <a name="azure-functions"></a>Azure Functions
 
-Type beheerde identiteit |Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+Managed identity type |All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
-| Gebruiker toegewezen | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Beschikbaar | Beschikbaar | Beschikbaar | Beschikbaar |
+| User assigned | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Functions te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Functions (in regions where available):
 
-- [Azure Portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
+- [Azure-portal](/azure/app-service/overview-managed-identity#using-the-azure-portal)
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager-sjabloon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
 
 ### <a name="azure-logic-apps"></a>Azure Logic Apps
 
-Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Preview | Preview | Niet beschikbaar | Preview |
-| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Preview | Preview | Niet beschikbaar | Preview |
+| User assigned | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Logic Apps te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Logic Apps (in regions where available):
 
-- [Azure Portal](/azure/logic-apps/create-managed-service-identity#azure-portal-system-logic-app)
+- [Azure-portal](/azure/logic-apps/create-managed-service-identity#azure-portal-system-logic-app)
 - [Azure Resource Manager-sjabloon](/azure/app-service/overview-managed-identity)
 
 ### <a name="azure-data-factory-v2"></a>Azure Data Factory V2
 
-Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
-| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| User assigned | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst voor het configureren van een beheerde identiteit voor Azure Data Factory v2 (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Data Factory V2 (in regions where available):
 
-- [Azure Portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
+- [Azure-portal](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
 - [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-api-management"></a>Azure API Management
 
-Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Beschikbaar | Niet beschikbaar | Niet beschikbaar |
-| Gebruiker toegewezen | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Beschikbaar | Beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| User assigned | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure API Management te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure API Management (in regions where available):
 
 - [Azure Resource Manager-sjabloon](/azure/api-management/api-management-howto-use-managed-service-identity)
 
 ### <a name="azure-container-instances"></a>Azure Container Instances
 
-Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Linux: preview<br>Windows: niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
-| Gebruiker toegewezen | Linux: preview<br>Windows: niet beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Linux: Preview<br>Windows: Not available | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| User assigned | Linux: Preview<br>Windows: Not available | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Container Instances te configureren (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Container Instances (in regions where available):
 
 - [Azure CLI](~/articles/container-instances/container-instances-managed-identity.md)
 - [Azure Resource Manager-sjabloon](~/articles/container-instances/container-instances-managed-identity.md#enable-managed-identity-using-resource-manager-template)
@@ -150,27 +150,27 @@ Raadpleeg de volgende lijst om de beheerde identiteit voor Azure Container Insta
 
 ### <a name="azure-container-registry-tasks"></a>Azure Container Registry Tasks
 
-Type beheerde identiteit | Alles algemeen beschikbaar<br>Wereld wijde Azure-regio's | Azure Government | Azure Duitsland | Azure China 21Vianet |
+Managed identity type | All Generally Available<br>Global Azure Regions | Azure Government | Azure Duitsland | Azure China 21Vianet |
 | --- | --- | --- | --- | --- |
-| Systeem toegewezen | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
-| Gebruiker toegewezen | Preview | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| System assigned | Beschikbaar | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
+| User assigned | Preview | Niet beschikbaar | Niet beschikbaar | Niet beschikbaar |
 
-Raadpleeg de volgende lijst voor het configureren van een beheerde identiteit voor Azure Container Registry taken (in regio's waar beschikbaar):
+Refer to the following list to configure managed identity for Azure Container Registry Tasks (in regions where available):
 
 - [Azure CLI](~/articles/container-registry/container-registry-tasks-authentication-managed-identity.md)
 
-## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Services die ondersteuning bieden voor Azure AD-verificatie
+## <a name="azure-services-that-support-azure-ad-authentication"></a>Azure services that support Azure AD authentication
 
-De volgende services ondersteunen Azure AD-verificatie en zijn getest met client services die beheerde identiteiten voor Azure-resources gebruiken.
+The following services support Azure AD authentication, and have been tested with client services that use managed identities for Azure resources.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configureren:
+Refer to the following list to configure access to Azure Resource Manager:
 
-- [Toegang toewijzen via Azure Portal](howto-assign-access-portal.md)
-- [Toegang toewijzen via Power shell](howto-assign-access-powershell.md)
-- [Toegang toewijzen via Azure CLI](howto-assign-access-CLI.md)
-- [Toegang toewijzen via Azure Resource Manager sjabloon](../../role-based-access-control/role-assignments-template.md)
+- [Assign access via Azure portal](howto-assign-access-portal.md)
+- [Assign access via Powershell](howto-assign-access-powershell.md)
+- [Assign access via Azure CLI](howto-assign-access-CLI.md)
+- [Assign access via Azure Resource Manager template](../../role-based-access-control/role-assignments-template.md)
 
 | Cloud | Resource-id | Status |
 |--------|------------|--------|
@@ -232,7 +232,7 @@ Raadpleeg de volgende lijst om de toegang tot Azure Resource Manager te configur
 
 
 
-### <a name="azure-storage-blobs-and-queues"></a>Azure Storage blobs en wacht rijen
+### <a name="azure-storage-blobs-and-queues"></a>Azure Storage blobs and queues
 
 | Cloud | Resource-id | Status |
 |--------|------------|--------|

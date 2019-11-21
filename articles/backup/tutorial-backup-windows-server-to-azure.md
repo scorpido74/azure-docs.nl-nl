@@ -1,17 +1,17 @@
 ---
-title: 'Zelf studie: back-up maken van Windows Server naar Azure'
+title: Tutorial - Back up Windows Server to Azure
 description: In deze zelfstudie wordt beschreven hoe u een back-up maakt van een on-premises Windows-server naar een Recovery Services-kluis.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171833"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226483"
 ---
-# <a name="back-up-windows-server-to-azure"></a>Een back-up maken van een Windows-server naar Azure
+# <a name="back-up-windows-server-to-azure"></a>Maak back-ups van Windows Server naar Azure
 
 U kunt Azure Backup gebruiken om uw Windows-server te beschermen tegen beschadigingen, aanvallen en noodgevallen. Azure Backup biedt een lichtgewicht hulpprogramma dat bekendstaat als Microsoft Azure Recovery Services-agent (MARS). De MARS-agent wordt geïnstalleerd op de Windows-server om bestanden en mappen te beschermen, evenals serverconfiguratiegegevens (via Windows Server System State). In deze zelfstudie wordt uitgelegd hoe u de MARS-agent kunt gebruiken om van uw Windows-server een back-up te maken naar Azure. In deze zelfstudie leert u het volgende:
 
@@ -19,11 +19,11 @@ U kunt Azure Backup gebruiken om uw Windows-server te beschermen tegen beschadig
 >
 > * De MARS-agent downloaden en instellen
 > * Back-uptijden en retentieschema configureren voor back-ups van uw server
-> * Een back-up op aanvraag uitvoeren
+> * Perform an on-demand back up
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij de Azure Portal op <https://portal.azure.com.>
+Meld u aan bij Azure Portal op https://portal.azure.com.
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
@@ -59,7 +59,7 @@ De Microsoft Azure Recovery Services-agent (MARS) maakt een koppeling tussen de 
 
 3. In het menu **Doel van back-up**:
 
-   * **waar wordt uw werk belasting uitgevoerd?** , selecteer dan **on-premises**
+   * for **Where is your workload running?** , select **On-premises**
    * Selecteer voor **Waarvan wilt u een back-up maken?** de opties **Bestanden en mappen** en **Systeemstatus**
 
    ![informatie opgeven voor de kluis](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)

@@ -1,82 +1,82 @@
 ---
-title: Overzicht van Azure DNS alias records
-description: Overzicht van ondersteuning voor alias records in Microsoft Azure DNS.
+title: Alias records overview - Azure DNS
+description: In this article, learn about support for alias records in Microsoft Azure DNS.
 services: dns
-author: vhorne
+author: asudbring
 ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
-ms.author: victorh
-ms.openlocfilehash: 9a3cdb846921c2d73dd2cca5d679663c1ba9e192
-ms.sourcegitcommit: 124c3112b94c951535e0be20a751150b79289594
+ms.author: allensu
+ms.openlocfilehash: da396d3e3db4acd1a9843977b8b3e3d51c33f021
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/10/2019
-ms.locfileid: "68946889"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74212328"
 ---
-# <a name="azure-dns-alias-records-overview"></a>Overzicht van Azure DNS alias records
+# <a name="azure-dns-alias-records-overview"></a>Overzicht van Azure DNS-aliasrecords
 
-Azure DNS alias records zijn kwalificaties voor een DNS-Recordset. Ze kunnen verwijzen naar andere Azure-resources vanuit uw DNS-zone. U kunt bijvoorbeeld een aliasset maken die verwijst naar een openbaar IP-adres van Azure in plaats van een record. De set met alias records verwijst dynamisch naar een service-exemplaar van het open bare IP-adres van Azure. Als gevolg hiervan wordt de alias record naadloos bijgewerkt tijdens de DNS-omzetting.
+Azure DNS alias records are qualifications on a DNS record set. They can reference other Azure resources from within your DNS zone. For example, you can create an alias record set that references an Azure public IP address instead of an A record. Your alias record set points to an Azure public IP address service instance dynamically. As a result, the alias record set seamlessly updates itself during DNS resolution.
 
-Een aliasset wordt ondersteund voor de volgende record typen in een Azure DNS zone: 
+An alias record set is supported for the following record types in an Azure DNS zone: 
 
-- G
+- A
 - AAAA
 - CNAME
 
 > [!NOTE]
-> Als u van plan bent een alias record te gebruiken voor de A-of AAAA-record typen om te verwijzen naar een [Azure Traffic Manager-profiel](../traffic-manager/quickstart-create-traffic-manager-profile.md) , moet u ervoor zorgen dat het Traffic Manager profiel alleen [externe eind punten](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)heeft. U moet het IPv4-of IPv6-adres opgeven voor externe eind punten in Traffic Manager. U kunt geen volledig gekwalificeerde domein namen (FQDN) in eind punten gebruiken. In het ideale geval gebruikt u statische IP-adressen.
+> If you intend to use an alias record for the A or AAAA record types to point to an [Azure Traffic Manager profile](../traffic-manager/quickstart-create-traffic-manager-profile.md) you must make sure that the Traffic Manager profile has only [external endpoints](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). You must provide the IPv4 or IPv6 address for external endpoints in Traffic Manager. You can't use fully-qualified domain names (FQDNs) in endpoints. Ideally, use static IP addresses.
 
 ## <a name="capabilities"></a>Mogelijkheden
 
-- **Wijs naar een open bare IP-bron van een DNS A/AAAA-Recordset.** U kunt een A/AAAA-recordset maken en hiervan een alias instellen om te verwijzen naar een open bare IP-resource (standaard of basis). De DNS-record sets worden automatisch gewijzigd als het open bare IP-adres wordt gewijzigd of verwijderd. Dangling DNS-records die verwijzen naar onjuiste IP-adressen, worden vermeden.
+- **Point to a public IP resource from a DNS A/AAAA record set.** You can create an A/AAAA record set and make it an alias record set to point to a public IP resource (standard or basic). The DNS record set changes automatically if the public IP address changes or is deleted. Dangling DNS records that point to incorrect IP addresses are avoided.
 
-   Er is een huidige limiet van 20 alias record sets per resource.
+   There is a current limit of 20 alias records sets per resource.
 
-- **Ga naar een Traffic Manager profiel van een DNS A/AAAA/CNAME-Recordset.** U kunt een A/AAAA-of CNAME-recordset maken en alias records gebruiken om deze naar een Traffic Manager profiel te wijzen. Het is vooral handig wanneer u verkeer moet routeren op een zone Apex, omdat traditionele CNAME-records niet worden ondersteund voor een zone Apex. Stel bijvoorbeeld dat uw Traffic Manager profiel myprofile.trafficmanager.net is en dat uw bedrijfs-DNS-zone contoso.com is. U kunt een alias verzameling van het type A/AAAA voor contoso.com (de zone Apex) maken en naar myprofile.trafficmanager.net verwijzen.
-- **Ga naar een Azure Content Delivery Network-eind punt (CDN)** . Dit is handig wanneer u statische websites maakt met behulp van Azure Storage en Azure CDN.
-- **Wijs naar een andere DNS-record die binnen dezelfde zone is ingesteld.** Aliasrecords kunnen naar andere recordsets van hetzelfde type verwijzen. Een DNS CNAME-recordset kan bijvoorbeeld een alias zijn voor een andere CNAME-Recordset. Deze indeling is handig als u wilt dat sommige record sets aliassen en bepaalde niet-aliassen hebben.
+- **Point to a Traffic Manager profile from a DNS A/AAAA/CNAME record set.** You can create an A/AAAA or CNAME record set and use alias records to point it to a Traffic Manager profile. It's especially useful when you need to route traffic at a zone apex, as traditional CNAME records aren't supported for a zone apex. For example, say your Traffic Manager profile is myprofile.trafficmanager.net and your business DNS zone is contoso.com. You can create an alias record set of type A/AAAA for contoso.com (the zone apex) and point to myprofile.trafficmanager.net.
+- **Point to an Azure Content Delivery Network (CDN) endpoint**. This is useful when you create static websites using Azure storage and Azure CDN.
+- **Point to another DNS record set within the same zone.** Aliasrecords kunnen naar andere recordsets van hetzelfde type verwijzen. For example, a DNS CNAME record set can be an alias to another CNAME record set. This arrangement is useful if you want some record sets to be aliases and some non-aliases.
 
 ## <a name="scenarios"></a>Scenario's
 
-Er zijn enkele algemene scenario's voor alias records.
+There are a few common scenarios for Alias records.
 
-### <a name="prevent-dangling-dns-records"></a>Dangling DNS-records voor komen
+### <a name="prevent-dangling-dns-records"></a>Prevent dangling DNS records
 
-Een veelvoorkomend probleem met traditionele DNS-records is Dangling records. Bijvoorbeeld DNS-records die niet zijn bijgewerkt met wijzigingen in IP-adressen. Het probleem treedt met name op met een/AAAA-of CNAME-record type.
+A common problem with traditional DNS records is dangling records. For example, DNS records that haven't been updated to reflect changes to IP addresses. The issue occurs especially with A/AAAA or CNAME record types.
 
-Als het doel-IP-adres of de CNAME-record niet meer bestaat, moet de DNS-record die is gekoppeld aan de zone, hand matig worden bijgewerkt. In sommige organisaties kan een hand matige update mogelijk niet in de tijd plaatsvinden vanwege proces problemen of de schei ding van rollen en de bijbehorende machtigings niveaus. Een rol kan bijvoorbeeld de bevoegdheid hebben om een CNAME-of IP-adres te verwijderen dat bij een toepassing hoort. Maar er is niet voldoende autoriteit voor het bijwerken van de DNS-record die verwijst naar die doelen. Een vertraging bij het bijwerken van de DNS-record kan leiden tot een onderbreking van de gebruikers.
+With a traditional DNS zone record, if the target IP or CNAME no longer exists, the DNS record associated with it must be manually updated. In some organizations, a manual update might not happen in time because of process issues or the separation of roles and associated permission levels. For example, a role might have the authority to delete a CNAME or IP address that belongs to an application. But it doesn't have sufficient authority to update the DNS record that points to those targets. A delay in updating the DNS record can potentially cause an outage for the users.
 
-Alias records verhinderen Dangling-verwijzingen door de levens cyclus van een DNS-record met een Azure-resource nauw keurig te koppelen. Denk bijvoorbeeld aan een DNS-record die is gekwalificeerd als alias record om te verwijzen naar een openbaar IP-adres of een Traffic Manager profiel. Als u deze onderliggende bronnen verwijdert, wordt de DNS-alias record een lege recordset. Er wordt niet langer verwezen naar de verwijderde resource.
+Alias records prevent dangling references by tightly coupling the life cycle of a DNS record with an Azure resource. For example, consider a DNS record that's qualified as an alias record to point to a public IP address or a Traffic Manager profile. If you delete those underlying resources, the DNS alias record becomes an empty record set. It no longer references the deleted resource.
 
-### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>DNS-record bijwerken: automatisch instellen wanneer IP-adressen van toepassingen worden gewijzigd
+### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>Update DNS record-set automatically when application IP addresses change
 
-Dit scenario is vergelijkbaar met het voor gaande. Mogelijk wordt een toepassing verplaatst of wordt de onderliggende virtuele machine opnieuw opgestart. Een alias record wordt vervolgens automatisch bijgewerkt wanneer het IP-adres wordt gewijzigd voor de onderliggende open bare IP-resource. Dit voor komt mogelijke beveiligings Risico's van het omleiden van de gebruikers naar een andere toepassing waaraan het oude open bare IP-adres is toegewezen.
+This scenario is similar to the previous one. Perhaps an application is moved, or the underlying virtual machine is restarted. An alias record then updates automatically when the IP address changes for the underlying public IP resource. This avoids potential security risks of directing the users to another application that has been assigned the old public IP address.
 
-### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Toepassingen met taak verdeling hosten op de zone Apex
+### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Host load-balanced applications at the zone apex
 
-Het DNS-protocol voor komt dat de toewijzing van CNAME-records op de zone Apex. Als uw domein bijvoorbeeld contoso.com is; u kunt CNAME-records maken voor somelabel.contoso.com; maar u kunt geen CNAME maken voor contoso.com zelf.
-Deze beperking geeft een probleem met de eigen aren van toepassingen die toepassingen met taak verdeling achter [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)hebben. Omdat het gebruik van een Traffic Manager profiel het maken van een CNAME-record vereist, is het niet mogelijk om naar het Traffic Manager profiel van de zone Apex te verwijzen.
+The DNS protocol prevents the assignment of CNAME records at the zone apex. For example if your domain is contoso.com; you can create CNAME records for somelabel.contoso.com; but you can't create CNAME for contoso.com itself.
+This restriction presents a problem for application owners who have load-balanced applications behind [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Since using a Traffic Manager profile requires creation of a CNAME record, it isn't possible to point at the Traffic Manager profile from the zone apex.
 
-Dit probleem wordt opgelost met behulp van alias records. In tegens telling tot CNAME-records worden alias records gemaakt op de zone Apex en de eigen aren van toepassingen kunnen deze gebruiken om hun zone Apex-record te laten verwijzen naar een Traffic Manager profiel met externe eind punten. Toepassings eigenaren verwijzen naar hetzelfde Traffic Manager-profiel dat wordt gebruikt voor elk ander domein binnen hun DNS-zone.
+This problem is solved using alias records. Unlike CNAME records, alias records are created at the zone apex and application owners can use it to point their zone apex record to a Traffic Manager profile that has external endpoints. Application owners point to the same Traffic Manager profile that's used for any other domain within their DNS zone.
 
-Contoso.com en www\.contoso.com kunnen bijvoorbeeld verwijzen naar hetzelfde Traffic Manager-profiel. Zie de sectie volgende stappen voor meer informatie over het gebruik van alias records met Azure Traffic Manager-profielen.
+For example, contoso.com and www\.contoso.com can point to the same Traffic Manager profile. To learn more about using alias records with Azure Traffic Manager profiles, see the Next steps section.
 
-### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Punt zone Apex naar Azure CDN-eind punten
+### <a name="point-zone-apex-to-azure-cdn-endpoints"></a>Point zone apex to Azure CDN endpoints
 
-Net als bij een Traffic Manager profiel kunt u ook alias records gebruiken om uw DNS-zone te laten verwijzen naar Azure CDN-eind punten. Dit is handig wanneer u statische websites maakt met behulp van Azure Storage en Azure CDN. U kunt vervolgens toegang krijgen tot de website zonder ' www ' in behandeling te nemen in uw DNS-naam.
+Just like a Traffic Manager profile, you can also use alias records to point your DNS zone apex to Azure CDN endpoints. This is useful when you create static websites using Azure storage and Azure CDN. You can then access the website without prepending "www" to your DNS name.
 
-Als uw statische website bijvoorbeeld www.contoso.com heet, hebben uw gebruikers toegang tot uw site met behulp van contoso.com zonder de nood zaak om www naar de DNS-naam te laten voorafgaan door.
+For example, if your static website is named www.contoso.com, your users can access your site using contoso.com without the need to prepend www to the DNS name.
 
-Zoals eerder beschreven, worden CNAME-records niet ondersteund op de zone Apex. U kunt dus geen CNAME-record gebruiken om contoso.com te verwijzen naar uw CDN-eind punt. In plaats daarvan kunt u een alias record gebruiken om de zone rechtstreeks naar een CDN-eind punt te wijzen.
+As described previously, CNAME records aren't supported at the zone apex. So, you can’t use a CNAME record to point contoso.com to your CDN endpoint. Instead, you can use an alias record to point the zone apex to a CDN endpoint directly.
 
 > [!NOTE]
-> Het is niet mogelijk om een zone toe te wijzen aan CDN-eind punten voor Azure CDN van Akamai.
+> Pointing a zone apex to CDN endpoints for Azure CDN from Akamai is currently not supported.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Raadpleeg de volgende artikelen voor meer informatie over alias records:
+To learn more about alias records, see the following articles:
 
-- [Zelfstudie: Een alias record configureren om te verwijzen naar een openbaar IP-adres van Azure](tutorial-alias-pip.md)
-- [Zelfstudie: Een alias record configureren ter ondersteuning van Apex-domein namen met Traffic Manager](tutorial-alias-tm.md)
+- [Tutorial: Configure an alias record to refer to an Azure public IP address](tutorial-alias-pip.md)
+- [Tutorial: Configure an alias record to support apex domain names with Traffic Manager](tutorial-alias-tm.md)
 - [Veelgestelde vragen over DNS](https://docs.microsoft.com/azure/dns/dns-faq#alias-records)

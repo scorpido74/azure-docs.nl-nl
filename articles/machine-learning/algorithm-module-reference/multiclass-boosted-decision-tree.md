@@ -1,64 +1,63 @@
 ---
-title: 'Beslissings structuur met een versterkte klasse: module verwijzing'
+title: 'Multiclass Boosted Decision Tree: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module voor de beslissings structuur met de klasse met meer klassen in Azure Machine Learning om een classificatie te maken met behulp van gelabelde gegevens.
+description: Learn how to use the Multiclass Boosted Decision Tree module in Azure Machine Learning to create a classifier using labeled data.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 08/22/2019
-ROBOTS: NOINDEX
-ms.openlocfilehash: b53e504e98cab34fdc50ee8715ec162c910dd40d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 7f39d393b96b1515e4815abdc28ac4079f271c1b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73465991"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232606"
 ---
 # <a name="multiclass-boosted-decision-tree"></a>Versterkte beslissingsstructuur met meerdere klassen
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+This article describes a module in Azure Machine Learning designer (preview).
 
-Gebruik deze module om een machine learning model te maken dat is gebaseerd op het boosted Decision Trees-algoritme.
+Use this module to create a machine learning model that is based on the boosted decision trees algorithm.
 
-Een versterkte beslissings structuur is een ensemble leer methode waarbij de tweede structuur de fouten van de eerste structuur corrigeert, de derde structuur corrigeert voor de fouten van de eerste en tweede bomen, enzovoort. Voor spellingen zijn gebaseerd op de ensemble van bomen samen.
+A boosted decision tree is an ensemble learning method in which the second tree corrects for the errors of the first tree, the third tree corrects for the errors of the first and second trees, and so forth. Predictions are based on the ensemble of trees together.
 
-## <a name="how-to-configure"></a>Configureren 
+## <a name="how-to-configure"></a>How to configure 
 
-Deze module maakt een niet-getraind classificatie model. Omdat classificatie een geclassificeerde leer methode is, hebt u een gegevensset met een *Label* nodig die een kolom Label bevat met een waarde voor alle rijen.
+This module creates an untrained classification model. Because classification is a supervised learning method, you need a *labeled dataset* that includes a label column with a value for all rows.
 
-U kunt dit type model trainen door het Train- [model](././train-model.md)te gebruiken. 
+You can train this type of model by using the [Train Model](././train-model.md). 
 
-1.  Voeg de module voor de **beslissings structuur met een hogere klasse** toe aan uw pijp lijn.
+1.  Add the **Multiclass Boosted Decision Tree** module to your pipeline.
 
-1.  Geef op hoe u wilt dat het model wordt getraind door de optie **trainer modus maken** in te stellen.
+1.  Specify how you want the model to be trained by setting the **Create trainer mode** option.
 
-    + **Eén para meter**: als u weet hoe u het model wilt configureren, kunt u een specifieke set waarden als argumenten opgeven.
+    + **Single Parameter**: If you know how you want to configure the model, you can provide a specific set of values as arguments.
 
 
-    *  Het **maximum aantal Leaves per structuur** beperkt het maximum aantal Terminal knooppunten (bladeren) dat in een wille keurige structuur kan worden gemaakt.
+    *  **Maximum number of leaves per tree** limits the maximum number of terminal nodes (leaves) that can be created in any tree.
     
-        Door deze waarde te verg Roten, kunt u de grootte van de structuur verg Roten, waardoor het risico op overschrijding en langere leer tijd een grotere nauw keurigheid kan opleveren.
+        By increasing this value, you potentially increase the size of the tree and achieve higher precision, at the risk of overfitting and longer training time.
   
-    * **Minimum aantal steek proeven per blad knooppunt** geeft het aantal cases aan dat nodig is om een Terminal knooppunt (Leaf) in een structuur te maken.  
+    * **Minimum number of samples per leaf node** indicates the number of cases required to create any terminal node (leaf) in a tree.  
 
-         Door deze waarde te verhogen, verhoogt u de drempel voor het maken van nieuwe regels. Met de standaard waarde 1 kan zelfs een enkele case ertoe leiden dat een nieuwe regel wordt gemaakt. Als u de waarde op 5 verhoogt, moeten de trainings gegevens ten minste vijf gevallen bevatten die voldoen aan dezelfde voor waarden.
+         By increasing this value, you increase the threshold for creating new rules. For example, with the default value of 1, even a single case can cause a new rule to be created. If you increase the value to 5, the training data would have to contain at least five cases that meet the same conditions.
 
-    * Met het **leer tempo** wordt de stap grootte gedefinieerd tijdens het leren. Voer een getal tussen 0 en 1 in.
+    * **Learning rate** defines the step size while learning. Enter a number between 0 and 1.
 
-         Het leer tempo bepaalt hoe snel of traag de kenniser convergeert met een optimale oplossing. Als de grootte van de stap te groot is, is het mogelijk dat u de optimale oplossing kunt overschrijden. Als de grootte van de stap te klein is, neemt de training meer tijd in beslag op de beste oplossing.
+         The learning rate determines how fast or slow the learner converges on an optimal solution. If the step size is too large, you might overshoot the optimal solution. If the step size is too small, training takes longer to converge on the best solution.
 
-    * **Aantal geconstrueerde structuren** geeft het totale aantal beslissings structuren aan dat in de ensemble moet worden gemaakt. Door meer beslissings structuren te maken, kunt u een betere dekking krijgen, maar wordt de trainings tijd verhoogd.
+    * **Number of trees constructed** indicates the total number of decision trees to create in the ensemble. By creating more decision trees, you can potentially get better coverage, but training time will increase.
 
-    *  **Wille keurig getal Seed** stelt optioneel een niet-negatief geheel getal in dat moet worden gebruikt als de wille keurige Seed-waarde. Het opgeven van een Seed zorgt voor een reproduceer baarheid van alle uitvoeringen die dezelfde gegevens en para meters hebben.  
+    *  **Random number seed** optionally sets a non-negative integer to use as the random seed value. Specifying a seed ensures reproducibility across runs that have the same data and parameters.  
 
-         De wille keurige Seed wordt standaard ingesteld op 42. Opeenvolgende uitvoeringen met verschillende aselecte zaden kunnen verschillende resultaten hebben.
+         The random seed is set by default to 42. Successive runs using different random seeds can have different results.
 
 > [!Note]
-> Als u de **modus trainer maken** instelt op **één para meter**, verbindt u een gecodeerde gegevensset en de module [Train model](./train-model.md) .
+> If you set **Create trainer mode** to **Single Parameter**, connect a tagged dataset and the [Train Model](./train-model.md) module.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+See the [set of modules available](module-reference.md) to Azure Machine Learning. 

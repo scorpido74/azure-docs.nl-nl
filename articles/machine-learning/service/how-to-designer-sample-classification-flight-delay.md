@@ -1,7 +1,7 @@
 ---
-title: 'Ontwerp: voor beeld van vertraging voor voor spel'
+title: 'Designer: Predict flight delay example'
 titleSuffix: Azure Machine Learning
-description: Bouw een classificatie en gebruik aangepaste R-code om vertragingen van de vlucht met Azure Machine Learning Designer te voors pellen.
+description: Build a classifier and use custom R code to predict flight delays with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,119 +10,119 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06d158fb228ea82e61e785407fc0c59d66c2de15
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 23b763a69fc0ea3191150c6255cf358d69bc4b73
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196024"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213998"
 ---
-# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Een classificatie bouwen & gebruik R voor het voors pellen van de vlucht met Azure Machine Learning Designer
+# <a name="build-a-classifier--use-r-to-predict-flight-delays-with-azure-machine-learning-designer"></a>Build a classifier & use R to predict flight delays with Azure Machine Learning designer
 
-**Voor beeld van Designer (preview) 6**
+**Designer (preview) sample 6**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Deze pijp lijn maakt gebruik van historische vlucht-en weer gegevens om te voors pellen of een geplande passagiers vlucht met meer dan 15 minuten wordt uitgesteld. Dit probleem kan worden beschouwd als een classificatie probleem, waarbij twee klassen worden voor speld: uitgesteld of op tijd.
+This pipeline uses historical flight and weather data to predict if a scheduled passenger flight will be delayed by more than 15 minutes. This problem can be approached as a classification problem, predicting two classes: delayed, or on time.
 
-Hier volgt de laatste pijplijn grafiek voor dit voor beeld:
+Here's the final pipeline graph for this sample:
 
-[Grafiek van de pijp lijn ![](media/how-to-ui-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-flight-delay/pipeline-graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Klik op voor beeld 6 om het te openen.
+4. Click sample 6 to open it.
 
 ## <a name="get-the-data"></a>De gegevens ophalen
 
-In dit voor beeld wordt gebruikgemaakt van de **gegevens gegevensset vlucht vertragingen** . Het maakt deel uit van de TranStats-gegevens verzameling uit het Amerikaanse ministerie van Trans Port. De gegevensset bevat informatie over de vlucht vertraging van april tot oktober 2013. De gegevensset is als volgt vooraf verwerkt:
+This sample uses the **Flight Delays Data** dataset. It's part of the TranStats data collection from the U.S. Department of Transportation. The dataset contains flight delay information from April to October 2013. The dataset has been pre-processed as follows:
 
-* Gefilterd op de 70 drukste lucht havens in het continentale Verenigde Staten.
-* Geannuleerde vluchten met een gelabelde vertraging van meer dan 15 minuten.
-* Gefilterde vluchten.
-* 14 kolommen geselecteerd.
+* Filtered to include the 70 busiest airports in the continental United States.
+* Relabeled canceled flights as delayed by more than 15 mins.
+* Filtered out diverted flights.
+* Selected 14 columns.
 
-Als aanvulling op de vlucht gegevens wordt de **weer gegevensset** gebruikt. De weer gegeven gegevens bevatten per uur, op land gebaseerde weers waarnemingen van NOAA en duiden op de waarnemingen van de weers havens van de lucht haven, die dezelfde tijds periode als de gegevensset van de vluchten vertegenwoordigen. Deze is vooraf verwerkt als volgt:
+To supplement the flight data, the **Weather Dataset** is used. The weather data contains hourly, land-based weather observations from NOAA, and represents observations from airport weather stations, covering the same time period as the flights dataset. It has been pre-processed as follows:
 
-* Er zijn weer station-Id's toegewezen aan de bijbehorende luchthaven-Id's.
-* Weer stations die niet zijn gekoppeld aan de 70 drukste lucht havens zijn verwijderd.
-* De datum kolom is in afzonderlijke kolommen gesplitst: jaar, maand en dag.
-* Geselecteerde 26 kolommen.
+* Weather station IDs were mapped to corresponding airport IDs.
+* Weather stations not associated with the 70 busiest airports were removed.
+* The Date column was split into separate columns: Year, Month, and Day.
+* Selected 26 columns.
 
-## <a name="pre-process-the-data"></a>De gegevens vooraf verwerken
+## <a name="pre-process-the-data"></a>Pre-process the data
 
-Een gegevensset vereist meestal een voor verwerking voordat deze kan worden geanalyseerd.
+A dataset usually requires some pre-processing before it can be analyzed.
 
-![gegevens proces](media/how-to-ui-sample-classification-predict-flight-delay/data-process.png)
+![data-process](media/how-to-designer-sample-classification-predict-flight-delay/data-process.png)
 
-### <a name="flight-data"></a>Vlucht gegevens
+### <a name="flight-data"></a>Flight data
 
-De kolommen **Carrier**, **OriginAirportID**en **DestAirportID** worden opgeslagen als gehele getallen. Ze zijn echter categorische-kenmerken, gebruik de module **meta gegevens bewerken** om ze te converteren naar categorische.
+The columns **Carrier**, **OriginAirportID**, and **DestAirportID** are saved as integers. However, they're  categorical attributes, use the **Edit Metadata** module to convert them to categorical.
 
-![edit-metadata](media/how-to-ui-sample-classification-predict-flight-delay/edit-metadata.png)
+![edit-metadata](media/how-to-designer-sample-classification-predict-flight-delay/edit-metadata.png)
 
-Gebruik vervolgens de module **select columns** in dataset om uit te sluiten van de kolommen gegevensset, die mogelijk de volgende doel lekkages zijn: **DepDelay**, **DepDel15**, **ArrDelay**, **geannuleerd**, **jaar**. 
+Then use the **Select Columns** in Dataset module to exclude from the dataset columns that are possible target leakers: **DepDelay**, **DepDel15**, **ArrDelay**, **Canceled**, **Year**. 
 
-Als u de vlucht records wilt samen voegen met de weer records per uur, gebruikt u de geplande vertrek tijd als een van de koppelings sleutels. Als u de koppeling wilt uitvoeren, moet de kolom CSRDepTime naar beneden worden afgerond naar het dichtstbijzijnde uur. dit wordt gedaan door in de module **R-script uitvoeren** . 
+To join the flight records with the hourly weather records, use the scheduled departure time as one of the join keys. To do the join, the CSRDepTime column must be rounded down to the nearest hour, which is done by in the **Execute R Script** module. 
 
-### <a name="weather-data"></a>Weer gegevens
+### <a name="weather-data"></a>Weather data
 
-Kolommen met een groot deel van ontbrekende waarden worden uitgesloten met de module **project kolommen** . Deze kolommen bevatten alle kolommen met een teken reeks waarde: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**en **StationPressure** .
+Columns that have a large proportion of missing values are excluded using the **Project Columns** module. These columns include all string-valued columns: **ValueForWindCharacter**, **WetBulbFarenheit**, **WetBulbCelsius**, **PressureTendency**, **PressureChange**, **SeaLevelPressure**, and **StationPressure**.
 
-De module **clean Missing Data** wordt vervolgens toegepast op de resterende kolommen om rijen met ontbrekende gegevens te verwijderen.
+The **Clean Missing Data** module is then applied to the remaining columns to remove rows with missing data.
 
-De weer observatie tijden worden naar boven afgerond op het dichtstbijzijnde volledige uur. Geplande vlucht tijden en de weer observatie tijden worden in tegenovergestelde richting afgerond om ervoor te zorgen dat het model alleen weer voor de vlucht tijd gebruikt. 
+Weather observation times are rounded up to the nearest full hour. Scheduled flight times and the weather observation times are rounded in opposite directions to ensure the model uses only weather before the flight time. 
 
-Omdat weer gegevens worden gerapporteerd in de lokale tijd, worden tijdzone verschillen verwerkt door de tijd zone kolommen af te trekken van de geplande vertrek tijd en de weer observatie tijd. Deze bewerkingen worden uitgevoerd met de **script module Execute R** .
+Since weather data is reported in local time, time zone differences are accounted for by subtracting the time zone columns from the scheduled departure time and the weather observation time. These operations are done using the **Execute R Script** module.
 
-### <a name="joining-datasets"></a>Gegevens sets koppelen
+### <a name="joining-datasets"></a>Joining Datasets
 
-Vlucht records worden toegevoegd aan de gegevens van het begin van de vlucht (**OriginAirportID**) met behulp van de **join data** -module.
+Flight records are joined with weather data at origin of the flight (**OriginAirportID**) using the **Join Data** module.
 
- ![Sluit vlucht en weer aan de oorsprong](media/how-to-ui-sample-classification-predict-flight-delay/join-origin.png)
+ ![join flight and weather by origin](media/how-to-designer-sample-classification-predict-flight-delay/join-origin.png)
 
 
-Vlucht records worden gekoppeld aan weer gegevens die gebruikmaken van de bestemming van de vlucht (**DestAirportID**).
+Flight records are joined with weather data using the destination of the flight (**DestAirportID**).
 
- ![Vlucht en weer aan de bestemming toevoegen](media/how-to-ui-sample-classification-predict-flight-delay/join-destination.png)
+ ![Join flight and weather by destination](media/how-to-designer-sample-classification-predict-flight-delay/join-destination.png)
 
-### <a name="preparing-training-and-test-samples"></a>Trainings-en test voorbeelden voorbereiden
+### <a name="preparing-training-and-test-samples"></a>Preparing Training and Test Samples
 
-In de module **Split data** worden de gegevens gesplitst in april tot en met september records voor training en oktober records voor test doeleinden.
+The **Split Data** module splits the data into April through September records for training, and October records for test.
 
- ![Training en test gegevens splitsen](media/how-to-ui-sample-classification-predict-flight-delay/split.png)
+ ![Split training and test data](media/how-to-designer-sample-classification-predict-flight-delay/split.png)
 
-De kolommen Year, month en time zone worden verwijderd uit de trainings gegevensset met behulp van de module select columns.
+Year, month, and timezone columns are removed from the training dataset using the Select Columns module.
 
 ## <a name="define-features"></a>Functies definiëren
 
-In machine learning zijn onderdelen afzonderlijke meet bare eigenschappen van iets waarin u geïnteresseerd bent. Voor het zoeken naar een sterke set functies is experimenteren en domein kennis vereist. Bepaalde kenmerken zijn beter voor het voorspellen van het doel dan andere. Het is ook mogelijk dat sommige functies een sterke correlatie met andere functies hebben en er geen nieuwe informatie aan het model toe te voegen. Deze functies kunnen worden verwijderd.
+In machine learning, features are individual measurable properties of something you’re interested in. Finding a strong set of features requires experimentation and domain knowledge. Bepaalde kenmerken zijn beter voor het voorspellen van het doel dan andere. Also, some features may have a strong correlation with other features, and won't add new information to the model. These features can be removed.
 
-Als u een model wilt bouwen, kunt u alle beschik bare functies gebruiken of een subset van de functies selecteren.
+To build a model, you can use all the features available, or select a subset of the features.
 
 ## <a name="choose-and-apply-a-learning-algorithm"></a>Een leeralgoritme kiezen en toepassen
 
-Maak een model met behulp van de module **logistiek-regressie met twee klassen** en Train deze in de trainings-gegevensset. 
+Create a model using the **Two-Class Logistic Regression** module and train it on the training dataset. 
 
-Het resultaat van de module **Train model** is een getraind classificatie model dat kan worden gebruikt om nieuwe voor beelden te scoren om voor spellingen te maken. Gebruik de testset om scores te genereren op basis van de getrainde modellen. Gebruik vervolgens de module **Evaluate model** om de kwaliteit van de modellen te analyseren en vergelijken.
-pijp lijn nadat u de pijp lijn hebt uitgevoerd, kunt u de uitvoer van de module **score model** weer geven door te klikken op de uitvoer poort en **visualiseren**te selecteren. De uitvoer bevat de gescoorde labels en de waarschijnlijkheid voor de labels.
+The result of the **Train Model** module is a trained classification model that can be used to score new samples to make predictions. Use the test set to generate scores from the trained models. Then use the **Evaluate Model** module to analyze and compare the quality of the models.
+pipeline After you run the pipeline, you can view the output from the **Score Model** module by clicking the output port and selecting **Visualize**. The output includes the scored labels and the probabilities for the labels.
 
-Ten slotte kunt u de kwaliteit van de resultaten testen door de module **Evaluate model** toe te voegen aan het pijplijn doek en de linker invoer poort aan de uitvoer van de module score model te koppelen. Voer de pijp lijn uit en Bekijk de uitvoer van de module **Evaluate model** door te klikken op de uitvoer poort en **visualiseren**te selecteren.
+Finally, to test the quality of the results, add the **Evaluate Model** module to the pipeline canvas, and connect the left input port to the output of the Score Model module. Run the pipeline and view the output of the **Evaluate Model** module, by clicking the output port and selecting **Visualize**.
 
 ## <a name="evaluate"></a>Evalueren
-Het logistiek regressie model heeft AUC van 0,631 in de testset.
+The logistic regression model has AUC of 0.631 on the test set.
 
- ![evalueren](media/how-to-ui-sample-classification-predict-flight-delay/evaluate.png)
+ ![evalueren](media/how-to-designer-sample-classification-predict-flight-delay/evaluate.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de andere voor beelden die beschikbaar zijn voor de ontwerp functie:
+Explore the other samples available for the designer:
 
-- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Voor beeld 3: classificatie met functie selectie: inkomen voor spelling](how-to-designer-sample-classification-predict-income.md)
-- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Voor beeld 5-classificatie: voor spel verloop](how-to-designer-sample-classification-churn.md)
-- [Voor beeld 7-tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

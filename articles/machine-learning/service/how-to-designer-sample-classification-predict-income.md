@@ -1,7 +1,7 @@
 ---
-title: 'Ontwerp functie: classificeren, voor beeld van inkomen'
+title: 'Designer: Classify, predict income example'
 titleSuffix: Azure Machine Learning
-description: In dit voor beeld wordt een classificatie zonder code gemaakt om de inkomsten met Azure Machine Learning Designer te voors pellen.
+description: Follow this example build a no-code classifier to predict income with Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,64 +10,64 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 527db89be85cc5b095d33ba89c776a077119f08a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: adc7712a4f41daea9ed691e6df52290e98e8d81f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196056"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214152"
 ---
-# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Bouw een classificatie & gebruik functie selectie om inkomsten te voors pellen met Azure Machine Learning Designer
+# <a name="build-a-classifier--use-feature-selection-to-predict-income-with-azure-machine-learning-designer"></a>Build a classifier & use feature selection to predict income with Azure Machine Learning designer
 
-**Voor beeld van Designer (preview) 3**
+**Designer (preview) sample 3**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-Meer informatie over het bouwen van een machine learning classificatie zonder het schrijven van één regel code met behulp van de ontwerp functie (preview). In dit voor beeld wordt een **geboostte beslissings structuur met twee klassen** getraind om inkomsten te voors pellen (> = 50.000 of < = 50.000).
+Learn how to build a machine learning classifier without writing a single line of code using the designer (preview). This sample trains a **two-class boosted decision tree** to predict adult census income (>=50K or <=50K).
 
-Omdat de vraag ' die ene? ' beantwoordt Dit wordt een probleem met de classificatie genoemd. U kunt echter hetzelfde fundamentele proces Toep assen om elk type machine learning probleem aan te pakken, of het nu gaat om een regressie, classificatie, Clustering, enzovoort.
+Because the question is answering "Which one?" this is called a classification problem. However, you can apply the same fundamental process to tackle any type of machine learning problem whether it be regression, classification, clustering, and so on.
 
-Hier volgt de laatste pijplijn grafiek voor dit voor beeld:
+Here's the final pipeline graph for this sample:
 
-![Grafiek van de pijp lijn](media/how-to-ui-sample-classification-predict-income/overall-graph.png)
+![Graph of the pipeline](media/how-to-designer-sample-classification-predict-income/overall-graph.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Klik op het voor beeld 3 om het te openen.
+4. Click the sample 3 to open it.
 
 
 
 ## <a name="data"></a>Gegevens
 
-De gegevensset bevat 14 functies en één label kolom. Er zijn meerdere typen functies, waaronder numerieke en categorische. In het volgende diagram ziet u een fragment uit de gegevensset: ![gegevens](media/how-to-ui-sample-classification-predict-income/data.png)
+The dataset contains 14 features and one label column. There are multiple types of features, including numerical and categorical. The following diagram shows an excerpt from the dataset: ![data](media/how-to-designer-sample-classification-predict-income/data.png)
 
 
 
-## <a name="pipeline-summary"></a>Pijplijn overzicht
+## <a name="pipeline-summary"></a>Pipeline summary
 
-Volg deze stappen om de pijp lijn te maken:
+Follow these steps to create the pipeline:
 
-1. Sleep de module inkomsten van de binary-gegevensset voor volwassenen naar het pijp lijn-canvas.
-1. Voeg een **Splits gegevens** module toe om de trainings-en test sets te maken. Stel de Fractie van rijen in de eerste uitvoer gegevensset in op 0,7. Met deze instelling geeft u op dat 70% van de gegevens wordt uitgevoerd naar de linker poort van de module en de rest naar de juiste poort. We gebruiken de gegevensset links voor training en de juiste voor test doeleinden.
-1. Voeg de module **op basis van filter functies** toe om vijf functies te selecteren door PearsonCorreclation. 
-1. Voeg een uitmuntende **beslissings structuur** module toe om een gestimuleerde beslissings structuur classificatie te initialiseren.
-1. Een **Train model** -module toevoegen. Verbind de classificatie van de vorige stap naar de links invoer poort van het **Train-model**. Verbind de gefilterde gegevensset van de module functie selectie op basis van een trainings gegevensset.  Het **Train-model** traint de classificatie.
-1. Voeg kolom transformatie selecteren toe en pas de transformatie module toe op het Toep assen van dezelfde trans formatie (gefilterde functie selectie) om de gegevensset te testen.
-![apply-trans formatie](media/how-to-ui-sample-classification-predict-income/transformation.png)
-1. Voeg de module **score model** toe en verbind de module **Train model** . Voeg vervolgens de testset (de uitvoer van de module voor het Toep assen van een trans formatie toe om de functie selectie te testen die u wilt instellen) naar het **score model**. Het **score model** maakt de voor spellingen. U kunt de uitvoer poort selecteren om de voor spellingen en de positieve klassen kansen te bekijken.
+1. Drag the Adult Census Income Binary dataset module into the pipeline canvas.
+1. Add a **Split Data** module to create the training and test sets. Set the fraction of rows in the first output dataset to 0.7. This setting specifies that 70% of the data will be output to the left port of the module and the rest to the right port. We use the left dataset for training and the right one for testing.
+1. Add the **Filter Based Feature Selection** module to select 5 features by PearsonCorreclation. 
+1. Add a **Two-Class Boosted Decision Tree** module to initialize a boosted decision tree classifier.
+1. Add a **Train Model** module. Connect the classifier from the previous step to the left input port of the **Train Model**. Connect the filtered dataset from Filter Based Feature Selection module as training dataset.  The **Train Model** will train the classifier.
+1. Add Select Columns Transformation and Apply Transformation module to apply the same transformation (filtered based feature selection) to test dataset.
+![apply-transformation](media/how-to-designer-sample-classification-predict-income/transformation.png)
+1. Add **Score Model** module and connect the **Train Model** module to it. Then add the test set (the output of Apply Transformation module which apply feature selection to test set too) to the **Score Model**. The **Score Model** will make the predictions. You can select its output port to see the predictions and the positive class probabilities.
 
 
-    Deze pijp lijn heeft twee Score modules, het één aan de rechter kant heeft een kolom met het label uitgesloten voordat de voor spelling wordt gemaakt. Dit is voor bereid voor het implementeren van een real-time eind punt, omdat de webservice-invoer alleen kenmerken bevat die geen label zijn. 
+    This pipeline has two score modules, the one on the right has excluded label column before make the prediction. This is prepared to deploy a real-time endpoint, because the web service input will expect only features not label. 
 
-1. Voeg een module **Evaluate model** toe en verbind de gescoorde gegevensset met de linker invoer poort. Als u de evaluatie resultaten wilt weer geven, selecteert u de uitvoer poort van de module **Evaluate model** en selecteert u **visualiseren**.
+1. Add an **Evaluate Model** module and connect the scored dataset to its left input port. To see the evaluation results, select the output port of the **Evaluate Model** module and select **Visualize**.
 
 ## <a name="results"></a>Resultaten
 
-![De resultaten evalueren](media/how-to-ui-sample-classification-predict-income/evaluate-result.png)
+![Evaluate the results](media/how-to-designer-sample-classification-predict-income/evaluate-result.png)
 
-In de resultaten van de evaluatie kunt u zien dat de bochten zoals ROC, precisie terughalen en verwar ring. 
+In the evaluation results, you can see that the curves like ROC, Precision-recall and confusion metrics. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -75,11 +75,11 @@ In de resultaten van de evaluatie kunt u zien dat de bochten zoals ROC, precisie
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de andere voor beelden die beschikbaar zijn voor de ontwerp functie:
+Explore the other samples available for the designer:
 
-- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Voor beeld 4-classificatie: krediet risico voors pellen (kosten gevoelig)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
-- [Voor beeld 5-classificatie: voor spel verloop](how-to-designer-sample-classification-churn.md)
-- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-designer-sample-classification-flight-delay.md)
-- [Voor beeld 7-tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 4 - Classification: Predict credit risk (cost sensitive)](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

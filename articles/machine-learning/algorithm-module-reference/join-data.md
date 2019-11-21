@@ -1,71 +1,71 @@
 ---
-title: 'Koppelings gegevens: module verwijzing'
+title: 'Join Data: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module koppeling toevoegen aan Azure Machine Learning voor het samen voegen van gegevens sets.
+description: Learn how to use the join Join Data module in Azure Machine Learning to merge datasets.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
-ms.date: 06/01/2019
-ms.openlocfilehash: 587490284b2886764c137a01e0eb4b3c9c755d41
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73495098"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232626"
 ---
 # <a name="join-data"></a>Gegevens samenvoegen
 
-In dit artikel wordt beschreven hoe u de module voor **samen** voegen in azure machine learning Designer (preview) gebruikt om twee gegevens sets samen te voegen met behulp van een Data Base-stijl-koppelings bewerking.  
+This article describes how to use the **Join Data** module in Azure Machine Learning designer (preview) to merge two datasets using a database-style join operation.  
 
-## <a name="how-to-configure-join-data"></a>Koppelings gegevens configureren
+## <a name="how-to-configure-join-data"></a>How to configure Join Data
 
-Als u een koppeling wilt uitvoeren op twee gegevens sets, moeten deze worden gerelateerd aan een sleutel kolom. Samengestelde sleutels met behulp van meerdere kolommen worden ook ondersteund. 
+To perform a join on two datasets, they should be related by a key column. Composite keys using multiple columns are also supported. 
 
-1. Voeg de gegevens sets toe die u wilt combi neren en sleep de module **samen voegen met gegevens** naar de pijp lijn. 
+1. Add the datasets you want to combine, and then drag the **Join Data** module into your pipeline. 
 
-    U kunt de module in de categorie **gegevens transformatie** vinden onder **bewerken**.
+    You can find the module in the **Data Transformation** category, under **Manipulation**.
 
-1. Verbind de gegevens sets met de module voor **samen voegen** . 
+1. Connect the datasets to the **Join Data** module. 
  
-1. Selecteer **starten kolom selecteren** om de sleutel kolom (men) te kiezen. Denk eraan dat u kolommen kiest voor de linker-en rechter invoer.
+1. Select **Launch column selector** to choose key column(s). Remember to choose columns for both the left and right inputs.
 
-    Voor één sleutel:
+    For a single key:
 
-    Selecteer één sleutel kolom voor beide invoer.
+    Select a single key column for both inputs.
     
-    Voor een samengestelde sleutel:
+    For a composite key:
 
-    Selecteer alle sleutel kolommen van links invoer en rechts invoer in dezelfde volg orde. De module **gegevens samen voegen** voegt de tabellen samen wanneer alle sleutel kolommen overeenkomen. Schakel de optie **dubbele waarden toestaan en kolom volgorde in selectie behouden in** als de volg orde van de kolom niet gelijk is aan de oorspronkelijke tabel. 
+    Select all the key columns from left input and right input in the same order. The **Join Data** module will join the tables when all key columns match. Check the option **Allow duplicates and preserve column order in selection** if the column order isn't the same as the original table. 
 
-    ![kolom-selector](media/module/join-data-column-selector.png)
+    ![column-selector](media/module/join-data-column-selector.png)
 
 
-1. Selecteer de optie **hoofdletter gebruik** als u de hoofdletter gevoeligheid voor een tekst kolom koppeling wilt behouden. 
+1. Select the **Match case** option if you want to preserve case sensitivity on a text column join. 
    
-1. Gebruik de vervolg keuzelijst **type samen voegen** om op te geven hoe de gegevens sets moeten worden gecombineerd.  
+1. Use the **Join type** dropdown list to specify how the datasets should be combined.  
   
-    * **Inner join**: een *inner join* is de meest voorkomende join-bewerking. Het retourneert de gecombineerde rijen alleen wanneer de waarden van de sleutel kolommen overeenkomen.  
+    * **Inner Join**: An *inner join* is the most common join operation. It returns the combined rows only when the values of the key columns match.  
   
-    * **Left outer join**: een *left outer join* retourneert samengevoegde rijen voor alle rijen uit de linkertabel. Wanneer een rij in de linkertabel geen overeenkomende rijen in de rechter tabel heeft, bevat de geretourneerde rij ontbrekende waarden voor alle kolommen uit de rechter tabel. U kunt ook een vervangings waarde voor ontbrekende waarden opgeven.  
+    * **Left Outer Join**: A *left outer join* returns joined rows for all rows from the left table. When a row in the left table has no matching rows in the right table, the returned row contains missing values for all columns that come from the right table. You can also specify a replacement value for missing values.  
   
-    * **Volledige outer join**: een *full outer join* retourneert alle rijen uit de linkertabel (**Tabel1**) en uit de rechter tabel (**tabel2**).  
+    * **Full Outer Join**: A *full outer join* returns all rows from the left table (**table1**) and from the right table (**table2**).  
   
-         Voor elk van de rijen in een tabel die geen overeenkomende rijen heeft, bevat het resultaat een rij met ontbrekende waarden.  
+         For each of the rows in either table that have no matching rows in the other, the result includes a row containing missing values.  
   
-    * **Linker semi-koppeling**: een *Left semi-koppeling* retourneert alleen de waarden uit de linkertabel wanneer de waarden van de sleutel kolommen overeenkomen.  
+    * **Left Semi-Join**: A *left semi-join* returns only the values from the left table when the values of the key columns match.  
 
-1. Voor de optie **behoud de juiste sleutel kolommen in een gekoppelde tabel**:
+1. For the option **Keep right key columns in joined table**:
 
-    * Selecteer deze optie om de sleutels uit beide invoer tabellen weer te geven.
-    * Schakel deze optie uit als u de sleutel kolommen alleen wilt retour neren van de invoer links.
+    * Select this option to view the keys from both input tables.
+    * Deselect to only return the key columns from the left input.
 
-1. Voer de pijp lijn uit of selecteer de module samenvoegings gegevens en de geselecteerde **uitvoering** om de koppeling uit te voeren.
+1. Run the pipeline, or select the Join Data module and selected **Run Selected** to perform the join.
 
-1. Als u de resultaten wilt weer geven, klikt u met de rechter muisknop op de **samenvoeg gegevens** > **resultaten gegevensset** > **visualiseren**.
+1. To view the results, right-click the **Join Data** > **Results dataset** > **Visualize**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+See the [set of modules available](module-reference.md) to Azure Machine Learning. 

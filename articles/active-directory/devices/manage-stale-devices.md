@@ -1,6 +1,6 @@
 ---
 title: Verlopen apparaten beheren in Azure AD | Microsoft Docs
-description: Meer informatie over het verwijderen van verouderde apparaten uit uw data base van geregistreerde apparaten in Azure Active Directory.
+description: Learn how to remove stale devices from your database of registered devices in Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2e92ca85c485f8c93fc9202b9084ec37d7506e1
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 1829c56f9804c5aa808461db98a5048d63f55446
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73175063"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74207286"
 ---
-# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Procedure: verouderde apparaten beheren in azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>How To: Manage stale devices in Azure AD
 
 In het ideale geval moet de levenscyclus van geregistreerde apparaten worden voltooid door de registratie van de apparaten ongedaan te maken op het moment dat ze niet meer nodig zijn. Als gevolg van bijvoorbeeld verloren, gestolen of defecte apparaten, of herinstallaties van het besturingssysteem, zijn er meestal echter nog wel verlopen apparaten aanwezig in uw omgeving. Als IT-beheerder is het prettig om te beschikken over een methode voor het verwijderen van verlopen apparaten, zodat u zich kunt richten op het beheren van apparaten die nog echt in gebruik zijn.
 
@@ -30,7 +30,7 @@ In dit artikel leert u hoe u op een efficiënte manier verlopen apparaten in uw 
 Een verlopen apparaat is een apparaat dat is geregistreerd bij Azure AD, maar dat gedurende een bepaalde periode niet is gebruikt voor toegang tot cloud-apps. Verlopen apparaten hebben vanwege de volgende redenen invloed op het efficiënt beheren en ondersteunen van apparaten en gebruikers in de tenant: 
 
 - Dubbele apparaten kunnen het lastig maken voor de helpdesk om te bepalen welk apparaat momenteel actief is.
-- Een groter aantal apparaten zorgt voor onnodige write-backs naar apparaten, waardoor er meer tijd nodig is synchronisaties met AAD Connect.
+- An increased number of devices creates unnecessary device writebacks increasing the time for Azure AD connect syncs.
 - Als een algemene maatregel en om te voldoen aan nalevingsvereisten, kan het prettig zijn om alleen met actieve apparaten te werken. 
 
 Verlopen apparaten in Azure AD kunnen van invloed zijn op het algemene levenscyclusbeleid voor apparaten in uw organisatie.
@@ -43,11 +43,11 @@ De definitie van een verlopen apparaat is een geregistreerd apparaat dat geduren
 
 De evaluatie van de tijdstempel van activiteit wordt geactiveerd door een poging tot verificatie van een apparaat. In de volgende gevallen wordt de tijdstempel van activiteit geëvalueerd door Azure AD:
 
-- Een beleid voor voorwaardelijke toegang waarvoor [beheerde apparaten](../conditional-access/require-managed-devices.md) of [goedgekeurde client-apps](../conditional-access/app-based-conditional-access.md) zijn vereist, is geactiveerd.
+- A Conditional Access policies requiring [managed devices](../conditional-access/require-managed-devices.md) or [approved client apps](../conditional-access/app-based-conditional-access.md) has been triggered.
 - Windows 10-apparaten die zijn toegevoegd aan Azure AD of hybride Azure AD zijn actief in het netwerk. 
 - Met Intune beheerde apparaten zijn ingecheckt bij de service.
 
-Als de verschil tussen de bestaande waarde van de tijds tempel van de activiteit en de huidige waarde meer dan 14 dagen (afwijking van +/-5 dagen) is, wordt de bestaande waarde vervangen door de nieuwe waarde.
+If the delta between the existing value of the activity timestamp and the current value is more than 14 days (+/-5 day variance), the existing value is replaced with the new value.
 
 ## <a name="how-do-i-get-the-activity-timestamp"></a>Hoe kom ik aan het tijdstempel van activiteit?
 
@@ -70,14 +70,14 @@ Om verlopen apparaten op een efficiënte manier op te schonen in uw omgeving, mo
 Als u een apparaat wilt bijwerken in Azure AD, hebt u een account nodig waaraan een van de volgende rollen is toegewezen:
 
 - Globale beheerder
-- Beheerder van Cloud apparaat
+- Cloud Device Administrator
 - Intune-servicebeheerder
 
 Selecteer in uw opschoningsbeleid accounts die over de vereiste rollen beschikken. 
 
 ### <a name="timeframe"></a>Tijdsbestek
 
-Definieer de periode die u als indicator wilt gebruiken voor een verlopen apparaat. Als u uw tijds bestek definieert, factor het venster dat wordt vermeld voor het bijwerken van de tijds tempel van de activiteit in uw waarde. U moet bijvoorbeeld een tijds tempel overwegen die jonger is dan 21 dagen (inclusief variantie) als indicator voor een verouderd apparaat. Er zijn scenario's waarin het lijkt alsof een apparaat verlopen is terwijl dat niet het geval is. Zo is het bijvoorbeeld mogelijk dat de eigenaar van het apparaat op vakantie is of ziek is en  hierdoor de periode voor verlopen apparaten wordt overschreden.
+Definieer de periode die u als indicator wilt gebruiken voor een verlopen apparaat. When defining your timeframe, factor the window noted for updating the activity timestamp into your value. For example, you shouldn't consider a timestamp that is younger than 21 days (includes variance) as an indicator for a stale device. Er zijn scenario's waarin het lijkt alsof een apparaat verlopen is terwijl dat niet het geval is. Zo is het bijvoorbeeld mogelijk dat de eigenaar van het apparaat op vakantie is of ziek is en  hierdoor de periode voor verlopen apparaten wordt overschreden.
 
 ### <a name="disable-devices"></a>Apparaten uitschakelen
 
@@ -89,7 +89,7 @@ Als een apparaat onder beheer staat van Intune of een andere MDM-oplossing, stel
 
 ### <a name="system-managed-devices"></a>Door systeem beheerde apparaten
 
-Verwijder geen apparaten die door het systeem worden beheerd. Dit zijn meestal apparaten zoals auto-pilot. Nadat deze apparaten zijn verwijderd, kunnen ze niet opnieuw worden ingericht. Door het systeem beheerde apparaten worden standaard uitgesloten door de nieuwe cmdlet `get-msoldevice`. 
+Verwijder geen apparaten die door het systeem worden beheerd. Dit zijn meestal apparaten zoals auto-pilot. Once deleted, these devices can't be reprovisioned. Door het systeem beheerde apparaten worden standaard uitgesloten door de nieuwe cmdlet `get-msoldevice`. 
 
 ### <a name="hybrid-azure-ad-joined-devices"></a>Hybride Azure AD-gekoppelde apparaten
 
@@ -98,13 +98,13 @@ Apparaten die zijn gekoppeld aan hybride Azure AD moeten het beleid volgen voor 
 Azure AD opschonen:
 
 - **Windows 10-apparaten**: schakel Windows 10-apparaten uit in uw on-premises AD of verwijder ze, en laat Azure AD Connect de gewijzigde apparaatstatus synchroniseren naar Azure AD.
-- **Windows 7/8** : Schakel eerst Windows 7/8-apparaten in uw on-premises AD in of verwijder deze. U kunt Azure AD Connect niet gebruiken voor het uitschakelen of verwijderen van Windows 7/8-apparaten in Azure AD. In plaats daarvan moet u, wanneer u de wijziging in uw on-premises aanbrengt, u in azure AD uitschakelen of verwijderen.
+- **Windows 7/8** - Disable or delete Windows 7/8 devices in your on-premises AD first. U kunt Azure AD Connect niet gebruiken voor het uitschakelen of verwijderen van Windows 7/8-apparaten in Azure AD. Instead, when you make the change in your on-premises, you must disable/delete in Azure AD.
 
 > [!NOTE]
->* Als u apparaten in uw on-premises AD of Azure AD verwijdert, wordt de registratie op de client niet verwijderd. Er wordt alleen voor komen dat toegang tot resources wordt gebruikt als identiteit (bijvoorbeeld voorwaardelijke toegang). Lees meer informatie over het [verwijderen van de registratie op de client](faq.md#hybrid-azure-ad-join-faq).
->* Wanneer u een Windows 10-apparaat alleen in azure AD verwijdert, wordt het apparaat opnieuw gesynchroniseerd vanuit uw on-premises met Azure AD Connect, maar als een nieuw object met de status in behandeling. Er is een nieuwe registratie vereist op het apparaat.
->* Als u het apparaat verwijdert uit het synchronisatie bereik voor Windows 10/server 2016-apparaten, wordt het Azure AD-apparaat verwijderd. Als u het weer toevoegt aan het synchronisatie bereik, wordt een nieuw object in de status ' in behandeling ' geplaatst. Er is een nieuwe registratie van het apparaat vereist.
->* Als u Azure AD Connect niet gebruikt voor het synchroniseren van Windows 10-apparaten (bijvoorbeeld alleen met behulp van AD FS voor registratie), moet u de levens cyclus op dezelfde manier beheren als Windows 7/8-apparaten.
+>* Deleting devices in your on-premises AD or Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access). Read additional information on how to [remove registration on the client](faq.md#hybrid-azure-ad-join-faq).
+>* Deleting a Windows 10 device only in Azure AD will re-synchronize the device from your on-premises using Azure AD connect but as a new object in "Pending" state. A re-registration is required on the device.
+>* Removing the device from sync scope for Windows 10/Server 2016 devices will delete the Azure AD device. Adding it back to sync scope will place a new object in "Pending" state. A re-registration of the device is required.
+>* If you not using Azure AD Connect for Windows 10 devices to synchronize (e.g. ONLY using AD FS for registration), you must manage lifecycle similar to Windows 7/8 devices.
 
 
 ### <a name="azure-ad-joined-devices"></a>Azure AD-gekoppelde apparaten
@@ -112,16 +112,16 @@ Azure AD opschonen:
 Apparaten die zijn gekoppeld aan Azure AD kunt u uitschakelen of verwijderen in Azure AD.
 
 > [!NOTE]
->* Als u een Azure AD-apparaat verwijdert, wordt de registratie op de client niet verwijderd. Er wordt alleen voor komen dat toegang tot resources wordt gebruikt als identiteit (bijvoorbeeld voorwaardelijke toegang). 
->* Meer informatie over [het ontkoppelen van Azure AD](faq.md#azure-ad-join-faq) 
+>* Deleting an Azure AD device does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g Conditional Access). 
+>* Read more on [how to unjoin on Azure AD](faq.md#azure-ad-join-faq) 
 
 ### <a name="azure-ad-registered-devices"></a>Azure AD-geregistreerde apparaten
 
 Apparaten die zijn geregistreerd in Azure AD kunt u uitschakelen of verwijderen in Azure AD.
 
 > [!NOTE]
->* Bij het verwijderen van een geregistreerd Azure AD-apparaat in azure AD wordt de registratie op de client niet verwijderd. Er wordt alleen voor komen dat toegang tot resources wordt gebruikt als identiteit (bijvoorbeeld voorwaardelijke toegang).
->* Meer informatie over het [verwijderen van een registratie op de client](faq.md#azure-ad-register-faq)
+>* Deleting an Azure AD registered device in Azure AD does not remove registration on the client. It will only prevent access to resources using device as an identity (e.g. Conditional Access).
+>* Read more on [how to remove a registration on the client](faq.md#azure-ad-register-faq)
 
 ## <a name="clean-up-stale-devices-in-the-azure-portal"></a>Verlopen apparaten opschonen in de Microsoft Azure-portal  
 
@@ -144,7 +144,7 @@ Get-MsolDevice -all | select-object -Property Enabled, DeviceId, DisplayName, De
 mateLastLogonTimestamp | export-csv devicelist-summary.csv
 ```
 
-Als uw Directory een groot aantal apparaten bevat, kunt u het tijds tempel filter gebruiken om het aantal geretourneerde apparaten te beperken. Alle apparaten met een tijdstempel ouder dan een specifieke datum opvragen en de geretourneerde gegevens opslaan in een CSV-bestand: 
+If you have a large number of devices in your directory, use the timestamp filter to narrow down the number of returned devices. Alle apparaten met een tijdstempel ouder dan een specifieke datum opvragen en de geretourneerde gegevens opslaan in een CSV-bestand: 
 
 ```PowerShell
 $dt = [datetime]’2017/01/01’
@@ -161,12 +161,12 @@ De tijdstempel wordt bijgewerkt ter ondersteuning van scenario's voor de levensc
 
 Als dit is geconfigureerd, worden BitLocker-sleutels voor Windows 10-apparaten opgeslagen in het apparaatobject in Azure AD. Als u een verlopen apparaat verwijdert, verwijdert u ook de BitLocker-sleutels die op het apparaat zijn opgeslagen. U moet bepalen of uw opschoningsbeleid overeenkomt met de werkelijke levenscyclus van uw apparaat voordat u een verlopen apparaat verwijdert. 
 
-### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Waarom moet ik me zorgen maken over Windows auto pilot-apparaten?
+### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Why should I worry about Windows Autopilot devices?
 
-Wanneer een Azure AD-apparaat is gekoppeld aan een Windows auto pilot-object, kunnen de volgende drie scenario's optreden als het apparaat in de toekomst wordt hergebruikt:
-- Met Windows auto pilot door gebruikers gestuurde implementaties zonder gebruik te maken van witte ondersteunt, wordt er een nieuw Azure AD-apparaat gemaakt, maar dit wordt niet gelabeld met de ZTDID.
-- Met Windows auto pilot-implementaties in de modus voor automatische prototype mislukt deze omdat er geen Azure AD-apparaat kan worden gevonden.  (Dit is een beveiligings mechanisme om ervoor te zorgen dat er geen ' preposter '-apparaten proberen om lid te worden van Azure AD zonder referenties.) De fout geeft aan dat een ZTDID niet overeenkomt.
-- Met de ondersteunt-implementaties van Windows auto pilot kunnen ze niet worden uitgevoerd, omdat er geen gekoppeld Azure AD-apparaat kan worden gevonden. (Achter de schermen gebruiken White ondersteunt-implementaties hetzelfde proces voor automatische implementatie, zodat ze dezelfde beveiligings mechanismen afdwingen.)
+When a Azure AD device was associated with a Windows Autopilot object the following three scenarios can occur if the device will be repurposed in future:
+- With Windows Autopilot user-driven deployments without using white glove, a new Azure AD device will be created, but it won’t be tagged with the ZTDID.
+- With Windows Autopilot self-deploying mode deployments, they will fail because an associate Azure AD device cannot be found.  (This is a security mechanism to make sure that no “imposter” devices try to join Azure AD with no credentials.) The failure will indicate a ZTDID mismatch.
+- With Windows Autopilot white glove deployments, they will fail because an associated Azure AD device cannot be found. (Behind the scenes, white glove deployments use the same self-deploying mode process, so they enforce the same security mechanisms.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Hoe weet ik om wat voor type gekoppelde apparaten het gaat?
 

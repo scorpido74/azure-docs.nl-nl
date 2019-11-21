@@ -1,138 +1,138 @@
 ---
-title: Wat is een persoonlijk Azure-eind punt?
-description: Meer informatie over Azure persoonlijk eind punt
+title: What is an Azure Private Endpoint?
+description: Learn about Azure Private Endpoint
 services: private-link
-author: KumudD
+author: asudbring
 ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/16/2019
-ms.author: kumud
-ms.openlocfilehash: ccc3da6f2dd49775ff4d4486fcd2af9f08a396d6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.author: allensu
+ms.openlocfilehash: ccae73b58b7da8e631c081871e17cec221918a76
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73475923"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228122"
 ---
-# <a name="what-is-azure-private-endpoint"></a>Wat is een persoonlijk Azure-eind punt?
+# <a name="what-is-azure-private-endpoint"></a>What is Azure Private Endpoint?
 
-Persoonlijk Azure-eind punt is een netwerk interface waarmee u privé en veilig een service kunt verbinden met een persoonlijke Azure-koppeling. Privé-eind punt gebruikt een privé-IP-adres uit uw VNet, waardoor de service effectief in uw VNet wordt gezet. De service kan een Azure-service zijn, zoals Azure Storage, Azure Cosmos DB, SQL, etc. of uw eigen [persoonlijke koppelings service](private-link-service-overview.md).
+Azure Private Endpoint is a network interface that connects you privately and securely to a service powered by Azure Private Link. Private Endpoint uses a private IP address from your VNet, effectively bringing the service into your VNet. The service could be an Azure service such as Azure Storage, Azure Cosmos DB, SQL, etc. or your own [Private Link Service](private-link-service-overview.md).
   
-## <a name="private-endpoint-properties"></a>Eigenschappen van persoonlijk eind punt 
- Een persoonlijk eind punt geeft de volgende eigenschappen aan: 
+## <a name="private-endpoint-properties"></a>Private Endpoint properties 
+ A Private Endpoint specifies the following properties: 
 
 
 |Eigenschap  |Beschrijving |
 |---------|---------|
-|Naam    |    Een unieke naam binnen de resource groep.      |
-|Subnet    |  Het subnet voor het implementeren en toewijzen van privé-IP-adressen van een virtueel netwerk. Zie de sectie beperkingen in dit artikel voor meer informatie over het subnet.         |
-|Persoonlijke koppelings bron    |   De bron van de persoonlijke koppeling om verbinding te maken met behulp van de resource-ID of alias, uit de lijst met beschik bare typen. Er wordt een unieke netwerk-id gegenereerd voor al het verkeer dat wordt verzonden naar deze bron.       |
-|Doel-subresource   |      De subresource waarmee verbinding moet worden gemaakt. Elk resource type voor een persoonlijke koppeling heeft verschillende opties om te selecteren op basis van voor keur.    |
-|Goedkeurings methode voor verbinding    |  Automatisch of hand matig. Op basis van RBAC-machtigingen (op rollen gebaseerd toegangs beheer) kan uw persoonlijke eind punt automatisch worden goedgekeurd. Als u probeert verbinding te maken met een persoonlijke koppelings bron zonder RBAC, gebruikt u de hand matige methode om de eigenaar van de resource toe te staan de verbinding goed te keuren.        |
-|Aanvraag bericht     |  U kunt een bericht opgeven dat de aangevraagde verbindingen hand matig moeten worden goedgekeurd. Dit bericht kan worden gebruikt om een specifieke aanvraag te identificeren.        |
-|Verbindingsstatus   |   Een alleen-lezen eigenschap waarmee wordt opgegeven of het persoonlijke eind punt actief is. Alleen persoonlijke eind punten in een goedgekeurde status kunnen worden gebruikt om verkeer te verzenden. Aanvullende beschik bare statussen: <br>-**goedgekeurd**: de verbinding is automatisch of hand matig goedgekeurd en is klaar om te worden gebruikt.</br><br>-**in behandeling**: de verbinding is hand matig gemaakt en in afwachting van goed keuring door de resource-eigenaar van de persoonlijke koppeling.</br><br>-**geweigerd**: de verbinding is geweigerd door de resource-eigenaar van de persoonlijke koppeling.</br><br>-**verbroken**: de verbinding is verwijderd door de resource-eigenaar van de persoonlijke koppeling. Het persoonlijke eind punt wordt informatieve en moet worden verwijderd voor opschoning. </br>|
+|Naam    |    A unique name within the resource group.      |
+|Subnet    |  The subnet to deploy and allocate private IP addresses from a virtual network. For subnet requirements, see the Limitations section in this article.         |
+|Private Link Resource    |   The private link resource to connect using resource ID or alias, from the list of available types. A unique network identifier will be generated for all traffic sent to this resource.       |
+|Target subresource   |      The subresource to connect. Each private link resource type has different options to select based on preference.    |
+|Connection approval method    |  Automatic or manual. Based on role-based access control (RBAC) permissions, your private endpoint can be approved automatically. If you try to connect to a private link resource without RBAC, use the manual method to allow the owner of the resource to approve the connection.        |
+|Request Message     |  You can specify a message for requested connections to be approved manually. This message can be used to identify a specific request.        |
+|Verbindingsstatus   |   A read-only property that specifies if the private endpoint is active. Only private endpoints in an approved state can be used to send traffic. Additional states available: <br>-**Approved**: Connection was automatically or manually approved and is ready to be used.</br><br>-**Pending**: Connection was created manually and is pending approval by the private link resource owner.</br><br>-**Rejected**: Connection was rejected by the private link resource owner.</br><br>-**Disconnected**: Connection was removed by the private link resource owner. The private endpoint becomes informative and should be deleted for cleanup. </br>|
 
-Hier volgen enkele belang rijke informatie over persoonlijke eind punten: 
-- Met een privé-eind punt is connectiviteit tussen de gebruikers van hetzelfde VNet, regionale, VNets, wereld wijd verbonden VNets en on-premises mogelijk via [VPN-](https://azure.microsoft.com/services/vpn-gateway/) of [Express route](https://azure.microsoft.com/services/expressroute/) en services die worden aangedreven door privé-verbinding.
+Here are some key details about private endpoints: 
+- Private endpoint enables connectivity between the consumers from the same VNet, regionally peered VNets, globally peered VNets and on premises using [VPN](https://azure.microsoft.com/services/vpn-gateway/) or [Express Route](https://azure.microsoft.com/services/expressroute/) and services powered by Private Link.
  
-- Wanneer u een persoonlijk eind punt maakt, wordt er ook een netwerk interface gemaakt voor de levens cyclus van de resource. Aan de interface wordt een privé-IP-adres toegewezen uit het subnet dat is gekoppeld aan de service voor persoonlijke koppelingen.
+- When creating a private endpoint, a network interface is also created for the lifecycle of the resource. The interface is assigned a private IP address from the subnet that maps to the Private Link Service.
  
-- Het persoonlijke eind punt moet worden geïmplementeerd in dezelfde regio als het virtuele netwerk. 
+- The private endpoint must be deployed in the same region as the virtual network. 
  
-- De bron van de persoonlijke koppeling kan worden geïmplementeerd in een andere regio dan het virtuele netwerk en het persoonlijke eind punt.
+- The private link resource can be deployed in a different region than the virtual network and private endpoint.
  
-- Er kunnen meerdere persoonlijke eind punten worden gemaakt met behulp van dezelfde persoonlijke koppelings resource. Voor één netwerk dat gebruikmaakt van een gemeen schappelijke DNS-server configuratie, is het aanbevolen een enkel persoonlijk eind punt te gebruiken voor een bepaalde persoonlijke koppelings bron om dubbele vermeldingen of conflicten in DNS-omzetting te voor komen. 
+- Multiple private endpoints can be created using the same private link resource. For a single network using a common DNS server configuration, the recommended practice is to use a single private endpoint for a given private link resource to avoid duplicate entries or conflicts in DNS resolution. 
  
-- Meerdere persoonlijke eind punten kunnen worden gemaakt op dezelfde of verschillende subnetten binnen hetzelfde virtuele netwerk. Er zijn limieten voor het aantal privé-eind punten dat u in een abonnement kunt maken. Zie [Azure-limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)voor meer informatie.
+- Multiple private endpoints can be created on the same or different subnets within the same virtual network. There are limits to the number of private endpoints you can create in a subscription. For details, see [Azure limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits).
 
 
  
-## <a name="private-link-resource"></a>Persoonlijke koppelings bron 
-Een persoonlijke koppelings bron is het doel doel van een gegeven persoonlijk eind punt. Hier volgt een lijst met beschik bare resource typen voor persoonlijke koppelingen: 
+## <a name="private-link-resource"></a>Private link resource 
+A private link resource is the destination target of a given private endpoint. The following is a list of available private link resource types: 
  
-|Naam van de resource van de persoonlijke koppeling  |Resourcetype   |Subbronnen  |
+|Private link resource name  |Resourcetype   |Subresources  |
 |---------|---------|---------|
-|**Privé koppelings service** (uw eigen service)   |  Micro soft. Network/privateLinkServices       | gelaten |
-|**Azure SQL Database** | Micro soft. SQL/servers    |  SQL Server (sqlServer)        |
-|**Azure SQL Data Warehouse** | Micro soft. SQL/servers    |  SQL Server (sqlServer)        |
-|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)<BR> Tabel (tabel, table_secondary)<BR> Wachtrij (wachtrij, queue_secondary)<BR> Bestand (bestand, file_secondary)<BR> Web (Web, web_secondary)        |
-|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  BLOB (BLOB, blob_secondary)       |
-|**Azure Cosmos DB** | Micro soft. AzureCosmosDB/databaseAccounts | SQL, MongoDB, Cassandra, Gremlin, tabel|
+|**Private Link Service** (Your own service)   |  Microsoft.Network/privateLinkServices       | empty |
+|**Azure SQL Database** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
+|**Azure SQL Data Warehouse** | Microsoft.Sql/servers    |  Sql Server (sqlServer)        |
+|**Azure Storage**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)<BR> Table (table, table_secondary)<BR> Queue (queue, queue_secondary)<BR> File (file, file_secondary)<BR> Web (web, web_secondary)        |
+|**Azure Data Lake Storage Gen2**  | Microsoft.Storage/storageAccounts    |  Blob (blob, blob_secondary)       |
+|**Azure Cosmos DB** | Microsoft.AzureCosmosDB/databaseAccounts | Sql, MongoDB, Cassandra, Gremlin, Table|
  
-## <a name="network-security-of-private-endpoints"></a>Netwerk beveiliging van privé-eind punten 
-Wanneer u privé-eind punten voor Azure-Services gebruikt, wordt het verkeer beveiligd met een specifieke persoonlijke koppelings bron. Het platform voert een toegangs controle uit om netwerk verbindingen te valideren die alleen de opgegeven persoonlijke koppelings bron bereiken. Als u toegang wilt krijgen tot extra resources binnen dezelfde Azure-service, zijn er extra persoonlijke eind punten vereist. 
+## <a name="network-security-of-private-endpoints"></a>Network security of private endpoints 
+When using private endpoints for Azure services, traffic is secured to a specific private link resource. The platform performs an access control to validate network connections reaching only the specified private link resource. To access additional resources within the same Azure service, additional private endpoints are required. 
  
-U kunt uw workloads volledig vergren delen voor het openen van open bare eind punten om verbinding te maken met een ondersteunde Azure-service. Dit besturings element biedt een extra netwerkbeveiligingslaag aan uw resources door een ingebouwde exfiltration-beveiliging te bieden waarmee toegang tot andere resources die worden gehost op dezelfde Azure-service, wordt voor komen. 
+You can completely lock down your workloads from accessing public endpoints to connect to a supported Azure service. This control provides an additional network security layer to your resources by providing a built-in exfiltration protection that prevents access to other resources hosted on the same Azure service. 
  
-## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Toegang tot een persoonlijke koppelings bron via een goedkeurings werk stroom 
-U kunt verbinding maken met een persoonlijke koppelings bron met behulp van de volgende verbindings goedkeurings methoden:
-- **Automatisch** goedgekeurd wanneer u beschikt over een machtiging voor de specifieke persoonlijke koppelings bron. De vereiste machtiging is gebaseerd op het resource type persoonlijke koppeling in de volgende indeling: micro soft.\<provider >/< resource_type >/privateEndpointConnectionApproval/action
-- **Hand matige** aanvraag wanneer u niet over de vereiste machtigingen beschikt en u toegang wilt aanvragen. Er wordt een goedkeurings werk stroom gestart. Het persoonlijke eind punt en de volgende particuliere eindpunt verbinding worden gemaakt met de status in behandeling. De resource-eigenaar van de persoonlijke koppeling is verantwoordelijk voor het goed keuren van de verbinding. Nadat het is goedgekeurd, is het persoonlijke eind punt ingeschakeld voor het normaal verzenden van verkeer, zoals wordt weer gegeven in het volgende goedkeurings werk stroom diagram.  
+## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Access to a private link resource using approval workflow 
+You can connect to a private link resource using the following connection approval methods:
+- **Automatically** approved when you own or have permission on the specific private link resource. The permission required is based on the private link resource type in the following format: Microsoft.\<Provider>/<resource_type>/privateEndpointConnectionApproval/action
+- **Manual** request when you don't have the permission required and would like to request access. An approval workflow will be initiated. The private endpoint and subsequent private endpoint connection will be created in a "Pending" state. The private link resource owner is responsible to approve the connection. After it's approved, the private endpoint is enabled to send traffic normally, as shown in the following approval workflow diagram.  
 
-![workflowgoedkeuring](media/private-endpoint-overview/private-link-paas-workflow.png)
+![workflow approval](media/private-endpoint-overview/private-link-paas-workflow.png)
  
-De eigenaar van de resource van de persoonlijke koppeling kan de volgende acties uitvoeren via een verbinding met een privé-eind punt: 
-- Bekijk alle details van het particuliere eind punt-verbinding. 
-- Een persoonlijke eindpunt verbinding goed keuren. Het bijbehorende persoonlijke eind punt wordt ingeschakeld voor het verzenden van verkeer naar de bron van de persoonlijke koppeling. 
-- Een persoonlijke eindpunt verbinding afwijzen. Het bijbehorende persoonlijke eind punt wordt bijgewerkt om de status weer te geven.
-- Een particuliere-eindpunt verbinding in een wille keurige staat verwijderen. Het bijbehorende persoonlijke eind punt wordt bijgewerkt met de status niet verbonden om de actie weer te geven. de eigenaar van het privé-eind punt kan de resource op dit moment alleen verwijderen. 
+The private link resource owner can perform the following actions over a private endpoint connection: 
+- Review all private endpoint connections details. 
+- Approve a private endpoint connection. The corresponding private endpoint will be enabled to send traffic to the private link resource. 
+- Reject a private endpoint connection. The corresponding private endpoint will be updated to reflect the status.
+- Delete a private endpoint connection in any state. The corresponding private endpoint will be updated with a disconnected state to reflect the action, the private endpoint owner can only delete the resource at this point. 
  
 > [!NOTE]
-> Alleen een persoonlijk eind punt met een goedgekeurde status kan verkeer verzenden naar een bepaalde persoonlijke koppelings bron. 
+> Only a private endpoint in an approved state can send traffic to a given private link resource. 
 
-### <a name="connecting-using-alias"></a>Verbinding maken via alias
-Alias is een unieke moniker die wordt gegenereerd wanneer de service-eigenaar de privé koppelings service maakt achter een standaard load balancer. De eigenaar van de service kan deze alias met hun consumenten offline delen. Consumenten kunnen een verbinding met een privé koppelings service aanvragen met behulp van de resource-URI of de alias. Als u verbinding wilt maken met behulp van een alias, moet u een persoonlijk eind punt maken met de methode hand matige goed keuring voor verbinding. Stel voor het gebruik van hand matige goedkeurings methode de hand matige aanvraag parameter in op True tijdens het maken van een persoonlijk eind punt. Kijk naar [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) en [AZ Network private-endpoint Create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) voor meer informatie. 
+### <a name="connecting-using-alias"></a>Connecting using Alias
+Alias is a unique moniker that is generated when the service owner creates the private link service behind a standard load balancer. Service owner can share this Alias with their consumers offline. Consumers can request a connection to private link service using either the resource URI or the Alias. If you want to connect using Alias, you must create private endpoint using manual connection approval method. For using manual connection approval method, set manual request parameter to true during private endpoint create flow. Look at [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint?view=azps-2.6.0) and [az network private-endpoint create](/cli/azure/network/private-endpoint?view=azure-cli-latest#az-network-private-endpoint-create) for details. 
 
 ## <a name="dns-configuration"></a>DNS-configuratie 
-Wanneer u verbinding maakt met een persoonlijke koppelings bron met behulp van een Fully Qualified Domain Name (FQDN) als onderdeel van de connection string, is het belang rijk om uw DNS-instellingen correct te configureren om te worden omgezet in het toegewezen privé-IP-adres. Bestaande Azure-Services hebben mogelijk al een DNS-configuratie die kan worden gebruikt om verbinding te maken via een openbaar eind punt. Deze moet worden overschreven om verbinding te maken via uw persoonlijke eind punt. 
+When connecting to a private link resource using a fully qualified domain name (FQDN) as part of the connection string, it's important to correctly configure your DNS settings to resolve to the allocated private IP address. Existing Azure services might already have a DNS configuration to use when connecting over a public endpoint. This needs to be overridden to connect using your private endpoint. 
  
-De netwerk interface die aan het persoonlijke eind punt is gekoppeld, bevat de volledige set informatie die nodig is voor het configureren van uw DNS, inclusief FQDN-en privé IP-adressen die zijn toegewezen voor een bepaalde persoonlijke koppelings bron. 
+The network interface associated with the private endpoint contains the complete set of information required to configure your DNS, including FQDN and private IP addresses allocated for a given private link resource. 
  
-U kunt de volgende opties gebruiken om uw DNS-instellingen voor privé-eind punten te configureren: 
-- **Het hostbestand gebruiken (alleen aanbevolen voor testen)** . U kunt het hostbestand op een virtuele machine gebruiken om de DNS te vervangen.  
-- **Gebruik een privé-DNS-zone**. U kunt privé-DNS-zones gebruiken om de DNS-omzetting voor een bepaald persoonlijk eind punt te negeren. Een persoonlijke DNS-zone kan worden gekoppeld aan uw virtuele netwerk om specifieke domeinen op te lossen.
-- **Gebruik uw aangepaste DNS-server**. U kunt uw eigen DNS-server gebruiken om de DNS-omzetting voor een bepaalde persoonlijke koppelings bron te negeren. Als uw [DNS-server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) wordt gehost op een virtueel netwerk, kunt u een DNS-doorstuur regel maken voor het gebruik van een privé-DNS-zone om de configuratie voor alle persoonlijke koppelings bronnen te vereenvoudigen.
+You can use the following options to configure your DNS settings for private endpoints: 
+- **Use the Host file (only recommended for testing)** . You can use the host file on a virtual machine to override the DNS.  
+- **Use a private DNS zone**. You can use private DNS zones to override the DNS resolution for a given private endpoint. A private DNS zone can be linked to your virtual network to resolve specific domains.
+- **Use your custom DNS server**. You can use your own DNS server to override the DNS resolution for a given private link resource. If your [DNS server](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) is hosted on a virtual network, you can create a DNS forwarding rule to use a private DNS zone to simplify the configuration for all private link resources.
  
 > [!IMPORTANT]
-> Het is niet raadzaam om een zone die actief is in gebruik te onderdrukken om open bare eind punten op te lossen. Verbindingen met bronnen kunnen niet correct worden omgezet zonder dat DNS naar de open bare DNS doorstuurt. Als u problemen wilt voor komen, maakt u een andere domein naam of volgt u de voorgestelde naam voor elke service hieronder. 
+> It's not recommended to override a zone that is actively in use to resolve public endpoints. Connections to resources won't be able to resolve correctly without DNS forwarding to the public DNS. To avoid issues, create a different domain name or follow the suggested name for each service below. 
  
-Voor Azure-Services gebruikt u de aanbevolen zone namen zoals beschreven in de volgende tabel:
+For Azure services, use the recommended zone names as described in the following table:
 
-|Resource type voor persoonlijke koppelingen   |Subbron  |Zone naam  |
+|Private Link resource type   |Subresource  |Zone name  |
 |---------|---------|---------|
-|SQL DB/DW (micro soft. SQL/servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Opslag account (micro soft. Storage/Storage accounts)    |  BLOB (BLOB, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Opslag account (micro soft. Storage/Storage accounts)    |    Tabel (tabel, table_secondary)      |   privatelink.table.core.windows.net       |
-|Opslag account (micro soft. Storage/Storage accounts)    |    Wachtrij (wachtrij, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Opslag account (micro soft. Storage/Storage accounts)   |    Bestand (bestand, file_secondary)      |    privatelink.file.core.windows.net      |
-|Opslag account (micro soft. Storage/Storage accounts)     |  Web (Web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake File System Gen2 (micro soft. Storage/Storage accounts)  |  Data Lake File System Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (micro soft. AzureCosmosDB/databaseAccounts)|Tabel|privatelink.table.cosmos.azure.com|
+|SQL DB/DW (Microsoft.Sql/servers)    |  Sql Server (sqlServer)        |   privatelink.database.windows.net       |
+|Storage Account (Microsoft.Storage/storageAccounts)    |  Blob (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
+|Storage Account (Microsoft.Storage/storageAccounts)    |    Table (table, table_secondary)      |   privatelink.table.core.windows.net       |
+|Storage Account (Microsoft.Storage/storageAccounts)    |    Queue (queue, queue_secondary)     |   privatelink.queue.core.windows.net       |
+|Storage Account (Microsoft.Storage/storageAccounts)   |    File (file, file_secondary)      |    privatelink.file.core.windows.net      |
+|Storage Account (Microsoft.Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
+|Data Lake File System Gen2 (Microsoft.Storage/storageAccounts)  |  Data Lake File System Gen2 (dfs, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|SQL |privatelink.documents.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|MongoDB |privatelink.mongo.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Gremlin |privatelink.gremlin.cosmos.azure.com|
+|Azure Cosmos DB (Microsoft.AzureCosmosDB/databaseAccounts)|Tabel|privatelink.table.cosmos.azure.com|
  
-Azure maakt een canonieke naam DNS-record (CNAME) op de open bare DNS om de oplossing om te leiden naar de voorgestelde domein namen. U kunt de oplossing overschrijven met het privé-IP-adres van uw privé-eind punten. 
+Azure will create a canonical name DNS record (CNAME) on the public DNS to redirect the resolution to the suggested domain names. You'll be able to override the resolution with the private IP address of your private endpoints. 
  
-Uw toepassingen hoeven de verbindings-URL niet te wijzigen. Bij het oplossen van het gebruik van een open bare DNS-server wordt nu omgezet naar uw privé-eind punten. Het proces heeft geen invloed op uw toepassingen. 
+Your applications don't need to change the connection URL. When attempting to resolve using a public DNS, the DNS server will now resolve to your private endpoints. The process does not impact your applications. 
  
 ## <a name="limitations"></a>Beperkingen
  
-De volgende tabel bevat een lijst met bekende beperkingen bij het gebruik van privé-eind punten: 
+The following table includes a list of known limitations when using private endpoints: 
 
 
 |Beperking |Beschrijving |Oplossing  |
 |---------|---------|---------|
-|De regels voor de netwerk beveiligings groep (NSG) en door de gebruiker gedefinieerde routes zijn niet van toepassing op een privé-eind punt    |NSG wordt niet ondersteund op privé-eind punten. Hoewel aan subnetten met het persoonlijke eind punt NSG zijn gekoppeld, zijn de regels niet effectief op het verkeer dat door het persoonlijke eind punt wordt verwerkt. U moet [netwerk beleid afdwingen uitgeschakeld](disable-private-endpoint-network-policy.md) om persoonlijke eind punten te implementeren in een subnet. NSG wordt nog steeds afgedwongen op andere workloads die worden gehost op hetzelfde subnet. Voor routes op elk client subnet wordt het voor voegsel/32 gebruikt. voor het wijzigen van het standaard routerings gedrag is een vergelijk bare UDR vereist  | Beheer het verkeer met behulp van NSG-regels voor uitgaand verkeer op de bron-clients. Afzonderlijke routes met het voor voegsel/32 implementeren om persoonlijke eindpunt routes te overschrijven        |
-|  Peered Virtual Network met alleen persoonlijke eind punten worden niet ondersteund   |   Wanneer u verbinding maakt met persoonlijke eind punten op een peered Virtual Network zonder andere werk belasting, wordt niet ondersteund       | Implementeer één virtuele machine op de peered-Virtual Network om de connectiviteit in te scha kelen |
-|Speciale workloads hebben geen toegang tot persoonlijke eind punten    |   De volgende services die in uw virtuele netwerk zijn geïmplementeerd, hebben geen toegang tot een persoonlijke koppelings bron met behulp van privé-eind punten:<br>App Service-plan</br>Azure Container Instance</br>Azure NetApp Files</br>Azure toegewezen HSM<br>       |   Geen beperking tijdens de preview.       |
+|Network Security Group (NSG) rules and User Defined Routes do not apply to Private Endpoint    |NSG is not supported on private endpoints. While subnets containing the private endpoint can have NSG associated with it, the rules will not be effective on traffic processed by the private endpoint. You must have [network policies enforcement disabled](disable-private-endpoint-network-policy.md) to deploy private endpoints in a subnet. NSG is still enforced on other workloads hosted on the same subnet. Routes on any client subnet will be using an /32 prefix, changing the default routing behavior requires a similar UDR  | Control the traffic by using NSG rules for outbound traffic on source clients. Deploy individual routes with /32 prefix to override private endpoint routes        |
+|  Peered Virtual Network with Private endpoints only are not supported   |   When connecting to private endpoints on a peered Virtual Network without any other workload is not supported       | Deploy a single VM on the peered Virtual Network to enable the connectivity |
+|Specialized workloads cannot access private endpoints    |   The following services deployed into your virtual network cannot access any private link resource using private endpoints:<br>App Service-plan</br>Azure Container Instance</br>Azure NetApp Files</br>Azure toegewezen HSM<br>       |   No mitigation during preview.       |
 
 
 ## <a name="next-steps"></a>Volgende stappen
-- [Een persoonlijk eind punt voor SQL Database Server maken met behulp van portal](create-private-endpoint-portal.md)
-- [Een persoonlijk eind punt voor SQL Database Server maken met behulp van Power shell](create-private-endpoint-powershell.md)
-- [Een persoonlijk eind punt voor SQL Database Server maken met behulp van CLI](create-private-endpoint-cli.md)
-- [Een persoonlijk eind punt maken voor opslag account met behulp van portal](create-private-endpoint-storage-portal.md)
-- [Een persoonlijk eind punt voor Azure Cosmos-account maken met behulp van portal](../cosmos-db/how-to-configure-private-endpoints.md)
-- [Uw eigen persoonlijke koppelings service maken met behulp van Azure PowerShell](create-private-link-service-powershell.md)
+- [Create a Private Endpoint for SQL Database Server using Portal ](create-private-endpoint-portal.md)
+- [Create a Private Endpoint for SQL Database Server using PowerShell ](create-private-endpoint-powershell.md)
+- [Create a Private Endpoint for SQL Database Server using CLI ](create-private-endpoint-cli.md)
+- [Create a Private Endpoint for Storage account using Portal ](create-private-endpoint-storage-portal.md)
+- [Create a Private Endpoint for Azure Cosmos account using Portal ](../cosmos-db/how-to-configure-private-endpoints.md)
+- [Create your own Private Link service using Azure PowerShell](create-private-link-service-powershell.md)

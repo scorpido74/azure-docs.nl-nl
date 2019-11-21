@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 09/19/2019
 ms.topic: quickstart
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: vitavor
 ms.custom: secdec18
-ms.openlocfilehash: 53ac79c257e88380d462e5ef69ed494ae9967c07
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.openlocfilehash: 77ea61d6aafad556a90b934d77569b8166aeafef
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155174"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230178"
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-cloudyn"></a>Azure-abonnementen en -accounts activeren met Cloudyn
 
@@ -60,7 +60,7 @@ Wanneer u een account updatet een abonnement toevoegt, verleent u Cloudyn toegan
 1. Als u een _niet-geactiveerd_ abonnement wilt bijwerken dat al voorkomt in Cloudyn in Account-beheer, klikt u op het potloodsymbool bewerken rechts van de bovenliggende _tenant-GUID_. Abonnementen zijn gegroepeerd onder een bovenliggende tenant, dus vermijd het afzonderlijk activeren van abonnementen.
     ![uw tenant-id selecteren in het vak Abonnementen opnieuw detecteren](./media/activate-subs-accounts/existing-sub.png)
 2. Voer, indien nodig, de Tenant-ID in. Als u uw Tenant-ID niet weet, gebruikt u de volgende stappen om die te vinden:
-    1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+    1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
     2. Selecteer in de Azure-portal **Azure Active Directory**.
     3. Haal de tenant-id op door **Eigenschappen** voor uw Azure AD-tenant te selecteren.
     4. Kopieer de map-id-GUID. Deze waarde is uw tenant-id.
@@ -87,7 +87,7 @@ Wanneer u de beheerportal van Cloudyn voor het eerst gebruikt, ziet u mogelijk d
 
 - *De opgegeven API-sleutel is geen inschrijvingssleutel van het hoogste niveau* weergegeven in de wizard **Instellen van Cloudyn**.
 - *Directe inschrijving – Nee* weergegeven in de Enterprise Agreement-portal.
-- *Er zijn geen gebruiksgegevens gevonden voor de afgelopen 30 dagen. Neem contact op met uw leverancier om te controleren of de markering is ingeschakeld voor uw Azure-account* weergegeven in de Cloudyn-portal.
+- *No usage data was found for the last 30 days. Please contact your distributor to make sure markup was enabled for your Azure account* displayed in the Cloudyn portal.
 
 De voorgaande berichten geven aan dat u een Azure Enterprise Agreement via een wederverkoper of CSP hebt aangeschaft. Uw wederverkoper of CSP moet _markeren_ inschakelen voor uw Azure-account zodat u uw gegevens kunt weergeven in Cloudyn.
 

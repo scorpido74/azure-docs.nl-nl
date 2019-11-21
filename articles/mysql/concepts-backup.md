@@ -1,84 +1,84 @@
 ---
-title: Back-ups maken en herstellen in Azure Database for MySQL
-description: Meer informatie over automatische back-ups en het herstellen van uw Azure Database for MySQL-server.
+title: Backup and restore in Azure Database for MySQL
+description: Learn about automatic backups and restoring your Azure Database for MySQL server.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: fbd595c7de0bde4e8ba8b7aaa9a65aa5880c1165
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: a2a1fb5f84612630d4168c8af908ed86330938c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151912"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74213120"
 ---
-# <a name="backup-and-restore-in-azure-database-for-mysql"></a>Back-ups maken en herstellen in Azure Database for MySQL
+# <a name="backup-and-restore-in-azure-database-for-mysql"></a>Backup and restore in Azure Database for MySQL
 
-Azure Database for MySQL maakt automatisch server back-ups en slaat ze op in een door de gebruiker geconfigureerde lokaal redundante of geografisch redundante opslag. Back-ups kunnen worden gebruikt om de status van de server naar een bepaald tijdstip te herstellen. Backup en Restore zijn een essentieel onderdeel van een strategie voor bedrijfs continuïteit omdat ze uw gegevens beschermen tegen onbedoelde beschadiging of verwijdering.
+Azure Database for MySQL automatically creates server backups and stores them in user configured locally redundant or geo-redundant storage. Back-ups kunnen worden gebruikt om de status van de server naar een bepaald tijdstip te herstellen. Backup and restore are an essential part of any business continuity strategy because they protect your data from accidental corruption or deletion.
 
 ## <a name="backups"></a>Back-ups
 
-Azure Database for MySQL maakt back-ups van de gegevens bestanden en het transactie logboek. Afhankelijk van de ondersteunde maximale opslag grootte, nemen we volledige en differentiële back-ups (4 TB Maxi maal opslag servers) of moment opnamen back-ups (Maxi maal 16 TB aan opslag servers). Met deze back-ups kunt u een server herstellen naar elk gewenst moment binnen de geconfigureerde back-upperiode. De standaard retentie periode voor back-ups is zeven dagen. U kunt [deze optioneel configureren](howto-restore-server-portal.md#set-backup-configuration) tot 35 dagen. Alle back-ups worden versleuteld met AES 256-bits versleuteling.
+Azure Database for MySQL takes backups of the data files and the transaction log. Depending on the supported maximum storage size, we either take full and differential backups (4 TB max storage servers) or snapshot backups (up to 16-TB max storage servers). These backups allow you to restore a server to any point-in-time within your configured backup retention period. The default backup retention period is seven days. You can [optionally configure it](howto-restore-server-portal.md#set-backup-configuration) up to 35 days. All backups are encrypted using AES 256-bit encryption.
 
 ### <a name="backup-frequency"></a>Back-upfrequentie
 
-Over het algemeen worden volledige back-ups wekelijks uitgevoerd, differentiële back-ups twee keer per dag voor servers met een Maxi maal ondersteunde opslag van 4 TB. Back-ups van moment opnamen worden minstens één keer per dag uitgevoerd voor servers die ondersteuning bieden voor Maxi maal 16 TB aan opslag ruimte. Back-ups van transactie Logboeken in beide gevallen worden elke vijf minuten uitgevoerd. De eerste moment opname van een volledige back-up wordt onmiddellijk gepland nadat een server is gemaakt. De eerste volledige back-up kan langer duren op een grote herstelde server. Het vroegste tijdstip waarop een nieuwe server kan worden hersteld, is het tijdstip waarop de eerste volledige back-up is voltooid. Als moment opnamen zijn instantanious, kunnen servers met ondersteuning van Maxi maal 16 TB aan opslag worden hersteld.
+Generally, full backups occur weekly, differential backups occur twice a day for servers with a max supported storage of 4 TB. Snapshot backups happen at least once a day for servers that support up to 16 TB of storage. Transaction log backups in both cases occur every five minutes. The first snapshot of full backup is scheduled immediately after a server is created. The initial full backup can take longer on a large restored server. The earliest point in time that a new server can be restored to is the time at which the initial full backup is complete. As snapshots are instantanious, servers with support up to 16 TB of storage can be restored all the way back to the create time.
 
-### <a name="backup-redundancy-options"></a>Opties voor back-upredundantie
+### <a name="backup-redundancy-options"></a>Backup redundancy options
 
-Azure Database for MySQL biedt de flexibiliteit om te kiezen tussen lokaal redundante of geografisch redundante back-upopslag in de lagen Algemeen en geoptimaliseerd voor geheugen. Wanneer de back-ups worden opgeslagen in geografisch redundante back-upopslag, worden ze niet alleen opgeslagen in de regio waarin uw server wordt gehost, maar worden ook gerepliceerd naar een [gekoppeld Data Center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Dit biedt betere beveiliging en de mogelijkheid om uw server in een andere regio te herstellen in het geval van een ramp. De laag basis biedt alleen lokaal redundante back-upopslag.
+Azure Database for MySQL provides the flexibility to choose between locally redundant or geo-redundant backup storage in the General Purpose and Memory Optimized tiers. When the backups are stored in geo-redundant backup storage, they are not only stored within the region in which your server is hosted, but are also replicated to a [paired data center](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). This provides better protection and ability to restore your server in a different region in the event of a disaster. The Basic tier only offers locally redundant backup storage.
 
 > [!IMPORTANT]
-> Het configureren van lokaal redundante of geografisch redundante opslag voor back-up is alleen toegestaan tijdens het maken van de server. Zodra de server is ingericht, kunt u de optie voor opslag redundantie van back-ups niet meer wijzigen.
+> Configuring locally redundant or geo-redundant storage for backup is only allowed during server create. Once the server is provisioned, you cannot change the backup storage redundancy option.
 
-### <a name="backup-storage-cost"></a>Kosten voor back-upopslag
+### <a name="backup-storage-cost"></a>Backup storage cost
 
-Azure Database for MySQL biedt Maxi maal 100% van uw ingerichte Server opslag als back-upopslag zonder extra kosten. Dit is normaal gesp roken geschikt voor het bewaren van een back-up van zeven dagen. Alle extra back-upopslag wordt in GB per maand in rekening gebracht.
+Azure Database for MySQL provides up to 100% of your provisioned server storage as backup storage at no additional cost. Typically, this is suitable for a backup retention of seven days. Any additional backup storage used is charged in GB-month.
 
-Als u bijvoorbeeld een server hebt ingericht met 250 GB, hebt u 250 GB aan back-upopslag zonder extra kosten. Voor opslag van meer dan 250 GB worden kosten in rekening gebracht.
+For example, if you have provisioned a server with 250 GB, you have 250 GB of backup storage at no additional charge. Storage in excess of 250 GB is charged.
 
 ## <a name="restore"></a>Herstellen
 
-In Azure Database for MySQL wordt met het uitvoeren van een herstel bewerking een nieuwe server gemaakt van de back-ups van de oorspronkelijke server.
+In Azure Database for MySQL, performing a restore creates a new server from the original server's backups.
 
-Er zijn twee soorten herstel beschikbaar:
+There are two types of restore available:
 
-- **Herstel naar** een bepaald tijdstip is beschikbaar met de optie redundantie van back-ups en maakt een nieuwe server in dezelfde regio als de oorspronkelijke server.
-- **Geo-Restore** is alleen beschikbaar als u uw server hebt geconfigureerd voor geo-redundante opslag en u de server kunt herstellen naar een andere regio.
+- **Point-in-time restore** is available with either backup redundancy option and creates a new server in the same region as your original server.
+- **Geo-restore** is available only if you configured your server for geo-redundant storage and it allows you to restore your server to a different region.
 
-De geschatte duur van de herstel bewerking is afhankelijk van verschillende factoren, zoals de grootte van de data base, het transactie logboek, de netwerk bandbreedte en het totale aantal data bases dat op hetzelfde moment in dezelfde regio wordt hersteld. De herstel tijd is doorgaans minder dan 12 uur.
+The estimated time of recovery depends on several factors including the database sizes, the transaction log size, the network bandwidth, and the total number of databases recovering in the same region at the same time. The recovery time is usually less than 12 hours.
 
 > [!IMPORTANT]
-> Verwijderde servers **kunnen niet** worden hersteld. Als u de server verwijdert, worden ook alle data bases die deel uitmaken van de server, verwijderd en kunnen deze niet worden hersteld. Beheerders kunnen gebruikmaken van [beheer vergrendelingen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources)om Server bronnen te beveiligen, na implementatie van onopzettelijk verwijderen of onverwachte wijzigingen.
+> Deleted servers **cannot** be restored. If you delete the server, all databases that belong to the server are also deleted and cannot be recovered. To protect server resources, post deployment, from accidental deletion or unexpected changes, administrators can leverage [management locks](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
-### <a name="point-in-time-restore"></a>Terugzetten naar eerder tijdstip
+### <a name="point-in-time-restore"></a>Herstel naar een bepaald tijdstip
 
-Onafhankelijk van de optie voor de redundantie van de back-up kunt u een herstel bewerking uitvoeren op elk gewenst moment binnen de retentie periode van de back-up. Er wordt een nieuwe server gemaakt in dezelfde Azure-regio als de oorspronkelijke server. Het wordt gemaakt met de oorspronkelijke server configuratie voor de prijs categorie, het berekenen van de berekening, het aantal vCores, de opslag grootte, de Bewaar periode voor back-ups en de optie voor de redundantie van back-ups.
+Independent of your backup redundancy option, you can perform a restore to any point in time within your backup retention period. A new server is created in the same Azure region as the original server. It is created with the original server's configuration for the pricing tier, compute generation, number of vCores, storage size, backup retention period, and backup redundancy option.
 
-Herstel naar een bepaald tijdstip is handig in meerdere scenario's. Wanneer een gebruiker bijvoorbeeld per ongeluk gegevens verwijdert, een belang rijke tabel of data base weglaat of als een toepassing per ongeluk goede gegevens overschrijft door een toepassings defect.
+Point-in-time restore is useful in multiple scenarios. For example, when a user accidentally deletes data, drops an important table or database, or if an application accidentally overwrites good data with bad data due to an application defect.
 
-Mogelijk moet u wachten totdat de back-up van het volgende transactie logboek wordt gemaakt voordat u de laatste vijf minuten kunt herstellen naar een bepaald tijdstip.
+You may need to wait for the next transaction log backup to be taken before you can restore to a point in time within the last five minutes.
 
 ### <a name="geo-restore"></a>Geo-herstel
 
-U kunt een server herstellen naar een andere Azure-regio waar de service beschikbaar is als u uw server hebt geconfigureerd voor geografisch redundante back-ups. Voor servers die Maxi maal 16 TB aan opslag ondersteunen, kunnen geo-back-ups alleen worden hersteld in regio's die ook 16 TB-servers ondersteunen. Bekijk [Azure database for MySQL prijs categorieën](concepts-pricing-tiers.md) voor de lijst met ondersteunde regio's. 
+You can restore a server to another Azure region where the service is available if you have configured your server for geo-redundant backups. Servers that support up to 4 TB of storage can be restored to the geo-paired region, or to any region that supports up to 16 TB of storage. For servers that support up to 16 TB of storage, geo-backups can be restored in any region that support 16 TB servers as well. Review [Azure Database for MySQL pricing tiers](concepts-pricing-tiers.md) for the list of supported regions.
 
-Geo-Restore is de standaard herstel optie als uw server niet beschikbaar is vanwege een incident in de regio waarin de server wordt gehost. Als een grootschalig incident in een regio resulteert in niet-beschik baarheid van uw database toepassing, kunt u een server herstellen van de geo-redundante back-ups naar een server in een andere regio. Er is een vertraging tussen het moment waarop een back-up wordt gemaakt en wanneer deze wordt gerepliceerd naar een andere regio. Deze vertraging kan tot een uur duren, dus als er sprake is van een nood geval, kan er Maxi maal één uur gegevens verlies zijn.
+Geo-restore is the default recovery option when your server is unavailable because of an incident in the region where the server is hosted. If a large-scale incident in a region results in unavailability of your database application, you can restore a server from the geo-redundant backups to a server in any other region. There is a delay between when a backup is taken and when it is replicated to different region. This delay can be up to an hour, so, if a disaster occurs, there can be up to one hour data loss.
 
-Tijdens de geo-herstel bewerking kunnen de volgende server configuraties worden gewijzigd: Compute Generation, vCore, Bewaar periode voor back-up en opties voor back-redundantie. Het wijzigen van de prijs categorie (Basic, Algemeen of Optimized memory) of opslag grootte tijdens geo-Restore wordt niet ondersteund.
+During geo-restore, the server configurations that can be changed include compute generation, vCore, backup retention period, and backup redundancy options. Changing pricing tier (Basic, General Purpose, or Memory Optimized) or storage size during geo-restore is not supported.
 
-### <a name="perform-post-restore-tasks"></a>Taken na herstel uitvoeren
+### <a name="perform-post-restore-tasks"></a>Perform post-restore tasks
 
-Na een herstel na een van beide herstel mechanismen moet u de volgende taken uitvoeren om uw gebruikers en toepassingen back-ups te maken en uit te voeren:
+After a restore from either recovery mechanism, you should perform the following tasks to get your users and applications back up and running:
 
-- Als de nieuwe server de oorspronkelijke server moet vervangen, kunt u clients en client toepassingen omleiden naar de nieuwe server
-- Zorg ervoor dat de juiste firewall regels op server niveau zijn ingesteld, zodat gebruikers verbinding kunnen maken
-- Zorg ervoor dat de juiste aanmeldingen en machtigingen op database niveau aanwezig zijn
+- If the new server is meant to replace the original server, redirect clients and client applications to the new server
+- Ensure appropriate server-level firewall rules are in place for users to connect
+- Ensure appropriate logins and database level permissions are in place
 - Waarschuwingen configureren, indien van toepassing
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over bedrijfs continuïteit vindt u in het [overzicht van bedrijfs continuïteit](concepts-business-continuity.md).
-- Als u wilt herstellen naar een bepaald tijdstip met behulp van de Azure Portal, raadpleegt u [Data Base herstellen naar een bepaald tijdstip met behulp van de Azure Portal](howto-restore-server-portal.md).
-- Zie [Data Base herstellen naar een bepaald tijdstip met behulp van CLI](howto-restore-server-cli.md)als u op een bepaald tijdstip wilt herstellen met behulp van Azure cli.
+- To learn more about business continuity, see the [business continuity overview](concepts-business-continuity.md).
+- To restore to a point in time using the Azure portal, see [restore database to a point in time using the Azure portal](howto-restore-server-portal.md).
+- To restore to a point in time using Azure CLI, see [restore database to a point in time using CLI](howto-restore-server-cli.md).

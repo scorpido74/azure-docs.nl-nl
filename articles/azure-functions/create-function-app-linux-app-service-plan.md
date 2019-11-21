@@ -1,22 +1,18 @@
 ---
-title: Een functie-app maken op Linux vanuit het Azure Portal | Microsoft Docs
+title: Create a function app on Linux from the Azure portal
 description: Leer hoe u uw eerste serverloze Azure-functie kunt maken met behulp van Azure Portal.
-author: ggailey777
-manager: gwallace
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.author: glenga
-ms.openlocfilehash: 89755e8b70a490f1c5746b23e0d36c5d90b624c1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: fdc2d9c7b5945e48cc87f3edd918498c3d45f55e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571653"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233090"
 ---
-# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Een functie-app in Linux maken in een Azure App Service plan
+# <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Create a function app on Linux in an Azure App Service plan
 
-Met Azure Functions kunt u uw functies voor Linux hosten in een standaardcontainer van Azure App Service. In dit artikel wordt uitgelegd hoe u de [Azure Portal](https://portal.azure.com) gebruikt voor het maken van een door Linux gehoste functie-app die wordt uitgevoerd in een [app service plan](functions-scale.md#app-service-plan). U kunt ook [uw eigen aangepaste container](functions-create-function-linux-custom-image.md) gebruiken.
+Met Azure Functions kunt u uw functies voor Linux hosten in een standaardcontainer van Azure App Service. This article walks you through how to use the [Azure portal](https://portal.azure.com) to create a Linux-hosted function app that runs in an [App Service plan](functions-scale.md#app-service-plan). U kunt ook [uw eigen aangepaste container](functions-create-function-linux-custom-image.md) gebruiken.
 
 ![Functie-app maken in Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-in-portal-editor.png)
 
@@ -28,9 +24,9 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com>.
 
 ## <a name="create-a-function-app"></a>Een functie-app maken
 
-U moet beschikken over een functie-app om de uitvoering van uw functies in Linux te hosten. De functie-app biedt een omgeving waarin uw functiecode kan worden uitgevoerd. U kunt er functies mee groeperen in een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen. In dit artikel maakt u een App Service plan wanneer u de functie-app maakt.
+U moet beschikken over een functie-app om de uitvoering van uw functies in Linux te hosten. De functie-app biedt een omgeving waarin uw functiecode kan worden uitgevoerd. U kunt er functies mee groeperen in een logische eenheid, zodat u resources eenvoudiger kunt beheren, implementeren en delen. In this article, you create an App Service plan when you create your function app.
 
-1. Selecteer de knop **een resource maken** in de linkerbovenhoek van de Azure Portal en selecteer vervolgens **reken** > **functie-app**.
+1. Select the **Create a resource** button found on the upper left-hand corner of the Azure portal, then select **Compute** > **Function App**.
 
     ![Een functie-app maken in Azure Portal](./media/create-function-app-linux-app-service-plan/function-app-create-flow.png)
 
@@ -43,13 +39,13 @@ U moet beschikken over een functie-app om de uitvoering van uw functies in Linux
     | **Naam van app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. | 
     | **[Resourcegroep](../azure-resource-manager/resource-group-overview.md)** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. |
-    | **Besturingssysteem** | Linux | De functie-app wordt uitgevoerd op Linux. |
-    | **Publiceren** | Code | De standaard-Linux-container voor uw **runtime stack** wordt gebruikt. U hoeft alleen maar uw functie-app project code op te geven. Een andere optie is om een aangepaste [docker-installatie kopie](functions-create-function-linux-custom-image.md)te publiceren. |
-    | **[Hostingplan](functions-scale.md)** | App Service-plan | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. Wanneer u in een App Service-abonnement uitvoert, kunt u de [schaal baarheid van de functie-app](functions-scale.md)beheren.  |
-    | **Abonnement/locatie App Service** | Plan maken | Kies **Nieuw maken** en geef een naam op voor het **app service plan** . Kies een **locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die uw functies gebruiken. Kies de gewenste **[prijs categorie](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>U kunt niet zowel Linux-als Windows-functie-apps uitvoeren in hetzelfde App Service-abonnement. |
+    | **Besturingssysteem** | Linux | The function app runs on Linux. |
+    | **Publiceren** | Coderen | The default Linux container for your **Runtime Stack** is used. All you need to provide is your function app project code. Another option is to publish a custom [Docker image](functions-create-function-linux-custom-image.md). |
+    | **[Hostingplan](functions-scale.md)** | App Service-plan | Hostingabonnement dat definieert hoe resources worden toegewezen aan uw functie-app. When you run in an App Service plan, you can control the [scaling of your function app](functions-scale.md).  |
+    | **App Service plan/Location** | Create plan | Choose **Create new** and supply an **App Service plan** name. Choose a **Location** in a [region](https://azure.microsoft.com/regions/) near you or near other services your functions access. Choose your desired **[Pricing tier](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>You can't run both Linux and Windows function apps in the same App Service plan. |
     | **Runtimestack** | Voorkeurstaal | Kies een runtime die uw favoriete functieprogrammeertaal ondersteunt. Kies **.NET** voor C#- en F#-functies. |
     | **[Opslag](../storage/common/storage-quickstart-create-account.md)** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslagaccounts moeten tussen 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken dat voldoet aan de [vereisten voor een opslagaccount](functions-scale.md#storage-account-requirements). |
-    | **[Application Insights](functions-monitoring.md)** | Ingeschakeld | Application Insights is standaard uitgeschakeld. We raden u aan Application Insights-integratie nu in te scha kelen en een hosting locatie te kiezen in de buurt van uw App Service plan locatie. Zie [Azure functions bewaken](functions-monitoring.md)als u dit later wilt doen.  |
+    | **[Application Insights](functions-monitoring.md)** | Ingeschakeld | Application Insights is disabled by default. We recommend enabling Application Insights integration now and choosing a hosting location near your App Service plan location. If you want to do this later, see [Monitor Azure Functions](functions-monitoring.md).  |
 
 3. Selecteer **Maken** om de functie-app in te richten en te implementeren.
 
@@ -59,22 +55,22 @@ U moet beschikken over een functie-app om de uitvoering van uw functies in Linux
 
 5. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken.
 
-Vervolgens maakt u een functie in de nieuwe functie-app. Zelfs nadat de functie-app beschikbaar is, kan het enkele minuten duren voordat deze volledig is geïnitialiseerd.
+Vervolgens maakt u een functie in de nieuwe functie-app. Even after your function app is available, it may take a few minutes to be fully initialized.
 
 ## <a name="create-function"></a>Een door HTTP geactiveerde functie maken
 
-In deze sectie wordt beschreven hoe u een functie maakt in de nieuwe functie-app in de portal.
+This section shows you how to create a function in your new function app in the portal.
 
 > [!NOTE]
-> De portal-ontwikkelings ervaring kan handig zijn om Azure Functions uit te proberen. Voor de meeste scenario's kunt u uw functies lokaal ontwikkelen en het project publiceren naar uw functie-app met behulp van [Visual Studio code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) of de [Azure functions core tools](functions-run-local.md#create-a-local-functions-project).  
+> The portal development experience can be useful for trying out Azure Functions. For most scenarios, consider developing your functions locally and publishing the project to your function app using either [Visual Studio Code](functions-create-first-function-vs-code.md#create-an-azure-functions-project) or the [Azure Functions Core Tools](functions-run-local.md#create-a-local-functions-project).  
 
-1. Klik in de nieuwe functie-app op het tabblad **overzicht** en nadat het is geladen, selecteert u de **nieuwe functie**.
+1. In your new function app, choose the **Overview** tab, and after it loads completely choose **+ New function**.
 
-    ![Een nieuwe functie maken op het tabblad Overzicht](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
+    ![Create a new function from the Overview tab](./media/create-function-app-linux-app-service-plan/overview-create-function.png)
 
-1. Kies op het tabblad **Quick** start **in-portal**en selecteer **door gaan**.
+1. In the **Quickstart** tab, choose **In-portal**, and select **Continue**.
 
-    ![Kies uw ontwikkel platform voor de functie.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
+    ![Choose your function development platform.](./media/create-function-app-linux-app-service-plan/function-app-quickstart-choose-portal.png)
 
 1. Kies **WebHook + API** en selecteer vervolgens **Maken**.
 

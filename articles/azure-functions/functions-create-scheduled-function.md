@@ -1,26 +1,20 @@
 ---
-title: Een functie maken in Azure die volgens een schema wordt uitgevoerd | Microsoft Docs
+title: Create a function that runs on a schedule in Azure
 description: Ontdek hoe u in Azure een functie maakt die wordt uitgevoerd op basis van een schema dat u definieert.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 03/28/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: a070a7da48af8abe138900dd0221bace2149aa20
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e89c3923daab15793707ff99dbbed6deeb6a0b0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469313"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227175"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Maak een functie in Azure die wordt geactiveerd door een timer
 
-Meer informatie over het gebruik van Azure Functions om een functie zonder [Server](https://azure.microsoft.com/solutions/serverless/) te maken die wordt uitgevoerd op basis van een schema dat u definieert.
+Learn how to use Azure Functions to create a [serverless](https://azure.microsoft.com/solutions/serverless/) function that runs based on a schedule that you define.
 
 ![Functie-app maken in Azure Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -42,13 +36,13 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 ## <a name="create-a-timer-triggered-function"></a>Een door een timer geactiveerde functie maken
 
-1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Als dat niet het geval is, gaat u naar stap 3.
+1. Vouw de functie-app uit en klik op de knop **+** naast **Functies**. Als dit de eerste functie in de functie-app is, selecteert u **In de portal** en vervolgens **Doorgaan**. Otherwise, go to step 3.
 
    ![De Quick Start-pagina van Functions in Azure Portal](./media/functions-create-scheduled-function/function-app-quickstart-choose-portal.png)
 
 2. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-scheduled-function/add-first-function.png)
+    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-scheduled-function/add-first-function.png)
 
 3. Typ `timer` in het zoekveld en configureer de nieuwe trigger met de instellingen zoals opgegeven in de tabel onder de afbeelding.
 

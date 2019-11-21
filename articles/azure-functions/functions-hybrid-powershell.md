@@ -1,27 +1,25 @@
 ---
-title: Externe on-premises resources beheren met behulp van Power shell-functies
-description: Meer informatie over het configureren van Hybride verbindingen in Azure Relay om een Power shell-functie-app te verbinden met on-premises resources, die vervolgens kan worden gebruikt om de on-premises resource op afstand te beheren.
+title: Manage remote on-premises resources by using PowerShell functions
+description: Learn how to configure Hybrid Connections in Azure Relay to connect a PowerShell function app to on-premises resources, which can then be used to remotely manage the on-premises resource.
 author: eamono
-manager: gailey777
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 9/5/2019
 ms.author: eamono
-ms.openlocfilehash: 2a3cf79883d79eb82c361731eb6a632c2df3c9be
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 36fc4c873dccfe9fa814bddccd829ed04207f095
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71299429"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226938"
 ---
-# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Hybride omgevingen beheren met Power shell in Azure Functions en App Service Hybride verbindingen
+# <a name="managing-hybrid-environments-with-powershell-in-azure-functions-and-app-service-hybrid-connections"></a>Managing hybrid environments with PowerShell in Azure Functions and App Service Hybrid Connections
 
-Met de functie Azure App Service Hybride verbindingen kunt u toegang krijgen tot bronnen in andere netwerken. Meer informatie over deze mogelijkheid vindt u in de [hybride verbindingen](../app-service/app-service-hybrid-connections.md) -documentatie. In dit artikel wordt beschreven hoe u deze mogelijkheid kunt gebruiken om Power shell-functies uit te voeren die gericht zijn op een on-premises server. Deze server kan vervolgens worden gebruikt voor het beheren van alle resources in de on-premises omgeving vanuit een Azure PowerShell-functie.
+The Azure App Service Hybrid Connections feature enables access to resources in other networks. You can learn more about this capability in the [Hybrid Connections](../app-service/app-service-hybrid-connections.md) documentation. This article describes how to use this capability to run PowerShell functions that target an on-premises server. This server can then be used to manage all resources in the on-premises environment from an Azure PowerShell function.
 
 
-## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Een on-premises server configureren voor externe communicatie met Power shell
+## <a name="configure-an-on-premises-server-for-powershell-remoting"></a>Configure an on-premises server for PowerShell remoting
 
-Het volgende script schakelt externe communicatie van Power shell in en maakt een nieuwe firewall regel en een WinRM https-listener. Voor test doeleinden wordt een zelfondertekend certificaat gebruikt. In een productie omgeving wordt u aangeraden een ondertekend certificaat te gebruiken.
+The following script enables PowerShell remoting, and it creates a new firewall rule and a WinRM https listener. For testing purposes, a self-signed certificate is used. In a production environment, we recommend that you use a signed certificate.
 
 ```powershell
 # For configuration of WinRM, see
@@ -48,98 +46,98 @@ $Cmd = "winrm create winrm/config/Listener?Address=*+Transport=HTTPS @{Hostname=
 cmd.exe /C $Cmd
 ```
 
-## <a name="create-a-powershell-function-app-in-the-portal"></a>Een Power shell-functie-app maken in de portal
+## <a name="create-a-powershell-function-app-in-the-portal"></a>Create a PowerShell function app in the portal
 
-De functie App Service Hybride verbindingen is alleen beschikbaar in de abonnementen Basic, Standard en geïsoleerd. Wanneer u de functie-app met Power Shell maakt, maakt of selecteert u een van deze plannen.
+The App Service Hybrid Connections feature is available only in Basic, Standard, and Isolated pricing plans. When you create the function app with PowerShell, create or select one of these plans.
 
-1. Selecteer in de [Azure Portal](https://portal.azure.com) **+ een resource maken** in het menu aan de linkerkant en selecteer vervolgens functie- **app**.
+1. In the [Azure portal](https://portal.azure.com), select **+ Create a resource** in the menu on the left, and then select **Function app**.
 
-1. Voor het **hosting plan**selecteert u **app service plan**en selecteert u vervolgens **app service plan/locatie**.
+1. For **Hosting plan**, select **App Service plan**, and then select **App Service plan/Location**.
 
-1. Selecteer **Nieuw maken**, typ een naam voor het **app service plan** , kies een **locatie** in een [regio](https://azure.microsoft.com/regions/) bij u in de buurt of in de buurt van andere services die uw functies gebruiken en selecteer vervolgens **prijs categorie**.
+1. Select **Create new**, type an **App Service plan** name, choose a **Location** in a [region](https://azure.microsoft.com/regions/) near you or near other services your functions access, and then select **Pricing tier**.
 
-1. Kies het standaard abonnement S1 en selecteer vervolgens **Toep assen**.
+1. Choose the S1 Standard plan, and then select **Apply**.
 
-1. Selecteer **OK** om het plan te maken en configureer vervolgens de resterende **functie-app** -instellingen zoals opgegeven in de tabel direct na de volgende scherm afbeelding:
+1. Select **OK** to create the plan, and then configure the remaining **Function App** settings as specified in the table immediately after the following screenshot:
 
-    ![Power shell Core-functie-app](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
+    ![PowerShell Core function app](./media/functions-hybrid-powershell/create-function-powershell-app.png)  
 
-    | Instelling      | Voorgestelde waarde  | Description                                        |
+    | Instelling      | Voorgestelde waarde  | Beschrijving                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam van app** | Wereldwijd unieke naam | Naam waarmee uw nieuwe functie-app wordt aangeduid. Geldige tekens zijn `a-z`, `0-9` en `-`.  | 
     | **Abonnement** | Uw abonnement | Het abonnement waarmee deze nieuwe functie-app is gemaakt. |
-    | **Resourcegroep** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. U kunt ook de voorgestelde waarde gebruiken. |
-    | **Besturingssysteem** | Voorkeurs besturingssysteem | Selecteer Windows. |
-    | **Runtimestack** | Voorkeurstaal | Kies Power shell core. |
-    | **Storage** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Namen van opslag accounts moeten tussen de 3 en 24 tekens lang zijn en mogen alleen cijfers en kleine letters bevatten. U kunt ook een bestaand account gebruiken.
-    | **Application Insights** | Standaard | Hiermee maakt u een Application Insights bron van dezelfde *app-naam* in de dichtstbijzijnde ondersteunde regio. Door deze instelling uit te breiden, kunt u de **nieuwe resource naam** wijzigen of een andere **locatie** kiezen in een regio van [Azure](https://azure.microsoft.com/global-infrastructure/geographies/) waar u uw gegevens wilt opslaan. |
+    | **Resourcegroep** |  myResourceGroup | Naam voor de nieuwe resourcegroep waarin uw functie-app moet worden gemaakt. You can also use the suggested value. |
+    | **Besturingssysteem** | Preferred OS | Select Windows. |
+    | **Runtimestack** | Voorkeurstaal | Choose PowerShell Core. |
+    | **Storage** |  Wereldwijd unieke naam |  Maak een opslagaccount die wordt gebruikt door uw functie-app. Storage account names must be from 3 to 24 characters in length and can contain numbers and lowercase letters only. U kunt ook een bestaand account gebruiken.
+    | **Application Insights** | Standaard | Creates an Application Insights resource of the same *App name* in the nearest supported region. By expanding this setting, you can change the **New resource name** or choose a different **Location** in an [Azure geography](https://azure.microsoft.com/global-infrastructure/geographies/) region where you want to store your data. |
 
-1. Nadat uw instellingen zijn gevalideerd, selecteert u **maken**.
+1. After your settings are validated, select **Create**.
 
-1. Selecteer het **meldings** pictogram in de rechter bovenhoek van de portal en wacht op het bericht implementatie voltooid.
+1. Select the **Notification** icon in the upper-right corner of the portal, and wait for the "Deployment succeeded" message.
 
-1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. U kunt ook **vastmaken aan dash board**selecteren. Vastmaken maakt het gemakkelijker om terug te gaan naar deze functie-app-resource vanuit uw dash board.
+1. Selecteer **Naar de resource gaan** om uw nieuwe functie-app te bekijken. You can also select **Pin to dashboard**. Pinning makes it easier to return to this function app resource from your dashboard.
 
-## <a name="create-a-hybrid-connection-for-the-function-app"></a>Een hybride verbinding maken voor de functie-app
+## <a name="create-a-hybrid-connection-for-the-function-app"></a>Create a hybrid connection for the function app
 
-Hybride verbindingen worden geconfigureerd via het gedeelte netwerken van de functie-app:
+Hybrid connections are configured from the networking section of the function app:
 
-1. Selecteer het tabblad **platform functies** in de functie-app en selecteer vervolgens **netwerken**. 
-   ![App-overzicht voor platform netwerken](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
-1. Selecteer **de eind punten voor uw hybride verbindingen configureren**.
+1. Select the **Platform features** tab in the function app, and then select **Networking**. 
+   ![App Overview for platform networking](./media/functions-hybrid-powershell/app-overview-platform-networking.png)  
+1. Select **Configure your hybrid connections endpoints**.
    ![Netwerken](./media/functions-hybrid-powershell/select-network-feature.png)  
-1. Selecteer **hybride verbinding toevoegen**.
-   ![Hybride verbinding](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
-1. Voer informatie in over de hybride verbinding zoals deze wordt weer gegeven na de volgende scherm afbeelding. U hebt de mogelijkheid om de instelling **endpoint host** te laten overeenkomen met de hostnaam van de on-premises server, zodat u de server gemakkelijker later kunt onthouden wanneer u externe opdrachten uitvoert. De poort komt overeen met de standaard Windows Remote Management-service poort die eerder op de server is gedefinieerd.
-  ![Hybride verbinding toevoegen](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
+1. Select **Add hybrid connection**.
+   ![Hybrid Connection](./media/functions-hybrid-powershell/hybrid-connection-overview.png)  
+1. Enter information about the hybrid connection as shown right after the following screenshot. You have the option of making the **Endpoint Host** setting match the host name of the on-premises server to make it easier to remember the server later when you're running remote commands. The port matches the default Windows remote management service port that was defined on the server earlier.
+  ![Add Hybrid Connection](./media/functions-hybrid-powershell/add-hybrid-connection.png)  
 
-    **Naam van hybride verbinding**: ContosoHybridOnPremisesServer
+    **Hybrid connection name**: ContosoHybridOnPremisesServer
     
-    **Eindpunt host**: finance1
+    **Endpoint Host**: finance1
     
-    **Eindpunt poort**: 5986
+    **Endpoint Port**: 5986
     
-    **Servicebus-naam ruimte**: Nieuwe maken
+    **Servicebus namespace**: Create New
     
-    **Locatie**: Een beschik bare locatie kiezen
+    **Location**: Pick an available location
     
-    **Naam**: contosopowershellhybrid
+    **Name**: contosopowershellhybrid
 
-5. Selecteer **OK** om de hybride verbinding te maken.
+5. Select **OK** to create the hybrid connection.
 
-## <a name="download-and-install-the-hybrid-connection"></a>De hybride verbinding downloaden en installeren
+## <a name="download-and-install-the-hybrid-connection"></a>Download and install the hybrid connection
 
-1. Selecteer **verbindings beheer downloaden** om het MSI-bestand lokaal op uw computer op te slaan.
-![Installatie programma downloaden](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
-1. Kopieer het MSI-bestand van uw lokale computer naar de on-premises server.
-1. Voer het Hybrid Connection Manager-installatie programma uit om de service op de on-premises server te installeren.
-![Hybride verbinding installeren](./media/functions-hybrid-powershell/hybrid-installation.png)  
-1. Open de hybride verbinding vanuit de portal en kopieer de gateway connection string naar het klem bord.
-![Hybride connection string kopiëren](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
-1. Open de Hybrid Connection Manager gebruikers interface op de on-premises server.
-![Gebruikers interface voor hybride verbinding openen](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
-1. Selecteer de knop **hand matig invoeren** en plak de Connection String van het klem bord.
-![Verbinding plakken](./media/functions-hybrid-powershell/enter-manual-connection.png)  
-1. Start de Hybrid Connection Manager van Power shell als deze niet wordt weer gegeven als verbonden.
+1. Select **Download connection manager** to save the .msi file locally on your computer.
+![Download installer](./media/functions-hybrid-powershell/download-hybrid-connection-installer.png)  
+1. Copy the .msi file from your local computer to the on-premises server.
+1. Run the Hybrid Connection Manager installer to install the service on the on-premises server.
+![Install Hybrid Connection](./media/functions-hybrid-powershell/hybrid-installation.png)  
+1. From the portal, open the hybrid connection and then copy the gateway connection string to the clipboard.
+![Copy hybrid connection string](./media/functions-hybrid-powershell/copy-hybrid-connection.png)  
+1. Open the Hybrid Connection Manager UI on the on-premises server.
+![Open Hybrid Connection UI](./media/functions-hybrid-powershell/hybrid-connection-ui.png)  
+1. Select the **Enter Manually** button and paste the connection string from the clipboard.
+![Paste connection](./media/functions-hybrid-powershell/enter-manual-connection.png)  
+1. Restart the Hybrid Connection Manager from PowerShell if it doesn't show as connected.
     ```powershell
     Restart-Service HybridConnectionManager
     ```
 
-## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Een app-instelling maken voor het wacht woord van een beheerders account
+## <a name="create-an-app-setting-for-the-password-of-an-administrator-account"></a>Create an app setting for the password of an administrator account
 
-1. Selecteer het tabblad **platform functies** in de functie-app.
-1. Onder **algemene instellingen**selecteert u **configuratie**.
-![Platform configuratie selecteren](./media/functions-hybrid-powershell/select-configuration.png)  
-1. Vouw de **instelling nieuwe toepassing** uit om een nieuwe instelling voor het wacht woord te maken.
-1. Noem de instelling _ContosoUserPassword_en voer het wacht woord in.
-1. Selecteer **OK** en vervolgens opslaan om het wacht woord op te slaan in de functie toepassing.
-![App-instelling voor wacht woord toevoegen](./media/functions-hybrid-powershell/add-appsetting-password.png)  
+1. Select the **Platform features** tab in the function app.
+1. Under **General Settings**, select **Configuration**.
+![Select Platform configuration](./media/functions-hybrid-powershell/select-configuration.png)  
+1. Expand **New application setting** to create a new setting for the password.
+1. Name the setting _ContosoUserPassword_, and enter the password.
+1. Select **OK** and then save to store the password in the function application.
+![Add app setting for password](./media/functions-hybrid-powershell/add-appsetting-password.png)  
 
-## <a name="create-a-function-http-trigger-to-test"></a>Een http-trigger functie maken om te testen
+## <a name="create-a-function-http-trigger-to-test"></a>Create a function http trigger to test
 
-1. Maak een nieuwe HTTP-trigger functie vanuit de functie-app.
-![Nieuwe HTTP-trigger maken](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
-1. Vervang de Power shell-code uit de sjabloon door de volgende code:
+1. Create a new HTTP trigger function from the function app.
+![Create new HTTP trigger](./media/functions-hybrid-powershell/create-http-trigger-function.png)  
+1. Replace the PowerShell code from the template with the following code:
 
     ```powershell
     # Input bindings are passed in via param block.
@@ -174,12 +172,12 @@ Hybride verbindingen worden geconfigureerd via het gedeelte netwerken van de fun
                    -SessionOption (New-PSSessionOption -SkipCACheck)
     ```
 
-3. Selecteer **Opslaan** en **uitvoeren** om de functie te testen.
-![De functie-app testen](./media/functions-hybrid-powershell/test-function-hybrid.png)  
+3. Select **Save** and **Run** to test the function.
+![Test the function app](./media/functions-hybrid-powershell/test-function-hybrid.png)  
 
-## <a name="managing-other-systems-on-premises"></a>On-premises andere systemen beheren
+## <a name="managing-other-systems-on-premises"></a>Managing other systems on-premises
 
-U kunt de verbonden on-premises server gebruiken om verbinding te maken met andere servers en beheer systemen in de lokale omgeving. Hiermee kunt u uw Data Center-bewerkingen beheren vanuit Azure met behulp van uw Power shell-functies. Met het volgende script wordt een Power shell-configuratie sessie geregistreerd die wordt uitgevoerd onder de gegeven referenties. Deze referenties moeten voor een beheerder op de externe servers zijn. U kunt deze configuratie vervolgens gebruiken voor toegang tot andere eind punten op de lokale server of het Data Center.
+You can use the connected on-premises server to connect to other servers and management systems in the local environment. This lets you manage your datacenter operations from Azure by using your PowerShell functions. The following script registers a PowerShell configuration session that runs under the provided credentials. These credentials must be for an administrator on the remote servers. You can then use this configuration to access other endpoints on the local server or datacenter.
 
 ```powershell
 # Input bindings are passed in via param block.
@@ -246,15 +244,15 @@ Invoke-Command -ComputerName $HybridEndpoint `
                -ConfigurationName $SessionName
 ```
 
-Vervang de volgende variabelen in dit script door de toepasselijke waarden uit uw omgeving:
+Replace the following variables in this script with the applicable values from your environment:
 * $HybridEndpoint
 * $RemoteServer
 
-In de twee voor gaande scenario's kunt u verbinding maken met uw on-premises omgevingen en deze beheren met behulp van Power shell in Azure Functions en Hybride verbindingen. We raden u aan meer te weten te komen over [hybride verbindingen](../app-service/app-service-hybrid-connections.md) en [Power shell in functions](./functions-reference-powershell.md).
+In the two preceding scenarios, you can connect and manage your on-premises environments by using PowerShell in Azure Functions and Hybrid Connections. We encourage you to learn more about [Hybrid Connections](../app-service/app-service-hybrid-connections.md) and [PowerShell in functions](./functions-reference-powershell.md).
 
-U kunt ook Azure [Virtual Networks](./functions-create-vnet.md) gebruiken om verbinding te maken met uw on-premises omgeving via Azure functions.
+You can also use Azure [virtual networks](./functions-create-vnet.md) to connect to your on-premises environment through Azure Functions.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"] 
-> [Meer informatie over het werken met Power shell-functies](functions-reference-powershell.md)
+> [Learn more about working with PowerShell functions](functions-reference-powershell.md)

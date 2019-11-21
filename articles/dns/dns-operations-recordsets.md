@@ -1,9 +1,9 @@
 ---
-title: Beheren van DNS-records in Azure DNS met behulp van Azure PowerShell | Microsoft Docs
-description: DNS-recordsets en records in Azure DNS beheren bij het hosten van uw domein in Azure DNS. Alle PowerShell-opdrachten voor bewerkingen voor recordsets en records.
+title: Manage DNS records in Azure DNS using Azure PowerShell | Microsoft Docs
+description: Managing DNS record sets and records on Azure DNS when hosting your domain on Azure DNS. All PowerShell commands for operations on record sets and records.
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: timlt
 ms.assetid: 7136a373-0682-471c-9c28-9e00d2add9c2
 ms.service: dns
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
-ms.author: victorh
-ms.openlocfilehash: fedab8cc45fff6d7830f67e7a23786b5952f83a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: allensu
+ms.openlocfilehash: c11a5c4a3cfe18fbc203ad641ab1de866915bcc4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66170211"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211692"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>DNS-records en recordsets in Azure DNS met behulp van Azure PowerShell beheren
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Manage DNS records and recordsets in Azure DNS using Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
 > * [Klassieke versie van Azure CLI](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure-CLI](dns-operations-recordsets-cli.md)
+> * [Azure CLI](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
-In dit artikel wordt beschreven hoe u voor het beheren van DNS-records voor uw DNS-zone met behulp van Azure PowerShell. DNS-records kunnen ook worden beheerd met behulp van de platformoverschrijdende [Azure CLI](dns-operations-recordsets-cli.md) of de [Azure-portal](dns-operations-recordsets-portal.md).
+This article shows you how to manage DNS records for your DNS zone by using Azure PowerShell. DNS records can also be managed by using the cross-platform [Azure CLI](dns-operations-recordsets-cli.md) or the [Azure portal](dns-operations-recordsets-portal.md).
 
-De voorbeelden in dit artikel wordt ervan uitgegaan dat u al hebt [Azure PowerShell, aangemeld, geïnstalleerd en wordt gemaakt van een DNS-zone](dns-operations-dnszones.md).
+The examples in this article assume you have already [installed Azure PowerShell, signed in, and created a DNS zone](dns-operations-dnszones.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -44,29 +44,29 @@ Voordat u DNS-records in DNS Azure maakt, leest u eerst hoe Azure DNS DNS-record
 Zie [DNS-zones en -records](dns-zones-records.md) voor meer informatie over DNS-records in Azure DNS.
 
 
-## <a name="create-a-new-dns-record"></a>Een nieuwe DNS-record maken
+## <a name="create-a-new-dns-record"></a>Create a new DNS record
 
-Als de nieuwe record dezelfde naam en hetzelfde type als een bestaand record heeft, moet u [toe te voegen aan de bestaande recordset](#add-a-record-to-an-existing-record-set). Als de nieuwe record een andere naam en type alle bestaande records heeft, moet u een nieuwe recordset maken. 
+If your new record has the same name and type as an existing record, you need to [add it to the existing record set](#add-a-record-to-an-existing-record-set). If your new record has a different name and type to all existing records, you need to create a new record set. 
 
-### <a name="create-a-records-in-a-new-record-set"></a>'A'-records in een nieuwe recordset maken
+### <a name="create-a-records-in-a-new-record-set"></a>Create 'A' records in a new record set
 
-U kunt recordsets maken met behulp van de cmdlet `New-AzDnsRecordSet`. Wanneer u een Recordset maakt, moet u opgeven de record de naam, de zone, de tijd ingesteld op live (TTL), het recordtype en de records die moeten worden gemaakt.
+U kunt recordsets maken met behulp van de cmdlet `New-AzDnsRecordSet`. When creating a record set, you need to specify the record set name, the zone, the time to live (TTL), the record type, and the records to be created.
 
-De parameters voor het toevoegen van records aan een recordset variëren afhankelijk van het type recordset. Bijvoorbeeld, wanneer u een recordset van het type 'A', moet u om op te geven van het IP-adres met de parameter `-IPv4Address`. Andere parameters worden gebruikt voor andere recordtypen. Zie de aanvullende recordtype voorbeelden voor meer informatie.
+De parameters voor het toevoegen van records aan een recordset variëren afhankelijk van het type recordset. For example, when using a record set of type 'A', you need to specify the IP address using the parameter `-IPv4Address`. Other parameters are used for other record types. See Additional record type examples for details.
 
-Het volgende voorbeeld wordt een record met de relatieve naam 'www' in de DNS-Zone 'contoso.com'. De volledig gekwalificeerde naam van de recordset is 'www.contoso.com'. Het recordtype is 'A', en de TTL is 3600 seconden. De recordset bevat één record met IP-adres '1.2.3.4'.
+The following example creates a record set with the relative name 'www' in the DNS Zone 'contoso.com'. The fully-qualified name of the record set is 'www.contoso.com'. The record type is 'A', and the TTL is 3600 seconds. The record set contains a single record, with IP address '1.2.3.4'.
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Een record in de apex van een zone wilt maken (in dit geval 'contoso.com'), gebruikt u de recordnaam '\@' (zonder aanhalingstekens):
+To create a record set at the 'apex' of a zone (in this case, 'contoso.com'), use the record set name '\@' (excluding quotation marks):
 
 ```powershell
 New-AzDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-Als u een recordset met meer dan één record maken wilt, eerst een lokale matrix maken en toevoegen van de records, wordt doorgeven van de matrix, zodat `New-AzDnsRecordSet` als volgt:
+If you need to create a record set containing more than one record, first create a local array and add the records, then pass the array to `New-AzDnsRecordSet` as follows:
 
 ```powershell
 $aRecords = @()
@@ -75,25 +75,25 @@ $aRecords += New-AzDnsRecordConfig -IPv4Address "2.3.4.5"
 New-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName MyResourceGroup -Ttl 3600 -RecordType A -DnsRecords $aRecords
 ```
 
-[Metagegevens van de recordset](dns-zones-records.md#tags-and-metadata) toepassingsspecifieke gegevens koppelen aan elke recordset als sleutel-waardeparen kunnen worden gebruikt. Het volgende voorbeeld ziet u hoe u een recordset met twee metagegevens vermeldingen maken ' schuld = Financiën ' en ' omgeving productie ='.
+[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs. The following example shows how to create a record set with two metadata entries, 'dept=finance' and 'environment=production'.
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -IPv4Address "1.2.3.4") -Metadata @{ dept="finance"; environment="production" } 
 ```
 
-Azure DNS ondersteunt ook 'empty' recordsets als een tijdelijke aanduiding voor een DNS-naam reserveren fungeren kunnen voordat u DNS-records maakt. Lege recordsets zijn zichtbaar in de Azure DNS-besturingselement vlak, maar worden weergegeven op de DNS-naamservers. Het volgende voorbeeld wordt een lege recordset gemaakt:
+Azure DNS also supports 'empty' record sets, which can act as a placeholder to reserve a DNS name before creating DNS records. Empty record sets are visible in the Azure DNS control plane, but do appear on the Azure DNS name servers. The following example creates an empty record set:
 
 ```powershell
 New-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords @()
 ```
 
-## <a name="create-records-of-other-types"></a>Records van andere typen maken
+## <a name="create-records-of-other-types"></a>Create records of other types
 
-Hebben gezien in detail 'A'-records maken, de volgende voorbeelden laten zien hoe andere opnemen die worden ondersteund door Azure DNS-records maken.
+Having seen in detail how to create 'A' records, the following examples show how to create records of other record types supported by Azure DNS.
 
-In elk geval laten we zien hoe u een recordset met één record maken. De eerdere voorbeelden voor 'A'-records kunnen worden aangepast om te maken van recordsets van andere typen met meerdere records, met metagegevens, of lege recordsets maken.
+In each case, we show how to create a record set containing a single record. The earlier examples for 'A' records can be adapted to create record sets of other types containing multiple records, with metadata, or to create empty record sets.
 
-We bieden geen een voorbeeld van een set van de SOA-record maken omdat SOA worden gemaakt en verwijderd met de DNS-zone en kan niet worden gemaakt of afzonderlijk worden verwijderd. Echter, [de SOA kan worden gewijzigd, zoals wordt weergegeven in het voorbeeld van een hoger](#to-modify-an-soa-record).
+We do not give an example to create an SOA record set, since SOAs are created and deleted with each DNS zone and cannot be created or deleted separately. However, [the SOA can be modified, as shown in a later example](#to-modify-an-soa-record).
 
 ### <a name="create-an-aaaa-record-set-with-a-single-record"></a>Een AAAA-recordset met één record maken
 
@@ -101,7 +101,7 @@ We bieden geen een voorbeeld van een set van de SOA-record maken omdat SOA worde
 New-AzDnsRecordSet -Name "test-aaaa" -RecordType AAAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ipv6Address "2607:f8b0:4009:1803::1005") 
 ```
 
-### <a name="create-a-caa-record-set-with-a-single-record"></a>Een CAA-recordset met één record maken
+### <a name="create-a-caa-record-set-with-a-single-record"></a>Create a CAA record set with a single record
 
 ```powershell
 New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Caaflags 0 -CaaTag "issue" -CaaValue "ca1.contoso.com") 
@@ -110,9 +110,9 @@ New-AzDnsRecordSet -Name "test-caa" -RecordType CAA -ZoneName "contoso.com" -Res
 ### <a name="create-a-cname-record-set-with-a-single-record"></a>Een CNAME-recordset met één record maken
 
 > [!NOTE]
-> De DNS-standaarden staan niet toe dat CNAME-records in de apex van een zone (`-Name '@'`), noch staan ze recordsets met meer dan één record toe.
+> The DNS standards do not permit CNAME records at the apex of a zone (`-Name '@'`), nor do they permit record sets containing more than one record.
 > 
-> Zie voor meer informatie, [CNAME-records](dns-zones-records.md#cname-records).
+> For more information, see [CNAME records](dns-zones-records.md#cname-records).
 
 
 ```powershell
@@ -121,7 +121,7 @@ New-AzDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.com" 
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>Een MX-recordset met één record maken
 
-In dit voorbeeld gebruiken we de naam van de recordset '\@' een MX-record maken in de apex van de zone (in dit geval 'contoso.com').
+In this example, we use the record set name '\@' to create an MX record at the zone apex (in this case, 'contoso.com').
 
 
 ```powershell
@@ -136,7 +136,7 @@ New-AzDnsRecordSet -Name "test-ns" -RecordType NS -ZoneName "contoso.com" -Resou
 
 ### <a name="create-a-ptr-record-set-with-a-single-record"></a>Een PTR-recordset met één record maken
 
-In dit geval ' Mijn-arpa-zone.com ' de ARPA-reverse lookup-zone voor uw IP-adresbereik vertegenwoordigt. Elke PTR-recordset die is ingesteld in deze zone komt overeen met een IP-adres in dit IP-bereik. De recordnaam "10" is het laatste achttal werd van het IP-adres binnen deze IP-adresbereik dat wordt vertegenwoordigd door deze record.
+In this case, 'my-arpa-zone.com' represents the ARPA reverse lookup zone representing your IP range. Elke PTR-recordset die is ingesteld in deze zone komt overeen met een IP-adres in dit IP-bereik. The record name '10' is the last octet of the IP address within this IP range represented by this record.
 
 ```powershell
 New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "myservice.contoso.com") 
@@ -144,153 +144,153 @@ New-AzDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -Resour
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>Een SRV-recordset met één record maken
 
-Bij het maken van een [SRV-Recordset](dns-zones-records.md#srv-records), geef de  *\_service* en  *\_protocol* in de recordnaam. Er is niet nodig om op te nemen '\@' in de naam van de recordset wanneer het maken van een SRV-record ingesteld in het toppunt van de zone.
+When creating an [SRV record set](dns-zones-records.md#srv-records), specify the *\_service* and *\_protocol* in the record set name. There is no need to include '\@' in the record set name when creating an SRV record set at the zone apex.
 
 ```powershell
 New-AzDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 
 ```
 
 
-### <a name="create-a-txt-record-set-with-a-single-record"></a>Een TXT-recordset met één record maken
+### <a name="create-a-txt-record-set-with-a-single-record"></a>Create a TXT record set with a single record
 
-Het volgende voorbeeld ziet hoe u een TXT-record te maken. Zie voor meer informatie over de maximale tekenreekslengte ondersteund in een TXT-records, [TXT-records](dns-zones-records.md#txt-records).
+The following example shows how to create a TXT record. For more information about the maximum string length supported in TXT records, see [TXT records](dns-zones-records.md#txt-records).
 
 ```powershell
 New-AzDnsRecordSet -Name "test-txt" -RecordType TXT -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Value "This is a TXT record") 
 ```
 
 
-## <a name="get-a-record-set"></a>Een recordset ophalen
+## <a name="get-a-record-set"></a>Get a record set
 
-Gebruiken om op te halen van een bestaande recordset, `Get-AzDnsRecordSet`. Deze cmdlet retourneert een lokale object dat staat voor de recordset in Azure DNS.
+To retrieve an existing record set, use `Get-AzDnsRecordSet`. This cmdlet returns a local object that represents the record set in Azure DNS.
 
-Net als bij `New-AzDnsRecordSet`, de naam van de recordset gegeven moet een *relatieve* naam, wat betekent dat de naam van de zone moet worden uitgesloten. U moet ook het recordtype opgeven en instellen van de zone die de record bevat.
+As with `New-AzDnsRecordSet`, the record set name given must be a *relative* name, meaning it must exclude the zone name. You also need to specify the record type, and the zone containing the record set.
 
-Het volgende voorbeeld ziet hoe u een recordset ophaalt. In dit voorbeeld wordt de zone is opgegeven met behulp van de `-ZoneName` en `-ResourceGroupName` parameters.
+The following example shows how to retrieve a record set. In this example, the zone is specified using the `-ZoneName` and `-ResourceGroupName` parameters.
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-U kunt ook u kunt ook opgeven de zone met behulp van een zone-object doorgegeven met behulp van de `-Zone` parameter.
+Alternatively, you can also specify the zone using a zone object, passed using the `-Zone` parameter.
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $rs = Get-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-## <a name="list-record-sets"></a>Lijst met recordsets
+## <a name="list-record-sets"></a>List record sets
 
-U kunt ook `Get-AzDnsZone` aan de lijst met recordsets in een zone, zonder de `-Name` en/of `-RecordType` parameters.
+You can also use `Get-AzDnsZone` to list record sets in a zone, by omitting the `-Name` and/or `-RecordType` parameters.
 
-Het volgende voorbeeld worden alle recordsets in de zone:
+The following example returns all record sets in the zone:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Het volgende voorbeeld laat zien hoe alle recordsets bent van een bepaald type kunnen worden opgehaald door het recordtype op te geven terwijl de naam als de record ingesteld:
+The following example shows how all record sets of a given type can be retrieved by specifying the record type while omitting the record set name:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-Om op te halen alle recordsets met een naam gegeven over recordtypen, moet u alle recordsets ophalen en vervolgens de resultaten te filteren:
+To retrieve all record sets with a given name, across record types, you need to retrieve all record sets and then filter the results:
 
 ```powershell
 $recordsets = Get-AzDnsRecordSet -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | where {$_.Name.Equals("www")}
 ```
 
-In de bovenstaande voorbeelden de zone kan worden opgegeven door de `-ZoneName` en `-ResourceGroupName`parameters (zoals weergegeven), of door een zone-object op te geven:
+In all the above examples, the zone can be specified either by using the `-ZoneName` and `-ResourceGroupName`parameters (as shown), or by specifying a zone object:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 $recordsets = Get-AzDnsRecordSet -Zone $zone
 ```
 
-## <a name="add-a-record-to-an-existing-record-set"></a>Een record toevoegt aan een bestaande record-set
+## <a name="add-a-record-to-an-existing-record-set"></a>Add a record to an existing record set
 
-Als u wilt een record toevoegt aan een bestaande record-set, volgt u de volgende drie stappen:
+To add a record to an existing record set, follow the following three steps:
 
-1. De bestaande recordset ophalen
+1. Get the existing record set
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. De nieuwe record toevoegen aan de lokale Recordset. Dit is een offline-bewerking.
+2. Add the new record to the local record set. This is an off-line operation.
 
     ```powershell
     Add-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Voer de wijziging terug naar de Azure DNS-service. 
+3. Commit the change back to the Azure DNS service. 
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $rs
     ```
 
-Met behulp van `Set-AzDnsRecordSet` *vervangt* de bestaande recordset in Azure DNS (en alle records die deze bevat) met de opgegeven recordset. [ETag controles](dns-zones-records.md#etags) worden gebruikt om ervoor te zorgen gelijktijdige wijzigingen worden niet overschreven. U kunt de optionele `-Overwrite` overschakelen naar deze controles onderdrukken.
+Using `Set-AzDnsRecordSet` *replaces* the existing record set in Azure DNS (and all records it contains) with the record set specified. [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not overwritten. You can use the optional `-Overwrite` switch to suppress these checks.
 
-Deze reeks bewerkingen kan ook worden *doorgesluisd*, wat betekent dat u de Recordset-object met behulp van de pipe in plaats van deze door te geven als een parameter doorgeven:
+This sequence of operations can also be *piped*, meaning you pass the record set object by using the pipe rather than passing it as a parameter:
 
 ```powershell
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-De bovenstaande voorbeelden laten zien hoe u een A-record toevoegt aan een bestaande recordset van het type 'A'. Een vergelijkbare reeks bewerkingen wordt gebruikt voor het toevoegen van records aan de recordsets van andere typen, waarbij de `-Ipv4Address` parameter van `Add-AzDnsRecordConfig` met andere parameters die specifiek zijn voor elk recordtype. De parameters van elk recordtype zijn hetzelfde als voor de `New-AzDnsRecordConfig` cmdlet, zoals wordt weergegeven in de bovenstaande voorbeelden van aanvullende recordtype.
+The examples above show how to add an 'A' record to an existing record set of type 'A'. A similar sequence of operations is used to add records to record sets of other types, substituting the `-Ipv4Address` parameter of `Add-AzDnsRecordConfig` with other parameters specific to each record type. The parameters for each record type are the same as for the `New-AzDnsRecordConfig` cmdlet, as shown in Additional record type examples above.
 
-Recordsets van het type 'CNAME' of 'SOA' mag niet meer dan één record bevatten. Deze beperking voortvloeit uit de DNS-standaarden. Het is niet een beperking van Azure DNS.
+Record sets of type 'CNAME' or 'SOA' cannot contain more than one record. This constraint arises from the DNS standards. It is not a limitation of Azure DNS.
 
-## <a name="remove-a-record-from-an-existing-record-set"></a>Een record verwijderen uit een bestaande recordset
+## <a name="remove-a-record-from-an-existing-record-set"></a>Remove a record from an existing record set
 
-Het proces voor het verwijderen van een record uit een recordset is vergelijkbaar met het proces voor het toevoegen van een record aan een bestaande recordset:
+The process to remove a record from a record set is similar to the process to add a record to an existing record set:
 
-1. De bestaande recordset ophalen
+1. Get the existing record set
 
     ```powershell
     $rs = Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A
     ```
 
-2. Verwijder de record van de lokale Recordset-object. Dit is een offline-bewerking. De record die wordt verwijderd, moet exact overeenkomt met een bestaande record zijn voor alle parameters.
+2. Remove the record from the local record set object. This is an off-line operation. The record that's being removed must be an exact match with an existing record across all parameters.
 
     ```powershell
     Remove-AzDnsRecordConfig -RecordSet $rs -Ipv4Address "5.6.7.8"
     ```
 
-3. Voer de wijziging terug naar de Azure DNS-service. Gebruik het optionele `-Overwrite` switch moet worden onderdrukt [Etag controleert](dns-zones-records.md#etags) voor gelijktijdige wijzigingen.
+3. Commit the change back to the Azure DNS service. Use the optional `-Overwrite` switch to suppress [Etag checks](dns-zones-records.md#etags) for concurrent changes.
 
     ```powershell
     Set-AzDnsRecordSet -RecordSet $Rs
     ```
 
-De laatste record verwijderen uit een recordset met behulp van de bovenstaande volgorde de recordset niet verwijderen, in plaats daarvan het verlaten van een lege recordset. Als u wilt verwijderen van een recordset volledig, Zie [verwijderen van een recordset](#delete-a-record-set).
+Using the above sequence to remove the last record from a record set does not delete the record set, rather it leaves an empty record set. To remove a record set entirely, see [Delete a record set](#delete-a-record-set).
 
-Aan de records toe te voegen aan een recordset, kan de volgorde van bewerkingen te verwijderen van een recordset op dezelfde manier ook worden doorgesluisd:
+Similarly to adding records to a record set, the sequence of operations to remove a record set can also be piped:
 
 ```powershell
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Verschillende recordtypen worden ondersteund door de juiste typespecifieke parameters doorgeven `Remove-AzDnsRecordSet`. De parameters van elk recordtype zijn hetzelfde als voor de `New-AzDnsRecordConfig` cmdlet, zoals wordt weergegeven in de bovenstaande voorbeelden van aanvullende recordtype.
+Different record types are supported by passing the appropriate type-specific parameters to `Remove-AzDnsRecordSet`. The parameters for each record type are the same as for the `New-AzDnsRecordConfig` cmdlet, as shown in Additional record type examples above.
 
 
-## <a name="modify-an-existing-record-set"></a>Een bestaande recordset wijzigen
+## <a name="modify-an-existing-record-set"></a>Modify an existing record set
 
-De stappen voor het wijzigen van een bestaande recordset zijn vergelijkbaar met de stappen waarmee u bij het toevoegen of verwijderen van records uit een Recordset:
+The steps for modifying an existing record set are similar to the steps you take when adding or removing records from a record set:
 
-1. Ophalen van de bestaande recordset met behulp van `Get-AzDnsRecordSet`.
-2. Het lokale Recordset-object door te wijzigen:
-    * Toevoegen of verwijderen van records
-    * De parameters van bestaande records wijzigen
-    * Het wijzigen van de record metagegevens en de tijd ingesteld op live (TTL)
-3. Leg uw wijzigingen vast met behulp van de `Set-AzDnsRecordSet` cmdlet. Dit *vervangt* de bestaande recordset in Azure DNS met de opgegeven recordset.
+1. Retrieve the existing record set by using `Get-AzDnsRecordSet`.
+2. Modify the local record set object by:
+    * Adding or removing records
+    * Changing the parameters of existing records
+    * Changing the record set metadata and time to live (TTL)
+3. Commit your changes by using the `Set-AzDnsRecordSet` cmdlet. This *replaces* the existing record set in Azure DNS with the record set specified.
 
-Bij het gebruik van `Set-AzDnsRecordSet`, [Etag controleert](dns-zones-records.md#etags) worden gebruikt om ervoor te zorgen gelijktijdige wijzigingen worden niet overschreven. U kunt de optionele `-Overwrite` overschakelen naar deze controles onderdrukken.
+When using `Set-AzDnsRecordSet`, [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not overwritten. You can use the optional `-Overwrite` switch to suppress these checks.
 
-### <a name="to-update-a-record-in-an-existing-record-set"></a>Een record in een bestaande recordset bij te werken
+### <a name="to-update-a-record-in-an-existing-record-set"></a>To update a record in an existing record set
 
-In dit voorbeeld wijzigen we het IP-adres van een bestaande A-record:
+In this example, we change the IP address of an existing 'A' record:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -298,11 +298,11 @@ $rs.Records[0].Ipv4Address = "9.8.7.6"
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-an-soa-record"></a>Een SOA-record wijzigen
+### <a name="to-modify-an-soa-record"></a>To modify an SOA record
 
-U kan toevoegen of verwijderen van records uit de automatisch gemaakte SOA-record ingesteld in het toppunt van de zone (`-Name "@"`, inclusief de aanhalingstekens). Echter, u kunt wijzigen van de parameters in de SOA-record (met uitzondering van 'Host') en de TTL-waarde van de recordset.
+You cannot add or remove records from the automatically created SOA record set at the zone apex (`-Name "@"`, including quote marks). However, you can modify any of the parameters within the SOA record (except "Host") and the record set TTL.
 
-Het volgende voorbeeld laat zien hoe u de *e* eigenschap van de SOA-record:
+The following example shows how to change the *Email* property of the SOA record:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType SOA -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -310,15 +310,15 @@ $rs.Records[0].Email = "admin.contoso.com"
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-ns-records-at-the-zone-apex"></a>NS-records in de apex van de zone wijzigen
+### <a name="to-modify-ns-records-at-the-zone-apex"></a>To modify NS records at the zone apex
 
-De NS-recordset in de apex van de zone wordt automatisch gemaakt met elke DNS-zone. Deze bevat de namen van de Azure DNS-naamservers toegewezen aan de zone.
+The NS record set at the zone apex is automatically created with each DNS zone. It contains the names of the Azure DNS name servers assigned to the zone.
 
-U kunt de naam van aanvullende servers aan deze NS-record ingesteld voor de ondersteuning van collega hosting-domeinen met meer dan één DNS-provider toevoegen. U kunt ook de TTL-waarde en de metagegevens voor deze recordset wijzigen. U kan echter verwijderen of wijzigen van de vooraf ingestelde Azure DNS-naamservers.
+You can add additional name servers to this NS record set, to support co-hosting domains with more than one DNS provider. You can also modify the TTL and metadata for this record set. However, you cannot remove or modify the pre-populated Azure DNS name servers.
 
-Houd er rekening mee dat dit alleen voor de NS-recordset in de apex van de zone geldt. Andere NS-recordsets in de zone (zoals die wordt gebruikt om te delegeren onderliggende zones) kunnen worden gewijzigd zonder beperking.
+Note that this applies only to the NS record set at the zone apex. Other NS record sets in your zone (as used to delegate child zones) can be modified without constraint.
 
-Het volgende voorbeeld laat zien hoe een extra UPN-server toevoegen aan de NS-recordset in de apex van de zone:
+The following example shows how to add an additional name server to the NS record set at the zone apex:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name "@" -RecordType NS -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
@@ -326,11 +326,11 @@ Add-AzDnsRecordConfig -RecordSet $rs -Nsdname ns1.myotherdnsprovider.com
 Set-AzDnsRecordSet -RecordSet $rs
 ```
 
-### <a name="to-modify-record-set-metadata"></a>De metagegevens van de recordset wijzigen
+### <a name="to-modify-record-set-metadata"></a>To modify record set metadata
 
-[Metagegevens van de recordset](dns-zones-records.md#tags-and-metadata) toepassingsspecifieke gegevens koppelen aan elke recordset als sleutel-waardeparen kunnen worden gebruikt.
+[Record set metadata](dns-zones-records.md#tags-and-metadata) can be used to associate application-specific data with each record set, as key-value pairs.
 
-Het volgende voorbeeld laat zien hoe de metagegevens van een bestaande recordset te wijzigen:
+The following example shows how to modify the metadata of an existing record set:
 
 ```powershell
 # Get the record set
@@ -347,36 +347,36 @@ Set-AzDnsRecordSet -RecordSet $rs
 ```
 
 
-## <a name="delete-a-record-set"></a>Een recordset verwijderen
+## <a name="delete-a-record-set"></a>Delete a record set
 
-Recordsets kunnen worden verwijderd met behulp van de `Remove-AzDnsRecordSet` cmdlet. Als u een recordset verwijdert, verwijdert u ook alle records in de recordset.
+Record sets can be deleted by using the `Remove-AzDnsRecordSet` cmdlet. Deleting a record set also deletes all records within the record set.
 
 > [!NOTE]
-> De SOA kan niet worden verwijderd en NS-record wordt ingesteld in het toppunt van de zone (`-Name '@'`).  Deze wordt automatisch door Azure DNS gemaakt wanneer de zone is gemaakt en worden automatisch verwijderd wanneer de zone wordt verwijderd.
+> You cannot delete the SOA and NS record sets at the zone apex (`-Name '@'`).  Azure DNS created these automatically when the zone was created, and deletes them automatically when the zone is deleted.
 
-Het volgende voorbeeld ziet hoe u een recordset verwijderen. In dit voorbeeld wordt zijn de RecordsetNaam, de Recordset type, de zonenaam en de resourcegroep elk expliciet opgegeven.
+The following example shows how to delete a record set. In this example, the record set name, record set type, zone name, and resource group are each specified explicitly.
 
 ```powershell
 Remove-AzDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 ```
 
-De recordset kan ook worden opgegeven door de naam en type en de zone worden opgegeven met behulp van een object:
+Alternatively, the record set can be specified by name and type, and the zone specified using an object:
 
 ```powershell
 $zone = Get-AzDnsZone -Name "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -Name "www" -RecordType A -Zone $zone
 ```
 
-Een derde mogelijkheid is, kan de recordset zelf worden opgegeven met behulp van een Recordset-object:
+As a third option, the record set itself can be specified using a record set object:
 
 ```powershell
 $rs = Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup"
 Remove-AzDnsRecordSet -RecordSet $rs
 ```
 
-Wanneer u de recordset moet worden verwijderd met behulp van een object Recordset opgeeft [Etag controleert](dns-zones-records.md#etags) worden gebruikt om ervoor te zorgen gelijktijdige wijzigingen zijn niet verwijderd. U kunt de optionele `-Overwrite` overschakelen naar deze controles onderdrukken.
+When you specify the record set to be deleted by using a record set object, [Etag checks](dns-zones-records.md#etags) are used to ensure concurrent changes are not deleted. You can use the optional `-Overwrite` switch to suppress these checks.
 
-De Recordset-object kan ook worden doorgesluisd in plaats van dat wordt doorgegeven als parameter:
+The record set object can also be piped instead of being passed as a parameter:
 
 ```powershell
 Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" | Remove-AzDnsRecordSet
@@ -386,7 +386,7 @@ Get-AzDnsRecordSet -Name www -RecordType A -ZoneName "contoso.com" -ResourceGrou
 
 De cmdlets `New-AzDnsRecordSet`, `Set-AzDnsRecordSet` en `Remove-AzDnsRecordSet` ondersteunen bevestigingspromts.
 
-Elke cmdlet vraagt om bevestiging als de `$ConfirmPreference` PowerShell-voorkeursvariabele heeft een waarde van `Medium` of lager. Omdat de standaardwaarde voor `$ConfirmPreference` is `High`, krijgen deze vraag niet bij het gebruik van de standaardinstellingen voor PowerShell.
+Each cmdlet prompts for confirmation if the `$ConfirmPreference` PowerShell preference variable has a value of `Medium` or lower. Since the default value for `$ConfirmPreference` is `High`, these prompts are not given when using the default PowerShell settings.
 
 U kunt de huidige instelling van `$ConfirmPreference` overschrijven met behulp van de parameter `-Confirm`. Als u `-Confirm` of `-Confirm:$True` opgeeft, vraagt de cmdlet u om bevestiging voordat deze wordt uitgevoerd. Als u `-Confirm:$False` opgeeft, wordt u niet om bevestiging gevraagd. 
 
@@ -394,8 +394,8 @@ Zie [over voorkeursvariabelen](/powershell/module/microsoft.powershell.core/abou
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [zones en -records in Azure DNS](dns-zones-records.md).
+Learn more about [zones and records in Azure DNS](dns-zones-records.md).
 <br>
-Meer informatie over het [uw zones en records beschermen](dns-protect-zones-recordsets.md) bij het gebruik van Azure DNS.
+Learn how to [protect your zones and records](dns-protect-zones-recordsets.md) when using Azure DNS.
 <br>
-Controleer de [referentiedocumentatie voor PowerShell voor Azure DNS](/powershell/module/az.dns).
+Review the [Azure DNS PowerShell reference documentation](/powershell/module/az.dns).

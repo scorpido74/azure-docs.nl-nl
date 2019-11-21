@@ -1,37 +1,33 @@
 ---
-title: Retour waarde van een Azure-functie gebruiken
-description: Meer informatie over het beheren van retour waarden voor Azure Functions
-services: functions
-documentationcenter: na
+title: Using return value from an Azure Function
+description: Learn to manage return values for Azure Functions
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: reference
 ms.date: 01/14/2019
 ms.author: cshoe
-ms.openlocfilehash: 8dd5a4d9d869c879ed402c5450690f0a691e1d2c
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 30c9caf267482d7c3731d4848cfb26cc8120b1ac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074405"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231074"
 ---
-# <a name="using-the-azure-function-return-value"></a>De functie retour waarde van Azure gebruiken
+# <a name="using-the-azure-function-return-value"></a>Using the Azure Function return value
 
-In dit artikel wordt uitgelegd hoe resultaat waarden binnen een functie werken.
+This article explains how return values work inside a function.
 
-In talen die een retour waarde hebben, kunt u een functie- [uitvoer binding](./functions-triggers-bindings.md#binding-direction) binden aan de retour waarde:
+In languages that have a return value, you can bind a function [output binding](./functions-triggers-bindings.md#binding-direction) to the return value:
 
-* Pas in C# een klassen bibliotheek het kenmerk uitvoer binding toe op de retour waarde van de methode.
-* In andere talen, stelt u de eigenschap `name` in *Function. json* in op `$return`.
+* In a C# class library, apply the output binding attribute to the method return value.
+* In other languages, set the `name` property in *function.json* to `$return`.
 
-Als er meerdere uitvoer bindingen zijn, gebruikt u de retour waarde voor slechts één van beide.
+If there are multiple output bindings, use the return value for only one of them.
 
-In C# en C# script, alternatieve manieren om gegevens te verzenden naar een uitvoer binding, worden `out` para meters en [Collector-objecten](functions-reference-csharp.md#writing-multiple-output-values).
+In C# and C# script, alternative ways to send data to an output binding are `out` parameters and [collector objects](functions-reference-csharp.md#writing-multiple-output-values).
 
 # <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
-Dit is C# de code die gebruikmaakt van de retour waarde voor een uitvoer binding, gevolgd door een async-voor beeld:
+Here's C# code that uses the return value for an output binding, followed by an async example:
 
 ```cs
 [FunctionName("QueueTrigger")]
@@ -55,9 +51,9 @@ public static Task<string> Run([QueueTrigger("inputqueue")]WorkItem input, ILogg
 }
 ```
 
-# <a name="c-scripttabcsharp-script"></a>[C#Schriften](#tab/csharp-script)
+# <a name="c-scripttabcsharp-script"></a>[C# Script](#tab/csharp-script)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Here's the output binding in the *function.json* file:
 
 ```json
 {
@@ -68,7 +64,7 @@ Hier ziet u de uitvoer binding in het bestand *Function. json* :
 }
 ```
 
-Hier volgt de C# script code, gevolgd door een async-voor beeld:
+Here's the C# script code, followed by an async example:
 
 ```cs
 public static string Run(WorkItem input, ILogger log)
@@ -90,7 +86,7 @@ public static Task<string> Run(WorkItem input, ILogger log)
 
 # <a name="ftabfsharp"></a>[F#](#tab/fsharp)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Here's the output binding in the *function.json* file:
 
 ```json
 {
@@ -101,7 +97,7 @@ Hier ziet u de uitvoer binding in het bestand *Function. json* :
 }
 ```
 
-Hier volgt de F# code:
+Here's the F# code:
 
 ```fsharp
 let Run(input: WorkItem, log: ILogger) =
@@ -112,7 +108,7 @@ let Run(input: WorkItem, log: ILogger) =
 
 # <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Here's the output binding in the *function.json* file:
 
 ```json
 {
@@ -123,7 +119,7 @@ Hier ziet u de uitvoer binding in het bestand *Function. json* :
 }
 ```
 
-In Java script komt de geretourneerde waarde voor in de tweede para meter voor `context.done`:
+In JavaScript, the return value goes in the second parameter for `context.done`:
 
 ```javascript
 module.exports = function (context, input) {
@@ -135,7 +131,7 @@ module.exports = function (context, input) {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Hier ziet u de uitvoer binding in het bestand *Function. json* :
+Here's the output binding in the *function.json* file:
 
 ```json
 {
@@ -145,7 +141,7 @@ Hier ziet u de uitvoer binding in het bestand *Function. json* :
     "path": "output-container/{id}"
 }
 ```
-Dit is de python-code:
+Here's the Python code:
 
 ```python
 def main(input: azure.functions.InputStream) -> str:
@@ -161,4 +157,4 @@ def main(input: azure.functions.InputStream) -> str:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Azure Functions bindings fouten verwerken](./functions-bindings-errors.md)
+> [Handle Azure Functions binding errors](./functions-bindings-errors.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: een machine learning model implementeren met de ontwerp functie'
+title: 'Tutorial: Deploy a machine learning model with the designer'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het bouwen van een predictive analytics oplossing in Azure Machine Learning Designer (preview). Train, Score en implementeer een machine learning model met behulp van slepen en neerzetten.
+description: Learn how to build a predictive analytics solution in Azure Machine Learning designer (preview). Train, score, and deploy a machine learning model by using drag-and-drop modules.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,112 +9,112 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 724a38cb516e5689f817e9ddeaa867b17274971b
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 50ee0ad78ae0e54071d90c8118a1989f306b59e6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932032"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224948"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Zelf studie: een machine learning model implementeren met de ontwerp functie (preview-versie)
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Tutorial: Deploy a machine learning model with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-U kunt het voorspellende model dat is ontwikkeld in [deel één van de zelf studie](tutorial-designer-automobile-price-train-score.md) implementeren om anderen de kans te geven deze te gebruiken. In deel één hebt u het model getraind. Nu is het tijd om nieuwe voor spellingen te genereren op basis van gebruikers invoer. In dit deel van de zelfstudie komen deze onderwerpen aan bod:
+You can deploy the predictive model developed in [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to give others a chance to use it. In part one, you trained your model. Now, it's time to generate new predictions based on user input. In dit deel van de zelfstudie komen deze onderwerpen aan bod:
 
 > [!div class="checklist"]
-> * Maak een real-time pipeline-pijp lijn.
-> * Maak een Afleidings cluster.
-> * Implementeer het real-time eind punt.
-> * Het real-time eind punt testen.
+> * Create a real-time inference pipeline.
+> * Create an inferencing cluster.
+> * Deploy the real-time endpoint.
+> * Test the real-time endpoint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voltooi [deel één van de zelf studie](tutorial-designer-automobile-price-train-score.md) voor meer informatie over het trainen en beoordelen van een machine learning model in de ontwerp functie.
+Complete [part one of the tutorial](tutorial-designer-automobile-price-train-score.md) to learn how to train and score a machine learning model in the designer.
 
-## <a name="create-a-real-time-inference-pipeline"></a>Een real-time pijp lijn maken
+## <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-Als u uw pijp lijn wilt implementeren, moet u eerst de trainings pijplijn omzetten in een realtime pipeline-pijp lijn. Dit proces verwijdert trainings modules en voegt invoer en uitvoer voor het afleiden van aanvragen toe.
+To deploy your pipeline, you must first convert the training pipeline into a real-time inference pipeline. This process removes training modules and adds inputs and outputs for inferencing requests.
 
-### <a name="create-a-real-time-inference-pipeline"></a>Een real-time pijp lijn maken
+### <a name="create-a-real-time-inference-pipeline"></a>Create a real-time inference pipeline
 
-1. Selecteer boven het pijplijn canvas **pijp lijn maken** > **real-time pipeline-pijp lijn**.
+1. Above the pipeline canvas, select **Create inference pipeline** > **Real-time inference pipeline**.
 
-    Uw pijp lijn moet er nu als volgt uitzien: 
+    Your pipeline should now look like this: 
 
-   ![Scherm opname van de verwachte configuratie van de pijp lijn nadat deze is voor bereid voor implementatie](./media/ui-tutorial-automobile-price-deploy/real-time-inference-pipeline.png)
+   ![Screenshot showing the expected configuration of the pipeline after preparing it for deployment](./media/tutorial-designer-automobile-price-deploy/real-time-inference-pipeline.png)
 
-    Wanneer u de **pijp lijn**voor het maken van een devan-interferentie selecteert, gebeurt het volgende:
+    When you select **Create inference pipeline**, several things happen:
     
-    * Het getrainde model wordt opgeslagen als een module **gegevensset** in het palet van de module. U kunt het vinden onder **mijn gegevens sets**.
-    * Trainings modules zoals **Train model** en **gesplitste gegevens** worden verwijderd.
-    * Het opgeslagen getrainde model wordt weer toegevoegd aan de pijp lijn.
-    * De **Web Service-invoer** en de **webservice-uitvoer** modules worden toegevoegd. Deze modules laten zien waar gebruikers gegevens het model invoeren en waar gegevens worden geretourneerd.
+    * The trained model is stored as a **Dataset** module in the module palette. You can find it under **My Datasets**.
+    * Training modules like **Train Model** and **Split Data** are removed.
+    * The saved trained model is added back into the pipeline.
+    * **Web Service Input** and **Web Service Output** modules are added. These modules show where user data enters the model and where data is returned.
 
     > [!NOTE]
-    > De *trainings pijplijn* wordt opgeslagen op het nieuwe tabblad boven aan het pijp lijn-canvas. Het kan ook worden gevonden als een gepubliceerde pijp lijn in de ontwerp functie.
+    > The *training pipeline* is saved under the new tab at the top of the pipeline canvas. It can also be found as a published pipeline in the designer.
     >
 
-1. Selecteer **uitvoeren**en gebruik hetzelfde reken doel en experiment dat u in deel één hebt gebruikt.
+1. Select **Run**, and use the same compute target and experiment that you used in part one.
 
-1. Selecteer de module **score model** .
+1. Select the **Score Model** module.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > **visualiseren** om te controleren of het model nog steeds werkt. U kunt zien dat de oorspronkelijke gegevens samen met de voorspelde prijs worden weer gegeven ("gescoorde labels").
+1. In the properties pane, select **Outputs** > **Visualize** to verify the model is still working. You can see the original data is displayed along with the predicted price ("Scored Labels").
 
 1. Selecteer **Implementeren**.
 
-## <a name="create-an-inferencing-cluster"></a>Een Afleidings cluster maken
+## <a name="create-an-inferencing-cluster"></a>Create an inferencing cluster
 
-In het dialoog venster dat wordt weer gegeven, kunt u een wille keurige bestaande Azure Kubernetes service-cluster (AKS) selecteren om uw model te implementeren. Als u geen AKS-cluster hebt, gebruikt u de volgende stappen om er een te maken.
+In the dialog box that appears, you can select from any existing Azure Kubernetes Service (AKS) clusters to deploy your model to. If you don't have an AKS cluster, use the following steps to create one.
 
-1. Selecteer **berekenen** in het dialoog venster dat wordt weer gegeven om naar de **Compute** -pagina te gaan.
+1. Select **Compute** in the dialog box that appears to go to the **Compute** page.
 
-1. Selecteer op het navigatie lint de optie **clusters** af >  **+ Nieuw**.
+1. On the navigation ribbon, select **Inference Clusters** >  **+ New**.
 
-    ![Scherm afbeelding die laat zien hoe het nieuwe deel venster voor het afwijzen van een cluster wordt weer gegeven](./media/ui-tutorial-automobile-price-deploy/new-inference-cluster.png)
+    ![Screenshot showing how to get to the new inference cluster pane](./media/tutorial-designer-automobile-price-deploy/new-inference-cluster.png)
 
-1. Configureer een nieuwe Kubernetes-service in het deel venster cluster uitstellen.
+1. In the inference cluster pane, configure a new Kubernetes Service.
 
-1. Voer *AKS-Compute* in voor de naam van de **berekening**.
+1. Enter *aks-compute* for the **Compute name**.
     
-1. Selecteer een regio in de buurt die beschikbaar is voor de **regio**.
+1. Select a nearby region that's available for the **Region**.
 
 1. Selecteer **Maken**.
 
     > [!NOTE]
-    > Het duurt ongeveer 15 minuten om een nieuwe AKS-service te maken. U kunt de inrichtings status controleren op de pagina Afleidings **clusters** .
+    > It takes approximately 15 minutes to create a new AKS service. You can check the provisioning state on the **Inference Clusters** page.
     >
 
-## <a name="deploy-the-real-time-endpoint"></a>Het real-time-eind punt implementeren
+## <a name="deploy-the-real-time-endpoint"></a>Deploy the real-time endpoint
 
-Wanneer de inrichting van uw AKS-service is voltooid, gaat u terug naar de real-time pipeline-pijp lijn om de implementatie te volt ooien.
+After your AKS service has finished provisioning, return to the real-time inferencing pipeline to complete deployment.
 
-1. Selecteer boven het canvas **implementeren** .
+1. Select **Deploy** above the canvas.
 
-1. Selecteer **Nieuw real-time eind punt implementeren**. 
+1. Select **Deploy new real-time endpoint**. 
 
-1. Selecteer het AKS-cluster dat u hebt gemaakt.
+1. Select the AKS cluster you created.
 
 1. Selecteer **Implementeren**.
 
-    ![Scherm afbeelding die laat zien hoe u een nieuw real-time eind punt instelt](./media/ui-tutorial-automobile-price-deploy/setup-endpoint.png)
+    ![Screenshot showing how to set up a new real-time endpoint](./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png)
 
-    Nadat de implementatie is voltooid, wordt een melding boven het canvas weer gegeven. Het kan een paar minuten duren.
+    A success notification above the canvas appears after deployment finishes. It might take a few minutes.
 
-## <a name="test-the-real-time-endpoint"></a>Het real-time eind punt testen
+## <a name="test-the-real-time-endpoint"></a>Test the real-time endpoint
 
-Nadat de implementatie is voltooid, kunt u uw real-time eind punt testen door naar de pagina met **eind punten** te gaan.
+After deployment finishes, you can test your real-time endpoint by going to the **Endpoints** page.
 
-1. Selecteer op de pagina **eind punten** het eind punt dat u hebt geïmplementeerd.
+1. On the **Endpoints** page, select the endpoint you deployed.
 
-    ![Scherm afbeelding van het tabblad realtime eind punten waarop het onlangs gemaakte eind punt is gemarkeerd](./media/ui-tutorial-automobile-price-deploy/endpoints.png)
+    ![Screenshot showing the real-time endpoints tab with the recently created endpoint highlighted](./media/tutorial-designer-automobile-price-deploy/endpoints.png)
 
-1. Selecteer **testen**.
+1. Select **Test**.
 
-1. U kunt de test gegevens hand matig invoeren of de automatisch gevulde voorbeeld gegevens gebruiken en **testen**selecteren.
+1. You can manually input testing data or use the autofilled sample data, and select **Test**.
 
-    In de portal wordt een test aanvraag naar het eind punt verzonden en worden de resultaten weer gegeven. Hoewel een prijs waarde wordt gegenereerd voor de invoer gegevens, wordt deze niet gebruikt om de Voorspellings waarde te genereren.
+    The portal submits a test request to the endpoint and shows the results. Although a price value is generated for the input data, it isn't used to generate the prediction value.
 
-    ![Scherm afbeelding die laat zien hoe u het realtime-eind punt kunt testen met het gescoorde label voor de gemarkeerde prijs](./media/ui-tutorial-automobile-price-deploy/test-endpoint.png)
+    ![Screenshot showing how to test the real-time endpoint with the scored label for price highlighted](./media/tutorial-designer-automobile-price-deploy/test-endpoint.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -122,7 +122,7 @@ Nadat de implementatie is voltooid, kunt u uw real-time eind punt testen door na
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u de belangrijkste stappen geleerd voor het maken, implementeren en gebruiken van een machine learning model in de ontwerp functie. Voor meer informatie over hoe u de Designer kunt gebruiken om andere soorten problemen op te lossen, raadpleegt u onze andere voorbeeld pijplijnen.
+In this tutorial, you learned the key steps in how to create, deploy, and consume a machine learning model in the designer. To learn more about how you can use the designer to solve other types of problems, see our other sample pipelines.
 
 > [!div class="nextstepaction"]
-> [Voor beeld van classificatie van credit risico](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)
+> [Credit risk classification sample](how-to-designer-sample-classification-credit-risk-cost-sensitive.md)

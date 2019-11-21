@@ -1,85 +1,85 @@
 ---
-title: Problemen oplossen met Extern bureaublad virtueel bureau blad van Windows-Azure
-description: Problemen oplossen bij het instellen van client verbindingen in een Windows Virtual Desktop-Tenant omgeving.
+title: Troubleshoot Remote Desktop Windows Virtual Desktop - Azure
+description: How to resolve issues when you set up client connections in a Windows Virtual Desktop tenant environment.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 04/08/2019
 ms.author: helohr
-ms.openlocfilehash: 3aae74a4fed499674f015ed0adb59016877583f3
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 9fcc65768db3029461a5823034336bc883379292
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607378"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227688"
 ---
 # <a name="remote-desktop-client-connections"></a>Clientverbindingen met extern bureaublad
 
-Gebruik dit artikel voor het oplossen van problemen met Windows-client verbindingen met virtueel bureau blad.
+Use this article to resolve issues with Windows Virtual Desktop client connections.
 
 ## <a name="provide-feedback"></a>Feedback geven
 
-Ga naar de [technische community van Windows virtueel bureau blad](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) voor het bespreken van de Windows Virtual Desktop-service met het product team en de actieve leden van de community.
+Visit the [Windows Virtual Desktop Tech Community](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) to discuss the Windows Virtual Desktop service with the product team and active community members.
 
-## <a name="you-cant-open-a-web-client"></a>U kunt geen webclient openen
+## <a name="you-cant-open-a-web-client"></a>You can't open a web client
 
-Controleer of de Internet verbinding is door een andere website te openen. bijvoorbeeld [www.Bing.com](https://www.bing.com).
+Confirm there's internet connectivity by opening another web site; for example, [www.Bing.com](https://www.bing.com).
 
-**Nslookup** gebruiken om te controleren of DNS de FQDN kan omzetten:
+Use **nslookup** to confirm DNS can resolve the FQDN:
 
 ```cmd
 nslookup rdweb.wvd.microsoft.com
 ```
 
-Probeer verbinding te maken met een andere client, bijvoorbeeld Extern bureaublad-client voor Windows 7 of Windows 10, en controleer of u de webclient kunt openen.
+Try connecting with another client, like Remote Desktop client for Windows 7 or Windows 10, and check to see if you can open the web client.
 
-### <a name="error-opening-another-site-fails"></a>Fout: het openen van een andere site is mislukt
+### <a name="error-opening-another-site-fails"></a>Error: Opening another site fails
 
-**Oorzaak:** Netwerk problemen en/of storingen.
+**Cause:** Network issues and/or outages.
 
-**Oplossen:** Neem contact op met de netwerk ondersteuning.
+**Fix:** Contact network support.
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Fout: de naam kan niet worden omgezet met nslookup
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Error: Nslookup cannot resolve the name
 
-**Oorzaak:** Netwerk problemen en/of storingen.
+**Cause:** Network issues and/or outages.
 
-**Oplossen:** Contact opnemen met netwerk ondersteuning
+**Fix:** Contact network support
 
-### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Fout: u kunt geen verbinding maken, maar andere clients kunnen verbinding maken
+### <a name="error-you-cant-connect-but-other-clients-can-connect"></a>Error: You can't connect but other clients can connect
 
-**Oorzaak:** De browser werkt niet zoals verwacht en werkt niet meer.
+**Cause:** The browser isn't behaving as expected and stopped working.
 
-**Oplossen:** Volg deze instructies voor het oplossen van problemen met de browser.
+**Fix:** Follow these instructions to troubleshoot the browser.
 
-1. Start de browser opnieuw.
-2. Wis browser cookies. Zie [cookie bestanden verwijderen in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-3. Wis de browsercache. Zie [browser cache wissen voor uw browser](https://binged.it/2RKyfdU).
-4. Open de browser in de persoonlijke modus.
+1. Restart the browser.
+2. Clear browser cookies. See [How to delete cookie files in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+3. Wis de browsercache. See [clear browser cache for your browser](https://binged.it/2RKyfdU).
+4. Open browser in Private mode.
 
-## <a name="web-client-stops-responding-or-disconnects"></a>Webclient reageert niet meer of de verbinding wordt verbroken
+## <a name="web-client-stops-responding-or-disconnects"></a>Web client stops responding or disconnects
 
-Probeer verbinding te maken met behulp van een andere browser of client.
+Try connecting using another browser or client.
 
-### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Fout: andere browsers en clients werken niet goed of kunnen niet worden geopend
+### <a name="error-other-browsers-and-clients-also-malfunction-or-fail-to-open"></a>Error: Other browsers and clients also malfunction or fail to open
 
-**Oorzaak:** Problemen met netwerk-en/of bewerkings systemen of storingen
+**Cause:** Network and/or operation system issues or outages
 
-**Oplossen:** Neem contact op met de ondersteunings teams.
+**Fix:** Contact support teams.
 
-## <a name="web-client-keeps-prompting-for-credentials"></a>Webclient vraagt om referenties
+## <a name="web-client-keeps-prompting-for-credentials"></a>Web client keeps prompting for credentials
 
-Als de webclient om referenties wordt gevraagd, volgt u deze instructies.
+If the Web client keeps prompting for credentials, follow these instructions.
 
-1. Controleer of de URL van de webclient juist is.
-2. Controleer of de referenties voor de Windows Virtual Desktop-omgeving zijn gekoppeld aan de URL.
-3. Wis browser cookies. Zie [cookie bestanden verwijderen in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
-4. Wis de browsercache. Zie [browser cache wissen voor uw browser](https://binged.it/2RKyfdU).
-5. Open de browser in de persoonlijke modus.
+1. Confirm web client URL is correct.
+2. Confirm that credentials are for the Windows Virtual Desktop environment tied to the URL.
+3. Clear browser cookies. See [How to delete cookie files in Internet Explorer](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
+4. Wis de browsercache. See [Clear browser cache for your browser](https://binged.it/2RKyfdU).
+5. Open browser in Private mode.
 
-## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Extern bureaublad-client voor Windows 7 of Windows 10 reageert niet meer of kan niet worden geopend
+## <a name="remote-desktop-client-for-windows-7-or-windows-10-stops-responding-or-cannot-be-opened"></a>Remote Desktop client for Windows 7 or Windows 10 stops responding or cannot be opened
 
-Gebruik de volgende Power shell-cmdlets om out-of-band-client registers (OOB) op te schonen.
+Use the following PowerShell cmdlets to clean up out-of-band (OOB) client registries.
 
 ```PowerShell
 Remove-ItemProperty 'HKCU:\Software\Microsoft\Terminal Server Client\Default' - Name FeedURLs
@@ -91,38 +91,38 @@ Remove-Item 'HKCU:\Software\Microsoft\RdClientRadc' -Recurse
 Remove-Item C:\Users\pavithir\AppData\Roaming\RdClientRadc\* -Recurse
 ```
 
-Ga naar **%AppData%\RdClientRadc** en verwijder alle inhoud.
+Navigate to **%AppData%\RdClientRadc** and delete all content.
 
-Verwijder Extern bureaublad-client voor Windows 7 en Windows 10 en installeer deze opnieuw.
+Uninstall and reinstall Remote Desktop client for Windows 7 and Windows 10.
 
-## <a name="troubleshooting-end-user-connectivity"></a>Problemen met de connectiviteit van eind gebruikers oplossen
+## <a name="troubleshooting-end-user-connectivity"></a>Troubleshooting end-user connectivity
 
-Soms hebben gebruikers toegang tot hun feed en lokale resources, maar ze hebben nog steeds configuratie-, beschik baarheids-of prestatie problemen die verhinderen dat ze toegang krijgen tot externe bronnen. In dergelijke gevallen ontvangt de gebruiker berichten die er ongeveer als volgt uitzien:
+Sometimes users can access their feed and local resources, but still have configuration, availability, or performance issues that prevent them from accessing remote resources. In these cases, the user gets messages similar to these:
 
-![Verbinding met extern bureaublad fout bericht.](media/eb76b666808bddb611448dfb621152ce.png)
+![Remote Desktop Connection error message.](media/eb76b666808bddb611448dfb621152ce.png)
 
-![Kan geen verbinding maken met het fout bericht van de gateway.](media/a8fbb9910d4672147335550affe58481.png)
+![Can't connect to the gateway error message.](media/a8fbb9910d4672147335550affe58481.png)
 
-Volg deze algemene instructies voor het oplossen van problemen met fout codes voor client verbindingen.
+Follow these general troubleshooting instructions for client connection error codes.
 
-1. Bevestig de gebruikers naam en het tijdstip waarop het probleem is opgetreden.
-2. Open **Power shell** en breng verbinding tot stand met de Windows Virtual Desktop-Tenant waar het probleem is gerapporteerd.
-3. Controleer de verbinding met de juiste Tenant met **Get-RdsTenant.**
-4. Controleer met **Get-RdsHostPool** en **Get-RdsSessionHost-** cmdlets of de probleem oplossing wordt uitgevoerd voor de juiste hostgroep.
-5. Voer de onderstaande opdracht uit om een lijst op te halen met alle mislukte activiteiten van het type verbinding voor het opgegeven tijd venster:
+1. Confirm user name and time when issue was experienced.
+2. Open **PowerShell** and establish connection to the Windows Virtual Desktop tenant where the issue was reported.
+3. Confirm connection to the correct tenant with **Get-RdsTenant.**
+4. Using **Get-RdsHostPool** and **Get-RdsSessionHost** cmdlets, confirm that troubleshooting is being done on the correct host pool.
+5. Execute the command below to get a list of all failed activities of type connection for the specified time window:
 
     ```PowerShell
      Get-RdsDiagnosticActivities -TenantName <TenantName> -username <UPN> -StartTime
      "11/21/2018 1:07:03 PM" -EndTime "11/21/2018 1:27:03 PM" -Outcome Failure -ActivityType Connection
     ```
 
-6. Voer de volgende opdracht uit met behulp van de **ActivityId** uit de vorige uitvoer van de cmdlet:
+6. Using the **ActivityId** from the previous cmdlet output, run the command below:
 
     ```PowerShell
-    (Get-RdsDiagnosticActivities -TenantName $tenant -ActivityId <ActivityId> -Detailed).Errors
+    (Get-RdsDiagnosticActivities -TenantName <TenantName> -ActivityId <ActivityId> -Detailed).Errors
     ```
 
-7. De opdracht produceert uitvoer zoals hieronder wordt weer gegeven. Gebruik **ErrorCodeSymbolic** en **errorMessage** om de hoofd oorzaak op te lossen.
+7. The command produces output similar to the output shown below. Use **ErrorCodeSymbolic** and **ErrorMessage** to troubleshoot the root cause.
 
     ```PowerShell
     ErrorSource       : <Source>
@@ -135,47 +135,47 @@ Volg deze algemene instructies voor het oplossen van problemen met fout codes vo
     Time              : <Timestampt>
     ```
 
-### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Fout: O_ADD_USER_TO_GROUP_FAILED/kan gebruiker = ≤ username ≥ aan groep = Extern bureaublad gebruikers niet toevoegen. Reden: Win32. ERROR_NO_SUCH_MEMBER
+### <a name="error-o_add_user_to_group_failed--failed-to-add-user--username-to-group--remote-desktop-users-reason-win32error_no_such_member"></a>Error: O_ADD_USER_TO_GROUP_FAILED / Failed to add user = ≤username≥ to group = Remote Desktop Users. Reason: Win32.ERROR_NO_SUCH_MEMBER
 
-**Oorzaak:** De VM is niet toegevoegd aan het domein waarin het gebruikers object zich bevindt.
+**Cause:** VM has not been joined to the domain where user object is.
 
-**Oplossen:** Voeg de virtuele machine toe aan het juiste domein. Zie [een virtuele Windows Server-machine toevoegen aan een beheerd domein](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
+**Fix:** Add VM to the correct domain. See [Join a Windows Server virtual machine to a managed domain](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 
-### <a name="error-nslookup-cannot-resolve-the-name"></a>Fout: de naam kan niet worden omgezet met nslookup
+### <a name="error-nslookup-cannot-resolve-the-name"></a>Error: Nslookup cannot resolve the name
 
-**Oorzaak:** Netwerk problemen of-storingen.
+**Cause:** Network issues or outages.
 
-**Oplossen:** Contact opnemen met netwerk ondersteuning
+**Fix:** Contact network support
 
-### <a name="error-connectionfailedclientprotocolerror"></a>Fout: ConnectionFailedClientProtocolError
+### <a name="error-connectionfailedclientprotocolerror"></a>Error: ConnectionFailedClientProtocolError
 
-**Oorzaak:** Vm's waarmee de gebruiker probeert verbinding te maken, zijn geen lid van een domein.
+**Cause:** VMs that user is attempting to connect to are not domain joined.
 
-**Oplossen:** Voeg alle virtuele machines die deel uitmaken van een hostgroep toe aan de domein controller.
+**Fix:** Join all VMs that are part of a host pool to the domain controller.
 
-### <a name="error-connectionfailedusersidinformationmismatch"></a>Fout: ConnectionFailedUserSIDInformationMismatch
-**Oorzaak:** De SID van het Azure Active Directory (AD)-token van de gebruiker komt niet overeen met de SID die door de domein controller wordt geretourneerd bij het inschakelen van de gebruiker voor externe aanmelding. Deze fout treedt doorgaans op wanneer u zich probeert aan te melden bij een Azure Active Directory Domain Services-omgeving (Azure AD DS) met een gebruiker die oorspronkelijk is gebrond van een Windows Server AD.
+### <a name="error-connectionfailedusersidinformationmismatch"></a>Error: ConnectionFailedUserSIDInformationMismatch
+**Cause:** The SID from the user's Azure Active Directory (AD) token doesn't match the SID returned by the domain controller when attempting to enable the user for remote sign in. This error typically happens when attempting to sign in to an Azure Active Directory Domain Services (Azure AD DS) environment with a user originally sourced from a Windows Server AD.
 
-**Oplossen:** Dit scenario wordt op dit moment niet ondersteund. Alleen gebruikers die zijn afgeleid van Azure Active Directory kunnen zich aanmelden bij virtuele Windows-bureau blad-Vm's die zijn verbonden met Azure AD DS.
+**Fix:** This scenario isn't supported at this time. Only users sourced from Azure Active Directory can sign in to Windows Virtual Desktop VMs connected to Azure AD DS.
 
-## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>Gebruiker maakt verbinding, maar er wordt niets weer gegeven (geen feed)
+## <a name="user-connects-but-nothing-is-displayed-no-feed"></a>User connects but nothing is displayed (no feed)
 
-Een gebruiker kan Extern bureaublad-clients starten en kan worden geverifieerd, maar de gebruiker ziet geen pictogrammen in de feed voor webdetectie.
+A user can start Remote Desktop clients and is able to authenticate, however the user doesn't see any icons in the web discovery feed.
 
-Controleer of de gebruiker die de problemen rapporteert, is toegewezen aan toepassings groepen met behulp van deze opdracht regel:
+Confirm that the user reporting the issues has been assigned to application groups by using this command line:
 
 ```PowerShell
 Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
 ```
 
-Controleer of de gebruiker zich aanmeldt met de juiste referenties.
+Confirm that the user is logging in with the correct credentials.
 
-Als de WebClient wordt gebruikt, controleert u of er geen problemen met de referenties in de cache zijn.
+If the web client is being used, confirm that there are no cached credentials issues.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [probleemoplossings overzicht, feedback en ondersteuning](troubleshoot-set-up-overview.md)voor een overzicht van het oplossen van problemen met het virtuele bureau blad van Windows en de escalatie trajecten.
-- Zie [Tenant en hostgroep maken](troubleshoot-set-up-issues.md)voor informatie over het oplossen van problemen bij het maken van een Tenant en een hostgroep in een virtueel-bureaublad omgeving van Windows.
-- Zie voor het oplossen van problemen bij het configureren van een virtuele machine (VM) in Windows virtueel bureau blad de [virtuele machine configuratie](troubleshoot-vm-configuration.md)van de host.
-- Zie [Windows Virtual Desktop Power shell](troubleshoot-powershell.md)(Engelstalig) voor informatie over het oplossen van problemen met het gebruik van Power shell met Windows virtueel bureau blad.
-- Zie [zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot)om de zelf studie voor problemen oplossen op te lossen.
+- For an overview on troubleshooting Windows Virtual Desktop and the escalation tracks, see [Troubleshooting overview, feedback, and support](troubleshoot-set-up-overview.md).
+- To troubleshoot issues while creating a tenant and host pool in a Windows Virtual Desktop environment, see [Tenant and host pool creation](troubleshoot-set-up-issues.md).
+- To troubleshoot issues while configuring a virtual machine (VM) in Windows Virtual Desktop, see [Session host virtual machine configuration](troubleshoot-vm-configuration.md).
+- To troubleshoot issues when using PowerShell with Windows Virtual Desktop, see [Windows Virtual Desktop PowerShell](troubleshoot-powershell.md).
+- To go through a troubleshoot tutorial, see [Tutorial: Troubleshoot Resource Manager template deployments](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-tutorial-troubleshoot).

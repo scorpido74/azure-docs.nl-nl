@@ -1,5 +1,5 @@
 ---
-title: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB
+title: Tutorial`:` Use a managed identity to access Azure Cosmos DB - Windows - Azure AD
 description: Een zelfstudie die u helpt bij het gebruiken van een door het systeem toegewezen beheerde identiteit op een Windows-VM voor toegang tot Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4e5858fe392629d61b3f0b8833db3af959a16a8b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 97a89e87dad1e940f30e255a919f3f2cf25f21d7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66227686"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224251"
 ---
-# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: Een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB
+# <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Zelfstudie: een door het Windows-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Cosmos DB
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
@@ -49,7 +49,7 @@ Maak een Cosmos DB-account als u er nog geen hebt. U kunt deze stap overslaan en
 3. Voer een **Id** in voor het Cosmos DB-account, die u later zult gebruiken.  
 4. **API** moet worden ingesteld op 'SQL'. De aanpak die in deze zelfstudie wordt beschreven, kan worden gebruikt met de andere beschikbare API-typen, maar de stappen in deze zelfstudie zijn voor de SQL-API.
 5. Zorg ervoor dat de waarden van **Abonnement** en **Resourcegroep** overeenkomen met de waarden die u hebt opgegeven bij het maken van de virtuele machine in de vorige stap.  Selecteer een **Locatie** waar Cosmos DB beschikbaar is.
-6. Klik op **Create**.
+6. Klik op **Maken**.
 
 ## <a name="create-a-collection-in-the-cosmos-db-account"></a>Een verzameling maken in het Cosmos DB-account
 

@@ -1,22 +1,15 @@
 ---
 title: Uw eerste functie maken in Azure met behulp van Visual Studio Code
 description: Maak een eenvoudige HTTP-geactiveerde functie en publiceer deze op Azure met behulp van de Azure Functions-extensie in Visual Studio Code.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: azure-functies, functies, gebeurtenisverwerking, berekenen, architectuur zonder server
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 06/25/2019
-ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fbde3c939a23e4023c0403c27433717a11762b08
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: b89e6d75cd82a65dfbce29b949c4b7d463582bb9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622062"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230801"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>Uw eerste functie maken met Visual Studio Code
 
@@ -26,7 +19,7 @@ In dit artikel leert u hoe u de [Azure Functions extension for Visual Studio Cod
 
 ![Azure-functiecode in een Visual Studio-project](./media/functions-create-first-function-vs-code/functions-vscode-intro.png)
 
-De uitbrei ding C#biedt momenteel ondersteuning voor Java script-, Java-en python-functies. De stappen in dit artikel en het artikel die volgen alleen Java script en C# functions ondersteunen. Zie voor meer informatie over het gebruik van Visual Studio code voor het maken en publiceren van python-functies [serverloze Azure functions in python maken en implementeren met Visual Studio code](/azure/python/tutorial-vs-code-serverless-python-01). Zie [uw eerste Power shell-functie maken in azure](functions-create-first-function-powershell.md)voor meer informatie over het gebruik van Visual Studio code voor het maken en publiceren van Power shell-functies. 
+The extension currently supports C#, JavaScript, Java, and Python functions. The steps in this article and the article that follows support only JavaScript and C# functions. To learn how to use Visual Studio Code to create and publish Python functions, see [Create and deploy serverless Azure Functions in Python with Visual Studio Code](/azure/python/tutorial-vs-code-serverless-python-01). To learn how to use Visual Studio Code to create and publish PowerShell functions, see [Create your first PowerShell function in Azure](functions-create-first-function-powershell.md). 
 
 De extensie is momenteel beschikbaar als preview-product. Zie de uitbreidingspagina [Azure Functions extension for Visual Studio Code] (Azure Functions-extensie voor Visual Studio Code) voor meer informatie.
 
@@ -36,16 +29,16 @@ Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 * Installeer [Visual Studio Code](https://code.visualstudio.com/) op een van de [ondersteunde platforms](https://code.visualstudio.com/docs/supporting/requirements#_platforms).
 
-* Installeer versie 2. x van de [Azure functions core tools](functions-run-local.md#v2).
+* Install version 2.x of the [Azure Functions Core Tools](functions-run-local.md#v2).
 
 * Installeer de specifieke vereisten voor de taal van uw keuze:
 
     | Taal | Vereiste |
     | -------- | --------- |
-    | **C#** | [C#switch](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
-    | **JavaScript** | [Node. js](https://nodejs.org/) -<sup>*</sup> | 
+    | **C#** | [C# extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)  |
+    | **JavaScript** | [Node.js](https://nodejs.org/)<sup>*</sup> | 
  
-    <sup>*</sup> Actieve LTS en onderhoud LTS-versies (8.11.1 en 10.14.1 aanbevolen).
+    <sup>*</sup>Active LTS and Maintenance LTS versions (8.11.1 and 10.14.1 recommended).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -61,9 +54,9 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
-## <a name="run-the-function-in-azure"></a>De functie uitvoeren in azure
+## <a name="run-the-function-in-azure"></a>Run the function in Azure
 
-1. Kopieer de URL van de HTTP-trigger vanuit het deelvenster **Output** (Uitvoer). Deze URL bevat de functie sleutel, die wordt door gegeven aan de `code` query parameter. Zorg ervoor dat u net als eerder de queryreeks `?name=<yourname>` toevoegt aan het eind van deze URL en de aanvraag uitvoert.
+1. Kopieer de URL van de HTTP-trigger vanuit het deelvenster **Output** (Uitvoer). This URL includes the function key, which is passed to the `code` query parameter. Zorg ervoor dat u net als eerder de queryreeks `?name=<yourname>` toevoegt aan het eind van deze URL en de aanvraag uitvoert.
 
     De URL die uw HTTP-geactiveerde functie aanroept, moet de volgende indeling hebben:
 
@@ -75,10 +68,10 @@ Nadat u hebt gecontroleerd of de functie correct wordt uitgevoerd op uw lokale c
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U hebt een functie-app met een eenvoudige HTTP-geactiveerde functie gemaakt in Visual Studio Code. In het volgende artikel vouwt u die functie uit door een uitvoer binding toe te voegen. Deze binding schrijft de teken reeks van de HTTP-aanvraag naar een bericht in een Azure Queue Storage-wachtrij. In het volgende artikel ziet u ook hoe u deze nieuwe Azure-resources kunt opschonen door de resource groep die u hebt gemaakt, te verwijderen.
+U hebt een functie-app met een eenvoudige HTTP-geactiveerde functie gemaakt in Visual Studio Code. In the next article, you expand that function by adding an output binding. This binding writes the string from the HTTP request to a message in an Azure Queue Storage queue. The next article also shows you how to clean up these new Azure resources by removing the resource group you created.
 
 > [!div class="nextstepaction"]
-> [Een Azure Storage wachtrij binding aan uw functie toevoegen](functions-add-output-binding-storage-queue-vs-code.md)
+> [Add an Azure Storage queue binding to your function](functions-add-output-binding-storage-queue-vs-code.md)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions extension for Visual Studio Code]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions (Azure Functions-extensie voor Visual Studio Code)

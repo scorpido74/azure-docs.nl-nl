@@ -1,7 +1,7 @@
 ---
-title: 'Ontwerp functie: voor beeld van krediet risico voors pellen'
+title: 'Designer: Predict credit risk example'
 titleSuffix: Azure Machine Learning
-description: Bouw een classificatie en gebruik aangepaste python-scripts om het krediet risico te voors pellen met behulp van Azure Machine Learning Designer.
+description: Build a classifier and use custom Python scripts to predict credit risk using Azure Machine Learning designer.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,68 +10,68 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 0bf69683fc5afe24e0e7977b05892c3c10b0cd46
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: f174ed995b043ef99d22a0a292e9b5be394029a5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196091"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214235"
 ---
-# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Een classificatie bouwen & python-scripts gebruiken om het krediet risico te voors pellen met behulp van Azure Machine Learning Designer
+# <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Build a classifier & use Python scripts to predict credit risk using Azure Machine Learning designer
 
-**Voor beeld van Designer (preview) 4**
+**Designer (preview) sample 4**
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-In dit artikel wordt beschreven hoe u een complexe machine learning pijp lijn bouwt met behulp van de ontwerp functie (preview). U leert hoe u aangepaste logica implementeert met behulp van python-scripts en meerdere modellen vergelijkt om de beste optie te kiezen.
+This article shows you how to build a complex machine learning pipeline using the designer (preview). You'll learn how to implement custom logic using Python scripts and compare multiple models to choose the best option.
 
-In dit voor beeld wordt een classificatie gebruikt om het krediet risico te voors pellen met behulp van informatie over krediet aanvragen, zoals krediet geschiedenis, leeftijd en aantal credit cards. U kunt echter de concepten in dit artikel Toep assen om uw eigen machine learning problemen op te lossen.
+This sample trains a classifier to predict credit risk using credit application information such as credit history, age, and number of credit cards. However, you can apply the concepts in this article to tackle your own machine learning problems.
 
-Hier is de voltooide grafiek voor deze pijp lijn:
+Here's the completed graph for this pipeline:
 
-[Grafiek van de pijp lijn ![](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="prerequisites"></a>Vereisten
 
 [!INCLUDE [aml-ui-prereq](../../../includes/aml-ui-prereq.md)]
 
-4. Klik op voor beeld 4 om het te openen.
+4. Click sample 4 to open it.
 
 ## <a name="data"></a>Gegevens
 
-In dit voor beeld wordt gebruikgemaakt van de Duitse creditcard gegevensset uit de UC Irvine-opslag plaats. Het bevat 1.000 voor beelden met 20 functies en één label. Elk voor beeld vertegenwoordigt een persoon. De 20 functies omvatten de numerieke en categorische-functies. Zie de [website van icb's](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29)voor meer informatie over de gegevensset. De laatste kolom is het label, dat het krediet risico aanduidt en slechts twee mogelijke waarden heeft: hoog credit risico = 2 en laag krediet risico = 1.
+This sample uses the German Credit Card dataset from the UC Irvine repository. It contains 1,000 samples with 20 features and one label. Each sample represents a person. The 20 features include numerical and categorical features. For more information about the dataset, see the [UCI website](https://archive.ics.uci.edu/ml/datasets/Statlog+%28German+Credit+Data%29). The last column is the label, which denotes the credit risk and has only two possible values: high credit risk = 2, and low credit risk = 1.
 
-## <a name="pipeline-summary"></a>Pijplijn overzicht
+## <a name="pipeline-summary"></a>Pipeline summary
 
-In deze pijp lijn vergelijkt u twee verschillende benaderingen voor het genereren van modellen om dit probleem op te lossen:
+In this pipeline, you compare two different approaches for generating models to solve this problem:
 
-- Training met de oorspronkelijke gegevensset.
-- Training met een gerepliceerde gegevensset.
+- Training with the original dataset.
+- Training with a replicated dataset.
 
-Met beide benaderingen evalueert u de modellen met behulp van de test gegevensset met replicatie om ervoor te zorgen dat de resultaten worden uitgelijnd met de functie cost. Test twee classificaties met beide benaderingen: **twee klasse-ondersteunings vector machines** en **twee klassen met een Geboostte beslissings structuur**.
+With both approaches, you evaluate the models by using the test dataset with replication to ensure that results are aligned with the cost function. Test two classifiers with both approaches: **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
 
-De kosten voor een slechtere classificatie van een voor beeld met een laag risico zijn 1 en de kosten voor een slechtere voor beeld van een hoog risico zijn 5. We gebruiken een **python-script** module voor het uitvoeren van een account voor deze niet-geclassificeerde kosten.
+The cost of misclassifying a low-risk example as high is 1, and the cost of misclassifying a high-risk example as low is 5. We use an **Execute Python Script** module to account for this misclassification cost.
 
-Hier volgt de grafiek van de pijp lijn:
+Here's the graph of the pipeline:
 
-[Grafiek van de pijp lijn ![](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
+[![Graph of the pipeline](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png)](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/graph.png#lightbox)
 
 ## <a name="data-processing"></a>Gegevensverwerking
 
-Begin met het toevoegen van de **meta gegevens editor** module om kolom namen toe te voegen om de standaard kolom namen te vervangen door meer herken bare namen die zijn opgehaald uit de beschrijving van de gegevensset op de ICB-site. Geef de nieuwe kolom namen op als door komma's gescheiden waarden in het veld **nieuwe kolom** naam van de **meta gegevens editor**.
+Start by using the **Metadata Editor** module to add column names to replace the default column names with more meaningful names, obtained from the dataset description on the UCI site. Provide the new column names as comma-separated values in the **New column** name field of the **Metadata Editor**.
 
-Genereer vervolgens de trainings-en test sets die worden gebruikt voor het ontwikkelen van het risico Voorspellings model. Splits de oorspronkelijke gegevensset in trainings-en test sets van dezelfde grootte met behulp van de module **Split data** . Als u sets van gelijke grootte wilt maken, stelt u het **gedeelte van de rijen in de eerste optie voor de uitvoer gegevensset in** op 0,7.
+Next, generate the training and test sets used to develop the risk prediction model. Split the original dataset into training and test sets of the same size by using the **Split Data** module. To create sets of equal size, set the **Fraction of rows in the first output dataset** option to 0.7.
 
-### <a name="generate-the-new-dataset"></a>De nieuwe gegevensset genereren
+### <a name="generate-the-new-dataset"></a>Generate the new dataset
 
-Omdat de kosten voor underestimating-risico hoog zijn, stelt u de kosten voor een onzekere classificatie in, zoals:
+Because the cost of underestimating risk is high, set the cost of misclassification like this:
 
-- Voor scenario's met een hoog risico die verkeerd zijn geclassificeerd als laag risico: 5
-- Voor scenario's met een laag risico die zijn geclassificeerd als hoog risico: 1
+- For high-risk cases misclassified as low risk: 5
+- For low-risk cases misclassified as high risk: 1
 
-Genereer een nieuwe gegevensset om deze kosten functie weer te geven. In de nieuwe gegevensset wordt elk voor beeld met een hoog risico vijf keer gerepliceerd, maar het aantal voor beelden met een laag risico wordt niet gewijzigd. Splits de gegevens in trainingen en test gegevens sets vóór replicatie om te voor komen dat dezelfde rij in beide sets wordt weer gegeven.
+To reflect this cost function, generate a new dataset. In the new dataset, each high-risk example is replicated five times, but the number of low-risk examples doesn't change. Split the data into training and test datasets before replication to prevent the same row from being in both sets.
 
-Als u de gegevens met een hoog risico wilt repliceren, plaatst u deze python-code in een script module voor het uitvoeren van een **python** :
+To replicate the high-risk data, put this Python code into an **Execute Python Script** module:
 
 ```Python
 import pandas as pd
@@ -85,42 +85,42 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
     return result,
 ```
 
-De **script** module voor het uitvoeren van python repliceert zowel de gegevens sets training als test.
+The **Execute Python Script** module replicates both the training and test datasets.
 
 ### <a name="feature-engineering"></a>Functie-engineering
 
-Voor de **computer algoritme met twee klassen ondersteuning zijn** genormaliseerde gegevens vereist. Gebruik daarom de module **normaliseren gegevens** om de bereiken van alle numerieke functies te normaliseren met een `tanh` trans formatie. Met een `tanh` trans formatie worden alle numerieke functies geconverteerd naar waarden binnen een bereik van 0 tot en met 1, terwijl de algehele verdeling van waarden wordt behouden.
+The **Two-Class Support Vector Machine** algorithm requires normalized data. So use the **Normalize Data** module to normalize the ranges of all numeric features with a `tanh` transformation. A `tanh` transformation converts all numeric features to values within a range of 0 and 1 while preserving the overall distribution of values.
 
-De **ondersteunings vector-machine module met twee klassen ondersteunt** teken reeks functies en converteert deze naar categorische-functies en vervolgens naar binaire functies met de waarde nul of een. U hoeft deze functies dus niet te normaliseren.
+The **Two-Class Support Vector Machine** module handles string features, converting them to categorical features and then to binary features with a value of zero or one. So you don't need to normalize these features.
 
 ## <a name="models"></a>Modellen
 
-Omdat u twee classificaties hebt toegepast, een SVM ( **Support Vector machine) met twee klassen** en een **Geboostte beslissings structuur van twee klassen**, en twee gegevens sets, genereert u een totaal van vier modellen:
+Because you applied two classifiers, **Two-Class Support Vector Machine** (SVM) and **Two-Class Boosted Decision Tree**, and two datasets, you generate a total of four models:
 
-- SVM is getraind met de oorspronkelijke gegevens.
-- SVM heeft getraind met gerepliceerde gegevens.
-- Gestimuleerde beslissings structuur die is getraind met de oorspronkelijke gegevens.
-- Gestimuleerde beslissings structuur die is getraind met gerepliceerde gegevens.
+- SVM trained with original data.
+- SVM trained with replicated data.
+- Boosted Decision Tree trained with original data.
+- Boosted Decision Tree trained with replicated data.
 
-In dit voor beeld wordt de standaard data Science-werk stroom gebruikt om de modellen te maken, te trainen en te testen:
+This sample uses the standard data science workflow to create, train, and test the models:
 
-1. Initialiseer de leer algoritmen met behulp van een **Vector machine met twee klassen** en een **Geboostte beslissings structuur van twee klassen**.
-1. **Train model** gebruiken om het algoritme toe te passen op de gegevens en het daad werkelijke model te maken.
-1. Gebruik het **score model** voor het produceren van scores met behulp van de test voorbeelden.
+1. Initialize the learning algorithms, using **Two-Class Support Vector Machine** and **Two-Class Boosted Decision Tree**.
+1. Use **Train Model** to apply the algorithm to the data and create the actual model.
+1. Use **Score Model** to produce scores by using the test examples.
 
-Het volgende diagram toont een deel van deze pijp lijn, waarin de oorspronkelijke en gerepliceerde trainings sets worden gebruikt om twee verschillende SVM-modellen te trainen. **Train model** is verbonden met de Trainingsset en het **score model** is verbonden met de testset.
+The following diagram shows a portion of this pipeline, in which the original and replicated training sets are used to train two different SVM models. **Train Model** is connected to the training set, and **Score Model** is connected to the test set.
 
-![Pipeline-grafiek](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
+![Pipeline graph](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/score-part.png)
 
-In de evaluatie fase van de pijp lijn berekent u de nauw keurigheid van elk van de vier modellen. Voor deze pijp lijn gebruikt u **model evalueren** om voor beelden te vergelijken met dezelfde indelings kosten.
+In the evaluation stage of the pipeline, you compute the accuracy of each of the four models. For this pipeline, use **Evaluate Model** to compare examples that have the same misclassification cost.
 
-In de module **Evaluate model** kunnen de prestatie gegevens voor Maxi maal twee gescoorde modellen worden berekend. U kunt dus één exemplaar van het **Evaluate-model** gebruiken om de twee SVM-modellen en een ander exemplaar van het **Evalueer model** te evalueren om de twee versterkte beslissings structuur modellen te evalueren.
+The **Evaluate Model** module can compute the performance metrics for as many as two scored models. So you can use one instance of **Evaluate Model** to evaluate the two SVM models and another instance of **Evaluate Model** to evaluate the two Boosted Decision Tree models.
 
-U ziet dat de gerepliceerde test-gegevensset wordt gebruikt als invoer voor het **score model**. Met andere woorden, de uiteindelijke nauw keurige scores zijn de kosten voor het ophalen van de labels fout.
+Notice that the replicated test dataset is used as the input for **Score Model**. In other words, the final accuracy scores include the cost for getting the labels wrong.
 
-## <a name="combine-multiple-results"></a>Meerdere resultaten combi neren
+## <a name="combine-multiple-results"></a>Combine multiple results
 
-De module **Evaluate model** produceert een tabel met één rij die verschillende metrische gegevens bevat. Als u één set nauw keurige resultaten wilt maken, gebruiken we eerst **rijen toevoegen** om de resultaten te combi neren in één tabel. Vervolgens gebruiken we het volgende python-script in de **script module python uitvoeren** om de model naam en de Oefen benadering toe te voegen voor elke rij in de tabel met resultaten:
+The **Evaluate Model** module produces a table with a single row that contains various metrics. To create a single set of accuracy results, we first use **Add Rows** to combine the results into a single table. We then use the following Python script in the **Execute Python Script** module to add the model name and training approach for each row in the table of results:
 
 ```Python
 import pandas as pd
@@ -142,17 +142,17 @@ def azureml_main(dataframe1 = None, dataframe2 = None):
 
 ## <a name="results"></a>Resultaten
 
-Als u de resultaten van de pijp lijn wilt weer geven, klikt u met de rechter muisknop op de Visuale-uitvoer van de laatste **select columns in dataset** -module.
+To view the results of the pipeline, you can right-click the Visualize output of the last **Select Columns in Dataset** module.
 
-![Uitvoer visualiseren](media/how-to-ui-sample-classification-predict-credit-risk-cost-sensitive/result.png)
+![Visualize output](media/how-to-designer-sample-classification-predict-credit-risk-cost-sensitive/result.png)
 
-De eerste kolom bevat het machine learning algoritme dat is gebruikt voor het genereren van het model.
+The first column lists the machine learning algorithm used to generate the model.
 
-De tweede kolom geeft het type van de Trainingsset aan.
+The second column indicates the type of the training set.
 
-De derde kolom bevat de waarde voor de kosten gevoelige nauw keurigheid.
+The third column contains the cost-sensitive accuracy value.
 
-Vanuit deze resultaten kunt u zien dat de beste nauw keurigheid wordt geboden door het model dat is gemaakt met **twee klassen Support Vector machine** en getraind in de gegevensset van de gerepliceerde training.
+From these results, you can see that the best accuracy is provided by the model that was created with **Two-Class Support Vector Machine** and trained on the replicated training dataset.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -160,11 +160,11 @@ Vanuit deze resultaten kunt u zien dat de beste nauw keurigheid wordt geboden do
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de andere voor beelden die beschikbaar zijn voor de ontwerp functie:
+Explore the other samples available for the designer:
 
-- [Voor beeld 1-regressie: de prijs van een auto voors pellen](how-to-designer-sample-regression-automobile-price-basic.md)
-- [Voor beeld 2-regressie: vergelijkings algoritmen voor de voor spelling van prijzen voor auto Mobile](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
-- [Voor beeld 3: classificatie met functie selectie: inkomen voor spelling](how-to-designer-sample-classification-predict-income.md)
-- [Voor beeld 5-classificatie: voor spel verloop](how-to-designer-sample-classification-churn.md)
-- [Voor beeld 6: classificatie: voor spel vertraging van de vlucht](how-to-designer-sample-classification-flight-delay.md)
-- [Voor beeld 7-tekst classificatie: Wikipedia SP 500-gegevensset](how-to-designer-sample-text-classification.md)
+- [Sample 1 - Regression: Predict an automobile's price](how-to-designer-sample-regression-automobile-price-basic.md)
+- [Sample 2 - Regression: Compare algorithms for automobile price prediction](how-to-designer-sample-regression-automobile-price-compare-algorithms.md)
+- [Sample 3 - Classification with feature selection: Income Prediction](how-to-designer-sample-classification-predict-income.md)
+- [Sample 5 - Classification: Predict churn](how-to-designer-sample-classification-churn.md)
+- [Sample 6 - Classification: Predict flight delays](how-to-designer-sample-classification-flight-delay.md)
+- [Sample 7 - Text Classification: Wikipedia SP 500 Dataset](how-to-designer-sample-text-classification.md)

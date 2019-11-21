@@ -1,6 +1,6 @@
 ---
-title: Uw verbonden apparaten beheren in de portal van mijn account-Azure AD
-description: Uw verbonden apparaten weer geven en uitschakelen op de pagina apparaten van de portal mijn account.
+title: Manage your connected devices from the My Account portal - Azure AD
+description: How to view and disable devices connected to your work or school account from the Devices page of the My Account portal.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,64 +12,64 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0eb691abaabf09ae8f89354e1fdb6f18cf8e5b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73804258"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233220"
 ---
-# <a name="manage-your-connected-devices-from-the-my-account-portal"></a>Uw verbonden apparaten beheren via de portal van mijn account
+# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Manage devices connected to your work or school account from the Devices page
 
-Op de pagina **apparaten** van de portal van **Mijn account** kunt u het volgende doen:
+From the **Devices** page of the **My Account** portal, you can:
 
-- Bekijk de apparaten die zijn verbonden met uw werk-of school account.
+- View your work or school account-connected devices.
 
-- Schakel alle apparaten uit die u niet meer bezit, verloren of die zijn gestolen.
+- Disable any devices you no longer own, have lost, or that have been stolen.
 
-## <a name="view-your-connected-devices"></a>Uw verbonden apparaten weer geven
+## <a name="view-your-connected-devices"></a>View your connected devices
 
-1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
+1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
 
-2. Selecteer **apparaten** in het navigatie deel venster links of selecteer de koppeling **apparaten beheren** in het blok **apparaten** .
+2. Select **Devices** from the left navigation pane or select the **Manage devices** link from the **Devices** block.
 
-    ![Pagina Mijn account, koppelingen met gemarkeerde apparaten weer geven](media/my-account-portal/my-account-portal-devices.png)
+    ![My Account page, showing highlighted Devices links](media/my-account-portal/my-account-portal-devices.png)
 
-3. Controleer de informatie voor uw verbonden apparaten en zorg ervoor dat u ze allemaal herkent.
+3. Review the information for your connected devices, making sure you recognize them all.
 
-    ![Pagina apparaat, met verbonden apparaten](media/my-account-portal/my-account-portal-devices-page.png)
+    ![Device page, showing connected devices](media/my-account-portal/my-account-portal-devices-page.png)
 
-## <a name="disable-a-device"></a>Een apparaat uitschakelen
+## <a name="disable-a-device"></a>Disable a device
 
-U kunt alle verbonden apparaten op elk gewenst moment uitschakelen. Dit is vooral belang rijk als een apparaat niet bekend is bij u of als een apparaat is verloren of gestolen. Wanneer u een apparaat uitschakelt, kan het niet meer worden geverifieerd door uw organisatie en heeft deze geen toegang tot de resources van uw organisatie.
+You can disable any of your connected devices at any time. This is especially important if a device isn't familiar to you or if a device is lost or stolen. After you disable a device, it can no longer be authenticated by your organization, and will be unable to access any of your organization's resources.
 
 >[!Important]
->Als u per ongeluk een apparaat uitschakelt, is het niet meer mogelijk om het te ongedaan te maken. Neem contact op met de beheerder van uw organisatie om het apparaat opnieuw toe te voegen.
+>If you disable a device by mistake, there's no way to undo it. You'll have to contact your organization's administrator to add the device again.
 
-1. Selecteer **uitschakelen** in het apparaat dat u wilt verwijderen.
+1. Select **Disable** from the device you want to remove.
 
-    ![Pagina apparaat met gemarkeerde koppeling uitschakelen](media/my-account-portal/my-account-portal-devices-disable.png)
+    ![Device page with highlighted Disable link](media/my-account-portal/my-account-portal-devices-disable.png)
 
-2. Selecteer **Ja** om te bevestigen dat u het apparaat wilt uitschakelen.
+2. Select **Yes** to confirm you want to disable the device.
 
-## <a name="view-a-bitlocker-key"></a>Een BitLocker-sleutel weer geven
+## <a name="view-a-bitlocker-key"></a>View a BitLocker key
 
-Als u uw apparaat hebt vergrendeld of een fatale fout hebt, kunt u naar een ander apparaat gaan en uw BitLocker-sleutel weer geven in de portal van **Mijn account** .
+If you're locked out of your device or have a fatal error, you can go to another device and view your BitLocker key from the **My Account** portal.
 
-1. Op een ander apparaat, waar u niet bent vergrendeld, gaat u naar de pagina **apparaten** van de portal van **Mijn account** .
+1. On another device, where you're not locked out, go to the **Devices** page of the **My Account** portal.
 
-    ![Pagina apparaat met BitLocker-sleutel optie](media/my-account-portal/my-account-portal-devices-bitlocker.png)
+    ![Device page with BitLocker key option](media/my-account-portal/my-account-portal-devices-bitlocker.png)
 
-2. Selecteer **BitLocker-sleutels weer geven** voor het vergrendelde apparaat en noteer de BitLocker-sleutel voor het vergrendelde apparaat.
+2. Select **View Bitlocker Keys** for the locked out device and write down the BitLocker key for your locked device.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nadat u de verbonden apparaten hebt weer gegeven, kunt u het volgende doen:
+After viewing your connected devices, you can:
 
-- Selecteer deze optie om uw [beveiligings gegevens](user-help-security-info-overview.md)weer te geven of te beheren.
+- Select to view or manage your [security info](user-help-security-info-overview.md).
 
-- Uw [organisaties](my-account-portal-organizations-page.md)weer geven en beheren.
+- View and manage your [organizations](my-account-portal-organizations-page.md).
 
-- Bekijk uw [aanmeldings activiteit](my-account-portal-sign-ins-page.md).
+- View your [sign-in activity](my-account-portal-sign-ins-page.md).
 
-- Bekijk hoe uw organisatie [gebruikmaakt van uw privacy-gerelateerde gegevens](my-account-portal-privacy-page.md).
+- View how your organization [uses your privacy-related data](my-account-portal-privacy-page.md).

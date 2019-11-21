@@ -1,75 +1,72 @@
 ---
-title: Implementatie met een nul-uitval tijd voor Durable Functions
-description: Meer informatie over het inschakelen van uw Durable Functions-indeling voor implementaties met een nul-uitval tijd.
-services: functions
+title: Zero-downtime deployment for Durable Functions
+description: Learn how to enable your Durable Functions orchestration for zero-downtime deployments.
 author: tsushi
-manager: gwallace
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/10/2019
 ms.author: azfuncdf
-ms.openlocfilehash: af19f8cdcc26d1459bc024f00b963f04bd8d763b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 8e12d58c0077084c181d111b0b017665b74b9157
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904047"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231259"
 ---
-# <a name="zero-downtime-deployment-for-durable-functions"></a>Implementatie met een nul-uitval tijd voor Durable Functions
+# <a name="zero-downtime-deployment-for-durable-functions"></a>Zero-downtime deployment for Durable Functions
 
-Het [betrouw bare uitvoerings model](durable-functions-checkpointing-and-replay.md) van Durable functions vereist dat indelingen deterministisch zijn, wat een extra uitdaging vormt om te overwegen wanneer u updates implementeert. Wanneer een implementatie wijzigingen bevat in de hand tekeningen of Orchestrator-logica van de activiteit functie, mislukken in vlucht indelings instanties. Deze situatie is met name een probleem voor exemplaren van langlopende orchestrator, die uren of werk dagen kunnen Voorst Ellen.
+The [reliable execution model](durable-functions-checkpointing-and-replay.md) of Durable Functions requires that orchestrations be deterministic, which creates an additional challenge to consider when you deploy updates. When a deployment contains changes to activity function signatures or orchestrator logic, in-flight orchestration instances fail. This situation is especially a problem for instances of long-running orchestrations, which might represent hours or days of work.
 
-Om te voor komen dat deze fouten zich voordoen, hebt u twee opties: 
-- Stel uw implementatie uit totdat alle actieve Orchestrator-exemplaren zijn voltooid.
-- Zorg ervoor dat alle actieve Orchestrator-instanties de bestaande versies van uw functies gebruiken. 
+To prevent these failures from happening, you have two options: 
+- Delay your deployment until all running orchestration instances have completed.
+- Make sure that any running orchestration instances use the existing versions of your functions. 
 
 > [!NOTE]
-> Dit artikel bevat richt lijnen voor functions-apps die zijn gericht op Durable Functions 1. x. Het account is niet bijgewerkt met de wijzigingen die zijn aangebracht in Durable Functions 2. x. Zie [Durable functions-versies](durable-functions-versions.md)voor meer informatie over de verschillen tussen extensie versies.
+> This article provides guidance for functions apps that target Durable Functions 1.x. It hasn't been updated to account for changes introduced in Durable Functions 2.x. For more information about the differences between extension versions, see [Durable Functions versions](durable-functions-versions.md).
 
-In het volgende diagram worden de drie belangrijkste strategieën vergeleken om een implementatie met een nul-uitval tijd voor Durable Functions te krijgen: 
+The following chart compares the three main strategies to achieve a zero-downtime deployment for Durable Functions: 
 
-| Strategie |  Wanneer gebruikt u dit? | -Professionals | Nadelen |
+| Strategie |  Wanneer gebruikt u dit? | Pros | Nadelen |
 | -------- | ------------ | ---- | ---- |
-| [Versie beheer](#versioning) |  Toepassingen die geen regel matige [Afbrekings wijzigingen](durable-functions-versioning.md) ondervinden. | Eenvoudig te implementeren. |  Verbeterde grootte van de functie-app in het geheugen en het aantal functies.<br/>Code duplicatie. |
-| [Status controle met sleuf](#status-check-with-slot) | Een systeem dat geen langlopende Orchestrations heeft die meer dan 24 uur of veelvuldig overlappende integraties bevat. | Eenvoudige code basis.<br/>Vereist geen extra functie-app-beheer. | Vereist extra opslag account of taak hub-beheer.<br/>Er is een tijds periode vereist wanneer er geen Orchestrations worden uitgevoerd. |
-| [Toepassings routering](#application-routing) | Een systeem dat geen tijd punten heeft wanneer er sprake is van niet-actieve orchestrator, zoals Peri Oden met een indeling die meer dan 24 uur of met regel matig overlappende integraties bevat. | Behandelt nieuwe versies van systemen met doorlopende integraties die wijzigingen hebben onderlopen. | Vereist een intelligente toepassings router.<br/>Kan Maxi maal het aantal functie-apps dat is toegestaan door uw abonnement. De standaard waarde is 100. |
+| [Versioning](#versioning) |  Applications that don't experience frequent [breaking changes.](durable-functions-versioning.md) | Simple to implement. |  Increased function app size in memory and number of functions.<br/>Code duplication. |
+| [Status check with slot](#status-check-with-slot) | A system that doesn't have long-running orchestrations lasting more than 24 hours or frequently overlapping orchestrations. | Simple code base.<br/>Doesn't require additional function app management. | Requires additional storage account or task hub management.<br/>Requires periods of time when no orchestrations are running. |
+| [Application routing](#application-routing) | A system that doesn't have periods of time when orchestrations aren't running, such as those time periods with orchestrations that last more than 24 hours or with frequently overlapping orchestrations. | Handles new versions of systems with continually running orchestrations that have breaking changes. | Requires an intelligent application router.<br/>Could max out the number of function apps allowed by your subscription. The default is 100. |
 
 ## <a name="versioning"></a>Versiebeheer
 
-Definieer nieuwe versies van uw functies en verlaat de oude versies in uw functie-app. Zoals u kunt zien in het diagram, wordt de versie van een functie onderdeel van de naam. Omdat eerdere versies van functies behouden blijven, kunnen in-Flight-indelings instanties blijven verwijzen. Ondertussen worden aanvragen voor nieuwe Orchestrator-instanties aangeroepen voor de meest recente versie, die de functie Orchestration client kan verwijzen van een app-instelling.
+Define new versions of your functions and leave the old versions in your function app. As you can see in the diagram, a function's version becomes part of its name. Because previous versions of functions are preserved, in-flight orchestration instances can continue to reference them. Meanwhile, requests for new orchestration instances call for the latest version, which your orchestration client function can reference from an app setting.
 
-![Strategie voor versie beheer](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
+![Versioning strategy](media/durable-functions-zero-downtime-deployment/versioning-strategy.png)
 
-In deze strategie moet elke functie worden gekopieerd en zijn verwijzingen naar andere functies moeten worden bijgewerkt. U kunt dit vereenvoudigen door een script te schrijven. Hier volgt een voor beeld van een [project](https://github.com/TsuyoshiUshio/DurableVersioning) met een migratie script.
+In this strategy, every function must be copied, and its references to other functions must be updated. You can make it easier by writing a script. Here's a [sample project](https://github.com/TsuyoshiUshio/DurableVersioning) with a migration script.
 
 >[!NOTE]
->Deze strategie maakt gebruik van implementatie sleuven om uitval tijd tijdens de implementatie te voor komen. Zie [Azure functions implementatie sleuven](../functions-deployment-slots.md)voor meer informatie over het maken en gebruiken van nieuwe implementatie sleuven.
+>This strategy uses deployment slots to avoid downtime during deployment. For more detailed information about how to create and use new deployment slots, see [Azure Functions deployment slots](../functions-deployment-slots.md).
 
-## <a name="status-check-with-slot"></a>Status controle met sleuf
+## <a name="status-check-with-slot"></a>Status check with slot
 
-Terwijl de huidige versie van de functie-app wordt uitgevoerd in uw productie sleuf, implementeert u de nieuwe versie van uw functie-app in uw staging-sleuf. Controleer voordat u uw productie-en staging-sleuven verwisselt of er exemplaren van de indeling worden uitgevoerd. Nadat alle indelings instanties zijn voltooid, kunt u de swap uitvoeren. Deze strategie werkt wanneer u voorspel bare Peri Oden hebt wanneer er geen indelings instanties in vlucht zijn. Dit is de beste benadering wanneer uw Orchestrations niet lang worden uitgevoerd en wanneer uw Orchestration-uitvoeringen niet vaak overlappen.
+While the current version of your function app is running in your production slot, deploy the new version of your function app to your staging slot. Before you swap your production and staging slots, check to see if there are any running orchestration instances. After all orchestration instances are complete, you can do the swap. This strategy works when you have predictable periods when no orchestration instances are in flight. This is the best approach when your orchestrations aren't long-running and when your orchestration executions don't frequently overlap.
 
-### <a name="function-app-configuration"></a>Configuratie van functie-app
+### <a name="function-app-configuration"></a>Function app configuration
 
-Gebruik de volgende procedure om dit scenario in te stellen.
+Use the following procedure to set up this scenario.
 
-1. [Voeg implementatie sleuven](../functions-deployment-slots.md#add-a-slot) toe aan uw functie-app voor fase ring en productie.
+1. [Add deployment slots](../functions-deployment-slots.md#add-a-slot) to your function app for staging and production.
 
-1. Stel voor elke sleuf de [toepassings instelling AzureWebJobsStorage](../functions-app-settings.md#azurewebjobsstorage) in op de Connection String van een gedeeld opslag account. Dit opslag account connection string wordt gebruikt door de Azure Functions-runtime. Dit account wordt gebruikt door de Azure Functions runtime en beheert de sleutels van de functie.
+1. For each slot, set the [AzureWebJobsStorage application setting](../functions-app-settings.md#azurewebjobsstorage) to the connection string of a shared storage account. This storage account connection string is used by the Azure Functions runtime. This account is used by the Azure Functions runtime and manages the function's keys.
 
-1. Maak voor elke sleuf een nieuwe app-instelling, bijvoorbeeld `DurableManagementStorage`. Stel de waarde ervan in op de connection string van verschillende opslag accounts. Deze opslag accounts worden gebruikt door de extensie Durable Functions voor [betrouw bare uitvoering](durable-functions-checkpointing-and-replay.md). Gebruik een afzonderlijk opslag account voor elke sleuf. Markeer deze instelling niet als een implementatie site-instelling.
+1. For each slot, create a new app setting, for example, `DurableManagementStorage`. Set its value to the connection string of different storage accounts. These storage accounts are used by the Durable Functions extension for [reliable execution](durable-functions-checkpointing-and-replay.md). Use a separate storage account for each slot. Don't mark this setting as a deployment slot setting.
 
-1. `azureStorageConnectionStringName` Geef in de [sectie durableTask van de host. JSON-bestand](durable-functions-bindings.md#hostjson-settings)van de functie de naam op van de app-instelling die u in stap 3 hebt gemaakt.
+1. In your function app's [host.json file's durableTask section](durable-functions-bindings.md#hostjson-settings), specify `azureStorageConnectionStringName` as the name of the app setting you created in step 3.
 
-In het volgende diagram ziet u de beschreven configuratie van implementatie sleuven en opslag accounts. In dit mogelijke scenario voor voor implementatie wordt versie 2 van een functie-app uitgevoerd in de productie omgeving, terwijl versie 1 in de faserings sleuf blijft.
+The following diagram shows the described configuration of deployment slots and storage accounts. In this potential predeployment scenario, version 2 of a function app is running in the production slot, while version 1 remains in the staging slot.
 
-![Implementatie sleuven en opslag accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
+![Deployment slots and storage accounts](media/durable-functions-zero-downtime-deployment/deployment-slot.png)
 
-### <a name="hostjson-examples"></a>voor beelden van host. json
+### <a name="hostjson-examples"></a>host.json examples
 
-De volgende JSON-fragmenten zijn voor beelden van de connection string instelling in het bestand *host. json* .
+The following JSON fragments are examples of the connection string setting in the *host.json* file.
 
-#### <a name="functions-20"></a>Functies 2,0
+#### <a name="functions-20"></a>Functions 2.0
 
 ```json
 {
@@ -92,9 +89,9 @@ De volgende JSON-fragmenten zijn voor beelden van de connection string instellin
 }
 ```
 
-### <a name="cicd-pipeline-configuration"></a>Configuratie van CI/CD-pijp lijn
+### <a name="cicd-pipeline-configuration"></a>CI/CD pipeline configuration
 
-Configureer uw CI/CD-pijp lijn zodanig dat deze alleen kan worden geïmplementeerd als uw functie-app geen in behandeling zijnde of actieve Orchestrator-exemplaren bevat. Wanneer u Azure-pijp lijnen gebruikt, kunt u een functie maken die controleert op deze voor waarden, zoals in het volgende voor beeld:
+Configure your CI/CD pipeline to deploy only when your function app has no pending or running orchestration instances. When you're using Azure Pipelines, you can create a function that checks for these conditions, as in the following example:
 
 ```csharp
 [FunctionName("StatusCheck")]
@@ -113,68 +110,68 @@ public static async Task<IActionResult> StatusCheck(
 }
 ```
 
-Configureer vervolgens de staging-Gate zodat er wordt gewacht tot er geen Orchestrations worden uitgevoerd. Zie [release Deployment Control using Gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) (Engelstalig) voor meer informatie.
+Next, configure the staging gate to wait until no orchestrations are running. For more information, see [Release deployment control using gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops)
 
-![Implementatie poort](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
+![Deployment gate](media/durable-functions-zero-downtime-deployment/deployment-gate.png)
 
-Azure-pijp lijnen controleert uw functie-app voor het uitvoeren van Orchestrator-instanties voordat de implementatie wordt gestart.
+Azure Pipelines checks your function app for running orchestration instances before your deployment starts.
 
-![Implementatie poort (wordt uitgevoerd)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
+![Deployment gate (running)](media/durable-functions-zero-downtime-deployment/deployment-gate-2.png)
 
-Nu moet de nieuwe versie van de functie-app worden geïmplementeerd in de faserings sleuf.
+Now the new version of your function app should be deployed to the staging slot.
 
-![Faserings sleuf](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
+![Staging slot](media/durable-functions-zero-downtime-deployment/deployment-slot-2.png)
 
-Ten slotte wisselen de sleuven. 
+Finally, swap slots. 
 
-Toepassings instellingen die niet zijn gemarkeerd als implementatie site-instellingen, worden ook omgewisseld, zodat de versie 2-app de verwijzing naar het opslag account A bewaart. Omdat de indelings status wordt bijgehouden in het opslag account, blijven de door de toepassing van versie 2 uitgevoerde integraties in de nieuwe sleuf zonder onderbreking worden uitgevoerd.
+Application settings that aren't marked as deployment slot settings are also swapped, so the version 2 app keeps its reference to storage account A. Because orchestration state is tracked in the storage account, any orchestrations running on the version 2 app continue to run in the new slot without interruption.
 
 ![Implementatiesite](media/durable-functions-zero-downtime-deployment/deployment-slot-3.png)
 
-Als u hetzelfde opslag account voor beide sleuven wilt gebruiken, kunt u de namen van uw taak hubs wijzigen. In dit geval moet u de status van uw sleuven en de HubName-instellingen van uw app beheren. Zie [taak hubs in Durable functions](durable-functions-task-hubs.md)voor meer informatie.
+To use the same storage account for both slots, you can change the names of your task hubs. In this case, you need to manage the state of your slots and your app's HubName settings. To learn more, see [Task hubs in Durable Functions](durable-functions-task-hubs.md).
 
-## <a name="application-routing"></a>Toepassings routering
+## <a name="application-routing"></a>Application routing
 
-Deze strategie is het meest complexe. Het kan echter worden gebruikt voor functie-apps waarvoor geen tijd is tussen het uitvoeren van Orchestrations.
+This strategy is the most complex. However, it can be used for function apps that don't have time between running orchestrations.
 
-Voor deze strategie moet u een *toepassings router* vóór uw Durable functions maken. Deze router kan worden geïmplementeerd met Durable Functions. De router is verantwoordelijk voor het volgende:
+For this strategy, you must create an *application router* in front of your Durable Functions. This router can be implemented with Durable Functions. The router has the responsibility to:
 
-* Implementeer de functie-app.
-* De versie van Durable Functions beheren. 
-* Routerings aanvragen voor functie-apps.
+* Deploy the function app.
+* Manage the version of Durable Functions. 
+* Route orchestration requests to function apps.
 
-De eerste keer dat een Orchestrator-aanvraag wordt ontvangen, voert de router de volgende taken uit:
+The first time an orchestration request is received, the router does the following tasks:
 
-1. Hiermee maakt u een nieuwe functie-app in Azure.
-2. Hiermee implementeert u de code van uw functie-app in de nieuwe functie-app in Azure.
-3. Stuurt de Orchestration-aanvraag door naar de nieuwe app.
+1. Creates a new function app in Azure.
+2. Deploys your function app's code to the new function app in Azure.
+3. Forwards the orchestration request to the new app.
 
-De router beheert de status van de versie van de code van uw app die wordt geïmplementeerd in welke functie-app in Azure.
+The router manages the state of which version of your app's code is deployed to which function app in Azure.
 
-![Toepassings routering (de eerste keer)](media/durable-functions-zero-downtime-deployment/application-routing.png)
+![Application routing (first time)](media/durable-functions-zero-downtime-deployment/application-routing.png)
 
-De router stuurt implementatie-en indelings aanvragen naar de juiste functie-app op basis van de versie die met de aanvraag is verzonden. De patch versie wordt genegeerd.
+The router directs deployment and orchestration requests to the appropriate function app based on the version sent with the request. It ignores the patch version.
 
-Wanneer u een nieuwe versie van uw app implementeert zonder een belang rijke wijziging, kunt u de patch versie verhogen. De router wordt geïmplementeerd in uw bestaande functie-app en verzendt aanvragen voor de oude en nieuwe versies van de code die naar dezelfde functie-app worden doorgestuurd.
+When you deploy a new version of your app without a breaking change, you can increment the patch version. The router deploys to your existing function app and sends requests for the old and new versions of the code, which are routed to the same function app.
 
-![Sollicitatie routering (geen breuk wijzigen)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
+![Application routing (no breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-2.png)
 
-Wanneer u een nieuwe versie van uw app implementeert met een belang rijke wijziging, kunt u de primaire of secundaire versie verhogen. Vervolgens maakt de toepassings router een nieuwe functie-app in azure, implementeert deze en worden aanvragen voor de nieuwe versie van uw app hiernaar gerouteerd. In het volgende diagram wordt het uitvoeren van Orchestrations op de 1.0.1-versie van de app actief blijven, maar aanvragen voor de 1.1.0-versie worden doorgestuurd naar de nieuwe functie-app.
+When you deploy a new version of your app with a breaking change, you can increment the major or minor version. Then the application router creates a new function app in Azure, deploys to it, and routes requests for the new version of your app to it. In the following diagram, running orchestrations on the 1.0.1 version of the app keep running, but requests for the 1.1.0 version are routed to the new function app.
 
-![Sollicitatie routering (breuk wijzigen)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
+![Application routing (breaking change)](media/durable-functions-zero-downtime-deployment/application-routing-3.png)
 
-De router controleert de status van de integraties op de 1.0.1-versie en verwijdert apps nadat alle Orchestrations zijn voltooid. 
+The router monitors the status of orchestrations on the 1.0.1 version and removes apps after all orchestrations are finished. 
 
-### <a name="tracking-store-settings"></a>Opslag instellingen bijhouden
+### <a name="tracking-store-settings"></a>Tracking store settings
 
-Elke functie-app moet afzonderlijke plannings wachtrijen gebruiken, mogelijk in afzonderlijke opslag accounts. Als u in alle versies van uw toepassing alle indelingen van exemplaren wilt opvragen, kunt u exemplaar-en geschiedenis tabellen delen in uw functie-apps. U kunt tabellen delen door de instellingen `trackingStoreConnectionStringName` en `trackingStoreNamePrefix` in het bestand [host. json-instellingen](durable-functions-bindings.md#host-json) te configureren, zodat ze allemaal dezelfde waarden gebruiken.
+Each function app should use separate scheduling queues, possibly in separate storage accounts. If you want to query all orchestrations instances across all versions of your application, you can share instance and history tables across your function apps. You can share tables by configuring the `trackingStoreConnectionStringName` and `trackingStoreNamePrefix` settings in the [host.json settings](durable-functions-bindings.md#host-json) file so that they all use the same values.
 
-Zie [instanties beheren in Durable functions in azure](durable-functions-instance-management.md)voor meer informatie.
+For more information, see [Manage instances in Durable Functions in Azure](durable-functions-instance-management.md).
 
-![Opslag instellingen bijhouden](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
+![Tracking store settings](media/durable-functions-zero-downtime-deployment/tracking-store-settings.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Versie beheer Durable Functions](durable-functions-versioning.md)
+> [Versioning Durable Functions](durable-functions-versioning.md)
 

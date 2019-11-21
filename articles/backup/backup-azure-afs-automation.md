@@ -1,125 +1,125 @@
 ---
-title: Back-ups maken en herstellen Azure Files met Power shell
-description: In dit artikel vindt u informatie over het maken van back-ups en het herstellen van Azure Files met behulp van de Azure Backup-service en Power shell.
+title: Back up and restore Azure Files with PowerShell
+description: In this article, learn how to back up and restore Azure Files using the Azure Backup service and PowerShell.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 18c7340d1cb782ba41c472156259170f37139a74
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173480"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224164"
 ---
-# <a name="back-up-and-restore-azure-files-with-powershell"></a>Back-ups maken en herstellen Azure Files met Power shell
+# <a name="back-up-and-restore-azure-files-with-powershell"></a>Back up and restore Azure Files with PowerShell
 
-In dit artikel wordt beschreven hoe u Azure PowerShell gebruikt voor het maken van back-ups en het herstellen van een Azure Files bestands share met behulp van een [Azure Backup](backup-overview.md) Recovery Services kluis.
+This article describes how to use Azure PowerShell to back up and recover an Azure Files file share using an [Azure Backup](backup-overview.md) Recovery Services vault.
 
-In dit artikel wordt uitgelegd hoe u:
+This article explains how to:
 
 > [!div class="checklist"]
 >
-> * Stel Power shell in en registreer de Azure Recovery Services-provider.
+> * Set up PowerShell and register the Azure Recovery Services Provider.
 > * Maak een Recovery Services-kluis.
-> * Configureer de back-up voor een Azure-bestands share.
-> * Een back-uptaak uitvoeren.
-> * Een back-up van een Azure-bestands share of een afzonderlijk bestand van een share herstellen.
-> * Back-up-en herstel taken bewaken.
+> * Configure backup for an Azure file share.
+> * Run a backup job.
+> * Restore a backed up Azure file share, or an individual file from a share.
+> * Monitor backup and restore jobs.
 
 ## <a name="before-you-start"></a>Voordat u begint
 
-* [Meer informatie](backup-azure-recovery-services-vault-overview.md) over Recovery Services-kluizen.
-* Meer informatie over de preview-mogelijkheden voor het [maken van back-ups van Azure-bestands shares](backup-azure-files.md).
-* Controleer de Power shell-object hiërarchie voor Recovery Services.
+* [Learn more](backup-azure-recovery-services-vault-overview.md) about Recovery Services vaults.
+* Read about the preview capabilities for [backing up Azure file shares](backup-azure-files.md).
+* Review the PowerShell object hierarchy for Recovery Services.
 
-## <a name="recovery-services-object-hierarchy"></a>Object hiërarchie Recovery Services
+## <a name="recovery-services-object-hierarchy"></a>Recovery Services object hierarchy
 
-De object hiërarchie wordt in het volgende diagram samenvatten.
+The object hierarchy is summarized in the following diagram.
 
-![Object hiërarchie Recovery Services](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
+![Recovery Services object hierarchy](./media/backup-azure-vms-arm-automation/recovery-services-object-hierarchy.png)
 
-Raadpleeg de naslag informatie **AZ. Recovery Services** [cmdlet](/powershell/module/az.recoveryservices) in de Azure-bibliotheek.
+Review the **Az.RecoveryServices** [cmdlet reference](/powershell/module/az.recoveryservices) reference in the Azure library.
 
-## <a name="set-up-and-install"></a>Instellen en installeren
+## <a name="set-up-and-install"></a>Set up and install
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Stel Power shell als volgt in:
+Set up PowerShell as follows:
 
-1. [Down load de nieuwste versie van AZ Power shell](/powershell/azure/install-az-ps). De mini maal vereiste versie is 1.0.0.
+1. [Download the latest version of Az PowerShell](/powershell/azure/install-az-ps). The minimum version required is 1.0.0.
 
-2. Zoek de Azure Backup Power shell-cmdlets met de volgende opdracht:
+2. Find the Azure Backup PowerShell cmdlets with this command:
 
     ```powershell
     Get-Command *azrecoveryservices*
     ```
 
-3. Controleer de aliassen en cmdlets voor Azure Backup, Azure Site Recovery en de Recovery Services kluis worden weer gegeven. Hier volgt een voor beeld van wat u kunt zien. Het is geen volledige lijst met cmdlets.
+3. Review the aliases and cmdlets for Azure Backup, Azure Site Recovery, and the Recovery Services vault appear. Here's an example of what you might see. It's not a complete list of cmdlets.
 
-    ![Lijst met Recovery Services-cmdlets](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
+    ![List of Recovery Services cmdlets](./media/backup-azure-afs-automation/list-of-recoveryservices-ps-az.png)
 
-4. Meld u aan bij uw Azure-account met **Connect-AzAccount**.
-5. Op de webpagina die wordt weer gegeven, wordt u gevraagd uw account referenties in te voeren.
+4. Sign in to your Azure account with **Connect-AzAccount**.
+5. On the web page that appears, you're prompted to input your account credentials.
 
-    * U kunt ook uw account referenties als een para meter in de cmdlet **Connect-AzAccount** met **-Credential**toevoegen.
-    * Als u een CSP-partner bent die namens een Tenant werkt, geeft u de klant op als Tenant met behulp van hun tenantID of Tenant primaire domein naam. Een voor beeld is **Connect-AzAccount-Tenant** fabrikam.com.
+    * Alternately, you can include your account credentials as a parameter in the **Connect-AzAccount** cmdlet with **-Credential**.
+    * If you're a CSP partner working on behalf of a tenant, specify the customer as a tenant, using their tenantID or tenant primary domain name. An example is **Connect-AzAccount -Tenant** fabrikam.com.
 
-6. Koppel het abonnement dat u wilt gebruiken met het account, omdat een account verschillende abonnementen kan hebben.
+6. Associate the subscription you want to use with the account, because an account can have several subscriptions.
 
     ```powershell
     Select-AzSubscription -SubscriptionName $SubscriptionName
     ```
 
-7. Als u Azure Backup voor de eerste keer gebruikt, gebruikt u de cmdlet **REGI ster-AzResourceProvider** om de Azure Recovery Services provider bij uw abonnement te registreren.
+7. If you're using Azure Backup for the first time, use the **Register-AzResourceProvider** cmdlet to register the Azure Recovery Services provider with your subscription.
 
     ```powershell
     Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-8. Controleer of de providers zijn geregistreerd:
+8. Verify that the providers registered successfully:
 
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
 
-9. Controleer in de uitvoer van de opdracht of **RegistrationState** is gewijzigd in **geregistreerd**. Als dat niet het geval is, voert u de cmdlet **REGI ster-AzResourceProvider** opnieuw uit.
+9. In the command output, verify that **RegistrationState** changes to **Registered**. If it doesn't, run the **Register-AzResourceProvider** cmdlet again.
 
 ## <a name="create-a-recovery-services-vault"></a>Een Recovery Services-kluis maken
 
-De Recovery Services kluis is een resource manager-resource, dus u moet deze in een resource groep plaatsen. U kunt een bestaande resource groep gebruiken, maar u kunt ook een resource groep maken met de cmdlet **New-AzResourceGroup** . Wanneer u een resource groep maakt, geeft u de naam en de locatie voor de resource groep op.
+The Recovery Services vault is a Resource Manager resource, so you must place it within a resource group. You can use an existing resource group, or you can create a resource group with the **New-AzResourceGroup** cmdlet. When you create a resource group, specify the name and location for the resource group.
 
-Volg deze stappen om een Recovery Services kluis te maken.
+Follow these steps to create a Recovery Services vault.
 
-1. Een kluis wordt in een resource groep geplaatst. Als u geen bestaande resource groep hebt, maakt u een nieuwe met de [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0). In dit voor beeld maken we een nieuwe resource groep in de regio vs-West.
+1. A vault is placed in a resource group. If you don't have an existing resource group, create a new one with the [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup?view=azps-1.4.0). In this example, we create a new resource group in the West US region.
 
    ```powershell
    New-AzResourceGroup -Name "test-rg" -Location "West US"
    ```
 
-2. Gebruik de cmdlet [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) om de kluis te maken. Geef dezelfde locatie op als de kluis die voor de resource groep is gebruikt.
+2. Use the [New-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/New-AzRecoveryServicesVault?view=azps-1.4.0) cmdlet to create the vault. Specify the same location for the vault as was used for the resource group.
 
     ```powershell
     New-AzRecoveryServicesVault -Name "testvault" -ResourceGroupName "test-rg" -Location "West US"
     ```
 
-3. Geef het type redundantie op dat moet worden gebruikt voor de kluis opslag.
+3. Specify the type of redundancy to use for the vault storage.
 
-   * U kunt [lokaal redundante opslag](../storage/common/storage-redundancy-lrs.md) of [geografisch redundante opslag](../storage/common/storage-redundancy-grs.md)gebruiken.
-   * In het volgende voor beeld wordt de optie **-BackupStorageRedundancy** ingesteld voor de[set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd voor **testvault** ingesteld op **georedundant**.
+   * You can use [locally redundant storage](../storage/common/storage-redundancy-lrs.md) or [geo-redundant storage](../storage/common/storage-redundancy-grs.md).
+   * The following example sets the **-BackupStorageRedundancy** option for the[Set-AzRecoveryServicesBackupProperties](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupproperty) cmd for **testvault** set to **GeoRedundant**.
 
      ```powershell
      $vault1 = Get-AzRecoveryServicesVault -Name "testvault"
      Set-AzRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
      ```
 
-### <a name="view-the-vaults-in-a-subscription"></a>De kluizen in een abonnement weer geven
+### <a name="view-the-vaults-in-a-subscription"></a>View the vaults in a subscription
 
-Als u alle kluizen in het abonnement wilt weer geven, gebruikt u [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0).
+To view all vaults in the subscription, use [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-1.4.0).
 
 ```powershell
 Get-AzRecoveryServicesVault
 ```
 
-De uitvoer ziet er ongeveer als volgt uit. Houd er rekening mee dat de bijbehorende resource groep en locatie worden gegeven.
+The output is similar to the following. Note that the associated resource group and location are provided.
 
 ```powershell
 Name              : Contoso-vault
@@ -131,22 +131,22 @@ SubscriptionId    : 1234-567f-8910-abc
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
 
-### <a name="set-the-vault-context"></a>De kluis context instellen
+### <a name="set-the-vault-context"></a>Set the vault context
 
-Sla het kluis object op in een variabele en stel de kluis context in.
+Store the vault object in a variable, and set the vault context.
 
-* Voor veel Azure Backup-cmdlets is het Recovery Services kluis-object vereist als invoer, zodat het handig is om het kluis object op te slaan in een variabele.
-* De context van de kluis is het type gegevens dat in de kluis wordt beveiligd. Stel deze in met [set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). Nadat de context is ingesteld, is deze van toepassing op alle volgende cmdlets.
+* Many Azure Backup cmdlets require the Recovery Services vault object as an input, so it's convenient to store the vault object in a variable.
+* De context van de kluis is het type gegevens dat in de kluis wordt beveiligd. Set it with [Set-AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext?view=azps-1.4.0). After the context is set, it applies to all subsequent cmdlets.
 
-In het volgende voor beeld wordt de kluis context voor **testvault**ingesteld.
+The following example sets the vault context for **testvault**.
 
 ```powershell
 Get-AzRecoveryServicesVault -Name "testvault" | Set-AzRecoveryServicesVaultContext
 ```
 
-### <a name="fetch-the-vault-id"></a>De kluis-ID ophalen
+### <a name="fetch-the-vault-id"></a>Fetch the vault ID
 
-We zijn van plan de kluis context instelling af te nemen volgens Azure PowerShell richt lijnen. In plaats daarvan kunt u de kluis-ID opslaan of ophalen, en deze door geven aan relevante opdrachten. Als u dus de kluis context niet hebt ingesteld of de opdracht wilt opgeven die moet worden uitgevoerd voor een bepaalde kluis, geeft u de kluis-ID als volgt door aan alle relevante opdracht:
+We plan on deprecating the vault context setting in accordance with Azure PowerShell guidelines. Instead, you can store or fetch the vault ID, and pass it to relevant commands. So, if you haven't set the vault context or want to specify the command to run for a certain vault, pass the vault ID as "-vaultID" to all relevant command as follows:
 
 ```powershell
 $vaultID = Get-AzRecoveryServicesVault -ResourceGroupName "Contoso-docs-rg" -Name "testvault" | select -ExpandProperty ID
@@ -155,14 +155,14 @@ New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType 
 
 ## <a name="configure-a-backup-policy"></a>Een back-upbeleid configureren
 
-Met een back-upbeleid kunt u het schema voor back-ups opgeven en bepalen hoe lang back-ups van herstel punten moeten worden bewaard:
+A backup policy specifies the schedule for backups, and how long backup recovery points should be kept:
 
-* Een back-upbeleid is gekoppeld aan ten minste één Bewaar beleid. Een Bewaar beleid bepaalt hoe lang een herstel punt wordt bewaard voordat het wordt verwijderd.
-* Bekijk de standaard retentie van het back-upbeleid met [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
-* Bekijk het standaard schema voor back-upbeleid met [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
-* U kunt de cmdlet [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) gebruiken om een nieuw back-upbeleid te maken. U het schema en de Bewaar beleidsobjecten invoert.
+* A backup policy is associated with at least one retention policy. A retention policy defines how long a recovery point is kept before it's deleted.
+* View the default backup policy retention using [Get-AzRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject?view=azps-1.4.0).
+* View the default backup policy schedule using [Get-AzRecoveryServicesBackupSchedulePolicyObject](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject?view=azps-1.4.0).
+* You use the [New-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0) cmdlet to create a new backup policy. You input the schedule and retention policy objects.
 
-Standaard wordt een begin tijd gedefinieerd in het object plannings beleid. Gebruik het volgende voor beeld om de begin tijd te wijzigen in de gewenste start tijd. De gewenste start tijd moet ook in UTC zijn. In het onderstaande voor beeld wordt ervan uitgegaan dat de gewenste start tijd 01:00 uur UTC is voor dagelijkse back-ups.
+By default, a start time is defined in the Schedule Policy Object. Use the following example to change the start time to the desired start time. The desired start time should be in UTC as well. The below example assumes the desired start time is 01:00 AM UTC for daily backups.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -172,9 +172,9 @@ $schpol.ScheduleRunTimes[0] = $UtcTime
 ```
 
 > [!IMPORTANT]
-> U moet de start tijd binnen 30 minuten meerdere keer opgeven. In het bovenstaande voor beeld kan de waarde alleen ' 01:00:00 ' of ' 02:30:00 ' zijn. De begin tijd mag niet ' 01:15:00 ' zijn
+> You need to provide the start time in 30 minute multiples only. In the above example, it can be only "01:00:00" or "02:30:00". The start time cannot be "01:15:00"
 
-In het volgende voor beeld worden het plannings beleid en het Bewaar beleid opgeslagen in variabelen. Vervolgens worden deze variabelen gebruikt als para meters voor een nieuw beleid (**NewAFSPolicy**). **NewAFSPolicy** neemt dagelijks een back-up en behoudt deze 30 dagen.
+The following example stores the schedule policy and the retention policy in variables. It then uses those variables as parameters for a new policy (**NewAFSPolicy**). **NewAFSPolicy** takes a daily backup and retains it for 30 days.
 
 ```powershell
 $schPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureFiles"
@@ -182,7 +182,7 @@ $retPol = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType "Azure
 New-AzRecoveryServicesBackupProtectionPolicy -Name "NewAFSPolicy" -WorkloadType "AzureFiles" -RetentionPolicy $retPol -SchedulePolicy $schPol
 ```
 
-De uitvoer ziet er ongeveer als volgt uit.
+The output is similar to the following.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -190,23 +190,23 @@ Name                 WorkloadType       BackupManagementType BackupTime         
 NewAFSPolicy           AzureFiles            AzureStorage              10/24/2019 1:30:00 AM
 ```
 
-## <a name="enable-backup"></a>Back-up inschakelen
+## <a name="enable-backup"></a>Enable backup
 
-Nadat u het back-upbeleid hebt gedefinieerd, kunt u de beveiliging van de Azure-bestands share inschakelen met behulp van het beleid.
+After you define the backup policy, you can enable the protection for the Azure file share using the policy.
 
-### <a name="retrieve-a-backup-policy"></a>Een back-upbeleid ophalen
+### <a name="retrieve-a-backup-policy"></a>Retrieve a backup policy
 
-U haalt het relevante beleids object op met [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). Gebruik deze cmdlet om een specifiek beleid op te halen of om de beleids regels weer te geven die zijn gekoppeld aan een type werk belasting.
+You fetch the relevant policy object with [Get-AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy?view=azps-1.4.0). Use this cmdlet to get a specific policy, or to view the policies associated with a workload type.
 
-#### <a name="retrieve-a-policy-for-a-workload-type"></a>Een beleid voor een type werk belasting ophalen
+#### <a name="retrieve-a-policy-for-a-workload-type"></a>Retrieve a policy for a workload type
 
-In het volgende voor beeld worden beleids regels opgehaald voor het type werk belasting **Azure files**.
+The following example retrieves policies for the workload type **AzureFiles**.
 
 ```powershell
 Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureFiles"
 ```
 
-De uitvoer ziet er ongeveer als volgt uit.
+The output is similar to the following.
 
 ```powershell
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek
@@ -215,27 +215,27 @@ dailyafs             AzureFiles         AzureStorage         1/10/2018 12:30:00 
 ```
 
 > [!NOTE]
-> De tijd zone van het veld **BackupTime** in Power shell is Universal Coordinated Time (UTC). Wanneer de back-uptijd wordt weer gegeven in de Azure Portal, wordt de tijd aangepast aan uw lokale tijd zone.
+> The time zone of the **BackupTime** field in PowerShell is Universal Coordinated Time (UTC). When the backup time is shown in the Azure portal, the time is adjusted to your local time zone.
 
-### <a name="retrieve-a-specific-policy"></a>Een specifiek beleid ophalen
+### <a name="retrieve-a-specific-policy"></a>Retrieve a specific policy
 
-Het volgende beleid haalt het back-upbeleid met de naam **dailyafs**.
+The following policy retrieves the backup policy named **dailyafs**.
 
 ```powershell
 $afsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "dailyafs"
 ```
 
-### <a name="enable-backup-and-apply-policy"></a>Back-ups inschakelen en beleid Toep assen
+### <a name="enable-backup-and-apply-policy"></a>Enable backup and apply policy
 
-Schakel de beveiliging in met [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Nadat het beleid is gekoppeld aan de kluis, worden back-ups geactiveerd volgens het beleids schema.
+Enable protection with [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). After the policy is associated with the vault, backups are triggered in accordance with the policy schedule.
 
-In het volgende voor beeld wordt de beveiliging van de Azure-bestands share **testAzureFileShare** in het opslag account **testStorageAcct**ingeschakeld met het beleid **dailyafs**.
+The following example enables protection for the Azure file share **testAzureFileShare** in storage account **testStorageAcct**, with the policy **dailyafs**.
 
 ```powershell
 Enable-AzRecoveryServicesBackupProtection -StorageAccountName "testStorageAcct" -Name "testAzureFS" -Policy $afsPol
 ```
 
-De opdracht wacht totdat de taak beveiliging configureren is voltooid en een vergelijk bare uitvoer geeft, zoals wordt weer gegeven.
+The command waits until the configure protection job is finished and gives a similar output, as shown.
 
 ```cmd
 WorkloadName       Operation            Status                 StartTime                                                                                                         EndTime                   JobID
@@ -243,15 +243,15 @@ WorkloadName       Operation            Status                 StartTime        
 testAzureFS       ConfigureBackup      Completed            11/12/2018 2:15:26 PM     11/12/2018 2:16:11 PM     ec7d4f1d-40bd-46a4-9edb-3193c41f6bf6
 ```
 
-## <a name="trigger-an-on-demand-backup"></a>Een back-up op aanvraag activeren
+## <a name="trigger-an-on-demand-backup"></a>Trigger an on-demand backup
 
-Gebruik [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) om een back-up op aanvraag uit te voeren voor een beveiligde Azure-bestands share.
+Use [Backup-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem?view=azps-1.4.0) to run an on-demand backup for a protected Azure file share.
 
-1. Haal het opslag account en de bestands share op uit de container in de kluis die uw back-upgegevens bevat met [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
-2. Als u een back-uptaak wilt starten, haalt u informatie op over de virtuele machine met [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
-3. Voer een back-up op aanvraag uit met[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
+1. Retrieve the storage account and file share from the container in the vault that holds your backup data with [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices/get-Azrecoveryservicesbackupcontainer).
+2. To start a backup job, you obtain information about the VM with [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/Get-AzRecoveryServicesBackupItem).
+3. Run an on-demand backup with[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/backup-Azrecoveryservicesbackupitem).
 
-Voer de back-up op aanvraag als volgt uit:
+Run the on-demand backup as follows:
 
 ```powershell
 $afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
@@ -259,7 +259,7 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 $job =  Backup-AzRecoveryServicesBackupItem -Item $afsBkpItem
 ```
 
-De opdracht retourneert een taak met een ID die moet worden bijgehouden, zoals wordt weer gegeven in het volgende voor beeld.
+The command returns a job with an ID to be tracked, as shown in the following example.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -267,19 +267,19 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS       Backup               Completed            11/12/2018 2:42:07 PM     11/12/2018 2:42:11 PM     8bdfe3ab-9bf7-4be6-83d6-37ff1ca13ab6
 ```
 
-De moment opnamen van Azure-bestands shares worden gebruikt tijdens het maken van de back-ups, dus de taak wordt uitgevoerd op het moment dat de opdracht deze uitvoer retourneert.
+Azure file share snapshots are used while the backups are taken, so usually the job completes by the time the command returns this output.
 
-### <a name="using-on-demand-backups-to-extend-retention"></a>Back-ups op aanvraag gebruiken om Bewaar perioden uit te breiden
+### <a name="using-on-demand-backups-to-extend-retention"></a>Using on-demand backups to extend retention
 
-Back-ups op aanvraag kunnen worden gebruikt om uw moment opnamen gedurende tien jaar te bewaren. U kunt planners gebruiken om Power shell-scripts op aanvraag uit te voeren met de gekozen Bewaar periode en zo elke week, maand of jaar moment opnamen te maken. Raadpleeg de [beperkingen van back-ups op aanvraag](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) met Azure backup bij het maken van reguliere moment opnamen.
+On-demand backups can be used to retain your snapshots for 10 years. Schedulers can be used to run on-demand PowerShell scripts with chosen retention and thus take snapshots at regular intervals every week, month, or year. While taking regular snapshots, refer to the [limitations of on-demand backups](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) using Azure backup.
 
-Als u een voor beeld van scripts zoekt, kunt u het voorbeeld script in GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup)> gebruiken met Azure Automation runbook waarmee u periodiek back-ups kunt plannen en ze zelfs tot wel tien jaar bewaren.
+If you are looking for sample scripts, you can refer to the sample script on GitHub (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) using Azure Automation runbook that enables you to schedule backups on a periodic basis and retain them even up to 10 years.
 
-### <a name="modify-the-protection-policy"></a>Het beveiligings beleid wijzigen
+### <a name="modify-the-protection-policy"></a>Modify the protection policy
 
-Gebruik [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0)om het beleid te wijzigen dat wordt gebruikt voor het maken van een back-up van de Azure-bestands share. Geef het relevante back-upitem en het nieuwe back-upbeleid op.
+To change the policy used for backing up the Azure file share, use [Enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). Specify the relevant backup item and the new backup policy.
 
-In het volgende voor beeld wordt het **testAzureFS** -beveiligings beleid gewijzigd van **dailyafs** in **monthlyafs**.
+The following example changes the **testAzureFS** protection policy from **dailyafs** to **monthlyafs**.
 
 ```powershell
 $monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
@@ -288,20 +288,20 @@ $afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -Workloa
 Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
 ```
 
-## <a name="restore-azure-file-shares-and-files"></a>Azure-bestands shares en-bestanden herstellen
+## <a name="restore-azure-file-shares-and-files"></a>Restore Azure file shares and files
 
-U kunt een volledige bestands share of specifieke bestanden op de share herstellen. U kunt herstellen naar de oorspronkelijke locatie of naar een andere locatie.
+You can restore an entire file share or specific files on the share. You can restore to the original location, or to an alternate location.
 
-### <a name="fetch-recovery-points"></a>Herstel punten ophalen
+### <a name="fetch-recovery-points"></a>Fetch recovery points
 
-Gebruik [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) om alle herstel punten voor het back-upitem weer te geven.
+Use [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) to list all recovery points for the backed-up item.
 
-In het volgende script:
+In the following script:
 
-* De variabele **$RP** is een matrix met herstel punten voor het geselecteerde back-upitem van de afgelopen zeven dagen.
-* De matrix wordt in omgekeerde volg orde gesorteerd met het laatste herstel punt bij index **0**.
-* Gebruik standaard-Power shell-matrix indexie om het herstel punt te kiezen.
-* In het voor beeld selecteert **$RP [0]** het meest recente herstel punt.
+* The variable **$rp** is an array of recovery points for the selected backup item from the past seven days.
+* The array is sorted in reverse order of time with the latest recovery point at index **0**.
+* Use standard PowerShell array indexing to pick the recovery point.
+* In the example, **$rp[0]** selects the latest recovery point.
 
 ```powershell
 $startDate = (Get-Date).AddDays(-7)
@@ -311,7 +311,7 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $st
 $rp[0] | fl
 ```
 
-De uitvoer ziet er ongeveer als volgt uit.
+The output is similar to the following.
 
 ```powershell
 FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
@@ -327,24 +327,24 @@ ContainerType        : AzureStorage
 BackupManagementType : AzureStorage
 ```
 
-Nadat het relevante herstel punt is geselecteerd, herstelt u de bestands share of het bestand naar de oorspronkelijke locatie of naar een andere locatie.
+After the relevant recovery point is selected, you restore the file share or file to the original location, or to an alternate location.
 
-### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Een Azure-bestands share herstellen naar een alternatieve locatie
+### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Restore an Azure file share to an alternate location
 
-Gebruik [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) om het geselecteerde herstel punt te herstellen. Geef deze para meters op om de alternatieve locatie te identificeren:
+Use the [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) to restore to the selected recovery point. Specify these parameters to identify the alternate location:
 
-* **TargetStorageAccountName**: het opslag account waarnaar de inhoud van de back-up wordt teruggezet. Het doel-opslag account moet zich op dezelfde locatie berichten als de kluis.
-* **TargetFileShareName**: de bestands shares binnen het doel Storage-account waarnaar de inhoud van de back-up wordt teruggezet.
-* **TargetFolder**: de map onder de bestands share waarop de gegevens worden teruggezet. Als de inhoud waarvan een back-up is gemaakt, moet worden hersteld naar een hoofdmap, geeft u de waarden van de doelmap op als een lege teken reeks.
-* **ResolveConflict**: instructie als er een conflict is met de herstelde gegevens. Accepteert **overschrijven** of **overs Laan**.
+* **TargetStorageAccountName**: The storage account to which the backed-up content is restored. The target storage account must be in the same location as the vault.
+* **TargetFileShareName**: The file shares within the target storage account to which the backed-up content is restored.
+* **TargetFolder**: The folder under the file share to which data is restored. If the backed-up content is to be restored to a root folder, give the target folder values as an empty string.
+* **ResolveConflict**: Instruction if there's a conflict with the restored data. Accepts **Overwrite** or **Skip**.
 
-Voer de cmdlet als volgt uit met de para meters:
+Run the cmdlet with the parameters as follows:
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
 ```
 
-De opdracht retourneert een taak met een ID die moet worden bijgehouden, zoals wordt weer gegeven in het volgende voor beeld.
+The command returns a job with an ID to be tracked, as shown in the following example.
 
 ```powershell
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
@@ -352,44 +352,44 @@ WorkloadName     Operation            Status               StartTime            
 testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
 ```
 
-### <a name="restore-an-azure-file-to-an-alternate-location"></a>Een Azure-bestand terugzetten op een andere locatie
+### <a name="restore-an-azure-file-to-an-alternate-location"></a>Restore an Azure file to an alternate location
 
-Gebruik [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) om het geselecteerde herstel punt te herstellen. Geef deze para meters op om de alternatieve locatie aan te duiden en het bestand dat u wilt herstellen, uniek te identificeren.
+Use the [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) to restore to the selected recovery point. Specify these parameters to identify the alternate location, and to uniquely identify the file you want to restore.
 
-* **TargetStorageAccountName**: het opslag account waarnaar de inhoud van de back-up wordt teruggezet. Het doel-opslag account moet zich op dezelfde locatie berichten als de kluis.
-* **TargetFileShareName**: de bestands shares binnen het doel Storage-account waarnaar de inhoud van de back-up wordt teruggezet.
-* **TargetFolder**: de map onder de bestands share waarop de gegevens worden teruggezet. Als de inhoud waarvan een back-up is gemaakt, moet worden hersteld naar een hoofdmap, geeft u de waarden van de doelmap op als een lege teken reeks.
-* **SourceFilePath**: het absolute pad van het bestand dat in de bestands share moet worden hersteld, als een teken reeks. Dit pad is hetzelfde pad dat wordt gebruikt in de Power shell **-cmdlet Get-AzStorageFile** .
-* **SourceFileType**: Hiermee wordt aangegeven of een map of een bestand is geselecteerd. De **map** of het **bestand**wordt geaccepteerd.
-* **ResolveConflict**: instructie als er een conflict is met de herstelde gegevens. Accepteert **overschrijven** of **overs Laan**.
+* **TargetStorageAccountName**: The storage account to which the backed-up content is restored. The target storage account must be in the same location as the vault.
+* **TargetFileShareName**: The file shares within the target storage account to which the backed-up content is restored.
+* **TargetFolder**: The folder under the file share to which data is restored. If the backed-up content is to be restored to a root folder, give the target folder values as an empty string.
+* **SourceFilePath**: The absolute path of the file, to be restored within the file share, as a string. This path is the same path used in the **Get-AzStorageFile** PowerShell cmdlet.
+* **SourceFileType**: Whether a directory or a file is selected. Accepts **Directory** or **File**.
+* **ResolveConflict**: Instruction if there's a conflict with the restored data. Accepts **Overwrite** or **Skip**.
 
-De aanvullende para meters (SourceFilePath en SourceFileType) zijn alleen gerelateerd aan het afzonderlijke bestand dat u wilt herstellen.
+The additional parameters (SourceFilePath and SourceFileType) are related only to the individual file you want to restore.
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-Met deze opdracht wordt een taak geretourneerd met een ID die moet worden bijgehouden, zoals wordt weer gegeven in de vorige sectie.
+This command returns a job with an ID to be tracked, as shown in the previous section.
 
-### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Azure-bestands shares en-bestanden naar de oorspronkelijke locatie herstellen
+### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Restore Azure file shares and files to the original location
 
-Wanneer u naar een oorspronkelijke locatie herstelt, hoeft u geen doel-en doel-gerelateerde para meters op te geven. Alleen **ResolveConflict** moet worden gegeven.
+When you restore to an original location, you don't need to specify destination- and target-related parameters. Only **ResolveConflict** must be provided.
 
-#### <a name="overwrite-an-azure-file-share"></a>Een Azure-bestands share overschrijven
+#### <a name="overwrite-an-azure-file-share"></a>Overwrite an Azure file share
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
 ```
 
-#### <a name="overwrite-an-azure-file"></a>Een Azure-bestand overschrijven
+#### <a name="overwrite-an-azure-file"></a>Overwrite an Azure file
 
 ```powershell
 Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
 ```
 
-## <a name="track-backup-and-restore-jobs"></a>Back-up-en herstel taken bijhouden
+## <a name="track-backup-and-restore-jobs"></a>Track backup and restore jobs
 
-Back-ups op aanvraag en herstel bewerkingen geven een taak samen met een ID, zoals wordt weer gegeven wanneer u [een back-up op aanvraag hebt uitgevoerd](#trigger-an-on-demand-backup). Gebruik de cmdlet [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) om de voortgang en Details van de taak bij te houden.
+On-demand backup and restore operations return a job along with an ID, as shown when you [ran an on-demand backup](#trigger-an-on-demand-backup). Use the [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) cmdlet to track the job progress and details.
 
 ```powershell
 $job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over](backup-azure-files.md) het maken van een back-up van Azure files in de Azure Portal.
+[Learn about](backup-azure-files.md) backing up Azure Files in the Azure portal.

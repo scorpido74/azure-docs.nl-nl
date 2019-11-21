@@ -1,48 +1,40 @@
 ---
-title: Naslag C# informatie voor Azure functions ontwikkel aars
-description: Meer informatie over het ontwikkelen van C#Azure functions met behulp van.
-services: functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
-keywords: Azure-functies, functies, gebeurtenisverwerking, webhooks, dynamisch berekenen, architectuur zonder server
-ms.service: azure-functions
-ms.devlang: dotnet
+title: Azure Functions C# developer reference
+description: Understand how to develop Azure Functions using C#.
 ms.topic: reference
 ms.date: 09/12/2018
-ms.author: glenga
-ms.openlocfilehash: c3c13b7e28ef7c17fd45682d828f318de5326542
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 20bbf31bc92e49106a94e7a85d3b1541aaa2a34b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293864"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230608"
 ---
-# <a name="azure-functions-c-developer-reference"></a>Naslag C# informatie voor Azure functions ontwikkel aars
+# <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference
 
 <!-- When updating this article, make corresponding changes to any duplicate content in functions-reference-csharp.md -->
 
-Dit artikel is een inleiding tot het ontwikkelen van Azure Functions C# door gebruik te maken van de .net-klassen bibliotheken.
+This article is an introduction to developing Azure Functions by using C# in .NET class libraries.
 
-Azure Functions ondersteunt C# en C# script programmeer talen. [Zie C# Naslag informatie voor ontwikkel aars van scripts (. CSX)](functions-reference-csharp.md)als u op zoek bent naar richt lijnen voor [het gebruik C# van de Azure Portal](functions-create-function-app-portal.md).
+Azure Functions supports C# and C# script programming languages. If you're looking for guidance on [using C# in the Azure portal](functions-create-function-app-portal.md), see [C# script (.csx) developer reference](functions-reference-csharp.md).
 
-In dit artikel wordt ervan uitgegaan dat u de volgende artikelen al hebt gelezen:
+This article assumes that you've already read the following articles:
 
-* [Hand leiding Azure Functions ontwikkel aars](functions-reference.md)
-* [Azure Functions Visual Studio 2019-Hulpprogram Ma's](functions-develop-vs.md)
+* [Azure Functions developers guide](functions-reference.md)
+* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Ondersteunde versies
 
-In de runtime van Azure Functions 2. x wordt .NET Core 2,2 gebruikt. Uw functie code kan .NET Core 2,2-Api's gebruiken door de Visual Studio-project instellingen bij te werken. De functie sjablonen worden niet standaard ingesteld op .NET Core 2,2 om te voor komen dat klanten die geen .NET Core-2,2 hebben geïnstalleerd, nadelig worden beïnvloed.
+The Azure Functions 2.x runtime uses .NET Core 2.2. Your function code can use .NET Core 2.2 APIs by updating the Visual Studio project settings. The Function templates do not default to .NET Core 2.2 to avoid adversely affecting customers that do not have .NET Core 2.2 installed.
 
-## <a name="functions-class-library-project"></a>Class-bibliotheek project voor functies
+## <a name="functions-class-library-project"></a>Functions class library project
 
-In Visual Studio maakt de sjabloon **Azure functions** project een C# klassen bibliotheek project die de volgende bestanden bevat:
+In Visual Studio, the **Azure Functions** project template creates a C# class library project that contains the following files:
 
-* [host. json](functions-host-json.md) : slaat configuratie-instellingen op die van invloed zijn op alle functies in het project wanneer lokaal of in azure wordt uitgevoerd.
-* [Local. settings. json](functions-run-local.md#local-settings-file) : slaat app-instellingen en verbindings reeksen op die worden gebruikt bij het lokaal uitvoeren. Dit bestand bevat geheimen en wordt niet gepubliceerd in uw functie-app in Azure. Voeg in plaats daarvan [app-instellingen toe aan de functie-app](functions-develop-vs.md#function-app-settings).
+* [host.json](functions-host-json.md) - stores configuration settings that affect all functions in the project when running locally or in Azure.
+* [local.settings.json](functions-run-local.md#local-settings-file) - stores app settings and connection strings that are used when running locally. This file contains secrets and isn't published to your function app in Azure. Instead, [add app settings to your function app](functions-develop-vs.md#function-app-settings).
 
-Wanneer u het project bouwt, wordt een mapstructuur die eruitziet als in het volgende voor beeld gegenereerd in de map build Uitvoermap:
+When you build the project, a folder structure that looks like the following example is generated in the build output directory:
 
 ```
 <framework.version>
@@ -54,15 +46,15 @@ Wanneer u het project bouwt, wordt een mapstructuur die eruitziet als in het vol
  | - host.json
 ```
 
-Deze map wordt geïmplementeerd in uw functie-app in Azure. De binding-uitbrei dingen die zijn vereist in [versie 2. x](functions-versions.md) van de functions-runtime, worden [toegevoegd aan het project als NuGet-pakketten](./functions-bindings-register.md#vs).
+This directory is what gets deployed to your function app in Azure. The binding extensions required in [version 2.x](functions-versions.md) of the Functions runtime are [added to the project as NuGet packages](./functions-bindings-register.md#vs).
 
 > [!IMPORTANT]
-> Het bouw proces maakt een *Function. json* -bestand voor elke functie. Deze *functie. json* -bestand is niet bedoeld om rechtstreeks te worden bewerkt. U kunt de bindings configuratie niet wijzigen of de functie uitschakelen door dit bestand te bewerken. Zie [functies uitschakelen](disable-function.md#functions-2x---c-class-libraries)voor meer informatie over het uitschakelen van een functie.
+> The build process creates a *function.json* file for each function. This *function.json* file is not meant to be edited directly. You can't change binding configuration or disable the function by editing this file. To learn how to disable a function, see [How to disable functions](disable-function.md#functions-2x---c-class-libraries).
 
 
-## <a name="methods-recognized-as-functions"></a>Methoden die worden herkend als functions
+## <a name="methods-recognized-as-functions"></a>Methods recognized as functions
 
-In een klassen bibliotheek is een functie een statische methode met een `FunctionName` en een trigger kenmerk, zoals wordt weer gegeven in het volgende voor beeld:
+In a class library, a function is a static method with a `FunctionName` and a trigger attribute, as shown in the following example:
 
 ```csharp
 public static class SimpleExample
@@ -77,24 +69,24 @@ public static class SimpleExample
 } 
 ```
 
-Het kenmerk `FunctionName` markeert de methode als een functie-ingangs punt. De naam moet uniek zijn binnen een project, beginnen met een letter en mag alleen letters, cijfers, `_` en `-` bevatten, Maxi maal 127 tekens lang zijn. Project sjablonen maken vaak een methode met de naam `Run`, maar de naam van de methode C# kan een geldige methode naam zijn.
+The `FunctionName` attribute marks the method as a function entry point. The name must be unique within a project, start with a letter and only contain letters, numbers, `_`, and `-`, up to 127 characters in length. Project templates often create a method named `Run`, but the method name can be any valid C# method name.
 
-Het trigger kenmerk geeft het trigger type aan en bindt invoer gegevens aan een methode parameter. De functie voor beeld wordt geactiveerd door een wachtrij bericht en het wachtrij bericht wordt door gegeven aan de methode in de para meter `myQueueItem`.
+The trigger attribute specifies the trigger type and binds input data to a method parameter. The example function is triggered by a queue message, and the queue message is passed to the method in the `myQueueItem` parameter.
 
-## <a name="method-signature-parameters"></a>Methode handtekening parameters
+## <a name="method-signature-parameters"></a>Method signature parameters
 
-De methode handtekening kan andere para meters bevatten dan de hand tekening die is gebruikt met het trigger kenmerk. Hier volgen enkele van de aanvullende para meters die u kunt gebruiken:
+The method signature may contain parameters other than the one used with the trigger attribute. Here are some of the additional parameters that you can include:
 
-* [Invoer-en uitvoer bindingen](functions-triggers-bindings.md) die als zodanig zijn gemarkeerd door ze te verduidelijken met kenmerken.  
-* Een para meter `ILogger` of `TraceWriter` ([versie 1. x-only](functions-versions.md#creating-1x-apps)) voor [logboek registratie](#logging).
-* Een `CancellationToken`-para meter voor een [correcte afsluit](#cancellation-tokens)actie.
-* [Bindings expressies](./functions-bindings-expressions-patterns.md) para meters voor het ophalen van meta gegevens van triggers.
+* [Input and output bindings](functions-triggers-bindings.md) marked as such by decorating them with attributes.  
+* An `ILogger` or `TraceWriter` ([version 1.x-only](functions-versions.md#creating-1x-apps)) parameter for [logging](#logging).
+* A `CancellationToken` parameter for [graceful shutdown](#cancellation-tokens).
+* [Binding expressions](./functions-bindings-expressions-patterns.md) parameters to get trigger metadata.
 
-De volg orde van de para meters in de functie handtekening is hierbij niet van belang. U kunt bijvoorbeeld trigger parameters plaatsen voor of na andere bindingen en u kunt de para meter logger voor of na de trigger-of bindings parameters plaatsen.
+The order of parameters in the function signature does not matter. For example, you can put trigger parameters before or after other bindings, and you can put the logger parameter before or after trigger or binding parameters.
 
-### <a name="output-binding-example"></a>Voor beeld van uitvoer binding
+### <a name="output-binding-example"></a>Output binding example
 
-In het volgende voor beeld wordt de vorige wijziging aangebracht door een uitvoer wachtrij binding toe te voegen. Met de functie wordt het wachtrij bericht geschreven dat de functie activeert naar een nieuw wachtrij bericht in een andere wachtrij.
+The following example modifies the preceding one by adding an output queue binding. The function writes the queue message that triggers the function to a new queue message in a different queue.
 
 ```csharp
 public static class SimpleExampleWithOutput
@@ -111,11 +103,11 @@ public static class SimpleExampleWithOutput
 }
 ```
 
-De bindende referentie artikelen ([opslag wachtrijen](functions-bindings-storage-queue.md), bijvoorbeeld) geven aan welke parameter typen u kunt gebruiken met de bindings kenmerken trigger, invoer of uitvoer.
+The binding reference articles ([Storage queues](functions-bindings-storage-queue.md), for example) explain which parameter types you can use with trigger, input, or output binding attributes.
 
-### <a name="binding-expressions-example"></a>Voor beeld van bindings expressies
+### <a name="binding-expressions-example"></a>Binding expressions example
 
-Met de volgende code wordt de naam van de wachtrij opgehaald die moet worden bewaakt vanuit een app-instelling en wordt de aanmaak tijd van het wachtrij bericht opgehaald in de para meter `insertionTime`.
+The following code gets the name of the queue to monitor from an app setting, and it gets the queue message creation time in the `insertionTime` parameter.
 
 ```csharp
 public static class BindingExpressionsExample
@@ -132,13 +124,13 @@ public static class BindingExpressionsExample
 }
 ```
 
-## <a name="autogenerated-functionjson"></a>Automatisch gegenereerde functie. json
+## <a name="autogenerated-functionjson"></a>Autogenerated function.json
 
-Het bouw proces maakt een *Function. json* -bestand in een functie map in de map build. Zoals eerder is vermeld, is dit bestand niet bedoeld om rechtstreeks te worden bewerkt. U kunt de bindings configuratie niet wijzigen of de functie uitschakelen door dit bestand te bewerken. 
+The build process creates a *function.json* file in a function folder in the build folder. As noted earlier, this file is not meant to be edited directly. You can't change binding configuration or disable the function by editing this file. 
 
-Het doel van dit bestand is om informatie aan de schaal controller te verstrekken die moet worden gebruikt voor [het schalen van beslissingen over het verbruiks abonnement](functions-scale.md#how-the-consumption-and-premium-plans-work). Daarom heeft het bestand alleen trigger gegevens, geen invoer-of uitvoer bindingen.
+The purpose of this file is to provide information to the scale controller to use for [scaling decisions on the consumption plan](functions-scale.md#how-the-consumption-and-premium-plans-work). For this reason, the file only has trigger info, not input or output bindings.
 
-De gegenereerde *functie. json* -bestand bevat een `configurationSource`-eigenschap waarmee de runtime .net-kenmerken voor bindingen kan gebruiken in plaats van *Function. json* -configuratie. Hier volgt een voorbeeld:
+The generated *function.json* file includes a `configurationSource` property that tells the runtime to use .NET attributes for bindings, rather than *function.json* configuration. Hier volgt een voorbeeld:
 
 ```json
 {
@@ -157,13 +149,13 @@ De gegenereerde *functie. json* -bestand bevat een `configurationSource`-eigensc
 }
 ```
 
-## <a name="microsoftnetsdkfunctions"></a>Micro soft. NET. SDK. functions
+## <a name="microsoftnetsdkfunctions"></a>Microsoft.NET.Sdk.Functions
 
-Het gegenereerde bestand *Function. json* wordt uitgevoerd door het NuGet [-pakket micro soft @ no__t-2NET @ no__t-3Sdk @ no__t-4Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
+The *function.json* file generation is performed by the NuGet package [Microsoft\.NET\.Sdk\.Functions](https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions). 
 
-Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtime. Het doel raamwerk is een onderscheid tussen een 1. x-project en een 2. x-project. Hier vindt u de relevante delen van *. csproj* -bestanden, met verschillende doel raamwerken en hetzelfde `Sdk`-pakket:
+The same package is used for both version 1.x and 2.x of the Functions runtime. The target framework is what differentiates a 1.x project from a 2.x project. Here are the relevant parts of *.csproj* files, showing different target frameworks and the same `Sdk` package:
 
-**Functions 1. x**
+**Functions 1.x**
 
 ```xml
 <PropertyGroup>
@@ -174,7 +166,7 @@ Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtim
 </ItemGroup>
 ```
 
-**Functies 2. x**
+**Functions 2.x**
 
 ```xml
 <PropertyGroup>
@@ -186,39 +178,39 @@ Hetzelfde pakket wordt gebruikt voor versie 1. x en 2. x van de functions-runtim
 </ItemGroup>
 ```
 
-Onder de `Sdk` pakket afhankelijkheden zijn triggers en bindingen. Een 1. x-project verwijst naar 1. x-triggers en-bindingen, omdat de triggers en bindingen het .NET Framework doel hebben, terwijl 2. x-triggers en-bindingen .NET core hebben.
+Among the `Sdk` package dependencies are triggers and bindings. A 1.x project refers to 1.x triggers and bindings because those triggers and bindings target the .NET Framework, while 2.x triggers and bindings target .NET Core.
 
-Het `Sdk`-pakket is ook afhankelijk van [Newton soft. json](https://www.nuget.org/packages/Newtonsoft.Json)en indirect op [WindowsAzure. Storage](https://www.nuget.org/packages/WindowsAzure.Storage). Deze afhankelijkheden zorgen ervoor dat uw project gebruikmaakt van de versies van de pakketten die werken met de runtime versie van functions die het project doel heeft. @No__t-0 heeft bijvoorbeeld versie 11 voor .NET Framework 4.6.1, maar de functions-runtime die is gericht op .NET Framework 4.6.1 is alleen compatibel met `Newtonsoft.Json` 9.0.1. De functie code in dat project moet dus ook `Newtonsoft.Json` 9.0.1 gebruiken.
+The `Sdk` package also depends on [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json), and indirectly on [WindowsAzure.Storage](https://www.nuget.org/packages/WindowsAzure.Storage). These dependencies make sure that your project uses the versions of those packages that work with the Functions runtime version that the project targets. For example, `Newtonsoft.Json` has version 11 for .NET Framework 4.6.1, but the Functions runtime that targets .NET Framework 4.6.1 is only compatible with `Newtonsoft.Json` 9.0.1. So your function code in that project also has to use `Newtonsoft.Json` 9.0.1.
 
-De bron code voor `Microsoft.NET.Sdk.Functions` is beschikbaar in de GitHub opslag plaats [Azure @ no__t-2FUNCTIONS @ no__t-3vs @ no__t-4build @ no__t-5sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
+The source code for `Microsoft.NET.Sdk.Functions` is available in the GitHub repo [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk).
 
-## <a name="runtime-version"></a>Runtime versie
+## <a name="runtime-version"></a>Runtime version
 
-Visual Studio maakt gebruik van de [Azure functions core tools](functions-run-local.md#install-the-azure-functions-core-tools) om functies projecten uit te voeren. De belangrijkste Hulpprogram Ma's is een opdracht regel interface voor de functions-runtime.
+Visual Studio uses the [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) to run Functions projects. The Core Tools is a command-line interface for the Functions runtime.
 
-Als u de basis Hulpprogramma's installeert met behulp van NPM, is dit niet van invloed op de kern Hulpprogramma's versie die wordt gebruikt door Visual Studio. Voor de functions runtime versie 1. x slaat Visual Studio versies van kern Hulpprogramma's op in *%userprofile%\AppData\Local\Azure.functions.cli* en maakt gebruik van de meest recente versie die daar is opgeslagen. Voor functies 2. x zijn de kern Hulpprogramma's opgenomen in de uitbrei ding **Azure functions en webjobs** . Voor beide 1. x en 2. x kunt u zien welke versie wordt gebruikt in de console-uitvoer wanneer u een functions-project uitvoert:
+If you install the Core Tools by using npm, that doesn't affect the Core Tools version used by Visual Studio. For the Functions runtime version 1.x, Visual Studio stores Core Tools versions in *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* and uses the latest version stored there. For Functions 2.x, the Core Tools are included in the **Azure Functions and Web Jobs Tools** extension. For both 1.x and 2.x, you can see what version is being used in the console output when you run a Functions project:
 
 ```terminal
 [3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
 ```
 
-## <a name="supported-types-for-bindings"></a>Ondersteunde typen voor bindingen
+## <a name="supported-types-for-bindings"></a>Supported types for bindings
 
-Elke binding heeft zijn eigen ondersteunde typen. een BLOB-trigger kenmerk kan bijvoorbeeld worden toegepast op een teken reeks parameter, een POCO-para meter, een `CloudBlockBlob`-para meter of een van de andere ondersteunde typen. Het [referentie-artikel voor bindingen voor BLOB-bindingen](functions-bindings-storage-blob.md#trigger---usage) bevat een lijst met alle ondersteunde parameter typen. Zie voor meer informatie [Triggers en bindingen](functions-triggers-bindings.md) en de [verwijzings documenten voor bindingen voor elk bindings type](functions-triggers-bindings.md#next-steps).
+Each binding has its own supported types; for instance, a blob trigger attribute can be applied to a string parameter, a POCO parameter, a `CloudBlockBlob` parameter, or any of several other supported types. The [binding reference article for blob bindings](functions-bindings-storage-blob.md#trigger---usage) lists all supported parameter types. For more information, see [Triggers and bindings](functions-triggers-bindings.md) and the [binding reference docs for each binding type](functions-triggers-bindings.md#next-steps).
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
-## <a name="binding-to-method-return-value"></a>Binding met retour waarde van methode
+## <a name="binding-to-method-return-value"></a>Binding to method return value
 
-U kunt de retour waarde van een methode voor een uitvoer binding gebruiken door het kenmerk toe te passen op de retour waarde van de methode. Zie [Triggers en bindingen](./functions-bindings-return-value.md)voor voor beelden. 
+You can use a method return value for an output binding, by applying the attribute to the method return value. For examples, see [Triggers and bindings](./functions-bindings-return-value.md). 
 
-Gebruik de retour waarde alleen als de uitvoering van een geslaagde functie altijd resulteert in een retour waarde die aan de uitvoer binding moet worden door gegeven. Gebruik anders `ICollector` of `IAsyncCollector`, zoals wordt weer gegeven in de volgende sectie.
+Use the return value only if a successful function execution always results in a return value to pass to the output binding. Otherwise, use `ICollector` or `IAsyncCollector`, as shown in the following section.
 
-## <a name="writing-multiple-output-values"></a>Meerdere uitvoer waarden schrijven
+## <a name="writing-multiple-output-values"></a>Writing multiple output values
 
-Als u meerdere waarden naar een uitvoer binding wilt schrijven, of als het aanroepen van een geslaagde functie ertoe kan leiden dat er niets kan worden door gegeven aan de uitvoer binding, gebruikt u de [`ICollector`-](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [@no__t 3-](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) typen. Deze typen zijn alleen-schrijven verzamelingen die naar de uitvoer binding worden geschreven wanneer de methode is voltooid.
+To write multiple values to an output binding, or if a successful function invocation might not result in anything to pass to the output binding, use the [`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) types. These types are write-only collections that are written to the output binding when the method completes.
 
-In dit voor beeld worden meerdere wachtrij berichten naar dezelfde wachtrij geschreven met `ICollector`:
+This example writes multiple queue messages into the same queue using `ICollector`:
 
 ```csharp
 public static class ICollectorExample
@@ -238,7 +230,7 @@ public static class ICollectorExample
 
 ## <a name="logging"></a>Logboekregistratie
 
-Als u de uitvoer wilt registreren in C#uw streaming-logboeken, neemt u een argument van het type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger)op. U wordt aangeraden deze naam te `log`, zoals in het volgende voor beeld:  
+To log output to your streaming logs in C#, include an argument of type [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger). We recommend that you name it `log`, as in the following example:  
 
 ```csharp
 public static class SimpleExample
@@ -253,11 +245,11 @@ public static class SimpleExample
 } 
 ```
 
-Vermijd het gebruik van `Console.Write` in Azure Functions. Zie [Logboeken schrijven in C# functies](functions-monitoring.md#write-logs-in-c-functions) in het artikel **monitor Azure functions** voor meer informatie.
+Avoid using `Console.Write` in Azure Functions. For more information, see [Write logs in C# functions](functions-monitoring.md#write-logs-in-c-functions) in the **Monitor Azure Functions** article.
 
-## <a name="async"></a>Asynchroon
+## <a name="async"></a>Async
 
-Als u een functie [asynchroon](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/)wilt maken, gebruikt u het sleutel woord `async` en retourneert u een `Task`-object.
+To make a function [asynchronous](https://docs.microsoft.com/dotnet/csharp/programming-guide/concepts/async/), use the `async` keyword and return a `Task` object.
 
 ```csharp
 public static class AsyncExample
@@ -275,13 +267,13 @@ public static class AsyncExample
 }
 ```
 
-U kunt de para meters `out` niet gebruiken in async-functies. Voor uitvoer bindingen gebruikt u in plaats daarvan de [functie retour waarde](#binding-to-method-return-value) of een [Collector-object](#writing-multiple-output-values) .
+You can't use `out` parameters in async functions. For output bindings, use the [function return value](#binding-to-method-return-value) or a [collector object](#writing-multiple-output-values) instead.
 
-## <a name="cancellation-tokens"></a>Annulerings tokens
+## <a name="cancellation-tokens"></a>Cancellation tokens
 
-Een functie kan een [CancellationToken](/dotnet/api/system.threading.cancellationtoken) -para meter accepteren, waardoor het besturings systeem uw code op de hoogte stelt wanneer de functie wordt beëindigd. U kunt deze melding gebruiken om ervoor te zorgen dat de functie niet onverwacht wordt beëindigd op een manier die gegevens in een inconsistente status laat.
+A function can accept a [CancellationToken](/dotnet/api/system.threading.cancellationtoken) parameter, which enables the operating system to notify your code when the function is about to be terminated. You can use this notification to make sure the function doesn't terminate unexpectedly in a way that leaves data in an inconsistent state.
 
-In het volgende voor beeld ziet u hoe u kunt controleren op verdere beëindiging van de functie.
+The following example shows how to check for impending function termination.
 
 ```csharp
 public static class CancellationTokenExample
@@ -307,7 +299,7 @@ public static class CancellationTokenExample
 
 ## <a name="environment-variables"></a>Omgevingsvariabelen
 
-Als u een omgevings variabele of een instellings waarde voor een app wilt ophalen, gebruikt u `System.Environment.GetEnvironmentVariable`, zoals wordt weer gegeven in het volgende code voorbeeld:
+To get an environment variable or an app setting value, use `System.Environment.GetEnvironmentVariable`, as shown in the following code example:
 
 ```csharp
 public static class EnvironmentVariablesExample
@@ -328,19 +320,19 @@ public static class EnvironmentVariablesExample
 }
 ```
 
-App-instellingen kunnen worden gelezen van omgevings variabelen bij het lokaal ontwikkelen en wanneer ze worden uitgevoerd in Azure. Bij het ontwikkelen van lokaal, zijn de app-instellingen afkomstig uit de verzameling `Values` in het bestand *Local. settings. json* . In beide omgevingen, lokaal en Azure, wordt met `GetEnvironmentVariable("<app setting name>")` de waarde opgehaald van de app-instelling met de naam. Wanneer u bijvoorbeeld lokaal uitvoert, wordt ' mijn site naam ' geretourneerd als uw *lokale. settings. json* -bestand `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }` bevat.
+App settings can be read from environment variables both when developing locally and when running in Azure. When developing locally, app settings come from the `Values` collection in the *local.settings.json* file. In both environments, local and Azure, `GetEnvironmentVariable("<app setting name>")` retrieves the value of the named app setting. For instance, when you're running locally, "My Site Name" would be returned if your *local.settings.json* file contains `{ "Values": { "WEBSITE_SITE_NAME": "My Site Name" } }`.
 
-De eigenschap [System. Configuration. ConfigurationManager. AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) is een alternatieve API voor het ophalen van waarden voor app-instellingen, maar we raden u aan `GetEnvironmentVariable` te gebruiken, zoals hier wordt weer gegeven.
+The [System.Configuration.ConfigurationManager.AppSettings](https://docs.microsoft.com/dotnet/api/system.configuration.configurationmanager.appsettings) property is an alternative API for getting app setting values, but we recommend that you use `GetEnvironmentVariable` as shown here.
 
-## <a name="binding-at-runtime"></a>Binding tijdens runtime
+## <a name="binding-at-runtime"></a>Binding at runtime
 
-In C# en andere .net-talen kunt u een [dwingend](https://en.wikipedia.org/wiki/Imperative_programming) bindings patroon gebruiken, in plaats van de [*declaratieve*](https://en.wikipedia.org/wiki/Declarative_programming) bindingen in kenmerken. Dwingende binding is handig wanneer bindings parameters tijdens runtime moeten worden berekend in plaats van ontwerp tijd. Met dit patroon kunt u verbinding maken met ondersteunde invoer-en uitvoer bindingen die onderweg zijn in uw functie code.
+In C# and other .NET languages, you can use an [imperative](https://en.wikipedia.org/wiki/Imperative_programming) binding pattern, as opposed to the [*declarative*](https://en.wikipedia.org/wiki/Declarative_programming) bindings in attributes. Imperative binding is useful when binding parameters need to be computed at runtime rather than design time. With this pattern, you can bind to supported input and output bindings on-the-fly in your function code.
 
-Definieer als volgt een dwingende binding:
+Define an imperative binding as follows:
 
-- Neem in de hand tekening van de functie **geen** kenmerk op voor de gewenste dwingende bindingen.
-- Geef een invoer parameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) of [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs)door.
-- Gebruik het volgende C# patroon om de gegevens binding uit te voeren.
+- **Do not** include an attribute in the function signature for your desired imperative bindings.
+- Pass in an input parameter [`Binder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Host/Bindings/Runtime/Binder.cs) or [`IBinder binder`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IBinder.cs).
+- Use the following C# pattern to perform the data binding.
 
   ```cs
   using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
@@ -349,11 +341,11 @@ Definieer als volgt een dwingende binding:
   }
   ```
 
-  `BindingTypeAttribute` is het .NET-kenmerk dat uw binding definieert en `T` is een invoer-of uitvoer type dat wordt ondersteund door dat bindings type. `T` kan geen para meter van het type `out` zijn (zoals `out JObject`). De Mobile Apps tabel uitvoer binding ondersteunt bijvoorbeeld [zes uitvoer typen](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), maar u kunt alleen [ICollector @ no__t-2T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) of [IAsyncCollector @ no__t-4T >](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) gebruiken met dwingende binding.
+  `BindingTypeAttribute` is the .NET attribute that defines your binding, and `T` is an input or output type that's supported by that binding type. `T` cannot be an `out` parameter type (such as `out JObject`). For example, the Mobile Apps table output binding supports [six output types](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22), but you can only use [ICollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) or [IAsyncCollector\<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) with imperative binding.
 
-### <a name="single-attribute-example"></a>Voor beeld van één kenmerk
+### <a name="single-attribute-example"></a>Single attribute example
 
-Met de volgende voorbeeld code wordt een [opslag-BLOB-uitvoer binding](functions-bindings-storage-blob.md#output) gemaakt met een BLOB-pad dat tijdens runtime is gedefinieerd, waarna een teken reeks naar de BLOB wordt geschreven.
+The following example code creates a [Storage blob output binding](functions-bindings-storage-blob.md#output) with blob path that's defined at run time, then writes a string to the blob.
 
 ```cs
 public static class IBinderExample
@@ -374,11 +366,11 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) definieert de invoer-of uitvoer binding van de [opslag-BLOB](functions-bindings-storage-blob.md) en [TextWriter](/dotnet/api/system.io.textwriter) is een ondersteund type uitvoer binding.
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) defines the [Storage blob](functions-bindings-storage-blob.md) input or output binding, and [TextWriter](/dotnet/api/system.io.textwriter) is a supported output binding type.
 
-### <a name="multiple-attribute-example"></a>Voor beeld van meerdere kenmerken
+### <a name="multiple-attribute-example"></a>Multiple attribute example
 
-In het vorige voor beeld wordt de app-instelling voor het hoofd-opslag account van de functie-app opgehaald connection string (`AzureWebJobsStorage`). U kunt een aangepaste app-instelling opgeven die moet worden gebruikt voor het opslag account door de [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) toe te voegen en de kenmerk matrix door te geven aan `BindAsync<T>()`. Gebruik de para meter `Binder`, niet `IBinder`.  Bijvoorbeeld:
+The preceding example gets the app setting for the function app's main Storage account connection string (which is `AzureWebJobsStorage`). You can specify a custom app setting to use for the Storage account by adding the [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) and passing the attribute array into `BindAsync<T>()`. Use a `Binder` parameter, not `IBinder`.  Bijvoorbeeld:
 
 ```cs
 public static class IBinderExampleMultipleAttributes
@@ -410,7 +402,7 @@ public static class IBinderExampleMultipleAttributes
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over triggers en bindingen](functions-triggers-bindings.md)
+> [Learn more about triggers and bindings](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Best Practices for Azure Functions](functions-best-practices.md)
+> [Learn more about best practices for Azure Functions](functions-best-practices.md)

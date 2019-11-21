@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie'
+title: 'Tutorial: Predict automobile price with the designer'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het trainen, beoordelen en implementeren van een machine learning model met behulp van een slepen-en-neerzetten-interface. Deze zelf studie is deel één van een serie met twee delen voor het voors pellen van de prijzen van auto's met behulp van lineaire regressie.
+description: Learn how to train, score, and deploy a machine learning model by using a drag-and-drop interface. This tutorial is part one of a two-part series on predicting automobile prices by using linear regression.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,214 +9,214 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 0ffe85b6e005d2dc8fe077a5a08d8b0f11c73589
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ee08ba61aec23078227c40b92771d1728040c4cf
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929674"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228415"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Zelf studie: prijs van auto Mobile voors pellen met de ontwerp functie (preview)
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Tutorial: Predict automobile price with the designer (preview)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
 
-In deze tweedelige zelf studie leert u hoe u de Azure Machine Learning Designer kunt gebruiken om een predictive analytics oplossing te ontwikkelen en implementeren waarmee de prijs van elke auto wordt voor speld. 
+In this two-part tutorial, you learn how to use the Azure Machine Learning designer to develop and deploy a predictive analytics solution that predicts the price of any car. 
 
-In deel één stelt u uw omgeving in, sleept u modules naar een interactief canvas en verbindt u deze samen om een Azure Machine Learning pijp lijn te maken.
+In part one, you set up your environment, drag modules onto an interactive canvas, and connect them together to create an Azure Machine Learning pipeline.
 
-In deel één van de zelf studie leert u het volgende:
+In part one of the tutorial, you'll learn how to:
 
 > [!div class="checklist"]
-> * Maak een nieuwe pijp lijn.
-> * Gegevens importeren.
-> * Gegevens voorbereiden.
-> * Train een machine learning model.
-> * Een machine learning model evalueren.
+> * Create a new pipeline.
+> * Import data.
+> * Prepare data.
+> * Train a machine learning model.
+> * Evaluate a machine learning model.
 
-In [deel twee](tutorial-designer-automobile-price-deploy.md) van de zelf studie leert u hoe u uw voorspellende model kunt implementeren als een realtime-Afleidings eindpunt om de prijs van een auto te voors pellen op basis van technische specificaties die u verzendt. 
+In [part two](tutorial-designer-automobile-price-deploy.md) of the tutorial, you'll learn how to deploy your predictive model as a real-time inferencing endpoint to predict the price of any car based on technical specifications you send it. 
 
 > [!NOTE]
->Een voltooide versie van deze zelf studie is beschikbaar als een voorbeeld pijplijn.
+>A completed version of this tutorial is available as a sample pipeline.
 >
->Ga naar de ontwerp functie in uw werk ruimte om de app te vinden. Selecteer in de sectie **nieuwe pijp lijn** voor **Beeld 1 regressie: prijs voorspelling voor auto's (basis)** .
+>To find it, go to the designer in your workspace. In the **New pipeline** section, select **Sample 1 - Regression: Automobile Price Prediction(Basic)** .
 
-## <a name="create-a-new-pipeline"></a>Een nieuwe pijp lijn maken
+## <a name="create-a-new-pipeline"></a>Create a new pipeline
 
-Met Azure Machine Learning pijp lijnen worden meerdere, afhankelijke machine learning en gegevens verwerkings stappen in één resource ingedeeld. Met pijp lijnen kunt u complexe machine learning werk stromen in projecten en gebruikers organiseren, beheren en hergebruiken. Als u een Azure Machine Learning pijp lijn wilt maken, hebt u een Azure Machine Learning-werk ruimte nodig. In deze sectie leert u hoe u deze resources kunt maken.
+Azure Machine Learning pipelines organize multiple, dependent machine learning and data processing steps into a single resource. Pipelines help you organize, manage, and reuse complex machine learning workflows across projects and users. To create an Azure Machine Learning pipeline, you need an Azure Machine Learning workspace. In this section, you learn how to create both these resources.
 
-### <a name="create-a-new-workspace"></a>Een nieuwe werk ruimte maken
+### <a name="create-a-new-workspace"></a>Create a new workspace
 
-Als u een Azure Machine Learning-werk ruimte hebt met een Enter prise-editie, [gaat u naar de volgende sectie](#create-the-pipeline).
+If you have an Azure Machine Learning workspace with an Enterprise edition, [skip to the next section](#create-the-pipeline).
 
 [!INCLUDE [aml-create-portal](../../../includes/aml-create-in-portal-enterprise.md)]
 
 ### <a name="create-the-pipeline"></a>Maak de pijplijn
 
-1. Meld u aan bij [ml.Azure.com](https://ml.azure.com)en selecteer de werk ruimte waarmee u wilt werken.
+1. Sign in to [ml.azure.com](https://ml.azure.com), and select the workspace you want to work with.
 
-1. Selecteer **ontwerp functie**.
+1. Select **Designer**.
 
-    ![Scherm afbeelding van de Visual-werk ruimte met weer gave van toegang tot de ontwerp functie](./media/ui-tutorial-automobile-price-train-score/launch-visual-interface.png)
+    ![Screenshot of the visual workspace showing how to access the designer](./media/tutorial-designer-automobile-price-train-score/launch-visual-interface.png)
 
-1. Selecteer **eenvoudig te gebruiken vooraf gedefinieerde modules**.
+1. Select **Easy-to-use prebuilt modules**.
 
-1. Selecteer de standaard pijplijn naam **pijplijn die is gemaakt-aan** de bovenkant van het canvas. Wijzig de naam in een betekenis volle waarde. Een voor beeld is *prijs voorspellingen voor auto*. De naam hoeft niet uniek te zijn.
+1. Select the default pipeline name **Pipeline-Created-on** at the top of the canvas. Rename it to something meaningful. An example is *Automobile price prediction*. De naam hoeft niet uniek te zijn.
 
 ## <a name="import-data"></a>Gegevens importeren
 
-Er zijn verschillende voorbeeld gegevens sets die zijn opgenomen in de ontwerp functie waarmee u kunt experimenteren. Gebruik voor deze zelf studie **Auto Mobile price data (RAW)** . 
+There are several sample datasets included in the designer for you to experiment with. For this tutorial, use **Automobile price data (Raw)** . 
 
-1. Links van het pijplijn canvas is een palet met gegevens sets en modules. Selecteer **gegevens sets**en bekijk vervolgens de sectie voor **beelden** om de beschik bare voorbeeld gegevens sets weer te geven.
+1. To the left of the pipeline canvas is a palette of datasets and modules. Select **Datasets**, and then view the **Samples** section to view the available sample datasets.
 
-1. Selecteer de prijs gegevens van de gegevensset **Auto Mobile (onbewerkt)** en sleep deze naar het canvas.
+1. Select the dataset **Automobile price data (Raw)** , and drag it onto the canvas.
 
-   ![Gegevens naar canvas slepen](./media/ui-tutorial-automobile-price-train-score/drag-data.gif)
+   ![Drag data to canvas](./media/tutorial-designer-automobile-price-train-score/drag-data.gif)
 
 ### <a name="visualize-the-data"></a>De gegevens visualiseren
 
-U kunt de gegevens visualiseren om inzicht te krijgen in de gegevensset die u gaat gebruiken.
+You can visualize the data to understand the dataset that you'll use.
 
-1. Selecteer de module **Auto Mobile price data (RAW)** .
+1. Select the **Automobile price data (Raw)** module.
 
-1. Selecteer **uitvoer**in het deel venster Eigenschappen rechts van het canvas.
+1. In the properties pane to the right of the canvas, select **Outputs**.
 
-1. Selecteer het pictogram van de grafiek om de gegevens te visualiseren.
+1. Select the graph icon to visualize the data.
 
-    ![De gegevens visualiseren](./media/ui-tutorial-automobile-price-train-score/visualize-data.png)
+    ![De gegevens visualiseren](./media/tutorial-designer-automobile-price-train-score/visualize-data.png)
 
-1. Selecteer de verschillende kolommen in het venster gegevens om informatie over elke kolom weer te geven.
+1. Select the different columns in the data window to view information about each one.
 
-    Elke rij vertegenwoordigt een auto en de variabelen die aan elke auto zijn gekoppeld, worden weer gegeven als kolommen. Deze gegevensset bevat 205 rijen en 26 kolommen.
+    Each row represents an automobile, and the variables associated with each automobile appear as columns. There are 205 rows and 26 columns in this dataset.
 
 ## <a name="prepare-data"></a>Gegevens voorbereiden
 
-Gegevens sets vereisen doorgaans een voor verwerking vóór de analyse. Mogelijk hebt u enkele ontbrekende waarden gezien toen u de gegevensset inspecteert. Deze ontbrekende waarden moeten worden opgeschoond zodat het model de gegevens op de juiste wijze kan analyseren.
+Datasets typically require some preprocessing before analysis. You might have noticed some missing values when you inspected the dataset. These missing values must be cleaned so that the model can analyze the data correctly.
 
 ### <a name="remove-a-column"></a>Een kolom verwijderen
 
-Wanneer u een model traint, moet u iets doen over de gegevens die ontbreken. In deze gegevensset ontbreken er veel waarden in de kolom **normaled-verliezen** , dus sluit u die kolom van het model niet samen.
+When you train a model, you have to do something about the data that's missing. In this dataset, the **normalized-losses** column is missing many values, so you exclude that column from the model altogether.
 
-1. Voer in het zoekvak boven aan het palet **selecteren** in om de module **select columns in dataset** te vinden.
+1. Enter **Select** in the search box at the top of the palette to find the **Select Columns in Dataset** module.
 
-1. Sleep de module **kolommen in gegevensset selecteren** naar het canvas. Verwijder de module onder de module DataSet.
+1. Drag the **Select Columns in Dataset** module onto the canvas. Drop the module below the dataset module.
 
-1. Verbind de gegevensset **Auto Mobile price data (RAW)** met de module **select columns in dataset** . Sleep vanuit de uitvoer poort van de gegevensset, de kleine cirkel aan de onderkant van de gegevensset op het canvas, naar de invoer poort van **geselecteerde kolommen in gegevensset**, die de kleine cirkel boven aan de module vormt.
+1. Connect the **Automobile price data (Raw)** dataset to the **Select Columns in Dataset** module. Drag from the dataset's output port, which is the small circle at the bottom of the dataset on the canvas, to the input port of **Select Columns in Dataset**, which is the small circle at the top of the module.
 
     > [!TIP]
-    > U maakt een stroom met gegevens via uw pijp lijn wanneer u de uitvoer poort van een module verbindt met een andere invoer poort.
+    > You create a flow of data through your pipeline when you connect the output port of one module to an input port of another.
     >
 
-    ![Modules verbinden](./media/ui-tutorial-automobile-price-train-score/connect-modules.gif)
+    ![Connect modules](./media/tutorial-designer-automobile-price-train-score/connect-modules.gif)
 
-1. Selecteer de module **select columns in dataset** .
+1. Select the **Select Columns in Dataset** module.
 
-1. Selecteer in het deel venster Eigenschappen rechts van het canvas de optie **para meters** > **kolom bewerken**.
+1. In the properties pane to the right of the canvas, select **Parameters** > **Edit column**.
 
-1. Selecteer de **+** om een nieuwe regel toe te voegen.
+1. Select the **+** to add a new rule.
 
-1. Selecteer in de vervolg keuzelijst de optie **uitsluiten** en **kolom namen**.
+1. From the drop-down menu, select **Exclude** and **Column names**.
     
-1. Voer in het tekstvak *genormaliseerde verliezen* in.
+1. Enter *normalized-losses* in the text box.
 
-1. In de rechter benedenhoek selecteert u **Opslaan** om de kolom kiezer te sluiten.
+1. In the lower right, select **Save** to close the column selector.
 
-    ![Een kolom uitsluiten](./media/ui-tutorial-automobile-price-train-score/exclude-column.png)
+    ![Exclude a column](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
         
-    Het deel venster met eigenschappen geeft aan dat de kolom **genormaliseerde-verliezen** is uitgesloten.
+    The properties pane shows that the **normalized-losses** column is excluded.
 
-1. Selecteer de module **select columns in dataset** . 
+1. Select the **Select Columns in Dataset** module. 
 
-1. Selecteer in het deel venster Eigenschappen de optie **para meters** > **Opmerking** en voer *normaal verlies uitsluiten*in.
+1. In the properties pane, select **Parameters** > **Comment** and enter *Exclude normalized losses*.
 
-### <a name="clean-missing-data"></a>Ontbrekende gegevens opschonen
+### <a name="clean-missing-data"></a>Clean missing data
 
-Uw gegevensset heeft nog steeds ontbrekende waarden nadat u de kolom **normaled-verliezen** hebt verwijderd. U kunt de resterende ontbrekende gegevens verwijderen met behulp van de module **clean Missing Data** .
+Your dataset still has missing values after you remove the **normalized-losses** column. You can remove the remaining missing data by using the **Clean Missing Data** module.
 
 > [!TIP]
-> Het schoonmaken van de ontbrekende waarden van invoer gegevens is een vereiste voor het gebruik van de meeste modules in de ontwerp functie.
+> Cleaning the missing values from input data is a prerequisite for using most of the modules in the designer.
 
-1. Voer **schone** in het zoekvak in om de module **clean Missing Data** te vinden.
+1. Enter **Clean** in the search box to find the **Clean Missing Data** module.
 
-1. Sleep de module **clean Missing Data** naar het pijp lijn-canvas. Verbind deze met de module **select columns in dataset** . 
+1. Drag the **Clean Missing Data** module to the pipeline canvas. Connect it to the **Select Columns in Dataset** module. 
 
-1. Selecteer in het deel venster Eigenschappen de optie **hele rij verwijderen** onder **reinigings modus**.
+1. In the properties pane, select **Remove entire row** under **Cleaning mode**.
 
-1. **In het vak deel** venster met eigenschappen geeft u de *rijen ontbrekende waarde verwijderen*op. 
+1. In the properties pane **Comment** box, enter *Remove missing value rows*. 
 
-    De pijp lijn moet er nu ongeveer als volgt uitzien:
+    Your pipeline should now look something like this:
     
-    ![Select-kolom](./media/ui-tutorial-automobile-price-train-score/pipeline-clean.png)
+    ![Select-column](./media/tutorial-designer-automobile-price-train-score/pipeline-clean.png)
 
-## <a name="train-a-machine-learning-model"></a>Een machine learning model trainen
+## <a name="train-a-machine-learning-model"></a>Train a machine learning model
 
-Nu de gegevens zijn verwerkt, kunt u een voorspellend model trainen.
+Now that the data is processed, you can train a predictive model.
 
 ### <a name="select-an-algorithm"></a>Een algoritme selecteren
 
-*Classificatie* en *regressie* zijn twee soorten beheerde machine learning-algoritmen. Met classificatie wordt een antwoord voor speld op basis van een gedefinieerde set categorieën, zoals een kleur zoals rood, blauw of groen. Regressie wordt gebruikt om een getal te voorspellen.
+*Classificatie* en *regressie* zijn twee soorten beheerde machine learning-algoritmen. Classification predicts an answer from a defined set of categories, such as a color like red, blue, or green. Regressie wordt gebruikt om een getal te voorspellen.
 
-Omdat u de prijs wilt voors pellen, wat een getal is, kunt u een regressie algoritme gebruiken. Voor dit voor beeld gebruikt u een lineair regressie model.
+Because you want to predict price, which is a number, you can use a regression algorithm. For this example, you use a linear regression model.
 
-### <a name="split-the-data"></a>De gegevens splitsen
+### <a name="split-the-data"></a>Split the data
 
-Splits uw gegevens in twee afzonderlijke gegevens sets om het model te trainen en te testen.
+Split your data into two separate datasets for training the model and testing it.
 
-1. Voer **Split data** in het zoekvak in om de module **Split data** te vinden. Maak verbinding met de poort links van de module **clean Missing Data** .
+1. Enter **split data** in the search box to find the **Split Data** module. Connect it to the left port of the **Clean Missing Data** module.
 
-1. Selecteer de module **Split data** .
+1. Select the **Split Data** module.
 
-1. Stel in het deel venster Eigenschappen het **gedeelte van de rijen in de eerste uitvoer gegevensset** in op 0,7.
+1. In the properties pane, set the **Fraction of rows in the first output dataset** to 0.7.
 
-    Met deze optie splitst u 70 procent van de gegevens om het model te trainen en 30 procent voor het testen ervan.
+    This option splits 70 percent of the data to train the model and 30 percent for testing it.
 
-1. Voer in **het vak deel** venster met eigenschappen *de gegevensset in de trainingsset (0,7) en de testset (0,3)* .
+1. In the properties pane **Comment** box, enter *Split the dataset into training set (0.7) and test set (0.3)* .
 
 ### <a name="train-the-model"></a>Het model trainen
 
-Train het model door het een set gegevens te geven die de prijs bevat. Het model scant de gegevens en zoekt naar correlaties tussen de functies van een auto en de prijs voor het bouwen van een model.
+Train the model by giving it a set of data that includes the price. The model scans through the data and looks for correlations between a car's features and its price to construct a model.
 
-1. Als u het leer algoritme wilt selecteren, wist u het zoekvak van het module palet.
+1. To select the learning algorithm, clear your module palette search box.
 
-1. Vouw **machine learning algoritmen**uit.
+1. Expand **Machine Learning Algorithms**.
     
-    Met deze optie worden verschillende categorieën modules weer gegeven die u kunt gebruiken voor het initialiseren van leer algoritmen.
+    This option displays several categories of modules that you can use to initialize learning algorithms.
 
-1. Selecteer **regressie** > **lineaire regressie**en sleep deze naar het pijp lijn-canvas.
+1. Select **Regression** > **Linear Regression**, and drag it to the pipeline canvas.
 
-1. Zoek de module **Train model** en sleep deze naar het pijp lijn-canvas. 
+1. Find and drag the **Train Model** module to the pipeline canvas. 
 
-1. Koppel de uitvoer van de module **Linear Regression** aan de linkerkant van de module **Train model** .
+1. Connect the output of the **Linear Regression** module to the left input of the **Train Model** module.
 
-1. Verbind de resultaten van de trainings gegevens (links poort) van de module **gesplitste gegevens** met de juiste invoer van de module **Train model** .
+1. Connect the training data output (left port) of the **Split Data** module to the right input of the **Train Model** module.
 
-    ![Scherm opname van de juiste configuratie van de Train model-module. De lineaire regressie-module maakt verbinding met de linker poort van Train model module en de module voor gesplitste gegevens maakt verbinding met de juiste poort van Train model](./media/ui-tutorial-automobile-price-train-score/pipeline-train-model.png)
+    ![Screenshot showing the correct configuration of the Train Model module. The Linear Regression module connects to left port of Train Model module and the Split Data module connects to right port of Train Model](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
-1. Selecteer de module **Train model** .
+1. Select the **Train Model** module.
 
-1. Selecteer in het deel venster Eigenschappen de optie **kolom kiezer bewerken** .
+1. In the properties pane, select **Edit column** selector.
 
-1. Vouw in het dialoog venster **Label kolom** de vervolg keuzelijst uit en selecteer **kolom namen**. 
+1. In the **Label column** dialog box, expand the drop-down menu and select **Column names**. 
 
-1. Voer in het tekstvak de *prijs*in. Prijs is de waarde die uw model gaat voors pellen.
+1. In the text box, enter *price*. Price is the value that your model is going to predict.
 
-    Uw pijp lijn moet er als volgt uitzien:
+    Your pipeline should look like this:
 
-    ![Scherm opname van de juiste configuratie van de pijp lijn na het toevoegen van de module Train model.](./media/ui-tutorial-automobile-price-train-score/pipeline-train-graph.png)
+    ![Screenshot showing the correct configuration of the pipeline after adding the Train Model module.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Een machine learning model evalueren
+## <a name="evaluate-a-machine-learning-model"></a>Evaluate a machine learning model
 
-Nadat u uw model hebt getraind met 70 procent van de gegevens, kunt u het gebruiken om de andere 30 procent te scoren om te zien hoe goed uw model functioneert.
+After you train your model by using 70 percent of the data, you can use it to score the other 30 percent to see how well your model functions.
 
-1. Voer het *score model* in het zoekvak in om de module **score model** te vinden. Sleep de module naar het pijp lijn-canvas. 
+1. Enter *score model* in the search box to find the **Score Model** module. Drag the module to the pipeline canvas. 
 
-1. Koppel de uitvoer van de module **Train model** aan de linker invoer poort van het **score model**. Koppel de test gegevens uitvoer (rechter poort) van de module **Split data** aan de juiste invoer poort van het **score model**.
+1. Connect the output of the **Train Model** module to the left input port of **Score Model**. Connect the test data output (right port) of the **Split Data** module to the right input port of **Score Model**.
 
-1. Geef *evalueren* op in het zoekvak om de module **Evaluate model** te vinden. Sleep de module naar het pijp lijn-canvas. 
+1. Enter *evaluate* in the search box to find the **Evaluate Model** module. Drag the module to the pipeline canvas. 
 
-1. Koppel de uitvoer van de module **score model** aan de linker invoer van het **Evaluate-model**. 
+1. Connect the output of the **Score Model** module to the left input of **Evaluate Model**. 
 
-    De uiteindelijke pijp lijn moet er ongeveer als volgt uitzien:
+    The final pipeline should look something like this:
 
-    ![Scherm afbeelding met de juiste configuratie van de pijp lijn.](./media/ui-tutorial-automobile-price-train-score/pipeline-final-graph.png)
+    ![Screenshot showing the correct configuration of the pipeline.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
 ### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
@@ -224,29 +224,29 @@ Nadat u uw model hebt getraind met 70 procent van de gegevens, kunt u het gebrui
 
 ### <a name="view-results"></a>Resultaten weergeven
 
-Nadat de uitvoering is voltooid, kunt u de resultaten van de pijplijn uitvoering bekijken. 
+After the run completes, you can view the results of the pipeline run. 
 
-1. Selecteer de module **score model** om de uitvoer ervan weer te geven.
+1. Select the **Score Model** module to view its output.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > **visualiseren**.
+1. In the properties pane, select **Outputs** > **Visualize**.
 
-    Hier vindt u de voorspelde prijzen en de werkelijke prijzen van de test gegevens.
+    Here you can see the predicted prices and the actual prices from the testing data.
 
-    ![Scherm afbeelding van de uitvoer visualisatie die de kolom met de gescoorde label markeert](./media/ui-tutorial-automobile-price-train-score/score-result.png)
+    ![Screenshot of the output visualization highlighting the Scored Label column](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
-1. Selecteer de module **Evaluate model** om de uitvoer ervan weer te geven.
+1. Select the **Evaluate Model** module to view its output.
 
-1. Selecteer in het deel venster Eigenschappen de optie **uitvoer** > **visualiseren**.
+1. In the properties pane, select **Output** > **Visualize**.
 
-De volgende statistieken worden weer gegeven voor uw model:
+The following statistics are shown for your model:
 
-* **Gemiddelde absolute fout (Mae)** : het gemiddelde van absolute fouten. Een fout is het verschil tussen de voorspelde waarde en de werkelijke waarde.
-* **Root mean error (RMSE)** : de vierkantswortel van het gemiddelde van de gekwadrateerde fouten van voor spellingen die zijn aangebracht in de test-gegevensset.
+* **Mean Absolute Error (MAE)** : The average of absolute errors. An error is the difference between the predicted value and the actual value.
+* **Root Mean Squared Error (RMSE)** : The square root of the average of squared errors of predictions made on the test dataset.
 * **Relative Absolute Error**: het gemiddelde aan absolute fouten ten opzichte van het absolute verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
 * **Relative Squared Error**: het gemiddelde aan gekwadrateerde fouten ten opzichte van het gekwadrateerde verschil tussen de werkelijke waarden en het gemiddelde van alle werkelijke waarden.
-* **Determinatie coëfficiënt**: ook wel bekend als R-kwadraat, geeft deze statistische waarde aan hoe goed een model past bij de gegevens.
+* **Coefficient of Determination**: Also known as the R squared value, this statistical metric indicates how well a model fits the data.
 
-Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleinere waarde geeft aan dat de voor spellingen dichter bij de werkelijke waarden liggen. Voor de coëfficiënt van de bepaling is de waarde een (1,0), hoe beter de voor spellingen.
+Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. A smaller value indicates that the predictions are closer to the actual values. For the coefficient of determination, the closer its value is to one (1.0), the better the predictions.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -254,14 +254,14 @@ Voor elk van de foutstatistieken geldt: hoe kleiner hoe beter. Een kleinere waar
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deel één van deze zelf studie hebt u de volgende taken uitgevoerd:
+In part one of this tutorial, you completed the following tasks:
 
 * Een pijplijn maken
 * De gegevens voorbereiden
 * Het model trainen
-* Het model beoordelen en evalueren
+* Score and evaluate the model
 
-In deel twee leert u hoe u uw model implementeert als een real-time-eind punt.
+In part two, you'll learn how to deploy your model as a real-time endpoint.
 
 > [!div class="nextstepaction"]
-> [Door gaan met de implementatie van modellen](tutorial-designer-automobile-price-deploy.md)
+> [Continue to deploying models](tutorial-designer-automobile-price-deploy.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Kintone | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Kintone.
+title: 'Tutorial: Azure Active Directory integration with Kintone | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Kintone.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: a9245ab5a2d51ee3995ff0c614cafaebdc20d00f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6786b44aca9ceed3cec5daf0f858a51e2dd12833
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67098807"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227585"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Zelfstudie: Azure Active Directory-integratie met Kintone
+# <a name="tutorial-azure-active-directory-integration-with-kintone"></a>Tutorial: Azure Active Directory integration with Kintone
 
-In deze zelfstudie leert u hoe u Kintone integreren met Azure Active Directory (Azure AD).
-Kintone integreren met Azure AD biedt u de volgende voordelen:
+In this tutorial, you learn how to integrate Kintone with Azure Active Directory (Azure AD).
+Integrating Kintone with Azure AD provides you with the following benefits:
 
-* U kunt beheren in Azure AD die toegang tot Kintone heeft.
-* U kunt uw gebruikers worden automatisch aangemeld voor Kintone (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* You can control in Azure AD who has access to Kintone.
+* You can enable your users to be automatically signed-in to Kintone (Single Sign-On) with their Azure AD accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Kintone, moet u de volgende items:
+To configure Azure AD integration with Kintone, you need the following items:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding Kintone ingeschakeld abonnement
+* Een Azure AD-abonnement If you don't have an Azure AD environment, you can get a [free account](https://azure.microsoft.com/free/)
+* Kintone single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor Kintone **SP** gestart door SSO
+* Kintone supports **SP** initiated SSO
 
-## <a name="adding-kintone-from-the-gallery"></a>Kintone uit de galerie toe te voegen
+## <a name="adding-kintone-from-the-gallery"></a>Adding Kintone from the gallery
 
-Voor het configureren van de integratie van Kintone in Azure AD, moet u Kintone uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of Kintone into Azure AD, you need to add Kintone from the gallery to your list of managed SaaS apps.
 
-**Als u wilt toevoegen Kintone uit de galerie, moet u de volgende stappen uitvoeren:**
+**To add Kintone from the gallery, perform the following steps:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van Kintone in Azure AD, moet u Kintone 
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Kintone**, selecteer **Kintone** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. In the search box, type **Kintone**, select **Kintone** from result panel then click **Add** button to add the application.
 
-     ![Kintone in de lijst met resultaten](common/search-new-app.png)
+     ![Kintone in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Kintone op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Kintone tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with Kintone based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Kintone needs to be established.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met Kintone, moet u de volgende bouwstenen voltooien:
+To configure and test Azure AD single sign-on with Kintone, you need to complete the following building blocks:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Kintone](#configure-kintone-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Configure Kintone Single Sign-On](#configure-kintone-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker Kintone](#create-kintone-test-user)**  : als u wilt een equivalent van Britta Simon in Kintone die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Create Kintone test user](#create-kintone-test-user)** - to have a counterpart of Britta Simon in Kintone that is linked to the Azure AD representation of user.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Kintone, moet u de volgende stappen uitvoeren:
+To configure Azure AD single sign-on with Kintone, perform the following steps:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Kintone** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Kintone** application integration page, select **Single sign-on**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kintone, moet u de v
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Kintone domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![Kintone Domain and URLs single sign-on information](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.kintone.com`
 
@@ -115,13 +115,13 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kintone, moet u de v
     | `https://<companyname>.kintone.com` |
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [Kintone Client ondersteuningsteam](https://www.kintone.com/contact/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact [Kintone Client support team](https://www.kintone.com/contact/) to get these values. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **Kintone instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. On the **Set up Kintone** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -131,35 +131,35 @@ Voor het configureren van Azure AD eenmalige aanmelding met Kintone, moet u de v
 
     c. Afmeldings-URL
 
-### <a name="configure-kintone-single-sign-on"></a>Kintone voor eenmalige aanmelding configureren
+### <a name="configure-kintone-single-sign-on"></a>Configure Kintone Single Sign-On
 
-1. In een ander browservenster, meld u aan bij uw **Kintone** bedrijf site als beheerder.
+1. In a different web browser window, sign into your **Kintone** company site as an administrator.
 
-1. Klik op **Instellingenpictogram**.
+1. Click **Settings icon**.
 
-    ![Settings](./media/kintone-tutorial/ic785879.png "Settings")
+    ![Instellingen](./media/kintone-tutorial/ic785879.png "Instellingen")
 
-1. Klik op **gebruikers & Systeembeheer**.
+1. Click **Users & System Administration**.
 
-    ![Gebruikers & Systeembeheer](./media/kintone-tutorial/ic785880.png "gebruikers & Systeembeheer")
+    ![Users & System Administration](./media/kintone-tutorial/ic785880.png "Users & System Administration")
 
-1. Onder **Systeembeheer \> Security** klikt u op **aanmelding**.
+1. Under **System Administration \> Security** click **Login**.
 
-    ![Login](./media/kintone-tutorial/ic785881.png "Login")
+    ![Aanmelding](./media/kintone-tutorial/ic785881.png "Aanmelden")
 
-1. Klik op **inschakelen SAML-verificatie**.
+1. Click **Enable SAML authentication**.
 
-    ![SAML-verificatie](./media/kintone-tutorial/ic785882.png "SAML-verificatie")
+    ![SAML Authentication](./media/kintone-tutorial/ic785882.png "SAML Authentication")
 
-1. Voer de volgende stappen uit in de sectie SAML-verificatie:
+1. In the SAML Authentication section, perform the following steps:
 
-    ![SAML-verificatie](./media/kintone-tutorial/ic785883.png "SAML-verificatie")
+    ![SAML Authentication](./media/kintone-tutorial/ic785883.png "SAML Authentication")
 
     a. Plak in het tekstvak **Aanmeldings-URL** de waarde van **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 
-    b. Plak in het tekstvak **Afmeldings-URL** de waarde van **Afmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
+    b. Plak in het tekstvak **Afmeldings-URL** de waarde van **Afmeldings-URL**, die u hebt gekopieerd uit Azure Portal.
 
-    c. Klik op **Bladeren** uw gedownloade certificaat uploaden vanuit Azure portal.
+    c. Click **Browse** to upload your downloaded certificate file from Azure portal.
 
     d. Klik op **Opslaan**.
 
@@ -181,26 +181,26 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`  
+    b. In the **User name** field type `brittasimon@yourcompanydomain.extension`  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen voor Kintone.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Kintone.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Kintone**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Kintone**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Kintone**.
+2. In the applications list, select **Kintone**.
 
-    ![De koppeling Kintone in de lijst met toepassingen](common/all-applications.png)
+    ![The Kintone link in the Applications list](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -214,51 +214,51 @@ In deze sectie schakelt u Britta Simon gebruiken Azure eenmalige aanmelding door
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-kintone-test-user"></a>Kintone testgebruiker maken
+### <a name="create-kintone-test-user"></a>Create Kintone test user
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden voor Kintone, moeten ze worden ingericht voor Kintone. In het geval van Kintone is inrichten een handmatige taak.
+To enable Azure AD users to sign in to Kintone, they must be provisioned into Kintone. In the case of Kintone, provisioning is a manual task.
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
 
-1. Aanmelden bij uw **Kintone** bedrijf site als beheerder.
+1. Sign in to your **Kintone** company site as an administrator.
 
-1. Klik op **Instellingenpictogram**.
+1. Click **Settings icon**.
 
-    ![Settings](./media/kintone-tutorial/ic785879.png "Settings")
+    ![Instellingen](./media/kintone-tutorial/ic785879.png "Instellingen")
 
-1. Klik op **gebruikers & Systeembeheer**.
+1. Click **Users & System Administration**.
 
-    ![Gebruikers & Systeembeheer](./media/kintone-tutorial/ic785880.png "gebruiker & Systeembeheer")
+    ![User & System Administration](./media/kintone-tutorial/ic785880.png "User & System Administration")
 
-1. Onder **Gebruikersbeheer**, klikt u op **afdelingen en gebruikers**.
+1. Under **User Administration**, click **Departments & Users**.
 
-    ![Afdeling & gebruikers](./media/kintone-tutorial/ic785888.png "afdeling en gebruikers")
+    ![Department & Users](./media/kintone-tutorial/ic785888.png "Department & Users")
 
 1. Klik op **New User**.
 
-    ![Nieuwe gebruikers](./media/kintone-tutorial/ic785889.png "nieuwe gebruikers")
+    ![New Users](./media/kintone-tutorial/ic785889.png "New Users")
 
-1. In de **nieuwe gebruiker** sectie, voert u de volgende stappen uit:
+1. In the **New User** section, perform the following steps:
 
-    ![Nieuwe gebruikers](./media/kintone-tutorial/ic785890.png "nieuwe gebruikers")
+    ![New Users](./media/kintone-tutorial/ic785890.png "New Users")
 
-    a. Typ een **weergavenaam**, **aanmeldingsnaam**, **nieuw wachtwoord**, **wachtwoord bevestigen**, **e-mailadres**, en andere details van een geldige Azure AD account dat u wilt inrichten in de bijbehorende tekstvakken.
+    a. Type a **Display Name**, **Login Name**, **New Password**, **Confirm Password**, **E-mail Address**, and other details of a valid Azure AD account you want to provision into the related textboxes.
 
     b. Klik op **Opslaan**.
 
 > [!NOTE]
-> U kunt alle andere Kintone gebruiker-account maken van hulpprogramma's of API's geleverd door Kintone aan inrichten AAD-gebruikersaccounts.
+> You can use any other Kintone user account creation tools or APIs provided by Kintone to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Kintone in het toegangsvenster, moet u worden automatisch aangemeld bij de Kintone waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the Kintone tile in the Access Panel, you should be automatically signed in to the Kintone for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

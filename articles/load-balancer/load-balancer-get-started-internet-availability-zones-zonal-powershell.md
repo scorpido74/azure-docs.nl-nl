@@ -1,7 +1,7 @@
 ---
-title: Een Load Balancer met zonegebonden-frontend maken-Azure PowerShell
-titlesuffix: Azure Load Balancer
-description: Meer informatie over het maken van Standard Load Balancer met een zonegebonden-frontend met Azure PowerShell
+title: Create a Load Balancer with zonal frontend - Azure PowerShell
+titleSuffix: Azure Load Balancer
+description: Learn how to create Standard Load Balancer with a zonal frontend using Azure PowerShell
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
-ms.openlocfilehash: a2c637ddbf5b7f5883016afe4a6d58ad9752cfc5
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 1d05b130a98ce816d070bc3ad16e25b867d7dc8a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275118"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215124"
 ---
-#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Een Standard Load Balancer met zonegebonden-frontend maken met behulp van Azure PowerShell
+#  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-powershell"></a>Create a Standard Load Balancer with zonal frontend using Azure PowerShell
 
-In dit artikel wordt beschreven hoe u een openbaar [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) maakt met een zonegebonden-frontend met behulp van een openbaar IP-adres. Zie voor meer informatie over de werking van beschikbaarheidszones met Standard Load Balancer, [Standard Load Balancer en Beschikbaarheidsset zones](load-balancer-standard-availability-zones.md). 
+This article steps through creating a public [Standard Load Balancer](https://aka.ms/azureloadbalancerstandard) with a zonal frontend using a Public IP Standard address. To understand how availability zones work with Standard Load Balancer, see [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md). 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 > [!NOTE]
-> Ondersteuning voor Beschikbaarheidszones is beschikbaar voor geselecteerde Azure-resources en regio's en groottefamilies van de virtuele machine. Zie voor meer informatie over hoe u aan de slag en welke Azure-resources, -regio's en VM-groottefamilies u ze met uitproberen kunt, [overzicht van Beschikbaarheidszones](https://docs.microsoft.com/azure/availability-zones/az-overview). Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+> Support for Availability Zones is available for select Azure resources and regions, and VM size families. For more information on how to get started, and which Azure resources, regions, and VM size families you can try availability zones with, see [Overview of Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview). Voor ondersteuning kunt u vragen stellen op [StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) of [een Azure-ondersteuningsticket openen](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -42,39 +42,39 @@ Connect-AzAccount
 
 ## <a name="create-resource-group"></a>Een resourcegroep maken
 
-Maak een resourcegroep met de volgende opdracht:
+Create a Resource Group using the following command:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroupZLB -Location westeurope
 ```
 
-## <a name="create-a-public-ip-standard"></a>Maak een openbaar IP-standaard 
-Maak een openbaar IP-standaard met de volgende opdracht:
+## <a name="create-a-public-ip-standard"></a>Create a public IP Standard 
+Create a Public IP Standard using the following command:
 
 ```azurepowershell-interactive
 $publicIp = New-AzPublicIpAddress -ResourceGroupName myResourceGroupZLB -Name 'myPublicIPZonal' `
   -Location westeurope -AllocationMethod Static -Sku Standard -zone 1
 ```
 
-## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Maak een front-end-IP-configuratie voor de website
+## <a name="create-a-front-end-ip-configuration-for-the-website"></a>Create a front-end IP configuration for the website
 
-Maak een front-end-IP-configuratie met de volgende opdracht:
+Create a frontend IP configuration using the following command:
 
 ```azurepowershell-interactive
 $feip = New-AzLoadBalancerFrontendIpConfig -Name 'myFrontEnd' -PublicIpAddress $publicIp
 ```
 
-## <a name="create-the-back-end-address-pool"></a>De back-end-adresgroep maken
+## <a name="create-the-back-end-address-pool"></a>Create the back-end address pool
 
-Maak een back-end-adresgroep op met de volgende opdracht uit:
+Create a backend address pool using the following command:
 
 ```azurepowershell-interactive
 $bepool = New-AzLoadBalancerBackendAddressPoolConfig -Name 'myBackEndPool'
 ```
 
-## <a name="create-a-load-balancer-probe-on-port-80"></a>Maken van een load balancer-test op poort 80
+## <a name="create-a-load-balancer-probe-on-port-80"></a>Create a load balancer probe on port 80
 
-Maak een statustest op poort 80 voor de load balancer met behulp van de volgende opdracht uit:
+Create a health probe on port 80 for the load balancer using the following command:
 
 ```azurepowershell-interactive
 $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Port 80 `
@@ -82,14 +82,14 @@ $probe = New-AzLoadBalancerProbeConfig -Name 'myHealthProbe' -Protocol Http -Por
 ```
 
 ## <a name="create-a-load-balancer-rule"></a>Een load balancer-regel maken
- Maak een load balancer-regel met de volgende opdracht:
+ Create a load balancer rule using the following command:
 
 ```azurepowershell-interactive
    $rule = New-AzLoadBalancerRuleConfig -Name HTTP -FrontendIpConfiguration $feip -BackendAddressPool  $bepool -Probe $probe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ## <a name="create-a-load-balancer"></a>Een load balancer maken
-Maak een Standard Load Balancer met behulp van de volgende opdracht:
+Create a Standard Load Balancer using the following command:
 
 ```azurepowershell-interactive
 $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBalancer' -Location westeurope `
@@ -98,4 +98,4 @@ $lb = New-AzLoadBalancer -ResourceGroupName myResourceGroupZLB -Name 'MyLoadBala
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-- Meer informatie over [Standard Load Balancer en Beschikbaarheidsset zones](load-balancer-standard-availability-zones.md).
+- Learn more about [Standard Load Balancer and Availability zones](load-balancer-standard-availability-zones.md).

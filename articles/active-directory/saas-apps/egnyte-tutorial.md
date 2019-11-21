@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Egnyte | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Egnyte | Microsoft Docs'
 description: Leer hoe u eenmalige aanmelding tussen Azure Active Directory en Egnyte configureert.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 2/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e53f3adbf7f9909d3590a0bc34dadc49d498291d
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7201b7d3f9f7e8333b18a087f58b6211101b1304
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157294"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233558"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Zelf studie: integratie Azure Active Directory met Egnyte
+# <a name="tutorial-azure-active-directory-integration-with-egnyte"></a>Tutorial: Azure Active Directory integration with Egnyte
 
 In deze zelfstudie leert u hoe u Egnyte kunt integreren met Azure AD (Active Directory).
 De integratie van Egnyte met Azure AD heeft de volgende voordelen:
@@ -143,7 +143,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
 
 5. Voer in de sectie **Verificatie voor eenmalige aanmelding** de volgende stappen uit:
 
-    ![Verificatie voor eenmalige aanmelding](./media/egnyte-tutorial/ic787822.png "Verificatie voor eenmalige aanmelding")   
+    ![Single Sign On Authentication](./media/egnyte-tutorial/ic787822.png "Single Sign On Authentication")   
     
     a. Selecteer **SAML 2.0** als **Verificatie voor eenmalige aanmelding**.
    
@@ -179,7 +179,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -228,9 +228,9 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Egnyte, moeten ze w
 
 4. Voer in de sectie **Nieuwe hoofdgebruiker** de volgende stappen uit:
     
-    ![Nieuwe standaard gebruiker](./media/egnyte-tutorial/ic787825.png "Nieuwe standaard gebruiker")   
+    ![New Standard User](./media/egnyte-tutorial/ic787825.png "New Standard User")   
 
-    a. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **Brittasimon\@contoso.com**.
+    a. In **Email** text box, enter the email of user like **Brittasimon\@contoso.com**.
 
     b. Voer in het tekstvak **Gebruikersnaam** de gebruikersnaam van een gebruiker zoals **Brittasimon**.
 
@@ -243,7 +243,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Egnyte, moeten ze w
     >
 
 >[!NOTE]
->U kunt ook andere API’s of hulpprogramma’s voor het maken van Egnyte-gebruikersaccounts die worden geleverd met Egnyte, gebruiken om AAD-gebruikersaccounts in te richten.
+>You can use any other Egnyte user account creation tools or APIs provided by Egnyte to provision Azure AD user accounts.
 >
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
@@ -258,5 +258,5 @@ Wanneer u in het toegangsvenster op de tegel Egnyte klikt, wordt u automatisch a
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -1,16 +1,16 @@
 ---
-title: Een blauw druk maken met Power shell
-description: Gebruik Azure-blauw drukken om artefacten te maken, te definiëren en te implementeren met behulp van de Power shell.
+title: 'Quickstart: Create a blueprint with PowerShell'
+description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts using the PowerShell.
 ms.date: 08/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 4cc181a7e0b07448d6dd538cfb1621d1efa43a80
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 5fdda0a995388a6f0d12d1b8441a257eecc43374
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960429"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74217074"
 ---
-# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Snelstartgids: een Azure Blueprint definiëren en toewijzen met Power shell
+# <a name="quickstart-define-and-assign-an-azure-blueprint-with-powershell"></a>Quickstart: Define and Assign an Azure Blueprint with PowerShell
 
 Als u leert hoe u blauwdrukken in Azure maakt en toewijst, kunnen er algemene patronen worden gedefinieerd voor de ontwikkeling van herbruikbare en snel implementeerbare configuraties op basis van Resource Manager-sjablonen, beleid, beveiliging en meer. In deze zelfstudie leert u hoe u Azure Blueprints gebruikt om algemene taken uit te voeren met betrekking tot het maken, publiceren en toewijzen van een blauwdruk binnen uw organisatie, zoals:
 
@@ -26,18 +26,18 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als deze nog niet is geïnstalleerd, volgt u de instructies in [add de module AZ. Blue](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) voor het installeren en valideren van de module **AZ. blauw druk** van de PowerShell Gallery.
+If it isn't already installed, follow the instructions in [Add the Az.Blueprint module](./how-to/manage-assignments-ps.md#add-the-azblueprint-module) to install and validate the **Az.Blueprint** module from the PowerShell Gallery.
 
 ## <a name="create-a-blueprint"></a>Een blauwdruk maken
 
 De eerste stap bij het definiëren van een standaardpatroon voor naleving is om een blauwdruk samen te stellen uit de beschikbare resources. U maakt een blauwdruk met de naam MyBlueprint om de rol en de beleidstoewijzingen voor het abonnement te configureren. Vervolgens voegt u een resourcegroep en een Resource Manager-sjabloon toe en voegt u een roltoewijzing aan de resourcegroep toe.
 
 > [!NOTE]
-> Wanneer u Power shell gebruikt, wordt het object _Blue Print_ eerst gemaakt. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
+> When using PowerShell, the _blueprint_ object is created first. Voor elk _artefact_ dat wordt toegevoegd en parameters bevat, moeten de parameters vooraf worden gedefinieerd in de eerste _blauwdruk_.
 
-1. Maak het eerste _blauwdruk_object. De para meter **BlueprintFile** maakt deel uit van een JSON-bestand dat eigenschappen bevat over de blauw druk, alle resource groepen die moeten worden gemaakt en alle para meters op het niveau van de blauw druk. De parameters worden tijdens het toewijzen ingesteld en gebruikt door de artefacten die in latere stappen worden toegevoegd.
+1. Maak het eerste _blauwdruk_object. The **BlueprintFile** parameter takes a JSON file which includes properties about the blueprint, any resource groups to create, and all of the blueprint level parameters. De parameters worden tijdens het toewijzen ingesteld en gebruikt door de artefacten die in latere stappen worden toegevoegd.
 
-   - JSON-bestand-blauw druk. json
+   - JSON file - blueprint.json
 
      ```json
      {
@@ -97,7 +97,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Login first with Connect-AzAccount if not using Cloud Shell
@@ -107,14 +107,14 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      ```
 
      > [!NOTE]
-     > Gebruik de bestands naam _blauw druk. json_ bij het programmatisch maken van uw blauw druk definities.
-     > Deze bestands naam wordt gebruikt bij het aanroepen van [import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
+     > Use the filename _blueprint.json_ when creating your blueprint definitions programmatically.
+     > This file name is used when calling [Import-AzBlueprintWithArtifact](/powershell/module/az.blueprint/import-azblueprintwithartifact).
 
-     Het object Blue Print wordt standaard gemaakt in het standaard abonnement. Gebruik para meter **ManagementGroupId**om de beheer groep op te geven. Gebruik para meter **SubscriptionId**om het abonnement op te geven.
+     The blueprint object is created in the default subscription by default. To specify the management group, use parameter **ManagementGroupId**. To specify the subscription, use parameter **SubscriptionId**.
 
-1. Voeg de roltoewijzing toe aan het abonnement. De **ArtifactFile** definieert het _type_ artefact, de eigenschappen worden uitgelijnd op de roldefinitie-id en de principal-identiteiten worden door gegeven als een matrix met waarden. In het onderstaande voorbeeld worden de principal-identiteiten en de opgegeven rol geconfigureerd in een parameter die wordt ingesteld tijdens de toewijzing van de blauwdruk. In dit voorbeeld wordt de ingebouwde rol van _Inzender_ met een GUID van `b24988ac-6180-42a0-ab88-20f7382dd24c` gebruikt.
+1. Voeg de roltoewijzing toe aan het abonnement. The **ArtifactFile** defines the _kind_ of artifact, the properties align to the role definition identifier, and the principal identities are passed as an array of values. In het onderstaande voorbeeld worden de principal-identiteiten en de opgegeven rol geconfigureerd in een parameter die wordt ingesteld tijdens de toewijzing van de blauwdruk. In dit voorbeeld wordt de ingebouwde rol van _Inzender_ met een GUID van `b24988ac-6180-42a0-ab88-20f7382dd24c` gebruikt.
 
-   - JSON-bestand-\artifacts\roleContributor.json
+   - JSON file - \artifacts\roleContributor.json
 
      ```json
      {
@@ -126,16 +126,16 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'roleContributor' -ArtifactFile .\artifacts\roleContributor.json
      ```
 
-1. Voeg de beleidstoewijzing toe aan het abonnement. De **ArtifactFile** definieert het _type_ artefact, de eigenschappen die worden uitgelijnd op een beleid of initiatief definitie en configureert de beleids toewijzing voor het gebruik van de gedefinieerde blauw drukken para meters voor configuratie tijdens de toewijzing van blauw druk. In dit voorbeeld wordt het ingebouwde beleid _Tag met standaardwaarde op resourcegroepen toepassen_ met een GUID van `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` gebruikt.
+1. Voeg de beleidstoewijzing toe aan het abonnement. The **ArtifactFile** defines the _kind_ of artifact, the properties that align to a policy or initiative definition, and configures the policy assignment to use the defined blueprint parameters to configure during blueprint assignment. In dit voorbeeld wordt het ingebouwde beleid _Tag met standaardwaarde op resourcegroepen toepassen_ met een GUID van `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` gebruikt.
 
-   - JSON-bestand-\artifacts\policyTags.json
+   - JSON file - \artifacts\policyTags.json
 
      ```json
      {
@@ -156,7 +156,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -165,7 +165,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
 
 1. Voeg nog een beleidstoewijzing toe voor de Storage-tag (gebruik hierbij de parameter _storageAccountType_ opnieuw) aan het abonnement. Deze aanvullende beleidstoewijzingsartefact laat zien dat een in de blauwdruk gedefinieerde parameter door meer dan één artefact kan worden gebruikt. In dit voorbeeld wordt **storageAccountType** gebruikt voor het instellen van een tag op de resourcegroep. Deze waarde geeft informatie over het opslagaccount dat in de volgende stap wordt gemaakt. In dit voorbeeld wordt het ingebouwde beleid _Tag met standaardwaarde op resourcegroepen toepassen_ met een GUID van `49c88fc8-6fd1-46fd-a676-f12d1d3a4c71` gebruikt.
 
-   - JSON-bestand-\artifacts\policyStorageTags.json
+   - JSON file - \artifacts\policyStorageTags.json
 
      ```json
      {
@@ -186,16 +186,16 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
      New-AzBlueprintArtifact -Blueprint $blueprint -Name 'policyStorageTags' -ArtifactFile .\artifacts\policyStorageTags.json
      ```
 
-1. Voeg een sjabloon toe onder resourcegroep. De **TemplateFile** voor een resource manager-sjabloon bevat het normale JSON-onderdeel van de sjabloon. De sjabloon maakt ook opnieuw gebruik van de blauwdrukparameters **storageAccountType**, **tagName** en **tagValue** door ze allemaal door te geven aan de sjabloon. De blauw druk-para meters zijn beschikbaar voor de sjabloon met behulp van para meter **TemplateParameterFile** en in de JSON van de sjabloon die sleutel/waarde-paar wordt gebruikt om de waarde te injecteren. De blauw druk en sjabloon parameter namen kunnen hetzelfde zijn.
+1. Voeg een sjabloon toe onder resourcegroep. The **TemplateFile** for a Resource Manager template includes the normal JSON component of the template. De sjabloon maakt ook opnieuw gebruik van de blauwdrukparameters **storageAccountType**, **tagName** en **tagValue** door ze allemaal door te geven aan de sjabloon. The blueprint parameters are available to the template by using parameter **TemplateParameterFile** and inside the template JSON that key-value pair is used to inject the value. The blueprint and template parameter names could be the same.
 
-   - Bestand met JSON-Azure Resource Manager-sjabloon-\artifacts\templateStorage.json
+   - JSON Azure Resource Manager template file - \artifacts\templateStorage.json
 
      ```json
      {
@@ -249,7 +249,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Parameter bestand voor JSON-Azure Resource Manager sjabloon-\artifacts\templateStorageParams.json
+   - JSON Azure Resource Manager template parameter file - \artifacts\templateStorageParams.json
 
      ```json
      {
@@ -269,7 +269,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -278,7 +278,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
 
 1. Voeg een roltoewijzing toe onder resourcegroep. Net als bij de vorige vermelding van een roltoewijzing wordt in het onderstaande voorbeeld de definitie-id van de rol **Eigenaar** gebruikt en krijgt deze een andere parameter van de blauwdruk. In dit voorbeeld wordt de ingebouwde rol van _Eigenaar_ met een GUID van `8e3af657-a8ff-443c-a75c-2fe8c4bcb635` gebruikt.
 
-   - JSON-bestand-\artifacts\roleOwner.json
+   - JSON file - \artifacts\roleOwner.json
 
      ```json
      {
@@ -291,7 +291,7 @@ De eerste stap bij het definiëren van een standaardpatroon voor naleving is om 
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -311,11 +311,11 @@ De waarde voor `{BlueprintVersion}` is een reeks letters, cijfers en afbreekstre
 
 ## <a name="assign-a-blueprint"></a>Een blauwdruk toewijzen
 
-Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen aan een abonnement. Wijs de blauwdruk die u hebt gemaakt toe aan een van de abonnementen in uw beheergroephiërarchie. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen. De para meter **blauw** drukken geeft aan welke blauw druk moet worden toegewezen. Als u de para meters naam, locatie, identiteit, vergren deling en blauw druk wilt opgeven, gebruikt u de overeenkomende Power shell-para meters op de `New-AzBlueprintAssignment` cmdlet of geeft u deze op in het JSON-bestand **AssignmentFile** .
+Once a blueprint is published using PowerShell, it's assignable to a subscription. Wijs de blauwdruk die u hebt gemaakt toe aan een van de abonnementen in uw beheergroephiërarchie. Als de blauwdruk is opgeslagen in een abonnement, kan deze alleen aan dat abonnement worden toegewezen. The **Blueprint** parameter specifies the blueprint to assign. To provide name, location, identity, lock, and blueprint parameters, use the matching PowerShell parameters on the `New-AzBlueprintAssignment` cmdlet or provide them in the **AssignmentFile** parameter JSON file.
 
-1. Voer de blauwdrukimplementatie uit door deze toe te wijzen aan een abonnement. Als de para meters voor **inzenders** en **eigen aren** een matrix moeten hebben met objectid's van de principals waaraan de roltoewijzing moet worden toegekend, gebruikt u [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) voor het verzamelen van de objectid's voor gebruik in de **AssignmentFile** voor uw eigen gebruikers, groepen of service-principals.
+1. Voer de blauwdrukimplementatie uit door deze toe te wijzen aan een abonnement. As the **contributors** and **owners** parameters require an array of objectIds of the principals to be granted the role assignment, use [Azure Active Directory Graph API](../../active-directory/develop/active-directory-graph-api.md) for gathering the objectIds for use in the **AssignmentFile** for your own users, groups, or service principals.
 
-   - JSON-bestand-blueprintAssignment. json
+   - JSON file - blueprintAssignment.json
 
      ```json
      {
@@ -358,7 +358,7 @@ Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen
      }
      ```
 
-   - Power shell-opdracht
+   - PowerShell command
 
      ```azurepowershell-interactive
      # Use the reference to the new blueprint object from the previous steps
@@ -368,7 +368,7 @@ Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen
    - Door een gebruiker toegewezen beheerde identiteit
 
      Een blauwdruktoewijzing kan ook gebruikmaken van een [door een gebruiker toegewezen beheerde identiteit](../../active-directory/managed-identities-azure-resources/overview.md).
-     In dit geval wordt het **identiteits** gedeelte van het JSON-toewijzings bestand als volgt gewijzigd. Vervang `{tenantId}`, `{subscriptionId}`, `{yourRG}`en `{userIdentity}` met uw tenantId, subscriptionId, naam van de resource groep en de naam van de door de gebruiker toegewezen beheerde identiteit.
+     In this case, the **identity** portion of the JSON assignment file changes as follows. Replace `{tenantId}`, `{subscriptionId}`, `{yourRG}`, and `{userIdentity}` with your tenantId, subscriptionId, resource group name, and the name of your user-assigned managed identity, respectively.
 
      ```json
      "identity": {
@@ -387,7 +387,7 @@ Zodra een blauw druk is gepubliceerd met Power shell, kan deze worden toegewezen
 
 ## <a name="unassign-a-blueprint"></a>De toewijzing van een blauwdruk ongedaan maken
 
-U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. Als u een blauw druk toewijzing wilt verwijderen, gebruikt u de cmdlet `Remove-AzBlueprintAssignment`:
+U kunt een blauwdruk uit een abonnement verwijderen. Het verwijderen wordt vaak uitgevoerd als de artefactresources niet langer nodig zijn. Wanneer een blauwdruk wordt verwijderd, worden de artefacten die als onderdeel van die blauwdruk zijn toegewezen, achtergelaten. To remove a blueprint assignment, use the `Remove-AzBlueprintAssignment` cmdlet:
 
 assignMyBlueprint
 

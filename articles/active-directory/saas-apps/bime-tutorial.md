@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Bime | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Bime | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Bime.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f792798e724387b6917c23d1bde0c2c68fa8a270
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 7774fd55a64df198a9b025a67ce377deebefe8fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73157681"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232077"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Zelf studie: integratie Azure Active Directory met Bime
+# <a name="tutorial-azure-active-directory-integration-with-bime"></a>Tutorial: Azure Active Directory integration with Bime
 
 In deze zelfstudie leert u hoe u Bime kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Bime met Azure AD biedt de volgende voordelen:
@@ -137,11 +137,11 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 2. Klik in de werkbalk op **Admin** en vervolgens op **Account**.
   
-    ![Beheerder](./media/bime-tutorial/ic775558.png "Beheerder")
+    ![Admin](./media/bime-tutorial/ic775558.png "Admin")
 
 3. Voer op de configuratiepagina voor accounts de volgende stappen uit:
   
-    ![Eenmalige aanmelding configureren](./media/bime-tutorial/ic775559.png "Eenmalige aanmelding configureren")
+    ![Configure Single Sign-On](./media/bime-tutorial/ic775559.png "Eenmalige aanmelding configureren")
 
     a. Selecteer **Enable SAML authentication**.
 
@@ -169,7 +169,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -212,7 +212,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Bime, moeten ze in 
 
 2. Klik in de werkbalk op **Admin** en vervolgens op **Users**.
 
-    ![Beheerder](./media/bime-tutorial/ic775561.png "Beheerder")
+    ![Admin](./media/bime-tutorial/ic775561.png "Admin")
 
 3. Klik in **Users List** op **Add New User** (“+”).
 
@@ -220,18 +220,18 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Bime, moeten ze in 
 
 4. Voer in het dialoogvenster **User Details** de volgende stappen uit:
 
-    ![Gebruikers Details](./media/bime-tutorial/ic775563.png "Gebruikers Details")
+    ![User Details](./media/bime-tutorial/ic775563.png "User Details")
 
     a. Voer in het tekstvak **First name** de voornaam van de gebruiker in, zoals **Britta**.
 
     b. Voer in het tekstvak **Last name** de achternaam van de gebruiker in, zoals **Simon**.
 
-    c. Voer in het tekstvak **e-mail** het e-mail adres van de gebruiker in, zoals **brittasimon\@contoso.com**.
+    c. In the **Email** textbox, enter the email of user like **brittasimon\@contoso.com**.
 
     d. Klik op **Opslaan**.
 
 > [!NOTE]
-> U kunt voor het inrichten van AAD-gebruikersaccounts ook een ander hulpmiddel of een andere API gebruiken om het account te maken, als het door Bime wordt geleverd.
+> You can use any other Bime user account creation tools or APIs provided by Bime to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -245,5 +245,5 @@ Wanneer u op de tegel Bime in het toegangsvenster klikt, zou u automatisch moete
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

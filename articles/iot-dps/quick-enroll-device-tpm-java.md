@@ -1,23 +1,22 @@
 ---
-title: 'Quick Start: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van Java'
-description: 'Azure-snelstart: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service met behulp van de Java service-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties.'
+title: Enroll TPM device to Azure Device Provisioning Service using Java
+description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using Java service SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 88ce16a658e760f69cdf17c9bb4de78fceca927a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: e1ef20b8e4ef865c93c31265d4b036c34b4b1aee
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903472"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229555"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de Java Service-SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using Java service SDK
 
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
@@ -72,7 +71,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
            ![De verbindingsreeks voor de inrichting ophalen uit de portal](./media/quick-enroll-device-tpm-java/provisioning-string.png)  
 
-       4. Vervang  **in het voorbeeldcodebestandServiceEnrollmentSample.java**`[Provisioning Connection String]` door de **Verbindingsreeks van de primaire sleutel**.
+       4. Vervang `[Provisioning Connection String]` in het voorbeeldcodebestand **_ServiceEnrollmentSample.java_** door de **Verbindingsreeks van de primaire sleutel**.
     
            ```Java
            private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
@@ -136,7 +135,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
 4. Houd het uitvoervenster in de gaten voor een geslaagde inschrijving. 
 
-5. Navigeer naar de inrichtingsservice in Azure Portal. Klik op **inschrijvingen beheren**en selecteer het tabblad **afzonderlijke inschrijvingen** . u ziet dat de *registratie-id* van uw gesimuleerde TPM-apparaat nu wordt weer gegeven. 
+5. Navigeer naar de inrichtingsservice in Azure Portal. Click **Manage enrollments**, and select the **Individual Enrollments** tab. Notice that the *Registration ID* of your simulated TPM device is now listed. 
 
     ![De TPM-inschrijving controleren in de portal](./media/quick-enroll-device-tpm-java/verify-tpm-enrollment.png)  
 
@@ -145,7 +144,7 @@ Als u van plan bent om het voorbeeld van de Java.js-service te verkennen, verwij
 
 1. Sluit het uitvoervenster van het Java-voorbeeld op de computer.
 1. Sluit het venster van de TPM-simulator dat u wellicht hebt gemaakt om uw TPM-apparaat te simuleren.
-1. Navigeer naar uw Device Provisioning Service in de Azure Portal, klik op **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* van het apparaat dat u hebt Inge schreven met behulp van deze Quick Start en klik op de knop **verwijderen** boven aan de Blade. 
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the *Registration ID* of the device you enrolled using this Quickstart, and click the **Delete** button at the top of the blade. 
 
 ## <a name="next-steps"></a>Volgende stappen
 In deze quickstart hebt u een gesimuleerd TPM-apparaat ingeschreven met Device Provisioning Service. Voor meer informatie over device provisioning, gaat u verder met de zelfstudie voor het instellen van Device Provisioning Service in Azure Portal. 

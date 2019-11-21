@@ -1,39 +1,39 @@
 ---
 author: rothja
-ms.service: billing
+ms.service: cost-management-billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 4bd890adcaa4982c52366faed0f2975729290360
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: fb77682bce0d9faef8f9ac8197afd8751560d515
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73612043"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224361"
 ---
-De volgende tabel bevat de limieten die van toepassing zijn op Azure IoT Hub Device Provisioning Service-resources.
+The following table lists the limits that apply to Azure IoT Hub Device Provisioning Service resources.
 
 | Bron | Limiet |
 | --- | --- |
-| Maximum aantal services voor het inrichten van apparaten per Azure-abonnement | 10 |
-| Maximum aantal inschrijvingen | 1\.000.000 |
-| Maximum aantal registraties | 1\.000.000 |
-| Maximum aantal registratie groepen | 100 |
-| Maximum aantal Ca's | 25 |
-| Maximum aantal gekoppelde IoT-hubs | 50 |
-| Maximale bericht grootte | 96 KB|
+| Maximum device provisioning services per Azure subscription | 10 |
+| Maximum number of enrollments | 1\.000.000 |
+| Maximum number of registrations | 1\.000.000 |
+| Maximum number of enrollment groups | 100 |
+| Maximum number of CAs | 25 |
+| Maximum number of linked IoT hubs | 50 |
+| Maximum size of message | 96 KB|
 
 
 > [!NOTE]
-> Als u het aantal exemplaren in uw abonnement wilt verhogen, neemt u contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/).
+> To increase the number of instances in your subscription, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
 > [!NOTE]
-> Neem contact op met [Microsoft ondersteuning](https://azure.microsoft.com/support/options/)als u het aantal inschrijvingen en registraties voor uw inrichtings service wilt verhogen.
+> To increase the number of enrollments and registrations on your provisioning service, contact [Microsoft Support](https://azure.microsoft.com/support/options/).
 
-De Device Provisioning Service beperkt aanvragen wanneer de volgende quota worden overschreden.
+The Device Provisioning Service throttles requests when the following quotas are exceeded.
 
-| Vertragen | Waarde per eenheid |
+| Vertragen | Per-unit value |
 | --- | --- |
-| Bewerkingen | 200/min/service |
+| Operations | 200/min/service |
 | Apparaatregistraties | 200/min/service |
-| Polling bewerking voor apparaten | 5/10 sec/apparaat |
+| Device polling operation | 5/10 sec/device |

@@ -1,6 +1,6 @@
 ---
-title: Problemen oplossen met Azure Automation desired state Configuration (DSC)
-description: In dit artikel vindt u informatie over het oplossen van problemen met desired state Configuration (DSC)
+title: Troubleshooting issues with Azure Automation Desired State Configuration (DSC)
+description: This article provides information on troubleshooting Desired State Configuration (DSC)
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,47 +9,47 @@ ms.author: robreed
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7be5e814d8092b523fa69fdd84f0e1476736fda2
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: ab9a39cfba082ea4c4d1cc6c29764619011d8cb8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887719"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231541"
 ---
-# <a name="troubleshoot-desired-state-configuration-dsc"></a>Problemen met desired state Configuration (DSC) oplossen
+# <a name="troubleshoot-desired-state-configuration-dsc"></a>Troubleshoot Desired State Configuration (DSC)
 
-In dit artikel vindt u informatie over het oplossen van problemen met desired state Configuration (DSC).
+This article provides information on troubleshooting issues with Desired State Configuration (DSC).
 
-## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Stappen voor het oplossen van problemen met desired state Configuration (DSC)
+## <a name="steps-to-troubleshoot-desired-state-configuration-dsc"></a>Steps to troubleshoot Desired State Configuration (DSC)
 
-Wanneer er fouten zijn opgetreden bij het compileren of implementeren van configuraties in de Azure-status configuratie, zijn hier enkele stappen beschikbaar om u te helpen bij het vaststellen van het probleem.
+When you have errors compiling or deploying configurations in Azure State Configuration, here are a few steps to help you diagnose the issue.
 
-1. **Zorg ervoor dat uw configuratie compileert op uw lokale computer:**  De Azure-status configuratie is gebaseerd op Power shell DSC. U kunt de documentatie voor de DSC-taal en syntaxis vinden in de [Power shell DSC-documenten](https://docs.microsoft.com/powershell/scripting/overview).
+1. **Ensure your configuration compiles successfully on your local machine:**  Azure State Configuration is built on PowerShell DSC. You can find the documentation for the DSC language and syntax in the [PowerShell DSC Docs](https://docs.microsoft.com/powershell/scripting/overview).
 
-   Door de DSC-configuratie op de lokale computer te compileren, kunt u veelvoorkomende fouten detecteren en oplossen, zoals:
+   By compiling your DSC configuration on your local machine you can discover and resolve common errors, such as:
 
-   - **Ontbrekende modules**
-   - **Syntaxis fouten**
-   - **Logische fouten**
+   - **Missing Modules**
+   - **Syntax Errors**
+   - **Logic Errors**
 
-2. **DSC-logboeken weer geven op uw knoop punt:** Als uw configuratie is gecompileerd, maar mislukt als deze wordt toegepast op een knoop punt, kunt u gedetailleerde informatie vinden in de logboeken. Zie voor informatie over waar DSC-logboeken kunnen [worden gevonden de DSC-gebeurtenis logboeken](/powershell/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
+2. **View DSC logs on your Node:** If your configuration compiles successfully, but fails when applied to a Node, you can find detailed information in the logs. For information about where to find DSC logs, see [Where are the DSC Event Logs](/powershell/scripting/dsc/troubleshooting/troubleshooting#where-are-dsc-event-logs).
 
-   Daarnaast kan de [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) u helpen bij het parseren van gedetailleerde informatie uit de DSC-Logboeken. Als u contact opneemt met de ondersteuning, moet u deze logboeken uitvoeren om een diagnose van het probleem te krijgen.
+   Furthermore, the [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) can assist you in parsing detailed information from the DSC logs. If you contact support, they will require these logs to diagnose your issue.
 
-   U kunt **xDscDiagnostics** installeren op uw lokale computer met behulp van de instructies in [de module stabiele versie installeren](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
+   You can install **xDscDiagnostics** on your local machine using the instructions found under [Install the stable version module](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module).
 
-   Als u **xDscDiagnostics** wilt installeren op uw Azure-machine, kunt u [AZ VM Run-Command](/cli/azure/vm/run-command) of [invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand)gebruiken. U kunt ook de **opdracht optie uitvoeren** vanuit de portal gebruiken door de stappen uit te voeren die zijn gevonden in [Power shell-scripts uitvoeren in uw Windows-VM met de opdracht uitvoeren](../../virtual-machines/windows/run-command.md).
+   To install **xDscDiagnostics** on your Azure machine, you can use [az vm run-command](/cli/azure/vm/run-command) or [Invoke-AzVMRunCommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand). You can also use the **Run command** option from the portal, by following the steps found in [Run PowerShell scripts in your Windows VM with Run Command](../../virtual-machines/windows/run-command.md).
 
-   Voor informatie over het gebruik van **xDscDiagnostics**raadpleegt u [xDscDiagnostics gebruiken voor het analyseren van DSC-logboeken](/powershell/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs)en [xDscDiagnostics-cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
-3. **Zorg ervoor dat uw knoop punten en Automation-werk ruimte de vereiste modules hebben:** De gewenste status configuratie is afhankelijk van de modules die op het knoop punt zijn geïnstalleerd.  Wanneer u Azure Automation status configuratie gebruikt, importeert u de benodigde modules in uw Automation-account met behulp van de stappen die worden beschreven in [modules importeren](../shared-resources/modules.md#import-modules). Configuraties kunnen ook afhankelijk zijn van specifieke versies van modules.  Zie [problemen met modules oplossen](shared-resources.md#modules)voor meer informatie.
+   For information on using **xDscDiagnostics**, see [Using xDscDiagnostics to analyze DSC logs](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs), as well as [xDscDiagnostics Cmdlets](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
+3. **Ensure your Nodes and Automation workspace have the required modules:** Desired State Configuration depends on modules installed on the Node.  When using Azure Automation State Configuration, import any required modules into your automation account using the steps listed in [Import Modules](../shared-resources/modules.md#import-modules). Configurations can also have a dependency on specific versions of modules.  For more information, see, [Troubleshoot Modules](shared-resources.md#modules).
 
-## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Veelvoorkomende fouten bij het werken met de desired state Configuration (DSC)
+## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Common errors when working with Desired State Configuration (DSC)
 
-### <a name="unsupported-characters"></a>Scenario: een configuratie met speciale tekens kan niet worden verwijderd uit de portal
+### <a name="unsupported-characters"></a>Scenario: A configuration with special characters cannot be deleted from the portal
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u probeert een DSC-configuratie te verwijderen uit de portal, ziet u de volgende fout:
+When attempting to delete a DSC configuration from the portal, you see the following error:
 
 ```error
 An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
@@ -57,19 +57,19 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 #### <a name="cause"></a>Oorzaak
 
-Deze fout is een tijdelijk probleem dat is gepland om te worden opgelost.
+This error is a temporary issue that is planned to be resolved.
 
 #### <a name="resolution"></a>Resolutie
 
-* Gebruik de AZ-cmdlet Remove-AzAutomationDscConfiguration om de configuratie te verwijderen.
-* De documentatie voor deze cmdlet is nog niet bijgewerkt.  Tot slot raadpleegt u de documentatie voor de module AzureRM.
+* Use the Az Cmdlet "Remove-AzAutomationDscConfiguration" to delete the configuration.
+* The documentation for this cmdlet hasn't been updated yet.  Until then, refer to the documentation for the AzureRM module.
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
 
-### <a name="failed-to-register-agent"></a>Scenario: de DSC-agent kan niet worden geregistreerd
+### <a name="failed-to-register-agent"></a>Scenario: Failed to register Dsc Agent
 
 #### <a name="issue"></a>Probleem
 
-Wanneer u probeert `Set-DscLocalConfigurationManager` of een andere DSC-cmdlet uit te voeren, wordt de volgende fout weer gegeven:
+When attempting to run `Set-DscLocalConfigurationManager` or another DSC cmdlet you receive the error:
 
 ```error
 Registration of the Dsc Agent with the server
@@ -84,17 +84,17 @@ ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-
 
 #### <a name="cause"></a>Oorzaak
 
-Deze fout wordt meestal veroorzaakt door een firewall, de computer zich achter een proxy server bevindt of andere netwerk fouten.
+This error is normally caused by a firewall, the machine being behind a proxy server, or other network errors.
 
 #### <a name="resolution"></a>Resolutie
 
-Controleer of de computer toegang heeft tot de juiste eind punten voor Azure Automation DSC en probeer het opnieuw. Zie [netwerk planning](../automation-dsc-overview.md#network-planning) voor een lijst met poorten en adressen.
+Verify your machine has access to the proper endpoints for Azure Automation DSC and try again. For a list of ports and addresses needed, see [network planning](../automation-dsc-overview.md#network-planning)
 
-### <a name="failed-not-found"></a>Scenario: het knoop punt heeft de status mislukt met de fout ' niet gevonden '
+### <a name="failed-not-found"></a>Scenario: Node is in failed status with a "Not found" error
 
 #### <a name="issue"></a>Probleem
 
-Het knoop punt heeft een rapport met de status **mislukt** en bevat de volgende fout:
+The node has a report with **Failed** status and containing the error:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -102,21 +102,21 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 #### <a name="cause"></a>Oorzaak
 
-Deze fout treedt doorgaans op wanneer het knoop punt is toegewezen aan een configuratie naam (bijvoorbeeld ABC) in plaats van een knooppunt configuratie naam (bijvoorbeeld ABC. Webserver).
+This error typically occurs when the node is assigned to a configuration name (for example, ABC) instead of a node configuration name (for example, ABC.WebServer).
 
 #### <a name="resolution"></a>Resolutie
 
-* Zorg ervoor dat u het knoop punt met de naam ' knooppunt configuratie ' en niet de ' configuratie naam ' toewijst.
-* U kunt een knooppunt configuratie toewijzen aan een knoop punt met behulp van Azure Portal of met een Power shell-cmdlet.
+* Make sure that you're assigning the node with "node configuration name" and not the "configuration name".
+* You can assign a node configuration to a node using Azure portal or with a PowerShell cmdlet.
 
-  * Als u een knooppunt configuratie wilt toewijzen aan een knoop punt met behulp van Azure Portal, opent u de pagina **DSC-knoop punten** , selecteert u een knoop punt en klikt u op de knop **knooppunt configuratie toewijzen** .
-  * Met de cmdlet **set-AzureRmAutomationDscNode** kunt u een knooppunt configuratie toewijzen aan een knoop punt met behulp van de Power shell-cmdlet.
+  * To assign a node configuration to a node using Azure portal, open the **DSC Nodes** page, then select a node and click on **Assign node configuration** button.
+  * To assign a node configuration to a node using PowerShell cmdlet, use **Set-AzureRmAutomationDscNode** cmdlet
 
-### <a name="no-mof-files"></a>Scenario: er zijn geen knooppunt configuraties (MOF-bestanden) geproduceerd bij het compileren van een configuratie
+### <a name="no-mof-files"></a>Scenario: No node configurations (MOF files) were produced when a configuration is compiled
 
 #### <a name="issue"></a>Probleem
 
-Uw DSC-compilatie taak wordt onderbroken met de volgende fout:
+Your DSC compilation job suspends with the error:
 
 ```error
 Compilation completed successfully, but no node configuration.mofs were generated.
@@ -124,20 +124,20 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 #### <a name="cause"></a>Oorzaak
 
-Wanneer de expressie die volgt op het sleutel woord van het **knoop punt** in de DSC-configuratie, wordt geëvalueerd als `$null`, worden er geen knooppunt configuraties geproduceerd.
+When the expression following the **Node** keyword in the DSC configuration evaluates to `$null`, then no node configurations are produced.
 
 #### <a name="resolution"></a>Resolutie
 
-Het probleem wordt opgelost met een van de volgende oplossingen:
+Any of the following solutions fix the problem:
 
-* Zorg ervoor dat de expressie naast het sleutel woord van het **knoop punt** in de configuratie definitie niet evalueert naar $null.
-* Als u ConfigurationData door geven tijdens het compileren van de configuratie, moet u ervoor zorgen dat u de verwachte waarden doorgeeft die de configuratie vereist van [ConfigurationData](../automation-dsc-compile.md).
+* Make sure that the expression next to the **Node** keyword in the configuration definition isn't evaluating to $null.
+* If you are passing ConfigurationData when compiling the configuration, make sure that you are passing the expected values that the configuration requires from [ConfigurationData](../automation-dsc-compile.md).
 
-### <a name="dsc-in-progress"></a>Scenario: het DSC-knooppunt rapport wordt vastlopen de status wordt uitgevoerd
+### <a name="dsc-in-progress"></a>Scenario: The DSC node report becomes stuck "in progress" state
 
 #### <a name="issue"></a>Probleem
 
-De DSC-agent uitvoer:
+The DSC agent outputs:
 
 ```error
 No instance found with given property values
@@ -145,17 +145,17 @@ No instance found with given property values
 
 #### <a name="cause"></a>Oorzaak
 
-U hebt uw WMF-versie bijgewerkt en hebt WMI beschadigd.
+You have upgraded your WMF version and have corrupted WMI.
 
 #### <a name="resolution"></a>Resolutie
 
-Volg de instructies in het artikel [bekende problemen en beperkingen van DSC](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) om het probleem op te lossen.
+To fix the issue, follow the instructions in the [DSC known issues and limitations](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc) article.
 
-### <a name="issue-using-credential"></a>Scenario: een referentie kan niet worden gebruikt in een DSC-configuratie
+### <a name="issue-using-credential"></a>Scenario: Unable to use a credential in a DSC configuration
 
 #### <a name="issue"></a>Probleem
 
-Uw DSC-compilatie taak is onderbroken met de volgende fout:
+Your DSC compilation job was suspended with the error:
 
 ```error
 System.InvalidOperationException error processing property 'Credential' of type <some resource name>: Converting and storing an encrypted password as plaintext is allowed only if PSDscAllowPlainTextPassword is set to true.
@@ -163,17 +163,17 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 #### <a name="cause"></a>Oorzaak
 
-U hebt een referentie in een configuratie gebruikt, maar u hebt niet de juiste **ConfigurationData** om **PSDscAllowPlainTextPassword** in te stellen op True voor elke knooppunt configuratie.
+You've used a credential in a configuration but didn’t provide proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration.
 
 #### <a name="resolution"></a>Resolutie
 
-* Zorg ervoor dat u de juiste **ConfigurationData** geeft om **PSDscAllowPlainTextPassword** in te stellen op True voor elke knooppunt configuratie die wordt vermeld in de configuratie. Zie [assets in azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation)voor meer informatie.
+* Make sure to pass in the proper **ConfigurationData** to set **PSDscAllowPlainTextPassword** to true for each node configuration that is mentioned in the configuration. For more information, see [assets in Azure Automation DSC](../automation-dsc-compile.md#working-with-assets-in-azure-automation-during-compilation).
 
-### <a name="failure-processing-extension"></a>Scenario: onboarding van de DSC-uitbrei ding ' fout bij het verwerken van de uitbrei ding '
+### <a name="failure-processing-extension"></a>Scenario: Onboarding from dsc extension, "Failure processing extension" error
 
 #### <a name="issue"></a>Probleem
 
-Bij onboarding met behulp van de DSC-extensie treedt er een fout op met de volgende fout:
+When onboarding using DSC extension, a failure occurs containing the error:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -181,18 +181,18 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. 
 
 #### <a name="cause"></a>Oorzaak
 
-Deze fout treedt doorgaans op wanneer aan het knoop punt een knooppunt configuratie naam wordt toegewezen die niet voor komt in de service.
+This error typically occurs when the node is assigned a node configuration name that does not exist in the service.
 
 #### <a name="resolution"></a>Resolutie
 
-* Zorg ervoor dat u het knoop punt toewijst met een knooppunt configuratie naam die exact overeenkomt met de naam in de service.
-* U kunt ervoor kiezen om de naam van de configuratie van het knoop punt niet op te stellen, wat resulteert in het voorbereiden van het knoop punt, maar geen knooppunt configuratie toewijzen
+* Make sure that you're assigning the node with a node configuration name that exactly matches the name in the service.
+* You can choose to not include the node configuration name, which will result in onboarding the node but not assigning a node configuration
 
-### <a name="failure-linux-temp-noexec"></a>Scenario: een configuratie Toep assen in Linux, treedt er een fout op met een algemene fout
+### <a name="failure-linux-temp-noexec"></a>Scenario: Applying a configuration in Linux, a failure occurs with a general error
 
 #### <a name="issue"></a>Probleem
 
-Bij het Toep assen van een configuratie in Linux treedt er een fout op met de volgende fout:
+When applying a configuration in Linux, a failure occurs containing the error:
 
 ```error
 This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
@@ -200,32 +200,32 @@ This event indicates that failure happens when LCM is processing the configurati
 
 #### <a name="cause"></a>Oorzaak
 
-Klanten hebben vastgesteld dat als de `/tmp` locatie is ingesteld op `noexec`, de huidige versie van DSC geen configuraties kan Toep assen.
+Customers have identified that if the `/tmp` location is set to `noexec`, the current version of DSC will fail to apply configurations.
 
 #### <a name="resolution"></a>Resolutie
 
-* Verwijder de optie `noexec` van de locatie van `/tmp`.
+* Remove the `noexec` option from the `/tmp` location.
 
-### <a name="compilation-node-name-overlap"></a>Scenario: namen van knooppunt configuraties die elkaar overlappen kunnen resulteren in slechte release
+### <a name="compilation-node-name-overlap"></a>Scenario: Node configuration names that overlap could result in bad release
 
 #### <a name="issue"></a>Probleem
 
-Als één configuratie script wordt gebruikt om meerdere knooppunt configuraties te genereren en sommige knooppunt configuraties een naam hebben die een subset van andere is, kan een probleem in de compilatie service ertoe leiden dat de verkeerde configuratie wordt toegewezen.  Dit gebeurt alleen wanneer u één script gebruikt voor het genereren van configuraties met configuratie gegevens per knoop punt en alleen wanneer de naam overlapt aan het begin van de teken reeks.
+If a single configuration script is used to generate multiple node configurations, and some of the node configurations have a name that is a subset of others, an issue in the compilation service could result in assigning the wrong configuration.  This only occurs when using a single script to generate configurations with configuration data per node, and only when the name overlap occurs at the beginning of the string.
 
-Als er bijvoorbeeld één configuratie script wordt gebruikt om configuraties te genereren op basis van knooppunt gegevens die worden door gegeven als hash-tabel met behulp van cmdlets, en de knooppunt gegevens een server met de naam ' server ' en ' 1server ' bevatten.
+Example, if a single configuration script is used to generate configurations based on node data passed as a hashtable using cmdlets, and the node data includes a server named "server" and "1server".
 
 #### <a name="cause"></a>Oorzaak
 
-Bekend probleem met de compilatie service.
+Known issue with the compilation service.
 
 #### <a name="resolution"></a>Resolutie
 
-De beste oplossing is om lokaal of in een CI/CD-pijp lijn te compileren en de MOF-bestanden rechtstreeks te uploaden naar de service.  Als de compilatie in de service een vereiste is, is de volgende beste tijdelijke oplossing om de compilatie taken te splitsen, zodat er geen overlap is in namen.
+The best workaround would be to compile locally or in a CI/CD pipeline and upload the MOF files directly to the service.  If compilation in the service is a requirement, the next best workaround would be to split the compilation jobs so there is no overlap in names.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u het probleem niet ziet of als u het probleem niet kunt oplossen, gaat u naar een van de volgende kanalen voor meer ondersteuning:
+If you didn't see your problem or are unable to solve your issue, visit one of the following channels for more support:
 
 * Krijg antwoorden van Azure-experts op [Azure-Forums](https://azure.microsoft.com/support/forums/)
 * Maak verbinding met [@AzureSupport](https://twitter.com/azuresupport), het officiële Microsoft Azure-account voor het verbeteren van de gebruikerservaring door de Azure-community in contact te brengen met de juiste resources: antwoorden, ondersteuning en experts.
-* Als u meer hulp nodig hebt, kunt u een ondersteunings incident voor Azure opslaan. Ga naar de [ondersteunings site van Azure](https://azure.microsoft.com/support/options/) en selecteer **ondersteuning verkrijgen**.
+* If you need more help, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select **Get Support**.

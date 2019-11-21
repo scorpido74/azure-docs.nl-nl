@@ -1,5 +1,5 @@
 ---
-title: Een persoonlijke helm-opslag plaats gebruiken in azure dev Spaces
+title: How to use a private Helm repository in Azure Dev Spaces
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,38 +7,38 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 08/22/2019
 ms.topic: conceptual
-description: Gebruik een persoonlijke helm-opslag plaats in een Azure dev-ruimte.
-keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers, helm
+description: Use a private Helm repository in an Azure Dev Space.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Container Service, containers, Helm
 manager: gwallace
-ms.openlocfilehash: d0f2cb739a502d614ac329eef1fc57b2fb15cb38
-ms.sourcegitcommit: dcf3e03ef228fcbdaf0c83ae1ec2ba996a4b1892
-ms.translationtype: MT
+ms.openlocfilehash: 23c96dade4d8917fae64337a9584fb9c6d410b68
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "70014514"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229062"
 ---
-# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Een persoonlijke helm-opslag plaats gebruiken in azure dev Spaces
+# <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Use a private Helm repository in Azure Dev Spaces
 
-[Helm][helm] is een pakket beheerder voor Kuberentes. Helm maakt gebruik van een [grafiek][helm-chart] indeling voor pakket afhankelijkheden. Helm-grafieken worden opgeslagen in een opslag plaats, die openbaar of privé kan zijn. Met Azure dev Spaces worden alleen helm-grafieken uit open bare opslag plaatsen opgehaald wanneer uw toepassing wordt uitgevoerd. In gevallen waarin de helm-opslag plaats privé is of Azure dev Spaces geen toegang hebben, kunt u een grafiek van die opslag plaats rechtstreeks aan uw toepassing toevoegen. Door de grafiek rechtstreeks toe te voegen, kunnen Azure-ontwikkel ruimten uw toepassing uitvoeren zonder dat u toegang hebt tot de persoonlijke helm-opslag plaats.
+[Helm][helm] is a package manager for Kuberentes. Helm uses a [chart][helm-chart] format to package dependencies. Helm charts are stored in a repository, which can be public or private. Azure Dev Spaces only retrieves Helm charts from public repositories when running your application. In cases where the Helm repository is private or Azure Dev Spaces can't access it, you can add a chart from that repository directly to your application. Adding the chart directly lets Azure Dev Spaces run your application without having to access the private Helm repository.
 
-## <a name="add-the-private-helm-repository-to-your-local-machine"></a>De persoonlijke helm-opslag plaats toevoegen aan uw lokale computer
+## <a name="add-the-private-helm-repository-to-your-local-machine"></a>Add the private Helm repository to your local machine
 
-Gebruik [helm opslag plaats add][helm-repo-add] and [helm opslag plaats update][helm-repo-update] voor toegang tot de persoonlijke helm-opslag plaats vanaf uw lokale computer.
+Use [helm repo add][helm-repo-add] and [helm repo update][helm-repo-update] to access the private Helm repository from your local machine.
 
 ```cmd
 helm repo add privateRepoName http://example.com/helm/v1/repo --username user --password 5tr0ng_P@ssw0rd!
 helm repo update
 ```
 
-## <a name="add-the-chart-to-your-application"></a>De grafiek toevoegen aan uw toepassing
+## <a name="add-the-chart-to-your-application"></a>Add the chart to your application
 
-Ga naar de directory van uw project en `azds prep`Voer uit.
+Navigate to your project's directory and run `azds prep`.
 
 ```cmd
 azds prep --public
 ```
 
-Maak een [yaml][helm-requirements] -bestand met vereisten voor uw grafiek in de map grafieken van uw toepassing. Als uw toepassing bijvoorbeeld *app1*heet, maakt u *grafieken/app1/vereisten. yaml*.
+Create a [requirements.yaml][helm-requirements] file with your chart in your application's chart directory. For example, if your application is named *app1*, you would create *charts/app1/requirements.yaml*.
 
 ```yaml
 dependencies:
@@ -47,19 +47,19 @@ dependencies:
       repository:  http://example.com/helm/v1/repo
 ```
 
-Ga naar de grafiek Directory van uw toepassing en gebruik [helm dependency update][helm-dependency-update] om de helm-afhankelijkheden voor uw toepassing bij te werken en de grafiek te downloaden vanuit de privé-opslag plaats.
+Navigate to your application's chart directory and use [helm dependency update][helm-dependency-update] to update the Helm dependencies for your application and download the chart from the private repository.
 
 ```cmd
 helm dependency update
 ```
 
-Controleer of er een submap met *grafieken* met een *tgz* -bestand is toegevoegd aan de grafiek Directory van uw toepassing. Bijvoorbeeld *grafieken/app1/Charts/myChart-0.1.0. tgz*.
+Verify a *charts* subdirectory with a *tgz* file has been added to your application's chart directory. For example, *charts/app1/charts/mychart-0.1.0.tgz*.
 
-De grafiek uit uw persoonlijke helm-opslag plaats is gedownload en toegevoegd aan uw project. Verwijder het bestand *Requirements. yaml* zodat dev Spaces deze afhankelijkheid niet proberen bij te werken.
+The chart from your private Helm repository has been downloaded and added to your project. Remove the *requirements.yaml* file so that Dev Spaces won't try to update this dependency.
 
 ## <a name="run-your-application"></a>Uw toepassing uitvoeren
 
-Ga naar de hoofdmap van het project en voer uit `azds up` om te controleren of de toepassing correct wordt uitgevoerd in uw dev-ruimte.
+Navigate to the root directory of your project and run `azds up` to verify your application successfully runs in your dev space.
 
 ```cmd
 $ azds up
@@ -76,11 +76,11 @@ Service 'app1' port 80 (http) is available at http://localhost:54256
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over [helm en hoe deze werkt][helm].
+Learn more about [Helm and how it works][helm].
 
 [helm]: https://docs.helm.sh
-[helm-chart]: https://helm.sh/docs/developing_charts/
-[helm-dependency-update]: https://helm.sh/docs/helm/#helm-dependency-update
-[helm-repo-add]: https://helm.sh/docs/helm/#helm-repo-add
-[helm-repo-update]: https://helm.sh/docs/helm/#helm-repo-update
-[helm-requirements]: https://helm.sh/docs/developing_charts/#chart-dependencies
+[helm-chart]: https://helm.sh/docs/topics/charts/
+[helm-dependency-update]: https://v2.helm.sh/docs/helm/#helm-dependency-update
+[helm-repo-add]: https://v2.helm.sh/docs/helm/#helm-repo-add
+[helm-repo-update]: https://v2.helm.sh/docs/helm/#helm-repo-update
+[helm-requirements]: https://helm.sh/docs/topics/charts/#chart-dependencies

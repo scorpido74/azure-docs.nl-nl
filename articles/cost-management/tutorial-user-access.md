@@ -7,17 +7,17 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 4b309d54fae63f16574bb3799d77adfd89f91a57
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: bd778e3731780a89560d8caa02363a4e49f77e20
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967079"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74219056"
 ---
-# <a name="tutorial-assign-access-to-cloudyn-data"></a>Zelfstudie: toegang tot Cloudyn-gegevens toewijzen
+# <a name="tutorial-assign-access-to-cloudyn-data"></a>Zelfstudie: Toegang beheren tot Cloudyn-gegevens
 
 De toegang tot gegevens van Cloudyn wordt beheerd door middel van gebruikers of -entiteitsbeheer. Gebruikersaccounts van Cloudyn bepalen de toegang tot *entiteiten* en beheerfuncties. Er zijn twee soorten toegang: beheerder en gebruiker. Tenzij dit per gebruiker is gewijzigd, biedt beheerderstoegang gebruikers onbeperkte toegang tot alle functies in de portal van Cloudyn, met inbegrip van: beheer van gebruikers en lijsten met ontvangers, toegang als hoofdentiteit tot alle entiteitsgegevens. Gebruikerstoegang is bedoeld voor eindgebruikers om rapporten weer te geven en om rapporten te maken met de toegang die ze hebben tot entiteitsgegevens.
 
@@ -33,7 +33,7 @@ Op het moment dat u uw Azure overeenkomst of -account registreert, wordt er een 
 > * Entiteiten maken en beheren
 
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -120,7 +120,7 @@ Als u een gebruiker bent van een Enterprise Agreement voor Azure, kunt u een vid
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een gebruiker met beheerderstoegang maken

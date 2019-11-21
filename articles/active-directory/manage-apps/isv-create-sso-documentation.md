@@ -1,6 +1,6 @@
 ---
-title: Maken en publiceren van documentatie voor eenmalige aanmelding voor uw toepassing
-description: Richtlijnen voor onafhankelijke softwareleveranciers over de integratie met Azure Active Directory
+title: Create & publish single sign-on documentation for your application
+description: Guidance for independent software vendors on integrating with Azure Active Directory
 services: active-directory
 author: barbaraselden
 manager: CelesteDG
@@ -12,53 +12,53 @@ ms.date: 05/22/2019
 ms.author: baselden
 ms.reviewer: jeeds
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53221343ac606b6076cc9cc3cff6e0f96c1a3ac3
-ms.sourcegitcommit: cf438e4b4e351b64fd0320bf17cc02489e61406a
+ms.openlocfilehash: cb223ec8ab7b5c053136c78d3b4ca30ad4da4e18
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/08/2019
-ms.locfileid: "67659591"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232284"
 ---
-# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Maken en publiceren van documentatie voor eenmalige aanmelding voor uw toepassing   
+# <a name="create-and-publish-single-sign-on-documentation-for-your-application"></a>Create and publish single sign-on documentation for your application   
 
-## <a name="documentation-on-your-site"></a>Documentatie over uw site
+## <a name="documentation-on-your-site"></a>Documentation on your site
 
-Gebruiksgemak acceptatie is een belangrijke factor in enterprise software beslissingen te nemen. Schakel gemakkelijk te volgen documentatie biedt ondersteuning voor uw klanten in hun traject voor ingebruikname en verlaagt de ondersteuningskosten. Werken met duizenden softwareleveranciers, heeft Microsoft gezien wat werkt.
+Ease of adoption is a significant factor in enterprise software decisions. Clear easy-to-follow documentation supports your customers in their adoption journey and reduces support costs. Working with thousands of software vendors, Microsoft has seen what works.
 
-U wordt aangeraden dat de documentatie op uw site ten minste de volgende items bevatten.
+We recommend that your documentation on your site at a minimum include the following items.
 
-* Inleiding tot de functionaliteit voor eenmalige aanmelding
+* Introduction to your SSO functionality
 
-  * Ondersteunde protocollen
+  * Protocols supported
 
-  * Versie en SKU
+  * Version and SKU
 
-  * Lijst met ondersteunde identiteitsproviders met documentatiekoppelingen
+  * Supported Identity Providers list with documentation links
 
-* Licentie-informatie voor uw toepassing
+* Licensing information for your application
 
-* Op rollen gebaseerd toegangsbeheer voor het configureren van eenmalige aanmelding
+* Role-based access control for configuring SSO
 
-* Stappen voor het configureren van eenmalige aanmelding
+* SSO Configuration Steps
 
-  * UI-configuratie-elementen voor SAML met de verwachte waarden van de provider
+  * UI configuration elements for SAML with expected values from the provider
 
-  * Gegevens van de service-provider moet worden doorgegeven aan de id-providers
+  * Service provider information to be passed to identity providers
 
-* Als OIDC-/ OAuth
+* If OIDC/OAuth
 
-  * Lijst met machtigingen die nodig zijn om toestemming met zakelijke redenen
+  * List of permissions required for consent with business justifications
 
-* Stappen voor testgebruikers testen
+* Testing steps for pilot users
 
-* Informatie over probleemoplossing, met inbegrip van foutcodes en berichten
+* Troubleshooting information, including error codes and messages
 
-* Mechanismen ter ondersteuning voor klanten
+* Support mechanisms for customers
 
-## <a name="documentation-on-the-microsoft-site"></a>Documentatie over de website van Microsoft
+## <a name="documentation-on-the-microsoft-site"></a>Documentation on the Microsoft Site
 
-Wanneer u uw toepassing met de Azure Active Directory-Toepassingsgalerie, die ook uw toepassing in de Azure Marketplace publiceert, genereert Microsoft-documentatie voor onze wederzijdse klanten waarin wordt stapsgewijs uitgelegd. U ziet een voorbeeld [hier](https://aka.ms/appstutorial). Deze documentatie wordt gemaakt op basis van uw bijdrage aan de galerie en u kunt deze eenvoudig bijwerken als u wijzigingen aanbrengt in uw toepassing met behulp van uw GitHub-account.
+When you list your application with the Azure Active Directory Application Gallery, which also publishes your application in the Azure Marketplace, Microsoft will generate documentation for our mutual customers explaining the step-by-step process. You can see an example [here](https://aka.ms/appstutorial). This documentation is created based on your submission to the gallery, and you can easily update it if you make changes to your application using your GitHub account.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Uw toepassing weergeven in de Azure AD-Toepassingsgalerie](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)
+[List your application in the Azure AD Application Gallery](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx)

@@ -1,129 +1,128 @@
 ---
-title: 'Model evalueren: module verwijzing'
+title: 'Evaluate Model: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Meer informatie over het gebruik van de module evaluate model in Azure Machine Learning om de nauw keurigheid van een getraind model te meten.
+description: Learn how to use the Evaluate Model module in Azure Machine Learning to measure the accuracy of a trained model.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: ddc6a35d5959a2d1f85c151a6f229223db9ba566
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497915"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214569"
 ---
-# <a name="evaluate-model-module"></a>Model module evalueren
+# <a name="evaluate-model-module"></a>Evaluate Model module
 
-In dit artikel wordt een module in Azure Machine Learning Designer (preview) beschreven.
+This article describes a module in Azure Machine Learning designer (preview).
 
-Gebruik deze module om de nauw keurigheid van een getraind model te meten. U geeft een gegevensset op die uit een model gegenereerde scores bevat en de module **Evaluate model** berekent een aantal metrische gegevens over de evaluatie van de industrie standaard.
+Use this module to measure the accuracy of a trained model. You provide a dataset containing scores generated from a model, and the **Evaluate Model** module computes a set of industry-standard evaluation metrics.
   
- De metrische gegevens die door het **Evalueer model** worden geretourneerd, zijn afhankelijk van het type model dat u evalueert:  
+ The metrics returned by **Evaluate Model** depend on the type of model that you are evaluating:  
   
--   **Classificatie modellen**    
--   **Regressie modellen**    
-
+-   **Classification Models**    
+-   **Regression Models**    
 
 
 > [!TIP]
-> Als u geen ervaring hebt met het model, kunt u het beste de video serie door Dr. Stephen Elston als onderdeel van de [machine learning cursus](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) van EdX. 
+> If you are new to model evaluation, we recommend the video series by Dr. Stephen Elston, as part of the [machine learning course](https://blogs.technet.microsoft.com/machinelearning/2015/09/08/new-edx-course-data-science-machine-learning-essentials/) from EdX. 
 
 
-Er zijn drie manieren om de module **Evaluate model** te gebruiken:
+There are three ways to use the **Evaluate Model** module:
 
-+ Genereer scores voor uw trainings gegevens en evalueer het model op basis van deze scores
-+ Scores op het model genereren, maar deze scores vergelijken met scores op een gereserveerde testset
-+ Vergelijk de scores voor twee verschillende, gerelateerde modellen, met dezelfde set gegevens
++ Generate scores over your training data, and evaluate the model based on these scores
++ Generate scores on the model, but compare those scores to scores on a reserved testing set
++ Compare scores for two different but related models, using the same set of data
 
-## <a name="use-the-training-data"></a>De trainings gegevens gebruiken
+## <a name="use-the-training-data"></a>Use the training data
 
-Als u een model wilt evalueren, moet u een gegevensset verbinden die een set van invoer kolommen en scores bevat.  Als er geen andere gegevens beschikbaar zijn, kunt u de oorspronkelijke gegevensset gebruiken.
+To evaluate a model, you must connect a dataset that contains a set of input columns and scores.  If no other data is available, you can use your original dataset.
 
-1. Verbind de Score van de **gescoorde gegevensset** van het [score model](./score-model.md) met de invoer van een **evaluatie model**. 
-2. Klik op **model module evalueren** en voer de pijp lijn uit om de evaluatie scores te genereren.
+1. Connect the **Scored dataset** output of the [Score Model](./score-model.md) to the input of **Evaluate Model**. 
+2. Click **Evaluate Model** module, and run the pipeline to generate the evaluation scores.
 
-## <a name="use-testing-data"></a>Test gegevens gebruiken
+## <a name="use-testing-data"></a>Use testing data
 
-Een veelvoorkomend scenario in machine learning is het scheiden van uw oorspronkelijke gegevensset in trainings-en test gegevens sets, met behulp van de [gesplitste](./split-data.md) module of de [partitie-en voorbeeld](./partition-and-sample.md) module. 
+A common scenario in machine learning is to separate your original data set into training and testing datasets, using the [Split](./split-data.md) module, or the [Partition and Sample](./partition-and-sample.md) module. 
 
-1. Verbind de Score van de **gescoorde gegevensset** van het [score model](score-model.md) met de invoer van een **evaluatie model**. 
-2. Verbind de uitvoer van de module voor gesplitste gegevens die de test gegevens bevat naar de rechter invoer van het **Evalueer model**.
-2. Klik op **model module evalueren** en selecteer **geselecteerde uitvoeren** om de evaluatie scores te genereren.
+1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
+2. Connect the output of the Split Data module that contains the testing data to the right-hand input of **Evaluate Model**.
+2. Click **Evaluate Model** module, and select **Run selected** to generate the evaluation scores.
 
-## <a name="compare-scores-from-two-models"></a>Scores van twee modellen vergelijken
+## <a name="compare-scores-from-two-models"></a>Compare scores from two models
 
-U kunt ook een tweede set scores verbinden om het **model te evalueren**.  De scores zijn mogelijk een gedeelde evaluatieset met bekende resultaten of een set resultaten van een ander model voor dezelfde gegevens.
+You can also connect a second set of scores to **Evaluate Model**.  The scores might be a shared evaluation set that has known results, or a set of results from a different model for the same data.
 
-Deze functie is handig omdat u de resultaten van twee verschillende modellen op dezelfde gegevens eenvoudig kunt vergelijken. U kunt ook scores van twee verschillende uitvoeringen vergelijken met dezelfde gegevens met verschillende para meters.
+This feature is useful because you can easily compare results from two different models on the same data. Or, you might compare scores from two different runs over the same data with different parameters.
 
-1. Verbind de Score van de **gescoorde gegevensset** van het [score model](score-model.md) met de invoer van een **evaluatie model**. 
-2. Koppel de uitvoer van de module score model voor het tweede model aan de rechter invoer van het **Evalueer model**.
-3. Klik met de rechter muisknop op **model evalueren**en selecteer **geselecteerde uitvoeren** om de evaluatie scores te genereren.
+1. Connect the **Scored dataset** output of the [Score Model](score-model.md) to the input of **Evaluate Model**. 
+2. Connect the output of the Score Model module for the second model to the right-hand input of **Evaluate Model**.
+3. Right-click **Evaluate Model**, and select **Run selected** to generate the evaluation scores.
 
 ## <a name="results"></a>Resultaten
 
-Nadat u het **model evalueren**hebt uitgevoerd, klikt u met de rechter muisknop op de module en selecteert u **evaluatie resultaten** om de resultaten te bekijken. U kunt:
+After you run **Evaluate Model**, right-click the module and select **Evaluation results** to see the results. U kunt het volgende doen:
 
-+ Sla de resultaten op als een gegevensset, zodat u gemakkelijker kunt analyseren met andere hulpprogram ma's
-+ Een visualisatie in de ontwerp functie genereren
++ Save the results as a dataset, for easier analysis with other tools
++ Generate a visualization in the designer
 
-Als u gegevens sets verbindt met zowel de invoer van een **Evalueer model**, bevatten de resultaten metrische gegevens voor beide sets of beide modellen.
-Het model of de gegevens die aan de linker poort zijn gekoppeld, worden eerst in het rapport weer gegeven, gevolgd door de metrieken voor de gegevensset of het model dat is gekoppeld aan de juiste poort.  
+If you connect datasets to both inputs of **Evaluate Model**, the results will contain metrics for both set of data, or both models.
+The model or data attached to the left port is presented first in the report, followed by the metrics for the dataset, or model attached on the right port.  
 
-De volgende afbeelding vertegenwoordigt bijvoorbeeld een vergelijking van de resultaten van twee cluster modellen die zijn gebouwd op dezelfde gegevens, maar met verschillende para meters.  
+For example, the following image represents a comparison of results from two clustering models that were built on the same data, but with different parameters.  
 
-![AML&#95;-Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
+![AML&#95;Comparing2Models](media/module/aml-comparing2models.png "AML_Comparing2Models")  
 
-Omdat dit een cluster model is, zijn de evaluatie resultaten anders dan wanneer u scores van twee regressie modellen of twee classificatie modellen hebt vergeleken. De gehele presentatie is echter hetzelfde. 
+Because this is a clustering model, the evaluation results are different than if you compared scores from two regression models, or compared two classification models. However, the overall presentation is the same. 
 
 ## <a name="metrics"></a>Metrische gegevens
 
-In deze sectie worden de metrische gegevens die worden geretourneerd voor de specifieke typen modellen beschreven die worden ondersteund voor gebruik met het **Evaluate-model**:
+This section describes the metrics returned for the specific types of models supported for use with **Evaluate Model**:
 
-+ [classificatie modellen](#bkmk_classification)
-+ [regressie modellen](#bkmk_regression)
++ [classification models](#bkmk_classification)
++ [regression models](#bkmk_regression)
 
-###  <a name="bkmk_classification"></a>Metrische gegevens voor classificatie modellen
+###  <a name="bkmk_classification"></a> Metrics for classification models
 
-De volgende metrische gegevens worden gerapporteerd bij het evalueren van classificatie modellen. Als u modellen vergelijkt, worden ze gerangschikt op basis van de metrische gegevens die u voor de evaluatie selecteert.  
+The following metrics are reported when evaluating classification models. If you compare models, they are ranked by the metric you select for evaluation.  
   
--   **Nauw keurigheid** meet de goed keuring van een classificatie model als het aandeel van de werkelijke resultaten tot het totale aantal cases.  
+-   **Accuracy** measures the goodness of a classification model as the proportion of true results to total cases.  
   
--   **Nauw keurigheid** is het aandeel van de werkelijke resultaten ten opzichte van alle positieve resultaten.  
+-   **Precision** is the proportion of true results over all positive results.  
   
--   **Intrekken** is de Fractie van alle juiste resultaten die door het model worden geretourneerd.  
+-   **Recall** is the fraction of all correct results returned by the model.  
   
--   **F-Score** wordt berekend als het gewogen gemiddelde van de precisie en intrekken tussen 0 en 1, waarbij de ideale waarde voor de F-score 1 is.  
+-   **F-score** is computed as the weighted average of precision and recall between 0 and 1, where the ideal F-score value is 1.  
   
--   **AUC** meet het gebied onder de curve die is getekend met echte positieven op de y-as en fout-positieven op de x-as. Deze meet waarde is nuttig omdat deze een enkel getal bevat waarmee u modellen van verschillende typen kunt vergelijken.  
+-   **AUC** measures the area under the curve plotted with true positives on the y axis and false positives on the x axis. This metric is useful because it provides a single number that lets you compare models of different types.  
   
-- **Gemiddeld logboek verlies** is een enkele score die wordt gebruikt om de sanctie voor verkeerde resultaten te drukken. Het wordt berekend als het verschil tussen de twee waarschijnlijke verdelingen: de werkelijke waarde en de naam van het model.  
+- **Average log loss** is a single score used to express the penalty for wrong results. It is calculated as the difference between two probability distributions – the true one, and the one in the model.  
   
-- **Verlies van trainings logboeken** is een enkele score die het voor deel van de classificatie op een wille keurige voor spelling weergeeft. Het logboek verlies meet de onzekerheid van uw model door de waarschijnlijkheid dat het wordt uitgevoerd, te vergelijken met de bekende waarden van de labels. U wilt het logboek verlies voor het model als geheel minimaliseren.
+- **Training log loss** is a single score that represents the advantage of the classifier over a random prediction. The log loss measures the uncertainty of your model by comparing the probabilities it outputs to the known values (ground truth) in the labels. You want to minimize log loss for the model as a whole.
 
-##  <a name="bkmk_regression"></a>Metrische gegevens voor regressie modellen
+##  <a name="bkmk_regression"></a> Metrics for regression models
  
-De metrische gegevens die voor regressie modellen worden geretourneerd, zijn in het algemeen ontworpen om de hoeveelheid fout te schatten.  Een model wordt gezien als een goede grootte van de gegevens als het verschil tussen de waargenomen en voorspelde waarden klein is. Gezien het patroon van de verschillen (het verschil tussen een voorspeld punt en de bijbehorende werkelijke waarde), kan u echter een heleboel informatie over mogelijke afwijking in het model vertellen.  
+The metrics returned for regression models are designed to estimate the amount of error.  A model is considered to fit the data well if the difference between observed and predicted values is small. However, looking at the pattern of the residuals (the difference between any one predicted point and its corresponding actual value) can tell you a lot about potential bias in the model.  
   
- De volgende metrische gegevens worden gerapporteerd voor het evalueren van regressie modellen. Wanneer u modellen vergelijkt, worden ze gerangschikt op basis van de metrische gegevens die u voor de evaluatie selecteert.  
+ The following metrics are reported for evaluating regression models. When you compare models, they are ranked by the metric you select for evaluation.  
   
-- **Gemiddelde absolute fout (Mae)** meet hoe dicht de voor spellingen zijn voor de werkelijke resultaten. een lagere score is dus beter.  
+- **Mean absolute error (MAE)** measures how close the predictions are to the actual outcomes; thus, a lower score is better.  
   
-- **Root mean error (RMSE)** maakt een enkele waarde die de fout in het model samenvat. Door het verschil te squaringen, wordt het verschil tussen de voor spelling en de onderdictie van de metriek genegeerd.  
+- **Root mean squared error (RMSE)** creates a single value that summarizes the error in the model. By squaring the difference, the metric disregards the difference between over-prediction and under-prediction.  
   
-- **Relatieve absolute fout (Rae)** is het relatieve absolute verschil tussen de verwachte en werkelijke waarden; relatief omdat het gemiddelde verschil wordt gedeeld door het reken kundige gemiddelde.  
+- **Relative absolute error (RAE)** is the relative absolute difference between expected and actual values; relative because the mean difference is divided by the arithmetic mean.  
   
-- Met **relatieve kwadratische fout (RSE)** wordt het totale kwadraat van de voorspelde waarden op dezelfde manier genormaliseerd door te delen door de totale kwadraat fout van de werkelijke waarden.  
+- **Relative squared error (RSE)** similarly normalizes the total squared error of the predicted values by dividing by the total squared error of the actual values.  
   
-- **Gemiddelde nul een fout (MZOE)** geeft aan of de voor spelling juist is of niet.  Met andere woorden: `ZeroOneLoss(x,y) = 1` wanneer `x!=y`; anders `0`.
+- **Mean Zero One Error (MZOE)** indicates whether the prediction was correct or not.  In other words: `ZeroOneLoss(x,y) = 1` when `x!=y`; otherwise `0`.
   
-- De **determinatie coëfficiënt**, vaak R<sup>2</sup>genoemd, vertegenwoordigt de voorspellende kracht van het model als een waarde tussen 0 en 1. Nul betekent dat het model wille keurig is (er wordt niets uitgelegd). 1 betekent dat er een perfecte aanpassing is. Wees echter voorzichtig bij het interpreteren van R<sup>2</sup> -waarden, omdat lage waarden volledig normaal kunnen zijn en hoge waarden kunnen worden verdacht.
+- **Coefficient of determination**, often referred to as R<sup>2</sup>, represents the predictive power of the model as a value between 0 and 1. Zero means the model is random (explains nothing); 1 means there is a perfect fit. However, caution should be used in interpreting  R<sup>2</sup> values, as low values can be entirely normal and high values can be suspect.
   
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Bekijk de [set met modules die beschikbaar zijn](module-reference.md) voor Azure machine learning. 
+See the [set of modules available](module-reference.md) to Azure Machine Learning. 

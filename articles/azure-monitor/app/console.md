@@ -1,36 +1,35 @@
 ---
-title: Azure-toepassing inzichten voor console toepassingen | Microsoft Docs
-description: Bewaak webtoepassingen voor Beschik baarheid, prestaties en gebruik.
+title: Azure Application Insights for Console Applications | Microsoft Docs
+description: Monitor web applications for availability, performance and usage.
 ms.service: azure-monitor
 ms.subservice: application-insights
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 01/30/2019
+ms.date: 11/19/2019
 ms.reviewer: lmolkova
-ms.openlocfilehash: 1cafa78fb4fba28fbd0691e256efe482fc9664ef
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: ee8dabcc957364bade36608067aad568662c24ae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678206"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232724"
 ---
-# <a name="application-insights-for-net-console-applications"></a>Application Insights voor .NET-console toepassingen
+# <a name="application-insights-for-net-console-applications"></a>Application Insights for .NET console applications
 
-Met [Application Insights](../../azure-monitor/app/app-insights-overview.md) kunt u uw webtoepassing controleren op Beschik baarheid, prestaties en gebruik.
+[Application Insights](../../azure-monitor/app/app-insights-overview.md) lets you monitor your web application for availability, performance, and usage.
 
-U hebt een abonnement met [Microsoft Azure](https://azure.com)nodig. Meld u aan met een Microsoft-account, dat u mogelijk hebt voor Windows, Xbox Live of andere micro soft-Cloud Services. Uw team heeft mogelijk een organisatie abonnement op Azure: vraag de eigenaar om u toe te voegen met behulp van uw Microsoft-account.
+You need a subscription with [Microsoft Azure](https://azure.com). Sign in with a Microsoft account, which you might have for Windows, Xbox Live, or other Microsoft cloud services. Your team might have an organizational subscription to Azure: ask the owner to add you to it using your Microsoft account.
 
 > [!NOTE]
-> Er is een nieuwe bèta versie van Application Insights SDK met de naam [micro soft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) , die kan worden gebruikt om Application Insights in te scha kelen voor elke console toepassing. U wordt aangeraden dit pakket en de bijbehorende instructies [hier](../../azure-monitor/app/worker-service.md)te gebruiken. Dit pakket heeft [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard)en kan daarom worden gebruikt in .net Core 2,0 of hoger en .NET Framework 4.7.2 of hoger.
-Dit document wordt afgeschaft zodra een stabiele versie van dit nieuwe pakket wordt uitgebracht.
+> There is a new Application Insights SDK called [Microsoft.ApplicationInsights.WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) which can used to enable Application Insights for any Console Applications. It is recommended to use this package and associated instructions from [here](../../azure-monitor/app/worker-service.md). This package targets [`NetStandard2.0`](https://docs.microsoft.com/dotnet/standard/net-standard), and hence can be used in .NET Core 2.0 or higher, and .NET Framework 4.7.2 or higher.
 
 ## <a name="getting-started"></a>Aan de slag
 
-* Maak in de [Azure Portal](https://portal.azure.com) [een Application Insights-resource](../../azure-monitor/app/create-new-resource.md). Voor toepassings type kiest u **Algemeen**.
-* Kopieer de instrumentatiesleutel. Zoek de sleutel in de vervolg keuzelijst **Essentials** van de nieuwe resource die u hebt gemaakt. 
-* Installeer het meest recente pakket [micro soft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) .
-* Stel de instrumentatie sleutel in uw code in voordat u een telemetrie bijhoudt (of stel de omgevings variabele APPINSIGHTS_INSTRUMENTATIONKEY in). Daarna kunt u de telemetrie hand matig bijhouden en weer geven op de Azure Portal
+* Maak in de [Azure Portal](https://portal.azure.com) [een Application Insights-resource](../../azure-monitor/app/create-new-resource.md). For application type, choose **General**.
+* Kopieer de instrumentatiesleutel. Find the key in the **Essentials** drop-down of the new resource you created. 
+* Install latest [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) package.
+* Set the instrumentation key in your code before tracking any telemetry (or set APPINSIGHTS_INSTRUMENTATIONKEY environment variable). After that, you should be able to manually track telemetry and see it on the Azure portal
 
 ```csharp
 // you may use different options to create configuration as shown later in this article
@@ -40,21 +39,21 @@ var telemetryClient = new TelemetryClient(configuration);
 telemetryClient.TrackTrace("Hello World!");
 ```
 
-* Installeer de nieuwste versie van het pakket [micro soft. ApplicationInsights. DependencyCollector.](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) het traceert automatisch http, SQL of andere externe afhankelijkheids aanroepen.
+* Install latest version of [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) package - it automatically tracks HTTP, SQL, or some other external dependency calls.
 
-U kunt Application Insights vanuit de code initialiseren en configureren, of `ApplicationInsights.config`-bestand gebruiken. Zorg ervoor dat de initialisatie zo snel mogelijk gebeurt. 
+You may initialize and configure Application Insights from the code or using `ApplicationInsights.config` file. Make sure initialization happens as early as possible. 
 
 > [!NOTE]
-> Instructies die verwijzen naar **ApplicationInsights. config** zijn alleen van toepassing op apps die zijn gericht op de .NET Framework, en zijn niet van toepassing op .net core-toepassingen.
+> Instructions referring to **ApplicationInsights.config** are only applicable to apps that are targeting the .NET Framework, and do not apply to .NET Core applications.
 
-### <a name="using-config-file"></a>Configuratie bestand gebruiken
-Application Insights SDK zoekt standaard naar `ApplicationInsights.config`-bestand in de werkmap wanneer `TelemetryConfiguration` wordt gemaakt
+### <a name="using-config-file"></a>Using config file
+By default, Application Insights SDK looks for `ApplicationInsights.config` file in the working directory when `TelemetryConfiguration` is being created
 
 ```csharp
 TelemetryConfiguration config = TelemetryConfiguration.Active; // Reads ApplicationInsights.config file if present
 ```
 
-U kunt ook het pad naar het configuratie bestand opgeven.
+You may also specify path to the config file.
 
 ```csharp
 using System.IO;
@@ -62,9 +61,9 @@ TelemetryConfiguration configuration = TelemetryConfiguration.CreateFromConfigur
 var telemetryClient = new TelemetryClient(configuration);
 ```
 
-Zie voor meer informatie [configuratie bestand verwijzing](configuration-with-applicationinsights-config.md).
+For more information, see [configuration file reference](configuration-with-applicationinsights-config.md).
 
-U kunt een volledig voor beeld van het configuratie bestand krijgen door de nieuwste versie van het pakket [micro soft. ApplicationInsights. Windowsserver](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) te installeren. Dit is de **minimale** configuratie voor afhankelijkheids verzameling die gelijk is aan het code voorbeeld.
+You may get a full example of the config file by installing latest version of [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) package. Here is the **minimal** configuration for dependency collection that is equivalent to the code example.
 
 ```XML
 <?xml version="1.0" encoding="utf-8"?>
@@ -94,11 +93,11 @@ U kunt een volledig voor beeld van het configuratie bestand krijgen door de nieu
 
 ```
 
-### <a name="configuring-telemetry-collection-from-code"></a>Telemetrie verzameling configureren vanuit code
+### <a name="configuring-telemetry-collection-from-code"></a>Configuring telemetry collection from code
 > [!NOTE]
-> Het lezen van het configuratie bestand wordt niet ondersteund in .NET core. U kunt overwegen [Application INSIGHTS SDK te gebruiken voor ASP.net core](../../azure-monitor/app/asp-net-core.md)
+> Reading config file is not supported on .NET Core. You may consider using [Application Insights SDK for ASP.NET Core](../../azure-monitor/app/asp-net-core.md)
 
-* Bij het opstarten van de toepassing wordt `DependencyTrackingTelemetryModule`-exemplaar gemaakt en geconfigureerd. dit moet een singleton zijn en moet worden bewaard voor de levens duur van de toepassing.
+* During application start-up create and configure `DependencyTrackingTelemetryModule` instance - it must be singleton and must be preserved for application lifetime.
 
 ```csharp
 var module = new DependencyTrackingTelemetryModule();
@@ -118,23 +117,23 @@ module.IncludeDiagnosticSourceActivities.Add("Microsoft.Azure.EventHubs");
 module.Initialize(configuration);
 ```
 
-* Veelgebruikte telemetrie-initialisatie functies toevoegen
+* Add common telemetry initializers
 
 ```csharp
 // ensures proper DependencyTelemetry.Type is set for Azure RESTful API calls
 configuration.TelemetryInitializers.Add(new HttpDependenciesParsingTelemetryInitializer());
 ```
 
-Als u configuratie hebt gemaakt met de constructor zonder normale `TelemetryConfiguration()`, moet u ook ondersteuning voor correlatie inschakelen. **Het is niet nodig** als u de configuratie van het bestand hebt gelezen, wordt gebruikt `TelemetryConfiguration.CreateDefault()` of `TelemetryConfiguration.Active`.
+If you created configuration with plain `TelemetryConfiguration()` constructor, you need to enable correlation support additionally. **It is not needed** if you read configuration from file, used `TelemetryConfiguration.CreateDefault()` or `TelemetryConfiguration.Active`.
 
 ```csharp
 configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitializer());
 ```
 
-* U kunt ook de Collector-module voor prestatie meter items installeren en initialiseren, zoals [hier](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/) wordt beschreven
+* You may also want to install and initialize Performance Counter collector module as described [here](https://apmtips.com/blog/2017/02/13/enable-application-insights-live-metrics-from-code/)
 
 
-#### <a name="full-example"></a>Volledig voor beeld
+#### <a name="full-example"></a>Full example
 
 ```csharp
 using Microsoft.ApplicationInsights;
@@ -206,5 +205,5 @@ namespace ConsoleApp
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Bewaak afhankelijkheden](../../azure-monitor/app/asp-net-dependencies.md) om te zien of rest, SQL of andere externe bronnen worden vertraagd.
-* [Gebruik de API](../../azure-monitor/app/api-custom-events-metrics.md) om uw eigen gebeurtenissen en metrische gegevens te verzenden voor een meer gedetailleerde weer gave van de prestaties en het gebruik van uw app.
+* [Monitor dependencies](../../azure-monitor/app/asp-net-dependencies.md) to see if REST, SQL, or other external resources are slowing you down.
+* [Use the API](../../azure-monitor/app/api-custom-events-metrics.md) to send your own events and metrics for a more detailed view of your app's performance and usage.

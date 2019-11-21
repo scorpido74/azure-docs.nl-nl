@@ -1,22 +1,18 @@
 ---
 title: Uw eerste functie maken met Azure CLI
 description: Informatie over het maken van uw eerste Azure-functie met behulp van Azure CLI en Azure Functions Core Tools.
-author: ggailey777
-ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
 ms.date: 11/13/2018
 ms.topic: quickstart
-ms.service: azure-functions
 ms.custom: mvc
-manager: gwallace
-ms.openlocfilehash: 1d0c6edf250e49fe966388253617181ed2b3dff1
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 147ad4bd20ee1c7ae8f1529e1b3bc0e4f3e7dbb0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329643"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230844"
 ---
-# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Snelstartgids: uw eerste functie maken vanaf de opdracht regel met behulp van Azure CLI
+# <a name="quickstart-create-your-first-function-from-the-command-line-using-azure-cli"></a>Quickstart: Create your first function from the command line using Azure CLI
 
 In dit onderwerp van de zelfstudie wordt stapsgewijs uitgelegd hoe u uw eerste functie maakt vanaf de opdrachtregel of in de terminal. Azure CLI gebruikt u om een functie-app te maken. Het is de [serverloze](https://azure.microsoft.com/solutions/serverless/) infrastructuur die als host fungeert voor uw functie. Het functiecodeproject wordt gegenereerd vanuit een sjabloon met behulp van de [Azure Functions Core Tools](functions-run-local.md), dat ook wordt gebruikt om het functie-app-project te implementeren naar Azure.
 
@@ -26,9 +22,9 @@ U kunt de onderstaande stappen volgen op een Mac-, Windows- of Linux-computer.
 
 Voordat u dit voorbeeld kunt uitvoeren moet u ervoor zorgen dat u het volgende hebt:
 
-+ Installeer [Azure functions core tools](./functions-run-local.md#v2) versie 2.6.666 of hoger.
++ Install [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 or later.
 
-+ Installeer de [Azure CLI](/cli/azure/install-azure-cli). Voor dit artikel is de Azure CLI-versie 2,0 of hoger vereist. Voer `az --version` uit om te zien welke versie u hebt. U kunt ook de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
++ Installeer de [Azure CLI](/cli/azure/install-azure-cli). This     article requires the Azure CLI version 2.0 or later. Voer `az --version` uit om te zien welke versie u hebt. U kunt ook de [Azure Cloud Shell](https://shell.azure.com/bash) gebruiken.
 
 + Een actief Azure-abonnement.
 
@@ -36,7 +32,7 @@ Voordat u dit voorbeeld kunt uitvoeren moet u ervoor zorgen dat u het volgende h
 
 [!INCLUDE [functions-create-function-app-cli](../../includes/functions-create-function-app-cli.md)]
 
-## <a name="enable-extension-bundles"></a>Uitbreidings bundels inschakelen
+## <a name="enable-extension-bundles"></a>Enable extension bundles
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 

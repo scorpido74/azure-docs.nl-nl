@@ -1,16 +1,16 @@
 ---
-title: Een aangepaste beleidsdefinitie maken
-description: Een aangepaste beleids definitie voor Azure Policy voor het afdwingen van aangepaste bedrijfs regels voor uw Azure-resources.
+title: 'Tutorial: Create a custom policy definition'
+description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
 ms.date: 04/23/2019
 ms.topic: tutorial
-ms.openlocfilehash: 97a85eb28cd0dbb2586623fda442d87a5790db2a
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 743e3dea3c6daa7b2e713f2b1d5c1691d60785ec
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74128798"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216706"
 ---
-# <a name="tutorial-create-a-custom-policy-definition"></a>Zelf studie: een aangepaste beleids definitie maken
+# <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
 Met een aangepaste beleidsdefinitie kunnen klanten hun eigen regels voor het gebruik van Azure definiëren. Deze regels worden vaak gebruikt voor het afdwingen van:
 
@@ -42,11 +42,11 @@ Voordat u de beleidsdefinitie gaat maken, is het belangrijk te weten wat de inte
 
 In uw vereisten moet zowel de gewenste als de ongewenste situatie duidelijk worden geïdentificeerd.
 
-Hoewel we de verwachte status van de resource hebben gedefinieerd, hebben we nog niet gedefinieerd wat we willen doen met niet-compatibele resources. Azure Policy ondersteunt een aantal [effecten](../concepts/effects.md). Voor deze zelfstudie definiëren we de vereiste dat het maken van resources moet worden verhinderd als deze niet voldoen aan de bedrijfsregels. Om dit doel te bereiken, gebruiken we het effect [Deny](../concepts/effects.md#deny) (weigeren). We willen ook de optie hebben om het beleid te onderbreken voor speciale toewijzingen. Hiervoor gebruiken we het effect [Uitgeschakeld](../concepts/effects.md#disabled), waarvan we een [parameter](../concepts/definition-structure.md#parameters) maken in de beleidsdefinitie.
+Hoewel we de verwachte status van de resource hebben gedefinieerd, hebben we nog niet gedefinieerd wat we willen doen met niet-compatibele resources. Azure Policy supports a number of [effects](../concepts/effects.md). Voor deze zelfstudie definiëren we de vereiste dat het maken van resources moet worden verhinderd als deze niet voldoen aan de bedrijfsregels. Om dit doel te bereiken, gebruiken we het effect [Deny](../concepts/effects.md#deny) (weigeren). We willen ook de optie hebben om het beleid te onderbreken voor speciale toewijzingen. Hiervoor gebruiken we het effect [Uitgeschakeld](../concepts/effects.md#disabled), waarvan we een [parameter](../concepts/definition-structure.md#parameters) maken in de beleidsdefinitie.
 
 ## <a name="determine-resource-properties"></a>Resource-eigenschappen bepalen
 
-Op basis van de zakelijke vereiste is de Azure-resource die u wilt controleren met Azure Policy een opslag account. Maar we weten nog niet welke eigenschappen in de beleidsdefinitie moeten worden gebruikt. Azure Policy evalueert op basis van de JSON-weer gave van de resource. Daarom moeten we de eigenschappen begrijpen die beschikbaar zijn voor die bron.
+Based on the business requirement, the Azure resource to audit with Azure Policy is a storage account. Maar we weten nog niet welke eigenschappen in de beleidsdefinitie moeten worden gebruikt. Azure Policy evaluates against the JSON representation of the resource, so we'll need to understand the properties available on that resource.
 
 Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
@@ -64,9 +64,9 @@ Er zijn verschillende manieren om te kijken naar een [Resource Manager-sjabloon]
 #### <a name="existing-resource-in-the-portal"></a>Bestaande resource in de portal
 
 De eenvoudigste manier om eigenschappen te vinden is een bestaande resource van hetzelfde type te bekijken. Resources die al zijn geconfigureerd met de instelling die u wilt afdwingen, bevatten ook de waarde waarmee moet worden vergeleken.
-Bekijk de pagina **sjabloon exporteren** (onder **instellingen**) in de Azure portal voor die specifieke resource.
+Look at the **Export template** page (under **Settings**) in the Azure portal for that specific resource.
 
-![Sjabloon pagina voor een bestaande resource exporteren](../media/create-custom-policy-definition/export-template.png)
+![Export template page on existing resource](../media/create-custom-policy-definition/export-template.png)
 
 Wanneer u dit doet voor een opslagaccount, ziet u een sjabloon die lijkt op het volgende voorbeeld:
 
@@ -156,11 +156,11 @@ We hebben de resource-eigenschap gevonden, maar we moeten die eigenschap nog toe
 
 Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
-- Azure-CLI
+- Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
 
-### <a name="azure-cli"></a>Azure-CLI
+### <a name="azure-cli"></a>Azure CLI
 
 In Azure CLI wordt de `az provider`-opdrachtgroep gebruikt om te zoeken naar resource-aliassen. We filteren op de naamruimte **Microsoft.Storage**, op basis van de gegevens die we eerder over de Azure-resource hebben verkregen.
 
@@ -203,7 +203,7 @@ az graph query -q "where type=~'microsoft.storage/storageaccounts' | limit 1"
 Search-AzGraph -Query "where type=~'microsoft.storage/storageaccounts' | limit 1"
 ```
 
-De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. De resultaten van een Azure-resource grafiek kunnen echter ook [alias](../concepts/definition-structure.md#aliases) details bevatten door de _aliassen_ -matrix te _projecteren_ :
+De resultaten lijken op wat we zien in de Resource Manager-sjablonen en via de Azure Resource Explorer. However, Azure Resource Graph results can also include [alias](../concepts/definition-structure.md#aliases) details by _projecting_ the _aliases_ array:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -373,7 +373,7 @@ Het opstellen van de [beleidsregel](../concepts/definition-structure.md#policy-r
 - Dat het **type** van het opslagaccount **Microsoft.Storage/storageAccounts** is
 - Dat de eigenschap **supportsHttpsTrafficOnly** van het opslagaccount niet **true** is
 
-Omdat we willen dat beide instructies waar zijn, gebruiken we de **logische operator** [allOf](../concepts/definition-structure.md#logical-operators). We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
+Omdat we willen dat beide instructies waar zijn, gebruiken we de [logische operator](../concepts/definition-structure.md#logical-operators) **allOf**. We geven de parameter **effectType** door aan het effect in plaats van een statische declaratie te maken. Onze voltooide regel ziet eruit zoals in dit voorbeeld:
 
 ```json
 "if": {

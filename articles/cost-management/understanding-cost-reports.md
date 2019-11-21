@@ -1,207 +1,207 @@
 ---
-title: Inzicht in Cloudyn-rapporten in Azure kosten | Microsoft Docs
-description: Dit artikel helpt u inzicht in de basisstructuur voor de rapporten voor management van Cloudyn kosten en functies.
+title: Understanding Cloudyn cost management reports in Azure | Microsoft Docs
+description: This article helps you understand Cloudyn cost management reports basic structure and functions.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 91dc386641c758c42f64afff387d0463d1445f1d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d847b78ba9623f3543a3cb1e45b5187605deb550
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969075"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229768"
 ---
-# <a name="understanding-cloudyn-cost-management-reports"></a>Inzicht in Cloudyn-rapporten voor kosten
+# <a name="understanding-cloudyn-cost-management-reports"></a>Understanding Cloudyn cost management reports
 
-Dit artikel helpt u inzicht in de basisstructuur voor de rapporten voor management van Cloudyn kosten en functies. De meeste Cloudyn-rapporten zijn intuïtief en een uniform uiterlijk hebben. Nadat u dit artikel hebt gelezen, gaan alle kostenbeheerrapporten gebruiken. Veel standard-functies zijn beschikbaar in de verschillende rapporten, zodat u kunt de rapporten moeiteloos navigeren. Rapporten kunnen worden aangepast en u kunt kiezen uit verschillende opties om te berekenen en de resultaten weer te geven.
+This article helps you understand Cloudyn cost management reports basic structure and functions. Most Cloudyn reports are intuitive and have a uniform look and feel. After you read this article, are ready to use all the cost management reports. Many standard features are available throughout the various reports, allowing you to navigate the reports with ease. Reports are customizable, and you can select from several options to calculate and display results.
 
-## <a name="report-fields-and-options"></a>Rapportvelden en opties
+## <a name="report-fields-and-options"></a>Report fields and options
 
-Hier volgt een overzicht van een voorbeeld van het rapport Cost Over Time. De meeste Cloudyn-rapporten hebben een vergelijkbare indeling.
+Here's a look at an example of the Cost Over Time report. Most Cloudyn reports have a similar layout.
 
-![Voorbeeld van het rapport Cost Over Time met genummerde gebieden die overeenkomt met beschrijvingen](./media/understanding-cost-reports/sample-report.png)
+![Example of the Cost Over Time report with numbered areas corresponding to descriptions](./media/understanding-cost-reports/sample-report.png)
 
-Elke genummerde gebied in de voorgaande afbeelding wordt beschreven in de volgende informatie:
+Each numbered area in the preceding image is described in detail in the following information:
 
-1. **Datumbereik**
+1. **Date Range**
 
-    Gebruik de lijst datumbereik voor het definiëren van een rapport tijdsinterval met behulp van een vooraf ingestelde of aangepast.
-2. **Opgeslagen Filter**
+    Use the Date Range list to define a report time interval using a preset or custom.
+2. **Saved Filter**
 
-    De lijst opgeslagen Filter gebruiken om op te slaan van de huidige groepen en filters die worden toegepast op het rapport. Opgeslagen filters zijn beschikbaar voor de kosten en prestaties van rapporten, waaronder:
+    Use the Saved Filter list to save the current groups and filters that are applied to the report. Saved filters are available across cost and performance reports, including:
 
-      - Kostenanalyse
-      - Toewijzing
+      - Cost Analysis
+      - Allocation
       - Asset-management
       - Optimalisatie
 
-   Typ de naam van een filter en klik op **opslaan**.
+   Type a filter name and the click **Save**.
 
 3. **Tags**
 
-    Gebruik het gebied van de Tags aan groep door de tag categorieën. Labels die worden vermeld in het menu Azure afdeling of kosten center tags of ze zijn het kosten entiteits- en abonnement tags van Cloudyn. Selecteer de tags om resultaten te filteren. U kunt ook de naam van een tag (trefwoord) om resultaten te filteren typen.
+    Use the Tags area to group by tag categories. Tags listed in the menu are Azure department or cost center tags or they are Cloudyn's cost entity and subscription tags. Select tags to filter results. You can also type a tag name (keyword) to filter results.
 
-    ![Voorbeeld van een lijst met tags voor het filteren van resultaten op](./media/understanding-cost-reports/select-options.png)
+    ![Example of a list of tags to filter results by](./media/understanding-cost-reports/select-options.png)
 
-    Klik op **toevoegen** een nieuw filter toe te voegen.
+    Click **Add** to add a new filter.
 
-    ![Filter toevoegen met opties en voorwaarden om te filteren op](./media/understanding-cost-reports/add-filter.png)
+    ![Add filter box showing options and conditions to filter by](./media/understanding-cost-reports/add-filter.png)
 
-    Tag groeperen of filteren heeft geen betrekking op Azure-resources of groep resourcetags.
+    Tag grouping or filtering does not relate to Azure resources or resource group tags.
 
-    Kostentoewijzing tag groeperen en filteren zijn beschikbaar in de **groepen** menu-optie.
+    Cost allocation tag grouping and filtering are available in the **Groups** menu option.
 
-4. **Groepen in rapporten**
+4. **Groups in reports**
 
-    Groepen gebruiken in Cost Analysis rapporten om weer te geven standaard, ingedeeld categorieën van facturering van gegevens in uw rapport.  Echter bekijken groepen in Cost Allocation rapporten weergeven op basis van een tag categorieën. Tag op basis van categorieën worden gedefinieerd in het model voor kostentoewijzing en standard gespecificeerde categorieën van factureringsgegevens.
+    Use groups in Cost Analysis reports to show standard, itemized categories from billing data in your report.  However, groups in Cost Allocation reports show view tag-based categories. Tag-based categories are defined in the cost allocation model and standard itemized categories from billing data.
 
-    ![Eerste voorbeeld van de lijst met labels die u kunt groeperen op](./media/understanding-cost-reports/groups-tags01.png)
+    ![First example list of tags that you can group by](./media/understanding-cost-reports/groups-tags01.png)
 
-    ![Tweede voorbeeld van de lijst met labels die u kunt groeperen op](./media/understanding-cost-reports/groups-tags02.png)
+    ![Second example list of tags that you can group by](./media/understanding-cost-reports/groups-tags02.png)
 
-    Groepen in de groep op basis van een tag categorieën zijn in Kostenrapporten toewijzing, onder andere:
+    In Cost Allocation Reports, groups in tag-based group categories might include:
       - Tags
-      - groep resourcetags
-      - Cloudyn kosten entity-tags
-      - Abonnement tag categorieën voor doel voor het toewijzen van kosten
+      - resource group tags
+      - Cloudyn cost entity tags
+      - Subscription tag categories for cost allocation purposes
 
-   Voorbeelden zijn onder andere:
+   Examples might include:
    - Kostenplaats
    - Afdeling
    - Toepassing
    - Omgeving
-   - Kosten code
+   - Cost code
 
-     Hier volgt een lijst van ingebouwde groepen in rapporten beschikbaar:
+     Here's a list of built-in groups available in reports:
 
-     - **Kostentype**
-     - Selecteer een kostentype of meerdere kostensoorten of Alles selecteren. Kostensoorten zijn onder andere:
-       - Eenmalig
+     - **Cost Type**
+     - Select a cost type or multiple cost types, or select all. Cost types include:
+       - One-Time Fee
        - Ondersteuning
-       - Gebruikskosten
-     - **De klant**
-       - Selecteer een specifieke klant, meerdere klanten, of alle klanten.
-     - **Accountnaam**
-       - De naam van het account of abonnement. In Azure is de naam van het Azure-abonnement.
-     - **Geen account**
-       - Selecteer een account, meerdere accounts of alle accounts. In Azure is de GUID van het Azure-abonnement.
-     - **Bovenliggende Account**
-       - Selecteer de bovenliggende account, meerdere accounts of selecteren.
+       - Usage Cost
+     - **Customer**
+       - Select a specific customer, multiple customers, or select all customers.
+     - **Account Name**
+       - The account or subscription name. In Azure, it is the name of the Azure subscription.
+     - **Account No**
+       - Select an account, multiple accounts, or all accounts. In Azure, it is the Azure subscription’s GUID.
+     - **Parent Account**
+       - Select the parent account, multiple accounts, or select all.
      - **Service**
-       - Selecteer een service, meerdere services, of alle services.
+       - Select a service, multiple services, or select all services.
      - **Provider**
-       - De cloudprovider waarin activa en kosten gekoppeld worden.
+       - The cloud provider where assets and expenses are associated.
      - **Regio**
-       - De regio waar de resource wordt gehost.
-     - **Binnen een Beschikbaarheidszone**
-       - AWS geïsoleerd locaties binnen een regio.
+       - Region where the resource is hosted.
+     - **Availability Zone**
+       - AWS isolated locations within a region.
      - **Resourcetype**
-       - Het type resource in gebruik.
+       - The type of resource in use.
      - **Sub-Type**
-       - Selecteer het subtype.
+       - Select the sub-type.
      - **Bewerking**
-       - Selecteer de bewerking of **Show all**.
-     - **Prijsmodel**
-       - Alle kosten vooraf
-       - Geen kosten vooraf
-       - Gedeeltelijk kosten vooraf
+       - Select the operation or **Show all**.
+     - **Price Model**
+       - All Upfront
+       - No Upfront
+       - Partial Upfront
        - Op aanvraag
        - Reservering
-       - Positie
-     - **Type van de kosten in rekening gebracht**
-       - Selecteer negatieve of positieve kosten type of beide.
-     - **Tenants**
-       - Of een virtuele machine wordt uitgevoerd als een toegewezen machine.
-     - **Gebruikstype**
-       - Gebruikstype zijn eenmalige kosten of terugkerende kosten.
+       - Spot
+     - **Charge Type**
+       - Select Negative or Positive charge type or both.
+     - **Tenancy**
+       - Whether a machine is running as a dedicated machine.
+     - **Usage Type**
+       - Usage type can be one-time fees or recurring fees.
 
 5. **Filters**
 
-    Enkelvoudige of meervoudige selectie filters gebruiken om te bereiken op geselecteerde waarden ingesteld. Als u wilt een filter wilt instellen, klikt u op **toevoegen** en selecteer vervolgens filtercategorieën en waarden.
+    Use single or multi-select filters to set ranges to selected values. To set a filter, click **Add** and then select filter categories and values.
 
-6. **Kosten Model**
+6. **Cost Model**
 
-    Selecteer een kostenmodel dat u eerder hebt gemaakt met Cost Allocation 360 met behulp van kostenmodel. Mogelijk hebt u meerdere modellen voor Cloudyn-kosten, afhankelijk van uw vereisten van de toewijzing van kosten. Sommige van uw organisatie teams mogelijk kosten toewijzing eisen die van anderen verschillen. Elk team kan hun eigen toegewezen kostenmodel hebben.
+    Use Cost Model to select a cost model that you previously created with Cost Allocation 360. You might have multiple Cloudyn cost models, depending on your cost allocation requirements. Some of your organizational teams might have cost allocation requirements that differ from others. Each team can have their own dedicated cost model.
 
-    Zie voor meer informatie over het maken van een definitie van cost allocation model [aangepaste tags gebruiken voor het toewijzen van kosten](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
+    For information about creating a cost allocation model definition, see [Use custom tags to allocate costs](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-7. **Afschrijving**
+7. **Amortization**
 
-    Gebruik afschrijving in Cost Allocation rapporten om niet-gebruik weer te geven op basis van servicekosten of eenmalige kosten van leveranciers en hun kosten na verloop van tijd tijdens hun levensduur gelijkmatig verdeeld. Voorbeelden van eenmalige kosten zijn onder andere:
-    - Jaarlijkse kosten van ondersteuning
-    - Jaarlijkse kosten van security-onderdelen
-    - Kopen van gereserveerde instanties kosten
-    - Sommige items voor de Azure Marketplace.
+    Use Amortization in Cost Allocation reports to view non-usage based service fees or one-time payable costs and spread their cost over time evenly during their lifespan. Examples of one-time fees might include:
+    - Annual support fees
+    - Annual security components fees
+    - Reserved instances purchase fees
+    - Some Azure Marketplace items.
 
-   Selecteer onder afschrijving, **afgeschreven kosten** of **werkelijke kosten**.
+   Under Amortization, select **Amortized cost** or **Actual Cost**.
 
-8. **Resolutie**
+8. **Resolution**
 
-    Gebruik het probleem zou moeten de resolutie van de tijd binnen het geselecteerde datumbereik selecteren. De resolutie van uw tijd bepaalt hoe eenheden worden weergegeven in het rapport en kunnen worden:
+    Use Resolution to select the time resolution within the selected date range. Your time resolution determines how units are displayed in the report and can be:
     - Dagelijks
-    - Per week
+    - Elke week
     - Maandelijks
-    - Per kwartaal
+    - Quarterly
     - Jaarlijks
 
-9. **Toewijzingsregels voor**
+9. **Allocation rules**
 
-    Toewijzingsregels gebruiken om te passen of uitschakelen van de kostentoewijzing kosten opnieuw berekenen. U kunt inschakelen of uitschakelen van de herberekening van de toewijzing van kosten voor factureringsgegevens. De herberekening is van toepassing op de geselecteerde categorieën in het rapport. Hiermee kunt u beoordelen effect herberekening voor de toewijzing van kosten op basis van onbewerkte gegevens van de facturering.
+    Use Allocation Rules to apply or disable the cost allocation cost recalculation. You can enable or disable the cost allocation recalculation for billing data. The recalculation applies to the selected categories in the report. It allows you to assess the cost allocation recalculation impact against raw billing data.
 
-10. **Niet-gecategoriseerde**
+10. **Uncategorized**
 
-    Gebruik niet-gecategoriseerd wilt opnemen of uitsluiten van niet-gecategoriseerde kosten in het rapport.
+    Use Uncategorized to include or exclude uncategorized costs in the report.
 
-11. **Velden weergeven/verbergen**
+11. **Show/hide fields**
 
-    De optie weergeven/verbergen heeft geen effect in rapporten.
+    The Show/hide option does not have any effect in reports.
 
-12. **Weergave-indelingen**
+12. **Display formats**
 
-    Weergave-indelingen gebruiken verschillende weergaven voor graph of de tabel selecteren.
+    Use Display formats to select various graph or table views.
 
-    ![De symbolen van het weergave-indelingen die u kunt selecteren](./media/understanding-cost-reports/display-formats.png)
+    ![Symbols of display formats that you can select](./media/understanding-cost-reports/display-formats.png)
 
 13. **Multi-color**
 
-    Gebruik meerdere kleur om in te stellen de kleur van de grafieken in uw rapport.
+    Use Multi-color to set the color of charts in your report.
 
 14. **Acties**
 
-    Gebruik acties wilt opslaan, exporteren of het rapport plant.
+    Use Actions to save, export, or schedule the report.
 
 15. **Beleid**
 
-    Hoewel niet afgebeeld, bevatten sommige rapporten een beleid voor het berekenen van geschatte kosten. In deze rapporten, de **geconsolideerde** beleid bevat aanbevelingen voor alle accounts en abonnementen onder de huidige entiteit, zoals Microsoft inschrijvings- of AWS afspelen. De **zelfstandige** beleid bevat aanbevelingen voor een account of abonnement alsof er zijn geen andere abonnementen. Is afhankelijk van het beleid dat u selecteert op de optimalisatie-strategie door uw organisatie gebruikt. Kosten schattingen zijn gebaseerd op de afgelopen 30 dagen van het gebruik van.
+    Although not pictured, some reports include a projected cost calculation policy. In those reports, the **Consolidated** policy shows recommendations for all accounts and subscriptions under the current entity such as Microsoft enrollment or AWS payer. The **Standalone** policy shows recommendations for one account or subscription as if no other subscriptions exist. The policy that you select varies on the optimization strategy used by your organization. Cost projections are based on the last 30 days of usage.
 
-## <a name="save-and-schedule-reports"></a>Opslaan en rapporten plannen
+## <a name="save-and-schedule-reports"></a>Save and schedule reports
 
-Nadat u een rapport maakt, kunt u deze kunt opslaan voor toekomstig gebruik. Opgeslagen rapporten zijn beschikbaar in **hulpprogramma's voor mijn** > **mijn rapporten**. Als u wijzigingen in een bestaand rapport aanbrengen en deze opslaat, wordt het rapport wordt opgeslagen als een nieuwe versie. Of, kunt u deze opslaan als een nieuw rapport.
+After you create a report, you can save it for future use. Saved reports are available in **My Tools** > **My Reports**. If you make changes to an existing report and save it, the report is saved as a new version. Or, you can save it as a new report.
 
-### <a name="save-a-report-to-the-cloudyn-portal"></a>Een rapport opslaan in de Cloudyn-portal
+### <a name="save-a-report-to-the-cloudyn-portal"></a>Save a report to the Cloudyn portal
 
-Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **opslaan in Mijn rapporten**. Het rapport een naam en voeg vervolgens een uw eigen URL of de automatisch gemaakte URL gebruiken. U kunt eventueel **delen** het rapport openbaar met anderen in uw organisatie of als u deze aan uw entiteit kunt delen. Als u het rapport niet te delen, een persoonlijke rapport blijft en dat alleen kunt u bekijken. Sla het rapport op.
+While viewing any report, click **Actions** and then select **Save to my reports**. Name the report and then either add a your own URL or use the automatically created URL. You can optionally **Share** the report publicly with others in your organization or you can share it to your entity. If you do not share the report, it remains a personal report and that only you can view. Sla het rapport op.
 
 
-### <a name="save-a-report-to-cloud-provider-storage"></a>Een rapport naar de cloud storage provider opslaan
+### <a name="save-a-report-to-cloud-provider-storage"></a>Save a report to cloud provider storage
 
-Als u wilt een rapport opslaan in uw cloudserviceprovider, moet u al zijn geconfigureerd een storage-account. Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **rapport plant**. Het rapport een naam en voeg vervolgens een uw eigen URL of de automatisch gemaakte URL gebruiken. Selecteer **opslaan in storage** en selecteer het opslagaccount of een nieuwe toevoegen. Voer een voorvoegsel dat wordt toegevoegd aan de naam van het rapport. Selecteer een CSV of JSON-indeling en sla het rapport.
+In order to save a report to your cloud service provider, you must have already configured a storage account. While viewing any report, click **Actions** and then select **Schedule report**. Name the report and then either add a your own URL or use the automatically created URL. Select **Save to storage** and then select the storage account or add a new one. Enter a prefix that gets appended to the report file name. Select a CSV or JSON file format and then save the report.
 
-### <a name="schedule-a-report"></a>Een rapport plannen
+### <a name="schedule-a-report"></a>Schedule a report
 
-U kunt rapporten uitvoeren met regelmatige tussenpozen en u kunt deze verzonden naar een ontvanger lijst of cloud serviceprovider storage-account. Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **rapport plant**. U kunt het rapport per e-mail verzenden en opslaan op een storage-account. Onder **planning**, selecteert u het interval (dagelijks, wekelijks of maandelijks). Selecteer de dag of datums te leveren en selecteer de tijd voor wekelijkse en maandelijkse. Sla het geplande rapport op. Als u de indeling van het Excel-rapport selecteert, wordt het rapport als een bijlage verzonden. Wanneer u inhoud e-mailindeling selecteert, worden de rapportresultaten die worden weergegeven in de grafiekindeling als een grafiek geleverd.
+You can run reports at scheduled intervals and you can sent them to a recipient list or cloud service provider storage account. While viewing any report, click **Actions** and then select **Schedule report**. You can send the report by email and save to a storage account. Under **Schedule**, select the interval (daily, weekly or monthly). For weekly and monthly, select the day or dates to deliver and select the time. Sla het geplande rapport op. If you select the Excel report format, the report is sent as an attachment. When you select email content format, report results that are displayed in chart format are delivered as a graph.
 
-### <a name="export-a-report-as-a-csv-file"></a>Een rapport exporteren als een CSV-bestand
+### <a name="export-a-report-as-a-csv-file"></a>Export a report as a CSV file
 
-Wanneer u een rapport bekijkt, klikt u op **acties** en selecteer vervolgens **alle rapportgegevens exporteren**. Een pop-upvenster wordt weergegeven en een CSV-bestand wordt gedownload.
+While viewing any report, click **Actions** and then select **Export all report data**. A pop-up window appears and a CSV file is downloaded.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de rapporten die zijn opgenomen in Cloudyn op [rapporten van Cloudyn gebruik](use-reports.md).
-- Meer informatie over het gebruik van rapporten maken [dashboards](dashboards.md).
+- Learn about the reports that are included in Cloudyn at [Use Cloudyn reports](use-reports.md).
+- Learn about how to use reports to create [dashboards](dashboards.md).

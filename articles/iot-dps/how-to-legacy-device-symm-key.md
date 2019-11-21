@@ -1,6 +1,6 @@
 ---
-title: Symmetrische sleutels gebruiken om verouderde apparaten in te richten met de Azure-IoT Hub Device Provisioning Service | Microsoft Docs
-description: Symmetrische sleutels gebruiken om verouderde apparaten in te richten met uw Device Provisioning service-exemplaar
+title: Provision legacy devices using symmetric keys - Azure IoT Hub Device Provisioning Service
+description: How to use symmetric keys to provision legacy devices with your device provisioning service instance
 author: wesmc7777
 ms.author: wesmc
 ms.date: 04/10/2019
@@ -8,43 +8,43 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: philmea
-ms.openlocfilehash: 13e22d772ef9b90f415f10b65e4a4290a1f7bd81
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 3e3b54592608f5c39d618f5ceda40747ad4fd0fe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72434830"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209917"
 ---
-# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>Verouderde apparaten inrichten met behulp van symmetrische sleutels
+# <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>How to provision legacy devices using symmetric keys
 
-Een veelvoorkomend probleem met veel verouderde apparaten is dat ze vaak een identiteit hebben die bestaat uit één stukje informatie. Deze identiteits gegevens zijn doorgaans een MAC-adres of een serie nummer. Oudere apparaten hebben mogelijk geen certificaat, TPM of een andere beveiligings functie die kan worden gebruikt om het apparaat veilig te identificeren. De Device Provisioning Service voor IoT hub bevat symmetrische sleutel Attestation. Symmetrische-sleutel Attestation kan worden gebruikt om een apparaat op basis van gegevens, zoals het MAC-adres of een serie nummer, te identificeren.
+A common problem with many legacy devices is that they often have an identity that is composed of a single piece of information. This identity information is usually a MAC address or a serial number. Legacy devices may not have a certificate, TPM, or any other security feature that can be used to securely identify the device. The Device Provisioning Service for IoT hub includes symmetric key attestation. Symmetric key attestation can be used to identify a device based off information like the MAC address or a serial number.
 
-Als u een [HSM (Hardware Security module)](concepts-security.md#hardware-security-module) en een certificaat eenvoudig kunt installeren, is dat mogelijk een betere benadering voor het identificeren en inrichten van uw apparaten. Omdat u met deze benadering kunt u het bijwerken van de code die is geïmplementeerd op al uw apparaten, niet meer, en er geen geheime sleutel is inge sloten in de installatie kopie van het apparaat.
+If you can easily install a [hardware security module (HSM)](concepts-security.md#hardware-security-module) and a certificate, then that may be a better approach for identifying and provisioning your devices. Since that approach may allow you to bypass updating the code deployed to all your devices, and you would not have a secret key embedded in your device image.
 
-In dit artikel wordt ervan uitgegaan dat geen HSM of een certificaat een levensvat bare optie is. Er wordt echter wel van uitgegaan dat u een bepaalde methode hebt voor het bijwerken van de Device Provisioning Service om deze apparaten in te richten. 
+This article assumes that neither an HSM or a certificate is a viable option. However, it is assumed that you do have some method of updating device code to use the Device Provisioning Service to provision these devices. 
 
-In dit artikel wordt ervan uitgegaan dat de update van het apparaat in een beveiligde omgeving plaatsvindt om onbevoegde toegang tot de hoofd groep of de afgeleide apparaatwachtwoord te voor komen.
+This article also assumes that the device update takes place in a secure environment to prevent unauthorized access to the master group key or the derived device key.
 
 Dit artikel is gericht op een Windows-gebaseerd werkstation. U kunt de procedures echter ook uitvoeren op Linux. Zie [Inrichten voor multitenancy](how-to-provision-multitenant.md) voor een Linux-voorbeeld.
 
 > [!NOTE]
-> Het voor beeld dat in dit artikel wordt gebruikt, is geschreven in C. Er is ook een [ C# symmetrisch sleutel voorbeeld](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) voor het inrichten van apparaten beschikbaar. Als u dit voor beeld wilt gebruiken, downloadt of kloont u de opslag plaats [Azure-IOT-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) en volgt u de instructies in de voorbeeld code. Volg de instructies in dit artikel om een groep voor de registratie van symmetrische sleutels te maken met behulp van de portal en om het ID-bereik en de primaire en secundaire sleutel van de registratie groep te vinden die nodig zijn om het voor beeld uit te voeren. U kunt ook afzonderlijke inschrijvingen maken met behulp van het voor beeld.
+> The sample used in this article is written in C. There is also a [C# device provisioning symmetric key sample](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device/SymmetricKeySample) available. To use this sample, download or clone the [azure-iot-samples-csharp](https://github.com/Azure-Samples/azure-iot-samples-csharp) repository and follow the in-line instructions in the sample code. You can follow the instructions in this article to create a symmetric key enrollment group using the portal and to find the ID Scope and enrollment group primary and secondary keys needed to run the sample. You can also create individual enrollments using the sample.
 
 ## <a name="overview"></a>Overzicht
 
-Er wordt voor elk apparaat een unieke registratie-ID gedefinieerd op basis van informatie die het apparaat identificeert. Bijvoorbeeld het MAC-adres of een serie nummer.
+A unique registration ID will be defined for each device based on information that identifies that device. For example, the MAC address or a serial number.
 
-Een registratie groep die gebruikmaakt van [symmetrische sleutel attest](concepts-symmetric-key-attestation.md) wordt gemaakt met de Device Provisioning Service. De registratie groep bevat een groeps hoofd sleutel. Deze hoofd sleutel wordt gebruikt om elke unieke registratie-ID te hashen om een unieke apparaatcode te maken voor elk apparaat. Het apparaat gebruikt de afgeleide apparaatcode met de unieke registratie-ID om te voldoen aan de Device Provisioning Service en moet worden toegewezen aan een IoT-hub.
+An enrollment group that uses [symmetric key attestation](concepts-symmetric-key-attestation.md) will be created with the Device Provisioning Service. The enrollment group will include a group master key. That master key will be used to hash each unique registration ID to produce a unique device key for each device. The device will use that derived device key with its unique registration ID to attest with the Device Provisioning Service and be assigned to an IoT hub.
 
-De apparaatcode die in dit artikel wordt beschreven, volgt hetzelfde patroon als de [Snelstartgids: richt een gesimuleerd apparaat in met symmetrische sleutels](quick-create-simulated-device-symm-key.md). Met de code wordt een apparaat gesimuleerd met behulp van een voor beeld van de [Azure IOT C-SDK](https://github.com/Azure/azure-iot-sdk-c). Het gesimuleerde apparaat wordt bij een registratie groep verklaard in plaats van een afzonderlijke registratie, zoals wordt getoond in de Quick Start.
+The device code demonstrated in this article will follow the same pattern as the [Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md). The code will simulate a device using a sample from the [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). The simulated device will attest with an enrollment group instead of an individual enrollment as demonstrated in the quickstart.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volt ooien van het [instellen van IOT hub Device Provisioning Service met de Azure Portal](./quick-setup-auto-provision.md) Snelstartgids.
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 of hoger met de [' Desktop C++Development '](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) -werk belasting ingeschakeld.
+* Completion of the [Set up IoT Hub Device Provisioning Service with the Azure portal](./quick-setup-auto-provision.md) quickstart.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2015 or later with the ['Desktop development with C++'](https://www.visualstudio.com/vs/support/selecting-workloads-visual-studio-2017/) workload enabled.
 * Meest recente versie van [Git](https://git-scm.com/download/) geïnstalleerd.
 
 
@@ -52,9 +52,9 @@ De apparaatcode die in dit artikel wordt beschreven, volgt hetzelfde patroon als
 
 In deze sectie bereidt u een ontwikkelomgeving voor die wordt gebruikt om de [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) te bouwen. 
 
-De SDK bevat de voorbeeld code voor het gesimuleerde apparaat. Dit gesimuleerde apparaat probeert de inrichting uit te voeren tijdens de opstartprocedure van het apparaat.
+The SDK includes the sample code for the simulated device. Dit gesimuleerde apparaat probeert de inrichting uit te voeren tijdens de opstartprocedure van het apparaat.
 
-1. Down load het [cmake build-systeem](https://cmake.org/download/).
+1. Download the [CMake build system](https://cmake.org/download/).
 
     Het is belangrijk dat de vereisten voor Visual Studio met (Visual Studio en de workload Desktopontwikkeling met C++) op uw computer zijn geïnstalleerd **voordat** de `CMake`-installatie wordt gestart. Zodra aan de vereisten is voldaan en de download is geverifieerd, installeert u het CMake-bouwsysteem.
 
@@ -99,58 +99,58 @@ De SDK bevat de voorbeeld code voor het gesimuleerde apparaat. Dit gesimuleerde 
     ```
 
 
-## <a name="create-a-symmetric-key-enrollment-group"></a>Een groep voor de registratie van symmetrische sleutels maken
+## <a name="create-a-symmetric-key-enrollment-group"></a>Create a symmetric key enrollment group
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com)en open uw Device Provisioning service-exemplaar.
+1. Sign in to the [Azure portal](https://portal.azure.com), and open your Device Provisioning Service instance.
 
-2. Selecteer het tabblad **inschrijvingen beheren** en klik vervolgens op de knop **registratie groep toevoegen** boven aan de pagina. 
+2. Select the **Manage enrollments** tab, and then click the **Add enrollment group** button at the top of the page. 
 
-3. Voer in **registratie groep toevoegen**de volgende gegevens in en klik op de knop **Opslaan** .
+3. On **Add Enrollment Group**, enter the following information, and click the **Save** button.
 
-   - **Groeps naam**: Voer **mylegacydevices**in.
+   - **Group name**: Enter **mylegacydevices**.
 
-   - **Attestation-type**: Selecteer **symmetrische sleutel**.
+   - **Attestation Type**: Select **Symmetric Key**.
 
    - **Automatisch sleutels genereren**: schakel dit selectievakje in.
 
-   - **Selecteer hoe u apparaten aan hubs wilt toewijzen**: Selecteer **statische configuratie** zodat u kunt toewijzen aan een specifieke hub.
+   - **Select how you want to assign devices to hubs**: Select **Static configuration** so you can assign to a specific hub.
 
-   - **Selecteer de IOT-hubs waaraan deze groep kan worden toegewezen**: Selecteer een van uw hubs.
+   - **Select the IoT hubs this group can be assigned to**: Select one of your hubs.
 
-     ![Registratie groep voor symmetrische sleutel attest toevoegen](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
+     ![Add enrollment group for symmetric key attestation](./media/how-to-legacy-device-symm-key/symm-key-enrollment-group.png)
 
-4. Zodra u uw inschrijving hebt opgeslagen, worden de **primaire sleutel** en **secundaire sleutel** gegenereerd en aan de inschrijvingsvermelding toegevoegd. De registratie groep voor symmetrische sleutels wordt weer gegeven als **mylegacydevices** onder de kolom *groeps naam* op het tabblad *registratie groepen* . 
+4. Zodra u uw inschrijving hebt opgeslagen, worden de **primaire sleutel** en **secundaire sleutel** gegenereerd en aan de inschrijvingsvermelding toegevoegd. Your symmetric key enrollment group appears as **mylegacydevices** under the *Group Name* column in the *Enrollment Groups* tab. 
 
-    Open de inschrijving en kopieer de waarde van uw gegenereerde **primaire sleutel**. Deze sleutel is de sleutel van uw hoofd groep.
+    Open de inschrijving en kopieer de waarde van uw gegenereerde **primaire sleutel**. This key is your master group key.
 
 
-## <a name="choose-a-unique-registration-id-for-the-device"></a>Een unieke registratie-ID voor het apparaat kiezen
+## <a name="choose-a-unique-registration-id-for-the-device"></a>Choose a unique registration ID for the device
 
-Er moet een unieke registratie-ID worden gedefinieerd om elk apparaat te identificeren. U kunt het MAC-adres, serie nummer of unieke informatie van het apparaat gebruiken. 
+A unique registration ID must be defined to identify each device. You can use the MAC address, serial number, or any unique information from the device. 
 
-In dit voor beeld gebruiken we een combi natie van een MAC-adres en serie nummer dat de volgende teken reeks voor een registratie-ID vormt.
+In this example, we use a combination of a MAC address and serial number forming the following string for a registration ID.
 
 ```
 sn-007-888-abc-mac-a1-b2-c3-d4-e5-f6
 ```
 
-Maak een unieke registratie-ID voor uw apparaat. Geldige tekens zijn kleine letters en streepjes ('-').
+Create a unique registration ID for your device. Valid characters are lowercase alphanumeric and dash ('-').
 
 
-## <a name="derive-a-device-key"></a>Een apparaatcode afleiden 
+## <a name="derive-a-device-key"></a>Derive a device key 
 
-Als u de apparaatcode wilt genereren, gebruikt u de groeps hoofd sleutel om een [HMAC-sha256](https://wikipedia.org/wiki/HMAC) van de unieke registratie-id voor het apparaat te berekenen en converteert u het resultaat naar Base64-indeling.
+To generate the device key, use the group master key to compute an [HMAC-SHA256](https://wikipedia.org/wiki/HMAC) of the unique registration ID for the device and convert the result into Base64 format.
 
-Neem uw groeps hoofd sleutel niet op in de code van uw apparaat.
+Do not include your group master key in your device code.
 
 
-#### <a name="linux-workstations"></a>Linux-werk stations
+#### <a name="linux-workstations"></a>Linux workstations
 
-Als u een Linux-werk station gebruikt, kunt u openssl gebruiken om uw afgeleide apparaatwachtwoord te genereren, zoals wordt weer gegeven in het volgende voor beeld.
+If you are using a Linux workstation, you can use openssl to generate your derived device key as shown in the following example.
 
-Vervang de waarde van **Key** door de **primaire sleutel** die u eerder hebt genoteerd.
+Replace the value of **KEY** with the **Primary Key** you noted earlier.
 
-Vervang de waarde van **REG_ID** door de registratie-id.
+Replace the value of **REG_ID** with your registration ID.
 
 ```bash
 KEY=8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw==
@@ -165,13 +165,13 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-#### <a name="windows-based-workstations"></a>Windows-werk stations
+#### <a name="windows-based-workstations"></a>Windows-based workstations
 
-Als u een Windows-werk station gebruikt, kunt u Power shell gebruiken om uw afgeleide apparaatwachtwoord te genereren, zoals wordt weer gegeven in het volgende voor beeld.
+If you are using a Windows-based workstation, you can use PowerShell to generate your derived device key as shown in the following example.
 
-Vervang de waarde van **Key** door de **primaire sleutel** die u eerder hebt genoteerd.
+Replace the value of **KEY** with the **Primary Key** you noted earlier.
 
-Vervang de waarde van **REG_ID** door de registratie-id.
+Replace the value of **REG_ID** with your registration ID.
 
 ```powershell
 $KEY='8isrFI1sGsIlvvFSSFRiMfCNzv21fjbE/+ah/lSh3lF8e2YG1Te7w1KpZhJFFXJrqYKi9yegxkqIChbqOS9Egw=='
@@ -189,21 +189,21 @@ Jsm0lyGpjaVYVP2g3FnmnmG9dI/9qU24wNoykUmermc=
 ```
 
 
-Op uw apparaat wordt de afgeleide-apparaatwachtwoord gebruikt met uw unieke registratie-ID voor het uitvoeren van symmetrische sleutel attest met de registratie groep tijdens het inrichten.
+Your device will use the derived device key with your unique registration ID to perform symmetric key attestation with the enrollment group during provisioning.
 
 
 
-## <a name="create-a-device-image-to-provision"></a>Een te inrichten installatie kopie voor een apparaat maken
+## <a name="create-a-device-image-to-provision"></a>Create a device image to provision
 
-In deze sectie werkt u een inrichtings voorbeeld met de naam **Prov @ no__t-1dev @ no__t-2client @ no__t-3sample** in de Azure IOT C-SDK die u eerder hebt ingesteld. 
+In this section, you will update a provisioning sample named **prov\_dev\_client\_sample** located in the Azure IoT C SDK you set up earlier. 
 
-Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd die de inrichtings aanvraag naar uw Device Provisioning service-exemplaar verzendt. De opstart procedure zorgt ervoor dat het apparaat wordt herkend en toegewezen aan de IoT-hub die u hebt geconfigureerd voor de registratie groep.
+This sample code simulates a device boot sequence that sends the provisioning request to your Device Provisioning Service instance. The boot sequence will cause the device to be recognized and assigned to the IoT hub you configured on the enrollment group.
 
 1. Selecteer in Azure Portal het tabblad **Overzicht** voor uw Device Provisioning-service en noteer de waarde van het **_Id-bereik_** .
 
     ![Device Provisioning Service-eindpuntgegevens uit de portalblade extraheren](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Open in Visual Studio het oplossings bestand **azure_iot_sdks. SLN** dat is gegenereerd door cmake eerder uit te voeren. Het oplossingsbestand bevindt zich als het goed is op de volgende locatie:
+2. In Visual Studio, open the **azure_iot_sdks.sln** solution file that was generated by running CMake earlier. Het oplossingsbestand bevindt zich als het goed is op de volgende locatie:
 
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
@@ -233,7 +233,7 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
     //prov_dev_set_symmetric_key_info("<symm_registration_id>", "<symmetric_Key>");
     ```
 
-    Verwijder de opmerking over de functie aanroep en vervang de waarden van de tijdelijke aanduiding (inclusief de punt haken) door de unieke registratie-ID voor het apparaat en de afgeleide-apparaatwachtwoord die u hebt gegenereerd.
+    Uncomment the function call, and replace the placeholder values (including the angle brackets) with the unique registration ID for your device and the derived device key you generated.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -263,15 +263,15 @@ Met deze voorbeeld code wordt een opstart volgorde voor apparaten gesimuleerd di
     Press enter key to exit:
     ```
 
-9. Navigeer in de portal naar de IoT-hub waaraan uw gesimuleerde apparaat is toegewezen en klik op het tabblad **IOT-apparaten** . Wanneer het inrichten van het gesimuleerde naar de hub is geslaagd, wordt de apparaat-ID weer gegeven op de Blade **IOT-apparaten** , met de *status* **ingeschakeld**. Mogelijk moet u bovenaan op de knop **Vernieuwen** klikken. 
+9. In the portal, navigate to the IoT hub your simulated device was assigned to and click the **IoT Devices** tab. On successful provisioning of the simulated to the hub, its device ID appears on the **IoT Devices** blade, with *STATUS* as **enabled**. Mogelijk moet u bovenaan op de knop **Vernieuwen** klikken. 
 
     ![Apparaat wordt geregistreerd voor de IoT-hub](./media/how-to-legacy-device-symm-key/hub-registration.png) 
 
 
 
-## <a name="security-concerns"></a>Beveiligings problemen
+## <a name="security-concerns"></a>Security concerns
 
-Houd er rekening mee dat dit de afgeleide apparaatcode bevat die is opgenomen als onderdeel van de installatie kopie. Dit is geen aanbevolen beveiligings best practice. Dit is een reden waarom de beveiliging en het gebruiks gemak van toepassing zijn. 
+Be aware that this leaves the derived device key included as part of the image, which is not a recommended security best practice. This is one reason why security and ease-of-use are tradeoffs. 
 
 
 
@@ -279,9 +279,9 @@ Houd er rekening mee dat dit de afgeleide apparaatcode bevat die is opgenomen al
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Zie [IOT hub-concepten](concepts-device-reprovision.md) voor het opnieuw inrichten van apparaten voor meer informatie. 
-* [Snelstartgids: een gesimuleerd apparaat inrichten met symmetrische sleutels](quick-create-simulated-device-symm-key.md)
-* Zie voor meer informatie over het ongedaan maken van de inrichting van [apparaten die eerder automatisch zijn ingericht](how-to-unprovision-devices.md) , ongedaan maken 
+* To learn more Reprovisioning, see [IoT Hub Device reprovisioning concepts](concepts-device-reprovision.md) 
+* [Quickstart: Provision a simulated device with symmetric keys](quick-create-simulated-device-symm-key.md)
+* To learn more Deprovisioning, see [How to deprovision devices that were previously auto-provisioned](how-to-unprovision-devices.md) 
 
 
 

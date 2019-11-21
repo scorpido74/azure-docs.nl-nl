@@ -1,222 +1,209 @@
 ---
-title: Azure Block Chain Workbench preview implementeren
-description: Azure Block Chain Workbench preview implementeren
+title: Deploy Azure Blockchain Workbench Preview
+description: How to deploy Azure Blockchain Workbench Preview
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 09/05/2019
+ms.date: 11/19/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 2ea18c784c6b5cf61013c131360d20349e67b1e5
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 61d47709df2d1bc41bfbf61a7f71f1d73fe27389
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845279"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74222811"
 ---
-# <a name="deploy-azure-blockchain-workbench-preview"></a>Azure Block Chain Workbench preview implementeren
+# <a name="deploy-azure-blockchain-workbench-preview"></a>Deploy Azure Blockchain Workbench Preview
 
-De preview-versie van Azure Block Chain Workbench wordt geïmplementeerd met behulp van een oplossings sjabloon in azure Marketplace. De sjabloon vereenvoudigt de implementatie van onderdelen die nodig zijn voor het maken van blockchain-toepassingen. Eenmaal geïmplementeerd, biedt Blockchain Workbench toegang tot de client-apps om gebruikers en blockchain-toepassingen te maken en te beheren.
+Azure Blockchain Workbench Preview is deployed using a solution template in the Azure Marketplace. The template simplifies the deployment of components needed to create blockchain applications. Once deployed, Blockchain Workbench provides access to client apps to create and manage users and blockchain applications.
 
-Zie [Azure Block Chain Workbench-architectuur](architecture.md)voor meer informatie over de onderdelen van Block Chain Workbench.
+For more information about the components of Blockchain Workbench, see [Azure Blockchain Workbench architecture](architecture.md).
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="prepare-for-deployment"></a>Voorbereiden voor implementatie
+## <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
 
-Met Blockchain Workbench kunt u een blockchain grootboek, samen met een set van relevante Azure-services voor het bouwen van een blockchain-gebaseerde toepassing, implementeren. De implementatie van Blockchain Workbench resulteert in de volgende Azure-services die binnen een resourcegroep in uw Azure-abonnement worden ingericht.
+Blockchain Workbench allows you to deploy a blockchain ledger along with a set of relevant Azure services most often used to build a blockchain-based application. Deploying Blockchain Workbench results in the following Azure services being provisioned within a resource group in your Azure subscription.
 
-* App Service plan (Standard)
+* App Service Plan (Standard)
 * Application Insights
 * Event Grid
 * Azure Key Vault
 * Service Bus
-* SQL Database (Standard S0) + logische SQL-Server
-* Azure Storage-account (standaard LRS)
-* Schaalset voor virtuele machines met een capaciteit van 1
-* Virtual Network resource groep (met Load Balancer, netwerk beveiligings groep, openbaar IP-adres, Virtual Network)
-* Azure Block Chain-service. Als u een eerdere implementatie van Block Chain Workbench gebruikt, overweeg dan om Azure Block Chain Workbench te implementeren voor het gebruik van de Azure Block Chain-service.
+* SQL Database (Standard S0) + SQL Logical Server
+* Azure Storage account (Standard LRS)
+* Virtual machine scale set with capacity of 1
+* Virtual Network resource group (with Load Balancer, Network Security Group, Public IP Address, Virtual Network)
+* Azure Blockchain Service. If you are using a previous Blockchain Workbench deployment, consider redeploying Azure Blockchain Workbench to use Azure Blockchain Service.
 
-Hier volgt een voor beeld van een implementatie die is gemaakt in de resource groep **myblockchain** .
+The following is an example deployment created in **myblockchain** resource group.
 
-![Voorbeeld implementatie](media/deploy/example-deployment.png)
+![Example deployment](media/deploy/example-deployment.png)
 
-De kosten van Blockchain Workbench is een optelling van de kosten van de onderliggende Azure-services. Prijs informatie voor Azure-Services kan worden berekend met behulp van de [prijs calculator](https://azure.microsoft.com/pricing/calculator/).
+The cost of Blockchain Workbench is an aggregate of the cost of the underlying Azure services. Pricing information for Azure services can be calculated using the [pricing calculator](https://azure.microsoft.com/pricing/calculator/).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Azure Block Chain Workbench vereist Azure AD-configuratie-en-toepassings registraties. U kunt ervoor kiezen om de Azure AD- [configuraties hand matig](#azure-ad-configuration) te doen voordat u de implementatie uitvoert of u voert een script na de implementatie uit. Als u Block Chain Workbench opnieuw wilt implementeren, raadpleegt u [Azure AD-configuratie](#azure-ad-configuration) om uw Azure AD-configuratie te controleren.
+Azure Blockchain Workbench requires Azure AD configuration and application registrations. You can choose to do the Azure AD [configurations manually](#azure-ad-configuration) before deployment or run a script post deployment. If you are redeploying Blockchain Workbench, see [Azure AD configuration](#azure-ad-configuration) to verify your Azure AD configuration.
 
 > [!IMPORTANT]
-> Workbench hoeft niet te worden geïmplementeerd in dezelfde Tenant als het account dat u gebruikt om een Azure AD-toepassing te registreren. Workbench moet worden geïmplementeerd in een Tenant waarvoor u voldoende machtigingen hebt voor het implementeren van resources. Zie [een Active Directory Tenant verkrijgen](../../active-directory/develop/quickstart-create-new-tenant.md) en [toepassingen integreren met Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md)voor meer informatie over Azure AD-tenants.
+> Workbench does not have to be deployed in the same tenant as the one you are using to register an Azure AD application. Workbench must be deployed in a tenant where you have sufficient permissions to deploy resources. For more information on Azure AD tenants, see [How to get an Active Directory tenant](../../active-directory/develop/quickstart-create-new-tenant.md) and [Integrating applications with Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md).
 
-## <a name="deploy-blockchain-workbench"></a>Block Chain Workbench implementeren
+## <a name="deploy-blockchain-workbench"></a>Deploy Blockchain Workbench
 
-Als de vereiste stappen zijn voltooid, bent u klaar om de Blockchain Workbench te implementeren. De volgende secties beschrijven hoe het framework moet worden geïmplementeerd.
+Once the prerequisite steps have been completed, you are ready to deploy the Blockchain Workbench. The following sections outline how to deploy the framework.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant waar u Azure Block Chain Workbench wilt implementeren.
-3. Selecteer **Een resource maken** in het linkerdeelvenster. Zoek naar `Azure Blockchain Workbench` in de **Marketplace doorzoeken** zoekbalk. 
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Select your account in the top-right corner, and switch to the desired Azure AD tenant where you want to deploy Azure Blockchain Workbench.
+1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
+1. Select **Blockchain** > **Azure Blockchain Workbench (preview)** .
 
-    ![Zoek balk voor Marketplace](media/deploy/marketplace-search-bar.png)
+    ![Create Azure Blockchain Workbench](media/deploy/blockchain-workbench-settings-basic.png)
 
-4. Selecteer **Azure Block Chain Workbench**.
-
-    ![Zoek resultaten voor Marketplace](media/deploy/marketplace-search-results.png)
-
-5. Selecteer **Maken**.
-6. Vul de algemene instellingen in.
-
-    ![Azure Block Chain Workbench maken](media/deploy/blockchain-workbench-settings-basic.png)
-
-    | Instelling | Description  |
+    | Instelling | Beschrijving  |
     |---------|--------------|
-    | Resource voorvoegsel | Korte unieke id voor uw implementatie. Deze waarde wordt gebruikt als basis voor het benoemen van resources. |
-    | VM-gebruikers naam | De gebruikers naam wordt gebruikt als beheerder voor alle virtuele machines (VM). |
-    | Verificatietype | Selecteer of u een wachtwoord wilt gebruiken of een sleutel voor de verbinding met virtuele machines. |
-    | Wachtwoord | Het wacht woord wordt gebruikt om verbinding te maken met Vm's. |
-    | SSH | Gebruik een openbare RSA-sleutel in de indeling met één regel die begint met **ssh-rsa** of gebruik de PEM-indeling van meerdere regels. U kunt SSH-sleutels genereren met behulp van `ssh-keygen` op Linux en OS X of met PuTTYGen op Windows. Zie [SSH-sleutels gebruiken met Windows op Azure voor](../../virtual-machines/linux/ssh-from-windows.md)meer informatie over SSH-sleutels. |
-    | Data Base-en block Chain-wacht woord | Geef het wachtwoord voor toegang tot de database die wordt gemaakt als onderdeel van de implementatie. Het wacht woord moet voldoen aan drie van de volgende vier vereisten: lengte moet tussen 12 & 72 tekens, 1 kleine letter, 1 hoofd letter, 1 cijfer en 1 speciaal teken zijn dat geen hekje (#), procent (%), komma (,), ster (*), terug-offerte (\`), dubbele aanhalings tekens ("), enkel aanhalings teken ('), streepje (-) en semicolumn (;) |
-    | Implementatie regio | Geef op waar de Blockchain Workbench-resources worden geïmplementeerd. Voor beschikbaarheid wordt  aanbevolen om dit overeen te laten komen met de **locatie** instelling. |
-    | Subscription | Geef het Azure-abonnement op dat u wilt gebruiken voor uw implementatie. |
-    | Resourcegroepen | Maak een nieuwe resourcegroep door **nieuw** te selecteren en geef de naam op van een unieke resource-groep. |
-    | Location | Geef de regio op waaar u het framework wilt implementeren. |
+    | Resource prefix | Short unique identifier for your deployment. This value is used as a base for naming resources. |
+    | VM user name | The user name is used as administrator for all virtual machines (VM). |
+    | Verificatietype | Select if you want to use a password or key for connecting to VMs. |
+    | Wachtwoord | The password is used for connecting to VMs. |
+    | SSH | Use an RSA public key in the single-line format beginning  with **ssh-rsa** or use the multi-line PEM format. You can generate SSH keys using `ssh-keygen` on Linux and OS X, or by using PuTTYGen on Windows. More information on SSH keys, see [How to use SSH keys with Windows on Azure](../../virtual-machines/linux/ssh-from-windows.md). |
+    | Database and Blockchain password | Specify the password to use for access to the database created as part of the deployment. The password must meet three of the following four requirements: length needs to be between 12 & 72 characters, 1 lower case character, 1 upper case character, 1 number, and 1 special character that is not number sign(#), percent(%), comma(,), star(*), back quote(\`), double quote("), single quote('), dash(-) and semicolumn(;) |
+    | Deployment region | Specify where to deploy Blockchain Workbench resources. For best availability, this should match the **Location** setting. |
+    | Abonnement | Specify the Azure Subscription you wish to use for your deployment. |
+    | Resourcegroepen | Create a new Resource group by selecting **Create new** and specify a unique resource group name. |
+    | Locatie | Specify the region you wish to deploy the framework. |
 
-7. Selecteer **OK** om de configuratiesectie met basisinstellingen te voltooien.
+1. Select **OK** to finish the basic setting configuration section.
 
-8. Kies in **Geavanceerde instellingen**of u een nieuw Block chain-netwerk wilt maken of een bestaand Block chain-netwerk wilt gebruiken.
+1. In **Advanced Settings**, choose if you want to create a new blockchain network or use an existing proof-of-authority blockchain network.
 
-    Voor **nieuwe maken**:
+    For **Create new**:
 
-    Met de optie *nieuwe maken* implementeert u een Azure Block Chain Service-quorum grootboek met de standaard-basis-SKU.
+    The *create new* option deploys an Azure Blockchain Service Quorum ledger with the default basic sku.
 
-    ![Geavanceerde instellingen voor het nieuwe Block chain-netwerk](media/deploy/advanced-blockchain-settings-new.png)
+    ![Advanced settings for new blockchain network](media/deploy/advanced-blockchain-settings-new.png)
 
-    | Instelling | Description  |
+    | Instelling | Beschrijving  |
     |---------|--------------|
-    | Prijs categorie voor Azure Block Chain-Service | Kies **Basic** of **Standard** Azure Block Chain service tier die wordt gebruikt voor Block Chain workbench |
-    | Azure Active Directory instellingen | Kies **later toevoegen**.</br>Opmerking: Als u ervoor hebt gekozen om [Azure AD vooraf te configureren of opnieuw](#azure-ad-configuration) te implementeren, kiest u *nu toevoegen*. |
-    | VM selecteren | Selecteer voorkeurs opslag prestaties en VM-grootte voor uw Block chain-netwerk. Kies een kleinere VM-grootte, zoals *Standard ds1 v2* als u een abonnement hebt met lage service limieten, zoals de gratis laag van Azure. |
+    | Azure Blockchain Service pricing tier | Choose **Basic** or **Standard** Azure Blockchain Service tier that is used for Blockchain Workbench |
+    | Azure Active Directory settings | Choose **Add Later**.</br>Note: If you chose to [pre-configure Azure AD](#azure-ad-configuration) or are redeploying, choose to *Add Now*. |
+    | VM selection | Select preferred storage performance and VM size for your blockchain network. Choose a smaller VM size such as *Standard DS1 v2* if you are on a subscription with low service limits like Azure free tier. |
 
-    Voor het **gebruik van bestaande**:
+    For **Use existing**:
 
-    Met de *gebruik bestaande* optie kunt u een netwerk van de blockchain Ethereum Proof-of-Authority (PoA) opgeven. Eind punten hebben de volgende vereisten.
+    The *use existing* option allows you to specify an Ethereum Proof-of-Authority (PoA) blockchain network. Endpoints have the following requirements.
 
-   * Het eindpunt moet een Ethereum Proof-of-Authority (PoA) blockchain-netwerk zijn.
-   * Het eindpunt moet openbaar toegankelijk zijn via het netwerk.
-   * Het PoA Block chain-netwerk moet zo zijn geconfigureerd dat de prijs van een gas is ingesteld op nul.
+   * The endpoint must be an Ethereum Proof-of-Authority (PoA) blockchain network.
+   * The endpoint must be publicly accessible over the network.
+   * The PoA blockchain network should be configured to have gas price set to zero.
 
      > [!NOTE]
-     > Block Chain Workbench-accounts zijn niet gefinancierd. Als er fondsen zijn vereist, mislukken de trans acties.
+     > Blockchain Workbench accounts are not funded. If funds are required, the transactions fail.
 
-     ![Geavanceerde instellingen voor bestaand Block chain-netwerk](media/deploy/advanced-blockchain-settings-existing.png)
+     ![Advanced settings for existing blockchain network](media/deploy/advanced-blockchain-settings-existing.png)
 
-     | Instelling | Description  |
+     | Instelling | Beschrijving  |
      |---------|--------------|
-     | RPC-eind punt Ethereum | Geef het RPC-eind punt op van een bestaand PoA Block chain-netwerk. Het eind punt begint met https://of http://en eindigt met een poort nummer. Bijvoorbeeld: `http<s>://<network-url>:<port>` |
-     | Azure Active Directory instellingen | Kies **later toevoegen**.</br>Opmerking: Als u ervoor hebt gekozen om [Azure AD vooraf te configureren of opnieuw](#azure-ad-configuration) te implementeren, kiest u *nu toevoegen*. |
-     | VM selecteren | Selecteer voorkeurs opslag prestaties en VM-grootte voor uw Block chain-netwerk. Kies een kleinere VM-grootte, zoals *Standard ds1 v2* als u een abonnement hebt met lage service limieten, zoals de gratis laag van Azure. |
+     | Ethereum RPC Endpoint | Provide the RPC endpoint of an existing PoA blockchain network. The endpoint starts with https:// or http:// and ends with a port number. Bijvoorbeeld: `http<s>://<network-url>:<port>` |
+     | Azure Active Directory settings | Choose **Add Later**.</br>Note: If you chose to [pre-configure Azure AD](#azure-ad-configuration) or are redeploying, choose to *Add Now*. |
+     | VM selection | Select preferred storage performance and VM size for your blockchain network. Choose a smaller VM size such as *Standard DS1 v2* if you are on a subscription with low service limits like Azure free tier. |
 
-9. Selecteer **OK** om de geavanceerde instellingen te volt ooien.
+1. Select **OK** to finish Advanced Settings.
 
-10. Bekijk de samenvatting om te controleren of uw parameters correct zijn.
+1. Review the summary to verify your parameters are accurate.
 
     ![Samenvatting](media/deploy/blockchain-workbench-summary.png)
 
-11. Selecteer **maken** om akkoord te gaan met de voorwaarden en uw Azure Blockchain Workbench te implementeren.
+1. Select **Create** to agree to the terms and deploy your Azure Blockchain Workbench.
 
-De implementatie kan Maxi maal 90 minuten duren. U kunt de Azure-portal gebruiken om de voortgang te bekijken. Selecteer in de zojuist gemaakte resource groep **implementaties > overzicht** om de status van de geïmplementeerde artefacten te bekijken.
+The deployment can take up to 90 minutes. You can use the Azure portal to monitor progress. In the newly created resource group, select **Deployments > Overview** to see the status of the deployed artifacts.
 
 > [!IMPORTANT]
-> Na de implementatie moet u Active Directory instellingen volt ooien. Als u **later toevoegen**hebt gekozen, moet u het [Azure AD-configuratie script](#azure-ad-configuration-script)uitvoeren.  Als u **nu toevoegen**hebt gekozen, moet u [de antwoord-URL configureren](#configuring-the-reply-url).
+> Post deployment, you need to complete Active Directory settings. If you chose **Add Later**, you need to run the [Azure AD configuration script](#azure-ad-configuration-script).  If you chose **Add now**, you need to [configure the Reply URL](#configuring-the-reply-url).
 
-## <a name="blockchain-workbench-web-url"></a>Web-URL voor Block Chain workbench
+## <a name="blockchain-workbench-web-url"></a>Blockchain Workbench web URL
 
-Als de implementatie van de Blockchain Workbench is voltooid, bevat een nieuwe resourcegroep uw Blockchain Workbench-resources. Blockchain Workbench services zijn toegankelijk via een web-URL. De volgende stappen laten zien hoe u de web-URL van het geïmplementeerde framework kunt ophalen.
+Once the deployment of the Blockchain Workbench has completed, a new resource group contains your Blockchain Workbench resources. Blockchain Workbench services are accessed through a web URL. The following steps show you how to retrieve the web URL of the deployed framework.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **resource groepen** in het navigatie deel venster aan de linkerkant.
-3. Kies de naam van de resource groep die u hebt opgegeven bij het implementeren van Block Chain Workbench.
-4. Selecteer de kolomkop **type** om de lijst alfabetisch te sorteren op type.
-5. Er zijn twee resources met het type **app service**. Selecteer de resource van het type **app service** *zonder* het achtervoegsel '-API '.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. In the left-hand navigation pane, select **Resource groups**.
+1. Choose the resource group name you specified when deploying Blockchain Workbench.
+1. Select the **TYPE** column heading to sort the list alphabetically by type.
+1. There are two resources with type **App Service**. Select the resource of type **App Service** *without* the "-api" suffix.
 
-    ![Lijst met apps](media/deploy/resource-group-list.png)
+    ![App service list](media/deploy/resource-group-list.png)
 
-6. In de App Service **Essentials** sectie, kopieer de **URL** -waarde voor de web-URL naar uw geïmplementeerde Blockchain Workbench.
+1. In the App Service **Overview**, copy the **URL** value, which represents the web URL to your deployed Blockchain Workbench.
 
-    ![Essentiële informatie over app service](media/deploy/app-service.png)
+    ![App service essentials](media/deploy/app-service.png)
 
-Als u een aangepaste domeinnaam met Blockchain Workbench wilt koppelen, zie [configureren van een aangepaste domeinnaam voor een web-app in Azure App Service met Traffic Manager](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
+To associate a custom domain name with Blockchain Workbench, see [configuring a custom domain name for a web app in Azure App Service using Traffic Manager](../../app-service/web-sites-traffic-manager-custom-domain-name.md).
 
-## <a name="azure-ad-configuration-script"></a>Azure AD-configuratie script
+## <a name="azure-ad-configuration-script"></a>Azure AD configuration script
 
-Azure AD moet worden geconfigureerd om uw Block Chain Workbench-implementatie te volt ooien. U gebruikt een Power shell-script om de configuratie uit te voeren.
+Azure AD must be configured to complete your Blockchain Workbench deployment. You'll use a PowerShell script to do the configuration.
 
-1. Navigeer in een browser naar de [Web-URL van Block Chain Workbench](#blockchain-workbench-web-url).
-2. U ziet instructies voor het instellen van Azure AD met behulp van Cloud Shell. Kopieer de opdracht en start Cloud Shell.
+1. In a browser, navigate to the [Blockchain Workbench Web URL](#blockchain-workbench-web-url).
+1. You'll see instructions to set up Azure AD using Cloud Shell. Copy the command and launch Cloud Shell.
 
-    ![AAD-script starten](media/deploy/launch-aad-script.png)
+    ![Launch AAD script](media/deploy/launch-aad-script.png)
 
-3. Kies de Azure AD-Tenant waar u Block Chain Workbench hebt geïmplementeerd.
-4. Plak en voer de opdracht uit in Cloud Shell.
-5. Wanneer u hierom wordt gevraagd, voert u de Azure AD-Tenant in die u wilt gebruiken voor Block Chain Workbench. Dit is de Tenant die de gebruikers voor Block Chain Workbench bevat.
+1. Choose the Azure AD tenant where you deployed Blockchain Workbench.
+1. In Cloud Shell, paste and run the command.
+1. When prompted, enter the Azure AD tenant you want to use for Blockchain Workbench. This will be the tenant containing the users for Blockchain Workbench.
 
     > [!IMPORTANT]
-    > De geverifieerde gebruiker heeft machtigingen nodig voor het maken van Azure AD-toepassings registraties en het verlenen van gedelegeerde toepassings machtigingen in de Tenant. Mogelijk moet u een beheerder van de Tenant vragen om het Azure AD-configuratie script uit te voeren of een nieuwe Tenant te maken.
+    > The authenticated user requires permissions to create Azure AD application registrations and grant delegated application permissions in the tenant. You may need to ask an administrator of the tenant to run the Azure AD configuration script or create a new tenant.
 
-    ![Azure AD-Tenant invoeren](media/deploy/choose-tenant.png)
+    ![Enter Azure AD tenant](media/deploy/choose-tenant.png)
 
-6. U wordt gevraagd om u te verifiëren bij de Azure AD-Tenant met behulp van een browser. Open de web-URL in een browser, voer de code in en authenticatie.
+1. You'll be prompted to authenticate to the Azure AD tenant using a browser. Open the web URL in a browser, enter the code, and authenticate.
 
-    ![Verifiëren met code](media/deploy/authenticate.png)
+    ![Authenticate with code](media/deploy/authenticate.png)
 
-7. Het script voert diverse status berichten uit. U krijgt een **geslaagd** status bericht als de Tenant is ingericht.
-8. Ga naar de URL van de Block Chain-Workbench. U wordt gevraagd om toestemming te geven om Lees machtigingen te verlenen aan de Directory. Hiermee wordt de Block Chain Workbench-web-app toegang tot de gebruikers in de Tenant. Als u de Tenant beheerder bent, kunt u ervoor kiezen om toestemming te geven voor de hele organisatie. Met deze optie wordt de toestemming geaccepteerd voor alle gebruikers in de Tenant. Anders wordt elke gebruiker gevraagd toestemming te geven bij het eerste gebruik van de Block Chain Workbench-webtoepassing.
-9. Selecteer **accepteren** om toestemming te geven.
+1. The script outputs several status messages. You get a **SUCCESS** status message if the tenant was successfully provisioned.
+1. Navigate to the Blockchain Workbench URL. You are asked to consent to grant read permissions to the directory. This allows the Blockchain Workbench web app access to the users in the tenant. If you are the tenant administrator, you can choose to consent for the entire organization. This option accepts consent for all users in the tenant. Otherwise, each user is prompted for consent on first use of the Blockchain Workbench web application.
+1. Select **Accept** to consent.
 
-     ![Toestemming voor het lezen van gebruikers profielen](media/deploy/graph-permission-consent.png)
+     ![Consent to read users profiles](media/deploy/graph-permission-consent.png)
 
-10. Na toestemming kunt u de Block Chain Workbench-web-app gebruiken.
+1. After consent, the Blockchain Workbench web app can be used.
 
-## <a name="azure-ad-configuration"></a>Azure AD-configuratie
+## <a name="azure-ad-configuration"></a>Azure AD configuration
 
-Als u ervoor kiest om de Azure AD-instellingen voor de implementatie hand matig te configureren of te verifiëren, voltooit u alle stappen in deze sectie. Als u de Azure AD-instellingen liever automatisch wilt configureren, gebruikt u het [configuratie script van Azure AD](#azure-ad-configuration-script) nadat u Block Chain Workbench hebt geïmplementeerd.
+If you choose to manually configure or verify Azure AD settings prior to deployment, complete all steps in this section. If you prefer to automatically configure Azure AD settings, use [Azure AD configuration script](#azure-ad-configuration-script) after you deploy Blockchain Workbench.
 
 ### <a name="blockchain-workbench-api-app-registration"></a>Registratie van API-app voor Blockchain Workbench
 
-Voor de implementatie van Block Chain Workbench is registratie van een Azure AD-toepassing vereist. U hebt een Azure Active Director-tenant  (Azure AD) nodig om de app te registreren. U kunt een bestaande Tenant gebruiken of een nieuwe Tenant maken. Als u een bestaande Azure AD-Tenant gebruikt, hebt u voldoende machtigingen nodig voor het registreren van toepassingen, het verlenen van Graph API machtigingen en het toestaan van gast toegang binnen een Azure AD-Tenant. Als u niet gemachtigd bent in een bestaande Azure AD-tenant maakt u een nieuwe tenant.
+Blockchain Workbench deployment requires registration of an Azure AD application. You need an Azure Active Directory (Azure AD) tenant to register the app. You can use an existing tenant or create a new tenant. If you are using an existing Azure AD tenant, you need sufficient permissions to register applications, grant Graph API permissions, and allow guest access within an Azure AD tenant. If you do not have sufficient permissions in an existing Azure AD tenant create a new tenant.
 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer uw account in de rechter bovenhoek en schakel over naar de gewenste Azure AD-Tenant. De tenant moet de tenant zijn van de abonnementsbeheerder van het abonnement waar Workbench is geïmplementeerd en waar u voldoende machtigingen hebt om toepassingen te registreren.
-3. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **app-registraties** > **nieuwe toepassings registratie**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Select your account in the top-right corner, and switch to the desired Azure AD tenant. The tenant should be the subscription admin's tenant of the subscription where Azure Blockchain Workbench is deployed and you have sufficient permissions to register applications.
+1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Select **App registrations** > **New registration**.
 
     ![App-registratie](media/deploy/app-registration.png)
 
-4. Geef een **naam** en **aanmeldings-URL** op voor de toepassing. U kunt waarden van tijdelijke aanduidingen gebruiken omdat de waarden zijn gewijzigd tijdens de implementatie. 
+1. Provide a display **Name** and choose **Accounts in this organizational directory only**.
 
-    ![App-registratie maken](media/deploy/app-registration-create.png)
+    ![Create app registration](media/deploy/app-registration-create.png)
 
-    |Instelling  | Waarde  |
-    |---------|---------|
-    |Name | `Blockchain API` |
-    |Toepassingstype |Web-app/-API|
-    |Aanmeldings-URL | `https://blockchainapi` |
+1. Select **Register** to register the Azure AD application.
 
-5. Selecteer **maken** om de Azure AD-toepassing te registreren.
+### <a name="modify-manifest"></a>Modify manifest
 
-### <a name="modify-manifest"></a>Manifest wijzigen
+Next, you need to modify the manifest to use application roles within Azure AD to specify Blockchain Workbench administrators.  For more information about application manifests, see [Azure Active Directory application manifest](../../active-directory/develop/reference-app-manifest.md).
 
-Vervolgens moet u het manifest wijzigen om toepassings rollen binnen Azure AD te gebruiken om Block Chain Workbench-beheerders op te geven.  Zie voor meer informatie over de toepassingsmanifesten [Azure Active Directory-toepassingsmanifest](../../active-directory/develop/reference-app-manifest.md).
 
-1. Selecteer in het deel venster geregistreerde toepassings Details het **manifest** voor de toepassing die u hebt geregistreerd.
-2. Genereer een GUID. U kunt een GUID genereren met behulp van de Power shell-opdracht [GUID]:: NewGuid () of de nieuwe GUID-cmdlet. Een andere mogelijkheid is om een GUID-Generator website te gebruiken.
-3. U gaat het **appRoles** gedeelte van het manifest bijwerken. Selecteer in het manifest bewerkingsvenster **bewerken** en vervang `"appRoles": []` door de opgegeven JSON. Vervang de waarde voor de **id** veld door de GUID die u hebt gegenereerd. 
+1. You need to generate a GUID for the manifest. You can generate a GUID using the PowerShell command `[guid]::NewGuid()` or `New-GUID` cmdlet. Another option is to use a GUID generator website.
+1. For the application you registered, select **Manifest** in the **Manage** section.
+1. Next, update the **appRoles** section of the manifest. Replace `"appRoles": []` with the provided JSON. Be sure to replace the value for the **id** field with the GUID you generated. 
 
-    ![Manifest bewerken](media/deploy/edit-manifest.png)
+    ![Edit manifest](media/deploy/edit-manifest.png)
 
     ``` json
     "appRoles": [
@@ -235,94 +222,88 @@ Vervolgens moet u het manifest wijzigen om toepassings rollen binnen Azure AD te
     ```
 
     > [!IMPORTANT]
-    > De waarde **beheerder** is nodig voor het identificeren van Blockchain Workbench-beheerders.
+    > The value **Administrator** is needed to identify Blockchain Workbench administrators.
 
-4. In het manifest wijzigt u ook de waarde **Oauth2AllowImplicitFlow** in **True**.
+1. In the manifest, also change the **Oauth2AllowImplicitFlow** value to **true**.
 
     ``` json
     "oauth2AllowImplicitFlow": true,
     ```
 
-5. Selecteer **Opslaan** om de wijzigingen in het manifest op te slaan.
+1. Select **Save** to save the manifest changes.
 
-### <a name="add-graph-api-required-permissions"></a>Graph API vereiste machtigingen toevoegen
+### <a name="add-graph-api-required-permissions"></a>Add Graph API required permissions
 
-De API-toepassing moet de gebruiker om toestemming voor toegang tot de map vragen. Stel de volgende vereiste machtiging in voor de API-App:
+The API application needs to request permission from the user to access the directory. Set the following required permission for the API application:
 
-1. Selecteer in de registratie van de Block Chain-API-app **instellingen > vereiste machtigingen > Selecteer een API > Microsoft Graph**.
+1. In the *Blockchain API* app registration, select **API permissions**. By default, the Graph API **User.Read** permission is added.
 
-    ![Een API selecteren](media/deploy/client-app-select-api.png)
-
-    Klik op **Selecteren**.
-
-2. Kies in **toegang inschakelen** onder **gedelegeerde machtigingen** **de optie alle basis profielen van alle gebruikers lezen**.
-
-    ![Toegang inschakelen](media/deploy/client-app-read-perms.png)
-
-    Selecteer **Opslaan** en selecteer vervolgens **gereed**.
-
-3. Selecteer in **vereiste machtigingen**de optie **verlenen machtigingen** en selecteer vervolgens **Ja** bij de verificatie prompt.
+1. In **Grant consent**, select **Grant admin consent** for the domain then select **Yes** for the verification prompt.
 
    ![Machtigingen verlenen](media/deploy/client-app-grant-permissions.png)
 
-   Door deze machtiging te verlenen krijgt Blockchain Workbench toegang tot gebruikers in de directory. De leesmachtiging is vereist voor het zoeken en toevoegen van leden in Blockchain Workbench.
+   Granting permission allows Blockchain Workbench to access users in the directory. The read permission is required to search and add members to Blockchain Workbench.
 
-### <a name="get-application-id"></a>Toepassings-ID ophalen
+### <a name="get-application-id"></a>Get application ID
 
-De toepassings-ID en Tenant gegevens zijn vereist voor de implementatie. Verzamel en bewaar de gegevens voor gebruik tijdens de implementatie.
+The application ID and tenant information are required for deployment. Collect and store the information for use during deployment.
 
-1. Selecteer **instellingen** > **eigenschappen** voor de toepassing die u hebt geregistreerd.
-2. In het **eigenschappen** deelvenster, kopieer en bewaar de volgende waarden voor later gebruik tijdens de implementatie.
+1. For the application you registered, select **Overview**.
+1. Copy and store the **Application ID** value for later use during deployment.
 
-    ![Eigenschappen van API-app](media/deploy/app-properties.png)
+    ![API app properties](media/deploy/app-properties.png)
 
-    | Instelling voor opslaan  | Gebruiken in implementatie |
+    | Setting to store  | Use in deployment |
     |------------------|-------------------|
-    | Toepassings-id | Azure Active Directory instellen >-toepassings-ID |
+    | Application (client) ID | Azure Active Directory setup > Application ID |
 
-### <a name="get-tenant-domain-name"></a>Domein naam van Tenant ophalen
+### <a name="get-tenant-domain-name"></a>Get tenant domain name
 
-Verzamel en bewaar de domeinnaam van de Active Directory-tenant waar de toepassingen zijn geregistreerd. 
+Collect and store the Active Directory tenant domain name where the applications are registered. 
 
-Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **Namen van aangepaste domeinen**. Kopieer en bewaar de domeinnaam.
+Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **Namen van aangepaste domeinen**. Copy and store the domain name.
 
 ![Domeinnaam](media/deploy/domain-name.png)
 
-### <a name="guest-user-settings"></a>Gast gebruikers instellingen
+### <a name="guest-user-settings"></a>Guest user settings
 
-Als u gast gebruikers in uw Azure AD-Tenant hebt, volgt u de extra stappen om ervoor te zorgen dat de gebruikers toewijzing en het beheer van Block Chain Workbench goed werken.
+If you have guest users in your Azure AD tenant, follow the additional steps to ensure Blockchain Workbench user assignment and management works properly.
 
-1. Schakel over naar uw Azure AD-Tenant en selecteer **Azure Active Directory > gebruikers instellingen > externe instellingen voor samen werking beheren**.
-2. Stel **gast gebruikers machtigingen** in op **Nee**.
-    ![Instellingen voor externe samen werking](media/deploy/user-collaboration-settings.png)
+1. Switch you your Azure AD tenant and select **Azure Active Directory > User settings > Manage external collaboration settings**.
+1. Set **Guest user permissions are limited** to **No**.
+    ![External collaboration settings](media/deploy/user-collaboration-settings.png)
 
-## <a name="configuring-the-reply-url"></a>De antwoord-URL configureren
+## <a name="configuring-the-reply-url"></a>Configuring the reply URL
 
-Zodra Azure Block Chain Workbench is geïmplementeerd, moet u de **antwoord-URL** voor de Azure Active Directory (Azure AD)-client toepassing configureren van de geïmplementeerde Block Chain Workbench web-URL.
+Once the Azure Blockchain Workbench has been deployed, you have to configure the Azure Active Directory (Azure AD) client application **Reply URL** of the deployed Blockchain Workbench web URL.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-2. Controleer of u in de tenant bent waar u de Azure AD-clienttoepassing hebt geregistreerd.
-3. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **App-registraties**.
-4. Selecteer de Azure AD-client toepassing die u hebt geregistreerd in de sectie vereisten.
-5. Selecteer **instellingen > antwoord-url's**.
-6. Geef de web-URL op van de Azure Block Chain Workbench-implementatie die u hebt opgehaald in het gedeelte **de web-URL van Azure Block Chain Workbench ophalen** . De antwoord-URL wordt voorafgegaan door `https://`. Bijvoorbeeld: `https://myblockchain2-7v75.azurewebsites.net`
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Verify you are in the tenant where you registered the Azure AD client application.
+1. Selecteer in het navigatiedeelvenster aan de linkerkant de **Azure Active Directory**-service. Selecteer **App-registraties**.
+1. Select the Azure AD client application you registered in the prerequisite section.
+1. Select **Authentication**.
+1. Specify the main web URL of the Azure Blockchain Workbench deployment you retrieved in the [Blockchain Workbench web URL](#blockchain-workbench-web-url) section. The Reply URL is prefixed with `https://`. Bijvoorbeeld: `https://myblockchain2-7v75.azurewebsites.net`
 
-    ![Antwoord-URL's](media/deploy/configure-reply-url.png)
+    ![Authentication reply URLs](media/deploy/configure-reply-url.png)
 
-7. Selecteer **opslaan** om de clientregistratie bij te werken.
+1. In the **Advanced setting** section, check **Access tokens** and **ID tokens**.
 
-## <a name="remove-a-deployment"></a>Een implementatie verwijderen
+    ![Authentication advanced settings](media/deploy/authentication-advanced-settings.png)
 
-Wanneer u een implementatie niet meer nodig hebt, kunt u een implementatie verwijderen door de Blockchain Workbench-resourcegroep te verwijderen.
+1. Select **Save** to update the client registration.
 
-1. In de Azure-portal, gaat u naar **resourcegroep** in het navigatiedeelvenster links en selecteert u de resourcegroep die u wilt verwijderen. 
-2. Selecteer **Resourcegroep verwijderen**. Bevestig de verwijdering door de naam van de resourcegroep in te voeren en selecteer **verwijderen**.
+## <a name="remove-a-deployment"></a>Remove a deployment
+
+When a deployment is no longer needed, you can remove a deployment by deleting the Blockchain Workbench resource group.
+
+1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete. 
+1. Selecteer **Resourcegroep verwijderen**. Verify deletion by entering the resource group name and select **Delete**.
 
     ![Resourcegroep verwijderen](media/deploy/delete-resource-group.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel met instructies hebt u Azure Blockchain Workbench geïmplementeerd. Ga door naar het volgende artikel voor meer informatie over het maken van een blockchain-toepassing.
+In this how-to article, you deployed Azure Blockchain Workbench. To learn how to create a blockchain application, continue to the next how-to article.
 
 > [!div class="nextstepaction"]
-> [Een Block Chain-toepassing maken in azure Block Chain workbench](create-app.md)
+> [Create a blockchain application in Azure Blockchain Workbench](create-app.md)

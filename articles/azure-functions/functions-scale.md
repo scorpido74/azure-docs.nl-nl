@@ -1,188 +1,183 @@
 ---
-title: Schaal en hosting Azure Functions | Microsoft Docs
-description: Meer informatie over hoe u kunt kiezen tussen het Azure Functions verbruiks abonnement en het Premium-abonnement.
-author: ggailey777
-manager: gwallace
-keywords: Azure functions, functies, verbruiks abonnement, Premium-abonnement, gebeurtenis verwerking, webhooks, dynamische compute, serverloze architectuur
+title: Azure Functions scale and hosting
+description: Learn how to choose between Azure Functions Consumption plan and Premium plan.
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
-ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bf713029f26ac7ec0b6c043fb887fa5190083888
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: b9644e89591d7d8b7642b5f381434357191d1711
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576064"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226589"
 ---
-# <a name="azure-functions-scale-and-hosting"></a>Azure Functions schalen en hosten
+# <a name="azure-functions-scale-and-hosting"></a>Azure Functions scale and hosting
 
-Wanneer u een functie-app in azure maakt, moet u een hosting abonnement kiezen voor uw app. Er zijn drie hosting plannen beschikbaar voor Azure Functions: [verbruiks abonnement](#consumption-plan), [Premium-abonnement](#premium-plan)en [app service plan](#app-service-plan).
+When you create a function app in Azure, you must choose a hosting plan for your app. There are three hosting plans available for Azure Functions: [Consumption plan](#consumption-plan), [Premium plan](#premium-plan), and [App Service plan](#app-service-plan).
 
-Het hosting abonnement dat u kiest, bepaalt het volgende gedrag:
+The hosting plan you choose dictates the following behaviors:
 
-* Hoe de functie-app wordt geschaald.
-* De bronnen die beschikbaar zijn voor elk exemplaar van de functie-app.
-* Ondersteuning voor geavanceerde functies, zoals VNET-connectiviteit.
+* How your function app is scaled.
+* The resources available to each function app instance.
+* Support for advanced features, such as VNET connectivity.
 
-Zowel verbruik als Premium-abonnementen voegen automatisch reken kracht toe wanneer uw code wordt uitgevoerd. Uw app wordt uitgeschaald wanneer deze nodig is voor het verwerken van de belasting en wordt omlaag geschaald wanneer de uitvoering van de code wordt gestopt. Voor het verbruiks abonnement hoeft u ook niet vooraf te betalen voor niet-actieve Vm's of reserve ring van capaciteit.  
+Both Consumption and Premium plans automatically add compute power when your code is running. Your app is scaled out when needed to handle load, and scaled down when code stops running. For the Consumption plan, you also don't have to pay for idle VMs or reserve capacity in advance.  
 
-Premium-abonnement biedt extra functies, zoals Premium Compute-instanties, waarmee instanties voor onbepaalde tijd en VNet-connectiviteit kunnen worden bewaard.
+Premium plan provides additional features, such as premium compute instances, the ability to keep instances warm indefinitely, and VNet connectivity.
 
-Met App Service plan kunt u profiteren van de toegewezen infra structuur, die u beheert. De functie-app kan niet worden geschaald op basis van gebeurtenissen, wat betekent dat nooit wordt geschaald naar nul. (Vereist dat [Always on](#always-on) is ingeschakeld.)
+App Service plan allows you to take advantage of dedicated infrastructure, which you manage. Your function app doesn't scale based on events, which means is never scales down to zero. (Requires that [Always on](#always-on) is enabled.)
 
 > [!NOTE]
-> U kunt scha kelen tussen verbruiks-en Premium-abonnementen door de eigenschap plan van de resource van de functie-app te wijzigen.
+> You can switch between Consumption and Premium plans by changing the plan property of the function app resource.
 
-## <a name="hosting-plan-support"></a>Ondersteuning voor hosting abonnementen
+## <a name="hosting-plan-support"></a>Hosting plan support
 
-Functie ondersteuning valt in de volgende twee categorieën:
+Feature support falls into the following two categories:
 
-* _Algemeen beschikbaar (ga)_ : volledig ondersteund en goedgekeurd voor productie gebruik.
-* _Preview_: nog niet volledig ondersteund en goedgekeurd voor productie gebruik.
+* _Generally available (GA)_ : fully supported and approved for production use.
+* _Preview_: not yet fully supported and approved for production use.
 
-In de volgende tabel wordt het huidige ondersteunings niveau voor de drie hosting plannen aangegeven, wanneer dit wordt uitgevoerd op Windows of Linux:
+The following table indicates the current level of support for the three hosting plans, when running on either Windows or Linux:
 
-| | Verbruiksabonnement | Premium-abonnement | Toegewezen plan |
+| | Verbruiksabonnement | Premium-plan | Dedicated plan |
 |-|:----------------:|:------------:|:----------------:|
 | Windows | Algemene beschikbaarheid | Algemene beschikbaarheid | Algemene beschikbaarheid |
 | Linux | Algemene beschikbaarheid | Algemene beschikbaarheid | Algemene beschikbaarheid |
 
 ## <a name="consumption-plan"></a>Verbruiksabonnement
 
-Wanneer u het verbruiks abonnement gebruikt, worden instanties van de Azure Functions-host dynamisch toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen. Dit serverloze plan wordt automatisch geschaald en er worden alleen kosten in rekening gebracht voor reken resources wanneer uw functies worden uitgevoerd. Bij een verbruiks abonnement wordt een time-out van de functie uitgevoerd na een Configureer bare periode.
+When you're using the Consumption plan, instances of the Azure Functions host are dynamically added and removed based on the number of incoming events. This serverless plan scales automatically, and you're charged for compute resources only when your functions are running. On a Consumption plan, a function execution times out after a configurable period of time.
 
-De facturering is gebaseerd op het aantal uitvoeringen, de uitvoerings tijd en het gebruikte geheugen. Facturering wordt samengevoegd over alle functies in een functie-app. Zie de pagina met prijzen voor [Azure functions](https://azure.microsoft.com/pricing/details/functions/)voor meer informatie.
+Billing is based on number of executions, execution time, and memory used. Billing is aggregated across all functions within a function app. For more information, see the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/).
 
-Het verbruiks abonnement is het standaard hosting plan en biedt de volgende voor delen:
+The Consumption plan is the default hosting plan and offers the following benefits:
 
-* Betaal alleen wanneer uw functies worden uitgevoerd
-* Automatisch uitschalen, zelfs tijdens peri Oden van hoge belasting
+* Pay only when your functions are running
+* Scale out automatically, even during periods of high load
 
-Functie-apps in dezelfde regio kunnen worden toegewezen aan hetzelfde verbruiks plan. Er is geen nadeel of gevolgen voor het uitvoeren van meerdere apps in hetzelfde verbruiks abonnement. Het toewijzen van meerdere apps aan hetzelfde verbruiks plan heeft geen invloed op de flexibiliteit, schaal baarheid of betrouw baarheid van elke app.
+Function apps in the same region can be assigned to the same Consumption plan. There's no downside or impact to having multiple apps running in the same Consumption plan. Assigning multiple apps to the same consumption plan has no impact on resilience, scalability, or reliability of each app.
 
-Zie voor meer informatie over het schatten van kosten bij het uitvoeren van een verbruiks abonnement de [kosten van verbruiks plan](functions-consumption-costs.md).
+To learn more about how to estimate costs when running in a Consumption plan, see [Understanding Consumption plan costs](functions-consumption-costs.md).
 
-## <a name="premium-plan"></a>Premium-abonnement
+## <a name="premium-plan"></a>Premium plan
 
-Wanneer u het Premium-abonnement gebruikt, worden exemplaren van de Azure Functions-host toegevoegd en verwijderd op basis van het aantal binnenkomende gebeurtenissen, net als het verbruiks abonnement.  Premium-abonnement biedt ondersteuning voor de volgende functies:
+When you're using the Premium plan, instances of the Azure Functions host are added and removed based on the number of incoming events just like the Consumption plan.  Premium plan supports the following features:
 
-* Ongebruikte en warme exemplaren om te voor komen dat ze koud worden gestart
-* VNet-connectiviteit
-* Onbeperkte uitvoerings duur
-* Grootte van Premium-instanties (één kern, twee kernen en vier kern instanties)
-* Meer voorspel bare prijzen
-* App-toewijzing met hoge densiteit voor plannen met meerdere functie-apps
+* Perpetually warm instances to avoid any cold start
+* VNet connectivity
+* Unlimited execution duration
+* Premium instance sizes (one core, two core, and four core instances)
+* More predictable pricing
+* High-density app allocation for plans with multiple function apps
 
-Informatie over hoe u deze opties kunt configureren, vindt u in het [document van het Azure functions Premium-abonnement](functions-premium-plan.md).
+Information on how you can configure these options can be found in the [Azure Functions premium plan document](functions-premium-plan.md).
 
-In plaats van de facturering per uitvoering en het verbruikte geheugen, wordt de facturering voor het Premium-abonnement gebaseerd op het aantal kern seconden en het geheugen dat voor de benodigde en vooraf gewarmte instanties wordt gebruikt. Ten minste één exemplaar moet op elk moment per plan warm zijn. Dit betekent dat er een mini maal maandelijks bedrag per actief abonnement is, ongeacht het aantal uitvoeringen. Houd er rekening mee dat alle functie-apps in een Premium-abonnement vooraf gewarmde en actieve instanties delen.
+Instead of billing per execution and memory consumed, billing for the Premium plan is based on the number of core seconds and memory used across needed and pre-warmed instances. At least one instance must be warm at all times per plan. This means that there is a minimum monthly cost per active plan, regardless of the number of executions. Keep in mind that all function apps in a Premium plan share pre-warmed and active instances.
 
-Bekijk het Azure Functions Premium-abonnement in de volgende situaties:
+Consider the Azure Functions premium plan in the following situations:
 
-* Uw functie-apps worden continu uitgevoerd, of bijna continu.
-* U hebt een groot aantal kleine uitvoeringen en beschikt over een hoog uitvoerings bedrag, maar een laag van minder dan een tweede factuur in het verbruiks abonnement.
-* U hebt meer CPU-of geheugen opties nodig dan in het verbruiks abonnement is opgenomen.
-* De code moet langer worden uitgevoerd dan de [Maxi maal toegestane uitvoerings tijd](#timeout) voor het verbruiks abonnement.
-* U hebt functies nodig die alleen beschikbaar zijn in een Premium-abonnement, zoals VNET/VPN-verbindingen.
+* Your function apps run continuously, or nearly continuously.
+* You have a high number of small executions and have a high execution bill but low GB second bill in the consumption plan.
+* You need more CPU or memory options than what is provided by the Consumption plan.
+* Your code needs to run longer than the [maximum execution time allowed](#timeout) on the Consumption plan.
+* You require features that are only available on a Premium plan, such as VNET/VPN connectivity.
 
-Wanneer u Java script-functies uitvoert op een Premium-abonnement, kiest u een instantie met minder Vcpu's. Zie voor meer informatie het [kiezen van single-core Premium-abonnementen](functions-reference-node.md#considerations-for-javascript-functions).  
+When running JavaScript functions on a Premium plan, you should choose an instance that has fewer vCPUs. For more information, see the [Choose single-core Premium plans](functions-reference-node.md#considerations-for-javascript-functions).  
 
-## <a name="app-service-plan"></a>Speciaal plan (App Service)
+## <a name="app-service-plan"></a>Dedicated (App Service) plan
 
-Uw functie-apps kunnen ook worden uitgevoerd op dezelfde specifieke Vm's als andere App Service-apps (Basic-, Standard-, Premium-en geïsoleerde Sku's).
+Your function apps can also run on the same dedicated VMs as other App Service apps (Basic, Standard, Premium, and Isolated SKUs).
 
-Houd rekening met een App Service-abonnement in de volgende situaties:
+Consider an App Service plan in the following situations:
 
-* U hebt al bestaande, te weinig gebruikte virtuele machines waarop andere exemplaren van App Service worden uitgevoerd.
-* U wilt een aangepaste installatie kopie opgeven waarop uw functies moeten worden uitgevoerd.
+* You have existing, underutilized VMs that are already running other App Service instances.
+* You want to provide a custom image on which to run your functions.
 
-U betaalt hetzelfde voor functie-apps in een App Service plan zoals u zou doen voor andere App Service resources, zoals web-apps. Zie het [overzicht van Azure app service plannen](../app-service/overview-hosting-plans.md)voor meer informatie over de werking van het app service plan.
+You pay the same for function apps in an App Service Plan as you would for other App Service resources, like web apps. For details about how the App Service plan works, see the [Azure App Service plans in-depth overview](../app-service/overview-hosting-plans.md).
 
-Met een App Service-abonnement kunt u hand matig uitschalen door meer VM-exemplaren toe te voegen. U kunt ook automatisch schalen inschakelen. Zie [aantal exemplaren hand matig of automatisch schalen](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)voor meer informatie. U kunt ook omhoog schalen door een ander App Service plan te kiezen. Zie [een app omhoog schalen in azure](../app-service/manage-scale-up.md)voor meer informatie. 
+With an App Service plan, you can manually scale out by adding more VM instances. You can also enable autoscale. For more information, see [Scale instance count manually or automatically](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). You can also scale up by choosing a different App Service plan. For more information, see [Scale up an app in Azure](../app-service/manage-scale-up.md). 
 
-Wanneer u Java script-functies uitvoert op een App Service-abonnement, moet u een abonnement kiezen dat minder Vcpu's heeft. Zie voor meer informatie [single-core app service-abonnementen kiezen](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
+When running JavaScript functions on an App Service plan, you should choose a plan that has fewer vCPUs. For more information, see [Choose single-core App Service plans](functions-reference-node.md#choose-single-vcpu-app-service-plans). 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a>Altijd aan
+### <a name="always-on"></a> Always On
 
-Als u uitvoert met een App Service-abonnement, moet u de instelling **altijd aan** inschakelen, zodat de functie-app correct wordt uitgevoerd. Bij een App Service-abonnement wordt de runtime van functions na een paar minuten inactiviteit niet-actief, zodat alleen HTTP-triggers uw functies kunnen activeren. Always on is alleen beschikbaar voor een App Service plan. In een verbruiks abonnement activeert het platform automatisch functie-apps.
+If you run on an App Service plan, you should enable the **Always on** setting so that your function app runs correctly. On an App Service plan, the functions runtime goes idle after a few minutes of inactivity, so only HTTP triggers will "wake up" your functions. Always on is available only on an App Service plan. On a Consumption plan, the platform activates function apps automatically.
 
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Zelfs met Always ingeschakeld, wordt de time-out voor uitvoering voor afzonderlijke functies bepaald door de `functionTimeout` instelling in het JSON-project bestand van de [host.](functions-host-json.md#functiontimeout)
+Even with Always On enabled, the execution timeout for individual functions is controlled by the `functionTimeout` setting in the [host.json](functions-host-json.md#functiontimeout) project file.
 
-## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Het hosting plan van een bestaande toepassing bepalen
+## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Determine the hosting plan of an existing application
 
-Zie **app service plan/prijs categorie** in het tabblad **overzicht** voor de functie-app in de [Azure Portal](https://portal.azure.com)om het hosting plan te bepalen dat door uw functie-app wordt gebruikt. Voor App Service plannen wordt de prijs categorie ook aangegeven.
+To determine the hosting plan used by your function app, see **App Service plan / pricing tier** in the **Overview** tab for the function app in the [Azure portal](https://portal.azure.com). For App Service plans, the pricing tier is also indicated.
 
-![Schaal plan weer geven in de portal](./media/functions-scale/function-app-overview-portal.png)
+![View scaling plan in the portal](./media/functions-scale/function-app-overview-portal.png)
 
-U kunt de Azure CLI ook gebruiken om het plan als volgt te bepalen:
+You can also use the Azure CLI to determine the plan, as follows:
 
 ```azurecli-interactive
 appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-group <my_resource_group> --query appServicePlanId --output tsv)
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Wanneer de uitvoer van deze opdracht wordt `dynamic`, bevindt uw functie-app zich in het verbruiks abonnement. Wanneer de uitvoer van deze opdracht is `ElasticPremium`, bevindt uw functie-app zich in het Premium-abonnement. Alle andere waarden geven verschillende lagen van een App Service plan aan.
+When the output from this command is `dynamic`, your function app is in the Consumption plan. When the output from this command is `ElasticPremium`, your function app is in the Premium plan. All other values indicate different tiers of an App Service plan.
 
 ## <a name="storage-account-requirements"></a>Vereisten voor een opslagaccount
 
-Voor een wille keurig abonnement is voor een functie-app een algemeen Azure Storage account vereist, dat Azure Blob, wachtrij, bestanden en tabel opslag ondersteunt. Dit komt omdat functies afhankelijk zijn van Azure Storage voor bewerkingen, zoals het beheren van triggers en de uitvoering van logboek functies, maar sommige opslag accounts bieden geen ondersteuning voor wacht rijen en tabellen. Deze accounts, waaronder alleen Blob Storage-accounts (inclusief Premium Storage) en opslag accounts voor algemeen gebruik met zone-redundante opslag replicatie, worden uitgefilterd op basis van uw bestaande **opslag** accounts geselecteerd bij het maken van een functie-app.
+On any plan, a function app requires a general Azure Storage account, which supports Azure Blob, Queue, Files, and Table storage. This is because Functions relies on Azure Storage for operations such as managing triggers and logging function executions, but some storage accounts do not support queues and tables. These accounts, which include blob-only storage accounts (including premium storage) and general-purpose storage accounts with zone-redundant storage replication, are filtered-out from your existing **Storage Account** selections when you create a function app.
 
-Het opslag account dat wordt gebruikt door uw functie-app kan ook worden gebruikt door uw triggers en bindingen om uw toepassings gegevens op te slaan. Voor Storage-intensieve bewerkingen moet u echter een afzonderlijk opslag account gebruiken.   
+The same storage account used by your function app can also be used by your triggers and bindings to store your application data. However, for storage-intensive operations, you should use a separate storage account.   
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
-Zie [Inleiding tot de Azure Storage services](../storage/common/storage-introduction.md#azure-storage-services)voor meer informatie over typen opslag accounts.
+To learn more about storage account types, see [Introducing the Azure Storage services](../storage/common/storage-introduction.md#azure-storage-services).
 
-## <a name="how-the-consumption-and-premium-plans-work"></a>Hoe de verbruiks-en Premium-abonnementen werken
+## <a name="how-the-consumption-and-premium-plans-work"></a>How the consumption and premium plans work
 
-In de verbruiks-en Premium-abonnementen schaalt de Azure Functions-infra structuur CPU-en geheugen bronnen door extra exemplaren van de functions-host toe te voegen op basis van het aantal gebeurtenissen waarvoor de functies zijn geactiveerd. Elk exemplaar van de functions-host in het verbruiks abonnement is beperkt tot 1,5 GB aan geheugen en één CPU.  Een exemplaar van de host is de volledige functie-app, wat betekent dat alle functies binnen een functie-app resources delen binnen een exemplaar en op hetzelfde moment kunnen worden geschaald. Functie-apps die hetzelfde verbruiks abonnement delen, worden onafhankelijk geschaald.  In het Premium-abonnement bepaalt de grootte van het abonnement het beschik bare geheugen en de CPU voor alle apps in dat exemplaar.  
+In the consumption and premium plans, the Azure Functions infrastructure scales CPU and memory resources by adding additional instances of the Functions host, based on the number of events that its functions are triggered on. Each instance of the Functions host in the consumption plan is limited to 1.5 GB of memory and one CPU.  An instance of the host is the entire function app, meaning all functions within a function app share resource within an instance and scale at the same time. Function apps that share the same consumption plan are scaled independently.  In the premium plan, your plan size will determine the available memory and CPU for all apps in that plan on that instance.  
 
-Functie code bestanden worden opgeslagen op Azure Files shares op het belangrijkste opslag account van de functie. Wanneer u het belangrijkste opslag account van de functie-app verwijdert, worden de functie code bestanden verwijderd en kunnen deze niet worden hersteld.
+Function code files are stored on Azure Files shares on the function's main storage account. When you delete the main storage account of the function app, the function code files are deleted and cannot be recovered.
 
-### <a name="runtime-scaling"></a>Runtime schalen
+### <a name="runtime-scaling"></a>Runtime scaling
 
-Azure Functions gebruikt een onderdeel dat de *schaal controller* wordt genoemd om de frequentie van gebeurtenissen te controleren en te bepalen of u wilt schalen of schalen. De schaal controller maakt gebruik van heuristiek voor elk trigger type. Wanneer u bijvoorbeeld een Azure Queue-opslag trigger gebruikt, wordt deze geschaald op basis van de lengte van de wachtrij en de leeftijd van het oudste wachtrij bericht.
+Azure Functions uses a component called the *scale controller* to monitor the rate of events and determine whether to scale out or scale in. The scale controller uses heuristics for each trigger type. For example, when you're using an Azure Queue storage trigger, it scales based on the queue length and the age of the oldest queue message.
 
-De eenheid van de schaal voor Azure Functions is de functie-app. Wanneer de functie-app is geschaald, worden er extra resources toegewezen om meerdere exemplaren van de Azure Functions host uit te voeren. Als de berekenings aanvraag daarentegen wordt verkleind, worden de instanties van de functie-host door de schaal controller verwijderd. Het aantal exemplaren wordt uiteindelijk naar nul geschaald wanneer er geen functies in een functie-app worden uitgevoerd.
+The unit of scale for Azure Functions is the function app. When the function app is scaled out, additional resources are allocated to run multiple instances of the Azure Functions host. Conversely, as compute demand is reduced, the scale controller removes function host instances. The number of instances is eventually scaled down to zero when no functions are running within a function app.
 
-![Controller bewakings gebeurtenissen schalen en instanties maken](./media/functions-scale/central-listener.png)
+![Scale controller monitoring events and creating instances](./media/functions-scale/central-listener.png)
 
-### <a name="understanding-scaling-behaviors"></a>Meer informatie over het schalen van gedrag
+### <a name="understanding-scaling-behaviors"></a>Understanding scaling behaviors
 
-Schalen kan variëren op basis van een aantal factoren en op verschillende manieren schalen, afhankelijk van de geselecteerde trigger en taal. Er zijn een aantal complexiteit waarmee u rekening moet houden:
+Scaling can vary on a number of factors, and scale differently based on the trigger and language selected. There are a few intricacies of scaling behaviors to be aware of:
 
-* Een functie-app kan zelfstandig omhoog worden geschaald naar maximaal 200 exemplaren. Eén exemplaar kan echter meer dan één bericht of aanvraag tegelijk verwerken, dus er is geen limiet ingesteld voor het aantal gelijktijdige uitvoeringen.
-* Voor HTTP-triggers worden nieuwe instanties slechts elke 1 seconde toegewezen.
-* Voor niet-HTTP-triggers worden nieuwe instanties Maxi maal elke 30 seconden toegewezen.
+* Een functie-app kan zelfstandig omhoog worden geschaald naar maximaal 200 exemplaren. A single instance may process more than one message or request at a time though, so there isn't a set limit on number of concurrent executions.
+* For HTTP triggers, new instances will only be allocated at most once every 1 second.
+* For non-HTTP triggers, new instances will only be allocated at most once every 30 seconds.
 
-Andere triggers kunnen ook verschillende schaal limieten hebben, zoals hieronder wordt beschreven:
+Different triggers may also have different scaling limits as well as documented below:
 
 * [Event Hub](functions-bindings-event-hubs.md#trigger---scaling)
 
-### <a name="best-practices-and-patterns-for-scalable-apps"></a>Aanbevolen procedures en patronen voor schaal bare apps
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Best practices and patterns for scalable apps
 
-Er zijn veel aspecten van een functie-app die van invloed zijn op de manier waarop deze worden geschaald, met inbegrip van hostconfiguratie, runtime footprint en resource-efficiëntie.  Zie de [sectie schaal baarheid in het artikel over prestatie overwegingen](functions-best-practices.md#scalability-best-practices)voor meer informatie. U moet ook weten hoe verbindingen zich gedragen als uw functie-app wordt geschaald. Zie [verbindingen beheren in azure functions](manage-connections.md)voor meer informatie.
+There are many aspects of a function app that will impact how well it will scale, including host configuration, runtime footprint, and resource efficiency.  For more information, see the [scalability section of the performance considerations article](functions-best-practices.md#scalability-best-practices). You should also be aware of how connections behave as your function app scales. For more information, see [How to manage connections in Azure Functions](manage-connections.md).
 
 ### <a name="billing-model"></a>Factureringsmodel
 
-De facturering voor de verschillende plannen wordt gedetailleerd beschreven op de [pagina met Azure functions prijzen](https://azure.microsoft.com/pricing/details/functions/). Het gebruik wordt geaggregeerd op het niveau van de functie-app en telt alleen de tijd waarop de functie code wordt uitgevoerd. Hier volgen enkele eenheden voor facturering:
+Billing for the different plans is described in detail on the [Azure Functions pricing page](https://azure.microsoft.com/pricing/details/functions/). Usage is aggregated at the function app level and counts only the time that function code is executed. The following are units for billing:
 
-* **Resource verbruik in Gigabyte-seconden (GB-s)** . Berekend als een combi natie van geheugen grootte en uitvoerings tijd voor alle functies in een functie-app. 
-* **Uitvoeringen**. Geteld wanneer een functie wordt uitgevoerd in reactie op een gebeurtenis trigger.
+* **Resource consumption in gigabyte-seconds (GB-s)** . Computed as a combination of memory size and execution time for all functions within a function app. 
+* **Executions**. Counted each time a function is executed in response to an event trigger.
 
-Nuttige query's en informatie over het begrijpen van uw verbruiks factuur vindt u [in de veelgestelde vragen over facturering](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
+Useful queries and information on how to understand your consumption bill can be found [on the billing FAQ](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ).
 
 [Azure Functions pricing page]: https://azure.microsoft.com/pricing/details/functions
 
-## <a name="service-limits"></a>Servicelimieten
+## <a name="service-limits"></a>Servicebeperkingen
 
-In de volgende tabel worden de limieten aangegeven die van toepassing zijn op app-functies wanneer ze worden uitgevoerd in de verschillende hosting plannen:
+The following table indicates the limits that apply to function apps when running in the various hosting plans:
 
 [!INCLUDE [functions-limits](../../includes/functions-limits.md)]

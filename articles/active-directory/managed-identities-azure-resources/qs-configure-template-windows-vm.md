@@ -1,6 +1,6 @@
 ---
-title: Beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon
-description: Stapsgewijze instructies voor het configureren van beheerde identiteiten voor Azure-resources op een Azure-VM met behulp van een Azure Resource Manager sjabloon.
+title: Configure managed identities on Azure VM using template - Azure AD
+description: Step-by-step instructions for configuring managed identities for Azure resources on an Azure VM, using an Azure Resource Manager template.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,48 +15,48 @@ ms.workload: identity
 ms.date: 09/26/2019
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43f5e04440f55c44a53b85aa4d3600e0d926424d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 67367d8e50cf0b0b8929dc398a059180d5cd7567
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72330003"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224313"
 ---
-# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon
+# <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Configure managed identities for Azure resources on an Azure VM using a templates
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Beheerde identiteiten voor Azure-resources bieden Azure-Services met een automatisch beheerde identiteit in Azure Active Directory. U kunt deze identiteit gebruiken voor verificatie bij elke service die ondersteuning biedt voor Azure AD-verificatie, zonder dat u referenties hebt in uw code. 
+Managed identities for Azure resources provides Azure services with an automatically managed identity in Azure Active Directory. You can use this identity to authenticate to any service that supports Azure AD authentication, without having credentials in your code. 
 
-In dit artikel wordt gebruikgemaakt van de Azure Resource Manager-implementatie sjabloon voor het uitvoeren van de volgende beheerde identiteiten voor Azure-bronnen bewerkingen op een Azure VM:
+In this article, using the Azure Resource Manager deployment template, you learn how to perform the following managed identities for Azure resources operations on an Azure VM:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Als u niet bekend bent met het gebruik van Azure Resource Manager-implementatie sjabloon, raadpleegt u de [sectie Overzicht](overview.md). **Controleer het [verschil tussen een door het systeem toegewezen en door de gebruiker toegewezen beheerde identiteit](overview.md#how-does-it-work)** .
+- If you're unfamiliar with using Azure Resource Manager deployment template, check out the [overview section](overview.md). **Be sure to review the [difference between a system-assigned and user-assigned managed identity](overview.md#how-does-it-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
 
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sjablonen
 
-Net als bij de Azure Portal en scripting bieden [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) sjablonen de mogelijkheid om nieuwe of gewijzigde resources te implementeren die zijn gedefinieerd door een Azure-resource groep. Er zijn verschillende opties beschikbaar voor het bewerken en implementeren van sjablonen, zowel lokaal als op basis van een portal, waaronder:
+As with the Azure portal and scripting, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) templates provide the ability to deploy new or modified resources defined by an Azure resource group. Several options are available for template editing and deployment, both local and portal-based, including:
 
-   - Met een [aangepaste sjabloon van Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template)kunt u een volledig nieuwe sjabloon maken of deze baseren op een bestaande sjabloon common of [Quick](https://azure.microsoft.com/documentation/templates/)start.
-   - Deze worden afgeleid van een bestaande resource groep door een sjabloon te exporteren uit [de oorspronkelijke implementatie](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates)of vanuit de [huidige status van de implementatie](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
-   - Een lokale [JSON-editor gebruiken (zoals VS code)](../../azure-resource-manager/resource-manager-create-first-template.md)en vervolgens uploaden en implementeren met behulp van Power shell of cli.
-   - Het Visual Studio [Azure Resource Group-project](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) gebruiken om een sjabloon te maken en te implementeren.  
+   - Using a [custom template from the Azure Marketplace](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), which allows you to create a template from scratch, or base it on an existing common or [quickstart template](https://azure.microsoft.com/documentation/templates/).
+   - Deriving from an existing resource group, by exporting a template from either [the original deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), or from the [current state of the deployment](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
+   - Using a local [JSON editor (such as VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), and then uploading and deploying by using PowerShell or CLI.
+   - Using the Visual Studio [Azure Resource Group project](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) to both create and deploy a template.  
 
-Ongeacht de optie die u kiest, is de sjabloon syntaxis hetzelfde tijdens de eerste implementatie en opnieuw implementeren. Het inschakelen van een door een systeem of gebruiker toegewezen beheerde identiteit op een nieuwe of bestaande virtuele machine gebeurt op dezelfde manier. Azure Resource Manager voert standaard een [incrementele update](../../azure-resource-manager/deployment-modes.md) uit voor implementaties.
+Regardless of the option you choose, template syntax is the same during initial deployment and redeployment. Enabling a system or user-assigned managed identity on a new or existing VM is done in the same manner. Also, by default, Azure Resource Manager does an [incremental update](../../azure-resource-manager/deployment-modes.md) to deployments.
 
-## <a name="system-assigned-managed-identity"></a>Door het systeem toegewezen beheerde identiteit
+## <a name="system-assigned-managed-identity"></a>System-assigned managed identity
 
-In deze sectie schakelt u een door het systeem toegewezen beheerde identiteit in en uit met behulp van een Azure Resource Manager sjabloon.
+In this section, you will enable and disable a system-assigned managed identity using an Azure Resource Manager template.
 
-### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Door het systeem toegewezen beheerde identiteit inschakelen tijdens het maken van een virtuele Azure-machine of een bestaande virtuele machine
+### <a name="enable-system-assigned-managed-identity-during-creation-of-an-azure-vm-or-on-an-existing-vm"></a>Enable system-assigned managed identity during creation of an Azure VM or on an existing VM
 
-Als u door het systeem toegewezen beheerde identiteit op een virtuele machine wilt inschakelen, moet uw account de roltoewijzing van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben.  Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
+To enable system-assigned managed identity on a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
 
-1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
 
-2. Als u door het systeem toegewezen beheerde identiteit wilt inschakelen, laadt u de sjabloon in een editor, zoekt u de `Microsoft.Compute/virtualMachines`-bron van belang in de sectie `resources` en voegt u de eigenschap `"identity"` toe op hetzelfde niveau als de eigenschap `"type": "Microsoft.Compute/virtualMachines"`. Gebruik de volgende syntaxis:
+2. To enable system-assigned managed identity, load the template into an editor, locate the `Microsoft.Compute/virtualMachines` resource of interest within the `resources` section and add the `"identity"` property at the same level as the `"type": "Microsoft.Compute/virtualMachines"` property. Use the following syntax:
 
    ```JSON
    "identity": { 
@@ -66,7 +66,7 @@ Als u door het systeem toegewezen beheerde identiteit op een virtuele machine wi
 
 
 
-3. Wanneer u klaar bent, moeten de volgende secties worden toegevoegd aan de sectie `resource` van uw sjabloon. deze moet er als volgt uitzien:
+3. When you're done, the following sections should added to the `resource` section of your template and it should resemble the following:
 
    ```JSON
    "resources": [
@@ -103,17 +103,17 @@ Als u door het systeem toegewezen beheerde identiteit op een virtuele machine wi
     ]
    ```
 
-### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Een rol toewijzen aan de door het systeem toegewezen beheerde identiteit van de virtuele machine
+### <a name="assign-a-role-the-vms-system-assigned-managed-identity"></a>Assign a role the VM's system-assigned managed identity
 
-Nadat u door het systeem toegewezen beheerde identiteit op uw virtuele machine hebt ingeschakeld, wilt u deze mogelijk een rol geven zoals **lezers** toegang tot de resource groep waarin deze is gemaakt.
+After you have enabled system-assigned managed identity on your VM, you may want to grant it a role such as **Reader** access to the resource group in which it was created.
 
-Als u een rol wilt toewijzen aan de door het systeem toegewezen identiteit van uw VM, moet uw account beschikken over de toewijzing van de rol beheerder van de [gebruiker](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
+To assign a role to your VM's system-assigned identity, your account needs the [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) role assignment.
 
-1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
  
-2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en voeg de volgende informatie toe om uw VM- **lezer** toegang te geven tot de resource groep waarin deze is gemaakt.  De structuur van uw sjabloon kan variëren, afhankelijk van de editor en het implementatie model dat u kiest.
+2. Load the template into an [editor](#azure-resource-manager-templates) and add the following information to give your VM **Reader** access to the resource group in which it was created.  Your template structure may vary depending on the editor and the deployment model you choose.
    
-   Onder de sectie `parameters` voegt u het volgende toe:
+   Under the `parameters` section add the following:
 
     ```JSON
     "builtInRoleType": {
@@ -125,13 +125,13 @@ Als u een rol wilt toewijzen aan de door het systeem toegewezen identiteit van u
         }
     ```
 
-    Onder de sectie `variables` voegt u het volgende toe:
+    Under the `variables` section add the following:
 
     ```JSON
     "Reader": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'acdd72a7-3385-48ef-bd42-f606fba81ae7')]"
     ```
 
-    Onder de sectie `resources` voegt u het volgende toe:
+    Under the `resources` section add the following:
 
     ```JSON
     {
@@ -149,23 +149,23 @@ Als u een rol wilt toewijzen aan de door het systeem toegewezen identiteit van u
     }
     ```
 
-### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Een door het systeem toegewezen beheerde identiteit uitschakelen vanuit een Azure-VM
+### <a name="disable-a-system-assigned-managed-identity-from-an-azure-vm"></a>Disable a system-assigned managed identity from an Azure VM
 
-Als u een door het systeem toegewezen beheerde identiteit van een virtuele machine wilt verwijderen, moet uw account de roltoewijzing van de [virtuele machines](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben.  Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
+To remove system-assigned managed identity from a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment.  No additional Azure AD directory role assignments are required.
 
-1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
 
-2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachines`-bron van belang in de sectie `resources`. Als u een VM hebt die alleen door het systeem toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het identiteits type te wijzigen in `None`.  
+2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachines` resource of interest within the `resources` section. If you have a VM that only has system-assigned managed identity, you can disable it by changing the identity type to `None`.  
    
-   **Micro soft. Compute/informatie API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachines API version 2018-06-01**
 
-   Als uw virtuele machine zowel door het systeem en de gebruiker toegewezen beheerde identiteiten heeft, verwijdert u `SystemAssigned` uit het identiteits type en blijft u `UserAssigned` samen met de waarden van de `userAssignedIdentities` woorden lijst.
+   If your VM has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the `userAssignedIdentities` dictionary values.
 
-   **Micro soft. Compute/informatie API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachines API version 2018-06-01**
    
-   Als uw `apiVersion` `2017-12-01` is en uw virtuele machine zowel door het systeem als de gebruiker toegewezen beheerde identiteiten heeft, verwijdert u `SystemAssigned` van het identiteits type en behoudt u `UserAssigned` samen met de `identityIds`-matrix van de door de gebruiker toegewezen beheerde identiteiten.  
+   If your `apiVersion` is `2017-12-01` and your VM has both system and user-assigned managed identities, remove `SystemAssigned` from the identity type and keep `UserAssigned` along with the `identityIds` array of the user-assigned managed identities.  
    
-In het volgende voor beeld ziet u hoe u een door het systeem toegewezen beheerde identiteit verwijdert uit een VM zonder door de gebruiker toegewezen beheerde identiteiten:
+The following example shows you how remove a system-assigned managed identity from a VM with no user-assigned managed identities:
 
 ```JSON
 {
@@ -181,20 +181,20 @@ In het volgende voor beeld ziet u hoe u een door het systeem toegewezen beheerde
 
 ## <a name="user-assigned-managed-identity"></a>Door een gebruiker toegewezen beheerde identiteit
 
-In deze sectie wijst u een door de gebruiker toegewezen beheerde identiteit toe aan een Azure-VM met behulp van Azure Resource Manager sjabloon.
+In this section, you assign a user-assigned managed identity to an Azure VM using Azure Resource Manager template.
 
 > [!Note]
-> Zie [een door de gebruiker toegewezen beheerde identiteit maken](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity)om een door de gebruiker toegewezen beheerde identiteit te maken met behulp van een Azure Resource Manager sjabloon.
+> To create a user-assigned managed identity using an Azure Resource Manager Template, see [Create a user-assigned managed identity](how-to-manage-ua-identity-arm.md#create-a-user-assigned-managed-identity).
 
-### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Een door de gebruiker toegewezen beheerde identiteit toewijzen aan een Azure VM
+### <a name="assign-a-user-assigned-managed-identity-to-an-azure-vm"></a>Assign a user-assigned managed identity to an Azure VM
 
-Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moet uw account de roltoewijzingen van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) en de rollen voor de [beheerde identiteits operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
+To assign a user-assigned identity to a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) and [Managed Identity Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) role assignments. No additional Azure AD directory role assignments are required.
 
-1. Voeg onder het element `resources` de volgende vermelding toe om een door de gebruiker toegewezen beheerde identiteit aan uw virtuele machine toe te wijzen.  Zorg ervoor dat u `<USERASSIGNEDIDENTITY>` vervangt door de naam van de door de gebruiker toegewezen beheerde identiteit die u hebt gemaakt.
+1. Under the `resources` element, add the following entry to assign a user-assigned managed identity to your VM.  Be sure to replace `<USERASSIGNEDIDENTITY>` with the name of the user-assigned managed identity you created.
 
-   **Micro soft. Compute/informatie API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachines API version 2018-06-01**
 
-   Als uw `apiVersion` `2018-06-01` is, worden uw door de gebruiker toegewezen beheerde identiteiten opgeslagen in de indeling van de `userAssignedIdentities`-woorden lijst en moet de waarde van @no__t 3 worden opgeslagen in een variabele die is gedefinieerd in de sectie `variables` van uw sjabloon.
+   If your `apiVersion` is `2018-06-01`, your user-assigned managed identities are stored in the `userAssignedIdentities` dictionary format and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the `variables` section of your template.
 
    ```json
    {
@@ -211,9 +211,9 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
    }
    ```
    
-   **Micro soft. Compute/informatie API-versie 2017-12-01**
+   **Microsoft.Compute/virtualMachines API version 2017-12-01**
     
-   Als uw `apiVersion` `2017-12-01` is, worden uw door de gebruiker toegewezen beheerde identiteiten opgeslagen in de matrix `identityIds` en moet de `<USERASSIGNEDIDENTITYNAME>`-waarde worden opgeslagen in een variabele die is gedefinieerd in de sectie `variables` van uw sjabloon.
+   If your `apiVersion` is `2017-12-01`, your user-assigned managed identities are stored in the `identityIds` array and the `<USERASSIGNEDIDENTITYNAME>` value must be stored in a variable defined in the `variables` section of your template.
     
    ```json
    {
@@ -230,9 +230,9 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
    }
    ```
        
-3. Wanneer u klaar bent, moeten de volgende secties worden toegevoegd aan de sectie `resource` van uw sjabloon. deze moet er als volgt uitzien:
+3. When you're done, the following sections should added to the `resource` section of your template and it should resemble the following:
    
-   **Micro soft. Compute/informatie API-versie 2018-06-01**    
+   **Microsoft.Compute/virtualMachines API version 2018-06-01**    
 
    ```JSON
    "resources": [
@@ -270,7 +270,7 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
        }
     ]
    ```
-   **Micro soft. Compute/informatie API-versie 2017-12-01**
+   **Microsoft.Compute/virtualMachines API version 2017-12-01**
    
    ```JSON
    "resources": [
@@ -310,15 +310,15 @@ Als u een door de gebruiker toegewezen identiteit aan een VM wilt toewijzen, moe
     ]
    ```
 
-### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een Azure-VM
+### <a name="remove-a-user-assigned-managed-identity-from-an-azure-vm"></a>Remove a user-assigned managed identity from an Azure VM
 
-Als u een door de gebruiker toegewezen identiteit van een virtuele machine wilt verwijderen, moet uw account de roltoewijzing van de [virtuele machine](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) hebben. Er zijn geen extra Azure AD-Directory roltoewijzingen vereist.
+To remove a user-assigned identity from a VM, your account needs the [Virtual Machine Contributor](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) role assignment. No additional Azure AD directory role assignments are required.
 
-1. Gebruik een account dat is gekoppeld aan het Azure-abonnement dat de virtuele machine bevat, of u zich lokaal of via de Azure Portal aanmeldt bij Azure.
+1. Whether you sign in to Azure locally or via the Azure portal, use an account that is associated with the Azure subscription that contains the VM.
 
-2. Laad de sjabloon in een [Editor](#azure-resource-manager-templates) en zoek de `Microsoft.Compute/virtualMachines`-bron van belang in de sectie `resources`. Als u een VM hebt die alleen door de gebruiker toegewezen beheerde identiteit heeft, kunt u deze uitschakelen door het identiteits type te wijzigen in `None`.
+2. Load the template into an [editor](#azure-resource-manager-templates) and locate the `Microsoft.Compute/virtualMachines` resource of interest within the `resources` section. If you have a VM that only has user-assigned managed identity, you can disable it by changing the identity type to `None`.
  
-   In het volgende voor beeld ziet u hoe u alle door de gebruiker toegewezen beheerde identiteiten verwijdert uit een VM zonder door het systeem toegewezen beheerde identiteiten:
+   The following example shows you how remove all user-assigned managed identities from a VM with no system-assigned managed identities:
    
    ```json
     {
@@ -332,19 +332,19 @@ Als u een door de gebruiker toegewezen identiteit van een virtuele machine wilt 
     }
    ```
    
-   **Micro soft. Compute/informatie API-versie 2018-06-01**
+   **Microsoft.Compute/virtualMachines API version 2018-06-01**
     
-   Als u één door de gebruiker toegewezen beheerde identiteit uit een virtuele machine wilt verwijderen, verwijdert u deze uit de woorden lijst `useraAssignedIdentities`.
+   To remove a single user-assigned managed identity from a VM, remove it from the `useraAssignedIdentities` dictionary.
 
-   Als u een door het systeem toegewezen beheerde identiteit hebt, moet u deze in de `type`-waarde onder de waarde `identity` laten staan.
+   If you have a system-assigned managed identity, keep it in the in the `type` value under the `identity` value.
  
-   **Micro soft. Compute/informatie API-versie 2017-12-01**
+   **Microsoft.Compute/virtualMachines API version 2017-12-01**
 
-   Als u één door de gebruiker toegewezen beheerde identiteit uit een virtuele machine wilt verwijderen, verwijdert u deze uit de matrix `identityIds`.
+   To remove a single user-assigned managed identity from a VM, remove it from the `identityIds` array.
 
-   Als u een door het systeem toegewezen beheerde identiteit hebt, moet u deze in de `type`-waarde onder de waarde `identity` laten staan.
+   If you have a system-assigned managed identity, keep it in the in the `type` value under the `identity` value.
    
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Overzicht van beheerde identiteiten voor Azure-resources](overview.md).
+- [Managed identities for Azure resources overview](overview.md).
 

@@ -1,22 +1,16 @@
 ---
-title: Een functie in Azure maken die wordt geactiveerd door wachtrijberichten | Microsoft Docs
+title: Create a function in Azure triggered by queue messages
 description: Gebruik Azure Functions voor het maken van een functie zonder server die wordt aangeroepen door berichten die zijn verzonden naar een Azure Storage-wachtrij.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 60c8505b8180a60eed114deb4cd2b11f32c8baa4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 3f4e9f8a607856e3de92a4824a4221071f3c02a4
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096810"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227144"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Een door Azure Queue Storage geactiveerde functie maken
 
@@ -60,9 +54,9 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
     ![Configureer de door de opslagwachtrij geactiveerde functie.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
 
-    | Instelling | Voorgestelde waarde | Description |
+    | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
-    | **Name** | Uniek in uw functie-app | Naam van deze door een wachtrij geactiveerde functie. |
+    | **Naam** | Uniek in uw functie-app | Naam van deze door een wachtrij geactiveerde functie. |
     | **Wachtrijnaam**   | myqueue-items    | De naam van de wachtrij waarmee u verbinding moet maken in uw opslagaccount. |
     | **Opslagaccountverbinding** | AzureWebJobStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |    
 

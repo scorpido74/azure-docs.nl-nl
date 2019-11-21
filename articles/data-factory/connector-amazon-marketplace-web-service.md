@@ -1,61 +1,59 @@
 ---
-title: Gegevens kopiëren van de web-service van Amazon Marketplace met Azure Data Factory
-description: Meer informatie over het kopiëren van gegevens van de web-service van Amazon Marketplace naar ondersteunde Sink-gegevens archieven door gebruik te maken van een Kopieer activiteit in een Azure Data Factory-pijp lijn.
+title: Copy data from Amazon Marketplace Web Service
+description: Learn how to copy data from Amazon Marketplace Web Service to supported sink data stores by using a copy activity in an Azure Data Factory pipeline.
 services: data-factory
-documentationcenter: ''
-author: linda33wj
-manager: craigg
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 8613b52ff8d04b578342a34fe24d6e9e12a8a98c
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+author: linda33wj
+manager: shwang
+ms.reviewer: douglasl
+ms.date: 08/01/2018
+ms.openlocfilehash: 24e0de3efec4e2d442f746e19f4c30363f0b4bfa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73681399"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74218755"
 ---
-# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Gegevens kopiëren van de web-service van Amazon Marketplace met Azure Data Factory
+# <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory"></a>Copy data from Amazon Marketplace Web Service using Azure Data Factory
 
-In dit artikel wordt beschreven hoe u de Kopieer activiteit in Azure Data Factory kunt gebruiken om gegevens uit de Amazon Marketplace-webservice te kopiëren. Het is gebaseerd op het artikel overzicht van de [Kopieer activiteit](copy-activity-overview.md) . Dit geeft een algemeen overzicht van de Kopieer activiteit.
+This article outlines how to use the Copy Activity in Azure Data Factory to copy data from Amazon Marketplace Web Service. It builds on the [copy activity overview](copy-activity-overview.md) article that presents a general overview of copy activity.
 
-## <a name="supported-capabilities"></a>Ondersteunde mogelijkheden
+## <a name="supported-capabilities"></a>Supported capabilities
 
-Deze Amazon Marketplace web service-connector wordt ondersteund voor de volgende activiteiten:
+This Amazon Marketplace Web Service connector is supported for the following activities:
 
-- [Kopieer activiteit](copy-activity-overview.md) met een [ondersteunde bron/Sink-matrix](copy-activity-overview.md)
+- [Copy activity](copy-activity-overview.md) with [supported source/sink matrix](copy-activity-overview.md)
 - [Activiteit Lookup](control-flow-lookup-activity.md)
 
-U kunt gegevens van Amazon Marketplace-webservice kopiëren naar elk ondersteund Sink-gegevens archief. Zie de tabel [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats) voor een lijst met gegevens archieven die worden ondersteund als bron/sinks door de Kopieer activiteit.
+You can copy data from Amazon Marketplace Web Service to any supported sink data store. For a list of data stores that are supported as sources/sinks by the copy activity, see the [Supported data stores](copy-activity-overview.md#supported-data-stores-and-formats) table.
 
-Azure Data Factory biedt een ingebouwd stuur programma om connectiviteit mogelijk te maken. u hoeft dus niet hand matig een stuur programma te installeren met behulp van deze connector.
+Azure Data Factory provides a built-in driver to enable connectivity, therefore you don't need to manually install any driver using this connector.
 
 ## <a name="getting-started"></a>Aan de slag
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-De volgende secties bevatten informatie over eigenschappen die worden gebruikt voor het definiëren van Data Factory entiteiten die specifiek zijn voor de Amazon Marketplace web service-connector.
+The following sections provide details about properties that are used to define Data Factory entities specific to Amazon Marketplace Web Service connector.
 
-## <a name="linked-service-properties"></a>Eigenschappen van gekoppelde service
+## <a name="linked-service-properties"></a>Linked service properties
 
-De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amazon Marketplace-webservice:
+The following properties are supported for Amazon Marketplace Web Service linked service:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type | De eigenschap type moet worden ingesteld op: **AmazonMWS** | Ja |
-| endpoint | Het eind punt van de Amazon MWS-server, (dat wil zeggen mws.amazonservices.com)  | Ja |
-| marketplaceID | De Amazon Marketplace-ID waaruit u gegevens wilt ophalen. Als u gegevens wilt ophalen uit meerdere Marketplace-Id's, scheidt u deze met een komma (`,`). (dat wil zeggen, A2EUQ1WTGCTBG2)  | Ja |
-| sellerID | De verkoper-ID van Amazon.  | Ja |
-| mwsAuthToken | Het Amazon MWS-verificatie token. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| accessKeyId | De toegangs sleutel-ID die wordt gebruikt voor toegang tot gegevens.  | Ja |
-| secretKey | De geheime sleutel die wordt gebruikt voor toegang tot gegevens. Markeer dit veld als SecureString om het veilig op te slaan in Data Factory, of om te [verwijzen naar een geheim dat is opgeslagen in azure Key Vault](store-credentials-in-key-vault.md). | Ja |
-| useEncryptedEndpoints | Hiermee geeft u op of de eind punten van de gegevens bron moeten worden versleuteld met HTTPS. De standaard waarde is True.  | Nee |
-| useHostVerification | Hiermee geeft u op of de hostnaam in het certificaat van de server moet overeenkomen met de hostnaam van de server bij het maken van verbinding via SSL. De standaard waarde is True.  | Nee |
-| usePeerVerification | Hiermee wordt aangegeven of de identiteit van de server moet worden gecontroleerd wanneer er verbinding wordt gemaakt via SSL. De standaard waarde is True.  | Nee |
+| type | The type property must be set to: **AmazonMWS** | Ja |
+| endpoint | The endpoint of the Amazon MWS server, (that is, mws.amazonservices.com)  | Ja |
+| marketplaceID | The Amazon Marketplace ID you want to retrieve data from. To retrieve data from multiple Marketplace IDs, separate them with a comma (`,`). (that is, A2EUQ1WTGCTBG2)  | Ja |
+| sellerID | The Amazon seller ID.  | Ja |
+| mwsAuthToken | The Amazon MWS authentication token. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| accessKeyId | The access key ID used to access data.  | Ja |
+| secretKey | The secret key used to access data. Mark this field as a SecureString to store it securely in Data Factory, or [reference a secret stored in Azure Key Vault](store-credentials-in-key-vault.md). | Ja |
+| useEncryptedEndpoints | Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true.  | Nee |
+| useHostVerification | Specifies whether to require the host name in the server's certificate to match the host name of the server when connecting over SSL. The default value is true.  | Nee |
+| usePeerVerification | Specifies whether to verify the identity of the server when connecting over SSL. The default value is true.  | Nee |
 
 **Voorbeeld:**
 
@@ -82,16 +80,16 @@ De volgende eigenschappen worden ondersteund voor de gekoppelde service van Amaz
 }
 ```
 
-## <a name="dataset-properties"></a>Eigenschappen van gegevensset
+## <a name="dataset-properties"></a>Dataset properties
 
-Zie het artikel [gegevens sets](concepts-datasets-linked-services.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van gegevens sets. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de gegevensset van de web-service van Amazon Marketplace.
+For a full list of sections and properties available for defining datasets, see the [datasets](concepts-datasets-linked-services.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service dataset.
 
-Als u gegevens wilt kopiëren uit de web-service van Amazon Marketplace, stelt u de eigenschap type van de gegevensset in op **AmazonMWSObject**. De volgende eigenschappen worden ondersteund:
+To copy data from Amazon Marketplace Web Service, set the type property of the dataset to **AmazonMWSObject**. The following properties are supported:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de gegevensset moet worden ingesteld op: **AmazonMWSObject** | Ja |
-| tableName | De naam van de tabel. | Nee (als "query" in activiteit bron is opgegeven) |
+| type | The type property of the dataset must be set to: **AmazonMWSObject** | Ja |
+| tableName | Name of the table. | No (if "query" in activity source is specified) |
 
 **Voorbeeld**
 
@@ -113,16 +111,16 @@ Als u gegevens wilt kopiëren uit de web-service van Amazon Marketplace, stelt u
 
 ## <a name="copy-activity-properties"></a>Eigenschappen van de kopieeractiviteit
 
-Zie het artikel [pijp lijnen](concepts-pipelines-activities.md) voor een volledige lijst met secties en eigenschappen die beschikbaar zijn voor het definiëren van activiteiten. In deze sectie vindt u een lijst met eigenschappen die worden ondersteund door de service bron van Amazon Marketplace.
+For a full list of sections and properties available for defining activities, see the [Pipelines](concepts-pipelines-activities.md) article. This section provides a list of properties supported by Amazon Marketplace Web Service source.
 
-### <a name="amazon-mws-as-source"></a>Amazon MWS als bron
+### <a name="amazon-mws-as-source"></a>Amazon MWS as source
 
-Als u gegevens wilt kopiëren uit de web-service van Amazon Marketplace, stelt u het bron type in de Kopieer activiteit in op **AmazonMWSSource**. De volgende eigenschappen worden ondersteund in de sectie **bron** van de Kopieer activiteit:
+To copy data from Amazon Marketplace Web Service, set the source type in the copy activity to **AmazonMWSSource**. The following properties are supported in the copy activity **source** section:
 
-| Eigenschap | Beschrijving | Vereist |
+| Eigenschap | Beschrijving | Verplicht |
 |:--- |:--- |:--- |
-| type | De eigenschap type van de bron van de Kopieer activiteit moet zijn ingesteld op: **AmazonMWSSource** | Ja |
-| query | Gebruik de aangepaste SQL-query om gegevens te lezen. Bijvoorbeeld: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | Nee (als ' Tablename ' in gegevensset is opgegeven) |
+| type | The type property of the copy activity source must be set to: **AmazonMWSSource** | Ja |
+| query | Use the custom SQL query to read data. Bijvoorbeeld: `"SELECT * FROM Orders where  Amazon_Order_Id = 'xx'"`. | No (if "tableName" in dataset is specified) |
 
 **Voorbeeld:**
 
@@ -156,9 +154,9 @@ Als u gegevens wilt kopiëren uit de web-service van Amazon Marketplace, stelt u
 ]
 ```
 
-## <a name="lookup-activity-properties"></a>Eigenschappen van opzoek activiteit
+## <a name="lookup-activity-properties"></a>Lookup activity properties
 
-Controleer de [opzoek activiteit](control-flow-lookup-activity.md)voor meer informatie over de eigenschappen.
+To learn details about the properties, check [Lookup activity](control-flow-lookup-activity.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-Zie [ondersteunde gegevens archieven](copy-activity-overview.md#supported-data-stores-and-formats)voor een lijst met gegevens archieven die worden ondersteund als bronnen en sinks op basis van de Kopieer activiteit in azure Data Factory.
+For a list of data stores supported as sources and sinks by the copy activity in Azure Data Factory, see [supported data stores](copy-activity-overview.md#supported-data-stores-and-formats).

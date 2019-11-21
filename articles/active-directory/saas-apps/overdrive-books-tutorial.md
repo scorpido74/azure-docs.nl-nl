@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met Overdrive | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en Overdrive.
+title: 'Tutorial: Azure Active Directory integration with Overdrive | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Overdrive.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5a6d3c53206d917b5b87f26b7fb351bc5acf5937
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 391ae72a9e2bc78ed120cf4f5fdf844a6248566a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67095205"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233473"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Zelfstudie: Azure Active Directory-integratie met Overdrive
+# <a name="tutorial-azure-active-directory-integration-with-overdrive"></a>Tutorial: Azure Active Directory integration with Overdrive
 
-In deze zelfstudie leert u hoe u Overdrive integreren met Azure Active Directory (Azure AD).
-Overdrive integreren met Azure AD biedt u de volgende voordelen:
+In this tutorial, you learn how to integrate Overdrive with Azure Active Directory (Azure AD).
+Integrating Overdrive with Azure AD provides you with the following benefits:
 
-* U kunt beheren in Azure AD die toegang tot Overdrive heeft.
-* U kunt uw gebruikers worden automatisch aangemeld Overdrive (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* You can control in Azure AD who has access to Overdrive.
+* You can enable your users to be automatically signed-in to Overdrive (Single Sign-On) with their Azure AD accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,26 +36,26 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met Overdrive, moet u de volgende items:
+To configure Azure AD integration with Overdrive, you need the following items:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding overdrive ingeschakeld abonnement
+* Overdrive single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Overdrive ondersteunt **SP** gestart door SSO
+* Overdrive supports **SP** initiated SSO
 
-* Overdrive ondersteunt **Just In Time** inrichten van gebruikers
+* Overdrive supports **Just In Time** user provisioning
 
-## <a name="adding-overdrive-from-the-gallery"></a>Overdrive uit de galerie toe te voegen
+## <a name="adding-overdrive-from-the-gallery"></a>Adding Overdrive from the gallery
 
-Voor het configureren van de integratie van Overdrive in Azure AD, moet u Overdrive uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of Overdrive into Azure AD, you need to add Overdrive from the gallery to your list of managed SaaS apps.
 
-**Als u wilt toevoegen Overdrive uit de galerie, moet u de volgende stappen uitvoeren:**
+**To add Overdrive from the gallery, perform the following steps:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -67,31 +67,31 @@ Voor het configureren van de integratie van Overdrive in Azure AD, moet u Overdr
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **Overdrive**, selecteer **Overdrive** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. In the search box, type **Overdrive**, select **Overdrive** from result panel then click **Add** button to add the application.
 
-     ![Overdrive in de lijst met resultaten](common/search-new-app.png)
+     ![Overdrive in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met Overdrive op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in Overdrive tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with Overdrive based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in Overdrive needs to be established.
 
-Als u wilt configureren en testen van Azure AD eenmalige aanmelding met Overdrive, u nodig hebt voor de volgende bouwstenen:
+To configure and test Azure AD single sign-on with Overdrive, you need to complete the following building blocks:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding Overdrive](#configure-overdrive-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Configure Overdrive Single Sign-On](#configure-overdrive-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maak Overdrive testgebruiker](#create-overdrive-test-user)**  : als u wilt een equivalent van Britta Simon in Overdrive die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Create Overdrive test user](#create-overdrive-test-user)** - to have a counterpart of Britta Simon in Overdrive that is linked to the Azure AD representation of user.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met Overdrive, moet u de volgende stappen uitvoeren:
+To configure Azure AD single sign-on with Overdrive, perform the following steps:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **Overdrive** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **Overdrive** application integration page, select **Single sign-on**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -105,18 +105,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met Overdrive, moet u de
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![Overdrive domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![Overdrive Domain and URLs single sign-on information](common/sp-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `http://<subdomain>.libraryreserve.com`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [Overdrive Client ondersteuningsteam](https://help.overdrive.com/) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Contact [Overdrive Client support team](https://help.overdrive.com/) to get the value. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
+5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
-6. Op de **Overdrive instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. On the **Set up Overdrive** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Voor het configureren van Azure AD eenmalige aanmelding met Overdrive, moet u de
 
     c. Afmeldings-URL
 
-### <a name="configure-overdrive-single-sign-on"></a>Configureer Overdrive Single Sign-On
+### <a name="configure-overdrive-single-sign-on"></a>Configure Overdrive Single Sign-On
 
-Het configureren van eenmalige aanmelding op **Overdrive** zijde, moet u voor het verzenden van de gedownloade **federatieve metagegevens-XML** en toepassing van de gekopieerde URL's van Azure portal om te [Overdrive ondersteuningsteam](https://help.overdrive.com/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
+To configure single sign-on on **Overdrive** side, you need to send the downloaded **Federation Metadata XML** and appropriate copied URLs from Azure portal to [Overdrive support team](https://help.overdrive.com/). Het team stelt de instellingen zo in dat de verbinding tussen SAML en eenmalige aanmelding aan beide zijden goed is ingesteld.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken 
 
@@ -153,21 +153,21 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan Overdrive.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Overdrive.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **Overdrive**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **Overdrive**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **Overdrive**.
+2. In the applications list, select **Overdrive**.
 
-    ![De koppeling Overdrive in de lijst met toepassingen](common/all-applications.png)
+    ![The Overdrive link in the Applications list](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -181,25 +181,25 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-overdrive-test-user"></a>Overdrive testgebruiker maken
+### <a name="create-overdrive-test-user"></a>Create Overdrive test user
 
-In deze sectie wordt een gebruiker met de naam Britta Simon gemaakt in Overdrive. Overdrive biedt ondersteuning voor just-in-time-gebruikersinrichting, dat standaard is ingeschakeld. Er is geen actie-item voor u in deze sectie. Als een gebruiker nog niet in Overdrive bestaat, wordt een nieuw gemaakt nadat verificatie.
+In this section, a user called Britta Simon is created in Overdrive. Overdrive supports just-in-time user provisioning, which is enabled by default. Er is geen actie-item voor u in deze sectie. If a user doesn't already exist in Overdrive, a new one is created after authentication.
 
 >[!NOTE]
->U kunt alle andere OverDrive gebruiker-account maken van hulpprogramma's of API's geleverd door OverDrive aan inrichten AAD-gebruikersaccounts.
+>You can use any other OverDrive user account creation tools or APIs provided by OverDrive to provision Azure AD user accounts.
 >
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel Overdrive in het toegangsvenster, moet u worden automatisch aangemeld bij de Overdrive waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the Overdrive tile in the Access Panel, you should be automatically signed in to the Overdrive for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

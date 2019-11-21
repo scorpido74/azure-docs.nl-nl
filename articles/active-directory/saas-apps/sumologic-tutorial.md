@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met SumoLogic | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SumoLogic.
+title: 'Tutorial: Azure Active Directory integration with SumoLogic | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and SumoLogic.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07874988c97044ede59c18b8f85a425483679431
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7548d7d7b808472b3f5446fadfe800584f61b1df
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67089535"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233356"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Zelfstudie: Azure Active Directory-integratie met SumoLogic
+# <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>Tutorial: Azure Active Directory integration with SumoLogic
 
-In deze zelfstudie leert u hoe u SumoLogic integreren met Azure Active Directory (Azure AD).
-SumoLogic integreren met Azure AD biedt u de volgende voordelen:
+In this tutorial, you learn how to integrate SumoLogic with Azure Active Directory (Azure AD).
+Integrating SumoLogic with Azure AD provides you with the following benefits:
 
-* U kunt beheren in Azure AD die toegang tot SumoLogic heeft.
-* U kunt uw gebruikers worden automatisch aangemeld SumoLogic (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* You can control in Azure AD who has access to SumoLogic.
+* You can enable your users to be automatically signed-in to SumoLogic (Single Sign-On) with their Azure AD accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met SumoLogic, moet u de volgende items:
+To configure Azure AD integration with SumoLogic, you need the following items:
 
 * Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u [hier](https://azure.microsoft.com/pricing/free-trial/) de proefversie van één maand krijgen.
-* Eenmalige aanmelding SumoLogic ingeschakeld abonnement
+* SumoLogic single sign-on enabled subscription
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor SumoLogic **SP** gestart door SSO
+* SumoLogic supports **SP** initiated SSO
 
-## <a name="adding-sumologic-from-the-gallery"></a>SumoLogic uit de galerie toe te voegen
+## <a name="adding-sumologic-from-the-gallery"></a>Adding SumoLogic from the gallery
 
-Voor het configureren van de integratie van SumoLogic in Azure AD, moet u SumoLogic uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+To configure the integration of SumoLogic into Azure AD, you need to add SumoLogic from the gallery to your list of managed SaaS apps.
 
-**Als u wilt toevoegen SumoLogic uit de galerie, moet u de volgende stappen uitvoeren:**
+**To add SumoLogic from the gallery, perform the following steps:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van SumoLogic in Azure AD, moet u SumoLo
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **SumoLogic**, selecteer **SumoLogic** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. In the search box, type **SumoLogic**, select **SumoLogic** from result panel then click **Add** button to add the application.
 
-     ![SumoLogic in de lijst met resultaten](common/search-new-app.png)
+     ![SumoLogic in the results list](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met SumoLogic op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in SumoLogic tot stand worden gebracht.
+In this section, you configure and test Azure AD single sign-on with SumoLogic based on a test user called **Britta Simon**.
+For single sign-on to work, a link relationship between an Azure AD user and the related user in SumoLogic needs to be established.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met SumoLogic, moet u de volgende bouwstenen voltooien:
+To configure and test Azure AD single sign-on with SumoLogic, you need to complete the following building blocks:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding SumoLogic](#configure-sumologic-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Configure SumoLogic Single Sign-On](#configure-sumologic-single-sign-on)** - to configure the Single Sign-On settings on application side.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker SumoLogic](#create-sumologic-test-user)**  : als u wilt een equivalent van Britta Simon in SumoLogic die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Create SumoLogic test user](#create-sumologic-test-user)** - to have a counterpart of Britta Simon in SumoLogic that is linked to the Azure AD representation of user.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met SumoLogic, moet u de volgende stappen uitvoeren:
+To configure Azure AD single sign-on with SumoLogic, perform the following steps:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **SumoLogic** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. In the [Azure portal](https://portal.azure.com/), on the **SumoLogic** application integration page, select **Single sign-on**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,7 +103,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met SumoLogic, moet u de
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![SumoLogic domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![SumoLogic Domain and URLs single sign-on information](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenantname>.SumoLogic.com`
 
@@ -118,13 +118,13 @@ Voor het configureren van Azure AD eenmalige aanmelding met SumoLogic, moet u de
     | `https://<tenantname>.au.sumologic.com` |
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [SumoLogic Client ondersteuningsteam](https://www.sumologic.com/contact-us/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Contact [SumoLogic Client support team](https://www.sumologic.com/contact-us/) to get these values. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-6. Op de **SumoLogic instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. On the **Set up SumoLogic** section, copy the appropriate URL(s) as per your requirement.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -134,41 +134,41 @@ Voor het configureren van Azure AD eenmalige aanmelding met SumoLogic, moet u de
 
     c. Afmeldings-URL
 
-### <a name="configure-sumologic-single-sign-on"></a>SumoLogic voor eenmalige aanmelding configureren
+### <a name="configure-sumologic-single-sign-on"></a>Configure SumoLogic Single Sign-On
 
-1. In een ander browservenster aanmelden bij uw bedrijf SumoLogic site als beheerder.
+1. In a different web browser window, sign in to your SumoLogic company site as an administrator.
 
-1. Ga naar **beheren \> Security**.
+1. Go to **Manage \> Security**.
 
-    ![Manage](./media/sumologic-tutorial/ic778556.png "Manage")
+    ![Beheren](./media/sumologic-tutorial/ic778556.png "Beheer")
 
 1. Klik op **SAML**.
 
-    ![Globale beveiligingsinstellingen](./media/sumologic-tutorial/ic778557.png "globale beveiligingsinstellingen")
+    ![Global security settings](./media/sumologic-tutorial/ic778557.png "Global security settings")
 
-1. Uit de **selecteert u een configuratie of maak een nieuwe** Selecteer **Azure AD**, en klik vervolgens op **configureren**.
+1. From the **Select a configuration or create a new one** list, select **Azure AD**, and then click **Configure**.
 
-    ![Configureren van SAML 2.0](./media/sumologic-tutorial/ic778558.png "SAML 2.0 configureren")
+    ![Configure SAML 2.0](./media/sumologic-tutorial/ic778558.png "Configure SAML 2.0")
 
-1. Op de **configureren SAML 2.0** dialoogvenster, voer de volgende stappen uit:
+1. On the **Configure SAML 2.0** dialog, perform the following steps:
 
-    ![Configureren van SAML 2.0](./media/sumologic-tutorial/ic778559.png "SAML 2.0 configureren")
+    ![Configure SAML 2.0](./media/sumologic-tutorial/ic778559.png "Configure SAML 2.0")
 
-    a. In de **configuratienaam** tekstvak, type **Azure AD**.
+    a. In the **Configuration Name** textbox, type **Azure AD**.
 
-    b. Selecteer **foutopsporingsmodus**.
+    b. Select **Debug Mode**.
 
-    c. In de **verlener** tekstvak, plak de waarde van **Azure AD-id**, die u hebt gekopieerd vanuit Azure portal.
+    c. In the **Issuer** textbox, paste the value of **Azure AD Identifier**, which you have copied from Azure portal.
 
-    d. In de **Authn aanvraag-URL** tekstvak, plak de waarde van **aanmeldings-URL**, die u hebt gekopieerd vanuit Azure portal.
+    d. In the **Authn Request URL** textbox, paste the value of **Login URL**, which you have copied from Azure portal.
 
-    e. Open uw base-64 gecodeerde certificaat in Kladblok, Kopieer de inhoud ervan in het Klembord en plakt u het gehele certificaat in **X.509-certificaat** tekstvak.
+    e. Open your base-64 encoded certificate in notepad, copy the content of it into your clipboard, and then paste the entire Certificate into **X.509 Certificate** textbox.
 
-    f. Als **e kenmerk**, selecteer **gebruik SAML onderwerp**.  
+    f. As **Email Attribute**, select **Use SAML subject**.  
 
-    g. Selecteer **SP geïnitieerde configuratie van aanmelding**.
+    g. Select **SP initiated Login Configuration**.
 
-    h. In de **aanmelding pad** tekstvak, type **Azure** en klikt u op **opslaan**.
+    h. In the **Login Path** textbox, type **Azure** and click **Save**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
@@ -193,21 +193,21 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Create**.
+    d. Klik op **Maken**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan SumoLogic.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to SumoLogic.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **SumoLogic**.
+1. In the Azure portal, select **Enterprise Applications**, select **All applications**, then select **SumoLogic**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **SumoLogic**.
+2. In the applications list, select **SumoLogic**.
 
-    ![De koppeling SumoLogic in de lijst met toepassingen](common/all-applications.png)
+    ![The SumoLogic link in the Applications list](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -221,48 +221,48 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-sumologic-test-user"></a>SumoLogic testgebruiker maken
+### <a name="create-sumologic-test-user"></a>Create SumoLogic test user
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden bij SumoLogic, moeten ze worden ingericht op SumoLogic. In het geval van SumoLogic is inrichten een handmatige taak.
+In order to enable Azure AD users to sign in to SumoLogic, they must be provisioned to SumoLogic. In the case of SumoLogic, provisioning is a manual task.
 
 **Als u een gebruikersaccount wilt inrichten, voert u de volgende stappen uit:**
 
-1. Aanmelden bij uw **SumoLogic** tenant.
+1. Sign in to your **SumoLogic** tenant.
 
 1. Ga naar **Beheren \> Gebruikers**.
 
     ![Gebruikers](./media/sumologic-tutorial/ic778561.png "Gebruikers")
 
-1. Klik op **Toevoegen**.
+1. Klik op **Add**.
 
     ![Gebruikers](./media/sumologic-tutorial/ic778562.png "Gebruikers")
 
-1. Op de **nieuwe gebruiker** dialoogvenster, voer de volgende stappen uit:
+1. On the **New User** dialog, perform the following steps:
 
     ![New User](./media/sumologic-tutorial/ic778563.png "New User") 
 
-    a. Typ de verwante gegevens van de Azure AD-account dat u wilt inrichten in de **voornaam**, **achternaam**, en **e** tekstvakken.
+    a. Type the related information of the Azure AD account you want to provision into the **First Name**, **Last Name**, and **Email** textboxes.
   
-    b. Selecteer een rol.
+    b. Select a role.
   
-    c. Als **Status**, selecteer **Active**.
+    c. As **Status**, select **Active**.
   
     d. Klik op **Opslaan**.
 
 > [!NOTE]
-> U kunt alle andere SumoLogic gebruiker-account maken van hulpprogramma's of API's geleverd door SumoLogic aan inrichten AAD-gebruikersaccounts.
+> You can use any other SumoLogic user account creation tools or APIs provided by SumoLogic to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SumoLogic in het toegangsvenster, moet u worden automatisch aangemeld bij de SumoLogic waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+When you click the SumoLogic tile in the Access Panel, you should be automatically signed in to the SumoLogic for which you set up SSO. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

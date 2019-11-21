@@ -1,22 +1,16 @@
 ---
-title: Een functie in Azure maken die wordt geactiveerd door Blob Storage | Microsoft Docs
+title: Create a function in Azure triggered by Blob storage
 description: Gebruik Azure Functions voor het maken van een functie zonder server die wordt aangeroepen door items die aan Azure Blob Storage zijn toegevoegd.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 10/01/2018
-ms.author: glenga
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: b8855fa061e07ec77482ca960971db8252608b51
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: be8d7abc6d7bb583516ca75f316edd18965ac395
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096881"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227148"
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Een door Azure Blob Storage geactiveerde functie maken
 
@@ -47,7 +41,7 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
 1. Kies **Meer sjablonen** en vervolgens **Voltooien en sjablonen weergeven**.
 
-    ![De Quick Start-pagina 'Meer sjablonen kiezen' van Functions](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
+    ![De Quick Start-pagina ‘Meer sjablonen kiezen’ van Functions](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
 1. Typ `blob` in het zoekveld en kies vervolgens de sjabloon **Wachtrijtrigger**.
 
@@ -59,9 +53,9 @@ Vervolgens maakt u een functie in de nieuwe functie-app.
 
     ![Maak de door Blob Storage geactiveerde functie.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
 
-    | Instelling | Voorgestelde waarde | Description |
+    | Instelling | Voorgestelde waarde | Beschrijving |
     |---|---|---|
-    | **Name** | Uniek in uw functie-app | Naam van deze door Blob geactiveerde functie. |
+    | **Naam** | Uniek in uw functie-app | Naam van deze door Blob geactiveerde functie. |
     | **Pad**   | samples-workitems/{name}    | Locatie in Blob Storage die wordt bewaakt. De bestandsnaam van de blob wordt doorgegeven in de binding als de _naam_-parameter.  |
     | **Opslagaccountverbinding** | AzureWebJobsStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |
 

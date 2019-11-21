@@ -1,46 +1,46 @@
 ---
-title: 'Python-model maken: module verwijzing'
+title: 'Create Python Model: Module Reference'
 titleSuffix: Azure Machine Learning
-description: Leer hoe u het python-model model maken in Azure Machine Learning kunt gebruiken om een aangepaste module voor model lering of gegevens verwerking te maken.
+description: Learn how to use the Create Python Model model in Azure Machine Learning to create custom modeling or data processing module.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 05/06/2019
-ms.openlocfilehash: 33e15055958ac99f2aa9eb160f9e5cf3c5b0cd41
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/19/2019
+ms.openlocfilehash: 0c1a4f33da7e1f39951d641ed1d563c46fb664ca
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493799"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232655"
 ---
 # <a name="create-python-model"></a>Python-model maken
 
-In dit artikel wordt beschreven hoe u de module **python-model maken** gebruikt voor het maken van een niet-traind model van een python-script. 
+This article describes a module in Azure Machine Learning designer (preview).
 
-U kunt het model baseren op alle informatie die is opgenomen in een python-pakket in de Azure Machine Learning Designer-omgeving. 
+Learn how to use the **Create Python Model** module to create an untrained model from a Python script. You can base the model on any learner that is included in a Python package in the Azure Machine Learning designer environment. 
 
-Nadat u het model hebt gemaakt, kunt u [Train model](train-model.md) gebruiken om het model op een gegevensset te trainen, zoals elke andere informatieer in azure machine learning. Het getrainde model kan worden door gegeven aan het [score model](score-model.md) voor het gebruik van het model voor het maken van voor spellingen. Het getrainde model kan vervolgens worden opgeslagen en de Score werk stroom kan worden gepubliceerd als een webservice.
+After you create the model, you can use [Train Model](train-model.md) to train the model on a dataset, like any other learner in Azure Machine Learning. The trained model can be passed to [Score Model](score-model.md) to use the model to make predictions. The trained model can then be saved, and the scoring workflow can be published as a web service.
 
 > [!WARNING]
-> Het is momenteel niet mogelijk om de gescoorde resultaten van een python-model door te geven om het [model te evalueren](evaluate-model.md). Als u een model moet evalueren, kunt u aangepaste python-scripts schrijven en deze uitvoeren met behulp van de script module voor het [uitvoeren van python](execute-python-script.md) .  
+> Currently it is not possible to pass the scored results of a Python model to [Evaluate Model](evaluate-model.md). If you need to evaluate a model, you can write custom Python script and run it using the [Execute Python Script](execute-python-script.md) module.  
 
 
-## <a name="how-to-configure-create-python-model"></a>Het maken van een python-model configureren
+## <a name="how-to-configure-create-python-model"></a>How to configure Create Python Model
 
-Het gebruik van deze module vereist tussenliggende of deskundige kennis van python. De module ondersteunt het gebruik van alle informatie die is opgenomen in de Python-pakketten die al in Azure Machine Learning zijn geïnstalleerd. Zie de lijst met vooraf geïnstalleerde Python-pakketten in een [python-script uitvoeren](execute-python-script.md).
+Use of this module requires intermediate or expert knowledge of Python. The module supports use of any learner that is included in the Python packages already installed in Azure Machine Learning. See pre-installed Python package list in [Execute Python Script](execute-python-script.md).
   
 
-In dit artikel wordt uitgelegd hoe u het **python-model maken** gebruikt met een eenvoudige pijp lijn. Hieronder ziet u de grafiek van de pijp lijn.
+This article will show how to use the **Create Python Model** with a simple pipeline. Below is the graph of the pipeline.
 
-![Create-python-model](./media/module/aml-create-python-model.png)
+![create-python-model](./media/module/aml-create-python-model.png)
 
-1.  Klik op **python-model maken**, bewerk het script om uw model of gegevens beheer proces te implementeren. U kunt het model baseren op een informatieer die deel uitmaakt van een python-pakket in de Azure Machine Learning omgeving.
+1.  Click **Create Python Model**, edit the script to implement your modeling or data management process. You can base the model on any learner that is included in a Python package in the Azure Machine Learning environment.
 
 
-    Hieronder ziet u een voor beeld van een Naive Bayes-classificatie met twee klassen door gebruik te maken van het populaire *sklearn* -pakket.
+    Below is a sample code of two-class Naive Bayes classifier by using the popular *sklearn* package.
 
 ```Python
 
@@ -75,11 +75,11 @@ class AzureMLModel:
 ```
 
 
-2. Verbind de module **python-model maken** die u zojuist hebt gemaakt in een **Train model** en- **score model**
+2. Connect the **Create Python Model** module you just created to a **Train Model** and  **Score Model**
 
-3. Als u het model wilt evalueren, voegt u een [python-script uitvoeren](execute-python-script.md) toe en bewerkt u het python-script om de evaluatie uit te voeren.
+3. If you need to evaluate the model, add a [Execute Python Script](execute-python-script.md) and edit the Python script to implement evaluation.
 
-Hieronder ziet u een voor beeld van een evaluatie code.
+Below is sample evaluation code.
 
 ```Python
 

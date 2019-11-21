@@ -1,20 +1,16 @@
 ---
 title: Handmatig niet door HTTP geactiveerde Azure-functies uitvoeren
 description: Een HTTP-aanvraag gebruiken om niet door HTTP geactiveerde Azure-functies uit te voeren
-services: functions
-keywords: ''
 author: craigshoemaker
-manager: gwallace
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 12/12/2018
 ms.author: cshoe
-ms.openlocfilehash: cfebe5c783018cfab51f384cce578e43383c3905
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: 8198ff6579aff839ff9aacb729e2f3f8d3472fae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67479830"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230477"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Handmatig een niet door HTTP geactiveerde functie uitvoeren
 
@@ -30,9 +26,9 @@ Als u een niet door HTTP geactiveerde functie wilt uitvoeren, moet u een manier 
 
 ![De aanvraaglocatie definiëren: hostnaam + mappad + functienaam](./media/functions-manually-run-non-http/azure-functions-admin-url-anatomy.png)
 
-- **Hostnaam:** De openbare locatie van de functie-app die bestaat uit de naam van de functie-app plus *azurewebsites.net*van uw aangepast domein.
-- **Mappad:** Als u niet door HTTP geactiveerde functies wilt openen via een HTTP-aanvraag, moet u de aanvraag verzenden via de mappen *admin/functions*.
-- **Functienaam:** De naam van de functie die u wilt uitvoeren.
+- **Host name:** The function app's public location that is made up from the function app's name plus *azurewebsites.net* or your custom domain.
+- **Folder path:** To access non HTTP-triggered functions via an HTTP request, you have to send the request through the folders *admin/functions*.
+- **Function name:** The name of the function you want to run.
 
 Gebruik de aanvraaglocatie in Postman in combinatie met de hoofdsleutel van de functie in de aanvraag voor Azure om de functie uit te voeren.
 
@@ -45,7 +41,7 @@ Ga naar de functie in de Azure-portal en klik op **Beheren** en zoek de sectie *
 
 ![Hoofdsleutel vanaf scherm Functiebeheer kopiëren](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
 
-Nadat u de hoofdsleutel hebt gekopieerd, klikt u op de functienaam om terug te gaan naar het venster met het codebestand. Klik vervolgens op het tabblad **Logboeken**. Hier zijn de berichten van de functie gelogd als u de functie handmatig in Postman uitvoert.
+Nadat u de hoofdsleutel hebt gekopieerd, klikt u op de functienaam om terug te gaan naar het venster met het codebestand. Next, click on the **Logs** tab. You'll see messages from the function logged here when you manually run the function from Postman.
 
 > [!CAUTION]  
 > Vanwege verhoogde machtigingen in de functie-app die door de hoofdsleutel zijn verleend, dient u deze sleutel niet te delen met derden of in een toepassing te distribueren.

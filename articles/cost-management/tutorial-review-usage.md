@@ -7,15 +7,15 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/20/2019
 ms.topic: tutorial
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 2b701e618bdcbd50709360c55cfb9ceb68781ebc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: 41abf9d0675e7ea620a15656f97fcaed4fd0ff66
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65969097"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229788"
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
@@ -34,7 +34,7 @@ In deze zelfstudie leert u het volgende:
 > * Waarschuwingen maken voor ongebruikelijke uitgaven of te hoge uitgaven
 > * Gegevens exporteren
 
-Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) voordat u begint.
+Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -89,7 +89,7 @@ Bekijk de id's van de VM-exemplaren door te klikken op het plusteken naast **Lis
 
 Zie [Optimizing VM Size in Cloudyn](https://youtu.be/1xaZBNmV704) als u een zelfstudievideo wilt bekijken over het detecteren van inefficiënt gebruik.
 
-Azure Cost Management biedt ook aanbevelingen over kostenbesparingen voor Azure-services. Zie [Zelfstudie: kosten optimaliseren op basis van aanbevelingen](tutorial-acm-opt-recommendations.md) voor meer informatie.
+Azure Cost Management biedt ook aanbevelingen over kostenbesparingen voor Azure-services. Zie [Zelfstudie: kosten optimaliseren met behulp van aanbevelingen](tutorial-acm-opt-recommendations.md) voor meer informatie.
 
 ## <a name="create-alerts-for-unusual-spending"></a>Waarschuwingen maken voor ongebruikelijke uitgaven
 
@@ -101,7 +101,7 @@ In dit voorbeeld wordt het rapport **Actual Cost Over Time** (Werkelijke kosten 
 2. Stel **Groups** in op **Service** en stel **Filter on the service** in op **Azure/VM**.
 3. Selecteer rechtsboven in het rapport de optie **Actions** en selecteer **Schedule report**.
 4. Als u zelf op vaste tijden een e-mail met het rapport wilt ontvangen, selecteert u het tabblad **Scheduling** in het dialoogvenster **Save or Schedule this**. Selecteer **Send via email**. Alle labels, groepen en filters die u gebruikt, zijn opgenomen het rapport dat u per e-mail wordt toegezonden.
-5. Selecteer het tabblad **Threshold** en selecteer **Actual Cost vs. Threshold**.
+5. Select the **Threshold** tab and then select  **Actual Cost vs. Threshold**.
    1. In het vak voor de drempelwaarde **Red alert** voert u 10000 in.
    2. In het vak voor de drempelwaarde **Yellow alert** voert u 9000 in.
    3. In het vak **Number of consecutive alerts** voert u het aantal opeenvolgende te ontvangen waarschuwingen in. Wanneer u het totaal aantal waarschuwingen hebt ontvangen dat u hebt opgegeven, worden er geen extra waarschuwingen meer verzonden.
@@ -109,7 +109,7 @@ In dit voorbeeld wordt het rapport **Actual Cost Over Time** (Werkelijke kosten 
 
 ![Voorbeeld met rode en gele waarschuwingen op basis van uitgavedrempelwaarden](./media/tutorial-review-usage/schedule-alert01.png)
 
-U kunt ook de drempeloptie **Cost Percentage vs. Budget** kiezen om waarschuwingen te maken. Hiermee kunt u de drempels opgeven als percentage van uw budget in plaats van bedragen.
+You can also choose the **Cost Percentage vs. Budget** threshold metric to create alerts. Hiermee kunt u de drempels opgeven als percentage van uw budget in plaats van bedragen.
 
 ## <a name="export-data"></a>Gegevens exporteren
 
@@ -117,7 +117,7 @@ U kunt vanuit elk rapport gegevens exporteren op dezelfde manier waarop u waarsc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Gebruiks- en kostentrends bijhouden

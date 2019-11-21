@@ -1,35 +1,35 @@
 ---
-title: Sjabloon functies-implementatie
-description: Hierin worden de functies beschreven die u kunt gebruiken in een Azure Resource Manager sjabloon om implementatie gegevens op te halen.
+title: Template functions - deployment
+description: Describes the functions to use in an Azure Resource Manager template to retrieve deployment information.
 ms.topic: conceptual
-ms.date: 09/13/2019
-ms.openlocfilehash: 17caf78fb77e330685bb45ab03aaeed611900ba0
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/19/2019
+ms.openlocfilehash: a255cea128241465788f21013eb0522a29f5bd9e
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149634"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230240"
 ---
-# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Implementatie functies voor Azure Resource Manager sjablonen 
+# <a name="deployment-functions-for-azure-resource-manager-templates"></a>Deployment functions for Azure Resource Manager templates 
 
-Resource Manager biedt de volgende functies voor het ophalen van waarden uit secties van de sjabloon en waarden die betrekking hebben op de implementatie:
+Resource Manager provides the following functions for getting values from sections of the template and values related to the deployment:
 
-* [inhoudsdistributiepad](#deployment)
+* [deployment](#deployment)
+* [environment](#environment)
 * [parameters](#parameters)
-* [variabelen](#variables)
+* [variables](#variables)
 
-Zie [resource functies](resource-group-template-functions-resource.md)om waarden van resources, resource groepen of abonnementen op te halen.
-
-<a id="deployment" />
+To get values from resources, resource groups, or subscriptions, see [Resource functions](resource-group-template-functions-resource.md).
 
 ## <a name="deployment"></a>implementatie
+
 `deployment()`
 
-Retourneert informatie over de huidige implementatie bewerking.
+Returns information about the current deployment operation.
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Return value
 
-Deze functie retourneert het object dat tijdens de implementatie wordt door gegeven. De eigenschappen in het geretourneerde object wijken af van de vraag of het implementatie object wordt door gegeven als een koppeling of als een regel object. Wanneer het implementatie object in-line wordt door gegeven, bijvoorbeeld wanneer u de para meter **-TemplateFile** gebruikt in azure PowerShell om naar een lokaal bestand te verwijzen, heeft het geretourneerde object de volgende indeling:
+This function returns the object that is passed during deployment. The properties in the returned object differ based on whether the deployment object is passed as a link or as an in-line object. When the deployment object is passed in-line, such as when using the **-TemplateFile** parameter in Azure PowerShell to point to a local file, the returned object has the following format:
 
 ```json
 {
@@ -51,7 +51,7 @@ Deze functie retourneert het object dat tijdens de implementatie wordt door gege
 }
 ```
 
-Wanneer het object als een koppeling wordt door gegeven, bijvoorbeeld wanneer de para meter **-TemplateUri** wordt gebruikt om naar een extern object te verwijzen, wordt het object geretourneerd met de volgende indeling: 
+When the object is passed as a link, such as when using the **-TemplateUri** parameter to point to a remote object, the object is returned in the following format: 
 
 ```json
 {
@@ -75,11 +75,11 @@ Wanneer het object als een koppeling wordt door gegeven, bijvoorbeeld wanneer de
 }
 ```
 
-Wanneer u [implementeert in een Azure-abonnement](deploy-to-subscription.md)in plaats van een resource groep, bevat het retour object een `location` eigenschap. De locatie-eigenschap wordt opgenomen bij het implementeren van ofwel een lokale sjabloon of een externe sjabloon.
+When you [deploy to an Azure subscription](deploy-to-subscription.md), instead of a resource group, the return object includes a `location` property. The location property is included when deploying either a local template or an external template.
 
 ### <a name="remarks"></a>Opmerkingen
 
-U kunt implementatie () gebruiken om een koppeling naar een andere sjabloon te maken op basis van de URI van de bovenliggende sjabloon.
+You can use deployment() to link to another template based on the URI of the parent template.
 
 ```json
 "variables": {  
@@ -87,11 +87,11 @@ U kunt implementatie () gebruiken om een koppeling naar een andere sjabloon te m
 }
 ```  
 
-Als u een sjabloon opnieuw implementeert vanuit de implementatie geschiedenis in de portal, wordt de sjabloon geïmplementeerd als een lokaal bestand. De eigenschap `templateLink` wordt niet geretourneerd in de implementatie functie. Als uw sjabloon afhankelijk is van `templateLink` om een koppeling naar een andere sjabloon te maken, moet u de portal niet meer gebruiken om opnieuw te implementeren. Gebruik in plaats daarvan de opdrachten die u hebt gebruikt om de sjabloon oorspronkelijk te implementeren.
+If you redeploy a template from the deployment history in the portal, the template is deployed as a local file. The `templateLink` property isn't returned in the deployment function. If your template relies on `templateLink` to construct a link to another template, don't use the portal to redeploy. Instead, use the commands you used to originally deploy the template.
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) retourneert het implementatie object:
+The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deployment.json) returns the deployment object:
 
 ```json
 {
@@ -107,7 +107,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-In het voor gaande voor beeld wordt het volgende object geretourneerd:
+The preceding example returns the following object:
 
 ```json
 {
@@ -131,28 +131,125 @@ In het voor gaande voor beeld wordt het volgende object geretourneerd:
 }
 ```
 
-Zie [implementatie functie voor abonnementen](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json)voor een sjabloon op abonnements niveau die gebruikmaakt van de implementatie functie. Het wordt geïmplementeerd met een `az deployment create`-of `New-AzDeployment`-opdracht.
+For a subscription-level template that uses the deployment function, see [subscription deployment function](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/deploymentsubscription.json). It's deployed with either `az deployment create` or `New-AzDeployment` commands.
 
-<a id="parameters" />
+## <a name="environment"></a>environment
+
+`environment()`
+
+Returns information about the Azure environment used for deployment.
+
+### <a name="return-value"></a>Return value
+
+This function returns properties for the current Azure environment.
+
+```json
+{
+  "name": "",
+  "gallery": "",
+  "graph": "",
+  "portal": "",
+  "graphAudience": "",
+  "activeDirectoryDataLake": "",
+  "batch": "",
+  "media": "",
+  "sqlManagement": "",
+  "vmImageAliasDoc": "",
+  "resourceManager": "",
+  "authentication": {
+    "loginEndpoint": "",
+    "audiences": [
+      "",
+      ""
+    ],
+    "tenant": "",
+    "identityProvider": ""
+  },
+  "suffixes": {
+    "acrLoginServer": "",
+    "azureDatalakeAnalyticsCatalogAndJob": "",
+    "azureDatalakeStoreFileSystem": "",
+    "azureFrontDoorEndpointSuffix": "",
+    "keyvaultDns": "",
+    "sqlServerHostname": "",
+    "storage": ""
+  }
+}
+```
+
+### <a name="example"></a>Voorbeeld
+
+The following example template returns the environment object.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [],
+    "outputs": {
+        "environmentOutput": {
+            "value": "[environment()]",
+            "type" : "object"
+        }
+    }
+}
+```
+
+The preceding example returns the following object when deployed to global Azure:
+
+```json
+{
+  "name": "AzureCloud",
+  "gallery": "https://gallery.azure.com/",
+  "graph": "https://graph.windows.net/",
+  "portal": "https://portal.azure.com",
+  "graphAudience": "https://graph.windows.net/",
+  "activeDirectoryDataLake": "https://datalake.azure.net/",
+  "batch": "https://batch.core.windows.net/",
+  "media": "https://rest.media.azure.net",
+  "sqlManagement": "https://management.core.windows.net:8443/",
+  "vmImageAliasDoc": "https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json",
+  "resourceManager": "https://management.azure.com/",
+  "authentication": {
+    "loginEndpoint": "https://login.windows.net/",
+    "audiences": [
+      "https://management.core.windows.net/",
+      "https://management.azure.com/"
+    ],
+    "tenant": "common",
+    "identityProvider": "AAD"
+  },
+  "suffixes": {
+    "acrLoginServer": ".azurecr.io",
+    "azureDatalakeAnalyticsCatalogAndJob": "azuredatalakeanalytics.net",
+    "azureDatalakeStoreFileSystem": "azuredatalakestore.net",
+    "azureFrontDoorEndpointSuffix": "azurefd.net",
+    "keyvaultDns": ".vault.azure.net",
+    "sqlServerHostname": ".database.windows.net",
+    "storage": "core.windows.net"
+  }
+}
+```
 
 ## <a name="parameters"></a>parameters
+
 `parameters(parameterName)`
 
-Retourneert een parameter waarde. De opgegeven parameter naam moet worden gedefinieerd in de sectie para meters van de sjabloon.
+Returns a parameter value. The specified parameter name must be defined in the parameters section of the template.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ja |tekenreeks |De naam van de para meter die moet worden geretourneerd. |
+| parameterName |Ja |string |The name of the parameter to return. |
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Return value
 
-De waarde van de opgegeven para meter.
+The value of the specified parameter.
 
 ### <a name="remarks"></a>Opmerkingen
 
-Normaal gesp roken gebruikt u para meters om resource waarden in te stellen. In het volgende voor beeld wordt de naam van de website ingesteld op de parameter waarde die tijdens de implementatie wordt door gegeven.
+Typically, you use parameters to set resource values. The following example sets the name of web site to the parameter value passed in during deployment.
 
 ```json
 "parameters": { 
@@ -172,7 +269,7 @@ Normaal gesp roken gebruikt u para meters om resource waarden in te stellen. In 
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) toont een vereenvoudigd gebruik van de functie para meters.
+The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/parameters.json) shows a simplified use of the parameters function.
 
 ```json
 {
@@ -227,38 +324,37 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+The output from the preceding example with the default values is:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
-| stringOutput | Tekenreeks | Optie 1 |
+| stringOutput | Tekenreeks | option 1 |
 | intOutput | Int | 1 |
-| objectOutput | Object | {"een": "a", "twee": "b"} |
+| objectOutput | Object | {"one": "a", "two": "b"} |
 | arrayOutput | Matrix | [1, 2, 3] |
-| crossOutput | Tekenreeks | Optie 1 |
+| crossOutput | Tekenreeks | option 1 |
 
-Zie [para meters in azure Resource Manager sjabloon](template-parameters.md)voor meer informatie over het gebruik van para meters.
+For more information about using parameters, see [Parameters in Azure Resource Manager template](template-parameters.md).
 
-<a id="variables" />
+## <a name="variables"></a>variables
 
-## <a name="variables"></a>variabelen
 `variables(variableName)`
 
-Retourneert de waarde van variable. De opgegeven naam van de variabele moet worden gedefinieerd in de sectie Varia bles van de sjabloon.
+Returns the value of variable. The specified variable name must be defined in the variables section of the template.
 
 ### <a name="parameters"></a>Parameters
 
-| Parameter | Vereist | Type | Beschrijving |
+| Parameter | Verplicht | Type | Beschrijving |
 |:--- |:--- |:--- |:--- |
-| variableName |Ja |Tekenreeks |De naam van de variabele die moet worden geretourneerd. |
+| variableName |Ja |Tekenreeks |The name of the variable to return. |
 
-### <a name="return-value"></a>Retourwaarde
+### <a name="return-value"></a>Return value
 
-De waarde van de opgegeven variabele.
+The value of the specified variable.
 
 ### <a name="remarks"></a>Opmerkingen
 
-Normaal gesp roken gebruikt u variabelen om uw sjabloon te vereenvoudigen door complexere waarden slechts één keer te maken. In het volgende voor beeld wordt een unieke naam voor een opslag account gemaakt.
+Typically, you use variables to simplify your template by constructing complex values only once. The following example constructs a unique name for a storage account.
 
 ```json
 "variables": {
@@ -282,7 +378,7 @@ Normaal gesp roken gebruikt u variabelen om uw sjabloon te vereenvoudigen door c
 
 ### <a name="example"></a>Voorbeeld
 
-De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) retourneert verschillende variabele waarden.
+The following [example template](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/variables.json) returns different variable values.
 
 ```json
 {
@@ -320,7 +416,7 @@ De volgende [voorbeeld sjabloon](https://github.com/Azure/azure-docs-json-sample
 }
 ```
 
-De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
+The output from the preceding example with the default values is:
 
 | Naam | Type | Waarde |
 | ---- | ---- | ----- |
@@ -329,11 +425,11 @@ De uitvoer uit het vorige voorbeeld met de standaardwaarden is:
 | exampleOutput3 | Tekenreeks | myVariable |
 | exampleOutput4 |  Object | {"property1": "value1", "property2": "value2"} |
 
-Zie [variabelen in azure Resource Manager sjabloon](template-variables.md)voor meer informatie over het gebruik van variabelen.
+For more information about using variables, see [Variables in Azure Resource Manager template](template-variables.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie voor een beschrijving van de secties in een Azure Resource Manager-sjabloon, [Authoring Azure Resource Manager-sjablonen](resource-group-authoring-templates.md).
-* Zie [gekoppelde sjablonen gebruiken met Azure Resource Manager](resource-group-linked-templates.md)om meerdere sjablonen samen te voegen.
-* Op een opgegeven aantal keren herhalen bij het maken van een type resource, Zie [meerdere exemplaren van resources maken in Azure Resource Manager](resource-group-create-multiple.md).
-* Zie voor meer informatie over het implementeren van de sjabloon die u hebt gemaakt, [een toepassing implementeren met Azure Resource Manager-sjabloon](resource-group-template-deploy.md).
+* For a description of the sections in an Azure Resource Manager template, see [Authoring Azure Resource Manager templates](resource-group-authoring-templates.md).
+* To merge several templates, see [Using linked templates with Azure Resource Manager](resource-group-linked-templates.md).
+* To iterate a specified number of times when creating a type of resource, see [Create multiple instances of resources in Azure Resource Manager](resource-group-create-multiple.md).
+* To see how to deploy the template you've created, see [Deploy an application with Azure Resource Manager template](resource-group-template-deploy.md).
 
