@@ -355,7 +355,7 @@
                   href: ./spark/apache-spark-jupyter-notebook-kernels.md
                 - name: Externe pakketten gebruiken met Jupyter met behulp van magic-pakket voor cellen
                   href: ./spark/apache-spark-jupyter-notebook-use-external-packages.md
-                - name: Externe pakketten gebruiken met Jupyter met behulp van scriptacties
+                - name: Een Python-omgeving veilig beheren in Azure HDInsight met scriptactie
                   href: ./spark/apache-spark-python-package-installation.md
                 - name: Apache Zeppelin-notitieblokken gebruiken
                   href: ./spark/apache-spark-zeppelin-notebook.md

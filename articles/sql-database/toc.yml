@@ -112,14 +112,6 @@
               items:
                 - name: Aan de slag met het controleren van SQL Database
                   href: sql-database-auditing.md
-        - name: Netwerkbeveiliging
-          items:
-            - name: Eindpunten van virtueel netwerk
-              href: sql-database-vnet-service-endpoint-rule-overview.md
-            - name: Eindpunten van virtueel netwerk - PowerShell
-              href: sql-database-vnet-service-endpoint-rule-powershell.md
-            - name: Private Link
-              href: sql-database-private-endpoint-overview.md
         - name: Beveiligingsbeheer
           items:
             - name: Advanced Data Security
@@ -136,14 +128,22 @@
               href: sql-database-feature-restrictions.md
         - name: Beveiliging van individuele databases
           items:
+            - name: Netwerktoegangsbeheer
+              href: sql-database-networkaccess-overview.md
+            - name: Op IP gebaseerde firewall
+              href: sql-database-firewall-configure.md
+            - name: vNet-firewallregels
+              items:
+                - name: vNet-eindpunten
+                  href: sql-database-vnet-service-endpoint-rule-overview.md
+                - name: vNet-eindpunten - PowerShell
+                  href: sql-database-vnet-service-endpoint-rule-powershell.md
+            - name: Private Link
+              href: sql-database-private-endpoint-overview.md
             - name: Auditlogboek controleren
               href: sql-database-audit-log-format.md
             - name: Voorwaardelijke toegang
               href: sql-database-conditional-access.md
-            - name: IP-firewallregels op serverniveau
-              items:
-                - name: Maken en beheren
-                  href: sql-database-firewall-configure.md
         - name: Beveiliging van een beheerd exemplaar
           items:
             - name: Openbare eindpunten beveiligen

@@ -23,6 +23,8 @@
       href: tutorial-configure-password-hash-sync.md
     - name: Een geavanceerd beheerd domein maken
       href: tutorial-create-instance-advanced.md
+    - name: Forest-vertrouwen maken (preview)
+      href: tutorial-create-forest-trust.md
 - name: Voorbeelden
   items:
     - name: Een beheerd domein maken met Azure PowerShell
@@ -33,6 +35,12 @@
       href: administration-concepts.md
     - name: Veel voorkomende implementatiescenario's
       href: scenarios.md
+    - name: Forests en vertrouwensrelaties
+      items:
+        - name: Resourceforests
+          href: concepts-resource-forest.md
+        - name: Forestvertrouwensrelaties
+          href: concepts-forest-trust.md
     - name: Hoe Azure AD DS-synchronisatie werkt
       href: synchronization.md
     - name: Hoe synchronisatie van wachtwoord-hashes werkt

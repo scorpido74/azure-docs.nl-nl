@@ -443,6 +443,12 @@
           href: ./partner-center-portal/account-migration-from-cpp-to-pc.md
     - name: Een nieuwe aanbieding maken
       items:
+        - name: Azure-toepassingsaanbiedingen
+          items:
+            - name: Een Azure-toepassingsaanbieding maken
+              href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Beoordelingsfeedback verwerken
+              href: ./partner-center-portal/azure-apps-review-feedback.md
         - name: Dynamics 365-aanbiedingen
           items:
             - name: Een Dynamics 365 for Customer Engagement- en PowerApps-aanbieding maken

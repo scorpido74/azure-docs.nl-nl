@@ -3,12 +3,12 @@ title: Blauwdrukvoorbeeld IRS 1075 - Overzicht
 description: Overzicht van het blauwdrukvoorbeeld IRS 1075. Met dit blauwdrukvoorbeeld kunnen klanten specifieke beheeropties van IRS 1075 bekijken.
 ms.date: 11/19/2019
 ms.topic: sample
-ms.openlocfilehash: f713f6a59f439b2d5cb9df0860d16ff761304b4b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1d2fdac47c590e663a51c11f54a3a135a7a0ed3d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210195"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267376"
 ---
 # <a name="overview-of-the-irs-1075-blueprint-sample"></a>Overzicht van het blauwdrukvoorbeeld IRS 1075
 
@@ -24,6 +24,7 @@ U hebt het overzicht en het blauwdrukvoorbeeld IRS 1075 bekeken. Lees nu de volg
 
 > [!div class="nextstepaction"]
 > [Blauwdruk IRS 1075 - Toewijzing van beheeropties](./control-mapping.md)
+> [Blauwdruk IRS 1075 - Implementatiestappen](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

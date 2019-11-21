@@ -168,6 +168,12 @@
               href: backup-azure-vms-encryption.md
             - name: Sleutels en geheimen herstellen voor versleutelde virtuele machines
               href: backup-azure-restore-key-secret.md
+    - name: Diagnostische gebeurtenissen voor Recovery Services-kluizen
+      items:
+        - name: Diagnostische instellingen gebruik voor Recovery Services-kluizen
+          href: backup-azure-diagnostic-events.md
+        - name: Log Analytics-gegevensmodel voor resourcespecifieke gebeurtenissen
+          href: backup-azure-log-analytics-new-data-model.md
     - name: Azure Backup-rapporten configureren
       items:
         - name: Azure Backup-rapporten configureren

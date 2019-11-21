@@ -193,7 +193,7 @@
             - name: Vluchtvertragingen voorspellen
               displayName: 'classification, studio'
               href: how-to-designer-sample-classification-flight-delay.md
-            - name: Testclassificatie
+            - name: Tekstclassificatie
               displayName: 'classification, studio'
               href: how-to-designer-sample-text-classification.md
         - name: Schattingen gebruiken voor ML
