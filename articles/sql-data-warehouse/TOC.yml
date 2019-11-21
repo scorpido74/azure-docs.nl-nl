@@ -47,6 +47,10 @@
           href: quickstart-scale-compute-tsql.md
     - name: Werklastbeheer
       items:
+        - name: Workloadclassificatie maken
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
         - name: Isolatie van workloads maken
           items:
             - name: T-SQL
