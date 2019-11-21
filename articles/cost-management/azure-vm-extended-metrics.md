@@ -1,6 +1,6 @@
 ---
-title: Uitgebreide metrische gegevens voor Azure virtual machines toevoegen | Microsoft Docs
-description: Dit artikel helpt u bij het inschakelen en metrische gegevens over uitgebreide diagnostische gegevens configureren voor uw Azure VM's.
+title: Add extended metrics for Azure virtual machines | Microsoft Docs
+description: This article helps you enable and configure extended diagnostics metrics for your Azure VMs.
 services: cost-management
 keywords: ''
 author: bandersmsft
@@ -8,82 +8,82 @@ manager: vitavor
 ms.author: banders
 ms.date: 05/21/2019
 ms.topic: conceptual
-ms.service: cost-management
+ms.service: cost-management-billing
 ms.custom: seodec18
-ms.openlocfilehash: e1d0beb6ced0d582166d556c1ae2fc17b375dddf
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: ebbdd89d3ef41d4fb40197cbd83038b5cbc02073
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695367"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230149"
 ---
-# <a name="add-extended-metrics-for-azure-virtual-machines"></a>Uitgebreide metrische gegevens voor Azure virtual machines toevoegen
+# <a name="add-extended-metrics-for-azure-virtual-machines"></a>Add extended metrics for Azure virtual machines
 
-Cloudyn maakt gebruik van Azure metrische gegevens van uw Azure-VM's om u gedetailleerde informatie over hun resources weer te geven. Metrische gegevens, prestatiemeteritems, ook met de naam wordt gebruikt door Cloudyn om rapporten te genereren. Echter Cloudyn wordt niet automatisch verzamelen van alle Azure metrische gegevens van Gast-VM's, moet u metrische gegevens verzameling inschakelen. Dit artikel helpt u bij het inschakelen en configureren van aanvullende metrische gegevens voor uw Azure VM's.
+Cloudyn uses Azure metric data from your Azure VMs to show you detailed information about their resources. Metric data, also called performance counters, is used by Cloudyn to generate reports. However, Cloudyn does not automatically gather all Azure metric data from guest VMs — you must enable metric collection. This article helps you enable and configure additional diagnostics metrics for your Azure VMs.
 
-Nadat u het verzamelen van metrische gegevens inschakelt, kunt u het volgende doen:
+After you enable metric collection, you can:
 
-- Op de hoogte wanneer uw virtuele machines hun geheugen, schijf en CPU-limieten zijn bereikt.
-- Detecteer trends in gebruik en afwijkingen.
-- Uw kosten te beheren door de grootte op basis van gebruik.
-- Get kosten-effectieve formaat aanbevelingen van de optimalisatie van Cloudyn.
+- Know when your VMs are reaching their memory, disk, and CPU limits.
+- Detect usage trends and anomalies.
+- Control your costs by sizing according to usage.
+- Get cost effective sizing optimization recommendations from Cloudyn.
 
-Bijvoorbeeld, als u wilt het % CPU en geheugen-% van uw virtuele Azure-machines bewaken. De metrische gegevens van de Azure-VM komen overeen met het _percentage CPU_ en _\Memory @ No__t-2 toegewezen bytes in gebruik_.
+For example, you might want to monitor the CPU % and Memory % of your Azure VMs. The Azure VM metrics correspond to _Percentage CPU_ and _\Memory\% Committed Bytes In Use_.
 
 > [!NOTE]
-> Uitgebreide metrische gegevensverzameling wordt alleen ondersteund met Azure-bewaking op gastniveau. Cloudyn is niet compatibel met de [log Analytics-agent](../azure-monitor/platform/agents-overview.md). 
+> Extended metric data collection is only supported with Azure guest-level monitoring. Cloudyn is not compatible with the [Log Analytics agent](../azure-monitor/platform/agents-overview.md). 
 
-## <a name="determine-whether-extended-metrics-are-enabled"></a>Bepalen of uitgebreide metrische gegevens zijn ingeschakeld
+## <a name="determine-whether-extended-metrics-are-enabled"></a>Determine whether extended metrics are enabled
 
 1. Meld u aan bij Azure Portal op https://portal.azure.com.
-2. Onder **virtuele machines**, selecteert u een virtuele machine en klik vervolgens onder **bewaking**, selecteer **metrische gegevens**. Een lijst met beschikbare metrische gegevens wordt weergegeven.
-3. Sommige metrische gegevens selecteren en een grafiek voor deze gegevens worden weergegeven.  
-    ![Voorbeeld van de metrische gegevens: host percentage CPU](./media/azure-vm-extended-metrics/metric01.png)
+2. Under **Virtual machines**, select a VM and then under **Monitoring**, select **Metrics**. A list of available metrics is shown.
+3. Select some metrics and a graph displays data for them.  
+    ![Example metric – host percentage CPU](./media/azure-vm-extended-metrics/metric01.png)
 
-In het voorgaande voorbeeld wordt een beperkte set van standaard metrische gegevens zijn beschikbaar voor uw hosts, maar geheugen metrische gegevens zijn niet. Geheugen metrische gegevens maken deel uit van de uitgebreide metrische gegevens. In dit geval zijn uitgebreide metrische gegevens niet ingeschakeld voor de virtuele machine. U moet enkele extra stappen voor het inschakelen van uitgebreide metrische gegevens uitvoeren. De volgende informatie helpt u om hen in staat.
+In the preceding example, a limited set of standard metrics are available for your hosts, but memory metrics are not. Memory metrics are part of extended metrics. In this case, extended metrics are not enabled for the VM. You must perform some additional steps to enable extended metrics. The following information guides you through enabling them.
 
-## <a name="enable-extended-metrics-in-the-azure-portal"></a>Uitgebreide metrische gegevens in Azure portal inschakelen
+## <a name="enable-extended-metrics-in-the-azure-portal"></a>Enable extended metrics in the Azure portal
 
-Standaard metrische gegevens zijn computer metrische gegevens voor hosts. Het _percentage CPU_ -metriek is een voor beeld. Er zijn ook eenvoudige metrische gegevens voor de Gast-VM's en uitgebreide metrische gegevens ook genoemd. Voor beelden van uitgebreide metrische gegevens zijn _\Memory @ no__t-1 toegewezen bytes in gebruik_ en _\Memory\Available bytes_.
+Standard metrics are host computer metrics. The _Percentage CPU_ metric is one example. There are also basic metrics for guest VMs and they're also called extended metrics. Examples of extended metrics include _\Memory\% Committed Bytes In Use_ and _\Memory\Available Bytes_.
 
-Het inschakelen van uitgebreide metrische gegevens is eenvoudig. Voor elke virtuele machine, schakel de bewaking op gastniveau. Wanneer u de bewaking op gastniveau inschakelt, wordt de Azure diagnostics-agent is geïnstalleerd op de virtuele machine. Standaard een set met uitgebreide metrische gegevens worden toegevoegd. Het volgende proces is hetzelfde voor klassieke en reguliere virtuele machines en hetzelfde voor Windows en Linux-VM's.
+Enabling extended metrics is straightforward. For each VM, enable guest-level monitoring. When you enable guest-level monitoring, the Azure diagnostics agent is installed on the VM. By default, a basic set of extended metrics are added. The following process is the same for classic and regular VMs and the same for Windows and Linux VMs.
 
-Houd er rekening mee dat Azure- en Linux bewaking op gastniveau zijn vereist voor een opslagaccount. Wanneer u bewaking op gastniveau, inschakelt als u een bestaand opslagaccount niet kiezen, is klikt u vervolgens een gemaakt voor u.
+Keep in mind that both Azure and Linux guest-level monitoring require a storage account. When you enable guest-level monitoring, if you don't choose an existing storage account, then one is created for you.
 
-### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Bewaking op gastniveau op bestaande virtuele machines inschakelen
+### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Enable guest-level monitoring on existing VMs
 
-1. In **virtuele Machines**, uw lijst met uw virtuele machines weergeven en selecteer vervolgens een virtuele machine.
-2. Onder **bewaking**, selecteer **diagnostische instellingen**.
-3. Klik op de instellingenpagina van diagnostische gegevens **bewaking op gastniveau inschakelen**.  
-    ![Niveau bewaking van Gast op de pagina overzicht inschakelen](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
-4. Na een paar minuten is de Azure diagnostics-agent geïnstalleerd op de virtuele machine. Een set van metrische gegevens worden toegevoegd. Vernieuw de pagina. De toegevoegde prestatiemeteritems worden weergegeven op het tabblad Overzicht.
-5. Selecteer onder controle, **metrische gegevens**.
-6. In de grafiek met metrische gegevens onder **metriek Namespace**, selecteer **gast (klassiek)** .
-7. In de lijst met metrische gegevens, kunt u alle van de beschikbare prestatiemeteritems weergeven voor de Gast-VM.  
-    ![overzicht van voorbeeld van de uitgebreide metrische gegevens](./media/azure-vm-extended-metrics/extended-metrics.png)
+1. In **Virtual Machines**, view your list of your VMs and then select a VM.
+2. Under **Monitoring**, select **Diagnostic settings**.
+3. On the Diagnostics settings page, click **Enable guest-level monitoring**.  
+    ![Enable guest level monitoring on the Overview page](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
+4. After a few minutes, the Azure diagnostics agent is installed on the VM. A basic set of metrics are added. Vernieuw de pagina. The added performance counters appear on the Overview tab.
+5. Under Monitoring, select **Metrics**.
+6. In the metrics chart under **Metric Namespace**, select **Guest (Classic)** .
+7. In the Metric list, you can view all of the available performance counters for the guest VM.  
+    ![list of example extended metrics](./media/azure-vm-extended-metrics/extended-metrics.png)
 
-### <a name="enable-guest-level-monitoring-on-new-vms"></a>Bewaking op gastniveau op nieuwe virtuele machines inschakelen
+### <a name="enable-guest-level-monitoring-on-new-vms"></a>Enable guest-level monitoring on new VMs
 
-Wanneer u nieuwe virtuele machines, op het tabblad beheer maakt, selecteert u **op** voor **besturingssysteem Gast diagnostics**.
+When you create new VMs, on the Management tab, select **On** for **OS guest diagnostics**.
 
-![Diagnostische gegevens van Guest OS ingesteld op aan](./media/azure-vm-extended-metrics/new-enable-diag.png)
+![set Guest OS diagnostics to On](./media/azure-vm-extended-metrics/new-enable-diag.png)
 
-Zie voor meer informatie over het inschakelen van uitgebreide metrische gegevens voor Azure virtual machines [begrip en met behulp van de Azure Linux agent](../virtual-machines/extensions/agent-linux.md) en [overzicht van Azure Virtual Machine Agent](../virtual-machines/extensions/agent-windows.md).
+For more information about enabling extended metrics for Azure virtual machines, see [Understanding and using the Azure Linux agent](../virtual-machines/extensions/agent-linux.md) and [Azure Virtual Machine Agent overview](../virtual-machines/extensions/agent-windows.md).
 
-## <a name="resource-manager-credentials"></a>Resource Manager-referenties
+## <a name="resource-manager-credentials"></a>Resource Manager credentials
 
-Nadat u uitgebreide metrische gegevens inschakelt, zorg ervoor dat Cloudyn toegang tot heeft uw [Resource Manager-referenties](activate-subs-accounts.md). Uw referenties zijn vereist voor Cloudyn te verzamelen en weergeven van prestatiegegevens voor uw VM's. Ze worden ook gebruikt om te maken van kosten optimalisatie aanbevelingen. Cloudyn moet ten minste drie dagen van de prestatiegegevens van een exemplaar om te bepalen of een kandidaat voor een aanbeveling downsizing.
+After you enable extended metrics, ensure that Cloudyn has access to your [Resource Manager credentials](activate-subs-accounts.md). Your credentials are required for Cloudyn to collect and display performance data for your VMs. They're also used to create cost optimization recommendations. Cloudyn needs at least three days of performance data from an instance to determine if it is a candidate for a downsizing recommendation.
 
-## <a name="enable-vm-metrics-with-a-script"></a>De metrische gegevens van een virtuele machine met een script inschakelen
+## <a name="enable-vm-metrics-with-a-script"></a>Enable VM metrics with a script
 
-U kunt metrische gegevens van virtuele machine met Azure PowerShell-scripts inschakelen. Wanneer u veel virtuele machines die u wilt inschakelen, metrische gegevens hebt, kunt u een script kunt gebruiken om het proces te automatiseren. Van de voorbeeldscripts zijn op GitHub op [Azure inschakelen Diagnostics](https://github.com/Cloudyn/azure-enable-diagnostics).
+You can enable VM metrics with Azure PowerShell scripts. When you have many VMs that you want to enable metrics on, you can use a script to automate the process. Example scripts are on GitHub at [Azure Enable Diagnostics](https://github.com/Cloudyn/azure-enable-diagnostics).
 
-## <a name="view-azure-performance-metrics"></a>Metrische gegevens weergeven-prestaties van Azure
+## <a name="view-azure-performance-metrics"></a>View Azure performance metrics
 
-Als u wilt weergeven van metrische gegevens voor prestaties op uw Azure-exemplaren in de Cloudyn-portal, gaat u naar **activa** > **Compute** > **exemplaar Explorer**. In de lijst met VM-exemplaren, vouw een exemplaar en vouw vervolgens een resource om details te bekijken.
+To view performance metrics on your Azure Instances in the Cloudyn portal, navigate to **Assets** > **Compute** > **Instance Explorer**. In the list of VM instances, expand an instance and then expand a resource to view details.
 
-![van de voorbeeldinformatie die wordt weergegeven in de Verkenner-exemplaar](./media/azure-vm-extended-metrics/instance-explorer.png)
+![example information shown in Instance Explorer](./media/azure-vm-extended-metrics/instance-explorer.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u dit nog niet hebt Azure Resource Manager API-toegang al ingeschakeld voor uw accounts, gaat u verder met [Activate Azure-abonnementen en accounts](activate-subs-accounts.md).
+- If you haven't already enabled Azure Resource Manager API access for your accounts, proceed to [Activate Azure subscriptions and accounts](activate-subs-accounts.md).

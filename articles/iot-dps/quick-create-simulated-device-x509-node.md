@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: een gesimuleerd X. 509-apparaat inrichten in azure IoT Hub met behulp van node. js'
+title: Provision simulated X.509 device to Azure IoT Hub using Node.js
 description: Een gesimuleerd X.509-apparaat maken en inrichten voor Azure IoT Hub Device Provisioning Service met de SDK voor Node.js. Voor deze snelstart worden afzonderlijke inschrijvingen gebruikt.
 author: wesmc7777
 ms.author: wesmc
@@ -7,28 +7,27 @@ ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: nodejs
 ms.custom: mvc
-ms.openlocfilehash: e28f0c19918cb29ca6850b1957a403af5aafb1a4
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
-ms.translationtype: MT
+ms.openlocfilehash: 8b9ea3457a99edf81e9fe217ba6708bcec40a84c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904796"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228633"
 ---
-# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Snelstartgids: een gesimuleerd X. 509-apparaat maken en inrichten met de SDK voor node. js voor IoT Hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-an-x509-simulated-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision an X.509 simulated device using Node.js device SDK for IoT Hub Device Provisioning Service
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Deze stappen laten zien hoe in u een vermelding voor apparaatinschrijving kunt maken in de Device Provisioning Service, hoe u een X.509-apparaat op uw ontwikkelcomputer kunt simuleren, het gesimuleerde apparaat kunt verbinden met de Device Provisioning Service en het apparaat kunt registreren op uw IoT-hub met behulp van de [apparaat-SDK voor Azure IoT Hub Node.js](https://github.com/Azure/azure-iot-sdk-node).
 
-Als u niet bekend bent met het proces van automatisch inrichten, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
+Als u niet bekend bent met het proces van automatische inrichting, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
 
 Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om een enkel apparaat in te schrijven.
 
-In dit artikel worden afzonderlijke registraties gedemonstreerd.
+In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
@@ -90,7 +89,7 @@ U gaat voorbeeldcode van de [Azure IoT C-SDK voor Node.js](https://github.com/Az
 
      [![Afzonderlijke inschrijving voor X.509-attestation toevoegen in de portal](./media/quick-create-simulated-device-x509-node/device-enrollment.png)](./media/quick-create-simulated-device-x509-node/device-enrollment.png#lightbox)
 
-     Bij een geslaagde inschrijving wordt uw X. 509-apparaat weer gegeven als **{certificaatpad}** onder de kolom *registratie-id* op het tabblad *afzonderlijke inschrijvingen* . Noteer deze waarde voor later.
+     On successful enrollment, your X.509 device appears as **{certificatename}** under the *Registration ID* column in the *Individual Enrollments* tab. Note this value for later.
 
 ## <a name="simulate-the-device"></a>Het apparaat simuleren
 
@@ -138,7 +137,7 @@ De [apparaat-SDK voor Azure IoT Hub Node.js](https://github.com/Azure/azure-iot-
 Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze beter wilt leren kennen, wis de resources die in deze Snelstartgids zijn gemaakt dan niet. Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle resources die via deze Snelstartgids zijn gemaakt, te verwijderen.
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
-2. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Open de Blade **inschrijvingen beheren** voor uw service en klik vervolgens op het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* van het apparaat dat u in deze Quick Start hebt Inge schreven en klik bovenaan op de knop **verwijderen** . 
+2. Klik in het linkermenu in Azure Portal op **All resources** en selecteer uw Device Provisioning-service. Open the **Manage Enrollments** blade for your service, and then click the **Individual Enrollments** tab. Select the *REGISTRATION ID* of the device you enrolled in this Quickstart, and click the **Delete** button at the top. 
 3. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Open de blade **IoT-apparaten** voor uw hub, selecteer de *apparaat-id* van het apparaat dat u hebt geregistreerd in deze quickstart en klik vervolgens bovenaan op de knop **Verwijderen**.
 
 

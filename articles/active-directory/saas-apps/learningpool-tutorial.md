@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Learningpool Act | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Learningpool Act | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Learningpool Act.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c6f5b2b67ec38ef690f932e189bd2fd9f0dd6da
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5bc0b395fcc874190b67bd99262c3a1c9294c0ac
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159583"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229283"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Zelf studie: integratie Azure Active Directory met Learningpool Act
+# <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>Tutorial: Azure Active Directory integration with Learningpool Act
 
 In deze zelfstudie leert u hoe u Learningpool Act kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Learningpool Act met Azure AD biedt de volgende voordelen:
@@ -187,7 +187,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -228,7 +228,7 @@ U hoeft niets te doen om het inrichten van gebruikers bij Learningpool Act te co
 Gebruikers moeten worden gemaakt door het [ondersteuningsteam van Learningpool Act](https://www.Learningpool.com/support).
 
 > [!NOTE]
-> U kunt alle hulpprogramma's voor het maken van gebruikersaccounts of API's van Learningpool Act gebruiken om AAD-gebruikersaccounts in te richten.
+> You can use any other Learningpool Act user account creation tools or APIs provided by Learningpool Act to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -242,5 +242,5 @@ Wanneer u in het toegangsvenster op de tegel Learningpool Act klikt, zou u autom
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

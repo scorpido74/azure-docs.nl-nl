@@ -1,5 +1,5 @@
 ---
-title: Hoe Azure Dev spaties werkt en is geconfigureerd
+title: How Azure Dev Spaces works and is configured
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,146 +7,146 @@ author: zr-msft
 ms.author: zarhoads
 ms.date: 03/04/2019
 ms.topic: conceptual
-description: Beschrijving van de processen die power Azure Dev spaties en hoe ze zijn geconfigureerd in het configuratiebestand azds.yaml
+description: Describes the processes that power Azure Dev Spaces and how they are configured in the azds.yaml configuration file
 keywords: azds.yaml, Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: 83034dd3c99cc030ed770995bf00a6ad9fb57bdc
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
-ms.translationtype: MT
+ms.openlocfilehash: 74a95af18556a7f95f8784ee67ad8d8240bb2df0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670820"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229083"
 ---
-# <a name="how-azure-dev-spaces-works-and-is-configured"></a>Hoe Azure Dev spaties werkt en is geconfigureerd
+# <a name="how-azure-dev-spaces-works-and-is-configured"></a>How Azure Dev Spaces works and is configured
 
-Het ontwikkelen van een Kubernetes-toepassing kan lastig zijn. U moet Docker en Kubernetes-configuratiebestanden. U moet bepalen hoe uw toepassing lokaal testen en te communiceren met andere afhankelijke services. U moet mogelijk voor het afhandelen van ontwikkelen en testen op meerdere services tegelijk en met een team van ontwikkelaars.
+Developing a Kubernetes application can be challenging. You need Docker and Kubernetes configuration files. You need to figure out how to test your application locally and interact with other dependent services. You might need to handle developing and testing on multiple services at once and with a team of developers.
 
-Azure Dev spaties helpt u bij ontwikkelen, implementeren en fouten opsporen in Kubernetes-toepassingen rechtstreeks in Azure Kubernetes Service (AKS). Azure Dev opslagruimten kan ook een team voor het delen van een dev-ruimte. Een dev-ruimte voor een team te delen, kunt afzonderlijke teamleden om te ontwikkelen in isolatie hoeven te repliceren of model maken van afhankelijkheden of andere toepassingen in het cluster.
+Azure Dev Spaces helps you develop, deploy, and debug Kubernetes applications directly in Azure Kubernetes Service (AKS). Azure Dev Spaces also allows a team to share a dev space. Sharing a dev space across a team allows individual team members to develop in isolation without having to replicate or mock up dependencies or other applications in the cluster.
 
-Azure Dev opslagruimten maakt en een configuratiebestand gebruikt voor het implementeren, uitvoeren en foutopsporing van uw toepassingen met Kubernetes in AKS. Dit configuratie-item bevindt zich met de code van uw toepassing en kan worden toegevoegd aan uw versiebeheersysteem.
+Azure Dev Spaces creates and uses a configuration file for deploying, running, and debugging your Kubernetes applications in AKS. This configuration file resides with your application's code and can be added to your version control system.
 
-In dit artikel worden de processen beschreven die power Azure Dev spaties en hoe deze processen zijn geconfigureerd in het configuratiebestand Azure Dev spaties. U kunt Azure Dev spaties snel ophalen en zien in de praktijk, voert u een van de Quick starts:
+This article describes the processes that power Azure Dev Spaces and how those processes are configured in the Azure Dev Spaces configuration file. To get Azure Dev Spaces running quickly and see it in practice, complete one of the quickstarts:
 
-* [Java met CLI en Visual Studio Code](quickstart-java.md)
-* [.NET core met CLI en Visual Studio Code](quickstart-netcore.md)
-* [.NET core met Visual Studio](quickstart-netcore-visualstudio.md)
-* [Node.js met CLI en Visual Studio Code](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-## <a name="how-azure-dev-spaces-works"></a>De werking van Azure Dev spaties
+## <a name="how-azure-dev-spaces-works"></a>Hoe Azure Dev Spaces werkt
 
-Azure Dev spaties bestaat uit twee verschillende onderdelen die u ermee: de controller en de client-side-hulpprogramma's.
+Azure Dev Spaces has two distinct components that you interact with: the controller and the client-side tooling.
 
-![Azure Dev spaties-onderdelen](media/how-dev-spaces-works/components.svg)
+![Azure Dev Spaces components](media/how-dev-spaces-works/components.svg)
 
-De controller worden de volgende acties uitgevoerd:
+The controller performs the following actions:
 
-* Hiermee beheert u dev ruimte maken en selectie.
-* Helm-diagram van uw toepassing wordt geïnstalleerd en Kubernetes-objecten maakt.
-* De containerinstallatiekopie van uw toepassing is gebaseerd.
-* Uw toepassing in AKS implementeert.
-* Geen incrementele builds en opnieuw wordt gestart als de broncode wijzigt.
-* Hiermee beheert u de logboeken en traceringen van HTTP.
-* Stdout en stderr naar de client-side-tooling verzendt.
-* Hiermee kunnen teamleden onderliggende dev opslagruimten is afgeleid van een bovenliggende dev-ruimte te maken.
-* Hiermee configureert u routering voor toepassingen binnen een spatie en tussen bovenliggende en onderliggende spaties.
+* Manages dev space creation and selection.
+* Installs your application's Helm chart and creates Kubernetes objects.
+* Builds your application's container image.
+* Deploys your application to AKS.
+* Does incremental builds and restarts when your source code changes.
+* Manages logs and HTTP traces.
+* Forwards stdout and stderr to the client-side tooling.
+* Allows team members to create child dev spaces derived from a parent dev space.
+* Configures routing for applications within a space as well as across parent and child spaces.
 
-De controller bevindt zich buiten AKS. Deze stations het gedrag en de communicatie tussen de client-side-hulpmiddelen en het AKS-cluster. De controller is ingeschakeld met de Azure CLI bij het voorbereiden van uw cluster moet Azure Dev opslagruimten gebruiken. Zodra deze is ingeschakeld, kunt u er interactie mee met behulp van de client-side-hulpprogramma's.
+The controller resides outside AKS. It drives the behavior and communication between the client-side tooling and the AKS cluster. The controller is enabled using the Azure CLI when you prepare your cluster to use Azure Dev Spaces. Once it is enabled, you can interact with it using the client-side tooling.
 
-De client-side-tooling kan de gebruiker:
-* Een docker-bestand genereren Helm-diagram en Azure Dev spaties-configuratiebestand voor de toepassing.
-* Bovenliggende en onderliggende dev opslagruimten maken.
-* Laat de controller te bouwen en uw toepassing te starten.
+The client-side tooling allows the user to:
+* Generate a Dockerfile, Helm chart, and Azure Dev Spaces configuration file for the application.
+* Create parent and child dev spaces.
+* Tell the controller to build and start your application.
 
-Terwijl uw toepassing wordt uitgevoerd, de client-hulpprogramma's ook:
-* Ontvangt en stdout en stderr van uw toepassing die wordt uitgevoerd in AKS worden weergegeven.
-* Maakt gebruik van [poort-zone voor forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) web toegang tot uw toepassing met behulp van http:\//localhost.
-* Een foutopsporingsprogramma koppelt aan de toepassing wordt uitgevoerd in AKS.
-* Synchronisaties broncode naar de adresruimte van uw dev wanneer een wijziging wordt gedetecteerd voor incrementele builds, waardoor een snelle iteratie.
+While your application is running, the client-side tooling also:
+* Receives and displays stdout and stderr from your application running in AKS.
+* Uses [port-forward](https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/) to allow web access to your application using http:\//localhost.
+* Attaches a debugger to your running application in AKS.
+* Syncs source code to your dev space when a change is detected for incremental builds, allowing for rapid iteration.
 
-U kunt de client-hulpprogramma's vanaf de opdrachtregel als onderdeel van de `azds` opdracht. U kunt ook de client-hulpprogramma's met:
+You can use the client-side tooling from the command line as part of the `azds` command. You can also use the client-side tooling with:
 
-* Met behulp van Visual Studio Code de [Azure Dev spaties extensie](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
-* Visual Studio met [Visual Studio Tools voor Kubernetes](https://aka.ms/get-vsk8stools).
+* Visual Studio Code using the [Azure Dev Spaces extension](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds).
+* Visual Studio with [Visual Studio Tools for Kubernetes](https://aka.ms/get-vsk8stools).
 
-Hier volgt de basisprincipes voor het instellen en gebruiken van Azure Dev spaties:
-1. Voorbereiden van uw AKS-cluster voor Azure Dev spaties
-1. Voorbereiden van uw code voor het uitvoeren op Azure Dev spaties
-1. De code uitvoeren op een spatie ontwikkelen
-1. Fouten opsporen in uw code op een spatie ontwikkelen
-1. Delen van een dev-ruimte
+Here's the basic flow for setting up and using Azure Dev Spaces:
+1. Prepare your AKS cluster for Azure Dev Spaces
+1. Prepare your code for running on Azure Dev Spaces
+1. Run your code on a dev space
+1. Debug your code on a dev space
+1. Share a dev space
 
-Meer te weten over meer details van de werking van Azure Dev spaties in elk van de onderstaande secties.
+We'll cover more details of how Azure Dev Spaces works in each of the below sections.
 
-## <a name="prepare-your-aks-cluster"></a>Voorbereiden van uw AKS-cluster
+## <a name="prepare-your-aks-cluster"></a>Prepare your AKS cluster
 
-Voorbereiden van uw AKS-cluster bestaat uit:
-* Controleren van uw AKS-cluster zich in een regio [ondersteund door Azure Dev spaties][supported-regions].
-* Controleren van Kubernetes 1.10.3 wordt uitgevoerd of hoger.
-* Inschakelen van Azure Dev spaties over het gebruik van uw cluster `az aks use-dev-spaces`
+Preparing your AKS cluster involves:
+* Verifying your AKS cluster is in a region [supported by Azure Dev Spaces][supported-regions].
+* Verifying you are running Kubernetes 1.10.3 or later.
+* Enabling Azure Dev Spaces on your cluster using `az aks use-dev-spaces`
 
-Zie voor meer informatie over het maken en configureren van een AKS-cluster voor Azure Dev spaties, een van de aan de slag-handleidingen:
-* [Aan de slag met Azure Dev-ruimten met Java](get-started-java.md)
-* [Aan de slag met Azure Dev-ruimten met .NET Core en Visual Studio](get-started-netcore-visualstudio.md)
-* [Aan de slag met Azure Dev-ruimten met .NET Core](get-started-netcore.md)
-* [Aan de slag met Azure Dev-ruimten met behulp van Node.js](get-started-nodejs.md)
+For more information on how to create and configure an AKS cluster for Azure Dev Spaces, see one of the getting started guides:
+* [Get Started on Azure Dev Spaces with Java](get-started-java.md)
+* [Get Started on Azure Dev Spaces with .NET Core and Visual Studio](get-started-netcore-visualstudio.md)
+* [Get Started on Azure Dev Spaces with .NET Core](get-started-netcore.md)
+* [Get Started on Azure Dev Spaces with Node.js](get-started-nodejs.md)
 
-Wanneer Azure Dev opslagruimten is ingeschakeld op uw AKS-cluster, installeert het de controller voor uw cluster. De controller is een afzonderlijke Azure-resources buiten het cluster en doet het volgende aan resources in uw cluster:
+When Azure Dev Spaces is enabled on your AKS cluster, it installs the controller for your cluster. The controller is a separate Azure resource outside of your cluster and does the following to resources in your cluster:
 
-* Hiermee maakt of een Kubernetes-naamruimten wilt gebruiken als een spatie dev Hiermee wordt aangegeven.
-* Hiermee verwijdert u een Kubernetes-naamruimte met de naam *azds*, indien deze bestaat, en maakt u een nieuwe.
-* Implementeert een Kubernetes-webhook-configuratie.
-* Hiermee wordt een webhook toelating-server geïmplementeerd.
+* Creates or designates a Kubernetes namespace to use as a dev space.
+* Removes any Kubernetes namespace named *azds*, if it exists, and creates a new one.
+* Deploys a Kubernetes webhook configuration.
+* Deploys a webhook admission server.
     
 
-Hierbij wordt ook de service-principal die gebruikmaakt van uw AKS-cluster voor serviceaanroepen naar andere onderdelen van Azure Dev spaties.
+It also uses the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Azure Dev spaties voorbereiden cluster](media/how-dev-spaces-works/prepare-cluster.svg)
+![Azure Dev Spaces prepare cluster](media/how-dev-spaces-works/prepare-cluster.svg)
 
-Als u wilt gebruiken Azure Dev spaties, moet er ten minste één dev-ruimte. Azure Dev opslagruimten maakt gebruik van Kubernetes-naamruimten in uw AKS-cluster voor dev spaties. Als een domeincontroller wordt geïnstalleerd, wordt u gevraagd om te maken van een nieuwe naamruimte met Kubernetes of kies een bestaande naamruimte te gebruiken als uw eerste dev-ruimte. Wanneer een naamruimte is aangewezen als een dev-ruimte, de controller voegt de *azds.io/space=true* label in op die naamruimte om het te identificeren als een dev-ruimte. Nadat u uw cluster hebt voorbereid, is de initiële dev-ruimte u maakt of aanwijzen standaard geselecteerd. Wanneer een spatie is geselecteerd, wordt deze gebruikt door Azure Dev opslagruimten voor het maken van nieuwe werkbelastingen.
+In order to use Azure Dev Spaces, there must be at least one dev space. Azure Dev Spaces uses Kubernetes namespaces within your AKS cluster for dev spaces. When a controller is being installed, it prompts you to create a new Kubernetes namespace or choose an existing namespace to use as your first dev space. When a namespace is designated as a dev space, the controller adds the *azds.io/space=true* label to that namespace to identify it as a dev space. The initial dev space you create or designate is selected by default after you prepare your cluster. When a space is selected, it is used by Azure Dev Spaces for creating new workloads.
 
-De controller maakt standaard een dev-ruimte met de naam *standaard* door het upgraden van de bestaande *standaard* Kubernetes-naamruimten. De client-side-hulpmiddelen kunt u nieuwe dev opslagruimten maken en bestaande dev spaties verwijderen. Vanwege een beperking in Kubernetes, de *standaard* dev ruimte kan niet worden verwijderd. De controller verwijdert u ook een bestaand Kubernetes-naamruimten met de naam *azds* het voorkomen van conflicten met het `azds` opdracht die wordt gebruikt door de client-side-hulpprogramma's.
+By default, the controller creates a dev space named *default* by upgrading the existing *default* Kubernetes namespace. You can use the client-side tooling to create new dev spaces and remove existing dev spaces. Due to a limitation in Kubernetes, the *default* dev space cannot be removed. The controller also removes any existing Kubernetes namespaces named *azds* to avoid conflicts with the `azds` command used by the client-side tooling.
 
-De Kubernetes webhook toelating-server wordt gebruikt voor het invoeren van schillen met drie containers tijdens de implementatie voor instrumentatie: een container devspaces-proxy, een devspaces-proxy-init-container en een container devspaces-build. **Alle drie deze containers worden uitgevoerd met toegang tot de hoofdmap van uw AKS-cluster.** Ze ook de service-principal die gebruikmaakt van uw AKS-cluster voor serviceaanroepen naar andere onderdelen van Azure Dev opslagruimten gebruiken.
+The Kubernetes webhook admission server is used to inject pods with three containers during deployment for instrumentation: a devspaces-proxy container, a devspaces-proxy-init container, and a devspaces-build container. **All three of these containers run with root access on your AKS cluster.** They also use the same service principal that your AKS cluster uses to make service calls to other Azure Dev Spaces components.
 
-![Azure Dev spaties Kubernetes webhook toelating-server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
+![Azure Dev Spaces Kubernetes webhook admission server](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
-De container devspaces-proxy is een sidecar-container die verantwoordelijk is voor alle TCP-verkeer van en naar de container van de toepassing en helpt uitvoeren routering. De container devspaces-proxy HTTP-berichten wordt omgeleid als bepaalde spaties worden gebruikt. Bijvoorbeeld, kunt u routeren van HTTP-berichten tussen toepassingen in de bovenliggende en onderliggende spaties. Alle niet-HTTP-verkeer wordt doorgegeven via devspaces-proxy niet gewijzigd. De container devspaces-proxy ook registreert alle inkomende en uitgaande HTTP-berichten en stuurt deze naar de client-hulpprogramma's als traceringen. Deze traceringen kunnen vervolgens worden weergegeven door de ontwikkelaar te inspecteren van het gedrag van de toepassing.
+The devspaces-proxy container is a sidecar container that handles all TCP traffic into and out of the application container and helps perform routing. The devspaces-proxy container reroutes HTTP messages if certain spaces are being used. For example, it can help route HTTP messages between applications in parent and child spaces. All non-HTTP traffic passes through devspaces-proxy unmodified. The devspaces-proxy container also logs all inbound and outbound HTTP messages and sends them to the client-side tooling as traces. These traces can then be viewed by the developer to inspect the behavior of the application.
 
-De devspaces-proxy-init-container is een [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) die aanvullende regels voor routering op basis van de ruimte-hiërarchie naar de container van uw toepassing wordt toegevoegd. Regels voor doorsturen wordt toegevoegd door het bijwerken van de toepassingscontainer */etc/resolv.conf* bestands- en iptables configuratie voordat deze wordt gestart. De updates voor */etc/resolv.conf* toestaan voor DNS-omzetting van services in de bovenliggende spaties. De configuratie-updates van iptables Zorg ervoor dat alle TCP-verkeer in en buiten de container van de toepassing worden gerouteerd via devspaces-proxy. Alle updates van devspaces-proxy-init gebeuren naast de regels die Kubernetes wordt toegevoegd.
+The devspaces-proxy-init container is an [init container](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/) that adds additional routing rules based on the space hierarchy to your application's container. It adds routing rules by updating the application container's */etc/resolv.conf* file and iptables configuration before it starts. The updates to */etc/resolv.conf* allow for DNS resolution of services in parent spaces. The iptables configuration updates ensure all TCP traffic into and out of the application's container are routed though devspaces-proxy. All updates from devspaces-proxy-init happen in addition to the rules that Kubernetes adds.
 
-De container devspaces-build is een container init en beschikt over de project-broncode en Docker-socket gekoppeld. De project-broncode en toegang tot Docker kunt de container van de toepassing kunnen worden gebouwd rechtstreeks door de schil.
+The devspaces-build container is an init container and has the project source code and Docker socket mounted. The project source code and access to Docker allows the application container to be built directly by the pod.
 
 > [!NOTE]
-> Azure Dev opslagruimten maakt gebruik van hetzelfde knooppunt van uw toepassing container bouwen en uitvoeren. Azure Dev spaties heeft een externe container registry als gevolg hiervan niet nodig voor het bouwen en uitvoeren van uw toepassing.
+> Azure Dev Spaces uses the same node to build your application's container and run it. As a result, Azure Dev Spaces does not need an external container registry for building and running your application.
 
-De Kubernetes-webhook toelating server luistert naar eventuele nieuwe pod dat gemaakt in het AKS-cluster. Als deze pod wordt geïmplementeerd voor een naamruimte met de *azds.io/space=true* label, wordt deze pod injects met de extra containers. De container devspaces-build is alleen opgenomen als de container van de toepassing wordt uitgevoerd met behulp van de client-side-hulpprogramma's.
+The Kubernetes webhook admission server listens for any new pod that's created in the AKS cluster. If that pod is deployed to any namespace with the *azds.io/space=true* label, it injects that pod with the additional containers. The devspaces-build container is only injected if the application's container is run using the client-side tooling.
 
-Nadat u uw AKS-cluster hebt voorbereid, kunt u de client-side-tooling voor het voorbereiden en uw code in uw dev-ruimte worden uitgevoerd.
+Once you have prepared your AKS cluster, you can use the client-side tooling to prepare and run your code in your dev space.
 
-## <a name="prepare-your-code"></a>Voorbereiden van uw code
+## <a name="prepare-your-code"></a>Prepare your code
 
-Als u wilt uw toepassing in een dev-ruimte worden uitgevoerd, moet worden opgenomen in een container en moet u definiëren hoe deze moet worden geïmplementeerd op Kubernetes. Als u wilt uw toepassing in een container plaatsen, moet u een docker-bestand. Als u wilt definiëren hoe uw toepassing wordt geïmplementeerd naar Kubernetes, moet u een [Helm-diagram](https://docs.helm.sh/). Om u te helpen bij het maken van zowel de docker-bestand en de Helm-diagram voor uw toepassing, de client-side-hulpprogramma's bieden de `prep` opdracht:
+In order to run your application in a dev space, it needs to be containerized, and you need to define how it should be deployed to Kubernetes. To containerize your application, you need a Dockerfile. To define how your application is deployed to Kubernetes, you need a [Helm chart](https://docs.helm.sh/). To assist in creating both the Dockerfile and Helm chart for your application, the client-side tools provide the `prep` command:
 
 ```cmd
 azds prep --public
 ```
 
-De `prep` opdracht wordt de bestanden in uw project bekeken en probeert te maken van de docker-bestand en het Helm-diagram voor het uitvoeren van uw toepassing in Kubernetes. Op dit moment de `prep` opdracht genereert een Dockerfile en Helm-grafiek met de volgende talen:
+The `prep` command will look at the files in your project and try to create the Dockerfile and Helm chart for running your application in Kubernetes. Currently, the `prep` command will generate a Dockerfile and Helm chart with the following languages:
 
 * Java
 * Node.js
 * .NET Core
 
-U *moet* uitvoeren de `prep` opdracht uit vanaf een map met de broncode. Met de `prep` opdracht van de juiste map staat u de client-side-tooling voor het identificeren van de taal en het maken van een juiste docker-bestand voor uw toepassing in een container plaatsen. U kunt ook uitvoeren de `prep` opdracht uit vanaf een map met een *pom.xml* -bestand voor Java-projecten.
+You *must* run the `prep` command from a directory that contains source code. Running the `prep` command from the correct directory allows the client-side tooling to identify the language and create an appropriate Dockerfile to containerize your application. You can also run the `prep` command from a directory that contains a *pom.xml* file for Java projects.
 
-Als u de `prep` opdracht uit vanuit de map die geen broncode, de client-side-tooling wordt een docker-bestand niet genereren. Er worden ook de uitspraak van een fout weergegeven: *Docker-bestand kan niet worden gegenereerd vanwege een niet-ondersteunde taal*. Deze fout treedt ook op als het projecttype niet wordt herkend door de client-side-hulpprogramma's.
+If you run the `prep` command from directory that does not contain source code, the client-side tooling will not generate a Dockerfile. It will also display an error saying: *Dockerfile could not be generated due to unsupported language*. This error also occurs if the client-side tooling does not recognize the project type.
 
-Bij het uitvoeren van de `prep` opdracht, hebt u de optie voor het opgeven van de `--public` vlag. Deze vlag wordt aan de domeincontroller om een internet toegankelijk is via het eindpunt voor deze service te maken. Als u deze vlag niet opgeeft, wordt de service is alleen toegankelijk is vanuit het cluster of met behulp van de localhost-tunnel gemaakt door de client-side-hulpprogramma's. U kunt inschakelen of uitschakelen van dit gedrag nadat het `prep` opdracht door het bijwerken van de gegenereerde Helm-grafiek.
+When you run the `prep` command, you have the option of specifying the `--public` flag. This flag tells the controller to create an internet-accessible endpoint for this service. If you do not specify this flag, the service is only accessible from within the cluster or using the localhost tunnel created by the client-side tooling. You can enable or disable this behavior after running the `prep` command by updating the generated Helm chart.
 
-De `prep` opdracht wordt niet vervangen met een bestaande docker-bestanden of Helm grafieken in uw project hebt. Als een bestaande docker-bestand of Helm-grafiek dezelfde naamconventie als de bestanden die worden gegenereerd gebruikt door de `prep` opdracht, de `prep` opdracht genereren van die bestanden wordt overgeslagen. Anders wordt de `prep` opdracht een eigen docker-bestand wordt gegenereerd of Helm-grafiek naast de bestaande bestanden.
+The `prep` command will not replace any existing Dockerfiles or Helm charts you have in your project. If an existing Dockerfile or Helm chart uses the same naming convention as the files generated by the `prep` command, the `prep` command will skip generating those files. Otherwise, the `prep` command will generate its own Dockerfile or Helm chart along side the existing files.
 
-De `prep` opdracht genereert ook een `azds.yaml` bestand in de hoofdmap van uw project. Azure Dev opslagruimten maakt gebruik van dit bestand te bouwen, installeren, configureren en uw toepassing wordt uitgevoerd. Dit configuratie-item geeft een lijst van de locatie van uw docker-bestand en Helm-grafiek en biedt ook aanvullende configuratie op deze artefacten.
+The `prep` command will also generate a `azds.yaml` file at the root of your project. Azure Dev Spaces uses this file to build, install, configure, and run your application. This configuration file lists the location of your Dockerfile and Helm chart and also provides additional configuration on top of those artifacts.
 
-Hier volgt een voorbeeld van azds.yaml bestand gemaakt met behulp van [.NET Core-voorbeeldtoepassing](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
+Here is an example azds.yaml file created using [.NET Core sample application](https://github.com/Azure/dev-spaces/tree/master/samples/dotnetcore/getting-started/webfrontend):
 
 ```yaml
 kind: helm-release
@@ -193,114 +193,114 @@ configurations:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
 ```
 
-De `azds.yaml` bestand dat is gegenereerd door de `prep` opdracht moet goed werkt voor een scenario voor het ontwikkelen van eenvoudige, één project. Als uw specifieke project is toegenomen complexiteit, moet u mogelijk om bij te werken van dit bestand nadat de `prep` opdracht. Uw project kan bijvoorbeeld worden aangepast aan uw build of proces op basis van het ontwikkelen van apps of behoeften foutopsporing starten. Ook mogelijk hebt u meerdere toepassingen in uw project, waarvoor meerdere buildprocessen of de inhoud van een ander buildnummer.
+The `azds.yaml` file generated by the `prep` command should work fine for a simple, single project development scenario. If your specific project has increased complexity, you may need to update this file after running the `prep` command. For example, your project may require some tweaking to your build or launch process based on your development or debugging needs. You also might have multiple applications in your project, which require multiple build processes or a different build content.
 
-## <a name="run-your-code"></a>De code uitvoeren
+## <a name="run-your-code"></a>Run your code
 
-Voor het uitvoeren van uw code in een ruimte dev geven de `up` opdracht in dezelfde map als uw `azds.yaml` bestand:
+To run your code in a dev space, issue the `up` command in the same directory as your `azds.yaml` file:
 
 ```cmd
 azds up
 ```
 
-De `up` opdracht uploadt de bronbestanden van uw toepassing en andere artefacten die nodig zijn om te bouwen en uw project uitvoeren op de dev-ruimte. Van daaruit de controller in de adresruimte van uw dev:
+The `up` command uploads your application source files and other artifacts needed to build and run your project to the dev space. From there, the controller in your dev space:
 
-1. Hiermee maakt u de Kubernetes-objecten om uw toepassing te implementeren.
-1. De container voor uw toepassing is gebaseerd.
-1. Implementeert de toepassing naar de dev-ruimte.
-1. Hiermee maakt u een openbaar toegankelijke DNS-naam voor het toepassingseindpunt van uw als geconfigureerd.
-1. Maakt gebruik van *poort-zone voor forward* voor toegang tot uw toepassing eindpunt met http://localhost.
-1. Stdout en stderr naar de client-side-tooling verzendt.
+1. Creates the Kubernetes objects to deploy your application.
+1. Builds the container for your application.
+1. Deploys your application to the dev space.
+1. Creates a publicly accessible DNS name for your application endpoint if configured.
+1. Uses *port-forward* to provide access to your application endpoint using http://localhost.
+1. Forwards stdout and stderr to the client-side tooling.
 
 
-### <a name="starting-a-service"></a>Starten van een service
+### <a name="starting-a-service"></a>Starting a service
 
-Wanneer u een service in een ruimte dev start, wordt de client-side-hulpprogramma's en de domeincontroller werken in coördinatie nodig voor het synchroniseren van de bronbestanden van uw, uw container en Kubernetes-objecten maken en uitvoeren van uw toepassing.
+When you start a service in a dev space, the client-side tooling and controller work in coordination to synchronize your source files, create your container and Kubernetes objects, and run your application.
 
-Op een meer gedetailleerd niveau, dit is wat er gebeurt tijdens het uitvoeren van `azds up`:
+At a more granular level, here is what happens when you run `azds up`:
 
-1. Bestanden worden gesynchroniseerd vanuit de computer van de gebruiker naar een Azure-bestandsopslag die uniek is voor de AKS-cluster van de gebruiker. De broncode, Helm-diagram en -configuratiebestanden worden geüpload. Meer informatie over het synchronisatieproces zijn beschikbaar in de volgende sectie.
-1. De controller maakt een aanvraag om een nieuwe sessie te starten. Deze aanvraag bevat verschillende eigenschappen, met inbegrip van een unieke ID, de naam van ruimte, pad naar de broncode en een vlag voor foutopsporing.
-1. De controller vervangt de *$(tag)* tijdelijke aanduiding in het Helm-diagram met de unieke sessie-ID en de Helm-grafiek voor uw service wordt geïnstalleerd. Het toevoegen van dat een verwijzing naar de unieke sessie-ID aan de Helm-grafiek kan de container geïmplementeerd in het AKS-cluster voor deze specifieke sessie te worden teruggekoppeld naar de sessie-aanvraag en informatie die is gekoppeld.
-1. Tijdens de installatie van het Helm-diagram, wordt de server van Kubernetes webhook toelating extra containers aan van uw toepassing pod voor instrumentatie en toegang tot de broncode van uw project toegevoegd. De devspaces-proxy en devspaces-proxy-init-containers worden toegevoegd om HTTP-tracering en ruimte routering te bieden. De devspaces-build-container wordt toegevoegd aan de schil voorzien van toegang tot het Docker-exemplaar en de project-broncode voor het bouwen van uw toepassing container.
-1. Wanneer de schil van de toepassing wordt gestart, worden de devspaces-build-container en devspaces-proxy-init-container gebruikt voor het bouwen van de container van de toepassing. De App-container en de devspaces proxy-containers worden vervolgens gestart.
-1. Nadat de container van de toepassing is gestart, de client-side-functionaliteit maakt gebruik van de Kubernetes *poort-zone voor forward* functionaliteit te bieden voor HTTP-toegang tot uw toepassing http://localhost. Uw ontwikkelcomputer verbinding dit doorsturen via poort met de service in uw dev-ruimte.
-1. Wanneer alle containers in de schil hebt gestart, wordt de service wordt uitgevoerd. Op dit moment begint de client-side-functionaliteit om de HTTP-traceringen, stdout en stderr streamen. Deze informatie wordt weergegeven door de client-side-functionaliteit voor ontwikkelaars.
+1. Files are synchronized from the user’s machine to an Azure file storage that is unique to the user’s AKS cluster. The source code, Helm chart, and configuration files are uploaded. More details on the synchronization process are available in the next section.
+1. The controller creates a request to start a new session. This request contains several properties, including a unique ID, space name, path to source code, and a debugging flag.
+1. The controller replaces the *$(tag)* placeholder in the Helm chart with the unique session ID and installs the Helm chart for your service. Adding a reference to the unique session ID to the Helm chart allows the container deployed to the AKS cluster for this specific session to be tied back to the session request and associated information.
+1. During the installation of the Helm chart, the Kubernetes webhook admission server adds additional containers to your application's pod for instrumentation and access to your project's source code. The devspaces-proxy and devspaces-proxy-init containers are added to provide HTTP tracing and space routing. The devspaces-build container is added to provide the pod with access to the Docker instance and project source code for building your application's container.
+1. When the application's pod is started, the devspaces-build container and devspaces-proxy-init container are used to build the application container. The application container and devspaces-proxy containers are then started.
+1. After the application container has started, the client-side functionality uses the Kubernetes *port-forward* functionality to provide HTTP access to your application over http://localhost. This port forwarding connects your development machine to the service in your dev space.
+1. When all containers in the pod have started, the service is running. At this point, the client-side functionality begins to stream the HTTP traces, stdout, and stderr. This information is displayed by the client-side functionality for the developer.
 
-### <a name="updating-a-running-service"></a>Een actieve service bijwerken
+### <a name="updating-a-running-service"></a>Updating a running service
 
-Tijdens een service wordt uitgevoerd, heeft Azure Dev spaties de mogelijkheid om bij te werken die service als een van de bronbestanden van het project wilt wijzigen. Ontwikkel spaties verwerkt ook bijwerken van de service anders, afhankelijk van het type bestand dat wordt gewijzigd. Er zijn drie manieren die DEV spaties kunt een actieve service bijwerken:
+While a service is running, Azure Dev Spaces has the ability to update that service if any of the project source files change. Dev Spaces also handles updating the service differently depending on the type of file that is changed. There are three ways Dev Spaces can update a running service:
 
-* Een bestand bijwerken rechtstreeks
-* Opnieuw opbouwen en opnieuw starten van de toepassing proces binnen de actieve App-container
-* Opnieuw opbouwen en de container van de toepassing opnieuw te implementeren
+* Directly updating a file
+* Rebuilding and restarting the application's process inside the running application's container
+* Rebuilding and redeploying the application's container
 
-![Met Azure Dev spaties file sync](media/how-dev-spaces-works/file-sync.svg)
+![Azure Dev Spaces file sync](media/how-dev-spaces-works/file-sync.svg)
 
-Bepaalde projectbestanden die statische assets, zoals html, css en cshtml-bestanden, kunnen rechtstreeks in de container van de toepassing zonder opnieuw te starten worden bijgewerkt. Als een statische asset wordt gewijzigd, wordt het nieuwe bestand gesynchroniseerd met de dev-ruimte en vervolgens worden gebruikt door de container die wordt uitgevoerd.
+Certain project files that are static assets, such as html, css, and cshtml files, can be updated directly in the application's container without restarting anything. If a static asset changes, the new file is synchronized to the dev space and then used by the running container.
 
-Wijzigingen in bestanden zoals broncode en configuratiebestanden van de toepassing kunnen worden toegepast door het proces van de toepassing binnen de container die wordt uitgevoerd opnieuw te starten. Wanneer deze bestanden worden gesynchroniseerd, het proces van de toepassing opnieuw wordt opgestart in de actieve container met de *devhostagent* proces. Bij het maken van de container van de toepassing in eerste instantie, de controller de opdracht voor opstarten voor de toepassing vervangt door een ander proces met de naam *devhostagent*. Proces van de toepassing wordt vervolgens uitgevoerd als onderliggend proces onder *devhostagent*, en de uitvoer is doorgesluisd uit met *devhostagent*-uitvoer. De *devhostagent* proces maakt ook deel uit van de Dev-ruimten en opdrachten kunt uitvoeren in de actieve container namens Dev spaties. Bij het uitvoeren van een herstart *devhostagent*:
+Changes to files such as source code or application configuration files can be applied by restarting the application's process within the running container. Once these files are synchronized, the application's process is restarted within the running container using the *devhostagent* process. When initially creating the application's container, the controller replaces the startup command for the application with a different process called *devhostagent*. The application's actual process is then run as a child process under *devhostagent*, and its output is piped out using *devhostagent*'s output. The *devhostagent* process is also part of Dev Spaces and can execute commands in the running container on behalf of Dev Spaces. When performing a restart, *devhostagent*:
 
-* Stopt het huidige proces of de processen die zijn gekoppeld aan de toepassing
-* De toepassing wordt opnieuw gemaakt
-* Het proces of de processen die zijn gekoppeld aan de toepassing opnieuw is opgestart
+* Stops the current process or processes associated with the application
+* Rebuilds the application
+* Restarts the process or processes associated with the application
 
-De manier waarop *devhostagent* voert de voorgaande stappen is geconfigureerd in de `azds.yaml` configuratiebestand. Deze configuratie wordt beschreven in een volgende sectie.
+The way *devhostagent* executes the preceding steps is configured in the `azds.yaml` configuration file. This configuration is detailed in a later section.
 
-Updates voor de project-bestanden, zoals docker-bestanden, csproj-bestanden of een deel van het Helm-diagram vereisen de container van de toepassing worden opnieuw opgebouwd en wordt opnieuw geïmplementeerd. De domeincontroller wordt uitgevoerd wanneer een van deze bestanden is gesynchroniseerd met de dev-ruimte, de [helm upgrade](https://helm.sh/docs/helm/#helm-upgrade) opdracht en de container van de toepassing is opnieuw opgebouwd en geïmplementeerd.
+Updates to project files such as Dockerfiles, csproj files, or any part of the Helm chart require the application's container to be rebuilt and redeployed. When one of these files is synchronized to the dev space, the controller runs the [helm upgrade](https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure) command and the application's container is rebuilt and redeployed.
 
-### <a name="file-synchronization"></a>Bestandssynchronisatie
+### <a name="file-synchronization"></a>File Synchronization
 
-De eerste keer dat een toepassing wordt gestart in een dev-ruimte, worden de bronbestanden van de toepassing geüpload. Terwijl de toepassing wordt uitgevoerd en op latere opnieuw wordt opgestart, wordt alleen de gewijzigde bestanden worden geüpload. Twee bestanden worden gebruikt voor de coördinatie van dit proces: een client-side-bestand en een bestand controller aan clientzijde.
+The first time an application is started in a dev space, all the application's source files are uploaded. While the application is running and on later restarts, only the changed files are uploaded. Two files are used to coordinate this process: a client-side file and a controller-side file.
 
-Het client-side-bestand wordt opgeslagen in een tijdelijke map en de naam op basis van een hash van de projectmap die u in Dev spaties uitvoert. Bijvoorbeeld, voor Windows hebt u een bestand, zoals *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* voor uw project. Op Linux, de client-side-bestand wordt opgeslagen in de *map/Tmp* directory. U kunt de map vinden op macOS door het uitvoeren van de `echo $TMPDIR` opdracht.
+The client-side file is stored in a temporary directory and is named based on a hash of the project directory you are running in Dev Spaces. For example, on Windows you would have a file like *Users\USERNAME\AppData\Local\Temp\1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef.synclog* for your project. On Linux, the client-side file is stored in the */tmp* directory. You can find the directory on macOS by running the `echo $TMPDIR` command.
 
-Dit bestand wordt in JSON-indeling en bevat:
+This file is in JSON format and contains:
 
-* Een vermelding voor elk projectbestand dat wordt gesynchroniseerd met de dev-ruimte
-* Een synchronisatie-ID
-* De tijdstempel van de laatste synchronisatiebewerking
+* An entry for each project file that is synchronized with the dev space
+* A synchronization ID
+* The timestamp of the last sync operation
 
-Elk item project-bestand bevat een pad naar het bestand en de tijdstempel.
+Each project file entry contains a path to the file and its timestamp.
 
-De controller aan clientzijde-bestand is opgeslagen op het AKS-cluster. Het bevat de synchronisatie-ID en de tijdstempel van de laatste synchronisatie.
+The controller-side file is stored on the AKS cluster. It contains the synchronization ID and the timestamp of the last synchronization.
 
-Een synchronisatie treedt op wanneer de synchronisatie-tijdstempels niet tussen de client en de bestanden van de controller aan clientzijde overeen komen. Tijdens een synchronisatie is de client-side-tooling herhalen van de vermeldingen in het client-side-bestand. Als de timestamp van het bestand na de synchronisatie-timestamp is, is dat bestand gesynchroniseerd met de dev-ruimte. Nadat de synchronisatie voltooid is, worden de tijdstempels synchronisatie bijgewerkt op de client en de controller aan clientzijde bestanden.
+A sync happens when the synchronization timestamps do not match between the client-side and the controller-side files. During a sync, the client-side tooling iterates over the file entries in the client-side file. If the file's timestamp is after the sync timestamp, that file is synced to the dev space. Once the sync is complete, the sync timestamps are updated on both the client-side and controller-side files.
 
-Alle van de project-bestanden worden gesynchroniseerd als de client-side-bestand niet aanwezig is. Dit gedrag kunt u een volledige synchronisatie afdwingen met het verwijderen van de client-side-bestand.
+All of the project files are synced if the client-side file is not present. This behavior allows you to force a full sync by deleting the client-side file.
 
-### <a name="how-routing-works"></a>Hoe Routering werkt
+### <a name="how-routing-works"></a>How routing works
 
-Een dev-ruimte is gebaseerd op AKS en maakt gebruik van dezelfde [netwerkconcepten](../aks/concepts-network.md). Azure Dev spaties heeft ook een gecentraliseerde *ingressmanager* service en implementeert u een eigen Controller voor binnenkomend verkeer naar het AKS-cluster. De *ingressmanager* monitors AKS-clusters met opslagruimten ontwikkelen en verbetert de Ingangscontroller Azure Dev spaties in het cluster met inkomende objecten voor de routering naar toepassingspods-service. De container devspaces-proxy in elke schil wordt toegevoegd een `azds-route-as` HTTP-header voor HTTP-verkeer naar een dev-ruimte op basis van de URL. Bijvoorbeeld, een aanvraag voor de URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* ontstaat er een HTTP-header met `azds-route-as: azureuser`. De container devspaces-proxy niet wordt toegevoegd een `azds-route-as` header als een al aanwezig is.
+A dev space is built on top of AKS and uses the same [networking concepts](../aks/concepts-network.md). Azure Dev Spaces also has a centralized *ingressmanager* service and deploys its own Ingress Controller to the AKS cluster. The *ingressmanager* service monitors AKS clusters with dev spaces and augments the Azure Dev Spaces Ingress Controller in the cluster with Ingress objects for routing to application pods. The devspaces-proxy container in each pod adds an `azds-route-as` HTTP header for HTTP traffic to a dev space based on the URL. For example, a request to the URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* would get an HTTP header with `azds-route-as: azureuser`. The devspaces-proxy container will not add an `azds-route-as` header if one is already present.
 
-Wanneer een HTTP-aanvraag wordt gedaan bij een service van buiten het cluster, wordt de aanvraag wordt gerouteerd naar de controller voor binnenkomend verkeer. De controller voor binnenkomend verkeer stuurt de aanvraag rechtstreeks naar de juiste schil op basis van de inkomende objecten en regels. De container devspaces-proxy in de schil toegevoegd, ontvangt de aanvraag de `azds-route-as` koptekst op basis van de URL en stuurt de aanvraag door naar de toepassingscontainer.
+When an HTTP request is made to a service from outside the cluster, the request goes to the Ingress controller. The Ingress controller routes the request directly to the appropriate pod based on its Ingress objects and rules. The devspaces-proxy container in the pod receives the request, adds the `azds-route-as` header based on the URL, and then routes the request to the application container.
 
-Wanneer een HTTP-aanvraag wordt gedaan bij een service van een andere service binnen het cluster, verloopt de aanvraag eerst via de aanroepende service devspaces proxy-container. De container devspaces-proxy kijkt naar de HTTP-aanvraag en controles de `azds-route-as` header. Op basis van de koptekst, ziet de container devspaces-proxy van de IP-adres van de service die is gekoppeld aan de waarde voor header. Als een IP-adres wordt gevonden, wordt de container devspaces-proxy omgeleid met de aanvraag voor het IP-adres. Als een IP-adres niet wordt gevonden, stuurt de container devspaces-proxy de aanvraag door naar de container van de bovenliggende toepassing.
+When an HTTP request is made to a service from another service within the cluster, the request first goes through the calling service's devspaces-proxy container. The devspaces-proxy container looks at the HTTP request and checks the `azds-route-as` header. Based on the header, the devspaces-proxy container will look up the IP address of the service associated with the header value. If an IP address is found, the devspaces-proxy container reroutes the request to that IP address. If an IP address is not found, the devspaces-proxy container routes the request to the parent application container.
 
-Bijvoorbeeld, de toepassingen *serviceA* en *serviceB* zijn geïmplementeerd op een bovenliggende dev ruimte, het zogenaamde *standaard*. *serviceA* is afhankelijk van *serviceB* en zorgt ervoor dat HTTP-aanroepen naar deze. Azure-gebruiker wordt gemaakt van een onderliggende dev-ruimte op basis van de *standaard* ruimte, het zogenaamde *azureuser*. Azure-gebruiker implementeert ook een eigen versie van *serviceA* naar hun onderliggende-ruimte. Wanneer een aanvraag wordt gedaan bij *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
+For example, the applications *serviceA* and *serviceB* are deployed to a parent dev space called *default*. *serviceA* relies on *serviceB* and makes HTTP calls to it. Azure User creates a child dev space based on the *default* space called *azureuser*. Azure User also deploys their own version of *serviceA* to their child space. When a request is made to *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
-![Azure Dev spaties routering](media/how-dev-spaces-works/routing.svg)
+![Azure Dev Spaces routing](media/how-dev-spaces-works/routing.svg)
 
-1. De controller voor binnenkomend verkeer zoekt naar het IP-adres voor de schil die zijn gekoppeld aan de URL die *serviceA.azureuser*.
-1. De controller voor binnenkomend verkeer wordt het IP-adres gevonden voor de schil in de Azure-gebruiker dev ruimte en stuurt de aanvraag naar de *serviceA.azureuser* schil.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod ontvangt de aanvraag en voegt `azds-route-as: azureuser` als een HTTP-header.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod stuurt de aanvraag naar de *serviceA* toepassingscontainer in de *serviceA.azureuser* schil.
-1. De *serviceA* toepassing in de *serviceA.azureuser* pod Hiermee wordt een aanroep naar *serviceB*. De *serviceA* toepassing bevat ook code voor het behouden van de bestaande `azds-route-as` koptekst, die in dit geval `azds-route-as: azureuser`.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod ontvangt de aanvraag en zoekt naar het IP-adres van *serviceB* op basis van de waarde van de `azds-route-as` header.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod vindt geen IP-adres voor *serviceB.azureuser*.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod zoekt naar het IP-adres voor *serviceB* in de bovenliggende-ruimte is *serviceB.default*.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod vindt het IP-adres voor *serviceB.default* en stuurt de aanvraag naar de *serviceB.default* schil.
-1. De container devspaces-proxy in het *serviceB.default* pod ontvangt de aanvraag en stuurt de aanvraag naar de *serviceB* toepassingscontainer in de *serviceB.default*schil.
-1. De *serviceB* toepassing in de *serviceB.default* pod retourneert een antwoord naar de *serviceA.azureuser* schil.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod-antwoord is ontvangen en stuurt het antwoord op de *serviceA* toepassingscontainer in de *serviceA.azureuser* schil.
-1. De *serviceA* toepassing ontvangt van het antwoord en retourneert vervolgens het eigen antwoord.
-1. De container devspaces-proxy in het *serviceA.azureuser* pod ontvangt het antwoord van de *serviceA* toepassingscontainer en stuurt het antwoord op de oorspronkelijke aanvrager buiten het cluster.
+1. The Ingress controller looks up the IP for the pod associated with the URL, which is *serviceA.azureuser*.
+1. The Ingress controller finds the IP for the pod in Azure User's dev space and routes the request to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and adds `azds-route-as: azureuser` as an HTTP header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod routes the request to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application in the *serviceA.azureuser* pod makes a call to *serviceB*. The *serviceA* application also contains code to preserve the existing `azds-route-as` header, which in this case is `azds-route-as: azureuser`.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the request and looks up the IP of *serviceB* based on the value of the `azds-route-as` header.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod does not find an IP for *serviceB.azureuser*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod looks up the IP for *serviceB* in the parent space, which is *serviceB.default*.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod finds the IP for *serviceB.default* and routes the request to the *serviceB.default* pod.
+1. The devspaces-proxy container in the *serviceB.default* pod receives the request and routes the request to the *serviceB* application container in the *serviceB.default* pod.
+1. The *serviceB* application in the *serviceB.default* pod returns a response to the *serviceA.azureuser* pod.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response and routes the response to the *serviceA* application container in the *serviceA.azureuser* pod.
+1. The *serviceA* application receives the response and then returns its own response.
+1. The devspaces-proxy container in the *serviceA.azureuser* pod receives the response from the *serviceA* application container and routes the response to the original caller outside of the cluster.
 
-Alle andere TCP-verkeer is geen HTTP wordt doorgegeven via de controller voor binnenkomend verkeer en devspaces-proxy containers ongewijzigd.
+All other TCP traffic that is not HTTP passes through the Ingress controller and devspaces-proxy containers unmodified.
 
-### <a name="how-running-your-code-is-configured"></a>Het uitvoeren van uw code is geconfigureerd
+### <a name="how-running-your-code-is-configured"></a>How running your code is configured
 
-Maakt gebruik van Azure Dev spaties de `azds.yaml` dat u wilt installeren en configureren van uw service. De controller gebruikt de `install` eigenschap in de `azds.yaml` dat u wilt het Helm-diagram installeren en maken van de Kubernetes-objecten:
+Azure Dev Spaces uses the `azds.yaml` file to install and configure your service. The controller uses the `install` property in the `azds.yaml` file to install the Helm chart and create the Kubernetes objects:
 
 ```yaml
 ...
@@ -326,25 +326,25 @@ install:
 ...
 ```
 
-Standaard de `prep` opdracht genereert het Helm-diagram. Stelt ook het *install.chart* eigenschap naar de map van het Helm-diagram. Als u een Helm-grafiek gebruiken in een andere locatie wilt, kunt u deze eigenschap voor het gebruik van die locatie kunt bijwerken.
+By default, the `prep` command will generate the Helm chart. It also sets the *install.chart* property to the directory of the Helm chart. If you wanted to use a Helm chart in a different location, you can update this property to use that location.
 
-Bij het installeren van de Helm-grafieken, biedt Azure Dev opslagruimten een manier om het overschrijven van waarden in het Helm-diagram. De standaardwaarden voor de Helm-grafiek zich in `charts/APP_NAME/values.yaml`.
+When installing the Helm charts, Azure Dev Spaces provides a way to override values in the Helm chart. The default values for the Helm chart are in `charts/APP_NAME/values.yaml`.
 
-Met behulp van de *install.values* eigenschap, kunt u een of meer bestanden die de waarden die u vervangen in het Helm-diagram wilt definiëren weergeven. Bijvoorbeeld, als u een hostnaam of het database-configuratie specifiek wanneer uw toepassing wordt uitgevoerd in een dev-ruimte wilt, kunt u deze functionaliteit overschrijven. U kunt ook toevoegen een *?* aan het einde van een van de bestandsnamen in te stellen als optioneel.
+Using the *install.values* property, you can list one or more files that define values you want replaced in the Helm chart. For example, if you wanted a hostname or database configuration specifically when running your application in a dev space, you can use this override functionality. You can also add a *?* at the end of any of the file names to set it as optional.
 
-De *install.set* eigenschap kunt u een of meer waarden die u vervangen in het Helm-diagram wilt te configureren. Alle waarden die zijn geconfigureerd *install.set* overschrijven de waarden die zijn geconfigureerd in de bestanden die vermeld staan *install.values*. De eigenschappen in onder *install.set* afhankelijk zijn van de waarden in het Helm-diagram en kunnen mogelijk verschillen, afhankelijk van het gegenereerde Helm-diagram.
+The *install.set* property allows you to configure one or more values you want replaced in the Helm chart. Any values configured in *install.set* will override values configured in files listed in *install.values*. The properties under *install.set* are dependent on the values in the Helm chart and may be different depending on the generated Helm chart.
 
-In het bovenstaande voorbeeld de *install.set.replicaCount* eigenschap vertelt ons de controller hoeveel exemplaren van uw toepassing om uit te voeren in uw dev-ruimte. Afhankelijk van uw scenario kunt u deze waarde verhogen, maar het is een invloed op een foutopsporingsprogramma koppelen aan de schil van uw toepassing. Zie voor meer informatie de [probleemoplossingsartikel](troubleshooting.md).
+In the above example, the *install.set.replicaCount* property tells the controller how many instances of your application to run in your dev space. Depending on your scenario, you can increase this value, but it will have an impact on attaching a debugger to your application's pod. For more information, see the [troubleshooting article](troubleshooting.md).
 
-In het gegenereerde Helm-diagram wordt de containerinstallatiekopie is ingesteld op *{{. Values.Image.Repository}} :{{. Values.Image.tag}}* . De `azds.yaml` -bestand definieert *install.set.image.tag* eigenschap *$(tag)* standaard, die wordt gebruikt als de waarde voor *{{. Values.Image.tag}}* . Door in te stellen de *install.set.image.tag* eigenschap in op deze manier wordt de installatiekopie van de container voor uw toepassing in een afzonderlijke manier worden getagd bij het uitvoeren van Azure Dev spaties. In dit specifieke geval, de installatiekopie is gemarkeerd als  *\<waarde van image.repository >: $(tag)* . Moet u de *$(tag)* als de waarde van variabele *install.set.image.tag* opdat Dev spaties herkennen en zoek naar de container in het AKS-cluster.
+In the generated Helm chart, the container image is set to *{{ .Values.image.repository }}:{{ .Values.image.tag }}* . The `azds.yaml` file defines *install.set.image.tag* property as *$(tag)* by default, which is used as the value for *{{ .Values.image.tag }}* . By setting the *install.set.image.tag* property in this way, it allows the container image for your application to be tagged in a distinct way when running Azure Dev Spaces. In this specific case, the image is tagged as *\<value from image.repository>:$(tag)* . You must use the *$(tag)* variable as the value of   *install.set.image.tag* in order for Dev Spaces recognize and locate the container in the AKS cluster.
 
-In het bovenstaande voorbeeld `azds.yaml` definieert *install.set.ingress.hosts*. De *install.set.ingress.hosts* eigenschap definieert een indeling voor de host voor de openbare eindpunten. Deze eigenschap gebruikt ook *$(spacePrefix)* , *$(rootSpacePrefix)* , en *$(hostSuffix)* , die de waarden geleverd door de controller zijn. 
+In the above example, `azds.yaml` defines *install.set.ingress.hosts*. The *install.set.ingress.hosts* property defines a host name format for public endpoints. This property also uses *$(spacePrefix)* , *$(rootSpacePrefix)* , and *$(hostSuffix)* , which are values provided by the controller. 
 
-De *$(spacePrefix)* is de naam van de onderliggende dev-ruimte, waarbij de vorm van *SPACENAME.s*. De *$(rootSpacePrefix)* is de naam van de bovenliggende ruimte. Bijvoorbeeld, als *azureuser* is een ruimte onderliggende van *standaard*, de waarde voor *$(rootSpacePrefix)* is *standaard* en de waarde van *$(spacePrefix)* is *azureuser.s*. Als de ruimte niet een spatie onderliggende *$(spacePrefix)* is leeg. Bijvoorbeeld, als de *standaard* ruimte heeft geen bovenliggende ruimte, de waarde voor *$(rootSpacePrefix)* is *standaard* en de waarde van *$(spacePrefix)* is leeg. De *$(hostSuffix)* is een DNS-achtervoegsel dat verwijst naar de Azure Dev spaties Controller voor binnenkomend verkeer die in uw AKS-cluster wordt uitgevoerd. Dit DNS-achtervoegsel komt overeen met een DNS-vermelding van het jokerteken, bijvoorbeeld  *\*. RANDOM_VALUE.eus.azds.IO*, die is gemaakt wanneer de controller Azure Dev spaties naar uw AKS-cluster is toegevoegd.
+The *$(spacePrefix)* is the name of the child dev space, which takes the form of *SPACENAME.s*. The *$(rootSpacePrefix)* is the name of the parent space. For example, if *azureuser* is a child space of *default*, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is *azureuser.s*. If the space is not a child space, *$(spacePrefix)* is blank. For example, if the *default* space has no parent space, the value for *$(rootSpacePrefix)* is *default* and the value of *$(spacePrefix)* is blank. The *$(hostSuffix)* is a DNS suffix that points to the Azure Dev Spaces Ingress Controller that runs in your AKS cluster. This DNS suffix corresponds to a wildcard DNS entry, for example *\*.RANDOM_VALUE.eus.azds.io*, that was created when the Azure Dev Spaces controller was added to your AKS cluster.
 
-In het bovenstaande `azds.yaml` -bestand, kunt u ook bijwerken *install.set.ingress.hosts* te wijzigen van de hostnaam van uw toepassing. Bijvoorbeeld, als u wilt vereenvoudigen, de hostnaam van uw toepassing vanuit *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* naar *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
+In the above `azds.yaml` file, you could also update *install.set.ingress.hosts* to change the host name of your application. For example, if you wanted to simplify the hostname of your application from *$(spacePrefix)$(rootSpacePrefix)webfrontend$(hostSuffix)* to *$(spacePrefix)$(rootSpacePrefix)web$(hostSuffix)* .
 
-Voor het bouwen van de container voor uw toepassing gebruikmaakt van de controller de onderstaande secties van de `azds.yaml` configuratiebestand:
+To build the container for your application, the controller uses the below sections of the `azds.yaml` configuration file:
 
 ```yaml
 build:
@@ -361,13 +361,13 @@ configurations:
 ...
 ```
 
-De controller maakt gebruik van een docker-bestand naar uw toepassing bouwen en uitvoeren.
+The controller uses a Dockerfile to build and run your application.
 
-De *build.context* eigenschap geeft een lijst van de map waar de docker-bestanden bestaan. De *build.dockerfile* eigenschap bepaalt de naam van de docker-bestand voor het bouwen van de productieversie van de toepassing. De *configurations.develop.build.dockerfile* eigenschap configureert u de naam van de docker-bestand voor de versie van de ontwikkeling van de toepassing.
+The *build.context* property lists the directory where the Dockerfiles exist. The *build.dockerfile* property defines the name of the Dockerfile for building the production version of the application. The *configurations.develop.build.dockerfile* property configures the name of the Dockerfile for the development version of the application.
 
-Met andere docker-bestanden voor de ontwikkeling en productie, kunt u bepaalde dingen tijdens de ontwikkeling en uitschakelen van de items voor productie-implementaties. Bijvoorbeeld, kunt u fouten gaat opsporen of een uitgebreidere logboekregistratie tijdens de ontwikkeling en uitschakelen in een productieomgeving. U kunt deze eigenschappen ook bijwerken als uw docker-bestanden zijn een andere naam of op een andere locatie.
+Having different Dockerfiles for development and production allows you to enable certain things during development and disable those items for production deployments. For example, you can enable debugging or more verbose logging during development and disable in a production environment. You can also update these properties if your Dockerfiles are named differently or are in a different location.
 
-Als u wilt, kunt u snel herhalen tijdens de ontwikkeling wordt Azure Dev spaties wijzigingen uit uw lokale project synchroniseren en incrementeel bijwerken van uw toepassing. De onderstaande sectie in de `azds.yaml` configuratiebestand wordt gebruikt voor het configureren van de synchronisatie en bijwerken:
+To help you rapidly iterate during development, Azure Dev Spaces will sync changes from your local project and incrementally update your application. The below section in the `azds.yaml` configuration file is used to configure the sync and update:
 
 ```yaml
 ...
@@ -388,59 +388,59 @@ configurations:
 ...
 ```
 
-De bestanden en mappen die wijzigingen worden gesynchroniseerd, worden vermeld in de *configurations.develop.container.sync* eigenschap. Deze mappen zijn in eerste instantie gesynchroniseerd tijdens het uitvoeren van de `up` opdracht evenals wanneer wijzigingen worden gedetecteerd. Als er extra of andere mappen hebt die zijn gesynchroniseerd met de adresruimte van uw dev, kunt u deze eigenschap kunt wijzigen.
+The files and directories that will sync changes are listed in the *configurations.develop.container.sync* property. These directories are synced initially when you run the `up` command as well as when changes are detected. If there are additional or different directories you would like synced to your dev space, you can change this property.
 
-De *configurations.develop.container.iterate.buildCommands* -eigenschap geeft over het bouwen van de toepassing in een scenario voor het ontwikkelen. De *configurations.develop.container.command* eigenschap bevat de opdracht voor het uitvoeren van de toepassing in een scenario voor het ontwikkelen. U kunt een van deze eigenschappen bijwerken als er extra build of runtime vlaggen of parameters die u wilt gebruiken tijdens de ontwikkeling.
+The *configurations.develop.container.iterate.buildCommands* property specifies how to build the application in a development scenario. The *configurations.develop.container.command* property provides the command for running the application in a development scenario. You may want to update either of these properties if there are additional build or runtime flags or parameters you would like to use during development.
 
-De *configurations.develop.container.iterate.processesToKill* geeft een lijst van de processen afsluiten om de toepassing te stoppen. Mogelijk wilt u deze eigenschap bijwerken als u wilt wijzigen van het gedrag voor opnieuw opstarten van uw toepassing tijdens de ontwikkeling. Als u bijvoorbeeld de *configurations.develop.container.iterate.buildCommands* of *configurations.develop.container.command* eigenschappen te wijzigen hoe de toepassing is gemaakt of aan de slag, u mogelijk wilt wijzigen welke processen zijn gestopt.
+The *configurations.develop.container.iterate.processesToKill* lists the processes to kill to stop the application. You may want to update this property if you want to change the restart behavior of your application during development. For example, if you updated the *configurations.develop.container.iterate.buildCommands* or *configurations.develop.container.command* properties to change how the application is built or started, you may need to change what processes are stopped.
 
-Tijdens het voorbereiden van uw code met de `azds prep` opdracht, u hebt de mogelijkheid van het toevoegen van de `--public` vlag. Toevoegen van de `--public` vlag maakt u een openbaar toegankelijke URL voor uw toepassing. Als u deze vlag niet opgeeft, is de toepassing alleen toegankelijk binnen het cluster of met behulp van de localhost-tunnel. Nadat u de `azds prep` opdracht, kunt u deze instelling wijzigen de *ingress.enabled* eigenschap in `charts/APPNAME/values.yaml`:
+When preparing your code using the `azds prep` command, you have the option of adding the `--public` flag. Adding the `--public` flag creates a publicly accessible URL for your application. If you omit this flag, the application is only accessible within the cluster or using the localhost tunnel. After you run the `azds prep` command, you can change this setting modifying the *ingress.enabled* property in `charts/APPNAME/values.yaml`:
 
 ```yaml
 ingress:
   enabled: true
 ```
 
-## <a name="debug-your-code"></a>Fouten opsporen in uw code
+## <a name="debug-your-code"></a>Debug your code
 
-U kunt uw toepassing die wordt uitgevoerd in de adresruimte van uw ontwikkelen met behulp van Visual Studio Code of Visual Studio fouten opsporen voor Java, .NET en Node.js-toepassingen. Visual Studio Code en Visual Studio bieden hulpprogramma's om verbinding maken met uw dev-ruimte, start uw toepassing en voeg een debugger toe. Nadat het is uitgevoerd `azds prep`, kunt u uw project openen in Visual Studio Code of Visual Studio. Visual Studio Code of Visual Studio hun eigen configuratiebestanden om verbinding te maken dat is gescheiden van het uitvoeren wordt gegenereerd `azds prep`. Vanuit Visual Studio Code of Visual Studio, kunt u onderbrekingspunten instellen en starten van uw toepassing in de adresruimte van uw dev.
+For Java, .NET and Node.js applications, you can debug your application running directly in your dev space using Visual Studio Code or Visual Studio. Visual Studio Code and Visual Studio provide tooling to connect to your dev space, launch your application, and attach a debugger. After running `azds prep`, you can open your project in Visual Studio Code or Visual Studio. Visual Studio Code or Visual Studio will generate their own configuration files for connecting which is separate from running `azds prep`. From within Visual Studio Code or Visual Studio, you can set breakpoints and launch your application to your dev space.
 
-![Foutopsporing van uw code](media/get-started-node/debug-configuration-nodejs2.png)
+![Debugging your code](media/get-started-node/debug-configuration-nodejs2.png)
 
-Wanneer u uw toepassing met behulp van Visual Studio Code of Visual Studio voor foutopsporing starten, deze verwerken starten en verbinding maken met uw dev-ruimte op dezelfde manier als actief `azds up`. De client-side-hulpmiddelen in Visual Studio Code en Visual Studio bieden ook een extra parameter met de specifieke informatie voor foutopsporing. De parameter bevat de naam van het foutopsporingsprogramma afbeelding, de locatie van het foutopsporingsprogramma binnen in de afbeelding van de foutopsporing en de bestemmingslocatie van de in de container van de toepassing naar de map foutopsporingsprogramma koppelen.
+When you launch your application using Visual Studio Code or Visual Studio for debugging, they handle launching and connecting to your dev space in the same way as running `azds up`. The client-side tooling in Visual Studio Code and Visual Studio also provide an additional parameter with specific information for debugging. The parameter contains the name of debugger image, the location of the debugger within in the debugger's image, and the destination location within the application's container to mount the debugger folder.
 
-De installatiekopie van het foutopsporingsprogramma wordt automatisch bepaald door de client-side-hulpprogramma's. Een methode die vergelijkbaar is met de gebruikt tijdens de docker-bestand wordt gebruikt en Helm-diagram te genereren bij het uitvoeren van `azds prep`. Nadat het foutopsporingsprogramma in de afbeelding van de toepassing is gekoppeld, deze wordt uitgevoerd met behulp van `azds exec`.
+The debugger image is automatically determined by the client-side tooling. It uses a method similar to the one used during Dockerfile and Helm chart generate when running `azds prep`. After the debugger is mounted in the application's image, it is run using `azds exec`.
 
-## <a name="sharing-a-dev-space"></a>Delen van een dev-ruimte
+## <a name="sharing-a-dev-space"></a>Sharing a dev space
 
-Als u werkt met een team, kunt u [delen van een dev-ruimte op een hele team](how-to/share-dev-spaces.md) en afgeleide dev opslagruimten te maken. Een dev-ruimte kan worden gebruikt door iedereen met Inzender-toegang tot de resourcegroep de dev-ruimte.
+When working with a team, you can [share a dev space across an entire team](how-to/share-dev-spaces.md) and create derived dev spaces. A dev space can be used by anyone with contributor access to the dev space's resource group.
 
-U kunt ook een nieuwe dev-ruimte die is afgeleid van een andere dev ruimte maken. Wanneer u een spatie afgeleide ontwikkelen, maakt de *azds.io/bovenliggende-ruimte = naam van een BOVENLIGGENDE ruimte* label wordt toegevoegd aan de naamruimte van de afgeleide dev-ruimte. Ook worden alle toepassingen vanuit de bovenliggende dev-ruimte gedeeld met de afgeleide dev-ruimte. Als u een bijgewerkte versie van de afgeleide dev-ruimte van een toepassing implementeert, bestaat deze alleen in de afgeleide dev-ruimte en de bovenliggende dev-ruimte blijft ongewijzigd. U kunt maximaal drie niveaus van afgeleide dev-adresruimten hebben of *grootvader* spaties.
+You can also create a new dev space that is derived from another dev space. When you create a derived dev space, the *azds.io/parent-space=PARENT-SPACE-NAME* label is added to the derived dev space's namespace. Also, all applications from the parent dev space are shared with the derived dev space. If you deploy an updated version of an application to the derived dev space, it will only exist in the derived dev space and the parent dev space will remain unaffected. You can have a maximum of three levels of derived dev spaces or *grandparent* spaces.
 
-De afgeleide dev-ruimte wordt ook op een route aanvragen tussen een eigen toepassingen en de toepassingen van de bovenliggende gedeeld. De routering werkt volgens het probeert te route-aanvraag aan een toepassing in de ruimte afgeleide ontwikkelen en terug te vallen op de gedeelde toepassing vanuit de bovenliggende dev-ruimte. De routering wordt terugvallen op de gedeelde toepassing in de ruimte grootvader als de toepassing zich niet in de bovenliggende ruimte.
+The derived dev space will also intelligently route requests between its own applications and the applications shared from its parent. The routing works by attempting to route request to an application in the derived dev space and falling back to the shared application from the parent dev space. The routing will fall back to the shared application in the grandparent space if the application is not in the parent space.
 
 Bijvoorbeeld:
-* De ruimte dev *standaard* toepassingen *serviceA* en *serviceB* .
-* De ruimte dev *azureuser* is afgeleid van *standaard*.
-* Een bijgewerkte versie van *serviceA* wordt geïmplementeerd op *azureuser*.
+* The dev space *default* has applications *serviceA* and *serviceB* .
+* The dev space *azureuser* is derived from *default*.
+* An updated version of *serviceA* is deployed to *azureuser*.
 
-Bij het gebruik van *azureuser*, alle aanvragen naar *serviceA* worden doorgestuurd naar de bijgewerkte versie in *azureuser*. Een aanvraag voor *serviceB* wordt eerst geprobeerd om te worden doorgestuurd naar de *azureuser* versie van *serviceB*. Omdat deze niet bestaat, wordt deze doorgestuurd naar de *standaard* versie van *serviceB*. Als de *azureuser* versie van *serviceA* wordt verwijderd, alle aanvragen naar *serviceA* wordt terugvallen op met behulp van de *standaard* versie van *serviceA*.
+When using *azureuser*, all requests to *serviceA* will be routed to the updated version in *azureuser*. A request to *serviceB* will first try to be routed to the *azureuser* version of *serviceB*. Since it does not exist, it will be routed to the *default* version of *serviceB*. If the *azureuser* version of *serviceA* is removed, all requests to *serviceA* will fall back to using the *default* version of *serviceA*.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt aan de slag met Azure Dev spaties, Zie de volgende snelstartgidsen:
+To get started using Azure Dev Spaces, see the following quickstarts:
 
-* [Java met CLI en Visual Studio Code](quickstart-java.md)
-* [.NET core met CLI en Visual Studio Code](quickstart-netcore.md)
-* [.NET core met Visual Studio](quickstart-netcore-visualstudio.md)
-* [Node.js met CLI en Visual Studio Code](quickstart-nodejs.md)
+* [Java with CLI and Visual Studio Code](quickstart-java.md)
+* [.NET Core with CLI and Visual Studio Code](quickstart-netcore.md)
+* [.NET Core with Visual Studio](quickstart-netcore-visualstudio.md)
+* [Node.js with CLI and Visual Studio Code](quickstart-nodejs.md)
 
-Als u wilt beginnen met ontwikkelen in teamverband, Zie de volgende praktische artikelen:
+To get started with team development, see the following how-to articles:
 
-* [Teamontwikkeling - Java met CLI en Visual Studio Code](team-development-java.md)
-* [Teamontwikkeling - .NET Core met CLI en Visual Studio Code](team-development-netcore.md)
-* [Teamontwikkeling - .NET Core met Visual Studio](team-development-netcore-visualstudio.md)
-* [Teamontwikkeling - Node.js met CLI en Visual Studio Code](team-development-nodejs.md)
+* [Team Development - Java with CLI and Visual Studio Code](team-development-java.md)
+* [Team Development - .NET Core with CLI and Visual Studio Code](team-development-netcore.md)
+* [Team Development - .NET Core with Visual Studio](team-development-netcore-visualstudio.md)
+* [Team Development - Node.js with CLI and Visual Studio Code](team-development-nodejs.md)
 
 
 

@@ -1,140 +1,141 @@
 ---
-title: Hive-query's in azure HDInsight optimaliseren
-description: In dit artikel wordt beschreven hoe u uw Apache Hive query's voor Hadoop in HDInsight optimaliseert.
+title: Optimize Hive queries in Azure HDInsight
+description: This article describes how to optimize your Apache Hive queries for Hadoop in HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/21/2019
-ms.openlocfilehash: 7624f15e878e13a93b5b5f395ef9cf9af48c95e4
-ms.sourcegitcommit: 1c9858eef5557a864a769c0a386d3c36ffc93ce4
+ms.date: 11/14/2019
+ms.openlocfilehash: 33b000d0ca5cdd4af2ed57c5db6e71ae5a1e4c58
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71104520"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215797"
 ---
-# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive query's optimaliseren in azure HDInsight
+# <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Optimize Apache Hive queries in Azure HDInsight
 
-In azure HDInsight zijn er verschillende cluster typen en-technologieën die Apache Hive query's kunnen uitvoeren. Wanneer u uw HDInsight-cluster maakt, kiest u het juiste cluster type om de prestaties te optimaliseren voor de behoeften van uw werk belasting.
+In Azure HDInsight, there are several cluster types and technologies that can run Apache Hive queries. When you create your HDInsight cluster, choose the appropriate cluster type to help optimize performance for your workload needs.
 
-Kies bijvoorbeeld **interactieve query** cluster type om te optimaliseren voor ad hoc, interactieve query's. Kies Apache **Hadoop** -cluster type om te optimaliseren voor Hive-query's die als batch proces worden gebruikt. **Spark** -en **HBase** -cluster typen kunnen ook Hive-query's uitvoeren. Zie [Wat is Apache Hive en HiveQL in azure HDInsight?](hadoop/hdinsight-use-hive.md)voor meer informatie over het uitvoeren van Hive-query's op verschillende typen HDInsight-clusters.
+For example, choose **Interactive Query** cluster type to optimize for ad hoc, interactive queries. Choose Apache **Hadoop** cluster type to optimize for Hive queries used as a batch process. **Spark** and **HBase** cluster types can also run Hive queries. For more information on running Hive queries on various HDInsight cluster types, see [What is Apache Hive and HiveQL on Azure HDInsight?](hadoop/hdinsight-use-hive.md).
 
-HDInsight-clusters van het Hadoop-cluster type zijn standaard niet geoptimaliseerd voor prestaties. In dit artikel worden enkele van de meest voorkomende methoden voor het optimaliseren van Hive-onderdelen beschreven die u kunt Toep assen op uw query's.
+HDInsight clusters of Hadoop cluster type aren't optimized for performance by default. This article describes some of the most common Hive performance optimization methods that you can apply to your queries.
 
-## <a name="scale-out-worker-nodes"></a>Werk knooppunten uitschalen
+## <a name="scale-out-worker-nodes"></a>Scale out worker nodes
 
-Door het aantal worker-knoop punten in een HDInsight-cluster te verg Roten, kan het werk gebruikmaken van meer toewijzingen en minderers om parallel te worden uitgevoerd. Er zijn twee manieren om uitschalen in HDInsight te verg Roten:
+Increasing the number of worker nodes in an HDInsight cluster allows the work to leverage more mappers and reducers to be run in parallel. There are two ways you can increase scale out in HDInsight:
 
-* Op het moment dat u een cluster maakt, kunt u het aantal worker-knoop punten opgeven met behulp van de Azure Portal, Azure PowerShell of de opdracht regel interface.  Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie. Op de volgende scherm afbeelding ziet u de configuratie van het worker-knoop punt op de Azure Portal:
+* At the time when you create a cluster, you can specify the number of worker nodes using the Azure portal, Azure PowerShell, or command-line interface.  Zie [HDInsight-clusters maken](hdinsight-hadoop-provision-linux-clusters.md) voor meer informatie. The following screenshot shows the worker node configuration on the Azure portal:
   
-    ![Knoop punten van Azure Portal cluster grootte](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-1.png "scaleout_1")
+    ![Azure portal cluster size nodes](./media/hdinsight-hadoop-optimize-hive-query/azure-portal-cluster-configuration-pricing-hadoop.png "scaleout_1")
 
-* Nadat u hebt gemaakt, kunt u het aantal worker-knoop punten ook bewerken om een cluster verder te schalen zonder dat u er een hoeft te maken:
+* After creation, you can also edit the number of worker nodes to scale out a cluster further without recreating one:
 
-    ![Grootte van Azure Portal schaal cluster](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
+    ![Azure portal scale cluster size](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-scaleout-2.png "scaleout_2")
 
-Zie [hdinsight-clusters schalen](hdinsight-scaling-best-practices.md) voor meer informatie over het schalen van hdinsight.
+For more information about scaling HDInsight, see [Scale HDInsight clusters](hdinsight-scaling-best-practices.md)
 
-## <a name="use-apache-tez-instead-of-map-reduce"></a>Apache TEZ gebruiken in plaats van toewijzings reductie
+## <a name="use-apache-tez-instead-of-map-reduce"></a>Use Apache Tez instead of Map Reduce
 
-[Apache TEZ](https://tez.apache.org/) is een alternatieve uitvoerings engine voor de MapReduce-engine. Voor HDInsight-clusters op basis van Linux is TEZ standaard ingeschakeld.
+[Apache Tez](https://tez.apache.org/) is an alternative execution engine to the MapReduce engine. Linux-based HDInsight clusters have Tez enabled by default.
 
-![Overzichts diagram HDInsight Apache TEZ](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
+![HDInsight Apache Tez overview diagram](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-tez-engine.png)
 
-TEZ is sneller omdat:
+Tez is faster because:
 
-* **Voer gerichte acyclische grafiek (dag) uit als één taak in de MapReduce-engine**. Voor de DAG moet elke set mappers worden gevolgd door één set verminderers. Dit leidt ertoe dat meerdere MapReduce-taken worden uitgeschakeld voor elke Hive-query. TEZ heeft deze beperking niet en kan complexe DAG als één taak verwerken, waardoor de opstart overhead van taken wordt geminimaliseerd.
-* **Vermijd overbodige schrijf bewerkingen**. Meerdere taken worden gebruikt voor het verwerken van dezelfde Hive-query in de MapReduce-engine. De uitvoer van elke MapReduce-taak wordt naar HDFS geschreven voor tussenliggende gegevens. Omdat TEZ minimaliseert het aantal taken voor elke Hive-query, kan er onnodig schrijf bewerkingen worden voor komen.
-* **Minimaliseert de opstart vertraging**. TEZ is een betere manier om de vertraging op te lossen door te verminderen van het aantal mappers dat moet worden gestart en verbetert ook de optimalisatie in.
-* **Containers worden opnieuw gebruikt**. Wanneer mogelijke TEZ kunnen containers opnieuw worden gebruikt om ervoor te zorgen dat latentie als gevolg van het starten van containers wordt gereduceerd.
-* **Continue optimalisatie technieken**. De traditionele optimalisatie is uitgevoerd tijdens de compilatie fase. Er is echter meer informatie over de invoer beschikbaar waarmee tijdens runtime betere optimalisatie mogelijk is. TEZ maakt gebruik van voortdurende optimalisatie technieken waarmee het plan verder in de runtime fase kan worden geoptimaliseerd.
+* **Execute Directed Acyclic Graph (DAG) as a single job in the MapReduce engine**. The DAG requires each set of mappers to be followed by one set of reducers. This causes multiple MapReduce jobs to be spun off for each Hive query. Tez doesn't have such constraint and can process complex DAG as one job thus minimizing job startup overhead.
+* **Avoids unnecessary writes**. Multiple jobs are used to process the same Hive query in the MapReduce engine. The output of each MapReduce job is written to HDFS for intermediate data. Since Tez minimizes number of jobs for each Hive query, it's able to avoid unnecessary writes.
+* **Minimizes start-up delays**. Tez is better able to minimize start-up delay by reducing the number of mappers it needs to start and also improving optimization throughout.
+* **Reuses containers**. Whenever possible Tez is able to reuse containers to ensure that latency due to starting up containers is reduced.
+* **Continuous optimization techniques**. Traditionally optimization was done during compilation phase. However more information about the inputs is available that allow for better optimization during runtime. Tez uses continuous optimization techniques that allow it to optimize the plan further into the runtime phase.
 
-Zie [Apache TEZ](https://tez.apache.org/)(Engelstalig) voor meer informatie over deze concepten.
+For more information on these concepts, see [Apache TEZ](https://tez.apache.org/).
 
-U kunt alle Hive-query TEZ inschakelen door de volgende set-opdracht voor het voor voegsel van de query in te stellen:
+You can make any Hive query Tez enabled by prefixing the query with the following set command:
 
 ```hive
 set hive.execution.engine=tez;
 ```
 
-## <a name="hive-partitioning"></a>Hive partitioneren
+## <a name="hive-partitioning"></a>Hive partitioning
 
-I/O-bewerkingen zijn de belangrijkste prestatie knelpunt voor het uitvoeren van Hive-query's. De prestaties kunnen worden verbeterd als de hoeveelheid gegevens die moet worden gelezen, kan worden verminderd. Standaard worden in Hive-query's volledige Hive-tabellen gecontroleerd. Voor query's waarbij alleen een kleine hoeveelheid gegevens moeten worden gescand (bijvoorbeeld query's met filters), maakt dit gedrag onnodig overhead. Met hive-partitionering kunnen Hive-query's alleen toegang krijgen tot de benodigde hoeveelheid gegevens in Hive-tabellen.
+I/O operations are the major performance bottleneck for running Hive queries. The performance can be improved if the amount of data that needs to be read can be reduced. By default, Hive queries scan entire Hive tables. However for queries that only need to scan a small amount of data (for example, queries with filtering), this behavior creates unnecessary overhead. Hive partitioning allows Hive queries to access only the necessary amount of data in Hive tables.
 
-Hive-partitionering wordt geïmplementeerd door de onbewerkte gegevens opnieuw in te delen in nieuwe directory's. Elke partitie heeft een eigen Bestands Directory. De partities worden gedefinieerd door de gebruiker. Het volgende diagram illustreert het partitioneren van een Hive-tabel op basis van het kolom *jaar*. Voor elk jaar wordt een nieuwe map gemaakt.
+Hive partitioning is implemented by reorganizing the raw data into new directories. Each partition has its own file directory. The partitioning is defined by the user. The following diagram illustrates partitioning a Hive table by the column *Year*. A new directory is created for each year.
 
-![HDInsight-Apache Hive partitioneren](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
+![HDInsight Apache Hive partitioning](./media/hdinsight-hadoop-optimize-hive-query/hdinsight-partitioning.png)
 
-Enkele overwegingen voor partitioneren:
+Some partitioning considerations:
 
-* **Niet onder partitie** -partitionering op kolommen met slechts een paar waarden kunnen enkele partities veroorzaken. Bij partitioneren op geslacht worden bijvoorbeeld alleen twee te maken partities gemaakt (mannelijk en vrouwelijk), waardoor de latentie met Maxi maal de helft wordt beperkt.
-* **Maak geen gebruik** van de partitie-aan de andere extreem, waardoor het maken van een partitie in een kolom met een unieke waarde (bijvoorbeeld userid) meerdere partities veroorzaakt. Bij overschrijding van de partitie wordt het namenode van het cluster veel zwaar belast, omdat het een groot aantal directory's moet afhandelen.
-* **Vermijd gegevens scheefheid** : Kies uw partitie sleutel zodanig dat alle partities even groot zijn. Bijvoorbeeld: partitioneren op *status* kolom kan de distributie van gegevens scheef trekken. Omdat de status van Californië een populatie heeft die bijna 30x beter worden is van Vermont, kan de grootte van de partitie mogelijk afnemen en kunnen de prestaties enorm verschillen.
+* **Do not under partition** - Partitioning on columns with only a few values can cause few partitions. For example, partitioning on gender only creates two partitions to be created (male and female), thus only reduce the latency by a maximum of half.
+* **Do not over partition** - On the other extreme, creating a partition on a column with a unique value (for example, userid) causes multiple partitions. Over partition causes much stress on the cluster namenode as it has to handle the large number of directories.
+* **Avoid data skew** - Choose your partitioning key wisely so that all partitions are even size. For example, partitioning on *State* column may skew the distribution of data. Since the state of California has a population almost 30x that of Vermont, the partition size is potentially skewed and performance may vary tremendously.
 
-Als u een partitie tabel wilt maken, gebruikt u de *gepartitioneerde by* -component:
+To create a partition table, use the *Partitioned By* clause:
 
 ```sql
 CREATE TABLE lineitem_part
       (L_ORDERKEY INT, L_PARTKEY INT, L_SUPPKEY INT,L_LINENUMBER INT,
       L_QUANTITY DOUBLE, L_EXTENDEDPRICE DOUBLE, L_DISCOUNT DOUBLE,
       L_TAX DOUBLE, L_RETURNFLAG STRING, L_LINESTATUS STRING,
-      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING, 
+      L_SHIPDATE_PS STRING, L_COMMITDATE STRING, L_RECEIPTDATE STRING,
       L_SHIPINSTRUCT STRING, L_SHIPMODE STRING, L_COMMENT STRING)
 PARTITIONED BY(L_SHIPDATE STRING)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t'
 STORED AS TEXTFILE;
 ```
 
-Zodra de gepartitioneerde tabel is gemaakt, kunt u statische partitionering of dynamische partitionering maken.
+Once the partitioned table is created, you can either create static partitioning or dynamic partitioning.
 
-* **Statische partitionering** betekent dat u al Shard gegevens in de juiste directory's hebt. Met statische partities voegt u Hive-partities hand matig toe op basis van de maplocatie. Het volgende code fragment is een voor beeld.
+* **Static partitioning** means that you have already sharded data in the appropriate directories. With static partitions, you add Hive partitions manually based on the directory location. The following code snippet is an example.
   
    ```sql
    INSERT OVERWRITE TABLE lineitem_part
-   PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’)
-   SELECT * FROM lineitem 
-   WHERE lineitem.L_SHIPDATE = ‘5/23/1996 12:00:00 AM’
+   PARTITION (L_SHIPDATE = '5/23/1996 12:00:00 AM')
+   SELECT * FROM lineitem
+   WHERE lineitem.L_SHIPDATE = '5/23/1996 12:00:00 AM'
 
-   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = ‘5/23/1996 12:00:00 AM’))
-   LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
+   ALTER TABLE lineitem_part ADD PARTITION (L_SHIPDATE = '5/23/1996 12:00:00 AM')
+   LOCATION 'wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
 
-* **Dynamische partitionering** houdt in dat componenten automatisch partities voor u moeten maken. Omdat u de partitie tabel al hebt gemaakt vanuit de faserings tabel, hoeft u alleen gegevens in de gepartitioneerde tabel in te voegen:
+* **Dynamic partitioning** means that you want Hive to create partitions automatically for you. Since you've already created the partitioning table from the staging table, all you need to do is insert data to the partitioned table:
   
    ```hive
    SET hive.exec.dynamic.partition = true;
    SET hive.exec.dynamic.partition.mode = nonstrict;
    INSERT INTO TABLE lineitem_part
    PARTITION (L_SHIPDATE)
-   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY , 
+   SELECT L_ORDERKEY as L_ORDERKEY, L_PARTKEY as L_PARTKEY,
        L_SUPPKEY as L_SUPPKEY, L_LINENUMBER as L_LINENUMBER,
        L_QUANTITY as L_QUANTITY, L_EXTENDEDPRICE as L_EXTENDEDPRICE,
        L_DISCOUNT as L_DISCOUNT, L_TAX as L_TAX, L_RETURNFLAG as L_RETURNFLAG,
        L_LINESTATUS as L_LINESTATUS, L_SHIPDATE as L_SHIPDATE_PS,
        L_COMMITDATE as L_COMMITDATE, L_RECEIPTDATE as L_RECEIPTDATE,
-       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE, 
+       L_SHIPINSTRUCT as L_SHIPINSTRUCT, L_SHIPMODE as L_SHIPMODE,
        L_COMMENT as L_COMMENT, L_SHIPDATE as L_SHIPDATE FROM lineitem;
    ```
 
-Zie [gepartitioneerde tabellen](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)voor meer informatie.
+For more information, see [Partitioned Tables](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables).
 
-## <a name="use-the-orcfile-format"></a>De ORCFile-indeling gebruiken
-Hive ondersteunt verschillende bestands indelingen. Bijvoorbeeld:
+## <a name="use-the-orcfile-format"></a>Use the ORCFile format
 
-* **Text**: de standaard bestands indeling en werkt met de meeste scenario's.
-* **Avro**: geschikt voor interoperabiliteits scenario's.
-* **Orc/Parquet**: het meest geschikt voor prestaties.
+Hive supports different file formats. Bijvoorbeeld:
 
-De indeling ORC (geoptimaliseerde rij in kolommen) is een zeer efficiënte manier om Hive-gegevens op te slaan. Vergeleken met andere indelingen heeft ORC de volgende voor delen:
+* **Text**: the default file format and works with most scenarios.
+* **Avro**: works well for interoperability scenarios.
+* **ORC/Parquet**: best suited for performance.
 
-* ondersteuning voor complexe typen, waaronder DateTime en complexe en semi-gestructureerde typen.
-* Maxi maal 70% compressie.
-* indexeert elke 10.000 rijen, waarmee rijen overs Laan worden toegestaan.
-* een aanzienlijke verwijdering tijdens runtime.
+ORC (Optimized Row Columnar) format is a highly efficient way to store Hive data. Compared to other formats, ORC has the following advantages:
 
-Als u de ORC-indeling wilt inschakelen, maakt u eerst een tabel met de-component *opgeslagen als Orc*:
+* support for complex types including DateTime and complex and semi-structured types.
+* up to 70% compression.
+* indexes every 10,000 rows, which allow skipping rows.
+* a significant drop in run-time execution.
+
+To enable ORC format, you first create a table with the clause *Stored as ORC*:
 
 ```sql
 CREATE TABLE lineitem_orc_part
@@ -147,15 +148,15 @@ PARTITIONED BY(L_SHIPDATE STRING)
 STORED AS ORC;
 ```
 
-Vervolgens voegt u gegevens in de tabel ORC in vanuit de faserings tabel. Bijvoorbeeld:
+Next, you insert data to the ORC table from the staging table. Bijvoorbeeld:
 
 ```sql
 INSERT INTO TABLE lineitem_orc
-SELECT L_ORDERKEY as L_ORDERKEY, 
-         L_PARTKEY as L_PARTKEY , 
+SELECT L_ORDERKEY as L_ORDERKEY,
+         L_PARTKEY as L_PARTKEY ,
          L_SUPPKEY as L_SUPPKEY,
          L_LINENUMBER as L_LINENUMBER,
-         L_QUANTITY as L_QUANTITY, 
+         L_QUANTITY as L_QUANTITY,
          L_EXTENDEDPRICE as L_EXTENDEDPRICE,
          L_DISCOUNT as L_DISCOUNT,
          L_TAX as L_TAX,
@@ -163,39 +164,39 @@ SELECT L_ORDERKEY as L_ORDERKEY,
          L_LINESTATUS as L_LINESTATUS,
          L_SHIPDATE as L_SHIPDATE,
          L_COMMITDATE as L_COMMITDATE,
-         L_RECEIPTDATE as L_RECEIPTDATE, 
+         L_RECEIPTDATE as L_RECEIPTDATE,
          L_SHIPINSTRUCT as L_SHIPINSTRUCT,
          L_SHIPMODE as L_SHIPMODE,
          L_COMMENT as L_COMMENT
 FROM lineitem;
 ```
 
-Meer informatie over de ORC-indeling vindt u in de [hand leiding voor de Apache Hive taal](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
+You can read more on the ORC format in the [Apache Hive Language manual](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+ORC).
 
 ## <a name="vectorization"></a>Vectorization
 
-Met Vectorization kan een batch van 1024 rijen samen worden verwerkt in plaats van één rij tegelijk te verwerken. Dit betekent dat eenvoudige bewerkingen sneller worden uitgevoerd omdat minder interne code moet worden uitgevoerd.
+Vectorization allows Hive to process a batch of 1024 rows together instead of processing one row at a time. It means that simple operations are done faster because less internal code needs to run.
 
-Als u de vectorization voor voegsel van uw Hive-query wilt inschakelen met de volgende instelling:
+To enable vectorization prefix your Hive query with the following setting:
 
 ```hive
 set hive.vectorized.execution.enabled = true;
 ```
 
-Zie voor meer informatie [Vector query's uitvoeren](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
+For more information, see [Vectorized query execution](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution).
 
-## <a name="other-optimization-methods"></a>Andere optimalisatie methoden
+## <a name="other-optimization-methods"></a>Other optimization methods
 
-Er zijn meer optimalisatie methoden die u kunt overwegen, bijvoorbeeld:
+There are more optimization methods that you can consider, for example:
 
-* **Bucket van onderdelen:** een techniek waarmee grote gegevens sets kunnen worden geclusterd of gesegmenteerd om de query prestaties te optimaliseren.
-* **Deelname aan optimalisatie:** optimalisatie van de query-uitvoerings planning van de component om de efficiëntie van deelname te verbeteren en de behoefte aan gebruikers hints te verminderen. Zie [deelname aan optimalisatie](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)voor meer informatie.
-* **Verkleiners verhogen**.
+* **Hive bucketing:** a technique that allows to cluster or segment large sets of data to optimize query performance.
+* **Join optimization:** optimization of Hive's query execution planning to improve the efficiency of joins and reduce the need for user hints. For more information, see [Join optimization](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization).
+* **Increase Reducers**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u verschillende algemene optimalisatie methoden voor Hive-query's geleerd. Raadpleeg de volgende artikelen voor meer informatie:
+In this article, you have learned several common Hive query optimization methods. To learn more, see the following articles:
 
-* [Apache Hive in HDInsight gebruiken](hadoop/hdinsight-use-hive.md)
-* [Vertraagde vlucht gegevens analyseren met behulp van interactieve Query's in HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
-* [Twitter-gegevens analyseren met Apache Hive in HDInsight](hdinsight-analyze-twitter-data-linux.md)
+* [Use Apache Hive in HDInsight](hadoop/hdinsight-use-hive.md)
+* [Analyze flight delay data by using Interactive Query in HDInsight](/azure/hdinsight/interactive-query/interactive-query-tutorial-analyze-flight-data)
+* [Analyze Twitter data using Apache Hive in HDInsight](hdinsight-analyze-twitter-data-linux.md)

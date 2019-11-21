@@ -1,94 +1,94 @@
 ---
 title: Wat is Windows Virtual Desktop? - Azure
-description: Een overzicht van Windows virtueel bureau blad.
+description: An overview of Windows Virtual Desktop.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 08/07/2019
+ms.date: 11/19/2019
 ms.author: helohr
-ms.openlocfilehash: 4db9e1e812390f173da89a508c1dbc6782f4454f
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5ae6c30c595c2e3c4c7ce90d6ab208e50722bfc2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74119994"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227703"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Wat is Windows Virtual Desktop? 
 
-Virtueel bureau blad van Windows is een desktop-en app Virtualization-service die in de Cloud wordt uitgevoerd.
+Windows Virtual Desktop is a desktop and app virtualization service that runs on the cloud.
 
-U kunt het volgende doen wanneer u Windows virtueel bureau blad op Azure uitvoert:
+Here’s what you can do when you run Windows Virtual Desktop on Azure:
 
-* Een Windows 10-implementatie met meerdere sessies instellen die een volledige Windows 10 biedt met schaal baarheid
-* Virtualiseren van Office 365 ProPlus en optimaliseer dit om uit te voeren in virtuele scenario's met meerdere gebruikers
-* Virtuele Windows 7-Bureau bladen bieden met gratis uitgebreide beveiligings updates
-* Uw bestaande Extern bureaublad-services (RDS) en Windows Server-Desk tops en-apps naar elke computer brengen
-* Zowel Desk tops als apps virtualiseren
-* Windows 10-, Windows Server-en Windows 7-Desk tops en-apps beheren met een uniforme beheer ervaring
+* Set up a multi-session Windows 10 deployment that delivers a full Windows 10 with scalability
+* Virtualize Office 365 ProPlus and optimize it to run in multi-user virtual scenarios
+* Provide Windows 7 virtual desktops with free Extended Security Updates
+* Bring your existing Remote Desktop Services (RDS) and Windows Server desktops and apps to any computer
+* Virtualize both desktops and apps
+* Manage Windows 10, Windows Server, and Windows 7 desktops and apps with a unified management experience
 
-## <a name="introductory-video"></a>Introductie video
+## <a name="introductory-video"></a>Introductory video
 
-Meer informatie over virtueel bureau blad van Windows, waarom het uniek is en wat er nieuw is in deze video:
+Learn about Windows Virtual Desktop, why it’s unique, and what’s new in this video:
 
 <br></br><iframe src="https://www.youtube.com/embed/NQFtI3JLtaU" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
-Zie [onze afspeel lijst](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev)voor meer Video's over virtuele Windows-Bureau bladen.
+For more videos about Windows Virtual Desktop, see [our playlist](https://www.youtube.com/watch?v=NQFtI3JLtaU&list=PLXtHYVsvn_b8KAKw44YUpghpD6lg-EHev).
 
 ## <a name="key-capabilities"></a>Belangrijkste mogelijkheden
 
-Met Windows virtueel bureau blad kunt u een schaal bare en flexibele omgeving instellen:
+With Windows Virtual Desktop, you can set up a scalable and flexible environment:
 
-* Maak een volledige bureau blad-virtualisatiehost in uw Azure-abonnement zonder extra gateway servers uit te voeren.
-* Publiceer zoveel hostgroepen als u nodig hebt om uw diverse werk belastingen te kunnen verwerken.
-* Neem uw eigen installatie kopie voor de werk belasting van de productie of test vanuit de Azure Gallery.
-* Kosten verlagen met gegroepeerde, multi-sessie resources. Met de nieuwe Windows 10 Enter prise-functionaliteit voor meerdere sessies voor Windows Virtual Desktop en de functie sessiehost (Extern bureaublad Session Host) in Windows Server, kunt u het aantal virtuele machines en de overhead van het besturings systeem (OS) aanzienlijk verminderen terwijl het nog steeds u kunt dezelfde resources voor uw gebruikers opgeven.
-* Geef individueel eigendom op via persoonlijke (permanente) Bureau bladen.
+* Create a full desktop virtualization environment in your Azure subscription without having to run any additional gateway servers.
+* Publish as many host pools as you need to accommodate your diverse workloads.
+* Bring your own image for production workloads or test from the Azure Gallery.
+* Reduce costs with pooled, multi-session resources. With the new Windows 10 Enterprise multi-session capability exclusive to Windows Virtual Desktop and Remote Desktop Session Host (RDSH) role on Windows Server, you can greatly reduce the number of virtual machines and operating system (OS) overhead while still providing the same resources to your users.
+* Provide individual ownership through personal (persistent) desktops.
 
-U kunt virtuele Bureau bladen implementeren en beheren:
+You can deploy and manage virtual desktops:
 
-* Gebruik de Windows Power shell-en REST-interfaces van het virtuele bureau blad om de hostgroepen te configureren, app-groepen te maken, gebruikers toe te wijzen en resources te publiceren.
-* Volledig bureau blad of afzonderlijke externe apps publiceren vanuit één hostgroep, afzonderlijke app-groepen maken voor verschillende groepen gebruikers, of zelfs gebruikers toewijzen aan meerdere app-groepen om het aantal installatie kopieën te verminderen.
-* Bij het beheren van uw omgeving gebruikt u ingebouwde gedelegeerde toegang om rollen toe te wijzen en diagnostische gegevens te verzamelen om inzicht te krijgen in verschillende configuratie-of gebruikers fouten.
-* Gebruik de nieuwe service voor diagnostische gegevens om fouten op te lossen.
-* Beheer alleen de installatie kopie en de virtuele machines, niet de infra structuur. U hoeft niet persoonlijk de Extern bureaublad-functies te beheren, zoals u dat met Extern bureaublad-services kunt doen, maar alleen de virtuele machines in uw Azure-abonnement.
+* Use the Windows Virtual Desktop PowerShell and REST interfaces to configure the host pools, create app groups, assign users, and publish resources.
+* Publish full desktop or individual remote apps from a single host pool, create individual app groups for different sets of users, or even assign users to multiple app groups to reduce the number of images.
+* As you manage your environment, use built-in delegated access to assign roles and collect diagnostics to understand various configuration or user errors.
+* Use the new Diagnostics service to troubleshoot errors.
+* Only manage the image and virtual machines, not the infrastructure. You don't need to personally manage the Remote Desktop roles like you do with Remote Desktop Services, just the virtual machines in your Azure subscription.
 
-U kunt ook gebruikers toewijzen en verbinden met uw virtuele Bureau bladen:
+You can also assign and connect users to your virtual desktops:
 
-* Na de toewijzing kunnen gebruikers een virtueel-bureaubladclient van Windows starten om gebruikers te verbinden met hun gepubliceerde Windows-Bureau bladen en-toepassingen. U kunt vanaf elk apparaat verbinding maken via een systeem eigen toepassing op uw apparaat of op de Windows Virtual Desktop HTML5-webclient.
-* Stel gebruikers veilig in via omgekeerde verbindingen met de service. u hoeft geen binnenkomende poorten te laten staan.
+* Once assigned, users can launch any Windows Virtual Desktop client to connect users to their published Windows desktops and applications. Connect from any device through either a native application on your device or the Windows Virtual Desktop HTML5 web client.
+* Securely establish users through reverse connections to the service, so you never have to leave any inbound ports open.
 
 ## <a name="requirements"></a>Vereisten
 
-Er zijn enkele dingen die u nodig hebt om virtuele Windows-Bureau bladen in te stellen en uw gebruikers te verbinden met hun Windows-Bureau bladen en-toepassingen.
+There are a few things you need to set up Windows Virtual Desktop and successfully connect your users to their Windows desktops and applications.
 
-We willen ondersteuning voor de volgende besturings systemen toevoegen, dus zorg ervoor dat u over de [juiste licenties](https://azure.microsoft.com/pricing/details/virtual-desktop/) voor uw gebruikers beschikt op basis van het bureau blad en de apps die u wilt implementeren:
+We plan to add support for the following OSes, so make sure you have the [appropriate licenses](https://azure.microsoft.com/pricing/details/virtual-desktop/) for your users based on the desktop and apps you plan to deploy:
 
-|OS|Vereiste licentie|
+|Besturingssysteem|Required license|
 |---|---|
-|Windows 10 Enter prise-meerdere sessies of Windows 10 Enter prise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 10 Enterprise multi-session or Windows 10 Enterprise|Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
 |Windows 7 Enterprise |Microsoft 365 E3, E5, A3, A5, F1, Business<br>Windows E3, E5, A3, A5|
-|Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) met Software Assurance|
+|Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) with Software Assurance|
 
-Uw infra structuur heeft de volgende zaken nodig om virtueel bureau blad van Windows te ondersteunen:
+Your infrastructure needs the following things to support Windows Virtual Desktop:
 
 * An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* Een Windows Server-Active Directory gesynchroniseerd met Azure Active Directory. U kunt dit configureren met een van de volgende opties:
-  * Azure AD Connect (voor hybride organisaties)
-  * Azure AD Domain Services (voor hybride of Cloud organisaties)
-* Een Azure-abonnement dat een virtueel netwerk bevat dat of die is verbonden met de Windows Server-Active Directory
+* A Windows Server Active Directory in sync with Azure Active Directory. You can configure this with one of the following:
+  * Azure AD Connect (for hybrid organizations)
+  * Azure AD Domain Services (for hybrid or cloud organizations)
+* An Azure subscription that contains a virtual network that either contains or is connected to the Windows Server Active Directory
   
-De virtuele machines van Azure die u maakt voor het virtuele bureau blad van Windows, moeten zijn:
+The Azure virtual machines you create for Windows Virtual Desktop must be:
 
-* [Standaard lid](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) van een domein of een [hybride AD-join](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtuele machines kunnen geen deel uitmaken van Azure AD.
-* Een van de volgende [ondersteunde installatie kopieën van het besturings systeem](#supported-virtual-machine-os-images)uitvoeren.
+* [Standard domain-joined](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) or [Hybrid AD-joined](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtual machines can't be Azure AD-joined.
+* Running one of the following [supported OS images](#supported-virtual-machine-os-images).
 
 >[!NOTE]
->Als u een Azure-abonnement nodig hebt, kunt u [zich aanmelden voor een gratis proef versie van één maand](https://azure.microsoft.com/free/). Als u de gratis proef versie van Azure gebruikt, moet u Azure AD Domain Services gebruiken om uw Windows Server-Active Directory gesynchroniseerd te laten met Azure Active Directory.
+>If you need an Azure subscription, you can [sign up for a one-month free trial](https://azure.microsoft.com/free/). If you're using the free trial version of Azure, you should use Azure AD Domain Services to keep your Windows Server Active Directory in sync with Azure Active Directory.
 
-De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, moeten uitgaande TCP 443-toegang hebben tot de volgende Url's:
+The Azure virtual machines you create for Windows Virtual Desktop must have outbound TCP 443 access to the following URLs:
 
-* *. wvd.microsoft.com
+* *.wvd.microsoft.com
 * *.blob.core.windows.net
 * *.core.windows.net
 * *.servicebus.windows.net
@@ -96,44 +96,44 @@ De virtuele machines van Azure die u voor virtuele Windows-Bureau bladen maakt, 
 * catalogartifact.azureedge.net
 
 >[!NOTE]
->Het openen van deze Url's is essentieel voor een betrouw bare implementatie van een virtueel bureau blad in Windows. Het blok keren van de toegang tot deze Url's wordt niet ondersteund en heeft invloed op de service functionaliteit. Deze Url's zijn alleen van toepassing op virtuele bureau blad-sites en-bronnen van Windows en bevatten geen URL'S voor andere services, zoals Azure AD.
+>Opening these URLs is essential for a reliable Windows Virtual Desktop deployment. Blocking access to these URLs is unsupported and will affect service functionality. These URLs only correspond to Windows Virtual Desktop sites and resources, and do not include URLS for other services like Azure AD.
 
-Virtueel bureau blad van Windows bestaat uit de Windows-Desk tops en-apps die u levert aan gebruikers en de beheer oplossing, die als een service op Azure wordt gehost door micro soft. Desk tops en apps kunnen worden geïmplementeerd op virtuele machines (Vm's) in elke Azure-regio en de beheer oplossing en gegevens voor deze Vm's bevinden zich in de Verenigde Staten. Dit kan ertoe leiden dat gegevens worden overgedragen naar de Verenigde Staten.
+Windows Virtual Desktop comprises the Windows desktops and apps you deliver to users and the management solution, which is hosted as a service on Azure by Microsoft. Desktops and apps can be deployed on virtual machines (VMs) in any Azure region, and the management solution and data for these VMs will reside in the United States. This may result in data transfer to the United States.
 
-Zorg ervoor dat uw netwerk voldoet aan de volgende vereisten voor optimale prestaties:
+For optimal performance, make sure your network meets the following requirements:
 
-* Round-trip latentie (RTT) van het netwerk van de client naar de Azure-regio waar de hostgroepen zijn geïmplementeerd, moeten kleiner zijn dan 150 MS.
-* Netwerk verkeer kan buiten de grenzen van het land/de regio stromen wanneer Vm's die Desk tops en apps hosten, verbinding maken met de beheer service.
-* Om de netwerk prestaties te optimaliseren, wordt aangeraden de Vm's van de co in dezelfde Azure-regio als de beheer service te vinden.
+* Round-trip (RTT) latency from the client's network to the Azure region where host pools have been deployed should be less than 150 ms.
+* Network traffic may flow outside country/region borders when VMs that host desktops and apps connect to the management service.
+* To optimize for network performance, we recommend that the session host's VMs are collocated in the same Azure region as the management service.
 
-## <a name="supported-remote-desktop-clients"></a>Ondersteunde Extern bureaublad-clients
+## <a name="supported-remote-desktop-clients"></a>Supported Remote Desktop clients
 
-De volgende Extern bureaublad-clients ondersteunen Windows virtueel bureau blad:
+The following Remote Desktop clients support Windows Virtual Desktop:
 
 * [Windows](https://docs.microsoft.com/azure/virtual-desktop/connect-windows-7-and-10)
 * [HTML5](https://docs.microsoft.com/azure/virtual-desktop/connect-web)
 
-## <a name="supported-virtual-machine-os-images"></a>Ondersteunde installatie kopieën van besturings systemen voor virtuele machines
+## <a name="supported-virtual-machine-os-images"></a>Supported virtual machine OS images
 
-Het virtuele bureau blad van Windows ondersteunt de volgende installatie kopieën van x64-besturings systemen:
+Windows Virtual Desktop supports the following x64 operating system images:
 
-* Windows 10 Enter prise-meerdere sessies, versie 1809 of hoger
-* Windows 10 Enter prise, versie 1809 of hoger
+* Windows 10 Enterprise multi-session, version 1809 or later
+* Windows 10 Enterprise, version 1809 or later
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
 
-Windows virtueel bureau blad biedt geen ondersteuning voor x86 (32-bits) installatie kopieën van besturings systemen.
+Windows Virtual Desktop does not support x86 (32-bit), Windows 10 Enterprise N, or Windows 10 Enterprise KN operating system images.
 
-De beschik bare opties voor automatisering en implementatie zijn afhankelijk van het besturings systeem en de versie die u kiest, zoals wordt weer gegeven in de volgende tabel: 
+Available automation and deployment options depend on which OS and version you choose, as shown in the following table: 
 
-|Besturingssysteem|Galerie met installatie kopieën van Azure|Hand matige VM-implementatie|Integratie van Azure Resource Manager-sjabloon|Hostgroep inrichten op Azure Marketplace|Windows Virtual Desktop agent-updates|
+|Besturingssysteem|Azure Image Gallery|Manual VM deployment|Azure Resource Manager template integration|Provision host pools on Azure Marketplace|Windows Virtual Desktop Agent updates|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10-meerdere sessies, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
-|Windows 10-meerdere sessies, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
-|Windows 10 Enter prise, versie 1903|Ja|Ja|Ja|Ja|Automatisch|
-|Windows 10 Enter prise, versie 1809|Ja|Ja|Nee|Nee|Automatisch|
+|Windows 10 multi-session, version 1903|Ja|Ja|Ja|Ja|Automatisch|
+|Windows 10 multi-session, version 1809|Ja|Ja|Nee|Nee|Automatisch|
+|Windows 10 Enterprise, version 1903|Ja|Ja|Ja|Ja|Automatisch|
+|Windows 10 Enterprise, version 1809|Ja|Ja|Nee|Nee|Automatisch|
 |Windows 7 Enterprise|Ja|Ja|Nee|Nee|Handmatig|
 |Windows Server 2019|Ja|Ja|Nee|Nee|Automatisch|
 |Windows Server 2016|Ja|Ja|Ja|Ja|Automatisch|
@@ -141,7 +141,7 @@ De beschik bare opties voor automatisering en implementatie zijn afhankelijk van
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u aan de slag wilt gaan, moet u een Tenant maken. Voor meer informatie over het maken van een Tenant gaat u verder met de zelf studie voor het maken van een Tenant.
+To get started, you'll need to create a tenant. To learn more about how to create a tenant, continue to the tenant creation tutorial.
 
 > [!div class="nextstepaction"]
 > [Een tenant maken in Windows Virtual Desktop](tenant-setup-azure-active-directory.md)

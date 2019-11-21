@@ -1,7 +1,7 @@
 ---
-title: Implementatie en verbruik
+title: Deployment and consumption
 titleSuffix: ML Studio (classic) - Azure
-description: U kunt Azure Machine Learning Studio (klassiek) gebruiken om machine learning werk stromen en modellen als webservices te implementeren. Deze webservices kunnen vervolgens worden gebruikt voor het aanroepen van de machine learning modellen van toepassingen via internet om voor spellingen in realtime of in batch modus uit te voeren.
+description: You can use Azure Machine Learning Studio (classic) to deploy machine learning workflows and models as web services. These web services can then be used to call the machine learning models from applications over the internet to do predictions in real time or in batch mode.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,61 +10,61 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 560158dce3c70049ad3faa11a5ffb9a1858aa445
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 1c97fd4f4d5646b6654f5261abd99372c521c389
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837672"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228239"
 ---
-# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Webservices Azure Machine Learning Studio (klassiek): implementatie en verbruik
+# <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (classic) Web Services: Deployment and consumption
 
-U kunt Azure Machine Learning Studio (klassiek) gebruiken om machine learning werk stromen en modellen als webservices te implementeren. Deze webservices kunnen vervolgens worden gebruikt voor het aanroepen van de machine learning modellen van toepassingen via internet om voor spellingen in realtime of in batch modus uit te voeren. Omdat de webservices actief zijn, kunt u deze aanroepen vanuit verschillende programmeer talen en platformen, zoals .NET en Java, en vanuit toepassingen, zoals Excel.
+You can use Azure Machine Learning Studio (classic) to deploy machine learning workflows and models as web services. These web services can then be used to call the machine learning models from applications over the Internet to do predictions in real time or in batch mode. Because the web services are RESTful, you can call them from various programming languages and platforms, such as .NET and Java, and from applications, such as Excel.
 
-De volgende secties bevatten koppelingen naar instructies, code en documentatie om aan de slag te gaan.
+The next sections provide links to walkthroughs, code, and documentation to help get you started.
 
 ## <a name="deploy-a-web-service"></a>Een webservice implementeren
 
-### <a name="with-azure-machine-learning-studio-classic"></a>Met Azure Machine Learning Studio (klassiek)
+### <a name="with-azure-machine-learning-studio-classic"></a>With Azure Machine Learning Studio (classic)
 
-De Studio-Portal en de Microsoft Azure Machine Learning web services-Portal helpen u bij het implementeren en beheren van een webservice zonder code te schrijven.
+The Studio (classic) portal and the Microsoft Azure Machine Learning Web Services portal help you deploy and manage a web service without writing code.
 
-De volgende koppelingen bevatten algemene informatie over het implementeren van een nieuwe webservice:
+The following links provide general Information about how to deploy a new web service:
 
-* Zie [een nieuwe webservice implementeren](deploy-a-machine-learning-web-service.md)voor een overzicht van het implementeren van een nieuwe webservice op basis van Azure Resource Manager.
-* Zie [een Azure machine learning-webservice implementeren](deploy-a-machine-learning-web-service.md)voor een overzicht van het implementeren van een webservice.
-* Voor een volledig overzicht van het maken en implementeren van een webservice, begint u met [zelf studie 1: krediet risico voors pellen](tutorial-part1-credit-risk.md).
-* Zie voor specifieke voor beelden voor het implementeren van een webservice:
+* For an overview about how to deploy a new web service that's based on Azure Resource Manager, see [Deploy a new web service](deploy-a-machine-learning-web-service.md).
+* For a walkthrough about how to deploy a web service, see [Deploy an Azure Machine Learning web service](deploy-a-machine-learning-web-service.md).
+* For a full walkthrough about how to create and deploy a web service, start with [Tutorial 1: Predict credit risk](tutorial-part1-credit-risk.md).
+* For specific examples that deploy a web service, see:
 
-  * [Zelf studie 3: een model voor krediet Risico's implementeren](tutorial-part3-credit-risk-deploy.md)
-  * [Een webservice implementeren in meerdere regio's](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
+  * [Tutorial 3: Deploy credit risk model](tutorial-part3-credit-risk-deploy.md)
+  * [How to deploy a web service to multiple regions](deploy-a-machine-learning-web-service.md#multi-region)
 
-### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Met Web Services resource provider Api's (Azure Resource Manager-Api's)
+### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>With web services resource provider APIs (Azure Resource Manager APIs)
 
-Met de klassieke versie van Azure Machine Learning Studio resource provider voor webservices kunt u webservices implementeren en beheren door gebruik te maken van REST API-aanroepen. Zie voor meer informatie de referentie voor [machine learning-webservice (rest)](/rest/api/machinelearning/index) .
+The classic version of Azure Machine Learning Studio resource provider for web services enables deployment and management of web services by using REST API calls. For more information, see the [Machine Learning Web Service (REST)](/rest/api/machinelearning/index) reference.
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
-### <a name="with-powershell-cmdlets"></a>Met Power shell-cmdlets
+### <a name="with-powershell-cmdlets"></a>With PowerShell cmdlets
 
-Met de klassieke versie van Azure Machine Learning Studio resource provider voor webservices kunnen webservices worden geïmplementeerd en beheerd met behulp van Power shell-cmdlets.
+The classic version of Azure Machine Learning Studio resource provider for web services enables deployment and management of web services by using PowerShell cmdlets.
 
-Als u de cmdlets wilt gebruiken, moet u zich eerst vanuit de Power shell-omgeving aanmelden bij uw Azure-account met behulp van de cmdlet [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) . Zie [Azure PowerShell gebruiken met Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md)als u niet bekend bent met het aanroepen van Power shell-opdrachten die zijn gebaseerd op Resource Manager.
+To use the cmdlets, you must first sign in to your Azure account from within the PowerShell environment by using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet. If you are unfamiliar with how to call PowerShell commands that are based on Resource Manager, see [Using Azure PowerShell with Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
-Als u uw voorspellende experiment wilt exporteren, gebruikt u [deze voorbeeld code](https://github.com/ritwik20/AzureML-WebServices). Nadat u het exe-bestand van de code hebt gemaakt, kunt u het volgende typen:
+To export your predictive experiment, use [this sample code](https://github.com/ritwik20/AzureML-WebServices). After you create the .exe file from the code, you can type:
 
     C:\<folder>\GetWSD <experiment-url> <workspace-auth-token>
 
-Als u de toepassing uitvoert, wordt een JSON-sjabloon voor de webservice gemaakt. Als u de sjabloon wilt gebruiken om een webservice te implementeren, moet u de volgende informatie toevoegen:
+Running the application creates a web service JSON template. To use the template to deploy a web service, you must add the following information:
 
-* Naam en sleutel van het opslag account
+* Storage account name and key
 
-    U kunt de naam en sleutel van het opslag account ophalen uit de [Azure Portal](https://portal.azure.com/).
-* Toezeggings plan-ID
+    You can get the storage account name and key from the [Azure portal](https://portal.azure.com/).
+* Commitment plan ID
 
-    U kunt de plan-ID ophalen uit de [Azure machine learning Web Services](https://services.azureml.net) -portal door u aan te melden en te klikken op een naam van een abonnement.
+    You can get the plan ID from the [Azure Machine Learning Web Services](https://services.azureml.net) portal by signing in and clicking a plan name.
 
-Voeg ze toe aan de JSON-sjabloon als onderliggende elementen van het knoop punt *Eigenschappen* op hetzelfde niveau als het *MachineLearningWorkspace* -knoop punt.
+Add them to the JSON template as children of the *Properties* node at the same level as the *MachineLearningWorkspace* node.
 
 Hier volgt een voorbeeld:
 
@@ -76,28 +76,28 @@ Hier volgt een voorbeeld:
         "id": "subscriptions/YouSubscriptionID/resourceGroups/YourResourceGroupID/providers/Microsoft.MachineLearning/commitmentPlans/YourPlanName"
     }
 
-Raadpleeg de volgende artikelen en voorbeeld code voor aanvullende informatie:
+See the following articles and sample code for additional details:
 
-* Naslag informatie voor [Azure machine learning Studio (klassieke)-cmdlets](https://docs.microsoft.com/powershell/module/az.machinelearning) op MSDN
-* Voorbeeld [scenario](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) op github
+* [Azure Machine Learning Studio (classic) Cmdlets](https://docs.microsoft.com/powershell/module/az.machinelearning) reference on MSDN
+* Sample [walkthrough](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) on GitHub
 
-## <a name="consume-the-web-services"></a>De webservices gebruiken
+## <a name="consume-the-web-services"></a>Consume the web services
 
-### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Vanuit de gebruikers interface van Azure Machine Learning-webservices (testen)
+### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>From the Azure Machine Learning Web Services UI (Testing)
 
-U kunt uw webservice testen vanuit de Azure Machine Learning-webservices Portal. Dit omvat het testen van de aanvraag-antwoord service (RR'S) en BES-interfaces (batch Execution Service).
+You can test your web service from the Azure Machine Learning Web Services portal. This includes testing the Request-Response service (RRS) and Batch Execution service (BES) interfaces.
 
 * [Een nieuwe webservice implementeren](deploy-a-machine-learning-web-service.md)
-* [Een Azure Machine Learning-webservice implementeren](deploy-a-machine-learning-web-service.md)
-* [Zelf studie 3: een model voor krediet Risico's implementeren](tutorial-part3-credit-risk-deploy.md)
+* [Deploy an Azure Machine Learning web service](deploy-a-machine-learning-web-service.md)
+* [Tutorial 3: Deploy credit risk model](tutorial-part3-credit-risk-deploy.md)
 
-### <a name="from-excel"></a>Vanuit Excel
+### <a name="from-excel"></a>From Excel
 
-U kunt een Excel-sjabloon die de webservice verbruikt downloaden:
+You can download an Excel template that consumes the web service:
 
-* [Een Azure Machine Learning-webservice gebruiken vanuit Excel](consuming-from-excel.md)
-* [Excel-invoeg toepassing voor Azure Machine Learning-webservices](excel-add-in-for-web-services.md)
+* [Consuming an Azure Machine Learning web service from Excel](consuming-from-excel.md)
+* [Excel add-in for Azure Machine Learning Web Services](excel-add-in-for-web-services.md)
 
-### <a name="from-a-rest-based-client"></a>Van een REST-gebaseerde client
+### <a name="from-a-rest-based-client"></a>From a REST-based client
 
-Azure Machine Learning-webservices zijn REST Api's. U kunt deze Api's van verschillende platformen gebruiken, zoals .NET, Python, R, Java, enzovoort. De pagina **verbruik** voor uw webservice op de [Microsoft Azure machine learning Web Services-portal](https://services.azureml.net) bevat voorbeeld code waarmee u aan de slag kunt gaan. Zie [How to consume an Azure Machine Learning Web service](consume-web-services.md) (Azure Machine Learning-webservice gebruiken) voor meer informatie.
+Azure Machine Learning Web Services are RESTful APIs. You can consume these APIs from various platforms, such as .NET, Python, R, Java, etc. The **Consume** page for your web service on the [Microsoft Azure Machine Learning Web Services portal](https://services.azureml.net) has sample code that can help you get started. Zie [How to consume an Azure Machine Learning Web service](consume-web-services.md) (Azure Machine Learning-webservice gebruiken) voor meer informatie.

@@ -1,22 +1,16 @@
 ---
-title: Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions | Microsoft Docs
+title: Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
 description: Gebruik Azure Functions om een functie zonder server te maken die wordt aangeroepen met een HTTP-aanvraag, en waarmee een bericht worden gemaakt in een Azure Storage-wachtrij.
-services: azure-functions
-documentationcenter: na
-author: ggailey777
-manager: jeconnoc
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
-ms.service: azure-functions
 ms.topic: quickstart
 ms.date: 09/19/2017
-ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 1d24eb81361a337ed00d719a7fb5895e73583030
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fb5fc2fadf4087ebc42253cf568af424a80cb9d5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70096319"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226886"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Berichten aan een Azure Storage-wachtrij toevoegen met behulp van Functions
 
@@ -26,7 +20,7 @@ In Azure Functions bieden invoer- en uitvoerbindingen een verklarende manier om 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Dit zijn de vereisten voor het voltooien van deze snelstart:
+Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 * Volg de instructies in [Uw eerste functie maken vanuit Azure Portal](functions-create-first-azure-function.md) en voer de stap **Resources opschonen** niet uit. In deze snelstartgids worden de functie-app en de functie gemaakt die u hier gebruikt.
 
@@ -54,7 +48,7 @@ In deze sectie gebruikt u de gebruikersinterface van de portal om een Queue Stor
 
     ![Voeg een Queue Storage-uitvoerbinding toe aan een functie in Azure Portal.](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
-    | Instelling      |  Voorgestelde waarde   | Description                              |
+    | Instelling      |  Voorgestelde waarde   | Beschrijving                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Naam van de berichtparameter** | outputQueueItem | De naam van de uitvoerbindingparameter. | 
     | **Opslagaccountverbinding** | AzureWebJobsStorage | U kunt de opslagaccountverbinding gebruiken die al door de functie-app wordt gebruikt of u kunt een nieuwe maken.  |
@@ -66,7 +60,7 @@ Nu u een uitvoerbinding hebt gedefinieerd, moet u de code bijwerken, zodat u de 
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Code toevoegen die gebruikmaakt van de uitvoerbinding
 
-In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uitvoerwachtrij. Het bericht bevat de waarde die wordt doorgegeven aan de HTTP-trigger in de querytekenreeks. Als de querytekenreeks bijvoorbeeld `name=Azure` bevat, is het wachtrijbericht *Naam wordt doorgegeven aan de functie: Azure*.
+In deze sectie voegt u code toe waarmee een bericht wordt geschreven naar de uitvoerwachtrij. Het bericht bevat de waarde die wordt doorgegeven aan de HTTP-trigger in de querytekenreeks. Als de querytekenreeks bijvoorbeeld `name=Azure` bevat, is het wachtrijbericht: *Naam wordt doorgegeven aan de functie: Azure*.
 
 1. Selecteer de functie om de functiecode in de editor weer te geven.
 
@@ -149,7 +143,7 @@ Sla deze sectie over als u Storage Explorer al hebt geïnstalleerd en hebt verbo
 
 1. Vouw het knooppunt **Wachtrijen** uit en selecteer vervolgens de wachtrij met de naam **outqueue**. 
 
-   De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde voor `name`, namelijk *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
+   De wachtrij bevat het bericht dat met de Queue Storage-uitvoerbinding is gemaakt toen u de met HTTP geactiveerde functie hebt uitgevoerd. Als u de functie hebt aangeroepen met de standaardwaarde `name` van *Azure*, is het wachtrijbericht *Naam is doorgegeven aan de functie: Azure*.
 
     ![Wachtrijbericht weergegeven in Storage Explorer](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 

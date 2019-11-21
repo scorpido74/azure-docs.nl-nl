@@ -1,61 +1,58 @@
 ---
-title: Overzicht van Azure Functions diagnostische gegevens
-description: Meer informatie over hoe u problemen met uw functie-app kunt oplossen met Azure Functions diagnostische gegevens.
-keywords: functies, diagnostische gegevens, ondersteuning, serverloos, probleem oplossing, zelf hulp
+title: Azure Functions diagnostics Overview
+description: Learn how you can troubleshoot issues with your function app with Azure Functions diagnostics.
 author: yunjchoi
-manager: gwallace
-ms.service: azure-functions
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: 96bfc133ef390f34712151733277ae6f9e9a8d70
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 71edb9a32254eeee123b874305dd25b699e05cc1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73722452"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227025"
 ---
-# <a name="azure-functions-diagnostics-overview"></a>Overzicht van Azure Functions diagnostische gegevens
+# <a name="azure-functions-diagnostics-overview"></a>Azure Functions diagnostics overview
 
-Wanneer u een functie-app uitvoert, wilt u voor bereid zijn op eventuele problemen die zich kunnen voordoen, van 4xx-fouten om fouten te activeren. Azure Functions Diagnostics is een intelligente en interactieve ervaring om u te helpen bij het oplossen van problemen met uw functie-app zonder configuratie of extra kosten. Wanneer u problemen ondervindt met uw functie-app, Azure Functions diagnostische gegevens naar aanleiding van een probleem met de juiste informatie om snel en eenvoudig problemen op te lossen en het probleem op te lossen. In dit artikel leert u de basis beginselen van het gebruik van Azure Functions diagnostische gegevens voor het sneller vaststellen en oplossen van veelvoorkomende problemen met de functie-app.
+When you’re running a function app, you want to be prepared for any issues that may arise, from 4xx errors to trigger failures. Azure Functions diagnostics is an intelligent and interactive experience to help you troubleshoot your function app with no configuration or extra cost. When you do run into issues with your function app, Azure Functions diagnostics points out what’s wrong to guide you to the right information to more easily and quickly troubleshoot and resolve the issue. This article shows you the basics of how to use Azure Functions diagnostics to more quickly diagnose and solve common function app issues.
 
-## <a name="start-azure-functions-diagnostics"></a>Azure Functions diagnostische gegevens starten
+## <a name="start-azure-functions-diagnostics"></a>Start Azure Functions diagnostics
 
-Om toegang te krijgen tot Azure Functions diagnostische gegevens:
+To access Azure Functions diagnostics:
 
-1. Navigeer naar uw functie-app in het [Azure Portal](https://portal.azure.com).
-2. Selecteer het tabblad **platform functies** .
-3. Selecteer **problemen vaststellen en oplossen** onder **resource beheer**, waarmee Azure functions diagnostische gegevens worden geopend.
-4. Kies een categorie die het beste het probleem van uw functie-app beschrijft met behulp van de tref woorden in de tegel start pagina. U kunt ook een tref woord typen dat uw probleem het beste beschrijft in de zoek balk. U kunt bijvoorbeeld `execution` typen om een lijst met diagnostische rapporten te bekijken die betrekking hebben op de uitvoering van uw functie-app en deze rechtstreeks vanuit de start pagina te openen.
+1. Navigate to your function app in the [Azure portal](https://portal.azure.com).
+2. Select the **Platform features** tab.
+3. Select **Diagnose and solve problems** under **Resource Management**, which opens Azure Functions diagnostics.
+4. Choose a category that best describes the issue of your function app by using the keywords in the homepage tile. You can also type a keyword that best describes your issue in the search bar. For example, you could type `execution` to see a list of diagnostic reports related to your function app execution and open them directly from the homepage.
 
-![Gaan](./media/functions-diagnostics/homepage.png)
+![Homepage](./media/functions-diagnostics/homepage.png)
 
-## <a name="use-the-interactive-interface"></a>De interactieve interface gebruiken
+## <a name="use-the-interactive-interface"></a>Use the Interactive interface
 
-Wanneer u een startpagina categorie selecteert die het beste past bij het probleem van uw functie-app, kan Azure Functions diagnostische gegevens van de interactieve interface, genie, u helpen bij het vaststellen en oplossen van het probleem van uw app. U kunt de snelkoppelingen voor tegels in genie gebruiken om het volledige diagnostische rapport van de probleem categorie die u wilt bekijken weer te geven. De snelkoppelingen voor tegels bieden u een directe manier om toegang te krijgen tot uw diagnostische gegevens.
+Once you select a homepage category that best aligns with your function app's problem, Azure Functions diagnostics' interactive interface, Genie, can guide you through diagnosing and solving problem of your app. You can use the tile shortcuts provided by Genie to view the full diagnostic report of the problem category that you are interested. The tile shortcuts provide you a direct way of accessing your diagnostic metrics.
 
 ![Genie](./media/functions-diagnostics/genie.png)
 
-Nadat u een tegel hebt geselecteerd, ziet u een lijst met onderwerpen die betrekking hebben op het probleem dat wordt beschreven op de tegel. Deze onderwerpen bevatten fragmenten van belang rijke informatie uit het volledige rapport. U kunt een van deze onderwerpen selecteren om de problemen verder te onderzoeken. U kunt ook **volledig rapport weer geven** selecteren om alle onderwerpen op één pagina te verkennen.
+After selecting a tile, you can see a list of topics related to the issue described in the tile. These topics provide snippets of notable information from the full report. You can select any of these topics to investigate the issues further. Also, you can select **View Full Report** to explore all the topics on a single page.
 
-![Voor beeld van diagnostisch rapport](./media/functions-diagnostics/preview-of-diagnostic-report.png)
+![Preview of diagnostic report](./media/functions-diagnostics/preview-of-diagnostic-report.png)
 
-## <a name="view-a-diagnostic-report"></a>Een diagnostisch rapport weer geven
+## <a name="view-a-diagnostic-report"></a>View a diagnostic report
 
-Nadat u een onderwerp hebt gekozen, kunt u een diagnostisch rapport bekijken dat specifiek is voor uw functie-app. Diagnostische rapporten gebruiken status pictogrammen om aan te geven of er specifieke problemen met uw app zijn. U ziet een gedetailleerde beschrijving van het probleem, aanbevolen acties, gerelateerde metrische gegevens en nuttige docs. Aangepaste diagnostische rapporten worden gegenereerd op basis van een reeks controles die worden uitgevoerd in uw functie-app. Diagnostische rapporten kunnen een nuttig hulp middel zijn voor het lokaliseren van problemen in de functie-app en het verhelpen van het probleem.
+After you choose a topic, you can view a diagnostic report specific to your function app. Diagnostic reports use status icons to indicate if any specific issues with your app. You see detailed description of the issue, recommended actions, related-metrics, and helpful docs. Customized diagnostic reports are generated from a series of checks run on your function app. Diagnostic reports can be a useful tool for pinpointing problems in your function app and guiding you towards resolving the issue.
 
-## <a name="find-the-problem-code"></a>De probleem code zoeken 
+## <a name="find-the-problem-code"></a>Find the problem code 
 
-Voor functies op basis van een script kunt u **functie-uitvoering** en **fouten onder functie-app omlaag of fouten rapporteren** om te beperken op de regel code die uitzonde ringen of fouten veroorzaakt. Deze functie kan een nuttig hulp middel zijn voor het verkrijgen van de hoofd oorzaak en het oplossen van problemen met een specifieke regel code. Deze optie is niet beschikbaar voor vooraf C# gecompileerde en Java-functies.
+For script-based functions, you can use **Function Execution** and **Errors under Function App Down or Reporting Errors** to narrow down on the line of code causing exceptions or errors. This feature can be a useful tool for getting to the root cause and fixing issues from a specific line of code. This option isn't available for precompiled C# and Java functions.
 
-![Diagnostisch rapport over fouten bij de uitvoering van functies](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
+![Diagnostic report on function execution errors](./media/functions-diagnostics/diagnostic-report-on-function-execution-errors.png)
 
-![Functie-uitzonde ring](./media/functions-diagnostics/function-exception.png)
+![Function exception](./media/functions-diagnostics/function-exception.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt vragen stellen of feedback geven over Azure Functions diagnostische gegevens op [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Neem `[Diag]` op in de titel van uw feedback.
+You can ask questions or provide feedback on Azure Functions diagnostics at [UserVoice](https://feedback.azure.com/forums/355860-azure-functions). Please include `[Diag]` in the title of your feedback.
 
 > [!div class="nextstepaction"]
-> [Uw functie-apps bewaken](functions-monitoring.md)
+> [Monitor your function apps](functions-monitoring.md)

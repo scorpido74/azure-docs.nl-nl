@@ -1,6 +1,6 @@
 ---
-title: Openbaar met een eind punt beheerd exemplaar configureren
-description: Meer informatie over het configureren van een openbaar eind punt voor een beheerd exemplaar
+title: Configure public endpoint - managed instance
+description: Learn how to configure a public endpoint for managed instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,46 +10,46 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: a35176770a3100a288ad3da52cd89870e0110f63
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 1acd7d6a3b203997e3acd8d7959b1572e09845f3
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73828034"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227989"
 ---
-# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Open bare eind punt in Azure SQL Database beheerde instantie configureren
+# <a name="configure-public-endpoint-in-azure-sql-database-managed-instance"></a>Configure public endpoint in Azure SQL Database managed instance
 
-Het open bare eind punt voor een [beheerd exemplaar](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) maakt gegevens toegang tot uw beheerde exemplaar mogelijk buiten het [virtuele netwerk](../virtual-network/virtual-networks-overview.md). U hebt toegang tot uw beheerde exemplaar vanuit multi tenant Azure-Services, zoals Power BI, Azure App Service of een on-premises netwerk. Als u het open bare eind punt op een beheerd exemplaar gebruikt, hoeft u geen VPN te gebruiken. Dit kan helpen om problemen met de door Voer van VPN te voor komen.
+Public endpoint for a [managed instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) enables data access to your managed instance from outside the [virtual network](../virtual-network/virtual-networks-overview.md). You are able to access your managed instance from multi-tenant Azure services like Power BI, Azure App Service, or an on-premises network. By using the public endpoint on a managed instance, you do not need to use a VPN, which can help avoid VPN throughput issues.
 
-In dit artikel leert u het volgende:
+In this article, you'll learn how to:
 
 > [!div class="checklist"]
-> - Open bare eind punt inschakelen voor uw beheerde instantie in de Azure Portal
-> - Open bare eind punt voor uw beheerde instantie inschakelen met Power shell
-> - De beveiligings groep voor een beheerd exemplaar netwerk configureren om verkeer naar het open bare eind punt van het beheerde exemplaar toe te staan
-> - Het open bare endpoint van het beheerde exemplaar verkrijgen connection string
+> - Enable public endpoint for your managed instance in the Azure portal
+> - Enable public endpoint for your managed instance using PowerShell
+> - Configure your managed instance network security group to allow traffic to the managed instance public endpoint
+> - Obtain the managed instance public endpoint connection string
 
 ## <a name="permissions"></a>Machtigingen
 
-Als gevolg van de gevoeligheid van gegevens die zich in een beheerd exemplaar bevindt, vereist de configuratie voor het inschakelen van het open bare eind punt van het beheerde exemplaar een proces dat uit twee stappen bestaat. Deze veiligheids maatregel voldoet aan de schei ding van taken (SoD):
+Due to the sensitivity of data that is in a managed instance, the configuration to enable managed instance public endpoint requires a two-step process. This security measure adheres to separation of duties (SoD):
 
-- Het inschakelen van een openbaar eind punt op een beheerd exemplaar moet worden uitgevoerd door de beheerder van het beheerde exemplaar. De beheerder van het beheerde exemplaar kan worden gevonden op de **overzichts** pagina van uw SQL Managed instance-resource.
-- Verkeer toestaan met behulp van een netwerk beveiligings groep die moet worden uitgevoerd door een netwerk beheerder. Zie [machtigingen voor netwerk beveiligings groepen](../virtual-network/manage-network-security-group.md#permissions)voor meer informatie.
+- Enabling public endpoint on a managed instance needs to be done by the managed instance admin. The managed instance admin can be found on **Overview** page of your SQL managed instance resource.
+- Allowing traffic using a network security group that needs to be done by a network admin. For more information, see [network security group permissions](../virtual-network/manage-network-security-group.md#permissions).
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Openbaar eind punt inschakelen voor een beheerd exemplaar in het Azure Portal
+## <a name="enabling-public-endpoint-for-a-managed-instance-in-the-azure-portal"></a>Enabling public endpoint for a managed instance in the Azure portal
 
-1. Start de Azure Portal op <https://portal.azure.com/.>
-1. Open de resource groep met het beheerde exemplaar en selecteer het **SQL Managed instance** waarvoor u het open bare eind punt wilt configureren.
-1. Selecteer op de pagina **beveiligings** instellingen het tabblad **virtueel netwerk** .
-1. Selecteer op de pagina configuratie van virtueel netwerk de optie **inschakelen** en klik vervolgens op het pictogram **Opslaan** om de configuratie bij te werken.
+1. Launch the Azure portal at <https://portal.azure.com/.>
+1. Open the resource group with the managed instance, and select the **SQL managed instance** that you want to configure public endpoint on.
+1. On the **Security** settings, select the **Virtual network** tab.
+1. In the Virtual network configuration page, select **Enable** and then the **Save** icon to update the configuration.
 
-![Mi-vnet-config. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
+![mi-vnet-config.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-config.png)
 
-## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Openbaar eind punt inschakelen voor een beheerd exemplaar met behulp van Power shell
+## <a name="enabling-public-endpoint-for-a-managed-instance-using-powershell"></a>Enabling public endpoint for a managed instance using PowerShell
 
-### <a name="enable-public-endpoint"></a>Openbaar eind punt inschakelen
+### <a name="enable-public-endpoint"></a>Enable public endpoint
 
-Voer de volgende Power shell-opdrachten uit. Vervang **abonnement-id** door uw abonnements-id. Vervang ook de **naam van RG** door de resource groep voor uw beheerde exemplaar en vervang de **mi-naam** door de naam van uw beheerde exemplaar.
+Run the following PowerShell commands. Replace **subscription-id** with your subscription ID. Also replace **rg-name** with the resource group for your managed instance, and replace **mi-name** with the name of your managed instance.
 
 ```powershell
 Install-Module -Name Az
@@ -70,50 +70,50 @@ $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -PublicDataEndpointEnabled $true -force
 ```
 
-### <a name="disable-public-endpoint"></a>Openbaar eind punt uitschakelen
+### <a name="disable-public-endpoint"></a>Disable public endpoint
 
-Als u het open bare eind punt wilt uitschakelen met behulp van Power shell, voert u de volgende opdracht uit (en vergeet niet om de NSG voor de binnenkomende poort 3342 te sluiten als u deze hebt geconfigureerd):
+To disable the public endpoint using PowerShell, you would execute the following command (and also do not forget to close the NSG for the inbound port 3342 if you have it configured):
 
 ```powershell
 Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 ```
 
-## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Openbaar eindpunt verkeer toestaan voor de netwerk beveiligings groep
+## <a name="allow-public-endpoint-traffic-on-the-network-security-group"></a>Allow public endpoint traffic on the network security group
 
-1. Als u de configuratie pagina van het beheerde exemplaar nog steeds geopend hebt, gaat u naar het tabblad **overzicht** . anders gaat u terug naar de resource van het **SQL Managed instance** . Selecteer de koppeling **virtueel netwerk/subnet** , waarmee u naar de configuratie pagina van het virtuele netwerk gaat.
+1. If you have the configuration page of the managed instance still open, navigate to the **Overview** tab. Otherwise, go back to your **SQL managed instance** resource. Select the **Virtual network/subnet** link, which will take you to the Virtual network configuration page.
 
-    ![Mi-overview. png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
+    ![mi-overview.png](media/sql-database-managed-instance-public-endpoint-configure/mi-overview.png)
 
-1. Selecteer het tabblad **subnetten** in het linkerdeel venster configuratie van het virtuele netwerk en noteer de **beveiligings groep** voor uw beheerde exemplaar.
+1. Select the **Subnets** tab on the left configuration pane of your Virtual network, and make note of the **SECURITY GROUP** for your managed instance.
 
-    ![Mi-vnet-subnet. png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
+    ![mi-vnet-subnet.png](media/sql-database-managed-instance-public-endpoint-configure/mi-vnet-subnet.png)
 
-1. Ga terug naar de resource groep die uw beheerde exemplaar bevat. De naam van de **netwerk beveiligings groep** die hierboven wordt vermeld, wordt weer gegeven. Selecteer de naam om naar de configuratie pagina voor de netwerk beveiligings groep te gaan.
+1. Go back to your resource group that contains your managed instance. You should see the **Network security group** name noted above. Select the name to go into the network security group configuration page.
 
-1. Selecteer het tabblad **binnenkomende beveiligings regels** en voeg een regel **toe** met een hogere prioriteit dan de **deny_all_inbound** regel met de volgende instellingen: </br> </br>
+1. Select the **Inbound security rules** tab, and **Add** a rule that has higher priority than the **deny_all_inbound** rule with the following settings: </br> </br>
 
     |Instelling  |Voorgestelde waarde  |Beschrijving  |
     |---------|---------|---------|
-    |**Bron**     |Een IP-adres of service label         |<ul><li>Voor Azure-Services, zoals Power BI, selecteert u de Azure Cloud service-tag</li> <li>Gebruik NAT IP-adres voor uw computer of Azure-VM</li></ul> |
-    |**Poort bereik van bron**     |*         |Dit op * (alle) laten staan als bron poorten worden meestal dynamisch toegewezen en als zodanig, onvoorspelbaar |
-    |**Beoogde**     |Alle         |Bestemming weglaten om verkeer naar het subnet van het beheerde exemplaar toe te staan |
-    |**Poortbereiken van doel**     |3342         |Doel poort van bereik tot 3342, wat het open bare TDS-eind punt van het beheerde exemplaar is |
-    |**Protocol**     |TCP         |Beheerd exemplaar gebruikt TCP-protocol voor TDS |
-    |**Actie**     |Toestaan         |Binnenkomend verkeer naar een beheerd exemplaar via het open bare eind punt toestaan |
-    |**Prioriteit**     |1300         |Zorg ervoor dat deze regel een hogere prioriteit heeft dan de **deny_all_inbound** regel |
+    |**Bron**     |Any IP address or Service tag         |<ul><li>For Azure services like Power BI, select the Azure Cloud Service Tag</li> <li>For your computer or Azure VM, use NAT IP address</li></ul> |
+    |**Source port ranges**     |*         |Leave this to * (any) as source ports are usually dynamically allocated and as such, unpredictable |
+    |**Destination**     |Alle         |Leaving destination as Any to allow traffic into the managed instance subnet |
+    |**Destination port ranges**     |3342         |Scope destination port to 3342, which is the managed instance public TDS endpoint |
+    |**Protocol**     |TCP         |Managed instance uses TCP protocol for TDS |
+    |**Actie**     |Toestaan         |Allow inbound traffic to managed instance through the public endpoint |
+    |**Prioriteit**     |1300         |Make sure this rule is higher priority than the **deny_all_inbound** rule |
 
-    ![Mi-NSG-rules. png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
+    ![mi-nsg-rules.png](media/sql-database-managed-instance-public-endpoint-configure/mi-nsg-rules.png)
 
     > [!NOTE]
-    > Poort 3342 wordt gebruikt voor open bare eindpunt verbindingen met een beheerd exemplaar en kan op dit moment niet worden gewijzigd.
+    > Port 3342 is used for public endpoint connections to managed instance, and cannot be changed at this point.
 
-## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Het open bare endpoint van het beheerde exemplaar verkrijgen connection string
+## <a name="obtaining-the-managed-instance-public-endpoint-connection-string"></a>Obtaining the managed instance public endpoint connection string
 
-1. Ga naar de configuratie pagina voor SQL Managed instance die is ingeschakeld voor openbaar eind punt. Selecteer het tabblad **verbindings reeksen** onder de configuratie- **instellingen** .
-1. Houd er rekening mee dat de hostnaam van het open bare eind punt de indeling < mi_name > bevat. **Public**. < dns_zone >. data base. Windows. net en de poort die voor de verbinding wordt gebruikt, is 3342.
+1. Navigate to the SQL managed instance configuration page that has been enabled for public endpoint. Select the **Connection strings** tab under the **Settings** configuration.
+1. Note that the public endpoint host name comes in the format <mi_name>.**public**.<dns_zone>.database.windows.net and that the port used for the connection is 3342.
 
-    ![Mi-Public-endpoint-Conn-string. png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
+    ![mi-public-endpoint-conn-string.png](media/sql-database-managed-instance-public-endpoint-configure/mi-public-endpoint-conn-string.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [gebruik van Azure SQL database Managed instance veilig met een openbaar eind punt](sql-database-managed-instance-public-endpoint-securely.md).
+- Learn about [using Azure SQL Database managed instance securely with public endpoint](sql-database-managed-instance-public-endpoint-securely.md).

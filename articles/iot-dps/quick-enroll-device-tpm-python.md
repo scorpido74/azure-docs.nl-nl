@@ -1,23 +1,23 @@
 ---
-title: 'Quick Start: TPM-apparaat inschrijven bij Azure Device Provisioning Service met behulp van python'
-description: 'Azure-snelstart: TPM-apparaat inschrijven bij Azure IoT Hub Device Provisioning Service met behulp van de Python inrichtingsservice-SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties.'
+title: Enroll TPM device to Azure Device Provisioning Service using Python
+description: Quickstart - Enroll TPM device to Azure IoT Hub Device Provisioning Service using Python provisioning service SDK. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 49e7961200a2ab523997350fffa6606d65f60c8c
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: f241fd7ca4b0385641067f938f0f8136c9f05ba5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903405"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229542"
 ---
-# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Quick Start: TPM-apparaat inschrijven voor IoT Hub Device Provisioning Service met behulp van de python inrichtings service-SDK
+# <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-python-provisioning-service-sdk"></a>Quickstart: Enroll TPM device to IoT Hub Device Provisioning Service using Python provisioning service SDK
+
 [!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
 
 In deze stappen ziet u hoe u programmatisch een afzonderlijke inschrijving voor een TPM-apparaat in Azure IoT Hub Device Provisioning Service kunt maken met behulp van de [Python inrichtingsservice-SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client) en een Python-voorbeeldtoepassing. Hoewel de Python service-SDK werkt op Windows- en Linux-computers, gebruiken we in dit artikel een Windows-ontwikkelcomputer om stapsgewijs het inschrijvingsproces te doorlopen.
@@ -54,7 +54,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het TPM-apparaat toevoegt
 
 1. Start een teksteditor en maak een nieuw bestand **TpmEnrollment.py**.
 
-1. Voeg de volgende `import` -instructies en -variabelen aan het begin van het bestand **TpmEnrollment.py** toe. Vervang vervolgens `dpsConnectionString` door uw verbindingsreeks die te vinden is onder **Gedeeld toegangsbeleid** in **Device Provisioning Service** in **Azure Portal**. Vervang `endorsementKey` door de waarde die u eerder hebt genoteerd toen u [de omgeving voorbereidde](quick-enroll-device-tpm-python.md#prepareenvironment). Maak ten slotte een unieke `registrationid` en zorg dat deze alleen bestaat uit kleine letters en afbreekstreepjes.  
+1. Voeg de volgende `import` -instructies en -variabelen aan het begin van het bestand **TpmEnrollment.py** toe. Vervang vervolgens `dpsConnectionString` door uw verbindingsreeks, te vinden onder **Gedeeld toegangsbeleid** in **Device Provisioning Service** op de **Azure-portal**. Vervang `endorsementKey` door de waarde die u eerder hebt genoteerd toen u [de omgeving voorbereidde](quick-enroll-device-tpm-python.md#prepareenvironment). Maak ten slotte een unieke `registrationid` en zorg dat deze alleen bestaat uit kleine letters en afbreekstreepjes.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -109,7 +109,7 @@ Als u van plan bent om het voorbeeld van de Java.js-service te verkennen, verwij
 
 1. Sluit het uitvoervenster van het Python-voorbeeld op de computer.
 1. Als u een gesimuleerd TPM-apparaat hebt gemaakt, sluit u het venster van de TPM-simulator.
-1. Navigeer naar uw Device Provisioning Service in de Azure Portal, klik op **inschrijvingen beheren**en selecteer vervolgens het tabblad **afzonderlijke inschrijvingen** . Selecteer de *registratie-id* voor de registratie vermelding die u hebt gemaakt met behulp van deze Quick Start. Klik vervolgens op de knop **verwijderen** boven aan de Blade.  
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Individual Enrollments** tab. Select the *Registration ID* for the enrollment entry you created using this Quickstart, and click the **Delete** button at the top of the blade.  
 
 
 ## <a name="next-steps"></a>Volgende stappen

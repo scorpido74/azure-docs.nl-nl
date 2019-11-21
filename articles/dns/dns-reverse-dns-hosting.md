@@ -1,9 +1,9 @@
 ---
-title: Zones voor omgekeerde DNS-zoekacties in Azure DNS hosten | Microsoft Docs
-description: Meer informatie over het gebruik van Azure DNS voor het hosten van de zones voor omgekeerde DNS-zoekacties voor de IP-adresbereiken
+title: Host reverse DNS lookup zones in Azure DNS | Microsoft Docs
+description: Learn how to use Azure DNS to host the reverse DNS lookup zones for your IP ranges
 services: dns
 documentationcenter: na
-author: vhorne
+author: asudbring
 manager: jeconnoc
 ms.service: dns
 ms.devlang: na
@@ -11,53 +11,53 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: victorh
-ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: allensu
+ms.openlocfilehash: aeefb523b401effe4dedb21a8284f296948bbef9
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66143678"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74211250"
 ---
-# <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Omgekeerde DNS-lookup-zones hosten in Azure DNS
+# <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Host reverse DNS lookup zones in Azure DNS
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In dit artikel wordt uitgelegd hoe u de zones voor omgekeerde DNS-zoekacties voor de toegewezen IP-adresbereiken in Azure DNS hosten. De IP-adresbereiken die wordt vertegenwoordigd door de zones voor reverse lookup moeten worden toegewezen aan uw organisatie, meestal door uw Internetprovider.
+This article explains how to host the reverse DNS lookup zones for your assigned IP ranges in Azure DNS. The IP ranges represented by the reverse lookup zones must be assigned to your organization, typically by your ISP.
 
-Omgekeerde DNS-server voor een Azure-eigendom IP-adres dat toegewezen aan uw Azure-service configureren, Zie [configureren reverse-DNS voor services die worden gehost in Azure](dns-reverse-dns-for-azure-services.md).
+To configure reverse DNS for an Azure-owned IP address that's assigned to your Azure service, see [Configure reverse DNS for services hosted in Azure](dns-reverse-dns-for-azure-services.md).
 
-Voordat u dit artikel leest, moet u bekend bent met de [overzicht omgekeerde DNS-en ondersteuning in Azure](dns-reverse-dns-overview.md).
+Before you read this article, you should be familiar with the [overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md).
 
-In dit artikel begeleidt u bij de stappen voor het maken van uw eerste DNS-zone voor reverse lookup en -record met behulp van de Azure portal, Azure PowerShell, Azure klassieke CLI of Azure CLI.
+This article walks you through the steps to create your first reverse lookup DNS zone and record by using the Azure portal, Azure PowerShell, Azure classic CLI, or Azure CLI.
 
-## <a name="create-a-reverse-lookup-dns-zone"></a>Maken van een DNS-zone voor reverse lookup
+## <a name="create-a-reverse-lookup-dns-zone"></a>Create a reverse lookup DNS zone
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
-1. Op de **Hub** in het menu **nieuw** > **netwerken**, en selecteer vervolgens **DNS-zone**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. On the **Hub** menu, select **New** > **Networking**, and then select **DNS zone**.
 
-   ![Selectie van de 'DNS-zone'](./media/dns-reverse-dns-hosting/figure1.png)
+   !["DNS zone" selection](./media/dns-reverse-dns-hosting/figure1.png)
 
-1. In de **DNS-zone maken** deelvenster naam van uw DNS-zone. De naam van de zone is anders voor IPv4 en IPv6-voorvoegsels die zijn ontworpen. Volg de instructies voor [IPv4](#ipv4) of [IPv6](#ipv6) om de naam van de zone. Wanneer u klaar bent, selecteert u **maken** om de zone te maken.
+1. In the **Create DNS zone** pane, name your DNS zone. The name of the zone is crafted differently for IPv4 and IPv6 prefixes. Use the instructions for [IPv4](#ipv4) or [IPv6](#ipv6) to name your zone. When you're finished, select **Create** to create the zone.
 
 ### <a name="ipv4"></a>IPv4
 
-De naam van een IPv4-zone voor reverse lookup is gebaseerd op de IP-adresbereik dat wordt vertegenwoordigd. Deze moet de volgende indeling: `<IPv4 network prefix in reverse order>.in-addr.arpa`. Zie voor voorbeelden van [overzicht omgekeerde DNS-en ondersteuning in Azure](dns-reverse-dns-overview.md#ipv4).
+The name of an IPv4 reverse lookup zone is based on the IP range that it represents. It should be in the following format: `<IPv4 network prefix in reverse order>.in-addr.arpa`. For examples, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md#ipv4).
 
 > [!NOTE]
-> Wanneer u classless zones voor omgekeerde DNS-zoekacties in Azure DNS maakt, moet u een koppelteken (`-`) in plaats van een slash (`/`) in de naam van de zone.
+> When you're creating classless reverse DNS lookup zones in Azure DNS, you must use a hyphen (`-`) rather than a forward slash (`/`) in the zone name.
 >
-> Bijvoorbeeld, voor de IP-bereik 192.0.2.128/26, moet u `128-26.2.0.192.in-addr.arpa` als de naam van de zone in plaats van `128/26.2.0.192.in-addr.arpa`.
+> For example, for the IP range 192.0.2.128/26, you must use `128-26.2.0.192.in-addr.arpa` as the zone name instead of `128/26.2.0.192.in-addr.arpa`.
 >
-> Hoewel de DNS-standaarden beide methoden ondersteunen, Azure DNS DNS-zonenamen bevatten biedt geen ondersteuning voor schuine streep (`/`) teken.
+> Although the DNS standards support both methods, Azure DNS doesn't support DNS zone names that contain for forward slash (`/`) character.
 
-Het volgende voorbeeld ziet over het maken van een omgekeerde DNS-zone van klasse C, met de naam `2.0.192.in-addr.arpa` in Azure DNS via Azure portal:
+The following example shows how to create a Class C reverse DNS zone named `2.0.192.in-addr.arpa` in Azure DNS via the Azure portal:
 
- !['DNS-zone maken' in het deelvenster met vakken ingevuld](./media/dns-reverse-dns-hosting/figure2.png)
+ !["Create DNS zone" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure2.png)
 
-**Locatie voor resourcegroep** definieert de locatie voor de resourcegroep. Dit heeft geen invloed op de DNS-zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.
+**Resource group location** defines the location for the resource group. It has no impact on the DNS zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.
 
-De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van Azure PowerShell en Azure CLI.
+The following examples show how to complete this task by using Azure PowerShell and Azure CLI.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -65,13 +65,13 @@ De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van Azure 
 New-AzDnsZone -Name 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+#### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
 
 ```azurecli
 azure network dns zone create MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
@@ -79,16 +79,16 @@ az network dns zone create -g MyResourceGroup -n 2.0.192.in-addr.arpa
 
 ### <a name="ipv6"></a>IPv6
 
-De naam van een IPv6-zone voor reverse lookup moet de volgende notatie: `<IPv6 network prefix in reverse order>.ip6.arpa`.  Zie voor voorbeelden van [overzicht omgekeerde DNS-en ondersteuning in Azure](dns-reverse-dns-overview.md#ipv6).
+The name of an IPv6 reverse lookup zone should be in the following form: `<IPv6 network prefix in reverse order>.ip6.arpa`.  For examples, see [Overview of reverse DNS and support in Azure](dns-reverse-dns-overview.md#ipv6).
 
 
-Het volgende voorbeeld laat zien hoe u een IPv6 reverse DNS-lookup-zone maken met de naam `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` in Azure DNS via Azure portal:
+The following example shows how to create an IPv6 reverse DNS lookup zone named `0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa` in Azure DNS via the Azure portal:
 
- !['DNS-zone maken' in het deelvenster met vakken ingevuld](./media/dns-reverse-dns-hosting/figure3.png)
+ !["Create DNS zone" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure3.png)
 
-**Locatie voor resourcegroep** definieert de locatie voor de resourcegroep. Dit heeft geen invloed op de DNS-zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.
+**Resource group location** defines the location for the resource group. It has no impact on the DNS zone. De locatie van de DNS-zone is altijd 'global' en wordt niet weergegeven.
 
-De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van Azure PowerShell en Azure CLI.
+The following examples show how to complete this task by using Azure PowerShell and Azure CLI.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -96,57 +96,57 @@ De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van Azure 
 New-AzDnsZone -Name 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+#### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
 
 ```azurecli
 azure network dns zone create MyResourceGroup 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
 az network dns zone create -g MyResourceGroup -n 0.0.0.0.d.c.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-## <a name="delegate-a-reverse-dns-lookup-zone"></a>Een DNS-zone voor reverse lookup delegeren
+## <a name="delegate-a-reverse-dns-lookup-zone"></a>Delegate a reverse DNS lookup zone
 
-Nu dat u uw DNS-zone voor reverse lookup hebt gemaakt, moet u ervoor zorgen dat de zone van de bovenliggende zone wordt overgedragen. DNS-delegering kunt het DNS-naamomzettingsproces te vinden van de naamservers die uw DNS-zone voor reverse lookup hosten. Deze naamservers kunnen u omgekeerde DNS-query's voor de IP-adressen in het adresbereik vervolgens beantwoorden.
+Now that you've created your reverse DNS lookup zone, you must ensure that the zone is delegated from the parent zone. DNS delegation enables the DNS name resolution process to find the name servers that host your reverse DNS lookup zone. Those name servers can then answer DNS reverse queries for the IP addresses in your address range.
 
-Zones voor forward lookup, het proces voor het overdragen van een DNS-zone is beschreven in [uw domein delegeren naar Azure DNS](dns-delegate-domain-azure-dns.md). Delegering voor zones voor reverse lookup werkt op dezelfde manier. Het enige verschil is dat u wilt de naamservers configureren met de Internet-provider die uw IP-adresbereik, in plaats van uw domeinnaamregistrar.
+For forward lookup zones, the process of delegating a DNS zone is described in [Delegate your domain to Azure DNS](dns-delegate-domain-azure-dns.md). Delegation for reverse lookup zones works the same way. The only difference is that you need to configure the name servers with the ISP that provided your IP range, rather than your domain name registrar.
 
-## <a name="create-a-dns-ptr-record"></a>Een DNS PTR-record maken
+## <a name="create-a-dns-ptr-record"></a>Create a DNS PTR record
 
 ### <a name="ipv4"></a>IPv4
 
-Het volgende voorbeeld wordt uitgelegd hoe u voor het maken van een PTR-record in een omgekeerde DNS-zone in Azure DNS. Voor andere typen en voor het wijzigen van bestaande records, raadpleegt u [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md) (DNS-records en -recordsets beheren met behulp van Azure Portal).
+The following example walks you through the process of creating a PTR record in a reverse DNS zone in Azure DNS. Voor andere typen en voor het wijzigen van bestaande records, raadpleegt u [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md) (DNS-records en -recordsets beheren met behulp van Azure Portal).
 
-1. Aan de bovenkant van de **DNS-zone** venster **+ Recordset** openen de **recordset toevoegen** deelvenster.
+1. At the top of the **DNS zone** pane, select **+ Record set** to open the **Add record set** pane.
 
-   ![Knop voor het maken van een Recordset](./media/dns-reverse-dns-hosting/figure4.png)
+   ![Button for creating a record set](./media/dns-reverse-dns-hosting/figure4.png)
 
-1. De naam van de recordset voor een PTR-record moet de rest van het IPv4-adres in omgekeerde volgorde. 
+1. The name of the record set for a PTR record needs to be the rest of the IPv4 address in reverse order. 
 
-   In dit voorbeeld worden de eerste drie octetten al ingevuld als onderdeel van de naam van de zone (.2.0.192). Daarom alleen het laatste achttal werd is opgegeven in de **naam** vak. Bijvoorbeeld: naam van de recordset **15** voor een resource met IP-adres 192.0.2.15 is.  
-1. Voor **Type**, selecteer **PTR**.  
-1. Voor **domeinnaam**, voer de volledig gekwalificeerde domeinnaam (FQDN) van de resource die gebruikmaakt van het IP-adres.
-1. Selecteer **OK** opnemen onder aan het deelvenster voor het maken van de DNS-server.
+   In this example, the first three octets are already populated as part of the zone name (.2.0.192). Therefore, only the last octet is supplied in the **Name** box. For example, you might name your record set **15** for a resource whose IP address is 192.0.2.15.  
+1. For **Type**, select **PTR**.  
+1. For **DOMAIN NAME**, enter the fully qualified domain name (FQDN) of the resource that uses the IP.
+1. Select **OK** at the bottom of the pane to create the DNS record.
 
-   !['Recordset toevoegen' in het deelvenster met vakken ingevuld](./media/dns-reverse-dns-hosting/figure5.png)
+   !["Add record set" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure5.png)
 
-De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van PowerShell of Azure CLI.
+The following examples show how to complete this task by using PowerShell or Azure CLI.
 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
 New-AzDnsRecordSet -Name 15 -RecordType PTR -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc1.contoso.com")
 ```
-#### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+#### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
 
 ```azurecli
 azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 PTR --ptrdname dc1.contoso.com  
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     az network dns record-set ptr add-record -g MyResourceGroup -z 2.0.192.in-addr.arpa -n 15 --ptrdname dc1.contoso.com
@@ -154,22 +154,22 @@ azure network dns record-set add-record MyResourceGroup 2.0.192.in-addr.arpa 15 
 
 ### <a name="ipv6"></a>IPv6
 
-Het volgende voorbeeld wordt uitgelegd hoe u voor het maken van nieuwe PTR-record. Voor andere typen en voor het wijzigen van bestaande records, raadpleegt u [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md) (DNS-records en -recordsets beheren met behulp van Azure Portal).
+The following example walks you through the process of creating new PTR record. Voor andere typen en voor het wijzigen van bestaande records, raadpleegt u [Manage DNS records and record sets by using the Azure portal](dns-operations-recordsets-portal.md) (DNS-records en -recordsets beheren met behulp van Azure Portal).
 
-1. Aan de bovenkant van de **DNS-zone** venster **+ Recordset** openen de **recordset toevoegen** deelvenster.
+1. At the top of the **DNS zone** pane, select **+ Record set** to open the **Add record set** pane.
 
-   ![Knop voor het maken van een Recordset](./media/dns-reverse-dns-hosting/figure6.png)
+   ![Button for creating a record set](./media/dns-reverse-dns-hosting/figure6.png)
 
-2. De naam van de recordset voor een PTR-record moet de rest van het IPv6-adres in omgekeerde volgorde. Het mag geen nul gecomprimeerd bevatten. 
+2. The name of the record set for a PTR record needs to be the rest of the IPv6 address in reverse order. It must not include any zero compression. 
 
-   In dit voorbeeld worden de eerste 64 bits van het IPv6-al ingevuld als onderdeel van de naam van de zone (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa). Daarom alleen de laatste 64 bits zijn opgegeven in de **naam** vak. De laatste 64-bits van het IP-adres zijn in omgekeerde volgorde, met een specifieke periode als het scheidingsteken tussen elke hexadecimaal nummer ingevoerd. Bijvoorbeeld: naam van de recordset **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** voor een resource met IP-adres 2001:0db8:abdc:0000:f524:10bc:1af9:405e is.  
-3. Voor **Type**, selecteer **PTR**.  
-4. Voor **domeinnaam**, voer de FQDN-naam van de resource die gebruikmaakt van het IP-adres.
-5. Selecteer **OK** opnemen onder aan het deelvenster voor het maken van de DNS-server.
+   In this example, the first 64 bits of the IPv6 are already populated as part of the zone name (0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa). Therefore, only the last 64 bits are supplied in the **Name** box. The last 64 bits of the IP address are entered in reverse order, with a period as the delimiter between each hexadecimal number. For example, you might name your record set **e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f** for a resource whose IP address is 2001:0db8:abdc:0000:f524:10bc:1af9:405e.  
+3. For **Type**, select **PTR**.  
+4. For **DOMAIN NAME**, enter the FQDN of the resource that uses the IP.
+5. Select **OK** at the bottom of the pane to create the DNS record.
 
-!['Recordset toevoegen' in het deelvenster met vakken ingevuld](./media/dns-reverse-dns-hosting/figure7.png)
+!["Add record set" pane, with boxes filled in](./media/dns-reverse-dns-hosting/figure7.png)
 
-De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van PowerShell of Azure CLI.
+The following examples show how to complete this task by using PowerShell or Azure CLI.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -177,13 +177,13 @@ De volgende voorbeelden laten zien hoe deze taak uitvoeren met behulp van PowerS
 New-AzDnsRecordSet -Name "e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f" -RecordType PTR -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup -Ttl 3600 -DnsRecords (New-AzDnsRecordConfig -Ptrdname "dc2.contoso.com")
 ```
 
-#### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+#### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
 
 ```
 azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f PTR --ptrdname dc2.contoso.com 
 ```
  
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     az network dns record-set ptr add-record -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -n e.5.0.4.9.f.a.1.c.b.0.1.4.2.5.f --ptrdname dc2.contoso.com
@@ -191,15 +191,15 @@ azure network dns record-set add-record MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.
 
 ## <a name="view-records"></a>Records weergeven
 
-Als u wilt weergeven van de records die u hebt gemaakt, blader naar de DNS-zone in Azure portal. In het onderste gedeelte van de **DNS-zone** deelvenster ziet u de records voor de DNS-zone. U ziet de standaard NS en SOA-records, plus alle nieuwe records die u hebt gemaakt. De NS en SOA-records worden in elke zone gemaakt. 
+To view the records that you created, browse to your DNS zone in the Azure portal. In the lower part of the **DNS zone** pane, you can see the records for the DNS zone. You should see the default NS and SOA records, plus any new records that you've created. The NS and SOA records are created in every zone. 
 
 ### <a name="ipv4"></a>IPv4
 
-De **DNS-zone** deelvenster ziet u het IPv4-PTR-records:
+The **DNS zone** pane shows the IPv4 PTR records:
 
-![Deelvenster 'DNS-zone' met IPv4-records](./media/dns-reverse-dns-hosting/figure8.png)
+!["DNS zone" pane with IPv4 records](./media/dns-reverse-dns-hosting/figure8.png)
 
-De volgende voorbeelden laten zien hoe de PTR-records weergeven met behulp van PowerShell of Azure CLI.
+The following examples show how to view the PTR records by using PowerShell or Azure CLI.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -207,13 +207,13 @@ De volgende voorbeelden laten zien hoe de PTR-records weergeven met behulp van P
 Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+#### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
 
 ```azurecli
     azure network dns record-set list MyResourceGroup 2.0.192.in-addr.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     azure network dns record-set list -g MyResourceGroup -z 2.0.192.in-addr.arpa
@@ -221,11 +221,11 @@ Get-AzDnsRecordSet -ZoneName 2.0.192.in-addr.arpa -ResourceGroupName MyResourceG
 
 ### <a name="ipv6"></a>IPv6
 
-De **DNS-zone** deelvenster ziet u de IPv6-PTR-records:
+The **DNS zone** pane shows the IPv6 PTR records:
 
-![Deelvenster 'DNS-zone' met IPv6-records](./media/dns-reverse-dns-hosting/figure9.png)
+!["DNS zone" pane with IPv6 records](./media/dns-reverse-dns-hosting/figure9.png)
 
-De volgende voorbeelden laten zien hoe de records weergeven met behulp van PowerShell of Azure CLI.
+The following examples show how to view the records by using PowerShell or Azure CLI.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -233,13 +233,13 @@ De volgende voorbeelden laten zien hoe de records weergeven met behulp van Power
 Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceGroupName MyResourceGroup
 ```
 
-#### <a name="azure-classic-cli"></a>Klassieke versie van Azure CLI
+#### <a name="azure-classic-cli"></a>Klassieke versie van de Azure CLI
 
 ```azurecli
     azure network dns record-set list MyResourceGroup 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
 ```
 
-#### <a name="azure-cli"></a>Azure-CLI
+#### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
     azure network dns record-set list -g MyResourceGroup -z 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa
@@ -247,28 +247,28 @@ Get-AzDnsRecordSet -ZoneName 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa -ResourceG
 
 ## <a name="faq"></a>Veelgestelde vragen
 
-### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Kan ik voor mijn ISP-toegewezen IP-adresblokken op Azure DNS-zones voor omgekeerde DNS-zoekacties hosten?
+### <a name="can-i-host-reverse-dns-lookup-zones-for-my-isp-assigned-ip-blocks-on-azure-dns"></a>Can I host reverse DNS lookup zones for my ISP-assigned IP blocks on Azure DNS?
 
-Ja. Die als host fungeert voor de zones voor reverse lookup (ARPA) voor uw eigen IP-adresbereiken in Azure DNS wordt volledig ondersteund.
+Ja. Hosting the reverse lookup (ARPA) zones for your own IP ranges in Azure DNS is fully supported.
 
-De zone voor reverse lookup maken in Azure DNS, zoals in dit artikel wordt beschreven, en werk vervolgens verder met de Internet-provider [delegeren van de zone](dns-domain-delegation.md). U kunt vervolgens de PTR-records voor elke reverse lookup beheren op dezelfde manier als andere recordtypen.
+Create the reverse lookup zone in Azure DNS as explained in this article, and then work with your ISP to [delegate the zone](dns-domain-delegation.md). You can then manage the PTR records for each reverse lookup in the same way as other record types.
 
-### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>Hoeveel gebruikt die als host fungeert voor de omgekeerde DNS-lookup zone kosten?
+### <a name="how-much-does-hosting-my-reverse-dns-lookup-zone-cost"></a>How much does hosting my reverse DNS lookup zone cost?
 
-Hosting van de DNS-zone voor reverse lookup voor uw Internet-provider toegewezen IP-Adresblok in Azure DNS wordt in rekening gebracht tegen [tarieven voor Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+Hosting the reverse DNS lookup zone for your ISP-assigned IP block in Azure DNS is charged at [standard Azure DNS rates](https://azure.microsoft.com/pricing/details/dns/).
 
-### <a name="can-i-host-reverse-dns-lookup-zones-for-both-ipv4-and-ipv6-addresses-in-azure-dns"></a>Kan ik de zones voor omgekeerde DNS-zoekacties voor zowel IPv4 als IPv6-adressen in Azure DNS hosten?
+### <a name="can-i-host-reverse-dns-lookup-zones-for-both-ipv4-and-ipv6-addresses-in-azure-dns"></a>Can I host reverse DNS lookup zones for both IPv4 and IPv6 addresses in Azure DNS?
 
-Ja. In dit artikel wordt uitgelegd hoe u zowel IPv4 als IPv6 DNS-zones voor omgekeerde zoekacties in Azure DNS maakt.
+Ja. This article explains how to create both IPv4 and IPv6 reverse DNS lookup zones in Azure DNS.
 
-### <a name="can-i-import-an-existing-reverse-dns-lookup-zone"></a>Kan ik een bestaande zone voor reverse DNS-lookup importeren?
+### <a name="can-i-import-an-existing-reverse-dns-lookup-zone"></a>Can I import an existing reverse DNS lookup zone?
 
-Ja. U kunt Azure CLI gebruiken om te importeren van bestaande DNS-zones in Azure DNS. Deze methode werkt voor zowel zones voor forward lookup en zones voor reverse lookup.
+Ja. You can use Azure CLI to import existing DNS zones into Azure DNS. This method works for both forward lookup zones and reverse lookup zones.
 
-Zie voor meer informatie, [importeren en exporteren van een DNS-zonebestand met behulp van Azure CLI](dns-import-export.md).
+For more information, see [Import and export a DNS zone file using Azure CLI](dns-import-export.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over omgekeerde DNS [omgekeerde DNS-zoekactie voor Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+For more information on reverse DNS, see [reverse DNS lookup on Wikipedia](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
-Meer informatie over het [omgekeerde DNS-records voor uw Azure-services beheren](dns-reverse-dns-for-azure-services.md).
+Learn how to [manage reverse DNS records for your Azure services](dns-reverse-dns-for-azure-services.md).

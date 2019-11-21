@@ -1,69 +1,65 @@
 ---
-title: 'Zelf studie: gebruik python en tensor flow in Azure Functions om machine learning deverzekers | Microsoft Docs'
-description: In deze zelf studie wordt gedemonstreerd hoe u tensor flow machine learning modellen toepast in Azure Functions
-services: functions
+title: Use Python and TensorFlow in Azure Functions to make machine learning inferences
+description: This tutorial demonstrates how to apply TensorFlow machine learning models in Azure Functions
 author: anthonychu
-manager: gwallace
-ms.service: azure-functions
-ms.devlang: python
 ms.topic: tutorial
 ms.date: 07/29/2019
 ms.author: antchu
 ms.custom: mvc
-ms.openlocfilehash: 491adb2719dc7c05a2943634e83027376c9327c3
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e7c4e1bbd23d43d5e11ab8b26c3d4e1215b4946b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082734"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230507"
 ---
-# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Zelf studie: machine learning modellen Toep assen in Azure Functions met python en tensor flow
+# <a name="tutorial-apply-machine-learning-models-in-azure-functions-with-python-and-tensorflow"></a>Tutorial: Apply machine learning models in Azure Functions with Python and TensorFlow
 
-In dit artikel wordt beschreven hoe u met behulp van Azure Functions python en tensor flow kunt gebruiken met een machine learning model om een afbeelding te classificeren op basis van de inhoud ervan.
+This article demonstrates how Azure Functions allows you to use Python and TensorFlow with a machine learning model to classify an image based on its contents.
 
 In deze zelfstudie leert u het volgende: 
 
 > [!div class="checklist"]
-> * Een lokale omgeving initialiseren voor het ontwikkelen van Azure Functions in python
-> * Een aangepast tensor flow-machine learning model importeren in een functie-app
-> * Een serverloze HTTP API maken voor het voors pellen of een foto een hond of een kat bevat
-> * De API van een webtoepassing gebruiken
+> * Initialize a local environment for developing Azure Functions in Python
+> * Import a custom TensorFlow machine learning model into a function app
+> * Build a serverless HTTP API for predicting whether a photo contains a dog or a cat
+> * Consume the API from a web application
 
-![Scherm opname van voltooid project](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
+![Screenshot of finished project](media/functions-machine-learning-tensorflow/functions-machine-learning-tensorflow-screenshot.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Als u Azure Functions in python wilt maken, moet u een paar hulpprogram ma's installeren.
+To create Azure Functions in Python, you need to install a few tools.
 
-- [Python 3,6](https://www.python.org/downloads/release/python-360/)
+- [Python 3.6](https://www.python.org/downloads/release/python-360/)
 - [Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools)
 - Een code-editor zoals [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="clone-the-tutorial-repository"></a>De zelfstudie bibliotheek klonen
+## <a name="clone-the-tutorial-repository"></a>Clone the tutorial repository
 
-Als u wilt beginnen, opent u een Terminal en kloont u de volgende opslag plaats met git:
+To begin, open a terminal and clone the following repository using Git:
 
 ```console
 git clone https://github.com/Azure-Samples/functions-python-tensorflow-tutorial.git
 cd functions-python-tensorflow-tutorial
 ```
 
-De opslag plaats bevat een paar mappen.
+The repository contains a few folders.
 
-- *Start*: dit is de werkmap voor de zelf studie
-- *End*: dit is het uiteindelijke resultaat en de volledige implementatie voor uw referentie
-- *resources*: bevat het machine learning model en de helper-bibliotheken
-- Front- *End*: een website die de functie-app aanroept
+- *start*:  This is your working folder for the tutorial
+- *end*: This is the final result and full implementation for your reference
+- *resources*: Contains the machine learning model and helper libraries
+- *frontend*: A website that calls the function app
 
-## <a name="create-and-activate-a-python-virtual-environment"></a>Een virtuele python-omgeving maken en activeren
+## <a name="create-and-activate-a-python-virtual-environment"></a>Create and activate a Python virtual environment
 
-Voor Azure Functions is python 3.6. x vereist. U maakt een virtuele omgeving om ervoor te zorgen dat u gebruikmaakt van de vereiste python-versie.
+Azure Functions requires Python 3.6.x. You'll create a virtual environment to ensure you're using the required Python version.
 
-Wijzig de huidige werkmap in de map *Start* . Maak en activeer een virtuele omgeving met de naam *. venv*. Afhankelijk van uw python-installatie kunnen de opdrachten voor het maken van een virtuele python 3,6-omgeving afwijken van de volgende instructies.
+Change the current working directory to the *start* folder. Then create and activate a virtual environment named *.venv*. Depending on your Python installation, the commands to create a Python 3.6 virtual environment may differ from the following instructions.
 
-#### <a name="linux-and-macos"></a>Linux en macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cd start
@@ -79,70 +75,70 @@ py -3.6 -m venv .venv
 .venv\scripts\activate
 ```
 
-De terminal prompt wordt nu voorafgegaan door `(.venv)`, wat aangeeft dat de virtuele omgeving is geactiveerd. Bevestig dat `python` in de virtuele omgeving inderdaad python 3.6. x.
+The terminal prompt is now prefixed with `(.venv)` which indicates you have successfully activated the virtual environment. Confirm that `python` in the virtual environment is indeed Python 3.6.x.
 
 ```console
 python --version
 ```
 
 > [!NOTE]
-> Voor de rest van de zelf studie voert u opdrachten uit in de virtuele omgeving. Als u de virtuele omgeving in een Terminal opnieuw moet activeren, voert u de juiste opdracht Activate uit voor uw besturings systeem.
+> For the remainder of the tutorial, you run commands in the virtual environment. If you need to reactivate the virtual environment in a terminal, execute the appropriate activate command for your operating system.
 
 ## <a name="create-an-azure-functions-project"></a>Een Azure Functions-project maken
 
-Gebruik in de map *Start* de Azure functions core tools een python-functie-app te initialiseren.
+In the *start* folder, use the Azure Functions Core Tools to initialize a Python function app.
 
 ```console
 func init --worker-runtime python
 ```
 
-Een functie-app kan een of meer Azure Functions bevatten. Open de map *Start* in een editor en controleer de inhoud.
+A function app can contain one or more Azure Functions. Open the *start* folder in an editor and examine the contents.
 
-- [*Local. settings. json*](functions-run-local.md#local-settings-file): bevat toepassings instellingen die worden gebruikt voor lokale ontwikkeling
-- [*host. json*](functions-host-json.md): bevat instellingen voor de Azure functions-host en-extensies
-- [*Requirements. txt*](functions-reference-python.md#package-management): bevat Python-pakketten die vereist zijn voor deze toepassing
+- [*local.settings.json*](functions-run-local.md#local-settings-file): Contains application settings used for local development
+- [*host.json*](functions-host-json.md): Contains settings for the Azure Functions host and extensions
+- [*requirements.txt*](functions-reference-python.md#package-management): Contains Python packages required by this application
 
-## <a name="create-an-http-function"></a>Een HTTP-functie maken
+## <a name="create-an-http-function"></a>Create an HTTP function
 
-Voor de toepassing is één HTTP API-eind punt vereist dat een afbeeldings-URL gebruikt als invoer en een voor spelling retourneert van het feit of de afbeelding een hond of een kat bevat.
+The application requires a single HTTP API endpoint that takes an image URL as the input and returns a prediction of whether the image contains a dog or a cat.
 
-Gebruik in de Terminal de Azure Functions Core Tools om een nieuwe HTTP-functie met de naam *classificeren*te gebruiken.
+In the terminal, use the Azure Functions Core Tools to scaffold a new HTTP function named *classify*.
 
 ```console
 func new --language python --template HttpTrigger --name classify
 ```
 
-Er wordt een nieuwe map met de naam *classificering* gemaakt, die twee bestanden bevat.
+A new folder named *classify* is created, containing two files.
 
-- *\_\_init\_\_. py*: een bestand voor de hoofd functie
-- *Function. json*: een bestand met een beschrijving van de trigger van de functie en de bijbehorende invoer-en uitvoer bindingen
+- *\_\_init\_\_.py*: A file for the main function
+- *function.json*:  A file describing the function's trigger and its input and output bindings
 
-### <a name="run-the-function"></a>De functie uitvoeren
+### <a name="run-the-function"></a>Run the function
 
-Start in de Terminal met de python virtuele omgeving geactiveerd de functie-app.
+In the terminal with the Python virtual environment activated, start the function app.
 
 ```console
 func start
 ```
 
-Open een browser en ga naar de volgende URL. De functie moet worden uitgevoerd en *Hello Azure* wordt geretourneerd.
+Open a browser and navigate to the following URL. The function should execute and return *Hello Azure!*
 
 ```
 http://localhost:7071/api/classify?name=Azure
 ```
 
-Gebruik `Ctrl-C` om de functie-app te stoppen.
+Use `Ctrl-C` to stop the function app.
 
-## <a name="import-the-tensorflow-model"></a>Het tensor flow-model importeren
+## <a name="import-the-tensorflow-model"></a>Import the TensorFlow model
 
-U gebruikt een vooraf gemaakt tensor flow-model dat is getraind en dat is geëxporteerd uit Azure Custom Vision Service.
+You'll use a pre-built TensorFlow model that was trained with and exported from Azure Custom Vision Service.
 
 > [!NOTE]
-> Als u uw eigen wilt maken met behulp van de gratis laag van Custom Vision Service, kunt u de [instructies in de project opslagplaats van het voor beeld](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md)volgen.
+> If you want to build your own using Custom Vision Service's free tier, you can follow the [instructions in the sample project repository](https://github.com/Azure-Samples/functions-python-tensorflow-tutorial/blob/master/train-custom-vision-model.md).
 
-Het model bestaat uit twee bestanden in de map *< REPOSITORY_ROOT >/resources/model* : *model. PB* en *labels. txt*. Kopieer deze naar de map van de functie *classificeren* .
+The model consists of two files in the *<REPOSITORY_ROOT>/resources/model* folder: *model.pb* and *labels.txt*. Copy them into the *classify* function's folder.
 
-#### <a name="linux-and-macos"></a>Linux en macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cp ../resources/model/* classify
@@ -154,13 +150,13 @@ cp ../resources/model/* classify
 copy ..\resources\model\* classify
 ```
 
-Zorg ervoor dat u de \* in de bovenstaande opdracht opneemt. Controleer of *classificeren* nu bestanden bevat met de naam *model. PB* en *labels. txt*.
+Be sure to include the \* in the above command. Confirm that *classify* now contains files named *model.pb* and *labels.txt*.
 
-## <a name="add-the-helper-functions-and-dependencies"></a>De Help-functies en-afhankelijkheden toevoegen
+## <a name="add-the-helper-functions-and-dependencies"></a>Add the helper functions and dependencies
 
-Sommige hulp functies voor het voorbereiden van de invoer installatie kopie en het maken van een voor spelling met behulp van tensor flow bevinden zich in een bestand met de naam *predict.py* in de map *resources* . Kopieer dit bestand naar de map van de functie *classificeren* .
+Some helper functions for preparing the input image and making a prediction using TensorFlow are in a file named *predict.py* in the *resources* folder. Copy this file into the *classify* function's folder.
 
-#### <a name="linux-and-macos"></a>Linux en macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cp ../resources/predict.py classify
@@ -172,11 +168,11 @@ cp ../resources/predict.py classify
 copy ..\resources\predict.py classify
 ```
 
-Controleer of *classificeren* nu een bestand met de naam *predict.py*bevat.
+Confirm that *classify* now contains a file named *predict.py*.
 
 ### <a name="install-dependencies"></a>Afhankelijkheden installeren
 
-De helper-bibliotheek heeft enkele afhankelijkheden die moeten worden geïnstalleerd. Open *Start/requirements. txt* in de editor en voeg de volgende afhankelijkheden toe aan het bestand.
+The helper library has some dependencies that need to be installed. Open *start/requirements.txt* in your editor and add the following dependencies to the file.
 
 ```txt
 tensorflow==1.14
@@ -186,28 +182,28 @@ requests
 
 Sla het bestand op.
 
-In de Terminal met de virtuele omgeving geactiveerd, voert u de volgende opdracht uit in de map *Start* om de afhankelijkheden te installeren. Het kan enkele minuten duren voordat bepaalde installatie stappen zijn voltooid.
+In the terminal with the virtual environment activated, run the following command in the *start* folder to install the dependencies. Some installation steps may take a few minutes to complete.
 
 ```console
 pip install --no-cache-dir -r requirements.txt
 ```
 
-### <a name="caching-the-model-in-global-variables"></a>Het model in de cache opslaan in globale variabelen
+### <a name="caching-the-model-in-global-variables"></a>Caching the model in global variables
 
-Open *predict.py* in de editor en Bekijk de functie `_initialize` boven aan het bestand. U ziet dat het tensor flow-model van de schijf wordt geladen wanneer de functie voor het eerst wordt uitgevoerd en wordt opgeslagen in globale variabelen. Het laden vanaf schijf wordt overgeslagen tijdens volgende uitvoeringen van de functie `_initialize`. Als u het model in het geheugen opslaat met deze techniek, versnelt u later de voor spellingen.
+In the editor, open *predict.py* and look at the `_initialize` function near the top of the file. Notice that the TensorFlow model is loaded from disk the first time the function is executed and saved to global variables. The loading from disk is skipped in subsequent executions of the `_initialize` function. Caching the model in memory with this technique speeds up later predictions.
 
-Raadpleeg de [Azure functions python-ontwikkelaars handleiding](functions-reference-python.md#global-variables)voor meer informatie over globale variabelen.
+For more information on global variables, refer to the [Azure Functions Python developer guide](functions-reference-python.md#global-variables).
 
-## <a name="update-function-to-run-predictions"></a>De functie update voor het uitvoeren van voor spellingen
+## <a name="update-function-to-run-predictions"></a>Update function to run predictions
 
-Open *classificatie/\_\_init\_\_. py* in de editor. Importeer de bibliotheek voor voors *pellen* die u eerder hebt toegevoegd aan dezelfde map. Voeg de volgende `import`-instructies toe onder de andere invoer die al in het bestand voor komt.
+Open *classify/\_\_init\_\_.py* in your editor. Import the *predict* library that you added to the same folder earlier. Add the following `import` statements below the other imports already in the file.
 
 ```python
 import json
 from .predict import predict_image_from_url
 ```
 
-Vervang de functie sjabloon code door het volgende.
+Replace the function template code with the following.
 
 ```python
 def main(req: func.HttpRequest) -> func.HttpResponse:
@@ -221,38 +217,38 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     return func.HttpResponse(json.dumps(results), headers = headers)
 ```
 
-Zorg ervoor dat uw wijzigingen op te slaan.
+Make sure to save your changes.
 
-Deze functie ontvangt een afbeeldings-URL in een query reeks parameter met de naam `img`. Er wordt `predict_image_from_url` aangeroepen vanuit de helper-bibliotheek die de installatie kopie downloadt en een voor spelling retourneert met behulp van het tensor flow-model. De functie retourneert vervolgens een HTTP-antwoord met de resultaten.
+This function receives an image URL in a query string parameter named `img`. It calls `predict_image_from_url` from the helper library that downloads the image and returns a prediction using the TensorFlow model. The function then returns an HTTP response with the results.
 
-Omdat het HTTP-eind punt wordt aangeroepen door een webpagina die wordt gehost op een ander domein, bevat het HTTP-antwoord een `Access-Control-Allow-Origin`-header om te voldoen aan de vereisten voor de toepassing van het gebruik van meerdere resources (CORS) van de browser.
+Since the HTTP endpoint is called by a web page hosted on another domain, the HTTP response includes an `Access-Control-Allow-Origin` header to satisfy the browser's Cross-Origin Resource Sharing (CORS) requirements.
 
 > [!NOTE]
-> Wijzig in een productie toepassing `*` in de specifieke oorsprong van de webpagina voor extra beveiliging.
+> In a production application, change `*` to the web page's specific origin for added security.
 
-### <a name="run-the-function-app"></a>De functie-app uitvoeren
+### <a name="run-the-function-app"></a>Run the function app
 
-Zorg ervoor dat de virtuele python-omgeving nog steeds geactiveerd is en start de functie-app met behulp van de volgende opdracht.
+Ensure the Python virtual environment is still activated and start the function app using the following command.
 
 ```console
 func start
 ```
 
-Open in een browser deze URL die uw functie aanroept met de URL van een kat foto. Bevestig dat er een geldig Voorspellings resultaat wordt geretourneerd.
+In a browser, open this URL that calls your function with the URL of a cat photo. Confirm that a valid prediction result is returned.
 
 ```
 http://localhost:7071/api/classify?img=https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png
 ```
 
-Zorg ervoor dat de functie-app wordt uitgevoerd.
+Keep the function app running.
 
 ### <a name="run-the-web-app"></a>De web-app uitvoeren
 
-Er is een eenvoudige web-app in de map front- *End* waarin de HTTP-API in de functie-app wordt gebruikt.
+There's a simple web app in the *frontend* folder that consumes the HTTP API in the function app.
 
-Open een *afzonderlijke* Terminal en ga naar de map front- *End* . Start een HTTP-server met python 3,6.
+Open a *separate* terminal and change to the *frontend* folder. Start an HTTP server with Python 3.6.
 
-#### <a name="linux-and-macos"></a>Linux en macOS:
+#### <a name="linux-and-macos"></a>Linux and macOS:
 
 ```bash
 cd <FRONT_END_FOLDER>
@@ -266,25 +262,25 @@ cd <FRONT_END_FOLDER>
 py -3.6  -m http.server
 ```
 
-Navigeer in een browser naar de URL van de HTTP-server die wordt weer gegeven in de Terminal. Er moet een web-app worden weer gegeven. Voer een van de volgende foto-Url's in het tekstvak in. U kunt ook een URL gebruiken van een openbaar toegankelijke kat of honden foto.
+In a browser, navigate to the HTTP server's URL that is displayed in the terminal. A web app should appear. Enter one of the following photo URLs into the textbox. You may also use a URL of a publicly accessible cat or dog photo.
 
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/cat2.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog1.png`
 - `https://raw.githubusercontent.com/Azure-Samples/functions-python-tensorflow-tutorial/master/resources/assets/samples/dog2.png`
 
-Wanneer u op verzenden klikt, wordt de functie-app aangeroepen en wordt er een resultaat op de pagina weer gegeven.
+When you click submit, the function app is called and a result is displayed on the page.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Het geheel van deze zelf studie wordt lokaal op uw computer uitgevoerd, zodat er geen Azure-resources of-services zijn om op te schonen.
+The entirety of this tutorial runs locally on your machine, so there are no Azure resources or services to clean up.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u een HTTP-API kunt bouwen en aanpassen met Azure Functions om voor spellingen te maken met behulp van een tensor flow-model. U hebt ook geleerd hoe u de API aanroept vanuit een webtoepassing.
+In this tutorial, you learned how to build and customize an HTTP API with Azure Functions to make predictions using a TensorFlow model. You also learned how to call the API from a web application.
 
-U kunt de technieken in deze zelf studie gebruiken om Api's van elke complexiteit te maken, terwijl deze worden uitgevoerd op het serverloos reken model van Azure Functions.
+You can use the techniques in this tutorial to build out APIs of any complexity, all while running on the serverless compute model provided by Azure Functions.
 
-Als u de functie-app naar Azure wilt implementeren, gebruikt u de [Azure functions core tools](./functions-run-local.md#publish) of [Visual Studio code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
+To deploy the function app to Azure, use the [Azure Functions Core Tools](./functions-run-local.md#publish) or [Visual Studio Code](https://code.visualstudio.com/docs/python/tutorial-azure-functions).
 
 > [!div class="nextstepaction"]
-> [Azure Functions python-ontwikkelaars handleiding](./functions-reference-python.md)
+> [Azure Functions Python Developer Guide](./functions-reference-python.md)

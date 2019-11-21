@@ -1,41 +1,41 @@
 ---
-title: 'Snelstartgids: een gesimuleerd X. 509-apparaat inrichten voor Azure IoT Hub met behulp vanC#'
-description: 'Azure-snelstart: een gesimuleerd X.509-apparaat met de SDK voor C# maken en inrichten voor Azure IoT Hub Device Provisioning Service. In deze snelstart wordt gebruikgemaakt van afzonderlijke registraties.'
+title: Provision simulated X.509 device to Azure IoT Hub using C#
+description: Quickstart - Create and provision a simulated X.509 device using C# device SDK for Azure IoT Hub Device Provisioning Service. In deze snelstart wordt gebruikgemaakt van afzonderlijke inschrijvingen.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: c89b854eb5b87d76a24335e646553bda401f1a3a
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
-ms.translationtype: MT
+ms.openlocfilehash: 94ac67ec75a46dcf13bdc1024ec06be687554999
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903526"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74228728"
 ---
-# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Quick Start: een gesimuleerd X. 509-apparaat maken C# en inrichten met een apparaat-SDK voor IOT hub Device Provisioning Service
+# <a name="quickstart-create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Quickstart: Create and provision a simulated X.509 device using C# device SDK for IoT Hub Device Provisioning Service
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
 Deze stappen laten u zien hoe u de [Azure IoT-voorbeelden voor C#](https://github.com/Azure-Samples/azure-iot-samples-csharp) gebruikt om een X.509-apparaat te simuleren op een ontwikkelcomputer met het Windows-besturingssysteem. In het voorbeeld wordt het gesimuleerde apparaat ook verbonden met een IoT Hub met behulp van een apparaatinrichtingsservice.
 
-Als u niet bekend bent met het proces van automatisch inrichten, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
+Als u niet bekend bent met het proces van automatische inrichting, bekijk dan ook de [Concepten voor automatische inrichting](concepts-auto-provisioning.md). Controleer ook of u de stappen in [IoT Hub Device Provisioning Service instellen met Azure Portal](./quick-setup-auto-provision.md) hebt voltooid voordat u verdergaat. 
 
 Azure IoT Device Provisioning Service ondersteunt twee typen registraties:
 - [Registratiegroepen](concepts-service.md#enrollment-group): wordt gebruikt om meerdere gerelateerde apparaten in te schrijven.
 - [Afzonderlijke inschrijvingen](concepts-service.md#individual-enrollment): wordt gebruikt om een enkel apparaat in te schrijven.
 
-In dit artikel worden afzonderlijke registraties gedemonstreerd.
+In dit artikel worden afzonderlijke inschrijvingen gedemonstreerd.
 
 [!INCLUDE [IoT Device Provisioning Service basic](../../includes/iot-dps-basic.md)]
 
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>De ontwikkelomgeving voorbereiden 
 
-1. Zorg ervoor dat u de [.net Core 2,1 SDK of hoger](https://www.microsoft.com/net/download/windows) op uw computer hebt geïnstalleerd. 
+1. Make sure you have the [.NET Core 2.1 SDK or later](https://www.microsoft.com/net/download/windows) installed on your machine. 
 
 1. Zorg ervoor dat `git` op de computer wordt geïnstalleerd en toegevoegd aan de omgevingsvariabelen die voor het opdrachtvenster toegankelijk zijn. Zie [Software Freedom Conservancy's Git client tools](https://git-scm.com/download/) (Git-clienthulpprogramma's van Software Freedom Conservancy) om de nieuwste versie van `git`-hulpprogramma's te installeren, waaronder **Git Bash**, de opdrachtregel-app die u kunt gebruiken voor interactie met de lokale Git-opslagplaats. 
 
@@ -119,8 +119,8 @@ Als u wilt blijven doorwerken met het voorbeeld van de apparaatclient en deze be
 
 1. Sluit het uitvoervenster van het voorbeeld van de apparaatclient op de computer.
 1. Sluit het TPM-simulatorvenster op de computer.
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer uw Device Provisioning Service. Klik bovenaan de blade **Alle resources** op **Verwijderen**.  
-1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Klik bovenaan de blade **Alle resources** op **Verwijderen**.  
+1. Klik in het linkermenu in Azure Portal op **All resources** en selecteer uw Device Provisioning-service. Klik bovenaan de blade **All resources** op **Delete**.  
+1. Klik in het linkermenu in de Azure Portal op **Alle resources** en selecteer vervolgens uw IoT-hub. Klik bovenaan de blade **All resources** op **Delete**.  
 
 ## <a name="next-steps"></a>Volgende stappen
 

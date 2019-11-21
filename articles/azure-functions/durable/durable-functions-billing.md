@@ -1,60 +1,56 @@
 ---
-title: Betaal Azure Functions van duurzame functies
-description: Meer informatie over het interne gedrag van Durable Functions en hoe deze van invloed zijn op facturering voor Azure Functions.
+title: Durable functions billing - Azure Functions
+description: Learn about the internal behaviors of Durable Functions and how they affect billing for Azure Functions.
 author: cgillum
-manager: jeconnoc
-keywords: ''
-ms.service: azure-functions
-ms.devlang: multiple
 ms.topic: overview
 ms.date: 08/31/2019
 ms.author: azfuncdf
-ms.openlocfilehash: f2de6bdf24aa1a0a11349c8f0ec9b3995b026a47
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 504ef93a0002895bc5662d95ad269c8593170ee2
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71694883"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233014"
 ---
-# <a name="durable-functions-billing"></a>Facturering Durable Functions
+# <a name="durable-functions-billing"></a>Durable Functions billing
 
-[Durable functions](durable-functions-overview.md) wordt op dezelfde manier gefactureerd als Azure functions. Zie voor meer informatie, [prijzen van Azure Functions](https://azure.microsoft.com/pricing/details/functions/).
+[Durable Functions](durable-functions-overview.md) is billed the same way as Azure Functions. Zie [Prijzen voor Azure Functions](https://azure.microsoft.com/pricing/details/functions/) voor meer informatie.
 
-Bij het uitvoeren van Orchestrator-functies in Azure Functions [verbruiks abonnement](../functions-scale.md#consumption-plan)moet u rekening houden met een aantal facturerings gedrag. In de volgende secties worden deze gedragingen en hun effect in meer detail beschreven.
+When executing orchestrator functions in Azure Functions [Consumption plan](../functions-scale.md#consumption-plan), you need to be aware of some billing behaviors. The following sections describe these behaviors and their effect in more detail.
 
-## <a name="orchestrator-function-replay-billing"></a>Facturering van Orchestrator-functie replay
+## <a name="orchestrator-function-replay-billing"></a>Orchestrator function replay billing
 
-[Orchestrator-functies](durable-functions-orchestrations.md) kunnen meerdere keren worden herhaald gedurende de levens duur van een indeling. Elke herhaling wordt weer gegeven door de Azure Functions runtime als een afzonderlijke functie aanroep. Daarom wordt in het Azure Functions verbruiks plan voor elk herhaling van een Orchestrator-functie gefactureerd. Andere typen abonnementen worden niet in rekening gebracht voor de Orchestrator-functie replay.
+[Orchestrator functions](durable-functions-orchestrations.md) might replay several times throughout the lifetime of an orchestration. Each replay is viewed by the Azure Functions runtime as a distinct function invocation. For this reason, in the Azure Functions Consumption plan you're billed for each replay of an orchestrator function. Other plan types don't charge for orchestrator function replay.
 
-## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Wachtende en opleveren in Orchestrator-functies
+## <a name="awaiting-and-yielding-in-orchestrator-functions"></a>Awaiting and yielding in orchestrator functions
 
-Wanneer een Orchestrator-functie wacht op het volt ooien van een asynchrone actie door te gebruiken C# in een **wacht** tijd in of in te **leveren** in Java script, beschouwt de runtime dat bepaalde uitvoeringen zijn voltooid. De facturering voor de Orchestrator-functie stopt op dat moment. Het wordt pas hervat als de volgende Orchestrator-functie opnieuw wordt afgespeeld. Er worden geen kosten in rekening gebracht voor elke tijd die nodig is om een Orchestrator-functie te gebruiken of te leveren.
+When an orchestrator function waits for an asynchronous action to finish by using **await** in C# or **yield** in JavaScript, the runtime considers that particular execution to be finished. The billing for the orchestrator function stops at that point. It doesn't resume until the next orchestrator function replay. You aren't billed for any time spent awaiting or yielding in an orchestrator function.
 
 > [!NOTE]
-> Functies die andere functies aanroepen, worden beschouwd als een anti patroon. Dit komt door een probleem met de _dubbele facturering_. Wanneer een functie rechtstreeks een functie aanroept, wordt beide tegelijk uitgevoerd. De aangeroepen functie voert code actief uit terwijl de aanroepende functie wacht op een antwoord. In dit geval moet u betalen voor het tijdstip waarop de aanroepende functie wacht voordat de aangeroepen functie wordt uitgevoerd.
+> Functions calling other functions is considered by some to be an antipattern. This is because of a problem known as _double billing_. When a function calls another function directly, both run at the same time. The called function is actively running code while the calling function is waiting for a response. In this case, you must pay for the time the calling function spends waiting for the called function to run.
 >
-> Er is geen dubbele facturering in Orchestrator-functies. De facturering van een Orchestrator-functie wordt gestopt tijdens het wachten op het resultaat van een activiteit functie of suborchestration.
+> There is no double billing in orchestrator functions. An orchestrator function's billing stops while it waits for the result of an activity function or sub-orchestration.
 
-## <a name="durable-http-polling"></a>Duurzame HTTP-polling
+## <a name="durable-http-polling"></a>Durable HTTP polling
 
-Met Orchestrator-functies kunt u langlopende HTTP-aanroepen naar externe eind punten maken, zoals beschreven in het [artikel http-functies](durable-functions-http-features.md). De methode **CallHttpAsync** in C# en de methode **callHttp** in Java script kunnen een http-eind punt intern pollen tijdens het [asynchrone 202-patroon](durable-functions-http-features.md#http-202-handling).
+Orchestrator functions can make long-running HTTP calls to external endpoints as described in the [HTTP features article](durable-functions-http-features.md). The **CallHttpAsync** method in C# and the **callHttp** method in JavaScript might internally poll an HTTP endpoint while following the [asynchronous 202 pattern](durable-functions-http-features.md#http-202-handling).
 
-Er wordt momenteel geen directe facturering uitgevoerd voor interne HTTP-polling bewerkingen. Interne polling kan er echter toe leiden dat de Orchestrator-functie regel matig opnieuw speelt. Er worden standaard kosten in rekening gebracht voor deze interne functie herhalingen.
+There currently isn't direct billing for internal HTTP polling operations. However, internal polling might cause the orchestrator function to periodically replay. You'll be billed standard charges for these internal function replays.
 
-## <a name="azure-storage-transactions"></a>Azure Storage trans acties
+## <a name="azure-storage-transactions"></a>Azure Storage transactions
 
-Durable Functions gebruikt Azure Storage standaard om de status permanent te houden, berichten te verwerken en partities te beheren via BLOB-leases. Omdat u eigenaar bent van dit opslag account, worden de transactie kosten in rekening gebracht voor uw Azure-abonnement. Zie het artikel over de [taak hubs](durable-functions-task-hubs.md)voor meer informatie over de Azure Storage artefacten die worden gebruikt door Durable functions.
+Durable Functions uses Azure Storage by default to keep state persistent, process messages, and manage partitions via blob leases. Because you own this storage account, any transaction costs are billed to your Azure subscription. For more information about the Azure Storage artifacts used by Durable Functions, see the [Task hubs article](durable-functions-task-hubs.md).
 
-Verschillende factoren dragen bij aan de werkelijke Azure Storage kosten die worden gemaakt door uw Durable Functions-app:
+Several factors contribute to the actual Azure Storage costs incurred by your Durable Functions app:
 
-* Een app met één functie is gekoppeld aan één Task hub, die een set Azure Storage resources deelt. Deze resources worden gebruikt door alle duurzame functies in een functie-app. Het werkelijke aantal functies in de functie-app heeft geen invloed op de kosten van Azure Storage trans acties.
-* Elk exemplaar van de functie-app pollt intern meerdere wacht rijen in het opslag account met behulp van een exponentieel uitstel polling-algoritme. Een exemplaar van een niet-actieve app controleert de wacht rijen minder vaak dan een actieve app, wat leidt tot minder transactie kosten. Zie de [sectie wachtrij-polling in het artikel prestaties en schalen](durable-functions-perf-and-scale.md#queue-polling)voor meer informatie over Durable functions polling van de wachtrij.
-* Bij het uitvoeren van de Azure Functions verbruiks-of Premium-abonnementen, pollt de [Azure functions Scale controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regel matig alle taak-hub-wacht rijen op de achtergrond. Als een functie-app onder licht wordt geschaald, wordt deze wacht rijen alleen door een exemplaar van een enkele schaal controller gecontroleerd. Als de functie-app wordt geschaald naar een groot aantal exemplaren, kunnen er meer instanties van de schaal controller worden toegevoegd. Deze extra schaal controller-instanties kunnen de totale transactie kosten van de wachtrij verhogen.
-* Elk functie-app-exemplaar is een concurrentie positie voor een set BLOB-leases. Met deze instanties worden regel matig aanroepen naar de Azure-Blob service voor het vernieuwen van leases of het verkrijgen van nieuwe leases. Met het geconfigureerde aantal partities van de taak hub wordt het aantal BLOB-leases bepaald. Als u uitschaalt naar een groter aantal functie-app-exemplaren, worden de Azure Storage transactie kosten die zijn gekoppeld aan deze lease bewerkingen waarschijnlijk verhoogd.
+* A single function app is associated with a single task hub, which shares a set of Azure Storage resources. These resources are used by all durable functions in a function app. The actual number of functions in the function app has no effect on Azure Storage transaction costs.
+* Each function app instance internally polls multiple queues in the storage account by using an exponential-backoff polling algorithm. An idle app instance polls the queues less often than does an active app, which results in fewer transaction costs. For more information about Durable Functions queue-polling behavior, see the [queue-polling section of the Performance and Scale article](durable-functions-perf-and-scale.md#queue-polling).
+* When running in the Azure Functions Consumption or Premium plans, the [Azure Functions scale controller](../functions-scale.md#how-the-consumption-and-premium-plans-work) regularly polls all task-hub queues in the background. If a function app is under light to moderate scale, only a single scale controller instance will poll these queues. If the function app scales out to a large number of instances, more scale controller instances might be added. These additional scale controller instances can increase the total queue-transaction costs.
+* Each function app instance competes for a set of blob leases. These instances will periodically make calls to the Azure Blob service either to renew held leases or to attempt to acquire new leases. The task hub's configured partition count determines the number of blob leases. Scaling out to a larger number of function app instances likely increases the Azure Storage transaction costs associated with these lease operations.
 
-Meer informatie over Azure Storage prijzen vindt u in de [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) documentatie. 
+You can find more information on Azure Storage pricing in the [Azure Storage pricing](https://azure.microsoft.com/pricing/details/storage/) documentation. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Meer informatie over Azure Functions prijzen](https://azure.microsoft.com/pricing/details/functions/)
+> [Learn more about Azure Functions pricing](https://azure.microsoft.com/pricing/details/functions/)

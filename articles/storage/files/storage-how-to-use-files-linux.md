@@ -1,34 +1,34 @@
 ---
-title: Azure Files met Linux gebruiken | Microsoft Docs
-description: Meer informatie over het koppelen van een Azure-bestands share via SMB op Linux.
+title: Use Azure Files with Linux | Microsoft Docs
+description: Learn how to mount an Azure file share over SMB on Linux.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 238afdf9e50eaccba51d996ce6e9cfd06ea36899
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 3d8d7c6d3c4e752480310c122bcb7db237b3022b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74092000"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74209402"
 ---
 # <a name="use-azure-files-with-linux"></a>Azure Files gebruiken met Linux
-[Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure-bestands shares kunnen worden gekoppeld in Linux-distributies met behulp van de [SMB-kernel-client](https://wiki.samba.org/index.php/LinuxCIFS). In dit artikel ziet u twee manieren om een Azure-bestands share te koppelen: op aanvraag met de `mount`-opdracht en de opstart procedure door een vermelding in `/etc/fstab`te maken.
+[Azure Files ](storage-files-introduction.md) is het eenvoudig te gebruiken cloudbestandssysteem van Microsoft. Azure file shares can be mounted in Linux distributions using the [SMB kernel client](https://wiki.samba.org/index.php/LinuxCIFS). This article shows two ways to mount an Azure file share: on-demand with the `mount` command and on-boot by creating an entry in `/etc/fstab`.
 
-De aanbevolen manier om een Azure-bestands share te koppelen aan Linux maakt gebruik van SMB 3,0. Azure Files moet standaard versleuteling in transit hebben. dit wordt alleen ondersteund door SMB 3,0. Azure Files biedt ook ondersteuning voor SMB 2,1, dat geen ondersteuning biedt voor versleuteling tijdens de overdracht, maar u mag geen Azure-bestands shares met SMB 2,1 vanuit een andere Azure-regio of on-premises koppelen om veiligheids redenen. Tenzij uw toepassing specifiek SMB 2,1 vereist, is er weinig reden om deze te gebruiken sinds de populairste, recent uitgebrachte Linux-distributies SMB 3,0:  
+The recommended way to mount an Azure file share on Linux is using SMB 3.0. By default, Azure Files requires encryption in transit, which is only supported by SMB 3.0. Azure Files also supports SMB 2.1, which does not support encryption in transit, but you may not mount Azure file shares with SMB 2.1 from another Azure region or on-premises for security reasons. Unless your application specifically requires SMB 2.1, there is little reason to use it since most popular, recently released Linux distributions support SMB 3.0:  
 
-| | SMB 2.1 <br>(Koppelt op Vm's binnen dezelfde Azure-regio) | SMB 3.0 <br>(Koppelt van on-premises en kruis regio's) |
+| | SMB 2.1 <br>(Mounts on VMs within same Azure region) | SMB 3.0 <br>(Mounts from on premises and cross-region) |
 | --- | :---: | :---: |
-| Ubuntu | 14.04 + | 16.04 + |
-| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5 + |
-| CentOS | 7+ |  7.5 + |
-| Debian | 8 + | 10 + |
-| openSUSE | 13.2 + | 42.3 + |
+| Ubuntu | 14.04+ | 16.04+ |
+| Red Hat Enterprise Linux (RHEL) | 7+ | 7.5+ |
+| CentOS | 7+ |  7.5+ |
+| Debian | 8+ | 10+ |
+| openSUSE | 13.2+ | 42.3+ |
 | SUSE Linux Enterprise Server | 12+ | 12 SP3+ |
 
-Als u een Linux-distributie gebruikt die niet wordt vermeld in de bovenstaande tabel, kunt u controleren of uw Linux-distributie SMB 3,0 ondersteunt met versleuteling door de versie van de Linux-kernel te controleren. SMB 3,0 met versleuteling is toegevoegd aan linux-kernel versie 4,11. De `uname` opdracht retourneert de versie van de Linux-kernel die in gebruik is:
+If you're using a Linux distribution not listed in the above table, you can check to see if your Linux distribution supports SMB 3.0 with encryption by checking the Linux kernel version. SMB 3.0 with encryption was added to Linux kernel version 4.11. The `uname` command will return the version of the Linux kernel in use:
 
 ```bash
 uname -r
@@ -37,39 +37,39 @@ uname -r
 ## <a name="prerequisites"></a>Vereisten
 <a id="smb-client-reqs"></a>
 
-* <a id="install-cifs-utils"></a>**Controleer of het CIFS-utils-pakket is geïnstalleerd.**  
-    Het CIFS-hulppr-pakket kan worden geïnstalleerd met behulp van package manager in de Linux-distributie van uw keuze. 
+* <a id="install-cifs-utils"></a>**Ensure the cifs-utils package is installed.**  
+    The cifs-utils package can be installed using the package manager on the Linux distribution of your choice. 
 
-    Gebruik voor Ubuntu **-en Debian-** distributies de `apt` Package Manager:
+    On **Ubuntu** and **Debian-based** distributions, use the `apt` package manager:
 
     ```bash
     sudo apt update
     sudo apt install cifs-utils
     ```
 
-    Gebruik de `dnf` Package Manager op **Fedora**, **Red Hat Enterprise Linux 8 +** , en **CentOS 8 +** :
+    On **Fedora**, **Red Hat Enterprise Linux 8+** , and **CentOS 8 +** , use the `dnf` package manager:
 
     ```bash
     sudo dnf install cifs-utils
     ```
 
-    Gebruik de `yum` Package Manager op oudere versies van **Red Hat Enterprise Linux** en **CentOS**:
+    On older versions of **Red Hat Enterprise Linux** and **CentOS**, use the `yum` package manager:
 
     ```bash
     sudo yum install cifs-utils 
     ```
 
-    Gebruik op **openSUSE**het `zypper`-pakket beheer:
+    On **openSUSE**, use the `zypper` package manager:
 
     ```bash
     sudo zypper install cifs-utils
     ```
 
-    Gebruik op andere distributies de juiste pakket beheer-of [compilatie van de bron](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
+    On other distributions, use the appropriate package manager or [compile from source](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)
 
-* **De meest recente versie van de Azure-opdracht regel interface (CLI).** Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) en uw besturings systeem selecteren voor meer informatie over het installeren van de Azure cli. Als u liever de module Azure PowerShell gebruikt in Power shell 6 +, is het mogelijk dat de onderstaande instructies worden weer gegeven voor de Azure CLI.
+* **The most recent version of the Azure Command Line Interface (CLI).** For more information on how to install the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) and select your operating system. If you prefer to use the Azure PowerShell module in PowerShell 6+, you may, however the instructions below are presented for the Azure CLI.
 
-* **Zorg ervoor dat poort 445 is geopend**: SMB communiceert via TCP-poort 445-Controleer of de firewall TCP-poorten 445 van de client computer niet blokkeert.  Vervang **< uw-resource groep >** en **< uw-opslag account >**
+* **Ensure port 445 is open**: SMB communicates over TCP port 445 - check to see if your firewall is not blocking TCP ports 445 from client machine.  Replace **<your-resource-group>** and **<your-storage-account>**
     ```bash
     resourceGroupName="<your-resource-group>"
     storageAccountName="<your-storage-account>"
@@ -85,21 +85,21 @@ uname -r
     nc -zvw3 $fileHost 445
     ```
 
-    Als de verbinding is geslaagd, ziet u een melding die vergelijkbaar is met de volgende uitvoer:
+    If the connection was successful, you should see something similar to the following output:
 
     ```
     Connection to <your-storage-account> 445 port [tcp/microsoft-ds] succeeded!
     ```
 
-    Als u poort 445 niet kunt openen in uw bedrijfs netwerk of als dit door een Internet provider wordt geblokkeerd, kunt u een VPN-verbinding of ExpressRoute gebruiken om poort 445 te omzeilen. Zie [netwerk overwegingen voor directe toegang tot Azure bestands share](storage-files-networking-overview.md)voor meer informatie.
+    If you are unable to open up port 445 on your corporate network or are blocked from doing so by an ISP, you may use a VPN connection or ExpressRoute to work around port 445. For more information, see [Networking considerations for direct Azure file share access](storage-files-networking-overview.md)..
 
-## <a name="mounting-azure-file-share"></a>Azure-bestands share koppelen
-Als u een Azure-bestands share met uw Linux-distributie wilt gebruiken, moet u een directory maken die fungeert als het koppel punt voor de Azure-bestands share. U kunt een koppel punt maken op een wille keurige locatie in uw Linux-systeem, maar het is gebruikelijk om dit te doen onder/mnt. Na het koppel punt gebruikt u de opdracht `mount` om toegang te krijgen tot de Azure-bestands share.
+## <a name="mounting-azure-file-share"></a>Mounting Azure file share
+To use an Azure file share with your Linux distribution, you must create a directory to serve as the mount point for the Azure file share. A mount point can be created anywhere on your Linux system, but it's common convention to create this under /mnt. After the mount point, you use the `mount` command to access the Azure file share.
 
-U kunt dezelfde Azure-bestands share indien gewenst koppelen aan meerdere koppel punten.
+You can mount the same Azure file share to multiple mount points if desired.
 
-### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>De Azure-bestands share on-demand koppelen met `mount`
-1. **Maak een map voor het koppel punt**: Vervang `<your-resource-group>`, `<your-storage-account>`en `<your-file-share>` door de juiste informatie voor uw omgeving:
+### <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Mount the Azure file share on-demand with `mount`
+1. **Create a folder for the mount point**: Replace `<your-resource-group>`, `<your-storage-account>`, and `<your-file-share>` with the appropriate information for your environment:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -111,14 +111,14 @@ U kunt dezelfde Azure-bestands share indien gewenst koppelen aan meerdere koppel
     sudo mkdir -p $mntPath
     ```
 
-1. **Gebruik de koppelings opdracht om de Azure-bestands share te koppelen**. In het onderstaande voor beeld zijn de machtigingen voor lokale Linux-bestanden en-mappen standaard 0755. Dit betekent dat lezen, schrijven en uitvoeren voor de eigenaar (op basis van de Linux-eigenaar van het bestand of de map), lezen en uitvoeren voor gebruikers in de groep eigenaar, en lezen en uitvoeren voor anderen op het systeem. U kunt de opties `uid` en `gid` koppelen gebruiken om de gebruikers-ID en groeps-ID voor de koppeling in te stellen. U kunt ook `dir_mode` en `file_mode` gebruiken om aangepaste machtigingen naar wens in te stellen. Zie voor meer informatie over het instellen van machtigingen voor de [UNIX-numerieke notatie](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) op Wikipedia. 
+1. **Use the mount command to mount the Azure file share**. In the example below, the local Linux file and folder permissions default 0755, which means read, write, and execute for the owner (based on the file/directory Linux owner), read and execute for users in owner group, and read and execute for others on the system. You can use the `uid` and `gid` mount options to set the user ID and group ID for the mount. You can also use `dir_mode` and `file_mode` to set custom permissions as desired. For more information on how to set permissions, see [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) on Wikipedia. 
 
     ```bash
     httpEndpoint=$(az storage account show \
         --resource-group $resourceGroupName \
         --name $storageAccountName \
         --query "primaryEndpoints.file" | tr -d '"')
-    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShare
+    smbPath=$(echo $httpEndpoint | cut -c7-$(expr length $httpEndpoint))$fileShareName
 
     storageAccountKey=$(az storage account keys list \
         --resource-group $resourceGroupName \
@@ -129,12 +129,12 @@ U kunt dezelfde Azure-bestands share indien gewenst koppelen aan meerdere koppel
     ```
 
     > [!Note]  
-    > De bovenstaande koppelings opdracht koppelt aan SMB 3,0. Als uw Linux-distributie geen SMB 3,0 ondersteunt met versleuteling of als deze alleen ondersteuning biedt voor SMB 2,1, kunt u alleen koppelen van een Azure-VM binnen dezelfde regio als het opslag account. Als u uw Azure-bestands share wilt koppelen aan een Linux-distributie die geen ondersteuning biedt voor SMB 3,0 met versleuteling, moet u [versleuteling voor het opslag account uitschakelen](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    > The above mount command mounts with SMB 3.0. If your Linux distribution does not support SMB 3.0 with encryption or if it only supports SMB 2.1, you may only mount from an Azure VM within the same region as the storage account. To mount your Azure file share on a Linux distribution that does not support SMB 3.0 with encryption, you will need to [disable encryption in transit for the storage account](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-Wanneer u klaar bent met het gebruik van de Azure-bestands share, kunt u `sudo umount $mntPath` gebruiken om de share te ontkoppelen.
+When you are done using the Azure file share, you may use `sudo umount $mntPath` to unmount the share.
 
-### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Een permanent koppel punt maken voor de Azure-bestands share met `/etc/fstab`
-1. **Maak een map voor het koppel punt**: er kan een map voor een koppel punt worden gemaakt op een wille keurige locatie in het bestands systeem, maar dit is een algemene Conventie voor het maken van deze onder/mnt. Met de volgende opdracht maakt u bijvoorbeeld een nieuwe map, vervangt u `<your-resource-group>`, `<your-storage-account>`en `<your-file-share>` met de juiste informatie voor uw omgeving:
+### <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Create a persistent mount point for the Azure file share with `/etc/fstab`
+1. **Create a folder for the mount point**: A folder for a mount point can be created anywhere on the file system, but it's common convention to create this under /mnt. For example, the following command creates a new directory, replace `<your-resource-group>`, `<your-storage-account>`, and `<your-file-share>` with the appropriate information for your environment:
 
     ```bash
     resourceGroupName="<your-resource-group>"
@@ -146,7 +146,7 @@ Wanneer u klaar bent met het gebruik van de Azure-bestands share, kunt u `sudo u
     sudo mkdir -p $mntPath
     ```
 
-1. **Maak een referentie bestand voor het opslaan van de gebruikers naam (de naam van het opslag account) en het wacht woord (de sleutel van het opslag account) voor de bestands share.** 
+1. **Create a credential file to store the username (the storage account name) and password (the storage account key) for the file share.** 
 
     ```bash
     if [ ! -d "/etc/smbcredentials" ]; then
@@ -167,13 +167,13 @@ Wanneer u klaar bent met het gebruik van de Azure-bestands share, kunt u `sudo u
     fi
     ```
 
-1. **Wijzig de machtigingen voor het referentie bestand zodat alleen het toegangs punt het wachtwoord bestand kan lezen of wijzigen.** Omdat de sleutel van het opslag account in feite een super beheerders wachtwoord voor het opslag account is, is het instellen van de machtigingen voor het bestand, zodat alleen root toegang belang rijk is, zodat gebruikers met een lagere bevoegdheid de sleutel van het opslag account niet kunnen ophalen.   
+1. **Change permissions on the credential file so only root can read or modify the password file.** Since the storage account key is essentially a super-administrator password for the storage account, setting the permissions on the file such that only root can access is important so that lower privilege users cannot retrieve the storage account key.   
 
     ```bash
     sudo chmod 600 $smbCredentialFile
     ```
 
-1. **Gebruik de volgende opdracht om de volgende regel toe te voegen aan `/etc/fstab`** : in het volgende voor beeld is het lokale Linux-bestand en de mapmachtigingen standaard 0755, wat betekent dat lezen, schrijven en uitvoeren voor de eigenaar (op basis van de Linux-eigenaar van het bestand of de map), lezen en uitvoeren voor gebruikers in de groep eigenaar, en lezen en uitvoeren voor anderen op het systeem. U kunt de opties `uid` en `gid` koppelen gebruiken om de gebruikers-ID en groeps-ID voor de koppeling in te stellen. U kunt ook `dir_mode` en `file_mode` gebruiken om aangepaste machtigingen naar wens in te stellen. Zie voor meer informatie over het instellen van machtigingen voor de [UNIX-numerieke notatie](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) op Wikipedia.
+1. **Use the following command to append the following line to `/etc/fstab`** : In the example below, the local Linux file and folder permissions default 0755, which means read, write, and execute for the owner (based on the file/directory Linux owner), read and execute for users in owner group, and read and execute for others on the system. You can use the `uid` and `gid` mount options to set the user ID and group ID for the mount. You can also use `dir_mode` and `file_mode` to set custom permissions as desired. For more information on how to set permissions, see [UNIX numeric notation](https://en.wikipedia.org/wiki/File_system_permissions#Numeric_notation) on Wikipedia.
 
     ```bash
     httpEndpoint=$(az storage account show \
@@ -192,81 +192,81 @@ Wanneer u klaar bent met het gebruik van de Azure-bestands share, kunt u `sudo u
     ```
     
     > [!Note]  
-    > De bovenstaande koppelings opdracht koppelt aan SMB 3,0. Als uw Linux-distributie geen SMB 3,0 ondersteunt met versleuteling of als deze alleen ondersteuning biedt voor SMB 2,1, kunt u alleen koppelen van een Azure-VM binnen dezelfde regio als het opslag account. Als u uw Azure-bestands share wilt koppelen aan een Linux-distributie die geen ondersteuning biedt voor SMB 3,0 met versleuteling, moet u [versleuteling voor het opslag account uitschakelen](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    > The above mount command mounts with SMB 3.0. If your Linux distribution does not support SMB 3.0 with encryption or if it only supports SMB 2.1, you may only mount from an Azure VM within the same region as the storage account. To mount your Azure file share on a Linux distribution that does not support SMB 3.0 with encryption, you will need to [disable encryption in transit for the storage account](../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-## <a name="securing-linux"></a>Linux beveiligen
-Voor het koppelen van een Azure-bestands share op Linux moet poort 445 toegankelijk zijn. Veel organisaties blokkeren poort 445 vanwege de beveiligingsrisico's die bij SMB 1 horen. SMB 1, ook wel CIFS (Common Internet File System) genoemd, is een verouderd bestandssysteem protocol dat is opgenomen in veel Linux-distributies. SMB 1 is een verouderd, inefficiënt en bovenal onveilig protocol. Het goede nieuws is dat Azure Files geen ondersteuning biedt voor SMB 1 en vanaf Linux kernel versie 4,18, Linux het mogelijk maakt om SMB 1 uit te scha kelen. We raden u altijd [ten zeerste](https://aka.ms/stopusingsmb1) aan de SMB 1 uit te scha kelen op uw Linux-clients voordat u SMB-bestands shares in productie gebruikt.
+## <a name="securing-linux"></a>Securing Linux
+In order to mount an Azure file share on Linux, port 445 must be accessible. Veel organisaties blokkeren poort 445 vanwege de beveiligingsrisico's die bij SMB 1 horen. SMB 1, also known as CIFS (Common Internet File System), is a legacy file system protocol included with many Linux distributions. SMB 1 is een verouderd, inefficiënt en bovenal onveilig protocol. The good news is that Azure Files does not support SMB 1, and starting with Linux kernel version 4.18, Linux makes it possible to disable SMB 1. We always [strongly recommend](https://aka.ms/stopusingsmb1) disabling the SMB 1 on your Linux clients before using SMB file shares in production.
 
-Vanaf Linux kernel 4,18, de SMB-kernel-module, met de naam `cifs` voor verouderde redenen, wordt een nieuwe module parameter (ook wel *parameter* door verschillende externe documentatie genoemd) met de naam `disable_legacy_dialects`genoemd. Hoewel het is geïntroduceerd in Linux kernel 4,18, hebben sommige leveranciers deze wijziging Backported aan oudere kernels die ze ondersteunen. Voor het gemak wordt in de volgende tabel de beschik baarheid van deze module parameter op algemene Linux-distributies beschreven.
+Starting with Linux kernel 4.18, the SMB kernel module, called `cifs` for legacy reasons, exposes a new module parameter (often referred to as *parm* by various external documentation), called `disable_legacy_dialects`. Although introduced in Linux kernel 4.18, some vendors have backported this change to older kernels that they support. For convenience, the following table details the availability of this module parameter on common Linux distributions.
 
-| Distributie | Kan SMB 1 uitschakelen |
+| Distributie | Can disable SMB 1 |
 |--------------|-------------------|
 | Ubuntu 14.04-16.04 | Nee |
 | Ubuntu 18.04 | Ja |
-| Ubuntu 19.04 + | Ja |
+| Ubuntu 19.04+ | Ja |
 | Debian 8-9 | Nee |
-| Debian 10 + | Ja |
-| Fedora 29 + | Ja |
+| Debian 10+ | Ja |
+| Fedora 29+ | Ja |
 | CentOS 7 | Nee | 
-| CentOS 8 + | Ja |
-| Red Hat Enterprise Linux 6. x-7. x | Nee |
-| Red Hat Enterprise Linux 8 + | Ja |
-| openSUSE Schrikkel 15,0 | Nee |
-| openSUSE Schrikkel 15.1 + | Ja |
+| CentOS 8+ | Ja |
+| Red Hat Enterprise Linux 6.x-7.x | Nee |
+| Red Hat Enterprise Linux 8+ | Ja |
+| openSUSE Leap 15.0 | Nee |
+| openSUSE Leap 15.1+ | Ja |
 | openSUSE Tumbleweed | Ja |
-| SUSE Linux Enter prise 11. x-12. x | Nee |
-| SUSE Linux Enter prise 15 | Nee |
-| SUSE Linux Enter prise 15,1 | Nee |
+| SUSE Linux Enterprise 11.x-12.x | Nee |
+| SUSE Linux Enterprise 15 | Nee |
+| SUSE Linux Enterprise 15.1 | Nee |
 
-U kunt controleren of uw Linux-distributie de para meter `disable_legacy_dialects` module ondersteunt met behulp van de volgende opdracht.
+You can check to see if your Linux distribution supports the `disable_legacy_dialects` module parameter via the following command.
 
 ```bash
 sudo modinfo -p cifs | grep disable_legacy_dialects
 ```
 
-Met deze opdracht voert u het volgende bericht uit:
+This command should output the following message:
 
 ```Output
 disable_legacy_dialects: To improve security it may be helpful to restrict the ability to override the default dialects (SMB2.1, SMB3 and SMB3.02) on mount with old dialects (CIFS/SMB1 and SMB2) since vers=1.0 (CIFS/SMB1) and vers=2.0 are weaker and less secure. Default: n/N/0 (bool)
 ```
 
-Voordat u SMB 1 uitschakelt, moet u controleren of de SMB-module momenteel niet is geladen op uw systeem (dit gebeurt automatisch als u een SMB-share hebt gekoppeld). U kunt dit doen met de volgende opdracht, waardoor niets kan worden uitgevoerd als SMB niet is geladen:
+Before disabling SMB 1, you must check to make sure that the SMB module is not currently loaded on your system (this happens automatically if you have mounted an SMB share). You can do this with the following command, which should output nothing if SMB is not loaded:
 
 ```bash
 lsmod | grep cifs
 ```
 
-Als u de module wilt verwijderen, ontkoppelt u eerst alle SMB-shares (met behulp van de `umount` opdracht zoals hierboven beschreven). U kunt alle gekoppelde SMB-shares op uw systeem identificeren met de volgende opdracht:
+To unload the module, first unmount all SMB shares (using the `umount` command as described above). You can identify all the mounted SMB shares on your system with the following command:
 
 ```bash
 mount | grep cifs
 ```
 
-Zodra u alle SMB-bestands shares hebt ontkoppeld, is het veilig om de module te verwijderen. U kunt dit doen met de opdracht `modprobe`:
+Once you have unmounted all SMB file shares, it's safe to unload the module. U kunt dit doen met de opdracht `modprobe`:
 
 ```bash
 sudo modprobe -r cifs
 ```
 
-U kunt de module hand matig laden met SMB 1 uit het geheugen met behulp van de `modprobe` opdracht:
+You can manually load the module with SMB 1 unloaded using the `modprobe` command:
 
 ```bash
 sudo modprobe cifs disable_legacy_dialects=Y
 ```
 
-Ten slotte kunt u controleren of de SMB-module is geladen met de para meter door de geladen para meters in `/sys/module/cifs/parameters`te bekijken:
+Finally, you can check the SMB module has been loaded with the parameter by looking at the loaded parameters in `/sys/module/cifs/parameters`:
 
 ```bash
 cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
-Als u SMB 1 op Ubuntu-en Debian-gebaseerde distributies permanent wilt uitschakelen, moet u een nieuw bestand maken (als u nog geen aangepaste opties voor andere modules hebt) met de instelling `/etc/modprobe.d/local.conf`. U kunt dit doen met de volgende opdracht:
+To persistently disable SMB 1 on Ubuntu and Debian-based distributions, you must create a new file (if you don't already have custom options for other modules) called `/etc/modprobe.d/local.conf` with the setting. You can do this with the following command:
 
 ```bash
 echo "options cifs disable_legacy_dialects=Y" | sudo tee -a /etc/modprobe.d/local.conf > /dev/null
 ```
 
-U kunt controleren of dit werkt door de SMB-module te laden:
+You can verify that this has worked by loading the SMB module:
 
 ```bash
 sudo modprobe cifs
@@ -274,13 +274,13 @@ cat /sys/module/cifs/parameters/disable_legacy_dialects
 ```
 
 ## <a name="feedback"></a>Feedback
-Linux-gebruikers willen we graag van u horen.
+Linux users, we want to hear from you!
 
-De groep Azure Files voor Linux-gebruikers biedt een forum waarmee u feedback kunt delen tijdens het evalueren en aannemen van bestands opslag in Linux. E-mail [Azure files Linux-gebruikers](mailto:azurefileslinuxusers@microsoft.com) om lid te worden van de groep gebruikers.
+The Azure Files for Linux users' group provides a forum for you to share feedback as you evaluate and adopt File storage on Linux. Email [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com) to join the users' group.
 
 ## <a name="next-steps"></a>Volgende stappen
 Raadpleeg de volgende koppelingen voor meer informatie over Azure Files:
 
 * [Implementatie van Azure Files plannen](storage-files-planning.md)
-* [VEELGESTELDE VRAGEN](../storage-files-faq.md)
+* [Veelgestelde vragen](../storage-files-faq.md)
 * [Problemen oplossen](storage-troubleshoot-linux-file-connection-problems.md)

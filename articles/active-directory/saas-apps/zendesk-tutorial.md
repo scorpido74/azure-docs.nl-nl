@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met Zendesk | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with Zendesk | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en Zendesk.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30a57258dfe112c1b2d03bc43738c92272a156f9
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 4887457f457ff533a0eaf10be7db1627a950f5bd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160841"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233273"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Zelf studie: integratie Azure Active Directory met Zendesk
+# <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Tutorial: Azure Active Directory integration with Zendesk
 
 In deze zelfstudie leert u hoe u Zendesk kunt integreren met Azure Active Directory (Azure AD).
 De integratie van Zendesk met Azure AD heeft de volgende voordelen:
@@ -210,7 +210,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -258,13 +258,13 @@ Het doel van deze sectie is het maken van een gebruiker met de naam Britta Simon
 
 3. Selecteer het tabblad **User** en klik op **Add**.
 
-    ![Gebruiker toevoegen](././media/zendesk-tutorial/ic773632.png "Gebruiker toevoegen")
+    ![Add user](././media/zendesk-tutorial/ic773632.png "Gebruiker toevoegen")
 4. Typ in **Name** en **Email** de naam en het e-mailadres van een bestaand Azure AD-account dat u wilt inrichten en klik op **Save**.
 
-    ![Nieuwe gebruiker](././media/zendesk-tutorial/ic773633.png "Nieuwe gebruiker")
+    ![New user](././media/zendesk-tutorial/ic773633.png "New user")
 
 > [!NOTE]
-> U kunt ook alle andere hulpprogramma's voor het creëren van Zendesk-gebruikersaccounts of API's van Zendesk gebruiken om AAD-gebruikersaccounts in te richten.
+> You can use any other Zendesk user account creation tools or APIs provided by Zendesk to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
@@ -278,6 +278,6 @@ Wanneer u op de tegel Zendesk in het toegangsvenster klikt, zou u automatisch mo
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Inrichten van gebruikers configureren](zendesk-provisioning-tutorial.md)

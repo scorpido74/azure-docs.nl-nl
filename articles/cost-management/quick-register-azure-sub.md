@@ -8,18 +8,18 @@ ms.author: banders
 ms.date: 05/20/2019
 ms.topic: quickstart
 ms.custom: seodec18
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
-ms.openlocfilehash: 6d5282a326af37e5653f21795438ba8965ae7fcc
-ms.sourcegitcommit: e9a46b4d22113655181a3e219d16397367e8492d
+ms.openlocfilehash: d53ea540aaa155de4c9963b5e8dc288852ff6280
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65967196"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229977"
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>Een individueel Azure-abonnement registreren en gegevenskosten weergeven
 
-U gebruikt uw Azure-abonnement om u te registreren bij Cloudyn. Uw registratie biedt toegang tot de Cloudyn-portal. In deze quickstart vindt u de details van de registratieprocedure voor het maken van een Cloudyn-proefabonnement en het aanmelden bij de Cloudyn-portal. U vindt er ook informatie over het weergeven van kostengegevens.
+U gebruikt uw Azure-abonnement om u te registreren bij Cloudyn. Uw registratie biedt toegang tot de Cloudyn-portal. In deze quickstart vindt u de details van de registratieprocedure voor het maken van een Cloudyn-proefabonnement en het aanmelden bij de Cloudyn-portal. U vindt er ook informatie over het weergeven van gegevenskosten.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 

@@ -1,22 +1,18 @@
 ---
 title: Een functie maken die kan worden geïntegreerd met Azure Logic Apps
 description: Maak een functie die met Azure Logic Apps en Azure Cognitive Services integreert om het gevoel van een tweet te categoriseren en meldingen te verzenden wanneer het gevoel slecht is.
-services: functions, logic-apps, cognitive-services
-keywords: werkstroom, cloud-apps, cloudservices, bedrijfsprocessen, systeemintegratie, enterprise application integration, EAI
 author: craigshoemaker
-manager: gwallace
 ms.assetid: 60495cc5-1638-4bf0-8174-52786d227734
-ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: cshoe
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 11e0170464d8ed901253925eb62cce12d42c0008
-ms.sourcegitcommit: 9b80d1e560b02f74d2237489fa1c6eb7eca5ee10
+ms.openlocfilehash: c7b8e41cc09137ee06e975d136dd999ba146731b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67480031"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74226613"
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Een functie maken die kan worden geïntegreerd met Azure Logic Apps
 
@@ -47,7 +43,7 @@ Doorloop nu deze stappen om de functie-app te maken, als u dit nog niet hebt ged
 
 De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azure. Gebruik de Text Analytics API om het gevoel van de tweets te detecteren die worden bijgehouden.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
 
 2. Klik in de linkerbovenhoek van Azure Portal op **Een resource maken**.
 
@@ -55,10 +51,10 @@ De Cognitive Services-API's zijn als afzonderlijke resources beschikbaar in Azur
 
     ![Cognitieve resourcepagina maken](media/functions-twitter-email/01-create-text-analytics.png)
 
-    | Instelling      |  Voorgestelde waarde   | Description                                        |
+    | Instelling      |  Voorgestelde waarde   | Beschrijving                                        |
     | --- | --- | --- |
     | **Naam** | MyCognitiveServicesAccnt | Kies een unieke naam voor het account. |
-    | **Location** | US - west | Gebruik de dichtstbijzijnde locatie. |
+    | **Locatie** | VS - west | Gebruik de dichtstbijzijnde locatie. |
     | **Prijscategorie** | F0 | Begin met de laagste categorie. Als u geen aanroepen meer hebt, schaalt u naar een hogere categorie.|
     | **Resourcegroep** | myResourceGroup | Gebruik dezelfde resourcegroep voor alle services in deze tutorial.|
 
@@ -125,7 +121,7 @@ Functies bieden een handige manier voor de offload van verwerkingstaken in een w
     ```
     Deze functiecode retourneert een kleurcategorie op basis van de gevoelsscore die in de aanvraag is ontvangen. 
 
-4. Klik op **Testen** aan de rechterkant om het tabblad Testen uit te breiden en de functie te testen. Voer een waarde in van `0.2` voor de **Aanvraagtekst** en klik vervolgens op **Uitvoeren**. De waarde **RED** wordt geretourneerd in de hoofdtekst van het antwoord. 
+4. To test the function, click **Test** at the far right to expand the Test tab. Type a value of `0.2` for the **Request body**, and then click **Run**. De waarde **RED** wordt geretourneerd in de hoofdtekst van het antwoord. 
 
     ![Test de functie in de Azure Portal](./media/functions-twitter-email/07-function-test.png)
 
@@ -141,11 +137,11 @@ U hebt nu een functie die gevoelsscores categoriseert. Maak vervolgens een logis
 
     ![Logische app maken in Azure Portal](./media/functions-twitter-email/08-logic-app-create.png)
 
-    | Instelling      |  Voorgestelde waarde   | Description                                        |
+    | Instelling      |  Voorgestelde waarde   | Beschrijving                                        |
     | ----------------- | ------------ | ------------- |
     | **Naam** | TweetSentiment | Kies een passende naam voor uw app. |
     | **Resourcegroep** | myResourceGroup | Kies dezelfde bestaande resourcegroep als eerder. |
-    | **Location** | US - oost | Kies een locatie dicht bij u in de buurt. |    
+    | **Locatie** | VS - oost | Kies een locatie dicht bij u in de buurt. |    
 
 4. Als u de juiste waarden voor de instellingen hebt ingevoerd, klikt u op **Maken** om de logische app te maken. 
 
@@ -165,7 +161,7 @@ Maak eerst verbinding met uw Twitter-account. De logische app peilt tweets, waar
 
     ![Connectorinstellingen voor Twitter](media/functions-twitter-email/10-tweet-settings.png)
 
-    | Instelling      |  Voorgestelde waarde   | Description                                        |
+    | Instelling      |  Voorgestelde waarde   | Beschrijving                                        |
     | ----------------- | ------------ | ------------- |
     | **Zoektekst** | #Azure | Gebruik een hashtag die populair genoeg is om in het gekozen interval nieuwe tweets te genereren. Wanneer u gebruikmaakt van de gratis categorie en uw hashtag is te populair, wordt het transactiequotum in uw Cognitive Services-API mogelijk snel verbruikt. |
     | **Interval** | 15 | De tijd tussen Twitter-aanvragen, in frequentie-eenheden. |
@@ -236,7 +232,7 @@ Het laatste deel van de werkstroom bestaat uit het activeren van een e-mail wann
 
     ![De e-mail configureren voor de actie Een e-mail verzenden.](media/functions-twitter-email/21-configure-email.png)
     
-| Instelling      |  Voorgestelde waarde   | Description  |
+| Instelling      |  Voorgestelde waarde   | Beschrijving  |
 | ----------------- | ------------ | ------------- |
 | **Aan** | Voer uw e-mailadres in | Het e-mailadres dat de melding ontvangt. |
 | **Onderwerp** | Negatief gevoel in tweet gedetecteerd  | De onderwerpregel van de e-mailmelding.  |
@@ -287,7 +283,7 @@ Klik op **Overzicht** en vervolgens op **Uitschakelen** bovenaan het scherm om d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="checklist"]
 > * Een API-resource voor Cognitive Services maken.

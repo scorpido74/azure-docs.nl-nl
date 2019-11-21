@@ -1,16 +1,16 @@
 ---
-title: Beleidsregels voor het afdwingen van naleving maken en beheren
-description: Azure Policy gebruiken om standaarden af te dwingen, te voldoen aan wettelijke vereisten voor naleving en audits, kosten te beheren, consistente beveiliging en prestaties te houden en bedrijfsbrede ontwerpprincipes op te leggen.
+title: 'Tutorial: Build policies to enforce compliance'
+description: In this tutorial, you use policies to enforce standards, control costs, maintain security, and impose enterprise wide design principles.
 ms.date: 02/04/2019
 ms.topic: tutorial
-ms.openlocfilehash: abbe4334767a48cf6444ce5aa7822cc8a79f9f69
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 38c41c94600da1f028c7857febc7de1eef2436ae
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959549"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74216896"
 ---
-# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Zelf studie: beleid maken en beheren om naleving af te dwingen
+# <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Create and manage policies to enforce compliance
 
 Als u aan uw bedrijfsnormen en serviceovereenkomsten wilt blijven voldoen, is het belangrijk dat u begrijpt hoe u beleidsregels kunt maken en beheren in Azure. In deze zelfstudie leert u hoe u Azure Policy gebruikt om enkele algemene taken voor het maken, toewijzen en beheren van beleid in uw organisatie uit te voeren, zoals:
 
@@ -26,19 +26,19 @@ Als u een beleid wilt toewijzen voor het identificeren van de huidige nalevingss
 
 De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het toewijzen van een beleidsdefinitie. Een beleidsdefinitie definieert onder welke voorwaarde een beleid wordt afgedwongen en welke actie moet worden uitgevoerd. In dit voorbeeld wijzen we een ingebouwde beleidsdefinitie toe met de naam *SQL Server-versie 12.0 vereisen* om de voorwaarde af te dwingen dat alle SQL Server-databases v12.0 moeten zijn om aan het beleid te voldoen.
 
-1. Ga naar de Azure Portal om beleid toe te wijzen. Zoek en selecteer **beleid**.
+1. Go to the Azure portal to assign policies. Search for and select **Policy**.
 
-   ![Beleid zoeken in de zoek balk](../media/create-and-manage/search-policy.png)
+   ![Search for Policy in the search bar](../media/create-and-manage/search-policy.png)
 
 1. Selecteer **Toewijzingen** in het linkerdeelvenster van de Azure Policy-pagina. Een toewijzing is een beleid dat is toegewezen om te worden toegepast binnen een bepaald bereik.
 
-   ![Toewijzingen selecteren op de pagina overzicht van beleid](../media/create-and-manage/select-assignments.png)
+   ![Select Assignments from Policy Overview page](../media/create-and-manage/select-assignments.png)
 
 1. Selecteer **Beleid toewijzen** boven in de pagina **Beleidstoewijzingen**.
 
-   ![Een beleids definitie toewijzen van de pagina toewijzingen](../media/create-and-manage/select-assign-policy.png)
+   ![Assign a policy definition from Assignments page](../media/create-and-manage/select-assign-policy.png)
 
-1. Selecteer op de pagina **beleid toewijzen** het **bereik** door het weglatings teken te selecteren en ofwel een beheer groep of een abonnement te selecteren. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Selecteer vervolgens onder aan de **bereik** pagina de **optie selecteren** .
+1. On the **Assign Policy** page, select the **Scope** by selecting the ellipsis and selecting either a management group or subscription. U kunt ook een resourcegroep selecteren. Het bereik bepaalt op welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Then select **Select** at the bottom of the **Scope** page.
 
    In dit voorbeeld wordt het abonnement **Contoso** gebruikt. U hebt waarschijnlijk een ander abonnement.
 
@@ -46,9 +46,9 @@ De eerste stap bij het afdwingen van naleving met Azure Policy bestaat uit het t
 
 1. Selecteer het weglatingsteken **Beleidsdefinitie** om de lijst van beschikbare definities te openen. U kunt het **Type** van de beleidsdefinitie filteren op *Ingebouwd* om alles te bekijken en de beschrijvingen te lezen.
 
-1. Selecteer **SQL Server-versie 12.0 vereisen**. Als u het niet meteen kunt vinden, typt u **SQL Server vereisen** in het zoekvak en drukt u op ENTER of selecteert u uit het zoekvak. Selecteer **selecteren** onder aan de pagina **beschik bare definities** wanneer u de beleids definitie hebt gevonden en geselecteerd.
+1. Selecteer **SQL Server-versie 12.0 vereisen**. If you can't find it right away, type **require sql server** into the search box and then press ENTER or select out of the search box. Select **Select** at the bottom of the **Available Definitions** page once you have found and selected the policy definition.
 
-   ![Zoek filter gebruiken om een beleid te zoeken](../media/create-and-manage/select-available-definition.png)
+   ![Use search filter to locate a policy](../media/create-and-manage/select-available-definition.png)
 
 1. De **Toewijzingsnaam** wordt automatisch ingevuld met de naam van het beleid dat u hebt geselecteerd, maar u kunt dit wijzigen. In dit voorbeeld houden we *SQL Server-versie 12.0 vereisen*. U kunt ook een optionele **Beschrijving** opgeven. De beschrijving bevat details over deze beleidstoewijzing.
    **Toegewezen door** wordt automatisch ingevuld op basis van degene die is aangemeld. Dit veld is optioneel, dus u kunt aangepaste waarden invoeren.
@@ -63,7 +63,7 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-   ![De definitie pagina onder de groep ontwerpen](../media/create-and-manage/definition-under-authoring.png)
+   ![Definition page under Authoring group](../media/create-and-manage/definition-under-authoring.png)
 
 1. Selecteer **+ Beleidsdefinitie** bovenaan de pagina. Met deze knop opent u de pagina **Beleidsdefinitie**.
 
@@ -105,15 +105,15 @@ Nu u een ingebouwde beleidsdefinitie hebt toegewezen, kunt u meer kunt doen met 
    }
    ```
 
-   De eigenschap *Field* in de beleids regel moet een van de volgende waarden zijn: naam, type, locatie, tags of een alias. Een voorbeeld van een alias is mogelijk `"Microsoft.Compute/VirtualMachines/Size"`.
+   The *field* property in the policy rule must be one of the following values: Name, Type, Location, Tags, or an alias. Een voorbeeld van een alias is mogelijk `"Microsoft.Compute/VirtualMachines/Size"`.
 
    Meer Azure Policy-voorbeelden vindt u in [Voorbeelden van Azure Policy](../samples/index.md).
 
 1. Selecteer **Opslaan**.
 
-## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST-API
+## <a name="create-a-policy-definition-with-rest-api"></a>Een beleidsdefinitie maken met de REST API
 
-U kunt een beleid maken met de REST API voor Azure Policy definities. Met de REST API kunt u beleidsdefinities maken en verwijderen en informatie over bestaande definities ophalen. Gebruik het volgende voorbeeld om een beleidsdefinitie te maken:
+You can create a policy with the REST API for Azure Policy Definitions. Met de REST API kunt u beleidsdefinities maken en verwijderen en informatie over bestaande definities ophalen. Gebruik het volgende voorbeeld om een beleidsdefinitie te maken:
 
 ```http
 PUT https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.authorization/policydefinitions/{policyDefinitionName}?api-version={api-version}
@@ -153,7 +153,7 @@ Voeg aanvraagtekst toe die soortgelijk is aan het volgende voorbeeld:
 
 ## <a name="create-a-policy-definition-with-powershell"></a>Een beleidsdefinitie maken met PowerShell
 
-Voordat u doorgaat met het Power shell-voor beeld, moet u ervoor zorgen dat u de nieuwste versie van de Azure PowerShell AZ-module hebt geïnstalleerd.
+Before proceeding with the PowerShell example, make sure you've installed the latest version of the Azure PowerShell Az module.
 
 U kunt een beleidsdefinitie maken met de `New-AzPolicyDefinition`-cmdlet.
 
@@ -323,11 +323,11 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Selecteer **Definities** onder **Ontwerpen** aan de linkerkant van de pagina Azure Policy.
 
-   ![Definitie selecteren op de pagina definities](../media/create-and-manage/definition-under-authoring.png)
+   ![Select definition from the Definitions page](../media/create-and-manage/definition-under-authoring.png)
 
 1. Selecteer **+ Initiatiefdefinitie** bovenaan de pagina. U gaat dan naar de pagina **Initiatiefdefinitie**.
 
-   ![Pagina definitie van het Review-initiatief](../media/create-and-manage/initiative-definition.png)
+   ![Review initiative definition page](../media/create-and-manage/initiative-definition.png)
 
 1. Gebruik **Definitielocatie** om een beheergroep of abonnement voor het opslaan van de definitie te selecteren. Als de vorige pagina is gericht op een enkele beheergroep of enkel abonnement, wordt **Definitielocatie** automatisch ingevuld.
 
@@ -337,7 +337,7 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Kies voor **Categorie** uit bestaande opties of maak een nieuwe categorie.
 
-1. Blader door de lijst met **Beschikbare definities** (rechterhelft van de pagina **Initiatiefdefinitie**) en selecteer het beleidsdefinitie(s) die u wilt toevoegen aan dit initiatief. Voor het initiatief **Secure** Initiative voegt u de volgende ingebouwde beleids definities toe door de **+** naast de beleids definitie-informatie te selecteren of door een regel voor een beleids definitie te selecteren en vervolgens op de optie **+ toevoegen** te klikken op de pagina Details:
+1. Blader door de lijst met **Beschikbare definities** (rechterhelft van de pagina **Initiatiefdefinitie**) en selecteer het beleidsdefinitie(s) die u wilt toevoegen aan dit initiatief. For the **Get secure** initiative, add the following built-in policy definitions by selecting the **+** next to the policy definition information or selecting a policy definition row and then the **+ Add** option in the details page:
 
    - SQL Server-versie 12.0 vereisen
    - [Preview]: Monitor unprotected web applications in Security Center.
@@ -347,14 +347,14 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
    Na het selecteren van de beleidsdefinitie uit de lijst, wordt deze toegevoegd onder **Beleidsregels en parameters**.
 
-   ![Para meters voor beoordelings initiatief](../media/create-and-manage/initiative-definition-2.png)
+   ![Review initiative definition parameters](../media/create-and-manage/initiative-definition-2.png)
 
 1. Als een beleidsdefinitie die aan het initiatief wordt toegevoegd, parameters heeft, worden deze weergegeven onder de beleidsnaam in het gebied **Beleid en parameters**. U kunt de _waarde_ instellen op Waarde instellen (in code vastgelegd voor alle toewijzingen van dit initiatief) of Initiatiefparameter gebruiken (wordt ingesteld bij elke toewijzing van een initiatief). Als 'Waarde instellen' is geselecteerd, kunt u met het vervolgkeuzemenu rechts van _Waarden_ de waarde(n) invoeren of selecteren. Als Initiatiefparameter gebruiken is geselecteerd, wordt een nieuwe sectie **Initiatiefparameters** weergegeven waarin u de parameter kunt definiëren die wordt ingesteld tijdens de initiatieftoewijzing. Via de toegestane waarden voor deze initiatiefparameter kunt u verder beperken wat er mag worden ingesteld tijdens de initiatieftoewijzing.
 
-   ![Para meters voor initiatief definities wijzigen van toegestane waarden](../media/create-and-manage/initiative-definition-3.png)
+   ![Change initiative definition parameters from allowed values](../media/create-and-manage/initiative-definition-3.png)
 
    > [!NOTE]
-   > Voor sommige `strongType`-parameters kan de lijst met waarden niet automatisch worden bepaald. In deze gevallen wordt een beletselteken rechts van de parameterrij weergegeven. Als u deze optie selecteert, wordt de pagina parameter bereik (&lt;parameter naam&gt;) geopend. Op deze pagina selecteert u het abonnement dat u wilt gebruiken om de waardeopties op te geven. Dit parameterbereik wordt alleen gebruikt tijdens het maken van de initiatiefdefinitie en heeft geen invloed op de evaluatie van het beleid of het bereik van het initiatief na het toewijzen.
+   > Voor sommige `strongType`-parameters kan de lijst met waarden niet automatisch worden bepaald. In deze gevallen wordt een beletselteken rechts van de parameterrij weergegeven. Selecting it opens the 'Parameter scope (&lt;parameter name&gt;)' page. Op deze pagina selecteert u het abonnement dat u wilt gebruiken om de waardeopties op te geven. Dit parameterbereik wordt alleen gebruikt tijdens het maken van de initiatiefdefinitie en heeft geen invloed op de evaluatie van het beleid of het bereik van het initiatief na het toewijzen.
 
 1. Selecteer **Opslaan**.
 
@@ -364,11 +364,11 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Zoek de initiatiefdefinitie **Veilig worden** die u eerder hebt gemaakt en selecteer deze. Selecteer **Toewijzen** bovenaan de pagina om de pagina **Veilig worden: initiatief toewijzen** te openen.
 
-   ![De pagina definitie van de definitie van het initiatief toewijzen](../media/create-and-manage/assign-definition.png)
+   ![Assign a definition from Initiative definition page](../media/create-and-manage/assign-definition.png)
 
-   U kunt ook met de rechter muisknop op de geselecteerde rij klikken of het weglatings teken aan het einde van de rij voor een context menu selecteren. Selecteer daarna **Toewijzen**.
+   You can also right-click on the selected row or select the ellipsis at the end of the row for a contextual menu. Selecteer daarna **Toewijzen**.
 
-   ![Alternatieve opties voor een initiatief](../media/create-and-manage/select-right-click.png)
+   ![Alternative options for an initiative](../media/create-and-manage/select-right-click.png)
 
 1. Vul het formulier **Veilig worden: definitie toewijzen** in door de volgende voorbeeldinformatie in te voeren. U kunt uw eigen gegevens gebruiken.
 
@@ -387,16 +387,16 @@ Met een initiatiefdefinitie kunt u verschillende beleidsdefinities groeperen om 
 
 1. Selecteer **Naleving** links op de Azure Policy-pagina.
 
-1. Zoek het initiatief **Get Secure** . De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
-   Selecteer het initiatief om alle details te bekijken over de voortgang van de toewijzing.
+1. Locate the **Get Secure** initiative. De _Nalevingsstatus_ hiervan is waarschijnlijk nog **Niet gestart**.
+   Select the initiative to get full details on the progress of the assignment.
 
-   ![Nalevings pagina initiatief-evaluaties niet gestart](../media/create-and-manage/compliance-status-not-started.png)
+   ![Initiative compliance page - evaluations not started](../media/create-and-manage/compliance-status-not-started.png)
 
 1. Wanneer de initiatieftoewijzing is voltooid, wordt de pagina voor naleving bijgewerkt met de _Nalevingsstatus_ **Compatibel**.
 
-   ![Nalevings pagina voor initiatief-bronnen compatibel](../media/create-and-manage/compliance-status-compliant.png)
+   ![Initiative compliance page- resources compliant](../media/create-and-manage/compliance-status-compliant.png)
 
-1. Als u een beleid op de pagina initiatief naleving selecteert, wordt de pagina nalevings Details voor het beleid geopend. Op deze pagina staan de nalevingsdetails op resourceniveau.
+1. Selecting on any policy on the initiative compliance page opens the compliance details page for the policy. Op deze pagina staan de nalevingsdetails op resourceniveau.
 
 ## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>Een bron die niet voldoet of wordt geweigerd uitsluiten met behulp van Uitsluiten
 
@@ -405,12 +405,12 @@ In het volgende voorbeeld is elke willekeurige versie van een SQL-server toegest
 
 Een implementatie die wordt verhinderd door een toegewezen beleid of initiatief kan worden weergegeven op twee locaties:
 
-- Op de resource groep waarop de implementatie is gericht: Selecteer **implementaties** aan de linkerkant van de pagina en selecteer vervolgens de **implementatie naam** van de mislukte implementatie. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. Selecteer mislukt om het beleid of initiatief en de toewijzing te bepalen die de resource **heeft geweigerd. Klik hier voor meer informatie->** op de pagina implementatie overzicht.
+- On the resource group targeted by the deployment: Select **Deployments** in the left side of the page, then select the **Deployment Name** of the failed deployment. De resource die is geweigerd, wordt weergegeven met de status _Verboden_. To determine the policy or initiative and assignment that denied the resource, select **Failed. Click here for details ->** on the Deployment Overview page.
   Aan de rechterkant van de pagina wordt een venster geopend met de informatie over de fout. Onder **Foutdetails** staan de GUID's van de bijbehorende beleidstoewijzingsobjecten.
 
   ![Implementatie geweigerd door beleidstoewijzing](../media/create-and-manage/rg-deployment-denied.png)
 
-- Selecteer op de pagina Azure Policy: **naleving** selecteren aan de linkerkant van de pagina en selecteer het beleid **SQL Server versie 12,0** . Op de pagina die wordt geopend, ziet u een toename van de teller **Weigeren**. Op het tabblad **Gebeurtenissen** ziet u ook wie heeft geprobeerd de door het beleid geweigerde implementatie uit te voeren.
+- On the Azure Policy page: Select **Compliance** in the left side of the page and select the **Require SQL Server version 12.0** policy. Op de pagina die wordt geopend, ziet u een toename van de teller **Weigeren**. Op het tabblad **Gebeurtenissen** ziet u ook wie heeft geprobeerd de door het beleid geweigerde implementatie uit te voeren.
 
   ![Overzicht van de naleving van een toegewezen beleid](../media/create-and-manage/compliance-overview.png)
 
@@ -422,14 +422,14 @@ In dit voorbeeld deed een van de senior virtualisatie-experts van Contoso vereis
 
 1. Blader door alle beleidstoewijzingen en open de toewijzing *SQL Server-versie 12.0 vereisen*.
 
-1. Stel de **uitsluiting** in door het beletsel teken te selecteren en de resource groep te selecteren die u wilt uitsluiten, *SQLServers_Excluded* in dit voor beeld.
+1. Set the **Exclusion** by selecting the ellipsis and selecting the resource group to exclude, *SQLServers_Excluded* in this example.
 
-   ![Een uitgesloten resource groep toevoegen aan de beleids toewijzing](../media/create-and-manage/request-exclusion.png)
+   ![Add an excluded resource group to the policy assignment](../media/create-and-manage/request-exclusion.png)
 
    > [!NOTE]
    > Afhankelijk van het beleid en de invloed ervan, kan de uitsluiting ook worden toegekend aan specifieke resources binnen een resourcegroep binnen het bereik van de toewijzing. Als een **Weigeren**-effect is gebruikt in deze zelfstudie, zou het niet verstandig om de uitsluiting in te stellen op een specifieke resource die al bestaat.
 
-1. Selecteer **selecteren** en selecteer vervolgens **Opslaan**.
+1. Select **Select** and then select **Save**.
 
 In deze sectie hebt u de geweigerde aanvraag toch uitgevoerd door een uitsluiting te maken in één resourcegroep.
 

@@ -1,44 +1,48 @@
 ---
-title: Het gebruik van object (BLOB)-opslag C++ van-Azure | Microsoft Docs
-description: Sla ongestructureerde gegevens op in de Cloud met Azure Blob-opslag (object).
+title: How to use object (Blob) storage from C++ - Azure | Microsoft Docs
+description: Store unstructured data in the cloud with Azure Blob (object) storage.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 03/21/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: f64856d5b0140d529e939d92d4be61b074928d6e
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: be3dc27823c09823133d5b9a3a3f34afe52ec57d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68726431"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227909"
 ---
-# <a name="how-to-use-blob-storage-from-c"></a>Blob-opslag gebruiken vanuitC++
+# <a name="how-to-use-blob-storage-from-c"></a>How to use Blob storage from C++
 
-In deze hand leiding wordt gedemonstreerd hoe u algemene scenario's uitvoert met behulp van Azure Blob-opslag. De voor beelden laten zien hoe u blobs kunt uploaden, weer geven, downloaden en verwijderen. De voorbeelden zijn geschreven in C++ en maken gebruik van de [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
+This guide demonstrates how to perform common scenarios using Azure Blob storage. The examples show how to upload, list, download, and delete blobs. De voorbeelden zijn geschreven in C++ en maken gebruik van de [Azure Storage-clientbibliotheek voor C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md).   
 
-Zie [Inleiding tot Azure Blob-opslag](storage-blobs-introduction.md)voor meer informatie over Blob Storage.
+To learn more about Blob storage, see [Introduction to Azure Blob storage](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Deze handleiding is gericht op de Azure-opslagclientbibliotheek voor C++ versie 1.0.0 en hoger. Micro soft raadt aan om de nieuwste versie van de Storage- C++client bibliotheek te gebruiken voor, die beschikbaar is via [NuGet](https://www.nuget.org/packages/wastorage) of [github](https://github.com/Azure/azure-storage-cpp).
+> Deze handleiding is gericht op de Azure-opslagclientbibliotheek voor C++ versie 1.0.0 en hoger. Microsoft recommends using the latest version of the Storage Client Library for C++, available via [NuGet](https://www.nuget.org/packages/wastorage) or [GitHub](https://github.com/Azure/azure-storage-cpp).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-c-application"></a>Een C++-toepassing maken
-In deze hand leiding maakt u gebruik van opslag functies die kunnen worden uitgevoerd in C++ een toepassing.  
+In this guide, you will use storage features which can be run within a C++ application.  
 
 Hiervoor moet u de Azure-opslagclientbibliotheek voor C++ installeren en een Azure-opslagaccount in uw Azure-abonnement maken.   
 
 Voor het installeren van de Azure-opslagclientbibliotheek voor C++ kunt u de volgende methoden gebruiken:
 
-* **Linux:** Volg de instructies in de pagina [Azure Storage-client bibliotheek C++ voor Leesmij](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) .  
-* **Windows:** Klik in Visual Studio op **Tools > NuGet Package Manager > Package Manager Console**. Typ de volgende opdracht in de [NuGet Package Manager-console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) en druk op **Enter**.  
-  
-     Install-Package wastorage
+* **Linux:** Follow the instructions given in the [Azure Storage Client Library for C++ README: Getting Started on Linux](https://github.com/Azure/azure-storage-cpp#getting-started-on-linux) page.
+* **Windows:** On Windows, use [vcpkg](https://github.com/microsoft/vcpkg) as the dependency manager. Follow the [quick-start](https://github.com/microsoft/vcpkg#quick-start) to initialize vcpkg. Then, use the following command to install the library:
 
-## <a name="configure-your-application-to-access-blob-storage"></a>Uw toepassing configureren voor toegang tot Blob Storage
-Voeg de volgende include-instructies toe aan het C++ begin van het bestand waarin u de Azure Storage-api's wilt gebruiken om toegang te krijgen tot blobs:  
+```powershell
+.\vcpkg.exe install azure-storage-cpp
+```
+
+You can find a guide for how to build the source code and export to Nuget in the [README](https://github.com/Azure/azure-storage-cpp#download--install) file.
+
+## <a name="configure-your-application-to-access-blob-storage"></a>Configure your application to access Blob storage
+Add the following include statements to the top of the C++ file where you want to use the Azure storage APIs to access blobs:  
 
 ```cpp
 #include <was/storage_account.h>
@@ -47,41 +51,41 @@ Voeg de volgende include-instructies toe aan het C++ begin van het bestand waari
 #include <cpprest/containerstream.h> 
 ```
 
-## <a name="setup-an-azure-storage-connection-string"></a>Een Azure Storage-connection string instellen
-Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. Wanneer u in een client toepassing uitvoert, moet u de opslag connection string in de volgende indeling opgeven, waarbij u de naam van uw opslag account en de toegangs sleutel voor opslag gebruikt voor het opslag account dat wordt vermeld in de [Azure-Portal](https://portal.azure.com) voor de *AccountName* en *AccountKey* waarden. Zie [over Azure Storage-accounts](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)voor meer informatie over opslag accounts en toegangs sleutels. In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:  
+## <a name="setup-an-azure-storage-connection-string"></a>Setup an Azure storage connection string
+Een Azure-opslagclient gebruikt een opslagverbindingstekenreeks om eindpunten en referenties voor toegang tot gegevensbeheerservices op te slaan. When running in a client application, you must provide the storage connection string in the following format, using the name of your storage account and the storage access key for the storage account listed in the [Azure Portal](https://portal.azure.com) for the *AccountName* and *AccountKey* values. For information on storage accounts and access keys, see [About Azure Storage Accounts](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). In dit voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks:  
 
 ```cpp
 // Define the connection-string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
-Als u uw toepassing wilt testen op uw lokale Windows-computer, kunt u de Microsoft Azure- [opslag emulator](../storage-use-emulator.md) gebruiken die is geïnstalleerd met de [Azure SDK](https://azure.microsoft.com/downloads/). De opslag emulator is een hulp programma voor het simuleren van de blob-, wachtrij-en tabel services die beschikbaar zijn in azure op uw lokale ontwikkel computer. In het volgende voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks naar uw lokale opslagemulator:
+To test your application in your local Windows computer, you can use the Microsoft Azure [storage emulator](../storage-use-emulator.md) that is installed with the [Azure SDK](https://azure.microsoft.com/downloads/). The storage emulator is a utility that simulates the Blob, Queue, and Table services available in Azure on your local development machine. In het volgende voorbeeld ziet u hoe u een statisch veld kunt declareren voor het opslaan van de verbindingstekenreeks naar uw lokale opslagemulator:
 
 ```cpp
 // Define the connection-string with Azure Storage Emulator.
 const utility::string_t storage_connection_string(U("UseDevelopmentStorage=true;"));  
 ```
 
-Als u de Azure-opslag emulator wilt starten, selecteert u de knop **Start** of drukt u op de **Windows** -toets. Begin met het typen van **Azure Storage emulator**en selecteer **Microsoft Azure-opslagemulator** in de lijst met toepassingen.  
+To start the Azure storage emulator, Select the **Start** button or press the **Windows** key. Begin typing **Azure Storage Emulator**, and select **Microsoft Azure Storage Emulator** from the list of applications.  
 
 In de volgende voorbeelden wordt ervan uitgegaan dat u een van deze twee methoden hebt gebruikt om de opslagverbindingstekenreeks op te halen.  
 
-## <a name="retrieve-your-storage-account"></a>Uw opslag account ophalen
-U kunt de **cloud_storage_account** -klasse gebruiken om de gegevens van uw opslag account te vertegenwoordigen. Voor het ophalen van uw opslagaccountgegevens uit de opslagverbindingstekenreeks kunt u de methode **parse** gebruiken.  
+## <a name="retrieve-your-storage-account"></a>Retrieve your storage account
+You can use the **cloud_storage_account** class to represent your Storage Account information. Voor het ophalen van uw opslagaccountgegevens uit de opslagverbindingstekenreeks kunt u de methode **parse** gebruiken.  
 
 ```cpp
 // Retrieve storage account from connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-Vervolgens krijgt u een verwijzing naar een **cloud_blob_client** -klasse, zodat u objecten kunt ophalen die containers en blobs vertegenwoordigen die zijn opgeslagen in Blob Storage. Met de volgende code wordt een **cloud_blob_client** -object gemaakt met het object voor het opslag account dat we hierboven hebben opgehaald:  
+Next, get a reference to a **cloud_blob_client** class as it allows you to retrieve objects that represent containers and blobs stored within Blob storage. The following code creates a **cloud_blob_client** object using the storage account object we retrieved above:  
 
 ```cpp
 // Create the blob client.
 azure::storage::cloud_blob_client blob_client = storage_account.create_cloud_blob_client();  
 ```
 
-## <a name="how-to-create-a-container"></a>Procedure: Een container maken
+## <a name="how-to-create-a-container"></a>How to: Create a container
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
 In dit voorbeeld ziet u hoe u een container kunt maken als deze nog niet bestaat:  
@@ -107,7 +111,7 @@ catch (const std::exception& e)
 }  
 ```
 
-De nieuwe container is standaard privé en u moet uw opslag toegangs sleutel opgeven om blobs uit deze container te downloaden. Als u de bestanden (blobs) binnen de container voor iedereen beschikbaar wilt maken, kunt u de container als openbaar instellen met de volgende code:  
+By default, the new container is private and you must specify your storage access key to download blobs from this container. If you want to make the files (blobs) within the container available to everyone, you can set the container to be public using the following code:  
 
 ```cpp
 // Make the blob container publicly accessible.
@@ -116,12 +120,12 @@ permissions.set_public_access(azure::storage::blob_container_public_access_type:
 container.upload_permissions(permissions);  
 ```
 
-Iedereen op internet kan blobs in een open bare container zien, maar u kunt ze alleen wijzigen of verwijderen als u de juiste toegangs sleutel hebt.  
+Anyone on the Internet can see blobs in a public container, but you can modify or delete them only if you have the appropriate access key.  
 
-## <a name="how-to-upload-a-blob-into-a-container"></a>Procedure: Een blob uploaden naar een container
-Azure Blob-opslag ondersteunt blok-blobs en pagina-blobs. In de meeste gevallen is een blok-blob het aangewezen type om te gebruiken.  
+## <a name="how-to-upload-a-blob-into-a-container"></a>How to: Upload a blob into a container
+Azure Blob storage supports block blobs and page blobs. In de meeste gevallen is een blok-blob het aangewezen type om te gebruiken.  
 
-Om een bestand naar een blok-blob te uploaden, haalt u een containerverwijzing op en gebruikt u deze om een blok-blobverwijzing op te halen. Zodra u een BLOB-verwijzing hebt, kunt u elke gegevens stroom naar de referentie uploaden door de **upload_from_stream** -methode aan te roepen. Met deze bewerking wordt de blob gemaakt (als deze nog niet bestaat) of overschreven (als deze wel al bestaat). Het volgende voorbeeld laat zien hoe u een blob uploadt naar een container. Hierbij wordt ervan uitgegaan dat de container al is gemaakt.  
+Om een bestand naar een blok-blob te uploaden, haalt u een containerverwijzing op en gebruikt u deze om een blok-blobverwijzing op te halen. Once you have a blob reference, you can upload any stream of data to it by calling the **upload_from_stream** method. Met deze bewerking wordt de blob gemaakt (als deze nog niet bestaat) of overschreven (als deze wel al bestaat). Het volgende voorbeeld laat zien hoe u een blob uploadt naar een container. Hierbij wordt ervan uitgegaan dat de container al is gemaakt.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -151,10 +155,10 @@ azure::storage::cloud_block_blob blob3 = container.get_block_blob_reference(U("m
 blob3.upload_text(U("other text"));  
 ```
 
-U kunt ook de methode **upload_from_file** gebruiken om een bestand te uploaden naar een blok-blob.
+Alternatively, you can use the **upload_from_file** method to upload a file to a block blob.
 
-## <a name="how-to-list-the-blobs-in-a-container"></a>Procedure: De blobs in een container in een lijst weergeven
-Als u een lijst van de blobs in een container wilt weergeven, moet u eerst een containerverwijzing ophalen. Vervolgens kunt u de **list_blobs** -methode van de container gebruiken om de blobs en/of de mappen erin op te halen. Voor toegang tot de uitgebreide set eigenschappen en methoden voor een geretourneerde **list_blob_item**moet u de methode **list_blob_item. as _blob** aanroepen om een **cloud_blob** -object op te halen, of de methode **list_blob. as _directory** om een cloud_blob_ te verkrijgen Directory-object. De volgende code laat zien hoe u de URI van elk item in de container **My-steek-container** kunt ophalen en uitvoeren:
+## <a name="how-to-list-the-blobs-in-a-container"></a>How to: List the blobs in a container
+Als u een lijst van de blobs in een container wilt weergeven, moet u eerst een containerverwijzing ophalen. You can then use the container's **list_blobs** method to retrieve the blobs and/or directories within it. To access the rich set of properties and methods for a returned **list_blob_item**, you must call the **list_blob_item.as_blob** method to get a  **cloud_blob** object, or the **list_blob.as_directory** method to get a  cloud_blob_directory object. The following code demonstrates how to retrieve and output the URI of each item in the **my-sample-container** container:
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -181,10 +185,10 @@ for (auto it = container.list_blobs(); it != end_of_results; ++it)
 }
 ```
 
-Zie [overzicht van Azure storage resources in C++ ](../storage-c-plus-plus-enumeration.md)voor meer informatie over het weer geven van bewerkingen.
+For more details on listing operations, see [List Azure Storage Resources in C++](../storage-c-plus-plus-enumeration.md).
 
-## <a name="how-to-download-blobs"></a>Procedure: Blobs downloaden
-Als u blobs wilt downloaden, haalt u eerst een BLOB-verwijzing op en roept u vervolgens de methode **download_to_stream** aan. In het volgende voor beeld wordt de methode **download_to_stream** gebruikt om de blob-inhoud over te dragen naar een Stream-object dat u vervolgens naar een lokaal bestand kunt verplaatsen.  
+## <a name="how-to-download-blobs"></a>How to: Download blobs
+To download blobs, first retrieve a blob reference and then call the **download_to_stream** method. The following example uses the **download_to_stream** method to transfer the blob contents to a stream object that you can then persist to a local file.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -211,8 +215,8 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();  
 ```
 
-U kunt ook de methode **download_to_file** gebruiken om de inhoud van een BLOB naar een bestand te downloaden.
-Daarnaast kunt u ook de methode **download_text** gebruiken om de inhoud van een BLOB te downloaden als een teken reeks.  
+Alternatively, you can use the **download_to_file** method to download the contents of a blob to a file.
+In addition, you can also use the **download_text** method to download the contents of a blob as a text string.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -231,8 +235,8 @@ azure::storage::cloud_block_blob text_blob = container.get_block_blob_reference(
 utility::string_t text = text_blob.download_text();
 ```
 
-## <a name="how-to-delete-blobs"></a>Procedure: Blobs verwijderen
-Als u een BLOB wilt verwijderen, moet u eerst een BLOB-verwijzing ophalen en vervolgens de **delete_blob** -methode aanroepen.  
+## <a name="how-to-delete-blobs"></a>How to: Delete blobs
+To delete a blob, first get a blob reference and then call the **delete_blob** method on it.  
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -252,12 +256,12 @@ blockBlob.delete_blob();
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-Nu u de basis principes van Blob Storage hebt geleerd, volgt u deze koppelingen voor meer informatie over Azure Storage.  
+Now that you've learned the basics of blob storage, follow these links to learn more about Azure Storage.  
 
-* [Queue Storage gebruiken vanuitC++](../storage-c-plus-plus-how-to-use-queues.md)
-* [Table Storage gebruiken vanuitC++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
-* [Azure Storage resources weer geven inC++](../storage-c-plus-plus-enumeration.md)
-* [Storage-client bibliotheek C++ voor naslag informatie](https://azure.github.io/azure-storage-cpp)
+* [How to use Queue Storage from C++](../storage-c-plus-plus-how-to-use-queues.md)
+* [How to use Table Storage from C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [List Azure Storage Resources in C++](../storage-c-plus-plus-enumeration.md)
+* [Storage Client Library for C++ Reference](https://azure.github.io/azure-storage-cpp)
 * [Documentatie bij Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Gegevensoverdracht met het AzCopy-opdrachtregelprogramma](../storage-use-azcopy.md)
 

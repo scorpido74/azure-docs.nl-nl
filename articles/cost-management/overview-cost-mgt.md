@@ -7,33 +7,33 @@ author: bandersmsft
 ms.author: banders
 ms.date: 05/14/2019
 ms.topic: overview
-ms.service: cost-management
+ms.service: cost-management-billing
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 6615c6d8912195dbecda727bbdb31dcf04898ea2
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 90d2646aa554a20a823d29cde06537d05415b603
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65792813"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74230024"
 ---
 # <a name="what-is-azure-cost-management"></a>Wat is Azure Cost Management?
 
-Kostenbeheer is het proces van effectief plannen en beheren van kosten die betrokken zijn bij uw bedrijf. Kostenbeheertaken worden normaal gesproken uitgevoerd door de financiële, management- en app-teams. Azure Cost Management helpt organisaties plannen met de kosten in rekening. Het helpt tevens te kosten effectief analyseren en actie ondernemen om te optimaliseren uitgaven. Lees het artikel [Azure Cost Management best practices](cost-mgt-best-practices.md) voor meer informatie over kostenbeheer in een bedrijf.
+Kostenbeheer is het proces waarmee u effectief de kosten voor uw bedrijf kunt plannen en beheren. Kostenbeheertaken worden normaal gesproken uitgevoerd door de financiële, management- en app-teams. Azure Cost Management helps organizations plan with cost in mind. It also helps to analyze costs effectively and take action to optimize cloud spending. Lees het artikel [Azure Cost Management best practices](cost-mgt-best-practices.md) voor meer informatie over kostenbeheer in een bedrijf.
 
-Bekijk de [video met overzicht van Azure Cost Management](https://www.youtube.com/watch?v=el4yN5cHsJ0) voor een kort overzicht van hoe Azure Cost Management kunt u geld besparen in Azure.
+Watch the [Azure Cost Management overview video](https://www.youtube.com/watch?v=el4yN5cHsJ0) for a quick overview about how Azure Cost Management can help you save money in Azure.
 
 >[!VIDEO https://www.youtube.com/embed/el4yN5cHsJ0]
 
 Facturering is wel gerelateerd, maar verschilt van kostenbeheer. Facturering is het proces van facturen versturen naar klanten voor geleverde goederen of diensten en de commerciële relatie beheren.  Inkoop- en financiële teams voeren normaal gesproken factureringstaken uit.
 
-Cost Management toont organisatorische kosten en gebruikspatronen aan met geavanceerde analyses. Rapporten in Cost Management tonen de op gebruik gebaseerde kosten die worden gebruikt door Azure-services en Marketplace-aankopen van derden. Kosten zijn gebaseerd op in de onderhandelde prijzen en factor in de reservering en kortingen voor Azure Hybrid Benefit. Gezamenlijk tonen de rapporten uw intern en externe kosten voor gebruik en kosten voor Azure Marketplace. Andere kosten, zoals reserveringskosten, ondersteuning en belasting worden nog niet in rapporten getoond. De rapporten helpen u grip te krijgen op uw uitgaven en resource-gebruik en kunnen helpen afwijkingen te vinden in uitgaven. Voorspellende analyses zijn ook beschikbaar. Cost Management gebruikt Azure managementgroepen, budgetten en aanbevelingen om duidelijk aan te tonen hoe uw uitgaven zijn ingedeeld en hoe u kosten kunt reduceren.
+Cost Management toont organisatorische kosten en gebruikspatronen aan met geavanceerde analyses. Reports in Cost Management show the usage-based costs consumed by Azure services and third-party Marketplace offerings. Costs are based on negotiated prices and factor in reservation and Azure Hybrid Benefit discounts. Gezamenlijk tonen de rapporten uw intern en externe kosten voor gebruik en kosten voor Azure Marketplace. Andere kosten, zoals reserveringskosten, ondersteuning en belasting worden nog niet in rapporten getoond. De rapporten helpen u grip te krijgen op uw uitgaven en resource-gebruik en kunnen helpen afwijkingen te vinden in uitgaven. Voorspellende analyses zijn ook beschikbaar. Cost Management gebruikt Azure managementgroepen, budgetten en aanbevelingen om duidelijk aan te tonen hoe uw uitgaven zijn ingedeeld en hoe u kosten kunt reduceren.
 
 U kunt de Azure Portal of verschillende API’s gebruiken voor geautomatiseerde export om kostengegevens te integreren met externe systemen en processen. Geautomatiseerde factureringsgegevensexport en geplande rapporten zijn ook beschikbaar.
 
 ## <a name="plan-and-control-expenses"></a>Uitgaven plannen en beheren
 
-Verschillende manieren waarop Cost Management u kan helpen bij het plannen en beheren van uw kosten: Kosten analyseren, budgetten, aanbevelingen en kostenbeheergegevens exporteren.
+De manieren waarop Cost Management u helpt uw kosten te plannen en beheren omvatten: kostenanalyses, budgetten, aanbevelingen en het exporteren van kostenbeheergegevens.
 
 U gebruikt kostenanalyse om de kosten van Azure voor uw bedrijf te verkennen en te analyseren. U kunt de totale kosten per bedrijf weergeven, zodat u begrijpt waar de kosten worden opgebouwd en uitgavenpatronen kunt identificeren. En u kunt de totale kosten bekijken om geschatte kostentrends per maand, per kwartaal en zelfs per jaar naast een budget te leggen.
 
@@ -45,9 +45,9 @@ Als u externe systemen gebruikt om kostenbeheergegevens te zien of te controlere
 
 ## <a name="consider-cloudyn"></a>Overweeg het gebruik van Cloudyn
 
-[Cloudyn](overview.md) is een Azure-service gerelateerd aan Cost Management. Met Cloudyn kunt u het cloudgebruik en uitgaven voor uw Azure-resources volgen. Ook andere cloudproviders, inclusief AWS en Google worden hierdoor ondersteund. Aan de hand van eenvoudige dashboard-rapporten krijgt u inzicht in de toewijzing van kosten en tevens factureringen en teruggaven. Momenteel ondersteunt Cost Management geen facturering/terugstorting of andere cloudserviceproviders. Maar Cloudyn is een optie die dat _wel_ ondersteunt. Op dit moment Cost Management biedt geen ondersteuning voor Microsoft Cloud Service Provider (CSP) accounts maar Cloudyn heeft. Als u de CSP-accounts hebt of als u wilt gebruiken factureringen/terugstortingen, kunt u Cloudyn om te helpen uw kosten te beheren.
+[Cloudyn](overview.md) is een Azure-service gerelateerd aan Cost Management. Met Cloudyn kunt u het cloudgebruik en uitgaven voor uw Azure-resources volgen. Ook andere cloudproviders, inclusief AWS en Google worden hierdoor ondersteund. Aan de hand van eenvoudige dashboard-rapporten krijgt u inzicht in de toewijzing van kosten en tevens factureringen en teruggaven. Momenteel ondersteunt Cost Management geen facturering/terugstorting of andere cloudserviceproviders. Maar Cloudyn is een optie die dat _wel_ ondersteunt. Currently, Cost Management doesn't support Microsoft Cloud Service Provider (CSP) accounts but Cloudyn does. If you have CSP accounts or if you want to use showback/chargeback, you can use Cloudyn to help manage your costs.
 
-Bekijk de [Azure Cost Management en Cloudyn video](https://www.youtube.com/watch?v=PmwFWwSluh8) aanbevelingen zien wanneer u moet Azure Cost Management of Cloudyn, op basis van de behoeften van uw bedrijf.
+Watch the [Azure Cost Management and Cloudyn video](https://www.youtube.com/watch?v=PmwFWwSluh8) to see recommendations when you should use either Azure Cost Management or Cloudyn, based on your business needs.
 
 >[!VIDEO https://www.youtube.com/embed/PmwFWwSluh8]
 

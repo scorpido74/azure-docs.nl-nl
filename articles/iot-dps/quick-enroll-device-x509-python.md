@@ -1,21 +1,20 @@
 ---
-title: 'Quick Start: X. 509-apparaten registreren bij de Azure Device Provisioning Service met behulp van python'
-description: In deze snelstart wordt gebruikgemaakt van groepsregistraties. In deze snelstart registreert u X.509-apparaten bij Azure IoT Hub Device Provisioning Service met behulp van Python
+title: Enroll X.509 devices to Azure Device Provisioning Service using Python
+description: In deze quickstart wordt gebruikgemaakt van groepsregistraties. In deze snelstart registreert u X.509-apparaten bij Azure IoT Hub Device Provisioning Service met behulp van Python
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: philmea
 ms.devlang: python
 ms.custom: mvc
-ms.openlocfilehash: 23ae0bd9e66cbb592db0ec9adea5e4332a9aa19b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 5be204b49611c47519c3fa9bbfa1e81dbedc0ca0
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73904726"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229501"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-python"></a>Snelstart: X.509-apparaten registreren bij Device Provisioning Service met behulp van Python
 
@@ -42,7 +41,7 @@ Hoewel de stappen in dit artikel zowel op Windows- als op Linux-computers werken
 
 Voor deze snelstart hebt u een .pem- of een .cer-bestand met het openbare gedeelte van een tussenliggend of hoofd-CA x.509-certificaat nodig. Dit certificaat moet worden geüpload naar uw inrichtingsservice en door de service worden geverifieerd. 
 
-De [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) bevat testhulpmiddelen waarmee u een X.509-certificaatketen kunt maken, een basis- of tussencertificaat kunt uploaden vanuit die keten en een bewijs van eigendom kunt uitvoeren met de service om het certificaat te verifiëren. Certificaten die zijn gemaakt met de SDK-hulpmiddelen zijn alleen ontworpen voor **ontwikkeltesten**. Deze certificaten **mogen niet in productie worden gebruikt**. Ze bevatten in code vastgelegde wachtwoorden ('1234') die na 30 dagen verlopen. Zie [Een x.509-CA-certificaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) in de documentatie van Azure IoT Hub voor meer informatie over het verkrijgen van certificaten die geschikt zijn voor productiegebruik.
+De [Azure IoT C-SDK](https://github.com/Azure/azure-iot-sdk-c) bevat testhulpmiddelen waarmee u een X.509-certificaatketen kunt maken, een basis- of tussencertificaat kunt uploaden vanuit die keten en een bewijs van eigendom kunt uitvoeren met de service om het certificaat te verifiëren. Certificaten die zijn gemaakt met de SDK-hulpmiddelen, zijn alleen ontworpen voor **ontwikkeltesten**. Deze certificaten **mogen niet in productie worden gebruikt**. Ze bevatten in code vastgelegde wachtwoorden ('1234') die na 30 dagen verlopen. Zie [Een x.509-CA-certificaat ophalen](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) in de documentatie van Azure IoT Hub voor meer informatie over het verkrijgen van certificaten die geschikt zijn voor productiegebruik.
 
 Voer de volgende stappen uit om deze testhulpmiddelen te gebruiken om certificaten te genereren: 
  
@@ -65,7 +64,7 @@ In deze sectie ziet u hoe u de inrichtingsgegevens van het X.509-apparaat toevoe
 
 1. Start een teksteditor en maak een nieuw bestand **EnrollmentGroup.py**.
 
-1. Voeg de volgende `import`-instructies en -variabelen aan het begin van het bestand **EnrollmentGroup.py** toe. Vervang vervolgens `dpsConnectionString` door uw verbindingsreeks die te vinden is onder **Gedeeld toegangsbeleid** in **Device Provisioning Service** in **Azure Portal**. Vervang de tijdelijke aanduiding voor het certificaat door het certificaat dat u eerder hebt gemaakt in [Testcertificaten voorbereiden](quick-enroll-device-x509-python.md#prepare-test-certificates). Maak ten slotte een unieke `registrationid` en zorg dat deze alleen bestaat uit kleine letters en afbreekstreepjes.  
+1. Voeg de volgende `import`-instructies en -variabelen aan het begin van het bestand **EnrollmentGroup.py** toe. Vervang vervolgens `dpsConnectionString` door uw verbindingsreeks, te vinden onder **Gedeeld toegangsbeleid** in **Device Provisioning Service** op de **Azure-portal**. Vervang de tijdelijke aanduiding voor het certificaat door het certificaat dat u eerder hebt gemaakt in [Testcertificaten voorbereiden](quick-enroll-device-x509-python.md#prepare-test-certificates). Maak ten slotte een unieke `registrationid` en zorg dat deze alleen bestaat uit kleine letters en afbreekstreepjes.  
    
     ```python
     from provisioningserviceclient import ProvisioningServiceClient
@@ -141,7 +140,7 @@ Als u van plan bent om het voorbeeld van de Java.js-service te verkennen, verwij
 
 1. Sluit het uitvoervenster van het Java-voorbeeld op de computer.
 1. Sluit het venster voor de _X.509-certificaatgenerator_ op de computer.
-1. Navigeer naar uw Device Provisioning Service in de Azure Portal, klik op **inschrijvingen beheren**en selecteer vervolgens het tabblad **inschrijvings groepen** . Selecteer de *groeps naam* voor de X. 509-apparaten die u hebt Inge schreven met behulp van deze Quick Start en klik op de knop **verwijderen** boven aan de Blade.  
+1. Navigate to your Device Provisioning service in the Azure portal, click **Manage enrollments**, and then select the **Enrollment Groups** tab. Select the *GROUP NAME* for the X.509 devices you enrolled using this Quickstart, and click the **Delete** button at the top of the blade.  
 
 
 ## <a name="next-steps"></a>Volgende stappen

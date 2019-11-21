@@ -1,6 +1,6 @@
 ---
-title: Een openbare Load Balancer maken - Azure-sjabloon
-titlesuffix: Azure Load Balancer
+title: Create a public Load Balancer - Azure template
+titleSuffix: Azure Load Balancer
 description: Meer informatie over het maken van een openbare load balancer in Resource Manager met behulp van een sjabloon
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: a94c7d1b5d1ecd11dd213eccf2354e943a96cabd
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4cfbbfb17e8be3ae78aad5aa5125020762f864c7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68275291"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74225350"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Een openbare load balancer maken met behulp van een sjabloon
 
@@ -43,7 +43,7 @@ De voorbeeldsjabloon in de openbare opslagplaats maakt gebruik van een parameter
 Volg onderstaande stappen als u de sjabloon die u hebt gedownload, wilt implementeren met PowerShell.
 
 1. Als u Azure PowerShell nog niet eerder hebt gebruikt, kunt u [Azure PowerShell installeren en configureren](/powershell/azure/overview) raadplegen en de instructies helemaal tot aan het einde volgen om u aan te melden bij Azure en uw abonnement te selecteren.
-2. Voer de cmdlet **New-AzResourceGroupDeployment** uit om een resource groep te maken met behulp van de sjabloon.
+2. Run the **New-AzResourceGroupDeployment** cmdlet to create a resource group using the template.
 
     ```powershell
     New-AzResourceGroupDeployment -Name TestRG -Location uswest `
@@ -81,4 +81,4 @@ Volg onderstaande stappen als u de sjabloon wilt implementeren met de Azure CLI.
 
 [TCP-time-outinstellingen voor inactiviteit voor de load balancer configureren](load-balancer-tcp-idle-timeout.md)
 
-Zie [micro soft. Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers)voor de JSON-syntaxis en-eigenschappen van een Load Balancer in een sjabloon.
+For the JSON syntax and properties of a load balancer in a template, see [Microsoft.Network/loadBalancers](/azure/templates/microsoft.network/loadbalancers).

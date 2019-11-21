@@ -1,111 +1,104 @@
 ---
-title: Serverparameters configureren in Azure Database voor MySQL
-description: In dit artikel wordt beschreven hoe u MySQL-serverparameters configureren in Azure Database voor MySQL met behulp van de Azure-portal.
+title: How To Configure Server Parameters in Azure Database for MySQL
+description: This article describes how to configure MySQL server parameters in Azure Database for MySQL using the Azure portal.
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 12/06/2018
-ms.openlocfilehash: 103e09a0e2b9dd409fa2ddaff1c5311ef9936d22
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.date: 11/19/2019
+ms.openlocfilehash: 6b5d48a1d198b62af853a6334de41bad01b3c98c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61422134"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232558"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Parameters van de server configureren in Azure Database voor MySQL met behulp van Azure portal
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>How to configure server parameters in Azure Database for MySQL by using the Azure portal
 
-Azure Database for MySQL ondersteunt de configuratie van bepaalde parameters van de server. In dit artikel wordt beschreven hoe u deze parameters configureren met behulp van de Azure-portal. Niet alle parameters van de server kunnen worden aangepast.
+Azure Database for MySQL supports configuration of some server parameters. This article describes how to configure these parameters by using the Azure portal. Not all server parameters can be adjusted.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigeer naar de Parameters van de Server in Azure portal
+## <a name="navigate-to-server-parameters-on-azure-portal"></a>Navigate to Server Parameters on Azure portal
 
-1. Meld u aan bij Azure portal en zoek uw Azure Database voor MySQL-server.
-2. Onder de **instellingen** sectie, klikt u op **serverparameters** openen van de pagina de parameters voor de Azure Database for MySQL-server.
-![Pagina van de parameters voor Azure portal-server](./media/howto-server-parameters/auzre-portal-server-parameters.png)
-3. Zoek alle instellingen die u nodig hebt om aan te passen. Controleer de **beschrijving** kolom om te begrijpen van het doel en de toegestane waarden.
-![Vervolgkeuzelijst omlaag opsommen](./media/howto-server-parameters/3-toggle_parameter.png)
-4. Klik op **opslaan** uw wijzigingen op te slaan.
-![Opslaan of wijzigingen negeren](./media/howto-server-parameters/4-save_parameters.png)
-5. Als u nieuwe waarden voor de parameters hebt opgeslagen, kunt u altijd terugkeren alles weer op de standaardwaarden hiervoor **alle standaardinstellingen opnieuw instellen**.
-![Alle standaardinstellingen opnieuw instellen](./media/howto-server-parameters/5-reset_parameters.png)
+1. Sign in to the Azure portal, then locate your Azure Database for MySQL server.
+2. Under the **SETTINGS** section, click **Server parameters** to open the server parameters page for the Azure Database for MySQL server.
+![Azure portal server parameters page](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. Locate any settings you need to adjust. Review the **Description** column to understand the purpose and allowed values.
+![Enumerate drop down](./media/howto-server-parameters/3-toggle_parameter.png)
+4. Click  **Save** to save your changes.
+![Save or Discard changes](./media/howto-server-parameters/4-save_parameters.png)
+5. If you have saved new values for the parameters, you can always revert everything back to the default values by selecting **Reset all to default**.
+![Reset all to default](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Lijst met parameters van de server kunnen worden geconfigureerd
+## <a name="list-of-configurable-server-parameters"></a>List of configurable server parameters
 
-De lijst met ondersteunde serverparameters groeit voortdurend. Gebruik het tabblad van de parameters-server in Azure portal naar de definitie en parameters van de server op basis van de toepassingsvereisten van uw configureren.
+The list of supported server parameters is constantly growing. Use the server parameters tab in Azure portal to get the definition and configure server parameters based on your application requirements.
 
-## <a name="non-configurable-server-parameters"></a>Niet-configureerbare serverparameters
+## <a name="non-configurable-server-parameters"></a>Non-configurable server parameters
 
-InnoDB-buffergroep en maximum aantal verbindingen zijn niet kunnen worden geconfigureerd en gekoppeld aan uw [prijscategorie](concepts-service-tiers.md).
+The InnoDB Buffer Pool size is not configurable and tied to your [pricing tier](concepts-service-tiers.md).
 
-|**Prijscategorie**| **Bewerking voor COMPUTE**|**vCore(s)**|**InnoDB buffergroep (MB)**| **Maximum aantal verbindingen**|
-|---|---|---|---|--|
-|Basic| Gen 4| 1| 960| 50|
-|Basic| Gen 4| 2| 2560| 100|
-|Basic| Gen 5| 1| 960| 50|
-|Basic| Gen 5| 2| 2560| 100|
-|Algemeen doel| Gen 4| 2| 3584| 300|
-|Algemeen doel| Gen 4| 4| 7680| 625|
-|Algemeen doel| Gen 4| 8| 15360| 1250|
-|Algemeen doel| Gen 4| 16| 31232| 2500|
-|Algemeen doel| Gen 4| 32| 62976| 5000|
-|Algemeen doel| Gen 5| 2| 3584| 300|
-|Algemeen doel| Gen 5| 4| 7680| 625|
-|Algemeen doel| Gen 5| 8| 15360| 1250|
-|Algemeen doel| Gen 5| 16| 31232| 2500|
-|Algemeen doel| Gen 5| 32| 62976| 5000|
-|Algemeen doel| Gen 5| 64| 125952| 10\.000|
-|Geoptimaliseerd geheugen| Gen 5| 2| 7168| 600|
-|Geoptimaliseerd geheugen| Gen 5| 4| 15360| 1250|
-|Geoptimaliseerd geheugen| Gen 5| 8| 30720| 2500|
-|Geoptimaliseerd geheugen| Gen 5| 16| 62464| 5000|
-|Geoptimaliseerd geheugen| Gen 5| 32| 125952| 10\.000|
+|**Prijscategorie**|**vCore(s)**|**InnoDB Buffer Pool size in MB <br>(servers supporting up to 4 TB storage)**| **InnoDB Buffer Pool size in MB <br>(servers supporting up to 16 TB storage)**|
+|:---|---:|---:|---:|
+|Basic| 1| 960| |
+|Basic| 2| 2560| |
+|Algemeen doel| 2| 3584| 7168|
+|Algemeen doel| 4| 7680| 15360|
+|Algemeen doel| 8| 15360| 30720|
+|Algemeen doel| 16| 31232| 62464|
+|Algemeen doel| 32| 62976| 125952|
+|Algemeen doel| 64| 125952| 251904|
+|Geoptimaliseerd geheugen| 2| 7168| 14336|
+|Geoptimaliseerd geheugen| 4| 15360| 30720|
+|Geoptimaliseerd geheugen| 8| 30720| 61440|
+|Geoptimaliseerd geheugen| 16| 62464| 124928|
+|Geoptimaliseerd geheugen| 32| 125952| 251904|
 
-Deze extra server-parameters zijn niet kunnen worden geconfigureerd in het systeem:
+These additional server parameters are not configurable in the system:
 
-|**Parameter**|**Vaste waarde**|
+|**Parameter**|**Fixed value**|
 | :------------------------ | :-------- |
-|innodb_file_per_table in Basic-laag|UIT|
+|innodb_file_per_table in Basic tier|UIT|
 |innodb_flush_log_at_trx_commit|1|
 |sync_binlog|1|
 |innodb_log_file_size|512 MB|
 
-Andere parameters van de server die hier niet worden weergegeven zijn ingesteld op de MySQL standaardwaarden out-of-box voor versies [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) en [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
+Other server parameters that are not listed here are set to their MySQL out-of-box default values for versions [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) and [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
 
-## <a name="working-with-the-time-zone-parameter"></a>Werken met de parameter tijdzone
+## <a name="working-with-the-time-zone-parameter"></a>Working with the time zone parameter
 
-### <a name="populating-the-time-zone-tables"></a>Invullen van de tijdzone-tabellen
+### <a name="populating-the-time-zone-tables"></a>Populating the time zone tables
 
-De tijdzone-tabellen op de server kunnen worden gevuld door het aanroepen van de `az_load_timezone` opgeslagen procedure van een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench.
+The time zone tables on your server can be populated by calling the `az_load_timezone` stored procedure from a tool like the MySQL command line or MySQL Workbench.
 
 > [!NOTE]
-> Als u werkt met de `az_load_timezone` opdracht via MySQL Workbench, moet u de veilige modus eerst uitschakelen met behulp van `SET SQL_SAFE_UPDATES=0;`.
+> If you are running the `az_load_timezone` command from MySQL Workbench, you may need to turn off safe update mode first using `SET SQL_SAFE_UPDATES=0;`.
 
 ```sql
 CALL mysql.az_load_timezone();
 ```
 
-Als u wilt weergeven van waarden van de beschikbare tijd zone, moet u de volgende opdracht uitvoeren:
+To view available time zone values, run the following command:
 
 ```sql
 SELECT name FROM mysql.time_zone_name;
 ```
 
-### <a name="setting-the-global-level-time-zone"></a>De globale niveau tijdzone instellen
+### <a name="setting-the-global-level-time-zone"></a>Setting the global level time zone
 
-De globale niveau tijdzone kan worden ingesteld van de **serverparameters** pagina in de Azure portal. De onderstaande stelt de globale tijdzone op de waarde "VS / Stille Oceaan '.
+The global level time zone can be set from the **Server parameters** page in the Azure portal. The below sets the global time zone to the value "US/Pacific".
 
-![De tijdzoneparameter instellen](./media/howto-server-parameters/timezone.png)
+![Set time zone parameter](./media/howto-server-parameters/timezone.png)
 
-### <a name="setting-the-session-level-time-zone"></a>De sessie niveau tijdzone instellen
+### <a name="setting-the-session-level-time-zone"></a>Setting the session level time zone
 
-De sessie niveau time zone kan worden ingesteld door het uitvoeren van de `SET time_zone` opdracht uit vanaf een hulpprogramma zoals de MySQL-opdrachtregel of MySQL Workbench. In het volgende voorbeeld wordt de tijdzone ingesteld op de **VS / Stille Oceaan** tijdzone.
+The session level time zone can be set by running the `SET time_zone` command from a tool like the MySQL command line or MySQL Workbench. The example below sets the time zone to the **US/Pacific** time zone.
 
 ```sql
 SET time_zone = 'US/Pacific';
 ```
 
-Raadpleeg de MySQL-documentatie voor [datum- en tijdfuncties](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
+Refer to the MySQL documentation for [Date and Time Functions](https://dev.mysql.com/doc/refman/5.7/en/date-and-time-functions.html#function_convert-tz).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Verbindingsbibliotheken voor Azure Database for MySQL](concepts-connection-libraries.md).
+- [Connection libraries for Azure Database for MySQL](concepts-connection-libraries.md).

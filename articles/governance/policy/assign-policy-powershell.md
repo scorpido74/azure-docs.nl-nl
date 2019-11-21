@@ -1,28 +1,28 @@
 ---
-title: Beleid maken om resources te controleren met Power shell
-description: Gebruik Azure PowerShell om een Azure Policy-toewijzing te maken om niet-conforme resources te identificeren.
+title: 'Quickstart: New policy assignment with PowerShell'
+description: In this quickstart, you use Azure PowerShell to create an Azure Policy assignment to identify non-compliant resources.
 ms.date: 03/11/2019
 ms.topic: quickstart
-ms.openlocfilehash: 796606e1e34e753e49a9083fca5a441cacf6d03c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 3e488bece1b74eb473e3e08ea9c36a78063bd5a8
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960114"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74210072"
 ---
-# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Snelstartgids: een beleids toewijzing maken om niet-compatibele resources te identificeren met behulp van Azure PowerShell
+# <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>Quickstart: Create a policy assignment to identify non-compliant resources using Azure PowerShell
 
-De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources. In deze snelstart maakt u een beleidstoewijzing om te identificeren welke virtuele machines geen beheerde schijven gebruiken. Wanneer u klaar bent, identificeert u virtuele machines die *niet voldoen*aan het beleid.
+De eerste stap in het begrijpen van naleving in Azure is het identificeren van de status van uw resources. In deze snelstart maakt u een beleidstoewijzing om te identificeren welke virtuele machines geen beheerde schijven gebruiken. When complete, you'll identify virtual machines that are *non-compliant*.
 
-De module Azure PowerShell wordt gebruikt om Azure-resources te beheren vanaf de opdracht regel of in scripts.
-In deze hand leiding wordt uitgelegd hoe u AZ module gebruikt om een beleids toewijzing te maken.
+The Azure PowerShell module is used to manage Azure resources from the command line or in scripts.
+This guide explains how to use Az module to create a policy assignment.
 
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Voordat u begint, moet u ervoor zorgen dat de nieuwste versie van Azure PowerShell is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-az-ps) voor gedetailleerde informatie.
-- Registreer de Azure Policy Insights-resource provider met behulp van Azure PowerShell. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
+- Register the Azure Policy Insights resource provider using Azure PowerShell. Als u de resourceprovider registreert, controleer dan of uw abonnement ermee werkt. Als u een resourceprovider wilt registreren, moet u toestemming hebben om de bewerking van de resourceprovider te registeren. Deze bewerking is opgenomen in de rollen Inzender en Eigenaar. Voer de volgende opdracht uit om de resourceprovider te registreren:
 
   ```azurepowershell-interactive
   # Register the resource provider if it's not already registered
@@ -33,7 +33,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="create-a-policy-assignment"></a>Een beleidstoewijzing maken
 
-In deze Quick Start maakt u een beleids toewijzing voor de definitie *virtuele machines controleren zonder Managed disks* . Met deze beleids definitie worden virtuele machines geïdentificeerd die geen beheerde schijven gebruiken.
+In this quickstart, you create a policy assignment for the *Audit VMs without managed disks* definition. This policy definition identifies virtual machines not using managed disks.
 
 Voer de volgende opdrachten uit om een nieuwe beleidstoewijzing te maken:
 
@@ -55,7 +55,7 @@ In de voorgaande opdrachten wordt de volgende informatie gebruikt:
 - **Definitie**: de beleidsdefinitie, op basis waarvan u de toewijzing maakt. In dit geval is het de id van de beleidsdefinitie *Virtuele machines zonder beheerde schijven controleren*.
 - **Bereik**: een bereik bepaalt voor welke resources of groep resources de beleidstoewijzing wordt afgedwongen. Dit kan variëren van een abonnement tot resourcegroepen. Vergeet niet om &lt;scope&gt; te vervangen door de naam van uw resourcegroep.
 
-U bent nu klaar om niet-compatibele resources te identificeren om inzicht te krijgen in de nalevings status van uw omgeving.
+You're now ready to identify non-compliant resources to understand the compliance state of your environment.
 
 ## <a name="identify-non-compliant-resources"></a>Niet-compatibele resources identificeren
 
@@ -66,7 +66,7 @@ Gebruik de volgende informatie om te identificeren welke resources niet compatib
 Get-AzPolicyState -ResourceGroupName $rg.ResourceGroupName -PolicyAssignmentName 'audit-vm-manageddisks' -Filter 'IsCompliant eq false'
 ```
 
-Zie [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState)voor meer informatie over het ophalen van de beleids status.
+For more information about getting policy state, see [Get-AzPolicyState](/powershell/module/az.policyinsights/Get-AzPolicyState).
 
 De resultaten zien er ongeveer als volgt uit:
 
@@ -88,7 +88,7 @@ PolicyDefinitionCategory    : Compute
 ManagementGroupIds          : {managementGroupId}
 ```
 
-De resultaten komen overeen met wat u ziet in het tabblad **resource naleving** van een beleids toewijzing in de weer gave Azure Portal.
+The results match what you see in the **Resource compliance** tab of a policy assignment in the Azure portal view.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

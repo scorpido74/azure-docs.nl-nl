@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: integratie Azure Active Directory met IdeaScale | Microsoft Docs'
+title: 'Tutorial: Azure Active Directory integration with IdeaScale | Microsoft Docs'
 description: Ontdek hoe u eenmalige aanmelding configureert tussen Azure Active Directory en IdeaScale.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9307bbe58afc45468f222f5b510585d528de532a
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 81594e6a21372f2b4dacedbda638cc87bad966db
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158037"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227570"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Zelf studie: integratie Azure Active Directory met IdeaScale
+# <a name="tutorial-azure-active-directory-integration-with-ideascale"></a>Tutorial: Azure Active Directory integration with IdeaScale
 
 In deze zelfstudie leert u hoe u IdeaScale kunt integreren met Azure Active Directory (Azure AD).
 De integratie van IdeaScale met Azure AD biedt de volgende voordelen:
@@ -138,19 +138,19 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Id
 
 2. Ga naar **Community-instellingen**.
 
-    ![Community-instellingen](./media/ideascale-tutorial/ic790847.png "Community-instellingen")
+    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
 
 3. Ga naar **Beveiliging \> Instellingen voor eenmalige aanmelding**.
 
-    ![Instellingen voor één aanmelding](./media/ideascale-tutorial/ic790848.png "Instellingen voor één aanmelding")
+    ![Single Signon Settings](./media/ideascale-tutorial/ic790848.png "Single Signon Settings")
 
 4. Selecteer **SAML 2.0** als **Type eenmalige aanmelding**.
 
-    ![Type enkelvoudige aanmelding](./media/ideascale-tutorial/ic790849.png "Type enkelvoudige aanmelding")
+    ![Single Signon Type](./media/ideascale-tutorial/ic790849.png "Single Signon Type")
 
 5. Voer in het dialoogvenster **Instellingen voor eenmalige aanmelding** de volgende stappen uit:
 
-    ![Instellingen voor één aanmelding](./media/ideascale-tutorial/ic790850.png "Instellingen voor één aanmelding")
+    ![Single Signon Settings](./media/ideascale-tutorial/ic790850.png "Single Signon Settings")
 
     a. Plak in het tekstvak **SAML idP entiteits-id** de waarde van de **Azure AD-id** die u hebt gekopieerd uit de Azure-portal.
 
@@ -178,7 +178,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. Typ in het veld **gebruikers naam** **brittasimon\@yourcompanydomain. extension**  
+    b. In the **User name** field type **brittasimon\@yourcompanydomain.extension**  
     Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
@@ -221,17 +221,17 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij IdeaScale, moet
 
 2. Ga naar **Community-instellingen**.
 
-    ![Community-instellingen](./media/ideascale-tutorial/ic790847.png "Community-instellingen")
+    ![Community Settings](./media/ideascale-tutorial/ic790847.png "Community Settings")
 
 3. Ga naar **Basisinstellingen \> Leden beheren**.
 
 4. Klik op **Lid toevoegen**.
 
-    ![Leden beheer](./media/ideascale-tutorial/ic790852.png "Leden beheer")
+    ![Member Management](./media/ideascale-tutorial/ic790852.png "Member Management")
 
 5. Voer in het gedeelte Nieuw lid toevoegen de volgende stappen uit:
 
-    ![Nieuw lid toevoegen](./media/ideascale-tutorial/ic790853.png "Nieuw lid toevoegen")
+    ![Add New Member](./media/ideascale-tutorial/ic790853.png "Add New Member")
 
     a. Typ in het tekstvak **E-mailadressen** het e-mailadres van een geldig Azure AD-account dat u wilt inrichten.
 
@@ -241,7 +241,7 @@ Als u wilt dat gebruikers van Azure AD zich kunnen aanmelden bij IdeaScale, moet
     > De houder van het Azure Active Directory-account ontvangt een e-mail met een koppeling om het account te bevestigen voordat het actief wordt.
 
 > [!NOTE]
-> U kunt de AAD-gebruikersaccounts ook inrichten met behulp van andere hulpprogramma's of API's van IdeaScale voor het maken van gebruikersaccounts.
+> You can use any other IdeaScale user account creation tools or APIs provided by IdeaScale to provision Azure AD user accounts.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 
@@ -255,5 +255,5 @@ Wanneer u in het toegangsvenster op de tegel IdeaScale klikt, wordt u automatisc
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [What is Conditional Access in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

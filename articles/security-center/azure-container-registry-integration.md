@@ -1,6 +1,6 @@
 ---
-title: Azure Security Center en Azure Container Registry
-description: Meer informatie over de integratie van Azure Security Center met Azure Container Registry
+title: Azure Security Center and Azure Container Registry
+description: Learn about Azure Security Center's integration with Azure Container Registry
 services: security-center
 documentationcenter: na
 author: memildin
@@ -12,37 +12,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/19/2019
 ms.author: memildin
-ms.openlocfilehash: f2a07774fa23173738bc33907dd00017ca260fd9
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 0ca7bfb276f49da720264305a92d31e81857cfd5
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196385"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229323"
 ---
-# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integratie met Security Center (preview-versie)
+# <a name="azure-container-registry-integration-with-security-center-preview"></a>Azure Container Registry integration with Security Center (Preview)
 
-Azure Container Registry (ACR) is een beheerde, persoonlijke docker-register service waarmee uw container installatie kopieën voor Azure-implementaties in een centraal REGI ster worden opgeslagen en beheerd. Het is gebaseerd op de open-source docker Registry 2,0.
+Azure Container Registry (ACR) is a managed, private Docker registry service that stores and manages your container images for Azure deployments in a central registry. It's based on the open-source Docker Registry 2.0.
 
-Gebruikers Azure Security Center van de Standard-laag van het REGI ster en de installatie kopieën kunnen de optionele versie van de container registers inschakelen voor een diepere zicht baarheid in uw register-en afbeeldings problemen. Ga voor meer informatie naar het overzicht van [prijzen](security-center-pricing.md). Als de bundel is ingeschakeld, worden afbeeldingen in uw ACR-service automatisch door Security Center gescand wanneer een installatie kopie naar het REGI ster wordt gepusht. Wanneer de scan is voltooid (doorgaans na ongeveer 10 minuten), zijn er conclusies beschikbaar in Security Center in aanbevelingen als volgt:
+For deeper visibility into your registry and images' vulnerabilities, users of Azure Security Center's standard tier can enable the optional Container Registries bundle. Ga voor meer informatie naar het overzicht van [prijzen](security-center-pricing.md). With the bundle enabled, Security Center automatically scans images in your registry whenever an image is pushed to the registry.
 
-[![voor beeld Azure Security Center aanbeveling over beveiligings problemen gedetecteerd in een gehoste installatie kopie van een Azure Container Registry (ACR)](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
+> [!NOTE]
+> Security Center's first scan of a registry will only occur after the Container Registries bundle is enabled and an image is pushed to the registry.
 
-## <a name="benefits-of-integration"></a>Voor delen van integratie
+When the scan completes (typically after approximately 10 minutes), findings are available in Security Center recommendations like this:
 
-Security Center identificeert ACR-registers in uw abonnement en biedt probleemloos het volgende:
+[![Sample Azure Security Center recommendation about vulnerabilities discovered in an Azure Container Registry (ACR) hosted image](media/azure-container-registry-integration/container-security-acr-page.png)](media/azure-container-registry-integration/container-security-acr-page.png#lightbox)
 
-* **Azure-systeem eigen beveiligings problemen scannen** voor alle pushed Linux-installatie kopieën. Security Center scant de installatie kopie met behulp van een scanner van de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys. Deze systeem eigen oplossing is standaard naadloos geïntegreerd.
+## <a name="benefits-of-integration"></a>Benefits of integration
 
-* **Beveiligings aanbevelingen** voor Linux-installatie kopieën met bekende beveiligings problemen. Security Center bevat details van elk gemeld beveiligings probleem en een Ernst classificatie. Daarnaast biedt het hulp bij het herstellen van de specifieke beveiligings problemen die zijn gevonden op elke installatie kopie die naar het REGI ster wordt gepusht.
+Security Center identifies ACR registries in your subscription and seamlessly provides:
 
-![Overzicht op hoog niveau Azure Security Center en Azure Container Registry (ACR)](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
+* **Azure-native vulnerability scanning** for all pushed Linux images. Security Center scans the image using a scanner from the industry-leading vulnerability scanning vendor, Qualys. This native solution is seamlessly integrated by default.
+
+* **Security recommendations** for Linux images with known vulnerabilities. Security Center provides details of each reported vulnerability and a  severity classification. Additionally, it gives guidance for how to  remediate the specific vulnerabilities found on each image pushed to registry.
+
+![Azure Security Center and Azure Container Registry (ACR) high-level overview](./media/azure-container-registry-integration/aks-acr-integration-detailed.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over de beveiligings functies van de container van Security Center:
+To learn more about Security Center's container security features, see:
 
-* [Azure Security Center en container beveiliging](container-security.md)
+* [Azure Security Center and container security](container-security.md)
 
-* [Integratie met de Azure Kubernetes-service](azure-kubernetes-service-integration.md)
+* [Integration with Azure Kubernetes Service](azure-kubernetes-service-integration.md)
 
-* [Beveiliging van virtuele machines](security-center-virtual-machine-protection.md) -Hiermee worden de aanbevelingen van Security Center beschreven
+* [Virtual Machine protection](security-center-virtual-machine-protection.md) - Describes Security Center's recommendations
