@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a144bec0a610a5a47e8a9bf3ff6a5de05b239ed
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: fd7cfe93aa39982836944230f860c603c7117ceb
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159971"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-humanity"></a>Zelf studie: integratie Azure Active Directory met mensheid
 
@@ -54,7 +54,7 @@ Voor het configureren van de integratie van Humanity met Azure AD moet u Humanit
 
 **Voer de volgende stappen uit als u Humanity wilt toevoegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -108,10 +108,10 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://company.humanity.com/includes/saml/`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://company.humanity.com/app/`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://company.humanity.com/app/`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [Klantondersteuningsteam van Humanity](https://www.humanity.com/support/) (Engelstalig) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [Klantondersteuningsteam van Humanity](https://www.humanity.com/support/) (Engelstalig) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Base64)** te downloaden uit de opgegeven opties overeenkomstig uw behoeften, en slaat u dit op uw computer op.
 
@@ -133,7 +133,7 @@ Voer de volgende stappen uit als u Azure AD-eenmalige aanmelding wilt configurer
 
 2. Klik in het menu bovenaan op **Admin**.
 
-    ![Beheerder](./media/shiftplanning-tutorial/iC786619.png "Beheerder")
+    ![Beheerder](./media/shiftplanning-tutorial/iC786619.png "beheerder")
 3. Klik onder **Integration** op **Single Sign-On**.
 
     ![Eenmalige aanmelding](./media/shiftplanning-tutorial/iC786620.png "Eenmalige aanmelding")
@@ -177,7 +177,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -215,7 +215,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Humanity, moeten ze
 
 2. Klik op **Admin**.
 
-    ![Beheerder](./media/shiftplanning-tutorial/iC786619.png "Beheerder")
+    ![Beheerder](./media/shiftplanning-tutorial/iC786619.png "beheerder")
 
 3. Klik op **Staff**.
 
@@ -229,12 +229,12 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Humanity, moeten ze
 
     ![Werk nemers opslaan](./media/shiftplanning-tutorial/iC786625.png "Werk nemers opslaan")
 
-    a. Typ voornaam, achternaam en e-mailadres in de desbetreffende tekstvakken **First Name**, **Last Name** en **Email** van een geldig AAD-account dat u wilt inrichten.
+    a. Typ de **voor naam**, **Achternaam**en het **e-mail adres** van een geldige Azure ad-account die u wilt inrichten in de bijbehorende tekst vakken.
 
     b. Klik op **Save Employees**.
 
 > [!NOTE]
-> U kunt andere hulpmiddelen voor het maken van Humanity-gebruikersaccounts of door Humanity geleverde API's gebruiken om AAD-gebruikersaccounts in te richten.
+> U kunt alle andere hulpprogram ma's voor het maken van mensheid-gebruikers accounts of Api's die worden geleverd door mensheid, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen
 

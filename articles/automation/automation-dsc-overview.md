@@ -10,16 +10,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b0b5e02009ddbb72bb062d341e7d233acfb0ceb3
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 5ed18f8a8bbd8bd323dec54ca3f700c7ce168dde
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72429403"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74231632"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Overzicht van Azure Automation status configuratie
 
-Azure Automation status configuratie is een Azure-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations)kunt schrijven, beheren en compileren, [DSC-resources](/powershell/scripting/dsc/resources/resources)kunt importeren en configuraties aan doel knooppunten kunt toewijzen. Cloud.
+Azure Automation status configuratie is een Azure-service waarmee u Power shell desired state Configuration (DSC)- [configuraties](/powershell/scripting/dsc/configurations/configurations)kunt schrijven, beheren en compileren, [DSC-resources](/powershell/scripting/dsc/resources/resources)kunt importeren en configuraties kunt toewijzen aan doel knooppunten, allemaal in de Cloud.
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Waarom Azure Automation status configuratie gebruiken?
 
@@ -51,7 +51,7 @@ Voor knoop punten waarop Windows worden uitgevoerd, worden de volgende versies o
 
 - Windows Server 2019
 - Windows Server 2016
-- Windows Server-2012R2
+- Windows Server 2012R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1
 - Windows 10
@@ -66,7 +66,7 @@ De DSC Linux-extensie ondersteunt alle Linux-distributies die worden vermeld ond
 
 ### <a name="dsc-requirements"></a>DSC-vereisten
 
-Voor alle Windows-knoop punten die worden uitgevoerd in azure, wordt [WMF 5,1](https://docs.microsoft.com/powershell/wmf/setup/install-configure) tijdens het voorbereiden geïnstalleerd.  Voor knoop punten met Windows Server 2012 en Windows 7 [wordt WinRM ingeschakeld](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+Voor alle Windows-knoop punten die worden uitgevoerd in azure, wordt [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) tijdens het voorbereiden geïnstalleerd.  Voor knoop punten met Windows Server 2012 en Windows 7 [wordt WinRM ingeschakeld](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency).
 
 Voor alle Linux-knoop punten die worden uitgevoerd in azure, wordt [Power shell DSC voor Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) geïnstalleerd tijdens de onboarding.
 
@@ -77,10 +77,10 @@ Als uw knoop punten zich in een particulier netwerk bevinden, zijn de volgende p
 * Poort: alleen TCP 443 is vereist voor uitgaande internet toegang.
 * Globale URL: *. azure-automation.net
 * Globale URL van US Gov-Virginia: *. azure-automation.us
-* Agent service: https://@no__t -0workspaceId\>.agentsvc.azure-automation.net
+* Agent service: https://\<workspaceId\>. agentsvc.azure-automation.net
 
 Dit biedt netwerk connectiviteit voor het beheerde knoop punt om te communiceren met Azure Automation.
-Als u DSC-resources gebruikt die communiceren tussen knoop punten, zoals de [WaitFor *-resources](https://docs.microsoft.com/powershell/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan.
+Als u DSC-resources gebruikt die communiceren tussen knoop punten, zoals de [WaitFor *-resources](https://docs.microsoft.com/powershell/scripting/dsc/reference/resources/windows/waitForAllResource), moet u ook verkeer tussen knoop punten toestaan.
 Raadpleeg de documentatie voor elke DSC-resource voor meer informatie over deze netwerk vereisten.
 
 #### <a name="proxy-support"></a>Proxy ondersteuning
@@ -89,7 +89,7 @@ Proxy ondersteuning voor de DSC-agent is beschikbaar in Windows versie 1809 en h
 Als u deze optie wilt configureren, stelt u de waarde voor **ProxyURL** en **ProxyCredential** in het- [configuratie script](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) dat wordt gebruikt voor het registreren van knoop punten.
 Proxy is niet beschikbaar in DSC voor eerdere versies van Windows.
 
-Voor Linux-knoop punten ondersteunt de DSC-agent proxy en wordt de http_proxy-variabele gebruikt om de URL te bepalen.
+Voor Linux-knoop punten ondersteunt de DSC-agent proxy en wordt de http_proxy variabele gebruikt om de URL te bepalen.
 
 #### <a name="azure-state-configuration-network-ranges-and-namespace"></a>Netwerkbereiken en naam ruimte van Azure status configuratie
 
@@ -99,18 +99,18 @@ Als u een Automation-account hebt dat is gedefinieerd voor een specifieke regio,
 
 | **Regio** | **DNS-record** |
 | --- | --- |
-| VS - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
-| VS - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
-| VS - oost   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
-| VS - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
-| Canada-Midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
-| Europa - west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
+| US - west-centraal | wcus-jobruntimedata-prod-su1.azure-automation.net</br>wcus-agentservice-prod-1.azure-automation.net |
+| US - zuid-centraal |scus-jobruntimedata-prod-su1.azure-automation.net</br>scus-agentservice-prod-1.azure-automation.net |
+| US - oost   | eus-jobruntimedata-prod-su1.azure-automation.net</br>eus-agentservice-prod-1.azure-automation.net |
+| US - oost 2 |eus2-jobruntimedata-prod-su1.azure-automation.net</br>eus2-agentservice-prod-1.azure-automation.net |
+| Canada - midden |cc-jobruntimedata-prod-su1.azure-automation.net</br>cc-agentservice-prod-1.azure-automation.net |
+| Europa -west |we-jobruntimedata-prod-su1.azure-automation.net</br>we-agentservice-prod-1.azure-automation.net |
 | Europa - noord |ne-jobruntimedata-prod-su1.azure-automation.net</br>ne-agentservice-prod-1.azure-automation.net |
 | Azië - zuidoost |sea-jobruntimedata-prod-su1.azure-automation.net</br>sea-agentservice-prod-1.azure-automation.net|
 | India - centraal |cid-jobruntimedata-prod-su1.azure-automation.net</br>cid-agentservice-prod-1.azure-automation.net |
-| Japan - Oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
+| Japan - oost |jpe-jobruntimedata-prod-su1.azure-automation.net</br>jpe-agentservice-prod-1.azure-automation.net |
 | Australië - zuidoost |ase-jobruntimedata-prod-su1.azure-automation.net</br>ase-agentservice-prod-1.azure-automation.net |
-| VK - zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
+| Verenigd Koninkrijk Zuid | uks-jobruntimedata-prod-su1.azure-automation.net</br>uks-agentservice-prod-1.azure-automation.net |
 | US Gov - Virginia | usge-jobruntimedata-prod-su1.azure-automation.us<br>usge-agentservice-prod-1.azure-automation.us |
 
 Down load het [Azure Data Center IP-adres](https://www.microsoft.com/download/details.aspx?id=41653) XML-bestand in het micro soft Download centrum voor een lijst met IP-adressen van regio's in plaats van regio namen.

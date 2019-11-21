@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: b22b89334fbb55e594ac2b27b486cf5d0bd26f03
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
-ms.translationtype: HT
+ms.openlocfilehash: 57a60a65dee995695224aa1b451e848ea8768ab1
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196111"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215394"
 ---
 # <a name="azure-resource-manager-support-with-azure-load-balancer"></a>Ondersteuning voor Azure Resource Manager met Azure Load Balancer
 

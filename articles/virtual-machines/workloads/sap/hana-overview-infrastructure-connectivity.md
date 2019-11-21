@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4fa0fe072fe98d565ad9d6f947540b7e1b039732
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 36f0b78f563bb4dda76f192259541d1c2b1fa060
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101160"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224674"
 ---
 # <a name="sap-hana-large-instances-deployment"></a>Implementatie van SAP HANA (grote instanties) 
 
@@ -36,7 +36,7 @@ Micro soft vereist de volgende informatie voor de implementatie van HANA grote i
 - Voor elke Azure-implementatie regio:
     - Een/29 IP-adres bereik voor er-P2P-verbindingen waarmee virtuele Azure-netwerken worden verbonden met HANA grote instanties.
     - Een/24 CIDR-blok dat wordt gebruikt voor de IP-adres groep van de HANA-server voor grote instanties.
-    - Optioneel wanneer [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) wordt gebruikt om directe route ring van on-premises naar Hana grote instantie-eenheden of route ring tussen Hana grote instantie-eenheden in verschillende Azure-regio's in te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit specifieke bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
+    - Optioneel wanneer [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-global-reach) gebruikt om directe route ring van on-premises naar Hana grote instantie-eenheden of route ring tussen Hana grote instantie-eenheden in verschillende Azure-regio's in te scha kelen, moet u een ander/29 IP-adres bereik reserveren. Dit specifieke bereik mag niet overlappen met een van de andere IP-adresbereiken die u eerder hebt gedefinieerd.
 - De IP-adresbereiken die worden gebruikt in het adres ruimte kenmerk van het virtuele netwerk van elk virtueel netwerk van Azure dat verbinding maakt met de HANA grote instanties.
 - Gegevens voor elk HANA-systeem met grote instanties:
   - Gewenste hostnaam, idea liter met een Fully Qualified Domain Name.

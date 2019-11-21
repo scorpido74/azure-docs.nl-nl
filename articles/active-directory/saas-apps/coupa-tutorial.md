@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 031a88bb8a8832fbe7acb124436cce6aaeb02e21
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 709f3a5b66db660ade482660cd9b3930ff0b7141
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159310"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>Zelf studie: integratie Azure Active Directory met versnijda
 
@@ -54,7 +54,7 @@ Om de integratie van Coupa in Azure AD te configureren, moet u Coupa vanuit de g
 
 **Ga als volgt te werk om Coupa vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om eenmalige aanmelding van Azure AD te configurere
     | Productie | `https://sso-prd1.coupahost.com/sp/ACS.saml2`|
     | | |
 
-4. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -182,7 +182,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -224,7 +224,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Coupa, moeten ze wo
 
     ![Gebruikers](./media/coupa-tutorial/ic791908.png "Gebruikers")
 
-3. Klik op **Maken**.
+3. Klik op **Create**.
 
     ![Gebruikers maken](./media/coupa-tutorial/ic791909.png "Gebruikers maken")
 
@@ -234,14 +234,14 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Coupa, moeten ze wo
 
     a. Typ in de vakken **Login**, **First name**, **Last name**, **Single Sign-On ID** en **Email** kenmerken van een geldig Azure Active Directory-account dat u wilt inrichten.
 
-    b. Klik op **Maken**.
+    b. Klik op **Create**.
 
     >[!NOTE]
     >De houder van het Azure Active Directory-account ontvangt een e-mail met een koppeling om het account te bevestigen voordat het actief wordt.
     >
 
 >[!NOTE]
->U kunt andere hulpprogramma's of API's van Coupa gebruiken om AAD-gebruikersaccounts in te richten.
+>U kunt andere hulpprogram ma's voor het maken van gebruikers accounts of Api's die worden geleverd door verwerkings functies gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

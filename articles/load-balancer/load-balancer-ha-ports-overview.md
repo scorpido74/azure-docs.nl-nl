@@ -1,6 +1,6 @@
 ---
 title: Overzicht van poorten voor hoge beschikbaarheid in Azure
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Meer informatie over hoge beschikbaarheid poorten taakverdeling op een interne load balancer.
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: 350c6ae2e62a88477ce67132b56d9253166d13ec
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: c6529e2585a7fca2d160d093d303afa02e6f9379
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130434"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74215080"
 ---
 # <a name="high-availability-ports-overview"></a>Overzicht van poorten voor hoge beschikbaarheid
 
@@ -47,7 +47,7 @@ Voor NVA HA scenario's bieden HA-poorten aan de volgende voordelen:
 Het volgende diagram toont een virtueel netwerk hub en spoke-implementatie. Geforceerde tunneling in de knooppunten hun verkeer naar de virtuele hub-netwerk en via de NVA, voordat u de vertrouwde ruimte. De NVA's zich achter een interne Standard Load Balancer met de configuratie van een HA-poorten. Al het verkeer kan worden verwerkt en dienovereenkomstig doorgestuurd. Wanneer de configuratie wordt weer gegeven in het volgende diagram, biedt de taak verdelings regel voor HA-poorten daarnaast een stroom symmetrie voor binnenkomend en uitgaand verkeer.
 
 <a node="diagram"></a>
-![Diagram van hub en spoke virtueel netwerk, met Nva's geïmplementeerd in HA-modus](./media/load-balancer-ha-ports-overview/nvaha.png)
+![diagram van een hub-en-spoke-virtueel netwerk, waarbij Nva's is geïmplementeerd in de HA-modus](./media/load-balancer-ha-ports-overview/nvaha.png)
 
 >[!NOTE]
 > Als u met behulp van NVA's, controleert u of met hun leveranciers van het best gebruik HA-poorten en voor meer informatie over welke scenario's worden ondersteund.

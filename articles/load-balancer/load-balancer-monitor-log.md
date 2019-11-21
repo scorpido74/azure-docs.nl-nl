@@ -1,6 +1,6 @@
 ---
 title: Bewerkingen, gebeurtenissen en prestatie meter items bewaken voor open bare basis Load Balancer
-titlesuffix: Azure Load Balancer
+titleSuffix: Azure Load Balancer
 description: Meer informatie over het inschakelen van waarschuwings gebeurtenissen en het controleren van de status logboek registratie voor open bare basis Load Balancer
 services: load-balancer
 documentationcenter: na
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: df35168d0fab0b01ff11c4105a1fcc5b16e21f30
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 23a3a2629c6f2f89c4b8f6d5af57bcf3b6bb67dd
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350724"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74214914"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor logboeken voor open bare basis Load Balancer
 
@@ -38,7 +38,7 @@ U kunt verschillende typen logboeken in azure gebruiken om Basic load balancers 
 
 Activiteitenlogboekregistratie is automatisch ingeschakeld voor elke Resource Manager-resource. Schakel logboek registratie voor gebeurtenis-en status controle in om te beginnen met het verzamelen van de gegevens die beschikbaar zijn via deze logboeken. Gebruik de volgende stappen om logboek registratie in te scha kelen.
 
-Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
+Meld u aan bij de [Azure Portal](https://portal.azure.com). Als u nog geen load balancer hebt, [maakt u een Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) voordat u doorgaat.
 
 1. Klik in de portal op **resource groepen**.
 2. Selecteer **\<resource-group-name >** waarbij uw Load Balancer.
@@ -51,7 +51,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load bal
    * **Streamen naar een Event Hub**
    * **Verzenden naar Log Analytics**
 
-    ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslagaccount
+    ### <a name="archive-to-a-storage-account"></a>Archiveren naar een opslag account
     U hebt een opslag account nodig dat al is gemaakt voor dit proces.  Zie [een opslag account maken](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) voor meer informatie over het maken van een opslag account.
 
     1. Schakel het selectie vakje in naast **archiveren naar een opslag account**.
@@ -61,7 +61,7 @@ Meld u aan bij [Azure Portal](https://portal.azure.com). Als u nog geen load bal
     5. Selecteer OK.
 
     ### <a name="stream-to-an-event-hub"></a>Streamen naar een Event Hub
-    U hebt een Event Hub nodig dat voor dit proces al is gemaakt.  Als u een Event Hub wilt maken, raadpleegt u [Quickstart: Een Event Hub maken met behulp van Azure Portal @ no__t-0
+    U hebt een Event Hub nodig dat voor dit proces al is gemaakt.  Als u een Event Hub wilt maken, raadpleegt u [Quick Start: een event hub maken met behulp van Azure Portal](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)
 
     1. Schakel het selectie vakje **in naast streamen naar een event hub**
     2. Selecteer **configureren** om het deel venster **Event hub selecteren** te openen.
@@ -161,7 +161,7 @@ De JSON-uitvoer wordt weer gegeven in het veld eigenschappen de basis informatie
 U kunt met behulp van de volgende methoden controle logboek gegevens weer geven en analyseren:
 
 * **Azure-hulpprogram ma's:** Gegevens uit de audit logboeken ophalen via Azure PowerShell, de Azure-opdracht regel interface (CLI), de Azure-REST API of de Azure Portal. Stapsgewijze instructies voor elke methode worden beschreven in het artikel [controle bewerkingen met Resource Manager](../azure-resource-manager/resource-group-audit.md) .
-* **Power BI:** als u nog geen [Power BI](https:// .microsoft.com/pricing)-account hebt, kunt u het gratis uitproberen. Met het [Azure audit logs-inhouds pakket voor Power bi](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)kunt u uw gegevens analyseren met vooraf geconfigureerde Dash boards, of u kunt weer gaven aanpassen aan uw vereisten.
+* **Power BI:** Als u nog geen [Power bi](https:// .microsoft.com/pricing) account hebt, kunt u het gratis uitproberen. Met het [Azure audit logs-inhouds pakket voor Power bi](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)kunt u uw gegevens analyseren met vooraf geconfigureerde Dash boards, of u kunt weer gaven aanpassen aan uw vereisten.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>De status test en het gebeurtenis logboek weer geven en analyseren
 

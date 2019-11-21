@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 88c4b2065576bd5bdcb29a266bd564c60b0e537c
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
-ms.translationtype: MT
+ms.openlocfilehash: 450144d1e5a49aeb45633b05fc5ecdae986da297
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622710"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74220624"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -261,6 +261,7 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 - [Verificatie gegevens worden niet in de juiste indeling gegeven voor directe REST API-aanroepen](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
 - [Waarom worden niet al mijn opslag plaatsen of Tags Azure Portal vermeld?](#why-does-the-azure-portal-not-list-all-my-repositories-or-tags)
 - [Waarom kan de Azure Portal geen opslag plaatsen of Tags ophalen?](#why-does-the-azure-portal-fail-to-fetch-repositories-or-tags)
+- [Waarom mislukt mijn pull-of push aanvraag met niet-toegestane bewerking?](#why-does-my-pull-or-push-request-fail-with-disallowed-operation)
 - [Hoe kan ik u http-traceringen verzamelen in Windows?](#how-do-i-collect-http-traces-on-windows)
 
 ### <a name="check-health-with-az-acr-check-health"></a>Status controleren met `az acr check-health`
@@ -421,6 +422,13 @@ De browser kan de aanvraag voor het ophalen van opslag plaatsen of tags mogelijk
 * DNS-fouten
 
 Neem contact op met uw netwerk beheerder of Controleer de netwerk configuratie en-verbinding. Probeer `az acr check-health -n yourRegistry` uit te voeren met uw Azure CLI om te controleren of uw omgeving verbinding kan maken met de Container Registry. Daarnaast kunt u ook een incognito of een persoonlijke sessie in uw browser proberen om eventuele verouderde browser cache of cookies te voor komen.
+
+### <a name="why-does-my-pull-or-push-request-fail-with-disallowed-operation"></a>Waarom mislukt mijn pull-of push aanvraag met niet-toegestane bewerking?
+
+Hier volgen enkele senarios waar bewerkingen mogelijk niet zijn toegestaan:
+* Klassieke registers worden niet meer ondersteund. Voer een upgrade uit naar een ondersteunde [sku's](https://aka.ms/acr/skus) met [AZ ACR update](https://docs.microsoft.com/cli/azure/acr?view=azure-cli-latest#az-acr-update) of Azure Portal.
+* De installatie kopie of opslag plaats is mogelijk vergrendeld zodat deze niet kan worden verwijderd of bijgewerkt. U kunt de opdracht [AZ ACR show repository](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock) gebruiken om de huidige kenmerken weer te geven.
+* Sommige bewerkingen zijn niet toegestaan als de installatie kopie zich in quarantaine bevindt. Meer informatie over [quarantaine](https://github.com/Azure/acr/tree/master/docs/preview/quarantine).
 
 ### <a name="how-do-i-collect-http-traces-on-windows"></a>Hoe kan ik u http-traceringen verzamelen in Windows?
 

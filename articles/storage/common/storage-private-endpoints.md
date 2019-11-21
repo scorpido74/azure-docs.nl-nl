@@ -9,12 +9,12 @@ ms.date: 09/25/2019
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: fb1f8a1d1f8e1ebbaf3e0e9fe96e3c1bf0ba9ba6
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 06b96bf548be45952e1ff21f0433a1607ab36501
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74078758"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227888"
 ---
 # <a name="using-private-endpoints-for-azure-storage-preview"></a>Privé-eind punten gebruiken voor Azure Storage (preview-versie)
 
@@ -37,7 +37,7 @@ Wanneer u een persoonlijk eind punt voor een opslag service in uw VNet maakt, wo
 Eigen aren van opslag accounts kunnen toestemmings aanvragen en de persoonlijke eind punten beheren via het tabblad*privé-eind punten*voor het opslag account in de [Azure Portal](https://portal.azure.com).
 
 > [!TIP]
-> Als u de toegang tot uw opslag account wilt beperken via het persoonlijke eind punt, configureert u de opslag firewall zodanig dat alle toegang via het open bare eind punt wordt geweigerd.
+> Als u de toegang tot uw opslag account wilt beperken via het persoonlijke eind punt, configureert u de firewall voor opslag om toegang via het open bare eind punt te weigeren of te beheren.
 
 U kunt uw opslag account beveiligen, zodat alleen verbindingen van uw VNet worden geaccepteerd door [de opslag firewall te configureren om de](storage-network-security.md#change-the-default-network-access-rule) toegang tot het open bare eind punt standaard te weigeren. U hebt geen firewall regel nodig om verkeer van een VNet met een persoonlijk eind punt toe te staan, omdat de opslag firewall alleen de toegang via het open bare eind punt beheert. In plaats daarvan wordt gebruikgemaakt van de toestemming stroom voor het verlenen van toegang tot de opslag service aan persoonlijke eind punten.
 
@@ -50,7 +50,7 @@ Wanneer u het persoonlijke eind punt maakt, moet u het opslag account en de opsl
 
 Voor lees Beschik baarheid voor een [geografisch redundant opslag account met lees toegang](storage-redundancy-grs.md#read-access-geo-redundant-storage)hebt u afzonderlijke persoonlijke eind punten nodig voor zowel de primaire als de secundaire instantie van de service. U hoeft geen persoonlijk eind punt te maken voor het secundaire exemplaar voor **failover**. Het persoonlijke eind punt maakt na een failover automatisch verbinding met het nieuwe primaire exemplaar.
 
-#### <a name="resources"></a>Resources
+#### <a name="resources"></a>Bronnen
 
 Raadpleeg de volgende artikelen voor meer gedetailleerde informatie over het maken van een persoonlijk eind punt voor uw opslag account:
 
@@ -59,11 +59,18 @@ Raadpleeg de volgende artikelen voor meer gedetailleerde informatie over het mak
 - [Een persoonlijk eind punt maken met behulp van Azure CLI](../../private-link/create-private-endpoint-cli.md)
 - [Een persoonlijk eind punt maken met Azure PowerShell](../../private-link/create-private-endpoint-powershell.md)
 
-### <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
+### <a name="connecting-to-private-endpoints"></a>Verbinding maken met privé-eind punten
 
-Clients in een VNet moeten hetzelfde connection string voor het opslag account gebruiken, zelfs wanneer ze een persoonlijk eind punt gebruiken.
+Clients op een VNet met behulp van het privé-eind punt moeten hetzelfde connection string gebruiken voor het opslag account, wanneer clients verbinding maken met het open bare eind punt. We vertrouwen op DNS-omzetting om de verbindingen van het VNet naar het opslag account via een persoonlijke koppeling automatisch te routeren.
 
-Wanneer u een persoonlijk eind punt maakt, wordt de DNS CNAME-resource record voor dat opslag eindpunt bijgewerkt naar een alias in een subdomein met het voor voegsel '*privatelink*'. Standaard maken we ook een [privé-DNS-zone](../../dns/private-dns-overview.md) die is gekoppeld aan het VNet. Deze privé-DNS-zone komt overeen met het subdomein met het voor voegsel '*privatelink*' en bevat de DNS A-bron records voor de privé-eind punten.
+> [!IMPORTANT]
+> Gebruik hetzelfde connection string om verbinding te maken met het opslag account met behulp van privé-eind punten, zoals u anders zou gebruiken. Maak geen verbinding met het opslag account met behulp van de subdomein-URL '*privatelink*'.
+
+Er wordt standaard een [privé-DNS-zone](../../dns/private-dns-overview.md) gekoppeld aan het VNet met de vereiste updates voor de privé-eind punten. Als u echter uw eigen DNS-server gebruikt, moet u mogelijk aanvullende wijzigingen aanbrengen in uw DNS-configuratie. In de volgende sectie over [DNS-wijzigingen](#dns-changes-for-private-endpoints) worden de vereiste updates voor persoonlijke eind punten beschreven.
+
+## <a name="dns-changes-for-private-endpoints"></a>DNS-wijzigingen voor privé-eind punten
+
+De DNS CNAME-bron record voor een opslag account met een persoonlijk eind punt wordt bijgewerkt naar een alias in een subdomein met het voor voegsel '*privatelink*'. Standaard maken we ook een [privé-DNS-zone](../../dns/private-dns-overview.md) die is gekoppeld aan het VNet dat overeenkomt met het subdomein met het voor voegsel '*privatelink*' en bevat de DNS a-bron records voor de persoonlijke eind punten.
 
 Wanneer u de URL van het opslag eindpunt oplost van buiten het VNet met het persoonlijke eind punt, wordt dit omgezet in het open bare eind punt van de opslag service. Wanneer het is opgelost vanuit het VNet dat het persoonlijke eind punt host, wordt de URL van het opslag eindpunt omgezet naar het IP-adres van het privé-eind punt.
 
@@ -75,7 +82,7 @@ Voor het bovenstaande voor beeld is de DNS-bron records voor het opslag account 
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \> open bare eind punt van \<Storage-service                   |
 | \> open bare eind punt van \<Storage-service                   | A     | \<open bare IP-adres van opslag service\>                 |
 
-Zoals eerder vermeld, kunt u alle toegang via het open bare eind punt weigeren met de opslag firewall.
+Zoals eerder vermeld, kunt u de toegang tot clients buiten het VNet via het open bare eind punt met behulp van de opslag firewall weigeren of beheren.
 
 De DNS-bron records voor StorageAccountA, wanneer deze zijn opgelost door een client in de VNet die als host fungeert voor het persoonlijke eind punt, zijn:
 
@@ -84,13 +91,12 @@ De DNS-bron records voor StorageAccountA, wanneer deze zijn opgelost door een cl
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
 
-Met deze aanpak is toegang tot het opslag account mogelijk **via hetzelfde Connection String** van het VNet dat als host fungeert voor de privé-eind punten, evenals clients buiten het vnet. U kunt de opslag firewall gebruiken om de toegang tot alle clients buiten het VNet te weigeren.
+Deze aanpak maakt het mogelijk toegang tot het opslag account te krijgen **met behulp van dezelfde Connection String** voor clients op het VNet dat als host fungeert voor de privé-eind punten, evenals clients buiten het vnet.
 
-> [!IMPORTANT]
-> Gebruik hetzelfde connection string om verbinding te maken met het opslag account via privé-eind punten, zoals u anders zou gebruiken. Maak geen verbinding met het opslag account met behulp van de subdomein-URL '*privatelink*'.
+Als u een aangepaste DNS-server gebruikt in uw netwerk, moeten clients de FQDN-naam voor het eind punt van het opslag account kunnen omzetten naar het IP-adres van het privé-eind punt. Hiervoor moet u uw DNS-server zo configureren dat het subdomein van uw privé-koppeling wordt overgedragen aan de privé-DNS-zone voor het VNet, of dat u de A-records voor '*StorageAccountA.privatelink.blob.core.Windows.net*' configureert met het IP-adres van het privé-eind punt. 
 
 > [!TIP]
-> Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u DNS-bron records configureren voor privé-eind punten in een DNS-zone die overeenkomt met het subdomein ' privatelink ' van de opslag service.
+> Wanneer u een aangepaste of lokale DNS-server gebruikt, moet u de DNS-server zo configureren dat de naam van het opslag account in het subdomein ' privatelink ' wordt omgezet in het IP-adres van het privé-eind punt. U kunt dit doen door het subdomein ' privatelink ' te delegeren aan de privé-DNS-zone van het VNet of door de DNS-zone op de DNS-server te configureren en de DNS A-records toe te voegen.
 
 De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 
@@ -102,6 +108,13 @@ De aanbevolen DNS-zone namen voor privé-eind punten voor opslag Services zijn:
 | Queue-service          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |
 | Statische websites        | `privatelink.web.core.windows.net`   |
+
+#### <a name="resources"></a>Bronnen
+
+Raadpleeg de volgende artikelen voor meer informatie over het configureren van uw eigen DNS-server voor de ondersteuning van persoonlijke eind punten:
+
+- [Naamomzetting voor resources in virtuele Azure-netwerken](/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [DNS-configuratie voor privé-eind punten](/private-link/private-endpoint-overview#dns-configuration)
 
 ## <a name="pricing"></a>Prijzen
 

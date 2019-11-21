@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 0e11949804e0c3de52db315424f83905516b4da8
-ms.sourcegitcommit: 1752581945226a748b3c7141bffeb1c0616ad720
+ms.openlocfilehash: d4269480887dba994559271de7e68b2ba2b460b6
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/14/2019
-ms.locfileid: "70996605"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227814"
 ---
 # <a name="troubleshoot-azure-files-performance-issues"></a>Problemen met Azure Files prestaties oplossen
 
@@ -20,13 +20,13 @@ In dit artikel worden enkele veelvoorkomende problemen met betrekking tot Azure-
 
 ## <a name="high-latency-low-throughput-and-general-performance-issues"></a>Problemen met hoge latentie, lage door Voer en algemene prestaties
 
-### <a name="cause-1-share-experiencing-throttling"></a>Oorzaak 1: Delen die de beperking ondervindt
+### <a name="cause-1-share-experiencing-throttling"></a>Oorzaak 1: delen die de beperking ondervindt
 
 Het standaard quotum voor een Premium-share is 100 GiB. Dit biedt 100 Baseline IOPS (met een kans om Maxi maal 300 voor een uur te burstiseren). Zie de sectie [ingerichte shares](storage-files-planning.md#provisioned-shares) in de plannings handleiding voor meer informatie over het inrichten en de relatie met IOPS.
 
 Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de metrische gegevens van Azure in de portal.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Selecteer **alle services** en zoek vervolgens naar **metrische gegevens**.
 
@@ -46,7 +46,7 @@ Als u wilt controleren of uw share wordt beperkt, kunt u gebruikmaken van de met
 
 - Verhoog de ingerichte capaciteit door een hoger quotum op uw share op te geven.
 
-### <a name="cause-2-metadatanamespace-heavy-workload"></a>Oorzaak 2: Meta gegevens/werk ruimte zware belasting
+### <a name="cause-2-metadatanamespace-heavy-workload"></a>Oorzaak 2: meta gegevens/naam ruimte zware werk belasting
 
 Als het meren deel van uw aanvragen meta gegevens georiënteerd is (zoals CreateFile/open file/closefile/queryinfo/querydirectory), is de latentie erger in vergelijking met lees-en schrijf bewerkingen.
 
@@ -57,8 +57,9 @@ Als u wilt controleren of de meeste van uw aanvragen meta gegevens zijn gecentre
 ### <a name="workaround"></a>Tijdelijke oplossing
 
 - Controleer of de toepassing kan worden aangepast om het aantal bewerkingen voor meta gegevens te verminderen.
+- Voeg een VHD toe op de bestands share en koppel VHD via SMB van de client om bestanden te kunnen uitvoeren op basis van de gegevens. Deze aanpak werkt voor één schrijver en meerdere lezers scenario's, en maakt het mogelijk om meta gegevens te localiseren, vergelijkbaar met een lokale direct gekoppelde opslag.
 
-### <a name="cause-3-single-threaded-application"></a>Oorzaak 3: Toepassing met één thread
+### <a name="cause-3-single-threaded-application"></a>Oorzaak 3: toepassing met één thread
 
 Als de toepassing die door de klant wordt gebruikt, één thread heeft, kan dit leiden tot een aanzienlijk lagere IOPS/door voer dan het maximum aantal dat is toegestaan op basis van uw ingerichte share grootte.
 
@@ -109,7 +110,7 @@ Geen ondersteuning voor Directory-leases.
 ### <a name="workaround"></a>Tijdelijke oplossing
 
 - Vermijd zo min mogelijk overmatige opening/afsluit ingang in dezelfde map binnen een korte periode.
-- Voor Linux vm's verhoogt u de time-out voor de cachemap door **actimeo\<= sec >** op te geven als een koppelings optie. Het is standaard één seconde, zodat u een grotere waarde als drie of vijf kunt helpen.
+- Voor Linux Vm's verhoogt u de time-out voor de cachemap door **actimeo =\<sec >** op te geven als een koppelings optie. Het is standaard één seconde, zodat u een grotere waarde als drie of vijf kunt helpen.
 - Voor virtuele Linux-machines moet u de kernel upgraden naar 4,20 of hoger.
 
 ## <a name="low-iops-on-centosrhel"></a>Lage IOPS op CentOS/RHEL

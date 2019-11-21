@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met UserVoice | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en UserVoice.
+title: 'Zelf studie: integratie Azure Active Directory met UserVoice | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en UserVoice.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,20 +15,20 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
-ms.openlocfilehash: c0c259d3d05232aa70016771e2a2bce7622730a0
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7a3302f1ca615fe5005be9ed1f09995ebf432eb7
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67087625"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232008"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Zelfstudie: Azure Active Directory-integratie met UserVoice
+# <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Zelf studie: integratie met UserVoice Azure Active Directory
 
-In deze zelfstudie leert u hoe u UserVoice integreren met Azure Active Directory (Azure AD).
-UserVoice integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u UserVoice integreert met Azure Active Directory (Azure AD).
+Het integreren van UserVoice met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot UserVoice heeft.
-* U kunt uw gebruikers worden automatisch aangemeld bij UserVoice (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot UserVoice.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij UserVoice (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -36,24 +36,24 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met UserVoice, moet u de volgende items:
+Als u Azure AD-integratie met UserVoice wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* UserVoice eenmalige aanmelding ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding bij UserVoice ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor UserVoice **SP** gestart door SSO
+* UserVoice ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-uservoice-from-the-gallery"></a>UserVoice uit de galerie toe te voegen
+## <a name="adding-uservoice-from-the-gallery"></a>UserVoice toevoegen vanuit de galerie
 
-Voor het configureren van de integratie van UserVoice in Azure AD, moet u UserVoice uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van UserVoice in azure AD wilt configureren, moet u UserVoice vanuit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen UserVoice uit de galerie, moet u de volgende stappen uitvoeren:**
+**Als u UserVoice wilt toevoegen vanuit de galerie, voert u de volgende stappen uit:**
 
-1. In de **[Azure-portal](https://portal.azure.com)** , klik in het navigatievenster aan de linkerkant op **Azure Active Directory** pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -65,31 +65,31 @@ Voor het configureren van de integratie van UserVoice in Azure AD, moet u UserVo
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **UserVoice**, selecteer **UserVoice** van resultaat deelvenster klik vervolgens op **toevoegen** om toe te voegen van de toepassing.
+4. Typ **UserVoice**in het zoekvak, selecteer **UserVoice** in resultaat paneel en klik vervolgens op knop **toevoegen** om de toepassing toe te voegen.
 
-     ![UserVoice in de lijst met resultaten](common/search-new-app.png)
+     ![UserVoice in de resultaten lijst](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met UserVoice op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in UserVoice tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD met UserVoice configureren en testen op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in UserVoice tot stand worden gebracht.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met UserVoice, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met UserVoice, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding UserVoice](#configure-uservoice-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[Eenmalige eenmalige aanmelding voor UserVoice configureren](#configure-uservoice-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[UserVoice-testgebruiker maken](#create-uservoice-test-user)**  : als u wilt een equivalent van Britta Simon in UserVoice die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een UserVoice-test gebruiker](#create-uservoice-test-user)** -om een equivalent van Julia Simon in UserVoice te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met UserVoice, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met UserVoice:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **UserVoice** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **UserVoice** -toepassings integratie de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -103,14 +103,14 @@ Voor het configureren van Azure AD eenmalige aanmelding met UserVoice, moet u de
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![UserVoice-domein en URL's, eenmalige aanmelding informatie](common/sp-identifier.png)
+    ![Informatie over eenmalige aanmelding voor het UserVoice-domein en Url's](common/sp-identifier.png)
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<tenantname>.UserVoice.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<tenantname>.UserVoice.com`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<tenantname>.UserVoice.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [UserVoice-Client-ondersteuningsteam](https://www.uservoice.com/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [UserVoice-client ondersteunings team](https://www.uservoice.com/) om deze waarden op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 5. Klik in de sectie **SAML-handtekeningcertificaat** op de knop **Bewerken** om het dialoogvenster **SAML-handtekeningcertificaat** te openen.
 
@@ -120,7 +120,7 @@ Voor het configureren van Azure AD eenmalige aanmelding met UserVoice, moet u de
 
     ![Waarde van vingerafdruk kopiëren](common/copy-thumbprint.png)
 
-7. Op de **instellen van UserVoice** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+7. Kopieer op de sectie **UserVoice instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -130,29 +130,29 @@ Voor het configureren van Azure AD eenmalige aanmelding met UserVoice, moet u de
 
     c. Afmeldings-URL
 
-### <a name="configure-uservoice-single-sign-on"></a>UserVoice voor eenmalige aanmelding configureren
+### <a name="configure-uservoice-single-sign-on"></a>Eenmalige eenmalige aanmelding voor UserVoice configureren
 
-1. In een ander browservenster aanmelden bij uw UserVoice-site bedrijf als beheerder.
+1. Meld u in een ander webbrowser venster als beheerder aan bij uw UserVoice-bedrijfs site.
 
-2. Klik in de werkbalk bovenaan op **instellingen**, en selecteer vervolgens **webportal** in het menu.
+2. Klik in de werk balk bovenaan op **instellingen**en selecteer vervolgens **webportal** in het menu.
    
-    ![De sectie instellingen-App aan](./media/uservoice-tutorial/ic777519.png "instellingen")
+    ![De sectie instellingen aan de kant van de app](./media/uservoice-tutorial/ic777519.png "Instellingen")
 
-3. Op de **webportal** tabblad, in de **gebruikersverificatie** sectie, klikt u op **bewerken** openen de **gebruikersverificatie bewerken** dialoogvenster pagina.
+3. Klik op het tabblad **webportal** , in de sectie **gebruikers verificatie** , op **bewerken** om de dialoog venster **gebruikers verificatie bewerken** te openen.
    
-    ![Webportal tabblad](./media/uservoice-tutorial/ic777520.png "webportal")
+    ![Tabblad webportal](./media/uservoice-tutorial/ic777520.png "Webportal")
 
-4. Op de **gebruikersverificatie bewerken** dialoogvenster pagina, voert u de volgende stappen uit:
+4. Voer op de pagina dialoog venster **gebruikers verificatie bewerken** de volgende stappen uit:
    
-    ![Verificatie van de gebruiker bewerken](./media/uservoice-tutorial/ic777521.png "verificatie van de gebruiker bewerken")
+    ![Gebruikers verificatie bewerken](./media/uservoice-tutorial/ic777521.png "Gebruikers verificatie bewerken")
    
-    a. Klik op **Single Sign-On (SSO)** .
+    a. Klik op **eenmalige aanmelding (SSO)** .
  
-    b. Plak de **aanmeldings-URL** waarde die u hebt gekopieerd vanuit de Azure portal in de **extern aanmelden SSO** tekstvak.
+    b. Plak de waarde van de **aanmeldings-URL** , die u hebt gekopieerd van de Azure Portal naar het tekstvak **SSO Remote Sign-in** .
 
-    c. Plakken de **afmeldings-URL van** waarde die u hebt gekopieerd vanuit de Azure portal in de **SSO externe afmelding tekstvak**.
+    c. Plak de waarde van de **Afmeldings-URL** , die u hebt gekopieerd van de Azure Portal naar het **tekstvak SSO externe afmelding**.
  
-    d. Plak de **vingerafdruk** waarde die u hebt gekopieerd vanuit Azure portal in de **huidige certificaat SHA1-vingerafdruk** tekstvak.
+    d. Plak de waarde van de **vinger afdruk** die u hebt gekopieerd van Azure Portal naar het tekstvak **SHA1-vinger afdruk van het huidige certificaat** .
     
     e. Klik op **verificatie-instellingen opslaan**.
 
@@ -174,7 +174,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype brittasimon@yourcompanydomain.extension. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ brittasimon@yourcompanydomain.extensionin het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
@@ -182,17 +182,17 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan UserVoice.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan UserVoice.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **UserVoice**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **UserVoice**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **UserVoice**.
+2. Selecteer in de lijst toepassingen de optie **UserVoice**.
 
     ![De UserVoice-koppeling in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -206,46 +206,46 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-uservoice-test-user"></a>UserVoice-testgebruiker maken
+### <a name="create-uservoice-test-user"></a>UserVoice-test gebruiker maken
 
-Als u wilt dat Azure AD-gebruikers kunnen zich aanmelden met UserVoice, moeten ze worden ingericht in UserVoice. In het geval van UserVoice is inrichten een handmatige taak.
+Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij UserVoice, moeten ze worden ingericht in UserVoice. In het geval van UserVoice is inrichting een hand matige taak.
 
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Voer de volgende stappen uit als u een gebruikersaccount wilt inrichten:
 
-1. Aanmelden bij uw **UserVoice** tenant.
+1. Meld u aan bij uw **UserVoice** -Tenant.
 
-2. Ga naar **instellingen**.
+2. Ga naar **Settings**.
    
-    ![Settings](./media/uservoice-tutorial/ic777811.png "Settings")
+    ![Instellingen](./media/uservoice-tutorial/ic777811.png "Instellingen")
 
-3. Klik op **algemene**.
+3. Klik op **Algemeen**.
 
-4. Klik op **Agents en machtigingen**.
+4. Klik op **agents en machtigingen**.
    
     ![Agents en machtigingen](./media/uservoice-tutorial/ic777812.png "Agents en machtigingen")
 
 5. Klik op **beheerders toevoegen**.
    
-    ![Beheerders toevoegen](./media/uservoice-tutorial/ic777813.png "beheerders toevoegen")
+    ![Beheerders toevoegen](./media/uservoice-tutorial/ic777813.png "Beheerders toevoegen")
 
-6. Op de **uitnodigen beheerders** dialoogvenster, voer de volgende stappen uit:
+6. Voer de volgende stappen uit in het dialoog venster **beheerders uitnodigen** :
    
-    ![Beheerders uitnodigen](./media/uservoice-tutorial/ic777814.png "beheerders uitnodigen")
+    ![Beheerders uitnodigen](./media/uservoice-tutorial/ic777814.png "Beheerders uitnodigen")
    
-    a. Typ het e-mailadres van het account dat u wilt inrichten, en klik vervolgens op in het tekstvak e-mailberichten **toevoegen**.
+    a. Typ in het tekstvak E-mails het e-mail adres van het account dat u wilt inrichten en klik vervolgens op **toevoegen**.
    
     b. Klik op **Uitnodigen**.
 
 > [!NOTE]
-> U kunt alle andere UserVoice gebruiker-account maken van hulpprogramma's of API's geleverd door UserVoice aan inrichten AAD-gebruikersaccounts.
+> U kunt alle andere hulpprogram ma's voor het maken van gebruikers accounts of Api's van UserVoice gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de UserVoice-tegel in het toegangsvenster, moet u worden automatisch aangemeld bij de UserVoice waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de UserVoice-tegel in het toegangs venster klikt, moet u automatisch worden aangemeld bij de UserVoice waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

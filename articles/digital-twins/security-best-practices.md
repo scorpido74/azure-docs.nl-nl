@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 09/30/2019
-ms.openlocfilehash: 9f3f98863f9a7cd0e6328ddc75b1154ee933fe0b
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.date: 11/19/2019
+ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009240"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74229042"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Best practices voor Azure Digital Apparaatdubbels-beveiliging
 
@@ -38,8 +38,8 @@ Enkele belang rijke procedures voor het veilig beveiligen van uw IoT-apparaten z
 > * Beperk de rol van elk apparaat, elke sensor en persoon binnen uw IoT-ruimte. Als er is geknoeid, wordt het effect geminimaliseerd.
 > * Overweeg het mogelijke gebruik van IP-adres filtering en poort beperking voor apparaten.
 > * Beperk I/O en bandbreedte van apparaten om de prestaties te verbeteren. De mate van beperking kan de beveiliging verbeteren door denial-of-service-aanvallen te voor komen.
-> * De firmware van het apparaat up-to-date houden.
-> * Regel matig de aanbevolen procedures voor apparaat-, netwerk-en gateway beveiliging controleren en controleren, wanneer ze blijven verbeteren en ontwikkelen.
+> * Zorg ervoor dat de firmware, het besturings systeem en de software van het apparaat up-to-date blijven.
+> * Regel matig de best practices voor apparaten, software, netwerken en gateway beveiliging controleren en controleren wanneer ze blijven verbeteren en ontwikkelen.
 
 Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zijn onder andere:
 
@@ -48,16 +48,19 @@ Enkele belang rijke procedures voor het veilig beveiligen van een IoT-ruimte zij
 > * Vereisen dat wacht woorden of sleutels regel matig worden gewijzigd of vernieuwd.
 > * Beperk de toegang en machtigingen op rol nauw keurig. Raadpleeg de sectie [Aanbevolen procedures voor toegangs beheer op basis van rollen](#role-based-access-control-best-practices) hieronder.
 > * Overweeg een gesplitste netwerk topologie zodat apparaten op elk netwerk van elkaar zijn geïsoleerd.
-> * Gebruik krachtige versleuteling. Lange wacht woorden vereisen en beveiligde protocollen en twee ledige verificatie gebruiken.
+> * Gebruik krachtige versleuteling. Lange wacht woorden vereisen, beveiligde protocollen gebruiken en [multi-factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
 [Controleren](./how-to-configure-monitoring.md) IoT-bronnen om te kijken naar uitbijters, bedreigingen of resource parameters die buiten het bereik van de gebruikelijke bewerking vallen. Gebruik Azure Analytics voor bewakings beheer.
+
+> [!IMPORTANT]
+> Lees de [Aanbevolen procedures voor Azure IOT Security](../iot-fundamentals/iot-security-best-practices.md) om een uitgebreide IOT-beveiligings strategie te starten.
 
 > [!NOTE]
 > Zie voor meer informatie over het verwerken en controleren van gebeurtenissen [route gebeurtenissen en berichten met Azure Digital apparaatdubbels](./concepts-events-routing.md).
 
 ## <a name="azure-active-directory-best-practices"></a>Aanbevolen procedures Azure Active Directory
 
-Azure Digital Apparaatdubbels maakt gebruik van Azure Active Directory om gebruikers te verifiëren en toepassingen te beveiligen. Azure Active Directory ondersteunt verificatie voor verschillende moderne architecturen. Ze zijn allemaal gebaseerd op gestandaardiseerde protocollen, zoals OAuth 2,0 of OpenID Connect Connect. Enkele belang rijke procedures voor het beveiligen van uw IoT-ruimte voor Azure Active Directory zijn:
+Azure Digital Apparaatdubbels maakt gebruik van [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/authentication/) om gebruikers te verifiëren en toepassingen te beveiligen. Azure Active Directory ondersteunt verificatie voor verschillende moderne architecturen. Ze zijn allemaal gebaseerd op gestandaardiseerde protocollen, zoals OAuth 2,0 of OpenID Connect Connect. Enkele belang rijke procedures voor het beveiligen van uw IoT-ruimte voor Azure Active Directory zijn:
 
 > [!div class="checklist"]
 > * Bewaar Azure Active Directory app-geheimen en sleutels op een veilige locatie, zoals [Azure Key Vault](https://azure.microsoft.com/services/key-vault/).

@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Azure Active Directory-integratie met SpringCM | Microsoft Docs'
-description: Informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SpringCM.
+title: 'Zelf studie: integratie Azure Active Directory met SpringCM | Microsoft Docs'
+description: Meer informatie over het configureren van eenmalige aanmelding tussen Azure Active Directory en SpringCM.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,20 +16,20 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e1d1973dd51068e6f3e0746ee988a51f375899f
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 9bd9ea5565ea64415c00a458236456bed04b6c38
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67588025"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74233387"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Zelfstudie: Azure Active Directory-integratie met SpringCM
+# <a name="tutorial-azure-active-directory-integration-with-springcm"></a>Zelf studie: integratie Azure Active Directory met SpringCM
 
-In deze zelfstudie leert u hoe u SpringCM integreren met Azure Active Directory (Azure AD).
-SpringCM integreren met Azure AD biedt u de volgende voordelen:
+In deze zelf studie leert u hoe u SpringCM integreert met Azure Active Directory (Azure AD).
+Het integreren van SpringCM met Azure AD biedt de volgende voor delen:
 
-* U kunt beheren in Azure AD die toegang tot SpringCM heeft.
-* U kunt uw gebruikers worden automatisch aangemeld SpringCM (Single Sign-On) met hun Azure AD-accounts inschakelen.
+* U kunt beheren in azure AD die toegang heeft tot SpringCM.
+* U kunt ervoor zorgen dat uw gebruikers automatisch worden aangemeld bij SpringCM (eenmalige aanmelding) met hun Azure AD-accounts.
 * U kunt uw accounts vanaf één centrale locatie beheren: de Azure-portal.
 
 Zie [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?) als u wilt graag meer wilt weten over de integratie van SaaS-apps met Azure AD.
@@ -37,22 +37,22 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voor het configureren van Azure AD-integratie met SpringCM, moet u de volgende items:
+Als u Azure AD-integratie met SpringCM wilt configureren, hebt u de volgende items nodig:
 
-* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, krijgt u een [gratis account](https://azure.microsoft.com/free/)
-* Eenmalige aanmelding SpringCM ingeschakeld abonnement
+* Een Azure AD-abonnement Als u geen Azure AD-omgeving hebt, kunt u een [gratis account](https://azure.microsoft.com/free/) aanvragen
+* Abonnement voor eenmalige aanmelding SpringCM ingeschakeld
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
 In deze zelfstudie gaat u in een testomgeving eenmalige aanmelding van Azure AD configureren en testen.
 
-* Biedt ondersteuning voor SpringCM **SP** gestart door SSO
+* SpringCM ondersteunt door **SP** GEÏNITIEERDe SSO
 
-## <a name="adding-springcm-from-the-gallery"></a>SpringCM uit de galerie toe te voegen
+## <a name="adding-springcm-from-the-gallery"></a>SpringCM toevoegen uit de galerie
 
-Voor het configureren van de integratie van SpringCM in Azure AD, moet u SpringCM uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
+Als u de integratie van SpringCM in azure AD wilt configureren, moet u SpringCM uit de galerie toevoegen aan uw lijst met beheerde SaaS-apps.
 
-**Als u wilt toevoegen SpringCM uit de galerie, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om SpringCM toe te voegen uit de galerie:**
 
 1. In de **[Azure-portal](https://portal.azure.com)** klikt u in het navigatievenster aan de linkerkant op het pictogram **Azure Active Directory**.
 
@@ -62,35 +62,35 @@ Voor het configureren van de integratie van SpringCM in Azure AD, moet u SpringC
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-3. Als u wilt een nieuwe toepassing toevoegen, klikt u op de **nieuwe toepassing** knop aan de bovenkant van het dialoogvenster.
+3. Als u een nieuwe toepassing wilt toevoegen, klikt u op de knop **nieuwe toepassing** boven aan het dialoog venster.
 
     ![De knop Nieuwe toepassing](common/add-new-app.png)
 
-4. Typ in het zoekvak **SpringCM**, selecteer **SpringCM** vanuit het deelvenster resultaat klik vervolgens op de **toevoegen** om toe te voegen van de toepassing.
+4. Typ **SpringCM**in het zoekvak, selecteer **SpringCM** in het deel venster resultaat en klik vervolgens op de knop **toevoegen** om de toepassing toe te voegen.
 
     ![SpringCM in de lijst met resultaten](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
-In deze sectie kunt u configureren en testen Azure AD eenmalige aanmelding met SpringCM op basis van een testgebruiker met de naam **Britta Simon**.
-Voor eenmalige aanmelding om te werken, moet een koppeling relatie tussen een Azure AD-gebruiker en de gerelateerde gebruiker in SpringCM tot stand worden gebracht.
+In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met SpringCM op basis van een test gebruiker met de naam **Julia Simon**.
+Voor een goede werking van eenmalige aanmelding moet er een koppelings relatie tussen een Azure AD-gebruiker en de bijbehorende gebruiker in SpringCM tot stand worden gebracht.
 
-Om te configureren en testen van Azure AD eenmalige aanmelding met SpringCM, moet u de volgende bouwstenen voltooien:
+Als u eenmalige aanmelding voor Azure AD wilt configureren en testen met SpringCM, moet u de volgende bouw stenen volt ooien:
 
 1. **[Azure AD-eenmalige aanmelding configureren](#configure-azure-ad-single-sign-on)** : als u wilt dat uw gebruikers deze functie kunnen gebruiken.
-2. **[Configureren van eenmalige aanmelding SpringCM](#configure-springcm-single-sign-on)**  : als u wilt de Single Sign-On-instellingen configureren op de toepassing aan clientzijde.
+2. **[SpringCM eenmalige aanmelding configureren](#configure-springcm-single-sign-on)** : Hiermee configureert u de instellingen voor eenmalige aanmelding aan de kant van de toepassing.
 3. **[Een Azure AD-testgebruiker maken](#create-an-azure-ad-test-user)** : als u Azure AD-eenmalige aanmelding wil testen met Britta Simon.
 4. **[De testgebruiker van Azure AD-toewijzen](#assign-the-azure-ad-test-user)** : als u wilt dat Britta Simon gebruik kan maken van Azure AD-eenmalige aanmelding.
-5. **[Maken van de testgebruiker SpringCM](#create-springcm-test-user)**  : als u wilt een equivalent van Britta Simon in SpringCM die is gekoppeld aan de Azure AD-weergave van de gebruiker hebben.
+5. **[Maak een SpringCM-test gebruiker](#create-springcm-test-user)** -om een equivalent van Julia Simon in SpringCM te hebben dat is gekoppeld aan de Azure AD-representatie van de gebruiker.
 6. **[Eenmalige aanmelding testen](#test-single-sign-on)** : als u wilt controleren of de configuratie werkt.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie gaat u Azure AD-eenmalige aanmelding in de Azure-portal inschakelen.
 
-Voor het configureren van Azure AD eenmalige aanmelding met SpringCM, moet u de volgende stappen uitvoeren:
+Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configureren met SpringCM:
 
-1. In de [Azure-portal](https://portal.azure.com/)op de **SpringCM** toepassing integratie weergeeft, schakelt **eenmalige aanmelding**.
+1. Selecteer in de [Azure Portal](https://portal.azure.com/)op de pagina **SpringCM** Application Integration de optie **eenmalige aanmelding**.
 
     ![Koppeling Eenmalige aanmelding configureren](common/select-sso.png)
 
@@ -104,18 +104,18 @@ Voor het configureren van Azure AD eenmalige aanmelding met SpringCM, moet u de 
 
 4. In de sectie **Standaard SAML-configuratie** voert u de volgende stappen uit:
 
-    ![SpringCM domein en URL's, eenmalige aanmelding informatie](common/sp-signonurl.png)
+    ![Informatie over eenmalige aanmelding voor SpringCM domein en Url's](common/sp-signonurl.png)
 
     In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://na11.springcm.com/atlas/SSO/SSOEndpoint.ashx?aid=<identifier>`
 
     > [!NOTE]
-    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met [SpringCM Client ondersteuningsteam](https://knowledge.springcm.com/support) om de waarde. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > De waarde is niet echt. Werk de waarde bij met de werkelijke aanmeldings-URL. Neem contact op met het [ondersteunings team van SpringCM](https://knowledge.springcm.com/support) om de waarde op te halen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 4. Op de pagina **Eenmalige aanmelding met SAML instellen** in de sectie **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **Certificaat (Raw)** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/certificateraw.png)
 
-6. Op de **SpringCM instellen** sectie, kopieert u de juiste URL('s) volgens uw behoeften.
+6. Kopieer op de sectie **SpringCM instellen** de gewenste URL ('s) volgens uw vereiste.
 
     ![Configuratie-URL's kopiëren](common/copy-configuration-urls.png)
 
@@ -125,23 +125,23 @@ Voor het configureren van Azure AD eenmalige aanmelding met SpringCM, moet u de 
 
     c. Afmeldings-URL
 
-### <a name="configure-springcm-single-sign-on"></a>SpringCM voor eenmalige aanmelding configureren
+### <a name="configure-springcm-single-sign-on"></a>Eenmalige aanmelding voor SpringCM configureren
 
-1. In een ander browservenster aanmelden bij uw **SpringCM** bedrijf site als administrator.
+1. Meld u in een ander browser venster aan bij de **SpringCM** -bedrijfs site als beheerder.
 
-1. Klik in het menu aan de bovenkant op **Ga naar**, klikt u op **voorkeuren**, en klik vervolgens op de **accountvoorkeuren** sectie, klikt u op **SAML SSO**.
+1. Klik in het menu aan de bovenkant op **Ga naar**, klik op **voor keuren**en klik vervolgens in de sectie **account voorkeuren** op **SAML SSO**.
    
-    ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "SAML SSO")
+    ![SAML SSO](./media/spring-cm-tutorial/ic797051.png "Eenmalige aanmelding op basis van SAML")
 
-1. In de sectie configuratie van de id-Provider, moet u de volgende stappen uitvoeren:
+1. Voer de volgende stappen uit in de sectie configuratie van de identiteits provider:
    
-    ![ID-providerconfiguratie](./media/spring-cm-tutorial/ic797052.png "Identity Provider configureren")
+    ![Configuratie van de ID-provider](./media/spring-cm-tutorial/ic797052.png "Configuratie van de ID-provider")
     
-    a. Als u wilt uw gedownloade Azure Active Directory-certificaat uploaden, klikt u op **uitgeverscertificaat Selecteer** of **wijzigen-uitgeverscertificaat**.
+    a. Als u het gedownloade Azure Active Directory certificaat wilt uploaden, klikt u op certificaat van **verlener selecteren** of **certificaat van verlener wijzigen**.
     
-    b. In de **verlener** tekstvak plakken **Azure AD-id** waarde die u hebt gekopieerd vanuit Azure portal.
+    b. Plak in het tekstvak **Uitgever** de **Azure ad-id** -waarde die u van Azure Portal hebt gekopieerd.
     
-    c. In de **Service Provider (SP) geïnitieerd eindpunt** tekstvak plakken **aanmeldings-URL** waarde die u hebt gekopieerd vanuit Azure portal.
+    c. Plak in het tekstvak door de **service provider geïnitieerde eindpunt** de waarde voor de **aanmeldings-URL** die u hebt gekopieerd van de Azure Portal.
             
     d. Selecteer **SAML ingeschakeld** als **inschakelen**.
 
@@ -165,7 +165,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     a. Voer in het veld **Naam** **Britta Simon**in.
   
-    b. In de **gebruikersnaam** veldtype `brittasimon@yourcompanydomain.extension`. Bijvoorbeeld: BrittaSimon@contoso.com
+    b. Typ `brittasimon@yourcompanydomain.extension`in het veld **gebruikers naam** . Bijvoorbeeld: BrittaSimon@contoso.com
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
@@ -173,17 +173,17 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
-In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmelding door toegang te verlenen aan SpringCM.
+In deze sectie schakelt u Julia Simon in om eenmalige aanmelding van Azure te gebruiken door toegang te verlenen aan SpringCM.
 
-1. Selecteer in de Azure portal, **bedrijfstoepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **SpringCM**.
+1. Selecteer in het Azure Portal **bedrijfs toepassingen**, selecteer **alle toepassingen**en selecteer vervolgens **SpringCM**.
 
     ![De blade Bedrijfstoepassingen](common/enterprise-applications.png)
 
-2. Selecteer in de lijst met toepassingen, **SpringCM**.
+2. Selecteer in de lijst toepassingen de optie **SpringCM**.
 
     ![De koppeling SpringCM in de lijst met toepassingen](common/all-applications.png)
 
-3. Selecteer in het menu aan de linkerkant **Gebruikers en groepen**.
+3. Selecteer **Gebruikers en groepen** in het menu aan de linkerkant.
 
     ![De koppeling Gebruikers en groepen](common/users-groups-blade.png)
 
@@ -197,43 +197,43 @@ In deze sectie maakt inschakelen u Britta Simon gebruiken Azure eenmalige aanmel
 
 7. Klik in het dialoogvenster **Toewijzing toevoegen** op de knop **Toewijzen**.
 
-### <a name="create-springcm-test-user"></a>SpringCM testgebruiker maken
+### <a name="create-springcm-test-user"></a>SpringCM-test gebruiker maken
 
-Als u wilt dat Azure Active Directory-gebruikers kunnen zich aanmelden bij SpringCM, moeten ze worden ingericht voor SpringCM. In het geval van SpringCM is inrichten een handmatige taak.
+Om Azure Active Directory gebruikers in staat te stellen zich aan te melden bij SpringCM, moeten ze worden ingericht in SpringCM. In het geval van SpringCM is inrichting een hand matige taak.
 
 > [!NOTE]
-> Zie voor meer informatie, [maken en bewerken van een gebruiker SpringCM](https://knowledge.springcm.com/create-and-edit-a-springcm-user). 
+> Zie [een SpringCM-gebruiker maken en bewerken](https://knowledge.springcm.com/create-and-edit-a-springcm-user)voor meer informatie. 
 
-**Voor het inrichten van een gebruikersaccount SpringCM, moet u de volgende stappen uitvoeren:**
+**Voer de volgende stappen uit om een gebruikers account in te richten op SpringCM:**
 
-1. Aanmelden bij uw **SpringCM** bedrijf site als administrator.
+1. Meld u als beheerder aan bij de **SpringCM** -bedrijfs site.
 
-1. Klik op **GOTO**, en klik vervolgens op **ADRESBOEK**.
+1. Klik op **Ga**naar en klik vervolgens op **adres boek**.
    
-    ![Create User](./media/spring-cm-tutorial/ic797054.png "Create User")
+    ![Gebruiker maken](./media/spring-cm-tutorial/ic797054.png "Gebruiker maken")
 
 1. Klik op **Gebruiker maken**.
 
 1. Selecteer een **gebruikersrol**.
 
-1. Selecteer **activeringse-mail verzenden**.
+1. Selecteer **activerings-e-mail verzenden**.
 
-1. Typ de voornaam, achternaam en e-mailadres van een geldige Azure Active Directory-gebruikersaccount die u inrichten in de bijbehorende tekstvakken wilt.
+1. Typ de voor naam, achternaam en het e-mail adres van een geldig Azure Active Directory gebruikers account dat u wilt inrichten in de bijbehorende tekst vakken.
 
-1. De gebruiker toevoegen aan een **beveiligingsgroep**.
+1. Voeg de gebruiker toe aan een **beveiligings groep**.
 
 1. Klik op **Opslaan**.
 
    > [!NOTE]
-   > U kunt alle andere SpringCM gebruiker-account maken van hulpprogramma's of API's geleverd door SpringCM aan inrichten AAD-gebruikersaccounts.
+   > U kunt alle andere hulpprogram ma's voor het maken van SpringCM-gebruikers accounts of Api's die worden geleverd door SpringCM, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 
-In deze sectie maakt testen u uw Azure AD eenmalige aanmelding configuratie met behulp van het toegangsvenster.
+In deze sectie gaat u uw configuratie van Azure AD-eenmalige aanmelding testen via het toegangsvenster.
 
-Wanneer u op de tegel SpringCM in het toegangsvenster, moet u worden automatisch aangemeld bij de SpringCM waarvoor u eenmalige aanmelding hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
+Wanneer u op de tegel SpringCM in het toegangs venster klikt, moet u automatisch worden aangemeld bij de SpringCM waarvoor u SSO hebt ingesteld. Zie [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Inleiding tot het toegangsvenster) voor meer informatie over het toegangsvenster.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 - [Lijst met zelfstudies over het integreren van SaaS-apps met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

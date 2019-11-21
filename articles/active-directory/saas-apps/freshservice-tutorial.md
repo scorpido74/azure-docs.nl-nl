@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3ba2f59799629873553fe261abebf59529ad94d
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 0e08ef72dca09f873ad1cfcc91e132063b88406b
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "73570620"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227523"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshservice"></a>Zelf studie: Azure Active Directory de integratie van eenmalige aanmelding (SSO) met Freshservice
 
@@ -95,7 +95,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. Freshservice vereist SHA-256-vinger afdruk om SSO te laten werken. Voer de volgende stappen uit om de SHA-256-vinger afdruk op te halen:
 
-    ![](./media/freshservice-tutorial/ic790821.png "Vinger") afdruk vingerafdruk
+    ![Vingerafdruk](./media/freshservice-tutorial/ic790821.png "Vingerafdruk")
 
     1. Open de [koppeling](https://www.samltool.com/fingerprint.php) in de verschillende webbrowser.
 
@@ -121,7 +121,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
    1. Voer in het veld **Naam** `B.Simon` in.  
    1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
-   1. Klik op **Maken**.
+   1. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -155,7 +155,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 4. Klik in het menu bovenaan op **Admin**.
 
-    ![Admin](./media/freshservice-tutorial/ic790814.png "Admin")
+    ![Beheerder](./media/freshservice-tutorial/ic790814.png "beheerder")
 
 5. Klik in de **Customer Portal** op **Security**.
 
@@ -163,7 +163,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 6. Voer in de sectie **Security** de volgende stappen uit:
 
-    ![Single Sign On](./media/freshservice-tutorial/ic790816.png "Single Sign On")
+    ![Eenmalige aanmelding](./media/freshservice-tutorial/ic790816.png "Eenmalige aanmelding")
 
     a. Zet **Single Sign On** op ON.
 
@@ -187,19 +187,19 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij FreshServi
 
 2. Klik in het menu bovenaan op **Admin**.
 
-    ![Admin](./media/freshservice-tutorial/ic790814.png "Admin")
+    ![Beheerder](./media/freshservice-tutorial/ic790814.png "beheerder")
 
 3. Klik in de sectie **User Management** op **Requesters**.
 
-    ![Requesters](./media/freshservice-tutorial/ic790818.png "Requesters")
+    ![Aanvragers](./media/freshservice-tutorial/ic790818.png "Aanvragers")
 
 4. Klik op **New Requester**.
 
-    ![New Requester](./media/freshservice-tutorial/ic790819.png "New Requester")
+    ![Nieuwe aanvragers](./media/freshservice-tutorial/ic790819.png "Nieuwe aanvragers")
 
 5. Voer de volgende stappen uit in de sectie **New Requester**:
 
-    ![New Requester](./media/freshservice-tutorial/ic790820.png "New Requester")  
+    ![Nieuwe aanvrager](./media/freshservice-tutorial/ic790820.png "Nieuwe aanvrager")  
 
     a. Typ in de tekstvakken **First Name** en **Email** kenmerken van een geldig Azure Active Directory-account dat u wilt inrichten.
 
@@ -210,7 +210,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij FreshServi
     >  
 
 > [!NOTE]
-> U kunt andere hulpprogramma's of API's van FreshService gebruiken om AAD-gebruikersaccounts in te richten.
+> U kunt alle andere hulpprogram ma's voor het maken van FreshService-gebruikers accounts of Api's die worden geleverd door FreshService, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ## <a name="test-sso"></a>SSO testen
 

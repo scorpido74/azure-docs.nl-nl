@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0b52a56f51e4dcf5f27eddcd68ff17973df21c0
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 33830ce5822b2edee345cf58fc6f2a53d3c863fa
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159237"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227593"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Zelf studie: integratie Azure Active Directory met adjunct
 
@@ -54,7 +54,7 @@ Als u de integratie van Deputy in Azure AD wilt configureren, moet u Deputy vanu
 
 **Als u Deputy wilt toevoegen vanuit de galerie, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -217,7 +217,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -255,7 +255,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Deputy, moeten ze w
 
 2. Klik in het bovenste navigatievenster op **People** (Personen).
    
-    ![Iedereen](./media/deputy-tutorial/tutorial_deputy_001.png "Personen")
+    ![Iedereen](./media/deputy-tutorial/tutorial_deputy_001.png "People")
 
 3. Klik op de knop **Add People** (Personen toevoegen) en klik op **Add a single person** (Eén persoon toevoegen).
    
@@ -273,7 +273,7 @@ Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Deputy, moeten ze w
    
     d. Klik op de knop **Save & Invite** (Opslaan en uitnodigen).
 
-5. De houder van het AAD-account ontvangt een e-mail met een koppeling en volgt die om het account te bevestigen voordat het actief wordt. U kunt andere hulpprogramma's of API's van Deputy gebruiken om AAD-gebruikersaccounts in te richten.
+5. De houder van het Azure AD-account ontvangt een e-mail en volgt een koppeling om het account te bevestigen voordat het actief wordt. U kunt alle andere hulpprogram ma's voor het maken van een plaatsvervangend gebruikers account of Api's die worden geleverd door adjunct, gebruiken om Azure AD-gebruikers accounts in te richten.
 
 ### <a name="test-single-sign-on"></a>Eenmalige aanmelding testen 
 

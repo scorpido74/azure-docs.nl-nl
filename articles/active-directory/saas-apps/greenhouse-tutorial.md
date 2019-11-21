@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
-ms.openlocfilehash: cd5a52ea47d7166c6f197b233d1a10ff063ff7c5
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 1cf60e13f7b3ad13d204d67cb7c538d1d11a5dbe
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73159174"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227545"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenhouse"></a>Zelf studie: integratie met broeikas Azure Active Directory
 
@@ -53,7 +53,7 @@ Voor het configureren van de integratie van Greenhouse in Azure AD moet u Greenh
 
 **Als u vanuit de galerie wilt toevoegen handel, moet u de volgende stappen uitvoeren:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -107,12 +107,12 @@ Voor het configureren van eenmalige aanmelding bij Azure Active Directory met Gr
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.greenhouse.io`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<companyname>.greenhouse.io`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<companyname>.greenhouse.io`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [Greenhouse-ondersteuningsteam](https://www.greenhouse.io/contact) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [Greenhouse-ondersteuningsteam](https://www.greenhouse.io/contact) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-4. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+4. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
@@ -153,7 +153,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -186,7 +186,7 @@ In dit gedeelte gaat u Britta Simon toestemming geven voor gebruik van eenmalige
 Als u wilt dat Azure AD-gebruikers zich kunnen aanmelden bij Greenhouse, moeten ze worden ingericht bij Greenhouse. In het geval van Greenhouse is het inrichten een handmatige taak.
 
 >[!NOTE]
->U kunt de AAD-gebruikersaccounts ook inrichten met behulp van andere hulpprogramma's of API's van Greenhouse voor het maken van gebruikersaccounts. 
+>U kunt andere Program ma's voor het maken van een broeikasgas gebruikers account of Api's die worden geleverd door broeikas gebruiken om Azure AD-gebruikers accounts in te richten. 
 
 **Voer de volgende stappen uit om een gebruikersaccount in te richten:**
 

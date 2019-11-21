@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4afd7697272775b8d5558d9c091eeea0d2b9adf
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 74cf0c1e055570df7702465df79dcdfbd8ea9e9f
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73158022"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74232098"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Zelf studie: integratie Azure Active Directory met ArcGIS online
 
@@ -54,7 +54,7 @@ Als u de integratie van ArcGIS Online in Azure AD wilt configureren, moet u ArcG
 
 **Voer de volgende stappen uit om ArcGIS Online toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -108,18 +108,18 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure Ad met ArcGIS On
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<companyname>.maps.arcgis.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `<companyname>.maps.arcgis.com`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `<companyname>.maps.arcgis.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [het ArcGIS Online-clientondersteuningsteam](https://support.esri.com/en/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met [het ArcGIS Online-clientondersteuningsteam](https://support.esri.com/en/) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
-5. Ga op de pagina **Eenmalige aanmelding met SAML instellen** naar de sectie **SAML-handtekeningcertificaat** en klik op **Downloaden** om het **XML-bestand met federatieve metagegevens** te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en op te slaan op uw computer.
+5. Op de pagina **Eenmalige aanmelding met SAML instellen** in het gedeelte **SAML-handtekeningcertificaat** klikt u op **Downloaden** om het **XML-bestand met federatieve metagegevens**  te downloaden uit de gegeven opties overeenkomstig met wat u nodig hebt, en slaat u dit op uw computer op.
 
     ![De link om het certificaat te downloaden](common/metadataxml.png)
 
 6. Als u de configuratie met **ArcGIS Online** wilt automatiseren, moet u de **My Apps-browserextensie voor veilig aanmelden** installeren door op **De extensie installeren** te klikken.
 
-    ![image](./media/arcgis-tutorial/install_extension.png)
+    ![installatiekopie](./media/arcgis-tutorial/install_extension.png)
 
 7. Als u op **ArcGIS Online instellen** klikt nadat u de extensie aan de browser hebt toegevoegd, wordt u doorgestuurd naar de ArcGIS Online-toepassing. Geef hier de referenties voor de beheerder op om u aan te melden bij ArcGIS Online. In de browserextensie wordt de toepassing automatisch voor u geconfigureerd en worden stappen in het gedeelte **Eenmalige aanmelding met ArcGIS Online configureren** geautomatiseerd.
 
@@ -174,7 +174,7 @@ Het doel van deze sectie is om in de Azure-portal een testgebruiker met de naam 
 
     c. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak Wachtwoord.
 
-    d. Klik op **Maken**.
+    d. Klik op **Create**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>De Azure AD-testgebruiker toewijzen
 
@@ -223,7 +223,7 @@ In het geval van ArcGIS Online is inrichten een handmatige taak.
    
      ![Toevoegen en controleren](./media/arcgis-tutorial/ic784749.png "Toevoegen en controleren")
     
-     a. Voer het **e-mailadres**, de **voornaam** en de **achternaam** in van een geldig AAD-account dat u wilt inrichten.
+     a. Voer de **e-mail**, **voor naam**en **Achternaam** in van een geldig Azure ad-account dat u wilt inrichten.
   
      b. Klik op **ADD AND REVIEW** (Toevoegen en controleren).
 5. Controleer de gegevens die u hebt ingevoerd en klik op **ADD MEMBERS** (Leden toevoegen).

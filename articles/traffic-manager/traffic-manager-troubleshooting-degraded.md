@@ -3,21 +3,21 @@ title: Problemen met de gedegradeerde status op Azure Traffic Manager oplossen
 description: Problemen met Traffic Manager profielen oplossen wanneer deze worden weer gegeven als gedegradeerde status.
 services: traffic-manager
 documentationcenter: ''
-author: rohinkoul
-manager: dcscontentpm
+author: asudbring
+manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
-ms.author: rohink
-ms.openlocfilehash: 8f043b11c9319d61c4413d01b008b324103ca6c3
-ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+ms.author: allensu
+ms.openlocfilehash: 8b8fbdf55e408874f6a6e83d6333583238865b5c
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71155220"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227722"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Oplossen van problemen met een gedegradeerde status op Azure Traffic Manager
 
@@ -48,7 +48,7 @@ Als u een test fout wilt oplossen, hebt u een hulp programma nodig dat de HTTP-s
 
 U kunt ook het tabblad netwerk van de F12-Hulpprogram Ma's voor fout opsporing in Internet Explorer gebruiken om de HTTP-antwoorden te bekijken.
 
-Voor dit voor beeld willen we het antwoord zien van onze test-URL: http\/:/watestsdp2008r2.cloudapp.net:80/probe. Het volgende Power shell-voor beeld illustreert het probleem.
+Voor dit voor beeld willen we het antwoord zien van onze test-URL: http:\//watestsdp2008r2.cloudapp.net:80/Probe. Het volgende Power shell-voor beeld illustreert het probleem.
 
 ```powershell
 Invoke-WebRequest 'http://watestsdp2008r2.cloudapp.net/Probe' -MaximumRedirection 0 -ErrorAction SilentlyContinue | Select-Object StatusCode,StatusDescription
@@ -85,7 +85,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Wat is Traffic Manager](traffic-manager-overview.md)
 
-[Cloud Services](https://go.microsoft.com/fwlink/?LinkId=314074)
+[Cloudservices](https://go.microsoft.com/fwlink/?LinkId=314074)
 
 [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/web/)
 

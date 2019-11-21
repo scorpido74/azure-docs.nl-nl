@@ -1,6 +1,6 @@
 ---
-title: Over het beheren van Azure door de gebruiker toegewezen beheerde identiteiten met behulp van REST
-description: Stap voor stap beheerd instructies over het maken, weergeven en verwijderen van een gebruiker toegewezen identiteit voor de REST-API-aanroepen.
+title: Door de gebruiker toegewezen beheerde identiteiten beheren met REST-Azure AD
+description: Stapsgewijze instructies voor het maken, weer geven en verwijderen van een door de gebruiker toegewezen beheerde identiteit om REST API aanroepen te maken.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,35 +15,35 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75867242358881c963ab4470bdb7963d0ea4671c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d0b4da7f47181341fce7c5fa5e7a6d239fe3070d
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60440178"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74224650"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Maken, weergeven of verwijderen van een gebruiker toegewezen beheerde identiteit met behulp van REST-API aanroepen
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met REST API-aanroepen
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
-Beheerde identiteiten voor Azure-resources Azure-services biedt de mogelijkheid om te verifiëren bij services die ondersteuning voor Azure AD-verificatie, zonder de referenties in uw code. 
+Beheerde identiteiten voor Azure-resources biedt Azure-Services de mogelijkheid om te verifiëren bij services die ondersteuning bieden voor Azure AD-verificatie, zonder dat er referenties in uw code nodig zijn. 
 
-In dit artikel leert u hoe u maken, weergeven en verwijderen van een gebruiker toegewezen beheerde identiteit met CURL REST-API-aanroepen.
+In dit artikel leert u hoe u een door de gebruiker toegewezen beheerde identiteit kunt maken, weer geven en verwijderen met behulp van krul om REST API aanroepen te maken.
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Als u niet bekend met beheerde identiteiten voor Azure-resources bent, lees de [overzichtssectie](overview.md). **Lees de [verschil tussen een beheerde identiteit door het systeem is toegewezen en de gebruiker toegewezen](overview.md#how-does-it-work)** .
 - Als u nog geen Azure-account hebt, [registreer u dan voor een gratis account](https://azure.microsoft.com/free/) voordat u verdergaat.
-- Als u Windows gebruikt, installeert u de [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of gebruik de [Azure Cloud Shell](../../cloud-shell/overview.md) in Azure portal.
-- Als u de [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of een [Linux-distributie](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [installeren van de Azure CLI lokale console](/cli/azure/install-azure-cli).
-- Als u van Azure CLI lokale console gebruikmaakt, aanmelden bij Azure met `az login` met een account dat is gekoppeld aan het Azure-abonnement u wilt implementeren of ophalen van gegevens van beheerde identiteit gebruiker toegewezen.
-- Ophalen van een Bearer access token met `az account get-access-token` om uit te voeren van de volgende bewerkingen uit beheerde identiteit gebruiker toegewezen.
+- Als u Windows gebruikt, installeert u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of gebruikt u de [Azure Cloud Shell](../../cloud-shell/overview.md) in de Azure Portal.
+- Als u het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about) of een [Linux-distributie besturingssysteem](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)gebruikt, installeert u [de lokale Azure cli-console](/cli/azure/install-azure-cli).
+- Als u de lokale Azure CLI-console gebruikt, meldt u zich aan bij Azure met `az login` met een account dat is gekoppeld aan het Azure-abonnement waarvoor u door de gebruiker toegewezen beheerde identiteits gegevens wilt implementeren of ophalen.
+- Haal een Bearer-toegangs token op met behulp van `az account get-access-token` om de volgende door de gebruiker toegewezen beheerde identiteits bewerkingen uit te voeren.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit maken 
 
-Voor het maken van een gebruiker toegewezen beheerde identiteit, uw account moet de [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roltoewijzing.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt maken, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -58,22 +58,22 @@ PUT https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-**Aanvraagheaders**
+**Aanvraag headers**
 
-|Aanvraagheader  |Description  |
+|Aanvraagheader  |Beschrijving  |
 |---------|---------|
-|*Content-Type*     | Vereist. Ingesteld op `application/json`.        |
-|*Autorisatie*     | Vereist. Ingesteld op een geldige `Bearer` toegangstoken.        |
+|*Inhouds type*     | Vereist. Ingesteld op `application/json`.        |
+|*Autorisatie*     | Vereist. Stel in op een geldig `Bearer` toegangs token.        |
 
-**Aanvraagtekst**
+**Aanvraag tekst**
 
-|Name  |Description  |
+|Naam  |Beschrijving  |
 |---------|---------|
-|location     | Vereist. Resourcelocatie.        |
+|locatie     | Vereist. Resourcelocatie.        |
 
-## <a name="list-user-assigned-managed-identities"></a>Lijst met door de gebruiker toegewezen identiteiten beheren
+## <a name="list-user-assigned-managed-identities"></a>Door de gebruiker toegewezen beheerde identiteiten weer geven
 
-Als u wilt lezen/lijst met een gebruiker toegewezen beheerde identiteit, uw account moet de [beheerde identiteit Operator](/azure/role-based-access-control/built-in-roles#managed-identity-operator) of [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roltoewijzing.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt weer geven/lezen, moet uw account beschikken over de rol [Managed Identity](/azure/role-based-access-control/built-in-roles#managed-identity-operator) of [Managed id contributor](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview' -H "Authorization: Bearer <ACCESS TOKEN>"
@@ -83,17 +83,17 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 GET https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2015-08-31-preview HTTP/1.1
 ```
 
-|Aanvraagheader  |Description  |
+|Aanvraagheader  |Beschrijving  |
 |---------|---------|
-|*Content-Type*     | Vereist. Ingesteld op `application/json`.        |
-|*Autorisatie*     | Vereist. Ingesteld op een geldige `Bearer` toegangstoken.        |
+|*Inhouds type*     | Vereist. Ingesteld op `application/json`.        |
+|*Autorisatie*     | Vereist. Stel in op een geldig `Bearer` toegangs token.        |
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Verwijderen van een gebruiker toegewezen beheerde identiteit
+## <a name="delete-a-user-assigned-managed-identity"></a>Een door de gebruiker toegewezen beheerde identiteit verwijderen
 
-Als u wilt verwijderen van een gebruiker toegewezen beheerde identiteit, uw account moet de [beheerde identiteit Inzender](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roltoewijzing.
+Als u een door de gebruiker toegewezen beheerde identiteit wilt verwijderen, moet uw account beschikken over de rol toewijzing [beheerde identiteits bijdrage](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) .
 
 > [!NOTE]
-> Verwijderen van een gebruiker toegewezen beheerde identiteit, wordt de verwijzing van een willekeurige deze is toegewezen aan resource niet verwijderen. Verwijderen van een gebruiker toegewezen beheerde identiteit van een virtuele machine met CURL Zie [verwijderen van een gebruiker toegewezen identiteit van een Azure VM](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
+> Als u een door de gebruiker toegewezen beheerde identiteit verwijdert, wordt de verwijzing niet verwijderd uit een resource waaraan deze is toegewezen. Een door de gebruiker toegewezen beheerde identiteit verwijderen uit een virtuele machine met behulp van krul Zie [een door de gebruiker toegewezen identiteit verwijderen uit een Azure-VM](qs-configure-rest-vm.md#remove-a-user-assigned identity-from-an-azure-vm).
 
 ```bash
 curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
@@ -103,11 +103,11 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 ```HTTP
 DELETE https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/TestRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>?api-version=2015-08-31-preview HTTP/1.1
 ```
-|Aanvraagheader  |Description  |
+|Aanvraagheader  |Beschrijving  |
 |---------|---------|
-|*Content-Type*     | Vereist. Ingesteld op `application/json`.        |
-|*Autorisatie*     | Vereist. Ingesteld op een geldige `Bearer` toegangstoken.        |
+|*Inhouds type*     | Vereist. Ingesteld op `application/json`.        |
+|*Autorisatie*     | Vereist. Stel in op een geldig `Bearer` toegangs token.        |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie voor meer informatie over het toewijzen van een beheerde identiteit voor de gebruiker toegewezen aan een Azure-VM/VMSS met CURL, [configureren beheerde identiteiten voor een Azure-resources op een Azure-VM met behulp van REST-API-aanroepen](qs-configure-rest-vm.md#user-assigned-managed-identity) en [configureren die worden beheerd identiteiten voor een Azure-resources op een VM-schaalset met behulp van REST API-aanroepen](qs-configure-rest-vmss.md#user-assigned-managed-identity).
+Voor informatie over het toewijzen van een door de gebruiker toegewezen beheerde identiteit aan een Azure VM-VMSS met behulp van krul, [configureert u beheerde identiteiten voor Azure-resources op een Azure-VM met behulp van rest API aanroepen](qs-configure-rest-vm.md#user-assigned-managed-identity) en [Configureer beheerde identiteiten voor Azure-resources op een schaalset voor virtuele machines met behulp van rest API-aanroepen](qs-configure-rest-vmss.md#user-assigned-managed-identity).

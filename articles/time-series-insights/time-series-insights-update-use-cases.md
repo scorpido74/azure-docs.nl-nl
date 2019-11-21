@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 09/24/2019
+ms.date: 11/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 175fbf598ae2224d1e1ee0e9c9a3f9ba446965c3
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 92d738542076b755a26e8cff2e7fb1aa0384cb22
+ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014675"
+ms.lasthandoff: 11/20/2019
+ms.locfileid: "74227736"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Azure Time Series Insights preview-cases gebruiken
 
@@ -52,15 +52,15 @@ Klanten kunnen profiteren van de snelheid voor het snel diagnosticeren van probl
 
 Er zijn drie manieren om te communiceren met gegevens die zijn opgeslagen in Time Series Insights:
 
-- De eerste en eenvoudigste manier om aan de slag te gaan is met de Time Series Insights preview Explorer. U kunt deze gebruiken om snel al uw IoT-gegevens op één plek te visualiseren. Het bevat hulpprogram ma's zoals de heatmap waarmee u afwijkingen in uw gegevens kunt herkennen. Het biedt ook een perspectief weergave. Gebruik het om Maxi maal vier weer gaven te vergelijken van een of meer Time Series Insights omgevingen in één dash board. Het dash board geeft u een overzicht van de gegevens van uw tijd reeks op al uw locaties. Meer informatie over de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md). Lees [Time Series Insights planning](./time-series-insights-update-plan.md)als u uw time series Insights omgeving wilt plannen.
+* De eerste en eenvoudigste manier om aan de slag te gaan is met de Time Series Insights preview Explorer. U kunt deze gebruiken om snel al uw IoT-gegevens op één plek te visualiseren. Het bevat hulpprogram ma's zoals de heatmap waarmee u afwijkingen in uw gegevens kunt herkennen. Het biedt ook een perspectief weergave. Gebruik het om Maxi maal vier weer gaven te vergelijken van een of meer Time Series Insights omgevingen in één dash board. Het dash board geeft u een overzicht van de gegevens van uw tijd reeks op al uw locaties. Meer informatie over de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md). Lees [Time Series Insights planning](./time-series-insights-update-plan.md)als u uw time series Insights omgeving wilt plannen.
 
-- De tweede manier om te beginnen is met behulp van de Java script SDK om snel krachtige grafieken en grafieken in uw webtoepassing in te sluiten. Met slechts een paar regels code kunt u krachtige query's ontwerpen. Gebruik deze om lijn diagrammen, cirkel diagrammen, staaf diagrammen, heatmap, gegevens rasters en meer te vullen. Al deze elementen zijn out-of-the-box met behulp van de SDK. De SDK is ook abstracten Time Series Insights query-Api's. U kunt ze gebruiken om SQL-achtige predikaten te schrijven om de gegevens op te vragen die u op een dash board wilt weer geven. Time Series Insights biedt voor hybride oplossingen voor presentaties met para meters een URL. Ze bieden naadloze verbindings punten met de Time Series Insights preview Explorer voor diepe Dives in gegevens.
+* De tweede manier om te beginnen is met behulp van de Java script SDK om snel krachtige grafieken en grafieken in uw webtoepassing in te sluiten. Met slechts een paar regels code kunt u krachtige query's ontwerpen. Gebruik deze om lijn diagrammen, cirkel diagrammen, staaf diagrammen, heatmap, gegevens rasters en meer te vullen. Al deze elementen zijn out-of-the-box met behulp van de SDK. De SDK is ook abstracten Time Series Insights query-Api's. U kunt ze gebruiken om SQL-achtige predikaten te schrijven om de gegevens op te vragen die u op een dash board wilt weer geven. Time Series Insights biedt voor hybride oplossingen voor presentaties met para meters een URL. Ze bieden naadloze verbindings punten met de Time Series Insights preview Explorer voor diepe Dives in gegevens.
 
-    * Lees meer informatie over de [Time Series INSIGHTS js-client bibliotheek](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) en de [Time Series Insights-client](https://github.com/Microsoft/tsiclient) documentatie voor meer informatie over de Java script SDK.
+  * Lees meer informatie over de [Time Series INSIGHTS js-client bibliotheek](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) en de [Time Series Insights-client](https://github.com/Microsoft/tsiclient) documentatie voor meer informatie over de Java script SDK.
 
-    * Meer informatie over het delen van Url's en de nieuwe gebruikers interface vindt u [in visualiseren van gegevens in de Azure time series Insights preview Explorer](time-series-insights-update-explorer.md).
+  * Meer informatie over het delen van Url's en de nieuwe gebruikers interface vindt u [in visualiseren van gegevens in de Azure time series Insights preview Explorer](time-series-insights-update-explorer.md).
 
-- De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to`, `first`en `last`. Het bevat aggregaties en trans formaties zoals `average`, `min`, `max`, `split by`, `order by`en `DateHistogram`. Er zijn ook filter operatoren, zoals `has`, `in`, `and`, `or`, `greater than`en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
+* De derde manier om te beginnen is het gebruik van de krachtige Api's om query's uit te voeren op gegevens die zijn opgeslagen in Time Series Insights. Time Series Insights heeft tijdelijke Opera tors zoals `from`, `to`, `first`en `last`. Het bevat aggregaties en trans formaties zoals `average`, `min`, `max`, `split by`, `order by`en `DateHistogram`. Er zijn ook filter operatoren, zoals `has`, `in`, `and`, `or`, `greater than`en `REGEX`. Al deze opera tors bieden downstream-toepassingen de mogelijkheid om snel interessante trends en patronen in uw gegevens te vinden. Gebruik ze om Homegrown-visualisaties te vullen om afwijkingen op te sporen.
 
 ## <a name="operational-analysis-and-driving-process-efficiency"></a>Operationele analyse en efficiëntere processen
 
@@ -76,9 +76,9 @@ Gegevens die worden verzameld, passeren een serie verwerkingen om deze op te sch
 
 De oplossings architectuur kan op de volgende manier worden bereikt:
 
-- Gegevens opnemen via IoT Hub of Event Hubs voor de beste beveiliging, door Voer en latentie.
-- Gegevens verwerking en-berekeningen uitvoeren. Trechter opgenomen gegevens via Services als Stream Analytics, Logic Apps en Azure Functions. De service die u gebruikt, is afhankelijk van de specifieke behoeften voor gegevens verwerking.
-- Berekende signalen van de verwerkings pijplijn worden naar Time Series Insights gepusht voor het opslaan en analyseren van gegevens.
+* Gegevens opnemen via IoT Hub of Event Hubs voor de beste beveiliging, door Voer en latentie.
+* Gegevens verwerking en-berekeningen uitvoeren. Trechter opgenomen gegevens via Services als Stream Analytics, Logic Apps en Azure Functions. De service die u gebruikt, is afhankelijk van de specifieke behoeften voor gegevens verwerking.
+* Berekende signalen van de verwerkings pijplijn worden naar Time Series Insights gepusht voor het opslaan en analyseren van gegevens.
 
 Time Series Insights biedt een bijna realtime gegevens onderzoek en inzichten op basis van een activum via historische gegevens. Afhankelijk van de behoeften van uw bedrijf, kunnen MapReduce en Hive-taken worden uitgevoerd op gegevens die zijn opgeslagen in Time Series Insights door Time Series Insights te verbinden met Azure HDInsight. Gegevens die zijn opgeslagen in Time Series Insights, zijn beschikbaar voor Power BI en andere klant toepassingen via de Time Series Insights open bare Surface-query-Api's. Deze gegevens kunnen worden gebruikt voor uitgebreide bedrijfs-en operationele informatie scenario's.
 
@@ -92,14 +92,14 @@ Geavanceerde analyses en machine learning grote hoeveel heden gegevens gebruiken
 
 Time Series Insights is de kloof tussen IoT-gegevens en geavanceerde analyses op twee eenvoudige en rendabele manieren overbrugd:
 
-- Eerst verzamelt Time Series Insights onbewerkte telemetriegegevens van miljoenen apparaten met behulp van IoT Hub. Het verrijkt gegevens met contextuele informatie en transformeert gegevens in een Parquet-indeling. Deze indeling kan eenvoudig worden geïntegreerd met andere geavanceerde analyse Services, zoals Machine Learning, Azure Databricks en toepassingen van derden.
+* Eerst verzamelt Time Series Insights onbewerkte telemetriegegevens van miljoenen apparaten met behulp van IoT Hub. Het verrijkt gegevens met contextuele informatie en transformeert gegevens in een Parquet-indeling. Deze indeling kan eenvoudig worden geïntegreerd met andere geavanceerde analyse Services, zoals Machine Learning, Azure Databricks en toepassingen van derden.
 
     Time Series Insights kunnen fungeren als de bron van waarheid voor alle gegevens in een organisatie. Hiermee maakt u een centrale opslag plaats voor downstream Analytics-workloads die moeten worden gebruikt. Omdat Time Series Insights een nabije real-time Storage-service is, kunnen geavanceerde analyse modellen voortdurend van de inkomende IoT-telemetriegegevens worden leren. Als gevolg hiervan kunnen de modellen nauw keurige voor spellingen maken.
 
-- Ten tweede kan de uitvoer van machine learning en Voorspellings modellen worden ingevoerd in Time Series Insights om hun resultaten te visualiseren en op te slaan. Deze procedure helpt organisaties om hun modellen te optimaliseren en te verfijnen. Time Series Insights maakt het eenvoudig om gegevensstromende telemetriegegevens op hetzelfde vlak te visualiseren als de getrainde model uitvoer. Op deze manier helpt IT bij het herkennen van problemen met gegevens wetenschappen teams en het identificeren van patronen. 
+* Ten tweede kan de uitvoer van machine learning en Voorspellings modellen worden ingevoerd in Time Series Insights om hun resultaten te visualiseren en op te slaan. Deze procedure helpt organisaties om hun modellen te optimaliseren en te verfijnen. Time Series Insights maakt het eenvoudig om gegevensstromende telemetriegegevens op hetzelfde vlak te visualiseren als de getrainde model uitvoer. Op deze manier helpt IT bij het herkennen van problemen met gegevens wetenschappen teams en het identificeren van patronen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md).
-- Lees [Time Series Insights voorbeeld planning](./time-series-insights-update-plan.md) om uw omgeving te plannen.
-- Lees de documentatie van de [Time Series Insights-client](https://github.com/Microsoft/tsiclient) .
+* Meer informatie over de [Time Series Insights preview Explorer](./time-series-insights-update-explorer.md).
+* Lees [Time Series Insights voorbeeld planning](./time-series-insights-update-plan.md) om uw omgeving te plannen.
+* Lees de documentatie van de [Time Series Insights-client](https://github.com/Microsoft/tsiclient) .

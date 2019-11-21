@@ -468,6 +468,8 @@
   items:
     - name: Ondersteuning
       href: support.md
+    - name: Regio's
+      href: regions.md
     - name: Prijzen en beperkingen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/'
     - name: Naleving
