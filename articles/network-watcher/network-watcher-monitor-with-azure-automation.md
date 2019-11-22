@@ -1,6 +1,7 @@
 ---
-title: Bewaakt de VPN-gateways bij het oplossen van Azure Network Watcher | Microsoft Docs
-description: Dit artikel wordt beschreven hoe problemen met On-premises-connectiviteit met Azure Automation en Network Watcher vaststellen
+title: Problemen met VPN-gateways oplossen en controleren-Azure Automation
+titleSuffix: Azure Network Watcher
+description: In dit artikel wordt beschreven hoe u on-premises connectiviteit met Azure Automation en Network Watcher opspoort
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,76 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d3a09ee83d4a1f05781c885eaa708e6e024b7f97
-ms.sourcegitcommit: 1289f956f897786090166982a8b66f708c9deea1
+ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "64719785"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275912"
 ---
-# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Bewaakt de VPN-gateways bij het oplossen van Network Watcher
+# <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-gateways bewaken met Network Watcher probleem oplossing
 
-Verkrijgen van inzicht in de netwerkprestaties van uw is essentieel dat u betrouwbare services aanbieden aan klanten. Het is daarom belangrijk om te snel netwerkomstandigheden storing detecteren en corrigerende maatregelen nemen om te beperken van de voorwaarde van de serviceonderbreking. Azure Automation kunt u implementeren en uitvoeren van een taak op een programmatische manier via runbooks. Met Azure Automation maakt u een perfecte recept voor het uitvoeren van doorlopende en proactieve bewaking en waarschuwingen.
+Het verkrijgen van diepe inzichten op uw netwerk prestaties is van cruciaal belang voor het leveren van betrouw bare services aan klanten. Daarom is het belang rijk om snel netwerk storingen te detecteren en corrigerende maat regelen te nemen om de storings voorwaarde te verminderen. Met Azure Automation kunt u een taak in een programmatische manier implementeren en uitvoeren via runbooks. Met Azure Automation maakt u een perfecte recept voor het uitvoeren van doorlopende en proactieve netwerk bewaking en waarschuwingen.
 
 ## <a name="scenario"></a>Scenario
 
-Het scenario in de volgende afbeelding is een toepassing met meerdere lagen met on premises-connectiviteit tot stand gebracht met behulp van een VPN-Gateway en -tunnel. Ervoor te zorgen dat de VPN-Gateway actief is en het uitvoeren van is essentieel dat u de prestaties van toepassingen.
+Het scenario in de volgende afbeelding is een toepassing met meerdere lagen, met on-premises connectiviteit tot stand gebracht met behulp van een VPN Gateway en tunnel. Zorg ervoor dat de VPN Gateway actief is en is essentieel voor de prestaties van de toepassingen.
 
-Een runbook is gemaakt met een script om de verbindingsstatus van de VPN-tunnel, met behulp van de API voor het oplossen van problemen van Resource om te controleren voor de verbindingsstatus van de tunnel te controleren. Als de status niet in orde is, wordt een e-mailtrigger verzonden naar beheerders.
+Er wordt een runbook gemaakt met een script om te controleren op verbindings status van de VPN-tunnel, met behulp van de resource Troubleshooting API om te controleren op de status van de verbindings tunnel. Als de status niet in orde is, wordt er een e-mail trigger verzonden naar beheerders.
 
 ![Voorbeeldscenario][scenario]
 
-In dit scenario wordt:
+Dit scenario gaat als volgt:
 
-- Maken van een runbook aanroepen de `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet om op te lossen verbindingsstatus
+- Een runbook maken dat de `Start-AzureRmNetworkWatcherResourceTroubleshooting`-cmdlet aanroept om de verbindings status op te lossen
 - Een planning aan het runbook koppelen
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voordat u dit scenario, hebt u de volgende vereisten:
+Voordat u met dit scenario begint, moet u beschikken over de volgende vereisten:
 
-- Een Azure automation-account in Azure. Zorg ervoor dat het automation-account de meest recente modules heeft en ook de AzureRM.Network-module. De AzureRM.Network-module is beschikbaar in de Modulegalerie als u wilt toevoegen aan uw automation-account.
-- Een set referenties in Azure Automation configureert, moet u hebben. Meer informatie over [Azure Automation-beveiliging](../automation/automation-security-overview.md)
-- Een geldig SMTP-server (Office 365, uw on-premises e-mail of een andere) en referenties die zijn opgegeven in Azure Automation
-- Een geconfigureerde virtuele netwerkgateway in Azure.
-- Een bestaand opslagaccount met een bestaande container voor het opslaan van de logboeken in.
+- Een Azure Automation-account in Azure. Zorg ervoor dat het Automation-account de meest recente modules heeft en ook de module AzureRM. Network heeft. De module AzureRM. Network is beschikbaar in de module galerie als u deze aan uw Automation-account wilt toevoegen.
+- U moet een set referenties configureren in Azure Automation. Meer informatie over [Azure Automation Security](../automation/automation-security-overview.md)
+- Een geldige SMTP-server (Office 365, uw on-premises e-mail adres of een andere) en referenties gedefinieerd in Azure Automation
+- Een geconfigureerde Virtual Network gateway in Azure.
+- Een bestaand opslag account met een bestaande container waarin de logboeken worden opgeslagen.
 
 > [!NOTE]
-> De infrastructuur die wordt weergegeven in de vorige afbeelding is ter illustratie wordt en niet worden gemaakt met de stappen in dit artikel.
+> De infra structuur die in de voor gaande afbeelding wordt weer gegeven, is bedoeld voor illustratie doeleinden en wordt niet gemaakt met de stappen in dit artikel.
 
-### <a name="create-the-runbook"></a>Het runbook te maken
+### <a name="create-the-runbook"></a>Het runbook maken
 
-De eerste stap bij het configureren van het voorbeeld is het maken van het runbook. Dit voorbeeld wordt een run as-account. Voor meer informatie over run as-accounts, gaat u naar [Runbooks verifiëren met Azure uitvoeren als-account](../automation/automation-create-runas-account.md)
+De eerste stap voor het configureren van het voor beeld is het runbook te maken. In dit voor beeld wordt een uitvoeren als-account gebruikt. Ga voor meer informatie over run-as-accounts naar [Runbooks verifiëren met Azure uitvoeren als-account](../automation/automation-create-runas-account.md)
 
 ### <a name="step-1"></a>Stap 1
 
-Ga naar Azure Automation in de [Azure-portal](https://portal.azure.com) en klikt u op **Runbooks**
+Navigeer naar Azure Automation in het [Azure Portal](https://portal.azure.com) en klik op **Runbooks**
 
 ![overzicht van Automation-account][1]
 
 ### <a name="step-2"></a>Stap 2
 
-Klik op **een runbook toevoegen** het proces voor het maken van het runbook te starten.
+Klik op **een Runbook toevoegen** om het proces voor het maken van het runbook te starten.
 
-![runbooks-blade][2]
+![Blade runbooks][2]
 
 ### <a name="step-3"></a>Stap 3
 
-Onder **snelle invoer**, klikt u op **een nieuw runbook maken** om het runbook te maken.
+Klik onder **snel maken**op **een nieuw runbook maken** om het runbook te maken.
 
-![toevoegen van een runbookblade][3]
+![een runbook-Blade toevoegen][3]
 
 ### <a name="step-4"></a>Stap 4
 
-In deze stap we het runbook een naam geven, in het voorbeeld deze heet **Get-VPNGatewayStatus**. Het is belangrijk dat u het runbook een beschrijvende naam geven en aanbevolen een naam die standard PowerShell naamgevingsstandaarden volgt wordt gegeven. De runbooktype voor dit voorbeeld is **PowerShell**, de andere opties zijn grafisch, PowerShell-werkstroom, en grafische PowerShell-werkstroom.
+In deze stap geven we het runbook een naam, in het voor beeld wordt **Get-VPNGatewayStatus**genoemd. Het is belang rijk om het runbook een beschrijvende naam te geven en het aan te bevelen een naam toe te wijzen die voldoet aan de standaard naamgevings regels voor Power shell. Het runbook-type voor dit voor beeld is **Power shell**, de andere opties zijn grafische, Power shell-werk stroom en grafische power shell-werk stroom.
 
-![runbookblade][4]
+![runbook-Blade][4]
 
 ### <a name="step-5"></a>Stap 5
 
-In deze stap die het runbook is gemaakt, biedt het volgende codevoorbeeld alle code die nodig zijn voor het voorbeeld. De items in de code die bevatten \<waarde\> moet worden vervangen door de waarden uit uw abonnement.
+In deze stap wordt het runbook gemaakt, het volgende code voorbeeld bevat de code die nodig is voor het voor beeld. De items in de code die \<waarde bevatten\> moeten worden vervangen door de waarden van uw abonnement.
 
-Gebruik de volgende code als Klik **opslaan**
+Gebruik de volgende code als klikken op **Opslaan**
 
 ```powershell
 # Set these variables to the proper values for your environment
@@ -146,47 +147,47 @@ else
 
 ### <a name="step-6"></a>Stap 6
 
-Wanneer het runbook is opgeslagen, moet een planning zijn gekoppeld aan deze voor het automatiseren van het begin van het runbook. Als u wilt het proces starten, klikt u op **planning**.
+Zodra het runbook is opgeslagen, moet er een schema aan worden gekoppeld om het starten van het runbook te automatiseren. Klik op **plannen**om het proces te starten.
 
 ![Stap 6][6]
 
 ## <a name="link-a-schedule-to-the-runbook"></a>Een planning aan het runbook koppelen
 
-Een nieuw schema moet worden gemaakt. Klik op **een planning koppelen aan uw runbook**.
+U moet een nieuw schema maken. Klik op **een planning aan uw Runbook koppelen**.
 
 ![Stap 7][7]
 
 ### <a name="step-1"></a>Stap 1
 
-Op de **planning** blade, klikt u op **een nieuw schema maken**
+Klik op **een nieuwe planning maken** op de Blade **schema**
 
 ![Stap 8][8]
 
 ### <a name="step-2"></a>Stap 2
 
-Op de **nieuwe planning** blade, vult u de schema-informatie. Er zijn de waarden die kunnen worden ingesteld in de volgende lijst:
+Vul op de Blade **Nieuw schema** de plannings gegevens in. De waarden die kunnen worden ingesteld, vindt u in de volgende lijst:
 
-- **Naam** -de beschrijvende naam van de planning.
-- **Beschrijving** -een beschrijving van de planning.
-- **Start** -deze waarde is een combinatie van datum, tijd en tijdzone die gezamenlijk de tijd de schematriggers.
-- **Terugkeerpatroon** -deze waarde bepaalt de herhaling van de schema's.  Geldige waarden zijn **eenmaal** of **periodiek**.
-- **Herhaald elke** -interval van het terugkeerpatroon van de planning in uren, dagen, weken of maanden.
-- **Instellen dat verlopen** -bepaalt de waarde als het schema of niet verlopen moet. Kan worden ingesteld op **Ja** of **Nee**. Een geldige datum en tijd moeten worden opgegeven als Ja is geselecteerd.
+- **Name** : de beschrijvende naam van het schema.
+- **Beschrijving** : een beschrijving van het schema.
+- **Start** -deze waarde is een combi natie van de datum, tijd en tijd zone die het tijdstip vormt waarop de planning wordt geactiveerd.
+- **Recurrence** -deze waarde bepaalt de herhaling van de planning.  Geldige waarden zijn **eenmaal** of **terugkerend**.
+- **Keer herhalen elke** -het interval van het terugkeer patroon van de planning in uren, dagen, weken of maanden.
+- **Verval datum instellen** : de waarde bepaalt of het schema moet verlopen of niet. Kan worden ingesteld op **Ja** of **Nee**. Als u Ja kiest, moet u een geldige datum en tijd opgegeven.
 
 > [!NOTE]
-> Als u nodig hebt om een runbook vaker dan eenmaal per uur worden uitgevoerd, moeten meerdere schema's worden gemaakt met verschillende intervallen (dat wil zeggen, 15, 30, 45 minuten na het uur)
+> Als u een runbook vaker wilt uitvoeren dan elk uur, moeten er meerdere planningen worden gemaakt met verschillende intervallen (dat wil zeggen 15, 30, 45 minuten na het uur)
 
 ![Stap 9][9]
 
 ### <a name="step-3"></a>Stap 3
 
-Klik op Opslaan om op te slaan van de planning aan het runbook.
+Klik op Opslaan om de planning op te slaan in het runbook.
 
 ![Stap 10][10]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu dat u een goed begrip van het integreren van Network Watcher oplossen van problemen met Azure Automation hebt, informatie over het activeren van pakketopnamen op waarschuwingen van de virtuele machine door naar de pagina [een waarschuwing geactiveerd pakketopname maken met Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md).
+Nu u een goed idee hebt over het integreren van Network Watcher het oplossen van problemen met Azure Automation, lees dan hoe u pakket opnames kunt activeren voor VM-waarschuwingen door te bezoeken [een waarschuwing voor het vastleggen van pakketten met Azure Network Watcher maken](network-watcher-alert-triggered-packet-capture.md).
 
 <!-- images -->
 [scenario]: ./media/network-watcher-monitor-with-azure-automation/scenario.png

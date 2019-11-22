@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: carlrab, vanto
 ms.date: 07/02/2019
-ms.openlocfilehash: 2140216a27d9c903495da4f7b43f6fdfda62591e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3b735f7ee644bb017756f3d6378e625fa66d448
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826915"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280788"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architectuur van Azure SQL-connectiviteit
 
@@ -55,6 +55,10 @@ Als u verbinding maakt vanaf buiten Azure, hebben uw verbindingen standaard een 
 
 ![architectuur overzicht](./media/sql-database-connectivity-architecture/connectivity-onprem.png)
 
+> [!IMPORTANT]
+> Daarnaast open poorten 14000-14999 om [verbinding met DAC](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/diagnostic-connection-for-database-administrators?view=sql-server-2017#connecting-with-dac) in te scha kelen
+
+
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>IP-adressen van Azure SQL Database-gateway
 
 In de volgende tabel worden de IP-adressen van gateways per regio weer gegeven. Als u verbinding wilt maken met een Azure SQL Database, moet u netwerk verkeer toestaan & van **alle** gateways voor de regio.
@@ -71,14 +75,14 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Brazilië - zuid         | 104.41.11.5, 191.233.200.14 |
 | Canada - midden       | 40.85.224.249      |
 | Canada - oost          | 40.86.226.166      |
-| US - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
+| VS - centraal           | 13.67.215.62, 52.182.137.15, 23.99.160.139, 104.208.16.96, 104.208.21.1 | 
 | China East           | 139.219.130.35     |
 | China - oost 2         | 40.73.82.1         |
 | China - noord          | 139.219.15.17      |
 | China - noord 2        | 40.73.50.0         |
 | Azië - oost            | 191.234.2.139, 52.175.33.150, 13.75.32.4 |
-| US - oost              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
-| US - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
+| VS - oost              | 40.121.158.30, 40.79.153.12, 191.238.6.43, 40.78.225.32 |
+| VS - oost 2            | 40.79.84.180, 52.177.185.181, 52.167.104.0, 191.239.224.107, 104.208.150.3 | 
 | Frankrijk - centraal       | 40.79.137.0, 40.79.129.1 |
 | Duitsland - centraal      | 51.4.144.100       |
 | Duitsland-noord Oost   | 51.5.144.179       |
@@ -89,20 +93,20 @@ Meer informatie over hoe verkeer moet worden gemigreerd naar nieuwe gateways in 
 | Japan - west           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea - centraal        | 52.231.32.42       |
 | Korea - zuid          | 52.231.200.86      |
-| US - noord-centraal     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
+| VS - noord-centraal     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Europa - noord         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Zuid-Afrika - noord   | 102.133.152.0      |
 | Zuid-Afrika - west    | 102.133.24.0       |
-| US - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
+| VS - zuid-centraal     | 13.66.62.124, 23.98.162.75, 104.214.16.32   | 
 | Azië - zuidoost      | 104.43.15.0, 23.100.117.95, 40.78.232.3   | 
 | VAE - centraal          | 20.37.72.64        |
 | VAE - noord            | 65.52.248.0        |
 | Verenigd Koninkrijk Zuid             | 51.140.184.11      |
 | Verenigd Koninkrijk West              | 51.141.8.11        |
-| US - west-centraal      | 13.78.145.25       |
+| VS - west-centraal      | 13.78.145.25       |
 | Europa -west          | 40.68.37.158, 191.237.232.75, 104.40.168.105  |
-| US - west              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
-| US - west 2            | 13.66.226.202      |
+| VS - west              | 104.42.238.205, 23.99.34.75, 13.86.216.196   |
+| VS - west 2            | 13.66.226.202      |
 |                      |                    |
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database verbindings beleid wijzigen

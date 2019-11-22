@@ -3,12 +3,12 @@ title: Niet-compatibele resources herstellen
 description: Deze hand leiding helpt u bij het herstellen van resources die niet compatibel zijn met beleids regels in Azure Policy.
 ms.date: 09/09/2019
 ms.topic: conceptual
-ms.openlocfilehash: 53ca21e4b8a1f3e7973706acd10601593efc3448
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8f1d263286a7504e7a8234ebd944bbbee69c5303
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959505"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267364"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Herstellen van niet-compatibele resources met Azure Policy
 
@@ -187,5 +187,5 @@ Zie de module [AZ. PolicyInsights](/powershell/module/az.policyinsights/#policy_
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

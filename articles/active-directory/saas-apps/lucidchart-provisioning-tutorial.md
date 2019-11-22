@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: LucidChart configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting ongedaan maken-gebruikersaccounts met LucidChart.
+title: 'Zelf studie: gebruikers inrichten voor LucidChart-Azure AD'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op LucidChart.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,85 +15,85 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9540cf882af6b11f0e8624e477ad336f6d5d9ad3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3791992586edbdc5188c3078b1f1bb108ce580d7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963674"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276855"
 ---
-# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Zelfstudie: LucidChart configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Zelf studie: LucidChart configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om weer te geven u de stappen die u uitvoeren in LucidChart en Azure AD wilt voor het automatisch inrichten en inrichting van gebruikersaccounts vanuit Azure AD naar LucidChart ongedaan maken. 
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in LucidChart en Azure AD om gebruikers accounts van Azure AD automatisch in te richten en te deactiveren naar LucidChart. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
-* Een Azure Active directory-tenant
-* Een tenant LucidChart met de [Enterprise-plan](https://www.lucidchart.com/user/117598685#/subscriptionLevel) of beter ingeschakeld
-* Een gebruikersaccount in LucidChart met beheerdersmachtigingen
+* Een Azure Active Directory-Tenant
+* Een LucidChart-Tenant met het [ondernemings plan](https://www.lucidchart.com/user/117598685#/subscriptionLevel) of beter ingeschakeld
+* Een gebruikers account in LucidChart met beheerders machtigingen
 
 ## <a name="assigning-users-to-lucidchart"></a>Gebruikers toewijzen aan LucidChart
 
-Azure Active Directory maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het inrichten van automatische gebruikersaccounts, wordt alleen de gebruikers en groepen die '' aan een toepassing in Azure AD toegewezen zijn gesynchroniseerd.
+Azure Active Directory gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers en groepen die zijn toegewezen aan een toepassing in azure AD gesynchroniseerd.
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u om te bepalen welke gebruikers en/of groepen in Azure AD de gebruikers die toegang nodig tot uw app LucidChart vertegenwoordigen. Als besloten, kunt u deze gebruikers toewijzen aan uw app LucidChart door de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers en/of groepen in azure AD de gebruikers vertegenwoordigen die toegang nodig hebben tot uw LucidChart-app. Nadat u hebt besloten, kunt u deze gebruikers toewijzen aan uw LucidChart-app door de volgende instructies te volgen:
 
-[Een gebruiker of groep toewijzen aan een enterprise-app](../manage-apps/assign-user-or-group-access-portal.md)
+[Een gebruiker of groep toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Belangrijke tips voor het toewijzen van gebruikers aan LucidChart
+### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Belang rijke tips voor het toewijzen van gebruikers aan LucidChart
 
-* Het wordt aanbevolen dat één Azure AD-gebruiker is toegewezen aan LucidChart voor het testen van de configuratie van de inrichting. Extra gebruikers en/of groepen kunnen later worden toegewezen.
+* U wordt aangeraden één Azure AD-gebruiker toe te wijzen aan LucidChart om de inrichtings configuratie te testen. Extra gebruikers en/of groepen kunnen later worden toegewezen.
 
-* Wanneer een gebruiker aan LucidChart toewijzen, moet u ofwel de **gebruiker** functie of een andere geldige toepassingsspecifieke-rol (indien beschikbaar) in het dialoogvenster toewijzing. De **standaardtoegang** rol werkt niet voor het inrichten en deze gebruikers worden overgeslagen.
+* Wanneer u een gebruiker toewijst aan LucidChart, moet u **de gebruikersrol** of een andere geldige toepassingsspecifieke rol (indien beschikbaar) selecteren in het dialoog venster toewijzing. De **standaard-Access** -rol werkt niet voor inrichten en deze gebruikers worden overgeslagen.
 
-## <a name="configuring-user-provisioning-to-lucidchart"></a>Inrichten van gebruikers naar LucidChart configureren
+## <a name="configuring-user-provisioning-to-lucidchart"></a>Gebruikers inrichten configureren voor LucidChart
 
-In deze sectie helpt u bij uw Azure AD verbinden met de LucidChart gebruikersaccount Inrichtings-API en configureren van de provisioning-service voor het maken, bijwerken en uitschakelen van toegewezen gebruikersaccounts in LucidChart op basis van gebruikers en groepen in Azure AD.
+In deze sectie vindt u instructies voor het verbinden van uw Azure AD-LucidChart en het configureren van de inrichtings service om toegewezen gebruikers accounts in LucidChart te maken, bij te werken en uit te scha kelen op basis van de gebruikers-en groeps toewijzing in azure AD.
 
 > [!TIP]
-> U kunt ook op SAML gebaseerde eenmalige aanmelding ingeschakeld voor LucidChart, vindt u de instructies te volgen in [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies een fraaie aanvulling in elkaar.
+> U kunt er ook voor kiezen om eenmalige aanmelding op basis van SAML in te scha kelen voor LucidChart, volgens de instructies in [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, maar deze twee functies gelden voor elkaar.
 
-### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Automatisch inrichten van gebruikersaccounts aan LucidChart in Azure AD configureren
+### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor LucidChart in azure AD
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory > Bedrijfsapps > alle toepassingen** sectie.
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory > Enter prise-apps > alle toepassingen** .
 
-2. Als u al LucidChart hebt geconfigureerd voor eenmalige aanmelding, zoeken naar uw exemplaar van LucidChart met behulp van het zoekveld. Selecteer anders **toevoegen** en zoek naar de **LucidChart** in de toepassingengalerie. Selecteer LucidChart in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+2. Als u LucidChart al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van LucidChart met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **LucidChart** in de toepassings galerie. Selecteer LucidChart in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-3. Selecteer uw exemplaar van LucidChart en selecteer vervolgens de **Provisioning** tabblad.
+3. Selecteer uw exemplaar van LucidChart en selecteer vervolgens het tabblad **inrichten** .
 
-4. Stel de **Inrichtingsmodus** naar **automatische**.
+4. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![LucidChart Provisioning](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
+    ![LucidChart-inrichting](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
 
-5. Onder de **beheerdersreferenties** sectie, voer de **geheim Token** die worden gegenereerd door de account van uw LucidChart (u vindt het token voor uw account: **Team** > **App-integratie** > **SCIM**).
+5. Voer in het gedeelte **beheerders referenties** het **geheime token** in dat is gegenereerd door het account van uw LucidChart (u kunt het token vinden onder uw account: **team** > **app Integration** > **scim**).
 
-    ![LucidChart Provisioning](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
+    ![LucidChart-inrichting](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
 
-6. Klik in de Azure-portal op **testverbinding** om te controleren of Azure AD kunt verbinden met uw app LucidChart. Als de verbinding is mislukt, zorg ervoor dat uw account LucidChart beheerdersmachtigingen heeft en probeer het opnieuw stap 5.
+6. Klik in het Azure Portal op **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw LucidChart-app. Als de verbinding mislukt, zorgt u ervoor dat uw LucidChart-account beheerders machtigingen heeft en voert u stap 5 opnieuw uit.
 
-7. Voer het e-mailadres van een persoon of groep die inrichting fout meldingen moet ontvangen de **e-mailmelding** veld en schakel het selectievakje "Een e-mailmelding verzenden wanneer een fout optreedt."
+7. Voer het e-mail adres in van een persoon of groep die in het veld met de **meldings-e-mail** inrichtings fout meldingen moet ontvangen en schakel het selectie vakje e-mail meldingen verzenden als er een fout optreedt.
 
 8. Klik op **Opslaan**.
 
-9. Selecteer onder de sectie toewijzingen **synchroniseren Azure Active Directory: gebruikers aan LucidChart**.
+9. Selecteer in de sectie toewijzingen de optie **Azure Active Directory gebruikers synchroniseren met LucidChart**.
 
-10. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker die van Azure AD worden gesynchroniseerd naar LucidChart. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in LucidChart voor update-bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
+10. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die zijn gesynchroniseerd vanuit Azure AD naar LucidChart. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in LucidChart voor bijwerk bewerkingen. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
-11. Wijzigen zodat de Azure AD-inrichtingsservice voor LucidChart de **Inrichtingsstatus** naar **op** in de **instellingen** sectie
+11. Als u de Azure AD-inrichtings service voor LucidChart wilt inschakelen, wijzigt u de **inrichtings status** **in in het** gedeelte **instellingen**
 
 12. Klik op **Opslaan**.
 
-Met deze bewerking wordt gestart voor de initiële synchronisatie van alle gebruikers en/of groepen die zijn toegewezen aan LucidChart in de sectie gebruikers en groepen. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. U kunt de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van activiteitenlogboeken, waarin alle acties die worden uitgevoerd door de inrichtingsservice worden beschreven.
+Met deze bewerking wordt de eerste synchronisatie gestart van alle gebruikers en/of groepen die zijn toegewezen aan LucidChart in de sectie gebruikers en groepen. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. U kunt de sectie **synchronisatie Details** gebruiken om de voortgang te bewaken en koppelingen te volgen naar activiteiten logboeken voor inrichtingen, die alle acties beschrijven die door de inrichtings service worden uitgevoerd.
 
 Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapportage over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Meer informatie over het controleren van Logboeken en rapporten over het inrichten van activiteit ophalen](../manage-apps/check-status-user-account-provisioning.md)
+* [Meer informatie over het controleren van Logboeken en het ophalen van rapporten over de inrichtings activiteit](../manage-apps/check-status-user-account-provisioning.md)

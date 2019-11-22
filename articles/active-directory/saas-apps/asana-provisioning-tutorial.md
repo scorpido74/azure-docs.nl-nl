@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Asana configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting van gebruikersaccounts aan Asana ongedaan maken.
+title: 'Zelf studie: gebruikers inrichten voor asana-Azure AD'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op asana.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -16,91 +16,91 @@ ms.date: 03/27/2019
 ms.author: arvinh
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10d5ceedfd1f0fad0c6f03feba2150968aecf02b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 60a237e4295f17ce37f622022d318e9f2aff24d7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964219"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276585"
 ---
-# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Zelfstudie: Asana configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>Zelf studie: asana configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om u de stappen die u uitvoeren in Asana en Azure Active Directory (Azure AD wilt) voor het automatisch inrichten en verwijdering van gebruikersaccounts vanuit Azure AD naar Asana weer te geven.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren in asana en Azure Active Directory (Azure AD) om gebruikers accounts van Azure AD automatisch in te richten en te deactiveren naar asana.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
-* Een Azure AD-tenant
-* Een Asana-tenant met een [Enterprise](https://www.asana.com/pricing) plannen of beter ingeschakeld
-* Een gebruikersaccount in Asana met beheerdersmachtigingen
+* Een Azure AD-Tenant
+* Een asana-Tenant met een [ondernemings](https://www.asana.com/pricing) plan of beter in te scha kelen
+* Een gebruikers account in asana met beheerders machtigingen
 
 > [!NOTE]
-> Azure AD integratie inrichting is afhankelijk van de [Asana API](https://asana.com/developers/api-reference/users), die voor Asana beschikbaar is.
+> Integratie van Azure AD-inrichting is afhankelijk van de [asana-API](https://asana.com/developers/api-reference/users), die beschikbaar is voor asana.
 
-## <a name="assign-users-to-asana"></a>Gebruikers toewijzen aan Asana
+## <a name="assign-users-to-asana"></a>Gebruikers toewijzen aan asana
 
-Azure AD maakt gebruik van een concept genaamd *toewijzingen* om te bepalen welke gebruikers krijgen toegang tot geselecteerde apps. In de context van het inrichten van automatische gebruikersaccounts, worden alleen de gebruikers die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd.
+Azure AD gebruikt een concept met de naam *toewijzingen* om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde apps. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers gesynchroniseerd die zijn toegewezen aan een toepassing in azure AD.
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u bepalen welke gebruikers in Azure AD moeten toegang hebben tot uw app in Asana. U kunt deze gebruikers toewijzen aan uw app in Asana en volg de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers in azure AD toegang nodig hebben tot uw asana-app. U kunt deze gebruikers vervolgens aan uw asana-app toewijzen door de volgende instructies te volgen:
 
-[Een gebruiker toewijzen aan een enterprise-app](../manage-apps/assign-user-or-group-access-portal.md)
+[Een gebruiker toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-asana"></a>Belangrijke tips voor het toewijzen van gebruikers aan Asana
+### <a name="important-tips-for-assigning-users-to-asana"></a>Belang rijke tips voor het toewijzen van gebruikers aan asana
 
-Het is raadzaam dat u één Azure AD-gebruiker aan Asana voor het testen van de configuratie van de inrichting. Extra gebruikers kunnen later worden toegewezen.
+We raden u aan één Azure AD-gebruiker toe te wijzen aan asana om de inrichtings configuratie te testen. Extra gebruikers kunnen later worden toegewezen.
 
-## <a name="configure-user-provisioning-to-asana"></a>Inrichten van gebruikers aan Asana configureren
+## <a name="configure-user-provisioning-to-asana"></a>Gebruikers inrichten configureren voor asana
 
-Deze sectie helpt u bij het verbinden van uw Azure AD aan Asana-gebruikersaccount Inrichtings-API. U ook configureren de provisioning-service voor het maken, bijwerken en uitschakelen van toegewezen gebruikersaccounts in Asana op basis van de toewijzingen van gebruikers in Azure AD.
+In deze sectie wordt u begeleid bij het verbinden van uw Azure AD to asana user account Provisioning API. U kunt de inrichtings service ook configureren om toegewezen gebruikers accounts in asana te maken, bij te werken en uit te scha kelen op basis van gebruikers toewijzingen in azure AD.
 
 > [!TIP]
-> Als u wilt inschakelen op basis van SAML eenmalige aanmelding voor Asana, volg de instructies de [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies elkaar aanvullen.
+> Als u eenmalige aanmelding op basis van SAML voor asana wilt inschakelen, volgt u de instructies in de [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Het configureren van automatische inrichten van gebruikersaccounts aan Asana in Azure AD
+### <a name="to-configure-automatic-user-account-provisioning-to-asana-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor asana in azure AD
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory** > **Bedrijfsapps** > **alle toepassingen** sectie.
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory** > **Enter prise-apps** > **alle toepassingen** .
 
-1. Als u al Asana geconfigureerd voor eenmalige aanmelding, zoekt u uw exemplaar van Asana met behulp van het zoekveld. Selecteer anders **toevoegen** en zoek naar de **Asana** in de toepassingengalerie. Selecteer **Asana** in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+1. Als u asana al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van asana met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **asana** in de toepassings galerie. Selecteer **asana** in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-1. Selecteer uw exemplaar van Asana en selecteer vervolgens de **Provisioning** tabblad.
+1. Selecteer uw exemplaar van asana en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel **Inrichtingsmodus** naar **automatische**.
+1. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Asana Provisioning](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
+    ![Asana-inrichting](./media/asana-provisioning-tutorial/asanaazureprovisioning.png)
 
-1. Onder de **beheerdersreferenties** sectie, volgt u deze instructies voor het genereren van het token en geef deze op in **geheim Token**:
+1. Volg de instructies in de sectie **beheerders referenties** om het token te genereren en in te voeren in een **geheim token**:
 
-    a. Aanmelden bij [Asana](https://app.asana.com) met behulp van uw beheerdersaccount.
+    a. Meld u aan bij [asana](https://app.asana.com) met uw beheerders account.
 
-    b. Selecteer de profielfoto van de bovenste balk en selecteer de huidige instellingen voor de naam van de organisatie.
+    b. Selecteer de profiel foto in de bovenste balk en selecteer de huidige instellingen voor de organisatie naam.
 
-    c. Ga naar de **serviceaccounts** tabblad.
+    c. Ga naar het tabblad **service accounts** .
 
-    d. Selecteer **Service-Account toevoegen**.
+    d. Selecteer **Service account toevoegen**.
 
-    e. Update **naam** en **over** en de profielfoto indien nodig. Kopieer het token in **Token**, en selecteer deze in **wijzigingen opslaan**.
+    e. Update de **naam** en de **informatie over** de profiel foto, indien nodig. Kopieer het token in **token**en selecteer dit in **wijzigingen opslaan**.
 
-1. Selecteer in de Azure portal, **testverbinding** om ervoor te zorgen dat Azure AD verbinding met uw app in Asana maken kunt. Als de verbinding is mislukt, zorg ervoor dat uw account Asana beheerdersmachtigingen heeft en probeer de **testverbinding** stap opnieuw uit.
+1. In de Azure Portal selecteert u **verbinding testen** om ervoor te zorgen dat Azure AD verbinding kan maken met uw asana-app. Als de verbinding mislukt, zorgt u ervoor dat uw asana-account beheerders machtigingen heeft en voert u de stap **verbinding testen** opnieuw uit.
 
-1. Voer het e-mailadres van een persoon of groep die u meldingen wilt ontvangen inrichting fout in **e-mailmelding**. Schakel het selectievakje onder.
-
-1. Selecteer **Opslaan**.
-
-1. Onder de **toewijzingen** sectie, selecteer **synchroniseren Azure Active Directory: gebruikers aan Asana**.
-
-1. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker uit Azure AD worden gesynchroniseerd met Asana. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in Asana voor update-bewerkingen. Selecteer **opslaan** doorvoeren van wijzigingen. Zie voor meer informatie, [gebruiker inrichten kenmerktoewijzingen aanpassen](../manage-apps/customize-application-attributes.md).
-
-1. Om in te schakelen van de Azure AD-inrichtingsservice voor Asana, in de **instellingen** sectie, wijzigt u **Inrichtingsstatus** naar **op**.
+1. Voer het e-mail adres in van een persoon of groep die u wilt ontvangen van de inrichtings fout meldingen in de **e-mail melding**. Schakel het selectie vakje eronder in.
 
 1. Selecteer **Opslaan**.
 
-Nu de initiële synchronisatie wordt gestart voor alle gebruikers die zijn toegewezen aan Asana in de **gebruikers** sectie. De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. Gebruik de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van activiteitenlogboeken. De auditlogboeken worden alle acties die worden uitgevoerd door de provisioning-service op uw app in Asana beschreven.
+1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met asana**.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapporteren over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die moeten worden gesynchroniseerd van Azure AD naar asana. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in asana voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren. Zie [aangepaste kenmerk toewijzingen voor gebruikers inrichten aanpassen](../manage-apps/customize-application-attributes.md)voor meer informatie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+1. Als u de Azure AD-inrichtings service voor asana wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-Apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+1. Selecteer **Opslaan**.
+
+Nu wordt de eerste synchronisatie gestart voor alle gebruikers die zijn toegewezen aan asana in de sectie **gebruikers** . De eerste synchronisatie langer duren om uit te voeren dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. Gebruik de sectie **synchronisatie Details** om de voortgang te bewaken en de koppelingen naar de activiteiten logboeken te volgen. In de audit logboeken worden alle acties beschreven die worden uitgevoerd door de inrichtings service in uw asana-app.
+
+Zie [rapport over automatische toewijzing van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
+
+## <a name="additional-resources"></a>Aanvullende bronnen
+
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](asana-tutorial.md)

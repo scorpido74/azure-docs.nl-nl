@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 10/01/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d2823158192ae9fc9182f3f60f82d5bd9c050b09
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
+ms.openlocfilehash: a07fa597305771ed3f4da01f2819297fc9cd3d77
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71811629"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271696"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Wederzijdse TLS-verificatie voor Azure App Service configureren
 
@@ -31,7 +31,7 @@ U kunt de toegang tot uw Azure App Service-app beperken door verschillende verif
 
 ## <a name="enable-client-certificates"></a>Client certificaten inschakelen
 
-Als u uw app wilt instellen op client certificaten vereist, moet u de `clientCertEnabled`-instelling voor uw app instellen op `true`. Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com).
+Als u uw app wilt instellen op client certificaten vereist, moet u de `clientCertEnabled` instelling voor uw app instellen op `true`. Als u de instelling wilt instellen, voert u de volgende opdracht uit in de [Cloud shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
@@ -41,18 +41,18 @@ az webapp update --set clientCertEnabled=true --name <app_name> --resource-group
 
 Wanneer u wederzijdse verificatie inschakelt voor uw toepassing, is voor alle paden in de hoofdmap van uw app een client certificaat vereist voor toegang. Als u wilt toestaan dat bepaalde paden open blijven voor anonieme toegang, kunt u uitsluitings paden definiëren als onderdeel van de configuratie van uw toepassing.
 
-Uitsluitings paden kunnen worden geconfigureerd door **configuratie** > **algemene instellingen** te selecteren en een uitgesloten pad te definiëren. In dit voor beeld wordt voor alle items onder `/public`-pad voor uw toepassing geen client certificaat aangevraagd.
+Uitsluitings paden kunnen worden geconfigureerd door **configuratie** > **algemene instellingen** te selecteren en een uitgesloten pad te definiëren. In dit voor beeld wordt aan alles onder `/public` pad voor uw toepassing geen client certificaat gevraagd.
 
 ![Paden voor certificaat uitsluiting][exclusion-paths]
 
 
 ## <a name="access-client-certificate"></a>Client certificaat openen
 
-In App Service wordt SSL-beëindiging van de aanvraag uitgevoerd op het front-end-load balancer. Bij het door sturen van de aanvraag naar uw app-code met [client certificaten ingeschakeld](#enable-client-certificates), App Service een `X-ARR-ClientCert`-aanvraag header injecteert met het client certificaat. App Service doet niets met dit client certificaat, behalve het door sturen naar uw app. Uw app-code is verantwoordelijk voor het valideren van het client certificaat.
+In App Service wordt SSL-beëindiging van de aanvraag uitgevoerd op het front-end-load balancer. Bij het door sturen van de aanvraag naar uw app-code met [client certificaten ingeschakeld](#enable-client-certificates), App Service een `X-ARR-ClientCert` aanvraag header met het client certificaat injecteren. App Service doet niets met dit client certificaat, behalve het door sturen naar uw app. Uw app-code is verantwoordelijk voor het valideren van het client certificaat.
 
 Voor ASP.NET is het client certificaat beschikbaar via de eigenschap **HttpRequest. ClientCertificate** .
 
-Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certificaat beschikbaar in uw app via een base64-gecodeerde waarde in de `X-ARR-ClientCert`-aanvraag header.
+Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certificaat beschikbaar in uw app via een base64-gecodeerde waarde in de `X-ARR-ClientCert` aanvraag header.
 
 ## <a name="aspnet-sample"></a>ASP.NET-voor beeld
 
@@ -64,7 +64,7 @@ Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certific
 
     namespace ClientCertificateUsageSample
     {
-        public partial class cert : System.Web.UI.Page
+        public partial class Cert : System.Web.UI.Page
         {
             public string certHeader = "";
             public string errorString = "";
@@ -180,7 +180,7 @@ Voor andere toepassings Stacks (node. js, PHP, enzovoort) is het client certific
 
 ## <a name="nodejs-sample"></a>Voor beeld van node. js
 
-De volgende voorbeeld code van node. js haalt de `X-ARR-ClientCert`-header op en gebruikt [knoop punt-vervalsing](https://github.com/digitalbazaar/forge) om de met base64 gecodeerde PEM-teken reeks te converteren naar een certificaat object en dit te valideren:
+Met de volgende voorbeeld code van node. js wordt de `X-ARR-ClientCert`-header opgehaald en wordt [knooppunt vervalsing](https://github.com/digitalbazaar/forge) gebruikt om de met base64 gecodeerde PEM-teken reeks te converteren naar een certificaat object en dit te valideren:
 
 ```javascript
 import { NextFunction, Request, Response } from 'express';
