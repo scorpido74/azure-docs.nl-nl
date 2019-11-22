@@ -114,6 +114,8 @@
           href: serial-console-grub-single-user-mode.md
         - name: Seriële console NMI/SysRq
           href: serial-console-nmi-sysrq.md
+        - name: Proactieve grubconfiguratie van seriële console
+          href: serial-console-grub-proactive-configuration.md
     - name: Seriële console voor Windows
       href: serial-console-windows.md
       items:
@@ -125,8 +127,6 @@
       href: serial-console-power-options.md
     - name: Veelvoorkomende fouten met de seriële console
       href: serial-console-errors.md
-    - name: Proactieve grubconfiguratie van seriële console
-      href: serial-console-grub-proactive-configuration.md
 - name: Fouten bij het verwijderen van opslagresources
   href: storage-resource-deletion-errors.md
 - name: Fouten bij het verwijderen van klassieke opslagresources
