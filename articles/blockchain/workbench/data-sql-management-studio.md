@@ -1,25 +1,25 @@
 ---
-title: Gegevens van Azure Blockchain Workbench gebruiken met SQL Server Management Studio
+title: Azure Block Chain Workbench-gegevens gebruiken met een SQL database
 description: Leer hoe u vanuit SQL Server Management Studio verbinding maakt met een SQL-database van Azure Blockchain Workbench.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/09/2019
+ms.date: 11/20/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: db43dd04da601650b3592dc74cdd804fae394c00
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
-ms.translationtype: MT
+ms.openlocfilehash: 3a734c09b3a74fbe4165f4de25ce450fd3fbde1d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510900"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286732"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-sql-server-management-studio"></a>Gegevens van Azure Blockchain Workbench gebruiken met SQL Server Management Studio
 
-Microsoft SQL Server Management Studio biedt de mogelijkheid om snel query's op basis van Azure Blockchain Workbench SQL DB te schrijven en te testen. In dit gedeelte wordt stapsgewijs uitgelegd hoe u vanuit SQL Server Management Studio verbinding maakt met een SQL-database van Azure Blockchain Workbench.
+Microsoft SQL Server Management Studio biedt de mogelijkheid om snel query's op basis van Azure Blockchain Workbench SQL DB te schrijven en te testen. In deze sectie vindt u stapsgewijze instructies voor het maken van verbinding met de SQL Database van Azure Block Chain Workbench vanuit SQL Server Management Studio.
 
 ## <a name="prerequisites"></a>Vereisten
 

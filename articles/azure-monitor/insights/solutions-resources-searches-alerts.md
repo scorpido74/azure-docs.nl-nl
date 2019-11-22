@@ -1,6 +1,6 @@
 ---
 title: Opgeslagen Zoek opdrachten in beheer oplossingen | Microsoft Docs
-description: Beheer oplossingen bevatten meestal opgeslagen Zoek opdrachten in Log Analytics voor het analyseren van gegevens die zijn verzameld door de oplossing. Ze kunnen ook waarschuwingen definiëren om de gebruiker op de hoogte te stellen of automatisch actie ondernemen als reactie op een kritiek probleem. In dit artikel wordt beschreven hoe u Log Analytics opgeslagen Zoek opdrachten kunt definiëren in een resource manager-sjabloon, zodat deze kunnen worden opgenomen in beheer oplossingen.
+description: Beheer oplossingen bevatten doorgaans opgeslagen logboek query's voor het analyseren van gegevens die zijn verzameld door de oplossing. In dit artikel wordt beschreven hoe u Log Analytics opgeslagen Zoek opdrachten kunt definiëren in een resource manager-sjabloon.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
@@ -8,17 +8,17 @@ author: bwren
 ms.author: bwren
 ms.date: 07/29/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ce4f3dcbc28668f786c706e7029061e541a76ce9
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 1f4f0ac5d592a01b284a12e899b0aa5a9a62d122
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72553923"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304923"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Log Analytics opgeslagen Zoek opdrachten en waarschuwingen toevoegen aan beheer oplossing (preview)
 
 > [!IMPORTANT]
-> Zoals [eerder is aangekondigd](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), kunnen log Analytics-werk ruimten die zijn gemaakt na *1 juni 2019* , waarschuwings regels beheren met **alleen** Azure ScheduledQueryRules [rest API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), [Azure Resource Manager sjabloon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) en [Power shell cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klanten kunnen eenvoudig [hun voor keuren voor waarschuwings regel beheer](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) voor oudere werk ruimten gebruiken om Azure monitor scheduledQueryRules als standaard te gebruiken en veel [nieuwe voor delen](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) te krijgen, zoals de mogelijkheid om systeem eigen Power shell-cmdlets uit te scha kelen, verg root lookback tijd in regels, het maken van regels in een afzonderlijke resource groep of abonnement en nog veel meer.
+> Zoals [eerder is aangekondigd](https://azure.microsoft.com/updates/switch-api-preference-log-alerts/), kunnen de log Analytics-werk ruimte (s) die zijn gemaakt na *1 juni 2019* , waarschuwings regels beheren met **alleen** Azure ScheduledQueryRules [rest API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/), [Azure Resource Manager sjabloon](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-azure-resource-template) en [Power shell-cmdlet](../../azure-monitor/platform/alerts-log.md#managing-log-alerts-using-powershell). Klanten kunnen eenvoudig [hun favoriete middelen van waarschuwings regel beheer](../../azure-monitor/platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) voor oudere werk ruimten wisselen om Azure monitor scheduledQueryRules als standaard te gebruiken en veel [nieuwe voor delen](../../azure-monitor/platform/alerts-log-api-switch.md#benefits-of-switching-to-new-azure-api) te verkrijgen, zoals de mogelijkheid om systeem eigen Power shell-cmdlets uit te scha kelen, een verhoogde lookback periode in regels, het maken van regels in een afzonderlijke resource groep of abonnement en nog veel meer.
 
 > [!NOTE]
 > Dit is voorlopige documentatie voor het maken van beheer oplossingen die momenteel als preview-versie beschikbaar zijn. Elk schema dat hieronder wordt beschreven, kan worden gewijzigd.
@@ -44,7 +44,7 @@ Alle Log Analytics resources die in een resource manager-sjabloon zijn gedefinie
 
 De volgende tabel geeft een overzicht van de API-versie voor de resource die in dit voor beeld wordt gebruikt.
 
-| Resourcetype | API-versie | Query |
+| Resourcetype | API-versie | Query's uitvoeren |
 |:---|:---|:---|
 | savedSearches | 2017-03-15-preview | Gebeurtenis &#124; waarbij EventLevelName = = "Error"  |
 
@@ -78,12 +78,12 @@ Elke eigenschap van een opgeslagen zoek opdracht wordt beschreven in de volgende
 | query | De query die moet worden uitgevoerd. |
 
 > [!NOTE]
-> U moet mogelijk escape tekens in de query gebruiken als deze tekens bevat die als JSON kunnen worden geïnterpreteerd. Als uw query bijvoorbeeld **AzureActivity | Operationname: ' micro soft. Compute/informatie/write '** , moet worden geschreven in het oplossings bestand als **AzureActivity | Operationname:/\"Microsoft. Compute/informatie/write \"** .
+> U moet mogelijk escape tekens in de query gebruiken als deze tekens bevat die als JSON kunnen worden geïnterpreteerd. Als uw query bijvoorbeeld **AzureActivity | Operationname: ' micro soft. Compute/informatie/write '** , moet worden geschreven in het oplossings bestand als **AzureActivity | Operationname:/\"micro soft. Compute/informatie/write\"** .
 
 ## <a name="alerts"></a>Waarschuwingen
 [Waarschuwingen voor Azure-logboeken](../../azure-monitor/platform/alerts-unified-log.md) worden gemaakt door Azure-waarschuwings regels die regel matig opgegeven logboek query's uitvoeren. Als de resultaten van de query overeenkomen met opgegeven criteria, wordt een waarschuwings record gemaakt en worden een of meer acties uitgevoerd met [actie groepen](../../azure-monitor/platform/action-groups.md).
 
-Voor gebruikers die waarschuwingen naar Azure uitbreiden, worden acties nu beheerd in actie groepen van Azure. Wanneer een werk ruimte en de bijbehorende waarschuwingen worden uitgebreid naar Azure, kunt u acties ophalen of toevoegen met behulp van de [actie groep-Azure Resource Manager sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Voor gebruikers die waarschuwingen naar Azure uitbreiden, worden de acties nu beheerd in Azure-Actiegroepen. Wanneer een werk ruimte en de bijbehorende waarschuwingen worden uitgebreid naar Azure, kunt u acties ophalen of toevoegen met behulp van de [actie groep-Azure Resource Manager sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 Waarschuwings regels in verouderde beheer oplossingen bestaan uit de volgende drie verschillende bronnen.
 
 - **Opgeslagen zoek opdracht.** Hiermee wordt de logboek zoekactie gedefinieerd die wordt uitgevoerd. Meerdere waarschuwings regels kunnen één opgeslagen zoek opdracht delen.
@@ -112,9 +112,9 @@ Een opgeslagen zoek opdracht kan een of meer schema's bevatten met elk schema da
     }
 De eigenschappen voor plannings resources worden beschreven in de volgende tabel.
 
-| Element naam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
-| ingeschakeld       | Ja | Hiermee wordt aangegeven of de waarschuwing wordt ingeschakeld wanneer deze wordt gemaakt. |
+| enabled       | Ja | Hiermee wordt aangegeven of de waarschuwing wordt ingeschakeld wanneer deze wordt gemaakt. |
 | interval      | Ja | Hoe vaak de query wordt uitgevoerd in minuten. |
 | queryTimeSpan | Ja | De tijds duur in minuten waarover de resultaten moeten worden geëvalueerd. |
 
@@ -123,7 +123,7 @@ De plannings bron moet afhankelijk zijn van de opgeslagen zoek opdracht, zodat d
 > De naam van de planning moet uniek zijn in een bepaalde werk ruimte; twee schema's kunnen niet dezelfde ID hebben, zelfs als ze zijn gekoppeld aan verschillende opgeslagen Zoek opdrachten. De naam van alle opgeslagen Zoek opdrachten, planningen en acties die zijn gemaakt met de Log Analytics-API moet een kleine letter zijn.
 
 ### <a name="actions"></a>Acties
-Een planning kan meerdere acties hebben. Een actie kan een of meer processen definiëren die moeten worden uitgevoerd, zoals het verzenden van een e-mail of het starten van een runbook, of het definiëren van een drempel waarde die bepaalt wanneer de resultaten van een zoek opdracht voldoen aan bepaalde criteria. Bij sommige acties worden beide gedefinieerd, zodat de processen worden uitgevoerd wanneer aan de drempel wordt voldaan.
+Een planning kan meerdere acties hebben. Een actie kan definiëren een of meer processen om uit te voeren, zoals een e-mail wordt verzonden of een runbook starten, of het kan een drempelwaarde waarmee wordt bepaald wanneer de resultaten van een zoekopdracht voldoen aan bepaalde criteria definiëren. Sommige acties worden beide definiëren, zodat de processen worden uitgevoerd wanneer de drempelwaarde wordt voldaan.
 Acties kunnen worden gedefinieerd met behulp van de resource of actie resource van [actie groep].
 
 Er zijn twee typen actie resources die zijn opgegeven met de eigenschap **type** . Voor een planning is één **waarschuwings** actie vereist, waarmee de details van de waarschuwings regel worden gedefinieerd en welke acties worden uitgevoerd wanneer een waarschuwing wordt gemaakt. Actie resources hebben het type `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.
@@ -164,44 +164,44 @@ Waarschuwings acties hebben de volgende structuur. Dit omvat algemene variabelen
 
 De eigenschappen van resources voor waarschuwings acties worden beschreven in de volgende tabellen.
 
-| Element naam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
-| `type` | Ja | Het type actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
-| `name` | Ja | Weergave naam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
+| `type` | Ja | Het type van de actie.  Dit is een **waarschuwing** voor waarschuwings acties. |
+| `name` | Ja | Weergavenaam voor de waarschuwing.  Dit is de naam die wordt weer gegeven in de console voor de waarschuwings regel. |
 | `description` | Nee | Optionele beschrijving van de waarschuwing. |
-| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **kritieke**<br>**waarschuwing**<br>**informatief**
+| `severity` | Ja | Ernst van de waarschuwings record van de volgende waarden:<br><br> **critical**<br>**waarschuwing**<br>**informatief**
 
-#### <a name="threshold"></a>Spreek
+#### <a name="threshold"></a>Drempelwaarde
 Deze sectie is vereist. Hiermee worden de eigenschappen van de waarschuwings drempel gedefinieerd.
 
-| Element naam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
-| `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt = groter dan <br>lt = kleiner dan** |
+| `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt =<br>lt = kleiner dan** |
 | `Value` | Ja | De waarde waarmee de resultaten worden vergeleken. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Deze sectie is optioneel. Neem deze op voor een waarschuwing voor metrische metingen.
 
-| Element naam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
-| `TriggerCondition` | Ja | Hiermee geeft u op of de drempel waarde is voor het totale aantal schendingen of opeenvolgende schendingen van de volgende waarden:<br><br>**Totale <br>Consecutive** |
-| `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt = groter dan <br>lt = kleiner dan** |
+| `TriggerCondition` | Ja | Hiermee geeft u op of de drempel waarde is voor het totale aantal schendingen of opeenvolgende schendingen van de volgende waarden:<br><br>**Totaal<br>opeenvolgend** |
+| `Operator` | Ja | Operator voor de vergelijking van de volgende waarden:<br><br>**gt =<br>lt = kleiner dan** |
 | `Value` | Ja | Aantal keer dat aan de criteria moet worden voldaan om de waarschuwing te activeren. |
 
 
 #### <a name="throttling"></a>Beperking
 Deze sectie is optioneel. Neem deze sectie op als u waarschuwingen van dezelfde regel wilt onderdrukken gedurende een bepaalde hoeveelheid tijd nadat een waarschuwing is gemaakt.
 
-| Element naam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | DurationInMinutes | Ja als het bandbreedte-element is opgenomen | Aantal minuten dat waarschuwingen worden onderdrukt nadat een van dezelfde waarschuwings regel is gemaakt. |
 
 #### <a name="azure-action-group"></a>Actie groep van Azure
-Alle waarschuwingen in azure, gebruiken actie groep als het standaard mechanisme voor het afhandelen van acties. Met actie groep kunt u uw acties één keer opgeven en vervolgens de actie groep koppelen aan meerdere waarschuwingen-in Azure. Zonder dat dit nodig is om herhaaldelijk dezelfde acties opnieuw te declareren. Actie groepen ondersteunen meerdere acties, zoals e-mail, SMS, spraak oproep, ITSM-verbinding, Automation-Runbook, webhook-URI en meer.
+Alle waarschuwingen in Azure, gebruik actiegroep als het standaardmechanisme voor het verwerken van acties. Met de actiegroep, kunt u uw acties één keer opgeven en koppel vervolgens de actie die u wilt meerdere waarschuwingen - binnen Azure. Zonder de noodzaak om te declareren dezelfde acties herhaaldelijk telkens opnieuw. Actiegroepen ondersteuning voor meerdere acties - inclusief e-mail, SMS, Spraakoproep, ITSM-verbinding, Automation-Runbook, Webhook URI en meer.
 
-Voor gebruikers die hun waarschuwingen hebben uitgebreid naar Azure, moeten er nu actie groeps Details worden door gegeven aan de drempel waarde, om een waarschuwing te kunnen maken. E-mail gegevens, webhook-Url's, Details van Runbook-automatisering en andere acties moeten eerst worden gedefinieerd in een actie groep naast het maken van een waarschuwing. een kan [actie groep maken van Azure monitor](../../azure-monitor/platform/action-groups.md) in portal of [actie groep gebruiken-resource sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
+Voor gebruikers die hun waarschuwingen hebt uitgebreid naar Azure, hebt een planning nu actiegroep informatie doorgegeven, samen met de drempelwaarde, kunnen een waarschuwing wilt maken. E-mail gegevens, webhook-Url's, Details van Runbook-automatisering en andere acties moeten eerst worden gedefinieerd in een actie groep naast het maken van een waarschuwing. een kan [actie groep maken van Azure monitor](../../azure-monitor/platform/action-groups.md) in portal of [actie groep gebruiken-resource sjabloon](../../azure-monitor/platform/action-groups-create-resource-manager-template.md).
 
-| Element naam | Verplicht | Beschrijving |
+| Elementnaam | Vereist | Beschrijving |
 |:--|:--|:--|
 | AzNsNotification | Ja | De resource-ID van de actie groep van Azure die moet worden gekoppeld aan een waarschuwing voor het nemen van de benodigde acties wanneer aan waarschuwings criteria wordt voldaan. |
 | CustomEmailSubject | Nee | Aangepaste onderwerpregel van het e-mail bericht dat wordt verzonden naar alle adressen die zijn opgegeven in de gekoppelde actie groep. |

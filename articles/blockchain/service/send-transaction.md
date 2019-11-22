@@ -1,21 +1,21 @@
 ---
-title: Visual Studio code-Azure Block Chain service gebruiken
+title: Zelf studie voor het maken, bouwen, & implementeren van Smart contracten-Azure Block Chain-Service
 description: Zelf studie over het gebruik van de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service.
 services: azure-blockchain
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: chrisseg
-ms.openlocfilehash: 13a5993a14e386dc7d24c7464610bbf1ace4b9cb
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
-ms.translationtype: MT
+ms.openlocfilehash: 9e3b9dc7ea10e67b636194d955f3a7b50d990a23
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329248"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286691"
 ---
-# <a name="tutorial-usevisual-studio-code-to-create-buildanddeploysmartcontracts"></a>Zelf studie: Visual Studio code gebruiken om slimme contracten te maken, te bouwen en te implementeren
+# <a name="tutorial-create-buildanddeploysmartcontracts-on-azure-blockchain-service"></a>Zelf studie: slimme contracten maken, bouwen en implementeren in azure Block Chain Service
 
 In deze zelf studie gebruikt u de Azure Block Chain Development Kit voor Ethereum-extensie in Visual Studio code voor het maken, bouwen en implementeren van een slim contract op de Azure Block Chain-service. U kunt Truffle ook gebruiken om een slimme contract functie uit te voeren via een trans actie.
 
@@ -32,6 +32,21 @@ U gebruikt Azure Block Chain Development Kit voor Ethereum voor het volgende:
 ## <a name="prerequisites"></a>Vereisten
 
 * Volledige [Snelstartgids: Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md)
+* [Visual Studio Code](https://code.visualstudio.com/Download)
+* [Azure Block Chain Development Kit voor Ethereum-uitbrei ding](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
+* [Node. js 10.15. x of hoger](https://nodejs.org/download)
+* [Git 2.10. x of hoger](https://git-scm.com)
+* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) Voeg python. exe toe aan het pad. Python-versie 2.7.15 in uw pad is vereist voor Azure Block Chain Development Kit.
+* [Truffle 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
+* [Ganache CLI 6.0.0](https://github.com/trufflesuite/ganache-cli)
+
+In Windows is een geïnstalleerd C++ Compileer programma vereist voor de module node-Gyp. U kunt de MSBuild-hulpprogram ma's gebruiken:
+
+* Als Visual Studio 2017 is geïnstalleerd, configureert u NPM voor het gebruik van de MSBuild-hulpprogram ma's met de opdracht `npm config set msvs_version 2017 -g`
+* Als Visual Studio 2019 is geïnstalleerd, stelt u het pad voor MS build-hulpprogram ma's voor NPM in. Bijvoorbeeld: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
+* Als dat niet het geval is, installeert u de zelfstandige hulp middelen voor het bouwen met behulp van `npm install --global windows-build-tools` in een opdracht shell met verhoogde bevoegdheden *uitvoeren als Administrator* .
+
+Zie de [Gyp-opslag plaats op github](https://github.com/node-gyp)voor meer informatie over node-Gyp.
 
 ## <a name="create-a-smart-contract"></a>Een slim contract maken
 
@@ -104,7 +119,7 @@ De functie **SendRequest** van het **HelloBlockchain** -contract wijzigt de vari
     truffle exec sendrequest.js --network <blockchain network>
     ```
 
-    Vervang \<blockchain Network @ no__t-1 door de naam van het block chain-netwerk dat is gedefinieerd in **Truffle-config. js**.
+    Vervang \<Block chain-netwerk\> door de naam van het block chain-netwerk dat is gedefinieerd in **Truffle-config. js**.
 
 Truffle voert het script uit op uw Block chain-netwerk.
 
@@ -159,13 +174,13 @@ Met de functies van een slimme opdracht kan de huidige waarde van de status vari
     truffle exec getmessage.js --network <blockchain network>
     ```
 
-    Vervang \<blockchain Network @ no__t-1 door de naam van het block chain-netwerk dat is gedefinieerd in **Truffle-config. js**.
+    Vervang \<Block chain-netwerk\> door de naam van het block chain-netwerk dat is gedefinieerd in **Truffle-config. js**.
 
 Het script voert een query uit op het slimme contract door de getMessage-functie aan te roepen. De huidige waarde van de status variabele **RequestMessage** wordt geretourneerd.
 
 ![Script uitvoer](./media/send-transaction/execute-get.png)
 
-Let op: de waarde is niet **Hello, Block Chain!** . In plaats daarvan is de geretourneerde waarde een tijdelijke aanduiding. Wanneer u het contract wijzigt en implementeert, haalt het contract een nieuw contract adres op en worden aan de status variabelen waarden toegewezen in de Smart contract-constructor. Het Truffle-voor beeld- **2_deploy_contracts. js** -migratie script implementeert het slimme contract en geeft een tijdelijke aanduiding door als argument. De constructor stelt de **RequestMessage** -status variabele in op de waarde van de tijdelijke aanduiding en dat is wat er wordt geretourneerd.
+Let op: de waarde is niet **Hello, Block Chain!** . In plaats daarvan is de geretourneerde waarde een tijdelijke aanduiding. Wanneer u het contract wijzigt en implementeert, wordt het gewijzigde contract geïmplementeerd op een nieuw adres en worden de status variabelen toegewezen waarden in de Smart contract-constructor. Het Truffle-voor beeld **2_deploy_contracts. js** -migratie script implementeert het slimme contract en geeft een tijdelijke aanduiding door als argument. De constructor stelt de **RequestMessage** -status variabele in op de waarde van de tijdelijke aanduiding en dat is wat er wordt geretourneerd.
 
 1. Als u de **RequestMessage** -status variabele wilt instellen en de waarde wilt opvragen, voert u de scripts **SendRequest. js** en **GetMessage. js** opnieuw uit.
 
@@ -175,12 +190,12 @@ Let op: de waarde is niet **Hello, Block Chain!** . In plaats daarvan is de gere
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen door de `myResourceGroup`-Resource groep te verwijderen die u hebt gemaakt in de Snelstartgids *een Block Chain-lid maken* .
+Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen door de `myResourceGroup` resource groep te verwijderen die u hebt gemaakt in de Snelstartgids *een Block Chain-lid maken* .
 
 De resource groep verwijderen:
 
-1. Ga in het Azure Portal naar de **resource groep** in het navigatie deel venster links en selecteer de resource groep die u wilt verwijderen.
-1. Selecteer **Resourcegroep verwijderen**. Controleer het verwijderen door de naam van de resource groep in te voeren en **verwijderen**te selecteren.
+1. In de Azure-portal, gaat u naar **resourcegroep** in het navigatiedeelvenster links en selecteert u de resourcegroep die u wilt verwijderen.
+1. Selecteer **Resourcegroep verwijderen**. Bevestig de verwijdering door de naam van de resourcegroep in te voeren en selecteer **verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 

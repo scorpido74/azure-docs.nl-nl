@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a762009a7aaf1a965333ac573efe55d792c3f04b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: d4cb2d424d242fd9ea078d981a85516a00c8115f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70125009"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268671"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory slim vergren delen
 
@@ -35,7 +35,7 @@ Slimme vergren deling is altijd ingeschakeld voor alle klanten van Azure AD met 
 
 Het gebruik van slimme vergren deling garandeert niet dat een authentiekte gebruiker nooit wordt vergrendeld. Wanneer Slim vergren delen een gebruikers account vergrendelt, proberen we ons het beste om de legitieme gebruiker te vergren delen. De vergrendelings service probeert ervoor te zorgen dat ongeldige actors geen toegang krijgen tot een authentiek gebruikers account.  
 
-* Elk Azure Active Directory Data Center volgt de vergren deling onafhankelijk. Een gebruiker heeft het aantal pogingen (threshold_limit * datacenter_count), als de gebruiker aan elk Data Center komt.
+* Elk Azure Active Directory Data Center volgt de vergren deling onafhankelijk. Een gebruiker heeft (threshold_limit * datacenter_count) aantal pogingen als de gebruiker aan elk Data Center komt.
 * Slimme vergren deling maakt gebruik van de bekende locatie versus onbekende locatie om onderscheid te maken tussen een ongeldige actor en de legitieme gebruiker. Onbekende en bekende locaties hebben beide afzonderlijke vergrendelings tellers.
 
 Slimme vergren deling kan worden geïntegreerd met hybride implementaties, met behulp van hash-synchronisatie met wacht woord of Pass Through-verificatie om on-premises Active Directory accounts te beveiligen tegen uitsluiting door aanvallers. Door slim vergrendelings beleid in azure AD op de juiste wijze in te stellen, kunnen aanvallen worden gefilterd voordat ze on-premises Active Directory bereiken.
@@ -56,7 +56,7 @@ Gebruik de volgende instructies om uw on-premises Active Directory account vergr
 
 1. Open het groepsbeleid-beheer programma.
 2. Bewerk het groeps beleid dat het account vergrendelings beleid van uw organisatie bevat, bijvoorbeeld het **standaard domein beleid**.
-3. Bladeren naar **computer configuratie** > **beleid** > **Windows-instellingen** > **beveiligings instellingen** > **account**beleidaccount > **vergren delen Beleid**.
+3. Blader naar **computer configuratie** > **beleid** > **Windows-instellingen** > **beveiligings instellingen** > **account beleid** > **account vergrendelings beleid**.
 4. Controleer de **drempel waarde voor account vergrendeling** en **Stel de teller voor account vergrendeling na waarden opnieuw** in.
 
 ![Het vergrendelings beleid voor on-premises Active Directory-account wijzigen](./media/howto-password-smart-lockout/active-directory-on-premises-account-lockout-policy.png)
@@ -67,7 +67,8 @@ Op basis van de vereisten van uw organisatie moeten slimme vergrendelings waarde
 
 Voer de volgende stappen uit om de slimme vergrendelings waarden voor uw organisatie te controleren of te wijzigen:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) en navigeer naar **Azure Active Directory** > **verificatie methoden** > **wachtwoord beveiliging**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Zoek en selecteer *Azure Active Directory*. Selecteer **verificatie methoden** > **wachtwoord beveiliging**.
 1. Stel de **drempel waarde voor vergren deling**in op basis van het aantal mislukte aanmeldingen dat is toegestaan voor een account voordat het voor het eerst wordt vergrendeld. De standaard waarde is 10.
 1. Stel de **vergrendelings duur in seconden in**, tot de lengte in seconden van elke vergren deling. De standaard waarde is 60 seconden (een minuut).
 

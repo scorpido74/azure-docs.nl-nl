@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc9565f44fdb868bc45d2f99de1d4036e1d5d123
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5eefac10e2ab196affc4c4148348d19959fcfeec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74181150"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266900"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Machtigingen voor beheerdersrol in Azure Active Directory
 
@@ -238,6 +238,7 @@ Gebruikers met deze rol kunnen instellingen en beheer informatie lezen over Micr
 >- [Azure AD-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/) -algemene lezer kan de inrichtings modus van een bedrijfs-app niet lezen.
 >- [M365-beheer centrum](https://admin.microsoft.com/Adminportal/Home#/homepage) : globale lezer kan geen lockbox-aanvragen van klanten lezen. U vindt het tabblad **klant lockbox-aanvragen** niet onder **ondersteuning** in het linkerdeel venster van het M365-beheer centrum.
 >- [M365 Security Center](https://security.microsoft.com/homepage) : globale lezer kan geen gevoeligheids-en bewaar labels lezen. In het linkerdeel venster van M365 Security Center vindt u geen **gevoeligheids labels**, tabbladen voor het **bewaren van labels**en **labels voor label Analytics** .
+>- [Office-beveiligings-en compliancecentrum](https://protection.microsoft.com) -wereld wijde lezer kan geen SCC-controle logboeken lezen of inhoud zoeken.
 >- [Teams beheer centrum](https://admin.teams.microsoft.com) : wereld wijde lezer kan de **levens cyclus van teams**, **analyses & rapporten**, het **beheer van IP-telefoon apparaten** en de **app-catalogus**niet lezen.
 >- [Privileged Access Management (PAM)](https://docs.microsoft.com/office365/securitycompliance/privileged-access-management-overview) biedt geen ondersteuning voor de globale lezer-rol.
 >- [Azure Information Protection](https://docs.microsoft.com/azure/information-protection/what-is-information-protection) -wereld wijde lezer wordt alleen ondersteund [voor centrale rapportage](https://docs.microsoft.com/azure/information-protection/reports-aip) en wanneer uw Azure AD-organisatie zich niet op het [uniforme label platform](https://docs.microsoft.com/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform)bevindt.

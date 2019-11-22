@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 11/05/2019
-ms.openlocfilehash: 0cfff0196ebc20b9b01bc966b3590470d349e86e
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 3e228fb9d4223ad1d6d906b44ab63c35600faa56
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718008"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307340"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Zelfstudie: Gegevensanomalieën binnen in realtime naar Azure Event Hubs verzonden gebeurtenissen visualiseren
 
@@ -156,7 +156,7 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>App voor het produceren van testgebeurtenisgegevens uitvoeren
 
-De Event Hubs-[voorbeelden op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) bevatten een [anomaliedetectie-app](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/AnomalyDetector) die testgegevens voor u produceert. Deze app simuleert het gebruik van creditcards door creditcardtransacties naar de Event Hub te schrijven, inclusief het af en toe schrijven van meerdere transacties voor dezelfde creditcard op meerdere locaties, zodat ze als anomalieën worden getagd. Volg deze stappen voor het uitvoeren van deze app: 
+De Event Hubs-[voorbeelden op GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) bevatten een [anomaliedetectie-app](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector) die testgegevens voor u produceert. Deze app simuleert het gebruik van creditcards door creditcardtransacties naar de Event Hub te schrijven, inclusief het af en toe schrijven van meerdere transacties voor dezelfde creditcard op meerdere locaties, zodat ze als anomalieën worden getagd. Volg deze stappen voor het uitvoeren van deze app: 
 
 1. Download de [Azure Event Hubs-voorbeelden](https://github.com/Azure/azure-event-hubs/archive/master.zip) van GitHub en pak het bestand lokaal uit.
 
@@ -164,7 +164,7 @@ De Event Hubs-[voorbeelden op GitHub](https://github.com/Azure/azure-event-hubs/
 
 3. Open Program.cs en vervang **Event Hubs connection string** door de verbindingsreeks die u bij het uitvoeren van het script hebt opgeslagen. 
 
-4. Vervang **Event Hub name** door de naam van uw Event Hub. Klik op F5 om de toepassing uit te voeren. Deze begint met het verzenden van gebeurtenissen naar uw Event Hub en gaat door totdat er 1000 gebeurtenissen zijn verzonden. Er zijn een paar gevallen waarin u alleen gegevens kunt ophalen als de app actief is. Deze gevallen worden waar nodig aangegeven in de volgende instructies.
+4. Vervang **Event Hub naam** door de naam van uw Event Hub. Klik op F5 om de toepassing uit te voeren. Deze begint met het verzenden van gebeurtenissen naar uw Event Hub en gaat door totdat er 1000 gebeurtenissen zijn verzonden. Er zijn een paar gevallen waarin u alleen gegevens kunt ophalen als de app actief is. Deze gevallen worden waar nodig aangegeven in de volgende instructies.
 
 ## <a name="set-up-azure-stream-analytics"></a>Azure Stream Analytics installeren
 
@@ -282,7 +282,7 @@ Deze query wordt gebruikt om de gegevens op te halen die uiteindelijk naar de Po
 
 5. Sluit het deelvenster Query.
 
-### <a name="run-the-stream-analytics-job"></a>Voer de Stream Analytics-taak uit
+### <a name="run-the-stream-analytics-job"></a>De Stream Analytics-taak uitvoeren
 
 Klik in de Stream Analytics-taak op **Start**, vervolgens op **Nu**  en daarna op **Start**. Zodra de taak kan worden gestart, wordt de taakstatus veranderd van **Gestopt** naar **In uitvoering**.
 

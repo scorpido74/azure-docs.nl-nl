@@ -1,5 +1,5 @@
 ---
-title: Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing | Microsoft Docs
+title: Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-app
 description: Algemene problemen oplossen die zich voordoen bij het configureren van het inrichten van gebruikers voor een toepassing die al wordt vermeld in de Azure AD-toepassings galerie
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a8eaa46b46551f9b6075ec10b38de80f84c22a0
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71034154"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275750"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Probleem bij het configureren van de gebruikers inrichting voor een Azure AD Gallery-toepassing
 
@@ -33,9 +33,9 @@ U moet altijd eerst de installatie-zelf studie vinden die specifiek is voor het 
 
 Zodra de service is geconfigureerd, kan de meest inzicht in de werking van de service vanaf twee locaties worden getrokken:
 
--   **Inrichtings Logboeken (preview)** : de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) registreren alle bewerkingen die worden uitgevoerd door de inrichtings service, inclusief het opvragen van Azure AD voor toegewezen gebruikers die binnen het bereik van de inrichting vallen. Zoek de doel-app op voor het bestaan van deze gebruikers, waarbij de gebruikers objecten tussen het systeem worden vergeleken. Vervolgens kunt u het gebruikers account in het doel systeem toevoegen, bijwerken of uitschakelen op basis van de vergelijking. U kunt toegang krijgen tot de inrichtings Logboeken in de Azure portal door **Azure Active Directory** &gt; **Enter prise apps** &gt; **Provisioning logs (preview)** te selecteren in de sectie **activiteit** .
+-   **Inrichtings Logboeken (preview)** : de [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) registreren alle bewerkingen die worden uitgevoerd door de inrichtings service, inclusief het opvragen van Azure AD voor toegewezen gebruikers die binnen het bereik van de inrichting vallen. Zoek de doel-app op voor het bestaan van deze gebruikers, waarbij de gebruikers objecten tussen het systeem worden vergeleken. Vervolgens kunt u het gebruikers account in het doel systeem toevoegen, bijwerken of uitschakelen op basis van de vergelijking. U kunt toegang krijgen tot de inrichtings Logboeken in de Azure Portal door **Azure Active Directory** &gt; **enter prise apps** &gt; **inrichtings Logboeken (preview)** te selecteren in de sectie **activiteit** .
 
--   **Huidige status:** Een samen vatting van de laatste uitvoering van de inrichting voor een bepaalde app kan worden weer gegeven in de sectie  **&gt; Azure Active Directory\] bedrijfs apps &gt; \[toepassings naam &gt;inrichten** , onder aan de op het scherm onder de service-instellingen. De sectie huidige status geeft aan of een inrichtings cyclus is begonnen met het inrichten van gebruikers accounts. U kunt de voortgang van de cyclus bekijken, bekijken hoeveel gebruikers en groepen zijn ingericht en bekijken hoeveel rollen er zijn gemaakt. Als er fouten zijn, kunt u de details vinden in de [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).
+-   **Huidige status:** Een samen vatting van de laatste uitvoerings uitvoering voor een bepaalde app kan worden weer gegeven in de **Azure Active Directory &gt; Enter prise-Apps &gt; \[toepassings naam\] &gt;inrichtings** sectie onder aan het scherm onder de service-instellingen. De sectie huidige status geeft aan of een inrichtings cyclus is begonnen met het inrichten van gebruikers accounts. U kunt de voortgang van de cyclus bekijken, bekijken hoeveel gebruikers en groepen zijn ingericht en bekijken hoeveel rollen er zijn gemaakt. Als er fouten zijn, kunt u de details vinden in de [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Algemene probleem gebieden met het inrichten om te overwegen
 
@@ -47,7 +47,7 @@ Hieronder vindt u een lijst met algemene probleem gebieden die u kunt inzoomen a
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>De inrichtings service lijkt niet te worden gestart
 
-Als u instelt dat de **inrichtings status** moet worden **ingeschakeld** in de sectie  **&gt; Azure Active Directory bedrijfs\] apps &gt; \[ &gt;toepassings naam inrichten** van de Azure Portal . Er worden echter geen andere status gegevens op die pagina weer gegeven nadat de volgende keer opnieuw is geladen. Het is waarschijnlijk dat de service wordt uitgevoerd, maar nog niet een eerste cyclus heeft voltooid. Controleer de hierboven beschreven **inrichtings logboeken** om te bepalen welke bewerkingen de service uitvoert en of er fouten zijn.
+Als u instelt dat de **inrichtings status** moet worden **ingeschakeld** in de **Azure Active Directory &gt; Enter prise Apps &gt; \[toepassings naam\] &gt;inrichtings** sectie van de Azure Portal. Er worden echter geen andere status gegevens op die pagina weer gegeven nadat de volgende keer opnieuw is geladen. Het is waarschijnlijk dat de service wordt uitgevoerd, maar nog niet een eerste cyclus heeft voltooid. Controleer de hierboven beschreven **inrichtings logboeken** om te bepalen welke bewerkingen de service uitvoert en of er fouten zijn.
 
 >[!NOTE]
 >Een eerste cyclus kan 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-adres lijst en het aantal gebruikers binnen het bereik van de inrichting. Volgende synchronisaties na de eerste cyclus worden sneller uitgevoerd, omdat de inrichtings service de water merken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van volgende synchronisaties worden verbeterd.

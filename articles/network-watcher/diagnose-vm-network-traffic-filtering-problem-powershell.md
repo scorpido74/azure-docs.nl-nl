@@ -1,5 +1,6 @@
 ---
-title: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - snelstart - Azure PowerShell | Microsoft Docs
+title: 'Snelstartgids: een probleem met een VM-netwerk verkeer vaststellen-Azure PowerShell'
+titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u een diagnose uitvoert voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de functie IP-stroomverificatie in Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cc735c6ad3986161b155ab97bbb3d6be5713d15
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: 756c8d4d7e227d477c3031aab0d0a478454c35bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66729880"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276055"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Quickstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - Azure PowerShell
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-powershell"></a>Snelstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - Azure PowerShell
 
 In deze snelstart implementeert u een VM (virtuele machine) en controleert u vervolgens de communicatie naar een IP-adres en URL, en vanaf een IP-adres. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
 
@@ -34,7 +35,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Als u wilt installeren en gebruiken van PowerShell lokaal, in deze Quick Start Azure PowerShell vereist `Az` module. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+Als u Power shell lokaal wilt installeren en gebruiken, is voor deze Quick Start de module Azure PowerShell `Az` vereist. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Als u PowerShell wilt upgraden, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
 
 
 
@@ -63,7 +64,7 @@ Als u de netwerkcommunicatie met Network Watcher wilt testen, moet u eerst een n
 
 ### <a name="enable-network-watcher"></a>Netwerk-watcher inschakelen
 
-Als u al een netwerk-watcher ingeschakeld in de regio VS-Oost, gebruikt u [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) om op te halen van de netwerk-watcher. In het volgende voorbeeld wordt een bestaande netwerk-watcher opgehaald met de naam *NetworkWatcher_eastus* die zich in de resourcegroep *NetworkWatcherRG* bevindt:
+Als u al een Network Watcher hebt ingeschakeld in de regio VS-Oost, gebruikt u [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) om de netwerk-Watcher op te halen. In het volgende voorbeeld wordt een bestaande netwerk-watcher opgehaald met de naam *NetworkWatcher_eastus* die zich in de resourcegroep *NetworkWatcherRG* bevindt:
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -71,7 +72,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-Als u nog een network watcher ingeschakeld in de regio VS-Oost hebt, gebruikt u [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) te maken van een network watcher in de regio VS-Oost:
+Als u nog geen Network Watcher hebt ingeschakeld in de regio VS-Oost, gebruikt u [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) om een Network Watcher te maken in de regio VS-Oost:
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -82,7 +83,7 @@ $networkWatcher = New-AzNetworkWatcher `
 
 ### <a name="use-ip-flow-verify"></a>IP-stroomverificatie gebruiken
 
-Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan en geweigerd in Azure. U kunt de standaardinstellingen in Azure later negeren en extra typen verkeer toestaan en weigeren. Gebruiken om te controleren of verkeer wordt toegestaan of geweigerd naar andere bestemmingen en van een bron-IP-adres, de [Test AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) opdracht.
+Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan en geweigerd in Azure. U kunt de standaardinstellingen in Azure later negeren en extra typen verkeer toestaan en weigeren. Gebruik de opdracht [test-AzNetworkWatcherIPFlow](/powershell/module/az.network/test-aznetworkwatcheripflow) om te testen of verkeer wordt toegestaan of geweigerd op verschillende bestemmingen en vanaf een bron-IP-adres.
 
 Uitgaande communicatie van de VM naar een van de IP-adressen testen voor www.bing.com:
 
@@ -134,7 +135,7 @@ Uit het resultaat blijkt dat toegang wordt geweigerd vanwege een beveiligingsreg
 
 ## <a name="view-details-of-a-security-rule"></a>Details van een beveiligingsregel weergeven
 
-Om te bepalen waarom de regels in [testen netwerkcommunicatie](#test-network-communication) zijn toe te staan of verhindert communicatie, Controleer de effectieve beveiligingsregels voor de netwerkinterface met [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup):
+Als u wilt weten waarom de regels in de [test netwerk communicatie](#test-network-communication) communicatie toestaan of voor komen, controleert u de juiste beveiligings regels voor de netwerk interface met [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup):
 
 ```azurepowershell-interactive
 Get-AzEffectiveNetworkSecurityGroup `
@@ -177,9 +178,9 @@ De geretourneerde uitvoer bevat de volgende tekst voor de regel **AllowInternetO
   },
 ```
 
-In de uitvoer ziet u dat **DestinationAddressPrefix** **Internet** is. Het is niet duidelijk hoe 13.107.21.200, het adres dat u hebt getest in [IP-stroomverificatie gebruiken](#use-ip-flow-verify), is gerelateerd aan **Internet**. Er worden verschillende adresvoorvoegsels weergegeven onder **ExpandedDestinationAddressPrefix**. Een van de voorvoegsels in de lijst is **12.0.0.0/6**, dat het bereik met IP-adressen 12.0.0.1-15.255.255.254 bevat. Aangezien 13.107.21.200 zich binnen dit adresbereik bevindt, is uitgaand verkeer toegestaan op basis van de regel **AllowInternetOutBound**. Daarnaast worden in de met `Get-AzEffectiveNetworkSecurityGroup` geretourneerde uitvoer geen regels met hogere **prioriteit** (lagere waarde) weergegeven op basis waarvan deze regel wordt genegeerd. Als u uitgaande communicatie naar 13.107.21.200 wilt weigeren, kunt u een beveiligingsregel met een hogere prioriteit toevoegen op basis waarvan uitgaand verkeer naar het IP-adres wordt geweigerd op poort 80.
+In de uitvoer ziet u dat **DestinationAddressPrefix** **Internet** is. Het is niet duidelijk hoe 13.107.21.200, het adres dat u hebt getest in [IP-stroomverificatie gebruiken](#use-ip-flow-verify), is gerelateerd aan **Internet**. Er worden verschillende adresvoorvoegsels weergegeven onder **ExpandedDestinationAddressPrefix**. Een van de voorvoegsels in de lijst is **12.0.0.0/6**, dat het bereik met IP-adressen 12.0.0.1-15.255.255.254 bevat. Aangezien 13.107.21.200 zich binnen dit adresbereik bevindt, is uitgaand verkeer toegestaan op basis van de regel **AllowInternetOutBound**. Daarnaast worden in de met **geretourneerde uitvoer geen regels met hogere**prioriteit`Get-AzEffectiveNetworkSecurityGroup` (lagere waarde) weergegeven op basis waarvan deze regel wordt genegeerd. Als u uitgaande communicatie naar 13.107.21.200 wilt weigeren, kunt u een beveiligingsregel met een hogere prioriteit toevoegen op basis waarvan uitgaand verkeer naar het IP-adres wordt geweigerd op poort 80.
 
-Toen u de opdracht `Test-AzNetworkWatcherIPFlow` uitvoerde om uitgaande communicatie naar 172.131.0.100 te testen in [IP-stroomverificatie gebruiken](#use-ip-flow-verify), bleek uit de uitvoergegevens dat communicatie wordt geweigerd op basis van de regel **DefaultOutboundDenyAll**. De regel **DefaultOutboundDenyAll** komt overeen met de regel **DenyAllOutBound** die wordt weergegeven in de volgende uitvoer via de opdracht `Get-AzEffectiveNetworkSecurityGroup`:
+Toen u de opdracht `Test-AzNetworkWatcherIPFlow` in [IP-stroomverificatie gebruiken](#use-ip-flow-verify) uitvoerde om uitgaande communicatie van 172.131.0.100 te testen, bleek uit de uitvoer dat communicatie wordt geweigerd op basis van de regel **DefaultOutboundDenyAll**. De regel **DefaultOutboundDenyAll** is gelijk aan de regel **DenyAllOutBound** die wordt weergegeven in de volgende uitvoer via de opdracht `Get-AzEffectiveNetworkSecurityGroup`:
 
 ```powershell
 {
@@ -239,7 +240,7 @@ Met de controles in deze snelstart is de Azure-configuratie getest. Als de contr
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) om de resourcegroep en alle resources die deze bevat te verwijderen:
+Wanneer u deze niet meer nodig hebt, kunt u [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) gebruiken om de resource groep en alle resources die deze bevat te verwijderen:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

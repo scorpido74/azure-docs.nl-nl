@@ -1,6 +1,6 @@
 ---
-title: Beveiligings gegevens (preview-versie) voor tekst berichten instellen-Azure AD
-description: Je beveiligings gegevens instellen om je identiteit te verifiëren met behulp van tekst berichten en je mobiele apparaat.
+title: SMS-berichten instellen als verificatie methode-Azure AD
+description: Hoe u uw beveiligings informatie pagina (preview) instelt om uw identiteit te verifiëren met behulp van tekst berichten als verificatie methode.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a4be99a84964b7a55448692385d027262ecfec3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803841"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278909"
 ---
-# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Beveiligings gegevens (preview) instellen om tekst berichten te gebruiken
+# <a name="set-up-text-messaging-as-your-verification-method"></a>SMS-berichten instellen als verificatie methode
 
 U kunt deze stappen volgen om uw twee ledige verificatie en de methoden voor het opnieuw instellen van het wacht woord toe te voegen. Nadat u dit de eerste keer hebt ingesteld, kunt u terugkeren naar de pagina met **beveiligings** gegevens om uw beveiligings gegevens toe te voegen, bij te werken of te verwijderen.
 

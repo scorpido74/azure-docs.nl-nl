@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.author: raynew
-ms.openlocfilehash: 7f840a99ab76548c16389955cf49791036cc63a2
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158359"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280552"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fysieke servers beoordelen met Azure Migrate: Server evaluatie
 
@@ -104,12 +104,12 @@ Controleer of het gecomprimeerde bestand is beveiligd, voordat u het implementee
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Gebruiksvoorbeeld: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller\AzureMigrateInstaller.ps1 SHA256```
 
-3.  Voor de toestel versie 1.19.05.10 moet de gegenereerde hash overeenkomen met deze instellingen.
+3.  De gegenereerde hash moet overeenkomen met deze instellingen voor de meest recente versie van het apparaat.
 
   **Algoritme** | **Hash-waarde**
   --- | ---
-  MD5 | 5b98cf68dad495696c789bdad8f0d91b
-  SHA256 | c2364887738875a31634eb0cf5defd0398f813d41069875976ca076297071e6f
+  MD5 | 96fd99581072c400aa605ab036a0a7c0
+  SHA256 | f5454beef510c0aa38ac1c6be6346207c351d5361afa0c9cea4772d566fcdc36
 
 ### <a name="run-the-azure-migrate-installer-script"></a>Het Azure Migrate-installatie script uitvoeren
 

@@ -1,5 +1,5 @@
 ---
-title: Gebruikers vergunning configureren voor een toepassing-Azure Active Directory | Microsoft Docs
+title: Gebruikers vergunning configureren voor een toepassing-Azure Active Directory
 description: Meer informatie over het beheren van de manier waarop gebruikers toestemming geven voor toepassings machtigingen. U kunt de gebruikers ervaring vereenvoudigen door toestemming van de beheerder te verlenen. Deze methoden zijn van toepassing op alle eind gebruikers in uw Azure Active Directory-Tenant (Azure AD).
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/22/2018
 ms.author: mimart
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bd746e79bc9d70be23771f97b1757f090f6375f
-ms.sourcegitcommit: d4c9821b31f5a12ab4cc60036fde00e7d8dc4421
+ms.openlocfilehash: 4a187ea9d22efa40c482ea8930be0271d84a899a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71709274"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273992"
 ---
 # <a name="configure-the-way-end-users-consent-to-an-application-in-azure-active-directory"></a>De manier configureren waarop eind gebruikers toestemming geven voor een toepassing in Azure Active Directory
 Meer informatie over het configureren van de manier waarop gebruikers toestemming geven voor toepassings machtigingen. U kunt de gebruikers ervaring vereenvoudigen door toestemming van de beheerder te verlenen. In dit artikel worden de verschillende manieren beschreven waarop u de gebruikers toestemming kunt configureren. De methoden zijn van toepassing op alle eind gebruikers in uw Azure Active Directory-Tenant (Azure AD). 

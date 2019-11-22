@@ -10,17 +10,17 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 08/30/2019
 tags: connectors
-ms.openlocfilehash: 6067a60ed2883ea358dbdfff523b9224175bc5c2
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 90348ad05879aff75dadab85af4e905d92228a2d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113459"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287111"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Verbinding maken met SAP-systemen via Azure Logic Apps
 
 > [!IMPORTANT]
-> De eerdere SAP-toepassings server en SAP Message server-connectors zijn gepland voor afschaffing op 30 november 2019. De huidige SAP-connector consolideert deze vorige SAP-connectors zodat u het verbindings type niet hoeft te wijzigen, is volledig compatibel met eerdere connectors, biedt veel extra mogelijkheden en blijft de SAP .net-connector bibliotheek gebruiken ( SAP NCo).
+> De eerdere SAP-toepassings server en SAP Message server-connectors worden op 29 februari 2020 ingepland voor afschaffing. De huidige SAP-connector consolideert deze vorige SAP-connectors zodat u het verbindings type niet hoeft te wijzigen, is volledig compatibel met eerdere connectors, biedt veel extra mogelijkheden en blijft de SAP .net-connector bibliotheek gebruiken ( SAP NCo).
 >
 > Voor Logic apps die gebruikmaken van de oudere connectors, [migreert u naar de nieuwste connector](#migrate) vóór de datum van afschaffing. Als dat niet het geval is, kunnen deze Logic apps uitvoerings fouten ondervinden en kan er geen berichten naar uw SAP-systeem worden verzonden.
 

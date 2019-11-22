@@ -1,5 +1,5 @@
 ---
-title: Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens
+title: Batch voorspellingen uitvoeren op big data
 titleSuffix: Azure Machine Learning
 description: Meer informatie over hoe u met behulp van batch demijnen in Azure Machine Learning op asynchrone wijze invallen op grote hoeveel heden gegevens. Batch-demijnen bieden parallelle verwerkings mogelijkheden en kunnen worden geoptimaliseerd voor een hoge door Voer, brand-en-vergeet-afleiding voor gebruik in geval van Big data.
 services: machine-learning
@@ -11,12 +11,12 @@ ms.author: vaidyas
 author: vaidya-s
 ms.date: 11/04/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 4e7ddf7fc7b18d57b8251d4fb8293ed2f6e83d17
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 3613639b43db1cd5310a7ea5d7fa18f34e22ed44
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73929559"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276731"
 ---
 # <a name="run-batch-inference-on-large-amounts-of-data-by-using-azure-machine-learning"></a>Batch-deinterferentie uitvoeren op grote hoeveel heden gegevens met behulp van Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ In deze procedure leert u de volgende taken:
 
 * Voor het beheren van uw eigen omgeving en afhankelijkheden raadpleegt u de [hand leiding](how-to-configure-environment.md) voor het configureren van uw eigen omgeving. Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-contrib-pipeline-steps` in uw omgeving uit om de vereiste afhankelijkheden te downloaden.
 
-## <a name="set-up-machine-learning-resources"></a>machine learning-resources instellen
+## <a name="set-up-machine-learning-resources"></a>Machine learning-resources instellen
 
 Met de volgende acties worden de resources ingesteld die u nodig hebt om een batch-uitstel pijplijn uit te voeren:
 
@@ -149,7 +149,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-## <a name="prepare-the-model"></a>Het model voorbereiden
+## <a name="prepare-the-model"></a>Voorbereiden van het model
 
 [Down load het vooraf getrainde afbeeldings classificatie model](https://pipelinedata.blob.core.windows.net/mnist-model/mnist-tf.tar.gz)en pak het uit naar de `models` Directory.
 
@@ -241,7 +241,7 @@ def run(mini_batch):
 
 Nu hebt u alles wat u nodig hebt om de pijp lijn te bouwen.
 
-### <a name="prepare-the-run-environment"></a>De uitvoerings omgeving voorbereiden
+### <a name="prepare-the-run-environment"></a>Voorbereiden van de uitvoeringsomgeving
 
 Geef eerst de afhankelijkheden voor uw script op. U kunt dit object later gebruiken bij het maken van de pijplijn stap.
 
@@ -276,7 +276,7 @@ batch_env.spark.precache_packages = False
 - `process_count_per_node`: het aantal processen per knoop punt.
 - `environment`: de definitie van de python-omgeving. U kunt deze configureren voor het gebruik van een bestaande python-omgeving of voor het instellen van een tijdelijke omgeving voor het experiment. De definitie is ook verantwoordelijk voor het instellen van de vereiste toepassings afhankelijkheden (optioneel).
 - `logging_level`: uitgebreide logboek registratie. De waarden in een verhoogde uitgebreider zijn: `WARNING`, `INFO`en `DEBUG`. De standaard waarde is `INFO` (optioneel).
-- `run_invocation_timeout`: de time-out voor de aanroep van de `run()`-methode in seconden. De standaard waarde is `60`.
+- `run_invocation_timeout`: de time-out voor de aanroep van de `run()`-methode in seconden. De standaardwaarde is `60`.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunConfig
@@ -292,7 +292,7 @@ parallel_run_config = ParallelRunConfig(
     node_count=4)
 ```
 
-### <a name="create-the-pipeline-step"></a>De pijplijn stap maken
+### <a name="create-the-pipeline-step"></a>De stap pijplijn maken
 
 Maak de pijplijn stap met behulp van het script, de omgevings configuratie en de para meters. Geef het reken doel op dat u al aan uw werk ruimte hebt gekoppeld als het doel van de uitvoering van het script. Gebruik `ParallelRunStep` om de pipeline-stap voor batch-deinterferentie te maken, waarbij alle volgende para meters worden gebruikt:
 - `name`: de naam van de stap, met de volgende naam beperkingen: uniek, 3-32 tekens en regex ^\[a-z\]([-a-z0-9] * [a-z0-9])? $.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: 30398b5f81ac1893129ba222c5f1a2d762ad1e7f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 81384bb784e3417dabfd673ef746463f55fc3063
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595066"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304729"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Veelgestelde vragen over Azure Virtual Network
 
@@ -35,7 +35,7 @@ Gebruik VNets voor het volgende:
 
 * Schakel hybride Cloud scenario's in. VNets biedt u de flexibiliteit om een reeks hybride Cloud scenario's te ondersteunen. U kunt op een veilige manier Cloud toepassingen verbinden met elk type on-premises systeem, zoals mainframes en UNIX-systemen.
 
-### <a name="how-do-i-get-started"></a>Hoe kan ik beginnen?
+### <a name="how-do-i-get-started"></a>Hoe ga ik aan de slag?
 Ga naar de documentatie van het [virtuele netwerk](https://docs.microsoft.com/azure/virtual-network/) om aan de slag te gaan. Deze inhoud bevat overzichts-en implementatie-informatie voor alle VNet-functies.
 
 ### <a name="can-i-use-vnets-without-cross-premises-connectivity"></a>Kan ik VNets gebruiken zonder cross-premises-connectiviteit?
@@ -51,7 +51,7 @@ U kunt de volgende hulpprogram ma's gebruiken om een VNet te maken of configurer
 
 * Azure Portal
 * PowerShell
-* Azure CLI
+* Azure-CLI
 * Een netwerk configuratie bestand (netcfg-alleen voor klassieke VNets). Zie het artikel [een VNet configureren met behulp van een netwerk configuratie bestand](virtual-networks-using-network-configuration-file.md) .
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welke adresbereiken kan ik gebruiken in mijn VNets?
@@ -63,7 +63,7 @@ Elk IP-adres bereik dat is gedefinieerd in [RFC 1918](https://tools.ietf.org/htm
 * 168.63.129.16/32 (interne DNS)
 
 ### <a name="can-i-have-public-ip-addresses-in-my-vnets"></a>Kan ik open bare IP-adressen hebben in mijn VNets?
-Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Open bare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
+Ja. Zie [een virtueel netwerk maken](manage-virtual-network.md#create-a-virtual-network)voor meer informatie over open bare IP-adresbereiken. Openbare IP-adressen zijn niet rechtstreeks toegankelijk via internet.
 
 ### <a name="is-there-a-limit-to-the-number-of-subnets-in-my-vnet"></a>Geldt er een limiet voor het aantal subnetten in mijn VNet?
 Ja. Zie [Azure-limieten](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) voor meer informatie. De adres ruimten van het subnet mogen elkaar niet overlappen.
@@ -188,7 +188,7 @@ Ja. U kunt Web Apps implementeren in een VNet met behulp van een ASE (App Servic
 
 * [App Service-netwerk functies](../app-service/networking-features.md)
 * [Web Apps maken in een App Service Environment](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Uw app integreren met een Azure-Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Een app integreren met een virtueel Azure-netwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Toegangs beperkingen App Service](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Kan ik Cloud Services implementeren met web-en werk rollen (PaaS) in een VNet?
@@ -241,17 +241,17 @@ Met VNet-peering (of peering op virtueel netwerk) kunt u verbinding maken met vi
 Ja. Met wereld wijde VNet-peering kunt u VNets in verschillende regio's. Wereld wijde VNet-peering is beschikbaar in alle open bare Azure-regio's, China-Cloud regio's en overheids Cloud regio's. U kunt geen wereld wijde peer van open bare Azure-regio's naar nationale Cloud regio's.
 
 ### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Wat zijn de beperkingen met betrekking tot globaal VNet-peering en load balancers?
-Als de twee virtuele netwerken zich in verschillende regio's (globale VNet-peering) bevinden, kunt u geen verbinding maken met resources die gebruikmaken van basis Load Balancer. U kunt verbinding maken met resources die gebruikmaken van Standard Load Balancer.
-De volgende resources maken gebruik van elementaire load balancers. Dit betekent dat u niet kunt communiceren over globale VNet-peering:
+Als de twee virtuele netwerken in twee verschillende regio's worden gekoppeld via globale VNet-peering, kunt u geen verbinding maken met bronnen die zich achter een basis Load Balancer bevinden via het front-end-IP-adres van de Load Balancer. Deze beperking bestaat niet voor een Standard Load Balancer.
+De volgende resources kunnen Basic load balancers gebruiken. Dit betekent dat u deze niet kunt bereiken via het front-end-IP-adres van de Load Balancer via globale VNet-peering. U kunt ook globale VNet-peering gebruiken om de bronnen rechtstreeks te bereiken via hun eigen VNet-Ip's, indien toegestaan. 
 - Vm's achter Basic load balancers
 - Schaal sets voor virtuele machines met Basic load balancers 
 - Redis-cache 
 - Application Gateway (v1) SKU
-- Service Fabric
+- Infrastructuur van service
 - SQL MI
 - API Management
 - Active Directory-domein-service (toevoegen)
-- Logische apps
+- Logic Apps
 - HDInsight
 -   Azure Batch
 - App Service-omgeving
@@ -405,11 +405,11 @@ Er is geen limiet voor het totale aantal VNet-service-eind punten in een virtuee
 |Azure Storage| 100|
 |Azure SQL| 128|
 |Azure SQL Data Warehouse|  128|
-|Azure-sleutel kluis|    127|
+|Azure KeyVault|    127|
 |Azure Cosmos DB|   64|
 |Azure Event Hub|   128|
-|Service Bus van Azure| 128|
-|Azure Data Lake Store v1|  100|
+|Azure Service Bus| 128|
+|Azure Data Lake Store V1|  100|
  
 >[!NOTE]
 > De limieten worden onderhevig aan wijzigingen in de keuze van de Azure-service. Raadpleeg de relevante service documentatie voor meer informatie over services. 

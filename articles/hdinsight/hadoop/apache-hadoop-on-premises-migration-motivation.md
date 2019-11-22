@@ -2,18 +2,18 @@
 title: 'Voor delen: migratie van on-premises Apache Hadoop naar Azure HDInsight'
 description: Meer informatie over de motivatie en voor delen voor het migreren van on-premises Hadoop-clusters naar Azure HDInsight.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: ashishth
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 10/25/2018
-ms.author: hrasheed
-ms.openlocfilehash: 7f67b85b66748ae98cbb520bf4ebc11a2eef9efb
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/15/2019
+ms.openlocfilehash: 2440b93629416ea73fcf211cbe7bf5a3b72ab2e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494934"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267331"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>On-premises Apache Hadoop clusters migreren naar Azure HDInsight-motivatie en voor delen
 
@@ -90,7 +90,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 | **Produkt** | **Voorbeeld** | **Antwoord** |
 |---|---|---|
 |**Onderwerp**: **omgeving**|||
-|Distributie versie van cluster|HDP 2.6.5, CDH 5,7|
+|Distributie versie van cluster|HDP 2.6.5, CDH 5.7|
 |Systeem onderdelen van Big Data|HDFS, garens, Hive, LLAP, Impala, kudu, HBase, Spark, MapReduce, Kafka, Zookeeper, solr, Sqoop, Oozie, zwerver, Atlas, Falcon, Zeppelin, R|
 |Cluster typen|Hadoop, Spark, Confluent Kafka, Storm, solr|
 |Aantal clusters|4|
@@ -103,7 +103,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Configuratie van Edge-knoop punten|m/y, CPU, schijf, etc.|
 |HDFS-versleuteling?|Ja|
 |Hoge beschikbaarheid|HDFS HA, meta Store HA|
-|Nood herstel/back-up|Back-upcluster?|  
+|Herstel na nood geval/back-up|Back-upcluster?|  
 |Systemen die afhankelijk zijn van het cluster|SQL Server, Teradata, Power BI, MongoDB|
 |Integraties van derden|Tableau, GridGain, Qubole, informatica, Splunk|
 |**Onderwerp**: **beveiliging**|||
@@ -111,8 +111,8 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Autorisatie voor cluster verificatie &|Active Directory, Ambari, Cloudera Manager, geen verificatie|
 |HDFS Access Control|  Hand matig, SSH-gebruikers|
 |Autorisatie van Hive-verificatie &|Sentry, LDAP, AD met Kerberos, zwerver|
-|Controleren|Ambari, Cloudera Navigator, zwerver|
-|Bewaking|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
+|Controle|Ambari, Cloudera Navigator, Ranger|
+|Controleren|Grafiet, verzamelde, statistieken, telegrafie, InfluxDB|
 |Waarschuwingen|Kapacitor, Prometheus, Datadog|
 |Duur van gegevens retentie| 3 jaar, 5 jaar|
 |Cluster beheerders|Eén beheerder, meerdere beheerders|
@@ -128,11 +128,11 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |Spark-streaming-taken|5 taken--elke 3 minuten||
 |Structured streaming-taken|5 taken--elke minuut||
 |Trainings taken voor ML model|2 taken: één keer per week||
-|Programmeertalen|Python, scala, java||
-|Scripts|Shell, python||
+|Programmeertalen|Python, Scala, Java||
+|Scripts|Shell, Python||
 |**Onderwerp**: **gegevens**|||
 |Gegevensbronnen|Platte bestanden, JSON, Kafka, RDBMS||
-|Data orchestratie|Oozie werk stromen, lucht stroom||
+|Gegevensindeling|Oozie werk stromen, lucht stroom||
 |Zoek opdrachten in het geheugen|Apache Ignite, redis||
 |Gegevens bestemmingen|HDFS, RDBMS, Kafka, MPP ||
 |**Onderwerp**: **meta gegevens**|||
@@ -171,7 +171,7 @@ Deze sectie bevat sjabloon vragenlijsten waarmee u belang rijke informatie kunt 
 |HA/DR nodig?|Ja||
 |Integratie met andere Cloud Services?|ADF, CosmosDB||
 |**Onderwerp**: **gegevens verplaatsing**  |||
-|Initiële laad voorkeur|DistCp, data box, ADF, WANDisco||
+|Initiële laad voorkeur|DistCp, Data box, ADF, WANDisco||
 |Delta voor gegevens overdracht|DistCp, AzCopy||
 |Voortdurende incrementele gegevens overdracht|DistCp, Sqoop||
 |**Onderwerp**: **bewaking & waarschuwingen** |||

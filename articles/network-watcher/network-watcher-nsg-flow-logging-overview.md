@@ -1,5 +1,6 @@
 ---
-title: Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen met Azure Network Watcher | Microsoft Docs
+title: Inleiding tot stroom logboek registratie voor Nsg's
+titleSuffix: Azure Network Watcher
 description: In dit artikel wordt uitgelegd hoe u de functie NSG flow logs van Azure Network Watcher gebruikt.
 services: network-watcher
 documentationcenter: na
@@ -14,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: a77cc22c7a56c29b5b42a032af3d0ea0b2c17d88
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: 373a3a66044f996edee904c0073dcb0deb58a85b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69563515"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277988"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen
 
-Stroom logboeken voor netwerk beveiligings groepen (NSG) zijn een functie van Network Watcher waarmee u informatie kunt bekijken over binnenkomend en IP-verkeer via een NSG. Stroom logboeken worden geschreven in JSON-indeling en weer gegeven uitgaande en inkomende stromen per regel. de netwerk interface (NIC) van de stroom is van toepassing op 5-tuple-informatie over de stroom (bron/doel-IP, bron/doel poort en Protocol), als het verkeer is toegestaan of geweigerd, en in versie 2, gegevens over de door Voer (bytes en pakketten).
+Stroom logboeken voor netwerk beveiligings groepen (NSG) zijn een functie van Network Watcher waarmee u informatie kunt bekijken over binnenkomend en IP-verkeer via een NSG. Stroom logboeken worden geschreven in JSON-indeling en weer gegeven uitgaande en inkomende stromen per regel. de netwerk interface (NIC) van de stroom is van toepassing op 5-tuple-informatie over de stroom (bron/doel-IP, bron/doel poort en Protocol), als het verkeer is toegestaan of geweigerd, en in versie 2, gegevens over door Voer (bytes en pakketten).
 
 
 ![overzicht van stroom logboeken](./media/network-watcher-nsg-flow-logging-overview/figure1.png)
@@ -64,7 +65,7 @@ Stroom logboeken bevatten de volgende eigenschappen:
                     * **Doel poort** -de doel poort
                     * **Protocol** -het Protocol van de stroom. Geldige waarden zijn **T** voor TCP en **U** voor UDP
                     * **Verkeers stroom** : de richting van de verkeers stroom. Geldige waarden zijn **I** voor inkomend en **O** voor uitgaand verkeer.
-                    * **Beslissing van verkeer** : of verkeer is toegestaan of geweigerd. Geldige waarden zijn voor toegestaan en **D** voor geweigerd.
+                    * **Beslissing van verkeer** : of verkeer is toegestaan of geweigerd. Geldige **waarden zijn voor** toegestaan en **D** voor geweigerd.
                     * **Stroom status-alleen versie 2** : Hiermee wordt de status van de stroom vastgelegd. Mogelijke statussen zijn **B**: Begin, wanneer een stroom wordt gemaakt. Er worden geen statistische gegevens geleverd. **C**: Continu, voor een actieve stroom. Statistische gegevens worden geleverd met intervallen van 5 minuten. **E**: Eind, wanneer een stroom is beëindigd. Er worden statistische gegevens geleverd.
                     * **Pakketten-bron naar doel-versie 2 alleen** Het totale aantal TCP-of UDP-pakketten dat sinds de laatste update van de bron naar het doel is verzonden.
                     * **Verzonden bytes-bron naar doel-versie 2** Het totale aantal TCP-of UDP-pakket bytes dat sinds de laatste update van de bron naar het doel is verzonden. Pakketbytes omvatten de pakket-header en -nettolading.
@@ -77,7 +78,7 @@ Versie 2 van de logboeken bevat een stroom status. U kunt configureren welke ver
 
 Stroom status *B* wordt vastgelegd wanneer een stroom wordt gestart. De stroom status *C* en de stroom status *E* zijn staten die de voortzetting van een stroom en stroom beëindiging markeren. Zowel de *C* -als de *E* -status bevat informatie over de band breedte van het verkeer.
 
-**Voor beeld**: Verstroom Tuples van een TCP-conversatie tussen 185.170.185.105:35370 en 10.2.0.4:23:
+**Voor beeld**: flow-Tuples van een TCP-conversatie tussen 185.170.185.105:35370 en 10.2.0.4:23:
 
 "1493763938, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, B,,,," "1493695838, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, C, 1021, 588096, 8005, 4610880" "1493696138, 185.170.185.105, 10.2.0.4, 35370, 23, T, I, A, E, 52, 29952, 47, 27072"
 
@@ -87,14 +88,14 @@ De volgende tekst is een voor beeld van een stroom logboek. Zoals u ziet, zijn e
 
 ## <a name="nsg-flow-logging-considerations"></a>Aandachtspunten voor NSG flow-logboek registratie
 
-**Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: Stroom registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, raden wij aan dat logboek registratie voor NSG-flow is ingeschakeld op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Bekijk [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) voor meer informatie over netwerk beveiligings groepen. 
+**Schakel logboek registratie van de NSG-stroom in op alle nsg's die zijn gekoppeld aan een resource**: stroom logboek registratie in Azure is geconfigureerd op de NSG-resource. Een stroom wordt alleen gekoppeld aan één NSG-regel. In scenario's waarin meerdere Nsg's worden gebruikt, raden wij aan dat logboek registratie voor NSG-flow is ingeschakeld op alle Nsg's het subnet of de netwerk interface van een resource heeft toegepast om ervoor te zorgen dat alle verkeer wordt geregistreerd. Bekijk [hoe verkeer wordt geëvalueerd](../virtual-network/security-overview.md#how-traffic-is-evaluated) voor meer informatie over netwerk beveiligings groepen. 
 
-**Kosten voor stroom logboek registratie**: Logboek registratie van de NSG-stroom wordt gefactureerd op het volume van de logboeken die zijn geproduceerd. High Traffic volume kan leiden tot een groot stroom logboek volume en de bijbehorende kosten. De prijzen voor het NSG-stroom logboek bevatten geen onderliggende kosten voor opslag. Het gebruik van de functie voor het retentie beleid met NSG-stroom registratie kan leiden tot een groot aantal opslag bewerkingen en de bijbehorende kosten. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0. Zie [Network Watcher prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie.
+**Kosten**voor het vastleggen van de stroom: de logboek registratie voor NSG wordt gefactureerd op het volume van de logboeken die zijn gegenereerd. High Traffic volume kan leiden tot een groot stroom logboek volume en de bijbehorende kosten. De prijzen voor het NSG-stroom logboek bevatten geen onderliggende kosten voor opslag. Het gebruik van de functie voor het retentie beleid met NSG-stroom registratie kan leiden tot een groot aantal opslag bewerkingen en de bijbehorende kosten. Als u de functie voor het Bewaar beleid niet nodig hebt, raden we u aan deze waarde in te stellen op 0. Zie [Network Watcher prijzen](https://azure.microsoft.com/pricing/details/network-watcher/) en [Azure Storage prijzen](https://azure.microsoft.com/pricing/details/storage/) voor meer informatie.
 
 > [!IMPORTANT]
-> Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de opslag-blobs voor [NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
+> Er is momenteel een probleem waarbij de [NSG-stroom Logboeken (netwerk beveiligings groep)](network-watcher-nsg-flow-logging-overview.md) voor Network Watcher niet automatisch worden verwijderd uit Blob Storage op basis van de instellingen voor het Bewaar beleid. Als u een bestaand Bewaar beleid voor niet-nul hebt, raden we u aan om regel matig de opslag-blobs te verwijderen die de Bewaar periode hebben verstreken om te voor komen dat er kosten in rekening worden gebracht. Zie voor meer informatie over het verwijderen van de opslag blog van het NSG-stroom logboek de [opslag-blobs voor NSG stroom logboeken verwijderen](network-watcher-delete-nsg-flow-log-blobs.md).
 
-**Binnenkomende stromen die zijn geregistreerd via internet ip's naar vm's zonder open bare ip's**: Vm's waarvoor geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis load balancer back-end-pool, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) en hebben een IP-adres toegewezen door Azure om te vergemakkelijken uitgaande connectiviteit. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
+**Binnenkomende stromen die zijn geregistreerd van Internet ip's naar vm's zonder open bare ip's**: vm's waaraan geen openbaar IP-adres is toegewezen via een openbaar IP-adres dat is gekoppeld aan de NIC als instantie niveau openbaar IP of die deel uitmaken van een basis Load Balancer back-end-groep, gebruiken [standaard SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat) en hebben een IP-adres dat is toegewezen door Azure om uitgaande connectiviteit te vergemakkelijken. Als gevolg hiervan ziet u mogelijk stroom logboek vermeldingen voor stromen van IP-adressen van Internet, als de stroom bestemd is voor een poort in het bereik van poorten die zijn toegewezen voor SNAT. Hoewel Azure deze stromen naar de virtuele machine niet toestaat, wordt de poging geregistreerd en wordt deze weer gegeven in het NSG-stroom logboek van Network Watcher. U wordt aangeraden ongewenste binnenkomend Internet verkeer expliciet met NSG te blok keren.
 
 ## <a name="sample-log-records"></a>Voorbeeld logboek records
 

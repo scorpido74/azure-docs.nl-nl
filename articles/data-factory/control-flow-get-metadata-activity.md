@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 08/12/2019
+ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: e891f6675920e7bb90d2a6d007676cdd65f19917
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 039176f2c546aa933d3a87ded8b6ded94e485d74
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73679891"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280651"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Activiteit van meta gegevens in Azure Data Factory ophalen
 
@@ -43,11 +43,11 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 **Bestands opslag**
 
-| Connector/meta gegevens | ItemName<br>(bestand/map) | Item type<br>(bestand/map) | size<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structuur<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
+| Connector/meta gegevens | itemName<br>(bestand/map) | itemType<br>(bestand/map) | size<br>Profiler | toegevoegd<br>(bestand/map) | lastModified<br>(bestand/map) |childItems<br>map |contentMD5<br>Profiler | structure<br/>Profiler | Aantal<br>Profiler | reeds<br>(bestand/map) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
-| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | x | √ | √ | √/√ * |
-| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√ * | √ | √ | √ | √ | √/√ |
+| [Amazon S3](connector-amazon-simple-storage-service.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Google-Cloud opslag](connector-google-cloud-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| [Azure Blob Storage](connector-azure-blob-storage.md) | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | [Azure Files](connector-azure-file-storage.md) | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
@@ -57,10 +57,11 @@ De activiteit meta gegevens ophalen neemt een gegevensset als invoer en retourne
 
 - Voor Amazon S3 en Google Cloud Storage `lastModified` van toepassing op de Bucket en de sleutel, maar niet naar de virtuele map, en `exists` van toepassing op de Bucket en de sleutel, maar niet op het voor voegsel of de virtuele map.
 - Voor Azure Blob-opslag `lastModified` van toepassing op de container en de blob, maar niet op de virtuele map.
+- Het Joker teken filter voor mappen/bestanden wordt niet ondersteund voor de activiteit meta gegevens ophalen.
 
 **Relationele data base**
 
-| Connector/meta gegevens | structuur | Aantal | reeds |
+| Connector/meta gegevens | structure | Aantal | reeds |
 |:--- |:--- |:--- |:--- |
 | [Azure SQL Database](connector-azure-sql-database.md) | √ | √ | √ |
 | [Beheerd exemplaar van Azure SQL-Database](connector-azure-sql-database-managed-instance.md) | √ | √ | √ |
@@ -73,14 +74,14 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 
 | Meta gegevens type | Beschrijving |
 |:--- |:--- |
-| ItemName | De naam van het bestand of de map. |
-| Item type | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder`. |
+| itemName | De naam van het bestand of de map. |
+| itemType | Het type van het bestand of de map. Geretourneerde waarde is `File` of `Folder`. |
 | size | Grootte van het bestand in bytes. Alleen van toepassing op bestanden. |
 | toegevoegd | Er is een datum/tijd gemaakt van het bestand of de map. |
 | lastModified | Datum/tijd waarop het bestand of de map voor het laatst is gewijzigd. |
 | childItems | Lijst met submappen en bestanden in de opgegeven map. Alleen van toepassing op mappen. Geretourneerde waarde is een lijst met de naam en het type van elk onderliggend item. |
 | contentMD5 | MD5 van het bestand. Alleen van toepassing op bestanden. |
-| structuur | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
+| structure | De gegevens structuur van het bestand of de relationele database tabel. Geretourneerde waarde is een lijst met kolom namen en kolom typen. |
 | Aantal | Het aantal kolommen in het bestand of de tabel relationeel. |
 | reeds| Hiermee wordt aangegeven of een bestand, map of tabel bestaat. Houd er rekening mee dat als `exists` is opgegeven in de lijst met velden voor meta gegevens ophalen, de activiteit niet kan worden uitgevoerd, zelfs niet als het bestand, de map of de tabel niet bestaat. In plaats daarvan wordt `exists: false` geretourneerd in de uitvoer. |
 
@@ -108,7 +109,7 @@ U kunt de volgende typen meta gegevens opgeven in de velden lijst activiteit met
 }
 ```
 
-**Sets**
+**Dataset**
 
 ```json
 {
@@ -136,8 +137,8 @@ Op dit moment kunnen met de activiteit meta gegevens ophalen de volgende typen m
 
 Eigenschap | Beschrijving | Vereist
 -------- | ----------- | --------
-Velden | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
-Sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Ja
+fieldList | De typen meta gegevens die zijn vereist. Zie de sectie [meta gegevens opties](#metadata-options) in dit artikel voor meer informatie over ondersteunde meta gegevens. | Ja 
+sets | De referentie gegevensset waarvan de meta gegevens moeten worden opgehaald door de activiteit meta gegevens ophalen. Zie de sectie [mogelijkheden](#capabilities) voor informatie over ondersteunde connectors. Raadpleeg de onderwerpen over de specifieke connector voor de syntaxis van de gegevensset. | Ja
 formatSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 storeSettings | Toep assen bij gebruik van gegevensset voor indelings type. | Nee
 

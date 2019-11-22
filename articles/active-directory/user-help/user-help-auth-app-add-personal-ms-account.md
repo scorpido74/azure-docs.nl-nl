@@ -1,6 +1,6 @@
 ---
-title: Een persoonlijke Microsoft-account toevoegen aan een verificator-app-Azure AD
-description: Hoe u uw persoonlijke micro soft-accounts, zoals Outlook.com of Xbox LIVE, toevoegt aan de Microsoft Authenticator-app voor twee ledige verificatie.
+title: Een persoonlijke Microsoft-account toevoegen aan de Microsoft Authenticator-app-Azure AD
+description: Voeg persoonlijke micro soft-accounts, zoals voor Outlook.com of Xbox LIVE, toe aan de Microsoft Authenticator-app om uw identiteit te verifiëren tijdens het gebruik van twee ledige verificatie.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ca01aad76bfbeba0cf56be8ee74287a79f6346e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 28fd29c1f3f393c37c9e9a8d0995766258c2eb45
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820241"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278908"
 ---
-# <a name="add-your-personal-microsoft-accounts"></a>Uw persoonlijke micro soft-accounts toevoegen
+# <a name="add-personal-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Persoonlijke micro soft-accounts toevoegen aan de app Microsoft Authenticator
 
 Voeg uw persoonlijke micro soft-accounts, zoals voor Outlook.com en Xbox LIVE, toe aan de Microsoft Authenticator-app voor zowel het standaard verificatie proces met twee factoren als de aanmeldings methode voor wacht woordloze telefoons.
 

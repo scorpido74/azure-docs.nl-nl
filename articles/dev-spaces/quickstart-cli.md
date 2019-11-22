@@ -1,23 +1,19 @@
 ---
 title: Een toepassing implementeren op Kubernetes met behulp van Azure dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Een micro service op AKS implementeren met Azure dev Spaces
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 58cb436a7c2ba0d6a49f5138e46a1f92cdc97a94
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: b43cedce2660c081f51d90cd8dd587e8d0361acd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815827"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279824"
 ---
-# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Een toepassing ontwikkelen op Kubernetes met behulp van Azure dev Spaces
+# <a name="quickstart-develop-an-application-on-kubernetes-using-azure-dev-spaces"></a>Quick Start: een toepassing ontwikkelen op Kubernetes met behulp van Azure dev Spaces
 In deze handleiding leert u het volgende:
 
 - Azure Dev Spaces instellen met een beheerd Kubernetes-cluster in Azure.
@@ -25,7 +21,7 @@ In deze handleiding leert u het volgende:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
@@ -77,13 +73,13 @@ cd dev-spaces/samples/nodejs/getting-started/webfrontend
 
 Als u uw toepassing wilt uitvoeren op Azure dev Spaces, hebt u een Dockerfile-en helm-grafiek nodig. Voor sommige talen, zoals [Java][java-quickstart], [.net core][netcore-quickstart]en [node. js][nodejs-quickstart], kunnen met het client hulpprogramma van Azure dev Spaces alle benodigde assets worden gegenereerd. Voor veel andere talen, zoals go, PHP en Python, kan de-client hulpprogramma het helm-diagram genereren, mits u een geldige Dockerfile kunt opgeven.
 
-Genereer de docker-en helm-grafiek assets voor het uitvoeren van de `azds prep` toepassing in Kubernetes met behulp van de opdracht:
+Genereer de activa docker-en helm-grafiek voor het uitvoeren van de toepassing in Kubernetes met behulp van de `azds prep` opdracht:
 
 ```cmd
 azds prep --public
 ```
 
-U moet de `prep` opdracht uitvoeren vanuit de map *dev-Spaces/samples/nodejs/Getting-Started/webfrontend* om de docker-en helm-grafiek elementen correct te genereren.
+U moet de `prep`-opdracht uitvoeren vanuit de map *dev-Spaces/samples/nodejs/Getting-Started/webfrontend* om de docker-en helm-grafiek elementen correct te genereren.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Code schrijven en uitvoeren in Kubernetes
 
@@ -111,19 +107,19 @@ Service 'webfrontend' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in `azds up` de uitvoer van de opdracht. In dit voor beeld is *http://webfrontend.1234567890abcdef1234.eus.azds.io/* de open bare URL.
+U ziet de service die wordt uitgevoerd door de open bare URL te openen, die wordt weer gegeven in de uitvoer van de `azds up` opdracht. In dit voor beeld is de open bare URL *http://webfrontend.1234567890abcdef1234.eus.azds.io/* .
 
 > [!NOTE]
-> Wanneer u tijdens het uitvoeren `azds up`naar uw service navigeert, worden de traceringen van de HTTP-aanvraag ook weer gegeven in de uitvoer van de `azds up` opdracht. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met `--disable-http-traces` wanneer u `azds up`uitvoert.
+> Wanneer u naar uw service navigeert tijdens het uitvoeren van `azds up`, worden de traceringen van de HTTP-aanvraag ook weer gegeven in de uitvoer van de `azds up` opdracht. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met behulp van `--disable-http-traces` wanneer u `azds up`uitvoert.
 
 Als u de `azds up` opdracht met *CTRL + c*stopt, wordt de service nog steeds uitgevoerd in AKS en blijft de open bare URL beschikbaar.
 
 ## <a name="update-code"></a>Code bijwerken
 
-Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk bestand in het project bijwerken en `azds up` de opdracht opnieuw uitvoeren. Bijvoorbeeld:
+Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk bestand in het project bijwerken en de `azds up` opdracht opnieuw uitvoeren. Bijvoorbeeld:
 
-1. Als `azds up` het nog steeds wordt uitgevoerd, drukt u op *CTRL + c*.
-1. Update [regel 13 in `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) op:
+1. Als `azds up` nog steeds wordt uitgevoerd, drukt u op *CTRL + c*.
+1. Werk [regel 13 in `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) bij naar:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');

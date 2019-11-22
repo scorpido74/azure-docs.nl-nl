@@ -1,20 +1,16 @@
 ---
 title: Hoe Visual Studio code werkt met Azure dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: conceptual
 description: Hoe Visual Studio code werkt met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 7809f0215137b0c473e13143404a031497906ebf
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 50ce5e90e091ea72761cd7513d2508c657981e60
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68725817"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279892"
 ---
 # <a name="how-visual-studio-code-works-with-azure-dev-spaces"></a>Hoe Visual Studio code werkt met Azure dev Spaces
 
@@ -30,22 +26,22 @@ Visual Studio code en de Azure dev Space-extensie genereren de volgende assets v
 
 * Dockerfiles voor Java-toepassingen met Maven, node. js-toepassingen en .NET core-toepassingen
 * Helm-grafieken voor bijna elke taal met een Dockerfile
-* Een `azds.yaml` bestand, het [configuratie bestand voor Azure dev Spaces][azds-yaml] voor uw project
-* Een `.vscode` map met de Visual Studio code-start configuratie van uw project voor Java-toepassingen met behulp van Maven, node. js-toepassingen en .net core-toepassingen
+* Een `azds.yaml` bestand, het [configuratie bestand van Azure dev Spaces][azds-yaml] voor uw project
+* Een `.vscode` map met de Visual Studio code-start configuratie van uw project voor Java-toepassingen met behulp van Maven, node. js-toepassingen en .NET core-toepassingen
 
-De Dockerfile-, helm-grafiek `azds.yaml` en-bestanden zijn dezelfde activa die worden `azds prep`gegenereerd wanneer ze worden uitgevoerd. Deze bestanden kunnen ook buiten Visual Studio code worden gebruikt om uw project uit te voeren in AKS, zoals het `azds up`uitvoeren van. De `.vscode` map wordt alleen gebruikt door Visual Studio code voor het uitvoeren van uw project in AKS vanuit Visual Studio code.
+De Dockerfile-, helm-grafiek-en `azds.yaml`-bestanden zijn dezelfde activa die worden gegenereerd bij het uitvoeren van `azds prep`. Deze bestanden kunnen ook buiten Visual Studio code worden gebruikt om uw project uit te voeren in AKS, zoals het uitvoeren van `azds up`. De map `.vscode` wordt alleen gebruikt door Visual Studio code voor het uitvoeren van uw project in AKS vanuit Visual Studio code.
 
 ## <a name="run-your-service-in-aks"></a>Uw service uitvoeren in AKS
 
-Nadat u de assets voor uw project hebt gegenereerd, kunt u uw Java-, node. js-en .NET Core-Services uitvoeren in een bestaande ontwikkel ruimte van Visual Studio code. Op de pagina *fout opsporing* van Visual Studio code kunt u de start configuratie aanroepen vanuit `.vscode` de Directory om uw project uit te voeren.
+Nadat u de assets voor uw project hebt gegenereerd, kunt u uw Java-, node. js-en .NET Core-Services uitvoeren in een bestaande ontwikkel ruimte van Visual Studio code. Op de pagina *fout opsporing* van Visual Studio code kunt u de start configuratie aanroepen vanuit de `.vscode` Directory om uw project uit te voeren.
 
-U moet uw AKS-cluster maken en Azure-ontwikkel ruimten in uw cluster buiten Visual Studio code inschakelen. U kunt bijvoorbeeld de Azure CLI of de Azure Portal gebruiken om deze installatie uit te voeren. U kunt bestaande Dockerfiles-, helm-grafieken en `azds.yaml` bestanden die buiten Visual Studio code zijn gemaakt, hergebruiken, zoals de `azds prep`activa die worden gegenereerd door uit te voeren. Als u activa opnieuw wilt gebruiken die buiten Visual Studio code zijn gegenereerd, hebt u nog steeds `.vscode` een map nodig. Deze `.vscode` map kan opnieuw worden gegenereerd door Visual Studio code en de Azure dev Spaces-extensie en uw bestaande assets worden niet overschreven.
+U moet uw AKS-cluster maken en Azure-ontwikkel ruimten in uw cluster buiten Visual Studio code inschakelen. U kunt bijvoorbeeld de Azure CLI of de Azure Portal gebruiken om deze installatie uit te voeren. U kunt bestaande Dockerfiles-, helm-grafieken en `azds.yaml`-bestanden die buiten Visual Studio code zijn gemaakt, hergebruiken, zoals de activa die worden gegenereerd door `azds prep`uit te voeren. Als u activa opnieuw wilt gebruiken die buiten Visual Studio code zijn gegenereerd, hebt u nog steeds een `.vscode` Directory nodig. Deze `.vscode` map kan opnieuw worden gegenereerd door Visual Studio code en de Azure dev Spaces-extensie en uw bestaande assets worden niet overschreven.
 
 Voor .net core-projecten moet u de [ C# extensie][csharp-extension] hebben geïnstalleerd om uw .net-service vanuit Visual Studio code uit te voeren. Voor Java-projecten met maven moet u ook de [Java-fout opsporingsprogramma voor Azure dev Spaces-extensie][java-extension] installeren [en Maven geïnstalleerd en geconfigureerd][maven] om uw Java-service vanuit Visual Studio code uit te voeren.
 
 ## <a name="debug-your-service-in-aks"></a>Fout opsporing voor uw service in AKS
 
-Nadat u uw project hebt gestart, kunt u fouten opsporen in uw Java-, node. js-en .NET Core-Services die rechtstreeks vanuit Visual Studio code worden uitgevoerd in een dev-ruimte. De start configuratie in de `.vscode` Directory biedt extra informatie over fout opsporing voor het uitvoeren van een service met fout opsporing ingeschakeld in een dev-ruimte. Visual Studio code wordt ook gekoppeld aan het debugproces in de container die wordt uitgevoerd in uw ontwikkel ruimten, zodat u Verbreek punten kunt instellen, variabelen kunt inspecteren en andere fout opsporing kunt uitvoeren.
+Nadat u uw project hebt gestart, kunt u fouten opsporen in uw Java-, node. js-en .NET Core-Services die rechtstreeks vanuit Visual Studio code worden uitgevoerd in een dev-ruimte. De start configuratie in de `.vscode` Directory bevat de aanvullende informatie over fout opsporing voor het uitvoeren van een service met fout opsporing ingeschakeld in een dev-ruimte. Visual Studio code wordt ook gekoppeld aan het debugproces in de container die wordt uitgevoerd in uw ontwikkel ruimten, zodat u Verbreek punten kunt instellen, variabelen kunt inspecteren en andere fout opsporing kunt uitvoeren.
 
 
 ## <a name="use-visual-studio-code-with-azure-dev-spaces"></a>Visual Studio code gebruiken met Azure dev Spaces

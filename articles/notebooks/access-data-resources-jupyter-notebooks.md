@@ -1,23 +1,14 @@
 ---
 title: Toegang tot gegevensresources via Jupyter-notebooks in Azure
 description: Klik hier voor meer informatie over het openen van bestanden, REST-API's, databases en andere Azure Storage-resources van een Jupyter-notebook.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: ee867303-a5e5-4686-b2da-8a0108247d18
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: e1284072db8ca8aa7a49bd3c4d52f54e5d09420a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 23acdf99f6cb69f100e484e236580f3b2b43ba94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970263"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277688"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Toegang tot cloud-gegevens in een notitieblok
 
@@ -27,7 +18,7 @@ Natuurlijk kunt u [gegevensbestanden importeren in een project](work-with-projec
 
 In dit artikel bevat kort een overzicht van deze verschillende opties. Omdat de toegang tot gegevens is best in actie zien, vindt u uitvoerbaar code in de [voorbeelden van Azure-notitieblokken - toegang tot uw gegevens](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 
-## <a name="rest-apis"></a>REST-API’s
+## <a name="rest-apis"></a>REST API's
 
 In het algemeen is de enorme hoeveelheid gegevens die beschikbaar zijn via Internet toegankelijk niet via bestanden, maar via REST-API's. Gelukkig, omdat een cel notebook mag de code die u wilt, kunt u code voor het verzenden van aanvragen en ontvangen van JSON-gegevens. Vervolgens kunt u JSON converteren naar welke indeling u gebruiken wilt, zoals een pandas dataframe.
 
@@ -79,12 +70,12 @@ Als u werkt met Cosmos DB, kunt u de [azure-cosmos DB-tabel](https://pypi.org/pr
 
 Azure biedt een aantal andere gegevenstypen van de database die u kunt gebruiken. De onderstaande artikelen bieden hulp voor toegang tot deze databases met Python:
 
-- [Azure-Data Base voor PostgreSQL: Python gebruiken om verbinding te maken en gegevens op te vragen @ no__t-0
-- [Snelstart: Azure Redis Cache gebruiken met python @ no__t-0
-- [Azure-Data Base voor MySQL: Python gebruiken om verbinding te maken en gegevens op te vragen @ no__t-0
+- [Azure Database voor PostgreSQL: Python gebruiken om te verbinden en gegevens op te vragen](https://docs.microsoft.com/azure/postgresql/connect-python)
+- [Snelstartgids: Azure Redis-Cache gebruiken met Python](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [Azure Database voor MySQL: Python gebruiken om te verbinden en gegevens op te vragen](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)
   - [De Wizard voor Azure Data Factory kopiëren](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Werken met Project-gegevens bestanden @ no__t-0
+- [Hoe: werken met gegevens projectbestanden](work-with-project-data-files.md)

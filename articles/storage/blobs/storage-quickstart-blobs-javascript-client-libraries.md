@@ -1,6 +1,6 @@
 ---
-title: 'Azure-snelstart: een blob maken in objectopslag met JavaScript en HTML in de browser'
-description: Leer hoe u een exemplaar van BlobService gebruikt voor het uploaden, vermelden en verwijderen van blobs met behulp van JavaScript op een HTML-pagina.
+title: 'Quick Start: Azure Blob-opslag voor Java script v2 in de browser'
+description: Leer hoe u een exemplaar van BlobService gebruikt om blobs te uploaden, weer te geven en te verwijderen met behulp van Java script v2 SDK in een HTML-pagina.
 keywords: opslag, javascript, html
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,16 +8,16 @@ ms.date: 08/29/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 3dbd78f9c233515c675cd511924b3d4600b72fbd
-ms.sourcegitcommit: ee61ec9b09c8c87e7dfc72ef47175d934e6019cc
+ms.openlocfilehash: 1bf71f899a38fa4ce36f8f0ffc78de0c64f6c3f3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/30/2019
-ms.locfileid: "70173095"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270043"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Quickstart: Blobs uploaden, vermelden en verwijderen met behulp van JavaScript/HTML in de browser
+# <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Snelstart: Blobs uploaden, vermelden en verwijderen met behulp van JavaScript/HTML in de browser
 
 In deze snelstart wordt gedemonstreerd hoe u blobs kunt beheren door middel van code die volledig in de browser wordt uitgevoerd. De hier gebruikte aanpak toont hoe u de vereiste beveiligingsmaatregelen dient te gebruiken om verzekerd te zijn van beveiligde toegang tot uw blobopslagaccount. U hebt een [Azure-abonnement](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) nodig om deze quickstart te voltooien.
 
@@ -34,9 +34,9 @@ Ga terug naar Azure Portal en selecteer uw opslagaccount. Als u een nieuwe CORS-
 
 In de volgende tabel worden alle CORS-instellingen beschreven en de waarden voor het definiëren van de regel uitgelegd.
 
-|Instelling  |Value  | Description |
+|Instelling  |Waarde  | Beschrijving |
 |---------|---------|---------|
-| Toegestane oorsprong | * | Accepteert een door komma's gescheiden lijst met domeinen die als acceptabele oorsprongen zijn ingesteld. Als de waarde wordt ingesteld op `*`, hebben alle domeinen toegang tot het opslagaccount. |
+| Toegestane oorsprongen | * | Accepteert een door komma's gescheiden lijst met domeinen die als acceptabele oorsprongen zijn ingesteld. Als de waarde wordt ingesteld op `*`, hebben alle domeinen toegang tot het opslagaccount. |
 | Toegestane bewerkingen     | delete, get, head, merge, post, options en put | Vermeldt de HTTP-bewerkingen die zijn toegestaan om voor het opslagaccount te worden uitgevoerd. Voor deze snelstart selecteert u alle beschikbare opties. |
 | Toegestane headers | * | Definieert een lijst met aanvraagheaders (inclusief headers met een voorvoegsel) die door het opslagaccount zijn toegestaan. Als de waarde wordt ingesteld op `*`, hebben alle headers toegang. |
 | Weergegeven headers | * | Vermeldt de door het account toegestane antwoordheaders. Als de waarde wordt ingesteld op `*`, kan het account elke header verzenden.  |
@@ -54,7 +54,7 @@ Shared Access Signature (handtekening voor gedeelde toegang, SAS) wordt gebruikt
 
 U kunt een SAS maken met behulp van de CLI via de Azure-cloudshell of met Azure Storage Explorer. In de volgende tabel worden de parameters beschreven waar u waarden voor moet opgeven om een SAS te maken met de CLI.
 
-| Parameter      |Description  | Tijdelijke aanduiding |
+| Parameter      |Beschrijving  | Tijdelijke aanduiding |
 |----------------|-------------|-------------|
 | *expiry*       | De vervaldatum van het toegangstoken in de notatie JJJJ-MM-DD. Voer voor deze snelstart de datum van morgen in. | *FUTURE_DATE* |
 | *account-name* | De naam van het opslagaccount. Gebruik de naam die in een vorige stap is bewaard. | *YOUR_STORAGE_ACCOUNT_NAME* |
@@ -76,9 +76,9 @@ az storage account generate-sas
 ```
 Mogelijk vindt u de reeks waarden na elke parameter wat cryptisch. Deze parameterwaarden zijn afkomstig van de eerste letter van hun respectieve machtiging. In de volgende tabel wordt uitgelegd waar de waarden vandaan komen: 
 
-| Parameter        | Value   | Description  |
+| Parameter        | Waarde   | Beschrijving  |
 |------------------|---------|---------|
-| *machtigingen*    | racwdl  | Deze SAS staat de mogelijkheden *read*, *append*, *create*, *write*, *delete* en *list* toe. |
+| *permissions*    | racwdl  | Deze SAS staat de mogelijkheden *read*, *append*, *create*, *write*, *delete* en *list* toe. |
 | *resource-types* | sco     | De resources die waar de SAS invloed op heeft, zijn *service*, *container* en *object*. |
 | *services*       | b       | De service waar de SAS invloed op heeft is de *blob*-service. |
 
@@ -249,7 +249,7 @@ document.getElementById('delete-button').addEventListener('click', () => {
 > Om dit codevoorbeeld goed te laten werken, dient u een tekenreekswaarde voor *blobName* op te geven.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Als u de resources die in deze snelstart zijn gemaakt, wilt opschonen, gaat u terug naar [Azure Portal](https://portal.azure.com) en selecteert u uw opslagaccount. Vervolgens verwijdert u het opslagaccount via: **Overzicht > Opslagaccount verwijderen**.
+Als u de resources die in deze snelstart zijn gemaakt, wilt opschonen, gaat u terug naar [Azure Portal](https://portal.azure.com) en selecteert u uw opslagaccount. Vervolgens verwijdert u het opslagaccount via **Overzicht > Opslagaccount verwijderen**.
 
 ## <a name="next-steps"></a>Volgende stappen
 Bekijk de voorbeelden om te leren hoe u tijdens het uploaden van bestanden blobs kunt downloaden en de voortgang rapporteren.

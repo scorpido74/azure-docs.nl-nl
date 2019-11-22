@@ -1,5 +1,5 @@
 ---
-title: Nagaan wanneer een specifieke gebruiker toegang kan krijgen tot een toepassing | Microsoft Docs
+title: Nagaan wanneer een specifieke gebruiker toegang kan krijgen tot een app
 description: Nagaan of een belang rijke gebruiker toegang heeft tot een toepassing die u hebt geconfigureerd voor het inrichten van gebruikers met Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d3b334df8cd24a1d8ca88c8ac2e3117bdd24d8b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 25ac9ad5877c6a1408d4045df4d4e1fd8f64ea94
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71057770"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275744"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>De status van het inrichten van gebruikers controleren
 
@@ -40,7 +40,7 @@ Wanneer u voor het eerst automatische inrichting configureert, ziet u in de sect
 
 Nadat een inrichtings cyclus is voltooid, toont de sectie **statistieken tot datum** de cumulatieve aantallen gebruikers en groepen die zijn ingericht tot datum, samen met de voltooiings datum en duur van de laatste cyclus. Met de **activiteit-ID** wordt de meest recente inrichtings cyclus uniek geïdentificeerd. De **taak-id** is een unieke id voor de inrichtings taak en is specifiek voor de app in uw Tenant.
 
-De inrichtings voortgang kan worden weer gegeven in de Azure Portal op het tabblad **Azure Active Directory &gt; &gt; \[toepassings\] naam &gt;**  van de toepassing.
+De voortgang van de inrichting kan worden weer gegeven in de Azure Portal, in het **Azure Active Directory &gt; Enter prise-Apps &gt; \[toepassings naam\] &gt; inrichtings** tabblad.
 
 ![Voortgangs balk van de inrichtings pagina](media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -48,7 +48,7 @@ De inrichtings voortgang kan worden weer gegeven in de Azure Portal op het tabbl
 
 Als u de inrichtings status voor een geselecteerde gebruiker wilt weer geven, raadpleegt u de [inrichtings Logboeken (preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) in azure AD. Alle bewerkingen die worden uitgevoerd door de User Provisioning Service worden vastgelegd in de Azure AD-inrichtings Logboeken. Dit omvat alle Lees-en schrijf bewerkingen die zijn aangebracht op de bron-en doel systemen en de gebruikers gegevens die tijdens elke bewerking zijn gelezen of geschreven.
 
-U kunt toegang krijgen tot de inrichtings Logboeken in de Azure portal door **Azure Active Directory** &gt; **Enter prise apps** &gt; **Provisioning logs (preview)** te selecteren in de sectie **activiteit** . U kunt de inrichtings gegevens zoeken op basis van de naam van de gebruiker of de id in het bron systeem of het doel systeem. Zie [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)voor meer informatie. 
+U kunt toegang krijgen tot de inrichtings Logboeken in de Azure Portal door **Azure Active Directory** &gt; **enter prise apps** &gt; **inrichtings Logboeken (preview)** te selecteren in de sectie **activiteit** . U kunt de inrichtings gegevens zoeken op basis van de naam van de gebruiker of de id in het bron systeem of het doel systeem. Zie [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)voor meer informatie. 
 
 De inrichtings logboeken registreren alle bewerkingen die worden uitgevoerd door de inrichtings service, waaronder:
 
@@ -66,7 +66,7 @@ Hoe lang het duurt voordat een bepaalde gebruiker is ingericht, hangt voornameli
 
 - Voor de **eerste cyclus**is de tijd van de taak afhankelijk van veel factoren, zoals het aantal gebruikers en groepen in het bereik voor inrichting en het totale aantal gebruikers en de groep in het bron systeem. De eerste synchronisatie tussen Azure AD en een app kan van 20 minuten tot enkele uren duren, afhankelijk van de grootte van de Azure AD-adres lijst en het aantal gebruikers in het bereik dat moet worden ingericht. Verderop in deze sectie vindt u een uitgebreide lijst met factoren die van invloed zijn op de prestaties van de initiële cyclus.
 
-- Voor **incrementele cyclussen** na de eerste cyclus duren taken sneller (bijvoorbeeld binnen tien minuten), omdat de inrichtings service water merken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van volgende synchroniseert. De tijd van de taak is afhankelijk van het aantal wijzigingen dat is gedetecteerd in die inrichtings cyclus. Als er minder dan 5.000 gebruikers-of groepslid maatschappen worden gewijzigd, kan de taak binnen één incrementele inrichtings cyclus worden voltooid. 
+- Voor **incrementele cycli** na de eerste cyclus zijn taak tijden korter (bijvoorbeeld binnen tien minuten), omdat de inrichtings service water merken opslaat die de status van beide systemen na de eerste cyclus vertegenwoordigen, waardoor de prestaties van volgende synchronisaties worden verbeterd. De tijd van de taak is afhankelijk van het aantal wijzigingen dat is gedetecteerd in die inrichtings cyclus. Als er minder dan 5.000 gebruikers-of groepslid maatschappen worden gewijzigd, kan de taak binnen één incrementele inrichtings cyclus worden voltooid. 
 
 De volgende tabel bevat een overzicht van de synchronisatie tijden voor veelvoorkomende inrichtings scenario's. In deze scenario's is het bron systeem Azure AD en is het doel systeem een SaaS-toepassing. De synchronisatie tijden zijn afgeleid van een statistische analyse van synchronisatie taken voor de SaaS-toepassingen ServiceNow, Workplace, Sales Force en G suite.
 

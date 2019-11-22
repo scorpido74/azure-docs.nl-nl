@@ -1,23 +1,23 @@
 ---
-title: 'Quick Start: een Xamarin iOS-app maken met ruimtelijke ankers van Azure | Microsoft Docs'
+title: 'Quick Start: een Xamarin iOS-app maken'
 description: In deze Quick Start leert u hoe u een iOS-app kunt bouwen met Xamarin met behulp van ruimtelijke ankers.
 author: craigktreasure
-manager: virivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ef25cf07326220be36ce8f67267428ffe1ac0728
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: d2e1612804c78e3436b776cdffea7e19bc2925fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931642"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276991"
 ---
-# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Quickstart: Een Xamarin iOS-app maken met ruimtelijke ankers van Azure
+# <a name="quickstart-create-a-xamarin-ios-app-with-azure-spatial-anchors"></a>Quick Start: een Xamarin iOS-app maken met ruimtelijke ankers van Azure
 
-In deze Quick Start wordt beschreven hoe u een iOS-app met Xamarin maakt met behulp van [Azure spatiale ankers](../overview.md). Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een iOS-app waarmee u een ruimtelijk anker kunt opslaan en intrekken.
+In deze Quick Start wordt beschreven hoe u een iOS-app met Xamarin maakt met behulp van [Azure spatiale ankers](../overview.md). Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een iOS-app waarmee u een ruimtelijk anker kunt opslaan en intrekken.
 
 U leert het volgende:
 
@@ -52,7 +52,7 @@ Open `Xamarin/SampleXamarin.Common/AccountDetails.cs`.
 
 Zoek het veld `SpatialAnchorsAccountKey` en vervang `Set me` met de accountsleutel.
 
-Zoek het veld `SpatialAnchorsAccountId` en vervang `Set me` met de account-id.
+Zoek het `SpatialAnchorsAccountId`-veld en vervang `Set me` met de account-id.
 
 ## <a name="deploy-the-app-to-your-ios-device"></a>De app implementeren op uw iOS-apparaat
 
@@ -62,17 +62,17 @@ Stel het opstart project in op **SampleXamarin. IOS**, wijzig de **oplossings co
 
 ![Configuratie van Visual Studio](./media/get-started-xamarin-iOS/visual-studio-macos-configuration.jpg)
 
-Selecteer Start **uitvoeren** > **zonder fout opsporing** om uw app te implementeren en te starten.
+Selecteer **uitvoeren** > **zonder fout opsporing starten** om uw app te implementeren en te starten.
 
 Selecteer in de app **basis** om de demo uit te voeren en volg de instructies voor het plaatsen en intrekken van een anker.
 
-> ![Scherm opname](./media/get-started-xamarin-ios/screenshot-1.jpg)
-> 1![scherm](./media/get-started-xamarin-ios/screenshot-2.jpg)
-> afbeelding2![scherm afbeelding 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
+> ![scherm afbeelding 1](./media/get-started-xamarin-ios/screenshot-1.jpg)
+> ![scherm afbeelding 2](./media/get-started-xamarin-ios/screenshot-2.jpg)
+> ![scherm afbeelding 3](./media/get-started-xamarin-ios/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Spatial Anchors met meerdere apparaten delen](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)

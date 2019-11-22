@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: bf82714011754ba516fa38444b1019b9cc1aa732
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e33f8a8090e7840087add0e16252bd2a3e873524
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74111878"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276782"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Gegevens drift (preview) detecteren voor modellen die zijn geïmplementeerd in azure Kubernetes service (AKS)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -80,7 +80,7 @@ Met behulp van Azure Machine Learning wordt gegevens drift bewaakt door data set
 ## <a name="configure-data-drift"></a>Gegevens drift configureren
 Als u gegevens drift wilt configureren voor uw experiment, moet u afhankelijkheden importeren zoals wordt weer gegeven in het volgende python-voor beeld. 
 
-In dit voor beeld ziet u hoe u het [`DataDriftDetector`](https://docs.microsoft.com/python/api/azureml-contrib-datadrift/azureml.contrib.datadrift.datadriftdetector.datadriftdetector?view=azure-ml-py) -object configureert:
+In dit voor beeld ziet u hoe u het [`DataDriftDetector`](/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector) -object configureert:
 
 ```python
 # Import Azure ML packages

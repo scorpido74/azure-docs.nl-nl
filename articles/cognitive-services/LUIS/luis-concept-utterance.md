@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: diberry
-ms.openlocfilehash: 8069b3b9c9a226e29a3eae3261948ee92291726d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 7412677773b60a1894a6ece7251e797bfddee091
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73486637"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280799"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Begrijpen wat goede uitingen zijn voor uw LUIS-app
 
@@ -60,17 +60,17 @@ Doe het volgende voor beeld uitingen:
 |Ik wil een computer verkrijgen, hoe ga ik daar naartoe?|
 |Wanneer kan ik een computer?| 
 
-De basis term hier, ' computer ', is niet gevarieerd. Gebruik alternatieven als desktop computer, laptop, werk station of zelfs alleen machine. LUIS maakt op intelligente wijze synoniemen van context, maar wanneer u uitingen voor de training gaat maken, is het nog steeds beter om ze te variëren.
+De basis term hier, ' computer ', is niet gevarieerd. Gebruik alternatieven als desktop computer, laptop, werk station of zelfs alleen machine. LUIS kan op intelligente wijze synoniemen uit de context afleiden, maar wanneer u uitingen voor training maakt, is het altijd beter om ze te variëren.
 
 ## <a name="example-utterances-in-each-intent"></a>Voor beeld van uitingen in elke intentie
 
-Elke intentie moet voorbeeld uitingen hebben, ten minste 15. Als u een intentie hebt die geen voorbeeld uitingen heeft, kunt u LUIS niet trainen. Als u een intentie hebt met een of meer voor beeld uitingen, zal LUIS de bedoeling niet nauw keurig voors pellen. 
+Elke intentie moet voorbeeld uitingen hebben, ten minste 15. Als u een intentie hebt die geen voorbeeld uitingen heeft, kunt u LUIS niet trainen. Als u een intentie hebt met een of meer voor beeld uitingen, is het mogelijk dat LUIS de bedoeling niet nauw keurig voors pellen. 
 
 ## <a name="add-small-groups-of-15-utterances-for-each-authoring-iteration"></a>Kleine groepen van 15 uitingen toevoegen voor elke ontwerp herhaling
 
 Voeg in elke herhaling van het model geen grote hoeveelheid uitingen toe. Voeg uitingen toe aan hoeveel heden van 15. [Train](luis-how-to-train.md), [Publiceer](luis-how-to-publish-app.md)en [test](luis-interactive-test.md) het opnieuw.  
 
-LUIS bouwt efficiënte modellen met uitingen die zorgvuldig zijn geselecteerd door de auteur van het LUIS-model. Het is niet waardevol om te veel uitingen toe te voegen, omdat het Verwar ring leidt.  
+LUIS bouwt efficiënte modellen met uitingen die zorgvuldig zijn geselecteerd door de auteur van het LUIS-model. Het is niet waardevol om te veel uitingen toe te voegen, omdat het Verwar ring leidt.
 
 Het is beter om met een paar uitingen te beginnen en vervolgens [eind punt uitingen te controleren](luis-how-to-review-endpoint-utterances.md) op juiste intentie van voor spelling en extractie van entiteiten.
 
@@ -108,11 +108,11 @@ Norma Lise ring betekent niet dat er geen lees-en diakritische tekens worden wee
 
 ### <a name="punctuation-marks"></a>Lees tekens
 
-Interpunctie is een afzonderlijk token in LUIS. Een utterance die een punt bevat aan het einde en een utterance die geen punt aan het einde bevatten, zijn twee afzonderlijke uitingen en kunnen twee verschillende voor spellingen ontvangen. 
+Interpunctie is een afzonderlijke token in LUIS. Een utterance die een punt bevat aan het einde en een utterance die geen punt aan het einde bevatten, zijn twee afzonderlijke uitingen en kunnen twee verschillende voor spellingen ontvangen. 
 
 Als interpunctie niet is genormaliseerd, LUIS niet standaard interpunctie markeringen negeren, omdat sommige client toepassingen significant kunnen zijn voor deze markeringen. Zorg ervoor dat uw voor beeld-uitingen zowel interpunctie als geen interpunctie gebruiken voor beide stijlen om dezelfde relatieve scores te retour neren. 
 
-Zorg ervoor dat het model interpunctie verwerkt in het [voor beeld uitingen](luis-concept-utterance.md) (zonder interpunctie) of in de [patronen](luis-concept-patterns.md) waar het gemakkelijker is om interpunctie te negeren met de speciale syntaxis: `I am applying for the {Job} position[.]`
+Zorg ervoor dat het model interpunctie verwerkt in het voor beeld uitingen (zonder interpunctie) of in de [patronen](luis-concept-patterns.md) waar het gemakkelijker is om interpunctie te negeren met de speciale syntaxis: `I am applying for the {Job} position[.]`
 
 Als interpunctie geen specifieke betekenis heeft in uw client toepassing, kunt u overwegen [interpunctie te negeren](#utterance-normalization) door interpunctie te normaliseren. 
 
@@ -136,18 +136,18 @@ Nadat uw model is getraind, gepubliceerd en [endpoint](luis-glossary.md#endpoint
 
 Bekijk [Aanbevolen procedures](luis-concept-best-practices.md) en pas deze toe als onderdeel van uw reguliere ontwerp cyclus.
 
-## <a name="label-for-word-meaning"></a>Label voor woord betekenis
+## <a name="label-for-word-meaning"></a>Label voor de betekenis van woord
 
-Als het woord of de rang schikking van Word hetzelfde is, maar niet hetzelfde is, moet u deze niet aan de entiteit labelen. 
+Als het woord keuze of word-indeling hetzelfde is, maar geen betekent dit hetzelfde te doen dat, u deze niet labelen met de entiteit. 
 
-De volgende uitingen is het woord `fair` een homograph is. De spelling is hetzelfde, maar heeft een andere betekenis:
+De volgende uitingen, het woord `fair` een homograaf is. Deze hetzelfde is gespeld, maar heeft een andere betekenis:
 
 |Utterance|
 |--|
-|Wat voor soort graafschap komt in het gebied Seattle van deze zomer?|
-|Is de huidige beoordeling voor de Seattle-beoordeling eerlijk?|
+|Wat voor soort county beurzen plaatsvinden in het gebied van Seattle zomer van dit jaar?|
+|Is de huidige classificatie voor de beoordeling Seattle geoorloofd?|
 
-Als u wilt dat een gebeurtenis entiteit alle gebeurtenis gegevens vindt, labelt u het woord `fair` in de eerste utterance, maar niet in de tweede.
+Als u een entiteit gebeurtenis te vinden van alle gegevens van de gebeurtenis, een label het woord `fair` in de eerste utterance, maar niet in de tweede.
 
 
 ## <a name="next-steps"></a>Volgende stappen

@@ -1,5 +1,6 @@
 ---
-title: Stroom logboeken van netwerk beveiligings groepen beheren met Azure Network Watcher-Power shell | Microsoft Docs
+title: NSG-stroom logboeken beheren-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Op deze pagina wordt uitgelegd hoe u stroom logboeken voor netwerk beveiligings groepen in azure Network Watcher beheert met Power shell
 services: network-watcher
 documentationcenter: na
@@ -14,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 508fe6f7dc6c5fef99e5f62a2ce75b0c81b1577f
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 162e499ba44557db388484639c21877fd8b852bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676332"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277971"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Stroom logboeken voor netwerk beveiligings groepen configureren met Power shell
 
 > [!div class="op_single_selector"]
-> - [Azure-portal](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
-> - [Azure-CLI](network-watcher-nsg-flow-logging-cli.md)
+> - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
 
 Stroom logboeken van netwerk beveiligings groepen zijn een functie van Network Watcher waarmee u informatie kunt bekijken over binnenkomend en IP-verkeer via een netwerk beveiligings groep. Deze stroom logboeken worden geschreven in JSON-indeling en uitgaande en inkomende stromen per regel weer gegeven, de NIC waarop de stroom van toepassing is, 5-tuple informatie over de stroom (bron/doel-IP, bron/doel poort, Protocol) en of het verkeer is toegestaan of geweigerd.

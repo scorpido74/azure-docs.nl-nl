@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Toegestane vertraging configureren voor automatische gebruikers inrichting met Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: gebruikers inrichten voor een toegestane vertraging-Azure AD'
 description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op toegestane vertraging.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a294254bd52db89179c5644ea7a0f0f04027f30
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: a90151679b71364d93446d1acc46a461d2a9d8f9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68932477"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278170"
 ---
-# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelfstudie: Toegestane vertraging voor het automatisch inrichten van gebruikers configureren
+# <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Zelf studie: toegestane vertraging voor automatische gebruikers inrichting configureren
 
 Het doel van deze zelf studie is om u te laten zien welke stappen u moet uitvoeren, en hoe u in azure AD automatisch gebruikers accounts van Azure AD kunt inrichten en de inrichting van een toegestane vertraging.
 
@@ -34,7 +34,7 @@ In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan 
 * Een toegestane vertragings Tenant met het [plus plan](https://aadsyncfabric.slack.com/pricing) of beter ingeschakeld
 * Een ontoegestane gebruikers account met beheerders machtigingen voor het team
 
-Opmerking: De integratie van Azure AD-inrichting is afhankelijk van de SCIM-API van de [toegestane vertraging](https://api.slack.com/scim), die beschikbaar is voor de vertraging van teams op het plus-of betere niveau.
+Opmerking: de integratie van Azure AD-inrichting is afhankelijk van de SCIM-API van de [toegestane vertraging](https://api.slack.com/scim), die beschikbaar is voor de vertraging van teams op het plus-of betere niveau.
 
 ## <a name="assigning-users-to-slack"></a>Gebruikers toewijzen aan toegestane vertraging
 
@@ -68,9 +68,9 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
    ![Inrichting van toegestane vertraging](./media/slack-provisioning-tutorial/Slack1.PNG)
 
-5. Klik onder de sectie **beheerders referenties** opautoriseren. Hiermee opent u een dialoog venster voor een toegestane autorisatie in een nieuw browser venster.
+5. Klik onder de sectie **beheerders referenties** op **autoriseren**. Hiermee opent u een dialoog venster voor een toegestane autorisatie in een nieuw browser venster.
 
-6. Meld u in het nieuwe venster aan met de beheerders account van uw team. Selecteer in het dialoog venster resulterende autorisatie het uitstel team waarvoor u het inrichten wilt inschakelen en selecteer vervolgens autoriseren. Als u klaar bent, keert u terug naar de Azure Portal om de inrichtings configuratie te volt ooien.
+6. Meld u in het nieuwe venster aan met de beheerders account van uw team. Selecteer in het dialoog venster resulterende autorisatie het uitstel team waarvoor u het inrichten wilt inschakelen en selecteer vervolgens **autoriseren**. Als u klaar bent, keert u terug naar de Azure Portal om de inrichtings configuratie te volt ooien.
 
     ![Autorisatie dialoogvenster](./media/slack-provisioning-tutorial/Slack3.PNG)
 
@@ -84,7 +84,7 @@ In deze sectie wordt u begeleid bij het verbinden van de API voor het inrichten 
 
 11. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die vanuit Azure AD worden gesynchroniseerd op toegestane vertraging. Houd er rekening mee dat de kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen, worden gebruikt om de gebruikers accounts in de toegestane vertraging voor update bewerkingen te vergelijken. Selecteer de knop Opslaan om door te voeren van eventuele wijzigingen.
 
-12. Als u de Azure AD-inrichtings service wilt inschakelen voor een toegestane vertraging, wijzigt u de inrichtings **status** in in het gedeelte **instellingen**
+12. Als u de Azure AD-inrichtings service wilt inschakelen voor een toegestane vertraging, **wijzigt u de** **inrichtings status** in in het gedeelte **instellingen**
 
 13. Klik op **Opslaan**.
 
@@ -124,7 +124,7 @@ Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [ra
 
 * De toegestane vertraging kan alleen overeenkomen met de kenmerken **username** en **e-mail**.  
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

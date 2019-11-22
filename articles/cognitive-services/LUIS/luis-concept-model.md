@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: 4cbca96ed95167615f3ff2876e27e546d08d92f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d721ceb25b3ce2408563a0bed16457d05affe7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73507713"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280873"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Ontwerpen met intentie-en entiteits modellen 
 
@@ -37,7 +37,7 @@ Model ontleding heeft de volgende onderdelen:
 * [door machines geleerde entiteiten](#machine-learned-entities)
     * [subonderdelen](#entity-subcomponents-help-extract-data) (ook door machines geleerde entiteiten)
         * [descriptoren](#descriptors-are-features) van functies 
-        * [beperkingen](#constraints-are-text-rules) die worden gegeven door entiteiten die niet door machines zijn geleerd, zoals (reguliere expressies en lijsten)
+        * [beperkingen](#constraints-are-text-rules) die worden gegeven door entiteiten die niet door machines zijn geleerd, zoals reguliere expressies en lijsten
 
 ## <a name="v2-authoring-models"></a>V2-modellen ontwerpen
 
@@ -134,7 +134,7 @@ Een intentie is het gewenste resultaat van het _hele_ utterance terwijl entiteit
 
 Deze utterance _moet_ een intentie hebben en _kan_ entiteiten hebben:
 
-`Buy a airline ticket from Seattle to Cairo`
+`Buy an airline ticket from Seattle to Cairo`
 
 Dit utterance heeft één intentie:
 

@@ -1,6 +1,6 @@
 ---
 title: Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
-description: Archiveer logboekgegevens en metrische gegevens die binnen Azure zijn gemaakt voor een opslagaccount.
+description: Logboek-en metrische gegevens die door Azure-resources zijn gegenereerd, archiveren in een opslag account.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -9,12 +9,12 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: e784b76af478f834a7d1104650da1cbd3ca2a31f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4d150a1f6793cc20d58bebc67d5c6b58c03139d4
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60552828"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304714"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Metrische gegevens en logboekgegevens van Azure archiveren met behulp van Azure Storage
 
@@ -38,7 +38,7 @@ Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure
 
 ## <a name="sign-in-to-the-azure-portal"></a>Aanmelden bij Azure Portal
 
-Meld u aan bij [Azure Portal](https://portal.azure.com/).
+Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
@@ -72,7 +72,7 @@ Bewakingsgegevens uit uw abonnement worden nu doorgestuurd naar het opslagaccoun
 
 Nu gaan we gegevens op resourceniveau (metrische gegevens voor resources en diagnostische logboeken) zodanig configureren dat ze worden doorgestuurd naar het opslagaccount door **instellingen voor resourcediagnose** te definiëren.
 
-1. Klik op de knop **Controle** in de linkernavigatielijst en klik op **Diagnostische instellingen**. Hier kunt u een lijst zien van alle resources in uw abonnement die bewakingsgegevens via Azure Monitor genereren. Als er geen resources in deze lijst staan, kunt u [een logische app maken](../../logic-apps/quickstart-create-first-logic-app-workflow.md) voordat u verdergaat zodat u over een resource beschikt waarvoor u een diagnostische instelling kunt configureren.
+1. Klik op de knop **Controle** in de linkernavigatielijst en klik op **Diagnostische instellingen**. Hier kunt u een lijst zien van alle resources in uw abonnement die bewakingsgegevens via Azure Monitor genereren. Als er geen resources in deze lijst staan, kunt u [een logische app maken](../../logic-apps/quickstart-create-first-logic-app-workflow.md) voordat u verdergaat. Zodoende beschikt u over een resource waarvoor u een diagnostische instelling kunt configureren.
 
 2. Klik op een resource in de lijst en klik op **Diagnostische gegevens inschakelen**.
 
@@ -103,7 +103,7 @@ Bewakingsgegevens uit uw resource worden nu doorgestuurd naar het opslagaccount.
 > [!NOTE]
 > Het verzenden van multidimensionale metrische gegevens via diagnostische instellingen wordt momenteel niet ondersteund. Metrische gegevens met dimensies worden geëxporteerd als platte eendimensionale metrische gegevens, als totaal van alle dimensiewaarden.
 >
-> *Bijvoorbeeld*: De metriek 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
+> *Een voorbeeld*: de metriek 'Binnenkomende berichten' voor een Event Hub kan worden verkend en uitgezet op wachtrijniveau. Wanneer de waarde wordt geëxporteerd via diagnostische instellingen, wordt deze echter voorgesteld als alle binnenkomende berichten voor alle wachtrijen in de Event Hub.
 >
 >
 

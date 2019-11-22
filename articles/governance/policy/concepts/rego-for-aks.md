@@ -3,12 +3,12 @@ title: Meer informatie over Azure Policy voor de Azure Kubernetes-service
 description: Meer informatie over hoe Azure Policy Rego gebruikt en beleids agent opent voor het beheren van clusters op de Azure Kubernetes-service.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: dbac1ee762066fb59cd57c04839666026a2bd89b
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: d8d5c1ebeded62f475804e4e704f823aba2c10eb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959804"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279400"
 ---
 # <a name="understand-azure-policy-for-azure-kubernetes-service"></a>Meer informatie over Azure Policy voor de Azure Kubernetes-service
 
@@ -123,7 +123,7 @@ Voordat u de invoeg toepassing in uw AKS-cluster installeert, moet de uitbrei di
 
 Zodra de vereisten zijn voltooid, installeert u de Azure Policy-invoeg toepassing in het AKS-cluster dat u wilt beheren.
 
-- Azure-portal
+- Azure Portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
@@ -206,7 +206,7 @@ Als u logboeken van gate keeper-containers wilt weer geven, volgt u de stappen i
 
 Als u de invoeg toepassing Azure Policy wilt verwijderen uit uw AKS-cluster, gebruikt u de Azure Portal of Azure CLI:
 
-- Azure-portal
+- Azure Portal
 
   1. Start de AKS-service in de Azure Portal door op **alle services**te klikken en vervolgens op **Kubernetes Services**te zoeken en te selecteren.
 
@@ -257,6 +257,6 @@ De gegevens die door de invoeg toepassing worden verzameld, zijn geen persoonlij
 - Bekijk de [structuur van Azure Policy-definities](definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
 - Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

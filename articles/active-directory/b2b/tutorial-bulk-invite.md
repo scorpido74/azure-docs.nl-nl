@@ -1,5 +1,5 @@
 ---
-title: Zelf studie voor het bulksgewijs uitnodigen van B2B-samenwerkings gebruikers-Azure Active Directory | Microsoft Docs
+title: Zelf studie voor het bulksgewijs uitnodigen van B2B-samenwerkings gebruikers-Azure AD
 description: In deze zelfstudie leert u hoe u PowerShell en een CSV-bestand gebruikt voor het verzenden van bulk-uitnodigingen naar externe gebruikers van de Microsoft Azure AD B2B-samenwerking.
 services: active-directory
 ms.service: active-directory
@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec1a6ea8f363f2ddd4a9568700d5bff3330443c0
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 1ffcdad43195ce49ef3cd8b695f9ad5009af82fb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71128729"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272361"
 ---
-# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Zelfstudie: Azure AD B2B-samenwerkings gebruikers (preview) bulksgewijs uitnodigen
+# <a name="tutorial-bulk-invite-azure-ad-b2b-collaboration-users-preview"></a>Zelf studie: Azure AD B2B Collaboration-gebruikers (preview) bulksgewijs uitnodigen
 
 |     |
 | --- |
@@ -43,7 +43,7 @@ U moet twee of meer test e-mailaccounts hebben waarnaar u uitnodigingen kunt ver
 
 1. Meld u aan bij de Azure Portal met een account dat een gebruikers beheerder in de organisatie is.
 2. Selecteer **Azure Active Directory**in het navigatie deel venster.
-3. Selecteer onder **beheren**de optie **gebruikers** > **bulksgewijs uitnodigen**.
+3. Selecteer onder **beheren**de optie **gebruikers** > **bulk-uitnodiging**.
 4. Selecteer op de pagina **gebruikers bulksgewijs uitnodigen (preview)** de optie **downloaden** om een geldig CSV-bestand met de uitnodigings-eigenschappen te verkrijgen.
 
     ![Knop downloaden in bulk-uitnodiging](media/tutorial-bulk-invite/bulk-invite-button.png)
@@ -88,7 +88,7 @@ Voer de volgende opdracht uit:
  Get-AzureADUser -Filter "UserType eq 'Guest'"
 ```
 
-De gebruikers die u hebt uitgenodigd, worden weer gegeven met een User Principal Name (UPN) in de notatie *EmailAddress*#EXT #\@*domein*. Bijvoorbeeld, *lstokes_fabrikam. com #\@ext # contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
+De gebruikers die u hebt uitgenodigd, worden weer gegeven met een user principal name (UPN) in de notatie *emailaddress*#EXT #\@*domein*. Bijvoorbeeld *lstokes_fabrikam. com # ext #\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

@@ -1,23 +1,19 @@
 ---
 title: Fouten opsporen en herhalen met Visual Studio code en .NET Core op Kubernetes met behulp van Azure dev Spaces (Visual Studio code)
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: b65dc5ed5d6d69ecde2108fcc322e27999704123
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: 94bab8044ad9221fe9445dfa7c9e6912274bfe2b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815847"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279807"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en .NET Core op Kubernetes met behulp van Azure dev Spaces (Visual Studio code)
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-net-core-on-kubernetes-using-azure-dev-spaces-visual-studio-code"></a>Quick Start: fouten opsporen en herhalen met Visual Studio code en .NET Core op Kubernetes met behulp van Azure dev Spaces (Visual Studio code)
 
 In deze handleiding leert u het volgende:
 
@@ -87,11 +83,11 @@ Open Visual Studio code, klik op *bestand* en vervolgens op *openen...* Navigeer
 
 U hebt nu het *webfrontend* -project geopend in Visual Studio code. Als u de toepassing in uw ontwikkelaars ruimte wilt uitvoeren, genereert u de helm-grafiek assets met de extensie Azure dev Spaces in het opdracht palet.
 
-Als u het opdracht palet wilt openen in Visual Studio code, klikt u op *weer gave* en vervolgens op *opdracht palet*. Begin met `Azure Dev Spaces` typen en `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`Klik op.
+Als u het opdracht palet wilt openen in Visual Studio code, klikt u op *weer gave* en vervolgens op *opdracht palet*. Begin met het typen van `Azure Dev Spaces` en klik op `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
 ![Configuratie bestanden voorbereiden voor Azure-ontwikkel ruimten](./media/common/command-palette.png)
 
-Wanneer Visual Studio code ook u vraagt om uw open bare eind punt te `Yes` configureren, kunt u een openbaar eind punt inschakelen.
+Wanneer Visual Studio code ook u vraagt om uw open bare eind punt te configureren, kiest u `Yes` om een openbaar eind punt in te scha kelen.
 
 ![Openbaar eind punt selecteren](media/common/select-public-endpoint.png)
 
@@ -117,7 +113,7 @@ Klik op *fout* opsporing en vervolgens op *fout opsporing stoppen* om het fout o
 Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk bestand in uw project bijwerken en *.net core Launch (AZDS)* opnieuw uitvoeren. Bijvoorbeeld:
 
 1. Als uw toepassing nog steeds wordt uitgevoerd, klikt u op *fout* opsporing en *stopt u fout opsporing* .
-1. [Regel 22 in `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) bijwerken naar:
+1. [Regel 22 in `Controllers/HomeController.cs`](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Controllers/HomeController.cs#L22) bijwerken tot:
     
     ```csharp
     ViewData["Message"] = "Your application description page in Azure.";
@@ -143,7 +139,7 @@ Verwijder het onderbrekings punt door de cursor op regel 22 in `Controllers/Home
 
 ## <a name="update-code-from-visual-studio-code"></a>Code bijwerken vanuit Visual Studio code
 
-Terwijl de service wordt uitgevoerd in de foutopsporingsmodus, werkt u regel 22 `Controllers/HomeController.cs`bij. Bijvoorbeeld:
+Terwijl de service wordt uitgevoerd in de foutopsporingsmodus, werkt u regel 22 bij in `Controllers/HomeController.cs`. Bijvoorbeeld:
 
 ```csharp
 ViewData["Message"] = "Your application description page in Azure while debugging!";

@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 85d2e58d35ef233fda7c724f85152fc74bd11189
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 939606412c55ddad29801776c2385b406dc93a33
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826843"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286764"
 ---
 # <a name="tutorial-add-a-sql-database-managed-instance-to-a-failover-group"></a>Zelf studie: een door SQL Database beheerd exemplaar toevoegen aan een failovergroep
 
-Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep. In dit artikel leert u het volgende:
+Een door SQL Database beheerd exemplaar toevoegen aan een failovergroep. In dit artikel leert u hoe u:
 
 > [!div class="checklist"]
 > - Een primair beheerd exemplaar maken
@@ -1075,7 +1075,7 @@ U kunt resources opschonen door eerst het beheerde exemplaar te verwijderen, ver
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 1. Navigeer naar uw resource groep in de [Azure Portal](https://portal.azure.com). 
-1. Selecteer het beheerde exemplaar en selecteer vervolgens **verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. Het kan enige tijd duren voordat dit proces op de achtergrond is voltooid en tot de ' s ' klaar is, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer het verwijderen op het tabblad activiteit om te bevestigen dat uw beheerde exemplaar is verwijderd. 
+1. Selecteer een of meer beheerde exemplaren en selecteer vervolgens **verwijderen**. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. Het kan enige tijd duren voordat dit proces op de achtergrond is voltooid en tot de ' s ' klaar is, kunt u het *virtuele cluster* of andere afhankelijke resources niet verwijderen. Controleer het verwijderen op het tabblad activiteit om te bevestigen dat uw beheerde exemplaar is verwijderd. 
 1. Wanneer het beheerde exemplaar is verwijderd, verwijdert u het *virtuele cluster* door het te selecteren in de resource groep en vervolgens **verwijderen**te kiezen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. 
 1. Alle resterende resources verwijderen. Typ `yes` in het tekstvak om te bevestigen dat u de resource wilt verwijderen en selecteer vervolgens **verwijderen**. 
 1. Verwijder de resource groep door **resource groep verwijderen**te selecteren, typ de naam van de resource groep `myResourceGroup`en selecteer vervolgens **verwijderen**. 

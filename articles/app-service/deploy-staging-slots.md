@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
-ms.openlocfilehash: f9b1af14bd986f1fa6fb5feb398a7f1fdf982f77
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669098"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304746"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
 <a name="Overview"></a>
@@ -215,7 +216,7 @@ Zie voor meer informatie over het aanpassen van het `applicationInitialization`-
 
 U kunt ook het opwarm gedrag aanpassen met een of beide van de volgende [app-instellingen](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaard waarde is `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaardwaarde is `/`. 
 - `WEBSITE_SWAP_WARMUP_PING_STATUSES`: geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld is `200,202`. Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
 
 > [!NOTE]
@@ -248,6 +249,10 @@ Productie verkeer automatisch omleiden:
 Nadat de instelling is opgeslagen, wordt het opgegeven percentage clients wille keurig doorgestuurd naar de niet-productie site. 
 
 Nadat een client automatisch naar een specifieke sleuf is doorgestuurd, wordt deze voor de levens duur van die client sessie vastgemaakt aan die sleuf. Op de client browser kunt u zien op welke sleuf uw sessie is vastgemaakt door te kijken naar het `x-ms-routing-name` cookie in uw HTTP-headers. Voor een aanvraag die naar de staging-sleuf wordt doorgestuurd, wordt de cookie `x-ms-routing-name=staging`. Voor een aanvraag die naar de productie site wordt doorgestuurd, wordt de cookie `x-ms-routing-name=self`.
+
+   > [!NOTE]
+   > Naast Azure Portal kunt u ook de [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) opdracht in de Azure CLI gebruiken om de routerings percentages van CI/cd-hulpprogram ma's, zoals DevOps-pijp lijnen of andere automatiserings systemen, in te stellen.
+   > 
 
 ### <a name="route-production-traffic-manually"></a>Productie verkeer hand matig omleiden
 

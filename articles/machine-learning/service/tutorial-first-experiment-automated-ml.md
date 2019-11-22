@@ -1,5 +1,5 @@
 ---
-title: Uw eerste geautomatiseerde classificatie-experiment maken
+title: Uw eerste geautomatiseerde ML-experiment maken
 titleSuffix: Azure Machine Learning
 description: Meer informatie over het trainen en implementeren van een classificatie model met geautomatiseerde machine learning in Azure Machine Learning Studio.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: ecad41097786a40f7c605a686f085136856c950a
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 04035e23c0c650fb6cbf4fdca3b78ce5e814c9d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581594"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270725"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Zelf studie: uw eerste classificatie model maken met geautomatiseerde machine learning
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-enterprise-sku.md)]
@@ -27,16 +27,16 @@ Met geautomatiseerde machine learning kunt u tijdrovende taken automatiseren. Au
 In deze zelf studie leert u hoe u de volgende taken kunt uitvoeren:
 
 > [!div class="checklist"]
-> * Maak een Azure Machine Learning-werk ruimte.
+> * Een Azure Machine Learning-werkruimte maken.
 > * Voer een geautomatiseerd machine learning experiment uit.
 > * Experiment details weer geven.
-> * Implementeer het model.
+> * Het model implementeren.
 
 ## <a name="prerequisites"></a>Vereisten
 
 * Een Azure-abonnement. Als u geen Azure-abonnement hebt, maakt u een [gratis account](https://aka.ms/AMLFree).
 
-* Down load het gegevens bestand [**bankmarketing_train. CSV**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) . De **y** -kolom geeft aan of een klant zich heeft geabonneerd op een vaste termijn storting, die later wordt aangeduid als de doel kolom voor voor spellingen in deze zelf studie. 
+* Down load het [**bankmarketing_train. CSV**](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv) -gegevens bestand. De **y** -kolom geeft aan of een klant zich heeft geabonneerd op een vaste termijn storting, die later wordt aangeduid als de doel kolom voor voor spellingen in deze zelf studie. 
 
 ## <a name="create-a-workspace"></a>Een werkruimte maken
 
@@ -71,7 +71,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
     1. Selecteer **Bladeren**.
     
-    1. Kies het bestand **bankmarketing_train. CSV** op de lokale computer. Dit is het bestand dat u hebt gedownload als een [vereiste](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
+    1. Kies het **bankmarketing_train. CSV** -bestand op uw lokale computer. Dit is het bestand dat u hebt gedownload als een [vereiste](https://automlsamplenotebookdata.blob.core.windows.net/automl-sample-notebook-data/bankmarketing_train.csv).
 
     1. Selecteer **tabellair** als type gegevensset. 
 
@@ -86,10 +86,10 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
         Veld|Beschrijving| Waarde voor zelf studie
         ---|---|---
         Bestands indeling|Hiermee definieert u de indeling en het type van de gegevens die zijn opgeslagen in een bestand.| Gescheiden
-        Vorm|Een of meer tekens voor het opgeven van de grens tussen&nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Geplaatst
+        Scheidingsteken|Een of meer tekens voor het opgeven van de grens tussen&nbsp; afzonderlijke, onafhankelijke regio's in tekst zonder opmaak of andere gegevens stromen. |Geplaatst
         Encoding|Hiermee wordt aangegeven welke bits-schema tabel moet worden gebruikt om de gegevensset te lezen.| UTF-8
         Kolom koppen| Hiermee wordt aangegeven hoe de headers van de gegevensset, indien aanwezig, worden behandeld.| Alle bestanden hebben dezelfde headers
-        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| Geen
+        Rijen overs Laan | Hiermee wordt aangegeven hoeveel, indien van toepassing, rijen in de gegevensset worden overgeslagen.| None
 
     1. Met het **schema** formulier kunt u uw gegevens voor dit experiment verder configureren. Voor dit voor beeld selecteert u de wissel knop voor de functie **day_of_week** , zodat u deze niet voor dit experiment kunt gebruiken. Selecteer **Volgende**.
 
@@ -98,12 +98,12 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
     1. Controleer op het formulier **Details bevestigen** of de informatie overeenkomt met wat u eerder hebt ingevuld in de **basis informatie** en- **instellingen en de preview** -formulieren.
     1. Selecteer **maken** om het maken van de gegevensset te volt ooien.
     1. Selecteer uw gegevensset zodra deze in de lijst wordt weer gegeven.
-    1. Bekijk het **voor beeld** van de gegevens om ervoor te zorgen dat **day_of_week** niet is inbegrepen. Selecteer vervolgens **OK**.
+    1. Bekijk het **voor beeld** van de gegevens om te controleren of **day_of_week** vervolgens niet is inge sloten. Selecteer **OK**.
 
     1. Selecteer **Volgende**.
 
 1. Vul het formulier voor het uitvoeren van de **Configure** als volgt in:
-    1. Voer de naam van het experiment in: `my-1st-automl-experiment`
+    1. Voer de naam van dit experiment in: `my-1st-automl-experiment`
 
     1. Selecteer **y** als doel kolom, wat u wilt voors pellen. Deze kolom geeft aan of de client is geabonneerd op een term deposit of niet.
     1. Selecteer **een nieuwe berekening maken** en configureer uw reken doel. Een compute-doel is een lokale of cloud-gebaseerde resource omgeving die wordt gebruikt om uw trainings script uit te voeren of uw service-implementatie te hosten. Voor dit experiment gebruiken we een op de cloud gebaseerde compute. 
@@ -133,7 +133,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
         ------|---------|---
         Primaire metriek| Evaluatie-metrische gegevens waarop het algoritme van de machine learning wordt gemeten.|AUC_weighted
         Automatische parametrisatie| Hiermee wordt voor verwerking ingeschakeld. Dit omvat het automatisch opschonen, voorbereiden en transformeren van gegevens voor het genereren van synthetische functies.| Inschakelen
-        Geblokkeerde algoritmen | Algoritmen die u wilt uitsluiten van de trainings taak| Geen
+        Geblokkeerde algoritmen | Algoritmen die u wilt uitsluiten van de trainings taak| None
         Criterium afsluiten| Als aan een criterium wordt voldaan, wordt de trainings taak gestopt. |&nbsp;taak voor trainings&nbsp;tijd (uren): 1 <br> Drempel waarde voor&nbsp;van metrische&nbsp;-Score: geen
         Validatie | Kies een type Kruis validatie en aantal testen.|Validatie type:<br>Kruis validatie &nbsp;k-vouwen&nbsp; <br> <br> Aantal validaties: 2
         Gelijktijdigheid| Het maximum aantal parallelle iteraties dat wordt uitgevoerd en gebruikte kernen per herhaling| Maxi maal aantal&nbsp;gelijktijdige&nbsp;herhalingen: 5<br> Maxi maal aantal&nbsp;kernen&nbsp;per&nbsp;herhaling: geen
@@ -151,7 +151,7 @@ U voltooit de volgende proef installatie en voert stappen uit in Azure Machine L
 
 ##  <a name="explore-models"></a>Modellen verkennen
 
-Ga naar het tabblad **modellen** om de algoritmen (modellen) te zien die zijn getest. Standaard worden de modellen gesorteerd op basis van de metrische Score wanneer ze zijn voltooid. Voor deze zelf studie is het model dat de hoogste score op basis van de gekozen **AUC_weighted** metriek boven aan de lijst weer gegeven.
+Ga naar het tabblad **modellen** om de algoritmen (modellen) te zien die zijn getest. Standaard worden de modellen gesorteerd op basis van de metrische Score wanneer ze zijn voltooid. Voor deze zelf studie wordt het model dat de hoogste score op basis van de gekozen **AUC_weighted** metriek boven aan de lijst weer gegeven.
 
 Terwijl u wacht tot alle experimentele modellen zijn voltooid, selecteert u de naam van het **algoritme** van een voltooid model om de prestatie details te verkennen. 
 
@@ -167,7 +167,7 @@ Voor dit experiment betekent de implementatie van een webservice dat de financi√
 
 Zodra de uitvoering is voltooid, gaat u terug naar de **detail pagina uitvoeren** en selecteert u het tabblad **modellen** . Selecteer **vernieuwen**. 
 
-In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op basis van de **AUC_weighted** -metriek.  We implementeren dit model, maar u wordt aangeraden de implementatie ongeveer 20 minuten te volt ooien. Het implementatie proces omvat verschillende stappen, waaronder het registreren van het model, het genereren van resources en het configureren van deze voor de webservice.
+In dit experiment wordt **VotingEnsemble** beschouwd als het beste model, op basis van de **AUC_weighted** metriek.  We implementeren dit model, maar u wordt aangeraden de implementatie ongeveer 20 minuten te volt ooien. Het implementatie proces omvat verschillende stappen, waaronder het registreren van het model, het genereren van resources en het configureren van deze voor de webservice.
 
 1. Selecteer de knop **beste model implementeren** in de linkerbenedenhoek.
 

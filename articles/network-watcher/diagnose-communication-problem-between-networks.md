@@ -1,5 +1,6 @@
 ---
-title: 'Zelfstudie: Communicatieproblemen tussen netwerken onderzoeken - Azure Portal | Microsoft Docs'
+title: 'Zelf studie: problemen met het communicatie probleem tussen netwerken oplossen-Azure Portal'
+titleSuffix: Azure Network Watcher
 description: Informatie over hoe u de VPN-diagnosefunctie van Network Watcher gebruikt om via een gateway van een virtueel Azure-netwerk een communicatieprobleem te onderzoeken tussen een virtueel Azure-netwerk dat is verbonden met een on-premises netwerk of ander virtueel netwerk.
 services: network-watcher
 documentationcenter: na
@@ -15,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: e4dc66a5ca6e18b12586b5b03742fba3d6c3d6c4
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 0f7ce37bd6454492980525f288212fbff2c06625
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64704220"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276152"
 ---
-# <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Zelfstudie: Communicatieproblemen tussen netwerken onderzoeken met de Azure-portal
+# <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Zelfstudie: Communicatieproblemen tussen netwerken onderzoeken met Azure Portal
 
 De gateway van een virtueel netwerk koppelt een virtueel Azure-netwerk aan een on-premises netwerk of een ander virtueel netwerk. In deze zelfstudie leert u het volgende:
 
@@ -39,20 +40,20 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 ## <a name="prerequisites"></a>Vereisten
 
 Voor het gebruik van diagnostische gegevens van VPN moet u een bestaande, actieve VPN-gateway hebben. Als u geen VPN-gateway hebt om te onderzoeken, kunt u er een implementeren met een [PowerShell-script](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). U kunt het PowerShell-script uitvoeren vanuit:
-- **Een lokale installatie van PowerShell**: Het script van Azure PowerShell vereist `Az` module. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u een upgrade moet uitvoeren, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
-- **Azure Cloudshell**: De [Azure Cloud Shell](https://shell.azure.com/powershell) is de meest recente versie van PowerShell is geïnstalleerd en geconfigureerd, en meldt u zich aan bij Azure.
+- **Een lokale Power shell-installatie**: het script vereist de module Azure PowerShell `Az`. Voer `Get-Module -ListAvailable Az` uit om te kijken welke versie is geïnstalleerd. Als u een upgrade moet uitvoeren, raadpleegt u [De Azure PowerShell-module installeren](/powershell/azure/install-Az-ps). Als u PowerShell lokaal uitvoert, moet u ook `Connect-AzAccount` uitvoeren om verbinding te kunnen maken met Azure.
+- **De Azure Cloud Shell**: in de [Azure Cloud Shell](https://shell.azure.com/powershell) is de meest recente versie van PowerShell geïnstalleerd en geconfigureerd en wordt u aangemeld bij Azure.
 
 Het script heeft ongeveer een uur nodig om een VPN-gateway te maken. In de overige stappen wordt ervan uitgegaan dat de gateway die u wilt onderzoeken de gateway is die door dit script is geïmplementeerd. Als u in plaats daarvan uw eigen gateway onderzoekt, zullen de resultaten anders zijn.
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>Network Watcher inschakelen
 
 Als u al een netwerk-watcher hebt ingeschakeld in de regio US - oost, ga dan verder met [Een gateway onderzoeken](#diagnose-a-gateway).
 
-1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de resultaten.
 2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
@@ -79,7 +80,7 @@ Als u al een netwerk-watcher hebt ingeschakeld in de regio US - oost, ga dan ver
     U ziet dat de **STATUS VAN PROBLEEMOPLOSSING** **Niet in orde** is. U ziet ook een **samenvatting** en de **details** van het probleem op het tabblad **Status**.
 10. Wanneer u het tabblad **Actie** ziet, vindt u in de diagnostische gegevens van VPN aanvullende informatie. In het voorbeeld, dat in de volgende afbeelding wordt weergegeven, ziet u in de diagnostische gegevens van VPN dat u wordt geadviseerd om de status van elke verbinding te controleren:
 
-    ![Bewerking](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Actie](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Een gatewayverbinding onderzoeken
 

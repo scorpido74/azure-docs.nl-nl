@@ -1,5 +1,5 @@
 ---
-title: De metrische gegevens van het gast besturingssysteem verzenden naar het Azure Monitor van een virtuele Windows-machine (klassiek)
+title: Gegevens van klassieke Windows-VM'S naar Azure Monitor Data Base voor metrische gegevens verzenden
 description: De metrische gegevens van het gast besturingssysteem verzenden naar het Azure Monitor van een virtuele Windows-machine (klassiek)
 author: anirudhcavale
 services: azure-monitor
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: cc0c7c4928fb03cb60bb51f74d74fdc1ab914348
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844924"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286153"
 ---
-# <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>De metrische gegevens van het gast besturingssysteem verzenden naar het Azure Monitor van een virtuele Windows-machine (klassiek)
+# <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de data base van de Azure Monitor metrics voor een virtuele Windows-machine (klassiek)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Met de [uitbrei ding voor de Azure monitor diagnostische gegevens](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (bekend als ' wad ' of ' diagnostiek ') kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
-In dit artikel wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor een Windows-virtuele machine (klassiek) naar de Azure Monitor metrische opslag. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld. 
+In dit artikel wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor een Windows-virtuele machine (klassiek) naar de data base van de Azure Monitor metriek. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld. 
 
 Door ze op deze locatie op te slaan, hebt u toegang tot dezelfde acties als voor platform metrische gegevens. Acties omvatten bijna realtime waarschuwingen, grafieken, route ring, toegang vanaf een REST API en meer. In het verleden schreef de diagnostische uitbrei ding naar Azure Storage, maar niet naar de Azure Monitor gegevens opslag. 
 
@@ -40,12 +40,12 @@ Het proces dat wordt beschreven in dit artikel, werkt alleen op klassieke virtue
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Een klassieke virtuele machine en een opslag account maken
 
 1. Maak een klassieke virtuele machine met behulp van de Azure Portal.
-   ![Klassieke virtuele machine maken](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
+   ![klassieke VM maken](./media/collect-custom-metrics-guestos-vm-classic/create-classic-vm.png)
 
 1. Wanneer u deze virtuele machine maakt, kiest u de optie voor het maken van een nieuw klassiek opslag account. We gebruiken dit opslag account in latere stappen.
 
 1. Ga in het Azure Portal naar de Blade resource voor **opslag accounts** . Selecteer **sleutels**en noteer de naam van het opslag account en de sleutel van het opslag account. U hebt deze informatie nodig in latere stappen.
-   ![Toegangs sleutels voor opslag](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
+   toegangs sleutels voor opslag ![](./media/collect-custom-metrics-guestos-vm-classic/storage-access-keys.png)
 
 ## <a name="create-a-service-principal"></a>Een service-principal maken
 
@@ -200,7 +200,7 @@ Geef deze app ' bewaking metrische gegevens Uitgever ' door aan de resource waar
 1. Selecteer in de vervolg keuzelijst naam ruimten de optie **Azure. VM. Windows. gast**.
 
 1. Selecteer in de vervolg keuzelijst metrische gegevens **tussen geheugen\toegewezen bytes die in gebruik**zijn.
-   ![Metrische gegevens tekenen](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
+   meet gegevens ![tekenen](./media/collect-custom-metrics-guestos-vm-classic/plot-metrics.png)
 
 
 ## <a name="next-steps"></a>Volgende stappen

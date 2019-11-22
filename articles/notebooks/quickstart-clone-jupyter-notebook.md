@@ -1,25 +1,16 @@
 ---
 title: Klonen van een Jupyter-notebook vanuit GitHub met Azure-laptops
 description: Snel een Jupyter-notebook vanuit een GitHub-opslagplaats te klonen en voer dit in uw Azure-notitieblokken-account.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: ed239c470a49fc045bd436668f83dff32eac3a66
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 500bd3f85409bb2f5e7b73be0478694695cc9c00
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970123"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277526"
 ---
-# <a name="quickstart-clone-a-notebook"></a>Quickstart: Een notebook klonen
+# <a name="quickstart-clone-a-notebook"></a>Snelstartgids: Een notitieblok klonen
 
 Veel gegevensanalisten en ontwikkelaars slaan hun notitieblokken in [GitHub-opslagplaatsen](https://github.com), een gratis opslag en versiecontrole biedt voor veel andere projecttypen. GitHub wordt vaak gebruikt als middel om samen te werken op Jupyter-notebooks die lokaal worden uitgevoerd. In dergelijke gevallen kan elke samenwerker onderhoudt een lokale kopie van de opslagplaats en de notebooks op dat exemplaar wordt uitgevoerd.
 
@@ -33,15 +24,15 @@ Klonen wordt een kopie gemaakt van een GitHub-notebook in uw Azure-notitieblokke
 
     ![Mijn projecten koppeling boven aan het browservenster](media/quickstarts/my-projects-link.png)
 
-1. Selecteer op de pagina **Mijn projecten** de knop met de pijl-omhoog (sneltoets: H de knop wordt weer gegeven als **Upload github opslag plaats** wanneer het browser venster breed genoeg is):
+1. Selecteer op de pagina **Mijn projecten** de pijl-omhoog (sneltoets: U; de knop wordt weer gegeven als **Upload github opslag plaats** wanneer het browser venster breed genoeg is):
 
     ![GitHub opslag plaats-opdracht uploaden op de pagina Mijn projecten](media/quickstarts/upload-github-repo-command.png)
 
 1. In de **github-opslag plaats** die wordt weer gegeven, voert u de volgende gegevens in of stelt u deze in en selecteert u **importeren**:
 
-   - **Github-opslag plaats**: Micro soft/cognitieve-Services-notebooks (deze naam klont de Jupyter-notebooks voor Azure Cognitive Services op [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
+   - **Github-opslag plaats**: micro soft/cognitieve-Services-notebooks (deze naam klont de Jupyter-notebooks voor Azure Cognitive Services op [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks)).
    - **Klonen recursief**: (uitgeschakeld)
-   - **Project naam**: Cognitive Services klonen
+   - **Naam van het project**: Cognitive Services-kloon
    - **Project-ID**: cognitive services-kloon
    - **Openbare**: (uitgeschakeld)
 
@@ -51,7 +42,7 @@ Klonen wordt een kopie gemaakt van een GitHub-notebook in uw Azure-notitieblokke
 
 1. Als het klonen is voltooid, gaat-laptops Azure u naar het nieuwe project waar u kunt zien de kopieën van alle bestanden.
 
-    [![](media/quickstarts/completed-clone.png "Weergave van een kloon voltooid")](media/quickstarts/completed-clone.png#lightbox)
+    [![](media/quickstarts/completed-clone.png "View of a completed clone")](media/quickstarts/completed-clone.png#lightbox)
 
 ## <a name="share-a-notebook"></a>Een notitieblok delen
 

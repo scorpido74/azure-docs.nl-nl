@@ -5,14 +5,14 @@ author: vhorne
 ms.service: firewall-manager
 services: firewall-manager
 ms.topic: overview
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: victorh
-ms.openlocfilehash: df649eab1f0e2946078f8efd3cdd6ab68c3b7938
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 897819928ab0bcf48b58428014c03aea6b2145fd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580193"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267958"
 ---
 # <a name="what-is-azure-firewall-manager-preview"></a>Wat is Azure Firewall Manager preview?
 
@@ -53,13 +53,13 @@ Zie [Wat zijn vertrouwde beveiligings partners van Azure firewall Manager (previ
 
 Stuur eenvoudig verkeer naar uw beveiligde hub voor filteren en logboek registratie zonder dat u hand matig door de gebruiker gedefinieerde routes (UDR) op spoke Virtual Networks hoeft in te stellen. U kunt providers van derden gebruiken voor het filteren van B2I-verkeer (branch to Internet), naast elkaar met Azure Firewall voor Branch to VNet (B2V), VNet naar VNet (V2V) en VNet naar Internet (V2I). U kunt ook providers van derden gebruiken voor het filteren van V2I-verkeer zolang Azure Firewall niet vereist is voor B2V of V2V. 
 
-## <a name="region-availability"></a>Regionale beschikbaarheid
+## <a name="region-availability"></a>Beschikbaarheid in regio’s
 
 De volgende regio's worden ondersteund voor de open bare Preview:
 
 - Europa-west, Europa-noord, Frankrijk-centraal, Frankrijk-zuid, UK-zuid, UK-west
 - Australië-oost, Australië-centraal, Australië-centraal 2, Australië-zuidoost
-- Canada - centraal
+- Canada - midden
 - VS-Oost, VS-West, VS-Oost 2, Zuid-Centraal VS, VS-West 2, VS-centraal, Noord-Centraal VS, West-Centraal VS
 
 Azure Firewall-beleid kan alleen worden gemaakt in deze regio's, maar ze kunnen worden gebruikt in verschillende regio's. U kunt bijvoorbeeld een beleid in VS West maken en dit in VS-Oost gebruiken. 
@@ -75,6 +75,7 @@ Azure Firewall Manager preview heeft de volgende bekende problemen:
 |Splitsen van verkeer wordt momenteel niet ondersteund|Het splitsen van Office 365-en Azure open bare PaaS-verkeer wordt momenteel niet ondersteund. Als zodanig is het selecteren van een provider van een derde partij voor V2I of B2I ook alle Azure open bare PaaS-en Office 365-verkeer via de partner service verzonden.|Het splitsen van verkeer op de hub wordt momenteel onderzocht.
 |Eén hub per regio|U kunt niet meer dan één hub per regio hebben|Meerdere virtuele Wan's maken in een regio.|
 |Basis beleid moet zich in dezelfde regio bevinden als het lokale beleid|Maak al uw lokale beleids regels in dezelfde regio als het basis beleid. U kunt nog steeds een beleid Toep assen dat is gemaakt in een van de regio's op een beveiligde hub vanuit een andere regio.|Momenteel wordt onderzocht.|
+|Communicatie tussen de hub werkt niet met een beveiligde virtuele hub|Beveiligde virtuele hub naar beveiligde virtuele hub-communicatie wordt nog niet ondersteund.|Momenteel wordt onderzocht.|
 
 ## <a name="next-steps"></a>Volgende stappen
 

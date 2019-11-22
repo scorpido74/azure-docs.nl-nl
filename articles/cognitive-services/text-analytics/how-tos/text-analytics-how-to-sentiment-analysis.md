@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 09/23/2019
 ms.author: aahi
-ms.openlocfilehash: f7a62d1d2b695726421ba990d0f118eb3ae199da
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
-ms.translationtype: MT
+ms.openlocfilehash: 292619bdf114f366f5d0aff0efdfd8d9606842b1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74031465"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286560"
 ---
 # <a name="example-detect-sentiment-with-text-analytics"></a>Voor beeld: sentiment detecteren met Text Analytics
 
@@ -36,7 +36,7 @@ Sentimentanalyse wordt uitgevoerd op het hele document, in plaats van een gevoel
 
 ## <a name="sentiment-analysis-v3-public-preview"></a>Open bare preview van Sentimentanalyse v3
 
-De [volgende versie van sentimentanalyse](https://cognitiveusw2ppe.portal.azure-api.net/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) is nu beschikbaar voor open bare preview. Het biedt aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API.
+De [volgende versie van sentimentanalyse](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/Sentiment) is nu beschikbaar voor open bare preview. Het biedt aanzienlijke verbeteringen in de nauw keurigheid en Details van de tekst categorisatie en Score van de API.
 
 > [!NOTE]
 > * De Sentimentanalyse v3-aanvraag indeling en- [gegevens limieten](../overview.md#data-limits) zijn hetzelfde als de vorige versie.

@@ -1,23 +1,14 @@
 ---
 title: Configureren en beheren van Azure Notebook-projecten
 description: Over het beheren van de metagegevens van het project, project-bestanden, van het project-omgeving en installatiestappen via de gebruikersinterface van Azure-notitieblokken en de directe terminal toegang.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
-ms.author: kraigb
-ms.openlocfilehash: fca98594be08f04b2f266f3aa574837ac024ecf4
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 56c265122894412e79b3d5a7b256964c49ab81a6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973132"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277648"
 ---
 # <a name="manage-and-configure-projects"></a>Projecten beheren en configureren
 
@@ -42,7 +33,7 @@ Standaard worden projecten uitgevoerd op de **gratis Compute** -laag. Dit is bep
 
 Selecteer in het projectdashboard **projectinstellingen**en selecteer vervolgens de **informatie** tabblad, dat de metagegevens van het project bevat, zoals beschreven in de volgende tabel. U kunt de metagegevens van het project op elk gewenst moment wijzigen.
 
-| Instelling | Description |
+| Instelling | Beschrijving |
 | --- | --- |
 | Projectnaam | Een beschrijvende naam voor uw project die gebruikmaakt van Azure-notitieblokken weer te geven. Bijvoorbeeld: 'Hello World in Python'. |
 | Project-id | Een aangepaste id die deel van de URL die u gebruikt uitmaken voor het delen van een project. Deze ID mag alleen letters, cijfers en afbreek streepjes bevatten, is beperkt tot 30 tekens en kan geen [gereserveerde project-id](create-clone-jupyter-notebooks.md#reserved-project-ids)zijn. Als u niet zeker weet wat u wilt gebruiken, wordt een algemene conventie is het gebruik van een kleine versie van de projectnaam van uw waar spaties in afbreekstreepjes bevatten, zoals 'Mijn-notebook-project' (afgekapt indien nodig aanpassen aan de maximale lengte) zijn ingeschakeld. |
@@ -61,7 +52,7 @@ Het projectdashboard ziet u de inhoud van het project tot mappensysteem. U kunt 
 
 De **+ nieuw** opdracht (sneltoets: n) maakt u nieuwe bestanden of mappen. Wanneer u de opdracht, selecteert u eerst het type item te maken:
 
-| Itemtype | Description | Opdrachtgedrag |
+| Itemtype | Beschrijving | Opdrachtgedrag |
 | --- | --- | --- |
 | **Notebook** | Een Jupyter-notebook | Geeft een pop-upvenster waarin u de bestandsnaam en de taal van het notitieblok opgeeft. |
 | **Map** | Een submap | Hiermee maakt u een bewerkingsveld met het in de lijst met bestanden van het project waarin u de naam van de map. |
@@ -70,7 +61,7 @@ De **+ nieuw** opdracht (sneltoets: n) maakt u nieuwe bestanden of mappen. Wanne
 
 ### <a name="upload-files"></a>Bestanden uploaden
 
-De **Upload** opdracht biedt twee opties voor het importeren van gegevens van andere locaties: **Van URL** en **van computer**. Zie voor meer informatie, [werken met gegevensbestanden in Azure Notebook projecten](work-with-project-data-files.md).
+De **uploaden** opdracht biedt twee opties voor het importeren van gegevens vanuit andere locaties: **van URL** en **van Computer**. Zie voor meer informatie, [werken met gegevensbestanden in Azure Notebook projecten](work-with-project-data-files.md).
 
 ### <a name="select-file-specific-commands"></a>Selecteer bestand-specifieke opdrachten
 
@@ -78,14 +69,14 @@ Elk item in de lijst met bestanden van het project bevat opdrachten via een snel
 
 ![Opdrachten in het contextmenu van een bestand](media/project-file-commands.png)
 
-| Opdracht | Sneltoets | Bewerking |
+| Opdracht | Sneltoets | Actie |
 | --- | --- | --- |
 | Voer | r (of klik op) | Voert een laptop-bestand. Andere bestandstypen zijn geopend voor weergave.  |
 | Koppeling kopiëren | Y | Een koppeling naar het bestand naar het Klembord gekopieerd. |
 | Uitvoeren in Jupyter-Lab | "J" | Voert een notitieblok in Jjupyterlab, dit is een meer op ontwikkelaars gerichte interface dan Jupyter normaal biedt. |
 | Preview | p | Hiermee opent u een HTML-Preview-versie van het bestand. voor laptops is de Preview-versie een alleen-lezen weergave van de notebook. Zie voor meer informatie de [Preview](#preview) sectie. |
 | Bestand bewerken | Ik | Hiermee opent het bestand voor het bewerken van. |
-| Downloaden | d | Downloadt een zip-bestand dat het bestand of de inhoud van een map bevat. |
+| Download | d | Downloadt een zip-bestand dat het bestand of de inhoud van een map bevat. |
 | Naam wijzigen | a | Wordt u gevraagd om een nieuwe naam voor het bestand of map. |
 | Verwijderen | x | Wordt om bevestiging wordt gevraagd, en vervolgens wordt het bestand permanent verwijderd uit het project. Verwijderingen kunnen niet ongedaan worden gemaakt. |
 | Verplaatsen | m | Een bestand is verplaatst naar een andere map in hetzelfde project. |
@@ -96,12 +87,12 @@ Een voorbeeld van een bestand of een laptop is een alleen-lezen weergave van de 
 
 De voorbeeldpagina ondersteunt verschillende opdrachten in de werkbalk met sneltoetsen:
 
-| Opdracht | Sneltoets | Bewerking |
+| Opdracht | Sneltoets | Actie |
 | --- | --- | --- |
 | Delen | s | Geeft het delen pop-upvenster van waaruit u kunt een koppeling verkrijgen, delen op sociale media, HTML-code verkrijgen voor het insluiten van en een e-mail verzenden. |
 | Klonen | c  | Kloon de notebook voor uw account. |
 | Voer | R | De notebook uitgevoerd als u mag doen. |
-| Downloaden | d | Een kopie van de notebook downloadt. |
+| Download | d | Een kopie van de notebook downloadt. |
 
 ## <a name="configure-the-project-environment"></a>De project-omgeving configureren
 
@@ -115,7 +106,7 @@ Alle vormen van projectconfiguratie worden toegepast wanneer de virtuele machine
 
 ### <a name="one-time-initialization-script"></a>Eenmalige Initialisatiescript voor lidddatabase van
 
-De eerste keer Azure Notebooks een server voor het project wordt gemaakt, wordt er gezocht naar een bestand in het project met de naam *aznbsetup.sh*. Als dit bestand aanwezig is, wordt het door de Azure-notitieblokken uitgevoerd. De uitvoer van het script wordt opgeslagen in de projectmap als *. aznbsetup.log*.
+De eerste keer dat Azure Notebooks een server voor het project maakt, wordt gezocht naar een bestand in het project met de naam *aznbsetup.sh*. Als dit bestand aanwezig is, wordt het door Azure Notebooks uitgevoerd. De uitvoer van het script wordt opgeslagen in de projectmap als *. aznbsetup.log*.
 
 ### <a name="environment-setup-steps"></a>Instellingsstappen omgeving
 
@@ -131,11 +122,11 @@ Als u wilt een stap toevoegen, selecteert u eerst **+ toevoegen**, selecteert u 
 
 De informatie die u vervolgens projecteren, is afhankelijk van het type bewerking dat u hebt gekozen:
 
-- **Requirements. txt**: Selecteer in de tweede vervolg keuzelijst het bestand *Requirements. txt* dat zich al in het project bevermeldt. Selecteer vervolgens een Python-versie van de derde vervolgkeuzelijst die wordt weergegeven. Met behulp van een *requirements.txt* -bestand, Azure-notitieblokken uitvoeringen `pip install -r` met de *requirements.txt* bestand bij het starten van een notebook-server. U hoeft niet te pakketten uit binnen de notebook zelf expliciet te installeren.
+- **Requirements.txt**: Selecteer In de tweede vervolgkeuzelijst met een *requirements.txt* bestand dat zich al in het project. Selecteer vervolgens een Python-versie van de derde vervolgkeuzelijst die wordt weergegeven. Met behulp van een *requirements.txt* -bestand, Azure-notitieblokken uitvoeringen `pip install -r` met de *requirements.txt* bestand bij het starten van een notebook-server. U hoeft niet te pakketten uit binnen de notebook zelf expliciet te installeren.
 
-- **Shell script**: Selecteer in de tweede vervolg keuzelijst een bash-shell script in het project (meestal een bestand met de extensie *. sh* ) dat opdrachten bevat die u wilt uitvoeren om de omgeving te initialiseren.
+- **Shell-script**: Selecteer In de tweede vervolgkeuzelijst met een bash-shell-script in het project (meestal een bestand met de *.sh* extensie) die alle opdrachten die u uitvoeren wilt voor het initialiseren van de omgeving bevat.
 
-- **Environment. yml**: Selecteer in de tweede vervolg keuzelijst een *omgeving. yml* -bestand voor python-projecten met een Conda-omgeving.
+- **Environment.yml**: Selecteer In de tweede vervolgkeuzelijst met een *environments.yml* -bestand voor Python-projecten met behulp van een conda-omgeving.
 
 Wanneer u de stappen toegevoegd hebt, selecteert u **opslaan**.
 
@@ -190,5 +181,5 @@ U kunt ook de opdracht gebruiken vanaf een lege codecel in een Python-notebook:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Werken met Project-gegevens bestanden @ no__t-0
+- [Hoe: werken met gegevens projectbestanden](work-with-project-data-files.md)
 - [Toegang tot cloud-gegevens in een notitieblok](access-data-resources-jupyter-notebooks.md)

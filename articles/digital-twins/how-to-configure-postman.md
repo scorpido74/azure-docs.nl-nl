@@ -1,6 +1,6 @@
 ---
 title: Postman-Azure Digital Apparaatdubbels configureren | Microsoft Docs
-description: Meer informatie over het configureren en gebruiken van Postman voor het testen van Azure Digital Apparaatdubbels-Api's.
+description: Meer informatie over het configureren en gebruiken van Postman voor het testen van de Azure Digital Apparaatdubbels-Api's.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 6a001d6b501a22b4b07599792a64af735c5d4d9b
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74090476"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304821"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>Postman configureren voor Azure Digital Apparaatdubbels
 
@@ -37,7 +37,7 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 1. Open het deel venster **API-machtigingen** voor de registratie van uw app. Selecteer **een machtigings knop toevoegen** . Selecteer in het deel venster **API-machtigingen voor aanvragen** de api's die **Mijn organisatie gebruikt** tabblad en zoek naar:
     
-    1. [https://login.microsoftonline.com/consumers/](`Azure Digital Twins`). Selecteer de **Azure Digital apparaatdubbels** -API.
+    1. `Azure Digital Twins`. Selecteer de **Azure Digital apparaatdubbels** -API.
 
         [![Search-API of Azure Digital Apparaatdubbels](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -52,15 +52,15 @@ Configureer uw Azure Active Directory-app om de OAuth 2,0 impliciet-toekennings 
 
 1. De geselecteerde API wordt weer gegeven als **Azure Digital apparaatdubbels** in het deel venster **API-machtigingen voor aanvragen** . Selecteer de vervolg keuzelijst **lezen (1)** en selecteer vervolgens **lezen. Schrijf** selectie vakje. Selecteer de knop **machtigingen toevoegen** .
 
-    [![API-machtigingen toevoegen](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
+    [API-machtigingen voor Azure Digital Apparaatdubbels ![toevoegen](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png)](../../includes/media/digital-twins-permissions/aad-app-req-permissions.png#lightbox)
 
 1. Afhankelijk van de instellingen van uw organisatie moet u mogelijk extra stappen uitvoeren om beheerders toegang tot deze API te verlenen. Neem contact op met de beheerder voor meer informatie. Zodra de beheerders toegang is goedgekeurd, wordt de kolom **beheerder toestemming vereist** in het deel venster **API-machtigingen** weer gegeven, zoals in het volgende voor uw api's:
 
-    [goed keuring van ![-beheerder](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
+    [goed keuring van beheerders toestemming ![configureren](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png)](../../includes/media/digital-twins-permissions/aad-app-admin-consent.png#lightbox)
 
 1. Configureer een tweede **omleidings-URI** naar `https://www.getpostman.com/oauth2/callback`.
 
-    [een omleidings-URI voor postman ![toevoegen](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
+    [![een nieuwe postman omleidings-URI configureren](media/how-to-configure-postman/authentication-redirect-uri.png)](media/how-to-configure-postman/authentication-redirect-uri.png#lightbox)
 
 1. Als u er zeker van wilt zijn dat [de app is geregistreerd als een **open bare client**](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), opent u het deel venster **verificatie** voor uw app-registratie en schuift u omlaag in het deel venster. Kies in het gedeelte **standaard client type** de optie **Ja** voor **behandelen van toepassing als een open bare client**en druk op **Opslaan**.
 
@@ -104,7 +104,7 @@ Postman instellen en configureren om een Azure Active Directory token te verkrij
 
 1. De client moet er nu als volgt uitzien:
 
-    [![postman client-voor beeld](media/how-to-configure-postman/postman-oauth-token.png)](media/how-to-configure-postman/postman-oauth-token.png#lightbox)
+    [![postman client token-voor beeld](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
 1. Selecteer een **aanvraag token**.
   
@@ -116,14 +116,14 @@ Na het volt ooien van de vorige stappen, moet u na het uitvoeren van een geverif
 
 1. Voeg op het tabblad **headers** het **inhouds type http-** aanvraag header toe met waarde `multipart/mixed`.
 
-   [![inhoudtype multi part/Mixed](media/how-to-configure-postman/content-type.png)](media/how-to-configure-postman/content-type.png#lightbox)
+   [![type multi part/Mixed opgeven](media/how-to-configure-postman/configure-postman-content-type.png)](media/how-to-configure-postman/configure-postman-content-type.png#lightbox)
 
 1. Serialisatie van niet-tekst gegevens in bestanden. JSON-gegevens worden opgeslagen als een JSON-bestand.
 1. Selecteer `form-data`op het tabblad **hoofd tekst** . 
 1. Voeg elk bestand toe door een **sleutel** naam toe te wijzen en `File`te selecteren.
 1. Selecteer vervolgens elk bestand via de knop **bestand kiezen** .
 
-   [![postman client-voor beeld](media/how-to-configure-postman/form-body.png)](media/how-to-configure-postman/form-body.png#lightbox)
+   [![postman-client voor beeld van hoofd tekst](media/how-to-configure-postman/configure-postman-form-body.png)](media/how-to-configure-postman/configure-postman-form-body.png#lightbox)
 
    >[!NOTE]
    > * De Postman-client vereist niet dat meerdelige segmenten een hand matig toegewezen **inhouds type** of **Content-Disposition**hebben.

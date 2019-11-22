@@ -1,6 +1,6 @@
 ---
-title: B2B-gasten zonder een uitnodigingskoppeling of het e - Azure Active Directory toevoegen | Microsoft Docs
-description: U kunt een gastgebruiker andere gastgebruikers toevoegen aan uw Azure AD zonder het inwisselen van een uitnodiging in Azure Active Directory B2B-samenwerking.
+title: 'B2B-gasten toevoegen zonder een uitnodigings koppeling of e-mail adres: Azure AD'
+description: U kunt een gast gebruiker andere gast gebruikers toevoegen aan uw Azure AD zonder dat er een uitnodiging wordt ingewisseld in Azure Active Directory B2B-samen werking.
 services: active-directory
 documentationcenter: ''
 ms.service: active-directory
@@ -12,31 +12,31 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81aad3ef9a4a53532d19fdb81bc48fc50931d49c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 9efbb941e589cb8e4cf56ee06a697a1557a3cc89
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67056063"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268933"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>B2B-samenwerking gastgebruikers toevoegen zonder een uitnodigingskoppeling of het e-mailbericht
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>Gast gebruikers voor B2B-samen werking toevoegen zonder een uitnodigings koppeling of e-mail adres
 
-U kunt nu gastgebruikers uitnodigen door het verzenden van een directe koppeling naar een gedeelde app. Met deze methode wilt gastgebruikers ook kunnen niet meer gebruiken de uitnodiging per e-mail, behalve in sommige gevallen speciale. Een gastgebruiker klikt op de app-koppeling, beoordeelt en accepteert de voorwaarden van de privacyverklaring en vervolgens naadloos toegang heeft tot de app. Zie voor meer informatie, [B2B-samenwerking uitnodiging inwisselen](redemption-experience.md).   
+U kunt gast gebruikers nu uitnodigen door een directe koppeling naar een gedeelde app te verzenden. Met deze methode hoeven gast gebruikers de uitnodigings-e-mail niet meer te gebruiken, behalve in sommige speciale gevallen. Een gast gebruiker klikt op de app-koppeling, controleert de privacyverklaring en accepteert deze en maakt vervolgens probleemloos toegang tot de app. Zie uitnodiging voor B2B- [samen werking](redemption-experience.md)voor meer informatie.   
 
-Voordat deze nieuwe methode beschikbaar is, kan u gastgebruikers uitnodigen zonder de uitnodiging per e-mail een uitnodiging antwoorden (van uw organisatie of van een andere organisatie) toevoegt aan de **gastuitnodiging** directory-rol, en vervolgens met de afzender van de uitnodiging gastgebruikers toevoegen aan de directory, groepen of toepassingen via de gebruikersinterface of via PowerShell. (Als u PowerShell gebruikt, u kunt onderdrukken de uitnodiging per e-mail kan worden overgeslagen). Bijvoorbeeld:
+Voordat deze nieuwe methode beschikbaar was, kunt u gast gebruikers uitnodigen zonder het e-mail bericht te hoeven verzenden door een uitnodiging (van uw organisatie of van een partner organisatie) toe te voegen aan de rol van de Directory-uitnodiging voor de **gast** en vervolgens gast gebruikers toe te voegen aan de Directory, groepen of toepassingen via de gebruikers interface of via Power shell. (Als u Power shell gebruikt, kunt u de uitnodigings-e-mail samen onderdrukken). Bijvoorbeeld:
 
-1. Een gebruiker in de organisatie van de host (bijvoorbeeld WoodGrove) nodigt één gebruiker uit de andere organisatie (bijvoorbeeld Sam@litware.com) als gast.
-2. De beheerder in de organisatie van de host [beleid heeft ingesteld](delegate-invitations.md) waarmee Sam om te bepalen en andere gebruikers van de partnerorganisatie (Litware) toevoegen. (Sam moet worden toegevoegd aan de **gastuitnodiging** rol.)
-3. Nu kunt Sam toevoegen andere gebruikers van Litware aan de directory WoodGrove, groepen of toepassingen zonder uitnodigingen na ontvangst worden ingewisseld. Als de juiste opsomming Sam in Litware beschikt, wordt dit automatisch gebeurt.
+1. Een gebruiker in de organisatie van de host (bijvoorbeeld WoodGrove) verzoekt één gebruiker van de partner organisatie (bijvoorbeeld Sam@litware.com) als gast.
+2. De beheerder in de organisatie van de host [stelt beleids regels](delegate-invitations.md) in waarmee Sam andere gebruikers kan identificeren en toevoegen van de partner organisatie (litware). (Sam moet worden toegevoegd aan de rol van de **gast-uitnodiging** .)
+3. Sam kan nu andere gebruikers van Litware toevoegen aan de map WoodGrove, groepen of toepassingen zonder dat uitnodigingen moeten worden ingewisseld. Als Sam de juiste inventarisatie privileges heeft in Litware, gebeurt dit automatisch.
  
-Deze oorspronkelijke methode werkt nog steeds. Er is echter een klein verschil in gedrag. Als u PowerShell gebruikt, zult u merken dat een uitgenodigde Gast-account nu heeft een **PendingAcceptance** status in plaats van direct **geaccepteerde**. Hoewel de status in behandeling is, kunt nog steeds de gastgebruiker zich aanmelden en toegang tot de app zonder te klikken op de koppeling van een e-uitnodiging. De status in behandeling betekent dat de gebruiker heeft geen nog doorlopen de [toestemming geven ervaring](redemption-experience.md#consent-experience-for-the-guest), waar ze de voorwaarden van de privacyverklaring van de uitnodigende organisatie accepteren. De gastgebruiker ziet dit toestemmingsscherm wanneer ze zich aanmelden voor de eerste keer. 
+Deze oorspronkelijke methode werkt nog steeds. Er is echter wel een klein verschil in het gedrag. Als u Power shell gebruikt, ziet u dat een uitgenodigd gast account nu een **PendingAcceptance** -status heeft in plaats van onmiddellijk **geaccepteerd**te laten zien. Hoewel de status in behandeling is, kan de gast gebruiker zich nog steeds aanmelden en toegang krijgen tot de app zonder op een uitnodiging voor een e-mail bericht te klikken. Met de status in behandeling wordt aangegeven dat de gebruiker de [toestemming](redemption-experience.md#consent-experience-for-the-guest)nog niet heeft door lopen, waar de privacy-voor waarden van de uitnodigende organisatie worden geaccepteerd. De gast gebruiker ziet dit toestemming scherm wanneer deze zich voor de eerste keer aanmeldt. 
 
-Als u een gebruiker naar de map uitnodigen, de gastgebruiker moet toegang tot de Azure portal voor resource-tenantspecifieke URL rechtstreeks (zoals https://portal.azure.com/ *resourcetenant*. onmicrosoft.com) om te bekijken en ga akkoord met de voorwaarden van de privacyverklaring.
+Als u een gebruiker uitnodigt voor de Directory, moet de gast gebruiker rechtstreeks toegang krijgen tot de resource Tenant-specifieke Azure Portal URL (zoals https://portal.azure.com/*resourcetenant*. onmicrosoft.com) om de privacyverklaringen weer te geven en ermee in te stemmen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [B2B-samenwerking uitnodiging inwisselen](redemption-experience.md)
+- [Inwisseling uitnodiging voor B2B-samen werking](redemption-experience.md)
 - [Uitnodigingen delegeren voor B2B-samenwerking in Azure Active Directory](delegate-invitations.md)
-- [Hoe voeg informatiemedewerkers gebruikers van B2B-samenwerking toe?](add-users-information-worker.md)
+- [Hoe voegen informatie werkers B2B-samenwerkings gebruikers toe?](add-users-information-worker.md)
 

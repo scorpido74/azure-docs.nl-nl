@@ -3,12 +3,12 @@ title: Meer informatie over het controleren van de inhoud van virtuele machines
 description: Meer informatie over hoe Azure Policy gast configuratie gebruikt voor het controleren van instellingen binnen een Azure-machine.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 5148ecb2f10a2ac517c5cf6c7f682a0f25808910
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: c01f6d02c15dbd7519bfafdc413d70a05498c7c4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959781"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279382"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Informatie over Azure Policy Gast-configuratie
 
@@ -61,7 +61,7 @@ De volgende tabel bevat een overzicht van de lokale hulpprogramma's die op elk o
 
 |Besturingssysteem|Hulpprogramma voor het valideren|Opmerkingen|
 |-|-|-|
-|Windows|[Microsoft Desired State Configuration](/powershell/dsc) v2| |
+|Windows|[Windows Power shell desired state Configuration](/powershell/scripting/dsc/overview/overview) v2| |
 |Linux|[Chef inspectie mogelijk](https://www.chef.io/inspec/)| Ruby en Python worden geïnstalleerd door de configuratie van de Gast-extensie. |
 
 ### <a name="validation-frequency"></a>Validatie frequentie
@@ -113,7 +113,7 @@ Als de **DeployIfNotExists** -toewijzing niet compatibel is, kan een [herstel ta
 
 Zodra de **DeployIfNotExists** -toewijzing compatibel is, gebruikt de **AuditIfNotExists** -beleids toewijzing de lokale validatie hulpprogramma's om te bepalen of de configuratie toewijzing compatibel of niet-compatibel is. Het hulpprogramma voor het valideren biedt de resultaten naar de configuratie van de Gast-client. De client verzendt de resultaten naar de Gast-extensie, waardoor ze beschikbaar zijn via de configuratie van de Gast-resourceprovider.
 
-Azure Policy maakt gebruik van de configuratie van de Gast-resourceproviders **complianceStatus** eigenschap voor rapport naleving in de **naleving** knooppunt. Zie voor meer informatie, [ophalen van Nalevingsgegevens](../how-to/getting-compliance-data.md).
+Azure Policy maakt gebruik van de configuratie van de Gast-resourceproviders **complianceStatus** eigenschap voor rapport naleving in de **naleving** knooppunt. Zie voor meer informatie, [ophalen van Nalevingsgegevens](../how-to/get-compliance-data.md).
 
 > [!NOTE]
 > Het **DeployIfNotExists** -beleid is vereist voor het **AuditIfNotExists** -beleid om resultaten te retour neren. Zonder de **DeployIfNotExists**wordt met het **AuditIfNotExists** -beleid ' 0 van 0 ' resources weer gegeven als status.
@@ -198,6 +198,6 @@ Voor beelden voor beleids gast configuratie zijn beschikbaar op de volgende loca
 - Lees over de [structuur van Azure Policy-definities](definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
 - Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

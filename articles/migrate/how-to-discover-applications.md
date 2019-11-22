@@ -4,14 +4,14 @@ description: Hierin wordt beschreven hoe u apps, functies en onderdelen detectee
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 11/18/2019
+ms.date: 11/20/2019
 ms.author: snehaa
-ms.openlocfilehash: 14ecc6454c3d0f167c671532dd8e659e767cda66
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158632"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278480"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Machine-apps,-functies en-functies detecteren
 
@@ -19,10 +19,10 @@ In dit artikel wordt beschreven hoe u toepassingen, functies en onderdelen detec
 
 Het detecteren van de inventaris van apps en rollen/functies die op uw on-premises machines worden uitgevoerd, helpt u bij het identificeren en plannen van een migratie naar Azure dat is afgestemd op uw workloads.
 
-App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets te worden geïnstalleerd op machines en Vm's. Server Assessment gebruikt het Azure Migrate apparaat om detectie uit te voeren samen met de referenties van de computer gast. Het apparaat heeft op afstand toegang tot computers met WMI-en SSH-aanroepen.
-
 > [!NOTE]
 > App-detectie wordt momenteel alleen ondersteund voor virtuele VMware-machines en is beperkt tot detectie. We bieden nog geen evaluatie op basis van een app.  Momenteel wordt door server evaluatie op dit moment een overzicht van on-premises VMware-Vm's, virtuele Hyper-V-machines en fysieke servers op computer niveau geëvalueerd voor liften en verschuivingen.
+
+App-detectie met Azure Migrate: Server evaluatie is zonder agent. Er hoeft niets te worden geïnstalleerd op machines en Vm's. Server Assessment gebruikt het Azure Migrate apparaat om detectie uit te voeren samen met de referenties van de computer gast. Het apparaat heeft op afstand toegang tot de VMware-machines met behulp van VMware-Api's.
 
 
 ## <a name="before-you-start"></a>Voordat u begint

@@ -1,5 +1,6 @@
 ---
-title: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - snelstart - Azure CLI | Microsoft Docs
+title: 'Quick Start: een probleem met een VM-netwerk verkeer vaststellen-Azure CLI'
+titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u een diagnose uitvoert voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de functie IP-stroomverificatie in Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 460513e4818cbef8fca0cd1b84d69b3021afaab7
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: 251f72ab4f4d53fc2c836f06c78a1faa291b3a8a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64690433"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276078"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Quickstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - Azure CLI
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Snelstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - Azure CLI
 
 In deze snelstart implementeert u een VM (virtuele machine) en controleert u vervolgens de communicatie naar een IP-adres en URL, en vanaf een IP-adres. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
 

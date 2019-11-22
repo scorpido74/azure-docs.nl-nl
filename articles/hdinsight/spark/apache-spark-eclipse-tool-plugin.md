@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/30/2017
-ms.openlocfilehash: 7e320b4a0166ffad3ba62c80ad7667c626acb136
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6268256c9be26ef3e7e1061eef7cdb3b3f7d31db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494674"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286938"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure-toolkit voor Eclipse gebruiken om Apache Spark-toepassingen voor een HDInsight-cluster te maken
 
@@ -84,7 +84,10 @@ U kunt een normaal cluster koppelen met behulp van de beheerde gebruikers naam A
    > [!NOTE]  
    > We gebruiken de gekoppelde opslag sleutel, gebruikers naam en wacht woord als het cluster beide zijn aangemeld bij het Azure-abonnement en een cluster heeft gekoppeld.
    > ![Azure Explorer-opslag accounts](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
-
+   >
+   > Voor de gebruiker alleen toetsen bord, wanneer de huidige focus op de **opslag sleutel**is, moet u op het volgende veld in het dialoog venster op **CTRL + TAB** zijn gericht.
+   
+   
 1. U kunt een gekoppeld cluster in **HDInsight** -knoop punt bekijken nadat u op de knop OK hebt geklikt, als de invoer gegevens rechts zijn. U kunt nu een toepassing verzenden naar dit gekoppelde cluster.
 
    ![HDI gekoppeld Azure Explorer-cluster](./media/apache-spark-eclipse-tool-plugin/hdinsight-linked-cluster.png)

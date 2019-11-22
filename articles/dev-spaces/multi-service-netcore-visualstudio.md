@@ -1,22 +1,18 @@
 ---
-title: Uitvoeren van meerdere afhankelijke services met .NET Core en Visual Studio
-titleSuffix: Azure Dev Spaces
+title: Meerdere afhankelijke services uitvoeren met .NET core en Visual Studio
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, NET service, service mesh-routering, kubectl, k8s
-ms.openlocfilehash: dd90dee2f973bb26a43706eb77f15778cb9116a0
-ms.sourcegitcommit: 837dfd2c84a810c75b009d5813ecb67237aaf6b8
-ms.translationtype: MT
+keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+ms.openlocfilehash: e1e4d12591ec969b70ab1b0eaef430f5a7c7b276
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67502972"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279585"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Ontwikkeling van meerdere services met Azure Dev Spaces
 
@@ -32,7 +28,7 @@ Omwille van de tijd downloaden we voorbeeldcode uit een GitHub-opslagplaats. Ga 
 
 ### <a name="run-mywebapi"></a>*mywebapi* uitvoeren
 1. Open het `mywebapi`-project in een *afzonderlijk Visual Studio-venster*.
-1. Selecteer **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen zoals u eerder hebt gedaan voor het `webfrontend`-project. In plaats van een nieuw AKS-cluster te maken, kunt u nu de ontwikkelomgeving selecteren die u al hebt gemaakt. Laat ook hier de standaard bij Space ingesteld op `default` en klik op **OK**. In het uitvoervenster merkt u wellicht Visual Studio begint met "opgewarmd' deze nieuwe service in de adresruimte van uw dev om dingen sneller als u foutopsporing start.
+1. Selecteer **Azure Dev Spaces** in de vervolgkeuzelijst met opstartinstellingen zoals u eerder hebt gedaan voor het `webfrontend`-project. In plaats van een nieuw AKS-cluster te maken, kunt u nu de ontwikkelomgeving selecteren die u al hebt gemaakt. Laat ook hier de standaard bij Space ingesteld op `default` en klik op **OK**. In het venster uitvoer kunt u zien dat in Visual Studio deze nieuwe service wordt geheten in uw dev-ruimte om sneller te kunnen werken wanneer u de fout opsporing start.
 1. Druk op F5 en wacht tot de service is gebouwd en geïmplementeerd. Dit proces is voltooid, zodra de Visual Studio-statusbalk oranje wordt
 1. Noteer de eindpunt-URL die wordt weergegeven in het deelvenster **Azure Dev Spaces for AKS** in het venster **Uitvoer**. Deze ziet er ongeveer als volgt uit: `http://localhost:<portnumber>`. Het lijkt misschien alsof de container lokaal wordt uitgevoerd, maar dat is niet zo. De container wordt uitgevoerd in de ontwikkelomgeving in Azure.
 2. Wanneer `mywebapi` klaar is, opent u de browser naar het localhost-adres en voegt u `/api/values` toe aan het eind van de URL om de standaard-GET API voor de `ValuesController` aan te roepen. 
@@ -41,7 +37,7 @@ Omwille van de tijd downloaden we voorbeeldcode uit een GitHub-opslagplaats. Ga 
     ![](media/get-started-netcore-visualstudio/WebAPIResponse.png)
 
 ### <a name="make-a-request-from-webfrontend-to-mywebapi"></a>Verzend een aanvraag van *webfrontend* naar *mywebapi*
-Nu gaan we code schrijven in `webfrontend` waarmee een aanvraag wordt verzonden naar `mywebapi`. Schakel over naar het Visual Studio-venster met het `webfrontend`-project. *Vervang* de code voor de About-methode in het `HomeController.cs`-bestand door de volgende code:
+Nu gaan we code schrijven in `webfrontend` waarmee een aanvraag wordt verzonden naar `mywebapi`. Schakel over naar het Visual Studio-venster met het `webfrontend`-project. `HomeController.cs`Vervang*de code voor de About-methode in het*-bestand door de volgende code:
 
    ```csharp
    public async Task<IActionResult> About()
@@ -76,7 +72,7 @@ In het vorige codevoorbeeld wordt de `azds-route-as`-header van de binnenkomende
 1. Klik boven aan de pagina op de koppeling **About** om het onderbrekingspunt te activeren in het `webfrontend`-project. 
 1. Druk F10 om door te gaan. Het onderbrekingspunt in het `mywebapi`-project wordt nu geactiveerd.
 1. Druk op F5 om door te gaan. U wordt teruggeleid naar de code in het `webfrontend`-project.
-1. Als u nog een keer op F5 drukt, wordt de aanvraag voltooid en gaat u terug naar een pagina in de browser. In de web-app wordt nu op de pagina About een bericht weergegeven dat is samengesteld uit de twee services: "Hello from webfrontend and Hello from mywebapi."
+1. Als u nog een keer op F5 drukt, wordt de aanvraag voltooid en gaat u terug naar een pagina in de browser. In de web-app wordt nu op de pagina About een bericht weergegeven dat is samengesteld uit de twee services: Hello from webfrontend and Hello from mywebapi.
 
 ### <a name="well-done"></a>Dat is dus gelukt.
 U hebt nu een toepassing met meerdere containers waarin elke container afzonderlijk kan worden ontwikkeld en geïmplementeerd.

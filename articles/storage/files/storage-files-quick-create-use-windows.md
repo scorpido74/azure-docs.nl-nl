@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95a5df4ca14f4be8553c83dfe8b4d09d00341102
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 22c2f3b91b650bcdbf8eb7368023e068a397323f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260399"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305828"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Quickstart: Een Azure-bestandsshare maken en beheren met virtuele Windows-machines
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snelstartgids: Azure Files share maken en beheren met virtuele Windows-machines
 
 Dit artikel bevat de basisstappen voor het maken en gebruiken van een Azure-bestandsshare. In deze quickstart ligt de nadruk op het snel instellen van een Azure-bestandsshare, zodat u kunt ervaren hoe de service werkt. Als u meer gedetailleerde instructies nodig hebt voor het maken en gebruiken van Azure-bestandsshares in uw eigen omgeving, raadpleegt u [Een Azure-bestandsshare gebruiken met Windows](storage-how-to-use-files-windows.md).
 
@@ -22,7 +22,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-your-environment"></a>Uw omgeving voorbereiden
 
@@ -54,7 +54,7 @@ Vervolgens gaat u een bestandsshare maken.
 1. Maak een nieuw TXT-bestand met de naam *qsTestFile* op uw lokale computer.
 1. Selecteer de nieuwe bestandsshare en klik vervolgens op de locatie van de bestandsshare op **Uploaden**.
 
-    ![Een bestand uploaden](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Bestand uploaden](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. Blader naar de locatie waar u uw TXT-bestand hebt gemaakt > selecteer *qsTestFile.txt* > selecteer **uploaden**.
 
@@ -107,7 +107,7 @@ U hebt nu een nieuwe virtuele machine gemaakt en een gegevensschijf gekoppeld. U
 
    ![Een schermafbeelding van het dialoogvenster 'Netwerkverbinding maken'](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
 
-1. Selecteer **Finish**.
+1. Selecteer **Voltooien**.
 1. Ga als volgt te werk in het dialoogvenster **Windows-beveiliging**:
 
    - Kopieer vanuit Kladblok de naam van het opslagaccount voorafgegaan door AZURE\ en plak deze in het dialoogvenster **Windows-beveiliging** als de gebruikersnaam. Als u de suggesties voor naamgeving in deze quickstart hebt gevolgd, kopieert u *AZURE\qsstorageacct*.
@@ -159,7 +159,7 @@ Net als met on-premises VSS-momentopnamen kunt u de momentopnamen van de gekoppe
 
    ![Gekoppelde share in Windows Verkenner](./media/storage-files-quick-create-use-windows/snapshot-windows-mount.png)
 
-1. Selecteer **qsTestFile.txt**, klik met de rechtermuisknop op het bestand en selecteer *Eigenschappen* in het menu.
+1. Selecteer *qsTestFile.txt*, klik met de rechtermuisknop op het bestand en selecteer **Eigenschappen** in het menu.
 
    ![Snelmenu voor een geselecteerde map](./media/storage-files-quick-create-use-windows/snapshot-windows-previous-versions.png)
 
@@ -173,7 +173,7 @@ Net als met on-premises VSS-momentopnamen kunt u de momentopnamen van de gekoppe
 
 1. Selecteer **Terugzetten**. De inhoud van de gehele map wordt recursief naar de oorspronkelijke locatie gekopieerd, op de aanmaaktijd van de momentopname van de share.
 
-   ![De knop Terugzetten in een waarschuwingsbericht](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+   ![knop herstellen in waarschuwings bericht](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) Opmerking: als het bestand niet is gewijzigd, wordt er geen eerdere versie van het bestand weer gegeven, omdat dit bestand dezelfde versie is als de moment opname. Dit is consistent met de manier waarop dit werkt op een Windows-Bestands server.
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 

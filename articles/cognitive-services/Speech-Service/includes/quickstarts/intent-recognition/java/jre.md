@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 10/28/2019
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2aa8311c9284d9aff3c50fcec30bc8ab9df6b11b
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: c9aa4200dc217e9c79290ca91b03810f0769bdc2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125457"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280374"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
@@ -25,7 +25,7 @@ Voordat u aan de slag gaat, moet u het volgende doen:
 > [!div class="checklist"]
 >
 > * [Een Azure-spraak resource maken](../../../../get-started.md)
-> * [Een LUIS-toepassing maken en een eindpunt sleutel ophalen](../../../../quickstarts/create-luis.md)
+> * [Een Language Understanding-toepassing (LUIS) maken en een eindpunt sleutel ophalen](../../../../quickstarts/create-luis.md)
 > * [Uw ontwikkel omgeving instellen](../../../../quickstarts/setup-platform.md?tabs=jre)
 > * [Een leeg voorbeeld project maken](../../../../quickstarts/create-project.md?tabs=jre)
 

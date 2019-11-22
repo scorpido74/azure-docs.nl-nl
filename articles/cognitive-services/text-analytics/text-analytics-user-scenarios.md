@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 04/04/2019
 ms.author: aahi
-ms.openlocfilehash: 19421788eea59ea250efbaa656266da49dc3b42f
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: f11d23207a21af5c73831d0edd5ffc9eaa59c119
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73742727"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280662"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Voor beelden van gebruikers scenario's voor de Text Analytics-API
 
@@ -41,7 +41,7 @@ Gebruik Sleuteltermextractie en entiteits herkenning om ondersteunings aanvragen
 
 ## <a name="monitor-your-products-social-media-feeds"></a>De feeds voor sociale media van uw product bewaken
 
-Feedback van gebruikers producten op de Twitter-of Facebook-pagina van uw product bewaken. Gebruik de gegevens om klant sentiment te analyseren naar nieuwe producten, sleutel zinnen te extra heren over functies en functie aanvragen of klachten van klanten te adresseren wanneer deze zich voordoen.
+Feedback van gebruikers producten op de Twitter-of Facebook-pagina van uw product bewaken. Gebruik de gegevens om klant sentiment te analyseren naar nieuwe producten, sleutel zinnen te extra heren over functies en functie aanvragen of klachten van klanten te adresseren wanneer deze zich voordoen. Zie het voor beeld [Microsoft flow sjabloon](https://flow.microsoft.com/galleries/public/templates/2680d2227d074c4d901e36c66e68f6f9/run-sentiment-analysis-on-tweets-and-push-results-to-a-power-bi-dataset/).
 
 ![Een afbeelding waarin wordt beschreven hoe u uw product-en bedrijfs feedback op sociale media kunt controleren met behulp van sleutel woorden extractie](media/use-cases/social-feed.svg)
 

@@ -1,5 +1,5 @@
 ---
-title: Directe Federatie met een id-provider voor B2B-Azure Active Directory instellen | Microsoft Docs
+title: Directe Federatie met een id-provider voor B2B-Azure AD
 description: Direct communiceren met een SAML-of een door de WS gevoede ID-provider zodat gasten zich kunnen aanmelden bij uw Azure AD-apps
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3aea108ed87debac56b18b5959d492f2bcb291d
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68853605"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272738"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Directe Federatie met AD FS en providers van derden voor gast gebruikers (preview-versie)
 |     |
@@ -28,7 +28,7 @@ ms.locfileid: "68853605"
 In dit artikel wordt beschreven hoe u directe Federatie kunt instellen met een andere organisatie voor B2B-samen werking. U kunt directe Federatie instellen met elke organisatie waarvan de ID-provider (IdP) ondersteuning biedt voor het SAML 2,0-of WS-inschakel protocol.
 Wanneer u directe Federatie instelt met de IdP van een partner, kunnen nieuwe gast gebruikers uit dat domein hun eigen door IdP beheerd organisatie account gebruiken om zich aan te melden bij uw Azure AD-Tenant en samen met u aan de slag te gaan. De gast gebruiker hoeft geen afzonderlijk Azure AD-account te maken.
 > [!NOTE]
-> Gebruikers met een directe Federatie gast moeten zich aanmelden met behulp `https://myapps.microsoft.com/?tenantid=<tenant id>` `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`van een koppeling die de Tenant context bevat `https://portal.azure.com/<tenant id>`(bijvoorbeeld of, of in het geval van een geverifieerd domein). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Directe Federatie gebruikers kunnen zich momenteel niet aanmelden met algemene eind punten die geen Tenant context hebben. Als bijvoorbeeld, of `https://myapps.microsoft.com` `https://teams.microsoft.com` wordt `https://portal.azure.com`gebruikt, resulteert dit in een fout.
+> Gebruikers met een directe Federatie gast moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>`, of in het geval van een geverifieerd domein `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Directe Federatie gebruikers kunnen zich momenteel niet aanmelden met algemene eind punten die geen Tenant context hebben. Als u bijvoorbeeld `https://myapps.microsoft.com`, `https://portal.azure.com`of `https://teams.microsoft.com` gebruikt, treedt er een fout op.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Wanneer is een gast gebruiker geverifieerd met directe Federatie?
 Nadat u directe Federatie hebt ingesteld met een organisatie, worden nieuwe gast gebruikers die u uitnodigt, geverifieerd met behulp van directe Federatie. Het is belang rijk te weten dat het instellen van directe Federatie de verificatie methode niet wijzigt voor gast gebruikers die al een uitnodiging van u hebben ingewisseld. Hier volgen enkele voorbeelden:
@@ -41,7 +41,7 @@ In een van deze scenario's kunt u de verificatie methode van een gast gebruiker 
 Directe Federatie is gekoppeld aan domein naam ruimten, zoals contoso.com en fabrikam.com. Bij het tot stand brengen van een directe Federatie configuratie met AD FS of een IdP van derden koppelen organisaties een of meer domein naam ruimten aan deze id. 
 
 ## <a name="end-user-experience"></a>Eindgebruikerservaring 
-Met directe Federatie melden gast gebruikers zich aan bij uw Azure AD-Tenant met behulp van hun eigen organisatie account. Wanneer ze toegang krijgen tot gedeelde bronnen en worden gevraagd om zich aan te melden, worden directe Federatie gebruikers omgeleid naar hun IdP. Nadat het aanmelden is geslaagd, worden deze geretourneerd naar Azure AD om toegang te krijgen tot resources. De vernieuwings tokens van de directe Federatie gebruikers zijn 12 uur geldig, de [standaard lengte voor het passthrough](../develop/active-directory-configurable-token-lifetimes.md#exceptions) -vernieuwings token in azure AD. Als voor de federatieve IdP SSO is ingeschakeld, ondervindt de gebruiker SSO en wordt er geen aanmeldings prompt weer gegeven na de eerste verificatie.
+Met directe Federatie melden gast gebruikers zich aan bij uw Azure AD-Tenant met behulp van hun eigen organisatie account. Wanneer ze toegang krijgen tot gedeelde bronnen en worden gevraagd om zich aan te melden, worden directe Federatie gebruikers omgeleid naar hun IdP. Nadat het aanmelden is geslaagd, worden deze geretourneerd naar Azure AD om toegang te krijgen tot resources. De vernieuwings tokens van de directe Federatie gebruikers zijn 12 uur geldig, de [standaard lengte voor het passthrough-vernieuwings token](../develop/active-directory-configurable-token-lifetimes.md#exceptions) in azure AD. Als voor de federatieve IdP SSO is ingeschakeld, ondervindt de gebruiker SSO en wordt er geen aanmeldings prompt weer gegeven na de eerste verificatie.
 
 ## <a name="limitations"></a>Beperkingen
 
@@ -57,7 +57,7 @@ Directe Federatie is alleen toegestaan voor beleids regels waarbij het domein va
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Wanneer u bijvoorbeeld directe Federatie voor **fabrikam.com**instelt, wordt de verificatie-URL `https://fabrikam.com/adfs` door gegeven aan de validatie. Er wordt bijvoorbeeld `https://sts.fabrikam.com/adfs`ook een host in hetzelfde domein door gegeven. De verificatie-URL `https://fabrikamconglomerate.com/adfs` of `https://fabrikam.com.uk/adfs` voor hetzelfde domein wordt echter niet door gegeven.
+Wanneer u bijvoorbeeld directe Federatie voor **fabrikam.com**instelt, wordt de verificatie-URL `https://fabrikam.com/adfs` de validatie door gegeven. Er wordt ook een host in hetzelfde domein door gegeven, bijvoorbeeld `https://sts.fabrikam.com/adfs`. De verificatie-URL `https://fabrikamconglomerate.com/adfs` of `https://fabrikam.com.uk/adfs` voor hetzelfde domein wordt echter niet door gegeven.
 
 ### <a name="signing-certificate-renewal"></a>Certificaat vernieuwing ondertekenen
 Als u de meta gegevens-URL in de instellingen van de identiteits provider opgeeft, wordt het handtekening certificaat door Azure AD automatisch vernieuwd wanneer het verloopt. Als het certificaat echter om een of andere reden vóór de verloop tijd wordt geroteerd, of als u geen meta gegevens-URL opgeeft, kan Azure AD deze niet vernieuwen. In dit geval moet u het handtekening certificaat hand matig bijwerken.
@@ -72,7 +72,7 @@ Wanneer directe Federatie wordt ingesteld met een partner organisatie, heeft dit
 ### <a name="does-direct-federation-address-sign-in-issues-due-to-a-partially-synced-tenancy"></a>Worden er problemen met het aanmelden van direct Federation-adressen veroorzaakt door een gedeeltelijk gesynchroniseerde pacht?
 Nee, de functie voor [eenmalige e-mail wachtwoord code](one-time-passcode.md) moet in dit scenario worden gebruikt. Een ' gedeeltelijk gesynchroniseerde pacht ' verwijst naar een Azure AD-Tenant van de partner, waarbij on-premises gebruikers identiteiten niet volledig worden gesynchroniseerd met de Cloud. Een gast waarvan de identiteit nog niet bestaat in de Cloud, maar die probeert uw B2B-uitnodiging in te wisselen, kan zich niet aanmelden. Met de functie voor eenmalige wachtwoord code kan deze gast zich aanmelden. De functie directe Federatie biedt een oplossing voor scenario's waarbij de gast een eigen IdP organisatie account heeft, maar de organisatie helemaal geen Azure AD-aanwezigheid heeft.
 
-## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Stap 1: De ID-provider van de partner organisatie configureren
+## <a name="step-1-configure-the-partner-organizations-identity-provider"></a>Stap 1: de ID-provider van de partner organisatie configureren
 Eerst moet uw partner organisatie hun ID-provider configureren met de vereiste claims en Relying Party-vertrouwens relaties. 
 
 > [!NOTE]
@@ -94,18 +94,18 @@ Vereiste kenmerken voor het SAML 2,0-antwoord van de IdP:
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Doelgroep     |`urn:federation:MicrosoftOnline`         |
-|Certificaatverlener     |De uitgevers-URI van de partner-IdP, bijvoorbeeld`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Verlener     |De uitgever-URI van de partner IdP, bijvoorbeeld `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 Vereiste claims voor het SAML 2,0-token dat is uitgegeven door de IdP:
 
-|Kenmerk  |Value  |
+|Kenmerk  |Waarde  |
 |---------|---------|
 |NameID-indeling     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
 ### <a name="ws-fed-configuration"></a>WS-gevoederde configuratie 
-Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die gebruikmaken van het WS-invoer protocol met enkele specifieke vereisten zoals hieronder wordt weer gegeven. Op dit moment zijn de twee WS-insluitings providers getest op compatibiliteit met Azure AD AD FS en shibboleth. Zie voor meer informatie over het instellen van een Relying Party-vertrouwens relatie tussen een WS-inwisselende provider met Azure AD het document ' STS-integratie met WS-protocollen ' dat beschikbaar is in de compatibiliteits documenten voor de [Azure AD-identiteits provider](https://www.microsoft.com/download/details.aspx?id=56843).
+Azure AD B2B kan worden geconfigureerd om te communiceren met id-providers die gebruikmaken van het WS-invoer protocol met enkele specifieke vereisten zoals hieronder wordt weer gegeven. Op dit moment zijn de twee WS-insluitings providers getest op compatibiliteit met Azure AD AD FS en shibboleth. Zie voor meer informatie over het instellen van een Relying Party-vertrouwens relatie tussen een WS-inwisselende provider met Azure AD het document ' STS-integratie met WS-protocollen ' dat beschikbaar is in de [compatibiliteits documenten voor de Azure AD-identiteits provider](https://www.microsoft.com/download/details.aspx?id=56843).
 
 > [!NOTE]
 > Het doel domein voor directe Federatie mag niet worden geverifieerd door DNS op Azure AD. Het domein van de verificatie-URL moet overeenkomen met het doel domein of het domein van een toegestane ID-provider. Zie de sectie [beperkingen](#limitations) voor meer informatie. 
@@ -120,7 +120,7 @@ Vereiste kenmerken in het WS-ingevoerd bericht van de IdP:
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Doelgroep     |`urn:federation:MicrosoftOnline`         |
-|Certificaatverlener     |De uitgevers-URI van de partner-IdP, bijvoorbeeld`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Verlener     |De uitgever-URI van de partner IdP, bijvoorbeeld `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 Vereiste claims voor het WS-invoeder token dat is uitgegeven door de IdP:
 
@@ -129,9 +129,9 @@ Vereiste claims voor het WS-invoeder token dat is uitgegeven door de IdP:
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |emailaddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-## <a name="step-2-configure-direct-federation-in-azure-ad"></a>Stap 2: Direct Federatie configureren in azure AD 
+## <a name="step-2-configure-direct-federation-in-azure-ad"></a>Stap 2: direct Federatie configureren in azure AD 
 Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in stap 1 van Azure AD. U kunt de Azure AD-portal of Power shell gebruiken. Het kan 5-10 minuten duren voordat het directe Federatie beleid van kracht wordt. Probeer tijdens deze periode niet een uitnodiging voor het directe Federatie domein in te wisselen. De volgende kenmerken zijn vereist:
-- Uitgever-URI van partner-IdP
+- URI van de uitgever van de partner IdP
 - Passief verificatie-eind punt van partner IdP (alleen https wordt ondersteund)
 - Certificaat
 
@@ -149,9 +149,9 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
 
 5. Voer de domein naam van uw partner organisatie in, die de doel domeinnaam voor directe Federatie is
 6. U kunt een meta gegevensbestand uploaden om details van meta gegevens in te vullen. Als u ervoor kiest om meta gegevens hand matig in te voeren, voert u de volgende gegevens in:
-   - Domeinnaam van partner-IdP
-   - Entiteit-id van partner-IdP
-   - Passief aanvragereindpunt van partner-IdP
+   - De domein naam van de partner IdP
+   - Entiteit-ID van partner IdP
+   - Passief eind punt van de partner IdP
    - Certificaat
    > [!NOTE]
    > Meta gegevens-URL is optioneel, maar wordt aanbevolen. Als u de meta gegevens-URL opgeeft, kan Azure AD het handtekening certificaat automatisch vernieuwen wanneer het verloopt. Als het certificaat om de een of andere reden vóór de verloop tijd wordt geroteerd of als u geen meta gegevens-URL opgeeft, kan Azure AD deze niet vernieuwen. In dit geval moet u het handtekening certificaat hand matig bijwerken.
@@ -180,7 +180,7 @@ Vervolgens configureert u Federatie met de ID-provider die is geconfigureerd in 
    New-AzureADExternalDomainFederation -ExternalDomainName $domainName  -FederationSettings $federationSettings
    ```
 
-## <a name="step-3-test-direct-federation-in-azure-ad"></a>Stap 3: Direct Federatie testen in azure AD
+## <a name="step-3-test-direct-federation-in-azure-ad"></a>Stap 3: direct Federatie testen in azure AD
 Test nu uw directe Federatie-installatie door een nieuwe B2B-gast gebruiker uit te nodigen. Zie [Azure AD B2B-samenwerkings gebruikers toevoegen in de Azure Portal](add-users-administrator.md)voor meer informatie.
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Een directe Federatie relatie Hoe kan ik bewerken?

@@ -1,6 +1,6 @@
 ---
 title: Azure-resource logboeken streamen naar een Event Hub
-description: Meer informatie over het streamen van Azure-bron logboeken naar een Event Hub.
+description: Informatie over het streamen van Azure-bron logboeken naar een Event Hub voor het verzenden van gegevens naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.
 author: bwren
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/20/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 1d7a533658b6c72caae9649d7e5a9c4fad117245
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 680570c5102f656b2b2d2e05f9e08f51fe892f44
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71262412"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304941"
 ---
 # <a name="stream-azure-resource-logs-to-azure-event-hubs"></a>Azure-resource logboeken streamen naar Azure Event Hubs
 [Resource logboeken](resource-logs-overview.md) in azure bieden uitgebreide, frequente gegevens over de interne werking van een Azure-resource. In dit artikel wordt beschreven hoe u bron logboeken streamt naar Event hubs om gegevens te verzenden naar externe systemen, zoals Siem's van derden en andere log Analytics-oplossingen.
@@ -25,7 +25,7 @@ Stream-bron Logboeken in azure naar Event hubs om de volgende functionaliteit te
 * **Stroom logboeken naar logboek registratie van derden en telemetrie-systemen** : stream al uw bron logboeken naar een enkele Event hub om logboek gegevens naar een Siem of log Analytics-hulp programma van derden te verzenden.
 * **Bouw een aangepast telemetrie-en logboek registratie platform** : met de uiterst schaal bare functie voor publiceren en abonneren van Event hubs kunt u resource logboeken flexibel opnemen in een aangepast teletry-platform. Zie [het ontwerp en de grootte van een telemetrie-platform op wereld wijd schalen op Azure Event hubs](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/) voor meer informatie.
 
-* **Bekijk de service status door gegevens te streamen naar Power bi** : gebruik Event Hubs, Stream Analytics en Power bi om uw diagnostische gegevens te transformeren naar bijna realtime inzichten op uw Azure-Services. Zie [stream Analytics en Power BI: Een real-time analyse dashboard voor het streamen van gegevens](../../stream-analytics/stream-analytics-power-bi-dashboard.md) voor meer informatie over deze oplossing.
+* **Bekijk de service status door gegevens te streamen naar Power bi** : gebruik Event Hubs, Stream Analytics en Power bi om uw diagnostische gegevens te transformeren naar bijna realtime inzichten op uw Azure-Services. Zie [Stream Analytics en Power BI: een real-time analyse dashboard voor het streamen van gegevens](../../stream-analytics/stream-analytics-power-bi-dashboard.md) voor meer informatie over deze oplossing.
 
     De volgende SQL-code is een voor beeld van een Stream Analytics query die u kunt gebruiken voor het parseren van alle logboek gegevens in een Power BI tabel:
     
@@ -57,14 +57,14 @@ Bron logboeken streamen vanuit Azure Compute-resources met behulp van de Windows
 ## <a name="consuming-log-data-from-event-hubs"></a>Logboek gegevens van Event hubs gebruiken
 Wanneer u bron logboeken van Event hubs gebruikt, is het een JSON-indeling met de elementen in de volgende tabel.
 
-| Element naam | Description |
+| Element naam | Beschrijving |
 | --- | --- |
 | records |Een matrix van alle logboek gebeurtenissen in deze nettolading. |
-| time |Tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
+| tijd |Tijdstip waarop de gebeurtenis heeft plaatsgevonden. |
 | category |Logboek categorie voor deze gebeurtenis. |
 | resourceId |De resource-ID van de resource die deze gebeurtenis heeft gegenereerd. |
 | operationName |Naam van de bewerking. |
-| level |Optioneel. Hiermee wordt het logboek gebeurtenis niveau aangegeven. |
+| niveau |Optioneel. Hiermee wordt het logboek gebeurtenis niveau aangegeven. |
 | properties |De eigenschappen van de gebeurtenis. Deze verschillen voor elke Azure-service, zoals beschreven [ ]()in. |
 
 

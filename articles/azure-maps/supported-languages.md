@@ -3,17 +3,17 @@ title: Ondersteuning voor lokalisatie in Azure Maps | Microsoft Docs
 description: Meer informatie over ondersteunde talen voor de services in Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 06/26/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b3382cffdc41685f8329a640aaf6c6c526375a83
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72299840"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286422"
 ---
 # <a name="localization-support-in-azure-maps"></a>Ondersteuning voor lokalisatie in Azure Maps
 
@@ -25,62 +25,77 @@ Azure Maps ondersteunt diverse talen en weer gaven op basis van land/regio. In d
 Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende tabel bevat de ondersteunde taal codes voor elke service.  
   
 
-| Id         | Naam                   |  Kaarten | Search | Routes | Verkeers incidenten | JS-toewijzings beheer | Tijdzone |
-|------------|------------------------|:-----:|:------:|:-------:|:-----------------:|:--------------:|:---------:|
-| af-ZA      | Afrikaans              |       |    ✓   |    ✓    |                   |                |     ✓     |
-| AR-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| EU-ES      | Baskisch                 |       |    ✓   |         |                   |                |     ✓     |
-| bg-BG      | Bulgaars              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| CA-ES      | Catalaans                |       |    ✓   |         |                   |                |     ✓     |
-| zh-HanS    | Chinees (vereenvoudigd)   |       |  zh-CN |         |                   |                |     ✓     |
-| zh-HanT    | Chinees (traditioneel)  | zh-TW |  zh-TW |  zh-TW  |                   |      Zh-TW     |     ✓     |
-| HR-HR      | Kroatisch               |       |    ✓   |         |                   |                |     ✓     |
-| CS-CZ      | Tsjechisch                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| da-DK      | Deens                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl-NL      | Nederlands                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| nl-worden      | Nederlands (Belgisch)        |       |    ✓   |         |                   |                |     ✓     |
-| en-AU      | Engels (Australië)    |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| en-NZ      | Engels (Nieuw-Zeeland)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| en-GB      | Engels (Groot-Brittannië) |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| en-US      | Engels (Verenigde Staten)          |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| et-EE      | Estisch               |       |    ✓   |         |         ✓         |                |     ✓     |
-| fi-FI      | Fins                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| fr-FR      | Frans                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| FR-CA      | Frans (Canada)      |       |    ✓   |         |                   |                |     ✓     |
-| gl-ES      | Galicisch               |       |    ✓   |         |                   |                |     ✓     |
-| de-DE      | Duits                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| El-GR      | Grieks                  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| he IL      | Hebreeuws                 |       |    ✓   |         |         ✓         |                |     ✓     |
-| Hi-IN      | Hindi                  |       |        |         |                   |                |     ✓     |
-| hu-HU      | Hongaars              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| id-ID      | Indonesisch             |   ✓   |    ✓    |    ✓    |         ✓         |        ✓       |     ✓     |
-| IT-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| ja-JP      | Japans               |       |        |         |                   |                |     ✓     |
-| kk-KZ      | Kazachstaans                 |       |    ✓   |         |                   |                |     ✓     |
-| ko-KR      | Koreaans                 |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
-| es-419     | Latijns-Amerikaans-Spaans |       |    ✓   |         |                   |                |     ✓     |
-| LV-LV      | Lets                |       |    ✓   |         |         ✓         |                |     ✓     |
-| lt-LT      | Litouws             |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| MS-mijn      | Maleis (Latijns)          |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| nb-NO      | Noors Bokmål       |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| NGT        | Neutrale waarheid-officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |                   |      ✓          |         |
-| NGT-Latn   | Neutrale waarheid-Latijns exonyms. Latijns script wordt gebruikt indien beschikbaar |   ✓     |        |         |                   |        ✓         |          |
-| pl-PL      | Pools                 |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| pt-BR      | Portugees (Brazilië)    |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| pt-PT      | Portugees (Portugal)  |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| RO-RO      | Roemeens               |       |    ✓    |         |         ✓         |                |     ✓     |
-| ru-RU      | Russisch                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| SR-Cyrl-RS | Servisch (Cyrillisch)     |       |    Servisch (cyrillisch) (SR-RS)   |         |                   |                |     ✓     |
-| sr-Latn-RS | Servisch (Latijns)        |       |        |         |                   |                |     ✓     |
-| sk-SK      | Slowaakse              |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| SL-SL      | Sloveens              |   ✓   |    ✓   |    ✓    |                   |        ✓       |     ✓     |
-| es-ES      | Spaans                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| es-MX      | Spaans (Mexico)       |   ✓   |        |    ✓    |                   |        ✓       |     ✓     |
-| SV-SE     | Zweeds                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| th      | Thais                   |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| tr-TR      | Turks                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
-| UK-UA      | Oekraïens               |       |    ✓   |         |                   |                |     ✓     |
-| VI-VN      | Vietnamees             |       |    ✓   |         |                   |                |     ✓     |
+| Id         | Naam                   |  Kaarten | Zoeken | Routes | Weer | Verkeers incidenten | JS-toewijzings beheer |
+|------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
+| af-ZA      | Afrikaans              |       |    ✓   |    ✓    |         |                   |                |
+| ar-SA      | Arabisch                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
+| bn-BD      | Bengaals (Bangladesh)    |       |       |         |     ✓    |                   |                |
+| bn-IN      | Bengaals (India)         |       |       |         |     ✓    |                   |                |
+| bs-BA      | Bosnisch                 |       |       |         |     ✓    |                   |                |
+| eu-ES      | Baskisch                 |       |    ✓   |         |         |                   |                |
+| bg-BG      | Bulgaars              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
+| CA-ES      | Catalaans                |       |    ✓   |         |    ✓      |                   |                |
+| zh-HanS    | Chinees (vereenvoudigd)   |       |  zh-CN |         |     zh-CN   |                   |                |
+| zh-HanT    | Chinees (Hong Kong SAR)  |  |   |    |    zh-HK   |                   |           |
+| zh-HanT    | Chinees (Taiwan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
+| hr-HR      | Kroatisch               |       |    ✓   |         |    ✓      |                   |                |
+| cs-CZ      | Tsjechisch                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
+| da-DK      | Deens                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| nl-BE      | Nederlands (België)        |       |    ✓   |         |      ✓    |                   |                |
+| NL-NL      | Nederlands (Nederland)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-AU      | Engels (Australië)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| NL-NZ      | Engels (Nieuw-Zeeland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-GB      | Engels (Groot-Brittannië) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| en-US      | Engels (Verenigde Staten)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| et-EE      | Estisch               |       |    ✓   |         |      ✓    |         ✓         |                |
+| fil-PH     | Filipijns               |       |       |         |     ✓    |                   |                |
+| fi-FI      | Fins                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| fr-FR      | Frans                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| fr-CA      | Frans (Canada)      |       |    ✓   |         |     ✓     |                   |                |
+| gl-ES      | Galicisch               |       |    ✓   |         |         |                   |                |
+| de-DE      | Duits                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
+| el GR      | Grieks                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
+| Gu-IN      | Gujarati                |       |       |         |     ✓    |                   |                |
+| hij IL      | Hebreeuws                 |       |    ✓   |         |     ✓    |         ✓         |                |
+| hi-IN      | Hindi                  |       |        |         |     ✓    |                   |                |
+| hu-HU      | Hongaars              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| is-IS      | IJslands              |       |       |         |     ✓    |                   |                |
+| id-ID      | Indonesisch             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
+| IT-IT      | Italiaans                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| ja-JP      | Japans               |       |        |         |     ✓    |                   |                |
+| KN-IN      | Kanarees                |       |       |         |     ✓    |                   |                |
+| kk-KZ      | Kazachstaans                 |       |    ✓   |         |     ✓    |                   |                |
+| ko-KR      | Koreaans                 |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
+| es-419     | Latijns-Amerikaans-Spaans |       |    ✓   |         |         |                   |                |
+| lv-LV      | Lets                |       |    ✓   |         |     ✓    |         ✓         |                |
+| lt-LT      | Litouws             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| MK-MK      | Macedonisch             |       |       |         |     ✓    |                   |                |
+| ms-MY      | Maleis (Latijns)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
+| Mr-IN      | Marathi                 |       |       |         |     ✓    |                   |                |
+| nb-NO      | Noors Bokmål       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| NGT        | Neutrale waarheid-officiële talen voor alle regio's in lokale scripts indien beschikbaar |   ✓     |        |         |       |        |      ✓          |
+| NGT-Latn   | Neutrale waarheid-Latijns exonyms. Latijns script wordt gebruikt indien beschikbaar |   ✓     |        |         |         |                |        ✓         |
+| pl-PL      | Pools                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| pt-BR      | Portugees (Brazilië)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
+| pt-PT      | Portugees (Portugal)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| PA-IN      | Punjabi                 |       |       |         |     ✓    |                   |                |
+| ro-RO      | Roemeens               |       |    ✓    |         |     ✓    |         ✓         |                |
+| ru-RU      | Russisch                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| sr-Cyrl-RS | Servisch (Cyrillisch)     |       |   SR-RS  |         |    SR-RS     |                   |                |
+| sr-Latn-RS | Servisch (Latijns)        |       |       |         |     sr-Latn    |                   |                |
+| sk-SK      | Slowaaks             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| sl-SL      | Sloveens              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
+| es-ES      | Spaans                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| es-MX      | Spaans (Mexico)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
+| SV-SE      | Zweeds                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| TA-IN      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
+| te-IN      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
+| e-e      | Thais                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| tr-TR      | Turks                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| uk-UA      | Oekraïens               |       |    ✓   |         |     ✓    |                   |                |
+| uw-PK      | Urdu                 |       |       |         |     ✓    |                   |                |
+| uz-Latn-UZ | Oezbeeks                 |       |       |         |     ✓    |                   |                |
+| vi-VN      | Vietnamees             |       |    ✓   |         |      ✓    |                  |                |
 
 
 ## <a name="azure-maps-supported-views"></a>Ondersteunde weer gaven Azure Maps
@@ -122,18 +137,18 @@ Azure Maps zijn gelokaliseerd in verschillende talen in de services. De volgende
 >
 >  Zorg ervoor dat u de weer gave-para meter hebt ingesteld als vereist en u de meest recente versie van de Web-SDK en Android-SDK hebt. Betrokken Sdk's:
 >
->    * Azure Maps Web-SDK
+>    * Azure Maps Web SDK
 >    * Azure Maps Android-SDK
 
 
-Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven die aangeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
+Azure Maps **weer gave** -para meter (ook wel ' para meter gebruikers regio ' genoemd) is een ISO-3166-land code van twee letters waarmee de juiste toewijzingen voor dat land of deze regio worden weer gegeven waarmee wordt aangegeven welke set van geopolitieke inhoud wordt geretourneerd via Azure Maps Services, met inbegrip van randen en labels die op de kaart worden weer gegeven. 
 
 Standaard is de weer gave-para meter ingesteld op **Unified**, zelfs als u deze niet in de aanvraag hebt gedefinieerd. Het is uw verantwoordelijkheid om de locatie van uw gebruikers te bepalen en de weer gave-para meter voor die locatie op de juiste manier in te stellen. U kunt ook de optie weer gave = automatisch instellen, waardoor de kaart gegevens worden geretourneerd op basis van het IP-adres van de aanvraag.  De weer gave-para meter in Azure Maps moet worden gebruikt in overeenstemming met de toepasselijke wetten, waaronder die welke betrekking hebben op de toewijzing van het land waar kaarten, afbeeldingen en andere gegevens en inhoud van derden waartoe u toegang wilt krijgen via Azure Maps beschikbaar worden gesteld.
 
 
 De volgende tabel bevat ondersteunde weer gaven.
 
-| Weergeven         | Beschrijving                            |  Kaarten | Search | JS-Map Control |
+| Weergave         | Beschrijving                            |  Kaarten | Zoeken | JS-Map Control |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Verenigde Arabische Emiraten (Arabische weer gave)    |   ✓   |        |     ✓          |
 | AR           | Argentinië (Argentijnse weer gave)           |   ✓   |    ✓   |     ✓          |

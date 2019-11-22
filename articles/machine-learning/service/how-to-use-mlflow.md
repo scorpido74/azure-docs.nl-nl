@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 946350af0c1a4e8140fbf7f926061aae250e9969
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9b6efdc75c15e9686728236f82fea8794f3782bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73716485"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276642"
 ---
 # <a name="track-metrics-and-deploy-models-with-mlflow-and-azure-machine-learning-preview"></a>Houd metrische gegevens bij en implementeer modellen met MLflow en Azure Machine Learning (preview-versie)
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -88,7 +88,7 @@ mlflow.set_tracking_uri(ws.get_mlflow_tracking_uri())
 ```
 
 >[!NOTE]
->De tracerings-URI is Maxi maal een uur of minder geldig. Als u het script na enige tijd opnieuw opstart, gebruikt u de get_mlflow_tracking_uri-API om een nieuwe URI op te halen.
+>De tracerings-URI is Maxi maal een uur of minder geldig. Als u het script opnieuw opstart na enige inactieve tijd, gebruikt u de get_mlflow_tracking_uri-API om een nieuwe URI op te halen.
 
 Stel de naam van het MLflow-experiment in met `set_experiment()` en start uw training met `start_run()`. Gebruik vervolgens `log_metric()` om de API voor MLflow-logboek registratie te activeren en de metrische gegevens van uw trainings uitvoering te registreren.
 
@@ -238,7 +238,7 @@ In het volgende diagram ziet u dat met de API voor MLflow implementeren uw besta
 
 ### <a name="log-your-model"></a>Uw model registreren
 
-Voordat u kunt implementeren, moet u ervoor zorgen dat uw model wordt opgeslagen, zodat u ernaar kunt verwijzen en de bijbehorende pad-locatie voor de implementatie. In uw trainings script moet code vergelijkbaar zijn met de volgende methode [mlflow. sklearn. log _model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) waarmee uw model wordt opgeslagen in de opgegeven uitvoer Directory. 
+Voordat u kunt implementeren, moet u ervoor zorgen dat uw model wordt opgeslagen, zodat u ernaar kunt verwijzen en de bijbehorende pad-locatie voor de implementatie. In uw trainings script moet code vergelijkbaar zijn met de volgende methode [mlflow. sklearn. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) waarmee uw model wordt opgeslagen in de opgegeven uitvoer Directory. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -269,7 +269,7 @@ model_save_path = 'model'
 
 De functie `mlflow.azureml.build_image()` bouwt een docker-installatie kopie van het opgeslagen model op een op een framework bewuste manier. Er wordt automatisch een bedrijfsspecifieke wrapper-code voor het decoderen van het Framework gemaakt en er worden pakket afhankelijkheden voor u opgegeven. Geef het pad naar het model, de werk ruimte, de run-ID en andere para meters op.
 
-Met de volgende code wordt een docker-installatie kopie gemaakt met *uitvoering van:/< run. id >/model* als het model_uri-pad voor een Scikit-leer experiment.
+Met de volgende code wordt een docker-installatie kopie gemaakt met behulp van de uitvoering van *:/< run. id >/model* als het model_uri-pad voor een experiment met Scikit-leren.
 
 ```python
 import mlflow.azureml
@@ -303,7 +303,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Implementeer vervolgens de installatie kopie met behulp van de methode [deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) van Azure machine learning SDK. 
+Implementeer vervolgens de installatie kopie met behulp van de methode [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) van Azure machine learning SDK. 
 
 ```python
 webservice = Webservice.deploy_from_image( image=azure_image, 
@@ -359,7 +359,7 @@ aks_config = AksWebservice.deploy_configuration(enable_app_insights=True)
 service_name ='aks-service'
 ```
 
-Implementeer vervolgens de installatie kopie met behulp van de methode [deploy_from_image ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none-) van Azure machine learning SDK. 
+Implementeer vervolgens de installatie kopie met behulp van de methode [deploy_from_image ()](/python/api/azureml-core/azureml.core.webservice.webservice(class)?view=azure-ml-py#deploy-from-image-workspace--name--image--deployment-config-none--deployment-target-none--overwrite-false-) van Azure machine learning SDK. 
 
 ```python
 # Webservice creation using single command
@@ -389,7 +389,7 @@ Als u niet van plan bent om de vastgelegde metrische gegevens en artefacten in u
 1. Voer de naam van de resourcegroup in. Selecteer vervolgens **Verwijderen**.
 
 
-## <a name="example-notebooks"></a>Voorbeeld notitieblokken
+## <a name="example-notebooks"></a>Voorbeeld-laptops
 
 De [MLflow met Azure ml-notebooks](https://aka.ms/azureml-mlflow-examples) demonstreren en uitvouwen op concepten die in dit artikel worden gepresenteerd.
 

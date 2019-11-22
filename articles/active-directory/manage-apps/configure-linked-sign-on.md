@@ -1,5 +1,5 @@
 ---
-title: Gekoppelde aanmelding voor Azure AD-toepassingen-micro soft Identity-platform | Microsoft Docs
+title: Gekoppelde aanmelding voor Azure AD-apps-micro soft Identity-platform
 description: Gekoppelde eenmalige aanmelding (SSO) configureren voor uw Azure AD-zakelijke toepassingen in micro soft Identity platform (Azure AD)
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 05/08/2019
 ms.author: mimart
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1e26a3c7d284a60b830f6f66cdcecef97db4d6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: 2c4547bddeea8b67bd3377124b1c299662fea3e6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834615"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274176"
 ---
 # <a name="configure-linked-sign-on"></a>Gekoppelde aanmelding configureren
 

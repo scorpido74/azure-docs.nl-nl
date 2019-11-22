@@ -7,20 +7,20 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 09/30/2019
+ms.date: 11/20/2019
 ms.custom: include file
-ms.openlocfilehash: 12d4278171d43fdaf8613a1c91bdbffc269adc56
-ms.sourcegitcommit: 4f7dce56b6e3e3c901ce91115e0c8b7aab26fb72
+ms.openlocfilehash: e46041a33c12b3fcb40e5a04de11108471e59855
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71949048"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307219"
 ---
-Het `objectIdType` (of **object-ID-type**) verwijst naar het type identiteit dat wordt gegeven aan een rol. Naast het `DeviceId`-en `UserDefinedFunctionId`-type komen object-id-typen overeen met eigenschappen van Azure Active Directory-objecten.
+Het `objectIdType` (of **object-ID-type**) verwijst naar het type identiteit dat wordt gegeven aan een rol. Naast de typen `DeviceId` en `UserDefinedFunctionId` komen object-id-typen overeen met de eigenschappen van Azure Active Directory-objecten.
 
 De volgende tabel bevat de ondersteunde object-id-typen in azure Digital Apparaatdubbels:
 
-| type | Description |
+| Type | Beschrijving |
 | --- | --- |
 | Naam | Hiermee wijst u een rol toe aan een gebruiker. |
 | DeviceId | Hiermee wijst u een rol toe aan een apparaat. |

@@ -1,5 +1,6 @@
 ---
-title: 'Zelfstudie: Diagnose van een routeringsprobleem in een netwerk van virtuele machines - Azure Portal | Microsoft Docs'
+title: 'Zelf studie: een probleem met een VM-netwerk routering vaststellen-Azure Portal'
+titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u met behulp van de functie Volgende hop van Azure Network Watcher een diagnose uitvoert voor een probleem met de routering in een netwerk van virtuele machines.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 3ad9cd8b620b55aaa17e84343a82ac361081de44
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64684518"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276049"
 ---
-# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Zelfstudie: Een virtuele machine netwerk routeringsprobleem met behulp van de Azure-portal vaststellen
+# <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Zelfstudie: Diagnose van een routeringsprobleem in een netwerk van virtuele machines met behulp van Azure Portal
 
 Wanneer u een virtuele machine (VM) implementeert, maakt Azure verschillende standaardroutes voor de VM. U kunt uw eigen, aangepaste routes maken om de standaardroutes van Azure te overschrijven. Soms kan een aangepaste route tot gevolg hebben dat een VM niet kan communiceren met andere resources. In deze zelfstudie leert u het volgende:
 
@@ -50,7 +51,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
     |Instelling|Waarde|
     |---|---|
-    |Name|myVm|
+    |Naam|myVm|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
@@ -69,7 +70,7 @@ Als u de netwerkcommunicatie wilt testen met Network Watcher, schakelt u eerst e
 
 Als u al een netwerk-watcher hebt ingeschakeld in ten minste één regio, gaat u verder met [Volgende hop gebruiken](#use-next-hop).
 
-1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de resultaten.
 2. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -89,7 +90,7 @@ Azure maakt automatisch routes naar standaardbestemmingen. U kunt uw eigen, aang
     | Virtuele machine         | Selecteer myVm                                            |
     | Netwerkinterface       | myvm - uw netwerkinterface kan een andere naam hebben.   |
     | IP-adres van bron       | 10.0.0.4                                               |
-    | IP-adres van doel  | 13.107.21.200 - een van de adressen voor < www.bing.com>. |
+    | IP-adres van doel  | 13.107.21.200: een van de adressen voor < www. Bing. com->. |
 
     ![Volgende hop](./media/diagnose-vm-network-routing-problem/next-hop.png)
 

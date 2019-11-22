@@ -1,21 +1,21 @@
 ---
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.date: 04/03/2019
 ms.topic: include
 ms.author: rgarcia
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: fcc6c10419b46d31fde20001fefccb32b7a421ce
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 8bef7b12f4d9d9a63e41441ef22b029b2ee5afd1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176620"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276951"
 ---
-## <a name="putting-everything-together"></a>Alles plaatsen bij elkaar
+## <a name="putting-everything-together"></a>Alles samen zetten
 
-Dit is hoe de volledige `MainActivity` klassebestand moeten uitzien, nadat de verschillende elementen bij elkaar zijn geplaatst. Kunt u deze als referentie om te vergelijken met uw eigen bestand en herkennen als u eventuele verschillen naar links.
+Hier ziet u hoe het bestand complete `MainActivity` eruit moet zien, nadat alle verschillende elementen samen zijn geplaatst. U kunt deze gebruiken als referentie om te vergelijken met uw eigen bestand, en als er verschillen zijn opgetreden.
 
 ```java
 package com.example.myfirstapp;
@@ -244,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u gezien hoe u maakt een nieuwe Android-app die ARCore functionaliteit kan worden geïntegreerd met Azure ruimtelijke ankers. Ga voor meer informatie over de Azure Spatial Anchors-bibliotheek door naar de handleiding over het maken en vinden van ankers.
+In deze zelf studie hebt u gezien hoe u een nieuwe Android-app kunt maken die de ARCore-functionaliteit integreert met Azure spatiale ankers. Ga voor meer informatie over de Azure Spatial Anchors-bibliotheek door naar de handleiding over het maken en vinden van ankers.
 
 > [!div class="nextstepaction"]
 > [Create and locate anchors using Azure Spatial Anchors](/azure/spatial-anchors/create-locate-anchors-overview) (Ankers maken en vinden met Azure Spatial Anchors)

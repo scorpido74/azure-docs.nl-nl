@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 12e6d292779d497d907bb68eece3fc2338f072fd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 13afdf4d6c45927c60e8de9fd228f70b7c0a3c68
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73602068"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286532"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Sentimentanalyse voor streaming-gegevens met behulp van Azure Databricks
 
@@ -89,7 +89,7 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Een Spark-cluster maken in Databricks
 
-1. Ga in de Azure Portal naar de Databricks-werkruimte die u hebt gemaakt en selecteer **Werkruimte starten**.
+1. Ga in Azure Portal naar de Databricks-werkruimte die u hebt gemaakt en selecteer **Werkruimte starten**.
 
 2. U wordt omgeleid naar de Azure Databricks-portal. Klik in de portal op **Cluster**.
 
@@ -102,14 +102,14 @@ In deze sectie gaat u een Azure Databricks-werkruimte maken met behulp van Azure
     Accepteer alle andere standaardwaarden, anders dan de volgende:
 
    * Voer een naam in voor het cluster.
-   * Voor dit artikel maakt u een cluster met **5,2** runtime.
+   * Voor dit artikel maakt u een cluster met **6,0** runtime.
    * Zorg ervoor dat u het selectievakje **Beëindigen na\_\_ minuten van inactiviteit** inschakelt. Geef een duur (in minuten) op waarna het cluster moet worden beëindigd als het niet wordt gebruikt.
 
    Selecteer cluster-Worker en stuur programma-node grootte die geschikt is voor uw technische criteria en [budget](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).
 
      Selecteer **Cluster maken**. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
-## <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
+## <a name="create-a-twitter-application"></a>Maak een Twitter-toepassing
 
 Als u een stream van tweets wilt ontvangen, maakt u een toepassing in Twitter. Volg de instructies om een Twitter-toepassing te maken en leg de waarden vast die u nodig hebt om deze zelfstudie te voltooien.
 
@@ -192,11 +192,11 @@ In deze zelf studie gebruikt u de [Azure Cognitive Services Text Analytics api's
 
 7. Sla de waarden voor de eindpunt-URL en de toegangssleutel op die u in deze stap hebt opgehaald. U hebt deze verderop in deze zelfstudie nodig.
 
-## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Azure Databricks
+## <a name="create-notebooks-in-databricks"></a>Notitieblokken maken in Databricks
 
 In deze sectie gaat u in de Databricks-werkruimte twee notitieblokken met de volgende namen maken
 
-- **SendTweetsToEventHub** - een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter en ze kunt streamen naar Event Hubs.
+- **SendTweetsToEventHub**: een notitieblok voor producenten waarmee u tweets kunt ophalen uit Twitter die u kunt streamen naar Event Hubs.
 - **ReadTweetsFromEventHub**: een notitieblok voor consumenten waarmee u de tweets uit Event Hubs kunt lezen en sentimentanalyses kunt uitvoeren.
 
 1. Selecteer **Werkruimte** in het linkerdeelvenster. Selecteer **Maken** in de vervolgkeuzelijst **Werkruimte** en selecteer **Notitieblok**.
@@ -333,7 +333,7 @@ Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. U ziet uitv
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Azure Event Hubs die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
+Plak in het notitieblok **AnalyzeTweetsFromEventHub** de volgende code en vervang de tijdelijke aanduiding door waarden voor uw Azure Event Hubs die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder naar Event Hubs hebt gestreamd met behulp van het notitieblok **SendTweetsToEventHub**.
 
 ```scala
 

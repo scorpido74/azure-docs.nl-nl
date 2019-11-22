@@ -1,5 +1,5 @@
 ---
-title: Problemen met Kerberos-beperkte overdracht configureren voor app proxy | Microsoft Docs
+title: Problemen oplossen met beperkte Kerberos-overdracht-app proxy
 description: Beperkte Kerberos-delegering configuraties voor Application Proxy oplossen
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 04/23/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ca50cfb8697fdbb8c71054c5a6b4d5e23792eb5
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381518"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275682"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Kerberos-beperkte overdracht configuraties voor Application Proxy oplossen
 
@@ -56,11 +56,11 @@ De beste locatie voor het plaatsen van connectors is zo dicht mogelijk bij hun d
 
 Wat er wordt een probleem met KCD? Er zijn verschillende algemene aanwijzingen KCD SSO is mislukt. De eerste tekens van een probleem weergegeven in de browser.
 
-![Voorbeeld: Onjuiste KCD-configuratiefout](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Voor beeld: onjuiste KCD-configuratie fout](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
-![Voorbeeld: Autorisatie is mislukt vanwege ontbrekende machtigingen](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
+![Voor beeld: autorisatie is mislukt vanwege ontbrekende machtigingen](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
-Beide installatie kopieën tonen hetzelfde symptoom: SSO-fout. Gebruikerstoegang tot de toepassing is geweigerd.
+Beide van deze installatiekopieën de dezelfde symptoom weergeven: fout met eenmalige aanmelding. Gebruikerstoegang tot de toepassing is geweigerd.
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -84,7 +84,7 @@ De externe communicatie tussen de client en de Azure-front-end hebben geen gevol
 
 Zoals eerder vermeld, biedt de foutberichten browser sommige aflezen waarom dingen mislukken. Zorg ervoor dat u Noteer de activiteits-ID en tijdstempel in het antwoord. Deze informatie helpt u het gedrag op werkelijke gebeurtenissen in het gebeurtenislogboek van de Azure-Proxy correleren.
 
-![Voorbeeld: Onjuiste KCD-configuratiefout](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
+![Voor beeld: onjuiste KCD-configuratie fout](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
 De overeenkomstige vermeldingen weergegeven in het gebeurtenislogboek weergeven als gebeurtenissen 13019 of 12027. Zoek de gebeurtenislogboeken van de connector in **logboeken toepassingen en Services** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt;  **Connector** &gt; **Admin**.
 

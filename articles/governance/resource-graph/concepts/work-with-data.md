@@ -1,14 +1,14 @@
 ---
 title: Werken met grote gegevenssets
-description: Meer informatie over het ophalen en beheren van grote gegevens sets tijdens het werken met Azure resource Graph.
+description: Meer informatie over het ophalen, opmaken, pagina's en overs laan van records in grote gegevens sets tijdens het werken met Azure resource Graph.
 ms.date: 10/18/2019
 ms.topic: conceptual
-ms.openlocfilehash: a7258534b867c57f89eeb432b579e87070b4fc1d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2c6aca0c468630cee79222bc77bdc20dc9d95b19
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959019"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304017"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Werken met grote Azure-resource gegevens sets
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/06/2019
 ms.author: kumud
-ms.openlocfilehash: 5e71f30723826a18f10d4c8e1b9d34e356c9962b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9071596d384d09bf6cbc46316a7f33c69c7b32e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114635"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278458"
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>Een openbaar IP-adres maken, wijzigen of verwijderen
 
@@ -45,7 +45,7 @@ Open bare IP-adressen hebben een nominale belasting. Lees de pagina met [prijzen
 
 ## <a name="create-a-public-ip-address"></a>Een openbaar IP-adres maken
 
-1. Selecteer boven aan de linkerbovenhoek van de Portal de optie **+ een resource maken**.
+1. Selecteer in het menu Azure Portal of op de **Start** pagina de optie **een resource maken**.
 2. Geef het *open bare IP-adres* op in het vak *Zoeken in de Marketplace* . Wanneer het **open bare IP-adres** wordt weer gegeven in de zoek resultaten, selecteert u dit.
 3. Selecteer onder **openbaar IP-adres** **maken**.
 4. Typ of selecteer waarden voor de volgende instellingen onder **openbaar IP-adres maken**en selecteer vervolgens **maken**:

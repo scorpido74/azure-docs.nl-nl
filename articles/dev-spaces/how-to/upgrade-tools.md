@@ -1,20 +1,16 @@
 ---
 title: Upgrade uitvoeren van hulpprogramma's voor Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/03/2018
 ms.topic: conceptual
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 24a66c5218bb75672ae784b19213116efdb83690
-ms.sourcegitcommit: 2aefdf92db8950ff02c94d8b0535bf4096021b11
+ms.openlocfilehash: 6ad28a5da05cf77cfaa834ed9752daefeb5f4fdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/03/2019
-ms.locfileid: "70232442"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279975"
 ---
 # <a name="how-to-upgrade-azure-dev-spaces-tools"></a>Upgrade uitvoeren van hulpprogramma's voor Azure Dev Spaces
 

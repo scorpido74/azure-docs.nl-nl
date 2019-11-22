@@ -1,5 +1,5 @@
 ---
-title: Self-service aanmeldportal voor samenwerking - Azure Active Directory B2B | Microsoft Docs
+title: Self-service-aanmeldings portal voor B2B-samen werking-Azure AD
 description: Azure Active Directory B2B-samenwerking ondersteunt uw externe bedrijfsrelaties door zakelijke partners selectief toegang te verlenen tot uw zakelijke toepassingen
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28db43a345fb29a7529136ddfb929f5a48ccb1f8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 794a13a3f863c732d4e7ed8cedcbd73f7cbc0d0b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65785435"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272110"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Self-service aanmeldportal voor Azure AD B2B-samenwerking | Microsoft Docs
 

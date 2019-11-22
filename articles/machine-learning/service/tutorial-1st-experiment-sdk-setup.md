@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie: uw eerste ML-experiment maken: instellen'
+title: 'Zelf studie: uw eerste ML-experiment maken'
 titleSuffix: Azure Machine Learning
 description: In deze zelf studie gaat u aan de slag met de Azure Machine Learning python SDK die wordt uitgevoerd in Jupyter-notebooks.  In deel 1 maakt u een werk ruimte waarin u experimenten en ML-modellen gaat beheren.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 09/25/2019
-ms.openlocfilehash: b2434102e0355d5c26c501588c360f74eb98404d
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: d2247ba965c5e6db6e2da0218859d207d2fc61b8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049143"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276625"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Zelf studie: aan de slag met het maken van uw eerste ML-experiment met de python-SDK
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]

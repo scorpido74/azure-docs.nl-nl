@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: een gastgebruiker toevoegen met PowerShell - Azure Active Directory | Microsoft Docs'
+title: 'Snelstartgids: een gast gebruiker toevoegen met Power shell-Azure AD'
 description: In deze snelstartgids leert u hoe u PowerShell gebruikt voor het verzenden van een uitnodiging naar een externe gebruiker van de Azure AD B2B-samenwerking.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5325529acb66735db0c27c0f5bdfca819e8ec4d8
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 50c283122fe707e922275b6c1a6c576009964855
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65812301"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273360"
 ---
-# <a name="quickstart-add-a-guest-user-with-powershell"></a>Quickstart: Een gastgebruiker toevoegen met PowerShell
+# <a name="quickstart-add-a-guest-user-with-powershell"></a>Snelstart: Een gastgebruiker toevoegen met PowerShell
 
 Er zijn veel manieren waarop u externe partners voor uw apps en services met Azure Active Directory B2B-samenwerking kunt uitnodigen. In de vorige snelstartgids hebt u gezien hoe u gastgebruikers rechtstreeks toevoegt in de Azure Active Directory-adminportal. U kunt ook PowerShell gebruiken om gastgebruikers individueel of bulksgewijs toe te voegen. In deze snelstartgids gebruikt u de opdracht New-AzureADMSInvitation om een gastgebruiker toe te voegen aan uw Azure-tenant.
 
@@ -75,7 +75,7 @@ Voer uw referenties in wanneer dit wordt gevraagd.
 
 ## <a name="send-an-invitation"></a>Een uitnodiging verzenden
 
-1. Voor het verzenden van een uitnodiging voor uw test-e-mailaccount, voer de volgende PowerShell-opdracht (Vervang **"Sanda"** en **sanda\@fabrikam.com** met uw test e-account en het e-mailadres): 
+1. Als u een uitnodiging voor uw test-e-mail account wilt verzenden, voert u de volgende Power shell-opdracht uit (Vervang **"Sanda"** en **Sanda\@fabrikam.com** met uw test account naam en e-mail adres): 
 
    ```powershell
    New-AzureADMSInvitation -InvitedUserDisplayName "Sanda" -InvitedUserEmailAddress sanda@fabrikam.com -InviteRedirectURL https://myapps.azure.com -SendInvitationMessage $true
@@ -91,7 +91,7 @@ Voer uw referenties in wanneer dit wordt gevraagd.
    ```powershell
    Get-AzureADUser -Filter "UserType eq 'Guest'"
    ```
-3. Controleer de uitvoer om ervoor te zorgen dat de gebruiker die u hebt uitgenodigd wordt weergegeven, met een user principal name (UPN) in de indeling *emailaddress*EXT #\@*domein*. Bijvoorbeeld, *sanda_fabrikam.com#EXT#\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com staat voor de organisatie waarvan u de uitnodigingen verzonden.
+3. Controleer de uitvoer om te controleren of de gebruiker die u hebt uitgenodigd, wordt weer gegeven met een user principal name (UPN) in de notatie *emailaddress*#EXT #\@*domein*. Bijvoorbeeld *sanda_fabrikam. com # ext #\@contoso.onmicrosoft.com*, waarbij contoso.onmicrosoft.com de organisatie is van waaruit u de uitnodigingen hebt verzonden.
 
    ![PowerShell-uitvoer met weergave van gastgebruiker toegevoegd](media/quickstart-invite-powershell/powershell-guest-user-added.png)
 
@@ -109,4 +109,4 @@ Bijvoorbeeld: `Remove-AzureADUser -ObjectId "sanda_fabrikam.com#EXT#@contoso.onm
 In deze snelstartgids hebt u één gastgebruiker uitgenodigd en toegevoegd aan uw map met behulp van PowerShell. Hierna leert u hoe u gastgebruikers ook kunt uitnodigen in één bulkbewerking met behulp van PowerShell.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Bulksgewijs gebruikers uitnodigen voor Azure AD B2B-samenwerking](tutorial-bulk-invite.md)
+> [Zelfstudie: Bulksgewijs gebruikers uitnodigen tot Azure AD B2B-samenwerking](tutorial-bulk-invite.md)

@@ -8,44 +8,44 @@ ms.topic: include
 ms.date: 09/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: adc4a894f4617f681cefbc8049e453d004ce417e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 846fd92bce3056dc119f38ac253a0a937e8c56a4
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74260707"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74309802"
 ---
-Incremental snapshots (preview) are point in time backups for managed disks that, when taken, consist only of all the changes since the last snapshot. When you attempt to download or otherwise use an incremental snapshot, the full VHD is used. This new capability for managed disk snapshots can potentially allow them to be more cost effective, since you are no longer required to store the entire disk with each individual snapshot, unless you choose to. Just like regular snapshots, incremental snapshots can be used to create a full managed disk or, to make a regular snapshot.
+Incrementele moment opnamen (preview) zijn punt-in-time-back-ups voor beheerde schijven die, wanneer ze worden gemaakt, alleen van alle wijzigingen bestaan sinds de laatste moment opname. Wanneer u probeert een incrementele moment opname te downloaden of anderszins te gebruiken, wordt de volledige VHD gebruikt. Deze nieuwe mogelijkheid voor moment opnamen van beheerde schijven kan ertoe leiden dat ze rendabeler worden, omdat u niet langer de volledige schijf hoeft op te slaan bij elke afzonderlijke moment opname, tenzij u dat doet. Net als bij gewone moment opnamen kunnen incrementele moment opnamen worden gebruikt voor het maken van een volledige beheerde schijf of, om een gewone moment opname te maken.
 
-There are a few differences between an incremental snapshot and a regular snapshot. Incremental snapshots will always use standard HDDs storage, irrespective of the storage type of the disk, whereas regular snapshots can use premium SSDs. If you are using regular snapshots on Premium Storage to scale up VM deployments, we recommend you use custom images on standard storage in the [Shared Image Gallery](../articles/virtual-machines/linux/shared-image-galleries.md). It will help you to achieve a more massive scale with lower cost. Additionally, incremental snapshots potentially offer better reliability with [zone-redundant storage](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). If ZRS is available in the selected region, an incremental snapshot will use ZRS automatically. If ZRS is not available in the region, then the snapshot will default to [locally-redundant storage](../articles/storage/common/storage-redundancy-lrs.md) (LRS). You can override this behavior and select one manually but, we do not recommend that.
+Er zijn enkele verschillen tussen een incrementele moment opname en een reguliere moment opname. In incrementele moment opnamen wordt altijd standaard Hdd's-opslag gebruikt, ongeacht het opslag type van de schijf, terwijl reguliere moment opnamen Premium Ssd's kunnen gebruiken. Als u gewone moment opnamen op Premium Storage gebruikt voor het opschalen van VM-implementaties, raden we u aan om aangepaste installatie kopieën te gebruiken voor standaard opslag in de [Galerie met gedeelde afbeeldingen](../articles/virtual-machines/linux/shared-image-galleries.md). Het helpt u een grotere schaal te creëren met lagere kosten. Daarnaast bieden incrementele moment opnamen mogelijk betere betrouw baarheid met [zone-redundante opslag](../articles/storage/common/storage-redundancy-zrs.md) (ZRS). Als ZRS beschikbaar is in de geselecteerde regio, wordt ZRS automatisch door een incrementele moment opname gebruikt. Als ZRS niet beschikbaar is in de regio, wordt de moment opname standaard ingesteld op [lokaal redundante opslag](../articles/storage/common/storage-redundancy-lrs.md) (LRS). U kunt dit gedrag negeren en het hand matig selecteren, maar dit wordt niet aangeraden.
 
-Incremental snapshots also offer a differential capability, which is uniquely available to managed disks. They enable you to get the changes between two incremental snapshots of the same managed disks, down to the block level. You can use this capability to reduce your data footprint when copying snapshots across regions.
+Incrementele moment opnamen bieden ook een andere mogelijkheid, die uniek is voor beheerde schijven. Hiermee kunt u de wijzigingen ophalen tussen twee incrementele moment opnamen van dezelfde beheerde schijven, tot aan het blok niveau. U kunt deze mogelijkheid gebruiken om uw gegevensfootprint te verminderen bij het kopiëren van moment opnamen tussen regio's.
 
-If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview.
+Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen, kunt u ons een e-mail sturen naar AzureDisks@microsoft.com om toegang te krijgen tot de open bare preview.
 
 ## <a name="restrictions"></a>Beperkingen
 
-- Incremental snapshots are currently only available in West Central US and North Europe.
-- Incremental snapshots currently cannot be created after you've changed the size of a disk.
-- Incremental snapshots currently cannot be moved between subscriptions.
-- You can currently only generate SAS URIs of up to five snapshots of a particular snapshot family at any given time.
-- You cannot create an incremental snapshot for a particular disk outside of that disk's subscription.
-- Up to seven incremental snapshots per disk can be created every five minutes.
-- A total of 200 incremental snapshots can be created for a single disk.
+- Incrementele moment opnamen zijn momenteel alleen beschikbaar in West-Centraal VS en Europa-noord.
+- Incrementele moment opnamen kunnen momenteel niet worden gemaakt nadat u de grootte van een schijf hebt gewijzigd.
+- Incrementele moment opnamen kunnen momenteel niet worden verplaatst tussen abonnementen.
+- U kunt momenteel alleen SAS-Uri's van Maxi maal vijf moment opnamen van een bepaalde momentopname familie genereren op een bepaald moment.
+- U kunt geen incrementele moment opname maken voor een bepaalde schijf buiten het abonnement van de schijf.
+- Er kunnen Maxi maal zeven incrementele moment opnamen per schijf worden gemaakt om de vijf minuten.
+- Er kunnen voor één schijf een totaal van 200 incrementele moment opnamen worden gemaakt.
 
 ## <a name="powershell"></a>PowerShell
 
-You can use Azure PowerShell to create an incremental snapshot. You will need the latest version of Azure PowerShell, the following command will either install it or update your existing installation to latest:
+U kunt Azure PowerShell gebruiken om een incrementele moment opname te maken. U hebt de nieuwste versie van Azure PowerShell nodig. de volgende opdracht wordt geïnstalleerd of de bestaande installatie wordt bijgewerkt naar de laatste:
 
 ```PowerShell
 Install-Module -Name Az -AllowClobber -Scope CurrentUser
 ```
 
-Once that is installed, login to your PowerShell session with `az login`.
+Als dat is gebeurd, meldt u zich aan bij uw Power shell-sessie met `az login`.
 
-To create an incremental snapshot with Azure PowerShell, set the configuration with [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) with the `-Incremental` parameter and then pass that as a variable to [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) through the `-Snapshot` parameter.
+Als u een incrementele moment opname met Azure PowerShell wilt maken, stelt u de configuratie met [New-AzSnapShotConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshotconfig?view=azps-2.7.0) met de para meter `-Incremental` in en geeft u die als variabele door aan [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot?view=azps-2.7.0) via de `-Snapshot` para meter.
 
-Replace `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`, and `<yourDesiredSnapShotNameHere>` with your values, then you can use the following script to create an incremental snapshot:
+Vervang `<yourDiskNameHere>`, `<yourResourceGroupNameHere>`en `<yourDesiredSnapShotNameHere>` met uw waarden. vervolgens kunt u het volgende script gebruiken om een incrementele moment opname te maken:
 
 ```PowerShell
 # Get the disk that you need to backup by creating an incremental snapshot
@@ -56,9 +56,9 @@ $snapshotConfig=New-AzSnapshotConfig -SourceUri $yourDisk.Id -Location $yourDisk
 New-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere> -SnapshotName <yourDesiredSnapshotNameHere> -Snapshot $snapshotConfig 
 ```
 
-You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
+U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId` is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId` is de waarde die wordt overgenomen van de eigenschap `UniqueId` van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, wordt de waarde van de eigenschap `UniqueId` gewijzigd.
 
-You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. Replace `<yourResourceGroupNameHere>` with your value and then you can use the following example to list your existing incremental snapshots:
+Met `SourceResourceId` en `SourceUniqueId` kunt u een lijst maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. Vervang `<yourResourceGroupNameHere>` door uw waarde en u kunt het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven:
 
 ```PowerShell
 $snapshots = Get-AzSnapshot -ResourceGroupName <yourResourceGroupNameHere>
@@ -78,15 +78,17 @@ $incrementalSnapshots
 
 ## <a name="cli"></a>CLI
 
-You can create an incremental snapshot with the Azure CLI, you will need the latest version of Azure CLI. The following command will either install or update your existing installation to the latest version:
+U kunt een incrementele moment opname maken met de Azure CLI. u hebt de nieuwste versie van Azure CLI nodig. 
 
+In Windows wordt met de volgende opdracht de bestaande installatie geïnstalleerd of bijgewerkt naar de meest recente versie:
 ```PowerShell
 Invoke-WebRequest -Uri https://aka.ms/installazurecliwindows -OutFile .\AzureCLI.msi; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureCLI.msi /quiet'
 ```
+In Linux is de CLI-installatie afhankelijk van de versie van het besturings systeem.  Zie [de Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli) voor uw specifieke Linux-versie.
 
-To create an incremental snapshot, use [az snapshot create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) with the `--incremental` parameter.
+Gebruik [AZ snap shot Create](https://docs.microsoft.com/cli/azure/snapshot?view=azure-cli-latest#az-snapshot-create) met de para meter `--incremental` om een incrementele moment opname te maken.
 
-The following example creates an incremental snapshot, replace `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`, and `<exampleLocation>` with your own values, then run the example:
+In het volgende voor beeld wordt een incrementele moment opname gemaakt, `<yourDesiredSnapShotNameHere>`, `<yourResourceGroupNameHere>`,`<exampleDiskName>`en `<exampleLocation>` met uw eigen waarden, en vervolgens het voor beeld uitvoeren:
 
 ```bash
 sourceResourceId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[id]' -o tsv)
@@ -98,13 +100,13 @@ az snapshot create -g <yourResourceGroupNameHere> \
 --incremental
 ```
 
-You can identify incremental snapshots from the same disk with the `SourceResourceId` and the `SourceUniqueId` properties of snapshots. `SourceResourceId` is the Azure Resource Manager resource ID of the parent disk. `SourceUniqueId` is the value inherited from the `UniqueId` property of the disk. If you were to delete a disk and then create a new disk with the same name, the value of the `UniqueId` property changes.
+U kunt incrementele moment opnamen identificeren van dezelfde schijf met de `SourceResourceId` en de `SourceUniqueId` eigenschappen van moment opnamen. `SourceResourceId` is de Azure Resource Manager Resource-ID van de bovenliggende schijf. `SourceUniqueId` is de waarde die wordt overgenomen van de eigenschap `UniqueId` van de schijf. Als u een schijf verwijdert en vervolgens een nieuwe schijf met dezelfde naam maakt, wordt de waarde van de eigenschap `UniqueId` gewijzigd.
 
-You can use `SourceResourceId` and `SourceUniqueId` to create a list of all snapshots associated with a particular disk. The following example will list all incremental snapshots associated with a particular disk but, it requires some setup.
+Met `SourceResourceId` en `SourceUniqueId` kunt u een lijst maken met alle moment opnamen die zijn gekoppeld aan een bepaalde schijf. In het volgende voor beeld worden alle incrementele moment opnamen vermeld die zijn gekoppeld aan een bepaalde schijf, maar er is een installatie vereist.
 
-This example uses jq for querying the data. To run the example, you must [install jq](https://stedolan.github.io/jq/download/).
+In dit voor beeld wordt JQ gebruikt voor het uitvoeren van query's op de gegevens. Als u het voor beeld wilt uitvoeren, moet u [JQ installeren](https://stedolan.github.io/jq/download/).
 
-Replace `<yourResourceGroupNameHere>` and `<exampleDiskName>` with your values, then you can use the following example to list your existing incremental snapshots, as long as you've also installed jq:
+Vervang `<yourResourceGroupNameHere>` en `<exampleDiskName>` met uw waarden. vervolgens kunt u het volgende voor beeld gebruiken om uw bestaande incrementele moment opnamen weer te geven, op voor waarde dat u ook JQ hebt geïnstalleerd:
 
 ```bash
 sourceUniqueId=$(az disk show -g <yourResourceGroupNameHere> -n <exampleDiskName> --query '[uniqueId]' -o tsv)
@@ -118,7 +120,7 @@ az snapshot list -g <yourResourceGroupNameHere> -o json \
 
 ## <a name="resource-manager-template"></a>Resource Manager-sjabloon
 
-You can also use Azure Resource Manager templates to create an incremental snapshot. You'll need to make sure the apiVersion is set to **2019-03-01** and that the incremental property is also set to true. The following snippet is an example of how to create an incremental snapshot with Resource Manager templates:
+U kunt ook Azure Resource Manager sjablonen gebruiken om een incrementele moment opname te maken. U moet ervoor zorgen dat de apiVersion is ingesteld op **2019-03-01** en dat de incrementele eigenschap ook is ingesteld op True. Het volgende code fragment is een voor beeld van het maken van een incrementele moment opname met Resource Manager-sjablonen:
 
 ```json
 {
@@ -154,8 +156,8 @@ You can also use Azure Resource Manager templates to create an incremental snaps
 
 ## <a name="next-steps"></a>Volgende stappen
 
-1. If you haven't yet signed up for the preview and you'd like to start using incremental snapshots, email us at AzureDisks@microsoft.com to get access to the public preview. 
+1. Als u zich nog niet hebt geregistreerd voor de preview-versie en u wilt beginnen met het gebruik van incrementele moment opnamen, kunt u ons een e-mail sturen naar AzureDisks@microsoft.com om toegang te krijgen tot de open bare preview. 
 
-2. Explore the following samples for cross-region copy of incremental snapshots using differential capability   
+2. Bekijk de volgende voor beelden voor kruis momentopname kopieën met verschillende regio's met behulp van differentiële mogelijkheden   
 
-    - [Using Azure .Net SDKs](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)
+    - [Azure .net-Sdk's gebruiken](https://github.com/Azure-Samples/managed-disks-dotnet-backup-with-incremental-snapshots)

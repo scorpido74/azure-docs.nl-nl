@@ -1,5 +1,5 @@
 ---
-title: Problemen bij het aanmelden bij een niet-galerie federatieve eenmalige aanmelding-app | Microsoft Docs
+title: Problemen bij het aanmelden bij een niet-galerie federatieve eenmalige aanmelding-app
 description: Richt lijnen voor de specifieke problemen die u kunt tegen komen wanneer u zich aanmeldt bij een toepassing die is geconfigureerd voor op SAML gebaseerde federatieve eenmalige aanmelding met Azure AD
 services: active-directory
 documentationcenter: ''
@@ -16,23 +16,23 @@ ms.date: 07/11/2017
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d26f52db394877cff13bf4b0b476a9603c1ddba8
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 0b8aac627936aef2cfa79bbd92d6163fe40b4d32
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381391"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274855"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Problemen bij het aanmelden bij een niet-galerie toepassing die is geconfigureerd voor federatieve eenmalige aanmelding
 
 Als u de onderstaande aanmeldings problemen wilt oplossen, raden we u aan deze suggestie te volgen om betere diagnose te krijgen en de oplossings stappen te automatiseren:
 
 - Installeer de [beveiligde browser uitbreiding mijn apps](access-panel-extension-problem-installing.md) om Azure Active Directory (Azure AD) te helpen bij het verbeteren van de test ervaring in de Azure Portal.
-- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het opsporen van op [SAML gebaseerde toepassingen voor eenmalige aanmelding](../develop/howto-v1-debug-saml-sso-issues.md)
+- Reproduceer de fout met behulp van de test ervaring op de pagina app-configuratie in de Azure Portal. Meer informatie over het [opsporen van op SAML gebaseerde toepassingen voor eenmalige aanmelding](../develop/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Kan de toepassing niet vinden in de map
 
-*Fout AADSTS70001: De toepassing met `https://contoso.com` de id is niet gevonden in*de map.
+*Fout AADSTS70001: de toepassing met de id `https://contoso.com` is niet gevonden in de map*.
 
 **Mogelijke oorzaak**
 
@@ -40,7 +40,7 @@ Het kenmerk van de verlener verzendt van de toepassing naar Azure AD in de SAML-
 
 **Resolutie**
 
-Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
 
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.**
 
@@ -62,7 +62,7 @@ Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-w
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Het antwoord adres komt niet overeen met de antwoord adressen die voor de toepassing zijn geconfigureerd. 
 
-*Fout AADSTS50011: Het antwoord adres `https://contoso.com` komt niet overeen met de antwoord adressen die voor de toepassing zijn geconfigureerd* 
+*Fout AADSTS50011: het antwoord adres `https://contoso.com` komt niet overeen met de antwoord adressen die voor de toepassing zijn geconfigureerd* 
 
 **Mogelijke oorzaak** 
 
@@ -70,7 +70,7 @@ De AssertionConsumerServiceURL-waarde in de SAML-aanvraag komt niet overeen met 
 
 **Resolutie** 
 
-Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
+Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren.
  
 1. Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-beheerder.** 
 
@@ -88,13 +88,13 @@ Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-w
 
 7. Zodra de toepassing is geladen, klikt u op de **eenmalige aanmelding** in het navigatie menu aan de linkerkant van de toepassing.
 
-8. Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of werk de waarde in het tekstvak antwoord-URL in op `AssertionConsumerServiceURL` overeenkomst met de waarde in de SAML-aanvraag.    
+8. Nadat de toepassing is geladen, opent u **Standaard SAML-configuratie**. Controleer of werk de waarde in het tekstvak antwoord-URL in om overeen te komen met de `AssertionConsumerServiceURL` waarde in de SAML-aanvraag.    
     
 Nadat u de waarde voor de antwoord-URL in azure AD hebt bijgewerkt en deze overeenkomt met de waarde die door de toepassing in de SAML-aanvraag is verzonden, moet u zich kunnen aanmelden bij de toepassing.
 
 ## <a name="user-not-assigned-a-role"></a>Gebruiker heeft geen rol toegewezen
 
-*Fout AADSTS50105: De aangemelde gebruiker `brian\@contoso.com` is niet toegewezen aan een rol voor de toepassing*
+*Fout AADSTS50105: de aangemelde gebruiker `brian\@contoso.com` is niet toegewezen aan een rol voor de toepassing*
 
 **Mogelijke oorzaak**
 
@@ -128,7 +128,7 @@ Volg de onderstaande stappen om een of meer gebruikers rechtstreeks toe te wijze
 
 11. Beweeg de muisaanwijzer over de **gebruiker** in de lijst om weer te geven een **selectievakje**. Klik op het selectievakje naast de profielfoto van de gebruiker of het logo om toe te voegen van de gebruiker naar de **geselecteerde** lijst.
 
-12. **Optioneel:** Als u **meer dan één gebruiker wilt toevoegen**, typt u een andere **volledige naam** of een ander **e-mail adres** in het zoekvak **zoeken op naam of e-mail adres** en klikt u op het selectie vakje om deze gebruiker aan de **geselecteerde** lijst toe te voegen.
+12. **Optioneel:** als u wilt **toevoegen van meer dan één gebruiker**, type in een andere **volledige naam** of **e-mailadres** in de **zoeken op naam of e-mailadres** zoekvak en klik op het selectievakje voor deze gebruiker toevoegen aan de **geselecteerde** lijst.
 
 13. Wanneer u klaar bent met gebruikers te selecteren, klikt u op de **Selecteer** knop aan de lijst met gebruikers en groepen die moeten worden toegewezen aan de toepassing wilt toevoegen.
 
@@ -140,7 +140,7 @@ Na een korte periode, de gebruikers die u hebt geselecteerd mogelijk om deze toe
 
 ## <a name="not-a-valid-saml-request"></a>Geen geldige SAML-aanvraag
 
-*Fout AADSTS75005: De aanvraag is geen geldig Saml2-protocol bericht.*
+*Fout AADSTS75005: de aanvraag is geen geldig Saml2-protocol bericht.*
 
 **Mogelijke oorzaak**
 
@@ -148,11 +148,11 @@ Azure AD biedt geen ondersteuning voor de SAML-aanvraag die door de toepassing i
 
 -   Ontbrekende vereiste velden in de SAML-aanvraag
 
--   Gecodeerde methode voor SAML-aanvraag
+-   Versleutelde methode van SAML-aanvraag
 
 **Resolutie**
 
-1.  SAML-aanvraag vastleggen. Volg de zelf studie over het opsporen van op [SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) voor meer informatie over het vastleggen van de SAML-aanvraag.
+1.  SAML-aanvraag vastleggen. Volg de zelf studie over het [opsporen van op SAML gebaseerde eenmalige aanmelding bij toepassingen in azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) voor meer informatie over het vastleggen van de SAML-aanvraag.
 
 2.  Neem contact op met de leverancier van de toepassing en deel:
 
@@ -164,7 +164,7 @@ De leverancier van de toepassing moet valideren dat de Azure AD SAML-implementat
 
 ## <a name="misconfigured-application"></a>Onjuist geconfigureerde toepassing
 
-*Fout AADSTS650056: Onjuist geconfigureerde toepassing. Dit kan een van de volgende oorzaken hebben: De client heeft geen machtigingen voor AAD Graph vermeld in de aangevraagde machtigingen in de registratie van de client toepassing. Of de beheerder heeft geen toestemming gegeven in de Tenant. Of Controleer de toepassings-id in de aanvraag om er zeker van te zijn dat deze overeenkomt met de geconfigureerde client toepassings-id. Neem contact op met uw beheerder om de configuratie of instemming namens de Tenant op te lossen.* .
+*Fout AADSTS650056: onjuist geconfigureerde toepassing. Dit kan een van de volgende oorzaken hebben: de client heeft geen machtigingen voor de ' AAD graph ' vermeld in de aangevraagde machtigingen in de registratie van de client toepassing. Of de beheerder heeft geen toestemming gegeven in de Tenant. Of Controleer de toepassings-id in de aanvraag om er zeker van te zijn dat deze overeenkomt met de geconfigureerde client toepassings-id. Neem contact op met uw beheerder om de configuratie of instemming namens de Tenant op te lossen.*
 
 **Mogelijke oorzaak**
 
@@ -172,7 +172,7 @@ Het `Issuer` kenmerk dat vanuit de toepassing naar Azure AD is verzonden in de S
 
 **Resolutie**
 
-Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
+Zorg ervoor dat het kenmerk `Issuer` in de SAML-aanvraag overeenkomt met de id-waarde die is geconfigureerd in azure AD. Als u de [test ervaring](../develop/howto-v1-debug-saml-sso-issues.md) in de Azure Portal met de beveiligde browser uitbreiding mijn apps gebruikt, hoeft u deze stappen niet hand matig uit te voeren:
 
 1.  Open de [**Azure Portal**](https://portal.azure.com/) en meld u aan als **globale beheerder** of **co-** beheerder.
 
@@ -192,7 +192,7 @@ Zorg ervoor dat `Issuer` het kenmerk in de SAML-aanvraag overeenkomt met de id-w
 
 ## <a name="certificate-or-key-not-configured"></a>Het certificaat of de sleutel is niet geconfigureerd
 
-Fout AADSTS50003: Geen handtekening sleutel geconfigureerd.
+Fout AADSTS50003: er is geen handtekening sleutel geconfigureerd.
 
 **Mogelijke oorzaak**
 
@@ -224,7 +224,7 @@ Voer de volgende stappen uit om een nieuw certificaat te verwijderen en te maken
 
 10. Schakel het selectie vakje **Nieuw certificaat actief maken** in om het actieve certificaat te onderdrukken. Klik vervolgens op **Opslaan** boven in het deelvenster en accepteer het rollovercertificaat om het te activeren.
 
-11. Klik onder de sectie **SAML-handtekening certificaat** op **verwijderen** om het  ongebruikte certificaat te verwijderen.
+11. Klik onder de sectie **SAML-handtekening certificaat** op **verwijderen** om het **ongebruikte** certificaat te verwijderen.
 
 ## <a name="saml-request-not-present-in-the-request"></a>SAML-aanvraag is niet aanwezig in de aanvraag
 
@@ -242,7 +242,7 @@ De toepassing moet de SAML-aanvraag die is gecodeerd naar de locatie header verz
 
 **Mogelijke oorzaak**
 
-Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-URL (assertion Consumer Service-URL) bevat, selecteert Azure AD een van de geconfigureerde vertrouwens-Url's voor die toepassing. Zelfs als de toepassing een expliciete antwoord-URL heeft geconfigureerd, kan de gebruiker worden omgeleid https://127.0.0.1:444. 
+Als de aanmeldings aanvraag bij eenmalige aanmelding geen expliciete antwoord-URL (assertion Consumer Service-URL) bevat, selecteert Azure AD een van de geconfigureerde vertrouwens-Url's voor die toepassing. Zelfs als de toepassing een expliciete antwoord-URL heeft geconfigureerd, is het mogelijk dat de gebruiker https://127.0.0.1:444omgeleid. 
 
 Toen de toepassing werd toegevoegd als niet-galerie-app, is deze antwoord-URL in Azure Active Directory gemaakt als standaardwaarde. Dit gedrag is gewijzigd en deze URL wordt niet meer standaard toegevoegd in Azure Active Directory. 
 

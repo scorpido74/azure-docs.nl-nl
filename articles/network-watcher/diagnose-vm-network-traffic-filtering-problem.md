@@ -1,5 +1,6 @@
 ---
-title: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine - snelstart - Azure Portal | Microsoft Docs
+title: 'Snelstartgids: een probleem met een VM-netwerk verkeer vaststellen-Azure Portal'
+titleSuffix: Azure Network Watcher
 description: In deze snelstart leert u hoe u een diagnose uitvoert voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de functie IP-stroomverificatie in Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
@@ -17,14 +18,14 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 6478c82a93cd35eead3972bb4dccf402219d9b7d
-ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/28/2019
-ms.locfileid: "64702897"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276014"
 ---
-# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Quickstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van de Azure-portal
+# <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Snelstart: Diagnose uitvoeren voor een probleem met netwerkverkeersfilters op een virtuele machine met behulp van Azure Portal
 
 In deze snelstart implementeert u een VM (virtuele machine) en controleert u vervolgens de communicatie naar een IP-adres en URL, en vanaf een IP-adres. U stelt de oorzaak van mislukte communicatie vast en leert hoe u dit probleem kunt oplossen.
 
@@ -42,7 +43,7 @@ Meld u aan bij Azure Portal op https://portal.azure.com.
 
     |Instelling|Waarde|
     |---|---|
-    |Name|myVm|
+    |Naam|myVm|
     |Gebruikersnaam| Voer een gebruikersnaam naar keuze in.|
     |Wachtwoord| Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Abonnement| Selecteer uw abonnement.|
@@ -61,7 +62,7 @@ Als u de netwerkcommunicatie wilt testen met Network Watcher, moet u eerst een n
 
 Als u al een netwerk-watcher hebt ingeschakeld in minstens één regio, gaat u verder met [IP-stroomverificatie gebruiken](#use-ip-flow-verify).
 
-1. Selecteer in de portal de optie **Alle services**. Typ *Network Watcher* in het vak **Filteren**. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Typ **Network Watcher** in het vak *Filteren*. Selecteer **Network Watcher** in de resultaten.
 2. Schakel een netwerk-watcher in de regio US - oost in, omdat dat de regio is waarin de VM is geïmplementeerd in de vorige stap. Selecteer **Regio's** om dit item uit te vouwen en selecteer vervolgens **...** rechts van **US - oost**, zoals wordt weergegeven in de volgende afbeelding:
 
     ![Network Watcher inschakelen](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -72,7 +73,7 @@ Als u al een netwerk-watcher hebt ingeschakeld in minstens één regio, gaat u v
 
 Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan en geweigerd in Azure. U kunt de standaardinstellingen in Azure later negeren en extra typen verkeer toestaan en weigeren.
 
-1. Selecteer in de portal de optie **Alle services**. Voer *Network Watcher* in het vak **Alle services** *Filter* in. Selecteer **Network Watcher** in de resultaten.
+1. Selecteer in de portal de optie **Alle services**. Voer **Network Watcher** in het vak *Alle services* *Filter* in. Selecteer **Network Watcher** in de resultaten.
 2. Selecteer **IP-stroomverificatie** onder **DIAGNOSTISCHE HULPPROGRAMMA’S VOOR NETWERK**.
 3. Selecteer uw abonnement, typ of selecteer de volgende waarden, en selecteer vervolgens **Controleren**, zoals wordt weergegeven in de onderstaande afbeelding:
 
@@ -82,10 +83,10 @@ Als u een VM maakt, wordt netwerkverkeer van en naar de VM standaard toegestaan 
     | Virtuele machine   | Selecteer myVm                                                                                       |
     | Netwerkinterface | myvm - De naam van de netwerkinterface die is gemaakt in de portal toen u de VM maakte, wijkt af. |
     | Protocol          | TCP                                                                                               |
-    | Direction         | Uitgaand                                                                                          |
+    | Richting         | Uitgaande                                                                                          |
     | Lokaal IP-adres  | 10.0.0.4                                                                                          |
     | Lokale poort      | 60000                                                                                                |
-    | Extern IP-adres | 13.107.21.200 - een van de adressen voor < www.bing.com>.                                             |
+    | Extern IP-adres | 13.107.21.200: een van de adressen voor < www. Bing. com->.                                             |
     | Externe poort       | 80                                                                                                |
 
     ![IP-stroomverificatie](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)

@@ -1,31 +1,31 @@
 ---
-title: Verbinding maken met behulp van Truffle
+title: Truffle gebruiken om verbinding te maken met de Azure Block Chain-Service
 description: Verbinding maken met een Azure Block Chain service-netwerk met behulp van truffle
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 08/29/2019
+ms.date: 11/20/2019
 ms.topic: quickstart
 ms.service: azure-blockchain
-ms.reviewer: jackyhsu
+ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: ea64e3fe4789ac0558463ded81c8179db83469d5
-ms.sourcegitcommit: f3f4ec75b74124c2b4e827c29b49ae6b94adbbb7
-ms.translationtype: MT
+ms.openlocfilehash: f5d752c99331d454e7f9f98c06b9ba0209de8cc7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70932584"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285379"
 ---
-# <a name="quickstart-use-truffle-to-connect-to-a-transaction-node"></a>Quickstart: Truffle gebruiken om verbinding te maken met een transactieknooppunt
+# <a name="quickstart-use-truffle-to-connect-to-azure-blockchain-service"></a>Snelstartgids: Truffle gebruiken om verbinding te maken met de Azure Block Chain-Service
 
-Truffle is een Block Chain-ontwikkel omgeving die u kunt gebruiken om verbinding te maken met een Azure Block Chain Service Trans Action-knoop punt.
+In deze Quick Start gebruikt u Truffle verbinding maken met een Azure Block Chain Service-transactie knooppunt. Vervolgens gebruikt u de interactieve console van truffle om **Web3** -methoden aan te roepen om te communiceren met uw Block chain-netwerk.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp [van de Azure Portal](create-member.md) of Quick Start: Een Block Chain-lid van de Azure Block Chain-service maken met behulp van Azure CLI](create-member-cli.md)
+* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
 * Installeer [Truffle](https://github.com/trufflesuite/truffle). Truffle vereist verschillende hulpprogram ma's die moeten worden geïnstalleerd, waaronder [node. js](https://nodejs.org), [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 * [Python 2.7.15](https://www.python.org/downloads/release/python-2715/)installeren. Python is vereist voor web3.
 
@@ -58,12 +58,15 @@ Truffle is een Block Chain-ontwikkel omgeving die u kunt gebruiken om verbinding
 
 Als u het Truffle-project wilt configureren, hebt u enkele informatie over het transactie knooppunt nodig van de Azure Portal.
 
-### <a name="transaction-node-endpoint-addresses"></a>Eindpunt adressen van het transactie knooppunt
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Ga naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
 
-1. Ga in het Azure Portal naar het standaard transactie knooppunt en selecteer **transactie knooppunten > verbindings reeksen**.
-1. Kopieer de eind punt-URL en sla deze op in **https (toegangs sleutel 1)** . U hebt de eindpunt adressen voor het configuratie bestand van het slimme contract later in de zelf studie nodig.
+    ![Standaard transactie knooppunt selecteren](./media/connect-truffle/transaction-nodes.png)
 
-    ![Adres van het transactie eindpunt](./media/connect-truffle/endpoint.png)
+1. Selecteer **verbindings reeksen**.
+1. Kopieer de connection string van **https (toegangs sleutel 1)** . U hebt de teken reeks nodig voor de volgende sectie.
+
+    ![Verbindingsreeks](./media/connect-truffle/connection-string.png)
 
 ### <a name="edit-configuration-file"></a>Configuratie bestand bewerken
 
@@ -86,7 +89,7 @@ Vervolgens moet u het Truffle-configuratie bestand bijwerken met het eind punt v
     }
     ```
 
-1. Sla de wijzigingen op `truffle-config.js`op.
+1. Sla de wijzigingen in `truffle-config.js`op.
 
 ## <a name="connect-to-transaction-node"></a>Verbinding maken met transactieknooppunt
 
@@ -100,7 +103,7 @@ Gebruik *Web3* om verbinding te maken met het transactie knooppunt.
 
     Truffle maakt verbinding met het standaard transactie knooppunt en biedt een interactieve console.
 
-    U kunt methoden voor het object **Web3** aanroepen om te communiceren met uw trans actie-knoop punt.
+    U kunt methoden op het object **Web3** aanroepen om te communiceren met uw Block chain-netwerk.
 
 1. Roep de methode **getBlockNumber** aan om het huidige blok nummer te retour neren.
 
@@ -122,9 +125,9 @@ Gebruik *Web3* om verbinding te maken met het transactie knooppunt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een Truffle-project gemaakt om verbinding te maken met het standaard transactie knooppunt van de Azure Block Chain-service.
+In deze Snelstartgids hebt u Truffle gebruikt om verbinding te maken met een Azure Block Chain service-standaard transactie knooppunt en de interactieve console te gebruiken om het huidige Block Chain-blok nummer te retour neren.
 
-Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum en Truffle voor het maken, bouwen, implementeren en uitvoeren van een slimme contract functie via een trans actie.
+Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum voor het maken, bouwen, implementeren en uitvoeren van een slimme contract functie via een trans actie.
 
 > [!div class="nextstepaction"]
 > [Visual Studio code gebruiken om slimme contracten te maken, te bouwen en te implementeren](send-transaction.md)

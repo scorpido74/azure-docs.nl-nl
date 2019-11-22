@@ -1,22 +1,18 @@
 ---
-title: " Uw ontwikkel machine verbinden met een AKS-cluster"
-titleSuffix: Azure Dev Spaces
+title: Uw ontwikkelmachine verbinden met een AKS-cluster
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Meer informatie over hoe u uw ontwikkel machine verbindt met een AKS-cluster met Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers
-ms.openlocfilehash: 15e46fba19d92e08a9c87a63f6f01ec6b0836910
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 1b65721b67ff63525adfe5d2061f22f359c02bde
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73888911"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280123"
 ---
-# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Uw ontwikkel machine verbinden met een AKS-cluster (preview)
+# <a name="connect-your-development-machine-to-an-aks-cluster-preview"></a>Uw ontwikkelmachine verbinden met een AKS-cluster (preview)
 
 Met Azure dev Spaces kunt u code uitvoeren en fouten opsporen met of zonder een container op uw ontwikkel computer, terwijl u verbonden bent met uw Kubernetes-cluster met de rest van uw toepassing of services. Wanneer u uw ontwikkel machine verbindt met uw cluster, kunt u snel uw toepassing ontwikkelen en end-to-end tests uitvoeren zonder dat u een docker-of Kubernetes hoeft te maken. U kunt ook verbinding maken met uw AKS-cluster zonder dat dit van invloed is op andere workloads of gebruikers die gebruikmaken van hetzelfde cluster.
 

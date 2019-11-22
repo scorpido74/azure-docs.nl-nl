@@ -1,6 +1,6 @@
 ---
-title: Een werk-of school account toevoegen aan een verificator-app-Azure AD
-description: Hoe u uw werk-of school account toevoegt aan de app Microsoft Authenticator voor twee ledige verificatie.
+title: Een werk-of school account toevoegen aan de Microsoft Authenticator-app-Azure AD
+description: Voeg uw werk-of school account toe aan de app Microsoft Authenticator om uw identiteit te verifiëren met twee ledige verificatie methoden.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7c9fa41a1278f0e1e54a06c3930e3bbc3d3d3ae
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: bcd69fab269e39a8c78a56c08854262ca839d60f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803739"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267141"
 ---
-# <a name="add-your-work-or-school-account"></a>Uw werk-of school account toevoegen
+# <a name="add-your-work-or-school-account-to-the-microsoft-authenticator-app"></a>Voeg uw werk-of school account toe aan de app Microsoft Authenticator
 
 Als uw organisatie twee ledige verificatie gebruikt, kunt u uw werk-of school account instellen om de Microsoft Authenticator-app als een van de verificatie methoden te gebruiken.
 

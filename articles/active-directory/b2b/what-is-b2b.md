@@ -1,5 +1,5 @@
 ---
-title: Wat is Azure Active Directory B2B-samenwerking? - Azure Active Directory | Microsoft Azure
+title: Wat is B2B-samen werking in Azure Active Directory?
 description: Azure Active Directory B2B-samenwerking ondersteunt gastgebruikerstoegang, zodat u veilig resources kunt delen en samenwerken met externe partners.
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62bc550a809d596b5378c03aa95877db5e15febb
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 18d60614a07895c7e9468d35b2d389a28129af4d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69019511"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271652"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Wat is gastgebruikerstoegang in Azure Active Directory B2B?
 

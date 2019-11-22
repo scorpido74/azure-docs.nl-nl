@@ -1,20 +1,16 @@
 ---
 title: Veelgestelde vragen over Azure dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/25/2019
 ms.topic: conceptual
 description: Antwoorden vinden op enkele veelgestelde vragen over Azure dev Spaces
 keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
-ms.openlocfilehash: 1f25ccd26aed832c068c04198486e769ec980380
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3c7335f1656d304d231c2146c8b7496ea43f0b4c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74072214"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280240"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Veelgestelde vragen over Azure dev Spaces
 
@@ -48,10 +44,22 @@ Momenteel is Azure dev Spaces alleen bedoeld om te worden uitgevoerd op Linux en
 
 Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met [API-server geautoriseerde IP-][aks-auth-range] adresbereiken ingeschakeld. Wanneer u uw cluster [maakt][aks-auth-range-create] , moet u [extra bereiken op basis van uw regio toestaan][aks-auth-range-ranges]. U kunt ook een bestaand cluster [bijwerken][aks-auth-range-update] om deze extra bereiken toe te staan.
 
+### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Kan ik Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand verkeer voor cluster knooppunten?
+
+Ja, u kunt Azure dev Spaces gebruiken in AKS-clusters met beperkt uitgaand [verkeer voor cluster knooppunten][aks-restrict-egress-traffic] die zijn ingeschakeld wanneer de volgende FQDN-namen zijn toegestaan:
+
+| FQDN-NAAM                                    | Poort      | Gebruiken      |
+|-----------------------------------------|-----------|----------|
+| cloudflare.docker.com | HTTPS:443 | Voor het ophalen van images voor Linux alpine en andere Azure dev Spaces |
+| gcr.io | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
+| storage.googleapis.com | HTTP: 443 | Helm/Tiller-installatie kopieën ophalen|
+
+
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
 [aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
+[aks-restrict-egress-traffic]: ../aks/limit-egress-traffic.md
 [dev-spaces-routing]: how-dev-spaces-works.md#how-routing-works
 [ingress-traefik]: how-to/ingress-https-traefik.md#configure-a-custom-traefik-ingress-controller
 [ingress-https-traefik]: how-to/ingress-https-traefik.md#configure-the-traefik-ingress-controller-to-use-https

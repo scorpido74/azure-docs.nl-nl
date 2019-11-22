@@ -1,5 +1,5 @@
 ---
-title: Aan de slag met rollen, machtigingen en beveiliging met Azure Monitor
+title: Rollen, machtigingen en beveiliging in Azure Monitor
 description: Meer informatie over het gebruik van de ingebouwde rollen en machtigingen van Azure Monitor om de toegang tot bewakings resources te beperken.
 author: johnkemnetz
 services: azure-monitor
@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: c745375eb4f59208af79bbb03d45f8f0eea7f3ca
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 424d57c59dea11a49faf7a7bb32d85772ef4de8c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260607"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74305152"
 ---
-# <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Aan de slag met rollen, machtigingen en beveiliging met Azure Monitor
+# <a name="roles-permissions-and-security-in-azure-monitor"></a>Rollen, machtigingen en beveiliging in Azure Monitor
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Veel teams moeten de toegang tot bewakings gegevens en-instellingen strikt reguleren. Als u bijvoorbeeld team leden hebt die uitsluitend werken aan bewaking (ondersteunings technici, DevOps Engineers) of als u een beheerde service provider gebruikt, wilt u deze mogelijk alleen toegang geven tot de bewaking van gegevens en de mogelijkheid voor het maken, wijzigen of resources verwijderen. In dit artikel wordt beschreven hoe u snel een ingebouwde RBAC-bewakings functie kunt Toep assen op een gebruiker in azure of hoe u uw eigen aangepaste rol bouwt voor een gebruiker die beperkte controle machtigingen nodig heeft. Vervolgens worden de beveiligings overwegingen voor uw Azure Monitor-gerelateerde resources besproken en wordt uitgelegd hoe u de toegang tot de gegevens die ze bevatten, kunt beperken.
 
 ## <a name="built-in-monitoring-roles"></a>Ingebouwde bewakings rollen
-De ingebouwde rollen van Azure Monitor zijn ontworpen om de toegang tot resources in een abonnement te beperken, terwijl ze nog steeds verantwoordelijk zijn voor de bewaking van de infra structuur voor het verkrijgen en configureren van de gegevens die ze nodig hebben. Azure Monitor biedt twee out-of-the-box-rollen: Een bewakings lezer en een bewakings bijdrager.
+De ingebouwde rollen van Azure Monitor zijn ontworpen om de toegang tot resources in een abonnement te beperken, terwijl ze nog steeds verantwoordelijk zijn voor de bewaking van de infra structuur voor het verkrijgen en configureren van de gegevens die ze nodig hebben. Azure Monitor biedt twee out-of-the-box-rollen: een bewakings lezer en een bewakings bijdrager.
 
-### <a name="monitoring-reader"></a>Lezer voor bewaking
+### <a name="monitoring-reader"></a>Bewakings lezer
 Personen die de rol bewakings lezer toegewezen kunnen alle bewakings gegevens in een abonnement weer geven, maar kunnen geen resource wijzigen of instellingen bewerken die betrekking hebben op bewakings bronnen. Deze rol is geschikt voor gebruikers in een organisatie, zoals ondersteuning of Operations engineers, die het volgende moeten kunnen:
 
 * Bekijk bewakings dashboards in de portal en maak hun eigen persoonlijke bewakings dashboards.
@@ -48,7 +48,7 @@ Personen die de rol bewakings lezer toegewezen kunnen alle bewakings gegevens in
 > 
 > 
 
-### <a name="monitoring-contributor"></a>Bijdrager voor bewaking
+### <a name="monitoring-contributor"></a>Inzender bewaken
 Personen aan wie de rol bewakings bijdrage is toegewezen, kunnen alle bewakings gegevens in een abonnement bekijken en controle-instellingen maken of wijzigen, maar kunnen geen andere resources wijzigen. Deze rol is een hoofd verzameling van de rol van de bewakings lezer en is geschikt voor leden van het bewakings team van een organisatie of voor beheerde service providers die naast de bovenstaande machtigingen ook de volgende handelingen moeten kunnen doen:
 
 * Publiceer bewakings dashboards als een gedeeld dash board.
@@ -61,7 +61,7 @@ Personen aan wie de rol bewakings bijdrage is toegewezen, kunnen alle bewakings 
 * Opgeslagen Zoek opdrachten in Log Analytics werk ruimte maken en verwijderen en uitvoeren.
 * De opslag configuratie voor de Log Analytics werkruimte maken en verwijderen.
 
-\*gebruikers moeten ook afzonderlijk Listkeys ophalen-machtigingen krijgen voor de doel resource (opslag account of Event Hub naam ruimte) om een logboek profiel of diagnostische instelling in te stellen.
+\*gebruiker moet ook afzonderlijk Listkeys ophalen-machtigingen krijgen voor de doel resource (opslag account of Event Hub naam ruimte) om een logboek profiel of diagnostische instelling in te stellen.
 
 > [!NOTE]
 > Deze rol geeft geen lees toegang tot logboek gegevens die zijn gestreamd naar een Event Hub of die is opgeslagen in een opslag account. [Hieronder vindt](#security-considerations-for-monitoring-data) u meer informatie over het configureren van toegang tot deze resources.
@@ -71,7 +71,7 @@ Personen aan wie de rol bewakings bijdrage is toegewezen, kunnen alle bewakings 
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>Controle machtigingen en aangepaste RBAC-rollen
 Als de hierboven vermelde ingebouwde rollen niet voldoen aan de exacte behoeften van uw team, kunt u [een aangepaste RBAC-rol maken](../../role-based-access-control/custom-roles.md) met nauw keurige machtigingen. Hieronder vindt u de algemene Azure Monitor RBAC-bewerkingen met de bijbehorende beschrijvingen.
 
-| Bewerking | Description |
+| Bewerking | Beschrijving |
 | --- | --- |
 | Micro soft. Insights/ActionGroups/[lezen, schrijven, verwijderen] |Actie groepen lezen/schrijven/verwijderen. |
 | Micro soft. Insights/ActivityLogAlerts/[lezen, schrijven, verwijderen] |Waarschuwingen voor het activiteiten logboek lezen/schrijven/verwijderen. |
@@ -182,7 +182,7 @@ Azure Monitor moet toegang hebben tot uw Azure-resources om de services te kunne
 ### <a name="secured-storage-accounts"></a>Beveiligde opslag accounts 
 
 Bewakings gegevens worden vaak naar een opslag account geschreven. U kunt er ook voor zorgen dat de gegevens die naar een opslag account worden gekopieerd, niet toegankelijk zijn voor onbevoegde gebruikers. Voor extra beveiliging kunt u netwerk toegang vergren delen om alleen uw geautoriseerde resources en vertrouwde micro soft-Services toegang te geven tot een opslag account door een opslag account te beperken om ' geselecteerde netwerken ' te gebruiken.
-![Azure Storage instellingen dialoog](./media/roles-permissions-security/secured-storage-example.png) venster Azure monitor wordt beschouwd als een van deze ' vertrouwde micro soft-Services ' als u vertrouwde micro soft-Services toegang verleent tot uw beveiligde opslag, heeft Azure monitor toegang tot uw beveiligde opslag account; inschakelen het schrijven van Azure Monitor Diagnostische logboeken, het activiteiten logboek en de metrische gegevens naar uw opslag account onder deze beveiligde voor waarden. Op deze locatie kunnen ook Log Analytics logboeken van beveiligde opslag worden gelezen.   
+![Azure Storage instellingen dialoog venster](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor wordt beschouwd als een van deze ' vertrouwde micro soft-Services ' als u vertrouwde micro soft-Services toegang verleent tot uw beveiligde opslag, heeft Azure monitor toegang tot uw beveiligde-opslag account. het schrijven van Azure Monitor Diagnostische logboeken, het activiteiten logboek en de metrische gegevens naar uw opslag account inschakelen onder deze beveiligde voor waarden. Op deze locatie kunnen ook Log Analytics logboeken van beveiligde opslag worden gelezen.   
 
 
 Zie [netwerk beveiliging en Azure Storage](../../storage/common/storage-network-security.md) voor meer informatie.

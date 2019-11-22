@@ -1,5 +1,5 @@
 ---
-title: 'Zelf studie voor regressie model: geautomatiseerde ML'
+title: 'Zelf studie over regressie: geautomatiseerd ML'
 titleSuffix: Azure Machine Learning
 description: Leer hoe u een machine learning-model genereert met behulp van geautomatiseerde machine learning. Azure Machine Learning kan voorbewerking van gegevens, selectie van algoritmes en selectie van hyperparameters automatisch voor u uitvoeren. Vervolgens wordt het uiteindelijke model geïmplementeerd met Azure Machine Learning.
 services: machine-learning
@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: 23441fb64293647698921c17c06731ab413b7699
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 5e7d897b3a845580d7830e2cf816417f2282dd27
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582458"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271870"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Zelf studie: automatische machine learning gebruiken om taxi tarieven te voors pellen
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -97,7 +97,7 @@ green_taxi_df.head(10)
       <th>...</th>
       <th>paymentType</th>
       <th>fareAmount</th>
-      <th>Kent</th>
+      <th>kent</th>
       <th>mtaTax</th>
       <th>improvementSurcharge</th>
       <th>tipAmount</th>
@@ -115,8 +115,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -139,14 +139,14 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
       <td>...</td>
       <td>2</td>
-      <td>4,50</td>
+      <td>4.50</td>
       <td>1,00</td>
       <td>0,50</td>
       <td>0,3</td>
@@ -163,8 +163,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -187,8 +187,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -211,8 +211,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -235,8 +235,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1,10</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -259,8 +259,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -283,8 +283,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -307,8 +307,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -331,8 +331,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -416,8 +416,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 05:45:03</td>
       <td>3</td>
       <td>4,84</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,84</td>
       <td>-73,94</td>
@@ -440,8 +440,8 @@ green_taxi_df.head(10)
       <td>2015-01-20 16:30:26</td>
       <td>1</td>
       <td>0,69</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,81</td>
       <td>-73,96</td>
@@ -464,8 +464,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 06:00:55</td>
       <td>1</td>
       <td>0,45</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,91</td>
@@ -488,8 +488,8 @@ green_taxi_df.head(10)
       <td>2015-01-17 02:41:38</td>
       <td>1</td>
       <td>0,00</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,81</td>
       <td>40,70</td>
       <td>-73,82</td>
@@ -512,8 +512,8 @@ green_taxi_df.head(10)
       <td>2015-01-01 05:06:23</td>
       <td>1</td>
       <td>0,50</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,92</td>
       <td>40,76</td>
       <td>-73,92</td>
@@ -536,8 +536,8 @@ green_taxi_df.head(10)
       <td>2015-01-04 20:05:45</td>
       <td>2</td>
       <td>1,10</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,95</td>
@@ -560,8 +560,8 @@ green_taxi_df.head(10)
       <td>2015-01-03 12:33:52</td>
       <td>1</td>
       <td>0,90</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,88</td>
       <td>40,76</td>
       <td>-73,87</td>
@@ -584,8 +584,8 @@ green_taxi_df.head(10)
       <td>2015-01-09 23:39:52</td>
       <td>1</td>
       <td>3,30</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,96</td>
       <td>40,72</td>
       <td>-73,91</td>
@@ -608,8 +608,8 @@ green_taxi_df.head(10)
       <td>2015-01-11 17:22:57</td>
       <td>1</td>
       <td>1,19</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,95</td>
@@ -632,8 +632,8 @@ green_taxi_df.head(10)
       <td>2015-01-22 23:20:13</td>
       <td>1</td>
       <td>0,65</td>
-      <td>Geen</td>
-      <td>Geen</td>
+      <td>None</td>
+      <td>None</td>
       <td>-73,94</td>
       <td>40,71</td>
       <td>-73,94</td>
@@ -721,7 +721,7 @@ green_taxi_df.describe()
       <td>48000,00</td>
     </tr>
     <tr>
-      <th>Greenwich</th>
+      <th>gemiddelde</th>
       <td>1,78</td>
       <td>1,37</td>
       <td>2,87</td>
@@ -737,15 +737,15 @@ green_taxi_df.describe()
     </tr>
     <tr>
       <th>Std</th>
-      <td>0,41</td>
+      <td>0.41</td>
       <td>1,04</td>
       <td>2,93</td>
       <td>2,76</td>
       <td>1,52</td>
-      <td>2,61</td>
+      <td>2.61</td>
       <td>1,44</td>
       <td>12,08</td>
-      <td>3,45</td>
+      <td>3.45</td>
       <td>8,45</td>
       <td>1,95</td>
       <td>6,83</td>
@@ -775,7 +775,7 @@ green_taxi_df.describe()
       <td>-73,97</td>
       <td>40,70</td>
       <td>7,80</td>
-      <td>3,75</td>
+      <td>3.75</td>
       <td>8,00</td>
       <td>2,00</td>
       <td>9,00</td>
@@ -898,7 +898,7 @@ Definieer de para meter voor het experiment en de model instellingen voor traini
 |----|----|---|
 |**iteration_timeout_minutes**|2|Tijdslimiet in minuten voor elke iteratie. Verklein deze waarde als u de totale uitvoeringstijd wilt verminderen.|
 |**experiment_timeout_minutes**|20|Maximale tijds duur in minuten dat alle iteraties worden gecombineerd voordat het experiment wordt beëindigd.|
-|**enable_early_stopping**|True|Markeer om vroege beëindiging te enble als de score niet op de korte termijn wordt verbeterd.|
+|**enable_early_stopping**|Waar|Markeer om vroege beëindiging te enble als de score niet op de korte termijn wordt verbeterd.|
 |**primary_metric**| spearman_correlation | De metrische gegevens die u wilt optimaliseren. Het optimale model wordt gekozen op basis van deze metrische waarde.|
 |**parametrisatie**| Auto | Door **auto**te gebruiken, kan het experiment de invoer gegevens voorverwerken (waarbij ontbrekende gegevens worden verwerkt, tekst naar numerieke waarde worden geconverteerd, enzovoort).|
 |**uitgebreidheid**| logging.INFO | Hiermee bepaalt u het niveau van logboekregistratie.|

@@ -1,6 +1,6 @@
 ---
 title: 'Quick Start: client bibliotheek voor Azure Blob Storage v2 voor Java script'
-description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik vervolgens de Azure Storage-client bibliotheek voor node. js v2 om een BLOB te uploaden naar Azure Storage, een BLOB te downloaden en de blobs in een container weer te geven.
+description: Maak een opslagaccount en een container in object(Blob)-opslag. Gebruik de Azure Storage-client bibliotheek voor node. js v2 om een BLOB te uploaden, een BLOB te downloaden en de blobs in een container weer te geven.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 02/04/2019
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 12078300b36412a1507991507a39654acdeb7c69
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7300d4eccec5b1e4b3b5b7dc292cf6150a42e7b4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825351"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269689"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v2-for-javascript"></a>Quick Start: client bibliotheek voor Azure Blob Storage v2 voor Java script
 
@@ -341,7 +341,7 @@ console.log(`Container "${containerName}" is deleted`);
 ```
 
 ## <a name="clean-up-resources"></a>Resources opschonen
-Alle gegevens die zijn geschreven naar het opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
+Alle gegevens die zijn geschreven naar de opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
 
 ## <a name="resources-for-developing-nodejs-applications-with-blobs"></a>Resources voor het ontwikkelen van Node.js-toepassingen met blobs
 

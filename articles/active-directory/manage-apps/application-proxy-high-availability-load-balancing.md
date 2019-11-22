@@ -1,5 +1,5 @@
 ---
-title: Hoge Beschik baarheid en taak verdeling voor Azure AD-toepassingsproxy | Microsoft Docs
+title: Hoge Beschik baarheid en taak verdeling-Azure AD-toepassingsproxy
 description: Hoe verkeer distributie werkt met uw implementatie van de toepassings proxy. Bevat tips voor het optimaliseren van de prestaties van de connector en het gebruik van taak verdeling voor back-endservers.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 014fcf37930800858cd70f15c19e3f494d3f3776
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 9add6ac30184d87ef50200c3ab944698a1a660f8
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72169809"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275542"
 ---
 # <a name="high-availability-and-load-balancing-of-your-application-proxy-connectors-and-applications"></a>Hoge Beschik baarheid en taak verdeling van de connectors en toepassingen van uw toepassings proxy
 
@@ -98,8 +98,8 @@ Raadpleeg de documentatie van uw software leverancier om inzicht te krijgen in d
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Toepassings proxy inschakelen](application-proxy-add-on-premises-application.md)
+- [Toepassingsproxy inschakelen](application-proxy-add-on-premises-application.md)
 - [Eenmalige aanmelding inschakelen](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Voorwaardelijke toegang inschakelen](application-proxy-integrate-with-sharepoint-server.md)
-- [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)
+- [Oplossen van problemen met Application Proxy](application-proxy-troubleshoot.md)
 - [Meer informatie over hoe Azure AD-architectuur hoge Beschik baarheid ondersteunt](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-architecture)

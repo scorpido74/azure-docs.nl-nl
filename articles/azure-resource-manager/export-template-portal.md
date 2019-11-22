@@ -2,13 +2,13 @@
 title: Sjabloon exporteren in Azure Portal
 description: Gebruik Azure Portal om een Azure Resource Manager sjabloon te exporteren vanuit resources in uw abonnement.
 ms.topic: conceptual
-ms.date: 10/11/2019
-ms.openlocfilehash: 6e05a8bff27e56bc5942a7c16ab63921c489f44c
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.date: 11/21/2019
+ms.openlocfilehash: 9e6a4089758809cbebc6a3c0cd586cb418ca42bf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149866"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306781"
 ---
 # <a name="single-and-multi-resource-export-to-a-template-in-azure-portal"></a>Eén en meerdere resources exporteren naar een sjabloon in Azure Portal
 
@@ -33,7 +33,7 @@ Afhankelijk van de optie die u kiest, hebben de geëxporteerde sjablonen verschi
 | De sjabloon is een moment opname van de huidige status van de resource. Het bevat alle hand matige wijzigingen die u na de implementatie hebt aangebracht. | Met de sjabloon wordt alleen de status van resources op het moment van de implementatie weer gegeven. Hand matige wijzigingen die u na de implementatie hebt aangebracht, zijn niet opgenomen. |
 | U kunt selecteren welke resources uit een resource groep u wilt exporteren. | Alle resources voor een specifieke implementatie zijn opgenomen. U kunt geen subset van deze resources kiezen of resources toevoegen die op een ander tijdstip zijn toegevoegd. |
 | De sjabloon bevat alle eigenschappen voor de resources, waaronder enkele eigenschappen die u niet normaal hebt ingesteld tijdens de implementatie. Mogelijk wilt u deze eigenschappen verwijderen of opschonen voordat u de sjabloon opnieuw gebruikt. | De sjabloon bevat alleen de eigenschappen die nodig zijn voor de implementatie. De sjabloon is klaar voor gebruik. |
-| De sjabloon bevat waarschijnlijk niet alle para meters die u nodig hebt voor hergebruik. De meeste eigenschaps waarden worden vastgelegd in de sjabloon. Als u de sjabloon opnieuw wilt implementeren in andere omgevingen, moet u para meters toevoegen die de mogelijkheid verhogen om de resources te configureren. | De sjabloon bevat para meters waarmee u eenvoudig opnieuw kunt implementeren in verschillende omgevingen. |
+| De sjabloon bevat waarschijnlijk niet alle para meters die u nodig hebt voor hergebruik. De meeste eigenschaps waarden worden vastgelegd in de sjabloon. Als u de sjabloon opnieuw wilt implementeren in andere omgevingen, moet u para meters toevoegen die de mogelijkheid verhogen om de resources te configureren.  U hebt ook de optie om **para meters** op te heffen, zodat u uw eigen para meters kunt ontwerpen. | De sjabloon bevat para meters waarmee u eenvoudig opnieuw kunt implementeren in verschillende omgevingen. |
 
 Exporteer de sjabloon van een resource groep of resource als:
 
@@ -62,6 +62,8 @@ Een of meer resources uit een resource groep exporteren:
 
    ![Sjabloon weer geven](./media/export-template-portal/show-template.png)
 
+   **Para meters zijn** standaard geselecteerd.  Als deze para meter is geselecteerd, worden alle sjabloon parameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen para meters wilt maken, schakelt u dit selectie vakje in om ze niet op te geven.
+
 ## <a name="export-template-from-a-resource"></a>Sjabloon uit een resource exporteren
 
 Een resource exporteren:
@@ -74,7 +76,7 @@ Een resource exporteren:
 
    ![Resource exporteren](./media/export-template-portal/export-single-resource.png)
 
-1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd. De sjabloon bevat alleen de afzonderlijke resource.
+1. De geëxporteerde sjabloon wordt weer gegeven en kan worden gedownload en geïmplementeerd. De sjabloon bevat alleen de afzonderlijke resource. **Para meters zijn** standaard geselecteerd.  Als deze para meter is geselecteerd, worden alle sjabloon parameters opgenomen wanneer de sjabloon wordt gegenereerd. Als u uw eigen para meters wilt maken, schakelt u dit selectie vakje in om ze niet op te geven.
 
 ## <a name="export-template-before-deployment"></a>Sjabloon exporteren vóór implementatie
 

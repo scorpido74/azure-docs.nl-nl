@@ -1,5 +1,5 @@
 ---
-title: Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory | Microsoft Docs
+title: Expressies schrijven voor kenmerk toewijzingen in azure AD
 description: Informatie over het gebruik van expressietoewijzingen kenmerkwaarden omzetten in een acceptabele indeling tijdens de geautomatiseerde inrichting van objecten van de SaaS-app in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd7abdeef7c13c272a0e4bbf2075c6eda8f73a07
-ms.sourcegitcommit: a7a9d7f366adab2cfca13c8d9cbcf5b40d57e63a
+ms.openlocfilehash: 5f1880a79f7fdb27b407ecb7ed1b761493fe850d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71162395"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274028"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Expressies schrijven voor kenmerktoewijzingen in Azure Active Directory
 Bij het configureren van inrichting tot een SaaS-toepassing, is een van de typen kenmerktoewijzingen die u kunt opgeven een expressie-toewijzing. Voor deze, moet u een script-achtige-expressie waarmee u uw gebruikers om gegevens te transformeren naar indelingen die meer geschikt is voor de SaaS-toepassing kunt schrijven.
@@ -33,12 +33,12 @@ De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visu
 * U kunt drie verschillende typen argumenten doorgeven in functies:
   
   1. Kenmerken moeten tussen rechte haakjes worden geplaatst. Bijvoorbeeld: [attributeName]
-  2. Tekenreeksconstanten moeten tussen dubbele aanhalingstekens worden geplaatst. Bijvoorbeeld: "Verenigde Staten"
+  2. Tekenreeksconstanten moeten tussen dubbele aanhalingstekens worden geplaatst. Bijvoorbeeld: "VS"
   3. Andere functies. Bijvoorbeeld: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
-* Voor tekenreeksconstanten, als u een backslash (\) of een aanhalingsteken (") in de tekenreeks, moet moet deze worden voorafgegaan door het symbool backslash (\). Bijvoorbeeld: "Bedrijfs naam: \\"Contoso\\""
+* Voor tekenreeksconstanten, als u een backslash (\) of een aanhalingsteken (") in de tekenreeks, moet moet deze worden voorafgegaan door het symbool backslash (\). Bijvoorbeeld: "bedrijfs naam: \\" Contoso\\""
 
 ## <a name="list-of-functions"></a>Lijst met functies
-[Toevoegen](#append) &nbsp; FormatDateTimetoevoegen&nbsp; [](#join) [](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#mid) Mid &nbsp; [](#normalizediacritics) [](#not) NormalizeDiacritics niet &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [](#selectuniquevalue) [](#replace) SelectUniqueValue vervangen &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [ SingleAppRoleAssignment](#singleapproleassignment) &nbsp; [gesplitste](#split)[](#stripspaces) StripSpaces&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; [](#tolower) [](#switch) ToLowerschakelen&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [Toupper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [deel](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [niet](#not) &nbsp;&nbsp;&nbsp;&nbsp; [vervangen](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [splitsen](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [toupper](#toupper)
 
 ---
 ### <a name="append"></a>Toevoegen
@@ -48,10 +48,10 @@ De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visu
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |Doorgaans de naam van het kenmerk van het bronobject. |
-| **suffix** |Vereist |Reeks |De tekenreeks die u wilt toevoegen aan het einde van de bronwaarde. |
+| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
+| **suffix** |Vereist |Tekenreeks |De tekenreeks die u wilt toevoegen aan het einde van de bronwaarde. |
 
 ---
 ### <a name="formatdatetime"></a>formatDateTime
@@ -61,11 +61,11 @@ De syntaxis voor expressies voor kenmerktoewijzingen is doet denken aan van Visu
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |Doorgaans de naam van het kenmerk van het bronobject. |
-| **inputFormat** |Vereist |Reeks |De verwachte notatie van de bronwaarde. Zie voor ondersteunde indelingen [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **Uitvoerindeling** |Vereist |Reeks |Indeling van de uitvoerdatum. |
+| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
+| **inputFormat** |Vereist |Tekenreeks |De verwachte notatie van de bronwaarde. Zie voor ondersteunde indelingen [ https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx ](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **Uitvoerindeling** |Vereist |Tekenreeks |Indeling van de uitvoerdatum. |
 
 ---
 ### <a name="join"></a>Koppelen
@@ -77,10 +77,10 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **separator** |Vereist |Reeks |De tekenreeks die wordt gebruikt om de bronwaarden scheiden wanneer ze worden samengevoegd tot één tekenreeks. Kan ' ' als er geen scheidingsteken vereist is. |
-| **bron1... bronN** |Vereist, variabele-aantal keren |Reeks |De tekenreeks die waarden die moeten worden samengevoegd. |
+| **separator** |Vereist |Tekenreeks |De tekenreeks die wordt gebruikt om de bronwaarden scheiden wanneer ze worden samengevoegd tot één tekenreeks. Kan ' ' als er geen scheidingsteken vereist is. |
+| **bron1... bronN** |Vereist, variabele-aantal keren |Tekenreeks |De tekenreeks die waarden die moeten worden samengevoegd. |
 
 ---
 ### <a name="mid"></a>Mid
@@ -90,11 +90,11 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |Doorgaans de naam van het kenmerk. |
+| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk. |
 | **start** |Vereist |geheel getal |Indexeren de **bron** tekenreeks waar de subtekenreeks moet beginnen. Het eerste teken in de tekenreeks index 1 hebben, tweede teken wordt index 2 hebben, enzovoort. |
-| **Lengte** |Vereist |geheel getal |De lengte van de subtekenreeks. Als de lengte buiten eindigt de **bron** tekenreeks, functie retourneert de subtekenreeks uit **start** index tot het einde van **bron** tekenreeks. |
+| **length** |Vereist |geheel getal |De lengte van de subtekenreeks. Als de lengte buiten eindigt de **bron** tekenreeks, functie retourneert de subtekenreeks uit **start** index tot het einde van **bron** tekenreeks. |
 
 ---
 ### <a name="normalizediacritics"></a>NormalizeDiacritics
@@ -104,19 +104,19 @@ Als een van de bron waarden een kenmerk met meerdere waarden is, wordt elke waar
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Tekenreeks | Meestal een voor naam-of achternaam-kenmerk. |
 
 ---
-### <a name="not"></a>niet
+### <a name="not"></a>Not
 **Functie:**<br> NOT(Source)
 
 **Beschrijving:**<br> Draait u de Booleaanse waarde van de **bron**. Als **bron** waarde is '*waar*", retourneert '*False*'. Anders retourneert '*waar*'.
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Booleaanse tekenreeks |Verwachte **bron** waarden zijn ' True ' of ' false '. |
 
@@ -146,13 +146,13 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **Bron** |Vereist |Tekenreeks |Doorgaans naam van het kenmerk van het **bron** object. |
-| **oldValue** |Optioneel |Reeks |Waarde die moet worden vervangen **bron** of **sjabloon**. |
-| **regexPattern** |Optioneel |Reeks |Regex-patroon voor de waarde die moet worden vervangen **bron**. Of, wanneer **replacementPropertyName** wordt gebruikt, patroon om waarde uit **replacementPropertyName**te halen. |
-| **regexGroupName** |Optioneel |Reeks |Naam van de groep binnen **regexPattern**. Alleen wanneer **replacementPropertyName** wordt gebruikt, wordt de waarde van deze groep geëxtraheerd als **replacementValue** van **replacementPropertyName**. |
-| **replacementValue** |Optioneel |Reeks |Nieuwe waarde te vervangen door oude met. |
+| **oldValue** |Optioneel |Tekenreeks |Waarde die moet worden vervangen **bron** of **sjabloon**. |
+| **regexPattern** |Optioneel |Tekenreeks |Regex-patroon voor de waarde die moet worden vervangen **bron**. Of, wanneer **replacementPropertyName** wordt gebruikt, patroon om waarde uit **replacementPropertyName**te halen. |
+| **regexGroupName** |Optioneel |Tekenreeks |Naam van de groep binnen **regexPattern**. Alleen wanneer **replacementPropertyName** wordt gebruikt, wordt de waarde van deze groep geëxtraheerd als **replacementValue** van **replacementPropertyName**. |
+| **replacementValue** |Optioneel |Tekenreeks |Nieuwe waarde te vervangen door oude met. |
 | **replacementAttributeName** |Optioneel |Tekenreeks |Naam van het kenmerk dat moet worden gebruikt voor de vervangings waarde |
 | **sjabloon** |Optioneel |Tekenreeks |Als u een **sjabloon** waarde opgeeft, worden de **oude** waarden in de sjabloon gezocht en vervangen door de **bron** waarde. |
 
@@ -171,7 +171,7 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
 | **uniqueValueRule1... uniqueValueRuleN** |Ten minste zijn 2 afhankelijk van de vereiste, geen hoofdletters |Tekenreeks | Lijst met regels voor het genereren van unieke waarden om te evalueren. |
 
@@ -184,9 +184,9 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Vereist |Reeks |**[appRoleAssignments]**  object. |
+| **[appRoleAssignments]** |Vereist |Tekenreeks |**[appRoleAssignments]**  object. |
 
 ---
 ### <a name="split"></a>Splitsen
@@ -196,9 +196,9 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |**bron** waarde om bij te werken. |
+| **Bron** |Vereist |Tekenreeks |**bron** waarde om bij te werken. |
 | **delimiter** |Vereist |Tekenreeks |Hiermee geeft u het teken op dat wordt gebruikt om de teken reeks te splitsen (bijvoorbeeld: ",") |
 
 ---
@@ -209,9 +209,9 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |**bron** waarde om bij te werken. |
+| **Bron** |Vereist |Tekenreeks |**bron** waarde om bij te werken. |
 
 ---
 ### <a name="switch"></a>Switch
@@ -221,37 +221,37 @@ Vervangt waarden binnen een tekenreeks. Het werkt anders, afhankelijk van de opg
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |**bron** waarde om bij te werken. |
-| **defaultValue** |Optioneel |Reeks |De standaardwaarde moet worden gebruikt wanneer de bron komt niet overeen met alle sleutels. Lege tekenreeks (""). |
-| **sleutel** |Vereist |Reeks |**Sleutel** vergelijken **bron** met de waarde. |
-| **value** |Vereist |Reeks |Vervangende waarde voor de **bron** die overeenkomt met de sleutel. |
+| **Bron** |Vereist |Tekenreeks |**bron** waarde om bij te werken. |
+| **defaultValue** |Optioneel |Tekenreeks |De standaardwaarde moet worden gebruikt wanneer de bron komt niet overeen met alle sleutels. Lege tekenreeks (""). |
+| **sleutel** |Vereist |Tekenreeks |**Sleutel** vergelijken **bron** met de waarde. |
+| **value** |Vereist |Tekenreeks |Vervangende waarde voor de **bron** die overeenkomt met de sleutel. |
 
 ---
-### <a name="tolower"></a>toLower
+### <a name="tolower"></a>ToLower
 **Functie:**<br> ToLower (bron, cultuur)
 
 **Beschrijving:**<br> Neemt een *bron* teken reeks waarde en converteert deze in kleine letters met de opgegeven cultuur regels. Als er geen *cultuur* gegevens zijn opgegeven, wordt de invariante cultuur gebruikt.
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |Doorgaans de naam van het kenmerk van het bronobject |
+| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject |
 | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
 
 ---
-### <a name="toupper"></a>toUpper
+### <a name="toupper"></a>ToUpper
 **Functie:**<br> ToUpper (bron, cultuur)
 
 **Beschrijving:**<br> Neemt een *bron* teken reeks waarde en converteert deze in hoofd letters met de opgegeven cultuur regels. Als er geen *cultuur* gegevens zijn opgegeven, wordt de invariante cultuur gebruikt.
 
 **Parameters:**<br> 
 
-| Name | Vereiste / herhalende | Type | Opmerkingen |
+| Naam | Vereiste / herhalende | Type | Opmerkingen |
 | --- | --- | --- | --- |
-| **Bron** |Vereist |Reeks |Doorgaans de naam van het kenmerk van het bronobject. |
+| **Bron** |Vereist |Tekenreeks |Doorgaans de naam van het kenmerk van het bronobject. |
 | **culturele** |Optioneel |Tekenreeks |De notatie voor de cultuur naam op basis van RFC 4646 is *languagecode2-Country/regioncode2*, waarbij *languagecode2* de taal code van twee letters is en *land/regioncode2* de subcultuurcode van twee letters is. Voor beelden zijn ja-JP voor Japans (Japan) en en-US voor Engels (Verenigde Staten). In gevallen waarin een taal code van twee letters niet beschikbaar is, wordt er een code van drie letters gebruikt die is afgeleid van ISO 639-2.|
 
 ## <a name="examples"></a>Voorbeelden
@@ -286,9 +286,9 @@ U moet een gebruiker alias genereren door te nemen van de eerste 3 letters van d
 
 **Voorbeeld van invoer/uitvoer:** <br>
 
-* **Invoer** (voor gegeven): Letterlijk
-* **Invoer** (achternaam): Vries
-* **UITVOER**:  "JohDoe"
+* **INVOER** (givenName): "John"
+* **INVOER** (voornaam): "Doe"
+* **UITVOER**: "JohDoe"
 
 ### <a name="remove-diacritics-from-a-string"></a>Diakritische tekens verwijderen uit een tekenreeks
 U moet vervangen van tekens lang zijn accenttekens met gelijkwaardige tekens die geen accenttekens bevatten.
@@ -298,8 +298,8 @@ NormalizeDiacritics([givenName])
 
 **Voorbeeld van invoer/uitvoer:** <br>
 
-* **Invoer** (voor gegeven): "Zoë"
-* **UITVOER**:  "Zoe"
+* **INVOER** (givenName): "Zoë"
+* **UITVOER**: "Zoe"
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Een teken reeks splitsen in een matrix met meerdere waarden
 U moet een door komma's gescheiden lijst met teken reeksen maken en deze opsplitsen in een matrix die kan worden aangesloten op een kenmerk met meerdere waarden, zoals het kenmerk PermissionSets van Sales Force. In dit voor beeld is een lijst met machtigingen sets ingevuld in extensionAttribute5 in azure AD.
@@ -322,8 +322,8 @@ U wilt bijvoorbeeld datums voor ServiceNow.
 
 **Voorbeeld van invoer/uitvoer:**
 
-* **Invoer** (extensionAttribute1): "20150123105347.1 Z"
-* **UITVOER**:  "2015-01-23"
+* **INVOER** (extensionAttribute1): "20150123105347.1Z"
+* **UITVOER**: "23-01-2015"
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Vervangen door een waarde op basis van vooraf gedefinieerde set opties
 
@@ -335,7 +335,7 @@ Als de status code komt niet overeen met een van de vooraf gedefinieerde opties,
 
 **Voorbeeld van invoer/uitvoer:**
 
-* **Invoer** (status): "QLD"
+* **INVOER** (status): "QLD"
 * **UITVOER**: "Australië/Brisbane"
 
 ### <a name="replace-characters-using-a-regular-expression"></a>Tekens vervangen met een reguliere expressie
@@ -348,7 +348,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **Voorbeeld van invoer/uitvoer:**
 
 * **Invoer** (mailnickname: "john_doe72"
-* **UITVOER**: "72"
+* **Uitvoer**: "72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Gegenereerde userPrincipalName-waarde converteren naar kleine letters
 In het onderstaande voor beeld wordt de UPN-waarde gegenereerd door het samen voegen van de bron velden PreferredFirstName en PreferredLastName en de functie ToLower werkt op de gegenereerde teken reeks om alle tekens te converteren naar kleine letters. 
@@ -357,9 +357,9 @@ In het onderstaande voor beeld wordt de UPN-waarde gegenereerd door het samen vo
 
 **Voorbeeld van invoer/uitvoer:**
 
-* **Invoer** (PreferredFirstName): Letterlijk
-* **Invoer** (PreferredLastName): Wit
-* **UITVOER**:john.smith@contoso.com""
+* **INVOER** (PreferredFirstName): "John"
+* **INVOER** (PreferredLastName): 'Smith'
+* **Uitvoer**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Genereren van unieke waarde voor kenmerk userPrincipalName (UPN)
 Gebaseerd op van de gebruiker voornaam, de tweede voornaam en achternaam, moet u het genereren van een waarde op voor het UPN-kenmerk en controleer de uniek in de-AD-doeldirectory voordat u de waarde toewijzen aan het UPN-kenmerk.
@@ -374,8 +374,8 @@ Gebaseerd op van de gebruiker voornaam, de tweede voornaam en achternaam, moet u
 
 **Voorbeeld van invoer/uitvoer:**
 
-* **Invoer** (PreferredFirstName): Letterlijk
-* **Invoer** (PreferredLastName): Wit
+* **INVOER** (PreferredFirstName): "John"
+* **INVOER** (PreferredLastName): 'Smith'
 * **UITVOER**: "John.Smith@contoso.com' als UPN-waarde van John.Smith@contoso.com nog niet bestaat in de map
 * **UITVOER**: "J.Smith@contoso.com' als UPN-waarde van John.Smith@contoso.com al bestaat in de map
 * **UITVOER**: "Jo.Smith@contoso.com' als de bovenstaande twee UPN-waarden al in de map bestaat

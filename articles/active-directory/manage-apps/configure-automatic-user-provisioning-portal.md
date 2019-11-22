@@ -1,5 +1,5 @@
 ---
-title: Beheer van gebruikers inrichten voor zakelijke apps in de Azure Active Directory | Microsoft Docs
+title: Beheer van gebruikers inrichten voor zakelijke apps in azure AD
 description: Meer informatie over het beheren van het inrichten van gebruikers accounts voor zakelijke apps met behulp van de Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26b00670ad93cceab8f570d3a5f56bd095fa80b5
-ms.sourcegitcommit: 9fba13cdfce9d03d202ada4a764e574a51691dcd
+ms.openlocfilehash: 77cda523582b513669adcafd3a46b6ac02dd99db
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71315258"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285622"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Het inrichten van gebruikers accounts voor zakelijke apps beheren in de Azure Portal
 
@@ -53,7 +53,7 @@ Het **inrichtings** deel venster begint met een **modus** menu, waarin de inrich
 
 Selecteer de optie **automatisch** om instellingen op te geven voor beheerders referenties, toewijzingen, starten en stoppen en synchronisatie.
 
-### <a name="admin-credentials"></a>Referenties voor beheerder
+### <a name="admin-credentials"></a>Beheerders referenties
 
 Vouw de **beheerders referenties** uit om de referenties in te voeren die vereist zijn voor Azure AD om verbinding te maken met de gebruikers beheer-API van de toepassing. De vereiste invoer varieert, afhankelijk van de toepassing. Zie de [configuratie handleiding voor deze specifieke toepassing](user-provisioning.md)voor meer informatie over de referentie typen en vereisten voor specifieke toepassingen.
 
@@ -85,9 +85,4 @@ Als het inrichten voor de eerste keer voor een toepassing wordt ingeschakeld, sc
 
 Wijzig de **inrichtings status** in **uit** om de inrichtings service te onderbreken. In deze status wordt in azure geen gebruikers-of groeps objecten in de app gemaakt, bijgewerkt of verwijderd. Wijzig de status weer **in op** en de service wordt opgehaald waar deze is gestopt.
 
-Selecteer het selectie vakje **huidige status wissen en synchronisatie opnieuw starten** en selecteer **Opslaan** in:
-
-* De inrichtings service stoppen
-* De services opnieuw starten en de eerste cyclus opnieuw uitvoeren
-
-Met deze optie kunnen beheerders het implementatie proces voor de inrichting opnieuw starten.
+De **huidige status wissen en de synchronisatie opnieuw starten** genereert een eerste cyclus. De service evalueert vervolgens alle gebruikers in het bron systeem opnieuw en bepaalt of ze binnen het bereik van de inrichting vallen. Dit kan handig zijn als uw toepassing zich momenteel in quarantaine bevindt of als u een wijziging wilt aanbrengen in uw kenmerk toewijzingen. Dit mag niet worden gebruikt voor het activeren van een aanvraag om te verwijderen of uit te scha kelen omdat deze gebeurtenissen kunnen worden verwijderd wanneer een duidelijke status wordt geactiveerd en de computer opnieuw wordt opgestart. De eerste cyclus duurt ook langer dan de typische incrementele cyclus als gevolg van het aantal objecten dat moet worden geëvalueerd. Hier vindt u meer informatie over de prestaties van de eerste en incrementele cycli [.](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user).. 

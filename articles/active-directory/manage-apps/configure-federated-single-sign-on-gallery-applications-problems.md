@@ -1,5 +1,5 @@
 ---
-title: Problemen met het configureren van federatieve eenmalige aanmelding voor Azure AD Gallery-apps | Microsoft Docs
+title: Problemen met het configureren van federatieve SSO voor Azure AD Gallery-apps
 description: Adresseer een aantal veelvoorkomende problemen die kunnen optreden bij het configureren van federatieve eenmalige aanmelding met behulp van SAML voor toepassingen die worden vermeld in de Azure AD-toepassings galerie
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f4e690b440604a312ddfa8cd320ac200c0f40cf
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381217"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274645"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleem bij het configureren van federatieve eenmalige aanmelding voor een toepassing in de Azure AD-galerie
 
@@ -74,7 +74,7 @@ Als de waarden niet overeenkomen met de patronen die vooraf zijn geconfigureerd 
 
 -   Werk samen met de leverancier van de toepassing om waarden op te halen die overeenkomen met het patroon dat vooraf is geconfigureerd in azure AD
 
--   U kunt ook contact opnemen met het Azure AD <aadapprequest@microsoft.com> -team of een opmerking in de zelf studie laten staan om de update van de ondersteunde patronen voor de toepassing aan te vragen
+-   U kunt ook contact opnemen met het Azure AD-team op <aadapprequest@microsoft.com> of een opmerking in de zelf studie laten staan om de update van de ondersteunde patronen voor de toepassing aan te vragen
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>Waar kan ik de EntityID-indeling (gebruikers-id) instellen
 

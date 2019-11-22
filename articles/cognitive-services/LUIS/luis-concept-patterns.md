@@ -1,7 +1,7 @@
 ---
 title: Help voor voor spelling van patronen-LUIS
 titleSuffix: Azure Cognitive Services
-description: Een patroon kunt u meer nauwkeurigheid voor een doel zonder op te geven veel meer uitingen krijgen.
+description: Met een patroon kunt u een grotere nauwkeurigheid verkrijgen voor een intentie zonder te voorzien in veel meer uitingen.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,15 +11,15 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 6234a13d07ac024849d1c890d82ef03e19c11af4
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 32b9b42ee0962353405616e501de95b19e40ea1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012001"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280856"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Patronen verbeteren nauwkeurigheid
-Patronen zijn ontworpen voor betere nauwkeurigheid wanneer verschillende uitingen vergelijkbaar zijn.  Een patroon kunt u meer nauwkeurigheid voor een doel zonder op te geven veel meer uitingen krijgen. 
+Patronen zijn ontworpen voor betere nauwkeurigheid wanneer verschillende uitingen vergelijkbaar zijn.  Met een patroon kunt u een grotere nauwkeurigheid verkrijgen voor een intentie zonder te voorzien in veel meer uitingen. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Patronen oplossen lage intentie vertrouwen
 Houd rekening met een Human Resources-app die in de organisatie-grafiek ten opzichte van een werknemer-rapporten. Gezien de naam en de relatie van een werknemer, retourneert LUIS de werknemers die betrokken zijn. Houd rekening met een werknemer, Tom, met een manager naam Els en een team van onderliggende niveaus met de naam: Michael Rebecca en Carl.
@@ -45,7 +45,7 @@ Patronen gebruiken een combinatie van technologieën voor voorspelling. Instelle
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>De door de machine gedetecteerde entiteits detectie worden niet door patronen verbeterd
 
-Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rollen te helpen. Het patroon. elke entiteit wordt gebruikt om vrije-vorm entiteiten te extra heren. Hoewel patronen gebruikmaken van entiteiten, kan een patroon niet helpen bij het detecteren van een door de machine geleerde entiteit.  
+Een patroon is hoofd zakelijk bedoeld om de voor spelling van intenties en rollen te helpen. Het _patroon. elke_ entiteit wordt gebruikt om vrije-vorm entiteiten te extra heren. Hoewel patronen gebruikmaken van entiteiten, kan een patroon niet helpen bij het detecteren van een door de machine geleerde entiteit.  
 
 Het is niet raadzaam om verbeterde entiteits voorspellingen te zien als u meerdere uitingen samenvouwt tot één patroon. Voor eenvoudige entiteiten die moeten worden gestart, moet u uitingen toevoegen of de lijst entiteiten gebruiken. anders wordt uw patroon niet geactiveerd.
 
@@ -64,7 +64,7 @@ U kunt een app bouwen met intenties die geen voor beeld uitingen hebben, zolang 
 ## <a name="best-practices"></a>Aanbevolen procedures
 Informatie over [aanbevolen procedures](luis-concept-best-practices.md).
 
-## <a name="pattern-syntax"></a>De syntaxis van het patroon
+## <a name="pattern-syntax"></a>Patroonsyntaxis
 
 Meer informatie over de syntaxis van patronen in de syntaxis van de [patroon verwijzing](reference-pattern-syntax.md). 
 

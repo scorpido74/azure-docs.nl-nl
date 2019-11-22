@@ -1,6 +1,7 @@
 ---
-title: Problemen oplossen met verbindingen met Azure Network Watcher - Azure CLI | Microsoft Docs
-description: Meer informatie over het gebruik van de verbinding oplossen van de mogelijkheden van Azure Network Watcher met de Azure CLI.
+title: Problemen met verbindingen oplossen-Azure CLI
+titleSuffix: Azure Network Watcher
+description: Meer informatie over het gebruik van de functie verbinding oplossen van Azure Network Watcher met behulp van de Azure CLI.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,35 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 568d3fe774bd2ec810bd3aa386fb151518e6a581
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 07358d5d77e91f0b4eebffa068ff72fc83c74893
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64720840"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276032"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Problemen oplossen met verbindingen met Azure Network Watcher met de Azure CLI
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Verbindings problemen met Azure-Network Watcher met Azure CLI oplossen
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [Azure-CLI](network-watcher-connectivity-cli.md)
+> - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Informatie over het gebruik van de verbinding oplossen om te controleren of een rechtstreekse TCP-verbinding van een virtuele machine naar een bepaald eindpunt kan worden gemaakt.
+Meer informatie over het gebruik van verbindings problemen oplossen om te controleren of een directe TCP-verbinding van een virtuele machine naar een bepaald eind punt tot stand kan worden gebracht.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u hebt de volgende bronnen:
+In dit artikel wordt ervan uitgegaan dat u de volgende resources hebt:
 
-* Een exemplaar van Network Watcher in de regio die u wilt oplossen, een verbinding.
-* Virtuele machines, problemen oplossen met verbindingen met.
+* Een exemplaar van Network Watcher in de regio waarvoor u problemen met een verbinding wilt oplossen.
+* Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Probleemoplossing voor verbindingen vereist dat de virtuele machine bij het oplossen van problemen met van heeft de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd. Ga voor het installeren van de extensie op een Windows-VM naar [Azure Network Watcher-Agent de extensie van de virtuele machine voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux-VM naar [Azure Network Watcher-Agent de extensie van de virtuele machine voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De extensie is niet vereist op het eindpunt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de virtuele machine die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Controleer de verbinding met een virtuele machine
 
-In dit voorbeeld controleert de verbinding met een virtuele doelmachine via poort 80.
+In dit voor beeld wordt de verbinding met een virtuele doel machine via poort 80 gecontroleerd.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -51,7 +52,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Antwoord
 
-Het volgende antwoord is uit het vorige voorbeeld.  In dit antwoord de `ConnectionStatus` is **onbereikbaar**. U kunt zien dat alle tests mislukte verzonden. De verbinding is mislukt op het virtuele apparaat vanwege een gebruiker geconfigureerde `NetworkSecurityRule` met de naam **UserRule_Port80**, is geconfigureerd voor het blokkeren van verkeer dat binnenkomt op poort 80. Deze informatie kan worden gebruikt voor het onderzoeken van problemen met verbindingen.
+Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker geconfigureerd `NetworkSecurityRule` met de naam **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
 
 ```json
 {
@@ -120,9 +121,9 @@ Nic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="validate-routing-issues"></a>Problemen met routering valideren
+## <a name="validate-routing-issues"></a>Routerings problemen valideren
 
-In dit voorbeeld controleert de verbinding tussen een virtuele machine en een externe eindpunt.
+In dit voor beeld wordt de verbinding tussen een virtuele machine en een extern eind punt gecontroleerd.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -132,7 +133,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Antwoord
 
-In het volgende voorbeeld wordt de `connectionStatus` wordt weergegeven als **onbereikbaar**. In de `hops` details, kunt u zien onder `issues` die het verkeer geblokkeerd vanwege een `UserDefinedRoute`.
+In het volgende voor beeld wordt de `connectionStatus` als **onbereikbaar**weer gegeven. In de `hops` Details kunt u onder `issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`.
 
 ```json
 {
@@ -178,9 +179,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-website-latency"></a>Latentie van de website controleren
+## <a name="check-website-latency"></a>Website latentie controleren
 
-Het volgende voorbeeld wordt de verbinding met een website.
+In het volgende voor beeld wordt de verbinding met een website gecontroleerd.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -190,7 +191,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Antwoord
 
-In het volgende antwoord, ziet u de `connectionStatus` wordt weergegeven als **bereikbaar**. Als een verbinding geslaagd is, zijn latentie waarden opgegeven.
+In het volgende antwoord kunt u zien dat de `connectionStatus` als **bereikbaar**wordt weer gegeven. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
 
 ```json
 {
@@ -224,9 +225,9 @@ pNic0/ipConfigurations/ipconfig1",
 }
 ```
 
-## <a name="check-connectivity-to-a-storage-endpoint"></a>Controleer de verbinding met een opslageindpunt
+## <a name="check-connectivity-to-a-storage-endpoint"></a>Connectiviteit met een opslag eindpunt controleren
 
-Het volgende voorbeeld wordt de verbinding van een virtuele machine met een BLOB-opslagaccount.
+In het volgende voor beeld wordt de connectiviteit van een virtuele machine naar een blog Storage-account gecontroleerd.
 
 ### <a name="example"></a>Voorbeeld
 
@@ -236,7 +237,7 @@ az network watcher test-connectivity --resource-group ContosoRG --source-resourc
 
 ### <a name="response"></a>Antwoord
 
-De volgende json is de voorbeeld-reactie van de vorige cmdlet uit te voeren. Als de controle geslaagd is, de `connectionStatus` eigenschap wordt weergegeven als **bereikbaar**.  U vindt de details met betrekking tot het aantal hops is vereist om de storage-blob en de latentie te bereiken.
+De volgende JSON is het voorbeeld antwoord van het uitvoeren van de vorige cmdlet. Wanneer de controle is geslaagd, wordt de eigenschap `connectionStatus` als **bereikbaar**weer gegeven.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
 
 ```json
 {
@@ -271,6 +272,6 @@ De volgende json is de voorbeeld-reactie van de vorige cmdlet uit te voeren. Als
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het automatiseren van pakketopnamen met waarschuwingen van de virtuele machine via [maken van een waarschuwing geactiveerd pakketopname](network-watcher-alert-triggered-packet-capture.md)
+Meer informatie over het automatiseren van pakket opnames met waarschuwingen voor virtuele machines door het weer geven van [een waarschuwing gegenereerde pakket opname maken](network-watcher-alert-triggered-packet-capture.md)
 
-Zoeken of bepaalde verkeer is toegestaan in of buiten uw virtuele machine door naar de pagina [controleren IP-stroom controleren](diagnose-vm-network-traffic-filtering-problem.md)
+Controleren of bepaalde verkeer is toegestaan in of buiten uw virtuele machine door te kijken naar controle van de [IP-stroom](diagnose-vm-network-traffic-filtering-problem.md)

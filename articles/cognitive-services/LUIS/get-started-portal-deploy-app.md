@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 279ec4e8a6d9a9d473cc511b4ec690391cdbd634
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 65af2caa2272549b5ad562ff3c38b90e3ea43fd5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669425"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278549"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Snelstartgids: een app implementeren in de LUIS-Portal
 
@@ -29,6 +29,7 @@ In deze Quick Start leert u hoe u een toepassing implementeert. U maakt een Voor
 
 * Een [Azure-abonnement](https://azure.microsoft.com/free)ophalen.
 * Voltooi de [Snelstartgids van de vorige Portal](get-started-portal-build-app.md) of [down load en importeer de app](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/in-portal/build-portal-app.json).
+* Als u apps hebt die de pre-date verificatie van Azure-bronnen hebben, kunt u deze [migreren naar een Azure-resource](luis-migration-authoring.md). Sommige Portal pagina's zien er anders uit wanneer e-mail verificatie actief is.
 
 ## <a name="create-the-endpoint-resource"></a>De eindpunt resource maken
 
@@ -60,7 +61,7 @@ U maakt de Voorspellings eindpunt resource in de Azure Portal. Deze bron mag all
 
 Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u de resource toewijzen aan de LUIS-app. Nadat deze is toegewezen, hoeft u deze stap niet opnieuw uit te voeren tenzij u een nieuwe resource maakt. U kunt een nieuwe resource maken om de regio's van uw app uit te breiden of om een hoger aantal Voorspellings query's te ondersteunen.
 
-1. Meld u aan bij de [Luis-Portal](https://www.luis.ai) en kies de **myEnglishApp** -app in de lijst met apps.
+1. Meld u aan bij de [Luis-Portal](https://preview.luis.ai) en kies de **myEnglishApp** -app in de lijst met apps.
 
 1. Selecteer **beheren** in het menu in de rechter bovenhoek en selecteer vervolgens **Azure-resources**.
 
@@ -86,7 +87,7 @@ Telkens wanneer u een nieuwe resource voor LUIS maakt, moet u de resource toewij
 
 ## <a name="prediction-endpoint-request"></a>Voorspellings eindpunt aanvraag
 
-De `query=` aan het einde van de URL is de plaats waar de utterance van de gebruiker wordt toegevoegd aan de GET-aanvraag. Nadat de `query=`, voert u dezelfde gebruikers utterance in die aan het einde van de vorige Snelstartgids worden gebruikt:
+In de preview-Portal is `query=` aan het einde van de URL waar de utterance van de gebruiker wordt toegevoegd aan de GET-aanvraag. Nadat de `query=`, voert u dezelfde gebruikers utterance in die aan het einde van de vorige Snelstartgids worden gebruikt:
 
 ```Is there a form named hrf-234098```
 

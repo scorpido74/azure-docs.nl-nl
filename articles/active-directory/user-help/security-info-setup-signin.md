@@ -1,6 +1,6 @@
 ---
-title: Beveiligings gegevens (preview-versie) instellen bij een aanmeldings prompt-Azure AD
-description: Informatie over het instellen van beveiligingsgegevens voor uw werk- of schoolaccount, als hierom wordt gevraagd door de aanmeldingspagina van uw organisatie.
+title: Uw beveiligings gegevens (preview-versie) instellen bij een aanmeldings prompt-Azure AD
+description: Hoe u uw beveiligings gegevens (preview) voor uw werk-of school account instelt, nadat u op de aanmeldings pagina van uw organisatie wordt gevraagd.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ae1856c7934c658bd244445306b4bb78c666e38
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820289"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278984"
 ---
-# <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Uw beveiligingsgegevens (preview) instellen vanaf de opdrachtprompt voor de aanmeldingspagina
+# <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>Uw beveiligings gegevens (preview) instellen via een aanmeldings prompt
 
 U kunt deze stappen volgen als u wordt gevraagd uw beveiligingsgegevens in te stellen, onmiddellijk nadat u zich aanmeldt bij uw werk- of schoolaccount.
 

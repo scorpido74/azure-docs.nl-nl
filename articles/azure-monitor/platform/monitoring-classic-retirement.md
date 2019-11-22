@@ -1,6 +1,6 @@
 ---
-title: Unified Alerting-& bewaking in Azure Monitor vervangt klassieke waarschuwingen & bewaking
-description: Overzicht van het buiten gebruik stellen van klassieke bewakings Services en-functionaliteit, eerder weer gegeven in Azure Portal onder waarschuwingen (klassiek). Klassieke waarschuwingen & bewaking omvat klassieke metrische gegevens voor Azure-resources, klassieke metrische waarschuwingen voor Application Insights, klassieke webtest-waarschuwingen voor Application Insights, klassieke, op basis van aangepaste metrische gegevens gebaseerde waarschuwingen voor Application Insights en klassiek waarschuwingen voor Application Insights SmartDetection v1
+title: Update van klassieke waarschuwingen & bewaking in Azure Monitor
+description: Beschrijving van het buiten gebruik stellen van klassieke bewakings Services en-functionaliteit, eerder weer gegeven in Azure Portal onder waarschuwingen (klassiek).
 author: yanivlavi
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 2/7/2019
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: ea50a4f10aa1d794f875cb1eb9601774bec146cd
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: f4639d46a796924b4fe1dcbb46735abea128388f
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676902"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307092"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Unified Alerting-& bewaking in Azure Monitor vervangt klassieke waarschuwingen & bewaking
 
 Azure Monitor is nu een geïntegreerde volledige stack monitoring-service, die nu ondersteuning biedt voor ' één metrische ' en ' One Alerts ' in resources. Zie voor meer informatie ons [blog bericht over nieuwe Azure monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). De nieuwe Azure-bewakings-en waarschuwings platformen zijn gebouwd om sneller, slimmer en uitbreidbaar te zijn, met de groeiende Expanse van Cloud Computing en online met micro soft intelligent Cloud filosofie. 
 
-Met het nieuwe Azure-bewakings-en waarschuwings platform in de cloud worden de klassieke bewakings-en waarschuwings platform-hosten die worden gehost in de sectie *klassieke waarschuwingen weer geven* van Azure-waarschuwingen, **afgeschaft door augustus 2019 in open bare Azure** . [Azure Government Cloud](../../azure-government/documentation-government-welcome.md) en [Azure China 21vianet](https://docs.azure.cn/) worden niet beïnvloed.
+Met het nieuwe Azure monitoring-en Alerting-platform wordt het ' klassieke ' bewakings-en waarschuwings platform dat is gehost in de rubriek *klassieke waarschuwingen weer geven* van Azure-waarschuwingen 2019, buiten gebruik gesteld **in open bare Azure-Clouds**. [Azure Government Cloud](../../azure-government/documentation-government-welcome.md) en [Azure China 21vianet](https://docs.azure.cn/) worden niet beïnvloed.
 
 > [!NOTE]
 > Als gevolg van een vertraging bij het uitrollen van het migratie hulpprogramma, is de buitengebruikstellings datum voor de migratie van klassieke waarschuwingen [uitgebreid tot en met 31 augustus 2019](https://azure.microsoft.com/updates/azure-monitor-classic-alerts-retirement-date-extended-to-august-31st-2019/) van de oorspronkelijke datum van 30 juni 2019.

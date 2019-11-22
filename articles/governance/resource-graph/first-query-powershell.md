@@ -1,26 +1,30 @@
 ---
-title: 'Quickstart: Your first PowerShell query'
-description: In this quickstart, you follow the steps to enable the Resource Graph module for Azure PowerShell and run your first query.
-ms.date: 10/18/2019
+title: 'Snelstartgids: uw eerste Power shell-query'
+description: In deze Quick Start voert u de stappen uit om de module Resource Graph in te scha kelen voor Azure PowerShell en om uw eerste query uit te voeren.
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: de0103ea5fe12ae26ac64d04a8efc50b9e708fc5
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216465"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304153"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Quickstart: Run your first Resource Graph query using Azure PowerShell
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Snelstartgids: uw eerste resource grafiek query uitvoeren met behulp van Azure PowerShell
 
 De eerste stap voor het gebruik van Azure Resource Graph bestaat uit het controleren of de module voor Azure PowerShell is geïnstalleerd. In deze snelstartgids doorloopt u het proces voor het toevoegen van de module aan uw Azure PowerShell-installatie.
 
 Aan het einde van dit proces hebt u de module toegevoegd aan de Azure PowerShell-installatie van uw keuze en hebt u uw eerste Resource Graph-query uitgevoerd.
 
+## <a name="prerequisites"></a>Vereisten
+
 Als u nog geen Azure-abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
+
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>De Resource Graph-module toevoegen
 
-De module moet worden toegevoegd opdat Azure PowerShell query's kan uitvoeren voor Azure Resource Graph. This module can be used with locally installed PowerShell, with [Azure Cloud Shell](https://shell.azure.com), or with the [PowerShell Docker image](https://hub.docker.com/_/microsoft-powershell).
+De module moet worden toegevoegd opdat Azure PowerShell query's kan uitvoeren voor Azure Resource Graph. Deze module kan worden gebruikt met lokaal geïnstalleerde Power shell, met [Azure Cloud shell](https://shell.azure.com), of met de [Power shell-docker-installatie kopie](https://hub.docker.com/_/microsoft-powershell).
 
 ### <a name="base-requirements"></a>Basisvereisten
 
@@ -41,7 +45,7 @@ De Resource Graph-module voor PowerShell is **Az.ResourceGraph**.
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Validate that the module has been imported and is the latest version (0.7.5):
+1. Controleer of de module is geïmporteerd en de meest recente versie is (0.7.5):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -64,7 +68,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
    > [!NOTE]
    > Omdat deze voorbeeldquery geen sorteermodificator geeft, bijvoorbeeld `order by`, zal deze query waarschijnlijk per aanvraag een andere set resources opleveren als de query meerdere keren wordt uitgevoerd.
 
-1. Werk de query als volgt bij om de eigenschap **naam** te `order by`:
+1. Werk de query als volgt bij om de eigenschap `order by`naam**te**:
 
    ```azurepowershell-interactive
    # Run Azure Resource Graph query with 'order by'
@@ -84,7 +88,7 @@ Nu de Azure PowerShell-module is toegevoegd aan uw gewenste omgeving, kunt u een
 Wanneer de laatste query meerdere keren wordt uitgevoerd, ervan uitgaande dat niets in uw omgeving verandert, zijn de geretourneerde resultaten consistent en zoals verwacht. Ze zijn gesorteerd op de eigenschap **naam**, maar nog steeds beperkt tot de top 5-resultaten.
 
 > [!NOTE]
-> If the query does not return results from a subscription you already have access to, then note that `Search-AzGraph` cmdlet defaults to subscriptions in the default context. To see the list of subscription IDs which are part of the default context run this `(Get-AzContext).Account.ExtendedProperties.Subscriptions` If you wish to search across all the subscriptions you have access to, one can set the PSDefaultParameterValues for `Search-AzGraph` cmdlet by running `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Als de query geen resultaten oplevert van een abonnement waartoe u al toegang hebt, moet u er rekening mee houden dat `Search-AzGraph` cmdlet standaard wordt ingesteld op abonnementen in de standaard context. Als u de lijst met abonnements-Id's wilt zien die deel uitmaken van de standaard context, voert u deze `(Get-AzContext).Account.ExtendedProperties.Subscriptions` als u wilt zoeken in alle abonnementen waartoe u toegang hebt, kunt u de PSDefaultParameterValues instellen voor `Search-AzGraph`-cmdlet door `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}` uit te voeren
    
 ## <a name="clean-up-resources"></a>Resources opschonen
 
@@ -103,10 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Get more information about the [query language](./concepts/query-language.md).
-- Learn more about how to [explore resources](./concepts/explore-resources.md).
-- Run your first query by using the [Azure portal](first-query-portal.md).
-- Run your first query with [Azure CLI](first-query-azurecli.md).
-- See samples of [Starter queries](./samples/starter.md).
-- See samples of [Advanced queries](./samples/advanced.md).
-- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+In deze Quick Start hebt u de module Resource grafiek toegevoegd aan uw Azure PowerShell-omgeving en wordt uw eerste query uitgevoerd. Ga verder naar de pagina met details van de query taal voor meer informatie over de taal van de resource grafiek.
+
+> [!div class="nextstepaction"]
+> [Meer informatie over de query taal](./concepts/query-language.md)

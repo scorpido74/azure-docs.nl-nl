@@ -1,16 +1,16 @@
 ---
 title: Overzicht van Azure Resource Graph
-description: Meer informatie over hoe de Azure resource Graph-service complexe query's van resources op schaal mogelijk maakt.
+description: Meer informatie over hoe u met de Azure resource Graph-service complexe query's kunt uitvoeren op resources op schaal in abonnementen en tenants.
 ms.date: 10/21/2019
 ms.topic: overview
-ms.openlocfilehash: f75a2b65b59a9f0367a6c52c2a1cf058df5b59c3
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 49af2bc62c277bd61f051243e23fa05466dc89eb
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958734"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304048"
 ---
-# <a name="overview-of-the-azure-resource-graph-service"></a>Overzicht van de service Azure resource Graph
+# <a name="what-is-azure-resource-graph"></a>Wat is Azure Resource Graph?
 
 Azure resource Graph is een service in azure die is ontworpen om Azure Resource Management uit te breiden door efficiënte en beste bronnen te verkennen met de mogelijkheid om op schaal te zoeken in een bepaalde set abonnementen, zodat u effectief kunt bepalen wat uw variabelen. Deze query's bieden de volgende mogelijkheden:
 

@@ -1,20 +1,20 @@
 ---
 title: Updates en patches voor uw virtuele Azure-machines beheren
-description: Dit artikel biedt een overzicht van het gebruik van Azure Automation - Updatebeheer om updates en patches te beheren voor Windows Azure-VM's.
+description: Dit artikel bevat een overzicht van het gebruik van Azure Automation Updatebeheer voor het beheren van updates en patches voor uw Azure-en niet-Azure-Vm's.
 services: automation
-author: zjalexander
+author: mgoedtel
 ms.service: automation
 ms.subservice: update-management
 ms.topic: tutorial
-ms.date: 12/04/2018
-ms.author: zachal
+ms.date: 11/20/2019
+ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 65bbf58d8514f9fea082b839f57e9aaf3417dc14
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 65ce4234da3f44de11522a626d2c0d10524e4673
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73469727"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278782"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Updates en patches voor uw virtuele Azure-machines beheren
 
@@ -51,15 +51,15 @@ Schakel voor deze zelfstudie eerst updatebeheer in op de VM:
 1. Selecteer de virtuele machine waarvoor u Updatebeheer wilt inschakelen.
 1. Selecteer op de VM-pagina, onder **BEWERKINGEN** de optie **Updatebeheer**. Het deelvenster **Updatebeheer inschakelen** wordt geopend.
 
-Er wordt een validatie uitgevoerd om te bepalen of updatebeheer is ingeschakeld voor deze VM. Deze validatie bevat controles voor een Azure Log Analytics-werkruimte en het gekoppelde Automation-account, en controleert of de oplossing voor updatebeheer zich in de werkruimte bevindt.
+Er wordt een validatie uitgevoerd om te bepalen of updatebeheer is ingeschakeld voor deze VM. Deze validatie omvat controles voor een Log Analytics werkruimte en een gekoppeld Automation-account, en of de Updatebeheer oplossing is ingeschakeld in de werk ruimte.
 
-Een [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-werkruimte wordt gebruikt om gegevens te verzamelen die worden gegenereerd met functies en services zoals Updatebeheer. De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
+Een [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-werkruimte wordt gebruikt om gegevens te verzamelen die worden gegenereerd met functies en services zoals Updatebeheer. De werkruimte biedt één locatie om gegevens uit meerdere bronnen te bekijken en te analyseren.
 
-Tijdens het validatieproces wordt ook gecontroleerd of de VM is ingericht met MMA (Microsoft Monitoring Agent) en Automation Hybrid Runbook Worker. Deze agent wordt gebruikt om te communiceren met Azure Automation en om informatie op te vragen over de status van de update. De agent vereist dat poort 443 is geopend, zodat met de Azure Automation-service kan worden gecommuniceerd en updates kunnen worden gedownload.
+Tijdens het validatie proces wordt ook gecontroleerd of de virtuele machine is ingericht met de Log Analytics-agent en de automatiserings Hybrid Runbook Worker. Deze agent wordt gebruikt om te communiceren met Azure Automation en om informatie op te vragen over de status van de update. De agent vereist dat poort 443 is geopend, zodat met de Azure Automation-service kan worden gecommuniceerd en updates kunnen worden gedownload.
 
 Als een van de volgende vereiste onderdelen ontbreekt na de onboarding, wordt dit automatisch toegevoegd:
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-werkruimte
+* [Log Analytics](../azure-monitor/platform/data-platform-logs.md)-werkruimte
 * Een [Automation-account](./automation-offering-get-started.md)
 * Een [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) (ingeschakeld op de VM)
 
@@ -71,9 +71,9 @@ Het inschakelen van de oplossing kan enkele minuten duren. Sluit gedurende deze 
 
 ## <a name="view-update-assessment"></a>Update-evaluatie bekijken
 
-Nadat Updatebeheer is ingeschakeld, wordt het deelvenster **Updatebeheer** geopend. Als er updates ontbreken, wordt een lijst met ontbrekende updates weergegeven op het tabblad **Ontbrekende updates**.
+Nadat Updatebeheer is ingeschakeld, wordt het deelvenster **Updatebeheer** geopend. Als er updates worden geïdentificeerd als ontbrekend, wordt een lijst met ontbrekende updates weer gegeven op het tabblad **ontbrekende updates** .
 
-Selecteer onder **KOPPELING NAAR INFORMATIE** de koppeling naar de update om het ondersteuningsartikel voor de update te openen in een nieuw venster. In dit venster kunt u belangrijke informatie lezen over de update.
+Selecteer onder **informatie koppeling**de koppeling bijwerken om het ondersteunings artikel voor de update te openen. U kunt belang rijke informatie over de update ontdekken.
 
 ![Updatestatus bekijken](./media/automation-tutorial-update-management/manageupdates-view-status-win.png)
 

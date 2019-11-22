@@ -3,12 +3,12 @@ title: Gast configuratie beleidsregels maken
 description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Windows-of Linux-Vm's.
 ms.date: 09/20/2019
 ms.topic: conceptual
-ms.openlocfilehash: 3c7b214a07b89f4b66aa32724259b01129b9b7e9
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 2f8ad66e636f7fa37d94d24d12a2537759a3304b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959469"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279364"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
 
@@ -412,4 +412,4 @@ Voor meer informatie over de cmdlets in dit hulp programma gebruikt u de opdrach
 
 - Meer informatie over het controleren van Vm's met [gast configuratie](../concepts/guest-configuration.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).

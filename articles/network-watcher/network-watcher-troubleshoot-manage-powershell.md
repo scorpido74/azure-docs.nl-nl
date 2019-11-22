@@ -1,5 +1,6 @@
 ---
-title: Problemen met Azure Virtual Network-gateway en-verbindingen oplossen-Power shell | Microsoft Docs
+title: Problemen met Azure VNet-gateway en-verbindingen oplossen-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Op deze pagina wordt uitgelegd hoe u de Azure Network Watcher problemen met de Power shell-cmdlet kunt gebruiken
 services: network-watcher
 documentationcenter: na
@@ -14,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 40d576a980bd66fea44f9f8e4935fab3d777e4c8
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 4e65be8254710beffc6cc042316305d8d64c43c3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163860"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277834"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Problemen met Virtual Network-gateway en-verbindingen met Azure Network Watcher Power shell oplossen
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [Azure-CLI](network-watcher-troubleshoot-manage-cli.md)
+> - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
 Network Watcher biedt veel mogelijkheden voor het koppelen van uw netwerk bronnen in Azure. Een van deze mogelijkheden is het oplossen van problemen met resources. Het oplossen van resources kan worden aangeroepen via de portal, Power shell, CLI of REST API. Als Network Watcher wordt aangeroepen, wordt de status van een Virtual Network gateway of een verbinding gecontroleerd en worden de bevindingen daarvan geretourneerd.
@@ -46,7 +47,7 @@ Probleem oplossing voor bronnen biedt de mogelijkheid problemen op te lossen die
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher ophalen
 
-De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. De `$networkWatcher` variabele wordt door gegeven aan `Start-AzNetworkWatcherResourceTroubleshooting` de cmdlet in stap 4.
+De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. De variabele `$networkWatcher` wordt door gegeven aan de cmdlet `Start-AzNetworkWatcherResourceTroubleshooting` in stap 4.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -72,10 +73,10 @@ $sc = New-AzStorageContainer -Name logs
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>Probleem oplossing voor Network Watcher resource uitvoeren
 
-U kunt resources oplossen met `Start-AzNetworkWatcherResourceTroubleshooting` de cmdlet. De cmdlet wordt door gegeven aan het Network Watcher-object, de id van de verbinding of Virtual Network gateway, de opslag account-id en het pad voor het opslaan van de resultaten.
+U kunt resources oplossen met de cmdlet `Start-AzNetworkWatcherResourceTroubleshooting`. De cmdlet wordt door gegeven aan het Network Watcher-object, de id van de verbinding of Virtual Network gateway, de opslag account-id en het pad voor het opslaan van de resultaten.
 
 > [!NOTE]
-> De `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet is lang actief. het kan enkele minuten duren voordat deze is voltooid.
+> De `Start-AzNetworkWatcherResourceTroubleshooting`-cmdlet is lang actief. het kan enkele minuten duren voordat deze is voltooid.
 
 ```powershell
 Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"

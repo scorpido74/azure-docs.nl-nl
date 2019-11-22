@@ -1,5 +1,6 @@
 ---
-title: NSG auditing automatiseren met de beveiligings groeps weergave van Azure Network Watcher | Microsoft Docs
+title: NSG-controle automatiseren-beveiligings groeps weergave
+titleSuffix: Azure Network Watcher
 description: Op deze pagina vindt u instructies voor het configureren van de controle van een netwerk beveiligings groep
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8e0eddd07fc0c473e4777d9dd90d0b2c64145e34
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165145"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278043"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>NSG auditing automatiseren met de beveiligings groeps weergave van Azure Network Watcher
 
@@ -49,7 +50,7 @@ In dit scenario gaat u als volgt te werkt:
 
 ## <a name="retrieve-rule-set"></a>Regelset ophalen
 
-De eerste stap in dit voor beeld is het werken met een bestaande basis lijn. In het volgende voor beeld wordt een JSON geëxtraheerd uit een bestaande netwerk beveiligings groep met `Get-AzNetworkSecurityGroup` behulp van de cmdlet die als basis lijn voor dit voor beeld wordt gebruikt.
+De eerste stap in dit voor beeld is het werken met een bestaande basis lijn. In het volgende voor beeld wordt een JSON geëxtraheerd uit een bestaande netwerk beveiligings groep met behulp van de cmdlet `Get-AzNetworkSecurityGroup` die als basis lijn voor dit voor beeld wordt gebruikt.
 
 ```json
 [
@@ -126,7 +127,7 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher ophalen
 
-De volgende stap bestaat uit het ophalen van het Network Watcher-exemplaar. De `$networkWatcher` variabele wordt door gegeven aan `AzNetworkWatcherSecurityGroupView` de cmdlet.
+De volgende stap bestaat uit het ophalen van het Network Watcher-exemplaar. De variabele `$networkWatcher` wordt door gegeven aan de `AzNetworkWatcherSecurityGroupView`-cmdlet.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
@@ -134,7 +135,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Een virtuele machine ophalen
 
-Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView` cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
+Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView`-cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
@@ -152,7 +153,7 @@ $secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatche
 
 Het antwoord wordt gegroepeerd op netwerk interfaces. De verschillende soorten regels die worden geretourneerd, zijn effectief en standaard beveiligings regels. Het resultaat wordt verder onderverdeeld in de manier waarop het wordt toegepast, hetzij op een subnet of een virtuele NIC.
 
-Met het volgende Power shell-script worden de resultaten van de weer gave van de beveiligings groep vergeleken met een bestaande uitvoer van een NSG. Het volgende voor beeld is een eenvoudig voor beeld van hoe de resultaten kunnen worden `Compare-Object` vergeleken met de cmdlet.
+Met het volgende Power shell-script worden de resultaten van de weer gave van de beveiligings groep vergeleken met een bestaande uitvoer van een NSG. Het volgende voor beeld is een eenvoudig voor beeld van hoe de resultaten kunnen worden vergeleken met `Compare-Object`-cmdlet.
 
 ```powershell
 Compare-Object -ReferenceObject $nsgbaserules `

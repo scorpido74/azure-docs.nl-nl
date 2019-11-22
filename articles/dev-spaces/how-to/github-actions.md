@@ -1,21 +1,17 @@
 ---
 title: GitHub-acties & Azure Kubernetes-service
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/04/2019
 ms.topic: conceptual
 description: Bekijk en test wijzigingen van een pull-aanvraag rechtstreeks in azure Kubernetes service met behulp van GitHub-acties en Azure dev Spaces.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 09dc9440628ac5d808f90d086bd88e4f90765c28
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f362e75b834cd33f209dfeb261b0e6ff1df57cb3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889738"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280165"
 ---
 # <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
 

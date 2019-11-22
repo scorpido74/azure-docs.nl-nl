@@ -1,5 +1,5 @@
 ---
-title: Problemen met het configureren van eenmalige aanmelding met een wacht woord voor Azure AD Gallery-app | Microsoft Docs
+title: Problemen met het configureren van wachtwoord-SSO voor Azure AD Gallery-app
 description: Meer informatie over de veelvoorkomende problemen bij het configureren van eenmalige aanmelding met een wacht woord voor toepassingen die al zijn opgenomen in de Azure AD-toepassings galerie
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc75346b1093cc41a44edad1376c5f10dfec2409
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 96e729bee0ac9beac447893ed8dbf1bba633e412
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381139"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274183"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Probleem met het configureren van een eenmalige aanmelding met een wacht woord voor een toepassing in de Azure AD-galerie
 
-Dit artikel helpt u inzicht te krijgen in de veelvoorkomende problemen bij het configureren van eenmalige aanmelding met een **wacht woord** met een Azure AD Gallery-toepassing.
+Dit artikel helpt u inzicht te krijgen in de veelvoorkomende problemen bij het configureren van **eenmalige aanmelding met een wacht woord** met een Azure AD Gallery-toepassing.
 
 ## <a name="credentials-are-filled-in-but-the-extension-does-not-submit-them"></a>Referenties zijn ingevuld, maar de extensie verzendt deze niet
 
@@ -41,13 +41,13 @@ Voer de volgende stappen uit om dit probleem op te lossen:
 
   * Als de gebruiker zich aanmeldt, klikt u op de knop **referenties bijwerken** op de **tegel toepassing** in de sectie **apps** van het [toegangs venster](https://myapps.microsoft.com/) voor de toepassing om ze bij te werken naar de meest recente werkende gebruikers naam en het nieuwste wacht woord.
 
-  * Als u of een andere beheerder de referenties voor deze gebruiker heeft toegewezen, zoekt u de toepassings toewijzing van de gebruiker of groep door te navigeren naar het tabblad **gebruikers & groepen** van de toepassing, de toewijzing te selecteren en te klikken op de **Update referenties** knop.
+  * Als u of een andere beheerder de referenties voor deze gebruiker heeft toegewezen, zoekt u de toepassings toewijzing van de gebruiker of groep door te navigeren naar het tabblad **gebruikers & groepen** van de toepassing, de toewijzing te selecteren en op de knop **referenties bijwerken** te klikken.
 
 - Als de gebruiker zijn of haar eigen referenties heeft toegewezen, moet de gebruiker controleren of het **wacht woord niet is verlopen in de toepassing** . als dat het geval is, werkt u het **verlopen wacht woord** bij door u rechtstreeks aan te melden bij de toepassing.
 
-  * Wanneer het wacht woord in de toepassing is bijgewerkt, vraagt u de gebruiker om te klikken op de knop **referenties bijwerken** op de **tegel toepassing** in de sectie **apps** van het [toegangs venster](https://myapps.microsoft.com/) voor de toepassing om ze bij te werken naar de meest recente bekende werk gebruikers naam en wacht woord.
+  * Wanneer het wacht woord in de toepassing is bijgewerkt, vraagt u de gebruiker om te klikken op de knop **referenties bijwerken** op de **tegel toepassing** in de sectie **apps** van het [toegangs venster](https://myapps.microsoft.com/) voor de toepassing om ze bij te werken naar de meest recente werkende gebruikers naam en het nieuwste wacht woord.
 
-  * Als u of een andere beheerder de referenties voor deze gebruiker heeft toegewezen, zoekt u de toepassings toewijzing van de gebruiker of groep door te navigeren naar het tabblad **gebruikers & groepen** van de toepassing, de toewijzing te selecteren en te klikken op de **Update referenties** knop.
+  * Als u of een andere beheerder de referenties voor deze gebruiker heeft toegewezen, zoekt u de toepassings toewijzing van de gebruiker of groep door te navigeren naar het tabblad **gebruikers & groepen** van de toepassing, de toewijzing te selecteren en op de knop **referenties bijwerken** te klikken.
 
 - Laat de gebruiker de browser uitbreiding van het toegangs venster bijwerken met behulp van de volgende stappen in de sectie [de browser uitbreiding van het toegangs venster installeren](#how-to-install-the-access-panel-browser-extension) .
 
@@ -67,7 +67,7 @@ Er zijn twee hoofd oorzaken voor dit probleem:
 
 - Afhankelijk van de beveiligings instellingen die zijn ingeschakeld in Internet Explorer, wordt het uitvoeren van de uitvoering van het script voor de toepassing soms geblokkeerd als de website geen deel uitmaakt van een **vertrouwde zone**.
 
-  *  Om dit probleem op te lossen, geeft u de gebruiker de **website van de toepassing** toe te voegen aan de lijst met **vertrouwde sites** in de **beveiligings instellingen van Internet Explorer**. U kunt uw gebruikers verzenden naar het artikel [een site toevoegen aan mijn lijst met vertrouwde sites](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) voor gedetailleerde instructies.
+  *  Om dit probleem op te lossen, geeft u de gebruiker de **website van de toepassing toe te voegen** aan de lijst met **vertrouwde sites** in de **beveiligings instellingen van Internet Explorer**. U kunt uw gebruikers verzenden naar het artikel [een site toevoegen aan mijn lijst met vertrouwde sites](https://answers.microsoft.com/en-us/ie/forum/ie9-windows_7/how-do-i-add-a-site-to-my-trusted-sites-list/98cc77c8-b364-e011-8dfc-68b599b31bf5) voor gedetailleerde instructies.
 
 - In zeldzame omstandigheden kan de beveiligings validatie van Internet Explorer soms trager worden geladen dan het uitvoeren van het script.
 

@@ -1,7 +1,7 @@
 ---
-title: Run batch predictions using Azure Machine Learning designer (preview)
+title: Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer (preview)
 titleSuffix: Azure Machine Learning
-description: Learn how to train a model and set up a batch prediction pipeline using the designer. Deploy the pipeline as a parameterized web service, which can be triggered from any HTTP library.
+description: Meer informatie over het trainen van een model en het instellen van een batch voorspelling-pijp lijn met behulp van de ontwerp functie. Implementeer de pijp lijn als een webservice met para meters die kan worden geactiveerd vanuit elke HTTP-bibliotheek.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,101 +11,101 @@ ms.author: trbye
 author: trevorbye
 ms.date: 11/19/2019
 ms.custom: Ignite2019
-ms.openlocfilehash: 623400c2ee75f9ef1495e839ba9f418e48f11708
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a44ac821271cc07a790c380287391f41650ced19
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229156"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276742"
 ---
-# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Run batch predictions using Azure Machine Learning designer
+# <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch voorspellingen uitvoeren met behulp van Azure Machine Learning Designer
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In this how-to, you learn how to use the designer to train a model and set up a batch prediction pipeline and web service. Batch prediction allows for continuous and on-demand scoring of trained models on large data sets, optionally configured as a web service that can be triggered from any HTTP library. 
+In deze procedure leert u hoe u de ontwerp functie kunt gebruiken om een model te trainen en een batch Voorspellings pijplijn en-webservice in te stellen. Met batch-voor spelling kunt u getrainde modellen op basis van een doorlopende en on-demand Score instellen voor grote gegevens sets, optioneel geconfigureerd als een webservice die kan worden geactiveerd vanuit elke HTTP-bibliotheek. 
 
-For setting up batch scoring services using the SDK, see the accompanying [how-to](how-to-run-batch-predictions.md).
+Voor het instellen van batch Score Services met behulp van de SDK raadpleegt u de bijbehorende [procedures](how-to-run-batch-predictions.md).
 
-In this how-to, you learn the following tasks:
+In deze procedure leert u de volgende taken:
 
 > [!div class="checklist"]
-> * Create a basic ML experiment in a pipeline
-> * Create a parameterized batch inference pipeline
-> * Manage and run pipelines manually or from a REST endpoint
+> * Een Basic ML-experiment in een pijp lijn maken
+> * Een door para meters batch-verwerkings pijplijn maken
+> * Pijp lijnen hand matig of vanuit een REST-eind punt beheren en uitvoeren
 
 ## <a name="prerequisites"></a>Vereisten
 
-1. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Try the [free or paid version of the Azure Machine Learning service](https://aka.ms/AMLFree).
+1. Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer de [gratis of betaalde versie van de Azure machine learning](https://aka.ms/AMLFree).
 
-1. Create a [workspace](tutorial-1st-experiment-sdk-setup.md).
+1. Een [werk ruimte](tutorial-1st-experiment-sdk-setup.md)maken.
 
-1. Sign in to [Azure Machine Learning studio](https://ml.azure.com/).
+1. Meld u aan bij [Azure machine learning Studio](https://ml.azure.com/).
 
-This how-to assumes basic knowledge of building a simple pipeline in the designer. For a guided introduction to the designer, complete the [tutorial](tutorial-designer-automobile-price-train-score.md). 
+In deze procedure wordt ervan uitgegaan dat u basis kennis hebt van het bouwen van een eenvoudige pijp lijn in de ontwerp functie. Voltooi de [zelf studie](tutorial-designer-automobile-price-train-score.md)voor een begeleide Inleiding tot de ontwerp functie. 
 
 ## <a name="create-a-pipeline"></a>Een pijplijn maken
 
-To create a batch inference pipeline, you first need a machine learning experiment. To create one, navigate to the **Designer** tab in your workspace and create a new pipeline by selecting the **Easy-to-use prebuilt modules** option.
+Voor het maken van een pijp lijn voor een batch-deinterferentie, hebt u eerst een machine learning experiment nodig. Als u er een wilt maken, gaat u naar het tabblad **ontwerpen** in uw werk ruimte en maakt u een nieuwe pijp lijn door de optie **gemakkelijk te gebruiken vooraf gedefinieerde modules** te selecteren.
 
-![Designer home](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
+![Introductie pagina ontwerpen](media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
 
-The following is a simple machine learning model for demonstration purposes. The data is a registered Dataset created from the Azure Open Datasets diabetes data. See the [how-to section](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) for registering Datasets from Azure Open Datasets. The data is split into training and validation sets, and a boosted decision tree is trained and scored. The pipeline must be run at least once to be able to create an inferencing pipeline. Click the **Run** button to run the pipeline.
+Hier volgt een eenvoudig machine learning model voor demonstratie doeleinden. De gegevens zijn een geregistreerde gegevensset die is gemaakt op basis van de Azure open data sets diabetes-gegevens. Zie de [sectie How-to](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) voor het registreren van gegevens sets van Azure open gegevens sets. De gegevens worden gesplitst in trainings-en validatie sets en een versterkte beslissings structuur wordt getraind en gescoord. De pijp lijn moet ten minste één keer worden uitgevoerd om een interferentie pijplijn te kunnen maken. Klik op de knop **uitvoeren** om de pijp lijn uit te voeren.
 
-![Create simple experiment](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+![Eenvoudig experiment maken](media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
 
-## <a name="create-a-batch-inference-pipeline"></a>Create a batch inference pipeline
+## <a name="create-a-batch-inference-pipeline"></a>Een pijp lijn voor een batch-deinterferentie maken
 
-Now that the pipeline has been run, there is a new option available next to **Run** and **Publish** called **Create inference pipeline**. Click the dropdown and select **Batch inference pipeline**.
+Nu de pijp lijn is uitgevoerd, is er een nieuwe optie beschikbaar naast **uitvoeren** en **publiceren** aangeroepen **pijp lijn maken**. Klik op de vervolg keuzelijst en selecteer **batch-interferentie pijplijn**.
 
-![Create batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+![Pijp lijn voor batch-deinterferentie maken](media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
 
-The result is a default batch inference pipeline. This includes a node for your original pipeline experiment setup, a node for raw data for scoring, and a node to score the raw data against your original pipeline.
+Het resultaat is een standaard pijp lijn voor batch-deinterferentie. Dit omvat een knoop punt voor de originele installatie van de pijplijn-experiment, een knoop punt voor onbewerkte gegevens voor waardering en een knoop punt om de onbewerkte gegevens te beoordelen op basis van uw oorspronkelijke pijp lijn.
 
-![Default batch inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+![Pijp lijn voor de standaard batch-deinterferentie](media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
 
-You can add other nodes to change the behavior of the batch inferencing process. In this example, you add a node for randomly sampling from the input data before scoring. Create a **Partition and Sample** node and place it between the raw data and scoring nodes. Next, click on the **Partition and Sample** node to gain access to the settings and parameters.
+U kunt andere knoop punten toevoegen om het gedrag van het proces voor het afwijzen van batches te wijzigen. In dit voor beeld voegt u een knoop punt toe voor wille keurige steek proeven van de invoer gegevens vóór de score. Maak een **partitie en** een voor beeld van een knoop punt en plaats deze tussen de onbewerkte gegevens en Score knooppunten. Klik vervolgens op de **partitie en** het voor beeld-knoop punt om toegang te krijgen tot de instellingen en para meters.
 
-![New node](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+![Nieuw knoop punt](media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
 
-The *Rate of sampling* parameter controls what percent of the original data set to take a random sample from. This is a parameter that will be useful to adjust frequently, so you enable it as a pipeline parameter. Pipeline parameters can be changed at runtime, and can be specified in a payload object when rerunning the pipeline from a REST endpoint. 
+De *frequentie van de sampling* -para meter bepaalt het percentage van de oorspronkelijke gegevensset waaruit een wille keurig voor beeld moet worden genomen. Dit is een para meter die nuttig is om regel matig aan te passen, zodat u deze als een pijplijn parameter inschakelt. Pijplijn parameters kunnen tijdens runtime worden gewijzigd en kunnen worden opgegeven in een Payload-object wanneer de pijp lijn opnieuw wordt uitgevoerd vanuit een REST-eind punt. 
 
-To enable this field as a pipeline parameter, click the ellipses above the field and then click **Add to pipeline parameter**. 
+Als u dit veld wilt inschakelen als een pijplijn parameter, klikt u op het beletsel teken boven het veld en klikt u vervolgens op **toevoegen aan pijplijn parameter**. 
 
-![Sample settings](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+![Voorbeeld instellingen](media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
 
-Next, give the parameter a name and default value. The name will be used to identify the parameter, and specify it in a REST call.
+Geef vervolgens een naam en standaard waarde op voor de para meter. De naam wordt gebruikt om de para meter te identificeren en op te geven in een REST-aanroep.
 
 ![Pijplijnparameter](media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Deploy batch inferencing pipeline
+## <a name="deploy-batch-inferencing-pipeline"></a>Pijp lijn voor het afnemen van batches implementeren
 
-Now you are ready to deploy the pipeline. Click the **Deploy** button, which opens the interface to set up an endpoint. Click the dropdown and select **New PipelineEndpoint**.
+U bent nu klaar om de pijp lijn te implementeren. Klik op de knop **implementeren** . Hiermee wordt de interface geopend om een eind punt in te stellen. Klik op de vervolg keuzelijst en selecteer **nieuwe PipelineEndpoint**.
 
-![Pipeline deploy](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+![Pijp lijn implementeren](media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
 
-Give the endpoint a name and optional description. Near the bottom you see the `sample-rate` parameter you configured with a default value of 0.8. When you're ready, click **Deploy**.
+Geef het eind punt een naam en een optionele beschrijving. Onder aan de onderkant ziet u de para meter `sample-rate` die u hebt geconfigureerd met een standaard waarde van 0,8. Wanneer u klaar bent, klikt u op **implementeren**.
 
-![Setup endpoint](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+![Installatie-eind punt](media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
 
 ## <a name="manage-endpoints"></a>Eindpunten beheren 
 
-After deployment is complete, go to the **Endpoints** tab and click the name of the endpoint you just created.
+Nadat de implementatie is voltooid, gaat u naar het tabblad **eind punten** en klikt u op de naam van het eind punt dat u zojuist hebt gemaakt.
 
-![Endpoint link](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+![Eindpunt koppeling](media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
 
-This screen shows all published pipelines under the specific endpoint. Click on your inferencing pipeline.
+In dit scherm worden alle gepubliceerde pijp lijnen onder het specifieke eind punt weer gegeven. Klik op uw pijp lijn voor het deuwren.
 
-![Inference pipeline](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+![Pijp lijn afleiding](media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
 
-The pipeline details page shows you detailed run history and connection string information for your pipeline. Click the **Run** button to create a manual run of the pipeline.
+De pagina Details van de pijp lijn bevat gedetailleerde uitvoerings geschiedenis en connection string informatie voor de pijp lijn. Klik op de knop **uitvoeren** om een hand matige uitvoering van de pijp lijn te maken.
 
-![Pipeline details](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
+![Pijp lijn Details](media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-In the run setup, you can provide a description for the run, and change the value for any pipeline parameters. This time, rerun the inferencing pipeline with a sample rate of 0.9. Click **Run** to run the pipeline.
+In Setup uitvoeren kunt u een beschrijving voor de uitvoering opgeven en de waarde voor eventuele pijplijn parameters wijzigen. Voer deze keer de representatie pijp lijn opnieuw uit met een sample frequentie van 0,9. Klik op **uitvoeren** om de pijp lijn uit te voeren.
 
-![Pipeline run](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+![Pijplijn uitvoering](media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
 
-The **Consume** tab contains the REST endpoint for rerunning your pipeline. To make a rest call, you will need an OAuth 2.0 bearer-type authentication header. See the following [tutorial section](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) for more detail on setting up authentication to your workspace and making a parameterized REST call.
+Het tabblad **verbruik** bevat het rest-eind punt voor het opnieuw uitvoeren van de pijp lijn. Als u een rest-aanroep wilt uitvoeren, hebt u een OAuth 2,0 Bearer-type verificatie-header nodig. Raadpleeg de volgende [sectie zelf studie](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) voor meer informatie over het instellen van verificatie voor uw werk ruimte en het maken van een para meter rest-aanroep.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Follow the designer [tutorial](tutorial-designer-automobile-price-train-score.md) to train and deploy a regression model.
+Volg de [zelf studie](tutorial-designer-automobile-price-train-score.md) over ontwerpen om een regressie model te trainen en te implementeren.

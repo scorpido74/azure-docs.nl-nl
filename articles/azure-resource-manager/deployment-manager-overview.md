@@ -2,14 +2,14 @@
 title: Veilige implementatie in verschillende regio's-Azure Deployment Manager
 description: Beschrijft hoe u een service implementeren via een groot aantal regio's met Azure Deployment Manager. Hier ziet u veilige implementatiemethoden om te controleren of de stabiliteit van uw implementatie te bevestigen voordat het uitrollen van naar alle regio's.
 ms.topic: conceptual
-ms.date: 05/31/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0a0d13150086b393e10bc16c5c2cef173ab0abab
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9b0e314b3911dcd3b96dc2b5b32081bd2e9c0c0c
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74147192"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307046"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Veilige implementatie procedures met Azure Deployment Manager (open bare preview) inschakelen
 
@@ -338,3 +338,5 @@ In dit artikel hebt u geleerd over Deployment Manager. Doorgaan met het volgende
 
 > [!div class="nextstepaction"]
 > [Zelfstudie: Gebruik Azure Deployment Manager met Resource Manager-sjablonen](./deployment-manager-tutorial.md)
+>
+> [Snelstartgids: Azure-Deployment Manager in slechts enkele minuten uitproberen](https://github.com/Azure-Samples/adm-quickstart)

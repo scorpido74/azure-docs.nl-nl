@@ -1,23 +1,19 @@
 ---
 title: Fouten opsporen en herhalen met Visual Studio code en node. js op Kubernetes met behulp van Azure dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Snelle Kubernetes ontwikkeling met containers, micro Services en node. js op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: b53e18d4b759bc86dd0bc8f913e02b9523fb328b
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: e255a2f751a4747331ed959def67517a7e95baa9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815817"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279571"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en node. js op Kubernetes met behulp van Azure dev Spaces
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-nodejs-on-kubernetes-using-azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen met Visual Studio code en node. js op Kubernetes met behulp van Azure dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -32,7 +28,7 @@ Met Azure dev Spaces kunt u ook fouten opsporen en herhalen met:
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Visual Studio code is geïnstalleerd](https://code.visualstudio.com/download).
 - De [Azure dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) -extensie voor Visual Studio code is geïnstalleerd.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -87,11 +83,11 @@ Open Visual Studio code, klik op *bestand* en vervolgens op *openen...* Navigeer
 
 U hebt nu het *webfrontend* -project geopend in Visual Studio code. Als u de toepassing in uw ontwikkelaars ruimte wilt uitvoeren, genereert u de helm-grafiek assets met de extensie Azure dev Spaces in het opdracht palet.
 
-Als u het opdracht palet wilt openen in Visual Studio code, klikt u op *weer gave* en vervolgens op *opdracht palet*. Begin met `Azure Dev Spaces` typen en `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`Klik op.
+Als u het opdracht palet wilt openen in Visual Studio code, klikt u op *weer gave* en vervolgens op *opdracht palet*. Begin met het typen van `Azure Dev Spaces` en klik op `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
 ![Configuratie bestanden voorbereiden voor Azure-ontwikkel ruimten](./media/common/command-palette.png)
 
-Wanneer Visual Studio code ook u vraagt om uw open bare eind punt te `Yes` configureren, kunt u een openbaar eind punt inschakelen.
+Wanneer Visual Studio code ook u vraagt om uw open bare eind punt te configureren, kiest u `Yes` om een openbaar eind punt in te scha kelen.
 
 ![Openbaar eind punt selecteren](media/common/select-public-endpoint.png)
 
@@ -117,7 +113,7 @@ Klik op *fout* opsporing en vervolgens op *fout opsporing stoppen* om het fout o
 Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk bestand in het project bijwerken en de *server opnieuw starten*. Bijvoorbeeld:
 
 1. Als uw toepassing nog steeds wordt uitgevoerd, klikt u op *fout* opsporing en *stopt u fout opsporing* .
-1. Update [regel 13 in `server.js` ](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) op:
+1. Werk [regel 13 in `server.js`](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L13) bij naar:
     
     ```javascript
         res.send('Hello from webfrontend in Azure');
@@ -152,7 +148,7 @@ Met deze opdracht bouwt en voert u uw service uit in azure dev Spaces. Er wordt 
 
 Nadat de service is gestart, navigeert u naar deze met behulp van uw browser en gaat u ermee werken.
 
-Wanneer de service wordt uitgevoerd, keert u terug naar VS code en werkt `server.js`u regel 13 bij. Bijvoorbeeld:
+Wanneer de service wordt uitgevoerd, keert u terug naar VS code en regel 13 bijwerken in `server.js`. Bijvoorbeeld:
 ```javascript
     res.send('Hello from webfrontend in Azure while debugging!');
 ```

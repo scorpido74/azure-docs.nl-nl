@@ -1,6 +1,6 @@
 ---
-title: Hebt u een klassieke waarschuwing voor metrische gegevens op de hoogte stellen een niet-Azure-systeem met behulp van een webhook
-description: Leer hoe u Azure metrische waarschuwingen naar andere, niet-Azure-systemen worden omgeleid.
+title: Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
+description: Meer informatie over het omleiden van Azure-metrische waarschuwingen naar andere, niet-Azure-systemen.
 author: snehithm
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,31 +8,31 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 264f3eb042a3c29523ed93df93dfa6d45c00ae87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 88de4464e5b95b49e76e5d9c4f7dc0d6732076e1
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60345772"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286165"
 ---
-# <a name="have-a-classic-metric-alert-notify-a-non-azure-system-using-a-webhook"></a>Hebt u een klassieke waarschuwing voor metrische gegevens op de hoogte stellen een niet-Azure-systeem met behulp van een webhook
-U kunt webhooks gebruiken voor het routeren van een Azure waarschuwingsmelding met andere systemen voor na verwerking of aangepaste acties. U kunt een webhook gebruiken op een waarschuwing aan het wordt doorgestuurd naar services die de SMS-berichten, om aan te melden bugs, om de hoogte van een team via chatten of berichtenservices, of voor verschillende andere acties te verzenden. 
+# <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Een webhook met een klassieke waarschuwing voor metrische gegevens in Azure Monitor aanroepen
+U kunt webhooks gebruiken om een Azure-waarschuwings melding naar andere systemen te routeren voor nabewerkingen of aangepaste acties. U kunt een webhook gebruiken voor een waarschuwing om deze te routeren naar services die SMS-berichten verzenden, fouten in het logboek registreren, een team informeren via chat-of bericht Services of voor verschillende andere acties. 
 
-In dit artikel wordt beschreven hoe u een webhook instellen op een Azure waarschuwing voor metrische gegevens. Ook ziet u hoe de nettolading voor de HTTP POST naar een webhook eruitziet. Zie voor meer informatie over de installatie en het schema voor een Azure-activiteit (waarschuwing bij gebeurtenissen), een waarschuwing [een webhook aanroepen op een waarschuwing voor een Azure-activiteitenlogboek](alerts-log-webhook.md).
+In dit artikel wordt beschreven hoe u een webhook instelt voor een waarschuwing voor een Azure-metriek. U ziet ook hoe de payload voor het HTTP POST-bericht op een webhook eruit ziet. Zie [een webhook aanroepen in een Azure-activiteiten logboek waarschuwing](alerts-log-webhook.md)voor meer informatie over de installatie en het schema voor een Azure-activiteiten logboek waarschuwing (waarschuwing voor gebeurtenissen).
 
-Azure-waarschuwingen Gebruik HTTP POST voor het verzenden van de inhoud van de waarschuwing in JSON-indeling naar een webhook-URI die u opgeeft bij het maken van de waarschuwing. Het schema is gedefinieerd verderop in dit artikel. De URI moet een geldige HTTP of HTTPS-eindpunt. Azure wordt één vermelding per aanvraag wanneer een waarschuwing wordt geactiveerd.
+Azure-waarschuwingen gebruiken HTTP POST om de waarschuwings inhoud in JSON-indeling te verzenden naar een webhook-URI die u opgeeft bij het maken van de waarschuwing. Het schema wordt verderop in dit artikel gedefinieerd. De URI moet een geldig HTTP-of HTTPS-eind punt zijn. Azure plaatst één vermelding per aanvraag wanneer een waarschuwing wordt geactiveerd.
 
-## <a name="configure-webhooks-via-the-azure-portal"></a>Configureren van webhooks via Azure portal
-Toevoegen of bijwerken van de webhook URI, in de [Azure-portal](https://portal.azure.com/), gaat u naar **Create/Update waarschuwingen**.
+## <a name="configure-webhooks-via-the-azure-portal"></a>Webhooks configureren via de Azure Portal
+Als u de webhook-URI wilt toevoegen of bijwerken, gaat u in het [Azure Portal](https://portal.azure.com/)naar **waarschuwingen voor maken/bijwerken**.
 
-![Een deelvenster waarschuwingsregel toevoegen](./media/alerts-webhooks/Alertwebhook.png)
+![Een waarschuwings regel deel venster toevoegen](./media/alerts-webhooks/Alertwebhook.png)
 
-U kunt ook een waarschuwing te posten naar de URI van een webhook met behulp van [Azure PowerShell-cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), een [platformoverschrijdende CLI](../../azure-monitor/platform/cli-samples.md#work-with-alerts), of [Azure Monitor REST API's](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+U kunt ook een waarschuwing configureren voor het plaatsen van een bericht naar een webhook-URI door gebruik te maken van [Azure PowerShell-cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md#create-metric-alerts), een [cross-platform-cli](../../azure-monitor/platform/cli-samples.md#work-with-alerts)of [Azure monitor rest-api's](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 
-## <a name="authenticate-the-webhook"></a>Verifiëren van de webhook
-De webhook kan verifiëren met behulp van verificatie op basis van tokens. De webhook URI wordt opgeslagen met een token-ID. Bijvoorbeeld: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+## <a name="authenticate-the-webhook"></a>De webhook verifiëren
+De webhook kan worden geverifieerd met behulp van autorisatie op basis van tokens. De webhook-URI wordt opgeslagen met een token-ID. Bijvoorbeeld: `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
-## <a name="payload-schema"></a>De nettolading van schema
+## <a name="payload-schema"></a>Payload-schema
 De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waarschuwingen op basis van metrische gegevens:
 
 ```JSON
@@ -69,41 +69,41 @@ De POST-bewerking bevat de volgende JSON-nettolading en het schema voor alle waa
 ```
 
 
-| Veld | Verplicht | Vaste set waarden | Opmerkingen |
+| Veld | Mandatory | Vaste set waarden | Opmerkingen |
 |:--- |:--- |:--- |:--- |
-| status |J |Geactiveerd, is opgelost |De status van de waarschuwing op basis van de voorwaarden die u instelt. |
+| status |J |Geactiveerd, opgelost |De status van de waarschuwing op basis van de voor waarden die u hebt ingesteld. |
 | context |J | |De context van de waarschuwing. |
-| timestamp |J | |De tijd waarop de waarschuwing is geactiveerd. |
-| id |J | |Elke waarschuwingsregel heeft een unieke ID. |
+| tijdstempel |J | |Het tijdstip waarop de waarschuwing is geactiveerd. |
+| id |J | |Elke waarschuwings regel heeft een unieke ID. |
 | name |J | |De naam van de waarschuwing. |
 | description |J | |Een beschrijving van de waarschuwing. |
-| conditionType |J |Metrische gegevens, gebeurtenis |Twee typen waarschuwingen worden ondersteund: metrische gegevens en gebeurtenissen. Metrische waarschuwingen zijn gebaseerd op een metrische gegevens. Waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteitenlogboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of op een gebeurtenis. |
-| condition |J | |De specifieke velden om te controleren op basis van de **conditionType** waarde. |
-| metricName |Voor metrische waarschuwingen | |De naam van de metrische gegevens die definieert wat de regel controleert. |
-| metricUnit |Voor metrische waarschuwingen |Bytes, BytesPerSecond, Count, CountPerSecond, Percent, Seconds |De eenheid die is toegestaan in de metrische gegevens. Zie [toegestane waarden](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
-| metricValue |Voor metrische waarschuwingen | |De werkelijke waarde van de metrische gegevens die de waarschuwing heeft veroorzaakt. |
-| threshold |Voor metrische waarschuwingen | |De drempelwaarde waarmee de waarschuwing is geactiveerd. |
-| windowSize |Voor metrische waarschuwingen | |De periode die wordt gebruikt voor het bewaken van waarschuwingsactiviteit op basis van de drempelwaarde. De waarde moet tussen 5 minuten en 1 dag. De waarde moet in ISO 8601-notatie voor de duur. |
-| timeAggregation |Voor metrische waarschuwingen |Gemiddelde, laatste, Maximum, Minimum, None, totaal |Hoe moeten de gegevens die worden verzameld worden gecombineerd na verloop van tijd. De standaardwaarde is de gemiddelde. Zie [toegestane waarden](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
-| operator |Voor metrische waarschuwingen | |De operator die wordt gebruikt voor de huidige metrische gegevens vergelijken met de ingestelde drempelwaarde. |
-| subscriptionId |J | |De Azure-abonnement-ID. |
-| resourceGroupName |J | |De naam van de resourcegroep voor de betreffende resource. |
-| resourceName |J | |De resourcenaam van de betreffende resource. |
-| resourceType |J | |Het brontype van de betreffende resource. |
-| resourceId |J | |De resource-ID van de betreffende resource. |
-| resourceRegion |J | |De regio of de locatie van de betreffende resource. |
-| portalLink |J | |Een directe koppeling naar de pagina overzicht van portal-resource. |
-| properties |N |Optioneel |Een set van sleutel/waarde-paren met informatie over de gebeurtenis. Bijvoorbeeld `Dictionary<String, String>`. Het eigenschappenveld is optioneel. In een aangepaste UI of de werkstroom voor logische Apps, kunnen gebruikers de sleutel/waarde-paren die kunnen worden doorgegeven via de nettolading van de invoeren. Een alternatieve manier om door te geven van aangepaste eigenschappen terug naar de webhook is via de webhook URI zelf (zoals queryparameters). |
+| conditionType |J |Metrische gegevens, gebeurtenis |Er worden twee soorten waarschuwingen ondersteund: metric en Event. Metrische waarschuwingen zijn gebaseerd op een metrische voor waarde. Gebeurtenis waarschuwingen zijn gebaseerd op een gebeurtenis in het activiteiten logboek. Gebruik deze waarde om te controleren of de waarschuwing is gebaseerd op een metrische waarde of een gebeurtenis. |
+| condition |J | |De specifieke velden die moeten worden gecontroleerd op basis van de waarde van **conditionType** . |
+| metricName |Voor metrische waarschuwingen | |De naam van de metriek die definieert wat de regel controleert. |
+| metricUnit |Voor metrische waarschuwingen |Bytes, BytesPerSecond, Count, CountPerSecond, Percent, Seconds |De eenheid die is toegestaan in de metriek. Bekijk de [toegestane waarden](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx). |
+| metricValue |Voor metrische waarschuwingen | |De werkelijke waarde van de metriek die de waarschuwing heeft veroorzaakt. |
+| threshold |Voor metrische waarschuwingen | |De drempel waarde waarmee de waarschuwing wordt geactiveerd. |
+| windowSize |Voor metrische waarschuwingen | |De periode die wordt gebruikt voor het bewaken van de waarschuwings activiteit op basis van de drempel waarde. De waarde moet tussen 5 minuten en 1 dag liggen. De waarde moet de ISO 8601-duur notatie hebben. |
+| timeAggregation |Voor metrische waarschuwingen |Gemiddelde, laatste, maximum, minimum, geen, totaal |Hoe de verzamelde gegevens in de loop van de tijd moeten worden gecombineerd. De standaard waarde is gemiddelde. Bekijk de [toegestane waarden](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx). |
+| and |Voor metrische waarschuwingen | |De operator die wordt gebruikt om de huidige metrische gegevens te vergelijken met de ingestelde drempel waarde. |
+| subscriptionId |J | |De ID van het Azure-abonnement. |
+| resourceGroupName |J | |De naam van de resource groep voor de betrokken resource. |
+| resourceName |J | |De resource naam van de betrokken resource. |
+| resourceType |J | |Het resource type van de betrokken resource. |
+| resourceId |J | |De resource-ID van de betrokken resource. |
+| resourceRegion |J | |De regio of locatie van de betrokken resource. |
+| portalLink |J | |Een directe koppeling naar de overzichts pagina van de portal-resource. |
+| properties |N |Optioneel |Een set sleutel-waardeparen met details over de gebeurtenis. Bijvoorbeeld `Dictionary<String, String>`. Het veld eigenschappen is optioneel. In een aangepaste UI-of logische werk stroom op basis van een app kunnen gebruikers sleutel-waardeparen invoeren die kunnen worden door gegeven via de payload. Een alternatieve manier om aangepaste eigenschappen door te geven aan de webhook is via de webhook-URI zelf (als query parameters). |
 
 > [!NOTE]
-> U kunt instellen dat de **eigenschappen** veld alleen met behulp van [Azure Monitor REST API's](https://msdn.microsoft.com/library/azure/dn933805.aspx).
+> U kunt het **Eigenschappen** veld alleen instellen met behulp van [Azure monitor rest-api's](https://msdn.microsoft.com/library/azure/dn933805.aspx).
 >
 >
 
 ## <a name="next-steps"></a>Volgende stappen
-* Meer informatie over Azure-waarschuwingen en webhooks in de video [Azure integreert waarschuwingen met PagerDuty](https://go.microsoft.com/fwlink/?LinkId=627080).
-* Meer informatie over het [Azure Automation-scripts (runbooks) uit te voeren op Azure-waarschuwingen](https://go.microsoft.com/fwlink/?LinkId=627081).
-* Meer informatie over het [een logische app gebruiken voor het verzenden van een SMS-bericht via Twilio vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
-* Meer informatie over het [gebruik van een logische app een Slack-bericht verzenden vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
-* Meer informatie over het [gebruik van een logische app een bericht verzenden naar een Azure-wachtrij vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
+* Meer informatie over Azure-waarschuwingen en webhooks in de video [integreert Azure Alerts met PagerDuty](https://go.microsoft.com/fwlink/?LinkId=627080).
+* Meer informatie over het [uitvoeren van Azure Automation scripts (runbooks) in azure-waarschuwingen](https://go.microsoft.com/fwlink/?LinkId=627081).
+* Meer informatie over het [gebruik van een logische app voor het verzenden van een SMS-bericht via Twilio vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app).
+* Meer informatie over het [gebruik van een logische app voor het verzenden van een bericht met een toegestane vertraging van een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app).
+* Meer informatie over hoe u [een logische app kunt gebruiken om een bericht te verzenden naar een Azure-wachtrij vanuit een Azure-waarschuwing](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app).
 

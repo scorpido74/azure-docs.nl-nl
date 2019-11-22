@@ -1,10 +1,6 @@
 ---
 title: Fouten opsporen en herhalen met Visual Studio en .NET Core op AKS met Azure dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 11/13/2019
 ms.topic: quickstart
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
@@ -12,12 +8,12 @@ keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, 
 manager: gwallace
 ms.custom: vs-azure
 ms.workload: azure-vs
-ms.openlocfilehash: 5a7ab993c58730594a0c4e10572939d3dccbdf02
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
-ms.translationtype: MT
+ms.openlocfilehash: 58812a4bea7948c38fb0dda782a3f601004b74c0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74091845"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279839"
 ---
 # <a name="quickstart-debug-and-iterate-with-visual-studio-and-net-core-on-kubernetes-with-azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen met Visual Studio en .NET Core op Kubernetes met Azure dev Spaces
 
@@ -48,7 +44,7 @@ U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Een 
     ![AKS maken in de Azure Portal](media/get-started-netcore-visualstudio/create-aks-portal.png)
 
 1. Klik op *Controleren + maken*.
-1. Klik op *Create*.
+1. Klik op *Maken*.
 
 ## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
 
@@ -64,7 +60,7 @@ Navigeer naar uw AKS-cluster in de Azure Portal en klik op *dev Spaces*. Wijzig 
 1. Geef uw project *webfrontend* een naam en klik op *maken*.
 1. Als u hierom wordt gevraagd, kiest u *Web Application (model-view-controller)* voor de sjabloon.
 1. Selecteer in de bovenste versie van *.net core* en *ASP.net Core 2,1* .
-1. Klik op *Create*.
+1. Klik op *Maken*.
 
 ## <a name="connect-your-project-to-your-dev-space"></a>Verbind uw project met uw ontwikkel ruimte
 

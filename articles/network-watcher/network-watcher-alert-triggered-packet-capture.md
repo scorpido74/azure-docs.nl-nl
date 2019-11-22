@@ -1,5 +1,6 @@
 ---
-title: Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen en Azure Functions | Microsoft Docs
+title: Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen-Azure Functions
+titleSuffix: Azure Network Watcher
 description: In dit artikel wordt beschreven hoe u een door een waarschuwing gegenereerde pakket opname maakt met Azure Network Watcher
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: d894fabf3cfd4c6949aba94d558751bf007356d9
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 26599776abdf7ecbb6c86c332a40e0c2b7d6e67e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70165159"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276123"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Pakket opname gebruiken voor proactieve netwerk bewaking met waarschuwingen en Azure Functions
 
@@ -69,7 +70,7 @@ Dit scenario doet het volgende:
 
 De eerste stap is het maken van een Azure-functie voor het verwerken van de waarschuwing en het maken van een pakket opname.
 
-1. Selecteer in [de Azure Portal](https://portal.azure.com) **een bron** > berekenings > **functie-app**maken.
+1. Selecteer in de [Azure Portal](https://portal.azure.com) **een resource maken** > **Compute** > **functie-app**.
 
     ![Een functie-app maken][1-1]
 
@@ -81,10 +82,10 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |**Abonnement**|[Uw abonnement] Het abonnement waarvoor u de functie-app wilt maken.||
     |**Resourcegroep**|PacketCaptureRG|De resource groep die de functie-app bevat.|
     |**Hostingabonnement**|Verbruiksabonnement| Het type van het plan dat door uw functie-app wordt gebruikt. Opties zijn verbruik of Azure App Service plan. |
-    |**Location**|US - centraal| De regio waarin de functie-app moet worden gemaakt.|
+    |**Locatie**|VS - centraal| De regio waarin de functie-app moet worden gemaakt.|
     |**Opslagaccount**|automatisch gegenereerde| Het opslag account dat Azure Functions vereist voor opslag voor algemeen gebruik.|
 
-3. Selecteer op de Blade **PacketCaptureExample functie-apps** de optie **functies** > **aangepaste functie** > **+** .
+3. Selecteer op de Blade **PacketCaptureExample-functie-apps** **functies** > **aangepaste functie** > **+** .
 
 4. Selecteer **http trigger-Power shell**en voer vervolgens de resterende informatie in. Ten slotte selecteert u **maken**om de functie te maken.
 
@@ -92,7 +93,7 @@ De eerste stap is het maken van een Azure-functie voor het verwerken van de waar
     |---|---|---|
     |**Scenario**|Experimenteel|Type scenario|
     |**Een naam voor de functie opgeven**|AlertPacketCapturePowerShell|De naam van de functie|
-    |**Verificatieniveau**|Function|Autorisatie niveau voor de functie|
+    |**Verificatieniveau**|Functie|Autorisatie niveau voor de functie|
 
 ![Functions-voor beeld][functions1]
 
@@ -121,9 +122,9 @@ Als u Network Watcher Power shell-cmdlets wilt gebruiken, moet u de meest recent
 
      ![Power shell-mappen][functions5]
 
-1. Selecteer de **functie-app-instellingen** > **Ga naar app service-editor**.
+1. Selecteer de **functie-app-instellingen** > ga naar **app service-editor**.
 
-    ![Instellingen voor functie-apps][functions2]
+    ![Instellingen voor functie-app][functions2]
 
 1. Klik met de rechter muisknop op de map **AlertPacketCapturePowershell** en maak een map met de naam **azuremodules**. 
 
@@ -226,7 +227,7 @@ Haal de Tenant-ID op door het volgende Power shell-voor beeld uit te voeren:
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
 
-De waarde van de omgevings variabele AzureCredPassword is de waarde die u krijgt om het volgende Power shell-voor beeld uit te voeren. Dit voor beeld is hetzelfde als die wordt weer gegeven in de sectie voor gaande versleutelde **referenties** . De waarde die nodig is, is de uitvoer van `$Encryptedpassword` de variabele.  Dit is het Service-Principal-wacht woord dat u hebt versleuteld met behulp van het Power shell-script.
+De waarde van de omgevings variabele AzureCredPassword is de waarde die u krijgt om het volgende Power shell-voor beeld uit te voeren. Dit voor beeld is hetzelfde als die wordt weer gegeven in de sectie voor gaande **versleutelde referenties** . De benodigde waarde is de uitvoer van de `$Encryptedpassword` variabele.  Dit is het Service-Principal-wacht woord dat u hebt versleuteld met behulp van het Power shell-script.
 
 ```powershell
 #Variables
@@ -345,7 +346,7 @@ Ga naar een bestaande virtuele machine en voeg vervolgens een waarschuwings rege
 
   |**Instelling** | **Waarde** | **Details** |
   |---|---|---|
-  |**Name**|TCP_Segments_Sent_Exceeded|De naam van de waarschuwings regel.|
+  |**Naam**|TCP_Segments_Sent_Exceeded|De naam van de waarschuwings regel.|
   |**Beschrijving**|Drempel waarde verzonden TCP-segmenten overschreden|De beschrijving voor de waarschuwings regel.|
   |**Gegevens**|Verzonden TCP-segmenten| De metriek die moet worden gebruikt om de waarschuwing te activeren. |
   |**Regeling**|Groter dan| De voor waarde die moet worden gebruikt bij het evalueren van de metriek.|

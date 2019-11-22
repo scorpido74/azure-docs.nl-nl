@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdcbef74d95fbbc4cfb49176d1f98621e746ff6
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3ca668036a8b4a4af261ee85b8a884c22258beb4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474353"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269508"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aanmelding zonder wacht woord inschakelen met de Microsoft Authenticator-app (preview)
 
@@ -46,7 +46,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 ### <a name="enable-passwordless-phone-sign-in-authentication-methods"></a>Verificatie methoden met wacht woord-aanmeld authenticatie inschakelen
 
 1. Meld u aan bij [Azure Portal](https://portal.azure.com)
-1. Bladeren naar **Azure AD-beveiligings** > **verificatie methoden** > **verificatie methode beleid (preview-versie)**
+1. Zoek en selecteer *Azure Active Directory*. Selecteer **beveiligings** > **verificatie methoden** > **beleid voor verificatie methoden (preview-versie)**
 1. Onder **Aanmelden met een wacht woord voor eenmalige aanmelding**kiest u de volgende opties
    1. **Inschakelen** -ja of Nee
    1. **Doel** -alle gebruikers of Selecteer gebruikers
@@ -54,7 +54,7 @@ Registratie functies voor verificatie methoden met een wacht woord zijn afhankel
 
 ## <a name="user-registration-and-management-of-microsoft-authenticator-app"></a>Gebruikers registratie en het beheer van Microsoft Authenticator-app
 
-1. Ga naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
+1. Blader naar [https://aka.ms/mysecurityinfo](https://aka.ms/mysecurityinfo)
 1. Meld u aan als dat nog niet is gebeurd
 1. Voeg een verificator-app toe door op **methode toevoegen**te klikken, **verificator-app**te kiezen en op **toevoegen** te klikken.
 1. Volg de instructies voor het installeren en configureren van de Microsoft Authenticator-app op uw apparaat

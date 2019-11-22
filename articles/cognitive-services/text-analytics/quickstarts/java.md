@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Java gebruiken om de Text Analytics aan te roepen REST API'
+title: 'Snelstartgids: Java gebruiken om de Text Analytics aan te roepen REST API'
 titleSuffix: Azure Cognitive Services
 description: Informatie en code voorbeelden ophalen zodat u snel aan de slag kunt met de Text Analytics-API in azure Cognitive Services.
 services: cognitive-services
@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019
-ms.openlocfilehash: e875c74884fcea824ac29001aa5bcca9009e3dcb
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: f4bae69f1ce65b98a4b83d50e906a1636833a1fd
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70142764"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284872"
 ---
-# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Quickstart: Java gebruiken om de service Azure Text Analytics cognitieve aan te roepen
+# <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Snelstartgids: Java gebruiken om de service Azure Text Analytics cognitieve aan te roepen
 <a name="HOLTop"></a>
 
-In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Java kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
+In dit artikel ziet u hoe u de [Text Analytics-API's](#Detect)[ met Java kunt gebruiken om ](#SentimentAnalysis)taal te detecteren[, ](#KeyPhraseExtraction)sentiment te analyseren[, ](#Entities)sleuteltermen op te halen [ en ](//go.microsoft.com/fwlink/?LinkID=759711)gekoppelde entiteiten te identificeren .
 
-Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor technische documentatie voor de API's.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,8 +37,8 @@ U moet ook de [eindpunt- en toegangssleutel](../../cognitive-services-apis-creat
 
 Met de Taaldetectie-API wordt de taal van een tekstdocument gedetecteerd met behulp van de  [methode Taal detecteren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
-1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met `DetectLanguage.java`de naam.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `DetectLanguage.java`.
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
 1. Voer het programma uit in uw IDE of gebruik de opdracht regel om uit te voeren (instructies in de opmerkingen bij code).
@@ -215,7 +215,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp van de [methode Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). In het volgende voorbeeld worden twee documenten beoordeeld, één in het Engels en één in het Spaans.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
 1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetSentiment.java`.
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
@@ -366,12 +366,12 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Sleuteltermen ophalen
+## <a name="extract-key-phrases"></a>Belangrijke woordgroepen herkennen
 
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
-1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse in de naam `GetKeyPhrases.java`.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse in deze met de naam `GetKeyPhrases.java`.
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.
 1. Voer het programma uit in uw IDE of gebruik de opdracht regel om uit te voeren (instructies in de opmerkingen bij code).
@@ -542,9 +542,9 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor ' Verenigde Staten ' is `location`, terwijl de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor "Verenigde Staten" is `location`, terwijl de koppeling naar Wikipedia `https://en.wikipedia.org/wiki/United_States`is.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
 1. Maak een nieuw Java-project in uw favoriete IDE (of een nieuwe map op uw bureau blad). Maak een klasse met de naam `GetEntities.java`.
 1. Voeg de hieronder vermelde code toe aan uw klasse.
 1. Zorg ervoor dat de [Gson](https://github.com/google/gson) -bibliotheek is geïnstalleerd.

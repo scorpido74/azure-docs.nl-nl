@@ -16,16 +16,16 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00b3e6f84051aec97691d2bedda6665d3c9c0ceb
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125072"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275724"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Inrichting configureren met behulp van Microsoft Graph-Api's
 
-De Azure Portal is een handige manier om de inrichting van afzonderlijke apps per keer te configureren. Maar als u meerdere of zelfs honderden exemplaren van een toepassing maakt, is het eenvoudiger om het maken en configureren van apps met Microsoft Graph Api's te automatiseren. In dit artikel wordt beschreven hoe u de inrichtings configuratie kunt automatiseren via Api's. Deze methode wordt doorgaans gebruikt voor toepassingen als [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-single-sign-on).
+De Azure Portal is een handige manier om de inrichting van afzonderlijke apps per keer te configureren. Maar als u meerdere of zelfs honderden exemplaren van een toepassing maakt, is het eenvoudiger om het maken en configureren van apps met Microsoft Graph Api's te automatiseren. In dit artikel wordt beschreven hoe u de inrichtings configuratie kunt automatiseren via Api's. Deze methode wordt doorgaans gebruikt voor toepassingen als [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
 
 **Overzicht van de stappen voor het gebruik van Microsoft Graph-Api's voor het automatiseren van de inrichtings configuratie**
 

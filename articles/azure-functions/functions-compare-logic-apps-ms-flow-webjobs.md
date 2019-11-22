@@ -1,19 +1,19 @@
 ---
 title: Wat is Microsoft Flow, Logic Apps, Functions en WebJobs? - Azure
-description: 'Compare Microsoft cloud services that are optimized for integration tasks: Microsoft Flow, Logic Apps, Functions, and WebJobs.'
+description: 'Vergelijk micro soft-Cloud Services die zijn geoptimaliseerd voor integratie taken: Microsoft Flow, Logic Apps, functions en webjobs.'
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 6cf820af8a5b97de536a9d07e49ec822ffb76681
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: a20729e7c47e6bf2ad77e47fa228495d8b482aab
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230875"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278629"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Wat is Microsoft Flow, Logic Apps, Functions en WebJobs?
 
-This article compares the following Microsoft cloud 
+In dit artikel worden de volgende micro soft-Cloud vergeleken 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
@@ -21,7 +21,7 @@ This article compares the following Microsoft cloud
 
 Al deze services kunnen integratieproblemen oplossen en bedrijfsprocessen automatiseren. Ze kunnen allemaal input, acties, voorwaarden en output definiëren. U kunt ze allemaal uitvoeren volgens een planning of na een trigger. Elke service biedt unieke voordelen en in dit artikel worden de verschillen uitgelegd. 
 
-If you're looking for a more general comparison between Azure Functions and other Azure compute options, see [Criteria for choosing an Azure compute service](/azure/architecture/guide/technology-choices/compute-comparison) and [Choosing an Azure compute option for microservices](/azure/architecture/microservices/design/compute-options).
+Zie [criteria voor het kiezen van een Azure compute-service](/azure/architecture/guide/technology-choices/compute-comparison) en [het kiezen van een Azure Compute-optie voor micro Services](/azure/architecture/microservices/design/compute-options)als u op zoek bent naar een meer algemene vergelijking tussen Azure functions en andere opties voor Azure compute.
 
 ## <a name="compare-microsoft-flow-and-azure-logic-apps"></a>Microsoft Flow en Azure Logic Apps vergelijken
 
@@ -33,14 +33,14 @@ Microsoft Flow stelt kantoormedewerkers in staat om eenvoudige integraties tot s
 
 Raadpleeg de volgende tabel om te bepalen of Microsoft Flow of Logic Apps het meest geschikt is voor een bepaalde integratie:
 
-|  | Microsoft Flow | Logische apps |
+|  | Microsoft Flow | Logic Apps |
 | --- | --- | --- |
 | Gebruikers |Kantoorpersoneel, zakelijke gebruikers, SharePoint-beheerders |Professionele integrators en ontwikkelaars, IT-professionals |
-| Scenario's |Self service |Geavanceerde integraties |
+| Scenario's |Selfservice |Geavanceerde integraties |
 | Ontwerpomgeving |In browser en mobiele app, alleen UI |In browser en [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [codeweergave](../logic-apps/logic-apps-author-definitions.md) beschikbaar |
 | Application lifecycle management (ALM) |Ontwerpen en testen in niet-productieomgevingen, niveau verhogen naar productie wanneer u klaar bent |Azure DevOps: broncodebeheer, testen, ondersteuning, automatisering en beheersbaarheid in [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| Beheerervaring |Manage Microsoft Flow environments and data loss prevention (DLP) policies, track licensing: [Microsoft Flow Admin Center](https://admin.flow.microsoft.com) |Manage resource groups, connections, access management, and logging: [Azure portal](https://portal.azure.com) |
-| Beveiliging |Office 365-beveiliging en auditlogboeken voor naleving, preventie van gegevensverlies, [inactieve versleuteling](https://wikipedia.org/wiki/Data_at_rest#Encryption) voor gevoelige gegevens |Security assurance of Azure: [Azure security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [audit logs](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
+| Beheerervaring |Microsoft Flow omgevingen en beleid voor preventie van gegevens verlies (DLP) beheren, licenties volgen: [Microsoft flow beheer centrum](https://admin.flow.microsoft.com) |Resource groepen, verbindingen, Toegangs beheer en logboek registratie beheren: [Azure Portal](https://portal.azure.com) |
+| Beveiliging |Office 365-beveiliging en auditlogboeken voor naleving, preventie van gegevensverlies, [inactieve versleuteling](https://wikipedia.org/wiki/Data_at_rest#Encryption) voor gevoelige gegevens |Beveiligings zekerheid van Azure: [Azure-beveiliging](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [audit logboeken](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Azure Functions en Azure Logic Apps vergelijken
 
@@ -48,8 +48,9 @@ Functions en Logic Apps zijn Azure-services waarmee serverloze werkbelastingen m
 
 Met Azure Functions ontwikkelt u indelingen door code te schrijven en de [extensie Durable Functions](durable/durable-functions-overview.md) te gebruiken. Met Logic Apps maakt u indelingen door gebruik te maken van een GUI of door configuratiebestanden te bewerken.
 
-U kunt services combineren en matchen als u een indeling bouwt, waarbij u functies aanroept vanuit logische apps en logische apps aanroept vanuit functies. U kunt kiezen hoe u elke indeling bouwt op basis van de mogelijkheden van de services of van uw persoonlijke voorkeur. The following table lists some of the key differences between these  
-|  | Durable Functions | Logische apps |
+U kunt services combineren en matchen als u een indeling bouwt, waarbij u functies aanroept vanuit logische apps en logische apps aanroept vanuit functies. U kunt kiezen hoe u elke indeling bouwt op basis van de mogelijkheden van de services of van uw persoonlijke voorkeur. De volgende tabel geeft een overzicht van enkele van de belangrijkste verschillen:
+
+|  | Durable Functions | Logic Apps |
 | --- | --- | --- |
 | Ontwikkeling | Code-first (imperatief) | Designer-first (declaratief) |
 | Connectiviteit | [Circa 15 bindingstypen](functions-triggers-bindings.md#supported-bindings); code schrijven voor aangepaste bindingen | [Grote verzameling connectors](../connectors/apis-list.md), [Enterprise Library Integration Pack voor B2B-scenario's](../logic-apps/logic-apps-enterprise-integration-overview.md); [aangepaste bindingen ontwikkelen](../logic-apps/custom-connector-overview.md) |
@@ -74,17 +75,17 @@ WebJobs en de WebJobs SDK werken samen het beste, maar u kunt WebJobs ook zonder
 
 Azure Functions is gebaseerd op de WebJobs SDK en deelt daarom veel triggers en verbindingen met andere Azure-services. Hier volgt een aantal factoren om te overwegen als u kiest tussen Azure Functions en WebJobs met de WebJobs SDK:
 
-|  | Functies | WebJobs met WebJobs SDK |
+|  | Functions | WebJobs met WebJobs SDK |
 | --- | --- | --- |
 |[App-model zonder server](https://azure.microsoft.com/solutions/serverless/) met [automatisch schalen](functions-scale.md#how-the-consumption-and-premium-plans-work)|✔||
 |[Ontwikkelen en testen in de browser](functions-create-first-azure-function.md) |✔||
 |[Betalen per gebruik](functions-scale.md#consumption-plan)|✔||
 |[Integratie met Logic Apps](functions-twitter-email.md)|✔||
 | Trigger-gebeurtenissen |[Timer](functions-bindings-timer.md)<br>[Azure Storage-wachtrijen en -blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-wachtrijen en -onderwerpen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage-wachtrijen en -blobs](functions-bindings-storage-blob.md)<br>[Azure Service Bus-wachtrijen en -onderwerpen](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[Bestandssysteem](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
-| Ondersteunde talen  |C#<br>F#<br>Javascript<br>Java<br>Python |C#<sup>1</sup>|
+| Ondersteunde talen  |C#<br>F#<br>JavaScript<br>Java<br>Python |C#<sup>1</sup>|
 |Pakketbeheer|NPM en NuGet|NuGet<sup>2</sup>|
 
-<sup>1</sup> WebJobs (without the WebJobs SDK) supports C#, Java, JavaScript, Bash, .cmd, .bat, PowerShell, PHP, TypeScript, Python, and more. Dit is geen allesomvattende lijst. Een WebJob kan elk programma of script uitvoeren dat in de App Service-sandbox kan worden uitgevoerd.
+<sup>1</sup> webjobs (zonder de webjobs SDK) ondersteunt C#, Java, java script, bash,. cmd,. bat, Power shell, PHP, type script, python en meer. Dit is geen allesomvattende lijst. Een WebJob kan elk programma of script uitvoeren dat in de App Service-sandbox kan worden uitgevoerd.
 
 <sup>2</sup> WebJobs (zonder de WebJobs SDK) ondersteunt NPM en NuGet.
 

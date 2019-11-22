@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids toewijzing
 description: Beschrijft de beleids toewijzings definitie die door Azure Policy wordt gebruikt om beleids definities en-para meters te koppelen aan resources voor evaluatie.
 ms.date: 09/23/2019
 ms.topic: conceptual
-ms.openlocfilehash: 500e40b8d3a5943c7f64f5b190223cb1dc7b4c92
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9301004fe05afa77f3e73c6ec97335a17c237ce9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960042"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279470"
 ---
 # <a name="azure-policy-assignment-structure"></a>Azure Policy-toewijzingsstructuur
 
@@ -93,6 +93,6 @@ In dit voor beeld zijn de eerder gedefinieerde para meters in de beleids definit
 
 - Meer informatie over de structuur van de [beleids definitie](./definition-structure.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
 - Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

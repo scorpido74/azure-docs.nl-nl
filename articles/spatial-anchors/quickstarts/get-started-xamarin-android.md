@@ -1,29 +1,29 @@
 ---
-title: 'Quick Start: een Xamarin Android-app maken met ruimtelijke ankers van Azure | Microsoft Docs'
+title: 'Quick Start: een Xamarin Android-app maken'
 description: In deze Quick Start leert u hoe u een Android-app kunt bouwen met Xamarin met behulp van ruimtelijke ankers.
 author: craigktreasure
-manager: virivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: crtreasu
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0958961f1e66be130dd2be816f6002dd34465dc6
-ms.sourcegitcommit: 13a289ba57cfae728831e6d38b7f82dae165e59d
+ms.openlocfilehash: 2976104c72179fede3b39816663ac8196d7539ec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68931656"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277013"
 ---
-# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Quickstart: Een Xamarin Android-app maken met ruimtelijke ankers van Azure
+# <a name="quickstart-create-a-xamarin-android-app-with-azure-spatial-anchors"></a>Quick Start: een Xamarin Android-app maken met ruimtelijke ankers van Azure
 
-In deze Quick Start wordt beschreven hoe u een Android-app met Xamarin maakt met behulp van [Azure spatiale ankers](../overview.md). Azure Spatial Anchors is een platformoverstijgende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een Android-app die een ruimtelijk anker kan opslaan en intrekken.
+In deze Quick Start wordt beschreven hoe u een Android-app met Xamarin maakt met behulp van [Azure spatiale ankers](../overview.md). Spatial Anchors is een platformoverschrijdende ontwikkelaarsservice waarmee u mixed reality-ervaringen kunt maken met behulp van objecten die hun locatie in de loop van de tijd op meerdere apparaten behouden. Wanneer u klaar bent, hebt u een Android-app die een ruimtelijk anker kan opslaan en intrekken.
 
 U leert het volgende:
 
 > [!div class="checklist"]
 > * Een Spatial Anchors-account maken
-> * Spatial Anchors-account-id en -accountsleutel configureren
+> * De Spatial Anchors-account-id en -accountsleutel configureren
 > * Implementeren en uitvoeren op een Android-apparaat
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -39,7 +39,7 @@ Zorg ervoor dat u over het volgende beschikt om deze snelstart te voltooien:
     - Een up-to-date versie van <a href="https://docs.microsoft.com/visualstudio/mac/installation?view=vsmac-2019" target="_blank">Visual Studio voor Mac 8.1 +</a>.
     - <a href="https://git-scm.com/download/mac" target="_blank">Git voor macOS</a>
 - De nieuwste versie van Xamarin. Android is geïnstalleerd en wordt uitgevoerd op het platform van uw keuze. Raadpleeg de installatie handleiding voor [Xamarin. Android](https://docs.microsoft.com/xamarin/android/get-started/installation/index) voor een hand leiding voor het installeren van Xamarin. Android.
-- Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerd</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
+- Een <a href="https://developer.android.com/studio/debug/dev-options" target="_blank">door een ontwikkelaar geactiveerde</a> en <a href="https://developers.google.com/ar/discover/supported-devices" target="_blank">voor ARCore geschikt</a> Android-apparaat.
   - Er zijn mogelijk extra apparaatstuurprogramma's vereist om uw computer te laten communiceren met uw Android-apparaat. Zie [hier](https://developer.android.com/studio/run/device.html)voor meer informatie.
 - Uw app moet gericht zijn op ARCore **1,8**.
 
@@ -71,25 +71,25 @@ Stel het opstart project in op **SampleXamarin. Android**, wijzig de **oplossing
 
 ![Configuratie van Visual Studio](./media/get-started-xamarin-android/visual-studio-windows-configuration.png)
 
-Selecteer **debug** > **Start Debugging** om uw app te implementeren en te starten.
+Selecteer **fout opsporing** > **fout opsporing starten** om uw app te implementeren en te starten.
 
 # <a name="macostabdeploy-macos"></a>[MacOS](#tab/deploy-macos)
 
 ![Configuratie van Visual Studio](./media/get-started-xamarin-android/visual-studio-macos-configuration.jpg)
 
-Selecteer Start **uitvoeren** > **zonder fout opsporing** om uw app te implementeren en te starten.
+Selecteer **uitvoeren** > **zonder fout opsporing starten** om uw app te implementeren en te starten.
 
 ---
 
 Selecteer in de app **basis** om de demo uit te voeren en volg de instructies voor het plaatsen en intrekken van een anker.
 
-> ![Scherm opname](./media/get-started-xamarin-android/screenshot-1.jpg)
-> 1![scherm](./media/get-started-xamarin-android/screenshot-2.jpg)
-> afbeelding2![scherm afbeelding 3](./media/get-started-xamarin-android/screenshot-3.jpg)
+> ![scherm afbeelding 1](./media/get-started-xamarin-android/screenshot-1.jpg)
+> ![scherm afbeelding 2](./media/get-started-xamarin-android/screenshot-2.jpg)
+> ![scherm afbeelding 3](./media/get-started-xamarin-android/screenshot-3.jpg)
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
 
 [!INCLUDE [Next steps](../../../includes/spatial-anchors-quickstarts-nextsteps.md)]
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Spatial Anchors met meerdere apparaten delen](../tutorials/tutorial-share-anchors-across-devices.md)
+> [Zelf studie: ruimtelijke ankers delen op meerdere apparaten](../tutorials/tutorial-share-anchors-across-devices.md)

@@ -1,25 +1,16 @@
 ---
 title: Maken en delen van een Jupyter-notebook op Azure
 description: Snel maken en uitvoeren van een Jupyter-notebook op Azure-Notebooks en vervolgens die laptop met anderen delen.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: 5add60ad-0b4b-4fd5-adf5-eb50ce072d00
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 19e8217bf88427c353fdd4c90c9f421445b7c81a
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 71220fa5aa0367d1cb1694582b4f96459a3016e7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970179"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277504"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>Quickstart: Een notebook maken en delen
+# <a name="quickstart-create-and-share-a-notebook"></a>QuickStart: Maken en delen van een laptop
 
 1. Ga naar [Azure notitieblokken](https://notebooks.azure.com) en meld u aan. (Zie voor meer informatie, [-Snelstart: aanmelden bij Azure-notitieblokken](quickstart-sign-in-azure-notebooks.md)).
 
@@ -33,7 +24,7 @@ ms.locfileid: "71970179"
 
 1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
 
-   - **Project naam**: Hallo wereld in python
+   - **Naam van het project**: Hello World in Python
    - **Project-ID**: hello-world-python
    - **Openbare project**: (uitgeschakeld)
    - **Maken van een README.md**: (uitgeschakeld)
@@ -42,7 +33,7 @@ ms.locfileid: "71970179"
 
 1. Na enkele ogenblikken navigeert Azure notitieblokken u naar het nieuwe project. Een notitieblok toevoegen aan het project door het selecteren van de **+ nieuw** vervolgkeuzelijst (die mogelijk weergegeven als alleen **+** ), vervolgens de optie **Notebook**:
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "Een nieuw, leeg project en laptop opdracht toe te voegen")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
 1. In de **nieuwe Notebook maken** pop-upvenster dat wordt weergegeven, Geef een bestandsnaam voor uw laptop, zoals *HelloWorldInPython.ipynb* ( *.ipynb* betekent dat de Notebook v Ironpythonu (Jupyter) ), en selecteer **Python 3.6** voor de taal (ook wel de *kernel*):
 
@@ -82,7 +73,7 @@ ms.locfileid: "71970179"
     print(msg)
     ```
 
-1. Selecteer **uitvoeren** (sneltoets: SHIFT + ENTER) om de code uit te voeren. U ziet onder de cel geslaagde uitvoer is vergelijkbaar met de volgende tekst:
+1. Selecteer **uitvoeren** (sneltoets: Shift + Enter) de code uit te voeren. U ziet onder de cel geslaagde uitvoer is vergelijkbaar met de volgende tekst:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -92,7 +83,7 @@ ms.locfileid: "71970179"
 
     ![Pictogram opslaan op de werkbalk Jupyter-notebook](media/quickstarts/hello-results-save-icon.png)
 
-1. Selecteer de menu opdracht **bestand** > **sluiten en** stoppen om de server te stoppen en het browser venster te sluiten.
+1. Selecteer de menu opdracht **bestand** > **sluiten en stoppen** om de server te stoppen en het browser venster te sluiten.
 
 ## <a name="share-the-notebook"></a>Delen van de notebook
 

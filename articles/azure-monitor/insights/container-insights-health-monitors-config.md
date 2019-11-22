@@ -12,16 +12,20 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/12/2019
 ms.author: magoedte
-ms.openlocfilehash: b782581318751830ec47b9fecb056fecefb353eb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 7a774adb33646635832dba5505abf57b2703de5d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74134955"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279700"
 ---
 # <a name="azure-monitor-for-containers-health-monitor-configuration-guide"></a>Configuratie handleiding voor containers Health Monitor Azure Monitor
 
-Monitors zijn het primaire element voor het meten van de status en het detecteren van fouten in Azure Monitor voor containers. In dit artikel wordt uitgelegd hoe de status wordt gemeten en welke elementen het status model vormen om de status van uw Kubernetes-cluster te controleren en rapporteren met de [status functie](container-insights-health.md).
+Monitors zijn het primaire element voor het meten van de status en het detecteren van fouten in Azure Monitor voor containers. Dit artikel helpt u bij het begrijpen van de concepten van de manier waarop de status wordt gemeten en de elementen waaruit het status model bestaat om de status van uw Kubernetes-cluster te controleren en te rapporteren met de [status (preview-functie)](container-insights-health.md) .
+
+>[!NOTE]
+>De status functie is momenteel beschikbaar als open bare preview.
+>
 
 ## <a name="monitors"></a>Monitors
 

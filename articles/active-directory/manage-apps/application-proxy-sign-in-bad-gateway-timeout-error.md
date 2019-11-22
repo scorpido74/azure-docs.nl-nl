@@ -1,5 +1,5 @@
 ---
-title: Kan geen toegang krijgen tot deze zakelijke toepassings fout met app-proxy-app | Microsoft Docs "
+title: Kan geen toegang krijgen tot deze zakelijke toepassings fout met app proxy-app
 description: Klik hier voor meer informatie over het oplossen van veelvoorkomende problemen met Azure AD-toepassingsproxy-toepassingen.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 05/21/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e54b54f592082ad998e1f5dfbdcb5ed30e6dc4a
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 3d61f4b4bce9b8287dc13237f071684ea5d135fa
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381411"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275472"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>'Geen toegang tot deze zakelijke toepassing' Fout bij het gebruik van een toepassing Application Proxy
 
@@ -31,13 +31,13 @@ Dit artikel helpt bij het oplossen van veelvoorkomende problemen met de fout 'de
 
 Wanneer u deze fout ziet, moet u de statuscode vinden op de foutpagina weergegeven. Deze code wordt waarschijnlijk een van de volgende statuscodes:
 
-- **Time-out van Gateway**: De toepassings proxy service kan de connector niet bereiken. Deze fout wijst meestal op een probleem met de connector-toewijzing, connector zelf, of de netwerkondersteuning regels om de connector.
-- **Ongeldige gateway**: De connector kan de back-end-toepassing niet bereiken. Deze fout kan duiden op een onjuiste configuratie van de toepassing.
-- **Verboden**: De gebruiker is niet gemachtigd om toegang te krijgen tot de toepassing. Deze fout kan optreden als de gebruiker is niet toegewezen aan de toepassing in Azure Active Directory of als op de back-end van de gebruiker heeft geen machtiging voor toegang tot de toepassing.
+- **Time-out van gateway**: de Application Proxy-service kan niet worden bereikt van de connector is. Deze fout wijst meestal op een probleem met de connector-toewijzing, connector zelf, of de netwerkondersteuning regels om de connector.
+- **Ongeldige Gateway**: de connector kan niet worden bereikt van de back endtoepassing is. Deze fout kan duiden op een onjuiste configuratie van de toepassing.
+- **Het is niet toegestaan**: de gebruiker is niet gemachtigd voor toegang tot de toepassing. Deze fout kan optreden als de gebruiker is niet toegewezen aan de toepassing in Azure Active Directory of als op de back-end van de gebruiker heeft geen machtiging voor toegang tot de toepassing.
 
 Voor de code, zoekt u naar de tekst in de linkerbenedenhoek van het foutbericht voor het veld ' Status '. Ook eventuele extra tips lezen aan de onderkant van de pagina zoeken.
 
-![Voorbeeld: Time-out van gateway](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
+![Voor beeld: time-out van Gateway](./media/application-proxy-sign-in-bad-gateway-timeout-error/connection-problem.png)
 
 Zie voor meer informatie over het oplossen van de hoofdoorzaak van deze fouten en meer informatie over de voorgestelde oplossingen, de bijbehorende sectie hieronder.
 
@@ -75,9 +75,9 @@ Om te controleren of de toepassing wordt toegewezen aan een werkende Connectorgr
 1. Als de verkeerde Connectorgroep wordt weergegeven, gebruikt u de vervolgkeuzelijst selecteert u de juiste groep en controleer of dat u niet meer waarschuwingen ziet. Als de beoogde Connectorgroep wordt weergegeven, klikt u op de waarschuwing op de pagina te openen met de Connector-beheer.
 1. Hier zijn er een aantal manieren om in te zoomen verder:
 
-   - Een actieve connector verplaatsen naar de groep: Als u een actieve connector hebt die deel moet uitmaken van deze groep en u een regel voor de detectie van de doel-backend-toepassing hebt, kunt u de connector verplaatsen naar de toegewezen groep. Om dit te doen, klikt u op de Connector. Gebruik de vervolgkeuzelijst de juiste groep selecteren en klik op opslaan in het veld 'Connectorgroep'.
-   - Down load een nieuwe connector voor die groep: Op deze pagina kunt u de koppeling ophalen om [een nieuwe connector te downloaden](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). De Connector installeren op een computer met rechtstreekse verbinding naar de back endtoepassing. Normaal gesp roken wordt de connector geïnstalleerd op dezelfde server als de toepassing. Het downloaden van de koppeling voor de Certificaatconnector gebruiken voor het downloaden van een connector op de doelcomputer. Vervolgens klikt u op de Connector en de 'Connector groeperen' vervolgkeuzelijst gebruiken om ervoor te zorgen dat hoort bij de juiste groep.
-   - Een inactieve connector onderzoeken: Als een connector als inactief wordt weer gegeven, kan de service niet worden bereikt. Deze fout wordt meestal veroorzaakt door sommige vereiste poorten worden geblokkeerd. Als u dit probleem wilt oplossen, gaat u naar om te controleren of alle vereiste poorten zijn toegestaan.
+   - Een actieve Connector verplaatsen naar de groep: hebt u een actieve Connector die moet behoren tot deze groep en peeren aan de doeltoepassing back-end heeft, kunt u de Connector verplaatsen naar de toegewezen groep. Om dit te doen, klikt u op de Connector. Gebruik de vervolgkeuzelijst de juiste groep selecteren en klik op opslaan in het veld 'Connectorgroep'.
+   - Download een nieuwe Connector voor deze groep: op deze pagina kunt u de koppeling naar [downloaden van een nieuwe Connector](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). De Connector installeren op een computer met rechtstreekse verbinding naar de back endtoepassing. Normaal gesp roken wordt de connector geïnstalleerd op dezelfde server als de toepassing. Het downloaden van de koppeling voor de Certificaatconnector gebruiken voor het downloaden van een connector op de doelcomputer. Vervolgens klikt u op de Connector en de 'Connector groeperen' vervolgkeuzelijst gebruiken om ervoor te zorgen dat hoort bij de juiste groep.
+   - Een niet-actieve Connector onderzoeken: als u een connector als inactief ziet, is het kan niet worden bereikt van de service. Deze fout wordt meestal veroorzaakt door sommige vereiste poorten worden geblokkeerd. Als u dit probleem wilt oplossen, gaat u naar om te controleren of alle vereiste poorten zijn toegestaan.
 
 Nadat u test deze stappen om te controleren of de toepassing is toegewezen aan een groep met Connectors, werkt de toepassing opnieuw uit. Als dit nog steeds niet werkt, gaat u verder met de volgende sectie.
 

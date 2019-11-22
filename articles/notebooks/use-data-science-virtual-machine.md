@@ -1,23 +1,17 @@
 ---
 title: Azure data Science Virtual Machines gebruiken
 description: Maak verbinding met een Azure-Data Science Virtual Machine (DSVM) om de reken kracht die beschikbaar is voor Azure Notebooks uit te breiden.
-services: app-service
-documentationcenter: ''
 author: getroyer
 manager: andneil
-ms.assetid: 0ccc2529-e17f-4221-b7c7-9496d6a731cc
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
+ms.author: getroyer
 ms.topic: article
 ms.date: 06/13/2019
-ms.author: getroyer
-ms.openlocfilehash: 0f06475708adaf1324eedbd8e315fe4d731339be
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 0559442cb3f6c3937e6930082940e9354c43bc30
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970103"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277408"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Azure data Science Virtual Machines gebruiken
 
@@ -50,7 +44,7 @@ U kunt deze waarden verkrijgen op de pagina DSVM in de Azure Portal.
 
 ## <a name="accessing-azure-notebooks-files-from-the-dsvm"></a>Azure Notebooks-bestanden openen vanuit de DSVM
 
-Toegang tot bestands systeem wordt ondersteund voor DSVM-versies 19.06.15 of hoger. Als u de versie wilt controleren, maakt u eerst verbinding met uw DSVM via SSH en voert u vervolgens de volgende opdracht uit: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (u moet het exacte IP-adres dat hier wordt weer gegeven) gebruiken. Het versie nummer wordt weer gegeven in de uitvoer voor ' versie '.
+Toegang tot bestands systeem wordt ondersteund voor DSVM-versies 19.06.15 of hoger. Als u de versie wilt controleren, maakt u eerst verbinding met uw DSVM via SSH en voert u de volgende opdracht uit: `curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018-10-01"` (u moet het exacte IP-adres dat hier wordt weer gegeven) gebruiken. Het versie nummer wordt weer gegeven in de uitvoer voor ' versie '.
 
 Als u de pariteit van bestands paden met de **gratis Compute** -laag wilt behouden, kunt u slechts één project tegelijk op een DSVM openen. Als u een nieuw project wilt openen, moet u eerst het openstaande project afsluiten.
 

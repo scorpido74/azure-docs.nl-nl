@@ -3,12 +3,12 @@ title: Oorzaken van niet-naleving bepalen
 description: Wanneer een resource niet-compatibel is, zijn er veel mogelijke redenen. Meer informatie over de oorzaak van de niet-naleving.
 ms.date: 04/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6f113080ab84fe7d159766e6543ff61b28f4ead2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 839e6c61c4a44ba7c7581290408bb997b53b8f96
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959618"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279414"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Oorzaken van niet-naleving bepalen
 
@@ -81,7 +81,7 @@ In deze details wordt uitgelegd waarom een resource momenteel niet compatibel is
 
 De volgende matrix wijst elke mogelijke _reden_ toe aan de verantwoordelijke [voor waarde](../concepts/definition-structure.md#conditions) in de beleids definitie:
 
-|Reden | voorwaarde |
+|Reden | Voorwaarde |
 |-|-|
 |De huidige waarde moet de doel waarde als sleutel bevatten. |containsKey of **niet** notContainsKey |
 |De huidige waarde moet de doel waarde bevatten. |bevat of **niet** notContains |
@@ -216,6 +216,6 @@ De wijzigings geschiedenis gegevens worden door [Azure resource Graph](../../res
 - Lees over de [structuur van Azure Policy-definities](../concepts/definition-structure.md).
 - Lees [Informatie over de effecten van het beleid](../concepts/effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
 - Meer informatie over het [oplossen van niet-compatibele resources](remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

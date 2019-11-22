@@ -1,20 +1,16 @@
 ---
 title: Maak een Kubernetes dev-ruimte in de Cloud met behulp van .NET core en VS code
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 523c722edd3e76a291ae753ec7c3482e19ca7e24
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
-ms.translationtype: MT
+ms.openlocfilehash: 85360f343326d2c974965e93147c38ac2336e83a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70845708"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280191"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Aan de slag in Azure Dev Spaces met behulp van .NET Core
 
@@ -27,7 +23,7 @@ In deze handleiding leert u het volgende:
 > [!Note]
 > Zie de sectie [probleem oplossing](troubleshooting.md) **Als u** op elk gewenst moment aan de slag gaat.
 
-## <a name="install-the-azure-cli"></a>Azure-CLI installeren
+## <a name="install-the-azure-cli"></a>Azure CLI installeren
 Azure Dev Spaces vereist minimale instellingen voor de lokale computer. De configuratie van uw ontwikkelomgeving wordt grotendeels opgeslagen in de cloud en kan worden gedeeld met andere gebruikers. Begin met het downloaden en uitvoeren van de [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ### <a name="sign-in-to-azure-cli"></a>Aanmelden bij Azure CLI
@@ -38,7 +34,7 @@ az login
 ```
 
 > [!Note]
-> Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+> Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 
 #### <a name="if-you-have-multiple-azure-subscriptions"></a>Als u meerdere Azure-abonnementen hebt...
 U kunt uw abonnementen bekijken door het volgende uit te voeren: 
@@ -110,7 +106,7 @@ Met de opdracht `azds prep` van Azure-CLI worden Docker- en Kubernetes-assets me
 
 Op dit moment is het nog niet nodig om de volledige inhoud van deze bestanden te begrijpen. Wat u wel moet weten is dat **de dezelfde assets voor 'configuratie als code' in Docker en Kubernetes kunnen worden gebruikt van ontwikkeling tot productie, waardoor er meer consistentie tussen de verschillende omgevingen bestaat.**
  
-Er wordt met de opdracht `prep` ook een bestand met de naam `./azds.yaml` gegenereerd. Dit is het configuratiebestand voor Azure Dev Spaces. Dit vormt een aanvulling op de Docker- en Kubernetes-artefacten met extra configuraties die herhaalbare ontwikkelingsmogelijkheden in Azure bieden.
+Er wordt met de opdracht `./azds.yaml` ook een bestand met de naam `prep` gegenereerd. Dit is het configuratiebestand voor Azure Dev Spaces. Dit vormt een aanvulling op de Docker- en Kubernetes-artefacten met extra configuraties die herhaalbare ontwikkelingsmogelijkheden in Azure bieden.
 
 ## <a name="build-and-run-code-in-kubernetes"></a>Code schrijven en uitvoeren in Kubernetes
 We gaan onze code uitvoeren! In het terminalvenster voert u deze opdracht uit vanuit de **hoofdcodemap**, webfrontend:
@@ -130,7 +126,7 @@ Houd de uitvoer van de opdracht in de gaten. Er zijn meerdere zaken die u zullen
 > Deze stappen nemen de eerste keer dat de opdracht `up` wordt uitgevoerd, meer tijd in beslag, maar latere uitvoeringen zullen sneller verlopen.
 
 ### <a name="test-the-web-app"></a>De web-app testen
-Scan de console-uitvoer voor het bericht van de *toepassing* die wordt gestart `up` en controleer of de opdracht is voltooid:
+Scan de console-uitvoer voor het bericht dat de *toepassing is gestart* en controleer of de `up` opdracht is voltooid:
 
 ```
 Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
@@ -151,9 +147,9 @@ webfrontend-5798f9dc44-99fsd: Now listening on: http://[::]:80
 webfrontend-5798f9dc44-99fsd: Application started. Press Ctrl+C to shut down.
 ```
 
-Bepaal de open bare URL voor de service in de uitvoer van `up` de opdracht. Deze eindigt op `.azds.io`. In het bovenstaande voor beeld is `http://webfrontend.1234567890abcdef1234.eus.azds.io/`de open bare URL.
+Bepaal de open bare URL voor de service in de uitvoer van de `up` opdracht. Het eindigt op `.azds.io`. In het bovenstaande voor beeld is de open bare URL `http://webfrontend.1234567890abcdef1234.eus.azds.io/`.
 
-Open de open bare URL in een browser om uw web-app te bekijken. Bovendien wordt de `stdout` kennisgeving `stderr` en uitvoer gestreamd naar het *azds Trace* -Terminal venster tijdens de interactie met uw web-app. U ziet ook de tracerings gegevens voor HTTP-aanvragen wanneer ze het systeem door lopen. Dit maakt het eenvoudiger voor u om complexe multi-service aanroepen tijdens de ontwikkeling bij te houden. De instrumentatie die wordt toegevoegd door dev Spaces biedt deze aanvraag tracering.
+Open de open bare URL in een browser om uw web-app te bekijken. U ziet ook `stdout` en `stderr` uitvoer wordt gestreamd naar het Terminal venster *azds Trace* tijdens de interactie met uw web-app. U ziet ook de tracerings gegevens voor HTTP-aanvragen wanneer ze het systeem door lopen. Dit maakt het eenvoudiger voor u om complexe multi-service aanroepen tijdens de ontwikkeling bij te houden. De instrumentatie die wordt toegevoegd door dev Spaces biedt deze aanvraag tracering.
 
 ![Terminal venster voor azds-tracering](media/get-started-netcore/azds-trace.png)
 
@@ -164,7 +160,7 @@ Open de open bare URL in een browser om uw web-app te bekijken. Bovendien wordt 
 ### <a name="update-a-content-file"></a>Een inhoudsbestand bijwerken
 Azure Dev Spaces draait niet alleen om het ophalen van code die wordt uitgevoerd in Kubernetes. Het gaat er om dat u de codewijzigingen snel en iteratief toegepast kunt zien in een Kubernetes-omgeving in de cloud.
 
-1. Zoek het bestand `./Views/Home/Index.cshtml` en bewerk de HTML-code. Wijzig bijvoorbeeld [regel 73 die als volgt leest `<h2>Application uses</h2>` ](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) : 
+1. Zoek het bestand `./Views/Home/Index.cshtml` en bewerk de HTML-code. Wijzig bijvoorbeeld [regel 73 die `<h2>Application uses</h2>`leest](https://github.com/Azure/dev-spaces/blob/master/samples/dotnetcore/getting-started/webfrontend/Views/Home/Index.cshtml#L73) naar iets zoals: 
 
     ```html
     <h2>Hello k8s in Azure!</h2>
@@ -249,7 +245,7 @@ In plaats van telkens als codewijzigingen zijn aangebracht een nieuwe containeri
 
 Vernieuw de web-app in de browser en ga naar de pagina Info. U ziet dat uw aangepaste bericht wordt weergegeven in de gebruikersinterface.
 
-**U beschikt nu over een methode om code snel te ontwikkelen en foutopsporing rechtstreeks uit te voeren in Kubernetes.** Hierna ziet u hoe u een tweede container kunt maken en aanroepen.
+**U hebt nu een methode voor het snel doorvoeren van code en foutopsporing rechtstreeks in Kubernetes.** Hierna ziet u hoe u een tweede container kunt maken en aanroepen.
 
 ## <a name="next-steps"></a>Volgende stappen
 

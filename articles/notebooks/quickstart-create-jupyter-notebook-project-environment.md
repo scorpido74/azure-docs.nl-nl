@@ -1,25 +1,16 @@
 ---
 title: Een Azure-notitieblokken-project met een aangepaste omgeving maken
 description: Een nieuw project maken in Azure-notitieblokken die geconfigureerd met een specifieke set geïnstalleerde pakketten en opstartscripts.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 6ec0d2fae285889a731e9b881ea90f15b96c85f2
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: f167d1bf6064cde535d17fa4a336ee13424baba7
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973071"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277482"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Quickstart: Een project met een aangepaste omgeving maken
+# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Snelstartgids: Een project met een aangepaste omgeving maken
 
 Een project in notitieblokken van Azure is een verzameling van bestanden, zoals laptops, gegevensbestanden, documentatie, afbeeldingen, enzovoort, samen met een omgeving die kan worden geconfigureerd met specifieke setup-opdrachten. Met het definiëren van de omgeving met het project, heeft iedereen die het klonen van het project in hun eigen account Azure-notitieblokken alle informatie die ze nodig hebben om de noodzakelijke omgeving opnieuw te maken.
 
@@ -37,7 +28,7 @@ Een project in notitieblokken van Azure is een verzameling van bestanden, zoals 
 
 1. In de **nieuw Project maken** pop-upvenster dat wordt weergegeven, invoeren of stel de volgende details en selecteer vervolgens **maken**:
 
-    - **Project naam**: Projecteren met een aangepaste omgeving
+    - **Naam van het project**: Project met een aangepaste omgeving
     - **Project-ID**: project-aangepaste-omgeving
     - **Openbare project**: (uitgeschakeld)
     - **Maken van een README.md**: (uitgeschakeld)
@@ -58,7 +49,7 @@ Een project in notitieblokken van Azure is een verzameling van bestanden, zoals 
 
 1. De **+ toevoegen** opdracht maakt u een stap die gedefinieerd door een bewerking en een doelbestand dat geselecteerd in de bestanden in uw project. De volgende bewerkingen worden ondersteund:
 
-    | Bewerking | Description |
+    | Bewerking | Beschrijving |
     | --- | --- |
     | Requirements.txt | Python-projecten definiëren hun afhankelijkheden in een requirements.txt-bestand. Met deze optie selecteert u het juiste bestand uit de lijst met bestanden van het project en selecteert u ook de Python-versie in de extra vervolgkeuzelijst die wordt weergegeven. Selecteer indien nodig, **annuleren** uploaden als u wilt terugkeren naar het project, of maak het bestand en vervolgens gaat u terug naar de **projectinstellingen** > **omgeving** tabblad en maak een nieuwe stap. Met deze stap in de plaats, met een notitieblok in het project automatisch wordt uitgevoerd `pip install -r <file>` |
     | Shell-script | Gebruiken om aan te geven van een bash-shell-script (meestal een bestand met de *.sh* extensie) die alle opdrachten die u uitvoeren wilt voor het initialiseren van de omgeving bevat. |

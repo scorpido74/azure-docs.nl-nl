@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 07/11/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: eadc021335488bed1f236d3728acca245be7d71e
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7c55d0568832fcefee6e0763810c5e1220480270
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806650"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278852"
 ---
 # <a name="manage-iot-central-from-azure-powershell"></a>IoT Central beheren vanuit Azure PowerShell
 
@@ -61,14 +61,14 @@ New-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
   -DisplayName "My Custom Display Name"
 ```
 
-Het script maakt eerst een resource groep in de regio VS-Oost voor de toepassing. In de volgende tabel worden de para meters beschreven die worden gebruikt met de opdracht **New-AzIotCentralApp** :
+Het script maakt eerst een resource groep op de locatie VS-Oost voor de toepassing. In de volgende tabel worden de para meters beschreven die worden gebruikt met de opdracht **New-AzIotCentralApp** :
 
 |Parameter         |Beschrijving |
 |------------------|------------|
 |ResourceGroupName |De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
-|Locatie |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de regio **VS-Oost**, VS- **West**, **Europa-Noord**of **Europa-West** regio's, of in het **Australië** of **Azië en Stille Oceaan** geografs.  |
+|Locatie |Deze cmdlet gebruikt standaard de locatie van de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of in de **Europe** -locaties.  |
 |Naam              |De naam van de toepassing in de Azure Portal. |
-|Subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
+|subdomein         |Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
 |Sku               |Op dit moment is de enige waarde **S1** (Standard-laag). Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 |Template          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie: |
 |DisplayName       |De naam van de toepassing, zoals deze wordt weer gegeven in de gebruikers interface. |
