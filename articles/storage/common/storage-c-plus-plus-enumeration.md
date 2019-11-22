@@ -1,5 +1,5 @@
 ---
-title: Azure Storage resources weer geven met de Storage-client C++ bibliotheek voor | Microsoft Docs
+title: Azure Storage resources met C++ client bibliotheek weer geven
 description: Meer informatie over het gebruik van de vermelding-Api's in Microsoft Azure Storage C++ -client bibliotheek voor het inventariseren van containers, blobs, wacht rijen, tabellen en entiteiten.
 author: mhopkins-msft
 ms.author: mhopkins
@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 3a87e39c9435ba02357b4b655e95e96666242b71
-ms.sourcegitcommit: 85b3973b104111f536dc5eccf8026749084d8789
+ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68721922"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74269451"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage resources weer geven inC++
 
@@ -55,12 +55,12 @@ Als u met meerdere threading-toepassingen of-Services werkt, raden we u aan om d
 
 Voor de schaal van Cloud opslag is gesegmenteerde vermeldingen vereist. U kunt bijvoorbeeld meer dan een miljoen blobs in een Azure Blob-container of meer dan een miljard entiteiten in een Azure-tabel hebben. Dit zijn niet theoretische getallen, maar werkelijke gebruiks gevallen van klanten.
 
-Daarom is het niet praktisch om alle objecten in één antwoord weer te geven. In plaats daarvan kunt u objecten weer geven met behulp van paginering. Elk van de vermeldings-Api's heeft een gesegmenteerde overbelasting.
+Daarom is het niet praktisch om alle objecten in één antwoord weer te geven. In plaats daarvan kunt u objecten weer geven met behulp van paginering. Elk van de vermeldings-Api's heeft een *gesegmenteerde* overbelasting.
 
 De reactie voor een gesegmenteerde vermelding omvat het volgende:
 
-* *_segment*, die de set resultaten bevat die voor één aanroep naar de listing-API wordt geretourneerd.
-* *continuation_token*, dat wordt door gegeven aan de volgende aanroep om de volgende pagina met resultaten te krijgen. Wanneer er geen resultaten meer zijn om te retour neren, is het vervolg token null.
+* *_segment*, dat de set resultaten bevat die voor één aanroep naar de listing-API wordt geretourneerd.
+* *continuation_token*, dat wordt door gegeven aan de volgende aanroep om de volgende pagina met resultaten op te halen. Wanneer er geen resultaten meer zijn om te retour neren, is het vervolg token null.
 
 Zo kan een typische aanroep voor het weer geven van een lijst met alle blobs in een container eruitzien zoals in het volgende code fragment. De code is beschikbaar in onze voor [beelden](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp):
 
@@ -97,7 +97,7 @@ list_blob_item_segment list_blobs_segmented(const utility::string_t& prefix, boo
 
 Als u de para meter *max_results* niet opgeeft, wordt de standaard waarde van maxi maal 5000 resultaten geretourneerd op één pagina.
 
-Het is ook mogelijk dat een query op Azure Table Storage geen records retourneert, of dat er minder records zijn dan de waarde van de *max_results* -para meter die u hebt opgegeven, zelfs als het vervolg token niet leeg is. Een mogelijke reden is dat de query niet binnen vijf seconden kan worden voltooid. Zolang het vervolg token niet leeg is, moet de query worden voortgezet en mag de code niet de grootte van de segment resultaten aannemen.
+Het is ook mogelijk dat een query op Azure Table Storage geen records retourneert, of dat er minder records zijn dan de waarde van de para meter *max_results* die u hebt opgegeven, zelfs als het vervolg token niet leeg is. Een mogelijke reden is dat de query niet binnen vijf seconden kan worden voltooid. Zolang het vervolg token niet leeg is, moet de query worden voortgezet en mag de code niet de grootte van de segment resultaten aannemen.
 
 Het aanbevolen coderings patroon voor de meeste scenario's is een gesegmenteerde vermelding, die een expliciete voortgang van de vermelding of het uitvoeren van query's biedt, en hoe de service op elke aanvraag reageert. Met name C++ voor toepassingen of services kan de controle op lagere niveaus van de voortgang van de vermelding helpen het geheugen en de prestaties te bepalen.
 
@@ -153,7 +153,7 @@ Hoewel Greedy een lijst met mogelijke problemen heeft gegenereerd, is het handig
 
 Als u ook of Oracle C# Java sdk's gebruikt, moet u bekend zijn met het inkomend programmeer model, dat een lijst met luie stijlen biedt, waarbij de gegevens bij een bepaalde offset alleen worden opgehaald als dat vereist is. In C++biedt de op iterator gebaseerde sjabloon ook een soort gelijke benadering.
 
-Een typische API voor een luie lijst met behulp van **list_blobs** als voor beeld ziet er als volgt uit:
+Een typische API voor een luie lijst met **list_blobs** als voor beeld ziet er als volgt uit:
 
 ```cpp
 list_blob_item_iterator list_blobs() const;

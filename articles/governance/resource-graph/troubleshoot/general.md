@@ -1,14 +1,14 @@
 ---
 title: Veelvoorkomende problemen oplossen
-description: Meer informatie over het oplossen van problemen met het uitvoeren van query's op Azure-resources met Azure resource Graph.
+description: Meer informatie over het oplossen van problemen met de verschillende Sdk's tijdens het uitvoeren van query's op Azure-resources met Azure resource Graph.
 ms.date: 10/18/2019
 ms.topic: troubleshooting
-ms.openlocfilehash: e8f42650265b1ca400731365203408eeb22a4e4c
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958524"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303907"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Problemen oplossen met Azure resource Graph
 

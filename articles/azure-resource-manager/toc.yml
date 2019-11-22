@@ -177,15 +177,35 @@
           displayName: DevOps
     - name: Sjabloon exporteren
       href: export-template-portal.md
-    - name: Verplaatsen
+    - name: Verplaatsen - regio's
       items:
-        - name: Resources verplaatsen
+        - name: Verplaatsen tussen regio's
+          href: resource-group-move-region.md
+        - name: Ondersteunde services
+          href: region-move-support.md
+        - name: Services
+          items:
+            - name: Azure-VM's
+              href: ../site-recovery/azure-to-azure-tutorial-migrate.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure Storage
+              href: ../storage/common/storage-account-move.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Azure SQL
+              href: ../sql-database/sql-database-move-resources-across-regions.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Virtueel netwerk
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Netwerkbeveiligingsgroep (NSG)
+              href: ../virtual-network/move-across-regions-nsg-portal.md?toc=/azure/azure-resource-manager/toc.json
+            - name: Openbare IP-adressen
+              href: ../virtual-network/move-across-regions-publicip-portal.md?toc=/azure/azure-resource-manager/toc.json
+    - name: Verplaatsen - resourcegroepen/abonnementen
+      items:
+        - name: Verplaatsen tussen resourcegroepen/abonnementen
           href: resource-group-move-resources.md
-        - name: Resource-ondersteuning
+        - name: Ondersteunde services
           href: move-support-resources.md
         - name: Problemen met verplaatsing oplossen
           href: troubleshoot-move.md
-        - name: Richtlijnen voor de verplaatsing van services
+        - name: Services
           items:
             - name: App Service
               href: ./move-limitations/app-service-move-limitations.md

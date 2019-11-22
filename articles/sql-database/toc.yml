@@ -526,7 +526,7 @@
               href: sql-database-elastic-pool-manage.md
         - name: Resources voor databaseserver
           items:
-            - name: Resourcelimieten voor databaseservers
+            - name: Beperkingen voor databaseresource
               href: sql-database-resource-limits-database-server.md
             - name: Connectiviteitsarchitectuur
               href: sql-database-connectivity-architecture.md
