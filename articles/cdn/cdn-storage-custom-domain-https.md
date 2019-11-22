@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 341383c232718349f091a9c92207bb27cf87cc48
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: e6415c9e8e0ab8743042891a2d0d422dffe37bdb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083020"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279120"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Zelfstudie: Toegang tot opslagblobs met een aangepast Azure CDN-domein via HTTPS
 
@@ -43,11 +43,15 @@ Azure CDN negeert eventuele beperkingen die zijn toegevoegd aan het SAS-token. Z
 Als u meerdere SAS-URL's voor hetzelfde blob-eindpunt maakt, kunt u overwegen om het cachen van queryreeksen in te schakelen. Hiermee zorgt u ervoor dat elke URL als een unieke entiteit wordt beschouwd. Zie [Cachegedrag in Azure CDN bepalen met queryreeksen](cdn-query-string.md) voor meer informatie.
 
 ## <a name="http-to-https-redirection"></a>HTTP-naar-HTTPS-omleiding
-U kunt ervoor kiezen om HTTP-verkeer om te leiden naar HTTPS door een [regel voor URL-omleiding](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect) te maken met de [regel-engine van Azure CDN](cdn-verizon-premium-rules-engine.md). Hiervoor hebt u wel een profiel voor **Azure CDN Premium van Verizon** nodig.
+U kunt ervoor kiezen om HTTP-verkeer om te leiden naar HTTPS door een regel voor URL-omleiding te maken met de [Standard regel engine](cdn-standard-rules-engine.md) of de [Verizon Premium-regels engine](cdn-verizon-premium-rules-engine.md). De standaard regels-engine is alleen beschikbaar voor Azure CDN van micro soft-profielen, maar de betaal kracht-engine van Verizon Premium is alleen beschikbaar via Azure CDN Premium van Verizon-profielen.
 
-![Regel voor URL-omleiding](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+![Micro soft-omleidings regel](./media/cdn-storage-custom-domain-https/cdn-standard-redirect-rule.png)
 
-In deze regel verwijst *Cdn-endpoint-name* naar de naam die u hebt geconfigureerd voor uw CDN-eindpunt, die u kunt selecteren in de vervolgkeuzelijst. De waarde voor *origin-path* verwijst naar het pad binnen het opslagaccount van herkomst waarin de statische inhoud zich bevindt. Als u alle statische inhoud in één container host, vervangt u *origin-path* door de naam van die container.
+In de bovenstaande regel, waardoor de hostnaam, het pad, de query reeks en het fragment worden uitgevoerd, zullen de binnenkomende waarden worden gebruikt in de omleiding. 
+
+![Verizon-omleidings regel](./media/cdn-storage-custom-domain-https/cdn-url-redirect-rule.png)
+
+In de bovenstaande regel verwijst *CDN-endpoint-name* naar de naam die u hebt geconfigureerd voor uw CDN-eind punt, die u kunt selecteren in de vervolg keuzelijst. De waarde voor *origin-path* verwijst naar het pad binnen het opslagaccount van herkomst waarin de statische inhoud zich bevindt. Als u alle statische inhoud in één container host, vervangt u *origin-path* door de naam van die container.
 
 ## <a name="pricing-and-billing"></a>Prijzen en facturering
 Als u via Azure CDN toegang hebt tot blobs, betaalt u [Blob-opslagprijzen](https://azure.microsoft.com/pricing/details/storage/blobs/) voor verkeer tussen de POP-servers en de herkomst (Blob-opslag) en [Azure CDN-prijzen](https://azure.microsoft.com/pricing/details/cdn/) voor gegevens die worden geraadpleegd vanaf de POP-servers.

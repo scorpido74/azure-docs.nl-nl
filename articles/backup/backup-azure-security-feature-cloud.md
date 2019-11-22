@@ -3,12 +3,12 @@ title: Beveiligings functies voor het beveiligen van Cloud werkbelastingen
 description: Meer informatie over het gebruik van beveiligings functies in Azure Backup om back-ups veiliger te maken.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 95eb72fe9d918b527cdceec69a0e90a682d62b07
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b6ce2f9400ad46150fbd4ee86f126b137b5f7800
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172721"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278237"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Beveiligings functies voor het beveiligen van Cloud werkbelastingen die gebruikmaken van Azure Backup
 
@@ -41,7 +41,7 @@ Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-
    > [!NOTE]
    > Als er tijdelijke, verwijderde back-upitems aanwezig zijn in de kluis, kan de kluis op dat moment niet worden verwijderd. Probeer het verwijderen van de kluis nadat de back-upitems definitief zijn verwijderd en er is geen item met de status zacht verwijderd links in de kluis.
 
-4. Als u de voorlopig verwijderde VM wilt herstellen, moet deze eerst worden verwijderd. Als u de verwijdering ongedaan wilt maken, kiest u de voorlopig verwijderde virtuele machine en klikt u vervolgens op **verwijderen**.
+4. Als u de voorlopig verwijderde VM wilt herstellen, moet deze eerst worden verwijderd. Als u de verwijdering ongedaan wilt maken, kiest u de voorlopig verwijderde virtuele machine en selecteert u vervolgens de optie **verwijderen ongedaan**maken.
 
    ![Scherm opname van Azure Portal, verwijderen van virtuele machine ongedaan maken](./media/backup-azure-security-feature-cloud/choose-undelete.png)
 
@@ -60,7 +60,7 @@ Voorlopig verwijderen wordt momenteel ondersteund in de West-Centraal VS, Azië-
 
    ![Scherm opname van Azure Portal, back-upoptie hervatten](./media/backup-azure-security-feature-cloud/resume-backup.png)
 
-In dit stroom diagram worden de verschillende stappen en statussen van een back-upitem weer gegeven:
+In dit stroom diagram worden de verschillende stappen en statussen van een back-upitem weer gegeven wanneer zacht verwijderen is ingeschakeld:
 
 ![Levens cyclus van een zacht verwijderd back-upitem](./media/backup-azure-security-feature-cloud/lifecycle.png)
 
@@ -68,26 +68,47 @@ Zie het gedeelte Veelgestelde [vragen](backup-azure-security-feature-cloud.md#fr
 
 ## <a name="disabling-soft-delete"></a>Tijdelijke verwijdering uitschakelen
 
-Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen. Als de functie voor het voorlopig verwijderen van de beveiliging is uitgeschakeld, worden de back-upgegevens niet per ongeluk of kwaad aardig verwijderd beschermd. Zonder de functie voor voorlopig verwijderen worden alle verwijderde beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Omdat back-upgegevens in de status ' voorlopig verwijderen ' geen kosten in rekening worden gebracht aan de klant, wordt het uitschakelen van deze functie niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht.
+Voorlopig verwijderen is standaard ingeschakeld op nieuwe kluizen om back-upgegevens te beschermen tegen onbedoelde of schadelijke verwijderingen.  Het uitschakelen van deze functie wordt niet aanbevolen. De enige omstandigheid waarbij het uitschakelen van de functie voor het verwijderen van uw beveiligde items naar een nieuwe kluis moet worden aangeraden, is dat de 14 dagen die vereist zijn voor het verwijderen en opnieuw beveiligen van de gegevens (zoals in een test omgeving), niet kunnen worden gewacht. Alleen een back-upbeheerder kan deze functie uitschakelen. Als u deze functie uitschakelt, worden alle verwijderde beveiligde items onmiddellijk verwijderd, zonder dat u de mogelijkheid hebt om te herstellen. Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u het verwijderen ongedaan maken en opnieuw verwijderen om het permanent te laten worden verwijderd.
 
-### <a name="prerequisites-for-disabling-soft-delete"></a>Vereisten voor het uitschakelen van de functie voor voorlopig verwijderen
-
-- Het in-of uitschakelen van voorlopig verwijderen voor kluizen (zonder beveiligde items) kan alleen worden uitgevoerd door de Azure Portal. Dit is van toepassing op:
-  - Nieuw gemaakte kluizen die geen beveiligde items bevatten
-  - Bestaande kluizen waarvan de beveiligde items zijn verwijderd en verlopen (na de vaste Bewaar periode van 14 dagen)
-- Als de functie voor voorlopig verwijderen is uitgeschakeld voor de kluis, kunt u deze opnieuw inschakelen, maar u kunt deze keuze niet terugdraaien en weer uitschakelen als de kluis beveiligde items bevat.
-- U kunt geen tijdelijke verwijdering uitschakelen voor kluizen die beveiligde items of items bevatten met de status zacht verwijderd. Als u dit wilt doen, voert u de volgende stappen uit:
-  - Stop de beveiliging van verwijderde gegevens voor alle beveiligde items.
-  - Wacht tot de 14 dagen na het bewaren van de veiligheid verloopt.
-  - Tijdelijke verwijdering uitschakelen.
-
-Als u zacht verwijderen wilt uitschakelen, controleert u of aan de vereisten wordt voldaan en volgt u deze stappen:
+Voer de volgende stappen uit om de tijdelijke verwijdering uit te scha kelen:
 
 1. Ga in het Azure Portal naar uw kluis en ga naar **instellingen** -> **Eigenschappen**.
-2. Selecteer in het deel venster Eigenschappen de optie **beveiligings instellingen** -> **Update**.
-3. Selecteer in het deel venster beveiligings instellingen onder voorlopig verwijderen de optie **uitschakelen**.
+2. Selecteer in het deel venster Eigenschappen de optie **beveiligings instellingen** -> **Update**.  
+3. Selecteer in het deel venster beveiligings instellingen onder **voorlopig verwijderen**de optie **uitschakelen**.
+
 
 ![Tijdelijke verwijdering uitschakelen](./media/backup-azure-security-feature-cloud/disable-soft-delete.png)
+
+## <a name="permanently-deleting-soft-deleted-backup-items"></a>Voorlopig verwijderde back-upitems permanent verwijderen
+
+Back-upgegevens in de modus zacht verwijderd voordat deze functie wordt uitgeschakeld, blijft de status voorlopig verwijderd. Als u deze onmiddellijk permanent wilt verwijderen, moet u deze verwijderen en weer verwijderen om het permanent te verwijderen. 
+
+Volg deze stappen:
+
+1. Volg de stappen om [zacht verwijderen uit te scha kelen](#disabling-soft-delete). 
+2. Ga in het Azure Portal naar uw kluis, ga naar **Back-upitems** en kies de voorlopig verwijderde virtuele machine 
+
+![Zacht verwijderde virtuele machine kiezen](./media/backup-azure-security-feature-cloud/vm-soft-delete.png)
+
+3. Selecteer de optie **verwijderen ongedaan**maken.
+
+![Kies verwijderen ongedaan maken](./media/backup-azure-security-feature-cloud/choose-undelete.png)
+
+
+4. Er wordt een venster weer gegeven. Selecteer **verwijderen ongedaan**maken.
+
+![Selecteer verwijderen ongedaan maken](./media/backup-azure-security-feature-cloud/undelete-vm.png)
+
+5. Kies **back-upgegevens verwijderen** om de back-upgegevens permanent te verwijderen.
+
+![Back-upgegevens verwijderen kiezen](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-buttom.png)
+
+6. Typ de naam van het back-upitem om te bevestigen dat u de herstel punten wilt verwijderen.
+
+![Typ de naam van het back-upitem](https://docs.microsoft.com/azure/backup/media/backup-azure-manage-vms/delete-backup-data1.png)
+
+7. Selecteer **verwijderen**als u de back-upgegevens voor het item wilt verwijderen. Een meldings bericht laat u weten dat de back-upgegevens zijn verwijderd.
+
 
 ## <a name="other-security-features"></a>Andere beveiligings functies
 
@@ -139,7 +160,7 @@ Als u de verwijdering opheffen, gevolgd door de bewerking hervatten wordt de res
 
 #### <a name="can-i-delete-my-vault-if-there-are-soft-deleted-items-in-the-vault"></a>Kan ik mijn kluis verwijderen als er sprake is van tijdelijke verwijderde items in de kluis?
 
-Recovery Services kluis kan niet worden verwijderd als er back-upitems in de kluis worden verwijderd. De voorlopig verwijderde items worden permanent verwijderd na 14 dagen na de Verwijder bewerking. U kunt de kluis pas verwijderen nadat alle tijdelijke verwijderde items zijn opgeschoond.  
+De Recovery Services kluis kan niet worden verwijderd als er back-upitems in de kluis worden verwijderd. De voorlopig verwijderde items worden definitief verwijderd 14 dagen na de verwijderings bewerking. Als u 14 dagen niet kunt wachten, schakelt u de [optie voorlopig verwijderen uit](#disabling-soft-delete), verwijdert u de voorlopig verwijderde items en verwijdert u deze opnieuw om ze definitief te verwijderen. Nadat u hebt gecontroleerd of er geen beveiligde items zijn en zonder tijdelijke verwijderde items, kan de kluis worden verwijderd.  
 
 #### <a name="can-i-delete-the-data-earlier-than-the-14-days-soft-delete-period-after-deletion"></a>Kan ik de gegevens die ouder zijn dan de 14 dagen na het verwijderen verwijderen?
 

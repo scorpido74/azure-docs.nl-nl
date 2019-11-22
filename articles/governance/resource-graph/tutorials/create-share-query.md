@@ -1,40 +1,40 @@
 ---
-title: 'Tutorial: Manage queries in Azure portal'
-description: In this tutorial, you create a Resource Graph Query and share the new query with others in the Azure portal.
-ms.date: 10/23/2019
+title: "Zelf studie: query's beheren in Azure Portal"
+description: In deze zelf studie maakt u een resource Graph-query en deelt u de nieuwe query met anderen in de Azure Portal.
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: a1f3213ae1dbd3bc7127b4f4adb8648e9f9adf07
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 00cb3f95112804c81beb6bce6fc35891e6197e60
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216229"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74303941"
 ---
-# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Tutorial: Create and share an Azure Resource Graph query in the Azure portal
+# <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Zelf studie: een Azure resource Graph-query maken en delen in de Azure Portal
 
-Azure Resource Graph Explorer lets you save your Resource Graph queries directly in the Azure portal. There are two types of queries: _Private_ and _Shared_. A Private query is saved in your Azure portal settings. Whereas a Shared query is a Resource Manager resource that can be managed with role-based access controls (RBAC) and protected with resource locks.
+Met de Verkenner van Azure resource Explorer kunt u uw resource Graph-query's rechtstreeks in het Azure Portal opslaan. Er zijn twee soorten query's: _privé_ en _gedeeld_. Een persoonlijke query wordt opgeslagen in uw Azure Portal-instellingen. Terwijl een gedeelde query een resource manager-resource is die kan worden beheerd met op rollen gebaseerde toegangs beheer (RBAC) en wordt beveiligd met resource vergrendelingen. Beide typen query's worden op rest versleuteld.
 
-By saving queries in the Azure portal, you save the time you might otherwise spend looking for your favorite or commonly used queries. When you share queries, you help your team realize goals of consistency and efficiency through repetition.
+Door query's op te slaan in de Azure Portal, bespaart u de tijd die u op een andere manier kunt best Eden aan uw favoriete of veelgebruikte query's. Wanneer u query's deelt, helpt u uw team de doel stellingen van consistentie en efficiëntie te realiseren door herhalingen.
 
-In this tutorial, you'll complete the following tasks:
+In deze zelf studie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> - Create and delete a Private query
-> - Create a Shared query
-> - Discover Shared queries
-> - Delete a Shared query
+> - Een persoonlijke query maken en verwijderen
+> - Een gedeelde query maken
+> - Gedeelde query's detecteren
+> - Een gedeelde query verwijderen
 
 ## <a name="prerequisites"></a>Vereisten
 
 U hebt een Azure-abonnement nodig om deze zelfstudie te voltooien. Als u nog geen abonnement hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
-## <a name="create-and-delete-a-private-query"></a>Create and delete a Private query
+## <a name="create-and-delete-a-private-query"></a>Een persoonlijke query maken en verwijderen
 
-Private queries are accessible and visible only to the account that creates them. As they're saved in an account's Azure portal settings, they can be created, used, and deleted only from inside the Azure portal. A Private query isn't a Resource Manager resource. To create a new Private query, follow these steps:
+Persoonlijke query's zijn toegankelijk en alleen zichtbaar voor het account waarmee ze worden gemaakt. Wanneer ze worden opgeslagen in de Azure Portal-instellingen van een account, kunnen ze alleen worden gemaakt, gebruikt en verwijderd uit de Azure Portal. Een persoonlijke query is geen Resource Manager-resource. Voer de volgende stappen uit om een nieuwe persoonlijke query te maken:
 
-1. From the portal menu, select **All services** or use the Azure search box at the top of all pages. Search for and then select **Resource Graph Explorer**.
+1. Selecteer in het menu Portal **alle services** of gebruik het zoekvak van Azure boven aan alle pagina's. Zoek en selecteer **resource Graph Explorer**.
 
-1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
+1. Voer op het tabblad **query 1** op de pagina Azure resource Graph Explorer de volgende query in:
 
    ```kusto
    Resources
@@ -42,31 +42,31 @@ Private queries are accessible and visible only to the account that creates them
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
 
-   Select **Run query** to see the query results in the bottom pane.
+   Selecteer **query uitvoeren** om de query resultaten in het onderste deel venster weer te geven.
 
-   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
+   Zie voor meer informatie over deze query voor [beelden: aantal virtuele machines per OS-type](../samples/starter.md#count-virtual-machines-by-os-type).
 
 
-1. Select **Save** or **Save as**, enter **Count VMs by OS** as the name, leave the type as **Private query**, and then select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**.
+1. Selecteer **Opslaan** of **Opslaan als**, geef de **virtuele machines van het besturings systeem op** als naam, behoud het type als **persoonlijke query**en selecteer vervolgens **Opslaan** onder aan het deel venster **query opslaan** . De titel van het tabblad verandert van **query 1** in **aantal vm's per besturings systeem**.
 
-1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
+1. Ga in de Azure Portal van Azure resource Graph Explorer weg en ga vervolgens terug naar het. U ziet dat de opgeslagen query niet meer wordt weer gegeven en dat het tabblad **query 1** wordt geretourneerd.
 
-1. Select **Open a query**. Make sure that the type is **Private query**. The saved name **Count VMs by OS** now appears in the **Query Name** list. When you select the title link of the saved query, it's loaded into a new tab with that query's name.
+1. Selecteer **een query openen**. Zorg ervoor dat het type een **persoonlijke query**is. De opgeslagen naam- **vm's met een aantal van het besturings systeem** worden nu weer gegeven in de lijst **query naam** . Wanneer u de koppeling titel van de opgeslagen query selecteert, wordt deze in een nieuw tabblad met de naam van die query geladen.
 
    > [!NOTE] 
-   >When a saved query is open and the tab shows its name, selecting the **Save** button updates it with any changes that have been made. To create a new saved query from this open query, select **Save as** and proceed as if you were saving a brand new query.
+   > Wanneer een opgeslagen query is geopend en de naam van het tabblad wordt weer gegeven, wordt deze door de knop **Opslaan** bijgewerkt met de wijzigingen die zijn aangebracht. Als u een nieuwe opgeslagen query wilt maken op basis van deze open query, selecteert u **Opslaan als** en gaat u door alsof u een gloed nieuwe query opslaat.
 
-1. To delete the saved query, select **Open a query** again, and verify that the **Type** field is set to **Private query**. On the row of the saved `Count VMs by OS` query, select **Delete** (Recycle bin icon). In the confirmation dialog box, select **Yes** to finish deleting the query.
-   Then, close the **Open a query** pane.
+1. Als u de opgeslagen query wilt verwijderen, selecteert u opnieuw **een query openen** en controleert u of het veld **type** is ingesteld op **privé-query**. Selecteer in de rij van de opgeslagen `Count VMs by OS` query **verwijderen** (Prullenbak pictogram). Selecteer **Ja** in het bevestigings dialoogvenster om het verwijderen van de query te volt ooien.
+   Sluit vervolgens het deel venster **een query openen** .
 
-## <a name="create-a-shared-query"></a>Create a Shared query
+## <a name="create-a-shared-query"></a>Een gedeelde query maken
 
-Unlike a Private query, a Shared query is a Resource Manager resource. This fact means the query gets saved to a resource group, can be managed and controlled with RBAC, and can even be protected with resource locks. As a resource, anyone who has the appropriate permissions can see and use it.
-To create a new Shared query, follow these steps:
+In tegens telling tot een persoonlijke query is een gedeelde query een resource manager-resource. Dit betekent dat de query wordt opgeslagen in een resource groep, kan worden beheerd en beheerd met RBAC en kan zelfs worden beveiligd met resource vergrendelingen. Als resource kan iedereen met de juiste machtigingen deze zien en gebruiken.
+Voer de volgende stappen uit om een nieuwe gedeelde query te maken:
 
-1. From the portal menu, select **All services**, or use the Azure search box at the top of all pages to search for and select **Resource Graph Explorer**.
+1. Selecteer in het menu Portal **alle services**, of gebruik het zoekvak van Azure boven aan alle pagina's om de **resource Graph Explorer**te zoeken en te selecteren.
 
-1. On the **Query 1** tab on the Azure Resource Graph Explorer page, enter the following query:
+1. Voer op het tabblad **query 1** op de pagina Azure resource Graph Explorer de volgende query in:
 
    ```kusto
    Resources
@@ -74,62 +74,62 @@ To create a new Shared query, follow these steps:
    | summarize count() by tostring(properties.storageProfile.osDisk.osType)
    ```
     
-   Select **Run query** to see the query results in the bottom pane.
+   Selecteer **query uitvoeren** om de query resultaten in het onderste deel venster weer te geven.
 
-   For more information about this query, see [Samples – Count virtual machines by OS type](../samples/starter.md#count-virtual-machines-by-os-type).
+   Zie voor meer informatie over deze query voor [beelden: aantal virtuele machines per OS-type](../samples/starter.md#count-virtual-machines-by-os-type).
 
-1. Select **Save** or **Save as**.
+1. Selecteer **Opslaan** of **Opslaan als**.
 
    
-   ![Save the new query using the save button](../media/create-share-query/save-shared-query-buttons.png)
+   ![Sla de nieuwe query op met behulp van de knop Opslaan](../media/create-share-query/save-shared-query-buttons.png)
 
-1. In the **Save query** pane, enter **Count VMs by OS** for the name.
+1. In het deel venster **query opslaan** voert u **aantal vm's per besturings systeem** in voor de naam.
 
-1. Change the type to **Shared query**, set the description to **Count of virtual machines by OS type**, and set **Subscription** to specify where the query resource gets created.
+1. Wijzig het type in een **gedeelde query**, stel de beschrijving in op het **aantal virtuele machines per OS-type**en stel **abonnement** in om op te geven waar de query bron wordt gemaakt.
 
-1. Leave the **Publish to resource-graph-queries resource group** check box selected and the **Resource Group location** set to **(US) West Central US**.
+1. Zorg ervoor dat het selectie vakje **publiceren naar resource-Graph-query's resource groep** is geselecteerd en de locatie van de **resource groep** is ingesteld op **(VS) West-Centraal VS**.
 
-1. Select **Save** at the bottom of the **Save query** pane. The tab title changes from **Query 1** to **Count VMs by OS**. The first time the **resource-graph-queries** resource group is used, the save takes longer than expected as the resource group gets created.
+1. Selecteer **Opslaan** onder in het deel venster **query opslaan** . De titel van het tabblad verandert van **query 1** in **aantal vm's per besturings systeem**. De eerste keer dat de bron groep **resource-Graph-query's** wordt gebruikt, duurt het opslaan langer dan verwacht, omdat de resource groep wordt gemaakt.
    
-   ![Save the new query as a Shared query](../media/create-share-query/save-shared-query-window.png)
+   ![De nieuwe query opslaan als een gedeelde query](../media/create-share-query/save-shared-query-window.png)
 
    > [!NOTE] 
-   > You can clear the **Publish to resource-graph-queries resource group** check box if you want to provide the name of an existing resource group to save the shared query into. Using the default named resource group for queries makes Shared queries easier to discover. It also makes the purpose of that resource group more apparent. However, you might opt to select an existing resource group for security reasons based on existing permissions.
+   > Als u de naam van een bestaande resource groep wilt opgeven voor het opslaan van de gedeelde query, schakelt u het selectie vakje **publiceren naar resource-Graph-query's-resource groep** uit. Het gebruik van de standaard benoemde resource groep voor query's maakt het gemakkelijker om gedeelde query's te detecteren. Ook wordt het doel van die resource groep duidelijker. U kunt er echter voor kiezen om om veiligheids redenen een bestaande resource groep te selecteren op basis van bestaande machtigingen.
 
-1. Move away from Azure Resource Graph Explorer in the Azure portal and then return to it. Notice that the saved query is no longer displayed and the **Query 1** tab has returned.
+1. Ga in de Azure Portal van Azure resource Graph Explorer weg en ga vervolgens terug naar het. U ziet dat de opgeslagen query niet meer wordt weer gegeven en dat het tabblad **query 1** wordt geretourneerd.
 
-1. Select **Open a query**. Verify that the type is set to **Shared query** and the combination of **Subscription** and **Resource group** match where you saved the query. The saved **Count VMs by OS** item now appears in the **Query Name** list. Select the title link of the saved query to load it into a new tab with that query's name. As a Shared query, it displays an icon in the tab next to the title, denoting it as shared.
+1. Selecteer **een query openen**. Controleer of het type is ingesteld op **gedeelde query** en de combi natie van het **abonnement** en de **resource groep** overeenkomen waar u de query hebt opgeslagen. De opgeslagen **aantallen vm's per besturingssysteem** item worden nu weer gegeven in de lijst **query naam** . Selecteer de titel koppeling van de opgeslagen query om deze in een nieuw tabblad met de naam van de query te laden. Als een gedeelde query wordt een pictogram weer gegeven op het tabblad naast de titel, waarbij het wordt aangegeven als gedeeld.
 
-   ![Show the Shared Query with icon](../media/create-share-query/show-saved-shared-query.png)
+   ![Het pictogram Gedeelde query weer geven](../media/create-share-query/show-saved-shared-query.png)
 
    > [!NOTE] 
-   > When a saved query is open and the tab shows its name, the **Save** button updates it with any changes that have been made. To create a new saved query, select **Save as** and proceed as if you were saving a brand new query.
+   > Wanneer een opgeslagen query is geopend en de naam van het tabblad wordt weer gegeven, wordt deze door de knop **Opslaan** bijgewerkt met de wijzigingen die zijn aangebracht. Als u een nieuwe opgeslagen query wilt maken, selecteert u **Opslaan als** en gaat u door alsof u een gloed nieuwe query opslaat.
 
-## <a name="discover-shared-queries"></a>Discover Shared queries
+## <a name="discover-shared-queries"></a>Gedeelde query's detecteren
 
-Because a Shared query is a Resource Manager resource, there are several ways to find one:
+Omdat een gedeelde query een resource manager-resource is, zijn er verschillende manieren om er een te vinden:
 
-- From Resource Graph Explorer, select **Open a query** and set the type to **Shared query**.
-- From the Resource Graph queries portal page.
-- From the resource group that the Shared query was saved in.
-- Through a query to Resource Graph.
+- Selecteer in resource Graph Explorer de optie **een query openen** en stel het type in op **gedeelde query**.
+- Via de pagina Resource Graph-query's Portal.
+- Van de resource groep waarin de gedeelde query is opgeslagen.
+- Via een query naar een resource grafiek.
 
-### <a name="view-resource-graph-queries"></a>View Resource Graph queries
+### <a name="view-resource-graph-queries"></a>Resource Graph-query's weer geven
 
-In the Azure portal, the Resource Graph queries page displays Shared queries that the logged-in account has access to. This page enables filtering by name, subscription, resource group, and other properties of the Resource Graph query. You can also tag, export, and delete Resource Graph queries by using this interface.
+In de Azure Portal geeft de pagina Resource grafiek query's gedeelde query's weer waartoe het aangemelde account toegang heeft. Op deze pagina kunt u filteren op naam, abonnement, resource groep en andere eigenschappen van de resource grafiek query. U kunt ook resource Graph-query's labelen, exporteren en verwijderen met deze interface.
 
-Selecting one of the queries opens the Resource Graph query page. Like other Resource Manager resources, this page offers an interactive overview along with the Activity log, access control, and tags. You can also apply a resource lock directly from this page.
+Als u een van de query's selecteert, wordt de pagina Resource grafiek query geopend. Net als andere Resource Manager-resources biedt deze pagina een interactief overzicht samen met het activiteiten logboek, Toegangs beheer en tags. U kunt ook rechtstreeks vanaf deze pagina een resource vergrendeling Toep assen.
 
-Get to the Resource Graph queries page from the portal menu by selecting **All services** or by using the Azure search box at the top of all pages. Search for and select **Resource Graph Explorer**.
+Ga naar de pagina Resource Graph-query's in het menu van de portal door **alle services** te selecteren of door de Azure Search-vak boven aan alle pagina's te gebruiken. Zoek en selecteer **resource Graph Explorer**.
 
-### <a name="list-resource-groups-resources"></a>List Resource groups resources
+### <a name="list-resource-groups-resources"></a>Resources van resource groepen weer geven
 
-The Resource Graph query is listed alongside other resources that are part of a resource group.
-Selecting the Resource Graph query opens the page for that query. The ellipsis and shortcut menu options (triggered by right-clicking) work the same as on the Resource Graph query page.
+De resource Graph-query wordt weer gegeven naast andere resources die deel uitmaken van een resource groep.
+Als u de resource Graph-query selecteert, wordt de pagina voor die query geopend. De opties voor het weglatings teken en snelmenu (geactiveerd door met de rechter muisknop te klikken) werken op dezelfde manier als op de query pagina van de resource grafiek.
 
-### <a name="query-resource-graph"></a>Query Resource Graph
+### <a name="query-resource-graph"></a>Resource grafiek opvragen
 
-You can find Resource Graph queries through a query to Resource Graph. The following Resource Graph query limits by type `Microsoft.ResourceGraph/queries`, and then uses `project` to list only the name, time modified, and the query itself:
+U kunt met behulp van een query naar een resource grafiek zoeken naar resource Graph-query's. De volgende resource grafiek query limieten op type `Microsoft.ResourceGraph/queries`, en vervolgens gebruikt `project` om alleen de naam, het gewijzigde tijdstip en de query zelf weer te geven:
 
 ```kusto
 Resources
@@ -137,25 +137,23 @@ Resources
 | project name, properties.timeModified, properties.query
 ```
 
-## <a name="delete-a-shared-query"></a>Delete a Shared query
+## <a name="delete-a-shared-query"></a>Een gedeelde query verwijderen
 
-If a Shared query is no longer needed, delete it. By deleting a Shared query, you remove the corresponding Resource Manager resource. Any dashboards that the results chart was pinned to now display an error message. When that error message is displayed, use the **Remove from dashboard** button to clean up your dashboard.
+Als een gedeelde query niet meer nodig is, verwijdert u deze. Door een gedeelde query te verwijderen, verwijdert u de bijbehorende resource manager-resource. Alle Dash boards waarnaar de resultaten grafiek is vastgemaakt, worden nu weer gegeven met een fout bericht. Wanneer dit fout bericht wordt weer gegeven, gebruikt u de knop **verwijderen uit dash board** om uw dash board op te schonen.
 
-You can delete a Shared query through the following interfaces:
-- Resource Graph queries page
-- Resource Graph query page
-- The **Open a query** page in Resource Graph Explorer
-- Resource groups page
+U kunt een gedeelde query verwijderen via de volgende interfaces:
+- Pagina Resource grafiek query's
+- Query pagina voor resource grafiek
+- De pagina **een query openen** in resource Graph Explorer
+- Pagina Resource groepen
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-When you're finished with this tutorial, delete the Private and Shared queries you created if you no longer want them.
+Wanneer u klaar bent met deze zelf studie, verwijdert u de persoonlijke en gedeelde query's die u hebt gemaakt als u deze niet meer nodig hebt.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Run your first query by using the [Azure portal](../first-query-portal.md).
-- Get more information about the [query language](../concepts/query-language.md).
-- Learn more about how to [explore resources](../concepts/explore-resources.md).
-- See samples of [Starter queries](../samples/starter.md).
-- See samples of [Advanced queries](../samples/advanced.md).
-- Provide feedback on [UserVoice](https://feedback.azure.com/forums/915958-azure-governance).
+In deze zelf studie hebt u persoonlijke en gedeelde query's gemaakt. Ga verder naar de pagina met details van de query taal voor meer informatie over de taal van de resource grafiek.
+
+> [!div class="nextstepaction"]
+> [Meer informatie over de query taal](../concepts/query-language.md)

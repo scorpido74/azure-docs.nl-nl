@@ -1,85 +1,85 @@
 ---
-title: Anker relaties en manier-zoeken in Azure ruimtelijke ankers | Microsoft Docs
-description: Meer informatie over het conceptuele model achter anker relaties. Meer informatie over verbinden ankers binnen een spatie en voor het gebruik van de API in de buurt om te voldoen aan een manier zoeken naar scenario.
+title: Relaties en manier van ankers
+description: Meer informatie over het conceptuele model achter anker relaties. Meer informatie over het verbinden van ankers binnen een Space en het gebruik van de nabije API om te voldoen aan een manier om een scenario te vinden.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 008269a5883750dc8899d896c101c6a05bf7e814
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65969279"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270602"
 ---
-# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Anker relaties en manier-zoeken in Azure ruimtelijke ankers
+# <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Verankeringen en manier om te vinden in azure ruimtelijke ankers
 
-U kunt met behulp van anker relaties, verbonden ankers maken in een spatie en vervolgens vragen stellen zoals deze:
+Door anker relaties te gebruiken, kunt u verbonden ankers in een ruimte maken en vervolgens vragen stellen als deze:
 
 * Zijn er ankers in de buurt?
 * Hoe ver weg zijn ze?
 
 ## <a name="examples"></a>Voorbeelden
 
-U kunt verbonden ankers gebruiken in gevallen zoals deze:
+U kunt verbonden ankers gebruiken in gevallen als deze:
 
-* Een werknemer moet een taak uitvoeren die betrekking heeft op verschillende locaties in een industriële factory bezoeken. De factory heeft ruimtelijke ankers op elke locatie. Een HoloLens of mobiele app helpt u bij de werkrol van de ene locatie naar de volgende handleiding. De app eerst vraagt om de in de buurt ruimtelijke ankers en helpt de werkrol met de volgende locatie. De app toont visueel de algemene richting en de afstand naar de volgende locatie.
+* Een werk nemer moet een taak uitvoeren die betrekking heeft op verschillende locaties in een industriële fabriek. De fabriek heeft ruimtelijke ankers op elke locatie. Een HoloLens-of mobiele app helpt de werk nemer van de ene locatie naar de volgende te begeleiden. In de app wordt eerst gevraagd naar de ruimtelijke ankers in de buurt en wordt de werk nemer vervolgens naar de volgende locatie geleid. De app toont de algemene richting en afstand tot de volgende locatie.
 
-* Een museum maakt ruimtelijke ankers op openbare weergegeven. Samen vormen deze ankers een essentiële openbare geeft van het museum rondleiding door één uur. Bij een openbare weergeven kunnen bezoekers van het museum-app voor mixed reality op hun mobiele apparaat openen. Vervolgens wijst ze hun telefoon camera rond de ruimte voor de algemene richting en de afstand tot de andere openbare wordt weergegeven op de rondleiding te volgen. Als een gebruiker naar een openbare weer te geven leidt, wordt de app werkt de algemene richting en de afstand om te helpen de gebruiker.
+* Een museum maakt ruimtelijke ankers op open bare schermen. Deze ankers vormen samen een rond leiding door de belangrijkste open bare schermen van het Museum. Bezoekers kunnen de Mixed Reality-app van het Museum op hun mobiele apparaat openen. Vervolgens wijzen ze hun telefoon camera rond de ruimte om de algemene richting en afstand naar de andere open bare weer gaven op de rond leiding te zien. Als een gebruiker naar een openbaar scherm gaat, werkt de app de algemene richting en afstand bij om de gebruiker te helpen.
 
-## <a name="set-up-way-finding"></a>Instellen van manier zoeken
+## <a name="set-up-way-finding"></a>Instellen van richting-zoeken
 
-Het met behulp van een app die gebruikmaakt van de regel van zicht richting en de afstand tussen ankers begeleiding te leveren *manier zoeken*. Manier zoeken wijkt af van de navigatie inschakelen door inschakelen. In de navigatie inschakelen door inschakelen, worden gebruikers begeleide rond muren, via deuren en tussen verdiepingen. De gebruiker krijgt met zoeken naar manier, tips over het algemeen richting van de bestemming. Maar Deductie of kennis van de ruimte helpt ook de gebruiker navigeert u door de structuur naar de bestemming.
+Een app die gebruikmaakt van een lijn-van-gezichts richting en afstand tussen ankers om hulp te bieden, is het gebruik van een manier om te *zoeken*. De manier waarop u kunt zoeken is anders dan bij het omschakelen van de navigatie. In de richting van de navigatie kunnen gebruikers worden geleid rond muren, via deuren en tussen vloeren. Met de manier van zoeken krijgt de gebruiker aanwijzingen over de algemene richting van het doel. Maar het afnemen of kennis van de ruimte helpt de gebruiker ook door de structuur te navigeren naar het doel.
 
-Voor het bouwen van een manier zoeken-ervaring, eerst een spatie voorbereiden voor de ervaring en ontwikkelen van een app die gebruikers gaat communiceren. Dit zijn de algemene stappen:
+Voor het bouwen van een manier om een oplossing te vinden, bereidt u eerst een ruimte voor de ervaring voor en ontwikkelt u een app waarmee gebruikers kunnen communiceren. Dit zijn de conceptuele stappen:
 
-1. **De ruimte van plan bent**: Bepalen welke locaties binnen de ruimte die deel uitmaken van de ervaring manier zoeken. In ons scenario's besluiten de supervisor factory of de rondleiding museum coördinator welke locaties om op te nemen in de ervaring van de manier waarop zoeken.
-2. **Verbinding maken met ankers**: Ga naar de gekozen locaties voor het maken van ruimtelijke ankers. U kunt dit doen in een modus door Administrator van de eindgebruiker-app of in een andere app volledig. U kunt verbinding maken of elk anker betrekking op de andere. De service houdt deze relaties.
-3. **Starten van ervaring voor de eindgebruiker**: Gebruikers de app uitvoeren naar een anker, die zich op een van de gekozen locaties kan vinden. Uw algehele ontwerp bepaalt de locaties waar gebruikers de ervaring kunnen invoeren.
-4. **Zoeken in de buurt ankers**: Nadat de gebruiker een anker wordt gevonden, kan de app in de buurt ankers aanvragen. Deze procedure geeft als resultaat een houding tussen het apparaat en deze ankers.
-5. **De gebruiker**: De app kan de houding aan elk van deze ankers geven informatie over het algemeen richting van de gebruiker en de afstand gebruiken. De camera van het kanaal in de app kan bijvoorbeeld worden weergegeven een pictogram en een pijl voor elk mogelijk doel, zoals in de volgende afbeelding wordt weergegeven.
-6. **De richtlijnen verfijnen**: Als de gebruiker leidt, kan de app een nieuwe houding tussen het apparaat en het doel anker periodiek berekenen. De app blijft gewoon de hints richtlijnen waarmee de gebruiker die binnenkomen op de bestemming te verfijnen.
+1. **De ruimte plannen**: Beslis welke locaties binnen de ruimte deel zullen uitmaken van de zoek ervaring. In onze scenario's kan de fabrieks supervisor of de Tour coördinator van het Museum bepalen welke locaties moeten worden meegenomen in de ervaring voor het vinden van de oplossing.
+2. **Ankers verbinden**: Ga naar de gekozen locaties om ruimtelijke ankers te maken. U kunt dit in een beheer modus van de app voor eind gebruikers of in een andere app geheel doen. U maakt verbinding of koppelt elk anker aan de andere. De service onderhoudt deze relaties.
+3. **De ervaring van de eind gebruiker starten**: gebruikers voeren de app uit om een anker te vinden dat zich op een van de gekozen locaties bevindt. Uw totale ontwerp moet bepalen op welke locaties gebruikers de ervaring kunnen invoeren.
+4. **Nabijgelegen ankers zoeken**: nadat de gebruiker een anker heeft gevonden, kan de app in de buurt van ankers aanvragen. Met deze procedure wordt een pose tussen het apparaat en deze ankers geretourneerd.
+5. **De gebruiker begeleidt**: de app kan gebruikmaken van de pose van elk van deze ankers om hulp te geven over de algemene richting en afstand van de gebruiker. De camera-feed in de app kan bijvoorbeeld een pictogram en pijl bevatten die elke mogelijke bestemming vertegenwoordigen, zoals in de volgende afbeelding wordt weer gegeven.
+6. **Verfijn de richt lijnen**: zoals door de gebruiker wordt door gegeven, kan de app periodiek een nieuwe tussen het apparaat en het doel anker berekenen. Met de app worden de richt lijnen voor begeleiding die de gebruiker bij de bestemming aankomt, verder verfijnd.
 
-    ![Een voorbeeld van hoe een app manier vinden hulp kunt weergeven](./media/meeting-spot.png)
+    ![Een voor beeld van hoe een app kan worden weer gegeven met uitleg over de manier van zoeken](./media/meeting-spot.png)
 
-## <a name="connect-anchors"></a>Verbinding maken met ankers
+## <a name="connect-anchors"></a>Ankers verbinden
 
-Voor het bouwen van een manier zoeken-ervaring, moet u eerst de ankers in de gekozen locaties plaatsen. In deze sectie zult gaan we ervan uit dat de beheerder van de app al dit werk is voltooid.
+Voor het bouwen van een manier om een oplossing te vinden, moet u eerst de ankers op de gekozen locaties plaatsen. In deze sectie wordt ervan uitgegaan dat de beheerder van de app dit werk al heeft voltooid.
 
-### <a name="connect-anchors-in-a-single-session"></a>Verbinding maken met ankers tijdens één sessie
+### <a name="connect-anchors-in-a-single-session"></a>Ankers in één sessie verbinden
 
-Verbinding maken ankers:
+Ankers verbinden:
 
-1. Op de eerste locatie lopen en anker een maken met behulp van een CloudSpatialAnchorSession.
-2. Stappen voor op de tweede locatie. Het verkeer, het onderliggende MR/AR-platform worden bijgehouden.
-3. Anker B maken met behulp van de dezelfde CloudSpatialAnchorSession. Ankers A en B zijn nu verbonden. De ruimtelijke ankers-service houdt deze relatie.
-4. De procedure voor de resterende ankers voortzetten.
+1. Doorstappen naar de eerste locatie en anker een maken met behulp van een CloudSpatialAnchorSession.
+2. Door lopen naar de tweede locatie. Het onderliggende MR/AR-platform houdt de beweging bij.
+3. Maak anker B met behulp van dezelfde CloudSpatialAnchorSession. Ankers A en B zijn nu verbonden. De spatiale ankers-service onderhoudt deze relatie.
+4. Ga door met de procedure voor de resterende ankers.
 
-### <a name="connect-anchors-in-multiple-sessions"></a>Verbinding maken met ankers in meerdere sessies
+### <a name="connect-anchors-in-multiple-sessions"></a>Ankers verbinden in meerdere sessies
 
-U kunt ruimtelijke ankers verbinden via meerdere sessies. Met deze methode, kunt u maken en sommige ankers in één keer verbinding maken en vervolgens later maken en verbinding maken met meer ankers. 
+U kunt ruimtelijke ankers verbinden met meerdere sessies. Met deze methode kunt u enkele ankers in één keer maken en koppelen en later meer ankers maken en koppelen.
 
-Verbinding maken met ankers via meerdere sessies:
+Ankers verbinden met meerdere sessies:
 
-1. De app maakt sommige ankers in één CloudSpatialAnchorSession. 
-2. Een ander tijdstip, de app wordt gezocht naar een van deze ankers (bijvoorbeeld anker A) met behulp van een nieuwe CloudSpatialAnchorSession.
-3. Stappen voor naar een nieuwe locatie. Het onderliggende platform voor mixed-reality of uitgebreide realiteit houdt bij of het verkeer.
-4. Anker C maken met behulp van de dezelfde CloudSpatialAnchorSession. Ankers A, B en C zijn nu verbonden. De ruimtelijke ankers-service houdt deze relatie.
+1. De app maakt enkele ankers in één CloudSpatialAnchorSession.
+2. Op een ander tijdstip zoekt de app een van deze ankers (bijvoorbeeld anker A) met behulp van een nieuwe CloudSpatialAnchorSession.
+3. Door lopen naar een nieuwe locatie. Het onderliggende platform voor gemengde of uitgebreide realiteit houdt de verplaatsing bij.
+4. Maak anker C met behulp van dezelfde CloudSpatialAnchorSession. Ankers A, B en C zijn nu verbonden. De spatiale ankers-service onderhoudt deze relatie.
 
-U kunt deze procedure voor meer ankers en meer sessies blijven na verloop van tijd.
+U kunt door gaan met deze procedure voor meer ankers en meer sessies gedurende een periode.
 
 ### <a name="verify-anchor-connections"></a>Anker verbindingen controleren
 
-De app kunt controleren of er twee ankers door uitgifte van een query voor in de buurt ankers zijn verbonden. Wanneer het resultaat van de query bevat het anker doel, wordt gecontroleerd of de anker-verbinding. Als de ankers niet zijn verbonden, wordt de app kunt proberen om ze opnieuw verbinding te maken. 
+De app kan controleren of twee ankers zijn verbonden door een query uit te geven voor naburige ankers. Wanneer het resultaat van de query het doel ankerpunt bevat, wordt de koppeling van het anker gecontroleerd. Als de ankers niet zijn verbonden, kan de app deze opnieuw proberen verbinding te maken.
 
-Hier volgen enkele redenen waarom ankers mislukken om verbinding te maken:
+Hier volgen enkele redenen waarom ankers geen verbinding kunnen maken:
 
-* Het onderliggende mixed-reality of uitgebreide realiteit platform bijhouden tijdens het proces van het verbinden van ankers verloren gegaan.
-* Vanwege een netwerkfout is opgetreden tijdens de communicatie met de service ruimtelijke ankers of kan niet de anker-verbinding worden vastgehouden.
+* Het onderliggende platform voor gemengde realiteit of uitgebreid-Reality gaat tijdens het proces van het verbinden van ankers verloren.
+* Vanwege een netwerk fout tijdens de communicatie met de spatiale ankers-service, kan de anker verbinding niet worden opgeslagen.
 
-### <a name="find-sample-code"></a>Voorbeeld van code zoeken
+### <a name="find-sample-code"></a>Voorbeeld code zoeken
 
-Voorbeeld van code die laat zien hoe u verbinding maken met ankers en in de buurt van query's, Zie [ruimtelijke ankers voorbeeld-apps](https://github.com/Azure/azure-spatial-anchors-samples).
+Zie voor [beeld van ruimtelijke ankers voorbeeld-apps](https://github.com/Azure/azure-spatial-anchors-samples)om voorbeeld code te vinden die laat zien hoe u koppelt aan de voor-en nabije query's.

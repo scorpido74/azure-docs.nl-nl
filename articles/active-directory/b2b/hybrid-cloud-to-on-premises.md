@@ -1,6 +1,6 @@
 ---
-title: GRANT B2B-gebruikers toegang tot uw on-premises toepassingen - Azure Active Directory | Microsoft Docs
-description: Laat zien hoe cloud B2B gebruikers toegang hebben tot op lokale apps met Azure AD B2B-samenwerking te geven.
+title: B2B-gebruikers toegang verlenen tot uw on-premises apps-Azure AD
+description: Laat zien hoe u via Cloud gebruikers toegang kunt bieden tot on-premises apps met Azure AD B2B-samen werking.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,80 +11,80 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d3fa8e71df3d1184956e1802d1b6b72411b6449
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 098f464b6af5f10866403e1cd1549d571d883ac1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67113037"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272802"
 ---
-# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>GRANT B2B-gebruikers in Azure AD-toegang tot uw on-premises toepassingen
+# <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-gebruikers in azure AD toegang verlenen tot uw on-premises toepassingen
 
 Als een organisatie die gebruikmaakt van functionaliteit voor samenwerking in Azure Active Directory (Azure AD) B2B uitnodigen van gastgebruikers van partnerorganisaties koppelt aan uw Azure AD, kunt u nu deze B2B-gebruikers toegang bieden tot on-premises toepassingen. Deze on-premises toepassingen kunnen verificatie op basis van SAML of geïntegreerde Windows-verificatie (IWA) gebruiken met Kerberos-beperkte delegatie (KCD).
 
-## <a name="access-to-saml-apps"></a>Toegang tot de SAML-apps
+## <a name="access-to-saml-apps"></a>Toegang tot SAML-apps
 
-Als uw on-premises app gebruikmaakt van verificatie op basis van SAML, kunt u deze apps gemakkelijk beschikbaar maken voor de gebruikers van uw Azure AD B2B-samenwerking via Azure portal.
+Als uw on-premises app op SAML gebaseerde verificatie gebruikt, kunt u deze apps eenvoudig beschikbaar maken voor uw Azure AD B2B-samenwerkings gebruikers via de Azure Portal.
 
 U moet het volgende doen:
 
-- De SAML-app integreren met behulp van de sjabloon van de toepassing buiten de galerie, zoals beschreven in [configureren van eenmalige aanmelding voor toepassingen die zich niet in de Azure Active Directory-toepassingsgalerie](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Zorg ervoor dat te weten wat u gebruikt voor de **aanmeldings-URL** waarde.
--  Azure AD-toepassingsproxy gebruiken voor het publiceren van de app on-premises met **Azure Active Directory** geconfigureerd als de verificatiebron. Zie voor instructies [toepassingen publiceren die gebruikmaken van Azure AD-toepassingsproxy](../manage-apps/application-proxy-publish-azure-portal.md). 
+- De SAML-app integreren met behulp van de niet-galerie toepassings sjabloon, zoals beschreven in [eenmalige aanmelding configureren voor toepassingen die zich niet in de Azure Active Directory toepassings galerie bevinden](../manage-apps/configure-single-sign-on-non-gallery-applications.md). Zorg ervoor dat u weet wat u gebruikt voor de waarde van de **aanmeldings-URL** .
+-  Gebruik Azure AD-toepassingsproxy om de on-premises app te publiceren, met **Azure Active Directory** geconfigureerd als de verificatie bron. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-publish-azure-portal.md)voor instructies. 
 
-   Wanneer u configureert de **interne Url** instellen, gebruikt u de aanmeldings-URL die u hebt opgegeven in de sjabloon van de toepassing buiten de galerie. Op deze manier kunnen gebruikers toegang krijgen tot de app vanuit buiten een grens van de organisatie. Application Proxy voert de SAML eenmalige aanmelding voor de on-premises-app.
+   Wanneer u de instelling **interne URL** configureert, gebruikt u de AANMELDINGS-URL die u hebt opgegeven in de toepassings sjabloon niet-galerie. Op deze manier hebben gebruikers vanaf buiten de grenzen van de organisatie toegang tot de app. Toepassings proxy voert de eenmalige aanmelding voor SAML uit voor de on-premises app.
  
-   ![Geeft de interne URL van on-premises app-instellingen en -verificatie](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
+   ![Hiermee worden de interne URL en verificatie van de on-premises app-instellingen weer gegeven](media/hybrid-cloud-to-on-premises/OnPremAppSettings.PNG)
 
-## <a name="access-to-iwa-and-kcd-apps"></a>Toegang tot IWA en KCD-apps
+## <a name="access-to-iwa-and-kcd-apps"></a>Toegang tot IWA-en KCD-apps
 
-Voor B2B-gebruikers toegang tot on-premises toepassingen die zijn beveiligd met geïntegreerde Windows-verificatie en Kerberos-beperkte overdracht, moet u de volgende onderdelen:
+Om B2B-gebruikers toegang te bieden tot on-premises toepassingen die zijn beveiligd met geïntegreerde Windows-verificatie en beperkte Kerberos-delegering, hebt u de volgende onderdelen nodig:
 
-- **Verificatie via Azure AD-toepassingsproxy**. B2B-gebruikers moeten kunnen worden geverifieerd bij de on-premises toepassing. Om dit te doen, moet u de on-premises-app via de Azure AD-toepassingsproxy publiceren. Zie voor meer informatie, [aan de slag met Application Proxy en de connector installeert](../manage-apps/application-proxy-enable.md) en [toepassingen publiceren die gebruikmaken van Azure AD-toepassingsproxy](../manage-apps/application-proxy-publish-azure-portal.md).
-- **Autorisatie via een B2B-gebruikersobject in de on-premises directory**. De toepassing moet kunnen gebruikers toegangscontroles uitvoeren en Verleen toegang tot de juiste resources. IWA en KCD moet een gebruikersobject in de on-premises Windows Server Active Directory om deze autorisatie te voltooien. Zoals beschreven in [hoe eenmalige aanmelding met KCD works](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), Application Proxy moet dit gebruikersobject te imiteren van de gebruiker een Kerberos-token naar de app verkrijgen. 
+- **Verificatie via Azure AD-toepassingsproxy**. B2B-gebruikers moeten zich kunnen aanmelden bij de on-premises toepassing. Hiervoor moet u de on-premises app publiceren via de Azure-AD-toepassingsproxy. Zie [aan de slag met toepassings proxy en de connector installeren](../manage-apps/application-proxy-enable.md) en [toepassingen publiceren met Azure AD-toepassingsproxy](../manage-apps/application-proxy-publish-azure-portal.md)voor meer informatie.
+- **Autorisatie via een B2B-gebruikers object in de on-premises Directory**. De toepassing moet gebruikers toegangs controles kunnen uitvoeren en toegang verlenen tot de juiste resources. IWA en KCD vereisen een gebruikers object in het on-premises Windows Server-Active Directory om deze autorisatie te volt ooien. Zoals beschreven in de werking van [eenmalige aanmelding met KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works), moet dit gebruikers object door de toepassings proxy worden geïmiteerd en moet er een Kerberos-token bij de app worden ontvangen. 
 
-   Er zijn twee methoden beschikbaar waarmee u kunt het maken van de Gast gebruiker-objecten die vereist voor verificatie in de on-premises directory zijn voor het scenario B2B-gebruiker:
+   Voor het B2B-gebruikers scenario zijn er twee methoden beschikbaar die u kunt gebruiken om de gast gebruikers objecten te maken die vereist zijn voor autorisatie in de on-premises Directory:
 
-   - Microsoft Identity Manager (MIM) en de MIM-beheeragent voor Microsoft Graph. 
-   - [Een PowerShell-script](#create-b2b-guest-user-objects-through-a-script-preview). Met behulp van het script is een minder ingrijpende oplossing waarvoor geen MIM is vereist. 
+   - Microsoft Identity Manager (MIM) en de MIM-beheer agent voor Microsoft Graph. 
+   - [Een Power shell-script](#create-b2b-guest-user-objects-through-a-script-preview). Het gebruik van het script is een licht gewicht oplossing waarvoor MIM niet is vereist. 
 
-Het volgende diagram biedt een overzicht van hoe Azure AD Application Proxy en de generatie van de B2B-gebruikersobject in de on-premises directory werken samen om B2B-gebruikers toegang verlenen tot uw on-premises IWA en KCD-toepassingen. De genummerde stappen worden in detail onder het diagram beschreven.
+Het volgende diagram bevat een globaal overzicht van hoe Azure AD-toepassingsproxy en de generatie van het B2B-gebruikers object in de on-premises Directory samen werken om B2B-gebruikers toegang te verlenen tot uw on-premises IWA-en KCD-apps. De genummerde stappen worden gedetailleerd beschreven onder het diagram.
 
-![Diagram van MIM en B2B-script-oplossingen](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
+![Diagram van MIM-en B2B-script oplossingen](media/hybrid-cloud-to-on-premises/MIMScriptSolution.PNG)
 
-1.  Een gebruiker vanuit een andere organisatie (de Fabrikam-tenant) wordt uitgenodigd voor de Contoso-tenant.
-2.  Een gast-gebruikersobject is gemaakt in de Contoso-tenant (bijvoorbeeld een gebruikersobject met een UPN van guest_fabrikam.com#EXT#@contoso.onmicrosoft.com).
-3.  De Gast van Fabrikam is geïmporteerd uit Contoso via MIM of via de B2B-PowerShell-script.
-4.  Een weergave of 'footprint' van het gebruikersobject (Gast EXT #) voor de Fabrikam-Gast wordt gemaakt in de on-premises adreslijst, Contoso.com, met behulp van MIM of via de B2B-PowerShell-script.
-5.  De Gast gebruiker toegang krijgt tot de on-premises toepassing, app.contoso.com.
-6.  De verificatieaanvraag is toegestaan via de toepassingsproxy met behulp van Kerberos-beperkte overdracht. 
-7.  Omdat het gebruikersobject Gast lokaal bestaat, wordt de verificatie is geslaagd.
+1.  Een gebruiker van een partner organisatie (de fabrikam-Tenant) wordt uitgenodigd voor de contoso-Tenant.
+2.  Er wordt een gast gebruikers object gemaakt in de contoso-Tenant (bijvoorbeeld een gebruikers object met een UPN van guest_fabrikam. com # EXT #@contoso.onmicrosoft.com).
+3.  Fabrikam Guest wordt geïmporteerd van Contoso via MIM of via het B2B Power shell-script.
+4.  Een weer gave of footprint van het object fabrikam gast gebruiker (Guest # EXT #) wordt gemaakt in de on-premises Directory, Contoso.com, via MIM of via het B2B Power shell-script.
+5.  De gast gebruiker heeft toegang tot de on-premises toepassing, app.contoso.com.
+6.  De verificatie aanvraag wordt via een toepassings proxy geautoriseerd met beperkte Kerberos-delegering. 
+7.  Omdat het gast gebruikers object lokaal bestaat, is de verificatie geslaagd.
 
-### <a name="lifecycle-management-policies"></a>Levenscyclus van management-beleid
+### <a name="lifecycle-management-policies"></a>Levenscyclus beheer beleid
 
-U kunt de on-premises B2B-gebruikersobjecten via lifecycle management-beleid beheren. Bijvoorbeeld:
+U kunt de on-premises B2B-gebruikers objecten beheren via het levenscyclus beheer beleid. Bijvoorbeeld:
 
-- U kunt multi-factor authentication (MFA)-beleidsregels voor de gastgebruiker instellen zodat MFA tijdens de Application Proxy-verificatie wordt gebruikt. Zie voor meer informatie, [voorwaardelijke toegang voor gebruikers van B2B-samenwerking](conditional-access.md).
-- Alle sponsoring, beoordelingen, account verificaties, enzovoort die worden uitgevoerd op de cloud B2B gebruiker van toepassing op de on-premises gebruikers. Bijvoorbeeld, als de gebruiker van de cloud via uw lifecycle management-beleid wordt verwijderd, wordt de on-premises-gebruiker ook verwijderd door MIM Sync of Azure AD Connect sync. Zie voor meer informatie, [gasttoegang beheren met Azure AD-toegang beoordeelt](../governance/manage-guest-access-with-access-reviews.md).
+- U kunt beleid voor multi-factor Authentication (MFA) voor de gast gebruiker instellen, zodat MFA wordt gebruikt tijdens de verificatie van de toepassings proxy. Zie [voorwaardelijke toegang voor B2B-samenwerkings gebruikers](conditional-access.md)voor meer informatie.
+- Alle sponsoringen, toegangs beoordelingen, account verificaties, enzovoort die worden uitgevoerd op de B2B-gebruiker in de Cloud, zijn van toepassing op de on-premises gebruikers. Als de Cloud gebruiker bijvoorbeeld wordt verwijderd via uw levenscyclus beheer beleid, wordt de on-premises gebruiker ook verwijderd door MIM sync of via Azure AD Connect Sync. Zie [Manage gast Access with Azure AD Access revisies](../governance/manage-guest-access-with-access-reviews.md)(Engelstalig) voor meer informatie.
 
-### <a name="create-b2b-guest-user-objects-through-mim"></a>Gebruikersobjecten van B2B-Gast via MIM maken
+### <a name="create-b2b-guest-user-objects-through-mim"></a>B2B-gast gebruikers objecten maken via MIM
 
-Zie voor meer informatie over hoe u MIM 2016 Service Pack 1 en de MIM-beheeragent voor Microsoft Graph gebruiken om u te maken van de Gast-gebruikersobjecten in de on-premises directory [samenwerking van Azure AD-business-to-business (B2B) met Microsoft Identity Manager (MIM) 2016 SP1 met Azure Application Proxy](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
+Voor informatie over het gebruik van MIM 2016 Service Pack 1 en de MIM-beheer agent voor Microsoft Graph om de gast gebruikers objecten te maken in de on-premises Directory, raadpleegt u [Azure AD Business-to-Business (B2B) collaboration with Microsoft Identity Manager (MIM) 2016 SP1 met Azure-toepassing proxy](https://docs.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Gebruikersobjecten van B2B-Gast via een script (Preview) maken
+### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>B2B-gebruikers objecten maken met behulp van een script (preview-versie)
 
-Er is een PowerShell-voorbeeldscript beschikbaar die u als uitgangspunt gebruiken kunt om te maken van de Gast-gebruikersobjecten in uw on-premises Active Directory.
+Er is een Power shell-voorbeeld script beschikbaar dat u kunt gebruiken als uitgangs punt voor het maken van de gast gebruikers objecten in uw on-premises Active Directory.
 
-U kunt downloaden, het script en het Leesmij-bestand van de [Downloadcentrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies de **Script en Leesmij-bestand voor het ophalen van Azure AD B2B gebruikers op de prem.zip** bestand.
+U kunt het script en het Leesmij-bestand downloaden uit het [Download centrum](https://www.microsoft.com/download/details.aspx?id=51495). Kies het **script en Leesmij om Azure AD B2B-gebruikers te halen on-Prem. zip** -bestand.
 
-Voordat u het script gebruikt, controleert u de vereisten en overwegingen in het bijbehorende Leesmij-bestand te controleren. Tevens, stemt ermee in dat het alleen beschikbaar als een voorbeeld van het script wordt gemaakt. Uw ontwikkelingsteam of een partner moet aanpassen en bekijk het script voordat u deze uitvoeren.
+Voordat u het script gebruikt, moet u de vereisten en belang rijke overwegingen in het bijbehorende Leesmij-bestand door nemen. Bovendien moet u weten dat het script alleen beschikbaar is gemaakt als voor beeld. Uw ontwikkel team of een partner moet het script aanpassen en controleren voordat u het uitvoert.
 
-## <a name="license-considerations"></a>Licentie-overwegingen
+## <a name="license-considerations"></a>Licentie overwegingen
 
-Zorg ervoor dat u de juiste licenties voor clienttoegang (CAL's) voor externe gastgebruikers die toegang hebben tot on-premises toepassingen. Zie voor meer informatie de sectie "Externe Connectors" van [licenties voor clienttoegang en Management licenties](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx). Raadpleeg uw Microsoft-vertegenwoordiger of plaatselijke softwareleverancier met betrekking tot uw specifieke behoeften van de licentieverlening.
+Zorg ervoor dat u over de juiste client Access Licenses (Cal's) beschikt voor externe gast gebruikers die toegang hebben tot on-premises apps. Zie de sectie ' externe connectors ' in [licenties voor client toegang en beheer licenties](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx)voor meer informatie. Neem contact op met uw micro soft-vertegenwoordiger of plaatselijke wederverkoper over uw specifieke licentie behoeften.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Azure Active Directory B2B-samenwerking voor hybride organisaties](hybrid-organizations.md)
+- [Azure Active Directory B2B-samen werking voor hybride organisaties](hybrid-organizations.md)
 
-- Zie voor een overzicht van Azure AD Connect, [uw on-premises directory's integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
+- Zie [uw on-premises Directory's integreren met Azure Active Directory](../hybrid/whatis-hybrid-identity.md)voor een overzicht van Azure AD Connect.
 

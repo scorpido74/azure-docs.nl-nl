@@ -1,5 +1,6 @@
 ---
-title: Problemen met verbindingen met Azure Network Watcher-Azure REST API oplossen | Microsoft Docs
+title: Problemen met verbindingen oplossen-Azure REST API
+titleSuffix: Azure Network Watcher
 description: Meer informatie over het gebruik van de functie verbinding oplossen van Azure Network Watcher met behulp van de Azure REST API.
 services: network-watcher
 documentationcenter: na
@@ -13,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 82dd77e8ea36610244b97c1701209d5aa3be2869
-ms.sourcegitcommit: b12a25fc93559820cd9c925f9d0766d6a8963703
+ms.openlocfilehash: 792556a63b5ca9ef53a33960e8284354972b3895
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/14/2019
-ms.locfileid: "69017771"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275963"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Verbindings problemen met Azure Network Watcher met Azure REST API oplossen
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [Azure-CLI](network-watcher-connectivity-cli.md)
+> - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 Meer informatie over het gebruik van verbindings problemen oplossen om te controleren of een directe TCP-verbinding van een virtuele machine naar een bepaald eind punt tot stand kan worden gebracht.
@@ -38,7 +39,7 @@ In dit artikel wordt ervan uitgegaan dat u de volgende resources hebt:
 * Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Verbindings problemen oplossen vereist dat de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de virtuele machine die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="log-in-with-armclient"></a>Aanmelden met ARMClient
 
@@ -133,7 +134,7 @@ null
 
 ### <a name="response"></a>Antwoord
 
-Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` onbereikbaar. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker `NetworkSecurityRule` geconfigureerde **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
+Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker geconfigureerd `NetworkSecurityRule` met de naam **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
 
 ```json
 {
@@ -249,7 +250,7 @@ null
 
 ### <a name="response"></a>Antwoord
 
-In het volgende voor beeld wordt `connectionStatus` de wordt weer gegeven als onbereikbaar. In de `hops` Details kunt u `issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`.
+In het volgende voor beeld wordt de `connectionStatus` als **onbereikbaar**weer gegeven. In de `hops` Details kunt u onder `issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`.
 
 ```json
 {
@@ -345,7 +346,7 @@ null
 
 ### <a name="response"></a>Antwoord
 
-In het volgende antwoord ziet u dat de `connectionStatus` weer gave kan worden weer gegeven als **bereikbaar**. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
+In het volgende antwoord kunt u zien dat de `connectionStatus` als **bereikbaar**wordt weer gegeven. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
 
 ```json
 {
@@ -432,7 +433,7 @@ null
 
 ### <a name="response"></a>Antwoord
 
-Het volgende voor beeld is het antwoord van het uitvoeren van de vorige API-aanroep. Als de controle is geslaagd, wordt `connectionStatus` de eigenschap weer gegeven als **bereikbaar**.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
+Het volgende voor beeld is het antwoord van het uitvoeren van de vorige API-aanroep. Wanneer de controle is geslaagd, wordt de eigenschap `connectionStatus` als **bereikbaar**weer gegeven.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
 
 ```json
 {

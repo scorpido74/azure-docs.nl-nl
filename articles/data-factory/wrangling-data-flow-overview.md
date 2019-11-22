@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 7b46b1108246f0b83fcfce69844d19d01b1994c4
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e36cc044e6a4160d16f15b93d8a88d946f476c89
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73665650"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287094"
 ---
 # <a name="what-are-wrangling-data-flows"></a>Wat zijn wrangling-gegevens stromen?
 
@@ -37,6 +37,30 @@ Burger data integrators best Eden meer dan 60% van de tijd om gegevens te zoeken
 ### <a name="data-validation"></a>Gegevens validatie
 
 Scan uw gegevens visueel op een code-Free manier om uitschieters en afwijkingen te verwijderen en deze aan een vorm voor snelle analyse te voldoen.
+
+## <a name="supported-sources"></a>Ondersteunde bronnen
+
+| Connector | Gegevensindeling | Verificatietype |
+| -- | -- | --|
+| [Azure Blob Storage](connector-azure-blob-storage.md) | CSV | Accountsleutel |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) | CSV | Service-principal |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | CSV | Account sleutel, Service-Principal |
+| [Azure SQL Database](connector-azure-sql-database.md) | - | SQL-verificatie |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md) | - | SQL-verificatie |
+
+## <a name="the-mashup-editor"></a>De Mashup-Editor
+
+Wanneer u een wrangling-gegevens stroom maakt, worden alle bron gegevens sets gegevensset-query's en worden deze in de map **ADFResource** geplaatst. Standaard wordt de UserQuery naar de eerste gegevensset-query verwijzen. Alle trans formaties moeten worden uitgevoerd op de UserQuery als wijzigingen in de query van de gegevensset niet worden ondersteund en blijven niet behouden. Het wijzigen van de naam, het toevoegen en verwijderen van query's wordt momenteel niet ondersteund.
+
+![Wrangling](media/wrangling-data-flow/editor.png)
+
+Momenteel niet alle Power Query M-functies worden ondersteund voor gegevens wrangling ondanks dat deze beschikbaar zijn tijdens het ontwerpen. Tijdens het maken van uw wrangling-gegevens stromen wordt u met het volgende fout bericht gevraagd als een functie niet wordt ondersteund:
+
+`The wrangling data flow is invalid. Expression.Error: The transformation logic isn't supported. Please try a simpler expression`
+
+Zie [wrangling data flow functions](wrangling-data-flow-functions.md)(Engelstalig) voor meer informatie over ondersteunde trans formaties.
+
+Momenteel wordt de wrangling-gegevens stroom alleen ondersteund voor het schrijven naar één sink.
 
 ## <a name="next-steps"></a>Volgende stappen
 

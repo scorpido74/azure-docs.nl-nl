@@ -1,5 +1,6 @@
 ---
-title: Problemen met verbindingen met Azure Network Watcher-Power shell oplossen | Microsoft Docs
+title: Problemen met verbindingen oplossen-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Meer informatie over het gebruik van de functie verbinding oplossen van Azure Network Watcher met behulp van Power shell.
 services: network-watcher
 documentationcenter: na
@@ -13,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: kumud
-ms.openlocfilehash: 82bd92de8b2cbb0da4d6d37911a6a3f71186b592
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802046"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275996"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Problemen met de verbinding met Azure Network Watcher oplossen met Power shell
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [Azure-CLI](network-watcher-connectivity-cli.md)
+> - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 Meer informatie over het gebruik van verbindings problemen oplossen om te controleren of een directe TCP-verbinding van een virtuele machine naar een bepaald eind punt tot stand kan worden gebracht.
@@ -39,7 +40,7 @@ Meer informatie over het gebruik van verbindings problemen oplossen om te contro
 * Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de VM die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de virtuele machine die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Controleer de verbinding met een virtuele machine
 
@@ -64,7 +65,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker geconfigureerd `NetworkSecurityRule` met de naam **UserRule_Port80**, die is geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
+Het volgende antwoord is afkomstig uit het vorige voor beeld.  In dit antwoord is de `ConnectionStatus` **onbereikbaar**. U kunt zien dat alle probe-verzen ding is mislukt. De connectiviteit op het virtuele apparaat is mislukt vanwege een door de gebruiker geconfigureerd `NetworkSecurityRule` met de naam **UserRule_Port80**, geconfigureerd om inkomend verkeer op poort 80 te blok keren. Deze informatie kan worden gebruikt om verbindings problemen te onderzoeken.
 
 ```
 ConnectionStatus : Unreachable
@@ -155,7 +156,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende voor beeld wordt de `ConnectionStatus` weer gegeven als **onbereikbaar**. In de `Hops`-Details kunt u onder `Issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`. 
+In het volgende voor beeld wordt de `ConnectionStatus` als **onbereikbaar**weer gegeven. In de `Hops` Details kunt u onder `Issues` zien dat het verkeer is geblokkeerd vanwege een `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -219,7 +220,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-In het volgende antwoord ziet u dat `ConnectionStatus` als **bereikbaar**wordt weer gegeven. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
+In het volgende antwoord kunt u zien dat de `ConnectionStatus` als **bereikbaar**wordt weer gegeven. Wanneer een verbinding tot stand is gebracht, worden er latentie waarden gegeven.
 
 ```
 ConnectionStatus : Reachable
@@ -271,7 +272,7 @@ Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1
 
 ### <a name="response"></a>Antwoord
 
-De volgende JSON is het voorbeeld antwoord van het uitvoeren van de vorige cmdlet. Als de bestemming bereikbaar is, wordt de eigenschap `ConnectionStatus` weer gegeven als **bereikbaar**.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
+De volgende JSON is het voorbeeld antwoord van het uitvoeren van de vorige cmdlet. Als de bestemming bereikbaar is, wordt de eigenschap `ConnectionStatus` als **bereikbaar**weer gegeven.  U vindt de details over het aantal hops dat is vereist om de opslag-Blob en latentie te bereiken.
 
 ```json
 ConnectionStatus : Reachable

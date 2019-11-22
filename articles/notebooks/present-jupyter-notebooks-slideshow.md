@@ -1,23 +1,14 @@
 ---
 title: Een Jupyter-notebook worden weergegeven als een diavoorstelling op Azure
 description: Over het configureren van cellen voor diavoorstellingsmodus in een Jupyter-notebook en Presenteer de diavoorstelling met de extensie leiden.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/04/2018
-ms.author: kraigb
-ms.openlocfilehash: 04612dc8892a544397251580b3494badc84e2ad5
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: d180eaf571fa57191e3b0856020b02f05d05e344
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973117"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277594"
 ---
 # <a name="run-a-notebook-slideshow"></a>Voer een diavoorstelling notebook
 
@@ -101,7 +92,7 @@ Omdat de diavoorstelling fragmenten op basis van meer verticale afstand dan wann
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Procedure: Projecten configureren en beheren @ no__t-0
-- [Procedure: Pakketten installeren vanuit een notitie blok @ no__t-0
-- [Procedure: Werken met gegevens bestanden @ no__t-0
-- [Procedure: Toegang tot gegevens bronnen @ no__t-0
+- [Hoe: configureren en beheren van projecten](configure-manage-azure-notebooks-projects.md)
+- [Hoe: installatie van pakketten van binnen een laptop](install-packages-jupyter-notebook.md)
+- [Hoe: werken met bestanden](work-with-project-data-files.md)
+- [Hoe: toegang tot gegevensbronnen](access-data-resources-jupyter-notebooks.md)

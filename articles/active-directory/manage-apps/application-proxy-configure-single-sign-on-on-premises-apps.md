@@ -1,5 +1,5 @@
 ---
-title: Eenmalige aanmelding via SAML voor on-premises apps met Azure AD-app proxy | Microsoft Docs
+title: Eenmalige aanmelding via SAML voor on-premises apps met Azure AD-app proxy
 description: Meer informatie over het bieden van eenmalige aanmelding voor on-premises toepassingen die zijn beveiligd met SAML-verificatie. Externe toegang bieden tot on-premises apps met toepassings proxy.
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d004d1183c9f5c1aec2dae7ab2d638528f164cd9
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: 59e4e527f25a32c8a5274db5eab5d33a7843bc3c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062501"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275589"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>Eenmalige aanmelding via SAML voor on-premises toepassingen met toepassings proxy
 
-U kunt eenmalige aanmelding (SSO) bieden voor on-premises toepassingen die zijn beveiligd met SAML-verificatie en externe toegang bieden tot deze toepassingen via toepassings proxy. Met eenmalige aanmelding via SAML wordt Azure Active Directory (Azure AD) geverifieerd bij de toepassing met behulp van het Azure AD-account van de gebruiker. Azure AD communiceert de aanmeldings gegevens met de toepassing via een verbindings protocol. U kunt ook gebruikers aan specifieke toepassings rollen toewijzen op basis van de regels die u in uw SAML-claims definieert. Door toepassings proxy naast SAML SSO in te scha kelen, hebben uw gebruikers externe toegang tot de toepassing en een naadloze SSO-ervaring.
+U kunt eenmalige aanmelding (SSO) bieden voor on-premises toepassingen die zijn beveiligd met SAML-verificatie en externe toegang bieden tot deze toepassingen via toepassings proxy. Met eenmalige aanmelding via SAML wordt Azure Active Directory (Azure AD) geverifieerd bij de toepassing met behulp van het Azure AD-account van de gebruiker. Azure AD communiceert de informatie aanmelding voor de toepassing via een verbindingsprotocol. U kunt ook gebruikers aan specifieke toepassings rollen toewijzen op basis van de regels die u in uw SAML-claims definieert. Door toepassings proxy naast SAML SSO in te scha kelen, hebben uw gebruikers externe toegang tot de toepassing en een naadloze SSO-ervaring.
 
 De toepassingen moeten SAML-tokens kunnen gebruiken die zijn uitgegeven door **Azure Active Directory**. Deze configuratie is niet van toepassing op toepassingen die gebruikmaken van een on-premises ID-provider. Voor deze scenario's wordt u aangeraden [resources te bekijken voor het migreren van toepassingen naar Azure AD](migration-resources.md).
 
@@ -92,12 +92,12 @@ Voordat u SSO voor on-premises toepassingen kunt bieden, moet u toepassings prox
     
 ## <a name="test-your-app"></a>Uw app testen
 
-Wanneer u al deze stappen hebt voltooid, moet uw app actief zijn. De app testen:
+Als u al deze stappen hebt voltooid, moet uw app te starten. De app testen:
 
 1. Open een browser en navigeer naar de **externe URL** die u hebt gemaakt tijdens het publiceren van de app. 
-1. Meld u aan met het test account dat u aan de app hebt toegewezen. U moet de toepassing kunnen laden en eenmalige aanmelding in de toepassing hebben.
+1. Meld u aan met de testaccount dat u hebt toegewezen aan de app. U moet de toepassing kunnen laden en eenmalige aanmelding in de toepassing hebben.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Hoe biedt Azure AD-toepassingsproxy eenmalige aanmelding?](application-proxy-single-sign-on.md)
-- [Problemen met toepassings proxy oplossen](application-proxy-troubleshoot.md)
+- [Application Proxy oplossen](application-proxy-troubleshoot.md)

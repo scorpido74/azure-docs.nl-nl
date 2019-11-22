@@ -1,8 +1,6 @@
 ---
-title: Teams voor ontwikkelen met Azure Dev spaties met .NET Core en Visual Studio
-titleSuffix: Azure Dev Spaces
+title: Team ontwikkeling met Azure-ontwikkel ruimten met behulp van .NET core en Visual Studio
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 ms.custom: vs-azure
 ms.workload: azure-vs
 author: DrEsteban
@@ -10,13 +8,13 @@ ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, NET service, service mesh-routering, kubectl, k8s '
-ms.openlocfilehash: 53c870ad135fe13eb3bf7556678cac29352911aa
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
-ms.translationtype: MT
+keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
+ms.openlocfilehash: 256cab2e88e87807f8b15866d341762b07ddb174
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67442934"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279747"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Teamontwikkeling met Azure Dev Spaces
 
@@ -51,7 +49,7 @@ We demonstreren deze ideeën aan de hand van een concreet voorbeeld met behulp v
 
 _Zonder_ Dev Spaces zou Scott maar over een paar manieren beschikken om de update te ontwikkelen en te testen, en geen van alle is daarvoor ideaal:
 * ALLE onderdelen lokaal uitvoeren, waarvoor een krachtigere ontwikkelmachine waarop Docker is geïnstalleerd en mogelijk MiniKube is vereist.
-* ALLE onderdelen uitvoeren in een geïsoleerde naamruimte in het Kubernetes-cluster. Aangezien *webfrontend* niet wordt gewijzigd, is gebruik van een geïsoleerde naamruimte een verspilling van clusterresources.
+* ALLE onderdelen uitvoeren in een geïsoleerde naamruimte in de Kubernetes-cluster. Aangezien *webfrontend* niet wordt gewijzigd, is gebruik van een geïsoleerde naamruimte een verspilling van clusterresources.
 * ALLEEN *mywebapi* uitvoeren en handmatige REST-aanroepen doen om te testen. Hiermee wordt niet de volledige end-to-end-stroom getest.
 * Op ontwikkeling gerichte code toevoegen aan de *webfrontend* waarmee de ontwikkelaar aanvragen kan verzenden naar een ander exemplaar van *mywebapi*. Het toevoegen van deze code maakt de *webfrontend*-service ingewikkelder.
 
@@ -74,7 +72,7 @@ We moeten eerst een basislijn voor onze services implementeren. Deze implementat
 > Soms is het noodzakelijk om de browser te vernieuwen nadat de webpagina de eerste keer wordt uitgevoerd na Ctrl+F5.
 
 > [!TIP]
-> De bovenstaande stappen stellen handmatig een basislijn in, maar de teams kunnen het beste CI/CD gebruiken om automatisch uw basislijn up-to-date te houden met doorgevoerde code.
+> De bovenstaande stappen stellen handmatig een basislijn in, maar de teams kunnen het beste CI/CD gebruiken om automatisch uw basislijn up-to-date te houden met toegewezen code.
 >
 > Bekijk onze [handleiding voor het instellen van CI/CD met Azure DevOps](how-to/setup-cicd.md) om een werkstroom te maken die vergelijkbaar is met het volgende diagram.
 >
@@ -123,10 +121,10 @@ Hier ziet u een diagram waarin u de werking van de verschillende ruimtes kunt zi
 
 Deze ingebouwde mogelijkheid van Azure Dev Spaces stelt u in staat om code end-to-end te testen in een gedeelde omgeving zonder dat ontwikkelaars de volledige groep services in hun ruimte opnieuw hoeven te maken. Voor deze routering moeten doorgifteheaders worden doorgestuurd in uw app-code, zoals uitgelegd in de vorige stap van deze handleiding.
 
-### <a name="test-code-running-in-the-devscott-space"></a>Code testen die wordt uitgevoerd in de _dev/scott_-ruimte
-Als u de nieuwe versie van *mywebapi* wilt testen samen met *webfrontend*, opent u de URL van het openbare toegangspunt voor *webfrontend* in de browser (bijvoorbeeld http://dev.webfrontend.123456abcdef.eus.azds.io) ) en gaat u naar de pagina About. Als het goed is, ziet u nu het oorspronkelijke bericht: Hello from webfrontend and Hello from mywebapi.
+### <a name="test-code-running-in-the-_devscott_-space"></a>Code testen die wordt uitgevoerd in de _dev/scott_-ruimte
+Als u de nieuwe versie van *mywebapi* wilt testen samen met *webfrontend*, opent u de URL van het openbare toegangspunt voor *webfrontend* in de browser (bijvoorbeeld http://dev.webfrontend.123456abcdef.eus.azds.io)) en gaat u naar de pagina About. Als het goed is, ziet u nu het oorspronkelijke bericht: Hello from webfrontend and Hello from mywebapi.
 
-Voeg nu het gedeelte scott.s. toe deel aan de URL, zodat deze er ongeveer als http leest\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io en vernieuw de browser. Het onderbrekingspunt dat u hebt ingesteld in het *mywebapi*-project wordt nu gevonden. Klik op F5 om door te gaan. In de browser ziet u nu het nieuwe bericht: Hello from webfrontend and mywebapi now says something new. Dit komt omdat het pad naar de bijgewerkte code in *mywebapi* wordt uitgevoerd in de _dev/scott_-ruimte.
+Voeg nu het gedeelte scott.s. toe onderdeel van de URL, zodat er iets zoals http\://scott.s.dev.webfrontend.123456abcdef.eus.azds.io wordt gelezen en de browser vernieuwen. Het onderbrekingspunt dat u hebt ingesteld in het *mywebapi*-project wordt nu gevonden. Klik op F5 om door te gaan. In de browser ziet u nu het nieuwe bericht: Hello from webfrontend and mywebapi now says something new. Dit komt omdat het pad naar de bijgewerkte code in *mywebapi* wordt uitgevoerd in de _dev/scott_-ruimte.
 
 Zodra u een _dev_-ruimte hebt die altijd de meest recente wijzigingen bevat en ervan uitgaande dat uw toepassing is ontworpen om te profiteren van de DevSpace-routering op basis van ruimte, zoals beschreven in dit gedeelte van de zelfstudie, wordt het in het ideale geval gemakkelijk om te zien hoe Dev Spaces aanzienlijk kan helpen bij het testen van nieuwe functies in de context van de grotere toepassing. In plaats van dat u _alle_ services naar uw privéruimte moet implementeren, kunt u een privéruimte maken die is afgeleid van _dev_, en alleen de services aanroepen waaraan u daadwerkelijk werkt. De routeringsinfrastructuur van Dev Spaces zorgt voor de rest door alle services die deze kan vinden buiten uw privéruimte, terwijl de standaardwaarden terug worden gezet naar de meest recent uitgevoerde versie in de _dev_-ruimte. En nog beter: _meerdere_ ontwikkelaars kunnen actief verschillende services op hetzelfde moment in hun eigen ruimte ontwikkelen zonder elkaar te onderbreken.
 

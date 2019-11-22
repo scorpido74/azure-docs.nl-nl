@@ -1,5 +1,5 @@
 ---
-title: Metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een virtuele Windows-machine
+title: Metrische gegevens van Windows-VM'S verzamelen in Azure Monitor met een sjabloon
 description: Metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een virtuele Windows-machine
 author: anirudhcavale
 services: azure-monitor
@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ac8d059c2bcad7aaa005b4afe1fb7814d49f9339
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: b6e66bea6dd86409866db1fee3564d21236ecbce
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844959"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286185"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een virtuele Windows-machine
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Met de Azure Monitor Diagnostics- [extensie](diagnostics-extension-overview.md)kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
+Met de Azure Monitor [Diagnostics-extensie](diagnostics-extension-overview.md)kunt u metrische gegevens en logboeken verzamelen van het gast besturingssysteem (gast besturingssysteem) dat wordt uitgevoerd als onderdeel van een virtuele machine, Cloud service of service Fabric cluster. De uitbrei ding kan telemetrie verzenden naar een [groot aantal verschillende locaties.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
 In dit artikel wordt het proces beschreven voor het verzenden van de prestaties van een virtuele Windows-machine naar het Azure Monitor-gegevens archief. Te beginnen met diagnostische gegevens van versie 1,11, kunt u metrische gegevens rechtstreeks naar de opslag voor metrische gegevens van Azure Monitor schrijven, waar de metrische gegevens van het standaard platform al zijn verzameld.
 
@@ -40,7 +40,7 @@ Als u niet bekend bent met Resource Manager-sjablonen, kunt u meer te weten kome
 De uitbrei ding Azure Diagnostics gebruikt een functie met de naam ' gegevens-sinks ' voor het routeren van metrieken en logboeken naar verschillende locaties. De volgende stappen laten zien hoe u een resource manager-sjabloon en Power shell gebruikt om een virtuele machine te implementeren met behulp van de nieuwe gegevens Sink ' Azure Monitor '.
 
 ## <a name="author-resource-manager-template"></a>Resource Manager-sjabloon maken
-Voor dit voor beeld kunt u een openbaar beschik bare voorbeeld sjabloon gebruiken. De start sjablonen bevinden https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows zich op.
+Voor dit voor beeld kunt u een openbaar beschik bare voorbeeld sjabloon gebruiken. De start sjablonen bevinden zich op https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows.
 
 - **Azuredeploy. json** is een vooraf geconfigureerde Resource Manager-sjabloon voor de implementatie van een virtuele machine.
 
@@ -126,7 +126,7 @@ Voeg de **identiteits** configuratie toe aan de VM-resource om ervoor te zorgen 
     ...
 ```
 
-Voeg de volgende configuratie toe om de diagnostische uitbrei ding op een virtuele Windows-machine in te scha kelen. Voor een eenvoudige virtuele machine op basis van Resource Manager kunt u de extensie configuratie toevoegen aan de resource matrix voor de virtuele machine. De regel "sink"&mdash; "AzMonSink" en de bijbehorende "SinksConfig" verderop in de sectie&mdash;zorgen ervoor dat de uitbrei ding de metrische gegevens rechtstreeks naar Azure monitor kan verzenden. U kunt zo nodig prestatie meter items toevoegen of verwijderen.
+Voeg de volgende configuratie toe om de diagnostische uitbrei ding op een virtuele Windows-machine in te scha kelen. Voor een eenvoudige virtuele machine op basis van Resource Manager kunt u de extensie configuratie toevoegen aan de resource matrix voor de virtuele machine. De regel ' sinks '&mdash; ' AzMonSink ' en de bijbehorende ' SinksConfig ' verderop in de sectie&mdash;de uitbrei ding in staat stellen om gegevens rechtstreeks naar Azure Monitor te verzenden. U kunt zo nodig prestatie meter items toevoegen of verwijderen.
 
 
 ```json
@@ -241,8 +241,8 @@ Sla beide bestanden op en sluit deze.
 We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te implementeren.
 
 1. Start Power shell.
-1. Meld u aan bij Azure `Login-AzAccount`met.
-1. Haal uw lijst met abonnementen op met `Get-AzSubscription`behulp van.
+1. Meld u aan bij Azure met `Login-AzAccount`.
+1. U kunt uw lijst met abonnementen ophalen met behulp van `Get-AzSubscription`.
 1. Stel het abonnement in dat u gebruikt om de virtuele machine te maken of bij te werken in:
 
    ```powershell
@@ -258,7 +258,7 @@ We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te impleme
 
 1. Voer de volgende opdrachten uit om de virtuele machine te implementeren met behulp van de Resource Manager-sjabloon.
    > [!NOTE]
-   > Als u een bestaande virtuele machine wilt bijwerken, kunt u een incrementele toevoeg *modus* toevoegen aan het einde van de volgende opdracht.
+   > Als u een bestaande virtuele machine wilt bijwerken, kunt u een *incrementele toevoeg modus* toevoegen aan het einde van de volgende opdracht.
 
    ```powershell
    New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
@@ -267,7 +267,7 @@ We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te impleme
 1. Nadat de implementatie is voltooid, moet de virtuele machine zich in de Azure Portal bekomen, waarbij de metrische gegevens naar Azure Monitor worden verzonden.
 
    > [!NOTE]
-   > U kunt fouten rond de geselecteerde vmSkuSize uitvoeren. Als dit het geval is, gaat u terug naar het bestand azuredeploy. json en werkt u de standaard waarde van de vmSkuSize-para meter bij. In dit geval kunt u het beste ' Standard_DS1_v2 ' proberen.
+   > U kunt fouten rond de geselecteerde vmSkuSize uitvoeren. Als dit het geval is, gaat u terug naar het bestand azuredeploy. json en werkt u de standaard waarde van de vmSkuSize-para meter bij. In dit geval kunt u het beste ' Standard_DS1_v2 ').
 
 ## <a name="chart-your-metrics"></a>Grafieken van uw metrische gegevens
 
@@ -285,7 +285,7 @@ We maken gebruik van Azure PowerShell om de Resource Manager-sjabloon te impleme
 
 6. Selecteer in de vervolg keuzelijst naam ruimten de optie **Azure. VM. Windows. gast**
 
-7. Selecteer in de vervolg keuzelijst metrische gegevens **geheugen\%toegewezen bytes in gebruik**.
+7. Selecteer in de vervolg keuzelijst metrische gegevens de optie **geheugen\%toegewezen bytes in gebruik**zijn.
 
 
 ## <a name="next-steps"></a>Volgende stappen

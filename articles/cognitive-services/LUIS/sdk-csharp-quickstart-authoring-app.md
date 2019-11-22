@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.author: diberry
-ms.openlocfilehash: 6af076f585e7fc9afe870acada744ead2d2e9118
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: b3b7fed91be00e1bf2ac097638f14d1bbe6481f0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73672095"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280306"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library-for-net"></a>Quick Start: Language Understanding (LUIS) voor het ontwerpen van client bibliotheek voor .NET
 
@@ -35,11 +35,51 @@ Gebruik de Language Understanding (LUIS)-ontwerp-client bibliotheek voor .NET vo
 * Language Understanding-Portal account (LUIS): [Maak er gratis een](https://www.luis.ai) .
 * De huidige versie van [.net core](https://dotnet.microsoft.com/download/dotnet-core).
 
+
 ## <a name="setting-up"></a>Instellen
 
 ### <a name="get-your-language-understanding-luis-starter-key"></a>Uw Language Understanding-starter sleutel (LUIS) ophalen
 
-Haal uw [Start sleutel](luis-how-to-azure-subscription.md#starter-key)op en [Maak een omgevings variabele](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) voor de sleutel met de naam `COGNITIVESERVICE_AUTHORING_KEY`.
+Haal uw [Start sleutel](luis-how-to-azure-subscription.md#starter-key) op door een Luis-ontwerp bron te maken. Behoud de sleutel en de regio van de sleutel voor de volgende stap.
+
+### <a name="create-an-environment-variable"></a>Een omgevings variabele maken
+
+Met uw sleutel, en de regio voor de sleutel, maakt u twee omgevings variabelen voor verificatie:
+
+* `COGNITIVESERVICE_AUTHORING_KEY`: de resource sleutel voor het verifiëren van uw aanvragen.
+* `COGNITIVESERVICE_REGION`-de regio die aan uw sleutel is gekoppeld. Bijvoorbeeld `westus`.
+
+Volg de instructies voor uw besturings systeem.
+
+#### <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+```console
+setx COGNITIVESERVICE_AUTHORING_KEY <replace-with-your-authoring-key>
+setx COGNITIVESERVICE_REGION <replace-with-your-authoring-region>
+```
+
+Nadat u de omgevings variabele hebt toegevoegd, start u het console venster opnieuw.
+
+#### <a name="linuxtablinux"></a>[Linux](#tab/linux)
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key>
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Nadat u de omgevingsvariabele toevoegt, voert u `source ~/.bashrc` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
+
+#### <a name="macostabunix"></a>[MacOS](#tab/unix)
+
+Bewerk uw `.bash_profile`en voeg de omgevings variabele toe:
+
+```bash
+export COGNITIVESERVICE_AUTHORING_KEY=<replace-with-your-authoring-key> 
+export COGNITIVESERVICE_REGION=<replace-with-your-authoring-region>
+```
+
+Nadat u de omgevingsvariabele toevoegt, voert u `source .bash_profile` uit vanuit het consolevenster om de wijzigingen van kracht te laten worden.
+***
 
 ### <a name="create-a-new-c-application"></a>Een nieuwe C# toepassing maken
 
@@ -206,4 +246,4 @@ Als u wilt opruimen, kunt u de LUIS-app verwijderen. Het verwijderen van de app 
 * [Wat is de Language Understanding-API (LUIS)?](what-is-luis.md)
 * [Nieuwe functies](whats-new.md)
 * [Intenties](luis-concept-intent.md), [entiteiten](luis-concept-entity-types.md)en [voor beelden van uitingen](luis-concept-utterance.md)en [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md)
-* De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs).
+* De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs).

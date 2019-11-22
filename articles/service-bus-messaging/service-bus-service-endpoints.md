@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: aschhab
-ms.openlocfilehash: 7d31dd004c879fd3e689f4ba7a8ae58cb223ae70
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 99a705c3923821739ddc1dedd8f7c079dc534a1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73484937"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277296"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Virtual Network Service-eind punten gebruiken met Azure Service Bus
 
@@ -31,7 +31,6 @@ Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen d
 > Vertrouwde micro soft-services worden niet ondersteund wanneer virtuele netwerken zijn geïmplementeerd.
 >
 > Algemene scenario's voor Azure die niet met virtuele netwerken werken (Houd er rekening mee dat de lijst **niet** volledig is)-
-> - Azure Monitor
 > - Azure Stream Analytics
 > - Integratie met Azure Event Grid
 > - Azure-IoT Hub routes
@@ -48,11 +47,11 @@ Het resultaat is een privé-en geïsoleerde relatie tussen de werk belastingen d
 
 Een belang rijke overweging bij het gebruik van VNet-service-eind punten met Service Bus is dat u deze eind punten niet moet inschakelen in toepassingen die gebruikmaken van de standaard-en Premium-laag Service Bus naam ruimten. Omdat de standaardlaag geen VNets ondersteunt, wordt het eind punt beperkt tot alleen naam ruimten van de Premium-laag.
 
-## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Geavanceerde beveiligings scenario's ingeschakeld door VNet-integratie 
+## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Geavanceerde beveiliging mogelijke scenario's met VNet-integratie 
 
-Oplossingen die een strakke en compartmentalized beveiliging vereisen, en waarbij virtuele netwerk-subnetten de segmentatie tussen de compartmentalized-services bieden, is over het algemeen nog steeds communicatie paden nodig tussen services die zich in deze compartimenten bevinden.
+Oplossingen die voorziet in een hechte en compartmentalized beveiliging vereisen, en waarbij virtuele subnetten hardwareoplossing tussen de compartmentalized services, moeten doorgaans nog steeds communicatiepaden tussen services die zich bevinden in deze secties.
 
-Elke onmiddellijke IP-route tussen de compartimenten, waaronder die van HTTPS via TCP/IP, vormt het risico van misbruik van beveiligings problemen vanuit de netwerklaag. Berichten services bieden volledig geïsoleerde communicatie paden, waar berichten zelfs naar de schijf worden geschreven wanneer ze tussen partijen worden overgezet. Werk belastingen in twee verschillende virtuele netwerken die beide zijn gebonden aan hetzelfde Service Bus-exemplaar kunnen efficiënt en betrouwbaar communiceren via berichten, terwijl de respectieve integriteit van de isolatie grens van het netwerk behouden blijft.
+Een direct IP-route tussen de afdelingen, inclusief de uitvoering van HTTPS via TCP/IP, voert u het risico van misbruik van zwakke plekken van de netwerklaag op omhoog. Messaging-services bieden een volledig geïsoleerd communicatiepaden, waar berichten ook naar de schijf als ze worden overgedragen tussen de partijen worden geschreven. Werk belastingen in twee verschillende virtuele netwerken die beide zijn gebonden aan hetzelfde Service Bus-exemplaar kunnen efficiënt en betrouwbaar communiceren via berichten, terwijl de respectieve integriteit van de isolatie grens van het netwerk behouden blijft.
  
 Dit betekent dat uw beveiligings gevoelige cloud oplossingen niet alleen toegang krijgen tot de toonaangevende betrouw bare en schaal bare asynchrone berichten mogelijkheden van Azure, maar ze kunnen nu berichten gebruiken om communicatie paden te maken tussen de veilige oplossings compartimenten die zijn inherent veiliger dan wat kan worden behaald met een peer-to-peer-communicatie modus, inclusief HTTPS en andere met TLS beveiligde socket protocollen.
 
@@ -68,16 +67,16 @@ De regel van het virtuele netwerk is een koppeling van de Service Bus naam ruimt
 
 Met de volgende Resource Manager-sjabloon kan een regel voor een virtueel netwerk worden toegevoegd aan een bestaande Service Bus naam ruimte.
 
-Sjabloon parameters:
+Sjabloonparameters:
 
 * **naam ruimte**: Service Bus naam ruimte.
-* **virtualNetworkingSubnetId**: volledig gekwalificeerd pad van Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor het standaard subnet van een virtueel netwerk.
+* **virtualNetworkingSubnetId**: volledig gekwalificeerde pad van de Resource Manager voor het subnet van het virtuele netwerk; bijvoorbeeld `/subscriptions/{id}/resourceGroups/{rg}/providers/Microsoft.Network/virtualNetworks/{vnet}/subnets/default` voor de standaard-subnet van een virtueel netwerk.
 
 > [!NOTE]
 > Hoewel er geen regels kunnen worden geweigerd, is voor de Azure Resource Manager sjabloon de standaard actie ingesteld op **' toestaan '** , waardoor verbindingen niet worden beperkt.
 > Wanneer u Virtual Network of firewall regels maakt, moeten we de ***' defaultAction '*** wijzigen
 > 
-> Van
+> from
 > ```json
 > "defaultAction": "Allow"
 > ```
@@ -191,7 +190,7 @@ Als u de sjabloon wilt implementeren, volgt u de instructies voor [Azure Resourc
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende koppelingen voor meer informatie over virtuele netwerken:
+Zie voor meer informatie over virtuele netwerken, de volgende koppelingen:
 
 - [Azure Virtual Network-Service-eind punten][vnet-sep]
 - [IP-filtering Azure Service Bus][ip-filtering]

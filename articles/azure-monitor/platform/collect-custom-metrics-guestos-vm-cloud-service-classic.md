@@ -1,6 +1,6 @@
 ---
-title: Metrische gegevens van het gast besturingssysteem verzenden naar de klassieke Azure Monitor voor metrische gegevens Cloud Services
-description: De metrische gegevens van het gast besturingssysteem verzenden naar het Azure Monitor metrische archief Cloud Services
+title: Gegevens van klassieke Cloud Services naar Azure Monitor Data Base voor metrische gegevens verzenden
+description: Hierin wordt het proces beschreven voor het verzenden van de prestatie gegevens voor het gast besturingssysteem voor Azure Classic Cloud Services naar de Azure Monitor metrische opslag.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 56138277866d3b2bf02733a2c595a5a232faed8c
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 1c742daf29cbbef5e6f51af5363be7fd949aaebf
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844930"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304779"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Metrische gegevens van het gast besturingssysteem verzenden naar de klassieke Azure Monitor voor metrische gegevens Cloud Services 
 

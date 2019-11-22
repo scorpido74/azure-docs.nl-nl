@@ -7,12 +7,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: d0e19c8483321189cb38a4eebdbf7b2cb89785ef
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 0503ebc7a585210f95eb58b0f11ae1dd0a835264
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933025"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278614"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Aan de slag met logboek query's in Azure Monitor
 
@@ -109,7 +109,7 @@ Wanneer u filter voorwaarden schrijft, kunt u de volgende expressies gebruiken:
 |:---|:---|:---|
 | == | Gelijkheid controleren<br>(hoofdletter gevoelig) | `Level == 8` |
 | =~ | Gelijkheid controleren<br>(niet hoofdletter gevoelig) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! =, < > | Ongelijkheid controleren<br>(beide expressies zijn identiek) | `Level != 4` |
+| !=, <> | Ongelijkheid controleren<br>(beide expressies zijn identiek) | `Level != 4` |
 | *en*, *of* | Vereist tussen omstandigheden| `Level == 16 or CommandLine != ""` |
 
 Als u wilt filteren op meerdere voor waarden, kunt u **en**gebruiken:
@@ -239,4 +239,7 @@ Als u de uitvoer helderder wilt maken, selecteert u deze om weer te geven als ee
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [schrijven van zoek query's](search-queries.md)
+- Meer informatie over het gebruik van teken reeks gegevens in een logboek query met [werk reeksen in azure monitor-logboek query's](string-operations.md).
+- Meer informatie over het samen voegen van gegevens in een logboek query met [Geavanceerde aggregaties in azure monitor-logboek query's](advanced-aggregations.md).
+- Meer informatie over het samen voegen van gegevens uit meerdere tabellen met [samen voegingen in azure monitor-logboek query's](joins.md).
+- Krijg documentatie over de volledige Kusto-query taal in de [Naslag Gids voor KQL-talen](/azure/kusto/query/).

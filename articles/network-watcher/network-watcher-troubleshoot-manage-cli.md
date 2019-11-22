@@ -1,6 +1,7 @@
 ---
-title: Problemen oplossen met Azure Virtual Network Gateway en verbindingen - Azure CLI | Microsoft Docs
-description: Deze pagina wordt uitgelegd hoe u de Azure Network Watcher voor het oplossen van Azure CLI
+title: Problemen met Azure VNET-gateway en-verbindingen oplossen-Azure CLI
+titleSuffix: Azure Network Watcher
+description: Op deze pagina wordt uitgelegd hoe u de Azure-Network Watcher gebruikt voor het oplossen van problemen met Azure CLI
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,44 +15,44 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 0974c242533ff122d75979acc5eb158ec36c179d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ca61486ce58ccd3385518c2d22e0690c1fb34d16
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699596"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277815"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Problemen oplossen met de Gateway van virtueel netwerk en verbindingen met behulp van Azure Network Watcher Azure CLI
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Problemen met Virtual Network-gateway en-verbindingen met Azure Network Watcher Azure CLI oplossen
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [Azure-CLI](network-watcher-troubleshoot-manage-cli.md)
+> - [Azure CLI](network-watcher-troubleshoot-manage-cli.md)
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
-Network Watcher biedt veel mogelijkheden met betrekking tot het begrijpen van de netwerkresources van uw in Azure. Een van deze mogelijkheden is resource-oplossen van problemen. Het oplossen van resource kan worden aangeroepen via de portal, PowerShell, CLI of REST-API. Indien aangeroepen, wordt Network Watcher inspecteert de status van de Gateway van een virtueel netwerk of een verbinding en retourneert de bevindingen.
+Network Watcher biedt veel mogelijkheden voor het koppelen van uw netwerk bronnen in Azure. Een van deze mogelijkheden is het oplossen van problemen met resources. Het oplossen van resources kan worden aangeroepen via de portal, Power shell, CLI of REST API. Als Network Watcher wordt aangeroepen, wordt de status van een Virtual Network gateway of een verbinding gecontroleerd en worden de bevindingen daarvan geretourneerd.
 
-Als u wilt de stappen in dit artikel uitvoert, moet u [installeren van de Azure-opdrachtregelinterface voor Mac, Linux en Windows (CLI)](/cli/azure/install-azure-cli).
+Als u de stappen in dit artikel wilt uitvoeren, moet u [de Azure-opdracht regel interface voor Mac, Linux en Windows (CLI) installeren](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit scenario wordt ervan uitgegaan dat u de stappen in al hebt gevolgd [maken van een Network Watcher](network-watcher-create.md) te maken van een Network Watcher.
+In dit scenario wordt ervan uitgegaan dat u de stappen in [Create a Network Watcher](network-watcher-create.md) voor het maken van een Network Watcher, al hebt gevolgd.
 
-Voor een lijst van ondersteunde gateway typen bezoek, [ondersteund gatewaytypen](network-watcher-troubleshoot-overview.md#supported-gateway-types).
+Voor een lijst met ondersteunde gateway typen gaat u naar [ondersteunde gateway typen](network-watcher-troubleshoot-overview.md#supported-gateway-types).
 
 ## <a name="overview"></a>Overzicht
 
-Het oplossen van resource biedt de mogelijkheid voor het oplossen van problemen die met Gateways van virtueel netwerk en verbindingen optreden. Wanneer een aanvraag wordt gedaan voor het oplossen van de resource, logboeken worden opgevraagd en geïnspecteerd. Als controle voltooid is, worden de resultaten worden geretourneerd. Aanvragen voor het oplossen van problemen worden langlopende resource aanvraagt, die meerdere minuten kan duren om een resultaat te retourneren. De logboeken van het oplossen van problemen worden opgeslagen in een container op een storage-account dat is opgegeven.
+Probleem oplossing voor bronnen biedt de mogelijkheid problemen op te lossen die zich voordoen met Virtual Network gateways en verbindingen. Wanneer er een aanvraag wordt gedaan om problemen op te lossen met resources, worden er door Logboeken query's uitgevoerd en geïnspecteerd. Wanneer de inspectie is voltooid, worden de resultaten geretourneerd. Aanvragen voor het oplossen van problemen zijn langlopende aanvragen. Dit kan enkele minuten duren voordat een resultaat wordt geretourneerd. De logboeken van het oplossen van problemen worden opgeslagen in een container op een opslag account dat is opgegeven.
 
-## <a name="retrieve-a-virtual-network-gateway-connection"></a>Een virtuele Netwerkgatewayverbinding ophalen
+## <a name="retrieve-a-virtual-network-gateway-connection"></a>Een Virtual Network gateway verbinding ophalen
 
-In dit voorbeeld is het oplossen van resource wordt uitgevoerd op een verbinding. U kunt ook deze doorgeven een virtuele netwerkgateway. De volgende cmdlet geeft een lijst van de vpn-verbindingen in een resourcegroep.
+In dit voor beeld wordt het oplossen van resources uitgevoerd op een verbinding. U kunt ook een Virtual Network gateway door geven. Met de volgende cmdlet worden de VPN-verbindingen in een resource groep weer gegeven.
 
 ```azurecli
 az network vpn-connection list --resource-group resourceGroupName
 ```
 
-Zodra u de naam van de verbinding hebt, kunt u deze opdracht voor het ophalen van de resource-Id kunt uitvoeren:
+Zodra u de naam van de verbinding hebt, kunt u deze opdracht uitvoeren om de resource-id op te halen:
 
 ```azurecli
 az network vpn-connection show --resource-group resourceGroupName --ids vpnConnectionIds
@@ -59,7 +60,7 @@ az network vpn-connection show --resource-group resourceGroupName --ids vpnConne
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Het oplossen van resource geeft gegevens over de status van de resource, Bovendien bespaart u logboeken naar een opslagaccount om te worden gecontroleerd. In deze stap maken we een storage-account, als een bestaand opslagaccount bestaat kunt u deze kunt gebruiken.
+Resource-probleem oplossing retourneert gegevens over de status van de resource. logboeken worden ook opgeslagen in een opslag account om te worden gecontroleerd. In deze stap maken we een opslag account. als er een bestaand opslag account bestaat, kunt u dit gebruiken.
 
 1. Het opslagaccount maken
 
@@ -67,7 +68,7 @@ Het oplossen van resource geeft gegevens over de status van de resource, Bovendi
     az storage account create --name storageAccountName --location westcentralus --resource-group resourceGroupName --sku Standard_LRS
     ```
 
-1. De opslagaccountsleutels ophalen
+1. De sleutels voor het opslag account ophalen
 
     ```azurecli
     az storage account keys list --resource-group resourcegroupName --account-name storageAccountName
@@ -79,22 +80,22 @@ Het oplossen van resource geeft gegevens over de status van de resource, Bovendi
     az storage container create --account-name storageAccountName --account-key {storageAccountKey} --name logs
     ```
 
-## <a name="run-network-watcher-resource-troubleshooting"></a>Network Watcher-resource voor probleemoplossing uitvoert
+## <a name="run-network-watcher-resource-troubleshooting"></a>Probleem oplossing voor Network Watcher resource uitvoeren
 
-Oplossen van problemen met resources met de `az network watcher troubleshooting` cmdlet. We geven de cmdlet de resourcegroep, de naam van de netwerk-Watcher, de Id van de verbinding van de Id van het opslagaccount en het pad naar de blob voor het opslaan van de problemen met resulteert in.
+U kunt resources oplossen met de cmdlet `az network watcher troubleshooting`. We geven de cmdlet door aan de resource groep, de naam van de Network Watcher, de id van de verbinding, de id van het opslag account en het pad naar de BLOB voor het opslaan van de problemen met de probleem oplossing in.
 
 ```azurecli
 az network watcher troubleshooting start --resource-group resourceGroupName --resource resourceName --resource-type {vnetGateway/vpnConnection} --storage-account storageAccountName  --storage-path https://{storageAccountName}.blob.core.windows.net/{containerName}
 ```
 
-Zodra u de cmdlet uitvoert, beoordelingen Network Watcher van de resource om te controleren of de status. Deze retourneert de resultaten naar de shell en logboeken van de resultaten opgeslagen in het opslagaccount dat is opgegeven.
+Zodra u de cmdlet hebt uitgevoerd, controleert Network Watcher de resource om de status te controleren. De resultaten worden geretourneerd naar de shell en de logboeken van de resultaten worden opgeslagen in het opgegeven opslag account.
 
-## <a name="understanding-the-results"></a>Inzicht krijgen in de resultaten
+## <a name="understanding-the-results"></a>Uitleg over de resultaten
 
-De actietekst bevat algemene richtlijnen over het probleem op te lossen. Als een actie kan worden ondernomen voor het probleem, wordt een koppeling volgen met aanvullende richtlijnen. In het geval waarbij er geen aanvullende richtlijnen, het antwoord geeft de url om een ondersteuningsaanvraag openen.  Voor meer informatie over de eigenschappen van het antwoord en wat is opgenomen, gaat u naar [overzicht van Network Watcher oplossen](network-watcher-troubleshoot-overview.md)
+De actie tekst bevat algemene richt lijnen voor het oplossen van het probleem. Als er een actie kan worden uitgevoerd voor het probleem, wordt er een koppeling met aanvullende richt lijnen gegeven. In het geval dat er geen aanvullende richt lijnen zijn, geeft het antwoord de URL om een ondersteunings aanvraag te openen.  Ga voor meer informatie over de eigenschappen van de reactie en wat is opgenomen naar [Network Watcher probleemoplossings overzicht](network-watcher-troubleshoot-overview.md)
 
-Zie voor instructies over het downloaden van bestanden vanuit azure storage-accounts, [aan de slag met Azure Blob storage met .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Een ander hulpmiddel dat kan worden gebruikt, is Storage Explorer. Meer informatie over Storage Explorer Hier vindt op de volgende koppeling: [Storage Explorer](https://storageexplorer.com/)
+Raadpleeg aan de [slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies voor het downloaden van bestanden van Azure Storage-accounts. Een ander hulp programma dat kan worden gebruikt, is Storage Explorer. Meer informatie over Storage Explorer kunt u vinden op de volgende koppeling: [Storage Explorer](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als de instellingen zijn gewijzigd dat stop VPN-connectiviteit, raadpleegt u [Netwerkbeveiligingsgroepen beheren](../virtual-network/manage-network-security-group.md) voor het opsporen van de groep en beveiliging netwerkbeveiligingsregels die mogelijk in kwestie.
+Als de instellingen zijn gewijzigd waardoor de VPN-verbinding wordt verbroken, raadpleegt u [netwerk beveiligings groepen beheren](../virtual-network/manage-network-security-group.md) om de netwerk beveiligings groep en beveiligings regels te traceren die mogelijk in aanmerking komen.

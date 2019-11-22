@@ -1,6 +1,6 @@
 ---
-title: Azure CDN-cachinggedrag met caching-regels beheren | Microsoft Docs
-description: Regels voor caching CDN kunt u instellen of wijzigen van standaardgedrag cache verloopt zowel wereldwijd en met voorwaarden, zoals een URL-pad en -extensies.
+title: Het gedrag van Azure CDN caching bepalen met cache regels | Microsoft Docs
+description: U kunt de regels van de CDN-cache gebruiken om zowel globaal als met voor waarden een URL-pad en bestands extensies voor de standaard cache in te stellen of te wijzigen.
 services: cdn
 documentationcenter: ''
 author: mdgattuso
@@ -13,34 +13,34 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: magattus
-ms.openlocfilehash: d4ab3ca32f229e92ae6bae5906c6c70593e9f9d3
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: ddd7dc7e1245c2a77e866a454bf6bfa3c1f16f88
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67594042"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278139"
 ---
-# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Azure CDN caching-gedrag met caching-regels beheren
+# <a name="control-azure-cdn-caching-behavior-with-caching-rules"></a>Het gedrag van Azure CDN caching bepalen met cache regels
 
 > [!NOTE] 
-> Regels voor opslaan in cache zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** profielen. Voor **Azure CDN Premium van Verizon** profielen, moet u de [regels-engine van Azure CDN](cdn-rules-engine.md) in de **beheren** portal voor vergelijkbare functionaliteit.
+> Cache regels zijn alleen beschikbaar voor **Azure CDN Standard van Verizon** en **Azure CDN Standard van Akamai** -profielen. Voor **Azure CDN van micro soft** -profielen moet u de [Standard Rules engine](cdn-standard-rules-engine-reference.md) gebruiken voor **Azure CDN Premium van Verizon** -profielen. u moet de [regel engine van Verizon Premium](cdn-rules-engine.md) gebruiken in de portal **beheren** voor vergelijk bare functionaliteit.
  
-Azure Content Delivery Network (CDN) biedt twee manieren om te bepalen hoe uw bestanden in cache zijn opgeslagen: 
+Azure Content Delivery Network (CDN) biedt twee manieren om te bepalen hoe uw bestanden in de cache worden opgeslagen: 
 
-- Regels voor opslaan in cache: Dit artikel wordt beschreven hoe u netwerk voor contentlevering (CDN) regels voor caching instellen of wijzigen van standaardgedrag cache verloopt zowel wereldwijd en met aangepaste voorwaarden, zoals een URL-pad en de bestandsnaam-extensie kunt gebruiken. Azure CDN biedt twee typen regels voor opslaan in cache:
+- Regels voor opslaan in cache: in dit artikel wordt beschreven hoe u de regels voor het gebruik van CDN (Content Delivery Network) kunt gebruiken voor het instellen of wijzigen van het verloop van de standaard cache zowel globaal als met aangepaste voor waarden, zoals een URL-pad en bestands extensie. Azure CDN biedt twee typen regels voor opslaan in cache:
 
-   - Algemene regels voor opslaan in cache: U kunt één globale cacheregel voor elk eindpunt instellen in uw profiel, die invloed hebben op alle aanvragen naar het eindpunt. De globale regel voor opslaan in cache overschrijft alle HTTP-headers met cache-instructies, indien aanwezig.
+   - Globale regels voor opslaan in cache: u kunt voor elk eindpunt in uw profiel één globale regel voor opslaan in cache instellen, die geldt voor alle aanvragen op het eindpunt. De globale regel voor opslaan in cache overschrijft alle HTTP-headers met cache-instructies, indien aanwezig.
 
-   - Aangepaste cacheregels: U kunt een of meer aangepaste cacheregels voor elk eindpunt instellen in uw profiel. Aangepaste regels voor opslaan in cache komen overeen met specifieke paden en bestandsextensies, worden in volgorde verwerkt en overschrijven de globale regel voor opslaan in cache, indien ingesteld. 
+   - Aangepaste regels voor opslaan in cache: u kunt een of meer aangepaste regels voor opslaan in cache instellen voor elk eindpunt in uw profiel. Aangepaste regels voor opslaan in cache komen overeen met specifieke paden en bestandsextensies, worden in volgorde verwerkt en overschrijven de globale regel voor opslaan in cache, indien ingesteld. 
 
-- Query queryreeksen opslaan in cache: U kunt aanpassen hoe het Azure CDN omgaat met aanvragen met queryreeksen opslaan in cache. Zie voor meer informatie, [Control Azure CDN caching-gedrag met queryreeksen](cdn-query-string.md). Als het bestand niet gecachet kan worden, heeft de instelling van querytekenreeksen geen effect, op basis van regels en het standaardgedrag CDN caching.
+- Query reeks cache: u kunt aanpassen hoe de Azure CDN in de cache wordt behandeld voor aanvragen met query teken reeksen. Zie voor meer informatie [Control Azure CDN Caching with query strings](cdn-query-string.md). Als het bestand niet in cache kan worden opgeslagen, heeft de cache-instelling voor de query reeks geen effect, op basis van de cache regels en het standaard CDN-gedrag.
 
-Zie voor meer informatie over standaard cachegedrag en opslaan in cache richtlijn headers [hoe caching werkt](cdn-how-caching-works.md). 
+Zie [How caching Works](cdn-how-caching-works.md)(Engelstalig) voor meer informatie over het standaard gedrag van caching en het opslaan van instructie headers in de cache. 
 
 
-## <a name="accessing-azure-cdn-caching-rules"></a>Toegang tot Azure CDN caching-regels
+## <a name="accessing-azure-cdn-caching-rules"></a>Azure CDN regels voor caching gebruiken
 
-1. Open de Azure-portal, selecteert u een CDN-profiel en een eindpunt selecteren.
+1. Open de Azure Portal, selecteer een CDN-profiel en selecteer vervolgens een eind punt.
 
 2. Selecteer in het linkerdeelvenster onder Instellingen de optie **Regels voor opslaan in cache**.
 
@@ -51,66 +51,66 @@ Zie voor meer informatie over standaard cachegedrag en opslaan in cache richtlij
    ![Pagina Regels voor CDN-caching](./media/cdn-caching-rules/cdn-caching-rules-page.png)
 
 
-## <a name="caching-behavior-settings"></a>Van de cache-gedraginstellingen
-Voor algemene en aangepaste cacheregels, kunt u de volgende **cachegedrag** instellingen:
+## <a name="caching-behavior-settings"></a>Instellingen voor cache gedrag
+Voor globale en aangepaste regels voor caching kunt u de volgende instellingen voor **cache gedrag** opgeven:
 
-- **Cache overslaan**: Niet in de cache en geleverde oorsprong cache-instructies headers negeren.
+- **Cache overs Laan**: de door de oorsprong vermelde cache-instructie headers worden niet in de cache geplaatst en genegeerd.
 
-- **Overschrijven**: Oorsprong-voorwaarde Cacheduur; negeren Gebruik in plaats daarvan de Cacheduur van de opgegeven. Dit overschrijft geen cache-control: niet-cache.
+- **Negeren**: oorspronkelijke cache duur van de oorsprong negeren; gebruik in plaats daarvan de meegeleverde cache duur. Hiermee wordt de cache-Control niet overschreven: geen cache.
 
-- **Instellen indien ontbrekend**: Headers van de cache-instructies oorsprong worden geleverd, worden gehandhaafd, indien ze bestaan; Gebruik anders de Cacheduur van de opgegeven.
+- **Instellen indien ontbrekend**: door de beheerder gestuurde cache-instructie headers, indien aanwezig. Gebruik anders de meegeleverde cache duur.
 
 ![Globale regels voor opslaan in cache](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
 ![Aangepaste regels voor opslaan in cache](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
-## <a name="cache-expiration-duration"></a>Vervaltijd van de cache
-U kunt de vervaltijd van de cache voor algemene en aangepaste cacheregels opgeven in dagen, uren, minuten en seconden:
+## <a name="cache-expiration-duration"></a>Verloop tijd van cache
+Voor globale en aangepaste cache regels kunt u de verloop duur van de cache opgeven in dagen, uren, minuten en seconden:
 
-- Voor de **overschrijven** en **instellen indien ontbrekend** **cachegedrag** -instellingen, geldige cache duur bereik tussen 0 seconden en 366 dagen. Voor een waarde van 0 seconden, het CDN de inhoud in de cache opslaat, maar moet elke aanvraag met de oorspronkelijke server valideren.
+- Voor de instellingen **negeren** en **instellen als** het gedrag voor het **Opslaan** van de cache ontbreekt, geldt een geldige cache duur van 0 seconden en 366 dagen. Voor een waarde van 0 seconden wordt de inhoud in de CDN opgeslagen, maar moet elke aanvraag opnieuw worden gevalideerd met de oorspronkelijke server.
 
-- Voor de **cache overslaan** instellen, de Cacheduur van de wordt automatisch ingesteld op 0 seconden en kan niet worden gewijzigd.
+- Voor de **bypass cache** -instelling wordt de cache duur automatisch ingesteld op 0 seconden en kan niet worden gewijzigd.
 
-## <a name="custom-caching-rules-match-conditions"></a>Criteria voor overeenkomst aangepaste caching-regels
+## <a name="custom-caching-rules-match-conditions"></a>Aangepaste regels voor caching voldoen aan de voor waarden
 
-Twee identieke voorwaarden zijn beschikbaar voor cacheregels voor aangepaste:
+Voor aangepaste cache regels zijn twee match-voor waarden beschikbaar:
  
-- **Pad**: Dit probleem komt overeen met het pad van de URL, met uitzondering van de naam van het domein, en biedt ondersteuning voor het jokerteken (\*). Bijvoorbeeld, _/myfile.html_, _/mijn/map / *_ , en _/my/images/*.jpg_. De maximumlengte is 260 tekens.
+- **Pad**: deze voor waarde komt overeen met het pad van de URL, met uitzonde ring van de domein naam, en ondersteunt het Joker teken (\*). Bijvoorbeeld, _/MyFile.html_, _/mijn/map/*_ en _/My/images/*. jpg_. De maximale lengte is 260 tekens.
 
-- **Extensie**: Dit probleem komt overeen met de bestandsextensie van het aangevraagde bestand. U kunt een lijst met bestandsextensies die overeenkomen met door komma's gescheiden opgeven. Bijvoorbeeld, _.jpg_, _.mp3_, of _.png_. Het maximum aantal extensies is 50 en het maximum aantal tekens per extensie is 16. 
+- **Extensie**: deze voor waarde komt overeen met de bestands extensie van het aangevraagde bestand. U kunt een lijst met door komma's gescheiden bestands extensies opgeven. Bijvoorbeeld _. jpg_, _. mp3_of _. png_. Het maximum aantal uitbrei dingen is 50 en het maximum aantal tekens per uitbrei ding is 16. 
 
-## <a name="global-and-custom-rule-processing-order"></a>De verwerkingsvolgorde algemene en aangepaste regel
-Algemene en aangepaste cacheregels worden verwerkt in de volgende volgorde:
+## <a name="global-and-custom-rule-processing-order"></a>Algemene en aangepaste verwerkings volgorde voor regels
+Globale en aangepaste regels voor opslaan in cache worden in de volgende volg orde verwerkt:
 
-- Algemene regels voor opslaan in cache hebben voorrang op de standaard-CDN-cachinggedrag (http-header van de cache-instructies instellingen). 
+- Algemene regels voor opslaan in cache hebben voor rang op de standaard instelling voor het gedrag van de CDN-cache (HTTP-cache-header-instellingen). 
 
-- Aangepaste cacheregels hebben voorrang op de algemene regels voor opslaan in cache, waar ze van toepassing zijn. Aangepaste regels voor opslaan in cache worden verwerkt in volgorde van boven naar beneden. Dat wil zeggen, als een aanvraag aan beide voorwaarden voldoet, hebben regels aan de onderkant van de lijst met voorrang op regels aan de bovenkant van de lijst. Daarom, plaatst u meer specifieke regels lager in de lijst.
+- Aangepaste regels voor opslaan in cache hebben voor rang op algemene regels voor caching, waar ze van toepassing zijn. Aangepaste regels voor opslaan in cache worden van boven naar beneden verwerkt. Als een aanvraag overeenkomt met beide voor waarden, hebben regels onder aan de lijst voor rang boven de regels boven aan de lijst. Daarom moet u meer specifieke regels in de lijst plaatsen.
 
 **Voorbeeld**:
 - Algemene regel voor opslaan in cache: 
-   - Cachegedrag: **Override**
-   - Vervaltijd van de cache: 1 dag
+   - Cache gedrag: **overschrijven**
+   - Verloop tijd van cache: 1 dag
 
-- Aangepaste caching #1 regel:
-   - Voorwaarde voor overeenkomst: **Pad**
-   - Komt overeen met waarde:   _/home / *_
-   - Cachegedrag: **Override**
-   - Vervaltijd van de cache: 2 dagen
+- Aangepaste regel voor opslaan in cache #1:
+   - Overeenkomst voor waarde: **pad**
+   - Overeenkomende waarde: _/Home/*_
+   - Cache gedrag: **overschrijven**
+   - Verloop tijd van cache: 2 dagen
 
-- Aangepaste caching regel #2:
-   - Voorwaarde voor overeenkomst: **Extensie**
-   - Komt overeen met waarde: _.html_
-   - Cachegedrag: **Instellen indien ontbrekend**
-   - Vervaltijd van de cache: 3 dagen
+- Aangepaste regel voor opslaan in cache #2:
+   - Voor waarde match: **Extension**
+   - Overeenkomende waarde: _. html_
+   - Cache gedrag: **instellen als ontbreekt**
+   - Verloop tijd van cache: 3 dagen
 
-Wanneer deze regels zijn ingesteld, een aanvraag voor  _&lt;hostnaam van eindpunt&gt;_ .azureedge.net/home/index.html triggers aangepaste caching #2, die is ingesteld op regel: **Instellen indien ontbrekend** en 3 dagen. Dus als de *index.html* bestand heeft `Cache-Control` of `Expires` HTTP-headers, ze worden gebruikt; anders als deze headers zijn niet ingesteld, het bestand is opgeslagen in de cache voor 3 dagen.
+Wanneer deze regels zijn ingesteld, wordt een aanvraag voor _&lt;eindpunt-hostnaam&gt;_ . azureedge.net/Home/index.html activeert de aangepaste regel voor caching #2, die is ingesteld op: **instellen als ontbrekend** en 3 dagen. Als het bestand *index. html* `Cache-Control`-of `Expires` http-headers heeft, worden deze daarom nageleefd. Als deze headers niet zijn ingesteld, wordt het bestand drie dagen in de cache opgeslagen.
 
 > [!NOTE] 
-> Bestanden die in de cache voordat de wijziging van een regel opgeslagen behouden hun duur van de oorsprong cache-instelling. Als u de duur van hun cache herstellen, moet u [opschonen van het bestand](cdn-purge-endpoint.md). 
+> Bestanden die in de cache worden opgeslagen voordat een regel wijziging de waarde voor de oorspronkelijke cache duur behouden. Als u de cache duur opnieuw wilt instellen, moet u [het bestand leegmaken](cdn-purge-endpoint.md). 
 >
-> Azure CDN-configuratiewijzigingen kunnen even worden doorgegeven via het netwerk: 
+> Wijzigingen in de configuratie van Azure CDN kan enige tijd duren voordat het netwerk kan worden door gegeven: 
 > - Profielen van **Azure CDN Standard van Akamai** worden doorgaans binnen één minuut doorgegeven. 
-> - Voor **Azure CDN Standard van Verizon** profielen, doorgifte doorgaans binnen 10 minuten.  
+> - Voor **Azure CDN standaard van Verizon** -profielen wordt de doorgifte doorgaans in tien minuten voltooid.  
 >
 
 ## <a name="see-also"></a>Zie ook

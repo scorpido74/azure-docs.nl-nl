@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: fd7ff7aa2275defba57aa24b5ef0b9adc78a5355
-ms.sourcegitcommit: a170b69b592e6e7e5cc816dabc0246f97897cb0c
+ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74093785"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278799"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Een Log Analytics-werk ruimte verplaatsen naar een ander abonnement of een andere resource groep
 
@@ -29,17 +29,17 @@ De bron-en doel abonnementen van de werk ruimte moeten zich in dezelfde Azure Ac
 (Get-AzSubscription -SubscriptionName <your-destination-subscription>).TenantId
 ```
 
-## <a name="remove-solutions"></a>Oplossingen verwijderen
-Beheerde oplossingen die in de werk ruimte zijn geïnstalleerd, worden verplaatst met de bewerking voor het verplaatsen van Log Analytics werk ruimte. Omdat u de koppeling van de werk ruimte naar een Automation-account moet verwijderen, moeten oplossingen die afhankelijk zijn van die koppeling worden verwijderd.
+## <a name="workspace-move-considerations"></a>Overwegingen bij het verplaatsen van de werk ruimte
+Beheerde oplossingen die in de werk ruimte zijn geïnstalleerd, worden verplaatst met de bewerking voor het verplaatsen van Log Analytics werk ruimte. Verbonden agents blijven verbonden en blijven gegevens verzenden naar de werk ruimte na de verplaatsing. Omdat de verplaatsings bewerking vereist dat er geen koppeling van de werk ruimte naar een Automation-account is, moeten oplossingen die afhankelijk zijn van die koppeling worden verwijderd.
 
-De volgende oplossingen moeten worden verwijderd: 
+Oplossingen die moeten worden verwijderd voordat u uw Automation-account kunt ontkoppelen:
 
 - Updatebeheer
 - Tracering wijzigen
 - VM's starten/stoppen buiten kantooruren
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="delete-in-azure-portal"></a>Verwijderen in Azure Portal
 Gebruik de volgende procedure om de oplossingen te verwijderen met behulp van de Azure Portal:
 
 1. Open het menu voor de resource groep waarin alle oplossingen zijn geïnstalleerd.
@@ -48,7 +48,7 @@ Gebruik de volgende procedure om de oplossingen te verwijderen met behulp van de
 
 ![Oplossingen verwijderen](media/move-workspace/delete-solutions.png)
 
-### <a name="powershell"></a>PowerShell
+### <a name="delete-using-powershell"></a>Verwijderen met Power shell
 
 Als u de oplossingen wilt verwijderen met behulp van Power shell, gebruikt u de cmdlet [Remove-AzResource](/powershell/module/az.resources/remove-azresource?view=azps-2.8.0) , zoals weer gegeven in het volgende voor beeld:
 
@@ -58,7 +58,7 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM(<workspace-name>)" -ResourceGroupName <resource-group-name>
 ```
 
-## <a name="remove-alert-rules"></a>Waarschuwings regels verwijderen
+### <a name="remove-alert-rules"></a>Waarschuwings regels verwijderen
 Voor de oplossing **Vm's starten/stoppen** moet u ook de waarschuwings regels verwijderen die zijn gemaakt door de oplossing. Gebruik de volgende procedure in de Azure Portal om deze regels te verwijderen.
 
 1. Open het menu **monitor** en selecteer vervolgens **waarschuwingen**.

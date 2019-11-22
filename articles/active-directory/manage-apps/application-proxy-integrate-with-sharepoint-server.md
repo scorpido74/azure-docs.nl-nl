@@ -1,6 +1,6 @@
 ---
-title: Externe toegang tot share point inschakelen met Azure AD-toepassingsproxy | Microsoft Docs
-description: Behandelt de basis principes voor het integreren van een on-premises share Point-server met Azure AD-toepassingsproxy.
+title: Externe toegang inschakelen voor share point-Azure AD-toepassingsproxy
+description: Bevat de basisinformatie over het integreren van een on-premises SharePoint-server met Azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4f1351a2ebe6a23dc4d1e31f30f1c69ac862b21
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 8d8f1bbd79e6dcbbd75e1ea1b98bd211d77ed1a9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72595437"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275445"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Externe toegang tot SharePoint inschakelen met Azure AD-toepassingsproxy
 
@@ -55,24 +55,24 @@ In dit artikel worden de volgende waarden gebruikt:
 
 In deze stap maakt u een toepassing in uw Azure Active Directory-Tenant die gebruikmaakt van de toepassings proxy. U stelt de externe URL in en geeft de interne URL op die u later in share point gebruikt.
 
-1. Maak de app, zoals wordt beschreven met de volgende instellingen. Zie [toepassingen publiceren met Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)voor stapsgewijze instructies.
+1. Maak de app, zoals wordt beschreven met de volgende instellingen. Zie voor stapsgewijze instructies [toepassingen publiceren met behulp van Azure AD-toepassingsproxy](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad).
    * **Interne URL**: interne URL van share point die later in share point wordt ingesteld, zoals `https://sharepoint`.
    * **Verificatie vooraf**: Azure Active Directory
    * **Url's vertalen in kopteksten**: Nee
    * **Url's vertalen in de hoofd tekst van de toepassing**: Nee
 
-   ![Share point als toepassing publiceren](./media/application-proxy-integrate-with-sharepoint-server/publish-app.png)
+   ![SharePoint als toepassing publiceren](./media/application-proxy-integrate-with-sharepoint-server/publish-app.png)
 
 1. Nadat de app is gepubliceerd, voert u de volgende stappen uit om de instellingen voor eenmalige aanmelding te configureren:
 
-   1. Selecteer op de pagina toepassing in de portal **eenmalige aanmelding**.
+   1. Selecteer op de toepassingspagina in de portal, **eenmalige aanmelding**.
    1. Voor de **modus voor eenmalige aanmelding**selecteert u **geïntegreerde Windows-verificatie**.
    1. Stel **interne Application SPN** in op de waarde die u eerder hebt ingesteld. Voor dit voor beeld is de waarde `HTTP/sharepoint`.
    1. Selecteer onder **gedelegeerde aanmeldings-id**de meest geschikte optie voor uw Active Directory forest-configuratie. Als u bijvoorbeeld één Active Directory domein in uw forest hebt, selecteert u de **naam van het on-premises SAM-account** (zoals weer gegeven in de volgende scherm afbeelding). Maar als uw gebruikers zich niet in hetzelfde domein bevinden als share point en de Application proxy-connector servers, selecteert u **on-premises User Principal name** (niet weer gegeven in de scherm afbeelding).
 
    ![Geïntegreerde Windows-verificatie voor eenmalige aanmelding configureren](./media/application-proxy-integrate-with-sharepoint-server/configure-iwa.png)
 
-1. Ga naar de sectie **gebruikers en groepen** en wijs gebruikers toe om toegang te krijgen tot deze toepassing om het instellen van uw toepassing te volt ooien. 
+1. Voor het voltooien van het instellen van uw toepassing, gaat u naar de **gebruikers en groepen** sectie en gebruikers toegang krijgen tot deze toepassing toe te wijzen. 
 
 ## <a name="step-2-configure-the-sharepoint-web-application"></a>Stap 2: de share point-webtoepassing configureren
 
@@ -103,7 +103,7 @@ De share point-webtoepassing moet worden geconfigureerd met Kerberos en de juist
        ```
 
     2. Open de site **Centraal beheer van share point** .
-    1. Selecteer **alternatieve toegangs toewijzingen configureren**onder **systeem instellingen**. Het dialoog venster **verzameling alternatieve toegangs toewijzingen** wordt geopend.
+    1. Onder **systeeminstellingen**, selecteer **alternatieve toegangstoewijzingen configureren**. Het dialoog venster **verzameling alternatieve toegangs toewijzingen** wordt geopend.
     1. Filter de weer gave met de nieuwe webtoepassing en bevestig dat u er ongeveer als volgt uitziet:
 
        ![Alternatieve toegangs toewijzingen van webtoepassing](./media/application-proxy-integrate-with-sharepoint-server/new-webapp-aam.png)
@@ -126,7 +126,7 @@ De share point-webtoepassing moet worden geconfigureerd met Kerberos en de juist
        ```
 
     2. Open de site **Centraal beheer van share point** .
-    1. Selecteer **alternatieve toegangs toewijzingen configureren**onder **systeem instellingen**. Het dialoog venster **verzameling alternatieve toegangs toewijzingen** wordt geopend.
+    1. Onder **systeeminstellingen**, selecteer **alternatieve toegangstoewijzingen configureren**. Het dialoog venster **verzameling alternatieve toegangs toewijzingen** wordt geopend.
     1. Filter de weer gave met de webtoepassing die is uitgebreid en bevestig dat u er ongeveer als volgt uitziet:
 
         ![Alternatieve toegangs toewijzingen van uitgebreide toepassing](./media/application-proxy-integrate-with-sharepoint-server/extend-webapp-aam.png)
@@ -136,10 +136,10 @@ De share point-webtoepassing moet worden geconfigureerd met Kerberos en de juist
 Voer de volgende stappen uit om het account te identificeren dat de groep van toepassingen van de share point-webtoepassing uitvoert en te controleren of het een domein account is:
 
 1. Open de site **Centraal beheer van share point** .
-1. Ga naar **beveiliging** en selecteer **service accounts configureren**.
+1. Ga naar **Security** en selecteer **service-accounts configureren**.
 1. Selecteer **groep van webtoepassingen-YourWebApplicationName**.
 
-   ![Opties voor het configureren van een service account](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
+   ![Opties voor het configureren van een service-account](./media/application-proxy-integrate-with-sharepoint-server/service-web-application.png)
 
 1. Bevestig dat **Selecteer een account voor dit onderdeel** een domein account retourneert en onthoud het omdat dit in de volgende stap nodig is.
 
@@ -171,36 +171,36 @@ Gebruikers worden eerst geverifieerd in azure AD en vervolgens naar share point 
 
 ### <a name="set-the-spn-for-the-sharepoint-service-account"></a>De SPN voor het share point-service account instellen
 
-In dit artikel wordt de interne URL `https://sharepoint`, zodat de Service Principal Name (SPN) `HTTP/sharepoint` is. U moet deze waarden vervangen door de waarden die overeenkomen met uw omgeving.
-Als u SPN `HTTP/sharepoint` wilt registreren voor het account van de share point-toepassings groep `Contoso\spapppool`, voert u de volgende opdracht uit vanaf een opdracht prompt als beheerder van het domein:
+In dit artikel wordt de interne URL `https://sharepoint`, zodat de Service Principal Name (SPN) `HTTP/sharepoint`is. U moet deze waarden vervangen door de waarden die overeenkomen met uw omgeving.
+Als u SPN-`HTTP/sharepoint` wilt registreren voor het account van de share point-toepassings groep `Contoso\spapppool`, voert u de volgende opdracht uit vanaf een opdracht prompt als beheerder van het domein:
 
 `setspn -S HTTP/sharepoint Contoso\spapppool`
 
-De `Setspn` opdracht zoekt naar de SPN voordat deze wordt toegevoegd. Als de SPN al bestaat, wordt er een **dubbele SPN-waarde** weer geven. In dat geval kunt u de bestaande SPN verwijderen als deze niet is ingesteld onder het juiste account voor de groep van toepassingen. U kunt controleren of de SPN is toegevoegd door de `Setspn` opdracht uit te voeren met de optie-L. Zie [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11))voor meer informatie over deze opdracht.
+De `Setspn` opdracht zoekt naar de SPN voordat deze wordt toegevoegd. Als de SPN al bestaat, wordt er een **dubbele SPN-waarde** weer geven. In dat geval kunt u de bestaande SPN verwijderen als deze niet is ingesteld onder het juiste account voor de groep van toepassingen. U kunt controleren of de SPN is toegevoegd door de `Setspn` opdracht uit te voeren met de optie-L. Zie voor meer informatie over deze opdracht, [Setspn](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/cc731241(v=ws.11)).
 
 ### <a name="make-sure-the-connector-is-trusted-for-delegation-to-the-spn-that-was-added-to-the-sharepoint-application-pool-account"></a>Zorg ervoor dat de connector wordt vertrouwd voor delegering naar de SPN die is toegevoegd aan het account van de share point-toepassings groep
 
-Configureer de KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteiten kan delegeren aan het account van de share point-toepassings groep. Configureer KCD door de Application proxy connector in te scha kelen om Kerberos-tickets op te halen voor uw gebruikers die zijn geverifieerd in azure AD. Deze server geeft de context vervolgens door aan de doel toepassing (share point in dit geval).
+Configureer de KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteiten kan delegeren aan het account van de share point-toepassings groep. KCD configureren door de Application Proxy-connector om op te halen van Kerberos-tickets voor uw gebruikers die zijn geverifieerd in Azure AD in te schakelen. Deze server geeft de context vervolgens door aan de doel toepassing (share point in dit geval).
 
 Als u de KCD wilt configureren, voert u de volgende stappen uit voor elke connector computer:
 
 1. Meld u aan bij een domein controller als een domein beheerder en Open Active Directory gebruikers en computers.
 1. Zoek de computer waarop de Azure AD-proxy connector wordt uitgevoerd. In dit voor beeld is dit de share Point-server zelf.
 1. Dubbel klik op de computer en selecteer vervolgens het tabblad **delegering** .
-1. Zorg ervoor dat de overdrachts opties zo zijn ingesteld dat **deze computer alleen mag delegeren aan de opgegeven services**. Selecteer vervolgens **elk verificatie protocol gebruiken**.
+1. Zorg ervoor dat de overdrachts opties zo zijn ingesteld dat **deze computer alleen mag delegeren aan de opgegeven services**. Selecteer **elk verificatieprotocol gebruiken**.
 1. Selecteer de knop **toevoegen** , selecteer **gebruikers of computers**en zoek het account voor de share point-toepassings groep. Bijvoorbeeld: `Contoso\spapppool`.
-1. Selecteer in de lijst met Spn's de naam die u eerder hebt gemaakt voor het service account.
+1. Selecteer in de lijst van de SPN's die u eerder hebt gemaakt voor het serviceaccount.
 1. Selecteer **OK** en selecteer vervolgens **OK** om uw wijzigingen op te slaan.
   
-   ![Instellingen voor delegering](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
+   ![De delegatie-instellingen](./media/application-proxy-integrate-with-sharepoint-server/delegation-box2.png)
 
 U bent nu klaar om u aan te melden bij share point met behulp van de externe URL en om te verifiëren met Azure.
 
 ## <a name="troubleshoot-sign-in-errors"></a>Fouten bij het aanmelden oplossen
 
-Als aanmelding bij de site niet werkt, kunt u meer informatie krijgen over het probleem in de connector logboeken: Open Logboeken op de computer waarop de connector wordt uitgevoerd en ga naar **Logboeken toepassingen en Services**  > **micro soft**  >  **AadApplicationProxy**  > -**connector**en Inspecteer het **beheer** logboek.
+Als aanmelding bij de site niet werkt, kunt u meer informatie krijgen over het probleem in de connector logboeken: Open Logboeken op de computer waarop de connector wordt uitgevoerd, ga naar **Logboeken van toepassingen en Services** > **micro soft** > **AadApplicationProxy** > **connector**en controleer het **beheer** logboek.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Werken met aangepaste domeinen in azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md)
-* [Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
+* [Werken met aangepaste domeinen in Azure AD-toepassingsproxy](application-proxy-configure-custom-domain.md)
+* [Meer informatie over Azure AD Application Proxy connectors](application-proxy-connectors.md)

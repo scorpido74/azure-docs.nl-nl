@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 3fd97e33c88e7767e1d9b230792aea675a744f27
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: c16abd02dfef5fb8b74cd5c0cafa97e5f29cc6b2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73619771"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286986"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Bekende problemen en Azure Machine Learning voor probleem oplossing
 
@@ -25,7 +25,7 @@ Dit artikel helpt u bij het zoeken naar en corrigeren van fouten of fouten die z
 
 Azure Compute werkt de NCv3-Sku's bij vanaf begin november 2019 voor de ondersteuning van alle MPI-implementaties en-versies en RDMA-werk woorden voor door InfiniBand uitgeruste virtuele machines. Hiervoor is een korte downtime vereist. [Lees meer informatie over de SR-IOV-upgrade](https://azure.microsoft.com/updates/sriov-availability-on-ncv3-virtual-machines-sku).
 
-Als klant van Azure Machine Learning Managed Compute-aanbieding (AmlCompute), hoeft u op dit moment geen wijzigingen aan te brengen. Op basis van de [Update planning](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) moet u een korte breuk in uw training plannen. De service neemt de verantwoordelijkheid voor het bijwerken van de VM-installatie kopieën op uw cluster knooppunten en het automatisch schalen van uw cluster. Zodra de upgrade is voltooid, kunt u alle andere MPI-discibutions gebruiken (zoals OpenMPI met Pytorch), naast een hogere InfiniBand-band breedte, lagere latenties en betere prestaties van gedistribueerde toepassingen.
+Als klant van Azure Machine Learning Managed Compute-aanbieding (AmlCompute), hoeft u op dit moment geen wijzigingen aan te brengen. Op basis van de [Update planning](https://azure.microsoft.com/updates/sr-iov-availability-schedule-on-ncv3-virtual-machines-sku) moet u een korte breuk in uw training plannen. De service neemt de verantwoordelijkheid voor het bijwerken van de VM-installatie kopieën op uw cluster knooppunten en het automatisch schalen van uw cluster. Zodra de upgrade is voltooid, kunt u alle andere MPI-distributies gebruiken (zoals OpenMPI met Pytorch) naast een hogere InfiniBand-band breedte, lagere latenties en betere prestaties van gedistribueerde toepassingen.
 
 ## <a name="azure-machine-learning-designer-issues"></a>Problemen met Azure Machine Learning Designer
 
@@ -46,9 +46,9 @@ Onder afbeelding ziet u hoe: ![data](./media/resource-known-issues/aml-visualize
 
 ## <a name="sdk-installation-issues"></a>Problemen met de SDK-installatie
 
-**Fout bericht: kan PyYAML niet verwijderen**
+**Foutmelding: 'PyYAML' niet verwijderen**
 
-Azure Machine Learning SDK voor python: PyYAML is een distutils-geïnstalleerd project. Daarom kunnen we niet nauw keurig bepalen welke bestanden er bij gedeeltelijk verwijderen horen. Gebruik het volgende om door te gaan met het installeren van de SDK en het negeren van deze fout:
+Azure Machine Learning-SDK voor Python: PyYAML is een project distutils geïnstalleerd. Daarom kunnen we niet nauw keurig bepalen welke bestanden er bij gedeeltelijk verwijderen horen. Gebruik het volgende om door te gaan met het installeren van de SDK tijdens deze fout negeren:
 
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
@@ -62,13 +62,13 @@ conda create -n <env-name> python=3.7.3
 ```
 Hiermee maakt u een Conda-omgeving met behulp van python 3.7.3, waarvoor het installatie probleem niet aanwezig is in 3.7.4.
 
-## <a name="trouble-creating-azure-machine-learning-compute"></a>Problemen bij het maken van Azure Machine Learning compute
+## <a name="trouble-creating-azure-machine-learning-compute"></a>Problemen bij het maken van Azure Machine Learning-Computing
 
-Er is een zeldzame kans dat sommige gebruikers die hun Azure Machine Learning werk ruimte van de Azure Portal hebben gemaakt vóór de GA-release, mogelijk geen Azure Machine Learning Compute in die werk ruimte kunnen maken. U kunt een ondersteunings aanvraag voor de service verhogen of een nieuwe werk ruimte maken via de portal of de SDK om uzelf direct te deblokkeren.
+Er wordt een zeldzaam kans dat sommige gebruikers die hun Azure Machine Learning-werkruimte hebt gemaakt vanuit de Azure-portal voordat u de GA-versie niet mogelijk te maken van Azure Machine Learning-Computing in de werkruimte. U kunt een ondersteuningsaanvraag indient voor de service te verhogen of een nieuwe werkruimte via de Portal of de SDK om de blokkering zelf onmiddellijk te maken.
 
-## <a name="image-building-failure"></a>Fout bij het maken van installatie kopieën
+## <a name="image-building-failure"></a>Installatiekopie samenstellen fout
 
-Fout bij het maken van de installatie kopie bij het implementeren van de webservice. Tijdelijke oplossing is om ' pynacl = = 1.2.1 ' toe te voegen als een PIP-afhankelijkheid voor een installatie kopie van het Conda-bestand.
+De installatiekopie van het bouwen van fout bij het implementeren van web-service. Tijdelijke oplossing is om toe te voegen ' pynacl 1.2.1 == "als een afhankelijkheid pip Conda-bestand voor de configuratie van installatiekopie.
 
 ## <a name="deployment-failure"></a>Implementatie fout
 
@@ -76,7 +76,7 @@ Als u `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Sign
 
 ## <a name="fpgas"></a>FPGAs
 
-U kunt geen modellen implementeren op Fpga's totdat u hebt aangevraagd en goedgekeurd voor FPGA-quotum. Vul het quotum aanvraag formulier in om toegang aan te vragen: https://aka.ms/aml-real-time-ai
+Niet mogelijk om te implementeren van modellen op FPGA's totdat u hebt aangevraagd en goedgekeurd voor FPGA quotum. Vul het aanvraagformulier voor de quota voor het aanvragen van toegang: https://aka.ms/aml-real-time-ai
 
 ## <a name="automated-machine-learning"></a>Geautomatiseerde Machine Learning
 
@@ -112,7 +112,7 @@ Problemen met Databricks en Azure Machine Learning.
 
 ### <a name="failure-when-installing-packages"></a>Fout bij het installeren van pakketten
 
-Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, zoals `psutil`, kunnen conflicten veroorzaken. Installeer pakketten door de bibliotheek versie te blok keren om installatie fouten te voor komen. Dit probleem heeft betrekking op Databricks en niet op de Azure Machine Learning SDK. Dit probleem kan ook optreden met andere bibliotheken. Voorbeeld:
+Azure Machine Learning SDK-installatie mislukt op Azure Databricks wanneer er meer pakketten zijn geïnstalleerd. Sommige pakketten, zoals `psutil`, kan leiden tot conflicten. Installeer pakketten door de bibliotheek versie te blok keren om installatie fouten te voor komen. Dit probleem heeft betrekking op Databricks en niet op de Azure Machine Learning SDK. Dit probleem kan ook optreden met andere bibliotheken. Voorbeeld:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -161,11 +161,11 @@ Als er een `FailToSendFeather` fout optreedt bij het lezen van gegevens op Azure
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Als u rechtstreeks gaat om uw werk ruimte weer te geven vanaf een koppeling voor delen vanuit de SDK of de portal, kunt u de pagina met het normale overzicht niet weer geven met abonnements gegevens in de uitbrei ding. U kunt ook niet overschakelen naar een andere werk ruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
+Als u rechtstreeks naar het weergeven van uw werkruimte van een koppeling voor het delen van de SDK of de portal gaat, wordt het niet mogelijk om de normale overzichtspagina met abonnementsgegevens in de extensie weer te geven. U wordt ook niet mogelijk om over te schakelen naar een andere werkruimte. Als u een andere werk ruimte wilt weer geven, gaat u rechtstreeks naar [Azure machine learning Studio](https://ml.azure.com) en zoekt u naar de naam van de werk ruimte.
 
 ## <a name="diagnostic-logs"></a>Diagnostische logboeken
 
-Soms kan het nuttig zijn als u Diagnostische gegevens kunt opgeven wanneer u om hulp vraagt. Als u bepaalde logboeken wilt weer geven, gaat u naar [Azure machine learning Studio](https://ml.azure.com) en gaat u naar uw werk ruimte en selecteert u **werk ruimte > experiment > > Logboeken uit te voeren**.  
+Soms kan het handig zijn als u diagnostische gegevens opgeven kunt wanneer u hulp vragen. Als u bepaalde logboeken wilt weer geven, gaat u naar [Azure machine learning Studio](https://ml.azure.com) en gaat u naar uw werk ruimte en selecteert u **werk ruimte > experiment > > Logboeken uit te voeren**.  
 
 > [!NOTE]
 > Azure Machine Learning registreert gegevens uit verschillende bronnen tijdens de training, zoals AutoML of de docker-container die de trainings taak uitvoert. Veel van deze logboeken zijn niet gedocumenteerd. Als u problemen ondervindt en contact opneemt met micro soft ondersteuning, kunnen ze deze logboeken gebruiken tijdens het oplossen van problemen.
@@ -264,7 +264,7 @@ Specifieke Framework-afhankelijkheden worden weer gegeven in de bijbehorende Fra
 Deze uitzonde ring moet afkomstig zijn uit uw trainings scripts. U kunt de logboek bestanden van Azure Portal bekijken voor meer informatie over de specifieke naam niet gedefinieerd of kenmerk fout. In de SDK kunt u `run.get_details()` gebruiken om het fout bericht te bekijken. Hiermee worden ook alle logboek bestanden weer geven die zijn gegenereerd voor de uitvoering. Bekijk uw trainings script, los het probleem op en probeer het opnieuw. 
 
 ### <a name="horovod-is-shutdown"></a>Horovod is afgesloten
-In de meeste gevallen betekent deze uitzonde ring dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor horovod is afgesloten. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs`. In het geval van gedistribueerde trainingen worden de namen van de logboeken in het achtervoegsel opgenomen met `_rank` zodat de Logboeken eenvoudig kunnen worden onderscheiden. Als u de exacte fout wilt vinden die horovod afsluiten heeft veroorzaakt, gaat u naar alle logboek bestanden en zoekt u naar `Traceback` aan het einde van de driver_log-bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
+In de meeste gevallen betekent deze uitzonde ring dat er een onderliggende uitzonde ring is opgetreden in een van de processen waardoor horovod is afgesloten. Elke positie in de MPI-taak krijgt een eigen toegewezen logboek bestand in azure ML. Deze logboeken hebben de naam `70_driver_logs`. In het geval van gedistribueerde trainingen worden de namen van de logboeken in het achtervoegsel opgenomen met `_rank` zodat de Logboeken eenvoudig kunnen worden onderscheiden. Als u de exacte fout wilt vinden die horovod afsluiten heeft veroorzaakt, gaat u naar alle logboek bestanden en zoekt u naar `Traceback` aan het einde van de driver_log bestanden. Met een van deze bestanden krijgt u de daad werkelijke onderliggende uitzonde ring. 
 
 ## <a name="labeling-projects-issues"></a>Problemen met projecten labelen
 

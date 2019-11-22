@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: diberry
-ms.openlocfilehash: 62ce0ac36223098d013cc75b7f62fc2c68e358ed
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: e03c7489268f3ad7076481de4498c5e202f654b6
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953393"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280302"
 ---
 # <a name="whats-new-in-language-understanding"></a>Wat is er nieuw in Language Understanding
 
@@ -33,14 +33,14 @@ Meer informatie over wat er nieuw is in de service. Deze items zijn release opme
     * [Arabisch en Hindi](luis-language-support.md) in open bare preview.
 * Vooraf gemaakte modellen
     * [Vooraf gebouwde domeinen](luis-reference-prebuilt-domains.md) zijn nu algemeen beschikbaar (ga)
-    * Japanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#japanese-entity-support) : leeftijd, valuta, getal, percentage worden niet ondersteund in v3.
-    * Italiaanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#italian-entity-support) -leeftijd, valuta, dimensie, getal, percentage resolutie gewijzigd van v2.
-* Verbeter de gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) met verbeterde labels om het bouwen en debuggen van complexe modellen mogelijk te maken. Probeer de preview-portal zelf studies:
+    * Japanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#japanese-entity-support) : leeftijd, valuta, getal en percentage worden niet ondersteund in v3.
+    * Italiaanse [vooraf gemaakte entiteiten](luis-reference-prebuilt-entities.md#italian-entity-support) -leeftijd, valuta, dimensie, getal en percentage resolutie worden gewijzigd van v2.
+* Verbeterde gebruikers ervaring in de [Preview.Luis.ai-Portal](https://preview.luis.ai) , vernieuwd, waarmee u complexe modellen kunt bouwen en fouten kunt opsporen. Probeer de preview-portal zelf studies:
     * [Alleen intentie](tutorial-intents-only.md)
     * [Door de computer geleerde entiteit](tutorial-machine-learned-entity.md) 
 * Geavanceerde taal mogelijkheden: [Geavanceerde taal modellen bouwen](luis-concept-entity-types.md) met minder inspanning. 
-* Het definiëren van machine learning-functies op model niveau en het inschakelen van modellen die kunnen worden gebruikt als signalen voor een ander model, zoals het gebruik van entiteiten als functies voor intenties en andere entiteiten.
-* Nieuwe, uitgebreide [limieten](luis-boundaries.md) : hoger maximum voor woordgroepen lijsten en totaal aantal zinsdelen, nieuw model als een functie limiet
+* Definieer machine learning functies op model niveau en zorg ervoor dat modellen kunnen worden gebruikt als signalen voor andere modellen, bijvoorbeeld door entiteiten te gebruiken als functies voor intenties en andere entiteiten.
+* Nieuwe, uitgebreide [limieten](luis-boundaries.md) : hoger maximum voor woordgroepen lijsten en totaal aantal zinsdelen, nieuw model als functie limieten
 * Haal informatie op uit tekst in de indeling van een diepe hiërarchie structuur, zodat conversatie toepassingen krachtiger worden.
 
     ![door de machine geleerde entiteits afbeelding](./media/whats-new/deep-entity-extraction-example.png)

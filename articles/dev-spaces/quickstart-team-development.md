@@ -1,21 +1,17 @@
 ---
 title: Team ontwikkeling op Kubernetes met behulp van Azure dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 04/25/2019
 ms.topic: quickstart
 description: Ontwikkeling van team Kubernetes met containers en micro Services op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 9bdd52f2c120d338859259b046f7f4b97bbc4eed
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: b6afd4193c38e414937fc0e57461d403f47cbd6d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585200"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279774"
 ---
 # <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Snelstartgids: team ontwikkeling op Kubernetes met behulp van Azure dev Spaces
 
@@ -94,9 +90,9 @@ helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
-> **Als u een cluster met RBAC-functionaliteit gebruikt**, moet u [een service account configureren voor Tiller](https://helm.sh/docs/using_helm/#role-based-access-control). Anders worden `helm`-opdrachten niet uitgevoerd.
+> **Als u een cluster met RBAC-functionaliteit gebruikt**, moet u [een service account configureren voor Tiller](https://helm.sh/docs/using_helm/#role-based-access-control). Als dat niet het geval is, mislukken `helm`-opdrachten.
 
-Het kan enkele minuten duren voordat de `helm install`-opdracht is voltooid. De uitvoer van de opdracht toont de status van alle services die tijdens de voltooiing van het cluster zijn geïmplementeerd:
+Het kan enkele minuten duren voordat de `helm install` opdracht is voltooid. De uitvoer van de opdracht toont de status van alle services die tijdens de voltooiing van het cluster zijn geïmplementeerd:
 
 ```cmd
 $ cd charts/
@@ -204,7 +200,7 @@ Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door 
 ![De voorbeeld toepassing is bijgewerkt door Azure dev Spaces fiets delen](media/quickstart-team-development/bikeshare-update.png)
 
 > [!NOTE]
-> Wanneer u naar uw service navigeert tijdens het uitvoeren van `azds up`, worden de traceringen van de HTTP-aanvraag ook weer gegeven in de uitvoer van de opdracht `azds up`. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met `--disable-http-traces` wanneer u `azds up` uitvoert.
+> Wanneer u naar uw service navigeert tijdens het uitvoeren van `azds up`, worden de traceringen van de HTTP-aanvraag ook weer gegeven in de uitvoer van de `azds up` opdracht. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met behulp van `--disable-http-traces` wanneer u `azds up`uitvoert.
 
 ## <a name="verify-other-dev-spaces-are-unchanged"></a>Controleren of andere ontwikkel ruimten ongewijzigd zijn
 

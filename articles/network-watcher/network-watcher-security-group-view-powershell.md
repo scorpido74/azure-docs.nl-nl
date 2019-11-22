@@ -1,5 +1,6 @@
 ---
-title: Netwerk beveiliging analyseren met Azure Network Watcher-beveiligings groep weer geven-Power shell | Microsoft Docs
+title: Netwerk beveiliging analyseren-weer gave van beveiligings groep-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: In dit artikel wordt beschreven hoe u Power shell gebruikt voor het analyseren van de beveiliging van virtuele machines met een beveiligings groep.
 services: network-watcher
 documentationcenter: na
@@ -14,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4c7b79460169612a046b19a4d66f222936710a8e
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3127d60263437a18e0c8d9a98ebdfad31049c58d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163904"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277918"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>De beveiliging van uw virtuele machine analyseren met behulp van Power shell
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
-> - [Azure-CLI](network-watcher-security-group-view-cli.md)
+> - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 De weer gave beveiligings groep retourneert geconfigureerde en efficiënte netwerk beveiligings regels die worden toegepast op een virtuele machine. Deze mogelijkheid is nuttig bij het controleren en diagnosticeren van netwerk beveiligings groepen en-regels die zijn geconfigureerd op een virtuele machine om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we zien hoe u de geconfigureerde en efficiënte beveiligings regels kunt ophalen voor een virtuele machine met behulp van Power shell
@@ -45,7 +46,7 @@ In het scenario dat in dit artikel wordt behandeld, worden de geconfigureerde en
 
 ## <a name="retrieve-network-watcher"></a>Network Watcher ophalen
 
-De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan `Get-AzNetworkWatcherSecurityGroupView` de cmdlet.
+De eerste stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan de cmdlet `Get-AzNetworkWatcherSecurityGroupView`.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -53,7 +54,7 @@ $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network
 
 ## <a name="get-a-vm"></a>Een virtuele machine ophalen
 
-Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView` cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
+Een virtuele machine is vereist om de `Get-AzNetworkWatcherSecurityGroupView`-cmdlet uit te voeren. In het volgende voor beeld wordt een VM-object opgehaald.
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name testvm1

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: Block Chain
 author: PatAltimore
 ms.author: patricka
-ms.date: 05/02/2019
+ms.date: 11/18/2019
 ms.topic: overview
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 9fcf75a07d1caf7b411c315d11ce984cbe35df75
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577183"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284793"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Wat is Azure Blockchain Service?
 
@@ -31,7 +31,7 @@ Deze mogelijkheden vereisen nauwelijks beheer, en alles wordt zonder extra koste
 
 ## <a name="network-deployment-and-operations"></a>Netwerk implementatie en-bewerkingen
 
-De implementatie van de Azure Block Chain-service kan worden uitgevoerd via de Azure Portal Azure CLI en met Visual Studio code met behulp van de Azure Block Chain-extensie.  Implementatie is vereenvoudigd, inclusief het inrichten van zowel trans actie-als validatie knooppunten, virtuele Azure-netwerken voor beveiligings isolatie en door service beheerde opslag.  Daarnaast maken gebruikers bij het implementeren van een nieuw Block Chain-lid ook een consortium.  Met consortiums kunnen meerdere partijen in verschillende Azure-abonnementen veilig communiceren met elkaar op een gedeelde Block chain.  Deze vereenvoudigde implementatie reduceert de Block chain-netwerk implementatie van dagen naar minuten.
+De implementatie van de Azure Block Chain-service wordt uitgevoerd via de Azure Portal, Azure CLI of Visual Studio code met behulp van de Azure Block Chain-extensie. Implementatie is vereenvoudigd, inclusief het inrichten van zowel trans actie-als validatie knooppunten, virtuele Azure-netwerken voor beveiligings isolatie en door service beheerde opslag.  Daarnaast maken gebruikers bij het implementeren van een nieuw Block Chain-lid ook een consortium.  Met consortiums kunnen meerdere partijen in verschillende Azure-abonnementen veilig communiceren met elkaar op een gedeelde Block chain.  Deze vereenvoudigde implementatie reduceert de Block chain-netwerk implementatie van dagen naar minuten.
 
 ### <a name="performance-and-service-tiers"></a>Prestatie-en service lagen
 
@@ -43,13 +43,13 @@ De laag *standaard* biedt naast twee validator-knoop punten 2 *vCores* voor elke
 
 ### <a name="security-and-maintenance"></a>Beveiliging en onderhoud
 
-Nadat u uw eerste Block Chain-lid hebt ingericht, hebt u de mogelijkheid om extra transactie knooppunten aan uw lid toe te voegen.  Transactie knooppunten worden standaard beveiligd via firewall regels en moeten worden geconfigureerd voor toegang.  Daarnaast versleutelen alle transactie knooppunten gegevens in beweging via TLS.  Er bestaan meerdere opties voor het beveiligen van toegang tot transactie knooppunten, zoals firewall regels, basis verificatie, toegangs sleutels en integratie van Azure Active Directory. Zie [Trans Action nodes configureren](configure-transaction-nodes.md) en [Azure Active Directory toegang configureren](configure-aad.md)voor meer informatie.
+Nadat u uw eerste Block Chain-lid hebt ingericht, hebt u de mogelijkheid om extra transactie knooppunten aan uw lid toe te voegen.  Transactie knooppunten worden standaard beveiligd via firewall regels en vereisen configuratie voor toegang.  Daarnaast versleutelen alle transactie knooppunten gegevens in beweging via TLS.  Er bestaan meerdere opties voor het beveiligen van toegang tot transactie knooppunten, zoals firewall regels, basis verificatie, toegangs sleutels en integratie van Azure Active Directory. Zie [Trans Action nodes configureren](configure-transaction-nodes.md) en [Azure Active Directory toegang configureren](configure-aad.md)voor meer informatie.
 
 Als beheerde service zorgt Azure Block Chain-service ervoor dat de knoop punten van uw Block Chain-lid worden bijgewerkt met het nieuwste besturings systeem van de host en de software stack-updates van het groot boek, geconfigureerd voor hoge Beschik baarheid (alleen Standard-laag), waardoor veel van de DevOps vereist voor traditionele IaaS Block Chain-knoop punten.  Zie [ondersteunde Azure Block Chain Service Ledger-versies](ledger-versions.md)voor meer informatie over patches en updates.
 
-### <a name="monitoring-and-logging"></a>Bewaking en registratie
+### <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
 
-Daarnaast biedt de Azure Block Chain-service uitgebreide metrische gegevens via Azure Monitor service die inzicht biedt in het CPU-, geheugen-en opslag gebruik van knoop punten, evenals nuttige inzichten in Block chain-netwerk activiteit, zoals trans acties en blokken ook niet gebruikt, de diepte van de transactie wachtrij en actieve verbindingen.  Metrische gegevens kunnen worden aangepast om weer gaven te bieden in de inzichten die belang rijk zijn voor uw Block Chain-toepassing.  Daarnaast kunnen drempel waarden worden gedefinieerd via waarschuwingen, waardoor gebruikers acties activeren, zoals het verzenden van een e-mail of SMS-bericht, het uitvoeren van een logische app, een Azure function of het verzenden naar een aangepaste webhook.
+Daarnaast biedt de Azure Block Chain-service uitgebreide metrische gegevens via Azure Monitor service die inzichten biedt in het CPU-, geheugen-en opslag gebruik van knoop punten.  Azure Monitor biedt ook nuttige inzichten in Block chain-netwerk activiteit, zoals trans acties en blokken ook niet gebruikt, de transactie wachtrij diepte en actieve verbindingen.  Metrische gegevens kunnen worden aangepast om weer gaven te bieden in de inzichten die belang rijk zijn voor uw Block Chain-toepassing.  Daarnaast kunnen drempel waarden worden gedefinieerd via waarschuwingen, waardoor gebruikers acties activeren, zoals het verzenden van een e-mail of SMS-bericht, het uitvoeren van een logische app, een Azure function of het verzenden naar een aangepaste webhook.
 
 ![Metrische gegevens](./media/overview/metrics.png)
 

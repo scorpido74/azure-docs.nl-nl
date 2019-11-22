@@ -1,23 +1,19 @@
 ---
 title: Fouten opsporen en herhalen met Visual Studio code en Java op Kubernetes met behulp van Azure dev Spaces
-titleSuffix: Azure Dev Spaces
-author: zr-msft
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-ms.author: zarhoads
 ms.date: 07/08/2019
 ms.topic: quickstart
 description: Snelle Kubernetes ontwikkeling met containers, micro Services en Java op Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, Java, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
 manager: gwallace
-ms.openlocfilehash: 2154ec3ae99ae816b970c96ffde435f1a3366e99
-ms.sourcegitcommit: 80da36d4df7991628fd5a3df4b3aa92d55cc5ade
-ms.translationtype: MT
+ms.openlocfilehash: 2002126e67bfd83d3c9ca68735bbf9cbdb678c76
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71815865"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279855"
 ---
-# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Quickstart: Fouten opsporen en herhalen met Visual Studio code en Java op Kubernetes met behulp van Azure dev Spaces
+# <a name="quickstart-debug-and-iterate-with-visual-studio-code-and-java-on-kubernetes-using-azure-dev-spaces"></a>Quick Start: fouten opsporen en herhalen met Visual Studio code en Java op Kubernetes met behulp van Azure dev Spaces
 
 In deze handleiding leert u het volgende:
 
@@ -88,11 +84,11 @@ Open Visual Studio code, klik op *bestand* en vervolgens op *openen...* Navigeer
 
 U hebt nu het *webfrontend* -project geopend in Visual Studio code. Als u de toepassing in uw ontwikkelaars ruimte wilt uitvoeren, genereert u de helm-grafiek assets met de extensie Azure dev Spaces in het opdracht palet.
 
-Als u het opdracht palet wilt openen in Visual Studio code, klikt u op *weer gave* en vervolgens op *opdracht palet*. Begin met `Azure Dev Spaces` typen en `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`Klik op.
+Als u het opdracht palet wilt openen in Visual Studio code, klikt u op *weer gave* en vervolgens op *opdracht palet*. Begin met het typen van `Azure Dev Spaces` en klik op `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`.
 
 ![Configuratie bestanden voorbereiden voor Azure-ontwikkel ruimten](./media/common/command-palette.png)
 
-Wanneer Visual Studio code ook u vraagt om uw basis installatie kopieën, belichte poort en openbaar eind `Azul Zulu OpenJDK for Azure (Free LTS)` punt te configureren, kiest `8080` u voor de basis installatie kopie `Yes` , voor de beschik bare poort en om een openbaar eind punt in te scha kelen.
+Wanneer Visual Studio code ook u vraagt om uw basis installatie kopieën, belichte poort en openbaar eind punt te configureren, kiest u `Azul Zulu OpenJDK for Azure (Free LTS)` voor de basis installatie kopie, `8080` voor de beschik bare poort en `Yes` om een openbaar eind punt in te scha kelen.
 
 ![Basis installatie kopie selecteren](media/get-started-java/select-base-image.png)
 
@@ -137,7 +133,7 @@ Als u een bijgewerkte versie van uw service wilt implementeren, kunt u elk besta
 
 Start uw service met *Java-programma starten (AZDS)* . Hiermee wordt ook uw service uitgevoerd in de foutopsporingsmodus.
 
-Ga terug naar de weer gave van de *Verkenner* door te klikken op *weer gave* en vervolgens op *Explorer*. Open `src/main/java/com/ms/sample/webfrontend/Application.java` en klik ergens op regel 19 om de cursor daar te plaatsen. Stel een onderbrekings punt in op *F9* of klik op *debug* en vervolgens op *onderbrekings punt*.
+Ga terug naar de weer gave van de *Verkenner* door te klikken op *weer gave* en vervolgens op *Explorer*. Open `src/main/java/com/ms/sample/webfrontend/Application.java` en klik ergens op regel 19 om de cursor daar te zetten. Stel een onderbrekings punt in op *F9* of klik op *debug* en vervolgens op *onderbrekings punt*.
 
 Open uw service in een browser en Let op dat er geen bericht wordt weer gegeven. Ga terug naar Visual Studio code en kijk regel 19 is gemarkeerd. Het onderbrekings punt dat u instelt, heeft de service op regel 19 onderbroken. Als u de service wilt hervatten, druk op *F5* of klik op *debug* en vervolgens op *door gaan*. Ga terug naar uw browser en u ziet dat het bericht nu wordt weer gegeven.
 
@@ -147,7 +143,7 @@ Verwijder het onderbrekings punt door de cursor op regel 19 in `src/main/java/co
 
 ## <a name="update-code-from-visual-studio-code"></a>Code bijwerken vanuit Visual Studio code
 
-Terwijl de service wordt uitgevoerd in de foutopsporingsmodus, werkt u regel 19 `src/main/java/com/ms/sample/webfrontend/Application.java`bij. Bijvoorbeeld:
+Terwijl de service wordt uitgevoerd in de foutopsporingsmodus, werkt u regel 19 bij in `src/main/java/com/ms/sample/webfrontend/Application.java`. Bijvoorbeeld:
 ```java
 return "Hello from webfrontend in Azure while debugging!";
 ```

@@ -1,24 +1,24 @@
 ---
 title: Voorbeelden van starter query's
 description: Gebruik Azure Resource Graph om een aantal starterquery's uit te voeren, waaronder het tellen van resources, het ordenen van resources, of het opvragen op een specifieke tag.
-ms.date: 11/18/2019
-ms.topic: quickstart
-ms.openlocfilehash: 87061b56371bc68bd1d71cc9e9278b8c46c168a3
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.date: 11/21/2019
+ms.topic: sample
+ms.openlocfilehash: b966d8c239cb6ff706c967174bcea23bf25de374
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216405"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279452"
 ---
-# <a name="starter-resource-graph-queries"></a>Starter query's van Resource Graph
+# <a name="starter-resource-graph-query-samples"></a>Voor beelden van starter resource Graph-query
 
-Om inzicht te krijgen in query's met Azure Resource Graph moet u eerst enige basiskennis hebben van de [querytaal](../concepts/query-language.md). If you aren't already familiar with [Kusto Query Language (KQL)](/azure/kusto/query/index), it's recommended to review the [tutorial for KQL](/azure/kusto/query/tutorial) to understand how to compose requests for the resources you're looking for.
+Om inzicht te krijgen in query's met Azure Resource Graph moet u eerst enige basiskennis hebben van de [querytaal](../concepts/query-language.md). Als u nog niet bekend bent met [Kusto query language (KQL)](/azure/kusto/query/index), is het raadzaam om de [zelf studie voor KQL](/azure/kusto/query/tutorial) te bekijken om te begrijpen hoe u aanvragen voor de resources die u zoekt, kunt samen stellen.
 
 We nemen de volgende starter query's door:
 
 > [!div class="checklist"]
 > - [Azure-resources tellen](#count-resources)
-> - [Count key vault resources](#count-keyvaults)
+> - [Aantal sleutel kluis resources](#count-keyvaults)
 > - [Een lijst van resources weergeven, gesorteerd op naam](#list-resources)
 > - [Alle virtuele machines weergeven, aflopend geordend op naam](#show-vms)
 > - [De eerste vijf virtuele machines weergeven op naam en met hun type besturingssysteem](#show-sorted)
@@ -28,9 +28,9 @@ We nemen de volgende starter query's door:
 > - [Resources tellen met IP-adressen die zijn geconfigureerd op abonnement](#count-resources-by-ip)
 > - [Een lijst weergeven van resources met een specifieke tagwaarde](#list-tag)
 > - [Een lijst weergeven van alle opslagaccounts met een specifieke tagwaarde](#list-specific-tag)
-> - [Show aliases for a virtual machine resource](#show-aliases)
-> - [Show distinct values for a specific alias](#distinct-alias-values)
-> - [Show unassociated network security groups](#unassociated-nsgs)
+> - [Aliassen weer geven voor een bron van een virtuele machine](#show-aliases)
+> - [DISTINCT-waarden voor een specifieke alias weer geven](#distinct-alias-values)
+> - [Niet-gekoppelde netwerk beveiligings groepen weer geven](#unassociated-nsgs)
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -38,7 +38,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 Azure CLI (met een extensie) en Azure PowerShell (met een module) ondersteunen Azure Resource Graph. Controleer voordat u een van de volgende query's uitvoert, of uw omgeving gereed is. Zie [Azure CLI](../first-query-azurecli.md#add-the-resource-graph-extension) en [Azure PowerShell](../first-query-powershell.md#add-the-resource-graph-module) voor stappen voor het installeren en valideren van uw gewenste shellomgeving.
 
-## <a name="a-namecount-resources-count-azure-resources"></a><a name="count-resources" />Count Azure resources
+## <a name="a-namecount-resources-count-azure-resources"></a>Azure-resources <a name="count-resources" />tellen
 
 Deze query retourneert het aantal Azure-resources in de abonnementen waartoe u toegang hebt. Het is ook een goede query om te valideren of in uw gekozen shell de juiste Azure Resource Graph-onderdelen correct zijn geïnstalleerd.
 
@@ -61,16 +61,17 @@ Search-AzGraph -Query "Resources | summarize count()"
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20summarize%20count()" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namecount-keyvaults-count-key-vault-resources"></a><a name="count-keyvaults" />Count key vault resources
+## <a name="a-namecount-keyvaults-count-key-vault-resources"></a><a name="count-keyvaults" />aantal sleutel kluis resources
 
-This query uses `count` instead of `summarize` to count the number of records returned. Only key vaults are included in the count.
+Deze query gebruikt `count` in plaats van `summarize` om het aantal geretourneerde records te tellen. De Count bevat alleen sleutel kluizen.
 
 ```kusto
 Resources
@@ -92,16 +93,17 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.keyvault/vaults' | c
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.keyvault%2Fvaults'%20%7C%20count" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-resources-list-resources-sorted-by-name"></a><a name="list-resources" />List resources sorted by name
+## <a name="a-namelist-resources-list-resources-sorted-by-name"></a><a name="list-resources" />lijst resources gesorteerd op naam
 
-Deze query retourneert een willekeurig resourcetype, maar alleen de eigenschappen **naam**, **type** en **locatie**. De query maakt gebruik van `order by` om de eigenschappen in oplopende volgorde (`asc`) op de eigenschap **naam** te sorteren.
+Deze query retourneert een willekeurig resourcetype, maar alleen de eigenschappen **naam**, **type** en **locatie**. De query maakt gebruik van `order by` om de eigenschappen in oplopende volgorde ( **) op de eigenschap** naam`asc` te sorteren.
 
 ```kusto
 Resources
@@ -123,14 +125,15 @@ Search-AzGraph -Query "Resources | project name, type, location | order by name 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20type%2C%20location%20%7C%20order%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameshow-vms-show-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms" />Show all virtual machines ordered by name in descending order
+## <a name="a-nameshow-vms-show-all-virtual-machines-ordered-by-name-in-descending-order"></a><a name="show-vms" />alle virtuele machines weer geven die op naam zijn gesorteerd in aflopende volg orde
 
 Als u alleen virtuele machines wilt vermelden (die van het type `Microsoft.Compute/virtualMachines` zijn), kan een overeenkomst worden gezocht met de eigenschap **type** in de resultaten. Net als in de vorige query verandert u met `desc` de `order by` in aflopend. De `=~` in de type-overeenkomst betekent in Resource Graph dat de sortering hoofdlettergevoelig is.
 
@@ -155,14 +158,15 @@ Search-AzGraph -Query "Resources | project name, location, type| where type =~ '
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20project%20name%2C%20location%2C%20type%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20order%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameshow-sorted-show-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted" />Show first five virtual machines by name and their OS type
+## <a name="a-nameshow-sorted-show-first-five-virtual-machines-by-name-and-their-os-type"></a><a name="show-sorted" />eerste vijf virtuele machines weer geven op naam en het type besturings systeem
 
 Deze query gebruikt `top` om slechts vijf overeenkomende records op te halen, gesorteerd op naam. Het type van de Azure-resource is `Microsoft.Compute/virtualMachines`. `project` geeft in Azure Resource Graph aan welke eigenschappen u wilt opnemen.
 
@@ -187,14 +191,15 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20project%20name%2C%20properties.storageProfile.osDisk.osType%20%7C%20top%205%20by%20name%20desc" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namecount-os-count-virtual-machines-by-os-type"></a><a name="count-os" />Count virtual machines by OS type
+## <a name="a-namecount-os-count-virtual-machines-by-os-type"></a>Aantal virtuele machines <a name="count-os" />per type besturings systeem
 
 Voortbouwend op de vorige query zijn we nog steeds een grens aan het stellen aan het aantal Azure-resources van het type `Microsoft.Compute/virtualMachines`, maar beperken we niet langer het aantal geretourneerde records.
 In plaats daarvan hebben we `summarize` en `count()` gebruikt om te definiëren hoe we de waarden willen groeperen en aggregeren op basis van de eigenschap. In dit voorbeeld is dat `properties.storageProfile.osDisk.osType`. Voor een voorbeeld van hoe deze tekenreeks er uitziet in het volledige object, raadpleegt u [Resources verkennen - detectie van virtuele machines](../concepts/explore-resources.md#virtual-machine-discovery).
@@ -219,10 +224,11 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20summarize%20count()%20by%20tostring(properties.storageProfile.osDisk.osType)" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
@@ -249,19 +255,20 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20os%20%3D%20properties.storageProfile.osDisk.osType%20%7C%20summarize%20count()%20by%20tostring(os)" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
 > [!NOTE]
-> Hoewel u met `=~` naar overeenkomsten kunt zoeken zonder onderscheid te maken tussen hoofd- en kleine letters, moet het hoofdlettergebruik in de query correct zijn als u eigenschappen gebruikt (zoals **properties.storageProfile.osDisk.osType**). If the property is the incorrect case, a null or incorrect value is returned and the grouping or summarization would be incorrect.
+> Hoewel u met `=~` naar overeenkomsten kunt zoeken zonder onderscheid te maken tussen hoofd- en kleine letters, moet het hoofdlettergebruik in de query correct zijn als u eigenschappen gebruikt (zoals **properties.storageProfile.osDisk.osType**). Als de eigenschap het verkeerde geval is, wordt er een null-waarde of een onjuiste waarden geretourneerd en is de groepering of samen vatting onjuist.
 
-## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" />Show resources that contain storage
+## <a name="a-nameshow-storage-show-resources-that-contain-storage"></a><a name="show-storage" />bronnen weer geven die opslag bevatten
 
-In plaats van expliciet het type te definiëren dat u zoekt, zoekt deze voorbeeldquery elke Azure-resource die het woord **opslag** `contains`.
+In plaats van expliciet het type te definiëren dat u zoekt, zoekt deze voorbeeldquery elke Azure-resource die het woord `contains`opslag.
 
 ```kusto
 Resources
@@ -282,18 +289,19 @@ Search-AzGraph -Query "Resources | where type contains 'storage' | distinct type
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'storage'%20%7C%20distinct%20type" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-publicip-list-all-public-ip-addresses"></a><a name="list-publicip" />List all public IP addresses
+## <a name="a-namelist-publicip-list-all-public-ip-addresses"></a><a name="list-publicip" />alle open bare IP-adressen weer geven
 
 Net als bij de vorige query vindt deze query alles dat een type is met het woord **publicIPAddresses**.
-This query expands on that pattern to only include results where **properties.ipAddress**
-`isnotempty`, to only return the **properties.ipAddress**, and to `limit` the results by the top
+Deze query wordt op dat patroon uitgebreid zodat alleen resultaten worden meegenomen waarbij **Eigenschappen. ipaddress**
+`isnotempty`, zodat alleen de **Eigenschappen. ipaddress**worden geretourneerd en de resultaten worden `limit`
 100. Afhankelijk van uw gekozen shell, kan het zijn dat u de aanhalingstekens tussen escape-tekens moet plaatsen.
 
 ```kusto
@@ -317,14 +325,15 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20project%20properties.ipAddress%20%7C%20limit%20100" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namecount-resources-by-ip-count-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip" />Count resources that have IP addresses configured by subscription
+## <a name="a-namecount-resources-by-ip-count-resources-that-have-ip-addresses-configured-by-subscription"></a><a name="count-resources-by-ip" />aantal resources waarvoor IP-adressen zijn geconfigureerd op basis van een abonnement
 
 Door aan de vorige voorbeeldquery `summarize` en `count()` toe te voegen, krijgen we een lijst per abonnement van resources met geconfigureerde IP-adressen.
 
@@ -348,14 +357,15 @@ Search-AzGraph -Query "Resources | where type contains 'publicIPAddresses' and i
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20contains%20'publicIPAddresses'%20and%20isnotempty(properties.ipAddress)%20%7C%20summarize%20count%20()%20by%20subscriptionId" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-tag-list-resources-with-a-specific-tag-value"></a><a name="list-tag" />List resources with a specific tag value
+## <a name="a-namelist-tag-list-resources-with-a-specific-tag-value"></a><a name="list-tag" />lijst met resources met een specifieke tag-waarde
 
 We kunnen de resultaten beperken op basis van andere eigenschappen dan het type Azure-resource, bijvoorbeeld op basis van een tag. In dit voorbeeld filteren we op Azure-resources met de tagnaam **omgeving** en de waarde **Intern**.
 
@@ -379,10 +389,11 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
@@ -408,14 +419,15 @@ Search-AzGraph -Query "Resources | where tags.environment=~'internal' | project 
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20tags.environment%3D~'internal'%20%7C%20project%20name%2C%20tags" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namelist-specific-tag-list-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag" />List all storage accounts with specific tag value
+## <a name="a-namelist-specific-tag-list-all-storage-accounts-with-specific-tag-value"></a><a name="list-specific-tag" />alle opslag accounts met een specifieke tag-waarde weer geven
 
 Combineer de filterfunctie uit het vorige voorbeeld en filter het Azure-resourcetype op de eigenschap **type**. Deze query beperkt ook het zoeken naar specifieke typen Azure-resources met een specifieke tagnaam- en waarde.
 
@@ -439,19 +451,20 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccou
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Storage%2FstorageAccounts'%20%7C%20where%20tags%5B'tag%20with%20a%20space'%5D%3D%3D'Custom%20value'" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
 > [!NOTE]
 > In dit voorbeeld wordt `==` in plaats van het voorwaardelijke `=~` gebruikt om naar overeenkomsten te zoeken. `==` is een hoofdlettergevoelige overeenkomst.
 
-## <a name="a-nameshow-aliases-show-aliases-for-a-virtual-machine-resource"></a><a name="show-aliases" />Show aliases for a virtual machine resource
+## <a name="a-nameshow-aliases-show-aliases-for-a-virtual-machine-resource"></a>aliassen <a name="show-aliases" />weer geven voor een bron van een virtuele machine
 
-[Azure Policy aliases](../../policy/concepts/definition-structure.md#aliases) are used by Azure Policy to manage resource compliance. Azure Resource Graph can return the _aliases_ of a resource type. These values are useful for comparing the current value of aliases when creating a custom policy definition. The _aliases_ array isn't provided by default in the results of a query. Use `project aliases` to explicitly add it to the results.
+[Azure Policy-aliassen](../../policy/concepts/definition-structure.md#aliases) worden door Azure Policy gebruikt voor het beheren van de naleving van resources. Azure resource Graph kan de _aliassen_ van een resource type retour neren. Deze waarden zijn handig voor het vergelijken van de huidige waarde van aliassen bij het maken van een aangepaste beleids definitie. De _aliassen_ matrix is niet standaard opgenomen in de resultaten van een query. Gebruik `project aliases` om het expliciet toe te voegen aan de resultaten.
 
 ```kusto
 Resources
@@ -474,16 +487,17 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'Microsoft.Compute%2FvirtualMachines'%20%7C%20limit%201%20%7C%20project%20aliases" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-namedistinct-alias-values-show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" />Show distinct values for a specific alias
+## <a name="a-namedistinct-alias-values-show-distinct-values-for-a-specific-alias"></a><a name="distinct-alias-values" />afzonderlijke waarden voor een specifieke alias weer geven
 
-Seeing the value of aliases on a single resource is helpful, but it doesn't show the true value of using Azure Resource Graph to query across subscriptions. This example looks at all values of a specific alias and returns the distinct values.
+Het is handig om de waarde van aliassen voor één bron te bekijken, maar de werkelijke waarde van het gebruik van Azure resource Graph wordt niet weer gegeven voor het uitvoeren van een query tussen abonnementen. In dit voor beeld worden alle waarden van een specifieke alias gecontroleerd en worden de afzonderlijke waarden geretourneerd.
 
 ```kusto
 Resources
@@ -506,16 +520,17 @@ Search-AzGraph -Query "Resources | where type=~'Microsoft.Compute/virtualMachine
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%3D~'Microsoft.Compute%2FvirtualMachines'%20%7C%20extend%20alias%20%3D%20aliases%5B'Microsoft.Compute%2FvirtualMachines%2FstorageProfile.osDisk.managedDisk.storageAccountType'%5D%20%7C%20distinct%20tostring(alias)" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
-## <a name="a-nameunassociated-nsgs-show-unassociated-network-security-groups"></a><a name="unassociated-nsgs" />Show unassociated network security groups
+## <a name="a-nameunassociated-nsgs-show-unassociated-network-security-groups"></a><a name="unassociated-nsgs" />niet-gekoppelde netwerk beveiligings groepen weer geven
 
-This query returns Network Security Groups (NSGs) that aren't associated to a network interface or subnet.
+Deze query retourneert netwerk beveiligings groepen (Nsg's) die niet zijn gekoppeld aan een netwerk interface of subnet.
 
 ```kusto
 Resources
@@ -538,15 +553,16 @@ Search-AzGraph -Query "Resources | where type =~ 'microsoft.network/networksecur
 
 # <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
 
-![Resource Graph explorer icon](../media/resource-graph-small.png) Try this query in Azure Resource Graph Explorer:
+![Pictogram resource grafiek Verkenner](../media/resource-graph-small.png) Probeer deze query in azure resource Graph Explorer:
 
-- Azure portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![Open link in new window icon](../../media/new-window.png)
-- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![Open link in new window icon](../../media/new-window.png)
+- Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.com</a> ![een koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure Government portal: <a href="https://portal.azure.us/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.us</a> ![koppeling in het pictogram nieuw venster openen](../../media/new-window.png)
+- Azure China-portal: <a href="https://portal.azure.cn/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/Resources%20%7C%20where%20type%20%3D~%20'microsoft.network%2Fnetworksecuritygroups'%20and%20isnull(properties.networkInterfaces)%20and%20isnull(properties.subnets)%20%7C%20project%20name%2C%20resourceGroup%20%7C%20sort%20by%20name%20asc" target="_blank">portal.azure.cn</a> ![koppeling openen in het pictogram nieuw venster](../../media/new-window.png)
 
 ---
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn more about the [query language](../concepts/query-language.md).
-- Learn more about how to [explore resources](../concepts/explore-resources.md).
-- See samples of [Advanced queries](advanced.md).
+- Meer informatie over de [query taal](../concepts/query-language.md).
+- Meer informatie over hoe u [resources kunt verkennen](../concepts/explore-resources.md).
+- Bekijk voor beelden van [Geavanceerde query's](advanced.md).

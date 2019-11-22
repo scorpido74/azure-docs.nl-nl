@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Go gebruiken om de Text Analytics-API aan te roepen'
+title: 'Snelstartgids: Go gebruiken om de Text Analytics-API aan te roepen'
 titleSuffix: Azure Cognitive Services
 description: Informatie en code voorbeelden ophalen zodat u snel aan de slag kunt met de Text Analytics-API in azure Cognitive Services.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: 5c97648bd11a506d3c818584ed7d82d0a12d2e2c
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: d833293d094837c164da855aef197ad927c60ad7
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70387496"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286521"
 ---
-# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Quickstart: Go gebruiken om de Text Analytics Cognitive Service aan te roepen 
+# <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Snelstartgids: Go gebruiken om de Text Analytics Cognitive Service aan te roepen 
 <a name="HOLTop"></a>
 
-In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met Go kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
+In dit artikel ziet u hoe u de [Text Analytics-API's](#Detect)[ met Go kunt gebruiken om ](#SentimentAnalysis)taal te detecteren[, ](#KeyPhraseExtraction)sentiment te analyseren[, ](#Entities)sleuteltermen op te halen [ en ](//go.microsoft.com/fwlink/?LinkID=759711)gekoppelde entiteiten te identificeren .
 
-Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor technische documentatie voor de API's.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -37,13 +37,13 @@ Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor tec
 
 Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd met behulp van de [methode Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
 1. Sla het bestand op met de extensie .go.
 1. Open een opdracht prompt op een computer met Go die vanuit de hoofdmap wordt geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build detect.go`.
-1. Voer het bestand uit, bijvoorbeeld met: `go run detect.go`.
+1. Voer het bestand uit, bijvoorbeeld: `go run detect.go`.
 
 ```golang
 package main
@@ -178,13 +178,13 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp van de [methode Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). In het volgende voorbeeld worden twee documenten beoordeeld, één in het Engels en één in het Spaans.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
 1. Sla het bestand op met de extensie .go.
 1. Open een opdracht prompt op een computer met Go die vanuit de hoofdmap wordt geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build sentiment.go`.
-1. Voer het bestand uit, bijvoorbeeld met: `go run sentiment.go`.
+1. Voer het bestand uit, bijvoorbeeld: `go run sentiment.go`.
 
 ```golang
 package main
@@ -294,13 +294,13 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
 1. Sla het bestand op met de extensie .go.
 1. Open een opdrachtprompt op een computer waarop Go is geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build key-phrases.go`.
-1. Voer het bestand uit, bijvoorbeeld met: `go run key-phrases.go`.
+1. Voer het bestand uit, bijvoorbeeld: `go run key-phrases.go`.
 
 ```golang
 package main
@@ -428,15 +428,15 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 ## <a name="identify-entities"></a>Entiteiten identificeren
 
-De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor ' Verenigde Staten ' is `location`, terwijl de koppeling naar Wikipedia is `https://en.wikipedia.org/wiki/United_States`.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
+De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entiteiten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) halen woorden op uit tekst, zoals ' Verenigde Staten ', en geven vervolgens het type en/of de Wikipedia-koppeling voor dit woord (en). Het type voor "Verenigde Staten" is `location`, terwijl de koppeling naar Wikipedia `https://en.wikipedia.org/wiki/United_States`is.  In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de omgevings variabelen sluiten en opnieuw openen.
 1. Maak een nieuw Go-project in uw favoriete code-editor.
 1. Voeg de onderstaande code toe.
 1. Sla het bestand op met de extensie .go.
 1. Open een opdrachtprompt op een computer waarop Go is geïnstalleerd.
 1. Maak het bestand, bijvoorbeeld met: `go build entities.go`.
-1. Voer het bestand uit, bijvoorbeeld met: `go run entities.go`.
+1. Voer het bestand uit, bijvoorbeeld: `go run entities.go`.
 
 ```golang
 package main

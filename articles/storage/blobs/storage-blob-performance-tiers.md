@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 64efd1a02b903ec3874066f6c663b86a8080f746
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73932272"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74270227"
 ---
 # <a name="performance-tiers-for-block-blob-storage"></a>Prestatie lagen voor blok-blobopslag
 
@@ -28,7 +28,7 @@ De volgende overwegingen zijn van toepassing op de verschillende prestatie lagen
 
 | Onderwerp |Standaard prestaties  |Premium-prestaties  |
 |---------|---------|---------|
-|Regionale beschikbaarheid     |   Alle regio's      | In [regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
+|Beschikbaarheid in regio’s     |   Alle regio's      | In [regio's selecteren](https://azure.microsoft.com/global-infrastructure/services/?products=storage)       |
 |Ondersteunde [typen opslag accounts](../common/storage-account-overview.md#types-of-storage-accounts)     |     Algemeen gebruik v2, BlobStorage, algemeen gebruik v1    |    BlockBlobStorage     |
 |Ondersteunt [blok-blobs met hoge door Voer](https://azure.microsoft.com/blog/high-throughput-with-azure-blob-storage/)     |    Ja, met meer dan 4 MiB-PutBlock of PutBlob-grootten     |    Ja, groter dan 256 KiB PutBlock of PutBlob grootten    |
 |Redundantie     |     [Typen opslag accounts](../common/storage-account-overview.md#types-of-storage-accounts) weer geven   |  Ondersteunt momenteel alleen lokaal redundante opslag (LRS) en zone-redudant Storage (ZRS)<div role="complementary" aria-labelledby="zone-redundant-storage"><sup>1</sup></div>     |
@@ -54,6 +54,12 @@ Premium-prestatie opslag is ideaal voor werk belastingen waarvoor snelle en cons
 ## <a name="standard-performance"></a>Standaard prestaties
 
 Standaard prestaties bieden ondersteuning voor verschillende [toegangs lagen](storage-blob-storage-tiers.md) om gegevens op de voordeligste manier op te slaan. Het is geoptimaliseerd voor hoge capaciteit en hoge door Voer voor grote gegevens sets.
+
+- **Gegevens sets voor back-ups en herstel na nood gevallen**. De Standard-prestatie opslag biedt rendabele lagen, waardoor het een perfecte use-case is voor gegevens sets op de korte en lange termijn, secundaire back-ups en het archiveren van de compatibiliteit.
+
+- **Media-inhoud**. Afbeeldingen en Video's worden vaak gebruikt wanneer u voor het eerst wordt gemaakt en opgeslagen, maar dit inhouds type wordt minder vaak toegepast wanneer het ouder is. Opslag voor standaard prestaties biedt geschikte lagen voor de behoeften van media-inhoud. 
+
+- **Bulk gegevens verwerking**. Deze soorten workloads zijn geschikt voor standaard opslag, omdat ze rendabele opslag met hoge door Voer vereisen in plaats van een consistente lage latentie. Grote, onbewerkte gegevens sets worden klaargezet voor verwerking en uiteindelijk naar koele lagen gemigreerd.
 
 ## <a name="migrate-from-standard-to-premium"></a>Migreren van Standard naar Premium
 

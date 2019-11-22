@@ -3,12 +3,12 @@ title: Overzicht van Azure-beleid
 description: Azure Policy is een service in Azure die u gebruikt om beleidsdefinities in uw Azure-omgeving te maken, toe te wijzen en te beheren.
 ms.date: 12/06/2018
 ms.topic: overview
-ms.openlocfilehash: e6b74eb2ffe15256523e46f0c246ba9f4d399c4d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
-ms.translationtype: MT
+ms.openlocfilehash: 1e8d00039f7cb2a1dd01eb02e623c37fc1afe126
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959329"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307072"
 ---
 # <a name="overview-of-the-azure-policy-service"></a>Overzicht van de Azure Policy-service
 
@@ -35,7 +35,7 @@ Azure Policy heeft diverse machtigingen, oftewel bewerkingen, in twee verschille
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Veel ingebouwde rollen wijzen machtigingen toe aan Azure Policy-resources. De rol **Inzender voor resource beleid (preview)** omvat de meeste Azure Policy bewerkingen. Degene met de rol **Eigenaar** heeft volledige rechten. Zowel **Inzender** als **lezer** kunnen alle Lees-Azure Policy bewerkingen gebruiken, maar **Inzender** kunnen ook herstel activeren.
+Veel ingebouwde rollen wijzen machtigingen toe aan Azure Policy-resources. De rol **Inzender voor resource beleid** bevat de meeste Azure Policy bewerkingen. Degene met de rol **Eigenaar** heeft volledige rechten. Zowel **Inzender** als **lezer** kunnen alle Lees-Azure Policy bewerkingen gebruiken, maar **Inzender** kunnen ook herstel activeren.
 
 Als geen van de ingebouwde rollen de vereiste machtigingen heeft, maakt u een [aangepaste rol](../../role-based-access-control/custom-roles.md).
 

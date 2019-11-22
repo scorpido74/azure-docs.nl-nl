@@ -1,5 +1,5 @@
 ---
-title: Geavanceerde opties voor het ondertekenen van SAML-token certificaten voor vooraf geïntegreerde Azure AD-apps | Microsoft Docs
+title: Geavanceerde opties voor het ondertekenen van SAML-token certificaten voor Azure AD-apps
 description: Meer informatie over het gebruik van geavanceerde opties voor certificaat ondertekening in het SAML-token voor vooraf geïntegreerde apps in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: mimart
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea99344399dbbbc17f0d7381e54ab68ae4bcc78f
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 614a90fcc0daef3eb77c43e6b56848c34d160ed5
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381264"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274748"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Geavanceerde opties voor certificaat ondertekening in het SAML-token voor galerij-apps in Azure Active Directory
 
-Vandaag Azure Active Directory (Azure AD) ondersteunt duizenden vooraf geïntegreerde toepassingen in de app-galerie van Azure Active Directory. Meer dan 500 van de toepassingen bieden ondersteuning voor eenmalige aanmelding met behulp van het [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2,0-protocol, zoals de toepassing Netsuite. [](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) Wanneer een klant zich via Azure AD bij een toepassing verifieert met behulp van SAML, verzendt Azure AD een token naar de toepassing (via een HTTP POST). De toepassing valideert vervolgens het token om zich aan te melden bij de klant in plaats van een gebruikers naam en wacht woord op te vragen. Deze SAML-tokens zijn ondertekend met het unieke certificaat dat wordt gegenereerd in azure AD en aan specifieke standaard algoritmen.
+Vandaag Azure Active Directory (Azure AD) ondersteunt duizenden vooraf geïntegreerde toepassingen in de app-galerie van Azure Active Directory. Meer dan 500 van de toepassingen bieden ondersteuning voor eenmalige aanmelding met behulp van het [Security Assertion Markup Language](https://wikipedia.org/wiki/Security_Assertion_Markup_Language) (SAML) 2,0-protocol, zoals de toepassing [NetSuite](https://azuremarketplace.microsoft.com/marketplace/apps/aad.netsuite) . Wanneer een klant zich via Azure AD bij een toepassing verifieert met behulp van SAML, verzendt Azure AD een token naar de toepassing (via een HTTP POST). De toepassing valideert vervolgens het token om zich aan te melden bij de klant in plaats van een gebruikers naam en wacht woord op te vragen. Deze SAML-tokens zijn ondertekend met het unieke certificaat dat wordt gegenereerd in azure AD en aan specifieke standaard algoritmen.
 
 Azure AD gebruikt enkele van de standaard instellingen voor de galerie toepassingen. De standaard waarden worden ingesteld op basis van de vereisten van de toepassing.
 
@@ -57,7 +57,7 @@ Als u de opties voor het ondertekenen van SAML-certificaten en het algoritme voo
 1. Selecteer in het linkerdeelvenster **Enterprise-toepassingen**. Er wordt een lijst weer gegeven met de bedrijfs toepassingen in uw account.
 1. Selecteer een toepassing. Er wordt een overzichts pagina voor de toepassing weer gegeven.
 
-   ![Voorbeeld: Pagina Toepassings overzicht](./media/certificate-signing-options/application-overview-page.png)
+   ![Voor beeld: overzichts pagina van de toepassing](./media/certificate-signing-options/application-overview-page.png)
 
 Wijzig vervolgens de opties voor certificaat ondertekening in het SAML-token voor die toepassing:
 
@@ -65,12 +65,12 @@ Wijzig vervolgens de opties voor certificaat ondertekening in het SAML-token voo
 1. Als de pagina **eenmalige aanmelding met SAML-preview instellen** wordt weer gegeven, gaat u naar stap 5.
 1. Als de pagina **Eén aanmeldings methode selecteren** niet wordt weer gegeven, selecteert u **modus voor eenmalige aanmelding wijzigen** om die pagina weer te geven.
 1. Selecteer op de pagina **Eén aanmeldings methode selecteren** de optie **SAML** indien beschikbaar. (Als **SAML** niet beschikbaar is, ondersteunt de toepassing geen SAML en kunt u de rest van deze procedure en dit artikel negeren.)
-1. Ga in de pagina **eenmalige aanmelding met SAML-preview instellen** naar de kop **SAML-handtekening certificaat** en selecteer het bewerkings pictogram (een potlood). De pagina **SAML-handtekening certificaat** wordt weer gegeven.
+1. Ga in de pagina **eenmalige aanmelding met SAML-preview instellen** naar de kop **SAML-handtekening certificaat** en selecteer het **bewerkings** pictogram (een potlood). De pagina **SAML-handtekening certificaat** wordt weer gegeven.
 
-   ![Voorbeeld: Pagina SAML-handtekening certificaat](./media/certificate-signing-options/saml-signing-page.png)
+   ![Voor beeld: pagina SAML-handtekening certificaat](./media/certificate-signing-options/saml-signing-page.png)
 
 1. Kies in de vervolg keuzelijst **handtekening opties** de optie **SAML-respons ondertekenen**, **SAML-bevestiging ondertekenen**of **SAML-respons en-bevestiging ondertekenen**. Beschrijvingen van deze opties worden eerder in dit artikel weer gegeven in de [Opties voor certificaat ondertekening](#certificate-signing-options).
-1. Kies in de vervolg keuzelijst **handtekening algoritme** **SHA-1** of **SHA-256**. Beschrijvingen van deze opties worden eerder in dit artikel weer gegeven in de sectie algoritmen voor [certificaat ondertekening](#certificate-signing-algorithms) .
+1. Kies in de vervolg keuzelijst **handtekening algoritme** **SHA-1** of **SHA-256**. Beschrijvingen van deze opties worden eerder in dit artikel weer gegeven in de sectie [algoritmen voor certificaat ondertekening](#certificate-signing-algorithms) .
 1. Als u tevreden bent met uw keuzes, selecteert u **Opslaan** om de nieuwe instellingen voor het SAML-handtekening certificaat toe te passen. Anders selecteert u de **X** om de wijzigingen te negeren.
 
 ## <a name="next-steps"></a>Volgende stappen

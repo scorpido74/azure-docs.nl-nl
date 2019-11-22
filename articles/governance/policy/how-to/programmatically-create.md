@@ -3,18 +3,18 @@ title: Programmatisch beleid maken
 description: Dit artikel helpt u bij het programmatisch beleid maken en beheren voor Azure Policy.
 ms.date: 01/31/2019
 ms.topic: conceptual
-ms.openlocfilehash: 581f7e5cc2fa20f1ff284e32351e495349fdfad2
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: bc97eac8f66a3c289bb22bfac8617177d60b4583
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959424"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267243"
 ---
 # <a name="programmatically-create-policies"></a>Programmatisch beleid maken
 
 Dit artikel helpt u bij het programmatisch beleid maken en beheren. Met Azure Policy definities worden verschillende regels en effecten voor uw resources afgedwongen. Afdwingen zorgt ervoor dat resources voldoen aan uw bedrijfsnormen en serviceovereenkomsten blijven.
 
-Zie voor meer informatie over de naleving van [ophalen van Nalevingsgegevens](getting-compliance-data.md).
+Zie voor meer informatie over de naleving van [ophalen van Nalevingsgegevens](get-compliance-data.md).
 
 ## <a name="prerequisites"></a>Vereisten
 

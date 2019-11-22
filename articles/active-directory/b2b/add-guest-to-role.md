@@ -1,6 +1,6 @@
 ---
-title: Een B2B-samenwerking gebruiker toevoegen aan een rol - Azure Active Directory | Microsoft Docs
-description: Een gastgebruiker toevoegen aan een rol in Azure Active Directory
+title: Een B2B-samenwerkings gebruiker toevoegen aan een rol-Azure Active Directory
+description: Een gast gebruiker toevoegen aan een rol in Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,28 +12,28 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cb195fd3fbf668afe436d3247767d2cc998281a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 703e68994a9d156ccf3e74a5df4a2f4ee2f062cd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65767590"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268554"
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Machtigingen verlenen aan gebruikers van partnerorganisaties in uw Azure Active Directory-tenant
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Machtigingen verlenen aan gebruikers van partner organisaties in uw Azure Active Directory-Tenant
 
-Gebruikers van Azure Active Directory (Azure AD) B2B-samenwerking als gastgebruikers ook kunnen worden toegevoegd aan de directory en machtigingen voor gasten in de map standaard worden beperkt. Uw bedrijf moet mogelijk bepaalde gastgebruikers om in te vullen hogere bevoegdheid rollen in uw organisatie. Ter ondersteuning van hogere bevoegdheid rollen definiëren, kunnen gastgebruikers ook kunnen worden toegevoegd aan de rollen die u nodig hebt, op basis van de behoeften van uw organisatie.
+Azure Active Directory (Azure AD) B2B-samenwerkings gebruikers worden toegevoegd als gast gebruikers aan de Directory en gast machtigingen in de Directory worden standaard beperkt. Uw bedrijf heeft mogelijk enkele gast gebruikers nodig om rollen met hogere bevoegdheden in uw organisatie in te vullen. Voor het definiëren van rollen met een hogere bevoegdheid kunnen gast gebruikers worden toegevoegd aan alle gewenste functies, op basis van de behoeften van uw organisatie.
 
-## <a name="default-role"></a>Standaardrol
+## <a name="default-role"></a>Standaard rol
 
-![Schermopname van de standaard-directory-rol](./media/add-guest-to-role/default-role.png)
+![Scherm opname van de standaard Directory-rol](./media/add-guest-to-role/default-role.png)
 
-## <a name="global-administrator-role"></a>Rol van algemeen beheerder
+## <a name="global-administrator-role"></a>Rol van globale beheerder
 
-![Schermopname van de rol globale beheerder](./media/add-guest-to-role/global-admin-role.png)
+![Scherm opname van de rol van globale beheerder](./media/add-guest-to-role/global-admin-role.png)
 
-## <a name="limited-administrator-role"></a>Beperkte Administrator-rol
+## <a name="limited-administrator-role"></a>Beperkte beheerdersrol
 
-![Schermopname van de beperkte administrator-rol](./media/add-guest-to-role/limited-admin-role.png)
+![Scherm opname van de rol beperkte beheerder](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 

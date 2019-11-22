@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: fb8f5f2adf497a12b4ed54b381a2dbf85e160b8e
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 2a40680b45522d8a8e49a3f01a50a748e1c71b53
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123967"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274065"
 ---
 # <a name="container-security-in-security-center"></a>Beveiliging van de container in Security Center
 
@@ -32,7 +32,7 @@ In dit artikel wordt beschreven hoe u de beveiliging van uw containers en hun ap
 [tabblad Beveiliging van de container ![Azure Security Center](media/container-security/container-security-tab.png)](media/container-security/container-security-tab.png#lightbox)
 
 ## <a name="vulnerability-management---scanning-container-images-preview"></a>Beveiligings beheer-container installatie kopieën scannen (preview)
-Als u uw Azure Container Registry wilt bewaken, verbindt u deze met Security Center. Wanneer een nieuwe installatie kopie wordt gepusht, wordt de installatie kopie door Security Center gescand met behulp van een scanner uit de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys.
+Als u uw Azure Container Registry wilt bewaken, moet u ervoor zorgen dat u de Standard-laag van Security Center hebt (Zie [prijzen](https://docs.microsoft.com/azure/security-center/security-center-pricing.md)). Schakel vervolgens de optionele container registers bundel in. Wanneer een nieuwe installatie kopie wordt gepusht, wordt de installatie kopie door Security Center gescand met behulp van een scanner uit de toonaangevende beveiligings problemen voor het scannen van leveranciers, Qualys.
 
 Als er problemen worden gevonden, wordt er een melding weer gegeven in het Security Center-dash board van Qualys of Security Center. Security Center voorziet in elk beveiligings probleem met actie-aanbevelingen, samen met een Ernst classificatie en richt lijnen voor het oplossen van het probleem. Zie de lijst met aanbevelingen in [beveiliging van virtuele machines](security-center-virtual-machine-protection.md##compute-and-app-recs)voor meer informatie over de aanbevelingen van Security Center.
 
@@ -55,7 +55,7 @@ AKS biedt beveiligings controles en zicht baarheid in de beveiligings-postuur va
 
 Zie [beveiliging van virtuele machines](security-center-virtual-machine-protection.md)voor meer informatie over de aanbevelingen van Security Center.
 
-## <a name="run-time-protection---real-time-threat-detection"></a>Run-time beveiliging-realtime detectie van bedreigingen 
+## <a name="run-time-protection---real-time-threat-detection"></a>Run-time beveiliging-realtime detectie van bedreigingen
 
 Security Center voorziet in realtime detectie van bedreigingen voor uw container omgevingen en genereert waarschuwingen voor verdachte activiteiten. U kunt deze informatie gebruiken om snel beveiligingsproblemen op te lossen en om de beveiliging van uw containers te verbeteren.
 

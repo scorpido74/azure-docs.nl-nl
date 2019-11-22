@@ -3,12 +3,12 @@ title: Details van de structuur van de beleids definitie
 description: Hierin wordt beschreven hoe beleids definities worden gebruikt om conventies voor Azure-resources in uw organisatie in te richten.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: 6288a7d013256c39e83ee433e867d15f67c81e57
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: afb06771422b2f8117383b0bde711dc3e1a4d238
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132819"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279459"
 ---
 # <a name="azure-policy-definition-structure"></a>Structuur van Azure-beleidsdefinities
 
@@ -604,6 +604,6 @@ Het volgende voorbeeld wordt het maken van een initiatief voor het verwerken van
 - Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
 - Lees [Informatie over de effecten van het beleid](effects.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
 - Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).

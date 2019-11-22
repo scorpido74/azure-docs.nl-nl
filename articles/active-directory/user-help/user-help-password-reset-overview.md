@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 05/15/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d14ac3cbce6880604ad44b6aa71998ed061c10
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 6d517c5f0e45edd16778b1300ba9ff41a1483d84
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028496"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74266943"
 ---
 # <a name="reset-your-own-work-or-school-password-overview"></a>Overzicht van het wacht woord voor uw eigen werk of school opnieuw instellen
 
@@ -34,5 +34,5 @@ Raadpleeg de volgende artikelen voor gedetailleerde informatie en instructies ov
 
 |Artikel |Beschrijving |
 |------|------------|
-| [Registreren voor de selfservice voor wachtwoordherstel](active-directory-passwords-reset-register.md) | Instructies voor het verifiëren van uw verificatie methoden en registreren voor selfservice voor het opnieuw instellen van wacht woorden, zodat u uw eigen wacht woord opnieuw kunt instellen. |
+| [Registreren voor de selfservice voor wachtwoordherstel](active-directory-passwords-reset-register.md) | Instructies voor het verifiëren van uw verificatie methoden en registreren voor selfservice voor wachtwoord herstel zodat u uw eigen wacht woord opnieuw kunt instellen. |
 | [Uw wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md) | Instructies voor het opnieuw instellen of ontgrendelen van uw wacht woord voor een werk-of school account. |

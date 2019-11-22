@@ -1,20 +1,16 @@
 ---
 title: Azure dev Spaces installeren op AKS en het hulp programma aan de client zijde
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 07/24/2019
 ms.topic: conceptual
 description: Meer informatie over het installeren van Azure dev Spaces in een AKS-cluster en het installeren van het programma aan de client zijde.
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: 642d4406840f1748c3b6cbb4441227fff0c6d721
-ms.sourcegitcommit: 5604661655840c428045eb837fb8704dca811da0
-ms.translationtype: MT
+ms.openlocfilehash: c62fe38a12b5ec279bc51fe8bc0d340e2f439200
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68494854"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280061"
 ---
 # <a name="install-azure-dev-spaces-on-aks-and-the-client-side-tooling"></a>Azure dev Spaces installeren op AKS en het hulp programma aan de client zijde
 
@@ -23,7 +19,7 @@ In dit artikel wordt beschreven hoe u op verschillende manieren Azure dev-ruimte
 ## <a name="install-azure-dev-spaces-using-the-cli"></a>Azure-ontwikkel ruimten installeren met behulp van de CLI
 
 Voordat u ontwikkel ruimten kunt installeren met behulp van de CLI, hebt u het volgende nodig:
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account] maken.
+* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
 * [De Azure-cli is geïnstalleerd][install-cli].
 * [Een AKS-cluster][create-aks-cli] in een [ondersteunde regio][supported-regions].
 
@@ -53,16 +49,16 @@ Configuring and selecting dev space 'default'...3s
 Managed Kubernetes cluster 'myAKSCluster' in resource group 'myResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
 ```
 
-Met `use-dev-spaces` deze opdracht wordt ook de Azure dev Space cli geïnstalleerd.
+Met de opdracht `use-dev-spaces` wordt ook de Azure dev Space CLI geïnstalleerd.
 
 ## <a name="install-azure-dev-spaces-using-the-azure-portal"></a>Azure dev Spaces installeren met behulp van de Azure Portal
 
 Voordat u ontwikkel ruimten kunt installeren met behulp van de Azure Portal, hebt u het volgende nodig:
-* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account][az-portal-create-account] maken.
+* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account][az-portal-create-account] maken.
 * [Een AKS-cluster][create-aks-portal] in een [ondersteunde regio][supported-regions].
 
 Azure dev Spaces installeren met behulp van de Azure Portal:
-1. Meld u aan bij [Azure Portal][az-portal].
+1. Meld u aan bij de [Azure Portal][az-portal].
 1. Navigeer naar uw AKS-cluster.
 1. Klik op *dev Spaces*.
 1. Wijzig *dev-ruimten* in *Ja* en klik op *Opslaan*.

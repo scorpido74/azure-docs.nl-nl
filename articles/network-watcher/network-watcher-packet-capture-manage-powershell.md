@@ -1,5 +1,6 @@
 ---
-title: Pakket opnames beheren met Azure Network Watcher-Power shell | Microsoft Docs
+title: Pakket opnames beheren-Azure PowerShell
+titleSuffix: Azure Network Watcher
 description: Op deze pagina wordt uitgelegd hoe u de functie voor het vastleggen van pakketten van Network Watcher beheert met behulp van Power shell
 services: network-watcher
 documentationcenter: na
@@ -14,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 4158c2c5ce69d1811b20c9937c1d064f4fe657ee
-ms.sourcegitcommit: 19a821fc95da830437873d9d8e6626ffc5e0e9d6
+ms.openlocfilehash: 3be68f6ef87ba37bcfaf418225ce7f460aed53a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70163952"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277885"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>Pakket opnames beheren met Azure Network Watcher met behulp van Power shell
 
 > [!div class="op_single_selector"]
-> - [Azure-portal](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
-> - [Azure-CLI](network-watcher-packet-capture-manage-cli.md)
+> - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 Met Network Watcher-pakket opname kunt u opname sessies maken om verkeer van en naar een virtuele machine bij te houden. Er worden filters voor de opname sessie gegeven om ervoor te zorgen dat u alleen het gewenste verkeer vastlegt. Met pakket opname kunt u netwerk afwijkingen zowel reactief als proactief vaststellen. Andere gebruiken zijn onder andere het verzamelen van netwerk statistieken, het verkrijgen van informatie over inbreuken op het netwerk, het opsporen van fouten in client-server communicatie en nog veel meer. Doordat pakket opnames op afstand kunnen worden geactiveerd, vereenvoudigt deze mogelijkheid de belasting van het hand matig uitvoeren van een pakket opname en op de gewenste computer, waardoor kost bare tijd wordt bespaard.
@@ -50,7 +51,7 @@ In dit artikel wordt ervan uitgegaan dat u de volgende resources hebt:
 * Een virtuele machine waarop de pakket Capture-extensie is ingeschakeld.
 
 > [!IMPORTANT]
-> Voor pakket opname is een extensie `AzureNetworkWatcherExtension`van een virtuele machine vereist. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md).
+> Voor pakket opname is een extensie van een virtuele machine `AzureNetworkWatcherExtension`vereist. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md).
 
 ## <a name="install-vm-extension"></a>VM-extensie installeren
 
@@ -62,10 +63,10 @@ $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 
 ### <a name="step-2"></a>Stap 2
 
-In het volgende voor beeld worden de extensie gegevens opgehaald die `Set-AzVMExtension` nodig zijn om de cmdlet uit te voeren. Met deze cmdlet wordt de pakket Capture-agent op de virtuele gast machine geïnstalleerd.
+In het volgende voor beeld worden de extensie gegevens opgehaald die nodig zijn om de `Set-AzVMExtension`-cmdlet uit te voeren. Met deze cmdlet wordt de pakket Capture-agent op de virtuele gast machine geïnstalleerd.
 
 > [!NOTE]
-> Het `Set-AzVMExtension` kan enkele minuten duren voordat de cmdlet is voltooid.
+> Het kan enkele minuten duren voordat de `Set-AzVMExtension`-cmdlet is voltooid.
 
 Voor virtuele Windows-machines:
 
@@ -83,7 +84,7 @@ $ExtensionName = "AzureNetworkWatcherExtension"
 Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-Het volgende voor beeld is een geslaagde reactie na `Set-AzVMExtension` het uitvoeren van de cmdlet.
+Het volgende voor beeld is een geslaagde reactie na het uitvoeren van de `Set-AzVMExtension`-cmdlet.
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -93,13 +94,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>Stap 3
 
-Om ervoor te zorgen dat de agent is geïnstalleerd, `Get-AzVMExtension` voert u de cmdlet uit en geeft u deze de naam van de virtuele machine en de extensie naam.
+Om ervoor te zorgen dat de agent is geïnstalleerd, voert u de cmdlet `Get-AzVMExtension` uit en geeft u deze de naam van de virtuele machine en de extensie naam.
 
 ```powershell
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Het volgende voor beeld is een voor beeld van het resultaat van het uitvoeren van`Get-AzVMExtension`
+Het volgende voor beeld is een voor beeld van het uitvoeren van `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -127,7 +128,7 @@ Zodra de voor gaande stappen zijn voltooid, wordt de pakket Capture-agent geïns
 
 ### <a name="step-1"></a>Stap 1
 
-De volgende stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan `New-AzNetworkWatcherPacketCapture` de cmdlet in stap 4.
+De volgende stap bestaat uit het ophalen van het Network Watcher-exemplaar. Deze variabele wordt door gegeven aan de `New-AzNetworkWatcherPacketCapture`-cmdlet in stap 4.
 
 ```powershell
 $networkWatcher = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
@@ -161,7 +162,7 @@ Voer de `New-AzNetworkWatcherPacketCapture` cmdlet uit om het proces voor het va
 New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-Het volgende voor beeld is de verwachte uitvoer van het `New-AzNetworkWatcherPacketCapture` uitvoeren van de cmdlet.
+Het volgende voor beeld is de verwachte uitvoer van het uitvoeren van de `New-AzNetworkWatcherPacketCapture`-cmdlet.
 
 ```
 Name                    : PacketCaptureTest
@@ -201,13 +202,13 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>Pakket opname ophalen
 
-Als u `Get-AzNetworkWatcherPacketCapture` de cmdlet uitvoert, wordt de status opgehaald van een actieve of voltooide pakket opname.
+Als u de cmdlet `Get-AzNetworkWatcherPacketCapture` uitvoert, wordt de status opgehaald van een actieve of voltooide pakket opname.
 
 ```powershell
 Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-Het volgende voor beeld is de uitvoer van `Get-AzNetworkWatcherPacketCapture` de cmdlet. Het volgende voor beeld is nadat het vastleggen is voltooid. De PacketCaptureStatus-waarde is gestopt met een StopReason van TimeExceeded. Met deze waarde wordt aangegeven dat het pakket is vastgelegd en de tijd is verlopen.
+Het volgende voor beeld is de uitvoer van de cmdlet `Get-AzNetworkWatcherPacketCapture`. Het volgende voor beeld is nadat het vastleggen is voltooid. De PacketCaptureStatus-waarde is gestopt met een StopReason van TimeExceeded. Met deze waarde wordt aangegeven dat het pakket is vastgelegd en de tijd is verlopen.
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -248,7 +249,7 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>Een pakket opname stoppen
 
-Door de `Stop-AzNetworkWatcherPacketCapture` cmdlet uit te voeren, wordt deze gestopt als er een opname sessie wordt uitgevoerd.
+Door de cmdlet `Stop-AzNetworkWatcherPacketCapture` uit te voeren, wordt deze gestopt als er een opname sessie wordt uitgevoerd.
 
 ```powershell
 Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"

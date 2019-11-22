@@ -1,6 +1,7 @@
 ---
-title: Inleiding tot resource problemen oplossen in Azure Network Watcher | Microsoft Docs
-description: Deze pagina biedt een overzicht van de mogelijkheden van Network Watcher-resource-probleemoplossing
+title: Inleiding tot het oplossen van resources
+titleSuffix: Azure Network Watcher
+description: Op deze pagina vindt u een overzicht van de mogelijkheden voor het oplossen van problemen met Network Watcher bronnen
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,85 +15,85 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: kumud
-ms.openlocfilehash: 65ce9e7d298131486ae4e5f3584c7975ca81e1ab
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64684249"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277779"
 ---
-# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Inleiding tot resource problemen oplossen in Azure Network Watcher
+# <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Inleiding tot het oplossen van resources in azure Network Watcher
 
-Virtuele netwerkgateways bieden connectiviteit tussen on-premises bronnen en andere virtuele netwerken in Azure. Het bewaken van gateways en hun verbindingen is essentieel om te zorgen dat de communicatie niet wordt vebroken. Network Watcher biedt de mogelijkheid om op te lossen, gateways en verbindingen. De mogelijkheid kan worden aangeroepen via de portal, PowerShell, Azure CLI of REST-API. Wanneer met de naam, Network Watcher vaststellen van de status van de gateway of de verbinding en de juiste resultaten geretourneerd. De aanvraag is een langlopende transactie. De resultaten worden geretourneerd als de diagnose voltooid is.
+Virtual Network gateways bieden connectiviteit tussen on-premises resources en andere virtuele netwerken in Azure. Het bewaken van gateways en hun verbindingen is essentieel om te zorgen dat de communicatie niet wordt vebroken. Network Watcher biedt de mogelijkheid om problemen met gateways en verbindingen op te lossen. De mogelijkheid kan worden aangeroepen via de portal, Power shell, Azure CLI of REST API. Als Network Watcher wordt aangeroepen, wordt de status van de gateway of de verbinding vastgesteld en worden de juiste resultaten geretourneerd. De aanvraag is een langlopende trans actie. De resultaten worden geretourneerd zodra de diagnose is voltooid.
 
 ![portal][2]
 
 ## <a name="results"></a>Resultaten
 
-De geretourneerde voorlopige resultaten geven een algemeen beeld van de status van de resource. Meer gedetailleerde informatie kan worden opgegeven voor resources, zoals wordt weergegeven in de volgende sectie:
+De voorafgaande resultaten die zijn geretourneerd, geven een algemene afbeelding van de status van de resource. Er kunnen dieper informatie worden verstrekt voor resources, zoals wordt weer gegeven in de volgende sectie:
 
-De volgende lijst worden de waarden die zijn geretourneerd met de problemen met API:
+De volgende lijst bevat de waarden die worden geretourneerd met de API voor het oplossen van problemen:
 
-* **startTime** -deze waarde is de tijd die de problemen met API-aanroep is gestart.
-* **endTime** -deze waarde is de tijd waarop het oplossen van problemen is beëindigd.
-* **code** -deze waarde is niet in orde, als er een fout één diagnose.
-* **resultaten** -resultaten is een verzameling van de resultaten geretourneerd op de netwerkverbinding of de virtuele netwerkgateway.
-    * **id** -deze waarde is het type fout.
-    * **Samenvatting** -deze waarde is een overzicht van de fout.
-    * **gedetailleerde** -deze waarde bevat een gedetailleerde beschrijving van de fout.
-    * **recommendedActions** -deze eigenschap is een verzameling van aanbevolen acties te ondernemen.
-      * **actionText** -deze waarde bevat de tekst waarin wordt beschreven welke actie moet worden uitgevoerd.
-      * **actionUri** -deze waarde vindt u de URI-documentatie voor het om te fungeren.
-      * **actionUriText** -deze waarde is een korte beschrijving van de actietekst.
+* **StartTime** -deze waarde is het tijdstip waarop de API-aanroep voor troubleshooting is gestart.
+* **EndTime** -deze waarde is de tijd waarop de probleem oplossing is beëindigd.
+* **code** : deze waarde is niet in orde als er één diagnose fout is opgetreden.
+* **resultaten** -resultaten zijn een verzameling resultaten die worden geretourneerd via de verbinding of de gateway van het virtuele netwerk.
+    * **id** : deze waarde is het fout type.
+    * **samen vatting** : deze waarde is een samen vatting van de fout.
+    * **gedetailleerd** : deze waarde geeft een gedetailleerde beschrijving van de fout.
+    * **recommendedActions** : deze eigenschap is een verzameling aanbevolen acties die moeten worden uitgevoerd.
+      * **actionText** : deze waarde bevat de tekst die beschrijft welke actie moet worden ondernomen.
+      * **actionUri** : deze waarde biedt de URI aan de hand waarvan u kunt reageren.
+      * **actionUriText** : deze waarde is een korte beschrijving van de actie tekst.
 
-De volgende tabellen tonen de verschillende domeinen-typen (onder resultaten uit de voorgaande lijst-id) die beschikbaar zijn en als de fout wordt gemaakt van Logboeken.
+In de volgende tabellen ziet u de verschillende fout typen (id onder resultaten van de voor gaande lijst) die beschikbaar zijn en als het probleem logboeken maakt.
 
 ### <a name="gateway"></a>Gateway
 
-| Type probleem | Reden | Logboek|
+| Fout type | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Ja|
-| GatewayNotFound | Kan de gateway of gateway nog niet is ingericht niet vinden |Nee|
-| PlannedMaintenance |  Toepassingsgateway-exemplaar is in onderhoud  |Nee|
-| UserDrivenUpdate | Deze fout treedt op wanneer een update uitgevoerd wordt. De update wordt mogelijk een bewerking formaat wijzigen. | Nee |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway kan niet worden bereikt vanwege een fout health test. | Nee |
+| NoFault | Als er geen fout wordt gedetecteerd |Ja|
+| GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
+| PlannedMaintenance |  Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
+| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikers update wordt uitgevoerd. De update kan een bewerking voor het wijzigen van de grootte zijn. | Nee |
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de status test. | Nee |
 | PlatformInActive | Er is een probleem met het platform. | Nee|
-| ServiceNotRunning | De onderliggende service wordt niet uitgevoerd. | Nee|
-| NoConnectionsFoundForGateway | Er bestaat geen verbindingen op de gateway. Deze fout is alleen een waarschuwing.| Nee|
-| ConnectionsNotConnected | Verbindingen zijn niet verbonden. Deze fout is alleen een waarschuwing.| Ja|
-| GatewayCPUUsageExceeded | De huidige gateway CPU-gebruik is > 95%. | Ja |
+| ServiceNotRunning | De onderliggende service is niet actief. | Nee|
+| NoConnectionsFoundForGateway | Er zijn geen verbindingen op de gateway. Deze fout is slechts een waarschuwing.| Nee|
+| ConnectionsNotConnected | Er zijn geen verbindingen met de verbinding. Deze fout is slechts een waarschuwing.| Ja|
+| GatewayCPUUsageExceeded | Het CPU-gebruik van de huidige gateway is > 95%. | Ja |
 
 ### <a name="connection"></a>Verbinding
 
-| Type probleem | Reden | Logboek|
+| Fout type | Reden | Logboek|
 |---|---|---|
-| NoFault | Als er geen fout is gedetecteerd. |Ja|
-| GatewayNotFound | Kan de gateway of gateway nog niet is ingericht niet vinden |Nee|
-| PlannedMaintenance | Toepassingsgateway-exemplaar is in onderhoud  |Nee|
-| UserDrivenUpdate | Deze fout treedt op wanneer een update uitgevoerd wordt. De update wordt mogelijk een bewerking formaat wijzigen.  | Nee |
-| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway kan niet worden bereikt vanwege een fout health test. | Nee |
-| ConnectionEntityNotFound | Verbindingsconfiguratie ontbreekt | Nee |
-| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als 'verbinding verbroken' |Nee|
-| ConnectionNotConfiguredOnGateway | De onderliggende service beschikt niet over de verbinding is geconfigureerd. | Ja |
+| NoFault | Als er geen fout wordt gedetecteerd |Ja|
+| GatewayNotFound | Kan geen gateway of gateway vinden |Nee|
+| PlannedMaintenance | Het gateway-exemplaar is onderhouds werkzaamheden  |Nee|
+| UserDrivenUpdate | Deze fout treedt op wanneer een gebruikers update wordt uitgevoerd. De update kan een bewerking voor het wijzigen van de grootte zijn.  | Nee |
+| VipUnResponsive | Deze fout treedt op wanneer het primaire exemplaar van de gateway niet kan worden bereikt als gevolg van een fout in de status test. | Nee |
+| ConnectionEntityNotFound | De configuratie van de verbinding ontbreekt | Nee |
+| ConnectionIsMarkedDisconnected | De verbinding is gemarkeerd als ' verbinding verbroken ' |Nee|
+| ConnectionNotConfiguredOnGateway | De onderliggende service is niet geconfigureerd voor de verbinding. | Ja |
 | ConnectionMarkedStandby | De onderliggende service is gemarkeerd als stand-by.| Ja|
 | Authentication | Vooraf gedeelde sleutel komt niet overeen | Ja|
-| PeerReachability | De peer-gateway is niet bereikbaar. | Ja|
-| IkePolicyMismatch | De peer-gateway heeft IKE-beleid die niet worden ondersteund door Azure. | Ja|
-| WfpParse Error | Er is een fout opgetreden bij het parseren van het logboek WPF. |Ja|
+| PeerReachability | De peer gateway is niet bereikbaar. | Ja|
+| IkePolicyMismatch | De peer gateway heeft een IKE-beleid dat niet wordt ondersteund door Azure. | Ja|
+| WfpParse Error | Er is een fout opgetreden bij het parseren van het WFP-logboek. |Ja|
 
-## <a name="supported-gateway-types"></a>Ondersteunde gatewaytypen
+## <a name="supported-gateway-types"></a>Ondersteunde gateway typen
 
-De volgende tabel geeft een lijst van welke gateways en verbindingen worden ondersteund bij het oplossen van Network Watcher:
+De volgende tabel geeft een lijst van de gateways en verbindingen die worden ondersteund met Network Watcher probleem oplossing:
 
 |  |  |
 |---------|---------|
-|**Gatewaytypen**   |         |
+|**Gateway typen**   |         |
 |VPN      | Ondersteund        |
 |ExpressRoute | Niet ondersteund |
 |**VPN-typen** | |
-|Op basis van route | Ondersteund|
+|Route op basis | Ondersteund|
 |Op basis van beleid | Niet ondersteund|
-|**Verbindingstypen**||
+|**Verbindings typen**||
 |IPSec| Ondersteund|
 |VNet2Vnet| Ondersteund|
 |ExpressRoute| Niet ondersteund|
@@ -100,23 +101,23 @@ De volgende tabel geeft een lijst van welke gateways en verbindingen worden onde
 
 ## <a name="log-files"></a>Logboekbestanden
 
-De resource voor probleemoplossing logboekbestanden worden opgeslagen in een storage-account nadat de resource probleemoplossing is voltooid. De volgende afbeelding ziet u de inhoud van het voorbeeld van een aanroep die heeft een fout gegenereerd.
+De logboek bestanden voor het oplossen van problemen met bronnen worden opgeslagen in een opslag account nadat het oplossen van resources is voltooid. De volgende afbeelding toont de voorbeeld inhoud van een aanroep die een fout heeft veroorzaakt.
 
-![ZIP-bestand][1]
-
-> [!NOTE]
-> In sommige gevallen wordt alleen een subset van de logboekbestanden geschreven naar opslag.
-
-Zie voor instructies over het downloaden van bestanden vanuit azure storage-accounts, [aan de slag met Azure Blob storage met .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Een ander hulpmiddel dat kan worden gebruikt, is Storage Explorer. Meer informatie over Storage Explorer Hier vindt op de volgende koppeling: [Storage Explorer](https://storageexplorer.com/)
-
-### <a name="connectionstatstxt"></a>ConnectionStats.txt
-
-De **ConnectionStats.txt** -bestand bevat algemene statistieken van de verbinding, met inbegrip van inkomende en uitgaande bytes, verbindingsstatus en de tijd die de verbinding tot stand is gebracht.
+![zip-bestand][1]
 
 > [!NOTE]
-> Als de aanroep voor het oplossen van problemen met API worden geretourneerd in orde is, het enige wat geretourneerd in het zip-bestand is een **ConnectionStats.txt** bestand.
+> In sommige gevallen wordt slechts een subset van de logboek bestanden naar opslag geschreven.
 
-De inhoud van dit bestand zijn vergelijkbaar met het volgende voorbeeld:
+Raadpleeg aan de [slag met Azure Blob Storage met .net](../storage/blobs/storage-dotnet-how-to-use-blobs.md)voor instructies voor het downloaden van bestanden van Azure Storage-accounts. Een ander hulp programma dat kan worden gebruikt, is Storage Explorer. Meer informatie over Storage Explorer kunt u vinden op de volgende koppeling: [Storage Explorer](https://storageexplorer.com/)
+
+### <a name="connectionstatstxt"></a>ConnectionStats. txt
+
+Het **ConnectionStats. txt** -bestand bevat algemene statistieken over de verbinding, waaronder binnenkomend en uitgaand bytes, verbindings status en het tijdstip waarop de verbinding tot stand is gebracht.
+
+> [!NOTE]
+> Als de aanroep van de API voor probleem oplossing in orde resulteert, is het enige resultaat dat in het zip-bestand wordt geretourneerd een **ConnectionStats. txt** -bestand.
+
+De inhoud van dit bestand is vergelijkbaar met het volgende voor beeld:
 
 ```
 Connectivity State : Connected
@@ -126,19 +127,19 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats.txt
+### <a name="cpustatstxt"></a>CPUStats. txt
 
-De **CPUStats.txt** -bestand bevat het CPU-gebruik en geheugen die beschikbaar is op het moment van testen.  De inhoud van dit bestand is vergelijkbaar met het volgende voorbeeld:
+Het bestand **CPUStats. txt** bevat het CPU-gebruik en het geheugen dat beschikbaar is op het moment van testen.  De inhoud van dit bestand is vergelijkbaar met het volgende voor beeld:
 
 ```
 Current CPU Usage : 0 % Current Memory Available : 641 MBs
 ```
 
-### <a name="ikeerrorstxt"></a>IKEErrors.txt
+### <a name="ikeerrorstxt"></a>IKEErrors. txt
 
-De **IKEErrors.txt** bestand bevat alle IKE-fouten die zijn gevonden tijdens de bewaking.
+Het bestand **IKEErrors. txt** bevat IKE-fouten die tijdens de bewaking zijn gevonden.
 
-Het volgende voorbeeld ziet de inhoud van een bestand IKEErrors.txt. Uw fouten kunnen afwijken afhankelijk van het probleem.
+In het volgende voor beeld ziet u de inhoud van een IKEErrors. txt-bestand. Uw fouten kunnen afwijken, afhankelijk van het probleem.
 
 ```
 Error: Authentication failed. Check shared key. Check crypto. Check lifetimes. 
@@ -147,11 +148,11 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
 
-De **Scrubbed wfpdiag.txt** logboekbestand bevat de WPF-logboek. Dit logboek bevat logboekregistratie van verloren gegane pakketten en IKE/AuthIP fouten.
+Het logboek bestand **Scrubbed-wfpdiag. txt** bevat het WFP-logboek. Dit logboek bevat logboek registratie van pakket-drop en IKE/AuthIP-fouten.
 
-Het volgende voorbeeld ziet de inhoud van het bestand Scrubbed wfpdiag.txt. In dit voorbeeld wordt is de gedeelde sleutel van een verbinding niet juist zijn, zoals kunt u zien door de derde regel van het laagste. Het volgende voorbeeld is slechts een fragment van het hele logboek, omdat het logboek langdurige, afhankelijk van het probleem kan zijn.
+In het volgende voor beeld ziet u de inhoud van het bestand Scrubbed-wfpdiag. txt. In dit voor beeld was de gedeelde sleutel van een verbinding niet juist, wat vanaf de derde regel van de onderkant kan worden weer gegeven. Het volgende voor beeld is slechts een fragment van het hele logboek, omdat het logboek lang kan zijn, afhankelijk van het probleem.
 
 ```
 ...
@@ -182,9 +183,9 @@ Het volgende voorbeeld ziet de inhoud van het bestand Scrubbed wfpdiag.txt. In d
 
 ### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
 
-De **wfpdiag.txt.sum** bestand is een logboek met de buffers en gebeurtenissen verwerkt.
+Het bestand **wfpdiag. txt. Sum** is een logboek waarin de gewerkte buffers en gebeurtenissen worden weer gegeven.
 
-Het volgende voorbeeld wordt de inhoud van een bestand wfpdiag.txt.sum.
+Het volgende voor beeld is de inhoud van een bestand wfpdiag. txt. sum.
 ```
 Files Processed:
     C:\Resources\directory\924336c47dd045d5a246c349b8ae57f2.GatewayTenantWorker.DiagnosticsStorage\2017-02-02T17-34-23\wfpdiag.etl
@@ -212,7 +213,7 @@ Elapsed Time            330 sec
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt weten hoe u een probleem met een gateway of de gateway-verbinding op te sporen, Zie [vaststellen van communicatie tussen netwerken](diagnose-communication-problem-between-networks.md).
+Zie problemen met de [communicatie tussen netwerken vaststellen](diagnose-communication-problem-between-networks.md)voor meer informatie over het vaststellen van een probleem met een gateway of gateway verbinding.
 <!--Image references-->
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png

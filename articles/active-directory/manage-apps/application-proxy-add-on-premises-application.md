@@ -1,5 +1,5 @@
 ---
-title: Een on-premises app toevoegen - Application Proxy in Azure Active Directory | Microsoft Docs
+title: Een on-premises app-toepassings proxy toevoegen in azure AD
 description: Azure Active Directory (Azure AD) heeft een Application Proxy-service waarmee gebruikers toegang krijgen tot on-premises toepassingen door zich aan te melden met hun Azure AD-account. In deze zelf studie wordt uitgelegd hoe u uw omgeving voorbereidt voor gebruik met toepassings proxy. Vervolgens wordt de Azure Portal gebruikt om een on-premises toepassing toe te voegen aan uw Azure AD-Tenant.
 services: active-directory
 author: msmimart
@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0399f084e663ab891d59384af263a7faac2f42e
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 87b8a76c94af1578423668becf4b7955862314cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73943816"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275677"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory
 

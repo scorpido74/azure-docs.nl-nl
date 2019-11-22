@@ -12,19 +12,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/28/2019
+ms.date: 11/15/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 6826c1340de16891933b290eb29bd4fb8d120974
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 64b906c8a6b52d9c9655f3fe2b13d504d8eed4cb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70127926"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278077"
 ---
 # <a name="compare-azure-cdn-product-features"></a>Azure CDN-producteigenschappen vergelijken
 
-Azure Content Delivery Network (CDN) bevat vier producten: **Azure CDN Standard van Microsoft**, **Azure CDN Standard van Akamai**, **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon**. Voor informatie over het migreren van een **Azure CDN Standard van Verizon**-profiel naar **Azure CDN Premium van Verizon**, raadpleegt u [Een Azure CDN-profiel migreren van Standard Verizon naar Premium Verizon](cdn-migrate.md). Houd er rekening mee dat er een upgrade-pad van Standard Verizon naar Premium Verizon is, er is op dit moment geen conversie mechanisme tussen andere producten.
+Azure Content Delivery Network (CDN) bestaat uit vier producten: **Azure CDN Standard van Microsoft**, **Azure CDN Standard van Akamai**, **Azure CDN Standard van Verizon** en **Azure CDN Premium van Verizon**. Voor informatie over het migreren van een **Azure CDN Standard van Verizon**-profiel naar **Azure CDN Premium van Verizon**, raadpleegt u [Een Azure CDN-profiel migreren van Standard Verizon naar Premium Verizon](cdn-migrate.md). Houd er rekening mee dat er een upgrade-pad van Standard Verizon naar Premium Verizon is, er is op dit moment geen conversie mechanisme tussen andere producten.
 
 De volgende tabel vergelijkt de functies die beschikbaar zijn voor elk product.
 
@@ -41,11 +41,11 @@ De volgende tabel vergelijkt de functies die beschikbaar zijn voor elk product.
 | [Global server load balancing (GSLB)](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-load-balancing-azure)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Snel leegmaken](cdn-purge-endpoint.md)  | **&#x2713;** |**&#x2713;** , Het leegmaken van alle en het maken van joker tekens wordt niet ondersteund door Azure CDN van Akamai momenteel |**&#x2713;** |**&#x2713;** |
 | [Vooraf laden van assets](cdn-preload-endpoint.md)  |  | |**&#x2713;** |**&#x2713;** |
-| Instellingen voor cache/koptekst (met behulp van [regels voor opslaan in cache](cdn-caching-rules.md))  |  |**&#x2713;** |**&#x2713;** | |
-| Aanpas bare, op regels gebaseerde engine voor content levering (met behulp van [regels-engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Instellingen voor cache/koptekst (met behulp van [regels-engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| URL-omleiding/herschrijven (met behulp van [regels-engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
-| Regels voor mobiele apparaten (met behulp van [regels-engine](cdn-rules-engine.md))  |  | | |**&#x2713;** |
+| Instellingen voor cache/koptekst (met behulp van [regels voor opslaan in cache](cdn-caching-rules.md))  |**&#x2713;** [standaard regels-engine](cdn-standard-rules-engine.md) gebruiken  |**&#x2713;** |**&#x2713;** | |
+| Aanpas bare, op regels gebaseerde engine voor content levering |**&#x2713;** [standaard regels-engine](cdn-standard-rules-engine.md) gebruiken  | | |**&#x2713;** [regels-engine](cdn-rules-engine.md) gebruiken |
+| Instellingen voor cache/header  |**&#x2713;** [standaard regels-engine](cdn-standard-rules-engine.md) gebruiken | | |**&#x2713;** de [Premium-regel engine](cdn-rules-engine.md) gebruiken |
+| URL-omleiding/herschrijven |**&#x2713;** [standaard regels-engine](cdn-standard-rules-engine.md) gebruiken  | | |**&#x2713;** de [Premium-regel engine](cdn-rules-engine.md) gebruiken |
+| Regels voor mobiele apparaten  |**&#x2713;** [standaard regels-engine](cdn-standard-rules-engine.md) gebruiken | | |**&#x2713;** de [Premium-regel engine](cdn-rules-engine.md) gebruiken |
 | [Queryreeksen opslaan in cache](cdn-query-string.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | IPv4/IPv6 dual stack | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |
 | [Ondersteuning voor HTTP/2](cdn-http2.md)  | **&#x2713;** |**&#x2713;** |**&#x2713;** |**&#x2713;** |

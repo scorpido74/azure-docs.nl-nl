@@ -1,5 +1,5 @@
 ---
-title: Azure Diagnostics configureren voor het verzenden van gegevens naar Application Insights
+title: Azure Diagnostics gegevens naar Application Insights verzenden
 description: De Azure Diagnostics open bare configuratie bijwerken om gegevens te verzenden naar Application Insights.
 ms.service: azure-monitor
 ms.subservice: diagnostic-extension
@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 03/19/2016
-ms.openlocfilehash: 5328d2be4b8bf733041c39fe029ae2d02ecc3a6e
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: 6165ff13f489f9f23b9ece677b3643641150130d
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552043"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285996"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>De diagnostische gegevens voor de Cloud service, virtuele machine of Service Fabric verzenden naar Application Insights
 Cloud Services, Virtual Machines, Virtual Machine Scale Sets en Service Fabric gebruiken allemaal de Azure Diagnostics extensie voor het verzamelen van gegevens.  Diagnostische gegevens van Azure worden verzonden naar Azure Storage tabellen.  U kunt echter ook alle of een subset van de gegevens naar andere locaties pipeen met Azure Diagnostics extensie 1,5 of hoger.
@@ -61,12 +61,12 @@ Voorbeeld configuratie van een Sink voor Application Insights:
 
 - Het element **ApplicationInsights** geeft instrumentatie sleutel aan van de Application Insights-resource waar de diagnostische gegevens van Azure worden verzonden.
     - Als u geen bestaande Application Insights resource hebt, raadpleegt u [een nieuwe Application Insights resource maken](../../azure-monitor/app/create-new-resource.md ) voor meer informatie over het maken van een resource en het ophalen van de instrumentatie sleutel.
-    - Als u een Cloud service ontwikkelt met Azure SDK 2,8 en hoger, wordt deze instrumentatie sleutel automatisch ingevuld. De waarde is gebaseerd op de configuratie-instelling van de **APPINSIGHTS_INSTRUMENTATIONKEY** -service wanneer het Cloud service project wordt ingepakt. Zie [Application Insights gebruiken met Cloud Services](../../azure-monitor/app/cloudservices.md).
+    - Als u een Cloud service ontwikkelt met Azure SDK 2,8 en hoger, wordt deze instrumentatie sleutel automatisch ingevuld. De waarde is gebaseerd op de configuratie-instelling **APPINSIGHTS_INSTRUMENTATIONKEY** service wanneer het Cloud service project wordt ingepakt. Zie [Application Insights gebruiken met Cloud Services](../../azure-monitor/app/cloudservices.md).
 
 - Het element **channels** bevat een of meer **kanaal** elementen.
     - Het *naam* kenmerk verwijst uniek naar dat kanaal.
     - Met het kenmerk *LogLevel* kunt u het logboek niveau opgeven dat door het kanaal wordt toegestaan. De beschik bare logboek niveaus in volg orde van de meest minimale informatie zijn:
-        - Uitgebreide
+        - Uitgebreid
         - Informatie
         - Waarschuwing
         - Fout

@@ -1,25 +1,16 @@
 ---
 title: Aanmelden bij Azure-laptops
 description: Snel Meld u aan bij Azure-notitieblokken en stel een gebruikers-ID, waardoor u de mogelijkheid voor toegang tot opgeslagen projecten en laptops met anderen delen.
-services: app-service
-documentationcenter: ''
-author: kraigb
-manager: barbkess
-ms.assetid: fb8c94b1-6d0a-4b77-8d14-ae6efcdd99f4
-ms.service: azure-notebooks
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 04/15/2019
-ms.author: kraigb
-ms.openlocfilehash: 0c12c8673ff61dcca62c72addcbf0d9b33c2c252
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 234703da9662380a59c7673ca3b34a1b01b7dbef
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973066"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277440"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Quickstart: Aanmelden en een gebruikers-id instellen
+# <a name="quickstart-sign-in-and-set-a-user-id"></a>Snelstart: Aanmelden en instellen van een gebruikers-ID
 
 Hoewel u altijd Azure-notitieblokken weergeven kunt zonder dat u aangemeld, moet u zich aanmelden bij uitvoeren van notitieblokken, toegang tot opgeslagen projecten en -laptops en uw notitieblokken delen met anderen.
 
@@ -66,4 +57,4 @@ Op Afmelden, selecteert u uw gebruikersnaam in de rechterbovenhoek van de pagina
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Snelstart: Een notitie blok maken en delen @ no__t-0
+> [QuickStart: Maken en delen van een laptop](quickstart-create-share-jupyter-notebook.md)

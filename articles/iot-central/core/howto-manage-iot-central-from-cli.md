@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: ddf1cfb1cb3997431b83812d03535ed990c88922
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 80f91849a35bcb94b934941a204d4503ddda376b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73806875"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278860"
 ---
 # <a name="manage-iot-central-from-azure-cli"></a>IoT Central beheren vanuit Azure CLI
 
@@ -48,14 +48,14 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-Met deze opdrachten maakt u eerst een resource groep in de regio VS-Oost voor de toepassing. In de volgende tabel worden de para meters beschreven die worden gebruikt met de opdracht **AZ iotcentral app Create** :
+Met deze opdrachten maakt u eerst een resource groep op de locatie VS-Oost voor de toepassing. In de volgende tabel worden de para meters beschreven die worden gebruikt met de opdracht **AZ iotcentral app Create** :
 
 | Parameter         | Beschrijving |
 | ----------------- | ----------- |
 | resource-group    | De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
-| location          | Deze opdracht maakt standaard gebruik van de locatie uit de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de regio **VS-Oost**, VS- **West**, **Europa-Noord**of **Europa-West** regio's, of in het **Australië** of **Azië en Stille Oceaan** geografs. |
-| naam              | De naam van de toepassing in de Azure Portal. |
-| Subdomein         | Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
+| location          | Deze opdracht maakt standaard gebruik van de locatie uit de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of in de **Europe** -locaties. |
+| name              | De naam van de toepassing in de Azure Portal. |
+| subdomein         | Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
 | sku               | Op dit moment is de enige waarde **S1** (Standard-laag). Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
 | sjabloon          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie: |
 | weergave naam      | De naam van de toepassing, zoals deze wordt weer gegeven in de gebruikers interface. |
@@ -69,7 +69,7 @@ Met deze opdrachten maakt u eerst een resource groep in de regio VS-Oost voor de
 | iotc-devkit-sample@1.0.0 | Hiermee maakt u een toepassing met apparaatsjablonen die u in staat stelt verbinding te maken met een MXChip- of Raspberry Pi-apparaat. Gebruik deze sjabloon als u een ontwikkelaar van een apparaat wilt experimenteren met een van deze apparaten. |
 
 > [!NOTE]
-> De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de regio's **Europa-Noord** en **Centraal VS** .
+> De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de locaties van **Europa** en de **VS** .
 
 ## <a name="view-your-applications"></a>Uw toepassingen bekijken
 

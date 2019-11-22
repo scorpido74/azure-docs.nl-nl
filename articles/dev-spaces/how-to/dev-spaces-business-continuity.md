@@ -1,61 +1,59 @@
 ---
-title: Zakelijke continuïteit en herstel na noodgevallen in ruimten voor het ontwikkelen van Azure
-titleSuffix: Azure Dev Spaces
+title: Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, NET service, service mesh-routering, kubectl, k8s '
+keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
 manager: gwallace
-ms.openlocfilehash: 2da92b4fcd98024ada8d852d65e08fe8c70e3884
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
-ms.translationtype: MT
+ms.openlocfilehash: f2c2767d23a99644ee4ecb4e1040162c58a72b1a
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67704060"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280093"
 ---
-# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Zakelijke continuïteit en herstel na noodgevallen in ruimten voor het ontwikkelen van Azure
+# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
 
-## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Lees de richtlijnen voor herstel na noodgevallen voor Azure Kubernetes Service (AKS)
+## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Raadpleeg de richt lijnen voor herstel na nood gevallen voor Azure Kubernetes service (AKS)
 
-Azure Dev opslagruimten is een functie van Azure Kubernetes Service (AKS). U moet rekening houden met richtlijnen voor herstel na noodgevallen in AKS en overwegen of ze van toepassing zijn op de AKS-clusters die u voor Dev spaties gebruikt. Raadpleeg voor meer informatie [aanbevolen procedures voor zakelijke continuïteit en herstel na noodgevallen in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
+Azure dev Spaces is een functie van Azure Kubernetes service (AKS). U moet rekening houden met richt lijnen voor herstel na nood gevallen in AKS en u kunt overwegen of ze van toepassing zijn op de AKS-clusters die u gebruikt voor dev-ruimten. Raadpleeg [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) voor meer informatie.
 
-## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Dev-ruimten in AKS-clusters in verschillende regio's inschakelen
+## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Ontwikkel ruimten in AKS-clusters in verschillende regio's inschakelen
 
-Dev-ruimten in AKS-clusters in verschillende regio's inschakelen, kunt u ontwikkelen opslagruimten direct na de storing van een Azure-regio blijven gebruiken.
+Door ontwikkel ruimten in AKS-clusters in verschillende regio's in te scha kelen, kunt u direct na een storing in de Azure-regio het gebruik van dev Spaces hervatten.
 
-Raadpleeg voor algemene informatie over implementaties in meerdere regio's van AKS [plannen voor implementatie in meerdere regio's](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+Voor algemene informatie over implementaties met meerdere regio's van AKS raadpleegt u [implementatie van meerdere regio's plannen](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-Zie voor meer informatie over het implementeren van een AKS-cluster dat compatibel is met Azure Dev spaties [maken van een Kubernetes-cluster met behulp van Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
+Zie [een Kubernetes-cluster maken met Azure Cloud shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell) voor meer informatie over het implementeren van een AKS-cluster dat compatibel is met Azure dev Spaces.
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Ontwikkel spaties inschakelen via de Azure-portal
+### <a name="enable-dev-spaces-via-the-azure-portal"></a>Ontwikkel ruimten inschakelen via de Azure Portal
 
-Klik op de **Dev spaties** navigatie-item onder de eigenschappen van elk cluster in Azure portal. Kies vervolgens de optie voor het inschakelen van Dev spaties.
+Klik op het navigatie-item voor de **dev Space** onder de eigenschappen van elk cluster in de Azure Portal. Kies vervolgens de optie voor het inschakelen van dev spaties.
 
-![Ontwikkel spaties inschakelen via Azure portal](../media/common/enable-dev-spaces.jpg)
+![Ontwikkel ruimten inschakelen via Azure Portal](../media/common/enable-dev-spaces.jpg)
 
-Dit proces herhalen voor elk cluster.
+Herhaal dit proces voor elk cluster.
 
-### <a name="enable-dev-spaces-via-the-azure-cli"></a>Ontwikkel spaties via de Azure CLI inschakelen
+### <a name="enable-dev-spaces-via-the-azure-cli"></a>Ontwikkel ruimten inschakelen via de Azure CLI
 
-U kunt ook Dev spaties inschakelen op de opdrachtregel:
+U kunt ook dev Spaces inschakelen op de opdracht regel:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Basislijn van uw team op elk cluster implementeren
+## <a name="deploy-your-teams-baseline-to-each-cluster"></a>De basis lijn van uw team implementeren voor elk cluster
 
-Als u werkt met Dev spaties, implementeren u doorgaans de gehele toepassing naar een bovenliggende dev-ruimte op uw Kubernetes-cluster. Standaard de `default` ruimte wordt gebruikt. De eerste implementatie bevat alle services, evenals de externe bronnen die deze services afhankelijk zijn, zoals databases of wachtrijen. Dit staat bekend als de *basislijn*. Nadat u een basislijn ingesteld in de bovenliggende dev-ruimte, kunt u herhalen en fouten opsporen in afzonderlijke services binnen onderliggende dev spaties.
+Wanneer u met dev Spaces werkt, implementeert u doorgaans de volledige toepassing naar een bovenliggende ontwikkel ruimte op uw Kubernetes-cluster. Standaard wordt de `default` ruimte gebruikt. De eerste implementatie omvat alle services en de externe resources waarvan deze services afhankelijk zijn, zoals data bases of wacht rijen. Dit staat bekend als de *basis lijn*. Zodra u een basis lijn in de bovenliggende ontwikkel ruimte hebt ingesteld, kunt u de afzonderlijke services in onderliggende ontwikkel ruimten opsporen en fout opsporing uitvoeren.
 
-U moet de meest recente versies van uw basislijnset services implementeren met clusters in meerdere regio's. Bijwerken van uw basislijn-services op deze manier zorgt u ervoor dat u ontwikkelen spaties gebruiken blijven kunt als er een fout van de Azure-regio. Bijvoorbeeld, als u uw basislijn via een CI/CD-pijplijn implementeert, de pijplijn zodanig aanpassen dat deze worden geïmplementeerd op meerdere clusters in verschillende regio's.
+U moet de meest recente versies van uw Baseline set services implementeren voor clusters in meerdere regio's. Als u de basislijn Services op deze manier bijwerkt, kunt u ontwikkel ruimten blijven gebruiken als er sprake is van een Azure-regio fout. Als u bijvoorbeeld de basis lijn via een CI/CD-pijp lijn implementeert, wijzigt u de pijp lijn zodanig dat deze wordt geïmplementeerd in meerdere clusters in verschillende regio's.
 
-## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Selecteer het juiste AKS-cluster moet worden gebruikt voor Dev-opslagruimten
+## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Selecteer het juiste AKS-cluster om te gebruiken voor dev-ruimten
 
-Wanneer u een back-cluster met de basislijn van uw team correct hebt geconfigureerd, kunt u snel Schakel over naar de back-cluster op elk gewenst moment. Vervolgens kunt u de afzonderlijke services die u bezig bent in Dev-ruimten opnieuw uitvoeren.
+Zodra u een back-upcluster hebt geconfigureerd waarop de basis lijn van uw team wordt uitgevoerd, kunt u op elk gewenst moment snel overschakelen naar het back-upcluster. Vervolgens kunt u de afzonderlijke services die u aan het werk bent, opnieuw uitvoeren in dev Spaces.
 
 Selecteer een ander cluster met de volgende CLI-opdracht:
 
@@ -63,40 +61,40 @@ Selecteer een ander cluster met de volgende CLI-opdracht:
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 
-U kunt een lijst van de beschikbare dev-ruimten op het nieuwe cluster met de volgende opdracht:
+U kunt de beschik bare ontwikkel ruimten op het nieuwe cluster weer geven met de volgende opdracht:
 
 ```cmd
 azds space list
 ```
 
-U kunt maken van een nieuwe dev-ruimte om te werken in of Selecteer een bestaande adresruimte van het ontwikkelen met de volgende opdracht:
+U kunt een nieuwe ontwikkel ruimte maken om in te werken of een bestaande dev-ruimte selecteren met de volgende opdracht:
 
 ```cmd
 azds space select -n <space name>
 ```
 
-Na het uitvoeren van deze opdrachten, wordt de geselecteerde cluster en de dev-ruimte worden gebruikt voor de volgende CLI-bewerkingen, en voor het opsporen van fouten in projecten met behulp van de Visual Studio Code-extensie voor Azure Dev spaties.
+Na het uitvoeren van deze opdrachten worden de geselecteerde cluster-en dev-ruimte gebruikt voor volgende CLI-bewerkingen en voor het opsporen van fouten in projecten met de Visual Studio code Extension voor Azure dev Spaces.
 
-Als u Visual Studio gebruikt, kunt u overschakelen van het cluster dat wordt gebruikt door een bestaand project via de volgende stappen uit:
+Als u Visual Studio gebruikt, kunt u via de volgende stappen overschakelen naar het cluster dat door een bestaand project wordt gebruikt:
 
-1. Open het project in Visual Studio.
-1. Klik met de rechtermuisknop op de naam van het project in Solution Explorer en klikt u op **eigenschappen**
-1. Klik in het linkerdeelvenster op **foutopsporing**
-1. Klik op de eigenschappenpagina van foutopsporing op de **profiel** vervolgkeuzelijst lijst en kies **Azure Dev spaties**.
-1. Klik op de **wijziging** knop.
-1. In het dialoogvenster dat wordt weergegeven, selecteert u het AKS-cluster dat u wilt gebruiken. Indien gewenst, kiest u een spatie verschillende ontwikkelen om in te werken of maakt u een nieuwe dev-ruimte, door de juiste optie kiezen uit de **ruimte** vervolgkeuzelijst.
+1. Open uw project in Visual Studio.
+1. Klik met de rechter muisknop op de project naam in Solution Explorer en klik op **Eigenschappen**
+1. Klik in het linkerdeel venster op **fouten opsporen**
+1. Klik op de pagina eigenschappen van fout opsporing op de vervolg keuzelijst **profiel** en kies **Azure dev Spaces**.
+1. Klik op de knop **wijzigen** .
+1. Selecteer in het dialoog venster dat wordt weer gegeven het AKS-cluster dat u wilt gebruiken. Kies indien gewenst een andere ontwikkel ruimte om in te werken of maak een nieuwe ontwikkel ruimte door de gewenste optie te selecteren in de vervolg keuzelijst **ruimte** .
 
-Nadat u de juiste cluster en de ruimte hebt geselecteerd, drukt u op F5 voor het uitvoeren van de service in Dev spaties.
+Wanneer u het juiste cluster en de benodigde ruimte hebt geselecteerd, kunt u op F5 drukken om de service uit te voeren in dev Spaces.
 
-Herhaal deze stappen voor eventuele andere projecten die zijn geconfigureerd voor het gebruik van het oorspronkelijke cluster.
+Herhaal deze stappen voor andere projecten die zijn geconfigureerd voor gebruik van het oorspronkelijke cluster.
 
-## <a name="access-a-service-on-a-backup-cluster"></a>Toegang tot een service op een back-cluster
+## <a name="access-a-service-on-a-backup-cluster"></a>Toegang tot een service op een back-upcluster
 
-Als u uw service voor het gebruik van een openbare DNS-naam hebt geconfigureerd, klikt u vervolgens heeft de service een andere URL als u deze op een back-cluster uitvoert. Openbare DNS-namen zijn altijd in de indeling `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Als u naar een ander cluster overschakelt, wordt de GUID van het cluster en mogelijk de regio wijzigen.
+Als u uw service hebt geconfigureerd voor het gebruik van een open bare DNS-naam, heeft de service een andere URL als u deze uitvoert op een back-upcluster. Open bare DNS-namen zijn altijd in de indeling `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Als u overschakelt naar een ander cluster, worden de cluster-GUID en de regio mogelijk gewijzigd.
 
-Ontwikkel spaties geeft altijd de juiste URL voor de service bij het uitvoeren van `azds up`, of in het uitvoervenster van Visual Studio onder **Azure Dev spaties**.
+In dev ruimten wordt altijd de juiste URL voor de service weer gegeven wanneer `azds up`wordt uitgevoerd, of in het uitvoer venster in Visual Studio onder **Azure dev Spaces**.
 
-U kunt ook de URL vinden door te voeren de `azds list-uris` opdracht:
+U kunt de URL ook vinden door de `azds list-uris` opdracht uit te voeren:
 ```
 $ azds list-uris
 Uri                                                     Status
@@ -104,4 +102,4 @@ Uri                                                     Status
 http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
-Deze URL gebruiken bij het openen van de service.
+Gebruik deze URL voor toegang tot de service.
