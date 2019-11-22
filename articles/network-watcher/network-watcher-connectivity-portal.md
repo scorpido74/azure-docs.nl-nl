@@ -1,6 +1,7 @@
 ---
-title: Problemen oplossen met verbindingen met Azure Network Watcher - Azure portal | Microsoft Docs
-description: Meer informatie over het gebruik van de verbinding oplossen van de mogelijkheden van Azure Network Watcher met behulp van de Azure portal.
+title: Problemen met verbindingen oplossen-Azure Portal
+titleSuffix: Azure Network Watcher
+description: Meer informatie over het gebruik van de functie verbinding oplossen van Azure Network Watcher met behulp van de Azure Portal.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -13,54 +14,54 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
 ms.author: kumud
-ms.openlocfilehash: 783bcd0cdc97328f16c4a0defa18daa46a065842
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64702006"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275976"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Problemen oplossen met verbindingen met Azure Network Watcher met behulp van de Azure portal
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Verbindingen met Azure Network Watcher met de Azure Portal oplossen
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
-> - [Azure-CLI](network-watcher-connectivity-cli.md)
+> - [Azure CLI](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-Informatie over het gebruik van de verbinding oplossen om te controleren of een rechtstreekse TCP-verbinding van een virtuele machine naar een bepaald eindpunt kan worden gemaakt.
+Meer informatie over het gebruik van verbindings problemen oplossen om te controleren of een directe TCP-verbinding van een virtuele machine naar een bepaald eind punt tot stand kan worden gebracht.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit artikel wordt ervan uitgegaan dat u hebt de volgende bronnen:
+In dit artikel wordt ervan uitgegaan dat u de volgende resources hebt:
 
-* Een exemplaar van Network Watcher in de regio die u wilt oplossen, een verbinding.
-* Virtuele machines, problemen oplossen met verbindingen met.
+* Een exemplaar van Network Watcher in de regio waarvoor u problemen met een verbinding wilt oplossen.
+* Virtuele machines voor het oplossen van verbindingen met.
 
 > [!IMPORTANT]
-> Probleemoplossing voor verbindingen vereist dat de virtuele machine bij het oplossen van problemen met van heeft de `AzureNetworkWatcherExtension` VM-extensie is geïnstalleerd. Ga voor het installeren van de extensie op een Windows-VM naar [Azure Network Watcher-Agent de extensie van de virtuele machine voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux-VM naar [Azure Network Watcher-Agent de extensie van de virtuele machine voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De extensie is niet vereist op het eindpunt van de bestemming.
+> Verbindings problemen oplossen vereist dat de VM-extensie `AzureNetworkWatcherExtension` is geïnstalleerd op de virtuele machine die u wilt oplossen. Voor het installeren van de uitbrei ding op een Windows-VM gaat u naar [azure Network Watcher agent-extensie voor virtuele machines voor Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) en voor Linux VM gaat u naar de [Azure Network Watcher agent-extensie voor virtuele machines voor Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). De uitbrei ding is niet vereist voor het eind punt van de bestemming.
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>Controleer de verbinding met een virtuele machine
 
-In dit voorbeeld controleert de verbinding met een virtuele doelmachine via poort 80.
+In dit voor beeld wordt de verbinding met een virtuele doel machine via poort 80 gecontroleerd.
 
-Navigeer naar uw Network Watcher en klikt u op **probleemoplossing voor verbindingen**. Selecteer de virtuele machine om te controleren op connectiviteit van. In de **bestemming** sectie Kies **selecteert u een virtuele machine** en kies het juiste virtuele machine en de poort om te testen.
+Ga naar uw Network Watcher en klik op **verbindings problemen oplossen**. Selecteer de virtuele machine waarvoor u de connectiviteit wilt controleren. Kies in de sectie **doel** de optie **Selecteer een virtuele machine** en kies de juiste virtuele machine en poort om te testen.
 
-Nadat u op **controleren**, connectiviteit tussen de virtuele machines in de opgegeven poort is ingeschakeld. De bestemming VM is niet bereikbaar, een overzicht van hops worden weergegeven in het voorbeeld.
+Wanneer u op **controleren**hebt geklikt, wordt de verbinding tussen de virtuele machines op de opgegeven poort gecontroleerd. In het voor beeld is de doel-VM onbereikbaar. er wordt een lijst met hops weer gegeven.
 
-![Resultaten van de verbinding voor een virtuele machine][1]
+![De connectiviteits resultaten voor een virtuele machine controleren][1]
 
-## <a name="check-remote-endpoint-connectivity"></a>Controleer de connectiviteit van Extern eindpunt
+## <a name="check-remote-endpoint-connectivity"></a>Connectiviteit van extern eind punt controleren
 
-Om te controleren of de connectiviteit en de latentie naar een extern eindpunt, kiest u de **handmatig opgeven** keuzerondje in de **bestemming** sectie, voer de url en de poort en klik op **controleren**.  Dit wordt gebruikt voor externe eindpunten, zoals websites en storage-eindpunten.
+Als u de connectiviteit en latentie voor een extern eind punt wilt controleren, kiest u de keuze rondje **hand matig opgeven** in de sectie **doel** , voert u de URL en de poort in en klikt u op **controleren**.  Dit wordt gebruikt voor externe eind punten, zoals websites en opslag eindpunten.
 
-![Resultaten van de verbinding voor een website][2]
+![De connectiviteits resultaten controleren voor een website][2]
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het automatiseren van pakketopnamen met waarschuwingen van de virtuele machine via [maken van een waarschuwing geactiveerd pakketopname](network-watcher-alert-triggered-packet-capture.md)
+Meer informatie over het automatiseren van pakket opnames met waarschuwingen voor virtuele machines door het weer geven van [een waarschuwing gegenereerde pakket opname maken](network-watcher-alert-triggered-packet-capture.md)
 
-Zoeken of bepaalde verkeer is toegestaan in of buiten uw virtuele machine door naar de pagina [controleren IP-stroom controleren](diagnose-vm-network-traffic-filtering-problem.md)
+Controleren of bepaalde verkeer is toegestaan in of buiten uw virtuele machine door te kijken naar controle van de [IP-stroom](diagnose-vm-network-traffic-filtering-problem.md)
 
 [1]: ./media/network-watcher-connectivity-portal/figure1.png
 [2]: ./media/network-watcher-connectivity-portal/figure2.png

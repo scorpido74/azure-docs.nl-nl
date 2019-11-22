@@ -1,5 +1,5 @@
 ---
-title: De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
+title: Metrische gegevens van Windows-schaal sets verzamelen in Azure Monitor met sjabloon
 description: De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met een resource manager-sjabloon voor een Windows-schaalset voor virtuele machines
 author: anirudhcavale
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 8ee8c0c9d9724706f9b46013eba14e878832fd02
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 691b2ae7e497c9292975083e3687d9240ce6f3e6
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844966"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286123"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>De metrische gegevens van het gast besturingssysteem naar het Azure Monitor metrische archief verzenden met behulp van een Azure Resource Manager sjabloon voor een Windows-schaalset voor virtuele machines
 
@@ -48,7 +48,7 @@ Down load en sla beide bestanden lokaal op.
 ###  <a name="modify-azuredeployparametersjson"></a>Azuredeploy. para meters. json wijzigen
 Open het bestand **azuredeploy. para meters. json** :  
  
-- Geef een **vmSKU** op die u wilt implementeren. We raden Standard_D2_v3 aan. 
+- Geef een **vmSKU** op die u wilt implementeren. We raden u aan Standard_D2_v3. 
 - Geef een **windowsOSVersion** op voor de schaalset van de virtuele machine. We raden 2016-Data Center aan. 
 - Geef een naam op voor de resource voor de VM-schaalset die moet worden geïmplementeerd met behulp van een **vmssName** -eigenschap. Een voor beeld is **VMSS-wad-test**.    
 - Geef het aantal Vm's op dat u wilt uitvoeren op de schaalset voor virtuele machines met behulp van de eigenschap **instanceCount** .
@@ -239,8 +239,8 @@ Sla beide bestanden op en sluit deze.
 Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShell:  
 
 1. Start Power shell. 
-1. Meld u aan bij Azure `Login-AzAccount`met.
-1. Haal uw lijst met abonnementen op met `Get-AzSubscription`behulp van.
+1. Meld u aan bij Azure met `Login-AzAccount`.
+1. U kunt uw lijst met abonnementen ophalen met behulp van `Get-AzSubscription`.
 1. Stel het abonnement in dat u maakt of werk de virtuele machine bij: 
 
    ```powershell
@@ -267,7 +267,7 @@ Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShe
 1. Nadat de implementatie is voltooid, moet u de schaalset voor virtuele machines in de Azure Portal vinden. Hiermee worden metrische gegevens naar Azure Monitor geverzendd. 
 
    > [!NOTE]  
-   > U kunt fouten rond de geselecteerde **vmSkuSize**uitvoeren. Ga in dat geval terug naar het bestand **azuredeploy. json** en werk de standaard waarde van de **vmSkuSize** -para meter bij. U wordt aangeraden **Standard_DS1_v2**te proberen. 
+   > U kunt fouten rond de geselecteerde **vmSkuSize**uitvoeren. Ga in dat geval terug naar het bestand **azuredeploy. json** en werk de standaard waarde van de **vmSkuSize** -para meter bij. We raden u aan **Standard_DS1_v2**uit te voeren. 
 
 
 ## <a name="chart-your-metrics"></a>Grafieken van uw metrische gegevens 
@@ -286,7 +286,7 @@ Als u de Resource Manager-sjabloon wilt implementeren, gebruikt u Azure PowerShe
 
 1. Selecteer in de vervolg keuzelijst naam ruimten de optie **Azure. VM. Windows. gast**. 
 
-1. Selecteer in de vervolg keuzelijst metrische gegevens **geheugen\%toegewezen bytes in gebruik**.  
+1. Selecteer in de vervolg keuzelijst metrische gegevens **geheugen\%toegewezen bytes die in gebruik**zijn.  
 
 U kunt er ook voor kiezen om de dimensies op deze metrische waarde te gebruiken om deze te tekenen voor een bepaalde virtuele machine of om elke virtuele machine in de schaalset te zetten. 
 

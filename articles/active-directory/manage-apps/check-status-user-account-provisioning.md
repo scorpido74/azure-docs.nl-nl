@@ -1,5 +1,5 @@
 ---
-title: Automatische gebruikers accounts inrichten voor SaaS-toepassingen | Microsoft Docs
+title: Automatische toewijzing van gebruikers accounts aan SaaS-toepassingen rapporteren
 description: Informatie over het controleren van de status van automatische toewijzing van gebruikers accounts en het oplossen van problemen met het inrichten van afzonderlijke gebruikers.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,14 @@ ms.date: 09/09/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e5ef4067f22d0e9e015e4d9a646f8b92309010a
-ms.sourcegitcommit: 0fab4c4f2940e4c7b2ac5a93fcc52d2d5f7ff367
+ms.openlocfilehash: f1eea9cc738897c6de86c2fd73a0967e39b8afd4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71033536"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275064"
 ---
-# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Zelfstudie: Rapportage over het automatisch inrichten van gebruikers accounts
+# <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Zelf studie: rapportage over automatische toewijzing van gebruikers accounts
 
 Azure Active Directory (Azure AD) bevat een [service](user-provisioning.md) voor het inrichten van gebruikers accounts die helpt bij het automatiseren van het inrichten van gebruikers account in Saas-apps en andere systemen, met het oog op end-to-end identiteits levenscyclus beheer. Azure AD biedt ondersteuning voor vooraf geïntegreerde User Provisioning connectors voor alle toepassingen en systemen in de sectie ' Aanbevolen ' van de [Azure AD-toepassings galerie](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps?page=1&subcategories=featured).
 
@@ -39,12 +39,12 @@ De inrichtings connectors worden ingesteld en geconfigureerd met behulp van de [
 
 In dit artikel worden de volgende voor waarden gebruikt, zoals hieronder gedefinieerd:
 
-* **Bron systeem** : de opslag plaats van gebruikers die de Azure AD Provisioning-service synchroniseert. Azure Active Directory is het bron systeem voor het meren deel van vooraf geïntegreerde inrichtings connectors. er zijn echter enkele uitzonde ringen (bijvoorbeeld: Werkdag inkomende synchronisatie).
-* **Doel systeem** : de opslag plaats van gebruikers aan wie de Azure AD-inrichtings service synchroniseert. Dit is doorgaans een SaaS-toepassing (bijvoorbeeld: Sales Force, ServiceNow, G suite, Dropbox voor bedrijven, maar in sommige gevallen kan een on-premises systeem zijn, zoals Active Directory (bijvoorbeeld: Werkdag inkomende synchronisatie naar Active Directory).
+* **Bron systeem** : de opslag plaats van gebruikers die de Azure AD Provisioning-service synchroniseert. Azure Active Directory is het bron systeem voor het meren deel van vooraf geïntegreerde inrichtings connectors, maar er zijn echter enkele uitzonde ringen (bijvoorbeeld: werk dagen binnenkomende synchronisatie).
+* **Doel systeem** : de opslag plaats van gebruikers aan wie de Azure AD-inrichtings service synchroniseert. Dit is normaal gesp roken een SaaS-toepassing (bijvoorbeeld: Sales Force, ServiceNow, G suite, Dropbox voor bedrijven), maar in sommige gevallen kan het om een on-premises systeem worden, zoals Active Directory (voor beeld: werk dagen inkomende synchronisatie naar Active Directory).
 
 ## <a name="getting-provisioning-reports-from-the-azure-portal"></a>Inrichtings rapporten ophalen van de Azure Portal
 
-Als u informatie over het inrichtings rapport voor een bepaalde toepassing wilt ophalen, start u de [Azure Portal](https://portal.azure.com) en **Azure Active Directory** &gt; **Enter prise apps** &gt; **Provisioning logs (preview)** in deDe sectie activiteit. U kunt ook bladeren naar de bedrijfs toepassing waarvoor het inrichten is geconfigureerd. Als u bijvoorbeeld gebruikers inricht voor LinkedIn, is het pad naar de details van de toepassing:
+Als u informatie over het inrichtings rapport voor een bepaalde toepassing wilt ophalen, start u de [Azure Portal](https://portal.azure.com) en **Azure Active Directory** &gt; **Enter prise apps** &gt; **inrichtings Logboeken (preview)** in het gedeelte **activiteit** . U kunt ook bladeren naar de bedrijfs toepassing waarvoor het inrichten is geconfigureerd. Als u bijvoorbeeld gebruikers inricht voor LinkedIn, is het pad naar de details van de toepassing:
 
 **Azure Active Directory > bedrijfs toepassingen > alle toepassingen > LinkedIn-uitbrei ding**
 
@@ -61,11 +61,11 @@ De [voortgangs balk](application-provisioning-when-will-provisioning-finish-spec
 
 De **huidige status** moet de eerste locatie beheerders zijn om de operationele status van de inrichtings taak te controleren.
 
- ![Samenvattend rapport](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
+ ![Samenvattings rapport](./media/check-status-user-account-provisioning/provisioning-progress-bar-section.png)
 
 ## <a name="provisioning-logs-preview"></a>Inrichtings Logboeken (preview-versie)
 
-Alle activiteiten die worden uitgevoerd door de inrichtings service worden vastgelegd in de Azure AD- [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). U kunt toegang krijgen tot de inrichtings Logboeken in de Azure portal door **Azure Active Directory** &gt; **Enter prise apps** &gt; **Provisioning logs (preview)** te selecteren in de sectie **activiteit** . U kunt de inrichtings gegevens zoeken op basis van de naam van de gebruiker of de id in het bron systeem of het doel systeem. Zie [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)voor meer informatie. Gebeurtenis typen voor geregistreerde activiteiten zijn onder andere:
+Alle activiteiten die worden uitgevoerd door de inrichtings service worden vastgelegd in de Azure AD- [inrichtings logboeken](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). U kunt toegang krijgen tot de inrichtings Logboeken in de Azure Portal door **Azure Active Directory** &gt; **enter prise apps** &gt; **inrichtings Logboeken (preview)** te selecteren in de sectie **activiteit** . U kunt de inrichtings gegevens zoeken op basis van de naam van de gebruiker of de id in het bron systeem of het doel systeem. Zie [inrichtings Logboeken (preview-versie)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context)voor meer informatie. Gebeurtenis typen voor geregistreerde activiteiten zijn onder andere:
 
 ## <a name="troubleshooting"></a>Problemen oplossen
 
@@ -73,7 +73,7 @@ Het inrichtings samenvattings rapport en de inrichtings logboeken spelen een bel
 
 Zie problemen met het [configureren en inrichten van gebruikers voor een toepassing](application-provisioning-config-problem.md)voor op scenario's gebaseerde richt lijnen voor het oplossen van problemen met automatische gebruikers inrichting.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 * [Inrichten van gebruikers accounts voor zakelijke apps beheren](configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)

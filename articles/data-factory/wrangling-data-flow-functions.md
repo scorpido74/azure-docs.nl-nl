@@ -7,12 +7,12 @@ ms.reviewer: gamal
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
-ms.openlocfilehash: 3274641f7b118e13b3ed727f609ce7471fd66b54
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: e2517ec4a02a5d61fb3ce1d9ca9ffa2b5f4e8bf8
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73682293"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287033"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transformatie functies in wrangling-gegevens stroom
 
@@ -81,12 +81,21 @@ Gebruik [Table. sort](https://docs.microsoft.com/powerquery-m/table-sort) om waa
 
 Hoog behoud en verwijderen, bereik (overeenkomende M-functies, alleen ondersteunings tellingen, niet-voor waarden): [tabel. voors](https://docs.microsoft.com/powerquery-m/table-firstn)telling, tabel. [overs Laan](https://docs.microsoft.com/powerquery-m/table-skip), [tabel.](https://docs.microsoft.com/powerquery-m/table-removefirstn)reMinNe, [tabel. bereik](https://docs.microsoft.com/powerquery-m/table-range), [tabel.](https://docs.microsoft.com/powerquery-m/table-minn), [tabel. MaxN](https://docs.microsoft.com/powerquery-m/table-maxn))
 
-## <a name="known-unsupported-functionality"></a>Bekende niet-ondersteunde functionaliteit
+## <a name="known-unsupported-functions"></a>Bekende niet-ondersteunde functies
 
-Hieronder vindt u functies die niet worden ondersteund. Deze lijst is niet volledig en kan worden gewijzigd.
-* Kolommen samen voegen (kan worden bereikt met AddColumn)
-* Kolom splitsen
-* Query's toevoegen
-* ' Gebruik de eerste rij als kopteksten ' en ' headers gebruiken als eerste rij '
+| Functie | Status |
+| -- | -- |
+| Table. PromoteHeaders | Wordt niet ondersteund. U kunt hetzelfde resultaat bereiken door in de gegevensset ' eerste rij als koptekst ' in te stellen. |
+| Table. CombineColumns | Dit is een veelvoorkomend scenario dat niet rechtstreeks wordt ondersteund, maar kan worden bereikt door een nieuwe kolom toe te voegen waarmee twee opgegeven kolommen worden samengevoegd.  Bijvoorbeeld Table. AddColumn (RemoveEmailColumn, "name", elk [FirstName] & "" & [LastName]) |
+| Table. TransformColumnTypes | Dit wordt in de meeste gevallen ondersteund. De volgende scenario's worden niet ondersteund: het transformeren van de teken reeks naar het valuta type, het transformeren van de teken reeks naar het type tijd, het transformeren van de teken reeks naar het type percentage. |
+| Table. NestedJoin | Als u een koppeling uitvoert, treedt er een validatie fout op. De kolommen moeten worden uitgevouwen om te kunnen werken. |
+| Table. DISTINCT | Verwijder dubbele rijen worden niet ondersteund. |
+| Table. Removes | Onderste rijen verwijderen wordt niet ondersteund. |
+| Tabel. RowCount | Niet ondersteund, maar kan worden bereikt met een kolom toevoegen met alle cellen leeg (kolom voor waarde kan worden gebruikt) en vervolgens groeperen op die kolom gebruiken. Table. Group wordt ondersteund. | 
+| Fout afhandeling op rijniveau | Fout afhandeling op rijniveau wordt momenteel niet ondersteund. Als u bijvoorbeeld niet-numerieke waarden uit een kolom wilt filteren, kunt u de tekst kolom omzetten in een getal. Elke cel die niet kan worden getransformeerd, heeft een fout status en moet worden gefilterd. Dit scenario is niet mogelijk in wrangling-gegevens stroom. |
+| Table. transponeren | Niet ondersteund |
+| Table. Pivot | Niet ondersteund |
 
 ## <a name="next-steps"></a>Volgende stappen
+
+Meer informatie over het [maken van een wrangling-gegevens stroom](wrangling-data-flow-tutorial.md).

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 5e96ced1bd87a0ed8be19bf4e07f7b0d9b319aad
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 25ab298a8b72b3734e41daf66ef5063b8e43a96e
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837335"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286623"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Ondersteuning van talen en regio's voor de Translator Text-API
 
@@ -40,14 +40,14 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 > [!NOTE]
 > Momenteel is een subset van de Neural-talen beschikbaar in het aangepaste conversie programma en worden er geleidelijk extra toegevoegd. [Talen weer geven die momenteel beschikbaar zijn in het aangepaste conversie programma](#customization).
 
-|Taal|  Taalcode|  V2-API| V3-API|
+|Taal|  Taalcode|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
 |Afrikaans| `af`    |Alleen statistisch|  Neuraal|
 |Arabisch|    `ar`    |Neural beschikbaar|  Neuraal|
-|Bengalese|    `bn`    |Neural beschikbaar|  Neuraal|
+|Bengalees|    `bn`    |Neural beschikbaar|  Neuraal|
 |Bosnisch (Latijns)|   `bs`    |Neural beschikbaar|  Neuraal|
 |Bulgaars| `bg`    |Neural beschikbaar|  Neuraal|
-|Kantonees (traditioneel)|   `yue`   |Alleen statistisch|  Statische|
+|Kantonees (Traditioneel)|   `yue`   |Alleen statistisch|  Statische|
 |Catalaans|   `ca`    |Alleen statistisch|  Statische|
 |Vereenvoudigd Chinees|    `zh-Hans`   |Neural standaard |Neuraal|
 |Traditioneel Chinees|   `zh-Hant`   |Neural standaard |Neuraal|
@@ -57,7 +57,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Nederlands| `nl`    |Neural beschikbaar|  Neuraal|
 |Nederlands|   `en`    |Neural beschikbaar|  Neuraal|
 |Estisch|  `et`    |Neural beschikbaar|  Neuraal|
-|Fijian|    `fj`    |Alleen statistisch|  Statische|
+|Fiji|    `fj`    |Alleen statistisch|  Statische|
 |Filipijns|  `fil`   |Alleen statistisch|  Statische|
 |Fins|   `fi`    |Neural beschikbaar|  Neuraal|
 |Frans|    `fr`    |Neural beschikbaar|  Neuraal|
@@ -81,6 +81,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Malagassische|  `mg`    |Alleen statistisch|  Statische|
 |Maleis| `ms`    |Alleen statistisch   |Statische|
 |Maltees|   `mt`    |Alleen statistisch|  Statische|
+|Maori| `mi`  |Alleen Neural| Neuraal|
 |Noors| `nb`    |Neural beschikbaar|  Neuraal|
 |Perzisch|   `fa`    |Neural beschikbaar|  Neuraal|
 |Pools|    `pl`    |Neural beschikbaar|  Neuraal|
@@ -88,7 +89,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Queretaro Otomi|   `otq`   |Alleen statistisch|  Statische|
 |Roemeens|  `ro`    |Neural beschikbaar|  Neuraal|
 |Russisch|   `ru`    |Neural beschikbaar|  Neuraal|
-|Samoan|    `sm`    |Alleen statistisch|  Statische|
+|Samoaanse|    `sm`    |Alleen statistisch|  Statische|
 |Servisch (Cyrillisch)|    `sr-Cyrl`   |Alleen statistisch|  Statische|
 |Servisch (Latijns)|   `sr-Latn`   |Alleen statistisch   |Statische|
 |Slowaaks|    `sk`    |Neural beschikbaar|  Neuraal|
@@ -99,7 +100,7 @@ De Translator Text-API ondersteunt de volgende talen voor tekst vertaling. Neura
 |Tamil| `ta`    |Alleen statistisch|  Statische|
 |Telugu|    `te`    |Alleen Neural|   Neuraal|
 |Thais|  `th`    |Neural beschikbaar|  Neuraal|
-|Tongaanse|    `to`    |Alleen statistisch|  Statische|
+|Tongan|    `to`    |Alleen statistisch|  Statische|
 |Turks|   `tr`    |Neural beschikbaar   |Neuraal|
 |Oekraïens| `uk`    |Neural beschikbaar|  Neuraal|
 |Urdu|  `ur`    |Alleen statistisch|  Statische|
@@ -114,7 +115,7 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Taal    | Taalcode | Script | Naar/van | Script|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabisch | `ar` | Arabische `Arab` | <--> | Latijns `Latn` |
-|Bengalese  | `bn` | Bengaals `Beng` | <--> | Latijns `Latn` |
+|Bengalees  | `bn` | Bengali `Beng` | <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Latijns `Latn` |
 | Chinees (vereenvoudigd) | `zh-Hans` | Vereenvoudigd Chinees `Hans`| <--> | Traditioneel Chinees `Hant`|
 | Chinees (traditioneel) | `zh-Hant` | Traditioneel Chinees `Hant`| <--> | Latijns `Latn` |
@@ -123,8 +124,8 @@ De methode transtranscrib ondersteunt de volgende talen. In de ' aan/van ', ' <-
 | Hebreeuws | `he` | Hebreeuws `Hebr` | <--> | Latijns `Latn` |
 | Hindi | `hi` | Devanagari `Deva` | <--> | Latijns `Latn` |
 | Japans | `ja` | Japanse `Jpan` | <--> | Latijns `Latn` |
-| Kannada | `kn` | Kannada `Knda` | --> | Latijns `Latn` |
-| Malajalam | `ml` | Malayalam `Mlym` | --> | Latijns `Latn` |
+| Kanarees | `kn` | Kannada `Knda` | --> | Latijns `Latn` |
+| Malayalam | `ml` | Malayalam `Mlym` | --> | Latijns `Latn` |
 | Marathi | `mr` | Devanagari `Deva` | --> | Latijns `Latn` |
 | Odia | `or` | Oriya `Orya` | <--> | Latijns `Latn` |
 | Punjabi | `pa` | Gurmukhi `Guru`  | <--> | Latijns `Latn`  |
@@ -142,7 +143,7 @@ De woorden lijst ondersteunt de volgende talen in of vanuit het Engels met behul
 |:----------- |:-------------:|
 | Afrikaans      | `af`          |
 | Arabisch       | `ar`          |
-| Bengalese      | `bn`          |
+| Bengalees      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 | Catalaans      | `ca`          |
@@ -209,7 +210,7 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Taal    | Taalcode |
 |:----------- |:-------------:|
 | Arabisch       | `ar`          |
-| Bengalese      | `bn`          |
+| Bengalees      | `bn`          |
 | Bosnisch (Latijns)      | `bs`          |
 | Bulgaars      | `bg`          |
 | Vereenvoudigd Chinees      | `zh-Hans`          |
@@ -237,13 +238,14 @@ De volgende talen zijn beschikbaar voor aanpassing in of vanuit het Engels met [
 | Lets      | `lv`          |
 | Litouws      | `lt`          |
 |Malagassische|  `mg`    |
+|Maori| `mi`  |
 | Noors      | `nb`          |
 | Perzisch      | `fa`          |
 | Pools      | `pl`          |
 | Portugees      | `pt`          |
 | Roemeens      | `ro`          |
 | Russisch      | `ru`          |
-|Samoan|    `sm`    |
+|Samoaanse|    `sm`    |
 | Servisch (Latijns)      | `sr-Latn`          |
 | Slowaaks     | `sk`          |
 | Sloveens      | `sl`          |

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: sstein
-ms.openlocfilehash: 5c70d1d7d62b41965d4c81e8bbe0e5b2dc3cbb92
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bdea9af04008ef68578ff8c136760f2493a2ae35
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166252"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279218"
 ---
 # <a name="sql-database-release-notes"></a>Opmerkingen bij de release SQL Database
 
@@ -80,6 +80,7 @@ De volgende functies zijn ingeschakeld in het implementatie model voor beheerde 
 
 - **Aug 2019** -Inge sloten data bases worden volledig ondersteund in een beheerd exemplaar.
 - **Oct 2019** : ingebouwde Point-in-time database herstel van bedrijfskritiek laag naar algemeen laag mislukt als de bron database in-Memory OLTP-objecten bevat.
+- **Okt 2019** -u kunt **database mail** -functie gebruiken met externe e-mail servers (niet-Azure) via een beveiligde verbinding.
 - **Nov 2019** : database consistentie wordt gecontroleerd met `DBCC CHECKDB` na het herstellen van de data base van Azure Blob Storage.
 
 ## <a name="updates"></a>Updates

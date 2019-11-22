@@ -1,6 +1,6 @@
 ---
 title: De indelings wijziging voorbereiden op Azure Monitor Diagnostische logboeken
-description: De diagnostische logboeken van Azure worden verplaatst voor het gebruik van toevoeg-blobs op 1 november 2018.
+description: Hierin wordt de impact beschreven en wordt uitgelegd hoe u uw hulp middelen bijwerkt voor het verwerken van de nieuwe Azure Diagnostische logboeken die zijn gewijzigd voor het gebruik van toevoeg-blobs op 1 november 2018.
 author: johnkemnetz
 services: monitoring
 ms.service: azure-monitor
@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: a5589828570455c61f857dbeadc896e8fef27178
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5e71f4c590e4eafea5a2c6ad52b8df8c7dcf3814
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71258390"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307061"
 ---
 # <a name="prepare-for-format-change-to-azure-monitor-diagnostic-logs-archived-to-a-storage-account"></a>De indelings wijziging voorbereiden op Azure Monitor Diagnostische logboeken die zijn gearchiveerd in een opslag account
 
 > [!WARNING]
-> Als u [Azure resource Diagnostic-Logboeken of-metrische gegevens naar een opslag account verzendt met behulp van diagnostische instellingen](./../../azure-monitor/platform/archive-diagnostic-logs.md) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](./../../azure-monitor/platform/archive-activity-log.md), wordt de indeling van de gegevens in het opslag account gewijzigd in JSON-lijnen op Nov. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling. 
+> Als u [Azure resource Diagnostic-Logboeken of-metrische gegevens naar een opslag account verzendt met behulp van resource Diagnostic-instellingen](./../../azure-monitor/platform/archive-diagnostic-logs.md) of [activiteiten logboeken naar een opslag account met behulp van logboek profielen](./../../azure-monitor/platform/archive-activity-log.md), wordt de indeling van het opslag account gewijzigd in JSON-regels op november. 1, 2018. De onderstaande instructies beschrijven de impact en het bijwerken van uw hulp programma voor het afhandelen van de nieuwe indeling. 
 >
 > 
 
-## <a name="what-is-changing"></a>Wat er verandert
+## <a name="what-is-changing"></a>Wat is wijzigen
 
 Azure Monitor biedt een mogelijkheid waarmee u gegevens van diagnostische gegevens over de resource en het activiteiten logboek kunt verzenden naar een Azure-opslag account, Event Hubs naam ruimte of in een Log Analytics-werk ruimte in Azure Monitor. Als u een probleem met de systeem prestaties wilt oplossen, gaat u op **1 November 2018 om 12:00 MIDDERNACHT UTC** de indeling van logboek gegevens verzenden naar Blob-opslag wordt gewijzigd. Als u hulp nodig hebt bij het lezen van gegevens uit de Blob-opslag, moet u uw hulp programma bijwerken om inzicht te krijgen in de nieuwe gegevens indeling.
 
@@ -31,7 +31,7 @@ Azure Monitor biedt een mogelijkheid waarmee u gegevens van diagnostische gegeve
 * Als u een diagnostische instelling instelt tussen nu en 1 november, blijft de gegevens in de huidige indeling verzenden tot 1 november.
 * Deze wijziging vindt plaats in alle open bare Cloud regio's. De wijziging wordt niet doorgevoerd in Microsoft Azure die door 21Vianet, Azure Duitsland of Azure Government Clouds worden gebruikt.
 * Deze wijziging is van invloed op de volgende gegevens typen:
-  * [Diagnostische logboeken van Azure-resource](archive-diagnostic-logs.md) ([Zie hier een lijst met resources](diagnostic-logs-schema.md))
+  * [Diagnostische logboeken voor Azure-bronnen](archive-diagnostic-logs.md) ([Zie de lijst met resources hier](diagnostic-logs-schema.md))
   * [Metrische gegevens van Azure-resource die worden geëxporteerd door Diagnostische instellingen](diagnostic-settings.md)
   * [Gegevens van Azure-activiteiten logboek worden geëxporteerd op logboek profielen](archive-activity-log.md)
 * Deze wijziging heeft geen invloed op:
@@ -45,7 +45,7 @@ U hebt deze wijziging alleen van invloed op de volgende wijzigingen:
 1. Verzendt logboek gegevens naar een Azure-opslag account met behulp van een diagnostische instelling voor bronnen en
 2. Laat hulp middelen afhangen van de JSON-structuur van deze logboeken in de opslag.
  
-Als u wilt weten of u Diagnostische instellingen voor resources hebt die gegevens verzenden naar een Azure-opslag account, kunt u naar de sectie **monitor** van de portal gaan, op **Diagnostische instellingen**klikken en alle resources identificeren die zijn **diagnose Status** ingesteld op **ingeschakeld**:
+Als u wilt weten of u Diagnostische instellingen hebt die gegevens verzenden naar een Azure-opslag account, gaat u naar de sectie **monitor** van de portal, klikt u op **Diagnostische instellingen**en identificeert u de resources waarvan de **Diagnostische status** is ingesteld op **ingeschakeld**:
 
 ![Blade Diagnostische instellingen Azure Monitor](./media/diagnostic-logs-append-blobs/portal-diag-settings.png)
 

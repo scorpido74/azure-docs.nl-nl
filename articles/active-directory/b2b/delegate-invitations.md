@@ -1,6 +1,6 @@
 ---
-title: B2B-instellingen voor externe samenwerking - Azure Active Directory inschakelen | Microsoft Docs
-description: Informatie over het inschakelen van externe Active Directory B2B-samenwerking en beheren wie kunt gastgebruikers uitnodigen. De rol Gastuitnodiging gebruiken om te delegeren uitnodigingen.
+title: Externe B2B-samenwerkings instellingen inschakelen-Azure AD
+description: Meer informatie over het inschakelen van Active Directory B2B externe samen werking en het beheren van wie gast gebruikers kunnen uitnodigen. Gebruik de rol gast uitnodiging voor het delegeren van uitnodigingen.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,51 +11,51 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11dda7fc3760f468c094fb4cf4484a27895f83b9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65812676"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272903"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samenwerking inschakelen en beheren die kunnen gasten uitnodigen
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Externe B2B-samen werking inschakelen en beheren wie gasten kan uitnodigen
 
-In dit artikel wordt beschreven hoe u Azure Active Directory (Azure AD) B2B-samenwerking mogelijk en bepaal wie kunnen gasten uitnodigen. Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Instellingen voor externe samenwerking kunnen u het inschakelen van Gast uitnodigingen in- of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt ook uitnodigingen naar afzonderlijke gebruikers delegeren door het toewijzen van rollen die kunnen worden gasten uitnodigen.
+In dit artikel wordt beschreven hoe u de samen werking van Azure Active Directory (Azure AD) inschakelt en bepaalt wie gasten kunnen uitnodigen. Standaard kunnen alle gebruikers en gasten in uw directory gasten uitnodigen, zelfs als ze niet zijn toegewezen aan een beheerdersrol. Met instellingen voor externe samen werking kunt u uitnodigingen voor gasten in-of uitschakelen voor verschillende soorten gebruikers in uw organisatie. U kunt uitnodigingen ook overdragen aan afzonderlijke gebruikers door rollen toe te wijzen waarmee gasten kunnen worden uitgenodigd.
 
-## <a name="configure-b2b-external-collaboration-settings"></a>B2B-instellingen voor externe samenwerking configureren
+## <a name="configure-b2b-external-collaboration-settings"></a>Externe B2B-samenwerkings instellingen configureren
 
-Met Azure AD B2B-samenwerking kunt tenantbeheerder de volgende uitnodiging beleidsregels instellen:
+Met Azure AD B2B Collaboration kan een Tenant beheerder het volgende uitnodigings beleid instellen:
 
 - Uitnodigingen uitschakelen
-- Alleen beheerders en gebruikers in de rol Gastuitnodiging kunnen uitnodigingen versturen
-- Beheerders, de rol Gastuitnodiging en leden kunnen uitnodigingen versturen
-- Alle gebruikers, inclusief gasten, kunnen uitnodigingen versturen
+- Alleen beheerders en gebruikers in de rol van de gast-uitnodiging kunnen uitnodigen
+- Beheerders, de rol van de gast-uitnodiging en leden kunnen uitnodigen
+- Alle gebruikers, inclusief gasten, kunnen uitnodigen
 
-Standaard kunnen alle gebruikers, inclusief gasten, gastgebruikers uitnodigen.
+Standaard kunnen alle gebruikers, inclusief gasten, gast gebruikers uitnodigen.
 
-### <a name="to-configure-external-collaboration-settings"></a>Het configureren van instellingen voor externe samenwerking:
+### <a name="to-configure-external-collaboration-settings"></a>Externe samenwerkings instellingen configureren:
 
-1. Aanmelden bij de [Azure-portal](https://portal.azure.com) als tenantbeheerder.
-2. Selecteer **Azure Active Directory** > **gebruikers** > **gebruikersinstellingen**.
-3. Onder **externe gebruikers**, selecteer **instellingen voor externe samenwerking beheren**.
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com) als een Tenant beheerder.
+2. Selecteer **Azure Active Directory** > **gebruikers** > **gebruikers instellingen**.
+3. Onder **externe gebruikers**selecteert u **externe instellingen voor samen werking beheren**.
    > [!NOTE]
-   > De **instellingen voor externe samenwerking** zijn ook toegankelijk in de **organisatie relaties** pagina. In Azure Active Directory, onder **beheren**, gaat u naar **organisatie relaties** > **instellingen**.
-4. Op de **instellingen voor externe samenwerking** pagina, kies het beleid dat u wilt inschakelen.
+   > De **instellingen voor externe samen werking** zijn ook beschikbaar op de pagina relaties van de **organisatie** . Ga in Azure Active Directory naar **beheer**en klik onder beheren op **organisatie relaties** > **instellingen**.
+4. Kies op de pagina **instellingen voor externe samen werking** de beleids regels die u wilt inschakelen.
 
-   ![Instellingen voor externe samenwerking](./media/delegate-invitations/control-who-to-invite.png)
+   ![Instellingen voor externe samen werking](./media/delegate-invitations/control-who-to-invite.png)
 
-  - **De machtigingen van gastgebruikers zijn beperkt**: Dit beleid bepaalt de machtigingen voor gasten in uw directory. Selecteer **Ja** gasten blokkeren van bepaalde directory-taken, zoals het inventariseren van gebruikers, groepen of andere mapresources. Selecteer **Nee** geven gasten dezelfde toegang tot mapgegevens als normale gebruikers in uw directory.
-   - **Beheerders en gebruikers in de rol van gastuitnodiger kunnen uitnodigingen versturen**: Als u wilt toestaan dat beheerders en gebruikers in de rol 'Gastuitnodiging' gasten uitnodigen, kunt u dit beleid instellen op **Ja**.
-   - **Leden kunnen uitnodigen**: Als u wilt toestaan dat leden van de niet-beheerder van uw directory gasten uitnodigen, kunt u dit beleid instellen op **Ja**.
-   - **Gasten kunnen uitnodigingen versturen**: Als u wilt toestaan dat gasten voor gasten uitnodigen, kunt u dit beleid instellen op **Ja**.
-   - **E-mailbericht eenmalige wachtwoordcode voor gasten (Preview) inschakelen**: Zie voor meer informatie over de functie voor eenmalige wachtwoordcode [e eenmalige wachtwoordcode verificatie (preview)](one-time-passcode.md).
-   - **Samenwerkingsbeperkingen**: Zie voor meer informatie over het toestaan of blokkeren van uitnodigingen voor specifieke domeinen [uitnodigingen toestaan of blokkeren voor B2B-gebruikers van bepaalde organisaties](allow-deny-list.md).
+  - **Machtigingen voor gast gebruikers zijn beperkt**: dit beleid bepaalt de machtigingen voor gasten in uw Directory. Selecteer **Ja** om gasten van bepaalde directory taken te blok keren, zoals het opsommen van gebruikers, groepen of andere Directory bronnen. Selecteer **Nee** om gasten dezelfde toegang te geven tot Directory gegevens als gewone gebruikers in uw Directory.
+   - **Beheerders en gebruikers in de rol van de gast-uitnodiging kunnen uitnodigen**: als u beheerders en gebruikers in de rol ' gast uitnodiging ' wilt toestaan om gasten uit te nodigen, stelt u dit beleid in op **Ja**.
+   - **Leden kunnen uitnodigen**: Stel dit beleid in op **Ja**als u niet-beheerders leden van uw directory toestemming wilt geven gasten uit te nodigen.
+   - **Gasten kunnen uitnodigen**: als u gasten wilt toestaan andere gasten uit te nodigen, stelt u dit beleid in op **Ja**.
+   - **Eenmalige e-mail wachtwoord voor gasten inschakelen (preview-versie)** : Zie [eenmalige verificatie per e-mail (preview)](one-time-passcode.md)voor meer informatie over de functie voor eenmalige wachtwoord code.
+   - **Samenwerkings beperkingen**: voor meer informatie over het toestaan of blok keren van uitnodigingen voor specifieke domeinen raadpleegt [u uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren](allow-deny-list.md).
 
-## <a name="assign-the-guest-inviter-role-to-a-user"></a>De rol Gastuitnodiging toewijzen aan een gebruiker
+## <a name="assign-the-guest-inviter-role-to-a-user"></a>De rol van de gast-uitnodiging toewijzen aan een gebruiker
 
-Met de rol Gastuitnodiging, kunt u afzonderlijke gebruikers bieden de mogelijkheid gasten uitnodigen zonder dat ze een globale beheerder of andere beheerdersrol toewijzen. De rol van gastuitnodiger toewijzen aan individuele gebruikers. Controleer vervolgens of u **beheerders en gebruikers in de rol van gastuitnodiger kunnen uitnodigingen versturen** naar **Ja**.
+Met de rol gast uitnodiging kunt u afzonderlijke gebruikers de mogelijkheid geven om gasten uit te nodigen zonder hen een globale beheerder of andere beheerdersrol toe te wijzen. Wijs de rol van de gast-uitnodiging toe aan personen. Zorg er vervolgens voor dat u **beheerders en gebruikers instelt in de rol gast uitnodiging. Dit kan worden uitgenodigd** voor **Ja**.
 
-Hier volgt een voorbeeld waarin wordt uitgelegd hoe u PowerShell gebruiken voor het toevoegen van een gebruiker aan de rol Gastuitnodiging:
+Hier volgt een voor beeld waarin wordt uitgelegd hoe u Power shell gebruikt om een gebruiker toe te voegen aan de rol van de gast-uitnodiging:
 
 ```
 Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMemberEmailAddress <RoleMemberEmailAddress>
@@ -63,10 +63,10 @@ Add-MsolRoleMember -RoleObjectId 95e79109-95c0-4d8e-aee3-d01accf2d47b -RoleMembe
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie de volgende artikelen op Azure AD B2B-samenwerking:
+Raadpleeg de volgende artikelen over Azure AD B2B-samen werking:
 
 - [Wat is Azure AD B2B-samenwerking?](what-is-b2b.md)
-- [B2B-samenwerking gastgebruikers toevoegen zonder uitnodiging](add-user-without-invite.md)
-- [B2B-samenwerking gebruiker toe te voegen aan een rol](add-guest-to-role.md)
+- [Gast gebruikers voor B2B-samen werking toevoegen zonder uitnodiging](add-user-without-invite.md)
+- [Een B2B-samenwerkings gebruiker toevoegen aan een rol](add-guest-to-role.md)
 
 

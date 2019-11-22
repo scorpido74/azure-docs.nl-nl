@@ -1,20 +1,16 @@
 ---
 title: Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
-author: zr-msft
-ms.author: zarhoads
 ms.date: 08/13/2019
 ms.topic: conceptual
 description: Meer informatie over het configureren van Azure dev Spaces voor het gebruik van een aangepaste traefik ingress-controller en het configureren van HTTPS met deze ingangs controller
 keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: c015fe8e7108f07d66d2464c4f8b6287e8f54446
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a7f8684c8236e69c16bedf0186ed7ed17bbc8462
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582311"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280078"
 ---
 # <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Een aangepaste traefik ingangs controller gebruiken en HTTPS configureren
 
@@ -87,7 +83,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
-Open [Values. yaml][values-yaml] en vervang alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* met *traefik. MY_CUSTOM_DOMAIN* met uw domein voor *MY_CUSTOM_DOMAIN*. Vervang ook *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
+Open [Values. yaml][values-yaml] en vervang alle exemplaren van *< REPLACE_ME_WITH_HOST_SUFFIX >* met *traefik. MY_CUSTOM_DOMAIN* uw domein gebruiken voor *MY_CUSTOM_DOMAIN*. Vervang ook *kubernetes.io/ingress.class: traefik-azds # dev Spaces-specifiek* met *kubernetes.io/ingress.class: traefik # aangepaste*inkomend verkeer. Hieronder ziet u een voor beeld van een bijgewerkt `values.yaml`-bestand:
 
 ```yaml
 # This is a YAML-formatted file.

@@ -1,5 +1,5 @@
 ---
-title: Apps op afzonderlijke netwerken publiceren met Azure AD-app proxy connector-groepen | Microsoft Docs
+title: Apps op afzonderlijke netwerken publiceren via connector groepen-Azure AD
 description: Bevat informatie over het maken en beheren van groepen van connectors in Azure AD-toepassingsproxy.
 services: active-directory
 author: msmimart
@@ -14,12 +14,12 @@ ms.date: 11/08/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dae4eea3e08818d43482c995595cc9fbc3f91910
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68381496"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275569"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publiceren van toepassingen op afzonderlijke netwerken en locaties met behulp van connectorgroepen
 
@@ -40,7 +40,7 @@ Als u wilt groeperen uw connectors, die u hebt om te controleren of u [geïnstal
 
 Gebruik deze stappen om zoveel connectorgroepen als u wilt maken.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Selecteer **Azure Active Directory** > **bedrijfstoepassingen** > **toepassingsproxy**.
 1. Selecteer **nieuwe connectorgroep**. De blade nieuwe Connectorgroep wordt weergegeven.
 

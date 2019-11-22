@@ -1,8 +1,6 @@
 ---
 title: CI/CD gebruiken met Azure Dev Spaces
-titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
-ms.service: azure-dev-spaces
 author: DrEsteban
 ms.author: stevenry
 ms.date: 12/17/2018
@@ -10,12 +8,12 @@ ms.topic: conceptual
 manager: gwallace
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
 keywords: Docker, Kubernetes, azure, AKS, Azure Container Service, containers
-ms.openlocfilehash: 7058806e58dbc2d9a196062c129688e6a96c5f31
-ms.sourcegitcommit: b4665f444dcafccd74415fb6cc3d3b65746a1a31
+ms.openlocfilehash: 525e18cba48756e725cbc7d837c2352b0fec74fe
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/11/2019
-ms.locfileid: "72264459"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280025"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>Gebruik CI/CD met Azure dev Spaces
 
@@ -34,7 +32,7 @@ Hoewel dit artikel u begeleidt bij Azure DevOps, zijn dezelfde concepten ook van
 * [Uw AKS-cluster autoriseren om te halen uit uw Azure Container Registry](../../aks/cluster-container-registry-integration.md)
 
 ## <a name="download-sample-code"></a>Voorbeeld code downloaden
-We gaan nu een Fork maken van de GitHub-opslag plaats van de voorbeeld code. Ga naar https://github.com/Azure/dev-spaces en selecteer **Fork**. Nadat het Fork-proces is voltooid, kunt u de gevorkte versie van de opslag plaats lokaal **klonen** . Standaard wordt de _hoofd_ vertakking uitgecheckt, maar we hebben een aantal tijdbesparende wijzigingen in de _azds_updates_ -vertakking opgenomen, die tijdens uw Fork ook moeten worden overgedragen. De _azds_updates_ -vertakking bevat updates die u vraagt om hand matig te maken in de sectie zelf studie ruimten voor ontwikkel aars, evenals een aantal vooraf gemaakte yaml-en json-bestanden voor het stroom lijnen van de implementatie van het CI/cd-systeem. U kunt een opdracht als `git checkout -b azds_updates origin/azds_updates` gebruiken om de vertakking _azds_updates_ in uw lokale opslag plaats te bekijken.
+We gaan nu een Fork maken van de GitHub-opslag plaats van de voorbeeld code. Ga naar https://github.com/Azure/dev-spaces en selecteer **Fork**. Nadat het Fork-proces is voltooid, kunt u de gevorkte versie van de opslag plaats lokaal **klonen** . Standaard wordt de _hoofd_ vertakking uitgecheckt, maar er zijn enkele tijdbesparende wijzigingen in de _azds_updates_ vertakking opgenomen, die tijdens de Fork ook moeten worden overgedragen. De _azds_updates_ vertakking bevat updates die u vraagt om hand matig te maken in de sectie met zelf studies over dev Spaces, evenals een aantal vooraf gemaakte yaml-en json-bestanden voor het stroom lijnen van de implementatie van het CI/cd-systeem. U kunt een opdracht als `git checkout -b azds_updates origin/azds_updates` gebruiken om de _azds_updates_ vertakking in de lokale opslag plaats te bekijken.
 
 ## <a name="dev-spaces-setup"></a>Instellingen voor dev Spaces
 Maak een nieuwe ruimte met de naam _dev_ met behulp van de `azds space select` opdracht. De _ontwikkelings_ ruimte wordt gebruikt door uw CI/cd-pijp lijn om uw code wijzigingen te pushen. Het wordt ook gebruikt om _onderliggende ruimten_ te maken op basis van _dev_.
@@ -70,14 +68,14 @@ De optie om uit te scha kelen:
 > [!Note]
 > De preview-functie voor het maken van Azure DevOps _nieuwe YAML-pijp lijn_ veroorzaakt een conflict met het maken van vooraf gedefinieerde build-pijp lijnen. U moet dit nu uitschakelen om onze vooraf gedefinieerde build-pijp lijn te kunnen implementeren.
 
-In de _azds_updates_ -vertakking hebben we een eenvoudige [Azure pipeline-yaml](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) opgenomen waarmee de build-stappen worden gedefinieerd die vereist zijn voor *mywebapi* en Webfront-front-front- *End*.
+In de _azds_updates_ Branch hebben we een eenvoudige [Azure pipeline-yaml](https://docs.microsoft.com/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) opgenomen waarmee de build-stappen worden gedefinieerd die vereist zijn voor *mywebapi* en *webfrontend*.
 
-Afhankelijk van de taal die u hebt gekozen, is de pijplijn YAML ingecheckt in een pad dat lijkt op het volgende: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
+Afhankelijk van de taal die u hebt gekozen, is de pijplijn YAML ingecheckt in een pad dat vergelijkbaar is met: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Een pijp lijn maken op basis van dit bestand:
 1. Navigeer op de hoofd pagina van uw DevOps-project naar pijp lijnen > builds.
 1. Selecteer de optie om een **nieuwe** build-pijp lijn te maken.
-1. Selecteer **github** als bron, autoriseer met uw github-account, indien nodig, en selecteer de vertakking _azds_updates_ van de gesplitste versie van de opslag plaats voor beelden van _ontwikkel aars_ .
+1. Selecteer **github** als bron, autoriseer met uw github-account, indien nodig, en selecteer de _azds_updates_ vertakking uit de gesplitste versie van de opslag plaats van de voorbeeld toepassing voor _ontwikkel ruimten_ .
 1. Selecteer **configuratie als code**of **yaml**als sjabloon.
 1. Er wordt nu een configuratie pagina weer gegeven voor uw build-pijp lijn. Zoals hierboven wordt beschreven, navigeert u naar het taalspecifiek pad voor het **yaml** met behulp van de knop **...** . Bijvoorbeeld `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
 1. Ga naar het tabblad **variabelen** .
@@ -85,7 +83,7 @@ Een pijp lijn maken op basis van dit bestand:
 1. Voeg _dockerPassword_ hand matig toe als een variabele. Dit is het wacht woord van uw [Azure container Registry-beheerders account](../../container-registry/container-registry-authentication.md#admin-account). Zorg ervoor dat u _dockerPassword_ als geheim opgeeft (door het vergrendelings pictogram te selecteren) om veiligheids redenen.
 1. Selecteer **& wachtrij opslaan**.
 
-U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt voor elke update die wordt gepusht naar de _Azds_updates_ -vertakking van uw github-Fork. U kunt controleren of de docker-installatie kopieën zijn gepusht door te navigeren naar de Azure Portal, uw Azure Container Registry te selecteren en op het tabblad **opslag** plaatsen te bladeren. Het kan enkele minuten duren voordat de installatie kopieën zijn gemaakt en worden weer gegeven in het container register.
+U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt voor elke update die wordt gepusht naar de _azds_updates_ vertakking van uw github-Fork. U kunt controleren of de docker-installatie kopieën zijn gepusht door te navigeren naar de Azure Portal, uw Azure Container Registry te selecteren en op het tabblad **opslag** plaatsen te bladeren. Het kan enkele minuten duren voordat de installatie kopieën zijn gemaakt en worden weer gegeven in het container register.
 
 ![Azure Container Registry opslag plaatsen](../media/common/ci-cd-images-verify.png)
 
@@ -102,12 +100,12 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Laat **labels** leeg.
 1. Stel de **bron alias** in op `drop`. De waarde van de **bron alias** wordt gebruikt door de vooraf gedefinieerde release taken zodat deze moet worden ingesteld.
 1. Klik op **Add**.
-1. Klik nu op het pictogram met de bliksem flits op de zojuist gemaakte `drop`-artefact bron, zoals hieronder wordt weer gegeven:
+1. Klik nu op het pictogram bliksem flits op de nieuw gemaakte `drop` artefact bron, zoals hieronder wordt weer gegeven:
 
     ![Setup van continue implementatie van release artefact](../media/common/release-artifact-cd-setup.png)
 1. Schakel de **trigger voor continue implementatie**in.
 1. Beweeg de muis aanwijzer over het tabblad **taken** naast **pijp lijn** en klik op _dev_ om de taken voor de _ontwikkelings_ fase te bewerken.
-1. Controleer of **Azure Resource Manager** is geselecteerd onder **verbindings type.** en u ziet dat de drie vervolg keuzelijst besturings elementen rood zijn gemarkeerd: ![Release definitie Setup @ no__t-1
+1. Controleer of **Azure Resource Manager** is geselecteerd onder **verbindings type.** en u ziet dat de drie vervolg keuzelijst besturings elementen rood zijn gemarkeerd: ![de installatie van de release definitie](../media/common/release-setup-tasks.png)
 1. Selecteer het Azure-abonnement dat u wilt gebruiken met Azure dev Spaces. Mogelijk moet u ook op **autoriseren**klikken.
 1. Selecteer de resource groep en het cluster dat u wilt gebruiken met Azure dev Spaces.
 1. Klik op **Agent taak**.
@@ -117,7 +115,7 @@ U hebt nu een CI-oplossing die automatisch *mywebapi* en Webfront- *End* bouwt v
 1. Klik op **Agent taak**.
 1. Selecteer **gehoste Ubuntu 1604** onder **groep van agent**.
 1. Klik op het tabblad **variabelen** om de variabelen voor uw release bij te werken.
-1. Werk de waarde van **DevSpacesHostSuffix** bij van **UPDATE_ME** naar het achtervoegsel van de host. Het achtervoegsel van de host wordt weer gegeven wanneer u de `azds show-context`-opdracht eerder hebt uitgevoerd.
+1. Werk de waarde van **DevSpacesHostSuffix** bij van **UPDATE_ME** naar het achtervoegsel van de host. Het achtervoegsel van de host wordt weer gegeven wanneer u de `azds show-context` opdracht eerder hebt uitgevoerd.
 1. Klik op **Opslaan** in de rechter bovenhoek en **OK**.
 1. Klik op **+ release** (naast de knop Opslaan) en **Maak een release**.
 1. Controleer onder **artefacten**de meest recente build van uw build-pijp lijn is geselecteerd.
@@ -133,12 +131,12 @@ Er wordt nu een geautomatiseerd release proces gestart, waarbij de *mywebapi* -e
 De release wordt uitgevoerd wanneer alle taken zijn voltooid.
 
 > [!TIP]
-> Als uw release mislukt met een fout bericht als de *upgrade is mislukt: er is een time-out opgetreden tijdens het wachten op de voor waarde*. Probeer het Peul in het cluster te controleren [met behulp van het Kubernetes-dash board](../../aks/kubernetes-dashboard.md). Als u ziet dat het meren bestand niet kan worden gestart met fout berichten zoals *het ophalen van de installatie kopie ' azdsexample.azurecr.io/mywebapi:122 ': RPC-fout: code = onbekende desc = fout bericht van daemon: Get https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: niet toegestaan: verificatie vereist*, is mogelijk omdat uw cluster niet is gemachtigd om te halen uit uw Azure Container Registry. Zorg ervoor dat u het [AKS-cluster autoriseren hebt voltooid om uit uw Azure container Registry-vereiste te halen](../../aks/cluster-container-registry-integration.md) .
+> Als uw release mislukt met een fout bericht als de *upgrade is mislukt: er is een time-out opgetreden tijdens het wachten op de voor waarde*. Probeer het Peul in het cluster te controleren [met behulp van het Kubernetes-dash board](../../aks/kubernetes-dashboard.md). Als u ziet dat het meren bestand niet kan worden gestart met fout berichten zoals *het ophalen van de installatie kopie ' azdsexample.azurecr.io/mywebapi:122 ': RPC-fout: code = onbekende desc = fout bericht van daemon: ophalen https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: niet toegestaan: verificatie vereist*, mogelijk omdat uw cluster niet is gemachtigd om te halen uit uw Azure container Registry. Zorg ervoor dat u het [AKS-cluster autoriseren hebt voltooid om uit uw Azure container Registry-vereiste te halen](../../aks/cluster-container-registry-integration.md) .
 
 U hebt nu een volledig geautomatiseerde CI/CD-pijp lijn voor uw GitHub-vork van de voor beeld-apps van dev Spaces. Telkens wanneer u een code doorvoert en pusht, wordt de *mywebapi* -en Webfront-front- *End* -installatie kopieën gemaakt en gepusht naar uw aangepaste ACR-exemplaar. Vervolgens implementeert de release pijplijn de helm-grafiek voor elke app in de _ontwikkelings_ ruimte op uw cluster met ontwikkel ruimten.
 
 ## <a name="accessing-your-_dev_-services"></a>Toegang tot uw _dev_ Services
-Na de implementatie is de _dev_ -versie van Webfront- *End* toegankelijk met een open bare URL, zoals: `http://dev.webfrontend.fedcba098.eus.azds.io`. U kunt deze URL vinden door de `azds list-uri`-opdracht uit te voeren: 
+Na de implementatie is de _dev_ -versie van Webfront- *End* toegankelijk met een open bare URL, zoals: `http://dev.webfrontend.fedcba098.eus.azds.io`. U kunt deze URL vinden door de `azds list-uri` opdracht uit te voeren: 
 
 ```cmd
 $ azds list-uris
@@ -155,7 +153,7 @@ Als u hand matig een bepaalde release wilt promo veren naar _Prod_ , gebruikt u 
 1. Klik op de release pijplijn voor de voorbeeld toepassing.
 1. Klik op de naam van de meest recente release.
 1. Beweeg de muis aanwijzer over het vak **Prod** onder **stadia** en klik op **implementeren**.
-    ![Promote naar productie @ no__t-1
+    ![promo veren tot productie](../media/common/prod-promote.png)
 1. Beweeg de muis aanwijzer over **Prod** box onder **stadia** en klik op **Logboeken**.
 
 De release wordt uitgevoerd wanneer alle taken zijn voltooid.
@@ -172,18 +170,18 @@ Als u het IP-adres van de Webfront-end-service wilt bepalen, klikt u op de stap 
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>Ontwikkel ruimten instrumentatie in productie
-Ontwikkel ruimten instrumentatie is zodanig ontworpen dat het _niet_ mogelijk is om de normale werking van uw toepassing op te halen, maar we raden u aan uw productie werkbelastingen uit te voeren in een Kubernetes-naam ruimte die niet is ingeschakeld met dev Spaces. Als u dit type Kubernetes naam ruimte gebruikt, moet u uw productie naam ruimte maken met behulp van de `kubectl` CLI of toestaan dat uw CI/CD-systeem het maakt tijdens de eerste helm-implementatie. Als u een spatie _selecteert_ of op een andere manier maakt met behulp van dev Spaces, worden er ontwikkel ruimten voor die naam ruimte toegevoegd.
+Ontwikkel ruimten instrumentatie is zodanig ontworpen dat het _niet_ mogelijk is om de normale werking van uw toepassing op te halen, maar we raden u aan uw productie werkbelastingen uit te voeren in een Kubernetes-naam ruimte die niet is ingeschakeld met dev Spaces. Als u dit type Kubernetes naam ruimte gebruikt, moet u uw productie naam ruimte maken met behulp van de `kubectl` CLI, of uw CI/CD-systeem laten maken tijdens de eerste helm-implementatie. Als u een spatie _selecteert_ of op een andere manier maakt met behulp van dev Spaces, worden er ontwikkel ruimten voor die naam ruimte toegevoegd.
 
 Hier volgt een voor beeld van een naam ruimte structuur die ondersteuning biedt voor het ontwikkelen van functies, de ontwikkel omgeving _en_ productie, allemaal in één Kubernetes-cluster:
 
 ![Voorbeeld structuur van de naam ruimte](../media/common/cicd-namespaces.png)
 
 > [!Tip]
-> Als u al een ruimte van @no__t 0 hebt gemaakt en u deze wilt uitsluiten van de instrumentatie van ontwikkel ruimten (zonder het verwijderen van de oplossing), kunt u dit doen met de volgende ontwikkelaars ruimten CLI-opdracht:
+> Als u al een `prod` ruimte hebt gemaakt en u deze wilt uitsluiten van de instrumentatie voor dev Spaces (zonder dat u deze hoeft te verwijderen, kunt u dit doen met de volgende opdracht voor dev Spaces CLI:
 >
 > `azds space remove -n prod --no-delete`
 >
-> U moet mogelijk alle peulen in de `prod`-naam ruimte verwijderen nadat u dit hebt gedaan, zodat ze kunnen worden gemaakt zonder instrumentatie voor dev Spaces.
+> U moet mogelijk alle peulen in de `prod` naam ruimte verwijderen nadat u dit hebt gedaan, zodat deze opnieuw kunnen worden gemaakt zonder instrumentatie voor dev Spaces.
 
 ## <a name="next-steps"></a>Volgende stappen
 

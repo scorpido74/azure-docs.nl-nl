@@ -2,40 +2,41 @@
 title: Apache Hadoop clusters maken met behulp van sjablonen-Azure HDInsight
 description: Meer informatie over het maken van clusters voor HDInsight met behulp van Resource Manager-sjablonen
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 5dd8b54e0d3febf7dbb3209a9f0bde76263aa726
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.date: 11/18/2019
+ms.openlocfilehash: dba64d432231873676c49a1f4f2fac579c3f4be9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73494823"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279267"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Apache Hadoop clusters maken in HDInsight met behulp van Resource Manager-sjablonen
+
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
 In dit artikel leert u verschillende manieren om Azure HDInsight-clusters te maken met behulp van Azure Resource Manager-sjablonen. Zie [een toepassing implementeren met Azure Resource Manager sjabloon](../azure-resource-manager/resource-group-template-deploy.md)voor meer informatie. Als u meer wilt weten over andere hulpprogram ma's en functies voor het maken van het cluster, klikt u op de tab-kiezer boven aan deze pagina of ziet u de methoden voor het maken van een [cluster](hdinsight-hadoop-provision-linux-clusters.md#cluster-setup-methods).
 
-## <a name="prerequisites"></a>Vereisten
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Als u de instructies in dit artikel wilt volgen, hebt u het volgende nodig:
+## <a name="prerequisites"></a>Vereisten
 
 * Een [Azure-abonnement](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Azure PowerShell en/of de klassieke CLI van Azure.
+* Azure PowerShell en/of Azure CLI.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
+
 Met een resource manager-sjabloon kunt u eenvoudig de volgende resources voor uw toepassing maken in een enkele, gecoördineerde bewerking:
 * HDInsight-clusters en hun afhankelijke bronnen (zoals het standaard opslag account).
 * Andere resources (zoals Azure SQL Database om [Apache Sqoop](https://sqoop.apache.org/)te gebruiken).
 
 In de sjabloon definieert u de resources die nodig zijn voor de toepassing. U geeft ook implementatie parameters op voor invoer waarden voor verschillende omgevingen. De sjabloon bestaat uit JSON en expressies die u gebruikt om waarden voor uw implementatie samen te stellen.
 
-U kunt voor beelden van HDInsight-sjablonen vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/?term=hdinsight)start-sjablonen. Gebruik platformoverschrijdende [Visual Studio-code](https://code.visualstudio.com/#alt-downloads) met de [Resource Manager-extensie](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) of een tekst editor om de sjabloon in een bestand op uw werk station op te slaan. 
+U kunt voor beelden van HDInsight-sjablonen vinden in [Azure Quick](https://azure.microsoft.com/resources/templates/?term=hdinsight)start-sjablonen. Gebruik platformoverschrijdende [Visual Studio-code](https://code.visualstudio.com/#alt-downloads) met de [Resource Manager-extensie](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) of een tekst editor om de sjabloon in een bestand op uw werk station op te slaan.
 
 Voor meer informatie over Resource Manager-sjablonen raadpleegt u de volgende artikelen en voor beelden:
 
@@ -58,21 +59,24 @@ U kunt een resource manager-sjabloon implementeren met behulp van Azure PowerShe
 
 ## <a name="deploy-using-azure-cli"></a>Implementeren met behulp van Azure CLI
 
-U kunt een resource manager-sjabloon implementeren met klassieke CLI. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/resource-group-template-deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/resource-manager-cli-sas-token.md)voor meer informatie.
+U kunt een resource manager-sjabloon implementeren met behulp van Azure CLI. Zie [resources implementeren met Resource Manager-sjablonen en Azure cli](../azure-resource-manager/resource-group-template-deploy-cli.md) en een [persoonlijke Resource Manager-sjabloon implementeren met SAS-token en Azure cli](../azure-resource-manager/resource-manager-cli-sas-token.md)voor meer informatie.
 
 ## <a name="deploy-using-the-rest-api"></a>Implementeren met behulp van de REST API
+
 U kunt een resource manager-sjabloon implementeren met behulp van REST API. Zie [resources implementeren met Resource Manager-sjablonen en resource manager rest API](../azure-resource-manager/resource-group-template-deploy-rest.md)voor meer informatie.
 
 ## <a name="deploy-with-visual-studio"></a>Implementeren met Visual Studio
+
  Gebruik Visual Studio om een resource groeps project te maken en te implementeren in azure via de gebruikers interface. U selecteert het type resources dat u wilt toevoegen aan uw project. Deze resources worden automatisch toegevoegd aan de Resource Manager-sjabloon. Het project biedt ook een Power shell-script voor het implementeren van de sjabloon.
 
 Zie voor een inleiding tot het gebruik van Visual Studio met resource groepen [Azure-resource groepen maken en implementeren via Visual Studio](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
 
 ## <a name="troubleshoot"></a>Problemen oplossen
 
-Zie [Vereisten voor toegangsbeheer](hdinsight-hadoop-create-linux-clusters-portal.md) als u problemen ondervindt met het maken van HDInsight-clusters.
+Zie [Vereisten voor toegangsbeheer](hdinsight-hadoop-customize-cluster-linux.md#access-control) als u problemen ondervindt met het maken van HDInsight-clusters.
 
 ## <a name="next-steps"></a>Volgende stappen
+
 In dit artikel hebt u verschillende manieren geleerd om een HDInsight-cluster te maken. Raadpleeg de volgende artikelen voor meer informatie:
 
 * Zie [Azure Quick](https://azure.microsoft.com/resources/templates/?term=hdinsight)start-sjablonen voor meer aan HDInsight gerelateerde sjablonen.

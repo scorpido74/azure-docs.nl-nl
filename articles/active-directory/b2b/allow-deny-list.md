@@ -1,5 +1,5 @@
 ---
-title: Uitnodigingen voor specifieke organisaties toestaan of blok keren-Azure Active Directory | Microsoft Docs
+title: 'Uitnodigingen voor specifieke organisaties toestaan of blok keren: Azure AD'
 description: Laat zien hoe een beheerder met behulp van de Azure Portal of Power shell een lijst voor toegang of weigeren kan instellen om B2B-gebruikers toe te staan of te blok keren voor bepaalde domeinen.
 services: active-directory
 ms.service: active-directory
@@ -12,14 +12,14 @@ manager: celestedg
 ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd0cc6b2343a84287bd2ffdfd9df8d832f17fc8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8b5100c4406cfd4a8395dfa177dc3cd5e911decb
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73474173"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273422"
 ---
-# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Uitnodigingen voor B2B-gebruikers van specifieke organisaties toestaan of blok keren
+# <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Uitnodigingen voor B2B-gebruikers van bepaalde organisaties toestaan of blokkeren
 
 U kunt een lijst met toegestane of een lijst weigeren gebruiken om uitnodigingen voor B2B-gebruikers van specifieke organisaties toe te staan of te blok keren. Als u bijvoorbeeld persoonlijke e-mailadres domeinen wilt blok keren, kunt u een Deny-lijst instellen die domeinen bevat, zoals Gmail.com en Outlook.com. Of als uw bedrijf een partnerschap heeft met andere bedrijven, zoals Contoso.com, Fabrikam.com en Litware.com, en u uitnodigingen wilt beperken tot alleen deze organisaties, kunt u Contoso.com, Fabrikam.com en Litware.com toevoegen aan de lijst met toegestane apps.
   
@@ -49,7 +49,7 @@ Een weiger lijst toevoegen:
 
    ![De optie weigeren met toegevoegde domeinen weer geven](./media/allow-deny-list/DenyListSettings.png)
  
-6. Wanneer u klaar bent, klikt u op **Opslaan**.
+6. Wanneer u klaar bent, klikt u op **opslaan**.
 
 Nadat u het beleid hebt ingesteld, ontvangt u een bericht dat het domein van de gebruiker momenteel is geblokkeerd door uw uitnodigings beleid als u een gebruiker probeert uit te nodigen van een geblokkeerd domein.
  
@@ -70,7 +70,7 @@ Een acceptatie lijst toevoegen:
 
    ![Hiermee wordt de optie toestaan met toegevoegde domeinen weer gegeven](./media/allow-deny-list/AllowListSettings.png)
  
-6. Wanneer u klaar bent, klikt u op **Opslaan**.
+6. Wanneer u klaar bent, klikt u op **opslaan**.
 
 Nadat u het beleid hebt ingesteld, ontvangt u een bericht met de melding dat het domein van de gebruiker momenteel is geblokkeerd door uw uitnodigings beleid als u een gebruiker probeert uit te nodigen van een domein dat zich niet in de acceptatie lijst bevindt.
 

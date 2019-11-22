@@ -1,21 +1,21 @@
 ---
-title: Azure Block Chain Service-grootboek versies, patches en upgrades
+title: Azure Block Chain Service-grootboek versies, patches, & upgrade
 description: Overzicht van de ondersteunde versies van de groot boeken in azure Block Chain Service, inclusief beleids regels voor systeem patches en door systeem beheer en door gebruikers beheerde upgrades.
 services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 10/14/2019
+ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: azure-blockchain
 ms.reviewer: janders
 manager: femila
-ms.openlocfilehash: 16d0f0876e7d75dfd0266468ddc3005b86fc632f
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
-ms.translationtype: MT
+ms.openlocfilehash: 03eaf86ece191cce7eef6647a582a66495692db2
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579802"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284929"
 ---
 # <a name="supported-azure-blockchain-service-ledger-versions"></a>Ondersteunde Azure Block Chain Service-grootboek versies
 
@@ -27,7 +27,7 @@ Op dit moment ondersteunt de Azure Block Chain-service [quorum versie 2.2.3](htt
 
 Het maken van versies in quorum geschiedt via een belang rijke, secundaire en patch releases. Als de quorum versie bijvoorbeeld 2.0.1 is, wordt release type als volgt gecategoriseerd:
 
-|Major | Secundair  | Verzenden  |
+|Primaire | Secundaire  | Verzenden  |
 | :--- | :----- | :----- |
 | 2 | 0 | 1 | 
 

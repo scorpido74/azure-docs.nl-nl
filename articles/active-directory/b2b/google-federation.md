@@ -1,5 +1,5 @@
 ---
-title: Google toevoegen als een id-provider voor B2B-Azure Active Directory | Microsoft Docs
+title: Google toevoegen als een id-provider voor B2B-Azure AD
 description: Communiceren met Google om gast gebruikers in staat te stellen zich aan te melden bij uw Azure AD-apps met hun eigen Gmail-account
 services: active-directory
 ms.service: active-directory
@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68acf32660fe36ddd4c2982b818ce21adde7ddab
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 6da9aed857524e9b71aad4dfc99f1d2e54306dc9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603597"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272883"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google toevoegen als een id-provider voor B2B-gast gebruikers
 

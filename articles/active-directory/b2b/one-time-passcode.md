@@ -1,6 +1,6 @@
 ---
-title: Eenmalige wachtwoordcode verificatie voor gastgebruikers voor B2B - Azure Active Directory | Microsoft Docs
-description: Het gebruik van de eenmalige wachtwoordcode e-mailadres voor verificatie van B2B-gastgebruikers zonder de noodzaak voor een Microsoft-account.
+title: Verificatie met eenmalige wachtwoord code voor B2B-gast gebruikers-Azure AD
+description: Eenmalige e-mail wachtwoord verificatie gebruiken om B2B-gast gebruikers te verifiëren zonder dat hiervoor een Microsoft-account nodig is.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -12,75 +12,75 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13808871d67bb47dce82c5a3493fd89b0dfe1dcd
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65952858"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74272311"
 ---
-# <a name="email-one-time-passcode-authentication-preview"></a>E-mailbericht eenmalige wachtwoordcode verificatie (preview)
+# <a name="email-one-time-passcode-authentication-preview"></a>Verificatie met eenmalige e-mail code voor e-mail (preview-versie)
 
 |     |
 | --- |
-| Eenmalige wachtwoordcode per e-mail is een openbare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
+| De e-mail wachtwoord voor eenmalige e-mail is een open bare preview-functie van Azure Active Directory. Zie [Aanvullende gebruiksvoorwaarden voor Microsoft Azure-previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) voor meer informatie.|
 |     |
 
-In dit artikel wordt beschreven hoe u e-mailbericht eenmalige wachtwoordcode-verificatie inschakelen voor gebruikers van B2B-gasten. De functie voor e-mailbericht eenmalige wachtwoordcode verifieert B2B-gastgebruikers wanneer ze niet worden geverifieerd via een andere manier, bijvoorbeeld Azure AD, een Microsoft-account (MSA) of Google federation. Met verificatie van de eenmalige wachtwoordcode is er niet nodig om een Microsoft-account te maken. Wanneer de gastgebruiker een uitnodiging wordt ingewisseld of toegang heeft tot een gedeelde bron, kunnen ze een tijdelijke code, die wordt verzonden naar het e-mailadres aanvragen. Ze voert deze code om door te gaan met het aanmelden.
+In dit artikel wordt beschreven hoe u eenmalige verificatie via E-mail voor B2B-gast gebruikers inschakelt. Met de functie voor eenmalige e-mail code worden B2B-gast gebruikers geverifieerd wanneer ze niet kunnen worden geverifieerd via andere manieren, zoals Azure AD, een Microsoft-account (MSA) of Google Federatie. Met authenticatie op basis van eenmalige wachtwoord code hoeft u geen Microsoft-account te maken. Wanneer de gast gebruiker een uitnodiging heeft ingewisseld of een gedeelde resource opent, kunnen ze een tijdelijke code aanvragen, die wordt verzonden naar hun e-mail adres. Vervolgens voeren ze deze code in om door te gaan met aanmelden.
 
-Deze functie is momenteel beschikbaar voor Preview-versie (Zie [inschrijving voor de Preview-versie](#opting-in-to-the-preview) hieronder). Na de Preview-versie, wordt deze functie ingeschakeld standaard voor alle tenants.
-
-> [!NOTE]
-> Eenmalige wachtwoordcode gebruikers moeten aanmelden met een koppeling met de context van de tenant (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>`, of in geval van een geverifieerd domein `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Directe koppelingen naar toepassingen en bronnen ook werken, zolang ze de context van de tenant zijn. Gastgebruikers ook kunnen zijn op dit moment kan niet aanmelden met behulp van eindpunten waarvoor geen tenant-context. Bijvoorbeeld, met behulp van `https://myapps.microsoft.com`, `https://portal.azure.com`, of het algemene Teams-eindpunt resulteert in een fout. 
-
-## <a name="user-experience-for-one-time-passcode-guest-users"></a>Gebruikerservaring voor gastgebruikers eenmalige wachtwoordcode
-Met verificatie van de eenmalige wachtwoordcode, kan de gastgebruiker de uitnodiging inwisselen door een directe koppeling te klikken of met behulp van de uitnodiging per e-mail. In beide gevallen moet een bericht in de browser geeft aan dat een code naar e-mailadres van de gastgebruiker verzonden. De gastgebruiker selecteert **code naartoe sturen**:
- 
-   ![Schermafbeelding met de knop van de code verzenden](media/one-time-passcode/otp-send-code.png)
- 
-Een wachtwoordcode wordt verzonden naar e-mailadres van de gebruiker. De gebruiker de wachtwoordcode van het e-mailbericht opgehaald en ingevoerd in het browservenster:
- 
-   ![Schermopname van de codetabel Enter](media/one-time-passcode/otp-enter-code.png)
- 
-De gastgebruiker wordt nu geverifieerd en ze kunnen zien van de gedeelde bron of doorgaan met aanmelden. 
+Deze functie is momenteel beschikbaar voor preview (Zie [de preview-versie in het voor beeld](#opting-in-to-the-preview) hieronder). Na de preview-versie wordt deze functie standaard ingeschakeld voor alle tenants.
 
 > [!NOTE]
-> Eenmalige wachtwoordcodes zijn geldig gedurende 30 minuten. Na 30 minuten, dat specifieke eenmalige wachtwoordcode is niet meer geldig en moet een nieuwe aanvraag van de gebruiker. Gebruikerssessies verlopen na 24 uur. De gastgebruiker ontvangt een nieuwe wachtwoordcode na die tijd, wanneer ze toegang krijgen de resource tot. Verlopen van de sessie biedt extra beveiliging, met name wanneer een gastgebruiker hun bedrijf verlaat of niet langer toegang nodig heeft.
+> Eenmalige wachtwoord code gebruikers moeten zich aanmelden met behulp van een koppeling die de Tenant context bevat (bijvoorbeeld `https://myapps.microsoft.com/?tenantid=<tenant id>` of `https://portal.azure.com/<tenant id>`, of in het geval van een geverifieerd domein `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Directe koppelingen naar toepassingen en bronnen werken ook zolang ze de context van de Tenant bevatten. Gast gebruikers kunnen zich momenteel niet aanmelden met eind punten die geen Tenant context hebben. Als u bijvoorbeeld `https://myapps.microsoft.com`, `https://portal.azure.com`of het algemene eind punt teams gebruikt, resulteert dit in een fout. 
 
-## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Wanneer een eenmalige wachtwoordcode in een gastgebruiker krijgen?
-
-Wanneer een gastgebruiker een uitnodiging wordt ingewisseld, of een koppeling naar een resource die is gedeeld met hen gebruikt, wordt er een eenmalige wachtwoordcode als:
-- Ze hebben niet een Azure AD-account 
-- Ze hebben niet een Microsoft-account 
-- De uitnodigende tenant niet ingesteld Google Federatie voor @gmail.com en @googlemail.com gebruikers 
-
-Op het moment van inschrijving is er geen indicatie dat de gebruiker die u nodigen eenmalige wachtwoordcode verificatie gebruikt. Maar wanneer de gastgebruiker zich aangemeld heeft, verificatie van de eenmalige wachtwoordcode wordt de alternatieve methode als er geen andere verificatiemethoden kunnen worden gebruikt. 
-
-U kunt gastgebruikers die worden geverifieerd met eenmalige wachtwoordcodes in Azure portal door te gaan naar weergeven **Azure Active Directory** > **organisatie relaties**  >   **Gebruikers van andere organisaties**.
-
-![Schermopname van de gebruiker van een eenmalige wachtwoordcode met de waarde van de bron van OTP](media/one-time-passcode/otp-users.png)
+## <a name="user-experience-for-one-time-passcode-guest-users"></a>Gebruikers ervaring voor eenmalige wachtwoord code gast gebruikers
+Met verificatie met eenmalige wachtwoord code kan de gast gebruiker de uitnodiging inwisselen door te klikken op een directe koppeling of door de uitnodiging-e-mail te gebruiken. In beide gevallen geeft een bericht in de browser aan dat een code wordt verzonden naar het e-mail adres van de gast gebruiker. De gast gebruiker selecteert **Verzend code**:
+ 
+   ![Scherm afbeelding met de knop code verzenden](media/one-time-passcode/otp-send-code.png)
+ 
+Er wordt een wachtwoord code verzonden naar het e-mail adres van de gebruiker. De gebruiker haalt de wachtwoord code op uit het e-mail bericht en voert deze in het browser venster in:
+ 
+   ![Scherm opname met de code pagina invoeren](media/one-time-passcode/otp-enter-code.png)
+ 
+De gast gebruiker is nu geverifieerd en ze kunnen de gedeelde bron zien of zich blijven aanmelden. 
 
 > [!NOTE]
-> Wanneer een gebruiker een eenmalige wachtwoordcode wordt ingewisseld en later een MSA, Azure AD-account of andere federatieve-account verkrijgt, blijven deze gewoon worden geverifieerd met een eenmalige wachtwoordcode. Als u bijwerken hun verificatiemethode wilt, kunt u hun gastgebruikersaccount verwijderen en ze kunt uitnodigen.
+> Eenmalige wachtwoord codes zijn 30 minuten geldig. Na 30 minuten is de specifieke eenmalige wachtwoord code niet meer geldig en moet de gebruiker een nieuwe wacht woord aanvragen. Gebruikers sessies verlopen na 24 uur. Daarna ontvangt de gast gebruiker een nieuwe wachtwoord code wanneer hij of zij toegang tot de bron heeft. Sessie verloop biedt extra beveiliging, vooral wanneer een gast gebruiker het bedrijf verlaat of geen toegang meer nodig heeft.
+
+## <a name="when-does-a-guest-user-get-a-one-time-passcode"></a>Wanneer krijgt een gast gebruiker een eenmalige wachtwoord code?
+
+Wanneer een gast gebruiker een uitnodiging heeft ingewisseld of een koppeling gebruikt naar een resource die met hen is gedeeld, ontvangt deze een eenmalige wachtwoord code als:
+- Ze hebben geen Azure AD-account 
+- Ze hebben geen Microsoft-account 
+- De uitnodigende Tenant heeft geen Google Federation ingesteld voor @gmail.com en @googlemail.com gebruikers 
+
+Op het moment van de uitnodiging is er geen indicatie dat de gebruiker die u uitnodigt, gebruikmaakt van verificatie met een eenmalige wachtwoord code. Maar wanneer de gast gebruiker zich aanmeldt, is verificatie met een eenmalige wachtwoord code de terugval methode als er geen andere verificatie methoden kunnen worden gebruikt. 
+
+U kunt gast gebruikers die zich verifiëren met eenmalige wachtwoord codes in de Azure Portal weer geven door naar **Azure Active Directory** > **organisatie relaties** > **gebruikers van andere organisaties**te gaan.
+
+![Scherm afbeelding met een eenmalige wachtwoord code gebruiker met bron waarde van OTP](media/one-time-passcode/otp-users.png)
+
+> [!NOTE]
+> Wanneer een gebruiker een eenmalige wachtwoord code inwisselt en later een MSA-, Azure AD-account of een ander federatief account ontvangt, worden ze nog steeds geverifieerd met een eenmalige wachtwoord code. Als u de verificatie methode wilt bijwerken, kunt u het gebruikers account van de gast verwijderen en opnieuw uitnodigen.
 
 ### <a name="example"></a>Voorbeeld
-Gastgebruiker alexdoe@gmail.com wordt uitgenodigd voor Fabrikam, waarvoor geen Google federation instellen. Alex beschikt niet over een Microsoft-account. Ze ontvangt een eenmalige wachtwoordcode voor verificatie.
+Gast gebruikers alexdoe@gmail.com wordt uitgenodigd voor fabrikam, waarvoor geen Google Federation is ingesteld. Alex heeft geen Microsoft-account. Er wordt een eenmalige wachtwoord code voor verificatie ontvangen.
 
-## <a name="opting-in-to-the-preview"></a>Inschrijving voor de Preview-versie 
-Het duurt een paar minuten voor de actie opt-in te voeren. Hierna wordt alleen de zojuist uitgenodigde gebruikers die voldoen aan de bovenstaande voorwaarden eenmalige wachtwoordcode verificatie gebruiken. Gastgebruikers die eerder ingewisseld een uitnodiging wordt echter ook doorgaan met de dezelfde methode voor verificatie.
+## <a name="opting-in-to-the-preview"></a>Inkiezen voor de preview 
+Het kan enkele minuten duren voordat de opt-in-actie van kracht wordt. Daarna gebruiken alleen recent uitgenodigde gebruikers die voldoen aan bovenstaande voor waarden verificatie met eenmalige wachtwoord code. Gast gebruikers die eerder een uitnodiging hebben ingewisseld, blijven dezelfde verificatie methode gebruiken.
 
-### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aanmelden met behulp van de Azure AD-portal
-1.  Aanmelden bij de [Azure-portal](https://portal.azure.com/) als een globale beheerder van Azure AD.
-2.  Selecteer in het navigatiedeelvenster **Azure Active Directory**.
-3.  Onder **beheren**, selecteer **organisatie relaties**.
+### <a name="to-opt-in-using-the-azure-ad-portal"></a>Aanmelden met de Azure AD-Portal
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
+2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
+3.  Selecteer onder **beheren**de optie **organisatie relaties**.
 4.  Selecteer **instellingen**.
-5.  Onder **e eenmalige wachtwoordcode voor gasten (Preview) inschakelen**, selecteer **Ja**.
+5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Ja**.
  
-### <a name="to-opt-in-using-powershell"></a>Aanmelden met behulp van PowerShell
+### <a name="to-opt-in-using-powershell"></a>Aanmelden met Power shell
 
-U moet eerst de meest recente versie van de Azure AD PowerShell voor Graph-module (AzureADPreview) installeren. Vervolgens bepaalt u of beleid voor B2B al bestaan en voer de juiste opdrachten uit.
+Eerst moet u de nieuwste versie van de Azure AD Power shell for Graph-module (AzureADPreview) installeren. Vervolgens bepaalt u of B2B-beleids regels al bestaan en voert u de juiste opdrachten uit.
 
-#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Voorwaarde: Installeer de nieuwste versie van de AzureADPreview-module
+#### <a name="prerequisite-install-the-latest-azureadpreview-module"></a>Vereiste: Installeer de meest recente AzureADPreview-module
 Controleer eerst welke modules die u hebt geïnstalleerd. Open PowerShell als een gebruiker met verhoogde bevoegdheid (Uitvoeren als administrator) en voer de volgende opdracht uit:
  
 ```powershell  
@@ -109,22 +109,22 @@ Als de AzureADPreview-module zonder bericht verschijnt dat aangeeft dat er een n
 
 Mogelijk krijgt u een opdrachtprompt dat u de module vanuit een niet-vertrouwde opslagplaats installeert. Dit gebeurt als u de opslagplaats PSGallery eerder niet hebt ingesteld als een vertrouwde opslagplaats. Druk op **Y** om de module te installeren.
 
-#### <a name="check-for-existing-policies-and-opt-in"></a>Controleren op bestaande beleidsregels en opt-in
+#### <a name="check-for-existing-policies-and-opt-in"></a>Controleren op bestaande beleids regels en aanmelden
 
-Controleer vervolgens om te zien als een B2BManagementPolicy momenteel door het uitvoeren van de volgende bestaat:
+Controleer vervolgens of er momenteel een B2BManagementPolicy bestaat door de volgende handelingen uit te voeren:
 
 ```powershell 
 $currentpolicy =  Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 $currentpolicy -ne $null
 ```
-- Als de uitvoer ONWAAR is, bestaat het beleid nog niet. Maak een nieuwe B2BManagementPolicy en meldt zich aan voor de Preview-versie door het uitvoeren van de volgende:
+- Als de uitvoer onwaar is, bestaat het beleid momenteel niet. Maak een nieuwe B2BManagementPolicy en meld u aan voor de preview-versie door het volgende uit te voeren:
 
    ```powershell 
    $policyValue=@("{`"B2BManagementPolicy`":{`"PreviewPolicy`":{`"Features`":[`"OneTimePasscode`"]}}}")
    New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true
    ```
 
-- Als de uitvoer waar is, wordt het beleid B2BManagementPolicy momenteel bestaat. Voor het bijwerken van het beleid en meldt zich aan voor de Preview-versie, voert u het volgende:
+- Als de uitvoer waar is, bestaat het B2BManagementPolicy-beleid momenteel. Voer de volgende handelingen uit om het beleid bij te werken en u aan te melden bij de preview:
   
    ```powershell 
    $policy = $currentpolicy.Definition | ConvertFrom-Json
@@ -133,25 +133,25 @@ $currentpolicy -ne $null
    Set-AzureADPolicy -Definition $updatedPolicy -Id $currentpolicy.Id
    ```
 
-## <a name="opting-out-of-the-preview-after-opting-in"></a>Wanneer u geen gebruik van de Preview-versie nadat in
-Het duurt een paar minuten voor de actie opt-out pas van kracht. Als u de Preview-versie uitschakelt, wordt alle gastgebruikers die een eenmalige wachtwoordcode hebt ingewisseld wordt pas weer aan te melden. U kunt de gastgebruiker verwijderen en kunt u de gebruiker om te kunnen aanmelden met een andere verificatiemethode uitnodigen.
+## <a name="opting-out-of-the-preview-after-opting-in"></a>Uitkiezen uit het voor beeld na het inkiezen
+Het kan enkele minuten duren voordat de opt-out-actie van kracht wordt. Als u de preview-versie uitschakelt, kunnen gast gebruikers die een eenmalige wachtwoord code hebben ingewisseld, zich niet meer aanmelden. U kunt de gast gebruiker verwijderen en de gebruiker opnieuw uitnodigen om zich opnieuw aan te melden met een andere verificatie methode.
 
-### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>De Preview-versie met behulp van de Azure AD-portal uitschakelen
-1.  Aanmelden bij de [Azure-portal](https://portal.azure.com/) als een globale beheerder van Azure AD.
-2.  Selecteer in het navigatiedeelvenster **Azure Active Directory**.
-3.  Onder **beheren**, selecteer **organisatie relaties**.
+### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>De preview-versie uitschakelen met behulp van de Azure AD-Portal
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com/) als een globale Azure AD-beheerder.
+2.  Selecteer **Azure Active Directory**in het navigatie deel venster.
+3.  Selecteer onder **beheren**de optie **organisatie relaties**.
 4.  Selecteer **instellingen**.
-5.  Onder **e eenmalige wachtwoordcode voor gasten (Preview) inschakelen**, selecteer **Nee**.
+5.  Selecteer onder **E-mail eenmalige wachtwoord code voor gasten inschakelen (preview)** de optie **Nee**.
 
-### <a name="to-turn-off-the-preview-using-powershell"></a>De Preview-versie met behulp van PowerShell uitschakelen
-De meest recente AzureADPreview-module installeren als u dit nog niet hebt (Zie [vereiste: Installeer de meest recente AzureADPreview-module](#prerequisite-install-the-latest-azureadpreview-module) hierboven). Controleer vervolgens of dat het beleid van de Preview-versie eenmalige wachtwoordcode momenteel door het uitvoeren van de volgende bestaat:
+### <a name="to-turn-off-the-preview-using-powershell"></a>De preview-versie uitschakelen met Power shell
+Installeer de meest recente AzureADPreview-module als u deze nog niet hebt (Zie [vereisten: Installeer de meest recente AzureADPreview-module](#prerequisite-install-the-latest-azureadpreview-module) ). Controleer vervolgens of het beleid voor de eenmalige wachtwoord code al bestaat door het volgende uit te voeren:
 
 ```powershell 
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy' -and $_.IsOrganizationDefault -eq $true} | select -First 1
 ($currentPolicy -ne $null) -and ($currentPolicy.Definition -like "*OneTimePasscode*")
 ```
 
-Als de uitvoer waar is, opt-out voor de Preview-versie door het uitvoeren van de volgende:
+Als de uitvoer waar is, meldt u zich af bij het voor beeld door de volgende handelingen uit te voeren:
 
 ```powershell 
 $policy = $currentpolicy.Definition | ConvertFrom-Json

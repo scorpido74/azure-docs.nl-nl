@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd50ca8b81b933a61a67ac36db6a656791a8121f
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0bfd75f54e2b57e57fcadc27df2ca43d8be5cf37
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73832858"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285512"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Aanmelden bij een virtuele Windows-machine in azure met Azure Active Directory authenticatie (preview-versie)
 
@@ -34,8 +34,8 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 - Met Azure RBAC kunt u de juiste toegang verlenen aan Vm's op basis van behoefte en deze verwijderen wanneer deze niet meer nodig is.
 - Voordat u toegang tot een virtuele machine toestaat, kan voorwaardelijke toegang van Azure AD aanvullende vereisten afdwingen, zoals: 
    - Multi-Factor Authentication
-   - Aanmeldings risico
-- Azure AD-deelname automatiseren en schalen voor op Azure gebaseerde Windows-Vm's.
+   - Aanmeldings risico controle
+- Automatiseer en schaal Azure AD-samen voeging van Azure Windows-Vm's die deel uitmaken van uw VDI-implementaties.
 
 ## <a name="requirements"></a>Vereisten
 
@@ -43,7 +43,7 @@ Er zijn veel voor delen van het gebruik van Azure AD-verificatie om u aan te mel
 
 De volgende Windows-distributies worden momenteel ondersteund tijdens de preview-versie van deze functie:
 
-- Windows Server 2019 Data Center
+- Windows Server 2019 Datacenter
 - Windows 10 1809 en hoger
 
 De volgende Azure-regio's worden momenteel ondersteund tijdens de preview-versie van deze functie:
@@ -68,7 +68,7 @@ Als u Azure AD-aanmelding wilt gebruiken voor Windows VM in azure, moet u eerst 
 Er zijn meerdere manieren waarop u Azure AD-aanmelding kunt inschakelen voor uw Windows-VM:
 
 - De Azure Portal-ervaring gebruiken bij het maken van een Windows-VM
-- De Azure Cloud Shell-ervaring gebruiken bij het maken van een virtuele Windows-machine of voor een bestaande Windows-VM
+- De Azure Cloud Shell-ervaring gebruiken bij het maken van een virtuele Windows-machine **of voor een bestaande Windows-VM**
 
 ### <a name="using-azure-portal-create-vm-experience-to-enable-azure-ad-login"></a>Azure Portal maken van een VM-ervaring om Azure AD-aanmelding in te scha kelen
 
@@ -186,6 +186,13 @@ Raadpleeg de volgende artikelen voor meer informatie over het gebruik van RBAC o
 - [Toegang tot Azure-resources beheren met RBAC en Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli)
 - [Toegang tot Azure-resources beheren met op rollen gebaseerd toegangsbeheer en de Azure-portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)
 - [Beheer de toegang tot Azure-resources met RBAC en Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
+
+## <a name="using-conditional-access"></a>Voorwaardelijke toegang gebruiken
+
+U kunt beleid voor voorwaardelijke toegang afdwingen, zoals multi-factor Authentication of aanmeldings risico voor gebruikers, voordat u toegang verleent tot Windows-Vm's in azure die zijn ingeschakeld met aanmelden bij Azure AD. Als u beleid voor voorwaardelijke toegang wilt Toep assen, moet u de app ' Azure Windows VM Sign-in ' selecteren bij de optie voor de toewijzing van Cloud-apps of acties en vervolgens aanmeldings risico als voor waarde gebruiken en/of multi-factor Authentication vereisen als Grant Access Control. 
+
+> [!NOTE]
+> Als u ' multi-factor Authentication vereisen ' gebruikt als Grant Access Control voor het aanvragen van toegang tot de app aanmelden bij Azure Windows VM, moet u multi-factor Authentication claim opgeven als onderdeel van de client die de RDP-sessie initieert naar de doel-Windows-VM in Azure. De enige manier om dit te doen op een Windows 10-client is het gebruik van Windows hello voor bedrijven-pincode of biometrische verificatie tijdens RDP. Ondersteuning voor biometrische auth tijdens RDP is toegevoegd in Windows 10 1809. Het gebruik van Windows hello voor bedrijven-verificatie tijdens RDP is alleen beschikbaar voor implementaties die gebruikmaken van het certificaat vertrouwens model en die momenteel niet beschikbaar zijn voor het sleutel vertrouwens model.
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Meld u aan met Azure AD-referenties voor een Windows-VM
 
@@ -337,7 +344,12 @@ Als het volgende fout bericht wordt weer gegeven wanneer u een verbinding met ee
 
 ![De aanmeldings methode die u wilt gebruiken, is niet toegestaan.](./media/howto-vm-sign-in-azure-ad-windows/mfa-sign-in-method-required.png)
 
-Als u een beleid voor voorwaardelijke toegang hebt geconfigureerd waarvoor MFA moet worden uitgevoerd voordat u toegang kunt krijgen tot de RBAC-resource, moet u ervoor zorgen dat de Windows 10-PC die de verbinding met een extern bureau blad initieert met uw VM, zich aanmeldt met een sterke verificatie methode. Als Windows hello. Als u geen sterke verificatie methode voor uw verbinding met een extern bureau blad gebruikt, wordt de volgende fout weer geven.
+Als u een beleid voor voorwaardelijke toegang hebt geconfigureerd waarvoor MFA moet worden uitgevoerd voordat u toegang kunt krijgen tot de RBAC-resource, moet u ervoor zorgen dat de Windows 10-PC die de verbinding met een extern bureau blad initieert met uw VM, zich aanmeldt met een sterke verificatie methode. Als Windows hello. Als u geen sterke verificatie methode voor uw verbinding met een extern bureau blad gebruikt, wordt de volgende fout weer geven. 
+
+Als u Windows hello voor bedrijven niet hebt geïmplementeerd en als dat niet het geval is, kunt u de MFA-vereiste exlcude door het beleid voor voorwaardelijke toegang te configureren dat de app ' Azure Windows VM Sign-in ' uit de lijst met Cloud-apps waarvoor MFA is vereist. Zie [overzicht van Windows hello voor bedrijven](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)voor meer informatie over Windows hello voor bedrijven.
+
+> [!NOTE]
+> De pincode voor Windows hello voor bedrijven is niet toegestaan tijdens RDP. dit wordt nu in Windows 10 ondersteund. Ondersteuning voor biometrische auth tijdens RDP is toegevoegd in Windows 10 1809. Het gebruik van Windows hello voor bedrijven-verificatie tijdens RDP is alleen beschikbaar voor implementaties die gebruikmaken van het certificaat vertrouwens model en die momenteel niet beschikbaar zijn voor het sleutel vertrouwens model.
  
 ## <a name="preview-feedback"></a>Preview-feedback
 

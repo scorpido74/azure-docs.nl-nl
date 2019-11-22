@@ -1,5 +1,5 @@
 ---
-title: Externe toegang tot Power BI met Azure AD-toepassingsproxy inschakelen | Microsoft Docs
+title: Externe toegang tot Power BI met Azure AD-toepassingsproxy inschakelen
 description: Behandelt de basis principes voor het integreren van een on-premises Power BI met Azure AD-toepassingsproxy.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845ffda22cae9464870786cc5997b9f5521c03e1
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 9faa1fffde5553168c8b76ea40cebc001c1e27b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795628"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275509"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>Externe toegang tot Power BI-Mobiel met Azure AD-toepassingsproxy inschakelen
 
@@ -37,7 +37,7 @@ In dit artikel wordt ervan uitgegaan dat u rapport Services en [ingeschakelde to
 
 ## <a name="step-1-configure-kerberos-constrained-delegation-kcd"></a>Stap 1: Configureer Kerberos-beperkte delegering (KCD)
 
-Voor on-premises toepassingen die gebruikmaken van Windows-authenticatie, kunt u eenmalige aanmelding (SSO) met het Kerberos-verificatie protocol en een functie genaamd Kerberos-beperkte delegering (KCD) behaalt. Als KCD is geconfigureerd, kan de Application proxy connector een Windows-token voor een gebruiker verkrijgen, zelfs als de gebruiker zich niet rechtstreeks bij Windows heeft aangemeld. Zie overzicht van beperkte [Kerberos-delegering](https://technet.microsoft.com/library/jj553400.aspx) en [beperkte Kerberos-overdracht voor eenmalige aanmelding bij uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md)voor meer informatie over KCD.
+Voor on-premises toepassingen die gebruikmaken van Windows-verificatie, kunt u eenmalige aanmelding (SSO) met het Kerberos-verificatieprotocol en een functie met de naam van Kerberos-beperkte delegatie (KCD) bereiken. Als KCD is geconfigureerd, kan de Application proxy connector een Windows-token voor een gebruiker verkrijgen, zelfs als de gebruiker zich niet rechtstreeks bij Windows heeft aangemeld. Zie overzicht van beperkte [Kerberos-delegering](https://technet.microsoft.com/library/jj553400.aspx) en [beperkte Kerberos-overdracht voor eenmalige aanmelding bij uw apps met toepassings proxy](application-proxy-configure-single-sign-on-with-kcd.md)voor meer informatie over KCD.
 
 Er is niet veel te configureren op de Reporting Services-zijde. Zorg ervoor dat u een geldige SPN (Service Principal Name) hebt waarmee de juiste Kerberos-verificatie kan worden uitgevoerd. Zorg er ook voor dat de Reporting Services-server is ingeschakeld voor Negotiate-verificatie.
 
@@ -46,7 +46,7 @@ Ga door met de volgende stappen om KCD voor Reporting Services in te stellen.
 ### <a name="configure-the-service-principal-name-spn"></a>De SPN (Service Principal Name) configureren
 
 De SPN is een unieke id voor een service die gebruikmaakt van Kerberos-verificatie. U moet ervoor zorgen dat er een juiste HTTP-SPN aanwezig is voor uw rapport server. Zie [een SPN (Service Principal Name) voor een rapport server registreren](https://msdn.microsoft.com/library/cc281382.aspx)voor meer informatie over het configureren van de juiste service principal name (SPN) voor uw rapport server.
-U kunt controleren of de SPN is toegevoegd door de opdracht setspn uit te voeren met de optie-L. Zie [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx)voor meer informatie over deze opdracht.
+U kunt controleren of de SPN is toegevoegd door de opdracht setspn uit te voeren met de optie-L. Zie voor meer informatie over deze opdracht, [Setspn](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spn-setspn-syntax.aspx).
 
 ### <a name="enable-negotiate-authentication"></a>Negotiate-verificatie inschakelen
 
@@ -63,14 +63,14 @@ Als u een rapport server wilt inschakelen om Kerberos-verificatie te gebruiken, 
 Zie [een Reporting Services-configuratie bestand wijzigen](https://msdn.microsoft.com/library/bb630448.aspx) en [Windows-verificatie op een rapport server configureren](https://msdn.microsoft.com/library/cc281253.aspx)voor meer informatie.
 
 ### <a name="ensure-the-connector-is-trusted-for-delegation-to-the-spn-added-to-the-reporting-services-application-pool-account"></a>Zorg ervoor dat de connector wordt vertrouwd voor delegering naar de SPN die is toegevoegd aan het account van de groep van toepassingen van de Reporting Services
-Configureer KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteiten kan delegeren aan het account van de groep van toepassingen van de Reporting Services. Configureer KCD door de Application proxy connector in te scha kelen om Kerberos-tickets op te halen voor uw gebruikers die zijn geverifieerd in azure AD. Vervolgens geeft die server de context door aan de doel toepassing of Reporting Services in dit geval.
+Configureer KCD zodat de Azure AD-toepassingsproxy-Service gebruikers identiteiten kan delegeren aan het account van de groep van toepassingen van de Reporting Services. KCD configureren door de Application Proxy-connector om op te halen van Kerberos-tickets voor uw gebruikers die zijn geverifieerd in Azure AD in te schakelen. Vervolgens geeft die server de context door aan de doel toepassing of Reporting Services in dit geval.
 
 Als u KCD wilt configureren, herhaalt u de volgende stappen voor elke connector computer:
 
 1. Meld u aan bij een domein controller als een domein beheerder en open **Active Directory gebruikers en computers**.
 2. Zoek de computer waarop de connector wordt uitgevoerd.  
 3. Dubbel klik op de computer en selecteer vervolgens het tabblad **delegering** .
-4. Stel de instellingen voor delegering zo in dat **deze computer alleen kan worden overgedragen aan de opgegeven services**. Selecteer vervolgens **elk verificatie protocol gebruiken**.
+4. Stel de instellingen voor delegering zo in dat **deze computer alleen kan worden overgedragen aan de opgegeven services**. Selecteer **elk verificatieprotocol gebruiken**.
 5. Selecteer **toevoegen**en selecteer vervolgens **gebruikers of computers**.
 6. Voer het service account in dat u gebruikt voor Reporting Services. Dit is het account waaraan u de SPN hebt toegevoegd in de Reporting Services-configuratie.
 7. Klik op **OK**. Klik opnieuw op **OK** om de wijzigingen op te slaan.
@@ -89,17 +89,17 @@ U bent nu klaar om Azure AD-toepassingsproxy te configureren.
 
    - **Methode voor verificatie vooraf**: Azure Active Directory
 
-2. Nadat de app is gepubliceerd, configureert u de instellingen voor eenmalige aanmelding met de volgende stappen:
+2. Zodra uw app is gepubliceerd, moet u de instellingen voor eenmalige aanmelding configureren met de volgende stappen uit:
 
-   a. Selecteer op de pagina toepassing in de portal **eenmalige aanmelding**.
+   a. Selecteer op de toepassingspagina in de portal, **eenmalige aanmelding**.
 
    b. Voor de **modus voor eenmalige aanmelding**selecteert u **geïntegreerde Windows-verificatie**.
 
    c. Stel **interne Application SPN** in op de waarde die u eerder hebt ingesteld.  
 
-   d. Kies de **gedelegeerde aanmeldings-id** voor de connector om namens uw gebruikers te gebruiken. Zie [werken met verschillende on-premises en Cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)voor meer informatie.
+   d. Kies de **gedelegeerde Aanmeldingsidentiteit** voor de connector te gebruiken namens uw gebruikers. Zie [werken met verschillende on-premises en Cloud-identiteiten](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)voor meer informatie.
 
-   e. Klik op **Opslaan** om uw wijzigingen op te slaan.
+   e. Klik op **opslaan** uw wijzigingen op te slaan.
 
 Ga naar **de sectie gebruikers en groepen** en wijs gebruikers toe om toegang te krijgen tot deze toepassing om het instellen van uw toepassing te volt ooien.
 

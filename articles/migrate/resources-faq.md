@@ -4,14 +4,14 @@ description: Krijg antwoorden op veelgestelde vragen over de Azure Migrate-servi
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: snehaa
-ms.openlocfilehash: a622a5793e817be2445e60d925354ab37bb8e331
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: dc7dff0119ec849b447754ae54a45911038f6c48
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185778"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284459"
 ---
 # <a name="azure-migrate-common-questions"></a>Azure Migrate: algemene vragen
 
@@ -118,16 +118,10 @@ Server evaluatie biedt een evaluatie van de voor bereiding op de migratie en de 
 
 ### <a name="whats-the-difference-between-server-assessment-and-the-site-recovery-deployment-planner"></a>Wat is het verschil tussen server evaluatie en het Site Recovery Deployment Planner?
 
-Server evaluatie is een hulp programma voor migratie planning. De Site Recovery Deployment Planner is een hulp programma voor herstel na nood gevallen. 
+Server evaluatie is een hulp programma voor migratie planning. De Site Recovery Deployment Planner is een hulp programma voor herstel na nood gevallen.
 
 - **On-premises migratie naar Azure plannen**: als u van plan bent om uw on-premises servers naar Azure te migreren, gebruikt u Server evaluatie voor migratie planning. Het evalueert on-premises workloads en biedt hulp en hulpprogram ma's waarmee u kunt migreren. Nadat het migratie plan is geïmplementeerd, kunt u hulpprogram ma's, waaronder Azure Migrate server migratie, gebruiken om de machines te migreren naar Azure.
 - **Herstel na nood geval naar Azure plannen**: als u van plan bent om herstel na nood gevallen van on-premises naar azure met site Recovery in te stellen, gebruikt u de site Recovery Deployment planner. De Deployment Planner biedt een diep gaande Site Recovery-specifieke evaluatie van uw on-premises omgeving voor nood herstel. Het biedt aanbevelingen voor herstel na nood gevallen, zoals replicatie en failover.
-
-### <a name="does-azure-migrate-estimate-costs-for-the-enterprise-agreement-ea-program"></a>Maakt Azure Migrate kosten voor het Enterprise Agreement EA-programma?
-
-Azure Migrate server analyse ondersteunt momenteel geen kosten ramingen voor het [Enterprise Agreement programma](https://azure.microsoft.com/offers/enterprise-agreement-support/). Als tijdelijke oplossing, wanneer u een evaluatie maakt, kunt u **betalen per gebruik** als **aanbieding**opgeven en het kortings percentage (van toepassing op het abonnement) hand matig toevoegen als de **korting** in de eigenschappen van de beoordeling:
-
-  ![Eigenschappen van beoordeling](./media/resources-faq/discount.png)
 
 ### <a name="whats-the-difference-between-as-on-premises-and-performance-based-sizing"></a>Wat is het verschil tussen as-on-premises en op prestaties gebaseerde grootte?
 

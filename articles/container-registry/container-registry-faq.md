@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/02/2019
 ms.author: sajaya
-ms.openlocfilehash: 450144d1e5a49aeb45633b05fc5ecdae986da297
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 40e82f1ae6366575352bd0675e3f748dc345ed75
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74220624"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279242"
 ---
 # <a name="frequently-asked-questions-about-azure-container-registry"></a>Veelgestelde vragen over Azure Container Registry
 
@@ -256,6 +256,7 @@ Afbeeldings quarantaine is momenteel een preview-functie van ACR. U kunt de quar
 - [Status controleren met `az acr check-health`](#check-health-with-az-acr-check-health)
 - [docker-pull mislukt met fout: net/http: de aanvraag is geannuleerd tijdens het wachten op de verbinding (client. timeout is overschreden terwijl er wordt gewacht op headers)](#docker-pull-fails-with-error-nethttp-request-canceled-while-waiting-for-connection-clienttimeout-exceeded-while-awaiting-headers)
 - [docker-Push is gelukt, maar docker-pull mislukt met fout: niet toegestaan: verificatie vereist](#docker-push-succeeds-but-docker-pull-fails-with-error-unauthorized-authentication-required)
+- [`az acr login` geslaagd, maar docker-opdrachten mislukken met fout: niet toegestaan: verificatie vereist](#az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required)
 - [De logboeken voor fout opsporing van de docker-daemon inschakelen en ophalen](#enable-and-get-the-debug-logs-of-the-docker-daemon) 
 - [Nieuwe gebruikers machtigingen worden mogelijk niet direct na het bijwerken van kracht](#new-user-permissions-may-not-be-effective-immediately-after-updating)
 - [Verificatie gegevens worden niet in de juiste indeling gegeven voor directe REST API-aanroepen](#authentication-information-is-not-given-in-the-correct-format-on-direct-rest-api-calls)
@@ -319,6 +320,10 @@ Om de fout op te lossen:
   ```
 
 U kunt de details van `--signature-verification` vinden door `man dockerd`uit te voeren.
+
+### <a name="az-acr-login-succeeds-but-docker-fails-with-error-unauthorized-authentication-required"></a>AZ ACR login slaagt maar docker mislukt met fout: niet toegestaan: verificatie vereist
+
+Zorg ervoor dat u een server-URL met alle kleine letters gebruikt, bijvoorbeeld `docker push myregistry.azurecr.io/myimage:latest`, zelfs als de naam van de register resource hoofd letters of kleine letters is, zoals `myRegistry`.
 
 ### <a name="enable-and-get-the-debug-logs-of-the-docker-daemon"></a>De logboeken voor fout opsporing van de docker-daemon inschakelen en ophalen  
 

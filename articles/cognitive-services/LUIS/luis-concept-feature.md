@@ -1,7 +1,7 @@
 ---
 title: Functies-LUIS
 titleSuffix: Azure Cognitive Services
-description: Voeg functies toe aan een taal model om tips te bieden over het herkennen van de invoer die u wilt labelen of classificeren.
+description: Functies toevoegen aan een taalmodel voor tips over het herkennen van de invoer die u wilt een label of classificeren.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: diberry
-ms.openlocfilehash: 0cab6eb38459a632f1e7bd1a21e6a7251d33f683
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: b151043babd6c67a17f704bb671a415fcc3ba7b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647423"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74280901"
 ---
 # <a name="machine-learned-features"></a>Door de machine geleerde functies 
 
-In machine learning is een *functie* een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert & meer informatie. In Language Understanding (LUIS) wordt een functie beschreven en uitgelegd wat belang rijk is voor uw intentie en entiteiten.
+In machine learning is een _functie_ een onderscheiding van eigenschappen of kenmerken van gegevens die uw systeem observeert & meer informatie. In Language Understanding (LUIS) wordt een functie beschreven en uitgelegd wat belang rijk is voor uw intentie en entiteiten.
 
 In de [Preview-Luis-Portal](https://preview.luis.ai)zijn functies _descriptors_ , omdat ze worden gebruikt om de intentie of entiteit te _beschrijven_ .  
 
@@ -43,7 +43,7 @@ Met een woordgroepen lijst, beschouwt LUIS context en generaliseert om items te 
 
 Als u nieuwe instanties wilt kunnen herkennen, zoals een Meeting scheduler die de namen van nieuwe contact personen moet herkennen of een inventarisatie-app die nieuwe producten moet herkennen, start u met een door de machine geleerde entiteit. Maak vervolgens een woordgroepen lijst waarmee LUIS woorden met een vergelijk bare betekenis kunt vinden. In deze woordgroepen lijst staan hand leidingen LUIS om voor beelden te herkennen door extra significantie toe te voegen aan de waarde van deze woorden. 
 
-Woordgroepen lijsten zijn net als een Documentspecifieke woorden lijst waarmee u de kwaliteit van het memorandum van intenties en entiteiten kunt verbeteren. 
+Een lijst met woorden zijn domeinspecifieke-woordenlijst die u helpen bij het verbeteren van de kwaliteit van het inzicht van zowel intenties en entiteiten. 
 
 ## <a name="considerations-when-using-a-phrase-list"></a>Overwegingen bij het gebruik van een woordgroepen lijst
 
@@ -57,7 +57,7 @@ De vlag `enabledForAllModels` bepaalt dit model bereik in de API.
 
 ### <a name="how-to-use-a-phrase-list"></a>Een woordgroepen lijst gebruiken
 
-[Maak een lijst met woordgroepen lijsten](luis-how-to-add-features.md) als uw intentie of entiteit woorden of zinsdelen bevat die belang rijk zijn zoals:
+[Maak een woordgroepen lijst](luis-how-to-add-features.md) als uw intentie of entiteit woorden of zinsdelen bevat die belang rijk zijn zoals:
 
 * branche voorwaarden
 * slang
@@ -82,13 +82,13 @@ Als de bedoeling bijvoorbeeld is voor het reserveren van een vlucht en de entite
 
 ### <a name="entity-as-a-feature-to-another-entity"></a>Entiteit als een functie van een andere entiteit
 
-Een entiteit (A) moet worden toegevoegd als een functie aan een andere entiteit (B) wanneer de detectie van die entiteit (A) belang rijk is voor de (B).
+Een entiteit (A) moet worden toegevoegd als een functie aan een andere entiteit (B) wanneer de detectie van die entiteit (A) belang rijk is voor de voor spelling van een entiteit (B).
 
 Als bijvoorbeeld de adres entiteit (A) wordt gedetecteerd, wordt door het adres (A) het gewicht (A) opgeteld bij de voor spelling voor de entiteit van het verzend adres (B). 
 
 ## <a name="best-practices"></a>Aanbevolen procedures
-Lees de [Aanbevolen procedures](luis-concept-best-practices.md).
+Informatie over [aanbevolen procedures](luis-concept-best-practices.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [onderdelen toevoegen](luis-how-to-add-features.md) voor meer informatie over het toevoegen van functies aan uw Luis-app.
+Zie [onderdelen toevoegen](luis-how-to-add-features.md) voor meer informatie over hoe u functies toevoegt aan uw LUIS-app.

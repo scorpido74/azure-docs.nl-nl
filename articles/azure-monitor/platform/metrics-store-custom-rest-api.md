@@ -1,6 +1,6 @@
 ---
-title: Aangepaste metrische gegevens voor een Azure-resource verzenden naar de Azure Monitor metrische store met behulp van een REST-API
-description: Aangepaste metrische gegevens voor een Azure-resource verzenden naar de Azure Monitor metrische store met behulp van een REST-API
+title: Metrische gegevens naar de data base van de Azure Monitor metriek verzenden met behulp van REST API
+description: Aangepaste metrische gegevens voor een Azure-resource verzenden naar het Azure Monitor metrische archief met behulp van een REST API
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,46 +8,46 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: aa842979bf86410e9dab97d6209f336eb6b02bd3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a19b59c758f31ff1ef3416b59031202193d50522
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253893"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74285951"
 ---
-# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Aangepaste metrische gegevens voor een Azure-resource verzenden naar de Azure Monitor metrische store met behulp van een REST-API
+# <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Aangepaste metrische gegevens voor een Azure-resource verzenden naar het Azure Monitor metrische archief met behulp van een REST API
 
-In dit artikel wordt beschreven hoe u aangepaste metrische gegevens voor Azure-resources verzenden naar het archief met Azure Monitor metrische gegevens via een REST-API. Nadat de metrische gegevens in Azure Monitor zijn, kunt u alle dingen met hen die u met standaard metrische gegevens doen doen. Voorbeelden zijn voor grafieken, waarschuwingen en deze doorsturen naar andere externe hulpprogramma's.  
+Dit artikel laat u zien hoe u aangepaste metrische gegevens voor Azure-resources kunt verzenden naar de Azure Monitor metrische gegevens opslag via een REST API. Nadat de metrische gegevens zijn Azure Monitor, kunt u alle dingen doen met de metrieken met standaard metrische gegevens. Voor beelden hiervan zijn grafieken, waarschuwingen en route ring naar andere externe hulpprogram ma's.  
 
 >[!NOTE]  
->De REST-API wordt alleen toegestaan voor het verzenden van aangepaste metrische gegevens voor Azure-resources. Voor het verzenden van metrische gegevens voor resources in verschillende omgevingen of on-premises, kunt u [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md).    
+>Met de REST API is het verzenden van aangepaste metrische gegevens voor Azure-resources alleen toegestaan. Als u metrische gegevens voor resources in verschillende omgevingen of on-premises wilt verzenden, kunt u [Application Insights](../../azure-monitor/app/api-custom-events-metrics.md)gebruiken.    
 
 
-## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Maken en een service-principal te verzenden van metrische gegevens 
+## <a name="create-and-authorize-a-service-principal-to-emit-metrics"></a>Een service-principal maken en autoriseren voor het verzenden van metrische gegevens 
 
-Een service-principal maken in uw Azure Active Directory-tenant met behulp van de instructies op [maken van een service-principal](../../active-directory/develop/howto-create-service-principal-portal.md). 
+Maak een Service-Principal in uw Azure Active Directory-Tenant met behulp van de instructies op het [maken van een Service-Principal](../../active-directory/develop/howto-create-service-principal-portal.md). 
 
-Let op het volgende terwijl u dit proces doorlopen: 
+Houd rekening met het volgende wanneer u dit proces door lopen: 
 
-- U kunt een URL invoeren voor de URL van de aanmelding.  
-- Maak een nieuwe clientgeheim voor deze app.  
-- Sla de sleutel en de client-ID voor gebruik in latere stappen.  
+- U kunt elke URL voor de aanmeldings-URL invoeren.  
+- Maak een nieuw client geheim voor deze app.  
+- Sla de sleutel en de client-ID op voor gebruik in latere stappen.  
 
-Geef de app gemaakt als onderdeel van stap 1, bewaking metrische gegevens over uitgever en machtigingen voor de resource die u wilt verzenden van metrische gegevens tegen. Als u van plan bent de app om te verzenden van aangepaste metrische gegevens op veel resources gebruiken, kunt u deze machtigingen op het niveau van de resource-groep of abonnement verlenen. 
+Geef de app gemaakt als onderdeel van stap 1, bewaken van de uitgever van metrische gegevens, machtigingen voor de resource waarvoor u metrische gegevens wilt verzenden. Als u van plan bent om de app te gebruiken voor het verzenden van aangepaste metrische gegevens voor een groot aantal resources, kunt u deze machtigingen verlenen aan de resource groep of het abonnements niveau. 
 
-## <a name="get-an-authorization-token"></a>Een verificatietoken ophalen
-Open een opdrachtprompt en voer de volgende opdracht uit:
+## <a name="get-an-authorization-token"></a>Een autorisatie Token ophalen
+Open een opdracht prompt en voer de volgende opdracht uit:
 
 ```shell
 curl -X POST https://login.microsoftonline.com/<yourtenantid>/oauth2/token -F "grant_type=client_credentials" -F "client_id=<insert clientId from earlier step>" -F "client_secret=<insert client secret from earlier step>" -F "resource=https://monitoring.azure.com/"
 ```
-Sla het toegangstoken op uit het antwoord.
+Sla het toegangs token op uit het antwoord.
 
-![toegangstoken](./media/metrics-store-custom-rest-api/accesstoken.png)
+![Toegangs token](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>Verzenden van de metrische gegevens via de REST-API 
+## <a name="emit-the-metric-via-the-rest-api"></a>De metriek verzenden via de REST API 
 
-1. Plak de volgende JSON in een bestand en sla het bestand als **custommetric.json** op uw lokale computer. Update voor de parameter time in het JSON-bestand: 
+1. Plak de volgende JSON in een bestand en sla het op als **custommetric. json** op de lokale computer. Werk de tijd parameter in het JSON-bestand bij: 
     
     ```json
     { 
@@ -77,44 +77,44 @@ Sla het toegangstoken op uit het antwoord.
     } 
     ``` 
 
-1. In het venster Opdrachtprompt plaatsen de metrische gegevens: 
-   - **azureRegion**. Moet overeenkomen met de implementatieregio van de resource die u bij het verzenden van metrische gegevens voor. 
-   - **resourceID**.  Resource-ID van de Azure-resource die u de metrische gegevens tegen bijhoudt.  
+1. In het opdracht prompt venster plaatst u de metrische gegevens: 
+   - **azureRegion**. Moet overeenkomen met de implementatie regio van de resource waarvoor u de metrische gegevens wilt verzenden. 
+   - **resourceID**.  De resource-ID van de Azure-resource waarmee u de metrische gegevens wilt bijhouden.  
    - **AccessToken**. Plak het token dat u eerder hebt verkregen.
 
      ```Shell 
      curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
      ```
-1. Wijzig de tijdstempel en de waarden in het JSON-bestand. 
-1. Herhaal de vorige twee stappen een paar keer, zodat u gegevens voor enkele minuten hebt.
+1. Wijzig de tijds tempel en waarden in het JSON-bestand. 
+1. Herhaal de vorige twee stappen een paar keer, zodat u enkele minuten gegevens hebt.
 
 ## <a name="troubleshooting"></a>Problemen oplossen 
-Als u een foutbericht weergegeven met een deel van het proces wordt, kunt u de volgende informatie voor probleemoplossing:
+Als er een fout bericht wordt weer gegeven met een deel van het proces, kunt u de volgende informatie over het oplossen van problemen overwegen:
 
-1. U kunt geen metrische gegevens op basis van een abonnement of resourcegroep uitgeven als uw Azure-resource. 
-1. U kunt geen een metrische waarde plaatsen in het archief dat is meer dan 20 minuten. De metrische store is geoptimaliseerd voor waarschuwingen en realtime voor grafieken. 
-2. Het aantal dimensienamen moet overeenkomen met de waarden en vice versa. Controleer de waarden. 
-2. Mogelijk dat u verzendt metrische gegevens op basis van een gebied dat biedt geen ondersteuning voor aangepaste metrische gegevens. Zie [ondersteunde regio's](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
+1. U kunt geen metrische gegevens uitgeven voor een abonnement of resource groep als uw Azure-resource. 
+1. U kunt geen metrische gegevens in de Store plaatsen die meer dan 20 minuten oud zijn. De metrische opslag is geoptimaliseerd voor waarschuwingen en realtime grafieken. 
+2. Het aantal dimensie namen moet overeenkomen met de waarden en vice versa. Controleer de waarden. 
+2. U kunt metrische gegevens verzenden naar een regio die geen aangepaste metrische gegevens ondersteunt. Zie [ondersteunde regio's](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 
 
 
 
-## <a name="view-your-metrics"></a>Bekijk uw metrische gegevens 
+## <a name="view-your-metrics"></a>Uw metrische gegevens weer geven 
 
 1. Meld u aan bij Azure Portal. 
 
-1. Selecteer in het menu links **Monitor**. 
+1. Selecteer in het menu links de optie **monitor**. 
 
-1. Op de **Monitor** weergeeft, schakelt **metrische gegevens**. 
+1. Selecteer **metrische gegevens**op de pagina **monitor** . 
 
    ![Metrische gegevens selecteren](./media/metrics-store-custom-rest-api/metrics.png) 
 
-1. Wijzig de aggregatie periode **afgelopen 30 minuten**.  
+1. Wijzig de aggregatie periode in de **laatste 30 minuten**.  
 
-1. In de **resource** vervolgkeuzelijst, selecteer de resource die u de metrische gegevens tegen verzonden.  
+1. Selecteer in de vervolg keuzelijst **resource** de resource waarmee u de metrische gegevens hebt verzonden.  
 
-1. In de **naamruimten** vervolgkeuzelijst in het menu **QueueProcessing**. 
+1. Selecteer in de vervolg keuzelijst **naam ruimten** de optie **QueueProcessing**. 
 
-1. In de **metrische gegevens** vervolgkeuzelijst in het menu **QueueDepth**.  
+1. Selecteer in de vervolg keuzelijst **metrische gegevens** de optie **QueueDepth**.  
 
  
 ## <a name="next-steps"></a>Volgende stappen

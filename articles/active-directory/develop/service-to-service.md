@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 11/20/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8f95dfd6410ae22a4596ac7d5d72add57e8029d
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 49081ba72559b021d2e4846e7d9feffd61ae7b36
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373898"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284900"
 ---
 # <a name="service-to-service-apps"></a>Service-naar-service-apps
 
@@ -40,7 +40,7 @@ Service-naar-service-toepassingen kunnen een daemon of server toepassing zijn di
 
 ![Web API-diagram van daemon of server toepassing](./media/authentication-scenarios/daemon_server_app_to_web_api.png)
 
-## <a name="dprotocol-flow"></a>DProtocol-stroom
+## <a name="protocol-flow"></a>Protocol stroom
 
 ### <a name="application-identity-with-oauth-20-client-credentials-grant"></a>Toepassings-id met OAuth 2,0-client referenties toewijzen
 
@@ -53,17 +53,17 @@ Service-naar-service-toepassingen kunnen een daemon of server toepassing zijn di
 In de onderstaande stroom wordt ervan uitgegaan dat een gebruiker is geverifieerd op een andere toepassing (zoals een systeem eigen toepassing) en dat de gebruikers-id is gebruikt om een toegangs token aan de Web-API op de eerste laag te verkrijgen.
 
 1. De systeem eigen toepassing stuurt het toegangs token naar de Web-API voor de eerste laag.
-1. De Web-API voor de eerste laag verzendt een aanvraag naar het token eindpunt van Azure AD, met de toepassings-ID en referenties, evenals het toegangs token van de gebruiker. Daarnaast wordt de aanvraag verzonden met een on_behalf_of-para meter die aangeeft dat de Web-API nieuwe tokens aanvraagt voor het aanroepen van een stroomafwaartse Web-API namens de oorspronkelijke gebruiker.
+1. De Web-API voor de eerste laag verzendt een aanvraag naar het token eindpunt van Azure AD, met de toepassings-ID en referenties, evenals het toegangs token van de gebruiker. Daarnaast wordt de aanvraag verzonden met een on_behalf_of para meter die aangeeft dat de Web-API nieuwe tokens aanvraagt voor het aanroepen van een stroomafwaartse Web-API namens de oorspronkelijke gebruiker.
 1. Azure AD controleert of de Web-API voor de eerste laag machtigingen heeft voor toegang tot de Web-API op de tweede laag en valideert de aanvraag, retourneert een JWT-toegangs token en een JWT-vernieuwings token naar de Web-API voor de eerste laag.
 1. Via HTTPS roept de Web-API voor de eerste laag vervolgens de Web-API op de tweede laag aan door de token teken reeks toe te voegen aan de autorisatie-header in de aanvraag. Met de Web-API voor de eerste laag kunt u de Web-API op de tweede laag aanroepen, zolang het toegangs token en de vernieuwings tokens geldig zijn.
 
 ## <a name="code-samples"></a>Codevoorbeelden
 
-Zie de code voorbeelden voor de Web-API-scenario's voor daemon of server toepassing. En controleer regel matig of er nieuwe voor beelden worden toegevoegd. [Server-of daemon-toepassing naar Web-API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
+Zie de code voorbeelden voor daemon of server toepassing Web API-scenario's: [Server-of daemon-toepassing naar Web-API](sample-v1-code.md#daemon-applications-accessing-web-apis-with-the-applications-identity)
 
 ## <a name="app-registration"></a>App-registratie
 
-* Eén Tenant: voor zowel de toepassings identiteit als de gedelegeerde gebruikers identiteiten moet de daemon of de server toepassing zijn geregistreerd in dezelfde map in azure AD. De Web-API kan worden geconfigureerd om een set machtigingen beschikbaar te stellen, die wordt gebruikt om de daemon of server toegang tot de resources te beperken. Als een overgedragen gebruikers identiteits type wordt gebruikt, moet de server toepassing de gewenste machtigingen selecteren in de vervolg keuzelijst Machtigingen voor andere toepassingen in de Azure Portal. Deze stap is niet vereist als het toepassings identiteits type wordt gebruikt.
+* Eén Tenant: voor zowel de toepassings identiteit als de gedelegeerde gebruikers identiteiten moet de daemon of de server toepassing zijn geregistreerd in dezelfde map in azure AD. De Web-API kan worden geconfigureerd om een set machtigingen beschikbaar te stellen, die wordt gebruikt om de daemon of server toegang tot de resources te beperken. Als een overgedragen gebruikers identiteits type wordt gebruikt, moet de server toepassing de gewenste machtigingen selecteren. Klik op de pagina **API-machtiging** voor de registratie van de toepassing, nadat u **een machtiging toevoegen** hebt geselecteerd en de API-groep hebt gekozen, kies **gedelegeerde machtigingen**en selecteer vervolgens uw machtigingen. Deze stap is niet vereist als het toepassings identiteits type wordt gebruikt.
 * Multi tenant: eerst is de daemon of server toepassing geconfigureerd om de machtigingen aan te geven die nodig zijn om functioneel te zijn. Deze lijst met vereiste machtigingen wordt weer gegeven in een dialoog venster wanneer een gebruiker of beheerder in de doelmap toestemming geeft voor de toepassing, zodat deze beschikbaar is voor hun organisatie. Voor sommige toepassingen zijn alleen machtigingen op gebruikers niveau vereist, waarbij elke gebruiker in de organisatie toestemming kan geven. Andere toepassingen vereisen machtigingen op beheerders niveau, die een gebruiker in de organisatie niet kan instemmen. Alleen een adreslijst beheerder kan toestemming geven voor toepassingen waarvoor dit machtigings niveau is vereist. Wanneer de gebruiker of beheerder de toestemming heeft gegeven, worden beide Web-Api's geregistreerd in hun Directory.
 
 ## <a name="token-expiration"></a>Token verloop tijd
