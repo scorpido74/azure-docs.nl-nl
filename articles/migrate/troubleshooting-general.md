@@ -5,14 +5,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2019
+ms.date: 11/21/2019
 ms.author: hamusa
-ms.openlocfilehash: 468c87e176cc61c48ba4caabd1c5a26f94d5fb5b
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 12f8f64c051d33ac2518edbe8b937521318a9e71
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71970642"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284490"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Problemen met Azure Migrate oplossen
 
@@ -88,8 +88,8 @@ Een project verwijderen uit de oudere versie van Azure Migrate:
 ### <a name="delete-a-workspace"></a>Een werkruimte verwijderen
 
 Blader naar de Log Analytics werkruimte die aan het project is gekoppeld.
-* Als u het Azure Migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte vinden in **essentials** > -**Server evaluatie**.
-       ![LA-werk ruimte @ no__t-1
+* Als u het Azure Migrate project nog niet hebt verwijderd, kunt u de koppeling naar de werk ruimte vinden in **essentials** > **Server Assessment**.
+       ![werk ruimte van LA](./media/troubleshooting-general/loganalytics-workspace.png)
 
      * If you've already deleted the Azure Migrate project, select **Resource Groups** in the left pane of the Azure portal. Locate the workspace in the relevant resources group, and [follow the instructions](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace) to delete it.
 
@@ -106,13 +106,13 @@ Bij het maken van een project kan deze fout erop wijzen dat u geen toegang hebt 
 
 ## <a name="error-invalid-ovf-manifest-entry"></a>Fout: er is een ongeldige OVF-manifest vermelding
 
-Als u de fout melding ' het gegeven manifest bestand is ongeldig: Ongeldige OVF-manifest vermelding: Ga als volgt te werk.
+Ga als volgt te werk als u de fout melding ' het opgegeven manifest bestand is ongeldig: ongeldige OVF-manifest vermelding ' wordt weer gegeven:
 
 1. Controleer of het bestand van de Azure Migrate apparaat voor apparaten correct is gedownload door de hash-waarde te controleren. [Meer informatie](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware). Als de hash-waarde niet overeenkomt, downloadt u het bestand van de eicellen opnieuw en voert u de implementatie opnieuw uit.
 2. Als de implementatie nog steeds mislukt, en u de VMware vSphere-client gebruikt om het OVF-bestand te implementeren, probeert u het te implementeren via de vSphere-webclient. Als de implementatie nog steeds mislukt, kunt u proberen een andere webbrowser te gebruiken.
 3. Als u de vSphere-webclient gebruikt en deze probeert te implementeren op vCenter Server 6,5 of 6,7, probeert u de eicellen rechtstreeks op de ESXi-host te implementeren:
    - Maak rechtstreeks verbinding met de ESXi-host (in plaats van vCenter Server) met de webclient (https://<*IP-adres*van de host >/UI).
-   - Selecteer in **Home**@no__t-1-inventaris **bestand** > **OVF-sjabloon implementeren**. Blader naar de eicellen en voltooi de implementatie.
+   - Selecteer in de **inventaris**van **start** > **bestand** > **OVF-sjabloon implementeren**. Blader naar de eicellen en voltooi de implementatie.
 4. Als de implementatie nog steeds mislukt, neemt u contact op met Azure Migrate ondersteuning.
 
 ## <a name="appliance-cant-connect-to-the-internet"></a>Het apparaat kan geen verbinding maken met Internet
@@ -152,7 +152,7 @@ Als deze verbindings fout optreedt, kunt u mogelijk geen verbinding maken met vC
     4. Controleer of vCenter Server actief is.
 
 
-## <a name="error-appliance-might-not-be-registered"></a>Fout: Het apparaat is mogelijk niet geregistreerd
+## <a name="error-appliance-might-not-be-registered"></a>Fout: het apparaat is mogelijk niet geregistreerd
 
 - Fout 60052 ' het apparaat is mogelijk niet geregistreerd voor het Azure Migrate-project ' treedt op als het Azure-account dat wordt gebruikt om het apparaat te registreren, onvoldoende machtigingen heeft.
     - Zorg ervoor dat het Azure-gebruikers account dat wordt gebruikt om het apparaat te registreren, ten minste Inzender machtigingen heeft voor het abonnement.
@@ -169,16 +169,16 @@ Ga als volgt te werk als de fout 60030 of 60031 wordt weer gegeven: ' een Azure 
 - Neem contact op met micro soft ondersteuning als het probleem zich blijft voordoen.
 - Meer [informatie](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) over de vereiste Azure-rollen en-machtigingen.
 
-## <a name="fix-discovery-couldnt-be-initiated"></a>Holpen Detectie kan niet worden gestart
+## <a name="fix-discovery-couldnt-be-initiated"></a>Fix: detectie kan niet worden gestart
 
-Fout 60028: "Detectie kan vanwege een fout niet worden gestart. De bewerking is mislukt voor de opgegeven lijst van hosts of clusters. Hiermee wordt aangegeven dat de detectie niet kan worden gestart op de hosts die in de fout worden vermeld vanwege een probleem bij het openen of ophalen van VM-gegevens. De rest van de hosts is toegevoegd.
+Fout 60028: detectie kan niet worden gestart wegens een fout. De bewerking is mislukt voor de opgegeven lijst van hosts of clusters. Hiermee wordt aangegeven dat de detectie niet kan worden gestart op de hosts die in de fout worden vermeld vanwege een probleem bij het openen of ophalen van VM-gegevens. De rest van de hosts is toegevoegd.
 
 - Voeg de hosts in de fout weer toe met behulp van de optie **host toevoegen** .
 - Als er een validatie fout optreedt, raadpleegt u de richt lijnen voor herstel om de fouten op te lossen en probeert u het opnieuw met de optie **detectie opslaan en starten** .
 
-## <a name="fix-azure-ad-operation-failed-60025"></a>Holpen Bewerking van Azure AD is mislukt (60025)
+## <a name="fix-azure-ad-operation-failed-60025"></a>Fix: de Azure AD-bewerking is mislukt (60025)
 
-Fout 60025: ' Een Azure AD-bewerking is mislukt. De fout is opgetreden tijdens het maken of bijwerken van de Azure AD-toepassing "treedt op wanneer het Azure-gebruikers account dat wordt gebruikt om de detectie te initiëren, afwijkt van het account dat wordt gebruikt om het apparaat te registreren. Voer een van de volgende handelingen uit:
+Fout 60025: er is een Azure AD-bewerking mislukt. De fout is opgetreden tijdens het maken of bijwerken van de Azure AD-toepassing "treedt op wanneer het Azure-gebruikers account dat wordt gebruikt om de detectie te initiëren, afwijkt van het account dat wordt gebruikt om het apparaat te registreren. Voer een van de volgende handelingen uit:
 
 - Zorg ervoor dat het gebruikers account dat de detectie initieert, hetzelfde is als dat waarmee het apparaat wordt geregistreerd.
 - Geef Azure Active Directory machtigingen voor toegang tot de toepassing op voor het gebruikers account waarvoor de detectie bewerking is mislukt.
@@ -217,9 +217,9 @@ Als u een apparaat hebt geïmplementeerd dat uw on-premises omgeving continu det
     1. Wacht tot de vernieuwings bewerking is voltooid. Nu worden actuele gegevens weer geven.
 
 
-## <a name="fix-cant-connect-to-host-or-cluster"></a>Holpen Kan geen verbinding maken met de host of het cluster
+## <a name="fix-cant-connect-to-host-or-cluster"></a>Fix: kan geen verbinding maken met de host of het cluster
 
-Fout 50004: ' Kan geen verbinding maken met een host of cluster omdat de server naam niet kan worden omgezet. WinRM-fout code: 0x803381B9 ' kan optreden als de Azure DNS-service voor het apparaat het cluster of de hostnaam die u hebt ingevoerd, niet kan omzetten.
+Fout 50004: ' kan geen verbinding maken met een host of cluster omdat de server naam niet kan worden omgezet. WinRM-fout code: 0x803381B9 "kan optreden als de Azure DNS-service voor het apparaat het cluster of de hostnaam die u hebt ingevoerd, niet kan omzetten.
 
 - Als u deze fout op het cluster ziet, wordt de cluster-FQDN.
 - U ziet deze fout mogelijk ook voor hosts in een cluster. Dit geeft aan dat het apparaat verbinding kan maken met het cluster, maar dat het cluster hostnamen retourneert die geen FQDN-namen zijn. Om deze fout op te lossen, werkt u het hosts-bestand op het apparaat bij door een toewijzing van het IP-adres en de hostnamen toe te voegen:
@@ -229,6 +229,31 @@ Fout 50004: ' Kan geen verbinding maken met een host of cluster omdat de server 
     4. Opslaan en sluiten van het hosts-bestand.
     5. Controleer of het apparaat verbinding kan maken met de hosts met behulp van de app voor het beheren van het apparaat. Na 30 minuten ziet u de meest recente informatie voor deze hosts in de Azure Portal.
 
+## <a name="application-discovery-issues"></a>Problemen met toepassings detectie
+
+De detectie van toepassingen wordt momenteel alleen ondersteund voor virtuele VMware-machines. Ondersteuning voor virtuele Hyper-V-machines en fysieke servers wordt in de toekomst ingeschakeld. Voor de detectie van toepassingen moet u VM-referenties opgeven in het apparaat. Meer informatie over de toegangs rechten die nodig zijn voor vCenter Server en voor virtuele VMware-machines. De detectie kan mislukken vanwege een van de volgende problemen. Controleer de aanbevolen actie zoals hieronder wordt beschreven om het probleem op te lossen:
+
+**Foutcode** | **Bericht** | **Mogelijke oorzaak** | **Aanbevolen actie**
+--- | --- | --- | ---
+10.000 | De toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd. | Dit kan gebeuren als het besturings systeem dat op de-server wordt uitgevoerd, geen Windows of Linux is. | De detectie van geïnstalleerde toepassingen wordt alleen ondersteund voor Windows-en Linux-servers.
+10001 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Dit wordt veroorzaakt door een interne fout omdat er enkele bestanden ontbreken in het apparaat. | Neem contact op met Microsoft Ondersteuning.
+10002 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Dit kan gebeuren als de detectie agent in het Azure Migrate apparaat niet goed werkt. | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
+10003 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Dit kan gebeuren als de detectie agent niet goed werkt. | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
+10004 | Geïnstalleerde toepassingen voor < Windows/Linux > machines kunnen niet worden gedetecteerd. |  Referenties voor toegang tot < Windows/Linux > machines zijn niet in het Azure Migrate apparaat geleverd | Voeg een referentie toe aan het Azure Migrate-apparaat dat toegang heeft tot de < Windows/Linux > machines.
+10005 | Geen toegang tot de on-premises server. | Dit kan gebeuren als de referenties van de computer voor toegang tot de server onjuist zijn. | Werk de referenties die zijn opgenomen in het apparaat bij en controleer of de server toegankelijk is met behulp van de referentie.
+10006 | Geen toegang tot de on-premises server. | Dit kan gebeuren als het besturings systeem dat op de-server wordt uitgevoerd, geen Windows of Linux is. | De detectie van geïnstalleerde toepassingen wordt alleen ondersteund voor Windows-en Linux-servers.
+9000 | De toepassingen die op de virtuele machine zijn geïnstalleerd, kunnen niet worden gedetecteerd. | VMware-hulpprogram ma's zijn mogelijk niet geïnstalleerd of beschadigd. | Installeer/installeer VMware-hulpprogram ma's in de VM en controleer of deze wordt uitgevoerd.
+9001 | De toepassingen die op de virtuele machine zijn geïnstalleerd, kunnen niet worden gedetecteerd. | VMware-hulpprogram ma's zijn mogelijk niet geïnstalleerd of beschadigd. | Installeer/installeer VMware-hulpprogram ma's in de VM en controleer of deze wordt uitgevoerd.
+9002 | De toepassingen die op de virtuele machine zijn geïnstalleerd, kunnen niet worden gedetecteerd. | VMware-hulpprogram ma's zijn mogelijk niet actief. | Installeer/installeer VMware-hulpprogram ma's in de VM en controleer of deze wordt uitgevoerd.
+9003 | De toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd. | Dit kan gebeuren als het besturings systeem dat op de-server wordt uitgevoerd, geen Windows of Linux is. | De detectie van geïnstalleerde toepassingen wordt alleen ondersteund voor Windows-en Linux-servers.
+9004 | De toepassingen die op de server zijn geïnstalleerd, kunnen niet worden gedetecteerd. | Dit kan gebeuren als de virtuele machine is uitgeschakeld. | Als u geïnstalleerde toepassingen op de server wilt detecteren, moet u ervoor zorgen dat de virtuele machine is ingeschakeld.
+9005 | De toepassingen die op de virtuele machine zijn geïnstalleerd, kunnen niet worden gedetecteerd. | Dit kan gebeuren als het besturings systeem dat op de virtuele machine wordt uitgevoerd, geen Windows of Linux is. | De detectie van geïnstalleerde toepassingen wordt alleen ondersteund voor Windows-en Linux-servers.
+9006 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Dit kan gebeuren als de detectie agent niet goed werkt. | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
+9007 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Dit kan gebeuren als de detectie agent niet goed werkt. | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
+9008 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Het probleem kan optreden vanwege een interne fout.  | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
+9009 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Het probleem kan zich voordoen als de UAC-instellingen (Windows User Account Control) op de server beperkend zijn en de detectie van geïnstalleerde toepassingen niet mogelijk maken. | Zoek de instellingen voor Gebruikersaccountbeheer op de server en configureer de UAC-instelling op de server op een van de twee lagere niveaus.
+9010 | Kan de toepassingen die de server hebben geïnstalleerd, niet ophalen. | Het probleem kan optreden vanwege een interne fout.  | Het probleem moet in 24 uur automatisch worden opgelost. Als het probleem zich blijft voordoen, neemt u contact op met Microsoft Ondersteuning.
+8084 | Kan geen toepassingen detecteren vanwege VMware-fout: <Exception from VMware> | Het Azure Migrate-apparaat gebruikt VMware-Api's om toepassingen te detecteren. Dit probleem kan optreden vanwege een uitzonde ring die is opgetreden door vCenter Server tijdens het detecteren van toepassingen. De fout melding van VMware wordt weer gegeven in het fout bericht dat wordt weer gegeven in de portal. | Raadpleeg de [documentatie van VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), zoek naar het fout bericht en volg de stappen voor probleem oplossing in het VMware-artikel om het probleem op te lossen. Neem contact op met Microsoft Ondersteuning als u het probleem nog steeds niet kunt oplossen.
 
 
 ## <a name="fix-assessment-readiness"></a>Gereedheid voor evaluatie oplossen
@@ -237,21 +262,21 @@ Los problemen met de voorbereidings voorbereiding op als volgt:
 
 **Name** | **Fix**
 --- | ---
-Niet-ondersteund opstarttype | Azure biedt geen ondersteuning voor Vm's met een EFI-opstart type. U wordt aangeraden het opstart type te converteren naar BIOS voordat u een migratie uitvoert. <br/><br/>U kunt Azure Migrate server migratie gebruiken om de migratie van dergelijke Vm's te verwerken. Tijdens de migratie wordt het opstart type van de VM naar het BIOS geconverteerd.
+Niet-ondersteund opstart type | Azure biedt geen ondersteuning voor Vm's met een EFI-opstart type. U wordt aangeraden het opstart type te converteren naar BIOS voordat u een migratie uitvoert. <br/><br/>U kunt Azure Migrate server migratie gebruiken om de migratie van dergelijke Vm's te verwerken. Tijdens de migratie wordt het opstart type van de VM naar het BIOS geconverteerd.
 Voorwaardelijk ondersteund Windows-besturings systeem | Het besturings systeem heeft de eind datum van de ondersteuning door gegeven en heeft een aangepaste ondersteunings overeenkomst (CSA) nodig voor [ondersteuning in azure](https://aka.ms/WSosstatement). Overweeg om te upgraden voordat u naar Azure migreert.
 Niet-ondersteund Windows-besturings systeem | Azure ondersteunt alleen [geselecteerde versies van Windows-besturings systemen](https://aka.ms/WSosstatement). U kunt de machine upgraden voordat u naar Azure migreert.
-Voorwaardelijk goedgekeurd Linux-besturingssysteem | Azure bevestigt alleen [geselecteerde Linux-besturingssysteem versies](../virtual-machines/linux/endorsed-distros.md). U kunt de machine upgraden voordat u naar Azure migreert.
-Niet-goedgekeurd Linux-besturingssysteem | De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. U kunt een upgrade uitvoeren naar een [officiële versie van Linux](../virtual-machines/linux/endorsed-distros.md) voordat u naar Azure migreert.
+Voorwaardelijk goedgekeurd Linux-besturings systeem | Azure bevestigt alleen [geselecteerde Linux-besturingssysteem versies](../virtual-machines/linux/endorsed-distros.md). U kunt de machine upgraden voordat u naar Azure migreert.
+Niet-goedgekeurd Linux-besturings systeem | De machine kan worden gestart in azure, maar Azure biedt geen ondersteuning voor het besturings systeem. U kunt een upgrade uitvoeren naar een [officiële versie van Linux](../virtual-machines/linux/endorsed-distros.md) voordat u naar Azure migreert.
 Onbekend besturings systeem | Het besturings systeem van de virtuele machine is opgegeven als ' andere ' in vCenter Server. Dit gedrag blokkeert Azure Migrate van het controleren van de Azure-gereedheid van de virtuele machine. Zorg ervoor dat het besturings systeem wordt [ondersteund](https://aka.ms/azureoslist) door Azure voordat u de computer migreert.
 Niet-ondersteunde bits versie | Vm's met een 32-bits besturings systeem kunnen worden opgestart in azure, maar het wordt aanbevolen dat u een upgrade uitvoert naar 64-bits voordat u naar Azure migreert.
 Vereist een micro soft Visual Studio-abonnement | Op de computer wordt een Windows client-besturings systeem uitgevoerd, dat alleen wordt ondersteund via een Visual Studio-abonnement.
 Er is geen VM gevonden voor de vereiste opslag prestaties | De opslag prestaties (invoer/uitvoer-bewerkingen per seconde [IOPS] en door Voer) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de opslag vereisten voor de machine vóór de migratie.
 Er is geen VM gevonden voor de vereiste netwerk prestaties | De netwerk prestaties (in/uit) die vereist zijn voor de computer, overschrijden de ondersteuning voor Azure-VM'S. Verminder de netwerk vereisten voor de computer.
 De virtuele machine is niet gevonden op de opgegeven locatie | Gebruik een andere doel locatie vóór de migratie.
-Een of meer ongeschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Één<br/><br/> Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en controleert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).<br/><br/> Zorg ervoor dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven) voor elke schijf die aan de VM is gekoppeld.<br/><br/> Als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert, of gebruikt u meerdere schijven in Azure en [stript u deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).
+Een of meer niet-geschikte schijven | Een of meer schijven die zijn gekoppeld aan de virtuele machine voldoen niet aan de vereisten van Azure. Één<br/><br/> Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en evalueert de schijven op basis van de schijf limieten voor Premium Managed disks (32 TB).<br/><br/> Zorg ervoor dat de grootte van de schijf < 64 TB (ondersteund door Ultra-SSD schijven) voor elke schijf die aan de VM is gekoppeld.<br/><br/> Als dat niet het geval is, vermindert u de schijf grootte voordat u naar Azure migreert, of gebruikt u meerdere schijven in Azure en [stript u deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen. Zorg ervoor dat de prestaties (IOPS en door Voer) die nodig zijn voor elke schijf worden ondersteund door door Azure [beheerde virtuele-machine schijven](https://docs.microsoft.com/azure/azure-subscription-service-limits#storage-limits).
 Een of meer niet-geschikte netwerk adapters. | Verwijder ongebruikte netwerk adapters van de machine voordat de migratie wordt gebruikt.
-Het aantal schijven overschrijdt de limiet | Verwijder ongebruikte schijven van de machine vóór de migratie.
-De schijfgrootte overschrijdt de limiet | Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en bepaalt de schijven op basis van Premium-schijf limieten (32 TB).<br/><br/> Azure ondersteunt echter schijven met een grootte van Maxi maal 64 TB (ondersteund door Ultra-SSD schijven). Verklein schijven tot minder dan 64 TB vóór de migratie of gebruik meerdere schijven in Azure en [strip deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen.
+Aantal schijven overschrijdt de limiet | Verwijder ongebruikte schijven van de machine vóór de migratie.
+De schijf grootte overschrijdt de limiet | Azure Migrate: Server analyse biedt momenteel geen ondersteuning voor Ultra-SSD schijven en controleert de schijven op basis van Premium-schijf limieten (32 TB).<br/><br/> Azure ondersteunt echter schijven met een grootte van Maxi maal 64 TB (ondersteund door Ultra-SSD schijven). Verklein schijven tot minder dan 64 TB vóór de migratie of gebruik meerdere schijven in Azure en [strip deze samen](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-striping) om hogere opslag limieten te krijgen.
 De schijf is niet beschikbaar op de opgegeven locatie | Zorg ervoor dat de schijf zich op de doel locatie bevindt voordat u migreert.
 De schijf is niet beschikbaar voor de opgegeven redundantie | De schijf moet het opslag type redundantie gebruiken dat is gedefinieerd in de instellingen voor evaluatie (standaard LRS).
 Kan de schijf geschiktheid niet bepalen vanwege een interne fout | Probeer een nieuwe evaluatie voor de groep te maken.
@@ -276,7 +301,7 @@ Azure Migrate server-evaluatie kan Azure VM Sku's aanbevelen met meer kernen en 
 
 
 - De aanbeveling van de VM-SKU is afhankelijk van de evaluatie-eigenschappen.
-- Dit wordt beïnvloed door het type evaluatie dat u uitvoert in Server evaluatie: Op *basis van prestaties*of *als on-premises*.
+- Dit wordt beïnvloed door het type beoordeling dat u uitvoert in Server beoordeling: op *basis van prestaties*of *als on-premises*.
 - Voor evaluaties op basis van prestaties worden de gebruiks gegevens van de on-premises Vm's (CPU, geheugen, schijf en netwerk gebruik) beschouwd om de juiste doel-VM-SKU voor uw on-premises Vm's te bepalen. Er wordt ook een comfort factor toegevoegd bij het bepalen van effectief gebruik.
 - Voor on-premises grootte worden de prestatie gegevens niet in overweging genomen en wordt de doel-SKU aanbevolen op basis van on-premises toewijzing.
 
@@ -297,7 +322,7 @@ Azure Migrate server beoordeling kan een grotere schijf aanbevelen op basis van 
 
 Als u bijvoorbeeld een on-premises schijf met 32 GB geheugen hebt, maar de geaggregeerde Lees-en schrijf-IOPS voor de schijf 800 IOPS is, raadt server beoordeling een Premium-schijf aan (vanwege de hogere IOPS-vereisten) en wordt vervolgens een schijf-SKU aanbevolen die de r kan ondersteunen IOPS en grootte van ereist. In dit voorbeeld komen we dan uit bij P15 (256 GB, 1100 IOPS). Hoewel de grootte die de on-premises schijf vereist, 32 GB was, raadt server evaluatie een grotere schijf aan vanwege de hoge IOPS-vereiste van de on-premises schijf.
 
-## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Holpen Percentage gebruikte kern geheugens
+## <a name="fix-percentage-of-utilized-core-or-memory-missing"></a>Fix: percentage gegebruikte kern geheugen of ontbrekend RAM
 
 Server Assessment rapporteert "PercentageOfCoresUtilizedMissing" of "PercentageOfMemoryUtilizedMissing" wanneer het Azure Migrate apparaat geen prestatie gegevens kan verzamelen voor de relevante on-premises Vm's.
 
@@ -321,19 +346,17 @@ Met Server Assessment worden doorlopend prestatiegegevens van on-premises machin
 - Als u het piek gebruik voor de periode wilt kiezen en u geen uitschieters wilt missen, selecteert u het 99e percentiel voor percentiel gebruik.
 
 
-
 ## <a name="i-cant-find-dependency-visualization-for-azure-government"></a>Ik kan geen afhankelijkheids visualisatie vinden voor Azure Government
 
 Azure Migrate is afhankelijk van Servicetoewijzing voor de visualisatie functionaliteit van de afhankelijkheid. Omdat Servicetoewijzing momenteel niet beschikbaar is in Azure Government, is deze functionaliteit niet beschikbaar in Azure Government.
 
 ## <a name="dependencies-dont-show-after-installing-agents"></a>Afhankelijkheden worden niet weer gegeven na de installatie van agents
 
-
 Nadat u de afhankelijkheids visualisatie agenten hebt geïnstalleerd op on-premises Vm's, duurt Azure Migrate doorgaans 15-30 minuten om de afhankelijkheden in de portal weer te geven. Als u langer dan 30 minuten hebt gewacht, moet u ervoor zorgen dat de micro soft Monitoring Agent (MMA) verbinding kan maken met de Log Analytics-werk ruimte.
 
 Voor Windows-Vm's:
 1. Start MMA in het configuratie scherm.
-2. Controleer in de eigenschappen van de **micro soft Monitoring Agent** > **Azure log Analytics (OMS)** of de **status** van de werk ruimte groen is.
+2. Controleer in de **Eigenschappen van micro soft Monitoring Agent** > **Azure log Analytics (OMS)** of de **status** van de werk ruimte groen is.
 3. Als de status niet groen is, probeert u de werk ruimte te verwijderen en toe te voegen aan MMA.
 
       ![Het dialoog venster Eigenschappen van MMA](./media/troubleshooting-general/mma-status.png)
@@ -375,7 +398,7 @@ Na de migratie van computers met afhankelijkheids visualisatie ingeschakeld op A
 
 Verzamel Logboeken als volgt:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 2. Druk op F12 om Ontwikkelhulpprogramma's te starten. Als dat nodig is, schakelt u de instelling **vermeldingen wissen bij navigatie** uit.
 3. Selecteer het tabblad **netwerk** en begin met het vastleggen van netwerk verkeer:
    - In Chrome selecteert u **logboek behouden**. De opname moet automatisch worden gestart. Een rode cirkel geeft aan dat verkeer wordt vastgelegd. Als de rode cirkel niet wordt weer gegeven, selecteert u de zwarte cirkel om te starten.

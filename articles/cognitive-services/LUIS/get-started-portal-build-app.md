@@ -10,18 +10,18 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: diberry
-ms.openlocfilehash: 087b3a61902c533648b5d6e1b4b763f88ee5d794
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: cbfb0ddb0ee901545443fc127f80a1837c7bde9b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73669682"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278586"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Snelstartgids: een nieuwe app maken in de LUIS-Portal
 
 [!INCLUDE [Uses preview portal](./includes/uses-portal-preview.md)]
 
-In deze Quick Start maakt u een nieuwe app in de [Luis-Portal](https://www.luis.ai). Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
+In deze Quick Start maakt u een nieuwe app in de LUIS-Portal. Eerst maakt u de basis onderdelen van een app, **intenties**en **entiteiten**. Vervolgens test u de app door een voor beeld van een gebruiker utterance in het interactieve test paneel op te geven om de voorspelde intentie te verkrijgen.
 
 Het bouwen van een app is gratis en er is geen Azure-abonnement vereist. Wanneer u klaar bent om uw app te implementeren, raadpleegt u de [Snelstartgids voor het implementeren van een app](get-started-portal-deploy-app.md). U ziet hoe u een Azure cognitieve service-resource maakt en deze aan de app toewijst.
 
@@ -66,7 +66,7 @@ Voer de volgende stappen uit om intenties te maken:
 
 1. Voer de naam van de doel groep in, `FindForm`en selecteer vervolgens **gereed**.
 
-## <a name="add-an-example-utterance"></a>Een voor beeld-utterance toevoegen
+## <a name="add-an-example-utterance"></a>Een voorbeeld-utterance toevoegen
 
 U kunt bijvoorbeeld uitingen toevoegen nadat u intenties hebt gemaakt. Voor beelden van uitingen zijn tekst die een gebruiker invoert in een chat-bot of een andere client toepassing. Ze wijzen de bedoeling van de tekst van de gebruiker toe aan een LUIS intentie.
 
@@ -85,7 +85,7 @@ Voeg het volgende 15-voor beeld uitingen toe aan de `FindForm` intentie.
 |5|Heb ik HRF-234695 nodig om een interne taak uit te voeren?|
 |6|Moet mijn manager weten wat ik toepas voor een taak met HRF-234091|
 |7|Waar kan ik HRF-234918 verzenden? Ontvang ik een e-mail antwoord dat is ontvangen?|
-|8|HRF-234555|
+|8|hrf-234555|
 |9|Wanneer is HRF-234987 bijgewerkt?|
 |10|Gebruik Form HRF-876345 om te worden toegepast op technische posities|
 |11|Was er een nieuwe versie van HRF-765234 ingediend voor mijn open-aanvraag?|

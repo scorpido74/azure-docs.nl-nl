@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c77e36b5fbeb1ecacd42352c8c52cfd4b617d0e6
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 715752072a14a3220d17d0dbda2efd0786a83de4
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123598"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271273"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: model beheer, implementatie en bewaking met Azure Machine Learning
 
@@ -169,6 +169,6 @@ Meer informatie over het lezen en verkennen van de volgende resources:
 
 + Clients maken die [een geïmplementeerd model gebruiken](how-to-consume-web-service.md)
 
-+ [Machine learning at scale](/architecture/data-guide/big-data/machine-learning-at-scale) (Machine learning op schaal)
++ [Machine learning at scale](/azure/architecture/data-guide/big-data/machine-learning-at-scale) (Machine learning op schaal)
 
 + [Azure AI-referentie architecturen & best practices rep](https://github.com/microsoft/AI)

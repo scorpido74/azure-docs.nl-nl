@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5372bf853092ea55952b45a1300d0f979f1b086c
-ms.sourcegitcommit: f7f70c9bd6c2253860e346245d6e2d8a85e8a91b
+ms.openlocfilehash: b222e67d06bc9fa0fabcc0bc3c0ddd2c6855fbc3
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73062263"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271293"
 ---
 # <a name="how-to-manage-the-local-administrators-group-on-azure-ad-joined-devices"></a>De lokale groep Administrators beheren op apparaten die zijn toegevoegd aan Azure AD
 
@@ -48,7 +48,7 @@ Zie voor het weer geven en bijwerken van het lidmaatschap van de rol globale beh
 In de Azure Portal, kunt u de rol van Apparaatbeheer op de pagina **apparaten** beheren. De pagina **apparaten** openen:
 
 1. Meld u aan bij uw [Azure Portal](https://portal.azure.com) als globale beheerder of een beheerder van het apparaat.
-1. Klik op **Azure Active Directory**in de linkernavigatiebalk. 
+1. Zoek en selecteer *Azure Active Directory*.
 1. Klik in de sectie **beheren** op **apparaten**.
 1. Klik op de pagina **apparaten** op **Apparaatinstellingen**.
 

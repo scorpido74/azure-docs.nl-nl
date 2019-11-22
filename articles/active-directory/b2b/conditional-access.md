@@ -1,5 +1,5 @@
 ---
-title: Voorwaardelijke toegang voor B2B-samenwerkings gebruikers-Azure Active Directory | Microsoft Docs
+title: Voorwaardelijke toegang voor B2B-samenwerkings gebruikers-Azure AD
 description: Azure Active Directory B2B-samen werking ondersteunt multi-factor Authentication (MFA) voor selectieve toegang tot uw bedrijfs toepassingen
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a54e5006a268347148945fbe7fc5f18cfa41036
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: c0b6ceba4c3c9202e2024b5c163c0e98bb6cbf55
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68357114"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273001"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Voorwaardelijke toegang voor B2B-samenwerkings gebruikers
 
@@ -75,9 +75,9 @@ In de huidige release is MFA altijd in de resource pacht, om redenen van voorspe
 
 Als contoso beleid heeft ingeschakeld voor App1, maar niet App2, dan zien we mogelijk het volgende probleem als we de contoso MFA-claim in het token bekijken:
 
-* Dag 1: Een gebruiker heeft MFA in contoso en heeft toegang tot App1. vervolgens wordt er geen extra MFA-prompt weer gegeven in fabrikam.
+* Dag 1: een gebruiker heeft MFA in contoso en heeft toegang tot App1. vervolgens wordt er geen extra MFA-prompt weer gegeven in fabrikam.
 
-* Dag 2: De gebruiker heeft app 2 in contoso geopend, dus nu moet u bij het openen van Fabrikam zich registreren voor MFA.
+* Dag 2: de gebruiker heeft app 2 in contoso geopend, dus nu moet u bij het openen van Fabrikam zich registreren voor MFA.
 
 Dit proces kan verwarrend zijn en kan ertoe leiden dat het aanmelden wordt voltooid.
 
@@ -85,7 +85,7 @@ Ook als contoso een MFA-functionaliteit heeft, is het niet altijd het geval dat 
 
 Ten slotte werkt resource Tenant MFA ook voor Msa's-en sociale Id's en voor partner-organisaties waarop MFA niet is ingesteld.
 
-Daarom moet de aanbeveling voor MFA voor B2B-gebruikers altijd MFA vereisen in de uitnodigende Tenant. Deze vereiste zou kunnen leiden tot dubbele MFA in sommige gevallen, maar wanneer toegang wordt verkregen tot de uitnodigende Tenant, is de ervaring voor eind gebruikers voorspelbaar: Sandra moet worden geregistreerd voor MFA met de uitnodigende Tenant.
+Daarom moet de aanbeveling voor MFA voor B2B-gebruikers altijd MFA vereisen in de uitnodigende Tenant. Deze vereiste zou kunnen leiden tot dubbele MFA in sommige gevallen, maar wanneer toegang wordt verkregen tot de uitnodigende Tenant, is de ervaring voor eind gebruikers voorspelbaar: Sandra moet zich registreren voor MFA met de uitnodigende Tenant.
 
 ### <a name="device-based-location-based-and-risk-based-conditional-access-for-b2b-users"></a>Op apparaten gebaseerde, op locatie gebaseerde en op Risico's gebaseerde voorwaardelijke toegang voor B2B-gebruikers
 

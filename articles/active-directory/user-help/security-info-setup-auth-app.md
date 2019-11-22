@@ -1,6 +1,6 @@
 ---
-title: Set up the Microsoft Authenticator app as your authentication method - Azure AD
-description: How to set up your Security info to verify your identity using the Microsoft Authenticator app as your authentication method.
+title: Stel de Microsoft Authenticator-app in als uw verificatie methode-Azure AD
+description: Hoe u uw beveiligings informatie pagina (preview) instelt om uw identiteit te verifiëren met behulp van de Microsoft Authenticator-app als verificatie methode.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,47 +12,47 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761c9d3ed4cb49a7dc95ea98ce6f884930185643
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 7e3c237f47e889b6af1b49254af9039dc8789006
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233200"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279071"
 ---
-# <a name="set-up-the-microsoft-authenticator-app-as-your-authentication-method-from-the-security-info-preview-page"></a>Set up the Microsoft Authenticator app as your authentication method from the Security info (preview) page
+# <a name="set-up-the-microsoft-authenticator-app-as-your-verification-method"></a>Stel de Microsoft Authenticator-app in als uw verificatie methode
 
-You can follow these steps to add your two-factor verification and password reset methods. After you've set this up the first time, you can return to the **Security info** page to add, update, or delete your security information.
+U kunt deze stappen volgen om uw twee ledige verificatie en de methoden voor het opnieuw instellen van het wacht woord toe te voegen. Nadat u dit de eerste keer hebt ingesteld, kunt u terugkeren naar de pagina met **beveiligings** gegevens om uw beveiligings gegevens toe te voegen, bij te werken of te verwijderen.
 
-If you're prompted to set this up immediately after you sign in to your work or school account, see the detailed steps in the [Set up your security info from the sign-in page prompt](security-info-setup-signin.md) article.
+Als u wordt gevraagd om dit onmiddellijk in te stellen nadat u zich hebt aangemeld bij uw werk-of school account, raadpleegt u de gedetailleerde stappen in het artikel [uw beveiligings informatie instellen vanaf het aanmeldings](security-info-setup-signin.md) venster.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->If you don't see an authenticator app option, it's possible that your organization doesn't allow you to use an authentication app for verification. In this case, you'll need to choose another method or contact your administrator for more help.
+>Als u de optie verificator-app niet ziet, is het mogelijk dat uw organisatie geen verificatie-app voor verificatie gebruikt. In dit geval moet u een andere methode kiezen of contact opnemen met de beheerder voor meer informatie.
 
-## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>Set up the Microsoft Authenticator app from the Security info page
+## <a name="set-up-the-microsoft-authenticator-app-from-the-security-info-page"></a>De Microsoft Authenticator-app instellen op de pagina met beveiligings gegevens
 
-Depending on your organization’s settings, you might be able to use an authentication app as one of your security info methods. You aren't required to use the Microsoft Authenticator app, and you can choose a different app during the set up process. However, this article uses the Microsoft Authenticator app.
+Afhankelijk van de instellingen van uw organisatie kunt u mogelijk een verificatie-app gebruiken als een van uw methoden voor beveiligings gegevens. U hoeft de Microsoft Authenticator-app niet te gebruiken en u kunt een andere app kiezen tijdens het instellen van het proces. In dit artikel wordt echter gebruikgemaakt van de app Microsoft Authenticator.
 
-### <a name="to-set-up-the-microsoft-authenticator-app"></a>To set up the Microsoft Authenticator app
+### <a name="to-set-up-the-microsoft-authenticator-app"></a>De app Microsoft Authenticator instellen
 
-1. Sign in to your work or school account and then go to your https://myprofile.microsoft.com/ page.
+1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
 
-    ![My Profile page, showing highlighted Security info links](media/security-info/securityinfo-myprofile-page.png)
+    ![Mijn profiel pagina, met gemarkeerde koppelingen voor beveiligings gegevens](media/security-info/securityinfo-myprofile-page.png)
 
-2. Select **Security info** from the left navigation pane or from the link in the **Security info** block, and then select **Add method** from the **Security info** page.
+2. Selecteer **beveiligings gegevens** in het navigatie deel venster links of op de koppeling in het blok met **beveiligings gegevens** en selecteer vervolgens **methode toevoegen** op de pagina **beveiligings gegevens** .
 
-    ![Security info page with highlighted Add method option](media/security-info/securityinfo-myprofile-addmethod-page.png)
+    ![Pagina met beveiligings gegevens met de gemarkeerde optie methode toevoegen](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
-3. On the **Add a method** page, select **Authenticator app** from the drop-down list, and then select **Add**.
+3. Selecteer op de pagina **een methode toevoegen** de optie **verificator-app** in de vervolg keuzelijst en selecteer vervolgens **toevoegen**.
 
-    ![Add method box, with Authenticator app selected](media/security-info/securityinfo-myprofile-addauthapp.png)
+    ![Het vak methode toevoegen met de verificator-app geselecteerd](media/security-info/securityinfo-myprofile-addauthapp.png)
 
-4. On the **Start by getting the app** page, select **Download now** to download and install the Microsoft Authenticator app on your mobile device, and then select **Next**.
+4. Selecteer op de pagina **beginnen met het ophalen van de app de** optie **nu downloaden** om de app Microsoft Authenticator op uw mobiele apparaat te downloaden en te installeren en selecteer vervolgens **volgende**.
 
     Zie voor meer informatie over het downloaden en installeren van de app, [De Microsoft Authenticator-app downloaden en installeren](user-help-auth-app-download-install.md).
 
-    ![Start by getting the app page](media/security-info/securityinfo-myprofile-getauthapp.png)
+    ![Begin met het ophalen van de app-pagina](media/security-info/securityinfo-myprofile-getauthapp.png)
 
    > [!Note]
    > Als u een andere verificator-app dan de Microsoft Authenticator-app gebruiken wilt, selecteert u de koppeling **Ik wil een andere verificator-app gebruiken**.
@@ -61,12 +61,12 @@ Depending on your organization’s settings, you might be able to use an authent
 
 5. Blijven op de **Uw account instellen**-pagina tijdens het instellen van de Microsoft Authenticator-app op uw mobiele apparaat.
 
-    ![Set up the authenticator app page](media/security-info/securityinfo-myprofile-setupauthapp.png)
+    ![De verificator-app-pagina instellen](media/security-info/securityinfo-myprofile-setupauthapp.png)
 
 6. Open de Microsoft Authenticator-app, selecteer dat u meldingen toestaat (als u hierom wordt gevraagd), selecteer **Account toevoegen** uit het pictogram **Aanpassen en controle** in de rechterbovenhoek en selecteer vervolgens **Werk- of schoolaccount**.
 
     >[!Note]
-    >If this is the first time you're setting up the Microsoft Authenticator app, you might receive a prompt asking whether to allow the app to access your camera (iOS) or to allow the app to take pictures and record video (Android). You must select **Allow** so the authenticator app can access your camera to take a picture of the QR code in the next step. If you don't allow the camera, you can still set up the authenticator app, but you'll need to add the code information manually. For information about how to add the code manually, see see [Manually add an account to the app](user-help-auth-app-add-account-manual.md).
+    >Als dit de eerste keer is dat u de Microsoft Authenticator-app instelt, wordt u mogelijk gevraagd of u de app toegang wilt geven tot uw camera (iOS) of dat de app afbeeldingen en record video (Android) mag maken. U moet **toestaan** inschakelen zodat de verificator-app toegang heeft tot uw camera om een foto van de QR-code in de volgende stap te maken. Als u de camera niet toestaat, kunt u nog steeds de verificator-app instellen, maar u moet de code gegevens hand matig toevoegen. Zie [hand matig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md)voor meer informatie over het hand matig toevoegen van de code.
 
 7. Ga terug naar de pagina **Uw account instellen** op uw computer en selecteer vervolgens **Volgende**.
 
@@ -74,7 +74,7 @@ Depending on your organization’s settings, you might be able to use an authent
 
     ![De QR-code scannen met behulp van de Authenticator-app](media/security-info/securityinfo-myprofile-qrcodeauthapp.png)
 
-8. Scan the provided code with the Microsoft Authenticator app QR code reader, which appeared on your mobile device after you created your work or school account in Step 6.
+8. Scan de meegeleverde code met de Microsoft Authenticator QR-code lezer van de app, die op uw mobiele apparaat werd weer gegeven nadat u uw werk-of school account hebt gemaakt in stap 6.
 
     De verificator-app moet nu uw werk of schoolaccount toevoegen zonder aanvullende informatie van u. Als de QR-codelezer de code echter niet lezen kan, kunt u de **Koppeling kan QR-code niet scannen** selecteren en handmatig de code en URL in de Microsoft Authenticator-app invoeren. Zie voor meer informatie over het handmatig toevoegen van een code [Handmatig een account toevoegen aan de app](user-help-auth-app-add-account-manual.md).
 
@@ -90,63 +90,63 @@ Depending on your organization’s settings, you might be able to use an authent
 
      Uw beveiligingsgegevens zijn bijgewerkt voor het standaard gebruik van de Microsoft Authenticator-app om uw identiteit te verifiëren bij het gebruik van verificatie in twee stappen of opnieuw instellen van het wachtwoord.
 
-## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Delete your authenticator app from your security info methods
+## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Je verificator-app uit je beveiligings gegevens methoden verwijderen
 
-If you no longer want to use your authenticator app as a security info method, you can remove it from the **Security info** page. This works for all authenticator apps, not just the Microsoft Authenticator app. After you delete the app, you'll have to go into the authenticator app on your mobile device and delete the account.
+Als u uw verificator-app niet meer wilt gebruiken als een beveiligings gegevens methode, kunt u deze verwijderen van de pagina met **beveiligings gegevens** . Dit werkt voor alle verificator-apps, niet alleen de Microsoft Authenticator-app. Nadat u de app hebt verwijderd, moet u naar de verificator-app op uw mobiele apparaat gaan en het account verwijderen.
 
 >[!Important]
->If you delete the authenticator app by mistake, there's no way to undo it. You'll have to add the authenticator app again, following the steps in the [Set up the authenticator app](#set-up-the-microsoft-authenticator-app-from-the-security-info-page) section of this article.
+>Als u de verificator-app per ongeluk verwijdert, is het niet mogelijk om deze ongedaan te maken. U moet de verificator-app opnieuw toevoegen door de stappen in de sectie [de verificator-app instellen](#set-up-the-microsoft-authenticator-app-from-the-security-info-page) in dit artikel te volgen.
 
-### <a name="to-delete-the-authenticator-app"></a>To delete the authenticator app
+### <a name="to-delete-the-authenticator-app"></a>De verificator-app verwijderen
 
-1. On the **Security info** page, select the **Delete** link next to the Authenticator app.
+1. Selecteer op de pagina **beveiligings gegevens** de koppeling **verwijderen** naast de verificator-app.
 
-    ![Link to delete the authenticator app from security info](media/security-info/securityinfo-myprofile-deleteauthapp.png)
+    ![Koppeling om de verificator-app uit de beveiligings gegevens te verwijderen](media/security-info/securityinfo-myprofile-deleteauthapp.png)
 
-2. Select **Yes** from the confirmation box to delete the authenticator app. After the authenticator app is deleted, it's removed from your security info and it disappears from the **Security info** page. If the authenticator app is your default method, the default will change to another available method.
+2. Selecteer **Ja** in het bevestigings venster om de verificator-app te verwijderen. Nadat de verificator-app is verwijderd, wordt deze verwijderd uit de beveiligings gegevens en verdwijnt deze van de pagina met **beveiligings gegevens** . Als de verificator-app de standaard methode is, wordt de standaard waarde gewijzigd in een andere beschik bare methode.
 
-3. Open the authenticator app on your mobile device, select **Edit accounts**, and then delete your work or school account from the authenticator app.
+3. Open de verificator-app op uw mobiele apparaat, selecteer **accounts bewerken**en verwijder vervolgens uw werk-of school account uit de verificator-app.
 
-    Your account is completely removed from the authenticator app for two-factor verification and password reset requests.
+    Uw account is volledig verwijderd uit de verificator-app voor twee ledige verificatie en aanvragen voor het opnieuw instellen van wacht woorden.
 
-## <a name="change-your-default-security-info-method"></a>Change your default security info method
+## <a name="change-your-default-security-info-method"></a>De standaard methode voor beveiligings gegevens wijzigen
 
-If you want the authenticator app to be the default method used when you sign-in to your work or school account using two-factor verification or for password reset requests, you can set it from the Security **info** page.
+Als u wilt dat de verificator-app de standaard methode wordt gebruikt wanneer u zich aanmeldt bij uw werk-of school account met behulp van twee ledige verificatie of voor aanvragen voor het opnieuw instellen van wacht woorden, kunt u deze instellen op de pagina met beveiligings **gegevens** .
 
-### <a name="to-change-your-default-security-info-method"></a>To change your default security info method
+### <a name="to-change-your-default-security-info-method"></a>De standaard methode voor beveiligings gegevens wijzigen
 
-1. On the **Security info** page, select the **Change** link next to the **Default sign-in method** information.
+1. Selecteer op de pagina **beveiligings gegevens** de **wijzigings** koppeling naast de standaard gegevens van de **aanmeldings methode** .
 
-    ![Change link for default sign-in method](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
+    ![Koppeling wijzigen voor standaard aanmeldings methode](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 
-2. Choose **Microsoft Authenticator - notification** from the drop-down list of available methods. If you're not using the Microsoft Authenticator app, select the **Authenticator app or hardware token** option.
+2. Kies **Microsoft Authenticator-melding** in de vervolg keuzelijst met beschik bare methoden. Als u de app Microsoft Authenticator niet gebruikt, selecteert u de optie **verificator-app of hardware-token** .
 
-    ![Choose method for default sign-in](media/security-info/securityinfo-myprofile-defaultauthapp.png)
+    ![Methode kiezen voor standaard aanmelding](media/security-info/securityinfo-myprofile-defaultauthapp.png)
 
-3. Select **Confirm**.
+3. Selecteer **bevestigen**.
 
-    The default method used for sign-in changes to the Microsoft Authenticator app.
+    De standaard methode voor het aanmelden wordt gewijzigd in de app Microsoft Authenticator.
 
-## <a name="additional-security-info-methods"></a>Additional security info methods
+## <a name="additional-security-info-methods"></a>Aanvullende beveiligings gegevens methoden
 
-You have additional options for how your organization contacts you to verify your identity, based on what's you're trying to do. De opties zijn:
+U hebt extra opties voor het controleren van uw identiteit door uw organisatie, op basis van wat you're u probeert te doen. De opties zijn:
 
-- **Mobile device text.** Enter your mobile device number and get a text a code you'll use for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a text message (SMS), see [Set up security info to use text messaging (SMS)](security-info-setup-text-msg.md).
+- **Tekst van mobiel apparaat.** Voer het nummer van uw mobiele apparaat in en ontvang een tekst die u gebruikt voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Voor stapsgewijze instructies over het verifiëren van uw identiteit met een SMS-bericht, Zie [beveiligings informatie instellen voor het gebruik van tekst berichten (SMS)](security-info-setup-text-msg.md).
 
-- **Mobile device or work phone call.** Enter your mobile device number and get a phone call for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a phone number, see [Set up security info to use phone calls](security-info-setup-phone-number.md).
+- **Mobiel apparaat of telefoon nummer van werk.** Voer het nummer van uw mobiele apparaat in en ontvang een telefoon oproep voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van telefoon gesprekken](security-info-setup-phone-number.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een telefoon nummer.
 
-- **Security key.** Register your Microsoft-compatible security key and use it along with a PIN for two-step verification or password reset. For step-by-step instructions about how to verify your identity with a security key, see [Set up security info to use a security key](security-info-setup-security-key.md).
+- **Beveiligings sleutel.** Registreer uw door micro soft compatibele beveiligings sleutel en gebruik deze samen met een pincode voor verificatie in twee stappen of het opnieuw instellen van wacht woorden. Zie [beveiligings informatie instellen voor het gebruik van een beveiligings sleutel](security-info-setup-security-key.md)voor stapsgewijze instructies over het verifiëren van uw identiteit met een beveiligings sleutel.
 
-- **Email address.** Enter your work or school email address to get an email for password reset. This option isn't available for two-step verification. For step-by-step instructions about how to set up your email, see [Set up security info to use email](security-info-setup-email.md).
+- **E-mail adres.** Voer het e-mail adres van uw werk of school in om een e-mail te ontvangen voor het opnieuw instellen van wacht woorden. Deze optie is niet beschikbaar voor verificatie in twee stappen. Zie [beveiligings informatie instellen voor het gebruik van e-mail](security-info-setup-email.md)voor stapsgewijze instructies voor het instellen van uw e-mail adres.
 
-- **Security questions.** Answer some security questions created by your administrator for your organization. This option is only available for password reset and not for two-step verification. For step-by-step instructions about how to set up your security questions, see the [Set up security info to use security questions](security-info-setup-questions.md) article.
+- **Beveiligings vragen.** Beantwoord enkele beveiligings vragen die door uw beheerder voor uw organisatie zijn gemaakt. Deze optie is alleen beschikbaar voor het opnieuw instellen van wacht woorden en niet voor verificatie in twee stappen. Voor stapsgewijze instructies over het instellen van uw beveiligings vragen raadpleegt u het artikel [beveiligings vragen instellen voor het gebruik](security-info-setup-questions.md) van beveiligings problemen.
 
     >[!Note]
-    >If some of these options are missing, it's most likely because your organization doesn't allow those methods. If this is the case, you'll need to choose an available method or contact your administrator for more help.
+    >Als sommige van deze opties ontbreken, is het waarschijnlijk dat uw organisatie deze methoden niet toestaat. Als dit het geval is, moet u een beschik bare methode kiezen of contact opnemen met de beheerder voor meer hulp.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Sign-in using the Microsoft Authenticator app, following steps in the [Sign in using two-step verification or security info](security-info-setup-signin.md) article.
+- Meld u aan met behulp van de Microsoft Authenticator-app en volg de stappen in het artikel [Aanmelden met verificatie in twee stappen of beveiligings informatie](security-info-setup-signin.md) .
 
 - Stel uw wachtwoord opnieuw in als u dit hebt verloren of bent vergeten, uit het [Portal voor wachtwoordherstel](https://passwordreset.microsoftonline.com/) of volg de stappen in het artikel [Uw werk- of schoolaccount wachtwoord opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 

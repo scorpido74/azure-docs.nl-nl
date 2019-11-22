@@ -1,5 +1,5 @@
 ---
-title: Aan de slag Azure multi-factor Authentication-Server - Azure Active Directory
+title: Aan de slag met Azure-Multi-Factor Authentication-server-Azure Active Directory
 description: Stapsgewijs aan de slag met Azure MFA-Server on-premises
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,28 +11,28 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15900758945fd5c97198caf47ff01fcfb5a6a794
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4682425dfd3f32e139390ef65e267a80d95f6ccd
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67057401"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74268997"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Aan de slag met de Azure Multi-Factor Authentication-server
 
 <center>
 
-![Aan de slag met MFA-Server on-premises](./media/howto-mfaserver-deploy/server2.png)</center>
+![aan de slag met MFA server on-premises](./media/howto-mfaserver-deploy/server2.png)</center>
 
 Op deze pagina vindt u informatie over een nieuwe installatie van de server en leert u deze in te stellen met on-premises Active Directory. Als u de MFA-server hebt geïnstalleerd en op zoek bent naar een upgrade, raadpleegt u [Upgraden naar de meest recente Azure Multi-Factor Authentication-server](howto-mfaserver-deploy-upgrade.md). Zie [De webservice voor de mobiele app van de Azure Multi-Factor Authentication-server implementeren](howto-mfaserver-deploy-mobileapp.md) voor meer informatie over het installeren van de webservice.
 
 > [!IMPORTANT]
-> Vanaf 1 juli 2019, zal Microsoft MFA-Server niet meer bieden voor nieuwe implementaties. Nieuwe klanten die willen graag meervoudige verificatie van gebruikers vereisen moeten cloud-gebaseerde Azure multi-factor Authentication gebruiken. Bestaande klanten die vóór 1 juli MFA-Server hebben geactiveerd, worden kunnen de nieuwste versie downloaden door toekomstige updates en zoals gebruikelijk activeringsreferenties genereren.
+> Met ingang van 1 juli 2019 biedt micro soft geen MFA-server meer voor nieuwe implementaties. Nieuwe klanten die multi-factor Authentication van hun gebruikers willen vereisen, moeten gebruikmaken van Azure Multi-Factor Authentication op basis van de Cloud. Bestaande klanten die MFA-server voorafgaand aan 1 juli hebben geactiveerd, kunnen de nieuwste versie downloaden, toekomstige updates en activerings referenties genereren.
 
 ## <a name="plan-your-deployment"></a>Uw implementatie plannen
 
 > [!WARNING]
-> Vanaf maart van de MFA-Server 2019 is downloads alleen beschikbaar voor betaalde tenants. Gratis proefversie/tenants wordt niet langer kunnen downloaden of genereren en gebruiken van activering.
+> Vanaf maart van 2019 MFA-server downloads is alleen beschikbaar voor betaalde tenants. Tenants met gratis en proef versies kunnen geen activerings referenties meer downloaden of genereren en gebruiken.
 
 Voordat u de Multi-Factor Authentication-server downloadt, moet u bedenken wat uw laadvereisten en de vereisten voor hoge beschikbaarheid zijn. Gebruik deze informatie om te bepalen hoe en waar u wilt implementeren.
 
@@ -41,10 +41,10 @@ Een goede richtlijn voor de hoeveelheid geheugen die u nodig hebt, is het aantal
 | Gebruikers | RAM |
 | ----- | --- |
 | 1-10.000 | 4 GB |
-| 10\.001-50.000 | 8 GB |
-| 50\.001-100.000 | 12 GB |
-| 100\.000-200.001 | 16 GB |
-| 200\.001+ | 32 GB |
+| 10.001-50.000 | 8 GB |
+| 50.001-100.000 | 12 GB |
+| 100.000-200.001 | 16 GB |
+| 200.001+ | 32 GB |
 
 Moet u meerdere servers voor hoge beschikbaarheid of taakverdeling instellen? Er zijn een aantal manieren voor het instellen van deze configuratie met Azure MFA-server. Wanneer u uw eerste Azure MFA-server installeert, wordt die uw master. Extra servers worden ondergeschikt en synchroniseren automatisch gebruikers en configuratie met de master. Vervolgens kunt u één primaire server configureren en de rest als back-up laten fungeren, of u kunt een taakverdeling tussen alle servers instellen.
 
@@ -54,11 +54,11 @@ Wanneer een master Azure MFA-server offline gaat, kunnen de ondergeschikte serve
 
 Zorg ervoor dat de server die u voor Azure Multi-Factor Authentication gebruikt, voldoet aan de volgende vereisten:
 
-| Vereisten voor Azure Multi-Factor Authentication-server | Description |
+| Vereisten voor Azure Multi-Factor Authentication-server | Beschrijving |
 |:--- |:--- |
 | Hardware |<li>200 MB aan vasteschijfruimte</li><li>Voor x32 of x64 geschikte processor</li><li>1 GB of meer RAM-geheugen</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, alle edities</li><li>Windows 8, alle edities</li><li>Windows 7, alle edities</li><li>Windows Vista, alle edities, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 of een recentere versie als de installatie wordt uitgevoerd vanuit de gebruikersportal of de webservice-SDK</li> |
-| Machtigingen | Domeinbeheerder of ondernemingsadministrator-account om u te registreren bij Active Directory |
+| Machtigingen | Domein beheerder of ENTER prise-beheerders account om te registreren bij Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Onderdelen van Azure MFA-server
 
@@ -97,16 +97,16 @@ Als u de functie Gebeurtenisbevestiging niet gebruikt en gebruikers geen mobiele
 ## <a name="download-the-mfa-server"></a>De MFA-server downloaden
 
 > [!WARNING]
-> Vanaf maart van de MFA-Server 2019 is downloads alleen beschikbaar voor betaalde tenants. Gratis proefversie/tenants wordt niet langer kunnen downloaden of genereren en gebruiken van activering.
+> Vanaf maart van 2019 MFA-server downloads is alleen beschikbaar voor betaalde tenants. Tenants met gratis en proef versies kunnen geen activerings referenties meer downloaden of genereren en gebruiken.
 
 Volg deze stappen om de Azure Multi-Factor Authentication-server te downloaden via Azure Portal:
 
 1. Meld u als beheerder aan bij [Azure Portal](https://portal.azure.com).
-2. Selecteer **Azure Active Directory** > **MFA-server**.
+2. Zoek en selecteer *Azure Active Directory*. Selecteer **MFA server**.
 3. Selecteer **Serverinstellingen**.
 4. Selecteer **Downloaden** en volg de instructies op de downloadpagina om het installatieprogramma op te slaan. 
 
-   ![MFA-Server downloaden via de Azure-portal](./media/howto-mfaserver-deploy/downloadportal.png)
+   ![MFA-server downloaden via de Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)
 
 5. Houd deze pagina open want er wordt naar verwezen na het uitvoeren van het installatieprogramma.
 
@@ -119,7 +119,7 @@ Nu u de server hebt gedownload, kunt u deze installeren en configureren. Zorg er
 3. Nadat de installatie is voltooid, klikt u op **Voltooien**. De configuratiewizard wordt gestart.
 4. Schakel in het welkomstscherm van de configuratiewizard het selectievakje **De wizard Verificatieconfiguratie overslaan** en klik op **Volgende**. De wizard wordt gesloten en de server wordt gestart.
 
-   ![De wizard Authenticatieconfiguratie overslaan](./media/howto-mfaserver-deploy/skip2.png)
+   ![Overs laan met de verificatie configuratie wizard](./media/howto-mfaserver-deploy/skip2.png)
 
 5. Klik op de pagina waarvan u de server hebt gedownload, op de knop **Activeringsreferenties genereren**. Kopieer deze informatie naar de Azure MFA-server in de desbetreffende vakken en klik op **Activeren**.
 
@@ -139,7 +139,7 @@ Klik op het e-mailpictogram links om de instellingen voor het verzenden van deze
 
 Op het tabblad E-mailinhoud ziet u alle beschikbare e-mailsjablonen waaruit u kunt kiezen. Afhankelijk van hoe u uw gebruikers hebt geconfigureerd voor het uitvoeren van verificatie in twee stappen, kiest u de sjabloon die voor u het meest geschikt is.
 
-![MFA Server e-mailsjablonen in de console](./media/howto-mfaserver-deploy/email2.png)
+![E-mail sjablonen voor MFA-server in de-console](./media/howto-mfaserver-deploy/email2.png)
 
 ## <a name="import-users-from-active-directory"></a>Gebruikers uit Active Directory importeren
 
@@ -180,7 +180,7 @@ Wanneer u de Multi-Factor Authentication (MFA)-server on-premises gebruikt, word
 Naast de bovenstaande velden worden ook het verificatieresultaat (geslaagd/geweigerd) en de reden voor eventuele weigeringen opgeslagen met de verificatiegegevens en beschikbaar gesteld in de verificatie-/gebruiksrapporten.
 
 > [!IMPORTANT]
-> Vanaf maart van 2019 de opties telefoongesprek zich niet beschikbaar voor gebruikers van de MFA-Server in vrij/proefversie van Azure AD-tenants. SMS-berichten worden niet beïnvloed door deze wijziging. Telefonische oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging geldt alleen voor gratis/proefversie van Azure AD-tenants.
+> Vanaf maart 2019 zijn de opties voor telefoon gesprekken niet beschikbaar voor MFA-Server gebruikers in azure AD-tenants voor gratis/proef versies. SMS-berichten worden niet beïnvloed door deze wijziging. De telefoon oproep blijft beschikbaar voor gebruikers in betaalde Azure AD-tenants. Deze wijziging is alleen van invloed op de Azure AD-tenants gratis en proef versie.
 
 ## <a name="back-up-and-restore-azure-mfa-server"></a>Back-ups maken van Azure MFA-server en deze terugzetten
 

@@ -14,12 +14,12 @@ ms.date: 11/04/2019
 ms.author: cephalin
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 93dfe784d45cd9cd93d22c5e8c3275c563f7f88b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 1546ded1977e1e26792189e1d992d106d3d77ef2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572085"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271288"
 ---
 # <a name="use-an-ssl-certificate-in-your-code-in-azure-app-service"></a>Gebruik een SSL-certificaat in uw code in Azure App Service
 
@@ -27,7 +27,7 @@ In de toepassings code kunt u toegang krijgen tot de [open bare of persoonlijke 
 
 Deze methode voor het gebruik van certificaten in uw code maakt gebruik van de SSL-functionaliteit in App Service. hiervoor moet uw app in de **Basic** -laag of hoger zijn. Als uw app zich in de **vrije** of **gedeelde** laag bevindt, kunt u [het certificaat bestand toevoegen aan de opslag plaats van uw app](#load-certificate-from-file).
 
-Wanneer u uw SSL-certificaten App Service beheren, kunt u de certificaten en de code van uw toepassing afzonderlijk onderhouden en uw gevoelige gegevens beveiligen.
+Als u App Service uw SSL-certificaten laat beheren, kunt u de certificaten afzonderlijk houden van de code van uw toepassing en zo uw gevoelige gegevens beschermen.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -63,7 +63,7 @@ Met de instelling voor de `WEBSITE_LOAD_CERTIFICATES`-app worden de opgegeven ce
 - **Geïsoleerde** laag-in [lokale Machine\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores). 
 - Alle andere lagen: in [huidige User\My](/windows-hardware/drivers/install/local-machine-and-current-user-certificate-stores).
 
-In C# code opent u het certificaat via de vinger afdruk van het certificaat. Met de volgende code wordt een certificaat geladen met de vinger afdruk `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
+In C# code opent u het certificaat via de vinger afdruk van het certificaat. De volgende code laadt een certificaat met de vingerafdruk `E661583E8FABEF4C0BEF694CBC41C28FB81CD870`.
 
 ```csharp
 using System;
@@ -141,6 +141,8 @@ Als u een certificaat bestand moet laden dat u hand matig uploadt, is het beter 
 > ```azurecli-interactive
 > az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings WEBSITE_LOAD_USER_PROFILE=1
 > ```
+>
+> Deze methode voor het gebruik van certificaten in uw code maakt gebruik van de SSL-functionaliteit in App Service. hiervoor moet uw app in de **Basic** -laag of hoger zijn.
 
 In het C# volgende voor beeld wordt een openbaar certificaat geladen vanuit een relatief pad in uw app:
 

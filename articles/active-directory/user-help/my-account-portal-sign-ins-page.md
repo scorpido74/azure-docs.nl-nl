@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9d134e522575f30fd1f1be8176e0e1589faa7ac
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: a45caeed8b601a845b0eb0fbcd25f1ec097a77a1
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73587626"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279044"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>Uw recente aanmeldings activiteit bekijken en doorzoeken via de pagina Mijn aanmeldingen (preview)
 
@@ -29,7 +29,7 @@ U kunt al uw recente aanmeldings activiteiten voor werk-of school accounts bekij
 
 - Welke apps de aanvaller probeerde te openen.
 
-## <a name="view-your-recent-sign-in-activity"></a>Uw recente aanmeldings activiteit weer geven
+## <a name="view-your-recent-sign-in-activity"></a>Uw recente aanmeldingsactiviteiten bekijken
 
 1. Meld u aan bij uw werk-of school account en ga vervolgens naar de pagina met https://myprofile.microsoft.com/.
 

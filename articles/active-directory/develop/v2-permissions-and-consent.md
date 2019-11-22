@@ -18,12 +18,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b4aa4fbff4e1b89b87dd05e0547db8e14ae5835
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 48ddb4c3baa40bf70fe12451f048b2228c8bd441
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73927138"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271503"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Machtigingen en toestemming in het micro soft Identity platform-eind punt
 
@@ -41,6 +41,7 @@ Het micro soft Identity-platform implementeert het [OAuth 2,0](active-directory-
 * Microsoft Graph: `https://graph.microsoft.com`
 * Office 365 mail-API: `https://outlook.office.com`
 * Azure AD Graph: `https://graph.windows.net`
+* Azure Key Vault: `https://vault.azure.net`
 
 > [!NOTE]
 > We raden u ten zeerste aan om Microsoft Graph te gebruiken in plaats van Azure AD Graph, Office 365 mail API, enzovoort.
@@ -89,7 +90,7 @@ Als een app zich aanmeldt met behulp van [OpenID Connect Connect](active-directo
 
 Het `email` bereik kan worden gebruikt met het `openid` bereik en andere. Het geeft de app toegang tot het primaire e-mail adres van de gebruiker in de vorm van de `email` claim. De `email` claim is alleen opgenomen in een token als er een e-mail adres is gekoppeld aan het gebruikers account, wat niet altijd het geval is. Als het `email` bereik gebruikt, moet uw app worden voor bereid voor het afhandelen van een geval waarin de `email` claim niet in het token bestaat.
 
-### <a name="profile"></a>uplinkpoortprofiel
+### <a name="profile"></a>profile
 
 Het `profile` bereik kan worden gebruikt met het `openid` bereik en andere. Hiermee krijgt de app toegang tot een aanzienlijke hoeveelheid informatie over de gebruiker. De informatie waartoe het toegang heeft, is inclusief, maar is niet beperkt tot, de gegeven naam, de voor keur, de gebruikers naam en de object-ID van de gebruiker. Voor een volledige lijst met de profiel claims die beschikbaar zijn in de para meter id_tokens voor een specifieke gebruiker, raadpleegt u de [`id_tokens` verwijzing](id-tokens.md).
 

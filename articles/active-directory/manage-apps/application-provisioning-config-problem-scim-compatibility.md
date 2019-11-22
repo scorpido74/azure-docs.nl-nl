@@ -1,6 +1,6 @@
 ---
-title: Bekende problemen en oplossingen met SCIM 2.0-protocol naleving van de Azure AD-gebruiker Provisioning-service | Microsoft Docs
-description: Het oplossen van veelvoorkomende problemen met protocol compatibiliteit geconfronteerd bij het toevoegen van een toepassing buiten de galerie die ondersteuning biedt voor SCIM 2.0 naar Azure AD
+title: Bekende problemen met SCIM 2,0-protocol compatibiliteit-Azure AD
+description: Veelvoorkomende problemen met protocol compatibiliteit oplossen bij het toevoegen van een niet-galerie toepassing die ondersteuning biedt voor SCIM 2,0 in azure AD
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -16,102 +16,102 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a0e595d2120d3cdccd42c502a83de9d5ed3ff4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65963175"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275799"
 ---
-# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2.0-protocol naleving van de Azure AD-gebruiker Provisioning-service
+# <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekende problemen en oplossingen met SCIM 2,0-protocol compatibiliteit van de Azure AD User Provisioning Service
 
-Azure Active Directory (Azure AD) kunt automatisch inrichten van gebruikers en groepen met elke toepassing of het systeem dat door een webservice met de interface is fronted gedefinieerd in de [systeem voor meerdere domeinen Identity Management (SCIM) 2.0-protocol specificatie](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
+Azure Active Directory (Azure AD) kan gebruikers en groepen automatisch inrichten voor elke toepassing of elk systeem dat wordt gefronteerd door een webservice met de interface die is gedefinieerd in het [systeem voor Identity Management (scim) 2,0-protocol specificatie](https://tools.ietf.org/html/draft-ietf-scim-api-19). 
 
-Azure AD-ondersteuning voor het SCIM 2.0-protocol wordt beschreven in [met behulp van systeem voor meerdere domeinen Identity Management (SCIM) voor het automatisch inrichten van gebruikers en groepen uit Azure Active Directory met toepassingen](use-scim-to-provision-users-and-groups.md), waarin de specifieke onderdelen van het protocol die worden geïmplementeerd om automatisch inrichten van gebruikers en groepen uit Azure AD met toepassingen die ondersteuning bieden voor SCIM 2.0.
+De ondersteuning van Azure AD voor het SCIM 2,0-protocol wordt beschreven in [met behulp van systeem voor Cross-Domain Identity Management (scim) voor het automatisch inrichten van gebruikers en groepen van Azure Active Directory naar toepassingen](use-scim-to-provision-users-and-groups.md), waarin de specifieke onderdelen van het door IT geïmplementeerde protocol worden vermeld om automatisch gebruikers en groepen van Azure AD in te richten op toepassingen die scim 2,0 ondersteunen.
 
-Dit artikel beschrijft de huidige en eerdere problemen met de Azure AD-gebruiker inrichting van de service voldoet aan het SCIM 2.0-protocol en hoe u deze problemen kunt omzeilen.
+In dit artikel worden huidige en eerdere problemen beschreven met betrekking tot het SCIM 2,0-protocol van Azure AD User Provisioning Service, en hoe u deze problemen omzeilt.
 
 > [!IMPORTANT]
-> De meest recente update naar de Azure AD gebruiker provisioning service SCIM client is uitgevoerd op 18 December 2018. Deze update gericht de bekende compatibiliteitsproblemen die worden vermeld in de onderstaande tabel. Zie de veelgestelde vragen hieronder voor meer informatie over deze update.
+> De meest recente update voor de Azure AD User Provisioning Service SCIM-client is gemaakt op 18 december 2018. Deze update heeft betrekking op de bekende compatibiliteits problemen die in de volgende tabel worden vermeld. Raadpleeg de veelgestelde vragen hieronder voor meer informatie over deze update.
 
-## <a name="scim-20-compliance-issues-and-status"></a>Problemen met de naleving van SCIM 2.0 en de status
+## <a name="scim-20-compliance-issues-and-status"></a>Nalevings problemen en status van SCIM 2,0
 
-| **Probleem met beleidsnaleving SCIM 2.0** |  **Opgelost?** | **Datum oplossen**  |  
+| **Compatibiliteits probleem met SCIM 2,0** |  **Vaste?** | **Datum herstellen**  |  
 |---|---|---|
-| Azure AD is vereist ' / scim ' zich in de hoofdmap van de toepassing de SCIM eindpunt-URL  | Ja  |  18 december 2018 | 
-| Extensiekenmerken gebruiken punt ". 'notatie voor de kenmerknamen van in plaats van puntkomma's ': ' de notatie |  Ja  | 18 december 2018  | 
-|  Patch-aanvragen voor kenmerken met meerdere waarden bevatten filtersyntaxis ongeldig pad | Ja  |  18 december 2018  | 
-|  Groep maken aanvragen bevatten een ongeldige URI-schema | Ja  |  18 december 2018  |  
+| Voor Azure AD moet '/scim ' zich in de hoofdmap van de SCIM-eind punt-URL van de toepassing bevindt  | Ja  |  18 december 2018 | 
+| Extensie kenmerken gebruiken de notatie dot '. ' vóór kenmerk namen in plaats van dubbele punt notatie ': ' |  Ja  | 18 december 2018  | 
+|  Patch aanvragen voor kenmerken met meerdere waarden bevatten ongeldige syntaxis van het filter | Ja  |  18 december 2018  | 
+|  Aanvragen voor het maken van groepen bevatten een ongeldige schema-URI | Ja  |  18 december 2018  |  
 
-## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zijn de services-oplossingen beschreven automatisch toegepast op mijn bestaande SCIM-app?
+## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Zijn de Services opgelost die worden beschreven die automatisch worden toegepast op mijn al bestaande SCIM-app?
 
-Nee. Als dit zou een belangrijke wijziging aan SCIM-apps die zijn gecodeerd om te werken met het oudere gedrag zijn gevormd, zijn de wijzigingen niet automatisch toegepast op bestaande apps.
+Nee. Zoals een belang rijke wijziging in de SCIM-apps die zijn gecodeerd om met het oudere gedrag te werken, zijn de wijzigingen niet automatisch toegepast op bestaande apps.
 
-De wijzigingen worden toegepast op alle nieuwe [buiten de galerie SCIM apps](configure-single-sign-on-non-gallery-applications.md) geconfigureerd in Azure portal, na de datum van de oplossing.
+De wijzigingen worden toegepast op alle nieuwe [niet-galerij scim-apps](configure-single-sign-on-non-gallery-applications.md) die zijn geconfigureerd in de Azure Portal na de datum van de oplossing.
 
-Zie de volgende sectie voor meer informatie over het migreren van een bestaande gebruiker inrichtingstaak zodanig dat de meest recente oplossingen.
+Zie de volgende sectie voor informatie over het migreren van een vooraf bestaande gebruikers inrichtings taak voor het toevoegen van de meest recente oplossingen.
 
-## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Kan ik een bestaande SCIM inrichten van gebruikers taak om op te nemen van de meest recente service-oplossingen migreren?
+## <a name="can-i-migrate-an-existing-scim-based-user-provisioning-job-to-include-the-latest-service-fixes"></a>Kan ik een bestaande SCIM voor het inrichten van gebruikers migreren om de meest recente service oplossingen op te stellen?
 
-Ja. Als u al een exemplaar van deze toepassing voor eenmalige aanmelding gebruikt en de bestaande inrichtingstaak moet zodanig dat de meest recente oplossingen migreren, volgt u de onderstaande procedure. Deze procedure wordt beschreven hoe u de Microsoft Graph API en de Microsoft Graph API-Verkenner uw oude inrichtingstaak uit uw bestaande SCIM-app verwijderen en een nieuw wachtwoord maken dat het nieuwe gedrag vertoont.
+Ja. Als u dit exemplaar van de toepassing al gebruikt voor eenmalige aanmelding en de bestaande inrichtings taak moet migreren om de meest recente oplossingen te bevatten, volgt u de onderstaande procedure. In deze procedure wordt beschreven hoe u de Microsoft Graph-API en de Microsoft Graph API Explorer gebruikt om uw oude inrichtings taak uit uw bestaande SCIM-app te verwijderen en een nieuwe te maken die het nieuwe gedrag vertoont.
 
 > [!NOTE]
-> Als uw toepassing nog in ontwikkeling is en is nog niet geïmplementeerd voor eenmalige aanmelding of gebruikers inrichten, de eenvoudigste oplossing is om te verwijderen van de toepassing-vermelding in de **Azure Active Directory > bedrijfstoepassingen**sectie van de Azure-portal, en voeg een nieuwe vermelding voor de toepassing met de **-toepassing maken > niet in de galerij** optie. Dit is een alternatief voor de onderstaande procedure uit te voeren.
+> Als uw toepassing nog steeds in ontwikkeling is en nog niet is geïmplementeerd voor eenmalige aanmelding of gebruikers inrichting, is het eenvoudig om de vermelding van de toepassing te verwijderen in het gedeelte **Azure Active Directory > Enter prise** van de Azure Portal en een nieuwe vermelding voor de toepassing toe te voegen met de optie **toepassing maken > niet-galerie** . Dit is een alternatief voor het uitvoeren van de onderstaande procedure.
  
-1. Meld u aan bij Azure portal op https://portal.azure.com.
-2. In de **Azure Active Directory > bedrijfstoepassingen** sectie van de Azure-portal, zoek en selecteer uw bestaande SCIM-toepassing.
-3. In de **eigenschappen** sectie van uw bestaande SCIM-app, Kopieer de **Object-ID**.
-4. Ga in een nieuw browservenster naar https://developer.microsoft.com/graph/graph-explorer en meld u aan als beheerder voor de Azure AD-tenant waar uw app wordt toegevoegd.
-5. Voer de volgende opdracht te vinden van de ID van uw taak in Grafiekverkenner. "[Object-id]" vervangen door de service principal-ID (object-ID) van de derde stap gekopieerd.
+1. Meld u aan bij de Azure Portal op https://portal.azure.com.
+2. Zoek en selecteer uw bestaande SCIM-toepassing in de sectie **Azure Active Directory > Enter prise Applications** van de Azure Portal.
+3. Kopieer de **object-id**in het gedeelte **Eigenschappen** van uw bestaande scim-app.
+4. Ga in een nieuw browser venster naar https://developer.microsoft.com/graph/graph-explorer en meld u aan als de beheerder van de Azure AD-Tenant waar uw app wordt toegevoegd.
+5. Voer in de Graph Explorer de onderstaande opdracht uit om de ID van uw inrichtings taak te vinden. Vervang ' [object-id] ' door de Service-Principal-ID (object-ID) die uit de derde stap is gekopieerd.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Taken ophalen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "taken ophalen") 
+   ![Taken ophalen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Taken ophalen") 
 
 
-6. Kopieer de volledige 'ID'-tekenreeks die met "customappsso" of "scim begint" in de resultaten.
-7. Voer de volgende opdracht om op te halen van de configuratie van de kenmerk-koppeling, zodat u een back-up kunt maken. Gebruik dezelfde [object-id] als voordat en [taak-id] vervangen door de inrichting taak-ID in de vorige stap hebt gekopieerd.
+6. In de resultaten kopieert u de volledige ID-teken reeks die begint met ' customappsso ' of ' scim '.
+7. Voer de onderstaande opdracht uit om de configuratie voor kenmerk toewijzing op te halen, zodat u een back-up kunt maken. Gebruik dezelfde [object-id] als voorheen en vervang [job-id] door de ID van de inrichtings taak die u uit de laatste stap hebt gekopieerd.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
    ![Schema ophalen](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Schema ophalen") 
 
-8. Kopieer de JSON-uitvoer van de laatste stap en sla deze op een tekstbestand. Hierin worden eventuele aangepaste kenmerk-toewijzingen aan uw oude app toegevoegd en moet ongeveer enkele duizenden regels van JSON.
-9. Voer de volgende opdracht om het inrichtingsproces taak te verwijderen:
+8. Kopieer de JSON-uitvoer van de laatste stap en sla deze op in een tekst bestand. Dit bevat alle aangepaste kenmerk toewijzingen die u aan uw oude app hebt toegevoegd, en moet ongeveer een paar duizend regels JSON zijn.
+9. Voer de onderstaande opdracht uit om de inrichtings taak te verwijderen:
  
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
-10. Voer de volgende opdracht om een nieuwe inrichting taak met de meest recente service-oplossingen te maken.
+10. Voer de onderstaande opdracht uit om een nieuwe inrichtings taak te maken met de meest recente service oplossingen.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   templateId: "scim"   }`
    
-11. Kopieer de volledige 'ID'-tekenreeks die met 'scim begint' in de resultaten van de laatste stap. Opnieuw toepassen (optioneel) uw oude kenmerktoewijzingen met de opdracht hieronder en vervang [nieuwe-taak-id] met de nieuwe taak-ID die u zojuist hebt gekopieerd en het invoeren van die de JSON-uitvoer van stap #7 als hoofdtekst van de aanvraag.
+11. In de resultaten van de laatste stap kopieert u de volledige ID-teken reeks die begint met ' scim '. U kunt eventueel uw oude kenmerk toewijzingen opnieuw Toep assen door de onderstaande opdracht uit te voeren, waarbij u [New-Job-ID] vervangt door de nieuwe taak-ID die u zojuist hebt gekopieerd, en de JSON-uitvoer van stap #7 als de aanvraag tekst in te voeren.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
  `{   <your-schema-json-here>   }`
 
-12. Ga terug naar het browservenster en selecteer de **Provisioning** tabblad voor uw toepassing.
-13. Controleer de configuratie en start de taak. 
+12. Ga terug naar het eerste webbrowser venster en selecteer het tabblad **inrichten** voor uw toepassing.
+13. Controleer uw configuratie en start vervolgens de inrichtings taak. 
 
-## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Kan ik een nieuwe buiten de galerie-app met de oude gebruikersinrichting gedrag toevoegen?
+## <a name="can-i-add-a-new-non-gallery-app-that-has-the-old-user-provisioning-behavior"></a>Kan ik een nieuwe niet-galerij-app toevoegen die het oude gedrag voor het inrichten van gebruikers heeft?
 
-Ja. Als u de oude gedrag die bestonden voordat de oplossingen en moet een nieuw exemplaar van het implementeren van een toepassing had gecodeerd, volgt u de onderstaande procedure. Deze procedure wordt beschreven hoe u de Microsoft Graph API en de API van Microsoft Graph explorer gebruiken om u te maken van een SCIM de taak die de oude gedrag vertoont.
+Ja. Als u een toepassing hebt gecodeerd voor het oude gedrag dat vóór de oplossingen bestond en een nieuw exemplaar hiervan moet implementeren, volgt u de onderstaande procedure. In deze procedure wordt beschreven hoe u de Microsoft Graph-API en de Microsoft Graph API Explorer kunt gebruiken om een SCIM-inrichtings taak te maken die het oude gedrag vertoont.
  
-1. Meld u aan bij Azure portal op https://portal.azure.com.
-2. in de **Azure Active Directory > bedrijfstoepassingen >-toepassing maken** sectie van de Azure-portal, maakt u een nieuw **niet in de galerij** toepassing.
-3. In de **eigenschappen** sectie van de nieuwe aangepaste app kopiëren de **Object-ID**.
-4. Ga in een nieuw browservenster naar https://developer.microsoft.com/graph/graph-explorer en meld u aan als beheerder voor de Azure AD-tenant waar uw app wordt toegevoegd.
-5. Voer de volgende opdracht om te initialiseren van de inrichtingsconfiguratie voor uw app in Grafiekverkenner.
-   "[Object-id]" vervangen door de service principal-ID (object-ID) van de derde stap gekopieerd.
+1. Meld u aan bij de Azure Portal op https://portal.azure.com.
+2. Maak een nieuwe **niet-galerie** toepassing in de **Azure Active Directory > bedrijfs toepassingen > toepassings sectie maken** van de Azure Portal.
+3. Kopieer de **object-id**in het gedeelte **Eigenschappen** van de nieuwe aangepaste app.
+4. Ga in een nieuw browser venster naar https://developer.microsoft.com/graph/graph-explorer en meld u aan als de beheerder van de Azure AD-Tenant waar uw app wordt toegevoegd.
+5. Voer in de Graph Explorer de onderstaande opdracht uit om de inrichtings configuratie voor uw app te initialiseren.
+   Vervang ' [object-id] ' door de Service-Principal-ID (object-ID) die uit de derde stap is gekopieerd.
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
  
-6. Ga terug naar het browservenster en selecteer de **Provisioning** tabblad voor uw toepassing.
-7. Voltooi de gebruikersinrichting configureren zoals u gewend bent.
+6. Ga terug naar het eerste webbrowser venster en selecteer het tabblad **inrichten** voor uw toepassing.
+7. Voltooi de configuratie van de gebruikers inrichting zoals u dat gewend bent.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-[Meer informatie over de inrichting en ongedaan maken inrichting voor SaaS-toepassingen](user-provisioning.md)
+[Meer informatie over het inrichten en ongedaan maken van de inrichting van SaaS-toepassingen](user-provisioning.md)
 

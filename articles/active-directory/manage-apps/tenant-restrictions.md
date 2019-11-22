@@ -1,6 +1,6 @@
 ---
-title: Cloudtoepassingen tenantbeperkingen gebruiken voor het beheren van toegang tot SaaS - Azure | Microsoft Docs
-description: Het gebruik van de tenantbeperkingen voor het beheren van welke gebruikers toegang apps op basis van hun Azure AD-tenant tot.
+title: Tenant beperkingen gebruiken voor het beheren van de toegang tot SaaS-apps-Azure AD
+description: Tenant beperkingen gebruiken om te beheren welke gebruikers toegang hebben tot apps op basis van hun Azure AD-Tenant.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -15,134 +15,134 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a340663a1ec4ddf748c6dc2bc3a4e2ce0c4228e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 64f73dd8dbef3f08cd4ea5841e4ec21bac2f55bf
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824385"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276510"
 ---
-# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Beperkingen voor tenants gebruiken voor het beheren van toegang tot SaaS-cloudtoepassingen
+# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Tenant beperkingen gebruiken om de toegang tot SaaS-Cloud toepassingen te beheren
 
-Grote organisaties die beveiliging benadrukken wilt verplaatsen naar cloudservices zoals Office 365, maar u moet weten dat hun gebruikers alleen toegang goedgekeurde bronnen tot. Bedrijven beperken er traditioneel voor dat domeinnamen of IP-adressen wanneer ze willen om toegang te beheren. Deze aanpak is mislukt in een wereld waar software als een service (of SaaS)-apps worden gehost in een openbare cloud, die worden uitgevoerd op gedeelde domeinnamen, zoals [outlook.office.com](https://outlook.office.com/) en [login.microsoftonline.com](https://login.microsoftonline.com/). Deze adressen blokkeert zou voorkomen dat gebruikers de webversie van Outlook helemaal openen in plaats van ze alleen beperken tot goedgekeurde-id's en resources.
+Grote organisaties die beveiliging benadrukken wilt verplaatsen naar cloudservices zoals Office 365, maar u moet weten dat hun gebruikers alleen toegang goedgekeurde bronnen tot. Bedrijven beperken er traditioneel voor dat domeinnamen of IP-adressen wanneer ze willen om toegang te beheren. Deze aanpak mislukt in een wereld waar software as a Service (of SaaS)-apps worden gehost in een open bare Cloud, die wordt uitgevoerd op gedeelde domein namen als [Outlook.Office.com](https://outlook.office.com/) en [login.microsoftonline.com](https://login.microsoftonline.com/). Deze adressen blokkeert zou voorkomen dat gebruikers de webversie van Outlook helemaal openen in plaats van ze alleen beperken tot goedgekeurde-id's en resources.
 
-De Azure Active Directory (Azure AD)-oplossing voor dit probleem is een functie met de naam van de beperkingen voor tenants. Met beperkingen voor tenants, kunnen organisaties toegang tot SaaS-cloudtoepassingen, op basis van de Azure AD-tenant die de toepassingen voor eenmalige aanmelding gebruiken. Bijvoorbeeld, kunt u voor toegang tot Office 365-toepassingen van uw organisatie, bij het voorkomen van toegang tot de andere organisaties exemplaren van deze dezelfde toepassingen.  
+De oplossing voor de Azure Active Directory (Azure AD) voor deze uitdaging is een functie die Tenant beperkingen heet. Met Tenant beperkingen kunnen organisaties de toegang tot SaaS-Cloud toepassingen beheren op basis van de Azure AD-Tenant die de toepassingen gebruiken voor eenmalige aanmelding. Bijvoorbeeld, kunt u voor toegang tot Office 365-toepassingen van uw organisatie, bij het voorkomen van toegang tot de andere organisaties exemplaren van deze dezelfde toepassingen.  
 
-Met beperkingen voor tenants, kunnen organisaties de lijst met tenants die de gebruikers zijn gemachtigd voor toegang tot opgeven. Azure AD vervolgens verleent alleen toegang tot deze toegestane tenants.
+Met Tenant beperkingen kunnen organisaties de lijst met tenants opgeven waartoe hun gebruikers toegang mogen hebben. Azure AD vervolgens verleent alleen toegang tot deze toegestane tenants.
 
-In dit artikel is gericht op de tenantbeperkingen voor Office 365, maar de functie werkt met alle SaaS-cloudtoepassingen die gebruikmaakt van moderne-verificatieprotocollen met Azure AD voor eenmalige aanmelding. Als u SaaS-apps met een andere Azure AD-van de tenant die wordt gebruikt door Office 365 tenant gebruikt, zorg ervoor dat alle vereiste tenants zijn toegestaan. Zie voor meer informatie over SaaS-cloud-apps, de [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
+Dit artikel richt zich op de beperkingen van de Tenant voor Office 365, maar de functie zou moeten werken met elke SaaS-Cloud-app die moderne verificatie protocollen met Azure AD gebruikt voor eenmalige aanmelding. Als u SaaS-apps met een andere Azure AD-van de tenant die wordt gebruikt door Office 365 tenant gebruikt, zorg ervoor dat alle vereiste tenants zijn toegestaan. Zie voor meer informatie over SaaS-cloud-apps, de [Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/).
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 De algehele oplossing omvat de volgende onderdelen:
 
-1. **Azure AD**: Als de `Restrict-Access-To-Tenants: <permitted tenant list>` is aanwezig, Azure AD enige problemen beveiligingstokens voor de toegestane tenants.
+1. **Azure AD**: als de `Restrict-Access-To-Tenants: <permitted tenant list>` aanwezig is, worden door Azure AD alleen beveiligings tokens uitgegeven voor de toegestane tenants.
 
-2. **On-premises proxy serverinfrastructuur**: Deze infrastructuur is een geschikt voor inspectie van Secure Sockets Layer (SSL) proxyapparaat. U moet de proxy voor het invoegen van de header met de lijst met toegestane tenants in verkeer dat is bestemd voor Azure AD configureren.
+2. **On-premises proxy server-infra structuur**: deze infra structuur is een proxy-apparaat dat Secure Sockets Layer (SSL)-inspectie kan uitvoeren. U moet de proxy configureren om de header met de lijst met toegestane tenants in te voegen in verkeer dat is bestemd voor Azure AD.
 
-3. **Clientsoftware**: Ter ondersteuning van beperkingen voor tenants, moet clientsoftware aanvragen tokens rechtstreeks vanuit Azure AD, zodat de infrastructuur van webtoepassingsproxy kan verkeer onderscheppen. Office 365-toepassingen op basis van een browser ondersteunen momenteel beperkingen voor tenants, evenals Office-clients die gebruikmaken van moderne verificatie (zoals OAuth 2.0).
+3. **Client software**: ter ondersteuning van Tenant beperkingen, moet client software tokens rechtstreeks aanvragen bij Azure AD, zodat de proxy infrastructuur verkeer kan onderscheppen. Office 365-toepassingen op basis van een browser ondersteunen momenteel Tenant beperkingen, zoals Office-clients die moderne authenticatie gebruiken (zoals OAuth 2,0).
 
-4. **Moderne verificatie**: Cloudservices moeten moderne verificatie wordt gebruikt om te gebruiken van beperkingen voor tenants en blokkeer de toegang tot alle niet-toegestane tenants. U kunt Office 365 cloud-services voor het gebruik van moderne-verificatieprotocollen standaard moet configureren. Lees voor de meest recente informatie over Office 365-ondersteuning voor moderne verificatie, [moderne verificatie van Office 365 bijgewerkt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
+4. **Moderne authenticatie**: Cloud Services moeten moderne verificatie gebruiken om Tenant beperkingen te gebruiken en de toegang tot alle niet-toegestane tenants te blok keren. U moet Office 365 Cloud Services configureren om standaard moderne verificatie protocollen te gebruiken. Lees voor de meest recente informatie over Office 365-ondersteuning voor moderne verificatie, [moderne verificatie van Office 365 bijgewerkt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/).
 
-Het volgende diagram illustreert de werkstroom op hoog niveau verkeer. Beperkingen voor tenants vereist SSL-inspectie alleen op het verkeer naar Azure AD, niet op de Office 365-cloudservices. Dit verschil is belangrijk, omdat het verkeersvolume voor verificatie met Azure AD doorgaans veel lager dan voor netwerkverkeer voor SaaS-toepassingen, zoals Exchange Online en SharePoint Online is.
+Het volgende diagram illustreert de werkstroom op hoog niveau verkeer. Voor Tenant beperkingen is SSL-inspectie alleen vereist voor verkeer naar Azure AD, niet naar de Office 365-Cloud Services. Dit onderscheid is belang rijk, omdat het verkeers volume voor verificatie bij Azure AD doorgaans veel lager is dan het verkeers volume voor SaaS-toepassingen, zoals Exchange Online en share point online.
 
-![Tenant-beperkingen verkeersstroom - diagram](./media/tenant-restrictions/traffic-flow.png)
+![Stroom voor het verkeer van Tenant beperkingen-diagram](./media/tenant-restrictions/traffic-flow.png)
 
-## <a name="set-up-tenant-restrictions"></a>Instellen van beperkingen voor tenants
+## <a name="set-up-tenant-restrictions"></a>Tenant beperkingen instellen
 
-Er zijn twee stappen aan de slag met beperkingen voor tenants. Controleer eerst of dat uw clients verbinding naar de juiste adressen maken kunnen. Ten tweede uw infrastructuur van webtoepassingsproxy configureren.
+Er zijn twee stappen om aan de slag te gaan met Tenant beperkingen. Zorg er eerst voor dat uw clients verbinding kunnen maken met de juiste adressen. Configureer vervolgens uw proxy-infra structuur.
 
 ### <a name="urls-and-ip-addresses"></a>URL's en IP-adressen
 
-Voor het gebruik van beperkingen voor tenants, moeten de clients geen verbinding maken met de volgende Azure AD-URL's om te verifiëren zich: [login.microsoftonline.com](https://login.microsoftonline.com/), [login.microsoft.com](https://login.microsoft.com/), en [ Login.Windows.NET](https://login.windows.net/). Bovendien voor toegang tot Office 365, moeten ook toegang tot uw clients zich geen verbinding maken met de volledig gekwalificeerde domeinnamen (FQDN's), URL's en IP-adressen die zijn gedefinieerd in [Office 365-URL's en IP-adresbereiken](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2). 
+Als u Tenant beperkingen wilt gebruiken, moeten uw clients verbinding kunnen maken met de volgende Azure AD-Url's om te verifiëren: [login.microsoftonline.com](https://login.microsoftonline.com/), [login.Microsoft.com](https://login.microsoft.com/)en [login.Windows.net](https://login.windows.net/). Om toegang te krijgen tot Office 365 moeten uw clients ook verbinding kunnen maken met de FQDN-namen (FULLy Qualified Domain names), Url's en IP-adressen die zijn gedefinieerd in [Office 365-url's en IP-](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)adresbereiken. 
 
 ### <a name="proxy-configuration-and-requirements"></a>Proxy-configuratie en vereisten
 
-De volgende configuratie is vereist voor het inschakelen van beperkingen voor tenants via uw infrastructuur van webtoepassingsproxy. Deze handleiding is algemeen, dus u naar de documentatie van de leverancier van uw proxy voor specifieke stappen verwijzen moet.
+De volgende configuratie is vereist om Tenant beperkingen via uw proxy-infra structuur in te scha kelen. Deze handleiding is algemeen, dus u naar de documentatie van de leverancier van uw proxy voor specifieke stappen verwijzen moet.
 
 #### <a name="prerequisites"></a>Vereisten
 
 - De proxy moet kunt SSL worden onderschept, HTTP-header invoegen, uitvoeren en bestemmingen met behulp van FQDN's / URL's te filteren.
 
-- De certificaatketen weergegeven door de proxy voor SSL-communicatie moeten worden vertrouwd door clients. Bijvoorbeeld, als certificaten van een interne [openbare-sleutelinfrastructuur (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) worden gebruikt, de interne verlenende basis-CA-certificaat moet worden vertrouwd.
+- De certificaatketen weergegeven door de proxy voor SSL-communicatie moeten worden vertrouwd door clients. Als er bijvoorbeeld certificaten van een interne [open bare-sleutel infrastructuur (PKI)](/windows/desktop/seccertenroll/public-key-infrastructure) worden gebruikt, moet het interne certificaat van de basis certificerings instantie worden vertrouwd.
 
-- Deze functie is opgenomen in Office 365-abonnementen, maar als u gebruiken van beperkingen voor tenants voor het beheren van toegang tot andere SaaS-apps wilt, klikt u vervolgens Azure AD Premium 1-licenties zijn vereist.
+- Deze functie is opgenomen in Office 365-abonnementen, maar als u Tenant beperkingen wilt gebruiken om de toegang tot andere SaaS-apps te beheren, zijn Azure AD Premium 1 licenties vereist.
 
 #### <a name="configuration"></a>Configuratie
 
-Voeg twee HTTP-headers voor elke inkomende aanvraag login.microsoftonline.com, login.microsoft.com en login.windows.net: *Beperken-Access-naar-Tenants* en *beperken de toegang-Context*.
+Voeg twee HTTP-headers voor elke inkomende aanvraag login.microsoftonline.com, login.microsoft.com en login.windows.net: *Restrict Access aan Tenants* en *Restrict Access Context*.
 
 De headers moeten zijn onder andere de volgende elementen:
 
-- Voor *Restrict Access aan Tenants*, gebruikt u een waarde van \<tenantlijst toegestaan\>, dit is een door komma's gescheiden lijst met tenants die u wilt toestaan dat gebruikers toegang krijgen tot. Elk domein dat is geregistreerd bij een tenant kan worden gebruikt om de tenant in deze lijst te identificeren. Bijvoorbeeld, om toegang te verlenen aan zowel Contoso en Fabrikam-tenants, lijkt de naam/waarde-paar: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- Gebruik voor *beperkende toegang tot tenants*een waarde van \<toegestane tenant lijst\>, een door komma's gescheiden lijst met tenants waartoe u gebruikers toegang wilt geven. Elk domein dat is geregistreerd bij een tenant kan worden gebruikt om de tenant in deze lijst te identificeren. Bijvoorbeeld, om toegang te verlenen aan zowel Contoso en Fabrikam-tenants, lijkt de naam/waarde-paar: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
-- Voor *Restrict Access Context*, gebruikt u een waarde van een enkele map-ID, welke tenant declareren is de tenant beperkingen instellen. Bijvoorbeeld, om te declareren Contoso als de tenant die het beleid van de beperkingen voor tenant instellen, lijkt de naam/waarde-paar: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
+- Voor *Restrict-Access-context*gebruikt u een waarde van één map-id en declareert u welke Tenant de Tenant beperkingen instellen. Als u bijvoorbeeld Contoso wilt declareren als de Tenant die het beleid voor Tenant beperkingen instelt, ziet het naam/waarde-paar er als volgt uit: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
 > [!TIP]
-> U vindt uw map-ID in de [Azure Active Directory-portal](https://aad.portal.azure.com/). Meld u aan als beheerder, selecteer **Azure Active Directory**en selecteer vervolgens **eigenschappen**.
+> U kunt uw directory-ID vinden in de [Azure Active Directory Portal](https://aad.portal.azure.com/). Meld u aan als beheerder, selecteer **Azure Active Directory**en selecteer vervolgens **eigenschappen**.
 
-Om te voorkomen dat gebruikers hun eigen HTTP-header met niet-goedgekeurde tenants invoegen, de proxy nodig heeft om te vervangen de *Restrict Access aan Tenants* header als deze al aanwezig in de inkomende aanvraag is.
+Als u wilt voor komen dat gebruikers hun eigen HTTP-header invoegen met niet-goedgekeurde tenants, moet de proxy de header voor het *beperken van toegang tot tenants* vervangen als deze al aanwezig is in de binnenkomende aanvraag.
 
-Clients moeten worden afgedwongen voor gebruik van de proxy voor alle aanvragen naar login.microsoftonline.com login.microsoft.com en login.windows.net. Bijvoorbeeld, als PAC-bestanden worden gebruikt om clients omleiden naar de proxy gebruiken, mag niet eindgebruikers mogelijk om te bewerken of uitschakelen van de PAC-bestanden.
+Clients moeten worden afgedwongen voor gebruik van de proxy voor alle aanvragen naar login.microsoftonline.com login.microsoft.com en login.windows.net. Als er bijvoorbeeld een PAC-bestand wordt gebruikt om clients te leiden om de proxy te gebruiken, moeten eind gebruikers de PAC-bestanden niet kunnen bewerken of uitschakelen.
 
 ## <a name="the-user-experience"></a>De gebruikerservaring
 
-Deze sectie beschrijft de ervaring voor eindgebruikers en beheerders.
+In deze sectie wordt de ervaring voor zowel eind gebruikers als beheerders beschreven.
 
 ### <a name="end-user-experience"></a>Eindgebruikerservaring
 
-Een van de voorbeeldgebruiker is in het Contoso-netwerk, maar wil toegang tot de Fabrikam-exemplaar van een gedeelde SaaS-toepassing, zoals Outlook online. Als Fabrikam een tenant niet is toegestaan voor het Contoso-exemplaar is, ziet de gebruiker een bericht denial-of toegang, die u probeert te krijgen tot een resource die tot een niet-goedgekeurde door uw IT-afdeling organisatie behoort zegt.
+Een van de voorbeeldgebruiker is in het Contoso-netwerk, maar wil toegang tot de Fabrikam-exemplaar van een gedeelde SaaS-toepassing, zoals Outlook online. Als Fabrikam een niet-toegestane Tenant is voor de contoso-instantie, ziet de gebruiker een bericht over toegang geweigerd. Dit geeft aan dat u probeert toegang te krijgen tot een resource die tot een organisatie behoort die niet is goedgekeurd door uw IT-afdeling.
 
 ### <a name="admin-experience"></a>Beheerervaring
 
-Tijdens de configuratie van de tenantbeperkingen wordt uitgevoerd op de zakelijke proxy-infrastructuur, beheerders kunnen rechtstreeks toegang hebben tot de rapporten van de tenant-beperkingen in Azure portal. De rapporten bekijken:
+Hoewel de configuratie van Tenant beperkingen wordt uitgevoerd op de bedrijfs proxy-infra structuur, hebben beheerders rechtstreeks toegang tot de rapporten met Tenant beperkingen in de Azure Portal. De rapporten weer geven:
 
-1. Aanmelden bij de [Azure Active Directory-portal](https://aad.portal.azure.com/). De **Azure Active Directory-beheercentrum** dashboard wordt weergegeven.
+1. Meld u aan bij de [Azure Active Directory Portal](https://aad.portal.azure.com/). Het dash board **Azure Active Directory-beheer centrum** wordt weer gegeven.
 
-2. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. De Azure Active Directory-overzichtspagina wordt weergegeven.
+2. Selecteer de knop **Azure Active Directory** in het linkerdeelvenster. De pagina overzicht van Azure Active Directory wordt weer gegeven.
 
-3. In de **andere mogelijkheden** kop, selecteer **beperkingen voor de Tenantsleutel**.
+3. Selecteer in de kop **andere mogelijkheden** de optie **Tenant beperkingen**.
 
-De beheerder voor de tenant die is opgegeven als de tenant van de Context van een beperkte toegang tot dit rapport gebruiken kunt om te zien van aanmeldingen die zijn geblokkeerd vanwege de beperkingen beleid van de tenant, met inbegrip van de identiteit die wordt gebruikt en de doelmap-id. Aanmeldingen worden opgenomen als de instelling van de beperking van de tenant is de tenant van de gebruiker of de resource-tenant voor de aanmelding.
+De beheerder voor de Tenant die is opgegeven als de beperkte-toegangs context Tenant kan dit rapport gebruiken om te zien of aanmeldingen zijn geblokkeerd vanwege het beleid voor Tenant beperkingen, met inbegrip van de identiteit die wordt gebruikt en de doel directory-ID. Aanmeldingen worden opgenomen als de instelling van de beperking van de tenant is de tenant van de gebruiker of de resource-tenant voor de aanmelding.
 
-Net als andere rapporten in Azure portal, kunt u filters gebruiken om op te geven van het bereik van uw rapport. U kunt filteren op een bepaald tijdsinterval, gebruiker, toepassing, client of status. Als u selecteert de **kolommen** knop, die u kunt kiezen om gegevens met een combinatie van de volgende velden weer te geven:
+Net als andere rapporten in Azure portal, kunt u filters gebruiken om op te geven van het bereik van uw rapport. U kunt filteren op een bepaald tijds interval, gebruiker, toepassing, client of status. Als u de knop **kolommen** selecteert, kunt u ervoor kiezen om gegevens weer te geven met een combi natie van de volgende velden:
 
-- **User**
+- **Gebruiker**
 - **Toepassing**
 - **Status**
 - **datum**
-- **Datum (UTC)** (UTC is Coordinated Universal Time)
-- **Methode voor verificatie via MFA** (meervoudige verificatiemethode)
-- **Details van de verificatie via MFA** (detail multifactor-verificatie)
+- **Datum (UTC)** (waarbij UTC Coordinated Universal Time)
+- **MFA-authenticatie methode** (multi-factor Authentication-methode)
+- **Informatie over MFA-authenticatie** (Details voor multi-factor Authentication)
 - **MFA-resultaat**
 - **IP-adres**
 - **Client**
 - **Gebruikersnaam**
-- **Location**
-- **ID van doeltenant**
+- **Locatie**
+- **Doel-Tenant-ID**
 
 ## <a name="office-365-support"></a>Ondersteuning voor Office 365
 
-Office 365-toepassingen moeten voldoen aan twee criteria op om aan te bieden volledige ondersteuning voor beperkingen voor tenants:
+Office 365-toepassingen moeten voldoen aan twee criteria om Tenant beperkingen volledig te ondersteunen:
 
-1. Moderne verificatie biedt ondersteuning voor de client gebruikt.
+1. De client die wordt gebruikt voor ondersteuning van moderne verificatie.
 2. Moderne verificatie is ingeschakeld als het standaardverificatieprotocol voor de cloudservice.
 
-Raadpleeg [moderne verificatie van Office 365 bijgewerkt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) voor de meest recente informatie over welke Office clients momenteel moderne verificatie ondersteunen. Deze pagina bevat ook koppelingen naar instructies voor het inschakelen van moderne verificatie op specifieke Exchange Online en Skype voor bedrijven Online tenants. SharePoint Online al moderne verificatie standaard ingeschakeld.
+Raadpleeg [moderne verificatie van Office 365 bijgewerkt](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) voor de meest recente informatie over welke Office clients momenteel moderne verificatie ondersteunen. Deze pagina bevat ook koppelingen naar instructies voor het inschakelen van moderne verificatie op specifieke Exchange Online en Skype voor bedrijven Online tenants. In share point online is standaard moderne verificatie ingeschakeld.
 
-Browser gebaseerde toepassingen van Office 365 (de Office-Portal, Yammer, SharePoint-sites, Outlook op het Web en meer) momenteel ondersteuning voor beperkingen voor tenants. Dikke clients (Outlook, Skype voor bedrijven, Word, Excel, PowerPoint en meer) kunnen afdwingen tenantbeperkingen alleen die moderne authenticatie gebruiken.  
+Office 365-browser toepassingen (de Office-Portal, Yammer, share point-sites, Outlook op internet en meer) ondersteunen momenteel Tenant beperkingen. Op brede clients (Outlook, Skype voor bedrijven, Word, Excel, Power Point en meer) kunnen alleen Tenant beperkingen worden afgedwongen wanneer moderne verificatie wordt gebruikt.  
 
-Outlook en Skype voor bedrijven-clients die ondersteuning bieden voor moderne verificatie nog steeds kunnen verouderde protocollen op tenants gebruiken waarop moderne verificatie wordt niet ingeschakeld kunnen, effectief tenantbeperkingen overslaan. Beperkingen voor tenants kunnen voorkomen dat toepassingen die gebruikmaken van verouderde protocollen als ze contact opneemt met login.microsoftonline.com, login.microsoft.com of login.windows.net tijdens de verificatie.
+Outlook en Skype voor bedrijven-clients die ondersteuning bieden voor moderne verificatie kunnen nog steeds verouderde protocollen gebruiken voor tenants waar moderne authenticatie niet is ingeschakeld, waardoor Tenant beperkingen effectief worden omzeild. Met Tenant beperkingen kunnen toepassingen die gebruikmaken van verouderde protocollen, worden geblokkeerd als ze tijdens de verificatie contact opnemen met login.microsoftonline.com, login.microsoft.com of login.windows.net.
 
 Voor Outlook voor Windows, kunnen klanten ervoor kiezen om te voorkomen dat eindgebruikers niet-goedgekeurde e-mailaccounts toevoegen aan hun profielen beperkingen implementeren. Zie bijvoorbeeld de [te voorkomen dat niet-standaard Exchange-accounts toevoegen](https://gpsearch.azurewebsites.net/default.aspx?ref=1) instellen via Groepsbeleid.
 
 ## <a name="testing"></a>Testen
 
-Als u wilt voor het uitproberen van beperkingen voor tenants voordat u deze voor uw hele organisatie implementeert, hebt u twee opties: een benadering op basis van een host met behulp van een hulpprogramma zoals Fiddler of een gefaseerde implementatie van proxy-instellingen.
+Als u Tenant beperkingen wilt proberen voordat u deze voor uw hele organisatie implementeert, hebt u twee opties: een op een host gebaseerde benadering van een hulp programma zoals Fiddler of een gefaseerde implementatie van proxy-instellingen.
 
 ### <a name="fiddler-for-a-host-based-approach"></a>Fiddler voor een host gebaseerde aanpak
 
-Fiddler is een gratis proxy die kan worden gebruikt om te leggen en te wijzigen van de HTTP/HTTPS-verkeer, inclusief invoegen van HTTP-headers voor Webfoutopsporing. Als u wilt configureren Fiddler als u wilt testen van beperkingen voor tenants, moet u de volgende stappen uitvoeren:
+Fiddler is een gratis proxy die kan worden gebruikt om te leggen en te wijzigen van de HTTP/HTTPS-verkeer, inclusief invoegen van HTTP-headers voor Webfoutopsporing. Voer de volgende stappen uit om Fiddler te configureren om Tenant beperkingen te testen:
 
 1. [Download en installeer Fiddler](https://www.telerik.com/fiddler).
 
@@ -152,7 +152,7 @@ Fiddler is een gratis proxy die kan worden gebruikt om te leggen en te wijzigen 
 
    1. Selecteer in het foutopsporingsprogramma van Fiddler Web de **regels** menu en selecteer **Customize Rules...** de CustomRules om bestand te openen.
 
-   2. Voeg de volgende regels toe aan het begin van de `OnBeforeRequest` functie. Vervang \<tenantdomein\> met een domein dat is geregistreerd bij uw tenant (bijvoorbeeld `contoso.onmicrosoft.com`). Vervang \<map-ID\> met Azure AD-GUID-id van uw tenant.
+   2. Voeg de volgende regels toe aan het begin van de functie `OnBeforeRequest`. Vervang \<Tenant domein\> door een domein dat is geregistreerd bij uw Tenant (bijvoorbeeld `contoso.onmicrosoft.com`). Vervang \<map-ID\> met Azure AD-GUID-id van uw tenant.
 
       ```JScript.NET
       if (
@@ -181,7 +181,7 @@ Afhankelijk van de mogelijkheden van uw infrastructuur van webtoepassingsproxy, 
 1. PAC-bestanden gebruiken testgebruikers verwijzen naar een proxy testinfrastructuur tijdens normale gebruikers echter ook doorgaan met de productie-proxy-infrastructuur.
 2. Sommige proxyservers kunnen bieden ondersteuning voor configuraties met behulp van groepen.
 
-Raadpleeg de documentatie van uw proxy-server voor specifieke details.
+Raadpleeg de documentatie van uw proxy server voor specifieke informatie.
 
 ## <a name="next-steps"></a>Volgende stappen
 

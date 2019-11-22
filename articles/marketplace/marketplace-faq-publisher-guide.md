@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/4/2019
 ms.author: ellacroi
-ms.openlocfilehash: 300f1783c1c514a6cc49d700c2741be85e69c3e8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6a7a0d5bdd07221be823f8b94bd581db6d966fa8
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822982"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74306408"
 ---
 # <a name="microsoft-commercial-marketplace-faqs"></a>Veelgestelde vragen over micro soft Commercial Marketplace
 
@@ -165,7 +165,7 @@ Enterprise Agreement (EA) indirecte klanten moeten contact opnemen met hun Licen
 
 **Kan ik de toegang van mijn werk nemers tot Azure Marketplace en de aanschaf van rechten beheren?**
 
-Ja, voor klanten met Enterprise Agreement (EA), kan de registratie beheerder de rechten voor het kopen uitschakelen voor alle accounts bij de inschrijving en deze vervolgens lang genoeg inschakelen om een aankoop te doen. Daarnaast kunnen alle klanten Azure Policy gebruiken om de implementatie opties voor hun Azure-abonnementen te beperken, met inbegrip van het beheer van Azure Marketplace-resources.
+Ja, voor klanten met Enterprise Agreement (EA), kan de registratie beheerder de rechten voor het kopen uitschakelen voor alle accounts bij de inschrijving en deze vervolgens lang genoeg inschakelen om een aankoop te doen.
 
 **Welke betalings methoden worden ondersteund voor commerciële Marketplace-aankopen?**
 
@@ -173,7 +173,7 @@ Klanten kunnen aanbiedingen kopen vanuit Azure Marketplace en Microsoft AppSourc
 
 **Kan ik tegoeden voor Azure-abonnementen of monetaire toezeggings fondsen in mijn account Toep assen op Azure Marketplace-aanbiedingen?**
 
-Voor specifieke Azure Marketplace-aanbiedingen kunnen tegoeden voor Azure-abonnementen of monetaire toezeggingen worden gebruikt. Zie de [monetaire toezeg ging van Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die deel uitmaken van dit programma. Deze aanbiedingen bevatten geen opties voor BYOL of BYOS. Alle andere Azure Marketplace-aanbiedingen kunnen geen Azure-abonnements tegoeden of monetaire toezeg ging gebruiken: zoals de gratis proef versie van een maand, maandelijks MSDN-tegoed, tegoed van Azure promoties, monetaire toezeggings saldi en eventuele andere gratis tegoeden van Azure.
+Voor specifieke Azure Marketplace-aanbiedingen kunnen tegoeden voor Azure-abonnementen of monetaire toezeggingen worden gebruikt. Zie dit [Financiële toezegging Azure](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment/) voor een volledige lijst van producten die in dit programma zijn opgenomen. Deze aanbiedingen bevatten geen opties voor BYOL of BYOS. Alle andere Azure Marketplace-aanbiedingen kunnen geen Azure-abonnements tegoeden of monetaire toezeg ging gebruiken: zoals de gratis proef versie van een maand, maandelijks MSDN-tegoed, tegoed van Azure promoties, monetaire toezeggings saldi en eventuele andere gratis tegoeden van Azure.
 
 **Zijn er volume licentie kortingen van toepassing op de aankopen van Azure Marketplace?**
 
@@ -348,7 +348,7 @@ Na het volt ooien van de aanbieding en het instellen van een doel voor de lead, 
 
 **Welke landen/regio's zijn Azure Marketplace beschikbaar voor de verkoop van uitgevers?**
 
-Uitgevers op basis van de volgende landen/regio's kunnen momenteel worden verkocht in azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oosten rijk, Azerbeidzjan, Bahrein, Bangladesh, Belarus, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Congo, Congo (DRC), Costa Rica, ivoor kust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji, Finland, Frank rijk, Georgië, Duitsland, Ghana, Grieken land, Guatemala, Guinee, Haïti, Honduras, Hongkong SAR, Hongarije, IJsland, India, Indonesië en Irak Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Mongolië, Montenegro, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noor wegen, Oman, Pakistan, Panama, Paraguay, Peru, Filipijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saoedi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitser land, Tadzjikistan, Tanzania, Thai land, Timor-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Uganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Konink rijk, VS Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
+Uitgevers op basis van de volgende landen/regio's kunnen momenteel worden verkocht in de Azure Marketplace: Afghanistan, Albanië, Algerije, Angola, Antigua en Barbuda, Argentinië, Armenië, Australië, Oosten rijk, Azerbeidzjan, Bahrein, Bangladesh, Belarus, België, Benin, Bolivia, Bosnië en Herzegovina, Botswana, Brazilië, Bulgarije, Burkina Faso, Burundi, Cambodja, Kameroen, Canada, Centraal-Afrikaanse Republiek, Tsjaad, Chili, Colombia, Comoren, Democratische Republiek Congo (DRC), Costa Rica, ivoor kust, Kroatië, Cyprus, Tsjechië, Denemarken, Dominica, Dominicaanse Republiek, Ecuador, Egypte, El Salvador, Eritrea, Estland, Ethiopië, Fiji, Finland, Frank rijk, Georgië, Duitsland, Ghana, Grieken land, Guatemala, Guinee, Haïti, Honduras, Hong Kong SAR, Hongarije, IJsland, India, Indonesië, Irak, Ierland, Israël, Italië, Jamaica, Japan, Jordanië, Kazachstan, Kenia, Korea (Zuid), Koeweit, Laos, Letland, Libanon, Liberia, Liechtenstein, Litouwen, Luxemburg, Madagaskar, Malawi, Maleisië, Mali, Malta, Mauritius, Mexico, Monaco, Mongolië, Montenegro, Marokko, Mozambique, Nepal, Nederland, Nieuw-Zeeland, Nicaragua, Niger, Nigeria, Noor wegen, Oman, Pakistan, Panama, Paraguay, Peru, Filipijnen, Polen, Portugal, Qatar, Roemenië, Rusland, Rwanda, Saudi-Arabië, Senegal, Servië, Sierra Leone, Singapore, Slowakije, Slovenië, Somalië, Zuid-Afrika, Spanje, Sri Lanka, Zweden, Zwitser land, Tadzjikistan, Tanzania, Thai land, Oost-Leste, Togo, Tonga, Trinidad en Tobago, Tunesië, Turkije, Turkmenistan, Uganda, Oekraïne, Verenigde Arabische Emiraten, Verenigd Konink rijk Staten, Uruguay, Oezbekistan, Venezuela, Vietnam, Zambia en Zimbabwe.
 
 **Hoe kan ik een vermelding verwijderen uit Azure Marketplace?**
 

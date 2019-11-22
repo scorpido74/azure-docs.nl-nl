@@ -1,6 +1,6 @@
 ---
-title: Beveiligings gegevens (preview-versie) instellen voor een beveiligings sleutel-Azure AD
-description: Uw beveiligings gegevens instellen om uw identiteit te verifiëren met behulp van een snelle FIDO2-beveiligings sleutel (Identity online).
+title: Stel een beveiligings sleutel in als uw verificatie methode-Azure AD
+description: De pagina beveiligings gegevens (preview) instellen om uw identiteit te verifiëren voor het gebruik van een snelle FIDO2-beveiligings sleutel (Identity online) als verificatie methode.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9d86d594f0918e6a9ffed49142a81a0f7834e86
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73803792"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278951"
 ---
-# <a name="set-up-security-info-preview-for-a-security-key"></a>Beveiligings gegevens (preview) instellen voor een beveiligings sleutel
+# <a name="set-up-a-security-key-as-your-verification-method"></a>Stel een beveiligings sleutel in als uw verificatie methode
 
 U kunt beveiligings sleutels gebruiken als een aanmeldings methode zonder wacht woord binnen uw organisatie. Een beveiligings sleutel is een fysiek apparaat dat wordt gebruikt met een unieke pincode om u aan te melden bij uw werk-of school account. Omdat voor beveiligings sleutels het fysieke apparaat moet worden gebruikt en wat alleen u weet, wordt dit beschouwd als een sterkere verificatie methode dan een gebruikers naam en wacht woord.
 
@@ -150,7 +150,7 @@ Als u een beveiligings sleutel wilt registreren, moet u ten minste één aanvull
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Lees voor meer informatie over verificatie methoden met een wacht woord de [open bare preview-versie van de FIDO2-beveiligings sleutels van micro soft, het inschakelen van blogs met een wacht woord](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) en het lezen van [wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) en [ Overzichts artikelen van Windows hello](https://www.microsoft.com/windows/windows-hello) .
+- Lees voor meer informatie over verificatie methoden met een wacht woord de [open bare preview-versie van FIDO2-beveiligings sleutels van micro soft, het inschakelen van blogs met een wacht woord](https://www.onmsft.com/news/microsofts-azure-ad-begins-public-preview-of-fido2-security-keys-enabling-passwordless-logins) , of lees de artikelen [wat is de Microsoft Authenticator-app?](user-help-auth-app-overview.md) en [Windows hello-overzicht](https://www.microsoft.com/windows/windows-hello) .
 
 - Voor meer informatie over [beveiligings sleutels die compatibel zijn met micro soft](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/microsoft-compatible-security-key).
 

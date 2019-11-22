@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: e92471bd467557f3ac8eb0404d672355ccab8449
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: e522ede7da669f6e684fc9a07adcc506a69e77e9
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597125"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74267907"
 ---
 # <a name="monitor-data-flows"></a>Gegevens stromen bewaken
 
@@ -51,7 +51,7 @@ Wanneer uw gegevens stroom in Spark wordt uitgevoerd, bepaalt Azure Data Factory
   * Opstart tijd van het cluster: de hoeveelheid tijd voor het verkrijgen van de JIT Spark-Compute-omgeving voor het uitvoeren van gegevens stromen
   * Aantal trans formaties: hoeveel transformatie stappen worden uitgevoerd in uw stroom
   
-![Bewaking van Acit-gegevens stroom](media/data-flow/monitornew.png "Gegevens stroom bewaking nieuw")  
+![Gegevensstroom controleren](media/data-flow/monitornew.png "Gegevens stroom bewaking nieuw")  
   
 ## <a name="monitor-icons"></a>Bewaak pictogrammen
 

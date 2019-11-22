@@ -1,6 +1,7 @@
 ---
-title: Logboeken van de stroom met Power BI visualizing Azure Network Security Group | Microsoft Docs
-description: Deze pagina wordt beschreven hoe u NSG-stroomlogboeken met Power BI visualiseren.
+title: Azure NSG-stroom logboeken visualiseren-Power BI
+titleSuffix: Azure Network Watcher
+description: Op deze pagina wordt beschreven hoe u NSG-stroom logboeken visualiseren met Power BI.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,116 +15,116 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 05378799dd77a17b69adbcf492af2e1cb1030375
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60860773"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277730"
 ---
-# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Stroomlogboeken van Netwerkbeveiligingsgroep visualizing met Power BI
+# <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Stroom logboeken van netwerk beveiligings groepen visualiseren met Power BI
 
-Stroomlogboeken van Netwerkbeveiligingsgroep kunnen u informatie weergeven over inkomende en uitgaande IP-verkeer op Netwerkbeveiligingsgroepen. Deze stroom logboeken weergeven binnenkomende en uitgaande stromen op basis van per regel, de NIC van de stroom is van toepassing op, 5-tuple-informatie over de stroom (bron-/ doel-IP, poort van de bron-/ doel, Protocol), en als het verkeer is toegestaan of geweigerd.
+Met stroom logboeken van de netwerk beveiligings groep kunt u informatie weer geven over binnenkomend en IP-verkeer op netwerk beveiligings groepen. In deze stroom logboeken worden uitgaande en inkomende stromen per regel weer gegeven, de NIC waarop de stroom van toepassing is, 5-tuple informatie over de stroom (bron/doel-IP, bron/doel poort, Protocol) en als het verkeer is toegestaan of geweigerd.
 
-Het kan lastig zijn om inzicht te krijgen in gegevens voor logboekregistratie van stroom door handmatig te zoeken naar de logboekbestanden. In dit artikel krijgt u een oplossing voor uw meest recente stroomlogboeken visualiseren en meer informatie over verkeer in uw netwerk.
+Het kan lastig zijn om inzicht te krijgen in gegevens in de stroom logboek registratie door de logboek bestanden hand matig te doorzoeken. In dit artikel bieden we een oplossing voor het visualiseren van uw meest recente stroom logboeken en meer informatie over verkeer in uw netwerk.
 
 > [!Warning]  
-> De volgende stappen werken met flow logboeken versie 1. Zie voor meer informatie, [Inleiding tot stroomlogboeken voor netwerkbeveiligingsgroepen](network-watcher-nsg-flow-logging-overview.md). De volgende instructies werkt niet met versie 2 van de logboekbestanden, zonder aanpassingen.
+> De volgende stappen werken met stroom logboeken versie 1. Zie [Inleiding tot flow-logboek registratie voor netwerk beveiligings groepen](network-watcher-nsg-flow-logging-overview.md)voor meer informatie. De volgende instructies werken niet met versie 2 van de logboek bestanden, zonder aanpassing.
 
 ## <a name="scenario"></a>Scenario
 
-In het volgende scenario, we verbinding maken met Power BI desktop naar het opslagaccount dat we voor onze gegevens NSG Flow logboekregistratie hebt geconfigureerd als de sink. Nadat we verbinding met onze storage-account maken, wordt in Power BI wordt gedownload en parseert de logboeken voor een visuele representatie van het verkeer dat is geregistreerd door netwerkbeveiligingsgroepen.
+In het volgende scenario verbinden we Power BI bureau blad met het opslag account dat we hebben geconfigureerd als de Sink voor de logboek gegevens van de NSG-stroom. Nadat u verbinding hebt gemaakt met ons opslag account, Power BI gedownload en worden de logboeken geparseerd om een visuele weer gave te bieden van het verkeer dat wordt vastgelegd door netwerk beveiligings groepen.
 
-Met behulp van de visuele elementen opgegeven in de sjabloon die u kunt controleren:
+Met behulp van de visuals die zijn opgegeven in de sjabloon, kunt u het volgende bekijken:
 
-* Belangrijke gebruikers
-* Time Series-stroomgegevens op richting en op regelbesluit
-* Stromen op Network Interface-MAC-adres
-* Stromen op Netwerkbeveiligingsgroep en regel
-* Stromen op doelpoort
+* Belangrijkste Talks
+* Time Series-gegevens per richting en regel beslissing
+* Stromen per netwerk interface MAC-adres
+* Stromen op NSG en regel
+* Stromen op doel poort
 
-De opgegeven sjabloon kan worden bewerkt zodat u kunt wijzigen als u wilt toevoegen van nieuwe gegevens, visuele elementen, of query's om aan uw behoeften te bewerken.
+De aangevraagde sjabloon is bewerkbaar zodat u deze kunt wijzigen om nieuwe gegevens, visuele elementen of bewerk query's toe te voegen aan uw behoeften.
 
 ## <a name="setup"></a>Instellen
 
-Voordat u begint, kunt u Network Security Group Flow-logboekregistratie is ingeschakeld op een of meer Netwerkbeveiligingsgroepen in uw account moet hebben. Zie voor instructies over het inschakelen van stroomlogboeken voor netwerkbeveiliging, het volgende artikel: [Inleiding tot stroomlogboeken voor Netwerkbeveiligingsgroepen](network-watcher-nsg-flow-logging-overview.md).
+Voordat u begint, moet u de stroom logboek registratie van de netwerk beveiligings groep inschakelen voor een of meer netwerk beveiligings groepen in uw account. Raadpleeg het volgende artikel: [Inleiding tot stroom logboek registratie voor netwerk beveiligings groepen](network-watcher-nsg-flow-logging-overview.md)voor instructies over het inschakelen van Logboeken voor netwerk beveiligings stromen.
 
-U moet ook de Power BI Desktop-client geïnstalleerd op uw computer en voldoende vrije ruimte op uw computer te downloaden en het laden van de logboekgegevens die deel uitmaakt van uw storage-account hebben.
+U moet ook de Power BI Desktop-Client op uw computer hebben geïnstalleerd en voldoende beschik bare ruimte op uw computer hebben om de logboek gegevens in uw opslag account te downloaden en te laden.
 
 ![Visio-diagram][1]
 
 ### <a name="steps"></a>Stappen
 
-1. Downloaden en openen van de volgende Power BI-sjabloon in de Power BI Desktop-toepassing [Power BI netwerk-Watcher-stroomlogboeken sjabloon](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
-1. Voer de vereiste parameters voor de Query
-   1. **StorageAccountName** – Hiermee geeft u op de naam van het opslagaccount met de NSG-stroomlogboeken die u wilt laden en visualiseren.
-   1. **NumberOfLogFiles** – Hiermee geeft u het nummer van de logboekbestanden die u wilt downloaden en visualiseren in Power BI. Bijvoorbeeld, als 50 is opgegeven, de meest recente 50 logboekbestanden. Als we 2 nsg's ingeschakeld en geconfigureerd voor het verzenden van NSG-stroomlogboeken aan dit account hebt, kan de laatste 25 minuten aan logboeken worden weergegeven.
+1. Down load en open de volgende Power BI sjabloon in de sjabloon Power BI Desktop toepassing [Network Watcher PowerBI flow-logboeken](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
+1. Voer de vereiste query parameters in
+   1. **StorageAccountName** : Hiermee geeft u de naam op van het opslag account met de NSG-stroom logboeken die u wilt laden en visualiseren.
+   1. **NumberOfLogFiles** : Hiermee geeft u het aantal logboek bestanden op dat u wilt downloaden en visualiseren in Power bi. Bijvoorbeeld, als 50 is opgegeven, de laatste logboek bestanden van 50. Als we 2 Nsg's hebben ingeschakeld en geconfigureerd voor het verzenden van NSG-stroom logboeken naar dit account, kunnen de afgelopen 25 uur aan logboeken worden weer gegeven.
 
-      ![hoofdvenster van Power BI][2]
+      ![Power BI-hoofd][2]
 
-1. Voer de toegangssleutel voor uw opslagaccount. U kunt geldige toegangssleutels vinden door te navigeren naar uw opslagaccount in Azure portal en vervolgens **toegangssleutels** in het menu instellingen. Klik op **Connect** wijzigingen vervolgens toepassen.
+1. Voer de toegangs sleutel voor uw opslag account in. U kunt geldige toegangs toetsen vinden door te navigeren naar uw opslag account in de Azure Portal en **toegangs sleutels** te selecteren in het menu instellingen. Klik op **verbinden** en vervolgens op wijzigingen Toep assen.
 
-    ![Toegangssleutels][3]
+    ![toegangs sleutels][3]
 
-    ![toegang tot de sleutel 2][4]
+    ![toegangs sleutel 2][4]
 
-4. Uw logboeken worden gedownload en geparseerd en u kunt nu gebruikmaken van de vooraf gemaakte visuele elementen.
+4. Uw logboeken worden gedownload en geparseerd en u kunt nu de vooraf gemaakte visuals gebruiken.
 
-## <a name="understanding-the-visuals"></a>Inzicht krijgen in de visuele elementen
+## <a name="understanding-the-visuals"></a>Informatie over de visuele elementen
 
-Opgegeven in de sjabloon zijn een set van visuele elementen waarmee zinvol in de Flow-logboekgegevens van NSG. De volgende afbeeldingen ziet een voorbeeld van hoe het dashboard uitziet als ingevuld met gegevens. Hieronder bekijken we elk visuele element in meer detail 
+Die in de sjabloon is opgegeven, zijn een aantal visuele elementen waarmee u de gegevens van het NSG-stroom logboek kunt begrijpen. De volgende afbeeldingen tonen een voor beeld van hoe het dash board eruit ziet wanneer het is gevuld met gegevens. Hieronder worden alle visuele elementen in detail besproken. 
 
 ![powerbi][5]
  
-De bovenste Talkers visual ziet u de IP-adressen die de meeste verbindingen hebt gestart in de periode is opgegeven. De grootte van de vakken komt overeen met het relatieve aantal verbindingen. 
+In het visuele element toppraten ziet u de IP-adressen die de meeste verbindingen hebben geïnitieerd tijdens de opgegeven periode. De grootte van de vakken komt overeen met het relatieve aantal verbindingen. 
 
 ![toptalkers][6]
 
-De volgende tijd reeks grafieken ziet u het aantal stromen in de periode. De bovenste grafiek wordt gesegmenteerd op de stroomrichting en des te lager is gesegmenteerd op de beslissing (toestaan of weigeren). Met het visuele element, kunt u uw verkeer trends na verloop van tijd, onderzoeken en abnormale pieken vertoont herkennen of weigeren in verkeer of verkeer segmentering.
+In de volgende grafieken van de tijd reeks wordt het aantal stromen voor de periode weer gegeven. De bovenste grafiek wordt gesegmenteerd door de richting van de stroom en de laagste wordt gesegmenteerd door de beslissing die is gemaakt (toestaan of weigeren). Met deze Visual kunt u uw verkeers trends in de loop van de tijd onderzoeken en eventuele abnormale pieken of afname in verkeer of verkeers segmentering afwijzen.
 
 ![flowsoverperiod][7]
 
-De volgende grafieken ziet u de stromen per netwerkinterface, met de bovenste gesegmenteerd op stroomrichting en des te lager gesegmenteerd op beslissing heeft genomen. Met deze informatie, krijgt u inzicht in welke van uw VM's de meeste ten opzichte van andere gecommuniceerd, en als er verkeer naar een specifieke virtuele machine wordt toegestaan of geweigerd.
+In de volgende grafieken ziet u de stromen per netwerk interface, met de bovenste gesegmenteerd per stroom richting en de lagere gesegmenteerd door besluit. Met deze informatie kunt u inzicht krijgen in welke van uw Vm's het meest ten opzichte van anderen hebben gecommuniceerd, en als verkeer naar een specifieke virtuele machine wordt toegestaan of geweigerd.
 
 ![flowspernic][8]
 
-De volgende wheel ringdiagram bevat een overzicht van de stromen op doelpoort. Met deze informatie vindt u de meest gebruikte doelpoorten gebruikt binnen de opgegeven periode.
+De volgende ring-wiel diagram toont een uitsplitsing van stromen per doel poort. Met deze informatie kunt u de meestgebruikte doel poorten weer geven die binnen de opgegeven periode worden gebruikt.
 
-![ringdiagram][9]
+![ring][9]
 
-De volgende staafdiagram ziet u de stroom op Netwerkbeveiligingsgroep en regel. Met deze informatie kunt u de nsg's die verantwoordelijk is voor het meeste verkeer en de verdeling van verkeer op een NSG zien door regel.
+In het volgende staaf diagram wordt de stroom op NSG en regel weer gegeven. Met deze informatie kunt u de Nsg's zien die verantwoordelijk is voor het grootste verkeer en de uitsplitsing van verkeer op een NSG per regel.
 
 ![barchart][10]
  
-De volgende informatie grafieken weergegeven informatie over de nsg's aanwezig zijn in de logboeken, het aantal stromen die zijn vastgelegd over de periode en de datum van het eerste logboek vastgelegd. Deze informatie geeft u een beter beeld van welke nsg's zijn, worden geregistreerd en het datumbereik van stromen.
+De volgende informatie diagrammen bevatten informatie over de Nsg's die aanwezig zijn in de logboeken, het aantal stromen dat is vastgelegd in de periode en de datum van de eerste vastgelegde logboek registratie. Deze informatie geeft u een idee van wat Nsg's worden geregistreerd en het datum bereik van stromen.
 
 ![infochart1][11]
 
 ![infochart2][12]
 
-Deze sjabloon bevat de volgende slicers zodat u tot alleen de gegevens die u het meest geïnteresseerd zijn. U kunt filteren op uw resourcegroepen, nsg's en regels. U kunt ook filteren op 5-tuple-informatie, besluit en de tijd die het logboek is geschreven.
+Deze sjabloon bevat de volgende Slicers waarmee u alleen de gegevens kunt bekijken die u het belangrijkst vindt. U kunt filteren op uw resource groepen, Nsg's en regels. U kunt ook filteren op 5-tuple-informatie, beslissing en het tijdstip waarop het logboek is geschreven.
 
-![slicers][13]
+![Slicers][13]
 
 ## <a name="conclusion"></a>Conclusie
 
-We hebben laten zien in dit scenario dat met behulp van Network Security Group Flow-logboeken die zijn opgegeven door de Network Watcher en Power BI, kan worden te visualiseren en inzicht in het verkeer. Met de opgegeven sjabloon, Power BI de logboeken rechtstreeks uit storage downloadt en lokaal worden verwerkt. Gebruikte tijd voor het laden van de sjabloon is afhankelijk van het aantal bestanden die zijn aangevraagd en de totale grootte van de bestanden gedownload.
+We hebben in dit scenario geleerd dat met behulp van stroom logboeken voor netwerk beveiligings groepen die zijn verschaft door Network Watcher en Power BI, het verkeer kan worden gevisualiseerd en begrepen. Met behulp van de meegeleverde sjabloon Power BI worden de logboeken rechtstreeks vanuit Storage gedownload en lokaal verwerkt. De tijd die nodig is om de sjabloon te laden, is afhankelijk van het aantal aangevraagde bestanden en de totale grootte van de bestanden die worden gedownload.
 
-U kunt deze sjabloon voor uw behoeften aanpassen. Er zijn veel verschillende manieren dat u Power BI met Flow logboeken van Netwerkbeveiligingsgroepen gebruiken kunt. 
+U kunt deze sjabloon gratis aanpassen aan uw behoeften. Er zijn veel verschillende manieren waarop u Power BI kunt gebruiken met stroom logboeken voor netwerk beveiligings groepen. 
 
 ## <a name="notes"></a>Opmerkingen
 
-* Logboeken standaard worden opgeslagen in `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
+* Logboeken worden standaard opgeslagen in `https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/`
 
-    * Als andere gegevens in een andere directory bestaat moeten ze de query's naar de pull-abonnementen en proces de gegevens worden gewijzigd.
+    * Als er andere gegevens in een andere Directory aanwezig zijn, moeten de query's die worden opgehaald en verwerkt de gegevens worden gewijzigd.
 
-* De opgegeven sjabloon wordt niet aanbevolen voor gebruik met meer dan 1 GB aan logboeken.
+* De meegeleverde sjabloon wordt niet aanbevolen voor gebruik met meer dan 1 GB aan logboeken.
 
-* Als u een grote hoeveelheid Logboeken hebt, wordt u aangeraden dat u een oplossing met behulp van een ander gegevensarchief zoals Data Lake of SQL server onderzoeken.
+* Als u een groot aantal Logboeken hebt, raden we u aan om een oplossing te onderzoeken met behulp van een ander gegevens archief, zoals Data Lake of SQL Server.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het visualiseren van uw NSG-stroomlogboeken met de Elastic Stack recentst [visualiseren Azure Network Watcher NSG-stroomlogboeken met behulp van open-sourcehulpprogramma's](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+Meer informatie over het visualiseren van uw NSG-stroom logboeken met de elastische stack door te bezoeken [Azure Network WATCHER NSG-stroom logboeken met behulp van open-source-hulpprogram ma's](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 
 [1]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure1.png
 [2]: ./media/network-watcher-visualize-nsg-flow-logs-power-bi/figure2.png

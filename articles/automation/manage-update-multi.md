@@ -1,20 +1,20 @@
 ---
 title: Updates voor meerdere virtuele machines in Azure beheren
-description: In dit artikel wordt beschreven hoe u updates voor virtuele Azure-machines beheert.
+description: In dit artikel wordt beschreven hoe u updates beheert voor Azure-en niet-Azure-machines.
 services: automation
 ms.service: automation
 ms.subservice: update-management
-author: bobbytreed
-ms.author: robreed
-ms.date: 04/02/2019
+author: mgoedtel
+ms.author: magoedte
+ms.date: 11/20/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 367a4409c004c98cc4b5ec844aab5b05ec74abcb
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: 70f4f4163a143354cd1fe5adf031c4d9cd87a46e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72374502"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278654"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Updates voor meerdere machines beheren
 
@@ -31,6 +31,8 @@ Als u Updatebeheer wilt gebruiken, hebt u het volgende nodig:
 
 - Een virtuele machine of computer met een van de ondersteunde besturingssystemen.
 
+- Toegang tot een update opslagplaats voor Linux-Vm's die zijn uitgevoerd voor de oplossing.
+
 ## <a name="supported-operating-systems"></a>Ondersteunde besturingssystemen
 
 Updatebeheer wordt ondersteund op de volgende besturings systemen:
@@ -39,17 +41,13 @@ Updatebeheer wordt ondersteund op de volgende besturings systemen:
 |---------|---------|
 |Windows Server 2008, Windows Server 2008 R2 RTM    | Ondersteunt alleen update-evaluaties.         |
 |Windows Server 2008 R2 SP1 en hoger     |Windows Power Shell 4,0 of hoger is vereist. ([WMF 4,0 downloaden](https://www.microsoft.com/download/details.aspx?id=40855))</br> Windows Power shell 5,1 wordt aanbevolen voor een betere betrouw baarheid. ([WMF 5,1 downloaden](https://www.microsoft.com/download/details.aspx?id=54616))         |
-|CentOS 6 (x86/x64) en 7 (x64)      | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
-|Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | Linux-agents moeten toegang hebben tot een opslagplaats voor updates.        |
-|Ubuntu 14,04 LTS, 16,04 LTS en 18,04 LTS (x86/x64)      |Linux-agents moeten toegang hebben tot een opslagplaats voor updates.         |
+|CentOS 6 (x86/x64) en 7 (x64)      | |
+|Red Hat Enterprise 6 (x86/x64) en 7 (x64)     | |
+|SUSE Linux Enterprise Server 11 (x86/x64) en 12 (x64)     | |
+|Ubuntu 14,04 LTS, 16,04 LTS en 18,04 LTS (x86/x64)      | |
 
 > [!NOTE]
 > Om te voorkomen dat updates buiten een onderhoudsperiode in Ubuntu worden toegepast, moet u het pakket Unattended-Upgrade opnieuw configureren en automatische updates uitschakelen. Zie het onderwerp [Automatic Updates](https://help.ubuntu.com/lts/serverguide/automatic-updates.html) (Automatische updates) in de Ubuntu Server Guide voor meer informatie.
-
-Linux-agents moeten toegang hebben tot een opslagplaats voor updates.
-
-Deze oplossing biedt geen ondersteuning voor een Log Analytics-agent voor Linux die is geconfigureerd om te rapporteren aan meerdere Azure Log Analytics-werk ruimten.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Updatebeheer voor virtuele Azure-machines inschakelen
 
@@ -69,13 +67,11 @@ Wanneer de onboarding is voltooid, wordt Updatebeheer voor uw virtuele machine i
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Updatebeheer inschakelen voor virtuele machines en computers die niet van Azure zijn
 
-Zie [Windows-computers verbinden met de Azure Monitor-service in azure](../log-analytics/log-analytics-windows-agent.md)voor meer informatie over het inschakelen van updatebeheer voor virtuele Windows-machines en-computers zonder Azure.
-
-Zie [uw Linux-computers verbinden met Azure monitor-logboeken](../log-analytics/log-analytics-agent-linux.md)voor meer informatie over het inschakelen van updatebeheer voor virtuele machines en computers die niet van Azure Linux zijn.
+De Log Analytics-agent voor Windows en Linux moet worden geïnstalleerd op de virtuele machines die worden uitgevoerd op uw bedrijfs netwerk of in een andere cloud omgeving, zodat deze kunnen worden ingeschakeld met Updatebeheer. Zie [overzicht van de log Analytics-agent](../azure-monitor/platform/log-analytics-agent.md)voor meer informatie over de systeem vereisten en ondersteunde methoden voor het implementeren van de agent op computers die buiten Azure worden gehost.
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Computers weer geven die zijn gekoppeld aan uw Automation-account
 
-Nadat u Updatebeheer voor uw machines hebt ingeschakeld, kunt u computer gegevens weer geven door **computers**te selecteren. U kunt informatie weer geven over de naam van de *computer*, de *nalevings status*, de *omgeving*, het *type besturings systeem*, de *essentiële updates en de geïnstalleerde beveiliging*, *andere geïnstalleerde updates*en de *gereedheid* voor het bijwerken van de agent voor uw lidcomputers.
+Nadat u Updatebeheer voor uw machines hebt ingeschakeld, kunt u computer gegevens weer geven door **computers**te selecteren. U kunt informatie weer geven over de naam van de *computer*, de *nalevings status*, de *omgeving*, het *type besturings systeem*, de *essentiële updates en de geïnstalleerde beveiliging*, *andere geïnstalleerde updates*en de *gereedheid* voor het bijwerken van de agent voor uw computers.
 
   ![Tabblad Computers weergeven](./media/manage-update-multi/update-computers-tab.png)
 
@@ -108,7 +104,7 @@ De volgende tabel beschrijft de verbonden bronnen die worden ondersteund door de
 | Windows-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Windows-agents en start vervolgens de installatie van de vereiste updates. |
 | Linux-agents |Ja |Updatebeheer verzamelt informatie over systeem updates van Linux-agents en start vervolgens de installatie van de vereiste updates op ondersteunde distributies. |
 | Beheergroep Operations Manager |Ja |Updatebeheer verzamelt informatie over systeem updates van agents in een verbonden beheer groep. |
-| Azure-opslagaccount |Nee |Azure Storage bevat geen informatie over systeem updates. |
+| Azure Storage-account |Nee |Azure Storage bevat geen informatie over systeem updates. |
 
 ### <a name="collection-frequency"></a>Verzamelingsfrequentie
 
@@ -130,8 +126,13 @@ Geef in het deel venster **nieuwe update-implementatie** de volgende informatie 
 
 - **Naam**: Voer een unieke naam in voor het identificeren van de update-implementatie.
 - **Besturings systeem**: Selecteer **Windows** of **Linux**.
-- **Groepen om bij te werken (preview)** : definieer een query op basis van een combinatie van abonnement, resourcegroepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen voor opname in uw implementatie. Zie [Dynamische groepen](automation-update-management-groups.md) voor meer informatie
-- **Machines die moeten worden bijgewerkt**: Selecteer een opgeslagen zoek opdracht, geïmporteerde groep of selecteer machines om de machines te kiezen die u wilt bijwerken. Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**. U kunt de status van de machine bekijken voordat u de update-implementatie plant. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken
+- **Groepen die moeten worden bijgewerkt**: Definieer een query op basis van een combi natie van abonnement, resource groepen, locaties en tags om een dynamische groep virtuele Azure-machines te bouwen die in uw implementatie moeten worden meegenomen. Voor niet-Azure Vm's worden opgeslagen Zoek opdrachten gebruikt om een dynamische groep te maken die in uw implementatie moet worden meegenomen. Zie [dynamische groepen](automation-update-management-groups.md)voor meer informatie.
+- **Machines die moeten worden bijgewerkt**: Selecteer een opgeslagen zoek opdracht, geïmporteerde groep of selecteer machines om de machines te kiezen die u wilt bijwerken.
+
+   >[!NOTE]
+   >Als u de optie voor opgeslagen Zoek opdrachten selecteert, worden geen computer identiteiten, alleen hun namen, geretourneerd. Als u meerdere virtuele machines met dezelfde naam in meerdere resource groepen hebt, worden deze geretourneerd in de resultaten. Het gebruik van de optie **voor het bijwerken van groepen** wordt aanbevolen om ervoor te zorgen dat u unieke vm's opneemt die aan uw criteria voldoen.
+
+   Als u **Computers** selecteert, wordt de gereedheid van de computer weergegeven in de kolom **GEREEDHEID VOOR UPDATE-AGENT**. U kunt de status van de machine bekijken voordat u de update-implementatie plant. Zie [Computergroepen in Azure Monitorlogboeken](../azure-monitor/platform/computer-groups.md) voor meer informatie over de verschillende manieren waarop u computergroepen kunt maken in Azure Monitor-logboeken
 
   ![Deel venster nieuwe update-implementatie](./media/manage-update-multi/update-select-computers.png)
 
@@ -142,7 +143,7 @@ Geef in het deel venster **nieuwe update-implementatie** de volgende informatie 
   - Functiepakketten
   - Servicepacks
   - Definitie-updates
-  - Tools
+  - Hulpprogramma's
   - Updates
 
 - **Updates om op te nemen/uit te sluiten**: hiermee opent u de pagina **Opnemen/uitsluiten**. Updates die moeten worden opgenomen of uitgesloten, worden op afzonderlijke tabbladen weergegeven. Zie [een update-implementatie plannen](automation-tutorial-update-management.md#schedule-an-update-deployment)voor meer informatie over het verwerken van de opname.
@@ -196,5 +197,5 @@ Selecteer **Fouten** voor gedetailleerde informatie over fouten die zijn opgetre
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie [updatebeheer-oplossing in azure](../operations-management-suite/oms-solution-update-management.md)voor meer informatie over updatebeheer, zoals Logboeken, uitvoer en fouten.
+Zie [updatebeheer-oplossing in azure](../operations-management-suite/oms-solution-update-management.md)voor meer informatie over updatebeheer, zoals Logboeken, uitvoer en fouten.
 

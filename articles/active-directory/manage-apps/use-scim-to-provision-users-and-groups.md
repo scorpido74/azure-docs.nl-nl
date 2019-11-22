@@ -1,5 +1,5 @@
 ---
-title: SCIM-gebruikers inrichten met Azure Active Directory | Microsoft Docs
+title: Inrichting van apps automatiseren met behulp van SCIM in azure AD
 description: Leer hoe u een SCIM-eind punt bouwt, uw SCIM-API integreert met Azure Active Directory en begin met het automatiseren van het inrichten van gebruikers en groepen in uw toepassingen.
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.author: mimart
 ms.reviewer: arvinh
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8bb9b507763c935ab244c42584120a279063954
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 1d4694dfa92d282e1dc098a510ac82dd9c703c1e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195454"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74276487"
 ---
 # <a name="scim-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-gebruikers inrichten met Azure Active Directory (Azure AD)
 
@@ -68,7 +68,7 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | Functie |titel |
 | mail |e-mailberichten [type eq 'werk'] .value |
 | mailNickname |externalId |
-| beheerder |beheerder |
+| Manager |Manager |
 | mobiele |phoneNumbers [type eq 'mobiel'] .value |
 | object-id |Id |
 | Postcode |adressen type eq 'werk'.postalCode |
@@ -77,7 +77,7 @@ Houd er rekening mee dat u niet zowel gebruikers als groepen of alle hieronder w
 | streetAddress |adressen type eq 'werk'.streetAddress |
 | surname |name.familyName |
 | Telefoonnummer |phoneNumbers [type eq 'werk'] .value |
-| user-PrincipalName |userName |
+| user-PrincipalName |Gebruikersnaam |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabel 2: Standaard groep kenmerktoewijzing
 

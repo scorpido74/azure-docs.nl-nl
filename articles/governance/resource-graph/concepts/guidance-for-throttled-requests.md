@@ -1,14 +1,14 @@
 ---
 title: Richtlijnen voor vertraagde aanvragen
-description: Meer informatie over het maken van betere query's om te voor komen dat aanvragen voor een Azure-resource grafiek worden beperkt.
-ms.date: 10/18/2019
+description: Meer informatie over batch, sprei ding, pagineren en query's parallel om te voor komen dat aanvragen worden beperkt door Azure resource Graph.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: 651a5daa9e7e19a5dc157ba0cfa17da2c8abe3db
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 4405cce567a75f83823cc2d441b2a59985c196ad
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038332"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74304668"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Richt lijnen voor vertraagde aanvragen in azure resource Graph
 

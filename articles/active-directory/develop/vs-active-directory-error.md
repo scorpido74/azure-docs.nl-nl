@@ -12,18 +12,18 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f25daa01288959c38520f9713d35eb975d2df2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: c6df50db564dac09785b460d158d4276ea8a215e
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73941389"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74271256"
 ---
 # <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Fouten diagnosticeren met de Azure Active Directory Connected-service
 
-Tijdens het detecteren van de vorige verificatie code heeft de Azure Active Director Connect-server een incompatibel verificatie type gedetecteerd.
+Tijdens het detecteren van de vorige verificatie code heeft de Azure Active Directory verbonden service een incompatibel verificatie type gedetecteerd.
 
-Als u de vorige verificatie code in een project correct wilt detecteren, moet het project zijn gebouwd.  Als u deze fout ziet en u geen eerdere verificatie code in uw project hebt, bouwt u opnieuw op en probeert u het opnieuw.
+Als u de vorige verificatie code in een project correct wilt detecteren, moet het project opnieuw worden opgebouwd. Als u deze fout ziet en u geen eerdere verificatie code in uw project hebt, bouwt u opnieuw op en probeert u het opnieuw.
 
 ## <a name="project-types"></a>Project typen
 

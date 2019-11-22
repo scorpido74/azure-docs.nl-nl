@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Pingboard configureren voor het automatisch gebruikers inrichten met Azure Active Directory | Microsoft Docs'
-description: Informatie over het configureren van Azure Active Directory voor het automatisch inrichten en inrichting ongedaan maken-gebruikersaccounts met Pingboard.
+title: 'Zelf studie: gebruikers inrichten voor Pingboard-Azure AD'
+description: Meer informatie over het configureren van Azure Active Directory voor het automatisch inrichten en ongedaan maken van de inrichting van gebruikers accounts op Pingboard.
 services: active-directory
 documentationcenter: ''
 author: ArvindHarinder1
@@ -15,91 +15,91 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f7e2fabc86374f7fe055303d056ae8e00f33389
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 81988f2643fd9acb911e6f70765cedbb4786f14c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65964369"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74278262"
 ---
-# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Zelfstudie: Pingboard configureren voor het automatisch inrichten van gebruikers
+# <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>Zelf studie: Pingboard configureren voor automatische gebruikers inrichting
 
-Het doel van deze zelfstudie is om u de stappen die u moet volgen om in te schakelen van automatische inrichting en ongedaan maken van gebruikersaccounts via Azure Active Directory (Azure AD) in te richten Pingboard weer te geven.
+Het doel van deze zelf studie is om u te laten zien welke stappen u moet volgen om automatische inrichting en het ongedaan maken van de inrichting van gebruikers accounts van Azure Active Directory (Azure AD) naar Pingboard in te scha kelen.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Het scenario in deze zelfstudie wordt ervan uitgegaan dat u al de volgende items hebt:
+In het scenario dat in deze zelf studie wordt beschreven, wordt ervan uitgegaan dat u de volgende items al hebt:
 
-* Een Azure AD-tenant
-* Een tenant Pingboard [Pro-account](https://pingboard.com/pricing)
-* Een gebruikersaccount in Pingboard met beheerdersmachtigingen
+* Een Azure AD-Tenant
+* Een Pingboard Tenant [Pro-account](https://pingboard.com/pricing)
+* Een gebruikers account in Pingboard met beheerders machtigingen
 
 > [!NOTE]
-> Azure AD integratie inrichting is afhankelijk van de [Pingboard API](https://pingboard.docs.apiary.io/#), die beschikbaar zijn voor uw account is.
+> Integratie van Azure AD-inrichting is afhankelijk van de [Pingboard-API](https://pingboard.docs.apiary.io/#), die beschikbaar is voor uw account.
 
 ## <a name="assign-users-to-pingboard"></a>Gebruikers toewijzen aan Pingboard
 
-Azure AD maakt gebruik van een concept genaamd "toewijzingen" om te bepalen welke gebruikers krijgen toegang tot de geselecteerde toepassingen. In de context van het inrichten van automatische gebruikersaccounts, worden alleen de gebruikers die zijn toegewezen aan een toepassing in Azure AD gesynchroniseerd. 
+Azure AD gebruikt een concept met de naam ' toewijzingen ' om te bepalen welke gebruikers toegang moeten krijgen tot geselecteerde toepassingen. In de context van het automatisch inrichten van gebruikers accounts worden alleen de gebruikers gesynchroniseerd die zijn toegewezen aan een toepassing in azure AD. 
 
-Voordat u configureren en inschakelen van de inrichtingsservice, moet u bepalen welke gebruikers in Azure AD moeten toegang hebben tot uw app Pingboard. Vervolgens kunt u deze gebruikers toewijzen aan uw app Pingboard door de instructies hier:
+Voordat u de inrichtings service configureert en inschakelt, moet u bepalen welke gebruikers in azure AD toegang nodig hebben tot uw Pingboard-app. U kunt deze gebruikers vervolgens aan uw Pingboard-app toewijzen door de volgende instructies te volgen:
 
-[Een gebruiker toewijzen aan een enterprise-app](../manage-apps/assign-user-or-group-access-portal.md)
+[Een gebruiker toewijzen aan een bedrijfs-app](../manage-apps/assign-user-or-group-access-portal.md)
 
-### <a name="important-tips-for-assigning-users-to-pingboard"></a>Belangrijke tips voor het toewijzen van gebruikers aan Pingboard
+### <a name="important-tips-for-assigning-users-to-pingboard"></a>Belang rijke tips voor het toewijzen van gebruikers aan Pingboard
 
-Het is raadzaam dat u één Azure AD-gebruiker te Pingboard voor het testen van de configuratie van de inrichting. Extra gebruikers kunnen later worden toegewezen.
+We raden u aan één Azure AD-gebruiker toe te wijzen aan Pingboard om de inrichtings configuratie te testen. Extra gebruikers kunnen later worden toegewezen.
 
-## <a name="configure-user-provisioning-to-pingboard"></a>Inrichten van gebruikers aan Pingboard configureren 
+## <a name="configure-user-provisioning-to-pingboard"></a>Gebruikers inrichten configureren voor Pingboard 
 
-Deze sectie helpt u bij uw Azure AD verbinden met het gebruikersaccount voor Pingboard Inrichtings-API. U ook configureren de provisioning-service voor het maken, bijwerken en uitschakelen van toegewezen gebruikersaccounts in Pingboard die zijn gebaseerd op de toewijzingen van gebruikers in Azure AD.
+In deze sectie wordt u begeleid bij het koppelen van uw Azure AD aan de inrichtings-API van de Pingboard-gebruikers account. U kunt de inrichtings service ook configureren om toegewezen gebruikers accounts te maken, bij te werken en uit te scha kelen in Pingboard die zijn gebaseerd op gebruikers toewijzingen in azure AD.
 
 > [!TIP]
-> Als u wilt inschakelen op basis van SAML eenmalige aanmelding voor Pingboard, volg de instructies de [Azure-portal](https://portal.azure.com). Eenmalige aanmelding kan worden geconfigureerd onafhankelijk van automatische inrichting, hoewel deze twee functies elkaar aanvullen.
+> Als u eenmalige aanmelding op basis van SAML voor Pingboard wilt inschakelen, volgt u de instructies in de [Azure Portal](https://portal.azure.com). Eenmalige aanmelding kan onafhankelijk van automatische inrichting worden geconfigureerd, hoewel deze twee functies elkaar aanvullen.
 
-### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Het configureren van automatische inrichten van gebruikersaccounts aan Pingboard in Azure AD
+### <a name="to-configure-automatic-user-account-provisioning-to-pingboard-in-azure-ad"></a>Automatische toewijzing van gebruikers accounts configureren voor Pingboard in azure AD
 
-1. In de [Azure-portal](https://portal.azure.com), blader naar de **Azure Active Directory** > **Bedrijfsapps** > **alle toepassingen** sectie.
+1. Blader in het [Azure Portal](https://portal.azure.com)naar het gedeelte **Azure Active Directory** > **Enter prise-apps** > **alle toepassingen** .
 
-1. Als u al Pingboard geconfigureerd voor eenmalige aanmelding, zoekt u uw exemplaar van Pingboard met behulp van het zoekveld. Selecteer anders **toevoegen** en zoek naar de **Pingboard** in de toepassingengalerie. Selecteer **Pingboard** in de resultaten voor zoeken en toe te voegen aan uw lijst met toepassingen.
+1. Als u Pingboard al hebt geconfigureerd voor eenmalige aanmelding, zoekt u naar uw instantie van Pingboard met behulp van het zoek veld. Als dat niet het geval is, selecteert u **toevoegen** en zoeken naar **Pingboard** in de toepassings galerie. Selecteer **Pingboard** in de zoek resultaten en voeg deze toe aan uw lijst met toepassingen.
 
-1. Selecteer uw exemplaar van Pingboard, en selecteer vervolgens de **Provisioning** tabblad.
+1. Selecteer uw exemplaar van Pingboard en selecteer vervolgens het tabblad **inrichten** .
 
-1. Stel **Inrichtingsmodus** naar **automatische**.
+1. Stel de **inrichtings modus** in op **automatisch**.
 
-    ![Pingboard inrichten](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
+    ![Pingboard-inrichting](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
 
-1. Onder de **beheerdersreferenties** sectie, gebruikt u de volgende stappen uit:
+1. Gebruik de volgende stappen onder de sectie **beheerders referenties** :
 
-    a. In **Tenant-URL**, voer `https://your_domain.pingboard.com/scim/v2`, en "uw_domein" vervangen door uw werkelijke domein.
+    a. Voer bij **Tenant-URL**`https://your_domain.pingboard.com/scim/v2`in en vervang ' your_domain ' door uw echte domein.
 
-    b. Aanmelden bij [Pingboard](https://pingboard.com/) met behulp van uw beheerdersaccount.
+    b. Meld u aan bij [Pingboard](https://pingboard.com/) met uw beheerders account.
 
-    c. Selecteer **invoegtoepassingen** > **integraties** > **Azure Active Directory**.
+    c. Selecteer **invoeg toepassingen** > **integraties** > **Azure Active Directory**.
 
-    d. Ga naar de **configureren** tabblad, en selecteer **inschakelen inrichten van gebruikers van Azure**.
+    d. Ga naar het tabblad **configureren** en selecteer **gebruikers inrichting van Azure inschakelen**.
 
-    e. Kopieer het token in **OAuth Bearer Token**, en voer deze in **geheim Token**.
+    e. Kopieer het token in een **OAuth Bearer-token**en voer dit in als een **geheim token**.
 
-1. Selecteer in de Azure portal, **verbinding testen** voor het testen van Azure AD kunnen verbinding maken met uw app Pingboard. Als de verbinding is mislukt, testen of uw account Pingboard beheerdersmachtigingen heeft en probeer de **verbinding testen** stap opnieuw uit.
+1. In de Azure Portal selecteert u **verbinding testen** om Azure ad te testen kan verbinding maken met uw Pingboard-app. Als de verbinding mislukt, test u of uw Pingboard-account beheerders machtigingen heeft en voert u de stap **verbinding testen** opnieuw uit.
 
-1. Voer het e-mailadres van een persoon of groep die u meldingen wilt ontvangen inrichting fout in **e-mailmelding**. Schakel het selectievakje onder.
+1. Voer het e-mail adres in van een persoon of groep die u wilt ontvangen van de inrichtings fout meldingen in de **e-mail melding**. Schakel het selectie vakje eronder in.
 
 1. Selecteer **Opslaan**.
 
-1. Onder de **toewijzingen** sectie, selecteer **synchroniseren Azure Active Directory: gebruikers aan Pingboard**.
+1. Selecteer in de sectie **toewijzingen** de optie **Azure Active Directory gebruikers synchroniseren met Pingboard**.
 
-1. In de **kenmerktoewijzingen** sectie, controleert u de kenmerken van de gebruiker uit Azure AD worden gesynchroniseerd met Pingboard. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt zodat deze overeenkomen met de gebruikersaccounts in Pingboard voor update-bewerkingen. Selecteer **opslaan** doorvoeren van wijzigingen. Zie voor meer informatie, [Kenmerktoewijzingen van gebruikersinrichting aanpassen](../manage-apps/customize-application-attributes.md).
+1. Controleer in de sectie **kenmerk toewijzingen** de gebruikers kenmerken die moeten worden gesynchroniseerd van Azure AD naar Pingboard. De kenmerken die zijn geselecteerd als **overeenkomende** eigenschappen worden gebruikt om te voldoen aan de gebruikers accounts in Pingboard voor bijwerk bewerkingen. Selecteer **Opslaan** om eventuele wijzigingen door te voeren. Zie [toewijzings kenmerk toewijzingen voor gebruikers aanpassen](../manage-apps/customize-application-attributes.md)voor meer informatie.
 
-1. Om in te schakelen van de Azure AD-inrichtingsservice voor Pingboard, in de **instellingen** sectie, wijzigt u **Inrichtingsstatus** naar **op**.
+1. Als u de Azure AD-inrichtings service voor Pingboard wilt inschakelen, wijzigt u de **inrichtings status** in het gedeelte **instellingen** in **op aan**.
 
-1. Selecteer **opslaan** starten van de initiële synchronisatie van gebruikers die zijn toegewezen aan Pingboard.
+1. Selecteer **Opslaan** om de eerste synchronisatie te starten van gebruikers die zijn toegewezen aan Pingboard.
 
-De initiële synchronisatie duurt langer dan het volgende wordt gesynchroniseerd, die ongeveer elke 40 minuten optreden als de service wordt uitgevoerd. Gebruik de **synchronisatiedetails** sectie voortgang en koppelingen volgen voor het inrichten van activiteitenlogboeken. De logboeken worden alle acties die door de provisioning-service op uw app Pingboard beschreven.
+Het duurt langer voordat de initiële synchronisatie is uitgevoerd dan de volgende synchronisaties, die ongeveer elke 40 minuten plaatsvinden, zolang de service wordt uitgevoerd. Gebruik de sectie **synchronisatie Details** om de voortgang te bewaken en de koppelingen naar de activiteiten logboeken te volgen. In de logboeken worden alle acties beschreven die worden uitgevoerd door de inrichtings service in uw Pingboard-app.
 
-Zie voor meer informatie over het lezen van de Azure AD inrichting logboeken [rapporteren over het inrichten van automatische gebruikersaccounts](../manage-apps/check-status-user-account-provisioning.md).
+Zie [rapport over automatische toewijzing van gebruikers accounts](../manage-apps/check-status-user-account-provisioning.md)voor meer informatie over het lezen van de Azure AD-inrichtings Logboeken.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-* [Het inrichten van gebruikersaccounts voor bedrijfs-apps beheren](../manage-apps/configure-automatic-user-provisioning-portal.md)
+* [Het inrichten van gebruikers accounts beheren voor zakelijke apps](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 * [Eenmalige aanmelding configureren](pingboard-tutorial.md)

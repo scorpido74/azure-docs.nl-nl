@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: d91ac6d50faaadf560ae7ff9e9cce5f7bc4b180a
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.openlocfilehash: 47e66bfc4550372b571b7263ef5b7f2f149712dc
+ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72803924"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74307304"
 ---
 # <a name="supported-platforms"></a>Ondersteunde platforms 
 
@@ -41,7 +41,7 @@ De volgende secties bevatten een lijst met de ondersteunde besturings systemen v
 
 ### Windows Server-besturings systemen<a name="os-windows"></a>
 
-|Besturingssysteem|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
+|OS|Ondersteund door Azure Security Center|Ondersteuning voor integratie met micro soft Defender ATP|
 |:---|:-:|:-:|
 |Windows Server 2019|✔|X|
 |Windows Server 2016|✔|✔|
@@ -90,8 +90,8 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * PostGreSQL
 * MySQL
 * CosmosDB
-* Opslagaccount
-* App service
+* Storage-account
+* App Service
 * Functie
 * Cloudservice
 * VNet
@@ -102,8 +102,8 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * Service Fabric-account
 * Automation-account
 * Load Balancer
-* Search
-* Service Bus-naam ruimte
+* Zoeken
+* Service Bus-naamruimte
 * Stream Analytics
 * Event hub-naamruimte
 * Logische apps
@@ -113,6 +113,8 @@ De volgende Azure PaaS-resources worden ondersteund door Azure Security Center:
 * Key Vault
 
 Zie [PaaS Services ondersteunde functies](security-center-services.md#paas-services)voor meer informatie over de ondersteunde functies voor de bovenstaande lijst met PaaS-resources.
+
+De beveiliging van Virtual Machines in Azure Stack wordt ook ondersteund. Voor meer informatie over de integratie van Security Center met Azure Stack raadpleegt u [de Azure stack virtuele machines Onboarden om te Security Center](https://docs.microsoft.com/azure/security-center/quick-onboard-azure-stack).
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -1,6 +1,6 @@
 ---
-title: Register authentication info to reset your own password - Azure AD
-description: Register your authentication method information for Azure AD self-service password reset, so you can reset your own password without administrator help.
+title: Verificatie gegevens registreren om uw eigen wacht woord opnieuw in te stellen-Azure AD
+description: Registreer de gegevens van de verificatie methode voor de selfservice voor wachtwoord herstel van Azure AD, zodat u uw eigen wacht woord opnieuw kunt instellen zonder de hulp van de beheerder.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -13,55 +13,55 @@ ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cae72ac4752d5d1f6135312d578eb1a277ccd9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: b9748c0d04f958648f7919b7ac29dc58d5a137ac
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231905"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279058"
 ---
-# <a name="register-your-authentication-method-info-to-reset-your-own-password"></a>Register your authentication method info to reset your own password
+# <a name="register-your-verification-method-info-to-reset-your-own-password"></a>Uw informatie over de verificatie methode registreren om uw eigen wacht woord opnieuw in te stellen
 
 > [!IMPORTANT]
-> Are you here because you can't sign in? If so, see [Reset your work or school password](active-directory-passwords-update-your-own-password.md).
+> Bent u hier omdat u zich niet kunt aanmelden? Als dit het geval is, raadpleegt [u het wacht woord voor uw werk of school opnieuw instellen](active-directory-passwords-update-your-own-password.md).
 
-As an end user, you can reset your password or unlock your account by yourself if you use Azure Active Directory (Azure AD) self-service password reset (SSPR). Before you can use this functionality, you have to register your authentication methods or confirm the predefined authentication methods that your administrator has populated.
+Als eind gebruiker kunt u uw wacht woord opnieuw instellen of uw account ontgrendelen met behulp van Azure Active Directory (Azure AD) self-service voor wachtwoord herstel (SSPR). Voordat u deze functie kunt gebruiken, moet u uw verificatie methoden registreren of de vooraf gedefinieerde verificatie methoden bevestigen die uw beheerder heeft ingevuld.
 
 ## <a name="register-or-confirm-authentication-data-with-sspr"></a>Verificatiegegevens registreren of bevestigen met SSPR
 
-1. Open the web browser on your device and go to the [password reset registration page](https://aka.ms/ssprsetup).
-2. Enter your username and the password that your administrator provided.
-3. Depending on how your IT staff has configured things, one or more of the following options are available for you to configure and verify. If your administrator has your permission to use your information, they can populate some of the information for you.
-    * **Office phone**: Only your administrator can set this option.
-    * **Authentication Phone**: Set this option to another phone number that you have access to. An example is a cell phone that can receive a text or a call.
-    * **Authentication Email**: Set this option to an alternate email address that you can access without using the password you want to reset.
-    * **Security Questions**: Your administrator has approved this list of questions for you to answer. You can't use the same question or answer more than once.
-4. Provide and verify the information that your administrator requires. If more than one option is available, we suggest that you register multiple methods. This gives you flexibility when one of the methods isn't available. An example is when you're traveling and you're unable to access your office phone.
+1. Open de webbrowser op het apparaat en ga naar de [registratie pagina voor het opnieuw instellen van het wacht woord](https://aka.ms/ssprsetup).
+2. Voer uw gebruikers naam en het wacht woord in dat door de beheerder is opgegeven.
+3. Afhankelijk van de manier waarop uw IT-personeel dingen heeft geconfigureerd, zijn een of meer van de volgende opties beschikbaar voor u configureren en verifiëren. Als uw beheerder toestemming heeft om uw gegevens te gebruiken, kunnen ze een deel van de gegevens voor u invullen.
+    * **Office Phone**: alleen de beheerder kan deze optie instellen.
+    * **Telefoon voor authenticatie**: Stel deze optie in op een ander telefoon nummer waartoe u toegang hebt. Een voor beeld is een mobiele telefoon die een tekst of een aanroep kan ontvangen.
+    * **Verificatie-e-mail**: Stel deze optie in op een alternatief e-mail adres dat u kunt openen zonder het wacht woord te gebruiken dat u wilt herstellen.
+    * **Beveiligings vragen**: uw beheerder heeft deze lijst met vragen goedgekeurd die u kunt beantwoorden. U kunt dezelfde vraag of hetzelfde antwoord niet meer dan één keer gebruiken.
+4. Geef en controleer de informatie die de beheerder nodig heeft. Als er meer dan één optie beschikbaar is, wordt u aangeraden meerdere methoden te registreren. Dit geeft u flexibiliteit wanneer een van de methoden niet beschikbaar is. Een voor beeld is wanneer u onderweg bent en u geen toegang hebt tot uw zakelijke telefoon.
 
-    ![Register authentication methods and select finish][Register]
+    ![Registreer verificatie methoden en selecteer volt ooien][Register]
 
-5. Select **finish**. You can now use SSPR when you need to in the future.
+5. Selecteer **volt ooien**. U kunt SSPR nu gebruiken wanneer u in de toekomst wilt.
 
-If you enter data for **Authentication Phone** or **Authentication Email**, it's not visible in the global directory. De enige personen die deze gegevens kunnen zien, zijn u en uw beheerder. Only you can see the answers to your security questions.
+Als u gegevens voor **verificatie telefoon** of **verificatie-e-mail**opgeeft, wordt deze niet weer gegeven in de algemene map. De enige personen die deze gegevens kunnen zien, zijn u en uw beheerder. Alleen u kunt de antwoorden op uw beveiligings vragen zien.
 
-Your administrators might require you to confirm your authentication methods after a period of time to make sure you still have the appropriate methods registered.
+Uw beheerders moeten mogelijk uw verificatie methoden na een bepaalde tijd bevestigen om ervoor te zorgen dat u nog steeds de juiste methoden hebt geregistreerd.
 
-## <a name="common-problems-and-their-solutions"></a>Common problems and their solutions
+## <a name="common-problems-and-their-solutions"></a>Veelvoorkomende problemen en hun oplossingen
 
- Here are some common error cases and their solutions:
+ Hier volgen enkele veelvoorkomende fout gevallen en hun oplossingen:
 
-| Error case| What error do you see?| Oplossing |
+| Fout Case| Welke fout ziet u?| Oplossing |
 | --- | --- | --- |
-| I get a "please contact your administrator" page after entering my user ID | Please contact your administrator. <br> <br> We've detected that your user account password is not managed by Microsoft. As a result, we are unable to automatically reset your password. <br> <br> Contact your IT staff for any further assistance. | You're seeing this message because your IT staff manages your password in your on-premises environment and does not allow you to reset your password from the **Can't access your account** link. <br> <br> To reset your password, contact your IT staff directly for help. Let them know you want to reset your password so they can enable this feature for you.|
-| I get a "your account is not enabled for password reset" error after entering my user ID | Your account is not enabled for password reset. <br> <br> We're sorry, but your IT staff has not set up your account for use with this service. <br> <br> If you'd like, we can contact an administrator in your organization to reset your password for you. | You're seeing this message because your IT staff has not enabled password reset for your organization from the **Can't access your account** link or hasn't licensed you to use the feature. <br> <br> To reset your password, select the **contact an administrator** link. An email will be sent to your company's IT staff. The email lets them know you want to reset your password, so they can enable this feature for you. |
-| I get a "we could not verify your account" error after entering my user ID | We could not verify your account. <br> <br> If you'd like, we can contact an administrator in your organization to reset your password for you. | You're seeing this message because you're enabled for password reset, but you haven't registered to use the service. To register for password reset, go to the [password reset registration page](https://aka.ms/ssprsetup) after you have regained access to your account. <br> <br> To reset your password, select the **contact an administrator** link to send an email to your company's IT staff. |
+| Ik krijg de pagina ' Neem contact op met de beheerder ' nadat ik mijn gebruikers-ID heb ingevoerd | Neem contact op met de beheerder. <br> <br> Het wacht woord voor uw gebruikers account wordt niet beheerd door micro soft. Als gevolg hiervan kunnen we uw wacht woord niet automatisch opnieuw instellen. <br> <br> Neem contact op met uw IT-mede werkers voor verdere hulp. | U ziet dit bericht omdat uw IT-mede werkers uw wacht woord in uw on-premises omgeving beheren en u niet toestaat uw wacht woord opnieuw in te stellen via de koppeling **geen toegang tot uw account** . <br> <br> Als u uw wacht woord opnieuw wilt instellen, neemt u rechtstreeks contact op met uw IT-mede werkers. Laat ze weten dat u uw wacht woord opnieuw wilt instellen zodat deze functie voor u kan worden ingeschakeld.|
+| De fout ' uw account is niet ingeschakeld voor wachtwoord herstel ' verschijnt na het invoeren van mijn gebruikers-ID | Het account is niet ingeschakeld voor het opnieuw instellen van het wacht woord. <br> <br> Uw IT-afdeling heeft uw account niet ingesteld voor gebruik met deze service. <br> <br> Als u wilt, kunnen we contact opnemen met een beheerder in uw organisatie om uw wacht woord opnieuw in te stellen. | U ziet dit bericht omdat uw IT-afdeling het wacht woord niet heeft ingeschakeld voor uw organisatie via de koppeling **geen toegang tot uw account** of een licentie heeft gekregen om de functie te gebruiken. <br> <br> Als u uw wacht woord opnieuw wilt instellen, selecteert u de koppeling **contact opnemen met de beheerder** . Er wordt een e-mail bericht verzonden naar de IT-afdeling van uw bedrijf. Het e-mail bericht laat u weten dat u uw wacht woord opnieuw wilt instellen, zodat deze functie voor u kan worden ingeschakeld. |
+| De fout ' uw account is niet geverifieerd ' verschijnt na het invoeren van mijn gebruikers-ID | Uw account kan niet worden geverifieerd. <br> <br> Als u wilt, kunnen we contact opnemen met een beheerder in uw organisatie om uw wacht woord opnieuw in te stellen. | U ziet dit bericht omdat u bent ingeschakeld voor wachtwoord herstel, maar u bent niet geregistreerd voor het gebruik van de service. Als u zich wilt registreren voor het opnieuw instellen van wacht woorden, gaat u naar de [registratie pagina voor het opnieuw instellen van het wacht woord](https://aka.ms/ssprsetup) nadat u weer toegang hebt gekregen tot uw account. <br> <br> Als u uw wacht woord opnieuw wilt instellen, selecteert u de koppeling **contact opnemen** met de beheerder om een e-mail te verzenden naar de IT-afdeling van uw bedrijf. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Change your password by using self-service password reset](active-directory-passwords-update-your-own-password.md)
+* [Uw wacht woord wijzigen met selfservice voor wachtwoord herstel](active-directory-passwords-update-your-own-password.md)
 * [Registratiepagina voor het opnieuw instellen van een wachtwoord](https://aka.ms/ssprsetup)
 * [Portal voor het opnieuw instellen van een wachtwoord](https://passwordreset.microsoftonline.com/)
-* [When you can't sign in to your Microsoft account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
+* [Wanneer u zich niet kunt aanmelden bij uw Microsoft-account](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant)
 
-[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "Password Reset Registration page showing the registered methods and the finish button"
+[Register]: ./media/active-directory-passwords-reset-register/register-2-methods.png "De registratie pagina voor het opnieuw instellen van wacht woorden met de geregistreerde methoden en de knop volt ooien"
 
