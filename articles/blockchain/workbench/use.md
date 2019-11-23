@@ -1,23 +1,17 @@
 ---
 title: Toepassingen gebruiken in Azure Blockchain Workbench
-description: Zelf studie over het gebruik van toepassings contracten in azure Block Chain Workbench preview.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+description: Tutorial on how to use application contracts in Azure Blockchain Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 1dee101ad87776a1c22b719274569df25c4e161d
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72328957"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324048"
 ---
-# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Zelf studie: toepassingen in azure Block Chain Workbench gebruiken
+# <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Tutorial: Using applications in Azure Blockchain Workbench
 
 U kunt Blockchain Workbench gebruiken voor het maken van contracten en het ondernemen van acties op contracten. Daarnaast kunt gegevens van contracten bekijken, zoals de status en transactiegeschiedenis.
 
@@ -42,7 +36,7 @@ U moet zich aanmelden als lid van Blockchain Workbench. Als er geen toepassingen
 
 ## <a name="create-new-contract"></a>Nieuw contract maken
 
-Als u een nieuw contract wilt maken, moet u een lid zijn dat is opgegeven als een contract **aanvrager**. Zie [Werkstromen in het configuratieoverzicht](configuration.md#workflows) voor informatie over het definiëren van toepassingsrollen en initiators voor het contract. Zie [Een lid toevoegen aan een toepassing](manage-users.md#add-member-to-application) voor informatie over het toewijzen van leden aan toepassingsrollen.
+To create a new contract, you need to be a member specified as a contract **initiator**. Zie [Werkstromen in het configuratieoverzicht](configuration.md#workflows) voor informatie over het definiëren van toepassingsrollen en initiators voor het contract. Zie [Een lid toevoegen aan een toepassing](manage-users.md#add-member-to-application) voor informatie over het toewijzen van leden aan toepassingsrollen.
 
 1. Selecteer in de sectie Blockchain Workbench-toepassing de toepassingstegel met het contract dat u wilt maken. U ziet een lijst met actieve contracten.
 

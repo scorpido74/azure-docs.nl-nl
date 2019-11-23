@@ -1,57 +1,57 @@
 ---
-title: Team ontwikkeling op Kubernetes met behulp van Azure dev Spaces
+title: Team development on Kubernetes
 services: azure-dev-spaces
 ms.date: 04/25/2019
 ms.topic: quickstart
-description: Ontwikkeling van team Kubernetes met containers en micro Services op Azure
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
+description: Team Kubernetes development with containers and microservices on Azure
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: b6afd4193c38e414937fc0e57461d403f47cbd6d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: f5558ff70c9731cc0c21d0f84c77c338c5a6ee24
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279774"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325556"
 ---
-# <a name="quickstart-team-development-on-kubernetes-using-azure-dev-spaces"></a>Snelstartgids: team ontwikkeling op Kubernetes met behulp van Azure dev Spaces
+# <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Quickstart: Team development on Kubernetes - Azure Dev Spaces
 
 In deze handleiding leert u het volgende:
 
-- Stel Azure-ontwikkel ruimten in op een beheerd Kubernetes-cluster in Azure.
-- Implementeer een grote toepassing met meerdere micro Services naar een dev-ruimte.
-- Test één micro service in een geïsoleerde ontwikkel ruimte binnen de context van de volledige toepassing.
+- Set up Azure Dev Spaces on a managed Kubernetes cluster in Azure.
+- Deploy a large application with multiple microservices to a dev space.
+- Test a single microservice in an isolated dev space within the context of the full application.
 
-![Ontwikkeling van Azure dev Spaces-team](media/azure-dev-spaces/collaborate-graphic.gif)
+![Azure Dev Spaces team development](media/azure-dev-spaces/collaborate-graphic.gif)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+- Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 - [Azure CLI geïnstalleerd](/cli/azure/install-azure-cli?view=azure-cli-latest).
-- [Helm 2,13 of hoger is geïnstalleerd][helm-installed].
+- [Helm 2.13 or greater installed][helm-installed].
 
-## <a name="create-an-azure-kubernetes-service-cluster"></a>Een Azure Kubernetes service-cluster maken
+## <a name="create-an-azure-kubernetes-service-cluster"></a>Create an Azure Kubernetes Service cluster
 
-U moet een AKS-cluster in een [ondersteunde regio][supported-regions]maken. Met de onderstaande opdrachten maakt u een resource groep met de naam *MyResourceGroup* en een AKS-cluster met de naam *MyAKS*.
+You must create an AKS cluster in a [supported region][supported-regions]. The below commands create a resource group called *MyResourceGroup* and an AKS cluster called *MyAKS*.
 
 ```cmd
 az group create --name MyResourceGroup --location eastus
 az aks create -g MyResourceGroup -n MyAKS --location eastus --disable-rbac --generate-ssh-keys
 ```
 
-## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Azure dev Spaces inschakelen op uw AKS-cluster
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>Enable Azure Dev Spaces on your AKS cluster
 
-Gebruik de `use-dev-spaces` opdracht om ontwikkel ruimten in uw AKS-cluster in te scha kelen en de prompts te volgen. De onderstaande opdracht maakt ontwikkel ruimten in het *MyAKS* -cluster in de *MyResourceGroup* -groep mogelijk en maakt een ontwikkel ruimte met de naam *dev*.
+Use the `use-dev-spaces` command to enable Dev Spaces on your AKS cluster and follow the prompts. The below command enables Dev Spaces on the *MyAKS* cluster in the *MyResourceGroup* group and creates a dev space called *dev*.
 
 > [!NOTE]
-> De `use-dev-spaces`-opdracht installeert ook de Azure dev Space CLI als deze nog niet is geïnstalleerd. U kunt de CLI voor Azure dev Spaces niet installeren in de Azure Cloud Shell.
+> The `use-dev-spaces` command will also install the Azure Dev Spaces CLI if its not already installed. You cannot install the Azure Dev Spaces CLI in the Azure Cloud Shell.
 
 ```cmd
 az aks use-dev-spaces -g MyResourceGroup -n MyAKS --space dev --yes
 ```
 
-## <a name="get-sample-application-code"></a>Voorbeeld toepassings code ophalen
+## <a name="get-sample-application-code"></a>Get sample application code
 
-In dit artikel gebruikt u de [voorbeeld toepassing delen van Azure dev Spaces Bike](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) om te demonstreren hoe u Azure dev Spaces gebruikt.
+In this article, you use the [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) to demonstrate using Azure Dev Spaces.
 
 Kloon de toepassing uit GitHub en navigeer naar de bijbehorende map:
 
@@ -60,9 +60,9 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/BikeSharingApp/
 ```
 
-## <a name="retrieve-the-hostsuffix-for-dev"></a>De HostSuffix voor *dev* ophalen
+## <a name="retrieve-the-hostsuffix-for-dev"></a>Retrieve the HostSuffix for *dev*
 
-Gebruik de `azds show-context` opdracht om de HostSuffix voor *dev*weer te geven.
+Use the `azds show-context` command to show the HostSuffix for *dev*.
 
 ```cmd
 $ azds show-context
@@ -72,17 +72,17 @@ Name                ResourceGroup     DevSpace  HostSuffix
 MyAKS               MyResourceGroup   dev       fedcab0987.eus.azds.io
 ```
 
-## <a name="update-the-helm-chart-with-your-hostsuffix"></a>Het helm-diagram bijwerken met uw HostSuffix
+## <a name="update-the-helm-chart-with-your-hostsuffix"></a>Update the Helm chart with your HostSuffix
 
-Open [grafieken/waarden. yaml](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) en vervang alle exemplaren van `<REPLACE_ME_WITH_HOST_SUFFIX>` door de HostSuffix-waarde die u eerder hebt opgehaald. Sla de wijzigingen op en sluit het bestand.
+Open [charts/values.yaml](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/charts/values.yaml) and replace all instances of `<REPLACE_ME_WITH_HOST_SUFFIX>` with the HostSuffix value you retrieved earlier. Save your changes and close the file.
 
-## <a name="run-the-sample-application-in-kubernetes"></a>De voorbeeld toepassing uitvoeren in Kubernetes
+## <a name="run-the-sample-application-in-kubernetes"></a>Run the sample application in Kubernetes
 
-De opdrachten voor het uitvoeren van de voorbeeld toepassing op Kubernetes maken deel uit van een bestaand proces en hebben geen afhankelijkheid van Azure dev Spaces-hulpprogram ma's. In dit geval is helm het hulp programma dat wordt gebruikt om deze voorbeeld toepassing uit te voeren, maar andere hulp middelen kunnen worden gebruikt om uw hele toepassing uit te voeren in een naam ruimte binnen een cluster. De helm-opdrachten zijn gericht op de ontwikkel ruimte met de naam *dev* die u eerder hebt gemaakt, maar deze dev Space is ook een Kubernetes-naam ruimte. Als gevolg hiervan kunnen ontwikkel ruimten worden gericht door andere hulp middelen die hetzelfde zijn als andere naam ruimten.
+The commands for running the sample application on Kubernetes are part of an existing process and have no dependency on Azure Dev Spaces tooling. In this case, Helm is the tooling used to run this sample application but other tooling could be used to run your entire application in a namespace within a cluster. The Helm commands are targeting the dev space named *dev* you created earlier, but this dev space is also a Kubernetes namespace. As a result, dev spaces can be targeted by other tooling the same as other namespaces.
 
-U kunt Azure dev Spaces gebruiken voor team ontwikkeling nadat een toepassing in een cluster wordt uitgevoerd, ongeacht het hulp programma dat wordt gebruikt om het te implementeren.
+You can use Azure Dev Spaces for team development after an application is running in a cluster regardless of the tooling used to deploy it.
 
-Gebruik de opdrachten `helm init` en `helm install` om de voorbeeld toepassing in uw cluster in te stellen en te installeren.
+Use the `helm init` and `helm install` commands to set up and install the sample application on your cluster.
 
 ```cmd
 cd charts/
@@ -90,9 +90,9 @@ helm init --wait
 helm install -n bikesharing . --dep-up --namespace dev --atomic 
 ```
 > [!Note]
-> **Als u een cluster met RBAC-functionaliteit gebruikt**, moet u [een service account configureren voor Tiller](https://helm.sh/docs/using_helm/#role-based-access-control). Als dat niet het geval is, mislukken `helm`-opdrachten.
+> **If you are using an RBAC-enabled cluster**, be sure to configure [a service account for Tiller](https://helm.sh/docs/using_helm/#role-based-access-control). Otherwise, `helm` commands will fail.
 
-Het kan enkele minuten duren voordat de `helm install` opdracht is voltooid. De uitvoer van de opdracht toont de status van alle services die tijdens de voltooiing van het cluster zijn geïmplementeerd:
+The `helm install` command may take several minutes to complete. The output of the command shows the status of all the services it deployed to the cluster when completed:
 
 ```cmd
 $ cd charts/
@@ -114,7 +114,7 @@ reservationengine  1/1    1           1          4m32s
 users              1/1    1           1          4m32s
 ```
 
-Nadat de voorbeeld toepassing op uw cluster is geïnstalleerd en omdat er ontwikkel ruimten zijn ingeschakeld op uw cluster, gebruikt u de opdracht `azds list-uris` om de Url's voor de voorbeeld toepassing weer te geven in *dev* die momenteel is geselecteerd.
+After the sample application is installed on your cluster and since you have Dev Spaces enabled on your cluster, use the `azds list-uris` command to display the URLs for the sample application in *dev* that is currently selected.
 
 ```cmd
 $ azds list-uris
@@ -124,22 +124,22 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Ga naar de *bikesharingweb* -service door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de tekst *Hi Aurelia Briggs | Meld* u aan de bovenkant aan.
+Navigate to the *bikesharingweb* service by opening the public URL from the `azds list-uris` command. In the above example, the public URL for the *bikesharingweb* service is `http://dev.bikesharingweb.fedcab0987.eus.azds.io/`. Select *Aurelia Briggs (customer)* as the user. Verify you see the text *Hi Aurelia Briggs | Sign Out* at the top.
 
-![Voorbeeld toepassing voor delen van Azure dev Spaces](media/quickstart-team-development/bikeshare.png)
+![Azure Dev Spaces Bike Sharing sample application](media/quickstart-team-development/bikeshare.png)
 
-## <a name="create-child-dev-spaces"></a>Onderliggende ontwikkel ruimten maken
+## <a name="create-child-dev-spaces"></a>Create child dev spaces
 
-Gebruik de `azds space select` opdracht om twee onderliggende ruimten te maken onder *dev*:
+Use the `azds space select` command to create two child spaces under *dev*:
 
 ```cmd
 azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-Met de bovenstaande opdrachten maakt u twee onderliggende ruimten onder *dev* met de naam *azureuser1* en *azureuser2*. Deze twee onderliggende ruimten vertegenwoordigen afzonderlijke ontwikkel ruimten voor de *azureuser1* en *azureuser2* van ontwikkel aars voor het aanbrengen van wijzigingen aan de voorbeeld toepassing.
+The above commands create two child spaces under *dev* named *azureuser1* and *azureuser2*. These two child spaces represent distinct dev spaces for the developers' *azureuser1* and *azureuser2* to use for making changes to the sample application.
 
-Gebruik de `azds space list` opdracht om alle ontwikkel ruimten weer te geven en te bevestigen dat *dev/azureuser2* is geselecteerd.
+Use the `azds space list` command to list all the dev spaces and confirm *dev/azureuser2* is selected.
 
 ```cmd
 $ azds space list
@@ -151,7 +151,7 @@ $ azds space list
 *  dev/azureuser2  True
 ```
 
-Gebruik de `azds list-uris` om de Url's voor de voorbeeld toepassing weer te geven in de momenteel geselecteerde ruimte die *dev/azureuser2*is.
+Use the `azds list-uris` to display the URLs for the sample application in the currently selected space that is *dev/azureuser2*.
 
 ```cmd
 $ azds list-uris
@@ -161,13 +161,13 @@ http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/  Available
 http://azureuser2.s.dev.gateway.fedcab0987.eus.azds.io/         Available
 ```
 
-Controleer of de Url's die worden weer gegeven door de `azds list-uris` opdracht het voor voegsel *azureuser2. s. dev* hebben. Met dit voor voegsel wordt bevestigd dat de huidige geselecteerde ruimte *azureuser2*is. Dit is een onderliggend element van *dev*.
+Confirm that the URLs displayed by the `azds list-uris` command have the *azureuser2.s.dev* prefix. This prefix confirms that the current space selected is *azureuser2*, which is a child of *dev*.
 
-Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door de open bare URL te openen via de `azds list-uris` opdracht. In het bovenstaande voor beeld is de open bare URL voor de *bikesharingweb* -service `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de tekst *Hi Aurelia Briggs | Meld* u aan de bovenkant aan.
+Navigate to the *bikesharingweb* service for the *dev/azureuser2* dev space by opening the public URL from the `azds list-uris` command. In the above example, the public URL for the *bikesharingweb* service is `http://azureuser2.s.dev.bikesharingweb.fedcab0987.eus.azds.io/`. Select *Aurelia Briggs (customer)* as the user. Verify you see the text *Hi Aurelia Briggs | Sign out* at the top.
 
 ## <a name="update-code"></a>Code bijwerken
 
-Open *BikeSharingWeb/Components/header. js* met een tekst editor en wijzig de tekst in het [SPAN-element met de `userSignOut` className](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
+Open *BikeSharingWeb/components/Header.js* with a text editor and change the text in the [span element with the `userSignOut` className](https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/components/Header.js#L16).
 
 ```html
 <span className="userSignOut">
@@ -175,11 +175,11 @@ Open *BikeSharingWeb/Components/header. js* met een tekst editor en wijzig de te
 </span>
 ```
 
-Sla de wijzigingen op en sluit het bestand.
+Save your changes and close the file.
 
-## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>De bijgewerkte bikesharingweb-service bouwen en uitvoeren in de ontwikkel ruimte *dev/azureuser2*
+## <a name="build-and-run-the-updated-bikesharingweb-service-in-the-devazureuser2-dev-space"></a>Build and run the updated bikesharingweb service in the *dev/azureuser2* dev space
 
-Ga naar de *BikeSharingWeb/* map en voer de opdracht `azds up` uit.
+Navigate to the *BikeSharingWeb/* directory and run the `azds up` command.
 
 ```cmd
 $ cd ../BikeSharingWeb/
@@ -193,18 +193,18 @@ Service 'bikesharingweb' port 80 (http) is available at http://localhost:54256
 ...
 ```
 
-Met deze opdracht wordt de *bikesharingweb* -service in de ontwikkel ruimte *dev/azureuser2* gemaakt en uitgevoerd. Deze service wordt uitgevoerd naast de *bikesharingweb* -service die wordt uitgevoerd in *dev* en wordt alleen gebruikt voor aanvragen met het URL-voor voegsel *azureuser2. s* . Zie [hoe Azure dev Spaces werkt en is geconfigureerd](how-dev-spaces-works.md)voor meer informatie over de werking van route ring tussen bovenliggende en onderliggende ontwikkel ruimten.
+This command builds and runs the *bikesharingweb* service in the *dev/azureuser2* dev space. This service runs in addition to the *bikesharingweb* service running in *dev* and is only used for requests with the *azureuser2.s* URL prefix. For more information on how routing works between parent and child dev spaces, see [How Azure Dev Spaces works and is configured](how-dev-spaces-works.md).
 
-Ga naar de *bikesharingweb* -service voor de dev */azureuser2 dev-* ruimte door de open bare URL te openen die wordt weer gegeven in de uitvoer van de `azds up` opdracht. Selecteer *Aurelia Briggs (klant)* als de gebruiker. Controleer of de bijgewerkte tekst in de rechter bovenhoek wordt weer geven. Mogelijk moet u de pagina vernieuwen of de cache van de browser wissen als u deze wijziging niet meteen ziet.
+Navigate to the *bikesharingweb* service for the *dev/azureuser2* dev space by opening the public URL displayed in the output of the `azds up` command. Select *Aurelia Briggs (customer)* as the user. Verify you see the updated text in the upper right corner. You may need to refresh the page or clear your browser's cache if you do not immediately see this change.
 
-![De voorbeeld toepassing is bijgewerkt door Azure dev Spaces fiets delen](media/quickstart-team-development/bikeshare-update.png)
+![Azure Dev Spaces Bike Sharing sample application updated](media/quickstart-team-development/bikeshare-update.png)
 
 > [!NOTE]
-> Wanneer u naar uw service navigeert tijdens het uitvoeren van `azds up`, worden de traceringen van de HTTP-aanvraag ook weer gegeven in de uitvoer van de `azds up` opdracht. Deze traceringen kunnen u helpen bij het oplossen van problemen met uw service en fout opsporing. U kunt deze traceringen uitschakelen met behulp van `--disable-http-traces` wanneer u `azds up`uitvoert.
+> When you navigate to your service while running `azds up`, the HTTP request traces are also displayed in the output of the `azds up` command. These traces can help you troubleshoot and debug your service. You can disable these traces using `--disable-http-traces` when running `azds up`.
 
-## <a name="verify-other-dev-spaces-are-unchanged"></a>Controleren of andere ontwikkel ruimten ongewijzigd zijn
+## <a name="verify-other-dev-spaces-are-unchanged"></a>Verify other Dev Spaces are unchanged
 
-Als de `azds up` opdracht nog steeds wordt uitgevoerd, drukt u op *CTRL + c*.
+If the `azds up` command is still running, press *Ctrl+c*.
 
 ```cmd
 $ azds list-uris --all
@@ -218,11 +218,11 @@ http://dev.bikesharingweb.fedcab0987.eus.azds.io/               Available
 http://dev.gateway.fedcab0987.eus.azds.io/                      Available
 ```
 
-Ga in uw browser naar de *dev* -versie van *Bikesharingweb* , kies *Aurelia Briggs (klant)* als de gebruiker en controleer of de oorspronkelijke tekst in de rechter bovenhoek wordt weer geven. Herhaal deze stappen met de URL van *dev/azureuser1* . U ziet dat de wijzigingen alleen worden toegepast op de *dev/azureuser2-* versie van *bikesharingweb*. Door deze isolatie van wijzigingen in *dev/azureuser2* kunnen *azureuser2* wijzigingen aanbrengen zonder dat dit van invloed is op *azureuser1*.
+Navigate to the *dev* version of *bikesharingweb* in your browser, choose *Aurelia Briggs (customer)* as the user, and verify you see the original text in the upper right corner. Repeat these steps with the *dev/azureuser1* URL. Notice the changes are only applied to the *dev/azureuser2* version of *bikesharingweb*. This isolation of changes to *dev/azureuser2* allows for *azureuser2* to make changes without affecting *azureuser1*.
 
-Als u wilt dat deze wijzigingen worden weer gegeven in *dev* en *dev/azureuser1*, moet u de bestaande werk stroom van uw team of CI/cd-pijp lijn volgen. Deze werk stroom kan bijvoorbeeld betrekking hebben op het door voeren van uw wijziging in uw versie beheersysteem en het implementeren van de update met een CI/CD-pijp lijn of hulp programma zoals helm.
+To have these changes reflected in *dev* and *dev/azureuser1*, you should follow your team's existing workflow or CI/CD pipeline. For example, this workflow may involve committing your change to your version control system and deploying the update using a CI/CD pipeline or tooling such as Helm.
 
-## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
+## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait

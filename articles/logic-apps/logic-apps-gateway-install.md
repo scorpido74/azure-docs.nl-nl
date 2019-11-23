@@ -1,6 +1,6 @@
 ---
-title: On-premises gegevens gateway installeren-Azure Logic Apps
-description: U kunt de on-premises gegevens gateway downloaden en installeren voordat u toegang hebt tot gegevens on-Azure Logic Apps premises.
+title: Install on-premises data gateway - Azure Logic Apps
+description: Before you can access data on premises from Azure Logic Apps, download and install the on-premises data gateway
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,273 +9,275 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 11/06/2019
-ms.openlocfilehash: ef46fce8609119777ef73cbe189d7a8ace662c91
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: e1e56d18b0874a724849e28092ed46892a1b5519
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076939"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326377"
 ---
-# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>On-premises gegevens gateway voor Azure Logic Apps installeren
+# <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Install on-premises data gateway for Azure Logic Apps
 
-Voordat u [verbinding kunt maken met on-premises gegevens bronnen vanuit Azure Logic apps](../logic-apps/logic-apps-gateway-connection.md), downloadt en installeert u de [on-premises gegevens gateway](https://aka.ms/on-premises-data-gateway-installer) op een lokale computer. De gateway werkt als een brug die snelle gegevens overdracht en versleuteling biedt tussen gegevens bronnen on-premises en uw Logic apps. U kunt dezelfde Gateway-installatie gebruiken met andere Cloud Services, zoals Power BI, energie automatisering, Power apps en Azure Analysis Services. Zie de volgende artikelen voor meer informatie over het gebruik van de gateway met deze services:
+Before you can [connect to on-premises data sources from Azure Logic Apps](../logic-apps/logic-apps-gateway-connection.md), download and install the [on-premises data gateway](https://aka.ms/on-premises-data-gateway-installer) on a local computer. The gateway works as a bridge that provides quick data transfer and encryption between data sources on premises and your logic apps. You can use the same gateway installation with other cloud services, such as Power BI, Power Automate, Power Apps, and Azure Analysis Services. For information about how to use the gateway with these services, see these articles:
 
-* [Micro soft power on-premises gegevens gateway automatiseren](/power-automate/gateway-reference)
-* [On-premises gegevens gateway van micro soft Power BI](/power-bi/service-gateway-onprem)
-* [On-premises gegevens gateway van micro soft power apps](/powerapps/maker/canvas-apps/gateway-reference)
-* [Azure Analysis Services on-premises gegevens gateway](../analysis-services/analysis-services-gateway.md)
+* [Microsoft Power Automate on-premises data gateway](/power-automate/gateway-reference)
+* [Microsoft Power BI on-premises data gateway](/power-bi/service-gateway-onprem)
+* [Microsoft Power Apps on-premises data gateway](/powerapps/maker/canvas-apps/gateway-reference)
+* [Azure Analysis Services on-premises data gateway](../analysis-services/analysis-services-gateway.md)
 
-In dit artikel wordt beschreven hoe u uw on-premises gegevens gateway kunt downloaden, installeren en instellen, zodat u toegang hebt tot on-premises gegevens bronnen van Azure Logic Apps. U kunt ook meer te weten komen over [de manier waarop de gegevens gateway](#gateway-cloud-service) verderop in dit onderwerp werkt. Zie [Wat is een on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)? voor meer informatie over de gateway.
+This article shows how to download, install, and set up your on-premises data gateway so that you can access on-premises data sources from Azure Logic Apps. You can also learn more about [how the data gateway works](#gateway-cloud-service) later in this topic. For more information about the gateway, see [What is an on-premises gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem)?
 
 <a name="requirements"></a>
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-account en -abonnement. Als u geen Azure-account hebt met een abonnement, [meldt u zich aan voor een gratis Azure-account](https://azure.microsoft.com/free/).
+* Een Azure-account en -abonnement. If you don't have an Azure account with a subscription, [sign up for a free Azure account](https://azure.microsoft.com/free/).
 
-  * Uw Azure-account moet deel uitmaken van een enkele [Azure Active Directory (Azure AD)-Tenant of-map](../active-directory/fundamentals/active-directory-whatis.md#terminology). U moet hetzelfde Azure-account gebruiken voor het installeren en beheren van de gateway op uw lokale computer.
+  * Your Azure account must belong to a single [Azure Active Directory (Azure AD) tenant or directory](../active-directory/fundamentals/active-directory-whatis.md#terminology). You must use the same Azure account for installing and administering the gateway on your local computer.
 
-  * Tijdens de installatie van de gateway meldt u zich aan met uw Azure-account, waarmee u uw gateway-installatie kunt koppelen aan uw Azure-account en alleen dat account. Later, in de Azure Portal, moet u hetzelfde Azure-account en Azure AD-Tenant gebruiken wanneer u een Azure gateway-resource maakt waarmee de gateway-installatie wordt geregistreerd en claimt. In Azure Logic Apps moeten on-premises triggers en acties vervolgens de gateway bron gebruiken om verbinding te maken met on-premises gegevens bronnen.
+  * During gateway installation, you sign in with your Azure account, which links your gateway installation to your Azure account and only that account. Later, in the Azure portal, you must use the same Azure account and Azure AD tenant when you create an Azure gateway resource that registers and claims your gateway installation. In Azure Logic Apps, on-premises triggers and actions then use the gateway resource for connecting to on-premises data sources.
 
     > [!NOTE]
-    > U kunt slechts één gateway-installatie en één Azure gateway-resource aan elkaar koppelen. U kunt dezelfde Gateway-installatie niet koppelen aan meerdere Azure-accounts of Azure gateway-resources. Een Azure-account kan echter worden gekoppeld aan meerdere gateway-installaties en Azure gateway-resources. In een on-premises trigger of actie kunt u kiezen uit uw verschillende Azure-abonnementen en vervolgens een gekoppelde gateway resource selecteren.
+    > You can link only one gateway installation and one Azure gateway resource to each other. You can't link the same gateway installation to multiple Azure accounts or Azure gateway resources. However, an Azure account can link to multiple gateway installations and Azure gateway resources. In an on-premises trigger or action, you can select from your various Azure subscriptions, and then select an associated gateway resource.
 
-  * U moet zich aanmelden met een werk account of school account, ook wel bekend als een *organisatie* account, dat lijkt op `username@contoso.com`. U kunt geen Azure B2B-accounts of persoonlijke micro soft-accounts gebruiken, zoals @hotmail.com of @outlook.com.
+  * You need to sign in with either a work account or school account, also known as an *organization* account, which looks like `username@contoso.com`. You can't use Azure B2B (guest) accounts or personal Microsoft accounts, such as @hotmail.com or @outlook.com.
 
     > [!TIP]
-    > Als u zich hebt geregistreerd voor een Office 365-aanbieding en uw zakelijke e-mail adres niet hebt verstrekt, kan uw adres eruit zien als `username@domain.onmicrosoft.com`. Uw account wordt opgeslagen in een Tenant in een Azure Active Directory (Azure AD). In de meeste gevallen is de UPN (User Principal Name) voor uw Azure AD-account hetzelfde als uw e-mail adres.
+    > If you signed up for an Office 365 offering and didn't provide your work email address, your address might look like `username@domain.onmicrosoft.com`. Your account is stored within a tenant in an Azure Active Directory (Azure AD). In most cases, the User Principal Name (UPN) for your Azure AD account is the same as your email address.
     >
-    > Als u een [Visual Studio Standard-abonnement](https://visualstudio.microsoft.com/vs/pricing/) wilt gebruiken dat is gekoppeld aan een Microsoft-account, maakt u eerst [een TENANT in azure AD](../active-directory/develop/quickstart-create-new-tenant.md) of gebruikt u de standaard directory. Voeg een gebruiker met een wacht woord toe aan de map en geef die gebruiker vervolgens toegang tot uw Azure-abonnement. U kunt zich vervolgens aanmelden tijdens de installatie van de gateway met deze gebruikers naam en dit wacht woord.
+    > To use a [Visual Studio Standard subscription](https://visualstudio.microsoft.com/vs/pricing/) that's linked to a Microsoft account, first [create a tenant in Azure AD](../active-directory/develop/quickstart-create-new-tenant.md) or use the default directory. Add a user with a password to the directory, and then give that user access to your Azure subscription. You can then sign in during gateway installation with this username and password.
 
-* Hier vindt u de vereisten voor uw lokale computer:
+* Here are requirements for your local computer:
 
-  **Minimale vereisten**
+  **Minimum requirements**
 
   * .NET Framework 4.7.2
-  * 64-bits versie van Windows 7 of Windows Server 2008 R2 (of hoger)
+  * 64-bit version of Windows 7 or Windows Server 2008 R2 (or later)
 
-  **Aanbevolen vereisten**
+  **Recommended requirements**
 
   * 8-core CPU
-  * 8 GB geheugen
-  * 64-bits versie van Windows Server 2012 R2 of hoger
-  * SSD-opslag (Solid-State Drive) voor spooling
+  * 8 GB memory
+  * 64-bit version of Windows Server 2012 R2 or later
+  * Solid-state drive (SSD) storage for spooling
 
   > [!NOTE]
-  > De gateway biedt geen ondersteuning voor Windows Server Core.
+  > The gateway doesn't support Windows Server Core.
 
-* **Verwante overwegingen**
+* **Related considerations**
 
-  * U kunt de on-premises gegevens gateway alleen installeren op een lokale computer, niet op een domein controller. U hoeft de gateway echter niet te installeren op dezelfde computer als uw gegevens bron. U hebt slechts één gateway nodig voor al uw gegevens bronnen, dus u hoeft de gateway niet voor elke gegevens bron te installeren.
+  * Install the on-premises data gateway only on a local computer, not a domain controller. You don't have to install the gateway on the same computer as your data source. You need only one gateway for all your data sources, so you don't need to install the gateway for each data source.
 
     > [!TIP]
-    > Als u de latentie wilt minimaliseren, kunt u de gateway zo dicht mogelijk bij de gegevens bron of op dezelfde computer installeren, ervan uitgaande dat u over de juiste machtigingen beschikt.
+    > To minimize latency, you can install the gateway as close as possible to your data source, or on the same computer, assuming that you have permissions.
 
-  * Installeer de gateway op een computer die zich op een bekabeld netwerk bevindt, verbonden met internet, altijd ingeschakeld en niet naar de slaap stand. Anders kan de gateway niet worden uitgevoerd en is het mogelijk dat de prestaties van een draadloos netwerk afnemen.
+  * Install the gateway on a computer that's on a wired network, connected to the internet, always turned on, and doesn't go to sleep. Otherwise, the gateway can't run, and performance might suffer over a wireless network.
 
-  * Als u van plan bent om Windows-verificatie te gebruiken, moet u ervoor zorgen dat u de gateway installeert op een computer die lid is van dezelfde Active Directory omgeving als uw gegevens bronnen.
+  * If you plan to use Windows authentication, make sure that you install the gateway on a computer that's a member of the same Active Directory environment as your data sources.
 
-  * De regio die u voor de gateway-installatie selecteert, is dezelfde locatie die u moet selecteren wanneer u later de Azure-gateway resource voor uw logische app maakt. Deze regio is standaard dezelfde locatie als uw Azure AD-Tenant voor het beheren van uw Azure-account. U kunt de locatie echter wijzigen tijdens de installatie van de gateway.
+  * The region that you select for your gateway installation is the same location that you must select when you later create the Azure gateway resource for your logic app. By default, this region is the same location as your Azure AD tenant that manages your Azure account. However, you can change the location during gateway installation.
 
-  * De gateway heeft twee modi: standaard modus en persoonlijke modus, die alleen van toepassing is op Power BI. U kunt niet meer dan één gateway in dezelfde modus op dezelfde computer uitvoeren.
+  * If you're updating your gateway installation to the latest version, uninstall your current gateway first for a cleaner experience.
 
-  * Azure Logic Apps ondersteunt Lees-en schrijf bewerkingen via de gateway. Deze bewerkingen hebben echter [limieten voor de grootte van de nettolading](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
+  * The gateway has two modes: standard mode and personal mode, which applies only to Power BI. You can't have more than one gateway running in the same mode on the same computer.
+
+  * Azure Logic Apps supports read and write operations through the gateway. However, these operations have [limits on their payload size](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem#considerations).
 
 <a name="install-gateway"></a>
 
 ## <a name="install-data-gateway"></a>Een gegevensgateway installeren
 
-1. [Down load en voer het installatie programma van de gateway op een lokale computer uit](https://aka.ms/on-premises-data-gateway-installer).
+1. [Download and run the gateway installer on a local computer](https://aka.ms/on-premises-data-gateway-installer).
 
-1. Wanneer het installatie programma wordt geopend, selecteert u **volgende**.
+1. After the installer opens, select **Next**.
 
-   ![Introductie scherm voor Gateway-installatie programma](./media/logic-apps-gateway-install/gateway-intro-screen.png)
+   ![Intro screen for gateway installer](./media/logic-apps-gateway-install/gateway-intro-screen.png)
 
-1. Selecteer **on-premises gegevens gateway (aanbevolen)** , de standaard modus, en selecteer vervolgens **volgende**.
+1. Select **On-premises data gateway (recommended)** , which is standard mode, and then select **Next**.
 
-   ![De uitvoerings modus voor de gegevens gateway selecteren](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
+   ![Select run mode for data gateway](./media/logic-apps-gateway-install/select-gateway-running-mode.png)
 
-1. Bekijk de minimale vereisten, behoud de standaard installatie, accepteer de gebruiksrecht overeenkomst en selecteer vervolgens **installeren**.
+1. Review the minimum requirements, keep the default installation path, accept the terms of use, and then select **Install**.
 
-   ![Bekijk de vereisten en accepteer de gebruiks voorwaarden](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
+   ![Review requirements and accept terms of use](./media/logic-apps-gateway-install/review-and-accept-terms-of-use.png)
 
-1. Nadat de gateway is geïnstalleerd, geeft u het e-mail adres voor uw Azure-account op en selecteert u **Aanmelden**, bijvoorbeeld:
+1. After the gateway successfully installs, provide the email address for your Azure account, and then select **Sign in**, for example:
 
-   ![Aanmelden met een werk-of school account](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
+   ![Sign in with work or school account](./media/logic-apps-gateway-install/sign-in-gateway-install.png)
 
-   De gateway-installatie kan slechts aan één Azure-account worden gekoppeld.
+   Your gateway installation can link to only one Azure account.
 
-1. Selecteer **een nieuwe gateway registreren op deze computer** > **volgende**. Met deze stap wordt de gateway-installatie geregistreerd bij de [Gateway-Cloud service](#gateway-cloud-service).
+1. Select **Register a new gateway on this computer** > **Next**. This step registers your gateway installation with the [gateway cloud service](#gateway-cloud-service).
 
-   ![Gateway op lokale computer registreren](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
+   ![Register gateway on local computer](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
-1. Geef deze informatie op voor de gateway-installatie:
+1. Provide this information for your gateway installation:
 
-   * Een gateway naam die uniek is binnen uw Azure AD-Tenant
-   * De herstel sleutel, die ten minste acht tekens moet bevatten die u wilt gebruiken
-   * Bevestiging van uw herstel sleutel
+   * A gateway name that's unique across your Azure AD tenant
+   * The recovery key, which must have at least eight characters, that you want to use
+   * Confirmation for your recovery key
 
-   ![Informatie over de installatie van de gateway opgeven](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
+   ![Provide information for gateway installation](./media/logic-apps-gateway-install/gateway-name-recovery-key.png)
 
    > [!IMPORTANT]
-   > Bewaar uw herstel sleutel op een veilige plaats. U hebt deze sleutel nodig als u ooit de locatie wilt wijzigen, verplaatsen, herstellen of overnemen van een gateway-installatie.
+   > Save and keep your recovery key in a safe place. You need this key if you ever want to change the location, move, recover, or take over a gateway installation.
 
-   Let op de optie om toe **te voegen aan een bestaand gateway cluster**, dat u selecteert wanneer u extra gateways voor [scenario's met hoge Beschik baarheid](#high-availability)installeert.
+   Note the option to **Add to an existing gateway cluster**, which you select when you install additional gateways for [high-availability scenarios](#high-availability).
 
-1. Controleer de regio voor de gateway-Cloud service en [Azure service bus](https://azure.microsoft.com/services/service-bus/) die wordt gebruikt door de installatie van de gateway. Standaard is deze regio dezelfde locatie als de Azure AD-Tenant voor uw Azure-account.
+1. Check the region for the gateway cloud service and [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) that's used by your gateway installation. By default, this region is the same location as the Azure AD tenant for your Azure account.
 
-   ![Regio bevestigen voor de Gateway Service en service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
+   ![Confirm region for gateway service and service bus](./media/logic-apps-gateway-install/confirm-gateway-region.png)
 
-1. Selecteer **configureren**om de standaard regio te accepteren. Als de standaard regio echter niet het meest overeenkomt met u, kunt u de regio wijzigen.
+1. To accept the default region, select **Configure**. However, if the default region isn't the one that's closest to you, you can change the region.
 
-   *Waarom wijzigt u de regio voor de installatie van de gateway?*
+   *Why change the region for your gateway installation?*
 
-   Als u bijvoorbeeld de latentie wilt beperken, kunt u de regio van de gateway wijzigen in dezelfde regio als uw logische app. U kunt ook de regio selecteren die het dichtst bij uw on-premises gegevens bron ligt. Uw *Gateway bron in azure* en uw logische app kunnen verschillende locaties hebben.
+   For example, to reduce latency, you might change your gateway's region to the same region as your logic app. Or, you might select the region closest to your on-premises data source. Your *gateway resource in Azure* and your logic app can have different locations.
 
-   1. Selecteer **regio wijzigen**naast de huidige regio.
+   1. Next to the current region, select **Change Region**.
 
-      ![De huidige gateway regio wijzigen](./media/logic-apps-gateway-install/change-gateway-service-region.png)
+      ![Change the current gateway region](./media/logic-apps-gateway-install/change-gateway-service-region.png)
 
-   1. Open de lijst **regio selecteren** op de volgende pagina, selecteer de gewenste regio en selecteer **gereed**.
+   1. On the next page, open the **Select Region** list, select the region you want, and select **Done**.
 
-      ![Selecteer een andere regio voor de Gateway Service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
+      ![Select another region for gateway service](./media/logic-apps-gateway-install/select-region-gateway-install.png)
 
-1. Bekijk de informatie in het laatste bevestigings venster. In dit voor beeld wordt hetzelfde account gebruikt voor Logic Apps, Power BI, Power apps en Power Automatiseer, zodat de gateway beschikbaar is voor al deze services. Wanneer u klaar bent, selecteert u **sluiten**.
+1. Review the information in the final confirmation window. This example uses the same account for Logic Apps, Power BI, Power Apps, and Power Automate, so the gateway is available for all these services. When you're ready, select **Close**.
 
-   ![Gegevens gateway gegevens bevestigen](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
+   ![Confirm data gateway information](./media/logic-apps-gateway-install/finished-gateway-default-location.png)
 
-1. [Maak nu de Azure-resource voor de gateway-installatie](../logic-apps/logic-apps-gateway-connection.md).
+1. Now [create the Azure resource for your gateway installation](../logic-apps/logic-apps-gateway-connection.md).
 
-## <a name="check-or-adjust-communication-settings"></a>Communicatie-instellingen controleren of aanpassen
+## <a name="check-or-adjust-communication-settings"></a>Check or adjust communication settings
 
-De on-premises gegevens gateway is afhankelijk van [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md) voor Cloud connectiviteit en de bijbehorende uitgaande verbindingen naar de Azure-regio die aan de gateway is gekoppeld. Als uw werk omgeving vereist dat verkeer via een proxy of firewall wordt uitgevoerd om toegang te krijgen tot internet, kan deze beperking ertoe leiden dat de on-premises gegevens gateway geen verbinding kan maken met de gateway-Cloud service en Azure Service Bus. De gateway heeft verschillende communicatie-instellingen, die u kunt aanpassen. Zie de volgende onderwerpen voor meer informatie:
+The on-premises data gateway depends on [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md) for cloud connectivity and establishes the corresponding outbound connections to the gateway's associated Azure region. If your work environment requires that traffic goes through a proxy or firewall to access the internet, this restriction might prevent the on-premises data gateway from connecting to the gateway cloud service and Azure Service Bus. The gateway has several communication settings, which you can adjust. For more information, see these topics:
 
-* [Communicatie-instellingen voor de on-premises gegevens gateway aanpassen](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
-* [Proxy-instellingen voor de on-premises gegevens gateway configureren](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
+* [Adjust communication settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-communication)
+* [Configure proxy settings for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-proxy)
 
 <a name="high-availability"></a>
 
-## <a name="high-availability-support"></a>Ondersteuning voor hoge Beschik baarheid
+## <a name="high-availability-support"></a>High availability support
 
-Als u storingen wilt voor komen op individuele punten van uitval voor on-premises gegevens toegang, kunt u meerdere gateway-installaties (alleen de standaard modus) hebben met elk op een andere computer en deze instellen als een cluster of groep. Op die manier, als de primaire gateway niet beschikbaar is, worden gegevens aanvragen doorgestuurd naar de tweede gateway, enzovoort. Omdat u slechts één standaard gateway op een computer kunt installeren, moet u elke extra gateway in het cluster op een andere computer installeren. Alle connectors die samen werken met de on-premises gegevens gateway ondersteunen hoge Beschik baarheid.
+To avoid single points of failure for on-premises data access, you can have multiple gateway installations (standard mode only) with each on a different computer, and set them up as a cluster or group. That way, if the primary gateway is unavailable, data requests are routed to the second gateway, and so on. Because you can install only one standard gateway on a computer, you must install each additional gateway that's in the cluster on a different computer. All the connectors that work with the on-premises data gateway support high availability.
 
-* U moet al ten minste één gateway installeren met hetzelfde Azure-account als de primaire gateway en de herstel sleutel voor die installatie.
+* You must already have at least one gateway installation with the same Azure account as the primary gateway and the recovery key for that installation.
 
-* Op uw primaire gateway moet de gateway-update van november 2017 of hoger worden uitgevoerd.
+* Your primary gateway must be running the gateway update from November 2017 or later.
 
-Wanneer u na het instellen van de primaire gateway een andere gateway installeert, selecteert u **toevoegen aan een bestaand gateway cluster**, selecteert u de primaire gateway, de eerste gateway die u hebt geïnstalleerd, en geeft u de herstel sleutel voor die gateway op. Zie [clusters met hoge Beschik baarheid voor on-premises gegevens gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster)voor meer informatie.
+After you set up your primary gateway, when you go to install another gateway, select **Add to an existing gateway cluster**, select the primary gateway, which is the first gateway that you installed, and provide the recovery key for that gateway. For more information, see [High availability clusters for on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-install#add-another-gateway-to-create-a-cluster).
 
 <a name="update-gateway-installation"></a>
 
-## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Een bestaande gateway wijzigen, migreren, herstellen of overnemen
+## <a name="change-location-migrate-restore-or-take-over-existing-gateway"></a>Change location, migrate, restore, or take over existing gateway
 
-Als u de locatie van de gateway moet wijzigen, de installatie van de gateway naar een nieuwe computer verplaatst, een beschadigde gateway herstelt of eigenaar van een bestaande gateway bent, hebt u de herstel sleutel nodig die tijdens de installatie van de gateway werd verschaft.
+If you must change your gateway's location, move your gateway installation to a new computer, recover a damaged gateway, or take ownership for an existing gateway, you need the recovery key that was provided during gateway installation.
 
-1. Voer het installatie programma van de gateway uit op de computer met de bestaande gateway. Als u niet beschikt over het nieuwste Gateway-installatie programma, [downloadt u de nieuwste gateway versie](https://aka.ms/on-premises-data-gateway-installer).
+1. Run the gateway installer on the computer that has the existing gateway. If you don't have the latest gateway installer, [download the latest gateway version](https://aka.ms/on-premises-data-gateway-installer).
 
    > [!NOTE]
-   > Voordat u de gateway op de computer met de oorspronkelijke gateway installatie herstelt, moet u eerst de gateway op die computer verwijderen. Met deze actie wordt de verbinding van de oorspronkelijke gateway verbroken.
-   > Als u een gateway cluster verwijdert of verwijdert voor een Cloud service, kunt u dat cluster niet herstellen.
+   > Before you restore the gateway on the computer that has the original gateway installation, you must first uninstall the gateway on that computer. This action disconnects the original gateway.
+   > If you remove or delete a gateway cluster for any cloud service, you can't restore that cluster.
 
-1. Nadat het installatie programma is geopend, meldt u zich aan met hetzelfde Azure-account dat is gebruikt om de gateway te installeren.
+1. After the installer opens, sign in with the same Azure account that was used to install the gateway.
 
-1. Selecteer **een bestaande gateway migreren, herstellen of overnemen** > **volgende**, bijvoorbeeld:
+1. Select **Migrate, restore, or takeover an existing gateway** > **Next**, for example:
 
-   ![Selecteer een bestaande gateway migreren, herstellen of overnemen](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
+   ![Select "Migrate, restore, or takeover an existing gateway"](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
-1. Selecteer een van de beschik bare clusters en gateways en voer de herstel sleutel voor de geselecteerde gateway in, bijvoorbeeld:
+1. Select from the available clusters and gateways, and enter the recovery key for the selected gateway, for example:
 
-   ![Gateway selecteren en herstel sleutel opgeven](./media/logic-apps-gateway-install/select-existing-gateway.png)
+   ![Select gateway and provide recovery key](./media/logic-apps-gateway-install/select-existing-gateway.png)
 
-1. Als u de regio wilt wijzigen, selecteert u **regio wijzigen**en selecteert u de nieuwe regio.
+1. To change the region, select **Change Region**, and select the new region.
 
-1. Wanneer u klaar bent, selecteert u **configureren** zodat u de taak kunt volt ooien.
+1. When you're ready, select **Configure** so that you can finish your task.
 
-## <a name="tenant-level-administration"></a>Beheer op Tenant niveau
+## <a name="tenant-level-administration"></a>Tenant-level administration
 
-Om inzicht te krijgen in alle on-premises gegevens gateways in een Azure AD-Tenant, kunnen globale beheerders in die Tenant zich aanmelden bij het [Power platform-beheer centrum](https://powerplatform.microsoft.com) als Tenant beheerder en de optie **gegevens gateways** selecteren. Zie [beheer op Tenant niveau voor de on-premises gegevens gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin)voor meer informatie.
+To get visibility into all the on-premises data gateways in an Azure AD tenant, global administrators in that tenant can sign in to the [Power Platform Admin center](https://powerplatform.microsoft.com) as a tenant administrator and select the **Data Gateways** option. For more information, see [Tenant-level administration for the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tenant-level-admin).
 
 <a name="restart-gateway"></a>
 
-## <a name="restart-gateway"></a>Gateway opnieuw starten
+## <a name="restart-gateway"></a>Restart gateway
 
-Standaard wordt de installatie van de gateway op uw lokale computer uitgevoerd als een Windows-Service account met de naam ' on-premises gegevens Gateway-Service '. De gateway-installatie maakt echter gebruik van de `NT SERVICE\PBIEgwService` naam voor de account referenties aanmelden als en heeft de machtigingen aanmelden als service.
+By default, the gateway installation on your local computer runs as a Windows service account named "On-premises data gateway service". However, the gateway installation uses the `NT SERVICE\PBIEgwService` name for its "Log On As" account credentials and has "Log on as a service" permissions.
 
 > [!NOTE]
-> Uw Windows-Service account wijkt af van het account dat wordt gebruikt om verbinding te maken met on-premises gegevens bronnen en van het Azure-account dat u gebruikt wanneer u zich aanmeldt bij Cloud Services.
+> Your Windows service account differs from the account used for connecting to on-premises data sources and from the Azure account that you use when you sign in to cloud services.
 
-Net als elke andere Windows-service kunt u de gateway op verschillende manieren starten en stoppen. Zie [een on-premises gegevens Gateway opnieuw starten](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart)voor meer informatie.
+Like any other Windows service, you can start and stop the gateway in various ways. For more information, see [Restart an on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-restart).
 
 <a name="gateway-cloud-service"></a>
 
-## <a name="how-the-gateway-works"></a>Hoe de gateway werkt
+## <a name="how-the-gateway-works"></a>How the gateway works
 
-Gebruikers in uw organisatie hebben toegang tot on-premises gegevens waarvoor ze al geautoriseerde toegang hebben. Voordat deze gebruikers verbinding kunnen maken met uw on-premises gegevens bron, moet u echter een on-premises gegevens gateway installeren en instellen. Normaal gesp roken is een beheerder de persoon die een gateway installeert en instelt. Voor deze acties zijn mogelijk beheerders machtigingen voor de server of speciale kennis van uw on-premises servers vereist.
+Users in your organization can access on-premises data for which they already have authorized access. However, before these users can connect to your on-premises data source, you need to install and set up an on-premises data gateway. Usually, an admin is the person who installs and sets up a gateway. These actions might require Server Administrator permissions or special knowledge about your on-premises servers.
 
-De gateway vereenvoudigt snelle en veilige communicatie achter de schermen-communicatie. Deze communicatie loopt tussen een gebruiker in de Cloud, de gateway-Cloud service en uw on-premises gegevens bron. De gateway-Cloud service versleutelt en slaat uw referenties voor de gegevens bron en de gateway gegevens op. De service routeert ook query's en de bijbehorende resultaten tussen de gebruiker, de gateway en uw on-premises gegevens bron.
+The gateway facilitates quick and secure communication behind-the-scenes-communication. This communication flows between a user in the cloud, the gateway cloud service, and your on-premises data source. The gateway cloud service encrypts and stores your data source credentials and gateway details. The service also routes queries and their results between the user, the gateway, and your on-premises data source.
 
-De gateway werkt met firewalls en maakt gebruik van alleen uitgaande verbindingen. Al het verkeer is afkomstig van het beveiligde uitgaande verkeer van de gateway-agent. De gateway doorstuurt gegevens van on-premises bronnen op versleutelde kanalen via [Azure service bus](../service-bus-messaging/service-bus-messaging-overview.md). Met deze service bus wordt een kanaal gemaakt tussen de gateway en de aanroepende service, maar worden er geen gegevens opgeslagen. Alle gegevens die via de gateway worden uitgewisseld, worden versleuteld.
+The gateway works with firewalls and uses only outbound connections. All traffic originates as secure outbound traffic from the gateway agent. The gateway relays data from on-premises sources on encrypted channels through [Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md). This service bus creates a channel between the gateway and the calling service, but doesn't store any data. All data that travels through the gateway is encrypted.
 
-![Architectuur voor on-premises gegevens gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
+![Architecture for on-premises data gateway](./media/logic-apps-gateway-install/how-on-premises-data-gateway-works-flow-diagram.png)
 
 > [!NOTE]
-> Afhankelijk van de Cloud service moet u mogelijk een gegevens bron instellen voor de gateway.
+> Depending on the cloud service, you might need to set up a data source for the gateway.
 
-In deze stappen wordt beschreven wat er gebeurt wanneer u communiceert met een-element dat is verbonden met een on-premises gegevens Bron:
+These steps describe what happens when you interact with an element that's connected to an on-premises data source:
 
-1. De Cloud service maakt een query, samen met de versleutelde referenties voor de gegevens bron. De service verzendt vervolgens de query en referenties naar de gateway wachtrij voor verwerking.
+1. The cloud service creates a query, along with the encrypted credentials for the data source. The service then sends the query and credentials to the gateway queue for processing.
 
-1. De gateway-Cloud service analyseert de query en duwt de aanvraag naar Azure Service Bus.
+1. The gateway cloud service analyzes the query and pushes the request to Azure Service Bus.
 
-1. Azure Service Bus verzendt de in behandeling zijnde aanvragen naar de gateway.
+1. Azure Service Bus sends the pending requests to the gateway.
 
-1. De gateway haalt de query op, ontsleutelt de referenties en maakt verbinding met een of meer gegevens bronnen met deze referenties.
+1. The gateway gets the query, decrypts the credentials, and connects to one or more data sources with those credentials.
 
-1. De gateway stuurt de query naar de gegevens bron om uit te voeren.
+1. The gateway sends the query to the data source for running.
 
-1. De resultaten worden vanuit de gegevens bron teruggezonden naar de gateway en vervolgens naar de gateway-Cloud service. De gateway-Cloud service gebruikt vervolgens de resultaten.
+1. The results are sent from the data source back to the gateway, and then to the gateway cloud service. The gateway cloud service then uses the results.
 
-### <a name="authentication-to-on-premises-data-sources"></a>Verificatie voor on-premises gegevens bronnen
+### <a name="authentication-to-on-premises-data-sources"></a>Authentication to on-premises data sources
 
-Een opgeslagen referentie wordt gebruikt om verbinding te maken tussen de gateway en de on-premises gegevens bronnen. Ongeacht de gebruiker, gebruikt de gateway de opgeslagen referentie om verbinding te maken. Er zijn mogelijk verificatie-uitzonde ringen voor specifieke services, zoals DirectQuery en LiveConnect voor Analysis Services in Power BI.
+A stored credential is used to connect from the gateway to on-premises data sources. Regardless of the user, the gateway uses the stored credential to connect. There might be authentication exceptions for specific services, such as DirectQuery and LiveConnect for Analysis Services in Power BI.
 
 ### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
 
-Micro soft Cloud Services gebruiken [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) om gebruikers te verifiëren. Een Azure AD-Tenant bevat gebruikers namen en beveiligings groepen. Normaal gesp roken is het e-mail adres dat u gebruikt voor aanmelden hetzelfde als de UPN (User Principal Name) voor uw account.
+Microsoft cloud services use [Azure AD](../active-directory/fundamentals/active-directory-whatis.md) to authenticate users. An Azure AD tenant contains usernames and security groups. Typically, the email address that you use for sign-in is the same as the User Principal Name (UPN) for your account.
 
-### <a name="what-is-my-upn"></a>Wat is mijn UPN?
+### <a name="what-is-my-upn"></a>What is my UPN?
 
-Als u geen domein beheerder bent, bent u mogelijk niet op de hoogte van uw UPN. Als u de UPN voor uw account wilt zoeken, voert u de `whoami /upn` opdracht uit vanaf uw werk station. Hoewel het resultaat eruitziet als een e-mail adres, is het resultaat de UPN voor uw lokale domein account.
+If you're not a domain admin, you might not know your UPN. To find the UPN for your account, run the `whoami /upn` command from your workstation. Although the result looks like an email address, the result is the UPN for your local domain account.
 
-### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Een on-premises Active Directory synchroniseren met Azure AD
+### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Synchronize an on-premises Active Directory with Azure AD
 
-De UPN voor uw on-premises Active Directory accounts en Azure AD-accounts moet hetzelfde zijn. Zorg er dus voor dat elke on-premises Active Directory-account overeenkomt met uw Azure AD-account. De Cloud Services weten alleen over accounts in azure AD. U hoeft dus geen account aan uw on-premises Active Directory toe te voegen. Als het account niet bestaat in azure AD, kunt u dat account niet gebruiken.
+The UPN for your on-premises Active Directory accounts and Azure AD accounts must be the same. So, make sure that each on-premises Active Directory account matches your Azure AD account. The cloud services know only about accounts within Azure AD. So, you don't need to add an account to your on-premises Active Directory. If the account doesn't exist in Azure AD, you can't use that account.
 
-Hier vindt u een aantal manieren waarop u uw on-premises Active Directory accounts kunt vergelijken met Azure AD.
+Here are ways that you can match your on-premises Active Directory accounts with Azure AD.
 
-* Voeg accounts hand matig toe aan Azure AD.
+* Add accounts manually to Azure AD.
 
-  Maak een account in de Azure Portal of in het Microsoft 365 beheer centrum. Zorg ervoor dat de account naam overeenkomt met de UPN voor het on-premises Active Directory-account.
+  Create an account in the Azure portal or in the Microsoft 365 admin center. Make sure that the account name matches the UPN for the on-premises Active Directory account.
 
-* Synchroniseer lokale accounts met uw Azure AD-Tenant met behulp van het Azure Active Directory Connect-hulp programma.
+* Synchronize local accounts to your Azure AD tenant by using the Azure Active Directory Connect tool.
 
-  Het hulp programma Azure AD Connect biedt opties voor Directory synchronisatie en verificatie-instellingen. Deze opties omvatten wachtwoord-hash-synchronisatie, Pass Through-verificatie en Federatie. Als u geen Tenant beheerder of een lokale domein beheerder bent, neemt u contact op met uw IT-beheerder om Azure AD Connect in te stellen. Azure AD Connect zorgt ervoor dat uw Azure AD-UPN overeenkomt met uw lokale Active Directory UPN. Deze overeenkomst helpt u bij het gebruik van Analysis Services live-verbindingen met Power BI of SSO-mogelijkheden (single sign-on).
+  The Azure AD Connect tool provides options for directory synchronization and authentication setup. These options include password hash sync, pass-through authentication, and federation. If you're not a tenant admin or a local domain admin, contact your IT admin to get Azure AD Connect set up. Azure AD Connect ensures that your Azure AD UPN matches your local Active Directory UPN. This matching helps if you're using Analysis Services live connections with Power BI or single sign-on (SSO) capabilities.
 
   > [!NOTE]
-  > Als u accounts synchroniseert met het hulp programma Azure AD Connect, worden er nieuwe accounts gemaakt in uw Azure AD-Tenant.
+  > Synchronizing accounts with the Azure AD Connect tool creates new accounts in your Azure AD tenant.
 
 <a name="faq"></a>
 
-## <a name="faq-and-troubleshooting"></a>Veelgestelde vragen en probleem oplossing
+## <a name="faq-and-troubleshooting"></a>FAQ and troubleshooting
 
-Zie de volgende onderwerpen voor meer informatie:
+For more information, see these topics:
 
 * [FAQ voor on-premises gegevensgateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
-* [Problemen met de on-premises gegevens gateway oplossen](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
-* [Gateway prestaties bewaken en optimaliseren](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
+* [Troubleshoot the on-premises data gateway](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
+* [Monitor and optimize gateway performance](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Verbinding maken met on-premises gegevens vanuit Logic apps](../logic-apps/logic-apps-gateway-connection.md)
-* [Functies voor ondernemings integratie](../logic-apps/logic-apps-enterprise-integration-overview.md)
+* [Connect to on-premises data from logic apps](../logic-apps/logic-apps-gateway-connection.md)
+* [Enterprise integration features](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Connectors voor Azure Logic Apps](../connectors/apis-list.md)

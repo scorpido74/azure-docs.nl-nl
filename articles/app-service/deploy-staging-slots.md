@@ -1,6 +1,6 @@
 ---
-title: Faserings omgevingen instellen voor web-apps in Azure App Service | Microsoft Docs
-description: Meer informatie over het gebruik van gefaseerde publicatie voor web-apps in Azure App Service.
+title: Set up staging environments for web apps in Azure App Service | Microsoft Docs
+description: Learn how to use staged publishing for web apps in Azure App Service.
 services: app-service
 documentationcenter: ''
 author: cephalin
@@ -15,195 +15,195 @@ ms.topic: article
 ms.date: 09/19/2019
 ms.author: cephalin
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 02d8c511b799a4caee185f7ecb847e6cc15f3c87
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: 7f98ba9851216737712b6be1ec29156ba0b1a68b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304746"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382273"
 ---
-# <a name="set-up-staging-environments-in-azure-app-service"></a>Faserings omgevingen instellen in Azure App Service
+# <a name="set-up-staging-environments-in-azure-app-service"></a>Set up staging environments in Azure App Service
 <a name="Overview"></a>
 
-Wanneer u uw web-app, Web-app op Linux, mobiele back-end of API-app op [Azure app service](https://go.microsoft.com/fwlink/?LinkId=529714)implementeert, kunt u een afzonderlijke implementatie sleuf gebruiken in plaats van de standaard productie sleuf wanneer u werkt in de **Standard**-, **Premium**-of **geïsoleerde** App service plan-laag. Implementatie sites zijn live apps met hun eigen hostnamen. Elementen voor app-inhoud en-configuraties kunnen worden omgewisseld tussen twee implementatie sleuven, met inbegrip van de productie site. 
+When you deploy your web app, web app on Linux, mobile back end, or API app to [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714), you can use a separate deployment slot instead of the default production slot when you're running in the **Standard**, **Premium**, or **Isolated** App Service plan tier. Deployment slots are live apps with their own host names. App content and configurations elements can be swapped between two deployment slots, including the production slot. 
 
-Het implementeren van uw toepassing in een niet-productie sleuf biedt de volgende voor delen:
+Deploying your application to a non-production slot has the following benefits:
 
-* U kunt app-wijzigingen valideren in een staging-implementatie sleuf voordat u deze naar de productie site verwisselt.
-* Als u eerst een app implementeert in een sleuf en deze naar productie verwisselt, zorgt u ervoor dat alle exemplaren van de sleuf worden opgewarmd voordat ze in productie worden gewisseld. Dit elimineert downtime wanneer u uw app implementeert. Het omleiden van verkeer is naadloos en er worden geen aanvragen verwijderd vanwege wissel bewerkingen. U kunt deze volledige werk stroom automatiseren door [automatisch wisselen](#Auto-Swap) te configureren wanneer de validatie vooraf verwisselen niet nodig is.
-* Na een swap heeft de sleuf met eerder gefaseerde app nu de vorige productie-app. Als de wijzigingen die worden gewisseld naar de productie sleuf niet zoals verwacht, kunt u dezelfde swap direct uitvoeren om uw ' laatste bekende goede site ' terug te krijgen.
+* You can validate app changes in a staging deployment slot before swapping it with the production slot.
+* Deploying an app to a slot first and swapping it into production makes sure that all instances of the slot are warmed up before being swapped into production. This eliminates downtime when you deploy your app. The traffic redirection is seamless, and no requests are dropped because of swap operations. You can automate this entire workflow by configuring [auto swap](#Auto-Swap) when pre-swap validation isn't needed.
+* After a swap, the slot with previously staged app now has the previous production app. If the changes swapped into the production slot aren't as you expect, you can perform the same swap immediately to get your "last known good site" back.
 
-Elke App Service plan tier ondersteunt een verschillend aantal implementatie sleuven. Er worden geen extra kosten in rekening gebracht voor het gebruik van implementatie sites. Zie [app service limieten](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits)voor meer informatie over het aantal sleuven dat door de laag van de app wordt ondersteund. 
+Each App Service plan tier supports a different number of deployment slots. There's no additional charge for using deployment slots. To find out the number of slots your app's tier supports, see [App Service limits](https://docs.microsoft.com/azure/azure-subscription-service-limits#app-service-limits). 
 
-Als u uw app wilt schalen naar een andere laag, zorgt u ervoor dat de doellaag het aantal sleuven ondersteunt dat uw app al gebruikt. Als uw app bijvoorbeeld meer dan vijf sleuven heeft, kunt u deze niet omlaag schalen naar de **Standard** -laag, omdat de laag **standaard** slechts vijf implementatie sleuven ondersteunt. 
+To scale your app to a different tier, make sure that the target tier supports the number of slots your app already uses. For example, if your app has more than five slots, you can't scale it down to the **Standard** tier, because the **Standard** tier supports only five deployment slots. 
 
 <a name="Add"></a>
 
-## <a name="add-a-slot"></a>Een sleuf toevoegen
-De app moet worden uitgevoerd in de **Standard**-, **Premium**-of **geïsoleerde** laag zodat u meerdere implementatie sleuven kunt inschakelen.
+## <a name="add-a-slot"></a>Add a slot
+The app must be running in the **Standard**, **Premium**, or **Isolated** tier in order for you to enable multiple deployment slots.
 
-1. Open de [resource pagina](../azure-resource-manager/manage-resources-portal.md#manage-resources)van uw app In de [Azure Portal](https://portal.azure.com/).
+1. In the [Azure portal](https://portal.azure.com/), open your app's [resource page](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
-2. Selecteer in het linkerdeel venster **implementatie sleuven** > **sleuf toevoegen**.
+2. In the left pane, select **Deployment slots** > **Add Slot**.
    
-    ![Een nieuwe implementatie site toevoegen](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
+    ![Add a new deployment slot](./media/web-sites-staged-publishing/QGAddNewDeploymentSlot.png)
    
    > [!NOTE]
-   > Als de app zich nog niet in de **standaard**-, **Premium**-of **geïsoleerde** laag bevindt, wordt er een bericht weer gegeven met de ondersteunde lagen voor het inschakelen van gefaseerde publicatie. Op dit moment kunt u de optie **upgrade** selecteren en naar het tabblad **schaal** van uw app gaan voordat u doorgaat.
+   > If the app isn't already in the **Standard**, **Premium**, or **Isolated** tier, you receive a message that indicates the supported tiers for enabling staged publishing. At this point, you have the option to select **Upgrade** and go to the **Scale** tab of your app before continuing.
    > 
 
-3. Geef in het dialoog venster **een sleuf toevoegen** een naam op voor de sleuf en selecteer of u een app-configuratie wilt klonen vanuit een andere implementatie site. Selecteer **toevoegen** om door te gaan.
+3. In the **Add a slot** dialog box, give the slot a name, and select whether to clone an app configuration from another deployment slot. Select **Add** to continue.
    
-    ![Configuratie bron](./media/web-sites-staged-publishing/ConfigurationSource1.png)
+    ![Configuration source](./media/web-sites-staged-publishing/ConfigurationSource1.png)
    
-    U kunt een configuratie klonen vanuit elke bestaande sleuf. Instellingen die kunnen worden gekloond zijn onder andere app-instellingen, verbindings reeksen, taal raamwerk versies, Web-sockets, HTTP-versie en platform Bitness.
+    You can clone a configuration from any existing slot. Settings that can be cloned include app settings, connection strings, language framework versions, web sockets, HTTP version, and platform bitness.
 
-4. Nadat de sleuf is toegevoegd, selecteert u **sluiten** om het dialoog venster te sluiten. De nieuwe sleuf wordt nu weer gegeven op de pagina **implementatie sites** . **Verkeer%** is standaard ingesteld op 0 voor de nieuwe sleuf, waarbij alle klant verkeer wordt doorgestuurd naar de productie site.
+4. After the slot is added, select **Close** to close the dialog box. The new slot is now shown on the **Deployment slots** page. By default, **Traffic %** is set to 0 for the new slot, with all customer traffic routed to the production slot.
 
-5. Selecteer de nieuwe implementatie sleuf om de resource pagina van die sleuf te openen.
+5. Select the new deployment slot to open that slot's resource page.
    
-    ![Titel implementatie site](./media/web-sites-staged-publishing/StagingTitle.png)
+    ![Deployment slot title](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    De faserings sleuf heeft een beheer pagina net als andere App Service-apps. U kunt de configuratie van de sleuf wijzigen. De naam van de sleuf wordt boven aan de pagina weer gegeven om u eraan te herinneren dat u de implementatie site bekijkt.
+    The staging slot has a management page just like any other App Service app. You can change the slot's configuration. The name of the slot is shown at the top of the page to remind you that you're viewing the deployment slot.
 
-6. Selecteer de URL van de app op de resource pagina van de sleuf. De implementatie site heeft een eigen hostnaam en is ook een live app. Zie [Azure app service IP-beperkingen](app-service-ip-restrictions.md)voor het beperken van open bare toegang tot de implementatie site.
+6. Select the app URL on the slot's resource page. The deployment slot has its own host name and is also a live app. To limit public access to the deployment slot, see [Azure App Service IP restrictions](app-service-ip-restrictions.md).
 
-De nieuwe implementatie site heeft geen inhoud, zelfs niet als u de instellingen van een andere sleuf kloont. U kunt bijvoorbeeld [publiceren naar deze sleuf met git](app-service-deploy-local-git.md). U kunt implementeren in de sleuf vanuit een andere opslagplaats vertakking of een andere opslag plaats. 
+The new deployment slot has no content, even if you clone the settings from a different slot. For example, you can [publish to this slot with Git](app-service-deploy-local-git.md). You can deploy to the slot from a different repository branch or a different repository. 
 
 <a name="AboutConfiguration"></a>
 
-## <a name="what-happens-during-a-swap"></a>Wat er gebeurt tijdens een wissel
+## <a name="what-happens-during-a-swap"></a>What happens during a swap
 
-### <a name="swap-operation-steps"></a>Stappen voor wisselen van bewerkingen
+### <a name="swap-operation-steps"></a>Swap operation steps
 
-Wanneer u twee sleuven (doorgaans van een staging-sleuf naar de productie sleuf) verwisselt, App Service de volgende handelingen uit om ervoor te zorgen dat de doel sleuf geen downtime ondervindt:
+When you swap two slots (usually from a staging slot into the production slot), App Service does the following to ensure that the target slot doesn't experience downtime:
 
-1. Pas de volgende instellingen van de doel sleuf toe (bijvoorbeeld de productie sleuf) op alle exemplaren van de bron sleuf: 
-    - [Sleuf-specifieke app-](#which-settings-are-swapped) instellingen en verbindings reeksen, indien van toepassing.
-    - Instellingen voor [continue implementatie](deploy-continuous-deployment.md) , indien ingeschakeld.
-    - [Verificatie](overview-authentication-authorization.md) -instellingen app service, indien ingeschakeld.
+1. Apply the following settings from the target slot (for example, the production slot) to all instances of the source slot: 
+    - [Slot-specific](#which-settings-are-swapped) app settings and connection strings, if applicable.
+    - [Continuous deployment](deploy-continuous-deployment.md) settings, if enabled.
+    - [App Service authentication](overview-authentication-authorization.md) settings, if enabled.
     
-    In elk van deze gevallen worden alle exemplaren in de bron site geactiveerd om opnieuw op te starten. Tijdens het [wisselen met preview](#Multi-Phase)wordt het einde van de eerste fase gemarkeerd. De wissel bewerking wordt onderbroken en u kunt controleren of de bron sleuf correct werkt met de instellingen van de doel sleuf.
+    Any of these cases trigger all instances in the source slot to restart. During [swap with preview](#Multi-Phase), this marks the end of the first phase. The swap operation is paused, and you can validate that the source slot works correctly with the target slot's settings.
 
-1. Wacht tot elke instantie in de bron sleuf de herstart heeft voltooid. Als een exemplaar niet opnieuw wordt opgestart, worden alle wijzigingen in de bron sleuf door de wissel bewerking hersteld en wordt de bewerking gestopt.
+1. Wait for every instance in the source slot to complete its restart. If any instance fails to restart, the swap operation reverts all changes to the source slot and stops the operation.
 
-1. Als de [lokale cache](overview-local-cache.md) is ingeschakeld, wordt de initialisatie van de lokale cache geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf. Wacht totdat elke instantie een HTTP-antwoord retourneert. De initialisatie van de lokale cache veroorzaakt een andere herstart van elk exemplaar.
+1. If [local cache](overview-local-cache.md) is enabled, trigger local cache initialization by making an HTTP request to the application root ("/") on each instance of the source slot. Wait until each instance returns any HTTP response. Local cache initialization causes another restart on each instance.
 
-1. Als [automatisch wisselen](#Auto-Swap) is ingeschakeld met [aangepast opwarmen](#Warm-up), wordt het starten van de [toepassing](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) geactiveerd door een HTTP-aanvraag naar de hoofdmap van de toepassing (/) te maken voor elk exemplaar van de bron sleuf.
+1. If [auto swap](#Auto-Swap) is enabled with [custom warm-up](#Warm-up), trigger [Application Initiation](https://docs.microsoft.com/iis/get-started/whats-new-in-iis-8/iis-80-application-initialization) by making an HTTP request to the application root ("/") on each instance of the source slot.
 
-    Als `applicationInitialization` niet is opgegeven, wordt een HTTP-aanvraag geactiveerd voor de hoofdmap van de bron sleuf van elk exemplaar. 
+    If `applicationInitialization` isn't specified, trigger an HTTP request to the application root of the source slot on each instance. 
     
-    Als een exemplaar een HTTP-antwoord retourneert, wordt het beschouwd als een opwarm proces.
+    If an instance returns any HTTP response, it's considered to be warmed up.
 
-1. Als alle exemplaren van de bron sleuf zijn opgewarmd, moet u de twee sleuven wisselen door de routerings regels voor de twee sleuven te scha kelen. Na deze stap heeft de doel sleuf (bijvoorbeeld het productie gebied) de app die eerder is opgewarmd in de bron sleuf.
+1. If all instances on the source slot are warmed up successfully, swap the two slots by switching the routing rules for the two slots. After this step, the target slot (for example, the production slot) has the app that's previously warmed up in the source slot.
 
-1. Nu de bron sleuf de pre-swap-app eerder in de doel sleuf heeft, voert u dezelfde bewerking uit door alle instellingen toe te passen en de instanties opnieuw te starten.
+1. Now that the source slot has the pre-swap app previously in the target slot, perform the same operation by applying all settings and restarting the instances.
 
-Op een wille keurig punt van de wissel bewerking wordt al het werk van het initialiseren van de verwisselde apps uitgevoerd op de bron site. De doel sleuf blijft online terwijl de bron sleuf wordt voor bereid en opgewarmd, ongeacht waar de wisseling slaagt of mislukt. Als u een faserings sleuf wilt vervangen door de productie sleuf, moet u ervoor zorgen dat de productie sleuf altijd de doel sleuf is. Op deze manier heeft de swap bewerking geen invloed op uw productie-app.
+At any point of the swap operation, all work of initializing the swapped apps happens on the source slot. The target slot remains online while the source slot is being prepared and warmed up, regardless of where the swap succeeds or fails. To swap a staging slot with the production slot, make sure that the production slot is always the target slot. This way, the swap operation doesn't affect your production app.
 
-### <a name="which-settings-are-swapped"></a>Welke instellingen worden er gewisseld?
+### <a name="which-settings-are-swapped"></a>Which settings are swapped?
 
 [!INCLUDE [app-service-deployment-slots-settings](../../includes/app-service-deployment-slots-settings.md)]
 
-Als u een app-instelling of connection string wilt configureren voor een specifieke sleuf (niet gewisseld), gaat u naar de pagina **configuratie** voor die sleuf. Voeg een instelling toe of bewerk deze en selecteer vervolgens **implementatie sleuf instelling**. Als u dit selectie vakje inschakelt, wordt App Service dat de instelling niet kan worden gewisseld. 
+To configure an app setting or connection string to stick to a specific slot (not swapped), go to the **Configuration** page for that slot. Add or edit a setting, and then select **deployment slot setting**. Selecting this check box tells App Service that the setting is not swappable. 
 
-![Sleuf instelling](./media/web-sites-staged-publishing/SlotSetting.png)
+![Slot setting](./media/web-sites-staged-publishing/SlotSetting.png)
 
 <a name="Swap"></a>
 
-## <a name="swap-two-slots"></a>Twee sleuven wisselen 
-U kunt implementatie sleuven wisselen op de pagina **implementatie sites** van uw app en op de pagina **overzicht** . Zie [Wat gebeurt er tijdens het wisselen](#AboutConfiguration)voor technische informatie over de wisseling van de sleuf.
+## <a name="swap-two-slots"></a>Swap two slots 
+You can swap deployment slots on your app's **Deployment slots** page and the **Overview** page. For technical details on the slot swap, see [What happens during swap](#AboutConfiguration).
 
 > [!IMPORTANT]
-> Voordat u een app verwisselt van een implementatie sleuf naar productie, moet u ervoor zorgen dat de productie uw doel sleuf is en dat alle instellingen in de bron sleuf precies zo zijn geconfigureerd als u ze in productie wilt nemen.
+> Before you swap an app from a deployment slot into production, make sure that production is your target slot and that all settings in the source slot are configured exactly as you want to have them in production.
 > 
 > 
 
-Implementatie sleuven wisselen:
+To swap deployment slots:
 
-1. Ga naar de pagina **implementatie sites** van uw app en selecteer **wisselen**.
+1. Go to your app's **Deployment slots** page and select **Swap**.
    
-    ![Knop wisselen](./media/web-sites-staged-publishing/SwapButtonBar.png)
+    ![Swap button](./media/web-sites-staged-publishing/SwapButtonBar.png)
 
-    In het dialoog venster **wisselen** worden de instellingen weer gegeven van de geselecteerde bron-en doel sleuven die worden gewijzigd.
+    The **Swap** dialog box shows settings in the selected source and target slots that will be changed.
 
-2. Selecteer de gewenste **bron** -en **doel** sleuf. Normaal gesp roken is het doel de productie site. Selecteer ook de tabbladen **bron wijzigingen** en **doel wijzigingen** en controleer of de configuratie wijzigingen worden verwacht. Wanneer u klaar bent, kunt u de sleuven direct wisselen door **wisselen**te selecteren.
+2. Select the desired **Source** and **Target** slots. Usually, the target is the production slot. Also, select the **Source Changes** and **Target Changes** tabs and verify that the configuration changes are expected. When you're finished, you can swap the slots immediately by selecting **Swap**.
 
     ![Omwisselen voltooien](./media/web-sites-staged-publishing/SwapImmediately.png)
 
-    Als u wilt zien hoe uw doel sleuf wordt uitgevoerd met de nieuwe instellingen voordat de swap daad werkelijk plaatsvindt, selecteert u niet **wisselen**, maar volgt u de instructies in [swap with preview](#Multi-Phase).
+    To see how your target slot would run with the new settings before the swap actually happens, don't select **Swap**, but follow the instructions in [Swap with preview](#Multi-Phase).
 
-3. Wanneer u klaar bent, sluit u het dialoog venster door **sluiten**te selecteren.
+3. When you're finished, close the dialog box by selecting **Close**.
 
-Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
 <a name="Multi-Phase"></a>
 
-### <a name="swap-with-preview-multi-phase-swap"></a>Wisselen met preview (multi-phase swap)
+### <a name="swap-with-preview-multi-phase-swap"></a>Swap with preview (multi-phase swap)
 
-Voordat u naar productie verwisselt als doel sleuf, controleert u of de app wordt uitgevoerd met de Verwissel bare instellingen. De bron sleuf wordt ook opwarmd voordat de wisseling is voltooid, wat wenselijk is voor bedrijfs kritieke toepassingen.
+Before you swap into production as the target slot, validate that the app runs with the swapped settings. The source slot is also warmed up before the swap completion, which is desirable for mission-critical applications.
 
-Wanneer u een swap met preview uitvoert, voert App Service dezelfde [wissel bewerking](#AboutConfiguration) uit, maar wordt er na de eerste stap gepauzeerd. U kunt vervolgens het resultaat controleren op de faserings sleuf voordat u de swap voltooit. 
+When you perform a swap with preview, App Service performs the same [swap operation](#AboutConfiguration) but pauses after the first step. You can then verify the result on the staging slot before completing the swap. 
 
-Als u de wisseling annuleert App Service worden configuratie-elementen opnieuw toegepast op de bron site.
+If you cancel the swap, App Service reapplies configuration elements to the source slot.
 
-Wisselen met preview:
+To swap with preview:
 
-1. Volg de stappen in [wisselings implementatie sleuven](#Swap) , maar selecteer **swap uitvoeren met preview**.
+1. Follow the steps in [Swap deployment slots](#Swap) but select **Perform swap with preview**.
 
-    ![Wisselen met preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
+    ![Swap with preview](./media/web-sites-staged-publishing/SwapWithPreview.png)
 
-    In het dialoog venster ziet u hoe de configuratie in de bron sleuf verandert in fase 1 en hoe de bron-en doel sleuf in fase 2 verandert.
+    The dialog box shows you how the configuration in the source slot changes in phase 1, and how the source and target slot change in phase 2.
 
-2. Wanneer u klaar bent om de wisseling te starten, selecteert u **Start swap**.
+2. When you're ready to start the swap, select **Start Swap**.
 
-    Als fase 1 is voltooid, ontvangt u een melding in het dialoog venster. Bekijk een voor beeld van de wisseling in de bron sleuf door naar `https://<app_name>-<source-slot-name>.azurewebsites.net`te gaan. 
+    When phase 1 finishes, you're notified in the dialog box. Preview the swap in the source slot by going to `https://<app_name>-<source-slot-name>.azurewebsites.net`. 
 
-3. Wanneer u klaar bent om de wisseling in behandeling te volt ooien, selecteert u **volledig wisselen** in **wissel actie** en selecteert u **volledig wisselen**.
+3. When you're ready to complete the pending swap, select **Complete Swap** in **Swap action** and select **Complete Swap**.
 
-    Als u een in behandeling zijnde wisseling wilt annuleren, selecteert u in plaats hiervan **wisseling annuleren** .
+    To cancel a pending swap, select **Cancel Swap** instead.
 
-4. Wanneer u klaar bent, sluit u het dialoog venster door **sluiten**te selecteren.
+4. When you're finished, close the dialog box by selecting **Close**.
 
-Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
-Zie [automatiseren met Power shell](#automate-with-powershell)voor het automatiseren van een wisseling met meerdere fasen.
+To automate a multi-phase swap, see [Automate with PowerShell](#automate-with-powershell).
 
 <a name="Rollback"></a>
 
-## <a name="roll-back-a-swap"></a>Een swap terugdraaien
-Als er fouten optreden in de doel sleuf (bijvoorbeeld het productie gebied) na een wisseling van een sleuf, zet u de sleuven terug naar de status van de voor bereiding door de twee sleuven onmiddellijk te vervangen.
+## <a name="roll-back-a-swap"></a>Roll back a swap
+If any errors occur in the target slot (for example, the production slot) after a slot swap, restore the slots to their pre-swap states by swapping the same two slots immediately.
 
 <a name="Auto-Swap"></a>
 
-## <a name="configure-auto-swap"></a>Automatisch wisselen configureren
+## <a name="configure-auto-swap"></a>Configure auto swap
 
 > [!NOTE]
-> Automatisch wisselen wordt niet ondersteund in web-apps op Linux.
+> Auto swap isn't supported in web apps on Linux.
 
-Met automatisch wisselen worden Azure DevOps-scenario's gestroomlijnd waarbij u uw app continu wilt implementeren met een koude start en nul uitval tijd voor klanten van de app. Wanneer automatisch wisselen is ingeschakeld vanuit een sleuf in productie, wordt [de app](#swap-operation-steps) bij het opwarmen van de bron sleuf automatisch naar de productie modus geApp service zodra u de code naar die sleuf verplaatst.
+Auto swap streamlines Azure DevOps scenarios where you want to deploy your app continuously with zero cold starts and zero downtime for customers of the app. When auto swap is enabled from a slot into production, every time you push your code changes to that slot, App Service automatically [swaps the app into production](#swap-operation-steps) after it's warmed up in the source slot.
 
    > [!NOTE]
-   > Voordat u automatisch wisselen voor de productie sleuf configureert, kunt u overwegen om automatisch wisselen te testen op een niet-productie doel sleuf.
+   > Before you configure auto swap for the production slot, consider testing auto swap on a non-production target slot.
    > 
 
-Automatisch wisselen configureren:
+To configure auto swap:
 
-1. Ga naar de resource pagina van uw app. Selecteer **implementatie sleuven** >  *\<gewenste bron sleuf >*  > **configuratie** > **algemene instellingen**.
+1. Go to your app's resource page. Select **Deployment slots** >  *\<desired source slot>*  > **Configuration** > **General settings**.
    
-2. Selecteer **aan**om **automatisch te scha kelen**. Selecteer vervolgens de gewenste doel sleuf voor de **implementatie sleuf voor automatisch wisselen**en selecteer **Opslaan** op de opdracht balk. 
+2. For **Auto swap enabled**, select **On**. Then select the desired target slot for **Auto swap deployment slot**, and select **Save** on the command bar. 
    
-    ![Selecties voor het configureren van automatisch wisselen](./media/web-sites-staged-publishing/AutoSwap02.png)
+    ![Selections for configuring auto swap](./media/web-sites-staged-publishing/AutoSwap02.png)
 
-3. Een code-push uitvoeren naar de bron sleuf. Automatisch wisselen vindt plaats na korte tijd en de update wordt weer gegeven op de URL van de doel site.
+3. Execute a code push to the source slot. Auto swap happens after a short time, and the update is reflected at your target slot's URL.
 
-Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
 <a name="Warm-up"></a>
 
-## <a name="specify-custom-warm-up"></a>Aangepaste warme voor bereiding opgeven
+## <a name="specify-custom-warm-up"></a>Specify custom warm-up
 
-Voor sommige apps zijn mogelijk aangepaste opwarm acties vereist voordat de wisseling kan worden uitgevoerd. Met het element `applicationInitialization` configuratie in web. config kunt u aangepaste initialisatie acties opgeven. Tijdens de [wissel bewerking](#AboutConfiguration) wordt gewacht tot deze aangepaste warme start is voltooid voordat u met de doel sleuf kunt wisselen. Hier volgt een voor beeld van een web. config-fragment.
+Some apps might require custom warm-up actions before the swap. The `applicationInitialization` configuration element in web.config lets you specify custom initialization actions. The [swap operation](#AboutConfiguration) waits for this custom warm-up to finish before swapping with the target slot. Here's a sample web.config fragment.
 
     <system.webServer>
         <applicationInitialization>
@@ -212,75 +212,75 @@ Voor sommige apps zijn mogelijk aangepaste opwarm acties vereist voordat de wiss
         </applicationInitialization>
     </system.webServer>
 
-Zie voor meer informatie over het aanpassen van het `applicationInitialization`-element de [meeste veelvoorkomende fouten in de implementatie sleuf en hoe u deze kunt oplossen](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
+For more information on customizing the `applicationInitialization` element, see [Most common deployment slot swap failures and how to fix them](https://ruslany.net/2017/11/most-common-deployment-slot-swap-failures-and-how-to-fix-them/).
 
-U kunt ook het opwarm gedrag aanpassen met een of beide van de volgende [app-instellingen](configure-common.md):
+You can also customize the warm-up behavior with one or both of the following [app settings](configure-common.md):
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`: het pad naar de ping om uw site te laten opwarmen. Voeg deze app-instelling toe door een aangepast pad op te geven dat begint met een slash als waarde. Een voorbeeld is `/statuscheck`. De standaardwaarde is `/`. 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: geldige HTTP-antwoord codes voor de opwarm bewerking. Voeg deze app-instelling toe met een door komma's gescheiden lijst met HTTP-codes. Een voor beeld is `200,202`. Als de geretourneerde status code zich niet in de lijst bevindt, worden de opwarm-en swap-bewerkingen gestopt. Standaard zijn alle antwoord codes geldig.
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: The path to ping to warm up your site. Add this app setting by specifying a custom path that begins with a slash as the value. Een voorbeeld is `/statuscheck`. The default value is `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Valid HTTP response codes for the warm-up operation. Add this app setting with a comma-separated list of HTTP codes. An example is `200,202` . If the returned status code isn't in the list, the warmup and swap operations are stopped. By default, all response codes are valid.
 
 > [!NOTE]
-> Het configuratie-element `<applicationInitialization>` maakt deel uit van elke app die wordt opgestart, terwijl de twee app-instellingen voor het opwarmen van gedrag alleen van toepassing zijn op sleuven swaps.
+> The `<applicationInitialization>` configuration element is part of each app start-up, whereas the two warm-up behavior app settings apply only to slot swaps.
 
-Zie [problemen met swaps oplossen](#troubleshoot-swaps)als u problemen hebt.
+If you have any problems, see [Troubleshoot swaps](#troubleshoot-swaps).
 
-## <a name="monitor-a-swap"></a>Een swap bewaken
+## <a name="monitor-a-swap"></a>Monitor a swap
 
-Als de [wissel bewerking](#AboutConfiguration) veel tijd in beslag neemt, kunt u in het [activiteiten logboek](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)informatie ontvangen over de wissel bewerking.
+If the [swap operation](#AboutConfiguration) takes a long time to complete, you can get information on the swap operation in the [activity log](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-Selecteer op de resource pagina van de app in de portal in het linkerdeel venster het **activiteiten logboek**.
+On your app's resource page in the portal, in the left pane, select **Activity log**.
 
-Een wissel bewerking wordt weer gegeven in de logboek query als `Swap Web App Slots`. U kunt deze uitbreiden en een van de subbewerkingen of fouten selecteren om de details weer te geven.
+A swap operation appears in the log query as `Swap Web App Slots`. You can expand it and select one of the suboperations or errors to see the details.
 
-## <a name="route-traffic"></a>Verkeer routeren
+## <a name="route-traffic"></a>Route traffic
 
-Standaard worden alle client aanvragen naar de productie-URL van de app (`http://<app_name>.azurewebsites.net`) doorgestuurd naar de productie site. U kunt een deel van het verkeer naar een andere sleuf routeren. Deze functie is handig als u gebruikers feedback voor een nieuwe update nodig hebt, maar u deze niet wilt vrijgeven voor productie.
+By default, all client requests to the app's production URL (`http://<app_name>.azurewebsites.net`) are routed to the production slot. You can route a portion of the traffic to another slot. This feature is useful if you need user feedback for a new update, but you're not ready to release it to production.
 
-### <a name="route-production-traffic-automatically"></a>Productie verkeer automatisch omleiden
+### <a name="route-production-traffic-automatically"></a>Route production traffic automatically
 
-Productie verkeer automatisch omleiden:
+To route production traffic automatically:
 
-1. Ga naar de resource pagina van uw app en selecteer **implementatie sleuven**.
+1. Go to your app's resource page and select **Deployment slots**.
 
-2. Geef in de kolom **verkeer%** van de sleuf waarnaar u wilt routeren een percentage (tussen 0 en 100) op dat de totale hoeveelheid verkeer aangeeft dat u wilt routeren. Selecteer **Opslaan**.
+2. In the **Traffic %** column of the slot you want to route to, specify a percentage (between 0 and 100) to represent the amount of total traffic you want to route. Selecteer **Opslaan**.
 
-    ![Een verkeers percentage instellen](./media/web-sites-staged-publishing/RouteTraffic.png)
+    ![Setting a traffic percentage](./media/web-sites-staged-publishing/RouteTraffic.png)
 
-Nadat de instelling is opgeslagen, wordt het opgegeven percentage clients wille keurig doorgestuurd naar de niet-productie site. 
+After the setting is saved, the specified percentage of clients is randomly routed to the non-production slot. 
 
-Nadat een client automatisch naar een specifieke sleuf is doorgestuurd, wordt deze voor de levens duur van die client sessie vastgemaakt aan die sleuf. Op de client browser kunt u zien op welke sleuf uw sessie is vastgemaakt door te kijken naar het `x-ms-routing-name` cookie in uw HTTP-headers. Voor een aanvraag die naar de staging-sleuf wordt doorgestuurd, wordt de cookie `x-ms-routing-name=staging`. Voor een aanvraag die naar de productie site wordt doorgestuurd, wordt de cookie `x-ms-routing-name=self`.
+After a client is automatically routed to a specific slot, it's "pinned" to that slot for the life of that client session. On the client browser, you can see which slot your session is pinned to by looking at the `x-ms-routing-name` cookie in your HTTP headers. A request that's routed to the "staging" slot has the cookie `x-ms-routing-name=staging`. A request that's routed to the production slot has the cookie `x-ms-routing-name=self`.
 
    > [!NOTE]
-   > Naast Azure Portal kunt u ook de [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing.md#az-webapp-traffic-routing-set) opdracht in de Azure CLI gebruiken om de routerings percentages van CI/cd-hulpprogram ma's, zoals DevOps-pijp lijnen of andere automatiserings systemen, in te stellen.
+   > Next to the Azure Portal, you can also use the [`az webapp traffic-routing set`](/cli/azure/webapp/traffic-routing#az-webapp-traffic-routing-set) command in the Azure CLI to set the routing percentages from CI/CD tools like DevOps pipelines or other automation systems.
    > 
 
-### <a name="route-production-traffic-manually"></a>Productie verkeer hand matig omleiden
+### <a name="route-production-traffic-manually"></a>Route production traffic manually
 
-Naast automatische verkeers routering kunnen App Service aanvragen naar een specifieke sleuf routeren. Dit is handig wanneer u wilt dat uw gebruikers zich kunnen aanmelden bij of afmelden bij uw bèta-app. Als u productie verkeer hand matig wilt door sturen, gebruikt u de para meter `x-ms-routing-name` query.
+In addition to automatic traffic routing, App Service can route requests to a specific slot. This is useful when you want your users to be able to opt in to or opt out of your beta app. To route production traffic manually, you use the `x-ms-routing-name` query parameter.
 
-Als u gebruikers wilt laten deel nemen aan uw bèta-app, kunt u deze koppeling bijvoorbeeld op de webpagina plaatsen:
+To let users opt out of your beta app, for example, you can put this link on your webpage:
 
 ```HTML
 <a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>
 ```
 
-De teken reeks `x-ms-routing-name=self` specificeert de productie site. Nadat de client browser de koppeling heeft geopend, wordt deze omgeleid naar de productie site. Elke volgende aanvraag heeft het `x-ms-routing-name=self` cookie dat de sessie vastspelt aan de productie site.
+The string `x-ms-routing-name=self` specifies the production slot. After the client browser accesses the link, it's redirected to the production slot. Every subsequent request has the `x-ms-routing-name=self` cookie that pins the session to the production slot.
 
-Als u gebruikers wilt laten kiezen voor uw bèta-app, stelt u dezelfde query parameter in op de naam van de niet-productie sleuf. Hier volgt een voorbeeld:
+To let users opt in to your beta app, set the same query parameter to the name of the non-production slot. Hier volgt een voorbeeld:
 
 ```
 <webappname>.azurewebsites.net/?x-ms-routing-name=staging
 ```
 
-Standaard krijgen nieuwe sleuven een routerings regel van `0%`die grijs wordt weer gegeven. Wanneer u deze waarde expliciet instelt op `0%` (weer gegeven in zwarte tekst), kunnen uw gebruikers de faserings sleuf hand matig openen met behulp van de `x-ms-routing-name` query parameter. Maar ze worden niet automatisch doorgestuurd naar de sleuf, omdat het routerings percentage is ingesteld op 0. Dit is een geavanceerd scenario waarbij u de faserings sleuf van het publiek kunt verbergen terwijl interne teams wijzigingen in de sleuf kunnen testen.
+By default, new slots are given a routing rule of `0%`, shown in grey. When you explicitly set this value to `0%` (shown in black text), your users can access the staging slot manually by using the `x-ms-routing-name` query parameter. But they won't be routed to the slot automatically because the routing percentage is set to 0. This is an advanced scenario where you can "hide" your staging slot from the public while allowing internal teams to test changes on the slot.
 
 <a name="Delete"></a>
 
-## <a name="delete-a-slot"></a>Een sleuf verwijderen
+## <a name="delete-a-slot"></a>Delete a slot
 
-Ga naar de resource pagina van uw app. Selecteer **implementatie sleuven** >  *\<sleuf om >* **overzicht**van > te verwijderen. Selecteer **verwijderen** op de opdracht balk.  
+Go to your app's resource page. Select **Deployment slots** >  *\<slot to delete>*  > **Overview**. Select **Delete** on the command bar.  
 
-![Een implementatie site verwijderen](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
+![Delete a deployment slot](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 
 <!-- ======== AZURE POWERSHELL CMDLETS =========== -->
 
@@ -290,9 +290,9 @@ Ga naar de resource pagina van uw app. Selecteer **implementatie sleuven** >  *\
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell is een module die cmdlets biedt voor het beheren van Azure via Windows Power shell, inclusief ondersteuning voor het beheren van implementatie sleuven in Azure App Service.
+Azure PowerShell is a module that provides cmdlets to manage Azure through Windows PowerShell, including support for managing deployment slots in Azure App Service.
 
-Zie [Microsoft Azure PowerShell installeren en configureren](/powershell/azure/overview)voor meer informatie over het installeren en configureren van Azure PowerShell en over het verifiëren van Azure PowerShell met uw Azure-abonnement.  
+For information on installing and configuring Azure PowerShell, and on authenticating Azure PowerShell with your Azure subscription, see [How to install and configure Microsoft Azure PowerShell](/powershell/azure/overview).  
 
 ---
 ### <a name="create-a-web-app"></a>Een webtoepassing maken
@@ -301,52 +301,52 @@ New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location
 ```
 
 ---
-### <a name="create-a-slot"></a>Een sleuf maken
+### <a name="create-a-slot"></a>Create a slot
 ```powershell
 New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 ---
-### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Een swap initiëren met een preview (multi-phase swap) en de configuratie van de doel sleuf Toep assen op de bron sleuf
+### <a name="initiate-a-swap-with-a-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-the-source-slot"></a>Initiate a swap with a preview (multi-phase swap), and apply destination slot configuration to the source slot
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Een in behandeling zijnde wisseling annuleren (wisselen met beoordeling) en de configuratie van de bron sleuf herstellen
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Cancel a pending swap (swap with review) and restore the source slot configuration
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 ---
-### <a name="swap-deployment-slots"></a>Implementatie sleuven wisselen
+### <a name="swap-deployment-slots"></a>Swap deployment slots
 ```powershell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
-### <a name="monitor-swap-events-in-the-activity-log"></a>Swap gebeurtenissen in het activiteiten logboek bewaken
+### <a name="monitor-swap-events-in-the-activity-log"></a>Monitor swap events in the activity log
 ```powershell
 Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 ---
-### <a name="delete-a-slot"></a>Een sleuf verwijderen
+### <a name="delete-a-slot"></a>Delete a slot
 ```powershell
 Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
-## <a name="automate-with-arm-templates"></a>Automatiseren met ARM-sjablonen
+## <a name="automate-with-arm-templates"></a>Automate with ARM templates
 
-[Arm-sjablonen](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) zijn DECLARATIEve json-bestanden die worden gebruikt voor het automatiseren van de implementatie en configuratie van Azure-resources. Als u sleuven wilt wisselen met ARM-sjablonen, stelt u twee eigenschappen in op de resources *micro soft. web/sites/sleuven* en *micro soft. web/sites* :
+[ARM Templates](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview) are declarative JSON files used to automate the deployment and configuration of Azure resources. To swap slots using ARM templates, you will set two properties on the *Microsoft.Web/sites/slots* and *Microsoft.Web/sites* resources:
 
-- `buildVersion`: dit is een teken reeks eigenschap die de huidige versie vertegenwoordigt van de app die in de sleuf is geïmplementeerd. Bijvoorbeeld: "v1", "1.0.0.1" of "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: dit is een teken reeks eigenschap waarmee wordt opgegeven wat `buildVersion` de sleuf moet hebben. Als de targetBuildVersion niet gelijk is aan de huidige `buildVersion`, wordt de wissel bewerking geactiveerd door de sleuf te zoeken met de opgegeven `buildVersion`.
+- `buildVersion`: this is a string property which represents the current version of the app deployed in the slot. For example: "v1", "1.0.0.1", or "2019-09-20T11:53:25.2887393-07:00".
+- `targetBuildVersion`: this is a string property that specifies what `buildVersion` the slot should have. If the targetBuildVersion does not equal the current `buildVersion`, then this will trigger the swap operation by finding the slot which has the specified `buildVersion`.
 
-### <a name="example-arm-template"></a>Voor beeld van ARM-sjabloon
+### <a name="example-arm-template"></a>Example ARM Template
 
-Met de volgende ARM-sjabloon wordt de `buildVersion` van de faserings sleuf bijgewerkt en wordt de `targetBuildVersion` ingesteld op de productie site. Hierdoor worden de twee sleuven gewisseld. In de sjabloon wordt ervan uitgegaan dat u al een webapp hebt gemaakt met een sleuf met de naam "staging".
+The following ARM template will update the `buildVersion` of the staging slot and set the `targetBuildVersion` on the production slot. This will swap the two slots. The template assumes you already have a webapp created with a slot named "staging".
 
 ```json
 {
@@ -390,27 +390,27 @@ Met de volgende ARM-sjabloon wordt de `buildVersion` van de faserings sleuf bijg
 }
 ```
 
-Deze ARM-sjabloon is idempotent, wat inhoudt dat deze herhaaldelijk kan worden uitgevoerd en de status van de sleuven kan genereren. Na de eerste uitvoering komt `targetBuildVersion` overeen met de huidige `buildVersion`, waardoor een wissel niet wordt geactiveerd.
+This ARM template is idempotent, meaning that it can be executed repeatedly and produce the same state of the slots. After the first execution, `targetBuildVersion` will match the current `buildVersion`, so a swap will not be triggered.
 
 <!-- ======== Azure CLI =========== -->
 
 <a name="CLI"></a>
 
-## <a name="automate-with-the-cli"></a>Automatiseren met de CLI
+## <a name="automate-with-the-cli"></a>Automate with the CLI
 
-Zie [AZ webapp Deployment sleuf](/cli/azure/webapp/deployment/slot)voor [Azure cli](https://github.com/Azure/azure-cli) -opdrachten voor implementatie sites.
+For [Azure CLI](https://github.com/Azure/azure-cli) commands for deployment slots, see [az webapp deployment slot](/cli/azure/webapp/deployment/slot).
 
-## <a name="troubleshoot-swaps"></a>Problemen met swaps oplossen
+## <a name="troubleshoot-swaps"></a>Troubleshoot swaps
 
-Als er een fout optreedt tijdens het wisselen van een [sleuf](#AboutConfiguration), wordt deze geregistreerd in *D:\home\LogFiles\eventlog.XML*. Het wordt ook vastgelegd in het logboek voor toepassings specifieke fouten.
+If any error occurs during a [slot swap](#AboutConfiguration), it's logged in *D:\home\LogFiles\eventlog.xml*. It's also logged in the application-specific error log.
 
-Hier volgen enkele veelvoorkomende wissel fouten:
+Here are some common swap errors:
 
-- Een HTTP-aanvraag voor de hoofdmap van de toepassing is time-out. De wissel bewerking wacht gedurende 90 seconden voor elke HTTP-aanvraag en probeert tot vijf keer. Als er een time-out optreedt voor alle nieuwe pogingen, wordt de wissel bewerking gestopt.
+- An HTTP request to the application root is timed. The swap operation waits for 90 seconds for each HTTP request, and retries up to 5 times. If all retries are timed out, the swap operation is stopped.
 
-- De initialisatie van de lokale cache kan mislukken wanneer de inhoud van de app het lokale schijf quotum overschrijdt dat is opgegeven voor de lokale cache. Zie [overzicht van lokale cache](overview-local-cache.md)voor meer informatie.
+- Local cache initialization might fail when the app content exceeds the local disk quota specified for the local cache. For more information, see [Local cache overview](overview-local-cache.md).
 
-- Tijdens [aangepaste warm-up](#Warm-up)worden de HTTP-aanvragen intern gemaakt (zonder de externe URL te passeren). Ze kunnen mislukken met bepaalde regels voor het herschrijven van URL'S in *Web. config*. Regels voor het omleiden van domein namen of het afdwingen van HTTPS kunnen bijvoorbeeld voor komen dat warme aanvragen de app-code bereiken. U kunt dit probleem omzeilen door de regels voor herschrijven te wijzigen door de volgende twee voor waarden toe te voegen:
+- During [custom warm-up](#Warm-up), the HTTP requests are made internally (without going through the external URL). They can fail with certain URL rewrite rules in *Web.config*. For example, rules for redirecting domain names or enforcing HTTPS can prevent warm-up requests from reaching the app code. To work around this issue, modify your rewrite rules by adding the following two conditions:
 
     ```xml
     <conditions>
@@ -419,7 +419,7 @@ Hier volgen enkele veelvoorkomende wissel fouten:
       ...
     </conditions>
     ```
-- Zonder aangepaste warm-up kunnen de regels voor het opnieuw schrijven van de URL HTTP-aanvragen nog steeds blok keren. U kunt dit probleem omzeilen door de regels voor herschrijven te wijzigen door de volgende voor waarde toe te voegen:
+- Without a custom warm-up, the URL rewrite rules can still block HTTP requests. To work around this issue, modify your rewrite rules by adding the following condition:
 
     ```xml
     <conditions>
@@ -427,9 +427,9 @@ Hier volgen enkele veelvoorkomende wissel fouten:
       ...
     </conditions>
     ```
-- Sommige [IP-beperkings regels](app-service-ip-restrictions.md) kunnen voor komen dat de wissel bewerking HTTP-aanvragen naar uw app verzendt. IPv4-adresbereiken die beginnen met `10.` en `100.` intern zijn voor uw implementatie. U moet hen toestaan om verbinding te maken met uw app.
+- Some [IP restriction rules](app-service-ip-restrictions.md) might prevent the swap operation from sending HTTP requests to your app. IPv4 address ranges that start with `10.` and `100.` are internal to your deployment. You should allow them to connect to your app.
 
-- Na het wisselen van sleuven kan de app onverwachte opnieuw opstarten ondervinden. Dit komt doordat de bindings configuratie van de hostnaam na een swap niet meer synchroon is, wat zelf niet tot gevolg heeft dat de computer opnieuw wordt opgestart. Bepaalde onderliggende opslag gebeurtenissen (zoals failovers van het opslag volume) kunnen deze verschillen echter detecteren en alle werk processen afdwingen om opnieuw op te starten. Als u deze typen opnieuw opstarten wilt minimaliseren, stelt u de [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app-instelling](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) in op *Alle sleuven*. Deze app-instelling werkt echter *niet* met Windows Communication Foundation WCF-apps.
+- After slot swaps, the app may experience unexpected restarts. This is because after a swap, the hostname binding configuration goes out of sync, which by itself doesn't cause restarts. However, certain underlying storage events (such as storage volume failovers) may detect these discrepancies and force all worker processes to restart. To minimize these types of restarts, set the [`WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` app setting](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) on *all slots*. However, this app setting does *not* work with Windows Communication Foundation (WCF) apps.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Toegang tot niet-productie sleuven blok keren](app-service-ip-restrictions.md)
+[Block access to non-production slots](app-service-ip-restrictions.md)

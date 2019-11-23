@@ -1,50 +1,46 @@
 ---
-title: Wat zijn Azure Block Chain-tokens
-description: Azure Block Chain-tokens is een platform as a Service (PaaS) voor het uitgeven en beheren van tokens.
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: What is Azure Blockchain Tokens
+description: Azure Blockchain Tokens is a platform as a service (PaaS) for token issuance and management.
 ms.date: 11/04/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: brendal
-ms.openlocfilehash: cd41d52e06a5c1833dca9669881cbe48f362d81d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: c1c18298ba82775c9b10bb79c420704bd462e2b4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73579756"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326092"
 ---
-# <a name="what-is-azure-blockchain-tokens"></a>Wat zijn Azure Block Chain-tokens?
+# <a name="what-is-azure-blockchain-tokens"></a>Wat is Azure Blockchain Tokens?
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-Azure Block Chain-tokens is een platform as a Service (PaaS) voor gestandaardiseerde token uitgifte en-beheer over Block Chain-grootten in Azure.
+Azure Blockchain Tokens is a platform as a service (PaaS) for standardized token issuance and management across blockchain ledgers in Azure.
 
-Met Azure Block Chain-tokens kunt u gestandaardiseerde tokens maken voor uw Block Chain-oplossing met behulp van een vooraf gemaakte token sjabloon. U kunt ook uw eigen token sjabloon samen stellen met behulp van de service. Nadat deze is gemaakt, gebruikt u Azure Block Chain-tokens om verbinding te maken en de tokens op een Block Chain uit te geven. Zodra u deze hebt uitgegeven, kunt u de tokens in meerdere Block chain-netwerken beheren.
+Using Azure Blockchain Tokens you can create standardized tokens for your blockchain solution using a pre-built token template. You can also compose your own token template using the service. Once created, use Azure Blockchain Tokens to connect and issue the tokens on a blockchain. Once issued, you can then manage the tokens across multiple blockchain networks.
 
 ## <a name="templates"></a>Sjablonen
 
-Gebruik Azure Block Chain-tokens om een vooraf gemaakte token sjabloon te selecteren of uw eigen token sjabloon te maken. Azure Block Chain-tokens ondersteunen het opstellen van token sjablonen waarmee u uw eigen token sjabloon kunt maken op basis van ondersteunde gedragingen. Token sjablonen kunnen worden gebruikt voor de meeste Block chain-oplossingen, omdat ze zijn toegewezen aan de meestgebruikte tokens. U kunt beginnen met een sjabloon, het persoonlijke karakter geven en de tokens implementeren voor uw oplossing.
+Use Azure Blockchain Tokens to select a pre-built token template or create your own token template. Azure Blockchain Tokens supports token template composability that allows you to create your own token template based on supported behaviors. Token templates can be used for most blockchain solutions since they map to the most commonly utilized tokens. You can start with a template, personalize it, and deploy the tokens for your solution.
 
-Zie [Azure Block Chain-tokens-sjablonen](templates.md)voor meer informatie over sjablonen voor Azure Block Chain-tokens.
+For more information on Azure Blockchain Tokens templates, see [Azure Blockchain Tokens templates](templates.md).
 
 ## <a name="management"></a>Beheer
 
-Azure Block Chain-tokens biedt Azure Portal beheer en Api's om verbinding te maken met een bestaand Block chain-netwerk. Op dit moment kunt u verbinding maken met de [Azure Block Chain-Service](../service/overview.md) of een andere Ethereum-familie Block chain.
+Azure Blockchain Tokens provides Azure portal management and APIs to connect to an existing blockchain network. Currently, you can connect to [Azure Blockchain Service](../service/overview.md) or another Ethereum family blockchain.
 
-Wanneer u bent verbonden met een of meerdere Block chain netwerken, kunt u Azure Block Chain tokens-Api's gebruiken om tokens te verlenen en te beheren voor gebruik in uw Block Chain-oplossing. Met Api's kunt u token beheer integreren in uw zakelijke toepassingen en logica. U kunt bijvoorbeeld de REST API gebruiken om tokens te beheren in plaats van tokens rechtstreeks op de Block chain te beheren.
+Once connected to one or multiple blockchain networks, you can use Azure Blockchain Tokens APIs to issue and manage tokens for use in your blockchain solution. Using APIs, you can integrate token management in your business applications and logic. For example, you can use the REST API to  manage tokens instead of managing tokens directly on the blockchain.
 
-## <a name="blockchains-and-accounts"></a>Blockchains en accounts
+## <a name="blockchains-and-accounts"></a>Blockchains and accounts
 
-Azure Block Chain-tokens biedt Azure Portal beheer en Api's voor het maken van nieuwe groepen en nieuwe Block Chain-accounts op verbonden Block chain-netwerken. U kunt rechtstreeks nieuwe accounts maken in uw verbonden netwerken, en Azure Block Chain tokens beheert uw persoonlijke sleutels van uw account namens u. Met behulp van groepen kunt u verschillende Block Chain-accounts groeperen vanuit meerdere netwerken en toegangs beheer beheren via de groepen.
+Azure Blockchain Tokens provides Azure portal management and APIs to create new groups and new blockchain accounts on connected blockchain networks. You can create new accounts directly on your connected networks, and Azure Blockchain Tokens manages your account private keys on your behalf. Using groups, you can group together different blockchain accounts from multiple networks and manage access control via the groups.
 
-Zie [Azure Block Chain tokens account management](account-management.md)voor meer informatie over het account beheer van Azure Block Chain tokens.
+For more information on Azure Blockchain Tokens account management, see [Azure Blockchain Tokens account management](account-management.md).
 
-## <a name="token-taxonomy-framework"></a>Token taxonomie Framework
+## <a name="token-taxonomy-framework"></a>Token Taxonomy Framework
 
-Azure Block Chain-tokens is gebaseerd op op standaarden gebaseerde Foundation met de naam token taxonomie Framework (TTF). TTF is een set van producten die zijn gemaakt op basis van de werk groep [token taxonomie](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI). De werk groep TTI definieert een bedrijfs taxonomie voor tokens en hun gedrag dat kan worden toegepast op alle grote grootten, met inbegrip van Ethereum, quorum, Kabela en Hyperledger Fabric. Het doel van de werk groep is het maken van een framework waarmee het gebruik van tokens van een bedrijfs perspectief wordt gestandaardiseerd om vereenvoudiging en democratisch op basis van tokens te ontwikkelen. Doordat de branche deze tokens en hun gedrag op het niveau van de onderneming definieert, wordt de gedetailleerde implementatie van de tokens afgeleid van de bedrijfs logica die de tokens manipuleert.
+Azure Blockchain Tokens is built on a standards-based foundation named the Token Taxonomy Framework (TTF). TTF is a set of deliverables created from the [Token Taxonomy Initiative](https://entethalliance.org/participate/token-taxonomy-initiative/) (TTI) token working group. The TTI working group defines a business taxonomy for tokens and their behaviors that can be applied across all major ledgers including Ethereum, Quorum, Corda, and Hyperledger Fabric. The working group's goal is to create a framework that standardizes the use of tokens from a business perspective to drive simplification and democratize token based development. By letting the industry define these tokens and their behavior at the business level, the detailed implementation of the tokens are abstracted away from the business logic that manipulates the tokens.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de beschik bare [Azure Block Chain-tokens-sjablonen](templates.md).
+Learn more about available [Azure Blockchain Tokens templates](templates.md).

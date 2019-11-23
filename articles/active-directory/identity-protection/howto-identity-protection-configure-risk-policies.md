@@ -1,6 +1,6 @@
 ---
-title: Risico beleid configureren en inschakelen in Azure Active Directory Identity Protection
-description: Risico beleid inschakelen en configureren in Azure Active Directory Identity Protection
+title: Risk policies - Azure Active Directory Identity Protection
+description: Enable and configure risk policies in Azure Active Directory Identity Protection
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
@@ -11,73 +11,73 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79f919633f6b1912ef07b7ff636eb60fb3d5859f
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 37091b2551d68e241c7179949c3eb1db9a381de6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72886959"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382179"
 ---
-# <a name="how-to-configure-and-enable-risk-policies"></a>Procedure: risico beleid configureren en inschakelen
+# <a name="how-to-configure-and-enable-risk-policies"></a>How To: Configure and enable risk policies
 
-Zoals we hebben geleerd in het vorige artikel, hebben [beleids regels voor identiteits beveiliging](concept-identity-protection-policies.md) twee risico beleidsregels die we in onze Directory kunnen inschakelen. 
+As we learned in the previous article, [Identity Protection policies](concept-identity-protection-policies.md) we have two risk policies that we can enable in our directory. 
 
-- Beleid voor aanmeldings Risico's
-- Beleid voor gebruikers Risico's
+- Sign-in risk policy
+- User risk policy
 
-![Pagina beveiligings overzicht voor het inschakelen van beleid voor gebruikers-en aanmeldings Risico's](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
+![Security overview page to enable user and sign-in risk policies](./media/howto-identity-protection-configure-risk-policies/identity-protection-security-overview.png)
 
-Beide beleids regels werken samen om de reactie op risico detecties in uw omgeving te automatiseren en gebruikers in staat te stellen zichzelf te herstellen wanneer risico wordt gedetecteerd. 
+Both policies work to automate the response to risk detections in your environment and allow users to self-remediate when risk is detected. 
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 ## <a name="prerequisites"></a>Vereisten 
 
-Als uw organisatie toestaat dat gebruikers zichzelf zelf kunnen oplossen wanneer er Risico's worden gedetecteerd, moeten gebruikers worden geregistreerd voor selfservice voor wachtwoord herstel en Azure Multi-Factor Authentication. U wordt aangeraden [de gecombineerde beveiligings informatie registratie in te scha kelen](../authentication/howto-registration-mfa-sspr-combined.md) voor de beste ervaring. Door gebruikers toe te staan zichzelf op te lossen, worden ze sneller teruggebracht naar een productieve status zonder tussen komst van de beheerder. Beheerders kunnen deze gebeurtenissen nog steeds zien en ze na het feit onderzoeken. 
+If your organization wants to allow users to self-remediate when risks are detected, users must be registered for both self-service password reset and Azure Multi-Factor Authentication. We recommend [enabling the combined security information registration experience](../authentication/howto-registration-mfa-sspr-combined.md) for the best experience. Allowing users to self-remediate gets them back to a productive state more quickly without requiring administrator intervention. Administrators can still see these events and investigate them after the fact. 
 
-## <a name="choosing-acceptable-risk-levels"></a>Acceptabele risico niveaus kiezen
+## <a name="choosing-acceptable-risk-levels"></a>Choosing acceptable risk levels
 
-Organisaties moeten het risico niveau bepalen dat ze nodig hebben om de gebruikers ervaring en beveiligings postuur te accepteren. 
+Organizations must decide the level of risk they are willing to accept balancing user experience and security posture. 
 
-De aanbeveling van micro soft is de drempel waarde voor het gebruikers risico beleid in te stellen op **hoog** en het beleid voor aanmeldings risico op **gemiddeld en hoger**.
+Microsoft's recommendation is to set the user risk policy threshold to **High** and the sign-in risk policy to **Medium and above**.
 
-Het kiezen van een **hoge** drempel waarde vermindert het aantal keren dat een beleid wordt geactiveerd en minimaliseert de gevolgen voor gebruikers. Er worden echter **weinig** en **gemiddeld** risico detecties uit het beleid uitgesloten, waardoor een aanvaller niet kan worden misbruikt van een aangetast identiteit. Als u een **lage** drempel waarde selecteert, worden extra gebruikers onderbrekingen geïntroduceerd, maar wordt de beveiligings postuur verbeterd.
+Choosing a **High** threshold reduces the number of times a policy is triggered and minimizes the impact to users. However, it excludes **Low** and **Medium** risk detections from the policy, which may not block an attacker from exploiting a compromised identity. Selecting a **Low** threshold introduces additional user interrupts, but increased security posture.
 
 ## <a name="exclusions"></a>Uitzonderingen
 
-Met alle beleids regels kunt u uitzonde ring van gebruikers, zoals uw [beheerders accounts voor nood toegang of afbreek glazen](../users-groups-roles/directory-emergency-access.md), toestaan. Organisaties kunnen bepalen dat andere accounts moeten worden uitgesloten van specifieke beleids regels op basis van de manier waarop de accounts worden gebruikt. Alle uitsluitingen moeten regel matig worden gecontroleerd om te zien of ze nog steeds van toepassing zijn.
+All of the policies allow for excluding users such as your [emergency access or break-glass administrator accounts](../users-groups-roles/directory-emergency-access.md). Organizations may determine they need to exclude other accounts from specific policies based on the way the accounts are used. All exclusions should be reviewed regularly to see if they are still applicable.
 
-## <a name="enable-policies"></a>Beleid inschakelen
+## <a name="enable-policies"></a>Enable policies
 
-Voer de volgende stappen uit om het risico beleid voor gebruikers Risico's en-aanmelding in te scha kelen.
+To enable the user risk and sign-in risk policies complete the following steps.
 
 1. Navigeer naar [Azure Portal](https://portal.azure.com).
-1. Ga naar **Azure Active Directory** > **beveiliging** > **identiteits beveiliging** > **overzicht**.
-1. Selecteer **gebruikers risico beleid configureren**.
-   1. Onder **toewijzingen**
-      1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
-         1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-      1. **Voor waarden** - **gebruikers risico** de aanbeveling van micro soft is om deze optie in te stellen op **hoog**.
-   1. Onder **besturings elementen**
-      1. **Toegang** : aanbeveling van micro soft is **toegang toe te staan** en **wachtwoord wijziging te vereisen**.
-   1. **Beleid - afdwingen** **voor**
-   1. **Opslaan** : met deze actie keert u terug naar de pagina **overzicht** .
-1. Selecteer **beleid voor aanmeldings risico configureren**.
-   1. Onder **toewijzingen**
-      1. **Gebruikers** : Kies **alle gebruikers** of **Selecteer individuen en groepen** als u de implementatie wilt beperken.
-         1. Optioneel kunt u ervoor kiezen om gebruikers uit te sluiten van het beleid.
-      1. **Voor waarden** - **aanmeldings risico** de aanbeveling van micro soft is om deze optie in te stellen op **gemiddeld en hoger**.
-   1. Onder **besturings elementen**
-      1. **Toegang** -aanbeveling van micro soft is om **toegang toe te staan** en **multi-factor Authentication te vereisen**.
-   1. **Beleid - afdwingen** **voor**
-   1. **Opslaan**
+1. Browse to **Azure Active Directory** > **Security** > **Identity Protection** > **Overview**.
+1. Select **Configure user risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **User risk** Microsoft's recommendation is to set this option to **High**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require password change**.
+   1. **Enforce Policy** - **On**
+   1. **Save** - This action will return you to the **Overview** page.
+1. Select **Configure sign-in risk policy**.
+   1. Under **Assignments**
+      1. **Users** - Choose **All users** or **Select individuals and groups** if limiting your rollout.
+         1. Optionally you can choose to exclude users from the policy.
+      1. **Conditions** - **Sign-in risk** Microsoft's recommendation is to set this option to **Medium and above**.
+   1. Under **Controls**
+      1. **Access** - Microsoft's recommendation is to **Allow access** and **Require multi-factor authentication**.
+   1. **Enforce Policy** - **On**
+   1. **Save**
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Registratie beleid voor Azure Multi-Factor Authentication inschakelen](howto-identity-protection-configure-mfa-policy.md)
+- [Enable Azure Multi-Factor Authentication registration policy](howto-identity-protection-configure-mfa-policy.md)
 
-- [Wat is risico](concept-identity-protection-risks.md)
+- [What is risk](concept-identity-protection-risks.md)
 
-- [Detectie van risico onderzoeken](howto-identity-protection-investigate-risk.md)
+- [Investigate risk detections](howto-identity-protection-investigate-risk.md)
 
-- [Risico detecties simuleren](howto-identity-protection-simulate-risk.md)
+- [Simulate risk detections](howto-identity-protection-simulate-risk.md)

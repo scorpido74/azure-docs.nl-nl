@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: spelling controleren met de Bing Spellingcontrole-REST API en Node.js'
+title: 'Quickstart: Check spelling with the REST API and Node.js - Bing Spell Check'
 titleSuffix: Azure Cognitive Services
 description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/02/2019
 ms.author: aahill
-ms.openlocfilehash: c45e9e7743aca2d091b62caed6a7c5a724bacebf
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: ab8f1d52b5a0b9f5f2539de0acc4728277f9f7b2
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68423500"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378825"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Quickstart: spelling controleren met de Bing Spellingcontrole-REST API en Node.js
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-nodejs"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Node.js
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige knooppunt toepassing stuurt een aanvraag naar de API en retourneert een lijst met woorden die niet zijn herkend, gevolgd door voorgestelde correcties. Hoewel deze toepassing is geschreven in node. js, is de API een REST-webservice die compatibel is met de meeste programmeer talen. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
+Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. This simple Node application sends a request to the API and returns a list of words it didn't recognize, followed by suggested corrections. While this application is written in Node.js, the API is a RESTful Web service compatible with most programming languages. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingSpellCheckv7.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -30,7 +30,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor. Stel de beperking in en vereist `https`. Maak vervolgens variabelen voor de host en het pad van het API-eindpunt en uw abonnementssleutel.
+1. Maak een nieuw JavaScript-bestand in uw favoriete IDE of editor. Set the strictness, and require `https`. Maak vervolgens variabelen voor de host en het pad van het API-eindpunt en uw abonnementssleutel.
 
     ```javascript
     'use strict';
@@ -41,7 +41,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
     let key = '<ENTER-KEY-HERE>';
     ```
 
-2. Maak variabelen voor de zoek parameters en de tekst die u wilt controleren. Voeg uw markt code toe `mkt=`na. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus `&mode=`voor spelling controle toe. Modus (de `proof` meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammatica fouten onderschept).
+2. Create variables for your search parameters and the text you want to check. Append your market code after `mkt=`. The market code is the country you make the request from. Also, append your spell-check mode after `&mode=`. Mode is either `proof` (catches most spelling/grammar errors) or `spell` (catches most spelling but not as many grammar errors).
 
     ```javascript
     let mkt = "en-US";

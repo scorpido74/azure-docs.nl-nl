@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Spellingcontrole met de Bing Spellingcontrole-REST API en Java'
+title: 'Quickstart: Check spelling with the REST API and Java - Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Aan de slag met de Bing Spellingcontrole-REST API om de spelling en grammatica te controleren.
+description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,28 +10,28 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 47b47a91b0cd223a17d6779d7f0db7cdb7c88a0b
-ms.sourcegitcommit: 07700392dd52071f31f0571ec847925e467d6795
+ms.openlocfilehash: 0a40163eddffd4e406dd0644f950f6af636a1dfa
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70123301"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383875"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Quickstart: Spellingcontrole met de Bing Spellingcontrole-REST API en Java
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Quickstart: Check spelling with the Bing Spell Check REST API and Java
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Java-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
+Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige Java-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
 
 ## <a name="prerequisites"></a>Vereisten
 
 * De Java Development Kit (JDK) 7 of hoger.
 
-* Importeer de [gson-2.8.5. jar](https://libraries.io/maven/com.google.code.gson%3Agson) of de meest recente [gson](https://github.com/google/gson) -versie. Voor het uitvoeren van de opdracht regel `.jar` moet u de map aan uw Java toevoegen met de hoofd klasse.
+* Import the [gson-2.8.5.jar](https://libraries.io/maven/com.google.code.gson%3Agson) or the most current [Gson](https://github.com/google/gson) version. For command line execution, add the `.jar` to your Java folder with the main class.
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-an-application"></a>De toepassing maken en initialiseren
 
-1. Maak een nieuw Java-project in uw favoriete IDE of editor met een klassen naam van uw keuze en importeer de volgende pakketten.
+1. Create a new Java Project in your favorite IDE or editor with a class name of your choosing, and then import the following packages.
 
     ```java
     import java.io.*;
@@ -64,7 +64,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
    }
    ```
 
-2. Maak een URL door het eindpunt, de host, het pad en de parametertekenreeks te combineren. Een nieuw `HttpsURLConnection` object maken.
+2. Maak een URL door het eindpunt, de host, het pad en de parametertekenreeks te combineren. Create a new `HttpsURLConnection` object.
 
     ```java
     URL url = new URL(host + path + params);
@@ -89,9 +89,9 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
         wr.close();
     ```
 
-## <a name="format-and-read-the-api-response"></a>De API-reactie opmaken en lezen
+## <a name="format-and-read-the-api-response"></a>Format and read the API response
 
-1. Voeg deze methode toe aan uw klasse. De JSON wordt opgemaakt voor een lees bare uitvoer.
+1. Add this method to your class. It formats the JSON for a more readable output.
 
     ``` java
     // This function prettifies the json response.
@@ -117,7 +117,7 @@ Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST 
 
 ## <a name="call-the-api"></a>De API aanroepen
 
-In de hoofd functie van uw toepassing roept u de hierboven gemaakte controle methode aan.
+In the main function of your application, call your check() method created above.
 ```java
         public static void main(String[] args) {
             try {
@@ -131,16 +131,16 @@ In de hoofd functie van uw toepassing roept u de hierboven gemaakte controle met
 
 ## <a name="run-the-application"></a>De toepassing uitvoeren
 
-Uw project bouwen en uitvoeren.
+Build and run your project.
 
-Als u de opdracht regel gebruikt, gebruikt u de volgende opdrachten om de toepassing te bouwen en uit te voeren.
+If you're using the command line, use the following commands to build and run the application.
 
-**PE**
+**Build:**
 ```bash
 javac -classpath .;gson-2.2.2.jar\* <CLASS_NAME>.java
 ```
 
-**Uitvoeringsrun**
+**Run:**
 ```bash
 java -cp .;gson-2.2.2.jar\* <CLASS_NAME>
 ```

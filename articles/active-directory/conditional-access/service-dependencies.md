@@ -1,66 +1,66 @@
 ---
-title: Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? | Microsoft Docs
-description: Meer informatie over hoe voor waarden worden gebruikt in Azure Active Directory voorwaardelijke toegang om een beleid te activeren.
+title: Conditional Access service dependencies - Azure Active Directory
+description: Learn how conditions are used in Azure Active Directory Conditional Access to trigger a policy.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c7f2abda282d0219dd8787a9f6a2b6c1cda15df
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71257915"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380017"
 ---
-# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Wat zijn service afhankelijkheden in Azure Active Directory voorwaardelijke toegang? 
+# <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>What are service dependencies in Azure Active Directory Conditional Access? 
 
-Met beleid voor voorwaardelijke toegang kunt u toegangs vereisten voor websites en services opgeven. Uw toegangs vereisten kunnen bijvoorbeeld bestaan uit het vereisen van multi-factor Authentication (MFA) of [beheerde apparaten](require-managed-devices.md). 
+With Conditional Access policies, you can specify access requirements to websites and services. For example, your access requirements can include requiring multi-factor authentication (MFA) or [managed devices](require-managed-devices.md). 
 
-Wanneer u rechtstreeks toegang krijgt tot een site of service, is de impact van een gerelateerd beleid doorgaans gemakkelijk te beoordelen. Als u bijvoorbeeld een beleid hebt waarvoor MFA vereist is voor share point online geconfigureerd, wordt MFA afgedwongen voor elke aanmelding bij de share point-webportal. Het is echter niet altijd direct voor het beoordelen van de impact van een beleid, omdat er Cloud-apps zijn met afhankelijkheden van andere Cloud-apps. Micro soft teams kunnen bijvoorbeeld toegang bieden tot resources in share point online. Als u in het huidige scenario toegang hebt tot micro soft-teams, bent u daarom ook gebonden aan het share point MFA-beleid.   
+When you access a site or service directly, the impact of a related policy is typically easy to assess. For example, if you have a policy that requires MFA for SharePoint Online configured, MFA is enforced for each sign-in to the SharePoint web portal. However, it is not always straight-forward to assess the impact of a policy because there are cloud apps with dependencies to other cloud apps. For example, Microsoft Teams can provide access to resources in SharePoint Online. So, when you access Microsoft Teams in our current scenario, you are also subject to the SharePoint MFA policy.   
 
 ## <a name="policy-enforcement"></a>Beleidsafdwinging 
 
-Als u een service afhankelijkheid hebt geconfigureerd, kan het beleid worden toegepast met behulp van vroegtijdige binding of een te late afhankelijk afdwinging. 
+If you have a service dependency configured, the policy may be applied using early-bound or late-bound enforcement. 
 
-- **Early-gebonden beleids afdwinging** betekent dat een gebruiker moet voldoen aan het afhankelijke service beleid voordat de aanroepende app wordt geopend. Een gebruiker moet bijvoorbeeld voldoen aan het share point-beleid voordat u zich aanmeldt bij MS-teams. 
-- Na de aanmelding van de gebruiker bij de aanroepende app wordt nagaand **beleid afgedwongen** . Afdwinging wordt uitgesteld bij het aanroepen van app-aanvragen, een token voor de downstream-service. Voor beelden zijn MS-teams die toegang hebben tot de planner en Office.com toegang tot share point. 
+- **Early-bound policy enforcement** means a user must satisfy the dependent service policy before accessing the calling app. For example, a user must satisfy SharePoint policy before signing into MS Teams. 
+- **Late-bound policy enforcement** occurs after the user signs into the calling app. Enforcement is deferred to when calling app requests, a token for the downstream service. Examples include MS Teams accessing Planner and Office.com accessing SharePoint. 
 
-In het onderstaande diagram ziet u de service afhankelijkheden van MS teams. Effen pijlen geven een vroegtijdige afdwinging aan met de onderbroken pijl voor planner wordt aangegeven dat het goed gebonden is. 
+The diagram below illustrates MS Teams service dependencies. Solid arrows indicate early-bound enforcement the dashed arrow for Planner indicates late-bound enforcement. 
 
-![Service afhankelijkheden van MS teams](./media/service-dependencies/01.png)
+![MS Teams service dependencies](./media/service-dependencies/01.png)
 
-Als best practice moet u waar mogelijk algemene beleids regels instellen voor alle gerelateerde apps en services. Een consistente beveiligings postuur biedt u de beste gebruikers ervaring. Als u bijvoorbeeld een gemeen schappelijk beleid instelt voor Exchange Online, share point online, micro soft teams en Skype voor bedrijven, worden onverwachte prompts die kunnen voortvloeien uit verschillende beleids regels die worden toegepast op downstream-Services, aanzienlijk verminderd. 
+As a best practice, you should set common policies across related apps and services whenever possible. Having a consistent security posture provides you with the best user experience. For example, setting a common policy across Exchange Online, SharePoint Online, Microsoft Teams, and Skype for business significantly reduces unexpected prompts that may arise from different policies being applied to downstream services. 
 
-In de onderstaande tabel vindt u aanvullende service afhankelijkheden waaraan de client-apps moeten voldoen  
+The below table lists additional service dependencies, where the client apps must satisfy  
 
-| Client-apps         | Downstream-service                          | Maatregelen |
+| Client apps         | Downstream service                          | Enforcement |
 | :--                 | :--                                         | ---         | 
-| Azure Data Lake     | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
-| Microsoft Classroom | Exchange                                    | Vroeg gebonden |
-|                     | SharePoint                                  | Vroeg gebonden |
-| Microsoft Teams     | Exchange                                    | Vroeg gebonden |
-|                     | MS planner                                  | Te laat gebonden  |
-|                     | SharePoint                                  | Vroeg gebonden |
-|                     | Skype voor Bedrijven Online                   | Vroeg gebonden |
-| Office-Portal       | Exchange                                    | Te laat gebonden  |
-|                     | SharePoint                                  | Te laat gebonden  |
-| Outlook-groepen      | Exchange                                    | Vroeg gebonden |
-|                     | SharePoint                                  | Vroeg gebonden |
-| PowerApps           | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
-|                     | Windows Azure Active Directory              | Vroeg gebonden |
-| Project             | Dynamics CRM                                | Vroeg gebonden |
-| Skype voor Bedrijven  | Exchange                                    | Vroeg gebonden |
-| Visual Studio       | Microsoft Azure beheer (Portal en API) | Vroeg gebonden |
-| Microsoft Forms     | Exchange                                    | Vroeg gebonden |
-|                     | SharePoint                                  | Vroeg gebonden |
-| Microsoft To-Do     | Exchange                                    | Vroeg gebonden |
+| Azure Data Lake     | Microsoft Azure Management (portal and API) | Early-bound |
+| Microsoft Classroom | Uitwisselen                                    | Early-bound |
+|                     | SharePoint                                  | Early-bound |
+| Microsoft Teams     | Uitwisselen                                    | Early-bound |
+|                     | MS Planner                                  | Late-bound  |
+|                     | SharePoint                                  | Early-bound |
+|                     | Skype voor Bedrijven Online                   | Early-bound |
+| Office Portal       | Uitwisselen                                    | Late-bound  |
+|                     | SharePoint                                  | Late-bound  |
+| Outlook groups      | Uitwisselen                                    | Early-bound |
+|                     | SharePoint                                  | Early-bound |
+| PowerApps           | Microsoft Azure Management (portal and API) | Early-bound |
+|                     | Windows Azure Active Directory              | Early-bound |
+| Project             | Dynamics CRM                                | Early-bound |
+| Skype voor Bedrijven  | Uitwisselen                                    | Early-bound |
+| Visual Studio       | Microsoft Azure Management (portal and API) | Early-bound |
+| Microsoft Forms     | Uitwisselen                                    | Early-bound |
+|                     | SharePoint                                  | Early-bound |
+| Microsoft To-Do     | Uitwisselen                                    | Early-bound |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [de implementatie van voorwaardelijke toegang plannen in azure Active Directory](plan-conditional-access.md)voor meer informatie over het implementeren van voorwaardelijke toegang in uw omgeving.
+To learn how to implement Conditional Access in your environment, see [Plan your Conditional Access deployment in Azure Active Directory](plan-conditional-access.md).

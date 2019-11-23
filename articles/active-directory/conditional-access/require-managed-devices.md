@@ -1,96 +1,96 @@
 ---
-title: Hoe-vereisen voor toegang tot cloud-Apps met Azure Active Directory voor voorwaardelijke toegang te beheren | Microsoft Docs
-description: Informatie over het configureren van Azure Active Directory (Azure AD) apparaten gebaseerd beleid voor voorwaardelijke toegang die beheerde apparaten voor toegang tot cloud-Apps vereisen.
+title: Conditional Access require managed device - Azure Active Directory
+description: Learn how to configure Azure Active Directory (Azure AD) device-based Conditional Access policies that require managed devices for cloud app access.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c99b8390cd43c3f0767123684fe06e0ae74f86
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 31b7aa906cbefc0ffda707a228f2a9d50be351a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67509375"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380036"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Procedure: Beheerde apparaten vereisen voor toegang tot cloud-Apps met voorwaardelijke toegang
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>How To: Require managed devices for cloud app access with Conditional Access
 
-In een wereld mobiliteit, cloud-first kunt Azure Active Directory (Azure AD) single sign-on bij apps en services vanaf elke locatie. Geautoriseerde gebruikers kunnen toegang krijgen tot uw cloud-apps uit een breed scala aan apparaten, waaronder mobiele en ook op persoonlijke apparaten. Veel omgevingen hebben echter ten minste een aantal apps dat alleen moeten worden geopend vanaf apparaten die voldoen aan uw normen voor beveiliging en naleving. Deze apparaten zijn ook wel bekend als beheerde apparaten. 
+In a mobile-first, cloud-first world, Azure Active Directory (Azure AD) enables single sign-on to apps, and services from anywhere. Authorized users can access your cloud apps from a broad range of devices including mobile and also personal devices. However, many environments have at least a few apps that should only be accessed by devices that meet your standards for security and compliance. These devices are also known as managed devices. 
 
-In dit artikel wordt uitgelegd hoe u beleid voor voorwaardelijke toegang die vereisen dat beheerde apparaten toegang krijgen tot bepaalde cloud-apps in uw omgeving kunt configureren. 
+This article explains how you can configure Conditional Access policies that require managed devices to access certain cloud apps in your environment. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Beheerde apparaten vereisen voor cloud-app toegang ties **Azure AD voor voorwaardelijke toegang** en **Azure AD-Apparaatbeheer** samen. Als u nog niet bekend bent met een van deze gebieden, moet u eerst de volgende onderwerpen lezen:
+Requiring managed devices for cloud app access ties **Azure AD Conditional Access** and **Azure AD device management** together. If you are not familiar with one of these areas yet, you should read the following topics, first:
 
-- **[Voorwaardelijke toegang in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)**  -in dit artikel biedt u een conceptueel overzicht van voorwaardelijke toegang en de bijbehorende terminologie.
-- **[Inleiding tot Apparaatbeheer in Azure Active Directory](../devices/overview.md)**  -in dit artikel geeft een overzicht van de verschillende opties die u kunt apparaten in organisatie-beheer. 
+- **[Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md)** - This article provides you with a conceptual overview of Conditional Access and the related terminology.
+- **[Introduction to device management in Azure Active Directory](../devices/overview.md)** - This article gives you an overview of the various options you have to get devices under organizational control. 
 
 ## <a name="scenario-description"></a>Scenariobeschrijving
 
-Onder de knie krijgen de balans tussen beveiliging en productiviteit is een uitdaging. De toename van ondersteunde apparaten voor toegang tot uw cloudresources kunt u de productiviteit van uw gebruikers verbeteren. Aan de andere kant wilt u waarschijnlijk geen bepaalde resources in uw omgeving om te worden geopend vanaf apparaten met een onbekende beveiligingsniveau. Voor de betrokken resources, moet u vereisen dat gebruikers hebben alleen toegang met behulp van een beheerd apparaat. 
+Mastering the balance between security and productivity is a challenge. The proliferation of supported devices to access your cloud resources helps to improve the productivity of your users. On the flip side, you probably don't want certain resources in your environment to be accessed by devices with an unknown protection level. For the affected resources, you should require that users can only access them using a managed device. 
 
-Met Azure AD voor voorwaardelijke toegang, kunt u deze vereiste met één beleid waarmee toegang wordt verleend adres:
+With Azure AD Conditional Access, you can address this requirement with a single policy that grants access:
 
-- Aan de geselecteerde cloud-apps
-- Voor de geselecteerde gebruikers en groepen
-- Een beheerd apparaat vereisen
+- To selected cloud apps
+- For selected users and groups
+- Requiring a managed device
 
-## <a name="managed-devices"></a>Beheerde apparaten  
+## <a name="managed-devices"></a>Managed devices  
 
-Simpel gezegd, beheerde apparaten zijn apparaten die onder *sommige sorteren* van organisatie-besturingselement. In Azure AD is de vereiste voor een beheerd apparaat dat is het geregistreerd bij Azure AD. Registreren van een apparaat, maakt u een identiteit voor het apparaat in de vorm van een apparaatobject. Dit object wordt gebruikt door Azure voor het bijhouden van statusinformatie over een apparaat. U kunt dit object aan in-/ uitschakelen (in-of uitschakelen) de status van een apparaat al gebruiken als een Azure AD-beheerder.
+In simple terms, managed devices are devices that are under *some sort* of organizational control. In Azure AD, the prerequisite for a managed device is that it has been registered with Azure AD. Registering a device creates an identity for the device in form of a device object. This object is used by Azure to track status information about a device. As an Azure AD administrator, you can already use this object to toggle (enable/disable) the state of a device.
   
-![Voorwaarden op basis van apparaat](./media/require-managed-devices/32.png)
+![Device-based conditions](./media/require-managed-devices/32.png)
 
-Als u een apparaat is geregistreerd bij Azure AD, hebt u drie opties: 
+To get a device registered with Azure AD, you have three options: 
 
-- **Azure AD ingeschreven apparaten** : als u wilt ophalen van een persoonlijk apparaat is geregistreerd bij Azure AD
-- **Azure AD gekoppelde apparaten** : als u wilt ophalen van een organisatie-Windows 10-apparaat die niet is gekoppeld aan een on-premises AD geregistreerd bij Azure AD. 
-- **Hybride Azure AD gekoppelde apparaten** : als u wilt ophalen van een Windows 10 of een ondersteunde downlevel-apparaten die lid van een on-premises is AD geregistreerd bij Azure AD.
+- **Azure AD registered devices** - to get a personal device registered with Azure AD
+- **Azure AD joined devices** - to get an organizational Windows 10 device that is not joined to an on-premises AD registered with Azure AD. 
+- **Hybrid Azure AD joined devices** - to get a Windows 10 or supported down-level device that is joined to an on-premises AD registered with Azure AD.
 
-Deze drie opties in het artikel worden besproken [wat is er een apparaat-id?](../devices/overview.md)
+These three options are discussed in the article [What is a device identity?](../devices/overview.md)
 
-Als u wilt worden van een beheerd apparaat, een geregistreerd apparaat moet een **hybride Azure AD toegevoegde apparaat** of een **apparaat dat is gemarkeerd als compatibel**.  
+To become a managed device, a registered device must be either a **Hybrid Azure AD joined device** or a **device that has been marked as compliant**.  
 
-![Voorwaarden op basis van apparaat](./media/require-managed-devices/47.png)
+![Device-based conditions](./media/require-managed-devices/47.png)
  
-## <a name="require-hybrid-azure-ad-joined-devices"></a>Vereisen van hybride Azure AD gekoppelde apparaten
+## <a name="require-hybrid-azure-ad-joined-devices"></a>Require Hybrid Azure AD joined devices
 
-In het beleid voor voorwaardelijke toegang, kunt u **vereisen dat het apparaat is toegevoegd aan Hybrid Azure AD** om aan te geven dat de geselecteerde cloud-apps alleen kunnen worden geopend met behulp van een beheerd apparaat. 
+In your Conditional Access policy, you can select **Require Hybrid Azure AD joined device** to state that the selected cloud apps can only be accessed using a managed device. 
 
-![Voorwaarden op basis van apparaat](./media/require-managed-devices/10.png)
+![Device-based conditions](./media/require-managed-devices/10.png)
 
-Deze instelling is alleen van toepassing op Windows 10 of downlevel-apparaten, zoals Windows 7 of Windows 8 die zijn gekoppeld aan een on-premises AD. U kunt deze apparaten alleen registreren met Azure AD met behulp van een hybride Azure AD-join, dit is een [geautomatiseerd](../devices/hybrid-azuread-join-plan.md) om op te halen van een Windows 10-apparaat dat is geregistreerd. 
+This setting only applies to Windows 10 or down-level devices such as Windows 7 or Windows 8 that are joined to an on-premises AD. You can only register these devices with Azure AD using a Hybrid Azure AD join, which is an [automated process](../devices/hybrid-azuread-join-plan.md) to get a Windows 10 device registered. 
 
-![Voorwaarden op basis van apparaat](./media/require-managed-devices/45.png)
+![Device-based conditions](./media/require-managed-devices/45.png)
 
-Wat is een hybride Azure AD toegevoegde apparaat een beheerd apparaat?  Voor apparaten die zijn gekoppeld aan een on-premises AD, wordt ervan uitgegaan dat de controle over deze apparaten wordt afgedwongen met behulp van de oplossingen zoals **System Center Configuration Manager (SCCM)** of **Groepsbeleid (GP)** om deze te beheren. Omdat er geen methode voor Azure AD om te bepalen of een van deze methoden is toegepast op een apparaat, een hybride Azure AD gekoppelde apparaat dat is een relatief zwakke mechanisme voor het vereisen van een beheerd apparaat. Het is aan u als beheerder om te beoordelen of de methoden die worden toegepast op uw on-premises domein apparaten zijn sterk genoeg is om deel uitmaken van een beheerd apparaat als een dergelijk apparaat ook een hybride Azure AD gekoppelde apparaat is.
+What makes a Hybrid Azure AD joined device a managed device?  For devices that are joined to an on-premises AD, it is assumed that the control over these devices is enforced using management solutions such as **System Center Configuration Manager (SCCM)** or **group policy (GP)** to manage them. Because there is no method for Azure AD to determine whether any of these methods has been applied to a device, requiring a hybrid Azure AD joined device is a relatively weak mechanism to require a managed device. It is up to you as an administrator to judge whether the methods that are applied to your on-premises domain-joined devices are strong enough to constitute a managed device if such a device is also a Hybrid Azure AD joined device.
 
-## <a name="require-device-to-be-marked-as-compliant"></a>Vereisen dat het apparaat moet worden gemarkeerd als compatibel
+## <a name="require-device-to-be-marked-as-compliant"></a>Require device to be marked as compliant
 
-De optie voor het *vereisen dat een apparaat moet worden gemarkeerd als compatibel* is de krachtigste om aan te vragen van een beheerd apparaat.
+The option to *require a device to be marked as compliant* is the strongest form to request a managed device.
 
-![Voorwaarden op basis van apparaat](./media/require-managed-devices/11.png)
+![Device-based conditions](./media/require-managed-devices/11.png)
 
-Deze optie vereist dat een apparaat worden geregistreerd bij Azure AD en moet worden gemarkeerd als compatibel met:
+This option requires a device to be registered with Azure AD, and also to be marked as compliant by:
          
 - Intune.
-- Een management (MDM)-systeem voor mobiele apparaten van derden waarmee Windows 10-apparaten via Azure AD-integratie worden beheerd. MDM-systemen van derden voor apparaattypen besturingssysteem dan Windows 10 worden niet ondersteund.
+- A third-party mobile device management (MDM) system that manages Windows 10 devices via Azure AD integration. Third-party MDM systems for device OS types other than Windows 10 are not supported.
  
-![Voorwaarden op basis van apparaat](./media/require-managed-devices/46.png)
+![Device-based conditions](./media/require-managed-devices/46.png)
 
-Voor een apparaat dat is gemarkeerd als compatibel, kunt u ervan uitgaan dat: 
+For a device that is marked as compliant, you can assume that: 
 
-- De mobiele apparaten die uw werknemers worden gebruikt voor toegang tot bedrijfsgegevens worden beheerd
-- Mobiele apps die uw werknemers worden beheerd
-- Gegevens van uw bedrijf wordt beveiligd door het helpt bij het bepalen hoe uw werknemers toegang heeft tot en deze delen
-- Het apparaat en de apps die compatibel zijn met de beveiligingsvereisten bedrijf
+- The mobile devices your workforce uses to access company data are managed
+- Mobile apps your workforce uses are managed
+- Your company information is protected by helping to control the way your workforce accesses and shares it
+- The device and its apps are compliant with company security requirements
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Voordat u een beleid voor voorwaardelijke toegang op basis van het apparaat configureert in uw omgeving, moet u Kijk eens de [aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md).
+Before configuring a device-based Conditional Access policy in your environment, you should take a look at the [best practices for Conditional Access in Azure Active Directory](best-practices.md).

@@ -1,269 +1,269 @@
 ---
-title: Goedgekeurde client-apps vereisen voor toegang tot Cloud app met voorwaardelijke toegang in Azure Active Directory | Microsoft Docs
-description: Meer informatie over het vereisen van goedgekeurde client-apps voor toegang tot Cloud app met voorwaardelijke toegang in Azure Active Directory.
+title: Approved client apps with Conditional Access - Azure Active Directory
+description: Learn how to require approved client apps for cloud app access with Conditional Access in Azure Active Directory.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45eeef7d96f194e224e5b44421e73eb5ee5d9c0d
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: c173d0e17166911e28fea3d1c5820879d17af4a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68515137"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381124"
 ---
-# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>Procedure: Goedgekeurde client-apps vereisen voor toegang tot de Cloud-app met voorwaardelijke toegang 
+# <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>How To: Require approved client apps for cloud app access with Conditional Access 
 
-Uw werk nemers gebruiken mobiele apparaten voor zowel privé-als werk taken. Hoewel uw werk nemers productief kunnen zijn, moet u ook gegevens verlies voor komen. Met Azure Active Directory (Azure AD) voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot goedgekeurde client-apps waarmee uw bedrijfs gegevens kunnen worden beveiligd.  
+Your employees use mobile devices for both personal and work tasks. While making sure your employees can be productive, you also want to prevent data loss. With Azure Active Directory (Azure AD) Conditional Access, you can restrict access to your cloud apps to approved client apps that can protect your corporate data.  
 
-In dit onderwerp wordt uitgelegd hoe u toegangs beleid voor voor waarden configureert waarvoor goedgekeurde client-apps zijn vereist.
+This topic explains how to configure condition access policies that require approved client apps.
 
 ## <a name="overview"></a>Overzicht
 
-Met [voorwaardelijke toegang van Azure AD](overview.md)kunt u nauw keurig afstemmen hoe geautoriseerde gebruikers toegang hebben tot uw resources. U kunt bijvoorbeeld de toegang tot uw Cloud-apps beperken tot vertrouwde apparaten.
+With [Azure AD Conditional Access](overview.md), you can fine-tune how authorized users can access your resources. For example, you can limit the access to your cloud apps to trusted devices.
 
-U kunt intune- [beveiligings beleid voor apps](https://docs.microsoft.com/intune/app-protection-policy) gebruiken om uw bedrijfs gegevens te beveiligen. Voor het intune-app-beveiligings beleid is geen MDM-oplossing (Mobile-Device Management) vereist, waarmee u de gegevens van uw bedrijf kunt beveiligen met of zonder inschrijving van apparaten in een oplossing voor Apparaatbeheer.
+You can use [Intune app protection policies](https://docs.microsoft.com/intune/app-protection-policy) to help protect your company’s data. Intune app protection policies don't require mobile-device management (MDM) solution, which enables you to protect your company’s data with or without enrolling devices in a device management solution.
 
-Met Azure Active Directory voorwaardelijke toegang kunt u de toegang tot uw Cloud-apps beperken tot client-apps die ondersteuning bieden voor intune-beveiligings beleid voor apps. U kunt bijvoorbeeld de toegang tot Exchange Online beperken tot de Outlook-app.
+Azure Active Directory Conditional Access enables you to limit access to your cloud apps to client apps that support Intune app protection policies. For example, you can restrict access to Exchange Online to the Outlook app.
 
-In de terminologie van voorwaardelijke toegang worden deze client-apps aangeduid als **goedgekeurde client-apps**.  
+In the Conditional Access terminology, these client apps are known as **approved client apps**.  
 
 ![Voorwaardelijke toegang](./media/app-based-conditional-access/05.png)
 
-Zie voor een lijst met goedgekeurde client-apps [goedgekeurde client-app-vereiste](technical-reference.md#approved-client-app-requirement).
+For a list of approved client apps, see [approved client app requirement](technical-reference.md#approved-client-app-requirement).
 
-U kunt op apps gebaseerd beleid voor voorwaardelijke toegang combi neren met andere beleids regels, zoals op [apparaten gebaseerd beleid voor voorwaardelijke toegang](require-managed-devices.md) om flexibiliteit te bieden bij het beveiligen van gegevens voor zowel persoonlijke als zakelijke apparaten.
+You can combine app-based Conditional Access policies with other policies such as [device-based Conditional Access policies](require-managed-devices.md) to provide flexibility in how to protect data for both personal and corporate devices.
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit onderwerp wordt ervan uitgegaan dat u bekend bent met:
+This topic assumes that you are familiar with:
 
-- De [goedgekeurde](technical-reference.md#approved-client-app-requirement) technische Naslag informatie voor app-vereisten voor clients.
-- De basis concepten van [voorwaardelijke toegang in azure Active Directory](overview.md).
-- [Een beleid voor voorwaardelijke toegang configureren](app-based-mfa.md).
-- De [migratie van beleids regels voor voorwaardelijke toegang](best-practices.md#policy-migration).
+- The [approved client app requirement](technical-reference.md#approved-client-app-requirement) technical reference.
+- The basic concepts of [Conditional Access in Azure Active Directory](overview.md).
+- How to [configure a Conditional Access policy](app-based-mfa.md).
+- The [migration of Conditional Access policies](best-practices.md#policy-migration).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u een op apps gebaseerd beleid voor voorwaardelijke toegang wilt maken, moet u een Enterprise Mobility + Security of een Azure Active Directory Premium-abonnement hebben en moeten de gebruikers een licentie hebben voor EMS of Azure AD. 
+To create an app-based Conditional Access policy, you must have an Enterprise Mobility + Security or an Azure Active Directory premium subscription, and the users must be licensed for EMS or Azure AD. 
 
-## <a name="exchange-online-policy"></a>Beleid voor Exchange Online 
+## <a name="exchange-online-policy"></a>Exchange Online policy 
 
-Dit scenario bestaat uit een op apps gebaseerd beleid voor voorwaardelijke toegang voor toegang tot Exchange Online.
+This scenario consists of an app-based Conditional Access policy for access to Exchange Online.
 
-### <a name="scenario-playbook"></a>Scenario Playbook
+### <a name="scenario-playbook"></a>Scenario playbook
 
-In dit scenario wordt ervan uitgegaan dat een gebruiker:
+This scenario assumes that a user:
 
-- Hiermee configureert u een e-mail met een systeem eigen e-mail toepassing op iOS of Android om verbinding te maken met Exchange
-- Hiermee wordt een e-mail bericht ontvangen dat aangeeft dat toegang alleen beschikbaar is via de Outlook-app
-- Hiermee wordt de toepassing gedownload met de koppeling
-- Hiermee opent u de Outlook-toepassing en meldt u zich aan met de Azure AD-referenties
-- Wordt gevraagd of u verificator (iOS) of Bedrijfsportal (Android) wilt installeren om door te gaan
-- De toepassing wordt geïnstalleerd en kan worden teruggestuurd naar de Outlook-app om door te gaan
-- Wordt gevraagd een apparaat te registreren
-- Kan toegang krijgen tot e-mail
+- Configures email using a native mail application on iOS or Android to connect to Exchange
+- Receives an email that indicates that access is only available using Outlook app
+- Downloads the application with the link
+- Opens the Outlook application and signs in with the Azure AD credentials
+- Is prompted to install either Authenticator (iOS) or Company Portal (Android) to continue
+- Installs the application and can return to the Outlook app to continue
+- Is prompted to register a device
+- Is able to access email
 
-Elk intune-app-beveiligings beleid wordt geactiveerd op het moment dat de toegang tot Bedrijfs gegevens wordt gemaakt en kan de gebruiker vragen om de toepassing opnieuw op te starten, een extra pincode gebruiken, enzovoort (indien geconfigureerd voor de toepassing en het platform).
+Any Intune app protection policies are activated at the time the access corporate data and may prompt the user to restart the application, use an additional PIN etc. (if configured for the application and platform).
 
 ### <a name="configuration"></a>Configuratie 
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren.
-1. **Nader** Als **voor waarden**, moet u **platform platforms** en **client-apps**configureren:
-   1. Als **apparaat platforms**selecteert u **Android** en **IOS**.
-   1. Als **client-apps (preview)** selecteert u **mobiele apps en bureau blad-apps** en **moderne verificatie-clients**.
-1. Als **toegangs beheer**moet u **goedgekeurde client-app (preview) vereisen** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**.
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**:
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop apps** and **Modern authentication clients**.
+1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
    ![Voorwaardelijke toegang](./media/app-based-conditional-access/05.png)
 
-**Stap 2: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online met Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren.
-1. **Nader** Als **voor waarden**, moet u **client-apps (preview-versie)** configureren. 
-   1. Als **client-apps (preview)** , selecteert u **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-   1. Als **toegangs beheer**moet u **goedgekeurde client-app (preview) vereisen** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**.
+1. **Conditions:** As **Conditions**, you need to configure **Client apps (preview)** . 
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
+   1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
       ![Voorwaardelijke toegang](./media/app-based-conditional-access/05.png)
 
-**Stap 3: het intune-beveiligings beleid voor apps configureren voor iOS-en Android-client toepassingen**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
-Zie [apps en gegevens beveiligen met Microsoft intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) voor meer informatie.
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
-## <a name="exchange-online-and-sharepoint-online-policy"></a>Beleid voor Exchange Online en share point online
+## <a name="exchange-online-and-sharepoint-online-policy"></a>Exchange Online and SharePoint Online policy
 
-Dit scenario bestaat uit een voorwaardelijke toegang met beleid voor het beheren van mobiele apps voor toegang tot Exchange Online en share point online met goedgekeurde apps.
+This scenario consists of a Conditional Access with mobile app management policy for access to Exchange Online and SharePoint Online with approved apps.
 
-### <a name="scenario-playbook"></a>Scenario Playbook
+### <a name="scenario-playbook"></a>Scenario playbook
 
-In dit scenario wordt ervan uitgegaan dat een gebruiker:
+This scenario assumes that a user:
 
-- Probeert de share point-app te gebruiken om verbinding te maken en om hun bedrijfs sites weer te geven
-- Probeert zich aan te melden met dezelfde referenties als de Outlook-app-referenties
-- Hoeft niet opnieuw te worden geregistreerd en kan toegang krijgen tot de resources
+- Tries to use the SharePoint app to connect and also to view their corporate sites
+- Attempts to sign in with the same credentials as the Outlook app credentials
+- Does not have to re-register and can get access to the resources
 
 ### <a name="configuration"></a>Configuratie
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online en share point online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **office 365 Exchange Online** en **Office 365 share point online**selecteren. 
-1. **Nader** Als **voor waarden**, moet u **platform platforms** en **client-apps**configureren:
-   1. Als **apparaat platforms**selecteert u **Android** en **IOS**.
-   1. Als **client-apps (preview)** selecteert u **mobiele apps en desktop-clients** en **moderne verificatie-clients**.
-1. Als **toegangs beheer**moet u **goedgekeurde client-app (preview) vereisen** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online** and **Office 365 SharePoint Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**:
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Modern authentication clients**.
+1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
    ![Voorwaardelijke toegang](./media/app-based-conditional-access/05.png)
 
-**Stap 2: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online met Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren. Online 
-1. **Nader** Als **voor waarden**, moet u **client-apps**configureren:
-   1. Als **client-apps (preview)** , selecteert u **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-   1. Als **toegangs beheer**moet u **goedgekeurde client-app (preview) vereisen** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**. Online 
+1. **Conditions:** As **Conditions**, you need to configure **Client apps**:
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
+   1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
 
       ![Voorwaardelijke toegang](./media/app-based-conditional-access/05.png)
 
-**Stap 3: het intune-beveiligings beleid voor apps configureren voor iOS-en Android-client toepassingen**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
 ![Voorwaardelijke toegang](./media/app-based-conditional-access/09.png)
 
-Zie [apps en gegevens beveiligen met Microsoft intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) voor meer informatie.
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
-## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Beleid op basis van apps of compatibele apparaten voor Exchange Online en share point online
+## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>App-based or compliant device policy for Exchange Online and SharePoint Online
 
-Dit scenario bestaat uit een beleid voor voorwaardelijke toegang op basis van een app of compatibel apparaat voor toegang tot Exchange Online.
+This scenario consists of an app-based or compliant device Conditional Access policy for access to Exchange Online.
 
-### <a name="scenario-playbook"></a>Scenario Playbook
+### <a name="scenario-playbook"></a>Scenario playbook
 
-In dit scenario wordt ervan uitgegaan dat:
+This scenario assumes that:
  
-- Sommige gebruikers zijn al Inge schreven (met of zonder Bedrijfs apparaten)
-- Gebruikers die niet zijn Inge schreven en geregistreerd bij Azure AD met behulp van een app-beveiligde toepassing, moeten een apparaat registreren voor toegang tot resources
-- Geregistreerde gebruikers die gebruikmaken van de app beveiligde toepassing hoeven het apparaat niet opnieuw te registreren
+- Some users are already enrolled (with or without corporate devices)
+- Users who are not enrolled and registered with Azure AD using an app protected application need to register a device to access resources
+- Enrolled users using the app protected application don't have to re-register the device
 
 ### <a name="configuration"></a>Configuratie
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online en share point online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **office 365 Exchange Online** en **Office 365 share point online**selecteren. 
-1. **Nader** Als **voor waarden**, moet u **platform platforms** en **client-apps**configureren. 
-   1. Als **apparaat platforms**selecteert u **Android** en **IOS**.
-   1. Als **client-apps (preview)** selecteert u **mobiele apps en desktop-clients** en **moderne verificatie-clients**.
-1. Als **besturings elementen voor toegang**moet u het volgende selecteren:
-   - **Vereisen dat het apparaat wordt gemarkeerd als compatibel**
-   - **Goedgekeurde client-app vereisen (preview-versie)**
-   - **Een van de geselecteerde besturings elementen vereisen**   
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online** and **Office 365 SharePoint Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**. 
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Modern authentication clients**.
+1. As **Access controls**, you need to have the following selected:
+   - **Require device to be marked as compliant**
+   - **Require approved client app (preview)**
+   - **Require one of the selected controls**   
  
       ![Voorwaardelijke toegang](./media/app-based-conditional-access/11.png)
 
-**Stap 2: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online met Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren. 
-1. **Nader** Als **voor waarden**, moet u **client-apps**configureren. 
-   1. Als **client-apps (preview)** , selecteert u **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
-1. Als **toegangs beheer**moet u **goedgekeurde client-app (preview) vereisen** .
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Client apps**. 
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
+1. As **Access controls**, you need to have **Require approved client app (preview)** selected.
  
    ![Voorwaardelijke toegang](./media/app-based-conditional-access/11.png)
 
-**Stap 3: het intune-beveiligings beleid voor apps configureren voor iOS-en Android-client toepassingen**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
 ![Voorwaardelijke toegang](./media/app-based-conditional-access/09.png)
 
-Zie [apps en gegevens beveiligen met Microsoft intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) voor meer informatie.
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
-## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Beleid op basis van apps en compatibele apparaten voor Exchange Online en share point online
+## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>App-based and compliant device policy for Exchange Online and SharePoint Online
 
-Dit scenario bestaat uit een op apps gebaseerd beleid voor voorwaardelijke toegang voor toegang tot Exchange Online.
+This scenario consists of an app-based and compliant device Conditional Access policy for access to Exchange Online.
 
-### <a name="scenario-playbook"></a>Scenario Playbook
+### <a name="scenario-playbook"></a>Scenario playbook
 
-In dit scenario wordt ervan uitgegaan dat een gebruiker:
+This scenario assumes that a user:
  
-- Hiermee configureert u een e-mail met een systeem eigen e-mail toepassing op iOS of Android om verbinding te maken met Exchange
-- Hiermee wordt een e-mail bericht ontvangen dat aangeeft dat het apparaat moet worden inge schreven voor toegang
-- Down load de bedrijfs portal en meldt zich aan bij de bedrijfs portal
-- Controleert e-mail en wordt gevraagd om de Outlook-app te gebruiken
-- De Outlook-app downloaden
-- Hiermee opent u de Outlook-app en voert u de referenties in die in de inschrijving worden gebruikt
-- Gebruiker kan toegang krijgen tot e-mail
+- Configures email using a native mail application on iOS or Android to connect to Exchange
+- Receives an email that indicates that access requires your device to be enrolled
+- Downloads the company portal and signs in to company portal
+- Checks mail and is asked to use the Outlook app
+- Downloads the Outlook app
+- Opens the Outlook app and enters the credentials used in the enrollment
+- User is able to access email
 
-Het beveiligings beleid voor apps in intune wordt geactiveerd op het moment dat de toegang tot de Bedrijfs gegevens wordt geopend en de gebruiker wordt mogelijk gevraagd de toepassing opnieuw op te starten. gebruik een extra pincode, enzovoort (indien geconfigureerd voor de toepassing en het platform)
+Any Intune app protection policies are activated at the time of access to the corporate data and may prompt the user to restart the application, use an additional PIN etc. (if configured for the application and platform)
 
 ### <a name="configuration"></a>Configuratie
 
-**Stap 1: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online en share point online**
+**Step 1 - Configure an Azure AD Conditional Access policy for Exchange Online and SharePoint Online**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **office 365 Exchange Online** en **Office 365 share point online**selecteren. 
-1. **Nader** Als **voor waarden**, moet u **platform platforms** en **client-apps**configureren. 
-   1. Als **apparaat platforms**selecteert u **Android** en **IOS**.
-   1. Als **client-apps (preview)** selecteert u **mobiele apps en bureau blad-apps** en **moderne verificatie-clients**.
-1. Als **besturings elementen voor toegang**moet u het volgende selecteren:
-   - **Vereisen dat het apparaat wordt gemarkeerd als compatibel**
-   - **Goedgekeurde client-app vereisen (preview-versie)**
-   - **Alle geselecteerde besturings elementen vereisen**   
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online** and **Office 365 SharePoint Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Device platforms** and **Client apps**. 
+   1. As **Device platforms**, select **Android** and **iOS**.
+   1. As **Client apps (preview)** , select **Mobile apps and desktop apps** and **Modern authentication clients**.
+1. As **Access controls**, you need to have the following selected:
+   - **Require device to be marked as compliant**
+   - **Require approved client app (preview)**
+   - **Require all the selected controls**   
  
       ![Voorwaardelijke toegang](./media/app-based-conditional-access/13.png)
 
-**Stap 2: een beleid voor voorwaardelijke toegang voor Azure AD configureren voor Exchange Online met Active Sync (EAS)**
+**Step 2 - Configure an Azure AD Conditional Access policy for Exchange Online with Active Sync (EAS)**
 
-Voor het beleid voor voorwaardelijke toegang in deze stap moet u de volgende onderdelen configureren:
+For the Conditional Access policy in this step, you need to configure the following components:
 
-1. De **naam** van het beleid voor voorwaardelijke toegang.
-1. **Gebruikers en groepen**: Voor elk beleid voor voorwaardelijke toegang moet ten minste één gebruiker of groep zijn geselecteerd.
-1. **Cloud-apps:** Als Cloud-apps moet u **Office 365 Exchange Online**selecteren. 
-1. **Nader** Als **voor waarden**, moet u **client-apps (preview-versie)** configureren. 
-   1. Als **client-apps (preview)** , selecteert u **mobiele apps en desktop-clients** en **Exchange ActiveSync-clients**.
+1. The **Name** of your Conditional Access policy.
+1. **Users and groups**: Each Conditional Access policy must have at least one user or group selected.
+1. **Cloud apps:** As cloud apps, you need to select **Office 365 Exchange Online**. 
+1. **Conditions:** As **Conditions**, you need to configure **Client apps (preview)** . 
+   1. As **Client apps (preview)** , select **Mobile apps and desktop clients** and **Exchange ActiveSync clients**.
 
    ![Voorwaardelijke toegang](./media/app-based-conditional-access/92.png)
 
-1. Als **besturings elementen voor toegang**moet u het volgende selecteren:
-   - **Vereisen dat het apparaat wordt gemarkeerd als compatibel**
-   - **Goedgekeurde client-app vereisen (preview-versie)**
-   - **Alle geselecteerde besturings elementen vereisen**   
+1. As **Access controls**, you need to have the following selected:
+   - **Require device to be marked as compliant**
+   - **Require approved client app (preview)**
+   - **Require all the selected controls**   
 
-**Stap 3: het intune-beveiligings beleid voor apps configureren voor iOS-en Android-client toepassingen**
+**Step 3 - Configure Intune app protection policy for iOS and Android client applications**
 
 ![Voorwaardelijke toegang](./media/app-based-conditional-access/09.png)
 
-Zie [apps en gegevens beveiligen met Microsoft intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) voor meer informatie.
+See [Protect apps and data with Microsoft Intune](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune) for more information.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u wilt weten hoe u een beleid voor voorwaardelijke toegang kunt configureren, raadpleegt u [MFA vereisen voor specifieke apps met voorwaardelijke toegang Azure Active Directory](app-based-mfa.md).
+If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
 
-Als u klaar bent voor het configureren van beleid voor voorwaardelijke toegang voor uw omgeving, raadpleegt u de [Aanbevolen procedures voor voorwaardelijke toegang in azure Active Directory](best-practices.md). 
+If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 
