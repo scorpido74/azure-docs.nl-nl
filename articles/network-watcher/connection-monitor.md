@@ -1,6 +1,6 @@
 ---
-title: Netwerkcommunicatie bewaken - zelfstudie - Azure Portal | Microsoft Docs
-description: Ontdek hoe u de verbindingsmonitor-functie van Azure Network Watcher gebruikt om de netwerkcommunicatie tussen twee virtuele machines te bewaken.
+title: Tutorial - Monitor network communication using the Azure portal
+description: In this tutorial, learn how to monitor network communication between two virtual machines with Azure Network Watcher's connection monitor capability.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 5cac4a46fb35ef955903018028abbe7588c94dc7
-ms.sourcegitcommit: 509e1583c3a3dde34c8090d2149d255cb92fe991
+ms.openlocfilehash: 9d01060a966d55d26d7fc308ee352fb79cc73363
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/27/2019
-ms.locfileid: "66233894"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419692"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Zelfstudie: Netwerkcommunicatie tussen twee virtuele machines bewaken met behulp van de Azure-portal
 
@@ -37,7 +37,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
-Meld u aan bij [Azure Portal](https://portal.azure.com).
+Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 ## <a name="create-vms"></a>Virtuele machines maken
 
@@ -77,7 +77,7 @@ Voer de stappen in [De eerste virtuele machine maken](#create-the-first-vm) opni
 | 3 | Naam                                  | myVm2                                                                   |
 | 3 | Verificatietype                   | Plak uw openbare SSH-sleutel of selecteer **Wachtwoord** en voer een wachtwoord in. |
 | 3 | Resourcegroep                        | Selecteer **Bestaande gebruiken** en selecteer **myResourceGroup**.                 |
-| 6 | Uitbreidingen                            | **Network Watcher Agent for Linux**                                             |
+| 6 | Extensies                            | **Network Watcher Agent for Linux**                                             |
 
 Het implementeren van de VM duurt een paar minuten. Wacht tot de VM is geïmplementeerd voordat u doorgaat met de resterende stappen.
 
@@ -96,10 +96,10 @@ Maak een verbindingsmonitor om communicatie via TCP-poort 22 van *myVm1* naar *m
     | Naam                     | myVm1-myVm2(22)     |
     | Bron                   |                     |
     | Virtuele machine          | myVm1               |
-    | Doel              |                     |
+    | Bestemming              |                     |
     | Een virtuele machine selecteren |                     |
     | Virtuele machine          | myVm2               |
-    | Poort                     | 22                  |
+    | Port                     | 22                  |
 
     ![Verbindingsmonitor toevoegen](./media/connection-monitor/add-connection-monitor.png)
 
@@ -160,7 +160,7 @@ Standaard staat Azure communicatie toe over alle poorten tussen virtuele machine
 
     U ziet dat er een rood uitroepteken staat in de statuskolom voor de netwerkinterface **myvm2529**.
 
-6. Voor meer informatie over waarom de status is gewijzigd, selecteert u 10.0.0.5, in de vorige afbeelding. De verbindingsmonitor informeert u dat de reden voor de communicatiefout als volgt is: *Verkeer geblokkeerd vanwege de volgende netwerkbeveiligingsregel: UserRule_DenySshInbound*.
+6. Voor meer informatie over waarom de status is gewijzigd, selecteert u 10.0.0.5, in de vorige afbeelding. De verbindingsmonitor meldt de reden voor de communicatiefout: *Verkeer geblokkeerd vanwege de volgende regel voor netwerkbeveiligingsgroep: UserRule_DenySshInbound*.
 
     Als u niet wist dat iemand de beveiligingsregel die u hebt gemaakt in stap 4 had geïmplementeerd, zou u via de verbindingsmonitor te weten komen dat het communicatieprobleem wordt veroorzaakt door de regel. U kunt vervolgens de regel wijzigen, overschrijven of verwijderen om de communicatie tussen de virtuele machines te herstellen.
 

@@ -1,6 +1,6 @@
 ---
-title: Opmerkingen bij de release van Azure Media Services v3 | Microsoft Docs
-description: Om up-to-date te blijven met de meest recente ontwikkelingen, biedt dit artikel u de meest recente updates op Azure Media Services v3.
+title: Azure Media Services v3 release notes | Microsoft Docs
+description: To stay up-to-date with the most recent developments, this article provides you with the latest updates on Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,291 +11,291 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: juliako
-ms.openlocfilehash: 34d68974366eb17704b4ea1291bd1d29a0eea95a
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 50c28f86a1ba36ac44a25e047800d14fe314f9bf
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168622"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74420034"
 ---
-# <a name="azure-media-services-v3-release-notes"></a>Release opmerkingen bij Azure Media Services v3
+# <a name="azure-media-services-v3-release-notes"></a>Azure Media Services v3 release notes
 
-Dit artikel bevat informatie over het volgende om up-to-date te blijven met de meest recente ontwikkelingen:
+To stay up-to-date with the most recent developments, this article provides you with information about:
 
-* De nieuwste releases
+* The latest releases
 * Bekende problemen
 * Opgeloste fouten
-* Afgeschafte functionaliteit
+* Deprecated functionality
 
 ## <a name="known-issues"></a>Bekende problemen
 
 > [!NOTE]
-> U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Gebruik de [rest API](https://aka.ms/ams-v3-rest-sdk), CLI of een van de ondersteunde sdk's.
+> U kunt momenteel geen gebruik maken van de Azure-portal om v3-resources te beheren. Use the [REST API](https://aka.ms/ams-v3-rest-sdk), CLI, or one of the supported SDKs.
 
-Zie voor meer informatie [migratie richtlijnen voor het overstappen van Media Services versie 2 tot v3](migrate-from-v2-to-v3.md#known-issues).
+For more information, see [Migration guidance for moving from Media Services v2 to v3](migrate-from-v2-to-v3.md#known-issues).
 
 ## <a name="september-2019"></a>September 2019
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
-#### <a name="live-linear-encoding-of-live-events"></a>Live lineaire code ring van Live Events
+#### <a name="live-linear-encoding-of-live-events"></a>Live linear encoding of live events
 
-Media Services v3 kondigt de preview van 24 uur x 365 dagen aan live lineaire code ring van Live Events aan.
+Media Services v3 is announcing the preview of 24 hrs x 365 days of live linear encoding of live events.
 
 ###  <a name="media-services-v2"></a>Media Services v2  
 
-#### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
+#### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
 
-Er wordt een afschaffing van *Azure media indexer* en *Azure media indexer 2 Preview*aangekondigd. De processor van [Azure media indexer](../previous/media-services-index-content.md) media wordt op 1 oktober 2020 buiten gebruik gesteld. De [Azure media indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md) -media processors worden buiten gebruik gesteld op 1 januari van 2020. [Azure Media Services video indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) vervangt deze verouderde media processors.
+We are announcing deprecation of *Azure Media Indexer* and *Azure Media Indexer 2 Preview*. The [Azure Media Indexer](../previous/media-services-index-content.md) media processor will be retired on October 1st of 2020. The [Azure Media Indexer 2 Preview](../previous/media-services-process-content-with-indexer2.md) media processors will be retired on January 1 of 2020. [Azure Media Services Video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) replaces these legacy media processors.
 
-Zie [Migrate from Azure media indexer en Azure media indexer 2 to Azure Media Services video indexer](../previous/migrate-indexer-v1-v2.md)voor meer informatie.
+For more information, see [Migrate from Azure Media Indexer and Azure Media Indexer 2 to Azure Media Services Video Indexer](../previous/migrate-indexer-v1-v2.md).
 
-## <a name="august-2019"></a>2019 augustus
+## <a name="august-2019"></a>Augustus 2019
 
 ###  <a name="media-services-v3"></a>Media Services v3  
 
-#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>Zuid-Afrika regionale paar is geopend voor Media Services 
+#### <a name="south-africa-regional-pair-is-open-for-media-services"></a>South Africa regional pair is open for Media Services 
 
-Media Services is nu beschikbaar in Zuid-Afrika-noord en Zuid-Afrika-west regio's.
+Media Services is now available in South Africa North and South Africa West regions.
 
-Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md)voor meer informatie.
+For more information, see [Clouds and regions in which Media Services v3 exists](azure-clouds-regions.md).
 
 ###  <a name="media-services-v2"></a>Media Services v2  
 
-#### <a name="deprecation-of-media-processors"></a>Afschaffing van media processors
+#### <a name="deprecation-of-media-processors"></a>Deprecation of media processors
 
-Er wordt een afschaffing van de media processors van *Windows Azure Media Encoder* (WAME) en *Azure Media Encoder* (AAM) aangekondigd. deze worden buiten gebruik gesteld op 30 november 2019.
+We are announcing deprecation of the *Windows Azure Media Encoder* (WAME) and *Azure Media Encoder* (AME) media processors, which are being retired on March 31, 2020.
 
-Zie [WAME migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) en [aam migreren naar Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335)voor meer informatie.
+For details, see [Migrate WAME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101334) and [Migrate AME to Media Encoder Standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
  
-## <a name="july-2019"></a>2019 juli
+## <a name="july-2019"></a>Juli 2019
 
 ### <a name="content-protection"></a>Content Protection
 
-Wanneer inhoud die wordt beveiligd met token beperking wordt gestreamd, moeten eind gebruikers een token verkrijgen dat wordt verzonden als onderdeel van de aanvraag voor de sleutel levering. Met de functie voor het voor *komen van tokens* kunnen Media Services klanten een limiet instellen voor het aantal keren dat hetzelfde token kan worden gebruikt om een sleutel of licentie aan te vragen. Zie [token replay voor komen](content-protection-overview.md#token-replay-prevention)voor meer informatie.
+When streaming content protected with token restriction, end users need to obtain a token that is sent as part of the key delivery request. The *Token Replay Prevention* feature allows Media Services customers to set a limit on how many times the same token can be used to request a key or a license. For more information, see [Token Replay Prevention](content-protection-overview.md#token-replay-prevention).
 
-Deze functie is momenteel beschikbaar in VS Centraal en VS-West-centraal.
+This feature is currently available in US Central and US West Central.
 
 ## <a name="june-2019"></a>Juni 2019
 
-### <a name="video-subclipping"></a>Video subknipsel
+### <a name="video-subclipping"></a>Video subclipping
 
-U kunt nu een video knippen of subfragmenten wanneer u deze codeert met behulp van een [taak](https://docs.microsoft.com/rest/api/media/jobs). 
+You can now trim or subclip a video when encoding it using a [Job](https://docs.microsoft.com/rest/api/media/jobs). 
 
-Deze functionaliteit werkt met elke [trans formatie](https://docs.microsoft.com/rest/api/media/transforms) die is gebouwd met behulp van de [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) -voor instellingen of de [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) -voor waarden. 
+This functionality works with any [Transform](https://docs.microsoft.com/rest/api/media/transforms) that is built using either the [BuiltInStandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#builtinstandardencoderpreset) presets, or the [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) presets. 
 
-Zie voor beelden:
+See examples:
 
-* [Een video met .NET knippen](subclip-video-dotnet-howto.md)
-* [Een video met REST samenknippen](subclip-video-rest-howto.md)
+* [Subclip a video with .NET](subclip-video-dotnet-howto.md)
+* [Subclip a video with REST](subclip-video-rest-howto.md)
 
 ## <a name="may-2019"></a>Mei 2019
 
-### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor ondersteuning voor Media Services Diagnostische logboeken en metrische gegevens
+### <a name="azure-monitor-support-for-media-services-diagnostic-logs-and-metrics"></a>Azure Monitor support for Media Services diagnostic logs and metrics
 
-U kunt nu Azure Monitor gebruiken om emmited weer te geven op Media Services.
+You can now use Azure Monitor to view telemetry data emmited by Media Services.
 
-* Gebruik de diagnostische logboeken van Azure Monitor om aanvragen te bewaken die worden verzonden door het Media Services key delivery-eind punt. 
-* Bewaak de metrische gegevens die worden verzonden door Media Services [streaming-eind punten](streaming-endpoint-concept.md).   
+* Use the Azure Monitor diagnostic logs to monitor requests sent by the Media Services Key Delivery endpoint. 
+* Monitor metrics emitted by Media Services [Streaming Endpoints](streaming-endpoint-concept.md).   
 
-Zie [Media Services metrische gegevens en Diagnostische logboeken bewaken](media-services-metrics-diagnostic-logs.md)voor meer informatie.
+For details, see [Monitor Media Services metrics and diagnostic logs](media-services-metrics-diagnostic-logs.md).
 
-### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Ondersteuning voor meerdere audio-tracks in dynamische pakketten 
+### <a name="multi-audio-tracks-support-in-dynamic-packaging"></a>Multi audio tracks support in Dynamic Packaging 
 
-Bij het streamen van assets met meerdere audio sporen met meerdere codecs en talen, ondersteunt [dynamische verpakking](dynamic-packaging-overview.md) nu meerdere audio sporen voor de HLS-uitvoer (versie 4 of hoger).
+When streaming Assets that have multiple audio tracks with multiple codecs and languages, [Dynamic Packaging](dynamic-packaging-overview.md) now supports multi audio tracks for the HLS output (version 4 or above).
 
-### <a name="korea-regional-pair-is-open-for-media-services"></a>Het regionale paar van Korea is geopend voor Media Services 
+### <a name="korea-regional-pair-is-open-for-media-services"></a>Korea regional pair is open for Media Services 
 
-Media Services is nu beschikbaar in Korea-centraal en Korea-zuid regio's. 
+Media Services is now available in Korea Central and Korea South regions. 
 
-Zie [Clouds en regio's waarin Media Services v3 bestaat](azure-clouds-regions.md)voor meer informatie.
+For more information, see [Clouds and regions in which Media Services v3 exists](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Prestatie verbeteringen
+### <a name="performance-improvements"></a>Prestatieverbeteringen
 
-Er zijn updates toegevoegd die Media Services prestatie verbeteringen bevatten.
+Added updates that include Media Services performance improvements.
 
-* De maximale bestands grootte die wordt ondersteund voor de verwerking, is bijgewerkt. Zie, [quota's en beperkingen](limits-quotas-constraints.md).
-* De [versleutelings snelheid wordt verbeterd](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
+* The maximum file size supported for processing was updated. See, [Quotas and limitations](limits-quotas-constraints.md).
+* [Encoding speeds improvements](media-reserved-units-cli-how-to.md#choosing-between-different-reserved-unit-types).
 
 ## <a name="april-2019"></a>April 2019
 
-### <a name="new-presets"></a>Nieuwe voor instellingen
+### <a name="new-presets"></a>New presets
 
-* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) is toegevoegd aan de ingebouwde analyse-voor instellingen.
-* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) is toegevoegd aan de ingebouwde coderings definities. Zie voor meer informatie [code ring met inhoud](cae-experimental.md). 
+* [FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset) was added to the built-in analyzer presets.
+* [ContentAwareEncodingExperimental](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset) was added to the built-in encoder presets. For more information, see [Content-aware encoding](cae-experimental.md). 
 
-## <a name="march-2019"></a>2019 maart
+## <a name="march-2019"></a>Maart 2019
 
-Dynamische verpakking ondersteunt nu Dolby Atmos. Zie [Audio codecs die worden ondersteund door dynamische pakketten](dynamic-packaging-overview.md#audio-codecs)voor meer informatie.
+Dynamic Packaging now supports Dolby Atmos. For more information, see [Audio codecs supported by dynamic packaging](dynamic-packaging-overview.md#audio-codecs).
 
-U kunt nu een lijst met Asset-of account filters opgeven die van toepassing zijn op uw streaming-Locator. Zie [filters koppelen aan streaming-Locator](filters-concept.md#associating-filters-with-streaming-locator)voor meer informatie.
+You can now specify a list of asset or account filters, which would apply to your Streaming Locator. For more information, see [Associate filters with Streaming Locator](filters-concept.md#associating-filters-with-streaming-locator).
 
 ## <a name="february-2019"></a>Februari 2019
 
-Media Services V3 wordt nu ondersteund in azure National Clouds. Niet alle functies zijn nog in alle Clouds beschikbaar. Zie [Clouds en regio's waarin Azure Media Services v3 bestaat](azure-clouds-regions.md)voor meer informatie.
+Media Services v3 is now supported in Azure national clouds. Not all features are available in all clouds yet. For details, see [Clouds and regions in which Azure Media Services v3 exists](azure-clouds-regions.md).
 
-De gebeurtenis [micro soft. media. JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) is toegevoegd aan de Azure Event grid-schema's voor Media Services.
+[Microsoft.Media.JobOutputProgress](media-services-event-schemas.md#monitoring-job-output-progress) event was added to the Azure Event Grid schemas for Media Services.
 
 ## <a name="january-2019"></a>Januari 2019
 
-### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard-en MPI-bestanden 
+### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard and MPI files 
 
-Bij het coderen met Media Encoder Standard voor het maken van MP4-bestand (en), wordt er een nieuw. mpi-bestand gegenereerd en toegevoegd aan de uitvoer Asset. Dit MPI-bestand is bedoeld om de prestaties te verbeteren voor [dynamische pakket](dynamic-packaging-overview.md) -en streaming-scenario's.
+When encoding with Media Encoder Standard to produce MP4 file(s), a new .mpi file is generated and added to the output Asset. This MPI file is intended to improve performance for [dynamic packaging](dynamic-packaging-overview.md) and streaming scenarios.
 
-U moet het MPI-bestand niet wijzigen of verwijderen of afhankelijk van de aanwezigheid (of niet) van een dergelijk bestand afnemen in uw service.
+You should not modify or remove the MPI file, or take any dependency in your service on the existence (or not) of such a file.
 
 ## <a name="december-2018"></a>December 2018
 
-Updates van de GA-versie van de V3 API zijn onder andere:
+Updates from the GA release of the V3 API include:
        
-* De **PresentationTimeRange** -eigenschappen zijn niet meer vereist voor **Asset filters** en **account filters**. 
-* De query opties $top en $skip voor **taken** en **trans formaties** zijn verwijderd en $OrderBy is toegevoegd. Als onderdeel van het toevoegen van de nieuwe ordenings functionaliteit werd ontdekt dat de opties voor $top en $skip per ongeluk werden weer gegeven, zelfs als ze niet zijn geïmplementeerd.
-* De Enumeration-uitbreid baarheid is opnieuw ingeschakeld. Deze functie is ingeschakeld in de Preview-versies van de SDK en is per ongeluk uitgeschakeld in de GA-versie.
-* Er zijn twee vooraf gedefinieerde stroomsgewijze beleids regels gewijzigd. **SecureStreaming** is nu **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** is nu **Predefined_MultiDrmStreaming**.
+* The **PresentationTimeRange** properties are no longer 'required' for **Asset Filters** and **Account Filters**. 
+* The $top and $skip query options for **Jobs** and **Transforms** have been removed and $orderby was added. As part of adding the new ordering functionality, it was discovered that the $top and $skip options had accidentally been exposed previously even though they are not implemented.
+* Enumeration extensibility was re-enabled. This feature was enabled in the preview versions of the SDK and got accidentally disabled in the GA version.
+* Two predefined streaming policies have been renamed. **SecureStreaming** is now **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** is now **Predefined_MultiDrmStreaming**.
 
 ## <a name="november-2018"></a>November 2018
 
-De CLI 2,0-module is nu beschikbaar voor [Azure Media Services v3 ga](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v-2.0.50.
+The CLI 2.0 module is now available for [Azure Media Services v3 GA](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest) – v 2.0.50.
 
-### <a name="new-commands"></a>Nieuwe opdrachten
+### <a name="new-commands"></a>New commands
 
-- [AZ AMS account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [AZ AMS account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [AZ AMS Asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [AZ AMS Asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [AZ AMS content-Key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [AZ AMS job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [AZ AMS Live-Event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [AZ AMS live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [AZ AMS streaming-Endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
-- [AZ AMS streaming-Locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [AZ AMS account MRU](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) -Hiermee kunt u gereserveerde media-eenheden beheren. Zie [gereserveerde media-eenheden schalen](media-reserved-units-cli-how-to.md)voor meer informatie.
+- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
+- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - enables you to manage Media Reserved Units. For more information, see [Scale Media Reserved Units](media-reserved-units-cli-how-to.md).
 
-### <a name="new-features-and-breaking-changes"></a>Nieuwe functies en belang rijke wijzigingen
+### <a name="new-features-and-breaking-changes"></a>New features and breaking changes
 
-#### <a name="asset-commands"></a>Asset-opdrachten
+#### <a name="asset-commands"></a>Asset commands
 
-- ```--storage-account``` en ```--container``` argumenten zijn toegevoegd.
-- Standaard waarden voor verloop tijd (nu + 23h) en machtigingen (lezen) in ```az ams asset get-sas-url```-opdracht toegevoegd.
+- ```--storage-account``` and ```--container``` arguments added.
+- Default values for expiry time (Now+23h) and permissions (Read) in ```az ams asset get-sas-url``` command added.
 
-#### <a name="job-commands"></a>Opdracht opdrachten
+#### <a name="job-commands"></a>Job commands
 
-- ```--correlation-data``` en ```--label``` argumenten toegevoegd
-- de naam van ```--output-asset-names``` is gewijzigd in ```--output-assets```. Nu accepteert het een lijst met door spaties gescheiden activa in de indeling ' assets = label '. Activa zonder label kunnen als volgt worden verzonden: ' assets = '.
+- ```--correlation-data``` and ```--label``` arguments added
+- ```--output-asset-names``` renamed to ```--output-assets```. Now it accepts a space-separated list of assets in 'assetName=label' format. An asset without label can be sent like this: 'assetName='.
 
-#### <a name="streaming-locator-commands"></a>Opdrachten voor streaming-Locator
+#### <a name="streaming-locator-commands"></a>Streaming Locator commands
 
-- ```az ams streaming locator``` basis opdracht is vervangen door ```az ams streaming-locator```.
-- ```--streaming-locator-id``` en ```--alternative-media-id support``` argumenten zijn toegevoegd.
-- het argument ```--content-keys argument``` is bijgewerkt.
-- de naam van ```--content-policy-name``` is gewijzigd in ```--content-key-policy-name```.
+- ```az ams streaming locator``` base command replaced with ```az ams streaming-locator```.
+- ```--streaming-locator-id``` and ```--alternative-media-id support``` arguments added.
+- ```--content-keys argument``` argument updated.
+- ```--content-policy-name``` renamed to ```--content-key-policy-name```.
 
-#### <a name="streaming-policy-commands"></a>Streaming-beleids opdrachten
+#### <a name="streaming-policy-commands"></a>Streaming Policy commands
 
-- ```az ams streaming policy``` basis opdracht is vervangen door ```az ams streaming-policy```.
-- Ondersteuning voor versleutelings parameters in ```az ams streaming-policy create``` toegevoegd.
+- ```az ams streaming policy``` base command replaced with ```az ams streaming-policy```.
+- Encryption parameters support in ```az ams streaming-policy create``` added.
 
-#### <a name="transform-commands"></a>Opdrachten transformeren
+#### <a name="transform-commands"></a>Transform commands
 
-- ```--preset-names``` argument vervangen door ```--preset```. Nu kunt u slechts één uitvoer/vooraf ingestelde waarde per keer instellen (als u meer wilt toevoegen om ```az ams transform output add``` uit te voeren). U kunt ook aangepaste StandardEncoderPreset instellen door het pad naar uw aangepaste JSON door te geven.
-- ```az ams transform output remove``` kan worden uitgevoerd door de uitvoer index door te geven die moet worden verwijderd.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` argumenten toegevoegd aan ```az ams transform create```-en ```az ams transform output add```-opdrachten.
+- ```--preset-names``` argument replaced with ```--preset```. Now you can only set 1 output/preset at a time (to add more you have to run ```az ams transform output add```). Also, you can set custom StandardEncoderPreset by passing the path to your custom JSON.
+- ```az ams transform output remove``` can be performed by passing the output index to remove.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` arguments added in ```az ams transform create``` and ```az ams transform output add``` commands.
 
-## <a name="october-2018---ga"></a>Oktober 2018-GA
+## <a name="october-2018---ga"></a>October 2018 - GA
 
-In deze sectie worden Azure Media Services updates (AMS) van oktober beschreven.
+This section describes Azure Media Services (AMS) October updates.
 
 ### <a name="rest-v3-ga-release"></a>REST v3 GA release
 
-De [rest v3 ga-release](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) bevat meer Api's voor Live, account/Asset level-manifest filters en DRM-ondersteuning.
+The [REST v3 GA release](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01) includes more APIs for Live, Account/Asset level manifest filters, and DRM support.
 
-#### <a name="azure-resource-management"></a>Azure-resource beheer 
+#### <a name="azure-resource-management"></a>Azure Resource Management 
 
-Ondersteuning voor Azure Resource Management maakt Unified management en Operations API mogelijk (nu alles op één plek).
+Support for Azure Resource Management enables unified management and operations API (now everything in one place).
 
-Vanaf deze release kunt u Resource Manager-sjablonen gebruiken om live-gebeurtenissen te maken.
+Starting with this release, you can use Resource Manager templates to create Live Events.
 
-#### <a name="improvement-of-asset-operations"></a>Verbetering van activa bewerkingen 
+#### <a name="improvement-of-asset-operations"></a>Improvement of Asset operations 
 
-De volgende verbeteringen zijn geïntroduceerd:
+The following improvements were introduced:
 
-- Opname van HTTP (s) Url's of Azure Blob Storage SAS-Url's.
-- Geef de naam van de container voor assets op. 
-- Eenvoudigere uitvoer ondersteuning voor het maken van aangepaste werk stromen met Azure Functions.
+- Ingest from HTTP(s) URLs or Azure Blob Storage SAS URLs.
+- Specify you own container names for Assets. 
+- Easier output support to create custom workflows with Azure Functions.
 
-#### <a name="new-transform-object"></a>Nieuw Transform-object
+#### <a name="new-transform-object"></a>New Transform object
 
-Het nieuwe object **transform** vereenvoudigt het coderings model. Met het nieuwe object kunt u eenvoudig sjabloon en voor instellingen voor het maken en delen van coderings bronnen beheren. 
+The new **Transform** object simplifies the Encoding model. The new object makes it easy to create and share encoding Resource Manager templates and presets. 
 
-#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory-verificatie en RBAC
+#### <a name="azure-active-directory-authentication-and-rbac"></a>Azure Active Directory authentication and RBAC
 
-Met Azure AD-verificatie en op rollen gebaseerde Access Control (RBAC) kunt u beveiligde trans formaties, LiveEvents, beleids regels voor inhouds sleutels of activa op rol of gebruikers in azure AD inschakelen.
+Azure AD Authentication and Role-Based Access Control (RBAC) enable secure Transforms, LiveEvents, Content Key Policies, or Assets by Role or Users in Azure AD.
 
 #### <a name="client-sdks"></a>Client-SDK 's  
 
-Talen die worden ondersteund in Media Services V3: .NET core, Java, node. js, Ruby, type script, python en go.
+Languages supported in Media Services v3: .NET Core, Java, Node.js, Ruby, Typescript, Python, Go.
 
-#### <a name="live-encoding-updates"></a>Live encoding-updates
+#### <a name="live-encoding-updates"></a>Live encoding updates
 
-De volgende Live encoding-updates worden geïntroduceerd:
+The following live encoding updates are introduced:
 
-- Nieuwe modus voor de lage latentie voor Live (10 seconden end-to-end).
-- Verbeterde RTMP-ondersteuning (verbeterde stabiliteit en meer ondersteuning voor broncode encoders).
-- RTMP beveiligde opname.
+- New low latency mode for live (10 seconds end-to-end).
+- Improved RTMP support (increased stability and more source encoder support).
+- RTMPS secure ingest.
 
-    Wanneer u een live gebeurtenis maakt, krijgt u nu vier opname-Url's. De 4 opname-Url's zijn bijna identiek, hebben hetzelfde streaming token (AppId), alleen het poort nummer onderdeel is anders. Twee van de Url's zijn primaire en back-ups voor RTMP. 
-- ondersteuning voor trans codering met 24 uur. 
-- Verbeterde ondersteuning voor AD-Signa lering in RTMP via SCTE35.
+    When you create a Live Event, you now get 4 ingest URLs. The 4 ingest URLs are almost identical, have the same streaming token (AppId), only the port number part is different. Two of the URLs are primary and backup for RTMPS. 
+- 24-hour transcoding support. 
+- Improved ad-signaling support in RTMP via SCTE35.
 
-#### <a name="improved-event-grid-support"></a>Verbeterde ondersteuning voor Event Grid
+#### <a name="improved-event-grid-support"></a>Improved Event Grid support
 
-U kunt de volgende Event Grid verbeteringen voor de ondersteuning bekijken:
+You can see the following Event Grid support improvements:
 
-- Azure Event Grid integratie voor eenvoudiger ontwikkeling met Logic Apps en Azure Functions. 
-- Abonneer u op gebeurtenissen op code ring, Live kanalen en meer.
+- Azure Event Grid integration for easier development with Logic Apps and Azure Functions. 
+- Subscribe for events on Encoding, Live Channels, and more.
 
-### <a name="cmaf-support"></a>CMAF-ondersteuning
+### <a name="cmaf-support"></a>CMAF support
 
-Ondersteuning voor CMAF en ' cbcs-versleuteling voor Apple HLS (iOS 11 +) en MPEG-DASH-spelers die CMAF ondersteunen.
+CMAF and 'cbcs' encryption support for Apple HLS (iOS 11+) and MPEG-DASH players that support CMAF.
 
 ### <a name="video-indexer"></a>Video Indexer
 
-Video Indexer GA release is in augustus aangekondigd. Zie [Wat is video indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json)voor nieuwe informatie over momenteel ondersteunde functies. 
+Video Indexer GA release was announced in August. For new information about currently supported features, see [What is Video Indexer](../../cognitive-services/video-indexer/video-indexer-overview.md?toc=/azure/media-services/video-indexer/toc.json&bc=/azure/media-services/video-indexer/breadcrumb/toc.json). 
 
-### <a name="plans-for-changes"></a>Plannen voor wijzigingen
+### <a name="plans-for-changes"></a>Plans for changes
 
 #### <a name="azure-cli-20"></a>Azure CLI 2.0
  
-De Azure CLI 2,0-module die bewerkingen bevat voor alle functies (waaronder Live, beleids regels voor inhouds sleutels, accounts/Asset-filters, streaming-beleid) is binnenkort beschikbaar. 
+The Azure CLI 2.0 module that includes operations on all features (including Live, Content Key Policies, Account/Asset Filters, Streaming Policies) is coming soon. 
 
 ### <a name="known-issues"></a>Bekende problemen
 
-De volgende problemen zijn alleen van invloed op klanten die de preview-API voor activa of AccountFilters hebben gebruikt.
+Only customers that used the preview API for Asset or AccountFilters are impacted by the following issue.
 
-Als u activa of account filters hebt gemaakt tussen 09/28 en 10/12 met Media Services v3 CLI of Api's, moet u alle asset-en AccountFilters verwijderen en opnieuw maken vanwege een versie conflict. 
+If you created Assets or Account Filters between 09/28 and 10/12 with Media Services v3 CLI or APIs, you need to remove all Asset and AccountFilters and re-create them due to a version conflict. 
 
-## <a name="may-2018---preview"></a>Mei 2018-preview
+## <a name="may-2018---preview"></a>May 2018 - Preview
 
 ### <a name="net-sdk"></a>.NET SDK
 
-De volgende functies zijn aanwezig in de .NET SDK:
+The following features are present in the .NET SDK:
 
-* **Trans formaties** en **taken** voor het coderen of analyseren van media-inhoud. Zie voor voor beelden [stroom bestanden](stream-files-tutorial-with-api.md) en [analyseren](analyze-videos-tutorial-with-api.md).
-* **Streaming-Locators** voor het publiceren en streamen van inhoud op apparaten van eind gebruikers
-* **Stroomsgewijze beleids regels** en **beleids regels voor inhouds sleutels** voor het configureren van key delivery and Content Protection (DRM) bij het leveren van inhoud.
-* **Live Events** en **Live outputs** voor het configureren van de opname en het archiveren van inhoud voor live streamen.
-* **Activa** voor het opslaan en publiceren van media-inhoud in azure Storage. 
-* **Streaming-eind punten** voor het configureren en schalen van dynamische pakketten, versleuteling en streaming voor zowel live als on-demand media-inhoud.
+* **Transforms** and **Jobs** to encode or analyze media content. For examples, see [Stream files](stream-files-tutorial-with-api.md) and [Analyze](analyze-videos-tutorial-with-api.md).
+* **Streaming Locators** for publishing and streaming content to end-user devices
+* **Streaming Policies** and **Content Key Policies** to configure key delivery and content protection (DRM) when delivering content.
+* **Live Events** and **Live Outputs** to configure the ingest and archiving of live streaming content.
+* **Assets** to store and publish media content in Azure Storage. 
+* **Streaming Endpoints** to configure and scale dynamic packaging, encryption, and streaming for both live and on-demand media content.
 
 ### <a name="known-issues"></a>Bekende problemen
 
-* Bij het verzenden van een taak kunt u opgeven dat u uw bron video wilt opnemen met behulp van HTTPS-Url's, SAS-Url's of paden naar bestanden die zich in Azure Blob Storage bevinden. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
+* When submitting a job, you can specify to ingest your source video using HTTPS URLs, SAS URLs, or paths to files located in Azure Blob storage. Op dit moment biedt AMS v3 geen ondersteuning voor gesegmenteerde overdrachtscodering via HTTPS-URL's.
 
-## <a name="ask-questions-give-feedback-get-updates"></a>Vragen stellen, feedback geven, updates ophalen
+## <a name="ask-questions-give-feedback-get-updates"></a>Ask questions, give feedback, get updates
 
-Bekijk het [Azure Media Services Community](media-services-community.md) -artikel voor verschillende manieren om vragen te stellen, feedback te geven en updates te ontvangen over Media Services.
+Check out the [Azure Media Services community](media-services-community.md) article to see different ways you can ask questions, give feedback, and get updates about Media Services.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Overzicht](media-services-overview.md)
-- [Release opmerkingen bij Media Services v2](../previous/media-services-release-notes.md)
+- [Media Services v2 release notes](../previous/media-services-release-notes.md)

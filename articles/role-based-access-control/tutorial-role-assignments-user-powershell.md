@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Toegang tot Azure-resources verlenen aan een gebruiker met behulp van RBAC en Azure PowerShell | Microsoft Docs'
-description: Leer hoe u een gebruiker toegang geeft tot Azure-resources met behulp van op rollen gebaseerd toegangsbeheer (RBAC) en Azure Powershell.
+title: Tutorial - Grant a user access to Azure resources using RBAC and Azure PowerShell
+description: Learn how to grant a user access to Azure resources using role-based access control (RBAC) and Azure PowerShell in this tutorial.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.openlocfilehash: c5570c6b1d2cdd168dbaeb0a91d80a61e171e5d1
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62121865"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74418623"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Zelfstudie: Toegang tot Azure-resources verlenen aan een gebruiker met behulp van RBAC en Azure PowerShell
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Grant a user access to Azure resources using RBAC and Azure PowerShell
 
 [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) is de manier waarop u de toegang tot Azure-resources beheert. In deze zelfstudie geeft u een gebruiker toestemming om alles in een abonnement te bekijken en om alles in een resourcegroep te beheren met Azure PowerShell.
 
@@ -46,7 +46,7 @@ Voor het voltooien van deze zelfstudie hebt u het volgende nodig:
 
 In RBAC verleent u toegang door een roltoewijzing te maken. Een roltoewijzing bestaat uit drie elementen: beveiligings-principal, roldefinitie en bereik (ook wel scope of niveau genoemd). Dit zijn de twee roltoewijzingen die u gaat uitvoeren in deze zelfstudie:
 
-| Beveiligings-principal | Roldefinitie | Bereik |
+| Beveiligings-principal | Roldefinitie | Scope |
 | --- | --- | --- |
 | Gebruiker<br>(RBAC Tutorial User) | [Lezer](built-in-roles.md#reader) | Abonnement |
 | Gebruiker<br>(RBAC Tutorial User)| [Inzender](built-in-roles.md#contributor) | Resourcegroep<br>(rbac-tutorial-resource-group) |
@@ -268,7 +268,7 @@ Als u de in deze zelfstudie gemaakte resources wilt opschonen, verwijdert u de r
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):
     ```
     
-1. Wanneer u wordt gevraagd om de bewerking te bevestigen, typt u **Y**. Het duurt een paar seconden om de groep te verwijderen.
+1. When asked to confirm, type **Y**. It will take a few seconds to delete.
 
 1. De gebruiker kunt u verwijderen met de opdracht [Remove-AzureADUser](/powershell/module/azuread/remove-azureaduser).
 

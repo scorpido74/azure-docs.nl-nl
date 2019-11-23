@@ -1,6 +1,6 @@
 ---
 title: Failover-groepen
-description: Groeps beleidsobjecten voor automatische failover is een SQL Database functie waarmee u replicatie en automatische/gecoördineerde failover kunt beheren van een groep data bases op een SQL Database Server of alle data bases in het beheerde exemplaar.
+description: Auto-failover groups is a SQL Database feature that allows you to manage replication and automatic / coordinated failover of a group of databases on a SQL Database server or all databases in managed instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,382 +11,406 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 11/07/2019
-ms.openlocfilehash: 16fc15a574655f20e3e6e37f164773b41ffe0b78
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 470e9a9c36b6b4ec2e40db5dfc47ae03fb6b5aa8
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839340"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421384"
 ---
-# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Gebruik groepen voor automatische failover om transparante en gecoördineerde failover van meerdere data bases mogelijk te maken
+# <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Use auto-failover groups to enable transparent and coordinated failover of multiple databases
 
-Groepen voor automatische failover is een SQL Database functie waarmee u replicatie en failover kunt beheren van een groep data bases op een SQL Database-Server of voor alle data bases in een beheerd exemplaar naar een andere regio. Het is een declaratieve abstractie boven op de bestaande [actieve geo-replicatie](sql-database-active-geo-replication.md) functie, ontworpen om de implementatie en het beheer van geo-gerepliceerde data bases op schaal te vereenvoudigen. U kunt failover hand matig initiëren of u kunt deze overdragen aan de SQL Database-service op basis van een door de gebruiker gedefinieerd beleid. Met deze laatste optie kunt u automatisch meerdere gerelateerde data bases in een secundaire regio herstellen na een onherstelbare fout of een andere niet-geplande gebeurtenis waardoor het volledige of gedeeltelijke verlies van de beschik baarheid van de SQL Database-Service in de primaire regio wordt veroorzaakt. Een failover-groep kan een of meer data bases bevatten, die meestal worden gebruikt door dezelfde toepassing. Daarnaast kunt u de Lees bare secundaire data bases gebruiken om werk belastingen met alleen-lezen query's te offloaden. Omdat voor groepen voor automatische failover meerdere data bases zijn vereist, moeten deze data bases worden geconfigureerd op de primaire server. Automatische failover-groepen ondersteunen replicatie van alle data bases in de groep naar slechts één secundaire server in een andere regio.
+Auto-failover groups is a SQL Database feature that allows you to manage replication and failover of a group of databases on a SQL Database server or all databases in a managed instance to another region. It is a declarative abstraction on top of the existing [active geo-replication](sql-database-active-geo-replication.md) feature, designed to simplify deployment and management of geo-replicated databases at scale. You can initiate failover manually or you can delegate it to the SQL Database service based on a user-defined policy. The latter option allows you to automatically recover multiple related databases in a secondary region after a catastrophic failure or other unplanned event that results in full or partial loss of the SQL Database service’s availability in the primary region. A failover group can include one or multiple databases, typically used by the same application. Additionally, you can use the readable secondary databases to offload read-only query workloads. Because auto-failover groups involve multiple databases, these databases must be configured on the primary server. Auto-failover groups support replication of all databases in the group to only one secondary server in a different region.
 
 > [!NOTE]
-> Wanneer u werkt met één of gegroepeerde Data bases op een SQL Database Server en u meerdere secundaire zones in dezelfde of verschillende regio's wilt, gebruikt u [actieve geo-replicatie](sql-database-active-geo-replication.md). 
+> When working with single or pooled databases on a SQL Database server and you want multiple secondaries in the same or different regions, use [active geo-replication](sql-database-active-geo-replication.md). 
 
-Als u gebruikmaakt van groepen voor automatische failover met automatische failoverbeleid, wordt een storing die van invloed is op een of meer van de data bases in de groep, in automatische failover veroorzaakt. Dit zijn doorgaans incidenten die niet kunnen worden verholpen door de ingebouwde automatische maximale Beschik baarheid. De voor beelden van failover-triggers zijn een incident dat wordt veroorzaakt door een SQL-Tenant ring of besturings element dat niet beschikbaar is vanwege een geheugenlek van een OS-kernel op verschillende reken knooppunten, of een incident dat wordt veroorzaakt door een of meer tenants, omdat er een onjuiste netwerk kabel werd geknipt tijdens de ro utine hardware uit bedrijf nemen.  Zie [SQL database hoge Beschik baarheid](sql-database-high-availability.md)voor meer informatie.
+When you are using auto-failover groups with automatic failover policy, any outage that impacts one or several of the databases in the group results in automatic failover. Typically these are incidents that cannot be self-mitigated by the built-in automatic high availability operations. The examples of failover triggers include an incident caused by a SQL tenant ring or control ring being down due to an OS kernel memory leak on several compute nodes, or an incident caused by one or more tenant rings being down because a wrong network cable was cut during routine hardware decommissioning.  For more information, see [SQL Database High Availability](sql-database-high-availability.md).
 
-Daarnaast bieden automatische-failover-groepen alleen-lezen-en alleen-lezen listener-eind punten die ongewijzigd blijven tijdens failovers. Ongeacht of u hand matige of automatische failover hebt geactiveerd, schakelt failover alle secundaire data bases in de groep over naar primair. Nadat de data base-failover is voltooid, wordt de DNS-record automatisch bijgewerkt om de eind punten om te leiden naar de nieuwe regio. Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md)voor de specifieke RPO-en RTO-gegevens.
+In addition, auto-failover groups provide read-write and read-only listener end-points that remain unchanged during failovers. Whether you use manual or automatic failover activation, failover switches all secondary databases in the group to primary. After the database failover is completed, the DNS record is automatically updated to redirect the endpoints to the new region. For the specific RPO and RTO data, see [Overview of Business Continuity](sql-database-business-continuity.md).
 
-Wanneer u groepen voor automatische failover gebruikt met automatische failoverbeleid, resulteert elke storing die van invloed is op data bases in de SQL Database Server of het beheerde exemplaar tot een automatische failover. U kunt de groep voor automatische failover beheren met:
+When you are using auto-failover groups with automatic failover policy, any outage that impacts databases in the SQL Database server or managed instance results in automatic failover. You can manage auto-failover group using:
 
 - [Azure Portal](sql-database-implement-geo-distributed-database.md)
-- [Power shell: failover-groep](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- [Rest API: failovergroep](https://docs.microsoft.com/rest/api/sql/failovergroups).
+- [PowerShell: Failover Group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- [REST API: Failover group](https://docs.microsoft.com/rest/api/sql/failovergroups).
 
-Zorg er na een failover voor dat de verificatie vereisten voor uw server en Data Base zijn geconfigureerd op de nieuwe primaire. Zie [SQL database Security na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie.
+After failover, ensure the authentication requirements for your server and database are configured on the new primary. For details, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).
 
-Voor een echte bedrijfs continuïteit is het toevoegen van database redundantie tussen data centers slechts een deel van de oplossing. Het herstellen van een toepassing (Service) End-to-end na een onherstelbare fout vereist het herstellen van alle onderdelen die de service en eventuele afhankelijke services vormen. Voor beelden van deze onderdelen zijn de client software (bijvoorbeeld een browser met een aangepaste Java script), web-front-ends, opslag en DNS. Het is van essentieel belang dat alle onderdelen zich in dezelfde storingen bevinden en beschikbaar komen binnen de beoogde herstel tijd (RTO) van uw toepassing. Daarom moet u alle afhankelijke services identificeren en inzicht krijgen in de garanties en mogelijkheden die ze bieden. Vervolgens moet u de juiste stappen nemen om ervoor te zorgen dat uw service functioneert tijdens de failover van de services waarvan deze afhankelijk is. Zie [cloud oplossingen ontwerpen voor herstel na nood gevallen met actieve geo-replicatie](sql-database-designing-cloud-solutions-for-disaster-recovery.md)voor meer informatie over het ontwerpen van oplossingen voor herstel na nood gevallen.
+To achieve real business continuity, adding database redundancy between datacenters is only part of the solution. Recovering an application (service) end-to-end after a catastrophic failure requires recovery of all components that constitute the service and any dependent services. Examples of these components include the client software (for example, a browser with a custom JavaScript), web front ends, storage, and DNS. It is critical that all components are resilient to the same failures and become available within the recovery time objective (RTO) of your application. Therefore, you need to identify all dependent services and understand the guarantees and capabilities they provide. Then, you must take adequate steps to ensure that your service functions during the failover of the services on which it depends. For more information about designing solutions for disaster recovery, see [Designing Cloud Solutions for Disaster Recovery Using active geo-replication](sql-database-designing-cloud-solutions-for-disaster-recovery.md).
 
-## <a name="auto-failover-group-terminology-and-capabilities"></a>Terminologie en mogelijkheden van groep voor automatische failover
+## <a name="auto-failover-group-terminology-and-capabilities"></a>Auto-failover group terminology and capabilities
 
-- **Failovergroep (mist)**
+- **Failover group (FOG)**
 
-  Een failovergroep is een benoemde groep data bases die wordt beheerd door een enkele SQL Database Server of binnen één beheerd exemplaar en waarvoor een failover kan worden uitgevoerd als een eenheid naar een andere regio voor het geval alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. Bij het maken van beheerde exemplaren bevat een failovergroep alle gebruikers databases in het exemplaar en kan er slechts één failovergroep op een exemplaar worden geconfigureerd.
+  A failover group is a named group of databases managed by a single SQL Database server or within a single managed instance that can fail over as a unit to another region in case all or some primary databases become unavailable due to an outage in the primary region. When created for managed instances, a failover group contains all user databases in the instance and therefore only one failover group can be configured on an instance.
   
   > [!IMPORTANT]
-  > De naam van de failovergroep moet globaal uniek zijn binnen het `.database.windows.net` domein.
+  > The name of the failover group must be globally unique within the `.database.windows.net` domain.
 
-- **SQL Database-servers**
+- **SQL Database servers**
 
-     Met SQL Database-servers kunnen sommige of alle gebruikers databases op één SQL Database-Server in een failover-groep worden geplaatst. Daarnaast ondersteunt een SQL Database-Server meerdere failover-groepen op één SQL Database-Server.
+     With SQL Database servers, some or all of the user databases on a single SQL Database server can be placed in a failover group. Also, a SQL Database server supports multiple failover groups on a single SQL Database server.
 
-- **Basis**
+- **Primary**
 
-  De SQL Database Server of het beheerde exemplaar dat als host fungeert voor de primaire data bases in de failovergroep.
+  The SQL Database server or managed instance that hosts the primary databases in the failover group.
 
-- **Primaire**
+- **Secondary**
 
-  De SQL Database Server of het beheerde exemplaar dat als host fungeert voor de secundaire data bases in de failovergroep. De secundaire kan zich niet in dezelfde regio bevinden als de primaire.
+  The SQL Database server or managed instance that hosts the secondary databases in the failover group. The secondary cannot be in the same region as the primary.
 
-- **Afzonderlijke data bases aan een failovergroep toevoegen**
+- **Adding single databases to failover group**
 
-  U kunt verschillende afzonderlijke data bases op dezelfde SQL Database-Server in dezelfde failovergroep plaatsen. Als u één data base aan de failovergroep toevoegt, wordt er automatisch een secundaire data base gemaakt met dezelfde editie en reken grootte op de secundaire server.  U hebt de server opgegeven toen de failovergroep werd gemaakt. Als u een Data Base toevoegt die al een secundaire Data Base op de secundaire server heeft, wordt die geo-replicatie koppeling overgenomen door de groep. Wanneer u een Data Base toevoegt die al een secundaire Data Base bevat op een server die geen deel uitmaakt van de failovergroep, wordt er een nieuw secundair gemaakt op de secundaire server.
-  
+  You can put several single databases on the same SQL Database server into the same failover group. If you add a single database to the failover group, it automatically creates a secondary database using the same edition and compute size on secondary server.  You specified that server when the failover group was created. If you add a database that already has a secondary database in the secondary server, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary server.
+
   > [!IMPORTANT]
-  > Zorg ervoor dat de secundaire server geen data base met dezelfde naam heeft als deze een bestaande secundaire data base is. In failover-groepen voor het beheerde exemplaar worden alle gebruikers databases gerepliceerd. U kunt geen subset van gebruikers databases kiezen voor replicatie in de failovergroep.
+  > Make sure that the secondary server doesn't have a database with the same name unless it is an existing secondary database. In failover groups for managed instance all user databases are replicated. You cannot pick a subset of user databases for replication in the failover group.
 
-- **Data bases in elastische pool toevoegen aan failovergroep**
+- **Adding databases in elastic pool to failover group**
 
-  U kunt alle of meerdere data bases binnen een elastische pool in dezelfde failovergroep plaatsen. Als de primaire data base zich in een elastische pool bevindt, wordt het secundaire apparaat automatisch in de elastische pool gemaakt met dezelfde naam (secundaire groep). U moet ervoor zorgen dat de secundaire server een elastische pool met dezelfde exacte naam en voldoende vrije capaciteit bevat voor het hosten van de secundaire data bases die worden gemaakt door de failovergroep. Als u een data base in de groep toevoegt die al een secundaire data base in de secundaire groep heeft, wordt die geo-replicatie koppeling overgenomen door de groep. Wanneer u een Data Base toevoegt die al een secundaire Data Base bevat op een server die geen deel uitmaakt van de failovergroep, wordt er een nieuwe secundaire in de secundaire groep gemaakt.
+  You can put all or several databases within an elastic pool into the same failover group. If the primary database is in an elastic pool, the secondary is automatically created in the elastic pool with the same name (secondary pool). You must ensure that the secondary server contains an elastic pool with the same exact name and enough free capacity to host the secondary databases that will be created by the failover group. If you add a database in the pool that already has a secondary database in the secondary pool, that geo-replication link is inherited by the group. When you add a database that already has a secondary database in a server that is not part of the failover group, a new secondary is created in the secondary pool.
   
 - **DNS-zone**
 
-  Een unieke ID die automatisch wordt gegenereerd wanneer een nieuwe instantie wordt gemaakt. Een SAN-certificaat (multi-Domain) voor dit exemplaar is ingericht voor het verifiëren van de client verbindingen met een wille keurig exemplaar in dezelfde DNS-zone. De twee beheerde exemplaren in dezelfde failovergroep moeten de DNS-zone delen. 
+  A unique ID that is automatically generated when a new instance is created. A multi-domain (SAN) certificate for this instance is provisioned to authenticate the client connections to any instance in the same DNS zone. The two managed instances in the same failover group must share the DNS zone.
   
   > [!NOTE]
-  > Een DNS-zone-ID is niet vereist voor failover-groepen die zijn gemaakt voor SQL Database-servers.
+  > A DNS zone ID is not required for failover groups created for SQL Database servers.
 
-- **Listener voor lezen/schrijven van failover-groep**
+- **Failover group read-write listener**
 
-  Een DNS CNAME-record die verwijst naar de URL van de huidige primaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de SQL-workload voor lezen en schrijven kan transparant opnieuw verbinding maken met de primaire data base wanneer de primaire wijzigingen na een failover worden uitgevoerd. Wanneer de failovergroep op een SQL Database Server wordt gemaakt, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.database.windows.net`. Wanneer de failovergroep wordt gemaakt op een beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.database.windows.net`.
+  A DNS CNAME record that points to the current primary's URL. It is created automatically when the failover group is created and allows the read-write SQL workload to transparently reconnect to the primary database when the primary changes after failover. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.database.windows.net`.
 
-- **Listener voor alleen-lezen van failover-groep**
+- **Failover group read-only listener**
 
-  Een DNS CNAME-record die verwijst naar de alleen-lezen listener die verwijst naar de URL van de secundaire. Het wordt automatisch gemaakt wanneer de failovergroep wordt gemaakt en de alleen-lezen SQL-workload kan transparant worden verbonden met de secundaire met behulp van de opgegeven taakverdelings regels. Wanneer de failovergroep op een SQL Database Server wordt gemaakt, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.secondary.database.windows.net`. Wanneer de failovergroep wordt gemaakt op een beheerd exemplaar, wordt de DNS CNAME-record voor de URL van de listener gevormd als `<fog-name>.zone_id.secondary.database.windows.net`.
+  A DNS CNAME record formed that points to the read-only listener that points to the secondary's URL. It is created automatically when the failover group is created and allows the read-only SQL workload to transparently connect to the secondary using the specified load-balancing rules. When the failover group is created on a SQL Database server, the DNS CNAME record for the listener URL is formed as `<fog-name>.secondary.database.windows.net`. When the failover group is created on a managed instance, the DNS CNAME record for the listener URL is formed as `<fog-name>.zone_id.secondary.database.windows.net`.
 
-- **Beleid voor automatische failover**
+- **Automatic failover policy**
 
-  Een failover-groep is standaard geconfigureerd met een automatisch failoverbeleid. De SQL Database-service activeert failover nadat de fout is gedetecteerd en de respijt periode is verlopen. Het systeem moet controleren of de uitval niet kan worden verholpen door de ingebouwde [infra structuur met hoge Beschik baarheid van de SQL database-service](sql-database-high-availability.md) vanwege de schaal van de impact. Als u de werk stroom van de failover wilt beheren vanuit de toepassing, kunt u automatische failover uitschakelen.
+  By default, a failover group is configured with an automatic failover policy. The SQL Database service triggers failover after the failure is detected and the grace period has expired. The system must verify that the outage cannot be mitigated by the built-in [high availability infrastructure of the SQL Database service](sql-database-high-availability.md) due to the scale of the impact. If you want to control the failover workflow from the application, you can turn off automatic failover.
   
   > [!NOTE]
-  > Omdat verificatie van de omvang van de storing en hoe snel deze kan worden verholpen, acties van het operationele team worden uitgevoerd, kan de respijt periode niet meer dan één uur worden ingesteld.  Deze beperking is van toepassing op alle data bases in de failovergroep, ongeacht hun gegevens synchronisatie status. 
+  > Because verification of the scale of the outage and how quickly it can be mitigated involves human actions by the operations team, the grace period cannot be set below one hour.  This  limitation applies to all databases in the failover group regardless of their data synchronization state. 
 
-- **Alleen-lezen failoverbeleid**
+- **Read-only failover policy**
 
-  De failover van de alleen-lezen listener is standaard uitgeschakeld. Het zorgt ervoor dat de prestaties van de primaire server niet worden beïnvloed wanneer de secundaire offline is. Het betekent echter ook dat de alleen-lezen sessies geen verbinding kunnen maken tot het secundaire bestand is hersteld. Als u uitval tijd niet kunt gebruiken voor de alleen-lezen sessies en u de primaire alleen-lezen-en lees-schrijf bewerkingen wilt uitvoeren tegen onkosten van de mogelijke prestatie vermindering van de primaire, kunt u failover inschakelen voor de alleen-lezen listener door de eigenschap `AllowReadOnlyFailoverToPrimary` te configureren. In dat geval wordt het alleen-lezen verkeer automatisch omgeleid naar de primaire als de secundaire niet beschikbaar is.
+  By default, the failover of the read-only listener is disabled. It ensures that the performance of the primary is not impacted when the secondary is offline. However, it also means the read-only sessions will not be able to connect until the secondary is recovered. If you cannot tolerate downtime for the read-only sessions and are OK to temporarily use the primary for both read-only and read-write traffic at the expense of the potential performance degradation of the primary, you can enable failover for the read-only listener by configuring the `AllowReadOnlyFailoverToPrimary` property. In that case, the read-only traffic will be automatically redirected to the primary if the secondary is not available.
 
-- **Geplande failover**
+- **Planned failover**
 
-   De geplande failover voert een volledige synchronisatie uit tussen de primaire en secundaire data bases vóór de secundaire switches naar de primaire rol. Dit garandeert geen gegevens verlies. Geplande failover wordt gebruikt in de volgende scenario's:
+   Planned failover performs full synchronization between primary and secondary databases before the secondary switches to the primary role. This guarantees no data loss. Planned failover is used in the following scenarios:
 
-  - Herstel na nood gevallen (DR) in productie uitvoeren wanneer het gegevens verlies niet acceptabel is
-  - De data bases naar een andere regio verplaatsen
-  - De data bases retour neren naar de primaire regio nadat de storing is verholpen (failback).
+  - Perform disaster recovery (DR) drills in production when the data loss is not acceptable
+  - Relocate the databases to a different region
+  - Return the databases to the primary region after the outage has been mitigated (failback).
 
-- **Niet-geplande failover**
+- **Unplanned failover**
 
-   Bij een niet-geplande of geforceerde failover wordt de secundaire functie direct overgeschakeld naar de primaire rol zonder synchronisatie met de primaire. Met deze bewerking wordt gegevens verlies veroorzaakt. Niet-geplande failover wordt gebruikt als herstel methode tijdens storingen wanneer de primaire niet toegankelijk is. Wanneer de oorspronkelijke primaire primair weer online is, wordt automatisch opnieuw verbinding gemaakt zonder synchronisatie en wordt een nieuwe secundaire.
+   Unplanned or forced failover immediately switches the secondary to the primary role without any synchronization with the primary. This operation will result in data loss. Unplanned failover is used as a recovery method during outages when the primary is not accessible. When the original primary is back online, it will automatically reconnect without synchronization and become a new secondary.
 
-- **Hand matige failover**
+- **Manual failover**
 
-  U kunt failover op elk gewenst moment hand matig initiëren, ongeacht de automatische failover-configuratie. Als er geen automatische failoverbeleid is geconfigureerd, moet er hand matige failover worden uitgevoerd om data bases in de failovergroep naar de secundaire te herstellen. U kunt geforceerde of een gebruiks vriendelijke failover initiëren (met volledige gegevens synchronisatie). Deze laatste kan worden gebruikt om de primaire naar de secundaire regio te verplaatsen. Wanneer de failover is voltooid, worden de DNS-records automatisch bijgewerkt om ervoor te zorgen dat de verbinding met de nieuwe primaire
+  You can initiate failover manually at any time regardless of the automatic failover configuration. If automatic failover policy is not configured, manual failover is required to recover databases in the failover group to the secondary. You can initiate forced or friendly failover (with full data synchronization). The latter could be used to relocate the primary to the secondary region. When failover is completed, the DNS records are automatically updated to ensure connectivity to the new primary
 
-- **Respijt periode met gegevens verlies**
+- **Grace period with data loss**
 
-  Omdat de primaire en secundaire data bases worden gesynchroniseerd met asynchrone replicatie, kan de failover leiden tot gegevens verlies. U kunt het beleid voor automatische failover aanpassen zodat de tolerantie van uw toepassing wordt aangepast aan gegevens verlies. Door `GracePeriodWithDataLossHours`te configureren, kunt u bepalen hoe lang het systeem wacht voordat de failover wordt gestart, waardoor gegevens verlies waarschijnlijk wordt veroorzaakt.
+  Because the primary and secondary databases are synchronized using asynchronous replication, the failover may result in data loss. You can customize the automatic failover policy to reflect your application’s tolerance to data loss. By configuring `GracePeriodWithDataLossHours`, you can control how long the system waits before initiating the failover that is likely to result data loss.
 
-- **Meerdere failover-groepen**
+- **Multiple failover groups**
 
-  U kunt meerdere failover-groepen voor hetzelfde paar servers configureren om de schaal van failovers te bepalen. Elke groep failover onafhankelijk. Als uw multi tenant-toepassing gebruikmaakt van elastische Pools, kunt u deze mogelijkheid gebruiken om de primaire en secundaire data bases in elke groep te combi neren. Op deze manier kunt u de impact van een storing beperken tot slechts de helft van de tenants.
+  You can configure multiple failover groups for the same pair of servers to control the scale of failovers. Each group fails over independently. If your multi-tenant application uses elastic pools, you can use this capability to mix primary and secondary databases in each pool. This way you can reduce the impact of an outage to only half of the tenants.
 
   > [!NOTE]
-  > Het beheerde exemplaar biedt geen ondersteuning voor meerdere failover-groepen.
+  > Managed Instance does not support multiple failover groups.
   
 ## <a name="permissions"></a>Machtigingen
-Machtigingen voor een failovergroep worden beheerd via [op rollen gebaseerd toegangs beheer (RBAC)](../role-based-access-control/overview.md). De rol [SQL Server Inzender](../role-based-access-control/built-in-roles.md#sql-server-contributor) heeft alle benodigde machtigingen voor het beheren van failover-groepen. 
 
-### <a name="create-failover-group"></a>Failovergroep maken
-Als u een failovergroep wilt maken, moet u RBAC schrijf toegang hebben tot de primaire en secundaire servers en naar alle data bases in de failovergroep. Voor een beheerd exemplaar hebt u RBAC-schrijf toegang nodig voor het primaire en secundaire beheerde exemplaar, maar de machtigingen voor afzonderlijke data bases zijn niet relevant, omdat afzonderlijke beheerde exemplaar databases niet kunnen worden toegevoegd aan of verwijderd uit een failovergroep. 
+Permissions for a failover group are managed via [role-based access control (RBAC)](../role-based-access-control/overview.md). The [SQL Server Contributor](../role-based-access-control/built-in-roles.md#sql-server-contributor) role has all the necessary permissions to manage failover groups.
 
-### <a name="update-a-failover-group"></a>Een failovergroep bijwerken
-Als u een failovergroep wilt bijwerken, moet u RBAC schrijf toegang hebben tot de failovergroep en alle data bases op de huidige primaire server of een beheerd exemplaar.  
+### <a name="create-failover-group"></a>Create failover group
 
-### <a name="failover-a-failover-group"></a>Failover van een failovergroep
-Als u een failover wilt uitvoeren, moet u RBAC-schrijf toegang hebben tot de failovergroep op de nieuwe primaire server of het beheerde exemplaar. 
+To create a failover group, you need RBAC write access to both the primary and secondary servers, and to all databases in the failover group. For a managed instance, you need RBAC write access to both the primary and secondary managed instance, but permissions on individual databases are not relevant since individual managed instance databases cannot be added to or removed from a failover group. 
 
-## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Aanbevolen procedures voor het gebruik van failover-groepen met afzonderlijke data bases en elastische Pools
+### <a name="update-a-failover-group"></a>Update a failover group
 
-De groep voor automatische failover moet worden geconfigureerd op de primaire SQL Database-Server en wordt verbonden met de secundaire SQL Database-Server in een andere Azure-regio. De groepen kunnen alle of sommige data bases op deze servers bevatten. Het volgende diagram illustreert een typische configuratie van een geo-redundante Cloud toepassing met behulp van meerdere data bases en een groep voor automatische failover.
+To update a failover group, you need RBAC write access to the failover group, and all databases on the current primary server or managed instance.  
 
-![automatische failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
+### <a name="failover-a-failover-group"></a>Failover a failover group
+
+To fail over a failover group, you need RBAC write access to the failover group on the new primary server or managed instance.
+
+## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Best practices of using failover groups with single databases and elastic pools
+
+The auto-failover group must be configured on the primary SQL Database server and will connect it to the secondary SQL Database server in a different Azure region. The groups can include all or some databases in these servers. The following diagram illustrates a typical configuration of a geo-redundant cloud application using multiple databases and auto-failover group.
+
+![auto failover](./media/sql-database-auto-failover-group/auto-failover-group.png)
 
 > [!NOTE]
-> Zie [Eén data base toevoegen aan een failovergroep](sql-database-single-database-failover-group-tutorial.md) voor een gedetailleerde stapsgewijze zelf studie een enkele data base toevoegen aan een failovergroep. 
+> See [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a single database to a failover group.
 
+When designing a service with business continuity in mind, follow these general guidelines:
 
-Houd bij het ontwerpen van een service met bedrijfs continuïteit de volgende algemene richt lijnen:
+- **Use one or several failover groups to manage failover of multiple databases**
 
-- **Een of meer failover-groepen gebruiken om failover van meerdere data bases te beheren**
-
-  Er kunnen een of meer failover-groepen worden gemaakt tussen twee servers in verschillende regio's (primaire en secundaire servers). Elke groep kan een of meer data bases bevatten die als een eenheid worden hersteld in het geval dat alle of enkele primaire data bases niet beschikbaar zijn vanwege een storing in de primaire regio. De groep failover maakt geo-secundaire data base met dezelfde service doelstelling als de primaire. Als u een bestaande geo-replicatie relatie aan de failovergroep toevoegt, zorg er dan voor dat de geo-Secondary is geconfigureerd met dezelfde servicelaag en reken grootte als de primaire.
+  One or many failover groups can be created between two servers in different regions (primary and secondary servers). Each group can include one or several databases that are recovered as a unit in case all or some primary databases become unavailable due to an outage in the primary region. The failover group creates geo-secondary database with the same service objective as the primary. If you add an existing geo-replication relationship to the failover group, make sure the geo-secondary is configured with the same service tier and compute size as the primary.
   
   > [!IMPORTANT]
-  > Het maken van failover-groepen tussen twee servers in verschillende abonnementen wordt momenteel niet ondersteund voor afzonderlijke data bases en elastische Pools. Als u de primaire of secundaire server naar een ander abonnement verplaatst nadat de failovergroep is gemaakt, kan dit leiden tot fouten in de failover-aanvragen en andere bewerkingen.
+  > Creating failover groups between two servers in different subscriptions is not currently supported for single databases and elastic pools. If you move the primary or secondary server to a different subscription after the failover group has been created, it could result in failures of the failover requests and other operations.
 
-- **Listener voor read-write gebruiken voor OLTP-workload**
+- **Use read-write listener for OLTP workload**
 
-  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. Opmerking voor de failover moet de DNS-record worden bijgewerkt, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd.
+  When performing OLTP operations, use `<fog-name>.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. Note the failover involves updating the DNS record so the client connections are redirected to the new primary only after the client DNS cache is refreshed.
 
-- **Alleen-lezen-listener gebruiken voor alleen-lezen werk belasting**
+- **Use read-only listener for read-only workload**
 
-  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Voor alleen-lezen sessies gebruikt u `<fog-name>.secondary.database.windows.net` als de server-URL en wordt de verbinding automatisch omgeleid naar de secundaire. U wordt ook aangeraden om in connection string Lees intentie op te geven met behulp van `ApplicationIntent=ReadOnly`. Als u er zeker van wilt zijn dat de workload alleen-lezen opnieuw verbinding kan maken na een failover of als de secundaire server offline gaat, moet u de eigenschap `AllowReadOnlyFailoverToPrimary` van het failover-beleid configureren. 
+  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. For read-only sessions, use `<fog-name>.secondary.database.windows.net` as the server URL and the connection is automatically directed to the secondary. It is also recommended that you indicate in connection string read intent by using `ApplicationIntent=ReadOnly`. If you want to ensure that the read-only workload can reconnect after failover or in case the secondary server goes offline, make sure to configure the `AllowReadOnlyFailoverToPrimary` property of the failover policy.
 
-- **Voor bereidingen voor prestatie vermindering**
+- **Be prepared for perf degradation**
 
-  De beslissing van SQL-failover is onafhankelijk van de rest van de toepassing of andere services die worden gebruikt. De toepassing kan worden ' Mixed ' met enkele onderdelen in één regio en een deel van een andere. Zorg ervoor dat u de redundante toepassing implementeert in de DR-regio en volg deze [richt lijnen voor netwerk beveiliging](#failover-groups-and-network-security)om de degradatie te voor komen.
+  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
 
   > [!NOTE]
-  > De toepassing in de DR-regio hoeft geen andere connection string te gebruiken.  
+  > The application in the DR region does not have to use a different connection string.  
 
-- **Voorbereiden op gegevens verlies**
+- **Prepare for data loss**
 
-  Als er een storing wordt gedetecteerd, wacht SQL op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. De standaard waarde is 1 uur. Als u geen gegevens verlies kunt veroorloven, moet u `GracePeriodWithDataLossHours` instellen op een voldoende groot getal, zoals 24 uur. Gebruik hand matige failover van de groep om een failback uit te geven van de secundaire naar de primaire.
+  If an outage is detected, SQL waits for the period you specified by `GracePeriodWithDataLossHours`. The default value is 1 hour. If you cannot afford data loss, make sure to set `GracePeriodWithDataLossHours` to a sufficiently large number, such as 24 hours. Use manual group failover to fail back from the secondary to the primary.
 
   > [!IMPORTANT]
-  > Elastische Pools met 800 of minder Dtu's en meer dan 250-data bases die gebruikmaken van geo-replicatie, kunnen problemen ondervinden, inclusief langere, geplande failovers en verminderde prestaties.  Deze problemen treden waarschijnlijk vaker op voor het schrijven van intensieve workloads, wanneer geo-replicatie-eind punten op grote schaal worden gescheiden door geografie, of wanneer meerdere secundaire eind punten worden gebruikt voor elke Data Base.  Symptomen van deze problemen worden aangegeven wanneer de geo-replicatie vertraging na verloop van tijd toeneemt.  Deze vertraging kan worden bewaakt met behulp van [sys. dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Als deze problemen optreden, zijn de mogelijke oplossingen het verhogen van het aantal groeps Dtu's of het verminderen van het aantal geo-gerepliceerde data bases in dezelfde groep.
+  > Elastic pools with 800 or fewer DTUs and more than 250 databases using geo-replication may encounter issues including longer planned failovers and degraded performance.  These issues are more likely to occur for write intensive workloads, when geo-replication endpoints are widely separated by geography, or when multiple secondary endpoints are used for each database.  Symptoms of these issues are indicated when the geo-replication lag increases over time.  This lag can be monitored using [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  If these issues occur, then mitigations include increasing the number of pool DTUs, or reducing the number of geo-replicated databases in the same pool.
 
-## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Aanbevolen procedures voor het gebruik van failover-groepen met beheerde exemplaren
+## <a name="best-practices-of-using-failover-groups-with-managed-instances"></a>Best practices of using failover groups with managed instances
 
-De groep voor automatische failover moet worden geconfigureerd op het primaire exemplaar en wordt verbonden met het secundaire exemplaar in een andere Azure-regio.  Alle data bases in het exemplaar worden gerepliceerd naar het secundaire exemplaar. 
+The auto-failover group must be configured on the primary instance and will connect it to the secondary instance in a different Azure region.  All databases in the instance will be replicated to the secondary instance.
 
-Het volgende diagram illustreert een typische configuratie van een geo-redundante Cloud toepassing met behulp van beheerde exemplaren en de groep voor automatische failover.
+The following diagram illustrates a typical configuration of a geo-redundant cloud application using managed instance and auto-failover group.
 
-![automatische failover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
+![auto failover](./media/sql-database-auto-failover-group/auto-failover-group-mi.png)
 
 > [!NOTE]
-> Zie [Managed instance toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md) voor een gedetailleerde stapsgewijze zelf studie voor het toevoegen van een beheerd exemplaar voor het gebruik van een failovergroep. 
+> See [Add managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md) for a detailed step-by-step tutorial adding a managed instance to use failover group.
 
-Als uw toepassing gebruikmaakt van een beheerd exemplaar als gegevenslaag, volgt u deze algemene richt lijnen bij het ontwerpen voor bedrijfs continuïteit:
+If your application uses managed instance as the data tier, follow these general guidelines when designing for business continuity:
 
-- **Het secundaire exemplaar maken in dezelfde DNS-zone als het primaire exemplaar**
+- **Create the secondary instance in the same DNS zone as the primary instance**
 
-  Om ervoor te zorgen dat een niet-onderbroken connectiviteit met het primaire exemplaar na een failover wordt gegarandeerd, moeten de primaire en secundaire exemplaren zich in dezelfde DNS-zone bevindt. Hiermee wordt gegarandeerd dat hetzelfde multi-Domain (SAN)-certificaat kan worden gebruikt voor het verifiëren van de client verbindingen met een van de twee exemplaren in de failovergroep. Wanneer uw toepassing gereed is voor productie-implementatie, maakt u een secundair exemplaar in een andere regio en zorgt u ervoor dat de DNS-zone wordt gedeeld met het primaire exemplaar. U kunt dit doen door een `DNS Zone Partner` optionele para meter op te geven met behulp van de Azure Portal, Power shell of de REST API. 
+  To ensure non-interrupted connectivity to the primary instance after failover both the primary and secondary instances must be in the same DNS zone. It will guarantee that the same multi-domain (SAN) certificate can be used to authenticate the client connections to either of the two instances in the failover group. When your application is ready for production deployment, create a secondary instance in a different region and make sure it shares the DNS zone with the primary instance. You can do it by specifying a `DNS Zone Partner` optional parameter using the Azure portal, PowerShell, or the REST API.
 
 > [!IMPORTANT]
-> Het eerste exemplaar dat in het subnet wordt gemaakt, bepaalt de DNS-zone voor alle volgende instanties in hetzelfde subnet. Dit betekent dat twee exemplaren van hetzelfde subnet geen deel kunnen uitmaken van verschillende DNS-zones.   
+> First instance created in the subnet determines DNS zone for all subsequent instances in the same subnet. This means that two instances from the same subnet cannot belong to different DNS zones.
 
-  Zie [een secundaire beheerde instantie maken](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance)voor meer informatie over het maken van het secundaire exemplaar in dezelfde DNS-zone als het primaire exemplaar.
+  For more information about creating the secondary instance in the same DNS zone as the primary instance, see [Create a secondary managed instance](sql-database-managed-instance-failover-group-tutorial.md#3---create-a-secondary-managed-instance).
 
-- **Replicatie verkeer tussen twee instanties inschakelen**
+- **Enable replication traffic between two instances**
 
-  Omdat elk exemplaar is geïsoleerd in een eigen VNet, moet twee richtings verkeer tussen deze VNets worden toegestaan. Zie [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
+  Because each instance is isolated in its own VNet, two-directional traffic between these VNets must be allowed. See [Azure VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)
 
-- **Een failover-groep maken tussen beheerde instanties in verschillende abonnementen**
+- **Create a failover group between managed instances in different subscriptions**
 
-  U kunt in twee verschillende abonnementen een failover-groep maken tussen beheerde exemplaren. Wanneer u Power shell API gebruikt, kunt u dit doen door de para meter `PartnerSubscriptionId` op te geven voor het secundaire exemplaar. Wanneer u REST API gebruikt, kan elke exemplaar-ID die is opgenomen in de para meter `properties.managedInstancePairs` een eigen subscriptionID hebben. 
+  You can create a failover group between managed instances in two different subscriptions. When using PowerShell API you can do it by  specifying the `PartnerSubscriptionId` parameter for the secondary instance. When using REST API, each instance ID included in the `properties.managedInstancePairs` parameter can have its own subscriptionID.
   
   > [!IMPORTANT]
-  > Azure Portal biedt geen ondersteuning voor failover-groepen in verschillende abonnementen.
+  > Azure Portal does not support failover groups across different subscriptions.
 
-  
-- **Een failovergroep configureren voor het beheren van de failover van het hele exemplaar**
+- **Configure a failover group to manage failover of entire instance**
 
-  De failovergroep beheert de failover van alle data bases in het exemplaar. Wanneer een groep wordt gemaakt, wordt elke data base in het exemplaar automatisch geo-gerepliceerd naar het secundaire exemplaar. U kunt geen failover-groepen gebruiken om een gedeeltelijke failover van een subset van de data bases te initiëren.
+  The failover group will manage the failover of all the databases in the instance. When a group is created, each database in the instance will be automatically geo-replicated to the secondary instance. You cannot use failover groups to initiate a partial failover of a subset of the databases.
 
   > [!IMPORTANT]
-  > Als een Data Base uit het primaire exemplaar wordt verwijderd, wordt deze ook automatisch neergezet op het secundaire geo-exemplaar.
+  > If a database is removed from the primary instance, it will also be dropped automatically on the geo secondary instance.
 
-- **Listener voor read-write gebruiken voor OLTP-workload**
+- **Use read-write listener for OLTP workload**
 
-  Bij het uitvoeren van OLTP-bewerkingen, gebruikt u `<fog-name>.zone_id.database.windows.net` als de server-URL en worden de verbindingen automatisch naar de primaire verbinding geleid. Deze URL wordt niet gewijzigd na de failover. De failover omvat het bijwerken van de DNS-record, zodat de client verbindingen alleen worden omgeleid naar de nieuwe primaire server nadat de DNS-cache van de client is vernieuwd. Omdat het secundaire exemplaar de DNS-zone met de primaire share deelt, kan de client toepassing opnieuw verbinding maken met het certificaat met behulp van dezelfde SAN-certificaten.
+  When performing OLTP operations, use `<fog-name>.zone_id.database.windows.net` as the server URL and the connections are automatically directed to the primary. This URL does not change after the failover. The failover involves updating the DNS record, so the client connections are redirected to the new primary only after the client DNS cache is refreshed. Because the secondary instance shares the DNS zone with the primary, the client application will be able to reconnect to it using the same SAN certificate.
 
-- **Rechtstreeks verbinding maken met geo-gerepliceerd secundair voor alleen-lezen query's**
+- **Connect directly to geo-replicated secondary for read-only queries**
 
-  Als u een logisch geïsoleerde alleen-lezen werk belasting hebt die tolerant is voor bepaalde verouderde gegevens, kunt u de secundaire data base in de toepassing gebruiken. Als u rechtstreeks verbinding wilt maken met het secundaire geo-gerepliceerde secundair, gebruikt u `server.secondary.zone_id.database.windows.net` als de server-URL en wordt de verbinding rechtstreeks gemaakt naar het geo-gerepliceerde secundair.
+  If you have a logically isolated read-only workload that is tolerant to certain staleness of data, you can use the secondary database in the application. To connect directly to the geo-replicated secondary, use `server.secondary.zone_id.database.windows.net` as the server URL and the connection is made directly to the geo-replicated secondary.
 
   > [!NOTE]
-  > In bepaalde service lagen ondersteunt Azure SQL Database het gebruik van [alleen-lezen replica's](sql-database-read-scale-out.md) om werk belastingen voor alleen-lezen query's te verdelen met behulp van de capaciteit van één alleen-lezen replica en met behulp van de `ApplicationIntent=ReadOnly`-para meter in de Connection String. Wanneer u een secundaire geo-replicatie hebt geconfigureerd, kunt u deze mogelijkheid gebruiken om verbinding te maken met een alleen-lezen replica op de primaire locatie of op de geo-gerepliceerde locatie.
-  > - Gebruik `<fog-name>.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de primaire locatie.
-  > - Gebruik `<fog-name>.secondary.zone_id.database.windows.net`om verbinding te maken met een alleen-lezen replica op de secundaire locatie.
+  > In certain service tiers, Azure SQL Database supports the use of [read-only replicas](sql-database-read-scale-out.md) to load balance read-only query workloads using the capacity of one read-only replica and using the `ApplicationIntent=ReadOnly` parameter in the connection string. When you have configured a geo-replicated secondary, you can use this capability to connect to either a read-only replica in the primary location or in the geo-replicated location.
+  > - To connect to a read-only replica in the primary location, use `<fog-name>.zone_id.database.windows.net`.
+  > - To connect to a read-only replica in the secondary location, use `<fog-name>.secondary.zone_id.database.windows.net`.
 
-- **Voor bereidingen voor prestatie vermindering**
+- **Be prepared for perf degradation**
 
-  De beslissing van SQL-failover is onafhankelijk van de rest van de toepassing of andere services die worden gebruikt. De toepassing kan worden ' Mixed ' met enkele onderdelen in één regio en een deel van een andere. Zorg ervoor dat u de redundante toepassing implementeert in de DR-regio en volg deze [richt lijnen voor netwerk beveiliging](#failover-groups-and-network-security)om de degradatie te voor komen.
+  SQL failover decision is independent from the rest of the application or other services used. The application may be “mixed” with some components in one region and some in another. To avoid the degradation, ensure the redundant application deployment in the DR region and follow these [network security guidelines](#failover-groups-and-network-security).
 
-- **Voorbereiden op gegevens verlies**
+- **Prepare for data loss**
 
-  Als er een storing wordt gedetecteerd, wordt door SQL automatisch een failover voor lezen/schrijven geactiveerd als er geen gegevens verloren zijn op het beste van de kennis. Anders wordt gewacht op de periode die u hebt opgegeven door `GracePeriodWithDataLossHours`. Als u `GracePeriodWithDataLossHours`hebt opgegeven, moet u voor bereid zijn op gegevens verlies. Over het algemeen is het voor de beschik baarheid van Azure van belang. Als u geen gegevens verlies kunt veroorloven, moet u toegevoegd instellen op een voldoende groot getal, zoals 24 uur.
+  If an outage is detected, SQL automatically triggers read-write failover if there is zero data loss to the best of our knowledge. Otherwise, it waits for the period you specified by `GracePeriodWithDataLossHours`. If you specified `GracePeriodWithDataLossHours`, be prepared for data loss. In general, during outages, Azure favors availability. If you cannot afford data loss, make sure to set GracePeriodWithDataLossHours to a sufficiently large number, such as 24 hours.
 
-  De DNS-update van de listener voor lezen-schrijven gebeurt onmiddellijk nadat de failover is gestart. Deze bewerking resulteert niet in gegevens verlies. Het proces van het wisselen van database rollen kan echter tot vijf minuten duren onder normale omstandigheden. Totdat de data bases in het nieuwe primaire exemplaar zijn voltooid, hebben ze nog steeds het kenmerk alleen-lezen. Als failover wordt gestart met behulp van Power shell, is de gehele bewerking synchroon. Als het wordt gestart met behulp van de Azure Portal, wordt in de gebruikers interface de voltooiings status weer geven. Als deze is gestart met behulp van de REST API, gebruikt u het polling mechanisme van de standaard Azure Resource Manager om te controleren of het is voltooid.
+  The DNS update of the read-write listener will happen immediately after the failover is initiated. This operation will not result in data loss. However, the process of switching database roles can take up to 5 minutes under normal conditions. Until it is completed, some databases in the new primary instance will still be read-only. If failover is initiated using PowerShell, the entire operation is synchronous. If it is initiated using the Azure portal, the UI will indicate completion status. If it is initiated using the REST API, use standard Azure Resource Manager’s polling mechanism to monitor for completion.
 
   > [!IMPORTANT]
-  > Gebruik hand matige failover van groep om Primaries terug te zetten naar de oorspronkelijke locatie. Wanneer de storing die de failover veroorzaakte, wordt verholpen, kunt u de primaire data bases naar de oorspronkelijke locatie verplaatsen. Als u dit wilt doen, moet u de hand matige failover van de groep initiëren.
+  > Use manual group failover to move primaries back to the original location. When the outage that caused the failover is mitigated, you can move your primary databases to the original location. To do that you should initiate the manual failover of the group.
 
-- **Bekende beperkingen van failover-groepen erkennen**
+- **Acknowledge known limitations of failover groups**
 
-  De naam van een Data Base wordt niet ondersteund voor exemplaren in een failovergroep. U moet een failovergroep tijdelijk verwijderen om de naam van een Data Base te kunnen wijzigen.
+  Database rename is not supported for instances in failover group. You will need to temporarily delete failover group to be able to rename a database.
 
-## <a name="failover-groups-and-network-security"></a>Failover-groepen en netwerk beveiliging
+## <a name="failover-groups-and-network-security"></a>Failover groups and network security
 
-Voor sommige toepassingen moeten de beveiligings regels vereisen dat het netwerk toegang tot de gegevenslaag wordt beperkt tot een specifiek onderdeel of andere onderdelen, zoals een VM, webservice, enzovoort. Deze vereiste vormt enkele uitdagingen voor het ontwerpen van bedrijfs continuïteit en het gebruik van de failover-groepen. Houd rekening met de volgende opties bij het implementeren van dergelijke beperkte toegang.
+For some applications the security rules require that the network access to the data tier is restricted to a specific component or components such as a VM, web service etc. This requirement presents some challenges for business continuity design and the use of the failover groups. Consider the following options when implementing such restricted access.
 
-### <a name="using-failover-groups-and-virtual-network-rules"></a>Failover-groepen en regels voor virtuele netwerken gebruiken
+### <a name="using-failover-groups-and-virtual-network-rules"></a>Using failover groups and virtual network rules
 
-Als u [Virtual Network Service-eind punten en-regels](sql-database-vnet-service-endpoint-rule-overview.md) gebruikt om de toegang tot uw SQL database te beperken, moet u er rekening mee houden dat elk Virtual Network Service-eind punt alleen van toepassing is op één Azure-regio. Met het eind punt kunnen andere regio's geen communicatie van het subnet accepteren. Daarom kunnen alleen de client toepassingen die in dezelfde regio worden geïmplementeerd, verbinding maken met de primaire data base. Omdat de failover resulteert in de SQL-Client sessies die worden omgeleid naar een server in een andere (secundaire) regio, zullen deze sessies mislukken als ze afkomstig zijn van een client buiten die regio. Het automatische failoverbeleid kan daarom niet worden ingeschakeld als de deelnemende servers zijn opgenomen in de Virtual Network-regels. Voer de volgende stappen uit om hand matige failover te ondersteunen:
+If you are using [Virtual Network service endpoints and rules](sql-database-vnet-service-endpoint-rule-overview.md) to restrict access to your SQL database, be aware that Each Virtual Network service endpoint applies to only one Azure region. The endpoint does not enable other regions to accept communication from the subnet. Therefore, only the client applications deployed in the same region can connect to the primary database. Since the failover results in the SQL client sessions being rerouted to a server in a different (secondary) region, these sessions will fail if originated from a client outside of that region. For that reason, the automatic failover policy cannot be enabled if the participating servers are included in the Virtual Network rules. To support manual failover, follow these steps:
 
-1. Richt de redundante kopieën in van de front-end onderdelen van uw toepassing (webservice, virtuele machines, enzovoort) in de secundaire regio
-2. De regels voor het [virtuele netwerk](sql-database-vnet-service-endpoint-rule-overview.md) afzonderlijk configureren voor de primaire en secundaire server
-3. De [front-end-failover inschakelen met behulp van de Traffic Manager-configuratie](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
-4. Start de hand matige failover wanneer de onderbreking wordt gedetecteerd. Deze optie is geoptimaliseerd voor de toepassingen die een consistente latentie vereisen tussen de front-end en de gegevenslaag en ondersteuning bieden voor herstel wanneer een front-end, een gegevenslaag of beide worden beïnvloed door de storing.
+1. Provision the redundant copies of the front-end components of your application (web service, virtual machines etc.) in the secondary region
+2. Configure the [virtual network rules](sql-database-vnet-service-endpoint-rule-overview.md) individually for primary and secondary server
+3. Enable the [front-end failover using a Traffic manager configuration](sql-database-designing-cloud-solutions-for-disaster-recovery.md#scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime)
+4. Initiate manual failover when the outage is detected. This option is optimized for the applications that require consistent latency between the front-end and the data tier and supports recovery when either front end, data tier or both are impacted by the outage.
 
 > [!NOTE]
-> Als u de **alleen-lezen listener** gebruikt om taken te verdelen over een alleen-lezen werk belasting, moet u ervoor zorgen dat deze werk belasting wordt uitgevoerd in een virtuele machine of in een andere resource in de secundaire regio zodat deze verbinding kan maken met de secundaire data base.
+> If you are using the **read-only listener** to load-balance a read-only workload, make sure that this workload is executed in a VM or other resource in the secondary region so it can connect to the secondary database.
 
-### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Failover-groepen en firewall regels voor SQL database gebruiken
+### <a name="using-failover-groups-and-sql-database-firewall-rules"></a>Using failover groups and SQL database firewall rules
 
-Als failover is vereist voor uw bedrijfs continuïteits plan met behulp van groepen met automatische failover, kunt u de toegang tot uw SQL database beperken met behulp van de traditionele firewall regels.  Voer de volgende stappen uit om automatische failover te ondersteunen:
+If your business continuity plan requires failover using groups with automatic failover, you can restrict access to your SQL database using the traditional firewall rules. To support automatic failover, follow these steps:
 
-1. [Een openbaar IP-adres maken](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Maak een open bare Load Balancer](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) en wijs hieraan het open bare IP-adres toe.
-3. [Een virtueel netwerk en de virtuele machines](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) voor uw front-end-onderdelen maken
-4. [Netwerk beveiligings groep maken](../virtual-network/security-overview.md) en binnenkomende verbindingen configureren.
-5. Zorg ervoor dat de uitgaande verbindingen met Azure SQL database zijn geopend met behulp van SQL- [service Tags](../virtual-network/security-overview.md#service-tags).
-6. Maak een [SQL database firewall regel](sql-database-firewall-configure.md) om binnenkomend verkeer toe te staan van het open bare IP-adres dat u in stap 1 hebt gemaakt.
+1. [Create a public IP](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
+2. [Create a public load balancer](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) and assign the public IP to it.
+3. [Create a virtual network and the virtual machines](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) for your front-end components
+4. [Create network security group](../virtual-network/security-overview.md) and configure inbound connections.
+5. Ensure that the outbound connections are open to Azure SQL database by using ‘Sql’ [service tag](../virtual-network/security-overview.md#service-tags).
+6. Create a [SQL database firewall rule](sql-database-firewall-configure.md) to allow inbound traffic from the public IP address you create in step 1.
 
-Zie [uitgaande verbindingen van Load Balancer](../load-balancer/load-balancer-outbound-connections.md)voor meer informatie over het configureren van uitgaande toegang en welk IP-adres moet worden gebruikt in de firewall regels.
+For more information about on how to configure outbound access and what IP to use in the firewall rules, see [Load balancer outbound connections](../load-balancer/load-balancer-outbound-connections.md).
 
-De bovenstaande configuratie zorgt ervoor dat de automatische failover geen verbindingen van de front-end-onderdelen blokkeert en er wordt van uitgegaan dat de toepassing de langere latentie tussen de front-end en de gegevenslaag kan verdragen.
+The above configuration will ensure that the automatic failover will not block connections from the front-end components and assumes that the application can tolerate the longer latency between the front end and the data tier.
 
 > [!IMPORTANT]
-> Om de bedrijfs continuïteit voor regionale uitval te garanderen, moet u ervoor zorgen dat u geografische redundantie voor zowel de front-end-onderdelen als de data bases hebt.
+> To guarantee business continuity for regional outages you must ensure geographic redundancy for both front-end components and the databases.
 
-## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Geo-replicatie tussen beheerde instanties en hun VNets inschakelen
+## <a name="enabling-geo-replication-between-managed-instances-and-their-vnets"></a>Enabling geo-replication between managed instances and their VNets
 
-Wanneer u een failovergroep instelt tussen de primaire en secundaire beheerde instanties in twee verschillende regio's, wordt elk exemplaar geïsoleerd met behulp van een onafhankelijk virtueel netwerk. Als u replicatie verkeer tussen deze VNets wilt toestaan, moet u ervoor zorgen dat aan deze vereisten wordt voldaan:
+When you set up a failover group between primary and secondary managed instances in two different regions, each instance is isolated using an independent virtual network. To allow replication traffic between these VNets ensure these prerequisites are met:
 
-1. De twee beheerde exemplaren moeten zich in verschillende Azure-regio's bevindt.
-1. De twee beheerde exemplaren moeten dezelfde servicelaag hebben en dezelfde opslag grootte hebben. 
-1. Uw secundaire beheerde exemplaar moet leeg zijn (geen gebruikers databases).
-1. De virtuele netwerken die worden gebruikt door de beheerde instanties moeten worden verbonden via een [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) of Express route. Wanneer twee virtuele netwerken verbinding maken via een on-premises netwerk, zorg er dan voor dat er geen firewall regel is die poorten 5022 en 11000-11999 blokkeert. Globale VNet-peering wordt niet ondersteund.
-1. De twee VNets van het beheerde exemplaar kunnen geen overlappende IP-adressen hebben.
-1. U moet uw netwerk beveiligings groepen (NSG) zodanig instellen dat de poorten 5022 en het bereik 11000 ~ 12000 zijn geopend als inkomend en uitgaand voor verbindingen van het andere beheerde subnet. Dit is om replicatie verkeer tussen de instanties toe te staan
+1. The two managed instances need to be in different Azure regions.
+1. The two managed instances need to be the same service tier, and have the same storage size.
+1. Your secondary managed instance must be empty (no user databases).
+1. The virtual networks used by the managed instances need to be connected through a [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) or Express Route. When two virtual networks connect through an on-premises network, ensure there is no firewall rule blocking ports 5022, and 11000-11999. Global VNet Peering is not supported.
+1. The two managed instance VNets cannot have overlapping IP addresses.
+1. You need to set up your Network Security Groups (NSG) such that ports 5022 and the range 11000~12000 are open inbound and outbound for connections from the other managed instanced subnet. This is to allow replication traffic between the instances
 
    > [!IMPORTANT]
-   > Onjuist geconfigureerde NSG-beveiligings regels leiden tot vastgelopen database Kopieer bewerkingen.
+   > Misconfigured NSG security rules leads to stuck database copy operations.
 
-7. Het secundaire exemplaar is geconfigureerd met de juiste DNS-zone-ID. DNS-zone is een eigenschap van een beheerd exemplaar en een virtueel cluster en de bijbehorende ID is opgenomen in het adres van de hostnaam. De zone-ID wordt gegenereerd als een wille keurige teken reeks wanneer het eerste beheerde exemplaar wordt gemaakt in elk VNet en dezelfde ID wordt toegewezen aan alle andere exemplaren in hetzelfde subnet. Zodra het is toegewezen, kan de DNS-zone niet worden gewijzigd. Beheerde instanties die zijn opgenomen in dezelfde failovergroep, moeten de DNS-zone delen. Dit doet u door de zone-ID van het primaire exemplaar door te geven als waarde voor de para meter DnsZonePartner bij het maken van het secundaire exemplaar. 
+1. The secondary instance is configured with the correct DNS zone ID. DNS zone is a property of a managed instance and virtual cluster, and its ID is included in the host name address. The zone ID is generated as a random string when the first managed instance is created in each VNet and the same ID is assigned to all other instances in the same subnet. Once assigned, the DNS zone cannot be modified. Managed instances included in the same failover group must share the DNS zone. You accomplish this by passing the primary instance's zone ID as the value of DnsZonePartner parameter when creating the secondary instance. 
 
    > [!NOTE]
-   > Zie [een beheerd exemplaar toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md)voor een gedetailleerde zelf studie over het configureren van failover-groepen met een beheerd exemplaar.
+   > For a detailed tutorial on configuring failover groups with managed instance, see [add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md).
 
-## <a name="upgrading-or-downgrading-a-primary-database"></a>Een primaire data base bijwerken of downgrade uitvoeren
+## <a name="upgrading-or-downgrading-a-primary-database"></a>Upgrading or downgrading a primary database
 
-U kunt een upgrade of downgrade van een primaire Data Base naar een andere reken grootte (binnen dezelfde servicelaag, niet tussen Algemeen en Bedrijfskritiek) zonder de verbinding van secundaire data bases te verbreken. Wanneer u een upgrade uitvoert, raden we u aan om eerst alle secundaire data bases bij te werken en vervolgens een upgrade uit te voeren van de primaire. Wanneer u een downgrade uitvoert, maakt u de volg orde ongedaan: downgradet u eerst de primaire data base. Wanneer u de data base bijwerkt of downgradet naar een andere servicelaag, wordt deze aanbeveling afgedwongen.
+You can upgrade or downgrade a primary database to a different compute size (within the same service tier, not between General Purpose and Business Critical) without disconnecting any secondary databases. When upgrading, we recommend that you upgrade all of the secondary databases first, and then upgrade the primary. When downgrading, reverse the order: downgrade the primary first, and then downgrade all of the secondary databases. When you upgrade or downgrade the database to a different service tier, this recommendation is enforced.
 
-Deze volg orde wordt aangeraden om het probleem te voor komen waarbij de secundaire bij een lagere SKU overbelast is en opnieuw moet worden geseed tijdens een upgrade of downgrade proces. U kunt het probleem ook vermijden door de primaire alleen-lezen te maken, tegen kosten die van invloed zijn op alle werk belastingen voor lezen/schrijven op basis van de primaire. 
-
-> [!NOTE]
-> Als u een secundaire Data Base hebt gemaakt als onderdeel van de configuratie van de failovergroep, wordt het niet aanbevolen de secundaire data base te downgradeen. Zo zorgt u ervoor dat uw gegevenslaag voldoende capaciteit heeft om uw normale werk belasting te verwerken nadat de failover is geactiveerd.
-
-## <a name="preventing-the-loss-of-critical-data"></a>Het verlies van kritieke gegevens voor komen
-
-Vanwege de hoge latentie van Wide Area Networks, gebruikt doorlopende kopieën een mechanisme voor asynchrone replicatie. Asynchrone replicatie maakt enkele gegevens verlies onvermijdbaar als er een fout optreedt. Voor sommige toepassingen is het echter mogelijk dat er geen gegevens verloren gaan. Een ontwikkelaar van een toepassing kan deze essentiële updates beveiligen door de [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) -systeem procedure onmiddellijk aan te roepen nadat de trans actie is doorgevoerd. Het aanroepen van `sp_wait_for_database_copy_sync` blokkeert de aanroepende thread totdat de laatste vastgelegde trans actie is verzonden naar de secundaire data base. Er wordt echter niet gewacht tot de verzonden trans acties moeten worden herhaald en op de secundaire moeten worden doorgevoerd. `sp_wait_for_database_copy_sync` ligt binnen het bereik van een specifieke koppeling voor doorlopende kopieën. Elke gebruiker met de verbindings rechten voor de primaire data base kan deze procedure aanroepen.
+This sequence is recommended specifically to avoid the problem where the secondary at a lower SKU gets overloaded and must be re-seeded during an upgrade or downgrade process. You could also avoid the problem by making the primary read-only, at the expense of impacting all read-write workloads against the primary.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` voor komt gegevens verlies na een failover, maar biedt geen volledige synchronisatie voor lees toegang. De vertraging veroorzaakt door een `sp_wait_for_database_copy_sync` procedure aanroep kan aanzienlijk zijn en is afhankelijk van de grootte van het transactie logboek op het moment van de aanroep.
+> If you created secondary database as part of the failover group configuration it is not recommended to downgrade the secondary database. This is to ensure your data tier has sufficient capacity to process your regular workload after failover is activated.
 
-## <a name="failover-groups-and-point-in-time-restore"></a>Failover-groepen en herstel naar een bepaald tijdstip
+## <a name="preventing-the-loss-of-critical-data"></a>Preventing the loss of critical data
 
-Zie Point-in-time [herstel (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore)voor informatie over het gebruik van herstel naar een bepaald tijdstip met failover-groepen.
+Due to the high latency of wide area networks, continuous copy uses an asynchronous replication mechanism. Asynchronous replication makes some data loss unavoidable if a failure occurs. However, some applications may require no data loss. To protect these critical updates, an application developer can call the [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) system procedure immediately after committing the transaction. Calling `sp_wait_for_database_copy_sync` blocks the calling thread until the last committed transaction has been transmitted to the secondary database. However, it does not wait for the transmitted transactions to be replayed and committed on the secondary. `sp_wait_for_database_copy_sync` is scoped to a specific continuous copy link. Any user with the connection rights to the primary database can call this procedure.
 
-## <a name="programmatically-managing-failover-groups"></a>Programmatisch beheer van failover-groepen
+> [!NOTE]
+> `sp_wait_for_database_copy_sync` prevents data loss after failover, but does not guarantee full synchronization for read access. The delay caused by a `sp_wait_for_database_copy_sync` procedure call can be significant and depends on the size of the transaction log at the time of the call.
 
-Zoals eerder besproken, kunnen automatische failover-groepen en actieve geo-replicatie ook programmatisch worden beheerd met behulp van Azure PowerShell en de REST API. De volgende tabellen bevatten een beschrijving van de beschik bare opdrachten. Actieve geo-replicatie bevat een set Azure Resource Manager Api's voor beheer, met inbegrip van de [Azure SQL database-rest API](https://docs.microsoft.com/rest/api/sql/) en [Azure PowerShell-cmdlets](https://docs.microsoft.com/powershell/azure/overview). Deze Api's vereisen het gebruik van resource groepen en bieden beveiliging op basis van rollen (RBAC). Zie [Access Control op basis van rollen](../role-based-access-control/overview.md)voor meer informatie over het implementeren van toegangs rollen.
+## <a name="failover-groups-and-point-in-time-restore"></a>Failover groups and point-in-time restore
 
-### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Power shell: SQL database failover beheren met afzonderlijke data bases en elastische Pools
+For information about using point-in-time restore with failover groups, see [Point in Time Recovery (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore).
+
+## <a name="programmatically-managing-failover-groups"></a>Programmatically managing failover groups
+
+As discussed previously, auto-failover groups and active geo-replication can also be managed programmatically using Azure PowerShell and the REST API. The following tables describe the set of commands available. Active geo-replication includes a set of Azure Resource Manager APIs for management, including the [Azure SQL Database REST API](https://docs.microsoft.com/rest/api/sql/) and [Azure PowerShell cmdlets](https://docs.microsoft.com/powershell/azure/overview). These APIs require the use of resource groups and support role-based security (RBAC). For more information on how to implement access roles, see [Azure Role-Based Access Control](../role-based-access-control/overview.md).
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
 
 | Cmdlet | Beschrijving |
 | --- | --- |
-| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabasefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Hiermee wordt de failovergroep van de server verwijderd en worden alle secundaire data bases verwijderd die zijn opgenomen in de groep |
-| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Hiermee wordt de configuratie van de failovergroep opgehaald |
-| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep |
-| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | De failover van de failovergroep naar de secundaire server wordt geactiveerd |
-| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Voegt een of meer data bases toe aan een Azure SQL Database-failovergroep|
-|  | |
+| [New-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/new-azsqldatabasefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
+| [Remove-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | Removes the failover group from the server and deletes all secondary databases included the group |
+| [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Retrieves the failover group configuration |
+| [Set-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Modifies the configuration of the failover group |
+| [Switch-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | Triggers failover of the failover group to the secondary server |
+| [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Adds one or more databases to an Azure SQL Database failover group|
+
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+
+| Cmdlet | Beschrijving |
+| --- | --- |
+| [New-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |This command creates a failover group and registers it on both primary and secondary servers|
+| [Set-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Modifies the configuration of the failover group|
+| [Get-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Retrieves the failover group configuration|
+| [Switch-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |Triggers failover of the failover group to the secondary server|
+| [Remove-AzSqlDatabaseInstanceFailoverGroup](/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Removes a failover group|
+
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+
+### <a name="manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>Manage SQL database failover with single databases and elastic pools
+
+| Opdracht | Beschrijving |
+| --- | --- |
+| [az sql failover-group create](/cli/azure/sql/failover-group#az-sql-failover-group-create) |This command creates a failover group and registers it on both primary and secondary servers|
+| [az sql failover-group delete](/cli/azure/sql/failover-group#az-sql-failover-group-delete) | Removes the failover group from the server and deletes all secondary databases included the group |
+| [az sql failover-group show](/cli/azure/sql/failover-group#az-sql-failover-group-show) | Retrieves the failover group configuration |
+| [az sql failover-group update](/cli/azure/sql/failover-group#az-sql-failover-group-update) |Modifies the configuration of the failover group and/or adds one or more databases to an Azure SQL Database failover group|
+| [az sql failover-group set-primary](/cli/azure/sql/failover-group#az-sql-failover-group-set-primary) | Triggers failover of the failover group to the secondary server |
+
+### <a name="manage-sql-database-failover-groups-with-managed-instances"></a>Manage SQL database failover groups with managed instances
+
+| Opdracht | Beschrijving |
+| --- | --- |
+| [az sql instance-failover-group create](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-create) | This command creates a failover group and registers it on both primary and secondary servers|
+| [az sql instance-failover-group update](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-update) | Modifies the configuration of the failover group|
+| [az sql instance-failover-group show](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-show) | Retrieves the failover group configuration|
+| [az sql instance-failover-group set-primary](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-set-primary) | Triggers failover of the failover group to the secondary server|
+| [az sql instance-failover-group delete](/cli/azure/sql/instance-failover-group#az-sql-instance-failover-group-delete) | Removes a failover group |
+
+* * *
 
 > [!IMPORTANT]
-> Zie [een failover-groep configureren en failover voor één data base](scripts/sql-database-add-single-db-to-failover-group-powershell.md)voor een voorbeeld script.
->
+> For a sample script, see [Configure and failover a failover group for a single database](scripts/sql-database-add-single-db-to-failover-group-powershell.md).
 
-### <a name="powershell-managing-sql-database-failover-groups-with-managed-instances"></a>Power shell: beheren SQL database failover-groepen met beheerde exemplaren 
-
-| Cmdlet | Beschrijving |
-| --- | --- |
-| [New-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseinstancefailovergroup) |Met deze opdracht maakt u een failovergroep en registreert u deze op de primaire en secundaire servers|
-| [Set-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseinstancefailovergroup) |Hiermee wijzigt u de configuratie van de failovergroep|
-| [Get-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseinstancefailovergroup) |Hiermee wordt de configuratie van de failovergroep opgehaald|
-| [Switch-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabaseinstancefailovergroup) |De failover van de failovergroep naar de secundaire server wordt geactiveerd|
-| [Remove-AzSqlDatabaseInstanceFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabaseinstancefailovergroup) | Hiermee verwijdert u een failovergroep|
-|  | |
-
-### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: SQL database-failover-groepen beheren met één en gepoolde data bases
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Manage SQL database failover groups with single and pooled databases
 
 | API | Beschrijving |
 | --- | --- |
-| [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
-| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Hiermee wordt de failover-groep van de server verwijderd |
-| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Failover van de huidige primaire server naar deze server. |
-| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails van de huidige primaire server naar deze server. Deze bewerking kan leiden tot verlies van gegevens. |
-| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Hiermee wordt een failovergroep opgehaald. |
-| [Failover-groepen weer geven per server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Geeft een lijst van de failover-groepen op een server. |
-| [Failovergroep bijwerken](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Hiermee wordt een failovergroep bijgewerkt. |
-|  | |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/createorupdate) | Creates or updates a failover group |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/delete) | Removes the failover group from the server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/failovergroups/failover) | Fails over from the current primary server to this server. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/failovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/get) | Gets a failover group. |
+| [List Failover Groups By Server](https://docs.microsoft.com/rest/api/sql/failovergroups/listbyserver) | Lists the failover groups in a server. |
+| [Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups/update) | Updates a failover group. |
 
-### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: failover-groepen beheren met beheerde exemplaren
+### <a name="rest-api-manage-failover-groups-with-managed-instances"></a>REST API: Manage failover groups with Managed Instances
 
 | API | Beschrijving |
 | --- | --- |
-| [Failovergroep maken of bijwerken](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Hiermee wordt een failovergroep gemaakt of bijgewerkt |
-| [Failovergroep verwijderen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Hiermee wordt de failover-groep van de server verwijderd |
-| [Failover (gepland)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Failover van de huidige primaire server naar deze server. |
-| [Forceren van gegevens verlies door failover toestaan](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails van de huidige primaire server naar deze server. Deze bewerking kan leiden tot verlies van gegevens. |
-| [Failovergroep ophalen](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Hiermee wordt een failovergroep opgehaald. |
-| [Failover-groepen weer geven-lijst per locatie](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Hiermee worden de failover-groepen op een locatie weer gegeven. |
+| [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/createorupdate) | Creates or updates a failover group |
+| [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Removes the failover group from the server |
+| [Failover (Planned)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | Fails over from the current primary server to this server. |
+| [Force Failover Allow Data Loss](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) |ails over from the current primary server to this server. This operation might result in data loss. |
+| [Get Failover Group](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Gets a failover group. |
+| [List Failover Groups - List By Location](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Lists the failover groups in a location. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor gedetailleerde zelf studies
-    - [Eén data base aan een failovergroep toevoegen](sql-database-single-database-failover-group-tutorial.md)
-    - [Elastische pool toevoegen aan een failovergroep](sql-database-elastic-pool-failover-group-tutorial.md)
-    - [Een beheerd exemplaar toevoegen aan een failovergroep](sql-database-managed-instance-failover-group-tutorial.md)
-- Zie voor voorbeeld scripts:
-  - [Power shell gebruiken voor het configureren van actieve geo-replicatie voor één data base in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-  - [Power shell gebruiken voor het configureren van actieve geo-replicatie voor een gegroepeerde Data base in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
-  - [Power shell gebruiken om een Azure SQL Database afzonderlijke data base toe te voegen aan een failovergroep](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
-- Zie [overzicht van bedrijfs continuïteit](sql-database-business-continuity.md) voor een overzicht en scenario's voor bedrijfs continuïteit
-- Zie [SQL database automatische back-ups](sql-database-automated-backups.md)voor meer informatie over Azure SQL database automatische back-ups.
-- Zie [een Data Base herstellen vanuit de door de service geïnitieerde back-ups](sql-database-recovery-using-backups.md)voor meer informatie over het gebruik van automatische back-ups voor herstel.
-- Zie [SQL database beveiliging na nood herstel](sql-database-geo-replication-security-config.md)voor meer informatie over de verificatie vereisten voor een nieuwe primaire server en data base.
+- For detailed tutorials, see
+    - [Add single database to a failover group](sql-database-single-database-failover-group-tutorial.md)
+    - [Add elastic pool to a failover group](sql-database-elastic-pool-failover-group-tutorial.md)
+    - [Add a managed instance to a failover group](sql-database-managed-instance-failover-group-tutorial.md)
+- For sample scripts, see:
+  - [Use PowerShell to configure active geo-replication for a single database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
+  - [Use PowerShell to configure active geo-replication for a pooled database in Azure SQL Database](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
+  - [Use PowerShell to add an Azure SQL Database single database to a failover group](scripts/sql-database-add-single-db-to-failover-group-powershell.md)
+- For a business continuity overview and scenarios, see [Business continuity overview](sql-database-business-continuity.md)
+- To learn about Azure SQL Database automated backups, see [SQL Database automated backups](sql-database-automated-backups.md).
+- To learn about using automated backups for recovery, see [Restore a database from the service-initiated backups](sql-database-recovery-using-backups.md).
+- To learn about authentication requirements for a new primary server and database, see [SQL Database security after disaster recovery](sql-database-geo-replication-security-config.md).

@@ -1,5 +1,5 @@
 ---
-title: Herstellen van een verwijderde Office 365-groep - Azure AD | Microsoft Docs
+title: Restore a deleted Office 365 group - Azure AD | Microsoft Docs
 description: Een verwijderde groep herstellen, groepen weergeven die kunnen worden hersteld en een groep definitief verwijderen in Azure Active Directory
 services: active-directory
 author: curtand
@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32511b638d4674198ce919b8b3a90e67b1c3cfc7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 96d212df51a58125e3b959a18f5cf2ac9d391d30
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60471414"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422369"
 ---
 # <a name="restore-a-deleted-office-365-group-in-azure-active-directory"></a>Een verwijderde Office 365-groep herstellen in Azure Active Directory
 
-Wanneer u een Office 365-groep verwijdert in Azure AD (Azure Active Directory), blijft de verwijderde groep behouden maar is deze gedurende 30 dagen na de verwijderingsdatum niet meer zichtbaar. Zo kunnen de groep en bijbehorende inhoud indien nodig nog worden hersteld. Deze functionaliteit is exclusief beperkt tot Office 365-groepen in Azure AD. Het is niet beschikbaar voor beveiligingsgroepen en distributiegroepen. Houd er rekening mee dat de periode van 30-daagse groep herstel kan niet worden aangepast.
+Wanneer u een Office 365-groep verwijdert in Azure AD (Azure Active Directory), blijft de verwijderde groep behouden maar is deze gedurende 30 dagen na de verwijderingsdatum niet meer zichtbaar. Zo kunnen de groep en bijbehorende inhoud indien nodig nog worden hersteld. Deze functionaliteit is exclusief beperkt tot Office 365-groepen in Azure AD. Het is niet beschikbaar voor beveiligingsgroepen en distributiegroepen. Please note that the 30-day group restoration period is not customizable.
 
 > [!NOTE]
 > Gebruik `Remove-MsolGroup` niet omdat de groep dan definitief wordt leeggemaakt. Gebruik altijd `Remove-AzureADMSGroup` om een Office 365-groep te verwijderen.
@@ -31,17 +31,17 @@ De machtigingen die zijn vereist om een groep te herstellen, kunnen zijn:
 
 Rol | Machtigingen
 --------- | ---------
-Globale beheerder en Partner laag2-ondersteuning voor Intune-beheerder | Kan elke willekeurige Office 365-groep herstellen
-De Gebruikerbeheerder van de en Partner laag1-ondersteuning voor | Kan elke verwijderde Office 365-groep herstellen, behalve de groepen die zijn toegewezen aan de rol Bedrijfsbeheerder
-Gebruiker | Een verwijderde Office 365-groep waarvan ze eigenaar kunt herstellen
+Global administrator, Group administrator, Partner Tier2 support, and Intune administrator | Kan elke willekeurige Office 365-groep herstellen
+User administrator and Partner Tier1 support | Kan elke verwijderde Office 365-groep herstellen, behalve de groepen die zijn toegewezen aan de rol Bedrijfsbeheerder
+Gebruiker | Can restore any deleted Office 365 group that they own
 
 ## <a name="view-and-manage-the-deleted-office-365-groups-that-are-available-to-restore"></a>De verwijderde Office 365-groepen weergeven en beheren die beschikbaar zijn om te herstellen
 
-1. Aanmelden bij de [Azure AD-beheercentrum](https://aad.portal.azure.com) met een administrator-account van gebruiker.
+1. Sign in to the [Azure AD admin center](https://aad.portal.azure.com) with a User administrator account.
 
 2. Selecteer **Groepen** en vervolgens **Verwijderde groepen** om de verwijderde groepen weer te geven die beschikbaar zijn om te herstellen.
 
-    ![groepen die beschikbaar zijn voor het herstellen weergeven](media/groups-lifecycle/deleted-groups3.png)
+    ![view groups that are available to restore](media/groups-lifecycle/deleted-groups3.png)
 
 3. Op de blade **Verwijderde groepen** kunt u:
 

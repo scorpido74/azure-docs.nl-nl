@@ -1,6 +1,6 @@
 ---
-title: Quickstart - De toegang die een gebruiker heeft tot Azure-resources bekijken | Microsoft Docs
-description: Ontdek hoe u de toegang die een gebruiker of andere beveiligings-principal heeft tot Azure-resources bekijkt met behulp van op rollen gebaseerd toegangsbeheer (RBAC) en de Azure-portal.
+title: Quickstart - View the access a user has to Azure resources
+description: In this QuickStart, learn how to view the access a user or other security principal has to Azure resources using role-based access control (RBAC) and the Azure portal.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782322"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419618"
 ---
-# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Quickstart: De toegang die een gebruiker heeft tot Azure-resources bekijken
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Quickstart: View the access a user has to Azure resources
 
 U kunt de blade **Toegangsbeheer (IAM)** in [Op rollen gebaseerd toegangsbeheer (RBAC)](overview.md) gebruiken om de toegang die een gebruiker of een andere beveiligings-principal tot de Azure-resources heeft te bekijken. Maar soms wilt u alleen snel de toegang van één gebruiker of een andere beveiligings-principal bekijken. De eenvoudigste manier om dit te doen, is met de functie **Toegang controleren** in de Azure-portal.
 
@@ -33,7 +33,7 @@ U kunt de blade **Toegangsbeheer (IAM)** in [Op rollen gebaseerd toegangsbeheer 
 
 1. Klik op uw abonnement.
 
-1. Klik op **Toegangsbeheer (IAM)**.
+1. Klik op **Toegangsbeheer (IAM)** .
 
 1. Klik op het tabblad **Toegang controleren**.
 
@@ -54,4 +54,4 @@ U kunt de blade **Toegangsbeheer (IAM)** in [Op rollen gebaseerd toegangsbeheer 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Toegang tot Azure-resources verlenen aan een gebruiker met behulp van RBAC en de Azure-portal](quickstart-assign-role-user-portal.md)
+> [Tutorial: Grant a user access to Azure resources using RBAC and the Azure portal](quickstart-assign-role-user-portal.md)

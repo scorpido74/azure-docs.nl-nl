@@ -1,59 +1,59 @@
 ---
-title: Authentication
+title: Verificatie
 titleSuffix: Azure Cognitive Services
-description: 'Er zijn drie manieren om een aanvraag te verifiëren voor een Azure Cognitive Services-resource: een abonnements sleutel, een Bearer-token of een multi-service abonnement. In dit artikel vindt u informatie over elke methode en het maken van een aanvraag.'
+description: "There are three ways to authenticate a request to an Azure Cognitive Services resource: a subscription key, a bearer token, or a multi-service subscription. In this article, you'll learn about each method, and how to make a request."
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 07/24/2019
+ms.date: 11/22/2019
 ms.author: erhopf
-ms.openlocfilehash: ae3530af7741b8ce48e08c2a85589ffae8a83f49
-ms.sourcegitcommit: 32242bf7144c98a7d357712e75b1aefcf93a40cc
+ms.openlocfilehash: 1c13c2cc4d4e562d3512de90338d874091dfeef6
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70276779"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423940"
 ---
-# <a name="authenticate-requests-to-azure-cognitive-services"></a>Aanvragen verifiëren voor Azure Cognitive Services
+# <a name="authenticate-requests-to-azure-cognitive-services"></a>Authenticate requests to Azure Cognitive Services
 
-Elke aanvraag voor een Azure cognitieve service moet een verificatie header bevatten. Deze header wordt door gegeven aan een abonnements sleutel of toegangs token, die wordt gebruikt om uw abonnement voor een service of groep services te valideren. In dit artikel vindt u meer informatie over drie manieren om een aanvraag te verifiëren en de vereisten voor elke.
+Each request to an Azure Cognitive Service must include an authentication header. This header passes along a subscription key or access token, which is used to validate your subscription for a service or group of services. In this article, you'll learn about three ways to authenticate a request and the requirements for each.
 
-* [Verifiëren met een abonnements sleutel van één service](#authenticate-with-a-single-service-subscription-key)
-* [Verifiëren met een sleutel voor meerdere service abonnementen](#authenticate-with-a-multi-service-subscription-key)
-* [Verifiëren met een token](#authenticate-with-an-authentication-token)
-* [Verifiëren met Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
+* [Authenticate with a single-service subscription key](#authenticate-with-a-single-service-subscription-key)
+* [Authenticate with a multi-service subscription key](#authenticate-with-a-multi-service-subscription-key)
+* [Authenticate with a token](#authenticate-with-an-authentication-token)
+* [Authenticate with Azure Active Directory (AAD)](#authenticate-with-azure-active-directory)
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een aanvraag doet, hebt u een Azure-account en een Azure Cognitive Services-abonnement nodig. Als u al een account hebt, gaat u verder met de volgende sectie. Als u geen account hebt, kunt u binnen enkele minuten een overzicht krijgen van de volgende opties: [Maak een Cognitive Services-account voor Azure](cognitive-services-apis-create-account.md).
+Before you make a request, you need an Azure account and an Azure Cognitive Services subscription. If you already have an account, go ahead and skip to the next section. If you don't have an account, we have a guide to get you set up in minutes: [Create a Cognitive Services account for Azure](cognitive-services-apis-create-account.md).
 
-U kunt uw abonnements sleutel ophalen uit de [Azure Portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) nadat u uw account hebt gemaakt of een [gratis proef versie](https://azure.microsoft.com/try/cognitive-services/my-apis)hebt geactiveerd.
+You can get your subscription key from the [Azure portal](cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) after creating your account, or activating a [free trial](https://azure.microsoft.com/try/cognitive-services/my-apis).
 
-## <a name="authentication-headers"></a>Verificatie headers
+## <a name="authentication-headers"></a>Authentication headers
 
-U kunt snel de verificatie headers bekijken die beschikbaar zijn voor gebruik met Azure Cognitive Services.
+Let's quickly review the authentication headers available for use with Azure Cognitive Services.
 
-| Header | Description |
+| Header | Beschrijving |
 |--------|-------------|
-| OCP-Apim-Subscription-Key | Gebruik deze header om te verifiëren met een abonnements sleutel voor een specifieke service of een sleutel van een abonnement op meerdere services. |
-| Ocp-Apim-Subscription-Region | Deze header is alleen vereist wanneer u een abonnements sleutel met meerdere services gebruikt met de [Translator text-API](./Translator/reference/v3-0-reference.md). Gebruik deze header om de regio van het abonnement op te geven. |
-| Authorization | Gebruik deze header als u een verificatie token gebruikt. De stappen voor het uitvoeren van een token uitwisseling worden beschreven in de volgende secties. De waarde die wordt gegeven, heeft `Bearer <TOKEN>`de volgende indeling:. |
+| Ocp-Apim-Subscription-Key | Use this header to authenticate with a subscription key for a specific service or a multi-service subscription key. |
+| Ocp-Apim-Subscription-Region | This header is only required when using a multi-service subscription key with the [Translator Text API](./Translator/reference/v3-0-reference.md). Use this header to specify the subscription region. |
+| Autorisatie | Use this header if you are using an authentication token. The steps to perform a token exchange are detailed in the following sections. The value provided follows this format: `Bearer <TOKEN>`. |
 
-## <a name="authenticate-with-a-single-service-subscription-key"></a>Verifiëren met een abonnements sleutel van één service
+## <a name="authenticate-with-a-single-service-subscription-key"></a>Authenticate with a single-service subscription key
 
-De eerste optie is het verifiëren van een aanvraag met een abonnements sleutel voor een specifieke service, zoals Translator Text. De sleutels zijn beschikbaar in het Azure Portal voor elke resource die u hebt gemaakt. Als u een abonnements sleutel wilt gebruiken om een aanvraag te verifiëren, moet deze worden door `Ocp-Apim-Subscription-Key` gegeven aan de header.
+The first option is to authenticate a request with a subscription key for a specific service, like Translator Text. The keys are available in the Azure portal for each resource that you've created. To use a subscription key to authenticate a request, it must be passed along as the `Ocp-Apim-Subscription-Key` header.
 
-In deze voorbeeld aanvragen ziet u hoe u de `Ocp-Apim-Subscription-Key` koptekst kunt gebruiken. Houd er rekening mee dat u bij het gebruik van dit voor beeld een geldige abonnements sleutel moet toevoegen.
+These sample requests demonstrates how to use the `Ocp-Apim-Subscription-Key` header. Keep in mind, when using this sample you'll need to include a valid subscription key.
 
-Dit is een voor beeld van een aanroep van de Bing Webzoekopdrachten-API:
+This is a sample call to the Bing Web Search API:
 ```cURL
 curl -X GET 'https://api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Dit is een voor beeld van een aanroep van de Translator Text-API:
+This is a sample call to the Translator Text API:
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' \
@@ -61,26 +61,26 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-In de volgende video wordt gedemonstreerd met behulp van een Cognitive Services sleutel.
+The following video demonstrates using a Cognitive Services key.
 
-## <a name="authenticate-with-a-multi-service-subscription-key"></a>Verifiëren met een sleutel voor meerdere service abonnementen
+## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authenticate with a multi-service subscription key
 
 >[!WARNING]
-> Op dit moment bieden deze services **geen** ondersteuning voor meerdere service sleutels: QnA Maker, spraak Services, Custom Vision en anomalie detectie.
+> At this time, these services **don't** support multi-service keys: QnA Maker, Speech Services, Custom Vision, and Anomaly Detector.
 
-Deze optie gebruikt ook een abonnements sleutel voor het verifiëren van aanvragen. Het belangrijkste verschil is dat een abonnements sleutel niet is gekoppeld aan een specifieke service, maar één sleutel kan worden gebruikt om aanvragen voor meerdere Cognitive Services te verifiëren. Zie [Cognitive Services prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/) voor informatie over regionale Beschik baarheid, ondersteunde functies en prijzen.
+This option also uses a subscription key to authenticate requests. The main difference is that a subscription key is not tied to a specific service, rather, a single key can be used to authenticate requests for multiple Cognitive Services. See [Cognitive Services pricing](https://azure.microsoft.com/pricing/details/cognitive-services/) for information about regional availability, supported features, and pricing.
 
-De abonnements sleutel wordt in elke aanvraag gegeven als de `Ocp-Apim-Subscription-Key` header.
+The subscription key is provided in each request as the `Ocp-Apim-Subscription-Key` header.
 
-[![Demonstratie van een sleutel voor meerdere service abonnementen voor Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
+[![Multi-service subscription key demonstration for Cognitive Services](./media/index/single-key-demonstration-video.png)](https://www.youtube.com/watch?v=psHtA1p7Cas&feature=youtu.be)
 
 ### <a name="supported-regions"></a>Ondersteunde regio’s
 
-Wanneer u de sleutel voor meerdere service abonnementen gebruikt om een aanvraag in `api.cognitive.microsoft.com`te stellen, moet u de regio in de URL toevoegen. Bijvoorbeeld: `westus.api.cognitive.microsoft.com`.
+When using the multi-service subscription key to make a request to `api.cognitive.microsoft.com`, you must include the region in the URL. Bijvoorbeeld: `westus.api.cognitive.microsoft.com`.
 
-Wanneer u de sleutel voor een abonnement met meerdere services gebruikt met de Translator text-API, moet u de regio `Ocp-Apim-Subscription-Region` van het abonnement opgeven met de koptekst.
+When using multi-service subscription key with the Translator Text API, you must specify the subscription region with the `Ocp-Apim-Subscription-Region` header.
 
-Verificatie met meerdere services wordt in deze regio's ondersteund:
+Multi-service authentication is supported in these regions:
 
 | | | |
 |-|-|-|
@@ -91,16 +91,16 @@ Verificatie met meerdere services wordt in deze regio's ondersteund:
 | `westeurope` | `westus` | `westus2` |
 
 
-### <a name="sample-requests"></a>Voorbeeld aanvragen
+### <a name="sample-requests"></a>Sample requests
 
-Dit is een voor beeld van een aanroep van de Bing Webzoekopdrachten-API:
+This is a sample call to the Bing Web Search API:
 
 ```cURL
 curl -X GET 'https://YOUR-REGION.api.cognitive.microsoft.com/bing/v7.0/search?q=Welsch%20Pembroke%20Corgis' \
 -H 'Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY' | json_pp
 ```
 
-Dit is een voor beeld van een aanroep van de Translator Text-API:
+This is a sample call to the Translator Text API:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -110,27 +110,27 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-## <a name="authenticate-with-an-authentication-token"></a>Verifiëren met een verificatie token
+## <a name="authenticate-with-an-authentication-token"></a>Authenticate with an authentication token
 
-Sommige Azure Cognitive Services accepteren, en in sommige gevallen is een verificatie token vereist. Deze services ondersteunen momenteel verificatie tokens:
+Some Azure Cognitive Services accept, and in some cases require, an authentication token. Currently, these services support authentication tokens:
 
-* API voor tekst omzetting
-* Spraak Services: REST API voor spraak naar tekst
-* Spraak Services: REST API van tekst naar spraak
+* Text Translation API
+* Speech Services: Speech-to-text REST API
+* Speech Services: Text-to-speech REST API
 
 >[!NOTE]
-> QnA Maker gebruikt ook de autorisatie-header, maar hiervoor is een eindpunt sleutel vereist. Zie [QnA Maker voor meer informatie: Vraag het antwoord op uit](./qnamaker/quickstarts/get-answer-from-kb-using-curl.md)de Knowledge Base.
+> QnA Maker also uses the Authorization header, but requires an endpoint key. For more information, see [QnA Maker: Get answer from knowledge base](./qnamaker/quickstarts/get-answer-from-knowledge-base-using-url-tool.md).
 
 >[!WARNING]
-> De services die verificatie tokens ondersteunen, kunnen na verloop van tijd veranderen, Controleer de API-verwijzing voor een service voordat u deze verificatie methode gebruikt.
+> The services that support authentication tokens may change over time, please check the API reference for a service before using this authentication method.
 
-Voor verificatie tokens kunnen zowel één service als sleutels voor meerdere abonnementen worden uitgewisseld. Verificatie tokens zijn 10 minuten geldig.
+Both single service and multi-service subscription keys can be exchanged for authentication tokens. Authentication tokens are valid for 10 minutes.
 
-Verificatie tokens worden opgenomen in een aanvraag als de `Authorization` header. De gegeven token waarde moet worden voorafgegaan door `Bearer`, bijvoorbeeld:. `Bearer YOUR_AUTH_TOKEN`
+Authentication tokens are included in a request as the `Authorization` header. The token value provided must be preceded by `Bearer`, for example: `Bearer YOUR_AUTH_TOKEN`.
 
-### <a name="sample-requests"></a>Voorbeeld aanvragen
+### <a name="sample-requests"></a>Sample requests
 
-Gebruik deze URL voor het uitwisselen van een abonnements sleutel voor een verificatie `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`token:.
+Use this URL to exchange a subscription key for an authentication token: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
@@ -140,7 +140,7 @@ curl -v -X POST \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-Deze meerdere service regio's ondersteunen token uitwisseling:
+These multi-service regions support token exchange:
 
 | | | |
 |-|-|-|
@@ -150,7 +150,7 @@ Deze meerdere service regio's ondersteunen token uitwisseling:
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
 
-Nadat u een verificatie token hebt ontvangen, moet u dit in elke aanvraag door geven als de `Authorization` header. Dit is een voor beeld van een aanroep van de Translator Text-API:
+After you get an authentication token, you'll need to pass it in each request as the `Authorization` header. This is a sample call to the Translator Text API:
 
 ```cURL
 curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de' \
@@ -165,4 +165,4 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 * [Wat zijn cognitieve services?](welcome.md)
 * [Prijzen van Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)
-* [Aangepaste subdomeinen](cognitive-services-custom-subdomains.md)
+* [Custom subdomains](cognitive-services-custom-subdomains.md)

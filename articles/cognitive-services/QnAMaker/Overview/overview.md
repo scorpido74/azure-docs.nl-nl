@@ -1,92 +1,95 @@
 ---
-title: Wat is QnA Maker-service?
+title: What is QnA Maker service?
 titleSuffix: Azure Cognitive Services
-description: QnA Maker is een op de cloud gebaseerde NLP-service waarmee u eenvoudig een natuurlijk gesprek slaag maakt over uw gegevens. Het kan worden gebruikt om het meest geschikte antwoord te vinden voor een bepaalde invoer in natuurlijke taal, vanuit uw aangepaste Knowledge Base (KB) aan informatie.
+description: QnA Maker is a cloud-based NLP service that easily creates a natural conversational layer over your data. It can be used to find the most appropriate answer for any given natural language input, from your custom knowledge base (KB) of information.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 08/01/2019
+ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: d647875895e33254b51fb8c3d11aa40c6c1ed71f
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 944ddb7f83a4d10861e5a16dbc69b8f9e4dabfe0
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71973791"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422678"
 ---
-# <a name="what-is-the-qna-maker-service"></a>Wat is de QnA Maker-service?
+# <a name="what-is-the-qna-maker-service"></a>What is the QnA Maker service?
 
-QnA Maker is een NLP-service (in de cloud gebaseerde natuurlijke taal verwerking) waarmee eenvoudig een natuurlijk gesprek slaag wordt gemaakt over uw gegevens. Het kan worden gebruikt om het meest geschikte antwoord te vinden voor een bepaalde invoer in natuurlijke taal, vanuit uw aangepaste Knowledge Base (KB) aan informatie.
+QnA Maker is a cloud-based Natural Language Processing (NLP) service that easily creates a natural conversational layer over your data. It can be used to find the most appropriate answer for any given natural language input, from your custom knowledge base (KB) of information.
 
-Een client toepassing voor QnA Maker is een wille keurige conversatie toepassing die communiceert met een gebruiker in natuurlijke taal om een vraag te beantwoorden. Voorbeelden van clienttoepassingen zijn socialemedia-apps, chatbots en met spraak bestuurde bureaubladtoepassingen.
+A client application for QnA Maker is any conversational application that communicates with a user in natural language to answer a question. Voorbeelden van clienttoepassingen zijn socialemedia-apps, chatbots en met spraak bestuurde bureaubladtoepassingen.
 
-## <a name="when-to-use-qna-maker"></a>Wanneer moet ik QnA Maker gebruiken?
+## <a name="when-to-use-qna-maker"></a>When to use QnA Maker
 
-* **Wanneer u statische informatie hebt** : gebruik QnA Maker als u statische informatie hebt in uw Knowledge Base van antwoorden. Deze kennis database is aangepast aan uw behoeften, die u hebt gemaakt met documenten zoals [pdf's en url's](../concepts/data-sources-supported.md).
-* **Als u hetzelfde antwoord op een aanvraag, vraag of opdracht wilt opgeven** wanneer verschillende gebruikers dezelfde vraag verzenden, wordt hetzelfde antwoord naar beide geretourneerd. 
-* **Als u statische gegevens op basis van meta gegevens wilt filteren** , voegt u labels voor [META](../how-to/metadata-generateanswer-usage.md) gegevens toe om extra filter opties te bieden die relevant zijn voor de gebruikers van uw client toepassing en de informatie. Algemene informatie over meta gegevens omvat [Chit-Chat](../how-to/chit-chat-knowledge-base.md), inhouds type of-indeling, inhouds doel en de versheid van inhoud.
-* **Wanneer u een bot-conversatie met statische informatie wilt beheren** , neemt uw kennis de conversatie tekst of opdracht van de gebruiker en beantwoordt deze. Als het antwoord deel uitmaakt van een vooraf bepaalde conversatie stroom, die in uw Knowledge Base wordt weer gegeven in de [context van meerdere scha kelen](../how-to/multiturn-conversation.md), kan de bot deze stroom eenvoudig bieden.  
+* **When you have static information** - Use QnA Maker when you have static information in your knowledge base of answers. This knowledge base is custom to your needs, which you've built with documents such as [PDFs and URLs](../concepts/data-sources-supported.md).
+* **When you want to provide the same answer to a request, question, or command** - when different users submit the same question, the same answer is returned. 
+* **When you want to filter static information based on meta-information** - add [metadata](../how-to/metadata-generateanswer-usage.md) tags to provide additional filtering options relevant to your client application's users and the information. Common metadata information includes [chit-chat](../how-to/chit-chat-knowledge-base.md), content type or format, content purpose, and content freshness.
+* **When you want to manage a bot conversation that includes static information** - your knowledge base takes a user's conversational text or command and answers it. If the answer is part of a pre-determined conversation flow, represented in your knowledge base with [multi-turn context](../how-to/multiturn-conversation.md), the bot can easily provide this flow.  
 
-## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>QnA Maker Knowledge Base gebruiken in een chat-bot
+## <a name="use-qna-maker-knowledge-base-in-a-chat-bot"></a>Use QnA Maker knowledge base in a chat bot
 
-Zodra een QnA Maker Knowledge Base is gepubliceerd, stuurt een client toepassing een vraag naar uw Knowledge Base-eind punt en ontvangt de resultaten als een JSON-antwoord. Een gemeen schappelijke client toepassing voor QnA Maker is een chat-bot.
+Once a QnA Maker knowledge base is published, a client application sends a question to your knowledge base endpoint and receives the results as a JSON response. A common client application for QnA Maker is a chat bot.
 
-![Een vraag stellen aan een bot en antwoord krijgen van inhoud van kennis basis](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
+![Ask a bot a question and get answer from knowledge base content](../media/qnamaker-overview-learnabout/bot-chat-with-qnamaker.png)
 
-|Stap|Action|
+|Stap|Bewerking|
 |:--|:--|
-|1|De client toepassing verstuurt de _vraag_ van de gebruiker (tekst in hun eigen woorden), "Hoe kan ik op een programmatische manier mijn Knowledge Base bijwerken?" aan uw Knowledge Base-eind punt.|
-|2|QnA Maker maakt gebruik van de getrainde kennis basis om het juiste antwoord te geven en eventuele vervolg vragen die kunnen worden gebruikt voor het verfijnen van de zoek opdracht naar het beste antwoord. QnA Maker retourneert een reactie in JSON-indeling.|
-|3|De client toepassing gebruikt het JSON-antwoord om beslissingen te nemen over het volgen van de conversatie. Deze beslissingen kunnen bevatten hoe het bovenste antwoord wordt weer gegeven of dat er meer opties worden gepresenteerd om de zoek opdracht voor het beste antwoord te verfijnen. |
+|1|The client application sends the user's _question_ (text in their own words), "How do I programmatically update my Knowledge Base?" to your knowledge base endpoint.|
+|2|QnA Maker uses the trained knowledge base to provide the correct answer and any follow-up prompts that can be used to refine the search for the best answer. QnA Maker returns a JSON-formatted response.|
+|3|The client application uses the JSON response to make decisions about how to continue the conversation. These decisions can include showing the top answer and presenting more choices to refine the search for the best answer. |
 |||
 
-## <a name="what-is-a-knowledge-base"></a>Wat is een kennis database? 
+## <a name="what-is-a-knowledge-base"></a>What is a knowledge base? 
 
-QnA Maker [uw inhoud importeert](../concepts/data-sources-supported.md) in een Knowledge Base met vraag-en antwoord sets. Het import proces haalt informatie over de relatie tussen de onderdelen van uw gestructureerde en semi-gestructureerde inhoud om relaties tussen de vraag-en antwoord sets te impliceren. U kunt deze vraag-en antwoord sets bewerken of nieuwe toevoegen.  
+QnA Maker [imports your content](../concepts/data-sources-supported.md) into a knowledge base of question and answer sets. The import process extracts information about the relationship between the parts of your structured and semi-structured content to imply relationships between the question and answer sets. You can edit these question and answer sets or add new sets.  
 
-De inhoud van de vraag en de antwoordset bevat alle alternatieve vragen voor een specifiek antwoord, labels voor meta gegevens die worden gebruikt voor het filteren van antwoord keuzes tijdens de zoek opdracht, en opvolgings prompts om de zoek verfijning voort te zetten.
+The content of the question and answer set includes:
+* All the alternate forms of the question
+* Metadata tags used to filter answer choices during the search
+* Follow-up prompts to continue the search refinement
 
-![Voorbeeld vraag en antwoord met meta gegevens](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
+![Example question and answer with metadata](../media/qnamaker-overview-learnabout/example-question-and-answer-with-metadata.png)
 
-Nadat u uw Knowledge Base hebt gepubliceerd, verzendt een client toepassing de vraag van een gebruiker naar uw eind punt. Uw QnA Maker-service verwerkt de vraag en reageert met het beste antwoord. 
+After you publish your knowledge base, a client application sends a user's question to your endpoint. Your QnA Maker service processes the question and responds with the best answer. 
 
-## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Maken, beheren en publiceren naar een bot zonder code
+## <a name="create-manage-and-publish-to-a-bot-without-code"></a>Create, manage, and publish to a bot without code
 
-De QnA Maker Portal biedt de volledige ontwerp ervaring op basis van kennis. U kunt documenten in hun huidige vorm importeren in uw Knowledge Base. Deze documenten (zoals een veelgestelde vragen, een werk blad of een webpagina) worden omgezet in vraag-en antwoord sets. Elke set wordt geanalyseerd op opvolgings prompts en verbonden met andere sets. De uiteindelijke verkoop vorm biedt ondersteuning voor uitgebreide presentaties, waaronder afbeeldingen en koppelingen. 
+The QnA Maker portal provides the complete knowledge base authoring experience. You can import documents, in their current form, to your knowledge base. These documents (such as an FAQ, product manual, spreadsheet, or web page) are converted into question and answer sets. Each set is analyzed for follow-up prompts and connected to other sets. The final _markdown_ format supports rich presentation including images and links. 
 
-Zodra uw kennis database is bewerkt, publiceert u de Knowledge Base naar een werkende [Azure web app-bot](https://azure.microsoft.com/services/bot-service/) zonder dat u code hoeft te schrijven. Test uw bot in het [Azure Portal](https://portal.azure.com) of down load en blijf de ontwikkeling. 
+Once your knowledge base is edited, publish the knowledge base to a working [Azure Web App bot](https://azure.microsoft.com/services/bot-service/) without writing any code. Test your bot in the [Azure portal](https://portal.azure.com) or download and continue development. 
 
-## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>De zoek kwaliteit en classificatie bieden het best mogelijke antwoord
+## <a name="search-quality-and-ranking-provides-the-best-possible-answer"></a>Search quality and ranking provides the best possible answer
 
-Het systeem van QnA Maker is een gelaagde classificatie benadering. De gegevens worden opgeslagen in azure Search, die ook fungeert als de eerste laag met lagen. De belangrijkste resultaten van Azure Search worden vervolgens door gegeven via het herwaarderings model van QnA Maker NLP om de uiteindelijke resultaten en betrouwbaarheids score te produceren.
+QnA Maker's system is a layered ranking approach. The data is stored in Azure search, which also serves as the first ranking layer. The top results from Azure search are then passed through QnA Maker's NLP re-ranking model to produce the final results and confidence score.
 
-## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker verbetert het conversatie proces
+## <a name="qna-maker-improves-the-conversation-process"></a>QnA Maker improves the conversation process
 
-QnA Maker biedt vragen over meerdere schakelingen en actief leren om u te helpen bij het verbeteren van uw basis vraag-en-antwoord sets. 
+QnA Maker provides multi-turn prompts and active learning to help you improve your basic question and answer sets. 
 
-Met **vragen over meerdere schakelingen** krijgt u de mogelijkheid om vraag-en antwoord paren te verbinden. Met deze verbinding kan de client toepassing een antwoord op het hoogste niveau geven en kunnen er meer vragen worden gesteld om de zoek opdracht te verfijnen voor een eind antwoord. 
+**Multi-turn prompts** give you the opportunity to connect question and answer pairs. This connection allows the client application to provide a top answer and provides more questions to refine the search for a final answer. 
 
-Nadat de Knowledge Base vragen heeft ontvangen van gebruikers op het gepubliceerde eind punt, wordt in QnA Maker **actief leren** toegepast op deze praktijk vragen om wijzigingen in uw kennis basis te suggereren om de kwaliteit te verbeteren. 
+After the knowledge base receives questions from users at the published endpoint, QnA Maker applies **active learning** to these real-world questions to suggest changes to your knowledge base to improve the quality. 
 
 ## <a name="development-lifecycle"></a>Levenscyclus van ontwikkeling
 
-QnA Maker biedt ontwerp, training en publicatie samen met samenwerkings machtigingen voor integratie in de levens cyclus van de volledige ontwikkeling. 
+QnA Maker provides authoring, training, and publishing along with collaboration permissions to integrate into the full development life cycle. 
 
 ## <a name="how-do-i-start"></a>Hoe kan ik beginnen?
 
-**Stap 1**: Maak een QnA Maker resource in de [Azure Portal](https://portal.azure.com). 
+**Step 1**: Create a QnA Maker resource in the [Azure portal](https://portal.azure.com). 
 
-**Stap 2**: Maak een Knowledge Base in de [QnA Maker](https://www.qnamaker.ai) Portal. Voeg [bestanden en url's](../concepts/data-sources-supported.md) toe om de Knowledge Base te maken.  
+**Step 2**: Create a knowledge base in the [QnA Maker](https://www.qnamaker.ai) portal. Add [files and URLs](../concepts/data-sources-supported.md) to create the knowledge base.  
 
-**Stap 3**: Publiceer uw Knowledge Base en test vanuit uw aangepaste eind punt met behulp van [krul](../quickstarts/get-answer-from-kb-using-curl.md) of [postman](../quickstarts/get-answer-from-kb-using-postman.md). 
+**Step 3**: Publish your knowledge base and test from your custom endpoint using [cURL or Postman](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md). 
 
-**Stap 4**: Vanuit uw client toepassing roept u het eind punt van het kennis basis programma aan en leest u het JSON-antwoord om het beste antwoord op de gebruiker weer te geven.  
+**Step 4**: From your client application, programmatically call your knowledge base's endpoint. The client application processes the JSON response to show the best answer to the user.  
 
 ## <a name="next-steps"></a>Volgende stappen
-QnA Maker biedt alles wat u nodig hebt om uw aangepaste Knowledge Base te maken, beheren en implementeren. 
+QnA Maker provides everything you need to build, manage, and deploy your custom knowledge base. 
 
 > [!div class="nextstepaction"]
-> [Bekijk de meest recente wijzigingen](../whats-new.md)
+> [Review the latest changes](../whats-new.md)

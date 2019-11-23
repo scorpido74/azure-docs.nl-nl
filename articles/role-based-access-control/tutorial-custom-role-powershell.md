@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: Een aangepaste rol maken voor Azure-resources met Azure PowerShell | Microsoft Docs'
-description: Lees hier hoe u een aangepaste rol maakt voor Azure-resources met Azure PowerShell.
+title: Tutorial - Create a custom role for Azure resources using Azure PowerShell
+description: Get started creating a custom role for Azure resources using Azure PowerShell in this tutorial.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: 269bd74aca85ddbc2bafda30542c48f8ab391b32
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 176e465163d92156308eda64c4187467cc10ee15
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66158871"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419743"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Zelfstudie: Een aangepaste rol maken voor Azure-resources met Azure PowerShell
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Tutorial: Create a custom role for Azure resources using Azure PowerShell
 
 Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure PowerShell een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Een aangepast rol maken
+> * Een aangepaste rol maken
 > * Aangepaste rollen opvragen
 > * Een aangepaste rol bijwerken
 > * Een aangepaste rol verwijderen

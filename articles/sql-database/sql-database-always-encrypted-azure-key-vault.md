@@ -1,7 +1,7 @@
 ---
-title: Always Encrypted-Azure Key Vault
-description: In dit artikel wordt beschreven hoe u met de wizard Always Encrypted in SQL Server Management Studio gevoelige gegevens kunt beveiligen in een SQL database met gegevens versleuteling.
-keywords: gegevens versleuteling, versleutelings sleutel, Cloud versleuteling
+title: Always Encrypted - Azure Key Vault
+description: This article shows you how to secure sensitive data in a SQL database with data encryption using the Always Encrypted Wizard in SQL Server Management Studio.
+keywords: data encryption, encryption key, cloud encryption
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,109 +12,135 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 4fa4c461a3bcf5921be74eab9259fd07cc6b5f61
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 22324f59f766e8cd7fd8776acea72e3a56a8519f
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826454"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74421695"
 ---
-# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: gevoelige gegevens beveiligen en versleutelings sleutels opslaan in Azure Key Vault
+# <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Always Encrypted: Protect sensitive data and store encryption keys in Azure Key Vault
 
-Dit artikel laat u zien hoe u met behulp van de [Wizard always encrypted](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx)gevoelige gegevens kunt beveiligen in een SQL database met gegevens versleuteling. Het bevat ook instructies voor het opslaan van elke versleutelings sleutel in Azure Key Vault.
+This article shows you how to secure sensitive data in a SQL database with data encryption using the [Always Encrypted Wizard](https://msdn.microsoft.com/library/mt459280.aspx) in [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). It also includes instructions that will show you how to store each encryption key in Azure Key Vault.
 
-Always Encrypted is een nieuwe technologie voor gegevens versleuteling in Azure SQL Database en SQL Server die helpt bij het beschermen van gevoelige gegevens op de server, tijdens het verkeer tussen de client en de server, terwijl de gegevens in gebruik zijn. Always Encrypted zorgt ervoor dat gevoelige gegevens nooit als tekst zonder opmaak in het database systeem worden weer gegeven. Nadat u gegevens versleuteling hebt geconfigureerd, hebben alleen client toepassingen of app-servers die toegang hebben tot de sleutels toegang tot tekst zonder opmaak. Zie [Always encrypted (data base-engine)](https://msdn.microsoft.com/library/mt163865.aspx)voor meer informatie.
+Always Encrypted is a new data encryption technology in Azure SQL Database and SQL Server that helps protect sensitive data at rest on the server, during movement between client and server, and while the data is in use. Always Encrypted ensures that sensitive data never appears as plaintext inside the database system. After you configure data encryption, only client applications or app servers that have access to the keys can access plaintext data. For detailed information, see [Always Encrypted (Database Engine)](https://msdn.microsoft.com/library/mt163865.aspx).
 
-Nadat u de Data Base hebt geconfigureerd voor het gebruik van Always Encrypted, maakt u in C# Visual Studio een client toepassing om met de versleutelde gegevens te werken.
+After you configure the database to use Always Encrypted, you will create a client application in C# with Visual Studio to work with the encrypted data.
 
-Volg de stappen in dit artikel en meer informatie over het instellen van Always Encrypted voor een Azure SQL database. In dit artikel wordt beschreven hoe u de volgende taken uitvoert:
+Follow the steps in this article and learn how to set up Always Encrypted for an Azure SQL database. In this article you will learn how to perform the following tasks:
 
-* Gebruik de wizard Always Encrypted in SSMS om [Always encrypted sleutels](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3)te maken.
-  * Maak een [hoofd sleutel voor een kolom (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
-  * Maak een [kolom versleutelings sleutel (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
-* Een database tabel maken en kolommen versleutelen.
-* Een toepassing maken waarmee gegevens uit de versleutelde kolommen worden ingevoegd, geselecteerd en weer gegeven.
+- Use the Always Encrypted wizard in SSMS to create [Always Encrypted keys](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
+  - Create a [column master key (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
+  - Create a [column encryption key (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
+- Create a database table and encrypt columns.
+- Create an application that inserts, selects, and displays data from the encrypted columns.
 
 ## <a name="prerequisites"></a>Vereisten
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+For this tutorial, you'll need:
+
+- Een Azure-account en -abonnement. If you don't have one, sign up for a [free trial](https://azure.microsoft.com/pricing/free-trial/).
+- [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) version 13.0.700.242 or later.
+- [.NET Framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) or later (on the client computer).
+- [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
+- [Azure PowerShell](/powershell/azure/overview) or [Azure CLI](/cli/azure/install-azure-cli)
+
+## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Enable your client application to access the SQL Database service
+
+You must enable your client application to access the SQL Database service by setting up an Azure Active Directory (AAD) application and copying the *Application ID* and *key* that you will need to authenticate your application.
+
+To get the *Application ID* and *key*, follow the steps in [create an Azure Active Directory application and service principal that can access resources](../active-directory/develop/howto-create-service-principal-portal.md).
+
+## <a name="create-a-key-vault-to-store-your-keys"></a>Create a key vault to store your keys
+
+Now that your client app is configured and you have your application ID, it's time to create a key vault and configure its access policy so you and your application can access the vault's secrets (the Always Encrypted keys). The *create*, *get*, *list*, *sign*, *verify*, *wrapKey*, and *unwrapKey* permissions are required for creating a new column master key and for setting up encryption with SQL Server Management Studio.
+
+You can quickly create a key vault by running the following script. For a detailed explanation of these commands and more information about creating and configuring a key vault, see [What is Azure Key Vault?](../key-vault/key-vault-overview.md).
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 > [!IMPORTANT]
-> De Power shell-Azure Resource Manager module wordt nog steeds ondersteund door Azure SQL Database, maar alle toekomstige ontwikkeling is voor de module AZ. SQL. Zie [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)voor deze cmdlets. De argumenten voor de opdrachten in de module AZ en in de AzureRm-modules zijn aanzienlijk identiek.
-
-Voor deze zelf studie hebt u het volgende nodig:
-
-* Een Azure-account en -abonnement. Als u er nog geen hebt, kunt u zich aanmelden voor een [gratis proef versie](https://azure.microsoft.com/pricing/free-trial/).
-* [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) versie 13.0.700.242 of hoger.
-* [.NET Framework 4,6](https://msdn.microsoft.com/library/w0x726c2.aspx) of hoger (op de client computer).
-* [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
-* [Azure PowerShell](/powershell/azure/overview).
-
-## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>Uw client toepassing inschakelen voor toegang tot de SQL Database-Service
-U moet uw client toepassing inschakelen voor toegang tot de SQL Database-Service door een Azure Active Directory-toepassing (AAD) in te stellen en de *toepassings-id en-* *sleutel* te kopiëren die u nodig hebt om uw toepassing te verifiëren.
-
-Als u de *toepassings-id en-* *sleutel*wilt ophalen, volgt u de stappen in [Create a Azure Active Directory-toepassing en service-principal die toegang heeft tot resources](../active-directory/develop/howto-create-service-principal-portal.md).
-
-## <a name="create-a-key-vault-to-store-your-keys"></a>Een sleutel kluis maken om uw sleutels op te slaan
-Nu uw client-app is geconfigureerd en u uw toepassings-ID hebt, is het tijd om een sleutel kluis te maken en het toegangs beleid te configureren, zodat u en uw toepassing toegang hebben tot de geheimen van de kluis (de Always Encrypted sleutels). De machtigingen *maken*, *ophalen*, *lijst*, *ondertekenen*, *verifiëren*, *wrapKey*en *sleutel uitpakken* zijn vereist voor het maken van een nieuwe kolom hoofd sleutel en voor het instellen van versleuteling met SQL Server Management Studio.
-
-U kunt snel een sleutel kluis maken door het volgende script uit te voeren. Zie [Wat is Azure Key Vault?](../key-vault/key-vault-overview.md)voor een gedetailleerde uitleg van deze cmdlets en meer informatie over het maken en configureren van een sleutel kluis.
+> The PowerShell Azure Resource Manager (RM) module is still supported by Azure SQL Database, but all future development is for the Az.Sql module. The AzureRM module will continue to receive bug fixes until at least December 2020.  The arguments for the commands in the Az module and in the AzureRm modules are substantially identical. For more about their compatibility, see [Introducing the new Azure PowerShell Az module](/powershell/azure/new-azureps-module-az).
 
 ```powershell
-    $subscriptionName = '<your Azure subscription name>'
-    $userPrincipalName = '<username@domain.com>'
-    $applicationId = '<application ID from your AAD application>'
-    $resourceGroupName = '<resource group name>'
-    # Use the same resource group name when creating your SQL Database below
-    $location = '<datacenter location>'
-    $vaultName = 'AeKeyVault'
+$subscriptionName = '<subscriptionName>'
+$userPrincipalName = '<username@domain.com>'
+$applicationId = '<applicationId from AAD application>'
+$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your SQL Database below
+$location = '<datacenterLocation>'
+$vaultName = '<vaultName>'
 
+Connect-AzAccount
+$subscriptionId = (Get-AzSubscription -SubscriptionName $subscriptionName).Id
+Set-AzContext -SubscriptionId $subscriptionId
 
-    Connect-AzAccount
-    $subscriptionId = (Get-AzSubscription -SubscriptionName $subscriptionName).Id
-    Set-AzContext -SubscriptionId $subscriptionId
+New-AzResourceGroup -Name $resourceGroupName -Location $location
+New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
-    New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
-
-    Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
-    Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+Set-AzKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
+Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 ```
 
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
+```powershell
+$subscriptionName = '<subscriptionName>'
+$userPrincipalName = '<username@domain.com>'
+$applicationId = '<applicationId from AAD application>'
+$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your SQL Database below
+$location = '<datacenterLocation>'
+$vaultName = '<vaultName>'
+
+az login
+az account set --subscription $subscriptionName
+
+az group create --location $location --name $resourceGroupName
+
+az keyvault create --name $vaultName --resource-group $resourceGroupName --location $location
+
+az keyvault set-policy --name $vaultName --key-permissions create, get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --upn $userPrincipalName
+az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
+```
+
+* * *
 
 ## <a name="create-a-blank-sql-database"></a>Een lege SQL-database maken
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
-2. Ga naar **een resource maken** > **data bases** > **SQL database**.
-3. Maak een **lege** data base met de naam **Clinic** op een nieuwe of bestaande server. Zie [uw eerste Azure SQL database](sql-database-single-database-get-started.md)voor gedetailleerde instructies over het maken van een data base in de Azure Portal.
-   
+
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com/).
+2. Go to **Create a resource** > **Databases** > **SQL Database**.
+3. Create a **Blank** database named **Clinic** on a new or existing server. For detailed directions about how to create a database in the Azure portal, see [Your first Azure SQL database](sql-database-single-database-get-started.md).
+
     ![Een lege database maken](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 
-U hebt de connection string verderop in de zelf studie nodig, dus nadat u de Data Base hebt gemaakt, bladert u naar de nieuwe Clinic-data base en kopieert u de connection string. U kunt de connection string op elk gewenst moment ophalen, maar dit is eenvoudig te kopiëren in de Azure Portal.
+You will need the connection string later in the tutorial, so after you create the database, browse to the new  Clinic database and copy the connection string. You can get the connection string at any time, but it's easy to copy it in the Azure portal.
 
-1. Ga naar **SQL data bases** > **Clinic** > **database verbindings reeksen weer geven**.
-2. Kopieer de connection string voor **ADO.net**.
-   
+1. Go to **SQL databases** > **Clinic** > **Show database connection strings**.
+2. Copy the connection string for **ADO.NET**.
+
     ![De verbindingsreeks kopiëren](./media/sql-database-always-encrypted-azure-key-vault/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Verbinding maken met de database via SQL Server Management Studio
-Open SSMS en maak verbinding met de server met de Clinic-data base.
 
-1. Open SQL Server Management Studio. (Ga naar **verbinding maken** > **Data base-engine** om het venster **verbinding maken met server** te openen als dit niet is geopend.)
-2. Voer uw server naam en referenties in. U kunt de naam van de server vinden op de Blade SQL database en in de connection string die u eerder hebt gekopieerd. Typ de volledige server naam, inclusief *database.Windows.net*.
-   
+Open SSMS and connect to the server with the Clinic database.
+
+1. Open SQL Server Management Studio. (Go to **Connect** > **Database Engine** to open the **Connect to Server** window if it isn't open.)
+
+2. Enter your server name and credentials. The server name can be found on the SQL database blade and in the connection string you copied earlier. Type the complete server name, including *database.windows.net*.
+
     ![De verbindingsreeks kopiëren](./media/sql-database-always-encrypted-azure-key-vault/ssms-connect.png)
 
-Als het venster **nieuwe firewall regel** wordt geopend, meldt u zich aan bij Azure en laat SSMS een nieuwe firewall regel voor u maken.
+If the **New Firewall Rule** window opens, sign in to Azure and let SSMS create a new firewall rule for you.
 
 ## <a name="create-a-table"></a>Een tabel maken
-In deze sectie maakt u een tabel om patiënten-gegevens op te slaan. Het is niet eerst versleuteld. u configureert de versleuteling in de volgende sectie.
 
-1. Vouw **data bases**uit.
-2. Klik met de rechter muisknop op de **Clinic** -data base en klik op **nieuwe query**.
-3. Plak de volgende Transact-SQL (T-SQL) in het nieuwe query venster en **Voer** dit uit.
+In this section, you will create a table to hold patient data. It's not initially encrypted--you will configure encryption in the next section.
+
+1. Expand **Databases**.
+2. Right-click the **Clinic** database and click **New Query**.
+3. Paste the following Transact-SQL (T-SQL) into the new query window and **Execute** it.
 
 ```sql
-        CREATE TABLE [dbo].[Patients](
+CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
          [SSN] [char](11) NOT NULL,
          [FirstName] [nvarchar](50) NULL,
@@ -126,157 +152,156 @@ In deze sectie maakt u een tabel om patiënten-gegevens op te slaan. Het is niet
          [State] [char](2) NULL,
          [BirthDate] [date] NOT NULL
          PRIMARY KEY CLUSTERED ([PatientId] ASC) ON [PRIMARY] );
-         GO
+GO
 ```
 
-## <a name="encrypt-columns-configure-always-encrypted"></a>Kolommen versleutelen (Always Encrypted configureren)
-SSMS biedt een wizard waarmee u Always Encrypted eenvoudig kunt configureren door de kolom hoofd sleutel, kolom versleutelings sleutel en versleutelde kolommen in te stellen.
+## <a name="encrypt-columns-configure-always-encrypted"></a>Encrypt columns (configure Always Encrypted)
 
-1. Vouw **data bases** uit > **Clinic** > **tabellen**.
-2. Klik met de rechter muisknop op de tabel **patiënten** en selecteer **kolommen versleutelen** om de wizard always encrypted te openen:
-   
-    ![Kolommen versleutelen](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
+SSMS provides a wizard that helps you easily configure Always Encrypted by setting up the column master key, column encryption key, and encrypted columns for you.
 
-De wizard Always Encrypted bevat de volgende secties: **kolom selectie**, **configuratie van hoofd sleutel**, **validatie**en **samen vatting**.
+1. Expand **Databases** > **Clinic** > **Tables**.
+2. Right-click the **Patients** table and select **Encrypt Columns** to open the Always Encrypted wizard:
 
-### <a name="column-selection"></a>Kolom selectie
-Klik op **volgende** op de pagina **Inleiding** om de pagina **kolom selectie** te openen. Op deze pagina selecteert u de kolommen die u wilt versleutelen, [het type versleuteling en welke kolom versleutelings sleutel (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) u wilt gebruiken.
+    ![Encrypt columns](./media/sql-database-always-encrypted-azure-key-vault/encrypt-columns.png)
 
-Gegevens van **SSN** en **geboorte datum** versleutelen voor elke patiënt. De kolom SSN maakt gebruik van deterministische versleuteling, die ondersteuning biedt voor treffers, samen voegingen en Group by. In de kolom geboorte datum wordt wille keurige versleuteling gebruikt, die geen ondersteuning biedt voor bewerkingen.
+The Always Encrypted wizard includes the following sections: **Column Selection**, **Master Key Configuration**, **Validation**, and **Summary**.
 
-Stel het **versleutelings type** voor de kolom SSN in op **deterministisch** en de kolom geboorte datum in **wille keurige volg orde**. Klik op **Volgende**.
+### <a name="column-selection"></a>Column Selection
 
-![Kolommen versleutelen](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
+Click **Next** on the **Introduction** page to open the **Column Selection** page. On this page, you will select which columns you want to encrypt, [the type of encryption, and what column encryption key (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) to use.
 
-### <a name="master-key-configuration"></a>Configuratie van hoofd sleutel
-Op de pagina **hoofd sleutel configuratie** kunt u uw CMK instellen en de sleutel archief provider selecteren waar de CMK worden opgeslagen. Op dit moment kunt u een CMK opslaan in het Windows-certificaat archief, Azure Key Vault of een Hardware Security module (HSM).
+Encrypt **SSN** and **BirthDate** information for each patient. The SSN column will use deterministic encryption, which supports equality lookups, joins, and group by. The BirthDate column will use randomized encryption, which does not support operations.
 
-Deze zelf studie laat zien hoe u uw sleutels opslaat in Azure Key Vault.
+Set the **Encryption Type** for the SSN column to **Deterministic** and the BirthDate column to **Randomized**. Klik op **Volgende**.
 
-1. Selecteer **Azure Key Vault**.
-2. Selecteer de gewenste sleutel kluis in de vervolg keuzelijst.
+![Encrypt columns](./media/sql-database-always-encrypted-azure-key-vault/column-selection.png)
+
+### <a name="master-key-configuration"></a>Master Key Configuration
+
+The **Master Key Configuration** page is where you set up your CMK and select the key store provider where the CMK will be stored. Currently, you can store a CMK in the Windows certificate store, Azure Key Vault, or a hardware security module (HSM).
+
+This tutorial shows how to store your keys in Azure Key Vault.
+
+1. Select **Azure Key Vault**.
+2. Select the desired key vault from the drop-down list.
 3. Klik op **Volgende**.
 
-![Configuratie van hoofd sleutel](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
+![Master key configuration](./media/sql-database-always-encrypted-azure-key-vault/master-key-configuration.png)
 
 ### <a name="validation"></a>Validatie
-U kunt de kolommen nu versleutelen of een Power shell-script opslaan om het later uit te voeren. Voor deze zelf studie selecteert u **nu door gaan naar volt ooien** en klikt u op **volgende**.
+
+You can encrypt the columns now or save a PowerShell script to run later. For this tutorial, select **Proceed to finish now** and click **Next**.
 
 ### <a name="summary"></a>Samenvatting
-Controleer of de instellingen juist zijn en klik op **volt ooien** om de installatie voor always encrypted te volt ooien.
+
+Verify that the settings are all correct and click **Finish** to complete the setup for Always Encrypted.
 
 ![Samenvatting](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
-### <a name="verify-the-wizards-actions"></a>De acties van de wizard controleren
-Nadat de wizard is voltooid, is de data base ingesteld op Always Encrypted. De wizard heeft de volgende acties uitgevoerd:
+### <a name="verify-the-wizards-actions"></a>Verify the wizard's actions
 
-* Een kolom hoofd sleutel gemaakt en opgeslagen in Azure Key Vault.
-* Een kolom versleutelings sleutel gemaakt en opgeslagen in Azure Key Vault.
-* De geselecteerde kolommen voor versleuteling zijn geconfigureerd. De tabel patiënten heeft momenteel geen gegevens, maar alle bestaande gegevens in de geselecteerde kolommen zijn nu versleuteld.
+After the wizard is finished, your database is set up for Always Encrypted. The wizard performed the following actions:
 
-U kunt het maken van de sleutels in SSMS controleren door de ** > ** **beveiliging** > **Always encrypted sleutels**uit te breiden.
+- Created a column master key and stored it in Azure Key Vault.
+- Created a column encryption key and stored it in Azure Key Vault.
+- Configured the selected columns for encryption. The Patients table currently has no data, but any existing data in the selected columns is now encrypted.
 
-## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Een client toepassing maken die werkt met de versleutelde gegevens
-Nu Always Encrypted is ingesteld, kunt u een toepassing bouwen waarmee de versleutelde kolommen worden *ingevoegd* en *geselecteerd* .  
+You can verify the creation of the keys in SSMS by expanding **Clinic** > **Security** > **Always Encrypted Keys**.
+
+## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Create a client application that works with the encrypted data
+
+Now that Always Encrypted is set up, you can build an application that performs *inserts* and *selects* on the encrypted columns.  
 
 > [!IMPORTANT]
-> Uw toepassing moet [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) -objecten gebruiken bij het door geven van ongecodeerde gegevens naar de server met Always encrypted-kolommen. Het door geven van letterlijke waarden zonder gebruik te maken van SqlParameter-objecten leidt tot een uitzonde ring.
-> 
-> 
+> Your application must use [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) objects when passing plaintext data to the server with Always Encrypted columns. Passing literal values without using SqlParameter objects will result in an exception.
 
-1. Open Visual Studio en maak een nieuwe C# **console toepassing** (Visual Studio 2015 en eerder) of **console-app (.NET Framework)** (Visual Studio 2017 en hoger). Zorg ervoor dat uw project is ingesteld op **.NET Framework 4,6** of hoger.
-2. Geef het project de naam **AlwaysEncryptedConsoleAKVApp** en klik op **OK**.
-3. Installeer de volgende NuGet-pakketten door naar **Hulpprogram ma's** > **NuGet package manager** > **Package Manager console**te gaan.
+1. Open Visual Studio and create a new C# **Console Application** (Visual Studio 2015 and earlier) or **Console App (.NET Framework)** (Visual Studio 2017 and later). Make sure your project is set to **.NET Framework 4.6** or later.
+2. Name the project **AlwaysEncryptedConsoleAKVApp** and click **OK**.
+3. Install the following NuGet packages by going to **Tools** > **NuGet Package Manager** > **Package Manager Console**.
 
-Voer deze twee regels code uit in de Package Manager-console.
+Run these two lines of code in the Package Manager Console:
 
-```powershell
-    Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
-    Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-```
+   ```powershell
+   Install-Package Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider
+   Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+   ```
 
+## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Modify your connection string to enable Always Encrypted
 
-## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Wijzig uw connection string om Always Encrypted in te scha kelen
-In deze sectie wordt uitgelegd hoe u Always Encrypted in uw data base inschakelt connection string.
+This section  explains how to enable Always Encrypted in your database connection string.
 
-Als u Always Encrypted wilt inschakelen, moet u het tref woord voor de **kolom versleutelings instelling** toevoegen aan de Connection String en instellen op **ingeschakeld**.
+To enable Always Encrypted, you need to add the **Column Encryption Setting** keyword to your connection string and set it to **Enabled**.
 
-U kunt dit rechtstreeks in het connection string instellen of u kunt dit instellen met behulp van [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). De voorbeeld toepassing in de volgende sectie laat zien hoe u **SqlConnectionStringBuilder**kunt gebruiken.
+You can set this directly in the connection string, or you can set it by using [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). The sample application in the next section shows how to use **SqlConnectionStringBuilder**.
 
-### <a name="enable-always-encrypted-in-the-connection-string"></a>Always Encrypted in het connection string inschakelen
-Voeg het volgende tref woord toe aan uw connection string.
+### <a name="enable-always-encrypted-in-the-connection-string"></a>Enable Always Encrypted in the connection string
 
-    Column Encryption Setting=Enabled
+Add the following keyword to your connection string.
 
+   `Column Encryption Setting=Enabled`
 
-### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Always Encrypted met SqlConnectionStringBuilder inschakelen
-De volgende code laat zien hoe u Always Encrypted inschakelt door [SqlConnectionStringBuilder. ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) in te stellen op [ingeschakeld](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+### <a name="enable-always-encrypted-with-sqlconnectionstringbuilder"></a>Enable Always Encrypted with SqlConnectionStringBuilder
 
-```CS
-    // Instantiate a SqlConnectionStringBuilder.
-    SqlConnectionStringBuilder connStringBuilder =
-       new SqlConnectionStringBuilder("replace with your connection string");
-
-    // Enable Always Encrypted.
-    connStringBuilder.ColumnEncryptionSetting =
-       SqlConnectionColumnEncryptionSetting.Enabled;
-```
-
-## <a name="register-the-azure-key-vault-provider"></a>De Azure Key Vault provider registreren
-De volgende code laat zien hoe u de Azure Key Vault provider registreert bij het ADO.NET-stuur programma.
+The following code shows how to enable Always Encrypted by setting [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) to [Enabled](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
 ```csharp
-    private static ClientCredential _clientCredential;
+// Instantiate a SqlConnectionStringBuilder.
+SqlConnectionStringBuilder connStringBuilder = new SqlConnectionStringBuilder("replace with your connection string");
 
-    static void InitializeAzureKeyVaultProvider()
-    {
-       _clientCredential = new ClientCredential(applicationId, clientKey);
-
-       SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
-          new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
-
-       Dictionary<string, SqlColumnEncryptionKeyStoreProvider> providers =
-          new Dictionary<string, SqlColumnEncryptionKeyStoreProvider>();
-
-       providers.Add(SqlColumnEncryptionAzureKeyVaultProvider.ProviderName, azureKeyVaultProvider);
-       SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
-    }
+// Enable Always Encrypted.
+connStringBuilder.ColumnEncryptionSetting = SqlConnectionColumnEncryptionSetting.Enabled;
 ```
 
-## <a name="always-encrypted-sample-console-application"></a>Voorbeeld console toepassing Always Encrypted
-Dit voor beeld laat zien hoe u:
+## <a name="register-the-azure-key-vault-provider"></a>Register the Azure Key Vault provider
+The following code shows how to register the Azure Key Vault provider with the ADO.NET driver.
 
-* Wijzig uw connection string om Always Encrypted in te scha kelen.
-* Registreer Azure Key Vault als provider van de sleutel opslag van de toepassing.  
-* Gegevens invoegen in de versleutelde kolommen.
-* Selecteer een record door te filteren op een specifieke waarde in een versleutelde kolom.
+```csharp
+private static ClientCredential _clientCredential;
 
-Vervang de inhoud van **Program.cs** door de volgende code. Vervang de connection string voor de globale Connections Tring-variabele in de regel die de hoofd methode direct voorafgaat met uw geldige connection string van de Azure Portal. Dit is de enige wijziging die u moet aanbrengen in deze code.
+static void InitializeAzureKeyVaultProvider() {
+    _clientCredential = new ClientCredential(applicationId, clientKey);
 
-Voer de app uit om Always Encrypted in actie te zien.
-```CS
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    using System.Data;
-    using System.Data.SqlClient;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider;
+    SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider = new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
 
-    namespace AlwaysEncryptedConsoleAKVApp
-    {
-    class Program
-    {
+    Dictionary<string, SqlColumnEncryptionKeyStoreProvider> providers = new Dictionary<string, SqlColumnEncryptionKeyStoreProvider>();
+
+    providers.Add(SqlColumnEncryptionAzureKeyVaultProvider.ProviderName, azureKeyVaultProvider);
+    SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
+}
+```
+
+## <a name="always-encrypted-sample-console-application"></a>Always Encrypted sample console application
+
+This sample demonstrates how to:
+
+- Modify your connection string to enable Always Encrypted.
+- Register Azure Key Vault as the application's key store provider.  
+- Insert data into the encrypted columns.
+- Select a record by filtering for a specific value in an encrypted column.
+
+Vervang de inhoud van *Program.cs* door de volgende code. Replace the connection string for the global connectionString variable in the line that directly precedes the Main method with your valid connection string from the Azure portal. This is the only change you need to make to this code.
+
+Run the app to see Always Encrypted in action.
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.SqlServer.Management.AlwaysEncrypted.AzureKeyVaultProvider;
+
+namespace AlwaysEncryptedConsoleAKVApp {
+    class Program {
         // Update this line with your Clinic database connection string from the Azure portal.
         static string connectionString = @"<connection string from the portal>";
         static string applicationId = @"<application ID from your AAD application>";
         static string clientKey = "<key from your AAD application>";
 
-
-        static void Main(string[] args)
-        {
+        static void Main(string[] args) {
             InitializeAzureKeyVaultProvider();
 
             Console.WriteLine("Signed in as: " + _clientCredential.ClientId);
@@ -300,10 +325,8 @@ Voer de app uit om Always Encrypted in actie te zien.
             Console.WriteLine(Environment.NewLine + "Enter server password:");
             connStringBuilder.Password = Console.ReadLine();
 
-
             // Assign the updated connection string to our global variable.
             connectionString = connStringBuilder.ConnectionString;
-
 
             // Delete all records to restart this demo app.
             ResetPatientsTable();
@@ -311,48 +334,41 @@ Voer de app uit om Always Encrypted in actie te zien.
             // Add sample data to the Patients table.
             Console.Write(Environment.NewLine + "Adding sample patient data to the database...");
 
-            InsertPatient(new Patient()
-            {
+            InsertPatient(new Patient() {
                 SSN = "999-99-0001",
                 FirstName = "Orlando",
                 LastName = "Gee",
                 BirthDate = DateTime.Parse("01/04/1964")
             });
-            InsertPatient(new Patient()
-            {
+            InsertPatient(new Patient() {
                 SSN = "999-99-0002",
                 FirstName = "Keith",
                 LastName = "Harris",
                 BirthDate = DateTime.Parse("06/20/1977")
             });
-            InsertPatient(new Patient()
-            {
+            InsertPatient(new Patient() {
                 SSN = "999-99-0003",
                 FirstName = "Donna",
                 LastName = "Carreras",
                 BirthDate = DateTime.Parse("02/09/1973")
             });
-            InsertPatient(new Patient()
-            {
+            InsertPatient(new Patient() {
                 SSN = "999-99-0004",
                 FirstName = "Janet",
                 LastName = "Gates",
                 BirthDate = DateTime.Parse("08/31/1985")
             });
-            InsertPatient(new Patient()
-            {
+            InsertPatient(new Patient() {
                 SSN = "999-99-0005",
                 FirstName = "Lucy",
                 LastName = "Harrington",
                 BirthDate = DateTime.Parse("05/06/1993")
             });
 
-
             // Fetch and display all patients.
             Console.WriteLine(Environment.NewLine + "All the records currently in the Patients table:");
 
-            foreach (Patient patient in SelectAllPatients())
-            {
+            foreach (Patient patient in SelectAllPatients()) {
                 Console.WriteLine(patient.FirstName + " " + patient.LastName + "\tSSN: " + patient.SSN + "\tBirthdate: " + patient.BirthDate);
             }
 
@@ -363,8 +379,7 @@ Voer de app uit om Always Encrypted in actie te zien.
 
             // This very simple validation only checks that the user entered 11 characters.
             // In production be sure to check all user input and use the best validation for your specific application.
-            do
-            {
+            do {
                 Console.WriteLine("Please enter a valid SSN (ex. 999-99-0003):");
                 ssn = Console.ReadLine();
             } while (ssn.Length != 11);
@@ -374,14 +389,12 @@ Voer de app uit om Always Encrypted in actie te zien.
             Patient selectedPatient = SelectPatientBySSN(ssn);
 
             // Check if any records were returned and display our query results.
-            if (selectedPatient != null)
-            {
+            if (selectedPatient != null) {
                 Console.WriteLine("Patient found with SSN = " + ssn);
                 Console.WriteLine(selectedPatient.FirstName + " " + selectedPatient.LastName + "\tSSN: "
                     + selectedPatient.SSN + "\tBirthdate: " + selectedPatient.BirthDate);
             }
-            else
-            {
+            else {
                 Console.WriteLine("No patients found with SSN = " + ssn);
             }
 
@@ -389,12 +402,9 @@ Voer de app uit om Always Encrypted in actie te zien.
             Console.ReadLine();
         }
 
-
         private static ClientCredential _clientCredential;
 
-        static void InitializeAzureKeyVaultProvider()
-        {
-
+        static void InitializeAzureKeyVaultProvider() {
             _clientCredential = new ClientCredential(applicationId, clientKey);
 
             SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
@@ -407,8 +417,7 @@ Voer de app uit om Always Encrypted in actie te zien.
             SqlConnection.RegisterColumnEncryptionKeyStoreProviders(providers);
         }
 
-        public async static Task<string> GetToken(string authority, string resource, string scope)
-        {
+        public async static Task<string> GetToken(string authority, string resource, string scope) {
             var authContext = new AuthenticationContext(authority);
             AuthenticationResult result = await authContext.AcquireTokenAsync(resource, _clientCredential);
 
@@ -417,15 +426,13 @@ Voer de app uit om Always Encrypted in actie te zien.
             return result.AccessToken;
         }
 
-        static int InsertPatient(Patient newPatient)
-        {
+        static int InsertPatient(Patient newPatient) {
             int returnValue = 0;
 
             string sqlCmdText = @"INSERT INTO [dbo].[Patients] ([SSN], [FirstName], [LastName], [BirthDate])
      VALUES (@SSN, @FirstName, @LastName, @BirthDate);";
 
             SqlCommand sqlCmd = new SqlCommand(sqlCmdText);
-
 
             SqlParameter paramSSN = new SqlParameter(@"@SSN", newPatient.SSN);
             paramSSN.DbType = DbType.AnsiStringFixedLength;
@@ -449,15 +456,12 @@ Voer de app uit om Always Encrypted in actie te zien.
             sqlCmd.Parameters.Add(paramLastName);
             sqlCmd.Parameters.Add(paramBirthDate);
 
-            using (sqlCmd.Connection = new SqlConnection(connectionString))
-            {
-                try
-                {
+            using (sqlCmd.Connection = new SqlConnection(connectionString)) {
+                try {
                     sqlCmd.Connection.Open();
                     sqlCmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     returnValue = 1;
                     Console.WriteLine("The following error was encountered: ");
                     Console.WriteLine(ex.Message);
@@ -470,31 +474,23 @@ Voer de app uit om Always Encrypted in actie te zien.
         }
 
 
-        static List<Patient> SelectAllPatients()
-        {
+        static List<Patient> SelectAllPatients() {
             List<Patient> patients = new List<Patient>();
-
 
             SqlCommand sqlCmd = new SqlCommand(
               "SELECT [SSN], [FirstName], [LastName], [BirthDate] FROM [dbo].[Patients]",
                 new SqlConnection(connectionString));
 
-
             using (sqlCmd.Connection = new SqlConnection(connectionString))
 
-            using (sqlCmd.Connection = new SqlConnection(connectionString))
-            {
-                try
-                {
+            using (sqlCmd.Connection = new SqlConnection(connectionString)) {
+                try {
                     sqlCmd.Connection.Open();
                     SqlDataReader reader = sqlCmd.ExecuteReader();
 
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            patients.Add(new Patient()
-                            {
+                    if (reader.HasRows) {
+                        while (reader.Read()) {
+                            patients.Add(new Patient() {
                                 SSN = reader[0].ToString(),
                                 FirstName = reader[1].ToString(),
                                 LastName = reader["LastName"].ToString(),
@@ -503,8 +499,7 @@ Voer de app uit om Always Encrypted in actie te zien.
                         }
                     }
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     throw;
                 }
             }
@@ -512,9 +507,7 @@ Voer de app uit om Always Encrypted in actie te zien.
             return patients;
         }
 
-
-        static Patient SelectPatientBySSN(string ssn)
-        {
+        static Patient SelectPatientBySSN(string ssn) {
             Patient patient = new Patient();
 
             SqlCommand sqlCmd = new SqlCommand(
@@ -528,20 +521,14 @@ Voer de app uit om Always Encrypted in actie te zien.
 
             sqlCmd.Parameters.Add(paramSSN);
 
-
-            using (sqlCmd.Connection = new SqlConnection(connectionString))
-            {
-                try
-                {
+            using (sqlCmd.Connection = new SqlConnection(connectionString)) {
+                try {
                     sqlCmd.Connection.Open();
                     SqlDataReader reader = sqlCmd.ExecuteReader();
 
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            patient = new Patient()
-                            {
+                    if (reader.HasRows) {
+                        while (reader.Read()) {
+                            patient = new Patient() {
                                 SSN = reader[0].ToString(),
                                 FirstName = reader[1].ToString(),
                                 LastName = reader["LastName"].ToString(),
@@ -549,36 +536,29 @@ Voer de app uit om Always Encrypted in actie te zien.
                             };
                         }
                     }
-                    else
-                    {
+                    else {
                         patient = null;
                     }
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     throw;
                 }
             }
             return patient;
         }
 
-
         // This method simply deletes all records in the Patients table to reset our demo.
-        static int ResetPatientsTable()
-        {
+        static int ResetPatientsTable() {
             int returnValue = 0;
 
             SqlCommand sqlCmd = new SqlCommand("DELETE FROM Patients");
-            using (sqlCmd.Connection = new SqlConnection(connectionString))
-            {
-                try
-                {
+            using (sqlCmd.Connection = new SqlConnection(connectionString)) {
+                try {
                     sqlCmd.Connection.Open();
                     sqlCmd.ExecuteNonQuery();
 
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex) {
                     returnValue = 1;
                 }
             }
@@ -586,59 +566,59 @@ Voer de app uit om Always Encrypted in actie te zien.
         }
     }
 
-    class Patient
-    {
+    class Patient {
         public string SSN { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
     }
-    }
+}
 ```
 
+## <a name="verify-that-the-data-is-encrypted"></a>Verify that the data is encrypted
 
-## <a name="verify-that-the-data-is-encrypted"></a>Controleren of de gegevens zijn versleuteld
-U kunt snel controleren of de daad werkelijke gegevens op de server zijn versleuteld door de gegevens van de patiënten te doorzoeken met SSMS (met behulp van de huidige verbinding waar de instelling van de **kolom versleuteling** nog niet is ingeschakeld).
+You can quickly check that the actual data on the server is encrypted by querying the Patients data with SSMS (using your current connection where **Column Encryption Setting** is not yet enabled).
 
-Voer de volgende query uit op de Clinic-data base.
+Run the following query on the Clinic database.
 
 ```sql
-    SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 ```
 
-U kunt zien dat de versleutelde kolommen geen lees bare gegevens bevatten.
+You can see that the encrypted columns do not contain any plaintext data.
 
-   ![Nieuwe console toepassing](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
+   ![New console application](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Als u SSMS wilt gebruiken om toegang te krijgen tot de Lees bare gegevens, moet u eerst controleren of de gebruiker de juiste machtigingen heeft voor de Azure Key Vault: *Get*, *sleutel uitpakken*en *verify*. Zie [Column Master-sleutels maken en opslaan (always encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted)voor meer informatie.
+To use SSMS to access the plaintext data, you first need to ensure that the user has proper permissions to the Azure Key Vault: *get*, *unwrapKey*, and *verify*. For detailed information, see [Create and Store Column Master Keys (Always Encrypted)](https://docs.microsoft.com/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted).
 
-Voeg vervolgens de para meter voor de *kolom versleutelings instelling = ingeschakeld* toe tijdens de verbinding.
+Then add the *Column Encryption Setting=enabled* parameter during your connection.
 
-1. Klik in SSMS met de rechter muisknop op uw server in **objectverkenner** en kies **verbinding verbreken**.
-2. Klik op **verbinding maken** > **Data base-engine** om het venster **verbinding maken met server** te openen en klik op **Opties**.
-3. Klik op **extra verbindings parameters** en type **kolom versleutelings instelling = ingeschakeld**.
-   
-    ![Nieuwe console toepassing](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
-4. Voer de volgende query uit op de Clinic-data base.
+1. In SSMS, right-click your server in **Object Explorer** and choose **Disconnect**.
+2. Click **Connect** > **Database Engine** to open the **Connect to Server** window and click **Options**.
+3. Click **Additional Connection Parameters** and type **Column Encryption Setting=enabled**.
+
+    ![New console application](./media/sql-database-always-encrypted-azure-key-vault/ssms-connection-parameter.png)
+
+4. Run the following query on the Clinic database.
 
    ```sql
-      SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
+   SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    ```
 
-     U kunt nu de Lees bare gegevens in de versleutelde kolommen weer geven.
-     ![nieuwe console toepassing](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
-
+     You can now see the plaintext data in the encrypted columns.
+     ![New console application](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 ## <a name="next-steps"></a>Volgende stappen
-Nadat u een Data Base hebt gemaakt die gebruikmaakt van Always Encrypted, kunt u het volgende doen:
 
-* [Uw sleutels draaien en opschonen](https://msdn.microsoft.com/library/mt607048.aspx).
-* [Migreer gegevens die al zijn versleuteld met Always encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
+After you create a database that uses Always Encrypted, you may want to do the following:
+
+- [Rotate and clean up your keys](https://msdn.microsoft.com/library/mt607048.aspx).
+- [Migrate data that is already encrypted with Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
 
 ## <a name="related-information"></a>Gerelateerde informatie
-* [Always Encrypted (client ontwikkeling)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [Transparante gegevensversleuteling](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Versleuteling SQL Server](https://msdn.microsoft.com/library/bb510663.aspx)
-* [Wizard Always Encrypted](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Always Encrypted blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 
+- [Always Encrypted (client development)](https://msdn.microsoft.com/library/mt147923.aspx)
+- [Transparante gegevensversleuteling](https://msdn.microsoft.com/library/bb934049.aspx)
+- [SQL Server encryption](https://msdn.microsoft.com/library/bb510663.aspx)
+- [Always Encrypted wizard](https://msdn.microsoft.com/library/mt459280.aspx)
+- [Always Encrypted blog](https://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)

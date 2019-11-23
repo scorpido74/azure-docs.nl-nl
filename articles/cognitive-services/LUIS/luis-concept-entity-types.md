@@ -1,7 +1,7 @@
 ---
-title: Entiteits typen-LUIS
+title: Entity types - LUIS
 titleSuffix: Azure Cognitive Services
-description: 'Entiteiten halen gegevens op uit de utterance. Entiteits typen bieden u voorspel bare extractie van gegevens. Er zijn twee typen entiteiten: door de machine geleerd en niet-machine geleerde. Het is belang rijk om te weten met welk type entiteit u werkt in uitingen.'
+description: 'Entities extract data from the utterance. Entity types give you predictable extraction of data. There are two types of entities: machine-learned and non-machine-learned. It is important to know which type of entity you are working with in utterances.'
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,72 +11,73 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: diberry
-ms.openlocfilehash: 8e91a475c7fd7f207c8b38d3da8abe7affd668b2
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 808e110ccb45b0b4f7bf34a43597c1f7a7bc0fed
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013505"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422580"
 ---
-# <a name="entities-and-their-purpose-in-luis"></a>Entiteiten en hun doel in LUIS
+# <a name="entities-and-their-purpose-in-luis"></a>Entities and their purpose in LUIS
 
-Het belangrijkste doel van entiteiten is het geven van de voorspel bare extractie van gegevens door de client toepassing. Een _optioneel_, secundair doel is het verhogen van de voor spelling van de intentie met descriptors. 
+The primary purpose of entities is to give the client application predictable extraction of data. An _optional_, secondary purpose is to boost the prediction of the intent or other entities with descriptors.
 
-Er zijn twee typen entiteiten: 
+There are two types of entities:
 
-* machine-geleerd-van context
-* niet-computer-geleerd-voor exacte tekst overeenkomsten
+* machine-learned - from context
+* non-machine-learned - for exact text matches, pattern matches, or detection by prebuilt entities
 
-Begin altijd met een door de machine geleerde entiteit, omdat dit het breedste bereik aan opties voor gegevens extractie biedt.
+Machine-learned entities provide the widest range of data extraction choices. Non-machine-learned entities work by text matching and may be used independently or as a [constraint](#design-entities-for-decomposition) on a machine-learned entity.
 
-## <a name="entity-compared-to-intent"></a>Entiteit in vergelijking met opzet
+## <a name="entities-represent-data"></a>Entities represent data
 
-De entiteit vertegenwoordigt een gegevens concept in de utterance die u wilt uitpakken. 
+Entities are data you want to pull from the utterance, such as names, dates, product names, or any significant group of words. An utterance can include many entities or none at all. A client application _may_ need the data to perform its task.
 
-Houd rekening met de volgende drie uitingen:
+Entities need to be labeled consistently across all training utterances for each intent in a model.
 
-|Utterance|Geëxtraheerde gegevens|Uitleg|
-|--|--|--|
-|`Help`|-|Niets te extra heren.|
-|`Send Bob a present`|Bob, aanwezig|Bob is zeker belang rijk voor het volt ooien van de taak. Dit kan voldoende informatie bevatten of de bot moet wellicht verduidelijken wat de huidige is met een vervolg vraag.|
-|`Send Bob a box of chocolates.`|De twee belang rijke stukjes gegevens, Bob en het vak van chocolade, zijn belang rijk voor het volt ooien van de aanvraag van de gebruiker.|
-
-Een utterance kan bevatten veel entiteiten of geen helemaal. Een client toepassing heeft de entiteit _mogelijk_ nodig om de taak uit te voeren. 
-
-Ter vergelijking is de voor spelling van de intentie voor een utterance _vereist_ en vertegenwoordigt het hele utterance. LUIS vereist voor beeld-uitingen zijn opgenomen in een intentie. Als de primaire intentie van de utterance niet belang rijk is voor de client toepassing, voegt u alle uitingen toe aan de geen intentie. 
-
-Als u later in de app-levens cyclus vindt, wilt u de uitingen opdelen. u kunt dit eenvoudig doen. Zo kunt u de uitingen ordenen terwijl u ontwerpt, of kunt u het voorspelde voor deel van de client toepassing gebruiken. 
-
-Het is niet vereist om de voorspelde intentie te gebruiken in de client toepassing, maar deze wordt geretourneerd als onderdeel van de reactie van het Voorspellings eindpunt.
-
-## <a name="entities-represent-data"></a>Entiteiten vertegenwoordigen gegevens
-
-Entiteiten zijn gegevens die u wilt gebruiken om op te halen uit de utterance. Dit kan een naam, datum, naam van het product of een groep van woorden zijn. 
+ You can define your own entities or use prebuilt entities to save time for common concepts such as [datetimeV2](luis-reference-prebuilt-datetimev2.md), [ordinal](luis-reference-prebuilt-ordinal.md), [email](luis-reference-prebuilt-email.md), and [phone number](luis-reference-prebuilt-phonenumber.md).
 
 |Utterance|Entiteit|Gegevens|
 |--|--|--|
-|3 tickets naar de New York kopen|Vooraf gedefinieerde getal<br>Location.Destination|3<br>New York|
-|Een ticket van de New York naar Londen kopen op 5 maart|Location.Origin<br>Location.Destination<br>Vooraf gedefinieerde datetimeV2|New York<br>Londen<br>5 maart 2018|
+|Buy 3 tickets to New York|Prebuilt number<br>Location.Destination|3<br>New York|
+|Buy a ticket from New York to London on March 5|Location.Origin<br>Location.Destination<br>Prebuilt datetimeV2|New York<br>Londen<br>5 maart 2018|
 
-## <a name="entities-are-optional-but-highly-recommended"></a>Entiteiten zijn optioneel, maar sterk aanbevolen
+### <a name="entities-are-optional"></a>Entities are optional
 
-Intents zijn vereist, zijn entiteiten optioneel. U hoeft geen entiteiten te maken voor elk concept in uw app, maar alleen voor de toepassingen die vereist zijn voor het uitvoeren van een actie door de client toepassing. 
+While intents are required, entities are optional. You do not need to create entities for every concept in your app, but only for those required for the client application to take action.
 
-Als uw uitingen geen details van die uw bot moet om door te gaan, hoeft u niet wilt toevoegen. Als uw app zich verder ontwikkelt, kunt u deze later toevoegen. 
+If your utterances do not have data the client application requires, you do not need to add entities. As your application develops and a new need for data is identified, you can add appropriate entities to your LUIS model later.
 
-Als u niet zeker weet hoe u de informatie zou gebruiken, voegt u enkele algemene vooraf gedefinieerde entiteiten toe, zoals [datetimeV2](luis-reference-prebuilt-datetimev2.md), [rang telwoord](luis-reference-prebuilt-ordinal.md), [e-mail adres](luis-reference-prebuilt-email.md)en [telefoon nummer](luis-reference-prebuilt-phonenumber.md).
+## <a name="entity-compared-to-intent"></a>Entity compared to intent
 
-## <a name="design-entities-for-decomposition"></a>Entiteiten voor ontleding ontwerpen
+The entity represents a data concept inside the utterance that you want extracted.
 
-Begin uw ontwerp van de entiteit met een door de machine geleerde entiteit. Zo kunt u eenvoudig de groei van het ontwerp en wijzigingen van uw entiteit gedurende een bepaalde periode vereenvoudigen. Voeg **subonderdelen** (onderliggende entiteiten) met **beperkingen** en **descriptoren** toe om het entiteits ontwerp te volt ooien. 
+An utterance may optionally include entities. By comparison, the prediction of the intent for an utterance is _required_ and represents the entire utterance. LUIS requires example utterances are contained in an intent.
 
-Als u ontwerpt voor ontleding, kan LUIS de nauw keurigheid van entiteits omzetting naar uw client toepassing retour neren. Op deze manier kan uw client toepassing zich richten op bedrijfs regels en de gegevens omzetting voor LUIS behouden.
+Consider the following 4 utterances:
 
-### <a name="machine-learned-entities-are-primary-data-collections"></a>Door machines geleerde entiteiten zijn primaire gegevens verzamelingen
+|Utterance|Intent predicted|Entities extracted|Uitleg|
+|--|--|--|--|
+|Help|help|-|Nothing to extract.|
+|Send something|sendSomething|-|Nothing to extract. The model has not been trained to extract `something` in this context, and there is no recipient either.|
+|Send Bob a present|sendSomething|`Bob`, `present`|The model has been trained with the [personName](luis-reference-prebuilt-person.md) prebuilt entity, which has extracted the name `Bob`. A machine-learned entity has been used to extract `present`.|
+|Send Bob a box of chocolates|sendSomething|`Bob`, `box of chocolates`|The two important pieces of data, `Bob` and the `box of chocolates`, have been extracted by entities.|
 
-Door machines geleerde entiteiten zijn de gegevens eenheid op het hoogste niveau. Subonderdelen zijn onderliggende entiteiten van door machines geleerde entiteiten. 
+## <a name="design-entities-for-decomposition"></a>Design entities for decomposition
 
-**Beperkingen** zijn exacte-tekst overeenkomende entiteiten waarmee regels worden toegepast om gegevens te identificeren en op te halen. **Descriptors** zijn functies die worden toegepast om de relevantie van de woorden of zinsdelen voor de voor spelling te verhogen.
+It is good entity design to make your top-level entity a machine-learned entity. This allows for changes to your entity design over time and the use of **subcomponents** (child entities), optionally with **constraints** and **descriptors**, to decompose the top-level entity into the parts needed by the client application.
+
+Designing for decomposition allows LUIS to return a deep degree of entity resolution to your client application. This allows your client application to focus on business rules and leave data resolution to LUIS.
+
+### <a name="machine-learned-entities-are-primary-data-collections"></a>Machine-learned entities are primary data collections
+
+[**Machine-learned entities**](tutorial-machine-learned-entity.md) are the top-level data unit. Subcomponents are child entities of machine-learned entities.
+
+A machine-learned entity triggers based on the context learned through training utterances. **Constraints** are optional rules applied to a machine-learned entity that further constrains triggering based on the exact-text matching definition of a non-machine-learned entity such as a [List](reference-entity-list.md) or [Regex](reference-entity-regular-expression.md). For example, a `size` machine-learned entity can have a constraint of a `sizeList` list entity that constrains the `size` entity to trigger only when values contained within the `sizeList` entity are encountered.
+
+[**Descriptors**](luis-concept-feature.md) are features applied to boost the relevance of the words or phrases for the prediction. They are called *descriptors* because they are used to *describe* an intent or entity. Descriptors describe distinguishing traits or attributes of data, such as important words or phrases. that LUIS observes and learns through.
+
+When you create a phrase list feature in your LUIS app, it is enabled globally by default and applies evenly across all intents and entities. However, if you apply the phrase list as a descriptor (feature) of a machine-learned entity (or *model*), then its scope reduces to apply only to that model and is no longer used with all the other models. Using a phrase list as a descriptor to a model helps decomposition by assisting with the accuracy for the model it is applied to.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -85,42 +86,58 @@ Door machines geleerde entiteiten zijn de gegevens eenheid op het hoogste niveau
 <a name="regular-expression-entity"></a>
 <a name="simple-entity"></a>
 
-## <a name="types-of-entities"></a>Typen entiteiten
+## <a name="types-of-entities"></a>Types of entities
 
-Kies de entiteit op basis van de manier waarop de gegevens moeten worden geëxtraheerd en hoe deze moeten worden weer gegeven nadat deze is geëxtraheerd.
+Choose the entity based on how the data should be extracted and how it should be represented after it is extracted.
 
-|Entiteits type|Doel|
+|Entity type|Doel|
 |--|--|
-|[**Machine-geleerd**](tutorial-machine-learned-entity.md)|Bovenliggende groepering van entiteiten, ongeacht het entiteits type. Door de machine geleerd entiteiten leren van de context in het utterance. Dit maakt variatie van de plaatsing in voor beeld uitingen aanzienlijk. |
-|[**List**](reference-entity-list.md)|Lijst met items en de bijbehorende synoniemen die zijn geëxtraheerd met **exact overeenkomende tekst**.|
-|[**Pattern.any**](reference-entity-pattern-any.md)|Entiteit waarvan het einde van de entiteit moeilijk te bepalen is. |
-|[**Vooraf gedefinieerde**](luis-reference-prebuilt-entities.md)|Al getraind voor het extra heren van specifieke soorten gegevens, zoals URL of e-mail. Sommige van deze vooraf gemaakte entiteiten worden gedefinieerd in het open source- [tekst](https://github.com/Microsoft/Recognizers-Text) project voor herkenning. Als uw specifieke cultuur of de entiteit wordt momenteel niet ondersteund, dragen bij aan het project.|
-|[**Reguliere expressie**](reference-entity-regular-expression.md)|Gebruikt reguliere expressie voor **exacte tekst overeenkomst**.|
+|[**Machine-learned**](tutorial-machine-learned-entity.md)|Machine-learned entities learn from context in the utterance. Parent grouping of entities, regardless of entity type. This makes variation of placement in example utterances significant. |
+|[**List**](reference-entity-list.md)|List of items and their synonyms extracted with **exact text match**.|
+|[**Pattern.any**](reference-entity-pattern-any.md)|Entity where end of entity is difficult to determine. |
+|[**Prebuilt**](luis-reference-prebuilt-entities.md)|Already trained to extract specific kind of data such as URL or email. Some of these prebuilt entities are defined in the open-source [Recognizers-Text](https://github.com/Microsoft/Recognizers-Text) project. If your specific culture or entity isn't currently supported, contribute to the project.|
+|[**Regular Expression**](reference-entity-regular-expression.md)|Uses regular expression for **exact text match**.|
 
-### <a name="entity-role-defines-context"></a>Entiteit rol definieert context
+## <a name="extracting-contextually-related-data"></a>Extracting contextually related data
 
-De rol van een entiteit is de alias met de naam op basis van de context binnen de utterance. Een voor beeld is een utterance voor het reserveren van een vlucht met twee locaties, oorsprong en bestemming.
+An utterance may contain two or more occurrences of an entity where the meaning of the data is based on context within the utterance. An example is an utterance for booking a flight that has two locations, origin and destination.
 
 `Book a flight from Seattle to Cairo`
 
-De twee voor beelden van een `location` entiteit moeten worden geëxtraheerd. De client-app moet weten welk type locatie voor elk van deze is, om de aankoop van het ticket te volt ooien. De `location`-entiteit heeft twee rollen van `origin` en `destination` nodig en beide moeten worden gemarkeerd in het voor beeld uitingen. 
+The two examples of a `location` entity need to be extracted. The client-application needs to know the type of location for each in order to complete the ticket purchase.
 
-Als LUIS de `location` vindt maar de rol niet kan bepalen, wordt de locatie-entiteit nog steeds geretourneerd. De client toepassing moet aan een vraag worden opgevolgd om te bepalen welk type locatie de gebruiker had. 
+There are two techniques for extracting contextually-related data:
 
-Er kunnen meerdere entiteiten in een utterance bestaan en kunnen worden geëxtraheerd zonder gebruik van rollen. Als de context van de zin de waarde van de entiteit aangeeft, moet een rol worden gebruikt.
+ * The `location` entity is a machine-learned entity and uses two subcomponent entities to capture the  `origin` and `destination` (preferred)
+ * The `location` entity uses two **roles** of `origin` and `destination`
 
-Als de utterance een lijst met locaties bevat, `I want to travel to Seattle, Cairo, and London.`, is dit een lijst waarin elk item geen andere betekenis heeft. 
+Multiple entities can exist in an utterance and can be extracted without using decomposition or roles if the context in which they are used has no significance. For example, if the utterance includes a list of locations, `I want to travel to Seattle, Cairo, and London.`, this is a list where each item doesn't have an additional meaning.
 
-## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>Als u meer dan het maximum aantal entiteiten 
+### <a name="using-subcomponent-entities-of-a-machine-learned-entity-to-define-context"></a>Using subcomponent entities of a machine-learned entity to define context
 
-Neem contact op met de ondersteuning als u meer nodig hebt dan de limiet. Om dit te doen, verzamelt gedetailleerde informatie over uw systeem, gaat u naar de [LUIS](luis-reference-regions.md#luis-website) website, en selecteer vervolgens **ondersteuning**. Als uw Azure-abonnement voor ondersteuningsservices bevat, neem dan contact op met [technische ondersteuning van Azure](https://azure.microsoft.com/support/options/). 
+You can use a [**machine-learned entity**](tutorial-machine-learned-entity.md) to extract the data that describes the action of booking a flight and then to decompose the top-level entity into the separate parts needed by the client application.
 
-## <a name="entity-prediction-status"></a>Status van de voor spelling van de entiteit
+In this example, `Book a flight from Seattle to Cairo`, the top-level entity could be `travelAction` and labeled to extract `flight from Seattle to Cairo`. Then two subcomponent entities are created, called `origin` and `destination`, both with a constraint applied of the prebuilt `geographyV2` entity. In the training utterances, the `origin` and `destination` are labeled appropriately.
 
-De LUIS-portal laat zien wanneer de entiteit, in een voor beeld utterance, een andere voor spelling van de entiteit heeft dan de entiteit die u hebt geselecteerd. Deze andere score is gebaseerd op het huidige getrainde model. 
+### <a name="using-entity-role-to-define-context"></a>Using Entity role to define context
+
+A Role is a named alias for an entity based on context within the utterance. A role can be used with any prebuilt or custom entity type, and used in both example utterances and patterns. In this example, the `location` entity needs two roles of `origin` and `destination` and both need to be marked in the example utterances.
+
+If LUIS finds the `location` but can't determine the role, the location entity is still returned. The client application would need to follow up with a question to determine which type of location the user meant.
+
+
+## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>If you need more than the maximum number of entities
+
+If you need more than the limit, contact support. To do so, gather detailed information about your system, go to the [LUIS](luis-reference-regions.md#luis-website) website, and then select **Support**. If your Azure subscription includes support services, contact [Azure technical support](https://azure.microsoft.com/support/options/).
+
+## <a name="entity-prediction-status"></a>Entity prediction status
+
+The LUIS portal shows when the entity, in an example utterance, has a different entity prediction than the entity you selected. This different score is based on the current trained model.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Informatie over concepten over goede [uitingen](luis-concept-utterance.md). 
+Learn concepts about good [utterances](luis-concept-utterance.md).
 
-Zie [entiteiten toevoegen](luis-how-to-add-entities.md) voor meer informatie over entiteiten toevoegen aan uw LUIS-app.
+See [Add entities](luis-how-to-add-entities.md) to learn more about how to add entities to your LUIS app.
+
+See [Tutorial: Extract structured data from user utterance with machine-learned entities in Language Understanding (LUIS)](tutorial-machine-learned-entity.md) to learn how to extract structured data from an utterance using the machine-learned entity.

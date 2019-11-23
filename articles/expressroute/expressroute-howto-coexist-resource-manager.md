@@ -1,6 +1,6 @@
 ---
-title: 'ExpressRoute en S2S VPN-verbindingen configureren: Azure PowerShell'
-description: Configureer ExpressRoute en Site-naar-Site VPN-verbindingen die samen kan bestaan voor het Resource Manager-model met behulp van PowerShell.
+title: 'Configure ExpressRoute and S2S VPN coexisting connections: Azure PowerShell'
+description: Configure ExpressRoute and a Site-to-Site VPN connection that can coexist for the Resource Manager model using PowerShell.
 services: expressroute
 author: charwen
 ms.service: expressroute
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 07/01/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: 84c4d466a820616b8f8dfa69cfa149cb86006f49
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 0628de7c436836a8fdb5b00cac1d8e85963ba48e
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132851"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74423583"
 ---
-# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>ExpressRoute en Site-naar-Site-verbindingen configureren met behulp van PowerShell
+# <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Configure ExpressRoute and Site-to-Site coexisting connections using PowerShell
 > [!div class="op_single_selector"]
 > * [PowerShell - Resource Manager](expressroute-howto-coexist-resource-manager.md)
 > * [PowerShell - Klassiek](expressroute-howto-coexist-classic.md)
@@ -29,7 +29,7 @@ Configuratie van gelijktijdige site-naar-site-VPN- en ExpressRoute-verbindingen 
 * U kunt een site-naar-site-VPN configureren als een beveiligd failoverpad voor ExpressRoute. 
 * U kunt ook site-naar-site-VPN's gebruiken om verbinding te maken met sites die niet zijn verbonden via ExpressRoute. 
 
-In dit artikel worden de stappen beschreven voor het configureren van beide scenario's. Dit artikel is van toepassing op het Resource Manager-implementatiemodel en maakt gebruik van PowerShell. U kunt ook deze scenario's met behulp van Azure portal, hoewel documentatie nog niet beschikbaar is. U kunt de gateway eerst configureren. Er worden normaal gesproken geen downtime gebracht bij het toevoegen van een nieuwe gateway of de gatewayverbinding.
+In dit artikel worden de stappen beschreven voor het configureren van beide scenario's. Dit artikel is van toepassing op het Resource Manager-implementatiemodel en maakt gebruik van PowerShell. You can also configure these scenarios using the Azure portal, although documentation is not yet available. You can configure either gateway first. Typically, you will incur no downtime when adding a new gateway or gateway connection.
 
 >[!NOTE]
 >Als u een site-naar-site-VPN wilt maken via een ExpressRoute-circuit, raadpleegt u [dit artikel](site-to-site-vpn-over-microsoft-peering.md).
@@ -38,9 +38,9 @@ In dit artikel worden de stappen beschreven voor het configureren van beide scen
 ## <a name="limits-and-limitations"></a>Limieten en beperkingen
 * **Transitroutering wordt niet ondersteund.** U kunt niet (via Azure) routeren tussen uw lokale netwerk dat is verbonden via site-naar-site-VPN en uw lokale netwerk dat is verbonden via ExpressRoute.
 * **Basic SKU-gateway wordt niet ondersteund.** U moet een niet-basic SKU-gateway gebruiken voor zowel de [ExpressRoute gateway](expressroute-about-virtual-network-gateways.md) als de [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md).
-* **Alleen een op route gebaseerde VPN-gateway wordt ondersteund.** U moet een op route gebaseerde [VPN-gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md)gebruiken. U kunt ook een op route gebaseerde VPN-gateway gebruiken met een VPN-verbinding die is geconfigureerd voor ' op beleid gebaseerde verkeers selecters, zoals wordt beschreven in [verbinding maken met meerdere op beleid gebaseerde VPN-apparaten](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
+* **Alleen een op route gebaseerde VPN-gateway wordt ondersteund.** You must use a route-based [VPN gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md). You also can use a route-based VPN gateway with a VPN connection configured for 'policy-based traffic selectors' as described in [Connect to multiple policy-based VPN devices](../vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md).
 * **Statische route moet worden geconfigureerd voor de VPN-gateway.** Als uw lokale netwerk is verbonden met ExpressRoute en een site-naar-site-VPN, moet u in uw lokale netwerk een statische route hebben geconfigureerd voor het routeren van de site-naar-site-VPN-verbinding met het openbare internet.
-* **VPN Gateway standaard ingesteld op ASN 65515 als er geen waarde is opgegeven.** Azure VPN Gateway ondersteunt het BGP-routerings protocol. U kunt een ASN (als getal) opgeven voor een virtueel netwerk door de schakel optie-ASN toe te voegen. Als u deze para meter niet opgeeft, is de standaard waarde als nummer 65515. U kunt elk ASN gebruiken voor de configuratie, maar als u iets anders dan 65515 selecteert, moet u de gateway opnieuw instellen om de instelling van kracht te laten worden.
+* **VPN Gateway defaults to ASN 65515 if not specified.** Azure VPN Gateway supports the BGP routing protocol. You can specify ASN (AS Number) for a virtual network by adding the -Asn switch. If you don't specify this parameter, the default AS number is 65515. You can use any ASN for the configuration, but if you select something other than 65515, you must reset the gateway for the setting to take effect.
 
 ## <a name="configuration-designs"></a>Configuratie-ontwerpen
 ### <a name="configure-a-site-to-site-vpn-as-a-failover-path-for-expressroute"></a>Een site-naar-site-VPN configureren als een failoverpad voor ExpressRoute
@@ -85,10 +85,10 @@ Er zijn twee verschillende procedures waaruit u kunt kiezen. Welke configuratiep
 ## <a name="new"></a>Een nieuw virtueel netwerk en naast elkaar bestaande verbindingen maken
 Deze procedure begeleidt u bij het maken van een VNet en van site-naar-site- en ExpressRoute-verbindingen die naast elkaar kunnen worden gebruikt. De cmdlets die u voor deze configuratie gebruikt, kunnen enigszins afwijken van de cmdlets waarmee u bekend bent. Zorg ervoor dat u de cmdlets gebruikt die in deze instructies worden vermeld.
 
-1. Meld u aan en selecteer uw abonnement.
+1. Sign in and select your subscription.
 
    [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
-2. Stel variabelen in.
+2. Set variables.
 
    ```azurepowershell-interactive
    $location = "Central US"
@@ -216,19 +216,17 @@ De cmdlets die u voor deze configuratie gebruikt, kunnen enigszins afwijken van 
    ```azurepowershell-interactive
    $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
    ```
-4. U beschikt nu over een virtueel netwerk zonder gateways. Als u nieuwe gateways wilt maken en de verbindingen wilt instellen, gebruikt u de volgende voor beelden:
+4. U beschikt nu over een virtueel netwerk zonder gateways. To create new gateways and set up the connections, use the following examples:
 
    Stel de variabelen in.
 
     ```azurepowershell-interactive
    $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet
    $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-   $gwIP = New-AzPublicIpAddress -Name "ERGatewayIP" -ResourceGroupName $resgrp.ResourceGroupName -Location $location -AllocationMethod Dynamic
-   $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    $gwConfig = New-AzVirtualNetworkGatewayIpConfig -Name "ERGatewayIpConfig" -SubnetId $gwSubnet.Id -PublicIpAddressId $gwIP.Id
    ```
 
-   Maak de gateway.
+   Create the gateway.
 
    ```azurepowershell-interactive
    $gw = New-AzVirtualNetworkGateway -Name <yourgatewayname> -ResourceGroupName <yourresourcegroup> -Location <yourlocation) -IpConfigurations $gwConfig -GatewayType "ExpressRoute" -GatewaySku Standard
@@ -243,7 +241,7 @@ De cmdlets die u voor deze configuratie gebruikt, kunnen enigszins afwijken van 
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>Punt-naar-site-configuratie toevoegen aan de VPN-gateway
 
-U kunt de stappen hieronder om het punt-naar-Site-configuratie toevoegen aan uw VPN-gateway in een co-existentie-instellingen op te volgen. Als u het VPN-basis certificaat wilt uploaden, moet u Power shell lokaal op uw computer installeren of de Azure Portal gebruiken.
+You can follow the steps below to add Point-to-Site configuration to your VPN gateway in a coexistence setup. To upload the VPN root certificate, you must either install PowerShell locally to your computer, or use the Azure portal.
 
 1. Voeg een VPN-clientadresgroep toe.
 
@@ -251,7 +249,7 @@ U kunt de stappen hieronder om het punt-naar-Site-configuratie toevoegen aan uw 
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. Upload het VPN-basiscertificaat voor uw VPN-gateway naar Azure. In dit voor beeld wordt ervan uitgegaan dat het basis certificaat is opgeslagen op de lokale computer waarop de volgende Power shell-cmdlets worden uitgevoerd en dat u Power shell lokaal uitvoert. U kunt het certificaat ook uploaden met behulp van de Azure Portal.
+2. Upload het VPN-basiscertificaat voor uw VPN-gateway naar Azure. In this example, it's assumed that the root certificate is stored in the local machine where the following PowerShell cmdlets are run and that you are running PowerShell locally. You can also upload the certificate using the Azure portal.
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

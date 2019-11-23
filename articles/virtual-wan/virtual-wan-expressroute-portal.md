@@ -1,5 +1,5 @@
 ---
-title: 'Virtueel WAN van Azure: ExpressRoute-verbindingen maken'
+title: Tutorial - Create ExpressRoute connections using Azure Virtual WAN
 description: In deze zelfstudie leert u hoe u Azure Virtual WAN gebruikt om ExpressRoute-verbindingen met Azure en on-premises omgevingen te maken.
 services: virtual-wan
 author: cherylmc
@@ -8,89 +8,89 @@ ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 5a394f93c5cc606c26ffa1cc64bf1d61617b05b8
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: f9277fae00471bf67682015e017ae6dfa351ad65
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74014929"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74422860"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Zelf studie: een ExpressRoute-koppeling maken met behulp van Azure Virtual WAN
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Tutorial: Create an ExpressRoute association using Azure Virtual WAN
 
-In deze zelf studie ziet u hoe u met behulp van virtueel WAN verbinding maakt met uw resources in azure via een ExpressRoute-circuit. Zie het [overzicht van virtuele](virtual-wan-about.md)WAN-netwerken voor meer informatie over virtuele WAN-en virtuele WAN-resources.
+This tutorial shows you how to use Virtual WAN to connect to your resources in Azure over an ExpressRoute circuit. For more information about Virtual WAN and Virtual WAN resources, see the [Virtual WAN Overview](virtual-wan-about.md).
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
 > * Een virtueel WAN maken
-> * Een hub en een gateway maken
+> * Create a hub and a gateway
 > * Een VNet verbinden met een hub
-> * Een circuit verbinden met een hub-gateway
+> * Connect a circuit to a hub gateway
 > * Connectiviteit testen
-> * De grootte van een gateway wijzigen
-> * Een standaard route adverteren
+> * Change a gateway size
+> * Advertise a default route
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
 Controleer voordat u met de configuratie begint of u aan de volgende criteria hebt voldaan:
 
-* U hebt een virtueel netwerk waarmee u verbinding wilt maken. Controleer of geen van de subnetten van uw on-premises netwerken overlapt met de virtuele netwerken waarmee u verbinding wilt maken. Als u een virtueel netwerk in de Azure Portal wilt maken, raadpleegt u [Quick](../virtual-network/quick-create-portal.md)start.
+* You have a virtual network that you want to connect to. Verify that none of the subnets of your on-premises networks overlap with the virtual networks that you want to connect to. To create a virtual network in the Azure portal, see the [Quickstart](../virtual-network/quick-create-portal.md).
 
-* Het virtuele netwerk heeft geen virtuele netwerk gateways. Als uw virtuele netwerk een gateway heeft (VPN of ExpressRoute), moet u alle gateways verwijderen. Voor deze configuratie moeten virtuele netwerken in plaats daarvan zijn verbonden met de virtuele WAN hub-gateway.
+* Your virtual network does not have any virtual network gateways. If your virtual network has a gateway (either VPN or ExpressRoute), you must remove all gateways. This configuration requires that virtual networks are connected instead, to the Virtual WAN hub gateway.
 
-* Zorg dat u een IP-adresbereik krijgt voor uw hubregio. De hub is een virtueel netwerk dat wordt gemaakt en gebruikt door Virtual WAN. Het adres bereik dat u voor de hub opgeeft, mag niet overlappen met een van de bestaande virtuele netwerken waarmee u verbinding maakt. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. Als u niet bekend bent met de IP-adresbereiken die zich in uw on-premises netwerk configuratie bevinden, coördineert u met iemand die deze gegevens voor u kan opgeven.
+* Zorg dat u een IP-adresbereik krijgt voor uw hubregio. The hub is a virtual network that is created and used by Virtual WAN. The address range that you specify for the hub cannot overlap with any of your existing virtual networks that you connect to. Dit bereik mag ook niet overlappen met de adresbereiken waarmee u on-premises verbinding wilt maken. If you are unfamiliar with the IP address ranges located in your on-premises network configuration, coordinate with someone who can provide those details for you.
 
 * Als u nog geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan.
 
-## <a name="openvwan"></a>Een virtueel WAN maken
+## <a name="openvwan"></a>Create a virtual WAN
 
 Open een browser, ga naar [Azure Portal](https://portal.azure.com) en meld u aan met uw Azure-account.
 
-1. Ga naar de virtuele WAN-pagina. Klik in de portal op **+Een resource maken**. Typ **Virtual WAN** in het zoekvak en selecteer ENTER.
-2. Selecteer **virtueel WAN** in de resultaten. Klik op de pagina virtueel WAN op **maken** om de pagina WAN maken te openen.
-3. Vul op de pagina **WAN maken** op het tabblad **basis beginselen** de volgende velden in:
+1. Navigate to the Virtual WAN page. Klik in de portal op **+Een resource maken**. Type **Virtual WAN** into the search box and select Enter.
+2. Select **Virtual WAN** from the results. On the Virtual WAN page, click **Create** to open the Create WAN page.
+3. On the **Create WAN** page, on the **Basics** tab, fill in the following fields:
 
    ![WAN maken](./media/virtual-wan-expressroute-portal/createwan.png)
 
    * **Abonnement** - selecteer het abonnement dat u wilt gebruiken.
    * **Resourcegroep** - maak een nieuwe resourcegroep of gebruik een bestaande.
-   * **Locatie van resource groep** : Kies een resource locatie in de vervolg keuzelijst. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
-   * **Naam** : Typ de naam die u voor uw WAN wilt aanroepen.
-   * **Type** -Selecteer **standaard**. U kunt geen ExpressRoute-gateway maken met behulp van de basis-SKU.
-4. Wanneer u klaar bent met het invullen van de velden, selecteert u **controleren + maken**.
-5. Wanneer de validatie is geslaagd, selecteert u **maken** om het virtuele WAN te maken.
+   * **Resource group location** - Choose a resource location from the dropdown. Een WAN een globale resource en bevindt zich niet in een bepaalde regio. U moet echter een regio selecteren om de WAN-resource die u maakt eenvoudiger te kunnen beheren en vinden.
+   * **Name** - Type the name that you want to call your WAN.
+   * **Type** - Select **Standard**. You can't create an ExpressRoute gateway using the Basic SKU.
+4. After you finish filling out the fields, select **Review +Create**.
+5. Once validation passes, select **Create** to create the virtual WAN.
 
-## <a name="hub"></a>Een virtuele hub en gateway maken
+## <a name="hub"></a>Create a virtual hub and gateway
 
-Een virtuele hub is een virtueel netwerk dat door virtuele WAN wordt gemaakt en gebruikt. Het kan verschillende gateways bevatten, zoals VPN en ExpressRoute. In deze sectie maakt u een ExpressRoute-gateway voor uw virtuele hub. U kunt de gateway maken wanneer u [een nieuwe virtuele hub maakt](#newhub), of u kunt de gateway maken in een [bestaande hub](#existinghub) door deze te bewerken. 
+A virtual hub is a virtual network that is created and used by Virtual WAN. It can contain various gateways, such as VPN and ExpressRoute. In this section, you will create an ExpressRoute gateway for your virtual hub. You can either create the gateway when you [create a new virtual hub](#newhub), or you can create the gateway in an [existing hub](#existinghub) by editing it. 
 
-ExpressRoute-gateways worden ingericht in eenheden van 2 Gbps. 1 schaal eenheid = 2 Gbps met ondersteuning van Maxi maal 10 schaal eenheden = 20 Gbps. Het duurt ongeveer 30 minuten voordat een virtuele hub en gateway volledig worden gemaakt.
+ExpressRoute gateways are provisioned in units of 2 Gbps. 1 scale unit = 2 Gbps with support up to 10 scale units = 20 Gbps. It takes about 30 minutes for a virtual hub and gateway to fully create.
 
-### <a name="newhub"></a>Een nieuwe virtuele hub en een gateway maken
+### <a name="newhub"></a>To create a new virtual hub and a gateway
 
-Maak een nieuwe virtuele hub. Zodra een hub is gemaakt, worden er kosten in rekening gebracht voor de hub, zelfs als u geen sites koppelt.
+Create a new virtual hub. Once a hub is created, you'll be charged for the hub, even if you don't attach any sites.
 
 [!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-er-hub-include.md)]
 
-### <a name="existinghub"></a>Een gateway maken in een bestaande hub
+### <a name="existinghub"></a>To create a gateway in an existing hub
 
-U kunt ook een gateway maken in een bestaande hub door deze te bewerken.
+You can also create a gateway in an existing hub by editing it.
 
-1. Ga naar de virtuele hub die u wilt bewerken en selecteer deze.
-2. Schakel op de pagina **virtuele hub bewerken** het selectie vakje **ExpressRoute-gateway toevoegen**in.
-3. Selecteer **bevestigen** om uw wijzigingen te bevestigen. Het duurt ongeveer 30 minuten om de hub-en hub-resources volledig te maken.
+1. Navigate to the virtual hub that you want to edit and select it.
+2. On the **Edit virtual hub** page, select the checkbox **Include ExpressRoute gateway**.
+3. Select **Confirm** to confirm your changes. It takes about 30 minutes for the hub and hub resources to fully create.
 
-   ![bestaande hub](./media/virtual-wan-expressroute-portal/edithub.png "een hub bewerken")
+   ![existing hub](./media/virtual-wan-expressroute-portal/edithub.png "edit a hub")
 
-### <a name="to-view-a-gateway"></a>Een gateway weer geven
+### <a name="to-view-a-gateway"></a>To view a gateway
 
-Wanneer u een ExpressRoute-gateway hebt gemaakt, kunt u de gateway gegevens weer geven. Ga naar de hub, selecteer **ExpressRoute**en Bekijk de gateway.
+Once you have created an ExpressRoute gateway, you can view gateway details. Navigate to the hub, select **ExpressRoute**, and view the gateway.
 
-![Gateway weer geven](./media/virtual-wan-expressroute-portal/viewgw.png "gateway weer geven")
+![View gateway](./media/virtual-wan-expressroute-portal/viewgw.png "view gateway")
 
-## <a name="connectvnet"></a>Verbind uw VNet met de hub
+## <a name="connectvnet"></a>Connect your VNet to the hub
 
-In deze sectie maakt u de peering-verbinding tussen uw hub en een VNet. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
+In this section, you create the peering connection between your hub and a VNet. Herhaal deze stappen voor elk VNet dat u wilt verbinden.
 
 1. Klik op de pagina voor uw virtuele WAN op **Virtuele netwerkverbinding**.
 2. Klik op de pagina Virtuele netwerkverbinding op **+Verbinding toevoegen**.
@@ -99,57 +99,57 @@ In deze sectie maakt u de peering-verbinding tussen uw hub en een VNet. Herhaal 
     * **Verbindingsnaam** - voer een naam in voor uw verbinding.
     * **Hubs** - selecteer de hub die u wilt koppelen aan deze verbinding.
     * **Abonnement** - controleer of het abonnement klopt.
-    * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. Het virtuele netwerk kan geen bestaande gateway van een virtueel netwerk (VPN of ExpressRoute) hebben.
+    * **Virtueel netwerk** - selecteer het virtuele netwerk dat met deze hub wilt verbinden. The virtual network cannot have an already existing virtual network gateway (neither VPN, nor ExpressRoute).
 
-## <a name="connectcircuit"></a>Uw circuit verbinden met de hub gateway
+## <a name="connectcircuit"></a>Connect your circuit to the hub gateway
 
-Zodra de gateway is gemaakt, kunt u er een [ExpressRoute-circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) aan koppelen. Houd er rekening mee dat ExpressRoute Premium-circuits die zich bevinden in ExpressRoute Global Reach ondersteunde locaties verbinding kunnen maken met een virtuele WAN ExpressRoute-gateway.
+Once the gateway is created, you can connect an [ExpressRoute circuit](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) to it. Note that ExpressRoute Premium circuits that are in ExpressRoute Global Reach-supported locations can connect to a Virtual WAN ExpressRoute gateway.
 
-### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Het circuit verbinden met de hub gateway
+### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>To connect the circuit to the hub gateway
 
-Ga in de portal naar de pagina **Virtual hub-> Connectivity-> ExpressRoute** . Als u in uw abonnement toegang hebt tot een ExpressRoute-circuit, ziet u het circuit dat u wilt gebruiken in de lijst met circuits. Als er geen circuits worden weer gegeven, maar wel zijn voorzien van een autorisatie sleutel en een peer circuit-URI, kunt u een circuit inwisselen en aansluiten. Zie [verbinding maken door een autorisatie sleutel in te wisselen](#authkey).
+In the portal, go to the **Virtual hub -> Connectivity -> ExpressRoute** page. If you have access in your subscription to an ExpressRoute circuit, you will see the circuit you want to use in the list of circuits. If you don’t see any circuits, but have been provided with an authorization key and peer circuit URI, you can redeem and connect a circuit. See [To connect by redeeming an authorization key](#authkey).
 
-1. Selecteer het circuit.
-2. Selecteer **verbinding maken circuit (s)** .
+1. Select the circuit.
+2. Select **Connect circuit(s)** .
 
-   ![circuits verbinden](./media/virtual-wan-expressroute-portal/cktconnect.png "circuits verbinden")
+   ![connect circuits](./media/virtual-wan-expressroute-portal/cktconnect.png "connect circuits")
 
-### <a name="authkey"></a>Verbinding maken door een autorisatie sleutel in te wisselen
+### <a name="authkey"></a>To connect by redeeming an authorization key
 
-Gebruik de autorisatie sleutel en circuit-URI die u hebt gekregen om verbinding te maken.
+Use the authorization key and circuit URI you were provided in order to connect.
 
-1. Klik op de pagina ExpressRoute op **+ autorisatie sleutel inwisselen**
+1. On the ExpressRoute page, click **+Redeem authorization key**
 
-   ![inwisselen](./media/virtual-wan-expressroute-portal/redeem.png "inwisselen")
-2. Vul de waarden in op de pagina autorisatie sleutel voor inwisselen.
+   ![redeem](./media/virtual-wan-expressroute-portal/redeem.png "redeem")
+2. On the Redeem authorization key page, fill in the values.
 
-   ![sleutel waarden inwisselen](./media/virtual-wan-expressroute-portal/redeemkey2.png "sleutel waarden inwisselen")
-3. Selecteer **toevoegen** om de sleutel toe te voegen.
-4. Bekijk het circuit. Een ingewisseld circuit bevat alleen de naam (zonder het type, de provider en andere informatie) omdat deze zich in een ander abonnement bevindt dan die van de gebruiker.
+   ![redeem key values](./media/virtual-wan-expressroute-portal/redeemkey2.png "redeem key values")
+3. Select **Add** to add the key.
+4. View the circuit. A redeemed circuit only shows the name (without the type, provider and other information) because it is in a different subscription than that of the user.
 
-## <a name="to-test-connectivity"></a>De connectiviteit testen
+## <a name="to-test-connectivity"></a>To test connectivity
 
-Nadat de verbinding met het circuit tot stand is gebracht, geeft de status van de hub-verbinding ' This hub ' aan. Dit betekent dat de verbinding tot stand wordt gebracht met de hub ExpressRoute-gateway. Wacht ongeveer 5 minuten voordat u de verbinding van een client achter uw ExpressRoute-circuit test, bijvoorbeeld een virtuele machine in het VNet dat u eerder hebt gemaakt.
+After the circuit connection is established, the hub connection status will indicate 'this hub', implying the connection is established to the hub ExpressRoute gateway. Wait approximately 5 minutes before you test connectivity from a client behind your ExpressRoute circuit, for example, a VM in the VNet that you created earlier.
 
-Als u sites hebt verbonden met een virtuele WAN-VPN-gateway in dezelfde hub als de ExpressRoute-gateway, kunt u een bidirectionele verbinding hebben tussen VPN-en ExpressRoute-eind punten. Dynamische route ring (BGP) wordt ondersteund. De ASN van de gateways in de hub is vast en kan op dit moment niet worden bewerkt.
+If you have sites connected to a Virtual WAN VPN gateway in the same hub as the ExpressRoute gateway, you can have bidirectional connectivity between VPN and ExpressRoute end points. Dynamic routing (BGP) is supported. The ASN of the gateways in the hub is fixed and cannot be edited at this time.
 
-## <a name="to-change-the-size-of-a-gateway"></a>De grootte van een gateway wijzigen
+## <a name="to-change-the-size-of-a-gateway"></a>To change the size of a gateway
 
-Als u de grootte van uw ExpressRoute-gateway wilt wijzigen, gaat u naar de ExpressRoute-gateway in de hub en selecteert u de schaal eenheden in de vervolg keuzelijst. Sla de wijziging op. Het duurt ongeveer 30 minuten om de hub-gateway bij te werken.
+If you want to change the size of your ExpressRoute gateway, locate the ExpressRoute gateway inside the hub, and select the scale units from the dropdown. Save your change. It will take approximately 30 minutes to update the hub gateway.
 
-![Gateway grootte wijzigen](./media/virtual-wan-expressroute-portal/changescale.png "Gateway grootte wijzigen")
+![change gateway size](./media/virtual-wan-expressroute-portal/changescale.png "change gateway size")
 
-## <a name="to-advertise-default-route-00000-to-endpoints"></a>Standaard route 0.0.0.0/0 aan eind punten adverteren
+## <a name="to-advertise-default-route-00000-to-endpoints"></a>To advertise default route 0.0.0.0/0 to endpoints
 
-Als u wilt dat de virtuele Azure-hub de standaard route 0.0.0.0/0 aan uw ExpressRoute-eind punten aankondigt, moet u de standaard route door geven inschakelen.
+If you would like the Azure virtual hub to advertise the default route 0.0.0.0/0 to your ExpressRoute end points, you will need to enable 'Propagate default route'.
 
-1. Selecteer uw **circuit->...-> verbinding bewerken**.
+1. Select your **Circuit ->…-> Edit connection**.
 
-   ![Verbinding bewerken](./media/virtual-wan-expressroute-portal/defaultroute1.png "Verbinding bewerken")
+   ![Edit connection](./media/virtual-wan-expressroute-portal/defaultroute1.png "Edit connection")
 
-2. Selecteer **inschakelen** om de standaard route door te geven.
+2. Select **Enable** to propagate the default route.
 
-   ![Standaard route door geven](./media/virtual-wan-expressroute-portal/defaultroute2.png "Standaard route door geven")
+   ![Propagate default route](./media/virtual-wan-expressroute-portal/defaultroute2.png "Propagate default route")
 
 ## <a name="next-steps"></a>Volgende stappen
 

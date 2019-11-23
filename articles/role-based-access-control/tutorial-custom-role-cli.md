@@ -1,6 +1,6 @@
 ---
-title: 'Zelfstudie: een aangepaste rol maken voor Azure-resources met Azure CLI | Microsoft Docs'
-description: Lees hier hoe u een aangepaste rol maakt voor Azure-resources met Azure CLI.
+title: Tutorial - Create a custom role for Azure resources using Azure CLI
+description: Get started creating a custom role for Azure resources using Azure CLI in this tutorial.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: de1805d91f48b5718ecf293c2b8672ba40fb81a9
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 29b0bea851466b5173711441a5a7927c796c9926
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60531809"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74419596"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Zelfstudie: een aangepaste rol maken voor Azure-resources met Azure CLI
+# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-cli"></a>Tutorial: Create a custom role for Azure resources using Azure CLI
 
-Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure CLI een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheersvenster van een abonnement te zien en ook om ondersteuningstickets te openen.
+Als de [ingebouwde rollen voor Azure-resources](built-in-roles.md) niet voldoen aan de specifieke behoeften van uw organisatie, kunt u uw eigen aangepaste rollen maken. Voor deze zelfstudie gaat u met behulp van Azure CLI een aangepaste rol maken met de naam Reader Support Tickets. De aangepaste rol stelt de gebruiker in staat om alles in het beheervenster van een abonnement te zien en ook om ondersteuningstickets te openen.
 
 In deze zelfstudie leert u het volgende:
 
@@ -51,7 +51,7 @@ De eenvoudigste manier om een aangepaste rol te maken, is door een JSON-sjabloon
 
 1. Bekijk de lijst met bewerkingen voor de [resourceprovider Microsoft.Support](resource-provider-operations.md#microsoftsupport). Het is handig om te weten welke bewerkingen er beschikbaar zijn voor het maken van machtigingen.
 
-    | Bewerking | Description |
+    | Bewerking | Beschrijving |
     | --- | --- |
     | Microsoft.Support/register/action | Hiermee wordt het item geregistreerd bij de resourceprovider voor ondersteuning |
     | Microsoft.Support/supportTickets/read | Hiermee worden gegevens over het ondersteuningsticket opgehaald (inclusief status, ernst, contactgegevens en communicatie) of wordt de lijst met ondersteuningstickets voor de verschillende abonnementen opgehaald. |
