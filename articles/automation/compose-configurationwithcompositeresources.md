@@ -28,16 +28,16 @@ Zodra er samengestelde resources zijn geïmporteerd in uw Automation-account, ku
 
 Voordat u een configuratie kunt toewijzen van samengestelde resources in de Azure Portal, moet u deze samen stellen. U kunt dit doen met behulp van de **opstel configuratie** op de pagina **status configuratie (DSC)** en op de tabbladen **configuraties** of **gecompileerde configuraties** .
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 1. Klik aan de linkerkant op **alle resources** en vervolgens op de naam van uw Automation-account.
 1. Selecteer op de pagina **Automation-account** **status configuratie (DSC)** onder **configuratie beheer**.
 1. Op de pagina **status configuratie (DSC)** klikt u op het tabblad **configuraties** of **gecompileerde configuraties** en klikt u vervolgens op **configuratie opstellen** in het menu boven aan de pagina.
 1. Geef in de sectie **basis beginselen** de nieuwe configuratie naam (vereist) op en klik op een wille keurige plaats in de rij van elke samengestelde resource die u wilt toevoegen aan de nieuwe configuratie. Klik vervolgens op **volgende** of op de stap **bron code** . Voor de volgende stappen hebben we **PSExecutionPolicy** -en **RenameAndDomainJoin** -samengestelde resources geselecteerd.
-   ![Screenshot van de stap basis beginselen van de pagina voor het opstellen van de configuratie @ no__t-1
+   ![scherm opname van de stap basis beginselen van de pagina opstellen van de configuratie](./media/compose-configurationwithcompositeresources/compose-configuration-basics.png)
 1. De **bron code** stap laat zien hoe de bestaande configuratie van de geselecteerde samengestelde resources eruit ziet. U kunt het samen voegen van alle para meters bekijken en bepalen hoe ze worden door gegeven aan de samengestelde resource. Wanneer u klaar bent met het controleren van de nieuwe bron code, klikt u op **volgende** of op de stap **para meters** .
-   ![Screenshot van de stap van de bron code van de pagina voor het opstellen van de configuratie @ no__t-1
+   ![scherm opname van de bron code stap van de pagina opstellen van de configuratie](./media/compose-configurationwithcompositeresources/compose-configuration-sourcecode.png)
 1. In de stap **para meters** is de para meter waarmee elke samengestelde resource wordt weer gegeven, zodat deze kan worden opgegeven. Als een para meter een beschrijving heeft, wordt deze weer gegeven naast het veld para meter. Als een veld een **PSCredential** -type parameter is, geeft de vervolg keuzelijst voor configureren een lijst met **referentie** objecten in het huidige Automation-account. Er is ook een optie voor het **toevoegen van referenties** beschikbaar. Als alle vereiste para meters zijn opgegeven, klikt u op **opslaan en compileren**.
-   ![Screenshot van de stap para meters van de pagina opstellen configuratie @ no__t-1
+   ![scherm afbeelding van de stap para meters van de pagina voor het opstellen van de configuratie](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
 Zodra de nieuwe configuratie is opgeslagen, wordt deze voor compilatie verzonden. De status van de compilatie taak kan worden weer gegeven zoals bij elke geïmporteerde configuratie. Zie [een compilatie taak weer geven](automation-dsc-getting-started.md#viewing-a-compilation-job)voor meer informatie.
 

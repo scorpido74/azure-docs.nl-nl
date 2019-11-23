@@ -67,7 +67,7 @@ Zie [Cloud-naar-apparaat-berichten vanuit uw IOT-hub verzenden](iot-hub-devguide
 
 | Gemaakt door | Koppelings type | Pad van koppeling | Beschrijving |
 |------------|-----------|-----------|-------------|
-| Service | Koppeling naar afzender | `/messages/devicebound` | Cloud-naar-apparaat-berichten die bestemd zijn voor apparaten, worden door de service naar deze koppeling verzonden. Voor berichten die via deze koppeling worden verzonden, wordt de eigenschap `To` ingesteld op het pad van de ontvanger van het doel apparaat, `/devices/<deviceID>/messages/devicebound`. |
+| Service | Koppeling naar afzender | `/messages/devicebound` | Cloud-naar-apparaat-berichten die bestemd zijn voor apparaten, worden door de service naar deze koppeling verzonden. Voor berichten die via deze koppeling worden verzonden, wordt de eigenschap `To` ingesteld op het pad van de ontvanger van het doel apparaat `/devices/<deviceID>/messages/devicebound`. |
 | Service | Koppeling ontvanger | `/messages/serviceBound/feedback` | Het volt ooien, afkeuren en afhandelen van feedback berichten die afkomstig zijn van apparaten die op deze koppeling door de service zijn ontvangen. Zie [Cloud-naar-apparaat-berichten verzenden vanuit een IOT-hub](./iot-hub-devguide-messages-c2d.md#message-feedback)voor meer informatie over feedback berichten. |
 
 Het volgende code fragment laat zien hoe u een Cloud-naar-apparaat-bericht maakt en het naar een apparaat verzendt met behulp van de [uAMQP-bibliotheek in python](https://github.com/Azure/azure-uamqp-python).
@@ -132,7 +132,7 @@ Zoals u in de voor gaande code kunt zien, heeft een feedback bericht van Cloud n
 
 * De sleutel `deviceId` in de feedback tekst heeft de ID van het doel apparaat.
 
-* De sleutel `originalMessageId` in de feedback tekst bevat de ID van het oorspronkelijke Cloud-naar-apparaat-bericht dat is verzonden door de service. U kunt deze leverings status gebruiken om feedback voor Cloud-naar-apparaat-berichten te correleren.
+* De sleutel `originalMessageId` in de feedback tekst is de ID van het oorspronkelijke Cloud-naar-apparaat-bericht dat is verzonden door de service. U kunt deze leverings status gebruiken om feedback voor Cloud-naar-apparaat-berichten te correleren.
 
 ### <a name="receive-telemetry-messages-service-client"></a>Telemetrie-berichten ontvangen (Service-client)
 
@@ -144,7 +144,7 @@ In elke stap moet de client de volgende informatie bevatten:
 
 * Geldige service referenties (Service Shared Access Signature token).
 
-* Een goed opgemaakt pad naar de groeps partitie van de Consumer waarvan het van plan is berichten op te halen. Voor een bepaalde Consumer groep en partitie-ID heeft het pad de volgende indeling: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (de standaard groep van consumenten is `$Default`).
+* Een goed opgemaakt pad naar de groeps partitie van de Consumer waarvan het van plan is berichten op te halen. Voor een bepaalde Consumer groep en partitie-ID heeft het pad de volgende indeling: `/messages/events/ConsumerGroups/<consumer_group>/Partitions/<partition_id>` (de standaard gebruikers groep is `$Default`).
 
 * Een optioneel filter predicaat voor het aanwijzen van een begin punt in de partitie. Dit predicaat kan de vorm hebben van een volgorde nummer, een verschuiving of een time stamp.
 
@@ -267,7 +267,7 @@ De volgende koppelings paden worden ondersteund als apparaat-bewerkingen:
 
 ### <a name="receive-cloud-to-device-commands-device-client"></a>Cloud-naar-apparaat-opdrachten ontvangen (apparaatclient)
 
-Cloud-naar-apparaat-opdrachten die worden verzonden naar apparaten arriveren op een koppeling @no__t 0. Apparaten kunnen deze berichten in batches ontvangen en de bericht gegevens Payload, bericht eigenschappen, aantekeningen of toepassings eigenschappen in het bericht naar behoefte gebruiken.
+Cloud-naar-apparaat-opdrachten die worden verzonden naar apparaten, arriveren op een `/devices/<deviceID>/messages/devicebound` koppeling. Apparaten kunnen deze berichten in batches ontvangen en de bericht gegevens Payload, bericht eigenschappen, aantekeningen of toepassings eigenschappen in het bericht naar behoefte gebruiken.
 
 Het volgende code fragment maakt gebruik [van de uAMQP-bibliotheek in python](https://github.com/Azure/azure-uamqp-python)) om Cloud-naar-apparaat-berichten te ontvangen door een apparaat.
 

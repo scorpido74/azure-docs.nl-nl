@@ -51,7 +51,7 @@ Toepassingen hebben toegang tot de abonnementen via eind punten. De toegangs con
 
 De volgende tabel bevat de eind punten voor de beheer-en gegevens abonnementen.
 
-| Toegang tot @ no__t-0plane | Eindpunten voor toegang | Operations | Toegang tot @ no__t-0control-mechanisme |
+| Toegang&nbsp;vlak | Eindpunten voor toegang | Bewerkingen | Access&nbsp;Control-mechanisme |
 | --- | --- | --- | --- |
 | Beheerlaag | **Wereldwijd:**<br> management.azure.com:443<br><br> **Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Azure van de Amerikaanse overheid:**<br> management.usgovcloudapi.net:443<br><br> **Azure Duitsland:**<br> management.microsoftazure.de:443 | Sleutel kluizen maken, lezen, bijwerken en verwijderen<br><br>Key Vault toegangs beleid instellen<br><br>Key Vault Tags instellen | Azure Resource Manager RBAC |
 | Gegevenslaag | **Wereldwijd:**<br> &lt;kluisnaam&gt;.vault.azure.net:443<br><br> **Azure China 21Vianet:**<br> &lt;kluisnaam&gt;.vault.azure.cn:443<br><br> **Azure van de Amerikaanse overheid:**<br> &lt;kluisnaam&gt;.vault.usgovcloudapi.net:443<br><br> **Azure Duitsland:**<br> &lt;kluisnaam&gt;.vault.microsoftazure.de:443 | Sleutels: ontsleutelen, versleutelen,<br> uitpakken, terugloop, verifiëren, ondertekenen,<br> ophalen, weer geven, bijwerken, maken,<br> importeren, verwijderen, back-ups maken en herstellen<br><br> Geheimen: ophalen, lijst, instellen, verwijderen | Toegangs beleid Key Vault |
@@ -60,7 +60,7 @@ De volgende tabel bevat de eind punten voor de beheer-en gegevens abonnementen.
 
 In het beheer vlak gebruikt u RBAC (op rollen gebaseerd Access Control) om de bewerkingen te autoriseren die een aanroeper kan uitvoeren. In het RBAC-model heeft elk Azure-abonnement een exemplaar van Azure AD. U verleent toegang aan gebruikers, groepen en toepassingen vanuit deze map. Toegang is verleend om resources te beheren in het Azure-abonnement dat gebruikmaakt van het Azure Resource Manager-implementatie model. Als u toegang wilt verlenen, gebruikt u de [Azure Portal](https://portal.azure.com/), de [Azure cli](../cli-install-nodejs.md), [Azure PowerShell](/powershell/azureps-cmdlets-docs)of de [Azure Resource Manager rest-api's](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
-U maakt een sleutel kluis in een resource groep en beheert de toegang met behulp van Azure AD. U verleent gebruikers of groepen de mogelijkheid om de sleutel kluizen in een resource groep te beheren. U verleent de toegang op een specifiek Scope niveau door de juiste RBAC-rollen toe te wijzen. Als u toegang wilt verlenen aan een gebruiker om sleutel kluizen te beheren, wijst u een vooraf gedefinieerde `key vault Contributor`-rol toe aan de gebruiker op een specifiek bereik. De volgende Scope niveaus kunnen worden toegewezen aan een RBAC-rol:
+U maakt een sleutel kluis in een resource groep en beheert de toegang met behulp van Azure AD. U verleent gebruikers of groepen de mogelijkheid om de sleutel kluizen in een resource groep te beheren. U verleent de toegang op een specifiek Scope niveau door de juiste RBAC-rollen toe te wijzen. Als u toegang wilt verlenen aan een gebruiker om sleutel kluizen te beheren, wijst u een vooraf gedefinieerde `key vault Contributor` rol toe aan de gebruiker op een specifiek bereik. De volgende Scope niveaus kunnen worden toegewezen aan een RBAC-rol:
 
 - **Abonnement**: een RBAC-rol die is toegewezen op abonnements niveau, is van toepassing op alle resource groepen en resources in dat abonnement.
 - **Resource groep**: een RBAC-rol die is toegewezen op het niveau van de resource groep, is van toepassing op alle resources in die resource groep.
@@ -69,13 +69,13 @@ U maakt een sleutel kluis in een resource groep en beheert de toegang met behulp
 Er zijn verschillende vooraf gedefinieerde rollen. Als een vooraf gedefinieerde rol niet aan uw behoeften voldoet, kunt u uw eigen rol definiëren. Zie [RBAC: ingebouwde rollen](../role-based-access-control/built-in-roles.md)voor meer informatie.
 
 > [!IMPORTANT]
-> Als een gebruiker `Contributor`-machtigingen heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie de `Contributor`-rol toegang heeft tot uw sleutel kluizen. Zorg ervoor dat alleen geautoriseerde personen uw sleutel kluizen, sleutels, geheimen en certificaten kunnen gebruiken en beheren.
+> Als een gebruiker `Contributor` machtigingen heeft voor een sleutel kluis beheer vlak, kan de gebruiker zichzelf toegang verlenen tot het gegevens vlak door een Key Vault toegangs beleid in te stellen. U moet nauw keurig bepalen wie `Contributor` rol toegang heeft tot uw sleutel kluizen. Zorg ervoor dat alleen geautoriseerde personen uw sleutel kluizen, sleutels, geheimen en certificaten kunnen gebruiken en beheren.
 >
 
 <a id="data-plane-access-control"></a> 
 ## <a name="data-plane-and-access-policies"></a>Gegevens vlak en toegangs beleid
 
-U verleent toegang tot het gegevens vlak door Key Vault toegangs beleid in te stellen voor een sleutel kluis. Als u dit toegangs beleid wilt instellen, moet een gebruiker, groep of toepassing beschikken over `Contributor` machtigingen voor het beheer vlak voor die sleutel kluis.
+U verleent toegang tot het gegevens vlak door Key Vault toegangs beleid in te stellen voor een sleutel kluis. Als u dit toegangs beleid wilt instellen, moet een gebruiker, groep of toepassing `Contributor` machtigingen hebben voor het beheer vlak voor die sleutel kluis.
 
 U verleent toegang aan een gebruiker, groep of toepassing om specifieke bewerkingen uit te voeren voor sleutels of geheimen in een sleutel kluis. Key Vault ondersteunt Maxi maal 1.024 toegangs beleidsregels voor een sleutel kluis. Een Azure AD-beveiligings groep maken en gebruikers toevoegen aan de groep om gegevenslaag toegang te geven tot meerdere gebruikers.
 
@@ -126,11 +126,11 @@ De volgende tabel bevat een overzicht van de toegangs machtigingen voor onze rol
 | Rol | Machtigingen voor de beheerlaag | Machtigingen voor de gegevenslaag |
 | --- | --- | --- |
 | Beveiligingsteam | Inzender Key Vault | Sleutels: back-ups maken, verwijderen, ophalen, importeren, sorteren, herstellen<br>Geheimen: alle bewerkingen |
-| Ontwikkel aars en @ no__t-0operators | Machtiging voor Key Vault implementeren<br><br> **Opmerking**: met deze machtiging kunnen geïmplementeerde vm's worden gebruikt voor het ophalen van geheimen uit een sleutel kluis. | Geen |
-| Auditors | Geen | Sleutels: weergeven<br>Geheimen: weergeven<br><br> **Opmerking**: met deze machtiging kunnen Audi tors kenmerken (tags, activerings datums, verval datums) controleren op sleutels en geheimen die niet in de logboeken zijn verzonden. |
-| Toepassing | Geen | Sleutels: ondertekenen<br>Geheimen: ophalen |
+| Ontwikkel aars en&nbsp;Opera tors | Machtiging voor Key Vault implementeren<br><br> **Opmerking**: met deze machtiging kunnen geïmplementeerde vm's worden gebruikt voor het ophalen van geheimen uit een sleutel kluis. | None |
+| Auditors | None | Sleutels: weergeven<br>Geheimen: weergeven<br><br> **Opmerking**: met deze machtiging kunnen Audi tors kenmerken (tags, activerings datums, verval datums) controleren op sleutels en geheimen die niet in de logboeken zijn verzonden. |
+| Toepassing | None | Sleutels: ondertekenen<br>Geheimen: ophalen |
 
-De drie team rollen hebben toegang tot andere resources, samen met Key Vault machtigingen. Ontwikkel aars en Opera tors hebben `Contributor` toegang tot de resource typen nodig om Vm's (of de Web Apps functie van Azure App Service) te implementeren. Audi tors hebben lees toegang nodig tot het opslag account waarin de Key Vault logboeken worden opgeslagen.
+De drie team rollen hebben toegang tot andere resources, samen met Key Vault machtigingen. Ontwikkel aars en Opera tors `Contributor` hebben toegang tot de resource typen nodig om Vm's (of de Web Apps functie van Azure App Service) te implementeren. Audi tors hebben lees toegang nodig tot het opslag account waarin de Key Vault logboeken worden opgeslagen.
 
 Zie de volgende bronnen voor meer informatie over het implementeren van certificaten, toegangs sleutels en geheimen via een programma:
 - Meer informatie over het [implementeren van certificaten op vm's vanuit een door de klant beheerde sleutel kluis](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (blog bericht).
@@ -144,7 +144,7 @@ De Power shell-fragmenten in deze sectie zijn gebouwd met de volgende veronderst
 - De Key Vault-logboeken worden opgeslagen in het opslag account **contosologstorage** . 
 - De **ContosoKeyVault** -sleutel kluis en het **contosologstorage** -opslag account bevinden zich in dezelfde Azure-locatie.
 
-De abonnements beheerder wijst de `key vault Contributor`-en `User Access Administrator`-rollen toe aan het beveiligings team. Met deze rollen kan het beveiligings team de toegang tot andere resources en sleutel kluizen beheren, beide in de resource groep **ContosoAppRG** .
+De abonnements beheerder wijst de `key vault Contributor` en `User Access Administrator` rollen toe aan het beveiligings team. Met deze rollen kan het beveiligings team de toegang tot andere resources en sleutel kluizen beheren, beide in de resource groep **ContosoAppRG** .
 
 ```powershell
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
@@ -183,7 +183,7 @@ Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -
 
 Onze gedefinieerde aangepaste rollen kunnen alleen worden toegewezen aan het abonnement waarin de resource groep **ContosoAppRG** wordt gemaakt. Als u een aangepaste rol wilt gebruiken voor andere projecten in andere abonnementen, voegt u andere abonnementen toe aan het bereik voor de rol.
 
-Voor onze DevOps-mede werkers wordt de aangepaste roltoewijzing voor de sleutel kluis `deploy/action` aan de resource groep toegewezen. Alleen Vm's die zijn gemaakt in de resource groep **ContosoAppRG** , hebben toegang tot de geheimen (SSL-en Boots trap-certificaten). Vm's die zijn gemaakt in andere resource groepen door een DevOps-lid hebben geen toegang tot deze geheimen, zelfs niet als de virtuele machine de geheime Uri's heeft.
+Voor onze DevOps-mede werkers wordt de aangepaste roltoewijzing voor de sleutel kluis `deploy/action` de machtiging voor de resource groep. Alleen Vm's die zijn gemaakt in de resource groep **ContosoAppRG** , hebben toegang tot de geheimen (SSL-en Boots trap-certificaten). Vm's die zijn gemaakt in andere resource groepen door een DevOps-lid hebben geen toegang tot deze geheimen, zelfs niet als de virtuele machine de geheime Uri's heeft.
 
 In ons voor beeld wordt een eenvoudig scenario beschreven. Scenario's met Real-Life kunnen complexer zijn. U kunt de machtigingen voor uw sleutel kluis aanpassen op basis van uw behoeften. We gaan ervan uit dat het beveiligings team de sleutel en geheime verwijzingen (Uri's en vinger afdrukken) bevat die worden gebruikt door het DevOps-personeel in hun toepassingen. Ontwikkel aars en Opera tors hebben geen toegang tot het gegevens vlak nodig. We richten ons op hoe u uw sleutel kluis kunt beveiligen. Geef vergelijk bare aandacht wanneer u [uw vm's](https://azure.microsoft.com/services/virtual-machines/security/), [opslag accounts](../storage/common/storage-security-guide.md)en andere Azure-resources beveiligt.
 

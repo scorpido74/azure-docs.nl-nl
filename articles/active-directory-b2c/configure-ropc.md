@@ -25,14 +25,14 @@ De ROPC-stroom (resource owner password credentials) is een OAuth-standaard veri
 
 In Azure Active Directory B2C (Azure AD B2C) worden de volgende opties ondersteund:
 
-- **Systeem eigen client**: Gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker. Het apparaat kan een mobiele toepassing zijn die wordt uitgevoerd in een systeem eigen besturings systeem, zoals Android en iOS.
-- **Open bare client stroom**: Alleen gebruikers referenties, verzameld door een toepassing, worden in de API-aanroep verzonden. De referenties van de toepassing worden niet verzonden.
-- **Nieuwe claims toevoegen**: De inhoud van het ID-token kan worden gewijzigd om nieuwe claims toe te voegen.
+- **Systeem eigen client**: gebruikers interactie tijdens verificatie gebeurt wanneer code wordt uitgevoerd op een apparaat aan de gebruiker. Het apparaat kan een mobiele toepassing zijn die wordt uitgevoerd in een systeem eigen besturings systeem, zoals Android en iOS.
+- **Open bare client stroom**: alleen gebruikers referenties, verzameld door een toepassing, worden in de API-aanroep verzonden. De referenties van de toepassing worden niet verzonden.
+- **Nieuwe claims toevoegen**: de inhoud van het id-token kan worden gewijzigd om nieuwe claims toe te voegen.
 
 De volgende stromen worden niet ondersteund:
 
-- **Server-naar-server**: Het systeem voor identiteits beveiliging heeft een betrouw bare IP-adres nodig dat door de aanroeper (de systeem eigen client) is verzameld als onderdeel van de interactie. In een API-aanroep aan de server zijde wordt alleen het IP-adres van de server gebruikt. Als een dynamische drempel van mislukte authenticaties wordt overschreden, kan het identiteits beschermings systeem een herhaald IP-adres identificeren als een aanvaller.
-- **Vertrouwelijke client stroom**: De client-ID van de toepassing wordt gevalideerd, maar het toepassings geheim wordt niet gevalideerd.
+- **Server-naar-server: voor**het systeem voor identiteits beveiliging is een betrouw bare IP-adres nodig dat door de aanroeper (de systeem eigen client) is verzameld als onderdeel van de interactie. In een API-aanroep aan de server zijde wordt alleen het IP-adres van de server gebruikt. Als een dynamische drempel van mislukte authenticaties wordt overschreden, kan het identiteits beschermings systeem een herhaald IP-adres identificeren als een aanvaller.
+- **Vertrouwelijke client stroom**: de client-id van de toepassing wordt gevalideerd, maar het toepassings geheim wordt niet gevalideerd.
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Een gebruikers stroom van een resource-eigenaar maken
 
@@ -58,17 +58,17 @@ De volgende stromen worden niet ondersteund:
 ## <a name="test-the-user-flow"></a>De gebruikers stroom testen
 
 Gebruik uw favoriete API-ontwikkelings toepassing om een API-aanroep te genereren en Bekijk het antwoord op fout opsporing van uw gebruikers stroom. Maak een aanroep als dit met de informatie in de volgende tabel als hoofd tekst van de POST-aanvraag:
-- Vervang *@no__t -1yourtenant. onmicrosoft. com >* door de naam van uw B2C-Tenant.
+- Vervang *\<yourtenant. onmicrosoft. com >* door de naam van uw B2C-Tenant.
 - Vervang *\<B2C_1A_ROPC_Auth >* door de volledige naam van het beleid voor wachtwoord referenties van uw resource-eigenaar.
-- Vervang *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* met de toepassings-id van uw registratie.
+- Vervang *\<bef2222d56-552f-4a5b-b90a-1988a7d634c3 >* door de toepassings-id van uw registratie.
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Sleutel | Value |
+| Sleutel | Waarde |
 | --- | ----- |
-| username | leadiocl@outlook.com |
-| password | Passxword1 |
-| grant_type | password |
+| gebruikersnaam | leadiocl@outlook.com |
+| wachtwoord | Passxword1 |
+| grant_type | wachtwoord |
 | scope | OpenID Connect \<bef2222d56-552f-4a5b-b90a-1988a7d634c3 > offline_access |
 | client_id | \<bef2222d56-552f-4a5b-b90a-1988a7d634c3> |
 | response_type | token id_token |
@@ -104,7 +104,7 @@ Een POST-aanroep maken zoals deze wordt weer gegeven met de informatie in de vol
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Sleutel | Value |
+| Sleutel | Waarde |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |
@@ -132,7 +132,7 @@ Een geslaagde reactie ziet eruit als in het volgende voor beeld:
 }
 ```
 > [!NOTE]
-> Bij het maken van gebruikers via Graph API moet de toepassing de machtigingen ' OpenID Connect ', ' offline_access ' en ' profile ' hebben van Microsoft Graph.
+> Bij het maken van gebruikers via Graph API moet de toepassing de machtigingen ' OpenID Connect ', ' offline_access ' en ' profile ' van Microsoft Graph hebben.
 
 ## <a name="implement-with-your-preferred-native-sdk-or-use-app-auth"></a>Implementeer met uw voorkeurs systeem eigen SDK of gebruik app-auth
 

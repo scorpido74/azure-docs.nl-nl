@@ -20,7 +20,7 @@ ms.locfileid: "72025782"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Azure Active Directory-toepassingsproxy CORS-problemen begrijpen en oplossen
 
-@No__t van [Cross-Origin Resource Sharing (CORS)](https://www.w3.org/TR/cors/)-1can bieden soms uitdagingen voor de apps en api's die u via de Azure Active Directory-toepassingsproxy publiceert. In dit artikel worden de problemen met Azure AD-toepassingsproxy CORS en oplossingen besproken.
+Het [gebruik van CORS (cross-Origin Resource Sharing)](https://www.w3.org/TR/cors/) kan soms uitdagingen opleveren voor de apps en api's die u via de Azure Active Directory-toepassingsproxy publiceert. In dit artikel worden de problemen met Azure AD-toepassingsproxy CORS en oplossingen besproken.
 
 Browser beveiliging voor komt doorgaans dat een webpagina AJAX-aanvragen naar een ander domein brengt. Deze beperking wordt *hetzelfde-Origin-beleid*genoemd en voor komt dat een schadelijke site gevoelige gegevens van een andere site leest. Soms wilt u echter dat andere sites uw web-API kunnen aanroepen. CORS is een W3C-standaard waarmee een server hetzelfde-Origin-beleid kan versoepelen en enkele cross-Origin-aanvragen kan afwijzen.
 
@@ -28,15 +28,15 @@ Browser beveiliging voor komt doorgaans dat een webpagina AJAX-aanvragen naar ee
 
 Twee Url's hebben dezelfde oorsprong als ze identieke schema's, hosts en poorten ([RFC 6454](https://tools.ietf.org/html/rfc6454)) hebben, zoals:
 
--   http: \//contoso.com/foo.html
--   http: \//contoso.com/bar.html
+-   http:\/-contoso.com/foo.html
+-   http:\/-contoso.com/bar.html
 
 De volgende Url's hebben verschillende oorsprongen dan de vorige twee:
 
--   http: \//contoso. net-ander domein
--   http: \//contoso.com:9000/foo.html-andere poort
--   https: \//contoso.com/foo.html-ander schema
--   http: \//www.contoso.com/foo.html-ander subdomein
+-   http:\/-contoso.net-ander domein
+-   http:\/-contoso.com:9000/foo.html-andere poort
+-   https:\/-contoso.com/foo.html-ander schema
+-   http:\/-www.contoso.com/foo.html-ander subdomein
 
 Met hetzelfde basis beleid voor komt u dat apps toegang hebben tot resources van andere oorsprong, tenzij ze de juiste toegangs beheer headers gebruiken. Als de CORS-headers ontbreken of onjuist zijn, mislukken de cross-Origin-aanvragen. 
 
@@ -46,7 +46,7 @@ U kunt CORS-problemen identificeren met behulp van hulpprogram ma's voor fout op
 1. Druk op **F12** om de console fout opsporing weer te geven.
 1. Probeer de trans actie te reproduceren en Bekijk het console bericht. Een CORS-schending produceert een console fout over de oorsprong.
 
-Selecteer in de volgende scherm afbeelding de knop **Probeer het opnieuw** met een CORS-fout bericht dat https: \/-corswebclient-contoso. msappproxy. net niet is gevonden in de header Access-Control-Allow-Origin.
+Selecteer in de volgende scherm afbeelding de knop **Probeer het opnieuw** met een CORS-fout bericht dat https:\//corswebclient-contoso.msappproxy.net niet is gevonden in de header Access-Control-Allow-Origin.
 
 ![CORS-probleem](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -64,11 +64,11 @@ De CORSWebClient-app werkt wanneer u deze on-premises host, maar kan niet worden
 
 U kunt het voor gaande CORS-probleem op verschillende manieren oplossen.
 
-### <a name="option-1-set-up-a-custom-domain"></a>Optie 1: Een aangepast domein instellen
+### <a name="option-1-set-up-a-custom-domain"></a>Optie 1: een aangepast domein instellen
 
 Gebruik een aangepast Azure AD-toepassingsproxy- [domein](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-custom-domains) om te publiceren vanuit dezelfde oorsprong, zonder dat u wijzigingen hoeft aan te brengen in de namen van apps, code of kopteksten. 
 
-### <a name="option-2-publish-the-parent-directory"></a>Optie 2: De bovenliggende map publiceren
+### <a name="option-2-publish-the-parent-directory"></a>Optie 2: de bovenliggende map publiceren
 
 Publiceer de bovenliggende map van beide apps. Deze oplossing werkt bijzonder goed als u slechts twee apps op de webserver hebt. In plaats van elke app afzonderlijk te publiceren, kunt u de gemeen schappelijke bovenliggende map publiceren, wat resulteert in dezelfde oorsprong.
 
@@ -83,7 +83,7 @@ Stel in plaats daarvan de **interne URL** in voor het publiceren van de bovenlig
 Met de resulterende app-Url's wordt het CORS-probleem effectief opgelost:
 
 - https:\//corswebclient-contoso.msappproxy.net/CORSWebService
-- https: \//corswebclient-contoso. msappproxy. net/CORSWebClient
+- https:\/-corswebclient-contoso.msappproxy.net/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>Optie 3: HTTP-headers bijwerken
 
@@ -93,28 +93,28 @@ Voeg een aangepaste HTTP-antwoord header toe aan de webservice zodat deze overee
 
 Voor deze aanpassing zijn geen code wijzigingen vereist. U kunt deze controleren in de Fiddler-traceringen:
 
-**De koptekst toevoeging**\ plaatsen
+**De toevoeging van de koptekst plaatsen**\
 HTTP/1.1 200 OK\
 Cache-Control: no-cache \
 Pragma: no-cache \
 Content-type: Text/Plain; charset = UTF-8 \
 Expires:-1 \
-Variatie Accept-Encoding \
-Naam Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0\
-**Access-Control-Allow-Origin: https @ no__t-1//corswebclient-contoso. msappproxy. net**\
-X-AspNet-Version: 4.0.30319\
-X-aangedreven: ASP.NET\
+Variëren: Accept-Encoding \
+Server: micro soft-IIS/8.5 micro soft-HTTPAPI/2.0 \
+**Access-Control-Allow-Origin: https\://corswebclient-contoso.msappproxy.net**\
+X-AspNet-version: 4.0.30319 \
+X-aangedreven-op: ASP.NET \
 Content-Length: 17
 
-### <a name="option-4-modify-the-app"></a>Optie 4: De App wijzigen
+### <a name="option-4-modify-the-app"></a>Optie 4: de App wijzigen
 
 U kunt de App wijzigen zodat CORS wordt ondersteund door de header Access-Control-Allow-Origin toe te voegen, met de juiste waarden. De manier om de header toe te voegen, is afhankelijk van de code taal van de app. Het wijzigen van de code is de minst aanbevolen optie, omdat hiervoor de meeste inspanning nodig is.
 
-### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Optie 5: De levens duur van het toegangs token verlengen
+### <a name="option-5-extend-the-lifetime-of-the-access-token"></a>Optie 5: de levens duur van het toegangs token verlengen
 
 Enkele CORS-problemen kunnen niet worden opgelost, bijvoorbeeld wanneer uw app omleidt naar *login.microsoftonline.com* om te verifiëren en het toegangs token verloopt. De CORS-aanroep wordt vervolgens mislukt. Een tijdelijke oplossing voor dit scenario is om de levens duur van het toegangs token uit te breiden, om te voor komen dat deze wordt verloopt tijdens de sessie van een gebruiker. Zie [Configureer bare token levensduur in azure AD](../develop/active-directory-configurable-token-lifetimes.md)voor meer informatie over hoe u dit doet.
 
 ## <a name="see-also"></a>Zie ook
-- [Zelfstudie: Een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory @ no__t-0 
+- [Zelf studie: een on-premises toepassing toevoegen voor externe toegang via toepassings proxy in Azure Active Directory](application-proxy-add-on-premises-application.md) 
 - [Een Azure AD-toepassingsproxy-implementatie plannen](application-proxy-deployment-plan.md) 
 - [Externe toegang tot on-premises toepassingen via Azure Active Directory-toepassingsproxy](application-proxy.md) 

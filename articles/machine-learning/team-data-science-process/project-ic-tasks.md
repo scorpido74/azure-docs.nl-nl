@@ -1,5 +1,5 @@
 ---
-title: Taken voor afzonderlijke mede werkers in het team data Science process
+title: Taken voor een individuele Inzender in Team Data Science Process
 description: Een gedetailleerd overzicht van de taken voor een individuele mede werker van een Data Science-Team project.
 author: marktab
 manager: cgronlun
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/10/2019
 ms.locfileid: "72244273"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor afzonderlijke mede werkers in het team data Science process
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Taken voor een individuele Inzender in Team Data Science Process
 
 In dit onderwerp vindt u een overzicht van de taken die een *individuele mede werker* heeft voltooid voor het instellen van een project in het [team data Science process](overview.md) (TDSP). Het doel is om te werken in een samen werkende team omgeving die wordt gestandaardiseerd op de TDSP. De TDSP is ontworpen om samen werking en team educatie te verbeteren. Voor een overzicht van de personeels rollen en de bijbehorende taken die worden verwerkt door een Data Science-team dat wordt gestandardization op de TDSP, raadpleegt u [rollen en taken voor team data Science process](roles-tasks.md).
 
@@ -45,7 +45,7 @@ In deze zelf studie wordt ervan uitgegaan dat de volgende resources en machtigin
 Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of DSVM of als u Azure File Storage wilt koppelen aan uw DSVM, hebt u het volgende nodig:
 
 - Een Azure-abonnement.
-- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
 - Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
@@ -55,7 +55,7 @@ Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine o
 
 Als u lokaal wilt werken met opslag plaatsen en u uw wijzigingen naar het gedeelde team en project opslagplaatsen wilt pushen, kopieert of *kloont* u de opslag plaatsen eerst naar uw lokale machine. 
 
-1. Ga in azure DevOps naar de pagina project overzicht van uw team op *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >* , bijvoorbeeld **https: \//dev. Azure. com/DataScienceUnit/MyTeam**.
+1. Ga in azure DevOps naar de pagina project overzicht van uw team op *https:\//\<server naam >/\<organisatie naam >/\<team naam >* , bijvoorbeeld **https:\//dev.Azure.com/DataScienceUnit/MyTeam**.
    
 1. Selecteer **opslag plaatsen** in de linkernavigatiebalk en selecteer boven aan de pagina de opslag plaats die u wilt klonen.
    
@@ -72,7 +72,7 @@ Als u lokaal wilt werken met opslag plaatsen en u uw wijzigingen naar het gedeel
    
 1. Ga naar de map die u hebt gemaakt.
    
-1. In Git Bash voert u de opdracht `git clone <clone URL>` uit voor elke opslag plaats die u wilt klonen. 
+1. Voer in Git-Bash de opdracht uit `git clone <clone URL>` voor elke opslag plaats die u wilt klonen. 
    
    Met de volgende opdracht wordt bijvoorbeeld de **TeamUtilities** -opslag plaats gekloond naar de *MyTeam* -map op uw lokale computer. 
    
@@ -100,7 +100,7 @@ Als uw team of project gedeelde assets heeft in azure File Storage, koppelt u de
 
 Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken die worden gedefinieerd door het team data Science process:
 
-- [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
-- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
-- [Project Lead taken voor een Data Science-Team](project-lead-tasks.md)
+- [Groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md)
+- [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
+- [Project Lead taken voor een team van gegevenswetenschappers](project-lead-tasks.md)
 

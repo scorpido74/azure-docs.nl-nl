@@ -22,7 +22,7 @@ ms.locfileid: "72990656"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Use custom activities in an Azure Data Factory pipeline (Aangepaste activiteiten gebruiken in een Azure Data Factory-pijplijn)
 > [!div class="op_single_selector" title1="Selecteer de versie van Data Factory service die u gebruikt:"]
-> * [Versie 1](data-factory-use-custom-activities.md)
+> * [Versie 1:](data-factory-use-custom-activities.md)
 > * [Versie 2 (huidige versie)](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
@@ -68,7 +68,7 @@ Voor de zelf studie maakt u een Azure Batch-account met een groep Vm's. Dit zijn
       3. Selecteer een **prijs categorie voor het knoop punt**.
       4. Voer **2** in als waarde voor de **toegewezen doel** instelling.
       5. Voer **2** als waarde in voor de **maximum aantal taken per knoop punt** .
-   5. Klik op **OK** om de groep te maken.
+   5. Klik op **OK** om de pool te maken.
    6. Noteer de **id** van de pool.
 
 ### <a name="high-level-steps"></a>Stappen op hoog niveau
@@ -106,7 +106,7 @@ De-methode retourneert een woorden lijst die kan worden gebruikt om aangepaste a
      <li>Selecteer <b>Class Library</b> in de lijst met project typen aan de rechter kant. Kies in Visual Studio <b>Class Library (.NET Framework)</b> </li>
      <li>Voer <b>MyDotNetActivity</b> in als <b>naam</b>.</li>
      <li>Selecteer <b>C:\ADFGetStarted</b> voor de <b>locatie</b>.</li>
-     <li>Klik op <b>OK</b> om het project te maken.</li>
+     <li>Klik op <b>OK</b> om het project aan te maken.</li>
    </ol>
 
 2. Klik op **Tools**, wijs **NuGet Package Manager** aan en klik op **Package Manager Console**.
@@ -455,7 +455,7 @@ Met gekoppelde services worden gegevensarchieven of compute-services gekoppeld a
    1. Geef Azure Batch account naam op voor de eigenschap **AccountName** . De **URL** van de **Blade Azure batch account** heeft de volgende indeling: `http://accountname.region.batch.azure.com`. Voor de eigenschap **batchUri** in de JSON moet u `accountname.` verwijderen uit de URL en de `accountname` voor de JSON-eigenschap `accountName` gebruiken.
    2. Geef de sleutel van het Azure Batch-account op voor de eigenschap **accessKey** .
    3. Geef de naam op van de groep die u hebt gemaakt als onderdeel van vereisten voor de eigenschap **pool** naam. U kunt ook de ID van de pool opgeven in plaats van de naam van de pool.
-   4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Voor beeld: `https://westus.batch.azure.com`.
+   4. Geef Azure Batch URI op voor de eigenschap **batchUri** . Voorbeeld: `https://westus.batch.azure.com`.
    5. Geef de **AzureStorageLinkedService** op voor de eigenschap **linkedServiceName** .
 
         ```json
@@ -692,14 +692,14 @@ Het oplossen van problemen bestaat uit een aantal basis technieken:
 
    Klik op de Blade **output dataset** op het segment om de Blade **gegevens segment** voor dat segment weer te geven. U ziet de uitvoering van de **activiteit** voor dat segment. U ziet dat er één activiteit wordt uitgevoerd voor het segment. Als u in de opdracht balk op uitvoeren klikt, kunt u een andere uitvoering van de activiteit voor hetzelfde segment starten.
 
-   Wanneer u op de uitvoering van de activiteit klikt, ziet u de Blade **Details uitvoering van activiteit** met een lijst met logboek bestanden. U ziet berichten die in het bestand user_0. log zijn geregistreerd. Wanneer er een fout optreedt, ziet u dat er drie activiteiten worden uitgevoerd omdat het aantal nieuwe pogingen is ingesteld op 3 in de JSON van de pijp lijn/activiteit. Wanneer u op de uitvoering van de activiteit klikt, ziet u de logboek bestanden die u kunt controleren om de fout op te lossen.
+   Wanneer u op de uitvoering van de activiteit klikt, ziet u de Blade **Details uitvoering van activiteit** met een lijst met logboek bestanden. U ziet berichten die zijn geregistreerd in het bestand user_0. log. Wanneer er een fout optreedt, ziet u dat er drie activiteiten worden uitgevoerd omdat het aantal nieuwe pogingen is ingesteld op 3 in de JSON van de pijp lijn/activiteit. Wanneer u op de uitvoering van de activiteit klikt, ziet u de logboek bestanden die u kunt controleren om de fout op te lossen.
 
-   Klik in de lijst met logboek bestanden op de **User-0. log**. In het rechterdeel venster vindt u de resultaten van het gebruik van de methode **IActivityLogger. write** . Als u niet alle berichten ziet, controleert u of er meer logboek bestanden zijn met de naam: user_1. log, user_2. log, enzovoort. Anders is het mogelijk dat de code na het laatste geregistreerde bericht is mislukt.
+   Klik in de lijst met logboek bestanden op de **User-0. log**. In het rechterdeel venster vindt u de resultaten van het gebruik van de methode **IActivityLogger. write** . Als u niet alle berichten ziet, controleert u of er meer logboek bestanden met de naam: user_1. log, user_2. log, enzovoort. Anders is het mogelijk dat de code na het laatste geregistreerde bericht is mislukt.
 
    Controleer bovendien **System-0. log** op systeem fout berichten en uitzonde ringen.
 4. Neem het **PDB** -bestand op in het zip-bestand, zodat de fout Details informatie, zoals **aanroep stack** , bevatten wanneer er een fout optreedt.
 5. Alle bestanden in het zip-bestand voor de aangepaste activiteit moeten zich op het **hoogste niveau** bevinden, zonder submappen.
-6. Zorg ervoor dat de **assemblyname** (MyDotNetActivity. dll), het **ingangs punt**(MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) en **packageLinkedService** (moet verwijzen in het **Algemeen doel**Azure Blob-opslag met het zip-bestand) zijn ingesteld op de juiste waarden.
+6. Zorg ervoor dat **de assemblyname** (MyDotNetActivity. dll), het **ingangs punt**(MyDotNetActivityNS. MyDotNetActivity), **packageFile** (customactivitycontainer/MyDotNetActivity. zip) en **packageLinkedService** (moet verwijzen naar de Azure Blob-opslag voor **algemeen gebruik**die het zip-bestand bevat) is ingesteld op de juiste waarden.
 7. Als u een fout hebt hersteld en het segment opnieuw wilt verwerken, klikt u met de rechtermuisknop op het segment op de blade **OutputDataset** en klikt u op **Uitvoeren**.
 8. Als u de volgende fout ziet, gebruikt u de Azure Storage pakket versie > 4.3.0. Data Factory Service Launcher vereist de 4,3-versie van WindowsAzure. storage. Zie de sectie [AppDomain-isolatie](#appdomain-isolation) voor een tijdelijke oplossing als u de nieuwere versie van Azure Storage-assembly moet gebruiken.
 

@@ -15,16 +15,16 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 09/18/2019
 ms.locfileid: "67176026"
 ---
-**Beheerde schijven Standard-HDD**
+**Standard-HDD Managed disks**
 [!INCLUDE [disk-storage-standard-hdd-sizes](disk-storage-standard-hdd-sizes.md)]
 
-**Beheerde schijven Standard-SSD**
+**Standard-SSD Managed disks**
 [!INCLUDE [disk-storage-standard-ssd-sizes](disk-storage-standard-ssd-sizes.md)]
 
-**Beheerde schijven Premium-SSD: Limieten per schijf**
+**Premium-SSD Managed disks: limieten per schijf**
 [!INCLUDE [disk-storage-premium-ssd-sizes](disk-storage-premium-ssd-sizes.md)]
 
-**Beheerde schijven Premium-SSD: Limieten per VM**
+**Premium-SSD Managed disks: limieten per VM**
 
 | Resource | Standaardlimiet |
 | --- | --- |

@@ -222,7 +222,7 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
 Lees voor meer informatie over de vereiste poorten voor SAP HANA de hoofdstuk [verbindingen met Tenant databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) in de hand leiding voor [SAP Hana Tenant-data bases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) of [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. TCP _timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 > Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="install-sap-hana"></a>SAP HANA installeren
@@ -685,7 +685,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 U kunt de installatie van de Azure-omheining testen door de netwerk interface op het knoop punt uit te scha kelen waar SAP HANA als Master wordt uitgevoerd.
-Zie [Red Hat Knowledge Base-artikel 79523](https://access.redhat.com/solutions/79523) voor een beschrijving van het simuleren van een netwerk fout. In dit voor beeld gebruiken we het net_breaker-script voor het blok keren van toegang tot het netwerk.
+Zie [Red Hat Knowledge Base-artikel 79523](https://access.redhat.com/solutions/79523) voor een beschrijving van het simuleren van een netwerk fout. In dit voor beeld gebruiken we het net_breaker script om alle toegang tot het netwerk te blok keren.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>

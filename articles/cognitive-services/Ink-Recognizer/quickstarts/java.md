@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en Java'
+title: 'Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en Java'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de API voor inkt herkenning om te beginnen met het herkennen van digitale inkt streken.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/07/2019
 ms.locfileid: "71996835"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en Java
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-java"></a>Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en Java
 
 Gebruik deze Quick Start om de inkt Recognizer-API te gebruiken voor digitale inkt streken. Deze Java-toepassing verstuurt een API-aanvraag met gegevens over de JSON-indeling en ontvangt de reactie.
 
@@ -31,7 +31,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="prerequisites"></a>Vereisten
 
-- De [Java @ no__t-1 Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
+- De [Java&trade; Development Kit (JDK) 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) of hoger.
 
 - Deze bibliotheken importeren vanuit de Maven-opslag plaats
     - [Json in Java](https://mvnrepository.com/artifact/org.json/json) -pakket
@@ -55,15 +55,15 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="create-a-function-to-send-requests"></a>Een functie maken om aanvragen te verzenden
 
-1. Maak een nieuwe functie met de naam `sendRequest()` waarmee de hierboven gemaakte variabelen worden gebruikt. Voer vervolgens de volgende stappen uit.
+1. Maak een nieuwe functie met de naam `sendRequest()` die de hierboven gemaakte variabelen gebruikt. Voer vervolgens de volgende stappen uit.
 
-2. Maak een `CloseableHttpClient`-object waarmee aanvragen kunnen worden verzonden naar de API. De aanvraag verzenden naar een `HttpPut`-aanvraag object door uw eind punt en de URL voor de Handschrift herkenning te combi neren.
+2. Maak een `CloseableHttpClient`-object waarmee aanvragen kunnen worden verzonden naar de API. De aanvraag verzenden naar een `HttpPut`-aanvraag object door uw eind punt te combi neren en de URL voor de Handschrift herkenning.
 
-3. Gebruik de functie `setHeader()` van de aanvraag om de `Content-Type`-header in te stellen op `application/json` en voeg uw abonnements sleutel toe aan de koptekst van de `Ocp-Apim-Subscription-Key`.
+3. Gebruik de functie `setHeader()` van de aanvraag om de `Content-Type`-header in te stellen op `application/json`en voeg uw abonnements sleutel toe aan de `Ocp-Apim-Subscription-Key`-header.
 
-4. Gebruik de functie `setEntity()` van de aanvraag voor de gegevens die moeten worden verzonden.   
+4. Gebruik de `setEntity()` functie van de aanvraag voor de gegevens die moeten worden verzonden.   
 
-5. Gebruik de `execute()`-functie van de client om de aanvraag te verzenden en op te slaan in een `CloseableHttpResponse`-object. 
+5. Gebruik de `execute()` functie van de client om de aanvraag te verzenden en op te slaan in een `CloseableHttpResponse`-object. 
 
 6. Maak een `HttpEntity`-object om de antwoord inhoud op te slaan. Haal de inhoud op met `getEntity()`. Als het antwoord niet leeg is, retourneert u het.
     
@@ -71,7 +71,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="send-an-ink-recognition-request"></a>Een aanvraag voor inkt herkenning verzenden
 
-Maak een methode met de naam `recognizeInk()` om uw inkt lijn gegevens te herkennen. Roep de `sendRequest()`-methode die hierboven is gemaakt aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
+Maak een methode met de naam `recognizeInk()` om uw pennen streek gegevens te herkennen. Roep de hierboven gemaakte `sendRequest()` methode aan met uw eind punt, URL, abonnements sleutel en JSON-gegevens. Bekijk het resultaat en druk het af op de-console.
 
 [!code-java[recognizeInk](~/cognitive-services-rest-samples/java/InkRecognition/quickstart/RecognizeInk.java?name=recognizeInk)]
 

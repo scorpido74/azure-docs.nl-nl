@@ -24,8 +24,8 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 
 ## <a name="configure-logging-for-azure-database-for-mariadb"></a>Logboek registratie voor Azure Database for MariaDB configureren
 U kunt de server configureren voor toegang tot het MariaDB langzame query logboek door de volgende stappen te nemen:
-1. Schakel logboek registratie in door de **langzame para meter @ no__t-1query @ no__t-2log** in te stellen op on.
-2. Pas andere para meters aan, zoals **lang @ no__t-1query @ no__t-2time** en **log @ no__t-4slow @ no__t-5admin @ no__t-6statements**.
+1. Schakel logboek registratie in door de **langzame\_query\_logboek** parameter in te stellen op aan.
+2. Pas andere para meters aan, zoals **lange\_query\_tijd** en **logboek\_trage\_beheerder\_instructies**.
 
 Zie [server parameters configureren](howto-configure-server-parameters-cli.md)voor meer informatie over het instellen van de waarde van deze para meters via Azure cli.
 
@@ -40,7 +40,7 @@ az mariadb server configuration list --resource-group myresourcegroup --server m
 ## <a name="list-logs-for-azure-database-for-mariadb-server"></a>Logboeken voor Azure Database for MariaDB server weer geven
 Als u de beschik bare langzame query logboek bestanden voor uw server wilt weer geven, voert u de opdracht [AZ mariadb server-logs List](/cli/azure/mariadb/server-logs#az-mariadb-server-logs-list) uit.
 
-U kunt de logboek bestanden voor server **mydemoserver.mariadb.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **log @ no__t-1files\_list.txt**.
+U kunt de logboek bestanden voor server **mydemoserver.mariadb.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek\_bestanden\_lijst. txt**.
 ```azurecli-interactive
 az mariadb server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

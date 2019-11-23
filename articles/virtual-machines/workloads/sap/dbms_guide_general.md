@@ -48,7 +48,7 @@ ms.locfileid: "70101369"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-Deze hand leiding maakt deel uit van de documentatie over het implementeren en implementeren van SAP-software op Microsoft Azure. Lees de plannings- [en implementatie handleiding][planning-guide]voordat u deze hand leiding leest. In dit document worden de algemene implementatie aspecten van SAP-gerelateerde DBMS-systemen op Microsoft Azure virtuele machines (Vm's) beschreven met behulp van de Azure Infrastructure as a Service (IaaS)-mogelijkheden.
+Deze hand leiding maakt deel uit van de documentatie over het implementeren en implementeren van SAP-software op Microsoft Azure. Lees de [plannings-en implementatie handleiding][planning-guide]voordat u deze hand leiding leest. In dit document worden de algemene implementatie aspecten van SAP-gerelateerde DBMS-systemen op Microsoft Azure virtuele machines (Vm's) beschreven met behulp van de Azure Infrastructure as a Service (IaaS)-mogelijkheden.
 
 Het artikel vormt een aanvulling op de SAP-installatie documentatie en SAP-notities, die de primaire resources vertegenwoordigen voor installaties en implementaties van SAP-software op bepaalde platformen.
 
@@ -57,14 +57,14 @@ In dit document worden overwegingen geïntroduceerd voor het uitvoeren van SAP-g
 ## <a name="definitions"></a>Definities
 In het hele document worden deze voor waarden gebruikt:
 
-* **IaaS**: Infra structuur als een service.
-* **PaaS**: Platform as a service.
-* **SaaS**: Software als een service.
-* **SAP-onderdeel**: Een afzonderlijke SAP-toepassing, zoals een ERP-centraal onderdeel (ECC), Business Warehouse (BW), Solution Manager of Enterprise Portal (EP). SAP-onderdelen kunnen worden gebaseerd op traditionele ABAP of Java-technologieën of op een toepassing die niet op netbasis is gebaseerd, zoals bedrijfs objecten.
-* **SAP-omgeving**: Een of meer SAP-onderdelen die logisch zijn gegroepeerd om een zakelijke functie uit te voeren, zoals ontwikkeling, kwaliteits bewaking, training, herstel na nood gevallen of productie.
-* **SAP-landschap**: Deze term verwijst naar de volledige SAP-assets in het IT-landschap van een klant. SAP liggend omvat alle productie-en niet-product omgevingen.
-* **SAP-systeem**: De combi natie van een DBMS-laag en een toepassingslaag van, bijvoorbeeld een SAP ERP-ontwikkelings systeem, een SAP Business Warehouse-test systeem of een SAP CRM-productie systeem. In azure-implementaties wordt het delen van deze twee lagen tussen on-premises en Azure niet ondersteund. Als gevolg hiervan is een SAP-systeem on-premises geïmplementeerd of geïmplementeerd in Azure. U kunt de verschillende systemen van een SAP-landschap in azure of on-premises implementeren. U kunt bijvoorbeeld het ontwikkel-en test systeem van SAP CRM implementeren in azure, maar het productie systeem van SAP CRM on-premises implementeren.
-* **Cross-premises**: Hierin wordt een scenario beschreven waarin Vm's worden geïmplementeerd naar een Azure-abonnement met site-naar-site-, multi site-of Azure ExpressRoute-connectiviteit tussen de on-premises data centers en Azure. In algemene documentatie over Azure worden dit soort implementaties ook beschreven als scenario's voor cross-premises. 
+* **IaaS**: Infrastructure as a service.
+* **PaaS**: platform as a service.
+* **SaaS**: software als een service.
+* **SAP-onderdeel**: een afzonderlijke SAP-toepassing, zoals het ERP Central-onderdeel (ECC), Business WAREHOUSE (BW), Solution Manager of Enterprise Portal (EP). SAP-onderdelen kunnen worden gebaseerd op traditionele ABAP of Java-technologieën of op een toepassing die niet op netbasis is gebaseerd, zoals bedrijfs objecten.
+* **SAP-omgeving**: een of meer sap-onderdelen die logisch zijn gegroepeerd om een zakelijke functie uit te voeren, zoals ontwikkeling, kwaliteits bewaking, training, herstel na nood gevallen of productie.
+* **SAP liggend**: deze term verwijst naar de volledige SAP-assets in het IT-landschap van een klant. SAP liggend omvat alle productie-en niet-product omgevingen.
+* **SAP-systeem**: de combi natie van een DBMS-laag en een toepassingslaag van, bijvoorbeeld een SAP ERP-ontwikkelings systeem, een SAP Business Warehouse-test systeem of een SAP CRM-productie systeem. In azure-implementaties wordt het delen van deze twee lagen tussen on-premises en Azure niet ondersteund. Als gevolg hiervan is een SAP-systeem on-premises geïmplementeerd of geïmplementeerd in Azure. U kunt de verschillende systemen van een SAP-landschap in azure of on-premises implementeren. U kunt bijvoorbeeld het ontwikkel-en test systeem van SAP CRM implementeren in azure, maar het productie systeem van SAP CRM on-premises implementeren.
+* **Cross-premises**: hierin wordt een scenario beschreven waarin vm's worden geïmplementeerd naar een Azure-abonnement met een site-naar-site-, multi site-of Azure ExpressRoute-verbinding tussen de on-premises data centers en Azure. In algemene documentatie over Azure worden dit soort implementaties ook beschreven als scenario's voor cross-premises. 
 
     De reden hiervoor is om on-premises domeinen, on-premises Active Directory en on-premises DNS uit te breiden naar Azure. De on-premises liggende lands worden uitgebreid naar de Azure-assets van het abonnement. Met deze uitbrei ding kunnen de Vm's deel uitmaken van het on-premises domein. Domein gebruikers van het on-premises domein hebben toegang tot de servers en kunnen services uitvoeren op deze Vm's, zoals DBMS-Services. Communicatie en naam omzetting tussen Vm's die zijn geïmplementeerd op locatie en Vm's die in azure zijn geïmplementeerd, zijn mogelijk. Dit scenario is het meest voorkomende scenario dat wordt gebruikt voor het implementeren van SAP-assets op Azure. Zie [planning en ontwerp voor VPN-gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-plan-design)voor meer informatie.
 
@@ -77,28 +77,28 @@ In het hele document worden deze voor waarden gebruikt:
 
 In sommige micro soft-documentatie worden cross-premises scenario's enigszins anders beschreven, met name voor configuraties met hoge Beschik baarheid in DBMS. In het geval van SAP-gerelateerde documenten, wordt het cross-premises scenario omlaag gekook voor site-naar-site-of particuliere [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -connectiviteit en een SAP-landschap dat is gedistribueerd tussen on-premises en Azure.
 
-## <a name="resources"></a>Resources
-Er zijn andere artikelen beschikbaar op SAP-werk belasting op Azure. Begin met [SAP-workload op Azure: Ga aan](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) de slag en kies uw interesse gebied.
+## <a name="resources"></a>Bronnen
+Er zijn andere artikelen beschikbaar op SAP-werk belasting op Azure. Begin met [SAP-workload op Azure: Ga](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) aan de slag en kies vervolgens uw interesse gebied.
 
 De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure ten aanzien van het gebied dat in dit document wordt besproken.
 
 | Nummer van notitie | Titel |
 | --- | --- |
-| [1928533] |SAP-toepassingen op Azure: Ondersteunde producten en Azure VM-typen |
-| [2015553] |SAP op Microsoft Azure: Vereisten voor ondersteuning |
+| [1928533] |SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
+| [2015553] |SAP op Microsoft Azure: vereisten voor ondersteuning |
 | [1999351] |Problemen met verbeterde Azure-bewaking voor SAP oplossen |
 | [2178632] |Belangrijkste meet waarden voor SAP op Microsoft Azure |
-| [1409604] |Virtualisatie in Windows: Uitgebreide bewaking |
-| [2191498] |SAP op Linux met Azure: Uitgebreide bewaking |
-| [2039619] |SAP-toepassingen op Microsoft Azure met behulp van de Oracle-Data Base: Ondersteunde producten en versies |
-| [2233094] |DB6: SAP-toepassingen op Azure met behulp van IBM DB2 voor Linux, UNIX en Windows: Aanvullende informatie |
-| [2243692] |IaaS-VM (Linux on Microsoft Azure): SAP-licentie problemen |
-| [1984787] |SUSE LINUX Enterprise Server 12: Installatie notities |
-| [2002167] |Red Hat Enterprise Linux 7. x: Installatie en upgrade |
+| [1409604] |Virtualisatie op Windows: uitgebreide bewaking |
+| [2191498] |SAP op Linux met Azure: uitgebreide bewaking |
+| [2039619] |SAP-toepassingen op Microsoft Azure met behulp van de Oracle-Data Base: ondersteunde producten en versies |
+| [2233094] |DB6: SAP-toepassingen op Azure met behulp van IBM DB2 voor Linux, UNIX en Windows: aanvullende informatie |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP-licentie problemen |
+| [1984787] |SUSE LINUX Enter prise Server 12: installatie notities |
+| [2002167] |Red Hat Enterprise Linux 7. x: installatie en upgrade |
 | [2069760] |Oracle Linux 7. x SAP-installatie en-upgrade |
 | [1597355] |Aanbeveling voor wissel geheugen voor Linux |
-| [2171857] |Oracle Database 12c: Ondersteuning voor bestands systemen op Linux |
-| [1114181] |Oracle Database 11g: Ondersteuning voor bestands systemen op Linux |
+| [2171857] |Oracle Database 12c: bestandssysteem ondersteuning op Linux |
+| [1114181] |Oracle Database 11g: bestandssysteem ondersteuning op Linux |
 
 
 Zie de [SAP Community-wiki](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes)voor meer informatie over alle SAP-notities voor Linux.
@@ -156,7 +156,7 @@ Als uw IOPS-vereiste al is opgegeven, wordt het aantal IOPS dat nodig is voor de
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Alleen MDADM en Logical Volume Manager (LVM) worden ondersteund voor het bouwen van een software-RAID op Linux. Zie voor meer informatie:
+> Alleen MDADM en Logical Volume Manager (LVM) worden ondersteund voor het bouwen van een software-RAID op Linux. Ga voor meer informatie naar:
 >
 > - [Software-RAID op Linux configureren](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid) met behulp van MDADM
 > - [LVM configureren op een virtuele Linux-machine in azure](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm) met behulp van LVM
@@ -205,7 +205,7 @@ De volgende aanbevelingen gaan ervan uit dat deze I/O-kenmerken voor standaard-D
 
 Voor standaard opslag zijn de mogelijke cache typen:
 
-* Geen
+* None
 * Lezen
 * Lezen/schrijven
 
@@ -213,7 +213,7 @@ Voor consistente en deterministisch prestaties, de cache instellen op standard-o
 
 Voor Premium Storage bestaan de volgende cache opties:
 
-* Geen
+* None
 * Lezen
 * Lezen/schrijven
 * Geen + Write Accelerator, alleen voor virtuele machines uit de M-serie van Azure
@@ -301,11 +301,11 @@ Deze aanbevolen procedures zijn het resultaat van honderden implementaties van k
 >
 
 > [!IMPORTANT]
-> Een ander ontwerp dat *niet* wordt ondersteund, is de schei ding van de SAP-toepassingslaag en de DBMS-laag in verschillende virtuele [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) netwerken van Azure die niet met elkaar zijn gekoppeld. U wordt aangeraden de SAP-toepassingsobjectlaag en de DBMS-laag te scheiden met behulp van subnetten in een virtueel Azure-netwerk in plaats van met behulp van verschillende virtuele netwerken van Azure. 
+> Een ander ontwerp dat *niet* wordt ondersteund, is de schei ding van de SAP-toepassingslaag en de DBMS-laag in verschillende virtuele [netwerken van Azure die niet met elkaar](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) zijn gekoppeld. U wordt aangeraden de SAP-toepassingsobjectlaag en de DBMS-laag te scheiden met behulp van subnetten in een virtueel Azure-netwerk in plaats van met behulp van verschillende virtuele netwerken van Azure. 
 >
 > Als u besluit de aanbeveling niet te volgen en in plaats daarvan de twee lagen te scheiden in verschillende virtuele netwerken, moeten de twee virtuele netwerken [gelijkwaardig](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)zijn. 
 >
-> Houd er rekening mee dat het netwerk [](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) verkeer tussen twee gepeerde virtuele netwerken van Azure onderhevig is aan kosten voor overdracht. Een zeer groot gegevens volume dat uit veel terabytes bestaat, wordt uitgewisseld tussen de SAP-toepassingslaag en de DBMS-laag. U kunt aanzienlijke kosten optellen als de SAP-toepassingsobjectlaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure.
+> Houd er rekening mee dat het netwerk verkeer tussen twee [gepeerde](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuele netwerken van Azure onderhevig is aan kosten voor overdracht. Een zeer groot gegevens volume dat uit veel terabytes bestaat, wordt uitgewisseld tussen de SAP-toepassingslaag en de DBMS-laag. U kunt aanzienlijke kosten optellen als de SAP-toepassingsobjectlaag en de DBMS-laag worden gescheiden tussen twee peered virtuele netwerken van Azure.
 
 Gebruik twee virtuele machines voor de implementatie van uw productie-DBMS in een Azure-beschikbaarheidsset. Gebruik ook afzonderlijke route ring voor de SAP-toepassingslaag en het beheer-en bewerkings verkeer naar de twee virtuele DBMS-Vm's. Zie de volgende afbeelding:
 

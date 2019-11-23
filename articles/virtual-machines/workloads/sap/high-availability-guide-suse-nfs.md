@@ -153,7 +153,7 @@ U moet eerst de virtuele machines voor dit NFS-cluster maken. Daarna maakt u een
             1. Virtual Network selecteren
             1. Klik op een virtuele machine toevoegen
             1. Selecteer de virtuele machines van het NFS-cluster en de bijbehorende IP-adressen.
-            1. Klik op Toevoegen.
+            1. Klik op Add.
          1. Verbonden met primaire netwerk interfaces van alle virtuele machines die deel moeten uitmaken van het NFS-cluster voor NW2
             * Herhaal de bovenstaande stappen voor het maken van een back-end-groep voor NW2
       1. De status tests maken
@@ -228,17 +228,17 @@ Volg de stappen bij het [instellen van pacemaker op SuSE Linux Enterprise Server
 
 ### <a name="configure-nfs-server"></a>NFS-server configureren
 
-De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1 of **[2]** -alleen van toepassing op knoop punt 2.
+De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle knooppunten **[1]** - alleen van toepassing op knooppunt 1 of **[2]** - alleen van toepassing op knooppunt 2.
 
-1. **[A]** omzetting van hostnaam van installatie
+1. **[A]**  Omzetten van de hostnaam instellen
 
-   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
+   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
    
-   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
+   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
    
    <pre><code># IP address of the load balancer frontend configuration for NFS
    <b>10.0.0.4 nw1-nfs</b>

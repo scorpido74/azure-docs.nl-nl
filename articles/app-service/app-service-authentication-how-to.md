@@ -150,7 +150,7 @@ az webapp config appsettings set --name <app_name> --resource-group <group_name>
 
 App Service gebruikers claims door gegeven aan uw toepassing met behulp van speciale headers. Externe aanvragen zijn niet gemachtigd om deze headers in te stellen, zodat ze alleen aanwezig zijn als deze zijn ingesteld door App Service. Enkele voor beelden van headers zijn:
 
-* X-MS-CLIENT-PRINCIPAL-NAAM
+* X-MS-CLIENT-PRINCIPAL-NAME
 * X-MS-CLIENT-PRINCIPAL-ID
 
 Code die is geschreven in een wille keurige taal of elk Framework, kan de informatie die nodig is van deze headers ophalen. Voor ASP.NET 4,6-apps wordt de **claimsprincipal is** automatisch ingesteld met de juiste waarden. ASP.NET Core biedt echter geen middleware voor authenticatie die kan worden geïntegreerd met App Service gebruikers claims. Zie [MaximeRouiller. Azure. AppService. EasyAuth](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)voor een tijdelijke oplossing.
@@ -185,7 +185,7 @@ Wanneer het toegangs token van uw provider (niet het [sessie token](#extend-sess
 - **Micro soft-account**: selecteer het `wl.offline_access` bereik bij het [configureren van verificatie-instellingen voor micro soft-account](configure-authentication-provider-microsoft.md).
 - **Azure Active Directory**: voer in [https://resources.azure.com](https://resources.azure.com)de volgende stappen uit:
     1. Selecteer boven aan de pagina **lezen/schrijven**.
-    2. Navigeer in de linkernavigatiebalk naar **abonnementen** >  **_\<abonnement\_naam_**  > **resourceGroups** >  **_\<resource\_groep\_naam_** > >  **providers** > **micro soft. Web** > **sites** >  **_\<app\_name >_**  > **config** > **authsettings**. 
+    2. Ga in de linkernavigatiebalk naar **abonnementen** >  **_\<abonnement\_naam_**  > **resourceGroups** >  **_\<resource\_groep\_naam_** > > **providers** > **micro soft. Web** > - **sites** >  **_\<app\_naam >_**  > **config** > **authsettings**. 
     3. Klik op **Bewerken**.
     4. Wijzig de volgende eigenschap. Vervang _\<app\_id >_ door de Azure Active Directory-toepassings-id van de service die u wilt openen.
 
@@ -232,7 +232,7 @@ az webapp auth update --resource-group <group_name> --name <app_name> --token-re
 
 Met zowel het micro soft-account als de Azure Active Directory kunt u zich vanuit meerdere domeinen aanmelden. Micro soft-account staat bijvoorbeeld _Outlook.com_-, _live.com_-en _Hotmail.com_ -accounts toe. Azure AD biedt een wille keurig aantal aangepaste domeinen voor de aanmeldings accounts. U kunt uw gebruikers echter ook rechtstreeks naar uw eigen Azure AD-aanmeldings pagina (zoals `contoso.com`) versnellen. Voer de volgende stappen uit om de domein naam van de aanmeldings accounts voor te stellen.
 
-Ga in [https://resources.azure.com](https://resources.azure.com)naar **abonnementen** >  **_\< abonnement\_ naam_**  > **resourceGroups** >  **_\< resource\_ groep\_ naam_** > >  **providers** > **micro soft. Web** > **sites** >  **_\< app\_ name >_**  > **config** > **authsettings**. 
+Ga in [https://resources.azure.com](https://resources.azure.com)naar **abonnementen** >  **_\<abonnement\_naam_**  > **resourceGroups** >  **_\<resource\_groep\_naam_** >- **providers** > **micro soft. Web** > - **sites** >  **_ > app\<naam\__** > **config** > **authsettings**. >  
 
 Klik op **bewerken**, wijzig de volgende eigenschap en klik vervolgens op **put**. Zorg ervoor dat u _\<domein\_naam >_ vervangt door het gewenste domein.
 

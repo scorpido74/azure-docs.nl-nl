@@ -99,7 +99,7 @@ Als u de oplossing Updatebeheer hebt gebruikt, kunt u eventueel de volgende item
 
 * Update schema's: elk heeft een naam die overeenkomt met de update-implementaties die u hebt gemaakt.
 
-* Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als machine1. contoso. com _9ceb8108-26c9-4051-b6b3-227600d715c8).
+* Hybrid worker-groepen gemaakt voor de oplossing: elke groep krijgt dezelfde naam als machine1. contoso. com_9ceb8108-26c9-4051-b6b3-227600d715c8).
 
 Als u de oplossing VM's buiten bedrijfsuren starten/stoppen hebt gebruikt, kunt u eventueel de volgende items verwijderen die niet meer nodig zijn nadat u de oplossing hebt verwijderd.
 
@@ -113,7 +113,7 @@ U kunt ook uw werk ruimte ontkoppelen van uw Automation-account vanuit uw Log An
 
 Bij het onboarden van meerdere machines zijn er mogelijk computers die **niet**kunnen worden ingeschakeld. Er zijn verschillende redenen waarom sommige computers niet kunnen worden ingeschakeld. In de volgende secties worden mogelijke oorzaken voor de status **kan niet inschakelen** op een virtuele machine worden weer gegeven wanneer u probeert onboarding uit te voeren.
 
-### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM-rapporten naar een andere werk ruimte: ' \<workspaceName @ no__t-1 '.  Configuratie wijzigen om deze functie in te scha kelen
+### <a name="vm-reports-to-a-different-workspace-workspacename--change-configuration-to-use-it-for-enabling"></a>VM-rapporten naar een andere werk ruimte: '\<werkruimte\>'.  Configuratie wijzigen om deze functie in te scha kelen
 
 **Oorzaak**: deze fout geeft aan dat de virtuele machine die u probeert uit te voeren rapporteert aan een andere werk ruimte.
 

@@ -54,7 +54,7 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 2. Down load de juiste update naar een nieuwe of bestaande gegevens schijf die is gekoppeld aan een werkende VM uit dezelfde regio:
 
-   - **10.0.14393.594**: [KB4073562 of een latere](https://support.microsoft.com/help/4073562) update
+   - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) of een latere update
    - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) of een latere update
 
 3. Ontkoppel de schijf van het hulp programma van de werkende VM en koppel deze vervolgens aan de beschadigde virtuele machine.
@@ -79,11 +79,11 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 5. Start de REGI ster-editor (Regedit. exe) op de virtuele machine voor herstel.
 
-6. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens component **bestand** > **laden** in het menu.
+6. Selecteer de sleutel **HKEY_LOCAL_MACHINE** en selecteer vervolgens **bestand** > **Component laden** in het menu.
 
 7. Zoek het systeem bestand in de map **\Windows\System32\Config** .
 
-8. Selecteer **openen**, typ **BROKENSYSTEM** voor de naam, vouw de sleutel **HKEY_LOCAL_MACHINE** uit en zoek de extra sleutel met de naam **BROKENSYSTEM**.
+8. Selecteer **openen**, typ **BROKENSYSTEM** voor de naam, vouw de **HKEY_LOCAL_MACHINE** sleutel uit en zoek vervolgens de extra sleutel met de naam **BROKENSYSTEM**.
 
 9. Ga naar de volgende locatie:
 
@@ -97,7 +97,7 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 12. Down load de juiste update:
 
-    - **10.0.14393.594**: [KB4073562 of een latere](https://support.microsoft.com/help/4073562) update
+    - **10.0.14393.594**: [KB4073562](https://support.microsoft.com/help/4073562) of een latere update
     - **10.0.15063.0**: [KB4016240](https://support.microsoft.com/help/4016240) of een latere update
 
 13. Koppel de systeem schijf als een gegevens schijf op een herstel-VM waarop u de update kunt downloaden.
@@ -116,6 +116,6 @@ Maak verbinding met [de seriële console, open een Power shell-exemplaar](serial
 
 16. [Ontkoppel de systeem schijf en maak de VM opnieuw](../windows/troubleshoot-recovery-disks-portal.md).
 
-## <a name="need-help-contact-support"></a>Hulp nodig? Neem contact op met ondersteuning
+## <a name="need-help-contact-support"></a>Hulp nodig? Contact opnemen met ondersteuning
 
 Als u nog steeds hulp nodig hebt, [neemt u contact op met de ondersteuning van Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) om uw probleem snel op te lossen.

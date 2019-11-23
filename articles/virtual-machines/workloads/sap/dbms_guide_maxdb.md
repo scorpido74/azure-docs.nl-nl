@@ -313,8 +313,8 @@ In dit document worden verschillende gebieden besproken waarmee u rekening moet 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Details voor de SAP MaxDB-implementaties in Windows
 ### <a name="sap-maxdb-version-support-on-azure"></a>Ondersteuning voor SAP MaxDB-versie op Azure
-SAP ondersteunt momenteel SAP MaxDB-versie 7,9 of hoger voor gebruik met SAP NetWeaver-gebaseerde producten in Azure. Alle updates voor SAP MaxDB-server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP NetWeaver-gebaseerde producten, worden uitsluitend via de <https://support.sap.com/swdc>SAP-Service Marketplace op beschreven.
-Algemene informatie over het uitvoeren van SAP NetWeaver op SAP MaxDB vindt u <https://www.sap.com/community/topic/maxdb.html>op.
+SAP ondersteunt momenteel SAP MaxDB-versie 7,9 of hoger voor gebruik met SAP NetWeaver-gebaseerde producten in Azure. Alle updates voor SAP MaxDB-server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP NetWeaver-gebaseerde producten, worden uitsluitend via de SAP-Service Marketplace op <https://support.sap.com/swdc>gegeven.
+Algemene informatie over het uitvoeren van SAP NetWeaver op SAP MaxDB vindt u op <https://www.sap.com/community/topic/maxdb.html>.
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Ondersteunde micro soft Windows-versies en Azure VM-typen voor SAP MaxDB DBMS
 Zie de volgende informatie om de ondersteunde micro soft Windows-versie voor SAP MaxDB DBMS op Azure te vinden:
@@ -329,7 +329,7 @@ U kunt de bijgewerkte lijst met SAP MaxDB-documentatie vinden in de volgende SAP
 
 ### <a name="sap-maxdb-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP MaxDB-configuratie richtlijnen voor SAP-installaties in azure-Vm's
 #### <a name="b48cfe3b-48e9-4f5b-a783-1d29155bd573"></a>Opslag configuratie
-Aanbevolen procedures voor Azure Storage voor SAP MaxDB Volg de algemene aanbevelingen die worden vermeld in de hoofd stuk [opslag structuur van een virtuele machine voor RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)-implementaties.
+Aanbevolen procedures voor Azure Storage voor SAP MaxDB Volg de algemene aanbevelingen die worden vermeld in de hoofd stuk [opslag structuur van een virtuele machine voor RDBMS-implementaties](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
 
 > [!IMPORTANT]
 > Net als andere data bases bevat SAP MaxDB ook gegevens en logboek bestanden. In SAP MaxDB is de juiste term echter "volume" (niet "bestand"). Er zijn bijvoorbeeld SAP MaxDB-gegevens volumes en logboek volumes. Verwar deze niet met besturingssysteem schijf volumes. 
@@ -338,9 +338,9 @@ Aanbevolen procedures voor Azure Storage voor SAP MaxDB Volg de algemene aanbeve
 
 Kortom, u hebt het volgende nodig:
 
-* Als u Azure Storage accounts gebruikt, stelt u het Azure-opslag account in met de SAP MaxDB-gegevens en-logboek volumes (gegevens en logboek bestanden) naar **lokale redundante opslag (LRS)** zoals opgegeven in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP workload](dbms_guide_general.md).
+* Als u Azure Storage accounts gebruikt, stelt u het Azure-opslag account in met de SAP MaxDB-gegevens en-logboek volumes (gegevens en logboek bestanden) naar **lokale redundante opslag (LRS)** , zoals is opgegeven in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md).
 * Scheid het IO-pad voor SAP MaxDB-gegevens volumes (gegevens bestanden) van het i/o-pad voor logboek volumes (logboek bestanden). Dit betekent dat SAP MaxDB-gegevens volumes (gegevens bestanden) op één logisch station moeten worden geïnstalleerd en dat logboek volumes van SAP MaxDB (logboek bestanden) moeten worden geïnstalleerd op een andere logische schijf.
-* Stel het juiste cache type voor elke schijf in, afhankelijk van of u dit gebruikt voor SAP MaxDB-gegevens of-logboek volumes (gegevens-en logboek bestanden) en of u Azure Standard of Azure Premium Storage gebruikt, zoals beschreven in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md).
+* Stel het juiste cache type voor elke schijf in, afhankelijk van of u dit gebruikt voor SAP MaxDB-gegevens of-logboek volumes (gegevens-en logboek bestanden) en of u Azure Standard of Azure Premium Storage gebruikt, zoals beschreven in [overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md).
 * Zolang het huidige quotum voor IOPS per schijf voldoet aan de vereisten, is het mogelijk om alle gegevens volumes op één gekoppelde schijf op te slaan en alle database logboek volumes op een andere, enkele gekoppelde schijf op te slaan.
 * Als meer IOPS en/of ruimte vereist zijn, is het raadzaam micro soft Window-opslag groepen (alleen beschikbaar in micro soft Windows Server 2012 en hoger) te gebruiken om één groot logisch apparaat te maken voor meerdere gekoppelde schijven. Zie ook [aandachtspunten voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md)voor meer informatie. Deze aanpak vereenvoudigt de beheer overhead voor het beheren van de schijf ruimte en voor komt het hand matig distribueren van bestanden over meerdere gekoppelde schijven.
 * het is raadzaam Azure Premium Storage te gebruiken voor MaxDB-implementaties. 
@@ -459,7 +459,7 @@ Hier hebt u twee opties:
    1. Installeer de SAP-cache server on-premises, sluit de on-premises webbrowser (optie in afbeelding hieronder)
    2. Configureer Azure ExpressRoute. Dit biedt een speciale netwerk verbinding met hoge snelheid en lage latentie tussen on-premises Data Center en Azure Data Center.
 
-![Optie voor het on-premises installeren van een SAP-cache server](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
+![optie om de on-premises SAP-cache server te installeren](./media/dbms_maxdb_deployment_guide/900-sap-cache-server-on-premises.png)
 <a name="642f746c-e4d4-489d-bf63-73e80177a0a8"></a>
 
 #### <a name="backup--restore"></a>Back-up en herstellen

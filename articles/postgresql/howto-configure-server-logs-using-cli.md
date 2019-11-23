@@ -25,7 +25,7 @@ Als u deze hand leiding wilt door lopen, hebt u het volgende nodig:
 ## <a name="configure-logging"></a>Logboek registratie configureren
 U kunt de server configureren voor toegang tot de query logboeken en fout Logboeken. Fout logboeken kunnen automatische vacuüm-, verbindings-en controlepunt gegevens hebben.
 1. Schakel logboek registratie in.
-2. Als u query logboek registratie wilt inschakelen, update **log @ no__t-1statement** en **log @ no__t-3min @ no__t-4duration @ no__t-5statement**.
+2. Als u query logboek registratie wilt inschakelen, update **logboek\_instructie** en **logboek\_min\_duration\_-instructie**.
 3. Bewaar periode bijwerken.
 
 Zie [para meters voor Server configuratie aanpassen](howto-configure-server-parameters-using-cli.md)voor meer informatie.
@@ -33,7 +33,7 @@ Zie [para meters voor Server configuratie aanpassen](howto-configure-server-para
 ## <a name="list-logs"></a>Logboeken weer geven
 Als u de beschik bare logboek bestanden voor uw server wilt weer geven, voert u de opdracht [AZ post gres server-logs List](/cli/azure/postgres/server-logs) uit.
 
-U kunt de logboek bestanden voor server **mydemoserver.postgres.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **log @ no__t-1files\_list.txt**.
+U kunt de logboek bestanden voor server **mydemoserver.postgres.database.Azure.com** weer geven onder de resource groep **myresourcegroup**. Ga vervolgens naar de lijst met logboek bestanden naar een tekst bestand met de naam **logboek\_bestanden\_lijst. txt**.
 ```azurecli-interactive
 az postgres server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```

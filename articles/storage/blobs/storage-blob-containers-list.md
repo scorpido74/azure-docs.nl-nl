@@ -99,5 +99,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Zie ook
 
-[Containers weer geven](/rest/api/storageservices/list-containers2) 
- het[inventariseren van BLOB-resources](/rest/api/storageservices/enumerating-blob-resources)
+[Containers weer geven](/rest/api/storageservices/list-containers2)
+het [inventariseren van BLOB-resources](/rest/api/storageservices/enumerating-blob-resources)

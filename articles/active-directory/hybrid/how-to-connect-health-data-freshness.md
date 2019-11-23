@@ -59,7 +59,7 @@ De stappen die nodig zijn om de oorzaak van het probleem vast te stellen, worden
 
 * Zorg ervoor dat de nieuwste versies van de agents zijn geïnstalleerd. [Release geschiedenis](reference-connect-health-version-history.md)weer geven. 
 * Zorg ervoor dat de services van Azure AD Connect Health Agents op de computer worden **uitgevoerd** . Connect Health voor AD FS moet bijvoorbeeld drie services hebben.
-  ![Verify Azure AD Connect Health @ no__t-1
+  Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png) ![controleren
 
 * Zorg ervoor dat u voldoet aan de [sectie vereisten](how-to-connect-health-agent-install.md#requirements).
 * Gebruik het [hulp programma](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) voor het testen van connectiviteit om verbindings problemen te detecteren.

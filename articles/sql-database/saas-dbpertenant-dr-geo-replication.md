@@ -91,8 +91,8 @@ Later, in een afzonderlijke repatriërings stap, voert u een failover uit voor d
 Voordat u het herstel proces start, controleert u de normale status van de toepassing.
 1. Open in uw webbrowser de Wingtip tickets-gebeurtenissen hub (http://events.wingtip-dpt.&lt; gebruiker&gt;. trafficmanager.net-Vervang &lt;gebruiker&gt; door de gebruikers waarde van uw implementatie.
     * Ga naar de onderkant van de pagina en Let op de naam en locatie van de catalogus server in de voet tekst. De locatie is de regio waarin u de app hebt geïmplementeerd.
-    *Tip: Houd de muis aanwijzer boven de locatie om de weer gave te verg Roten.* 
-    ![Events hub in de oorspronkelijke regio in orde zijn](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
+    *TIP: Beweeg de muisaanwijzer over de locatie voor het vergroten van de weergave.* 
+    ![Gebeurtenissen hub in orde in oorspronkelijke regio](media/saas-dbpertenant-dr-geo-replication/events-hub-original-region.png)
 
 2. Klik op de contoso concert hal-Tenant en open de bijbehorende gebeurtenis pagina.
     * In de voet tekst ziet u de naam van de Tenant server. De locatie is hetzelfde als de locatie van de catalogus server.

@@ -47,7 +47,7 @@ Taal ondersteuning wordt in eerste instantie in de preview-fase geïmplementeerd
 > [!NOTE]
 > Zie [benoemde entiteits typen](named-entity-types.md)voor gedetailleerde taal ondersteuning voor de ner (named entity Recognition) v3 open bare preview.
 
-| Taal              | Taalcode | Stemming | Sleutelfrasen | Herkenning van benoemde entiteiten | Entiteit koppelen |       Opmerkingen        |
+| Taal              | Taalcode | Sentiment | Sleutelfrasen | Herkenning van benoemde entiteiten | Entiteit koppelen |       Opmerkingen        |
 |:----------------------|:-------------:|:---------:|:-----------:|:------------------------:|:--------------:|:------------------:|
 | Arabisch                |     `ar`      |           |             |           ✔ \*           |                |                    |
 | Tsjechisch                 |     `cs`      |           |             |           ✔ \*           |                |                    |

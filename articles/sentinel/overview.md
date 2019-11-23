@@ -51,7 +51,7 @@ U moet eerst [verbinding maken met uw beveiligings bronnen](connect-data-sources
 
 ## <a name="workbooks"></a>Werkmappen
 
-Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens bewaken met behulp van de Azure Sentinel-integratie met Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste werkmappen. Hoewel werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten kunt maken met Azure monitor-werkmappen](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
+Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt gekoppeld, kunt u de gegevens bewaken met behulp van de Azure-Sentinel-integratie met Azure monitor werkmappen, die veelzijdigheid biedt bij het maken van aangepaste werkmappen. Hoewel werkmappen anders worden weer gegeven in de Azure-Sentinel, kan het nuttig zijn om te zien hoe u [interactieve rapporten kunt maken met Azure monitor-werkmappen](../azure-monitor/app/usage-workbooks.md). Met Azure Sentinel kunt u aangepaste werkmappen maken voor uw gegevens en ook met ingebouwde werkmap sjablonen, zodat u snel inzicht kunt krijgen in uw gegevens zodra u verbinding maakt met een gegevens bron.
 
 ![Dashboards](./media/tutorial-monitor-data/access-workbooks.png)
 
@@ -59,7 +59,7 @@ Nadat u [uw gegevens bronnen](quickstart-onboard.md) aan Azure Sentinel hebt g
 
 Om het geluid te verminderen en het aantal waarschuwingen dat u moet controleren en te minimaliseren, gebruikt Azure Sentinel [Analytics om waarschuwingen in incidenten te correleren](tutorial-detect-threats-built-in.md). **Incidenten** zijn groepen gerelateerde waarschuwingen die samen een mogelijke bedreiging maken die kan worden onderzocht en opgelost. Gebruik de ingebouwde correlatie regels als-is of gebruik deze als uitgangs punt om uw eigen samen te stellen. Azure Sentinel biedt ook machine learning regels om uw netwerk gedrag toe te wijzen en vervolgens te zoeken naar afwijkingen in uw resources. Deze analyse verbindt de punten door waarschuwingen met een laag niveau te combi neren over verschillende entiteiten in potentiële beveiligings incidenten met hoge betrouw baarheid.
 
-![Incidenten](./media/tutorial-investigate-cases/incident-severity.png)
+![Gevallen](./media/tutorial-investigate-cases/incident-severity.png)
 
 
 ## <a name="security-automation--orchestration"></a>Integratie van & voor beveiligings automatisering
@@ -78,11 +78,11 @@ Met de preview-versie van Azure Sentinel [grondige onderzoek](tutorial-investiga
 ![Onderzoek](./media/tutorial-investigate-cases/map-timeline.png)
 
 
-## <a name="hunting"></a>Opsporing
+## <a name="hunting"></a>Zoeken
 
 Gebruik de [krachtige hulpprogram ma's voor zoeken en](hunting.md)doorzoeken van Azure Sentinel, op basis van het Mitre-Framework, waarmee u op proactieve wijze beveiligings Risico's in de gegevens bronnen van uw organisatie kunt vinden voordat een waarschuwing wordt geactiveerd. Nadat u hebt gedetecteerd welke Zoek query hoge waarden biedt voor mogelijke aanvallen, kunt u ook aangepaste detectie regels maken op basis van uw query, en deze inzichten als waarschuwingen voor uw beveiligings incident responders aanwijzen. Terwijl u zich aanmeldt, kunt u blad wijzers voor interessante gebeurtenissen maken, zodat u deze later weer gaat delen, ze met anderen deelt en ze groepeert met andere correlatie gebeurtenissen om een aantrekkelijk incident voor onderzoek te maken.
 
-![Opsporing](./media/overview/hunting.png)
+![Zoeken](./media/overview/hunting.png)
 
 ## <a name="community"></a>Community
 

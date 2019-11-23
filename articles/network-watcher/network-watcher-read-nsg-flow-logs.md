@@ -98,7 +98,7 @@ $CloudBlockBlob = Get-NSGFlowLogCloudBlockBlob -subscriptionId "yourSubscription
 $blockList = Get-NSGFlowLogBlockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-De variabele `$blockList` retourneert een lijst met de blokken in de blob. Elke blok-BLOB bevat ten minste twee blokken.  Het eerste blok heeft een lengte van @no__t 0 bytes. dit blok bevat de openings accolades van het JSON-logboek. Het andere blok is de haak sluiten en heeft een lengte van `2` bytes.  Zoals u kunt zien in het volgende voor beeld van het logboek, worden er zeven vermeldingen in weer gegeven, elk een afzonderlijk item is. Alle nieuwe vermeldingen in het logboek worden toegevoegd aan het eind recht vóór het eind blok.
+De variabele `$blockList` retourneert een lijst met de blokken in de blob. Elke blok-BLOB bevat ten minste twee blokken.  Het eerste blok heeft een lengte van `12` bytes. dit blok bevat de openings accolades van het JSON-logboek. Het andere blok is de haak sluiten en heeft een lengte van `2` bytes.  Zoals u kunt zien in het volgende voor beeld van het logboek, worden er zeven vermeldingen in weer gegeven, elk een afzonderlijk item is. Alle nieuwe vermeldingen in het logboek worden toegevoegd aan het eind recht vóór het eind blok.
 
 ```
 Name                                         Length Committed
@@ -160,7 +160,7 @@ function Get-NSGFlowLogReadBlock  {
 $valuearray = Get-NSGFlowLogReadBlock -blockList $blockList -CloudBlockBlob $CloudBlockBlob
 ```
 
-Nu bevat de matrix @no__t 0 de teken reeks waarde van elk blok. Als u de vermelding wilt controleren, moet u de tweede op de laatste waarde van de matrix ophalen door `$valuearray[$valuearray.Length-2]` uit te voeren. U wilt niet de laatste waarde, omdat het de haak sluiten is.
+De `$valuearray`-matrix bevat nu de teken reeks waarde van elk blok. Als u de vermelding wilt controleren, moet u de tweede naar de laatste waarde in de matrix ophalen door `$valuearray[$valuearray.Length-2]`uit te voeren. U wilt niet de laatste waarde, omdat het de haak sluiten is.
 
 De resultaten van deze waarde worden weer gegeven in het volgende voor beeld:
 

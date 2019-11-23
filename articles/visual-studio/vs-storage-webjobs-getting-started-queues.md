@@ -24,7 +24,7 @@ ms.locfileid: "72298743"
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
 ## <a name="overview"></a>Overzicht
-In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Queue Storage in een Visual Studio Azure-webproject, nadat u een Azure-opslag account hebt gemaakt of hiernaar wordt verwezen met behulp van het dialoog venster **verbonden services toevoegen** in Visual Studio. Wanneer u een opslag account toevoegt aan een project taak met behulp van het dialoog venster **verbonden services toevoegen** van Visual Studio, worden de juiste Azure Storage NuGet-pakketten geïnstalleerd, worden de juiste .net-verwijzingen toegevoegd aan het project en worden verbindings reeksen voor het opslag account wordt bijgewerkt in het bestand app. config.  
+In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Queue Storage in een Visual Studio Azure-webproject, nadat u een Azure-opslag account hebt gemaakt of hiernaar wordt verwezen met behulp van het dialoog venster **verbonden services toevoegen** in Visual Studio. Wanneer u een opslag account aan een Webtaak toevoegt met behulp van het dialoog venster **verbonden services toevoegen** van Visual Studio, worden de juiste Azure Storage NuGet-pakketten geïnstalleerd, de relevante .net-verwijzingen worden toegevoegd aan het project en worden verbindings reeksen voor het opslag account bijgewerkt in het bestand app. config.  
 
 In dit artikel C# vindt u voor beelden van code die laten zien hoe u de Azure WebJobs SDK versie 1. x kunt gebruiken met de Azure Queue Storage-service.
 
@@ -89,9 +89,9 @@ public async static Task ProcessQueueMessageAsyncCancellationToken(
 ## <a name="types-the-queuetrigger-attribute-works-with"></a>Typen het kenmerk Queue trigger werkt met
 U kunt **Queue trigger** gebruiken met de volgende typen:
 
-* **tekenreeksexpressie**
+* **Tekenreeks**
 * Een POCO-type geserialiseerd als JSON
-* **byte []**
+* **byte[]**
 * **CloudQueueMessage**
 
 ## <a name="polling-algorithm"></a>Polling-algoritme
@@ -108,7 +108,7 @@ Hetzelfde geldt wanneer er meerdere berichten voor één wachtrij worden ontvang
 ## <a name="get-queue-or-queue-message-metadata"></a>Meta gegevens van wachtrij of wachtrij bericht ophalen
 U kunt de volgende bericht eigenschappen ophalen door para meters toe te voegen aan de methode handtekening:
 
-* **Date Time offset** expirationTime
+* **DateTimeOffset** expirationTime
 * **Date Time offset** insertionTime
 * **Date Time offset** nextVisibleTime
 * **teken reeks** Queue trigger (bevat bericht tekst)
@@ -191,7 +191,7 @@ Zie [webjobs-correct afsluiten](http://blog.amitapple.com/post/2014/05/webjobs-g
 Als u een functie wilt schrijven die een nieuw wachtrij bericht maakt, gebruikt u het kenmerk **wachtrij** . Net als bij **Queue trigger**geeft u de naam van de wachtrij door als een teken reeks of kunt u [de wachtrij naam dynamisch instellen](#how-to-set-configuration-options).
 
 ### <a name="string-queue-messages"></a>Teken reeks wachtrij berichten
-Het volgende niet-async-code voorbeeld maakt een nieuw wachtrij bericht in de wachtrij met de naam ' output Queue ' met dezelfde inhoud als het wachtrij bericht dat in de wachtrij met de naam ' inputqueue ' is ontvangen. (Voor asynchrone functies gebruikt u **IAsyncCollector @ no__t-1T >** zoals verderop in deze sectie wordt weer gegeven.)
+Het volgende niet-async-code voorbeeld maakt een nieuw wachtrij bericht in de wachtrij met de naam ' output Queue ' met dezelfde inhoud als het wachtrij bericht dat in de wachtrij met de naam ' inputqueue ' is ontvangen. (Voor asynchrone functies gebruikt u **IAsyncCollector\<t >** zoals verderop in deze sectie wordt weer gegeven.)
 
 ```csharp
 public static void CreateQueueMessage(
@@ -217,7 +217,7 @@ public static void CreateQueueMessage(
 De SDK serialeert het object automatisch naar JSON. Er wordt altijd een wachtrij bericht gemaakt, zelfs als het object null is.
 
 ### <a name="create-multiple-messages-or-in-async-functions"></a>Meerdere berichten of asynchrone functies maken
-Als u meerdere berichten wilt maken, maakt u het parameter type voor de uitvoer wachtrij **ICollector @ no__t-1T >** of **IAsyncCollector @ no__t-3T gebruiken >** , zoals in het volgende voor beeld wordt weer gegeven.
+Als u meerdere berichten wilt maken, maakt u het parameter type voor de uitvoer wachtrij **ICollector\<t >** of **IAsyncCollector\<t >** , zoals in het volgende voor beeld wordt weer gegeven.
 
 ```csharp
 public static void CreateQueueMessages(
@@ -545,7 +545,7 @@ In het dash board webjobs SDK worden de meest recente 100 regels van de console-
 
 ![Uitvoer in-/uitschakelen](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
-In een doorlopende Webtaak worden toepassings logboeken weer gegeven in/data/Jobs/Continuous/ *{webjobname}* /job_log.txt in het web-app-bestands systeem.
+In een doorlopende Webtaak worden toepassings logboeken weer gegeven in/data/Jobs/Continuous/ *{webjobname}* /job_log. txt in het web-app-bestands systeem.
 
         [09/26/2014 21:01:13 > 491e54: INFO] Console.Write - Hello world!
         [09/26/2014 21:01:13 > 491e54: ERR ] Console.Error - Hello world!

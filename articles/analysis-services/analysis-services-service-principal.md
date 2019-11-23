@@ -24,14 +24,14 @@ Analysis Services biedt ook ondersteuning voor bewerkingen die worden uitgevoerd
 
 ## <a name="create-service-principals"></a>Service-principals maken
  
-Service-principals kunnen worden gemaakt in de Azure Portal of met behulp van Power shell. Voor meer informatie zie:
+Service-principals kunnen worden gemaakt in de Azure Portal of met behulp van Power shell. Raadpleeg voor meer informatie:
 
 Een [Service-Principal maken-Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Service-principal maken - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>Referentie-en certificaat assets opslaan in Azure Automation
 
-Referenties van de Service-Principal en certificaten kunnen veilig worden opgeslagen in Azure Automation voor runbook-bewerkingen. Voor meer informatie zie:
+Referenties van de Service-Principal en certificaten kunnen veilig worden opgeslagen in Azure Automation voor runbook-bewerkingen. Raadpleeg voor meer informatie:
 
 [Referentie-assets in Azure Automation](../automation/automation-credentials.md)   
 [Verbindingsassets in Azure Automation](../automation/automation-certificates.md)

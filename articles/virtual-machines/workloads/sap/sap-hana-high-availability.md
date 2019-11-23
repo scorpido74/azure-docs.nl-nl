@@ -233,7 +233,7 @@ Voer de volgende stappen uit om de sjabloon te implementeren:
    Lees voor meer informatie over de vereiste poorten voor SAP HANA de hoofdstuk [verbindingen met Tenant databases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) in de hand leiding voor [SAP Hana Tenant-data bases](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) of [SAP Note 2388694][2388694].
 
 > [!IMPORTANT]
-> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. TCP _timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
+> Schakel TCP-tijds tempels niet in op virtuele Azure-machines die achter Azure Load Balancer worden geplaatst. Door TCP-tijds tempels in te scha kelen, mislukken de status controles. Stel para meter **net. IPv4. tcp_timestamps** in op **0**. Zie [Load Balancer Health probe](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)(Engelstalig) voor meer informatie.
 > Zie ook SAP-opmerking [2382421](https://launchpad.support.sap.com/#/notes/2382421). 
 
 ## <a name="create-a-pacemaker-cluster"></a>Een pacemaker-cluster maken
@@ -605,7 +605,7 @@ U kunt het knoop punt SAP HANA Master migreren door de volgende opdracht uit te 
 
 Als u `AUTOMATED_REGISTER="false"`instelt, moet deze reeks opdrachten het SAP HANA hoofd knooppunt en de groep die het virtuele IP-adres bevat, migreren naar HN1-db-1.
 
-Zodra de migratie is voltooid, ziet de crm_mon-r-uitvoer er als volgt uit:
+Nadat de migratie is voltooid, ziet de crm_mon-r-uitvoer er als volgt uit:
 
 <pre><code>Online: [ hn1-db-0 hn1-db-1 ]
 
@@ -735,7 +735,7 @@ Voer alle test cases uit die worden vermeld in het scenario SAP HANA SR-geoptima
 
 De volgende tests zijn een kopie van de test beschrijvingen van het SAP HANA SR-prestatie geoptimaliseerde scenario SUSE Linux Enterprise Server voor de hand leiding voor SAP-toepassingen 12 SP1. Lees voor een actuele versie altijd ook de hand leiding zelf. Zorg er altijd voor dat HANA synchroon is voordat u de test start en Controleer ook of de pacemaker-configuratie juist is.
 
-In de volgende test beschrijvingen wordt aangenomen dat PREFER_SITE_TAKEOVER = "True" en AUTOMATED_REGISTER = "false" zijn.
+In de volgende test beschrijvingen wordt aangenomen PREFER_SITE_TAKEOVER = "True" en AUTOMATED_REGISTER = "false".
 Opmerking: de volgende tests zijn ontworpen om sequentieel te worden uitgevoerd en zijn afhankelijk van de afsluit status van de voor gaande tests.
 
 1. TEST 1: DE PRIMAIRE DATA BASE OP HET KNOOP PUNT 1 STOPPEN

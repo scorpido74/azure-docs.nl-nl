@@ -33,7 +33,7 @@ Houd bij het bepalen van het gebruik van een DNS-server het volgende in de hand:
 
 Als u de algehele belasting wilt distribueren, moet u uw DNS-domein configureren voor het gebruik van Round-Robin load distributie voor client gerichte IP-adressen.
 
-## <a name="configuration-details"></a>Configuratie Details
+## <a name="configuration-details"></a>Configuratiegegevens
 
 Wanneer clients toegang hebben tot het cluster, balanceert RRDNS automatisch hun aanvragen over alle beschik bare interfaces.
 
@@ -41,13 +41,14 @@ Voor optimale prestaties kunt u uw DNS-server configureren voor het afhandelen v
 
 Er wordt aan de linkerkant een cluster-vserver weer gegeven en IP-adressen worden weer gegeven in het midden en aan de rechter kant. Configureer elk client toegangs punt met een record en pointers zoals geïllustreerd.
 
-![Avere Cluster Round-Robin DNS diagram @ no__t-1<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
+![avere Cluster Round-Robin DNS-diagram](media/avere-vfxt-rrdns-diagram.png) 
+<!--- separate text description file provided  [diagram text description](avere-vfxt-rrdns-alt-text.md) -->
 
 Elk IP-adres dat aan de client is gericht, moet een unieke naam hebben voor intern gebruik door het cluster. (In dit diagram worden de IP-adressen van de client de naam VS1-client-IP-* voor duidelijkheid, maar in productie moet u waarschijnlijk een beknoptere, zoals client *) gebruiken.
 
 Clients koppelen het cluster met de naam vserver als server argument. 
 
-Wijzig het ``named.conf``-bestand van de DNS-server om de cyclische volg orde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschik bare waarden worden gerecycled. Voeg een instructie toe zoals de volgende:
+Wijzig het ``named.conf``-bestand van uw DNS-server om de cyclische volg orde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschik bare waarden worden gerecycled. Voeg een instructie toe zoals de volgende:
 
 ```
 options {
@@ -73,7 +74,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ## <a name="cluster-dns-settings"></a>DNS-instellingen van cluster
 
-Geef de DNS-server op die het vFXT-cluster gebruikt op de pagina **cluster** >  netwerk instellingen voor**beheer** . De instellingen op die pagina zijn onder andere:
+Geef de DNS-server op die het vFXT-cluster gebruikt op de pagina **cluster** > netwerk instellingen voor **beheer** . De instellingen op die pagina zijn onder andere:
 
 * DNS-server adres
 * DNS-domein naam

@@ -67,7 +67,7 @@ In deze voorbeeldparameter zijn een _tagName_ van **costCenter** en _tagValue_ v
 }
 ```
 
-## <a name="azure-portal"></a>Azure-portal
+## <a name="azure-portal"></a>Azure Portal
 
 [![het voor beeld van het beleid implementeren naar azure](../media/deploy/deploybutton.png)](https://portal.azure.com/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)
 [![het voor beeld van het beleid implementeren naar Azure gov](../media/deploy/deployGovbutton.png)](https://portal.azure.us/?#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fapply-default-tag-value%2Fazurepolicy.json)

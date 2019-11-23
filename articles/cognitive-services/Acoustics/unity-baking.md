@@ -143,7 +143,7 @@ De scène naam wordt gebruikt om de scène te verbinden met bestanden die de pla
 2. Een korte beschrijving van wat u op dit tabblad kunt doen.
 3. Gebruik deze opties voor het instellen van grove of nauw keurige simulatie. Grof is sneller, maar er zijn afwegingen. Zie [maken-oplossing](bake-resolution.md)voor meer informatie.
 4. Hiermee geeft u op waar geluids gegevensbestand moet worden geplaatst. Selecteer de knop ' **...** ' om toegang te krijgen tot een map kiezen. De standaard locatie is *assets/AcousticsData*. Er wordt ook een *Editor* -submap gemaakt op deze locatie. Zie [gegevens bestanden die door het maken-proces zijn toegevoegd](#Data-Files)verderop in dit artikel voor meer informatie.
-5. Het voor voegsel dat hier wordt opgegeven, wordt gebruikt om de gegevens bestanden voor deze scène een naam te geven. De standaard waarde is ' Acoustics_ *[scène naam]* '.
+5. Het voor voegsel dat hier wordt opgegeven, wordt gebruikt om de gegevens bestanden voor deze scène een naam te geven. De standaard waarde is Acoustics_ *[scène naam]* .
 6. Nadat de tests zijn berekend, worden de besturings elementen die we zojuist hebben beschreven, uitgeschakeld. Selecteer de knop **wissen** om de berekeningen te wissen en de besturings elementen in te scha kelen, zodat u opnieuw kunt berekenen met nieuwe instellingen.
 7. Selecteer **berekenen** om de scène te voxelize en de locaties van het test punt te berekenen. De berekening wordt lokaal op uw computer uitgevoerd. U moet dit doen voordat u een maken uitvoert.
 
@@ -162,7 +162,7 @@ U kunt uw scène in een berekenings cluster in de Cloud maken door de Azure Batc
 3. Voer uw Azure-referenties in deze velden in, nadat u uw Azure-account hebt gemaakt. Zie [een Azure batch-account maken](create-azure-account.md)voor meer informatie.
 4. Het veld docker-code voor de akoestische hulp programmaset.
 5. Hiermee opent u de Azure Portal voor het beheren van uw abonnementen, het controleren van het gebruik en het weer geven van facturerings gegevens.
-6. Hiermee geeft u het type van het berekenings knooppunt Azure Batch moet worden gebruikt voor de berekening. Het knooppunt type moet worden ondersteund door de locatie van uw Azure-Data Center. Als u het niet zeker weet, laat u dit **Standard_F8s_v2**.
+6. Hiermee geeft u het type van het berekenings knooppunt Azure Batch moet worden gebruikt voor de berekening. Het knooppunt type moet worden ondersteund door de locatie van uw Azure-Data Center. Als u het niet zeker weet, laat u dan **Standard_F8s_v2**.
 7. Het aantal knoop punten dat moet worden gebruikt voor de berekening. Dit getal is van invloed op de maken-tijd. Het is beperkt door uw Azure Batch core-toewijzing. De standaard toewijzing is alleen toegestaan voor twee 8-kern knooppunten of een 1 16-kern knoop punt, maar kan worden uitgebreid. Zie [een Azure batch-account maken](create-azure-account.md)voor meer informatie over kern toewijzings beperkingen.
 8. Schakel dit selectie vakje in om uw reken groep te configureren voor het gebruik van [knoop punten met een lage prioriteit](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Reken knooppunten met lage prioriteit hebben veel lagere kosten. Maar ze zijn mogelijk niet altijd beschikbaar of kunnen op elk gewenst moment worden voorranglen.
 9. Het aantal tests voor uw scène zoals berekend op het tabblad **tests** . Het aantal tests bepaalt het aantal simulaties dat moet worden uitgevoerd in de Cloud. U kunt niet meer knoop punten opgeven dan er tests zijn.
@@ -205,7 +205,7 @@ Voor de beveiliging worden Azure-referenties op uw lokale machine opgeslagen en 
 
 Als u wilt schatten wat een maken kost, begint u met de geschatte waarde voor **reken kosten** , die een duur is. Vermenigvuldig die waarde met de kosten per uur in uw lokale valuta voor het **VM-knooppunt type** dat u selecteert. Houd er rekening mee dat het resultaat niet de tijd van het knoop punt bevat die nodig is om de knoop punten actief en werkend te krijgen.
 
-Stel dat u bijvoorbeeld **Standard_F8s_v2** voor het type knoop punt selecteert, die een kosten van $0.40/HR heeft. Als de **geschatte reken kosten** 3 uur en 57 minuten zijn, is de geschatte kosten voor het uitvoeren van de taak $0,40 * ~ 4 uur = ~ $1,60. De werkelijke kosten zijn waarschijnlijk iets hoger vanwege de extra tijd voor het starten van de knoop punten.
+Stel bijvoorbeeld dat u **Standard_F8s_v2** selecteert voor het knooppunt type, met de kosten $0.40/HR. Als de **geschatte reken kosten** 3 uur en 57 minuten zijn, is de geschatte kosten voor het uitvoeren van de taak $0,40 * ~ 4 uur = ~ $1,60. De werkelijke kosten zijn waarschijnlijk iets hoger vanwege de extra tijd voor het starten van de knoop punten.
 
 Zoek kosten per uur op [Azure batch prijzen](https://azure.microsoft.com/pricing/details/virtual-machines/linux). (Selecteer verwerkte **Compute** of **High Performance Compute** als categorie.)
 
@@ -224,9 +224,9 @@ Een voor beeld: in onze tests op een 8-kern computer, Intel Xeon E5-1660 @ 3 GHz
 Installeer en configureer docker op de PC waarop de simulatie wordt uitgevoerd:
 1. Installeer [docker Desktop](https://www.docker.com/products/docker-desktop).
 2. Open docker-instellingen, ga naar **Geavanceerd**en configureer de bronnen voor ten minste 8 GB RAM-geheugen. Hoe meer Cpu's u aan docker kunt toewijzen, hoe sneller de maken wordt voltooid.  
-![Sample-docker-instellingen @ no__t-1
+![voorbeeld instellingen voor docker](media/docker-settings.png)
 1. Ga naar **gedeelde stations**en schakel delen in voor het station dat wordt gebruikt voor de verwerking.  
-![Docker-opties voor gedeelde stations @ no__t-1
+opties ![docker-gedeelde stations](media/docker-shared-drives.png)
 
 ### <a name="run-the-local-bake"></a>De lokale maken uitvoeren
 1. Selecteer de knop **lokale maken voorbereiden** op het tabblad **maken** . Selecteer vervolgens de locatie van de map waarin de invoer bestanden en uitvoerings scripts moeten worden opgeslagen. U kunt de maken vervolgens op elke computer uitvoeren, zolang deze voldoet aan de minimale hardwarevereisten en u docker installeert door de map naar die computer te kopiëren.
@@ -238,14 +238,14 @@ Installeer en configureer docker op de PC waarop de simulatie wordt uitgevoerd:
 De volgende vier gegevens bestanden worden gemaakt tijdens het maken-proces. De ene bevat de simulatie resultaten en wordt geleverd met uw titel. De overige opslag eenheid editor-gerelateerde gegevens.
 
 Simulatie resultaat:
-* *Assets/AcousticsData/akoestische @ no__t-1 [scène naam]. ace. bytes*: dit bestand is de opzoek tabel voor runtime. Het bevat de simulatie resultaten en voxelized akoestische scène-elementen. U kunt de naam en locatie van dit bestand wijzigen op het tabblad **tests** .
+* *Activa/AcousticsData/akoestische\_[scène naam]. ace. bytes*: dit bestand is de opzoek tabel voor runtime. Het bevat de simulatie resultaten en voxelized akoestische scène-elementen. U kunt de naam en locatie van dit bestand wijzigen op het tabblad **tests** .
 
    *Zorg ervoor dat u het simulatie resultaten bestand niet verwijdert. Deze kan niet worden hersteld, behalve door de scène te rebakingen.*
 
 Editor-gegevens bestanden:
-* *Assets/redacteur/[scènenaam] \_AcousticsParameters. Asset*: in dit bestand worden de gegevens opgeslagen die u invoert in velden in de gebruikers interface van akoestische elementen. U kunt de naam en locatie van dit bestand niet wijzigen.
-* *Assets/AcousticsData/redacteur/Acoustics_ [scènenaam]. Vox*: in dit bestand worden de voxelized akoestische geometrie en de materiaal eigenschappen opgeslagen die worden berekend wanneer u de knop **berekenen** selecteert op het tabblad **tests** . U kunt de naam en locatie van dit bestand wijzigen op het tabblad **tests** .
-* *Assets/AcousticsData/redacteur/akoestische waarden @ no__t-1 [scènenaam] @no__t -2config. XML*: dit bestand bevat simulatie parameters die worden berekend wanneer u **berekenen**selecteert. U kunt de naam en locatie van dit bestand wijzigen op het tabblad **tests** .
+* *Assets/redacteur/[scènenaam]\_AcousticsParameters. Asset*: in dit bestand worden de gegevens opgeslagen die u invoert in velden in de gebruikers interface van akoestische elementen. U kunt de naam en locatie van dit bestand niet wijzigen.
+* *Assets/AcousticsData/redacteur/Acoustics_ [scènenaam]. Vox*: in dit bestand worden de voxelized-akoestische geometrie en de materiaal eigenschappen opgeslagen die worden berekend wanneer u de knop **berekenen** selecteert op het tabblad **tests** . U kunt de naam en locatie van dit bestand wijzigen op het tabblad **tests** .
+* *Assets/AcousticsData/redacteur/akoestische\_[scènenaam]\_config. XML*: in dit bestand worden simulatie parameters opgeslagen die worden berekend wanneer u **berekenen**selecteert. U kunt de naam en locatie van dit bestand wijzigen op het tabblad **tests** .
 
 ## <a name="set-up-the-acoustics-lookup-table"></a>De zoek tabel voor akoestische instellingen instellen
 Sleep het **project akoestische** prefab van het deel venster Project naar uw scène:

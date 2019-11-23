@@ -22,7 +22,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72023805"
 ---
-# <a name="quickstart-get-started-with-azure-sentinel"></a>Quickstart: Aan de slag met Azure Sentinel
+# <a name="quickstart-get-started-with-azure-sentinel"></a>Snelstartgids: aan de slag met Azure Sentinel
 
 
 
@@ -43,16 +43,16 @@ Bekijk eerst het overzichts dashboard om een idee te krijgen van de beveiligings
 
 De hoofd tekst van de overzichts pagina geeft inzicht in de beveiligings status van uw werk ruimte:
 
-- **Gebeurtenissen en waarschuwingen in**de loop van de tijd: Hier wordt het aantal gebeurtenissen weer gegeven en hoeveel waarschuwingen zijn gemaakt op basis van deze gebeurtenissen. Als er sprake is van een ongebruikelijke piek, ziet u er waarschuwingen voor. als er iets ongebruikelijk is waarbij er sprake is van een Prikker, maar u geen waarschuwingen ziet, kan dit de oorzaak van het probleem zijn.
+- **Gebeurtenissen en waarschuwingen**in de loop van de tijd: hier wordt het aantal gebeurtenissen weer gegeven en hoeveel waarschuwingen zijn gemaakt op basis van deze gebeurtenissen. Als er sprake is van een ongebruikelijke piek, ziet u er waarschuwingen voor. als er iets ongebruikelijk is waarbij er sprake is van een Prikker, maar u geen waarschuwingen ziet, kan dit de oorzaak van het probleem zijn.
 
-- **Mogelijke schadelijke gebeurtenissen**: Wanneer er verkeer wordt gedetecteerd van bronnen waarvan bekend is dat ze schadelijk zijn, wordt u door Azure Sentinel gewaarschuwd op de kaart. Als oranje wordt weer geven, is het inkomend verkeer: iemand probeert toegang te krijgen tot uw organisatie vanaf een bekend schadelijk IP-adres. Als de activiteit uitgaand (rood) wordt weer gegeven, betekent dit dat de gegevens van uw netwerk worden gestreamd uit uw organisatie naar een bekend schadelijk IP-adres.
+- **Mogelijke schadelijke gebeurtenissen**: wanneer er verkeer wordt gedetecteerd van bronnen waarvan bekend is dat ze schadelijk zijn, wordt u door Azure Sentinel gewaarschuwd op de kaart. Als oranje wordt weer geven, is het inkomend verkeer: iemand probeert toegang te krijgen tot uw organisatie vanaf een bekend schadelijk IP-adres. Als de activiteit uitgaand (rood) wordt weer gegeven, betekent dit dat de gegevens van uw netwerk worden gestreamd uit uw organisatie naar een bekend schadelijk IP-adres.
 
    ![Azure-Sentinel-toewijzing](./media/qs-get-visibility/map.png)
 
 
-- **Recente incidenten**: Om uw recente incidenten, hun ernst en het aantal waarschuwingen dat is gekoppeld aan het incident, weer te geven. Als u de onverwachte piek in een specifiek type waarschuwing ziet, kan dit betekenen dat er momenteel een actieve aanval actief is. Als u bijvoorbeeld een plotselinge piek van 20 Pass-the-hash-gebeurtenissen van Azure ATP hebt, is het mogelijk dat iemand een aanval uitvoert.
+- **Recente incidenten**: als u uw recente incidenten wilt weer geven, zijn de ernst en het aantal waarschuwingen dat is gekoppeld aan het incident. Als u de onverwachte piek in een specifiek type waarschuwing ziet, kan dit betekenen dat er momenteel een actieve aanval actief is. Als u bijvoorbeeld een plotselinge piek van 20 Pass-the-hash-gebeurtenissen van Azure ATP hebt, is het mogelijk dat iemand een aanval uitvoert.
 
-- **Afwijkingen van de gegevens bron**: De gegevens analisten van micro soft hebben modellen gemaakt die de gegevens van uw gegevens bronnen voortdurend doorzoeken op afwijkingen. Als er geen afwijkingen zijn, wordt er niets weer gegeven. Als er afwijkingen worden gedetecteerd, moet u zich diep vinden om te zien wat er is gebeurd. Klik bijvoorbeeld op de Prikker in azure activity. U kunt klikken op de **grafiek** om te zien wanneer de Prikker zich voordeed en vervolgens filteren op activiteiten die tijdens die periode zijn opgetreden om te zien wat de oorzaak van de Prikker heeft.
+- **Gegevens bron afwijkingen**: de gegevens analisten van micro soft hebben modellen gemaakt die de gegevens van uw gegevens bronnen voortdurend doorzoeken op afwijkingen. Als er geen afwijkingen zijn, wordt er niets weer gegeven. Als er afwijkingen worden gedetecteerd, moet u zich diep vinden om te zien wat er is gebeurd. Klik bijvoorbeeld op de Prikker in azure activity. U kunt klikken op de **grafiek** om te zien wanneer de Prikker zich voordeed en vervolgens filteren op activiteiten die tijdens die periode zijn opgetreden om te zien wat de oorzaak van de Prikker heeft.
 
    ![Azure-Sentinel-toewijzing](./media/qs-get-visibility/anomolies.png)
 
@@ -63,7 +63,7 @@ Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens b
 1. Onder **instellingen**selecteert u **werkmappen**. Onder **geïnstalleerd**ziet u alle geïnstalleerde werkmappen. Onder **alle**kunt u de volledige galerie met ingebouwde werkmappen zien die beschikbaar zijn voor installatie. 
 2. Zoek naar een specifieke werkmap om de hele lijst en een beschrijving van de Voorst Ellen te bekijken. 
 3. Als u Azure AD gebruikt om aan de slag te gaan met Azure Sentinel, raden we u aan ten minste de volgende werkmappen te installeren:
-   - **Azure AD**: Gebruik een van de volgende of beide:
+   - **Azure AD**: gebruik een van de volgende of beide:
        - Met **Azure AD-aanmeldingen** worden aanmeldingen in de loop van de tijd geanalyseerd om te zien of er afwijkingen zijn. Deze werkmappen bevat mislukte aanmeldingen door toepassingen, apparaten en locaties, zodat u in één oogopslag kunt zien of er iets ongebruikelijk is. Let op meerdere mislukte aanmeldingen. 
        - Met **Azure AD-controle logboeken** worden beheer activiteiten geanalyseerd, zoals wijzigingen in gebruikers (toevoegen, verwijderen, enz.), het maken van groepen en het wijzigen van wijzigingen.  
 
@@ -72,14 +72,14 @@ Ingebouwde werkmappen bieden geïntegreerde gegevens van uw verbonden gegevens b
       ![PAL Alto-dash board](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-U kunt de werkmappen aanpassen door de hoofd query te bewerken ![button @ no__t-1. U kunt klikken op de knop ![button @ no__t-1 om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken, of de specifieke tegels uit kunt verwijderen de werkmap.
+U kunt de werkmappen aanpassen door de belangrijkste query te bewerken ![knop](./media/qs-get-visibility/edit-query-button.png). U kunt klikken op de knop ![knop](./media/qs-get-visibility/go-to-la-button.png) om naar [log Analytics te gaan om de query daar te bewerken](../azure-monitor/log-query/get-started-portal.md), en u kunt het weglatings teken (...) selecteren en **tegel gegevens aanpassen**selecteren, zodat u het filter voor de hoofdtijden kan bewerken of de specifieke tegels uit de werkmap verwijdert.
 
-Zie [Tutorial voor meer informatie over het werken met query's: Visuele gegevens in Log Analytics @ no__t-0
+Zie [zelf studie: visuele gegevens in log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md) voor meer informatie over het werken met query's
 
 ### <a name="add-a-new-tile"></a>Een nieuwe tegel toevoegen
 
 Als u een nieuwe tegel wilt toevoegen, kunt u deze toevoegen aan een bestaande werkmap, een van de elementen die u maakt of een ingebouwde Azure-Sentinel-werkmap. 
-1. Maak in Log Analytics een tegel met behulp van de instructies in [Tutorial: Visuele gegevens in Log Analytics @ no__t-0. 
+1. Maak in Log Analytics een tegel met behulp van de instructies in de [zelf studie: visuele gegevens in log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md). 
 2. Nadat de tegel is gemaakt, selecteert u onder **pincode**de werkmap waarin u de tegel wilt weer geven.
 
 ## <a name="create-new-workbooks"></a>Nieuwe werkmappen maken
@@ -126,7 +126,7 @@ Als u alle opstaande detecties wilt weer geven, gaat u naar **Analytics** en ver
 
    ![Ingebouwde detecties gebruiken om bedreigingen te vinden met Azure Sentinel](media/tutorial-detect-built-in/view-oob-detections.png)
 
-Zie [Tutorial voor meer informatie over het ophalen van out-of-Box-detecties: Maak een ingebouwde versie van no__t-0.
+Zie [zelf studie: ingebouwde analyses ophalen](tutorial-detect-threats-built-in.md)voor meer informatie over het verkrijgen van out-of-the-box-detecties.
  
 ## <a name="next-steps"></a>Volgende stappen
 In deze Snelstartgids hebt u geleerd hoe u aan de slag kunt met Azure Sentinel. Ga door naar de zelf studie voor [het detecteren van bedreigingen](tutorial-detect-threats-built-in.md).

@@ -23,16 +23,16 @@ Voor de stappen in dit artikel moet [Azure database for MariaDB server](quicksta
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het logboek voor langzame query's. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database for MariaDB-server.
 
 3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. 
-   ![Screenshot van opties voor Server logboeken @ no__t-1
+   ![scherm opname van opties voor Server logboeken](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. Selecteer om de server parameters weer te geven de optie **Klik hier om Logboeken in te scha kelen en logboek parameters te configureren**.
 
-5. Wijzig de para meters die u wilt aanpassen, met inbegrip **van** **slow_query_log** . Alle wijzigingen die u aanbrengt in deze sessie, worden in paars gemarkeerd. 
+5. Wijzig de para meters die u wilt aanpassen, met inbegrip **van** **slow_query_log** op aan. Alle wijzigingen die u aanbrengt in deze sessie, worden in paars gemarkeerd. 
 
    Nadat u de para meters hebt gewijzigd, selecteert u **Opslaan**. Of u kunt uw wijzigingen negeren.
 
@@ -71,10 +71,10 @@ Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare langz
 1. Geef op welke gegevens worden gesinkt om de langzame query Logboeken (opslag account, Event Hub of Log Analytics-werk ruimte) te verzenden.
 
 1. Selecteer **MySqlSlowLogs** als het logboek type.
-![Screenshot van configuratie opties voor Diagnostische instellingen @ no__t-1
+![scherm opname van configuratie opties voor Diagnostische instellingen](./media/howto-configure-server-logs-portal/configure-diagnostic-setting.png)
 
 1. Nadat u de gegevens sinks hebt geconfigureerd om de langzame query logboeken te pipeen, selecteert u **Opslaan**.
-![Screenshot van configuratie opties voor Diagnostische instellingen, met gemarkeerde opslaan @ no__t-1
+![scherm opname van configuratie opties voor Diagnostische instellingen, met gemarkeerde](./media/howto-configure-server-logs-portal/save-diagnostic-setting.png)
 
 1. Open de logboeken voor trage query's door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
 

@@ -101,8 +101,8 @@ Het opgeven van para meters is niet vereist. De standaard waarde wordt toegepast
 |------------------|-------|--------------|---------|
 | `Type`           | Enum  | Het type verwerking dat moet worden uitgevoerd. De typen zijn afgestemd op de TMSL- [vernieuwings opdracht](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) typen: Full, clearValues, Calculate, dataOnly, Automatic en defragmenteren. Het type toevoegen wordt niet ondersteund.      |   Automatisch      |
 | `CommitMode`     | Enum  | Bepaalt of objecten worden doorgevoerd in batches of alleen wanneer dit is voltooid. Voor beelden zijn: standaard, transactioneel, partialBatch.  |  transactionele       |
-| `MaxParallelism` | integer   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
-| `RetryCount`     | integer   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
+| `MaxParallelism` | Int   | Deze waarde bepaalt het maximum aantal threads waarop verwerkings opdrachten parallel moeten worden uitgevoerd. Deze waarde is afgestemd op de eigenschap MaxParallelism die kan worden ingesteld in de [opdracht TMSL sequence](https://docs.microsoft.com/bi-reference/tmsl/sequence-command-tmsl) of met behulp van andere methoden.       | 10        |
+| `RetryCount`     | Int   | Hiermee wordt het aantal keren aangegeven dat de bewerking opnieuw wordt uitgevoerd voordat er een fout optreedt.      |     0    |
 | `Objects`        | Matrix | Een matrix met objecten die moeten worden verwerkt. Elk object bevat: ' tabel ' bij het verwerken van de volledige tabel of ' tabel ' en ' partitie ' bij het verwerken van een partitie. Als er geen objecten zijn opgegeven, wordt het hele model vernieuwd. |   Het volledige model verwerken      |
 
 CommitMode is gelijk aan partialBatch. Dit wordt gebruikt bij het uitvoeren van een initiële belasting van grote gegevens sets die uren kunnen duren. Als de vernieuwings bewerking mislukt nadat een of meer batches zijn doorgevoerd, blijven de doorgevoerde batches doorgevoerd (de doorgevoerde batches kunnen niet worden hersteld).
@@ -214,6 +214,6 @@ Zie [Service-Principal maken-Azure Portal](../active-directory/develop/howto-cre
 ## <a name="see-also"></a>Zie ook
 
 [Voorbeelden](analysis-services-samples.md)   
-[REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
+[REST-API](https://docs.microsoft.com/rest/api/analysisservices/servers)   
 
 

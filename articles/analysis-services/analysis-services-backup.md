@@ -14,7 +14,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/04/2019
 ms.locfileid: "73573448"
 ---
-# <a name="backup-and-restore"></a>Back-ups en herstellen
+# <a name="backup-and-restore"></a>Back-up maken en terugzetten
 
 Het maken van een back-up van tabellaire model databases in Azure Analysis Services is veel hetzelfde als voor on-premises Analysis Services. Het belangrijkste verschil is waar u uw back-upbestanden opslaat. Back-upbestanden moeten worden opgeslagen in een container in een [Azure-opslag account](../storage/common/storage-create-storage-account.md). U kunt een opslag account en een container gebruiken die u al hebt, of ze kunnen worden gemaakt bij het configureren van opslag instellingen voor uw server.
 
@@ -49,7 +49,7 @@ Voordat u een back-up maakt, moet u de opslag instellingen voor uw server config
 
     ![Back-upinstellingen opslaan](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>Back-up maken met behulp van SSMS
 

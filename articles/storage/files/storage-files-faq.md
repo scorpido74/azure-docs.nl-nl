@@ -98,7 +98,7 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-conflict-resolution"></a>**Als hetzelfde bestand op ongeveer hetzelfde moment op twee servers wordt gewijzigd, wat gebeurt er dan?**  
     Azure File Sync maakt gebruik van een eenvoudige strategie voor conflict oplossing: wijzigingen in bestanden die op twee servers tegelijk worden gewijzigd, worden bewaard. De meest recent geschreven wijziging behoudt de oorspronkelijke bestands naam. Het oudere bestand heeft de computer ' Bron ' en het conflict nummer dat is toegevoegd aan de naam. Deze is gebaseerd op deze taxonomie: 
    
-    \<FileNameWithoutExtension\>-\<MachineName\>\[-#-\].\<ext\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
     Het eerste conflict van CompanyReport. docx wordt bijvoorbeeld CompanyReport-CentralServer. docx als CentralServer de locatie is waar de oudere schrijf bewerking plaatsvond. Het tweede conflict zou de naam CompanyReport-CentralServer-1. docx hebben. Azure File Sync ondersteunt 100-conflict bestanden per bestand. Zodra het maximum aantal conflict bestanden is bereikt, kan het bestand niet worden gesynchroniseerd totdat het aantal conflict bestanden kleiner is dan 100.
 
@@ -128,18 +128,18 @@ In dit artikel vindt u antwoorden op veelgestelde vragen over Azure Files-functi
 * <a id="afs-files-excluded"></a>
   **welke bestanden of mappen automatisch worden uitgesloten door Azure file sync?**  
     Azure File Sync worden standaard de volgende bestanden uitgesloten:
-  * Desktop. ini
+  * desktop.ini
   * duims. db
   * ehthumbs. db
   * ~$\*.\*
-  * \*. LACCDB
+  * \*.laccdb
   * \*. tmp
   * 635D02A9D91C401B97884B82B3BCDAEA.\*
 
     De volgende mappen worden ook standaard uitgesloten:
 
   * \System-Volume gegevens
-  * \$RECYCLEn. DOCKOPSLAGLOCATIE
+  * \$RECYCLE.BIN
   * \SyncShareState
 
 * <a id="afs-os-support"></a>
@@ -252,7 +252,7 @@ moet **Ik Azure ExpressRoute gebruiken om verbinding te maken met Azure files of
 
     U kunt de bestands share koppelen met behulp van het SMB-protocol als poort 445 (TCP uitgaand) is geopend en de client het SMB 3,0-protocol ondersteunt (bijvoorbeeld als u Windows 10 of Windows Server 2016 gebruikt). Als poort 445 wordt geblokkeerd door het beleid van uw organisatie of door uw Internet provider, kunt u Azure File Sync gebruiken om toegang te krijgen tot uw Azure-bestands share.
 
-## <a name="backup"></a>Back-up maken
+## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Hoe kan ik een back-up maken van mijn Azure-bestands share?**  
     U kunt [moment opnamen van periodieke shares](storage-snapshots-files.md) gebruiken voor beveiliging tegen onbedoeld verwijderen. U kunt ook AzCopy, Robocopy of een back-upprogramma van derden gebruiken dat een back-up kan maken van een gekoppelde bestands share. Azure Backup biedt back-up van Azure Files. Meer informatie over het [maken van back-ups van Azure-bestands shares per Azure backup](https://docs.microsoft.com/azure/backup/backup-azure-files).

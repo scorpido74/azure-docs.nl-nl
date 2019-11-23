@@ -27,10 +27,10 @@ De volgende tabel bevat de minimale aanbevolen band breedten voor een soepele ge
 
 |Workload        |Voorbeeldtoepassingen                                                                                           |Aanbevolen band breedte|
 |----------------|--------------------------------------------------------------------------------------------------------------|---------------------|
-|Taakuitvoering     |Micro soft Word, Outlook, Excel, Adobe Reader                                                                  |1.5 @ no__t-0Mbps        |
-|Office-werk nemer   |Micro soft Word, Outlook, Excel, Adobe Reader, Power Point, Photo Viewer                                        |3 @ no__t-0Mbps          |
-|Kennis medewerker|Micro soft Word, Outlook, Excel, Adobe Reader, Power Point, Photo Viewer, java                                  |5 @ no__t-0Mbps          |
-|Power worker    |Micro soft Word, Outlook, Excel, Adobe Reader, Power Point, Photo Viewer, Java, CAD/CAM, illustratie/publicatie|15 @ no__t-0Mbps         |
+|Taakuitvoering     |Micro soft Word, Outlook, Excel, Adobe Reader                                                                  |1,5&nbsp;Mbps        |
+|Office-werk nemer   |Micro soft Word, Outlook, Excel, Adobe Reader, Power Point, Photo Viewer                                        |3&nbsp;Mbps          |
+|Kennis medewerker|Micro soft Word, Outlook, Excel, Adobe Reader, Power Point, Photo Viewer, java                                  |5&nbsp;Mbps          |
+|Power worker    |Micro soft Word, Outlook, Excel, Adobe Reader, Power Point, Photo Viewer, Java, CAD/CAM, illustratie/publicatie|15&nbsp;Mbps         |
 
 >[!NOTE]
 >Deze aanbevelingen zijn van toepassing, ongeacht het aantal gebruikers in de sessie.
@@ -59,6 +59,6 @@ Voor verschillende weergave resoluties zijn verschillende beschik bare band bree
 >[!NOTE]
 >Deze aanbevelingen zijn van toepassing, ongeacht het aantal gebruikers in de sessie.
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
 De Azure-regio die u aanmeldt, is van invloed op de gebruikers ervaring, net als bij netwerk omstandigheden. Bekijk de [Estimator van Windows virtueel bureau blad](https://azure.microsoft.com/services/virtual-desktop/assessment/) voor meer informatie.

@@ -42,7 +42,7 @@ Azure Storage ondersteunt drie typen hand tekeningen voor gedeelde toegang:
 Een Shared Access Signature kan een van de twee volgende vormen hebben:
 
 - **Ad-hoc SAS:** Wanneer u een ad-hoc SAS maakt, worden de start tijd, de verloop tijd en de machtigingen voor de SA'S opgegeven in de SAS-URI (of impliciet als de begin tijd wordt wegge laten). Elk type SAS kan een ad-hoc-SAS zijn.
-- **Service-sa's met opgeslagen toegangs beleid:** Een opgeslagen toegangs beleid wordt gedefinieerd in een resource container. Dit kan een BLOB-container, tabel, wachtrij of bestands share zijn. Het beleid voor opgeslagen toegang kan worden gebruikt om beperkingen te beheren voor een of meer hand tekeningen voor gedeelde toegang van services. Wanneer u een service-SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de beperkingen @ no__t-0the-start tijd, verloop tijd en machtigingen @ no__t-1defined over voor het opgeslagen toegangs beleid.
+- **Service-sa's met opgeslagen toegangs beleid:** Een opgeslagen toegangs beleid wordt gedefinieerd in een resource container. Dit kan een BLOB-container, tabel, wachtrij of bestands share zijn. Het beleid voor opgeslagen toegang kan worden gebruikt om beperkingen te beheren voor een of meer hand tekeningen voor gedeelde toegang van services. Wanneer u een service-SAS koppelt aan een opgeslagen toegangs beleid, neemt de SAS de beperkingen&mdash;de start tijd, de verloop tijd en de machtigingen&mdash;die zijn gedefinieerd voor het opgeslagen toegangs beleid.
 
 > [!NOTE]
 > Een SAS van gebruikers of een account-SAS moet een ad-hoc-SA'S zijn. Opgeslagen toegangs beleid wordt niet ondersteund voor de gebruikers delegering SA'S of de account-SAS.

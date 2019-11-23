@@ -320,13 +320,13 @@ De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure.
 
 | Nummer van notitie | Titel |
 | --- | --- |
-| [1928533] |SAP-toepassingen op Azure: Ondersteunde producten en Azure VM-typen |
-| [2015553] |SAP op Microsoft Azure: Vereisten voor ondersteuning |
+| [1928533] |SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
+| [2015553] |SAP op Microsoft Azure: vereisten voor ondersteuning |
 | [1999351] |Problemen met verbeterde Azure-bewaking voor SAP oplossen |
 | [2178632] |Belangrijkste meet waarden voor SAP op Microsoft Azure |
-| [2191498] |SAP op Linux met Azure: Uitgebreide bewaking |
-| [2039619] |SAP-toepassingen op Microsoft Azure met behulp van de Oracle-Data Base: Ondersteunde producten en versies |
-| [2243692] |IaaS-VM (Linux on Microsoft Azure): SAP-licentie problemen |
+| [2191498] |SAP op Linux met Azure: uitgebreide bewaking |
+| [2039619] |SAP-toepassingen op Microsoft Azure met behulp van de Oracle-Data Base: ondersteunde producten en versies |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP-licentie problemen |
 | [2069760] |Oracle Linux 7. x SAP-installatie en-upgrade |
 | [1597355] |Aanbeveling voor wissel geheugen voor Linux |
 | [2171857] |Ondersteuning voor Oracle Database 12c-bestands systeem op Linux |
@@ -357,7 +357,7 @@ Alleen Oracle met één instantie die NTFS-geformatteerde schijven gebruikt, wor
 
 Het is raadzaam [Azure Managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview)te gebruiken. We raden u ook ten zeerste aan om [Premium ssd's](../../windows/disks-types.md) te gebruiken voor uw Oracle database-implementaties.
 
-Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Zie voor meer informatie:
+Netwerk stations of externe shares zoals Azure File Services worden niet ondersteund voor Oracle Database-bestanden. Ga voor meer informatie naar:
 
 - [Introducing Microsoft Azure File Service (Introductie van Microsoft Azure File-service)](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
@@ -374,10 +374,10 @@ De minimale configuratie is als volgt:
 
 | Onderdeel | Schijf | Caching | Opslag groep |
 | --- | ---| --- | --- |
-| \oracle\<sid > \origlogaA & mirrlogB | Premium | Geen | Niet nodig |
-| \oracle\<sid > \origlogaB & mirrlogA | Premium | Geen | Niet nodig |
+| \oracle\<SID > \origlogaA & mirrlogB | Premium | None | Niet nodig |
+| \oracle\<SID > \origlogaB & mirrlogA | Premium | None | Niet nodig |
 | \oracle\<SID>\sapdata1...n | Premium | Alleen-lezen | Kan worden gebruikt |
-| \oracle\<SID>\oraarch | Standard | Geen | Niet nodig |
+| \oracle\<SID>\oraarch | Standard | None | Niet nodig |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet nodig |
 
 
@@ -387,13 +387,13 @@ De configuratie van de prestaties is als volgt:
 
 | Onderdeel | Schijf | Caching | Opslag groep |
 | --- | ---| --- | --- |
-| \oracle\<SID>\origlogaA | Premium | Geen | Kan worden gebruikt  |
-| \oracle\<SID>\origlogaB | Premium | Geen | Kan worden gebruikt |
-| \oracle\<SID>\mirrlogAB | Premium | Geen | Kan worden gebruikt |
-| \oracle\<SID>\mirrlogBA | Premium | Geen | Kan worden gebruikt |
+| \oracle\<SID>\origlogaA | Premium | None | Kan worden gebruikt  |
+| \oracle\<SID>\origlogaB | Premium | None | Kan worden gebruikt |
+| \oracle\<SID>\mirrlogAB | Premium | None | Kan worden gebruikt |
+| \oracle\<SID>\mirrlogBA | Premium | None | Kan worden gebruikt |
 | \oracle\<SID>\sapdata1...n | Premium | Alleen-lezen | Aanbevolen  |
-| \oracle\SID\sapdata(n+1)* | Premium | Geen | Kan worden gebruikt |
-| \oracle\<-sid > \oraarch * | Premium | Geen | Niet nodig |
+| \oracle\SID\sapdata(n+1)* | Premium | None | Kan worden gebruikt |
+| \oracle\<SID > \oraarch * | Premium | None | Niet nodig |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | Niet nodig |
 
 \* (n + 1): host systeem, TEMP en ongedaan maken van tablespaces. Het I/O-patroon van systeem-en ongedaan maken tablespaces verschillen van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
@@ -418,7 +418,7 @@ Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na noo
 
 Zie [herstel na nood gevallen voor een Oracle database 12c-data base in een Azure-omgeving](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery)voor meer informatie over herstel na nood gevallen voor Oracle-data bases in Azure.
 
-### <a name="accelerated-networking"></a>Versnelde netwerken
+### <a name="accelerated-networking"></a>Versneld netwerken
 Voor Oracle-implementaties in Windows wordt het beste versneld netwerken aanbevolen, zoals beschreven in [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Houd ook rekening met de aanbevelingen die worden gedaan in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workloads](dbms_guide_general.md). 
 ### <a name="other"></a>Overige
 [Overwegingen voor azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) beschrijft andere belang rijke concepten met betrekking tot implementaties van vm's met Oracle database, inclusief Azure-beschikbaarheids sets en SAP-bewaking.
@@ -464,13 +464,13 @@ Minimale configuratie:
 
 | Onderdeel | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/\<sid >/origlogaA & mirrlogB | Premium | Geen | Niet nodig |
-| /Oracle/\<sid >/origlogaB & mirrlogA | Premium | Geen | Niet nodig |
-| /Oracle/\<-sid >/sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
-| /Oracle/\<-sid >/oraarch | Standard | Geen | Niet nodig |
+| /Oracle/\<SID >/origlogaA & mirrlogB | Premium | None | Niet nodig |
+| /Oracle/\<SID >/origlogaB & mirrlogA | Premium | None | Niet nodig |
+| /Oracle/\<SID >/sapdata1... nvt | Premium | Alleen-lezen | Kan worden gebruikt |
+| /Oracle/\<SID >/oraarch | Standard | None | Niet nodig |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | | Niet nodig |
 
-Moeten ontdaan LVM Stripe of MDADM met RAID0
+\* Verwijderen: LVM Stripe of MDADM met RAID0
 
 De schijf selectie voor het hosten van het online opnieuw uitvoeren van Oracle-logboeken moet worden aangestuurd door IOPS-vereisten. Het is mogelijk om alle sapdata1 op te slaan... n (tablespaces) op één gekoppelde schijf zolang het volume, IOPS en door Voer voldoen aan de vereisten. 
 
@@ -478,18 +478,18 @@ Configuratie van prestaties:
 
 | Onderdeel | Schijf | Caching | Moeten ontdaan |
 | --- | ---| --- | --- |
-| /Oracle/\<-sid >/origlogaA | Premium | Geen | Kan worden gebruikt  |
-| /Oracle/\<-sid >/origlogaB | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid >/mirrlogAB | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid >/mirrlogBA | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid >/sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
-| /Oracle/\<sid >/sapdata (n + 1) * | Premium | Geen | Kan worden gebruikt |
-| /Oracle/\<-sid >/oraarch * | Premium | Geen | Niet nodig |
+| /Oracle/\<SID >/origlogaA | Premium | None | Kan worden gebruikt  |
+| /Oracle/\<SID >/origlogaB | Premium | None | Kan worden gebruikt |
+| /Oracle/\<SID >/mirrlogAB | Premium | None | Kan worden gebruikt |
+| /Oracle/\<SID >/mirrlogBA | Premium | None | Kan worden gebruikt |
+| /Oracle/\<SID >/sapdata1... nvt | Premium | Alleen-lezen | Aanbevolen  |
+| /Oracle/\<SID >/sapdata (n + 1) * | Premium | None | Kan worden gebruikt |
+| /Oracle/\<SID >/oraarch * | Premium | None | Niet nodig |
 | Oracle Home, saptrace,... | Besturingssysteemschijf | Niet nodig |
 
-Moeten ontdaan LVM Stripe of MDADM met RAID0
+\* Verwijderen: LVM Stripe of MDADM met RAID0
 
-\* (n + 1): hosting systeem, TEMP en ongedaan maken tablespaces: Het I/O-patroon van systeem-en ongedaan maken tablespaces verschillen van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
+\* (n + 1): hostsysteem, TEMP en ongedaan maken van tablespaces: het I/O-patroon van systeem en tablespaces ongedaan maken verschilt van andere tablespaces-hosting toepassings gegevens. Caching is niet de beste optie voor het uitvoeren van de prestaties van het systeem en het ongedaan maken van tablespaces.
 
 \* oraarch: opslag groep is niet nodig van het prestatie punt van de weer gave.
 
@@ -512,7 +512,7 @@ Oracle Data Guard wordt ondersteund voor hoge Beschik baarheid en herstel na noo
 
 Nood herstel aspecten voor Oracle-data bases in Azure worden weer gegeven in het artikel [herstel na nood gevallen voor een Oracle database 12c-data base in een Azure-omgeving](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Versnelde netwerken
+### <a name="accelerated-networking"></a>Versneld netwerken
 Ondersteuning voor versneld Azure-netwerken in Oracle Linux wordt geboden met Oracle Linux 7 Update 5 (Oracle Linux 7,5). Als u niet kunt upgraden naar de nieuwste versie van Oracle Linux 7,5, is er mogelijk een tijdelijke oplossing met behulp van de RedHat-compatibele kernel (RHCK) in plaats van de Oracle UEK-kernel. 
 
 Het gebruik van de RHEL-kernel binnen Oracle Linux wordt ondersteund volgens SAP Note [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Voor versneld Azure-netwerken moet de minimale versie van de RHCKL-kernel 3.10.0-862.13.1. EL7 zijn. Als u de UEK-kernel in Oracle Linux gebruikt in combi natie met [Azure versneld netwerken](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), moet u Oracle UEK kernel versie 5 gebruiken.

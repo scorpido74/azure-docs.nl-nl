@@ -22,23 +22,23 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 | Resource | Standaardlimiet | Maximumaantal |
 | -------- | ------------- | ------------- |
 | Gegevens fabrieken in een Azure-abonnement | 50 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Het totale aantal entiteiten, zoals pijp lijnen, gegevens sets, triggers, gekoppelde services en Integration runtimes, binnen een data factory | 5,000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Het totale aantal entiteiten, zoals pijp lijnen, gegevens sets, triggers, gekoppelde services en Integration runtimes, binnen een data factory | 5\.000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Totale CPU-kernen voor Azure-SSIS-integratie-runtime onder één abonnement | 256 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige pijplijn uitvoeringen per data factory die worden gedeeld tussen alle pijp lijnen in de fabriek | 10.000  | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige uitvoeringen van externe activiteiten per abonnement per [Azure Integration runtime regio](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>Externe activiteiten worden beheerd op integratie-runtime, maar worden uitgevoerd op gekoppelde services, waaronder Databricks, opgeslagen procedure, HDInsights en andere.</small> | 3000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige uitvoeringen van pijplijn activiteit per abonnement per [Azure Integration runtime regio](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location) <br><small>Pijplijn activiteiten worden uitgevoerd op Integration runtime, inclusief lookup, GetMetadata en DELETE.</small>| 1000 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gelijktijdige ontwerp bewerkingen per abonnement per [Azure Integration runtime regio](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br>@no__t-test verbinding 0Including, blader door mappen lijst en tabel lijst, Bekijk de gegevens. | 200 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gelijktijdige ontwerp bewerkingen per abonnement per [Azure Integration runtime regio](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)<br><small>, waaronder test verbinding, bladeren in mappen lijst en tabel lijst, voor beeld van gegevens. | 200 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige gegevens integratie-eenheden<sup>1</sup> verbruik per abonnement per [Azure Integration runtime regio](../articles/data-factory/concepts-integration-runtime.md#integration-runtime-location)| Regio groep 1<sup>2</sup>: 6000<br>Regio groep 2<sup>2</sup>: 3000<br>Regio groep 3<sup>2</sup>: 1500 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximum aantal activiteiten per pijp lijn, inclusief binnenste activiteiten voor containers | 40 | 40 |
 | Maximum aantal gekoppelde integratie-Runtimes dat kan worden gemaakt met één zelf-hostende Integration runtime | 100 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Maximum aantal para meters per pijp lijn | 50 | 50 |
-| ForEach-items | 100,000 | 100,000 |
+| ForEach-items | 100.000 | 100.000 |
 | Parallelle uitvoering van ForEach | 20 | 50 |
 | Tekens per expressie | 8\.192 | 8\.192 |
 | Mini maal tumblingvenstertriggers-venster activerings interval | 15 min | 15 min |
 | Maximale time-out voor de uitvoering van pijplijn activiteit | 7 dagen | 7 dagen |
 | Bytes per object voor pijplijn objecten<sup>3</sup> | 200 KB | 200 KB |
-| Bytes per object voor gegevensset en gekoppelde service objecten<sup>3</sup> | 100 KB | 2\.000 KB |
+| Bytes per object voor gegevensset en gekoppelde service objecten<sup>3</sup> | 100 kB | 2\.000 KB |
 | Uitvoering van gegevens integratie-eenheden<sup>1</sup> per Kopieer activiteit | 256 | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | API-aanroepen schrijven | 1200/h<br/><br/> Deze limiet wordt opgelegd door Azure Resource Manager, niet Azure Data Factory. | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | API-aanroepen lezen | 12500/h<br/><br/> Deze limiet wordt opgelegd door Azure Resource Manager, niet Azure Data Factory. | [Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
@@ -53,7 +53,7 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 
 <sup>2</sup> [Azure Integration runtime](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) is [wereld wijd beschikbaar](https://azure.microsoft.com/global-infrastructure/services/) om te zorgen voor de naleving van gegevens, de efficiëntie en verminderde netwerk kosten voor uitgaand verkeer. 
 
-| Regio groep | Regions | 
+| Regio groep | Regio's | 
 | -------- | ------ |
 | Regio groep 1 | Central VS, VS-Oost, Oost-VS2, Europa-noord, Europa-west, VS-West, VS-West 2 |
 | Regio groep 2 | Australië-oost, Australië-zuidoost, Brazilië-zuid, Centraal-India, Japan-Oost, Northcentral VS, Southcentral VS, Zuidoost-Azië, VS-West-Centraal |
@@ -67,10 +67,10 @@ Azure Data Factory is een service met meerdere tenants met de volgende standaard
 | --- | --- | --- |
 | Gegevens fabrieken in een Azure-abonnement |50 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Pijp lijnen in een data factory |2,500 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
-| Gegevens sets binnen een data factory |5,000 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
+| Gegevens sets binnen een data factory |5\.000 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gelijktijdige segmenten per gegevensset |10 |10 |
 | Bytes per object voor pijplijn objecten<sup>1</sup> |200 KB |200 KB |
-| Bytes per object voor gegevens verzameling en gekoppelde service objecten<sup>1</sup> |100 KB |2\.000 KB |
+| Bytes per object voor gegevens verzameling en gekoppelde service objecten<sup>1</sup> |100 kB |2\.000 KB |
 | Azure HDInsight-cluster kernen op aanvraag in een abonnement<sup>2</sup> |60 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Gegevens verplaatsings eenheden voor Clouds per Kopieer activiteit<sup>3</sup> uitvoeren |32 |[Neem contact op met ondersteuning](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/). |
 | Aantal pogingen voor het uitvoeren van pijplijn activiteit |1000 |MaxInt (32 bits) |

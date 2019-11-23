@@ -53,7 +53,7 @@ Er zijn twee algemene manieren om een beheerde toepassing te maken met **identit
 
 ### <a name="using-createuidefinition"></a>CreateUIDefinition gebruiken
 
-Een beheerde toepassing kan met beheerde identiteit worden geconfigureerd via de [CreateUIDefinition. json](./create-uidefinition-overview.md). In de [sectie outputs](./create-uidefinition-overview.md#outputs)kan de sleutel `managedIdentity` worden gebruikt voor het overschrijven van de identiteits eigenschap van de sjabloon voor beheerde toepassingen. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd met behulp van CreateUIDefinition-elementen om de gebruiker te vragen om invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
+Een beheerde toepassing kan met beheerde identiteit worden geconfigureerd via de [CreateUIDefinition. json](./create-uidefinition-overview.md). In de [sectie outputs](./create-uidefinition-overview.md#outputs)kan de sleutel `managedIdentity` worden gebruikt voor het overschrijven van de identiteits eigenschap van de sjabloon beheerde toepassing. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd met behulp van CreateUIDefinition-elementen om de gebruiker te vragen om invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
 
 ```json
 "outputs": {
@@ -139,7 +139,7 @@ Met de CreateUIDefinition. json hierboven wordt een gebruikers ervaring gemaakt 
 
 > [!NOTE]
 > Door Marketplace beheerde toepassings sjablonen worden automatisch gegenereerd voor klanten die de Azure Portal maken.
-> Voor deze scenario's moet de uitvoer sleutel `managedIdentity` op de CreateUIDefinition worden gebruikt om de identiteit in te scha kelen.
+> Voor deze scenario's moet de `managedIdentity` uitvoer sleutel op de CreateUIDefinition worden gebruikt om de identiteit in te scha kelen.
 
 De beheerde identiteit kan ook via Azure Resource Manager sjablonen worden ingeschakeld. Met de voor beeld-onderstaande wordt de door het **systeem toegewezen** identiteit ingeschakeld voor de beheerde toepassing. Complexere identiteits objecten kunnen worden gevormd door Azure Resource Manager sjabloon parameters te gebruiken voor het leveren van invoer. Deze invoer kan worden gebruikt om beheerde toepassingen te bouwen met door de **gebruiker toegewezen identiteit**.
 
@@ -275,7 +275,7 @@ Met deze CreateUIDefinition. json wordt een gebruikers ervaring gemaakt met twee
 
 ### <a name="authoring-the-maintemplate-with-a-linked-resource"></a>De mainTemplate ontwerpen met een gekoppelde resource
 
-Naast het bijwerken van de CreateUIDefinition moet de hoofd sjabloon ook worden bijgewerkt om het door gegeven in de gekoppelde Resource-ID te accepteren. De hoofd sjabloon kan worden bijgewerkt om de nieuwe uitvoer te accepteren door een nieuwe para meter toe te voegen. Omdat de uitvoer van @no__t 0 de waarde op de gegenereerde sjabloon overschrijft, wordt deze niet door gegeven aan de hoofd sjabloon en mag niet worden opgenomen in de sectie para meters.
+Naast het bijwerken van de CreateUIDefinition moet de hoofd sjabloon ook worden bijgewerkt om het door gegeven in de gekoppelde Resource-ID te accepteren. De hoofd sjabloon kan worden bijgewerkt om de nieuwe uitvoer te accepteren door een nieuwe para meter toe te voegen. Omdat de `managedIdentity` uitvoer overschrijft de waarde van de gegenereerde sjabloon voor beheerde toepassing, wordt deze niet door gegeven aan de hoofd sjabloon en mag niet worden opgenomen in de sectie para meters.
 
 Een voor beeld van een hoofd sjabloon waarmee het netwerk profiel wordt ingesteld op een bestaande netwerk interface van de CreateUIDefinition.
 
@@ -319,7 +319,7 @@ Zodra het beheerde toepassings pakket is gemaakt, kan de beheerde toepassing wor
 
 ## <a name="accessing-the-managed-identity-token"></a>Toegang tot het beheerde identiteits token
 
-Het token van de beheerde toepassing is nu toegankelijk via de API van de `listTokens` van de Publisher-Tenant. Een voorbeeld aanvraag kan er als volgt uitzien:
+Het token van de beheerde toepassing is nu toegankelijk via de `listTokens`-API van de Publisher-Tenant. Een voorbeeld aanvraag kan er als volgt uitzien:
 
 ``` HTTP
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Solutions/applications/{applicationName}/listTokens?api-version=2018-09-01-preview HTTP/1.1
@@ -334,10 +334,10 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 Para meters van aanvraag hoofdtekst:
 
-Parameter | Verplicht | Beschrijving
+Parameter | Vereist | Beschrijving
 ---|---|---
-authorizationAudience | *geen* | De App-ID-URI van de doel resource. Het is ook de `aud` (publiek) claim van het uitgegeven token. De standaard waarde is https://management.azure.com/
-userAssignedIdentities | *geen* | De lijst met door de gebruiker toegewezen beheerde identiteiten voor het ophalen van een token voor. Als niet wordt opgegeven, retourneert `listTokens` het token voor de door het systeem toegewezen beheerde identiteit.
+authorizationAudience | *no* | De App-ID-URI van de doel resource. Het is ook de claim van de `aud` (doel groep) van het gepubliceerde token. De standaard waarde is https://management.azure.com/
+userAssignedIdentities | *no* | De lijst met door de gebruiker toegewezen beheerde identiteiten voor het ophalen van een token voor. Als niet wordt opgegeven, retourneert `listTokens` het token voor de door het systeem toegewezen beheerde identiteit.
 
 
 Een voor beeld van een antwoord kan er als volgt uitzien:
@@ -369,7 +369,7 @@ access_token | Het aangevraagde toegangs token.
 expires_in | Het aantal seconden dat het toegangs token geldig is.
 expires_on | De time span op het moment dat het toegangs token verloopt. Dit wordt weer gegeven als het aantal seconden vanaf epoche.
 not_before | De time span op het moment dat het toegangs token van kracht wordt. Dit wordt weer gegeven als het aantal seconden vanaf epoche.
-authorizationAudience | De `aud` (doel groep) waarvoor het toegangs token is aangevraagd. Dit is hetzelfde als de waarde in het `listTokens`-verzoek.
+authorizationAudience | De `aud` (doel groep) waarvoor het toegangs token is aangevraagd. Dit is hetzelfde als wat er is gegeven in de `listTokens` aanvraag.
 resourceId | De Azure-Resource-ID voor het gepubliceerde token. Dit is de ID van de beheerde toepassing of de door de gebruiker toegewezen identiteits-ID.
 token_type | Het type van het token.
 

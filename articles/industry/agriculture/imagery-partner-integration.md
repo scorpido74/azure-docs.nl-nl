@@ -40,7 +40,7 @@ U moet de volgende referenties gebruiken in de drone-partner software voor het k
 
 De Api's bevatten technische documentatie voor Swagger. Raadpleeg [Swagger](https://aka.ms/FarmBeatsDatahubSwagger) voor informatie over de api's en bijbehorende aanvragen/antwoorden.
 
-## <a name="authentication"></a>Verificatie
+## <a name="authentication"></a>Authentication
 
 FarmBeats maakt gebruik van de [Active Directory](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization)van Microsoft Azure. Azure App Service biedt ingebouwde ondersteuning voor verificatie en autorisatie. 
 

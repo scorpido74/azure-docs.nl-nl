@@ -45,7 +45,7 @@ Hier volgt een snelle vergelijking:
 || Machine Learning Studio (klassiek) | Azure Machine Learning |
 |---| --- | --- |
 | Interface slepen en neerzetten | Ja | Ja, [Azure machine learning Designer (preview-versie)](../service/concept-designer.md) |
-| Probeer | Schaalbaar (10-GB training-gegevens limiet) | Schalen met Compute target |
+| Experiment | Schaalbaar (10-GB training-gegevens limiet) | Schalen met Compute target |
 | Modules voor de interface voor slepen en neerzetten | Allerlei | Initiële set populaire [modules](../algorithm-module-reference/module-reference.md)|
 |Doelen van de trainings compute| Eigen reken doel, alleen CPU-ondersteuning| Ondersteunt Azure Machine Learning Compute (GPU of CPU) en virtuele notebook-Vm's.<br/>([Andere reken processen die worden ondersteund in SDK](../service/concept-compute-target.md#train))|
 |Berekenings doelen afstellen| De indeling van de oorspronkelijke webservice, niet aanpasbaar |  Azure Kubernetes-service en AML-compute <br/>([Andere reken processen die worden ondersteund in SDK](../service/how-to-deploy-and-where.md)) |

@@ -34,7 +34,7 @@ Het algemene proces is:
 
 Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitvoert.
 
-## <a name="create-an-activity-log-alert-administrative"></a>Een waarschuwing voor een activiteiten logboek maken: Administratief
+## <a name="create-an-activity-log-alert-administrative"></a>Een waarschuwing voor een activiteiten logboek maken: beheer
 
 1.  Selecteer in de Azure Portal **een resource maken** in de linkerbovenhoek.
 
@@ -111,7 +111,7 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
 
 12. Configureer de micro soft teams-actie. De **Logic apps Designer** vraagt u om te verifiëren bij uw Office 365-account. Kies de **Team-ID** en de **kanaal-id** waarnaar het bericht moet worden verzonden.
 
-13. Configureer het bericht met een combi natie van statische tekst en verwijzingen naar de \<fields @ no__t-1 in de dynamische inhoud. Kopieer en plak de volgende tekst in het **bericht** veld:
+13. Configureer het bericht met een combi natie van statische tekst en verwijzingen naar de \<velden\> in de dynamische inhoud. Kopieer en plak de volgende tekst in het **bericht** veld:
 
     ```text
       Activity Log Alert: <eventSource>
@@ -120,12 +120,12 @@ Het proces is vergelijkbaar als u wilt dat de logische app een andere actie uitv
       resourceId: <resourceId>
     ```
 
-    Zoek en vervang de \<fields @ no__t-1 door de tags met dynamische inhoud met dezelfde naam.
+    Zoek en vervang vervolgens de \<velden\> met dynamische inhouds Tags met dezelfde naam.
 
     > [!NOTE]
     > Er zijn twee dynamische velden met de naam **status**. Voeg beide velden toe aan het bericht. Gebruik het veld in de **activityLog** -eigenschappen verzameling en verwijder het andere veld. Beweeg de muis aanwijzer over het veld **status** om de volledig gekwalificeerde veld verwijzing te zien, zoals wordt weer gegeven in de volgende scherm afbeelding:
 
-    actie ![Microsoft: Een bericht plaatsen @ no__t-0 @ no__t-1Microsoft-teams actie: Een bericht plaatsen @ no__t-0
+    ![Micro soft teams-actie: een bericht plaatsen](media/action-groups-logic-app/teams-action-post-message.png "micro soft teams actie: een bericht plaatsen")
 
 14. Selecteer op de pagina **Logic apps Designer**de optie **Opslaan** om uw logische app op te slaan.
 
@@ -196,7 +196,7 @@ Azure Service Health vermeldingen maken deel uit van het activiteiten logboek. H
 
    1. In de voor waarde **Indien waar** , volg de instructies in stap 11 tot en met 13 in [een waarschuwing voor het maken van een activiteiten logboek](#create-an-activity-log-alert-administrative) om de micro soft teams-actie toe te voegen.
 
-   1. Definieer het bericht met behulp van een combi natie van HTML en dynamische inhoud. Kopieer en plak de volgende inhoud in het veld **bericht** . Vervang de velden `[incidentType]`, `[trackingID]`, `[title]` en `[communication]` door dynamische inhouds Tags met dezelfde naam:
+   1. Definieer het bericht met behulp van een combi natie van HTML en dynamische inhoud. Kopieer en plak de volgende inhoud in het veld **bericht** . De velden `[incidentType]`, `[trackingID]`, `[title]`en `[communication]` vervangen door dynamische inhouds Tags met dezelfde naam:
 
        ```html
        <p>

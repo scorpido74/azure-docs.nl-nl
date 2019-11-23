@@ -20,7 +20,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/02/2019
 ms.locfileid: "71828366"
 ---
-# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Quickstart: Een virtuele SQL Server 2017-machine voor Windows maken in Azure Portal
+# <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Snelstartgids: Een virtuele SQL Server 2017-machine voor Windows maken in Azure Portal
 
 > [!div class="op_single_selector"]
 > * [Windows](quickstart-sql-vm-create-portal.md)
@@ -43,7 +43,7 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 1. Selecteer **Azure SQL** in het linkermenu van de Azure Portal. Als **Azure SQL** niet voor komt in de lijst, selecteert u **alle services**en typt u vervolgens *Azure SQL* in het zoekvak.
 1. Selecteer **+ toevoegen** om de **optie pagina SQL-implementatie selecteren** te openen. U kunt aanvullende informatie weer geven door **Details weer geven** te selecteren op de tegel **virtuele SQL-machines** .
-1. Selecteer de installatiekopie met de naam **Gratis licentie voor SQL Server: SQL Server 2017-ontwikkelaar in Windows Server 2016 @ no__t-0-installatie kopie in de vervolg keuzelijst.
+1. Selecteer de **gratis SQL Server licentie: SQL Server 2017 Developer in Windows Server 2016** installatie kopie in de vervolg keuzelijst.
 
    ![Nieuw zoekvenster](./media/quickstart-sql-vm-create-portal/select-sql-2017-vm-image.png)
 
@@ -57,20 +57,20 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 
 1. Selecteer uw Azure-abonnement in de sectie **Project Details** en selecteer vervolgens **nieuwe maken** om een nieuwe resource groep te maken. Typ _SQLVM-RG_ voor de naam.
 
-   ![Subscription](media/quickstart-sql-vm-create-portal/basics-project-details.png)
+   ![Abonnement](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
 1. Onder **Details van exemplaar**:
     1. Typ _SQLVM_ voor de **naam van de virtuele machine**. 
     1. Kies een locatie voor uw **regio**. 
     1. Voor het doel van deze Snelstartgids moet u de **beschikbaarheids opties** instellen op _geen infra structuur-redundantie vereist_. Zie [Beschik baarheid](../../windows/availability.md)voor meer informatie over beschikbaarheids opties. 
-    1. Selecteer_in de lijst met **installatie kopieën** gratis SQL Server licentie: SQL Server 2017-ontwikkelaar op Windows Server_2016. 
+    1. Selecteer in de lijst met **installatie kopieën** _gratis SQL Server licentie: SQL Server 2017 Developer op Windows Server 2016_. 
     1. Kies voor het wijzigen van de **grootte** voor de **grootte** van de virtuele machine en selecteer de **a2 Basic** -aanbieding. Zorg ervoor dat u uw resources opschoont nadat u klaar bent met deze om te voor komen dat er onverwachte kosten in rekening worden gebracht. 
 
-   ![Exemplaardetails](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
+   ![Exemplaar Details](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
 1. Geef onder **Administrator-account**een gebruikers naam op, zoals _azureuser_ en een wacht woord. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).
 
-   ![Beheerdersaccount](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
+   ![Administrator-account](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
 1. Onder **Binnenkomende poort regels**kiest u **geselecteerde poorten toestaan** en selecteert u vervolgens **RDP (3389)** in de vervolg keuzelijst. 
 
@@ -80,7 +80,7 @@ Geef op het tabblad **basis beginselen** de volgende informatie op:
 
 Configureer op het tabblad **SQL Server instellingen** de volgende opties:
 
-1. Onder **Beveiliging & netwerken**selecteert u _openbaar (Internet_) voor **SQL-connectiviteit** en wijzigt u de `1401` poort om te voor komen dat u een bekend poort nummer gebruikt in het open bare scenario. 
+1. Onder **beveiliging & netwerken**selecteert u _openbaar (Internet_) voor **SQL-connectiviteit** en wijzigt u de poort in `1401` om te voor komen dat u een bekend poort nummer gebruikt in het open bare scenario. 
 1. Selecteer **inschakelen**onder **SQL-verificatie**. De SQL-aanmeldingsgegevens zijn ingesteld op dezelfde combinatie van gebruikersnaam en wachtwoord als u voor de virtuele machine hebt geconfigureerd. Gebruik de standaard instelling voor de [**integratie van Azure Key Vault**](virtual-machines-windows-ps-sql-keyvault.md). De **opslag configuratie** is niet beschikbaar voor de basis installatie kopie van SQL Server VM, maar u kunt meer informatie vinden over de beschik bare opties voor andere installatie kopieën bij de [opslag configuratie](virtual-machines-windows-sql-server-storage-configuration.md#new-vms).  
 
    ![Beveiligings instellingen van SQL Server](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
@@ -133,7 +133,7 @@ Als het niet nodig is dat de virtuele SQL-machine continu wordt uitgevoerd, kunt
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een virtuele machine van SQL Server 2017 gemaakt in de Azure Portal. Raadpleeg het volgende artikel voor meer informatie over hoe u uw gegevens migreert naar de nieuwe SQL-server.
+In deze Quick Start hebt u een virtuele machine van SQL Server 2017 gemaakt in de Azure Portal. Raadpleeg het volgende artikel voor meer informatie over hoe u uw gegevens naar de nieuwe SQL-server migreert.
 
 > [!div class="nextstepaction"]
 > [Een database migreren naar een SQL-VM](virtual-machines-windows-migrate-sql.md)

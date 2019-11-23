@@ -27,7 +27,7 @@ ms.locfileid: "72388957"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/signup?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="summary"></a>Samenvatting
 In deze zelf studie voegt u verificatie toe aan het ToDoList Quick start-project op Android met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie [aan de slag met Mobile apps] , die u eerst moet volt ooien.
@@ -39,11 +39,11 @@ In deze zelf studie voegt u verificatie toe aan het ToDoList Quick start-project
 
 Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app. Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid. In deze zelf studie gebruiken we het URL-schema _AppName_ in. U kunt echter elk gewenst URL-schema gebruiken. Deze moet uniek zijn voor uw mobiele toepassing. De omleiding aan de server zijde inschakelen:
 
-1. Selecteer uw App Service in de [Azure-portal].
+1. Selecteer uw App Service in de [Azure Portal].
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
-3. Voer in de **toegestane externe omleidings-url's**`appname://easyauth.callback` in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+3. In de **toegestane externe omleidings-url's**voert u `appname://easyauth.callback`in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 4. Klik op **OK**.
 
@@ -72,7 +72,7 @@ Nu u deze basis verificatie-zelf studie hebt voltooid, kunt u door gaan met een 
 * [Push meldingen toevoegen aan uw Android-app](app-service-mobile-android-get-started-push.md).
   Meer informatie over het configureren van uw Mobile Apps back-end voor het gebruik van Azure notification hubs voor het verzenden van push meldingen.
 * [Offline synchronisatie inschakelen voor uw Android-app](app-service-mobile-android-get-started-offline-data.md).
-  Meer informatie over het toevoegen van offline ondersteuning aan uw app met behulp van een Mobile Apps back-end. Met offline synchronisatie kunnen gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is.
+  Meer informatie over het toevoegen van offline ondersteuning aan uw app met behulp van een Mobile Apps back-end. Met offline synchronisatie kunnen gebruikers met een mobiele app communiceren&mdash;gegevens weer geven, toevoegen of wijzigen&mdash;zelfs wanneer er geen netwerk verbinding is.
 
 <!-- Anchors. -->
 [Register your app for authentication and configure Mobile Services]: #register
@@ -85,4 +85,4 @@ Nu u deze basis verificatie-zelf studie hebt voltooid, kunt u door gaan met een 
 
 <!-- URLs. -->
 [Aan de slag met Mobile Apps]: app-service-mobile-android-get-started.md
-[Azure-portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

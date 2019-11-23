@@ -30,7 +30,7 @@ Gebruik de Azure Portal om een ondersteunings ticket te openen met de klanten se
     1. Selecteer uw abonnement. 
     1. Onder **service**selecteert u **Azure FXT Edge-bestands**server. Mogelijk moet u op het filter besturings element **alle services** klikken om het te vinden. 
     1. Voer een **samen vatting** in en kies het **probleem type**. 
-    ![Screenshot van een leeg formulier voor een ondersteunings aanvraag @ no__t-1 
+    ![scherm opname van een leeg formulier voor ondersteunings aanvraag](media/fxt-support-populated.png) 
     1. Klik op **volgende** om door te gaan. 
 1. Voeg op het tabblad **Details** meer informatie over het probleem en contact met u op te nemen. U kunt een bestand uploaden dat betrekking heeft op het probleem. 
 1. In **controleren en maken**, Controleer de informatie en klik op de knop **maken** om uw aanvraag in te dienen.

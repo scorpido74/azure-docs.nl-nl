@@ -79,7 +79,7 @@ U wilt toegang verlenen aan uw peer, Joe, de mogelijkheid om ondersteunings tick
 
 3. Nadat u de rolnaam hebt geselecteerd, klikt u op gebruikers toevoegen en voert u de e-mail referenties van de Joe in. Klik op Selecteren.
 
-    ![Gebruikers toevoegen](./media/create-manage-support-requests-using-access-control/add-users.png)
+    ![Add users (Gebruikers toevoegen)](./media/create-manage-support-requests-using-access-control/add-users.png)
 
 4. Klik op OK om door te gaan
 
@@ -95,7 +95,7 @@ U wilt toegang verlenen aan uw peer, Joe, de mogelijkheid om ondersteunings tick
 
     ![Nieuw ondersteuningsverzoek](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 
-8. Als u op alle ondersteunings aanvragen hebt geklikt, wordt de lijst met ondersteunings aanvragen weer gegeven die zijn gemaakt voor dit abonnement @no__t 0Case detail weergave @ no__t-1
+8. Als u op alle ondersteunings aanvragen hebt geklikt, ziet u de lijst met ondersteunings aanvragen die voor dit abonnement zijn gemaakt ![weer gave Details van de case](./media/create-manage-support-requests-using-access-control/case-details-view.png)
 
 ## <a name="remove-support-request-access-in-the-azure-portal"></a>Toegang tot ondersteunings aanvragen verwijderen in de Azure Portal
 

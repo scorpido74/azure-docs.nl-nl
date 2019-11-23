@@ -57,7 +57,7 @@ Houd er rekening mee dat er een preview-ervaring is in de portal voor app-regist
    ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799285-2d031b00-a173-11e9-9d28-ac07a7ae894a.png)
 
 2. Selecteer **platform
-   toevoegen**![installatie kopie](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
+   toevoegen** ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799366-4c01ad00-a173-11e9-934f-f02e26c9429e.png)
 
 3. Wanneer de lijst met platformen wordt ondersteund, selecteert u **IOS** -
    ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799411-60de4080-a173-11e9-9dcc-d39a45826d42.png)
@@ -66,7 +66,7 @@ Houd er rekening mee dat er een preview-ervaring is in de portal voor app-regist
    ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799477-7eaba580-a173-11e9-9f8b-431f5b09344e.png)
 
 5. De omleidings-URI wordt voor u berekend.
-   ![installatie kopie](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
+   ![image](https://user-images.githubusercontent.com/13203188/60799538-9e42ce00-a173-11e9-860a-015a1840fd19.png)
 
 Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via het manifest van de toepassing. De aanbevolen indeling is als volgt:
 
@@ -76,7 +76,7 @@ Als u de omleidings-URI liever hand matig wilt configureren, kunt u dit doen via
 
 ### <a name="username-password"></a>Gebruikers naam wacht woord
 
-Als uw app alleen gebruikmaakt van de gebruikers naam en het wacht woord, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom doet inderdaad een afronding op het micro soft Identity platform v 2.0-eind punt en uw toepassing wordt niet teruggebeld op een specifieke URI. U moet echter wel uitdrukken dat uw toepassing een open bare client toepassing is. Deze configuratie wordt bereikt door naar de sectie **verificatie** voor uw toepassing te gaan en kies **Ja**in de Subsectie **Geavanceerde instellingen** om de **toepassing te behandelen als een open bare client** (in de **standaard instelling alinea type-client** )
+Als uw app alleen gebruikmaakt van de gebruikers naam en het wacht woord, hoeft u geen omleidings-URI voor uw toepassing te registreren. Deze stroom doet inderdaad een afronding op het micro soft Identity platform v 2.0-eind punt en uw toepassing wordt niet teruggebeld op een specifieke URI. U moet echter wel uitdrukken dat uw toepassing een open bare client toepassing is. Deze configuratie wordt bereikt door naar de sectie **verificatie** voor uw toepassing te gaan en kies **Ja**in de Subsectie **Geavanceerde instellingen** om de **toepassing te behandelen als een open bare client** (in de standaard alinea van het **type client** )
 
 ## <a name="api-permissions"></a>API-machtigingen
 

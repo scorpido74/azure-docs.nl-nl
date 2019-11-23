@@ -19,7 +19,7 @@ Voordat u een nieuw gemaakt Azure FXT Edge-cluster gebruikt, moet u verschillend
 
 In deze zelf studie worden de netwerk instellingen beschreven die u mogelijk moet aanpassen voor een nieuw cluster. 
 
-U leert het volgende: 
+U leert: 
 
 > [!div class="checklist"]
 > * Welke netwerk instellingen moeten mogelijk worden bijgewerkt na het maken van een cluster
@@ -45,7 +45,7 @@ Lees voor meer informatie over netwerk instellingen voor het cluster [netwerk se
 
 * Down loads van Active Directory en naam/groeps naam configureren (indien nodig)
 
-  Als uw netwerkhosts Active Directory of een ander type externe adreslijst service gebruiken, moet u de configuratie van de Directory Services van het cluster aanpassen om in te stellen hoe het cluster gebruikers naam en groeps informatie downloadt. Lees **cluster** > **Directory Services** in de cluster configuratie handleiding voor meer informatie.
+  Als uw netwerkhosts Active Directory of een ander type externe adreslijst service gebruiken, moet u de configuratie van de Directory Services van het cluster aanpassen om in te stellen hoe het cluster gebruikers naam en groeps informatie downloadt. Lees de **cluster** - > **Directory Services** in de cluster configuratie handleiding voor meer informatie.
 
   Een AD-server is vereist als u SMB-ondersteuning wilt. Configureer AD voordat u SMB gaat instellen.
 
@@ -74,9 +74,9 @@ Het FXT Edge-bestands cluster maakt gebruik van X. 509-certificaten voor deze fu
 
 * Voor het controleren van server certificaten van cloud providers
 
-Als u certificaten moet uploaden naar het cluster, gebruikt u de pagina instellingen voor **cluster** > -**certificaten** . Meer informatie vindt u op de pagina [cluster > certificaten](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) van de hand leiding voor cluster configuratie.
+Als u certificaten moet uploaden naar het cluster, gebruikt u de pagina **cluster** > -instellingen voor **certificaten** . Meer informatie vindt u op de pagina [cluster > certificaten](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_certificates.html) van de hand leiding voor cluster configuratie.
 
-Als u de communicatie van Cluster beheer wilt versleutelen, gebruikt u de pagina **cluster** > **algemene installatie** -instellingen om te selecteren welk certificaat moet worden gebruikt voor administratieve SSL.
+Als u de communicatie van Cluster beheer wilt versleutelen, gebruikt u de pagina **cluster** > **algemene installatie** -instellingen om te selecteren welk certificaat moet worden gebruikt voor beheer-SSL.
 
 > [!Note] 
 > Toegangs sleutels voor Cloud Services worden opgeslagen via de pagina configuratie van **Cloud referenties** . In het gedeelte [een kern bestand toevoegen](fxt-add-storage.md#add-a-core-filer) hierboven ziet u een voor beeld. Lees de sectie [Cloud referenties](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_cloud_credentials.html) voor cluster configuratie handleiding voor meer informatie. 
@@ -105,13 +105,14 @@ Voor optimale prestaties kunt u uw DNS-server configureren voor het afhandelen v
 
 Er wordt aan de linkerkant een cluster-vserver weer gegeven en IP-adressen worden weer gegeven in het midden en aan de rechter kant. Configureer elk client toegangs punt met een record en pointers zoals geïllustreerd.
 
-@no__t Round Robin DNS diagram-gedetailleerde ALT-tekst koppeling volgt afbeelding @ no__t-1[gedetailleerde beschrijving van tekst](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html)
+![Cluster Round-Robin DNS diagram-gedetailleerde ALT-tekst koppeling volgt de afbeelding](media/fxt-cluster-config/fxt-rrdns-diagram.png) 
+[gedetailleerde beschrijving](https://azure.github.io/Avere/legacy/Azure-FXT-EdgeFilerDNSconfiguration-alt-text.html) van de tekst
 
 Elk IP-adres dat aan de client is gericht, moet een unieke naam hebben voor intern gebruik door het cluster. (In dit diagram worden de IP-adressen van de client de naam VS1-client-IP-* voor duidelijkheid, maar in productie moet u waarschijnlijk een beknoptere, zoals client *) gebruiken.
 
 Clients koppelen het cluster met de naam vserver als server argument. 
 
-Wijzig het ``named.conf``-bestand van de DNS-server om de cyclische volg orde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschik bare waarden worden gerecycled. Voeg een instructie toe zoals de volgende:
+Wijzig het ``named.conf``-bestand van uw DNS-server om de cyclische volg orde voor query's naar uw vserver in te stellen. Deze optie zorgt ervoor dat alle beschik bare waarden worden gerecycled. Voeg een instructie toe zoals de volgende:
 
 ```
 options {
@@ -137,7 +138,7 @@ update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
 
 ### <a name="enable-dns-in-the-cluster"></a>DNS inschakelen in het cluster 
 
-Geef de DNS-server op die het cluster gebruikt op de pagina **cluster** >  netwerk instellingen voor**beheer** . De instellingen op die pagina zijn onder andere:
+Geef de DNS-server op die door het cluster wordt gebruikt op de pagina **cluster** > netwerk instellingen voor **beheer** . De instellingen op die pagina zijn onder andere:
 
 * DNS-server adres
 * DNS-domein naam

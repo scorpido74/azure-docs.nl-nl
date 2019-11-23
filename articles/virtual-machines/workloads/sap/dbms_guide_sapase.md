@@ -313,14 +313,14 @@ In dit document worden verschillende gebieden besproken waarmee u rekening moet 
 ## <a name="specifics-to-sap-ase-on-windows"></a>Details van SAP-ASE in Windows
 Vanaf Microsoft Azure kunt u uw bestaande SAP ASE-toepassingen migreren naar Azure Virtual Machines. Met SAP ASE in een virtuele machine van Azure kunt u de total cost of ownership van de implementatie, het beheer en het onderhoud van toepassingen op bedrijfs niveau verminderen door deze toepassingen eenvoudig te migreren naar Microsoft Azure. Met SAP ASE in een virtuele machine van Azure kunnen beheerders en ontwikkel aars nog steeds gebruikmaken van dezelfde hulpprogram ma's voor ontwikkeling en beheer die on-premises beschikbaar zijn.
 
-De Sla's voor Azure Virtual Machines vindt u hier:<https://azure.microsoft.com/support/legal/sla/virtual-machines>
+U kunt de service overeenkomsten voor Azure Virtual Machines hier vinden: <https://azure.microsoft.com/support/legal/sla/virtual-machines>
 
 Microsoft Azure biedt talrijke verschillende typen virtuele machines waarmee u kleinste SAP-systemen en-landschappen kunt uitvoeren tot grote SAP-systemen en landschappen met duizenden gebruikers. SAP-beschik bare SAP'S-nummers van de verschillende SAP gecertificeerde VM Sku's vindt u in SAP-notitie [1928533].
 
 Instructies en aanbevelingen met betrekking tot het gebruik van Azure Storage, implementatie van SAP-Vm's of SAP-bewaking die zijn aangebracht in [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) is ook van toepassing op implementaties van SAP ASE.
 
 ### <a name="sap-ase-version-support"></a>Ondersteuning voor SAP ASE-versie
-SAP ondersteunt momenteel SAP ASE versie 16,0 voor gebruik met SAP Business Suite-producten. Alle updates voor SAP ASE server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP Business Suite-producten, worden uitsluitend via de SAP <https://support.sap.com/swdc>-Service Marketplace op: beschreven.
+SAP ondersteunt momenteel SAP ASE versie 16,0 voor gebruik met SAP Business Suite-producten. Alle updates voor SAP ASE server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP Business Suite-producten, worden uitsluitend via de SAP-Service Marketplace op: <https://support.sap.com/swdc>.
 
 Down load geen updates voor de SAP ASE-server of voor de JDBC-en ODBC-stuur Programma's rechtstreeks van Sybase websites. Voor gedetailleerde informatie over patches die worden ondersteund voor gebruik met SAP-producten on-premises en in azure Virtual Machines raadpleegt u de volgende SAP-opmerkingen:
 
@@ -331,9 +331,9 @@ Algemene informatie over het uitvoeren van SAP Business Suite op SAP ASE vindt u
 
 ### <a name="sap-ase-configuration-guidelines-for-sap-related-sap-ase-installations-in-azure-vms"></a>SAP ASE-configuratie richtlijnen voor SAP ASE-installaties op het gebied van Azure-Vm's
 #### <a name="structure-of-the-sap-ase-deployment"></a>Structuur van de SAP ASE-implementatie
-SAP ASE uitvoer bare bestanden moeten worden gevonden of geïnstalleerd in het systeem station van de besturingssysteem schijf van de VM (\)station c:. Normaal gesp roken hebben de meeste data bases van het SAP ASE-systeem en hulpprogram ma's geen hoge werk belasting. Daarom kunnen de systeem-en hulpprogram ma's (Master, model, saptools, sybmgmtdb, sybsystemdb) op de C:\ blijven stationsletter. 
+SAP ASE uitvoer bare bestanden moeten worden gevonden of geïnstalleerd in het systeem station van de besturingssysteem schijf van de VM (station c:\). Normaal gesp roken hebben de meeste data bases van het SAP ASE-systeem en hulpprogram ma's geen hoge werk belasting. Daarom kunnen de systeem-en hulpprogram ma's (Master, model, saptools, sybmgmtdb, sybsystemdb) op de C:\ blijven stationsletter. 
 
-Een uitzonde ring kan de tijdelijke data base zijn. in het geval van sommige SAP ERP en alle BW-workloads is mogelijk een hoger gegevens volume of een I/O-bewerkingen vereist. Volumes of IOPS die niet kunnen worden weer gegeven door de besturingssysteem schijf van de VM (\)station C:.
+Een uitzonde ring kan de tijdelijke data base zijn. in het geval van sommige SAP ERP en alle BW-workloads is mogelijk een hoger gegevens volume of een I/O-bewerkingen vereist. Volumes of IOPS die niet kunnen worden weer gegeven door de besturingssysteem schijf van de VM (station C:\).
 
 Afhankelijk van de versie van SAPInst/SWPM die wordt gebruikt om te installeren, kan de configuratie van het SAP ASE-exemplaar er als volgt uitzien:
 
@@ -370,7 +370,7 @@ Voor SAP-systemen, die gebruikmaken van SAP ASE als database platform, is de DBA
 
 Net als bij on-premises systemen zijn er verschillende stappen vereist om alle SAP NetWeaver-functionaliteit in te scha kelen die wordt gebruikt door de Webdynpro-implementatie van de DBACockpit. Volg SAP-opmerking [1245200] om het gebruik van webdynpros in te scha kelen en de vereiste items te genereren. Wanneer u de instructies in de bovenstaande opmerkingen volgt, moet u ook de Internet Communication Manager (ICM) configureren, samen met de poorten die moeten worden gebruikt voor http-en HTTPS-verbindingen. De standaard instelling voor http ziet er als volgt uit:
 
-> ICM/server_port_0 = PROCTIMEOUT = HTTP, poort = 8000, = 600, TIMEOUT = 600
+> ICM/server_port_0 = vervoerder = HTTP, poort = 8000, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > ICM/server_port_1 = door Voer = HTTPS, poort = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
@@ -384,7 +384,7 @@ en de koppelingen die zijn gegenereerd in trans actie DBACockpit zien er ongevee
 > 
 > 
 
-Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie SAP Note [773830] om te begrijpen hoe ICM de volledige gekwalificeerde hostnaam bepaalt op basis van de profiel parameters en stel para meter ICM/host_name_full expliciet in als dat nodig is.
+Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie SAP Note [773830] om te begrijpen hoe ICM de volledige gekwalificeerde hostnaam bepaalt op basis van de profiel parameters en stel para meter ICM/host_name_full expliciet in, indien nodig.
 
 Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een domainlabel definiëren. De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
 
@@ -448,7 +448,7 @@ Als u het aantal doelen wilt verg Roten om naar te schrijven, zijn er twee optie
 * Het back-updoel volume over meerdere gekoppelde schijven verwijderen om de IOPS-door Voer voor dat striped volume te verbeteren
 * Er wordt een dump configuratie op SAP ASE-niveau gemaakt, die gebruikmaakt van meer dan één doel directory om de dump te schrijven naar
 
-Het verwijderen van een schijf volume over meerdere gekoppelde schijven is besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). Raadpleeg de documentatie over de opgeslagen procedure sp_config_dump, die wordt gebruikt om de dump configuratie te maken op de [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp)voor meer informatie over het gebruik van meerdere mappen in de SAP ASE dump configuratie.
+Het verwijderen van een schijf volume over meerdere gekoppelde schijven is besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). Raadpleeg de documentatie over opgeslagen procedure sp_config_dump, die wordt gebruikt voor het maken van de dump configuratie op het [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp)voor meer informatie over het gebruik van meerdere mappen in de SAP ASE dump configuratie.
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Herstel na nood geval met Azure-Vm's
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Gegevens replicatie met SAP Sybase-replicatie server
@@ -461,9 +461,9 @@ Voor SAP ASE HADR is geen interne Load Balancer van Azure vereist en er zijn gee
 ## <a name="specifics-to-sap-ase-on-linux"></a>Details van SAP ASE in Linux
 Vanaf Microsoft Azure kunt u eenvoudig uw bestaande SAP ASE-toepassingen migreren naar Azure Virtual Machines. Met SAP ASE in een virtuele machine kunt u de total cost of ownership van de implementatie, het beheer en het onderhoud van toepassingen op bedrijfs niveau verminderen door deze toepassingen eenvoudig te migreren naar Microsoft Azure. Met SAP ASE in een virtuele machine van Azure kunnen beheerders en ontwikkel aars nog steeds gebruikmaken van dezelfde hulpprogram ma's voor ontwikkeling en beheer die on-premises beschikbaar zijn.
 
-Voor het implementeren van Azure-Vm's is het belang rijk dat u de officiële Sla's kent, die u hier kunt vinden:<https://azure.microsoft.com/support/legal/sla>
+Voor het implementeren van Azure-Vm's is het belang rijk om te weten wat de officiële Sla's zijn, die u hier kunt vinden: <https://azure.microsoft.com/support/legal/sla>
 
-SAP-grootte gegevens en een lijst met SAP-gecertificeerde VM-Sku's vindt u in SAP Note [1928533]. Meer sap-formaat documenten voor virtuele machines van Azure vindt u <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> hier en hier<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+SAP-grootte gegevens en een lijst met SAP-gecertificeerde VM-Sku's vindt u in SAP Note [1928533]. Aanvullende SAP-formaat documenten voor virtuele Azure-machines vindt u hier <https://blogs.msdn.com/b/saponsqlserver/archive/2015/06/19/how-to-size-sap-systems-running-on-azure-vms.aspx> en hier <https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 Instructies en aanbevelingen met betrekking tot het gebruik van Azure Storage, de implementatie van SAP-Vm's of SAP-bewaking zijn van toepassing op implementaties van SAP ASE in combi natie met SAP-toepassingen, zoals vermeld in de eerste vier hoofd stukken van dit document.
 
@@ -473,7 +473,7 @@ De volgende twee SAP-opmerkingen bevatten algemene informatie over ASE in Linux 
 * [1941500]
 
 ### <a name="sap-ase-version-support"></a>Ondersteuning voor SAP ASE-versie
-SAP ondersteunt momenteel SAP ASE versie 16,0 voor gebruik met SAP Business Suite-producten. Alle updates voor SAP ASE server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP Business Suite-producten, worden uitsluitend via de SAP <https://support.sap.com/swdc>-Service Marketplace op: beschreven.
+SAP ondersteunt momenteel SAP ASE versie 16,0 voor gebruik met SAP Business Suite-producten. Alle updates voor SAP ASE server-of JDBC-en ODBC-stuur Programma's die worden gebruikt met SAP Business Suite-producten, worden uitsluitend via de SAP-Service Marketplace op: <https://support.sap.com/swdc>.
 
 Als voor on-premises installaties, moet u geen updates voor de SAP ASE-server of voor de JDBC-en ODBC-stuur Programma's rechtstreeks van Sybase websites downloaden. Voor gedetailleerde informatie over patches die worden ondersteund voor gebruik met SAP Business Suite-producten on-premises en in azure Virtual Machines raadpleegt u de volgende SAP-opmerkingen:
 
@@ -523,7 +523,7 @@ Voor SAP-systemen, die gebruikmaken van SAP ASE als database platform, is de DBA
 
 Net als bij on-premises systemen zijn er verschillende stappen vereist om alle SAP NetWeaver-functionaliteit in te scha kelen die wordt gebruikt door de Webdynpro-implementatie van de DBACockpit. Volg SAP-opmerking [1245200] om het gebruik van webdynpros in te scha kelen en de vereiste items te genereren. Wanneer u de instructies in de bovenstaande opmerkingen volgt, moet u ook de Internet Communication Manager (ICM) configureren, samen met de poorten die moeten worden gebruikt voor http-en HTTPS-verbindingen. De standaard instelling voor http ziet er als volgt uit:
 
-> ICM/server_port_0 = PROCTIMEOUT = HTTP, poort = 8000, = 600, TIMEOUT = 600
+> ICM/server_port_0 = vervoerder = HTTP, poort = 8000, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
 > ICM/server_port_1 = door Voer = HTTPS, poort = 443 $ $, PROCTIMEOUT = 600, TIMEOUT = 600
 > 
@@ -537,7 +537,7 @@ en de koppelingen die zijn gegenereerd in trans actie DBACockpit zien er ongevee
 > 
 > 
 
-Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie SAP Note [773830] om te begrijpen hoe ICM de volledig gekwalificeerde hostnaam bepaalt, afhankelijk van de profiel parameters en stel para meter ICM/host_name_full expliciet in als dat nodig is.
+Afhankelijk van de manier waarop de virtuele machine van Azure die als host fungeert voor het SAP-systeem is verbonden met uw AD en DNS, moet u ervoor zorgen dat ICM gebruikmaakt van een volledig gekwalificeerde hostnaam die kan worden opgelost op de computer waar u de DBACockpit van probeert te openen. Zie SAP Note [773830] om te begrijpen hoe ICM de volledig gekwalificeerde hostnaam bepaalt, afhankelijk van de profiel parameters en stel para meter ICM/host_name_full expliciet in, indien nodig.
 
 Als u de virtuele machine hebt geïmplementeerd in een alleen-Cloud scenario zonder cross-premises-connectiviteit tussen on-premises en Azure, moet u een openbaar IP-adres en een domainlabel definiëren. De indeling van de open bare DNS-naam van de virtuele machine ziet er als volgt uit:
 
@@ -601,7 +601,7 @@ Als u het aantal doelen wilt verg Roten om naar te schrijven, zijn er twee optie
 * Het back-updoel volume over meerdere gekoppelde schijven verwijderen om de IOPS-door Voer voor dat striped volume te verbeteren
 * Er wordt een dump configuratie op SAP ASE-niveau gemaakt, die gebruikmaakt van meer dan één doel directory om de dump te schrijven naar
 
-Het verwijderen van een schijf volume over meerdere gekoppelde schijven is besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). Raadpleeg de documentatie over de opgeslagen procedure sp_config_dump, die wordt gebruikt om de dump configuratie te maken op de [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp)voor meer informatie over het gebruik van meerdere mappen in de SAP ASE dump configuratie.
+Het verwijderen van een schijf volume over meerdere gekoppelde schijven is besproken in [overwegingen bij de implementatie van Azure virtual machines DBMS voor SAP-workloads](dbms_guide_general.md). Raadpleeg de documentatie over opgeslagen procedure sp_config_dump, die wordt gebruikt voor het maken van de dump configuratie op het [Sybase InfoCenter](http://infocenter.sybase.com/help/index.jsp)voor meer informatie over het gebruik van meerdere mappen in de SAP ASE dump configuratie.
 
 ### <a name="disaster-recovery-with-azure-vms"></a>Herstel na nood geval met Azure-Vm's
 #### <a name="data-replication-with-sap-sybase-replication-server"></a>Gegevens replicatie met SAP Sybase-replicatie server

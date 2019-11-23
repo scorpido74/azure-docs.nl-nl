@@ -96,7 +96,7 @@ ADLS gen 2 is gebaseerd op [Azure Blob-opslag](../../storage/blobs/storage-blob
 
 Een fundamenteel onderdeel van Data Lake Storage Gen2 is het toevoegen van een [hiërarchische naam ruimte](../../storage/data-lake-storage/namespace.md) aan de Blob Storage-service, waarmee objecten/bestanden worden ingedeeld in een hiërarchie van mappen voor uitvoering van gegevens toegang. De hiërarchische structuur maakt bewerkingen, zoals het wijzigen van de naam of het verwijderen van een map voor één atomische meta gegevens, in de Directory in plaats van het inventariseren en verwerken van alle objecten die het voor voegsel van de directory delen.
 
-In het verleden moesten cloud-gebaseerde analyses in het gedrang komen op het gebied van prestaties, beheer en beveiliging. De belangrijkste functies van Azure Data Lake Storage (ADLS) Gen2 zijn als volgt:
+In het verleden had cloudanalyses te boeten op het gebied van prestaties, beheer en beveiliging. De belangrijkste functies van Azure Data Lake Storage (ADLS) Gen2 zijn als volgt:
 
 - **Hadoop-compatibele toegang**: met Azure data Lake Storage Gen2 kunt u gegevens beheren en openen, net zoals u dat zou doen met een [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Het nieuwe [ABFS-stuur programma](../../storage/data-lake-storage/abfs-driver.md) is beschikbaar in alle Apache Hadoop omgevingen die zijn opgenomen in [Azure HDInsight](../index.yml). Met dit stuur programma kunt u toegang krijgen tot gegevens die zijn opgeslagen in Data Lake Storage Gen2.
 
@@ -163,7 +163,7 @@ HDInsight heeft standaard volledige toegang tot de gegevens in de Azure Storage 
     |storage_container_name|De container in het opslag account waartoe u de toegang wilt beperken.|
     |example_file_path|Het pad naar een bestand dat naar de container wordt geüpload.|
 
-2. Het SASToken.py-bestand wordt geleverd met de `ContainerPermissions.READ + ContainerPermissions.LIST`-machtigingen en kan worden aangepast op basis van de use-case.
+2. Het SASToken.py-bestand wordt geleverd met de `ContainerPermissions.READ + ContainerPermissions.LIST` machtigingen en kan worden aangepast op basis van de use-case.
 
 3. Voer het script als volgt uit: `python SASToken.py`
 
@@ -183,9 +183,9 @@ HDInsight heeft standaard volledige toegang tot de gegevens in de Azure Storage 
 
 Er zijn drie belang rijke zaken die u moet onthouden met betrekking tot het gebruik van SAS-tokens in Azure:
 
-1. Wanneer SAS-tokens worden gemaakt met de machtigingen lezen en lijst, kunnen gebruikers die toegang hebben tot de BLOB-container met die SAS-token geen gegevens schrijven en verwijderen. Gebruikers die toegang hebben tot de BLOB-container met die SAS-token en een schrijf-of verwijder bewerking proberen, ontvangen een bericht als `"This request is not authorized to perform this operation"`.
+1. Wanneer SAS-tokens worden gemaakt met de machtigingen lezen en lijst, kunnen gebruikers die toegang hebben tot de BLOB-container met die SAS-token geen gegevens schrijven en verwijderen. Gebruikers die toegang hebben tot de BLOB-container met die SAS-token en een schrijf-of verwijder bewerking proberen, krijgen een bericht als `"This request is not authorized to perform this operation"`.
 
-2. Wanneer de SAS-tokens worden gegenereerd met de `READ + LIST + WRITE` machtigingen (om alleen `DELETE` te beperken), worden opdrachten als `hadoop fs -put` eerst naar een `\_COPYING\_`-bestand geschreven en probeert u vervolgens de naam van het bestand te wijzigen. Deze HDFS-bewerking is gekoppeld aan een `copy+delete` voor WASB. Omdat de `DELETE` machtiging niet is gegeven, zou de "put" niet kunnen worden uitgevoerd. De `\_COPYING\_`-bewerking is een Hadoop-functie die is bedoeld om een gelijktijdigheids beheer te bieden. Er is momenteel geen manier om alleen de bewerking ' DELETE ' te beperken zonder dat dit gevolgen heeft voor schrijf bewerkingen.
+2. Wanneer de SAS-tokens worden gegenereerd met `READ + LIST + WRITE` machtigingen (om alleen `DELETE` te beperken), hebben opdrachten als `hadoop fs -put` eerst schrijven naar een `\_COPYING\_`-bestand en probeert u vervolgens de naam van het bestand te wijzigen. Deze HDFS-bewerking is gekoppeld aan een `copy+delete` voor WASB. Omdat de `DELETE` machtiging niet is gegeven, zou de "put" niet kunnen worden uitgevoerd. De `\_COPYING\_` bewerking is een Hadoop-functie die is bedoeld om een gelijktijdigheids beheer te bieden. Er is momenteel geen manier om alleen de bewerking ' DELETE ' te beperken zonder dat dit gevolgen heeft voor schrijf bewerkingen.
 
 3. Helaas werken de provider van de Hadoop-referentie provider en de ontsleutelingssleutel (ShellDecryptionKeyProvider) momenteel niet met de SAS-tokens, zodat deze momenteel niet kan worden beveiligd tegen zicht baarheid.
 

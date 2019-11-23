@@ -48,7 +48,7 @@ De Azure DevOps-build-taken zijn in het algemeen direct wrappers rond de opdrach
 
 Merk bare verschillen:
 
-- Hulpprogram ma's worden uitgevoerd vanuit de bronmap van de agent $ (build. SourcesDirectory) of van% BUILD_SOURCESDIRECTORY%. Een voor beeld is C:\agent @ no__t-0work\1\s.
+- Hulpprogram ma's worden uitgevoerd vanuit de bronmap van de agent $ (build. SourcesDirectory) of van% BUILD_SOURCESDIRECTORY%. Een voor beeld is C:\agent\_work\1\s.
 - Paden in de argumenten kunnen relatief zijn ten opzichte van de hoofdmap van de eerder vermelde bron directory. Paden kunnen ook absoluut zijn. U krijgt absolute paden met behulp van Azure DevOps build-variabelen of door een on-premises agent uit te voeren met bekende implementatie locaties van lokale bronnen.
 - Hulpprogram ma's geven automatisch een pad naar een uitvoer bestand of een map. Als u een uitvoer locatie voor een build-taak opgeeft, wordt die locatie vervangen door een pad naar de bekende locatie van de logboeken op de build-agent
 - Enkele aanvullende opdracht regel argumenten zijn gewijzigd voor sommige hulpprogram ma's. Een voor beeld hiervan is het toevoegen of verwijderen van opties die ervoor zorgen dat er geen GUI wordt gestart.
@@ -63,7 +63,7 @@ Met de build-taken wordt een aantal gebruikers invoer gefilterd. De locatie van 
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Waar worden de uitvoer bestanden gegenereerd door de hulpprogram ma's die worden opgeslagen? 
 
-De build-taken voegen automatisch uitvoer paden toe aan deze bekende locatie op de build-agent: $ (agent. BuildDirectory) \_sdt \ logs. Omdat we op deze locatie standaard worden gestandaardiseerd, hebben alle teams die logboeken voor code analyse produceren of gebruiken toegang tot de uitvoer.
+De build-taken voegen automatisch uitvoer paden toe aan deze bekende locatie op de build-agent: $ (agent. BuildDirectory)\_sdt\logs. Omdat we op deze locatie standaard worden gestandaardiseerd, hebben alle teams die logboeken voor code analyse produceren of gebruiken toegang tot de uitvoer.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Kan ik een build in de wachtrij plaatsen om deze taken uit te voeren op een gehoste build-agent? 
 
@@ -123,7 +123,7 @@ De hash-sleutel van het geheim van het uitvoer bestand CredScan is vereist, zoal
 
 De bestands expressie kan een bestands naam zijn. Het kan ook het grondtal van een volledig bestandspad of een bestands naam zijn. Jokertekens worden niet ondersteund.
 
-In de volgende voor beelden ziet u hoe u het bestand kunt onderdrukken \<InputPath > \src\JS\lib\angular.js
+In de volgende voor beelden ziet u hoe u het bestand onderdrukt \<InputPath > \src\JS\lib\angular.js
 
 Voor beelden van geldige onderdrukkings regels:
 
@@ -170,17 +170,17 @@ Referentie scanner is afhankelijk van een set inhouds zoekacties die meestal wor
 
 Een inhouds zoekmachine wordt als volgt gedefinieerd:
 
-- **Naam**: De beschrijvende naam van de zoek functie die moet worden gebruikt in de uitvoer bestanden voor referentie scanners. We raden u aan de Camel-Case-naamgevings Conventie voor namen van zoek functies te gebruiken.
-- **RuleId**: De stabiele dekkende ID van de zoek functie:
+- **Naam**: de beschrijvende naam van de zoek functie die moet worden gebruikt in uitvoer bestanden voor referentie scanners. We raden u aan de Camel-Case-naamgevings Conventie voor namen van zoek functies te gebruiken.
+- **RuleId**: de stabiele dekkende id van de zoek functie:
     - Een standaard zoekmachine voor referentie scanners is toegewezen aan een **RuleId** -waarde zoals CSCAN0010, CSCAN0020 of CSCAN0030. Het laatste cijfer is gereserveerd voor het mogelijk samen voegen of delen van zoek groepen via reguliere expressies (regex).
-    - De **RuleId** -waarde voor een aangepaste zoek functie moet een eigen naam ruimte hebben. Voor beelden zijn onder andere CSCAN-\<Namespace @ no__t-10010, CSCAN-\<Namespace @ no__t-30020 en CSCAN-\<Namespace @ no__t-50030.
+    - De **RuleId** -waarde voor een aangepaste zoek functie moet een eigen naam ruimte hebben. Voor beelden zijn onder andere CSCAN-\<naam ruimte\>0010, CSCAN-\<naam ruimte\>0020 en CSCAN-\<naam ruimte\>0030.
     - Een volledig gekwalificeerde Zoek naam is de combi natie van een **RuleId** -waarde en een naam van een zoek programma. Voor beelden zijn CSCAN0010. KeyStoreFiles en CSCAN0020. Base64EncodedCertificate.
-- **ResourceMatchPattern**: Regex van bestands extensies die moeten worden gecontroleerd op de zoek functie.
-- **ContentSearchPatterns**: Een matrix met teken reeksen die overeenkomen met regex-instructies. Als er geen Zoek patronen zijn gedefinieerd, worden alle bestanden geretourneerd die overeenkomen met de waarde van **ResourceMatchPattern** .
-- **ContentSearchFilters**: Een matrix met teken reeksen die regex-instructies bevatten om zoek functie-specifieke fout-positieven te filteren.
-- **MatchDetails**: Een beschrijvende bericht, oplossings instructies of beide moeten worden toegevoegd voor elk treffer van de zoek functie.
-- **Aanbeveling**: De suggesties: veld inhoud voor een overeenkomst met de PREfast Report-indeling.
-- **Ernst**: Een geheel getal dat het Ernst niveau van een probleem weergeeft. Het hoogste Ernst niveau heeft de waarde 1.
+- **ResourceMatchPattern**: regex van bestands extensies die moeten worden gecontroleerd op de zoek functie.
+- **ContentSearchPatterns**: een matrix met teken reeksen die overeenkomen met regex-instructies. Als er geen Zoek patronen zijn gedefinieerd, worden alle bestanden geretourneerd die overeenkomen met de waarde van **ResourceMatchPattern** .
+- **ContentSearchFilters**: een matrix met teken reeksen die regex-instructies bevatten om zoek functie-specifieke fout-positieven te filteren.
+- **MatchDetails**: een beschrijvende bericht, oplossings instructies of beide moeten worden toegevoegd voor elk treffer van de zoek functie.
+- **Aanbeveling**: de inhoud van het veld suggesties voor een overeenkomst met de PREfast Report-indeling.
+- **Ernst**: een geheel getal dat het Ernst niveau van een probleem aangeeft. Het hoogste Ernst niveau heeft de waarde 1.
 
   ![XML met instellingen voor referentie scanner](./media/security-tools/6-credscan-customsearchers.png)
 
@@ -192,7 +192,7 @@ Een inhouds zoekmachine wordt als volgt gedefinieerd:
 
 Het volledige fout bericht:
 
-Optreedt Het project is hersteld met behulp van micro soft. NetCore. app versie *x. x. x*, maar met de huidige instellingen versie *y. y. y* wordt in plaats daarvan gebruikt. Om dit probleem op te lossen, moet u ervoor zorgen dat dezelfde instellingen worden gebruikt voor herstel en voor volgende bewerkingen, zoals bouwen of publiceren. Dit probleem kan zich doorgaans voordoen als de eigenschap RuntimeIdentifier is ingesteld tijdens het maken of publiceren, maar niet tijdens het terugzetten.
+"Fout: het project is hersteld met behulp van micro soft. NetCore. app versie *x. x. x*, maar met de huidige instellingen wordt versie *y. y. y* in plaats daarvan gebruikt. Om dit probleem op te lossen, moet u ervoor zorgen dat dezelfde instellingen worden gebruikt voor herstel en voor volgende bewerkingen, zoals bouwen of publiceren. Dit probleem kan zich doorgaans voordoen als de eigenschap RuntimeIdentifier is ingesteld tijdens het maken of publiceren, maar niet tijdens het terugzetten.
 
 Omdat Roslyn-analyse taken worden uitgevoerd als onderdeel van compilatie, moet de bron structuur op de build-machine een samenstelbaar status hebben.
 
@@ -202,13 +202,13 @@ In een stap tussen uw belangrijkste build-en Roslyn-analyse stappen is het mogel
 
 Het volledige fout bericht:
 
-' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C: \\*BBBB*. dll: Kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*x. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de bijbehorende afhankelijkheden niet laden. Het systeem het opgegeven bestand vinden niet."
+' CSC. exe ' is afgesloten met fout code 1--er kan geen exemplaar van Analyzer *AAAA* worden gemaakt van C:\\*BBBB*. dll: kan bestand of Assembly ' micro soft. CodeAnalysis, Version =*X.* x. x. x, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 ' of een van de afhankelijkheden ervan niet laden. Het systeem het opgegeven bestand vinden niet."
 
 Zorg ervoor dat uw compiler Roslyn-analyse functies ondersteunt. Het uitvoeren van de opdracht **CSC. exe/version** moet een versie waarde van 2,6 of hoger rapporteren.
 
 Soms kan een. csproj-bestand de installatie van de Visual Studio voor het bouwen van de machine overschrijven door te verwijzen naar een pakket van Microsoft.Net. compilers. Als u geen specifieke versie van de compiler wilt gebruiken, verwijdert u verwijzingen naar Microsoft.Net. compilers. Controleer anders of de versie van het pakket waarnaar wordt verwezen ook 2,6 of hoger is.
 
-Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: F:\ts-Services-123 @ no__t-1work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Probeer het pad naar het fouten logboek op te halen dat is opgegeven in de optie **CSC. exe/errorlog** . De optie en het pad worden weer gegeven in het logboek voor de taak Roslyn-Analyseën maken. Ze zien er ongeveer als **/errorlog: f:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>De C# versie van het Compileer programma is niet recent genoeg
 
@@ -222,9 +222,9 @@ De Roslyn-analyse functies bouwen de taak moet een query uitvoeren op Azure DevO
 
 Als u aanvullende hulp nodig hebt, is ondersteuning van micro soft security code Analysis beschikbaar vanaf 9:00 uur 's nachts tot 5:00 uur Pacific (standaard tijd).
 
-  - Onboarding Neem contact op met uw technische account beheerders om aan de slag te gaan.
+  - Onboarding: Neem contact op met uw technische account beheerders om aan de slag te gaan.
   
-  - Voor Ons team een e-mail sturen met de [ondersteuning voor analyse van beveiligings codes van micro soft](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
+  - Ondersteuning: e-mail adres van ons team bij de [micro soft security code Analysis-ondersteuning](mailto:mscahelp@microsoft.com?Subject=Microsoft%20Security%20Code%20Analysis%20Support%20Request).
 
   >[!NOTE] 
   >Mogelijk hebt u geen betaalde ondersteunings relatie met micro soft. Het is ook mogelijk dat u een ondersteunings aanbieding hebt die voor komt dat u Services aanschaft vanuit de Phoenix-catalogus. Als aan een van deze voor waarden wordt voldaan, gaat u naar de [Start pagina van de ondersteunings services](https://www.microsoft.com/enterprise/services/support) voor meer informatie.

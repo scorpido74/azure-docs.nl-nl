@@ -32,7 +32,7 @@ Micro soft raadt aan uw Azure AD Connect-server te beveiligen om het beveiliging
 
 * Azure AD Connect implementeren op een server die lid is van een domein en de beheerders toegang tot domein beheerders of andere nauw keurig beheerde beveiligings groepen beperken
 
-Voor meer informatie zie: 
+Raadpleeg voor meer informatie: 
 
 * [Beheerders groepen beveiligen](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/appendix-g--securing-administrators-groups-in-active-directory)
 

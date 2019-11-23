@@ -34,7 +34,7 @@ SIGN(<numeric_expr>)
   
 ## <a name="examples"></a>Voorbeelden
   
-  In het volgende voor beeld worden de @no__t 0 waarden van getallen van-2 tot en met 2 geretourneerd.  
+  In het volgende voor beeld worden de `SIGN` waarden van getallen van-2 tot en met 2 geretourneerd.  
   
 ```sql
 SELECT SIGN(-2) AS s1, SIGN(-1) AS s2, SIGN(0) AS s3, SIGN(1) AS s4, SIGN(2) AS s5  

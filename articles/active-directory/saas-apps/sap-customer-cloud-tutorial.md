@@ -84,22 +84,22 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<server name>.crm.ondemand.com`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<server name>.crm.ondemand.com`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<server name>.crm.ondemand.com`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met [SAP Cloud for Customer-ondersteuningsteam](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met [SAP Cloud for Customer-ondersteuningsteam](https://www.sap.com/about/agreements.sap-cloud-services-customers.html) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. SAP-Cloud voor klant toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
 1. Voer in de sectie **Gebruikerskenmerken** in het dialoogvenster **Gebruikerskenmerken en claims** de volgende stappen uit:
 
-    a. Klik op **Pictogram bewerken** om het dialoogvenster **Gebruikersclaims beheren** te openen.
+    a. Klik op **pictogram bewerken** om het dialoogvenster **Gebruikersclaims beheren** te openen.
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
+    ![installatiekopie](./media/sap-customer-cloud-tutorial/tutorial_usermail.png)
 
-    ![image](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
+    ![installatiekopie](./media/sap-customer-cloud-tutorial/tutorial_usermailedit.png)
 
     b. Selecteer **Transformatie** als **bron**.
 
@@ -126,7 +126,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 
@@ -152,7 +152,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Open een nieuw webbrowser venster en meld u aan bij uw SAP-Cloud voor de klant-bedrijfs site als beheerder.
 
-2. Klik aan de linkerkant van het menu op **id-providers**  @ no__t-2**Corporate id-providers** > **toevoegen** en voeg in het pop-upvenster de naam van de ID-provider toe, zoals **Azure AD**. Klik vervolgens op **Opslaan** en vervolgens op **SAML 2,0-configuratie**.
+2. Klik aan de linkerkant van het menu op **id-providers** > **zakelijke id-providers** > **toevoegen** en voeg de pop-up toe met de naam van de ID-provider, zoals **Azure AD**. klik vervolgens op **Opslaan** en vervolgens op **SAML 2,0-configuratie**.
 
     ![SAP-configuratie](./media/sap-customer-cloud-tutorial/configure01.png)
 
@@ -172,7 +172,7 @@ Om ervoor te zorgen dat Azure AD-gebruikers zich kunnen aanmelden bij de SAP-Clo
 
 1. Meld u aan bij de SAP-Cloud voor de klant als beveiligings beheerder.
 
-2. Klik aan de linkerkant van het menu op **gebruikers & autorisaties**  @ no__t-2 **gebruikers beheer** > **gebruiker toevoegen**.
+2. Klik aan de linkerkant van het menu op **gebruikers & autorisaties** > **gebruikers beheer** > **gebruiker toevoegen**.
 
     ![SAP-configuratie](./media/sap-customer-cloud-tutorial/configure03.png)
 

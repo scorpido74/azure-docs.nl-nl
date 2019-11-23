@@ -40,7 +40,7 @@ Een app kan slechts één vorm van de VNet-integratie functie tegelijk gebruiken
 | Probleem  | Oplossing | 
 |----------|----------|
 | U wilt een RFC 1918-adres bereiken (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16) in dezelfde regio | regionale VNet-integratie |
-| U wilt bronnen bereiken in een klassiek VNet of een VNet in een andere regio | vereiste VNet-integratie voor gateway |
+| U wilt bronnen bereiken in een klassiek VNet of een VNet in een andere regio | Vereiste VNet-integratie voor gateway |
 | U wilt RFC 1918-eind punten bereiken via ExpressRoute | regionale VNet-integratie |
 | Resources willen bereiken tussen service-eind punten | regionale VNet-integratie |
 
@@ -53,7 +53,7 @@ VNet-integratie geeft uw web-app toegang tot resources in uw virtuele netwerk, m
 De VNet-integratie functie:
 
 * vereist een Standard-, Premium-of PremiumV2-prijs plan 
-* ondersteunt TCP en UDP
+* Ondersteunt TCP en UDP
 * werkt met App Service-apps en functie-apps
 
 Er zijn enkele zaken die VNet-integratie niet ondersteunt, waaronder:
@@ -62,7 +62,7 @@ Er zijn enkele zaken die VNet-integratie niet ondersteunt, waaronder:
 * AD-integratie 
 * NetBios
 
-## <a name="regional-vnet-integration"></a>Regionale VNet-integratie 
+## <a name="regional-vnet-integration"></a>regionale VNet-integratie 
 
 > [!NOTE]
 > Peering is nog niet beschikbaar voor op Linux gebaseerde App Service.
@@ -114,7 +114,7 @@ Selecteer de **verbinding verbreken**om uw app te verbreken vanuit het VNet. Hie
 
 #### <a name="web-app-for-containers"></a>Web App for Containers
 
-Als u gebruikmaakt van App Service op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie functie zonder extra wijzigingen. Als u Web App for Containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te kunnen gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door App Service platform op de opstart tijd van de container. Als u SSH gebruikt, moet de SSH-daemon worden geconfigureerd om te Luis teren naar het poort nummer dat is opgegeven door de omgevings variabele SSH_PORT bij gebruik van regionale VNet-integratie.
+Als u gebruikmaakt van App Service op Linux met de ingebouwde installatie kopieën, werkt de regionale VNet-integratie functie zonder extra wijzigingen. Als u Web App for Containers gebruikt, moet u uw docker-installatie kopie aanpassen om VNet-integratie te kunnen gebruiken. Gebruik in uw docker-installatie kopie de variabele poort omgeving als de gateway poort van de hoofd webserver, in plaats van een hardcoded poort nummer te gebruiken. De variabele poort omgeving wordt automatisch ingesteld door App Service platform op de opstart tijd van de container. Als u SSH gebruikt, moet de SSH-daemon worden geconfigureerd om te Luis teren naar het poort nummer dat is opgegeven door de SSH_PORT omgevings variabele bij gebruik van regionale VNet-integratie.
 
 ### <a name="service-endpoints"></a>Service-eindpunten
 
@@ -175,13 +175,13 @@ Als u de gateway alleen maakt voor gebruik met App Service VNet-integratie, hoef
 VNet-integratie voor uw app inschakelen: 
 
 1. Ga naar uw app in de Azure Portal en open de app-instellingen en selecteer Netwerk > VNet-integratie. Uw ASP moet zich in een standaard-SKU of beter kunnen gebruiken voor het gebruik van de VNet-integratie functie. 
- ![VNet-integratie GEBRUIKERSINTERFACE @ no__t-1
+ ![VNet-integratie GEBRUIKERSINTERFACE][1]
 
 1. Selecteer **VNet toevoegen**. 
- ![Add VNet-integratie @ no__t-1
+ ![VNet-integratie][2] toevoegen
 
 1. Selecteer uw VNet. 
-  @no__t uw VNet @ no__t-1 0Select
+  ![de VNet-][8] selecteren
   
 De app wordt na deze laatste stap opnieuw opgestart.  
 
@@ -249,7 +249,7 @@ De regionale VNet-integratie functie heeft geen extra kosten voor gebruik buiten
 
 Er zijn drie kosten verbonden aan het gebruik van de gateway vereiste VNet-integratie functie:
 
-* Kosten voor ASP-prijs Categorieën: uw apps moeten zich in een Standard-, Premium-of PremiumV2-abonnement beApp Service. U kunt hier meer informatie over deze kosten bekijken: [App service prijzen][ASPricing]. 
+* Kosten voor ASP-prijs Categorieën: uw apps moeten zich in een Standard-, Premium-of PremiumV2-abonnement beApp Service. U vindt hier meer informatie over deze kosten: [app service prijzen][ASPricing]. 
 * Kosten voor gegevens overdracht: er worden kosten in rekening gebracht voor het afrekenen van gegevens, zelfs als het VNet zich in hetzelfde Data Center bevindt. Deze kosten worden beschreven in [gegevensoverdracht prijs informatie][DataPricing]. 
 * VPN Gateway kosten: er zijn kosten verbonden aan de VNet-gateway die is vereist voor het punt-naar-site-VPN. De details zijn te vinden op de pagina met [VPN gateway prijzen][VNETPricing] .
 

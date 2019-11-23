@@ -27,7 +27,7 @@ ms.locfileid: "72388760"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 In deze zelf studie wordt de offline synchronisatie van de Mobile Apps-functie van Azure App Service voor iOS beschreven. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app om gegevens weer te geven, toe te voegen of te wijzigen, zelfs wanneer ze geen netwerk verbinding hebben. Wijzigingen worden opgeslagen in een lokale data base. Zodra het apparaat weer online is, worden de wijzigingen gesynchroniseerd met de externe back-end.
@@ -47,7 +47,7 @@ In **QSTodoService. m** (objectief-C) of **ToDoTableViewController. Swift** (SWI
 
 Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worden geïnitialiseerd. Dit is de relevante code:
 
-* **Doel-C**. In de methode **QSTodoService. init** :
+* **Objective-C**. In de methode **QSTodoService. init** :
 
    ```objc
    MSCoreDataStore *store = [[MSCoreDataStore alloc] initWithManagedObjectContext:context];
@@ -61,11 +61,11 @@ Voordat een tabel bewerking kan worden uitgevoerd, moet het lokale archief worde
    self.store = MSCoreDataStore(managedObjectContext: managedObjectContext)
    client.syncContext = MSSyncContext(delegate: nil, dataSource: self.store, callback: nil)
    ```
-   Met deze methode maakt u een lokaal archief met behulp van de `MSCoreDataStore`-interface, die de Mobile Apps SDK biedt. U kunt ook een ander lokaal archief opgeven door het `MSSyncContextDataSource`-protocol te implementeren. De eerste para meter van **MSSyncContext** wordt ook gebruikt om een conflict-handler op te geven. Omdat we `nil` hebben door gegeven, krijgen we de standaard conflict afhandeling, die mislukt bij een conflict.
+   Met deze methode maakt u een lokaal archief met behulp van de `MSCoreDataStore`-interface, die de Mobile Apps SDK biedt. U kunt ook een ander lokaal archief opgeven door het `MSSyncContextDataSource`-protocol te implementeren. De eerste para meter van **MSSyncContext** wordt ook gebruikt om een conflict-handler op te geven. Omdat `nil`is door gegeven, krijgen we de standaard conflict afhandeling, die mislukt bij een conflict.
 
 Nu gaan we de daad werkelijke synchronisatie bewerking uitvoeren en gegevens ophalen van de externe back-end:
 
-* **Doel-C**. `syncData` pusht eerst nieuwe wijzigingen en roept vervolgens **pullData** aan om gegevens op te halen van de externe back-end. De methode **pullData** haalt op zijn beurt nieuwe gegevens op die overeenkomen met een query:
+* **Objective-C**. `syncData` worden eerst nieuwe wijzigingen gepusht en vervolgens **pullData** aangeroepen om gegevens op te halen van de externe back-end. De methode **pullData** haalt op zijn beurt nieuwe gegevens op die overeenkomen met een query:
 
    ```objc
    -(void)syncData:(QSCompletionBlock)completion
@@ -128,13 +128,13 @@ Nu gaan we de daad werkelijke synchronisatie bewerking uitvoeren en gegevens oph
    }
    ```
 
-In de doel-C-versie wordt in `syncData` eerst **pushWithCompletion** op de synchronisatie context aangeroepen. Deze methode is lid van `MSSyncContext` (en niet de synchronisatie tabel zelf) omdat hiermee wijzigingen in alle tabellen worden gepusht. Alleen records die lokaal op een of andere manier zijn gewijzigd (via CUD-bewerkingen), worden naar de server verzonden. Vervolgens wordt de helper **pullData** aangeroepen, die **MSSyncTable. pullWithQuery** aanroept om externe gegevens op te halen en op te slaan in de lokale data base.
+In de doel-C-versie roept u in `syncData`eerst **pushWithCompletion** aan op de synchronisatie context. Deze methode is lid van `MSSyncContext` (en niet de synchronisatie tabel zelf), omdat deze de wijzigingen doorvoert in alle tabellen. Alleen records die lokaal op een of andere manier zijn gewijzigd (via CUD-bewerkingen), worden naar de server verzonden. Vervolgens wordt de helper **pullData** aangeroepen, die **MSSyncTable. pullWithQuery** aanroept om externe gegevens op te halen en op te slaan in de lokale data base.
 
 In de SWIFT-versie, omdat de push bewerking niet strikt nood zakelijk was, is er geen aanroep van **pushWithCompletion**. Als er wijzigingen in de synchronisatie context optreden voor de tabel die een push-bewerking uitvoert, wordt door pull altijd eerst een push-bericht verzonden. Als u echter meer dan één synchronisatie tabel hebt, kunt u het beste pushen expliciet aanroepen om ervoor te zorgen dat alles consistent is in alle gerelateerde tabellen.
 
-In zowel de doel-C-als de SWIFT-versie kunt u de methode **pullWithQuery** gebruiken om een query op te geven voor het filteren van de records die u wilt ophalen. In dit voor beeld worden alle records in de tabel externe `TodoItem` opgehaald met de query.
+In zowel de doel-C-als de SWIFT-versie kunt u de methode **pullWithQuery** gebruiken om een query op te geven voor het filteren van de records die u wilt ophalen. In dit voor beeld worden alle records in de tabel met externe `TodoItem` opgehaald met de query.
 
-De tweede para meter van **pullWithQuery** is een query-id die wordt gebruikt voor *incrementele synchronisatie*. Met incrementele synchronisatie worden alleen records opgehaald die sinds de laatste synchronisatie zijn gewijzigd, met behulp van de `UpdatedAt` tijds tempel van de record (`updatedAt` in het lokale archief). De query-ID moet een beschrijvende teken reeks zijn die uniek is voor elke logische query in uw app. Als u geen incrementele synchronisatie wilt uitvoeren, geeft u `nil` door als query-ID. Deze methode kan mogelijk inefficiënt zijn, omdat hiermee alle records voor elke pull-bewerking worden opgehaald.
+De tweede para meter van **pullWithQuery** is een query-id die wordt gebruikt voor *incrementele synchronisatie*. Met incrementele synchronisatie worden alleen records opgehaald die sinds de laatste synchronisatie zijn gewijzigd, met behulp van de `UpdatedAt` tijds tempel van de record (`updatedAt` genoemd in het lokale archief). De query-ID moet een beschrijvende teken reeks zijn die uniek is voor elke logische query in uw app. Als u geen incrementele synchronisatie wilt uitvoeren, geeft u `nil` door als query-ID. Deze methode kan mogelijk inefficiënt zijn, omdat hiermee alle records voor elke pull-bewerking worden opgehaald.
 
 De doel-C-app wordt gesynchroniseerd wanneer u gegevens wijzigt of toevoegt, wanneer een gebruiker de penbeweging voor vernieuwen uitvoert en bij het starten.
 
@@ -145,9 +145,9 @@ Omdat de app wordt gesynchroniseerd wanneer gegevens worden gewijzigd (doel-C) o
 ## <a name="review-core-data"></a>Het kern gegevens model controleren
 Wanneer u het offline archief met de basis gegevens gebruikt, moet u bepaalde tabellen en velden in uw gegevens model definiëren. De voor beeld-app bevat al een gegevens model met de juiste indeling. In deze sectie worden deze tabellen door lopen om te laten zien hoe ze worden gebruikt.
 
-Open **QSDataModel. xcdatamodeld**. Er zijn vier tabellen gedefinieerd: drie die worden gebruikt door de SDK en een die wordt gebruikt voor de taak items zelf:
-  * MS_TableOperations: Hiermee worden de items bijgehouden die moeten worden gesynchroniseerd met de server.
-  * MS_TableOperationErrors: houdt eventuele fouten bij die optreden tijdens offline synchronisatie.
+Open **QSDataModel.xcdatamodeld**. Er zijn vier tabellen gedefinieerd: drie die worden gebruikt door de SDK en een die wordt gebruikt voor de taak items zelf:
+  * MS_TableOperations: houdt de items bij die moeten worden gesynchroniseerd met de server.
+  * MS_TableOperationErrors: houdt eventuele fouten bij die optreden tijdens de offline synchronisatie.
   * MS_TableConfig: houdt de laatst bijgewerkte tijd bij voor de laatste synchronisatie bewerking voor alle pull-bewerkingen.
   * TodoItem: slaat de taak items op. De systeem kolommen **createdAt**, **updatedAt**en **Version** zijn optionele systeem eigenschappen.
 
@@ -162,27 +162,27 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 
 **MS_TableOperations**  
 
-![Kenmerken van MS_TableOperations-tabel][defining-core-data-tableoperations-entity]
+![Kenmerken van MS_TableOperations tabel][defining-core-data-tableoperations-entity]
 
 | Kenmerk | Type |
 | --- | --- |
-| id | Geheel getal 64 |
+| id | Integer 64 |
 | itemId | Tekenreeks |
-| properties | Binaire gegevens |
-| Tabel | Tekenreeks |
-| tableKind | Geheel getal 16 |
+| properties | Binary Data |
+| table | Tekenreeks |
+| tableKind | Integer 16 |
 
 
 **MS_TableOperationErrors**
 
- ![Kenmerken van MS_TableOperationErrors-tabel][defining-core-data-tableoperationerrors-entity]
+ ![Kenmerken van MS_TableOperationErrors tabel][defining-core-data-tableoperationerrors-entity]
 
 | Kenmerk | Type |
 | --- | --- |
 | id |Tekenreeks |
-| operationId |Geheel getal 64 |
-| properties |Binaire gegevens |
-| tableKind |Geheel getal 16 |
+| operationId |Integer 64 |
+| properties |Binary Data |
+| tableKind |Integer 16 |
 
  **MS_TableConfig**
 
@@ -192,8 +192,8 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | --- | --- |
 | id |Tekenreeks |
 | sleutel |Tekenreeks |
-| keyType |Geheel getal 64 |
-| Tabel |Tekenreeks |
+| keyType |Integer 64 |
+| table |Tekenreeks |
 | waarde |Tekenreeks |
 
 ### <a name="data-table"></a>Gegevens tabel
@@ -205,17 +205,17 @@ Wanneer u de functie voor offline synchronisatie gebruikt, definieert u de drie 
 | id | Teken reeks, gemarkeerd als vereist |Primaire sleutel in externe opslag |
 | aangevuld | Booleaans | Veld taak item |
 | tekst |Tekenreeks |Veld taak item |
-| CreatedAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
-| updatedAt | Datum | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
-| versie | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
+| createdAt | Date | Beschrijving Verwijst naar de systeem eigenschap **createdAt** |
+| updatedAt | Date | Beschrijving Verwijst naar de systeem eigenschap **updatedAt** |
+| version | Tekenreeks | Beschrijving Wordt gebruikt om conflicten te detecteren, toegewezen aan versie |
 
 ## <a name="setup-sync"></a>Het synchronisatie gedrag van de App wijzigen
 In deze sectie wijzigt u de app zodat deze niet wordt gesynchroniseerd bij het starten van de app of wanneer u items invoegt en bijwerkt. Het wordt alleen gesynchroniseerd wanneer de knop beweging vernieuwen wordt uitgevoerd.
 
-**Doel-C**:
+**Objective-C**:
 
-1. Wijzig in **QSTodoListViewController. m**de methode **viewDidLoad** om de aanroep te verwijderen naar `[self refresh]` aan het einde van de methode. De gegevens worden nu niet gesynchroniseerd met de server op de app starten. In plaats daarvan wordt het gesynchroniseerd met de inhoud van het lokale archief.
-2. In **QSTodoService. m**wijzigt u de definitie van `addItem` zodat deze niet wordt gesynchroniseerd nadat het item is ingevoegd. Verwijder het `self syncData`-blok en vervang dit door het volgende:
+1. Wijzig in **QSTodoListViewController. m**de methode **viewDidLoad** om de aanroep naar `[self refresh]` te verwijderen aan het einde van de methode. De gegevens worden nu niet gesynchroniseerd met de server op de app starten. In plaats daarvan wordt het gesynchroniseerd met de inhoud van het lokale archief.
+2. In **QSTodoService. m**wijzigt u de definitie van `addItem` zodat deze niet wordt gesynchroniseerd nadat het item is ingevoegd. Verwijder het `self syncData` blok en vervang dit door het volgende:
 
    ```objc
    if (completion != nil) {
@@ -231,7 +231,7 @@ In deze sectie wijzigt u de app zodat deze niet wordt gesynchroniseerd bij het s
 
 **Swift**:
 
-In `viewDidLoad`, in **ToDoTableViewController. Swift**, worden de twee regels die hier worden weer gegeven, voor het stoppen van de synchronisatie bij het starten van de app. Op het moment van deze schrijf bewerking wordt de service niet door de app TODO bijgewerkt wanneer iemand een item toevoegt of voltooit. De service wordt alleen bij het starten van de app bijgewerkt.
+In `viewDidLoad`maakt u in **ToDoTableViewController. Swift**de twee regels die hier worden weer gegeven, om het synchroniseren van de app te stoppen. Op het moment van deze schrijf bewerking wordt de service niet door de app TODO bijgewerkt wanneer iemand een item toevoegt of voltooit. De service wordt alleen bij het starten van de app bijgewerkt.
 
    ```swift
   self.refreshControl?.beginRefreshing()
@@ -243,7 +243,7 @@ In deze sectie maakt u verbinding met een ongeldige URL om een offline scenario 
 
 1. Wijzig de URL van de mobiele app in **QSTodoService. m** in een ongeldige URL en voer de app opnieuw uit:
 
-   **Doel-C**. In QSTodoService. m:
+   **Objective-C**. In QSTodoService. m:
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
@@ -267,7 +267,7 @@ Er wordt een voortgangs kring veld weer gegeven.
 7. Bekijk de **TodoItem** -gegevens opnieuw. De nieuwe en gewijzigde taak items moeten nu worden weer gegeven.
 
 ## <a name="summary"></a>Samenvatting
-Ter ondersteuning van de functie voor offline synchronisatie hebben we de `MSSyncTable`-interface gebruikt en `MSClient.syncContext` geïnitialiseerd met een lokale opslag. In dit geval was het lokale archief een kern database op basis van gegevens.
+Ter ondersteuning van de functie voor offline synchronisatie hebben we de `MSSyncTable`-interface en geïnitialiseerde `MSClient.syncContext` met een lokaal archief gebruikt. In dit geval was het lokale archief een kern database op basis van gegevens.
 
 Wanneer u een lokaal archief met basis gegevens gebruikt, moet u verschillende tabellen met de [juiste systeem eigenschappen](#review-core-data)definiëren.
 
@@ -277,7 +277,7 @@ Toen we het lokale archief met de-server hebben gesynchroniseerd, hebben we de m
 
 ## <a name="additional-resources"></a>Aanvullende bronnen
 * [Offline gegevens synchronisatie in Mobile Apps]
-* [Cloud cover: offline synchronisatie in Azure Mobile Services] @no__t 1The video over Mobile Services, maar Mobile apps offline synchronisatie werkt op een vergelijk bare manier. \)
+* [Cloud cover: offline synchronisatie in Azure Mobile Services] \(de video over Mobile Services, maar Mobile apps offline synchronisatie werkt op een vergelijk bare manier.\)
 
 <!-- URLs. -->
 

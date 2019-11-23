@@ -43,7 +43,7 @@ In dit voor beeld wordt een ASP.NET Web Forms-toepassing gemaakt in Visual Studi
 <%@ Page Title="Home Page" Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="FriendlyRedirect._Default" %>
 ```
 
-De gebeurtenis Page_Load in Default.aspx.cs maakt gebruik van de methode Response. write () om de naam van de Azure Analysis Services-server te retour neren.
+De Page_Load gebeurtenis in Default.aspx.cs gebruikt de methode Response. write () om de naam van de Azure Analysis Services-server te retour neren.
 
 ```
 protected void Page_Load(object sender, EventArgs e)

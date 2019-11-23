@@ -14,8 +14,8 @@ ms.locfileid: "72391617"
 De Azure File Sync-agent wordt regel matig bijgewerkt om nieuwe functionaliteit toe te voegen en om problemen op te lossen. We raden u aan Microsoft Update te configureren voor het ophalen van updates voor de Azure File Sync-agent wanneer deze beschikbaar zijn.
 
 #### <a name="major-vs-minor-agent-versions"></a>Belangrijkste versus secundaire agent versies
-* Belang rijke agent versies bevatten vaak nieuwe functies en hebben een verhoogd aantal als het eerste deel van het versie nummer. Bijvoorbeeld: \*2. \*. \* @ no__t-3
-* Secundaire agent versies worden ook wel ' patches ' genoemd en zijn vaker vrijgegeven dan primaire versies. Ze bevatten vaak fout oplossingen en kleinere verbeteringen, maar geen nieuwe functies. Bijvoorbeeld: \* @ no__t-1.3. \* @ no__t-3
+* Belang rijke agent versies bevatten vaak nieuwe functies en hebben een verhoogd aantal als het eerste deel van het versie nummer. Bijvoorbeeld: \*2.\*.\*\*
+* Secundaire agent versies worden ook wel ' patches ' genoemd en zijn vaker vrijgegeven dan primaire versies. Ze bevatten vaak fout oplossingen en kleinere verbeteringen, maar geen nieuwe functies. Bijvoorbeeld: \*\*. 3.\*\*
 
 #### <a name="upgrade-paths"></a>Upgrade paden
 Er zijn vier goedgekeurde en geteste manieren om de Azure File Sync agent-updates te installeren. 
@@ -61,7 +61,7 @@ Azure File Sync is een Cloud service waarmee voortdurend nieuwe functies en verb
 - Belang rijke agent versies worden ten minste zes maanden na de eerste release ondersteund.
 - We garanderen dat er ten minste drie maanden bestaan tussen de ondersteuning van belang rijke agent versies. 
 - Er worden waarschuwingen gegeven voor geregistreerde servers met behulp van een binnenkort verlopen agent van ten minste drie maanden vóór de verval datum. U kunt controleren of een geregistreerde server een oudere versie van de agent gebruikt onder het gedeelte geregistreerde servers van een opslag synchronisatie service.
-- De levens duur van een secundaire agent versie is gebonden aan de bijbehorende primaire versie. Als agent versie 3,0 bijvoorbeeld wordt vrijgegeven, worden agent versies 2. \* allemaal ingesteld om te verlopen.
+- De levens duur van een secundaire agent versie is gebonden aan de bijbehorende primaire versie. Bijvoorbeeld, als agent versie 3,0 wordt uitgebracht, versie 2 van agent.\* worden allemaal ingesteld om te verlopen.
 
 > [!Note]
 > Als u een agent versie installeert met een verloop waarschuwing, wordt een waarschuwing weer gegeven, maar slaagt. Het installeren of koppelen met een verlopen agent versie wordt niet ondersteund en wordt geblokkeerd.

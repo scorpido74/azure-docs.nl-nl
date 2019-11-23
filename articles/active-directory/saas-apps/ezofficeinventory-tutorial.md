@@ -94,7 +94,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
 1. De EZOfficeInventory-toepassing verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
 1. Daarnaast verwacht EZOfficeInventory toepassing nog maar weinig kenmerken die worden door gegeven in de SAML-respons die hieronder worden weer gegeven. Deze kenmerken worden ook vooraf ingevuld, maar u kunt ze controleren volgens uw vereiste.
 
@@ -102,7 +102,7 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
     | ---------------| --------------- |
     | First_name | user.givenname |
     | Last_name | user.surname |
-    | E-mail | user.mail |
+    | Email | user.mail |
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
@@ -120,7 +120,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 
@@ -146,7 +146,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Open een nieuw webbrowser venster en meld u aan bij de EZOfficeInventory-bedrijfs site als beheerder.
 
-2. Klik in de rechter bovenhoek van de pagina op **profiel** and en navigeer vervolgens naar **instellingen** > **invoeg toepassingen**.
+2. Klik in de rechter bovenhoek van de pagina op **profiel** en navigeer vervolgens naar **instellingen** > **invoeg toepassingen toevoegen**.
 
     ![EZOfficeInventory-configuratie](./media/ezofficeinventory-tutorial/configure01.png)
 

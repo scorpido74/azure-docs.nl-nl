@@ -113,7 +113,7 @@ De volgende tabel geeft een lijst van de para meters van de blauw druk-artefact:
 |Blauw druk-initiatief voor ISO 27001|Beleidstoewijzing|Bron typen voor het controleren van Diagnostische logboeken|Lijst met resource typen om te controleren of de instelling voor diagnostische logboek registratie niet is ingeschakeld. Acceptabele waarden zijn te vinden in [Azure monitor Diagnostische logboeken schema's](../../../../azure-monitor/platform/diagnostic-logs-schema.md#supported-log-categories-per-resource-type).|
 |Log Analytics resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvsc-log-rg` om de resource groep uniek te maken.|
 |Log Analytics resource groep|Resourcegroep|Locatie|**Vergrendeld** : maakt gebruik van de blauw druk-para meter.|
-|Log Analytics sjabloon|Resource Manager-sjabloon|Serviceniveau|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
+|Log Analytics sjabloon|Resource Manager-sjabloon|Servicelaag|Hiermee stelt u de laag van de Log Analytics-werk ruimte. De standaard waarde is _PerNode_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Bewaar periode logboek in dagen|Bewaren van gegevens in dagen. De standaard waarde is _365_.|
 |Log Analytics sjabloon|Resource Manager-sjabloon|Locatie|De regio die wordt gebruikt voor het maken van de Log Analytics-werk ruimte. De standaard waarde is _VS-West 2_.|
 |Netwerk resource groep|Resourcegroep|Naam|**Vergrendeld** : voegt de naam van de **organisatie** samen met `-sharedsvcs-net-rg` om de resource groep uniek te maken.|

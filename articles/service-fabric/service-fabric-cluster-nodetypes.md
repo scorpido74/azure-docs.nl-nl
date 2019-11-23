@@ -29,12 +29,12 @@ In de volgende afbeelding ziet u een cluster met twee knooppunt typen, front-end
 ![Een cluster met twee knooppunt typen][NodeTypes]
 
 ## <a name="map-virtual-machine-scale-set-instances-to-nodes"></a>Instanties van schaal sets voor virtuele machines toewijzen aan knoop punten
-Zoals in de voor gaande afbeelding wordt weer gegeven, beginnen de schaalset-instanties bij instantie 0 en nemen ze vervolgens toe met 1. De nummering wordt weer gegeven in de namen van knoop punten. Zo is het knoop punt BackEnd_0 instantie 0 van de back-upschaalset. Deze schaalset heeft vijf instanties, met de naam BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 en BackEnd_4.
+Zoals in de voor gaande afbeelding wordt weer gegeven, beginnen de schaalset-instanties bij instantie 0 en nemen ze vervolgens toe met 1. De nummering wordt weer gegeven in de namen van knoop punten. Zo is het BackEnd_0 van knoop punt instantie 0 van de back-upschaalset. Deze schaalset heeft vijf instanties, met de naam BackEnd_0, BackEnd_1, BackEnd_2, BackEnd_3 en BackEnd_4.
 
-Wanneer u een schaalset opschaalt, wordt er een nieuw exemplaar gemaakt. De nieuwe instantie naam van de schaalset is doorgaans de naam van de schaalset plus het volgende exemplaar nummer. In ons voor beeld is dit BackEnd_5.
+Wanneer u een schaalset opschaalt, wordt er een nieuw exemplaar gemaakt. De nieuwe instantie naam van de schaalset is doorgaans de naam van de schaalset plus het volgende exemplaar nummer. In ons voor beeld is het BackEnd_5.
 
 ## <a name="map-scale-set-load-balancers-to-node-types-and-scale-sets"></a>Load balancers instellen voor de kaart schaal voor knooppunt typen en schaal sets
-Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: **lb-&lt;node type naam @ no__t-2**. Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
+Als u uw cluster in de Azure Portal hebt geïmplementeerd of de voor beeld-Azure Resource Manager sjabloon hebt gebruikt, worden alle resources onder een resource groep weer gegeven. U kunt de load balancers voor elke schaalset of elk knooppunt type bekijken. De naam van de load balancer gebruikt de volgende indeling: **lb-&lt;knooppunt type naam&gt;** . Een voor beeld is LB-sfcluster4doc-0, zoals wordt weer gegeven in de volgende afbeelding:
 
 ![Bronnen][Resources]
 
@@ -77,19 +77,19 @@ Hier volgen de eigenschaps beschrijvingen:
 
 | **Naam** | **Toegestane waarden** | ** --- ** | **Uitleg of korte beschrijving** |
 | --- | --- | --- | --- |
-| name | string | --- | unieke naam voor extensie |
+| name | tekenreeks | --- | unieke naam voor extensie |
 | type | "ServiceFabricLinuxNode" of "ServiceFabricWindowsNode" | --- | Geeft aan dat het besturings systeem Service Fabric Boots trapt |
-| autoUpgradeMinorVersion | waar of onwaar | --- | Automatische upgrade van secundaire versies van SF runtime inschakelen |
-| Uitgever | Micro soft. Azure. ServiceFabric | --- | de naam van de uitgever van het Service Fabric gebied |
-| clusterEndpont | string | --- | URI: poort voor beheer eindpunt |
-| nodeTypeRef | string | --- | naam van nodeType |
-| durabilityLevel | Bronze, Silver, Gold, Platinum | --- | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
-| enableParallelJobs | waar of onwaar | --- | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
-| nicPrefixOverride | string | --- | Subnetvoorvoegsel zoals "10.0.0.0/24" |
-| commonNames | teken reeks [] | --- | Algemene namen van geïnstalleerde cluster certificaten |
-| x509StoreName | string | --- | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
+| autoUpgradeMinorVersion | true of false | --- | Automatische upgrade van secundaire versies van SF runtime inschakelen |
+| publisher | Microsoft.Azure.ServiceFabric | --- | de naam van de uitgever van het Service Fabric gebied |
+| clusterEndpont | tekenreeks | --- | URI: poort voor beheer eindpunt |
+| nodeTypeRef | tekenreeks | --- | naam van nodeType |
+| durabilityLevel | bronze, silver, gold, platinum | --- | tijd die is toegestaan voor het onderbreken van een onveranderlijke Azure-infra structuur |
+| enableParallelJobs | true of false | --- | Schakel Compute ParallelJobs in zoals virtuele machine verwijderen en start VM opnieuw op in dezelfde schaalset als parallel |
+| nicPrefixOverride | tekenreeks | --- | Subnetvoorvoegsel zoals "10.0.0.0/24" |
+| commonNames | string[] | --- | Algemene namen van geïnstalleerde cluster certificaten |
+| x509StoreName | tekenreeks | --- | De naam van het archief waar het geïnstalleerde cluster certificaat zich bevindt |
 | typeHandlerVersion | 1.1 | --- | De versie van de extensie. 1,0 de klassieke versie van de uitbrei ding wordt aanbevolen om te upgraden naar 1,1 |
-| dataPath | string | --- | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan. 
+| dataPath | tekenreeks | --- | Het pad naar het station dat wordt gebruikt om de status voor Service Fabric systeem services en toepassings gegevens op te slaan. 
 
 ## <a name="next-steps"></a>Volgende stappen
 * Zie het [overzicht van de functie overal implementeren en een vergelijking met door Azure beheerde clusters](service-fabric-deploy-anywhere.md).

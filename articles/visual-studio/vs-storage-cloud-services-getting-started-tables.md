@@ -28,7 +28,7 @@ In dit artikel wordt beschreven hoe u aan de slag gaat met Azure Table Storage i
 
 Met de Azure Table Storage-service kunt u grote hoeveel heden gestructureerde gegevens opslaan. De service is een NoSQL-gegevens opslag die geverifieerde aanroepen binnen en buiten de Azure-Cloud accepteert. Azure-tabellen zijn ideaal voor het opslaan van gestructureerde, niet-relationele gegevens.
 
-Als u aan de slag wilt gaan, moet u eerst een tabel maken in uw opslag account. We laten u zien hoe u een Azure-tabel in code maakt en hoe u ook eenvoudige tabel-en entiteits bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en lezen van tabel entiteiten. De voor beelden zijn geschreven in C @ no__t-0 code en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
+Als u aan de slag wilt gaan, moet u eerst een tabel maken in uw opslag account. We laten u zien hoe u een Azure-tabel in code maakt en hoe u ook eenvoudige tabel-en entiteits bewerkingen uitvoert, zoals het toevoegen, wijzigen, lezen en lezen van tabel entiteiten. De voor beelden zijn geschreven in C\# code en gebruiken de [Microsoft Azure Storage-client bibliotheek voor .net](https://msdn.microsoft.com/library/azure/dn261237.aspx).
 
 **Opmerking:** Sommige Api's die aanroepen naar Azure Storage, zijn asynchroon. Zie [asynchrone programmering met async en wacht](https://msdn.microsoft.com/library/hh191443.aspx) op voor meer informatie. In de onderstaande code wordt ervan uitgegaan dat er asynchrone programmeer methoden worden gebruikt.
 

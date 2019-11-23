@@ -27,7 +27,7 @@ U-SQL is een taal waarin declaratieve SQL wordt gecombineerd C# met dwingend om 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Lees en voltooi [Tutorial voordat u de U-SQL-voor beelden in dit document gaat door lopen: U-SQL-scripts ontwikkelen met Data Lake-Hulpprogram Ma's voor Visual Studio @ no__t-0. In deze zelf studie worden de mechanismen uitgelegd van het gebruik van U-SQL met Azure Data Lake-Hulpprogram Ma's voor Visual Studio.
+Voordat u de U-SQL-voor beelden in dit document gaat door lopen, lees en volledige [zelf studie: U-SQL-scripts ontwikkelen met data Lake-Hulpprogram ma's voor Visual Studio](data-lake-analytics-data-lake-tools-get-started.md). In deze zelf studie worden de mechanismen uitgelegd van het gebruik van U-SQL met Azure Data Lake-Hulpprogram Ma's voor Visual Studio.
 
 ## <a name="your-first-u-sql-script"></a>Uw eerste U-SQL-script
 
@@ -50,12 +50,12 @@ OUTPUT @searchlog
     USING Outputters.Csv();
 ```
 
-Dit script heeft geen transformatie stappen. Het Lees programma van het bron bestand met de naam `SearchLog.tsv` schematizes het, en schrijft de Rijset terug naar een bestand met de naam SearchLog-first-u-sql. CSV.
+Dit script heeft geen transformatie stappen. Het Lees programma van het bron bestand met de naam `SearchLog.tsv`, het schematizes en schrijft de Rijset terug naar een bestand met de naam SearchLog-first-u-sql. CSV.
 
-Let op het vraag teken naast het gegevens type in het veld `Duration`. Dit betekent dat het veld @no__t 0 kan null zijn.
+Let op het vraag teken naast het gegevens type in het veld `Duration`. Dit betekent dat het veld `Duration` Null kan zijn.
 
 ### <a name="key-concepts"></a>Belangrijkste concepten
-* **Variabelen van de rijenset**: Elke query-expressie die een rijenset produceert, kan worden toegewezen aan een variabele. U-SQL volgt het naamgevings patroon T-SQL-variabele (bijvoorbeeld `@searchlog`) in het script.
+* **Variabelen van de rijenset**: elke query-expressie die een rijenset produceert, kan worden toegewezen aan een variabele. U-SQL volgt het naamgevings patroon T-SQL-variabele (bijvoorbeeld`@searchlog`) in het script.
 * Het sleutel woord **extract** leest gegevens uit een bestand en definieert het schema bij lezen. `Extractors.Tsv` is een ingebouwde U-SQL-extractor voor bestanden met door tabs gescheiden waarden. U kunt aangepaste Extracts ontwikkelen.
 * De **uitvoer** schrijft gegevens van een rijenset naar een bestand. `Outputters.Csv()` is een ingebouwde U-SQL-outputter voor het maken van een bestand met door komma's gescheiden waarden. U kunt aangepaste outputters ontwikkelen.
 

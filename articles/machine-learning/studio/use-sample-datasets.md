@@ -358,28 +358,28 @@ Houd er rekening mee dat voor sommige bedrijven een artikel niet kan worden gevo
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/direct_marketing.csv">direct_marketing.csv</a></td>
   <td>
 De gegevensset bevat klant gegevens en indicaties over hun reactie op een directe mailing campagne. Elke rij vertegenwoordigt een klant. De gegevensset bevat negen functies voor demografische gegevens van gebruikers en eerdere gedragingen, en drie label kolommen (bezoeken, conversie en uitgaven).  Bezoek is een binaire kolom die aangeeft dat een klant na de marketing campagne is bezocht. Conversie geeft aan dat een klant iets heeft gekocht. Best Eden aan het bedrag dat is uitgegeven.  De gegevensset is beschikbaar gesteld door Kevin Hillstrom voor MineThatData-mail analyse en gegevens analyse.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_test.csv">lyrl2004_tokens_test.csv</a></td>
   <td>
 Functies van test voorbeelden in de RCV1-v2-nieuws gegevensset van Reuters. De gegevensset heeft 781K nieuws artikelen samen met hun Id's (eerste kolom van de gegevensset). Elk artikel wordt getokend, stopworded en versleuteld. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/lyrl2004_tokens_train.csv">lyrl2004_tokens_train.csv</a></td>
   <td>
 Functies van training-voor beelden in de RCV1-v2-nieuws gegevensset van Reuters. De gegevensset heeft 23K nieuws artikelen samen met hun Id's (eerste kolom van de gegevensset). Elk artikel wordt getokend, stopworded en versleuteld. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection. CSV</a><br></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/network_intrusion_detection.csv">network_intrusion_detection.csv</a><br></td>
   <td>
 Gegevensset van de KDDe Cup 1999 kennis detectie en Hulpprogram Ma's voor gegevens analyse van<a href="https://kdd.ics.uci.edu/databases/kddcup99/kddcup99.html">kddcup99.</a>
 <p></p>
@@ -388,14 +388,14 @@ De gegevensset is gedownload en opgeslagen in Azure Blob Storage (<a href="https
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2. topics. qrels. CSV</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/rcv1-v2.topics.qrels.csv">rcv1-v2.topics.qrels.csv</a></td>
   <td>
 Onderwerps toewijzingen voor nieuws artikelen in de RCV1-v2-nieuws gegevensset van Reuters. Een nieuws artikel kan worden toegewezen aan verschillende onderwerpen. De indeling van elke rij is '&lt;topic name&gt; &lt;document-id&gt; 1 '. De gegevensset bevat 2.6 M-onderwerps toewijzingen. De gegevensset is beschikbaar gesteld door David. D. Lewis.
   </td>
 </tr>
 
 <tr>
-  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance. txt</a></td>
+  <td><a href="https://azuremlsampleexperiments.blob.core.windows.net/datasets/student_performance.txt">student_performance.txt</a></td>
   <td>
 Deze gegevens zijn afkomstig van de KDDe Cup 2010 Student prestatie-evaluatie test (<a href="https://www.kdd.org/kdd-cup/view/kdd-cup-2010-student-performance-evaluation">Student Performance Evaluation</a>). De gebruikte gegevens zijn de Algebra_2008_2009-Trainingsset (stempel, J., Niculescu-Mizil, A., Ritter, S., Gordon, G.J., & Koedinger, K.R. (2010). Algebra I 2008-2009. Uitdaging gegevensset van de KDDe Cup 2010 onderwijs gegevens analyse uitdaging. Zoek het op <a href="https://pslcdatashop.web.cmu.edu/KDDCup/downloads.jsp">down loads. jsp</a>.
 <p></p>

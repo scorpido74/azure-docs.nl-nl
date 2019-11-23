@@ -18,13 +18,13 @@ ms.locfileid: "72435745"
 
 Azure Disk Encryption helpt uw gegevens te beschermen en beschermen om te voldoen aan de beveiligings-en nalevings verplichtingen van uw organisatie. De [BitLocker](https://en.wikipedia.org/wiki/BitLocker) -functie van Windows wordt gebruikt voor volume versleuteling voor het besturings systeem en de gegevens schijven van virtuele Azure-machines (vm's), en is geïntegreerd met [Azure Key Vault](../../key-vault/index.yml) om u te helpen de coderings sleutels en geheimen van de schijf te beheren en te controleren. 
 
-Als u [Azure Security Center](../../security-center/index.yml)gebruikt, wordt u gewaarschuwd als u virtuele machines hebt die niet zijn versleuteld. De waarschuwingen worden weer gegeven als hoge ernst en de aanbeveling is om deze Vm's te versleutelen.
+Als u [Azure Security Center](../../security-center/index.yml)gebruikt, wordt u gewaarschuwd als u virtuele machines hebt die niet zijn versleuteld. De waarschuwingen worden weergegeven als hoge urgentie en de aanbeveling is voor het versleutelen van deze VM's.
 
-![Waarschuwing voor schijf versleuteling van Azure Security Center](../media/disk-encryption/security-center-disk-encryption-fig1.png)
+![Azure Security Center schijf versleuteling waarschuwing](../media/disk-encryption/security-center-disk-encryption-fig1.png)
 
 > [!WARNING]
 > - Als u eerder Azure Disk Encryption met Azure AD hebt gebruikt om een virtuele machine te versleutelen, moet u deze optie blijven gebruiken om uw virtuele machine te versleutelen. Zie [Azure Disk Encryption met Azure AD (vorige versie)](disk-encryption-overview-aad.md) voor meer informatie. 
-> - Bepaalde aanbevelingen kunnen leiden tot meer gegevens, het netwerk of het gebruik van reken bronnen, wat leidt tot extra licentie-of abonnements kosten. U moet een geldig actief Azure-abonnement hebben om resources te maken in Azure in de ondersteunde regio's.
+> - Bepaalde aanbevelingen verhogen gegevens-, netwerk- of computerresources, wat resulteert in extra kosten in licentie of abonnement. U moet een geldige actief Azure-abonnement om resources te maken in Azure in de ondersteunde regio's hebben.
 
 Meer informatie over de basis principes van Azure Disk Encryption voor Windows in slechts enkele minuten kunt u het beste een [Windows-VM maken en versleutelen met Azure cli Quick](disk-encryption-cli-quickstart.md) start of [een Windows-VM maken en versleutelen met Azure Power shell Quick](disk-encryption-powershell-quickstart.md)start.
 
@@ -49,17 +49,17 @@ Azure Disk Encryption is ook beschikbaar voor virtuele machines met Premium Stor
 
 ## <a name="networking-requirements"></a>Netwerk vereisten
 Om Azure Disk Encryption in te scha kelen, moeten de virtuele machines voldoen aan de volgende vereisten voor netwerk eindpunt configuratie:
-  - Om een token te krijgen om verbinding te maken met uw sleutel kluis, moet de Windows-VM verbinding kunnen maken met een Azure Active Directory-eind punt @no__t -0login. microsoftonline. com @ no__t-1.
+  - Als u een token wilt ontvangen om verbinding te maken met uw sleutel kluis, moet de Windows-VM verbinding kunnen maken met een Azure Active Directory-eind punt \[login.microsoftonline.com\].
   - Voor het schrijven van de versleutelings sleutels naar uw sleutel kluis moet de Windows-VM verbinding kunnen maken met het eind punt van de sleutel kluis.
   - De Windows-VM moet verbinding kunnen maken met een Azure Storage-eind punt dat als host fungeert voor de Azure extension-opslag plaats en een Azure-opslag account dat als host fungeert voor de VHD-bestanden.
-  -  Als uw beveiligings beleid de toegang tot het Internet beperkt met Azure-Vm's, kunt u de voor gaande URI omzetten en een specifieke regel configureren om uitgaande connectiviteit met de IP-adressen toe te staan. Zie [Azure Key Vault achter een firewall](../../key-vault/key-vault-access-behind-firewall.md)voor meer informatie.    
+  -  Als uw beveiligingsbeleid beperkt de toegang van Azure VM's tot het Internet, kunt u deze kunt oplossen door de voorgaande URI en configureren van een specifieke regel voor het toestaan van uitgaande verbinding met de IP-adressen. Zie voor meer informatie, [Azure Key Vault achter een firewall](../../key-vault/key-vault-access-behind-firewall.md).    
 
 
 ## <a name="group-policy-requirements"></a>groepsbeleid vereisten
 
-Azure Disk Encryption gebruikt de externe BitLocker-sleutel beveiliging voor Windows-Vm's. Voor virtuele machines die zijn toegevoegd aan een domein, moet u geen groeps beleid pushen waarmee TPM-beveiligingen worden afgedwongen. Zie [referentie voor BitLocker-Groepsbeleid](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1)voor informatie over het groeps beleid voor het toestaan van BitLocker zonder compatibele TPM.
+Azure Disk Encryption gebruikt de externe BitLocker-sleutel beveiliging voor Windows-Vm's. Voor virtuele machines van een domein, niet een Groepsbeleid TPM beveiligingstoepassingen afdwingen pushen. Zie voor meer informatie over het groepsbeleid voor "Toestaan BitLocker zonder een compatibele TPM" [BitLocker Group Policy Reference](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings#bkmk-unlockpol1).
 
-Het BitLocker-beleid voor virtuele machines die lid zijn van een domein met aangepast groeps beleid moet de volgende instelling hebben: [gebruikers opslag configureren voor BitLocker-herstel gegevens-> herstel sleutel van 256-bits toestaan](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption mislukt wanneer aangepaste groeps beleids instellingen voor BitLocker incompatibel zijn. Op computers die niet over de juiste beleids instelling beschikken, past u het nieuwe beleid toe, dwingt u het nieuwe beleid af om bij te werken (GPUpdate. exe/Force), en vervolgens moet u de computer mogelijk opnieuw opstarten.
+Het BitLocker-beleid voor virtuele machines die lid zijn van een domein met aangepast groeps beleid moet de volgende instelling hebben: [gebruikers opslag configureren voor BitLocker-herstel gegevens-> herstel sleutel van 256-bits toestaan](/windows/security/information-protection/bitlocker/bitlocker-group-policy-settings). Azure Disk Encryption mislukt wanneer aangepaste groeps beleids instellingen voor BitLocker incompatibel zijn. Het nieuwe beleid toepassen op virtuele machines die niet de juiste instelling hebben, en vervolgens opnieuw te starten is mogelijk vereist afdwingen dat het nieuwe beleid om bij te werken (gpupdate.exe/Force).
 
 Azure Disk Encryption mislukt als groeps beleid op domein niveau het AES-CBC-algoritme blokkeert dat door BitLocker wordt gebruikt.
 
@@ -74,20 +74,20 @@ In de volgende tabel worden enkele algemene termen gedefinieerd die worden gebru
 
 | Terminologie | Definitie |
 | --- | --- |
-| Azure Key Vault | Key Vault is een cryptografische service voor sleutel beheer die is gebaseerd op FIPS (Federal Information Processing Standards) gevalideerde hardware security modules. Deze standaarden helpen u bij het beveiligen van uw cryptografische sleutels en gevoelige geheimen. Zie voor meer informatie de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -documentatie en het [maken en configureren van een sleutel kluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
-| Azure CLI | [De Azure cli](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheren van Azure-resources vanaf de opdracht regel.|
+| Azure Key Vault | Key Vault is een cryptografische, key management-service die op Federal Information Processing Standards (FIPS) gevalideerde hardware security modules is gebaseerd. Deze standaarden helpen om uw cryptografische sleutels en gevoelige geheimen te beveiligen. Zie voor meer informatie de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -documentatie en het [maken en configureren van een sleutel kluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
+| Azure-CLI | [De Azure CLI](/cli/azure/install-azure-cli) is geoptimaliseerd voor het beheren en beheer van Azure-resources vanaf de opdrachtregel.|
 | BitLocker |[BitLocker](https://technet.microsoft.com/library/hh831713.aspx) is een door de branche herkende Windows-coderings technologie die wordt gebruikt om schijf versleuteling in te scha kelen op Windows-vm's. |
-| Sleutel versleutelings sleutel (KEK) | De asymmetrische sleutel (RSA 2048) die u kunt gebruiken om het geheim te beveiligen of in te pakken. U kunt een door HSM (Hardware Security module) beveiligde of met software beschermde sleutel opgeven. Zie voor meer informatie de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -documentatie en het [maken en configureren van een sleutel kluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
-| PowerShell-cmdlets | Zie [Azure PowerShell-cmdlets](/powershell/azure/overview)voor meer informatie. |
+| Sleutel versleutelings sleutel (KEK) | De asymmetrische sleutel (RSA 2048) die u kunt gebruiken om het geheim te beveiligen of in te pakken. U kunt opgeven dat een hardware security module (HSM)- of software beschermde sleutel beschermd. Zie voor meer informatie de [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) -documentatie en het [maken en configureren van een sleutel kluis voor Azure Disk Encryption](disk-encryption-key-vault.md). |
+| PowerShell-cmdlets | Zie voor meer informatie, [Azure PowerShell-cmdlets](/powershell/azure/overview). |
 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - [Quick Start: een Windows-VM maken en versleutelen met Azure CLI](disk-encryption-cli-quickstart.md)
 - [Quick Start: een Windows-VM maken en versleutelen met Azure Power shell](disk-encryption-powershell-quickstart.md)
-- [Azure Disk Encryption scenario's op Windows-Vm's](disk-encryption-windows.md)
+- [Azure Disk Encryption-scenario's voor Windows-VM's](disk-encryption-windows.md)
 - [SysteemAzure Disk Encryption vereisten CLI-script](https://github.com/ejarvi/ade-cli-getting-started)
 - [Azure Disk Encryption van vereisten Power shell-script](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
-- [Een sleutel kluis voor Azure Disk Encryption maken en configureren](disk-encryption-key-vault.md)
+- [Een sleutelkluis voor Azure Disk Encryption maken en configureren](disk-encryption-key-vault.md)
 
 

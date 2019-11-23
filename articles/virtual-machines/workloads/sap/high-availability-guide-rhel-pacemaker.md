@@ -108,9 +108,9 @@ De volgende items worden voorafgegaan door een **[A]** : van toepassing op alle 
 
    > [!IMPORTANT]
    > We raden u aan de volgende versies van de Azure Fence-agent (of hoger) voor klanten te laten profiteren van een snellere failover, als het stoppen van een resource mislukt of als de cluster knooppunten niet meer kunnen communiceren.  
-   > RHEL 7,6: Fence-agents-4.2.1 -11. EL7 _ 6,8  
-   > RHEL 7,5: Fence-agents-4.0.11 -86. EL7 _ 5,8  
-   > RHEL 7,4: Fence-agents-4.0.11 -66. EL7 _ 4.12  
+   > RHEL 7,6: omheining-agents-4.2.1-11. el7_6.8  
+   > RHEL 7,5: omheining-agents-4.0.11-86. el7_5.8  
+   > RHEL 7,4: omheining-agents-4.0.11-66. el7_4.12  
    > Zie voor meer informatie [Azure VM die wordt uitgevoerd als een RHEL-lid van een cluster met hoge Beschik baarheid neemt erg veel tijd in beslag om te worden geomheiningd of mislukt het uitzetten van een storing of een time-out voordat de virtuele machine wordt afgesloten](https://access.redhat.com/solutions/3408711).
 
    Controleer de versie van de Azure Fence-agent. Indien nodig moet u deze bijwerken naar een versie die gelijk is aan of hoger dan de hierboven vermelde.
@@ -206,7 +206,7 @@ Het stonith instellen-apparaat maakt gebruik van een Service-Principal te autori
 1. Klik op App-registraties
 1. Klik op nieuwe registratie
 1. Voer een naam in, selecteer alleen accounts in deze organisatie Directory 
-2. Selecteer het toepassings type ' Web ', voer een aanmeldings-URL in (bijvoorbeeld http:\//localhost) en klik op toevoegen.  
+2. Selecteer het toepassings type ' Web ', voer een aanmeldings-URL in (bijvoorbeeld http:\//localhost) en klik op toevoegen  
    De aanmeldings-URL wordt niet gebruikt en kan geldige URL zijn
 1. Selecteer certificaten en geheimen en klik vervolgens op nieuw client geheim
 1. Voer een beschrijving in voor een nieuwe sleutel, selecteer nooit verloopt en klik op toevoegen
@@ -265,7 +265,7 @@ sudo pcs property set stonith-timeout=900
 Gebruik de volgende opdracht om het Fence-apparaat te configureren.
 
 > [!NOTE]
-> De optie pcmk_host_map is alleen vereist in de opdracht als de RHEL-hostnamen en de namen van de Azure-knoop punten niet identiek zijn. Raadpleeg de sectie vet in de opdracht.
+> De optie pcmk_host_map is alleen vereist in de opdracht als de hostnamen van de RHEL en de namen van Azure-knoop punten niet identiek zijn. Raadpleeg de sectie vet in de opdracht.
 
 <pre><code>sudo pcs stonith create rsc_st_azure fence_azure_arm login="<b>login ID</b>" passwd="<b>password</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" subscriptionId="<b>subscription id</b>" <b>pcmk_host_map="prod-cl1-0:10.0.0.6;prod-cl1-1:10.0.0.7"</b> power_timeout=240 pcmk_reboot_timeout=900</code></pre>
 

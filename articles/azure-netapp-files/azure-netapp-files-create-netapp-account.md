@@ -48,13 +48,13 @@ U moet uw abonnement ook hebben geregistreerd voor het gebruik van de NetApp-res
      Kies een abonnement uit uw bestaande abonnementen.
    * **Resourcegroep**   
      Gebruik een bestaande resourcegroep of maak een nieuwe.
-   * **Location**  
+   * **Locatie**  
      Selecteer de regio waarin u wilt dat het account en zijn onderliggende resources zich bevinden.  
 
      ![Nieuw NetApp-account](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. Klik op **Create**.     
+5. Klik op **Maken**.     
    Het NetApp-account dat u hebt gemaakt, verschijnt nu in de Azure NetApp Files-blade. 
 
 > [!NOTE] 

@@ -70,7 +70,7 @@ In deze sectie maakt u een python-console-app waarmee de meta gegevens van de lo
    from iothub_service_client import IoTHubDeviceTwin, IoTHubError
    ```
 
-4. Voeg de volgende code toe. Vervang `[IoTHub Connection String]` door de IoT hub-connection string die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang `[Device Id]` door de apparaat-ID die u hebt geregistreerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende code toe. Vervang `[IoTHub Connection String]` door de IoT hub-connection string die u hebt gekopieerd in [de IOT hub-Connection String ophalen](#get-the-iot-hub-connection-string). Vervang `[Device Id]` door de apparaat-ID die u hebt geregistreerd in [een nieuw apparaat registreren in IOT hub](#register-a-new-device-in-the-iot-hub).
   
     ```python
     CONNECTION_STRING = "[IoTHub Connection String]"
@@ -130,7 +130,7 @@ In deze sectie maakt u een python-console-app waarmee de meta gegevens van de lo
 
     Het **register** object bevat alle methoden die nodig zijn om te communiceren met apparaatdubbels van de service. De code initialiseert eerst het **register** object, werkt het apparaat vervolgens bij voor **deviceId**en voert ten slotte twee query's uit. De eerste selecteert alleen het apparaat apparaatdubbels van apparaten die zich in de **Redmond43** -installatie bevinden en de tweede verfijnt de query om alleen de apparaten te selecteren die ook zijn verbonden via een mobiel netwerk.
 
-6. Voeg de volgende code toe aan het einde van **AddTagsAndQuery.py** om de functie **iothub_service_sample_run** te implementeren:
+6. Voeg de volgende code toe aan het einde van **AddTagsAndQuery.py** om de **iothub_service_sample_run** -functie te implementeren:
 
     ```python
     if __name__ == '__main__':
@@ -171,7 +171,7 @@ In deze sectie maakt u een python-console-app die verbinding maakt met uw hub al
     from azure.iot.device import IoTHubModuleClient
     ```
 
-4. Voeg de volgende code toe. Vervang de tijdelijke aanduiding voor @no__t 0 door het apparaat dat connection string u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
+4. Voeg de volgende code toe. Vervang de waarde van de tijdelijke aanduiding `[IoTHub Device Connection String]` door het apparaat dat connection string u hebt gekopieerd in [een nieuw apparaat registreren in de IOT-hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "[IoTHub Device Connection String]"
@@ -212,7 +212,7 @@ In deze sectie maakt u een python-console-app die verbinding maakt met uw hub al
 
     Het **client** object bevat alle methoden die u nodig hebt om te communiceren met apparaatdubbels van het apparaat. De vorige code, na het initialiseren van het **client** object, haalt het apparaat op voor uw apparaat en werkt de gerapporteerde eigenschap bij met de verbindings gegevens.
 
-6. Voeg de volgende code toe aan het einde van **ReportConnectivity.py** om de functie **iothub_client_sample_run** te implementeren:
+6. Voeg de volgende code toe aan het einde van **ReportConnectivity.py** om de **iothub_client_sample_run** -functie te implementeren:
 
     ```python
     if __name__ == '__main__':

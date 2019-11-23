@@ -56,7 +56,7 @@ Om de integratie van Adobe Experience Manager te configureren in Azure AD, moet 
 
 **Ga als volgt te werk om Adobe Experience Manager vanuit de galerie toe te voegen:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 
@@ -183,7 +183,7 @@ Voor het configureren van Azure AD-eenmalige aanmelding met [toepassingsnaam], m
 
     ![De knop voor enkelvoudige aanmelding configureren](./media/adobeexperiencemanager-tutorial/tutorial_adobeexperiencemanager_admin4.png)
 
-    a. Typ **/** in het vak **Path**.
+    a. Typ **in het vak /Path**.
 
     b. Typ in het vak **IDP URL** de waarde voor **Aanmeldings-URL** die u hebt gekopieerd uit de Azure-portal.
 

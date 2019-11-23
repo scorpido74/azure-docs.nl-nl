@@ -23,11 +23,11 @@ In dit artikel wordt een kort overzicht geboden van Gremlin en worden de Gremlin
 
 In de volgende tabel ziet u populaire Gremlin-stuurprogramma’s die u kunt gebruiken met Azure Cosmos DB:
 
-| Downloaden | Bron | Aan de slag | Ondersteunde connectorversie |
+| Download | Bron | Aan de slag | Ondersteunde connectorversie |
 | --- | --- | --- | --- |
-| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET in GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Grafiek maken met behulp van .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
+| [.NET](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Gremlin.NET on GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [Grafiek maken met behulp van .NET](create-graph-dotnet.md) | 3.4.0-RC2 |
 | [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](https://tinkerpop.apache.org/javadocs/current/full/) | [Grafiek maken met behulp van Java](create-graph-java.md) | 3.2.0+ |
-| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript in GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Grafiek maken met behulp van Node.js](create-graph-nodejs.md) | 3.3.4 + |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Gremlin-JavaScript in GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-javascript) | [Grafiek maken met behulp van Node.js](create-graph-nodejs.md) | 3.3.4+ |
 | [Python](https://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Gremlin-Python in GitHub](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Grafiek maken met behulp van Python](create-graph-python.md) | 3.2.7 |
 | [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Gremlin-PHP in GitHub](https://github.com/PommeVerte/gremlin-php) | [Grafiek maken met behulp van PHP](create-graph-php.md) | 3.1.0 |
 | [Gremlin-console](https://tinkerpop.apache.org/downloads.html) | [TinkerPop-documenten](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Grafiek maken met behulp van de Gremlin-console](create-graph-gremlin-console.md) | 3.2.0 + |
@@ -37,7 +37,7 @@ TinkerPop is een standaard die een breed bereik aan grafiektechnologieën beslaa
 
 In de volgende tabel worden de TinkerPop-functies vermeld die zijn geïmplementeerd met Azure Cosmos DB: 
 
-| Category | Azure Cosmos DB-implementatie |  Opmerkingen | 
+| Categorie | Azure Cosmos DB-implementatie |  Opmerkingen | 
 | --- | --- | --- |
 | Graph-functies | Biedt persistentie en ConcurrentAccess. Ontworpen om transacties te ondersteunen | Computermethoden kunnen worden geïmplementeerd via de Spark-connector. |
 | Variabele functies | Biedt ondersteuning voor Boolean, Integer, Byte, Double, Float, Integer, Long, String | Biedt ondersteuning voor primitieve typen, is compatibel met complexe typen via een gegevensmodel |
@@ -93,7 +93,7 @@ De eigenschappen die worden gebruikt door GraphSON voor hoek punten, worden hier
 
 | Eigenschap | Beschrijving | 
 | --- | --- | --- |
-| `id` | De id voor het hoekpunt. Moet uniek zijn (in combi natie met de waarde van `_partition`, indien van toepassing). Als er geen waarde wordt opgegeven, wordt deze automatisch geleverd met een GUID | 
+| `id` | De id voor het hoekpunt. Moet uniek zijn (in combi natie met de waarde van `_partition` indien van toepassing). Als er geen waarde wordt opgegeven, wordt deze automatisch geleverd met een GUID | 
 | `label` | Het label van het hoekpunt. Deze eigenschap wordt gebruikt om het entiteits type te beschrijven. |
 | `type` | Wordt gebruikt om hoekpunten te onderscheiden van niet-Graph-documenten |
 | `properties` | Groep door de gebruiker gedefinieerde eigenschappen die zijn gekoppeld aan het hoekpunt. Elke eigenschap kan meerdere waarden hebben. |
@@ -150,12 +150,12 @@ We gaan nu de Gremlin-stappen bekijken die worden ondersteund in Azure Cosmos DB
 | `sample` | Wordt gebruikt voor voorbeeldresultaten van de traversal | [stap: sample](https://tinkerpop.apache.org/docs/3.3.2/reference/#sample-step) |
 | `select` | Wordt gebruikt voor projectresultaten van de traversal |  [stap: select](https://tinkerpop.apache.org/docs/3.3.2/reference/#select-step) |
 | `store` | Wordt gebruikt voor niet-blokkerende combinaties van de traversal | [stap: store](https://tinkerpop.apache.org/docs/3.3.2/reference/#store-step) |
-| `TextP.startingWith(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de stap @no__t 0 om een eigenschap met het begin van een opgegeven teken reeks te vergelijken | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.endingWith(string)` |  Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de stap @no__t 0, zodat deze overeenkomt met een eigenschap met het einde van een opgegeven teken reeks | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.containing(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de stap @no__t 0 om een eigenschap met de inhoud van een bepaalde teken reeks te vergelijken | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notStartingWith(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de stap @no__t 0 om een eigenschap die niet begint met een opgegeven teken reeks te vergelijken | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notEndingWith(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de stap @no__t 0 om een eigenschap die niet eindigt met een opgegeven teken reeks te vergelijken | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
-| `TextP.notContaining(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de stap @no__t 0 om een eigenschap te vinden die geen bepaalde teken reeks bevat | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.startingWith(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de `has()` stap die overeenkomt met een eigenschap met het begin van een bepaalde teken reeks | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.endingWith(string)` |  Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de `has()` stap die overeenkomt met een eigenschap met het einde van een opgegeven teken reeks | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.containing(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de `has()` stap om een eigenschap met de inhoud van een bepaalde teken reeks te vergelijken | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notStartingWith(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de `has()` stap die overeenkomt met een eigenschap die niet begint met een opgegeven teken reeks | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notEndingWith(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de `has()` stap die overeenkomt met een eigenschap die niet eindigt met een opgegeven teken reeks | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
+| `TextP.notContaining(string)` | Functie voor teken reeks filtering. Deze functie wordt gebruikt als een predikaat voor de `has()` stap die overeenkomt met een eigenschap die geen bepaalde teken reeks bevat | [TextP-predikaten](https://tinkerpop.apache.org/docs/3.4.0/reference/#a-note-on-predicates) |
 | `tree` | Paden van een hoekpunt combineren in een boomstructuur | [stap: tree](https://tinkerpop.apache.org/docs/3.3.2/reference/#tree-step) |
 | `unfold` | Een iterator uitvoeren als stap| [stap: unfold](https://tinkerpop.apache.org/docs/3.3.2/reference/#unfold-step) |
 | `union` | Resultaten van meerdere traversals samenvoegen| [stap: union](https://tinkerpop.apache.org/docs/3.3.2/reference/#union-step) |

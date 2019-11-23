@@ -118,7 +118,7 @@ Hieronder vindt u een hand leiding voor het instellen van een Azure pipelines-re
 
     d.  Selecteer in de vervolg keuzelijst actie de optie **resource groep maken of bijwerken**.
 
-    e.  Selecteren **...** in het veld **sjabloon** . Blader naar het Azure Resource Manager sjabloon maken via de stap **arm-sjabloon importeren** in [een resource manager-sjabloon maken voor elke omgeving](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Zoek naar dit bestand in de map `<FactoryName>` van de vertakking `adf_publish`.
+    e.  Selecteren **...** in het veld **sjabloon** . Blader naar het Azure Resource Manager sjabloon maken via de stap **arm-sjabloon importeren** in [een resource manager-sjabloon maken voor elke omgeving](continuous-integration-deployment.md#create-a-resource-manager-template-for-each-environment). Zoek naar dit bestand in de map `<FactoryName>` van de `adf_publish` vertakking.
 
     f.  Selecteren **...** in het **veld sjabloon parameters.** om het parameter bestand te kiezen. Kies het juiste bestand, afhankelijk van of u een kopie hebt gemaakt of gebruikmaakt van het standaard bestand *ARMTemplateParametersForFactory. json*.
 
@@ -176,7 +176,7 @@ Er zijn twee manieren om geheimen af te handelen:
 
 #### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Machtigingen verlenen aan de Azure pipelines-agent
 
-De Azure Key Vault taak kan mislukken met een fout bericht over geweigerde toegang als de juiste machtigingen niet aanwezig zijn. Down load de logboeken voor de release en zoek het bestand `.ps1` met de opdracht om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren, of u kunt de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. **Get** en **List** zijn de mini maal vereiste machtigingen.
+De Azure Key Vault taak kan mislukken met een fout bericht over geweigerde toegang als de juiste machtigingen niet aanwezig zijn. Down load de logboeken voor de release en zoek het `.ps1` bestand met de opdracht om machtigingen te verlenen aan de Azure pipelines-agent. U kunt de opdracht rechtstreeks uitvoeren, of u kunt de principal-ID uit het bestand kopiëren en het toegangs beleid hand matig toevoegen in de Azure Portal. **Get** en **List** zijn de mini maal vereiste machtigingen.
 
 ### <a name="update-active-triggers"></a>Actieve triggers bijwerken
 
@@ -196,7 +196,7 @@ De implementatie kan mislukken als u probeert actieve triggers bij te werken. Al
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-U kunt soort gelijke stappen volgen (met de functie `Start-AzDataFactoryV2Trigger`) om de triggers na de implementatie opnieuw te starten.
+U kunt vergelijk bare stappen volgen (met de functie `Start-AzDataFactoryV2Trigger`) om de triggers na de implementatie opnieuw te starten.
 
 > [!IMPORTANT]
 > In doorlopende integratie-en implementatie scenario's moet het Integration Runtime type in verschillende omgevingen hetzelfde zijn. Als u bijvoorbeeld een *zelf-hostend* Integration runtime (IR) in de ontwikkel omgeving hebt, moet dezelfde IR van het type zelf worden *gehost* in andere omgevingen, zoals test en productie. En als u integratie-runtime in meerdere fasen deelt, moet u de Integration Runtimes als *gekoppelde zelf-hostende* in alle omgevingen configureren, zoals ontwikkeling, testen en productie.
@@ -341,8 +341,8 @@ Hier volgen enkele richt lijnen die u kunt gebruiken wanneer u het bestand met a
       * `=` houdt in dat de huidige waarde wordt ingesteld als de standaard waarde voor de para meter.
       * bij `-` wordt niet de standaard waarde voor de para meter bewaard.
       * `|` is een speciaal geval voor geheimen van Azure Key Vault voor verbindings reeksen of sleutels.
-   * `<name>` de naam van de para meter. Als deze leeg is, wordt de naam van de eigenschap gebruikt. Als de waarde begint met een `-`-teken, wordt de naam Inge kort. `AzureStorage1_properties_typeProperties_connectionString` zou bijvoorbeeld worden inge kort tot `AzureStorage1_connectionString`.
-   * `<stype>` is het type para meter. Als `<stype>` leeg is, is het standaard type `string`. Ondersteunde waarden: `string`, `bool`, `number`, `object` en `securestring`.
+   * `<name>` de naam van de para meter. Als deze leeg is, wordt de naam van de eigenschap gebruikt. Als de waarde begint met een `-` teken, wordt de naam Inge kort. `AzureStorage1_properties_typeProperties_connectionString` zou bijvoorbeeld worden inge kort tot `AzureStorage1_connectionString`.
+   * `<stype>` is het type para meter. Als `<stype>` leeg is, is het standaard type `string`. Ondersteunde waarden: `string`, `bool`, `number`, `object`en `securestring`.
 * Wanneer u een matrix opgeeft in het definitie bestand, geeft u aan dat de overeenkomende eigenschap in de sjabloon een matrix is. Data Factory doorloopt alle objecten in de matrix met behulp van de definitie die is opgegeven in het Integration Runtime-object van de matrix. Het tweede object, een teken reeks, wordt de naam van de eigenschap, die wordt gebruikt als de naam voor de para meter voor elke iteratie.
 * Het is niet mogelijk een definitie te hebben die specifiek is voor een resource-exemplaar. Elke wille keurige definitie is van toepassing op alle resources van dat type.
 * Standaard zijn alle beveiligde teken reeksen, zoals Key Vault geheimen en beveiligde teken reeksen, zoals verbindings reeksen, sleutels en tokens, para meters.
@@ -414,7 +414,7 @@ Hieronder volgt een uitleg van de manier waarop de bovenstaande sjabloon is same
 
 #### <a name="pipelines"></a>Pijplijnen
     
-* Elke eigenschap in het pad activities/typeProperties/waitTimeInSeconds is para meters. Alle activiteiten in een pijp lijn die een eigenschap op code niveau met de naam `waitTimeInSeconds` hebben (bijvoorbeeld de activiteit `Wait`), worden als een getal met een standaard naam ingesteld. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
+* Elke eigenschap in het pad activities/typeProperties/waitTimeInSeconds is para meters. Elke activiteit in een pijp lijn met de naam `waitTimeInSeconds`, bijvoorbeeld de `Wait` activiteit), wordt als een getal met een standaard naam vastgelegd. Maar heeft geen standaard waarde in de Resource Manager-sjabloon. Het is een verplichte invoer tijdens de implementatie van Resource Manager.
 * Op dezelfde manier is een eigenschap met de naam `headers` (bijvoorbeeld in een `Web`-activiteit) para meters van het type `object` (JObject). Het heeft een standaard waarde. Dit is dezelfde waarde als in de bron-Factory.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
@@ -423,13 +423,13 @@ Hieronder volgt een uitleg van de manier waarop de bovenstaande sjabloon is same
 
 #### <a name="triggers"></a>Triggers
 
-* Onder `typeProperties` zijn twee eigenschappen para meters. De eerste is `maxConcurrency`, die is opgegeven om een standaard waarde te hebben en is van het type`string`. Deze heeft de standaard parameter naam `<entityName>_properties_typeProperties_maxConcurrency`.
-* De eigenschap `recurrence` is ook para meters. Hieronder worden alle eigenschappen op dat niveau opgegeven om para meters te worden ingesteld als teken reeksen, met standaard waarden en parameter namen. Een uitzonde ring is de eigenschap `interval`, die als para meters is aangestuurd als het nummer type en met de parameter naam met `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Op dezelfde manier is de eigenschap `freq` een teken reeks en wordt de para meter in de vorm van een teken reeks. De eigenschap `freq` is echter para meters zonder standaard waarde. De naam is inge kort en achtervoegsel. Bijvoorbeeld `<entityName>_freq`.
+* Onder `typeProperties`zijn twee eigenschappen para meters. De eerste is `maxConcurrency`, die is opgegeven om een standaard waarde te hebben en is van het type`string`. Deze heeft de standaard parameter naam `<entityName>_properties_typeProperties_maxConcurrency`.
+* De eigenschap `recurrence` is ook para meters. Hieronder worden alle eigenschappen op dat niveau opgegeven om para meters te worden ingesteld als teken reeksen, met standaard waarden en parameter namen. Een uitzonde ring is de eigenschap `interval`, die para meters is als het nummer type en met de parameter naam die is gebruikt bij `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Op dezelfde manier is de eigenschap `freq` een teken reeks en wordt de para meter als teken reeks. De eigenschap `freq` is echter para meters zonder standaard waarde. De naam is inge kort en achtervoegsel. Bijvoorbeeld `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
 * Gekoppelde services zijn uniek. Omdat gekoppelde services en gegevens sets een breed scala van typen hebben, kunt u type-specifieke aanpassing opgeven. In dit voor beeld worden alle gekoppelde services van het type `AzureDataLakeStore`, een specifieke sjabloon toegepast en voor alle andere sjablonen (via \*) wordt een andere sjabloon toegepast.
-* De eigenschap `connectionString` wordt ingesteld als een `securestring`-waarde, heeft geen standaard waarde en heeft een kortere parameter naam die wordt gebruikt in plaats van `connectionString`.
+* De eigenschap `connectionString` wordt para meters als een `securestring`-waarde, heeft geen standaard waarde en heeft een kortere parameter naam die wordt gebruikt voor `connectionString`.
 * De eigenschap `secretAccessKey` gebeurt in een `AzureKeyVaultSecret` (bijvoorbeeld in een `AmazonS3` gekoppelde service). De para meter wordt automatisch ingesteld als een Azure Key Vault geheim en opgehaald uit de geconfigureerde sleutel kluis. U kunt ook de sleutel kluis zelf para meters.
 
 #### <a name="datasets"></a>Gegevenssets
@@ -683,7 +683,7 @@ Als u een Factory implementeert voor productie en beseft dat er een fout is die 
 
 6.  Zodra de oplossing is geverifieerd, klikt u op **arm-sjabloon exporteren** om de sjabloon Hot-Fix Resource Manager te downloaden.
 
-7.  Deze build hand matig in de adf_publish-vertakking controleren.
+7.  Check deze build hand matig in op de adf_publish vertakking.
 
 8.  Als u uw release pijplijn hebt geconfigureerd om automatisch te activeren op basis van adf_publish check-ins, wordt een nieuwe release automatisch gestart. U kunt ook hand matig een release in de wachtrij plaatsen.
 

@@ -25,15 +25,15 @@ Azure Cosmos DB Graph engine voldoet aan de specificaties van [Apache TinkerPop]
 
 * ***[Gremlin Bytecode](http://tinkerpop.apache.org/docs/current/tutorials/gremlin-language-variants/)*** is een programmeertaal-agnostische specificatie voor het doorkruisen van grafieken. Cosmos DB Graph ondersteunt dit nog niet. Gebruik ```GremlinClient.SubmitAsync()``` en geef passing door als een teken reeks.
 
-* de kardinaliteit van de ***```property(set, 'xyz', 1)```-*** set wordt vandaag niet ondersteund. Gebruik in plaats daarvan ```property(list, 'xyz', 1)```.
+* ***```property(set, 'xyz', 1)```*** set kardinaliteit wordt vandaag niet ondersteund. Gebruik in plaats daarvan ```property(list, 'xyz', 1)```.
 
-* met ***```match()```*** kunt u een query uitvoeren op grafieken met declaratieve patroon vergelijking. Deze mogelijkheid is niet beschikbaar.
+* ***```match()```*** kunt query's uitvoeren op grafieken met declaratieve patroon vergelijking. Deze mogelijkheid is niet beschikbaar.
 
 * ***Objecten als eigenschappen*** op hoek punten of randen worden niet ondersteund. Eigenschappen kunnen alleen primitieve typen of matrices zijn.
 
 * ***Sorteren op matrix eigenschappen*** ```.order().by(<array property>)``` wordt niet ondersteund. Alleen sorteren op primitieve typen wordt ondersteund.
 
-* ***Niet-PRIMITIEVE JSON-typen*** worden niet ondersteund. Gebruik ```string```, ```number``` of ```true``` @ no__t-3 @ no__t-4-typen. ```null```-waarden worden niet ondersteund. 
+* ***Niet-PRIMITIEVE JSON-typen*** worden niet ondersteund. Gebruik ```string```, ```number```of ```true```/```false``` typen. ```null``` waarden worden niet ondersteund. 
 
 * ***GraphSONv3*** serializer is momenteel niet beschikbaar.
 

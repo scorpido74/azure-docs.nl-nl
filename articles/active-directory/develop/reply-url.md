@@ -28,15 +28,15 @@ In de volgende tabel ziet u het maximum aantal omleidings-Uri's dat u kunt toevo
 
 | Accounts waarbij wordt aangemeld | Maximum aantal omleidings-Uri's | Beschrijving |
 |--------------------------|---------------------------------|-------------|
-| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience`-veld in het manifest van de toepassing is ingesteld op ofwel *AzureADMyOrg* of *AzureADMultipleOrgs* |
-| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience`-veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
+| Micro soft-werk-of school accounts in de Tenant van de Azure Active Directory van een organisatie (Azure AD) | 256 | `signInAudience` veld in het toepassings manifest is ingesteld op ofwel *AzureADMyOrg* of *AzureADMultipleOrgs* |
+| Persoonlijke micro soft-accounts en werk-en school accounts | 100 | `signInAudience` veld in het manifest van de toepassing is ingesteld op *AzureADandPersonalMicrosoftAccount* |
 
 ## <a name="maximum-uri-length"></a>Maximale URI-lengte
 
 U kunt Maxi maal 256 tekens gebruiken voor elke omleidings-URI die u toevoegt aan een app-registratie.
 
 ## <a name="supported-schemes"></a>Ondersteunde schema's
-Het Azure AD-toepassings model ondersteunt nu HTTP-en HTTPS-schema's voor apps die zich aanmelden bij micro soft-werk-of school accounts in de Azure Active Directory (Azure AD)-Tenant van een organisatie. Het veld `signInAudience` in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs*. Voor de apps die persoonlijke micro soft-accounts en werk-en school accounts aanmelden (@no__t 0 is ingesteld op *AzureADandPersonalMicrosoftAccount*), is alleen https-schema toegestaan.
+Het Azure AD-toepassings model ondersteunt nu HTTP-en HTTPS-schema's voor apps die zich aanmelden bij micro soft-werk-of school accounts in de Azure Active Directory (Azure AD)-Tenant van een organisatie. Dat is `signInAudience` veld in het toepassings manifest is ingesteld op *AzureADMyOrg* of *AzureADMultipleOrgs*. Voor de apps die persoonlijke micro soft-accounts en werk-en school accounts aanmelden (die `signInAudience` is ingesteld op *AzureADandPersonalMicrosoftAccount*), is alleen https-schema toegestaan.
 
 > [!NOTE]
 > Met de nieuwe [app-registraties](https://go.microsoft.com/fwlink/?linkid=2083908) -ervaring kunnen ontwikkel aars geen uri's toevoegen met een HTTP-schema in de gebruikers interface. Het toevoegen van HTTP-Uri's voor apps die aanmelden op werk-of school accounts worden alleen ondersteund via de manifest editor van de app. Nieuwe apps kunnen geen HTTP-schema's gebruiken in de omleidings-URI. Oudere apps die HTTP-schema's in omleidings-Uri's bevatten, blijven echter werken. Ontwikkel aars moeten HTTPS-schema's gebruiken in de omleidings-Uri's.

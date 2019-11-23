@@ -151,7 +151,7 @@ $ az container show --resource-group myResourceGroup --name appcontainer --query
 10.0.0.4
 ```
 
-Stel nu `CONTAINER_GROUP_IP` in op het IP-adres dat u hebt opgehaald met de opdracht `az container show` en voer de volgende `az container create`-opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en voert `wget` uit op basis van het privé subnet IP-adres van de container groep.
+Stel nu `CONTAINER_GROUP_IP` in op het IP-adres dat u hebt opgehaald met de opdracht `az container show` en voer de volgende `az container create` opdracht uit. Deze tweede container, *commchecker*, voert een alpine Linux-installatie kopie uit en voert `wget` uit op basis van het IP-adres van het particuliere subnet van de container groep.
 
 ```azurecli
 CONTAINER_GROUP_IP=<container-group-IP-here>
@@ -166,7 +166,7 @@ az container create \
     --subnet aci-subnet
 ```
 
-Nadat deze tweede container implementatie is voltooid, haalt u de logboeken op zodat u de uitvoer van de `wget`-opdracht die het programma hebt uitgevoerd, kunt zien:
+Nadat deze tweede container implementatie is voltooid, haalt u de logboeken op zodat u de uitvoer van de `wget` opdracht die deze heeft uitgevoerd, kunt zien:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name commchecker
@@ -180,17 +180,17 @@ Connecting to 10.0.0.4 (10.0.0.4:80)
 index.html           100% |*******************************|  1663   0:00:00 ETA
 ```
 
-In de logboek uitvoer moet worden aangegeven dat `wget` verbinding kan maken met het index bestand van de eerste container met behulp van het bijbehorende privé-IP-adres op het lokale subnet. Het netwerk verkeer tussen de twee container groepen bleef binnen het virtuele netwerk.
+De logboek uitvoer geeft aan dat `wget` verbinding kon maken en het index bestand van de eerste container kunt downloaden met behulp van het privé-IP-adres op het lokale subnet. Het netwerk verkeer tussen de twee container groepen bleef binnen het virtuele netwerk.
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Implementeren in een bestaand virtueel netwerk-YAML
 
 U kunt ook een container groep implementeren in een bestaand virtueel netwerk met behulp van een YAML-bestand. Als u wilt implementeren in een subnet in een virtueel netwerk, geeft u verschillende extra eigenschappen op in de YAML:
 
-* `ipAddress`: De IP-adres instellingen voor de container groep.
-  * `ports`: De poorten die moeten worden geopend, indien van toepassing.
-  * `protocol`: Het Protocol (TCP of UDP) voor de geopende poort.
-* `networkProfile`: Hiermee geeft u netwerk instellingen op, zoals het virtuele netwerk en het subnet voor een Azure-resource.
-  * `id`: De volledige Resource Manager-Resource-ID van de `networkProfile`.
+* `ipAddress`: de IP-adres instellingen voor de container groep.
+  * `ports`: de poorten die moeten worden geopend, indien van toepassing.
+  * `protocol`: het Protocol (TCP of UDP) voor de geopende poort.
+* `networkProfile`: Hiermee worden netwerk instellingen opgegeven, zoals het virtuele netwerk en het subnet voor een Azure-resource.
+  * `id`: de volledige Resource Manager-Resource-ID van de `networkProfile`.
 
 Als u een container groep wilt implementeren in een virtueel netwerk met een YAML-bestand, moet u eerst de ID van het netwerk profiel ophalen. Voer de opdracht [AZ Network profile list][az-network-profile-list] uit en geef de naam op van de resource groep die het virtuele netwerk en het overgedragen subnet bevat.
 
@@ -205,7 +205,7 @@ $ az network profile list --resource-group myResourceGroup --query [0].id --outp
 /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-aci-subnet
 ```
 
-Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. Vervang onder `networkProfile` de waarde voor de `id` door de ID die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
+Wanneer u de netwerk profiel-ID hebt, kopieert u de volgende YAML naar een nieuw bestand met de naam *vnet-Deploy-ACI. yaml*. Vervang onder `networkProfile`de `id` waarde met de ID die u zojuist hebt opgehaald en sla het bestand op. Met deze YAML maakt u een container groep met de naam *appcontaineryaml* in uw virtuele netwerk.
 
 ```YAML
 apiVersion: '2018-09-01'
@@ -236,7 +236,7 @@ tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de naam van het yaml-bestand op voor de para meter `--file`:
+Implementeer de container groep met de opdracht [AZ container Create][az-container-create] en geef de yaml-bestands naam op voor de para meter `--file`:
 
 ```azurecli
 az container create --resource-group myResourceGroup --file vnet-deploy-aci.yaml
@@ -271,7 +271,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 Voor de eerste preview van deze functie zijn verschillende extra opdrachten nodig om de netwerk resources te verwijderen die u eerder hebt gemaakt. Als u de voorbeeld opdrachten in vorige secties van dit artikel hebt gebruikt om uw virtuele netwerk en subnet te maken, kunt u het volgende script gebruiken om die netwerk resources te verwijderen.
 
-Voordat u het script uitvoert, stelt u de variabele `RES_GROUP` in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam van de `aci-vnet` niet eerder hebt gebruikt. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
+Voordat u het script uitvoert, stelt u de `RES_GROUP`-variabele in op de naam van de resource groep met het virtuele netwerk en het subnet dat moet worden verwijderd. Werk de naam van het virtuele netwerk bij als u de naam van de `aci-vnet` eerder hebt voorgesteld. Het script is geformatteerd voor de bash-shell. Als u de voor keur geeft aan een andere shell, zoals Power shell of opdracht prompt, moet u de toewijzings-en toegangs rechten van de variabele dienovereenkomstig aanpassen.
 
 > [!WARNING]
 > Met dit script worden resources verwijderd! Hiermee verwijdert u het virtuele netwerk en alle subnetten die het bevat. Zorg ervoor dat u *een* van de resources in het virtuele netwerk niet meer nodig hebt, met inbegrip van de subnetten die het bevat, voordat u dit script uitvoert. Nadat **deze bronnen zijn verwijderd, kunnen ze onherstelbaar zijn**.
@@ -292,7 +292,8 @@ az network vnet delete --resource-group $RES_GROUP --name aci-vnet
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een nieuw virtueel netwerk, subnet, netwerk profiel en container groep wilt implementeren met behulp van een resource manager-sjabloon, raadpleegt u [Create een Azure-container groep met VNet @ no__t-1.
+Zie [een Azure-container groep met VNet maken](https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
+)voor het implementeren van een nieuw virtueel netwerk, subnet, netwerk profiel en container groep met behulp van een resource manager-sjabloon.
 
 In dit artikel worden kortere bronnen en functies voor het virtuele netwerk beschreven. De Azure Virtual Network-documentatie behandelt deze onderwerpen uitgebreid:
 

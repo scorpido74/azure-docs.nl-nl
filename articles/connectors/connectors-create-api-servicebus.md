@@ -48,7 +48,7 @@ U kunt triggers gebruiken die reacties ophalen van Service Bus en de uitvoer bes
 
 Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Service Bus-naam ruimte.
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 
 1. Ga naar uw Service Bus *naam ruimte*. Selecteer op de pagina naam ruimte onder **instellingen**de optie **beleid voor gedeelde toegang**. Onder **claims**controleert u of u machtigingen voor het **beheren** van die naam ruimte hebt.
 
@@ -63,7 +63,7 @@ Controleer of uw logische app machtigingen heeft om toegang te krijgen tot uw Se
       ![Service Bus naam ruimte connection string kopiëren](./media/connectors-create-api-azure-service-bus/find-service-bus-connection-string.png)
 
    > [!TIP]
-   > Als u wilt controleren of uw connection string is gekoppeld aan uw Service Bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de connection string voor de `EntityPath`  parameter. Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
+   > Als u wilt controleren of uw connection string is gekoppeld aan uw Service Bus naam ruimte of een bericht entiteit, zoals een wachtrij, zoekt u de connection string voor de para meter `EntityPath` . Als u deze para meter vindt, is de connection string voor een specifieke entiteit en is de juiste teken reeks niet geschikt voor gebruik met uw logische app.
 
 ## <a name="add-service-bus-trigger"></a>Service Bus trigger toevoegen
 

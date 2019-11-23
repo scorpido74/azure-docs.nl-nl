@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Integratie met Pega-systemen Azure Active Directory | Microsoft Docs'
+title: 'Zelf studie: integratie Azure Active Directory met Pega-systemen | Microsoft Docs'
 description: In deze zelf studie leert u hoe u eenmalige aanmelding kunt configureren tussen Azure Active Directory-en Pega-systemen.
 services: active-directory
 documentationCenter: na
@@ -22,7 +22,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72026800"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Zelfstudie: Integratie met Pega-systemen Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Zelf studie: integratie Azure Active Directory met Pega-systemen
 
 In deze zelf studie leert u hoe u Pega-systemen integreert met Azure Active Directory (Azure AD).
 
@@ -69,7 +69,7 @@ Als u de integratie van Pega-systemen in azure AD wilt instellen, moet u Pega-sy
 
      ![Zoekresultaten](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configureren en Azure AD eenmalige aanmelding testen
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD-eenmalige aanmelding configureren en testen
 
 In deze sectie kunt u eenmalige aanmelding voor Azure AD configureren en testen met Pega-systemen met behulp van een test gebruiker met de naam Julia Simon.
 Om eenmalige aanmelding in te scha kelen, moet u een relatie tot stand brengen tussen een Azure AD-gebruiker en de bijbehorende gebruiker in Pega-systemen.
@@ -83,7 +83,7 @@ U moet de volgende stappen uitvoeren om eenmalige aanmelding voor Azure AD te co
 5. **[Een test gebruiker voor Pega-systemen maken](#create-a-pega-systems-test-user)** die is gekoppeld aan de Azure AD-weer gave van de gebruiker.
 6. **[Test eenmalige aanmelding](#test-single-sign-on)** om te controleren of de configuratie werkt.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Azure AD eenmalige aanmelding configureren
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD configureren voor eenmalige aanmelding
 
 In deze sectie schakelt u eenmalige aanmelding voor Azure AD in de Azure Portal.
 
@@ -180,7 +180,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 1. Als u eenmalige aanmelding wilt configureren op de **Pega-systemen** , meldt u zich aan bij de Pega-Portal met een beheerders account in een ander browser venster.
 
-2. Selecteer @no__t **maken**-1**sysadmin** > **Authentication Service**:
+2. Selecteer > **sysadmin** **maken** > **Authentication Service**:
 
     ![Verificatie service selecteren](./media/pegasystems-tutorial/tutorial_pegasystems_admin.png)
     
@@ -216,7 +216,7 @@ Voer de volgende stappen uit om eenmalige aanmelding voor Azure AD te configurer
 
 7. Selecteer **Opslaan**.
 
-### <a name="create-an-azure-ad-test-user"></a>Maak een testgebruiker Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Een Azure AD-testgebruiker maken
 
 In deze sectie maakt u een test gebruiker met de naam Julia Simon in de Azure Portal.
 
@@ -234,7 +234,7 @@ In deze sectie maakt u een test gebruiker met de naam Julia Simon in de Azure Po
 
     a. Voer in het vak **Naam** **Britta Simon**in.
   
-    b. Voer in het vak **gebruikers naam** **brittasimon @ \<yourcompanydomain >. \<extension >** in. (Bijvoorbeeld BrittaSimon@contoso.com.)
+    b. Voer in het vak **gebruikers naam** **brittasimon@\<yourcompanydomain >.\<extensie >** in. (Bijvoorbeeld BrittaSimon@contoso.com.)
 
     c. Selecteer **wacht woord weer geven**en noteer de waarde in het vak **wacht woord** .
 
@@ -276,9 +276,9 @@ Nu moet u de configuratie van de eenmalige aanmelding voor Azure AD testen met b
 
 Wanneer u de tegel Pega Systems selecteert in het toegangs venster, moet u automatisch worden aangemeld bij de Pega Systems-instantie waarvoor u SSO hebt ingesteld. Zie voor meer informatie [apps openen en gebruiken in de portal mijn apps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Aanvullende resources
+## <a name="additional-resources"></a>Aanvullende bronnen
 
-- [Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Tutorials for integrating SaaS applications with Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) (Zelfstudies voor het integreren van SaaS-toepassingen met Azure Active Directory)
 
 - [What is application access and single sign-on with Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) (Wat houden toegang tot toepassingen en eenmalige aanmelding met Azure Active Directory in?)
 

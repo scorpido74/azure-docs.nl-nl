@@ -81,4 +81,4 @@ Rollen op dit niveau zijn van toepassing op gebruikers of accounts die taken moe
 [Toegang tot resources beheren met Azure Active Directory groepen](../active-directory/fundamentals/active-directory-manage-groups.md)   
 [Database rollen en-gebruikers beheren](analysis-services-database-users.md)  
 [Serverbeheerders beheren](analysis-services-server-admins.md)  
-[Op rollen gebaseerd toegangsbeheer](../role-based-access-control/overview.md)  
+[Toegangsbeheer op basis van rollen](../role-based-access-control/overview.md)  

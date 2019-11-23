@@ -310,7 +310,7 @@ ms.locfileid: "70100008"
 
 
 Met Microsoft Azure kunt u uw bestaande SAP-toepassing die wordt uitgevoerd op IBM Db2 voor Linux, UNIX en Windows (LUW) migreren naar Azure virtual machines. Met SAP op IBM Db2 voor LUW kunnen beheerders en ontwikkel aars nog steeds gebruikmaken van dezelfde hulpprogram ma's voor ontwikkeling en beheer, die on-premises beschikbaar zijn.
-Algemene informatie over het uitvoeren van SAP Business Suite op IBM Db2 voor LUW vindt u in het SAP Community Network (SCN) <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>op.
+Algemene informatie over het uitvoeren van SAP Business Suite op IBM Db2 voor LUW vindt u in het SAP Community Network (SCN) op <https://www.sap.com/community/topic/db2-for-linux-unix-and-windows.html>.
 
 Zie SAP Note [2233094]voor meer informatie over SAP op DB2 voor LUW op Azure. 
 
@@ -320,16 +320,16 @@ De volgende SAP-opmerkingen zijn gerelateerd aan SAP on Azure met betrekking tot
 
 | Nummer van notitie | Titel |
 | --- | --- |
-| [1928533] |SAP-toepassingen op Azure: Ondersteunde producten en Azure VM-typen |
-| [2015553] |SAP op Microsoft Azure: Vereisten voor ondersteuning |
+| [1928533] |SAP-toepassingen op Azure: ondersteunde producten en Azure VM-typen |
+| [2015553] |SAP op Microsoft Azure: vereisten voor ondersteuning |
 | [1999351] |Problemen met verbeterde Azure-bewaking voor SAP oplossen |
 | [2178632] |Belangrijkste meet waarden voor SAP op Microsoft Azure |
-| [1409604] |Virtualisatie in Windows: Uitgebreide bewaking |
-| [2191498] |SAP op Linux met Azure: Uitgebreide bewaking |
+| [1409604] |Virtualisatie op Windows: uitgebreide bewaking |
+| [2191498] |SAP op Linux met Azure: uitgebreide bewaking |
 | [2233094] |DB6: SAP-toepassingen op Azure met behulp van IBM DB2 voor Linux, UNIX en Windows-aanvullende informatie |
-| [2243692] |IaaS-VM (Linux on Microsoft Azure): SAP-licentie problemen |
-| [1984787] |SUSE LINUX Enterprise Server 12: Installatie notities |
-| [2002167] |Red Hat Enterprise Linux 7. x: Installatie en upgrade |
+| [2243692] |Linux on Microsoft Azure (IaaS) VM: SAP-licentie problemen |
+| [1984787] |SUSE LINUX Enter prise Server 12: installatie notities |
+| [2002167] |Red Hat Enterprise Linux 7. x: installatie en upgrade |
 | [1597355] |Aanbeveling voor wissel geheugen voor Linux |
 
 Als PR-Lees dit document moet u de document [overwegingen voor Azure virtual machines DBMS-implementatie van de SAP-werk belasting](dbms_guide_general.md) en andere hand leidingen in de [SAP-werk belasting op de Azure-documentatie](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started)lezen. 
@@ -341,8 +341,8 @@ SAP op IBM Db2 voor LUW op Microsoft Azure virtual machine Services wordt onders
 Raadpleeg SAP Note [1928533]voor informatie over ondersteunde SAP-producten en typen Azure VM.
 
 ## <a name="ibm-db2-for-linux-unix-and-windows-configuration-guidelines-for-sap-installations-in-azure-vms"></a>IBM Db2 voor Linux-, UNIX-en Windows-configuratie richtlijnen voor SAP-installaties in azure-Vm's
-### <a name="storage-configuration"></a>Opslagconfiguratie
-Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op basis van rechtstreeks gekoppelde schijven. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op Azure page BLOB<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>Storage () of<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>Managed disks (). Elk type netwerk station of externe shares zoals de volgende Azure File-Services worden **niet** ondersteund voor database bestanden: 
+### <a name="storage-configuration"></a>Opslag configuratie
+Alle database bestanden moeten worden opgeslagen in het NTFS-bestands systeem op basis van rechtstreeks gekoppelde schijven. Deze schijven zijn gekoppeld aan de virtuele machine van Azure en zijn gebaseerd op Azure page BLOB Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) of Managed Disks (<https://docs.microsoft.com/azure/storage/storage-managed-disks-overview>). Elk type netwerk station of externe shares zoals de volgende Azure File-Services worden **niet** ondersteund voor database bestanden: 
 
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx>
 * <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
@@ -355,11 +355,11 @@ Zolang het huidige quotum voor IOPS per schijf voldoende is, is het mogelijk om 
 
 Raadpleeg het hoofd stuk ' overwegingen voor de veiligheid en prestaties van data bases voor database Directory's ' in SAP-installatie handleidingen voor informatie over prestaties.
 
-U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) gebruiken als beschreven aandachtspunten [voor de implementatie van Azure virtual machines DBMS voor SAP-workload](dbms_guide_general.md) om één groot logisch apparaat te maken op meerdere schijven.
+U kunt ook Windows-opslag groepen (alleen beschikbaar in Windows Server 2012 en hoger) gebruiken als beschreven [aandachtspunten voor de implementatie van Azure virtual machines DBMS voor SAP-workload](dbms_guide_general.md) om één groot logisch apparaat te maken op meerdere schijven.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->
 
-Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met `-LogicalSectorSizeDefault`behulp van de para meter. Zie <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>voor meer informatie.
+Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB. Wanneer u Windows-opslag groepen gebruikt, moet u de opslag groepen hand matig maken via de opdracht regel interface met behulp van de para meter `-LogicalSectorSizeDefault`. Zie <https://technet.microsoft.com/itpro/powershell/windows/storage/new-storagepool>voor meer informatie.
 
 Voor virtuele machines uit de M-serie van Azure kan de latentie die in de transactie Logboeken wordt geschreven, worden verminderd met factoren, vergeleken met de prestaties van Azure Premium Storage, wanneer u Azure Write Accelerator gebruikt. Daarom moet u Azure Write Accelerator implementeren voor de VHD (s) die het volume vormen voor de Db2-transactie Logboeken. Details kunnen worden gelezen in het document [Write Accelerator](https://docs.microsoft.com/azure/virtual-machines/windows/how-to-enable-write-accelerator).
 
@@ -396,7 +396,7 @@ Voor Db2-implementaties in Windows wordt u ten zeerste aangeraden de functionali
 ### <a name="specifics-for-linux-deployments"></a>Details voor Linux-implementaties
 Zolang het quotum voor de huidige IOPS per schijf voldoende is, is het mogelijk om alle database bestanden op één schijf op te slaan. Dat u altijd de gegevens bestanden en transactie logboek bestanden moet scheiden op verschillende schijven/Vhd's.
 
-Als de IOPS of I/O-door Voer van één Azure VHD niet voldoende is, kunt u ook LVM (Logical Volume Manager) of MDADM gebruiken, zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-workload](dbms_guide_general.md) om er een te maken grote logische apparaten over meerdere schijven.
+Als de IOPS of I/O-door Voer van één Azure VHD niet voldoende is, kunt u ook LVM (Logical Volume Manager) of MDADM gebruiken, zoals beschreven in de document [overwegingen voor Azure virtual machines DBMS-implementatie voor SAP-werk belasting](dbms_guide_general.md) om één groot logisch apparaat te maken op meerdere schijven.
 Voor de schijven met de Db2-opslag paden voor uw sapdata-en saptmp-directory's moet u een sector grootte van fysieke schijven opgeven van 512 KB.
 
 <!-- sapdata and saptmp are terms in the SAP and DB2 world and now spelling errors -->

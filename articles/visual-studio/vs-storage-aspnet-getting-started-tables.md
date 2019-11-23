@@ -54,7 +54,7 @@ In deze zelf studie leert u hoe u ASP.NET-code kunt schrijven voor een aantal al
 
     ![De MVC-controller een naam](./media/vs-storage-aspnet-getting-started-tables/add-controller-name.png)
 
-1. Voeg *de volgende instructies* toe aan het `TablesController.cs`-bestand:
+1. Voeg het volgende toe *met behulp van* de instructies in het `TablesController.cs`-bestand:
 
     ```csharp
     using Microsoft.Azure;
@@ -71,7 +71,7 @@ Veel van de voor beelden in dit artikel gebruiken een met **TableEntity**afgelei
 
 1. Geef in het dialoog venster **Nieuw item toevoegen** de klasse de naam **CustomerEntity**.
 
-1. Open het bestand `CustomerEntity.cs` en voeg **de volgende instructie** toe:
+1. Open het `CustomerEntity.cs`-bestand en voeg **de volgende instructie** toe:
 
     ```csharp
     using Microsoft.WindowsAzure.Storage.Table;
@@ -115,7 +115,7 @@ De volgende stappen laten zien hoe u een tabel maakt:
     }
     ```
 
-1. In de methode **CreateTable** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **CreateTable** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -150,7 +150,7 @@ De volgende stappen laten zien hoe u een tabel maakt:
 
 1. Voer in het dialoog venster **weer gave toevoegen** **CreateTable** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `CreateTable.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `CreateTable.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -162,7 +162,7 @@ De volgende stappen laten zien hoe u een tabel maakt:
     Creation of @ViewBag.TableName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -178,7 +178,7 @@ De volgende stappen laten zien hoe u een tabel maakt:
 
 ## <a name="add-an-entity-to-a-table"></a>Een entiteit toevoegen aan een tabel
 
-*Entiteiten* worden toegewezen aan C @ no__t-1-objecten met behulp van een aangepaste klasse die is afgeleid van **TableEntity**. Als u een entiteit wilt toevoegen aan een tabel, maakt u een klasse die de eigenschappen van uw entiteit definieert. In deze sectie ziet u hoe u een entiteits klasse definieert die de voor naam van de klant gebruikt als de rij-en achternaam als partitie sleutel. De partitie- en rijsleutel van een entiteit vormen samen de unieke id van de entiteit in de tabel. Entiteiten met dezelfde partitiesleutel kunnen sneller worden opgevraagd dan entiteiten met verschillende partitiesleutels, maar het gebruik van verschillende partitiesleutels maakt een grotere schaalbaarheid van parallelle bewerkingen mogelijk. Voor elke eigenschap die in de tabel service moet worden opgeslagen, moet de eigenschap een open bare eigenschap van een ondersteund type zijn waarmee waarden voor het instellen en ophalen worden weer gegeven.
+*Entiteiten* worden toegewezen aan C\# objecten met behulp van een aangepaste klasse die is afgeleid van **TableEntity**. Als u een entiteit wilt toevoegen aan een tabel, maakt u een klasse die de eigenschappen van uw entiteit definieert. In deze sectie ziet u hoe u een entiteits klasse definieert die de voor naam van de klant gebruikt als de rij-en achternaam als partitie sleutel. De partitie- en rijsleutel van een entiteit vormen samen de unieke id van de entiteit in de tabel. Entiteiten met dezelfde partitiesleutel kunnen sneller worden opgevraagd dan entiteiten met verschillende partitiesleutels, maar het gebruik van verschillende partitiesleutels maakt een grotere schaalbaarheid van parallelle bewerkingen mogelijk. Voor elke eigenschap die in de tabel service moet worden opgeslagen, moet de eigenschap een open bare eigenschap van een ondersteund type zijn waarmee waarden voor het instellen en ophalen worden weer gegeven.
 De entiteits klasse *moet* een open bare constructor zonder para meters declareren.
 
 > [!NOTE]
@@ -187,7 +187,7 @@ De entiteits klasse *moet* een open bare constructor zonder para meters declarer
 
 1. Open het `TablesController.cs`-bestand.
 
-1. Voeg de volgende instructie toe zodat de code in het bestand @no__t 0 toegang kan krijgen tot de klasse **CustomerEntity** :
+1. Voeg de volgende instructie toe zodat de code in het `TablesController.cs`-bestand toegang kan krijgen tot de klasse **CustomerEntity** :
 
     ```csharp
     using StorageAspnet.Models;
@@ -204,7 +204,7 @@ De entiteits klasse *moet* een open bare constructor zonder para meters declarer
     }
     ```
 
-1. In de methode **AddEntity** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **AddEntity** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -253,7 +253,7 @@ De entiteits klasse *moet* een open bare constructor zonder para meters declarer
 
 1. Voer in het dialoog venster **weer gave toevoegen** **AddEntity** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `AddEntity.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `AddEntity.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @{
@@ -264,7 +264,7 @@ De entiteits klasse *moet* een open bare constructor zonder para meters declarer
 
     Insert of entity into @ViewBag.TableName @(ViewBag.Result == 204 ? "succeeded" : "failed")
     ```
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -299,7 +299,7 @@ U kunt niet alleen [een entiteit toevoegen aan een tabel per keer](#add-an-entit
     }
     ```
 
-1. In de methode **AddEntities** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **AddEntities** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -357,7 +357,7 @@ U kunt niet alleen [een entiteit toevoegen aan een tabel per keer](#add-an-entit
 
 1. Voer in het dialoog venster **weer gave toevoegen** **AddEntities** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `AddEntities.cshtml` en wijzig de waarde zodat deze er als volgt uitziet.
+1. Open `AddEntities.cshtml`en wijzig de waarde zodat deze er als volgt uitziet.
 
     ```csharp
     @model IEnumerable<Microsoft.WindowsAzure.Storage.Table.TableResult>
@@ -384,7 +384,7 @@ U kunt niet alleen [een entiteit toevoegen aan een tabel per keer](#add-an-entit
     </table>
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -419,7 +419,7 @@ In deze sectie wordt beschreven hoe u één entiteit uit een tabel kunt ophalen 
     }
     ```
 
-1. In de methode **GetSingle** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **GetSingle** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -438,7 +438,7 @@ In deze sectie wordt beschreven hoe u één entiteit uit een tabel kunt ophalen 
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. Maak een object voor ophalen dat een entiteits object gebruikt dat is afgeleid van **TableEntity**. De eerste para meter is de *partitionKey*en de tweede para meter is de *rowKey*. Met behulp van de **CustomerEntity** -klasse en de gegevens die in de sectie worden weer gegeven, [voegt u een batch entiteit toe aan een tabel](#add-a-batch-of-entities-to-a-table). het volgende code fragment voert een query uit op de tabel voor een **CustomerEntity** -entiteit met de *partitionKey* -waarde "Smith" en een  *rowKey* waarde van ' ben ':
+1. Maak een object voor ophalen dat een entiteits object gebruikt dat is afgeleid van **TableEntity**. De eerste para meter is de *partitionKey*en de tweede para meter is de *rowKey*. Met behulp van de **CustomerEntity** -klasse en de gegevens die in de sectie worden weer gegeven, [voegt u een batch entiteit toe aan een tabel](#add-a-batch-of-entities-to-a-table). het volgende code fragment voert een query uit op de tabel voor een **CustomerEntity** -entiteit met de *partitionKey* -waarde "Smith" en een *rowKey* -waarde van "ben":
 
     ```csharp
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
@@ -460,7 +460,7 @@ In deze sectie wordt beschreven hoe u één entiteit uit een tabel kunt ophalen 
 
 1. Voer in het dialoog venster **weer gave toevoegen** **GetSingle** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `GetSingle.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `GetSingle.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -486,7 +486,7 @@ In deze sectie wordt beschreven hoe u één entiteit uit een tabel kunt ophalen 
     </table>
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -519,7 +519,7 @@ Zoals vermeld in de sectie, [voegt u een entiteit toe aan een tabel](#add-an-ent
     }
     ```
 
-1. In de methode **GetPartition** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **GetPartition** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -569,7 +569,7 @@ Zoals vermeld in de sectie, [voegt u een entiteit toe aan een tabel](#add-an-ent
 
 1. Voer in het dialoog venster **weer gave toevoegen** **GetPartition** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `GetPartition.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `GetPartition.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @model IEnumerable<StorageAspnet.Models.CustomerEntity>
@@ -596,7 +596,7 @@ Zoals vermeld in de sectie, [voegt u een entiteit toe aan een tabel](#add-an-ent
     </table>
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 
@@ -629,7 +629,7 @@ In deze sectie wordt beschreven hoe u een entiteit uit een tabel verwijdert.
     }
     ```
 
-1. In de methode **DeleteEntity** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;storage-account naam >* in de naam van het Azure Storage-account dat u wilt openen.)
+1. In de methode **DeleteEntity** haalt u een **Cloud Storage account** -object op dat de gegevens van uw opslag account vertegenwoordigt. Gebruik de volgende code om de gegevens van het opslag connection string en het opslag account op te halen uit de configuratie van de Azure-service: (Wijzig *&lt;naam van het opslag account >* in de naam van het Azure Storage-account dat u wilt openen.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -671,7 +671,7 @@ In deze sectie wordt beschreven hoe u een entiteit uit een tabel verwijdert.
 
 1. Voer in het dialoog venster **weer gave toevoegen** **DeleteEntity** in als weergave naam en selecteer **toevoegen**.
 
-1. Open `DeleteEntity.cshtml` en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
+1. Open `DeleteEntity.cshtml`en wijzig de waarde zodat deze eruitziet als het volgende code fragment:
 
     ```csharp
     @model Microsoft.WindowsAzure.Storage.Table.TableResult
@@ -696,7 +696,7 @@ In deze sectie wordt beschreven hoe u een entiteit uit een tabel verwijdert.
 
     ```
 
-1. Vouw in het **Solution Explorer**de **gedeelde map weer gaven->** uit en open `_Layout.cshtml`.
+1. In de **Solution Explorer**vouwt u de **weer gaven-> gedeelde** map uit en opent u `_Layout.cshtml`.
 
 1. Voeg na de laatste **HTML. ActionLink**de volgende **HTML. ActionLink**toe:
 

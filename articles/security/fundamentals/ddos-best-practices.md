@@ -97,7 +97,7 @@ DDoS Protection Standard maakt voor de duur van een DDoS-aanval uitgebreide tele
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS-beperkings beleid
 
-Selecteer in de Azure Portal  > **metrische gegevens** **controleren** . Selecteer de resource groep in het deel venster **metrische gegevens** , selecteer een resource type voor het **open bare IP-adres**en selecteer uw open bare Azure IP-adres. DDoS-metrische gegevens worden weer gegeven in het deel venster **beschik bare metrische gegevens** .
+Selecteer in de Azure Portal > **metrische gegevens** **controleren** . Selecteer de resource groep in het deel venster **metrische gegevens** , selecteer een resource type voor het **open bare IP-adres**en selecteer uw open bare Azure IP-adres. DDoS-metrische gegevens worden weer gegeven in het deel venster **beschik bare metrische gegevens** .
 
 DDoS Protection Standard geldt voor elk openbaar IP-adres van de beveiligde bron, in het virtuele netwerk waarop DDoS is ingeschakeld, drie opties voor het beperken van de oplossing (TCP SYN, TCP en UDP). U kunt de drempel waarden voor het beleid weer geven door de metrische **inkomende pakketten te selecteren om de DDoS-beperking te activeren**.
 
@@ -235,7 +235,7 @@ In deze architectuur is DDoS Protection standaard ingeschakeld op het virtuele n
 
 #### <a name="paas-web-application"></a>PaaS-webtoepassing
 
-Deze referentie architectuur laat zien hoe een Azure App Service-toepassing wordt uitgevoerd in één regio. Deze architectuur bevat een reeks beproefde procedures voor een webtoepassing die gebruikmaakt van [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)  and [Azure SQL database](https://azure.microsoft.com/documentation/services/sql-database/).
+Deze referentie architectuur laat zien hoe een Azure App Service-toepassing wordt uitgevoerd in één regio. Deze architectuur bevat een reeks beproefde procedures voor een webtoepassing die gebruikmaakt van [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) en [Azure SQL database](https://azure.microsoft.com/documentation/services/sql-database/).
 Er is een stand-by-regio ingesteld voor failover-scenario's.
 
 ![Diagram van de referentie architectuur voor een PaaS-webtoepassing](./media/ddos-best-practices/image11.png)

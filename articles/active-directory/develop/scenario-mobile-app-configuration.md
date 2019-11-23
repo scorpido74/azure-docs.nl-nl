@@ -82,7 +82,7 @@ var app = PublicClientApplicationBuilder.Create(clientId)
                                         .Build();
 ```
 
-Er zijn aanvullende*para meters* voor het instellen van de gebruikers interface, het vervangen van de standaard instantie, het opgeven van een client naam en-versie (voor telemetrie), het opgeven van een omleidings-URI, de http-Factory opgeven die moet worden gebruikt (bijvoorbeeld voor het afhandelen van proxy's, opgeven telemetrie en logboek registratie). Dit is het onderwerp van de volgende alinea's.
+Er zijn aanvullende*para meters* voor het instellen van de gebruikers interface, het vervangen van de standaard instantie, het opgeven van een client naam en-versie (voor telemetrie), het opgeven van een omleidings-URI, de http-Factory opgeven die moet worden gebruikt (bijvoorbeeld voor het afhandelen van proxy's, telemetrie en logboek registratie opgeven). Dit is het onderwerp van de volgende alinea's.
 
 ##### <a name="specifying-the-parent-uiwindowactivity"></a>De bovenliggende UI/Window/activiteit opgeven
 
@@ -113,7 +113,7 @@ var pca = PublicClientApplicationBuilder
 
 Op Xamarin iOS zijn er verschillende overwegingen die u moet meenemen bij het gebruik van MSAL.NET:
 
-1. [De functie `OpenUrl` in het `AppDelegate`overschrijven en implementeren](msal-net-xamarin-ios-considerations.md#implement-openurl)
+1. [De functie `OpenUrl` in het `AppDelegate` overschrijven en implementeren](msal-net-xamarin-ios-considerations.md#implement-openurl)
 1. [Sleutel hanger groepen inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)
 1. [Het delen van token cache inschakelen](msal-net-xamarin-ios-considerations.md#enable-token-cache-sharing-across-ios-applications)
 1. [Sleutel hanger toegang inschakelen](msal-net-xamarin-ios-considerations.md#enable-keychain-access)

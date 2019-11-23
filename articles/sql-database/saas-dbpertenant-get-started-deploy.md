@@ -110,7 +110,7 @@ In de app wordt intern een SQL database geïmplementeerd in een elastische SQL-p
 
 Een centrale **gebeurtenis hub** pagina bevat een lijst met koppelingen naar de tenants in uw implementatie.
 
-1. Gebruik de URL om de evenementen hub in uw webbrowser te openen: http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net. Vervang &lt;gebruiker&gt; door de gebruikers waarde van uw implementatie.
+1. Gebruik de URL om de evenementen hub in uw webbrowser te openen: http://events.wingtip-dpt.&lt; User&gt;. trafficmanager.net. Vervang &lt;gebruiker&gt; door de gebruikers waarde van uw implementatie.
 
     ![Events hub](media/saas-dbpertenant-get-started-deploy/events-hub.png)
 
@@ -122,7 +122,7 @@ Een centrale **gebeurtenis hub** pagina bevat een lijst met koppelingen naar de 
 
 De Wingtip-toepassing maakt gebruik van [*Azure Traffic Manager*](../traffic-manager/traffic-manager-overview.md) om de distributie van binnenkomende aanvragen te beheren. De URL voor toegang tot de gebeurtenissen pagina voor een specifieke Tenant gebruikt de volgende indeling:
 
-- http://events.wingtip-dpt.&lt; user&gt;.trafficmanager.net/fabrikamjazzclub
+- http://events.wingtip-dpt.&lt;user&gt;.trafficmanager.net/fabrikamjazzclub
 
     De delen van de voor gaande notatie worden beschreven in de volgende tabel.
 
@@ -130,7 +130,7 @@ De Wingtip-toepassing maakt gebruik van [*Azure Traffic Manager*](../traffic-ma
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | De gebeurtenissen delen van de Wingtip-app.<br /><br /> *-dpt* onderscheidt de implementatie van de *Data Base-per-Tenant* van Wingtip-tickets van andere implementaties. Voor beelden zijn de implementaties van *één* app-per-Tenant ( *-sa*) of *multi tenant-data base* ( *-MT*). |
     | . *gebruikers&gt;&lt;* | *AF1* in het voor beeld. |
-    | . trafficmanager.net/ | Traffic Manager, basis-URL. |
+    | .trafficmanager.net/ | Traffic Manager, basis-URL. |
     | fabrikamjazzclub | Identificeert de Tenant met de naam fabrikam Jazz Club. |
     | &nbsp; | &nbsp; |
 
@@ -179,11 +179,11 @@ Als u de achtergrond taken wilt beheren en controleren, gebruikt u de volgende c
 3. *LoadGenerator. ps1* start een Power shell-taak op de achtergrond voor elke Tenant database:
 
     - De achtergrond taken worden standaard gedurende 120 minuten uitgevoerd.
-    - Elke taak veroorzaakt een op CPU gebaseerde belasting voor één Tenant database door *sp_CpuLoadGenerator*uit te voeren. De intensiteit en duur van de belasting variëren, afhankelijk van `$DemoScenario`.
+    - Elke taak veroorzaakt een op CPU gebaseerde belasting voor één Tenant database door *sp_CpuLoadGenerator*uit te voeren. De intensiteit en duur van de belasting variëren afhankelijk van `$DemoScenario`.
     - *sp_CpuLoadGenerator* lussen rond een SQL SELECT-instructie die een hoge CPU-belasting veroorzaakt. Het tijds interval tussen de problemen van de SELECT is afhankelijk van de parameter waarden voor het maken van een instelbaar CPU-belasting. Laad niveaus en intervallen worden wille keurig voor het simuleren van meer realistische belasting.
     - Dit. SQL-bestand wordt opgeslagen onder *WingtipTenantDB\\dbo\\StoredProcedures\\* .
 
-4. Als `$OneTime = $false`, de load Generator start de achtergrond taken en gaat vervolgens verder met uitvoeren. Elke 10 seconden wordt gecontroleerd op nieuwe tenants die zijn ingericht. Als u `$OneTime = $true` instelt, start de LoadGenerator de achtergrond taken en stopt de uitvoering op de voor grond. Voor deze zelf studie moet u `$OneTime = $false` laten staan.
+4. Als `$OneTime = $false`, start de load Generator de achtergrond taken en gaat vervolgens verder met uitvoeren. Elke 10 seconden wordt gecontroleerd op nieuwe tenants die zijn ingericht. Als u `$OneTime = $true`instelt, start de LoadGenerator de achtergrond taken en stopt de uitvoering op de voor grond. Voor deze zelf studie moet u `$OneTime = $false`laten staan.
 
    Gebruik CTRL + C of stop de bewerking CTRL-outlock als u de load generator wilt stoppen of opnieuw wilt starten.
 

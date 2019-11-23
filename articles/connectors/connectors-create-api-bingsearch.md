@@ -24,7 +24,7 @@ In dit artikel wordt beschreven hoe u nieuws, Video's en andere items kunt vinde
 
 U kunt bijvoorbeeld nieuws items vinden op basis van zoek criteria, en Twitter deze items als tweets in uw Twitter-feed plaatsen.
 
-Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quickstart: Maak uw eerste logische app @ no__t-0.
+Als u nog geen abonnement op Azure hebt, [registreer u dan nu voor een gratis Azure-account](https://azure.microsoft.com/free/). Als u geen ervaring hebt met Logic apps, raadpleegt u [Wat is Azure Logic apps](../logic-apps/logic-apps-overview.md) en [Quick Start: uw eerste logische app maken](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 Zie de naslag informatie over de [Bing Search-connector](https://docs.microsoft.com/connectors/bingsearch/)voor connector-specifieke technische gegevens.
 
 ## <a name="prerequisites"></a>Vereisten
@@ -45,7 +45,7 @@ In Azure Logic Apps moet elke logische app beginnen met een [trigger](../logic-a
 
 2. Voer in het zoekvak ' Bing Search ' in als uw filter. Selecteer in de lijst triggers de gewenste trigger.
 
-   In dit voor beeld wordt deze trigger gebruikt: **Bing Search-op nieuw nieuws artikel**
+   In dit voor beeld wordt deze trigger gebruikt: **Bing Search nieuw nieuws artikel**
 
    ![Bing Search trigger zoeken](./media/connectors-create-api-bing-search/add-trigger.png)
 
@@ -54,7 +54,7 @@ Als uw verbinding al bestaat, geeft u de benodigde informatie op voor de trigger
 
    Voor dit voor beeld geeft u criteria op voor het retour neren van overeenkomende nieuws artikelen van Bing Search.
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*search-words*> | Voer de zoek woorden in die u wilt gebruiken. |
    | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
@@ -81,7 +81,7 @@ In Azure Logic Apps is een [actie](../logic-apps/logic-apps-overview.md#logic-ap
 
 1. Open in de Azure Portal of Visual Studio uw logische app in de ontwerp functie voor logische apps. In dit voor beeld wordt de Azure Portal gebruikt.
 
-2. Onder de trigger of actie selecteert u **nieuwe stap** > **een actie toevoegen**.
+2. Selecteer onder de trigger of actie de optie **nieuwe stap** > **een actie toe te voegen**.
 
    In dit voor beeld wordt deze trigger gebruikt:
 
@@ -105,7 +105,7 @@ Selecteer in de lijst acties de gewenste actie.
 
    Voor dit voor beeld geeft u de criteria op voor het retour neren van een subset van de resultaten van de trigger.
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
    | Search Query | Ja | <*search-expression*> | Voer een expressie in voor het uitvoeren van query's op de trigger resultaten. U kunt kiezen uit de velden in de lijst met dynamische inhoud of een expressie maken met de opbouw functie voor expressies. |
    | Market | Ja | <*locale*> | De land instellingen voor zoeken. De standaard instelling is "en-US", maar u kunt een andere waarde selecteren. |
@@ -152,10 +152,10 @@ Selecteer in de lijst acties de gewenste actie.
 
 1. Wanneer u wordt gevraagd om de verbindings gegevens, geeft u de volgende gegevens op:
 
-   | Eigenschap | Verplicht | Value | Description |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | Verbindingsnaam | Ja | <-*verbinding-naam*> | De naam die voor uw verbinding moet worden gemaakt |
-   | API-versie | Ja | <*API-versie*> | De Bing Search API-versie is standaard ingesteld op de huidige versie. U kunt indien nodig een eerdere versie selecteren. |
+   | Verbindingsnaam | Ja | <*naam* van de verbinding> | De naam die voor uw verbinding moet worden gemaakt |
+   | API-versie | Ja | < *-API-versie*> | De Bing Search API-versie is standaard ingesteld op de huidige versie. U kunt indien nodig een eerdere versie selecteren. |
    | API-sleutel | Ja | <*API-key*> | De Bing Search-API-sleutel die u eerder hebt verkregen. Als u geen sleutel hebt, kunt u [nu uw API-sleutel](https://azure.microsoft.com/try/cognitive-services/?api=bing-news-search-api)ophalen. |  
    |||||  
 

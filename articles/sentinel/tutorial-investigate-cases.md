@@ -21,7 +21,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/08/2019
 ms.locfileid: "72024621"
 ---
-# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelfstudie: Incidenten onderzoeken met Azure Sentinel
+# <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Zelf studie: incidenten onderzoeken met Azure Sentinel
 
 > [!IMPORTANT]
 > De onderzoek grafiek is momenteel beschikbaar als open bare preview.
@@ -70,11 +70,11 @@ In het onderzoek diagram kunnen analisten de juiste vragen stellen voor elk onde
   
 In het onderzoek diagram vindt u het volgende:
 
-- **Visuele context van onbewerkte gegevens**: In de Live, visuele grafiek worden entiteits relaties weer gegeven die automatisch zijn geëxtraheerd uit de onbewerkte gegevens. Zo kunt u eenvoudig verbindingen tussen verschillende gegevens bronnen weer geven.
+- **Visuele context van onbewerkte gegevens: in**de Live, visuele grafiek worden entiteits relaties weer gegeven die automatisch zijn geëxtraheerd uit de onbewerkte gegevens. Zo kunt u eenvoudig verbindingen tussen verschillende gegevens bronnen weer geven.
 
-- **Detectie van volledig onderzoek**: Breid uw onderzoek bereik uit met behulp van ingebouwde onderzoek query's om het volledige bereik van een schending te belichten.
+- **Volledige detectie van het onderzoek bereik**: Breid uw onderzoek uit met behulp van ingebouwde onderzoek query's om het volledige bereik van een schending te behalen.
 
-- **Geïntegreerde onderzoek stappen**: Gebruik vooraf gedefinieerde exploratie opties om ervoor te zorgen dat u de juiste vragen in het vlak van een bedreiging vraagt.
+- **Geïntegreerde onderzoek stappen**: gebruik vooraf gedefinieerde opties om ervoor te zorgen dat u de juiste vragen in het vlak van een bedreiging vraagt.
 
 De onderzoek grafiek gebruiken:
 
@@ -97,7 +97,7 @@ De onderzoek grafiek gebruiken:
 
     ![Gerelateerde waarschuwingen weer geven](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die wordt gebruikt in Log Analytics door **gebeurtenissen @ no__t-1**te selecteren.
+1. Voor elke onderzoek query kunt u de optie selecteren voor het openen van de onbewerkte gebeurtenis resultaten en de query die in Log Analytics wordt gebruikt door **gebeurtenissen\>** te selecteren.
 
 1. Om het incident te begrijpen, biedt de grafiek een parallelle tijd lijn.
 

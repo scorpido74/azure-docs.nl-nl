@@ -79,7 +79,7 @@ Dit is de gegevens stroom op hoog niveau voor en een samen vatting van de stappe
 * Als de hostmachine in de slaap stand wordt gezet, reageert de gateway niet op gegevens aanvragen. Configureer daarom een passend **Energiebeheer schema** op de computer voordat u de gateway installeert. Als de computer is geconfigureerd voor de slaap stand, wordt een bericht door de gateway-installatie gevraagd.
 * U moet een beheerder op de computer zijn om de Data Management Gateway te kunnen installeren en configureren. U kunt extra gebruikers toevoegen aan de lokale Windows-groep **Data Management Gateway-gebruikers** . De leden van deze groep kunnen het **Data Management Gateway Configuration Manager** -hulp programma gebruiken om de gateway te configureren.
 
-Als de uitvoering van de Kopieer activiteit plaatsvindt volgens een specifieke frequentie, volgt het resource gebruik (CPU, geheugen) op de machine ook hetzelfde patroon met piek-en inactieve tijden. Het resource gebruik is ook afhankelijk van de hoeveelheid gegevens die wordt verplaatst. Wanneer er meerdere Kopieer taken worden uitgevoerd, ziet u het resource gebruik tijdens piek tijden.
+Als de uitvoering van de Kopieer activiteit plaatsvindt volgens een specifieke frequentie, volgt het resource gebruik (CPU, geheugen) op de machine ook hetzelfde patroon met piek-en inactieve tijden. Gebruik van resources is ook afhankelijk sterk de hoeveelheid gegevens die wordt verplaatst. Wanneer er meerdere Kopieer taken worden uitgevoerd, ziet u het resource gebruik tijdens piek tijden.
 
 ### <a name="installation-options"></a>Installatie opties
 Data Management Gateway kan op de volgende manieren worden geïnstalleerd:
@@ -98,7 +98,7 @@ Data Management Gateway kan op de volgende manieren worden geïnstalleerd:
 4. Selecteer op de pagina **Welkom** een **taal** en klik op **volgende**.
 5. **Accepteer** de gebruiksrecht overeenkomst en klik op **volgende**.
 6. Selecteer **map** om de gateway te installeren en klik op **volgende**.
-7. Klik op de pagina **gereed voor installatie** op **installeren**.
+7. Op de **gereed voor installatie** pagina, klikt u op **installeren**.
 8. Klik op **volt ooien** om de installatie te volt ooien.
 9. Haal de sleutel op uit het Azure Portal. Zie de volgende sectie voor stapsgewijze instructies.
 10. Voer de volgende stappen uit op de pagina de **Gateway registreren** van **Data Management Gateway Configuration Manager** op uw computer wordt uitgevoerd:
@@ -144,8 +144,8 @@ Op het niveau van de bedrijfs firewall moet u de volgende domeinen en uitgaande 
 | Domein namen | Poorten | Beschrijving |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Wordt gebruikt voor communicatie met de back-end van de service voor gegevens verplaatsing |
-| *. core.windows.net |443 |Gebruikt voor gefaseerde kopie met behulp van Azure-Blob (indien geconfigureerd)|
-| *. frontend.clouddatahub.net |443 |Wordt gebruikt voor communicatie met de back-end van de service voor gegevens verplaatsing |
+| *.core.windows.net |443 |Gebruikt voor gefaseerde kopie met behulp van Azure-Blob (indien geconfigureerd)|
+| *.frontend.clouddatahub.net |443 |Wordt gebruikt voor communicatie met de back-end van de service voor gegevens verplaatsing |
 | *.servicebus.windows.net |9350-9354, 5671 |Optionele service bus relay via TCP die wordt gebruikt door de wizard kopiëren |
 
 Op het niveau van Windows Firewall worden deze uitgaande poorten normaal gesp roken ingeschakeld. Als dat niet het geval is, kunt u de domeinen en poorten dienovereenkomstig configureren op de gateway computer.
@@ -382,7 +382,7 @@ De volgende tabel bevat mogelijke statussen van een **Gateway knooppunt**:
 Status  | Opmerkingen/Scenario's
 :------- | :------------------
 Online | Het knoop punt dat is verbonden met Data Factory service.
-Breken | Het knoop punt is offline.
+Offline | Het knoop punt is offline.
 Abonnement | Het knoop punt wordt automatisch bijgewerkt.
 Beperkt | Vanwege een connectiviteits probleem. Wordt mogelijk veroorzaakt door een probleem met de HTTP-poort 8050, het connectiviteits probleem van de service bus of het probleem met de synchronisatie van referenties.
 Inactieve | Het knoop punt bevindt zich in een configuratie die verschilt van de configuratie van andere hoofd knooppunten.<br/><br/> Een knoop punt kan inactief zijn wanneer er geen verbinding kan worden gemaakt met andere knoop punten.
@@ -393,7 +393,7 @@ Status | Opmerkingen
 :----- | :-------
 Registratie vereist | Er is nog geen knoop punt geregistreerd voor deze logische gateway
 Online | Gateway knooppunten zijn online
-Breken | Geen knoop punt in online status.
+Offline | Geen knoop punt in online status.
 Beperkt | Niet alle knoop punten in deze gateway hebben de status in orde. Deze status is een waarschuwing dat een deel van het knoop punt mogelijk niet beschikbaar is. <br/><br/>Kan worden veroorzaakt door een probleem met de referenties voor de verzender/het worker-knoop punt.
 
 ## <a name="scale-up-gateway"></a>Gateway omhoog schalen

@@ -1,5 +1,5 @@
 ---
-title: Taken voor de project leider in het team data Science process
+title: Taken voor het project leiden in Team Data Science Process
 description: Een gedetailleerd overzicht van de taken voor een project leider op een team data Science process team
 author: marktab
 manager: cgronlun
@@ -48,7 +48,7 @@ In deze zelf studie wordt ervan uitgegaan dat uw [groeps Manager](group-manager-
 Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine of Data Science Virtual Machine (DSVM), of Azure File Storage wilt instellen en koppelen aan uw DSVM, hebt u ook het volgende nodig:
 
 - Een Azure-abonnement.
-- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Anders raadpleegt u de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix).
+- Git geïnstalleerd op de computer. Als u een DSVM gebruikt, is Git vooraf geïnstalleerd. Raadpleeg anders de [platformen en hulpprogramma's voor bijlage](platforms-and-tools.md#appendix).
 - Als u een DSVM wilt gebruiken, wordt de Windows-of Linux-DSVM gemaakt en geconfigureerd in Azure. Zie de [Data Science virtual machine-documentatie](/azure/machine-learning/data-science-virtual-machine/)voor meer informatie en instructies.
 - Voor een Windows DSVM is [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) op uw computer geïnstalleerd. Schuif in het bestand *README.MD* omlaag naar de sectie **downloaden en installeren** en selecteer het **nieuwste installatie programma**. Down load het installatie programma *. exe* op de pagina installatie programma en voer het uit. 
 - Voor een Linux-DSVM is een open bare SSH-sleutel ingesteld op uw DSVM en toegevoegd aan Azure DevOps. Zie de sectie **open bare SSH-sleutel maken** in de [bijlage platformen en hulpprogram ma's](platforms-and-tools.md#appendix)voor meer informatie en instructies. 
@@ -57,7 +57,7 @@ Als u opslag plaatsen wilt klonen en inhoud wilt wijzigen op uw lokale machine o
 
 Een project opslagplaats maken in het **MyTeam** -project van uw team:
 
-1. Ga naar de project **samenvattings** pagina van uw team op *https: \/ @ no__t-3 @ no__t-4server name >/\<organization name >/\<team name >* , bijvoorbeeld **https: \//dev. Azure. com/DataScienceUnit/MyTeam**, en Selecteer **opslag plaatsen** in de linkernavigatiebalk. 
+1. Ga naar de project **samenvattings** pagina van uw team op *https:\//\<server naam >/\<organisatie naam >/\<team naam >* , bijvoorbeeld **https:\//dev.Azure.com/DataScienceUnit/MyTeam**, en selecteer **opslag plaatsen** in de linkernavigatiebalk. 
    
 1. Selecteer de naam van de opslag plaats boven aan de pagina en selecteer vervolgens **nieuwe opslag plaats** in de vervolg keuzelijst.
    
@@ -83,7 +83,7 @@ Uw project opslagplaats vullen met de inhoud van de opslag plaats van uw team sj
    
    ![Import selecteren](./media/project-lead-tasks/project-leads-5-create-project-repo-4.png)
    
-1. Selecteer **Git** als **bron type**in het dialoog venster **een Git-opslag plaats importeren** en voer de URL voor uw **TeamTemplate** -opslag plaats in onder **kloon-URL**. De URL is *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/\<team name >/_git/\<team Template name >* . Bijvoorbeeld: **https: \//dev. Azure. com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
+1. Selecteer **Git** als **bron type**in het dialoog venster **een Git-opslag plaats importeren** en voer de URL voor uw **TeamTemplate** -opslag plaats in onder **kloon-URL**. De URL is *https:\//\<server naam >/\<organisatie naam >/\<team naam >/_git/\<naam van de opslag plaats van de team sjabloon >* . Bijvoorbeeld: **https:\//dev.Azure.com/DataScienceUnit/MyTeam/_git/TeamTemplate**. 
    
 1. Selecteer **importeren**. De inhoud van de opslag plaats van uw team sjabloon wordt in uw project opslagplaats geïmporteerd. 
    
@@ -95,6 +95,6 @@ Als u de inhoud van de project opslagplaats moet aanpassen om te voldoen aan de 
 
 Hier vindt u koppelingen naar gedetailleerde beschrijvingen van de andere rollen en taken die worden gedefinieerd door het team data Science process:
 
-- [Groeps Manager-taken voor een Data Science-Team](group-manager-tasks.md)
-- [Team lead taken voor een Data Science-Team](team-lead-tasks.md)
+- [Groepsbeheerder taken voor een team van gegevenswetenschappers](group-manager-tasks.md)
+- [Team Lead taken voor een team van gegevenswetenschappers](team-lead-tasks.md)
 - [Individuele Inzender taken voor een Data Science-Team](project-ic-tasks.md)

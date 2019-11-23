@@ -42,7 +42,7 @@ Laad eerst uw gegevens in [Azure data Lake Storage](https://docs.microsoft.com/a
 |:--- |:--- |
 | Distributie | Round robin |
 | Indexeren | Heap |
-| Partitionering | Geen |
+| Partitionering | None |
 | Resourceklasse | largerc of xlargerc |
 
 Meer informatie over [gegevensmigratie], [gegevens laden], en het [ELT-proces (extraheren, laden en transformeren)](https://docs.microsoft.com/azure/sql-data-warehouse/design-elt-data-loading). 

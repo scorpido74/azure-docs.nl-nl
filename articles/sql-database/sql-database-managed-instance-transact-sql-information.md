@@ -80,7 +80,7 @@ Zie [back-up](/sql/t-sql/statements/backup-transact-sql)voor informatie over bac
 
 ## <a name="security"></a>Beveiliging
 
-### <a name="auditing"></a>Controle
+### <a name="auditing"></a>Controleren
 
 De belangrijkste verschillen tussen controles in data bases in Azure SQL Database en data bases in SQL Server zijn:
 

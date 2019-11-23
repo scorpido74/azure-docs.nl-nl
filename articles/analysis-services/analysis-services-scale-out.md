@@ -30,7 +30,7 @@ Ongeacht het aantal query replica's in een query groep, worden de verwerkings we
 
 Wanneer u uitschaalt, kan het tot vijf minuten duren voordat nieuwe query replica's incrementeel worden toegevoegd aan de query groep. Wanneer alle nieuwe query replica's actief zijn, worden nieuwe client verbindingen verdeeld over alle resources in de query groep. Bestaande client verbindingen worden niet gewijzigd ten opzichte van de resource waarmee ze momenteel zijn verbonden. Bij het schalen in worden alle bestaande client verbindingen met een bron van de query groep die uit de query groep wordt verwijderd, beëindigd. Clients kunnen opnieuw verbinding maken met een resterende resource in de query groep.
 
-## <a name="how-it-works"></a>Hoe werkt het?
+## <a name="how-it-works"></a>Het werkt als volgt
 
 Wanneer u de eerste keer scale-out configureert, worden model databases op uw primaire server *automatisch* gesynchroniseerd met nieuwe replica's in een nieuwe query groep. Automatische synchronisatie wordt slechts één keer uitgevoerd. Tijdens automatische synchronisatie worden de gegevens bestanden van de primaire server (versleuteld op rest in Blob Storage) gekopieerd naar een tweede locatie, ook versleuteld op rest in Blob Storage. Replica's in de query groep worden vervolgens *gehydrateerd* met gegevens uit de tweede set bestanden. 
 
@@ -92,7 +92,7 @@ In **overzicht** > model > **model synchroniseren**.
 
 ![Schuif regelaar voor uitschalen](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
-### <a name="rest-api"></a>REST-API
+### <a name="rest-api"></a>REST API
 
 Gebruik de **synchronisatie** bewerking.
 

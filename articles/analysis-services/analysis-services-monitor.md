@@ -37,7 +37,7 @@ Als u meer uitgebreide diagnostische gegevens wilt uitvoeren, de prestaties wilt
 
 Gebruik deze tabel om te bepalen welke metrische gegevens het meest geschikt zijn voor uw bewakings scenario. In hetzelfde diagram kunnen alleen metrische gegevens van dezelfde eenheid worden weer gegeven.
 
-|Gegevens|Weergave naam voor metrische gegevens|Eenheid|Aggregatie type|Beschrijving|
+|Gegevens|De naam van de metrische gegevens weergeven|Eenheid|Aggregatietype|Beschrijving|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|Wachtrij lengte van de opdracht pool taak|Count|Average|Aantal taken in de wachtrij van de opdracht thread pool.|
 |CurrentConnections|Verbinding: huidige verbindingen|Count|Average|Het huidige aantal client verbindingen dat tot stand is gebracht.|

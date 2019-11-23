@@ -29,7 +29,7 @@ Patroon. alle entiteiten moeten worden gemarkeerd in de voor beelden van [patroo
 
 ## <a name="usage"></a>Gebruik
 
-Aan de hand van een client toepassing die zoekt naar boeken op basis van de titel, het patroon. alle extraheert de volledige titel. Een sjabloon utterance het gebruik van een patroon. elke voor deze zoek opdracht van de boeken is `Was {BookTitle} written by an American this year[?]`. 
+Aan de hand van een client toepassing die zoekt naar boeken op basis van de titel, het patroon. alle extraheert de volledige titel. Een sjabloon utterance het gebruik van een patroon. elke voor deze zoek opdracht van het boek is `Was {BookTitle} written by an American this year[?]`. 
 
 In de volgende tabel heeft elke rij twee versies van de utterance. De bovenste utterance is hoe LUIS aanvankelijk de utterance ziet. Het is niet duidelijk waar de titel van het boek begint en eindigt. De onderste utterance maakt gebruik van een patroon. een wille keurige entiteit om het begin en het einde van de entiteit te markeren. 
 
@@ -37,7 +37,7 @@ In de volgende tabel heeft elke rij twee versies van de utterance. De bovenste u
 |--|
 |`Was The Man Who Mistook His Wife for a Hat and Other Clinical Tales written by an American this year?`<br><br>Was **de man die de vrouw heeft geduurd voor een hoed en andere klinische verschijnselen die zijn** geschreven met een Amerikaans dit jaar?|
 |`Was Half Asleep in Frog Pajamas written by an American this year?`<br><br>Is de **halve slaap stand in kikker Pajamas** geschreven door een Amerikaans dit jaar?|
-|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>Is @no__t 0The bepaalde verdriet van citroen koek: Een roman van no__t-0, geschreven door een Amerikaans, dit jaar?|
+|`Was The Particular Sadness of Lemon Cake: A Novel written by an American this year?`<br><br>Was **de specifieke verdriet van citroen taart: een nieuwe** geschreven door een Amerikaans, dit jaar?|
 |`Was There's A Wocket In My Pocket! written by an American this year?`<br><br>Is **er een Wocket in mijn Pocket!** geschreven door een Amerikaans dit jaar?|
 ||
 

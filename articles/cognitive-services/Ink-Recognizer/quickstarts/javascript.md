@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en node. js'
+title: 'Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en node. js'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de API voor inkt herkenning om te beginnen met het herkennen van digitale inkt streken.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/07/2019
 ms.locfileid: "71996913"
 ---
-# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Quickstart: Digitale inkt herkennen met de inkt Recognizer REST API en Java script
+# <a name="quickstart-recognize-digital-ink-with-the-ink-recognizer-rest-api-and-javascript"></a>Snelstartgids: digitale inkt herkennen met de inkt Recognizer REST API en Java script
 
 Gebruik deze Quick Start om de inkt Recognizer-API te gebruiken voor digitale inkt streken. Deze Java script-toepassing verstuurt een API-aanvraag die is voorzien van inkt lijn gegevens in JSON en geeft het antwoord weer.
 
@@ -57,7 +57,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
     </html>
     ```
 
-2. Voeg binnen de tag `<body>` de volgende HTML toe:
+2. Voeg binnen de `<body>` tag de volgende HTML toe:
     1. Twee tekst gebieden voor het weer geven van de JSON-aanvraag en het antwoord.
     2. Een knop voor het aanroepen van de `recognizeInk()`-functie die later wordt gemaakt.
     
@@ -75,11 +75,11 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="load-the-example-json-data"></a>De voorbeeld gegevens van JSON laden
 
-1. Maak binnen de tag `<script>` een variabele voor de sampleJson. Maak vervolgens een Java script-functie met de naam `openFile()` waarmee een bestanden Verkenner wordt geopend, zodat u het JSON-bestand kunt selecteren. Wanneer op de knop `Recognize ink` wordt geklikt, wordt deze functie aangeroepen en begint het lezen van het bestand.
-2. Gebruik de `onload()`-functie van een @no__t-object om het bestand asynchroon te verwerken. 
-    1. Vervang `\n` of `\r` tekens in het bestand door een lege teken reeks. 
-    2. @No__t-0 gebruiken om de tekst te converteren naar een geldige JSON
-    3. Werk het tekstvak `request` in de toepassing bij. Gebruik `JSON.stringify()` om de JSON-teken reeks op te maken. 
+1. Maak binnen het `<script>` label een variabele voor de sampleJson. Maak vervolgens een Java script-functie met de naam `openFile()` waarmee een bestanden Verkenner wordt geopend, zodat u het JSON-bestand kunt selecteren. Wanneer op de knop `Recognize ink` wordt geklikt, wordt deze functie aangeroepen en begint het lezen van het bestand.
+2. Gebruik de `onload()` functie van een `FileReader`-object om het bestand asynchroon te verwerken. 
+    1. Vervang `\n` of `\r` tekens in het bestand met een lege teken reeks. 
+    2. `JSON.parse()` gebruiken om de tekst te converteren naar een geldige JSON
+    3. Het `request` tekstvak in de toepassing bijwerken. Gebruik `JSON.stringify()` om de JSON-teken reeks op te maken. 
     
     ```javascript
     var sampleJson = "";
@@ -98,7 +98,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
 
 ## <a name="send-a-request-to-the-ink-recognizer-api"></a>Een aanvraag verzenden naar de API voor inkt herkenning
 
-1. Maak binnen de tag `<script>` een functie met de naam `recognizeInk()`. Deze functie roept de API later aan en werkt de pagina bij met het antwoord. Voeg de code uit de volgende stappen in deze functie toe. 
+1. Maak binnen het `<script>` label een functie met de naam `recognizeInk()`. Deze functie roept de API later aan en werkt de pagina bij met het antwoord. Voeg de code uit de volgende stappen in deze functie toe. 
         
     ```javascript
     function recognizeInk() {
@@ -116,7 +116,7 @@ De bron code voor deze snelstartgids vindt u op [github](https://go.microsoft.co
         var SUBSCRIPTION_KEY = process.env["INK_RECOGNITION_SUBSCRIPTION_KEY"];
         var xhttp = new XMLHttpRequest();
         ```
-    2. Maak de retour functie voor het `XMLHttpRequest`-object. Met deze functie wordt de API-reactie van een geslaagde aanvraag geparseerd en weer gegeven in de toepassing. 
+    2. Maak de functie return voor het object `XMLHttpRequest`. Met deze functie wordt de API-reactie van een geslaagde aanvraag geparseerd en weer gegeven in de toepassing. 
             
         ```javascript
         function returnFunction(xhttp) {

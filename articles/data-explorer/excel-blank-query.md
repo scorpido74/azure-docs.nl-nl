@@ -39,7 +39,7 @@ Azure Data Explorer biedt twee opties voor het maken van verbinding met gegevens
 
 1. Open **Microsoft Excel**.
 
-1. Op het tabblad **gegevens** selecteert u **gegevens** > ophalen**uit andere bronnen** > **lege query**.
+1. Op het tabblad **gegevens** selecteert u **gegevens ophalen** > **uit andere bronnen** > **lege query**.
 
     ![Gegevens ophalen en lege query selecteren](media/excel-blank-query/get-data-blank-query.png)
 

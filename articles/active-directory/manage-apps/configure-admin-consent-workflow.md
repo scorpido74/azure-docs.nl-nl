@@ -157,4 +157,4 @@ Zie [Azure Active Directory instemming-Framework](../develop/consent-framework.m
 
 [Toestemming en machtiging voor AzureAD v 2.0 geconvergeerde apps](../develop/active-directory-v2-scopes.md)
 
-[AzureAD stack overflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
+[AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

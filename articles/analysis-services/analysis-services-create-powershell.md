@@ -24,7 +24,7 @@ In deze snelstart wordt beschreven hoe u PowerShell vanaf de opdrachtregel kunt 
 
 - **Azure-abonnement**: ga naar [gratis proefversie van Azure](https://azure.microsoft.com/offers/ms-azr-0044p/) om een account te maken.
 - **Azure Active Directory**: uw abonnement moet worden gekoppeld aan een Azure Active Directory-tenant en u moet een account hebben in de betreffende map. Raadpleeg voor meer informatie [Verificatie en gebruikersmachtigingen](analysis-services-manage-users.md).
-- **Azure PowerShell**. Voer `Get-Module -ListAvailable Az` uit om te zien welke versie is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps) om de module te installeren of te upgraden.
+- **Azure PowerShell**. Voer `Get-Module -ListAvailable Az` uit om na te gaan welke versie er is geïnstalleerd. Zie [Azure PowerShell-module installeren](/powershell/azure/install-Az-ps) om de module te installeren of te upgraden.
 
 ## <a name="import-azanalysisservices-module"></a>Az.AnalysisServices-module importeren
 

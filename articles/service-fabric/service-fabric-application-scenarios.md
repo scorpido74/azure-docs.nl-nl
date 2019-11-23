@@ -68,9 +68,9 @@ Stateful micro Services is van toepassing op toepassings ontwerpen omdat ze de n
 
 In de volgende diagrammen ziet u de verschillen tussen het ontwerpen van een toepassing die staatloos is en die de statussen heeft. Door gebruik te maken van de [reliable Services](service-fabric-reliable-services-introduction.md) -en [reliable actors](service-fabric-reliable-actors-introduction.md) -programmeer modellen, kunnen stateful Services de complexiteit van de toepassing beperken tijdens hoge door Voer en lage latentie.
 
-Hier volgt een voor beeld van een toepassing die stateless Services gebruikt: ![Application die stateless Services gebruiken @ no__t-1
+Hier volgt een voor beeld van een toepassing die stateless Services gebruikt: ![toepassing die stateless Services gebruikt][Image1]
 
-Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![Application die stateful Services gebruiken @ no__t-1
+Hier volgt een voorbeeld toepassing die gebruikmaakt van stateful Services: ![toepassing die stateful Services gebruikt][Image2]
 
 ## <a name="next-steps"></a>Volgende stappen
 

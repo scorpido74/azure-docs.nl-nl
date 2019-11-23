@@ -27,10 +27,10 @@ ms.locfileid: "72388857"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
-In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Cordova geïntroduceerd. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base.  Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
+In deze zelf studie wordt de functie voor offline synchronisatie van Azure Mobile Apps voor Cordova geïntroduceerd. Met offline synchronisatie kunnen eind gebruikers communiceren met een mobiele app&mdash;het weer geven, toevoegen of wijzigen van gegevens&mdash;zelfs wanneer er geen netwerk verbinding is. Wijzigingen worden opgeslagen in een lokale data base.  Zodra het apparaat weer online is, worden deze wijzigingen gesynchroniseerd met de externe service.
 
 Deze zelf studie is gebaseerd op de Cordova Snelstartgids voor Mobile Apps die u maakt wanneer u de zelf studie [Apache Cordova Quick Start]voltooit. In deze zelf studie werkt u de Quick Start-oplossing bij om offline functies van Azure Mobile Apps toe te voegen.  We markeren ook de offline-specifieke code in de app.
 
@@ -72,9 +72,9 @@ De offline synchronisatie code moet worden toegevoegd aan de app. Voor offline s
         // Get the sync context from the client
         syncContext = client.getSyncContext();
 
-    De voor gaande code toevoegingen initialiseert het lokale archief en definieert een lokale tabel die overeenkomt met de kolom waarden die worden gebruikt in uw Azure back-end. (U hoeft niet alle kolom waarden in deze code op te kunnen gebruiken.)  Het veld `version` wordt onderhouden door de mobiele back-end en wordt gebruikt om conflicten op te lossen.
+    De voor gaande code toevoegingen initialiseert het lokale archief en definieert een lokale tabel die overeenkomt met de kolom waarden die worden gebruikt in uw Azure back-end. (U hoeft niet alle kolom waarden in deze code op te kunnen gebruiken.)  Het veld `version` wordt onderhouden door de mobiele back-end en wordt gebruikt voor het oplossen van conflicten.
 
-    U krijgt een verwijzing naar de synchronisatie context door **getSyncContext**aan te roepen. De synchronisatie context helpt bij het bewaren van tabel relaties door wijzigingen in alle tabellen bij te houden en te pushen die een client-app heeft gewijzigd wanneer `.push()` is aangeroepen.
+    U krijgt een verwijzing naar de synchronisatie context door **getSyncContext**aan te roepen. De synchronisatie context helpt bij het bewaren van tabel relaties door wijzigingen in alle tabellen bij te houden en te pushen die een client-app heeft gewijzigd wanneer `.push()` wordt aangeroepen.
 
 3. Werk de URL van de toepassing bij naar de URL van uw mobiele App-toepassing.
 
@@ -169,7 +169,7 @@ In deze sectie wijzigt u het client project om een offline scenario te simuleren
 
         client = new WindowsAzure.MobileServiceClient('http://yourmobileapp.azurewebsites.net-fail');
 
-2. Werk in index. html het element CSP `<meta>` bij met dezelfde ongeldige URL.
+2. Werk in index. html het CSP-`<meta>` element bij met dezelfde ongeldige URL.
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: http://yourmobileapp.azurewebsites.net-fail; style-src 'self'; media-src *">
 
@@ -186,7 +186,7 @@ In deze sectie wijzigt u het client project om een offline scenario te simuleren
 In deze sectie verbindt u de app opnieuw met de mobiele back-end, waarmee de app wordt gesimuleerd naar een online status. Wanneer u zich aanmeldt, worden gegevens gesynchroniseerd met uw mobiele back-end.
 
 1. Open index. js opnieuw en herstel de toepassings-URL.
-2. Open index. HTML opnieuw en corrigeer de toepassings-URL in het element CSP `<meta>`.
+2. Open index. HTML opnieuw en corrigeer de toepassings-URL in het onderdeel CSP-`<meta>`.
 3. Bouw en voer de client-app opnieuw uit. De app probeert na het aanmelden te synchroniseren met de back-end van de mobiele app. Controleer of er geen uitzonde ringen worden vastgelegd in de console voor fout opsporing.
 4. Beschrijving Bekijk de bijgewerkte gegevens met behulp van SQL Server-objectverkenner of een REST hulp programma, zoals Fiddler. U ziet dat de gegevens zijn gesynchroniseerd tussen de back-end-data base en het lokale archief.
 

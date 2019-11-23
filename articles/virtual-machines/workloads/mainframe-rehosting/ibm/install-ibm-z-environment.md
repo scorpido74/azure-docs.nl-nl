@@ -62,11 +62,11 @@ In dit artikel wordt beschreven hoe u de Enter prise-editie voor Z Development a
 
 3. Ontvang de SSH-referenties die worden weer gegeven op de Blade **overzicht** van de virtuele machine via de knop **verbinding maken** . Selecteer het tabblad **SSH** en kopieer de SSH-aanmeldings opdracht naar het klem bord.
 
-4. Meld u aan bij een [bash-shell](/azure/cloud-shell/quickstart) vanaf uw lokale PC en plak de opdracht. Deze heeft de vorm **SSH @ no__t-1user-id @ no__t-2 @ no__t-3 @ no__t-4IP-adres @ no__t-5**. Wanneer u om referenties wordt gevraagd, voert u deze in om een verbinding met uw basismap tot stand te brengen.
+4. Meld u aan bij een [bash-shell](/azure/cloud-shell/quickstart) vanaf uw lokale PC en plak de opdracht. Dit wordt in het formulier **SSH-\<gebruikers-id\>\@\<IP-adres\>** . Wanneer u om referenties wordt gevraagd, voert u deze in om een verbinding met uw basismap tot stand te brengen.
 
 ## <a name="copy-the-installation-file-to-the-server"></a>Kopieer het installatie bestand naar de server
 
-Het installatie bestand voor de webserver is **ZDT @ no__t-1Install @ no__t-2EE\_V12.0.0.1.tgz**. Het is opgenomen in de media die door IBM worden geleverd. U moet dit bestand uploaden naar uw Ubuntu-VM.
+Het installatie bestand voor de webserver is **ZDT\_installeer\_EE\_v 12.0.0.1. tgz**. Het is opgenomen in de media die door IBM worden geleverd. U moet dit bestand uploaden naar uw Ubuntu-VM.
 
 1. Voer vanaf de opdracht regel de volgende opdracht in om ervoor te zorgen dat alles up-to-date is in de zojuist gemaakte installatie kopie:
 
@@ -91,7 +91,7 @@ Het installatie bestand voor de webserver is **ZDT @ no__t-1Install @ no__t-2EE\
 
 ## <a name="install-the-enterprise-edition"></a>De Enter prise-editie installeren
 
-1. Ga naar de map ZDT en decomprimeer het bestand ZDT @ no__t-0Install @ no__t-1EE\_V12.0.0.1.tgz met de volgende opdrachten:
+1. Ga naar de map ZDT en decomprimeer de ZDT\_\_EE\_V 12.0.0.1. tgz te verwijderen met de volgende opdrachten:
 
     ```
     cd ZDT

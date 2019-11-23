@@ -29,20 +29,20 @@ ms.locfileid: "70193179"
 Zoeken naar informatie over de AADSTS-fout codes die worden geretourneerd door de Azure Active Directory (de Azure AD) Security Token Service (STS)? Lees dit document om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.
 
 > [!NOTE]
-> Deze informatie is voorlopig en kan worden gewijzigd. Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de ondersteunings- [en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
+> Deze informatie is voorlopig en kan worden gewijzigd. Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de [ondersteunings-en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
 >
 > Deze documentatie wordt verstrekt voor ontwikkel aars-en beheer richtlijnen, maar mag niet worden gebruikt door de client zelf. Fout codes kunnen op elk gewenst moment worden gewijzigd, zodat er meer gedetailleerde fout berichten worden weer geven die zijn bedoeld om de ontwikkelaar te helpen bij het bouwen van de toepassing. Apps die afhankelijk zijn van tekst of fout code nummers, worden na verloop van tijd gesplitst.
 
 ## <a name="lookup-current-error-code-information"></a>Informatie over actuele fout code opzoeken
-Fout codes en berichten zijn onderhevig aan wijzigingen.  Voor de meest recente informatie raadpleegt u de [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) pagina om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.  
+Fout codes en berichten zijn onderhevig aan wijzigingen.  Voor de meest recente informatie gaat u naar de pagina [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) om AADSTS-fout beschrijvingen, fixes en enkele voorgestelde tijdelijke oplossingen te vinden.  
 
-Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeeld de fout code ' AADSTS16000 ' hebt ontvangen, voert u een zoek opdracht [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) uit voor ' 16000 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
+Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeeld de fout code ' AADSTS16000 ' hebt ontvangen, voert u een zoek opdracht uit in [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) voor ' 16000 '.  U kunt ook rechtstreeks een koppeling naar een specifieke fout maken door het fout code nummer toe te voegen aan de URL: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-fout codes
 
-| Fout | Description |
+| Fout | Beschrijving |
 |---|---|
-| AADSTS16000 | SelectUserAccount: dit is een interrupt veroorzaakt door Azure AD, wat resulteert in de gebruikers interface, waarmee de gebruiker kan kiezen uit meerdere geldige SSO-sessies. Deze fout is tamelijk gebruikelijk en kan worden geretourneerd naar de toepassing als `prompt=none` deze is opgegeven. |
+| AADSTS16000 | SelectUserAccount: dit is een interrupt veroorzaakt door Azure AD, wat resulteert in de gebruikers interface, waarmee de gebruiker kan kiezen uit meerdere geldige SSO-sessies. Deze fout is tamelijk gebruikelijk en kan worden geretourneerd naar de toepassing als `prompt=none` is opgegeven. |
 | AADSTS16001 | UserAccountSelectionInvalid: deze fout wordt weer geven als de gebruiker op een tegel klikt die de logica voor het selecteren van de sessie heeft geweigerd. Als u deze fout hebt geactiveerd, kan de gebruiker met behulp van een bijgewerkte lijst met tegels/sessies herstellen door een ander account te kiezen. Deze fout kan optreden vanwege een code defect of een race voorwaarde. |
 | AADSTS16002 | AppSessionSelectionInvalid-er is niet voldaan aan de vereiste voor de app-opgegeven SID.  |
 | AADSTS16003 | SsoUserAccountNotFoundInResourceTenant: geeft aan dat de gebruiker niet expliciet aan de Tenant is toegevoegd. |
@@ -101,7 +101,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS50089 | Stroomtoken verlopen, verificatie is mislukt. Laat de gebruiker opnieuw proberen zich aan te melden met gebruikers naam en wacht woord. |
 | AADSTS50097 | DeviceAuthenticationRequired: de verificatie van het apparaat is vereist. |
 | AADSTS50099 | PKeyAuthInvalidJwtUnauthorized-de JWT-hand tekening is ongeldig. |
-| AADSTS50105 | EntitlementGrantsNotFound-de aangemelde gebruiker is niet toegewezen aan een rol voor de aangemelde app. Wijs de gebruiker toe aan de app. Meer informatie:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role). |
+| AADSTS50105 | EntitlementGrantsNotFound-de aangemelde gebruiker is niet toegewezen aan een rol voor de aangemelde app. Wijs de gebruiker toe aan de app. Voor meer informatie:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#user-not-assigned-a-role). |
 | AADSTS50107 | InvalidRealmUri-het aangevraagde Federatie realm-object bestaat niet. Neem contact op met de beheerder van de tenant. |
 | AADSTS50120 | ThresholdJwtInvalidJwtFormat: probleem met JWT-header. Neem contact op met de beheerder van de tenant. |
 | AADSTS50124 | De ClaimsTransformationInvalidInputParameter-claim transformatie bevat een ongeldige invoer parameter. Neem contact op met de tenantbeheerder om het beleid bij te werken. |
@@ -155,7 +155,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS70003 | UnsupportedGrantType-de app heeft een niet-ondersteund toekennings type geretourneerd. |
 | AADSTS70004 | InvalidRedirectUri: de app heeft een ongeldige omleidings-URI geretourneerd. Het omleidingsadres dat is gespecificeerd door de client komt niet overeen met een geconfigureerd adres of een adres op de OIDC-goedkeuringslijst. |
 | AADSTS70005 | UnsupportedResponseType: de app heeft een niet-ondersteund antwoord type geretourneerd om de volgende redenen:<ul><li>het antwoord type token is niet ingeschakeld voor de app</li><li>reactietype 'id_token' vereist 'OpenID'-bereik - bevat een niet-ondersteunde OAuth-parameterwaarde in de gecodeerde wctx</li></ul> |
-| AADSTS70007 | UnsupportedResponseMode: de app heeft een niet-ondersteunde waarde geretourneerd `response_mode` bij het aanvragen van een token.  |
+| AADSTS70007 | UnsupportedResponseMode: de app heeft een niet-ondersteunde waarde geretourneerd van `response_mode` bij het aanvragen van een token.  |
 | AADSTS70008 | ExpiredOrRevokedGrant-het vernieuwings token is verlopen vanwege inactiviteit. Het token is uitgegeven op XXX en is gedurende een bepaalde periode inactief. |
 | AADSTS70011 | InvalidScope-het bereik dat door de app is aangevraagd, is ongeldig. |
 | AADSTS70012 | MsaServerError: er is een server fout opgetreden tijdens het verifiëren van een MSA-gebruiker (Consumer). Probeer het opnieuw. Als het probleem blijft optreden, [opent u een ondersteunings ticket](../fundamentals/active-directory-troubleshooting-support-howto.md) |
@@ -197,7 +197,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90015 | QueryStringTooLong-de query reeks is te lang. |
 | AADSTS90016 | MissingRequiredClaim-het toegangs token is niet geldig. De vereiste claim ontbreekt. |
 | AADSTS90019 | MissingTenantRealm-Azure AD kan de Tenant-id niet bepalen op basis van de aanvraag. |
-| AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: de indeling van de principal-naam is ongeldig of voldoet niet aan `name[/host][@realm]` de verwachte indeling. De principal-naam is vereist, host en realm zijn optioneel en kunnen worden ingesteld op null. |
+| AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: de indeling van de principal-naam is ongeldig of voldoet niet aan de verwachte `name[/host][@realm]`-indeling. De principal-naam is vereist, host en realm zijn optioneel en kunnen worden ingesteld op null. |
 | AADSTS90023 | InvalidRequest-de aanvraag voor de verificatie service is niet geldig. |
 | AADSTS9002313 | InvalidRequest-aanvraag heeft een onjuiste indeling of is ongeldig. -Het probleem doet zich voor omdat er iets mis is met de aanvraag voor een bepaald eind punt. De suggestie voor dit probleem is het verkrijgen van een Fiddler tracering van de fout die zich voordoet en om te zien of de aanvraag daad werkelijk op de juiste wijze is ingedeeld of niet. |
 | AADSTS90024 | RequestBudgetExceededError: er is een tijdelijke fout opgetreden. Probeer het opnieuw. |
@@ -207,7 +207,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90043 | NationalCloudAuthCodeRedirection: de functie is uitgeschakeld. |
 | AADSTS90051 | InvalidNationalCloudId-de nationale Cloud-id bevat een ongeldige Cloud-id. |
 | AADSTS90055 | TenantThrottlingError: er zijn te veel binnenkomende aanvragen. Deze uitzonde ring wordt gegenereerd voor geblokkeerde tenants. |
-| AADSTS90056 | BadResourceRequest: als u de code voor een toegangs token wilt inwisselen, moet de app een post- `/token` aanvraag verzenden naar het eind punt. Voordat u dit doet, moet u ook een autorisatie code opgeven en deze verzenden in de post-aanvraag naar `/token` het eind punt. Raadpleeg dit artikel voor een overzicht van de OAuth 2,0-autorisatie code stroom [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code):. De gebruiker naar het `/authorize` eind punt sturen, waardoor een authorization_code wordt geretourneerd. Door een aanvraag naar het `/token` eind punt te posten, krijgt de gebruiker het toegangs token. Meld u aan bij de Azure Portal en controleer **App-registraties >-eind punten** om te bevestigen dat de twee eind punten correct zijn geconfigureerd. |
+| AADSTS90056 | BadResourceRequest: als u de code voor een toegangs token wilt inwisselen, moet de app een POST-aanvraag verzenden naar het `/token`-eind punt. Voordat u dit doet, moet u ook een autorisatie code opgeven en deze verzenden in de POST-aanvraag naar het `/token`-eind punt. Raadpleeg dit artikel voor een overzicht van de OAuth 2,0-autorisatie code stroom: [https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code). De gebruiker naar het `/authorize`-eind punt sturen, waarmee een authorization_code wordt geretourneerd. Door een aanvraag te posten naar het `/token`-eind punt krijgt de gebruiker het toegangs token. Meld u aan bij de Azure Portal en controleer **App-registraties >-eind punten** om te bevestigen dat de twee eind punten correct zijn geconfigureerd. |
 | AADSTS90072 | PassThroughUserMfaError: het externe account waarmee de gebruiker zich aanmeldt, bestaat niet op de Tenant waarin ze zijn aangemeld; de gebruiker kan dus niet voldoen aan de MFA-vereisten voor de Tenant. Het account moet eerst worden toegevoegd als een externe gebruiker in de Tenant. Meld u af en meld u aan met een ander Azure AD-gebruikers account. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid: er is een fout opgetreden tijdens het verwerken van een WS-Federation-bericht door de service. Het bericht is ongeldig. |
 | AADSTS90082 | OrgIdWsFederationNotSupported: het geselecteerde verificatie beleid voor de aanvraag wordt momenteel niet ondersteund. |
@@ -221,7 +221,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90093 | GraphUserUnauthorized-Graph heeft een niet-toegestane fout code voor de aanvraag geretourneerd. |
 | AADSTS90094 | AdminConsentRequired-toestemming van de beheerder is vereist. |
 | AADSTS90100 | InvalidRequestParameter-de para meter is leeg of ongeldig. |
-| AADSTS901002 | AADSTS901002: De aanvraag parameter ' resource ' wordt niet ondersteund. |
+| AADSTS901002 | AADSTS901002: de aanvraag parameter ' resource ' wordt niet ondersteund. |
 | AADSTS90101 | InvalidEmailAddress: de opgegeven gegevens zijn geen geldig e-mail adres. Het e-mail adres moet de indeling `someone@example.com`hebben. |
 | AADSTS90102 | InvalidUriParameter-de waarde moet een geldig absolute URI zijn. |
 | AADSTS90107 | InvalidXml-de aanvraag is niet geldig. Zorg ervoor dat uw gegevens geen ongeldige tekens bevatten.|
@@ -231,10 +231,10 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS90120 | InvalidDeviceFlowRequest-de aanvraag is al goedgekeurd of geweigerd. |
 | AADSTS90121 | InvalidEmptyRequest-ongeldige lege aanvraag.|
 | AADSTS90123 | IdentityProviderAccessDenied: het token kan niet worden verleend omdat de identiteit of claim uitgifte provider de aanvraag heeft geweigerd. |
-| AADSTS90124 | V1ResourceV2GlobalEndpointNotSupported: de resource wordt niet ondersteund voor de `/common` `/consumers` eind punten. Gebruik in `/organizations` plaats daarvan het of Tenant-specifieke eind punt. |
+| AADSTS90124 | V1ResourceV2GlobalEndpointNotSupported: de resource wordt niet ondersteund voor de `/common`-of `/consumers`-eind punten. Gebruik in plaats daarvan het `/organizations` of Tenant-specifiek eind punt. |
 | AADSTS90125 | DebugModeEnrollTenantNotFound: de gebruiker bevindt zich niet in het systeem. Controleer of u de juiste gebruikers naam hebt opgegeven. |
 | AADSTS90126 | DebugModeEnrollTenantNotInferred-het gebruikers type wordt niet ondersteund voor dit eind punt. Het systeem kan de Tenant van de gebruiker niet afleiden van de gebruikers naam. |
-| AADSTS90130 | NonConvergedAppV2GlobalEndpointNotSupported: de toepassing wordt niet ondersteund via de `/common` of `/consumers` -eind punten. Gebruik in `/organizations` plaats daarvan het of Tenant-specifieke eind punt. |
+| AADSTS90130 | NonConvergedAppV2GlobalEndpointNotSupported: de toepassing wordt niet ondersteund via de `/common`-of `/consumers`-eind punten. Gebruik in plaats daarvan het `/organizations` of Tenant-specifiek eind punt. |
 | AADSTS120000 | PasswordChangeIncorrectCurrentPassword |
 | AADSTS120002 | PasswordChangeInvalidNewPasswordWeak |
 | AADSTS120003 | PasswordChangeInvalidNewPasswordContainsMemberName |
@@ -263,7 +263,7 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 | AADSTS220501 | InvalidCrlDownload |
 | AADSTS221000 | DeviceOnlyTokensNotSupportedByResource-de bron is niet geconfigureerd voor het accepteren van alleen-tokens voor apparaten. |
 | AADSTS240001 | BulkAADJTokenUnauthorized: de gebruiker is niet gemachtigd om apparaten te registreren in azure AD. |
-| AADSTS240002 | RequiredClaimIsMissing: de id_token kan niet worden gebruikt `urn:ietf:params:oauth:grant-type:jwt-bearer` als Grant.|
+| AADSTS240002 | RequiredClaimIsMissing: de id_token kan niet worden gebruikt als `urn:ietf:params:oauth:grant-type:jwt-bearer` toekenning.|
 | AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy-de Tenant beheerder heeft een beveiligings beleid geconfigureerd waarmee deze aanvraag wordt geblokkeerd. Controleer de beveiligings beleidsregels die zijn gedefinieerd op Tenant niveau om te bepalen of uw aanvraag voldoet aan de beleids vereisten. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest-de toepassing is niet gevonden in de map/Tenant. Dit kan gebeuren als de toepassing niet is geïnstalleerd door de beheerder van de Tenant of is gezonden door een gebruiker in de Tenant. Mogelijk hebt u de id-waarde voor de toepassing onjuist geconfigureerd of hebt u uw verificatie aanvraag verzonden naar de verkeerde Tenant. |
 | AADSTS700020 | InteractionRequired: de toegangs toekenning vereist interactie. |
@@ -275,4 +275,4 @@ Zoek naar het numerieke deel van de geretourneerde fout code.  Als u bijvoorbeel
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de ondersteunings- [en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.
+* Hebt u een vraag of kunt u niet vinden wat u zoekt? Maak een GitHub-probleem of Raadpleeg de [ondersteunings-en Help-opties voor ontwikkel aars](active-directory-develop-help-support.md) voor meer informatie over andere manieren om hulp en ondersteuning te krijgen.

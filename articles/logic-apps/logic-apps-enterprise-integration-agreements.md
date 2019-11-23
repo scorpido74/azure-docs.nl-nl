@@ -18,7 +18,7 @@ ms.locfileid: "72680423"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Handels partner overeenkomsten maken en beheren in Azure Logic Apps
 
-Een  
+Een 
 *overeenkomst* voor [handels partners](../logic-apps/logic-apps-enterprise-integration-partners.md) helpt organisaties en bedrijven naadloos te communiceren met elkaar door het specifieke industrie standaard protocol te definiëren dat moet worden gebruikt bij het uitwisselen van Business-to-Business (B2B)-berichten. Overeenkomsten bieden algemene voor delen, zoals:
 
 * Organisaties in staat stellen om informatie uit te wisselen met een bekende indeling.
@@ -41,7 +41,7 @@ Zie [Exchange RosettaNet-berichten](../logic-apps/logic-apps-enterprise-integrat
 
 ## <a name="create-agreements"></a>Overeenkomsten maken
 
-1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
 Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' Integration ' in als uw filter. Selecteer in de resultaten deze resource: **integratie accounts**
 
    ![Uw integratie account zoeken](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
@@ -58,14 +58,14 @@ Selecteer in het hoofd menu van Azure **alle services**. Voer in het zoekvak ' I
 
    ![Kies toevoegen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-   | Eigenschap | Verplicht | Waarde | Beschrijving |
+   | Eigenschap | Vereist | Waarde | Beschrijving |
    |----------|----------|-------|-------------|
-   | **Naam** | Ja | <*overeenkomst-naam* > | De naam voor uw overeenkomst |
+   | **Naam** | Ja | <*overeenkomst-naam*> | De naam voor uw overeenkomst |
    | **Type overeenkomst** | Ja | **AS2**, **X12**of **EDIFACT** | Het protocol type voor uw overeenkomst. Wanneer u een overeenkomst bestand maakt, moet de inhoud in dat bestand overeenkomen met het overeenkomst type. | |  
-   | **Host-partner** | Ja | <*host-partner naam* > | De host-partner vertegenwoordigt de organisatie die de overeenkomst specificeert |
-   | **Host-id** | Ja | <*host-partner-id* > | De id van de host-partner |
-   | **Gast partner** | Ja | <*gast-partner naam* > | De gast partner vertegenwoordigt de organisatie die zakendoet met de host-partner |
-   | **Gast identiteit** | Ja | <*gast-partner-id* > | De id van de gast partner |
+   | **Host-partner** | Ja | <*host-partner-name*> | De host-partner vertegenwoordigt de organisatie die de overeenkomst specificeert |
+   | **Host-id** | Ja | <*host-partner-identifier*> | De id van de host-partner |
+   | **Gast partner** | Ja | <*gast-partner naam*> | De gast partner vertegenwoordigt de organisatie die zakendoet met de host-partner |
+   | **Gast identiteit** | Ja | <*gast-partner-id*> | De id van de gast partner |
    | **Instellingen voor ontvangen** | Varieert | Varieert | Met deze eigenschappen geeft u op hoe de host-partner alle inkomende berichten van de gast partner in de overeenkomst ontvangt. Zie voor meer informatie het betreffende type overeenkomst: <p>[AS2-bericht instellingen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) -  <br>[EDIFACT-bericht instellingen](logic-apps-enterprise-integration-edifact.md) -  <br>[X12-bericht instellingen](logic-apps-enterprise-integration-x12.md) -  |
    | **Instellingen verzenden** | Varieert | Varieert | Met deze eigenschappen geeft u op hoe de host-partner alle uitgaande berichten naar de gast partner in de overeenkomst verzendt. Zie voor meer informatie het betreffende type overeenkomst: <p>[AS2-bericht instellingen](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) -  <br>[EDIFACT-bericht instellingen](logic-apps-enterprise-integration-edifact.md) -  <br>[X12-bericht instellingen](logic-apps-enterprise-integration-x12.md) -  |
    |||||

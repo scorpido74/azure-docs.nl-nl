@@ -5,7 +5,7 @@ services: virtual-machines-windows
 author: bobbytreed
 manager: carmonm
 tags: azure-resource-manager
-keywords: DSC
+keywords: dsc
 ms.assetid: b5402e5a-1768-4075-8c19-b7f7402687af
 ms.service: virtual-machines-windows
 ms.topic: article
@@ -179,17 +179,17 @@ Zie het [standaard configuratie script](#default-configuration-script)voor een l
 
 | Naam van eigenschap | Type | Beschrijving |
 | --- | --- | --- |
-| Settings. wmfVersion |string |Hiermee geeft u de versie van Windows Management Framework (WMF) op die op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op **laatst** , wordt de meest recente versie van WMF geïnstalleerd. Momenteel zijn de enige mogelijke waarden voor deze eigenschap **4,0**, **5,0**, **5,1**en **meest recent**. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is **meest recent**. |
-| Settings. Configuration. URL |string |Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie. zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang vereist is, stelt u de eigenschap **protectedSettings. configurationUrlSasToken** in op de waarde van uw SAS-token. Deze eigenschap is vereist als **instellingen. Configuration. script** of **Settings. Configuration. functie** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, roept de extensie het standaard configuratie script aan om de meta gegevens van de locatie Configuration Manager (LCM) in te stellen, en moeten er argumenten worden opgegeven. |
-| instellingen. Configuration. script |string |Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven met de eigenschap **Settings. Configuration. URL** . Deze eigenschap is vereist als **instellingen. Configuration. URL** of **Settings. Configuration. script** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, wordt het standaard configuratie script aangeroepen om de ICM-meta gegevens in te stellen, en moeten er argumenten worden opgegeven. |
-| Settings. Configuration. function |string |Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet worden opgenomen in het script dat door **Settings. Configuration. script** wordt gedefinieerd. Deze eigenschap is vereist als **instellingen. Configuration. URL** of **Settings. Configuration. functie** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, wordt het standaard configuratie script aangeroepen om de ICM-meta gegevens in te stellen, en moeten er argumenten worden opgegeven. |
-| Settings. configurationArguments |Verzameling |Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap is niet versleuteld. |
-| Settings. configurationData. URL |string |Hiermee geeft u de URL op waaruit uw psd1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang vereist is, stelt u de eigenschap **protectedSettings. configurationDataUrlSasToken** in op de waarde van uw SAS-token. |
-| Settings. privacy. dataCollection |string |Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn **Enable**, **Disable**, **' '** of **$Null**. Als u deze eigenschap leeg of null laat, kan telemetrie worden ingeschakeld. De standaard waarde is **.** Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie. |
-| Settings. advancedOptions. downloadMappings |Verzameling |Definieert alternatieve locaties van waaruit WMF kan worden gedownload. Zie [Azure DSC-extensie 2,8 en down loads van de extensie afhankelijkheden toewijzen aan uw eigen locatie](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)voor meer informatie. |
+| settings.wmfVersion |tekenreeks |Hiermee geeft u de versie van Windows Management Framework (WMF) op die op uw virtuele machine moet worden geïnstalleerd. Als u deze eigenschap instelt op **laatst** , wordt de meest recente versie van WMF geïnstalleerd. Momenteel zijn de enige mogelijke waarden voor deze eigenschap **4,0**, **5,0**, **5,1**en **meest recent**. Deze mogelijke waarden zijn onderhevig aan updates. De standaard waarde is **meest recent**. |
+| settings.configuration.url |tekenreeks |Hiermee geeft u de URL-locatie van waaruit u uw DSC-configuratie. zip-bestand wilt downloaden. Als voor de opgegeven URL een SAS-token voor toegang vereist is, stelt u de eigenschap **protectedSettings. configurationUrlSasToken** in op de waarde van uw SAS-token. Deze eigenschap is vereist als **instellingen. Configuration. script** of **Settings. Configuration. functie** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, roept de extensie het standaard configuratie script aan om de meta gegevens van de locatie Configuration Manager (LCM) in te stellen, en moeten er argumenten worden opgegeven. |
+| settings.configuration.script |tekenreeks |Hiermee geeft u de bestands naam op van het script dat de definitie van uw DSC-configuratie bevat. Dit script moet zich in de hoofdmap van het zip-bestand bevindt dat is gedownload van de URL die is opgegeven met de eigenschap **Settings. Configuration. URL** . Deze eigenschap is vereist als **instellingen. Configuration. URL** of **Settings. Configuration. script** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, wordt het standaard configuratie script aangeroepen om de ICM-meta gegevens in te stellen, en moeten er argumenten worden opgegeven. |
+| settings.configuration.function |tekenreeks |Hiermee geeft u de naam van uw DSC-configuratie op. De configuratie met de naam moet worden opgenomen in het script dat door **Settings. Configuration. script** wordt gedefinieerd. Deze eigenschap is vereist als **instellingen. Configuration. URL** of **Settings. Configuration. functie** zijn gedefinieerd. Als er geen waarde wordt opgegeven voor deze eigenschappen, wordt het standaard configuratie script aangeroepen om de ICM-meta gegevens in te stellen, en moeten er argumenten worden opgegeven. |
+| settings.configurationArguments |Verzameling |Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap is niet versleuteld. |
+| settings.configurationData.url |tekenreeks |Hiermee geeft u de URL op waaruit uw psd1-bestand (configuratie gegevens) moet worden gedownload om te worden gebruikt als invoer voor uw DSC-configuratie. Als voor de opgegeven URL een SAS-token voor toegang vereist is, stelt u de eigenschap **protectedSettings. configurationDataUrlSasToken** in op de waarde van uw SAS-token. |
+| settings.privacy.dataCollection |tekenreeks |Hiermee wordt de verzameling telemetrie in-of uitgeschakeld. De enige mogelijke waarden voor deze eigenschap zijn **Enable**, **Disable**, **' '** of **$Null**. Als u deze eigenschap leeg of null laat, kan telemetrie worden ingeschakeld. De standaard waarde is **.** Zie [Azure DSC extension-gegevens verzameling](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/)voor meer informatie. |
+| settings.advancedOptions.downloadMappings |Verzameling |Definieert alternatieve locaties van waaruit WMF kan worden gedownload. Zie [Azure DSC-extensie 2,8 en down loads van de extensie afhankelijkheden toewijzen aan uw eigen locatie](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx)voor meer informatie. |
 | protectedSettings.configurationArguments |Verzameling |Hiermee definieert u de para meters die u wilt door geven aan uw DSC-configuratie. Deze eigenschap is versleuteld. |
-| protectedSettings.configurationUrlSasToken |string |Hiermee geeft u het SAS-token dat moet worden gebruikt om toegang te krijgen tot de URL die door **Settings. Configuration. URL** wordt gedefinieerd. Deze eigenschap is versleuteld. |
-| protectedSettings.configurationDataUrlSasToken |string |Hiermee geeft u het SAS-token op dat moet worden gebruikt om toegang te krijgen tot de URL die door **Settings. configurationData. URL** wordt gedefinieerd. Deze eigenschap is versleuteld. |
+| protectedSettings.configurationUrlSasToken |tekenreeks |Hiermee geeft u het SAS-token dat moet worden gebruikt om toegang te krijgen tot de URL die door **Settings. Configuration. URL** wordt gedefinieerd. Deze eigenschap is versleuteld. |
+| protectedSettings.configurationDataUrlSasToken |tekenreeks |Hiermee geeft u het SAS-token op dat moet worden gebruikt om toegang te krijgen tot de URL die door **Settings. configurationData. URL** wordt gedefinieerd. Deze eigenschap is versleuteld. |
 
 ## <a name="default-configuration-script"></a>Standaard configuratie script
 
@@ -199,14 +199,14 @@ U kunt het standaard configuratie script van de DSC-extensie gebruiken om alleen
 | Naam van eigenschap | Type | Beschrijving |
 | --- | --- | --- |
 | protectedSettings.configurationArguments.RegistrationKey |PSCredential |Eigenschap Required. Hiermee geeft u de sleutel op die wordt gebruikt voor een knoop punt om te registreren bij de Azure Automation-Service als het wacht woord van een Power shell-referentie object. Deze waarde kan automatisch worden gedetecteerd met behulp van de **listkeys ophalen** -methode voor het Automation-account.  Zie het [voor beeld](#example-using-referenced-azure-automation-registration-values). |
-| Settings. configurationArguments. RegistrationUrl |string |Eigenschap Required. Hiermee geeft u de URL op van het Automation-eind punt waar het knoop punt zich probeert te registreren. Deze waarde kan automatisch worden gedetecteerd met behulp van de **referentie** methode voor het Automation-account. |
-| Settings. configurationArguments. NodeConfigurationName |string |Eigenschap Required. Hiermee geeft u de knooppunt configuratie in het Automation-account moet worden toegewezen aan het knoop punt. |
-| Settings. configurationArguments. ConfigurationMode |string |Hiermee geeft u de modus voor LCM op. Geldige opties zijn **ApplyOnly**, **ApplyandMonitor**en **ApplyandAutoCorrect**.  De standaard waarde is **ApplyandMonitor**. |
-| Settings. configurationArguments. RefreshFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM met het Automation-account probeert te controleren op updates.  De standaard waarde is **30**.  De minimum waarde is **15**. |
-| Settings. configurationArguments. ConfigurationModeFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM de huidige configuratie valideert. De standaard waarde is **15**. De minimum waarde is **15**. |
-| Settings. configurationArguments. RebootNodeIfNeeded | booleaans | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
-| Settings. configurationArguments. ActionAfterReboot | string | Hiermee geeft u op wat er gebeurt na het opnieuw opstarten bij het Toep assen van een configuratie. Geldige opties zijn **ContinueConfiguration** en **de stopconfiguration**. De standaard waarde is **ContinueConfiguration**. |
-| Settings. configurationArguments. AllowModuleOverwrite | booleaans | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
+| settings.configurationArguments.RegistrationUrl |tekenreeks |Eigenschap Required. Hiermee geeft u de URL op van het Automation-eind punt waar het knoop punt zich probeert te registreren. Deze waarde kan automatisch worden gedetecteerd met behulp van de **referentie** methode voor het Automation-account. |
+| settings.configurationArguments.NodeConfigurationName |tekenreeks |Eigenschap Required. Hiermee geeft u de knooppunt configuratie in het Automation-account moet worden toegewezen aan het knoop punt. |
+| settings.configurationArguments.ConfigurationMode |tekenreeks |Hiermee geeft u de modus voor LCM op. Geldige opties zijn **ApplyOnly**, **ApplyandMonitor**en **ApplyandAutoCorrect**.  De standaard waarde is **ApplyandMonitor**. |
+| settings.configurationArguments.RefreshFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM met het Automation-account probeert te controleren op updates.  De standaard waarde is **30**.  De minimum waarde is **15**. |
+| settings.configurationArguments.ConfigurationModeFrequencyMins | uint32 | Hiermee geeft u op hoe vaak LCM de huidige configuratie valideert. De standaard waarde is **15**. De minimum waarde is **15**. |
+| settings.configurationArguments.RebootNodeIfNeeded | booleaans | Hiermee geeft u op of een knoop punt automatisch opnieuw kan worden opgestart als een DSC-bewerking dit aanvraagt. De standaard waarde is **False**. |
+| settings.configurationArguments.ActionAfterReboot | tekenreeks | Hiermee geeft u op wat er gebeurt na het opnieuw opstarten bij het Toep assen van een configuratie. Geldige opties zijn **ContinueConfiguration** en **de stopconfiguration**. De standaard waarde is **ContinueConfiguration**. |
+| settings.configurationArguments.AllowModuleOverwrite | booleaans | Hiermee geeft u op of de LCM bestaande modules op het knoop punt overschrijft. De standaard waarde is **False**. |
 
 ## <a name="settings-vs-protectedsettings"></a>instellingen versus protectedSettings
 
@@ -294,7 +294,7 @@ In het volgende voor beeld worden de **RegistrationUrl** en **RegistrationKey** 
 
 ## <a name="update-from-a-previous-format"></a>Bijwerken vanuit een vorige indeling
 
-Alle instellingen in een vorige indeling van de uitbrei ding (en die de open bare eigenschappen **ModulesUrl**, **ModuleSource**, **ModuleVersion**, **ConfigurationFunction**, **SasToken**of **Properties**) automatisch aanpassen aan de huidige indeling van de extensie.
+Instellingen in een vorige indeling van de uitbrei ding (en die de open bare eigenschappen **ModulesUrl**, **ModuleSource**, **ModuleVersion**, **ConfigurationFunction**, **SasToken**of **Properties**hebben), worden automatisch aangepast aan de huidige indeling van de uitbrei ding.
 Ze worden net zo uitgevoerd als voorheen.
 
 In het volgende schema ziet u hoe het vorige schema voor instellingen eruitziet:
@@ -331,18 +331,18 @@ Dit is de manier waarop de vorige notatie wordt aangepast aan de huidige indelin
 
 | Huidige eigenschaps naam | Vorige schema-equivalent |
 | --- | --- |
-| Settings. wmfVersion |Instellingen. WMFVersion |
-| Settings. Configuration. URL |Instellingen. ModulesUrl |
-| instellingen. Configuration. script |Eerste deel van instellingen. ConfigurationFunction (vóór \\ @ no__t-1) |
-| Settings. Configuration. function |Tweede deel van instellingen. ConfigurationFunction (na \\ @ no__t-1) |
-| settings.configuration.module.name | Instellingen. ModuleSource |
-| Settings. Configuration. module. version | Instellingen. ModuleVersion |
-| Settings. configurationArguments |Instellingen. Eigenschappen |
-| Settings. configurationData. URL |protectedSettings. DataBlobUri (zonder SAS-token) |
-| Settings. privacy. dataCollection |Instellingen. Privacy. dataCollection |
-| Settings. advancedOptions. downloadMappings |Instellingen. AdvancedOptions.DownloadMappings |
-| protectedSettings.configurationArguments |protectedSettings. Properties |
-| protectedSettings.configurationUrlSasToken |Instellingen. SasToken |
+| settings.wmfVersion |Instellingen. WMFVersion |
+| settings.configuration.url |settings.ModulesUrl |
+| settings.configuration.script |Eerste deel van instellingen. ConfigurationFunction (vóór \\\\) |
+| settings.configuration.function |Tweede deel van instellingen. ConfigurationFunction (na \\\\) |
+| settings.configuration.module.name | settings.ModuleSource |
+| Settings. Configuration. module. version | settings.ModuleVersion |
+| settings.configurationArguments |Instellingen. Eigenschappen |
+| settings.configurationData.url |protectedSettings. DataBlobUri (zonder SAS-token) |
+| settings.privacy.dataCollection |settings.Privacy.dataCollection |
+| settings.advancedOptions.downloadMappings |settings.AdvancedOptions.DownloadMappings |
+| protectedSettings.configurationArguments |protectedSettings.Properties |
+| protectedSettings.configurationUrlSasToken |settings.SasToken |
 | protectedSettings.configurationDataUrlSasToken |SAS-token van protectedSettings. DataBlobUri |
 
 ## <a name="troubleshooting"></a>Problemen oplossen
@@ -351,9 +351,9 @@ Hier volgen enkele van de fouten die u kunt uitvoeren in en hoe u deze herstelt.
 
 ### <a name="invalid-values"></a>Ongeldige waarden
 
-Privacy. dataCollection is {0}.
+Privacy. dataCollection is{0}.
 De enige mogelijke waarden zijn ' ', ' inschakelen ' en ' uitschakelen ' '.
-"WmfVersion is {0}.
+"WmfVersion is{0}".
 Alleen mogelijke waarden zijn... en ' meest recent '.
 
 **Probleem**: een gegeven waarde is niet toegestaan.
@@ -363,7 +363,7 @@ Zie de tabel in [Details](#details)voor meer informatie.
 
 ### <a name="invalid-url"></a>Ongeldige URL
 
-"ConfigurationData. URL is {0}. Dit is geen geldige URL: "DataBlobUri is {0}. Dit is geen geldige URL "" configuratie. de URL is {0}. Dit is geen geldige URL '
+"ConfigurationData. URL is{0}. Dit is geen geldige URL: "DataBlobUri is{0}. Dit is geen geldige URL "" configuratie. de URL is{0}. Dit is geen geldige URL '
 
 **Probleem**: een gegeven URL is niet geldig.
 
@@ -398,7 +398,7 @@ Volg de indeling die wordt vermeld in de voor gaande voor beelden. Bekijk de aan
 
 ### <a name="duplicate-configurationarguments"></a>Dubbele ConfigurationArguments
 
-' Dubbele argumenten ' {0} ' gevonden in zowel open bare als beveiligde configurationArguments '
+' Dubbele argumenten '{0}' gevonden in zowel open bare als beveiligde configurationArguments '
 
 **Probleem**: de *ConfigurationArguments* in open bare instellingen en de *ConfigurationArguments* in beveiligde instellingen hebben eigenschappen met dezelfde naam.
 

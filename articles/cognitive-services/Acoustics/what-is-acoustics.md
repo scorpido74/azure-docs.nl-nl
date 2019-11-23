@@ -31,7 +31,7 @@ De sleutel innovatie van een project is het koppelen van echte geluids simulatie
 ![Animatie waarin een horizon taal 2D-segment met een golf door een scène wordt weer gegeven](media/wave-simulation.gif)
 
 ## <a name="video-presentation-from-gdc-2019-30-min"></a>Video presentatie van GDC 2019 (~ 30 minuten)
-[Video over de 1Project-akoestische @no__t](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klik om de video af te spelen")
+[Video over het ![van project akoestische](https://img.youtube.com/vi/uY4G-GUAQIE/0.jpg)](https://www.youtube.com/watch?v=uY4G-GUAQIE "Klik om de video af te spelen")
 
 ## <a name="setup"></a>Instellen
 De integratie van de unit van het [project](unity-integration.md) is slepen en neerzetten en bevat een invoeg toepassing voor eenheids audio-engine. Breid de besturings elementen voor unit-audio bron toe door een onderdeel C# van een project akoestische controles toe te voegen aan elk audio object.
@@ -40,8 +40,8 @@ De [Unreal-integratie](unreal-integration.md) van het project bevat een editor e
 
 ## <a name="workflow"></a>Werkstroom
 * **Pre-maken:** Begin met het instellen van de maken door te selecteren welke geometrie reageert op akoestische, bijvoorbeeld door de lichte schachten te negeren. Bewerk vervolgens automatische materiaal toewijzingen en selecteer vervolgens navigatie gebieden om de steek proef van de listener te begeleiden. Er is geen hand matige opmaak voor galm/Portal/room-zones.
-* **Maken** Een analyse stap wordt lokaal uitgevoerd, wat voxelization en andere geometrische analyses op de scène op basis van bovenstaande selecties. De resultaten worden gevisualiseerd in de editor om de installatie van de scène te controleren. Bij maken-verzen ding worden Voxel-gegevens naar Azure verzonden en wordt er een speld geluids activum teruggeleid.
-* **Gezamenlijke** Laad de asset in uw niveau en u bent klaar om te Luis teren naar akoestische op uw niveau. Ontwerp de akoestische in editor met behulp van nauw keurige besturings elementen per bron. De besturings elementen kunnen ook worden gebaseerd op het niveau van scripts.
+* **Maken:** Een analyse stap wordt lokaal uitgevoerd, wat voxelization en andere geometrische analyses op de scène op basis van bovenstaande selecties. De resultaten worden gevisualiseerd in de editor om de installatie van de scène te controleren. Bij maken-verzen ding worden Voxel-gegevens naar Azure verzonden en wordt er een speld geluids activum teruggeleid.
+* **Runtime:** Laad de asset in uw niveau en u bent klaar om te Luis teren naar akoestische op uw niveau. Ontwerp de akoestische in editor met behulp van nauw keurige besturings elementen per bron. De besturings elementen kunnen ook worden gebaseerd op het niveau van scripts.
 
 ## <a name="runtime-platforms"></a>Runtime platformen
 De invoeg toepassingen voor het uitvoeren van de uitvoering van het project kunnen momenteel worden geïmplementeerd op de volgende platforms:
@@ -55,7 +55,7 @@ De invoeg toepassing voor de project akoestische editor is beschikbaar voor de v
 * Windows
 * MacOS (alleen Unit)
 
-## <a name="download"></a>Downloaden
+## <a name="download"></a>Download
 * [Invoeg toepassing en voor beelden van de project akoestische eenheid](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
 * [Projectbudget Unreal & WWise-invoeg toepassingen en-voor beelden](https://www.microsoft.com/download/details.aspx?id=58090)
   * Neem contact met ons op via het [forum](https://github.com/microsoft/ProjectAcoustics/issues)voor binaire bestanden van Xbox en andere ondersteuning.

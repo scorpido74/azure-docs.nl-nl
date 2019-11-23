@@ -66,7 +66,7 @@ U kunt Visual Studio gebruiken om de Webtaak te wijzigen zodat deze continu word
 
 ## <a name="webjobs-as-net-framework-console-apps"></a>Webjobs als .NET Framework-console-apps  
 
-Wanneer in Visual Studio een .NET Framework console toepassings project wordt geïmplementeerd, worden runtime-bestanden naar de juiste map in de web-app gekopieerd (*App_Data/Jobs/continue* voor continue webjobs en *App_Data/Jobs/geactiveerd* voor geplande of on-demand webjobs).
+Wanneer in Visual Studio een .NET Framework console toepassings project wordt geïmplementeerd, worden runtime bestanden gekopieerd naar de juiste map in de web-app (*App_Data/Jobs/Continuous* voor doorlopend webjobs en *App_Data/Jobs/triggered* voor geplande of on-demand webjobs).
 
 Aan een project met webjobs zijn de volgende items toegevoegd:
 
@@ -101,7 +101,7 @@ U hebt hiervoor twee opties:
 
 #### <a id="convertlink"></a>Automatische implementatie van webjobs met een webproject inschakelen
 
-1. Klik met de rechter muisknop op het webproject in **Solution Explorer**en klik vervolgens op  > **bestaand project als Azure-Webtaak** **toevoegen**.
+1. Klik met de rechter muisknop op het webproject in **Solution Explorer**en klik vervolgens op > **bestaand project toevoegen als Azure-Webtaak**.
    
     ![Bestaand project als Azure-Webtaak](./media/webjobs-dotnet-deploy-vs/eawj.png)
    
@@ -132,18 +132,18 @@ Als u een nieuw project met webjobs wilt maken, kunt u de project sjabloon conso
     Een project maken dat is geconfigureerd om automatisch te worden geïmplementeerd als Webtaak wanneer een webproject in dezelfde oplossing wordt geïmplementeerd. Gebruik deze optie wanneer u uw Webtaak wilt uitvoeren in dezelfde Web-app waarin u de gerelateerde webtoepassing uitvoert.
 
 > [!NOTE]
-> De webjobs New-Project-sjabloon installeert automatisch NuGet-pakketten en bevat code in *Program.cs* voor de [webjobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Als u de webjobs SDK niet wilt gebruiken, verwijdert of wijzigt u de instructie `host.RunAndBlock` in *Program.cs*.
+> De webjobs New-Project-sjabloon installeert automatisch NuGet-pakketten en bevat code in *Program.cs* voor de [webjobs SDK](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/getting-started-with-windows-azure-webjobs). Als u de webjobs SDK niet wilt gebruiken, verwijdert of wijzigt u de `host.RunAndBlock`-instructie in *Program.cs*.
 > 
 > 
 
 #### <a id="createnolink"></a>De sjabloon webjobs New-Project gebruiken voor een onafhankelijke Webtaak
-1. Klik **op bestand**@no__t-**1 nieuw project**en klik vervolgens in het dialoog venster **Nieuw project** op **Cloud** > **Azure-Webtaak (.NET Framework)** .
+1. Klik op **bestand** > **Nieuw project**en klik in het dialoog venster **Nieuw project** op **Cloud** > **Azure-Webtaak (.NET Framework)** .
    
     ![Dialoog venster Nieuw project met websjabloon](./media/webjobs-dotnet-deploy-vs/np.png)
 2. Volg de instructies die eerder worden weer gegeven om [de console toepassing een onafhankelijk Webjobs-project te maken](#convertnolink).
 
 #### <a id="createlink"></a>De sjabloon webjobs New-Project gebruiken voor een Webtaak die is gekoppeld aan een webproject
-1. Klik met de rechter muisknop op het webproject in **Solution Explorer**en klik vervolgens op  > **Nieuw Azure-Webtaak** **toevoegen**.
+1. Klik met de rechter muisknop op het webproject in **Solution Explorer**en klik vervolgens op > **Nieuw Azure-project voor Webtaak** **toevoegen** .
    
     ![Nieuw menu-item van Azure Webtaak-project](./media/webjobs-dotnet-deploy-vs/nawj.png)
    
@@ -164,8 +164,8 @@ De velden in dit dialoog venster komen overeen met velden in het dialoog venster
 > 
 > 
 
-### <a id="publishsettings"></a>Webtaak-Publish-Settings. json
-Wanneer u een console toepassing voor webjobs-implementatie configureert, installeert Visual Studio het [micro soft. Web. webjobs. Publiceer](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) het NuGet-pakket en slaat de plannings gegevens op in een *Webtaak-Publish-Settings. json* -bestand in het projectDe map eigenschappen van het project webjobs. Hier volgt een voor beeld van dat bestand:
+### <a id="publishsettings"></a>webjob-publish-settings.json
+Wanneer u een console toepassing voor webjobs-implementatie configureert, installeert Visual Studio het [micro soft. Web. webjobs. Publiceer](https://www.nuget.org/packages/Microsoft.Web.WebJobs.Publish/) het NuGet-pakket en slaat plannings gegevens op in een *Webtaak-Publish-Settings. json* -bestand in de map project *Eigenschappen* van het webjobs-project. Hier volgt een voor beeld van dat bestand:
 
         {
           "$schema": "http://schemastore.org/schemas/json/webjob-publish-settings.json",
@@ -177,9 +177,9 @@ Wanneer u een console toepassing voor webjobs-implementatie configureert, instal
           "runMode": "Continuous"
         }
 
-U kunt dit bestand rechtstreeks bewerken en Visual Studio biedt IntelliSense. Het bestands schema wordt opgeslagen op [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) en kan daar worden weer gegeven.  
+U kunt dit bestand rechtstreeks bewerken en Visual Studio biedt IntelliSense. Het bestands schema wordt opgeslagen op [https://schemastore.org](https://schemastore.org/schemas/json/webjob-publish-settings.json) en kan hier worden weer gegeven.  
 
-### <a id="webjobslist"></a>webjobs-list. json
+### <a id="webjobslist"></a>webjobs-list.json
 Wanneer u een project met webjobs koppelt aan een webproject, wordt in Visual Studio de naam van het webjobs-project opgeslagen in een *webjobs-lijst. json-* bestand in de map *Eigenschappen* van het webproject. De lijst bevat mogelijk meerdere webjobs-projecten, zoals wordt weer gegeven in het volgende voor beeld:
 
         {
@@ -194,10 +194,10 @@ Wanneer u een project met webjobs koppelt aan een webproject, wordt in Visual St
           ]
         }
 
-U kunt dit bestand rechtstreeks bewerken en Visual Studio biedt IntelliSense. Het bestands schema wordt opgeslagen op [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) en kan daar worden weer gegeven.
+U kunt dit bestand rechtstreeks bewerken en Visual Studio biedt IntelliSense. Het bestands schema wordt opgeslagen op [https://schemastore.org](https://schemastore.org/schemas/json/webjobs-list.json) en kan hier worden weer gegeven.
 
 ### <a id="deploy"></a>Een webjobs-project implementeren
-Een webjobs-project dat u hebt gekoppeld aan een webproject, wordt automatisch geïmplementeerd met het webproject. Voor informatie over de implementatie van webprojecten raadpleegt **u de hand leidingen** > **app implementeren** in de linkernavigatiebalk.
+Een webjobs-project dat u hebt gekoppeld aan een webproject, wordt automatisch geïmplementeerd met het webproject. Voor informatie over de implementatie van webprojecten raadpleegt **u de hand leidingen** > **app implementeren** in het navigatie deel venster aan de linkerkant.
 
 Als u een webjobs-project zelf wilt implementeren, klikt u met de rechter muisknop op het project in **Solution Explorer** en klikt u op **publiceren als Azure-Webtaak...** . 
 
@@ -215,7 +215,7 @@ Webjobs gebruikt een *Settings. Job* -bestand om te bepalen wanneer een Webtaak 
 }
 ```
 
-Dit bestand moet zich in de hoofdmap van de map webjobs bevinden, naast het script van uw Webtaak, zoals `wwwroot\app_data\jobs\triggered\{job name}` of `wwwroot\app_data\jobs\continuous\{job name}`. Wanneer u een Webtaak implementeert vanuit Visual Studio, markeert u de bestands eigenschappen van @no__t 0 als een **nieuwe kopie**. 
+Dit bestand moet zich in de hoofdmap van de map webjobs bevinden, naast het script van uw Webtaak, zoals `wwwroot\app_data\jobs\triggered\{job name}` of `wwwroot\app_data\jobs\continuous\{job name}`. Wanneer u een Webtaak implementeert vanuit Visual Studio, markeert u de `settings.job`-bestands eigenschappen als **kopie, indien nieuwer**. 
 
 Wanneer u [een Webtaak maakt op basis van de Azure Portal](webjobs-create.md), wordt het bestand settings. job voor u gemaakt.
 

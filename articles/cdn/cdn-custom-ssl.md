@@ -178,7 +178,7 @@ Uw CNAME-record moet de volgende indeling hebben, waarbij *Naam* de naam van het
 
 | Naam            | Type  | Waarde                 |
 |-----------------|-------|-----------------------|
-| < www. contoso. com > | CNAME | contoso.azureedge.net |
+| <www.contoso.com> | CNAME | contoso.azureedge.net |
 
 Zie [Create the CNAME DNS record](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain) (De CNAME DNS-record maken) voor meer informatie over CNAME-records.
 
@@ -192,7 +192,7 @@ Automatische validatie neemt doorgaans enkele uren in beslag. Als uw domein niet
 ### <a name="custom-domain-is-not-mapped-to-your-cdn-endpoint"></a>Er is geen aangepast domein toegewezen aan uw CDN-eindpunt
 
 >[!NOTE]
->Als u **Azure CDN van Akamai**gebruikt, moet de volgende CNAME worden ingesteld om geautomatiseerde domein validatie in te scha kelen. "_acme-Challenge. &lt;custom domein hostnaam @ no__t-1-> CNAME-> &lt;custom Domain hostname&gt;.ak-acme-challenge.azureedge.net"
+>Als u **Azure CDN van Akamai**gebruikt, moet de volgende CNAME worden ingesteld om geautomatiseerde domein validatie in te scha kelen. "_acme-Challenge.&lt;aangepaste domein-hostnaam&gt;-> CNAME-> &lt;aangepast domein hostnaam&gt;. ak-acme-challenge.azureedge.net "
 
 Als de CNAME-record vermelding het subdomein cdnverify bevat, volgt u de overige instructies in deze stap.
 
@@ -320,7 +320,7 @@ In de volgende tabel wordt de bewerkingsvoortgang weergegeven die plaatsvindt na
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u het volgende geleerd:
+In deze zelfstudie heeft u het volgende geleerd:
 
 > [!div class="checklist"]
 > - Het HTTPS-protocol inschakelen in uw aangepast domein

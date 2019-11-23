@@ -110,18 +110,18 @@ Als u MiCloud Connect with SSO voor Azure AD wilt configureren, is het het gemak
     Het dialoog venster instellingen voor eenmalige aanmelding verbinden wordt weer gegeven.
     
 3. Schakel het selectie vakje **eenmalige aanmelding inschakelen** in.
-    ![installatie kopie](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_Enable.png)
 
 
 4. Klik in de Azure Portal op het pictogram **bewerken** in de sectie **basis configuratie van SAML** .
-    ![installatie kopie](common/edit-urls.png)
+    ![image](common/edit-urls.png)
 
     Het dialoog venster basis configuratie van SAML wordt weer gegeven.
 
 5.  Kopieer de URL uit het veld **Afknot-id (Entiteits-ID)** in de verstek-account Portal en plak deze in het veld **id (Entiteits-ID)** in de Azure Portal.
 
 6. Kopieer de URL van het veld **antwoord-URL (assertion Consumer Service-URL)** in de verstek-account Portal en plak dit in het veld **antwoord-URL (assertion Consumer Service-URL)** in de Azure Portal.  
-   ![installatie kopie](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
+   ![image](./media/mitel-connect-tutorial/Mitel_Azure_BasicConfig.png)
 
 7. Typ in het tekstvak **URL voor aanmelden** een van de volgende url's:
 
@@ -133,17 +133,17 @@ Als u MiCloud Connect with SSO voor Azure AD wilt configureren, is het het gemak
 8. Klik op **Opslaan** in het dialoog venster **basis-SAML-configuratie** in de Azure Portal.
 
 9. Klik in de sectie **SAML-handtekening certificaat** op de op **SAML gebaseerde aanmeldings** pagina in het Azure Portal op **downloaden** naast **certificaat (base64)** om het **handtekening certificaat** te downloaden en op uw computer op te slaan.
-    ![installatie kopie](./media/mitel-connect-tutorial/Azure_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Azure_SigningCert.png)
 
 10. Open het handtekening certificaat bestand in een tekst editor, kopieer alle gegevens in het bestand en plak de gegevens in het veld **handtekening certificaat** in de portal van de verlaagde account. 
-    ![installatie kopie](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Connect_SigningCert.png)
 
 11. Ga als volgt te werk in de sectie **Afknot verbinding instellen** op de op **SAML gebaseerde aanmeldings** pagina van de Azure portal:
 
     a. Kopieer de URL uit het veld **aanmeldings-URL** en plak deze in het veld **aanmeld-URL** in de verstek-account Portal.
 
     b. Kopieer de URL uit het veld **id van Azure AD** en plak deze in het veld **Entiteits-ID** in de verstek-account Portal.
-    ![installatie kopie](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
+    ![image](./media/mitel-connect-tutorial/Mitel_Azure_SetupConnect.png)
 
 12. Klik op **Opslaan** in het dialoog venster **instellingen voor eenmalige aanmelding verbinden** in de verstek-account Portal.
 
@@ -165,7 +165,7 @@ In deze sectie maakt u een test gebruiker met de naam Julia Simon in de Azure Po
 
     a. Typ **BrittaSimon**in het veld **naam** .
   
-    b. Typ in het veld **gebruikers naam** brittasimon @\<yourcompanydomain\>.\<extensie\>.  
+    b. Typ brittasimon@\<yourcompanydomain\>in het veld **gebruikers naam** .\<extensie\>.  
 Bijvoorbeeld BrittaSimon@contoso.com.
 
     c. Schakel het selectie vakje **wacht woord weer geven** in en noteer de waarde die wordt weer gegeven in het vak **wacht woord** .

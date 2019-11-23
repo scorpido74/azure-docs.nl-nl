@@ -84,18 +84,18 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     a. In het tekstvak **Aanmeldings-URL** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.freshworks.com/login`
 
-    b. In het tekstvak **Id (Entiteits-id)** typt u een URL met de volgende notatie: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
+    b. In het tekstvak **Id (entiteits-id)** typt u een URL met het volgende patroon: `https://<SUBDOMAIN>.freshworks.com/sp/SAML/<MODULE_ID>/metadata`
 
     > [!NOTE]
-    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en -id. Neem contact op met het [ondersteunings team van Freshworks-clients](mailto:support@freshworks.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
+    > Dit zijn geen echte waarden. Werk deze waarden bij met de werkelijke aanmeldings-URL en id. Neem contact op met het [ondersteunings team van Freshworks-clients](mailto:support@freshworks.com) om deze waarden te verkrijgen. U kunt ook verwijzen naar het patroon dat wordt weergegeven in de sectie **Standaard SAML-configuratie** in de Azure-portal.
 
 1. Zoek op de pagina **eenmalige aanmelding met SAML instellen** , in de sectie **SAML-handtekening certificaat** , naar **certificaat (base64)** en selecteer **downloaden** om het certificaat te downloaden en op uw computer op te slaan.
 
     ![De link om het certificaat te downloaden](common/certificatebase64.png)
 
-1. Als **u de aanmeldings** options conform uw vereiste wilt wijzigen, klikt u op **bewerken** button om het **SAML-handtekening certificaat**te openen  dialog.
+1. Als u de opties voor **ondertekening** wilt aanpassen volgens uw vereiste, klikt u op knop **bewerken** om het **SAML-handtekening certificaat** te openen dialoog venster.
 
-     ![image](common/edit-certificate.png)
+     ![installatiekopie](common/edit-certificate.png)
 
      ![Freshworks-configuratie](./media/freshworks-tutorial/response.png)
 
@@ -115,7 +115,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 
@@ -141,7 +141,7 @@ In deze sectie schakelt u B. Simon in om eenmalige aanmelding van Azure te gebru
 
 1. Open een nieuw webbrowser venster en meld u aan bij uw Freshworks-bedrijfs site als beheerder en voer de volgende stappen uit:
 
-2. Klik aan de linkerkant van het menu op **beveiliging** icon Controleer vervolgens de optie voor **eenmalige aanmelding** en selecteer **SAML SSO** onder **verificatie methoden**.
+2. Klik aan de linkerkant van het menu op **beveiliging** en controleer vervolgens de optie **eenmalige aanmelding** en selecteer **SAML SSO** onder **verificatie methoden**.
 
     ![Freshworks-configuratie](./media/freshworks-tutorial/configure01.png)
 

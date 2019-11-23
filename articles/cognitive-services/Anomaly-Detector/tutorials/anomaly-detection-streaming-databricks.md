@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks'
+title: 'Zelf studie: anomalie detectie van streaminggegevens met behulp van Azure Databricks'
 titleSuffix: Azure Cognitive Services
 description: Gebruik de anomalie detectie-API en Azure Databricks om afwijkingen in uw gegevens te bewaken.
 titlesuffix: Azure Cognitive Services
@@ -18,7 +18,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/03/2019
 ms.locfileid: "71837753"
 ---
-# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelfstudie: Detectie van afwijkingen in streaming-gegevens met behulp van Azure Databricks
+# <a name="tutorial-anomaly-detection-on-streaming-data-using-azure-databricks"></a>Zelf studie: anomalie detectie van streaminggegevens met behulp van Azure Databricks
 
 [Azure Databricks](https://azure.microsoft.com/services/databricks/) is een snelle, gemakkelijke en samen werkende, op Apache Spark gebaseerde analyse service. De anomalie detectie-API, onderdeel van Azure Cognitive Services, biedt een manier om uw time series-gegevens te bewaken. Gebruik deze zelf studie om anomalie detectie uit te voeren op een gegevens stroom in bijna realtime met behulp van Azure Databricks. U kunt Twitter-gegevens opnemen met Azure Event Hubs en deze importeren in Azure Databricks met behulp van de Spark Event Hubs-connector. Daarna gebruikt u de API om afwijkingen te detecteren op gestreamde gegevens. 
 
@@ -33,7 +33,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * Een Apache Spark-cluster in Azure Databricks maken
 > * Een Twitter-app voor toegang tot streaminggegevens maken
 > * Notitieblokken maken in Azure Databricks
-> * Bibliotheken toevoegen voor Event Hubs en Twitter-API
+> * Bibliotheken koppelen voor Event Hubs en Twitter API
 > * Een anomalie detector-resource maken en de toegangs sleutel ophalen
 > * Tweets verzenden naar Event Hubs
 > * Tweets lezen van Event Hubs
@@ -75,7 +75,7 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
     |**Werkruimtenaam**     | Geef een naam op voor uw Databricks-werkruimte.        |
     |**Abonnement**     | Selecteer uw Azure-abonnement in de vervolgkeuzelijst.        |
     |**Resourcegroep**     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken. Een resourcegroep is een container met gerelateerde resources voor een Azure-oplossing. Zie [Overzicht van Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) voor meer informatie. |
-    |**Location**     | Selecteer **VS Oost 2** of een van de andere beschik bare regio's. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor Beschik baarheid van regio's.        |
+    |**Locatie**     | Selecteer **VS Oost 2** of een van de andere beschik bare regio's. Zie [Azure-Services beschikbaar per regio](https://azure.microsoft.com/regions/services/) voor Beschik baarheid van regio's.        |
     |**Prijscategorie**     |  U kunt kiezen tussen **Standard** en **Premium**. Kies geen **proef versie**. Bekijk de pagina [Prijzen voor Databricks](https://azure.microsoft.com/pricing/details/databricks/) voor meer informatie over deze categorieën.       |
 
     Selecteer **Maken**.
@@ -98,12 +98,12 @@ In deze sectie maakt u een Azure Databricks-werk ruimte met behulp van de [Azure
 
    * Voer een naam in voor het cluster.
    * Voor dit artikel maakt u een cluster met **5,2** runtime. Selecteer niet **5,3** runtime.
-   * Zorg ervoor dat het selectie vakje **beëindigen na \_ @ no__t-2 minuten van inactiviteit** is geselecteerd. Geef een duur (in minuten) op voor het beëindigen van het cluster als het cluster niet wordt gebruikt.
+   * Zorg ervoor dat het selectie vakje **beëindigen na \_\_ minuten van inactiviteit** is geselecteerd. Geef een duur (in minuten) op voor het beëindigen van het cluster als het cluster niet wordt gebruikt.
 
      Selecteer **Cluster maken**. 
 4. Het maken van het cluster duurt enkele minuten. Zodra het cluster wordt uitgevoerd, kunt u notitieblokken koppelen aan het cluster en Spark-taken uitvoeren.
 
-## <a name="create-a-twitter-application"></a>Een Twitter-toepassing maken
+## <a name="create-a-twitter-application"></a>Maak een Twitter-toepassing
 
 Als u een stream van tweets wilt ontvangen, moet u een toepassing in Twitter maken. Volg de stappen om een Twitter-toepassing te maken en de waarden vast te leggen die u nodig hebt om deze zelfstudie te voltooien.
 
@@ -153,23 +153,23 @@ Selecteer op de pagina bibliotheek het cluster waar u de bibliotheek wilt gebrui
 
 In deze zelf studie maakt u gebruik van de [Azure Cognitive Services anomalie](../overview.md) detectie-api's om een afwijkende opsporing uit te voeren op een stroom van tweets in bijna realtime. Voordat u de Api's gebruikt, moet u een afwijkende detector bron op Azure maken en een toegangs sleutel voor het gebruik van de anomalie detectie-Api's ophalen.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer **+ Een resource maken**.
 
-3. Selecteer onder Azure Marketplace **AI + Machine Learning** > **Zie alle** > **Cognitive services-meer** > **anomalie detectie**. Of u kunt [deze koppeling](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) gebruiken om rechtstreeks naar het dialoog venster **maken** te gaan.
+3. Selecteer onder Azure Marketplace **AI + Machine Learning** > alle > **Cognitive Services-meer** > **anomalie detectie** **weer te geven** . Of u kunt [deze koppeling](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector) gebruiken om rechtstreeks naar het dialoog venster **maken** te gaan.
 
     Een afwijkende(../media/tutorials/databricks-cognitive-services-anomaly-detector.png "bron voor") de ![detector]maken
 
 4. Geef in het dialoogvenster **Maken** de volgende waarden op:
 
-    |Value |Beschrijving  |
+    |Waarde |Beschrijving  |
     |---------|---------|
-    |Name     | Een naam voor de afwijkende detector-resource.        |
-    |Subscription     | Het Azure-abonnement waaraan de resource wordt gekoppeld.        |
-    |Location     | Een Azure-locatie.        |
+    |Naam     | Een naam voor de afwijkende detector-resource.        |
+    |Abonnement     | Het Azure-abonnement waaraan de resource wordt gekoppeld.        |
+    |Locatie     | Een Azure-locatie.        |
     |Prijscategorie     | Een prijs categorie voor de service. Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/)voor meer informatie over de prijzen voor anomalie detectie.        |
-    |Resource group     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken.        |
+    |Resourcegroep     | Geef aan of u een nieuwe resourcegroep wilt maken of een bestaande groep wilt gebruiken.        |
 
 
      Selecteer **Maken**.
@@ -300,7 +300,7 @@ eventHubClient.get().close()
 pool.shutdown()
 ```
 
-Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven. Elke gebeurtenis in de uitvoer is een combi natie van tijds tempel en het aantal ' like ' s dat is opgenomen in de Event Hubs.
+Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven. Elke gebeurtenis in de uitvoer is een combi natie van tijds tempel en het aantal ' like ' s dat is opgenomen in de Event Hubs.
 
     Sent event: {"timestamp":"2019-04-24T09:39:40.000Z","favorite":0}
 
@@ -323,7 +323,7 @@ Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgend
 
 ## <a name="read-tweets-from-event-hubs"></a>Tweets lezen van Event Hubs
 
-Plak de volgende code in de **notitie analyzetweetsfromeventhub** -notebook en vervang de tijdelijke aanduiding door waarden voor de bron van de anomalie detector die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder hebt gestreamd naar Event Hubs met behulp van het **SendTweetsToEventHub**-notitieblok.
+Plak de volgende code in de **notitie analyzetweetsfromeventhub** -notebook en vervang de tijdelijke aanduiding door waarden voor de bron van de anomalie detector die u eerder hebt gemaakt. Dit notitieblok leest de tweets die u eerder naar Event Hubs hebt gestreamd met behulp van het notitieblok **SendTweetsToEventHub**.
 
 Schrijf eerst een client om anomalie detectie aan te roepen. 
 ```scala
@@ -423,7 +423,7 @@ object AnomalyDetector extends Serializable {
 }
 ```
 
-Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
+Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
 
     import java.io.{BufferedReader, DataOutputStream, InputStreamReader}
     import java.net.URL
@@ -495,7 +495,7 @@ class AnomalyDetectorAggregationFunction extends UserDefinedAggregateFunction {
 
 ```
 
-Voor het uitvoeren van het notitieblok, drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
+Voor het uitvoeren van het notitieblok drukt u op **SHIFT + ENTER**. De volgende uitvoer wordt weergegeven.
 
     import org.apache.spark.sql.Row
     import org.apache.spark.sql.expressions.{MutableAggregationBuffer, UserDefinedAggregateFunction}
@@ -682,7 +682,7 @@ Nadat u de zelfstudie hebt voltooid, kunt u het cluster beëindigen. Hiertoe sel
 
 ![Een Databricks-cluster stopzetten](../media/tutorials/terminate-databricks-cluster.png "Een Databricks-cluster stopzetten")
 
-Als u het cluster niet hand matig beëindigt, wordt het automatisch gestopt, mits u na het maken van het cluster het selectie vakje **beëindigen na \_ @ no__t-2 minuten van inactiviteit** hebt geselecteerd. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
+Als u het cluster niet hand matig beëindigt, wordt het automatisch gestopt, op voor waarde dat u het selectie vakje **beëindigen na \_\_ minuten van inactiviteit** tijdens het maken van het cluster hebt geselecteerd. In dat geval stopt het cluster automatisch als het gedurende de opgegeven tijd inactief is geweest.
 
 ## <a name="next-steps"></a>Volgende stappen
 

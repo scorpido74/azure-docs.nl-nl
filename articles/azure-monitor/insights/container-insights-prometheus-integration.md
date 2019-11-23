@@ -41,17 +41,17 @@ Wanneer een URL is opgegeven, wordt het eind punt alleen door Azure Monitor voor
 |Bereik | Sleutel | Gegevenstype | Waarde | Beschrijving |
 |------|-----|-----------|-------|-------------|
 | Cluster-breed | | | | Geef een van de volgende drie methoden op om eind punten voor metrische gegevens af te vallen. |
-| | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifieke Azure Monitor voor containers-para meters en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
-| | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld `kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
-| | `monitor_kubernetes_pods` | Booleaans | waar of onwaar | Als de instelling is ingesteld op `true` in de instellingen voor het hele cluster, Azure Monitor voor containers agent Kubernetes peul in het hele cluster voor de volgende Prometheus annotaties:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
-| | `prometheus.io/scrape` | Booleaans | waar of onwaar | Hiermee schakelt u de pod in. `monitor_kubernetes_pods` moet worden ingesteld op `true`. |
+| | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifiek Azure Monitor voor de para meter containers en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
+| | `kubernetes_services` | Tekenreeks | Door komma's gescheiden matrix | Een matrix met Kubernetes-Services voor het opwaarderen van metrische gegevens uit uitvoeren. Bijvoorbeeld`kubernetes_services = ["https://metrics-server.kube-system.svc.cluster.local/metrics", http://my-service-dns.my-namespace:9100/metrics]`.|
+| | `monitor_kubernetes_pods` | Booleaans | true of false | Wanneer deze optie is ingesteld op `true` in de instellingen voor het hele cluster, Azure Monitor voor containers agent Kubernetes peul in het hele cluster voor de volgende Prometheus annotaties:<br> `prometheus.io/scrape:`<br> `prometheus.io/scheme:`<br> `prometheus.io/path:`<br> `prometheus.io/port:` |
+| | `prometheus.io/scrape` | Booleaans | true of false | Hiermee schakelt u de pod in. `monitor_kubernetes_pods` moet zijn ingesteld op `true`. |
 | | `prometheus.io/scheme` | Tekenreeks | http of https | De standaard instelling is het uitvallen van HTTP. Stel, indien nodig, in op `https`. | 
-| | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad voor metrische gegevens niet `/metrics` is, definieert u dit met deze aantekening. |
+| | `prometheus.io/path` | Tekenreeks | Door komma's gescheiden matrix | Het HTTP-bronpad waarvan de metrische gegevens moeten worden opgehaald. Als het pad naar metrische gegevens niet `/metrics`, definieert u dit met deze aantekening. |
 | | `prometheus.io/port` | Tekenreeks | 9102 | Geef een poort op waarvan u wilt uitvallen. Als poort niet is ingesteld, wordt de standaard waarde van 9102. |
 | | `monitor_kubernetes_pods_namespaces` | Tekenreeks | Door komma's gescheiden matrix | Een lijst met toegestane naam ruimten die de metrische gegevens van Kubernetes peul opwaarderen.<br> Bijvoorbeeld: `monitor_kubernetes_pods_namespaces = ["default1", "default2", "default3"]` |
-| Knooppunt-breed | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifieke Azure Monitor voor containers-para meters en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
+| Knooppunt-breed | `urls` | Tekenreeks | Door komma's gescheiden matrix | HTTP-eind punt (ofwel een IP-adres of een geldig URL-pad opgegeven). Bijvoorbeeld: `urls=[$NODE_IP/metrics]`. ($NODE _IP is een specifiek Azure Monitor voor de para meter containers en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Mag alleen hoofd letters zijn.) |
 | Het hele knoop punt of het hele cluster | `interval` | Tekenreeks | 60s | De standaard waarde voor de verzamelings interval is 1 minuut (60 seconden). U kunt de verzameling voor *[prometheus_data_collection_settings. node]* en/of *[prometheus_data_collection_settings. cluster]* wijzigen in tijds eenheden zoals s, m, h. |
-| Het hele knoop punt of het hele cluster | `fieldpass`<br> `fielddrop`| Tekenreeks | Door komma's gescheiden matrix | U kunt bepaalde metrische gegevens opgeven die u wilt verzamelen of niet van het eind punt door de vermelding toestaan (`fieldpass`) en niet toestaan (`fielddrop`) in te stellen. U moet eerst de acceptatie lijst instellen. |
+| Het hele knoop punt of het hele cluster | `fieldpass`<br> `fielddrop`| Tekenreeks | Door komma's gescheiden matrix | U kunt bepaalde metrische gegevens opgeven die u wilt verzamelen of niet van het eind punt door de vermelding toestaan (`fieldpass`) en weigeren (`fielddrop`) in te stellen. U moet eerst de acceptatie lijst instellen. |
 
 ConfigMaps is een globale lijst en er kan slechts één ConfigMap op de agent worden toegepast. U kunt de verzamelingen niet overConfigMapsen.
 
@@ -100,7 +100,7 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand te configurere
         ```
 
         >[!NOTE]
-        >$NODE _IP is een specifieke Azure Monitor voor containers-para meters en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Deze moet allemaal hoofd letters zijn. 
+        >$NODE _IP is een specifieke Azure Monitor voor containers para meter en kan worden gebruikt in plaats van het IP-adres van het knoop punt. Deze moet allemaal hoofd letters zijn. 
 
     - Voer de volgende stappen uit om het uitvallen van metrische gegevens over Prometheus te configureren door een pod-aantekening op te geven:
 
@@ -127,15 +127,15 @@ Voer de volgende stappen uit om uw ConfigMap-configuratie bestand te configurere
 
 3. Maak ConfigMap door de volgende kubectl-opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml>`.
     
-    Voor beeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
+    Voorbeeld: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
     
-    Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" created`.
+    Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt er een bericht weer gegeven dat er ongeveer als volgt uitziet: `configmap "container-azm-ms-agentconfig" created`.
 
 ## <a name="applying-updated-configmap"></a>Bijgewerkte ConfigMap Toep assen
 
-Als u al een ConfigMap op uw cluster hebt geïmplementeerd en u deze wilt bijwerken met een nieuwere configuratie, kunt u het ConfigMap-bestand dat u eerder hebt gebruikt, bewerken en vervolgens op dezelfde opdracht Toep assen als voorheen, `kubectl apply -f <configmap_yaml_file.yaml`.
+Als u al een ConfigMap op uw cluster hebt geïmplementeerd en u deze wilt bijwerken met een nieuwere configuratie, kunt u het ConfigMap-bestand dat u eerder hebt gebruikt, bewerken en vervolgens op dezelfde opdracht Toep assen als voorheen `kubectl apply -f <configmap_yaml_file.yaml`.
 
-Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt een bericht weer gegeven dat er ongeveer als volgt uitziet en het resultaat bevat: `configmap "container-azm-ms-agentconfig" updated`.
+Het kan een paar minuten duren voordat de configuratie wijziging is doorgevoerd en alle omsagent in het cluster opnieuw worden opgestart. Het opnieuw opstarten is een rolling start voor alle omsagent-peulen, niet allemaal tegelijk opnieuw opstarten. Wanneer het opnieuw opstarten is voltooid, wordt er een bericht weer gegeven dat er ongeveer als volgt uitziet: `configmap "container-azm-ms-agentconfig" updated`.
 
 ## <a name="verify-configuration"></a>Configuratie controleren 
 
@@ -158,7 +158,7 @@ Fouten met betrekking tot het Toep assen van configuratie wijzigingen zijn ook b
 
 - Vanuit de **KubeMonAgentEvents** -tabel in uw log Analytics-werk ruimte. Gegevens worden elk uur verzonden met een *waarschuwing* ernst voor uitval fouten en *fout* ernst voor configuratie fouten. Als er geen fouten zijn, heeft de vermelding in de tabel gegevens met *informatie*over de ernst, die geen fouten rapporteert. De eigenschap **Tags** bevat meer informatie over de Pod en de container-id waarop de fout is opgetreden en ook de eerste instantie, het laatste exemplaar en het aantal voor het afgelopen uur.
 
-Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het opnieuw wordt gestart en de standaard configuratie wordt gebruikt. Nadat u de fout (en) in ConfigMap hebt gecorrigeerd, slaat u het yaml-bestand op en past u de bijgewerkte ConfigMaps toe door de opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml`.
+Fouten zorgen ervoor dat omsagent het bestand niet kan parseren, waardoor het opnieuw wordt gestart en de standaard configuratie wordt gebruikt. Nadat u de fout (en) in ConfigMap hebt gecorrigeerd, slaat u het yaml-bestand op en past u de bijgewerkte ConfigMaps toe door de volgende opdracht uit te voeren: `kubectl apply -f <configmap_yaml_file.yaml`.
 
 ## <a name="query-prometheus-metrics-data"></a>Prometheus metrische gegevens opvragen
 

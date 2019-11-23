@@ -46,7 +46,7 @@ Als u eenvoudig onderhoud en code beheer wilt, plaatst u alleen een kort U-SQL-s
 
 ![Inline U-SQL-script in SSIS-taak bewerken](./media/data-lake-analytics-schedule-jobs-ssis/edit-inline-usql-script-in-ssis.png)
 
-Verwant artikel: [Para meter door geven aan opgeslagen procedures](#scenario-6-pass-parameters-to-u-sql-script)
+Verwant artikel: [para meter door geven aan opgeslagen procedures](#scenario-6-pass-parameters-to-u-sql-script)
 
 ## <a name="scenario-2-use-u-sql-files-in-azure-data-lake-store"></a>Scenario 2: U-SQL-bestanden gebruiken in Azure Data Lake Store
 
@@ -77,7 +77,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 
 2. Stel **map** onder **configuratie groep enumerator** in op de tijdelijke map met de gedownloade U-SQL-scripts.
 
-3. Stel **bestanden** onder **configuratie van Enumerator** in op `*.usql` zodat de herhalings container alleen de bestanden onderschept die eindigen op `.usql`.
+3. Stel **bestanden** onder **configuratie van Enumerator** in op `*.usql`, zodat de herhalings container alleen de bestanden onderschept die eindigen op `.usql`.
 
     ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-foreach-loop-container-collection.png)
 
@@ -93,7 +93,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
     
     Deze bestands verbinding maken:
 
-   1. **@No__t-1New-verbinding kiezen... >** in FileConnection-instelling.
+   1. **\<nieuwe verbinding kiezen... >** in FileConnection-instelling.
    2. Stel het **gebruiks type** in op het **bestaande bestand**en stel het **bestand** in op het bestandspad van een bestaand bestand.
 
        ![Foreach-lus-container configureren](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
@@ -119,7 +119,7 @@ Voeg in de ontwerp weergave SSIS-pakket een **Azure data Lake Store-bestandsbehe
 
 U kunt u-SQL-bestanden in Azure Blob Storage gebruiken met behulp van de **Azure Blob-Download taak** in azure Feature Pack. Met deze aanpak kunt u de scripts in de Cloud gebruiken.
 
-De stappen zijn vergelijkbaar met [Scenario 2: Gebruik U-SQL-bestanden in Azure Data Lake Store @ no__t-0. Wijzig de Download taak voor de Azure Data Lake Store-bestands systeem in Azure Blob. Meer [informatie over de Download taak voor Azure Blob](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+De stappen zijn vergelijkbaar met [scenario 2: u-SQL-bestanden gebruiken in azure data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Wijzig de Download taak voor de Azure Data Lake Store-bestands systeem in Azure Blob. Meer [informatie over de Download taak voor Azure Blob](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 De controle stroom ziet er als volgt uit.
 

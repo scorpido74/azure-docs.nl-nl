@@ -55,7 +55,7 @@ Voor het configureren van de integratie van Boxcryptor in Azure AD, moet u Boxcr
 
 **Voer de volgende stappen uit om Boxcryptor toe te voegen vanuit de galerie:**
 
-1. Klik in het linkernavigatievenster in de  **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
+1. Klik in het linkernavigatievenster in de **[Azure-portal](https://portal.azure.com)** op het **Azure Active Directory**-pictogram.
 
     ![De knop Azure Active Directory](common/select-azuread.png)
 

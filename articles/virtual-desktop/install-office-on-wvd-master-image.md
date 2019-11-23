@@ -53,7 +53,7 @@ Dit is de XML-voorbeeld configuratie:
 - Installeer OneDrive in de modus per gebruiker. Zie voor meer informatie [OneDrive installeren in de modus per computer](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich op **computer configuratie @ no__t-1Policies @ no__t-2Administrative sjablonen @ no__t-3Microsoft Office 2016 (machine) \\Licensing-instellingen**
+>Activering van gedeelde computers kan worden ingesteld via groepsbeleid objecten (Gpo's) of register instellingen. Het groeps beleidsobject bevindt zich in **computer configuratie\\beleid\\Beheersjablonen\\Microsoft Office 2016 (computer)\\licentie-instellingen**
 
 Het Office Deployment Tool bevat Setup. exe. Als u Office wilt installeren, voert u de volgende opdracht uit op de opdracht regel:
 
@@ -130,11 +130,11 @@ OneDrive wordt normaal gesp roken per gebruiker geïnstalleerd. In deze omgeving
 
 U kunt als volgt OneDrive installeren in de modus per computer:
 
-1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of de locatie [\\ @ no__t-1unc] (file://unc) is nauw keurig.
+1. Maak eerst een locatie voor het faseren van het OneDrive-installatie programma. Een lokale schijf map of de locatie van de\\\\UNC] (file://unc) is nauw keurig.
 
 2. Down load OneDriveSetup. exe naar uw gefaseerde locatie met deze koppeling: <https://aka.ms/OneDriveWVD-Installer>
 
-3. Als u Office met OneDrive hebt geïnstalleerd door **\<EXCLUDEAPP id = "OneDrive"/\>** te laten verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
+3. Als u Office met OneDrive hebt geïnstalleerd door **\<EXCLUDEAPP id = "OneDrive"/\>** te verwijderen, verwijdert u alle bestaande installaties per gebruiker van onedrive van een opdracht prompt met verhoogde bevoegdheid door de volgende opdracht uit te voeren:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

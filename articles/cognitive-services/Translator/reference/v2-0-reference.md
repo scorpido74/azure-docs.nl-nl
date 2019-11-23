@@ -27,11 +27,11 @@ Versie 2 van de Translator Text-API kan naadloos worden geïntegreerd in uw apps
 ## <a name="getting-started"></a>Aan de slag
 Als u toegang wilt krijgen tot de Translator Text-API, moet u [zich registreren voor Microsoft Azure](../translator-text-how-to-signup.md).
 
-## <a name="authentication"></a>Verificatie 
+## <a name="authentication"></a>Authentication 
 Voor alle aanroepen van de Translator Text-API is een abonnements sleutel voor verificatie vereist. De API ondersteunt drie verificatie methoden:
 
-- Een toegangs token. Gebruik de abonnements sleutel om een toegangs token te maken door een POST-aanvraag te doen voor de verificatie service. Raadpleeg de documentatie van de token-service voor meer informatie. Geef het toegangs token door aan de Translator-service door de header `Authorization` of de para meter `access_token` te gebruiken. Het toegangs token is 10 minuten geldig. Verkrijg elke 10 minuten een nieuw toegangs token en blijf hetzelfde toegangs token gebruiken voor herhaalde aanvragen gedurende de 10 minuten.
-- Een abonnements sleutel die rechtstreeks wordt gebruikt. Geef uw abonnements sleutel door als een waarde in de `Ocp-Apim-Subscription-Key`-header die is opgenomen in uw aanvraag voor de Translator Text-API. Wanneer u de abonnements sleutel rechtstreeks gebruikt, hoeft u de token verificatie service niet aan te roepen om een toegangs token te maken.
+- Een toegangs token. Gebruik de abonnements sleutel om een toegangs token te maken door een POST-aanvraag te doen voor de verificatie service. Raadpleeg de documentatie van de token-service voor meer informatie. Geef het toegangs token door aan de Translator-service met behulp van de `Authorization` header of de `access_token` query parameter. Het toegangs token is 10 minuten geldig. Verkrijg elke 10 minuten een nieuw toegangs token en blijf hetzelfde toegangs token gebruiken voor herhaalde aanvragen gedurende de 10 minuten.
+- Een abonnements sleutel die rechtstreeks wordt gebruikt. Geef uw abonnements sleutel door als een waarde in de `Ocp-Apim-Subscription-Key` header die is opgenomen in uw aanvraag voor de Translator Text-API. Wanneer u de abonnements sleutel rechtstreeks gebruikt, hoeft u de token verificatie service niet aan te roepen om een toegangs token te maken.
 - Een [Azure Cognitive Services multi-service-abonnement](https://azure.microsoft.com/pricing/details/cognitive-services/). Met deze methode kunt u een enkele geheime sleutel gebruiken om aanvragen voor meerdere services te verifiëren.
 Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verificatie headers met uw aanvraag meevoegen. De eerste header geeft de geheime sleutel door. De tweede header bevat de regio die aan uw abonnement is gekoppeld:
    - `Ocp-Apim-Subscription-Key`
@@ -39,25 +39,25 @@ Wanneer u een geheime sleutel van meerdere services gebruikt, moet u twee verifi
 
 De regio is vereist voor het multi-service-tekst-API-abonnement. De regio die u selecteert, is de enige regio die u voor tekst vertalingen kunt gebruiken wanneer u de sleutel voor meerdere service abonnementen gebruikt. Het moet dezelfde regio zijn die u hebt geselecteerd toen u zich registreerde voor uw abonnement op meerdere services op de Azure Portal.
 
-De beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, 0, 1, 2, 3, 4, 5 en 6.
+De beschik bare regio's zijn `australiaeast`, `brazilsouth`, `canadacentral`, `centralindia`, `centraluseuap`, `eastasia`, `eastus`, `eastus2`, `japaneast`, `northeurope`, `southcentralus`, `southeastasia`, `uksouth`, `westcentralus`, `westeurope`, `westus`en `westus2`.
 
 Uw abonnements sleutel en toegangs token zijn geheimen die in de weer gave moeten worden verborgen.
 
 ## <a name="profanity-handling"></a>Behandeling van scheld woorden
 Normaal gesp roken behoudt de Translator-service dat aanwezig is in de bron. De mate van scheld woorden en de context die het ongepaste woord is, verschillen per cultuur. De graad van scheld woorden in de doel taal kan dus worden verg root of verkleind.
 
-Als u wilt voor komen dat de vertaling ongebruik maakt, zelfs als deze zich in de bron tekst bevindt, kunt u de filter optie voor scheld woorden gebruiken voor de methoden die deze ondersteunen. Met deze optie kunt u kiezen of u wilt zien of de woordenset is verwijderd of gemarkeerd met de juiste Tags, of dat u de scheld woorden in het doel wilt toestaan. De geaccepteerde waarden van `ProfanityAction` zijn `NoAction` (standaard), `Marked` en `Deleted`.
+Als u wilt voor komen dat de vertaling ongebruik maakt, zelfs als deze zich in de bron tekst bevindt, kunt u de filter optie voor scheld woorden gebruiken voor de methoden die deze ondersteunen. Met deze optie kunt u kiezen of u wilt zien of de woordenset is verwijderd of gemarkeerd met de juiste Tags, of dat u de scheld woorden in het doel wilt toestaan. De geaccepteerde waarden van `ProfanityAction` zijn `NoAction` (standaard), `Marked`en `Deleted`.
 
 
-|ProfanityAction    |Bewerking |Voorbeeld bron (Japans)  |Voor beeld van vertaling (Engels)  |
+|profanityAction    |Actie |Voorbeeld bron (Japans)  |Voor beeld van vertaling (Engels)  |
 |:--|:--|:--|:--|
-|Geen actie   |Standaard. Hetzelfde als de optie niet instellen. Scheld is van bron naar doel.        |彼はジャッカスです Marketplace.     |Hij is een Jackass.   |
-|Duidelijke     |Ongepaste woorden worden omgeven door XML-tags \<profanity > en \</Gods taal >.       |彼はジャッカスです Marketplace. |Hij is een \<profanity > Jackass @ no__t-1/scheld >.  |
-|Deleted    |Ongepaste woorden worden verwijderd uit de uitvoer zonder vervanging.     |彼はジャッカスです Marketplace. |Hij is een.   |
+|Geen actie   |Standaard. Hetzelfde als de optie niet instellen. Scheld is van bron naar doel.        |彼はジャッカスです。     |Hij is een Jackass.   |
+|Duidelijke     |Ongepaste woorden worden omgeven door XML-tags \<Gods > en \</profanity >.       |彼はジャッカスです。 |Hij is \<scheld is > Jackass\</profanity >.  |
+|Verwijderen    |Ongepaste woorden worden verwijderd uit de uitvoer zonder vervanging.     |彼はジャッカスです。 |Hij is een.   |
 
     
 ## <a name="excluding-content-from-translation"></a>Inhoud uitsluiten van vertaling
-Wanneer u inhoud omzet met tags, zoals HTML (`contentType=text/html`), is het soms handig om specifieke inhoud uit te sluiten van de vertaling. U kunt het kenmerk `class=notranslate` gebruiken om inhoud op te geven die in de oorspronkelijke taal moet blijven. In het volgende voor beeld wordt de inhoud in het eerste `div`-element niet vertaald, maar wordt de inhoud van het tweede element `div` vertaald.
+Wanneer u inhoud omzet met tags, zoals HTML (`contentType=text/html`), is het soms handig om specifieke inhoud uit te sluiten van de vertaling. U kunt het kenmerk `class=notranslate` gebruiken om inhoud op te geven die in de oorspronkelijke taal moet blijven. In het volgende voor beeld wordt de inhoud in het eerste `div`-element niet vertaald, maar wordt de inhoud in het tweede `div` element vertaald.
 
 ```HTML
 <div class="notranslate">This will not be translated.</div>
@@ -77,22 +77,22 @@ Als u eerder `AddTranslation` of `AddTranslationArray` hebt gebruikt om een vert
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
 
 ### <a name="parameters"></a>Parameters
 
-|Parameter|Waarde|Beschrijving    |Parameter type|Gegevens type|
+|Parameter|Waarde|Beschrijving    |Parameter type|gegevens type|
 |:--|:--|:--|:--|:--|
-|AppID  |gelaten    |Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|tekst|gelaten   |Vereist. Een teken reeks die de tekst vertegenwoordigt die moet worden vertaald. De tekst mag niet meer dan 10.000 tekens bevatten.|query|string|
-|Van|gelaten   |Optioneel. Een teken reeks die de taal code vertegenwoordigt van de tekst die wordt vertaald. Bijvoorbeeld, en voor Engels.|query|string|
-|tot|gelaten |Vereist. Een teken reeks die de code van de taal voor de omzetting van de tekst in aangeeft.|query|string|
-|Invoer|gelaten    |Optioneel. De indeling van de tekst die wordt vertaald. Ondersteunde indelingen zijn `text/plain` (standaard) en `text/html`. HTML-elementen moeten goed opgemaakte, volledige elementen zijn.|query|string|
-|category|gelaten   |Optioneel. Een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.|query|string|
-|Autorisatie|gelaten  |Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten  |Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid  |gelaten    |Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|tekst|gelaten   |Vereist. Een teken reeks die de tekst vertegenwoordigt die moet worden vertaald. De tekst mag niet meer dan 10.000 tekens bevatten.|query|tekenreeks|
+|from|gelaten   |Optioneel. Een teken reeks die de taal code vertegenwoordigt van de tekst die wordt vertaald. Bijvoorbeeld, en voor Engels.|query|tekenreeks|
+|tot|gelaten |Vereist. Een teken reeks die de code van de taal voor de omzetting van de tekst in aangeeft.|query|tekenreeks|
+|contentType|gelaten    |Optioneel. De indeling van de tekst die wordt vertaald. Ondersteunde indelingen zijn `text/plain` (standaard) en `text/html`. HTML-elementen moeten goed opgemaakte, volledige elementen zijn.|query|tekenreeks|
+|category|gelaten   |Optioneel. Een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.|query|tekenreeks|
+|Autorisatie|gelaten  |Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten  |Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 
 ### <a name="response-messages"></a>Antwoord berichten
@@ -136,29 +136,29 @@ Dit is de indeling van de hoofd tekst van de aanvraag:
 Deze elementen bevinden zich in `TranslateArrayRequest`:
 
 
-* `AppId`: vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `AppId` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.
+* `AppId`: vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `AppId` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.
 * `From`: optioneel. Een teken reeks die de taal code vertegenwoordigt van de tekst die wordt vertaald. Als dit veld leeg blijft, wordt in het antwoord het resultaat van automatische taal detectie vermeld.
 * `Options`: optioneel. Een `Options`-object dat de volgende waarden bevat. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen. Opgegeven elementen moeten in alfabetische volg orde worden weer gegeven.
     - `Category`: een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.
-    - `ContentType`: de indeling van de tekst die wordt vertaald. De ondersteunde indelingen zijn `text/plain` (standaard), `text/xml` en `text/html`. HTML-elementen moeten goed opgemaakte, volledige elementen zijn.
-    - `ProfanityAction`: Hiermee geeft u op hoe scheld woorden worden verwerkt, zoals eerder is beschreven. Geaccepteerde waarden zijn `NoAction` (standaard), `Marked` en `Deleted`.
-    - `State`: gebruikers status om te helpen bij het correleren van de aanvraag en het antwoord. Dezelfde inhoud wordt in het antwoord geretourneerd.
+    - `ContentType`: de indeling van de tekst die wordt vertaald. De ondersteunde indelingen zijn `text/plain` (standaard), `text/xml`en `text/html`. HTML-elementen moeten goed opgemaakte, volledige elementen zijn.
+    - `ProfanityAction`: Hiermee geeft u op hoe scheld woorden worden verwerkt, zoals eerder is beschreven. Geaccepteerde waarden zijn `NoAction` (standaard), `Marked`en `Deleted`.
+    - `State`: de gebruikers status om de aanvraag en het antwoord te helpen correleren. Dezelfde inhoud wordt in het antwoord geretourneerd.
     - `Uri`: resultaten filteren op deze URI. Standaard: `all`.
     - `User`: resultaten filteren op basis van deze gebruiker. Standaard: `all`.
 * `Texts`: vereist. Een matrix die de tekst voor vertaling bevat. Alle teken reeksen moeten zich in dezelfde taal bestaan. Het totaal van de tekst die moet worden vertaald, mag niet langer zijn dan 10.000 tekens. Het maximum aantal matrix elementen is 2.000.
 * `To`: vereist. Een teken reeks die de code van de taal voor de omzetting van de tekst in aangeeft.
 
-U kunt optionele elementen weglaten. Elementen die rechtstreekse onderliggende items zijn van `TranslateArrayRequest`, moeten in alfabetische volg orde worden weer gegeven.
+U kunt optionele elementen weglaten. Elementen die rechtstreekse onderliggende items van `TranslateArrayRequest` zijn, moeten in alfabetische volg orde worden weer gegeven.
 
 De `TranslateArray`-methode accepteert `application/xml` of `text/xml` voor `Content-Type`.
 
-**Retour waarde:** Een `TranslateArrayResponse`-matrix. Elke `TranslateArrayResponse` heeft de volgende elementen:
+**Retour waarde:** Een `TranslateArrayResponse` matrix. Elk `TranslateArrayResponse` heeft de volgende elementen:
 
-* `Error`: geeft aan dat er een fout is als er een optreedt. Anders ingesteld op null.
+* `Error`: geeft een fout aan als er een optreedt. Anders ingesteld op null.
 * `OriginalSentenceLengths`: een matrix van gehele getallen die de lengte van elke zin in de bron tekst aangeeft. De lengte van de matrix geeft het aantal zinnen aan.
 * `TranslatedText`: de vertaalde tekst.
 * `TranslatedSentenceLengths`: een matrix van gehele getallen die de lengte van elke zin in de vertaalde tekst aangeeft. De lengte van de matrix geeft het aantal zinnen aan.
-* `State`: gebruikers status om te helpen bij het correleren van de aanvraag en het antwoord. Retourneert dezelfde inhoud als de aanvraag.
+* `State`: de gebruikers status om de aanvraag en het antwoord te helpen correleren. Retourneert dezelfde inhoud als de aanvraag.
 
 Dit is de indeling van de antwoord tekst:
 
@@ -180,9 +180,9 @@ Dit is de indeling van de antwoord tekst:
 ```
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
-Een geslaagde reactie omvat een matrix van `TranslateArrayResponse`-matrices in de indeling die eerder is beschreven.
+Een geslaagde reactie omvat een matrix van `TranslateArrayResponse` matrices in de indeling die eerder is beschreven.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
 
@@ -190,8 +190,8 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|Autorisatie|gelaten  |Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|Autorisatie|gelaten  |Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -205,7 +205,7 @@ Type antwoord inhoud: Application/XML
 ## <a name="post-getlanguagenames"></a>/GetLanguageNames plaatsen
 
 ### <a name="implementation-notes"></a>Opmerkingen bij de implementatie
-Hiermee haalt u beschrijvende namen op voor de talen die worden door gegeven als de para meter `languageCodes`, gelokaliseerd in de door gegeven `locale`-taal.
+Hiermee haalt u beschrijvende namen op voor de talen die worden door gegeven als de para meter `languageCodes`, gelokaliseerd in de door gegeven `locale` taal.
 
 De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames`.
 
@@ -223,7 +223,7 @@ De aanvraag tekst bevat een teken reeks matrix die de ISO 639-1-taal codes verte
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 Een teken reeks matrix die talen namen bevat die worden ondersteund door de Vertaal Service, gelokaliseerd in de aangevraagde taal.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
  
@@ -231,10 +231,10 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|instelling|gelaten |Vereist. Een teken reeks die staat voor een van de volgende, die wordt gebruikt om de taal namen te lokaliseren: <ul><li>De combi natie van een ISO 639 2-letter code met kleine letters en cultuur die is gekoppeld aan een taal en een ISO 3166 2-letter hoofd code subcultuur. <li>Een ISO 639-kleine cultuur code op zichzelf.|query|string|
-|Autorisatie|gelaten  |Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten  |Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|instelling|gelaten |Vereist. Een teken reeks die staat voor een van de volgende, die wordt gebruikt om de taal namen te lokaliseren: <ul><li>De combi natie van een ISO 639 2-letter code met kleine letters en cultuur die is gekoppeld aan een taal en een ISO 3166 2-letter hoofd code subcultuur. <li>Een ISO 639-kleine cultuur code op zichzelf.|query|tekenreeks|
+|Autorisatie|gelaten  |Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten  |Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -257,7 +257,7 @@ De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/GetLanguages
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 Een teken reeks matrix die de taal codes bevat die door de service Translator worden ondersteund.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
  
@@ -265,9 +265,9 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|Autorisatie|gelaten  |Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|Autorisatie|gelaten  |Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -290,7 +290,7 @@ De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/GetLanguages
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 Een teken reeks matrix die de taal codes bevat die worden ondersteund voor spraak synthese door de Translator-service.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
 
@@ -298,9 +298,9 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
  
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -322,7 +322,7 @@ De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/Speak`.
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 
-waarde
+binary
 
 Type antwoord inhoud: Application/XML
 
@@ -330,13 +330,13 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|tekst|gelaten   |Vereist. Een teken reeks die een of meer zinnen bevat die moeten worden gesp roken voor de stream, in de opgegeven taal. De tekst mag niet langer zijn dan 2.000 tekens.|query|string|
-|language|gelaten   |Vereist. Een teken reeks die de ondersteunde taal code vertegenwoordigt van de taal waarin de tekst moet worden gesp roken. De code moet een van de codes zijn die worden geretourneerd door de methode `GetLanguagesForSpeak`.|query|string|
-|Formatteer|gelaten|Optioneel. Een teken reeks waarmee de ID van het inhouds type wordt opgegeven. Momenteel zijn `audio/wav` en `audio/mp3` beschikbaar. De standaard waarde is `audio/wav`.|query|string|
-|Opties|gelaten    |Optioneel. Een teken reeks die de eigenschappen van de gesynthesizerde spraak opgeeft:<ul><li>`MaxQuality` en `MinSize` geven de kwaliteit van het audio signaal op. `MaxQuality` biedt de hoogste kwaliteit. `MinSize` biedt de kleinste bestands grootte. De standaard waarde is `MinSize`.</li><li>`female` en `male` geven het gewenste geslacht van de stem aan. De standaardwaarde is `female`. Gebruik de verticale balk (<code>\|</code>) om meerdere opties te bevatten. Bijvoorbeeld `MaxQuality|Male`.</li></li></ul>  |query|string|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten  |Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|tekst|gelaten   |Vereist. Een teken reeks die een of meer zinnen bevat die moeten worden gesp roken voor de stream, in de opgegeven taal. De tekst mag niet langer zijn dan 2.000 tekens.|query|tekenreeks|
+|language|gelaten   |Vereist. Een teken reeks die de ondersteunde taal code vertegenwoordigt van de taal waarin de tekst moet worden gesp roken. De code moet een van de codes zijn die worden geretourneerd door de methode `GetLanguagesForSpeak`.|query|tekenreeks|
+|format|gelaten|Optioneel. Een teken reeks waarmee de ID van het inhouds type wordt opgegeven. Momenteel zijn `audio/wav` en `audio/mp3` beschikbaar. De standaardwaarde is `audio/wav`.|query|tekenreeks|
+|Opties|gelaten    |Optioneel. Een teken reeks die de eigenschappen van de gesynthesizerde spraak opgeeft:<ul><li>`MaxQuality` en `MinSize` de kwaliteit van het audio signaal op te geven. `MaxQuality` biedt de hoogste kwaliteit. `MinSize` biedt de kleinste bestands grootte. De standaard waarde is `MinSize`.</li><li>`female` en `male` het gewenste geslacht van de stem op te geven. De standaardwaarde is `female`. Gebruik de verticale balk (<code>\|</code>) om meerdere opties op te laten staan. Bijvoorbeeld `MaxQuality|Male`.</li></li></ul>  |query|tekenreeks|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten  |Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -358,7 +358,7 @@ De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/Detect`.
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
 
@@ -366,10 +366,10 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten  |Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|tekst|gelaten|Vereist. Een teken reeks die tekst bevat waarvan de taal moet worden geïdentificeerd. De tekst mag niet langer zijn dan 10.000 tekens.|query|  string|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel  |gelaten    |Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten  |Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|tekst|gelaten|Vereist. Een teken reeks die tekst bevat waarvan de taal moet worden geïdentificeerd. De tekst mag niet langer zijn dan 10.000 tekens.|query|  tekenreeks|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key  |gelaten    |Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -414,7 +414,7 @@ Dit is de indeling van de antwoord tekst:
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 `DetectArray` is voltooid. Retourneert een teken reeks matrix die een taal code van twee tekens bevat voor elke rij van de invoer matrix.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
  
@@ -422,9 +422,9 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -448,7 +448,7 @@ De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/AddTranslati
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 
-string
+tekenreeks
 
 Type antwoord inhoud: toepassing: XML
  
@@ -456,18 +456,18 @@ Type antwoord inhoud: toepassing: XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype   |
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|originalText|gelaten|Vereist. Een teken reeks die de tekst bevat die moet worden vertaald. De maximale lengte van de teken reeks is 1.000 tekens.|query|string|
-|translatedText|gelaten |Vereist. Een teken reeks met tekst die in de doel taal is vertaald. De maximale lengte van de teken reeks is 2.000 tekens.|query|string|
-|Van|gelaten   |Vereist. Een teken reeks die de taal code van de oorspronkelijke taal van de tekst aangeeft. Bijvoorbeeld, en voor Engels en de Duitse versie.|query|string|
-|tot|gelaten|Vereist. Een teken reeks die de taal code vertegenwoordigt van de taal waarin de tekst moet worden vertaald.|query|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|originalText|gelaten|Vereist. Een teken reeks die de tekst bevat die moet worden vertaald. De maximale lengte van de teken reeks is 1.000 tekens.|query|tekenreeks|
+|translatedText|gelaten |Vereist. Een teken reeks met tekst die in de doel taal is vertaald. De maximale lengte van de teken reeks is 2.000 tekens.|query|tekenreeks|
+|from|gelaten   |Vereist. Een teken reeks die de taal code van de oorspronkelijke taal van de tekst aangeeft. Bijvoorbeeld, en voor Engels en de Duitse versie.|query|tekenreeks|
+|tot|gelaten|Vereist. Een teken reeks die de taal code vertegenwoordigt van de taal waarin de tekst moet worden vertaald.|query|tekenreeks|
 |rating|gelaten |Optioneel. Een geheel getal dat de kwaliteits classificatie voor de teken reeks vertegenwoordigt. De waarde ligt tussen-10 en 10. De standaard waarde is 1.|query|geheel getal|
-|Invoer|gelaten    |Optioneel. De indeling van de tekst die wordt vertaald. De ondersteunde indelingen zijn `text/plain` en `text/html`. HTML-elementen moeten goed opgemaakte, volledige elementen zijn.    |query|string|
-|category|gelaten|Optioneel. Een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.|query|string|
-|Gebruiker|gelaten|Vereist. Een teken reeks die wordt gebruikt om de afzender van de inzending bij te houden.|query|string|
-|URI|gelaten|Optioneel. Een teken reeks die de inhouds locatie van de vertaling bevat.|query|string|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.  |koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|contentType|gelaten    |Optioneel. De indeling van de tekst die wordt vertaald. De ondersteunde indelingen zijn `text/plain` en `text/html`. HTML-elementen moeten goed opgemaakte, volledige elementen zijn.    |query|tekenreeks|
+|category|gelaten|Optioneel. Een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.|query|tekenreeks|
+|user|gelaten|Vereist. Een teken reeks die wordt gebruikt om de afzender van de inzending bij te houden.|query|tekenreeks|
+|URI|gelaten|Optioneel. Een teken reeks die de inhouds locatie van de vertaling bevat.|query|tekenreeks|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.  |koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -516,18 +516,18 @@ Dit is de indeling van de hoofd tekst van de aanvraag:
 
 Deze elementen bevinden zich in `AddtranslationsRequest`:
 
-* `AppId`: vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `AppId` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.
-* `From`: vereist. Een teken reeks die de taal code van de bron taal bevat. Moet een van de talen zijn die door de `GetLanguagesForTranslate`-methode worden geretourneerd.
-* `To`: vereist. Een teken reeks die de taal code van de doel taal bevat. Moet een van de talen zijn die door de `GetLanguagesForTranslate`-methode worden geretourneerd.
-* `Translations`: vereist. Een matrix met vertalingen die moeten worden toegevoegd aan het Vertaal geheugen. Elke vertaling moet `OriginalText`, `TranslatedText` en `Rating` bevatten. De maximum grootte van elke `OriginalText` en `TranslatedText` is 1.000 tekens. Het totaal van alle `OriginalText`-en `TranslatedText`-elementen mag niet langer zijn dan 10.000 tekens. Het maximum aantal matrix elementen is 100.
-* `Options`: vereist. Een set opties, waaronder `Category`, `ContentType`, `Uri` en `User`. `User` is vereist. `Category`, `ContentType` en `Uri` optioneel zijn. Opgegeven elementen moeten in alfabetische volg orde worden weer gegeven.
+* `AppId`: vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `AppId` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.
+* `From`: vereist. Een teken reeks die de taal code van de bron taal bevat. Moet een van de talen zijn die worden geretourneerd door de `GetLanguagesForTranslate` methode.
+* `To`: vereist. Een teken reeks die de taal code van de doel taal bevat. Moet een van de talen zijn die worden geretourneerd door de `GetLanguagesForTranslate` methode.
+* `Translations`: vereist. Een matrix met vertalingen die moeten worden toegevoegd aan het Vertaal geheugen. Elke vertaling moet `OriginalText`, `TranslatedText`en `Rating`bevatten. De maximum grootte van elke `OriginalText` en `TranslatedText` is 1.000 tekens. Het totaal van alle `OriginalText`-en `TranslatedText`-elementen mag niet langer zijn dan 10.000 tekens. Het maximum aantal matrix elementen is 100.
+* `Options`: vereist. Een set opties, waaronder `Category`, `ContentType`, `Uri`en `User`. `User` is vereist. `Category`, `ContentType`en `Uri` optioneel zijn. Opgegeven elementen moeten in alfabetische volg orde worden weer gegeven.
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
-de methode `AddTranslationArray` is voltooid. 
+`AddTranslationArray` methode is voltooid. 
 
 Na 31 januari 2018 worden inzendingen niet geaccepteerd. De service reageert met fout code 410.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
  
@@ -535,8 +535,8 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -568,11 +568,11 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten  |Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query| string|
-|tekst|gelaten   |Vereist. Een teken reeks die de tekst vertegenwoordigt die in zinnen moet worden gesplitst. De maximum grootte van de tekst is 10.000 tekens.|query|string|
-|language   |gelaten    |Vereist. Een teken reeks die de taal code van de invoer tekst aangeeft.|query|string|
-|Autorisatie|gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.   |koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten|Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|appid|gelaten  |Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query| tekenreeks|
+|tekst|gelaten   |Vereist. Een teken reeks die de tekst vertegenwoordigt die in zinnen moet worden gesplitst. De maximum grootte van de tekst is 10.000 tekens.|query|tekenreeks|
+|language   |gelaten    |Vereist. Een teken reeks die de taal code van de invoer tekst aangeeft.|query|tekenreeks|
+|Autorisatie|gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.   |koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten|Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -590,7 +590,7 @@ Haalt een matrix van vertalingen voor een opgegeven taal paar op uit het archief
 
 De aanvraag-URI is `https://api.microsofttranslator.com/V2/Http.svc/GetTranslations`.
 
-De hoofd tekst van de aanvraag bevat het optionele object @no__t 0, met de volgende indeling:
+De hoofd tekst van de aanvraag bevat het optionele `TranslationOptions` object, met de volgende indeling:
 
 ```
 <TranslateOptions xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2">
@@ -606,19 +606,19 @@ De hoofd tekst van de aanvraag bevat het optionele object @no__t 0, met de volge
 Het `TranslateOptions`-object bevat de waarden in de volgende lijst. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen. Opgegeven elementen moeten in alfabetische volg orde worden weer gegeven.
 
 * `Category`: een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.
-* `ContentType`: de enige optie die wordt ondersteund en de standaard waarde is `text/plain`.
-* `IncludeMultipleMTAlternatives`: een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false`, waarmee slechts één alternatief wordt geretourneerd. Als u de vlag instelt op `true`, kunnen kunst matige alternatieven worden gemaakt die volledig zijn geïntegreerd met het samen werkende Vertaal raamwerk (COLLABORATIVE). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen vertalingen hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n*-beste lijst van de decoder.
+* `ContentType`: de enige optie die wordt ondersteund en de standaard waarde, is `text/plain`.
+* `IncludeMultipleMTAlternatives`: een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false`, waarmee slechts één alternatief wordt geretourneerd. Als u de vlag instelt op `true`, kunt u kunst matige alternatieven maken, volledig geïntegreerd met het samen werkende Vertaal raamwerk (COLLABORATIVE). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen vertalingen hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n*-beste lijst van de decoder.
     - Inhoudrestricties. De classificaties worden als volgt toegepast: 
          - De beste automatische vertaling heeft de classificatie 5.
        - De alternatieven van COLLABORATIVE weer spie gelen de instantie van de revisor. Ze variëren van-10 tot + 10.
        - De automatisch gegenereerde Vertaal alternatieven (*n*-best) hebben een classificatie van 0 en een overeenkomst met een afwijkings graad van 100.
     - Aantal alternatieven. Het aantal geretourneerde alternatieven kan net zo hoog zijn als de waarde die is opgegeven in `maxTranslations`, maar kan lager zijn.
     - Taal paren. Deze functionaliteit is niet beschikbaar voor vertalingen tussen vereenvoudigd Chinees en traditioneel Chinees, in beide richtingen. Het is beschikbaar voor alle andere taal paren die door micro soft Translator worden ondersteund.
-* `State`: gebruikers status om te helpen bij het correleren van de aanvraag en het antwoord. Dezelfde inhoud wordt in het antwoord geretourneerd.
+* `State`: de gebruikers status om de aanvraag en het antwoord te helpen correleren. Dezelfde inhoud wordt in het antwoord geretourneerd.
 * `Uri`: resultaten filteren op deze URI. Als er geen waarde is ingesteld, wordt de standaard `all`.
 * `User`: resultaten filteren op basis van deze gebruiker. Als er geen waarde is ingesteld, wordt de standaard `all`.
 
-De aanvraag `Content-Type` moet `text/xml` zijn.
+De aanvraag `Content-Type` moet worden `text/xml`.
 
 **Retour waarde:** Dit is de indeling van het antwoord:
 
@@ -641,23 +641,23 @@ De aanvraag `Content-Type` moet `text/xml` zijn.
 
 Dit antwoord bevat een `GetTranslationsResponse`-element dat de volgende waarden bevat:
 
-* `Translations`: een matrix van de gevonden overeenkomsten, opgeslagen in `TranslationMatch`-objecten (zoals beschreven in de volgende sectie). De vertalingen bevatten mogelijk lichte varianten van de oorspronkelijke tekst (fuzzy matching). De vertalingen worden gesorteerd: 100% komt overeen met de eerste, fuzzy treffers volgende.
-* `From`: als de methode geen `From` taal opgeeft, wordt deze waarde opgehaald uit de automatische taal detectie. Anders wordt de opgegeven `From`-taal.
-* `State`: gebruikers status om te helpen bij het correleren van de aanvraag en het antwoord. Bevat de waarde die is opgegeven in de para meter `TranslateOptions`.
+* `Translations`: een matrix van de gevonden overeenkomsten, opgeslagen in `TranslationMatch` objecten (zoals beschreven in de volgende sectie). De vertalingen bevatten mogelijk lichte varianten van de oorspronkelijke tekst (fuzzy matching). De vertalingen worden gesorteerd: 100% komt overeen met de eerste, fuzzy treffers volgende.
+* `From`: als de methode geen `From` taal opgeeft, wordt deze waarde opgehaald uit de automatische taal detectie. Anders is het de opgegeven `From` taal.
+* `State`: de gebruikers status om de aanvraag en het antwoord te helpen correleren. Bevat de waarde die is opgegeven in de para meter `TranslateOptions`.
 
 Het `TranslationMatch`-object bestaat uit de volgende waarden:
 
 * `Error`: de fout code als er een fout optreedt voor een specifieke invoer teken reeks. Anders is dit veld leeg.
-* `MatchDegree`: geeft aan hoe nauw de invoer tekst overeenkomt met de oorspronkelijke tekst die in de Store is gevonden. Het systeem komt overeen met invoer zinnen in de Store, inclusief onjuiste overeenkomsten. De waarde retourneert bereiken van 0 tot 100, waarbij 0 geen gelijkenis is en 100 een exacte, hoofdletter gevoelige overeenkomst is.
+* `MatchDegree`: Hiermee wordt aangegeven hoe nauw de invoer tekst overeenkomt met de oorspronkelijke tekst die in de Store is gevonden. Het systeem komt overeen met invoer zinnen in de Store, inclusief onjuiste overeenkomsten. De waarde retourneert bereiken van 0 tot 100, waarbij 0 geen gelijkenis is en 100 een exacte, hoofdletter gevoelige overeenkomst is.
 * `MatchedOriginalText`: oorspronkelijke tekst die overeenkomt met dit resultaat. Deze waarde wordt alleen geretourneerd als de overeenkomende oorspronkelijke tekst verschilt van de invoer tekst. Het wordt gebruikt om de bron tekst van een overeenkomst met fuzzy te retour neren. Deze waarde wordt niet geretourneerd voor micro soft Translator-resultaten.
-* `Rating`: geeft de autoriteit aan van de persoon die de kwaliteits beslissing neemt. De resultaten van computer vertalingen hebben de classificatie 5. De anoniem gestelde vertalingen hebben over het algemeen een classificatie van 1 tot en met 4. Voor gezaghebbende vertalingen geldt doorgaans een classificatie van 6 tot en met 10.
+* `Rating`: geeft de autoriteit aan van degene die de kwaliteits beslissing doet. De resultaten van computer vertalingen hebben de classificatie 5. De anoniem gestelde vertalingen hebben over het algemeen een classificatie van 1 tot en met 4. Voor gezaghebbende vertalingen geldt doorgaans een classificatie van 6 tot en met 10.
 * `Count`: het aantal keren dat deze vertaling met deze classificatie is geselecteerd. De waarde is 0 voor de automatisch vertaalde reactie.
 * `TranslatedText`: de vertaalde tekst.
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 Een `GetTranslationsResponse`-object in de indeling die eerder is beschreven.
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
  
@@ -665,13 +665,13 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|AppID|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.|query|string|
-|tekst|gelaten|Vereist. Een teken reeks die de tekst vertegenwoordigt die moet worden vertaald. De maximum grootte van de tekst is 10.000 tekens.|query|string|
-|Van|gelaten|Vereist. Een teken reeks die de taal code vertegenwoordigt van de tekst die wordt vertaald.|query|string|
-|tot |gelaten    |Vereist. Een teken reeks die de taal code vertegenwoordigt van de taal waarin de tekst moet worden vertaald.|query|string|
+|appid|gelaten|Vereist. Als de `Authorization`-of `Ocp-Apim-Subscription-Key`-header wordt gebruikt, laat u het veld `appid` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.|query|tekenreeks|
+|tekst|gelaten|Vereist. Een teken reeks die de tekst vertegenwoordigt die moet worden vertaald. De maximum grootte van de tekst is 10.000 tekens.|query|tekenreeks|
+|from|gelaten|Vereist. Een teken reeks die de taal code vertegenwoordigt van de tekst die wordt vertaald.|query|tekenreeks|
+|tot |gelaten    |Vereist. Een teken reeks die de taal code vertegenwoordigt van de taal waarin de tekst moet worden vertaald.|query|tekenreeks|
 |maxTranslations|gelaten|Vereist. Een geheel getal dat het maximum aantal vertalingen vertegenwoordigt dat moet worden geretourneerd.|query|geheel getal|
-|Autorisatie| gelaten|Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|string|  koptekst|
-|OCP-APIM-abonnements sleutel|gelaten  |Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|Autorisatie| gelaten|Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven. Autorisatie token: `"Bearer" + " " + "access_token"`.|tekenreeks|  koptekst|
+|OCP-Apim-Subscription-Key|gelaten  |Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 
@@ -713,28 +713,28 @@ Dit is de indeling van de hoofd tekst van de aanvraag:
 
 `GetTranslationsArrayRequest` bevat de volgende elementen:
 
-* `AppId`: vereist. Als de `Authorization`-header wordt gebruikt, laat u het veld `AppId` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"` bevat.
+* `AppId`: vereist. Als de `Authorization` header wordt gebruikt, laat u het veld `AppId` leeg. Neem anders een teken reeks op die `"Bearer" + " " + "access_token"`bevat.
 * `From`: vereist. Een teken reeks die de taal code vertegenwoordigt van de tekst die wordt vertaald.
 * `MaxTranslations`: vereist. Een geheel getal dat het maximum aantal vertalingen vertegenwoordigt dat moet worden geretourneerd.
 * `Options`: optioneel. Een `Options`-object dat de volgende waarden bevat. Ze zijn allemaal optioneel en standaard ingesteld op de meest voorkomende instellingen. Opgegeven elementen moeten in alfabetische volg orde worden weer gegeven.
     - `Category`: een teken reeks die de categorie (het domein) van de vertaling bevat. De standaardwaarde is `general`.
-    - `ContentType`: de enige optie die wordt ondersteund en de standaard waarde is `text/plain`.
-    - `IncludeMultipleMTAlternatives`: een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false`, waarmee slechts één alternatief wordt geretourneerd. Als u de vlag instelt op `true`, kunnen kunst matige alternatieven worden gegenereerd, volledig geïntegreerd met het Framework voor gezamenlijke vertalingen (COLLABORATIVE). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen alternatieven hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n*-beste lijst van de decoder.
+    - `ContentType`: de enige optie die wordt ondersteund en de standaard waarde, is `text/plain`.
+    - `IncludeMultipleMTAlternatives`: een Booleaanse vlag die aangeeft of er meer dan één alternatief moet worden geretourneerd door de MT-engine. Geldige waarden zijn `true` en `false` (hoofdletter gevoelig). De standaard waarde is `false`, waarmee slechts één alternatief wordt geretourneerd. Als u de vlag instelt op `true`, is het mogelijk om kunst matige alternatieven te maken die volledig zijn geïntegreerd met het Framework voor gezamenlijke vertalingen (COLLABORATIVE). De functie maakt het mogelijk om alternatieven te retour neren voor zinnen die geen alternatieven hebben in COLLABORATIVE door kunst matige alternatieven toe te voegen uit de *n*-beste lijst van de decoder.
         - Beoordelingen de classificaties worden als volgt toegepast:
           - De beste automatische vertaling heeft de classificatie 5.
           - De alternatieven van COLLABORATIVE weer spie gelen de instantie van de revisor. Ze variëren van-10 tot + 10.
           - De automatisch gegenereerde Vertaal alternatieven (*n*-best) hebben een classificatie van 0 en een overeenkomst met een afwijkings graad van 100.
         - Aantal alternatieven. Het aantal geretourneerde alternatieven kan net zo hoog zijn als de waarde die is opgegeven in `maxTranslations`, maar kan lager zijn.
         - Taal paren. Deze functionaliteit is niet beschikbaar voor vertalingen tussen vereenvoudigd Chinees en traditioneel Chinees, in beide richtingen. Het is beschikbaar voor alle andere taal paren die door micro soft Translator worden ondersteund.
-* `State`: gebruikers status om te helpen bij het correleren van de aanvraag en het antwoord. Dezelfde inhoud wordt in het antwoord geretourneerd.
+* `State`: de gebruikers status om de aanvraag en het antwoord te helpen correleren. Dezelfde inhoud wordt in het antwoord geretourneerd.
 * `Uri`: resultaten filteren op deze URI. Als er geen waarde is ingesteld, wordt de standaard `all`.
 * `User`: resultaten filteren op basis van deze gebruiker. Als er geen waarde is ingesteld, wordt de standaard `all`.
 * `Texts`: vereist. Een matrix die de tekst voor vertaling bevat. Alle teken reeksen moeten zich in dezelfde taal bestaan. Het totaal van de tekst die moet worden vertaald, mag niet langer zijn dan 10.000 tekens. Het maximum aantal matrix elementen is 10.
 * `To`: vereist. Een teken reeks die de taal code vertegenwoordigt van de taal waarin de tekst moet worden vertaald.
 
-U kunt optionele elementen weglaten. Elementen die rechtstreekse onderliggende items zijn van `GetTranslationsArrayRequest`, moeten in alfabetische volg orde worden weer gegeven.
+U kunt optionele elementen weglaten. Elementen die rechtstreekse onderliggende items van `GetTranslationsArrayRequest` zijn, moeten in alfabetische volg orde worden weer gegeven.
 
-De aanvraag `Content-Type` moet `text/xml` zijn.
+De aanvraag `Content-Type` moet worden `text/xml`.
 
 **Retour waarde:** Dit is de indeling van het antwoord:
 
@@ -763,24 +763,24 @@ De aanvraag `Content-Type` moet `text/xml` zijn.
 </ArrayOfGetTranslationsResponse>
 ```
 
-Elk element `GetTranslationsResponse` bevat deze waarden:
+Elk `GetTranslationsResponse` element bevat deze waarden:
 
-* `Translations`: een matrix van de gevonden overeenkomsten, opgeslagen in `TranslationMatch`-objecten (zoals beschreven in de volgende sectie). De vertalingen bevatten mogelijk lichte varianten van de oorspronkelijke tekst (fuzzy matching). De vertalingen worden gesorteerd: 100% komt overeen met de eerste, fuzzy treffers volgende.
-* `From`: als de methode geen `From` taal opgeeft, wordt deze waarde opgehaald uit de automatische taal detectie. Anders wordt de opgegeven `From`-taal.
-* `State`: gebruikers status om te helpen bij het correleren van de aanvraag en het antwoord. Bevat de waarde die is opgegeven in de para meter `TranslateOptions`.
+* `Translations`: een matrix van de gevonden overeenkomsten, opgeslagen in `TranslationMatch` objecten (zoals beschreven in de volgende sectie). De vertalingen bevatten mogelijk lichte varianten van de oorspronkelijke tekst (fuzzy matching). De vertalingen worden gesorteerd: 100% komt overeen met de eerste, fuzzy treffers volgende.
+* `From`: als de methode geen `From` taal opgeeft, wordt deze waarde opgehaald uit de automatische taal detectie. Anders is het de opgegeven `From` taal.
+* `State`: de gebruikers status om de aanvraag en het antwoord te helpen correleren. Bevat de waarde die is opgegeven in de para meter `TranslateOptions`.
 
-Het object @no__t 0 bevat de volgende waarden:
+Het object `TranslationMatch` bevat de volgende waarden:
 * `Error`: de fout code als er een fout optreedt voor een specifieke invoer teken reeks. Anders is dit veld leeg.
-* `MatchDegree`: geeft aan hoe nauw de invoer tekst overeenkomt met de oorspronkelijke tekst die in de Store is gevonden. Het systeem komt overeen met invoer zinnen in de Store, inclusief onjuiste overeenkomsten. De waarde retourneert bereiken van 0 tot 100, waarbij 0 geen gelijkenis is en 100 een exacte, hoofdletter gevoelige overeenkomst is.
+* `MatchDegree`: Hiermee wordt aangegeven hoe nauw de invoer tekst overeenkomt met de oorspronkelijke tekst die in de Store is gevonden. Het systeem komt overeen met invoer zinnen in de Store, inclusief onjuiste overeenkomsten. De waarde retourneert bereiken van 0 tot 100, waarbij 0 geen gelijkenis is en 100 een exacte, hoofdletter gevoelige overeenkomst is.
 * `MatchedOriginalText`: oorspronkelijke tekst die overeenkomt met dit resultaat. Deze waarde wordt alleen geretourneerd als de overeenkomende oorspronkelijke tekst verschilt van de invoer tekst. Het wordt gebruikt om de bron tekst van een overeenkomst met fuzzy te retour neren. Deze waarde wordt niet geretourneerd voor micro soft Translator-resultaten.
-* `Rating`: geeft de autoriteit aan van de persoon die de kwaliteits beslissing neemt. De resultaten van computer vertalingen hebben de classificatie 5. De anoniem gestelde vertalingen hebben over het algemeen een classificatie van 1 tot en met 4. Voor bindend gegeven vertalingen hebben over het algemeen een classificatie van 6 tot en met 10.
+* `Rating`: geeft de autoriteit aan van degene die de kwaliteits beslissing doet. De resultaten van computer vertalingen hebben de classificatie 5. De anoniem gestelde vertalingen hebben over het algemeen een classificatie van 1 tot en met 4. Voor bindend gegeven vertalingen hebben over het algemeen een classificatie van 6 tot en met 10.
 * `Count`: het aantal keren dat deze vertaling met deze classificatie is geselecteerd. De waarde is 0 voor de automatisch vertaalde reactie.
 * `TranslatedText`: de vertaalde tekst.
 
 
 ### <a name="response-class-status-200"></a>Response-klasse (status 200)
 
-string
+tekenreeks
 
 Type antwoord inhoud: Application/XML
  
@@ -788,8 +788,8 @@ Type antwoord inhoud: Application/XML
 
 |Parameter|Waarde|Beschrijving|Parameter type|Gegevenstype|
 |:--|:--|:--|:--|:--|
-|Autorisatie  |gelaten    |Vereist als het veld @no__t 0 en de header `Ocp-Apim-Subscription-Key` leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|string|
-|OCP-APIM-abonnements sleutel|gelaten  |Vereist als het veld @no__t 0 en de header `Authorization` leeg blijven.|koptekst|string|
+|Autorisatie  |gelaten    |Vereist als zowel het `appid` veld als de `Ocp-Apim-Subscription-Key`-header leeg blijven.  Autorisatie token: `"Bearer" + " " + "access_token"`.|koptekst|tekenreeks|
+|OCP-Apim-Subscription-Key|gelaten  |Vereist als zowel het `appid` veld als de `Authorization`-header leeg blijven.|koptekst|tekenreeks|
 
 ### <a name="response-messages"></a>Antwoord berichten
 

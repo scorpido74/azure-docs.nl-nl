@@ -22,7 +22,7 @@ ms.locfileid: "73672621"
 
 In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 laadt in Azure Blob-opslag_. U kunt vergelijk bare stappen volgen om gegevens te kopiëren naar Azure Data Lake gen1 of Gen2. Raadpleeg het [artikel office 365-connector](connector-office-365.md) over het kopiëren van gegevens uit Office 365 in het algemeen.
 
-## <a name="create-a-data-factory"></a>Een data factory maken
+## <a name="create-a-data-factory"></a>Een gegevensfactory maken
 
 1. Selecteer in het menu aan de linkerkant **een resource maken** > **Analytics** > **Data Factory**: 
    
@@ -73,7 +73,7 @@ In dit artikel wordt beschreven hoe u de Data Factory _gegevens uit Office 365 l
 
     ![Nieuwe gekoppelde Office 365-service](./media/load-office-365-data/new-office-365-linked-service.png)
  
-7. Nadat de gekoppelde service is gemaakt, gaat u terug naar de gegevenssetinstellingen. Kies naast **tabel**de pijl-omlaag om de lijst met beschik bare Office 365-gegevens sets uit te vouwen en kies ' BasicDataSet_v0 '. Message_v0 ' in de vervolg keuzelijst:
+7. Nadat de gekoppelde service is gemaakt, gaat u terug naar de gegevenssetinstellingen. Kies naast **tabel**de pijl-omlaag om de lijst met beschik bare Office 365-gegevens sets uit te vouwen en kies BasicDataSet_v0. Message_v0 ' in de vervolg keuzelijst:
 
     ![Tabel met configuratie van Office 365-gegevensset](./media/load-office-365-data/edit-dataset.png)
 
@@ -108,7 +108,7 @@ Selecteer in de werkbalk **Valideren** om de pijplijn te valideren.
 
 U kunt ook de JSON-code die is gekoppeld aan de pijp lijn weer geven door in de rechter bovenhoek op code te klikken.
 
-## <a name="publish-the-pipeline"></a>De pijp lijn publiceren
+## <a name="publish-the-pipeline"></a>De pijplijn publiceren
 
 Selecteer in de bovenste werk balk de optie **Alles publiceren**. Met deze actie publiceert u entiteiten (gegevenssets en pijplijnen) die u hebt gemaakt met Data Factory.
 

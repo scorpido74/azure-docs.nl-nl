@@ -1,6 +1,6 @@
 ---
-title: Connect privately to a storage account using Azure Private Endpoint
-description: Learn how to connect privately to a storage account in Azure using a Private Endpoint.
+title: Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
+description: Meer informatie over hoe u persoonlijke verbinding kunt maken met een opslag account in azure met behulp van een persoonlijk eind punt.
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -14,42 +14,42 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 11/20/2019
 ms.locfileid: "74228098"
 ---
-# <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Connect privately to a storage account using Azure Private Endpoint
-Azure Private Endpoint is the fundamental building block for Private Link in Azure. It enables Azure resources, like virtual machines (VMs), to communicate privately with Private Link resources.
+# <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Privé verbinding maken met een opslag account met behulp van een persoonlijk Azure-eind punt
+Persoonlijk Azure-eind punt is de fundamentele bouw steen voor privé-koppeling in Azure. Hierdoor kunnen Azure-resources, zoals virtuele machines (Vm's), privé communiceren met persoonlijke koppelings bronnen.
 
-In this Quickstart, you will learn how to create a VM on an Azure virtual network, a storage account with a Private Endpoint using the Azure portal. Then, you can securely access the storage account from the VM.
+In deze Quick Start leert u hoe u een virtuele machine maakt in een virtueel Azure-netwerk, een opslag account met een persoonlijk eind punt met behulp van de Azure Portal. Daarna kunt u veilig toegang krijgen tot het opslag account via de VM.
 
 
 ## <a name="sign-in-to-azure"></a>Aanmelden bij Azure
 
 Meld u aan bij Azure Portal op https://portal.azure.com.
 
-## <a name="create-a-vm"></a>Een VM maken
-In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link Resource (a storage account in this example).
+## <a name="create-a-vm"></a>Een virtuele machine maken
+In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot uw persoonlijke koppelings bron (een opslag account in dit voor beeld).
 
 ### <a name="create-the-virtual-network"></a>Het virtuele netwerk maken
 
-In this section, you will create virtual network and the subnet to host the VM that is used to access your Private Link resource.
+In deze sectie maakt u een virtueel netwerk en het subnet voor het hosten van de virtuele machine die wordt gebruikt voor toegang tot de bron van uw privé-koppeling.
 
 1. Selecteer linksboven in het scherm **Een resource maken** > **Netwerken** > **Virtueel netwerk**.
 1. Typ of selecteer in **Virtueel netwerk maken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Naam | Enter *MyVirtualNetwork*. |
+    | Naam | Voer *MyVirtualNetwork*in. |
     | Adresruimte | Voer *10.1.0.0/16* in. |
     | Abonnement | Selecteer uw abonnement.|
     | Resourcegroep | Selecteer **Nieuwe maken**, voer *myResourceGroup* in en selecteer vervolgens **OK**. |
-    | Locatie | Select **WestCentralUS**.|
-    | Subnet - naam | Enter *mySubnet*. |
+    | Locatie | Selecteer **WestCentralUS**.|
+    | Subnet - naam | Voer *mySubnet*in. |
     | Subnet - adresbereik | Voer *10.1.0.0/24* in. |
     |||
-1. Leave the rest as default and select **Create**.
+1. Laat de rest als standaard en selecteer **maken**.
 
 
 ### <a name="create-virtual-machine"></a>Virtuele machine maken
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Compute** > **Virtual machine**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **reken** > **virtuele machine**.
 
 1. Typ of selecteer in **Een virtuele machine maken - Basisprincipes** de volgende gegevens:
 
@@ -57,15 +57,15 @@ In this section, you will create virtual network and the subnet to host the VM t
     | ------- | ----- |
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. You created this in the previous section.  |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.  |
     | **INSTANTIEDETAILS** |  |
-    | Naam van de virtuele machine | Enter *myVm*. |
-    | Regio | Select **WestCentralUS**. |
+    | Naam van de virtuele machine | Voer *myVm*in. |
+    | Regio | Selecteer **WestCentralUS**. |
     | Beschikbaarheidsopties | Laat de standaardwaarde **Geen infrastructuurredundantie vereist** staan. |
-    | afbeelding | Select **Windows Server 2019 Datacenter**. |
+    | Installatiekopie | Selecteer **Windows Server 2019 Data Center**. |
     | Grootte | Laat de standaardwaarde **Standard DS1 v2** staan. |
     | **ADMINISTRATOR-ACCOUNT** |  |
-    | Gebruikersnaam | Enter a username of your choosing. |
+    | Gebruikersnaam | Voer een gebruikers naam van uw keuze in. |
     | Wachtwoord | Voer een wachtwoord naar keuze in. Het wachtwoord moet minstens 12 tekens lang zijn en moet voldoen aan de [gedefinieerde complexiteitsvereisten](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Wachtwoord bevestigen | Voer het wachtwoord opnieuw in. |
     | **REGELS VOOR BINNENKOMENDE POORT** |  |
@@ -74,88 +74,88 @@ In this section, you will create virtual network and the subnet to host the VM t
     | Hebt u al een Windows-licentie? | Laat de standaardwaarde **Nee** staan. |
     |||
 
-1. Select **Next: Disks**.
+1. Selecteer **volgende: schijven**.
 
-1. In **Create a virtual machine - Disks**, leave the defaults and select **Next: Networking**.
+1. In **een virtuele machine maken-schijven**, de standaard instellingen behouden en **volgende selecteren: netwerken**.
 
 1. Selecteer in **Een virtuele machine maken - Netwerken** de volgende gegevens:
 
     | Instelling | Waarde |
     | ------- | ----- |
-    | Virtueel netwerk | Leave the default **MyVirtualNetwork**.  |
-    | Adresruimte | Leave the default **10.1.0.0/24**.|
-    | Subnet | Leave the default **mySubnet (10.1.0.0/24)** .|
+    | Virtueel netwerk | De standaard **MyVirtualNetwork**behouden.  |
+    | Adresruimte | De standaard **10.1.0.0/24**behouden.|
+    | Subnet | Behoud de standaard **mySubnet (10.1.0.0/24)** .|
     | Openbare IP | Handhaaf de standaardinstelling **(new) myVm-ip**. |
     | Openbare poorten voor inkomend verkeer | Selecteer **Geselecteerde poorten toestaan**. |
     | Binnenkomende poorten selecteren | Selecteer **HTTP** en **RDP**.|
     ||
 
-1. Selecteer **Controleren + maken**. You're taken to the **Review + create** page where Azure validates your configuration.
+1. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert.
 
-1. When you see the **Validation passed** message, select **Create**.
+1. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**.
 
-## <a name="create-your-private-endpoint"></a>Create your Private Endpoint
-In this section, you will create a private storage account using a Private Endpoint to it. 
+## <a name="create-your-private-endpoint"></a>Uw persoonlijke eind punt maken
+In deze sectie maakt u een privé-opslag account met behulp van een persoonlijk eind punt. 
 
-1. On the upper-left side of the screen in the Azure portal, select **Create a resource** > **Storage** > **Storage account**.
+1. Selecteer in de linkerbovenhoek van het scherm in het Azure Portal **een resource maken** > **opslag** > **opslag account**.
 
-1. In **Create storage account - Basics**, enter or select this information:
+1. Voer in **opslag account maken-basis beginselen**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. You created this in the previous section.|
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
     | **INSTANTIEDETAILS** |  |
-    | Naam van opslagaccount  | Enter *mystorageaccount*. If this name is taken, create a unique name. |
-    | Regio | Select **WestCentralUS**. |
+    | Naam van opslagaccount  | Voer *mystorageaccount*in. Als deze naam wordt gebruikt, maakt u een unieke naam. |
+    | Regio | Selecteer **WestCentralUS**. |
     | Prestaties| Laat de standaardwaarde **Standard** staan. |
-    | Soort account | Leave the default **Storage (general purpose v2)** . |
-    | Replicatie | Select **Read-access geo-redundant storage (RA-GRS)** . |
+    | Soort account | Behoud de standaard **opslag (algemeen gebruik v2)** . |
+    | Replicatie | Selecteer **geo-redundante opslag met lees toegang (RA-GRS)** . |
     |||
   
-3. Select **Next: Networking**.
-4. In **Create a storage account - Networking**, connectivity method, select **Private Endpoint**.
-5. In **Create a storage account - Networking**, select **Add Private Endpoint**. 
-6. In **Create Private Endpoint**, enter or select this information:
+3. Selecteer **volgende: netwerken**.
+4. Selecteer **privé-eind punt**in **een opslag account maken: netwerken**, connectiviteits methode.
+5. Selecteer in **een opslag account maken-netwerken de**optie **persoonlijk eind punt toevoegen**. 
+6. Voer in **persoonlijk eind punt maken**de volgende gegevens in of Selecteer deze:
 
     | Instelling | Waarde |
     | ------- | ----- |
     | **PROJECTGEGEVENS** | |
     | Abonnement | Selecteer uw abonnement. |
-    | Resourcegroep | Selecteer **myResourceGroup**. You created this in the previous section.|
-    |Locatie|Select **WestCentralUS**.|
-    |Naam|Enter *myPrivateEndpoint*.  |
-    |Storage sub-resource|Leave the default **Blob**. |
-    | **NETWORKING** |  |
-    | Virtueel netwerk  | Select *MyVirtualNetwork* from resource group *myResourceGroup*. |
-    | Subnet | Select *mySubnet*. |
-    | **PRIVATE DNS INTEGRATION**|  |
-    | Integrate with private DNS zone  | Leave the default **Yes**. |
-    | Privé-DNS-zone  | Leave the default ** (New) privatelink.blob.core.windows.net**. |
+    | Resourcegroep | Selecteer **myResourceGroup**. U hebt dit gemaakt in de vorige sectie.|
+    |Locatie|Selecteer **WestCentralUS**.|
+    |Naam|Voer *myPrivateEndpoint*in.  |
+    |Opslag subresource|Verlaat de standaard- **BLOB**. |
+    | **INBEL** |  |
+    | Virtueel netwerk  | Selecteer *MyVirtualNetwork* in de resource groep *myResourceGroup*. |
+    | Subnet | Selecteer *mySubnet*. |
+    | **INTEGRATIE VAN PARTICULIERE DNS**|  |
+    | Integreren met een privé-DNS-zone  | Accepteer de standaard waarde **Ja**. |
+    | Privé-DNS-zone  | Wijzig de standaard waarde * * (nieuw) privatelink.blob.core.windows.net * *. |
     |||
 7. Selecteer **OK**. 
-8. Selecteer **Controleren + maken**. You're taken to the **Review + create** page where Azure validates your configuration. 
-9. When you see the **Validation passed** message, select **Create**. 
-10. Browse to the storage account resource that you just created.
-11. Select **Access Keys** from the left content menu.
-12. Select **Copy** on the connection string for key1.
+8. Selecteer **Controleren + maken**. U gaat naar de pagina **controleren en maken** waar Azure uw configuratie valideert. 
+9. Wanneer u het bericht **door gegeven validatie** ziet, selecteert u **maken**. 
+10. Blader naar de bron van het opslag account die u zojuist hebt gemaakt.
+11. Selecteer **toegangs sleutels** in het menu links.
+12. Selecteer **kopiëren** op de Connection String voor Key1.
  
 ## <a name="connect-to-a-vm-from-the-internet"></a>Verbinding maken met een virtuele machine via internet
 
-Connect to the VM *myVm* from the internet as follows:
+Maak als volgt verbinding met de VM- *myVm* van het Internet:
 
-1. In the portal's search bar, enter *myVm*.
+1. Voer in de zoek balk van de portal *myVm*in.
 
 1. Selecteer de knop **Verbinding maken**. Na het selecteren van de knop **Verbinden** wordt **Verbinden met virtuele machine** geopend.
 
 1. Selecteer **RDP-bestand downloaden**. Azure maakt een Remote Desktop Protocol-bestand ( *.rdp*) en downloadt het bestand naar uw computer.
 
-1. Open the downloaded.rdp* file.
+1. Open het bestand gedownloade. rdp *.
 
     1. Selecteer **Verbinding maken** wanneer hierom wordt gevraagd.
 
-    1. Enter the username and password you specified when creating the VM.
+    1. Voer de gebruikers naam en het wacht woord in die u hebt opgegeven bij het maken van de virtuele machine.
 
         > [!NOTE]
         > Mogelijk moet u **Meer opties** > **Een ander account gebruiken** selecteren om de referenties op te geven die u hebt ingevoerd tijdens het maken van de VM.
@@ -166,15 +166,15 @@ Connect to the VM *myVm* from the internet as follows:
 
 1. Wanneer het VM-bureaublad wordt weergegeven, minimaliseert u het om terug te gaan naar het lokale bureaublad.  
 
-## <a name="access-storage-account-privately-from-the-vm"></a>Access storage account privately from the VM
+## <a name="access-storage-account-privately-from-the-vm"></a>Opslag account privé openen vanuit de VM
 
-In this section, you will connect privately to the storage account using the Private Endpoint.
+In deze sectie maakt u een particuliere verbinding met het opslag account met behulp van het persoonlijke eind punt.
 
 > [!IMPORTANT]
-> DNS configuration for storage needs a manual modification on the hosts file to include the FQDN of the specific account Please modify the following file using administrator permissions on Windows: c:\Windows\System32\Drivers\etc\hosts or Linux /etc/hosts Include the DNS information for the account from previous step in the following format [Private IP Address] myaccount.blob.core.windows.net
+> De DNS-configuratie voor opslag moet hand matig worden aangepast aan het hosts-bestand om de FQDN van het specifieke account op te slaan. Wijzig het volgende bestand met beheerders machtigingen voor Windows: c:\Windows\System32\Drivers\etc\hosts of Linux bestand/etc/hosts bevatten de DNS-informatie voor het account uit de vorige stap in de volgende indeling [privé IP-adres] myaccount.blob.core.windows.net
 
-1. In the Remote Desktop of *myVM*, open PowerShell.
-2. Enter `nslookup mystorageaccount.blob.core.windows.net` You'll receive a message similar to this:
+1. Open Power shell in de Extern bureaublad van *myVM*.
+2. Voer `nslookup mystorageaccount.blob.core.windows.net` u een bericht ontvangt dat er ongeveer als volgt uitziet:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -184,28 +184,28 @@ In this section, you will connect privately to the storage account using the Pri
     Aliases:  mystorageaccount.blob.core.windows.net
     ```
 3. Installeer [Microsoft Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
-4. Select **Storage accounts** with the right-click.
-5. Select **Connect to an azure storage**.
-6. Select **Use a connection string**.
-7. Selecteer **Next**.
-8. Enter the connection string by pasting the information previously copied.
-9. Selecteer **Next**.
+4. Selecteer **opslag accounts** met de rechter muisknop.
+5. Selecteer **verbinding maken met een Azure-opslag**.
+6. Selecteer **een Connection String gebruiken**.
+7. Selecteer **Volgende**.
+8. Voer de connection string in door de gegevens die eerder zijn gekopieerd te plakken.
+9. Selecteer **Volgende**.
 10. Selecteer **Verbinden**.
-11. Browse the Blob containers from mystorageaccount 
-12. (Optionally) Create folders and/or upload files to *mystorageaccount*. 
-13. Close the remote desktop connection to *myVM*. 
+11. Door de BLOB-containers bladeren vanuit mystorageaccount 
+12. Eventueel Maak mappen en/of upload bestanden naar *mystorageaccount*. 
+13. Sluit de verbinding met extern bureau blad met *myVM*. 
 
-Additional options to access the storage account:
-- Microsoft Azure Storage Explorer is a standalone free app from Microsoft that enables you to work visually with Azure storage data on Windows, macOS, and Linux. You can install the application to browse privately the storage account content. 
+Aanvullende opties voor toegang tot het opslag account:
+- Microsoft Azure Storage Explorer is een zelfstandige gratis app van micro soft waarmee u visueel met Azure Storage-gegevens kunt werken in Windows, macOS en Linux. U kunt de toepassing installeren om de inhoud van het opslag account privé te bekijken. 
  
-- The AzCopy utility is another option for high-performance scriptable data transfer for Azure storage. Gebruik AzCopy om gegevens over te brengen naar en van blob-, bestands- en tabelopslag. 
+- Het hulp programma AzCopy is een andere optie voor hoogwaardige, script bare gegevens overdracht voor Azure Storage. Gebruik AzCopy om gegevens over te brengen naar en van blob-, bestands- en tabelopslag. 
 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
-When you're done using the Private Endpoint, storage account and the VM, delete the resource group and all of the resources it contains: 
-1. Enter *myResourceGroup* in the **Search** box at the top of the portal and select *myResourceGroup* from the search results. 
+Wanneer u klaar bent met het persoonlijke eind punt, het opslag account en de virtuele machine, verwijdert u de resource groep en alle resources die deze bevat: 
+1. Geef *myResourceGroup* op in het **zoekvak** boven aan de portal en selecteer *myResourceGroup* in de zoek resultaten. 
 2. Selecteer **Resourcegroep verwijderen**. 
-3. Enter *myResourceGroup* for **TYPE THE RESOURCE GROUP NAME** and select **Delete**. 
+3. Voer *myResourceGroup* in om **de naam van de resource groep te typen** en selecteer **verwijderen**. 
 
 ## <a name="next-steps"></a>Volgende stappen
-In this Quickstart, you created a VM on a virtual network and storage account and a Private Endpoint. You connected to one VM from the internet and securely communicated to the storage account using Private Link. To learn more about Private Endpoint, see [What is Azure Private Endpoint?](private-endpoint-overview.md).
+In deze Quick Start hebt u een VM gemaakt op een virtueel netwerk en een opslag account en een persoonlijk eind punt. U hebt verbinding gemaakt met één virtuele machine via internet en veilig door gegeven aan het opslag account met behulp van een persoonlijke koppeling. Zie [Wat is Azure private endpoint?](private-endpoint-overview.md)voor meer informatie over privé-eind punten.

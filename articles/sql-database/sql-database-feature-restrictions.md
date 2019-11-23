@@ -66,7 +66,7 @@ De weer gave `sys.sql_feature_restrictions` geeft alle momenteel gedefinieerde f
 | Kolom naam | Gegevenstype | Beschrijving |
 |-------------|-----------|-------------|
 | Klasse       | nvarchar (128) | Klasse van object waarop de beperking van toepassing is |
-| object      | nvarchar (256) | De naam van het object waarop de beperking van toepassing is |
+| object      | nvarchar(256) | De naam van het object waarop de beperking van toepassing is |
 | hulp     | nvarchar (128) | Functie die is beperkt |
 
 ## <a name="feature-restrictions"></a>Functie beperkingen

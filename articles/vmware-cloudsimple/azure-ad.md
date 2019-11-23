@@ -87,7 +87,7 @@ U kunt desgewenst andere Azure AD-functies configureren.  Deze zijn niet vereist
     |------------|-----------------|
     | **Naam** | De naam van de identiteits bron. |
     | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers.  Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`.|
-    | **Domein naam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
+    | **Domeinnaam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
     | **Domein alias** | *(optioneel)* De NetBIOS-naam van het domein. Voeg de NetBIOS-naam van het Active Directory domein als alias van de identiteits bron toe als u SSPI-verificaties gebruikt. |
     | **Basis-DN voor groepen** | De DN-basis naam voor groepen. Gebruik voor Azure AD: `OU=AADDC Users,DC=<domain>,DC=<domain suffix>` voor beeld: `OU=AADDC Users,DC=cloudsimplecustomer,DC=com`|
     | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de notatie `ldaps://hostname:port`. De poort is doorgaans 636 voor LDAPS-verbindingen. <br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot stand brengt, is vereist wanneer u `ldaps://` in de primaire of secundaire LDAP-URL gebruikt. |

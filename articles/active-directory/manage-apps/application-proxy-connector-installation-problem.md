@@ -48,7 +48,7 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 2.  Als een van deze poorten niet is geslaagd, controleert u of de firewall of de back-end-proxy toegang heeft tot de vereiste domeinen en poorten Zie, [uw on-premises omgeving voorbereiden](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Open een browser (tabblad afzonderlijk) en ga naar de volgende webpagina: <https://login.microsoftonline.com>, zorg ervoor dat u zich kunt aanmelden bij deze pagina.
+3.  Open een browser (tabblad afzonderlijk) en ga naar de volgende webpagina: <https://login.microsoftonline.com>, zorg ervoor dat u zich kunt aanmelden bij die pagina.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-cert"></a>De ondersteuning voor de machine en back-end-onderdelen controleren voor het certificaat van de toepassings proxy Trust
 
@@ -71,9 +71,9 @@ Wanneer de installatie van een connector mislukt, is de hoofd oorzaak meestal ee
 
 **Controleren of de referenties juist zijn:**
 
-Verbinding maken met <https://login.microsoftonline.com> en dezelfde referenties gebruiken. Zorg ervoor dat de aanmelding is geslaagd. U kunt de gebruikersrol controleren door naar **Azure Active Directory** - @ no__t-2- **gebruikers en-groepen** - @ No__t-5 **alle gebruikers**te gaan. 
+Verbinding maken met <https://login.microsoftonline.com> en dezelfde referenties gebruiken. Zorg ervoor dat de aanmelding is geslaagd. U kunt de gebruikersrol controleren door naar **Azure Active Directory** -&gt; **gebruikers en groepen** te gaan -&gt; **alle gebruikers**. 
 
 Selecteer uw gebruikers account en vervolgens ' Directory-rol ' in het resulterende menu. Controleer of de geselecteerde rol ' toepassings beheerder ' is. Als u in deze stappen geen toegang hebt tot een van de pagina's, hebt u niet de vereiste rol.
 
 ## <a name="next-steps"></a>Volgende stappen
-[Azure AD-toepassingsproxy-connectors begrijpen](application-proxy-connectors.md)
+[Meer informatie over Azure AD Application Proxy connectors](application-proxy-connectors.md)

@@ -31,7 +31,7 @@ In dit artikel leest u hoe u automatisch inrichten op een gesimuleerd IoT Edge a
 > TPM 2,0 is vereist voor het gebruik van TPM-Attestation met DPS en kan alleen worden gebruikt voor het maken van afzonderlijke, niet-groeps registraties.
 
 > [!TIP]
-> In dit artikel wordt beschreven hoe u DPS Provisioning test met een TPM-Simulator, maar veel van deze is van toepassing op fysieke TPM-hardware, zoals de [INFINEON OPTIGA @ no__t-1 TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), een Azure Certified voor IOT-apparaat.
+> In dit artikel wordt beschreven hoe u DPS inrichten kunt testen met behulp van een TPM-Simulator, maar veel hiervan is van toepassing op fysieke TPM-hardware, zoals [INFINEON OPTIGA&trade; TPM](https://catalog.azureiotsolutions.com/details?title=OPTIGA-TPM-SLB-9670-Iridium-Board), een Azure Certified voor IOT-apparaat.
 >
 > Als u een fysiek apparaat gebruikt, kunt u door gaan naar de sectie [inrichtings gegevens ophalen van een fysiek apparaat](#retrieve-provisioning-information-from-a-physical-device) in dit artikel.
 
@@ -65,13 +65,13 @@ Als u fouten ziet tijdens het maken van de nieuwe virtuele switch, zorg ervoor d
 
 1. Download een schijfimage-bestand wilt gebruiken voor uw virtuele machine en deze lokaal opslaat. Bijvoorbeeld, [Ubuntu server](https://www.ubuntu.com/download/server). 
 
-2. Selecteer in Hyper-V-beheer opnieuw de optie **nieuwe** > **virtuele machine** in het menu **acties** .
+2. In Hyper-V-beheer opnieuw selecteert u **nieuw** > **virtuele machine** in het menu **acties** .
 
 3. Voltooi de **Wizard Nieuwe virtuele Machine** met de volgende specifieke configuraties:
 
-   1. **Generatie opgeven**: Selecteer **generatie 2**. Voor virtuele machines van de 2e generatie is geneste virtualisatie ingeschakeld, wat vereist is om IoT Edge uit te voeren op een virtuele machine.
-   2. **Netwerken configureren**: Stel de waarde in van **verbinding** met de virtuele switch die u hebt gemaakt in de vorige sectie. 
-   3. **Installatie opties**: Selecteer **een besturings systeem installeren vanaf een opstartbaar installatie kopie bestand** en blader naar het schijf kopie bestand dat u lokaal hebt opgeslagen.
+   1. **Generatie opgeven**: Selecteer **van de 2e generatie**. Voor virtuele machines van de 2e generatie is geneste virtualisatie ingeschakeld, wat vereist is om IoT Edge uit te voeren op een virtuele machine.
+   2. **Configureren van netwerken**: Stel de waarde van **verbinding** aan de virtuele switch die u in de vorige sectie hebt gemaakt. 
+   3. **Opties voor de installatie**: Selecteer **een besturingssysteem installeren vanaf een opstartbare installatiekopie-bestand** en blader naar het schijfimage-bestand dat u lokaal hebt opgeslagen.
 
 4. Selecteer in de wizard **volt ooien** om de virtuele machine te maken.
 
@@ -83,7 +83,7 @@ Zodra de VM is gemaakt, opent u de instellingen om de Virtual trusted platform m
 
 1. Selecteer de virtuele machine en open vervolgens de bijbehorende **instellingen**.
 
-2. Navigeer naar **Security**. 
+2. Navigeer naar **Beveiliging**. 
 
 3. Schakel het selectievakje **beveiligd opstarten inschakelen**.
 
@@ -102,7 +102,7 @@ Bouw in de virtuele machine een hulp programma dat u kunt gebruiken om de **regi
 1. Meld u aan bij uw virtuele machine en volg de stappen in [een Linux-ontwikkel omgeving instellen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) om de Azure IOT Device SDK voor C te installeren en te bouwen.
 
    >[!TIP]
-   >In het kader van dit artikel kopieert u naar en plakt u de virtuele machine. Dit is niet eenvoudig via de verbindings toepassing Hyper-V-beheer. U kunt het beste een verbinding met de virtuele machine maken via Hyper-V-beheer om het IP-adres op te halen: `ifconfig`. Vervolgens kunt u het IP-adres gebruiken om verbinding te maken via `ssh <username>@<ipaddress>`SSH:.
+   >In het kader van dit artikel kopieert u naar en plakt u de virtuele machine. Dit is niet eenvoudig via de verbindings toepassing Hyper-V-beheer. U kunt het beste een verbinding met de virtuele machine maken via Hyper-V-beheer om het IP-adres op te halen: `ifconfig`. Vervolgens kunt u het IP-adres gebruiken om verbinding te maken via SSH: `ssh <username>@<ipaddress>`.
 
 1. Voer de volgende opdrachten uit om het SDK-hulp programma te bouwen dat de inrichtings gegevens van uw apparaat ophaalt uit de TPM-Simulator.
 
@@ -116,17 +116,17 @@ Bouw in de virtuele machine een hulp programma dat u kunt gebruiken om de **regi
 
 1. Ga vanuit een opdracht venster naar de map `azure-iot-sdk-c` en voer de TPM-Simulator uit. Deze luistert via een socket op poorten 2321 en 2322. Sluit dit opdracht venster niet. u moet deze simulator blijven uitvoeren.
 
-   Voer in de map `azure-iot-sdk-c` de volgende opdracht uit om de Simulator te starten:
+   Voer in de `azure-iot-sdk-c` map de volgende opdracht uit om de Simulator te starten:
 
    ```bash
    ./provisioning_client/deps/utpm/tools/tpm_simulator/Simulator.exe
    ```
 
-1. Open met behulp van Visual Studio de oplossing die is gegenereerd in de map `cmake` met de naam `azure_iot_sdks.sln`, en bouw deze met behulp van de opdracht **Build Solution** in het menu **Build** .
+1. Open met behulp van Visual Studio de oplossing die is gegenereerd in de `cmake` map met de naam `azure_iot_sdks.sln`en bouw deze met behulp van de opdracht **Build Solution** in het menu **Build** .
 
 1. In het deelvenster **Solution Explorer** van Visual Studio gaat u naar de map **Inrichten\_Extra**. Klik met de rechtermuisknop op het **tpm_device_provision**-project en selecteer **Set as Startup Project**.
 
-1. Voer de oplossing uit met behulp van een van de **Start** opdrachten in het menu **fout opsporing** . In het uitvoer venster worden de **registratie-id** van de TPM-Simulator en de **goedkeurings sleutel**weer gegeven die u moet kopiëren voor later gebruik wanneer u een afzonderlijke inschrijving voor uw apparaat maakt in kunt u dit venster sluiten (met registratie-id en Goedkeurings sleutel), maar zorg ervoor dat het TPM Simulator-venster wordt uitgevoerd.
+1. Voer de oplossing uit met behulp van een van de **Start** opdrachten in het menu **fout opsporing** . In het uitvoer venster worden de **registratie-id** van de TPM-Simulator en de **goedkeurings sleutel**weer gegeven die u moet kopiëren voor later gebruik wanneer u een afzonderlijke inschrijving voor uw apparaat maakt in u kunt dit venster sluiten (met registratie-id en goedkeurings sleutel), maar het TPM-Simulator-venster actief laten.
 
 ## <a name="retrieve-provisioning-information-from-a-physical-device"></a>Inrichtings gegevens ophalen van een fysiek apparaat
 

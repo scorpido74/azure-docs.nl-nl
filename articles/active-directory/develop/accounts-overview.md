@@ -24,9 +24,9 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71679839"
 ---
-# <a name="accounts--tenant-profiles-android"></a>Accounts & Tenant profielen (Android)
+# <a name="accounts--tenant-profiles-android"></a>Accounts en tenantprofielen (Android)
 
-Dit artikel bevat een overzicht van wat een `account` bevindt in het micro soft-identiteits platform.
+Dit artikel bevat een overzicht van wat een `account` in het micro soft Identity-platform bevindt.
 
 De micro soft Authentication Library (MSAL)-API vervangt de term *gebruiker* met het *account*voor de term. Een reden is dat een gebruiker (Human of software agent) mogelijk meerdere accounts heeft of kan gebruiken. Deze accounts kunnen zich in de eigen organisatie van de gebruiker bevinden en/of in andere organisaties waarvan de gebruiker lid is.
 
@@ -36,7 +36,7 @@ Een account in het micro soft Identity platform bestaat uit:
   - Een of meer referenties die worden gebruikt om het eigendom/beheer van het account te demonstreren.
   - Een of meer profielen die bestaan uit kenmerken, zoals:
     - Afbeelding, voor naam, familie naam, titel, kantoor locatie
-- Een account heeft een bron van de instantie of het record systeem. Dit is het systeem waar het account wordt gemaakt en waar de referenties zijn opgeslagen die aan dat account zijn gekoppeld. In multi tenant systemen zoals het micro soft-identiteits platform is het record systeem het `tenant` waar het account is gemaakt. Deze Tenant wordt ook wel de `home tenant` genoemd.
+- Een account heeft een bron van de instantie of het record systeem. Dit is het systeem waar het account wordt gemaakt en waar de referenties zijn opgeslagen die aan dat account zijn gekoppeld. In multi tenant systemen zoals het micro soft-identiteits platform is het record systeem het `tenant` waar het account is gemaakt. Deze Tenant wordt ook wel de `home tenant`genoemd.
 - Accounts in het micro soft Identity-platform hebben de volgende record systemen:
   - Azure Active Directory, inclusief Azure Active Directory B2C.
   - Microsoft-account (Live).
@@ -47,7 +47,7 @@ Een account in het micro soft Identity platform bestaat uit:
 - Met het micro soft Identity-platform kan één account worden gebruikt voor toegang tot resources die deel uitmaken van meerdere organisaties (Azure Active Directory tenants).
   - Als u wilt vastleggen dat een account van het ene record systeem (AAD Tenant A) toegang heeft tot een resource in een ander record systeem (AAD Tenant B), moet het account worden weer gegeven in de Tenant waarin de resource is gedefinieerd. Dit doet u door een lokale record van het account te maken op systeem A in systeem B.
   - Deze lokale record, die de weer gave van het account is, is gekoppeld aan het oorspronkelijke account.
-  - MSAL stelt deze lokale record beschikbaar als een `Tenant Profile`.
+  - MSAL maakt deze lokale record beschikbaar als een `Tenant Profile`.
   - Het Tenant profiel kan verschillende kenmerken hebben die relevant zijn voor de lokale context, zoals de functie, de kantoor locatie, de contact gegevens, enzovoort.
  
 - Omdat een account in een of meer tenants aanwezig kan zijn, heeft een account mogelijk meer dan één profiel.
@@ -61,20 +61,20 @@ Een account in het micro soft Identity platform bestaat uit:
 
 In het bovenstaande diagram:
 
-- Het account `bob@contoso.com` wordt gemaakt in het on-premises Windows Server-Active Directory (lokaal systeem van de record).
+- Het account `bob@contoso.com` wordt gemaakt in het on-premises Windows Server-Active Directory (on-premises systeem van de record).
 - Het account `tom@live.com` wordt gemaakt in de Microsoft-account Tenant.
 - `bob@contoso.com` heeft toegang tot ten minste één resource in de volgende Azure Active Directory tenants:
   - contoso.com (Cloud systeem van de record die is gekoppeld aan een on-premises systeem van record)
   - fabrikam.com
   - woodgrovebank.com
-  - In elk van deze tenants is een Tenant profiel voor `bob@contoso.com` aanwezig.
+  - Een Tenant profiel voor `bob@contoso.com` bestaat in elk van deze tenants.
 - `tom@live.com` heeft toegang tot resources in de volgende micro soft-tenants:
   - contoso.com
   - fabrikam.com
-  - In elk van deze tenants is een Tenant profiel voor `tom@live.com` aanwezig.
-- Informatie over Tom en Bob in andere tenants kan afwijken van die in het record systeem. Ze kunnen verschillen met kenmerken zoals de functie, de kantoor locatie, enzovoort. Ze kunnen lid zijn van groepen en/of rollen binnen elke organisatie (Azure Active Directory Tenant). We verwijzen naar deze informatie als bob@contoso.com-Tenant profiel.
+  - Een Tenant profiel voor `tom@live.com` bestaat in elk van deze tenants.
+- Informatie over Tom en Bob in andere tenants kan afwijken van die in het record systeem. Ze kunnen verschillen met kenmerken zoals de functie, de kantoor locatie, enzovoort. Ze kunnen lid zijn van groepen en/of rollen binnen elke organisatie (Azure Active Directory Tenant). We verwijzen naar deze informatie als bob@contoso.com Tenant profiel.
 
-In het diagram bob@contoso.com en tom@live.com toegang tot resources in verschillende Azure Active Directory tenants. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)voor meer informatie.
+In het diagram bob@contoso.com en tom@live.com toegang tot resources in verschillende Azure Active Directory-tenants. Zie [Azure Active Directory B2B-samenwerkings gebruikers toevoegen in de Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)voor meer informatie.
 
 ## <a name="accounts-and-single-sign-on-sso"></a>Accounts en eenmalige aanmelding (SSO)
 
@@ -126,7 +126,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 > Raadpleeg [claims in een id_token](https://docs.microsoft.com/azure/active-directory/develop/id-tokens#claims-in-an-id_token) voor een lijst met beschik bare claims van het account object
 
 > [!TIP]
-> Als u aanvullende claims wilt toevoegen aan uw id_token, raadpleegt u de documentatie voor de optionele claims in [How naar: Optionele claims voor uw Azure AD-app bieden @ no__t-0
+> Als u aanvullende claims in uw id_token wilt toevoegen, raadpleegt u de documentatie voor de optionele claims in [How to: optionele claims voor uw Azure AD-App opgeven](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)
 
 ### <a name="access-tenant-profile-claims"></a>Claims voor toegang tot Tenant profielen
 
@@ -145,7 +145,7 @@ multiTenantAccount.getTenantProfiles().get("tenantid for contoso").getClaims().g
 
 Het vernieuwen van tokens voor een account wordt niet gedeeld via B2C-beleid. Als gevolg hiervan is eenmalige aanmelding met tokens niet mogelijk. Dit betekent niet dat eenmalige aanmelding niet mogelijk is. Dit betekent dat eenmalige aanmelding een interactieve ervaring heeft waarin een cookie beschikbaar is om eenmalige aanmelding mogelijk te maken.
 
-Dit betekent ook dat in het geval van MSAL tokens worden verkregen met behulp van verschillende B2C-beleids regels. deze worden vervolgens beschouwd als afzonderlijke accounts, elk met hun eigen id. Als u een account wilt gebruiken om een token aan te vragen met `acquireTokenSilent`, moet u het account selecteren in de lijst met accounts die overeenkomt met het beleid dat u gebruikt met de token aanvraag. Bijvoorbeeld:
+Dit betekent ook dat in het geval van MSAL tokens worden verkregen met behulp van verschillende B2C-beleids regels. deze worden vervolgens beschouwd als afzonderlijke accounts, elk met hun eigen id. Als u een account wilt gebruiken om een token aan te vragen met behulp van `acquireTokenSilent`, moet u het account selecteren in de lijst met accounts die overeenkomt met het beleid dat u gebruikt met de token aanvraag. Bijvoorbeeld:
 
 ```java
 // Get Account For Policy

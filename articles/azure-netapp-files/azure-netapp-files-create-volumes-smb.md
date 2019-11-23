@@ -40,25 +40,25 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 * De juiste poorten moeten geopend zijn op de betreffende Windows Active Directory (AD)-server.  
     De vereiste poorten zijn als volgt: 
 
-    |     Service           |     Port     |     Protocol     |
+    |     Service           |     Poort     |     Protocol     |
     |-----------------------|--------------|------------------|
     |    AD-webservices    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
-    |    DNS                |    53        |    EDP           |
-    |    ICMPv4             |    N/A       |    ECHO antwoord    |
+    |    DNS                |    53        |    UDP           |
+    |    ICMPv4             |    N.v.t.       |    ECHO antwoord    |
     |    Kerberos           |    464       |    TCP           |
-    |    Kerberos           |    464       |    EDP           |
+    |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
-    |    Kerberos           |    88        |    EDP           |
+    |    Kerberos           |    88        |    UDP           |
     |    LDAP               |    389       |    TCP           |
-    |    LDAP               |    389       |    EDP           |
+    |    LDAP               |    389       |    UDP           |
     |    LDAP               |    3268      |    TCP           |
-    |    NetBIOS-naam       |    138       |    EDP           |
+    |    NetBIOS-naam       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
-    |    SAM/LSA            |    445       |    EDP           |
+    |    SAM/LSA            |    445       |    UDP           |
     |    Secure LDAP        |    636       |    TCP           |
     |    Secure LDAP        |    3269      |    TCP           |
-    |    W32Time            |    123       |    EDP           |
+    |    W32Time            |    123       |    UDP           |
 
 * De site topologie voor de doel-Active Directory Domain Services moet voldoen aan de aanbevolen procedures, met name de Azure VNet waar Azure NetApp Files wordt geïmplementeerd.  
 
@@ -86,9 +86,9 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
     * **Primaire DNS**  
         Dit is de DNS-server die is vereist voor de Active Directory domein deelname en SMB-verificatie bewerkingen. 
-    * **Secundaire DNS**-   
+    * **Secundaire DNS-**    
         Dit is de secundaire DNS-server voor het controleren van redundante naam Services. 
-    * **Domeinen**  
+    * **Domein**  
         Dit is de domein naam van de Active Directory Domain Services die u wilt toevoegen.
     * **Voor voegsel van SMB-server (computer-account)**  
         Dit is het naam voorvoegsel voor het machine account in Active Directory dat Azure NetApp Files gebruikt voor het maken van nieuwe accounts.
@@ -130,7 +130,7 @@ Er moet een subnet zijn gedelegeerd aan Azure NetApp Files.
 
         Een volume naam moet uniek zijn binnen elke capaciteits groep. De naam moet minstens drie tekens bevatten. U kunt alle alfanumerieke tekens gebruiken.   
 
-        U kunt `default` niet gebruiken als de naam van het volume.
+        U kunt `default` niet als de naam van het volume gebruiken.
 
     * **Capaciteits pool**  
         Geef de capaciteits pool op waar u het volume wilt maken.

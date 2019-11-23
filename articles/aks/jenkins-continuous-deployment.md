@@ -33,7 +33,7 @@ Voor het voltooien van deze zelfstudie hebt u de volgende items nodig:
 
 - Basis informatie over Kubernetes, Git, CI/CD en container installatie kopieën
 
-- Een [AKS-cluster][aks-quickstart] en `kubectl` dat is geconfigureerd met de [AKS-cluster referenties][aks-credentials]
+- Een [AKS-cluster][aks-quickstart] en `kubectl` geconfigureerd met de [AKS-cluster referenties][aks-credentials]
 
 - Een [Azure container Registry-REGI ster (ACR)][acr-quickstart], de naam van de ACR-aanmeldings server en het AKS-cluster dat is geconfigureerd voor [verificatie met het ACR-REGI ster][acr-authentication]
 
@@ -72,7 +72,7 @@ Als u de container installatie kopieën wilt maken die nodig zijn voor de voorbe
 docker-compose up -d
 ```
 
-De vereiste basis installatie kopieën worden opgehaald en de toepassings containers zijn gebouwd. U kunt vervolgens de opdracht [docker-installatie kopieën][docker-images] gebruiken om de gemaakte installatie kopie te bekijken. Er zijn drie installatiekopieën gedownload of gemaakt. De `azure-vote-front`-installatiekopie bevat de toepassing en gebruikt de `nginx-flask`-installatiekopie als basis. De afbeelding van de `redis` wordt gebruikt om een redis-exemplaar te starten:
+De vereiste basis installatie kopieën worden opgehaald en de toepassings containers zijn gebouwd. U kunt vervolgens de opdracht [docker-installatie kopieën][docker-images] gebruiken om de gemaakte installatie kopie te bekijken. Er zijn drie installatiekopieën gedownload of gemaakt. De `azure-vote-front`-installatiekopie bevat de toepassing en gebruikt de `nginx-flask`-installatiekopie als basis. De `redis` installatie kopie wordt gebruikt om een redis-exemplaar te starten:
 
 ```
 $ docker images
@@ -89,7 +89,7 @@ Voordat u de container installatie kopie van *Azure-stem voor front* kunt pushen
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Gebruik de opdracht [docker tag][docker-tag] om de installatie kopie te labelen met de naam van de ACR-aanmeldings server en een versie nummer van `v1`. Geef uw eigen `<acrLoginServer>`-naam op die u in de vorige stap hebt verkregen:
+Gebruik de opdracht [docker tag][docker-tag] om de installatie kopie te labelen met de naam van de ACR-aanmeldings server en een versie nummer van `v1`. Geef uw eigen `<acrLoginServer>` naam op die u in de vorige stap hebt verkregen:
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
@@ -103,7 +103,7 @@ docker push <acrLoginServer>/azure-vote-front:v1
 
 ## <a name="deploy-the-sample-application-to-aks"></a>De voorbeeld toepassing implementeren in AKS
 
-Als u de voorbeeld toepassing wilt implementeren in uw AKS-cluster, kunt u het Kubernetes-manifest bestand gebruiken in de hoofdmap van de Azure stemmings opslagplaats opslag plaats. Open het manifest bestand *Azure-stemmen-all-in-One-redis. yaml* met een editor als `vi`. Vervang `microsoft` door de naam van de ACR-aanmeldingsserver. Deze waarde is te vinden op regel **47** van het manifest bestand:
+Als u de voorbeeld toepassing wilt implementeren in uw AKS-cluster, kunt u het Kubernetes-manifest bestand gebruiken in de hoofdmap van de Azure stemmings opslagplaats opslag plaats. Open het manifest bestand *Azure-stemmen-all-in-One-redis. yaml* met een editor zoals `vi`. Vervang `microsoft` door de naam van de ACR-aanmeldingsserver. Deze waarde is te vinden op regel **47** van het manifest bestand:
 
 ```yaml
 containers:
@@ -117,7 +117,7 @@ Gebruik vervolgens de opdracht [kubectl Toep assen][kubectl-apply] om de toepass
 kubectl apply -f azure-vote-all-in-one-redis.yaml
 ```
 
-Er wordt een Kubernetes-load balancer service gemaakt om de toepassing beschikbaar te maken voor Internet. Dit proces kan enkele minuten duren. Als u de voortgang van de load balancer-implementatie wilt controleren, gebruikt u de opdracht [kubectl Get service][kubectl-get] met het argument `--watch`. Nadat het adres *EXTERNAL-IP* is gewijzigd van *pending* in een *IP-adres*, gebruikt u `Control + C` om het controleproces van kubectl te stoppen.
+Er wordt een Kubernetes-load balancer service gemaakt om de toepassing beschikbaar te maken voor Internet. Dit proces kan enkele minuten duren. Als u de voortgang van de load balancer-implementatie wilt controleren, gebruikt u de opdracht [kubectl Get service][kubectl-get] met het argument `--watch`. Zodra het *EXTERNE IP-adres* is gewijzigd van *in behandeling* in een *IP-adres*, gebruikt u `Control + C` om het controleproces van kubectl te stoppen.
 
 ```console
 $ kubectl get service azure-vote-front --watch
@@ -138,7 +138,7 @@ Als u Jenkins snel wilt implementeren voor gebruik in dit artikel, kunt u het vo
 > [!WARNING]
 > Dit voorbeeld script is bedoeld voor demonstratie doeleinden om snel een Jenkins-omgeving in te richten die wordt uitgevoerd op een virtuele Azure-machine. Er wordt gebruikgemaakt van de aangepaste script extensie van Azure om een virtuele machine te configureren en vervolgens de vereiste referenties weer te geven. Uw *~/.Kube/config* wordt gekopieerd naar de Jenkins-VM.
 
-Voer de volgende opdrachten uit om het script te downloaden en uit te voeren. U moet de inhoud van een script controleren voordat het wordt uitgevoerd- [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh).
+Voer de volgende opdrachten uit om het script te downloaden en uit te voeren. U moet de inhoud van een script controleren voordat het [https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh](https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh)wordt uitgevoerd.
 
 ```console
 curl https://raw.githubusercontent.com/Azure-Samples/azure-voting-app-redis/master/jenkins-tutorial/deploy-jenkins-vm.sh > azure-jenkins.sh
@@ -230,13 +230,13 @@ Klik op **OK** en ga terug naar de Jenkins-Portal.
 Op de start pagina van uw Jenkins-Portal selecteert u **Nieuw item** aan de linkerkant:
 
 1. Voer *Azure-stemmen* in als taak naam. Kies **Freestyle project**en selecteer **OK** .
-1. Selecteer in de sectie **Algemeen** **github project** en voer uw gevorkte opslag plaats-URL in, zoals *https: \//github. com/\<your-github-account @ no__t-5/Azure-stem-app-redis*
-1. Selecteer in de sectie **broncode beheer** de optie **Git**, voer uw gevorkte opslag plaats *. git* -URL in, zoals *https: \//github. com/\<your-github-account @ no__t-6/Azure-voting-app-redis. git*
+1. Selecteer in de sectie **Algemeen** **github project** en voer uw gevorkte opslag plaats-URL in, zoals *https:\//github.com/\<uw-github account\>/Azure-voting-app-redis*
+1. Selecteer in de sectie **broncode beheer** de optie **Git**, voer uw gevorkte opslag plaats *. git* -URL in, zoals *https:\//github.com/\<uw-github-account\>/Azure-voting-app-redis.git*
 
 1. Selecteer onder de sectie **Build triggers** de **github Hook-trigger voor GITscm polling**
 1. Selecteer onder **build-omgeving**de optie **geheime teksten of bestanden gebruiken**
 1. Onder **bindingen**selecteert u > **gebruikers naam en wacht woord toevoegen (gescheiden)**
-   - Voer `ACR_ID` in voor de **variabele gebruikers naam**en `ACR_PASSWORD` voor de **wachtwoord variabele**
+   - Voer `ACR_ID` in voor de **variabele username**en `ACR_PASSWORD` voor de **wachtwoord variabele**
 
      ![Jenkins-bindingen](media/aks-jenkins/bindings.png)
 
@@ -280,7 +280,7 @@ Als een geslaagde hand matige build is voltooid, integreert u GitHub nu in de Je
 
 1. Blader naar uw gevorkte GitHub-opslag plaats in een webbrowser.
 1. Selecteer **Instellingen**, selecteer daarna **Webhooks** aan de linkerkant.
-1. Kies voor het toevoegen van een **webhook**. Voer voor de URL van de *nettolading*`http://<publicIp:8080>/github-webhook/` in, waarbij `<publicIp>` het IP-adres van de Jenkins-server is. Zorg ervoor dat u de volg-en achterstallige opgeeft. Wijzig de andere standaard waarden voor het inhouds type en om te activeren op *Push* gebeurtenissen.
+1. Kies voor het toevoegen van een **webhook**. Voer voor de URL van de *nettolading*`http://<publicIp:8080>/github-webhook/`in, waarbij `<publicIp>` het IP-adres van de Jenkins-server is. Zorg ervoor dat u de volg-en achterstallige opgeeft. Wijzig de andere standaard waarden voor het inhouds type en om te activeren op *Push* gebeurtenissen.
 1. Selecteer **webhook toevoegen**.
 
     ![Een GitHub-webhook maken voor Jenkins](media/aks-jenkins/webhook.png)

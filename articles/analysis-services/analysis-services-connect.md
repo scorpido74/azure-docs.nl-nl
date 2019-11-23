@@ -76,7 +76,7 @@ Met oudere versies van Excel kunnen gebruikers verbinding maken met een Azure An
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Verbinding maken met Excel](analysis-services-connect-excel.md)-    
+[Verbinding maken met Excel](analysis-services-connect-excel.md)    
 [Verbinding maken met Power BI](analysis-services-connect-pbi.md)   
 [Uw server beheren](analysis-services-manage.md)   
 

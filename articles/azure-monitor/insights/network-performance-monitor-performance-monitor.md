@@ -101,7 +101,7 @@ Als u ervoor kiest om ICMP te gebruiken tijdens de implementatie, kunt u op elk 
 
 Zelfs als de standaard regel een specifiek protocol gebruikt, kunt u nieuwe regels maken met een ander protocol. U kunt zelfs een combi natie van regels maken waarbij sommige regels ICMP gebruiken en anderen TCP gebruiken. 
 
-## <a name="walkthrough"></a>Walkthrough 
+## <a name="walkthrough"></a>Kennismaking 
 
 Bekijk nu een eenvoudig onderzoek naar de hoofd oorzaak van een status gebeurtenis.
 

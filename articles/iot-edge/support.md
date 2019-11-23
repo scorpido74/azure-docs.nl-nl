@@ -35,7 +35,8 @@ Azure IoT Edge-modules worden geïmplementeerd als containers, zodat IoT Edge ee
 <br>
 <center>
 
-![Moby als container runtime @ no__t-1 @ no__t-2
+![Moby als container runtime-](./media/support/only-moby-for-production.png)
+</center>
 
 ## <a name="operating-systems"></a>Besturingssystemen
 Azure IoT Edge wordt uitgevoerd op de meeste besturings systemen waarop containers kunnen worden uitgevoerd. al deze systemen worden echter niet gelijk ondersteund. Besturingssystemen zijn gegroepeerd in lagen, waarbij het niveau van ondersteuning voor gebruikers kunnen verwachten.
@@ -51,7 +52,8 @@ De familie van het hostbesturingssysteem moet altijd overeenkomen met de familie
 <br>
 <center>
 
-![Host-besturings systeem komt overeen met het gast besturingssysteem @ no__t-1 @ no__t-2
+![host-besturings systeem komt overeen met het gast besturingssysteem](./media/support/edge-on-device.png)
+</center>
 
 ### <a name="tier-1"></a>Categorie 1
 
@@ -95,13 +97,14 @@ De systemen die in de volgende tabel worden vermeld, worden beschouwd als compat
 sudo apt-get install libssl1.0.2
 ```
 
-## <a name="virtual-machines"></a>Virtuele machines
+## <a name="virtual-machines"></a>Virtual Machines
 Azure IoT Edge kunnen worden uitgevoerd op virtuele machines. Het gebruik van een virtuele machine als een IoT Edge apparaat is gebruikelijk wanneer klanten bestaande infra structuur willen uitbreiden met Edge Intelligence. De serie van het VM-besturings systeem van de host moet overeenkomen met de familie van het gast besturingssysteem dat in de container van een module wordt gebruikt. Deze vereiste is hetzelfde als wanneer Azure IoT Edge rechtstreeks op een apparaat wordt uitgevoerd. Azure IoT Edge is neutraal van de onderliggende technologie en werkt in Vm's op basis van platforms, zoals Hyper-V en vSphere.
 
 <br>
 <center>
 
-![Azure IoT Edge in een VM @ no__t-1 @ no__t-2
+![Azure IoT Edge in een VM](./media/support/edge-on-vm.png)
+</center>
 
 ## <a name="minimum-system-requirements"></a>Minimale systeem vereisten
 Azure IoT Edge is uitstekend geschikt voor apparaten met een Raspberry-Pi3 op server kwaliteit. Het kiezen van de juiste hardware voor uw scenario is afhankelijk van de werk belastingen die u wilt uitvoeren. Het maken van de definitieve beslissing van het apparaat kan gecompliceerd zijn. u kunt echter eenvoudig beginnen met het prototypen van een oplossing op traditionele laptops of Bureau bladen.

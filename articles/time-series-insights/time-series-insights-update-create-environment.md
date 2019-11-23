@@ -86,7 +86,7 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights-voorbeeld o
     | **Omgevingsnaam** | Voer een unieke naam in voor de voorbeeld omgeving van Azure Time Series Insights. |
     | **Abonnement** | Geef het abonnement op waar u de Azure Time Series Insights voorbeeld omgeving wilt maken. Een best practice is het gebruik van hetzelfde abonnement als de rest van de IoT-resources die door de Device Simulator zijn gemaakt. |
     | **Resourcegroep** | Selecteer een bestaande resource groep of maak een nieuwe resource groep voor de resource van de Azure Time Series Insights preview-omgeving. Een resourcegroep is een container voor Azure-resources. Een best practice is het gebruik van dezelfde resource groep als de andere IoT-resources die door de Device Simulator zijn gemaakt. |
-    | **Location** | Selecteer een regio voor het Data Center voor uw Azure Time Series Insights-voorbeeld omgeving. Om extra latentie te voor komen, kunt u het beste uw Azure Time Series Insights-voorbeeld omgeving maken in dezelfde regio als uw IoT-hub die is gemaakt door de Device Simulator. |
+    | **Locatie** | Selecteer een regio voor het Data Center voor uw Azure Time Series Insights-voorbeeld omgeving. Om extra latentie te voor komen, kunt u het beste uw Azure Time Series Insights-voorbeeld omgeving maken in dezelfde regio als uw IoT-hub die is gemaakt door de Device Simulator. |
     | **Laag** |  Selecteer **payg** (*betalen naar*gebruik). Dit is de SKU voor het Azure Time Series Insights Preview-product. |
     | **Eigenschaps-ID** | Voer een unieke waarde in voor uw time series-instantie. De waarde die u invoert in het vak **eigenschap-ID** kan later niet worden gewijzigd. Voer voor deze zelf studie **iothub-Connection-apparaat-id**in. Zie [Aanbevolen procedures voor het kiezen van een time series-id voor](./time-series-insights-update-how-to-id.md)meer informatie over de tijd reeks-id. |
     | **Naam van opslagaccount** | Voer een globaal unieke naam in voor een nieuw opslag account.|
@@ -103,7 +103,7 @@ In deze sectie wordt beschreven hoe u een Azure Time Series Insights-voorbeeld o
    | Parameter | Actie |
    | --- | --- |
    | **Een gebeurtenisbron maken** | Selecteer **Ja**.|
-   | **Name** | Voer een unieke waarde in voor de naam van de gebeurtenis bron. |
+   | **Naam** | Voer een unieke waarde in voor de naam van de gebeurtenis bron. |
    | **Brontype** | Selecteer **IOT hub**. |
    | **Een hub selecteren** | Kies **bestaande selecteren**. |
    | **Abonnement** | Selecteer het abonnement dat u voor de Device Simulator hebt gebruikt. |
@@ -157,7 +157,7 @@ Nu u uw Time Series Insights-omgeving hebt geïmplementeerd, begint u gegevens t
 
     | Parameter | Actie |
     | --- | --- |
-    | **Name** | Voer een unieke naam voor een simulator in. |
+    | **Naam** | Voer een unieke naam voor een simulator in. |
     | **Beschrijving** | Voer een definitie in. |
     | **Simulatieduur** | Stel de simulatieduur in op **Voor onbepaalde tijd uitvoeren**. |
     | **Apparaatmodel** | Klik op + **een apparaattype toevoegen** <br />**Naam**: Geef **Lift**op. <br />**Bedrag**: Voer **3**in. <br /> De overige standaard waarden behouden |
@@ -222,7 +222,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
     | Parameter | Actie |
     | --- | ---|
-    | **Name** | **Lift** invoeren |
+    | **Naam** | **Lift** invoeren |
     | **Beschrijving** | Geef **een type definitie op voor lift** |
 
     [De knop toevoegen ![voor typen](media/v2-update-provision/define-three-properties.png)](media/v2-update-provision/define-three-properties.png#lightbox)
@@ -233,7 +233,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
     | Parameter | Actie |
     | --- | --- |
-    | **Name** | Voer **Gemiddelde temperatuur** in. |
+    | **Naam** | Voer **Gemiddelde temperatuur** in. |
     | **Type** | **Numeriek** selecteren |
     | **Waarde** | Selecteren uit vooraf ingesteld: Selecteer **Tempe ratuur (dubbel)** . <br /> Opmerking: het kan enkele minuten duren voordat de **waarde** automatisch wordt ingevuld nadat Azure time series Insights preview gebeurtenissen ontvangt.|
     | **Aggregatiebewerking** | Vouw **Geavanceerde opties**uit. <br /> Selecteer **GEMIDDELDE**. |
@@ -246,7 +246,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
     | Parameter | Actie |
     | --- | --- |
-    | **Name** | Voer **AVG trillingen**in. |
+    | **Naam** | Voer **AVG trillingen**in. |
     | **Type** | **Numeriek** selecteren |
     | **Waarde** | Selecteer een van de voor instellingen: **trillen (dubbel)** selecteren. <br /> Opmerking: het kan enkele minuten duren voordat de **waarde** automatisch wordt ingevuld nadat Azure time series Insights preview gebeurtenissen ontvangt.|
     | **Aggregatiebewerking** | Vouw **Geavanceerde opties**uit. <br /> Selecteer **GEMIDDELDE**. |
@@ -259,7 +259,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
     | Parameter | Actie |
     | --- | --- |
-    | **Name** | Voer **vloer**in. |
+    | **Naam** | Voer **vloer**in. |
     | **Type** | **Categorische** selecteren |
     | **Waarde** | Selecteren uit vooraf ingesteld: Selecteer **Floor (dubbel)** . <br /> Opmerking: het kan enkele minuten duren voordat de **waarde** automatisch wordt ingevuld nadat Azure time series Insights preview gebeurtenissen ontvangt.|
     | **Verschillende** | <span style="text-decoration: underline">Label</span>  - <span style="text-decoration: underline">waarden</span> <br /> Lager: 1, 2, 3, 4 <br /> Midden: 5, 6, 7, 8, 9 <br /> Upper: 10, 11, 12, 13, 14, 15 |
@@ -283,7 +283,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
 
    | Parameter | Actie |
    | --- | ---|
-   | **Name** | Voer **Locatiehiërarchie** in. |
+   | **Naam** | Voer **Locatiehiërarchie** in. |
    |**Residu**| **Land** invoeren als de naam van het eerste niveau <br> Selecteer **+ niveau toevoegen** <br> Voer **plaats** in voor het tweede niveau en selecteer **+ niveau toevoegen** <br> **Gebouw** invoeren als de naam van het derde en laatste niveau |
 
    Selecteer **Opslaan**.
@@ -299,7 +299,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | Parameter | Actie |
     | --- | --- |
     | **Type** | Selecteer **Lift**. |
-    | **Name** | Geef **lift 1** op|
+    | **Naam** | Geef **lift 1** op|
     | **Beschrijving** | **Instantie voor lift 1** invoeren |
 
     [![de knop bewerken voor een exemplaar selecteren](media/v2-update-provision/define-ten-edit.png)](media/v2-update-provision/define-ten-edit.png#lightbox)
@@ -324,7 +324,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | Parameter | Actie |
     | --- | --- |
     | **Type** | Selecteer **Lift**. |
-    | **Name** | Geef **Lift 2** op|
+    | **Naam** | Geef **Lift 2** op|
     | **Beschrijving** | **Instantie voor Lift 2** invoeren |
     | **Hiërarchieën** | **Locatie hiërarchie** selecteren |
     | **Land** | Voer **USA** in |
@@ -336,7 +336,7 @@ In dit gedeelte past u een model toe om uw gegevens te structureren. U definieer
     | Parameter | Actie |
     | --- | --- |
     | **Type** | Selecteer **Lift**. |
-    | **Name** | Geef **Lift 3** op|
+    | **Naam** | Geef **Lift 3** op|
     | **Beschrijving** | **Instantie voor lift 3** invoeren |
     | **Hiërarchieën** | **Locatie hiërarchie** selecteren |
     | **Land** | Voer **USA** in |

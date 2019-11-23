@@ -38,7 +38,7 @@ ms.locfileid: "67176438"
 <sup>2</sup> De grootte van de cache per eenheid is afhankelijk van de prijs categorie. Zie [API Management prijzen](https://azure.microsoft.com/pricing/details/api-management/)voor een overzicht van de prijs categorieën en hun schaal limieten.<br/>
 <sup>3</sup> Verbindingen worden gegroepeerd en opnieuw gebruikt, tenzij dit expliciet is gesloten door de back-end.<br/>
 <sup>4</sup> Deze limiet geldt per eenheid van de lagen Basic, Standard en Premium. De Developer-laag is beperkt tot 1.024. Deze limiet is niet van toepassing op de laag verbruik.<br/> 
-<sup>5</sup> Deze limiet is van toepassing op de lagen Basic, Standard en Premium. In de laag verbruik is de document grootte van het beleid beperkt tot 4 KB.<br/>
+<sup>5</sup>deze limiet is van toepassing op de lagen Basic, Standard en Premium. In de laag verbruik is de document grootte van het beleid beperkt tot 4 KB.<br/>
 <sup>6</sup> Deze resource is alleen beschikbaar in de laag Premium.<br/>
 <sup>7</sup> Deze resource is alleen van toepassing op de laag verbruik.<br/>
 

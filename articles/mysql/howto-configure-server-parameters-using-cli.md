@@ -34,22 +34,22 @@ Zie het gedeelte MySQL-verwijzing in [Server systeem variabelen](https://dev.mys
 ## <a name="show-server-configuration-parameter-details"></a>Details van server configuratie parameters weer geven
 Als u details over een bepaalde configuratie parameter voor een server wilt weer geven, voert u de opdracht [AZ mysql server Configuration show](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-show) uit.
 
-In dit voor beeld worden details weer gegeven van de configuratie parameter **Slow @ no__t-1query @ no__t-2log-** server voor server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup.**
+In dit voor beeld worden details weer gegeven van de **langzame\_query\_** de configuratie parameter van de logboek server voor server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup.**
 ```azurecli-interactive
 az mysql server configuration show --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
 ## <a name="modify-a-server-configuration-parameter-value"></a>Een waarde voor de para meter server configuratie wijzigen
 U kunt ook de waarde van een bepaalde server configuratie parameter wijzigen, waarmee de onderliggende configuratie waarde wordt bijgewerkt voor de MySQL-server engine. Als u de configuratie wilt bijwerken, gebruikt u de opdracht [AZ mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) . 
 
-De configuratie parameter **Slow @ no__t-1query @ no__t-2log** server van server **mydemoserver.mysql.database.Azure.com** onder resource groep myresourcegroup bijwerken **.**
+Voor het bijwerken van de **langzame\_query\_** configuratie parameter van de logboek server van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup.**
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver --value ON
 ```
-Als u de waarde van een configuratie parameter opnieuw wilt instellen, laat u de optionele para meter `--value` weg en past de service de standaard waarde toe. In het bovenstaande voor beeld zou er als volgt uitzien:
+Als u de waarde van een configuratie parameter opnieuw wilt instellen, laat u de para meter optionele `--value` weg en past de service de standaard waarde toe. In het bovenstaande voor beeld zou er als volgt uitzien:
 ```azurecli-interactive
 az mysql server configuration set --name slow_query_log --resource-group myresourcegroup --server mydemoserver
 ```
-Met deze code wordt de langzame configuratie van **@ no__t-1query @ no__t-2log** opnieuw ingesteld op de standaard **waarde.** 
+Met deze code wordt de **langzame\_query opnieuw ingesteld\_logboek** configuratie naar de standaard **waarde.** 
 
 ## <a name="working-with-the-time-zone-parameter"></a>Werken met de parameter tijdzone
 
@@ -74,7 +74,7 @@ SELECT name FROM mysql.time_zone_name;
 
 De tijd zone globaal niveau kan worden ingesteld met behulp van de opdracht [AZ mysql server configuration set](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-set) .
 
-Met de volgende opdracht wordt de **tijd @ no__t-1zone-** server configuratie parameter van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup** naar **VS/Pacific**bijgewerkt.
+Met de volgende opdracht wordt de tijd van de **\_zone** server configuratie para meter van server **mydemoserver.mysql.database.Azure.com** onder resource groep **myresourcegroup** naar **VS/Pacific**bijgewerkt.
 
 ```azurecli-interactive
 az mysql server configuration set --name time_zone --resource-group myresourcegroup --server mydemoserver --value "US/Pacific"

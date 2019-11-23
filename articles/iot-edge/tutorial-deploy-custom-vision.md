@@ -32,7 +32,8 @@ In deze zelfstudie leert u het volgende:
 
 <center>
 
-![Diagram-zelf studie-architectuur, faseren en classificatie implementeren @ no__t-1 @ no__t-2
+![diagram-zelf studie architectuur, faseren en classificatie](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+implementeren </center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +44,7 @@ In deze zelfstudie leert u het volgende:
 
 Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw omgeving in te stellen voor Linux-container ontwikkeling: [ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door deze zelf studie te volt ooien, moet u aan de volgende vereisten voldoen: 
 
-* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
 * Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
 * Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
 * [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
@@ -75,7 +76,7 @@ Wanneer de afbeeldingsclassificatie is gemaakt en getraind, kunt u deze als een 
    | ----- | ----- |
    | Naam | Geef een naam op voor uw project, bijvoorbeeld **EdgeTreeClassifier**. |
    | Beschrijving | Optionele projectbeschrijving. |
-   | Bron | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
+   | Resource | Selecteer een van de Azure-resource groepen die een Custom Vision Service Resource bevat of **Maak een nieuwe** als u deze nog niet hebt toegevoegd. |
    | Projecttypen | **Classificatie** |
    | Classificatietypen | **Multiclass (één label per afbeelding)** |
    | Domeinen | **Algemeen (compact)** |
@@ -151,7 +152,7 @@ Een oplossing is een logische manier om meerdere modules voor één IoT Edge-imp
    | Een naam opgeven voor de oplossing | Voer een beschrijvende naam voor uw oplossing in, bijvoorbeeld **CustomVisionSolution**, of accepteer de standaardinstelling. |
    | Modulesjabloon selecteren | Kies **Python-module**. |
    | Een modulenaam opgeven | Noem de module **classificatie**.<br><br>Het is belangrijk dat deze modulenaam in kleine letters wordt opgegeven. IoT Edge is hoofdlettergevoelig wat de verwijzing naar modules betreft, en deze oplossing gebruikt een bibliotheek die alle aanvragen opmaakt in kleine letters. |
-   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de laatste stap. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal.<br><br>De uiteindelijke teken reeks ziet eruit als **\<registry name\>.azurecr.io/Classifier**. |
+   | Opslagplaats voor Docker-afbeeldingen voor de module opgeven | Een opslagplaats voor afbeeldingen bevat de naam van het containerregister en de naam van uw containerafbeelding. De containerafbeelding wordt vooraf gevuld vanuit de laatste stap. Vervang **localhost:5000** door de waarde van de aanmeldingsserver uit uw Azure-containerregister. U vindt de aanmeldingsserver op de overzichtspagina van het containerregister in de Azure-portal.<br><br>De uiteindelijke teken reeks ziet eruit als **\<register naam\>. azurecr.io/Classifier**. |
  
    ![Opslagplaats voor Docker-installatiekopieën opgeven](./media/tutorial-deploy-custom-vision/repository.png)
 
@@ -220,7 +221,7 @@ In deze sectie voegt u een nieuwe module aan dezelfde CustomVisionSolution toe e
 
    De nieuwe module wordt in de oplossingswerkruimte van het VS Code-venster geladen en het bestand deployment.template.json wordt bijgewerkt. Nu moet u twee modulemappen zien: classificatie en cameraCapture. 
 
-2. Open het bestand **main.py** in de map  / **cameraCapture** van de **module**. 
+2. Open het bestand **main.py** in de mapcameraCapture /  van de **module**. 
 
 3. Vervang het hele bestand door de volgende code. Deze voorbeeldcode verzendt POST-aanvragen naar de beeldverwerkingsservice die wordt uitgevoerd in de classificatiemodule. We geven deze modulecontainer met een voorbeeldafbeelding die u in de aanvragen kunt gebruiken. Vervolgens wordt het antwoord verpakt als een IoT Hub-bericht en naar een uitvoerwachtrij verzonden.  
 

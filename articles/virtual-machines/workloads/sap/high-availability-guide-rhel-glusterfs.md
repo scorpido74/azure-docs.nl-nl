@@ -120,15 +120,15 @@ U moet eerst de virtuele machines voor dit cluster maken. Daarna maakt u een loa
 
 De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoop punten, **[1]** -alleen van toepassing op knoop punt 1, **[2]** -alleen van toepassing op knoop punt 2, **[3]** -alleen van toepassing op knoop punt 3.
 
-1. **[A]** omzetting van hostnaam van installatie
+1. **[A]**  Omzetten van de hostnaam instellen
 
-   U kunt een DNS-server gebruiken of de bestand/etc/hosts wijzigen op alle knoop punten. In dit voor beeld ziet u hoe u het bestand/etc/hosts-bestand gebruikt.
+   U kunt een DNS-server gebruiken of aanpassen van de/etc/hosts op alle knooppunten. In dit voorbeeld laat zien hoe u het bestand/etc/hosts gebruikt.
    Vervang het IP-adres en de hostnaam in de volgende opdrachten:
 
    <pre><code>sudo vi /etc/hosts
    </code></pre>
 
-   Voeg de volgende regels toe aan/etc/hosts. Wijzig het IP-adres en de hostnaam zodat deze overeenkomen met uw omgeving
+   Voeg de volgende regels/etc/hosts. De IP-adres en hostnaam zodat deze overeenkomen met uw omgeving wijzigen
 
    <pre><code># IP addresses of the Gluster nodes
    <b>10.0.0.40 glust-0</b>
@@ -181,7 +181,7 @@ De volgende items worden voorafgegaan door **[A]** , van toepassing op alle knoo
    sudo systemctl enable glusterd
    </code></pre>
 
-1. **[1]** GluserFS maken
+1. **[1]** Create GluserFS
 
    Voer de volgende opdrachten uit om het GlusterFS-cluster te maken
 

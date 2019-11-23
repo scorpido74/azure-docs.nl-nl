@@ -77,7 +77,7 @@ Voor de namen die zijn opgegeven voor de opslag plaatsen en directory's in deze 
 - Een kleine gegevens Science-groep die geen meerdere data Science-teams heeft. 
 - Een grotere gegevens Science-groep met meerdere teams voor data technologie die de samen werking tussen teams wil optimaliseren met activiteiten zoals het plannen van Sprint op groepniveau. 
 
-Als teams ervoor kiezen hun team-specifieke opslag plaatsen te hebben onder één groeps project, moeten de team leiders de opslag plaatsen maken met namen als  *\<team naam >-sjabloon* en  *\<teamnaam >-hulpprogram ma's*. Bijvoorbeeld: *TeamATemplate* en *TeamAUtilities*. 
+Als teams ervoor kiezen hun team-specifieke opslag plaatsen te hebben onder één groeps project, moeten de team leiders de opslag plaatsen maken met namen als *\<team naam > sjabloon* en *\<teamwerk >-hulpprogram ma's*. Bijvoorbeeld: *TeamATemplate* en *TeamAUtilities*. 
 
 In elk geval moeten team leiders hun team leden laten weten welke opslag plaatsen en hulpprogram ma's voor het instellen en klonen van de sjabloon moeten worden gemaakt. Project leiders moeten de [Project Lead taken volgen voor een Data Science-Team](project-lead-tasks.md) om project opslagplaatsen te maken, hetzij onder afzonderlijke projecten of één project. 
 
@@ -85,7 +85,7 @@ In elk geval moeten team leiders hun team leden laten weten welke opslag plaatse
 
 Een apart project maken voor uw team:
 
-1. Ga in uw webbrowser naar de start pagina van de Azure DevOps-organisatie van uw groep op URL *https\/:/\<server naam\<>/organisatie naam >* en selecteer **Nieuw project**. 
+1. Ga in uw webbrowser naar de start pagina van de Azure DevOps-organisatie van uw groep op URL *https:\//\<server naam >/\<organisatie naam >* en selecteer **Nieuw project**. 
    
    ![Selecteer Nieuw project](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
@@ -95,7 +95,7 @@ Een apart project maken voor uw team:
    
    ![Project maken](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
-De pagina **samen vatting** team project wordt geopend met pagina-URL *https\/:/\<server naam\<>/organisatie naam\<>/team naam >* .
+De pagina **samen vatting** team project wordt geopend met pagina-URL *https:\//\<server naam >/\<naam van de organisatie >/\<team naam >* .
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Wijzig de naam van de MyTeam-standaard opslagplaats in TeamUtilities
 
@@ -140,7 +140,7 @@ Als u uw team opslagplaatsen wilt vullen met de inhoud van de groep algemene ops
    
    ![Import selecteren](./media/team-lead-tasks/import-repo.png)
    
-1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https: \/ @ no__t-2 @ no__t-3server name >/\<organization name >/_git/\<repository name >* . Bijvoorbeeld: *https: \//dev. Azure. com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
+1. In het dialoog venster **een Git-opslag plaats importeren** selecteert u **Git** als **bron type**en voert u de URL in voor de opslag plaats van de gemeen schappelijke sjabloon onder **kloon-URL**. De URL is *https:\//\<server naam >/\<organisatie naam >/_git/\<naam van de opslag plaats*>. Bijvoorbeeld: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
 1. Selecteer **importeren**. De inhoud van de opslag plaats van de groeps sjabloon wordt geïmporteerd in uw team sjabloon opslagplaats. 
    
@@ -199,7 +199,7 @@ Opslag plaatsen klonen:
    
 1. Ga naar de map die u hebt gemaakt.
    
-1. In Git Bash voert u de opdracht `git clone <clone URL>`uit, \<waarbij de kloon-URL > de URL is die u hebt gekopieerd in het dialoog venster **klonen** .
+1. Voer in Git-Bash de opdracht uit `git clone <clone URL>`, waarbij \<kloon-URL > de URL is die u hebt gekopieerd in het dialoog venster **klonen** .
    
    Gebruik bijvoorbeeld een van de volgende opdrachten om de **TeamUtilities** -opslag plaats te klonen naar de *MyTeam* -map op uw lokale computer. 
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Als dit de eerste keer is dat u een Git-opslag plaats doorvoert, moet u mogelijk de algemene para meters *User.name* en *User. email* configureren voordat u de `git commit` opdracht uitvoert. Voer de volgende twee opdrachten uit:
+> Als dit de eerste keer is dat u een Git-opslag plaats doorvoert, moet u mogelijk algemene para meters *User.name* en *User. email* configureren voordat u de `git commit` opdracht uitvoert. Voer de volgende twee opdrachten uit:
 > 
 > `git config --global user.name <your name>`
 > 

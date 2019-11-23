@@ -28,7 +28,7 @@ De betrouw bare ServiceRemoting-runtime verzendt [prestatie meter items](https:/
 ## <a name="performance-counters"></a>Prestatiemeteritems
 De betrouw bare ServiceRemoting-runtime definieert de volgende categorieën voor prestatie meter items:
 
-| Category | Beschrijving |
+| Categorie | Beschrijving |
 | --- | --- |
 | Service Fabric-service |Tellers die specifiek zijn voor Azure Service Fabric service voor externe toegang, bijvoorbeeld de gemiddelde tijd die nodig is om de aanvraag te verwerken |
 | Service Fabric service methode |Tellers die specifiek zijn voor methoden die zijn geïmplementeerd door Service Fabric externe service, bijvoorbeeld hoe vaak een service methode wordt aangeroepen |
@@ -41,24 +41,24 @@ De [Windows Performance Monitor](https://technet.microsoft.com/library/cc749249.
 Een cluster met een groot aantal ServiceRemoting-Services of-partities beschikt over een groot aantal instanties voor prestatie meter items. De instantie namen van het prestatie meter item kunnen helpen bij het identificeren van de specifieke partitie en service methode (indien van toepassing) waaraan het prestatie meter exemplaar is gekoppeld.
 
 #### <a name="service-fabric-service-category"></a>Categorie van Service Fabric-service
-Voor de categorie `Service Fabric Service` hebben de namen van de item exemplaren de volgende indeling:
+Voor de categorie `Service Fabric Service`hebben de namen van de tellers de volgende indeling:
 
 `ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
-*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`-](https://msdn.microsoft.com/library/97af8hh4.aspx) methode met indelings aanduiding D.
+*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) methode met de indelings specificatie "D".
 
 *ServiceReplicaOrInstanceId* is de teken reeks representatie van de service Fabric replica/exemplaar-id waaraan het prestatie meter exemplaar is gekoppeld.
 
 *ServiceRuntimeInternalID* is de teken reeks representatie van een 64-bits geheel getal dat wordt gegenereerd door de Fabric service-runtime voor intern gebruik. Dit is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere instantie namen van prestatie meter items. Gebruikers moeten dit gedeelte van de exemplaar naam van het prestatie meter item niet interpreteren.
 
-Hier volgt een voor beeld van de naam van een item exemplaar voor een teller die tot de categorie @no__t 0 behoort:
+Hier volgt een voor beeld van de naam van een item exemplaar voor een teller die tot de `Service Fabric Service` categorie behoort:
 
 `2740af29-78aa-44bc-a20b-7e60fb783264_635650083799324046_5008379932`
 
-In het vorige voor beeld is `2740af29-78aa-44bc-a20b-7e60fb783264` de teken reeks representatie van de Service Fabric partitie-ID, `635650083799324046` de teken reeks representatie van replica/InstanceId en `5008379932` is de 64-bits ID die wordt gegenereerd voor het interne gebruik van de runtime.
+In het vorige voor beeld is `2740af29-78aa-44bc-a20b-7e60fb783264` de teken reeks representatie van de Service Fabric partitie-ID, `635650083799324046` een teken reeks representatie van replica/InstanceId en `5008379932` is de 64-bits ID die wordt gegenereerd voor het interne gebruik van de runtime.
 
 #### <a name="service-fabric-service-method-category"></a>Categorie Service Fabric service methode
-Voor de categorie `Service Fabric Service Method` hebben de namen van de item exemplaren de volgende indeling:
+Voor de categorie `Service Fabric Service Method`hebben de namen van de tellers de volgende indeling:
 
 `MethodName_ServiceRuntimeMethodId_ServiceFabricPartitionID_ServiceReplicaOrInstanceId_ServiceRuntimeInternalID`
 
@@ -66,24 +66,24 @@ Voor de categorie `Service Fabric Service Method` hebben de namen van de item ex
 
 *ServiceRuntimeMethodId* is de teken reeks representatie van een 32-bits geheel getal dat wordt gegenereerd door de Fabric service-runtime voor intern gebruik. Dit is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere instantie namen van prestatie meter items. Gebruikers moeten dit gedeelte van de exemplaar naam van het prestatie meter item niet interpreteren.
 
-*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`-](https://msdn.microsoft.com/library/97af8hh4.aspx) methode met indelings aanduiding D.
+*ServiceFabricPartitionID* is de teken reeks representatie van de service Fabric partitie-id waaraan het prestatie meter exemplaar is gekoppeld. De partitie-ID is een GUID en de teken reeks representatie wordt gegenereerd via de [`Guid.ToString`](https://msdn.microsoft.com/library/97af8hh4.aspx) methode met de indelings specificatie "D".
 
 *ServiceReplicaOrInstanceId* is de teken reeks representatie van de service Fabric replica/exemplaar-id waaraan het prestatie meter exemplaar is gekoppeld.
 
 *ServiceRuntimeInternalID* is de teken reeks representatie van een 64-bits geheel getal dat wordt gegenereerd door de Fabric service-runtime voor intern gebruik. Dit is opgenomen in de exemplaar naam van het prestatie meter item om de uniekheid ervan te garanderen en te voor komen dat er conflicten ontstaan met andere instantie namen van prestatie meter items. Gebruikers moeten dit gedeelte van de exemplaar naam van het prestatie meter item niet interpreteren.
 
-Hier volgt een voor beeld van de naam van een item exemplaar voor een teller die tot de categorie @no__t 0 behoort:
+Hier volgt een voor beeld van de naam van een item exemplaar voor een teller die tot de `Service Fabric Service Method` categorie behoort:
 
 `ivoicemailboxservice.leavemessageasync_2_89383d32-e57e-4a9b-a6ad-57c6792aa521_635650083804480486_5008380`
 
-In het vorige voor beeld is `ivoicemailboxservice.leavemessageasync` de naam van de methode, `2` is de 32-bits ID die is gegenereerd voor het interne gebruik van de runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` de teken reeks representatie van de Service Fabric partitie-ID, `635650083804480486` is de teken reeks representatie van de Service Fabric replica/ Exemplaar-ID en `5008380` is de 64-bits ID die wordt gegenereerd voor het interne gebruik van de runtime.
+In het vorige voor beeld is `ivoicemailboxservice.leavemessageasync` de naam van de methode, `2` de 32-bits ID die is gegenereerd voor het interne gebruik van de runtime, `89383d32-e57e-4a9b-a6ad-57c6792aa521` de teken reeks representatie van de Service Fabric partitie-ID is`635650083804480486` de teken reeks representatie van de Service Fabric replica/exemplaar-ID en `5008380` is de 64-bits-ID die is gegenereerd voor het interne gebruik van de runtime.
 
 ## <a name="list-of-performance-counters"></a>Lijst met prestatie meter items
 ### <a name="service-method-performance-counters"></a>Prestatie meter items service methode
 
 De betrouw bare service-runtime publiceert de volgende prestatie meter items die betrekking hebben op de uitvoering van service methoden.
 
-| Categorie naam | Tellernaam | Beschrijving |
+| Categorie naam | Naam van het prestatiemeteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric service methode |Aanroepen per seconde |Aantal keren dat de service methode per seconde wordt aangeroepen |
 | Service Fabric service methode |Gemiddeld aantal milliseconden per aanroep |Gebruikte tijd in milliseconden voor het uitvoeren van de service methode |
@@ -92,7 +92,7 @@ De betrouw bare service-runtime publiceert de volgende prestatie meter items die
 ### <a name="service-request-processing-performance-counters"></a>Prestatie meter items voor verwerking van service aanvragen
 Wanneer een client een methode aanroept via een Service proxy-object, resulteert dit in een aanvraag bericht dat via het netwerk naar de externe service wordt verzonden. De service verwerkt het aanvraag bericht en stuurt een antwoord terug naar de client. De betrouw bare ServiceRemoting-runtime publiceert de volgende prestatie meter items die betrekking hebben op de verwerking van service aanvragen.
 
-| Categorie naam | Tellernaam | Beschrijving |
+| Categorie naam | Naam van het prestatiemeteritem | Beschrijving |
 | --- | --- | --- |
 | Service Fabric-service |aantal openstaande aanvragen |Aantal aanvragen dat wordt verwerkt in de service |
 | Service Fabric-service |Gemiddeld aantal milliseconden per aanvraag |Gebruikte tijd (in milliseconden) van de service voor het verwerken van een aanvraag |

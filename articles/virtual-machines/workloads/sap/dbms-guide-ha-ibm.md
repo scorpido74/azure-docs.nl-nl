@@ -83,8 +83,8 @@ Raadpleeg de volgende SAP-opmerkingen en-documentatie voordat u met de installat
 | [SUSE Linux Enterprise Server voor SAP-toepassingen 12 SP4 best practices-hand leidingen][sles-for-sap-bp] |
 | [SUSE Linux Enter prise-extensie voor hoge Beschik baarheid 12 SP4][sles-ha-guide] |
 | [Implementatie van IBM Db2 Azure Virtual Machines DBMS voor SAP-workload][dbms-db2] |
-| [IBM Db2 HADR 11,1][db2-hadr-11.1] |
-| [IBM Db2 HADR R 10,5][db2-hadr-10.5] |
+| [IBM Db2 HADR 11.1][db2-hadr-11.1] |
+| [IBM Db2 HADR R 10.5][db2-hadr-10.5] |
 
 ## <a name="overview"></a>Overzicht
 Om hoge Beschik baarheid te kunnen garanderen, wordt IBM Db2 LUW met HADR geïnstalleerd op ten minste twee virtuele machines van Azure, die worden geïmplementeerd in een [Azure-beschikbaarheidsset](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) of op meerdere [Azure-beschikbaarheidszones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones). 
@@ -201,7 +201,7 @@ Het primaire exemplaar van de IBM Db2 LUW-data base instellen:
 
 Voer de volgende stappen uit om de stand-by-database server in te stellen met behulp van de SAP-procedure voor het kopiëren van een systeem:
 
-1. Selecteer de optie voor het kopiëren van het **systeem** > **doel systemen** > **gedistribueerd** > -**Data Base-exemplaar**.
+1. Selecteer de optie voor het kopiëren van het **systeem** > **doel systemen** > **gedistribueerde** > - **Data Base-instantie**.
 1. Als Kopieer methode selecteert u **homo geen systeem** zodat u back-up kunt gebruiken om een back-up te herstellen op het stand-by-Server exemplaar.
 1. Wanneer u de stap afsluiten hebt bereikt om de data base te herstellen voor een homogene systeem kopie, sluit u het installatie programma af. Zet de data base terug vanuit een back-up van de primaire host. Alle volgende installatie fasen zijn al uitgevoerd op de primaire database server.
 1. Stel HADR in voor IBM Db2.
@@ -409,8 +409,8 @@ sudo crm configure property maintenance-mode=false</pre></code>
 #  <a name="stonith-sbd----stonithexternalsbd-started-azibmdb02"></a>stonith-SBD (stonith: External/SBD): gestart azibmdb02
 #  <a name="resource-group-g_ip_db2ptr_ptr"></a>Resource groep: g_ip_db2ptr_PTR
 #      <a name="rsc_ip_db2ptr_ptr--ocfheartbeatipaddr2-------started-azibmdb02"></a>rsc_ip_db2ptr_PTR (OCF:: heartbeat: IPaddr2): gestart azibmdb02
-#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: heartbeat: iets): gestart azibmdb02
-#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Master/Slave-set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
+#      <a name="rsc_nc_db2ptr_ptr--ocfheartbeatanything------started-azibmdb02"></a>rsc_nc_db2ptr_PTR (OCF:: heartbeat: alles): gestart azibmdb02
+#  <a name="masterslave-set-msl_db2_db2ptr_ptr-rsc_db2_db2ptr_ptr"></a>Hoofd-/slave-set: msl_Db2_db2ptr_PTR [rsc_Db2_db2ptr_PTR]
 #      <a name="masters--azibmdb02-"></a>Stramienen: [azibmdb02]
 #      <a name="slaves--azibmdb01-"></a>Slaves: [azibmdb01]
 </pre>
@@ -499,7 +499,7 @@ Als u de installatie hebt uitgevoerd voordat u de configuratie van de Db2 HADR h
 
 Gebruik het J2EE-configuratie programma om de JDBC-URL te controleren of bij te werken. Omdat het J2EE-configuratie programma een grafisch hulp programma is, moet X server zijn geïnstalleerd:
  
-1. Meld u aan bij de primaire toepassings server van het J2EE-exemplaar en voer het volgende uit: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. Meld u aan bij de primaire toepassings server van het J2EE-exemplaar en voer de volgende handelingen uit: `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. Kies in het linkerdeel venster de optie **beveiligings archief**.
 1. Kies in het rechterdeel venster de sleutel JDBC/pool/\<SAPSID >/URL.
 1. Wijzig de hostnaam in de JDBC-URL in de naam van de virtuele host.
@@ -516,7 +516,7 @@ Het archiveren van het logboek wordt alleen uitgevoerd door de primaire data bas
 
 U kunt het beste een algemene NFS-share configureren waarbij logboeken worden geschreven van beide knoop punten. De NFS-share moet Maxi maal beschikbaar zijn. 
 
-U kunt bestaande Maxi maal beschik bare NFS-shares gebruiken voor trans porten of profielmap. Zie voor meer informatie:
+U kunt bestaande Maxi maal beschik bare NFS-shares gebruiken voor trans porten of profielmap. Ga voor meer informatie naar:
 
 - [Hoge Beschik baarheid voor NFS op Azure Vm's op SUSE Linux Enterprise Server][nfs-ha] 
 - [Hoge Beschik baarheid voor SAP NetWeaver op Azure Vm's op SUSE Linux Enterprise Server met Azure NetApp Files voor SAP-toepassingen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files)
@@ -527,10 +527,10 @@ U kunt bestaande Maxi maal beschik bare NFS-shares gebruiken voor trans porten o
 
 In deze sectie wordt beschreven hoe u de Setup van de Db2-HADR kunt testen. Bij *elke test wordt ervan uitgegaan dat u bent aangemeld als hoofdmap* van de gebruiker en de primaire IBM Db2-machine wordt uitgevoerd op de virtuele *azibmdb01* .
 
-De initiële status voor alle test cases wordt hier beschreven: (crm_mon-r of CRM-status)
+De initiële status voor alle test cases wordt hier uitgelegd: (crm_mon-r-of CRM-status)
 
 - de **CRM-status** is een moment opname van de pacemaker-status tijdens de uitvoerings tijd 
-- **crm_mon-r** is doorlopende uitvoer van de pacemaker-status
+- **crm_mon-r** doorlopende uitvoer van pacemaker-status
 
 <pre><code>2 nodes configured
 5 resources configured
@@ -562,7 +562,7 @@ De oorspronkelijke status in een SAP-systeem wordt beschreven in trans actie DBA
 > Voordat u met de test begint, moet u ervoor zorgen dat:
 > * Pacemaker heeft geen mislukte acties (CRM-status).
 > * Er zijn geen locatie beperkingen (resten van de migratie test)
-> * De synchronisatie van IBM Db2 HADR werkt. Controleren met de sid van de gebruikers-DB2-\< <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> * De synchronisatie van IBM Db2 HADR werkt. Controleren met de sid van de gebruikers-DB2-\<> <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 Migreer het knoop punt waarop de primaire Db2-data base wordt uitgevoerd door de volgende opdracht uit te voeren:
@@ -597,7 +597,7 @@ crm resource clear msl_<b>Db2_db2ptr_PTR</b>
 </code></pre>
 
 - **CRM resource migrate \<res_name > \<host >:** Maakt locatie beperkingen en kan problemen veroorzaken met overname
-- **CRM-resource gewist \<res_name >** : locatie beperkingen wissen
+- **CRM-resource gewist \<res_name >** : verwijdert locatie beperkingen
 - **CRM resource cleanup \<res_name >** : Hiermee wist u alle fouten van de resource
 
 ### <a name="test-the-fencing-agent"></a>De omheinings agent testen

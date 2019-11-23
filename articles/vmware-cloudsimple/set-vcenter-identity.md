@@ -55,7 +55,7 @@ Gebruik de informatie in de volgende tabel bij het instellen van uw Active Direc
 |------------|-----------------|
 | **Naam** | De naam van de identiteits bron. |
 | **Basis-DN voor gebruikers** | Basis-DN-naam voor gebruikers. |
-| **Domein naam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
+| **Domeinnaam** | FDQN van het domein, bijvoorbeeld example.com. Geef geen IP-adres op in dit tekstvak. |
 | **Domein alias** | De NetBIOS-naam van het domein. Voeg de NetBIOS-naam van het Active Directory domein als alias van de identiteits bron toe als u SSPI-verificaties gebruikt. |
 | **Basis-DN voor groepen** | De DN-basis naam voor groepen. |
 | **URL van primaire server** | LDAP-server van de primaire domein controller voor het domein.<br><br>Gebruik de indeling `ldap://hostname:port` of `ldaps://hostname:port`. De poort is doorgaans 389 voor LDAP-verbindingen en 636 voor LDAPS-verbindingen. Voor Active Directory implementaties van meerdere domein controllers is de poort doorgaans 3268 voor LDAP en 3269 voor LDAPS.<br><br>Een certificaat dat een vertrouwens relatie voor het LDAPS-eind punt van de Active Directory server tot stand brengt, is vereist wanneer u `ldaps://` in de primaire of secundaire LDAP-URL gebruikt. |

@@ -59,7 +59,7 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 
 |Eigenschap|Beschrijving|Vereist|
 |---|---|---|
-|naam|De naam van de activiteit in de pijp lijn.|Ja|
+|name|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
 |type|Voor Databricks notebook-activiteit is het type activiteit DatabricksNotebook.|Ja|
 |linkedServiceName|De naam van de gekoppelde Databricks-service waarop de Databricks-notebook wordt uitgevoerd. Zie voor meer informatie over deze gekoppelde service artikel [Compute linked Services](compute-linked-services.md) (Engelstalig).|Ja|

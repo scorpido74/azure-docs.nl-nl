@@ -28,7 +28,7 @@ ms.locfileid: "72388630"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 
@@ -44,7 +44,7 @@ Als u het gedownloade Quick Start Server-project niet gebruikt, hebt u het uitbr
 
 U moet uw app indienen bij de Microsoft Store en vervolgens uw server project configureren voor integratie met [Windows Notification Services (WNS)](https://docs.microsoft.com/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview) voor het verzenden van push berichten.
 
-1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het UWP-app-project, klikt u op **store** > **App koppelen aan de Store...** .
+1. Klik in Visual Studio Solution Explorer met de rechter muisknop op het UWP-app-project, klikt u op **Store** > **App koppelen aan de Store...** .
 
     ![App aan Microsoft Store koppelen](./media/app-service-mobile-windows-store-dotnet-get-started-push/notification-hub-associate-uwp-app.png)
 
@@ -66,7 +66,7 @@ U moet uw app indienen bij de Microsoft Store en vervolgens uw server project co
 
 ## <a id="update-service"></a>De server bijwerken om Push meldingen te verzenden
 
-Gebruik de onderstaande procedure die overeenkomt met het back-upproject type @ no__t-0either [.net back](#dotnet) -end of [node. js](#nodejs).
+Gebruik de onderstaande procedure die overeenkomt met uw back-end-project type&mdash;[.net-back-end](#dotnet) of [node. js-back-end](#nodejs).
 
 ### <a name="dotnet"></a>.NET-back-upproject
 

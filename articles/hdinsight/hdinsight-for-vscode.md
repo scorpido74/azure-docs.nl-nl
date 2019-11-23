@@ -36,7 +36,7 @@ Nadat u aan de vereisten hebt voldaan, kunt u Spark-& Hive-Hulpprogram Ma's voor
 
 1. Open Visual Studio Code.
 
-2. Navigeer in de menu balk om  > -**extensies** **weer te geven**.
+2. Navigeer in de menu balk om > - **extensies** **weer te geven** .
 
 3. Voer in het zoekvak **Spark &-Hive**in.
 
@@ -50,19 +50,19 @@ Nadat u aan de vereisten hebt voldaan, kunt u Spark-& Hive-Hulpprogram Ma's voor
 
 Voer de volgende stappen uit om een werkmap te openen en een bestand te maken in Visual Studio code:
 
-1. Navigeer in de menu balk naar **bestand** > **geopende map...**  > **C:\HD\HDexample**en selecteer vervolgens de knop **map selecteren** . De map wordt aan de linkerkant weer gegeven in de weer gave van de **Verkenner** .
+1. Navigeer in de menu balk naar **bestand** > **open map...**  > **C:\HD\HDexample**en selecteer vervolgens de knop **map selecteren** . De map wordt aan de linkerkant weer gegeven in de weer gave van de **Verkenner** .
 
 2. Selecteer in de **Verkenner** -weer gave de map **HDexample** en selecteer vervolgens het pictogram **nieuw bestand** naast de werkmap:
 
    ![pictogram Visual Studio code nieuw bestand](./media/hdinsight-for-vscode/visual-studio-code-new-file.png)
 
-3. Geef het nieuwe bestand een naam met behulp van de `.hql` (Hive-query's) of de bestands extensie van het `.py`-bestand (Spark-script). In dit voor beeld wordt **HelloWorld. HQL**gebruikt.
+3. Geef het nieuwe bestand een naam met behulp van de `.hql` (Hive-query's) of de bestands extensie `.py` (Spark-script). In dit voor beeld wordt **HelloWorld. HQL**gebruikt.
 
 ## <a name="set-the-azure-environment"></a>De Azure-omgeving instellen
 
 Voor een nationale Cloud gebruiker voert u de volgende stappen uit om eerst de Azure-omgeving in te stellen en vervolgens de **Azure: Sign in** -opdracht te gebruiken om u aan te melden bij Azure:
 
-1. Navigeer naar **bestands** > **voor keuren** > **instellingen**.
+1. Navigeer naar **File** > **Preferences** > **Settings**.
 2. Zoek naar de volgende teken reeks: **Azure: Cloud**.
 3. Selecteer de nationale Cloud in de lijst:
 
@@ -72,7 +72,7 @@ Voor een nationale Cloud gebruiker voert u de volgende stappen uit om eerst de A
 
 Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, moet u verbinding maken met uw Azure-account of een cluster koppelen (met Apache Ambari-gebruikers naam en wachtwoord referenties of een domein account). Volg deze stappen om verbinding te maken met Azure:
 
-1. Ga in de menu balk naar **weer gave** > **opdracht palet...** en voer **Azure in: aanmelden**
+1. Navigeer in de menu balk om > opdracht palet te **bekijken** **...** en **Azure: aanmelden**:
 
     ![Component Hulpprogramma's van Spark & voor Visual Studio code login](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
@@ -84,7 +84,7 @@ Voordat u scripts kunt verzenden naar uw clusters vanuit Visual Studio code, moe
 
 U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](https://ambari.apache.org/)beheerde gebruikers naam, of u kunt een beveiligd Hadoop-cluster van het ondernemings beveiligings pakket koppelen met behulp van een domein gebruikers naam (zoals: `user1@contoso.com`).
 
-1. Ga in de menu balk naar **weer gave** > **opdracht palet...** , en voer **Spark/Hive in: koppel een cluster**.
+1. Ga in de menu balk naar > opdracht palet **weer geven** **...** en voer **Spark/Hive in: koppel een cluster**.
 
    ![Opdracht palet koppeling cluster opdracht](./media/hdinsight-for-vscode/link-cluster-command.png)
 
@@ -107,11 +107,11 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 ### <a name="link-generic-livy-endpoint"></a>Koppeling: algemeen livy-eind punt
 
-1. Ga in de menu balk naar **weer gave** > **opdracht palet...** , en voer **Spark/Hive in: koppel een cluster**.
+1. Ga in de menu balk naar > opdracht palet **weer geven** **...** en voer **Spark/Hive in: koppel een cluster**.
 
 2. Selecteer het type van het **algemene livy-eind punt**voor het gekoppelde cluster.
 
-3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http @ no__t-0//10.172.41.42:18080.
+3. Voer het algemene livy-eind punt in. Bijvoorbeeld: http\://10.172.41.42:18080.
 
 4. Selecteer autorisatie type **Basic** of **none**.  Als u **Basic**selecteert:  
     &emsp;a. Voer uw Ambari-gebruikers naam in; de standaard instelling is **admin**.  
@@ -121,7 +121,7 @@ U kunt een normaal cluster koppelen met behulp van een door [Apache Ambari](http
 
 ## <a name="list-clusters"></a>Clusters weer geven
 
-1. Ga in de menu balk naar **weer gave** > **opdracht palet...** en voer **Spark/Hive: List cluster**.
+1. Ga in de menu balk naar > opdracht palet **weer geven** **...** en voer **Spark/Hive: List cluster**in.
 
 2. Selecteer het gewenste abonnement.
 
@@ -265,7 +265,7 @@ De [Apache livy](https://livy.incubator.apache.org/) -configuratie wordt onderst
 <a id="triggerlivyconf"></a>**Livy-configuratie activeren**
 
 Methode 1  
-1. Navigeer in de menu balk naar **bestands** > **voor keuren** > **instellingen**.
+1. Navigeer in de menu balk naar **File** > **Preferences** > **Settings**.
 2. Voer in het vak **Zoek instellingen** **HDInsight-taak inzending in: livy conf**.  
 3. Selecteer **bewerken in instellingen. json** voor het relevante Zoek resultaat.
 
@@ -284,28 +284,28 @@ Methode 2 een bestand verzenden en u ziet dat de map. vscode automatisch wordt t
 
     | name | description | type |
     | :- | :- | :- |
-    | Profiler | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
+    | file | Bestand met de toepassing die moet worden uitgevoerd | Pad (vereist) |
     | proxyUser | Gebruiker die moet worden geïmiteerd bij het uitvoeren van de taak | Tekenreeks |
     | className | Hoofd klasse java/Spark-toepassing | Tekenreeks |
-    | argumenten | Opdracht regel argumenten voor de toepassing | Lijst met teken reeksen |
-    | Pott | Potten die in deze sessie moeten worden gebruikt | Lijst met teken reeksen | 
+    | args | Opdracht regel argumenten voor de toepassing | Lijst met teken reeksen |
+    | jars | Potten die in deze sessie moeten worden gebruikt | Lijst met teken reeksen | 
     | pyFiles | Python-bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
-    | logbestanden | Bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
+    | files | Bestanden die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
     | driverMemory | Hoeveelheid geheugen die moet worden gebruikt voor het stuur programma | Tekenreeks |
-    | driverCores | Het aantal kernen dat moet worden gebruikt voor het stuur programma | integer |
+    | driverCores | Het aantal kernen dat moet worden gebruikt voor het stuur programma | Int |
     | executorMemory | Hoeveelheid geheugen die per bewerkings proces moet worden gebruikt | Tekenreeks |
-    | executorCores | Aantal kernen dat voor elke uitvoerder moet worden gebruikt | integer |
-    | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | integer |
-    | archieven | Archief archieven die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
+    | executorCores | Aantal kernen dat voor elke uitvoerder moet worden gebruikt | Int |
+    | numExecutors | Aantal actieve uitvoerendeers dat voor deze sessie wordt gestart | Int |
+    | archives | Archief archieven die moeten worden gebruikt in deze sessie | Lijst met teken reeksen |
     | wachtrij | De naam van de wachtrij met GARENs die moet worden ingediend| Tekenreeks |
     | name | De naam van deze sessie | Tekenreeks |
-    | belangen | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
+    | conf | Eigenschappen van Spark-configuratie | Toewijzing van sleutel = val |
 
     Antwoord tekst het gemaakte batch-object.
 
     | name | description | type |
     | :- | :- | :- |
-    | id | Sessie-id | integer |
+    | id | Sessie-id | Int |
     | appId | Toepassings-id van deze sessie | Tekenreeks |
     | appInfo | Gedetailleerde toepassings informatie | Toewijzing van sleutel = val |
     | logbestand | Logboek regels | Lijst met teken reeksen |

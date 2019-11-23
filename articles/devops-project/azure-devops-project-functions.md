@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Implementeer ASP.NET-Apps om te Azure Functions met Azure DevOps Projects'
+title: 'Zelf studie: ASP.NET-Apps implementeren om te Azure Functions met Azure DevOps Projects'
 description: Azure DevOps Projects zorgt ervoor dat u eenvoudig aan de slag kunt met Azure. Met DevOps Projects kunt u in een paar snelle stappen uw ASP.NET-app implementeren in Azure Functions.
 ms.author: mlearned
 ms.manager: gwallace
@@ -95,13 +95,13 @@ DevOps Projects configureert automatisch een Azure-CI/CD-pijplijn in uw Azure De
 
 1. Ga naar het DevOps Projects-dashboard.
 
-1. Klik op de Hyper link onder **Build**. Op een tabblad in de browser wordt de build-pijplijn voor het nieuwe project weergegeven.
+1. Klik op de Hyper link onder **Build**. Op een browsertabblad wordt de build-pijplijn voor het nieuwe project weergegeven.
 
     ![Ontwikkelen](_img/azure-devops-project-functions/build.png)
 
 1. Selecteer **Bewerken**. In dit deelvenster kunt u de verschillende taken voor uw build-pijplijn onderzoeken. De build voert diverse taken uit, zoals het ophalen van de bron code uit de Git-opslag plaats, het bouwen van de toepassing, het uitvoeren van eenheids tests en het publiceren van uitvoer die worden gebruikt voor implementaties.
 
-1. Selecteer **Triggers**. In DevOps Projects wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. U kunt eventueel kiezen of u branches van het CI-proces wilt opnemen of uitsluiten.
+1. Selecteer **Triggers**. In DevOps Projects wordt automatisch een CI-trigger gemaakt en met elke doorvoering naar de opslagplaats wordt een nieuwe build gestart. Desgewenst kunt u kiezen of u vertakkingen van het CI-proces wilt opnemen of uitsluiten.
 
 1. Selecteer **Retentie**. Afhankelijk van het scenario kunt u beleidsregels opgeven om een bepaald aantal builds te behouden of te verwijderen.
 
@@ -109,7 +109,7 @@ DevOps Projects configureert automatisch een Azure-CI/CD-pijplijn in uw Azure De
 
 1. Wijzig de naam van uw build-pijp lijn in iets beschrijvender en selecteer vervolgens **Opslaan** in de vervolg keuzelijst **Opslaan & wachtrij** .
 
-1. Selecteer onder de naam van de build-pijplijn de optie **Geschiedenis**. In dit deelvenster ziet u een audittrail van recente wijzigingen voor de build. Azure DevOps houdt de wijzigingen bij die zijn aangebracht in de build-pijp lijn en stelt u in staat om versies te vergelijken.
+1. Selecteer onder de naam van de build-pipeline de optie **Geschiedenis**. In dit deelvenster ziet u een audittrail van recente wijzigingen voor de build. Azure DevOps houdt de wijzigingen bij die zijn aangebracht in de build-pijp lijn en stelt u in staat om versies te vergelijken.
 
 ## <a name="examine-the-cd-release-pipeline"></a>De CD-release-pijplijn onderzoeken
 
@@ -142,13 +142,13 @@ U bent nu klaar om samen te werken met een team in uw app met behulp van een CI/
 
 1. De opslag plaats bevat al code met de naam **SampleFunctionApp** op basis van de toepassings taal die u hebt gekozen tijdens het maken van het proces. Open het bestand **Application/SampleFunctionApp/Function1. cs** .
 
-1. Selecteer **bewerken**en breng vervolgens een wijziging aan in **regel nummer 31** . U kunt deze bijvoorbeeld bijwerken naar **Hello. Welkom bij Azure Functions met behulp van DevOps Projects @ no__t-0
+1. Selecteer **bewerken**en breng vervolgens een wijziging aan in **regel nummer 31** . U kunt deze bijvoorbeeld bijwerken naar **Hallo. Welkom bij Azure Functions met behulp van DevOps Projects**
 
 1. Selecteer in de rechterbovenhoek **Doorvoeren** en selecteer vervolgens nogmaals **Doorvoeren** om de wijziging te pushen.
 
 1. Open het bestand **Application/SampleFunctionApp. test/Function1TestRunner. cs** . 
 
-1. Selecteer **bewerken**en breng vervolgens een wijziging aan in **regel nummer 21**. U kunt deze bijvoorbeeld bijwerken naar **Hello. Welkom bij Azure Functions met behulp van Azure DevOps Projects @ no__t-0.
+1. Selecteer **bewerken**en breng vervolgens een wijziging aan in **regel nummer 21**. U kunt deze bijvoorbeeld bijwerken naar **Hallo. Welkom bij Azure Functions met behulp van Azure DevOps Projects**.
 
      Na een paar seconden wordt er in Azure DevOps een build gestart en wordt er een versie uitgevoerd om de wijzigingen te implementeren. Bewaak de buildstatus via het DevOps Projects-dashboard of in de browser met uw Azure DevOps-organisatie.
 

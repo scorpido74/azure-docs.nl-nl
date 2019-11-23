@@ -14,7 +14,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71676449"
 ---
-# <a name="tutorial-set-up-service-alerts"></a>Zelfstudie: Servicewaarschuwingen instellen
+# <a name="tutorial-set-up-service-alerts"></a>Zelf studie: Service waarschuwingen instellen
 
 U kunt Azure Service Health gebruiken om service problemen en status adviezen te bewaken voor virtuele Windows-Bureau bladen. Azure Service Health kunt u op de hoogte stellen van verschillende soorten waarschuwingen (bijvoorbeeld e-mail of SMS), inzicht krijgen in het effect van een probleem en u blijft bijwerken terwijl het probleem wordt opgelost. Azure Service Health kunt u ook helpen bij het oplossen van uitval tijd en het plannen van gepland onderhoud en wijzigingen die van invloed kunnen zijn op de beschik baarheid van uw resources.
 
@@ -27,9 +27,9 @@ Zie de [Azure Health-documentatie](https://docs.microsoft.com/azure/service-heal
 
 ## <a name="prerequisites"></a>Vereisten
 
-- [Zelfstudie: Een Tenant maken in het virtuele bureau blad van Windows @ no__t-0
-- [Zelfstudie: Service-principals en roltoewijzingen maken met Power shell @ no__t-0
-- [Zelfstudie: Een hostgroep maken met Azure Marketplace @ no__t-0
+- [Zelf studie: een Tenant maken in Windows Virtual Desktop](https://docs.microsoft.com/azure/virtual-desktop/tenant-setup-azure-active-directory)
+- [Zelf studie: Service-principals en roltoewijzingen maken met Power shell](https://docs.microsoft.com/azure/virtual-desktop/create-service-principal-role-powershell)
+- [Zelf studie: een hostgroep maken met Azure Marketplace](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-azure-marketplace)
 
 ## <a name="create-service-alerts"></a>Service waarschuwingen maken
 
@@ -48,7 +48,7 @@ U wordt aangeraden Service waarschuwingen te maken voor de volgende status gebeu
 
 Service waarschuwingen configureren:
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 2. Selecteer **service health.**
 3. Volg de instructies in [waarschuwingen voor het maken van activiteiten logboeken voor service meldingen](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-activity-log-service-notifications?toc=%2Fazure%2Fservice-health%2Ftoc.json#alert-and-new-action-group-using-azure-portal) om uw waarschuwingen en meldingen in te stellen.
 

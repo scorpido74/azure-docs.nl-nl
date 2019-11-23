@@ -60,7 +60,7 @@ U kunt een [configuratie pakket](service-fabric-application-and-service-manifest
 
 Voeg een sectie TransportSettings toe in het bestand settings. XML.
 
-Actor code zoekt standaard naar sectiekop als "&lt;ActorName @ no__t-1TransportSettings". Als dat niet het geval is, wordt gecontroleerd op sectie naam als ' TransportSettings '.
+Actor code zoekt standaard naar sectiekop als "&lt;Actornaam&gt;TransportSettings". Als dat niet het geval is, wordt gecontroleerd op sectie naam als ' TransportSettings '.
 
   ```xml
   <Section Name="MyActorServiceTransportSettings">
@@ -79,7 +79,7 @@ Actor code zoekt standaard naar sectiekop als "&lt;ActorName @ no__t-1TransportS
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-client-assembly"></a>FabricTransport-instellingen configureren voor de actor-client-assembly
 
-Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een bestand ' &lt;Client exe Name&gt;.settings.xml ' maken op dezelfde locatie als het client. exe-bestand. Voeg vervolgens een TransportSettings-sectie toe aan het bestand. Sectienaam moet ' TransportSettings ' zijn.
+Als de client niet wordt uitgevoerd als onderdeel van een service, kunt u een bestand '&lt;client exe name&gt;. settings. XML ' maken op dezelfde locatie als het client. exe-bestand. Voeg vervolgens een TransportSettings-sectie toe aan het bestand. Sectienaam moet ' TransportSettings ' zijn.
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>

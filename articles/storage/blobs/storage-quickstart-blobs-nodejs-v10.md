@@ -399,7 +399,7 @@ console.log(`Container "${containerName}" is deleted`);
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Alle gegevens die zijn geschreven naar het opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
+Alle gegevens die zijn geschreven naar de opslagaccount worden automatisch verwijderd aan het einde van de voorbeeldcode. 
 
 ## <a name="next-steps"></a>Volgende stappen
 

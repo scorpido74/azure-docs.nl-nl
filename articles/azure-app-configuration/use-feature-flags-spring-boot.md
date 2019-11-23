@@ -21,7 +21,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 09/30/2019
 ms.locfileid: "71687169"
 ---
-# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Zelfstudie: Functie vlaggen gebruiken in een Spring boot-app
+# <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Zelf studie: functie vlaggen gebruiken in een Spring boot-app
 
 De bron voor het opstarten van de configuratie van de lente-boot functie biedt ondersteuning voor het implementeren van functie vlaggen in een Spring boot-toepassing. Deze bibliotheken bieden u de mogelijkheid om functie vlaggen declaratief toe te voegen aan uw code.
 
@@ -37,7 +37,7 @@ In deze zelfstudie leert u het volgende:
 
 ## <a name="set-up-feature-management"></a>Functie beheer instellen
 
-De Spring boot feature Manager `FeatureManager` haalt functie vlaggen op uit het systeem eigen systeem van het Framework. Als gevolg hiervan kunt u de functie vlaggen van uw toepassing definiëren met behulp van een configuratie bron die Spring boot ondersteunt, met inbegrip van het lokale *Boots trap. yml* -bestand of omgevings variabelen. `FeatureManager` is afhankelijk van de injectie van een afhankelijkheids plaats. U kunt de functie Beheer Services registreren met behulp van standaard conventies:
+De bron voor de configuratie van de Spring boot-functie `FeatureManager` de functie vlaggen van het systeem eigen systeem van het Framework ophalen. Als gevolg hiervan kunt u de functie vlaggen van uw toepassing definiëren met behulp van een configuratie bron die Spring boot ondersteunt, met inbegrip van het lokale *Boots trap. yml* -bestand of omgevings variabelen. `FeatureManager` is afhankelijk van de injectie van een afhankelijkheids plaats. U kunt de functie Beheer Services registreren met behulp van standaard conventies:
 
 ```java
 private FeatureManager featureManager;
@@ -84,8 +84,8 @@ feature-management:
 Per Conventie wordt het gedeelte `feature-management` van dit YML-document gebruikt voor instellingen voor functie vlaggen. Het vorige voor beeld toont drie functie vlaggen waarvoor de filters zijn gedefinieerd in de eigenschap `EnabledFor`:
 
 * `FeatureA` is *aan*.
-* `FeatureB` is *uit*.
-* `FeatureC` Hiermee geeft u een filter op met de naam `Percentage` met een eigenschap `Parameters`. `Percentage` is een configureerbaar filter. In dit voor beeld geeft `Percentage` een waarschijnlijkheid van 50 procent aan voor de vlag *van*de `FeatureC`.
+* `FeatureB` is *uitgeschakeld*.
+* `FeatureC` Hiermee geeft u een filter op met de naam `Percentage` met een `Parameters` eigenschap. `Percentage` is een configureerbaar filter. In dit voor beeld geeft `Percentage` een kans van 50 procent *op*voor de `FeatureC`-vlag.
 
 ## <a name="feature-flag-checks"></a>Controles van functie vlaggen
 
@@ -102,7 +102,7 @@ if (featureManager.isEnabled("FeatureA"))
 
 ## <a name="dependency-injection"></a>Afhankelijkheidsinjectie
 
-Bij een Spring boot krijgt u toegang tot de functie beheer `FeatureManager` via afhankelijkheids injectie:
+In Spring boot krijgt u toegang tot `FeatureManager` functie beheer via afhankelijkheids injectie:
 
 ```java
 @Controller
@@ -118,7 +118,7 @@ public class HomeController {
 
 ## <a name="controller-actions"></a>Controller acties
 
-In MVC-controllers gebruikt u het kenmerk `@FeatureGate` om te bepalen of een bepaalde actie is ingeschakeld. Voor de volgende `Index`-actie moet `FeatureA` zijn *ingeschakeld* voordat deze kan worden uitgevoerd:
+In MVC-controllers gebruikt u het kenmerk `@FeatureGate` om te bepalen of een bepaalde actie is ingeschakeld. Voor de volgende `Index` actie moet `FeatureA` zijn *ingeschakeld* voordat deze kan worden uitgevoerd:
 
 ```java
 @GetMapping("/")
@@ -128,11 +128,11 @@ public String index(Model model) {
 }
 ```
 
-Wanneer een MVC-controller of-actie wordt geblokkeerd omdat de vlag voor het beheren van de functie is *uitgeschakeld*, wordt een geregistreerde `IDisabledFeaturesHandler`-interface aangeroepen. De standaard interface voor @no__t 0 retourneert een 404-status code naar de client zonder antwoord tekst.
+Wanneer een MVC-controller of-actie wordt geblokkeerd omdat de vlag voor het bepalen van de functie is *uitgeschakeld*, wordt een geregistreerde `IDisabledFeaturesHandler`-interface aangeroepen. De standaard interface van `IDisabledFeaturesHandler` retourneert een 404-status code naar de client zonder antwoord tekst.
 
 ## <a name="mvc-filters"></a>MVC-filters
 
-U kunt MVC-filters zo instellen dat ze worden geactiveerd op basis van de status van een functie vlag. Met de volgende code wordt een MVC-filter met de naam `FeatureFlagFilter` toegevoegd. Dit filter wordt alleen in de MVC-pijp lijn geactiveerd als `FeatureA` is ingeschakeld.
+U kunt MVC-filters zo instellen dat ze worden geactiveerd op basis van de status van een functie vlag. Met de volgende code wordt een MVC-filter toegevoegd met de naam `FeatureFlagFilter`. Dit filter wordt alleen in de MVC-pijp lijn geactiveerd als `FeatureA` is ingeschakeld.
 
 ```java
 @Component
@@ -173,7 +173,7 @@ public String getOldFeature() {
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelf studie hebt u geleerd hoe u functie vlaggen kunt implementeren in een Spring boot-toepassing met behulp van de `spring-cloud-azure-feature-management-web`-bibliotheken. Raadpleeg de volgende bronnen voor meer informatie over de ondersteuning van functie beheer in Spring boot en app-configuratie:
+In deze zelf studie hebt u geleerd hoe u functie vlaggen kunt implementeren in een Spring boot-toepassing met behulp van de `spring-cloud-azure-feature-management-web` bibliotheken. Raadpleeg de volgende bronnen voor meer informatie over de ondersteuning van functie beheer in Spring boot en app-configuratie:
 
 * [Voorbeeld code voor de Spring boot-functie vlag](/azure/azure-app-configuration/quickstart-feature-flag-spring-boot)
 * [Functievlaggen beheren](./manage-feature-flags.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: De insluitende lezer starten met behulp van python'
+title: 'Zelf studie: de insluitende lezer starten met behulp van python'
 titleSuffix: Azure Cognitive Services
 description: In deze zelf studie maakt u een python-toepassing waarmee de insluitende lezer wordt gestart.
 services: cognitive-services
@@ -17,7 +17,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 09/27/2019
 ms.locfileid: "71326395"
 ---
-# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Zelfstudie: De insluitende lezer starten met behulp van het python-voorbeeld project
+# <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Zelf studie: de insluitende lezer starten met behulp van het python-voorbeeld project
 
 In het [overzicht](./overview.md)hebt u geleerd wat de insluitende lezer is en hoe deze de bewezen technieken implementeert om de Lees vaardigheid te verbeteren voor taal kennis, opkomende lezers en studenten met meer informatie. In deze zelf studie wordt beschreven hoe u een python-webtoepassing maakt waarmee de insluitende lezer wordt gestart. In deze zelfstudie leert u het volgende:
 
@@ -68,7 +68,7 @@ Het **getimmersivereadertoken** -API-eind punt moet worden beveiligd achter een 
 
 ## <a name="create-a-python-web-app-on-windows"></a>Een Python-web-app maken in Windows
 
-Een Python-web-app maken met `flask` in Windows.
+Een Python-web-app maken met behulp van `flask` in Windows.
 
 Installeer [Git](https://git-scm.com/).
 
@@ -88,11 +88,11 @@ Voeg optionele functies toe door de selectie vakjes in te scha kelen en op de kn
 
 ![Installatie dialoogvenster van python Windows-stap 2](./media/pythoninstalltwo.jpg)
 
-Kies aangepaste installatie en stel het installatiepad in als uw hoofdmap, bijvoorbeeld `C:\Python37-32\` en klik vervolgens op de knop installeren.
+Kies aangepaste installatie en stel het installatiepad in als uw hoofdmap, bijvoorbeeld `C:\Python37-32\` klik vervolgens op de knop installeren.
 
 ![Installatie dialoogvenster van python Windows-stap 3](./media/pythoninstallthree.jpg)
 
-Nadat de python-installatie is voltooid, opent u een opdracht prompt en `cd` naar de map python-scripts.
+Nadat de installatie van python is voltooid, opent u een opdracht prompt en `cd` u naar de map python-scripts.
 
 ```cmd
 cd C:\Python37-32\Scripts
@@ -166,9 +166,9 @@ Deactiveer de omgeving.
 deactivate
 ```
 
-Het voor voegsel @no__t 0 moet nu worden verwijderd omdat de omgeving nu is gedeactiveerd.
+Het voor voegsel van `(advanced-python)` moet nu worden verwijderd omdat de omgeving nu is gedeactiveerd.
 
-Als u de omgeving opnieuw wilt activeren, voert u `workon advanced-python` uit vanuit de voor beeld-basismap van het project.
+Voer `workon advanced-python` uit vanuit de hoofdmap van het voorbeeld project om de omgeving opnieuw uit te voeren.
 
 ```cmd
 workon advanced-python
@@ -176,7 +176,7 @@ workon advanced-python
 
 ### <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-Wanneer de omgeving actief is, voert u het voorbeeld project uit door `flask run` in te voeren in de hoofdmap van het voorbeeld project.
+Wanneer de omgeving actief is, voert u het voorbeeld project uit door `flask run` vanuit de hoofdmap van het voorbeeld project in te voeren.
 
 ```cmd
 flask run
@@ -186,7 +186,7 @@ Open uw browser en ga naar _http://localhost:5000_ .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Een Python-web-app maken op OSX
 
-Een Python-web-app maken met `flask` op OSX.
+Maak een Python-web-app met behulp van `flask` op OSX.
 
 Installeer [Git](https://git-scm.com/).
 
@@ -271,7 +271,7 @@ Kies een map waar u uw virtuele omgevingen wilt opslaan en voer deze opdracht ui
 mkdir ~/.virtualenvs
 ```
 
-`cd` naar de map insluitende Reader SDK python voor beeld van een toepassing.
+`cd` naar de map insluitende Reader SDK python voor beeld van toepassing.
 
 ```bash
 cd immersive-reader-sdk/js/samples/advanced-python
@@ -303,9 +303,9 @@ Deactiveer de omgeving.
 deactivate
 ```
 
-Het voor voegsel @no__t 0 moet nu worden verwijderd omdat de omgeving nu is gedeactiveerd.
+Het voor voegsel van `(advanced-python)` moet nu worden verwijderd omdat de omgeving nu is gedeactiveerd.
 
-Als u de omgeving opnieuw wilt activeren, voert u `workon advanced-python` uit vanuit de voor beeld-basismap van het project.
+Voer `workon advanced-python` uit vanuit de hoofdmap van het voorbeeld project om de omgeving opnieuw uit te voeren.
 
 ```bash
 workon advanced-python
@@ -313,7 +313,7 @@ workon advanced-python
 
 ## <a name="launch-the-immersive-reader-with-sample-content"></a>De insluitende lezer starten met voorbeeld inhoud
 
-Wanneer de omgeving actief is, voert u het voorbeeld project uit door `flask run` in te voeren in de hoofdmap van het voorbeeld project.
+Wanneer de omgeving actief is, voert u het voorbeeld project uit door `flask run` vanuit de hoofdmap van het voorbeeld project in te voeren.
 
 ```bash
 flask run

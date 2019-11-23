@@ -56,7 +56,7 @@ Hier volgt de resultatenset.
 ```
 
  Hier volgen enkele voor beelden met ongeldige invoer.
-Hoewel ze geldig zijn binnen een query, worden ze niet geparseerd naar geldige objecten. Teken reeksen binnen de teken reeks moeten worden voorafgegaan door ' {\\ ' a @ no__t-1 ': \\ ' Str @ no__t-3 '} ' of de omliggende aanhaling moet één ' {' a ': ' str '} ' zijn.
+Hoewel ze geldig zijn binnen een query, worden ze niet geparseerd naar geldige objecten. Teken reeksen binnen de teken reeks moeten worden voorafgegaan door {\\een\\:\\"Str\\"} "of de omliggende aanhaling moet één ' {" a ":" str "} ' zijn.
 
 Enkele aanhalings tekens rond eigenschapnamen zijn geen geldige JSON-namen.
 

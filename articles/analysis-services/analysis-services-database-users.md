@@ -27,14 +27,14 @@ Rolmachtigingen zijn onder andere:
 
 Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruikers of groepen toe aan die rollen met behulp van Role Manager in Visual Studio met Analysis Services-projecten. Wanneer u hebt geïmplementeerd op een server, gebruikt u SQL Server Management Studio (SSMS), [Analysis Services Power shell-cmdlets](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference)of [Tabellaire model scripting language](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference) (TMSL) om rollen en gebruikers leden toe te voegen of te verwijderen.
 
-**Beveiligings groepen** moeten [e-mail hebben ingeschakeld](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) waarbij de eigenschap `MailEnabled` is ingesteld op `True`. Wanneer u een Group by-e-mail adres opgeeft, wordt `obj:groupid@tenantid` gebruikt.
+**Beveiligings groepen** moeten [e-mail hebben ingeschakeld](https://docs.microsoft.com/exchange/recipients-in-exchange-online/manage-mail-enabled-security-groups) waarbij de eigenschap `MailEnabled` is ingesteld op `True`. Wanneer u een groep op basis van een e-mail adres opgeeft, gebruikt u `obj:groupid@tenantid`.
 
 
 ## <a name="to-add-or-manage-roles-and-users-in-visual-studio"></a>Rollen en gebruikers toevoegen aan of beheren in Visual Studio  
   
 1.  Klik in **Tabellaire model Verkenner**met de rechter muisknop op **rollen**.  
   
-2.  Klik in **Rolbeheer** op **Nieuw**.  
+2.  Klik in **Role Manager** op **New**.  
   
 3.  Typ een naam voor de rol.  
   
@@ -65,7 +65,7 @@ Bij het maken van een tabellaire model project maakt u rollen en voegt u gebruik
 
 Als u functies en gebruikers wilt toevoegen aan een geïmplementeerde model database, moet u met de server zijn verbonden als server beheerder of al een databaserol met beheerders machtigingen.
 
-1. Klik in object Exporer met de rechter muisknop op **functies** > **nieuwe rol**.
+1. Klik in object Exporer met de rechter muisknop op **rollen** > **nieuwe rol**.
 
 2. Voer bij **rol maken**de naam en beschrijving van een rol in.
 
@@ -141,7 +141,7 @@ Rijgegevens zijn van toepassing op de opgegeven rijen en gerelateerde rijen. Wan
 |-----------|--------------------|  
 |Regio|= Regio [land] = "USA"|  
 |ProductCategory|= ProductCategory [name] = "fietsen"|  
-|Transacties|= Trans acties [Year] = 2016|  
+|Transacties|=Transactions[Year]=2016|  
   
  Het net-effect kan leden rijen van gegevens opvragen waarbij de klant zich in de Verenigde Staten bevindt, de product categorie fietsen is en het jaar 2016 is. Gebruikers kunnen geen trans acties buiten de USA aanvragen, trans acties die geen fietsen of trans acties zijn die niet in 2016 zijn, tenzij ze lid zijn van een andere rol die deze machtigingen verleent.
   
@@ -149,7 +149,7 @@ Rijgegevens zijn van toepassing op de opgegeven rijen en gerelateerde rijen. Wan
 
 ## <a name="next-steps"></a>Volgende stappen
 
-  [Server beheerders](analysis-services-server-admins.md)  beheren  
+  [Server beheerders  beheren](analysis-services-server-admins.md)  
   [Azure Analysis Services beheren met Power shell](analysis-services-powershell.md)  
   [Naslag informatie over tabellaire model scripting language (TMSL)](https://docs.microsoft.com/bi-reference/tmsl/tabular-model-scripting-language-tmsl-reference)
 

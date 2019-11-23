@@ -23,12 +23,12 @@ Voor de stappen in dit artikel moet [Azure database for mysql server](quickstart
 ## <a name="configure-logging"></a>Logboek registratie configureren
 Configureer de toegang tot het MySQL-logboek voor langzame query's. 
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com/).
+1. Meld u aan bij de [Azure Portal](https://portal.azure.com/).
 
 2. Selecteer uw Azure Database voor MySQL-server.
 
 3. Selecteer in de sectie **bewaking** in de zijbalk **Server logboeken**. 
-   ![Screenshot van opties voor Server logboeken @ no__t-1
+   ![scherm opname van opties voor Server logboeken](./media/howto-configure-server-logs-in-portal/1-select-server-logs-configure.png)
 
 4. Selecteer om de server parameters weer te geven de optie **Klik hier om Logboeken in te scha kelen en logboek parameters te configureren**.
 
@@ -71,10 +71,10 @@ Nadat de logboek registratie is gestart, kunt u een lijst met beschik bare langz
 1. Geef op welke gegevens worden gesinkt om de langzame query Logboeken (opslag account, Event Hub of Log Analytics-werk ruimte) te verzenden.
 
 1. Selecteer **MySqlSlowLogs** als het logboek type.
-![Screenshot van configuratie opties voor Diagnostische instellingen @ no__t-1
+![scherm opname van configuratie opties voor Diagnostische instellingen](./media/howto-configure-server-logs-in-portal/configure-diagnostic-setting.png)
 
 1. Nadat u de gegevens sinks hebt geconfigureerd om de langzame query logboeken te pipeen, selecteert u **Opslaan**.
-![Screenshot van configuratie opties voor Diagnostische instellingen, met gemarkeerde opslaan @ no__t-1
+![scherm opname van configuratie opties voor Diagnostische instellingen, met gemarkeerde](./media/howto-configure-server-logs-in-portal/save-diagnostic-setting.png)
 
 1. Open de logboeken voor trage query's door ze te verkennen in de gegevens-sinks die u hebt geconfigureerd. Het kan tot tien minuten duren voordat de logboeken worden weer gegeven.
 

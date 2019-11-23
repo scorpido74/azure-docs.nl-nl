@@ -17,7 +17,7 @@ ms.locfileid: "72035598"
 
 Het Azure Cosmos DB ODBC-stuurprogramma kunt u verbinding maken met Azure Cosmos DB met behulp van BI analytics-hulpprogramma's zoals SQL Server Integration Services, Power BI Desktop en Tableau, zodat u kunt analyseren en visualisaties van uw Azure Cosmos DB-gegevens in deze oplossingen maken.
 
-Het ODBC-stuurprogramma van Azure Cosmos DB is compatibel met ODBC 3.8 en ondersteunt ANSI SQL-92-syntaxis. Het stuurprogramma biedt uitgebreide functies waarmee u gegevens in Azure Cosmos DB opnieuw kunt normaliseren. Met behulp van het stuurprogramma kunt u gegevens in Azure Cosmos DB weergeven als tabellen en weergaven. Met het stuurprogramma kunt u SQL-bewerkingen uitvoeren op de tabellen en weergaven, zoals groeperen op query's, invoegingen, updates en verwijderingen.
+Het ODBC-stuurprogramma van Azure Cosmos DB is compatibel met ODBC 3.8 en ondersteunt ANSI SQL-92-syntaxis. Het stuurprogramma biedt uitgebreide functies waarmee u gegevens in Azure Cosmos DB opnieuw kunt normaliseren. Met behulp van het stuurprogramma kunt u gegevens in Azure Cosmos DB weergeven als tabellen en weergaven. Met het stuurprogramma kunt u SQL-bewerkingen uitvoeren ten opzichte van de tabellen en weergaven, zoals groeperen op query's, invoegingen, updates en verwijderingen.
 
 > [!NOTE]
 > Verbinding maken met Azure Cosmos DB met het ODBC-stuurprogramma wordt momenteel ondersteund voor Azure Cosmos DB SQL API-accounts.
@@ -29,7 +29,7 @@ Dit is waar het ODBC-stuurprogramma is beschikbaar in. U kunt nu met behulp van 
 
 Aan de slag met het ODBC-stuurprogramma.
 
-## <a id="install"></a>Stap 1: Het ODBC-stuur programma voor Azure Cosmos DB installeren
+## <a id="install"></a>Stap 1: Het Azure Cosmos DB ODBC-stuurprogramma installeren
 
 1. Download de stuurprogramma's voor uw omgeving:
 
@@ -48,7 +48,7 @@ Aan de slag met het ODBC-stuurprogramma.
 
     ![Azure Cosmos DB ODBC-gegevensbronbeheer](./media/odbc-driver/odbc-driver.png)
 
-## <a id="connect"></a>Stap 2: Verbinding maken met uw Azure Cosmos-data base
+## <a id="connect"></a>Stap 2: verbinding maken met uw Azure Cosmos-data base
 
 1. Na [het Azure Cosmos DB ODBC-stuurprogramma installeren](#install), in de **ODBC-gegevensbronbeheer** venster, klikt u op **toevoegen**. U kunt een gebruiker of systeem-DSN maken. In dit voorbeeld maakt u een gebruikers-DSN.
 
@@ -57,29 +57,29 @@ Aan de slag met het ODBC-stuurprogramma.
 1. In de **Setup van Azure Cosmos DB ODBC-stuurprogramma SDN** venster, vult u in de volgende informatie: 
 
     ![Het venster Azure Cosmos DB ODBC-stuurprogramma DSN-instellingen](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Naam van gegevens bron**: Uw eigen beschrijvende naam voor de ODBC-DSN. Deze naam uniek is voor uw Azure Cosmos DB-account is, dus op de juiste wijze naam als u meerdere accounts hebt.
-    - **Beschrijving**: Een korte beschrijving van de gegevens bron.
-    - **Host**: De URI voor uw Azure Cosmos DB-account. U kunt dit ophalen via de pagina sleutels voor Azure Cosmos DB in Azure portal, zoals wordt weergegeven in de volgende schermafbeelding. 
-    - **Toegangs sleutel**: De primaire of secundaire alleen-lezen of alleen-lezen sleutel van de pagina Azure Cosmos DB sleutels in de Azure Portal, zoals weer gegeven in de volgende scherm afbeelding. Het is raadzaam om dat de alleen-lezen-sleutel te gebruiken als de DSN-naam wordt gebruikt voor de alleen-lezen gegevens verwerken en rapportage.
+    - **Naam van de gegevensbron**: uw eigen beschrijvende naam voor de ODBC-DSN. Deze naam uniek is voor uw Azure Cosmos DB-account is, dus op de juiste wijze naam als u meerdere accounts hebt.
+    - **Beschrijving**: een korte beschrijving van de gegevensbron.
+    - **Host**: URI voor uw Azure Cosmos DB-account. U kunt dit ophalen via de pagina sleutels voor Azure Cosmos DB in Azure portal, zoals wordt weergegeven in de volgende schermafbeelding. 
+    - **Toegang tot sleutel**: de primaire of secundaire alleen-lezen of alleen-lezen-sleutel van de Azure Cosmos DB-sleutels pagina in Azure portal, zoals wordt weergegeven in de volgende schermafbeelding. Het is raadzaam om dat de alleen-lezen-sleutel te gebruiken als de DSN-naam wordt gebruikt voor de alleen-lezen gegevens verwerken en rapportage.
     ![Op de pagina Azure Cosmos DB-sleutels](./media/odbc-driver/odbc-cosmos-account-keys.png)
-    - **Toegangs sleutel versleutelen voor**: Selecteer de beste keuze op basis van de gebruikers van deze computer. 
+    - **De toegangssleutel voor versleutelen**: Selecteer de beste keuze op basis van de gebruikers van deze machine. 
     
 1. Klik op de **Test** knop om te controleren of u kunt verbinding maken met uw Azure Cosmos DB-account. 
 
 1.  Klik op **geavanceerde opties** en stel de volgende waarden:
-    *  **Rest API versie**: Selecteer de [rest API versie](https://docs.microsoft.com/rest/api/cosmos-db/) voor uw bewerkingen. De standaard waarde is 2015-12-16. Als u containers met [grote partitie sleutels](large-partition-keys.md) hebt en REST API versie 2018-12-31 hebt vereist:
+    *  **Rest API versie**: selecteer de [rest API versie](https://docs.microsoft.com/rest/api/cosmos-db/) voor uw bewerkingen. De standaard waarde is 2015-12-16. Als u containers met [grote partitie sleutels](large-partition-keys.md) hebt en REST API versie 2018-12-31 hebt vereist:
         - Typ **2018-12-31** voor rest API versie
         - Typ ' regedit ' in het menu **Start** om de toepassing **REGI ster-editor** te zoeken en te openen.
-        - Navigeer in de REGI ster-editor naar het pad: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC. Refer**
-        - Maak een nieuwe subsleutel met dezelfde naam als uw DSN, bijvoorbeeld "Contoso-account ODBC-DSN".
+        - Navigeer in de REGI ster-editor naar het pad: **computer \ HKEY_LOCAL_MACHINE \software\odbc\odbc. INI**
+        - Maak een nieuwe subsleutel met dezelfde naam als uw DSN, bijvoorbeeld ' contoso-account ODBC-DSN '.
         - Navigeer naar de subsleutel ' contoso account ODBC DSN '.
         - Klik met de rechter muisknop om een nieuwe **teken reeks** waarde toe te voegen:
             - Waardenaam: **IgnoreSessionToken**
             - Waardegegevens: **1**
-             @ No__t-2Registry-editor-instellingen @ no__t-3
-    - **Consistentie van query's**: Selecteer het [consistentie niveau](consistency-levels.md) voor uw bewerkingen. De standaardwaarde is de sessie.
-    - **Aantal nieuwe pogingen**: Voer het aantal keren in dat een bewerking opnieuw moet worden uitgevoerd als de eerste aanvraag niet is voltooid wegens een service limiet.
-    - **Schema bestand**: U hebt hier een aantal opties.
+            ![REGI ster-editor-instellingen](./media/odbc-driver/cosmos-odbc-edit-registry.png)
+    - **Query uitvoeren op consistentie**: Selecteer de [consistentieniveau](consistency-levels.md) voor uw activiteiten. De standaardwaarde is de sessie.
+    - **Aantal nieuwe pogingen**: Voer het aantal keren dat een bewerking opnieuw als de eerste aanvraag niet wordt voltooid vanwege de frequentielimiet service.
+    - **Schemabestand**: U hebt een aantal opties hier.
         - Standaard wordt de eerste pagina met gegevens voor alle containers door het stuur programma gecontroleerd om het schema van elke container te bepalen. Dit staat bekend als container toewijzing. Zonder een schemabestand dat is gedefinieerd, wordt het stuurprogramma is voor het uitvoeren van de scan voor elke sessie stuurprogramma en kan leiden tot een hogere opstarttijd van een toepassing met behulp van de DSN. Het is raadzaam dat u altijd een schemabestand voor een DSN koppelen.
         - Als u al een schema bestand hebt (mogelijk een dat u hebt gemaakt met de schema-editor), klikt u op **Bladeren**, navigeert u naar het bestand, klikt u op **Opslaan**en klikt u vervolgens op **OK**.
         - Als u een nieuw schema maken wilt, klikt u op **OK**, en klik vervolgens op **Schema-Editor** in het hoofdvenster. Ga vervolgens verder met de informatie over de schema-editor. Nadat het nieuwe schemabestand is gemaakt, moet u gaat u terug naar de **geavanceerde opties** venster om op te nemen van de zojuist gemaakte schemabestand.
@@ -88,7 +88,7 @@ Aan de slag met het ODBC-stuurprogramma.
 
     ![Nieuwe Azure Cosmos DB ODBC DSN op het tabblad gebruikers-DSN](./media/odbc-driver/odbc-driver-user-dsn.png)
 
-## <a id="#container-mapping"></a>Stap 3: Een schema definitie maken met behulp van de container toewijzings methode
+## <a id="#container-mapping"></a>Stap 3: een schema definitie maken met behulp van de container toewijzings methode
 
 Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. Met de volgende stappen maakt u een schema voor de gegevens in een of meer containers met behulp van de container toewijzings methode. Met deze steekproef methode worden de gegevens in de pagina van een container opgehaald om de structuur van de gegevens te bepalen. Er wordt een container naar een tabel op de ODBC-zijde getransponeren. Deze steekproef methode is efficiënt en snel wanneer de gegevens in een container homo geen zijn. Als een container heterogene type gegevens bevat, kunt u het beste de [toewijzings methode voor tabel scheidingen](#table-mapping) gebruiken, aangezien deze een krachtigere bemonsterings methode biedt om de gegevens structuren in de container te bepalen. 
 
@@ -109,7 +109,7 @@ Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container to
 
 1. Als u dit schema met een DSN wilt gebruiken, opent u het **venster Azure Cosmos DB ODBC driver DSN Setup** (via de ODBC-gegevens bron beheerder), klikt u op **Geavanceerde opties**en navigeert u in het vak **schema bestand** naar het opgeslagen schema. Opslaan van een schemabestand naar een bestaande DSN Hiermee wijzigt u de DSN-verbinding met bereik tot de gegevens en de definitie van schema-structuur.
 
-## <a id="table-mapping"></a>Stap 4: Een schema definitie maken met behulp van de toewijzings methode voor tabel scheidingen
+## <a id="table-mapping"></a>Stap 4: De schemadefinitie van een met behulp van de tabel-scheidingstekens maken toewijzingsmethode
 
 Er zijn twee soorten bemonsterings methoden die u kunt gebruiken: **container toewijzing** of **tabel scheidings tekens**. Een steekproef sessie kan gebruikmaken van beide steekproef methoden, maar elke container kan alleen een specifieke steekproef methode gebruiken. 
 
@@ -209,7 +209,7 @@ Klik in de **weergavedefinities** venster de volgende handelingen uit:
 
 Als u wilt, kunt u een groot aantal weergaven maken. Wanneer u klaar bent voor het definiëren van de weergaven die u kunt vervolgens steekproef de gegevens. 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Stap 5: Bekijk uw gegevens in de BI-hulpprogram ma's, zoals Power BI Desktop
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>Stap 5: Uw gegevens weergeven in de BI-hulpprogramma's zoals Power BI Desktop
 
 U kunt uw nieuwe DSN gebruiken om te verbinden met Azure Cosmos DB met een ODBC-hulpprogramma's: deze stap gewoon laat zien hoe u verbinding maakt met Power BI Desktop en maak een Power BI-visualisatie.
 

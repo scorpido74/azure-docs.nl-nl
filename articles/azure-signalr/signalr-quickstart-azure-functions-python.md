@@ -14,7 +14,7 @@ ms.contentlocale: nl-NL
 ms.lasthandoff: 10/01/2019
 ms.locfileid: "71709493"
 ---
-# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Quickstart: Maak een chat ruimte met Azure Functions en de signaal service met python
+# <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Snelstartgids: een chat ruimte met Azure Functions-en signalerings service maken met behulp van python
 
 Met de service Azure SignalR kunt u eenvoudig realtimefunctionaliteit toevoegen aan een toepassing. Azure Functions is een serverloos platform waarmee u code kunt uitvoeren zonder een infrastructuur te beheren. In deze quickstart leert u hoe u de service SignalR en Functions gebruikt om een serverloze, realtimechattoepassing te bouwen.
 
@@ -74,7 +74,7 @@ Meld u met uw Azure-account aan bij Azure Portal op <https://portal.azure.com/>.
 
 1. Plak in **local.settings.json** de verbindingsreeks in de waarde van de instelling **AzureSignalRConnectionString**. Sla het bestand op.
 
-1. Python-functies worden in mappen ingedeeld. In elke map zijn twee bestanden: *Function. json* definieert de bindingen die worden gebruikt in de functie en *\_ @ no__t-3init @ no__t-4\_.py* de hoofd tekst van de functie is. Deze functie-app bevat twee met HTTP geactiveerde functies:
+1. Python-functies worden in mappen ingedeeld. In elke map zijn twee bestanden: *Function. json* definieert de bindingen die worden gebruikt in de functie en *\_\_init\_\_. py* de hoofd tekst van de functie is. Deze functie-app bevat twee met HTTP geactiveerde functies:
 
     - **negotiate**: gebruikt de invoerbinding *SignalRConnectionInfo* om geldige verbindingsgegevens te genereren en te retourneren.
     - **messages**: ontvangt een chatbericht in de hoofdtekst van de aanvraag en gebruikt de uitvoerbinding *SignalR* om het bericht uit te zenden naar alle verbonden clienttoepassingen.

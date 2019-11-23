@@ -71,7 +71,7 @@ Gebruik de opdracht Azure CLI [AZ Role Assignment maken](/cli/azure/role/assignm
 
 - `--role`: Geef de functie ' rol van account sleutel operator voor opslag ' door. Deze rol beperkt de toegangs Scope tot uw opslag account. Geef voor een klassiek opslag account de rol ' klassieke account sleutel operator ' door.
 - `--assignee-object-id`: Geef de waarde ' 93c27d83-f79b-4cb2-8dd4-4aa716542e74 ' door. Dit is de object-ID voor Key Vault in de open bare Azure-Cloud. (Als u de object-ID voor Key Vault wilt ophalen in de Azure Government Cloud, raadpleegt u [Service Principal Application id](#service-principal-application-id).)
-- `--scope`: Geef de resource-ID van uw opslag account door, in de vorm `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Als u uw abonnement-ID wilt vinden, gebruikt u de opdracht Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
+- `--scope`: Geef de resource-ID van uw opslag account op in de vorm `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Als u uw abonnement-ID wilt vinden, gebruikt u de opdracht Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
 
 ```azurecli-interactive
 az role assignment create --role "Storage Account Key Operator Service Role" --assignee-object-id 93c27d83-f79b-4cb2-8dd4-4aa716542e74 --scope "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -79,11 +79,11 @@ az role assignment create --role "Storage Account Key Operator Service Role" --a
 
 ### <a name="create-a-key-vault-managed-storage-account"></a>Een door Key Vault beheerd opslag account maken
 
- Maak een Key Vault beheerd opslag account met behulp van de Azure CLI [AZ-opslag](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) opdracht. Stel een regeneratie periode van 90 dagen in. Na 90 dagen Key Vault `key1` opnieuw gegenereerd en wordt de actieve sleutel van `key2` naar `key1` gewisseld. `key1` wordt vervolgens als de actieve sleutel gemarkeerd. Geef de opdracht de volgende parameter waarden:
+ Maak een Key Vault beheerd opslag account met behulp van de Azure CLI [AZ-opslag](/cli/azure/keyvault/storage?view=azure-cli-latest#az-keyvault-storage-add) opdracht. Stel een regeneratie periode van 90 dagen in. Na 90 dagen Key Vault `key1` opnieuw gegenereerd en wordt de actieve sleutel van `key2` naar `key1`gewisseld. `key1` wordt vervolgens als de actieve sleutel gemarkeerd. Geef de opdracht de volgende parameter waarden:
 
 - `--vault-name`: Geef de naam van de sleutel kluis door. Als u de naam van de sleutel kluis wilt weten, gebruikt u de opdracht Azure CLI AZ, sleutel [kluis List](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-list) .
 - `-n`: Geef de naam van uw opslag account door. Als u de naam van uw opslag account wilt weten, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
-- `--resource-id`: Geef de resource-ID van uw opslag account door, in de vorm `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Als u uw abonnement-ID wilt vinden, gebruikt u de opdracht Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
+- `--resource-id`: Geef de resource-ID van uw opslag account op in de vorm `/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>`. Als u uw abonnement-ID wilt vinden, gebruikt u de opdracht Azure CLI [AZ account list](/cli/azure/account?view=azure-cli-latest#az-account-list) . Als u de naam van uw opslag account en de resource groep voor het opslag account wilt zoeken, gebruikt u de opdracht Azure CLI [AZ Storage account list](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-list) .
    
  ```azurecli-interactive
 az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountName> --active-key-name key1 --auto-regenerate-key --regeneration-period P90D --resource-id "/subscriptions/<subscriptionID>/resourceGroups/<StorageAccountResourceGroupName>/providers/Microsoft.Storage/storageAccounts/<YourStorageAccountName>"
@@ -91,18 +91,18 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ## <a name="shared-access-signature-tokens"></a>Shared Access Signature-tokens
 
-U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een Shared Access Signature biedt gedelegeerde toegang tot resources in uw opslag account. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
+U kunt ook Key Vault vragen om de tokens voor Shared Access-hand tekeningen te genereren. Een shared access signature biedt gedelegeerde toegang tot resources in uw opslagaccount. U kunt clients toegang verlenen tot resources in uw opslag account zonder uw account sleutels te delen. Een Shared Access Signature biedt u een veilige manier om uw opslag resources te delen zonder in te boeten voor uw account sleutels.
 
 De opdrachten in deze sectie voeren de volgende acties uit:
 
-- Stel een gedeelde toegangs handtekening definitie voor een account in `<YourSASDefinitionName>`. De definitie wordt ingesteld op een Key Vault beheerd opslag account `<YourStorageAccountName>` in uw sleutel kluis `<YourKeyVaultName>`.
+- Stel een account in voor de definitie van de gedeelde Access-hand tekening `<YourSASDefinitionName>`. De definitie wordt ingesteld op een Key Vault beheerd opslag account `<YourStorageAccountName>` in uw sleutel kluis `<YourKeyVaultName>`.
 - Maak een account voor Shared Access Signature-token voor blob-, bestands-, tabel-en wachtrij Services. Het token is gemaakt voor resource type-service,-container en-object. Het token wordt gemaakt met alle machtigingen, via https en met de opgegeven begin-en eind datum.
-- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft de Shared Access Signature `account` en is N dagen geldig.
+- Stel in de kluis een definitie in van een Key Vault Managed Storage-hand tekening voor gedeelde opslag. De definitie heeft de sjabloon-URI van het Shared Access Signature-token dat is gemaakt. De definitie heeft het type gedeelde toegangs handtekening `account` en is N dagen geldig.
 - Controleer of de Shared Access-hand tekening is opgeslagen in de sleutel kluis als een geheim.
 
 ### <a name="create-a-shared-access-signature-token"></a>Een token voor een Shared Access-hand tekening maken
 
-Maak een definitie van een gedeelde toegangs handtekening met behulp van de opdracht Azure CLI [AZ Storage account generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) . Voor deze bewerking zijn de machtigingen `storage` en `setsas` vereist.
+Maak een definitie van een gedeelde toegangs handtekening met behulp van de opdracht Azure CLI [AZ Storage account generate-SAS](/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-generate-sas) . Voor deze bewerking zijn de `storage`-en `setsas` machtigingen vereist.
 
 
 ```azurecli-interactive
@@ -114,11 +114,11 @@ Nadat de bewerking is uitgevoerd, kopieert u de uitvoer.
 "se=2020-01-01&sp=***"
 ```
 
-Deze uitvoer wordt door gegeven aan de para meter `--template-id` in de volgende stap.
+Deze uitvoer wordt in de volgende stap door gegeven aan de para meter `--template-id`.
 
 ### <a name="generate-a-shared-access-signature-definition"></a>Een definitie van een gedeelde Access-hand tekening genereren
 
-Gebruik de Azure CLI [AZ Storage SAS-definition-opslag](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) opdracht, waarbij de uitvoer van de vorige stap wordt door gegeven aan de para meter `--template-id` om een definitie van een Shared Access-hand tekening te maken.  U kunt de naam van uw keuze opgeven in de para meter `-n`.
+Gebruik de Azure CLI [AZ Storage SAS-definition-opslag](/cli/azure/keyvault/storage/sas-definition?view=azure-cli-latest#az-keyvault-storage-sas-definition-create) opdracht, waarbij de uitvoer van de vorige stap wordt door gegeven aan de para meter `--template-id` om een definitie van een Shared Access-hand tekening te maken.  U kunt de naam van uw keuze opgeven voor de para meter `-n`.
 
 ```azurecli-interactive
 az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --account-name <YourStorageAccountName> -n <YourSASDefinitionName> --validity-period P2D --sas-type account --template-uri <OutputOfSasTokenCreationStep>
@@ -147,7 +147,7 @@ U kunt nu de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?
 az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
 ```
 
-De uitvoer van deze opdracht geeft uw SAS-definitie teken reeks weer als @ no__t-0.
+De uitvoer van deze opdracht geeft uw SAS-definitie reeks weer als`value`.
 
 
 ## <a name="next-steps"></a>Volgende stappen

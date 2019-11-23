@@ -35,9 +35,9 @@ U kunt de installatie van de Mobility-service ook automatiseren met [Azure Autom
 
 ## <a name="deploy-on-windows-machines"></a>Implementeren op Windows-computers
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat het IP-adres van de configuratie server 192.168.3.121 is en dat de beveiligde netwerk bestands share \\ \ ContosoSecureFS\MobilityServiceInstallers.
+> In dit artikel wordt ervan uitgegaan dat het IP-adres van de configuratie server 192.168.3.121 is en dat de beveiligde netwerk bestands share is \\\ContosoSecureFS\MobilityServiceInstallers.
 
-### <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
+### <a name="prepare-for-deployment"></a>Voorbereiden voor implementatie
 1. Maak een map op de netwerk share en noem deze **MobSvcWindows**.
 2. Meld u aan bij uw configuratie server en open een opdracht prompt met beheerders rechten.
 3. Voer de volgende opdrachten uit om een wachtwoordzinbestand te genereren:
@@ -50,7 +50,7 @@ U kunt de installatie van de Mobility-service ook automatiseren met [Azure Autom
 
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
-6. Kopieer de **micro soft-ASR @ no__t-1UA @ no__t-2-*versie*\_Windows @ no__t-5GA @ no__t-6*datum*@no__t -8release. exe** naar de map **MobSvcWindows** op uw netwerk share.
+6. Kopieer de **micro soft-ASR\_UA\_*versie*\_Windows\_GA\_*datum*\_release. exe** naar de map **MobSvcWindows** op de netwerk share.
 7. Kopieer de volgende code en sla deze op als **install. bat** in de map **MobSvcWindows** .
 
    > [!NOTE]
@@ -156,11 +156,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 ### <a name="create-a-package"></a>Een pakket maken
 
 1. Meld u aan bij uw Configuration Manager-console.
-2. Blader naar **software bibliotheek** > **toepassings beheer** > -**pakketten**.
+2. Blader naar **software bibliotheek** > **toepassings beheer** > **pakketten**.
 3. Klik met de rechter muisknop op **pakketten**en selecteer **pakket maken**.
 4. Geef waarden op voor de naam, de beschrijving, de fabrikant, de taal en de versie.
 5. Selecteer het selectie vakje **Dit pakket bevat bron bestanden** .
-6. Klik op **Bladeren**en selecteer de netwerk share waar het installatie programma is opgeslagen (\\ \ ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
+6. Klik op **Bladeren**en selecteer de netwerk share waar het installatie programma is opgeslagen (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcWindows).
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package.png)
 
@@ -187,11 +187,11 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
 ### <a name="deploy-the-package"></a>Het pakket implementeren
 1. Klik in de Configuration Manager-console met de rechter muisknop op uw pakket en selecteer **inhoud distribueren**.
-   ![Screenshot van Configuration Manager console @ no__t-1
+   Scherm opname van Configuration Manager-console ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Selecteer de **[distributie punten](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** waarop de pakketten moeten worden gekopieerd.
 3. Voltooi de wizard. Het pakket begint vervolgens met het repliceren naar de opgegeven distributie punten.
 4. Nadat de pakket distributie is voltooid, klikt u met de rechter muisknop op het pakket en selecteert u **implementeren**.
-   ![Screenshot van Configuration Manager console @ no__t-1
+   Scherm opname van Configuration Manager-console ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Selecteer de Windows Server-apparaat-verzameling die u hebt gemaakt in de sectie vereisten als de doel verzameling voor de implementatie.
 
    ![Scherm opname van de wizard software implementeren](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection.png)
@@ -213,9 +213,9 @@ U kunt de voortgang van de implementatie bewaken met behulp van de Configuration
 
 ## <a name="deploy-on-linux-machines"></a>Implementeren op Linux-machines
 > [!NOTE]
-> In dit artikel wordt ervan uitgegaan dat het IP-adres van de configuratie server 192.168.3.121 is en dat de beveiligde netwerk bestands share \\ \ ContosoSecureFS\MobilityServiceInstallers.
+> In dit artikel wordt ervan uitgegaan dat het IP-adres van de configuratie server 192.168.3.121 is en dat de beveiligde netwerk bestands share is \\\ContosoSecureFS\MobilityServiceInstallers.
 
-### <a name="prepare-for-deployment"></a>Voorbereiden op implementatie
+### <a name="prepare-for-deployment"></a>Voorbereiden voor implementatie
 1. Maak een map op de netwerk share en geef deze de naam **MobSvcLinux**.
 2. Meld u aan bij uw configuratie server en open een opdracht prompt met beheerders rechten.
 3. Voer de volgende opdrachten uit om een wachtwoordzinbestand te genereren:
@@ -229,15 +229,15 @@ U kunt de voortgang van de implementatie bewaken met behulp van de Configuration
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. Kopieer de volgende bestanden naar de map **MobSvcLinux** op de netwerk share:
-   * Micro soft-ASR @ no__t-0UA @ no__t-1RHEL6-64 * release. tar. gz
-   * Micro soft-ASR @ no__t-0UA @ no__t-1RHEL7-64\*release.tar.gz
-   * Micro soft-ASR @ no__t-0UA @ no__t-1SLES11-SP3-64\*release.tar.gz
-   * Micro soft-ASR @ no__t-0UA @ no__t-1SLES11-SP4-64\*release.tar.gz
-   * Micro soft-ASR @ no__t-0UA @ no__t-1OL6-64\*release.tar.gz
-   * Micro soft-ASR @ no__t-0UA @ no__t-1UBUNTU-14.04-64\*release.tar.gz
+   * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
+   * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
+   * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
+   * Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz
+   * Microsoft-ASR\_UA\*OL6-64\*release.tar.gz
+   * Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz
 
 
-7. Kopieer de volgende code en sla deze op als **install_linux. sh** in de map **MobSvcLinux** .
+7. Kopieer de volgende code en sla deze op als **install_linux. v** in de map **MobSvcLinux** .
    > [!NOTE]
    > Vervang de tijdelijke aanduidingen [CSIP] in dit script door de werkelijke waarden van het IP-adres van de configuratie server.
 
@@ -378,11 +378,11 @@ cd /tmp
 ### <a name="create-a-package"></a>Een pakket maken
 
 1. Meld u aan bij uw Configuration Manager-console.
-2. Blader naar **software bibliotheek** > **toepassings beheer** > -**pakketten**.
+2. Blader naar **software bibliotheek** > **toepassings beheer** > **pakketten**.
 3. Klik met de rechter muisknop op **pakketten**en selecteer **pakket maken**.
 4. Geef waarden op voor de naam, de beschrijving, de fabrikant, de taal en de versie.
 5. Selecteer het selectie vakje **Dit pakket bevat bron bestanden** .
-6. Klik op **Bladeren**en selecteer de netwerk share waar het installatie programma is opgeslagen (\\ \ ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
+6. Klik op **Bladeren**en selecteer de netwerk share waar het installatie programma is opgeslagen (\\\ContosoSecureFS\MobilityServiceInstaller\MobSvcLinux).
 
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/create_sccm_package-linux.png)
 
@@ -401,7 +401,7 @@ cd /tmp
    ![Scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-linux.png)
 
 9. Selecteer op de volgende pagina **dit programma kan op elk platform worden uitgevoerd**.
-   ![Screenshot van de wizard pakket en programma maken @ no__t-1
+   ![scherm opname van de wizard pakket en programma maken](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties-page2-linux.png)
 
 10. Klik twee keer op **volgende** om de wizard te volt ooien.
 
@@ -410,11 +410,11 @@ cd /tmp
 
 ### <a name="deploy-the-package"></a>Het pakket implementeren
 1. Klik in de Configuration Manager-console met de rechter muisknop op uw pakket en selecteer **inhoud distribueren**.
-   ![Screenshot van Configuration Manager console @ no__t-1
+   Scherm opname van Configuration Manager-console ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Selecteer de **[distributie punten](https://technet.microsoft.com/library/gg712321.aspx#BKMK_PlanForDistributionPoints)** waarop de pakketten moeten worden gekopieerd.
 3. Voltooi de wizard. Het pakket begint vervolgens met het repliceren naar de opgegeven distributie punten.
 4. Nadat de pakket distributie is voltooid, klikt u met de rechter muisknop op het pakket en selecteert u **implementeren**.
-   ![Screenshot van Configuration Manager console @ no__t-1
+   Scherm opname van Configuration Manager-console ![](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Selecteer de apparaat-verzameling van de Linux-server die u hebt gemaakt in de sectie vereisten als de doel verzameling voor de implementatie.
 
    ![Scherm opname van de wizard software implementeren](./media/vmware-azure-mobility-install-configuration-mgr/sccm-select-target-collection-linux.png)

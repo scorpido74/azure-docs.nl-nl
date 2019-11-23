@@ -46,10 +46,10 @@ Met het virtuele netwerk van Azure (Terminal Access Point) kunt u het netwerk ve
 - [ExtraHop Reveal (x)](https://www.extrahop.com/partners/tech-partners/microsoft/)
 - [Fidelis Cyber beveiliging](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
 - [Flowmon](https://www.flowmon.com/blog/azure-vtap)
-- [Netfort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
+- [NetFort LANGuardian](https://www.netfort.com/languardian/solutions/visibility-in-azure-network-tap/)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Riverbed SteelCentral AppResponse]( https://www.riverbed.com/products/steelcentral/steelcentral-appresponse-11.html)
-- [® Platform voor RSA-netwitness](https://www.rsa.com/azure)
+- [RSA NetWitness® Platform](https://www.rsa.com/azure)
 - [Vectra Cognito](https://vectra.ai/microsoftazure)
 
 In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt. U kunt een TAP-configuratie toevoegen aan een [netwerk interface](virtual-network-network-interface.md) die is gekoppeld aan een virtuele machine die is geïmplementeerd in uw virtuele netwerk. De bestemming is een IP-adres van een virtueel netwerk in hetzelfde virtuele netwerk als de bewaakte netwerk interface of een gekoppeld [virtueel](virtual-network-peering-overview.md) netwerk. De Collector-oplossing voor Virtual Network TIKT kan worden geïmplementeerd achter een [interne Load Balancer van Azure](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#concepts) voor hoge Beschik baarheid. Zie [partner oplossingen](#virtual-network-tap-partner-solutions)voor meer informatie over het evalueren van implementatie opties voor afzonderlijke oplossingen.
@@ -58,17 +58,17 @@ In de volgende afbeelding ziet u hoe virtuele netwerk tikken werkt. U kunt een T
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u een virtueel netwerk kunt maken, moet u een bevestigings bericht hebben ontvangen dat u hebt Inge schreven in de preview en er een of meer virtuele machines zijn gemaakt met [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) implementatie model en een partner oplossing voor het samen voegen van de Tik op verkeer in dezelfde Azure-regio. Als u geen partner oplossing in uw virtuele netwerk hebt, raadpleegt u [partner oplossingen](#virtual-network-tap-partner-solutions) om er een te implementeren. U kunt hetzelfde virtuele netwerk tikken op resource om verkeer van meerdere netwerk interfaces in dezelfde of verschillende abonnementen samen te voegen. Als de bewaakte netwerk interfaces zich in verschillende abonnementen bevinden, moeten de abonnementen zijn gekoppeld aan dezelfde Azure Active Directory Tenant. Daarnaast kunnen de bewaakte netwerk interfaces en het bestemmings eindpunt voor het samen voegen van het TIKs verkeer zich in gekoppelde virtuele netwerken in dezelfde regio bevinden. Als u dit implementatie model gebruikt, moet u ervoor zorgen dat de [peering van het virtuele netwerk](virtual-network-peering-overview.md) is ingeschakeld voordat u tikt op het virtuele netwerk.
+Voordat u een virtueel netwerk maakt, moet u een bevestigings bericht hebben ontvangen dat u in de preview hebt Inge schreven en dat er een of meer virtuele machines zijn gemaakt met [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) implementatie model en een partner oplossing voor het samen voegen van het tikken verkeer in dezelfde Azure-regio. Als u geen partner oplossing in uw virtuele netwerk hebt, raadpleegt u [partner oplossingen](#virtual-network-tap-partner-solutions) om er een te implementeren. U kunt hetzelfde virtuele netwerk tikken op resource om verkeer van meerdere netwerk interfaces in dezelfde of verschillende abonnementen samen te voegen. Als de bewaakte netwerk interfaces zich in verschillende abonnementen bevinden, moeten de abonnementen zijn gekoppeld aan dezelfde Azure Active Directory Tenant. Daarnaast kunnen de bewaakte netwerk interfaces en het bestemmings eindpunt voor het samen voegen van het TIKs verkeer zich in gekoppelde virtuele netwerken in dezelfde regio bevinden. Als u dit implementatie model gebruikt, moet u ervoor zorgen dat de [peering van het virtuele netwerk](virtual-network-peering-overview.md) is ingeschakeld voordat u tikt op het virtuele netwerk.
 
 ## <a name="permissions"></a>Machtigingen
 
 De accounts die u gebruikt voor het Toep assen van TIKT op netwerk interfaces, moeten worden toegewezen aan de rol [netwerk bijdrager](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) of aan een [aangepaste rol](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) waaraan de nodige acties zijn toegewezen in de volgende tabel:
 
-| Bewerking | Naam |
+| Actie | Naam |
 |---|---|
-| Micro soft. Network/virtualNetworkTaps/* | Vereist voor het maken, bijwerken, lezen en verwijderen van een virtueel netwerk Tik op resource |
-| Micro soft. Network/networkInterfaces/lezen | Vereist voor het lezen van de netwerk interface bron waarop de Tik wordt geconfigureerd |
-| Micro soft. Network/tapConfigurations/* | Vereist voor het maken, bijwerken, lezen en verwijderen van de TAP-configuratie op een netwerk interface |
+| Microsoft.Network/virtualNetworkTaps/* | Vereist voor het maken, bijwerken, lezen en verwijderen van een virtueel netwerk Tik op resource |
+| Microsoft.Network/networkInterfaces/read | Vereist voor het lezen van de netwerk interface bron waarop de Tik wordt geconfigureerd |
+| Microsoft.Network/tapConfigurations/* | Vereist voor het maken, bijwerken, lezen en verwijderen van de TAP-configuratie op een netwerk interface |
 
 ## <a name="next-steps"></a>Volgende stappen
 

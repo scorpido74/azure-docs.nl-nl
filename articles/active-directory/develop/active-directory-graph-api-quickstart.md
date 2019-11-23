@@ -56,9 +56,9 @@ Als u het meta gegevensbestand van Azure AD Graph API wilt retour neren, voegt u
 
 In de [algemene query's van Azure ad Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) worden algemene query's vermeld die kunnen worden gebruikt met de Azure AD-grafiek, met inbegrip van query's die kunnen worden gebruikt voor toegang tot resources op het hoogste niveau in uw directory en query's voor het uitvoeren van bewerkingen in uw Directory.
 
-@No__t-0 retourneert bijvoorbeeld bedrijfs gegevens voor Directory contoso.com.
+`https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` retourneert bijvoorbeeld bedrijfs gegevens voor Directory contoso.com.
 
-Of `https://graph.windows.net/contoso.com/users?api-version=1.6` geeft een lijst van alle gebruikers objecten in de map contoso.com.
+Of `https://graph.windows.net/contoso.com/users?api-version=1.6` een lijst met alle gebruikers objecten in de map contoso.com.
 
 ## <a name="using-the-azure-ad-graph-explorer"></a>De Azure AD Graph Explorer gebruiken
 U kunt de Azure AD Graph Explorer gebruiken voor de Azure AD-Graph API om de Directory gegevens op te vragen tijdens het bouwen van uw toepassing.
@@ -69,14 +69,14 @@ De volgende scherm afbeelding is de uitvoer die u zou zien als u naar de Azure A
 
 **De Azure AD Graph Explorer laden**: als u het hulp programma wilt laden, gaat u naar [https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/). Klik op **Aanmelden** en meld u aan met de referenties van uw Azure ad-account om de Azure AD Graph Explorer uit te voeren op uw Tenant. Als u Azure AD Graph Explorer uitvoert voor uw eigen Tenant, moet u of uw beheerder toestemming geven tijdens het aanmelden. Als u een Office 365-abonnement hebt, hebt u automatisch een Azure AD-Tenant. De referenties die u gebruikt om u aan te melden bij Office 365 zijn, in feite Azure AD-accounts, en u kunt deze referenties gebruiken met de Graph Explorer van Azure AD.
 
-**Een query uitvoeren**: als u een query wilt uitvoeren, typt u uw query in het tekstvak aanvraag en klikt u op **Get** of klikt u op de toets **Enter** . De resultaten worden weer gegeven in het vak reactie. @No__t-0 geeft bijvoorbeeld alle groeps objecten in de map van de aangemelde gebruiker weer.
+**Een query uitvoeren**: als u een query wilt uitvoeren, typt u uw query in het tekstvak aanvraag en klikt u op **Get** of klikt u op de toets **Enter** . De resultaten worden weer gegeven in het vak reactie. `https://graph.windows.net/myorganization/groups?api-version=1.6` bijvoorbeeld een lijst met alle groeps objecten in de map van de aangemelde gebruiker.
 
 Houd rekening met de volgende functies en beperkingen van de Azure AD Graph Explorer:
 
 * De functie automatisch aanvullen voor resource sets. Als u deze functionaliteit wilt zien, klikt u op het tekstvak aanvraag (waarbij de bedrijfs-URL wordt weer gegeven). U kunt een resourceset selecteren in de vervolg keuzelijst.
 * Aanvraag geschiedenis.
-* Ondersteunt de aliassen ' me ' en ' myorganization '. U kunt bijvoorbeeld `https://graph.windows.net/me?api-version=1.6` gebruiken om het gebruikers object van de aangemelde gebruiker te retour neren of `https://graph.windows.net/myorganization/users?api-version=1.6` om alle gebruikers te retour neren in de map van de aangemelde gebruiker.
-* Biedt ondersteuning voor volledige ruwe bewerkingen op uw eigen directory met `POST`, `GET`, `PATCH` en `DELETE`.
+* Ondersteunt de aliassen ' me ' en ' myorganization '. U kunt bijvoorbeeld `https://graph.windows.net/me?api-version=1.6` gebruiken om het gebruikers object van de aangemelde gebruiker te retour neren of `https://graph.windows.net/myorganization/users?api-version=1.6` alle gebruikers te retour neren in de map van de aangemelde gebruiker.
+* Biedt ondersteuning voor volledige ruwe bewerkingen op uw eigen directory met behulp van `POST`, `GET`, `PATCH` en `DELETE`.
 * Een sectie antwoord headers. Deze sectie kan worden gebruikt om problemen op te lossen die zich voordoen bij het uitvoeren van query's.
 * Een JSON-viewer voor het antwoord met de mogelijkheden voor uitvouwen en samen vouwen.
 * Geen ondersteuning voor het weer geven of uploaden van een miniatuur foto.
@@ -107,7 +107,7 @@ In het onderstaande voor beeld gebruikt u Fiddler Web Debugger om een nieuwe bev
    ```
    
    > [!NOTE]
-   > Vervang uw &lt;your-toegangs token @ no__t-1 door het toegangs token voor uw Azure AD-adres lijst.
+   > Vervang uw &lt;uw toegangs token&gt; door het toegangs token voor uw Azure AD-adres lijst.
 
 5. Typ in het veld **hoofd tekst van aanvraag** de volgende JSON:
    

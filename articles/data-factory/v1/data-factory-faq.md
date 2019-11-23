@@ -26,7 +26,7 @@ ms.locfileid: "70139822"
 
 ## <a name="general-questions"></a>Algemene vragen
 ### <a name="what-is-azure-data-factory"></a>Wat is Azure Data Factory?
-Data Factory is een service voor gegevens integratie **in de Cloud waarmee de verplaatsing en trans formatie van gegevens**worden geautomatiseerd. Net als bij een fabriek die apparatuur uitvoert om grond stoffen te maken en deze te transformeren in voltooide producten, Data Factory worden bestaande services die onbewerkte gegevens verzamelen, omgezet in kant-en-klare informatie.
+Data Factory is een service voor gegevens integratie **in de Cloud waarmee de verplaatsing en trans formatie van gegevens worden geautomatiseerd**. Net als bij een fabriek die apparatuur uitvoert om grond stoffen te maken en deze te transformeren in voltooide producten, Data Factory worden bestaande services die onbewerkte gegevens verzamelen, omgezet in kant-en-klare informatie.
 
 Met Data Factory kunt u gegevensgestuurde werk stromen maken om gegevens te verplaatsen tussen zowel on-premises als in de cloud opgeslagen gegevens, en gegevens verwerken/transformeren met behulp van reken services zoals Azure HDInsight en Azure Data Lake Analytics. Nadat u een pijp lijn hebt gemaakt die de actie uitvoert die u nodig hebt, kunt u deze zo plannen dat deze regel matig wordt uitgevoerd (elk uur, dagelijks, wekelijks, enzovoort).   
 
@@ -53,7 +53,7 @@ Met een van de volgende hulpprogram ma's/Sdk's kunt u gegevens fabrieken ontwerp
 * **Azure PowerShell** Zie [Azure Data Factory maken en bewaken met behulp van Azure PowerShell](data-factory-build-your-first-pipeline-using-powershell.md) voor een zelf studie/walkthrough voor het maken van een Data Factory met Power shell. Zie [Data Factory cmdlet-referentie][adf-powershell-reference] -inhoud in de MSDN-bibliotheek voor een uitgebreide documentatie van Data Factory-cmdlets.
 * **.Net-klassebibliotheek** U kunt via een programma gegevens fabrieken maken met behulp van Data Factory .NET SDK. Zie [gegevens fabrieken maken, bewaken en beheren met behulp van .NET SDK](data-factory-create-data-factories-programmatically.md) voor een overzicht van het maken van een Data Factory met behulp van .NET SDK. Zie [Data Factory Class Library Reference][msdn-class-library-reference] (Engelstalig) voor een uitgebreide documentatie over Data Factory .NET SDK.
 * **rest API** U kunt ook de REST API weer gegeven door de Azure Data Factory-service gebruiken om gegevens fabrieken te maken en te implementeren. Zie [Data Factory rest API Reference][msdn-rest-api-reference] voor een uitgebreide documentatie van Data Factory rest API.
-* **Azure Resource Manager sjabloon** Zie [zelf studie: Bouw uw eerste Azure-Data Factory met behulp van Azure Resource Manager sjabloon](data-factory-build-your-first-pipeline-using-arm.md) fo-gegevens.
+* **Azure Resource Manager sjabloon** Zie [zelf studie: uw eerste Azure-Data Factory bouwen met behulp van Azure Resource Manager sjabloon](data-factory-build-your-first-pipeline-using-arm.md) fo-gegevens.
 
 ### <a name="can-i-rename-a-data-factory"></a>Kan ik de naam van een data factory wijzigen?
 Nee. Net als bij andere Azure-resources kan de naam van een Azure-data factory niet worden gewijzigd.
@@ -70,12 +70,12 @@ De volgende tabel bevat een lijst met reken omgevingen die worden ondersteund do
 | --- | --- |
 | [Hdinsight-cluster op aanvraag](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) of [uw eigen hdinsight-cluster](data-factory-compute-linked-services.md#azure-hdinsight-linked-service) |[DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](data-factory-compute-linked-services.md#azure-batch-linked-service) |[DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning activiteiten: Batch uitvoering en update resource](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](data-factory-compute-linked-services.md#azure-machine-learning-linked-service) |[Machine Learning-activiteiten: batchuitvoering en resources bijwerken](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](data-factory-compute-linked-services.md#azure-data-lake-analytics-linked-service) |[Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Opgeslagen procedure](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Hoe kan Azure Data Factory vergelijken met SQL Server Integration Services (SSIS)? 
-Bekijk de [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) -presentatie van een van onze mvp's (meest waardevolle professionals): Reza rad. Sommige van de recente wijzigingen in Data Factory worden mogelijk niet weer gegeven in het diamodel. We voegen continu meer mogelijkheden toe aan Azure Data Factory. We voegen continu meer mogelijkheden toe aan Azure Data Factory. Deze updates worden opgenomen in de vergelijking van technologieën van micro soft die later dit jaar worden geïntegreerd.   
+Raadpleeg de presentatie over [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) van een van onze mvp's (de meest waardevolle professionals): Reza rad. Sommige van de recente wijzigingen in Data Factory worden mogelijk niet weer gegeven in het diamodel. We voegen continu meer mogelijkheden toe aan Azure Data Factory. We voegen continu meer mogelijkheden toe aan Azure Data Factory. Deze updates worden opgenomen in de vergelijking van technologieën van micro soft die later dit jaar worden geïntegreerd.   
 
 ## <a name="activities---faq"></a>Activiteiten-Veelgestelde vragen
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Wat zijn de verschillende soorten activiteiten die u in een Data Factory pijp lijn kunt gebruiken?

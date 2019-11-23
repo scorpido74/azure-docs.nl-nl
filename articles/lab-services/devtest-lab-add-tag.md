@@ -36,11 +36,11 @@ De volgende bronnen worden ondersteund door Tags:
 
 U kunt Tags Toep assen wanneer u [een Lab maakt](devtest-lab-create-lab.md) en deze later beheren via de Blade labels onder configuratie en instellingen.
 
-Elke tag bestaat uit een **naam**@no__t **-1-waardepaar.** U kunt bijvoorbeeld een tag maken met de naam *CostCenter* met de waarde *34543*. Een tag zoals dit kan nuttig zijn bij het identificeren van Lab-resources die Factureerbaar zijn voor dit specifieke gebied van uw organisatie. U krijgt de keuze uit namen en waarden die zinvol zijn voor de manier waarop u uw abonnement wilt ordenen.
+Elke tag bestaat uit een **naam** **/waardepaar** . U kunt bijvoorbeeld een tag maken met de naam *CostCenter* met de waarde *34543*. Een tag zoals dit kan nuttig zijn bij het identificeren van Lab-resources die Factureerbaar zijn voor dit specifieke gebied van uw organisatie. U krijgt de keuze uit namen en waarden die zinvol zijn voor de manier waarop u uw abonnement wilt ordenen.
 
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>Stappen voor het beheren van tags in een bestaand Lab
 
-1. Meld u aan bij de [Azure-portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Meld u aan bij de [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 1. Selecteer indien nodig **alle services**en selecteer vervolgens **DevTest Labs** in de lijst. Uw Lab wordt mogelijk al weer gegeven op het dash board onder **alle resources**.
 1. Selecteer in de lijst met Labs het lab waarin u labels wilt toevoegen of beheren.
 1. Selecteer in het gedeelte **overzicht** van het lab de optie **configuratie en beleid**.
@@ -48,7 +48,7 @@ Elke tag bestaat uit een **naam**@no__t **-1-waardepaar.** U kunt bijvoorbeeld e
     ![Knop configuratie en beleid](./media/devtest-lab-add-tag/devtestlab-config-and-policies.png)
 
 1. Selecteer aan de linkerkant onder **beheren**de optie **Tags**.
-1. Als u een nieuwe tag voor dit Lab wilt maken, voert u een **naam**in @no__t **-1-** paar en selecteert u **Opslaan**. U kunt ook een bestaande tag in de lijst selecteren om de resources die zijn gekoppeld aan deze tag te bekijken of te beheren.
+1. Als u een nieuwe tag voor dit Lab wilt maken, voert u een **naam** **in/waardepaar** en selecteert u **Opslaan**. U kunt ook een bestaande tag in de lijst selecteren om de resources die zijn gekoppeld aan deze tag te bekijken of te beheren.
 
     ![Tags beheren](./media/devtest-lab-add-tag/devtestlab-manage-tags.png)
 

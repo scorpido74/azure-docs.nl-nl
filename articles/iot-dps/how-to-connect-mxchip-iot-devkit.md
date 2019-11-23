@@ -38,10 +38,10 @@ Voer eerst de volgende taken uit om de stappen in deze zelf studie uit te voeren
 
 1. Zorg ervoor dat uw IoT-DevKit **niet is verbonden** met uw computer. Start VS code eerst en sluit de DevKit aan op uw computer.
 
-1. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Azure IOT Device Workbench: Voor beelden openen...** . Selecteer vervolgens **IOT DevKit** as Board.
+1. Klik op `F1` om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: voor beelden openen...** . Selecteer vervolgens **IOT DevKit** as Board.
 
 1. Zoek op de pagina met IoT Workbench-voor beelden de apparaatregistratie **met DPS** en klik op voor **Beeld openen**. Selecteert vervolgens het standaardpad voor het downloaden van de voorbeeld code.
-    ![Open-voor beeld @ no__t-1
+    ![voorbeeld](media/how-to-connect-mxchip-iot-devkit/open-sample.png) openen
 
 ## <a name="save-a-unique-device-secret-on-device-security-storage"></a>Een uniek apparaat geheim opslaan in de beveiligings opslag van het apparaat
 
@@ -56,18 +56,18 @@ Een typische UDS is een teken reeks van 64, zoals in het volgende voor beeld wor
 Een UDS opslaan op de DevKit:
 
 1. Klik in VS code op de status balk om de COM-poort voor de DevKit te selecteren.
-  ![Select COM-poort @ no__t-1
+  ![COM-poort selecteren](media/how-to-connect-mxchip-iot-devkit/select-com.png)
 
 1. Houd op DevKit de **knop** **opnieuw instellen** in de vervolg keuzelijst en laat deze knop los en laat vervolgens **knop a**los. Uw DevKit voert de configuratie modus in.
 
-1. Klik `F1` om het opdracht palet te openen, typ en **Selecteer Azure IOT Device Workbench: Apparaatinstellingen configureren... >-Configuratie unieke apparaatwachtwoord (untekenreeks)** .
-  ![Configure-UDS @ no__t-1
+1. Klik op `F1` om het opdracht palet te openen, typ en selecteer **Azure IOT Device Workbench: Apparaatinstellingen configureren... > Configuratie unieke apparaatklassen (uniciteit)** .
+  ![UDS configureren](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. Noteer de gegenereerde UDS-teken reeks. U hebt deze nodig voor het genereren van het X. 509-certificaat. Druk vervolgens op `Enter`.
-  ![Copy-UDS @ no__t-1
+  ![voor het kopiëren van een UDS-](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
 1. Controleer in de melding dat de UDS is geconfigureerd op de STSAFE.
-  ![Configure-UDS geslaagd @ no__t-1
+  ![](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png) voor UDS geslaagd configureren
 
 > [!NOTE]
 > U kunt ook instellen via een seriële poort met behulp van hulpprogram ma's zoals putty. Volg hiervoor de [configuratie modus](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/) .
@@ -77,38 +77,38 @@ Een UDS opslaan op de DevKit:
 In apparaatcode moet u het [eind punt](/azure/iot-dps/concepts-service#device-provisioning-endpoint) voor het inrichten van het apparaat en de id-scope opgeven om de Tenant isolatie te garanderen.
 
 1. Selecteer in de Azure Portal het deel venster **overzicht** van de Device Provisioning Service en noteer de waarden voor het **globale apparaat-eind punt** en de **id-Scope** .
-  ![Device Provisioning Service globaal eind punt en ID-bereik @ no__t-1
+  ![Device Provisioning Service-globaal eind punt en-ID-bereik](media/how-to-connect-mxchip-iot-devkit/dps-global-endpoint.png)
 
 1. Open **DevKitDPS.ino**. Zoek en vervang `[Global Device Endpoint]` en `[ID Scope]` door de waarden die u zojuist hebt genoteerd.
-  ![Device-inrichtings service-eind punt @ no__t-1
+  ![Device Provisioning Service-eind punt](media/how-to-connect-mxchip-iot-devkit/endpoint.png)
 
-1. Vul de variabele `registrationId` in de code in. Alleen alfanumerieke combi Naties, kleine letters en afbreek streepjes met een maximum van 128 tekens zijn toegestaan. Noteer ook de waarde.
-  ![Registration-ID @ no__t-1
+1. Vul de `registrationId` variabele in de code in. Alleen alfanumerieke combi Naties, kleine letters en afbreek streepjes met een maximum van 128 tekens zijn toegestaan. Noteer ook de waarde.
+  ![registratie-ID](media/how-to-connect-mxchip-iot-devkit/registration-id.png)
 
-1. Klik op `F1`, type en selecteer **Azure IoT Device Workbench: De code**van het apparaat uploaden. U begint met het compileren en uploaden van de code naar DevKit.
-  ![Device upload @ no__t-1
+1. Klik op `F1`, typ en selecteer **Azure IOT Device Workbench: code van het apparaat uploaden**. U begint met het compileren en uploaden van de code naar DevKit.
+  ![apparaat uploaden](media/how-to-connect-mxchip-iot-devkit/device-upload.png)
 
 ## <a name="generate-x509-certificate"></a>X. 509-certificaat genereren
 
 Het [Attestation-mechanisme](/azure/iot-dps/concepts-device#attestation-mechanism) dat door dit voor beeld wordt gebruikt, is X. 509-certificaat. U moet een hulp programma gebruiken om het te genereren.
 
-1. In VS code, klikt u op `F1`, typt en selecteert u **nieuwe terminal openen** om Terminal venster te openen.
+1. In VS code klikt u op `F1`, typt en selecteert u **nieuwe terminal openen** om Terminal venster te openen.
 
-1. Voer `dps_cert_gen.exe` uit in de map `tool`.
+1. Voer `dps_cert_gen.exe` uit in `tool` map.
 
 1. Geef de locatie van de gecompileerde binaire bestanden op als `..\.build\DevKitDPS`. Plak vervolgens de **UDS** en **registratie** die u zojuist hebt genoteerd. 
-  ![Generate X. 509 @ no__t-1
+  ![X. 509-](media/how-to-connect-mxchip-iot-devkit/gen-x509.png) genereren
 
 1. Een `.pem` X. 509-certificaat wordt in dezelfde map gegenereerd.
-  ![X. 509-bestand @ no__t-1
+  ![X. 509-bestand](media/how-to-connect-mxchip-iot-devkit/pem-file.png)
 
 ## <a name="create-a-device-enrollment-entry"></a>Een vermelding voor apparaatinschrijving maken
 
 1. Open in de Azure Portal uw Device Provisioning Service, navigeer naar de sectie registraties beheren en klik op **Individuele inschrijving toevoegen**.
-  @no__t 0Add afzonderlijke inschrijving @ no__t-1
+  ![afzonderlijke registratie toevoegen](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
-1. Klik op het pictogram bestand naast het **primaire certificaat. pem-of. cer-bestand** om het gegenereerde `.pem`-bestand te uploaden.
-  ![Upload. pem @ no__t-1
+1. Klik op het pictogram bestand naast het **primaire certificaat. pem-of CER-bestand** om het gegenereerde `.pem` bestand te uploaden.
+  ![upload. pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>Controleren of de DevKit is geregistreerd bij Azure IoT Hub
 
@@ -119,7 +119,7 @@ Druk op de knop **Reset** op uw DevKit. U ziet dat **DPS Connected is.** op het 
 1. Bij een geslaagde registratie verzendt de Device Provisioning Service de IoT Hub URI, de apparaat-ID en de versleutelde sleutel terug naar het apparaat.
 1. De IoT Hub-client toepassing op het apparaat maakt verbinding met uw hub.
 1. Wanneer de verbinding met de hub is geslaagd, ziet u dat het apparaat wordt weer gegeven in de IoT Hub Device Explorer.
-  ![Device geregistreerd @ no__t-1
+  ![apparaat geregistreerd](./media/how-to-connect-mxchip-iot-devkit/device-registered.png)
 
 ## <a name="problems-and-feedback"></a>Problemen en feedback
 

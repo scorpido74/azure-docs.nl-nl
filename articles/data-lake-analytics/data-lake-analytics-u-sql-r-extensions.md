@@ -20,9 +20,9 @@ ms.locfileid: "71672684"
 
 In het volgende voor beeld ziet u de basis stappen voor het implementeren van R-code:
 * Gebruik de instructie `REFERENCE ASSEMBLY` om R-extensies in te scha kelen voor het U-SQL-script.
-* Gebruik de `REDUCE`-bewerking voor het partitioneren van de invoer gegevens op een sleutel.
-* De R-uitbrei dingen voor U-SQL bevatten een ingebouwde versmaller (@no__t 0) waarmee de R-code wordt uitgevoerd op elk hoek punt dat aan de verminderr is toegewezen. 
-* Gebruik van toegewezen benoemde gegevens frames met de naam `inputFromUSQL` en `outputToUSQL` respectievelijk voor het door geven van gegevens tussen U-SQL en R. invoer-en uitvoer data frame-id-id's zijn vast (dat wil zeggen, gebruikers kunnen deze namen van invoer-en uitvoer data frame-id's niet wijzigen).
+* Gebruik de `REDUCE` bewerking voor het partitioneren van de invoer gegevens op een sleutel.
+* De R-uitbrei dingen voor U-SQL bevatten een ingebouwde versmaller (`Extension.R.Reducer`) waarbij R-code wordt uitgevoerd op elk hoek punt dat aan de reducer is toegewezen. 
+* Gebruik van toegewezen benoemde gegevens frames met de naam `inputFromUSQL` en `outputToUSQL` respectievelijk om gegevens door te geven tussen U-SQL en R. invoer-en uitvoer data frame-id-id's zijn vast (dat wil zeggen, gebruikers kunnen deze namen van invoer-en uitvoer data frame-id's niet wijzigen).
 
 ## <a name="embedding-r-code-in-the-u-sql-script"></a>R-code in het U-SQL-script insluiten
 
@@ -92,9 +92,9 @@ Gebruik een U-SQL-script om dat R-script te implementeren met de instructie DEPL
 
 ### <a name="datatypes"></a>Gegevens typen
 * Teken reeks-en numerieke kolommen van U-SQL worden geconverteerd als-tussen R data frame en U-SQL [ondersteunde typen: `double`, `string`, `bool`, `integer`, `byte`].
-* Het data type `Factor` wordt niet ondersteund in U-SQL.
-* `byte[]` moet worden geserialiseerd als een met base64 versleutelde `string`.
-* U-SQL-teken reeksen kunnen worden geconverteerd naar factoren in R-code, wanneer U-SQL een R-invoer data frame maakt of door de para meter reducer `stringsAsFactors: true` in te stellen.
+* Het `Factor` data type wordt niet ondersteund in U-SQL.
+* `byte[]` moet worden geserialiseerd als een met base64 gecodeerde `string`.
+* U-SQL-teken reeksen kunnen worden geconverteerd naar factoren in R-code, wanneer U-SQL een R-invoer data frame maakt of door de para meter reducer `stringsAsFactors: true`in te stellen.
 
 ### <a name="schemas"></a>Schema's
 * U-SQL-gegevens sets mogen geen dubbele kolom namen bevatten.
@@ -167,7 +167,7 @@ Meer voorbeeld code is beschikbaar in uw Data Lake Store-account nadat u de U-SQ
 
 ## <a name="deploying-custom-r-modules-with-u-sql"></a>Aangepaste R-modules implementeren met U-SQL
 
-Maak eerst een aangepaste R-module en verzend deze en upload het bestand met de aangepaste module zip R naar uw ADL Store. In het voor beeld worden magittr_ 1.5. zip geüpload naar de hoofdmap van het standaard account ADLS voor het ADLA-account dat we gebruiken. Als u de module uploadt naar de ADL-opslag, declareert u deze als RESOURCE voor DEPLOY gebruiken om deze beschikbaar te maken in uw U-SQL-script en roept u `install.packages` aan om het te installeren.
+Maak eerst een aangepaste R-module en verzend deze en upload het bestand met de aangepaste module zip R naar uw ADL Store. In het voor beeld worden magittr_1 0,5. zip geüpload naar de hoofdmap van het standaard ADLS-account voor het ADLA-account dat we gebruiken. Wanneer u de module uploadt naar de ADL-Store, declareert u deze als RESOURCE voor DEPLOY gebruiken om deze beschikbaar te maken in uw U-SQL-script en roept u `install.packages` aan om het te installeren.
 
     REFERENCE ASSEMBLY [ExtR];
     DEPLOY RESOURCE @"/magrittr_1.5.zip";

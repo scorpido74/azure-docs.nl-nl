@@ -37,7 +37,7 @@ In deze sectie worden de mogelijkheden van Azure HDInsight toegelicht.
 |Mogelijkheid  |Beschrijving  |
 |---------|---------|
 |Cloudeigen     |     Met Azure HDInsight kunt u geoptimaliseerde clusters maken voor [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md), [Apache Spark](./spark/apache-spark-jupyter-spark-sql.md), [interactieve query’s (LLAP)](./interactive-query/apache-interactive-query-get-started.md), [Kafka](./kafka/apache-kafka-get-started.md), [ Storm](./storm/apache-storm-tutorial-get-started-linux.md), [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) en [ML Services](./r-server/r-server-overview.md) in Azure. HDInsight Biedt tevens een end-to-end SLA voor al uw productieworkloads.  |
-|Voordelig en schaalbaar     | Met HDInsight kunt u [workloads](./hdinsight-administer-use-portal-linux.md#scale-clusters)  vergroten/verkleinen. U kunt de kosten verlagen door [clusters op aanvraag te maken](./hdinsight-hadoop-create-linux-clusters-adf.md)  and alleen te betalen voor wat u gebruikt. U kunt ook gegevenspijplijnen maken om uw taken operationeel maken. Rekenwerk en opslag zijn niet langer gekoppeld, voor betere prestaties en flexibiliteit. |
+|Voordelig en schaalbaar     | Met HDInsight kunt u [workloads](./hdinsight-administer-use-portal-linux.md#scale-clusters)  vergroten/verkleinen. U kunt de kosten verlagen door [clusters op aanvraag te maken](./hdinsight-hadoop-create-linux-clusters-adf.md) en alleen te betalen voor wat u gebruikt. U kunt ook gegevenspijplijnen maken om uw taken operationeel maken. Rekenwerk en opslag zijn niet langer gekoppeld, voor betere prestaties en flexibiliteit. |
 |Beveiligd en compatibel    | Met HDInsight kunt u uw zakelijke gegevensassets beschermen met [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), [versleuteling](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) en integratie met [Azure Active Directory](./domain-joined/hdinsight-security-overview.md). HDInsight voldoet aan de meeste populaire [nalevingsstandaarden](https://azure.microsoft.com/overview/trusted-cloud) van de industrie en de overheid.        |
 |Controleren    | Azure HDInsight kan worden geïntegreerd met [Azure Monitor-logboeken](./hdinsight-hadoop-oms-log-analytics-tutorial.md) en biedt zo één enkele interface waarmee u al uw clusters kunt bewaken.        |
 |Wereldwijde beschikbaarheid | HDInsight is wereldwijd beschikbaar in meer  [regio's](https://azure.microsoft.com/regions/services/)  dan welk ander aanbod voor big-data-analyses ook. Azure HDInsight is ook beschikbaar in Azure Government, China en Duitsland, waarmee u kunt voldoen aan de behoeften van uw bedrijf in belangrijke soevereine gebieden. |  
@@ -58,7 +58,7 @@ Met HDInsight kunt u interactieve query's op petabyte-schaal uitvoeren voor gest
 
 ![HDInsight-architectuur: gegevens opslag](./hadoop/media/apache-hadoop-introduction/hdinsight-architecture-data-warehouse.png "Gegevens opslag architectuur HDInsight")
 
-### <a name="internet-of-things-iot"></a>Internet der dingen (IoT)
+### <a name="internet-of-things-iot"></a>Internet of Things (IoT)
 
 U kunt HDInsight gebruiken voor het verwerken van streaminggegevens die in realtime worden ontvangen vanaf een breed scala aan apparaten. Voor meer informatie leest u [deze Azure-blogpost](https://azure.microsoft.com/blog/announcing-public-preview-of-apache-kafka-on-hdinsight-with-azure-managed-disks/) waarin de openbare preview van Apache Kafka in HDInsight met Azure Managed Disks wordt aangekondigd.
 
@@ -100,7 +100,7 @@ HDInsight-clusters, waaronder Spark, HBase, Kafka, Hadoop en andere, bieden onde
 
 |Programmeertaal  |Informatie  |
 |---------|---------|
-|Standaardondersteuning voor programmeertalen     | Standaard bieden HDInsight-clusters ondersteuning voor:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Go</li></ul>  |
+|Standaardondersteuning voor programmeertalen     | Standaard bieden HDInsight-clusters ondersteuning voor:<ul><li>Java</li><li>Python</li><li>.NET</li><li>Aan de slag</li></ul>  |
 |JVM-talen (Java Virtual Machine)     | Op een virtuele Java-machine (JVM) kunnen naast Java ook vele andere talen worden uitgevoerd. Voor sommige van deze talen moet u mogelijk echter aanvullende onderdelen in het cluster installeren. De volgende JVM-talen worden in HDInsight-clusters ondersteund: <ul><li>Clojure</li><li>Jython (Python voor Java)</li><li>Scala</li></ul>     |
 |Hadoop-specifieke talen     | HDInsight-clusters bieden ondersteuning voor de volgende talen die specifiek zijn voor de Hadoop-technologiestack: <ul><li>Pig Latin voor Pig-taken</li><li>HiveQL voor Hive-taken en SparkSQL</li></ul>        |
 

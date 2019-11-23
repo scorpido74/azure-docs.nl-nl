@@ -40,7 +40,7 @@ Zodra uw micro soft-Web Application Firewall is geïmplementeerd en gegevens hee
     
 1. Selecteer in de Azure-Sentinel-Portal de optie **Data connectors**.
 1. Selecteer op de pagina Data connectors de tegel **WAF** .
-1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) and Kies uw WAF.
+1. Ga naar [Application Gateway resource](https://ms.portal.azure.com/#blade/HubsExtension/BrowseAllResourcesBlade/resourceType/Microsoft.Network%2FapplicationGateways) en kies uw WAF.
     1. Selecteer **Diagnostische instellingen**.
     1. Selecteer **+ Diagnostische instelling toevoegen** onder de tabel.
     1. Typ op de pagina **Diagnostische instellingen** een **naam** en selecteer **verzenden naar log Analytics**.

@@ -22,7 +22,7 @@ Voor meer informatie over het Kubernetes-dash board raadpleegt u [Kubernetes Web
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-Voor de stappen die in dit document worden beschreven, wordt ervan uitgegaan dat u een AKS `kubectl` -cluster hebt gemaakt en een verbinding met het cluster tot stand hebt gebracht. Als u een AKS-cluster moet maken, raadpleegt u de [AKS Quick][aks-quickstart]start.
+Voor de stappen die in dit document worden beschreven, wordt ervan uitgegaan dat u een AKS-cluster hebt gemaakt en dat er een `kubectl` verbinding met het cluster tot stand is gebracht. Als u een AKS-cluster moet maken, raadpleegt u de [AKS Quick][aks-quickstart]start.
 
 Ook moet de Azure CLI-versie 2.0.46 of later zijn geïnstalleerd en geconfigureerd. Voer  `az --version`  uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren][install-azure-cli].
 
@@ -34,7 +34,7 @@ Als u het Kubernetes-dash board wilt starten, gebruikt u de opdracht [AZ AKS Bro
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Met deze opdracht maakt u een proxy tussen uw ontwikkel systeem en de Kubernetes-API en opent u een webbrowser op het Kubernetes-dash board. Als een webbrowser niet wordt geopend in het Kubernetes-dash board, kopieert en plakt u het URL-adres dat u in `http://127.0.0.1:8001`de Azure cli hebt genoteerd, meestal.
+Met deze opdracht maakt u een proxy tussen uw ontwikkel systeem en de Kubernetes-API en opent u een webbrowser op het Kubernetes-dash board. Als een webbrowser niet wordt geopend in het Kubernetes-dash board, kopieert en plakt u het URL-adres dat wordt vermeld in de Azure CLI, meestal `http://127.0.0.1:8001`.
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -119,7 +119,7 @@ Een implementatie bewerken:
 
 1. Selecteer **implementaties** in het menu links en kies vervolgens uw *nginx* -implementatie.
 1. Selecteer **bewerken** in de rechter bovenhoek navigatie balk.
-1. Zoek de `spec.replica` waarde, rond regel 20. Als u het aantal replica's voor de toepassing wilt verhogen, wijzigt u deze waarde van *1* in *3*.
+1. Zoek de `spec.replica` waarde op regel 20. Als u het aantal replica's voor de toepassing wilt verhogen, wijzigt u deze waarde van *1* in *3*.
 1. Selecteer **bijwerken** wanneer gereed.
 
 ![De implementatie bewerken om het aantal replica's bij te werken](./media/kubernetes-dashboard/edit-deployment.png)

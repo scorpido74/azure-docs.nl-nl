@@ -57,13 +57,13 @@ De volgende afbeelding toont een overzicht op hoog niveau van de interverbinding
 1. Maak een dynamische routerings gateway (DRG). U hebt dit nodig bij het maken van uw FastConnect-circuit. Zie de documentatie voor [dynamische routerings gateway](https://docs.cloud.oracle.com/iaas/Content/Network/Tasks/managingDRGs.htm) voor meer informatie.
 1. Maak een FastConnect-circuit onder uw Oracle-Tenant. Raadpleeg de [Oracle-documentatie](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/azure.htm)voor meer informatie.
   
-    * Onder FastConnect-configuratie selecteert u **Microsoft Azure: ExpressRoute @ no__t-0 als provider.
+    * Onder FastConnect-configuratie selecteert u **Microsoft Azure: ExpressRoute** als provider.
     * Selecteer de dynamische routerings gateway die u in de vorige stap hebt ingericht.
     * Selecteer de band breedte die moet worden ingericht. Voor optimale prestaties moet de band breedte overeenkomen met de band breedte die is geselecteerd bij het maken van het ExpressRoute-circuit.
     * Plak de ExpressRoute-service sleutel in **Provider service sleutel**.
     * Gebruik de eerste/30 persoonlijke IP-adres ruimte gehaald uit in een vorige stap voor het **primaire BGP IP-adres** en de tweede/30 privé IP-adres ruimte voor het **secundaire BGP IP-** adres.
         * Wijs het eerste bebruikbaar adres van de twee bereiken voor het IP-adres van de Oracle BGP (primair en secundair) en het tweede adres toe aan het BGP-IP-adres van de klant (vanuit een FastConnect-perspectief). Het eerste bebruikbaarde IP-adres is het tweede IP-adres in de/30-adres ruimte (het eerste IP-adres is gereserveerd door micro soft).
-    * Klik op **Create**.
+    * Klik op **Maken**.
 1. Voltooi het koppelen van de FastConnect aan het virtuele Cloud netwerk onder uw Oracle-Tenant via de dynamische routerings gateway via de route tabel.
 1. Ga naar Azure en zorg ervoor dat de **provider status** voor uw ExpressRoute-circuit is gewijzigd in **ingericht** en dat een peering van het type **Azure private** is ingericht. Dit is een vereiste voor de volgende stappen.
 
@@ -85,7 +85,7 @@ Micro soft heeft terraform-scripts gemaakt om de automatische implementatie van 
 
 De terraform-scripts en gerelateerde documentatie voor het implementeren van de Inter-Connect vindt u in deze [github-opslag plaats](https://aka.ms/azureociinterconnecttf).
 
-## <a name="monitoring"></a>Bewaking
+## <a name="monitoring"></a>Controleren
 
 Als u agents op beide Clouds installeert, kunt u gebruikmaken van Azure [Netwerkprestatiemeter (NPM)](../../../expressroute/how-to-npm.md) om de prestaties van het end-to-end netwerk te bewaken. NPM helpt u bij het eenvoudig identificeren van netwerk problemen en helpt ze te elimineren.
 

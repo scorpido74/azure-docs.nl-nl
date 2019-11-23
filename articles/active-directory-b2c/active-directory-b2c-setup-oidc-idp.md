@@ -39,25 +39,25 @@ Om gebruikers toe te staan zich aan te melden, vereist de ID-provider ontwikkel 
 > [!NOTE]
 > Het client geheim is optioneel. U moet echter een client geheim invoeren als u de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wilt gebruiken, die het geheim gebruikt voor het uitwisselen van de code voor het token.
 
-## <a name="scope"></a>Scope
+## <a name="scope"></a>Bereik
 
-Met het bereik worden de informatie en machtigingen gedefinieerd die u wilt verzamelen uit uw aangepaste ID-provider. OpenID Connect Connect-aanvragen moeten de bereik waarde van @no__t 0 bevatten om het ID-token van de ID-provider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste ID-provider. Andere bereiken kunnen worden toegevoegd, gescheiden door een spatie. Raadpleeg de documentatie van de aangepaste ID-provider om te zien welke andere bereiken mogelijk beschikbaar zijn.
+Met het bereik worden de informatie en machtigingen gedefinieerd die u wilt verzamelen uit uw aangepaste ID-provider. OpenID Connect Connect-aanvragen moeten de `openid` bereik waarde bevatten om het ID-token van de ID-provider te ontvangen. Zonder het ID-token kunnen gebruikers zich niet aanmelden bij Azure AD B2C met behulp van de aangepaste ID-provider. Andere bereiken kunnen worden toegevoegd, gescheiden door een spatie. Raadpleeg de documentatie van de aangepaste ID-provider om te zien welke andere bereiken mogelijk beschikbaar zijn.
 
-## <a name="response-type"></a>Reactietype
+## <a name="response-type"></a>Antwoord type
 
 Het antwoord type beschrijft wat voor soort informatie wordt weer gegeven in de eerste aanroep van de `authorization_endpoint` van de aangepaste ID-provider. De volgende antwoord typen kunnen worden gebruikt:
 
-* `code`: Volgens de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wordt een code geretourneerd naar Azure AD B2C. Azure AD B2C opbrengst om de `token_endpoint` aan te roepen om de code voor het token uit te wisselen.
-* `id_token`: Er wordt een ID-token geretourneerd naar Azure AD B2C van de aangepaste ID-provider.
+* `code`: als gevolg van de [autorisatie code stroom](https://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)wordt een code geretourneerd naar Azure AD B2C. Azure AD B2C opbrengsten om de `token_endpoint` aan te roepen om de code voor het token uit te wisselen.
+* `id_token`: er wordt een ID-token geretourneerd naar Azure AD B2C van de aangepaste ID-provider.
 
-## <a name="response-mode"></a>Antwoordmodus
+## <a name="response-mode"></a>Antwoord modus
 
 De antwoord modus definieert de methode die moet worden gebruikt om de gegevens terug van de aangepaste ID-provider naar Azure AD B2C te verzenden. De volgende antwoord modi kunnen worden gebruikt:
 
-* `form_post`: Deze antwoord modus wordt aanbevolen voor de beste beveiliging. Het antwoord wordt verzonden via de HTTP-methode `POST`, waarbij de code of het token wordt gecodeerd in de hoofd tekst met de `application/x-www-form-urlencoded`-indeling.
-* `query`: De code of het token wordt geretourneerd als een query parameter.
+* `form_post`: deze antwoord modus wordt aanbevolen voor de beste beveiliging. Het antwoord wordt verzonden via de HTTP-`POST` methode, waarbij de code of het token wordt gecodeerd in de hoofd tekst met de `application/x-www-form-urlencoded`-indeling.
+* `query`: de code of het token wordt geretourneerd als een query parameter.
 
-## <a name="domain-hint"></a>Domeinhint
+## <a name="domain-hint"></a>Domein Hint
 
 De domein hint kan worden gebruikt om rechtstreeks over te slaan op de aanmeldings pagina van de opgegeven id-provider, in plaats van dat de gebruiker een selectie maakt tussen de lijst met beschik bare id-providers. Als u dit gedrag wilt toestaan, voert u een waarde in voor de domein hint. Als u naar de aangepaste ID-provider wilt gaan, voegt u de para meter `domain_hint=<domain hint value>` toe aan het einde van uw aanvraag wanneer u Azure AD B2C aanroept om u aan te melden.
 
@@ -65,8 +65,8 @@ De domein hint kan worden gebruikt om rechtstreeks over te slaan op de aanmeldin
 
 Wanneer de aangepaste ID-provider een ID-token terugstuurt naar Azure AD B2C, moet Azure AD B2C de claims van het ontvangen token kunnen toewijzen aan de claims die Azure AD B2C herkent en gebruikt. Raadpleeg de documentatie van de Custom ID-provider voor elk van de volgende toewijzingen om inzicht te krijgen in de claims die terug worden geretourneerd in de tokens van de identiteits provider:
 
-* **Gebruikers-id**: Voer de claim in die de *unieke id* voor de aangemelde gebruiker levert.
-* **Weergave naam**: Voer de claim in die de *weergave naam* of *volledige naam* voor de gebruiker levert.
+* **Gebruikers-id**: Geef de claim op die de *unieke id* voor de aangemelde gebruiker levert.
+* **Weergave naam**: Geef de claim op die de *weergave naam* of de *volledige naam* voor de gebruiker levert.
 * Voor **naam**: Voer de claim in die de *voor naam* van de gebruiker levert.
-* **Achternaam**: Voer de claim in die de *Achternaam* van de gebruiker levert.
+* **Naam**: Voer de claim in die de *Achternaam* van de gebruiker levert.
 * **E-mail**: Voer de claim in die het *e-mail adres* van de gebruiker levert.

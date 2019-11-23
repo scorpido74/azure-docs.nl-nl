@@ -27,7 +27,7 @@ ms.locfileid: "72388700"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 In deze zelf studie voegt u verificatie toe aan het [Quick start voor iOS] -project met behulp van een ondersteunde ID-provider. Deze zelf studie is gebaseerd op de zelf studie voor [Quick start voor iOS] , die u eerst moet volt ooien.
 
@@ -38,7 +38,7 @@ In deze zelf studie voegt u verificatie toe aan het [Quick start voor iOS] -proj
 
 Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.  Hierdoor kan het verificatie systeem terugkeren naar uw app nadat het verificatie proces is voltooid.  In deze zelf studie gebruiken we het URL-schema _AppName_ in.  U kunt echter elk gewenst URL-schema gebruiken.  Deze moet uniek zijn voor uw mobiele toepassing.  De omleiding inschakelen op de server zijde:
 
-1. Selecteer uw App Service in de [Azure-portal].
+1. Selecteer uw App Service in de [Azure Portal].
 
 2. Klik op de menu optie voor **verificatie/autorisatie** .
 
@@ -46,7 +46,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 
 4. Stel de **beheer modus** in op **Geavanceerd**.
 
-5. Voer in de **toegestane externe omleidings-url's**`appname://easyauth.callback` in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
+5. In de **toegestane externe omleidings-url's**voert u `appname://easyauth.callback`in.  De _AppName_ in deze teken reeks is het URL-schema voor uw mobiele toepassing.  De standaard URL-specificatie voor een protocol moet volgen (alleen letters en cijfers gebruiken en beginnen met een letter).  U moet een notitie maken van de teken reeks die u kiest, omdat u de code van uw mobiele toepassing moet aanpassen aan het URL-schema op verschillende locaties.
 
 6. Klik op **OK**.
 
@@ -58,7 +58,7 @@ Voor beveiligde verificatie moet u een nieuw URL-schema definiëren voor uw app.
 Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring gegenereerd omdat de app toegang probeert te krijgen tot de back-end als niet-geverifieerde gebruiker, maar voor de tabel *TodoItem* nu verificatie is vereist.
 
 ## <a name="add-authentication"></a>Verificatie toevoegen aan de app
-**Doel-C**:
+**Objective-C**:
 
 1. Open *QSTodoListViewController. m* in Xcode in uw Mac en voeg de volgende methode toe:
 
@@ -92,7 +92,7 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
     [self loginAndGetData];
     ```
 
-3. Open het bestand `QSAppDelegate.h` en voeg de volgende code toe:
+3. Open bestand `QSAppDelegate.h` en voeg de volgende code toe:
 
     ```Objective-C
     #import "QSTodoService.h"
@@ -100,7 +100,7 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
     @property (strong, nonatomic) QSTodoService *qsTodoService;
     ```
 
-4. Open het bestand `QSAppDelegate.m` en voeg de volgende code toe:
+4. Open bestand `QSAppDelegate.m` en voeg de volgende code toe:
 
     ```Objective-C
     - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options
@@ -115,9 +115,9 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
     }
     ```
 
-   Voeg deze code rechtstreeks toe voordat de regel `#pragma mark - Core Data stack` wordt gelezen.  Vervang de _AppName_ door de urlScheme-waarde die u in stap 1 hebt gebruikt.
+   Voeg deze code rechtstreeks toe voordat de `#pragma mark - Core Data stack`van de regel wordt gelezen.  Vervang de _AppName_ door de urlScheme-waarde die u in stap 1 hebt gebruikt.
 
-5. Open het bestand `AppName-Info.plist` (waarbij AppName wordt vervangen door de naam van uw app) en voeg de volgende code toe:
+5. Open het `AppName-Info.plist` bestand (waarbij AppName wordt vervangen door de naam van uw app) en voeg de volgende code toe:
 
     ```XML
     <key>CFBundleURLTypes</key>
@@ -133,9 +133,9 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
     </array>
     ```
 
-    Deze code moet in het element `<dict>` worden geplaatst.  Vervang de teken reeks _AppName_ (binnen de matrix voor **CFBundleURLSchemes**) door de naam van de app die u in stap 1 hebt gekozen.  U kunt deze wijzigingen ook aanbrengen in de plist-editor: Klik op het `AppName-Info.plist`-bestand in XCode om de plist-editor te openen.
+    Deze code moet binnen het `<dict>`-element worden geplaatst.  Vervang de teken reeks _AppName_ (binnen de matrix voor **CFBundleURLSchemes**) door de naam van de app die u in stap 1 hebt gekozen.  U kunt deze wijzigingen ook aanbrengen in de plist-editor. Klik op het `AppName-Info.plist` bestand in XCode om de plist-editor te openen.
 
-    Vervang de teken reeks @no__t 0 voor **CFBundleURLName** met uw Apple bundel-id.
+    Vervang de `com.microsoft.azure.zumo` teken reeks door **CFBundleURLName** met uw Apple bundel-id.
 
 6. Druk op *uitvoeren* om de app te starten en meld u vervolgens aan. Wanneer u bent aangemeld, kunt u de taken lijst weer geven en updates maken.
 
@@ -172,13 +172,13 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
 
     Vervang de **urlScheme** door een unieke naam voor uw toepassing.  De urlScheme moet hetzelfde zijn als het URL-schema protocol dat u hebt opgegeven in het veld **toegestane externe omleidings-url's** in de Azure Portal. De urlScheme wordt gebruikt door de aanroep van de verificatie om terug te gaan naar uw toepassing nadat de verificatie aanvraag is voltooid.
 
-2. Verwijder de regels `self.refreshControl?.beginRefreshing()` en `self.onRefresh(self.refreshControl)` aan het einde van `viewDidLoad()` in *ToDoTableViewController. Swift*. Voeg op hun plaats een aanroep toe aan `loginAndGetData()`:
+2. Verwijder de lijnen `self.refreshControl?.beginRefreshing()` en `self.onRefresh(self.refreshControl)` aan het einde van `viewDidLoad()` in *ToDoTableViewController. Swift*. Voeg op hun plaats een aanroep toe aan `loginAndGetData()`:
 
     ```swift
     loginAndGetData()
     ```
 
-3. Open het bestand `AppDelegate.swift` en voeg de volgende regel toe aan de klasse `AppDelegate`:
+3. Open het `AppDelegate.swift`-bestand en voeg de volgende regel toe aan de `AppDelegate`-klasse:
 
     ```swift
     var todoTableViewController: ToDoTableViewController?
@@ -195,7 +195,7 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
 
     Vervang de _AppName_ door de urlScheme-waarde die u in stap 1 hebt gebruikt.
 
-4. Open het bestand `AppName-Info.plist` (waarbij AppName wordt vervangen door de naam van uw app) en voeg de volgende code toe:
+4. Open het `AppName-Info.plist` bestand (waarbij AppName wordt vervangen door de naam van uw app) en voeg de volgende code toe:
 
     ```xml
     <key>CFBundleURLTypes</key>
@@ -211,9 +211,9 @@ Druk in Xcode op **uitvoeren** om de app te starten. Er wordt een uitzonde ring 
     </array>
     ```
 
-    Deze code moet in het element `<dict>` worden geplaatst.  Vervang de teken reeks _AppName_ (binnen de matrix voor **CFBundleURLSchemes**) door de naam van de app die u in stap 1 hebt gekozen.  U kunt deze wijzigingen ook aanbrengen in de plist-editor: Klik op het `AppName-Info.plist`-bestand in XCode om de plist-editor te openen.
+    Deze code moet binnen het `<dict>`-element worden geplaatst.  Vervang de teken reeks _AppName_ (binnen de matrix voor **CFBundleURLSchemes**) door de naam van de app die u in stap 1 hebt gekozen.  U kunt deze wijzigingen ook aanbrengen in de plist-editor. Klik op het `AppName-Info.plist` bestand in XCode om de plist-editor te openen.
 
-    Vervang de teken reeks @no__t 0 voor **CFBundleURLName** met uw Apple bundel-id.
+    Vervang de `com.microsoft.azure.zumo` teken reeks door **CFBundleURLName** met uw Apple bundel-id.
 
 5. Druk op *uitvoeren* om de app te starten en meld u vervolgens aan. Wanneer u bent aangemeld, kunt u de taken lijst weer geven en updates maken.
 
@@ -222,7 +222,7 @@ Bij App Service-verificatie wordt gebruikgemaakt van Apple-communicatie tussen a
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
 [2]: https://developer.apple.com/library/content/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/Inter-AppCommunication/Inter-AppCommunication.html
-[Azure-portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 
 [Quick start voor iOS]: app-service-mobile-ios-get-started.md
 

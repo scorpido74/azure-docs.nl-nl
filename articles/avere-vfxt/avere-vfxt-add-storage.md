@@ -47,7 +47,7 @@ Met de volgende stappen wordt een NAS-kern bestand toegevoegd:
 
 1. Klik in het configuratie scherm van AVERE op het tabblad **instellingen** bovenaan.
 
-1. Klik op **kern bestand** > **kern bestanden** aan de linkerkant beheren.
+1. Klik op **kern bestand** > voor het **beheren van kern bestanden** aan de linkerkant.
 
 1. Klik op **Maken**.
 
@@ -98,7 +98,7 @@ Voer de volgende stappen uit om Blob-opslag toe te voegen na het maken van het c
 
    U kunt de Azure Portal gebruiken of klikken op de knop implementeren naar Azure hieronder.
 
-   [![button voor het maken van een opslag account](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
+   [![knop voor het maken van een opslag account](media/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAvere%2Fmaster%2Fsrc%2Fvfxt%2Fstorageaccount%2Fazuredeploy.json)
 
 1. Nadat het account is gemaakt, bladert u naar de pagina voor het opslag account.
 
@@ -112,7 +112,7 @@ Voer de volgende stappen uit om Blob-opslag toe te voegen na het maken van het c
 
    ![Azure Portal GUI voor het kopiëren van de sleutel](media/avere-vfxt-copy-storage-key.png) 
 
-1. Open het configuratie scherm van AVERE voor uw cluster. Klik op **instellingen**en open vervolgens **cluster**@no__t 2-**referenties voor Cloud** in het navigatie deel venster aan de linkerkant. Klik op de pagina Cloud referenties op **referentie toevoegen**.
+1. Open het configuratie scherm van AVERE voor uw cluster. Klik op **instellingen**en open vervolgens **cluster** > referenties voor de **Cloud** in het navigatie deel venster aan de linkerkant. Klik op de pagina Cloud referenties op **referentie toevoegen**.
 
    ![Klik op de knop referentie toevoegen op de pagina configuratie van Cloud referenties](media/avere-vfxt-new-credential-button.png)
 
@@ -159,14 +159,14 @@ Vervolgens moet u [een verbinding maken](#create-a-junction).
 
 Een verbinding is een pad dat u voor clients maakt. Clients koppelen het pad en ontvangen op de bestemming die u kiest.
 
-U kunt bijvoorbeeld `/avere/files` maken om toe te wijzen aan uw NetApp core-bestand `/vol0/data`-export en de submap `/project/resources`.
+U kunt bijvoorbeeld `/avere/files` maken om toe te wijzen aan uw NetApp-kern bestand `/vol0/data` exporteren en de `/project/resources` submap.
 
 Meer informatie over koppelingen vindt u in de [sectie naam ruimte van de avere-cluster configuratie handleiding](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_namespace.html).
 
 Volg deze stappen in de instellingen interface van het configuratie scherm van AVERE:
 
 * Klik in de linkerbovenhoek op **VServer** > **naam ruimte** .
-* Geef een naam ruimte-pad op dat begint met/(slash), bijvoorbeeld ``/avere/data``.
+* Geef een naam ruimte-pad op dat begint met/(slash), zoals ``/avere/data``.
 * Kies uw kern bestand.
 * Kies de kern bestands export.
 * Klik op **Volgende**.

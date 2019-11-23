@@ -35,7 +35,7 @@ In de categorie ' volwassene ' zijn er verschillende categorieën:
 
 ## <a name="use-the-api"></a>De API gebruiken
 
-U kunt inhoud voor volwassenen detecteren met de API voor het [analyseren van afbeeldingen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Wanneer u de waarde van `Adult` toevoegt aan de query parameter **visualFeatures** , retourneert de API drie Booleaanse eigenschappen @ no__t-2 @ no__t-3, `isRacyContent` en `isGoryContent` @ no__t-6IN het JSON-antwoord. De-methode retourneert ook overeenkomende eigenschappen @ no__t-0 @ no__t-1, `racyScore` en `goreScore` @ no__t-4which geven betrouwbaarheids scores weer tussen nul en één voor elke betreffende categorie.
+U kunt inhoud voor volwassenen detecteren met de API voor het [analyseren van afbeeldingen](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) . Wanneer u de waarde van `Adult` toevoegt aan de query parameter **visualFeatures** , retourneert de API drie booleaanse eigenschappen&mdash;`isAdultContent`, `isRacyContent`en `isGoryContent`&mdash;in het JSON-antwoord. De methode retourneert ook overeenkomende eigenschappen&mdash;`adultScore`, `racyScore`en `goreScore`&mdash;die vertrouwens scores vertegenwoordigen tussen nul en één voor elke betreffende categorie.
 
-- [Snelstart: Een installatie kopie (.NET SDK) analyseren ](./quickstarts-sdk/csharp-analyze-sdk.md)
-- [Snelstart: Een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)
+- [Snelstartgids: een afbeelding analyseren (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+- [Quick Start: een afbeelding analyseren (REST API)](./quickstarts/csharp-analyze.md)

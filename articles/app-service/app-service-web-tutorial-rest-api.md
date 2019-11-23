@@ -158,7 +158,7 @@ Voor de voorbeeld-app opnieuw uit in het lokale terminalvenster.
 dotnet run
 ```
 
-Ga naar de browser-app op `http://localhost:5000`. Open het venster ontwikkel hulpprogramma's in uw browser (`Ctrl` @ no__t-1 @ no__t-2 @ no__t-3 @ no__t-4 in Chrome voor Windows) en controleer het tabblad **console** . U ziet nu het fout bericht `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
+Ga naar de browser-app op `http://localhost:5000`. Open het venster ontwikkel hulpprogramma's in uw browser (`Ctrl`+`Shift`+`i` in Chrome voor Windows) en controleer het tabblad **console** . U ziet nu het fout bericht `No 'Access-Control-Allow-Origin' header is present on the requested resource`.
 
 ![CORS-fout in de browserclient](./media/app-service-web-tutorial-rest-api/azure-app-service-cors-error.png)
 
@@ -177,7 +177,7 @@ az resource update --name web --resource-group myResourceGroup --namespace Micro
 U kunt in `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`) meer dan één client-URL instellen. Met `"['*']"` kunt u ook alle client-URL's instellen.
 
 > [!NOTE]
-> Als er voor uw app referenties, zoals cookies of verificatietokens, moeten worden verzonden, is het mogelijk dat de browser de header `ACCESS-CONTROL-ALLOW-CREDENTIALS` van het antwoord vereist. Als u dit wilt inschakelen in App Service, stelt u `properties.cors.supportCredentials` in op `true` in de CORS-configuratie. Dit kan niet worden ingeschakeld als `allowedOrigins` `'*'` bevat.
+> Als er voor uw app referenties, zoals cookies of verificatietokens, moeten worden verzonden, is het mogelijk dat de browser de header `ACCESS-CONTROL-ALLOW-CREDENTIALS` van het antwoord vereist. Als u dit wilt inschakelen in App Service, stelt u `properties.cors.supportCredentials` in op `true` in de CORS-configuratie. Dit kan niet worden ingeschakeld wanneer `allowedOrigins` `'*'`bevat.
 
 ### <a name="test-cors-again"></a>CORS opnieuw testen
 

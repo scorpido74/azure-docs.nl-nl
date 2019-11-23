@@ -28,7 +28,7 @@ ms.locfileid: "72388521"
 > [!NOTE]
 > Visual Studio App Center ondersteunt end-to-end-services en geïntegreerde services die een centrale rol spelen bij het ontwikkelen van mobiele apps. Ontwikkelaars kunnen services **bouwen**, **testen** en **distribueren** om een CI/CD-pijplijn (continue integratie en continue levering) in te stellen. Zodra de app is geïmplementeerd, kunnen ontwikkelaars de status en het gebruik van hun app controleren met behulp van de **analyseservice** en de **diagnoseservice** en communiceren met gebruikers met behulp van de **pushservice**. Ontwikkelaars kunnen ook gebruikmaken van **Auth** voor het verifiëren van gebruikers en van **Data** Service voor het persistent maken en synchroniseren van app-gegevens in de cloud.
 >
-> Als u Cloud Services wilt integreren in uw mobiele toepassing, meldt u zich aan bij [app Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc) vandaag.
+> Als u cloudservices wilt integreren in uw mobiele toepassing, meldt u zich aan bij [App Center](https://appcenter.ms/?utm_source=zumo&utm_medium=Azure&utm_campaign=zumo%20doc).
 
 ## <a name="overview"></a>Overzicht
 
@@ -86,7 +86,7 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
 
 #### <a name="implementing-the-firebase-instance-id-service"></a>De Firebase instance ID-service implementeren
 
-1. Voeg een nieuwe klasse toe aan het **Droid** -project met de naam `FirebaseRegistrationService` en zorg ervoor dat de volgende `using`-instructies boven aan het bestand worden weer gegeven:
+1. Voeg een nieuwe klasse toe aan het **Droid** -project met de naam `FirebaseRegistrationService`en zorg ervoor dat de volgende `using`-instructies boven aan het bestand worden weer gegeven:
 
     ```csharp
     using System.Threading.Tasks;
@@ -96,7 +96,7 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
     using Microsoft.WindowsAzure.MobileServices;
     ```
 
-1. Vervang de lege klasse `FirebaseRegistrationService` door de volgende code:
+1. Vervang de lege `FirebaseRegistrationService`-klasse door de volgende code:
 
     ```csharp
     [Service]
@@ -123,13 +123,13 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
     }
     ```
 
-    De klasse `FirebaseRegistrationService` is verantwoordelijk voor het genereren van beveiligings tokens die de toepassing machtigen om toegang te krijgen tot FCM. De methode `OnTokenRefresh` wordt aangeroepen wanneer de toepassing een registratie token van FCM ontvangt. Met de methode wordt het token opgehaald uit de eigenschap `FirebaseInstanceId.Instance.Token`, dat asynchroon wordt bijgewerkt door FCM. De methode `OnTokenRefresh` wordt niet regel matig aangeroepen, omdat het token alleen wordt bijgewerkt wanneer de toepassing wordt geïnstalleerd of verwijderd, wanneer de gebruiker toepassings gegevens verwijdert, wanneer de toepassing de exemplaar-ID wist, of wanneer de beveiliging van het token is aangetast. Daarnaast wordt door de FCM instance ID-service gevraagd of de toepassing het token regel matig vernieuwt, meestal elke 6 maanden.
+    De klasse `FirebaseRegistrationService` is verantwoordelijk voor het genereren van beveiligings tokens die de toepassing machtigen om toegang te krijgen tot FCM. De `OnTokenRefresh` methode wordt aangeroepen wanneer de toepassing een registratie token van FCM ontvangt. Met de methode wordt het token opgehaald uit de eigenschap `FirebaseInstanceId.Instance.Token`, dat asynchroon wordt bijgewerkt door FCM. De `OnTokenRefresh` methode wordt niet regel matig aangeroepen, omdat het token alleen wordt bijgewerkt wanneer de toepassing wordt geïnstalleerd of verwijderd, wanneer de gebruiker toepassings gegevens verwijdert, wanneer de toepassing de exemplaar-ID wist of wanneer de beveiliging van het token is aangetast. Daarnaast wordt door de FCM instance ID-service gevraagd of de toepassing het token regel matig vernieuwt, meestal elke 6 maanden.
 
     De methode `OnTokenRefresh` roept ook de methode `SendRegistrationTokenToAzureNotificationHub` aan, die wordt gebruikt om het registratie token van de gebruiker te koppelen aan de Azure notification hub.
 
 #### <a name="registering-with-the-azure-notification-hub"></a>Registreren bij de Azure notification hub
 
-1. Voeg een nieuwe klasse toe aan het **Droid** -project met de naam `AzureNotificationHubService` en zorg ervoor dat de volgende `using`-instructies boven aan het bestand worden weer gegeven:
+1. Voeg een nieuwe klasse toe aan het **Droid** -project met de naam `AzureNotificationHubService`en zorg ervoor dat de volgende `using`-instructies boven aan het bestand worden weer gegeven:
 
     ```csharp
     using System;
@@ -139,7 +139,7 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
     using Newtonsoft.Json.Linq;
     ```
 
-1. Vervang de lege klasse `AzureNotificationHubService` door de volgende code:
+1. Vervang de lege `AzureNotificationHubService`-klasse door de volgende code:
 
     ```csharp
     public class AzureNotificationHubService
@@ -168,11 +168,11 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
     }
     ```
 
-    Met de methode `RegisterAsync` wordt een eenvoudige sjabloon voor een meldings bericht gemaakt als JSON en wordt geregistreerd voor het ontvangen van sjabloon meldingen van de notification hub met behulp van het Firebase-registratie token. Dit zorgt ervoor dat alle meldingen die worden verzonden vanuit de Azure notification hub, gericht zijn op het apparaat dat wordt weer gegeven door het registratie token.
+    Met de methode `RegisterAsync` maakt u een eenvoudige sjabloon voor een meldings bericht als JSON en registreert u voor het ontvangen van sjabloon meldingen van de notification hub met behulp van het Firebase-registratie token. Dit zorgt ervoor dat alle meldingen die worden verzonden vanuit de Azure notification hub, gericht zijn op het apparaat dat wordt weer gegeven door het registratie token.
 
 #### <a name="displaying-the-contents-of-a-push-notification"></a>De inhoud van een push melding weer geven
 
-1. Voeg een nieuwe klasse toe aan het **Droid** -project met de naam `FirebaseNotificationService` en zorg ervoor dat de volgende `using`-instructies boven aan het bestand worden weer gegeven:
+1. Voeg een nieuwe klasse toe aan het **Droid** -project met de naam `FirebaseNotificationService`en zorg ervoor dat de volgende `using`-instructies boven aan het bestand worden weer gegeven:
 
     ```csharp
     using Android.App;
@@ -183,7 +183,7 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
     using Firebase.Messaging;
     ```
 
-1. Vervang de lege klasse `FirebaseNotificationService` door de volgende code:
+1. Vervang de lege `FirebaseNotificationService`-klasse door de volgende code:
 
     ```csharp
     [Service]
@@ -225,7 +225,7 @@ Als de back-end is geconfigureerd met FCM, kunt u onderdelen en codes aan de cli
     }
     ```
 
-    De methode `OnMessageReceived`, die wordt aangeroepen wanneer een toepassing een melding van FCM ontvangt, extraheert de inhoud van het bericht en roept de `SendNotification`-methode aan. Met deze methode wordt de bericht inhoud geconverteerd naar een lokale melding die wordt gestart tijdens de uitvoering van de toepassing, met de melding die wordt weer gegeven in het systeemvak.
+    De `OnMessageReceived` methode, die wordt aangeroepen wanneer een toepassing een melding van FCM ontvangt, extraheert de inhoud van het bericht en roept de `SendNotification`-methode aan. Met deze methode wordt de bericht inhoud geconverteerd naar een lokale melding die wordt gestart tijdens de uitvoering van de toepassing, met de melding die wordt weer gegeven in het systeemvak.
 
 Nu bent u klaar om Push meldingen te testen in de app die wordt uitgevoerd op een Android-apparaat of de emulator.
 
@@ -358,7 +358,7 @@ Deze sectie is voor het uitvoeren van de Xamarin. Forms WinApp-en WinPhone81-pro
     using <your_TodoItemManager_portable_class_namespace>;
     ```
 
-    Vervang `<your_TodoItemManager_portable_class_namespace>` door de naam ruimte van uw draag bare project die de `TodoItemManager`-klasse bevat.
+    Vervang `<your_TodoItemManager_portable_class_namespace>` door de naam ruimte van uw draag bare project dat de `TodoItemManager`-klasse bevat.
 
 2. Voeg in App.xaml.cs de volgende **InitNotificationsAsync** -methode toe:
 
@@ -388,7 +388,7 @@ Deze sectie is voor het uitvoeren van de Xamarin. Forms WinApp-en WinPhone81-pro
 
     Met deze methode wordt het kanaal voor push meldingen opgehaald en wordt een sjabloon geregistreerd voor het ontvangen van sjabloon meldingen van uw notification hub. Een sjabloon melding die *messageParam* ondersteunt, wordt aan deze client geleverd.
 
-3. Werk in App.xaml.cs de **OnLaunched** -gebeurtenis registratie methode definitie bij door de para meter `async` toe te voegen. Voeg vervolgens de volgende regel code toe aan het einde van de methode:
+3. Werk in App.xaml.cs de **OnLaunched** -gebeurtenis registratie methode definitie bij door de `async`-modificator toe te voegen. Voeg vervolgens de volgende regel code toe aan het einde van de methode:
 
     ```csharp
     await InitNotificationsAsync();
@@ -403,7 +403,7 @@ Deze sectie is voor het uitvoeren van de Xamarin. Forms WinApp-en WinPhone81-pro
 
 1. Klik in Visual Studio met de rechter muisknop op een Windows-project en klik op **instellen als opstart project**.
 2. Druk op de knop **Uitvoeren** om het project te bouwen en de app te starten.
-3. Typ in de app een naam voor een nieuwe todoitem en klik vervolgens op het plus teken ( **+** ) om het toe te voegen.
+3. Typ in de app een naam voor een nieuwe todoitem en klik vervolgens op het plus teken ( **+** ) om deze toe te voegen.
 4. Controleer of er een melding wordt ontvangen wanneer het item wordt toegevoegd.
 
 ## <a name="next-steps"></a>Volgende stappen
@@ -421,7 +421,7 @@ U kunt ook door gaan met een van de volgende zelf studies:
 * [Verificatie toevoegen aan uw app](app-service-mobile-xamarin-forms-get-started-users.md)  
   Ontdek hoe u gebruikers van uw app verifieert met een id-provider.
 * [Offlinesynchronisatie voor uw app inschakelen](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
-  Ontdek hoe u offlineondersteuning voor uw app toevoegt met behulp van een back-end voor Mobile Apps. Met offline synchronisatie kunnen gebruikers communiceren met een mobiele app @ no__t-0viewing, het toevoegen of wijzigen van gegevens @ no__t-1even wanneer er geen netwerk verbinding is.
+  Ontdek hoe u offlineondersteuning voor uw app toevoegt met behulp van een back-end voor Mobile Apps. Met offline synchronisatie kunnen gebruikers met een mobiele app communiceren&mdash;gegevens weer geven, toevoegen of wijzigen&mdash;zelfs wanneer er geen netwerk verbinding is.
 
 <!-- Images. -->
 

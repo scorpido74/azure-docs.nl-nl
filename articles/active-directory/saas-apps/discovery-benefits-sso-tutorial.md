@@ -83,11 +83,11 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
    ![Standaard SAML-configuratie bewerken](common/edit-urls.png)
 
-1. Op de **basis configuratie**@no__t voor SAML-1section de toepassing vooraf is geconfigureerd in de **IDP**-modus  Initiated en de benodigde url's al vooraf zijn ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de @no__t **Opslaan**-1button.
+1. In het gedeelte van de **basis configuratie van SAML** is de toepassing vooraf geconfigureerd in de modus **IDP** gestart en de benodigde url's zijn al vooraf ingevuld met Azure. De gebruiker moet de configuratie opslaan door te klikken op de knop  **Opslaan** .
 
 1. De SSO-toepassing voor voor delen van detectie verwacht de SAML-beweringen in een specifieke indeling. hiervoor moet u aangepaste kenmerk toewijzingen toevoegen aan de configuratie van uw SAML-token kenmerken. In de volgende schermafbeelding wordt de lijst met standaardkenmerken weergegeven. Klik op het pictogram **Bewerken** om het dialoogvenster gebruikerskenmerken te openen.
 
-    ![image](common/edit-attribute.png)
+    ![installatiekopie](common/edit-attribute.png)
 
     a. Klik op het pictogram **bewerken** om het dialoog venster **unieke gebruikers-ID (naam-id)** te openen.
 
@@ -101,12 +101,12 @@ Volg deze stappen om Azure AD SSO in te scha kelen in de Azure Portal.
 
     d. Typ in het tekstvak **para meter 1** de para meter zoals `<Name Identifier value>`.
 
-    e. Klik op **Add**.
+    e. Klik op **Toevoegen**.
 
     > [!NOTE]
     > Voor SSO van detectie voordelen moet een vaste teken reeks waarde worden door gegeven aan een **unieke gebruikers-id (naam-id)** om deze integratie te kunnen gebruiken. Azure AD biedt momenteel geen ondersteuning voor deze functie. u kunt **toupper** of **ToLower** -trans formaties van NameID gebruiken om een vaste teken reeks waarde in te stellen zoals hierboven in de scherm afbeelding wordt weer gegeven.
 
-    f. We hebben de aanvullende claims die vereist zijn voor de SSO-configuratie automatisch ingevuld (`SSOInstance` en `SSOID`). Gebruik het **bewerkings** pictogram om de waarden te koppelen volgens uw organisatie.
+    f. We hebben de extra claims die vereist zijn voor de SSO-configuratie (`SSOInstance` en `SSOID`) automatisch ingevuld. Gebruik het **bewerkings** pictogram om de waarden te koppelen volgens uw organisatie.
 
     ![SSO-configuratie detectie voordelen](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
@@ -126,7 +126,7 @@ In deze sectie maakt u een test gebruiker in de Azure Portal met de naam B. Simo
 1. Selecteer **Nieuwe gebruiker** boven aan het scherm.
 1. Voer de volgende stappen uit in de eigenschappen van de **gebruiker** :
    1. Voer in het veld **Naam** `B.Simon` in.  
-   1. Voer in het veld **gebruikers naam** de username@companydomain.extension in. Bijvoorbeeld `B.Simon@contoso.com`.
+   1. Voer in het veld **gebruikers naam** de username@companydomain.extensionin. Bijvoorbeeld `B.Simon@contoso.com`.
    1. Schakel het selectievakje **Wachtwoord weergeven** in en noteer de waarde die wordt weergegeven in het vak **Wachtwoord**.
    1. Klik op **Maken**.
 

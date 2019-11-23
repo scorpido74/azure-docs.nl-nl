@@ -64,7 +64,7 @@ In de volgende tabel worden de JSON-eigenschappen beschreven die in de JSON-defi
 
 |Eigenschap|Beschrijving|Vereist|
 |---|---|---|
-|naam|De naam van de activiteit in de pijp lijn.|Ja|
+|name|De naam van de activiteit in de pijp lijn.|Ja|
 |description|Tekst die beschrijft wat de activiteit doet.|Nee|
 |type|Voor Databricks python-activiteit is het type activiteit DatabricksSparkPython.|Ja|
 |linkedServiceName|De naam van de gekoppelde Databricks-service waarop de python-activiteit wordt uitgevoerd. Zie voor meer informatie over deze gekoppelde service artikel [Compute linked Services](compute-linked-services.md) (Engelstalig).|Ja|

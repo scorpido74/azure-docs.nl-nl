@@ -31,7 +31,7 @@ Microsoft .NET stuur programma voor Apache Phoenix query server is beschikbaar a
 
 ## <a name="instantiate-new-phoenixclient-object"></a>Nieuw PhoenixClient-object instantiëren
 
-Als u de bibliotheek wilt gebruiken, maakt u een nieuw `PhoenixClient`-object, waarbij u `ClusterCredentials` met de `Uri` doorgeeft aan uw cluster en de Apache Hadoop gebruikers naam en het wacht woord van het cluster.
+Als u de bibliotheek wilt gaan gebruiken, maakt u een nieuw `PhoenixClient`-object, waarbij u in `ClusterCredentials` met de `Uri` aan uw cluster en de Apache Hadoop gebruikers naam en het wacht woord van het cluster door gegeven.
 
 ```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net/"), "USERNAME", "PASSWORD");
@@ -48,11 +48,11 @@ Als u een of meer aanvragen wilt verzenden naar PQS, moet u een unieke verbindin
 string connId = Guid.NewGuid().ToString();
 ```
 
-Elk voor beeld maakt eerst een aanroep van de methode `OpenConnectionRequestAsync`, waarbij de unieke verbindings-id wordt door gegeven. Definieer vervolgens `ConnectionProperties` en `RequestOptions`, waarbij deze objecten en de gegenereerde verbindings-id worden door gegeven aan de methode `ConnectionSyncRequestAsync`. Het `ConnectionSyncRequest`-object van PQS zorgt ervoor dat zowel de client als de server een consistente weer gave van de data base-eigenschappen hebben.
+Elk voor beeld maakt eerst een aanroep van de methode `OpenConnectionRequestAsync`, waarbij de unieke verbindings-id wordt door gegeven. Definieer vervolgens `ConnectionProperties` en `RequestOptions`, waarbij deze objecten en de gegenereerde verbindings-id worden door gegeven aan de `ConnectionSyncRequestAsync`-methode. Het `ConnectionSyncRequest`-object van PQS zorgt ervoor dat zowel de client als de server een consistente weer gave van de data base-eigenschappen hebben.
 
 ## <a name="connectionsyncrequest-and-its-connectionproperties"></a>ConnectionSyncRequest en de bijbehorende ConnectionProperties
 
-Om `ConnectionSyncRequestAsync` aan te roepen, geeft u een `ConnectionProperties`-object door.
+Geef een `ConnectionProperties` object door om `ConnectionSyncRequestAsync`aan te roepen.
 
 ```csharp
 ConnectionProperties connProperties = new ConnectionProperties
@@ -94,7 +94,7 @@ Dit zijn de `TransactionIsolation` waarden:
 
 HBase, zoals andere RDBMS, slaat gegevens op in tabellen. Phoenix gebruikt standaard SQL-query's voor het maken van nieuwe tabellen, terwijl de primaire sleutel en kolom typen worden gedefinieerd.
 
-In dit voor beeld en alle volgende voor beelden gebruikt u het object geïnstantieerd `PhoenixClient` zoals gedefinieerd in [instantiëren van een nieuw PhoenixClient-object](#instantiate-new-phoenixclient-object).
+Dit voor beeld en alle volgende voor beelden gebruiken het geïnstantieerd `PhoenixClient`-object zoals gedefinieerd in [instantiëren van een nieuw PhoenixClient-object](#instantiate-new-phoenixclient-object).
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -160,17 +160,17 @@ finally
 }
 ```
 
-In het voor gaande voor beeld wordt een nieuwe tabel met de naam `Customers` gemaakt met behulp van de `IF NOT EXISTS` optie. De aanroep `CreateStatementRequestAsync` maakt een nieuwe-instructie in de Avitica-server (PQS). De `finally`-blok kering sluit de geretourneerde `CreateStatementResponse`-en de `OpenConnectionResponse`-objecten.
+In het vorige voor beeld wordt een nieuwe tabel met de naam `Customers` gemaakt met behulp van de `IF NOT EXISTS` optie. De `CreateStatementRequestAsync`-aanroep maakt een nieuwe-instructie in de Avitica-server (PQS). Het `finally` blok sluit de geretourneerde `CreateStatementResponse` en de `OpenConnectionResponse`-objecten.
 
 ## <a name="insert-data-individually"></a>Gegevens afzonderlijk invoegen
 
-In dit voor beeld wordt een afzonderlijke gegevensset weer gegeven, die verwijst naar een `List<string>`-verzameling van Amerikaanse status-en gebieds afkortingen:
+In dit voor beeld wordt een afzonderlijke gegevensset weer gegeven, die verwijst naar een `List<string>` verzameling van de afkortingen van de Amerikaanse staat en het gebied:
 
 ```csharp
 var states = new List<string> { "AL", "AK", "AS", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FM", "FL", "GA", "GU", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MH", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "MP", "OH", "OK", "OR", "PW", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VI", "VA", "WA", "WV", "WI", "WY" };
 ```
 
-De waarde van de tabel @no__t 0 wordt gebruikt bij een volgende SELECT-bewerking.
+De waarde van de `StateProvince` kolom van de tabel wordt gebruikt bij een volgende SELECT-bewerking.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();
@@ -277,11 +277,11 @@ finally
 }
 ```
 
-De structuur voor het uitvoeren van een instructie INSERT is vergelijkbaar met het maken van een nieuwe tabel. Aan het einde van het blok `try` wordt de trans actie expliciet doorgevoerd. In dit voor beeld wordt een insert-trans actie van 300 keer herhaald. In het volgende voor beeld ziet u een efficiënt batch-invoeg proces.
+De structuur voor het uitvoeren van een instructie INSERT is vergelijkbaar met het maken van een nieuwe tabel. Aan het einde van het `try` blok wordt de trans actie expliciet doorgevoerd. In dit voor beeld wordt een insert-trans actie van 300 keer herhaald. In het volgende voor beeld ziet u een efficiënt batch-invoeg proces.
 
 ## <a name="batch-insert-data"></a>Batch gegevens invoegen
 
-De volgende code is bijna identiek aan de code voor het afzonderlijk invoegen van gegevens. In dit voor beeld wordt het `UpdateBatch`-object gebruikt in een aanroep van `ExecuteBatchRequestAsync`, in plaats van herhaaldelijk `ExecuteRequestAsync` aan te roepen met een voor bereide instructie.
+De volgende code is bijna identiek aan de code voor het afzonderlijk invoegen van gegevens. In dit voor beeld wordt het `UpdateBatch`-object gebruikt in een aanroep van `ExecuteBatchRequestAsync`, in plaats van herhaaldelijk `ExecuteRequestAsync` met een voor bereide instructie aan te roepen.
 
 ```csharp
 string connId = Guid.NewGuid().ToString();

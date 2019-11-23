@@ -30,15 +30,15 @@ Met RBAC kunt u rollen binnen uw beveiligings team gebruiken en maken om de juis
 
 Er zijn drie specifieke, ingebouwde Azure Sentinel-rollen.  
 **Alle ingebouwde Azure Sentinel-rollen verlenen Lees toegang tot de gegevens in uw Azure Sentinel-werk ruimte.**
-- **Azure-Sentinel Reader**: Een gebruiker die is toegewezen aan deze rol heeft weergave rechten voor Azure Sentinel. De gebruiker kan incidenten en gegevens weer geven, maar kan geen wijzigingen aanbrengen.
-- **Azure Sentinel responder**: Een gebruiker die is toegewezen met deze rol kan acties lezen en uitvoeren op incidenten, zoals toewijzing en ernst wijzigingen.
-- **Azure Sentinel-bijdrager**: Een gebruiker die is toegewezen met deze rol kan incidenten lezen en acties uitvoeren en analytische regels maken en verwijderen.
+- **Azure-Sentinel-lezer**: een gebruiker die is toegewezen aan deze rol heeft weergave rechten voor Azure Sentinel. De gebruiker kan incidenten en gegevens weer geven, maar kan geen wijzigingen aanbrengen.
+- **Azure Sentinel responder**: een gebruiker die is toegewezen aan deze rol kan acties lezen en uitvoeren op incidenten, zoals toewijzing en ernst wijzigingen.
+- **Azure Sentinel contributor**: een gebruiker die is toegewezen aan deze rol kan incidenten lezen en acties uitvoeren en analytische regels maken en verwijderen.
 
 Naast Azure Sentinel dedicated RBAC-rollen zijn er Azure-en Log Analytics RBAC-rollen die een grotere set machtigingen kunnen verlenen die toegang hebben tot uw Azure Sentinel-werk ruimte en andere resources:
 
-- **Azure-rollen:** [Eigenaar](../role-based-access-control/built-in-roles.md#owner), [bijdrager](../role-based-access-control/built-in-roles.md#contributor)en [lezer](../role-based-access-control/built-in-roles.md#reader). Azure-rollen verlenen toegang tot alle Azure-resources, waaronder Log Analytics-werk ruimten en Azure-Sentinel-resources.
+- **Azure-rollen:** [eigenaar](../role-based-access-control/built-in-roles.md#owner), [bijdrager](../role-based-access-control/built-in-roles.md#contributor)en [lezer](../role-based-access-control/built-in-roles.md#reader). Azure-rollen verlenen toegang tot alle Azure-resources, waaronder Log Analytics-werk ruimten en Azure-Sentinel-resources.
 
--   **Log Analytics rollen:** [Log Analytics lezer](../role-based-access-control/built-in-roles.md#log-analytics-reader) [log Analytics Inzender](../role-based-access-control/built-in-roles.md#log-analytics-contributor). Log Analytics rollen verlenen toegang tot alle Log Analytics-werk ruimten. 
+-   **Log Analytics rollen:** [Log Analytics Inzender](../role-based-access-control/built-in-roles.md#log-analytics-contributor), [log Analytics Reader](../role-based-access-control/built-in-roles.md#log-analytics-reader). Log Analytics rollen verlenen toegang tot alle Log Analytics-werk ruimten. 
 
 > [!NOTE]
 > Log Analytics rollen verlenen ook lees toegang voor alle Azure-resources, maar ze kunnen alleen schrijf machtigingen toewijzen aan Log Analytics-resources.
@@ -56,7 +56,7 @@ Bijvoorbeeld, een gebruiker die is toegewezen met rollen van **Azure Sentinel Re
 
 In de volgende tabel worden de rollen en toegestane acties in azure Sentinel weer gegeven. Een X geeft aan dat de actie is toegestaan voor die rol.
 
-| Role | Playbooks maken en uitvoeren| Dash boards, analytische regels en andere Azure Sentinel-resources maken en bewerken | Incidenten beheren (sluiten, toewijzen, enz.) | Gegevens, incidenten, Dash boards en andere Azure Sentinel-bronnen weer geven |
+| Rol | Playbooks maken en uitvoeren| Dash boards, analytische regels en andere Azure Sentinel-resources maken en bewerken | Incidenten beheren (sluiten, toewijzen, enz.) | Gegevens, incidenten, Dash boards en andere Azure Sentinel-bronnen weer geven |
 |--- |---|---|---|---|
 | Azure Sentinel Reader | -- | -- | -- | X |
 | Azure Sentinel responder|--|--| X | X |

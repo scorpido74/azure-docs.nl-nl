@@ -47,7 +47,7 @@ Als u een toepassing met een door het systeem toegewezen beheerde identiteit wil
       }
     }
 ```
-Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de beheerde identiteits-en Service Fabric resource providers, die deze resource een impliciete (@no__t 0) beheerde identiteit heeft.
+Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de beheerde identiteits-en Service Fabric resource providers, die deze resource een impliciete (`system assigned`) beheerde identiteit heeft.
 
 ### <a name="application-and-service-package"></a>Toepassings-en service pakket
 
@@ -76,9 +76,9 @@ Met deze eigenschap declareert u (in Azure Resource Manager, respectievelijk de 
         </ServiceManifestImport>
       ```
 
-    Dit element wijst de identiteit van de toepassing toe aan de service. zonder deze toewijzing heeft de service geen toegang meer tot de identiteit van de toepassing. In het bovenstaande code fragment is de identiteit van de `SystemAssigned` (een gereserveerd tref woord) toegewezen aan de definitie van de service onder de beschrijvende naam `WebAdmin`.
+    Dit element wijst de identiteit van de toepassing toe aan de service. zonder deze toewijzing heeft de service geen toegang meer tot de identiteit van de toepassing. In het bovenstaande code fragment wordt de `SystemAssigned` identiteit (een gereserveerd tref woord) toegewezen aan de definitie van de service onder de beschrijvende naam `WebAdmin`.
 
-3. Werk het service manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **resources** met de naam die overeenkomt met de waarde van de instelling `ServiceIdentityRef` van de definitie van de `IdentityBindingPolicy` in het manifest van de toepassing:
+3. Werk het service manifest bij om een **ManagedIdentity** -element toe te voegen aan de sectie **resources** met de naam die overeenkomt met de waarde van de `ServiceIdentityRef` instelling van de `IdentityBindingPolicy` definitie in het manifest van de toepassing:
 
     **ServiceManifest. XML**
 

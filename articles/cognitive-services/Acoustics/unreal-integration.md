@@ -80,11 +80,11 @@ De Unreal-invoeg toepassing voor project akoestische vereist extra gedrag dat wo
 
     ![Een Windows Verkenner-venster met het script voor de patch WWise gemarkeerd](media/patch-wwise-script.png)
 
-* Als u de DirectX SDK niet hebt geïnstalleerd: afhankelijk van de versie van WWise die u gebruikt, moet u mogelijk een opmerking plaatsen bij de regel met `DXSDK_DIR` in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs*:
+* Als u de DirectX SDK niet hebt geïnstalleerd: afhankelijk van de versie van WWise die u gebruikt, moet u mogelijk een opmerking plaatsen bij de regel die `DXSDK_DIR` in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs*bevat:
 
     ![De code-editor met ' DXSDK '](media/directx-sdk-comment.png)
 
-* Als u compileert met behulp van Visual Studio 2019: als u een koppelings fout met WWise wilt omzeilen, wijzigt u de standaard waarde @no__t 0 in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs* in **vc150**:
+* Als u compileert met Visual Studio 2019: als u een koppelings fout met WWise wilt omzeilen, wijzigt u de standaard `VSVersion` waarde in *AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.build.cs* hand matig in **vc150**:
 
     ![De code-editor met ' VSVersion ' is gewijzigd in ' vc150 '](media/vsversion-comment.png)
 
@@ -127,7 +127,7 @@ De Unreal-invoeg toepassing voor project akoestische zoekt naar de gekoppelde mi
     ![Diagram van het toevoegen van de invoeg toepassing voor de project akoestische-mixer aan de WWise-bus](media/add-mixer-plugin.png)
 
 #### <a name="actor-mixer-hierarchy-setup"></a>Setup actor-mixer-hiërarchie
-Voor de beste prestaties wordt de verwerking van digitale signalen op het niveau van een geluid toegepast op alle bronnen tegelijk. Daarom moet de invoeg toepassing worden gebruikt als een mixer-invoeg toepassing. WWise vereist dat er mixer-invoeg toepassingen aanwezig zijn op de uitvoer bus, hoewel de uitvoer bus doorgaans het droge uitvoer signaal uitvoert. Voor de geluids sterkte van een project moet het droge signaal worden gerouteerd via aux-bussen, terwijl het natte signaal plaatsvindt op het `Project Acoustics Bus`. Het volgende proces ondersteunt geleidelijke migratie naar deze signaal stroom.
+Voor de beste prestaties wordt de verwerking van digitale signalen op het niveau van een geluid toegepast op alle bronnen tegelijk. Daarom moet de invoeg toepassing worden gebruikt als een mixer-invoeg toepassing. WWise vereist dat er mixer-invoeg toepassingen aanwezig zijn op de uitvoer bus, hoewel de uitvoer bus doorgaans het droge uitvoer signaal uitvoert. Voor de geluids sterkte van een project moet het droge signaal worden gerouteerd via aux-bussen, terwijl het natte signaal wordt uitgevoerd op de `Project Acoustics Bus`. Het volgende proces ondersteunt geleidelijke migratie naar deze signaal stroom.
 
 Stel dat u een bestaand project hebt met een actor-mixer-hiërarchie die *beeld*, *wapens*en anderen op het hoogste niveau bevat. Elk heeft een bijbehorende uitvoer bus voor de droge mix. Stel dat u beeld wilt migreren om akoestische te gebruiken. Maak eerst een corresponderende aux-bus om de droge submix te maken die een onderliggend element is van de beeld-uitvoer bus. We hebben bijvoorbeeld een voor voegsel ' droge ' gebruikt in de volgende afbeelding om de bussen te ordenen, hoewel de exacte naam niet van belang is. Alle meters of effecten die u op de beeld-bus had, functioneren net als voorheen.
 

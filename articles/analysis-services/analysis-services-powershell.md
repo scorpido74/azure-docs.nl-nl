@@ -59,7 +59,7 @@ Documentatie- [sqlserver-referentie](/powershell/module/sqlserver)
 
 ## <a name="related-information"></a>Gerelateerde informatie
 
-* [SQL Server Power shell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
+* [SQL Server PowerShell](https://docs.microsoft.com/sql/powershell/sql-server-powershell)      
 * [SQL Server Power shell-module downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [SSMS downloaden](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 * [SqlServer-module in PowerShell Gallery](https://www.powershellgallery.com/packages/SqlServer)    

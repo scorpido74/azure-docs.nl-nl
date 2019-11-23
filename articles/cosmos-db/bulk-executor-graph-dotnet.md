@@ -23,7 +23,7 @@ In tegens telling tot het verzenden van Gremlin-query's naar een Data Base, waar
 
 ## <a name="bulk-operations-with-graph-data"></a>Bulkbewerkingen met graafgegevens
 
-De [bibliotheek bulk](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) -uitvoerder bevat een `Microsoft.Azure.CosmosDB.BulkExecutor.Graph`-naam ruimte om functionaliteit te bieden voor het maken en importeren van grafiek objecten. 
+De [bibliotheek bulk](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet) -uitvoerder bevat een `Microsoft.Azure.CosmosDB.BulkExecutor.Graph` naam ruimte om functionaliteit te bieden voor het maken en importeren van grafiek objecten. 
 
 In het volgende proces wordt uiteengezet hoe gegevensmigratie voor een Gremlin API-container kan worden gebruikt:
 1. Haal records op uit de gegevensbron.
@@ -131,7 +131,7 @@ Deze opslagplaats bevat het GraphBulkExecutor-voorbeeld met de volgende bestande
 Bestand|Beschrijving
 ---|---
 `App.config`|Hier worden de voor de toepassing en database specifieke parameters gespecificeerd. Dit bestand moet eerst worden aangepast om verbinding te kunnen maken met de doeldatabase en de verzamelingen.
-`Program.cs`| Dit bestand bevat de logica achter het maken van de verzameling @no__t 0, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk levering.
+`Program.cs`| Dit bestand bevat de logica achter het maken van de `DocumentClient` verzameling, het afhandelen van de opschoon bewerkingen en het verzenden van de aanvragen voor bulk door voer.
 `Util.cs`| Dit bestand bevat een helperklasse die de logica bevat voor het genereren van testgegevens en het controleren op de aanwezigheid van de database en verzamelingen.
 
 In het `App.config`-bestand zijn de configuratiewaarden die kunnen worden opgegeven, als volgt:

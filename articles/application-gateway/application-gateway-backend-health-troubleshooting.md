@@ -36,7 +36,7 @@ De status die wordt opgehaald door een van deze methoden, kan een van de volgend
 
 Als de status van de back-end voor een server in orde is, betekent dit dat Application Gateway de aanvragen naar die server stuurt. Als de status van de back-end voor alle servers in een back-end-groep beschadigd is of onbekend is, kunnen er problemen optreden wanneer u probeert toegang te krijgen tot toepassingen. In dit artikel worden de symptomen, de oorzaak en de oplossing beschreven voor elk van de weer gegeven fouten.
 
-<a name="backend-health-status-unhealthy"></a>Status van back-end: Niet in orde
+<a name="backend-health-status-unhealthy"></a>Backend-status: beschadigd
 -------------------------------
 
 Als de status van de back-end niet in orde is, ziet de portal weergave eruit als in de volgende scherm afbeelding:
@@ -81,17 +81,17 @@ Nadat u een status van een onjuiste back-endserver hebt ontvangen voor alle serv
 In het bericht dat wordt weer gegeven in de kolom **Details** vindt u meer informatie over het probleem en op basis van die, kunt u beginnen met het oplossen van het probleem.
 
 > [!NOTE]
-> De standaard test aanvraag wordt verzonden in de indeling van \<protocol @ no__t-1://127.0.0.1: \<PORT @ no__t-3/. Bijvoorbeeld http://127.0.0.1:80 voor een http-test op poort 80. Alleen HTTP-status codes van 200 tot en met 399 worden als gezond beschouwd. Het protocol en de doel poort worden overgenomen van de HTTP-instellingen. Als u Application Gateway wilt testen op een ander protocol, hostnaam of pad en een andere status code als in orde herkent, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
+> De standaard test aanvraag wordt verzonden in de indeling van \<protocol\>://127.0.0.1:\<poort\>/. Bijvoorbeeld http://127.0.0.1:80 voor een http-test op poort 80. Alleen HTTP-status codes van 200 tot en met 399 worden als gezond beschouwd. Het protocol en de doel poort worden overgenomen van de HTTP-instellingen. Als u Application Gateway wilt testen op een ander protocol, hostnaam of pad en een andere status code als in orde herkent, configureert u een aangepaste test en koppelt u deze aan de HTTP-instellingen.
 
 <a name="error-messages"></a>Foutberichten
 ------------------------
 #### <a name="backend-server-timeout"></a>Time-out van back-endserver
 
-**Bericht:** De tijd die de back-end heeft genomen om te reageren op Application Gateway @ no__t-0s Health probe is hoger dan de drempel waarde voor time-out in de test instelling.
+**Bericht:** De tijd die door de back-end wordt gebruikt om te reageren op de toepassings gateway\'s-status test is groter dan de drempel waarde voor time-out in de test instelling.
 
-**Wordt** Nadat Application Gateway een HTTP (S)-test aanvraag naar de back-endserver verzendt, wordt gewacht op een reactie van de back-endserver voor een geconfigureerde periode. Als de back-endserver niet reageert binnen de geconfigureerde periode (de time-outwaarde), wordt deze als beschadigd gemarkeerd totdat de server opnieuw reageert binnen de geconfigureerde time-outperiode.
+**Oorzaak:** Nadat Application Gateway een HTTP (S)-test aanvraag naar de back-endserver verzendt, wordt gewacht op een reactie van de back-endserver voor een geconfigureerde periode. Als de back-endserver niet reageert binnen de geconfigureerde periode (de time-outwaarde), wordt deze als beschadigd gemarkeerd totdat de server opnieuw reageert binnen de geconfigureerde time-outperiode.
 
-**Opgelost** Controleer waarom de back-endserver of toepassing niet reageert binnen de geconfigureerde time-outperiode en Controleer ook de toepassings afhankelijkheden. Controleer bijvoorbeeld of er problemen zijn met de data base die een vertraging in de reactie kunnen veroorzaken. Als u op de hoogte bent van het gedrag van de toepassing en deze alleen na de time-outwaarde moet reageren, verhoogt u de time-outwaarde van de aangepaste test instellingen. U moet een aangepaste test hebben om de time-outwaarde te wijzigen. [Zie de documentatie pagina](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)voor meer informatie over het configureren van een aangepaste test.
+**Oplossing:** Controleer waarom de back-endserver of toepassing niet reageert binnen de geconfigureerde time-outperiode en Controleer ook de toepassings afhankelijkheden. Controleer bijvoorbeeld of er problemen zijn met de data base die een vertraging in de reactie kunnen veroorzaken. Als u op de hoogte bent van het gedrag van de toepassing en deze alleen na de time-outwaarde moet reageren, verhoogt u de time-outwaarde van de aangepaste test instellingen. U moet een aangepaste test hebben om de time-outwaarde te wijzigen. [Zie de documentatie pagina](https://docs.microsoft.com/azure/application-gateway/application-gateway-create-probe-portal)voor meer informatie over het configureren van een aangepaste test.
 
 Voer de volgende stappen uit om de time-outwaarde te verhogen:
 
@@ -107,7 +107,7 @@ Voer de volgende stappen uit om de time-outwaarde te verhogen:
 
 **Bericht:** Application Gateway kan geen test maken voor deze back-end. Dit gebeurt meestal wanneer de FQDN van de back-end niet correct is ingevoerd. 
 
-**Wordt** Als de back-end-pool van het type IP-adres/FQDN of App Service is, wordt Application Gateway omgezet naar het IP-adres van de FQDN die is ingevoerd via Domain Name System (DNS) (aangepaste of Azure-standaard) en wordt geprobeerd verbinding te maken met de server op de TCP-poort die wordt vermeld in de HTTP-instellingen. Maar als dit bericht wordt weer gegeven, wordt voorgesteld dat Application Gateway het opgegeven IP-adres van de ingevoerde FQDN niet succesvol kan oplossen.
+**Oorzaak:** Als de back-end-pool van het type IP-adres/FQDN of App Service is, wordt Application Gateway omgezet naar het IP-adres van de FQDN die is ingevoerd via Domain Name System (DNS) (aangepaste of Azure-standaard) en wordt geprobeerd verbinding te maken met de server op de TCP-poort die wordt vermeld in de HTTP-instellingen. Maar als dit bericht wordt weer gegeven, wordt voorgesteld dat Application Gateway het opgegeven IP-adres van de ingevoerde FQDN niet succesvol kan oplossen.
 
 **Opgelost**
 
@@ -127,7 +127,7 @@ Voer de volgende stappen uit om de time-outwaarde te verhogen:
 Controleer of de back-end reageert op de poort die wordt gebruikt voor de test.
 Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van deze back-end blokkeert
 
-**Wordt** Na de DNS-omzettings fase probeert Application Gateway verbinding te maken met de back-end-server op de TCP-poort die is geconfigureerd in de HTTP-instellingen. Als Application Gateway geen TCP-sessie kunt instellen op de opgegeven poort, wordt de test gemarkeerd als beschadigd met dit bericht.
+**Oorzaak:** Na de DNS-omzettings fase probeert Application Gateway verbinding te maken met de back-end-server op de TCP-poort die is geconfigureerd in de HTTP-instellingen. Als Application Gateway geen TCP-sessie kunt instellen op de opgegeven poort, wordt de test gemarkeerd als beschadigd met dit bericht.
 
 **Oplossing:** Als deze fout wordt weer gegeven, voert u de volgende stappen uit:
 
@@ -155,7 +155,7 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
     ```
 1.  Als u geen problemen met NSG of UDR kunt vinden, controleert u uw back-endserver op toepassings problemen waardoor clients geen TCP-sessie kunnen maken op de geconfigureerde poorten. Een aantal dingen om te controleren:
 
-    a.  Open een opdracht prompt (Win + R-\> cmd), voer `netstat` in en selecteer ENTER.
+    a.  Open een opdracht prompt (Win + R-\> cmd), voer `netstat`in en selecteer ENTER.
 
     b.  Controleer of de server luistert op de poort die is geconfigureerd. Bijvoorbeeld:
     ```
@@ -168,20 +168,20 @@ Controleer ook of NSG/UDR/firewall de toegang tot het IP-adres en de poort van d
 
 #### <a name="http-status-code-mismatch"></a>HTTP-status code komt niet overeen
 
-**Bericht:** De status code van het HTTP-antwoord van de back-end @ no__t-0s komt niet overeen met de test instelling. Verwacht: {HTTPStatusCode0} ontvangen: {HTTPStatusCode1}.
+**Bericht:** De status code van de back-end\'s HTTP-antwoord komt niet overeen met de test instelling. Verwacht: {HTTPStatusCode0} ontvangen: {HTTPStatusCode1}.
 
-**Wordt** Nadat de TCP-verbinding tot stand is gebracht en een SSL-handshake is uitgevoerd (als SSL is ingeschakeld), stuurt Application Gateway de test als een HTTP GET-aanvraag naar de back-endserver. Zoals eerder beschreven, is de standaard test het \<protocol @ no__t-1://127.0.0.1: \<PORT @ no__t-3/, en worden de antwoord status codes in de rage 200 tot 399 als in orde beschouwd. Als de server een andere status code retourneert, wordt deze als beschadigd gemarkeerd met dit bericht.
+**Oorzaak:** Nadat de TCP-verbinding tot stand is gebracht en een SSL-handshake is uitgevoerd (als SSL is ingeschakeld), stuurt Application Gateway de test als een HTTP GET-aanvraag naar de back-endserver. Zoals eerder beschreven, is de standaard test het \<protocol\>://127.0.0.1:\<poort\>/, waarna de antwoord status codes in de rage 200 tot 399 als in orde worden beschouwd. Als de server een andere status code retourneert, wordt deze als beschadigd gemarkeerd met dit bericht.
 
 **Oplossing:** Afhankelijk van de reactie code van de back-endserver kunt u de volgende stappen uitvoeren. Enkele van de algemene status codes worden hier weer gegeven:
 
 | **Optreedt** | **Acties** |
 | --- | --- |
-| Status code van test komt niet overeen: Ontvangen 401 | Controleer of verificatie is vereist voor de back-endserver. Application Gateway tests kunnen op dit moment geen referenties door geven voor verificatie. Sta \"HTTP 401 @ no__t-1 toe in een test status code Match of test naar een pad waarvoor geen verificatie is vereist voor de server. | |
-| Status code van test komt niet overeen: Ontvangen 403 | Toegang verboden. Controleer of toegang tot het pad is toegestaan op de back-endserver. | |
-| Status code van test komt niet overeen: Ontvangen 404 | Pagina is niet gevonden. Controleer of het pad naar de hostnaam toegankelijk is op de back-endserver. Wijzig de hostnaam of het pad para meter in een toegankelijke waarde. | |
-| Status code van test komt niet overeen: Ontvangen 405 | De test aanvragen voor Application Gateway gebruiken de HTTP GET-methode. Controleer of deze methode is toegestaan op uw server. | |
-| Status code van test komt niet overeen: Ontvangen 500 | Interne server fout. Controleer de status van de back-endserver en of de services worden uitgevoerd. | |
-| Status code van test komt niet overeen: Ontvangen 503 | De service is niet beschikbaar. Controleer de status van de back-endserver en of de services worden uitgevoerd. | |
+| Status code van test komt niet overeen: ontvangen 401 | Controleer of verificatie is vereist voor de back-endserver. Application Gateway tests kunnen op dit moment geen referenties door geven voor verificatie. Toestaan dat \"HTTP 401-\" in een test status code overeenkomt of naar een pad waarbij de server geen verificatie vereist. | |
+| Status code van test komt niet overeen: ontvangen 403 | Toegang verboden. Controleer of toegang tot het pad is toegestaan op de back-endserver. | |
+| Status code van test komt niet overeen: ontvangen 404 | Pagina is niet gevonden. Controleer of het pad naar de hostnaam toegankelijk is op de back-endserver. Wijzig de hostnaam of het pad para meter in een toegankelijke waarde. | |
+| Status code van test komt niet overeen: ontvangen 405 | De test aanvragen voor Application Gateway gebruiken de HTTP GET-methode. Controleer of deze methode is toegestaan op uw server. | |
+| Status code van test komt niet overeen: ontvangen 500 | Interne server fout. Controleer de status van de back-endserver en of de services worden uitgevoerd. | |
+| Status code van test komt niet overeen: ontvangen 503 | De service is niet beschikbaar. Controleer de status van de back-endserver en of de services worden uitgevoerd. | |
 
 Of als u denkt dat het antwoord legitiem is en u Application Gateway andere status codes als in orde wilt accepteren, kunt u een aangepaste test maken. Deze aanpak is nuttig in situaties waarin de back-end-website verificatie nodig heeft. Omdat de test aanvragen geen gebruikers referenties afdragen, zullen ze mislukken en wordt een HTTP 401-status code geretourneerd door de back-endserver.
 
@@ -189,11 +189,11 @@ Volg [deze stappen](https://docs.microsoft.com/azure/application-gateway/applica
 
 #### <a name="http-response-body-mismatch"></a>Onjuiste hoofd tekst van HTTP-antwoord
 
-**Bericht:** De hoofd tekst van de back-end @ no__t-0s HTTP-antwoord komt niet overeen met de test instelling. De ontvangen antwoord tekst bevat geen {string}.
+**Bericht:** De hoofd tekst van de back-end\'s HTTP-antwoord komt niet overeen met de test instelling. De ontvangen antwoord tekst bevat geen {string}.
 
-**Wordt** Wanneer u een aangepaste test maakt, hebt u de mogelijkheid om een back-endserver als in orde te markeren door te voldoen aan een teken reeks uit de hoofd tekst van het antwoord. U kunt bijvoorbeeld Application Gateway zodanig configureren dat "niet-geautoriseerd" als teken reeks wordt geaccepteerd. Als het antwoord van de back-endserver voor de test aanvraag de teken reeks zonder **toestemming**bevat, wordt deze als in orde gemarkeerd. Als dat niet het geval is, wordt het bericht gemarkeerd als beschadigd.
+**Oorzaak:** Wanneer u een aangepaste test maakt, hebt u de mogelijkheid om een back-endserver als in orde te markeren door te voldoen aan een teken reeks uit de hoofd tekst van het antwoord. U kunt bijvoorbeeld Application Gateway zodanig configureren dat "niet-geautoriseerd" als teken reeks wordt geaccepteerd. Als het antwoord van de back-endserver voor de test aanvraag de teken reeks zonder **toestemming**bevat, wordt deze als in orde gemarkeerd. Als dat niet het geval is, wordt het bericht gemarkeerd als beschadigd.
 
-**Oplossing:** Volg deze stappen om dit probleem op te lossen:
+**Oplossing:** Voer de volgende stappen uit om dit probleem op te lossen:
 
 1.  Open de back-endserver lokaal of van een client computer op het controlepad en controleer de tekst van het antwoord.
 
@@ -207,7 +207,7 @@ Meer informatie over [Application Gateway probe matching](https://docs.microsoft
 
 **Bericht:** Het server certificaat dat door de back-end wordt gebruikt, is niet ondertekend door een bekende certificerings instantie (CA). White List de back-end op het Application Gateway door het basis certificaat van het server certificaat dat door de back-end wordt gebruikt, te uploaden.
 
-**Wordt** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de back-endserver wordt geverifieerd om te zorgen dat de server in orde is.
+**Oorzaak:** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de back-endserver wordt geverifieerd om te zorgen dat de server in orde is.
 Een SSL-certificaat kan alleen worden vertrouwd als dat certificaat van de back-endserver moet worden uitgegeven door een certificerings instantie die is opgenomen in het vertrouwde archief van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde certificerings instantie (bijvoorbeeld als er een zelfondertekend certificaat is gebruikt), moeten gebruikers het certificaat van de verlener uploaden naar Application Gateway.
 
 **Oplossing:** Volg deze stappen om het vertrouwde basis certificaat te exporteren en te uploaden naar Application Gateway. (Deze stappen gelden voor Windows-clients.)
@@ -240,7 +240,7 @@ Zie voor meer informatie over het uitpakken en uploaden van vertrouwde basis cer
 
 **Bericht:** Het basis certificaat van het server certificaat dat door de back-end wordt gebruikt, komt niet overeen met het vertrouwde basis certificaat dat is toegevoegd aan de toepassings gateway. Zorg ervoor dat u het juiste basis certificaat toevoegt aan White List de back-end
 
-**Wordt** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de back-endserver wordt geverifieerd om te zorgen dat de server in orde is.
+**Oorzaak:** End-to-end SSL met Application Gateway v2 vereist dat het certificaat van de back-endserver wordt geverifieerd om te zorgen dat de server in orde is.
 Een SSL-certificaat kan alleen worden vertrouwd als het back-endserver certificaat is uitgegeven door een certificerings instantie die is opgenomen in het vertrouwde archief van Application Gateway. Als het certificaat niet is uitgegeven door een vertrouwde certificerings instantie (bijvoorbeeld als er een zelfondertekend certificaat is gebruikt), moeten gebruikers het certificaat van de verlener uploaden naar Application Gateway.
 
 Het certificaat dat is geüpload naar Application Gateway HTTP-instellingen, moet overeenkomen met het basis certificaat van het back-endserver certificaat.
@@ -280,7 +280,7 @@ Als in de uitvoer niet de volledige keten van het certificaat wordt weer gegeven
 
 **Bericht:** De algemene naam (CN) van het back-end-certificaat komt niet overeen met de host-header van de test.
 
-**Wordt** Application Gateway controleert of de hostnaam die is opgegeven in de back-end-HTTP-instellingen overeenkomt met die van de CN-naam die wordt aangeboden door het SSL-certificaat van de back-endserver. Dit is het Standard_v2-en WAF_v2-SKU-gedrag. De Standard-en WAF SKU-Servernaamindicatie (SNI) zijn ingesteld als de FQDN in het adres van de back-end-pool.
+**Oorzaak:** Application Gateway controleert of de hostnaam die is opgegeven in de back-end-HTTP-instellingen overeenkomt met die van de CN-naam die wordt aangeboden door het SSL-certificaat van de back-endserver. Dit is Standard_v2 en WAF_v2 SKU-gedrag. De Standard-en WAF SKU-Servernaamindicatie (SNI) zijn ingesteld als de FQDN in het adres van de back-end-pool.
 
 Als er in de v2-SKU een standaard test is (er is geen aangepaste test geconfigureerd en gekoppeld), wordt SNI ingesteld op basis van de hostnaam die wordt vermeld in de HTTP-instellingen. Of als ' hostnaam van het back-upadres kiezen ' wordt vermeld in de HTTP-instellingen, waarbij de back-end-adres groep een geldige FQDN bevat, wordt deze instelling toegepast.
 
@@ -319,9 +319,9 @@ Voor Linux met behulp van OpenSSL:
 
 #### <a name="backend-certificate-is-invalid"></a>Back-end certificaat is ongeldig
 
-**Bericht:** Back-end certificaat is ongeldig. De huidige datum valt niet binnen het \"Valid van @ no__t-1 en \"Valid tot @ no__t-3-datum bereik op het certificaat.
+**Bericht:** Back-end certificaat is ongeldig. De huidige datum valt niet binnen de \"geldig van\" en \"geldig tot\" datum bereik in het certificaat.
 
-**Wordt** Elk certificaat wordt geleverd met een geldig geldigheids bereik en de HTTPS-verbinding is niet beveiligd tenzij het SSL-certificaat van de server geldig is. De huidige gegevens moeten binnen de **geldige waarde van** en **geldig tot** het bereik liggen. Als dat niet het geval is, wordt het certificaat beschouwd als ongeldig en wordt er een beveiligings probleem gemaakt waarbij Application Gateway de back-endserver als beschadigd markeert.
+**Oorzaak:** Elk certificaat wordt geleverd met een geldig geldigheids bereik en de HTTPS-verbinding is niet beveiligd tenzij het SSL-certificaat van de server geldig is. De huidige gegevens moeten binnen de **geldige waarde van** en **geldig tot** het bereik liggen. Als dat niet het geval is, wordt het certificaat beschouwd als ongeldig en wordt er een beveiligings probleem gemaakt waarbij Application Gateway de back-endserver als beschadigd markeert.
 
 **Oplossing:** Als uw SSL-certificaat is verlopen, verlengt u het certificaat met uw leverancier en werkt u de server instellingen bij met het nieuwe certificaat. Als het een zelfondertekend certificaat is, moet u een geldig certificaat genereren en het basis certificaat uploaden naar de Application Gateway HTTP-instellingen. Voer hiervoor de volgende stappen uit:
 
@@ -335,7 +335,7 @@ Voor Linux met behulp van OpenSSL:
 
 **Bericht:** De geldigheid van het back-end-certificaat kan niet worden geverifieerd. Als u de reden wilt achterhalen, controleert u de diagnostische gegevens van het open SSL-bericht dat is gekoppeld aan de fout code {error codes}
 
-**Wordt** Deze fout treedt op wanneer Application Gateway de geldigheid van het certificaat niet kunt controleren.
+**Oorzaak:** Deze fout treedt op wanneer Application Gateway de geldigheid van het certificaat niet kunt controleren.
 
 **Oplossing:** U kunt dit probleem oplossen door te controleren of het certificaat op de server correct is gemaakt. U kunt bijvoorbeeld [openssl](https://www.openssl.org/docs/man1.0.2/man1/verify.html) gebruiken om het certificaat en de bijbehorende eigenschappen te controleren en het certificaat vervolgens opnieuw te uploaden naar de Application Gateway http-instellingen.
 

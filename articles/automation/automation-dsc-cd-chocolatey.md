@@ -62,7 +62,7 @@ Als u niet met een resource manager-sjabloon begint, is dat ook OK. Er zijn Powe
 
 ## <a name="step-1-setting-up-the-pull-server-and-automation-account"></a>Stap 1: de pull-server en het Automation-account instellen
 
-Op een geverifieerde (@no__t 0) Power shell-opdracht regel: (kan enkele minuten duren terwijl de pull-server is ingesteld)
+Op een geverifieerde (`Connect-AzureRmAccount`) Power shell-opdracht regel: (kan enkele minuten duren terwijl de pull-server is ingesteld)
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup –Name MY-AUTOMATION-RG –Location MY-RG-LOCATION-IN-QUOTES
@@ -91,7 +91,7 @@ Dit vereist een beetje aanpassen van uw onderdeel. Maar het is niet moeilijk en 
 - Installeer de module die u nodig hebt op uw werk station als volgt:
   - [Windows Management Framework (V5](https://aka.ms/wmf5latest) ) installeren (niet vereist voor Windows 10)
   - `Install-Module –Name MODULE-NAME` <: haalt de module op uit de PowerShell Gallery
-- De map module kopiëren van `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` naar een tijdelijke map
+- De module map van `c:\Program Files\WindowsPowerShell\Modules\MODULE-NAME` naar een map Temp kopiëren
 - Voor beelden en documentatie uit de hoofdmap verwijderen
 - Post de hoofdmap, waarbij het ZIP-bestand precies hetzelfde is als de map 
 - Plaats het ZIP-bestand in een bereik bare HTTP-locatie, zoals Blob Storage in een Azure Storage-account.
@@ -109,7 +109,7 @@ Het opgenomen voor beeld voert de volgende stappen uit voor cChoco en xNetworkin
 
 Er is niets speciaal voor de eerste keer dat u uw configuratie in de pull-server importeert en compileert. Alle volgende import/compilaties van dezelfde configuratie zien er precies hetzelfde uit. Telkens wanneer u het pakket bijwerkt en het moet worden gepusht naar productie, voert u deze stap uit nadat u hebt gecontroleerd of het configuratie bestand juist is, met inbegrip van de nieuwe versie van uw pakket. Hier ziet u het configuratie bestand en Power shell:
 
-ISVBoxConfig. ps1:
+ISVBoxConfig.ps1:
 
 ```powershell
 Configuration ISVBoxConfig
@@ -154,7 +154,7 @@ Configuration ISVBoxConfig
 }
 ```
 
-New-ConfigurationScript. ps1:
+New-ConfigurationScript.ps1:
 
 ```powershell
 Import-AzureRmAutomationDscConfiguration `
@@ -196,7 +196,7 @@ Wanneer u echter een pakket bijwerkt op een virtuele machine die in productie is
 
 De volledige bron voor dit gebruiks voorbeeld bevindt zich in [dit Visual Studio-project](https://github.com/sebastus/ARM/tree/master/CDIaaSVM) op github.
 
-## <a name="related-articles"></a>Verwante artikelen
+## <a name="related-articles"></a>Gerelateerde artikelen
 * [Overzicht van Azure Automation DSC](automation-dsc-overview.md)
 * [Azure Automation DSC-cmdlets](https://docs.microsoft.com/powershell/module/azurerm.automation#automation)
 * [Onboarding van machines voor beheer door Azure Automation DSC](automation-dsc-onboarding.md)

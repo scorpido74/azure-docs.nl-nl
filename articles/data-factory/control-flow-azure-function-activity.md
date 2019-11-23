@@ -41,13 +41,13 @@ Het retour type van de Azure-functie moet een geldig `JObject`zijn. (Houd er wel
 
 | **Eigenschap**  | **Beschrijving** | **Toegestane waarden** | **Vereist** |
 | --- | --- | --- | --- |
-| naam  | Naam van de activiteit in de pijp lijn  | Tekenreeks | ja |
+| name  | Naam van de activiteit in de pijp lijn  | Tekenreeks | ja |
 | type  | Type activiteit is ' AzureFunctionActivity ' | Tekenreeks | ja |
-| Gekoppelde service | De gekoppelde Azure-functie service voor de bijbehorende Azure-functie-app  | Verwijzing naar gekoppelde service | ja |
+| gekoppelde service | De gekoppelde Azure-functie service voor de bijbehorende Azure-functie-app  | Verwijzing naar gekoppelde service | ja |
 | Functie naam  | De naam van de functie in de Azure-functie-app die deze activiteit aanroept | Tekenreeks | ja |
 | method  | REST API methode voor de functie aanroep | Ondersteunde typen teken reeksen: ' ophalen ', ' POST ', ' PUT '   | ja |
 | koptekst  | Kopteksten die naar de aanvraag worden verzonden. Als u bijvoorbeeld de taal en het type van een aanvraag wilt instellen: ' headers ': {' Accept-Language ': ' nl-nl ', ' content-type ': ' application/json '} | Teken reeks (of expressie met het resultType van de teken reeks) | Nee |
-| organen  | hoofd tekst die samen met de aanvraag wordt verzonden naar de functie-API-methode  | Teken reeks (of expressie met het resultType van de teken reeks) of het object.   | Vereist voor PUT/POST-methoden |
+| body  | hoofd tekst die samen met de aanvraag wordt verzonden naar de functie-API-methode  | Teken reeks (of expressie met het resultType van de teken reeks) of het object.   | Vereist voor PUT/POST-methoden |
 |   |   |   | |
 
 Zie het schema van de aanvraag lading in het schema voor de [aanvraag payload](control-flow-web-activity.md#request-payload-schema) voor meer informatie.

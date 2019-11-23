@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Naadloze eenmalige aanmelding | Microsoft Docs'
+title: 'Azure AD Connect: naadloze eenmalige aanmelding | Microsoft Docs'
 description: In dit onderwerp worden de naadloze eenmalige aanmelding van Azure Active Directory (Azure AD) beschreven en wordt uitgelegd hoe u een echte eenmalige aanmelding kunt bieden voor zakelijke desktop gebruikers binnen uw bedrijfs netwerk.
 services: active-directory
 keywords: Wat is Azure AD Connect, installeer Active Directory, vereiste onderdelen voor Azure AD, SSO, eenmalige aanmelding
@@ -51,10 +51,10 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 
 ## <a name="feature-highlights"></a>Functie hoogtepunten
 
-- De aanmeldings naam van de gebruiker kan de on-premises standaard gebruikersnaam (`userPrincipalName`) zijn of een ander kenmerk dat is geconfigureerd in Azure AD Connect (`Alternate ID`). Beide use-cases werken omdat bij naadloze SSO de `securityIdentifier`-claim in het Kerberos-ticket wordt gebruikt om het bijbehorende gebruikers object in azure AD op te zoeken.
+- De aanmeldings naam van de gebruiker kan de on-premises standaard gebruikersnaam (`userPrincipalName`) zijn of een ander kenmerk dat is geconfigureerd in Azure AD Connect (`Alternate ID`). Beide use-cases werken omdat naadloze SSO gebruikmaakt van de `securityIdentifier` claim in het Kerberos-ticket om het bijbehorende gebruikers object in azure AD op te zoeken.
 - Naadloze SSO is een functie van opportunistisch. Als de gebruiker om welke reden dan ook niet kan worden uitgevoerd, gaat de aanmeldings procedure voor gebruikers terug naar het normale gedrag, dat wil zeggen dat de gebruiker het wacht woord moet invoeren op de aanmeldings pagina.
-- Als een toepassing (bijvoorbeeld `https://myapps.microsoft.com/contoso.com`) een `domain_hint` (OpenID Connect Connect) of de para meter `whr` (SAML) doorstuurt die uw Tenant identificeert, of de para meter voor `login_hint` door de gebruiker te identificeren, worden gebruikers in de aanmeldings aanvraag van Azure AD automatisch aangemeld zonder ze gebruikers namen of wacht woorden invoeren.
-- Gebruikers krijgen ook de mogelijkheid om zich aan te melden als een toepassing (bijvoorbeeld `https://contoso.sharepoint.com`) aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen, `https://login.microsoftonline.com/contoso.com/<..>` of `https://login.microsoftonline.com/<tenant_ID>/<..>`-in plaats van het gemeen schappelijke eind punt van Azure AD, `https://login.microsoftonline.com/common/<...>`.
+- Als een toepassing (bijvoorbeeld `https://myapps.microsoft.com/contoso.com`) een `domain_hint` (OpenID Connect Connect) of een `whr` (SAML)-para meter, die uw Tenant identificeert of `login_hint` para meter-identificatie van de gebruiker, doorstuurt, wordt gebruikers automatisch aangemeld zonder dat ze gebruikers namen of wacht woorden hoeven in te voeren.
+- Gebruikers krijgen ook een stille aanmeldings ervaring als een toepassing (bijvoorbeeld `https://contoso.sharepoint.com`) aanmeldings aanvragen verzendt naar de eind punten van Azure AD die als tenants zijn ingesteld, dat wil zeggen, `https://login.microsoftonline.com/contoso.com/<..>` of `https://login.microsoftonline.com/<tenant_ID>/<..>` in plaats van het gemeen schappelijke eind punt van Azure AD, dat wil zeggen `https://login.microsoftonline.com/common/<...>`.
 - Afmelden wordt ondersteund. Hiermee kunnen gebruikers een ander Azure AD-account kiezen om zich aan te melden met, in plaats van dat automatisch wordt aangemeld met naadloze SSO.
 - Office 365 Win32-clients (Outlook, Word, Excel en andere) met versies 16.0.8730. xxxx en hoger worden ondersteund met behulp van een niet-interactieve stroom. Voor OneDrive moet u de [functie voor stil configuratie van onedrive](https://techcommunity.microsoft.com/t5/Microsoft-OneDrive-Blog/Previews-for-Silent-Sync-Account-Configuration-and-Bandwidth/ba-p/120894) activeren voor een stille aanmeldings ervaring.
 - Het kan worden ingeschakeld via Azure AD Connect.
@@ -63,19 +63,19 @@ Naadloze SSO kan worden gecombineerd met de aanmeldings methoden voor [wachtwoor
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Ja @ no__t-0|Ja|Ja|Ja @ no__t-0 @ no__t-1 @ no__t-2|N/A
-|Windows 8.1|Ja @ no__t-0|N/A|Ja|Ja @ no__t-0 @ no__t-1 @ no__t-2|N/A
-|Windows 8|Ja @ no__t-0|N/A|Ja|Ja @ no__t-0 @ no__t-1 @ no__t-2|N/A
-|Windows 7|Ja @ no__t-0|N/A|Ja|Ja @ no__t-0 @ no__t-1 @ no__t-2|N/A
-|Windows Server 2012 R2 of hoger|Ja @ no__t-0 @ no__t-1|N/A|Ja|Ja @ no__t-0 @ no__t-1 @ no__t-2|N/A
-|Mac OS X|N/A|N/A|Ja @ no__t-0 @ no__t-1 @ no__t-2|Ja @ no__t-0 @ no__t-1 @ no__t-2|Ja @ no__t-0 @ no__t-1 @ no__t-2
+|Windows 10|Ja\*|Ja|Ja|Ja\*\*\*|N.v.t.
+|Windows 8.1|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 8|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows 7|Ja\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Windows Server 2012 R2 of hoger|Ja\*\*|N.v.t.|Ja|Ja\*\*\*|N.v.t.
+|Mac OS X|N.v.t.|N.v.t.|Ja\*\*\*|Ja\*\*\*|Ja\*\*\*
 
 
-\*Requires Internet Explorer versie 10 of hoger
+voor \*zijn Internet Explorer versie 10 of hoger vereist
 
-\* @ no__t-1Requires Internet Explorer versie 10 of hoger. Uitgebreide beveiligde modus uitschakelen
+voor \*\*is Internet Explorer versie 10 of hoger vereist. Uitgebreide beveiligde modus uitschakelen
 
-\* @ no__t-1 @ no__t-2Requires [aanvullende configuratie](how-to-connect-sso-quick-start.md#browser-considerations)
+voor \*\*\*is [aanvullende configuratie](how-to-connect-sso-quick-start.md#browser-considerations) vereist
 
 >[!NOTE]
 >Voor Windows 10 is het aanbeveling om [Azure AD samen](../active-directory-azureadjoin-overview.md) te gebruiken voor de optimale ervaring voor eenmalige aanmelding met Azure AD.

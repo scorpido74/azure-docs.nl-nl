@@ -53,13 +53,13 @@ Volg de onderstaande stappen om TDE uit te scha kelen voor een SQL Data Warehous
 ## <a name="encryption-dmvs"></a>Versleuteling Dmv's
 Versleuteling kan worden bevestigd met de volgende Dmv's:
 
-* [sys. data bases]
-* [sys. DM _pdw_nodes_database_encryption_keys]
+* [sys.databases]
+* [sys.dm_pdw_nodes_database_encryption_keys]
 
 <!--MSDN references-->
 [Transparent Data Encryption (TDE)]: https://msdn.microsoft.com/library/bb934049.aspx
-[sys. data bases]: https://msdn.microsoft.com/library/ms178534.aspx
-[sys. DM _pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
+[sys.databases]: https://msdn.microsoft.com/library/ms178534.aspx
+[sys.dm_pdw_nodes_database_encryption_keys]: https://msdn.microsoft.com/library/mt203922.aspx
 
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-security-tde/sql-data-warehouse-security-tde-portal-settings.png

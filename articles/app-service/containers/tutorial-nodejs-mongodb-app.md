@@ -25,7 +25,7 @@ ms.locfileid: "72024952"
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Een Node.js-app en een MongoDB-app maken in Azure App Service op Linux
 
 > [!NOTE]
-> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie [Een Node.js- en een MongoDB-app in Azure maken](../app-service-web-tutorial-nodejs-mongodb-app.md) als u App Service onder _Windows_ wilt implementeren.
+> In dit artikel gaat u een app implementeren in App Service onder Linux. Zie _Een Node.js- en een MongoDB-app in Azure maken_ als u App Service onder [Windows](../app-service-web-tutorial-nodejs-mongodb-app.md) wilt implementeren.
 >
 
 [App Service onder Linux](app-service-linux-intro.md) biedt een uiterst schaalbare webhostingservice met self-patchfunctie onder het Linux-besturingssysteem. In deze zelfstudie wordt beschreven hoe u een Node.js-app maakt, deze lokaal verbindt met een MongoDB-database en vervolgens in een database in de API van Azure Cosmos DB voor MongoDB implementeert. Als u klaar bent, beschikt u over een MEAN-toepassing (MongoDB, Express, AngularJS en Node.js) die wordt uitgevoerd in App Service onder Linux. In het voorbeeld wordt ter vereenvoudiging gebruikgemaakt van het [MEAN.js-webframework](https://meanjs.org/).
@@ -93,7 +93,7 @@ npm install
 npm start
 ```
 
-Negeer de waarschuwing over config.domain. Wanneer de app volledig is geladen, ziet u een bericht zoals dit:
+Negeer de waarschuwing over config.domain. Als de app is geladen, ziet u een bericht zoals dit:
 
 ```txt
 --
@@ -131,7 +131,7 @@ In deze stap maakt u een databaseaccount met de API van Azure Cosmos DB voor Mon
 
 Maak in Cloud Shell een Cosmos DB-account met de opdracht [`az cosmosdb create`](/cli/azure/cosmosdb?view=azure-cli-latest#az-cosmosdb-create).
 
-Vervang in de volgende opdracht de tijdelijke aanduiding voor de *@no__t 1cosmosdb-naam >* door een unieke naam voor de Cosmos db. Deze naam wordt gebruikt als onderdeel van het Cosmos DB-eindpunt, `https://<cosmosdb-name>.documents.azure.com/`. De naam moet dus uniek zijn voor alle Cosmos DB-accounts in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn.
+Vervang in de volgende opdracht de tijdelijke aanduiding voor de *\<cosmosdb-naam >* door een unieke naam voor de Cosmos db. Deze naam wordt gebruikt als onderdeel van het Cosmos DB-eindpunt, `https://<cosmosdb-name>.documents.azure.com/`. De naam moet dus uniek zijn voor alle Cosmos DB-accounts in Azure. De naam mag alleen kleine letters, cijfers en het afbreekstreepje (-) bevatten, en moet tussen de 3 en 50 tekens lang zijn.
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -188,7 +188,7 @@ Kopieer de waarde van `primaryMasterKey`. U hebt deze informatie nodig voor de v
 
 Maak in de lokale MEAN.js-opslagplaats, in de map _config/env/_ , een bestand met de naam _lokale-productie.js_. _.gitignore_ wordt geconfigureerd om dit bestand buiten de opslagplaats te houden.
 
-Kopieer er de volgende code naartoe. Zorg ervoor dat u de twee *@no__t-> 1cosmosdb* tijdelijke aanduidingen vervangt door de naam van uw Cosmos DB-Data Base en vervang de tijdelijke aanduiding *\<primary-Master-> Key* door de sleutel die u in de vorige stap hebt gekopieerd.
+Kopieer er de volgende code naartoe. Zorg ervoor dat u de twee *\<cosmosdb-> naam* aanduidingen vervangt door de naam van de Cosmos DB-Data Base en vervang de tijdelijke aanduiding voor de *\<primaire-sleutel >* door de sleutel die u in de vorige stap hebt gekopieerd.
 
 ```javascript
 module.exports = {
@@ -216,7 +216,7 @@ Voer in het lokale terminalvenster de volgende opdracht uit om de verbindingsree
 NODE_ENV=production node server.js
 ```
 
-`NODE_ENV=production` stelt de omgevingsvariabele in die aan Node.js meldt om in de productieomgeving te worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen.
+`NODE_ENV=production` stelt de omgevingsvariabele in die aangeeft dat Node.js in de productieomgeving moet worden uitgevoerd.  `node server.js` start de Node.js-server met `server.js` in de hoofdmap van de opslagplaats. Op deze manier wordt de Node.js-toepassing in Azure geladen.
 
 Nadat de app is geladen, controleert u of de app wordt uitgevoerd in de productieomgeving:
 
@@ -259,7 +259,7 @@ Standaard houdt het MEAN.js-project _config/env/local-production.js_ buiten de G
 
 Gebruik de opdracht [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) in Cloud Shell om de app-instellingen te definiëren.
 
-In het volgende voorbeeld wordt de app-instelling `MONGODB_URI` in de Azure-app geconfigureerd. Vervang de *\<app-name >* , *\<cosmosdb-name >* en de tijdelijke aanduidingen @no__t *-5primary-Master-Key* .
+In het volgende voorbeeld wordt de app-instelling `MONGODB_URI` in de Azure-app geconfigureerd. Vervang de\<naam van de *app-naam >* , *\<cosmosdb >* en\<tijdelijke aanduidingen voor *primaire-sleutel >* .
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings MONGODB_URI="mongodb://<cosmosdb-name>:<primary-master-key>@<cosmosdb-name>.documents.azure.com:10250/mean?ssl=true"
@@ -333,7 +333,7 @@ In deze stap wijzigt u het `article`-gegevensmodel en publiceert u de wijziging 
 
 Open _modules/articles/server/models/article.server.model.js_ in de lokale MEAN.js-opslagplaats.
 
-Voeg een `String`-type met de naam `comment` toe in `ArticleSchema`. Als u klaar bent, ziet het schema er als volgt uit:
+Voeg een `ArticleSchema`-type met de naam `String` toe in `comment`. Als u klaar bent, ziet het schema er als volgt uit:
 
 ```javascript
 let ArticleSchema = new Schema({
@@ -486,7 +486,7 @@ Wat u hebt geleerd:
 Ga door naar de volgende zelfstudie om te leren hoe u een aangepaste DNS-naam aan uw app kunt toewijzen.
 
 > [!div class="nextstepaction"]
-> [Zelfstudie: Aangepaste DNS-naam toewijzen aan uw app @ no__t-0
+> [Zelf studie: aangepaste DNS-naam toewijzen aan uw app](../app-service-web-tutorial-custom-domain.md)
 
 U kunt ook andere resources bekijken:
 

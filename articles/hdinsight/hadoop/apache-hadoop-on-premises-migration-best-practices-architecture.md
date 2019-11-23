@@ -32,19 +32,19 @@ Azure HDInsight-clusters zijn ontworpen voor een specifiek type Compute-gebruik.
 |IoT/streaming|Kafka, Storm, Spark|
 |Transactionele verwerking van NoSQL|HBase|
 |Interactieve en snellere query's met in-memory cache|Interactive Query|
-|Datawetenschap|ML Services, Spark|
+|Data Science|ML Services, Spark|
 
 In de volgende tabel ziet u de verschillende methoden die kunnen worden gebruikt voor het maken van een HDInsight-cluster.
 
-|**Hulpprogramma**|**Browser op basis**|**Opdracht regel**|**REST API**|**SDK**|
+|**Hulpprogramma**|**Browser op basis**|**Opdracht regel**|**REST-API**|**SDK**|
 |---|---|---|---|---|
 |[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET-SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
-|[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
+|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
+|[Python-SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
 |[Java-SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager sjablonen](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||
 

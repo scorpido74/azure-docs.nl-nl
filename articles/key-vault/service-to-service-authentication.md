@@ -22,7 +22,7 @@ Als u zich wilt verifiëren bij Azure Key Vault, hebt u een Azure Active Directo
 
 Het beheren van dergelijke referenties kan lastig zijn. Het is geneigd om referenties in een app te bundelen door deze op te nemen in de bron-of configuratie bestanden. De `Microsoft.Azure.Services.AppAuthentication` voor .NET-bibliotheek vereenvoudigt dit probleem. Het gebruikt de referenties van de ontwikkelaar voor verificatie tijdens de lokale ontwikkeling. Wanneer de oplossing later naar Azure wordt geïmplementeerd, schakelt de bibliotheek automatisch over naar toepassings referenties. Het gebruik van ontwikkelaars referenties tijdens de lokale ontwikkeling is veiliger omdat u geen Azure AD-referenties hoeft te maken of referenties tussen ontwikkel aars moet delen.
 
-De `Microsoft.Azure.Services.AppAuthentication`-bibliotheek beheert verificatie automatisch, zodat u zich kunt concentreren op uw oplossing in plaats van uw referenties. Het ondersteunt lokale ontwikkeling met geïntegreerde micro soft Visual Studio, Azure CLI of Azure AD Integrated-verificatie. Wanneer het wordt geïmplementeerd in een Azure-resource die een beheerde identiteit ondersteunt, gebruikt de bibliotheek automatisch [beheerde identiteiten voor Azure-resources](../active-directory/msi-overview.md). Er zijn geen code-of configuratie wijzigingen vereist. De bibliotheek biedt ook ondersteuning voor direct gebruik van Azure AD- [client referenties](../azure-resource-manager/resource-group-authenticate-service-principal.md) wanneer een beheerde identiteit niet beschikbaar is of wanneer de beveiligings context van de ontwikkelaar tijdens de lokale ontwikkeling niet kan worden bepaald.
+De `Microsoft.Azure.Services.AppAuthentication`-bibliotheek beheert de verificatie automatisch, zodat u zich kunt concentreren op uw oplossing in plaats van uw referenties. Het ondersteunt lokale ontwikkeling met geïntegreerde micro soft Visual Studio, Azure CLI of Azure AD Integrated-verificatie. Wanneer het wordt geïmplementeerd in een Azure-resource die een beheerde identiteit ondersteunt, gebruikt de bibliotheek automatisch [beheerde identiteiten voor Azure-resources](../active-directory/msi-overview.md). Er zijn geen code-of configuratie wijzigingen vereist. De bibliotheek biedt ook ondersteuning voor direct gebruik van Azure AD- [client referenties](../azure-resource-manager/resource-group-authenticate-service-principal.md) wanneer een beheerde identiteit niet beschikbaar is of wanneer de beveiligings context van de ontwikkelaar tijdens de lokale ontwikkeling niet kan worden bepaald.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -32,9 +32,9 @@ De `Microsoft.Azure.Services.AppAuthentication`-bibliotheek beheert verificatie 
 
 ## <a name="using-the-library"></a>De bibliotheek gebruiken
 
-Voor .NET-toepassingen is de eenvoudigste manier om te werken met een beheerde identiteit via het pakket `Microsoft.Azure.Services.AppAuthentication`. Ga als volgt te aan de slag:
+Voor .NET-toepassingen is de eenvoudigste manier om te werken met een beheerde identiteit via het `Microsoft.Azure.Services.AppAuthentication`-pakket. Ga als volgt te aan de slag:
 
-1. Selecteer **extra** > **NuGet package manager** > **NuGet-pakketten beheren voor oplossing** om verwijzingen toe te voegen aan de NuGet-pakketten [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) en [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) . uw project.
+1. Selecteer **extra** > **NuGet package manager** > **NuGet-pakketten voor oplossing te beheren** om verwijzingen toe te voegen aan de [micro soft. Azure. Services. AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) -en [micro soft. Azure.](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) .-pakketten voor uw project.
 
 1. Voeg de volgende code toe:
 
@@ -51,9 +51,9 @@ Voor .NET-toepassingen is de eenvoudigste manier om te werken met een beheerde i
     string accessToken = await azureServiceTokenProvider2.GetAccessTokenAsync("https://management.azure.com/").ConfigureAwait(false);
     ```
 
-De klasse `AzureServiceTokenProvider` slaat het token in de cache op in het geheugen en haalt dit net vóór de verval datum op uit Azure AD. U hoeft dus niet langer de verval datum te controleren voordat u de `GetAccessTokenAsync`-methode aanroept. Roep de methode aan wanneer u het token wilt gebruiken.
+De `AzureServiceTokenProvider`-klasse slaat het token in de cache op en haalt het op voor het verstrijken van Azure AD. U hoeft dus niet langer de verval datum te controleren voordat u de `GetAccessTokenAsync`-methode aanroept. Roep de methode aan wanneer u het token wilt gebruiken.
 
-De `GetAccessTokenAsync`-methode vereist een resource-id. Zie [Wat is beheerde identiteiten voor Azure-resources](../active-directory/msi-overview.md)voor meer informatie over Microsoft Azure Services.
+De `GetAccessTokenAsync` methode vereist een resource-id. Zie [Wat is beheerde identiteiten voor Azure-resources](../active-directory/msi-overview.md)voor meer informatie over Microsoft Azure Services.
 
 ## <a name="local-development-authentication"></a>Lokale ontwikkel verificatie
 
@@ -61,21 +61,21 @@ Voor lokale ontwikkeling zijn er twee primaire verificatie scenario's: [verifica
 
 ### <a name="authenticating-to-azure-services"></a>Verifiëren bij Azure-Services
 
-Lokale computers bieden geen ondersteuning voor beheerde identiteiten voor Azure-resources. Als gevolg hiervan gebruikt de `Microsoft.Azure.Services.AppAuthentication`-bibliotheek uw ontwikkelaars referenties om te worden uitgevoerd in uw lokale ontwikkel omgeving. Wanneer de oplossing is geïmplementeerd in azure, gebruikt de bibliotheek een beheerde identiteit om over te scha kelen naar een OAuth 2,0-client referentie toewijzings stroom. Deze aanpak houdt in dat u dezelfde code lokaal en extern kunt testen zonder dat u zich zorgen hoeft te maken.
+Lokale computers bieden geen ondersteuning voor beheerde identiteiten voor Azure-resources. Als gevolg hiervan gebruikt de `Microsoft.Azure.Services.AppAuthentication`-bibliotheek uw ontwikkelaars referenties om uit te voeren in uw lokale ontwikkel omgeving. Wanneer de oplossing is geïmplementeerd in azure, gebruikt de bibliotheek een beheerde identiteit om over te scha kelen naar een OAuth 2,0-client referentie toewijzings stroom. Deze aanpak houdt in dat u dezelfde code lokaal en extern kunt testen zonder dat u zich zorgen hoeft te maken.
 
-Voor lokale ontwikkeling worden met `AzureServiceTokenProvider` tokens opgehaald met behulp van **Visual Studio**, **Azure Command-Line Interface** (CLI) of **geïntegreerde Azure AD-verificatie**. Elke optie wordt opeenvolgend geprobeerd en de bibliotheek gebruikt de eerste optie die slaagt. Als er geen optie werkt, wordt een uitzonde ring van @no__t 0 gegenereerd met gedetailleerde informatie.
+Voor lokale ontwikkeling `AzureServiceTokenProvider` worden tokens opgehaald met behulp van **Visual Studio**, **Azure Command-Line Interface** (CLI) of **geïntegreerde Azure AD-verificatie**. Elke optie wordt opeenvolgend geprobeerd en de bibliotheek gebruikt de eerste optie die slaagt. Als er geen optie werkt, wordt een uitzonde ring van `AzureServiceTokenProviderException` gegenereerd met gedetailleerde informatie.
 
 #### <a name="authenticating-with-visual-studio"></a>Verifiëren met Visual Studio
 
 Verificatie met behulp van Visual Studio:
 
-1. Meld u aan bij Visual Studio en gebruik **Hulpprogram ma's**&nbsp; @ no__t-2 @ no__t-3**Opties** om **Opties**te openen.
+1. Meld u aan bij Visual Studio en gebruik **Hulpprogram ma's**&nbsp;>&nbsp;**Opties** om **Opties**te openen.
 
 1. Selecteer **Azure-service verificatie**, kies een account voor lokale ontwikkeling en selecteer **OK**.
 
 Als u problemen ondervindt met het gebruik van Visual Studio, zoals fouten met betrekking tot het token provider bestand, moet u de voor gaande stappen zorgvuldig door nemen.
 
-Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp; @ no__t-2 @ no__t-3**Opties**en selecteert u vervolgens **Azure @ no__t-6Service @ no__t-7Authentication**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
+Mogelijk moet u uw ontwikkelaars token opnieuw verifiëren. Hiertoe selecteert u **extra**&nbsp;>&nbsp;**opties** en selecteert u vervolgens **Azure&nbsp;service&nbsp;verificatie**. Zoek naar een koppeling **opnieuw verifiëren** onder het geselecteerde account. Selecteer deze om te verifiëren.
 
 #### <a name="authenticating-with-azure-cli"></a>Verifiëren met Azure CLI
 
@@ -89,11 +89,11 @@ Azure CLI gebruiken:
 
 1. Controleer de toegang door *AZ account Get-access-token--resource https://vault.azure.net* in te voeren. Als er een fout bericht wordt weer gegeven, controleert u of de juiste versie van Azure CLI correct is geïnstalleerd.
 
-   Als Azure CLI niet in de standaard directory is geïnstalleerd, kan er een fout melding worden weer gegeven dat `AzureServiceTokenProvider` het pad voor de Azure CLI niet kan vinden. Gebruik de omgevings variabele **AzureCLIPath** om de map voor de Azure cli-installatie te definiëren. `AzureServiceTokenProvider` voegt de map die is opgegeven in de omgevings variabele **AzureCLIPath** toe aan de omgevings variabele **Path** als dat nodig is.
+   Als Azure CLI niet is geïnstalleerd in de standaard directory, wordt er mogelijk een fout melding weer gegeven dat `AzureServiceTokenProvider` het pad voor Azure CLI niet kunt vinden. Gebruik de omgevings variabele **AzureCLIPath** om de map voor de Azure cli-installatie te definiëren. `AzureServiceTokenProvider` voegt de map die is opgegeven in de omgevings variabele **AzureCLIPath** toe aan de omgevings variabele **Path** als dat nodig is.
 
 1. Als u bent aangemeld bij Azure CLI met behulp van meerdere accounts of als uw account toegang heeft tot meerdere abonnementen, moet u het te gebruiken abonnement opgeven. Voer de opdracht *AZ account set--subscription < Subscription-id >* in.
 
-Met deze opdracht wordt alleen uitvoer gegenereerd bij een fout. Als u de huidige account instellingen wilt controleren, voert u de opdracht `az account list` in.
+Met deze opdracht wordt alleen uitvoer gegenereerd bij een fout. Als u de huidige account instellingen wilt controleren, voert u de opdracht `az account list`.
 
 #### <a name="authenticating-with-azure-ad-authentication"></a>Verifiëren met Azure AD-verificatie
 
@@ -123,7 +123,7 @@ Bij het maken van een service die een aangepaste service aanroept, gebruikt u Az
 
 - Gebruik omgevings variabelen om details van de Service-Principal op te geven. Zie [de toepassing uitvoeren met een Service-Principal](#running-the-application-using-a-service-principal)voor meer informatie.
 
-Nadat u zich hebt aangemeld bij Azure, wordt de Service-Principal door `AzureServiceTokenProvider` gebruikt voor het ophalen van een token voor lokale ontwikkeling.
+Nadat u zich hebt aangemeld bij Azure, maakt `AzureServiceTokenProvider` gebruik van de Service-Principal om een token op te halen voor lokale ontwikkeling.
 
 Deze aanpak geldt alleen voor lokale ontwikkeling. Wanneer uw oplossing is geïmplementeerd naar Azure, wordt de bibliotheek overgeschakeld naar een beheerde identiteit voor verificatie.
 
@@ -201,15 +201,15 @@ De beheerde identiteit of uw ontwikkelaars identiteit moet gemachtigd zijn om he
 
 Een client certificaat voor Service-Principal-verificatie gebruiken:
 
-1. Maak een Service-Principal-certificaat en sla dit automatisch op in uw Key Vault. Gebruik de Azure CLI [AZ AD SP create-for-RBAC--sleutel kluis \<keyvaultname >--cert \<certificatename >--Create-CERT--Skip-Assignment](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) opdracht:
+1. Maak een Service-Principal-certificaat en sla dit automatisch op in uw Key Vault. Gebruik de Azure CLI [AZ AD SP create-for-RBAC--sleutel kluis \<sleutel kluisnaam >--cert \<certificaatnaam >--Create-CERT--Skip-Assignment](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) opdracht:
 
     ```azurecli
     az ad sp create-for-rbac --keyvault <keyvaultname> --cert <certificatename> --create-cert --skip-assignment
     ```
 
-    De certificaat-id is een URL in de notatie `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
+    De certificaat-id is een URL in de indeling `https://<keyvaultname>.vault.azure.net/secrets/<certificatename>`
 
-1. Vervang `{KeyVaultCertificateSecretIdentifier}` in dit connection string door de certificaat-id:
+1. Vervang `{KeyVaultCertificateSecretIdentifier}` in deze connection string door de certificaat-id:
 
     ```azurecli
     RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}
@@ -223,9 +223,9 @@ Een client certificaat voor Service-Principal-verificatie gebruiken:
 
 ## <a name="connection-string-support"></a>Ondersteuning voor verbindings reeks
 
-@No__t-0 maakt standaard gebruik van meerdere methoden om een token op te halen.
+`AzureServiceTokenProvider` maakt standaard gebruik van meerdere methoden om een token op te halen.
 
-Als u het proces wilt beheren, gebruikt u een connection string dat is door gegeven aan de constructor `AzureServiceTokenProvider` of die is opgegeven in de omgevings variabele *AzureServicesAuthConnectionString* .
+Als u het proces wilt beheren, gebruikt u een connection string dat is door gegeven aan de `AzureServiceTokenProvider`-constructor of die is opgegeven in de omgevings variabele *AzureServicesAuthConnectionString* .
 
 De volgende opties worden ondersteund:
 
@@ -235,11 +235,11 @@ De volgende opties worden ondersteund:
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Lokale ontwikkeling | `AzureServiceTokenProvider` gebruikt Visual Studio om een token op te halen. |
 | `RunAs=CurrentUser` | Lokale ontwikkeling | `AzureServiceTokenProvider` maakt gebruik van Azure AD Integrated-verificatie om token op te halen. |
 | `RunAs=App` | [Beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/index.yml) | `AzureServiceTokenProvider` gebruikt een beheerde identiteit om een token op te halen. |
-| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Door de gebruiker toegewezen identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider` gebruikt een door de gebruiker toegewezen identiteit voor het ophalen van token. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Door de gebruiker toegewezen identiteit voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-work) | `AzureServiceTokenProvider` gebruikt een door de gebruiker toegewezen identiteit om een token op te halen. |
 | `RunAs=App;AppId={TestAppId};KeyVaultCertificateSecretIdentifier={KeyVaultCertificateSecretIdentifier}` | Verificatie van aangepaste services | `KeyVaultCertificateSecretIdentifier` is de geheime id van het certificaat. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Service-Principal | `AzureServiceTokenProvider` gebruikt certificaat om token van Azure AD op te halen. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`| Service-Principal | `AzureServiceTokenProvider` gebruikt een certificaat om een token van Azure AD op te halen. |
 | `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Service-Principal | `AzureServiceTokenProvider` gebruikt een certificaat om een token van Azure AD op te halen|
-| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Service-Principal |`AzureServiceTokenProvider` gebruikt geheim om token van Azure AD op te halen. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Service-Principal |`AzureServiceTokenProvider` gebruikt een geheim om token van Azure AD op te halen. |
 
 ## <a name="samples"></a>Voorbeelden
 
@@ -277,7 +277,7 @@ De gebruikte principal heeft geen toegang tot de resource waartoe deze toegang p
 
 #### <a name="managed-identity-isnt-set-up-on-the-app-service"></a>De beheerde identiteit is niet ingesteld op de App Service
 
-Controleer of de omgevings variabelen MSI_ENDPOINT en MSI_SECRET bestaan met behulp van de [console voor fout opsporing van kudu](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/). Als deze omgevings variabelen niet bestaan, is de beheerde identiteit niet ingeschakeld op de App Service.
+Controleer de omgevings variabelen MSI_ENDPOINT en MSI_SECRET bestaan met behulp van de [kudu-console voor fout opsporing](https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/). Als deze omgevings variabelen niet bestaan, is de beheerde identiteit niet ingeschakeld op de App Service.
 
 ### <a name="common-issues-when-deployed-locally-with-iis"></a>Veelvoorkomende problemen bij het lokaal implementeren met IIS
 
@@ -288,7 +288,7 @@ AppAuth wordt standaard uitgevoerd in een andere gebruikers context in IIS. Daar
 - Stel ' setProfileEnvironment ' in op ' True '. Meer informatie vindt u [hier](https://docs.microsoft.com/iis/configuration/system.applicationhost/applicationpools/add/processmodel#configuration). 
 
     - Ga naar%windir%\System32\inetsrv\config\applicationHost.config
-    - Zoek naar ' setProfileEnvironment '. Als de eigenschap is ingesteld op ' false ', wijzigt u deze in ' True '. Als deze niet aanwezig is, voegt u deze toe als een kenmerk voor het processModel-element (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) en stelt u het in op ' True '.
+    - Zoek naar ' setProfileEnvironment '. Als de eigenschap is ingesteld op ' false ', wijzigt u deze in ' True '. Als deze niet aanwezig is, voegt u deze toe als een kenmerk aan het processModel-element (/configuration/system.applicationHost/applicationPools/applicationPoolDefaults/processModel/@setProfileEnvironment) en stelt u het in op ' True '.
 
 - Meer informatie over [beheerde identiteiten voor Azure-resources](../active-directory/managed-identities-azure-resources/index.yml).
 - Meer informatie over [Azure AD-verificatie scenario's](../active-directory/develop/active-directory-authentication-scenarios.md).

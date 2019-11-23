@@ -1,7 +1,7 @@
 ---
 title: Inleiding tot kennis archief (preview-versie)
 titleSuffix: Azure Cognitive Search
-description: Verrijkte documenten naar Azure Storage verzenden waar u verrijkte documenten in azure Cognitive Search en in andere toepassingen kunt weer geven, wijzigen en gebruiken. Deze functie is beschikbaar als open bare preview.
+description: Verrijkte documenten naar Azure Storage verzenden waar u verrijkte documenten in azure Cognitive Search en in andere toepassingen kunt weer geven, wijzigen en gebruiken. Deze functie is beschikbaar voor openbare preview.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -148,7 +148,7 @@ Er zijn slechts twee Api's die nodig zijn voor het maken van een kennis archief 
 
 | Object | REST API | Beschrijving |
 |--------|----------|-------------|
-| Gegevens bron | [Gegevensbron maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Een bron voor het identificeren van een externe Azure-gegevens bron die bron gegevens levert die worden gebruikt voor het maken van verrijkte documenten.  |
+| gegevens bron | [Gegevensbron maken](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Een bron voor het identificeren van een externe Azure-gegevens bron die bron gegevens levert die worden gebruikt voor het maken van verrijkte documenten.  |
 | vaardig heden | [Vaardig heden maken (API-Version = 2019-05 -06-preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Een resource coördineert het gebruik van [ingebouwde vaardig heden](cognitive-search-predefined-skills.md) en [aangepaste cognitieve vaardig heden](cognitive-search-custom-skill-interface.md) die in een verrijkings pijplijn worden gebruikt tijdens het indexeren. Een vakkennisset heeft een `knowledgeStore` definitie als onderliggend element. |
 | index | [Index maken](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Een schema dat een zoek index uitdrukt. Velden in de index toewijzing naar velden in bron gegevens of in velden die worden geproduceerd tijdens de verrijkings fase (bijvoorbeeld een veld voor organisatie namen die zijn gemaakt door entiteits herkenning). |
 | Indexeer functie | [Indexeer functie maken (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Een resource waarmee onderdelen worden gedefinieerd die worden gebruikt tijdens de indexering: een gegevens bron, een vaardig heden, veld koppelingen van bron-en intermediair gegevens structuren naar doel index en de index zelf. Het uitvoeren van de Indexeer functie is de trigger voor gegevens opname en verrijking. De uitvoer is een zoek index op basis van het index schema, gevuld met bron gegevens, verrijkt via vaardig heden.  |

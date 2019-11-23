@@ -34,18 +34,18 @@ Zie [tekst-naar-spraak-overzicht](text-to-speech.md)voor meer informatie over st
 
 ## <a name="special-characters"></a>Speciale tekens
 
-Wanneer u SSML gebruikt om tekst-naar-gesynthesizerde spraak te converteren, moet u er rekening mee houdt dat net als met XML, speciale tekens, zoals aanhalings tekens, apostrofs en haakjes, moeten worden voorafgegaan. Zie voor meer informatie [Extensible Markup Language (XML) 1,0: Bijlage D @ no__t-0.
+Wanneer u SSML gebruikt om tekst-naar-gesynthesizerde spraak te converteren, moet u er rekening mee houdt dat net als met XML, speciale tekens, zoals aanhalings tekens, apostrofs en haakjes, moeten worden voorafgegaan. Zie [Extensible Markup Language (XML) 1,0: bijlage D](https://www.w3.org/TR/xml/#sec-entexpand)voor meer informatie.
 
 ## <a name="supported-ssml-elements"></a>Ondersteunde SSML-elementen
 
 Elk SSML-document wordt gemaakt met SSML-elementen (of-Tags). Deze elementen worden gebruikt voor het aanpassen van de pitch, prosody, volume en meer. In de volgende secties wordt uitgelegd hoe elk-element wordt gebruikt en wanneer een element vereist of optioneel is.  
 
 > [!IMPORTANT]
-> Vergeet geen dubbele aanhalings tekens rond kenmerk waarden te gebruiken. Standaarden voor juist opgemaakte, geldige XML vereist dat kenmerk waarden tussen dubbele aanhalings tekens worden geplaatst. Het `<prosody volume="90">` is bijvoorbeeld een goed gevormd, geldig element, maar `<prosody volume=90>` dit is niet het geval. SSML kunnen kenmerk waarden die geen aanhalings tekens zijn niet herkennen.
+> Vergeet geen dubbele aanhalings tekens rond kenmerk waarden te gebruiken. Standaarden voor juist opgemaakte, geldige XML vereist dat kenmerk waarden tussen dubbele aanhalings tekens worden geplaatst. `<prosody volume="90">` is bijvoorbeeld een goed gevormd, geldig element, maar `<prosody volume=90>` niet. SSML kunnen kenmerk waarden die geen aanhalings tekens zijn niet herkennen.
 
 ## <a name="create-an-ssml-document"></a>Een SSML-document maken
 
-`speak`is het hoofd element en is **vereist** voor alle SSML-documenten. Het `speak` -element bevat belang rijke informatie, zoals versie, taal en de definitie van de aantekeningen woordenlijst.
+`speak` is het hoofd element en is **vereist** voor alle SSML-documenten. Het `speak`-element bevat belang rijke informatie, zoals versie, taal en de definitie van de aantekeningen woordenlijst.
 
 **Syntaxis**
 
@@ -55,7 +55,7 @@ Elk SSML-document wordt gemaakt met SSML-elementen (of-Tags). Deze elementen wor
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | version | Hiermee wordt de versie van de SSML-specificatie aangegeven die wordt gebruikt om de document markering te interpreteren. De huidige versie is 1,0. | Vereist |
 | xml:lang | Hiermee geeft u de taal van het hoofd document. De waarde kan een kleine letter, een taal code van twee letters (bijvoorbeeld en **) of**de taal code en het hoofd land/regio (bijvoorbeeld **en-US**) bevatten. | Vereist |
@@ -63,7 +63,7 @@ Elk SSML-document wordt gemaakt met SSML-elementen (of-Tags). Deze elementen wor
 
 ## <a name="choose-a-voice-for-text-to-speech"></a>Kies een stem voor tekst naar spraak
 
-Het `voice` element is vereist. Dit wordt gebruikt om de stem op te geven die wordt gebruikt voor tekst naar spraak.
+Het `voice`-element is vereist. Dit wordt gebruikt om de stem op te geven die wordt gebruikt voor tekst naar spraak.
 
 **Syntaxis**
 
@@ -75,14 +75,14 @@ Het `voice` element is vereist. Dit wordt gebruikt om de stem op te geven die wo
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | name | Hiermee wordt de stem geïdentificeerd die wordt gebruikt voor de tekst-naar-spraak-uitvoer. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen. | Vereist |
 
 **Voorbeeld**
 
 > [!NOTE]
-> In dit voor beeld `en-US-Jessa24kRUS` wordt de stem gebruikt. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen.
+> In dit voor beeld wordt de `en-US-Jessa24kRUS`e Voice gebruikt. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen.
 
 ```XML
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -94,11 +94,11 @@ Het `voice` element is vereist. Dit wordt gebruikt om de stem op te geven die wo
 
 ## <a name="use-multiple-voices"></a>Meerdere stemmen
 
-Binnen het `speak` -element kunt u meerdere stemmen opgeven voor tekst-naar-spraak-uitvoer. Deze stemmen kunnen zich in verschillende talen bevindt. Voor elke stem moet de tekst worden ingepakt in een `voice` -element.
+Binnen het `speak`-element kunt u meerdere stemmen opgeven voor tekst-naar-spraak-uitvoer. Deze stemmen kunnen zich in verschillende talen bevindt. Voor elke stem moet de tekst worden ingepakt in een `voice`-element.
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | name | Hiermee wordt de stem geïdentificeerd die wordt gebruikt voor de tekst-naar-spraak-uitvoer. Zie [taal ondersteuning](language-support.md#text-to-speech)voor een volledige lijst met ondersteunde stemmen. | Vereist |
 
@@ -120,7 +120,7 @@ Binnen het `speak` -element kunt u meerdere stemmen opgeven voor tekst-naar-spra
 > [!IMPORTANT]
 > Deze functie werkt alleen met Neural stemmen.
 
-Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behulp van een neutrale spreek stijl voor de standaard-en Neural stemmen. Met Neural stemmen kunt u de sprekende stijl aanpassen aan Express cheerfulness, empathie of sentiment met het `<mstts:express-as>` -element. Dit is een optioneel element dat uniek is voor Azure speech Services.
+Standaard wordt tekst door de service tekst naar spraak gesynthesizerd met behulp van een neutrale spreek stijl voor de standaard-en Neural stemmen. Met Neural stemmen kunt u de spreek stijl aanpassen aan cheerfulness, empathie of sentiment met het element `<mstts:express-as>`. Dit is een optioneel element dat uniek is voor Azure speech Services.
 
 Op dit moment worden de volgende Neural stemmen ondersteund:
 * `en-US-JessaNeural`
@@ -136,13 +136,13 @@ Wijzigingen worden toegepast op het niveau van de zin en de stijl varieert per s
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | type | Geeft de spreek stijl aan. Op dit moment zijn gesp roken stijlen specifiek voor spraak. | Vereist bij het aanpassen van de spreek stijl voor een Neural-stem. Als u `mstts:express-as`gebruikt, moet u type opgeven. Als er een ongeldige waarde wordt gegeven, wordt dit element genegeerd. |
 
 Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor elke Neural-stem.
 
-| Spraak | type | Description |
+| Spraak | Type | Beschrijving |
 |-------|------|-------------|
 | `en-US-JessaNeural` | type=`cheerful` | Een Emotion die positief en blij is |
 | | type=`empathy` | Een idee van caring en inzicht |
@@ -152,7 +152,7 @@ Gebruik deze tabel om te bepalen welke spraak stijlen worden ondersteund voor el
 
 **Voorbeeld**
 
-Dit SSML-fragment laat zien hoe `<mstts:express-as>` het element wordt gebruikt voor het wijzigen van de `cheerful`spreek stijl in.
+Dit SSML-fragment laat zien hoe het `<mstts:express-as>`-element wordt gebruikt om de spraak stijl te wijzigen in `cheerful`.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xmlns:mstts="https://www.w3.org/2001/mstts" xml:lang="en-US">
@@ -166,10 +166,10 @@ Dit SSML-fragment laat zien hoe `<mstts:express-as>` het element wordt gebruikt 
 
 ## <a name="add-or-remove-a-breakpause"></a>Een onderbreking/pauze toevoegen of verwijderen
 
-Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te voegen of onderbrekingen die automatisch worden toegevoegd door de tekst-naar-spraak-service te voor komen.
+Gebruik het `break`-element om pauzes (of onderbrekingen) tussen woorden in te voegen of onderbrekingen die automatisch worden toegevoegd door de service tekst naar spraak te voor komen.
 
 > [!NOTE]
-> Gebruik dit element om het standaard gedrag van text-to-speech (TTS) voor een woord of woord groep te overschrijven als de gesynthesizerde spraak voor het woord of de woord groep onnatuurlijk klinkt. Ingesteld `strength` op`none` om te voor komen dat een Prosodic-verbreekt, die automatisch wordt ingevoegd door de service tekst naar spraak.
+> Gebruik dit element om het standaard gedrag van text-to-speech (TTS) voor een woord of woord groep te overschrijven als de gesynthesizerde spraak voor het woord of de woord groep onnatuurlijk klinkt. Stel `strength` in op `none` om te voor komen dat een Prosodic-verbreekt, die automatisch wordt ingevoegd door de service tekst naar spraak.
 
 **Syntaxis**
 
@@ -180,18 +180,18 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| hoger | Hiermee geeft u de relatieve duur van een onderbreking op met een van de volgende waarden:<ul><li>geen</li><li>x-zwak</li><li>zwak</li><li>gemiddeld (standaard)</li><li>sterk</li><li>x-Strong</li></ul> | Optioneel |
-| time | Hiermee geeft u de absolute duur van een onderbreking in seconden of milliseconden. Voor beelden van geldige waarden zijn 2s en 500 | Optioneel |
+| hoger | Hiermee geeft u de relatieve duur van een onderbreking op met een van de volgende waarden:<ul><li>geen</li><li>x-zwak</li><li>Schakel</li><li>gemiddeld (standaard)</li><li>strakk</li><li>x-Strong</li></ul> | Optioneel |
+| tijd | Hiermee geeft u de absolute duur van een onderbreking in seconden of milliseconden. Voor beelden van geldige waarden zijn 2s en 500 | Optioneel |
 
-| hoger | Description |
+| hoger | Beschrijving |
 |----------|-------------|
 | Geen, of als er geen waarde wordt gegeven | 0 MS |
 | x-zwak | 250 MS |
-| zwak | 500 ms |
-| gemiddeld | 750 ms |
-| sterk | 1000 MS |
+| Schakel | 500 ms |
+| drager | 750 ms |
+| strakk | 1000 MS |
 | x-Strong | 1250 MS |
 
 
@@ -207,11 +207,11 @@ Gebruik het `break` element om pauzes (of onderbrekingen) tussen woorden in te v
 
 ## <a name="specify-paragraphs-and-sentences"></a>Alinea's en zinnen opgeven
 
-`p`en `s` elementen worden gebruikt om respectievelijk alinea's en zinnen aan te duiden. Als deze elementen ontbreken, bepaalt de tekst naar spraak-service automatisch de structuur van het SSML-document.
+`p` en `s` elementen worden gebruikt om respectievelijk alinea's en zinnen aan te duiden. Als deze elementen ontbreken, bepaalt de tekst naar spraak-service automatisch de structuur van het SSML-document.
 
-Het `p` element kan tekst en de volgende elementen bevatten: `audio` `say-as` `break` `s`,, `phoneme`, `prosody`,, `mstts:express-as`, en. `sub`
+Het `p`-element kan tekst en de volgende elementen bevatten: `audio`, `break`, `phoneme`, `prosody`, `say-as`, `sub`, `mstts:express-as`en `s`.
 
-Het `s` element kan tekst en de volgende elementen bevatten: `audio` `say-as` `prosody` `break` `phoneme`,,,, `sub`, en. `mstts:express-as`
+Het `s`-element kan tekst en de volgende elementen bevatten: `audio`, `break`, `phoneme`, `prosody`, `say-as`, `mstts:express-as`en `sub`.
 
 **Syntaxis**
 
@@ -239,7 +239,7 @@ Het `s` element kan tekst en de volgende elementen bevatten: `audio` `say-as` `p
 
 ## <a name="use-phonemes-to-improve-pronunciation"></a>Fonemen gebruiken om de uitspraak te verbeteren
 
-Het `ph` element wordt gebruikt voor fonetische uitspraak in SSML-documenten. Het `ph` element kan alleen tekst bevatten, geen andere elementen. Bied altijd lees bare spraak als terugval.
+Het element `ph` wordt gebruikt voor fonetische uitspraak in SSML-documenten. Het `ph`-element kan alleen tekst bevatten, geen andere elementen. Bied altijd lees bare spraak als terugval.
 
 Fonetische alfabetten bestaan uit telefoons, die bestaan uit letters, cijfers of tekens, soms in combi natie. Elke telefoon beschrijft een uniek geluid van spraak. Dit is in tegens telling tot het Latijnse alfabet, waarbij een wille keurige letter meerdere gesp roken geluiden kan vertegenwoordigen. Houd rekening met de verschillende uitspraak van de letter "c" in de woorden "snoep" en "Stop" of de verschillende uitspraak van de letter combinaties "th" in de woorden "ding" en "die".
 
@@ -251,10 +251,10 @@ Fonetische alfabetten bestaan uit telefoons, die bestaan uit letters, cijfers of
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| letters | Hiermee geeft u het fonetische alfabet op dat moet worden gebruikt wanneer de uitspraak van de `ph` teken reeks in het kenmerk wordt gesynthesizerd. De teken reeks die het alfabet opgeeft, moet worden opgegeven in kleine letters. Hier volgen de mogelijke alfabetten die u kunt opgeven.<ul><li>IPA &ndash; Internationaal Fonetisch alfabet</li><li>telefoonset voor SAPI &ndash; Speech-API</li><li>Universele &ndash; telefoonset van ups</li></ul>Het alfabet is alleen van toepassing op de foneem in het-element. Zie [verwijzing naar fonetische alfabet](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)voor meer informatie. | Optioneel |
-| pH | Een teken reeks met telefoons waarmee de uitspraak van het woord in het `phoneme` element wordt opgegeven. Als de opgegeven teken reeks niet-herkende telefoons bevat, weigert de TTS-Service (tekst naar spraak) het hele SSML-document en wordt er geen van de spraak uitvoer opgegeven in het document. | Vereist als u fonemen gebruikt. |
+| letters | Hiermee geeft u het fonetische alfabet op dat moet worden gebruikt wanneer de uitspraak van de teken reeks in het `ph` kenmerk wordt gesynthesizerd. De teken reeks die het alfabet opgeeft, moet worden opgegeven in kleine letters. Hier volgen de mogelijke alfabetten die u kunt opgeven.<ul><li>IPA &ndash; Internationaal Fonetisch alfabet</li><li>Telefoonset voor SAPI &ndash; Speech-API</li><li>Universele Telefoonset met ups &ndash;</li></ul>Het alfabet is alleen van toepassing op de foneem in het-element. Zie [verwijzing naar fonetische alfabet](https://msdn.microsoft.com/library/hh362879(v=office.14).aspx)voor meer informatie. | Optioneel |
+| pH | Een teken reeks met telefoons die de uitspraak van het woord in het `phoneme`-element opgeven. Als de opgegeven teken reeks niet-herkende telefoons bevat, weigert de TTS-Service (tekst naar spraak) het hele SSML-document en wordt er geen van de spraak uitvoer opgegeven in het document. | Vereist als u fonemen gebruikt. |
 
 **Voorbeelden**
 
@@ -276,7 +276,7 @@ Fonetische alfabetten bestaan uit telefoons, die bestaan uit letters, cijfers of
 
 ## <a name="adjust-prosody"></a>Prosody aanpassen
 
-Het `prosody` element wordt gebruikt voor het opgeven van de waarden voor Pitch, Countour, Range, rate, duration en volume voor de tekst-naar-spraak-uitvoer. Het `prosody` element kan tekst en de volgende elementen bevatten: `audio` `prosody` `break` `s`,, `p`, `phoneme`,, `sub`, en. `say-as`
+Het element `prosody` wordt gebruikt om wijzigingen op te geven in de waarden voor de hoogte, het Countour, het bereik, de frequentie, de duur en het volume voor de tekst-naar-spraak-uitvoer. Het `prosody`-element kan tekst en de volgende elementen bevatten: `audio`, `break`, `p`, `phoneme`, `prosody`, `say-as`, `sub`en `s`.
 
 Omdat Prosodic kenmerk waarden kunnen variëren per breed bereik, interpreteert de spraak herkenner de toegewezen waarden als een suggestie van wat de werkelijke Prosodic-waarden van de geselecteerde stem moeten zijn. De service tekst naar spraak beperkt of vervangt waarden die niet worden ondersteund. Voor beelden van niet-ondersteunde waarden zijn een Toon hoogte van 1 MHz of een volume van 120.
 
@@ -288,14 +288,14 @@ Omdat Prosodic kenmerk waarden kunnen variëren per breed bereik, interpreteert 
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
-| afstand | Geeft de hoogte van de basis lijn voor de tekst aan. U kunt de Toon hoogte uitdrukken als:<ul><li>Een absolute waarde, uitgedrukt als een getal gevolgd door ' Hz ' (Hertz). Bijvoorbeeld 600Hz.</li><li>Een relatieve waarde, uitgedrukt als een getal voorafgegaan door ' + ' of '-', gevolgd door ' Hz ' of ' St ', waarmee een hoeveelheid wordt opgegeven om de Toon hoogte te wijzigen. Bijvoorbeeld: + 80Hz of-2st. De ' St ' geeft aan dat de wijzigings eenheid semitone is. Dit is de helft van een Toon (een halve stap) op de standaard diatonic schaal.</li><li>Een constante waarde:<ul><li>x-laag</li><li>laag</li><li>gemiddeld</li><li>Hogesnelheidsnet</li><li>x-high</li><li>standaardinstelling</li></ul></li></ul>. | Optioneel |
-| Beschrijving | De contour wordt niet ondersteund voor Neural stemmen. Contour vertegenwoordigt wijzigingen in de hoogte van spraak inhoud als een matrix met doelen op bepaalde tijdstippen in de spraak uitvoer. Elk doel wordt gedefinieerd door sets van parameter paren. Bijvoorbeeld: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>De eerste waarde in elke set para meters geeft de locatie van de pitch wijziging aan als een percentage van de duur van de tekst. Met de tweede waarde geeft u de hoeveelheid op waarmee de Toon hoogte moet worden verhoogd of verlaagd, met behulp van een relatieve waarde `pitch`of een opsommings waarde voor Pitch (zie). | Optioneel |
-| bereik  | Een waarde die het bereik van de hoogte van de tekst aangeeft. U kunt snel `range` gebruikmaken van dezelfde absolute waarden, relatieve waarden of opsommings waarden die worden gebruikt om `pitch`te beschrijven. | Optioneel |
-| malen  | Geeft het spreek tempo van de tekst aan. U kunt uitdrukken `rate` als:<ul><li>Een relatieve waarde, uitgedrukt als een getal dat fungeert als een vermenigvuldiger van de standaard instelling. Een waarde van *1* resulteert bijvoorbeeld in geen wijziging in het aantal. Een waarde van *0,5* resulteert in een helft van het aantal. Een waarde van *3* resulteert in een toename van het aantal.</li><li>Een constante waarde:<ul><li>x-langzaam</li><li>trage</li><li>gemiddeld</li><li>hoog</li><li>x-snel</li><li>standaardinstelling</li></ul></li></ul> | Optioneel |
+| afstand | Geeft de hoogte van de basis lijn voor de tekst aan. U kunt de Toon hoogte uitdrukken als:<ul><li>Een absolute waarde, uitgedrukt als een getal gevolgd door ' Hz ' (Hertz). Bijvoorbeeld 600Hz.</li><li>Een relatieve waarde, uitgedrukt als een getal voorafgegaan door ' + ' of '-', gevolgd door ' Hz ' of ' St ', waarmee een hoeveelheid wordt opgegeven om de Toon hoogte te wijzigen. Bijvoorbeeld: + 80Hz of-2st. De ' St ' geeft aan dat de wijzigings eenheid semitone is. Dit is de helft van een Toon (een halve stap) op de standaard diatonic schaal.</li><li>Een constante waarde:<ul><li>x-laag</li><li>gebrek</li><li>drager</li><li>hogesnelheidsnet</li><li>x-high</li><li>standaardinstelling</li></ul></li></ul>. | Optioneel |
+| Beschrijving | De contour wordt niet ondersteund voor Neural stemmen. Contour vertegenwoordigt wijzigingen in de hoogte van spraak inhoud als een matrix met doelen op bepaalde tijdstippen in de spraak uitvoer. Elk doel wordt gedefinieerd door sets van parameter paren. Bijvoorbeeld: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>De eerste waarde in elke set para meters geeft de locatie van de pitch wijziging aan als een percentage van de duur van de tekst. Met de tweede waarde geeft u de hoeveelheid op waarmee de Toon hoogte moet worden verhoogd of verlaagd, met behulp van een relatieve waarde of een opsommings waarde voor Pitch (Zie `pitch`). | Optioneel |
+| bereik  | Een waarde die het bereik van de hoogte van de tekst aangeeft. U kunt `range` met dezelfde absolute waarden, relatieve waarden of opsommings waarden die worden gebruikt om `pitch`te beschrijven. | Optioneel |
+| malen  | Geeft het spreek tempo van de tekst aan. U kunt `rate` als volgt uitdrukken:<ul><li>Een relatieve waarde, uitgedrukt als een getal dat fungeert als een vermenigvuldiger van de standaard instelling. Een waarde van *1* resulteert bijvoorbeeld in geen wijziging in het aantal. Een waarde van *0,5* resulteert in een helft van het aantal. Een waarde van *3* resulteert in een toename van het aantal.</li><li>Een constante waarde:<ul><li>x-langzaam</li><li>Trage</li><li>drager</li><li>hoog</li><li>x-snel</li><li>standaardinstelling</li></ul></li></ul> | Optioneel |
 | duration  | De tijds duur die moet verstrijken terwijl de TTS-Service (spraak-synthese) de tekst leest, in seconden of in milliseconden. Bijvoorbeeld, *2s* of *1800ms*. | Optioneel |
-| volume  | Hiermee wordt het volume niveau van de spreek spraak aangegeven. U kunt het volume uitdrukken als:<ul><li>Een absolute waarde, uitgedrukt als een getal in het bereik 0,0 tot en met 100,0, van *zacht* naar *hard*. Bijvoorbeeld 75. De standaard waarde is 100,0.</li><li>Een relatieve waarde, uitgedrukt als een getal voorafgegaan door ' + ' of '-', waarmee een hoeveelheid wordt opgegeven om het volume te wijzigen. Bijvoorbeeld + 10 of-5,5.</li><li>Een constante waarde:<ul><li>achtergrond</li><li>x-zacht</li><li>Proof</li><li>gemiddeld</li><li>hard</li><li>x-loud</li><li>standaardinstelling</li></ul></li></ul> | Optioneel |
+| volume  | Hiermee wordt het volume niveau van de spreek spraak aangegeven. U kunt het volume uitdrukken als:<ul><li>Een absolute waarde, uitgedrukt als een getal in het bereik 0,0 tot en met 100,0, van *zacht* naar *hard*. Bijvoorbeeld 75. De standaard waarde is 100,0.</li><li>Een relatieve waarde, uitgedrukt als een getal voorafgegaan door ' + ' of '-', waarmee een hoeveelheid wordt opgegeven om het volume te wijzigen. Bijvoorbeeld + 10 of-5,5.</li><li>Een constante waarde:<ul><li>achtergrond</li><li>x-zacht</li><li>Proof</li><li>drager</li><li>hard</li><li>x-loud</li><li>standaardinstelling</li></ul></li></ul> | Optioneel |
 
 ### <a name="change-speaking-rate"></a>Snelheid van spreken wijzigen
 
@@ -371,15 +371,15 @@ Wijzigingen in de hoogte kunnen worden toegepast op standaard stemmen op het niv
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | interpreteren als | Hiermee wordt het inhouds type van de tekst van het element aangegeven. Zie de onderstaande tabel voor een lijst met typen. | Vereist |
 | format | Biedt aanvullende informatie over de exacte opmaak van de tekst van het element voor inhouds typen die mogelijk niet-eenduidige indelingen hebben. SSML definieert indelingen voor inhouds typen die deze gebruiken (Zie de tabel hieronder). | Optioneel |
-| Specificatie | Hiermee wordt het detail niveau aangegeven dat moet worden gesp roken. Dit kenmerk kan bijvoorbeeld vragen of de spraakherkennings engine Lees tekens uitspreekt. Er zijn geen standaard waarden gedefinieerd voor `detail`. | Optioneel |
+| specificatie | Hiermee wordt het detail niveau aangegeven dat moet worden gesp roken. Dit kenmerk kan bijvoorbeeld vragen of de spraakherkennings engine Lees tekens uitspreekt. Er zijn geen standaard waarden gedefinieerd voor `detail`. | Optioneel |
 
 <!-- I don't understand the last sentence. Don't we know which one Cortana uses? -->
 
-Hieronder vindt u de ondersteunde inhouds typen voor de kenmerken `interpret-as` en `format`. Neem het kenmerk `format` alleen op als `interpret-as` is ingesteld op datum en tijd.
+Hieronder vindt u de ondersteunde inhouds typen voor de kenmerken `interpret-as` en `format`. Neem het `format` kenmerk alleen op als `interpret-as` is ingesteld op datum en tijd.
 
 | interpreteren als | format | Tolk |
 |--------------|--------|----------------|
@@ -391,11 +391,11 @@ Hieronder vindt u de ondersteunde inhouds typen voor de kenmerken `interpret-as`
 | treding | | De tekst wordt gesp roken als een breuk getal. De engine voor spraak synthese uitspreekt:<br /><br /> `<say-as interpret-as="fraction">3/8</say-as> of an inch`<br /><br />Als "drie achtstes van een inch" |
 | ordinal  | | De tekst wordt gesp roken als een rang nummer. De engine voor spraak synthese uitspreekt:<br /><br />`Select the <say-as interpret-as="ordinal">3rd</say-as> option`<br /><br />Als ' Selecteer de derde optie '. |
 | telefoonnummer  | | De tekst wordt gesp roken als een telefoon nummer. Het kenmerk `format` mag cijfers bevatten die een land code vertegenwoordigen. Bijvoorbeeld ' 1 ' voor de Verenigde Staten of ' 39 ' voor Italië. De engine voor spraak synthese kan deze informatie gebruiken om de uitspraak van een telefoon nummer te hand leiding. Het telefoon nummer kan ook de land code bevatten, en als dit het geval is, heeft dat prioriteit boven de land code in de `format`. De engine voor spraak synthese uitspreekt:<br /><br />`The number is <say-as interpret-as="telephone" format="1">(888) 555-1212</say-as>`<br /><br />Als ' mijn nummer is gebieds code 8 8 8 5 5 5 1 2 1 2 '. |
-| time | hms12, hms24 | De tekst wordt als een tijd gesp roken. Het kenmerk `format` geeft aan of de tijd wordt opgegeven met een 12-uurs klok (hms12) of een 24-uurs klok (hms24). Gebruik een dubbele punt als scheidings waarde voor uren, minuten en seconden. Hier volgen enkele voor beelden van geldige tijd: 12:35, 1:14:32, 08:15 en 02:50:45. De engine voor spraak synthese uitspreekt:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Als "de trein maakt op vier A M." |
+| tijd | hms12, hms24 | De tekst wordt als een tijd gesp roken. Het kenmerk `format` geeft aan of de tijd wordt opgegeven met een 12-uurs klok (hms12) of een 24-uurs klok (hms24). Gebruik een dubbele punt als scheidings waarde voor uren, minuten en seconden. Hier volgen enkele voor beelden van geldige tijd: 12:35, 1:14:32, 08:15 en 02:50:45. De engine voor spraak synthese uitspreekt:<br /><br />`The train departs at <say-as interpret-as="time" format="hms12">4:00am</say-as>`<br /><br />Als "de trein maakt op vier A M." |
 
 **Gebruik**
 
-Het element `say-as` mag alleen tekst bevatten.
+Het `say-as`-element mag alleen tekst bevatten.
 
 **Voorbeeld**
 
@@ -414,7 +414,7 @@ De engine voor spraak synthese spreekt het volgende voor beeld uit als ' uw eers
 
 ## <a name="add-recorded-audio"></a>Opgenomen audio toevoegen
 
-`audio` is een optioneel element waarmee u MP3-audio kunt invoegen in een SSML-document. De hoofd tekst van het audio-element kan onbewerkte tekst of SSML markeringen bevatten die worden gesp roken als het audio bestand niet beschikbaar is of niet kan worden afgespeeld. Daarnaast kan het element `audio` tekst en de volgende elementen bevatten: `audio`, `break`, `p`, `s`, `phoneme`, `prosody`, `say-as` en `sub`.
+`audio` is een optioneel element waarmee u MP3-audio kunt invoegen in een SSML-document. De hoofd tekst van het audio-element kan onbewerkte tekst of SSML markeringen bevatten die worden gesp roken als het audio bestand niet beschikbaar is of niet kan worden afgespeeld. Daarnaast kan het `audio`-element tekst en de volgende elementen bevatten: `audio`, `break`, `p`, `s`, `phoneme`, `prosody`, `say-as`en `sub`.
 
 Audio die is opgenomen in het SSML-document moet voldoen aan deze vereisten:
 
@@ -433,7 +433,7 @@ Audio die is opgenomen in het SSML-document moet voldoen aan deze vereisten:
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | src | Hiermee geeft u de locatie/URL van het audio bestand op. | Vereist als u het audio-element in uw SSML-document gebruikt. |
 
@@ -452,11 +452,11 @@ Audio die is opgenomen in het SSML-document moet voldoen aan deze vereisten:
 
 ## <a name="add-background-audio"></a>Achtergrond geluid toevoegen
 
-Met het element `mstts:backgroundaudio` kunt u achtergrond geluid toevoegen aan uw SSML-documenten (of een audio bestand combi neren met tekst-naar-spraak). Met `mstts:backgroundaudio` kunt u een audio bestand op de achtergrond laten vervagen aan het begin van tekst-naar-spraak en uitfaden aan het einde van tekst-naar-spraak.
+Met het `mstts:backgroundaudio`-element kunt u achtergrond geluid toevoegen aan uw SSML-documenten (of een audio bestand combi neren met tekst-naar-spraak). Met `mstts:backgroundaudio` kunt u een audio bestand op de achtergrond laten vervagen aan het begin van tekst-naar-spraak en uitfaden aan het einde van tekst-naar-spraak.
 
 Als de achtergrond audio kleiner is dan de tekst-naar-spraak of de uitfaden, wordt er een lus weer gegeven. Als de tekst-naar-spraak langer is, wordt deze gestopt wanneer het uitfadepen is voltooid.
 
-Er is slechts één achtergrond geluids bestand toegestaan per SSML-document. U kunt echter `audio`-Tags tussen het element `voice` toevoegen om extra audio toe te voegen aan uw SSML-document.
+Er is slechts één achtergrond geluids bestand toegestaan per SSML-document. U kunt echter `audio`-Tags in het `voice`-element samenvoegen om extra audio aan uw SSML-document toe te staan.
 
 **Syntaxis**
 
@@ -466,12 +466,12 @@ Er is slechts één achtergrond geluids bestand toegestaan per SSML-document. U 
 
 **Eigenschappen**
 
-| Kenmerk | Description | Vereiste / optioneel |
+| Kenmerk | Beschrijving | Vereiste / optioneel |
 |-----------|-------------|---------------------|
 | src | Hiermee geeft u de locatie/URL van het audio bestand op de achtergrond. | Vereist als u achtergrond geluid in uw SSML-document gebruikt. |
-| volume | Hiermee geeft u het volume van het audio bestand op de achtergrond. **Geaccepteerde waarden**: `0` tot `100` omvatten. De standaardwaarde is `1`. | Optioneel |
-| Infaden | Hiermee geeft u de duur van de achtergrond audio infaden in milliseconden. De standaard waarde is `0`, die gelijk is aan niet vervagen in. **Geaccepteerde waarden**: `0` tot `10000` omvatten.  | Optioneel |
-| fadeout | Hiermee geeft u de duur van de achtergrond audio vervagen in milliseconden. De standaard waarde is `0`, wat gelijk is aan geen fade-out. **Geaccepteerde waarden**: `0` tot `10000` omvatten.  | Optioneel |
+| volume | Hiermee geeft u het volume van het audio bestand op de achtergrond. **Geaccepteerde waarden**: `0` `100` inclusief. De standaardwaarde is `1`. | Optioneel |
+| Infaden | Hiermee geeft u de duur van de achtergrond audio infaden in milliseconden. De standaard waarde is `0`, die gelijk is aan niet vervagen in. **Geaccepteerde waarden**: `0` `10000` inclusief.  | Optioneel |
+| fadeout | Hiermee geeft u de duur van de achtergrond audio vervagen in milliseconden. De standaard waarde is `0`, die gelijk is aan geen uitfaden. **Geaccepteerde waarden**: `0` `10000` inclusief.  | Optioneel |
 
 **Voorbeeld**
 

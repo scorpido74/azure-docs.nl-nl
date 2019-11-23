@@ -31,7 +31,7 @@ Met de Azure Table Storage-service kunt u grote hoeveel heden gestructureerde ge
 Sommige code fragmenten bevatten het **tabel** kenmerk dat wordt gebruikt in functies die hand matig worden aangeroepen, dat wil zeggen, niet door een van de trigger kenmerken te gebruiken.
 
 ## <a name="how-to-add-entities-to-a-table"></a>Entiteiten toevoegen aan een tabel
-Als u entiteiten wilt toevoegen aan een tabel, gebruikt u het kenmerk **Table** met een **ICollector @ no__t-2T >** of **IAsyncCollector @ no__t-4T >** para meter waarbij **t** het schema aangeeft van de entiteiten die u wilt toevoegen. De kenmerk-constructor heeft een teken reeks parameter waarmee de naam van de tabel wordt opgegeven.
+Als u entiteiten wilt toevoegen aan een tabel, gebruikt u het kenmerk **Table** met een **ICollector\<t >** of **IAsyncCollector\<t >** para meter waarbij **t** het schema aangeeft van de entiteiten die u wilt toevoegen. De kenmerk-constructor heeft een teken reeks parameter waarmee de naam van de tabel wordt opgegeven.
 
 In het volgende code voorbeeld **worden entiteits entiteiten toegevoegd aan een** tabel met *de naam*inkomend verkeer.
 
@@ -80,7 +80,7 @@ Wanneer de functie is voltooid, wordt in de pagina **aanroep Details** het aanta
 ![De functie ingress is voltooid](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>Meerdere entiteiten uit een tabel lezen
-Als u een tabel wilt lezen, gebruikt u het kenmerk **Table** met een **IQueryable @ no__t-2T >-** para meter waarbij type **t** is afgeleid van **TableEntity** of **ITableEntity**implementeert.
+Als u een tabel wilt lezen, gebruikt u het kenmerk **Table** met een **IQueryable\<t >** -para meter waarbij type **t** is afgeleid van **TableEntity** of **ITableEntity**implementeert.
 
 In het volgende code voorbeeld worden alle rijen uit de **ingangs** tabel gelezen en geregistreerd:
 

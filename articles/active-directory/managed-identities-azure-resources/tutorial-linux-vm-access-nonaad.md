@@ -1,5 +1,5 @@
 ---
-title: Tutorial`:` Use a managed identity to access Azure Key Vault - Linux - Azure AD
+title: Zelf studie`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Key Vault-Linux-Azure AD
 description: Een zelfstudie die u helpt bij het doorlopen van het proces voor het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -28,7 +28,7 @@ ms.locfileid: "74232171"
 
 Deze zelfstudie laat zien hoe u toegang krijgt tot Azure Key Vault met een door het systeem toegewezen beheerde identiteit voor een virtuele Linux-machine (VM). Key Vault fungeert als een bootstrap en maakt het mogelijk voor uw clienttoepassing om met het geheim toegang te krijgen tot resources die niet zijn beveiligd met Azure Active Directory (AD). Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. 
 
-In deze zelfstudie leert u procedures om het volgende te doen:
+Procedures voor:
 
 > [!div class="checklist"]
 > * Uw virtuele machine toegang verlenen tot een geheim dat is opgeslagen in een sleutelkluis 
@@ -40,7 +40,7 @@ In deze zelfstudie leert u procedures om het volgende te doen:
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Uw virtuele machine toegang verlenen tot een geheim dat is opgeslagen in een sleutelkluis  
 
-Met behulp van beheerde service-identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Azure Active Directory-verificatie. However, not all Azure services support Azure AD authentication. To use managed identities for Azure resources with those services, store the service credentials in Azure Key Vault, and use managed identities for Azure resources to access Key Vault to retrieve the credentials. 
+Met behulp van beheerde service-identiteiten voor Azure-resources kan uw code toegangstokens ophalen voor verificatie bij resources die ondersteuning bieden voor Azure Active Directory-verificatie. Niet alle Azure-Services bieden echter ondersteuning voor Azure AD-verificatie. Als u beheerde identiteiten voor Azure-resources met deze services wilt gebruiken, moet u de service referenties in Azure Key Vault opslaan en beheerde identiteiten voor Azure-resources gebruiken om toegang te krijgen tot Key Vault om de referenties op te halen. 
 
 Eerst moeten we een sleutelkluis maken en de door het systeem toegewezen beheerde identiteit van onze VM toegang tot de sleutelkluis verlenen.   
 
@@ -49,7 +49,7 @@ Eerst moeten we een sleutelkluis maken en de door het systeem toegewezen beheerd
 3. Zoek de sleutelkluis in hetzelfde abonnement en dezelfde resourcegroep als de virtuele machine die u eerder hebt gemaakt. 
 4. Selecteer **Toegangsbeleid** en klik op de knop **Nieuwe toevoegen**. 
 5. Selecteer **Geheimenbeheer** in Configureren met sjabloon. 
-6. Kies **Principal selecteren**, en voer in het zoekveld de naam in van de virtuele machine die u eerder hebt gemaakt.  Select the VM in the result list and click **Select**. 
+6. Kies **Principal selecteren**, en voer in het zoekveld de naam in van de virtuele machine die u eerder hebt gemaakt.  Selecteer de virtuele machine in de lijst met resultaten en klik op **selecteren**. 
 7. Klik op **OK** om het nieuwe toegangsbeleid toe te voegen en klik op **OK** om de selectie van het toegangsbeleid te voltooien. 
 8. Klik op **Maken** om het maken van de sleutelkluis te voltooien. 
 
@@ -60,13 +60,13 @@ Voeg vervolgens een geheim toe aan de sleutelkluis, zodat u het geheim later kun
 1. Selecteer **Alle resources** en zoek en selecteer de sleutelkluis die u hebt gemaakt. 
 2. Selecteer **Geheimen** en klik op **Toevoegen**. 
 3. Selecteer **Handmatig** in **Opties uploaden**. 
-4. Voer een naam en een waarde in voor de geheime sleutel.  The value can be anything you want. 
+4. Voer een naam en een waarde in voor de geheime sleutel.  De waarde kan alles wat u wilt. 
 5. Laat de activeringsdatum en vervaldatum leeg en laat **Ingeschakeld** ingesteld staan op **Ja**. 
 6. Klik op **Maken** om het geheim te maken. 
  
 ## <a name="get-an-access-token-using-the-vms-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>Een toegangstoken ophalen met behulp van de identiteit van de virtuele machine en daarmee het geheim uit de sleutelkluis ophalen  
 
-U hebt een SSH-client nodig om deze stappen uit te voeren.  If you are using Windows, you can use the SSH client in the [Windows Subsystem for Linux](https://msdn.microsoft.com/commandline/wsl/about). Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
+U hebt een SSH-client nodig om deze stappen uit te voeren.  Als u Windows gebruikt, kunt u de SSH-client gebruiken in het [Windows-subsysteem voor Linux](https://msdn.microsoft.com/commandline/wsl/about). Zie [De sleutels van uw SSH-client gebruiken onder Windows in Azure](../../virtual-machines/linux/ssh-from-windows.md) of [Een sleutelpaar met een openbare SSH-sleutel en een privé-sleutel maken en gebruiken voor virtuele Linux-machines in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) als u hulp nodig hebt bij het configureren van de sleutels van uw SSH-client.
  
 1. Navigeer in de portal naar de virtuele Linux-machine en klik in het **overzicht** op **Verbinden**. 
 2. **Maak verbinding** met de virtuele machine met de SSH-client van uw keuze. 
@@ -91,7 +91,7 @@ U hebt een SSH-client nodig om deze stappen uit te voeren.  If you are using Wi
     "token_type":"Bearer"} 
     ```
     
-    U kunt dit toegangstoken gebruiken voor verificatie bij Azure Key Vault.  The next CURL request shows how to read a secret from Key Vault using CURL and the Key Vault REST API.  You’ll need the URL of your Key Vault, which is in the **Essentials** section of the **Overview** page of the Key Vault.  You will also need the access token you obtained on the previous call. 
+    U kunt dit toegangstoken gebruiken voor verificatie bij Azure Key Vault.  In de volgende krul aanvraag ziet u hoe u een geheim kunt lezen van Key Vault met behulp van krul en de Key Vault REST API.  U hebt de URL van uw Key Vault nodig. Deze bevindt zich in de sectie **Essentials** van de pagina **overzicht** van de Key Vault.  U hebt ook het toegangs token nodig dat u bij de vorige oproep hebt verkregen. 
         
     ```bash
     curl https://<YOUR-KEY-VAULT-URL>/secrets/<secret-name>?api-version=2016-10-01 -H "Authorization: Bearer <ACCESS TOKEN>" 
