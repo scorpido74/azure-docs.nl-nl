@@ -1,7 +1,7 @@
 ---
-title: "Snelstartgids: een zoek index maken in Power shell met REST Api's"
+title: 'Quickstart: Create a search index in PowerShell using REST APIs'
 titleSuffix: Azure Cognitive Search
-description: Hierin wordt uitgelegd hoe u een index maakt, gegevens laadt en query's uitvoert met behulp van de invoke-RestMethod van Power shell en de Azure Cognitive Search REST API.
+description: In this REST API quickstart, learn how to create an index, load data, and run queries using PowerShell's Invoke-RestMethod and the Azure Cognitive Search REST API.
 manager: nitinme
 author: heidisteen
 ms.author: heidist
@@ -9,49 +9,49 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/04/2019
-ms.openlocfilehash: e9b2b8e8b3585bc747efb5b2916ddf1fe07d3645
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: db474b7e880ec2d65b9b9a71194964740e4fb329
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792257"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406921"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Snelstartgids: een Azure Cognitive Search-index maken in Power shell met REST Api's
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-powershell-using-rest-apis"></a>Quickstart: Create an Azure Cognitive Search index in PowerShell using REST APIs
 > [!div class="op_single_selector"]
-> * [Power shell (REST)](search-create-index-rest-api.md)
+> * [PowerShell (REST)](search-create-index-rest-api.md)
 > * [C#](search-create-index-dotnet.md)
 > * [Postman (REST)](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 > * [Portal](search-create-index-portal.md)
 > 
 
-In dit artikel wordt stapsgewijs uitgelegd hoe u een Azure Cognitive Search-index maakt, laadt en doorzoekt met behulp van Power shell en de [azure COGNITIVE Search rest-api's](https://docs.microsoft.com/rest/api/searchservice/). In dit artikel wordt uitgelegd hoe u Power shell-opdrachten interactief uitvoert. U kunt ook [een Power shell-script downloaden en uitvoeren](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) waarmee dezelfde bewerkingen worden uitgevoerd.
+This article walks you through the process of creating, loading, and querying an Azure Cognitive Search index using PowerShell and the [Azure Cognitive Search REST APIs](https://docs.microsoft.com/rest/api/searchservice/). This article explains how to run PowerShell commands interactively. Alternatively, you can [download and run a Powershell script](https://github.com/Azure-Samples/azure-search-powershell-samples/tree/master/Quickstart) that performs the same operations.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services en hulpprogram ma's zijn vereist voor deze Quick Start. 
+The following services and tools are required for this quickstart. 
 
-+ [Power shell 5,1 of hoger](https://github.com/PowerShell/PowerShell), met [invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) voor sequentiële en interactieve stappen.
++ [PowerShell 5.1 or later](https://github.com/PowerShell/PowerShell), using [Invoke-RestMethod](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Utility/Invoke-RestMethod) for sequential and interactive steps.
 
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
++ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
 
-## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
+## <a name="get-a-key-and-url"></a>Get a key and URL
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-2. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+2. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
 
-![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
+![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
 
-Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
+All requests require an api-key on every request sent to your service. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
-## <a name="connect-to-azure-cognitive-search"></a>Verbinding maken met Azure Cognitive Search
+## <a name="connect-to-azure-cognitive-search"></a>Connect to Azure Cognitive Search
 
-1. Maak in Power shell een **$headers** -object om het inhouds type en de API-sleutel op te slaan. Vervang de API-sleutel van de beheerder (uw-beheer-API-sleutel) door een sleutel die geldig is voor uw zoek service. U hoeft deze header alleen eenmaal in te stellen voor de duur van de sessie, maar u kunt deze ook aan elke aanvraag toevoegen. 
+1. In PowerShell, create a **$headers** object to store the content-type and API key. Replace the admin API key (YOUR-ADMIN-API-KEY) with a key that is valid for your search service. You only have to set this header once for the duration of the session, but you will add it to every request. 
 
     ```powershell
     $headers = @{
@@ -60,19 +60,19 @@ Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw se
     'Accept' = 'application/json' }
     ```
 
-2. Maak een **$URL** -object dat de verzameling indexen van de service specificeert. Vervang de service naam (uw-zoek SERVICE naam) door een geldige zoek service.
+2. Create a **$url** object that specifies the service's indexes collection. Replace the service name (YOUR-SEARCH-SERVICE-NAME) with a valid search service.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name"
     ```
 
-3. Voer **invoke-RestMethod** uit om een GET-aanvraag naar de service te verzenden en de verbinding te verifiëren. Voeg **ConvertTo-JSON** toe zodat u de antwoorden kunt weer geven die zijn teruggestuurd vanuit de service.
+3. Run **Invoke-RestMethod** to send a GET request to the service and verify the connection. Add **ConvertTo-Json** so that you can view the responses sent back from the service.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-   Als de service leeg is en geen indexen heeft, zijn de resultaten vergelijkbaar met het volgende voor beeld. Anders ziet u een JSON-weer gave van index definities.
+   If the service is empty and has no indexes, results are similar to the following example. Otherwise, you'll see a JSON representation of index definitions.
 
     ```
     {
@@ -85,13 +85,13 @@ Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw se
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-Tenzij u de portal gebruikt, moet er een index op de service bestaan voordat u gegevens kunt laden. Met deze stap wordt de index gedefinieerd en naar de service gepusht. De [rest API Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt gebruikt voor deze stap.
+Unless you are using the portal, an index must exist on the service before you can load data. This step defines the index and pushes it to the service. The [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) is used for this step.
 
-Vereiste elementen van een index bevatten een naam en een verzameling velden. De verzameling velden definieert de structuur van een *document*. Elk veld heeft een naam, type en kenmerken die bepalen hoe het wordt gebruikt (bijvoorbeeld of het in volledige tekst kan worden doorzocht, kan worden gefilterd of kunnen worden opgehaald in Zoek resultaten). Binnen een index moet een van de velden van het type `Edm.String` worden ingesteld als de *sleutel* voor document identiteit.
+Required elements of an index include a name and a fields collection. The fields collection defines the structure of a *document*. Each field has a name, type, and attributes that determine how it's used (for example, whether it is full-text searchable, filterable, or retrievable in search results). Within an index, one of the fields of type `Edm.String` must be designated as the *key* for document identity.
 
-Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder worden weer gegeven. Het is een subset van een grotere [Hotels index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) die wordt gebruikt in andere scenario's. Deze Quick start is in deze Snelstartgids bijgesneden.
+This index is named "hotels-quickstart" and has the field definitions you see below. It's a subset of a larger [Hotels index](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/hotels/Hotels_IndexDefinition.JSON) used in other walkthroughs. We trimmed it in this quickstart for brevity.
 
-1. Plak dit voor beeld in Power shell om een **$Body** -object te maken dat het index schema bevat.
+1. Paste this example into PowerShell to create a **$body** object containing the index schema.
 
     ```powershell
     $body = @"
@@ -120,19 +120,19 @@ Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder w
     "@
     ```
 
-2. Stel de URI in op de verzameling indexen voor uw service en de *Snelstartgids-* index.
+2. Set the URI to the indexes collection on your service and the *hotels-quickstart* index.
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06"
     ```
 
-3. Voer de opdracht uit met **$URL**, **$headers**en **$Body** om de index voor de service te maken. 
+3. Run the command with **$url**, **$headers**, and **$body** to create the index on the service. 
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Put -Body $body | ConvertTo-Json
     ```
 
-    De resultaten moeten er ongeveer als volgt uitzien (afgekapt tot de eerste twee velden voor de boog):
+    Results should look similar to this (truncated to the first two fields for brevity):
 
     ```
     {
@@ -173,17 +173,17 @@ Deze index heet "Hotels-Quick Start" en heeft de veld definities die hieronder w
     ```
 
 > [!Tip]
-> Voor verificatie kunt u ook de lijst indexen in de portal controleren.
+> For verification, you could also check the Indexes list in the portal.
 
 <a name="load-documents"></a>
 
-## <a name="2---load-documents"></a>2-documenten laden
+## <a name="2---load-documents"></a>2 - Load documents
 
-Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-eind punt van uw index. De REST API voor deze taak is het [toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
+To push documents, use an HTTP POST request to your index's URL endpoint. The REST API for this task is [Add, Update, or Delete Documents](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
-1. Plak dit voor beeld in Power shell om een **$Body** -object te maken met de documenten die u wilt uploaden. 
+1. Paste this example into PowerShell to create a **$body** object containing the documents you want to upload. 
 
-    Deze aanvraag bevat twee volledige en één gedeeltelijke record. In de gedeeltelijke record ziet u dat u onvolledige documenten kunt uploaden. De para meter `@search.action` geeft aan hoe het indexeren is voltooid. Geldige waarden zijn upload, Merge, mergeOrUpload en DELETE. Met het gedrag mergeOrUpload maakt u een nieuw document voor hotelId = 3, of werkt u de inhoud bij als deze al bestaat.
+    This request includes two full and one partial record. The partial record demonstrates that you can upload incomplete documents. The `@search.action` parameter specifies how indexing is done. Valid values include upload, merge, mergeOrUpload, and delete. The mergeOrUpload behavior either creates a new document for hotelId = 3, or updates the contents if it already exists.
 
     ```powershell
     $body = @"
@@ -270,18 +270,18 @@ Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-ein
     "@
     ```
 
-1. Stel het eind punt in op de verzameling *Hotels-Quick* start docs en voeg de index bewerking (indices/Hotels-Quick Start/docs/index) toe.
+1. Set the endpoint to the *hotels-quickstart* docs collection and include the index operation (indexes/hotels-quickstart/docs/index).
 
     ```powershell
     $url = "https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06"
     ```
 
-1. Voer de opdracht uit met **$URL**, **$headers**en **$Body** om documenten te laden in de hotels-index van Snelstartgids.
+1. Run the command with **$url**, **$headers**, and **$body** to load documents into the hotels-quickstart index.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers -Method Post -Body $body | ConvertTo-Json
     ```
-    De resultaten moeten er ongeveer uitzien als in het volgende voor beeld. U ziet de [status code 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
+    Results should look similar to the following example. You should see a [status code of 201](https://docs.microsoft.com/rest/api/searchservice/HTTP-status-codes).
 
     ```
     {
@@ -317,25 +317,25 @@ Als u documenten wilt pushen, gebruikt u een HTTP POST-aanvraag voor het URL-ein
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-In deze stap ziet u hoe u een query kunt uitvoeren op een index met behulp van de [Search-documenten-API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+This step shows you how to query an index using the [Search Documents API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-Zorg ervoor dat u enkele aanhalings tekens gebruikt in de zoek $urls. Query reeksen bevatten **$** tekens en u kunt weglaten als u deze weglaat als de hele teken reeks tussen enkele aanhalingen wordt geplaatst.
+Be sure to use single quotes on search $urls. Query strings include **$** characters, and you can omit having to escape them if the entire string is enclosed in single quotes..
 
-1. Stel het eind punt in op de verzameling *Hotels-Quick* start docs en voeg een **Zoek** parameter toe om in een query reeks door te geven. 
+1. Set the endpoint to the *hotels-quickstart* docs collection and add a **search** parameter to pass in a query string. 
   
-   Met deze teken reeks wordt een lege zoek opdracht uitgevoerd (Search = *), waarbij een niet-gerangte lijst wordt geretourneerd (zoek score = 1,0) aan wille keurige documenten. Azure Cognitive Search retourneert standaard 50 overeenkomsten per keer. Als gestructureerd retourneert deze query een volledige document structuur en-waarden. Voeg **$Count = True** toe om een telling van alle documenten in de resultaten op te halen.
+   This string executes an empty search (search=*), returning an unranked list (search score  = 1.0) of arbitrary documents. By default, Azure Cognitive Search returns 50 matches at a time. As structured, this query returns an entire document structure and values. Add **$count=true** to get a count of all documents in the results.
 
     ```powershell
     $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=*&$count=true'
     ```
 
-1. Voer de opdracht uit om de **$URL** te verzenden naar de service.
+1. Run the command to send the **$url** to the service.
 
     ```powershell
     Invoke-RestMethod -Uri $url -Headers $headers | ConvertTo-Json
     ```
 
-    De resultaten moeten er ongeveer uitzien als in de volgende uitvoer.
+    Results should look similar to the following output.
 
     ```
     {
@@ -369,7 +369,7 @@ Zorg ervoor dat u enkele aanhalings tekens gebruikt in de zoek $urls. Query reek
                 . . . 
     ```
 
-Voer een paar andere query voorbeelden uit om een idee te krijgen van de syntaxis. U kunt een teken reeks zoeken, Verbatim $filter query's, de ingestelde resultaten beperken, de zoek opdracht bereiken naar specifieke velden, en meer.
+Try a few other query examples to get a feel for the syntax. You can do a string search, verbatim $filter queries, limit the results set, scope the search to specific fields, and more.
 
 ```powershell
 # Query example 1
@@ -391,17 +391,17 @@ $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quicksta
 
 $url = 'https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?api-version=2019-05-06&search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating'
 ```
-## <a name="clean-up"></a>Opruimen 
+## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
 
-U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
+You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
+If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u Power shell gebruikt voor het door lopen van de basis werk stroom voor het maken en openen van inhoud in azure Cognitive Search. Met de concepten in het oog wordt u aangeraden over te stappen op geavanceerdere scenario's, zoals indexeren vanuit Azure-gegevens bronnen;
+In this quickstart, you used PowerShell to  step through the basic workflow for creating and accessing content in Azure Cognitive Search. With the concepts in mind, we recommend moving on to more advanced scenarios, such as indexing from Azure data sources;
 
 > [!div class="nextstepaction"]
-> [REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search](search-semi-structured-data.md)
+> [REST Tutorial: Index and search semi-structured data (JSON blobs) in Azure Cognitive Search](search-semi-structured-data.md)
