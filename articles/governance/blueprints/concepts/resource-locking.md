@@ -1,68 +1,67 @@
 ---
-title: Bron vergrendeling begrijpen
-description: Meer informatie over de vergrendelings opties voor het beveiligen van resources wanneer u een blauw druk toewijst.
+title: Understand resource locking
+description: Learn about the locking options in Azure Blueprints to protect resources when assigning a blueprint.
 ms.date: 04/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 754b9d7f73c6111abf7505e222a1ca5a8712ae45
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 50f506cc57f67ca2ae2b07e342750d6c5099e739
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960470"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406413"
 ---
-# <a name="understand-resource-locking-in-azure-blueprints"></a>Meer informatie over het vergren delen van resources in azure-blauw drukken
+# <a name="understand-resource-locking-in-azure-blueprints"></a>Understand resource locking in Azure Blueprints
 
-Het maken van consistente omgevingen op schaal is alleen echt waardevol als er een mechanisme is om die consistentie te hand haven. In dit artikel wordt uitgelegd hoe resource vergrendeling werkt in azure-blauw drukken. Zie de zelf studie [nieuwe resources beveiligen](../tutorials/protect-new-resources.md) voor een voor beeld van het vergren delen van resources en het Toep assen van _toewijzingen weigeren_.
+The creation of consistent environments at scale is only truly valuable if there's a mechanism to maintain that consistency. This article explains how resource locking works in Azure Blueprints. To see an example of resource locking and application of _deny assignments_, see the [protecting new resources](../tutorials/protect-new-resources.md) tutorial.
 
-## <a name="locking-modes-and-states"></a>Vergrendelings modi en statussen
+## <a name="locking-modes-and-states"></a>Locking modes and states
 
-Vergrendelings modus is van toepassing op de blauw druk-toewijzing en er zijn drie opties: **niet vergren delen**, **alleen-lezen**of **niet verwijderen**. De vergrendelings modus wordt tijdens de toewijzing van een blauw druk geconfigureerd tijdens de implementatie van artefacten. Een andere vergrendelings modus kan worden ingesteld door de toewijzing van de blauw druk bij te werken.
-Vergrendelings modi kunnen echter niet buiten blauw drukken worden gewijzigd.
+Locking Mode applies to the blueprint assignment and it has three options: **Don't Lock**, **Read Only**, or **Do Not Delete**. The locking mode is configured during artifact deployment during a blueprint assignment. A different locking mode can be set by updating the blueprint assignment.
+Locking modes, however, can't be changed outside of Blueprints.
 
-Resources die zijn gemaakt door artefacten in een blauw druk-toewijzing, hebben vier statussen: **niet vergrendeld**, **alleen-lezen**, **niet bewerken/verwijderen**of **kan niet verwijderen**. Elk type artefact kan de status **niet vergrendeld** hebben. De volgende tabel kan worden gebruikt om de status van een resource te bepalen:
+Resources created by artifacts in a blueprint assignment have four states: **Not Locked**, **Read Only**, **Cannot Edit / Delete**, or **Cannot Delete**. Each artifact type can be in the **Not Locked** state. The following table can be used to determine the state of a resource:
 
-|Modus|Bron type voor artefacten|Status|Beschrijving|
+|Modus|Artifact Resource Type|Staat|Beschrijving|
 |-|-|-|-|
-|Niet vergren delen|*|Niet vergrendeld|Bronnen worden niet beveiligd door blauw drukken. Deze status wordt ook gebruikt voor resources die worden toegevoegd aan een **alleen-lezen** -of **verwijderings** artefact van een resource buiten een blauw druk-toewijzing.|
-|Alleen-lezen|Resourcegroep|Kan niet bewerken/verwijderen|De resource groep is alleen-lezen en tags op de resource groep kunnen niet worden gewijzigd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
-|Alleen-lezen|Niet-resource groep|Alleen-lezen|De resource kan op geen enkele manier worden gewijzigd: geen wijzigingen en kan niet worden verwijderd.|
-|Niet verwijderen|*|Kan niet verwijderen|De resources kunnen worden gewijzigd, maar kunnen niet worden verwijderd. **Niet-vergrendelde** resources kunnen worden toegevoegd, verplaatst, gewijzigd of verwijderd uit deze resource groep.|
+|Don't Lock|*|Not Locked|Resources aren't protected by Blueprints. This state is also used for resources added to a **Read Only** or **Do Not Delete** resource group artifact from outside a blueprint assignment.|
+|Alleen-lezen|Resourcegroep|Cannot Edit / Delete|The resource group is read only and tags on the resource group can't be modified. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
+|Alleen-lezen|Non-resource group|Alleen-lezen|The resource can't be altered in any way -- no changes and it can't be deleted.|
+|Do Not Delete|*|Cannot Delete|The resources can be altered, but can't be deleted. **Not Locked** resources can be added, moved, changed, or deleted from this resource group.|
 
-## <a name="overriding-locking-states"></a>Vergrendelings status negeren
+## <a name="overriding-locking-states"></a>Overriding locking states
 
-Het is doorgaans mogelijk dat iemand met het juiste op [rollen gebaseerde toegangs beheer](../../../role-based-access-control/overview.md) (RBAC) op het abonnement, zoals de rol ' eigenaar ', toestemming mag geven om een resource te wijzigen of te verwijderen. Deze toegang is niet het geval wanneer blauw drukken wordt toegepast als onderdeel van een geïmplementeerde toewijzing. Als de toewijzing is ingesteld met de optie **alleen-lezen** of **niet verwijderen** , niet zelfs de eigenaar van het abonnement kan de geblokkeerde actie uitvoeren op de beveiligde bron.
+It's typically possible for someone with appropriate [role-based access control](../../../role-based-access-control/overview.md) (RBAC) on the subscription, such as the 'Owner' role, to be allowed to alter or delete any resource. This access isn't the case when Blueprints applies locking as part of a deployed assignment. If the assignment was set with the **Read Only** or **Do Not Delete** option, not even the subscription owner can perform the blocked action on the protected resource.
 
-Deze beveiligings maatregel beveiligt de consistentie van de gedefinieerde blauw druk en de omgeving die is ontworpen om te worden gemaakt op basis van per ongeluk of programmatische verwijdering of wijziging.
+This security measure protects the consistency of the defined blueprint and the environment it was designed to create from accidental or programmatic deletion or alteration.
 
-## <a name="removing-locking-states"></a>Vergrendelings status verwijderen
+## <a name="removing-locking-states"></a>Removing locking states
 
-Als het nodig is om een resource die wordt beveiligd door een toewijzing, te wijzigen of te verwijderen, kunt u dit op twee manieren doen.
+If it becomes necessary to modify or delete a resource protected by an assignment, there are two ways to do so.
 
-- De blauw druk-toewijzing bijwerken naar een vergrendelings modus **zonder vergren deling**
-- De blauw druk-toewijzing verwijderen
+- Updating the blueprint assignment to a locking mode of **Don't Lock**
+- Delete the blueprint assignment
 
-Wanneer de toewijzing wordt verwijderd, worden de vergren delingen die zijn gemaakt door blauw drukken verwijderd. De resource blijft echter achter en moet worden verwijderd via normale manier.
+When the assignment is removed, the locks created by Blueprints are removed. However, the resource is left behind and would need to be deleted through normal means.
 
-## <a name="how-blueprint-locks-work"></a>Hoe blauw drukken werkt
+## <a name="how-blueprint-locks-work"></a>How blueprint locks work
 
-Een RBAC-actie voor het weigeren van [toewijzingen](../../../role-based-access-control/deny-assignments.md) wordt toegepast op artefact resources tijdens de toewijzing van een blauw druk als de toewijzing de optie **alleen-lezen** of **niet verwijderen** is geselecteerd. De actie voor weigeren wordt toegevoegd door de beheerde identiteit van de blauw druk toewijzing en kan alleen worden verwijderd uit de artefact resources met dezelfde beheerde identiteit. Deze beveiligings meting dwingt het vergrendelings mechanisme af en voor komt het verwijderen van de blauw druk buiten blauw drukken.
+An RBAC [deny assignments](../../../role-based-access-control/deny-assignments.md) deny action is applied to artifact resources during assignment of a blueprint if the assignment selected the **Read Only** or **Do Not Delete** option. The deny action is added by the managed identity of the blueprint assignment and can only be removed from the artifact resources by the same managed identity. This security measure enforces the locking mechanism and prevents removing the blueprint lock outside Blueprints.
 
-![Blauw druk weigeren toewijzing voor resource groep](../media/resource-locking/blueprint-deny-assignment.png)
+![Blueprint deny assignment on resource group](../media/resource-locking/blueprint-deny-assignment.png)
 
-De [Eigenschappen](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) voor het weigeren van toewijzingen van elke modus zijn als volgt:
+The [deny assignment properties](../../../role-based-access-control/deny-assignments.md#deny-assignment-properties) of each mode are as follows:
 
-|Modus |Machtigingen. acties |Machtigingen. intact |Principals [i]. Voert |ExcludePrincipals [i]. Id | DoNotApplyToChildScopes |
+|Modus |Permissions.Actions |Permissions.NotActions |Principals[i].Type |ExcludePrincipals[i].Id | DoNotApplyToChildScopes |
 |-|-|-|-|-|-|
-|Alleen-lezen |**\*** |**\*/Read** |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
-|Niet verwijderen |**\*/Delete** | |SystemDefined (iedereen) |blauw druk toewijzen en door de gebruiker gedefinieerd in **excludedPrincipals** |Resource groep- _True_; Resource- _False_ |
+|Alleen-lezen |**\*** |**\*/read** |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
+|Do Not Delete |**\*/delete** | |SystemDefined (Everyone) |blueprint assignment and user-defined in **excludedPrincipals** |Resource group - _true_; Resource - _false_ |
 
 > [!IMPORTANT]
-> Met Azure Resource Manager worden de gegevens van de roltoewijzing Maxi maal 30 minuten in de cache opgeslagen. Als gevolg hiervan is het weigeren van de toewijzingen voor het weigeren van een actie op blauw drukken-resources mogelijk niet onmiddellijk volledig van kracht. Tijdens deze periode is het mogelijk om een resource te verwijderen die is bedoeld om te worden beveiligd door de vergren delingen van blauw drukken.
+> Azure Resource Manager caches role assignment details for up to 30 minutes. As a result, deny assignments deny action's on blueprint resources may not immediately be in full effect. During this period of time, it might be possible to delete a resource intended to be protected by blueprint locks.
 
-## <a name="exclude-a-principal-from-a-deny-assignment"></a>Een principal uitsluiten van een weiger toewijzing
+## <a name="exclude-a-principal-from-a-deny-assignment"></a>Exclude a principal from a deny assignment
 
-In sommige ontwerp-of beveiligings scenario's kan het nodig zijn om een principal uit te sluiten van de [toewijzing weigeren](../../../role-based-access-control/deny-assignments.md) die door de toewijzing van blauw drukken wordt gemaakt. Dit wordt gedaan in REST API door Maxi maal vijf waarden toe te voegen aan de **excludedPrincipals** -matrix in de eigenschap **Locks** bij [het maken van de toewijzing](/rest/api/blueprints/assignments/createorupdate).
-Dit is een voor beeld van een aanvraag tekst die **excludedPrincipals**bevat:
+In some design or security scenarios, it may be necessary to exclude a principal from the [deny assignment](../../../role-based-access-control/deny-assignments.md) the blueprint assignment creates. This is done in REST API by adding up to five values to the **excludedPrincipals** array in the **locks** property when [creating the assignment](/rest/api/blueprints/assignments/createorupdate). This is an example of a request body that includes **excludedPrincipals**:
 
 ```json
 {
@@ -106,7 +105,7 @@ Dit is een voor beeld van een aanvraag tekst die **excludedPrincipals**bevat:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Volg de zelf studie [nieuwe resources beveiligen](../tutorials/protect-new-resources.md) .
+- Follow the [protect new resources](../tutorials/protect-new-resources.md) tutorial.
 - Meer informatie over de [levenscyclus van een blauwdruk](lifecycle.md).
 - Meer informatie over hoe u [statische en dynamische parameters](parameters.md) gebruikt.
 - Meer informatie over hoe u de [blauwdrukvolgorde](sequencing-order.md) aanpast.

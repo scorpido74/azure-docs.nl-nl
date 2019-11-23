@@ -1,21 +1,15 @@
 ---
 title: Gegevens van Azure Blockchain Workbench gebruiken in Microsoft Power BI
 description: Leer hoe u gegevens uit een SQL-database van Azure Blockchain Workbench laadt en weergeeft in Microsoft Power BI.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: mmercuri
-manager: femila
-ms.openlocfilehash: dcb6729581d5282b32359874eaad22050d0d2048
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 6e1f160c3563a280548c74ebe84f30bf08945c3f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510699"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324798"
 ---
 # <a name="using-azure-blockchain-workbench-data-with-microsoft-power-bi"></a>Gegevens van Azure Blockchain Workbench weergeven met Microsoft Power BI
 
@@ -27,7 +21,7 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 
 * Download [Power BI Desktop](https://aka.ms/pbidesktopstore).
 
-## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Power BI verbinding te maken met gegevens in Azure Blockchain Workbench
+## <a name="connecting-power-bi-to-data-in-azure-blockchain-workbench"></a>Connecting Power BI to data in Azure Blockchain Workbench
 
 1.  Open Power BI Desktop.
 2.  Selecteer **Gegevens ophalen**.
@@ -49,7 +43,7 @@ Dit artikel bevat stapsgewijze instructies om vanuit Power BI Desktop verbinding
 
     ![Navigator](./media/data-powerbi/navigator.png)
 
-7.  Selecteer de weergaven die u wilt opnemen in het rapport. Voor demonstratiedoeleinden te gebruiken, nemen we **vwContractAction**, waarmee u meer informatie over de acties die hebben plaatsgevonden in een contract.
+7.  Selecteer de weergaven die u wilt opnemen in het rapport. For demonstration purposes, we include **vwContractAction**, which provides details on the actions that have taken place on a contract.
 
     ![Weergaven selecteren](./media/data-powerbi/select-views.png)
 

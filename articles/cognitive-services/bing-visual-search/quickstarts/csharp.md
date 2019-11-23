@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST-API en C#'
+title: 'Quickstart: Get image insights using the REST API and C# - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -10,28 +10,28 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 04/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: b1518af9c37ffe0b8175e741b363d79941e3caaf
-ms.sourcegitcommit: 67625c53d466c7b04993e995a0d5f87acf7da121
+ms.openlocfilehash: 82c1159aca51bc30839f5380a414bd2b3b488bb8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/20/2019
-ms.locfileid: "65905698"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383642"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Quickstart: Afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST-API en C#
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-c"></a>Quickstart: Get image insights using the Bing Visual Search REST API and C#
 
-Deze snelstartgids ziet u hoe u een installatiekopie uploaden naar de Bing visuele zoekopdrachten-API en om de inzichten die het resultaat weer te geven.
+This quickstart demonstrates how to upload an image to the Bing Visual Search API and to view the insights that it returns.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een versie van [Visual Studio 2019](https://www.visualstudio.com/downloads/).
-* De [Json.NET framework](https://www.newtonsoft.com/json), verkrijgbaar is als een NuGet-pakket.
-* Als u Linux/MacOS, kunt u deze gebruikt voor een toepassing uitvoeren [Mono](https://www.mono-project.com/).
+* Any edition of [Visual Studio 2019](https://www.visualstudio.com/downloads/).
+* The [Json.NET framework](https://www.newtonsoft.com/json), available as a NuGet package.
+* If you're using Linux/MacOS, you can run this application using [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe console-oplossing met de naam BingSearchApisQuickStart in Visual Studio. De volgende naamruimten toevoegen aan de belangrijkste codebestand:
+1. In Visual Studio, create a new console solution named BingSearchApisQuickStart. Add the following namespaces to the main code file:
 
     ```csharp
     using System;
@@ -41,7 +41,7 @@ Deze snelstartgids ziet u hoe u een installatiekopie uploaden naar de Bing visue
     using System.Collections.Generic;
     ```
 
-2. Variabelen voor uw abonnementssleutel, het eindpunt en het pad toevoegen aan de installatiekopie die u wilt uploaden:
+2. Add variables for your subscription key, endpoint, and path to the image you want to upload:
 
     ```csharp
         const string accessKey = "<my_subscription_key>";
@@ -49,7 +49,7 @@ Deze snelstartgids ziet u hoe u een installatiekopie uploaden naar de Bing visue
         static string imagePath = @"<path_to_image>";
     ```
 
-3. Maken van een methode met de naam `GetImageFileName()` om op te halen van het pad voor uw installatiekopie:
+3. Create a method named `GetImageFileName()` to get the path for your image:
     
     ```csharp
     static string GetImageFileName(string path)
@@ -58,7 +58,7 @@ Deze snelstartgids ziet u hoe u een installatiekopie uploaden naar de Bing visue
             }
     ```
 
-4. Maak een methode voor het ophalen van de binaire gegevens van de afbeelding:
+4. Create a method to get the binary data of the image:
 
     ```csharp
     static byte[] GetImageBinary(string path)
@@ -69,7 +69,7 @@ Deze snelstartgids ziet u hoe u een installatiekopie uploaden naar de Bing visue
 
 ## <a name="build-the-form-data"></a>De formuliergegevens maken
 
-Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te verzenden naar de API bouwen. De gegevens moet bevatten de `Content-Disposition` header, de `name` parameter moet worden ingesteld op 'afbeelding', en de `filename` parameter kan worden ingesteld op een willekeurige tekenreeks. De inhoud van het formulier bevat de binaire gegevens van de installatiekopie. De grootte van de maximale installatiekopie die u kunt uploaden is 1 MB.
+To upload a local image, you first build the form data to send to the API. The form data must include the `Content-Disposition` header, its `name` parameter must be set to "image", and the `filename` parameter can be set to any string. The contents of the form contain the binary data of the image. The maximum image size you can upload is 1 MB.
 
     ```
     --boundary_1234-abcd
@@ -80,7 +80,7 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
     --boundary_1234-abcd--
     ```
 
-1. Grens tekenreeksen als u wilt opmaken van het formulier postgegevens toevoegen. Grens tekenreeksen bepalen de start, einde en regeleinden tekens voor de gegevens:
+1. Add boundary strings to format the POST form data. Boundary strings determine the start, end, and newline characters for the data:
 
     ```csharp
     // Boundary strings for form data in body of POST.
@@ -90,14 +90,14 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
     static string EndBoundaryTemplate = "--{0}--";
     ```
 
-2. Gebruik de volgende variabelen parameters toevoegen aan de gegevens van het formulier:
+2. Use the following variables to add parameters to the form data:
 
     ```csharp
     const string CONTENT_TYPE_HEADER_PARAMS = "multipart/form-data; boundary={0}";
     const string POST_BODY_DISPOSITION_HEADER = "Content-Disposition: form-data; name=\"image\"; filename=\"{0}\"" + CRLF +CRLF;
     ```
 
-3. Maak een functie met de naam `BuildFormDataStart()` te maken van het begin van de gegevens met behulp van de grens tekenreeksen en het pad voor installatiekopie:
+3. Create a function named `BuildFormDataStart()` to create the start of the form data using the boundary strings and image path:
     
     ```csharp
         static string BuildFormDataStart(string boundary, string filename)
@@ -111,7 +111,7 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
         }
     ```
 
-4. Maak een functie met de naam `BuildFormDataEnd()` aan het einde van de gegevens met behulp van de tekenreeksen grens maken:
+4. Create a function named `BuildFormDataEnd()` to create the end of the form data using the boundary strings:
     
     ```csharp
         static string BuildFormDataEnd(string boundary)
@@ -122,11 +122,11 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
 
 ## <a name="call-the-bing-visual-search-api"></a>De Bing Visual Search-API aanroepen
 
-1. Maak een functie voor het aanroepen van de Bing visuele zoekopdrachten-eindpunt en de JSON-antwoord retourneren. De functie omvat het begin en einde van de gegevens, een bytematrix die de image-gegevens bevat en een `contentType` waarde.
+1. Create a function to call the Bing Visual Search endpoint and return the JSON response. The function takes the start and end of the form data, a byte array containing the image data, and a `contentType` value.
 
 2. Gebruik een `WebRequest` voor het opslaan van de URI, contentType waarde en headers.  
 
-3. Gebruik `request.GetRequestStream()` in uw formulier en image-gegevens schrijven en vervolgens het antwoord ophalen. De functie moet er ongeveer als hieronder wordt weergegeven:
+3. Use `request.GetRequestStream()` to write your form and image data, then get the response. Your function should be similar to the one below:
         
     ```csharp
         static string BingImageSearch(string startFormData, string endFormData, byte[] image, string contentTypeValue)
@@ -156,16 +156,16 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
         }
     ```
 
-## <a name="create-the-main-method"></a>Maken van de Main-methode
+## <a name="create-the-main-method"></a>Create the Main method
 
-1. In de `Main` -methode van uw toepassing, de bestandsnaam en binaire gegevens van uw installatiekopie ophalen:
+1. In the `Main` method of your application, get the filename and binary data of your image:
 
     ```csharp
     var filename = GetImageFileName(imagePath);
     var imageBinary = GetImageBinary(imagePath);
     ```
 
-2. Maak de POST-body door de grens hiervoor te bepalen. Roep vervolgens `startFormData()` en `endFormData` om de formuliergegevens te maken:
+2. Maak de POST-body door de grens hiervoor te bepalen. Then call `startFormData()` and `endFormData` to create the form data:
 
     ```csharp
     // Set up POST body.
@@ -174,13 +174,13 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
     var endFormData = BuildFormDataEnd(boundary);
     ```
 
-3. Maak de `ContentType` waarde door opmaak `CONTENT_TYPE_HEADER_PARAMS` en de rand van de gegevens van het formulier:
+3. Create the `ContentType` value by formatting `CONTENT_TYPE_HEADER_PARAMS` and the form data boundary:
 
     ```csharp
     var contentTypeHdrValue = string.Format(CONTENT_TYPE_HEADER_PARAMS, boundary);
     ```
 
-4. De API-reactie ophalen door het aanroepen van `BingImageSearch()` en afdrukken van het antwoord:
+4. Get the API response by calling `BingImageSearch()` and print the response:
 
     ```csharp
     var json = BingImageSearch(startFormData, endFormData, imageBinary, contentTypeHdrValue);
@@ -191,9 +191,9 @@ Als u wilt een lokale installatiekopie uploaden, moet u eerst de gegevens te ver
 
 ## <a name="using-httpclient"></a>Met behulp van HttpClient
 
-Als u `HttpClient`, kunt u de `MultipartFormDataContent` klasse voor het bouwen van de gegevens. De volgende secties van de code gebruikt ter vervanging van de bijbehorende methoden in het vorige voorbeeld.
+If you use `HttpClient`, you can use the `MultipartFormDataContent` class to build the form data. Just use the following sections of code to replace the corresponding methods in the previous example.
 
-Vervang de `Main` methode met deze code:
+Replace the `Main` method with this code:
 
 ```csharp
         static void Main()
@@ -233,7 +233,7 @@ Vervang de `Main` methode met deze code:
         }
 ```
 
-Vervang de `BingImageSearch` methode met deze code:
+Replace the `BingImageSearch` method with this code:
 
 ```csharp
         /// <summary>
@@ -270,4 +270,4 @@ Vervang de `BingImageSearch` methode met deze code:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een visuele zoekopdrachten één pagina web-app maken](../tutorial-bing-visual-search-single-page-app.md)
+> [Create a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

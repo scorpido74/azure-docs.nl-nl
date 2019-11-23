@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Video's zoeken met de Bing Video Search-SDK voor Java"
+title: 'Quickstart: Search for videos using the SDK for Java - Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's te verzenden naar de Bing Video Search-SDK voor Java.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 3051f663f277c216fe18513b816bb86478a2efbd
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: cbe5f0023b16aec1ed68e7a78ddb3103f40eb85b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67447008"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378600"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Quickstart: Video's zoeken met de Bing Video Search-SDK voor Java
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Java
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing Video Search-SDK voor Java om nieuws te zoeken. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld kunt u vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch)met aanvullende aantekeningen, en functies.
+Gebruik deze quickstart om aan de slag te gaan met de Bing Video Search-SDK voor Java om nieuws te zoeken. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. The source code for this sample can be found on [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), with additional annotations, and features.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
+* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html)
 
 * De [Gson-bibliotheek](https://github.com/google/gson)
 
@@ -61,7 +61,7 @@ Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgen
 
 ## <a name="create-a-search-client"></a>Een zoekclient maken
 
-1. Implementeer de client `VideoSearchAPIImpl`, die uw API-eindpunt en een exemplaar van de klasse `ServiceClientCredentials` vereist.
+1. Implementeer de client `VideoSearchAPIImpl`, die uw API-eindpunt vereist, en een exemplaar van de klasse `ServiceClientCredentials`.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {
@@ -115,7 +115,7 @@ Maak een nieuw Java-project in uw favoriete IDE of editor en importeer de volgen
         //...
         ```
 
-## <a name="send-a-search-request-and-receive-the-response"></a>Een zoekaanvraag verzendt en ontvangt van het antwoord 
+## <a name="send-a-search-request-and-receive-the-response"></a>Send a search request and receive the response 
 
 1. Maak een functie met de naam `VideoSearch()` die uw abonnementssleutel als een tekenreeks neemt. Instantieer de zoekclient die eerder is gemaakt.
     

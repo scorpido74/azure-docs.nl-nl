@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Nieuws zoeken in met de Bing nieuws zoeken-SDK voor Java'
+title: 'Quickstart: Perform a news search using the SDK for Java - Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om nieuws te zoeken met de Bing News Search-SDK voor Java en om het antwoord te verwerken.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: d84b47feb91a9165a4bc03b20b0b7d079aa8f6ae
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: def964dd932f8a41a877a3d9568a8ec4825874b8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203375"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383919"
 ---
-# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Quickstart: Nieuws zoeken met de Bing News Search-SDK voor Java
+# <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Quickstart: Search for news with the Bing News Search SDK for Java
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing News Search-SDK voor Java om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
+Gebruik deze quickstart om aan de slag te gaan met de Bing News Search-SDK voor Java om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingNewsSearch).
 
 ## <a name="prerequisites"></a>Vereisten
 

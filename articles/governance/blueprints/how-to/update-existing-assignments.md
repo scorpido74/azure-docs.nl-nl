@@ -1,65 +1,67 @@
 ---
-title: Een bestaande toewijzing bijwerken vanuit de portal
-description: Meer informatie over het mechanisme voor het bijwerken van een bestaande toewijzing vanuit de portal in azure-blauw drukken.
-ms.date: 10/25/2018
+title: Update an existing assignment from the portal
+description: Learn about the mechanism for updating an existing blueprint assignment from the portal in Azure Blueprints.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: f48f8cfb33a05e2bf8dcbe097d3a9eb3a5ebb9db
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: b4cf03d88103b85bc00dbd815816ead2740f2093
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960360"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406384"
 ---
-# <a name="how-to-update-an-existing-blueprint-assignment"></a>Een bestaande blauw druk-toewijzing bijwerken
+# <a name="how-to-update-an-existing-blueprint-assignment"></a>How to update an existing blueprint assignment
 
-Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zijn verschillende redenen voor het bijwerken van een bestaande toewijzing, waaronder:
+When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
 
-- [Resource vergrendeling](../concepts/resource-locking.md) toevoegen of verwijderen
-- De waarde van [dynamische para meters](../concepts/parameters.md#dynamic-parameters) wijzigen
-- De toewijzing upgraden naar een nieuwere, **gepubliceerde** versie van de blauw druk
+- Add or remove [resource locking](../concepts/resource-locking.md)
+- Change the value of [dynamic parameters](../concepts/parameters.md#dynamic-parameters)
+- Upgrade the assignment to a newer **Published** version of the blueprint
 
-## <a name="updating-assignments"></a>Toewijzingen bijwerken
+## <a name="updating-assignments"></a>Updating assignments
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
 1. Selecteer **Toegewezen blauwdrukken** op de pagina aan de linkerkant.
 
-1. Klik in de lijst met blauw drukken met de rechter muisknop op de blauw druk-toewijzing. Klik vervolgens op de knop **toewijzing bijwerken** of klik met de rechter muisknop op de blauw druk toewijzing en selecteer **Update toewijzing**.
+1. In the list of blueprints, left-click the blueprint assignment. Then click the **Update assignment** button OR right-click the blueprint assignment and select **Update assignment**.
 
-   ![Een bestaande blauw druk-toewijzing bijwerken](../media/update-existing-assignments/update-assignment.png)
+   ![Update an existing blueprint assignment](../media/update-existing-assignments/update-assignment.png)
 
-1. De pagina **blauw** drukken wordt geladen, waarbij alle waarden van de oorspronkelijke toewijzing vooraf zijn ingevuld. U kunt de definitie van de **blauw druk**, de **vergrendelings toewijzings** status en de dynamische para meters van de definitie van de blauw druk wijzigen. Klik op **toewijzen** wanneer u klaar bent met het maken van wijzigingen.
+1. The **Assign blueprint** page will load pre-filled with all values from the original assignment.
+   You can change the **blueprint definition version**, the **Lock Assignment** state, and any of the dynamic parameters that exist on the blueprint definition. Click **Assign** when done making changes.
 
-1. Bekijk op de pagina bijgewerkte toewijzings Details de nieuwe status. In dit voor beeld hebben we **vergren deling** toegevoegd aan de toewijzing.
+1. On the updated assignment details page, see the new status. In this example, we added **Locking** to the assignment.
 
-   ![Er is een bestaande blauw druk-toewijzing bijgewerkt-vergrendelings modus gewijzigd](../media/update-existing-assignments/updated-assignment.png)
+   ![Updated an existing blueprint assignment - lock mode changed](../media/update-existing-assignments/updated-assignment.png)
 
-1. Bekijk details over andere **toewijzings bewerkingen** met behulp van de vervolg keuzelijst. De tabel met **beheerde resources** die worden bijgewerkt op basis van de geselecteerde toewijzings bewerking.
+1. Explore details about other **Assignment operations** using the drop-down. The table of **Managed resources** updates by selected assignment operation.
 
-   ![Toewijzings bewerkingen van een blauw druk toewijzen](../media/update-existing-assignments/assignment-operations.png)
+   ![Assignment operations of a blueprint assignment](../media/update-existing-assignments/assignment-operations.png)
 
-## <a name="rules-for-updating-assignments"></a>Regels voor het bijwerken van toewijzingen
+## <a name="rules-for-updating-assignments"></a>Rules for updating assignments
 
-De implementatie van de bijgewerkte toewijzingen volgt enkele belang rijke regels. Deze regels bepalen wat er gebeurt met resources die al zijn geïmplementeerd. De aangevraagde wijziging en het type artefact bron dat wordt geïmplementeerd of bijgewerkt, bepalen welke acties worden uitgevoerd.
+The deployment of the updated assignments follows a few important rules. These rules determine what happens to already deployed resources. The requested change and the type of artifact resource being deployed or updated determine which actions are taken.
 
 - Roltoewijzingen
-  - Als de rol of de toegewezen rol (gebruiker, groep of app) wordt gewijzigd, wordt een nieuwe roltoewijzing gemaakt. Roltoewijzingen die eerder zijn geïmplementeerd, blijven aanwezig.
+  - If the role or the role assignee (user, group, or app) changes, a new role assignment is created. Role assignments previously deployed are left in place.
 - Beleidstoewijzingen
-  - Als de para meters van de beleids toewijzing zijn gewijzigd, wordt de bestaande toewijzing bijgewerkt.
-  - Als de definitie van de beleids toewijzing is gewijzigd, wordt er een nieuwe beleids toewijzing gemaakt. De eerder geïmplementeerde beleids toewijzingen blijven aanwezig.
-  - Als het artefact voor beleids toewijzing van de blauw druk wordt verwijderd, blijven geïmplementeerde beleids toewijzingen aanwezig.
+  - If the parameters of the policy assignment are changed, the existing assignment is updated.
+  - If the definition of the policy assignment is changed, a new policy assignment is created.
+    Policy assignments previously deployed are left in place.
+  - If the policy assignment artifact is removed from the blueprint, deployed policy assignments are left in place.
 - Azure Resource Manager-sjablonen
-  - De sjabloon wordt als een **put**verwerkt door Resource Manager. Raadpleeg de documentatie voor elke opgenomen resource als elk resource type deze actie anders verwerkt, om de impact van deze actie te bepalen wanneer deze wordt uitgevoerd door blauw drukken.
+  - The template is processed through Resource Manager as a **PUT**. As each resource type handles this action differently, review the documentation for each included resource to determine the impact of this action when run by Blueprints.
 
-## <a name="possible-errors-on-updating-assignments"></a>Mogelijke fouten bij het bijwerken van toewijzingen
+## <a name="possible-errors-on-updating-assignments"></a>Possible errors on updating assignments
 
-Wanneer u toewijzingen bijwerkt, kunt u wijzigingen aanbrengen die onderbreekt wanneer ze worden uitgevoerd. Een voor beeld is het wijzigen van de locatie van een resource groep nadat deze al is geïmplementeerd. Alle wijzigingen die door [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) worden ondersteund, kunnen worden aangebracht, maar elke wijziging die zou leiden tot een fout via Azure Resource Manager, resulteert ook in het mislukken van de toewijzing.
+When updating assignments, it's possible to make changes that break when executed. An example is changing the location of a resource group after it has already been deployed. Any change that are supported by [Azure Resource Manager](../../../azure-resource-manager/resource-group-overview.md) can be made, but any change that would result in an error through Azure Resource Manager will also result in the failure of the assignment.
 
-Er is geen limiet voor het aantal keren dat een toewijzing kan worden bijgewerkt. Als er een fout optreedt, controleert u de fout en maakt u een andere update voor de toewijzing.  Voor beelden van fout scenario's:
+There's no limit on how many times an assignment can be updated. If an error occurs, determine the error and make another update to the assignment.  Example error scenarios:
 
-- Een ongeldige para meter
-- Een al bestaand object
-- Een wijziging die niet wordt ondersteund door Azure Resource Manager
+- A bad parameter
+- An already existing object
+- A change not supported by Azure Resource Manager
 
 ## <a name="next-steps"></a>Volgende stappen
 

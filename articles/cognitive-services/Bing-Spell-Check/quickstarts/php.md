@@ -1,7 +1,7 @@
 ---
-title: 'Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en PHP'
+title: 'Quickstart: Check spelling with the REST API and PHP - Bing Spell Check'
 titleSuffix: Azure Cognitive Services
-description: Deze eenvoudige PHP-toepassing stuurt een aanvraag naar de Bing Spellingcontrole-API en retourneert een lijst met voorgestelde correcties.
+description: This simple PHP application sends a request to the Bing Spell Check API and returns a list of suggested corrections.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4437297c99e346209cf1f7a8973ea0f6f81894af
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 8c95f0960c098ad56affc641996f1b52681d473e
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74110788"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383849"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Snelstartgids: spelling controleren met de Bing Spellingcontrole REST API en PHP
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Quickstart: Check spelling with the Bing Spell Check REST API and PHP
 
-Gebruik deze quickstart om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige PHP-toepassing verstuurt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
+Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. This simple PHP application sends a request to the API and returns a list of suggested corrections. Hoewel deze toepassing in PHP is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 

@@ -1,25 +1,25 @@
 ---
-title: Alles voor deel nemen met de REST-oproep in go
+title: Get intent with REST call in Go
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/17/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: 6d2955a77c06f371975a7a14675eedceab7c98ae
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 5054ee9a23458944257a8010aaab6268d25042a7
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125463"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414464"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 * [Go](https://golang.org/)-programmeertaal  
 * [Visual Studio Code](https://code.visualstudio.com/)
-* Id van openbare app: df67dcdb-c37d-46af-88e1-8b97951ca1c2
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
@@ -27,7 +27,7 @@ ms.locfileid: "74125463"
 
 ## <a name="get-intent-programmatically"></a>De intentie programmatisch ophalen
 
-Gebruik Go om een query uit te geven op de prediction endpoint GET [API](https://aka.ms/luis-apim-v3-prediction) om het Voorspellings resultaat te verkrijgen.
+Use Go to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
 1. Maak een nieuw bestand met de naam `predict.go`. Voeg de volgende code toe:
     
@@ -83,12 +83,12 @@ Gebruik Go om een query uit te geven op de prediction endpoint GET [API](https:/
     }
     ```
 
-1. Vervang de volgende waarden:
+1. Replace the following values:
 
-    * `YOUR-KEY` met uw start sleutel
-    * `YOUR-ENDPOINT` met uw eind punt, bijvoorbeeld `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key.
+    * `YOUR-ENDPOINT` with your endpoint. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
 
-1. Voer bij een opdracht prompt in de map waarin u het bestand hebt gemaakt de volgende opdracht in om het Go-bestand te compileren:
+1. With a command prompt in the same directory as where you created the file, enter the following command to compile the Go file:
 
     ```console
     go build predict.go
@@ -111,7 +111,7 @@ Gebruik Go om een query uit te geven op de prediction endpoint GET [API](https:/
     {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
     ```
 
-    JSON-indeling voor lees baarheid:
+    JSON formatted for readability:
 
     ```json
     {
@@ -161,9 +161,9 @@ Gebruik Go om een query uit te geven op de prediction endpoint GET [API](https:/
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
+When you are finished with this quickstart, delete the file from the file system. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)

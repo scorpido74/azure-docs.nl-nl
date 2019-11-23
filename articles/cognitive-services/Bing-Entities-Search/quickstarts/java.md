@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een zoekaanvraag verzenden naar de Bing Entiteiten zoeken-REST API met Java'
+title: 'Quickstart: Send a search request to the REST API using Java - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de REST API van Bing Entiteiten zoeken te verzenden via Java en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,22 +10,22 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 1f7d9620198042adc7f96e7c4aaa269f73870df0
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 13e25ce0a237d34b98ec42140b86c4955f9058cb
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478999"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323795"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Quickstart: Een zoekaanvraag verzenden naar de Bing Entiteiten zoeken-REST API met Java
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Quickstart: Send a search request to the Bing Entity Search REST API using Java
 
-Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
+Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige Java-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer.
 
 Hoewel deze toepassing in Java is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit(JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
+* De [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/)
 * De [Gson-bibliotheek](https://github.com/google/gson)
 
 

@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Create a custom policy definition'
 description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
-ms.date: 04/23/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 743e3dea3c6daa7b2e713f2b1d5c1691d60785ec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d93f1acb383782de055983ec9ec33ce5576619d1
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216706"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327415"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
@@ -31,6 +31,8 @@ De aanpak voor het maken van een aangepast beleid bevat de volgende stappen:
 > - Bepaal welk effect moet worden gebruikt
 > - Stel de beleidsdefinitie op
 
+## <a name="prerequisites"></a>Vereisten
+
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="identify-requirements"></a>Vereisten identificeren
@@ -50,12 +52,17 @@ Based on the business requirement, the Azure resource to audit with Azure Policy
 
 Er zijn veel manieren om de eigenschappen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
+- Azure Policy-extensie voor VS code
 - Resource Manager-sjablonen
   - Bestaande resource exporteren
   - Een resource maken
   - Quickstart sjablonen (GitHub)
   - Sjabloonreferentiedocumenten
 - Azure Resource Explorer
+
+### <a name="view-resources-in-vs-code-extension"></a>View resources in VS Code extension
+
+The [VS Code extension](../how-to/extension-for-vscode.md#search-for-and-view-resources) can be used to browse resources in your environment and see the Resource Manager properties on each resource.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sjablonen
 
@@ -156,9 +163,14 @@ We hebben de resource-eigenschap gevonden, maar we moeten die eigenschap nog toe
 
 Er zijn enkele manieren om de aliassen van een Azure-resource te bepalen. In deze zelfstudie bekijken we elk daarvan:
 
+- Azure Policy-extensie voor VS code
 - Azure CLI
 - Azure PowerShell
 - Azure Resource Graph
+
+### <a name="get-aliases-in-vs-code-extension"></a>Get aliases in VS Code extension
+
+The Azure Policy extension for VS Code extension makes it easy to browse your resources and [discover aliases](../how-to/extension-for-vscode.md#discover-aliases-for-resource-properties).
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -188,7 +200,7 @@ Net als in Azure CLI zien we in de resultaten een door de opslagaccounts onderst
 
 ### <a name="azure-resource-graph"></a>Azure Resource Graph
 
-[Azure Resource Graph](../../resource-graph/overview.md) is een nieuwe service in de Preview-versie. Hiermee kunt u op nog een andere manier eigenschappen van Azure-resources vinden. Hier volgt een voorbeeldquery voor het bekijken van één opslagaccount met Resource Graph:
+[Azure Resource Graph](../../resource-graph/overview.md) is a new service. Hiermee kunt u op nog een andere manier eigenschappen van Azure-resources vinden. Hier volgt een voorbeeldquery voor het bekijken van één opslagaccount met Resource Graph:
 
 ```kusto
 where type=~'microsoft.storage/storageaccounts'
@@ -301,12 +313,11 @@ Hier volgt een voorbeeld van uitvoer van een opslagaccount voor aliassen:
 }
 ```
 
-Azure Resource Graph (Preview) kan worden gebruikt via [Cloud Shell](https://shell.azure.com), waardoor het een snelle en eenvoudige manier is om de eigenschappen van uw resources te verkennen.
+Azure Resource Graph can be used through [Cloud Shell](https://shell.azure.com), making it a fast and easy way to explore the properties of your resources.
 
 ## <a name="determine-the-effect-to-use"></a>Bepalen welk effect moet worden gebruikt
 
-Beslissen wat te doen met uw niet-conforme resources is bijna net zo belangrijk als beslissen wat om te beginnen moet worden geëvalueerd. Elk mogelijk antwoord op een niet-conforme resource heet een [effect](../concepts/effects.md).
-Het effect bepaalt of de niet-conforme resource wordt geregistreerd, geblokkeerd, gegevens krijgt toegevoegd of dat er een implementatie aan is gekoppeld om de resource weer conform te maken.
+Beslissen wat te doen met uw niet-conforme resources is bijna net zo belangrijk als beslissen wat om te beginnen moet worden geëvalueerd. Elk mogelijk antwoord op een niet-conforme resource heet een [effect](../concepts/effects.md). Het effect bepaalt of de niet-conforme resource wordt geregistreerd, geblokkeerd, gegevens krijgt toegevoegd of dat er een implementatie aan is gekoppeld om de resource weer conform te maken.
 
 In ons voorbeeld is Deny (weigeren) het gewenste effect, omdat we niet willen dat er niet-conforme resources worden gemaakt in onze Azure-omgeving. Audit (controle) is een goede eerste keuze voor een beleidseffect om te bepalen wat de impact van een beleid is, voordat dit instelt op Weigeren. Eén manier om het wijzigen van het effect per toewijzing gemakkelijker te maken, is door het effect te parametriseren. Zie [parameters](#parameters) hieronder voor informatie over hoe u dat doet.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een zoekaanvraag verzenden naar de Bing Entiteiten zoeken-REST API met Ruby'
+title: 'Quickstart: Send a search request to the REST API using Ruby - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de REST API van Bing Entity Search te verzenden via Ruby en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
-ms.openlocfilehash: e892d9917d0cc295236ee5e134348248dd4817a1
-ms.sourcegitcommit: 94ee81a728f1d55d71827ea356ed9847943f7397
+ms.openlocfilehash: 076fad8c1fc6fdd4bccf07f5eb3223800eddd4a0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/26/2019
-ms.locfileid: "70034517"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323559"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Snelstartgids: Bing Entiteiten zoeken-API met Ruby
 
-Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Met deze eenvoudige Ruby-toepassing wordt een query naar de API gestuurd om nieuws te zoeken en wordt het antwoord weergegeven. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
+Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Met deze eenvoudige Ruby-toepassing wordt een query naar de API gestuurd om nieuws te zoeken en wordt het antwoord weergegeven. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
 
 Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -65,7 +65,7 @@ Hoewel deze toepassing in Ruby is geschreven, is de API een RESTful-webservice d
     request['Ocp-Apim-Subscription-Key'] = subscriptionKey
     ```
 
-3. De aanvraag verzenden en het antwoord afdrukken
+3. Send the request, and print the response
 
     ```ruby
     response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|

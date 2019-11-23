@@ -1,85 +1,84 @@
 ---
-title: Filteren op zoek resultaten
+title: Filter on search results
 titleSuffix: Azure Cognitive Search
-description: Filteren op beveiligings identiteit, taal, geografische locatie of numerieke waarden van de gebruiker om Zoek resultaten te verminderen voor query's in azure Cognitive Search, een gehoste service voor zoeken in de Cloud op Microsoft Azure.
+description: Filter by user security identity, language, geo-location, or numeric values to reduce search results on queries in Azure Cognitive Search, a hosted cloud search service on Microsoft Azure.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 960f6f0de94c6bb4fc6b03c31740b63270cf9e14
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4ce3cd0db20f76aa6169f15254cf36ee64151a5
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132923"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406748"
 ---
-# <a name="filters-in-azure-cognitive-search"></a>Filters in azure Cognitive Search 
+# <a name="filters-in-azure-cognitive-search"></a>Filters in Azure Cognitive Search 
 
-Een *filter* biedt criteria voor het selecteren van documenten die worden gebruikt in een Azure Cognitive search-query. Niet-gefilterde Zoek opdrachten bevatten alle documenten in de index. Een filter bereikt een zoek query op een subset van documenten. Een filter kan bijvoorbeeld de zoek opdracht in volledige tekst beperken tot alleen die producten met een specifiek merk of dezelfde kleur, tegen prijs punten boven een bepaalde drempel waarde.
+A *filter* provides criteria for selecting documents used in an Azure Cognitive Search query. Unfiltered search includes all documents in the index. A filter scopes a search query to a subset of documents. For example, a filter could restrict full text search to just those products having a specific brand or color, at price points above a certain threshold.
 
-Bij sommige zoek functies worden filter vereisten opgelegd als onderdeel van de implementatie, maar u kunt filters op elk gewenst moment gebruiken om de zoek actie te beperken met criteria *op basis van waarden* (bereik zoeken naar product type "boeken" voor categorie "niet-fictief" gepubliceerd door "Simon & Schuster").
+Some search experiences impose filter requirements as part of the implementation, but you can use filters anytime you want to constrain search using *value-based* criteria (scoping search to product type "books" for category "non-fiction" published by "Simon & Schuster").
 
-Als uw doel in plaats daarvan gericht is op specifieke gegevens *structuren* (bereik zoeken naar een klant-beoordelingen veld), zijn er alternatieve methoden die hieronder worden beschreven.
+If instead your goal is targeted search on specific data *structures* (scoping search to a customer-reviews field), there are alternative methods, described below.
 
-## <a name="when-to-use-a-filter"></a>Wanneer u een filter wilt gebruiken
+## <a name="when-to-use-a-filter"></a>When to use a filter
 
-Filters zijn basis voor verschillende zoek functies, waaronder ' zoeken in de buurt ', facet navigatie en beveiligings filters die alleen de documenten tonen die een gebruiker mag zien. Als u een van deze functies implementeert, is een filter vereist. Het is het filter dat is gekoppeld aan de zoek query die de geolocatie coördinaten levert, de facet categorie die door de gebruiker is geselecteerd of de beveiligings-ID van de aanvrager.
+Filters are foundational to several search experiences, including "find near me", faceted navigation, and security filters that show only  those documents a user is allowed to see. If you implement any one of these experiences, a filter is required. It's the filter attached to the search query that provides the geolocation coordinates, the facet category selected by the user, or the security ID of the requestor.
 
-Voorbeeld scenario's zijn onder andere:
+Example scenarios include the following:
 
-1. Gebruik een filter om uw index te segmenteren op basis van gegevens waarden in de index. Op basis van een schema met City, Type behuizing en voorzieningen kunt u een filter maken om expliciet documenten te selecteren die voldoen aan uw criteria (in Seattle, condos, afgebakend). 
+1. Use a filter to slice your index based on data values in the index. Given a schema with city, housing type, and amenities, you might create a filter to explicitly select documents that satisfy your criteria (in Seattle, condos, waterfront). 
 
-   Zoek opdracht in volledige tekst met dezelfde invoer levert vaak vergelijk bare resultaten op, maar een filter is nauw keuriger in dat een exacte overeenkomst van de filter term met inhoud in uw index vereist. 
+   Full text search with the same inputs often produces similar results, but a filter is more precise in that it requires an exact match of the filter term against content in your index. 
 
-2. Gebruik een filter als de zoek ervaring een filter vereiste heeft:
+2. Use a filter if the search experience comes with a filter requirement:
 
-   * [Facet navigatie](search-faceted-navigation.md) maakt gebruik van een filter om de facet categorie die door de gebruiker is geselecteerd, terug te geven.
-   * Geo-search maakt gebruik van een filter om de coördinaten van de huidige locatie door te geven in apps die dichtbij zoeken. 
-   * Beveiligings filters geven beveiligings-id's door als filter criteria, waarbij een overeenkomst in de index fungeert als een proxy voor toegangs rechten voor het document.
+   * [Faceted navigation](search-faceted-navigation.md) uses a filter to pass back the facet category selected by the user.
+   * Geo-search uses a filter to pass coordinates of the current location in "find near me" apps. 
+   * Security filters pass security identifiers as filter criteria, where a match in the index serves as a proxy for access rights to the document.
 
-3. Gebruik een filter als u zoek criteria wilt gebruiken voor een numeriek veld. 
+3. Use a filter if you want search criteria on a numeric field. 
 
-   Numerieke velden kunnen worden opgehaald in het document en worden weer gegeven in de zoek resultaten, maar ze worden niet doorzoekbaar (onderhevig aan Zoek opdrachten in volledige tekst). Als u selectie criteria op basis van numerieke gegevens nodig hebt, gebruikt u een filter.
+   Numeric fields are retrievable in the document and can appear in search results, but they are not searchable (subject to full text search) individually. If you need selection criteria based on numeric data, use a filter.
 
-### <a name="alternative-methods-for-reducing-scope"></a>Alternatieve methoden voor het verkleinen van het bereik
+### <a name="alternative-methods-for-reducing-scope"></a>Alternative methods for reducing scope
 
-Als u een beperkend effect wilt hebben in de zoek resultaten, zijn de filters niet uw enige keuze. Deze alternatieven kunnen beter passen, afhankelijk van uw doel stelling:
+If you want a narrowing effect in your search results, filters are not your only choice. These alternatives could be a better fit, depending on your objective:
 
- + `searchFields` query parameter Pegs zoek naar specifieke velden. Als uw index bijvoorbeeld afzonderlijke velden voor Engelse en Spaanse beschrijvingen bevat, kunt u searchFields gebruiken om te richten welke velden u moet gebruiken voor het zoeken in volledige tekst. 
+ + `searchFields` query parameter pegs search to specific fields. For example, if your index provides separate fields for English and Spanish descriptions, you can use searchFields to target which fields to use for full text search. 
 
-+ `$select` para meter wordt gebruikt om op te geven welke velden in een resultatenset moeten worden meegenomen, waardoor het antwoord effectief wordt afgekapt voordat het naar de aanroepende toepassing wordt verzonden. Met deze para meter wordt de query niet verfijnd of wordt de document verzameling niet verminderd, maar als een kleiner antwoord uw doel is, is deze para meter een optie om rekening mee te houden. 
++ `$select` parameter is used to specify which fields to include in a result set, effectively trimming the response before sending it to the calling application. This parameter does not refine the query or reduce the document collection, but if a smaller response is your goal, this parameter is an option to consider. 
 
-Zie [zoeken naar documenten > aanvragen > query parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request)voor meer informatie over para meters.
+For more information about either parameter, see [Search Documents > Request > Query parameters](https://docs.microsoft.com/rest/api/searchservice/search-documents#request).
 
 
-## <a name="how-filters-are-executed"></a>Hoe filters worden uitgevoerd
+## <a name="how-filters-are-executed"></a>How filters are executed
 
-Bij het uitvoeren van query's accepteert een filter-parser criteria als invoer, zet de expressie om in atomische Boole-expressies die worden weer gegeven als een structuur en evalueert vervolgens de filter structuur over filter bare velden in een index.
+At query time, a filter parser accepts criteria as input, converts the expression into atomic Boolean expressions represented as a tree, and then evaluates the filter tree over filterable fields in an index.
 
-Filteren vindt in combi natie met zoeken plaats in de documenten die in de downstream-verwerking moeten worden meegenomen voor het ophalen van documenten en relevantie punten. Bij het koppelen met een zoek reeks, vermindert het filter de ingetrokken set van de volgende zoek bewerking effectief. Als u alleen gebruikt (bijvoorbeeld wanneer de query reeks leeg is, waarbij `search=*`), is de filter criteria de enige invoer. 
+Filtering occurs in tandem with search, qualifying which documents to include in downstream processing for document retrieval and relevance scoring. When paired with a search string, the filter effectively reduces the recall set of the subsequent search operation. When used alone (for example, when the query string is empty where `search=*`), the filter criteria is the sole input. 
 
-## <a name="defining-filters"></a>Filters definiëren
+## <a name="defining-filters"></a>Defining filters
+Filters are OData expressions, articulated using a [subset of OData V4 syntax supported in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
 
-Filters zijn OData-expressies, die worden gegeleeerd met behulp [van een subset van Odata v4-syntaxis die wordt ondersteund in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search). 
+You can specify one filter for each **search** operation, but the filter itself can include multiple fields, multiple criteria, and if you use an **ismatch** function, multiple full-text search expressions. In a multi-part filter expression, you can specify predicates in any order (subject to the rules of operator precedence). There is no appreciable gain in performance if you try to rearrange predicates in a particular sequence.
 
-U kunt voor elke **Zoek** bewerking één filter opgeven, maar het filter zelf kan meerdere velden bevatten, meerdere criteria en als u een functie **ismatch** gebruikt, meerdere zoek expressies in volledige tekst. In een filter expressie met meerdere delen kunt u predikaten in een wille keurige volg orde opgeven (onderhevig aan de voor waarden van de operator prioriteit). Er is geen merk bare prestatie verbetering als u predikaten probeert te rangschikken in een bepaalde volg orde.
+One of the limits on a filter expression is the maximum size limit of the request. The entire request, inclusive of the filter, can be a maximum of 16 MB for POST, or 8 KB for GET. There is also a limit on the number of clauses in your filter expression. A good rule of thumb is that if you have hundreds of clauses, you are at risk of running into the limit. We recommend designing your application in such a way that it does not generate filters of unbounded size.
 
-Een van de limieten voor een filter expressie is de maximale grootte van de aanvraag. De volledige aanvraag, inclusief het filter, kan Maxi maal 16 MB aan POST of 8 KB voor GET zijn. Er is ook een limiet voor het aantal componenten in uw filter expressie. Als u honderden componenten hebt, is het een goed idee om de limiet uit te voeren. We raden u aan uw toepassing zodanig te ontwerpen dat er geen filters van een ongebonden grootte worden gegenereerd.
-
-De volgende voor beelden vertegenwoordigen prototypen filter definities in verschillende Api's.
+The following examples represent prototypical filter definitions in several APIs.
 
 ```http
 # Option 1:  Use $filter for GET
-GET https://[service name].search.windows.net/indexes/hotels/docs?search=*&$filter=baseRate lt 150&$select=hotelId,description&api-version=2019-05-06
+GET https://[service name].search.windows.net/indexes/hotels/docs?api-version=2019-05-06&search=*&$filter=Rooms/any(room: room/BaseRate lt 150.0)&$select=HotelId, HotelName, Rooms/Description, Rooms/BaseRate
 
 # Option 2: Use filter for POST and pass it in the request body
 POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-version=2019-05-06
 {
     "search": "*",
-    "filter": "baseRate lt 150",
-    "select": "hotelId,description"
+    "filter": "Rooms/any(room: room/BaseRate lt 150.0)",
+    "select": "HotelId, HotelName, Rooms/Description, Rooms/BaseRate"
 }
 ```
 
@@ -87,91 +86,91 @@ POST https://[service name].search.windows.net/indexes/hotels/docs/search?api-ve
     parameters =
         new SearchParameters()
         {
-            Filter = "baseRate lt 150",
-            Select = new[] { "hotelId", "description" }
+            Filter = "Rooms/any(room: room/BaseRate lt 150.0)",
+            Select = new[] { "HotelId", "HotelName", "Rooms/Description" ,"Rooms/BaseRate"}
         };
 
     var results = searchIndexClient.Documents.Search("*", parameters);
 ```
 
-## <a name="filter-usage-patterns"></a>Gebruiks patronen filteren
+## <a name="filter-usage-patterns"></a>Filter usage patterns
 
-De volgende voor beelden illustreren verschillende gebruiks patronen voor filter scenario's. Zie [OData-expressie syntaxis > voor beelden](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples)voor meer ideeën.
+The following examples illustrate several usage patterns for filter scenarios. For more ideas, see [OData expression syntax > Examples](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
-+ Zelfstandige **$filter**, zonder query teken reeks, handig wanneer de filter expressie volledig kan kwalificeren op interessante documenten. Zonder een query reeks is er geen lexicale of linguïstische analyse, geen scoreing en geen classificatie. U ziet dat de zoek teken reeks slechts een sterretje is, wat betekent dat alle documenten overeenkomen.
-
-   ```
-   search=*&$filter=(baseRate ge 60 and baseRate lt 300) and accommodation eq 'Hotel' and city eq 'Nogales'
-   ```
-
-+ Combi natie van query teken reeks en **$filter**, waarbij het filter de subset maakt en de query reeks voorziet in de term invoer voor zoeken in volledige tekst via de gefilterde subset. Het gebruik van een filter met een query reeks is het meest voorkomende gebruiks patroon.
++ Standalone **$filter**, without a query string, useful when the filter expression is able to fully qualify documents of interest. Without a query string, there is no lexical or linguistic analysis, no scoring, and no ranking. Notice the search string is just an asterisk, which means "match all documents".
 
    ```
-   search=hotels ocean$filter=(baseRate ge 60 and baseRate lt 300) and city eq 'Los Angeles'
+   search=*&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Honolulu'
    ```
 
-+ Samengestelde query's, gescheiden door "of", elk met zijn eigen filter criteria (bijvoorbeeld ' Beagles ' in ' hond ' of ' Siamese ' in ' kat '). Expressies die in combi natie met `or` worden gecombineerd, worden afzonderlijk geëvalueerd, waarbij de samen voeging van documenten die overeenkomen met elke expressie terug in het antwoord wordt verzonden. Dit gebruiks patroon wordt bereikt met behulp van de functie `search.ismatchscoring`. U kunt ook de niet-Score versie `search.ismatch`gebruiken.
++ Combination of query string and **$filter**, where the filter creates the subset, and the query string provides the term inputs for full text search over the filtered subset. The addition of terms (walking distance theaters) introduces search scores in the results, where documents that best match the terms are ranked higher. Using a filter with a query string is the most common usage pattern.
+
+   ```
+  search=walking distance theaters&$filter=Rooms/any(room: room/BaseRate ge 60 and room/BaseRate lt 300) and Address/City eq 'Seattle'&$count=true
+   ```
+
++ Compound queries, separated by "or", each with its own filter criteria (for example, 'beagles' in 'dog' or 'siamese' in 'cat'). Expressions combined with `or` are evaluated individually, with the union of documents matching each expression sent back in the response. This usage pattern is achieved through the `search.ismatchscoring` function. You can also use the non-scoring version, `search.ismatch`.
 
    ```
    # Match on hostels rated higher than 4 OR 5-star motels.
-   $filter=search.ismatchscoring('hostel') and rating ge 4 or search.ismatchscoring('motel') and rating eq 5
+   $filter=search.ismatchscoring('hostel') and Rating ge 4 or search.ismatchscoring('motel') and Rating eq 5
 
    # Match on 'luxury' or 'high-end' in the description field OR on category exactly equal to 'Luxury'.
-   $filter=search.ismatchscoring('luxury | high-end', 'description') or category eq 'Luxury'
+   $filter=search.ismatchscoring('luxury | high-end', 'Description') or Category eq 'Luxury'&$count=true
    ```
 
-  Het is ook mogelijk om zoeken in volledige tekst te combi neren via `search.ismatchscoring` met filters met behulp van `and` in plaats van `or`, maar dit is functioneel equivalent aan het gebruik van de para meters `search` en `$filter` in een zoek opdracht. De volgende twee query's produceren bijvoorbeeld hetzelfde resultaat:
+  It is also possible to combine full-text search via `search.ismatchscoring` with filters using `and` instead of `or`, but this is functionally equivalent to using the `search` and `$filter` parameters in a search request. For example, the following two queries produce the same result:
 
   ```
-  $filter=search.ismatchscoring('pool') and rating ge 4
+  $filter=search.ismatchscoring('pool') and Rating ge 4
 
-  search=pool&$filter=rating ge 4
+  search=pool&$filter=Rating ge 4
   ```
 
-Volg deze artikelen voor uitgebreide informatie over specifieke gebruiks voorbeelden:
+Follow up with these articles for comprehensive guidance on specific use cases:
 
 + [Facetfilters](search-filters-facets.md)
 + [Taalfilters](search-filters-language.md)
 + [Beveiligingsbeperkingen](search-security-trimming-for-azure-search.md) 
 
-## <a name="field-requirements-for-filtering"></a>Veld vereisten voor filteren
+## <a name="field-requirements-for-filtering"></a>Field requirements for filtering
 
-In de REST API is filteren standaard *ingeschakeld* voor eenvoudige velden. Filter bare velden verg Roten index grootte; Zorg ervoor dat u `"filterable": false` instelt voor velden die u niet wilt gebruiken in een filter. Zie [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)voor meer informatie over de instellingen voor veld definities.
+In the REST API, filterable is *on* by default for simple fields. Filterable fields increase index size; be sure to set `"filterable": false` for fields that you don't plan to actually use in a filter. For more information about settings for field definitions, see [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
-In de .NET SDK is het filterable standaard *uitgeschakeld* . U kunt een veld filterbaar maken door de [eigenschap IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) van het bijbehorende [veld](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object in te stellen op `true`. U kunt dit ook declaratief doen met behulp van het [kenmerk IsFilterable](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). In het onderstaande voor beeld is het kenmerk ingesteld op de eigenschap `BaseRate` van een model klasse die is toegewezen aan de index definitie.
+In the .NET SDK, the filterable is *off* by default. You can make a field filterable by setting the [IsFilterable property](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.isfilterable?view=azure-dotnet) of the corresponding [Field](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field?view=azure-dotnet) object to `true`. You can also do this declaratively by using the [IsFilterable attribute](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.isfilterableattribute). In the example below, the attribute is set on the `BaseRate` property of a model class that maps to the index definition.
 
 ```csharp
     [IsFilterable, IsSortable, IsFacetable]
     public double? BaseRate { get; set; }
 ```
 
-### <a name="making-an-existing-field-filterable"></a>Het maken van een bestaand veld filteren
+### <a name="making-an-existing-field-filterable"></a>Making an existing field filterable
 
-U kunt bestaande velden niet wijzigen om ze te kunnen filteren. In plaats daarvan moet u een nieuw veld toevoegen of de index opnieuw samen stellen. Zie [een Azure Cognitive search-index opnieuw samen stellen](search-howto-reindex.md)voor meer informatie over het opnieuw opbouwen van een index of het opnieuw invullen van velden.
+You can't modify existing fields to make them filterable. Instead, you need to add a new field, or rebuild the index. For more information about rebuilding an index or repopulating fields, see [How to rebuild an Azure Cognitive Search index](search-howto-reindex.md).
 
-## <a name="text-filter-fundamentals"></a>Grond beginselen van tekst filters
+## <a name="text-filter-fundamentals"></a>Text filter fundamentals
 
-Tekst filters komen overeen met teken reeks velden op basis van letterlijke teken reeksen die u in het filter opgeeft. In tegens telling tot zoeken in volledige tekst is er geen lexicale analyse of woord afbreking voor tekst filters, zodat vergelijkingen alleen voor exacte overeenkomsten gelden. Stel bijvoorbeeld dat een veld *f* de waarde ' zonnige dag ' bevat, `$filter=f eq 'Sunny'` komt niet overeen, maar `$filter=f eq 'sunny day'`. 
+Text filters match string fields against literal strings that you provide in the filter. Unlike full-text search, there is no lexical analysis or word-breaking for text filters, so comparisons are for exact matches only. For example, assume a field *f* contains "sunny day", `$filter=f eq 'Sunny'` does not match, but `$filter=f eq 'sunny day'` will. 
 
-Teken reeksen zijn hoofdletter gevoelig. Er bevindt zich geen kleine letters in hoofd letters: `$filter=f eq 'Sunny day'` wordt niet ' zonnige dag ' gevonden.
+Text strings are case-sensitive. There is no lower-casing of upper-cased words: `$filter=f eq 'Sunny day'` will not find "sunny day".
 
-### <a name="approaches-for-filtering-on-text"></a>Benaderingen voor het filteren op tekst
+### <a name="approaches-for-filtering-on-text"></a>Approaches for filtering on text
 
-| Methode | Beschrijving | Wanneer gebruikt u dit? |
+| Approach | Beschrijving | Wanneer gebruikt u dit? |
 |----------|-------------|-------------|
-| [`search.in`](search-query-odata-search-in-function.md) | Een functie die overeenkomt met een veld in een gescheiden lijst met teken reeksen. | Aanbevolen voor [beveiligings filters](search-security-trimming-for-azure-search.md) en voor filters waarbij veel onbewerkte tekst waarden moeten overeenkomen met een teken reeks veld. De functie **Search.in** is ontworpen voor de snelheid en is veel sneller dan het veld expliciet vergelijken met elke teken reeks met behulp van `eq` en `or`. | 
-| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | Een functie waarmee u Zoek opdrachten in volledige tekst kunt combi neren met strikt Booleaanse filter bewerkingen in dezelfde filter-expressie. | Gebruik **Search. ismatch** (of het equivalente Score-item **Search. ismatchscoring**) als u meerdere zoek filter combinaties wilt gebruiken in één aanvraag. U kunt deze ook voor een *contains* -filter gebruiken om te filteren op een gedeeltelijke teken reeks binnen een grotere teken reeks. |
-| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | Een door de gebruiker gedefinieerde expressie die bestaat uit velden, Opera tors en waarden. | Gebruik deze instelling als u exacte overeenkomsten wilt zoeken tussen een teken reeks veld en een teken reeks waarde. |
+| [`search.in`](search-query-odata-search-in-function.md) | A function that matches a field against a delimited list of strings. | Recommended for [security filters](search-security-trimming-for-azure-search.md) and for any filters where many raw text values need to be matched with a string field. The **search.in** function is designed for speed and is much faster than explicitly comparing the field against each string using `eq` and `or`. | 
+| [`search.ismatch`](search-query-odata-full-text-search-functions.md) | A function that allows you to mix full-text search operations with strictly Boolean filter operations in the same filter expression. | Use **search.ismatch** (or its scoring equivalent, **search.ismatchscoring**) when you want multiple search-filter combinations in one request. You can also use it for a *contains* filter to filter on a partial string within a larger string. |
+| [`$filter=field operator string`](search-query-odata-comparison-operators.md) | A user-defined expression composed of fields, operators, and values. | Use this when you want to find exact matches between a string field and a string value. |
 
-## <a name="numeric-filter-fundamentals"></a>Basis beginselen van numerieke filters
+## <a name="numeric-filter-fundamentals"></a>Numeric filter fundamentals
 
-Numerieke velden worden niet `searchable` in de context van zoeken in volledige tekst. Alleen teken reeksen zijn onderhevig aan Zoek opdrachten in volledige tekst. Als u bijvoorbeeld 99,99 als zoek term invoert, ontvangt u geen back-upitems van $99,99. In plaats daarvan ziet u items met het nummer 99 in de teken reeks velden van het document. Als u numerieke gegevens hebt, moet u er dus voor zorgen dat u deze gebruikt voor filters, met inbegrip van bereiken, facetten, groepen enzovoort. 
+Numeric fields are not `searchable` in the context of full text search. Only strings are subject to full text search. For example, if you enter 99.99 as a search term, you won't get back items priced at $99.99. Instead, you would see items that have the number 99 in string fields of the document. Thus, if you have numeric data, the assumption is that you will use them for filters, including ranges, facets, groups, and so forth. 
 
-Documenten die numerieke velden (prijs, grootte, SKU, ID) bevatten, bieden deze waarden in Zoek resultaten als het veld is gemarkeerd `retrievable`. Het punt hier is dat zoeken in volledige tekst zelf niet van toepassing is op numerieke veld typen.
+Documents that contain numeric fields (price, size, SKU, ID) provide those values in search results if the field is marked `retrievable`. The point here is that full text search itself is not applicable to numeric field types.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Probeer eerst de **Verkenner** in de portal te doorzoeken om query's met **$filter** -para meters te verzenden. De voor [beeld-index van onroerend](search-get-started-portal.md) goed levert interessante resultaten voor de volgende gefilterde query's wanneer u ze in de zoek balk plakt:
+First, try **Search explorer** in the portal to submit queries with **$filter** parameters. The [real-estate-sample index](search-get-started-portal.md) provides interesting results for the following filtered queries when you paste them into the search bar:
 
 ```
 # Geo-filter returning documents within 5 kilometers of Redmond, Washington state
@@ -194,12 +193,12 @@ search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=
 search=John Leclerc&$count=true&$select=source,city,postCode,baths,beds&$filter=city gt 'Seattle'
 ```
 
-Als u meer voor beelden wilt gebruiken, raadpleegt u de syntaxis van de [OData-filter expressie > voor beelden](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
+To work with more examples, see [OData Filter Expression Syntax > Examples](https://docs.microsoft.com/azure/search/search-query-odata-filter#examples).
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Hoe zoeken in volledige tekst werkt in azure Cognitive Search](search-lucene-query-architecture.md)
-+ [Zoeken naar documenten REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
++ [How full text search works in Azure Cognitive Search](search-lucene-query-architecture.md)
++ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
 + [Vereenvoudigde querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 + [Lucene-querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-+ [Ondersteunde gegevens typen](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)
++ [Supported data types](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)

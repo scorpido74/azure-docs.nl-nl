@@ -1,16 +1,16 @@
 ---
 title: Overzicht van Azure Blueprints
-description: Meer informatie over hoe u met de Azure-service voor blauw drukken artefacten kunt maken, definiëren en implementeren in uw Azure-omgeving.
-ms.date: 08/26/2019
+description: Understand how the Azure Blueprints service enables you to create, define, and deploy artifacts in your Azure environment.
+ms.date: 11/21/2019
 ms.topic: overview
-ms.openlocfilehash: dadb7568a720d23f58d23896e84b3155ed2f12f4
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 07d84d658d88e977cd73176861e5c5e080c02857
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048294"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321768"
 ---
-# <a name="overview-of-the-azure-blueprints-service"></a>Overzicht van de service Azure-blauw drukken
+# <a name="what-is-azure-blueprints"></a>Wat is Azure Blueprints?
 
 Net zoals een blauwdruk het een ingenieur of architect mogelijk maakt om de ontwerpparameters voor een project te schetsen, stelt Azure Blueprints cloudarchitecten en centrale IT-groepen in staat om een ​​herhaalbare set Azure-resources te definiëren die voldoet aan de normen, patronen en vereisten van een organisatie en deze implementeert. Met Azure Blueprints kunnen ontwikkelteams snel nieuwe omgevingen bouwen en instellen in het volste vertrouwen dat ze voldoen aan de vereisten van de organisatie, met een set ingebouwde componenten, zoals netwerken, om de ontwikkeling en levering te versnellen.
 
@@ -48,10 +48,10 @@ Een beleid kan worden opgenomen als een van de vele _artefacten_ in de definitie
 
 Een blauwdruk bestaat uit _artefacten_. Blauwdrukken ondersteunen momenteel de volgende resources als artefacten:
 
-|Resource  | Hiërarchieopties| Beschrijving  |
+|Bron  | Hiërarchieopties| Beschrijving  |
 |---------|---------|---------|
 |Resourcegroepen | Abonnement | Een nieuwe resourcegroep maken voor gebruik door andere artefacten binnen de blauwdruk.  Met deze tijdelijke resourcegroepen kunt u resources precies zo indelen als u ze wilt structureren, en het bereik beperken voor opgenomen beleids- en roltoewijzingsartefacten, en Azure Resource Manager-sjablonen. |
-|Azure Resource Manager-sjabloon | Abonnement, resourcegroep | Sjablonen, inclusief geneste en gekoppelde sjablonen, worden gebruikt voor het samen stellen van complexe omgevingen. Voorbeeldomgevingen: een SharePoint-farm, Azure Automation State Configuration of een Log Analytics-werkruimte. |
+|Azure Resource Manager-sjabloon | Abonnement, resourcegroep | Templates, including nested and linked templates, are used to compose complex environments. Voorbeeldomgevingen: een SharePoint-farm, Azure Automation State Configuration of een Log Analytics-werkruimte. |
 |Beleidstoewijzing | Abonnement, resourcegroep | Hiermee kan een beleid of initiatief worden toegewezen aan het abonnement waaraan de blauwdruk wordt toegewezen. Het beleid of initiatief moet binnen het bereik van de locatie van de blauwdrukdefinitie vallen. Als het beleid of initiatief parameters heeft, worden deze parameters toegewezen bij het maken of toewijzen van de blauwdruk. |
 |Roltoewijzing | Abonnement, resourcegroep | Voeg een bestaande gebruiker of groep toe aan een ingebouwde rol om ervoor te zorgen dat de juiste mensen altijd over de juiste toegang tot uw bronnen beschikken. Roltoewijzingen kunnen voor het hele abonnement worden gedefinieerd of genest in een specifieke resourcegroep die in de blauwdruk is opgenomen. |
 
@@ -62,7 +62,8 @@ Bij het maken van een blauwdrukdefinitie definieert u waar de blauwdruk wordt op
 ### <a name="blueprint-parameters"></a>Blauwdrukparameters
 
 Blauwdrukken kunnen parameters doorgeven aan een beleid/initiatief of een Azure Resource Manager-sjabloon.
-Tijdens het toevoegen van een van deze _​​artefacten_ aan een blauwdruk, besluit de auteur om een ​​gedefinieerde waarde op te geven voor elke blauwdruktoewijzing, of toe te staan ​​dat elke blauwdruktoewijzing op het moment van de toewijzing een waarde opgeeft. Dankzij deze flexibiliteit hebt u de optie om een ​​vooraf vastgestelde waarde te definiëren voor elk gebruik van de blauwdruk of om die beslissing te nemen op het moment van toewijzing.
+Tijdens het toevoegen van een van deze _​​artefacten_ aan een blauwdruk, besluit de auteur om een ​​gedefinieerde waarde op te geven voor elke blauwdruktoewijzing, of toe te staan ​​dat elke blauwdruktoewijzing op het moment van de toewijzing een waarde opgeeft.
+Dankzij deze flexibiliteit hebt u de optie om een ​​vooraf vastgestelde waarde te definiëren voor elk gebruik van de blauwdruk of om die beslissing te nemen op het moment van toewijzing.
 
 > [!NOTE]
 > Een blauwdruk kan zijn eigen parameters hebben, maar deze kunnen op dit moment alleen worden gemaakt als een blauwdruk wordt gegenereerd vanuit de REST API in plaats van via de portal.
@@ -71,11 +72,12 @@ Zie [blauwdrukparameters](./concepts/parameters.md) voor meer informatie.
 
 ### <a name="blueprint-publishing"></a>Blauwdruk publiceren
 
-Wanneer een blauwdruk wordt gemaakt, bevindt deze zich in de modus **Concept**. Wanneer de blauwdruk klaar is om te worden toegewezen, moet deze worden **Gepubliceerd**. Om een blauwdruk te publiceren moet u een **Versie**-tekenreeks definiëren (letters, cijfers en afbreekstreepjes, maximaal 20 tekens lang), plus eventuele **Wijzigingsnotities**. De **versie** onderscheidt deze blauwdruk van toekomstige gewijzigde versies ervan, en maakt het mogelijk elke versie toe te wijzen. Dit versiebeheer betekent ook dat verschillende **versies** van dezelfde blueprint kunnen worden toegewezen aan hetzelfde abonnement. Wanneer er aanvullende wijzigingen in de blauwdruk worden aangebracht, bestaat de **gepubliceerde** **versie** nog steeds, net als de **niet-gepubliceerde wijzigingen**. Nadat de wijzigingen voltooid zijn, wordt de bijgewerkte blauwdruk **Gepubliceerd** met een nieuwe en unieke **versie**, en kan nu ook worden toegewezen.
+Wanneer een blauwdruk wordt gemaakt, bevindt deze zich in de modus **Concept**. Wanneer de blauwdruk klaar is om te worden toegewezen, moet deze worden **Gepubliceerd**. Om een blauwdruk te publiceren moet u een **Versie**-tekenreeks definiëren (letters, cijfers en afbreekstreepjes, maximaal 20 tekens lang), plus eventuele **Wijzigingsnotities**. De **versie** onderscheidt deze blauwdruk van toekomstige gewijzigde versies ervan, en maakt het mogelijk elke versie toe te wijzen. Dit versiebeheer betekent ook dat verschillende **versies** van dezelfde blueprint kunnen worden toegewezen aan hetzelfde abonnement. When additional changes are made to the blueprint, the **Published**
+**Version** still exists, as do the **Unpublished changes**. Nadat de wijzigingen voltooid zijn, wordt de bijgewerkte blauwdruk **Gepubliceerd** met een nieuwe en unieke **versie**, en kan nu ook worden toegewezen.
 
 ## <a name="blueprint-assignment"></a>Blauwdruktoewijzing
 
-Elke **gepubliceerde** **versie** van een blauw druk kan worden toegewezen (met een maximale naam van 90 tekens) aan een bestaand abonnement. In de portal wordt standaard de **versie** van de blauwdruk gebruikt die het laatst is **gepubliceerd**. Als er artefactparameters (of blauwdrukparameters) zijn, worden de parameters tijdens het toewijzingsproces gedefinieerd.
+Each **Published** **Version** of a blueprint can be assigned (with a max name length of 90 characters) to an existing subscription. In de portal wordt standaard de **versie** van de blauwdruk gebruikt die het laatst is **gepubliceerd**. Als er artefactparameters (of blauwdrukparameters) zijn, worden de parameters tijdens het toewijzingsproces gedefinieerd.
 
 ## <a name="permissions-in-azure-blueprints"></a>Machtigingen in Azure Blueprints
 
@@ -102,30 +104,30 @@ Als u een blauwdruk wilt toewijzen of de toewijzing ongedaan wilt maken, heeft u
 > [!NOTE]
 > Omdat blauwdruktoewijzingen op een abonnement worden gemaakt, moeten de machtigingen voor het toewijzen van blauwdrukken en het ongedaan maken van toewijzingen worden toegekend op abonnementsbereik of worden overgenomen in een abonnementsbereik.
 
-De volgende ingebouwde rollen zijn beschikbaar:
+The following built-in roles are available:
 
-|RBAC-rol | Beschrijving |
+|RBAC Role | Beschrijving |
 |-|-|
-|[Eigenaar](../../role-based-access-control/built-in-roles.md#owner) | Naast andere machtigingen bevat alle Azure Blueprint gerelateerde machtigingen. |
-|[Inzender](../../role-based-access-control/built-in-roles.md#contributor) | Naast andere machtigingen, kunnen blauw drukken-definities maken en verwijderen, maar geen blauw drukken toewijzings machtigingen. |
-|[Blauw druk bijdrager](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Kan blauw drukken-definities beheren, maar niet toewijzen. |
-|[Blauw druk-operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Bestaande publicaties kunnen worden toegewezen, maar er kunnen geen nieuwe blauw drukken-definities worden gemaakt. De toewijzing van blauw drukken werkt alleen als de toewijzing wordt uitgevoerd met een door de gebruiker toegewezen beheerde identiteit. |
+|[Eigenaar](../../role-based-access-control/built-in-roles.md#owner) | In addition to other permissions, includes all Azure Blueprint related permissions. |
+|[Inzender](../../role-based-access-control/built-in-roles.md#contributor) | In addition to other permissions, can create and delete blueprint definitions, but doesn't have blueprint assignment permissions. |
+|[Blueprint Contributor](../../role-based-access-control/built-in-roles.md#blueprint-contributor) | Can manage blueprint definitions, but not assign them. |
+|[Blueprint Operator](../../role-based-access-control/built-in-roles.md#blueprint-operator) | Can assign existing published blueprints, but can't create new blueprint definitions. Blueprint assignment only works if the assignment is done with a user-assigned managed identity. |
 
 Als deze ingebouwde rollen niet aan uw beveiligingsbehoeften voldoen, kunt u een [aangepaste rol](../../role-based-access-control/custom-roles.md) maken.
 
 > [!NOTE]
-> Als u een door het systeem toegewezen beheerde identiteit gebruikt, is voor de service-principal voor Azure-blauw drukken de rol van **eigenaar** van het toegewezen abonnement vereist om de implementatie in te scha kelen. Als u de portal gebruikt, wordt deze rol automatisch verleend en ingetrokken voor de implementatie. Als u de REST API gebruikt, moet deze rol handmatig worden toegekend, maar wordt deze automatisch ingetrokken nadat de implementatie is voltooid. Als u een door de gebruiker toegewezen beheerde identiteit gebruikt, moet alleen de gebruiker die de blauw druk maakt, de `Microsoft.Blueprint/blueprintAssignments/write` machtiging hebben, die is opgenomen in de ingebouwde rollen van de operator **Owner** en **blauw druk** .
+> If using a system-assigned managed identity, the service principal for Azure Blueprints requires the **Owner** role on the assigned subscription in order to enable deployment. Als u de portal gebruikt, wordt deze rol automatisch verleend en ingetrokken voor de implementatie. Als u de REST API gebruikt, moet deze rol handmatig worden toegekend, maar wordt deze automatisch ingetrokken nadat de implementatie is voltooid. If using a user-assigned managed identity, only the user creating the blueprint assignment needs the `Microsoft.Blueprint/blueprintAssignments/write` permission, which is included in both the **Owner** and **Blueprint Operator** built-in roles.
 
-## <a name="naming-limits"></a>Naamgevings limieten
+## <a name="naming-limits"></a>Naming limits
 
-De volgende beperkingen bestaan voor bepaalde velden:
+The following limitations exist for certain fields:
 
-|Object|Veld|Toegestane tekens|Met maximaal Lengte|
+|Object|Veld|Allowed Characters|Met maximaal Lengte|
 |-|-|-|-|
-|Blauwdruk|Naam|letters, cijfers, afbreek streepjes en punten|48|
-|Blauwdruk|Versie|letters, cijfers, afbreek streepjes en punten|20|
-|Blauwdruktoewijzing|Naam|letters, cijfers, afbreek streepjes en punten|90|
-|Blauw druk artefact|Naam|letters, cijfers, afbreek streepjes en punten|48|
+|Blueprint|Naam|letters, numbers, hyphens, and periods|48|
+|Blueprint|Version|letters, numbers, hyphens, and periods|20|
+|Blauwdruktoewijzing|Naam|letters, numbers, hyphens, and periods|90|
+|Blueprint artifact|Naam|letters, numbers, hyphens, and periods|48|
 
 ## <a name="video-overview"></a>Video-overzicht
 
@@ -135,5 +137,6 @@ Het volgende overzicht van Azure Blueprints is afkomstig van Azure Fridays. Als 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- [Een blauwdruk maken - Portal](create-blueprint-portal.md)
-- [Een blauwdruk maken - REST API](create-blueprint-rest-api.md)
+- [Create a blueprint - Portal](./create-blueprint-portal.md).
+- [Create a blueprint - PowerShell](./create-blueprint-powershell.md).
+- [Create a blueprint - REST API](./create-blueprint-rest-api.md).

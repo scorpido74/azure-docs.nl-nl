@@ -1,136 +1,136 @@
 ---
-title: Wat is de migratie van een beleid in Azure Active Directory voor voorwaardelijke toegang? | Microsoft Docs
-description: Meer informatie over wat u moet weten voor het migreren van klassieke beleidsregels in Azure portal.
+title: Migrate Conditional Access policies - Azure Active Directory
+description: Learn what you need to know to migrate classic policies in the Azure portal.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 07/24/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7464546a78e1b54cdea3bd6dd66656f5b189bc02
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 75d664f6e61dbbaaf0b8ab74c392596a206ff644
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67506804"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380545"
 ---
-# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Wat is de migratie van een beleid in Azure Active Directory voor voorwaardelijke toegang? 
+# <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>What is a policy migration in Azure Active Directory Conditional Access? 
 
-[Voorwaardelijke toegang](../active-directory-conditional-access-azure-portal.md) is een mogelijkheid van Azure Active directory (Azure AD) waarmee u om te bepalen hoe gemachtigde gebruikers toegang tot uw cloud-apps. Terwijl het doel nog steeds hetzelfde is, is de versie van de nieuwe Azure-portal aanzienlijke verbeteringen voor de werking van voorwaardelijke toegang geïntroduceerd.
+[Conditional Access](../active-directory-conditional-access-azure-portal.md) is a capability of Azure Active directory (Azure AD) that enables you to control how authorized users access your cloud apps. While the purpose is still the same, the release of the new Azure portal has introduced significant improvements to how Conditional Access works.
 
-Houd rekening met de beleidsregels die u hebt gemaakt in Azure portal omdat migreren:
+Consider migrating the policies you have not created in the Azure portal because:
 
-- U kunt nu scenario's die u niet voordat verwerken kan adres.
-- U kunt beperken het nummer van het beleid dat u hebt voor het beheren van door onder te brengen.   
-- U kunt alle beleid voor voorwaardelijke toegang op één centrale locatie kunt beheren.
-- De klassieke Azure portal wordt beëindigd.   
+- You can now address scenarios you could not handle before.
+- You can reduce the number of policies you have to manage by consolidating them.   
+- You can manage all your Conditional Access policies in one central location.
+- The Azure classic portal will be retired.   
 
-In dit artikel wordt uitgelegd wat u moet weten voor het migreren van uw bestaande beleidsregels voor voorwaardelijke toegang naar de nieuwe structuur.
+This article explains what you need to know to migrate your existing Conditional Access policies to the new framework.
  
-## <a name="classic-policies"></a>Klassieke beleidsregels
+## <a name="classic-policies"></a>Classic policies
 
-In de [Azure-portal](https://portal.azure.com), wordt de [voorwaardelijke toegang - beleid](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) pagina is uw ingangspunt voor beleid voor voorwaardelijke toegang. Echter, in uw omgeving mogelijk ook hebt u niet hebt gemaakt met behulp van deze pagina beleid voor voorwaardelijke toegang. Deze beleidsregels worden aangeduid als *klassieke beleidsregels*. Klassieke beleidsregels zijn beleidsregels voor voorwaardelijke toegang, u hebt gemaakt in:
+In the [Azure portal](https://portal.azure.com), the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page is your entry point to your Conditional Access policies. However, in your environment, you might also have Conditional Access policies you have not created using this page. These policies are known as *classic policies*. Classic policies are Conditional Access policies, you have created in:
 
-- De klassieke Azure portal
-- De klassieke Intune-portal
-- De Intune App Protection-portal
+- The Azure classic portal
+- The Intune classic portal
+- The Intune App Protection portal
 
-Op de **voorwaardelijke toegang** pagina, kunt u uw klassieke beleidsregels openen door te klikken [ **klassiek beleid (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) in de **beheren** de sectie. 
+On the **Conditional Access** page, you can access your classic policies by clicking [**Classic policies (preview)** ](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) in the **Manage** section. 
 
 ![Azure Active Directory](./media/policy-migration/71.png)
 
-De **klassiek beleid** weergave biedt u een optie voor het:
+The **Classic policies** view provides you with an option to:
 
-- Uw klassieke beleidsregels filteren.
+- Filter your classic policies.
  
    ![Azure Active Directory](./media/policy-migration/72.png)
 
-- Klassiek beleid uitschakelen.
+- Disable classic policies.
 
    ![Azure Active Directory](./media/policy-migration/73.png)
    
-- Controleer de instellingen van een klassiek beleid (en uitschakelen).
+- Review the settings of a classic policy (and to disable it).
 
    ![Azure Active Directory](./media/policy-migration/74.png)
 
-Als u een klassiek beleid hebt uitgeschakeld, niet u deze stap niet meer ongedaan maken. Daarom kunt u het lidmaatschap in een klassiek beleid met de **Details** weergeven. 
+If you have disabled a classic policy, you can't revert this step anymore. This is why you can modify the group membership in a classic policy using the **Details** view. 
 
 ![Azure Active Directory](./media/policy-migration/75.png)
 
-Door de geselecteerde groepen wijzigen of door specifieke groepen uitsluit, kunt u het effect van een uitgeschakelde klassiek beleid voor een paar testgebruikers testen voordat u het beleid voor alle opgenomen gebruikers en groepen uitschakelt. 
+By either changing the selected groups or by excluding specific groups, you can test the effect of a disabled classic policy for a few test users before disabling the policy for all included users and groups. 
 
-## <a name="azure-ad-conditional-access-policies"></a>Beleid voor Azure AD voor voorwaardelijke toegang
+## <a name="azure-ad-conditional-access-policies"></a>Azure AD Conditional Access policies
 
-U kunt alle beleidsregels op één centrale locatie kunt beheren met voorwaardelijke toegang in Azure portal. Omdat de implementatie van hoe u voorwaardelijke toegang is gewijzigd, moet u vertrouwd raken met de basisconcepten voordat u uw klassieke beleidsregels migreert.
+With Conditional Access in the Azure portal, you can manage all your policies in one central location. Because the implementation of how Conditional Access has changed, you should familiarize yourself with the basic concepts before migrating your classic policies.
 
 Zie:
 
-- [Wat is voorwaardelijke toegang in Azure Active Directory](../active-directory-conditional-access-azure-portal.md) voor meer informatie over de basisconcepten en de terminologie.
-- [Aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md) voor enkele richtlijnen over het implementeren van voorwaardelijke toegang in uw organisatie.
-- [MFA vereisen voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang](app-based-mfa.md) om vertrouwd te raken met de gebruikersinterface in Azure portal.
+- [What is Conditional Access in Azure Active Directory](../active-directory-conditional-access-azure-portal.md) to learn about the basic concepts and the terminology.
+- [Best practices for Conditional Access in Azure Active Directory](best-practices.md) to get some guidance on deploying Conditional Access in your organization.
+- [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md) to familiarize yourself with the user interface in the Azure portal.
  
 ## <a name="migration-considerations"></a>Overwegingen bij migraties
 
-In dit artikel wordt Azure AD voorwaardelijk toegangsbeleid worden ook aangeduid als *nieuwe beleidsregels*.
-Uw klassieke beleidsregels blijven werken samen met uw nieuwe beleid totdat u ze verwijderen of uitschakelen. 
+In this article, Azure AD Conditional Access policies are also referred to as *new policies*.
+Your classic policies continue to work side by side with your new policies until you disable or delete them. 
 
-De volgende aspecten zijn belangrijk in de context van een beleid voor consolidatie:
+The following aspects are important in the context of a policy consolidation:
 
-- Terwijl klassieke beleidsregels zijn gekoppeld aan een bepaalde cloud-app, kunt u zoveel cloudapps, zoals u in een nieuw beleid wilt selecteren.
-- Besturingselementen van een klassiek beleid en een nieuw beleid voor een cloud-app is vereist voor alle besturingselementen (*en*) moet worden voldaan. 
-- In een nieuw beleid kunt u het volgende doen:
-   - Meerdere voorwaarden combineren als nodig is voor uw scenario. 
-   - Selecteer verschillende vereisten als de toegang beheren en deze combineren met een logische verlenen *of* (een van de geselecteerde besturingselementen vereisen) of met een logische *en* (alle van de geselecteerde besturingselementen vereisen).
+- While classic policies are tied to a specific cloud app, you can select as many cloud apps as you need to in a new policy.
+- Controls of a classic policy and a new policy for a cloud app require all controls (*AND*) to be fulfilled. 
+- In a new policy, you can:
+   - Combine multiple conditions if required by your scenario. 
+   - Select several grant requirements as access control and combine them with a logical *OR* (require one of the selected controls) or with a logical *AND* (require all of the selected controls).
 
    ![Azure Active Directory](./media/policy-migration/25.png)
 
 ### <a name="office-365-exchange-online"></a>Office 365 Exchange online
 
-Als u wilt migreren van klassieke beleidsregels voor **Office 365 Exchange online** die bevatten **Exchange Active Sync** als voorwaarde voor client-apps, u mogelijk niet te consolideren in een nieuw beleid. 
+If you want to migrate classic policies for **Office 365 Exchange online** that include **Exchange Active Sync** as client apps condition, you might not be able to consolidate them into one new policy. 
 
-Dit is, bijvoorbeeld het geval als u wilt ondersteunen alle client-app-typen. In een nieuw beleid met **Exchange Active Sync** als voorwaarde voor client-apps, u kunt andere client-apps niet selecteren.
+This is, for example, the case if you want to support all client app types. In a new policy that has **Exchange Active Sync** as client apps condition, you can't select other client apps.
 
 ![Azure Active Directory](./media/policy-migration/64.png)
 
-Een consolidatie in een nieuw beleid is ook niet mogelijk als uw klassieke beleidsregels verschillende voorwaarden zijn bevatten. Een nieuw beleid met **Exchange Active Sync** als client-apps voorwaarde geconfigureerd biedt geen ondersteuning voor andere voorwaarden:   
+A consolidation into one new policy is also not possible if your classic policies contain several conditions. A new policy that has **Exchange Active Sync** as client apps condition configured does not support other conditions:   
 
 ![Azure Active Directory](./media/policy-migration/08.png)
 
-Hebt u een nieuw beleid met **Exchange Active Sync** als client-apps de voorwaarde is geconfigureerd, moet u om ervoor te zorgen dat alle andere voorwaarden niet zijn geconfigureerd. 
+If you have a new policy that has **Exchange Active Sync** as client apps condition configured, you need to make sure that all other conditions are not configured. 
 
 ![Azure Active Directory](./media/policy-migration/16.png)
  
-[App-gebaseerde](technical-reference.md#approved-client-app-requirement) klassieke beleidsregels voor Office 365 Exchange Online met **Exchange Active Sync** als voorwaarde voor client-apps toestaan **ondersteund** en **wordtnietondersteund** [apparaatplatformen](technical-reference.md#device-platform-condition). Terwijl u afzonderlijke apparaatplatformen niet in een nieuw beleid voor gerelateerde configureren, kunt u de ondersteuning om te beperken [ondersteunde platforms voor apparaten](technical-reference.md#device-platform-condition) alleen. 
+[App-based](technical-reference.md#approved-client-app-requirement) classic policies for Office 365 Exchange Online that include **Exchange Active Sync** as client apps condition allow **supported** and **unsupported** [device platforms](technical-reference.md#device-platform-condition). While you can't configure individual device platforms in a related new policy, you can limit the support to [supported device platforms](technical-reference.md#device-platform-condition) only. 
 
 ![Azure Active Directory](./media/policy-migration/65.png)
 
-U kunt meerdere klassieke beleidsregels die zijn samenvoegen **Exchange Active Sync** als voorwaarde voor client-apps als ze beschikken over:
+You can consolidate multiple classic policies that include **Exchange Active Sync** as client apps condition if they have:
 
-- Alleen **Exchange Active Sync** als voorwaarde 
-- Verschillende vereisten voor het verlenen van toegang dat is geconfigureerd
+- Only **Exchange Active Sync** as condition 
+- Several requirements for granting access configured
 
-Een veelvoorkomend scenario is de consolidatie van:
+One common scenario is the consolidation of:
 
-- Een apparaat gebaseerde klassiek beleid vanuit de klassieke Azure portal 
-- Een app-beleid op basis van klassieke in de Intune app protection-beheerportal 
+- A device-based classic policy from the Azure classic portal 
+- An app-based classic policy in the Intune app protection portal 
  
-In dit geval kunt u uw klassieke beleidsregels samenvoegen in een nieuw beleid met beide vereisten hebt geselecteerd.
+In this case, you can consolidate your classic policies into one new policy that has both requirements selected.
 
 ![Azure Active Directory](./media/policy-migration/62.png)
 
-### <a name="device-platforms"></a>Apparaatplatformen
+### <a name="device-platforms"></a>Device platforms
 
-Klassieke beleidsregels met [besturingselementen op basis van app](technical-reference.md#approved-client-app-requirement) zijn vooraf geconfigureerd met iOS en Android als de [apparaat platform voorwaarde](technical-reference.md#device-platform-condition). 
+Classic policies with [app-based controls](technical-reference.md#approved-client-app-requirement) are pre-configured with iOS and Android as the [device platform condition](technical-reference.md#device-platform-condition). 
 
-In een nieuw beleid, moet u selecteert de [apparaatplatformen](technical-reference.md#device-platform-condition) u wilt ondersteunen afzonderlijk.
+In a new policy, you need to select the [device platforms](technical-reference.md#device-platform-condition) you want to support individually.
 
 ![Azure Active Directory](./media/policy-migration/41.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Als u weten hoe u een beleid voor voorwaardelijke toegang configureren wilt, Zie [MFA vereisen voor specifieke apps met Azure Active Directory voor voorwaardelijke toegang](app-based-mfa.md).
-- Als u klaar om te configureren van beleid voor voorwaardelijke toegang voor uw omgeving bent, raadpleegt u de [aanbevolen procedures voor voorwaardelijke toegang in Azure Active Directory](best-practices.md). 
+- If you want to know how to configure a Conditional Access policy, see [Require MFA for specific apps with Azure Active Directory Conditional Access](app-based-mfa.md).
+- If you are ready to configure Conditional Access policies for your environment, see the [best practices for Conditional Access in Azure Active Directory](best-practices.md). 

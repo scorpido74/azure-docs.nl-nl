@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Video's zoeken met de Bing Video's zoeken-SDK voor Node.js"
+title: 'Quickstart: Search for videos using the SDK for Node.js - Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's te verzenden met de Bing Video's zoeken-SDK voor Node.js.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 07/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12eafca9c673d95813eefcd58d2b3f9ba7b54fd3
-ms.sourcegitcommit: 4b647be06d677151eb9db7dccc2bd7a8379e5871
+ms.openlocfilehash: 5c8bd4ccadcc3c1947905e6bd74b48045a62ab57
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/19/2019
-ms.locfileid: "68358883"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383744"
 ---
-# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Quickstart: Video's zoeken met de Bing Video's zoeken-SDK voor Node.js
+# <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-nodejs"></a>Quickstart: Perform a video search with the Bing Video Search SDK for Node.js
 
-Gebruik deze quickstart om nieuws te zoeken met de Bing Video's zoeken-SDK voor Node.js. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Deze bevat meer aantekeningen en functies.
+Gebruik deze quickstart om nieuws te zoeken met de Bing Video's zoeken-SDK voor Node.js. Hoewel Bing Video's zoeken een REST-API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js). Deze bevat meer aantekeningen en functies.
 
 ## <a name="prerequisites"></a>Vereisten
 

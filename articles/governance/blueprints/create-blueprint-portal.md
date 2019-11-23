@@ -1,26 +1,20 @@
 ---
 title: 'Quickstart: Create a blueprint in the portal'
 description: In this quickstart, you use Azure Blueprints to create, define, and deploy artifacts through the Azure portal.
-ms.date: 03/11/2019
+ms.date: 11/21/2019
 ms.topic: quickstart
-ms.openlocfilehash: 47c225f3a3e51dc965580e48b8f838f557676d2e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: efef8db6086f050829b60b5051ad683bbae9ab75
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210482"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321943"
 ---
 # <a name="quickstart-define-and-assign-a-blueprint-in-the-portal"></a>Quickstart: Define and assign a blueprint in the portal
 
 When you learn how to create and assign blueprints, you can define common patterns to develop reusable and rapidly deployable configurations based on Azure Resource Manager templates, policy, security, and more. In this tutorial, you learn to use Azure Blueprints to do some of the common tasks related to creating, publishing, and assigning a blueprint within your organization. These tasks include:
 
-> [!div class="checklist"]
-> - Een nieuwe blauwdruk maken en verschillende ondersteunde artefacten toevoegen
-> - Wijzigingen aanbrengen aan een bestaande blauwdruk die nog een **Concept** is
-> - Blauwdrukken markeren als gereed om toe te wijzen met **Gepubliceerd**
-> - Een blauwdruk toewijzen aan een bestaand abonnement
-> - De status en voortgang van een toegewezen blauwdruk controleren
-> - Een blauwdruk verwijderen die aan een abonnement is toegewezen
+## <a name="prerequisites"></a>Vereisten
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free) aan voordat u begint.
 
@@ -296,9 +290,7 @@ If you no longer need a blueprint assignment, remove it from a subscription. The
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [levenscyclus van een blauwdruk](./concepts/lifecycle.md).
-- Meer informatie over hoe u [statische en dynamische parameters](./concepts/parameters.md) gebruikt.
-- Meer informatie over hoe u de [blauwdrukvolgorde](./concepts/sequencing-order.md) aanpast.
-- Meer informatie over hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](./concepts/resource-locking.md).
-- Meer informatie over hoe u [bestaande toewijzingen bijwerkt](./how-to/update-existing-assignments.md).
-- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](./troubleshoot/general.md).
+In this quickstart, you've created, assigned, and removed a blueprint with Azure portal. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](./concepts/lifecycle.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: een zoekaanvraag verzenden naar de Bing Entiteiten zoeken-REST API met Node.js'
+title: 'Quickstart: Send a search request to the REST API using Node.js - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de Bing Entiteiten zoeken-REST API te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: e56bf0b3daa38f79e637ece947414b885de3797a
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 48d2b36e35a2e0b41b1202beda9944339dc7530c
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68478986"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327117"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Quickstart: een zoekaanvraag verzenden naar de Bing Entiteiten zoeken-REST API met Node.js
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Quickstart: Send a search request to the Bing Entity Search REST API using Node.js
 
-Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige JavaScript-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
+Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige JavaScript-toepassing stuurt een nieuwszoekquery naar de API en geeft het antwoord weer. De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
 
 Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -74,7 +74,7 @@ Hoewel deze toepassing in JavaScript is geschreven, is de API een RESTful-webser
         });
         ```
 
-    3. Wanneer een **End** -vlag is gesignaleerd, parseert u de JSON en drukt u deze af.
+    3. When an **end** flag is signaled, parse the JSON, and print it.
 
         ```javascript
         response.on ('end', function () {

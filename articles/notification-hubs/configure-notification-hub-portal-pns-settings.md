@@ -1,6 +1,6 @@
 ---
-title: Push meldingen instellen in azure Notification Hubs | Microsoft Docs
-description: Meer informatie over het instellen van Azure Notification Hubs in het Azure Portal met behulp van PNS-instellingen (platform Notification System).
+title: Set up push notifications in Azure Notification Hubs | Microsoft Docs
+description: Learn how to set up Azure Notification Hubs in the Azure portal by using platform notification system (PNS) settings.
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,114 +12,114 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 9a17b96da376843c07a4324856bf8943aa385cac
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 951f03f581906e45946ef75742421ba27d405267
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212463"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406982"
 ---
-# <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Push meldingen instellen in een notification hub in de Azure Portal
+# <a name="set-up-push-notifications-in-a-notification-hub-in-the-azure-portal"></a>Set up push notifications in a notification hub in the Azure portal
 
-Azure Notification Hubs biedt een push-engine die eenvoudig te gebruiken is en die kan worden geschaald. Gebruik Notification Hubs om meldingen te verzenden naar elk platform (iOS, Android, Windows, Baidu) en een back-end (in de Cloud of on-premises). Zie [Wat is Azure notification hubs?](notification-hubs-push-notification-overview.md)voor meer informatie.
+Azure Notification Hubs provides a push engine that's easy to use and that scales out. Use Notification Hubs to send notifications to any platform (iOS, Android, Windows, Baidu) and from any back end (cloud or on-premises). For more information, see [What is Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-In deze Quick Start gebruikt u de PNS-instellingen (platform Notification System) in Notification Hubs om Push meldingen in te stellen op meerdere platforms. In de Quick start ziet u de stappen die in de Azure Portal worden uitgevoerd.
+In this quickstart, you'll use the platform notification system (PNS) settings in Notification Hubs to set up push notifications on multiple platforms. The quickstart shows you the steps to take in the Azure portal.
 
-Als u nog geen notification hub hebt gemaakt, maakt u er nu een. Zie [een Azure notification hub maken in de Azure Portal](create-notification-hub-portal.md)voor meer informatie. 
+If you haven't already created a notification hub, create one now. For more information, see [Create an Azure notification hub in the Azure portal](create-notification-hub-portal.md). 
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
-Apple Push Notification Service instellen (APNS):
+To set up Apple Push Notification Service (APNS):
 
-1. Selecteer in het Azure Portal op de pagina **Notification hub** **Apple (APNS)** in het menu links.
+1. In the Azure portal, on the **Notification Hub** page, select **Apple (APNS)** from the left menu.
 
-1. Voor de **verificatie modus**selecteert u **certificaat** of **token**.
+1. For **Authentication Mode**, select either **Certificate** or **Token**.
 
-   a. Als u **certificaat**selecteert:
-   * Selecteer het pictogram bestand en selecteer vervolgens het *. p12* -bestand dat u wilt uploaden.
-   * Voer een wacht woord in.
-   * Selecteer de modus **Sandbox**. Als u push meldingen wilt verzenden naar gebruikers die uw app uit de Store hebben gekocht, selecteert u **productie** modus.
+   a. If you select **Certificate**:
+   * Select the file icon, and then select the *.p12* file you want to upload.
+   * Enter a password.
+   * Selecteer de modus **Sandbox**. Or, to send push notifications to users who purchased your app from the store, select **Production** mode.
 
-     ![Scherm opname van een configuratie van een APNS-certificaat in de Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Screenshot of an APNS certificate configuration in the Azure portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Als u **token**selecteert:
+   b. If you select **Token**:
 
-   * Voer de waarden in voor de **sleutel-id**, de **bundel-id**, de **Team-ID**en het **token**.
-   * Selecteer de modus **Sandbox**. Als u push meldingen wilt verzenden naar gebruikers die uw app uit de Store hebben gekocht, selecteert u **productie** modus.
+   * Enter the values for **Key ID**, **Bundle ID**, **Team ID**, and **Token**.
+   * Selecteer de modus **Sandbox**. Or, to send push notifications to users who purchased your app from the store, select **Production** mode.
 
-     ![Scherm afbeelding van een configuratie van een APNS-token in de Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-token.png)
+     ![Screenshot of an APNS token configuration in the Azure portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-Zie [Push meldingen naar IOS met Azure notification hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md)voor meer informatie.
+For more information, see [Push notifications to iOS by using Azure Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md).
 
-## <a name="google-firebase-cloud-messaging"></a>Google Firebase Cloud Messa ging
+## <a name="google-firebase-cloud-messaging"></a>Google Firebase Cloud Messaging
 
-Push meldingen instellen voor Google Firebase Cloud Messa ging (FCM):
+To set up push notifications for Google Firebase Cloud Messaging (FCM):
 
-1. Selecteer in de Azure Portal op de pagina **Notification hub** **Google (GCM/FCM)** in het menu links. 
-2. Plak de **API-sleutel** voor het FCM-project dat u eerder hebt opgeslagen. 
+1. In the Azure portal, on the **Notification Hub** page, select **Google (GCM/FCM)** from the left menu. 
+2. Paste the **API Key** for the FCM project that you saved earlier. 
 3. Selecteer **Opslaan**. 
 
-   ![Scherm afbeelding die laat zien hoe u Notification Hubs configureert voor Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Screenshot that shows how to configure Notification Hubs for Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-Wanneer u deze stappen hebt voltooid, geeft een waarschuwing aan dat de notification hub is bijgewerkt. De knop **Opslaan** kan niet worden gekozen. 
+When you complete these steps, an alert indicates that the notification hub has been successfully updated. De knop **Opslaan** kan niet worden gekozen. 
 
-Zie [Push meldingen naar Android-apparaten met behulp van Notification hubs en Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)voor meer informatie.
+For more information, see [Push notifications to Android devices by using Notification Hubs and Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md).
 
 ## <a name="windows-push-notification-service"></a>Windows Push Notification Service
 
-Windows Push Notification Service (WNS) instellen:
+To set up Windows Push Notification Service (WNS):
 
-1. Selecteer in het Azure Portal op de pagina **Notification hub** de optie **Windows (WNS)** in het menu links.
+1. In the Azure portal, on the **Notification Hub** page, select **Windows (WNS)** from the left menu.
 2. Voer waarden in voor **Pakket-SID** en **Beveiligingssleutel**.
 3. Selecteer **Opslaan**.
 
-   ![Scherm opname van de vakken SID en beveiligings sleutel van het pakket](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Screenshot that shows the Package SID and Security Key boxes](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-Zie [meldingen naar UWP-apps verzenden met behulp van Azure notification hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)voor meer informatie.
+For information, see [Send notifications to UWP apps by using Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
-## <a name="microsoft-push-notification-service-for-windows-phone"></a>Micro soft Push Notification Service voor Windows Phone
+## <a name="microsoft-push-notification-service-for-windows-phone"></a>Microsoft Push Notification Service for Windows Phone
 
-Micro soft Push Notification Service (MPNS) voor Windows Phone instellen: 
+To set up Microsoft Push Notification Service (MPNS) for Windows Phone: 
 
-1. Selecteer in het Azure Portal op de pagina **Notification Hub** **Windows Phone (MPNS)** in het menu links.
-1. Niet-geverifieerde of geverifieerde push meldingen inschakelen:
+1. In the Azure portal, on the **Notification Hub** page, select **Windows Phone (MPNS)** from the left menu.
+1. Enable either unauthenticated or authenticated push notifications:
 
-   a. Als u niet-geverifieerde push meldingen wilt inschakelen, selecteert u niet- **geverifieerde push** > **Opslaan**inschakelen.
+   a. To enable unauthenticated push notifications, select **Enable unauthenticated push** > **Save**.
 
-      ![Scherm afbeelding die laat zien hoe u niet-geverifieerde push meldingen inschakelt](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+      ![Screenshot that shows how to enable unauthenticated push notifications](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
-   b. Geverifieerde push meldingen inschakelen:
-      * Selecteer **certificaat uploaden**op de werk balk.
-      * Selecteer het pictogram bestand en selecteer vervolgens het certificaat bestand.
+   b. To enable authenticated push notifications:
+      * On the toolbar, select **Upload Certificate**.
+      * Select the file icon, and then select the certificate file.
       * Voer het wachtwoord voor het certificaat in.
       * Selecteer **OK**.
-      * Selecteer op de pagina **Windows Phone (MPNS)** de optie **Opslaan**.
+      * On the **Windows Phone (MPNS)** page, select **Save**.
 
-Zie [Push meldingen naar Windows Phone-apps met behulp van Notification hubs](notification-hubs-windows-mobile-push-notifications-mpns.md)voor meer informatie.
+For more information, see [Push notifications to Windows Phone apps by using Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
       
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
 
-Push meldingen instellen voor Baidu:
+To set up push notifications for Baidu:
 
-1. Selecteer in het Azure Portal op de pagina **Notification hub** **Baidu (Android China)** in het menu links. 
-2. Voer de **API-sleutel** in die u hebt verkregen via de Baidu-console in het Baidu Cloud push-project. 
-3. Voer de **geheime sleutel** in die u hebt verkregen via de Baidu-console in het Baidu Cloud push-project. 
+1. In the Azure portal, on the **Notification Hub** page, select **Baidu (Android China)** from the left menu. 
+2. Enter the **Api Key** that you obtained from the Baidu console in the Baidu cloud push project. 
+3. Enter the **Secret Key** that you obtained from the Baidu console in the Baidu cloud push project. 
 4. Selecteer **Opslaan**. 
 
-    ![Scherm afbeelding van Notification Hubs waarin de configuratie van de Baidu (Android China) voor push meldingen wordt weer gegeven](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![Screenshot of Notification Hubs that shows the Baidu (Android China) configuration for push notifications](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-Wanneer u deze stappen hebt voltooid, geeft een waarschuwing aan dat de notification hub is bijgewerkt. De knop **Opslaan** kan niet worden gekozen. 
+When you complete these steps, an alert indicates that the notification hub has been successfully updated. De knop **Opslaan** kan niet worden gekozen. 
 
-Zie [aan de slag met Notification hubs met Baidu](notification-hubs-baidu-china-android-notifications-get-started.md)voor meer informatie.
+For more information, see [Get started with Notification Hubs by using Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
 
 ## <a name="next-steps"></a>Volgende stappen
-In deze Quick Start hebt u geleerd hoe u de systeem instellingen voor platform meldingen kunt configureren voor een notification hub in de Azure Portal. 
+In this quickstart, you learned how to configure platform notification system settings for a notification hub in the Azure portal. 
 
-Zie deze zelf studies voor meer informatie over het pushen van meldingen naar verschillende platforms:
+To learn more about how to push notifications to various platforms, see these tutorials:
 
-- [Push meldingen naar iOS-apparaten met behulp van Notification Hubs en APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
-- [Push meldingen naar Android-apparaten met behulp van Notification Hubs en Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
-- [Push meldingen naar een UWP-app die wordt uitgevoerd op een Windows-apparaat](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
-- [Push meldingen naar een Windows Phone 8-app met behulp van MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
-- [Push meldingen met behulp van Notification Hubs en Baidu Cloud Push](notification-hubs-baidu-china-android-notifications-get-started.md)
+- [Push notifications to iOS devices by using Notification Hubs and APNS](notification-hubs-ios-apple-push-notification-apns-get-started.md)
+- [Push notifications to Android devices by using Notification Hubs and Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
+- [Push notifications to a UWP app running on a Windows device](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
+- [Push notifications to a Windows Phone 8 app by using MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
+- [Push notifications by using Notification Hubs and Baidu cloud push](notification-hubs-baidu-china-android-notifications-get-started.md)

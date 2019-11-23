@@ -1,25 +1,19 @@
 ---
-title: Overzicht van Azure Block Chain Workbench preview
-description: Overzicht van de preview-versie van Azure Block Chain Workbench en de mogelijkheden ervan.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench Preview overview
+description: Overview of Azure Blockchain Workbench Preview and its capabilities.
 ms.date: 09/05/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: 097185502321c8810214ed737047bdf596d18bdb
-ms.sourcegitcommit: adc1072b3858b84b2d6e4b639ee803b1dda5336a
+ms.openlocfilehash: 9c40f95aa1490362b9232ec8d87a199d7a41c731
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70844096"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324551"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Wat is Azure Blockchain Workbench?
 
-Azure Block Chain Workbench preview is een verzameling Azure-Services en-functies die zijn ontworpen om u te helpen bij het maken en implementeren van Block Chain-toepassingen voor het delen van bedrijfs processen en-gegevens met andere organisaties. Azure Blockchain Workbench biedt de infrastructuur-scaffolding voor het bouwen van blockchain-toepassingen, zodat ontwikkelaars zich kunnen richten op het maken van bedrijfslogica en slimme contracten. Met Blockchain Workbench wordt het ook eenvoudiger om blockchain-toepassingen te maken door verschillende Azure-services en -functies te integreren om zo algemene ontwikkeltaken te automatiseren.
+Azure Blockchain Workbench Preview is a collection of Azure services and capabilities designed to help you create and deploy blockchain applications to share business processes and data with other organizations. Azure Blockchain Workbench biedt de infrastructuur-scaffolding voor het bouwen van blockchain-toepassingen, zodat ontwikkelaars zich kunnen richten op het maken van bedrijfslogica en slimme contracten. Met Blockchain Workbench wordt het ook eenvoudiger om blockchain-toepassingen te maken door verschillende Azure-services en -functies te integreren om zo algemene ontwikkeltaken te automatiseren.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -49,7 +43,7 @@ Bij bestaande blockchain-protocollen worden blockchain-identiteiten voorgesteld 
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Gegevens in de blockchain synchroniseren met opslag buiten de blockchain
 
-Met Azure Blockchain Workbench is het eenvoudiger om blockchain-gebeurtenissen en -gegevens te analyseren doordat gegevens in de blockchain automatisch worden gesynchroniseerd naar opslag buiten de blockchain. In plaats van de gegevens rechtstreeks uit de blockchain te extraheren, kunt u query's uitvoeren op databasesystemen buiten de blockchain, zoals SQL Server. Block Chain-expertise is niet vereist voor eind gebruikers die taken voor gegevens analyse uitvoeren.
+Met Azure Blockchain Workbench is het eenvoudiger om blockchain-gebeurtenissen en -gegevens te analyseren doordat gegevens in de blockchain automatisch worden gesynchroniseerd naar opslag buiten de blockchain. In plaats van de gegevens rechtstreeks uit de blockchain te extraheren, kunt u query's uitvoeren op databasesystemen buiten de blockchain, zoals SQL Server. Blockchain expertise is not required for end users who are doing data analysis tasks.
 
 ## <a name="next-steps"></a>Volgende stappen
 

@@ -5,18 +5,18 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7caae8f749cf89832740f9b5f71f6a8931a835c9
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 9764edb986b2ee847e3fcecda228f53551b462c3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149315"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325426"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Zelfstudie: Azure Resource Manager-sjablonen maken
 
-Informatie over het maken van gekoppelde Azure Resource Manager-sjablonen. Met gekoppelde sjablonen kunt u een sjabloon een andere sjabloon laten aanroepen. Dit is handig om sjablonen te modulariseren. In deze zelf studie gebruikt u dezelfde sjabloon die wordt gebruikt in de [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), waarmee u een virtuele machine, een virtueel netwerk en een andere afhankelijke resource met inbegrip van een opslag account maakt. U verplaatst de gemaakte resource van het opslagaccount naar een gekoppelde sjabloon.
+Informatie over het maken van gekoppelde Azure Resource Manager-sjablonen. Met gekoppelde sjablonen kunt u een sjabloon een andere sjabloon laten aanroepen. Dit is handig om sjablonen te modulariseren. In this tutorial, you use the same template used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), which creates a virtual machine, a virtual network, and other dependent resource including a storage account. U verplaatst de gemaakte resource van het opslagaccount naar een gekoppelde sjabloon.
 
-Het aanroepen van een gekoppelde sjabloon is vergelijkbaar met het maken van een functie aanroep.  U leert ook hoe u parameter waarden kunt door geven aan de gekoppelde sjabloon en hoe u retour waarden ophaalt uit de gekoppelde sjabloon.
+Calling a linked template is like making a function call.  You also learn how to pass parameter values to the linked template, and how to get "return values" from the linked template.
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -29,7 +29,7 @@ Deze zelfstudie bestaat uit de volgende taken:
 > * De sjabloon implementeren
 > * Aanvullende procedures
 
-Zie voor meer informatie [gekoppelde en geneste sjablonen gebruiken bij het implementeren van Azure-resources](./resource-group-linked-templates.md).
+For more information, see [Use linked and nested templates when deploying Azure resources](./resource-group-linked-templates.md).
 
 Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.microsoft.com/free/) voordat u begint.
 
@@ -39,7 +39,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* [Visual Studio Code](https://code.visualstudio.com/) met de [extensie Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 * Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van de virtuele machine om de beveiliging te verhogen. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```azurecli-interactive
@@ -49,7 +49,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
-Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren). Dit is dezelfde sjabloon die wordt gebruikt in de [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). U slaat twee kopieën op van dezelfde sjabloon. Deze worden gebruikt als:
+Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In plaats van een sjabloon helemaal vanaf de basis te maken, kunt u een voorbeeldsjabloon zoeken en aanpassen. De sjabloon die in deze zelfstudie wordt gebruikt, heet [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Een eenvoudige Windows-VM implementeren). This is the same template used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). U slaat twee kopieën op van dezelfde sjabloon. Deze worden gebruikt als:
 
 * **De hoofdsjabloon**: voor het maken van alle resources, met uitzondering van het opslagaccount.
 * **De gekoppelde sjabloon**: voor het maken van het opslagaccount.
@@ -61,7 +61,7 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
     ```
 3. Selecteer **Openen** om het bestand te openen.
-4. Er worden vijf resources gedefinieerd door de sjabloon:
+4. Er worden vijf resources gedefinieerd met de sjabloon:
 
    * [`Microsoft.Storage/storageAccounts`](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts)
    * [`Microsoft.Network/publicIPAddresses`](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
@@ -69,18 +69,18 @@ Azure-snelstartsjablonen is een opslagplaats voor Resource Manager-sjablonen. In
    * [`Microsoft.Network/networkInterfaces`](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
    * [`Microsoft.Compute/virtualMachines`](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
 
-     Het is handig om basis informatie over het sjabloon schema op te halen voordat u de sjabloon aanpast.
+     It is helpful to get some basic understanding of the template schema before customizing the template.
 5. Selecteer **Bestand**>**Opslaan als** om het bestand op uw lokale computer op te slaan als **azuredeploy.json**.
 6. Selecteer **Bestand**>**Opslaan als** om nog een exemplaar te maken van het bestand met de naam **linkedTemplate.json**.
 
 ## <a name="create-the-linked-template"></a>De gekoppelde sjabloon maken
 
-De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worden gebruikt als een zelfstandige sjabloon voor het maken van een opslag account. In deze zelf studie heeft de gekoppelde sjabloon twee para meters en wordt er een waarde weer gegeven in de hoofd sjabloon. Deze return-waarde is gedefinieerd in het `outputs`-element.
+De gekoppelde sjabloon maakt een opslagaccount. The linked template can be used as a standalone template to create a storage account. In this tutorial, the linked template takes two parameters, and passes a value back to the main template. This "return" value is defined in the `outputs` element.
 
-1. Open **linkedTemplate. json** in Visual Studio code als het bestand niet wordt geopend.
+1. Open **linkedTemplate.json** in Visual Studio Code if the file is not opened.
 2. Breng de volgende wijzigingen aan:
 
-    * Verwijder alle para meters, met uitzonde ring van de **locatie**.
+    * Remove all the parameters other than **location**.
     * Voeg een parameter met de naam **storageAccountName** toe.
         ```json
         "storageAccountName":{
@@ -90,10 +90,10 @@ De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worde
           }
         },
         ```
-        De naam en locatie van het opslag account worden door gegeven van de hoofd sjabloon naar de gekoppelde sjabloon als para meters.
+        The storage account name and location are passed from the main template to the linked template as parameters.
 
     * Het element **variables** en alle variabeledefinities te verwijderen.
-    * Verwijder alle andere resources dan het opslag account. U moet in totaal vier resources verwijderen.
+    * Remove all the resources other than the storage account. U moet in totaal vier resources verwijderen.
     * Werk de waarde van het element **name** van de opslagaccount-resource om:
 
         ```json
@@ -158,7 +158,7 @@ De gekoppelde sjabloon maakt een opslagaccount. De gekoppelde sjabloon kan worde
 
 ## <a name="upload-the-linked-template"></a>De gekoppelde sjabloon uploaden
 
-De hoofdsjabloon en de gekoppelde sjabloon moeten toegankelijk zijn vanaf de locatie waar u de implementatie uitvoert. In deze zelf studie gebruikt u de implementatie methode Cloud shell zoals u in de [zelf studie hebt gebruikt: Azure Resource Manager sjablonen met afhankelijke resources maken](./resource-manager-tutorial-create-templates-with-dependent-resources.md). De hoofdsjabloon (azuredeploy.json)-sjabloon is geüpload naar de shell. De gekoppelde sjabloon (linkedTemplate.json) moet ergens veilig worden gedeeld. Met het volgende PowerShell-script wordt een Azure Storage-account gemaakt, de sjabloon geüpload naar het Storage-account, en vervolgens een SAS-token voor beperkte toegang tot het sjabloonbestand gegenereerd. Om de zelf studie te vereenvoudigen, downloadt het script een voltooide gekoppelde sjabloon uit een github-opslag plaats. Als u de gekoppelde sjabloon die u hebt gemaakt, wilt gebruiken, kunt u de gekoppelde sjabloon uploaden met [Cloud Shell](https://shell.azure.com) en vervolgens het script zo aanpassen dat uw eigen gekoppelde sjabloon wordt gebruikt.
+De hoofdsjabloon en de gekoppelde sjabloon moeten toegankelijk zijn vanaf de locatie waar u de implementatie uitvoert. In this tutorial, you use the Cloud shell deployment method as you used in [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md). De hoofdsjabloon (azuredeploy.json)-sjabloon is geüpload naar de shell. De gekoppelde sjabloon (linkedTemplate.json) moet ergens veilig worden gedeeld. Met het volgende PowerShell-script wordt een Azure Storage-account gemaakt, de sjabloon geüpload naar het Storage-account, en vervolgens een SAS-token voor beperkte toegang tot het sjabloonbestand gegenereerd. To simplify the tutorial, the script downloads a completed linked template from a Github repository. Als u de gekoppelde sjabloon die u hebt gemaakt, wilt gebruiken, kunt u de gekoppelde sjabloon uploaden met [Cloud Shell](https://shell.azure.com) en vervolgens het script zo aanpassen dat uw eigen gekoppelde sjabloon wordt gebruikt.
 
 > [!NOTE]
 > De geldigheidsduur van het SAS-token wordt met het script beperkt tot acht uur. Als u meer tijd nodig hebt om deze zelfstudie te voltooien, verhoogt u de verlooptijd.
@@ -225,7 +225,7 @@ In de praktijk genereert u een SAS-token wanneer u de hoofdsjabloon implementeer
 
 De hoofdsjabloon heet azuredeploy.json.
 
-1. Open **azuredeploy. json** in Visual Studio code als deze niet is geopend.
+1. Open **azuredeploy.json** in Visual Studio Code if it is not opened.
 2. Verwijder de resourcedefinitie van het opslagaccount uit de sjabloon:
 
     ```json
@@ -273,7 +273,7 @@ De hoofdsjabloon heet azuredeploy.json.
 
 ## <a name="configure-dependency"></a>Afhankelijkheid configureren
 
-Intrekken uit [zelf studie: maak Azure Resource Manager sjablonen met afhankelijke resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), de virtuele-machine resource is afhankelijk van het opslag account:
+Recall from [Tutorial: Create Azure Resource Manager templates with dependent resources](./resource-manager-tutorial-create-templates-with-dependent-resources.md), the virtual machine resource depends on the storage account:
 
 ![Afhankelijkheidsdiagram van Azure Resource Manager-sjablonen](./media/resource-manager-tutorial-create-linked-templates/resource-manager-template-visual-studio-code-dependency-diagram.png)
 

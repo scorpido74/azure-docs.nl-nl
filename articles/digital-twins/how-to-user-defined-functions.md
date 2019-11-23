@@ -1,56 +1,56 @@
 ---
-title: Door de gebruiker gedefinieerde functies maken-in azure Digital Apparaatdubbels | Microsoft Docs
-description: Het maken van door de gebruiker gedefinieerde functies, treffers en roltoewijzingen in azure Digital Apparaatdubbels.
+title: How to create user-defined functions - in Azure Digital Twins | Microsoft Docs
+description: How to create user-defined functions, matchers, and role assignments in Azure Digital Twins.
 ms.author: alinast
 author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4db6f0052c92d4532917a996eda82a27d97d3063
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74009573"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383317"
 ---
-# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Door de gebruiker gedefinieerde functies maken in azure Digital Apparaatdubbels
+# <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>How to create user-defined functions in Azure Digital Twins
 
-Door de [gebruiker gedefinieerde functies](./concepts-user-defined-functions.md) bieden gebruikers de mogelijkheid om aangepaste logica te configureren voor het uitvoeren van binnenkomende telemetriegegevens en meta gegevens van ruimtelijke grafieken. Gebruikers kunnen ook gebeurtenissen naar vooraf gedefinieerde [eind punten](./how-to-egress-endpoints.md)verzenden.
+[User-defined functions](./concepts-user-defined-functions.md) enable users to configure custom logic to be executed from incoming telemetry messages and spatial graph metadata. Users can also send events to predefined [endpoints](./how-to-egress-endpoints.md).
 
-In deze hand leiding vindt u een voor beeld waarin wordt uitgelegd hoe u een lees-en waarschuwings signalen kunt detecteren die een bepaalde Tempe ratuur van ontvangen temperatuur gebeurtenissen overschrijdt.
+This guide walks through an example demonstrating how to detect and alert on any reading that exceeds a certain temperature from received temperature events.
 
 [!INCLUDE [Digital Twins Management API](../../includes/digital-twins-management-api.md)]
 
-## <a name="client-library-reference"></a>Naslag informatie voor de client bibliotheek
+## <a name="client-library-reference"></a>Client library reference
 
-Beschik bare functies als Help-methoden in de door de gebruiker gedefinieerde functions-runtime worden weer gegeven in het referentie document van de [client bibliotheek](./reference-user-defined-functions-client-library.md) .
+Functions available as helper methods in the user-defined functions runtime are listed in the [client library reference](./reference-user-defined-functions-client-library.md) document.
 
-## <a name="create-a-matcher"></a>Een overeenkomst maken
+## <a name="create-a-matcher"></a>Create a matcher
 
-Matchers zijn grafiek objecten die bepalen welke door de gebruiker gedefinieerde functies worden uitgevoerd voor een gegeven telemetrie-bericht.
+Matchers are graph objects that determine what user-defined functions run for a given telemetry message.
 
-- Vergelijking van de voor waarde voor een geldige Matcher:
+- Valid matcher condition comparisons:
 
   - `Equals`
   - `NotEquals`
   - `Contains`
 
-- Geldige doelen voor voor waarden van Matcher:
+- Valid matcher condition targets:
 
   - `Sensor`
   - `SensorDevice`
   - `SensorSpace`
 
-In het volgende voor beeld wordt ' True ' geëvalueerd voor een telemetrie-gebeurtenis sensor met `"Temperature"` als waarde voor het gegevens type. U kunt meerdere matchers maken op basis van een door de gebruiker gedefinieerde functie door een geverifieerde HTTP POST-aanvraag in te stellen:
+The following example matcher evaluates to true on any sensor telemetry event with `"Temperature"` as its data type value. You can create multiple matchers on a user-defined function by making an authenticated HTTP POST request to:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/matchers
 ```
 
-Met JSON-hoofd tekst:
+With JSON body:
 
 ```JSON
 {
@@ -75,17 +75,17 @@ Met JSON-hoofd tekst:
 
 ## <a name="create-a-user-defined-function"></a>Een door de gebruiker gedefinieerde functie maken
 
-Door een door de gebruiker gedefinieerde functie te maken, moet u een multi part HTTP-aanvraag indienen bij de Azure Digital Apparaatdubbels Management-Api's.
+Creating a user-defined function involves making a multipart HTTP request to the Azure Digital Twins Management APIs.
 
 [!INCLUDE [Digital Twins multipart requests](../../includes/digital-twins-multipart.md)]
 
-Nadat de matchers zijn gemaakt, uploadt u het functie fragment met de volgende Authenticated multi-HTTP POST-aanvraag:
+After the matchers are created, upload the function snippet with the following authenticated multipart HTTP POST request to:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/userdefinedfunctions
 ```
 
-Gebruik de volgende hoofd tekst:
+Use the following body:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -111,22 +111,22 @@ function process(telemetry, executionContext) {
 
 | Waarde | Vervangen door |
 | --- | --- |
-| USER_DEFINED_BOUNDARY | Een grens naam voor meerdelige inhoud |
-| YOUR_SPACE_IDENTIFIER | De ruimte-id  |
-| YOUR_MATCHER_IDENTIFIER | De ID van de overeenkomst die u wilt gebruiken |
+| USER_DEFINED_BOUNDARY | A multipart content boundary name |
+| YOUR_SPACE_IDENTIFIER | The space identifier  |
+| YOUR_MATCHER_IDENTIFIER | The ID of the matcher you want to use |
 
-1. Controleer of de headers het volgende bevatten: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
-1. Controleer of de hoofd tekst meerdelige is:
+1. Verify that the headers include: `Content-Type: multipart/form-data; boundary="USER_DEFINED_BOUNDARY"`.
+1. Verify that the body is multipart:
 
-   - Het eerste deel bevat de vereiste meta gegevens van de door de gebruiker gedefinieerde functie.
-   - Het tweede deel bevat de Java script-Compute-logica.
+   - The first part contains the required user-defined function metadata.
+   - The second part contains the JavaScript compute logic.
 
-1. Vervang de waarden voor **spaceId** (`YOUR_SPACE_IDENTIFIER`) en **matchers** (`YOUR_MATCHER_IDENTIFIER`) in het gedeelte **USER_DEFINED_BOUNDARY** .
-1. Controleer of de door de gebruiker gedefinieerde Java script-functie is opgegeven als `Content-Type: text/javascript`.
+1. In the **USER_DEFINED_BOUNDARY** section, replace the **spaceId** (`YOUR_SPACE_IDENTIFIER`) and **matchers** (`YOUR_MATCHER_IDENTIFIER`)  values.
+1. Verify that the JavaScript user-defined function is supplied as `Content-Type: text/javascript`.
 
-### <a name="example-functions"></a>Voorbeeld functies
+### <a name="example-functions"></a>Example functions
 
-Stel de telemetrie van de sensor zo in dat deze rechtstreeks wordt gelezen voor de sensor met gegevens type **temperatuur**. dit is `sensor.DataType`:
+Set the sensor telemetry reading directly for the sensor with data type **Temperature**, which is `sensor.DataType`:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -142,7 +142,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-De **telemetrie** -para meter bevat de **SensorId** -en **bericht** kenmerken die overeenkomen met een bericht dat door een sensor wordt verzonden. De para meter **executionContext** stelt de volgende kenmerken beschikbaar:
+The **telemetry** parameter exposes the **SensorId** and **Message** attributes, corresponding to a message sent by a sensor. The **executionContext** parameter exposes the following attributes:
 
 ```csharp
 var executionContext = new UdfExecutionContext
@@ -154,7 +154,7 @@ var executionContext = new UdfExecutionContext
 };
 ```
 
-In het volgende voor beeld wordt een bericht geregistreerd als de telemetrie van de sensor een vooraf gedefinieerde drempel overschrijdt. Als uw Diagnostische instellingen zijn ingeschakeld voor het Azure Digital Apparaatdubbels-exemplaar, worden er ook logboeken van door de gebruiker gedefinieerde functies doorgestuurd:
+In the next example, we log a message if the sensor telemetry reading surpasses a predefined threshold. If your diagnostic settings are enabled on the Azure Digital Twins instance, logs from user-defined functions are also forwarded:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -169,7 +169,7 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Met de volgende code wordt een melding gegenereerd als het temperatuur niveau hoger is dan de vooraf gedefinieerde constante:
+The following code triggers a notification if the temperature level rises above the predefined constant:
 
 ```JavaScript
 function process(telemetry, executionContext) {
@@ -193,37 +193,37 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Zie voor een complexere door de gebruiker gedefinieerde functie code voor beeld van de [Snelstartgids](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
+For a more complex user-defined function code sample, see the [Occupancy quickstart](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js).
 
-## <a name="create-a-role-assignment"></a>Een roltoewijzing maken
+## <a name="create-a-role-assignment"></a>Create a role assignment
 
-Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wilt uitvoeren. Als er geen roltoewijzing voor de door de gebruiker gedefinieerde functie bestaat, beschikt u niet over de juiste machtigingen om te communiceren met de beheer-API of kunt u geen acties uitvoeren op Graph-objecten. Acties die door een door de gebruiker gedefinieerde functie kunnen worden uitgevoerd, worden opgegeven en gedefinieerd via op rollen gebaseerd toegangs beheer binnen de Azure Digital Apparaatdubbels Management-Api's. Door de gebruiker gedefinieerde functies kunnen bijvoorbeeld worden beperkt in het bereik door bepaalde rollen of bepaalde toegangscontrole paden op te geven. Zie de documentatie [op basis van op rollen gebaseerde toegangs beheer](./security-role-based-access-control.md) voor meer informatie.
+Create a role assignment for the user-defined function to run under. If no role assignment exists for the user-defined function, it won't have the proper permissions to interact with the Management API or have access to perform actions on graph objects. Actions that a user-defined function may perform are specified and defined via role-based access control within the Azure Digital Twins Management APIs. For example, user-defined functions can be limited in scope by specifying certain roles or certain access control paths. For more information, see the [Role-based access control](./security-role-based-access-control.md) documentation.
 
-1. [Vraag de systeem-API](./security-create-manage-role-assignments.md#retrieve-all-roles) voor alle rollen op om de rol-id op te halen die u wilt toewijzen aan uw door de gebruiker gedefinieerde functie. Doe dit door een geverifieerde HTTP GET-aanvraag in te stellen voor:
+1. [Query the System API](./security-create-manage-role-assignments.md#retrieve-all-roles) for all roles to get the role ID you want to assign to your user-defined function. Do so by making an authenticated HTTP GET request to:
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/system/roles
     ```
-   Behoud de gewenste rol-ID. Het wordt door gegeven als het JSON-hoofd kenmerk **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) hieronder.
+   Keep the desired role ID. It will be passed as the JSON body attribute **roleId** (`YOUR_DESIRED_ROLE_IDENTIFIER`) below.
 
-1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) wordt de door de gebruiker gedefinieerde functie-id die u eerder hebt gemaakt.
-1. Zoek de waarde van het **pad** (`YOUR_ACCESS_CONTROL_PATH`) door uw Spaces te doorzoeken met `fullpath`.
-1. Kopieer de geretourneerde `spacePaths` waarde. U gaat hiervoor het volgende gebruiken. Een geverifieerde HTTP GET-aanvraag indienen voor:
+1. **objectId** (`YOUR_USER_DEFINED_FUNCTION_ID`) will be the user-defined function ID that was created earlier.
+1. Find the value of **path** (`YOUR_ACCESS_CONTROL_PATH`) by querying your spaces with `fullpath`.
+1. Copy the returned `spacePaths` value. You'll use that below. Make an authenticated HTTP GET request to:
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
     | Waarde | Vervangen door |
     | --- | --- |
-    | YOUR_SPACE_NAME | De naam van de ruimte die u wilt gebruiken |
+    | YOUR_SPACE_NAME | The name of the space you wish to use |
 
-1. Plak de geretourneerde `spacePaths` waarde in **pad** om een door de gebruiker gedefinieerde functie toewijzing te maken door een geverifieerde HTTP POST-aanvraag in te stellen:
+1. Paste the returned `spacePaths` value into **path** to create a user-defined function role assignment by making an authenticated HTTP POST request to:
 
-    ```plaintext
+    ```URL
     YOUR_MANAGEMENT_API_URL/roleassignments
     ```
-    Met JSON-hoofd tekst:
+    With JSON body:
 
     ```JSON
     {
@@ -236,26 +236,26 @@ Maak een roltoewijzing voor de door de gebruiker gedefinieerde functie die u wil
 
     | Waarde | Vervangen door |
     | --- | --- |
-    | YOUR_DESIRED_ROLE_IDENTIFIER | De id voor de gewenste rol |
-    | YOUR_USER_DEFINED_FUNCTION_ID | De ID voor de door de gebruiker gedefinieerde functie die u wilt gebruiken |
-    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | De ID waarmee het door de gebruiker gedefinieerde functie type wordt opgegeven |
-    | YOUR_ACCESS_CONTROL_PATH | Het Access Control-pad |
+    | YOUR_DESIRED_ROLE_IDENTIFIER | The identifier for the desired role |
+    | YOUR_USER_DEFINED_FUNCTION_ID | The ID for the user-defined function you want to use |
+    | YOUR_USER_DEFINED_FUNCTION_TYPE_ID | The ID specifying the user-defined function type (`UserDefinedFunctionId`) |
+    | YOUR_ACCESS_CONTROL_PATH | The access control path |
 
 >[!TIP]
-> Lees het artikel [over het maken en beheren van roltoewijzingen](./security-create-manage-role-assignments.md) voor meer informatie over door de gebruiker gedefinieerde functie beheer-API-bewerkingen en-eind punten.
+> Read the article [How to create and manage role assignments](./security-create-manage-role-assignments.md) for more information about user-defined function Management API operations and endpoints.
 
-## <a name="send-telemetry-to-be-processed"></a>Telemetrie verzenden die moeten worden verwerkt
+## <a name="send-telemetry-to-be-processed"></a>Send telemetry to be processed
 
-De sensor die in de ruimtelijke Intelligence-grafiek is gedefinieerd, verzendt telemetrie. Op zijn beurt wordt de uitvoering geactiveerd van de door de gebruiker gedefinieerde functie die is geüpload. De gegevens processor haalt de telemetrie op. Vervolgens wordt er een uitvoerings plan gemaakt voor het aanroepen van de door de gebruiker gedefinieerde functie.
+The sensor defined in the spatial intelligence graph sends telemetry. In turn, the telemetry triggers the execution of the user-defined function that was uploaded. The data processor picks up the telemetry. Then an execution plan is created for the invocation of the user-defined function.
 
-1. Haal de vergelijkings op voor de sensor waarvan de Lees bewerking is gegenereerd.
-1. Afhankelijk van wat overeenkomende treffers zijn geëvalueerd, haalt u de gekoppelde door de gebruiker gedefinieerde functies op.
-1. Elke door de gebruiker gedefinieerde functie uitvoeren.
+1. Retrieve the matchers for the sensor the reading was generated from.
+1. Depending on what matchers were evaluated successfully, retrieve the associated user-defined functions.
+1. Execute each user-defined function.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het [maken van Azure Digital apparaatdubbels-eind punten](./how-to-egress-endpoints.md) voor het verzenden van gebeurtenissen naar.
+- Learn how to [create Azure Digital Twins endpoints](./how-to-egress-endpoints.md) to send events to.
 
-- Lees [routerings gebeurtenissen en berichten](./concepts-events-routing.md)voor meer informatie over route ring in azure Digital apparaatdubbels.
+- For more details about routing in Azure Digital Twins, read [Routing events and messages](./concepts-events-routing.md).
 
-- Raadpleeg de [documentatie van de client bibliotheek referentie](./reference-user-defined-functions-client-library.md).
+- Review the [client library reference documentation](./reference-user-defined-functions-client-library.md).

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST-API en Java'
+title: 'Quickstart: Get image insights using the REST API and Java - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2fe4e9dad0b198fe54e06ce07100d231f1f7d157
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: eecca2372c7265d456276a966cc441b15c17272a
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60512419"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383610"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST-API en Java
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-java"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Java
 
-Met deze Quick Start kunt u uw eerste aanroep naar de Bing visuele zoekopdrachten-API en de resultaten te bekijken. Deze Java-toepassing wordt een installatiekopie geüpload naar de API en de informatie die wordt weergegeven. Hoewel deze toepassing is geschreven in Java, de API is een RESTful-Web-compatibel is met de meeste moderne programmeertalen.
+Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Java application uploads an image to the API and displays the information it returns. Though this application is written in Java, the API is a RESTful Web service compatible with most programming languages.
 
-Wanneer u een lokale installatiekopie uploadt, de gegevens moet bevatten de `Content-Disposition` header. U moet instellen de `name` parameter 'afbeelding', en u kunt instellen de `filename` parameter een tekenreeks. De inhoud van het formulier omvat de binaire gegevens van de installatiekopie. De grootte van de maximale installatiekopie die u kunt uploaden is 1 MB.
+When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -34,15 +34,15 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="prerequisites"></a>Vereisten
 
-* De [Java Development Kit (JDK) 7 of 8](https://aka.ms/azure-jdks)
-* De [Gson Java-bibliotheek](https://github.com/google/gson)
+* The [Java Development Kit (JDK) 7 or 8](https://aka.ms/azure-jdks)
+* The [Gson Java library](https://github.com/google/gson)
 * [Apache HttpComponents](https://hc.apache.org/downloads.cgi)
 
 [!INCLUDE [cognitive-services-bing-visual-search-signup-requirements](../../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak een nieuwe Java-project in uw favoriete IDE of editor en importeer de volgende bibliotheken:
+1. Create a new Java project in your favorite IDE or editor, and import the following libraries:
 
     ```java
     import java.util.*;
@@ -63,7 +63,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     import org.apache.http.impl.client.HttpClientBuilder;
     ```
 
-2. Variabelen voor uw API-eindpunt, de abonnementssleutel en het pad naar uw installatiekopie maken:
+2. Create variables for your API endpoint, subscription key, and the path to your image:
 
     ```java
     static String endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/images/visualsearch";
@@ -73,7 +73,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="create-the-json-parser"></a>De JSON-parser maken
 
-Een methode voor het maken van de JSON-antwoord van de API meer maken met behulp van leesbare `JsonParser`:
+Create a method to make the JSON response from the API more readable using `JsonParser`:
 
     ```java
     public static String prettify(String json_text) {
@@ -86,13 +86,13 @@ Een methode voor het maken van de JSON-antwoord van de API meer maken met behulp
 
 ## <a name="construct-the-search-request-and-query"></a>De zoekopdracht en query compileren
 
-1. In de belangrijkste methode van uw toepassing, maakt u een HTTP-client met behulp van `HttpClientBuilder.create().build();`:
+1. In the main method of your application, create an HTTP client using `HttpClientBuilder.create().build();`:
 
     ```java
     CloseableHttpClient httpClient = HttpClientBuilder.create().build();
     ```
 
-2. Maak een `HttpEntity` uw installatiekopie uploaden naar de API-object:
+2. Create an `HttpEntity` object to upload your image to the API:
 
     ```java
     HttpEntity entity = MultipartEntityBuilder
@@ -101,7 +101,7 @@ Een methode voor het maken van de JSON-antwoord van de API meer maken met behulp
         .build();
     ```
 
-3. Maak een `httpPost` object met het eindpunt toe en stel de koptekst van uw abonnementssleutel te gebruiken:
+3. Create an `httpPost` object with your endpoint, and set the header to use your subscription key:
 
     ```java
     HttpPost httpPost = new HttpPost(endpoint);
@@ -111,14 +111,14 @@ Een methode voor het maken van de JSON-antwoord van de API meer maken met behulp
 
 ## <a name="receive-and-process-the-json-response"></a>Het JSON-antwoord ontvangen en verwerken
 
-1. Gebruik de `HttpClient.execute()` methode voor het verzenden van een aanvraag naar de API en opslaan van het antwoord in een `InputStream` object:
+1. Use the `HttpClient.execute()` method to send a request to the API, and store the response in an `InputStream` object:
     
     ```java
     HttpResponse response = httpClient.execute(httpPost);
     InputStream stream = response.getEntity().getContent();
     ```
 
-2. De JSON-tekenreeks Store en het antwoord afdrukken:
+2. Store the JSON string, and print the response:
 
 ```java
 String json = new Scanner(stream).useDelimiter("\\A").next();
@@ -129,4 +129,4 @@ System.out.println(prettify(json));
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een visuele zoekopdrachten één pagina web-app bouwen](../tutorial-bing-visual-search-single-page-app.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

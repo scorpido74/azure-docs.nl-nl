@@ -1,5 +1,5 @@
 ---
-title: "Quickstart: Video's zoeken met de Bing Video's zoeken-REST-API en Python"
+title: 'Quickstart: Search for videos using the REST API and Python - Bing Video Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om zoekaanvragen voor video's naar de Bing Video's zoeken-REST-API te verzenden via Python.
 services: cognitive-services
@@ -10,14 +10,14 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 06/26/2019
 ms.author: aahi
-ms.openlocfilehash: 36d4035913b8e9b7c3e4a12fa208608ffa55151e
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: 270117430b997921e0df486b1760db317bcb1611
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68500674"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383777"
 ---
-# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Quickstart: Video's zoeken met de Bing Video's zoeken-REST-API en Python
+# <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-python"></a>Quickstart: Search for videos using the Bing Video Search REST API and Python
 
 Gebruik deze quickstart om voor het eerst de Bing Video's zoeken-API aan te roepen en een zoekresultaat van het JSON-antwoord te bekijken. Deze eenvoudige Python-toepassing stuurt een HTTP-videozoekquery naar de API en geeft het antwoord weer. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor dit voorbeeld is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingVideoSearchv7.py) met extra foutafhandeling en codeaantekeningen.
 

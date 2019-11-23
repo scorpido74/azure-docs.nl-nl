@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Nieuws zoeken in met de Bing nieuws zoeken-SDK voor Node.js'
+title: 'Quickstart: Perform a news search using the SDK for Node.js - Bing News Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om nieuws te zoeken met de Bing News Search-SDK voor Node.js en om het antwoord te verwerken.
 services: cognitive-services
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 06/18/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: c71d76e93eb1a121163d40fe61dcd5a8546d63f8
-ms.sourcegitcommit: b7a44709a0f82974578126f25abee27399f0887f
+ms.openlocfilehash: 9bbad7685cf7d562189871bb5fa4a56d69287db4
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67203345"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383886"
 ---
-# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Snelstartgids: Nieuws zoeken met de Bing News Search-SDK voor Node.js
+# <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Quickstart: Perform a news search with the Bing News Search SDK for Node.js
 
-Gebruik deze quickstart om aan de slag te gaan met de Bing Nieuws zoeken-SDK voor Node.js om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
+Gebruik deze quickstart om aan de slag te gaan met de Bing Nieuws zoeken-SDK voor Node.js om nieuws te zoeken. Hoewel Bing Nieuws zoeken een REST API heeft die compatibel is met de meeste programmeertalen, biedt de SDK een eenvoudige manier om de service in uw toepassingen te integreren. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/newsSearch.js).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -35,7 +35,7 @@ Stel een consoletoepassing in met de Bing News Search SDK:
 
 ## <a name="create-and-initialize-the-application"></a>De toepassing maken en initialiseren
 
-1. Maak een instantie van de `CognitiveServicesCredentials`. Variabelen voor de abonnementssleutel van uw en een zoekterm maken.
+1. Maak een instantie van de `CognitiveServicesCredentials`. Create variables for your subscription key, and a search term.
 
     ```javascript
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;

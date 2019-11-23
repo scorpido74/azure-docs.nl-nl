@@ -1,71 +1,65 @@
 ---
-title: Een lid van de Azure Block Chain-service maken-Azure Portal
-description: Maak een lid van de Azure Block Chain-Service voor een Block Chain consortium met behulp van de Azure Portal.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Create an Azure Blockchain Service member - Azure portal
+description: Create an Azure Blockchain Service member for a blockchain consortium using the Azure portal.
 ms.date: 11/18/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 9b08bf030d66c058ef1ec7c57f1fb2517046c522
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 9cdc38993aec79552dca0bb51ca2d75462c5306b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285103"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325271"
 ---
-# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Snelstartgids: een Block Chain-lid van de Azure Block Chain-service maken met behulp van de Azure Portal
+# <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-the-azure-portal"></a>Quickstart: Create an Azure Blockchain Service blockchain member using the Azure portal
 
-In deze Quick Start implementeert u een nieuw Block Chain-lid en consortium in azure Block Chain service met behulp van de Azure Portal.
+In this quickstart, you deploy a new blockchain member and consortium in Azure Blockchain Service using the Azure portal.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-blockchain-member"></a>Een blockchain-lid maken
 
-Maak een Block Chain-lid dat het quorum grootboek protocol in een nieuw of bestaand consortium uitvoert.
+Create a blockchain member that runs the Quorum ledger protocol in a new or existing consortium.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 1. Selecteer in de linkerbovenhoek van Azure Portal **Een resource maken**.
-1. Selecteer **block chain** > **Azure Block Chain Service (preview)** .
+1. Select **Blockchain** > **Azure Blockchain Service (preview)** .
 
-    ![Service maken](./media/create-member/create-member.png)
+    ![Create Service](./media/create-member/create-member.png)
 
     Instelling | Beschrijving
     --------|------------
-    Abonnement | Selecteer het Azure-abonnement dat u wilt gebruiken voor uw service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
-    Resourcegroep | Maak een nieuwe resource groep of kies een bestaande naam uit uw abonnement.
-    Regio | Kies een regio om het lid te maken. Alle leden van het consortium moeten zich op dezelfde locatie bestaan.
-    Protocol | Azure Block Chain Service preview ondersteunt momenteel het quorum protocol.
-    Consortium | Voer een unieke naam in voor een nieuw consortium. Als u een consortium wilt toevoegen via een uitnodiging, kiest u het consortium dat u wilt toevoegen.
-    Naam | Kies een unieke naam voor het lid van de Azure Block Chain-service. De naam van het block Chain-lid mag alleen kleine letters en cijfers bevatten. Het eerste teken moet een letter zijn. De waarde moet tussen 2 en 20 tekens lang zijn.
-    Wacht woord voor leden account | Het wacht woord van het lid-account wordt gebruikt voor het versleutelen van de persoonlijke sleutel voor het Ethereum-account dat voor uw lid wordt gemaakt. U gebruikt het wacht woord voor het account en het lid van het account voor het beheer van consortiums.
-    Beschrijving | Beschrijving van het consortium.
-    Prijzen | De knooppunt configuratie en de kosten voor uw nieuwe service. Selecteer de koppeling **wijzigen** om te kiezen tussen de **Standard** -en **Basic** -laag.
-    Knooppunt wachtwoord | Het wacht woord voor het standaard transactie knooppunt van het lid. Gebruik het wacht woord voor basis verificatie bij het maken van verbinding met het open bare eind punt van het standaard transactie knooppunt van het block Chain-lid.
+    Abonnement | Select the Azure subscription that you want to use for your service. Als u meerdere abonnementen hebt, kiest u het abonnement waarin u wordt gefactureerd voor de resource.
+    Resourcegroep | Create a new resource group name or choose an existing one from your subscription.
+    Regio | Choose a region to create the member. All members of the consortium must be in the same location.
+    Protocol | Currently, Azure Blockchain Service Preview supports the Quorum protocol.
+    Consortium | For a new consortium, enter a unique name. If joining a consortium through an invite, choose the consortium you are joining.
+    Naam | Choose a unique name for the Azure Blockchain Service member. The blockchain member name can only contain lowercase letters and numbers. Het eerste teken moet een letter zijn. The value must be between 2 and 20 characters long.
+    Member account password | The member account password is used to encrypt the private key for the Ethereum account that is created for your member. You use the member account and member account password for consortium management.
+    Beschrijving | Description of the consortium.
+    Prijzen | The node configuration and cost for your new service. Select the **Change** link to choose between **Standard** and **Basic** tiers.
+    Node password | The password for the member's default transaction node. Use the password for basic authentication when connecting to blockchain member's default transaction node public endpoint.
 
-1. Selecteer **controleren + maken** om uw instellingen te valideren. Selecteer **maken** om de service in te richten. Het inrichten duurt ongeveer 10 minuten.
-1. Selecteer **meldingen** op de werk balk om het implementatie proces te bewaken.
-1. Ga na de implementatie naar het block Chain-lid.
+1. Select **Review + create** to validate your settings. Select **Create** to provision the service. Provisioning takes about 10 minutes.
+1. Select **Notifications** on the toolbar to monitor the deployment process.
+1. After deployment, navigate to your blockchain member.
 
-Selecteer **overzicht**, u kunt de basis informatie over uw service bekijken, met inbegrip van het RootContract-adres en het account van de gebruiker.
+Select **Overview**, you can view the basic information about your service including the RootContract address and member account.
 
-![Overzicht van Block Chain-leden](./media/create-member/overview.png)
+![Blockchain member overview](./media/create-member/overview.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-U kunt het lid gebruiken dat u hebt gemaakt voor de volgende Snelstartgids of zelf studie. Wanneer u deze niet meer nodig hebt, kunt u de resources verwijderen door de `myResourceGroup` resource groep te verwijderen die u hebt gemaakt voor de Snelstartgids.
+You can use the member you created for the next quickstart or tutorial. When no longer needed, you can delete the resources by deleting the `myResourceGroup` resource group you created for the quickstart.
 
-De resource groep verwijderen:
+To delete the resource group:
 
-1. In de Azure-portal, gaat u naar **resourcegroep** in het navigatiedeelvenster links en selecteert u de resourcegroep die u wilt verwijderen.
-2. Selecteer **Resourcegroep verwijderen**. Bevestig de verwijdering door de naam van de resourcegroep in te voeren en selecteer **verwijderen**.
+1. In the Azure portal, navigate to **Resource group** in the left navigation pane and select the resource group you want to delete.
+2. Selecteer **Resourcegroep verwijderen**. Verify deletion by entering the resource group name and select **Delete**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een lid van de Azure Block Chain-service en een nieuw consortium geïmplementeerd. Probeer de volgende Snelstartgids om Azure Block Chain Development Kit te gebruiken voor Ethereum om te koppelen aan een consortium op Azure Block Chain-service.
+In this quickstart, you deployed an Azure Blockchain Service member and a new consortium. Try the next quickstart to use  Azure Blockchain Development Kit for Ethereum to attach to a consortium on Azure Blockchain Service.
 
 > [!div class="nextstepaction"]
-> [Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md)
+> [Use Visual Studio Code to connect to an Azure Blockchain Service consortium network](connect-vscode.md)

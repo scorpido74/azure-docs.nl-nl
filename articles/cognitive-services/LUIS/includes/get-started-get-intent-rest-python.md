@@ -1,34 +1,35 @@
 ---
-title: Doel intentie met REST-aanroep in python
+title: Get intent with REST call in Python
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/18/2019
+ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: b2c840b9de25ff6997037c284c60390e7afa03ec
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 37249cc560d4493c34dd4be6139de03f9c152a08
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74125465"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74414584"
 ---
 ## <a name="prerequisites"></a>Vereisten
 
 * [Python 3.6](https://www.python.org/downloads/) of later.
 * [Visual Studio Code](https://code.visualstudio.com/)
+* Public app ID: `df67dcdb-c37d-46af-88e1-8b97951ca1c2`
 
 ## <a name="get-luis-key"></a>LUIS-sleutel ophalen
 
 [!INCLUDE [Use authoring key for endpoint](../includes/get-key-quickstart.md)]
 
-## <a name="get-intent--programmatically"></a>De intentie programmatisch ophalen
+## <a name="get-intent-from-the-prediction-endpoint"></a>Get intent from the prediction endpoint
 
-Gebruik python voor het uitvoeren van een query op de [API](https://aka.ms/luis-apim-v3-prediction) prediction-eind punt Get om het Voorspellings resultaat te verkrijgen.
+Use Python to query the [prediction endpoint](https://aka.ms/luis-apim-v3-prediction) and get a prediction result.
 
-1. Kopieer een van de volgende codefragmenten naar een bestand met de naam `predict.py`:
+1. Copy this code snippet into a file called `predict.py`:
 
     ```python
     ########### Python 3.6 #############
@@ -61,30 +62,30 @@ Gebruik python voor het uitvoeren van een query op de [API](https://aka.ms/luis-
         print(f'{e}')
     ```
 
-1. Vervang de volgende waarden:
+1. Replace the following values:
 
-    * `YOUR-KEY` met uw start sleutel
-    * `YOUR-ENDPOINT` met uw eind punt, bijvoorbeeld `westus2.api.cognitive.microsoft.com`
+    * `YOUR-KEY` with your starter key.
+    * `YOUR-ENDPOINT` with your endpoint. Bijvoorbeeld `westus2.api.cognitive.microsoft.com`.
 
-1. Afhankelijkheden installeren met de volgende console opdracht:
+1. Install the `requests` dependency. This is used to make HTTP requests:
 
     ```console
     pip install requests
     ```
 
-1. Voer het script uit met de volgende console opdracht:
+1. Run your script with this console command:
 
     ```console
     python predict.py
     ``` 
 
-1. Voorspellings antwoord in JSON-indeling controleren:
+1. Review the prediction response, which is returned as JSON:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    Het JSON-antwoord dat is opgemaakt voor de Lees baarheid: 
+    Here's the JSON response formatted for readability: 
 
     ```JSON
     {
@@ -133,9 +134,9 @@ Gebruik python voor het uitvoeren van een query op de [API](https://aka.ms/luis-
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent met deze Quick Start, verwijdert u het bestand uit het bestands systeem. 
+When you are finished with this quickstart, delete the file from the file system. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Uitingen en Train toevoegen](../get-started-get-model-rest-apis.md)
+> [Add utterances and train](../get-started-get-model-rest-apis.md)

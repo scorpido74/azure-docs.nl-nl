@@ -1,5 +1,5 @@
 ---
-title: 'Zelfstudie: Afbeeldingsdetails extraheren met de Bing Afbeeldingen zoeken-API en C#'
+title: 'Tutorial: Extract image details with the REST API and C# - Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik dit artikel om een C#-toepassing te maken die afbeeldingsdetails extraheert met behulp van de Bing Afbeeldingen zoeken-API.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: tutorial
 ms.date: 05/15/2019
 ms.author: aahi
-ms.openlocfilehash: 995ccc8ffeb436526608803362cc361c74a75316
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: e9ba5925ce562e53dbc415d66bbb529c32a725a7
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65790038"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327013"
 ---
 # <a name="tutorial-extract-image-details-using-the-bing-image-search-api-and-c"></a>Zelfstudie: Afbeeldingsdetails extraheren met de Bing Afbeeldingen zoeken-API en C#
 
@@ -36,7 +36,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een versie van [Visual studio 2017 of later](https://visualstudio.microsoft.com/downloads/).
+* Any edition of [Visual studio 2017 or later](https://visualstudio.microsoft.com/downloads/).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

@@ -1,7 +1,7 @@
 ---
-title: Entiteiten toevoegen-LUIS
+title: Add entities - LUIS
 titleSuffix: Azure Cognitive Services
-description: Maak entiteiten voor het extra heren van belang rijke gegevens van gebruikers uitingen in apps van Language Understanding (LUIS). Geëxtraheerde entiteits gegevens worden door de client toepassing gebruikt voor fullfile-aanvragen van klanten.
+description: Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by the client application to fullfil customer requests.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -11,182 +11,186 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: diberry
-ms.openlocfilehash: 7de1a1e24c2863b90fe5f1f3ff19124318912cff
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 1f2b293acdc77e25e6b932c47d466cc28a04a2b6
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132685"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383687"
 ---
-# <a name="add-entities-to-extract-data"></a>Entiteiten toevoegen om gegevens op te halen 
+# <a name="add-entities-to-extract-data"></a>Add entities to extract data 
 
-Maak entiteiten voor het extra heren van belang rijke gegevens van gebruikers uitingen in apps van Language Understanding (LUIS). Geëxtraheerde entiteits gegevens worden door uw client toepassing gebruikt voor fullfile-aanvragen van klanten.
+Create entities to extract key data from user utterances in Language Understanding (LUIS) apps. Extracted entity data is used by your client application to fullfil customer requests.
 
-De entiteit vertegenwoordigt een woord of zinsdeel in de utterance die u wilt dat opgehaald. Entiteiten informatie die relevant zijn voor de bedoeling beschrijven en soms ze zijn essentieel voor uw app de taak uit te voeren. U kunt entiteiten maken wanneer u een voor beeld-utterance toevoegt aan een intentie of van (vóór of na) het toevoegen van een voor beeld-utterance aan een intentie.
+The entity represents a word or phrase inside the utterance that you want extracted. Entities describe information relevant to the intent, and sometimes they are essential for your app to perform its task. You can create entities when you add an example utterance to an intent or apart from (before or after) adding an example utterance to an intent.
 
 [!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
-## <a name="plan-entities-then-create-and-label"></a>Entiteiten plannen, vervolgens maken en labelen
+## <a name="plan-entities-then-create-and-label"></a>Plan entities, then create and label
 
-Door machines geleerde entiteiten kunnen worden gemaakt op basis van het voor beeld uitingen of gemaakt op basis van de pagina **entiteiten** . 
+Machine-learned entities can be created from the example utterances or created from the **Entities** page. 
 
-Over het algemeen is een best practice tijd om de entiteiten te plannen voordat een door de machine geleerde entiteit in de portal wordt gemaakt. Maak vervolgens de door de machine geleerde entiteit uit het voor beeld-utterance met zo veel details in de subonderdelen en descriptors en beperkingen die u op dat moment kent. Met de [zelf studie voor het samen stellen](tutorial-machine-learned-entity.md) van de entiteit wordt gedemonstreerd hoe u deze methode gebruikt. 
+In general, a best practice is to spend time planning the entities before creating a machine-learned entity in the portal. Then create the machine-learned entity from the example utterance with as much detail in the subcomponents and descriptors and constraints as you know at the time. The [decomposable entity tutorial](tutorial-machine-learned-entity.md) demonstrates how to use this method. 
 
-Als onderdeel van het plannen van de entiteiten weet u misschien dat u tekst-overeenkomende entiteiten (zoals vooraf gemaakte entiteiten, reguliere expressie-entiteiten of lijst entiteiten) nodig hebt. U kunt deze maken op de pagina **entiteiten** voordat ze worden gelabeld in voor beeld uitingen. 
+As part of planning the entities, you may know you need text-matching entities (such as prebuilt entities, regular expression entities, or list entities). You can create these from the **Entities** page before they are labeled in example utterances. 
 
-Wanneer u labels aanmaakt, kunt u afzonderlijke entiteiten labelen en vervolgens een entiteit maken die door een bovenliggende machine is geleerd. U kunt ook beginnen met een entiteit die door een bovenliggende machine is geleerd en de onderliggende entiteiten afbreken. 
+When labeling, you can either label individual entities then build up to a parent machine-learned entity. Or you can start with a parent machine-learned entity and decompose into child entities. 
 
 > [!TIP] 
->Voorzie alle woorden die een entiteit kunnen aanduiden, zelfs als de woorden niet worden gebruikt als ze worden geëxtraheerd in de client toepassing. 
+>Label all words that may indicate an entity, even if the words are not used when extracted in the client application. 
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Een entiteit maken voor of met een label
+## <a name="creating-an-entity-before-or-with-labeling"></a>Creating an entity before or with labeling
 
-Gebruik de volgende tabel om te begrijpen welke entiteiten voor het maken of toevoegen van elke entiteit aan de app. 
+Use the following table to understand which entities where to create or add each entity to the app. 
 
-|Entiteits type|Locatie voor het maken van een entiteit in de LUIS-Portal|
+|Entity type|Where to create entity in the LUIS portal|
 |--|--|
-|Entiteit op basis van machine learning|Details van entiteiten of intentie|
-|Lijstentiteit|Details van entiteiten of intentie|
+|Entiteit op basis van machine learning|Entities or Intent detail|
+|Lijstentiteit|Entities or Intent detail|
 |Een entiteit in de vorm van een reguliere expressie|Entiteiten|
 |Pattern.any-entiteit|Entiteiten|
-|Vooraf gemaakte entiteiten|Entiteiten|
-|Vooraf ontwikkelde domein entiteit|Entiteiten|
+|Prebuilt entity|Entiteiten|
+|Prebuilt domain entity|Entiteiten|
 
-U kunt alle entiteiten maken op de pagina **entiteiten** , maar u kunt ook een aantal entiteiten maken als onderdeel van het labelen van de entiteit in het voor beeld utterance op de detail pagina van het **doel** . U kunt een entiteit alleen _labelen_ in een voor beeld-utterance van de detail pagina van het **doel** . 
+You can create all the entities from the **Entities** page, or you can create a couple of the entities as part of labeling the entity in the example utterance on the **Intent detail** page. You can only _label_ an entity in an example utterance from the **Intent detail** page. 
 
-## <a name="create-a-machine-learned-entity"></a>Een door een machine geleerde entiteit maken
+## <a name="create-a-machine-learned-entity"></a>Create a machine-learned entity
 
 [!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Een tekst-overeenkomende entiteit maken
+## <a name="create-a-text-matching-entity"></a>Create a text-matching entity
 
-Het gebruik van tekst-overeenkomende entiteiten biedt verschillende manieren om gegevens te extra heren:
+Use text-matching entities provide several ways to extract data:
 
-|Tekst-overeenkomende entiteiten|Doel|
+|Text-matching entities|Doel|
 |--|--|
-|[Entiteit weer geven](#add-list-entities-for-exact-matches)|lijst met canonieke namen en synoniemen als alternatieve formulieren|
-|Een entiteit in de vorm van een reguliere expressie|tekst overeenkomen met een reguliere expressie-entiteit|
-|[Vooraf gebouwde entiteit](tutorial-machine-learned-entity.md#add-prebuilt-number-to-app-to-help-extract-data)|overeenkomende gegevens typen zoals nummer, e-mail adres, datum|
-|Vooraf ontwikkelde domein entiteit|overeenkomst met geselecteerde onderwerps domeinen|
-|[Pattern.any](#add-a-patternany-entity)| entiteiten afstemmen die gemakkelijk kunnen worden verward met de omringende tekst|  
+|[List entity](#add-list-entities-for-exact-matches)|list of canonical names along with synonyms as alternative forms|
+|Een entiteit in de vorm van een reguliere expressie|match text using a regular expression entity|
+|[Prebuilt entity](tutorial-machine-learned-entity.md#add-prebuilt-number-to-help-extract-data)|match common data types such as number, email, date|
+|Prebuilt domain entity|match using selected subject domains|
+|[Pattern.any](#add-a-patternany-entity)| to match entities that may be easily confused with the surrounding text|  
 
-Preconstrueerde entiteiten werken zonder aangepaste trainings gegevens. De andere entiteiten moeten gegevens over de training van de klant (zoals items van de lijst entiteit) of een expressie (zoals een reguliere expressie of patroon) opgeven.
+Prebuilt entities work without providing any custom training data. The other entities need you to provide either customer training data (such as List entity's items) or an expression (such as a regular expression or pattern.any).
 
 <a name="add-list-entities"></a>
 
-### <a name="how-to-create-a-new-custom-entity"></a>Een nieuwe aangepaste entiteit maken
+### <a name="how-to-create-a-new-custom-entity"></a>How to create a new custom entity
 
-1. Ga in de LUIS-Portal naar de sectie **Manage** en vervolgens op de pagina **entities** . 
-1. Selecteer **+ maken**en selecteer vervolgens het entiteits type. 
-1. Ga verder met het configureren van de entiteit en selecteer **maken** wanneer u klaar bent. 
+1. In the LUIS portal, goto the **Manage** section, then the **Entities** page. 
+1. Select **+ Create**, then select the entity type. 
+1. Continue configuring the entity then select **Create** when you are done. 
 
-### <a name="add-list-entities-for-exact-matches"></a>Lijst entiteiten toevoegen voor exacte overeenkomsten
+### <a name="add-list-entities-for-exact-matches"></a>Add list entities for exact matches
 
-Lijst met entiteiten vertegenwoordigen een vaste en gesloten set verwante woorden. Als de auteur de lijst kan wijzigen, kan LUIS de lijst niet verg Roten of verkleinen. U kunt ook importeren naar een bestaande entiteit van een lijst met behulp van een [lijst entiteit. json-indeling (Reference-Entity-List. MD # voor beeld-JSON-to-import-into-List-entity-entiteit). 
+List entities represent a fixed, closed set of related words. While you, as the author, can change the list, LUIS won't grow or shrink the list. You can also import to an existing list entity using a [list entity .json format(reference-entity-list.md#example-json-to-import-into-list-entity). 
 
-In de volgende lijst ziet u de canonieke naam en de synoniemen. 
+The following list demonstrates the canonical name and the synonyms. 
 
-|Kleur-lijst item naam|Kleur-synoniemen|
+|Color - list item name|Color - synonyms|
 |--|--|
-|Rood|Crimson, bloed, Apple, brand engine|
-|Blauw|lucht, azure, kobalt|
-|Groen|Kelly, licht groen|
+|Rood|crimson, blood, apple, fire-engine|
+|Blauw|sky, azure, cobalt|
+|Groen|kelly, lime|
 
-Gebruik de procedure om een lijst entiteit te maken. Zodra de lijst entiteit is gemaakt, hoeft u geen label voor beeld-uitingen in te richten. Lijst items en synoniemen worden vergeleken met de exacte tekst. 
+Use the procedure to create a list entity. Once the list entity is created, you don't need to label example utterances in an intent. List items and synonyms are matched using exact text. 
 
-1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. Voer in het dialoog venster **een entiteits type maken** de naam van de entiteit in, bijvoorbeeld `Colors` en selecteer **lijst**.
-1. Voer in het dialoog venster **een lijst entiteit maken** in de lijst **nieuwe sublijst toevoegen....** de naam van het item in, bijvoorbeeld `Green`, en voeg synoniemen toe.
+1. In the **Create an entity type** dialog box, enter the name of the entity, such as `Colors` and select **List**.
+1. In the **Create a list entity** dialog box, in the **Add new sublist....** , enter the list item name, such as `Green`, then add synonyms.
 
     > [!div class="mx-imgBorder"]
-    > ![een lijst met kleuren als een lijst entiteit te maken op de pagina Details van entiteit.](media/how-to-add-entities/create-list-entity-of-colors.png) 
+    > ![Create a list of colors as a list entity in the Entity detail page.](media/how-to-add-entities/create-list-entity-of-colors.png) 
 
-1. Wanneer u klaar bent met het toevoegen van lijst items en synoniemen, selecteert u **maken**.
+1. When you are finished adding list items and synonyms, select **Create**.
 
-    Wanneer u klaar bent met een groep wijzigingen in de app, vergeet dan niet om de app te **trainen** . Train de app niet na één wijziging. 
+    When you are done with a group of changes to the app, remember to **Train** the app. Do not train the app after a single change. 
 
     > [!NOTE]
-    > Deze procedure illustreert het maken en labelen van een lijst entiteit van een voorbeeld utterance op de detail pagina van het **doel** . U kunt ook dezelfde entiteit maken op de pagina **entiteiten** .
+    > This procedure demonstrates creating and labeling a list entity from an example utterance in the **Intent detail** page. You can also create the same entity from the **Entities** page.
 
-## <a name="add-a-role-for-an-entity"></a>Een rol voor een entiteit toevoegen
+## <a name="add-a-role-for-an-entity"></a>Add a role for an entity
 
-Een rol is een benoemd subtype van een entiteit, op basis van de context. 
+A role is a named subtype of an entity, based on context. 
 
-### <a name="add-a-role-to-distinguish-different-contexts"></a>Een rol toevoegen om verschillende contexten te onderscheiden
+### <a name="add-a-role-to-distinguish-different-contexts"></a>Add a role to distinguish different contexts
 
-In de volgende utterance zijn er twee locaties en elke naam wordt semantisch opgegeven door de woorden eromheen, zoals `to` en `from`: 
+In the following utterance, there are two locations, and each is specified semantically by the words around it such as `to` and `from`: 
 
 `Pick up the package from Seattle and deliver to New York City.`
 
-In deze procedure voegt u `origin` en `destination` rollen toe aan een vooraf gemaakte geographyV2-entiteit.
+In this procedure, add `origin` and `destination` roles to a prebuilt geographyV2 entity.
 
-1. Uit de **bouwen** sectie, selecteer **entiteiten** in het linkerpaneel.
+1. From the **Build** section, select **Entities** in the left panel.
 
-1. Selecteer **+ vooraf samengestelde entiteit toevoegen**. Selecteer **geographyV2** en selecteer vervolgens **gereed**. Hiermee voegt u een vooraf samengestelde entiteit toe aan de app.
+1. Select **+ Add prebuilt entity**. Select **geographyV2** then select **Done**. This adds a prebuilt entity to the app.
     
     Als u merkt dat het patroon, wanneer dit een Pattern.any bevat, entiteiten onjuist extraheert, gebruikt u een [expliciete lijst](reference-pattern-syntax.md#explicit-lists) om dit probleem te verhelpen. 
 
-1. Selecteer de zojuist toegevoegde, vooraf gemaakte geographyV2-entiteit uit de pagina lijst **entiteiten** van entiteiten. 
-1. Als u een nieuwe rol wilt toevoegen, selecteert u **+** naast **geen rollen toegevoegd**.
-1. Voer in het tekstvak **type Role...** de naam van de rol in `Origin` vervolgens op ENTER. Voeg een tweede Rolnaam van `Destination` in en voer vervolgens ENTER. 
+1. Select the newly added prebuilt geographyV2 entity from the **Entities** page list of entities. 
+1. To add a new role, select **+** next to **No roles added**.
+1. In the **Type role...** textbox, enter the name of the role `Origin` then enter. Add a second role name of `Destination` then enter. 
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van de functie origin toevoegen aan de locatie-entiteit](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
+    > ![Screenshot of adding Origin role to Location entity](media/how-to-add-entities//add-role-to-prebuilt-geographyv2-entity.png)
 
-    De rol wordt toegevoegd aan de vooraf samengestelde entiteit, maar wordt niet aan uitingen toegevoegd met behulp van die entiteit. 
+    The role is added to the prebuilt entity but isn't added to any utterances using that entity. 
 
-### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label tekst met een rol in een voor beeld van een utterance
+### <a name="label-text-with-a-role-in-an-example-utterance"></a>Label text with a role in an example utterance
 
-1. Ga naar de pagina Details van intentie, met bijvoorbeeld uitingen die gebruikmaken van de rol. 
-1. Als u wilt labelen met de rol, selecteert u het label entiteit (effen lijn onder tekst) in het voor beeld utterance en selecteert u vervolgens **weer gave in entiteits palet** in de vervolg keuzelijst. 
-
-    > [!div class="mx-imgBorder"]
-    > ![scherm opname van het selecteren van weer gave in het entiteits palet](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
-
-    Het palet entiteit wordt geopend aan de rechter kant. 
-
-1. Selecteer de entiteit, ga naar de onderkant van het palet en selecteer de rol. 
+1. Go to the Intent details page, which has example utterances that use the role. 
+1. To label with the role, select the entity label (solid line under text) in the example utterance, then select **View in entity palette** from the drop-down list. 
 
     > [!div class="mx-imgBorder"]
-    > ![scherm opname van het selecteren van weer gave in het entiteits palet](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)   
+
+    The entity palette opens to the right. 
+
+1. Select the entity, then go to the bottom of the palette and select the role. 
+
+    > [!div class="mx-imgBorder"]
+    > ![Screenshot of selecting View in entity Palette](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
 
 <a name="add-pattern-any-entities"></a>
 
-## <a name="add-a-patternany-entity"></a>Een patroon toevoegen. elke entiteit
+## <a name="add-a-patternany-entity"></a>Add a pattern.any entity
 
-[Patroon. alle](luis-concept-entity-types.md) entiteiten zijn alleen geldig in [patronen](luis-how-to-model-intent-pattern.md), niet in de uitingen van voor beelden. Dit type entiteit kunt LUIS vinden het einde van de entiteiten met verschillende lengte en word keuze. Omdat deze entiteit wordt gebruikt in een patroon, LUIS u weet waar het einde van de entiteit zich bevindt in de sjabloon utterance.
+[Pattern.any](luis-concept-entity-types.md) entities are only valid in [patterns](luis-how-to-model-intent-pattern.md), not intents' example utterances. This type of entity helps LUIS find the end of entities of varying length and word choice. Because this entity is used in a pattern, LUIS knows where the end of the entity is in the utterance template.
 
-### <a name="steps-to-create-a-patternany-entity"></a>Stappen voor het maken van een patroon. elke entiteit
+### <a name="steps-to-create-a-patternany-entity"></a>Steps to create a pattern.any entity
 
-1. Selecteer in de sectie **Build** de optie **entiteiten** in het linkerdeel venster en selecteer **+ maken**.
+1. From the **Build** section, select **Entities** in the left panel, and then select **+ Create**.
 
-1. Voer in het dialoog venster **een entiteits type kiezen** de naam van de entiteit in het vak **naam** in en selecteer vervolgens **patroon. elk** **type** en selecteer vervolgens **maken**.
+1. In the **Choose an entity type** dialog box, enter the entity name in the **Name** box, and select **Pattern.Any** as the **Type** then select **Create**.
 
-    Wanneer u [een patroon utterance maakt](luis-how-to-model-intent-pattern.md) met behulp van deze entiteit, wordt de entiteit geëxtraheerd met een gecombineerd door de machine geleerd en tekst-overeenkomend algoritme. 
+    Once you [create a pattern utterance](luis-how-to-model-intent-pattern.md) using this entity, the entity is extracted with a combined machine-learned and text-matching algorithm. 
 
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Maak een patroon sjabloon utterance om gebruik te maken van een patroon. elke entiteit
+### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Create a pattern template utterance to use pattern.any entity
 
-Een patroon voor het gebruik van de entiteit pattern.any toevoegt op het **patronen** pagina, in de **verbeterde app-prestaties** sectie, met de syntaxis van de juiste accolade toe, zoals `Where is **{HumanResourcesFormTitle}** on the server?`.
+To use the pattern.any entity, add a pattern on the **Patterns** page, in the **Improve app performance** section, with the correct curly brace syntax, such as `Where is **{HumanResourcesFormTitle}** on the server?`.
 
 Als u merkt dat het patroon, wanneer dit een Pattern.any bevat, entiteiten onjuist extraheert, gebruikt u een [expliciete lijst](reference-pattern-syntax.md#explicit-lists) om dit probleem te verhelpen. 
 
-## <a name="do-not-change-entity-type"></a>Entiteits type niet wijzigen
+## <a name="do-not-change-entity-type"></a>Do not change entity type
 
-LUIS staat niet toe dat u het type van de entiteit niet wijzigen omdat het niet weet wat u moet toevoegen of verwijderen om te bouwen die entiteit. Als u wilt wijzigen, is het beter om een nieuwe entiteit van het juiste type maken met een iets andere naam. Nadat de entiteit is gemaakt, in elke utterance, verwijdert u de oude naam van de gelabelde entiteit en de naam van de nieuwe entiteit toevoegen. Zodra alle uitingen hebben is relabeled, de oude entiteit niet verwijderen. 
+LUIS does not allow you to change the type of the entity because it doesn't know what to add or remove to construct that entity. In order to change the type, it is better to create a new entity of the correct type with a slightly different name. Once the entity is created, in each utterance, remove the old labeled entity name and add the new entity name. Once all the utterances have been relabeled, delete the old entity. 
 
 <a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over patronen:
+> [!div class="nextstepaction"] 
+> [Use prebuilt models](howto-add-prebuilt-models.md) 
 
-* [Patronen concepten](luis-concept-patterns.md)
-* [Syntaxis van patronen](reference-pattern-syntax.md)
+Meer informatie over:
+* How to [train](luis-how-to-train.md)
+* How to [test](luis-interactive-test.md)
+* How to [publish](luis-how-to-publish-app.md)
+* Patterns:
+    * [Concepten](luis-concept-patterns.md)
+    * [Syntax](reference-pattern-syntax.md)
+* [Prebuilt entities GitHub repository](https://github.com/Microsoft/Recognizers-Text)
+* [Data Extraction concepts](luis-concept-data-extraction.md)
 
-Zie voor meer informatie over het vooraf gemaakte entiteiten de [kenmerken tekst](https://github.com/Microsoft/Recognizers-Text) project. 
 
-Zie voor meer informatie over hoe de entiteit wordt weergegeven in het query-antwoord van de JSON-eindpunt [gegevensextractie](luis-concept-data-extraction.md)
-
-Nu dat u intenties, uitingen en entiteiten hebt toegevoegd, hebt u een eenvoudige LUIS-app. Meer informatie over het [trainen](luis-how-to-train.md), [testen](luis-interactive-test.md), en [publiceren](luis-how-to-publish-app.md) uw app.
  

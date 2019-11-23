@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Blueprint sample to new environment'
 description: In this tutorial, you use a blueprint sample to create a blueprint definition that sets up two resource groups and configures a role assignment for each.
-ms.date: 03/05/2019
+ms.date: 11/21/2019
 ms.topic: tutorial
-ms.openlocfilehash: 31363f8756a8483533a24a8005c0ca9cb7ea7ea0
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9cc892ab8feadacbdfd00e55fab9f40d7cb2397
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216915"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74321736"
 ---
 # <a name="tutorial-create-an-environment-from-a-blueprint-sample"></a>Tutorial: Create an environment from a blueprint sample
 
@@ -183,9 +183,7 @@ When finished with this tutorial, delete the following resources:
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Learn about the [blueprint lifecycle](../concepts/lifecycle.md)
-- Informatie over hoe u [statische en dynamische parameters](../concepts/parameters.md) gebruikt
-- Ontdek hoe u gebruikmaakt van [resourcevergrendeling in blauwdrukken](../concepts/resource-locking.md)
-- Meer informatie over hoe u de [blauwdrukvolgorde](../concepts/sequencing-order.md) aanpast
-- Meer informatie over hoe u [bestaande toewijzingen bijwerkt](../how-to/update-existing-assignments.md)
-- Problemen oplossen tijdens de toewijzing van een blauwdruk met [algemene probleemoplossing](../troubleshoot/general.md)
+In this tutorial, you've learned how to create a new blueprint from a sample definition. To learn more about Azure Blueprints, continue to the blueprint lifecycle article.
+
+> [!div class="nextstepaction"]
+> [Learn about the blueprint lifecycle](../concepts/lifecycle.md)

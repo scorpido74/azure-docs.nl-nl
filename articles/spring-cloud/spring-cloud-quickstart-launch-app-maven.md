@@ -1,124 +1,115 @@
 ---
-title: 'Snelstartgids: een toepassing starten met maven-Azure lente-Cloud'
-description: Een voorbeeld toepassing starten met behulp van Maven
+title: 'Quickstart: Launch an application using Maven - Azure Spring Cloud'
+description: Launch a sample application using Maven
 author: jpconnock
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 01bf33c3ed50311b031e015b24566f5819ac0857
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: 1a719b878f3e5fbade3adf453ac7d0604ea85077
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74123820"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384082"
 ---
-# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Snelstartgids: een Azure lente-Cloud-app starten met de Maven-invoeg toepassing
+# <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Quickstart: Launch an Azure Spring Cloud app using the Maven plug-in
 
-Met de Azure veer Cloud maven-invoeg toepassing kunt u eenvoudig uw Azure lente-Cloud toepassingen maken en bijwerken. Door een configuratie vooraf te definiëren, kunt u toepassingen implementeren in uw bestaande Azure lente-Cloud service. In dit artikel gebruikt u een voorbeeld toepassing met de naam PiggyMetrics om deze functie te demonstreren.
+Using the Azure Spring Cloud Maven plug-in, you can easily create and update your Azure Spring Cloud applications. By predefining a configuration, you can deploy applications to your existing Azure Spring Cloud service. In this article, you use a sample application called PiggyMetrics to demonstrate this feature.
 
-In deze Quick Start leert u het volgende:
+Following this quickstart, you will learn how to:
 
 > [!div class="checklist"]
-> * Een service-exemplaar inrichten
-> * Een configuratie server voor een exemplaar instellen
-> * Micro Services-toepassing lokaal klonen en bouwen
-> * Implementeer elke micro service
-> * Een openbaar eind punt toewijzen voor uw toepassing
+> * Provision a service instance
+> * Set up a configuration server for an instance
+> * Clone and build microservices application locally
+> * Deploy each microservice
+> * Assign a public endpoint for your application
 
 >[!Note]
-> Azure lente Cloud wordt momenteel aangeboden als een open bare preview. Met open bare preview-aanbiedingen kunnen klanten experimenteren met nieuwe functies vóór hun officiële release.  Open bare preview-functies en-services zijn niet bedoeld voor gebruik in productie omgevingen.  Raadpleeg voor meer informatie over ondersteuning tijdens previews onze [Veelgestelde vragen](https://azure.microsoft.com/support/faq/) of bestand a [ondersteuningsaanvraag](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) voor meer informatie.
+> Azure Spring Cloud is currently offered as a public preview. Public preview offerings allow customers to experiment with new features prior to their official release.  Public preview features and services are not meant for production use.  For more information about support during previews, please review our [FAQ](https://azure.microsoft.com/support/faq/) or file a [Support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) to learn more.
 
 
 >[!TIP]
-> Azure Cloud Shell is een gratis interactieve shell die u kunt gebruiken om de opdrachten in dit artikel uit te voeren. Het heeft algemene Azure-hulpprogram ma's die vooraf zijn geïnstalleerd, met inbegrip van de nieuwste versies van Git, de Java Development Kit (JDK), maven en de Azure CLI. Als u bent aangemeld bij uw Azure-abonnement, start u [Azure Cloud shell](https://shell.azure.com). Zie [overzicht van Azure Cloud shell](../cloud-shell/overview.md)voor meer informatie.
+> Azure Cloud Shell is a free interactive shell that you can use to run the commands in this article. It has common Azure tools preinstalled, including the latest versions of Git, the Java Development Kit (JDK), Maven, and the Azure CLI. If you're signed in to your Azure subscription, launch [Azure Cloud Shell](https://shell.azure.com). For more information, see [Overview of Azure Cloud Shell](../cloud-shell/overview.md).
 
 Dit zijn de vereisten voor het voltooien van deze snelstartgids:
 
 1. [Installeer Git](https://git-scm.com/).
-2. [Installeer jdk 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
-3. [Installeer Maven 3,0 of hoger](https://maven.apache.org/download.cgi).
-4. [Installeer de Azure CLI-versie 2.0.67 of hoger](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
-5. [Meld u aan voor een gratis Azure-abonnement](https://azure.microsoft.com/free/).
+2. [Install JDK 8](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable).
+3. [Install Maven 3.0 or later](https://maven.apache.org/download.cgi).
+4. [Sign up for a free Azure subscription](https://azure.microsoft.com/free/).
 
-## <a name="install-the-azure-cli-extension"></a>De Azure CLI-extensie installeren
+## <a name="provision-a-service-instance-on-the-azure-portal"></a>Provision a service instance on the Azure portal
 
-Installeer de Azure veer Cloud-extensie voor de Azure CLI met behulp van de volgende opdracht:
+1. In a web browser, open [this link to Azure Spring Cloud in the Azure portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform), and sign in to your account.
 
-```Azure CLI
-az extension add --name spring-cloud
-```
+1. Provide the **Project Details** for the sample application as follows:
 
-## <a name="provision-a-service-instance-on-the-azure-portal"></a>Een service-exemplaar inrichten op het Azure Portal
-
-1. Open in een webbrowser [deze koppeling naar Azure lente-Cloud in het Azure Portal](https://ms.portal.azure.com/#create/Microsoft.AppPlatform)en meld u aan bij uw account.
-
-1. Geef de **Project Details** voor de voorbeeld toepassing als volgt op:
-
-    1. Selecteer het **abonnement** waarmee de toepassing wordt gekoppeld.
-    1. Selecteer of maak een resource groep voor de toepassing. We raden u aan een nieuwe resource groep te maken.  In het onderstaande voor beeld ziet u een nieuwe resource groep met de naam `myspringservice`.
-    1. Geef een naam op voor de nieuwe Azure lente-Cloud service.  De naam moet tussen 4 en 32 tekens lang zijn en mag alleen kleine letters, cijfers en afbreek streepjes bevatten. Het eerste teken van de service naam moet een letter zijn en het laatste teken moet een letter of een cijfer zijn.  De service in onderstaand voor beeld heeft de naam `contosospringcloud`.
-    1. Selecteer een locatie voor uw toepassing uit de beschik bare opties.  In dit voor beeld selecteren we `East US`.
-    1. Selecteer **beoordeling + maken** om een samen vatting van de nieuwe service te bekijken.  Als alles er goed uitziet, selecteert u **maken**.
+    1. Select the **Subscription** with which the application will be associated.
+    1. Select or create a resource group for the application. We recommend creating a new resource group.  The example below shows a new resource group called `myspringservice`.
+    1. Provide a name for the new Azure Spring Cloud service.  The name must be between 4 and 32 characters long and can contain only lowercase letters, numbers, and hyphens. The first character of the service name must be a letter and the last character must be either a letter or a number.  The service in the example below has the name `contosospringcloud`.
+    1. Select a location for your application from the options provided.  In this example, we select `East US`.
+    1. Select **Review + create** to review a summary of your new service.  If everything looks correct, select **Create**.
 
     > [!div class="mx-imgBorder"]
-    > ![Selecteer beoordeling + maken](media/maven-qs-review-create.jpg)
+    > ![Select Review + create](media/maven-qs-review-create.jpg)
 
-Het duurt ongeveer vijf minuten voordat de service wordt geïmplementeerd. Nadat de service is geïmplementeerd, selecteert **u Ga naar resource** en de pagina **overzicht** voor het service-exemplaar wordt weer gegeven.
+It takes about 5 minutes for the service to be deployed. After the service is deployed, select **Go to resource** and the **Overview** page for the service instance appears.
 
-## <a name="set-up-your-configuration-server"></a>De configuratie server instellen
+## <a name="set-up-your-configuration-server"></a>Set up your configuration server
 
-1. Selecteer op de pagina service **overzicht** de optie **Configuratie server**.
-1. Stel in de sectie **standaard opslagplaats** de optie **URI** in op **https://github.com/Azure-Samples/piggymetrics** , stel **Label** in op **configuratie**en selecteer vervolgens **Toep assen** om uw wijzigingen op te slaan.
+1. On the service **Overview** page, select **Config Server**.
+1. In the **Default repository** section, set **URI** to **https://github.com/Azure-Samples/piggymetrics** , set **Label** to **config**, and then select **Apply** to save your changes.
 
     > [!div class="mx-imgBorder"]
-    > configuratie-instellingen ![definiëren en Toep assen](media/maven-qs-apply-config.jpg)
+    > ![Define and apply config settings](media/maven-qs-apply-config.jpg)
 
-## <a name="clone-and-build-the-sample-application-repository"></a>De voor beeld-toepassings opslagplaats klonen en bouwen
+## <a name="clone-and-build-the-sample-application-repository"></a>Clone and build the sample application repository
 
-1. Start de [Azure Cloud shell](https://shell.azure.com).
+1. Launch the [Azure Cloud Shell](https://shell.azure.com).
 
-1. Kloon de Git-opslag plaats door de volgende opdracht uit te voeren:
+1. Clone the Git repository by running the following command:
 
     ```azurecli
     git clone https://github.com/Azure-Samples/PiggyMetrics
     ```
   
-1. Wijzig de map en bouw het project door de volgende opdracht uit te voeren:
+1. Change directory and build the project by running the following command:
 
     ```azurecli
     cd piggymetrics
     mvn clean package -DskipTests
     ```
 
-## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Configuraties genereren en implementeren in de Azure lente-Cloud
+## <a name="generate-configurations-and-deploy-to-the-azure-spring-cloud"></a>Generate configurations and deploy to the Azure Spring Cloud
 
-1. Genereer configuraties door de volgende opdracht uit te voeren in de hoofdmap van PiggyMetrics met de bovenliggende POM:
+1. Generate configurations by running the following command in the root folder of PiggyMetrics containing the parent POM:
 
     ```azurecli
     mvn com.microsoft.azure:azure-spring-cloud-maven-plugin:1.0.0:config
     ```
 
-    a. Selecteer de modules `gateway`,`auth-service`en `account-service`.
+    a. Select the modules `gateway`,`auth-service`, and `account-service`.
 
-    b. Selecteer uw abonnement en Azure lente-Cloud service cluster.
+    b. Select your subscription and Azure Spring Cloud service cluster.
 
-    c. Voer in de lijst met opgegeven projecten het nummer in dat overeenkomt met `gateway` om het open bare toegang te geven.
+    c. In the list of provided projects, enter the number that corresponds with `gateway` to give it public access.
     
-    d. Bevestig de configuratie.
+    d. Confirm the configuration.
 
-1. De POM bevat nu de afhankelijkheden en configuraties van de invoeg toepassing. Implementeer de apps met behulp van de volgende opdracht:
+1. The POM now contains the plugin dependencies and configurations. Deploy the apps using the following command:
 
    ```azurecli
    mvn azure-spring-cloud:deploy
    ```
 
-1. Nadat de implementatie is voltooid, kunt u toegang krijgen tot PiggyMetrics met behulp van de URL die wordt vermeld in de uitvoer van de voor gaande opdracht.
+1. After the deployment has finished, you can access PiggyMetrics by using the URL provided in the output from the preceding command.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u een lente-Cloud toepassing geïmplementeerd vanuit een Maven-opslag plaats. Voor meer informatie over Azure lente-Cloud gaat u verder met de zelf studie over het voorbereiden van uw app voor implementatie.
+In this quickstart, you've deployed a Spring Cloud application from a Maven repository. To learn more about Azure Spring Cloud, continue to the tutorial about preparing your app for deployment.
 
 > [!div class="nextstepaction"]
-> [Bereid uw Azure lente Cloud-toepassing voor op implementatie](spring-cloud-tutorial-prepare-app-deployment.md)
-> meer [informatie over maven-invoeg toepassingen voor Azure](https://github.com/microsoft/azure-maven-plugin)
+> [Prepare your Azure Spring Cloud application for deployment](spring-cloud-tutorial-prepare-app-deployment.md)
+> [Learn more about Maven plug-ins for Azure](https://github.com/microsoft/azure-maven-plugin)

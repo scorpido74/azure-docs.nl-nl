@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST API en Python'
+title: 'Quickstart: Get image insights using the REST API and Python - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -10,18 +10,18 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: scottwhi
-ms.openlocfilehash: 7ec37b4c3bdeb924b3e35dbcb5d07a478611f631
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6fafc35d9d74927789fee3f3fea3014ff3be5717
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60510853"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383182"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Quickstart: afbeeldingsinzichten krijgen met behulp van de Bing Visual Search REST API en Python
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-python"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Python
 
-Met deze Quick Start kunt u uw eerste aanroep naar de Bing visuele zoekopdrachten-API en de resultaten te bekijken. Deze Python-toepassing wordt een installatiekopie geüpload naar de API en de informatie die wordt weergegeven. Hoewel deze toepassing is geschreven in Python, de API is een RESTful-Web-compatibel is met de meeste moderne programmeertalen.
+Use this quickstart to make your first call to the Bing Visual Search API and view the results. This Python application uploads an image to the API and displays the information it returns. Though this application is written in Python, the API is a RESTful Web service compatible with most programming languages.
 
-Wanneer u een lokale installatiekopie uploadt, de gegevens moet bevatten de `Content-Disposition` header. U moet instellen de `name` parameter 'afbeelding', en u kunt instellen de `filename` parameter een tekenreeks. De inhoud van het formulier omvat de binaire gegevens van de installatiekopie. De grootte van de maximale installatiekopie die u kunt uploaden is 1 MB.
+When you upload a local image, the form data must include the `Content-Disposition` header. You must set its `name` parameter to "image", and you can set the `filename` parameter to any string. The contents of the form include the binary data of the image. The maximum image size you can upload is 1 MB.
 
 ```
 --boundary_1234-abcd
@@ -40,13 +40,13 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="initialize-the-application"></a>De toepassing initialiseren
 
-1. Maak een nieuwe Python-bestand in uw favoriete IDE of editor, en voeg de volgende `import` instructie:
+1. Create a new Python file in your favorite IDE or editor, and add the following `import` statement:
 
     ```python
     import requests, json
     ```
 
-2. Variabelen voor de abonnementssleutel van uw, eindpunt en het pad naar de installatiekopie die u uploadt maken:
+2. Create variables for your subscription key, endpoint, and the path to the image you're uploading:
 
     ```python
 
@@ -55,13 +55,13 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
     imagePath = 'your-image-path'
     ```
 
-3. Maak een dictionary-object voor het opslaan van de header-informatie van uw aanvraag. Uw abonnementssleutel binden aan de tekenreeks `Ocp-Apim-Subscription-Key`, zoals hieronder weergegeven:
+3. Create a dictionary object to hold your request's header information. Bind your subscription key to the string `Ocp-Apim-Subscription-Key`, as shown below:
 
     ```python
     HEADERS = {'Ocp-Apim-Subscription-Key': SUBSCRIPTION_KEY}
     ```
 
-4. Maak een andere woordenlijst om uw installatiekopie, die wordt geopend en wordt geüpload wanneer u de aanvraag verzendt:
+4. Create another dictionary to contain your image, which is opened and uploaded when you send the request:
 
     ```python
     file = {'image' : ('myfile', open(imagePath, 'rb'))}
@@ -69,7 +69,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="parse-the-json-response"></a>Het JSON-antwoord parseren
 
-1. Maken van een methode met de naam `print_json()` in de API-reactie en afdrukken van de JSON:
+1. Create a method called `print_json()` to take in the API response, and print the JSON:
 
     ```python
     def print_json(obj):
@@ -79,7 +79,7 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 
 ## <a name="send-the-request"></a>De aanvraag verzenden
 
-1. Gebruik `requests.post()` om een aanvraag naar de Bing Visual Search-API te verzenden. Neem hierin de tekenreeks voor uw eindpunt, de header en gegevens over het bestand op. Afdrukken `response.json()` met `print_json()`:
+1. Gebruik `requests.post()` om een aanvraag naar de Bing Visual Search-API te verzenden. Neem hierin de tekenreeks voor uw eindpunt, de header en gegevens over het bestand op. Print `response.json()` with `print_json()`:
 
     ```python
     try:
@@ -94,4 +94,4 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Een visuele zoekopdrachten één pagina web-app maken](../tutorial-bing-visual-search-single-page-app.md)
+> [Create a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

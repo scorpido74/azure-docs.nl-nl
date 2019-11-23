@@ -1,7 +1,7 @@
 ---
-title: "Snelstartgids: een zoek index in postman maken met REST-Api's"
+title: 'Quickstart: Create a search index in Postman using REST APIs'
 titleSuffix: Azure Cognitive Search
-description: Meer informatie over het aanroepen van de Azure Cognitive Search REST-Api's met behulp van Postman en voorbeeld gegevens en definities.
+description: In this REST API quickstart, learn how to call the Azure Cognitive Search REST APIs using Postman and sample data and definitions.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
@@ -9,14 +9,14 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 11/04/2019
-ms.openlocfilehash: 00d1122a8b56237eeb20892ad05cdbbcbe247510
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 9014a83596a3eee71f43d12a73188c1c43b832af
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792290"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406941"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Quick Start: een Azure Cognitive Search-index maken in postman met REST-Api's
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-postman-using-rest-apis"></a>Quickstart: Create an Azure Cognitive Search index in Postman using REST APIs
 > [!div class="op_single_selector"]
 > * [Postman](search-get-started-postman.md)
 > * [C#](search-create-index-dotnet.md)
@@ -25,74 +25,74 @@ ms.locfileid: "72792290"
 > * [PowerShell](search-howto-dotnet-sdk.md)
 >*
 
-Een van de eenvoudigste manieren om de [Azure COGNITIVE Search rest api's](https://docs.microsoft.com/rest/api/searchservice) te verkennen, is postman of een ander hulp programma voor het testen van HTTP-aanvragen formuleren en de reacties controleren. Met de juiste hulpmiddelen en deze instructies kunt u aanvragen verzenden en antwoorden bekijken voordat u code gaat schrijven.
+One of the easiest ways to explore the [Azure Cognitive Search REST APIs](https://docs.microsoft.com/rest/api/searchservice) is using Postman or another web testing tool to formulate HTTP requests and inspect the responses. Met de juiste hulpmiddelen en deze instructies kunt u aanvragen verzenden en antwoorden bekijken voordat u code gaat schrijven.
 
-In dit artikel wordt uitgelegd hoe u aanvragen interactief kunt formuleren. U kunt ook [een postman-verzameling downloaden en importeren](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) om vooraf gedefinieerde aanvragen te gebruiken.
+This article explains how to formulate requests interactively. Alternatively, you can [download and import a Postman collection](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/Quickstart) to use predefined requests.
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint.
 
 ## <a name="prerequisites"></a>Vereisten
 
-De volgende services en hulpprogram ma's zijn vereist voor deze Quick Start. 
+The following services and tools are required for this quickstart. 
 
-+ [Postman desktop-app](https://www.getpostman.com/) wordt gebruikt voor het verzenden van aanvragen naar Azure Cognitive Search.
++ [Postman desktop app](https://www.getpostman.com/) is used for sending requests to Azure Cognitive Search.
 
-+ [Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
++ [Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
 
-## <a name="get-a-key-and-url"></a>Een sleutel en URL ophalen
+## <a name="get-a-key-and-url"></a>Get a key and URL
 
-REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. Een zoek service wordt met beide gemaakt, dus als u Azure Cognitive Search aan uw abonnement hebt toegevoegd, voert u de volgende stappen uit om de benodigde gegevens op te halen:
+REST-aanroepen hebben voor elke aanvraag de service-URL en een toegangssleutel nodig. A search service is created with both, so if you added Azure Cognitive Search to your subscription, follow these steps to get the necessary information:
 
-1. [Meld u aan bij de Azure Portal](https://portal.azure.com/)en down load de URL op de pagina **overzicht** van de zoek service. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
+1. [Sign in to the Azure portal](https://portal.azure.com/), and in your search service **Overview** page, get the URL. Een eindpunt ziet er bijvoorbeeld uit als `https://mydemo.search.windows.net`.
 
-1. In **instellingen** > **sleutels**, een beheerders sleutel ophalen voor volledige rechten op de service. Er zijn twee uitwissel bare beheer sleutels die voor bedrijfs continuïteit worden verschaft, voor het geval dat u een voor beeld moet doen. U kunt de primaire of secundaire sleutel gebruiken op aanvragen voor het toevoegen, wijzigen en verwijderen van objecten.
+1. In **Settings** > **Keys**, get an admin key for full rights on the service. There are two interchangeable admin keys, provided for business continuity in case you need to roll one over. You can use either the primary or secondary key on requests for adding, modifying, and deleting objects.
 
-![Een HTTP-eind punt en toegangs sleutel ophalen](media/search-get-started-postman/get-url-key.png "Een HTTP-eind punt en toegangs sleutel ophalen")
+![Get an HTTP endpoint and access key](media/search-get-started-postman/get-url-key.png "Get an HTTP endpoint and access key")
 
-Voor alle aanvragen is een API-sleutel vereist voor elke aanvraag die naar uw service wordt verzonden. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
+All requests require an api-key on every request sent to your service. Met een geldige sleutel stelt u per aanvraag een vertrouwensrelatie in tussen de toepassing die de aanvraag verzendt en de service die de aanvraag afhandelt.
 
-## <a name="connect-to-azure-cognitive-search"></a>Verbinding maken met Azure Cognitive Search
+## <a name="connect-to-azure-cognitive-search"></a>Connect to Azure Cognitive Search
 
-In deze sectie gebruikt u het webprogramma van keuze om verbindingen met Azure Cognitive Search in te stellen. Elk hulp programma bewaart informatie over de aanvraag header voor de sessie, wat betekent dat u slechts één keer de API-sleutel en het inhouds type hoeft in te voeren.
+In this section, use your web tool of choice to set up connections to Azure Cognitive Search. Each tool persists request header information for the session, which means you only have to enter the api-key and Content-Type once.
 
-Voor beide hulp middelen moet u een opdracht kiezen (GET, POST, PUT enzovoort), een URL-eind punt opgeven en voor sommige taken JSON opgeven in de hoofd tekst van de aanvraag. Vervang de naam van de zoek service (uw-zoek service naam) door een geldige waarde. Voeg `$select=name` toe om alleen de naam van elke index te retour neren. 
+For either tool, you need to choose a command (GET, POST, PUT, and so forth), provide a URL endpoint, and for some tasks, provide JSON in the body of the request. Replace the search service name (YOUR-SEARCH-SERVICE-NAME)  with a valid value. Add `$select=name` to return just the name of each index. 
 
     https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes?api-version=2019-05-06&$select=name
 
-Let op het HTTPS-voor voegsel, de naam van de service, de naam van een object (in dit geval de index verzameling) en de [API-versie](search-api-versions.md). De API-Version is een vereiste, kleine letter reeks die is opgegeven als `?api-version=2019-05-06` voor de huidige versie. API-versies worden regel matig bijgewerkt. Als u de API-versie toevoegt aan elke aanvraag, kunt u precies bepalen welke versie wordt gebruikt.  
+Notice the HTTPS prefix, the name of the service, the name of an object (in this case, the indexes collection), and the [api-version](search-api-versions.md). The api-version is a required, lowercase string specified as `?api-version=2019-05-06` for the current version. API versions are updated regularly. Als u de API-versie toevoegt aan elke aanvraag, kunt u precies bepalen welke versie wordt gebruikt.  
 
-De samen stelling van de aanvraag header bevat twee elementen, inhouds type en de API-sleutel die wordt gebruikt om te verifiëren bij Azure Cognitive Search. Vervang de API-sleutel van de beheerder (uw-AZURE-SEARCH-ADMIN-API-sleutel) door een geldige waarde. 
+Request header composition includes two elements, content type, plus the api-key used to authenticate to Azure Cognitive Search. Replace the admin API key (YOUR-AZURE-SEARCH-ADMIN-API-KEY) with a valid value. 
 
     api-key: <YOUR-AZURE-SEARCH-ADMIN-API-KEY>
     Content-Type: application/json
 
-In postman een aanvraag formuleren die eruitziet als de volgende scherm afbeelding. Kies **ophalen** als werk woord, geef de URL op en klik op **verzenden**. Met deze opdracht wordt verbinding gemaakt met Azure Cognitive Search, wordt de verzameling indexen gelezen en wordt de HTTP-status code 200 op een geslaagde verbinding geretourneerd. Als uw service al indexen heeft, bevat het antwoord ook index definities.
+In Postman, formulate a request that looks like the following screenshot. Choose **GET** as the verb, provide the URL, and click **Send**. This command connects to Azure Cognitive Search, reads the indexes collection, and returns HTTP status code 200 on a successful connection. If your service has indexes already, the response will also include index definitions.
 
-![URL en header van Postman-aanvraag](media/search-get-started-postman/postman-url.png "URL en header van Postman-aanvraag")
+![Postman request URL and header](media/search-get-started-postman/postman-url.png "Postman request URL and header")
 
 ## <a name="1---create-an-index"></a>1 - Een index maken
 
-In azure Cognitive Search maakt u doorgaans de index voordat u deze met gegevens laadt. De [rest API Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) wordt voor deze taak gebruikt. 
+In Azure Cognitive Search, you usually create the index before loading it with data. The [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) is used for this task. 
 
-De URL is uitgebreid met de naam van de `hotels`-index.
+The URL is extended to include the `hotels` index name.
 
-U doet dit als volgt in postman:
+To do this in Postman:
 
-1. Wijzig de term in **put**.
+1. Change the verb to **PUT**.
 
-2. Kopie in deze URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
+2. Copy in this URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart?api-version=2019-05-06`.
 
-3. Geef in de hoofd tekst van de aanvraag de index definitie (code kopiëren-gereed) op.
+3. Provide the index definition (copy-ready code is provided below) in the body of the request.
 
 4. Klik op **Verzenden**.
 
-![Het JSON-document indexeren in de hoofd tekst van de aanvraag](media/search-get-started-postman/postman-request.png "Het JSON-document indexeren in de hoofd tekst van de aanvraag")
+![Index JSON document in request body](media/search-get-started-postman/postman-request.png "Index JSON document in request body")
 
 ### <a name="index-definition"></a>Indexdefinitie
 
-De verzameling velden definieert de document structuur. Elk document moet deze velden bevatten en elk veld moet een gegevens type hebben. Tekenreeksvelden worden gebruikt voor zoekopdrachten in de volledige tekst. Voeg daarom numerieke gegevens als tekenreeksen toe als u wilt dat naar die inhoud kan worden gezocht.
+The fields collection defines document structure. Each document must have these fields, and each field must have a data type. Tekenreeksvelden worden gebruikt voor zoekopdrachten in de volledige tekst. Voeg daarom numerieke gegevens als tekenreeksen toe als u wilt dat naar die inhoud kan worden gezocht.
 
-Kenmerken voor het veld bepalen de toegestane bewerking. De REST API's staan standaard veel bewerkingen toe. Standaard kunnen alle tekenreeksen bijvoorbeeld worden doorzocht, opgehaald en gefilterd en zijn ze geschikt voor facetten. Vaak hoeft u alleen kenmerken in te stellen wanneer u een gedrag moet uitschakelen.
+Kenmerken voor het veld bepalen de toegestane bewerking. De REST API's staan standaard veel bewerkingen toe. Standaard kunnen alle tekenreeksen bijvoorbeeld worden doorzocht, opgehaald en gefilterd en zijn ze geschikt voor facetten. Often, you only have to set attributes when you need to turn off a behavior.
 
 ```json
 {
@@ -124,25 +124,25 @@ Wanneer u deze aanvraag indient, krijgt u een HTTP 201-respons om aan te geven d
 > [!TIP]
 > Als u een HTTP 504-respons ontvangt, controleert u of de URL HTTPS bevat. Als de HTTP-fout 400 of 404 wordt weergegeven ziet, controleert u of de aanvraagtekst op fouten die mogelijk zijn opgetreden tijden kopiëren en plakken. Een HTTP 403 duidt doorgaans op een probleem met de API-sleutel (een ongeldige sleutel of een syntaxisfout in de opgegeven API-sleutel).
 
-## <a name="2---load-documents"></a>2-documenten laden
+## <a name="2---load-documents"></a>2 - Load documents
 
-De index maken en de index vullen zijn afzonderlijke stappen. In azure Cognitive Search bevat de index alle Doorzoek bare gegevens, die u als JSON-documenten kunt opgeven. De [rest API voor het toevoegen, bijwerken of verwijderen van documenten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) wordt voor deze taak gebruikt. 
+De index maken en de index vullen zijn afzonderlijke stappen. In Azure Cognitive Search, the index contains all searchable data, which you can provide as JSON documents. The [Add, Update, or Delete Documents REST API](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) is used for this task. 
 
-De URL wordt uitgebreid met de `docs`-verzamelingen en de `index`-bewerking.
+The URL is extended to include the `docs` collections and `index` operation.
 
-U doet dit als volgt in postman:
+To do this in Postman:
 
 1. Wijzig de bewerking in **POST**.
 
-2. Kopie in deze URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
+2. Copy in this URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs/index?api-version=2019-05-06`.
 
-3. Geef in de hoofd tekst van de aanvraag de JSON-documenten (code kopiëren-gereed hieronder) op.
+3. Provide the JSON documents (copy-ready code is below) in the body of the request.
 
 4. Klik op **Verzenden**.
 
-![JSON-documenten in de hoofd tekst van de aanvraag](media/search-get-started-postman/postman-docs.png "JSON-documenten in de hoofd tekst van de aanvraag")
+![JSON documents in request body](media/search-get-started-postman/postman-docs.png "JSON documents in request body")
 
-### <a name="json-documents-to-load-into-the-index"></a>JSON-documenten die in de index moeten worden geladen
+### <a name="json-documents-to-load-into-the-index"></a>JSON documents to load into the index
 
 De aanvraagtekst bevat vier documenten die moeten worden toegevoegd aan de index hotels.
 
@@ -229,7 +229,7 @@ De aanvraagtekst bevat vier documenten die moeten worden toegevoegd aan de index
 }
 ```
 
-In een paar seconden ziet u een HTTP 201-antwoord in de sessie lijst. Dit geeft aan dat de documenten zijn gemaakt. 
+In a few seconds, you should see an HTTP 201 response in the session list. Dit geeft aan dat de documenten zijn gemaakt. 
 
 Als u een 207-respons ontvang, is minimaal één document niet geüpload. Als u een 404-respons ontvangt, bevat de header of het hoofdgedeelte van de aanvraag een syntaxisfout: controleer of u het eindpunt hebt gewijzigd zodat dit `/docs/index` bevat.
 
@@ -239,25 +239,25 @@ Als u een 207-respons ontvang, is minimaal één document niet geüpload. Als u 
 
 ## <a name="3---search-an-index"></a>3 - Een index doorzoeken
 
-Nu u een index en documenten hebt geladen, kunt u er query's mee verzenden met behulp van [Zoek documenten rest API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
+Now that an index and documents are loaded, you can issue queries against them using [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 
-De URL is uitgebreid met een query-expressie die is opgegeven met behulp van de zoek operator.
+The URL is extended to include a query expression, specified using the search operator.
 
-U doet dit als volgt in postman:
+To do this in Postman:
 
-1. Wijzig de term in **Get**.
+1. Change the verb to **GET**.
 
-2. Kopie in deze URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
+2. Copy in this URL `https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/docs?search=*&$count=true&api-version=2019-05-06`.
 
 3. Klik op **Verzenden**.
 
-Deze query is leeg en retourneert een telling van de documenten in de zoek resultaten. De aanvraag en het antwoord moeten eruitzien als in de volgende schermopname voor Postman nadat u op **Send** (Verzenden) hebt geklikt. De statuscode moet 200 zijn.
+This query is an empty and returns a count of the documents in the search results. De aanvraag en het antwoord moeten eruitzien als in de volgende schermopname voor Postman nadat u op **Send** (Verzenden) hebt geklikt. De statuscode moet 200 zijn.
 
- ![OPHALEN met zoek reeks in de URL](media/search-get-started-postman/postman-query.png "OPHALEN met zoek reeks in de URL")
+ ![GET with search string on the URL](media/search-get-started-postman/postman-query.png "GET with search string on the URL")
 
-Voer een paar andere query voorbeelden uit om een idee te krijgen van de syntaxis. U kunt een teken reeks zoeken, Verbatim $filter query's, de ingestelde resultaten beperken, de zoek opdracht bereiken naar specifieke velden, en meer.
+Try a few other query examples to get a feel for the syntax. You can do a string search, verbatim $filter queries, limit the results set, scope the search to specific fields, and more.
 
-Wissel de huidige URL uit met de onderstaande items en klik op **verzenden** elke keer om de resultaten weer te geven.
+Swap out the current URL with the ones below, clicking **Send** each time to view the results.
 
 ```
 # Query example 1 - Search on restaurant and wifi
@@ -275,30 +275,30 @@ https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?
 https://<YOUR-SEARCH-SERVICE>.search.windows.net/indexes/hotels-quickstart/docs?search=pool&$orderby=Address/City asc&$select=HotelName, Address/City, Tags, Rating&api-version=2019-05-06
 ```
 
-## <a name="get-index-properties"></a>Index eigenschappen ophalen
-U kunt ook [Get Statistics](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) gebruiken om te zoeken naar de document tellingen en de index grootte: 
+## <a name="get-index-properties"></a>Get index properties
+You can also use [Get Statistics](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) to query for document counts and index size: 
 
 ```
 https://<YOUR-SEARCH-SERVICE-NAME>.search.windows.net/indexes/hotels-quickstart/stats?api-version=2019-05-06
 ```
 
-Het toevoegen van `/stats` aan uw URL retourneert index gegevens. In Postman moet uw aanvraag er ongeveer als volgt uitzien en bevat de reactie het aantal documenten en de gebruikte ruimte in bytes.
+Adding `/stats` to your URL returns index information. In Postman moet uw aanvraag er ongeveer als volgt uitzien en bevat de reactie het aantal documenten en de gebruikte ruimte in bytes.
 
- ![Index gegevens ophalen](media/search-get-started-postman/postman-system-query.png "Index gegevens ophalen")
+ ![Get index information](media/search-get-started-postman/postman-system-query.png "Get index information")
 
-Let op dat de syntaxis van api-version verschilt. Voeg voor deze aanvraag `?` toe aan api-version. De `?` scheidt het URL-pad van de query teken reeks, terwijl & de combi natie ' naam = waarde ' scheidt in de query teken reeks. Voor deze query is api-version het eerste en enige item in de querytekenreeks.
+Let op dat de syntaxis van api-version verschilt. Voeg voor deze aanvraag `?` toe aan api-version. The `?` separates the URL path from the query string, while & separates each 'name=value' pair in the query string. Voor deze query is api-version het eerste en enige item in de querytekenreeks.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
 
-U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
+You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
+If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u weet hoe u kern taken moet uitvoeren, kunt u door gaan met aanvullende REST API-aanroepen voor meer geavanceerde functies, zoals indexers of [het instellen van een cognitieve Zoek pijplijn](cognitive-search-tutorial-blob.md). Voor de volgende stap wordt u aangeraden de volgende koppeling te volgen:
+Now that you know how to perform core tasks, you can move forward with additional REST API calls for more advanced features, such as indexers or [setting up a cognitive search pipeline](cognitive-search-tutorial-blob.md). For your next step, we recommend the following link:
 
 > [!div class="nextstepaction"]
-> [REST zelf studie: semi-gestructureerde gegevens (JSON-blobs) indexeren en zoeken in azure Cognitive Search](search-semi-structured-data.md)
+> [REST Tutorial: Index and search semi-structured data (JSON blobs) in Azure Cognitive Search](search-semi-structured-data.md)

@@ -1,83 +1,77 @@
 ---
-title: Overzicht van de Azure Block Chain-Service
-description: Overzicht van de Azure Block Chain-Service
-services: azure-blockchain
-keywords: Block Chain
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Service overview
+description: Overview of Azure Blockchain Service
 ms.date: 11/18/2019
 ms.topic: overview
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 55c4c3f2c6a7856f3e7c0aea81ce013d3ff56f8b
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 80d231981a225bb10e8c97f7debd2c2d1a7ee8f0
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74284793"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326114"
 ---
 # <a name="what-is-azure-blockchain-service"></a>Wat is Azure Blockchain Service?
 
-De Azure Block Chain-service is een volledig beheerde grootboek service waarmee gebruikers de mogelijkheid hebben om Block chain netwerken op schaal te verg Roten of te bedienen in Azure. Door Unified Control te bieden voor zowel infrastructuur beheer als Block Chain Network governance, biedt de Azure Block Chain-service de volgende mogelijkheden:
+Azure Blockchain Service is a fully managed ledger service that enables users the ability to grow and operate blockchain networks at scale in Azure. By providing unified control for both infrastructure management as well as blockchain network governance, Azure Blockchain Service provides:
 
-* Eenvoudige netwerk implementatie en-bewerkingen
+* Simple network deployment and operations
 * Ingebouwd consortiumbeheer
-* Slimme contracten ontwikkelen met vertrouwde ontwikkel Programma's
+* Develop smart contracts with familiar development tools
 
-De Azure Block Chain-service is ontworpen om meerdere grootboek protocollen te ondersteunen. Dit biedt momenteel ondersteuning voor het Ethereum- [quorum](https://www.jpmorgan.com/Quorum) grootboek met behulp van het [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus-mechanisme.
+Azure Blockchain Service is designed to support multiple ledger protocols. Currently, it provides support for the Ethereum [Quorum](https://www.jpmorgan.com/Quorum) ledger using the [IBFT](https://github.com/jpmorganchase/quorum/wiki/Quorum-Consensus) consensus mechanism.
 
-Deze mogelijkheden vereisen nauwelijks beheer, en alles wordt zonder extra kosten geleverd. U kunt zich richten op het ontwikkelen van apps en bedrijfs logica in plaats van het toewijzen van tijd en resources voor het beheren van virtuele machines en infra structuur. Daarnaast kunt u uw toepassing blijven ontwikkelen met de open source-hulpprogram ma's en het platform van uw keuze om uw oplossingen te leveren zonder dat u nieuwe vaardig heden hoeft te leren.
+Deze mogelijkheden vereisen nauwelijks beheer, en alles wordt zonder extra kosten geleverd. You can focus on app development and business logic rather than allocating time and resources to managing virtual machines and infrastructure. In addition, you can continue to develop your application with the open-source tools and platform of your choice to deliver your solutions without having to learn new skills.
 
-## <a name="network-deployment-and-operations"></a>Netwerk implementatie en-bewerkingen
+## <a name="network-deployment-and-operations"></a>Network deployment and operations
 
-De implementatie van de Azure Block Chain-service wordt uitgevoerd via de Azure Portal, Azure CLI of Visual Studio code met behulp van de Azure Block Chain-extensie. Implementatie is vereenvoudigd, inclusief het inrichten van zowel trans actie-als validatie knooppunten, virtuele Azure-netwerken voor beveiligings isolatie en door service beheerde opslag.  Daarnaast maken gebruikers bij het implementeren van een nieuw Block Chain-lid ook een consortium.  Met consortiums kunnen meerdere partijen in verschillende Azure-abonnementen veilig communiceren met elkaar op een gedeelde Block chain.  Deze vereenvoudigde implementatie reduceert de Block chain-netwerk implementatie van dagen naar minuten.
+Deploying Azure Blockchain Service is done through the Azure portal, Azure CLI, or through Visual Studio code using the Azure Blockchain extension. Deployment is simplified, including provisioning both transaction and validator nodes, Azure Virtual Networks for security isolation as well as service-managed storage.  In addition, when deploying a new blockchain member, users also create, or join, a consortium.  Consortiums enable multiple parties in different Azure subscriptions to be able to securely communicate with one another on a shared blockchain.  This simplified deployment reduces blockchain network deployment from days to minutes.
 
-### <a name="performance-and-service-tiers"></a>Prestatie-en service lagen
+### <a name="performance-and-service-tiers"></a>Performance and service tiers
 
-De Azure Block Chain-service biedt twee service lagen: *Basic* en *Standard*. Elke laag biedt verschillende prestaties en mogelijkheden voor het ondersteunen van de werk belasting voor lichte ontwikkeling en tests tot een enorme schaal bare productie Block Chain-implementatie. Beide lagen bevatten ten minste één transactie knooppunt en één validator-knoop punt (Basic) of twee validatie knooppunten (standaard).
+Azure Blockchain Service offers two service tiers: *Basic* and *Standard*. Each tier offers different performance and capabilities to support lightweight development and test workloads up to massively scaled production blockchain deployments. Both tiers include at least one transaction node, and one validator node (Basic) or two validator nodes (Standard).
 
 ![Prijscategorieën](./media/overview/pricing-tiers.png)
 
-De laag *standaard* biedt naast twee validator-knoop punten 2 *vCores* voor elke trans actie en een validatie knooppunt, terwijl de Basic-laag een 1 vCore-configuratie biedt.  Door 2 vCores voor trans actie-en validatie knooppunten aan te bieden, kan 1 vCore worden toegewezen aan het quorum grootboek terwijl de resterende 1 vCore kan worden gebruikt voor andere infrastructuur services, waardoor de prestaties van werk belastingen van productie Block Chain optimaal zijn. Zie [prijzen voor Azure Block chain-services](https://azure.microsoft.com/pricing/details/blockchain-service)voor meer informatie over prijs informatie.
+In addition to offering two validator nodes, the *Standard* tier provides 2 *vCores* for each transaction and validator node whereas the Basic tier offers a 1 vCore configuration.  By offering 2 vCores for transaction and validator nodes, 1 vCore can be dedicated to the Quorum ledger while the remaining 1 vCore can be used for other infrastructure-related services, ensuring optimal performance for production blockchain workloads. For more information on pricing details, see [Azure Blockchain Service pricing](https://azure.microsoft.com/pricing/details/blockchain-service).
 
-### <a name="security-and-maintenance"></a>Beveiliging en onderhoud
+### <a name="security-and-maintenance"></a>Security and maintenance
 
-Nadat u uw eerste Block Chain-lid hebt ingericht, hebt u de mogelijkheid om extra transactie knooppunten aan uw lid toe te voegen.  Transactie knooppunten worden standaard beveiligd via firewall regels en vereisen configuratie voor toegang.  Daarnaast versleutelen alle transactie knooppunten gegevens in beweging via TLS.  Er bestaan meerdere opties voor het beveiligen van toegang tot transactie knooppunten, zoals firewall regels, basis verificatie, toegangs sleutels en integratie van Azure Active Directory. Zie [Trans Action nodes configureren](configure-transaction-nodes.md) en [Azure Active Directory toegang configureren](configure-aad.md)voor meer informatie.
+After provisioning your first blockchain member, you have the ability to add additional transaction nodes to your member.  By default, transaction nodes are secured through firewall rules and require configuration for access.  Additionally, all transaction nodes encrypt data in motion via TLS.  Multiple options exist for securing transaction node access, including firewall rules, basic authentication, access keys, and Azure Active Directory integration. For more information, see [configure transaction nodes](configure-transaction-nodes.md) and [configure Azure Active Directory access](configure-aad.md).
 
-Als beheerde service zorgt Azure Block Chain-service ervoor dat de knoop punten van uw Block Chain-lid worden bijgewerkt met het nieuwste besturings systeem van de host en de software stack-updates van het groot boek, geconfigureerd voor hoge Beschik baarheid (alleen Standard-laag), waardoor veel van de DevOps vereist voor traditionele IaaS Block Chain-knoop punten.  Zie [ondersteunde Azure Block Chain Service Ledger-versies](ledger-versions.md)voor meer informatie over patches en updates.
+As a managed service, Azure Blockchain Service ensures that your blockchain member's nodes are patched with the latest host operating system and ledger software stack updates, configured for high-availability (Standard tier only), eliminating much of the DevOps required for traditional IaaS blockchain nodes.  For more information on patching and updates, see [supported Azure Blockchain Service ledger versions](ledger-versions.md).
 
 ### <a name="monitoring-and-logging"></a>Bewaking en logboekregistratie
 
-Daarnaast biedt de Azure Block Chain-service uitgebreide metrische gegevens via Azure Monitor service die inzichten biedt in het CPU-, geheugen-en opslag gebruik van knoop punten.  Azure Monitor biedt ook nuttige inzichten in Block chain-netwerk activiteit, zoals trans acties en blokken ook niet gebruikt, de transactie wachtrij diepte en actieve verbindingen.  Metrische gegevens kunnen worden aangepast om weer gaven te bieden in de inzichten die belang rijk zijn voor uw Block Chain-toepassing.  Daarnaast kunnen drempel waarden worden gedefinieerd via waarschuwingen, waardoor gebruikers acties activeren, zoals het verzenden van een e-mail of SMS-bericht, het uitvoeren van een logische app, een Azure function of het verzenden naar een aangepaste webhook.
+In addition, Azure Blockchain Service provides rich metrics through Azure Monitor Service providing insights into nodes' CPU, memory, and storage usage.  Azure Monitor also provides helpful insights into blockchain network activity such as transactions and blocks mined, transaction queue depth, and active connections.  Metrics can be customized to provide views into the insights that are important to your blockchain application.  In addition, thresholds can be defined through alerts enabling users to trigger actions such as sending an email or text message, running a Logic App, Azure Function or sending to a custom-defined webhook.
 
 ![Metrische gegevens](./media/overview/metrics.png)
 
-Via Azure Log Analytics kunnen gebruikers logboeken weer geven die betrekking hebben op het quorum grootboek of andere belang rijke informatie, zoals pogingen tot verbinding met de transactie knooppunten.
+Through Azure Log Analytics, users can view logs related to the Quorum ledger, or other important information such as attempted connections to the transaction nodes.
 
 ## <a name="built-in-consortium-management"></a>Ingebouwd consortiumbeheer
 
-Wanneer u uw eerste Block Chain-lid implementeert, moet u lid worden van of een nieuw consortium maken.  Een consortium is een logische groep die wordt gebruikt voor het beheren van het bestuur en de connectiviteit tussen Block Chain-leden die een proces voor meerdere partijen verwerken.  De Azure Block Chain-service biedt ingebouwde besturings elementen voor beheer via vooraf gedefinieerde slimme contracten die bepalen welke acties leden van het consortium kunnen ondernemen.  Deze governance-besturings elementen kunnen zo nodig worden aangepast door de beheerder van het consortium. Wanneer u een nieuw consortium maakt, is uw Block Chain-lid de standaard beheerder van het consortium, waardoor andere partijen kunnen uitnodigen om deel te nemen aan uw consortium.  U kunt alleen lid worden van een consortium als u eerder bent uitgenodigd.  Wanneer u een consortium samenvoegt, is uw Block Chain-lid onderhevig aan de governance-besturings elementen die door de beheerder van het consortium worden geplaatst.
+When deploying your first blockchain member, you either join or create a new consortium.  A consortium is a logical group used to manage the governance and connectivity between blockchain members who transact in a multi-party process.  Azure Blockchain Service provides built-in governance controls through pre-defined smart contracts, which determine what actions members in the consortium can take.  These governance controls can be customized as necessary by the administrator of the consortium. When you create a new consortium, your blockchain member is the default administrator of the consortium, enabling the ability to invite other parties to join your consortium.  You can join a consortium only if you have been previously invited.  When joining a consortium, your blockchain member is subject to the governance controls put in place by the consortium's administrator.
 
-![Consortium beheer](./media/overview/consortium.png)
+![Consortium management](./media/overview/consortium.png)
 
-Acties voor consortium beheer, zoals het toevoegen en verwijderen van leden uit een consortium, kunnen worden geopend via Power shell en een REST API. U kunt een consortium programmatisch beheren met behulp van gemeen schappelijke interfaces, in plaats van op op volheid gebaseerde slimme contracten te wijzigen en te verzenden. Zie [consortium Management](consortium.md)voor meer informatie.
+Consortium management actions such as adding and removing members from a consortium can be accessed through PowerShell and a REST API. You can programmatically manage a consortium using common interfaces rather than modifying and submitting solidity-based smart contracts. For more information, see [consortium management](consortium.md).
 
-## <a name="develop-using-familiar-development-tools"></a>Ontwikkelen met behulp van vertrouwde ontwikkel hulpprogramma's
+## <a name="develop-using-familiar-development-tools"></a>Develop using familiar development tools
 
-Op basis van het open-source quorum Ethereum, kunt u toepassingen voor de Azure Block Chain-service op dezelfde manier ontwikkelen als voor bestaande Ethereum-toepassingen. Met de Visual Studio code extension van Azure Block Chain Development Kit, kunnen ontwikkel aars werken met toonaangevende partners, zoals Truffle Suite, om slimme contracten te bouwen. Ontwikkel aars kunnen met behulp van de Azure Block Chain Development Kit-uitbrei ding een bestaand consortium maken of verbinden, zodat u uw slimme contracten vanuit één IDE kunt bouwen en implementeren. Met behulp van de Azure Block Chain Visual Studio code-extensie kunt u een bestaand consortium maken of verbinden zodat u uw slimme contracten vanuit één IDE kunt bouwen en implementeren. Zie voor meer informatie [Azure Block Chain Development Kit in de VS code Marketplace](https://aka.ms/vscodebcextension) en de [Gebruikers handleiding voor de Azure Block Chain Development Kit](https://aka.ms/vscodebcextensionwiki ).
+Based on the open-sourced Quorum Ethereum ledger, you can develop applications for Azure Blockchain Service the same way as you do for existing Ethereum applications. Working with leading industry partners, the Azure Blockchain Development Kit Visual Studio Code extension allows developers to leverage familiar tools like Truffle Suite to build smart contracts. Using the Azure Blockchain Development Kit extension, developers can create, or connect to and existing consortium so that you can build and deploy your smart contracts all from one IDE. Using the Azure Blockchain Visual Studio Code extension, you can create or connect to an existing consortium so that you can build and deploy your smart contracts all from one IDE. For more information, see [Azure Blockchain Development Kit in the VS Code marketplace](https://aka.ms/vscodebcextension)  and the [Azure Blockchain Development Kit user guide](https://aka.ms/vscodebcextensionwiki ).
 
 ## <a name="support-and-feedback"></a>Ondersteuning en feedback
 
-Hebt u hulp nodig of hebt u feedback?
+Need help or have feedback?
 
-* Ga naar de [Azure Block Chain-blog](https://azure.microsoft.com/blog/topics/blockchain/), het [micro soft tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)en het [Azure Block Chain-Forum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
+* Visit the [Azure Blockchain blog](https://azure.microsoft.com/blog/topics/blockchain/), [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain), and [Azure Blockchain forum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain).
 * Als u feedback wilt geven of een nieuwe functie wilt aanvragen, maakt u een vermelding via [UserVoice](https://feedback.azure.com/forums/921130-azure-blockchain-service).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Om aan de slag te gaan, kunt u een Snelstartgids of meer informatie over deze resources vinden.
-* [Een Block Chain-lid maken met behulp van de Azure Portal](create-member.md) of [een Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
-* Zie de [pagina met prijzen](https://azure.microsoft.com/pricing/details/blockchain-service)voor kosten vergelijkingen en reken machines.
-* Uw eerste app bouwen met behulp van de [Azure Block Chain Development Kit](https://github.com/Azure-Samples/blockchain-devkit)
-* [Gebruikers handleiding](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki) voor de Azure Block Chain VSCode-extensie
+To get started, try a quickstart or find out more details from these resources.
+* [Create a blockchain member using the Azure portal](create-member.md) or [create a blockchain member using Azure CLI](create-member-cli.md)
+* For cost comparisons and calculators, see the [pricing page](https://azure.microsoft.com/pricing/details/blockchain-service).
+* Build your first app using the [Azure Blockchain Development Kit](https://github.com/Azure-Samples/blockchain-devkit)
+* Azure Blockchain VSCode Extension [user guide](https://github.com/Microsoft/vscode-azure-blockchain-ethereum/wiki)

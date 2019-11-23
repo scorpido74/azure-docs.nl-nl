@@ -1,38 +1,38 @@
 ---
-title: Uw omgeving configureren voor een Blueprint Operator
-description: Meer informatie over het configureren van uw Azure-omgeving voor gebruik met de standaard functie voor op rollen gebaseerde toegangs beheer (RBAC) op basis van de blauw druk-operator.
+title: Setup your environment for Blueprint Operator
+description: Learn how to configure your Azure environment for use with the Blueprint Operator built-in role-based access control (RBAC) role.
 ms.date: 08/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: f4b999354e31afed56a3a5f5a35a80887292e83f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 671ac3aaf42bddb3e775baec6838e4c271c4e855
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960384"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406379"
 ---
 # <a name="configure-your-environment-for-a-blueprint-operator"></a>Uw omgeving configureren voor een Blueprint Operator
 
-Het beheer van uw blauw druk-definities en blauw druk-toewijzingen kunnen worden toegewezen aan verschillende teams. Het is gebruikelijk dat een architect of governance-team verantwoordelijk is voor het levenscyclus beheer van uw blauw drukken definities terwijl een operationeel team verantwoordelijk is voor het beheren van toewijzingen van deze centraal beheerde blauw drukken.
+The management of your blueprint definitions and blueprint assignments can be assigned to different teams. It's common for an architect or governance team to be responsible for the lifecycle management of your blueprint definitions while an operations team is responsible for managing assignments of those centrally controlled blueprint definitions.
 
-Het ingebouwde op rollen gebaseerde toegangs beheer (RBAC) van de **operator blauw** drukken is speciaal ontworpen voor gebruik in dit type scenario. Met deze rol kunnen teams van bewerkingen type de toewijzing van de definities van de blauw druk van de organisaties beheren, maar niet de mogelijkheid om deze te wijzigen. Hiervoor moet u een configuratie in uw Azure-omgeving hebben en in dit artikel worden de stappen beschreven die nodig zijn.
+The **Blueprint Operator** built-in role-based access control (RBAC) is designed specifically for use in this type of scenario. The role allows for operations type teams to manage the assignment of the organizations blueprint definitions, but not the ability to modify them. Doing so requires some configuration in your Azure environment and this article explains the necessary steps.
 
-## <a name="grant-permission-to-the-blueprint-operator"></a>Toestemming geven voor de blauw druk-operator
+## <a name="grant-permission-to-the-blueprint-operator"></a>Grant permission to the Blueprint Operator
 
-De eerste stap is het verlenen van de rol van de **blauw druk-operator** aan het account of de beveiligings groep (aanbevolen) die aan blauw drukken gaat toewijzen. Deze actie moet worden uitgevoerd op het hoogste niveau in de hiërarchie van de beheer groep, die alle beheer groepen en abonnementen omvat die het operationele team toegang moet geven tot een blauw druk toewijzen. Het is raadzaam om het principe van minimale bevoegdheden te volgen bij het verlenen van deze machtigingen.
+The first step is to grant the **Blueprint Operator** role to the account or security group (recommended) that is going to be assigning blueprints. This action should be done at the highest level in the management group hierarchy that encompasses all of the management groups and subscriptions the operations team should have blueprint assignment access to. It's recommended to follow the principle of least privilege when granting these permissions.
 
-1. Aanbevelingen [Een beveiligings groep maken en leden toevoegen](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+1. (Recommended) [Create a security group and add members](../../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
-1. [Een roltoewijzing](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) van de **operator voor blauw** drukken toevoegen aan het account of de beveiligings groep
+1. [Add a role assignment](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) of **Blueprint Operator** to the account or security group
 
-## <a name="user-assign-managed-identity"></a>Door gebruiker beheerde identiteit toewijzen
+## <a name="user-assign-managed-identity"></a>User-assign managed identity
 
-Een definitie van een blauw druk kan door het systeem toegewezen of door de gebruiker toegewezen beheerde identiteiten gebruiken. Bij gebruik van de functie van de **blauw druk-operator** moet de definitie van de blauw druk echter worden geconfigureerd voor gebruik van een door de gebruiker toegewezen beheerde identiteit. Daarnaast moet aan het account of de beveiligings groep die de functie van de **blauw druk-operator** wordt verleend, de rol **Managed Identity-operator** worden verleend voor de door de gebruiker toegewezen beheerde identiteit. Zonder deze machtiging mislukken de opdrachten voor blauw drukken vanwege onvoldoende machtigingen.
+A blueprint definition can use either system-assigned or user-assigned managed identities. However, when using the **Blueprint Operator** role, the blueprint definition needs to be configured to use a user-assigned managed identity. Additionally, the account or security group being granted the **Blueprint Operator** role needs to be granted the **Managed Identity Operator** role on the user-assigned managed identity. Without this permission, blueprint assignments fail because of lack of permissions.
 
-1. [Een door de gebruiker toegewezen beheerde identiteit maken](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) voor gebruik door een toegewezen blauw druk
+1. [Create a user-assigned managed identity](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity) for use by an assigned blueprint
 
-1. [Voeg een roltoewijzing](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) van de **operator Managed Identity** toe aan het account of de beveiligings groep. Bereik de roltoewijzing aan de nieuwe door de gebruiker toegewezen beheerde identiteit.
+1. [Add a role assignment](../../../role-based-access-control/role-assignments-portal.md#add-a-role-assignment) of **Managed Identity Operator** to the account or security group. Scope the role assignment to the new user-assigned managed identity.
 
-1. Wijs als de **blauw druk-operator** [een blauw druk toe](../create-blueprint-portal.md#assign-a-blueprint) die gebruikmaakt van de nieuwe door de gebruiker toegewezen beheerde identiteit.
+1. As the **Blueprint Operator**, [assign a blueprint](../create-blueprint-portal.md#assign-a-blueprint) that uses the new user-assigned managed identity.
 
 ## <a name="next-steps"></a>Volgende stappen
 

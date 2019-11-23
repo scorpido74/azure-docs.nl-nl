@@ -1,38 +1,32 @@
 ---
-title: Problemen met Azure Block Chain Workbench oplossen
-description: Problemen met een Azure Block Chain Workbench preview-toepassing oplossen.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Azure Blockchain Workbench troubleshooting
+description: How to troubleshoot an Azure Blockchain Workbench Preview application.
 ms.date: 10/14/2019
 ms.topic: article
-ms.service: azure-blockchain
-ms.reviewer: zeyadr
-manager: femila
-ms.openlocfilehash: 3032a81a4411cb162a335189ca65b845f8d6305f
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.reviewer: brendal
+ms.openlocfilehash: ef4bce4dfba77aafa9b86c6877c153534b54636e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329083"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324302"
 ---
-# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Preview-versie van Azure Block Chain Workbench oplossen
+# <a name="azure-blockchain-workbench-preview-troubleshooting"></a>Azure Blockchain Workbench Preview troubleshooting
 
-Er is een Power shell-script beschikbaar om u te helpen bij het oplossen van problemen met ontwikkel aars of ondersteuning. Het script genereert een samen vatting en verzamelt gedetailleerde logboeken voor het oplossen van problemen. Verzamelde logboeken zijn onder andere:
+A PowerShell script is available to assist with developer debugging or support. The script generates a summary and collects detailed logs for troubleshooting. Collected logs include:
 
-* Block chain-netwerk, zoals Ethereum
-* Micro services van Block Chain workbench
+* Blockchain network, such as Ethereum
+* Blockchain Workbench microservices
 * Application Insights
-* Azure-bewaking (Azure Monitor-Logboeken)
+* Azure Monitoring (Azure Monitor logs)
 
-U kunt de informatie gebruiken om de volgende stappen te bepalen en de hoofd oorzaak van problemen te bepalen.
+You can use the information to determine next steps and determine root cause of issues.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
-## <a name="troubleshooting-script"></a>Probleemoplossings script
+## <a name="troubleshooting-script"></a>Troubleshooting script
 
-Het script voor het oplossen van problemen met Power shell is beschikbaar op GitHub. [Download een ZIP-bestand ](https://github.com/Azure-Samples/blockchain/archive/master.zip) of kloon de voorbeeld-web-app vanuit GitHub.
+The PowerShell troubleshooting script is available on GitHub. [Download een ZIP-bestand ](https://github.com/Azure-Samples/blockchain/archive/master.zip) of kloon de voorbeeld-web-app vanuit GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/blockchain.git
@@ -41,40 +35,40 @@ git clone https://github.com/Azure-Samples/blockchain.git
 ## <a name="run-the-script"></a>Het script uitvoeren
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
-Voer het script `collectBlockchainWorkbenchTroubleshooting.ps1` uit voor het verzamelen van Logboeken en het maken van een ZIP-bestand met een map met informatie over het oplossen van problemen. Bijvoorbeeld:
+Run the `collectBlockchainWorkbenchTroubleshooting.ps1` script to collect logs and create a ZIP file containing a folder of troubleshooting information. Bijvoorbeeld:
 
 ``` powershell
 collectBlockchainWorkbenchTroubleshooting.ps1 -SubscriptionID "<subscription_id>" -ResourceGroupName "workbench-resource-group-name"
 ```
-Het script accepteert de volgende para meters:
+The script accepts the following parameters:
 
 | Parameter  | Beschrijving | Verplicht |
 |---------|---------|----|
-| Abonnements | SubscriptionID om alle resources te maken of te zoeken. | Ja |
-| ResourceGroupName | De naam van de Azure-resource groep waar Block Chain Workbench is geïmplementeerd. | Ja |
-| Output directory | Pad om de uitvoer te maken. ZIP-bestand. Als niet wordt opgegeven, wordt standaard de huidige map gebruikt. | Nee |
-| LookbackHours | Het aantal uren dat moet worden gebruikt bij het ophalen van telemetrie. De standaard waarde is 24 uur. De maximum waarde is 90 uur | Nee |
-| OmsSubscriptionId | De abonnements-ID waar Azure Monitor logboeken worden geïmplementeerd. Geef deze para meter alleen door als de Azure Monitor logboeken voor het block chain-netwerk zijn geïmplementeerd buiten de resource groep Block Chain Workbench.| Nee |
-| OmsResourceGroup |De resource groep waar Azure Monitor logboeken worden geïmplementeerd. Geef deze para meter alleen door als de Azure Monitor logboeken voor het block chain-netwerk zijn geïmplementeerd buiten de resource groep Block Chain Workbench.| Nee |
-| OmsWorkspaceName | De naam van de Log Analytics werkruimte. Geef deze para meter alleen door als de Azure Monitor logboeken voor het block chain-netwerk zijn geïmplementeerd buiten de resource groep Block Chain workbench | Nee |
+| SubscriptionID | SubscriptionID to create or locate all resources. | Ja |
+| ResourceGroupName | Name of the Azure Resource Group where Blockchain Workbench has been deployed. | Ja |
+| OutputDirectory | Path to create the output .ZIP file. If not specified, defaults to the current directory. | Nee |
+| LookbackHours | Number of hours to use when pulling telemetry. Default value is 24 hours. Maximum value is 90 hours | Nee |
+| OmsSubscriptionId | The subscription ID where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Nee |
+| OmsResourceGroup |The resource group where Azure Monitor logs is deployed. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group.| Nee |
+| OmsWorkspaceName | The Log Analytics workspace name. Only pass this parameter if the Azure Monitor logs for the blockchain network is deployed outside of Blockchain Workbench's resource group | Nee |
 
-## <a name="what-is-collected"></a>Wat wordt er verzameld?
+## <a name="what-is-collected"></a>What is collected?
 
-Het ZIP-bestand van de uitvoer bevat de volgende mapstructuur:
+The output ZIP file contains the following folder structure:
 
-| Map of bestand | Beschrijving  |
+| Folder or File | Beschrijving  |
 |---------|---------|
-| \Summary.txt | Samen vatting van het systeem |
-| \Metrics\blockchain | Metrische gegevens over de Block Chain |
-| \Metrics\Workbench | Metrische gegevens over de workbench |
-| \Details\Blockchain | Gedetailleerde logboeken over de Block Chain |
-| \Details\Workbench | Gedetailleerde logboeken over de workbench |
+| \Summary.txt | Summary of the system |
+| \Metrics\blockchain | Metrics about the blockchain |
+| \Metrics\Workbench | Metrics about the workbench |
+| \Details\Blockchain | Detailed logs about the blockchain |
+| \Details\Workbench | Detailed logs about the workbench |
 
-Het overzichts bestand geeft u een moment opname van de algemene status van de toepassing en de status van de toepassing. De samen vatting biedt aanbevolen acties, markeert de belangrijkste fouten en meta gegevens over het uitvoeren van services.
+The summary file gives you a snapshot of the overall state of the application and health of the application. The summary provides recommended actions, highlights top errors, and metadata about running services.
 
-De map **Metrics** bevat de metrische gegevens van verschillende systeem onderdelen gedurende een bepaalde periode. Het uitvoer bestand `\Details\Workbench\apiMetrics.txt` bevat bijvoorbeeld een samen vatting van verschillende reactie codes en reactie tijden in de verzamelings periode. De map **Details** bevat gedetailleerde logboeken voor het oplossen van specifieke problemen met Workbench of het onderliggende Block chain-netwerk. @No__t-0 bevat bijvoorbeeld een lijst met de meest recente uitzonde ringen die zijn opgetreden in het systeem, wat handig is voor het oplossen van fouten met slimme contracten of interacties met de Block chain. 
+The **Metrics** folder contains metrics of various system components over time. For example, the output file `\Details\Workbench\apiMetrics.txt` contains a summary of different response codes, and response times throughout the collection period. The **Details** folder contains detailed logs for troubleshooting specific issues with Workbench or the underlying blockchain network. For example, `\Details\Workbench\Exceptions.csv` contains a list of the most recent exceptions that have occurred in the system, which is useful for troubleshooting errors with smart contracts or interactions with the blockchain. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Probleemoplossings gids voor Azure Block Chain Workbench Application Insights](https://aka.ms/workbenchtroubleshooting)
+> [Azure Blockchain Workbench Application Insights troubleshooting guide](https://aka.ms/workbenchtroubleshooting)

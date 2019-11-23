@@ -1,21 +1,21 @@
 ---
-title: Een zoek index maken in de Azure Portal
+title: Create a search index in the Azure portal
 titleSuffix: Azure Cognitive Search
-description: Gebruik de wizard gegevens importeren om uw eerste zoek index in azure Cognitive Search te maken, te laden en op te vragen.
+description: In this portal quickstart, learn how to use the Import Data wizard to create, load, and query your first search index in Azure Cognitive Search.
 author: HeidiSteen
 manager: nitinme
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: ee4e9bd5487382ebb6f57996aac5d3de1ff6162a
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: be2425d97573e7990ea7f0dfd4c2d999e85fe922
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890066"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407002"
 ---
-# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quick Start: een Azure Cognitive Search-index maken in de Azure Portal
+# <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Quickstart: Create an Azure Cognitive Search index in the Azure portal
 > [!div class="op_single_selector"]
 > * [Portal](search-get-started-portal.md)
 > * [C#](search-get-started-dotnet.md)
@@ -25,22 +25,15 @@ ms.locfileid: "73890066"
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-Gebruik de portal om snel op concepten te komen en interessante query's te schrijven voor een index binnen enkele minuten.
+Use the portal's **Import data** wizard and **Search explorer** tools to quickly ramp up on concepts, and write interesting queries against an index within minutes.
 
-> [!div class="checklist"]
-> * Begin met een gratis openbare op Azure gehoste set voorbeeldgegevens
-> * De wizard **gegevens importeren** in azure Cognitive Search uitvoeren om gegevens te laden en een index te genereren
-> * Bewaak de voortgang van de indexering in de portal
-> * Bekijk een bestaande index en opties om deze te wijzigen
-> * Probeer zoekopdrachten in volledige tekst, filters, facetten, fuzzy zoekopdrachten en geosearch met **Search Explorer**
-
-Als de hulpprogram ma's te beperkt zijn, kunt u een [op code gebaseerde inleiding voor het Program meren van Azure Cognitive Search in .net](search-howto-dotnet-sdk.md) overwegen of [postman gebruiken voor het maken van rest API-aanroepen](search-get-started-postman.md). 
+If the tools are too limiting, you can consider a [code-based introduction to programming Azure Cognitive Search in .NET](search-howto-dotnet-sdk.md) or use [Postman for making REST API calls](search-get-started-postman.md). 
 
 Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) aan voordat u begint. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-[Een Azure Cognitive Search-service maken](search-create-service-portal.md) of [een bestaande service vinden](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) onder uw huidige abonnement. U kunt een gratis service voor deze Quick Start gebruiken. 
+[Create an Azure Cognitive Search service](search-create-service-portal.md) or [find an existing service](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) under your current subscription. You can use a free service for this quickstart. 
 
 ### <a name="check-for-space"></a>Controleren of er voldoende ruimte is
 
@@ -54,30 +47,30 @@ Op secties in het servicedashboard wordt weergegeven hoeveel indexen, indexeerfu
 
 Zoekopdrachten worden herhaald over een [*index*](search-what-is-an-index.md) die doorzoekbare gegevens, metagegevens en aanvullende constructies bevat, die worden gebruikt om bepaald zoekgedrag te optimaliseren.
 
-Voor deze zelf studie gebruiken we een ingebouwde voor beeld-gegevensset die met behulp van een [*Indexeer functie*](search-indexer-overview.md) kan worden verkend via de [wizard **gegevens importeren** ](search-import-data-portal.md). Een indexeerfunctie is een bronspecifieke verkenner die metagegevens en inhoud uit ondersteunde Azure-gegevensbronnen kan lezen. Normaal gesproken worden indexeerfuncties via een programma gebruikt, maar in de portal zijn ze toegankelijk via de wizard **Gegevens importeren**. 
+For this tutorial, we use a built-in sample dataset that can be crawled using an [*indexer*](search-indexer-overview.md) via the [**Import data** wizard](search-import-data-portal.md). Een indexeerfunctie is een bronspecifieke verkenner die metagegevens en inhoud uit ondersteunde Azure-gegevensbronnen kan lezen. Normaal gesproken worden indexeerfuncties via een programma gebruikt, maar in de portal zijn ze toegankelijk via de wizard **Gegevens importeren**. 
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Stap 1: de wizard Gegevens importeren starten en een gegevensbron maken
 
-1. Klik op het dash board van de Azure Cognitive Search-service op **gegevens importeren** op de opdracht balk om een zoek index te maken en in te vullen.
+1. On the Azure Cognitive Search service dashboard, click **Import data** on the command bar to create and populate a search index.
 
    ![Opdracht Gegevens importeren](media/search-get-started-portal/import-data-cmd.png)
 
-2. Klik in de wizard op **verbinding maken met uw gegevens > voor** **beelden** > **hotels-voor beeld**. Deze gegevensbron is ingebouwd. Als u uw eigen gegevensbron zou maken, zou u een naam, het type en de verbindingsgegevens moeten opgeven. Zodra de gegevensbron is gemaakt, wordt deze een bestaande gegevensbron genoemd die opnieuw kan worden gebruikt voor andere bewerkingen.
+2. In the wizard, click **Connect to your data** > **Samples** > **hotels-sample**. Deze gegevensbron is ingebouwd. Als u uw eigen gegevensbron zou maken, zou u een naam, het type en de verbindingsgegevens moeten opgeven. Zodra de gegevensbron is gemaakt, wordt deze een bestaande gegevensbron genoemd die opnieuw kan worden gebruikt voor andere bewerkingen.
 
    ![Voorbeeldgegevensset selecteren](media/search-get-started-portal/import-datasource-sample.png)
 
 3. Ga door naar de volgende pagina.
 
-### <a name="step-2---skip-the-enrich-content-page"></a>Stap 2: de pagina verrijkte inhoud overs Laan
+### <a name="step-2---skip-the-enrich-content-page"></a>Step 2 - Skip the "Enrich content" page
 
-De wizard ondersteunt het maken van een [AI-verrijkings pijplijn](cognitive-search-concept-intro.md) voor het opnemen van de Cognitive Services AI-algoritmen in indexering. 
+The wizard supports the creation of an [AI enrichment pipeline](cognitive-search-concept-intro.md) for incorporating the Cognitive Services AI algorithms into indexing. 
 
 Deze stap slaan we nu even over en we gaan naar **Doelindex aanpassen**.
 
    ![Stap voor cognitieve vaardigheden overslaan](media/search-get-started-portal/skip-cog-skill-step.png)
 
 > [!TIP]
-> U kunt een voor beeld van een AI-indexering door lopen in een [Snelstartgids](cognitive-search-quickstart-blob.md) of [zelf studie](cognitive-search-tutorial-blob.md).
+> You can step through an AI-indexing example in a [quickstart](cognitive-search-quickstart-blob.md) or [tutorial](cognitive-search-tutorial-blob.md).
 
 ### <a name="step-3---configure-index"></a>Stap 3: index configureren
 
@@ -85,7 +78,7 @@ Het maken van een index is meestal een op code gebaseerde oefening die is voltoo
 
 Velden bevatten gegevenstypen en kenmerken. De selectievakjes bovenaan zijn *indexkenmerken* die bepalen hoe het veld wordt gebruikt.
 
-* **Ophalen mogelijk** betekent dat dit veld wordt weergegeven in de lijst met zoekresultaten. U kunt afzonderlijke velden markeren als uitstel voor de zoek resultaten door dit selectie vakje uit te scha kelen, bijvoorbeeld voor velden die alleen worden gebruikt in filter expressies.
+* **Ophalen mogelijk** betekent dat dit veld wordt weergegeven in de lijst met zoekresultaten. You can mark individual fields as off limits for search results by clearing this checkbox, for example for fields used only in filter expressions.
 * **Sleutel** is de unieke id van het document. Het is altijd een tekenreeks en deze is vereist.
 * Met de kenmerken **Filterbaar**, **Sorteerbaar** en **Geschikt voor facetten** bepaalt u of velden in een filter, een sorteervolgorde of een facetnavigatiestructuur worden gebruikt.
 * **Doorzoekbaar** betekent dat een veld is opgenomen in een zoekopdracht in volledige tekst. Tekenreeksen zijn doorzoekbaar. Numerieke velden en Booleaanse waarden zijn vaak gemarkeerd als niet doorzoekbaar.
@@ -96,9 +89,9 @@ Standaard wordt met de wizard de gegevensbron gescand op unieke id's als basis v
 
 1. Accepteer de standaardwaarden. 
 
-   Als u de wizard een tweede keer opnieuw start met behulp van een bestaande hotels-gegevens bron, wordt de index niet geconfigureerd met de standaard kenmerken. Voor toekomstige importbewerkingen moet u de kenmerken handmatig selecteren. 
+   If you rerun the wizard a second time using an existing hotels data source, the index won't be configured with default attributes. Voor toekomstige importbewerkingen moet u de kenmerken handmatig selecteren. 
 
-   ![Index gegenereerde hotels](media/search-get-started-portal/hotelsindex.png)
+   ![Generated hotels index](media/search-get-started-portal/hotelsindex.png)
 
 2. Ga door naar de volgende pagina.
 
@@ -111,7 +104,7 @@ Dit object definieert een uitvoerbaar proces. U kunt een terugkerend schema inst
 
 Klik op **Verzenden** om de indexeerfunctie te maken en tegelijkertijd uit te voeren.
 
-  ![Indexeer functie voor hotels](media/search-get-started-portal/hotels-indexer.png)
+  ![hotels indexer](media/search-get-started-portal/hotels-indexer.png)
 
 ## <a name="monitor-progress"></a>Voortgang controleren
 
@@ -123,15 +116,15 @@ Het kan een paar minuten duren voordat in de portal de pagina is bijgewerkt, maa
 
 ## <a name="view-the-index"></a>De index bekijken
 
-Op de pagina hoofd service vindt u koppelingen naar de resources die in de Azure Cognitive Search-service zijn gemaakt.  Als u de index wilt bekijken die u zojuist hebt gemaakt, klikt u op **Indexen** in de lijst met koppelingen. 
+The main service page provides links to the resources created in your Azure Cognitive Search service.  Als u de index wilt bekijken die u zojuist hebt gemaakt, klikt u op **Indexen** in de lijst met koppelingen. 
 
-Wacht tot de portal pagina is vernieuwd. Na enkele minuten ziet u de index met het aantal documenten en de opslag grootte.
+Wait for the portal page to refresh. After a few minutes, you should see the index with a document count and storage size.
 
    ![Lijst met indexen op het servicedashboard](media/search-get-started-portal/indexes-list.png)
 
-In deze lijst kunt u op de voor *beeld-* index van hotels klikken die u zojuist hebt gemaakt, het index schema weer geven. en eventueel nieuwe velden toevoegen. 
+From this list, you can click on the *hotels-sample* index that you just created, view the index schema. en eventueel nieuwe velden toevoegen. 
 
-Op het tabblad **Velden** wordt het indexschema getoond. Scroll naar de onderkant van de lijst om een nieuw veld in te voeren. In de meeste gevallen kunt u geen bestaande velden wijzigen. Bestaande velden hebben een fysieke weer gave in azure Cognitive Search en zijn dus niet-wijzigbaar, niet zelfs in code. Als u een bestaand veld fundamenteel wilt wijzigen, maakt u een nieuwe index en verwijdert u het oorspronkelijke veld.
+Op het tabblad **Velden** wordt het indexschema getoond. Scroll naar de onderkant van de lijst om een nieuw veld in te voeren. In de meeste gevallen kunt u geen bestaande velden wijzigen. Existing fields have a physical representation in Azure Cognitive Search and are thus non-modifiable, not even in code. Als u een bestaand veld fundamenteel wilt wijzigen, maakt u een nieuwe index en verwijdert u het oorspronkelijke veld.
 
    ![voorbeeld van indexdefinitie](media/search-get-started-portal/sample-index-def.png)
 
@@ -146,14 +139,14 @@ U zou nu een zoekindex moeten hebben die klaar is om query’s uit te voeren met
 **Search Explorer** kan alleen omgaan met [REST API-aanvragen](https://docs.microsoft.com/rest/api/searchservice/search-documents), maar er wordt syntaxis geaccepteerd voor [eenvoudige querysyntaxis](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) en [volledige Lucene-queryparser](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search), plus alle zoekparameters die beschikbaar zijn in bewerkingen voor [Search-document-REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples).
 
 > [!TIP]
-> De volgende stappen worden op 6m08s getoond in de [overzichts video van Azure Cognitive Search](https://channel9.msdn.com/Events/Connect/2016/138).
+> The following steps are demonstrated at 6m08s into the [Azure Cognitive Search Overview video](https://channel9.msdn.com/Events/Connect/2016/138).
 >
 
-1. Klik op **Search explorer** in de werkbalk.
+1. Klik op **Search explorer** in de opdrachtbalk.
 
    ![Opdracht Search Explorer](media/search-get-started-portal/search-explorer-cmd.png)
 
-2. Kies in de vervolg keuzelijst **index** de optie *hotels-voor beeld-index*. Klik op de vervolg keuzelijst **API-versie** om te zien welke rest api's beschikbaar zijn. Gebruik de algemeen beschik bare versie (2019-05-06) voor de onderstaande query's.
+2. From the **Index** dropdown, choose  *hotels-sample-index*. Click the **API Version** dropdown, to see which REST APIs are available. For the queries below, use the generally available version (2019-05-06).
 
    ![Index- en API-opdrachten](media/search-get-started-portal/search-explorer-changeindex.png)
 
@@ -169,19 +162,19 @@ U kunt termen en zinnen invoeren, vergelijkbaar met wat u in een zoekopdracht in
 
 #### <a name="example-string-query-searchspa"></a>Voorbeeld (tekenreeks): `search=spa`
 
-* De **Zoek** parameter wordt gebruikt om een zoek opdracht voor zoeken in volledige tekst in te voeren, in dit geval het retour neren van Hotel gegevens voor degenen met *beveiligd-wachtwoord* verificatie in een doorzoekbaar veld in het document.
+* The **search** parameter is used to input a keyword search for full text search, in this case, returning hotel data for those containing *spa* in any searchable field in the document.
 
 * Met **Search Explorer** worden resultaten geretourneerd in JSON. Deze indeling is uitgebreid en moeilijk te lezen als documenten een compacte structuur hebben. Dit is opzettelijk; dat het hele document zichtbaar is, is belangrijk voor ontwikkeldoeleinden, vooral tijdens het testen. Voor een betere gebruikerservaring moet u code schrijven waarmee [zoekresultaten](search-pagination-page-layout.md) belangrijke elementen weergeven.
 
-* Documenten bestaan uit alle velden die zijn gemarkeerd als ‘Ophalen mogelijk’ in de index. Als u index kenmerken wilt weer geven in de portal, klikt u op *hotels-voor beeld* in de lijst **indexen** .
+* Documenten bestaan uit alle velden die zijn gemarkeerd als ‘Ophalen mogelijk’ in de index. To view index attributes in the portal, click *hotels-sample* in the **Indexes** list.
 
 #### <a name="example-parameterized-query-searchspacounttruetop10"></a>Voorbeeld (geparameteriseerde query): `search=spa&$count=true&$top=10`
 
 * Het symbool **&** wordt gebruikt om zoekparameters toe te voegen. Deze kunnen in willekeurige volgorde worden opgegeven.
 
-* De para meter **$Count = True** retourneert het totale aantal geretourneerde documenten. Deze waarde verschijnt bovenaan de zoekresultaten. U kunt filterquery's controleren door de wijzigingen te controleren die door **$count=true** worden gerapporteerd. Lage aantallen geven aan dat uw filter werkt.
+* The **$count=true** parameter returns the total count of all documents returned. Deze waarde verschijnt bovenaan de zoekresultaten. U kunt filterquery's controleren door de wijzigingen te controleren die door **$count=true** worden gerapporteerd. Lage aantallen geven aan dat uw filter werkt.
 
-* De **$Top = 10** retourneert de hoogst geclassificeerde tien documenten uit het totaal. Standaard retourneert Azure Cognitive Search de eerste treffers van 50. U kunt dit aantal vergroten of verkleinen via **$top**.
+* The **$top=10** returns the highest ranked 10 documents out of the total. By default, Azure Cognitive Search returns the first 50 best matches. U kunt dit aantal vergroten of verkleinen via **$top**.
 
 ### <a name="filter-query"></a>De query filteren
 
@@ -189,7 +182,7 @@ Filters zijn opgenomen in de zoekopdrachten wanneer u de parameter **$filter** t
 
 #### <a name="example-filtered-searchbeachfilterrating-gt-4"></a>Voorbeeld (gefilterd): `search=beach&$filter=Rating gt 4`
 
-* De parameter **$filter** retourneert resultaten die voldoen aan de criteria die u hebt opgegeven. In dit geval zijn de classificaties groter dan 4.
+* De parameter **$filter** retourneert resultaten die voldoen aan de criteria die u hebt opgegeven. In this case, ratings greater than 4.
 
 * Filtersyntaxis is een OData-constructie. Zie [OData-syntaxis filteren](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) voor meer informatie.
 
@@ -199,18 +192,18 @@ Facetfilters zijn opgenomen in zoekopdrachten. U kunt de facetparameter gebruike
 
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Voorbeeld (gefacetteerd met bereikvermindering): `search=*&facet=Category&$top=2`
 
-* **search=** * is een lege zoekopdracht. Met een lege zoekopdracht wordt naar alles gezocht. Eén reden om een lege query in te dienen, is om de hele set documenten te filteren of als facet te gebruiken. U wilt bijvoorbeeld dat een facet navigatie structuur bestaat uit alle hotels in de index.
-* **facet** retourneert een navigatiestructuur die u kunt doorgeven aan een UI-besturingselement. Deze retourneert categorieën en een aantal. In dit geval zijn categorieën gebaseerd op een veld dat gemakkelijk een *categorie*wordt genoemd. Er is geen aggregatie in azure Cognitive Search, maar u kunt de aggregatie met behulp van `facet`benaderen. Dit geeft een telling van documenten in elke categorie.
+* **search=** * is een lege zoekopdracht. Met een lege zoekopdracht wordt naar alles gezocht. Eén reden om een lege query in te dienen, is om de hele set documenten te filteren of als facet te gebruiken. For example, you want a faceting navigation structure to consist of all hotels in the index.
+* **facet** retourneert een navigatiestructuur die u kunt doorgeven aan een UI-besturingselement. Deze retourneert categorieën en een aantal. In this case, categories are based on a field conveniently called *Category*. There is no aggregation in Azure Cognitive Search, but you can approximate aggregation via `facet`, which gives a count of documents in each category.
 
 * **$top=2** retourneert twee documenten, om te illustreren dat u `top` kunt gebruiken om het aantal resultaten te verlagen of te verhogen.
 
-#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Voor beeld (facet op numerieke waarden): `search=spa&facet=Rating`
+#### <a name="example-facet-on-numeric-values-searchspafacetrating"></a>Example (facet on numeric values): `search=spa&facet=Rating`
 
-* Deze query is facet voor classificatie, in een tekst zoekopdracht naar *beveiligd-wachtwoord*verificatie. De term *classificatie* kan worden opgegeven als een facet, omdat het veld is gemarkeerd als ophaalbaar, filterbaar en bruikbaar in de index. de waarden die het bevat (numeriek, 1 tot en met 5), zijn geschikt voor het categoriseren van vermeldingen in groepen.
+* This query is facet for rating, on a text search for *spa*. The term *Rating* can be specified as a facet because the field is marked as retrievable, filterable, and facetable in the index, and the values it contains (numeric, 1 through 5), are suitable for categorizing listings into groups.
 
 * Alleen filterbare velden kunnen als facet worden gebruikt. Alleen ophaalbare velden kunnen in de resultaten worden geretourneerd.
 
-* Het veld *classificatie* is een drijvende komma met dubbele precisie en de groepering is nauw keurige waarde. Zie [facet navigatie implementeren in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range)voor meer informatie over groeperen op interval (bijvoorbeeld ' 3 ster beoordelingen ', ' 4 ster waarderingen ' enzovoort).
+* The *Rating* field is double-precision floating point and the grouping will be by precise value. For more information on grouping by interval (for instance, "3 star ratings," "4 star ratings," etc.), see [How to implement faceted navigation in Azure Cognitive Search](https://docs.microsoft.com/azure/search/search-faceted-navigation#filter-based-on-a-range).
 
 
 ### <a name="highlight-query"></a> Zoekresultaten markeren
@@ -219,17 +212,17 @@ Markeren betekent het toevoegen van opmaak aan tekst die overeenkomt met het tre
 
 #### <a name="example-highlighter-searchbeachhighlightdescription"></a>Voorbeeld (gemarkeerd): `search=beach&highlight=Description`
 
-* In dit voor beeld is het geopgemaakte woord *strand* makkelijker te herkennen in het veld Beschrijving.
+* In this example, the formatted word *beach* is easier to spot in the description field.
 
 #### <a name="example-linguistic-analysis-searchbeacheshighlightdescription"></a>Voorbeeld (taalkundige analyse): `search=beaches&highlight=Description`
 
-* Zoek opdracht in volledige tekst herkent basis variaties in Word-formulieren. In dit geval bevatten de zoek resultaten gemarkeerde tekst voor het "strand" voor hotels die dat woord in hun Doorzoek bare velden hebben, in antwoord op een zoek opdracht naar tref woorden op "stranden". De resultaten kunnen verschillende vormen van hetzelfde woord bevatten vanwege taalkundige analyse. 
+* Full text search recognizes basic variations in word forms. In this case, search results contain highlighted text for "beach", for hotels that have that word in their searchable fields, in response to a keyword search on "beaches". De resultaten kunnen verschillende vormen van hetzelfde woord bevatten vanwege taalkundige analyse. 
 
-* Azure Cognitive Search ondersteunt 56-analyse functies van zowel Lucene als micro soft. De standaard die door Azure Cognitive Search wordt gebruikt, is de Standard lucene Analyzer.
+* Azure Cognitive Search supports 56 analyzers from both Lucene and Microsoft. The default used by Azure Cognitive Search is the standard Lucene analyzer.
 
 ### <a name="fuzzy-search"></a> Fuzzy zoekopdrachten uitproberen
 
-Standaard worden onjuist gespelde query termen, zoals *Seatle* voor "Seattle", niet in de normale zoek opdracht geretourneerd. Het volgende voorbeeld retourneert geen resultaten.
+By default, misspelled query terms, like *seatle* for "Seattle", fail to return matches in typical search. Het volgende voorbeeld retourneert geen resultaten.
 
 #### <a name="example-misspelled-term-unhandled-searchseatle"></a>Voorbeeld (verkeerd gespelde term, niet verwerkt): `search=seatle`
 
@@ -237,13 +230,13 @@ U kunt fuzzy zoekopdrachten gebruiken om spelfouten te omzeilen. Fuzzy zoekopdra
 
 #### <a name="example-misspelled-term-handled-searchseatlequerytypefull"></a>Voorbeeld (verkeerd gespelde term, verwerkt): `search=seatle~&queryType=full`
 
-In dit voor beeld worden documenten geretourneerd die overeenkomen met overeenkomsten op ' Seattle '.
+This example now returns documents that include matches on "Seattle".
 
 Als **queryType** niet is opgegeven, wordt standaard de eenvoudige queryparser gebruikt. De eenvoudige queryparser is sneller, maar als u gebruik wilt maken van fuzzy zoeken, reguliere expressies, zoeken op nabijheid of andere geavanceerde typen query's, dan hebt u de volledige syntaxis nodig.
 
-Fuzzy zoekopdrachten en zoekopdrachten met jokertekens hebben implicaties voor zoekresultaten. Taalkundige analyse wordt niet uitgevoerd op deze queryindelingen. Controleer voordat u fuzzy-en Joker tekens zoekt, [Hoe zoeken in volledige tekst werkt in Azure Cognitive Search](search-lucene-query-architecture.md#stage-2-lexical-analysis) en zoek naar de sectie over uitzonde ringen voor lexicale analyse.
+Fuzzy zoekopdrachten en zoekopdrachten met jokertekens hebben implicaties voor zoekresultaten. Taalkundige analyse wordt niet uitgevoerd op deze queryindelingen. Before using fuzzy and wildcard search, review [How full text search works in Azure Cognitive Search](search-lucene-query-architecture.md#stage-2-lexical-analysis) and look for the section about exceptions to lexical analysis.
 
-Zie voor meer informatie over query scenario's die zijn ingeschakeld door de volledige query-parser, de [syntaxis van de opdracht lucene in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
+For more information about query scenarios enabled by the full query parser, see [Lucene query syntax in Azure Cognitive Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search).
 
 ### <a name="geo-search"></a> Georuimtelijk zoeken uitproberen
 
@@ -253,11 +246,11 @@ Georuimtelijk zoeken wordt ondersteund door het [gegevenstype edm.GeographyPoint
 
 Met dit voorbeeld worden alle resultaten voor positionele gegevens gefilterd die minder dan 5 kilometer zijn verwijderd van een opgegeven punt (opgegeven als coördinaten voor lengte- en breedtegraad). Door **$count** toe te voegen, kunt u zien hoeveel resultaten er worden geretourneerd als u de afstand of de coördinaten wijzigt.
 
-Georuimtelijk zoeken is handig als uw zoektoepassing een functie 'in mijn buurt zoeken' heeft of gebruikmaakt van kaartnavigatie. Dit is echter niet een zoekopdracht in volledige tekst. Als u gebruikers vereisten hebt om op naam te zoeken in een stad of land/regio, voegt u naast coördinaten ook velden toe met de namen stad of land/regio.
+Georuimtelijk zoeken is handig als uw zoektoepassing een functie 'in mijn buurt zoeken' heeft of gebruikmaakt van kaartnavigatie. Dit is echter niet een zoekopdracht in volledige tekst. If you have user requirements for searching on a city or country/region by name, add fields containing city or country/region names, in addition to coordinates.
 
 ## <a name="takeaways"></a>Opgedane kennis
 
-In deze zelf studie hebt u een snelle inleiding tot Azure Cognitive Search met behulp van de Azure Portal.
+This tutorial provided a quick introduction to Azure Cognitive Search using the Azure portal.
 
 U hebt geleerd hoe u een zoekindex maakt met de wizard **Gegevens importeren**. U hebt geleerd over [indexeerfuncties](search-indexer-overview.md), en over de basiswerkstroom voor indexontwerp, waaronder [ondersteunde wijzigingen in een gepubliceerde index](https://docs.microsoft.com/rest/api/searchservice/update-index).
 
@@ -265,18 +258,17 @@ Met behulp van de **Search Explorer** in de Azure Portal hebt u wat querysyntaxi
 
 U hebt ook geleerd hoe u in de portal kunt zoeken naar indexen, indexeerfuncties en gegevensbronnen. Met elke nieuwe gegevensbron in de toekomst kunt u de portal gebruiken om met een minimale inspanning snel de definities of de veldverzamelingen ervan te controleren.
 
-## <a name="clean-up"></a>Opruimen
+## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u in uw eigen abonnement werkt, is het een goed idee aan het einde van een project om te bepalen of u nog steeds de resources nodig hebt die u hebt gemaakt. Resources die actief zijn, kunnen kosten in rekening worden. U kunt resources afzonderlijk verwijderen of de resource groep verwijderen om de volledige set resources te verwijderen.
+When you're working in your own subscription, it's a good idea at the end of a project to identify whether you still need the resources you created. Resources left running can cost you money. You can delete resources individually or delete the resource group to delete the entire set of resources.
 
-U kunt resources vinden en beheren in de portal met behulp van de koppeling **alle resources** of **resource groepen** in het navigatie deel venster aan de linkerkant.
+You can find and manage resources in the portal, using the **All resources** or **Resource groups** link in the left-navigation pane.
 
-Als u een gratis service gebruikt, moet u er rekening mee houden dat u bent beperkt tot drie indexen, Indexeer functies en gegevens bronnen. U kunt afzonderlijke items in de Portal verwijderen om de limiet te blijven. 
+If you are using a free service, remember that you are limited to three indexes, indexers, and data sources. You can delete individual items in the portal to stay under the limit. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U kunt meer Azure Cognitive Search verkennen met behulp van de programmatische hulpprogram ma's:
+While the portal is useful for initial exploration and small tasks, reviewing the APIs early on will help you understand the concepts and workflow on a deeper level:
 
-* [Een index maken met behulp van de .NET-SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
-* [Een index maken met behulp van REST API's](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [Een index maken met behulp van Postman of Fiddler en de Azure Cognitive Search REST-Api's](search-get-started-postman.md)
+> [!div class="nextstepaction"]
+> [Een index maken met behulp van de .NET-SDK](https://docs.microsoft.com/azure/search/search-create-index-dotnet)

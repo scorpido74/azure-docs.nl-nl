@@ -1,101 +1,112 @@
 ---
-title: Azure Cosmos-containers en-data bases maken in de automatische test modus.
-description: Meer informatie over de voor delen, use cases en het inrichten van Azure Cosmos-data bases en-containers in de automatische test modus.
+title: Create Azure Cosmos containers and databases in autopilot mode.
+description: Learn about the benefits, use cases, and how to provision Azure Cosmos databases and containers in autopilot mode.
 author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0e9f909aba11d35307e02a98a41ffa04e36e4db2
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 584fedc2ebe93b2a3cfd8a3b538a410d29aebe9d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953130"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383092"
 ---
-# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Azure Cosmos-containers en-data bases maken in de automatische test modus (preview)
+# <a name="create-azure-cosmos-containers-and-databases-in-autopilot-mode-preview"></a>Create Azure Cosmos containers and databases in autopilot mode (Preview)
 
-Met Azure Cosmos DB kunt u de door Voer voor uw containers inrichten in hand matig of in de modus Auto Pilot. In dit artikel worden de voor delen en het gebruik van de automatische test modus beschreven.
+Azure Cosmos DB allows you to provision throughput on your containers in either manual or autopilot mode. This article describes the benefits and use cases of autopilot mode.
 
 > [!NOTE]
-> De automatische test modus is momenteel beschikbaar in de open bare preview. Als u auto pilot wilt inschakelen voor uw Azure Cosmos-account, raadpleegt u de sectie auto [pilot inschakelen](#enable-autopilot) van dit artikel. U kunt auto pilot alleen inschakelen voor nieuwe data bases en containers, maar dit is niet beschikbaar voor bestaande containers en data bases.
+> Autopilot mode is currently available in public preview. To enable autopilot feature for your Azure Cosmos account, see the [enable autopilot](#enable-autopilot) section of this article. You can enable autopilot for new databases and containers only,it's not available for existing containers and databases.
 
-Naast het hand matig inrichten van de door Voer kunt u nu Azure Cosmos-containers configureren in de automatische test modus. Azure Cosmos-containers en-data bases die zijn geconfigureerd in de automatische test modus, kunnen **de ingerichte door Voer automatisch laten schalen op basis van de behoeften van uw toepassing zonder in te boeten voor de sla's.**
+In addition to manual provisioning of throughput, you can now configure Azure cosmos containers in autopilot mode. Azure Cosmos containers and databases configured in autopilot mode will **automatically and instantly scale the provisioned throughput based on your application needs without compromising the SLAs.**
 
-U hoeft de ingerichte door Voer niet meer hand matig te beheren of om problemen met de snelheids beperking te verhelpen. Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype, kunnen direct worden geschaald als reactie op de werk belasting zonder dat dit van invloed is op de beschik baarheid, latentie, door Voer of de prestaties van de werk belasting wereld wijd. Onder hoog gebruik kunnen Azure Cosmos-containers die zijn geconfigureerd in de modus voor automatische prototype omhoog of omlaag worden geschaald zonder dat dit van invloed is op de actieve bewerkingen.
+You no longer need to manually manage the provisioned throughput or handle rate-limiting issues. Azure Cosmos containers configured in autopilot mode can be scaled instantly in response to the workload without any impacting the availability, latency, throughput, or performance of the workload globally. Under high utilization, Azure Cosmos containers configured in autopilot mode can be scaled up or down without impacting the ongoing operations.
 
-Bij het configureren van containers en data bases in de modus voor automatische prototypen, moet u de maximale door Voer opgeven `Tmax` niet worden overschreden. Containers kunnen vervolgens direct worden geschaald op basis van de behoeften van de werk belasting binnen het `0.1*Tmax < T < Tmax` bereik. Met andere woorden, containers en data bases worden direct geschaald op basis van de behoeften van de werk belasting, van slechts 10% van de maximale doorvoer waarde die u hebt geconfigureerd en tot de geconfigureerde maximale doorvoer waarde. U kunt de instelling voor de maximale door Voer (tmax) op de auto pilot-data base of container op elk gewenst moment wijzigen. Met de optie auto pilot is de minimale door Voer van 400 RU/s per container of Data Base niet meer van toepassing.
+When configuring containers and databases in autopilot mode, you need to specify the maximum throughput `Tmax`  not to be exceeded. Containers can then scale instantly based on the workload needs within the `0.1*Tmax < T < Tmax` range. In other words, containers and databases scale instantly based on the workload needs, from as low as 10% of the maximum throughput value that you have configured, and up to the configured maximum throughput value. You can change the maximum throughput (Tmax) setting on autopilot database or container at any point in time. With autopilot option, the 400 RU/s minimum throughput per container or database is no longer applicable.
 
-Tijdens de preview-versie van auto pilot, voor de opgegeven maximale door Voer voor de container of de data base, kan het systeem binnen de berekende opslag limiet werken. Als de opslag limiet wordt overschreden, wordt de maximale door Voer automatisch aangepast naar een hogere waarde. Wanneer u door Voer op database niveau gebruikt met de modus Automatische test, wordt het aantal containers dat in een Data Base is toegestaan berekend als: (0,001 * maximale door Voer). Als u bijvoorbeeld 20.000 auto pilot RU/s inricht, kan de data base 20 containers bevatten.
+During the preview of autopilot, for the specified maximum throughput on the container or the database, the system allows operating within the calculated storage limit. If the storage limit is exceeded, then the maximum throughput is automatically adjusted to a higher value. When using database level throughput with autopilot mode, the number of containers allowed within a database is calculated as: (0.001 * Max throughput ). For example, if you provision 20,000 autopilot RU/s, then the database can have 20 containers.
 
-## <a name="benefits-of-autopilot-mode"></a>Voor delen van automatische pilot modus
+## <a name="benefits-of-autopilot-mode"></a>Benefits of autopilot mode
 
-Azure Cosmos-containers die zijn geconfigureerd in de automatische test modus, hebben de volgende voor delen:
+Azure Cosmos containers that are configured in autopilot mode have the following benefits:
 
-* **Eenvoudig:** Containers in de automatische test modus verwijderen de complexiteit om ingerichte door Voer (RUs) en capaciteit hand matig te beheren voor verschillende containers.
+* **Simple:** Containers in autopilot mode remove the complexity to manage provisioned throughput (RUs) and capacity manually for various containers.
 
-* **Schaalbaar:** Containers in de automatische test modus kunnen de ingerichte doorvoer capaciteit naadloos schalen naar behoefte. Er zijn geen onderbrekingen voor client verbindingen, toepassingen en ze hebben geen invloed op bestaande Sla's.
+* **Scalable:** Containers in autopilot mode seamlessly scale the provisioned throughput capacity as needed. There is no disruption to client connections, applications and they don’t impact any existing SLAs.
 
-* **Rendabel:** Wanneer u Azure Cosmos-containers gebruikt die zijn geconfigureerd in de modus voor automatische test doeleinden, betaalt u alleen voor de resources die de werk belasting per uur nodig heeft.
+* **Cost-effective:** When you use Azure Cosmos containers configured in autopilot mode, you only pay for the resources that your workloads need on a per-hour basis.
 
-* **Maxi maal beschikbaar:** Azure Cosmos-containers in de modus automatische prototype gebruiken dezelfde wereld wijd gedistribueerde, fout tolerante, Maxi maal beschik bare back-end om gegevens duurzaamheid en hoge Beschik baarheid te garanderen.
+* **Highly available:** Azure Cosmos containers in autopilot mode use the same globally distributed, fault-tolerant, highly available backend to ensure data durability, and high availability always.
 
-## <a name="use-cases-of-autopilot-mode"></a>Gebruiks voorbeelden van de automatische test modus
+## <a name="use-cases-of-autopilot-mode"></a>Use cases of autopilot mode
 
-De use cases voor Azure Cosmos-containers die zijn geconfigureerd in de automatische test modus zijn onder andere:
+The use cases for Azure Cosmos containers configured in autopilot mode include:
 
-* **Variabele werk belastingen:** Wanneer u een intensief gebruikte toepassing gebruikt met een piek gebruik van 1 uur en enkele uren paar keer per dag, of verschillende tijdstippen. Voor beelden zijn toepassingen voor personeels zaken, budget tering en operationele rapportage. Voor dergelijke scenario's kan de containers die zijn geconfigureerd in de modus voor automatisch testen worden gebruikt. u hoeft niet langer hand matig in te richten op de piek of de gemiddelde capaciteit.
+* **Variable workloads:** When you are running a lightly used application with peak usage of 1 hour to several hours few times each day, or several times per year. Examples include applications for human resources, budgeting, and operational reporting. For such scenarios, containers configured in autopilot mode can be used, you no longer need to manually provision for either peak or average capacity.
 
-* **Onvoorspelbare workloads:** Wanneer u werk belastingen uitvoert waarbij de data base gedurende de hele dag wordt gebruikt, maar ook pieken in de activiteit die moeilijk te voors pellen zijn. Een voor beeld bevat een verkeers site die een piek activiteit ziet wanneer de weers verwachting verandert. In containers die zijn geconfigureerd in de modus voor automatisch testen, past u de capaciteit aan om te voldoen aan de behoeften van de piek belasting van de toepassing en maakt u deze terug wanneer de activiteit wordt overschreden.
+* **Unpredictable workloads:** When you are running workloads where there is database usage throughout the day, but also peaks of activity that are hard to predict. An example includes a traffic site that sees a surge of activity when weather forecast changes. Containers configured in autopilot mode adjust the capacity to meet the needs of the application's peak load and scale back down when the surge of activity is over.
 
-* **Nieuwe toepassingen:** Als u een nieuwe toepassing implementeert en weet u niet zeker hoeveel ingerichte door Voer (dat wil zeggen, hoeveel RUs) u nodig hebt. Als containers zijn geconfigureerd in de modus voor automatisch testen, kunt u automatisch schalen naar de capaciteits behoeften en vereisten van uw toepassing.
+* **New applications:** If you are deploying a new application and are unsure about how much provisioned throughput (i.e., how many RUs) you need. With containers configured in autopilot mode, you can automatically scale to the capacity needs and requirements of your application.
 
-* **Zelden gebruikte toepassingen:** Als u een toepassing hebt die slechts enkele uren per dag of week of maand wordt gebruikt, zoals een toepassing/Web/blog-site met weinig volume.
+* **Infrequently used applications:** If you have an application that is only used for a few hours several times per day or week or month, such as a low-volume application/web/blog site.
 
-* **Ontwikkelings-en test databases:** Ontwikkel aars gebruiken de Azure Cosmos-accounts tijdens werk uren, maar hoeven ze niet te worden genachten of in het weekend. Als containers zijn geconfigureerd in de modus voor automatisch testen, worden ze omlaag geschaald wanneer ze niet worden gebruikt.
+* **Development and test databases:** Developers use the Azure Cosmos accounts during work hours but don't need them on nights or weekends. With containers configured in autopilot mode, they scale down to minimum when not in use.
 
-* **Geplande werk belastingen/query's voor productie:** Wanneer u een reeks geplande aanvragen/bewerkingen/query's op één container hebt, en als er niet-actieve Peri Oden zijn waarin u een absolute lage door voer wilt uitvoeren, kunt u dit nu eenvoudig doen. Wanneer een geplande query/aanvraag wordt verzonden naar een container die in de automatische test modus is geconfigureerd, wordt deze zo veel automatisch omhoog geschaald en wordt de bewerking uitgevoerd.
+* **Scheduled production workloads/queries:** When you have a series of scheduled requests/operations/queries on a single container, and if there are idle periods where you want to run at an absolute low throughput, you can now do that easily. When a scheduled query/request is submitted to a container configured in autopilot mode, it will automatically scale up as much as needed and run the operation.
 
-Oplossingen voor de vorige problemen vereisen niet alleen een enorme hoeveelheid tijd in de implementatie, maar ze veroorzaken ook complexiteit in configuratie of uw code en vereisen vaak hand matige tussen komst om ze te verhelpen. In de automatische test modus kunnen bovenstaande scenario's worden uitgevoerd, zodat u zich geen zorgen meer hoeft te maken over deze problemen.
+Solutions to the previous problems not only require an enormous amount of time in implementation, but they also introduce complexity in configuration or your code, and frequently require manual intervention to address them. The autopilot mode enables above scenarios out of the box, so that you do not need to worry about these problems anymore.
 
-## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Vergelijking: containers die zijn geconfigureerd in de hand matige modus versus automatische test modus
+## <a name="comparison--containers-configured-in-manual-mode-vs-autopilot-mode"></a>Comparison – Containers configured in manual mode vs. autopilot mode
 
-|  | Containers geconfigureerd in hand matige modus  | Containers die zijn geconfigureerd in de modus voor automatische prototype |
+|  | Containers configured in manual mode  | Containers configured in autopilot mode |
 |---------|---------|---------|
-| **Ingerichte door Voer** | Hand matig ingericht | Automatisch en onmiddellijk geschaald op basis van de gebruiks patronen van de werk belasting. |
-| **Frequentie waarmee aanvragen/bewerkingen worden beperkt (429)**  | Dit kan gebeuren als het verbruik de ingerichte capaciteit overschrijdt. | Treedt niet op als de verbruikte door Voer is binnen de maximale door Voer die u hebt gekozen met de automatische test modus.   |
-| **Capaciteitsplanning** |  U moet een eerste capaciteits planning maken en de door Voer die u nodig hebt, inrichten. |    U hoeft zich geen zorgen te maken over capaciteits planning. Het systeem zorgt automatisch voor capaciteits planning en capaciteits beheer. |
-| **Prijzen** | Hand matig ingerichte RU/s per uur. | Voor afzonderlijke accounts voor schrijf regio's betaalt u de door Voer die op elk uur wordt gebruikt, door gebruik te maken van het tarief van de auto pilot RU per uur. <br/><br/>Voor accounts met meerdere schrijf regio's worden er geen extra kosten in rekening gebracht voor auto pilot. U betaalt voor de door Voer die op elk uur wordt gebruikt met hetzelfde tarief van één of meerdere masters per uur. |
-| **Geschikt voor typen werk belastingen** |  Voorspel bare en stabiele workloads|   Onvoorspelbare en variabele workloads  |
+| **Provisioned throughput** | Manually provisioned | Automatically and instantaneously scaled based on the workload usage patterns. |
+| **Rate-limiting of requests/operations (429)**  | May happen, if consumption exceeds provisioned capacity. | Will not happen if the throughput consumed is within the max throughput that you choose with autopilot mode.   |
+| **Capaciteitsplanning** |  You have to do an initial capacity planning and provision of the throughput you need. |    You don’t have to worry about capacity planning. The system automatically takes care of capacity planning and capacity management. |
+| **Prijzen** | Manually provisioned RU/s per hour. | For single write region accounts, you pay for the throughput used on an hourly basis, by using the autopilot RU/s per hour rate. <br/><br/>For accounts with multiple write regions, there is no extra charge for autopilot. You pay for the throughput used on hourly basis using the same multi-master RU/s per hour rate. |
+| **Best suited for workload types** |  Predictable and stable workloads|   Unpredictable and variable workloads  |
 
-## <a name="a-idenable-autopilot-enable-autopilot-from-azure-portal"></a>Automatische test <a id="enable-autopilot"> inschakelen vanuit Azure Portal
+## <a id="enable-autopilot"></a> Enable autopilot from Azure portal
 
-U kunt automatische pilot in uw Azure Cosmos-accounts uitproberen door in te scha kelen in van Azure Portal. Gebruik de volgende stappen om de auto pilot-optie in te scha kelen:
+You can try out autopilot in your Azure Cosmos accounts by enabling in from Azure portal. Use the following steps to enable the autopilot option:
 
-1. Meld u aan bij de [Azure Portal.](https://portal.azure.com)
+1. Sign in to the [Azure portal.](https://portal.azure.com)
 
-2. Ga naar uw Azure Cosmos-account en open het tabblad **nieuwe functies** . Selecteer **automatische pilot** en **Schrijf** u in zoals weer gegeven in de volgende scherm afbeelding:
+2. Navigate to your Azure Cosmos account and open the **New Features** tab. Select **Auto Pilot** and **Register** as shown in the following screenshot:
 
-![Een container maken in de automatische test modus](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
+![Create a container in autopilot mode](./media/provision-throughput-autopilot/enable-autopilot-azure-portal.png)
 
-## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Een Data Base of container maken met de automatische test modus
+## <a name="create-a-database-or-a-container-with-autopilot-mode"></a>Create a database or a container with autopilot mode
 
-U kunt automatische pilot configureren voor data bases of containers tijdens het maken hiervan. Gebruik de volgende stappen om een nieuwe data base of container te maken, automatische pilot in te scha kelen en de maximale door Voer op te geven.
+You can configure autopilot for databases or containers while creating them. Use the following steps to a new database or container, enable autopilot, and specify the maximum throughput.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com) of [Azure Cosmos Explorer.](https://cosmos.azure.com/)
+1. Sign in to the [Azure portal](https://portal.azure.com) or the [Azure Cosmos explorer.](https://cosmos.azure.com/)
 
-1. Ga naar uw Azure Cosmos-account en open het tabblad **Data Explorer** .
+1. Navigate to your Azure Cosmos account and open the **Data Explorer** tab.
 
-1. Selecteer **nieuwe container**, voer een naam in voor de container, een partitie sleutel. Selecteer de optie auto **pilot** en kies de maximale door Voer die de container niet mag overschrijden bij het gebruik van de optie Auto Pilot.
+1. Select **New Container**, enter a name for your container, a partition key. Select the **Autopilot** option, and choose the maximum throughput that the container cannot exceed when using the autopilot option.
 
-   ![Een container maken in de automatische test modus](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
+   ![Create a container in autopilot mode](./media/provision-throughput-autopilot/create-container-autopilot-mode.png)
 
 1. Selecteer **OK**
 
-Met vergelijk bare stappen kunt u ook een Data Base maken met een ingerichte door Voer in de automatische test modus.
+With similar steps, you can also create a database with provisioned throughput in autopilot mode.
+
+## <a id="autopilot-limits"></a> Throughput and storage limits for autopilot
+
+The following table shows the maximum throughout and storage limits for different options in autopilot mode:
+
+|Maximum throughput limit  |Maximum storage limit  |
+|---------|---------|
+|4000 RU/s  |   50 GB    |
+|20,000 RU/s  |  200 GB  |
+|100,000 RU/s    |  1 TB   |
+|500,000 RU/s    |  5 TB  |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [logische partities](partition-data.md).
-* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-container](how-to-provision-container-throughput.md).
-* Meer informatie over het [inrichten van de door Voer voor een Azure Cosmos-data base](how-to-provision-database-throughput.md).
+* Learn more about [logical partitions](partition-data.md).
+* Learn how to [provision throughput on an Azure Cosmos container](how-to-provision-container-throughput.md).
+* Learn how to [provision throughput on an Azure Cosmos database](how-to-provision-database-throughput.md).

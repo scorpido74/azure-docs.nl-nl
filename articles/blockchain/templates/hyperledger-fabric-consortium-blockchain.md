@@ -1,148 +1,142 @@
 ---
-title: Hyperledger Fabric Consortium Network in Azure
-description: Oplossingssjabloon implementeren en configureren van een Hyperledger Fabric consortium network
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Deploy Hyperledger Fabric Consortium solution template on Azure
+description: How to deploy and configure the Hyperledger Fabric consortium network solution template on Azure
 ms.date: 05/09/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: caleteet
-manager: femila
-ms.openlocfilehash: 80de4e1479fac7296889e45289a5f20e586e3f57
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65510756"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325139"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric consortium network
 
-U kunt de oplossingssjabloon van de Hyperledger Fabric-consortium gebruiken om een consortiumnetwerk van Hyperledger Fabric op Azure te implementeren en configureren.
+You can use the Hyperledger Fabric consortium solution template to deploy and configure a Hyperledger Fabric consortium network on Azure.
 
 Wanneer u dit artikel hebt gelezen:
 
-- Beschikt u over kennis van blockchain, Hyperledger Fabric en meer gecompliceerde consortiumnetwerkarchitecturen
-- Weet u hoe u Hyperledger Fabric-consortiumnetwerk implementeert en configureert vanuit de Azure-portal
+- Obtain working knowledge of blockchain, Hyperledger Fabric, and more complicated consortium network architectures
+- Learn how to deploy and configure a Hyperledger Fabric consortium network from within the Azure portal
 
-## <a name="about-blockchain"></a>Over blockchains
+## <a name="about-blockchain"></a>About blockchain
 
-Als u nieuw bent bij de blockchain-community, biedt deze oplossingssjabloon een uitstekende gelegenheid om op een eenvoudige en configureerbare manier kennis te maken met de technologie op Azure. Blockchain is de onderliggende technologie achter Bitcoin; het is echter veel meer dan alleen een enabler voor een virtuele valuta. Het is een samenstelling van een bestaande database, gedistribueerd systeem en cryptografische technologieën die veilige multiparty-berekening mogelijk maakt met garanties rond onveranderlijkheid, verifieerbaarheid, controleerbaarheid en weerbaarheid tegen aanvallen. Verschillende protocollen gebruiken verschillende mechanismen om deze eigenschappen in te vullen. [Hyperledger Fabric](https://github.com/hyperledger/fabric) is zo'n protocol.
+If you are new to the blockchain community, this solution template is a great opportunity to learn about the technology in an easy and configurable manner on Azure. Blockchain is the underlying technology behind Bitcoin; however, it is much more than just an enabler for a virtual currency. It is a composite of existing database, distributed system, and cryptographic technologies that enables secure multi-party computation with guarantees around immutability, verifiability, auditability, and resiliency to attack. Different protocols employ different mechanisms to provide these attributes. [Hyperledger Fabric](https://github.com/hyperledger/fabric) is one such protocol.
 
-## <a name="consortium-architecture-on-azure"></a>Consortium architectuur op Azure
+## <a name="consortium-architecture-on-azure"></a>Consortium architecture on Azure
 
-Om Hyperledger Fabric in Azure in te schakelen, zijn er twee primaire implementatietypes die worden ondersteund. Deze implementaties zijn ontworpen om tegemoet te komen aan verschillende topologieën, op basis van het gewenste doel.
+To enable Hyperledger Fabric in Azure, there are two primary deployment types that are supported. These deployments are designed to accommodate different topologies, based on desired target.
 
-- **Eén virtuele machine, ontwikkelserver** -dit implementatietype is bedoeld als een ontwikkelomgeving die is gebruikt voor het bouwen en testen van oplossingen die zijn gebouwd op Hyperledger Fabric.
-- **Meerdere virtuele machines, de scale-out implementatie** -dit implementatietype is ontworpen voor omgevingen die een consortium van verschillende deelnemers modelleren met gebruikmaking van een gedeelde omgeving.
+- **Single virtual machine, developer server** - This deployment type is designed as a development environment used to build and test solutions built on Hyperledger Fabric.
+- **Multiple virtual machines, scale out deployment** - This deployment type is designed for environments that model a consortium of different participants leveraging a shared environment.
 
-In beide implementaties zijn de bouwstenen die de kern vormen van Hyperledger Fabric hetzelfde.  De verschillen in de implementaties zijn hoe deze componenten worden geschaald.
+In either deployment, the building blocks that are make the core of Hyperledger Fabric are the same.  The differences in the deployments are how these components are scaled out.
 
-- **CA-knooppunten**: Een knooppunt met certificeringsinstantie dat wordt gebruikt om certificaten te genereren die worden gebruikt voor identiteiten in het netwerk.
-- **Bestellerknooppunten**: Een knooppunt waarop de communicatiedienst wordt uitgevoerd die een leveringsgarantie implementeert, zoals een total order broadcast of atomaire transacties.
-- **Peerknooppunten**: Een knooppunt dat transacties uitvoert en de staat en een kopie van het gedistribueerde grootboek onderhoudt.
-- **CouchDB-knooppunten**: Een knooppunt dat de CouchDB-service kan uitvoeren die de statusdatabase kan bevatten en een uitgebreide opzoekmogelijkheden van chaincode-gegevens kan bieden, van eenvoudige sleutel/waarde tot JSON-type opslag.
+- **CA nodes**: A node running Certificate Authority that is used to generate certificates that are used for identities in the network.
+- **Orderer nodes**: A node running the communication service implementing a delivery guarantee, such as total order broadcast or atomic transactions.
+- **Peer nodes**: A node that commits transactions and maintains the state and a copy of the distributed ledger.
+- **CouchDB nodes**: A node that can run the CouchDB service that can hold the state database and provide rich querying of chaincode data, expanding from simple key/value to JSON type storage.
 
-### <a name="single-virtual-machine-architecture"></a>Architectuur van één virtuele machine
+### <a name="single-virtual-machine-architecture"></a>Single virtual machine architecture
 
-Zoals eerder vermeld, is de enkele virtuele machine-architectuur gebouwd voor ontwikkelaars om een server met een lage footprint te hebben die wordt gebruikt om applicaties te ontwikkelen. Alle getoonde containers worden uitgevoerd in een enkele virtuele machine. De bestelservice gebruikt [SOLO](https://github.com/hyperledger/fabric/tree/master/orderer) voor deze configuratie. Deze configuratie is *geen* fouttolerante bestelservice, maar is ontworpen om van lichtgewicht te zijn voor ontwikkelingsdoeleinden.
+As mentioned previously the single virtual machine architecture is built for developers to have a low footprint server that is used to develop applications. All containers shown are running in a single virtual machine. The ordering service is using [SOLO](https://github.com/hyperledger/fabric/tree/master/orderer) for this configuration. This configuration is *not* a fault tolerant ordering service, but is designed to be lightweight for development purposes.
 
-![Architectuur met één virtuele Machine](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
+![Single Virtual Machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-single-arch.png)
 
-### <a name="multiple-virtual-machine-architecture"></a>Architectuur van meerdere virtuele machines
+### <a name="multiple-virtual-machine-architecture"></a>Multiple virtual machine architecture
 
-De meervoudige virtuele machine, scale-out architectuur, is gebouwd met hoge beschikbaarheid en kan elk onderdeel in de basis schalen. Deze architectuur is veel beter geschikt voor implementaties van productielocaties.
+The multiple virtual machine, scale-out architecture, is built with high availability and scaling of each component at the core. This architecture is much more suitable for production grade deployments.
 
-![Architectuur van meerdere virtuele machines](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
+![Multiple virtual machine architecture](./media/hyperledger-fabric-consortium-blockchain/hlf-multi-arch.png)
 
 ## <a name="getting-started"></a>Aan de slag
 
-Om te beginnen hebt u een Azure-abonnement nodig dat ondersteuning biedt voor de implementatie van verschillende virtuele machines en standaardopslagaccounts. Als u geen Azure-abonnement hebt, kunt u een [gratis Azure-account maken](https://azure.microsoft.com/free/).
+To begin, you need an Azure subscription that can support deploying several virtual machines and standard storage accounts. If you do not have an Azure subscription, you can [create a free Azure account](https://azure.microsoft.com/free/).
 
-Zodra u een abonnement hebt, gaat u naar de [Azure-portal](https://portal.azure.com). Selecteer **een resource maken > Blockchain > Hyperledger Fabric Consortium**.
+Once you have a subscription, go to the [Azure portal](https://portal.azure.com). Select **Create a resource > Blockchain > Hyperledger Fabric Consortium**.
 
-![Hyperledger Fabric één lid Blockchain Marketplace-sjabloon](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
+![Hyperledger Fabric Single Member Blockchain Marketplace template](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
 ## <a name="deployment"></a>Implementatie
 
-In de **Hyperledger Fabric Consortium** sjabloon, selecteer **maken**.
+In the **Hyperledger Fabric Consortium** template, select **Create**.
 
-De sjabloonimplementatie begeleidt u bij het configureren van het [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/)-netwerk met meerdere knooppunten. De implementatiestroom is onderverdeeld in vier stappen: Basics, Consortium netwerkinstellingen, Fabric-configuratie en Optionele componenten.
+The template deployment will walk you through configuring the multi-node [Hyperledger 1.3](https://hyperledger-fabric.readthedocs.io/en/release-1.3/) network. The deployment flow is divided into four steps: Basics, Consortium Network Settings, Fabric configuration, and Optional components.
 
-### <a name="basics"></a>Basics
+### <a name="basics"></a>Basisbeginselen
 
-Geef in **Basics** de waarden op voor standaardparameters voor elke implementatie. Zoals eigenschappen voor abonnementen, resourcegroepen en virtual machines.
+In **Basics**, specify values for standard parameters for any deployment. Such as, subscription, resource group, and basic virtual machine properties.
 
-![Basics](./media/hyperledger-fabric-consortium-blockchain/basics.png)
+![Basisbeginselen](./media/hyperledger-fabric-consortium-blockchain/basics.png)
 
-| Parameternaam | Description | Toegestane waarden |
+| Parameternaam | Beschrijving | Toegestane waarden |
 |---|---|---|
-**Resource prefix** | Naamvoorvoegsel voor resources die zijn ingericht als onderdeel van de implementatie |6 tekens of minder |
-**Gebruikersnaam** | De gebruikersnaam van de beheerder voor elk van de virtuele machines die voor dit lid zijn geïmplementeerd |1 - 64 tekens |
-**Verificatietype** | De verificatiemethode voor de virtuele machine |Wachtwoord of openbare SSH-sleutel|
-**Wachtwoord (verificatietype = wachtwoord)** |Het wachtwoord voor het beheerdersaccount voor elk van de geïmplementeerde virtuele machines. Het wachtwoord moet drie van de volgende tekens bevatten: 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken<br /><br />Hoewel alle VM's in eerste instantie hetzelfde wachtwoord hebben, kunt u het wachtwoord na de inrichting wijzigen|12 - 72 tekens|
-**SSH-sleutel (verificatietype = openbare SSH-sleutel)** |De beveiligde shell-sleutel die wordt gebruikt voor extern aanmelden ||
-**Abonnement** |Het abonnement waarnaar u wilt implementeren ||
-**Resourcegroep** |De resourcegroep waarin het consortiumnetwerk moet worden geïmplementeerd ||
-**Locatie** |De Azure-regio waarin het eerste lid moet worden geïmplementeerd ||
+**Resource prefix** | Name prefix for resources provisioned as part of the deployment |6 characters or less |
+**Gebruikersnaam** | The user name of the administrator for each of the virtual machines deployed for this member |1 - 64 characters |
+**Authentication type** | The method to authenticate to the virtual machine |Password or SSH public key|
+**Password (Authentication type = Password)** |The password for the administrator account for each of the virtual machines deployed. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character<br /><br />While all VMs initially have the same password, you can change the password after provisioning|12 - 72 characters|
+**SSH key (Authentication type = SSH public key)** |The secure shell key used for remote login ||
+**Abonnement** |The subscription to which to deploy ||
+**Resourcegroep** |The resource group to which to deploy the consortium network ||
+**Locatie** |The Azure region to which to deploy the first member in ||
 
 Selecteer **OK**.
 
-### <a name="consortium-network-settings"></a>Consortium Netwerkinstellingen
+### <a name="consortium-network-settings"></a>Consortium Network Settings
 
-Geef in **Netwerkinstellingen** waarden op voor het maken of lid worden van een bestaand consortiumnetwerk en configureer uw organisatie-instellingen.
+In **Network settings**, specify inputs for creating or joining an existing consortium network and configure your organization settings.
 
-![Consortium Netwerkinstellingen](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
+![Consortium Network Settings](./media/hyperledger-fabric-consortium-blockchain/network-settings.png)
 
-| Parameternaam | Description | Toegestane waarden |
+| Parameternaam | Beschrijving | Toegestane waarden |
 |---|---|---|
-**Netwerkconfiguratie** |U kunt ervoor kiezen om een nieuw netwerk te maken of lid te worden van een bestaand netwerk. Als u kiest voor *deelnemen aan bestaande*, moet u aanvullende waarden op te geven. |Nieuw netwerk <br/> Bestaande koppelen |
-**Wachtwoord HLF CA** |Een wachtwoord dat wordt gebruikt voor de certificaten die worden gegenereerd door de certificaatautoriteiten en die worden gemaakt als onderdeel van de implementatie. Het wachtwoord moet drie van de volgende tekens bevatten: 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken.<br /><br />Hoewel alle virtuele machines in eerste instantie hetzelfde wachtwoord hebben, kunt u het wachtwoord na de inrichting wijzigen.|1 - 25 tekens |
-**Organisatie-instellingen** |U kunt de naam en het certificaat van uw organisatie aanpassen of standaardwaarden gebruiken.|Standaard <br/> Geavanceerd |
-**Instellingen voor VPN-netwerken** | Stel een VPN-tunnelgateway beschikbaar voor toegang tot de VM's | Ja <br/> Nee |
+**Netwerkconfiguratie** |You can choose to create a new network or join an existing one. If you choose *Join existing*, you need to provide additional values. |New network <br/> Join existing |
+**HLF CA password** |A password used for the certificates generated by the certificate authorities that are created as part of the deployment. The password must contain three of the following character types: 1 upper case character, 1 lower case character, 1 number, and 1 special character.<br /><br />While all virtual machines initially have the same password, you can change the password after provisioning.|1 - 25 characters |
+**Organization setup** |You can customize your Organization's name and certificate or have default values to be used.|Standaard <br/> Geavanceerd |
+**VPN network settings** | Provision a VPN tunnel gateway for accessing the VMs | Ja <br/> Nee |
 
 Selecteer **OK**.
 
-### <a name="fabric-specific-settings"></a>Fabric-specifieke instellingen
+### <a name="fabric-specific-settings"></a>Fabric-specific settings
 
-In **Fabric-configuratie** configureert u de netwerkgrootte en -prestaties en geeft u invoer op voor de beschikbaarheid van het netwerk. Zoals nummersorteerders en peerknooppunten, de persistentie-engine die door elk knooppunt wordt gebruikt, en de VM-grootte.
+In **Fabric configuration**, you configure network size and performance, and specify inputs for the availability of the network. Such as, number orderer and peer nodes, persistence engine used by each node, and the VM size.
 
-![Fabric-instellingen](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
+![Fabric settings](./media/hyperledger-fabric-consortium-blockchain/fabric-specific-settings.png)
 
-| Parameternaam | Description | Toegestane waarden |
+| Parameternaam | Beschrijving | Toegestane waarden |
 |---|---|---|
-**Schaaltype** |Het implementatietype van een enkele virtuele machine met meerdere containers of meerdere virtuele machines in een schaalmodel.|Één virtuele machine of meerdere VM 's |
-**VM-schijftype** |Het type opslag dat elk van de geïmplementeerde knooppunten ondersteunt. <br/> Voor meer informatie over de typen beschikbare schijfruimte, gaat u naar [Selecteer een schijftype](../../virtual-machines/windows/disks-types.md).|Standard - SSD <br/> Premium SSD |
+**Scale type** |The deployment type of either a single virtual machine with multiple containers or multiple virtual machines in a scale-out model.|Single VM or Multi VM |
+**VM Disk type** |The type of storage backing each of the deployed nodes. <br/> To learn more about the available disk types, visit [select a disk type](../../virtual-machines/windows/disks-types.md).|Standard - SSD <br/> Premium SSD |
 
-### <a name="multiple-vm-deployment-additional-settings"></a>Meerdere VM-implementatie (extra instellingen)
+### <a name="multiple-vm-deployment-additional-settings"></a>Multiple VM deployment (additional settings)
 
-![Fabric-instellingen voor meerdere vm-implementaties](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
+![Fabric settings for multiple vm deployments](./media/hyperledger-fabric-consortium-blockchain/multiple-vm-deployment.png)
 
-| Parameternaam | Description | Toegestane waarden |
+| Parameternaam | Beschrijving | Toegestane waarden |
 |---|---|---|
-**Aantal orderknooppunten** |Het aantal knooppunten dat transacties in een blok ordent (organiseert). <br />Raadpleeg de Hyperledger-[documentatie](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) voor meer informatie over de bestellerservice. |1-4 |
-**De grootte van de virtuele machine voor het orderknooppunt** |De grootte van de virtuele machine die wordt gebruikt voor orderknooppunten in het netwerk|Standard Bs<br />Standard Ds<br />Standard FS |
-**Aantal peerknoooppunten** | Knooppunten die het eigendom zijn van consortiumleden die transacties uitvoeren en de status en een kopie van het grootboek bijhouden.<br />Raadpleeg de Hyperledger-[documentatie](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html) voor meer informatie over de bestellerservice.|1-4 |
-**Persistentie van knooppuntstatus** |De persistentie-engine die wordt gebruikt door de peerknooppunten. U kunt deze engine per peerknooppunt configureren. Bekijk de details hieronder voor meerdere peerknooppunten.|CouchDB <br />LevelDB |
-**De grootte van de virtuele machine knooppunt peer** |De grootte van de virtuele machine die wordt gebruikt voor alle knooppunten in het netwerk|Standard Bs<br />Standard Ds<br />Standard FS |
+**Number of orderer nodes** |The number of nodes that order (organize) transactions into a block. <br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) |1-4 |
+**Orderer node virtual machine size** |The virtual machine size used for orderer nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
+**Number of peer nodes** | Nodes that are owned by consortium members that execute transactions and maintain the state and a copy of the ledger.<br />For additional details on the ordering service, visit the Hyperledger [documentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1-4 |
+**Node state persistence** |The persistence engine used by the peer nodes. You can configure this engine per peer node. See details below for multiple peer nodes.|CouchDB <br />LevelDB |
+**Peer node virtual machine size** |The virtual machine size used for all nodes in the network|Standard Bs,<br />Standard Ds,<br />Standard FS |
 
-### <a name="multiple-peer-node-configuration"></a>Configuratie met meerdere peer-knooppunten
+### <a name="multiple-peer-node-configuration"></a>Multiple peer node configuration
 
-Met deze sjabloon kunt u uw persistentie-engine per peerknooppunt kiezen. Als u bijvoorbeeld drie peerknooppunten hebt, kunt u CouchDB op één knooppunt en LevelDB op de andere twee gebruiken.
+This template allows you to pick your persistence engine per peer node. For example, if you have three peer nodes you can use CouchDB on one and LevelDB on the other two.
 
-![Configuratie met meerdere peer-knooppunten](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
+![Multiple peer node configuration](./media/hyperledger-fabric-consortium-blockchain/multiple-peer-nodes.png)
 
 Selecteer **OK**.
 
 ### <a name="deploy"></a>Implementeren
 
-Bekijk in de **samenvatting** de ingevoerde waarden en voer de basisvalidatie vóór implementatie uit.
+In **Summary**, review the inputs specified and to run basic pre-deployment validation.
 
 ![Samenvatting](./media/hyperledger-fabric-consortium-blockchain/summary.png)
 
-Lees de wettelijke en privacyvoorwaarden en selecteer **Aankoop** om te implementeren. Afhankelijk van het aantal VM's dat wordt gebruikt, kan de implementatietijd variëren van enkele minuten tot tientallen minuten.
+Review legal and privacy terms and select **Purchase** to deploy. Depending on the number of VMs being provisioned, deployment time can vary from a few minutes to tens of minutes.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-U bent nu klaar om u te richten op de ontwikkeling van applicaties en chaincode op basis van uw Hyperledger consortium blockchain-netwerk.
+You are now ready to focus on application and chaincode development against your Hyperledger consortium blockchain network.

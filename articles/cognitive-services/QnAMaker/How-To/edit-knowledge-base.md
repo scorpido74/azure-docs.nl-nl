@@ -1,109 +1,109 @@
 ---
-title: Een kennisdatabase - QnA Maker bewerken
+title: Edit a knowledge base - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: QnA Maker kunt u de inhoud van uw knowledge base beheren door op te geven van een bewerkingservaring eenvoudig te gebruiken.
+description: QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
 services: cognitive-services
 author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 05/10/2019
+ms.date: 11/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1450d6b41d9a193f8069509aacd3343ae646c6ac
-ms.sourcegitcommit: f176e5bb926476ec8f9e2a2829bda48d510fbed7
+ms.openlocfilehash: cc4ead968a0ee2c9890c1cd24a6b70516b2b2e74
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70307025"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326788"
 ---
-# <a name="edit-a-knowledge-base-in-qna-maker"></a>Een kennisdatabase in QnA Maker bewerken
+# <a name="edit-a-knowledge-base-in-qna-maker"></a>Edit a knowledge base in QnA Maker
 
-QnA Maker kunt u de inhoud van uw knowledge base beheren door op te geven van een bewerkingservaring eenvoudig te gebruiken.
+QnA Maker allows you to manage the content of your knowledge base by providing an easy-to-use editing experience.
 
 <a name="add-datasource"></a>
 
-## <a name="edit-your-knowledge-base-content"></a>Uw knowledge base-inhoud bewerken
+## <a name="edit-your-knowledge-base-content"></a>Edit your knowledge base content
 
-1.  Selecteer **mijn knowledge bases** in de bovenste navigatiebalk. 
+1.  Select **My knowledge bases** in the top navigation bar. 
 
-    Ziet u alle services die u hebt gemaakt of gedeeld met u gesorteerd in aflopende volgorde van de **het laatst is gewijzigd** datum.
+    You can see all the services you created or shared with you sorted in the descending order of the **last modified** date.
 
-    ![Mijn Knowledge Bases](../media/qnamaker-how-to-edit-kb/my-kbs.png)
+    ![My Knowledge Bases](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
-1. Selecteer een bepaalde kennisdatabase wijzigingen aanbrengen.
+1. Select a particular knowledge base to make edits to it.
  
-1. Selecteer **instellingen**. Hier kunt u verplicht veld zijn servicenaam bewerken.
+1. Select **Settings**. Here you can edit mandatory field Service Name.
   
     |Doel|Bewerking|
     |--|--|
-    |URL toevoegen|U kunt nieuwe URL's om toe te voegen nieuwe veelgestelde vragen-inhoud met Knowledge base door te klikken op toevoegen **kennisdatabase beheren -> ' + -URL toevoegen '** koppeling.|
-    |URL verwijderen|U kunt bestaande URL's verwijderen door het verwijderingspictogram te selecteren, de Prullenbak.|
-    |URL inhoud vernieuwen|Als u wilt dat uw knowledge base voor het verkennen van de meest recente inhoud van bestaande URL's, selecteert u de **vernieuwen** selectievakje. Hiermee wordt de knowledge base bijgewerkt met de meest recente inhoud van de URL.|
-    |Bestand toevoegen|U kunt een document ondersteund bestand door te selecteren als onderdeel van een kennisdatabase toevoegen **kennisdatabase beheren**, vervolgens de optie **+ bestand toevoegen**|
-    |Importeren|U kunt ook een bestaande kennisdatabase importeren door te selecteren **Ímport Knowledge base** knop. |
-    |Update|Bijwerken van het knowledge base afhankelijk **management prijscategorie** gebruikt tijdens het maken van QnA Maker-service die is gekoppeld aan uw knowledge base. U kunt ook de beheerlaag van Azure-portal bijwerken indien nodig.
+    |Add URL|You can add new URLs to add new FAQ content to Knowledge base by clicking **Manage knowledge base -> '+ Add URL'** link.|
+    |Delete URL|You can delete existing URLs by selecting the delete icon, the trash can.|
+    |Refresh content|If you want your knowledge base to crawl the latest content of existing URLs, select the **Refresh** checkbox. This will update the knowledge base with latest URL content once. This is not setting a regular schedule of updates.|
+    |Add file|You can add a supported file document to be part of a knowledge base, by selecting **Manage knowledge base**, then selecting **+ Add File**|
+    |Importeren|You can also import any existing knowledge base by selecting **Ímport Knowledge base** button. |
+    |Bijwerken|Updating of knowledge base depends on **management pricing tier** used while creating QnA Maker service associated with your knowledge base. You can also update the management tier from Azure portal if required.
 
-1. Wanneer u klaar bent wijzigingen aanbrengen in de knowledge base, selecteer **opslaan en trainen** in de rechterbovenhoek van de pagina om de wijzigingen te behouden.    
+1. Once you are done making changes to the knowledge base, select **Save and train** in the top right corner of the page in order to persist the changes.    
 
-    ![Opslaan en trainen](../media/qnamaker-how-to-edit-kb/save-and-train.png)
+    ![Save and Train](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 
     >[!CAUTION]
-    >Als u deze pagina voordat u selecteert verlaten **opslaan en trainen**, alle wijzigingen gaan verloren.
+    >If you leave the page before selecting **Save and train**, all changes will be lost.
 
 ## <a name="add-a-qna-pair"></a>Een QnA-set toevoegen
 
-Selecteer op de pagina **bewerken** de optie **QnA paar toevoegen** om een nieuwe rij toe te voegen aan de Knowledge Base-tabel.
+On the **EDIT** page, select **Add QnA pair** to add a new row to the knowledge base table.
 
-![QnA paar toevoegen](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
+![Add QnA pair](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-## <a name="delete-a-qna-pair"></a>Een paar QnA verwijderen
+## <a name="delete-a-qna-pair"></a>Delete a QnA pair
 
-Als u wilt een QnA verwijderen, klikt u op de **verwijderen** pictogram aan de rechterkant van de QnA-rij. Dit is een permanente bewerking. Het kan niet ongedaan worden gemaakt. Houd rekening met het exporteren van uw KB van de **publiceren** pagina voordat u paren verwijdert. 
+To delete a QnA, click the **delete** icon on the far right of the QnA row. This is a permanent operation. It can't be undone. Consider exporting your KB from the **Publish** page before deleting pairs. 
 
-![QnA paar verwijderen](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
+![Delete QnA pair](../media/qnamaker-how-to-edit-kb/delete-qnapair.png)
 
-## <a name="add-alternate-questions"></a>Alternatieve vragen toevoegen
+## <a name="add-alternate-questions"></a>Add alternate questions
 
-Alternatieve vragen toevoegen aan een bestaande QnA-paar voor het verbeteren van de kans op een overeenkomst aan een gebruikersquery.
+Add alternate questions to an existing QnA pair to improve the likelihood of a match to a user query.
 
-![Alternatieve vragen toevoegen](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
+![Add Alternate Questions](../media/qnamaker-how-to-edit-kb/add-alternate-question.png)
 
-## <a name="add-metadata"></a>metagegevens toevoegen
+## <a name="add-metadata"></a>Add metadata
 
-Voeg eerst de **Opties voor**het toevoegen van meta gegevens toe, en selecteer vervolgens **meta gegevens weer geven**. Hiermee wordt de kolom meta gegevens weer gegeven. Selecteer vervolgens het **+** teken om een meta gegevens paar toe te voegen. Dit paar bestaat uit één sleutel en één waarde.
+Add metadata pairs by first selecting **View options**, then selecting **Show metadata**. This displays the metadata column. Next, select the **+** sign to add a metadata pair. This pair consists of one key and one value.
 
-![Metagegevens toevoegen](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+![Add Metadata](../media/qnamaker-how-to-edit-kb/add-metadata.png)
 
 > [!TIP]
-> Zorg ervoor dat u regelmatig opslaan en de kennisdatabase trainen na het aanbrengen van wijzigingen om te voorkomen dat wijzigingen verloren gaan.
+> Make sure to periodically Save and train the knowledge base after making edits to avoid losing changes.
 
-## <a name="manage-large-knowledge-bases"></a>Beheren van grote knowledge bases
+## <a name="manage-large-knowledge-bases"></a>Manage large knowledge bases
 
-* **Gegevens bron groepen**: De QnAs worden gegroepeerd op de gegevens bron van waaruit ze zijn geëxtraheerd. U kunt uitvouwen of samenvouwen van de gegevensbron.
+* **Data source groups**: The QnAs are grouped by the data source from which they were extracted. You can expand or collapse the data source.
 
-    ![Gebruik de QnA Maker gegevens bron balk om vragen en antwoorden over de gegevens bron samen te vouwen en uit te breiden](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
+    ![Use the QnA Maker data source bar to collapse and expand data source questions and answers](../media/qnamaker-how-to-edit-kb/data-source-grouping.png)
 
-* **Zoek Knowledge Base**: U kunt de Knowledge Base doorzoeken door in het tekstvak boven aan de Knowledge Base-tabel te typen. Klik op enter om te zoeken op de vraag, antwoord of de metagegevens van inhoud. Klik op het pictogram X om de search-filter te verwijderen.
+* **Search knowledge base**: You can search the knowledge base by typing in the text box at the top of the Knowledge Base table. Click enter to search on the question, answer, or metadata content. Click on the X icon to remove the search filter.
 
-    ![Gebruik het zoekvak van QnA Maker boven de vragen en antwoorden om de weer gave te verkleinen zodat alleen items kunnen worden gefilterd](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
+    ![Use the QnA Maker search box above the questions and answers to reduce the view to only filter-matching items](../media/qnamaker-how-to-edit-kb/search-paginate-group.png)
 
-* **Paginering**: Snel door gegevens bronnen bladeren om grote kennis slagen te beheren
+* **Pagination**: Quickly move through data sources to manage large knowledge bases
 
-    ![Gebruik de QnA Maker paginerings functies boven de vragen en antwoorden om door pagina's van vragen en antwoorden te bladeren](../media/qnamaker-how-to-edit-kb/pagination.png)
+    ![Use the QnA Maker pagination features above the questions and answers to move through pages of questions and answers](../media/qnamaker-how-to-edit-kb/pagination.png)
 
-## <a name="delete-knowledge-bases"></a>Knowledge bases verwijderen
+## <a name="delete-knowledge-bases"></a>Delete knowledge bases
 
-Verwijderen van een knowledge base (KB) is een permanente bewerking. Het kan niet ongedaan worden gemaakt. Voordat u verwijdert een knowledge base, moet u de knowledge base van exporteren de **instellingen** pagina van de QnA Maker-portal. 
+Deleting a knowledge base (KB) is a permanent operation. It can't be undone. Before deleting a knowledge base, you should export the knowledge base from the **Settings** page of the QnA Maker portal. 
 
-Als u uw KB met deelt [samenwerkers](collaborate-knowledge-base.md) vervolgens verwijderd, maar iedereen toegang tot de KB verliest. 
+If you share your KB with [collaborators](collaborate-knowledge-base.md) then delete it, everyone loses access to the KB. 
 
 ## <a name="delete-azure-resources"></a>Azure-resources verwijderen 
 
-Als u een van de Azure-resources die worden gebruikt voor de QnA Maker knowledge bases verwijdert, wordt niet langer knowledge bases werken. Voordat u alle resources te verwijderen, zorg ervoor dat u uw knowledge bases van exporteert de **instellingen** pagina. 
+If you delete any of the Azure resources used for your QnA Maker knowledge bases, the knowledge bases will no longer function. Before deleting any resources, make sure you export your knowledge bases from the **Settings** page. 
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Samenwerken aan een kennisdatabase](./collaborate-knowledge-base.md)
+> [Collaborate on a knowledge base](./collaborate-knowledge-base.md)

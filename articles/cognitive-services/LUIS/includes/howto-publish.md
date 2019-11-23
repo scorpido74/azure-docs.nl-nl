@@ -10,12 +10,12 @@ ms.subservice: luis
 ms.topic: include
 ms.date: 11/05/2019
 ms.author: diberry
-ms.openlocfilehash: b65bf177d98d5b0bcbaf9e9eaf06707b43ed7032
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 47913f86edcf83825254775705e38310f3c2c6b4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73647459"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325897"
 ---
 Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoepassing, moet u de app publiceren naar het eindpunt. 
 
@@ -27,8 +27,8 @@ Om een voorspelling van LUIS te ontvangen in een chatbot of een andere clienttoe
 
     ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-app-popup.png)
 
-3. Het publiceren is voltooid wanneer u een groene statusbalk bovenaan aan de website ziet met de melding dat het publiceren is gelukt.
+3. Publishing is complete when you see the status bar at the top of the page confirming success.
 
     ![Publiceren naar eindpunt vanuit LUIS](../media/howto-publish/publish-endpoint-success.png)
 
-4. Selecteer de koppeling **uw eind punt-Url's openen** in de melding om naar de pagina **Azure-resources** te gaan. De eind punt-Url's worden weer gegeven als de **voorbeeld query**.
+4. Select the **Access your endpoint URLs** link in the notification to go to the **Azure Resources** page. The endpoint URLs are listed as the **Example Query**.

@@ -1,24 +1,24 @@
 ---
 title: Problemen met implementaties oplossen
-description: Meer informatie over het bewaken en oplossen van Azure Resource Manager sjabloon implementaties. Hiermee worden activiteiten logboeken en implementatie geschiedenis weer gegeven.
+description: Learn how to monitor and troubleshoot Azure Resource Manager template deployments. Shows activity logs and deployment history.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: be390b35a69f44aae38bec100deb2d3c07ad6355
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 32f3f55df2b87b35672d811c63a21b956a8a4b52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149329"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325363"
 ---
-# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Zelf studie: problemen met implementaties van Resource Manager-sjablonen oplossen
+# <a name="tutorial-troubleshoot-resource-manager-template-deployments"></a>Tutorial: Troubleshoot Resource Manager template deployments
 
 Informatie over het oplossen van fouten met implementaties van Resource Manager-sjablonen. In deze zelfstudie stelt u twee fouten in een sjabloon in en leert u hoe u de activiteitenlogboeken en de implementatiegeschiedenis kunt gebruiken om de problemen op te lossen.
 
 Er zijn twee typen fouten die gerelateerd zijn aan de implementatie van sjablonen:
 
-- **Validatiefouten** ontstaan door scenario's en kunnen vóór de implementatie worden vastgesteld. Ze bevatten syntaxisfouten in de sjabloon of proberen resources te implementeren waarmee uw abonnementquota worden overschreden. 
+- **Validatiefouten** ontstaan door scenario's en kunnen vóór de implementatie worden vastgesteld. Ze bevatten syntaxisfouten in de sjabloon of proberen resources te implementeren waarmee uw abonnementquota worden overschreden.
 - **Fouten bij de implementatie** ontstaan als gevolg van voorwaarden die tijdens het implementatieproces optreden. Bijvoorbeeld wanneer deze toegang proberen te krijgen tot een resource die parallel wordt geïmplementeerd.
 
 Beide typen fouten retourneren een foutcode die u gebruikt om de problemen met de implementatie op te lossen. Beide typen fouten worden weergegeven in het activiteitenlogboek. Validatiefouten worden echter niet weergegeven in de implementatiegeschiedenis omdat de implementatie niet is gestart.
@@ -39,7 +39,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-- [Visual Studio Code](https://code.visualstudio.com/) met de [extensie Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="create-a-problematic-template"></a>Een sjabloon met problemen maken
 
@@ -93,7 +93,7 @@ New-AzResourceGroupDeployment : 4:48:50 PM - Resource Microsoft.Storage/storageA
 
 De implementatiefout kunt u vinden in de Microsoft Azure-portal met behulp van de volgende procedure:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Open de resourcegroep door **Resourcegroepen** en vervolgens de naam van de resourcegroep te selecteren. U ziet **1 mislukt** onder **Implementatie**.
 
     ![Zelfstudie over het oplossen van problemen met Resource Manager](./media/resource-manager-tutorial-troubleshoot/resource-manager-template-deployment-error.png)
@@ -107,7 +107,7 @@ De implementatiefout kunt u vinden in de Microsoft Azure-portal met behulp van d
 
 U kunt de fout ook in de activiteitenlogboeken vinden:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 2. Selecteer **Controleren** > **Activiteitenlogboek**.
 3. Gebruik de filters om het logboek te vinden.
 

@@ -1,79 +1,79 @@
 ---
-title: Gast configuratie beleidsregels maken
-description: Meer informatie over het maken van een Azure Policy gast configuratie beleid voor Windows-of Linux-Vm's.
-ms.date: 09/20/2019
+title: How to create Guest Configuration policies
+description: Learn how to create an Azure Policy Guest Configuration policy for Windows or Linux VMs with Azure PowerShell.
+ms.date: 11/21/2019
 ms.topic: conceptual
-ms.openlocfilehash: 2f8ad66e636f7fa37d94d24d12a2537759a3304b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 2e653d07e783425afdcd71f9d58e3569692faaf9
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279364"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74407043"
 ---
-# <a name="how-to-create-guest-configuration-policies"></a>Gast configuratie beleidsregels maken
+# <a name="how-to-create-guest-configuration-policies"></a>How to create Guest Configuration policies
 
-Gast configuratie maakt gebruik van een resource module voor [desired state Configuration](/powershell/scripting/dsc/overview/overview) (DSC) om de configuratie voor de controle van de Azure-machines te maken. De DSC-configuratie definieert de toestand waarin de machine zich moet bevindt. Als de evaluatie van de configuratie mislukt, wordt het beleids effect **auditIfNotExists** geactiveerd en wordt de computer als **niet-compatibel**beschouwd.
+Guest Configuration uses a [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) resource module to create the configuration for auditing of the Azure machines. The DSC configuration defines the condition that the machine should be in. If the evaluation of the configuration fails, the Policy effect **auditIfNotExists** is triggered and the machine is considered **non-compliant**.
 
-[Azure Policy-gast configuratie](/azure/governance/policy/concepts/guest-configuration) kan alleen worden gebruikt voor het controleren van instellingen binnen machines. Herstel van instellingen binnen computers is nog niet beschikbaar.
+[Azure Policy Guest Configuration](../concepts/guest-configuration.md) can only be used to audit settings inside machines. Remediation of settings inside machines isn't yet available.
 
-Gebruik de volgende acties om uw eigen configuratie te maken voor het valideren van de status van een Azure-machine.
+Use the following actions to create your own configuration for validating the state of an Azure machine.
 
 > [!IMPORTANT]
-> Aangepaste beleids regels met gast configuratie is een preview-functie.
+> Custom policies with Guest Configuration is a Preview feature.
 
-## <a name="add-the-guestconfiguration-resource-module"></a>De GuestConfiguration-resource module toevoegen
+## <a name="add-the-guestconfiguration-resource-module"></a>Add the GuestConfiguration resource module
 
-Als u een gast configuratie beleid wilt maken, moet u de resource module toevoegen. Deze resource module kan worden gebruikt met lokaal geïnstalleerde Power shell, met [Azure Cloud shell](https://shell.azure.com), of met de [Azure PowerShell docker-installatie kopie](https://hub.docker.com/rsdk-powershell/).
+To create a Guest Configuration policy, the resource module must be added. This resource module can be used with locally installed PowerShell, with [Azure Cloud Shell](https://shell.azure.com), or with the [Azure PowerShell Core Docker image](https://hub.docker.com/r/azuresdk/azure-powershell-core).
 
 ### <a name="base-requirements"></a>Basisvereisten
 
-Voor de module gast configuratie resource is de volgende software vereist:
+The Guest Configuration resource module requires the following software:
 
 - PowerShell. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/scripting/install/installing-powershell) op.
-- Azure PowerShell 1.5.0 of hoger. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/azure/install-az-ps) op.
+- Azure PowerShell 1.5.0 or higher. Als deze nog niet is geïnstalleerd, volgt u [deze instructies](/powershell/azure/install-az-ps) op.
 
 ### <a name="install-the-module"></a>Installeer de module
 
-Gast configuratie maakt gebruik van de **GuestConfiguration** -resource module voor het maken van DSC-configuraties en het publiceren ervan naar Azure Policy:
+Guest Configuration uses the **GuestConfiguration** resource module for creating DSC configurations and publishing them to Azure Policy:
 
-1. Voer de volgende opdracht uit vanuit een Power shell-prompt:
+1. From a PowerShell prompt, run the following command:
 
    ```azurepowershell-interactive
    # Install the Guest Configuration DSC resource module from PowerShell Gallery
    Install-Module -Name GuestConfiguration
    ```
 
-1. Controleer of de module is geïmporteerd:
+1. Validate that the module has been imported:
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported GuestConfiguration module
    Get-Command -Module 'GuestConfiguration'
    ```
 
-## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Aangepaste configuratie voor gast configuratie en-resources maken
+## <a name="create-custom-guest-configuration-configuration-and-resources"></a>Create custom Guest Configuration configuration and resources
 
-De eerste stap voor het maken van een aangepast beleid voor gast configuratie is het maken van de DSC-configuratie. Zie [overzicht van Power shell DSC](/powershell/scripting/dsc/overview/overview)voor een overzicht van DSC-concepten en terminologie.
+The first step to creating a custom policy for Guest Configuration is to create the DSC configuration. For an overview of DSC concepts and terminology, see [PowerShell DSC Overview](/powershell/scripting/dsc/overview/overview).
 
-Als voor uw configuratie alleen resources zijn vereist die zijn ingebouwd met de installatie van de gast configuratie agent, hoeft u alleen een configuratie-MOF-bestand te schrijven. Als u een aanvullend script wilt uitvoeren, moet u een aangepaste resource module ontwerpen.
+If your configuration only requires resources that are builtin with the Guest Configuration agent install, then you only need to author a configuration MOF file. If you need to run additional script, then you'll need to author a custom resource module.
 
-### <a name="requirements-for-guest-configuration-custom-resources"></a>Vereisten voor aangepaste gast configuratie-resources
+### <a name="requirements-for-guest-configuration-custom-resources"></a>Requirements for Guest Configuration custom resources
 
-Wanneer een gast configuratie een machine controleert, wordt `Test-TargetResource` eerst uitgevoerd om te bepalen of deze in de juiste staat is. De Booleaanse waarde die door de functie wordt geretourneerd, bepaalt of de Azure Resource Manager status voor de gast toewijzing compatibel/niet-compatibel moet zijn. Als de Boole-waarde `$false` voor een resource in de configuratie, wordt `Get-TargetResource`uitgevoerd door de provider. Als de Booleaanse waarde `$true` dan wordt `Get-TargetResource` niet aangeroepen.
+When Guest Configuration audits a machine, it first runs `Test-TargetResource` to determine if it is in the correct state. The boolean value returned by the function determines if the Azure Resource Manager status for the Guest Assignment should be Compliant/Not-Compliant. If the boolean is `$false` for any resource in the configuration, then the provider will run `Get-TargetResource`. If the boolean is `$true` then `Get-TargetResource` isn't called.
 
-De functie `Get-TargetResource` heeft speciale vereisten voor gast configuratie die niet nodig is voor de configuratie van de desired state van Windows.
+The function `Get-TargetResource` has special requirements for Guest Configuration that haven't been needed for Windows Desired State Configuration.
 
-- De geretourneerde hashtabel moet een eigenschap met de naam **redenen**bevatten.
-- De eigenschap redenen moet een matrix zijn.
-- Elk item in de matrix moet een hashtabel zijn met sleutels met de naam **code** en een **zin**.
+- The hashtable that is returned must include a property named **Reasons**.
+- The Reasons property must be an array.
+- Each item in the array should be a hashtable with keys named **Code** and **Phrase**.
 
-De eigenschap redenen wordt door de service gebruikt om te standaardiseren hoe informatie wordt gepresenteerd wanneer een computer niet meer compatibel is. U kunt elk item beschouwen als een ' reden ' dat de resource niet aan het beleid voldoet. De eigenschap is een matrix omdat een bron niet meer dan één reden kan worden nageleefd.
+The Reasons property is used by the service to standardize how information is presented when a machine is out of compliance. You can think of each item in Reasons as a "reason" that the resource isn't compliant. The property is an array because a resource could be out of compliance for more than one reason.
 
-De instellingen voor de eigenschappen **code** en de **term** worden verwacht door de service. Wanneer u een aangepaste resource ontwerpt, stelt u de tekst (meestal stdout) in die u wilt weer geven als de reden waarom de resource niet aan de voor waarden voor **woord groep**voldoet. **Code** heeft specifieke opmaak vereisten, zodat rapportage duidelijk informatie kan weer geven over de resource die is gebruikt om de controle uit te voeren. Met deze oplossing wordt de gast configuratie uitbreidbaar. Elke opdracht kan worden uitgevoerd om een machine te controleren zolang de uitvoer kan worden vastgelegd en geretourneerd als een teken reeks waarde voor de eigenschap **phrase** .
+The properties **Code** and **Phrase** are expected by the service. When authoring a custom resource, set the text (typically stdout) you would like to show as the reason the resource isn't compliant as the value for **Phrase**. **Code** has specific formatting requirements so reporting can clearly display information about the resource that was used to perform the audit. This solution makes Guest Configuration extensible. Any command could be run to audit a machine as long as the output can be captured and returned as a string value for the **Phrase** property.
 
-- **Code** (teken reeks): de naam van de resource, herhaald en vervolgens een korte naam zonder spaties als een id voor de reden. Deze drie waarden moeten door een dubbele punt worden gescheiden zonder spaties.
-  - Er wordt een voor beeld `registry:registry:keynotpresent`
-- **Woordgroepen** (teken reeks): Lees bare tekst om uit te leggen waarom de instelling niet aan het beleid voldoet.
-  - Er wordt een voor beeld `The registry key $key is not present on the machine.`
+- **Code** (string): The name of the resource, repeated, and then a short name with no spaces as an identifier for the reason. These three values should be colon-delimited with no spaces.
+  - An example would be `registry:registry:keynotpresent`
+- **Phrase** (string): Human-readable text to explain why the setting isn't compliant.
+  - An example would be `The registry key $key is not present on the machine.`
 
 ```powershell
 $reasons = @()
@@ -86,15 +86,15 @@ return @{
 }
 ```
 
-#### <a name="scaffolding-a-guest-configuration-project"></a>Een configuratie project voor een gast steiger
+#### <a name="scaffolding-a-guest-configuration-project"></a>Scaffolding a Guest Configuration project
 
-Voor ontwikkel aars die het proces van het aan de slag gaan en het werken vanuit voorbeeld code willen versnellen, bestaat een community-project met de naam **gast configuratie project** als een sjabloon voor de [gips](https://github.com/powershell/plaster) -Power shell-module. Dit hulp programma kan worden gebruikt om een project te maken, met inbegrip van een werkende configuratie en voorbeeld resource, en een verzameling [ziekte](https://github.com/pester/pester) tests om het project te valideren. De sjabloon bevat ook taak lopers voor Visual Studio code voor het automatiseren van het maken en valideren van het gast configuratie pakket. Zie het project [gast configuratie](https://github.com/microsoft/guestconfigurationproject)van het project github voor meer informatie.
+For developers who would like to accelerate the process of getting started and working from sample code, a community project named **Guest Configuration Project** exists as a template for the [Plaster](https://github.com/powershell/plaster) PowerShell module. This tool can be used to scaffold a project including a working configuration and sample resource, and a set of [Pester](https://github.com/pester/pester) tests to validate the project. The template also includes task runners for Visual Studio Code to automate building and validating the Guest Configuration package. For more information, see the GitHub project [Guest Configuration Project](https://github.com/microsoft/guestconfigurationproject).
 
-### <a name="custom-guest-configuration-configuration-on-linux"></a>Configuratie van aangepaste gast configuratie op Linux
+### <a name="custom-guest-configuration-configuration-on-linux"></a>Custom Guest Configuration configuration on Linux
 
-De DSC-configuratie voor gast configuratie in Linux maakt gebruik van de `ChefInSpecResource`-resource om de-engine de naam van de [chef-specificatie](https://www.chef.io/inspec/) definitie te geven. **Name** is de enige vereiste bron eigenschap.
+The DSC configuration for Guest Configuration on Linux uses the `ChefInSpecResource` resource to provide the engine the name of the [Chef InSpec](https://www.chef.io/inspec/) definition. **Name** is the only required resource property.
 
-In het volgende voor beeld wordt een configuratie met de naam **baseline**gemaakt, wordt de resource module **GuestConfiguration** geïmporteerd en wordt de `ChefInSpecResource` resource de naam van de Inspec-definitie ingesteld op **linux-patch-Baseline**:
+The following example creates a configuration named **baseline**, imports the **GuestConfiguration** resource module, and uses the `ChefInSpecResource` resource set the name of the InSpec definition to **linux-patch-baseline**:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -112,13 +112,13 @@ Configuration baseline
 baseline
 ```
 
-Zie [een configuratie schrijven, compileren en Toep assen](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)voor meer informatie.
+For more information, see [Write, Compile, and Apply a Configuration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
-### <a name="custom-guest-configuration-configuration-on-windows"></a>Configuratie van aangepaste gast configuratie in Windows
+### <a name="custom-guest-configuration-configuration-on-windows"></a>Custom Guest Configuration configuration on Windows
 
-De DSC-configuratie voor Azure Policy gast configuratie wordt alleen gebruikt door de gast configuratie agent, maar niet met Windows Power shell desired state Configuration.
+The DSC configuration for Azure Policy Guest Configuration is used by the Guest Configuration agent only, it doesn't conflict with Windows PowerShell Desired State Configuration.
 
-In het volgende voor beeld wordt een configuratie met de naam **AuditBitLocker**gemaakt, wordt de **GuestConfiguration** -resource module geïmporteerd en wordt de `Service` resource gebruikt om te controleren op een actieve service:
+The following example creates a configuration named **AuditBitLocker**, imports the **GuestConfiguration** resource module, and uses the `Service` resource to audit for a running service:
 
 ```azurepowershell-interactive
 # Define the DSC configuration and import GuestConfiguration
@@ -138,58 +138,59 @@ Configuration AuditBitLocker
 AuditBitLocker
 ```
 
-Zie [een configuratie schrijven, compileren en Toep assen](/powershell/scripting/dsc/configurations/write-compile-apply-configuration)voor meer informatie.
+For more information, see [Write, Compile, and Apply a Configuration](/powershell/scripting/dsc/configurations/write-compile-apply-configuration).
 
-## <a name="create-guest-configuration-custom-policy-package"></a>Aangepast beleids pakket voor de gast configuratie maken
+## <a name="create-guest-configuration-custom-policy-package"></a>Create Guest Configuration custom policy package
 
-Zodra de MOF is gecompileerd, moeten de ondersteunende bestanden samen worden verpakt. Het voltooide pakket wordt gebruikt door de gast configuratie om de Azure Policy definities te maken. Het pakket bestaat uit:
+Once the MOF is compiled, the supporting files must be packaged together. The completed package is used by Guest Configuration to create the Azure Policy definitions. The package consists of:
 
-- De gecompileerde DSC-configuratie als een MOF
-- Map modules
-  - GuestConfiguration-module
-  - DscNativeResources-module
-  - Spreek Een map met de chef-specificatie definitie en aanvullende inhoud
-  - Windows DSC-resource modules die niet zijn ingebouwd
+- The compiled DSC configuration as a MOF
+- Modules folder
+  - GuestConfiguration module
+  - DscNativeResources module
+  - (Linux) A folder with the Chef InSpec definition and additional content
+  - (Windows) DSC resource modules that aren't built in
 
-Met de cmdlet `New-GuestConfigurationPackage` maakt u het pakket. De volgende indeling wordt gebruikt voor het maken van een aangepast pakket:
+The `New-GuestConfigurationPackage` cmdlet creates the package. The following format is used for creating a custom package:
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name '{PackageName}' -Configuration '{PathToMOF}' `
     -Path '{OutputFolder}' -Verbose
 ```
 
-Para meters van de cmdlet `New-GuestConfigurationPackage`:
+Parameters of the `New-GuestConfigurationPackage` cmdlet:
 
-- **Naam**: naam van het gast configuratie pakket.
-- **Configuratie**: gecompileerd DSC-configuratie document volledig pad.
-- **Pad**: pad naar map voor uitvoer. Deze para meter is optioneel. Als u niets opgeeft, wordt het pakket gemaakt in de huidige map.
-- **ChefProfilePath**: volledig pad naar het INSPEC-profiel. Deze para meter wordt alleen ondersteund bij het maken van inhoud om Linux te controleren.
+- **Name**: Guest Configuration package name.
+- **Configuration**: Compiled DSC configuration document full path.
+- **Path**: Output folder path. This parameter is optional. If not specified, the package is created in current directory.
+- **ChefProfilePath**: Full path to InSpec profile. This parameter is supported only when creating content to audit Linux.
 
-Het voltooide pakket moet worden opgeslagen op een locatie die toegankelijk is voor de beheerde virtuele machines. Voor beelden zijn GitHub-opslag plaatsen, een Azure-opslag plaats of Azure-opslag. Als u het pakket liever niet openbaar wilt maken, kunt u een [SAS-token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in de URL toevoegen. U kunt ook [service-eind punten](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) implementeren voor computers in een particulier netwerk, hoewel deze configuratie alleen van toepassing is op toegang tot het pakket en niet communiceert met de service.
+The completed package must be stored in a location that is accessible by the managed virtual machines. Examples include GitHub repositories, an Azure Repo, or Azure storage. If you prefer to not make the package public, you can include a [SAS token](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) in the URL.
+You could also implement [service endpoint](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) for machines in a private network, although this configuration applies only to accessing the package and not communicating with the service.
 
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>Werken met geheimen in gast configuratie pakketten
+### <a name="working-with-secrets-in-guest-configuration-packages"></a>Working with secrets in Guest Configuration packages
 
-In Azure Policy gast configuratie is de optimale manier om geheimen te beheren die tijdens runtime worden gebruikt, om ze op te slaan in Azure Key Vault. Dit ontwerp wordt geïmplementeerd in aangepaste DSC-resources.
+In Azure Policy Guest Configuration, the optimal way to manage secrets used at run time is to store them in Azure Key Vault. This design is implemented within custom DSC resources.
 
-1. Maak eerst een door de gebruiker toegewezen beheerde identiteit in Azure.
+1. First, create a user-assigned managed identity in Azure.
 
-   De identiteit wordt door machines gebruikt om toegang te krijgen tot geheimen die zijn opgeslagen in Key Vault. Zie [een door de gebruiker toegewezen beheerde identiteit maken, weer geven of verwijderen met Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)voor gedetailleerde stappen.
+   The identity is used by machines to access secrets stored in Key Vault. For detailed steps, see [Create, list or delete a user-assigned managed identity using Azure PowerShell](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
-1. Maak een Key Vault-exemplaar.
+1. Create a Key Vault instance.
 
-   Zie voor gedetailleerde stappen [een geheim-Power shell instellen en ophalen](../../../key-vault/quick-create-powershell.md).
-   Wijs machtigingen toe aan het exemplaar om de door de gebruiker toegewezen identiteit toegang te geven tot geheimen die zijn opgeslagen in Key Vault. Zie voor gedetailleerde stappen [een geheim instellen en ophalen-.net](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
+   For detailed steps, see [Set and retrieve a secret - PowerShell](../../../key-vault/quick-create-powershell.md).
+   Assign permissions to the instance to give the user-assigned identity access to secrets stored in Key Vault. For detailed steps, see [Set and retrieve a secret - .NET](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
 
-1. Wijs de door de gebruiker toegewezen identiteit toe aan uw computer.
+1. Assign the user-assigned identity to your machine.
 
-   Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van Power shell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)voor gedetailleerde stappen.
-   Wijs op schaal deze identiteit toe met behulp van Azure Resource Manager via Azure Policy. Zie [beheerde identiteiten voor Azure-resources configureren op een virtuele Azure-machine met behulp van een sjabloon](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)voor gedetailleerde stappen.
+   For detailed steps, see [Configure managed identities for Azure resources on an Azure VM using PowerShell](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity).
+   At scale, assign this identity using Azure Resource Manager via Azure Policy. For detailed steps, see [Configure managed identities for Azure resources on an Azure VM using a template](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm).
 
-1. Ten slotte gebruiken de eerder gegenereerde client-ID in uw aangepaste resource om toegang te krijgen tot Key Vault met behulp van het token dat beschikbaar is op de computer.
+1. Finally, within your custom resource use the client ID generated above to access Key Vault using the token available from the machine.
 
-   De `client_id` en URL naar het Key Vault exemplaar kunnen worden door gegeven aan de resource als [Eigenschappen](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) , zodat de resource niet hoeft te worden bijgewerkt voor meerdere omgevingen of als de waarden moeten worden gewijzigd.
+   The `client_id` and url to the Key Vault instance can be passed to the resource as [properties](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) so the resource won't need to be updated for multiple environments or if the values need to be changed.
 
-Het volgende code voorbeeld kan worden gebruikt in een aangepaste resource om geheimen van Key Vault op te halen met behulp van een door de gebruiker toegewezen identiteit. De geretourneerde waarde van de aanvraag voor Key Vault is tekst zonder opmaak. Als best practice, slaat u deze op in een referentie object.
+The following code sample can be used in a custom resource to retrieve secrets from Key Vault using a user-assigned identity. The value returned from the request to Key Vault is plain text. As a best practice, store it within a credential object.
 
 ```azurepowershell-interactive
 # the following values should be input as properties
@@ -203,33 +204,33 @@ $value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Me
 $credential = New-Object System.Management.Automation.PSCredential('secret',$value)
 ```
 
-## <a name="test-a-guest-configuration-package"></a>Een gast configuratie pakket testen
+## <a name="test-a-guest-configuration-package"></a>Test a Guest Configuration package
 
-Nadat u het configuratie pakket hebt gemaakt, maar voordat u het naar Azure publiceert, kunt u de functionaliteit van het pakket testen vanaf uw werk station of CI/CD-omgeving. De GuestConfiguration-module bevat een cmdlet `Test-GuestConfigurationPackage` die dezelfde agent in uw ontwikkelings omgeving laadt als wordt gebruikt binnen Azure-machines. Met deze oplossing kunt u integratie testen lokaal uitvoeren voordat u overbrengt naar gefactureerde test/QA/productie omgevingen.
+After creating the Configuration package but before publishing it to Azure, you can test the functionality of the package from your workstation or CI/CD environment. The GuestConfiguration module includes a cmdlet `Test-GuestConfigurationPackage` that loads the same agent in your development environment as is used inside Azure machines. Using this solution, you can perform integration testing locally before releasing to billed test/QA/production environments.
 
 ```azurepowershell-interactive
 Test-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Verbose
 ```
 
-Para meters van de cmdlet `Test-GuestConfigurationPackage`:
+Parameters of the `Test-GuestConfigurationPackage` cmdlet:
 
-- **Naam**: naam van het gast configuratie beleid.
-- **Para meter**: beleids parameters die zijn opgegeven in de hashtabel-indeling.
-- **Pad**: volledig pad van het gast configuratie pakket.
+- **Name**: Guest Configuration Policy name.
+- **Parameter**: Policy parameters provided in hashtable format.
+- **Path**: Full path of the Guest Configuration package.
 
-De cmdlet ondersteunt ook invoer van de Power shell-pijp lijn. Pipet de uitvoer van `New-GuestConfigurationPackage` cmdlet naar de `Test-GuestConfigurationPackage`-cmdlet.
+The cmdlet also supports input from the PowerShell pipeline. Pipe the output of `New-GuestConfigurationPackage` cmdlet to the `Test-GuestConfigurationPackage` cmdlet.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPackage -Name AuditWindowsService -Configuration .\DSCConfig\localhost.mof -Path .\package -Verbose | Test-GuestConfigurationPackage -Verbose
 ```
 
-Voor meer informatie over het testen met para meters, zie de sectie hieronder [para meters gebruiken in aangepaste gast configuratie beleidsregels](#using-parameters-in-custom-guest-configuration-policies).
+For more information about how to test with parameters, see the section below [Using parameters in custom Guest Configuration policies](#using-parameters-in-custom-guest-configuration-policies).
 
-## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>De implementatie bestanden voor Azure Policy definitie en initiatief maken
+## <a name="create-the-azure-policy-definition-and-initiative-deployment-files"></a>Create the Azure Policy definition and initiative deployment files
 
-Wanneer een aangepast beleids pakket voor de gast configuratie is gemaakt en geüpload naar een locatie die toegankelijk is voor de machines, maakt u de beleids definitie voor gast configuratie voor Azure Policy. De `New-GuestConfigurationPolicy`-cmdlet neemt een aangepast beleids pakket voor een openbaar toegankelijke gast configuratie en maakt een **auditIfNotExists** -en **deployIfNotExists** -beleids definitie. Er wordt ook een beleids initiatief definitie gemaakt die beide beleids definities bevat.
+Once a Guest Configuration custom policy package has been created and uploaded to a location accessible by the machines, create the Guest Configuration policy definition for Azure Policy. The `New-GuestConfigurationPolicy` cmdlet takes a publicly accessible Guest Configuration custom policy package and creates an **auditIfNotExists** and **deployIfNotExists** policy definition. A policy initiative definition that includes both policy definitions is also created.
 
-In het volgende voor beeld worden het beleid en initiatief definities in een opgegeven pad vanuit een gast configuratie aangepast beleids pakket voor Windows gemaakt, met een naam, beschrijving en versie:
+The following example creates the policy and initiative definitions in a specified path from a Guest Configuration custom policy package for Windows and provides a name, description, and version:
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy
@@ -242,33 +243,33 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Para meters van de cmdlet `New-GuestConfigurationPolicy`:
+Parameters of the `New-GuestConfigurationPolicy` cmdlet:
 
-- **ContentUri**: open bare http (s)-URI van het inhouds pakket voor de gast configuratie.
-- **DisplayName**: weergave naam beleid.
-- **Beschrijving**: beschrijving van het beleid.
-- **Para meter**: beleids parameters die zijn opgegeven in de hashtabel-indeling.
-- **Versie**: beleids versie.
-- **Pad**: doelpad voor het maken van beleids definities.
-- **Platform**: doel platform (Windows/Linux) voor gast configuratie beleid en inhouds pakket.
+- **ContentUri**: Public http(s) uri of Guest Configuration content package.
+- **DisplayName**: Policy display name.
+- **Description**: Policy description.
+- **Parameter**: Policy parameters provided in hashtable format.
+- **Version**: Policy version.
+- **Path**: Destination path where policy definitions are created.
+- **Platform**: Target platform (Windows/Linux) for Guest Configuration policy and content package.
 
-De volgende bestanden worden gemaakt door `New-GuestConfigurationPolicy`:
+The following files are created by `New-GuestConfigurationPolicy`:
 
-- **auditIfNotExists. json**
-- **deployIfNotExists. json**
-- **Initiative. json**
+- **auditIfNotExists.json**
+- **deployIfNotExists.json**
+- **Initiative.json**
 
-De cmdlet-uitvoer retourneert een object dat de weergave naam en het pad van de beleids bestanden bevat.
+The cmdlet output returns an object containing the initiative display name and path of the policy files.
 
-Als u deze opdracht wilt gebruiken om een aangepast beleids project te maken, kunt u wijzigingen aanbrengen in deze bestanden. Een voor beeld is het wijzigen van de sectie ' If ' om te evalueren of een specifieke tag aanwezig is voor machines. Zie [programmatisch beleids regels maken](./programmatically-create.md)voor meer informatie over het maken van beleid.
+If you would like to use this command to scaffold a custom policy project, you can make changes to these files. An example would be modifying the 'If' section to evaluate whether a specific Tag is present for machines. For details on creating policies, see [Programmatically create policies](./programmatically-create.md).
 
-### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Para meters gebruiken in aangepaste gast configuratie beleidsregels
+### <a name="using-parameters-in-custom-guest-configuration-policies"></a>Using parameters in custom Guest Configuration policies
 
-Gast configuratie ondersteunt het overschrijven van eigenschappen van een configuratie tijdens runtime. Deze functie betekent dat de waarden in het MOF-bestand in het pakket niet als statisch moeten worden beschouwd. De onderdrukkings waarden worden geleverd via Azure Policy en hebben geen invloed op de manier waarop de configuraties worden gemaakt of gecompileerd.
+Guest Configuration supports overriding properties of a Configuration at run time. This feature means that the values in the MOF file in the package don't have to be considered static. The override values are provided through Azure Policy and don't impact how the Configurations are authored or compiled.
 
-De cmdlets `New-GuestConfigurationPolicy` en `Test-GuestConfigurationPolicyPackage` bevatten een para meter met de naam **para meters**. Met deze para meter wordt een hash-tabel definitie gebruikt, inclusief alle details van elke para meter en worden automatisch alle vereiste secties gemaakt van de bestanden die worden gebruikt voor het maken van elke Azure Policy definitie.
+The cmdlets `New-GuestConfigurationPolicy` and `Test-GuestConfigurationPolicyPackage` include a parameter named **Parameters**. This parameter takes a hashtable definition including all details about each parameter and automatically creates all the required sections of the files used to create each Azure Policy definition.
 
-In het volgende voor beeld wordt een Azure Policy gemaakt voor het controleren van een service, waarbij de gebruiker selecteert in een lijst met Services op het moment van beleids toewijzing.
+The following example would create an Azure Policy to audit a service, where the user selects from a list of services at the time of Policy assignment.
 
 ```azurepowershell-interactive
 $PolicyParameterInfo = @(
@@ -295,7 +296,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Voor Linux-beleid voegt u de eigenschap **AttributesYmlContent** in uw configuratie toe en overschrijft u de waarden dienovereenkomstig. De gast configuratie agent maakt automatisch het YaML-bestand dat wordt gebruikt door de specificatie voor het opslaan van kenmerken. Zie het voorbeeld hieronder.
+For Linux policies, include the property **AttributesYmlContent** in your configuration and overwrite the values accordingly. The Guest Configuration agent automatically creates the YaML file used by InSpec to store attributes. Zie onderstaand voorbeeld.
 
 ```azurepowershell-interactive
 Configuration FirewalldEnabled {
@@ -312,7 +313,7 @@ Configuration FirewalldEnabled {
 }
 ```
 
-Voor elke aanvullende para meter voegt u een hashtabel toe aan de matrix. In de beleids bestanden ziet u eigenschappen die zijn toegevoegd aan de configuratie naam van de gast configuratie die het resource type, de naam, de eigenschap en de waarde identificeert.
+For each additional parameter, add a hashtable to the array. In the policy files, you'll see properties added to the Guest Configuration configurationName that identify the resource type, name, property, and value.
 
 ```json
 {
@@ -333,83 +334,83 @@ Voor elke aanvullende para meter voegt u een hashtabel toe aan de matrix. In de 
 }
 ```
 
-## <a name="publish-to-azure-policy"></a>Publiceren naar Azure Policy
+## <a name="publish-to-azure-policy"></a>Publish to Azure Policy
 
-De **GuestConfiguration** -resource module biedt een manier om zowel beleids definities als initiatief definitie in azure te maken met één stap door de `Publish-GuestConfigurationPolicy`-cmdlet.
-De cmdlet heeft alleen de para meter **Path** die verwijst naar de locatie van de drie json-bestanden die zijn gemaakt door `New-GuestConfigurationPolicy`.
+The **GuestConfiguration** resource module offers a way to create both policy definitions and the initiative definition in Azure with one step through the `Publish-GuestConfigurationPolicy` cmdlet.
+The cmdlet only has the **Path** parameter that points to the location of the three JSON files created by `New-GuestConfigurationPolicy`.
 
 ```azurepowershell-interactive
 Publish-GuestConfigurationPolicy -Path '.\policyDefinitions' -Verbose
 ```
 
-De cmdlet `Publish-GuestConfigurationPolicy` accepteert het pad van de Power shell-pijp lijn. Deze functie houdt in dat u de beleids bestanden kunt maken en publiceren in één set opdrachten die zijn gesluisd.
+The `Publish-GuestConfigurationPolicy` cmdlet accepts the path from the PowerShell pipeline. This feature means you can create the policy files and publish them in a single set of piped commands.
 
 ```azurepowershell-interactive
 New-GuestConfigurationPolicy -ContentUri 'https://storageaccountname.blob.core.windows.net/packages/AuditBitLocker.zip?st=2019-07-01T00%3A00%3A00Z&se=2024-07-01T00%3A00%3A00Z&sp=rl&sv=2018-03-28&sr=b&sig=JdUf4nOCo8fvuflOoX%2FnGo4sXqVfP5BYXHzTl3%2BovJo%3D' -DisplayName 'Audit BitLocker service.' -Description 'Audit if the BitLocker service is not enabled on Windows machine.' -Path '.\policyDefinitions' -Platform 'Windows' -Version 1.2.3.4 -Verbose | ForEach-Object {$_.Path} | Publish-GuestConfigurationPolicy -Verbose
 ```
 
-Met het beleid en de initiatief definities die zijn gemaakt in azure, is de laatste stap het initiatief toe te wijzen. Zie hoe u het initiatief toewijst met [Portal](../assign-policy-portal.md), [Azure cli](../assign-policy-azurecli.md)en [Azure PowerShell](../assign-policy-powershell.md).
+With the policy and initiative definitions created in Azure, the last step is to assign the initiative. See how to assign the initiative with [Portal](../assign-policy-portal.md), [Azure CLI](../assign-policy-azurecli.md), and [Azure PowerShell](../assign-policy-powershell.md).
 
 > [!IMPORTANT]
-> Gast configuratie beleidsregels moeten **altijd** worden toegewezen met het initiatief waarbij het beleid voor _AuditIfNotExists_ en _DeployIfNotExists_ wordt gecombineerd. Als alleen het _AuditIfNotExists_ -beleid is toegewezen, worden de vereisten niet geïmplementeerd en wordt in het beleid altijd weer gegeven dat ' 0 '-servers compatibel zijn.
+> Guest Configuration policies must **always** be assigned using the initiative that combines the _AuditIfNotExists_ and _DeployIfNotExists_ policies. If only the _AuditIfNotExists_ policy is assigned, the prerequisites aren't deployed and the policy always shows that '0' servers are compliant.
 
-## <a name="policy-lifecycle"></a>Levens duur van beleid
+## <a name="policy-lifecycle"></a>Policy lifecycle
 
-Nadat u een aangepaste Azure Policy hebt gepubliceerd met behulp van uw aangepaste inhouds pakket, zijn er twee velden die moeten worden bijgewerkt als u een nieuwe release wilt publiceren.
+After you've published a custom Azure Policy using your custom content package, there are two fields that must be updated if you would like to publish a new release.
 
-- **Versie**: wanneer u de `New-GuestConfigurationPolicy` cmdlet uitvoert, moet u een versie nummer opgeven dat groter is dan het aantal dat momenteel is gepubliceerd. Met de eigenschap wordt de versie van de toewijzing van de gast configuratie in het nieuwe beleids bestand bijgewerkt zodat de extensie herkent dat het pakket is bijgewerkt.
-- **contentHash**: deze eigenschap wordt automatisch bijgewerkt door de cmdlet `New-GuestConfigurationPolicy`. Het is een hash-waarde van het pakket dat door `New-GuestConfigurationPackage`is gemaakt. De eigenschap moet correct zijn voor het `.zip` bestand dat u publiceert. Als alleen de eigenschap **contentUri** wordt bijgewerkt, bijvoorbeeld in het geval dat iemand een hand matige wijziging van de beleids definitie kan aanbrengen vanuit de portal, wordt het inhouds pakket niet geaccepteerd door de extensie.
+- **Version**: When you run the `New-GuestConfigurationPolicy` cmdlet, you must specify a version number greater than what is currently published. The property updates the version of the Guest Configuration assignment in the new policy file so the extension will recognize that the package has been updated.
+- **contentHash**: This property is updated automatically by the `New-GuestConfigurationPolicy` cmdlet. It's a hash value of the package created by `New-GuestConfigurationPackage`. The property must be correct for the `.zip` file you publish. If only the **contentUri** property is updated, such as in the case where someone could make a manual change to the Policy definition from the portal, the Extension won't accept the content package.
 
-De eenvoudigste manier om een bijgewerkt pakket vrij te geven, is het proces dat wordt beschreven in dit artikel herhalen en een bijgewerkt versie nummer opgeven. Dit proces garandeert dat alle eigenschappen correct zijn bijgewerkt.
+The easiest way to release an updated package is to repeat the process described in this article and provide an updated version number. That process guarantees all properties have been correctly updated.
 
-## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Windows-groepsbeleid inhoud converteren naar Azure Policy-gast configuratie
+## <a name="converting-windows-group-policy-content-to-azure-policy-guest-configuration"></a>Converting Windows Group Policy content to Azure Policy Guest Configuration
 
-Gast configuratie, bij het controleren van Windows-computers, is een implementatie van de desired state-configuratie syntaxis van Power shell. De DSC-Community heeft hulp middelen gepubliceerd voor het converteren van geëxporteerde groepsbeleid sjablonen naar de DSC-indeling. Als u dit hulp programma gebruikt in combi natie met de hierboven beschreven gast configuratie-cmdlets, kunt u Windows-groepsbeleid inhoud en-pakket converteren en publiceren voor Azure Policy naar controle. Voor meer informatie over het gebruik van het hulp programma raadpleegt u het artikel [Snelstartgids: Groepsbeleid converteren naar DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
-Nadat de inhoud is geconverteerd, zijn de bovenstaande stappen voor het maken van een pakket en het publiceren ervan als Azure Policy hetzelfde als voor elke DSC-inhoud.
+Guest Configuration, when auditing Windows machines, is an implementation of the PowerShell Desired State Configuration syntax. The DSC community has published tooling to convert exported Group Policy templates to DSC format. By using this tool together with the Guest Configuration cmdlets described above, you can convert Windows Group Policy content and package/publish it for Azure Policy to audit. For details about using the tool, see the article [Quickstart: Convert Group Policy into DSC](/powershell/scripting/dsc/quickstarts/gpo-quickstart).
+Once the content has been converted, the steps above to create a package and publish it as Azure Policy will be the same as for any DSC content.
 
-## <a name="optional-signing-guest-configuration-packages"></a>Optioneel: gast configuratie pakketten ondertekenen
+## <a name="optional-signing-guest-configuration-packages"></a>OPTIONAL: Signing Guest Configuration packages
 
-Aangepaste beleids regels voor gast configuratie SHA256 hash gebruiken om te valideren dat het beleids pakket niet is gewijzigd wanneer het is gepubliceerd op de server die wordt gecontroleerd.
-Klanten kunnen eventueel ook een certificaat gebruiken om pakketten te ondertekenen en de gast configuratie-extensie dwingen alleen ondertekende inhoud toe te staan.
+Guest Configuration custom policies by default use SHA256 hash to validate the policy package hasn't changed from when it was published to when it's read by the server that is being audited.
+Optionally, customers may also use a certificate to sign packages and force the Guest Configuration extension to only allow signed content.
 
-Om dit scenario in te scha kelen, zijn er twee stappen die u moet volt ooien. Voer de cmdlet uit om het inhouds pakket te ondertekenen en voeg een tag toe aan de machines waarvoor code moet worden ondertekend.
+To enable this scenario, there are two steps you need to complete. Run the cmdlet to sign the content package, and append a tag to the machines that should require code to be signed.
 
-Als u de functie voor handtekening validatie wilt gebruiken, voert u de `Protect-GuestConfigurationPackage`-cmdlet uit om het pakket te ondertekenen voordat het wordt gepubliceerd. Voor deze cmdlet is het certificaat voor ondertekening van programma code vereist.
+To use the Signature Validation feature, run the `Protect-GuestConfigurationPackage` cmdlet to sign the package before it's published. This cmdlet requires a 'Code Signing' certificate.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert") }
 Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindowsService.zip -Certificate $Cert -Verbose
 ```
 
-Para meters van de cmdlet `Protect-GuestConfigurationPackage`:
+Parameters of the `Protect-GuestConfigurationPackage` cmdlet:
 
-- **Pad**: volledig pad van het gast configuratie pakket.
-- **Certificaat**: certificaat voor ondertekening van programma code voor het ondertekenen van het pakket. Deze para meter wordt alleen ondersteund bij het ondertekenen van inhoud voor Windows.
-- **PrivateGpgKeyPath**: pad naar de persoonlijke GPG-sleutel. Deze para meter wordt alleen ondersteund bij het ondertekenen van inhoud voor Linux.
-- **PublicGpgKeyPath**: pad naar de open bare GPG-sleutel. Deze para meter wordt alleen ondersteund bij het ondertekenen van inhoud voor Linux.
+- **Path**: Full path of the Guest Configuration package.
+- **Certificate**: Code signing certificate to sign the package. This parameter is only supported when signing content for Windows.
+- **PrivateGpgKeyPath**: Private GPG key path. This parameter is only supported when signing content for Linux.
+- **PublicGpgKeyPath**: Public GPG key path. This parameter is only supported when signing content for Linux.
 
-GuestConfiguration-agent verwacht dat de open bare sleutel van het certificaat aanwezig is in ' vertrouwde basis certificerings instanties ' op Windows-computers en in het pad `/usr/local/share/ca-certificates/extra` op Linux-machines. Installeer de open bare sleutel van het certificaat op de computer voordat u het aangepaste beleid toepast, zodat het knoop punt ondertekende inhoud verifieert. Dit proces kan worden uitgevoerd met behulp van een wille keurige techniek binnen de virtuele machine of met behulp van Azure Policy. [Hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows)vindt u een voorbeeld sjabloon.
-Het Key Vault toegangs beleid moet de compute-resource provider toegang geven tot certificaten tijdens implementaties. Zie [Key Vault instellen voor virtuele machines in azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault)voor gedetailleerde stappen.
+GuestConfiguration agent expects the certificate public key to be present in "Trusted Root Certificate Authorities" on Windows machines and in the path `/usr/local/share/ca-certificates/extra` on Linux machines. For the node to verify signed content, install the certificate public key on the machine before applying the custom policy. This process can be done using any technique inside the VM, or by using Azure Policy. An example template is [provided here](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
+The Key Vault access policy must allow the Compute resource provider to access certificates during deployments. For detailed steps, see [Set up Key Vault for virtual machines in Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
-Hieronder volgt een voor beeld van het exporteren van de open bare sleutel van een handtekening certificaat om te importeren naar de machine.
+Following is an example to export the public key from a signing certificate, to import to the machine.
 
 ```azurepowershell-interactive
 $Cert = Get-ChildItem -Path cert:\LocalMachine\My | Where-Object {($_.Subject-eq "CN=mycert3") } | Select-Object -First 1
 $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
-Een goede referentie voor het maken van GPG-sleutels voor gebruik met Linux-machines wordt verschaft door een artikel op GitHub, waardoor [een nieuwe GPG-sleutel wordt gegenereerd](https://help.github.com/en/articles/generating-a-new-gpg-key).
+A good reference for creating GPG keys to use with Linux machines is provided by an article on GitHub, [Generating a new GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key).
 
-Nadat de inhoud is gepubliceerd, voegt u een tag met de naam `GuestConfigPolicyCertificateValidation` en waarde `enabled` toe aan alle virtuele machines waarvoor ondertekening van programma code vereist is. Deze tag kan op schaal worden geleverd met behulp van Azure Policy. Zie de [Tags Toep assen en het voor beeld van de standaard waarde](../samples/apply-tag-default-value.md) . Zodra deze tag is geïmplementeerd, maakt de beleids definitie die is gegenereerd met de `New-GuestConfigurationPolicy` cmdlet de vereiste via de gast configuratie-extensie.
+After your content is published, append a tag with name `GuestConfigPolicyCertificateValidation` and value `enabled` to all virtual machines where code signing should be required. This tag can be delivered at scale using Azure Policy. See the [Apply tag and its default value](../samples/apply-tag-default-value.md) sample. Once this tag is in place, the policy definition generated using the `New-GuestConfigurationPolicy` cmdlet enables the requirement through the Guest Configuration extension.
 
-## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>EVALUATIE Problemen met toewijzingen van gast configuratie beleid oplossen
+## <a name="preview-troubleshooting-guest-configuration-policy-assignments"></a>[PREVIEW] Troubleshooting Guest Configuration policy assignments
 
-Er is een hulp programma beschikbaar in de preview-versie om te helpen bij het oplossen van problemen Azure Policy toewijzing van gast configuraties. Het hulp programma is in Preview en gepubliceerd op de PowerShell Gallery als module naam [gast configuratie probleem Oplosser](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
+A tool is available in preview to assist in troubleshooting Azure Policy Guest Configuration assignments. The tool is in preview and has been published to the PowerShell Gallery as module name [Guest Configuration Troubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/).
 
-Voor meer informatie over de cmdlets in dit hulp programma gebruikt u de opdracht Get-Help in Power shell om de ingebouwde richt lijnen weer te geven. Wanneer het hulp programma veelvuldige updates ontvangt, is dat de beste manier om de meest recente informatie te verkrijgen.
+For more information about the cmdlets in this tool, use the Get-Help command in PowerShell to show the built-in guidance. As the tool is getting frequent updates, that is the best way to get most recent information.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over het controleren van Vm's met [gast configuratie](../concepts/guest-configuration.md).
-- Meer informatie over het [programmatisch maken van beleids regels](programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](get-compliance-data.md).
+- Learn about auditing VMs with [Guest Configuration](../concepts/guest-configuration.md).
+- Understand how to [programmatically create policies](programmatically-create.md).
+- Learn how to [get compliance data](get-compliance-data.md).

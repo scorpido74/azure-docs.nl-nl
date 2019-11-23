@@ -1,142 +1,142 @@
 ---
-title: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen2 prestaties | Microsoft Docs
-description: Richt lijnen voor het afstemmen van Azure Data Lake Storage Gen2 prestaties
+title: Optimize Azure Data Lake Storage Gen2 for performance | Microsoft Docs
+description: Azure Data Lake Storage Gen2 Performance Tuning Guidelines
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b134842303bebdf10efdf388057c8ad7b3be61be
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: f1a16228b72d7e0f45048669ade94a0c78d9ac52
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68855577"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327946"
 ---
-# <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 afstemmen voor prestaties
+# <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimize Azure Data Lake Storage Gen2 for performance
 
-Azure Data Lake Storage Gen2 ondersteunt hoge door Voer voor I/O-intensieve analyses en gegevens verplaatsing.  In Data Lake Storage Gen2, met behulp van alle beschik bare door Voer – de hoeveelheid gegevens die per seconde kan worden gelezen of geschreven, is belang rijk om de beste prestaties te verkrijgen.  Dit wordt bereikt door zo veel mogelijk Lees-en schrijf bewerkingen parallel uit te voeren.
+Azure Data Lake Storage Gen2 supports high-throughput for I/O intensive analytics and data movement.  In Data Lake Storage Gen2, using all available throughput – the amount of data that can be read or written per second – is important to get the best performance.  This is achieved by performing as many reads and writes in parallel as possible.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
+![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/throughput.png)
 
-Data Lake Storage Gen2 kan worden geschaald om de benodigde door Voer voor alle analyse scenario's te bieden. Een Data Lake Storage Gen2-account biedt standaard automatisch voldoende door Voer om te voldoen aan de behoeften van een brede categorie van use cases. Voor de gevallen waarin klanten de standaard limiet uitvoeren, kan het Data Lake Storage Gen2-account worden geconfigureerd om meer door voer te bieden door contact op te nemen met de [ondersteuning van Azure](https://azure.microsoft.com/support/faq/).
+Data Lake Storage Gen2 can scale to provide the necessary throughput for all analytics scenario. By default, a Data Lake Storage Gen2 account provides automatically enough throughput to meet the needs of a broad category of use cases. For the cases where customers run into the default limit, the Data Lake Storage Gen2 account can be configured to provide more throughput by contacting [Azure Support](https://azure.microsoft.com/support/faq/).
 
 ## <a name="data-ingestion"></a>Gegevensopname
 
-Bij het opnemen van gegevens van een bron systeem naar Data Lake Storage Gen2, is het belang rijk om te overwegen dat de bron-hardware, de bron netwerkhardware en de netwerk verbinding met Data Lake Storage Gen2 de knel punt kunnen zijn.  
+When ingesting data from a source system to Data Lake Storage Gen2, it is important to consider that the source hardware, source network hardware, and network connectivity to Data Lake Storage Gen2 can be the bottleneck.  
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
+![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/bottleneck.png)
 
-Het is belang rijk om ervoor te zorgen dat de verplaatsing van gegevens niet wordt beïnvloed door deze factoren.
+It is important to ensure that the data movement is not affected by these factors.
 
-### <a name="source-hardware"></a>Bron-hardware
+### <a name="source-hardware"></a>Source hardware
 
-Of u nu gebruikmaakt van on-premises machines of Vm's in azure, moet u zorgvuldig de juiste hardware selecteren. Voor de hardware van de bron schijf krijgt u de voor keur aan Hdd's en Ssd's met snellere spindles. Gebruik de snelste Nic's voor de hardware van het bron netwerk.  In azure wordt u aangeraden Azure D14 Vm's te hebben die de juiste krachtige hardware voor schijf-en netwerk apparatuur hebben.
+Whether you are using on-premises machines or VMs in Azure, you should carefully select the appropriate hardware. For Source Disk Hardware, prefer SSDs to HDDs and pick disk hardware with faster spindles. For Source Network Hardware, use the fastest NICs possible.  On Azure, we recommend Azure D14 VMs which have the appropriately powerful disk and networking hardware.
 
-### <a name="network-connectivity-to-data-lake-storage-gen2"></a>De netwerk verbinding met de Data Lake Storage Gen2
+### <a name="network-connectivity-to-data-lake-storage-gen2"></a>Network connectivity to Data Lake Storage Gen2
 
-De netwerk verbinding tussen de bron gegevens en Data Lake Storage Gen2 kan soms het knel punt zijn. Als uw bron gegevens on-premises zijn, kunt u een speciale koppeling met [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) gebruiken. Als uw bron gegevens zich in azure bevinden, zijn de prestaties het beste wanneer de gegevens zich in dezelfde Azure-regio bevinden als het Data Lake Storage Gen2-account.
+The network connectivity between your source data and Data Lake Storage Gen2 can sometimes be the bottleneck. When your source data is On-Premises, consider using a dedicated link with [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) . If your source data is in Azure, the performance will be best when the data is in the same Azure region as the Data Lake Storage Gen2 account.
 
-### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Hulp middelen voor gegevens opname configureren voor maximale parallel Lise ring
+### <a name="configure-data-ingestion-tools-for-maximum-parallelization"></a>Configure data ingestion tools for maximum parallelization
 
-Als u de bovenstaande knel punten voor de bron-en netwerk connectiviteit hebt opgelost, kunt u de opname hulpprogramma's configureren. De volgende tabel bevat een overzicht van de belangrijkste instellingen voor verschillende veelgebruikte hulpprogram ma's voor opname en biedt gedetailleerde artikelen voor het afstemmen van de prestaties.  Ga naar dit [artikel](data-lake-storage-data-scenarios.md)voor meer informatie over welk hulp programma u moet gebruiken voor uw scenario.
+Once you have addressed the source hardware and network connectivity bottlenecks above, you are ready to configure your ingestion tools. The following table summarizes the key settings for several popular ingestion tools and provides in-depth performance tuning articles for them.  To learn more about which tool to use for your scenario, visit this [article](data-lake-storage-data-scenarios.md).
 
-| Hulpprogramma               | Instellingen     | Meer informatie                                                                 |
+| Hulpprogramma               | Instellingen     | More Details                                                                 |
 |--------------------|------------------------------------------------------|------------------------------|
-| DistCp            | -m (Mapper)   | [Link](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [Link](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | FS. Azure. Block. size,-m (Mapper)    |   [Link](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
+| DistCp            | -m (mapper)   | [Koppeling](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
+| Azure Data Factory| parallelCopies    | [Koppeling](../../data-factory/copy-activity-performance.md)                          |
+| Sqoop           | fs.azure.block.size, -m (mapper)    |   [Koppeling](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
-## <a name="structure-your-data-set"></a>De structuur van uw gegevensset instellen
+## <a name="structure-your-data-set"></a>Structure your data set
 
-Wanneer gegevens worden opgeslagen in Data Lake Storage Gen2, hebben de bestands grootte, het aantal bestanden en de mapstructuur een invloed op de prestaties.  In de volgende sectie worden aanbevolen procedures op deze gebieden beschreven.  
+When data is stored in Data Lake Storage Gen2, the file size, number of files, and folder structure have an impact on performance.  The following section describes best practices in these areas.  
 
 ### <a name="file-size"></a>Bestandsgrootte
 
-Normaal gesp roken hebben analyse-engines als HDInsight en Azure Data Lake Analytics een overhead per bestand. Als u uw gegevens als veel kleine bestanden opslaat, kan dit een negatieve invloed hebben op de prestaties. In het algemeen kunt u uw gegevens indelen in bestanden met een grotere grootte voor betere prestaties (256 MB tot 100 GB). Sommige engines en toepassingen hebben mogelijk problemen met het efficiënt verwerken van bestanden die groter zijn dan 100 GB.
+Typically, analytics engines such as HDInsight and Azure Data Lake Analytics have a per-file overhead. If you store your data as many small files, this can negatively affect performance. In general, organize your data into larger sized files for better performance (256MB to 100GB in size). Some engines and applications might have trouble efficiently processing files that are greater than 100GB in size.
 
-Soms hebben gegevens pijplijnen een beperkte controle over de onbewerkte gegevens die veel kleine bestanden hebben. Het is raadzaam om een ' koken ' proces te hebben dat grotere bestanden genereert die worden gebruikt voor downstream-toepassingen.
+Sometimes, data pipelines have limited control over the raw data which has lots of small files. It is recommended to have a "cooking" process that generates larger files to use for downstream applications.
 
-### <a name="organizing-time-series-data-in-folders"></a>Time Series-gegevens in mappen ordenen
+### <a name="organizing-time-series-data-in-folders"></a>Organizing time series data in folders
 
-Voor Hive-workloads kan het maken van een partitie van Time Series-gegevens helpen sommige query's alleen een subset van de gegevens te lezen die de prestaties verbeteren.    
+For Hive workloads, partition pruning of time-series data can help some queries read only a subset of the data which improves performance.    
 
-Deze pijp lijnen die gegevens van tijd reeksen opnemen, plaatsen hun bestanden vaak met een zeer gestructureerde naam voor bestanden en mappen. Hieronder ziet u een algemeen voor beeld van gegevens die zijn gestructureerd op datum:
+Those pipelines that ingest time-series data, often place their files with a very structured naming for files and folders. Below is a very common example we see for data that is structured by date:
 
     \DataSet\YYYY\MM\DD\datafile_YYYY_MM_DD.tsv
 
-U ziet dat de datetime-informatie zowel als mappen als in de bestands naam wordt weer gegeven.
+Notice that the datetime information appears both as folders and in the filename.
 
-Voor datum en tijd is het volgende een algemeen patroon
+For date and time, the following is a common pattern
 
     \DataSet\YYYY\MM\DD\HH\mm\datafile_YYYY_MM_DD_HH_mm.tsv
 
-Daarnaast moet de keuze die u maakt met de map en de bestands organisatie worden geoptimaliseerd voor de grotere bestands grootten en een redelijk aantal bestanden in elke map.
+Again, the choice you make with the folder and file organization should optimize for the larger file sizes and a reasonable number of files in each folder.
 
-## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>Het optimaliseren van I/O-taken op Hadoop-en Spark-workloads in HDInsight
+## <a name="optimizing-io-intensive-jobs-on-hadoop-and-spark-workloads-on-hdinsight"></a>Optimizing I/O intensive jobs on Hadoop and Spark workloads on HDInsight
 
-Taken vallen in een van de volgende drie categorieën:
+Jobs fall into one of the following three categories:
 
-* **CPU-intensief.**  Deze taken hebben een lange reken tijd met een minimale I/O-tijd.  Voor beelden zijn machine learning en verwerkings taken in natuurlijke taal.  
-* **Geheugenintensieve.**  Deze taken gebruiken veel geheugen.  Voor beelden zijn PageRank en real-time analyse taken.  
-* **I/O-intensief.**  Deze taken best Eden de meeste tijd bij het uitvoeren van I/O.  Een veelvoorkomend voor beeld is een Kopieer taak die alleen lees-en schrijf bewerkingen uitvoert.  Andere voor beelden zijn gegevens voorbereidings taken waarmee veel gegevens worden gelezen, gegevens transformatie wordt uitgevoerd en de gegevens vervolgens worden teruggeschreven naar de Store.  
+* **CPU intensive.**  These jobs have long computation times with minimal I/O times.  Examples include machine learning and natural language processing jobs.  
+* **Memory intensive.**  These jobs use lots of memory.  Examples include PageRank and real-time analytics jobs.  
+* **I/O intensive.**  These jobs spend most of their time doing I/O.  A common example is a copy job which does only read and write operations.  Other examples include data preparation jobs that read a lot of data, performs some data transformation, and then writes the data back to the store.  
 
-De volgende richt lijnen zijn alleen van toepassing op I/O-intensieve taken.
+The following guidance is only applicable to I/O intensive jobs.
 
-## <a name="general-considerations"></a>Algemene overwegingen
+## <a name="general-considerations"></a>General considerations
 
-U kunt een taak hebben die zoveel 100 MB per bewerking leest of schrijft, maar een buffer van die grootte kan de prestaties nadelig beïnvloeden.
-U kunt de prestaties optimaliseren door de grootte van een I/O-bewerking tussen 4 MB en 16 MB te gebruiken.
+You can have a job that reads or writes as much as 100MB in a single operation, but a buffer of that size might compromise performance.
+To optimize performance, try to keep the size of an I/O operation between 4MB and 16MB.
 
-### <a name="general-considerations-for-an-hdinsight-cluster"></a>Algemene overwegingen voor een HDInsight-cluster
+### <a name="general-considerations-for-an-hdinsight-cluster"></a>General considerations for an HDInsight cluster
 
-* **HDInsight-versies.** Gebruik de meest recente versie van HDInsight voor de beste prestaties.
-* **Secties.** Plaats het Data Lake Storage Gen2-account in dezelfde regio als het HDInsight-cluster.  
+* **HDInsight versions.** For best performance, use the latest release of HDInsight.
+* **Regions.** Place the Data Lake Storage Gen2 account in the same region as the HDInsight cluster.  
 
-An HDInsight cluster bestaat uit twee hoofd knooppunten en een aantal worker-knoop punten. Elk worker-knoop punt biedt een specifiek aantal kernen en geheugen, dat wordt bepaald door het VM-type.  Bij het uitvoeren van een taak is garen de resource-onderhandelaar die het beschik bare geheugen en de kernen toewijst om containers te maken.  Elke container voert de taken uit die nodig zijn om de taak te volt ooien.  Containers worden parallel uitgevoerd om taken snel te verwerken. De prestaties zijn daarom verbeterd door zo veel mogelijk parallelle containers uit te voeren.
+An HDInsight cluster is composed of two head nodes and some worker nodes. Each worker node provides a specific number of cores and memory, which is determined by the VM-type.  When running a job, YARN is the resource negotiator that allocates the available memory and cores to create containers.  Each container runs the tasks needed to complete the job.  Containers run in parallel to process tasks quickly. Therefore, performance is improved by running as many parallel containers as possible.
 
-Er zijn drie lagen in een HDInsight-cluster die kunnen worden afgestemd om het aantal containers te verhogen en alle beschik bare door voer te gebruiken.  
+There are three layers within an HDInsight cluster that can be tuned to increase the number of containers and use all available throughput.  
 
-* **Fysieke laag**
-* **Laag met garen**
-* **Workload**
+* **Physical layer**
+* **YARN layer**
+* **Workload layer**
 
-### <a name="physical-layer"></a>Fysieke laag
+### <a name="physical-layer"></a>Physical Layer
 
-**Voer het cluster uit met meer knoop punten en/of grotere Vm's.**  Een groter cluster biedt u de mogelijkheid om meer GARENs-containers uit te voeren, zoals wordt weer gegeven in de onderstaande afbeelding.
+**Run cluster with more nodes and/or larger sized VMs.**  A larger cluster will enable you to run more YARN containers as shown in the picture below.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/VM.png)
+![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/VM.png)
 
-**Gebruik Vm's met meer netwerk bandbreedte.**  De hoeveelheid netwerk bandbreedte kan een knel punt zijn als er minder netwerk bandbreedte is dan Data Lake Storage Gen2 door voer.  Verschillende Vm's hebben een verschillende grootte voor de netwerk bandbreedte.  Kies een VM-type met de grootst mogelijke netwerk bandbreedte.
+**Use VMs with more network bandwidth.**  The amount of network bandwidth can be a bottleneck if there is less network bandwidth than Data Lake Storage Gen2 throughput.  Different VMs will have varying network bandwidth sizes.  Choose a VM-type that has the largest possible network bandwidth.
 
-### <a name="yarn-layer"></a>Laag met garen
+### <a name="yarn-layer"></a>YARN Layer
 
-**Gebruik kleinere garen-containers.**  Verklein de grootte van elke garen container om meer containers te maken met dezelfde hoeveelheid resources.
+**Use smaller YARN containers.**  Reduce the size of each YARN container to create more containers with the same amount of resources.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
+![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/small-containers.png)
 
-Afhankelijk van uw werk belasting, wordt er altijd een minimale grootte van een garen container vereist. Als u te klein een container kiest, worden uw taken uitgevoerd in plaats van geheugen. Een garen mag doorgaans niet kleiner zijn dan 1 GB. Het is gebruikelijk om 3 GB-GARENs te zien. Voor sommige workloads hebt u mogelijk grotere GARENs nodig.  
+Depending on your workload, there will always be a minimum YARN container size that is needed. If you pick too small a container, your jobs will run into out-of-memory issues. Typically YARN containers should be no smaller than 1GB. It's common to see 3GB YARN containers. For some workloads, you may need larger YARN containers.  
 
-**Verhoog de kernen per garen container.**  Verhoog het aantal kern geheugens dat aan elke container is toegewezen om het aantal parallelle taken dat in elke container wordt uitgevoerd, te verg Roten.  Dit werkt voor toepassingen zoals Spark waarmee meerdere taken per container worden uitgevoerd.  Voor toepassingen als-componenten die één thread in elke container uitvoeren, is het beter om meer containers te hebben in plaats van meer kernen per container.
+**Increase cores per YARN container.**  Increase the number of cores allocated to each container to increase the number of parallel tasks that run in each container.  This works for applications like Spark which run multiple tasks per container.  For applications like Hive which run a single thread in each container, it is better to have more containers rather than more cores per container.
 
-### <a name="workload-layer"></a>Workload
+### <a name="workload-layer"></a>Workload Layer
 
-**Alle beschik bare containers gebruiken.**  Stel in hoeveel taken gelijk of groter dan het aantal beschik bare containers moeten zijn, zodat alle resources worden gebruikt.
+**Use all available containers.**  Set the number of tasks to be equal or larger than the number of available containers so that all resources are utilized.
 
-![Prestaties Data Lake Storage Gen2](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
+![Data Lake Storage Gen2 performance](./media/data-lake-storage-performance-tuning-guidance/use-containers.png)
 
-**Mislukte taken zijn kostbaar.** Als elke taak een grote hoeveelheid gegevens kan verwerken, resulteert het mislukken van een taak in een dure nieuwe poging.  Daarom is het beter om meer taken te maken, die elk een kleine hoeveelheid gegevens verwerken.
+**Failed tasks are costly.** If each task has a large amount of data to process, then failure of a task results in an expensive retry.  Therefore, it is better to create more tasks, each of which processes a small amount of data.
 
-Naast de bovenstaande algemene richt lijnen heeft elke toepassing verschillende para meters die beschikbaar zijn voor het afstemmen van die specifieke toepassing. In de volgende tabel ziet u een aantal para meters en koppelingen om aan de slag te gaan met het afstemmen van de prestaties van elke toepassing.
+In addition to the general guidelines above, each application has different parameters available to tune for that specific application. The table below lists some of the parameters and links to get started with performance tuning for each application.
 
-| Workload | Para meter voor het instellen van taken |
+| Werkbelasting | Parameter to set tasks |
 |----------|------------------------|
-| [Spark in HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Num-uitvoerende modules</li><li>Uitvoerder-geheugen</li><li>Uitvoerder-kernen</li></ul> |
-| [Hive in HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
-| [MapReduce in HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [Storm op HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Aantal werk processen</li><li>Aantal exemplaren van de Spout-uitvoerder</li><li>Aantal exemplaren van de bout-uitvoerder </li><li>Aantal Spout-taken</li><li>Aantal Schicht-taken</li></ul>|
+| [Spark on HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Num-executors</li><li>Executor-memory</li><li>Executor-cores</li></ul> |
+| [Hive on HDInsight](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
+| [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.maps</li><li>Mapreduce.reduce.memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Number of worker processes</li><li>Number of spout executor instances</li><li>Number of bolt executor instances </li><li>Number of spout tasks</li><li>Number of bolt tasks</li></ul>|
 
 ## <a name="see-also"></a>Zie ook
-* [Overzicht van Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)
+* [Overview of Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)

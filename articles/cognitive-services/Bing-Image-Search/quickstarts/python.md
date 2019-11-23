@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: zoeken naar installatie kopieën-Bing Image Search REST API en python'
+title: 'Quickstart: Search for images REST API and Python - Bing Image Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze snelstartgids om aanvragen voor het zoeken van afbeeldingen naar de REST API voor Bing Image Search te verzenden met Python en JSON-antwoorden te ontvangen.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: quickstart
 ms.date: 08/26/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 8dc7bc36b3d4b172521b0fbbf9aa09cf4d1a9b29
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 17864ed471537f80b537af4b3a8679cb9deaab57
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390117"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74323803"
 ---
-# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Snelstartgids: zoeken naar afbeeldingen met behulp van de Bing Image Search REST API en python
+# <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Quickstart: Search for images using the Bing Image Search REST API and Python
 
 Gebruik deze quickstart om zoekaanvragen naar de Bing Image Search API te leren sturen. Deze Python-toepassing verzendt een zoekquery naar de API en geeft de URL weer van de eerste afbeelding in de resultaten. Hoewel deze toepassing in Python is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
@@ -67,7 +67,7 @@ De broncode voor dit voorbeeld is beschikbaar op [GitHub](https://github.com/Azu
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. Gebruik de `requests`-bibliotheek voor het aanroepen van de Bing Image Search-API. Voeg uw koptekst en parameters toe aan de aanvraag en retourneer de reactie als een JSON-object. Haal de Url's op in verschillende miniatuur afbeeldingen van het `thumbnailUrl` veld van de reactie.
+2. Gebruik de `requests`-bibliotheek voor het aanroepen van de Bing Image Search-API. Voeg uw koptekst en parameters toe aan de aanvraag en retourneer de reactie als een JSON-object. Get The URLs to several thumbnail images from the response's `thumbnailUrl` field.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)

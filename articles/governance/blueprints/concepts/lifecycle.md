@@ -1,110 +1,109 @@
 ---
 title: Informatie over de levenscyclus van een blauwdruk
-description: Meer informatie over de levens cyclus die een blauw druk doorloopt en informatie over elke fase.
+description: Learn about the lifecycle that a blueprint definition goes through and details about each stage, including updating and removing blueprint assignments.
 ms.date: 07/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: d071a2af985d294bc87a5363d9e7566762e0fd8a
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 4dd5cb7d085744377cf12998f14c994fb1dcd2d7
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960497"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404579"
 ---
-# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Inzicht in de levens cyclus van een Azure Blueprint
+# <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Understand the lifecycle of an Azure Blueprint
 
-Net als bij veel resources binnen Azure heeft een blauw druk in azure-blauw drukken een typische en natuurlijke levens cyclus. Ze worden gemaakt, geïmplementeerd en definitief verwijderd wanneer ze niet meer nodig of relevant zijn.
-Blauw drukken ondersteunt standaard levenscyclus bewerkingen. Vervolgens wordt er een build gemaakt om aanvullende status niveaus te bieden voor de ondersteuning van gang bare, continue integratie en doorlopende implementatie pijplijnen voor organisaties die hun infra structuur als code beheren: een belang rijk element in DevOps.
+Like many resources within Azure, a blueprint in Azure Blueprints has a typical and natural lifecycle. They're created, deployed, and finally deleted when no longer needed or relevant.
+Blueprints supports standard lifecycle operations. It then builds upon them to provide additional levels of status that support common continuous integration and continuous deployment pipelines for organizations that manage their Infrastructure as Code – a key element in DevOps.
 
-We bieden een standaard levenscyclus voor het volledig begrijpen van een blauw druk en de stadia:
+To fully understand a blueprint and the stages, we'll cover a standard lifecycle:
 
 > [!div class="checklist"]
-> - Een blauw druk maken en bewerken
-> - De blauw druk publiceren
-> - Een nieuwe versie van de blauw druk maken en bewerken
-> - Een nieuwe versie van de blauw druk publiceren
-> - Een specifieke versie van de blauw druk verwijderen
-> - De blauw druk verwijderen
+> - Creating and editing a blueprint
+> - Publishing the blueprint
+> - Creating and editing a new version of the blueprint
+> - Publishing a new version of the blueprint
+> - Deleting a specific version of the blueprint
+> - Deleting the blueprint
 
-## <a name="creating-and-editing-a-blueprint"></a>Een blauw druk maken en bewerken
+## <a name="creating-and-editing-a-blueprint"></a>Creating and editing a blueprint
 
-Wanneer u een blauw druk maakt, voegt u er artefacten aan toe, slaat u deze op in een beheer groep of abonnement en hebt u een unieke naam en een unieke versie gegeven. De blauw druk is nu in een **concept** modus en kan nog niet worden toegewezen. In de **concept** modus kan het blijven worden bijgewerkt en gewijzigd.
+When creating a blueprint, add artifacts to it, save to a management group or subscription, and provided a unique name and a unique version. The blueprint is now in a **Draft** mode and can't yet be assigned. While in the **Draft** mode, it can continue to be updated and changed.
 
-Een niet-gepubliceerde blauw druk in de **concept** modus bevat een ander pictogram op de pagina met sjablonen voor **blauw** drukken dan de pagina's die zijn **gepubliceerd**. De **meest recente versie** wordt weer gegeven als **concept** voor deze nooit gepubliceerde blauw drukken.
+A never published blueprint in **Draft** mode displays a different icon on the **Blueprint Definitions** page than ones that have been **Published**. The **Latest Version** is displayed as **Draft** for these never published blueprints.
 
-Een blauw druk maken en bewerken met de [Azure Portal](../create-blueprint-portal.md#create-a-blueprint) of [rest API](../create-blueprint-rest-api.md#create-a-blueprint).
+Create and edit a blueprint with the [Azure portal](../create-blueprint-portal.md#create-a-blueprint) or [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
-## <a name="publishing-a-blueprint"></a>Een blauw druk publiceren
+## <a name="publishing-a-blueprint"></a>Publishing a blueprint
 
-Zodra alle geplande wijzigingen zijn aangebracht in een blauw druk in de **concept** modus, kan deze worden **gepubliceerd** en beschikbaar worden gemaakt voor toewijzing. De **gepubliceerde** versie van de blauw druk kan niet worden gewijzigd.
-Na **publicatie**wordt de blauw druk weer gegeven met een ander pictogram dan **concept** blauw drukken en wordt het gegeven versie nummer weer gegeven in de kolom **meest recente versie** .
+Once all planned changes have been made to a blueprint in **Draft** mode, it can be **Published** and made available for assignment. The **Published** version of the blueprint can't be altered. Once **Published**, the blueprint displays with a different icon than **Draft** blueprints and displays the provided version number in the **Latest Version** column.
 
-Een blauw druk publiceren met de [Azure Portal](../create-blueprint-portal.md#publish-a-blueprint) of [rest API](../create-blueprint-rest-api.md#publish-a-blueprint).
+Publish a blueprint with the [Azure portal](../create-blueprint-portal.md#publish-a-blueprint) or [REST API](../create-blueprint-rest-api.md#publish-a-blueprint).
 
-## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Een nieuwe versie van de blauw druk maken en bewerken
+## <a name="creating-and-editing-a-new-version-of-the-blueprint"></a>Creating and editing a new version of the blueprint
 
-Een **gepubliceerde** versie van een blauw druk kan niet worden gewijzigd. Een nieuwe versie van de blauw druk kan echter worden toegevoegd aan de bestaande blauw druk en zo nodig worden gewijzigd. Wijzigingen aanbrengen in een bestaande blauw druk door deze te bewerken. Wanneer de nieuwe wijzigingen worden opgeslagen, heeft de blauw druk nu niet- **gepubliceerde wijzigingen**. Deze wijzigingen zijn een nieuwe **concept** versie van de blauw druk.
+A **Published** version of a blueprint can't be altered. However, a new version of the blueprint can be added to the existing blueprint and modified as needed. Make changes to an existing blueprint by editing it. When the new changes are saved, the blueprint now has **Unpublished Changes**. These changes are a new **Draft** version of the blueprint.
 
-Een blauw druk bewerken met de [Azure Portal](../create-blueprint-portal.md#edit-a-blueprint).
+Edit a blueprint with the [Azure portal](../create-blueprint-portal.md#edit-a-blueprint).
 
-## <a name="publishing-a-new-version-of-the-blueprint"></a>Een nieuwe versie van de blauw druk publiceren
+## <a name="publishing-a-new-version-of-the-blueprint"></a>Publishing a new version of the blueprint
 
-Elke bewerkte versie van een blauw druk moet worden **gepubliceerd** voordat deze kan worden toegewezen. Wanneer niet- **gepubliceerde wijzigingen** zijn aangebracht in een blauw druk, maar niet zijn **gepubliceerd**, is de knop **blauw** drukken beschikbaar op de pagina blauw drukken bewerken. Als de knop niet zichtbaar is, is de blauw druk al **gepubliceerd** en heeft deze geen niet- **gepubliceerde wijzigingen**.
-
-> [!NOTE]
-> Eén blauw druk kan meerdere **gepubliceerde** versies hebben die elk aan abonnementen kunnen worden toegewezen.
-
-Als u een blauw druk wilt publiceren met niet- **gepubliceerde wijzigingen**, gebruikt u dezelfde stappen voor het publiceren van een nieuwe blauw druk.
-
-## <a name="deleting-a-specific-version-of-the-blueprint"></a>Een specifieke versie van de blauw druk verwijderen
-
-Elke versie van een blauw druk is een uniek object dat afzonderlijk kan worden **gepubliceerd**. Als zodanig kan elke versie van een blauw druk ook worden verwijderd. Het verwijderen van een versie van een blauw druk heeft geen invloed op andere versies van die blauw drukken.
+Each edited version of a blueprint must be **Published** before it can be assigned. When **Unpublished Changes** have been made to a blueprint but not **Published**, the **Publish Blueprint** button is available on the edit blueprint page. If the button isn't visible, the blueprint has already been **Published** and has no **Unpublished Changes**.
 
 > [!NOTE]
-> Het is niet mogelijk om een blauw druk met actieve toewijzingen te verwijderen. Verwijder eerst de toewijzingen en verwijder vervolgens de versie die u wilt verwijderen.
+> A single blueprint can have multiple **Published** versions that can each be assigned to subscriptions.
+
+To publish a blueprint with **Unpublished Changes**, use the same steps for publishing a new blueprint.
+
+## <a name="deleting-a-specific-version-of-the-blueprint"></a>Deleting a specific version of the blueprint
+
+Each version of a blueprint is a unique object and can be individually **Published**. As such, each version of a blueprint can also be deleted. Deleting a version of a blueprint doesn't have any impact on other versions of that blueprint.
+
+> [!NOTE]
+> It's not possible to delete a blueprint that has active assignments. Delete the assignments first and then delete the version you wish to remove.
 
 1. Selecteer **Alle services** in het linkerdeelvenster. Zoek en selecteer **Blauwdrukken**.
 
-1. Selecteer op de pagina links **blauw** drukken en gebruik de filter opties om de blauw druk te vinden waarvan u een versie van wilt verwijderen. Klik erop om de pagina bewerken te openen.
+1. Select **Blueprint definitions** from the page on the left and use the filter options to locate the blueprint you want to delete a version of. Select it to open the edit page.
 
-1. Klik op het tabblad **gepubliceerde versies** en zoek de versie die u wilt verwijderen.
+1. Select the **Published versions** tab and locate the version you wish to delete.
 
-1. Klik met de rechter muisknop op de versie die u wilt verwijderen en selecteer **deze versie verwijderen**.
+1. Right-click on the version to delete and select **Delete this version**.
 
-## <a name="deleting-the-blueprint"></a>De blauw druk verwijderen
+## <a name="deleting-the-blueprint"></a>Deleting the blueprint
 
-De basis blauw druk kan ook worden verwijderd. Als u de primaire blauw druk verwijdert, worden ook alle blauw drukken-versies van deze blauw druk verwijderd, inclusief het **concept** en de **publicatie** . Net als bij het verwijderen van een versie van een blauw druk wordt met het verwijderen van de primaire blauw druk de bestaande toewijzingen van de versies van de blauw druk niet verwijderd.
+The core blueprint can also be deleted. Deleting the core blueprint also deletes any blueprint versions of that blueprint, including both **Draft** and **Published** blueprints. As with deleting a version of a blueprint, deleting the core blueprint doesn't remove the existing assignments of any of the blueprint versions.
 
 > [!NOTE]
-> Het is niet mogelijk om een blauw druk met actieve toewijzingen te verwijderen. Verwijder eerst de toewijzingen en verwijder vervolgens de versie die u wilt verwijderen.
+> It's not possible to delete a blueprint that has active assignments. Delete the assignments first and then delete the version you wish to remove.
 
-Een blauw druk verwijderen met de [Azure Portal](../create-blueprint-portal.md#delete-a-blueprint) of [rest API](../create-blueprint-rest-api.md#delete-a-blueprint).
+Delete a blueprint with the [Azure portal](../create-blueprint-portal.md#delete-a-blueprint) or [REST API](../create-blueprint-rest-api.md#delete-a-blueprint).
 
 ## <a name="assignments"></a>Toewijzingen
 
-Er zijn verschillende punten tijdens de levens cyclus die een blauw druk kan worden toegewezen aan een abonnement. Wanneer de modus van een blauw druk wordt **gepubliceerd**, kan die versie worden toegewezen aan een abonnement. Met deze levens cyclus kunnen versies van een blauw druk worden gebruikt en actief worden toegewezen terwijl er een nieuwere versie wordt ontwikkeld.
+There's several points during the lifecycle a blueprint can be assigned to a subscription. When the mode of a version of the blueprint is **Published**, then that version can be assigned to a subscription. This lifecycle enables versions of a blueprint to be used and actively assigned while a newer version is being developed.
 
-Als versies van blauw drukken worden toegewezen, is het belang rijk om te begrijpen waar ze zijn toegewezen en met welke para meters ze zijn toegewezen. De para meters kunnen statisch of dynamisch zijn. Zie [statische en dynamische para meters](parameters.md)voor meer informatie.
+As versions of blueprints are assigned, it's important to understand where they're assigned and with what parameters they've been assigned with. The parameters can either be static or dynamic. To learn more, see [static and dynamic parameters](parameters.md).
 
-### <a name="updating-assignments"></a>Toewijzingen bijwerken
+### <a name="updating-assignments"></a>Updating assignments
 
-Wanneer een blauw druk is toegewezen, kan de toewijzing worden bijgewerkt. Er zijn verschillende redenen voor het bijwerken van een bestaande toewijzing, waaronder:
+When a blueprint is assigned, the assignment can be updated. There are several reasons for updating an existing assignment, including:
 
-- [Resource vergrendeling](resource-locking.md) toevoegen of verwijderen
-- De waarde van [dynamische para meters](parameters.md#dynamic-parameters) wijzigen
-- De toewijzing upgraden naar een nieuwere, **gepubliceerde** versie van de blauw druk
+- Add or remove [resource locking](resource-locking.md)
+- Change the value of [dynamic parameters](parameters.md#dynamic-parameters)
+- Upgrade the assignment to a newer **Published** version of the blueprint
 
-Zie [bestaande toewijzingen bijwerken](../how-to/update-existing-assignments.md)voor meer informatie.
+To learn how, see [update existing assignments](../how-to/update-existing-assignments.md).
 
-### <a name="unassigning-assignments"></a>Toewijzing van toewijzingen opheffen
+### <a name="unassigning-assignments"></a>Unassigning assignments
 
-Als de blauw druk niet meer nodig is, kan deze niet meer worden toegewezen aan de beheer groep of het abonnement. Tijdens de niet-toewijzing van de blauw druk gebeurt het volgende:
+If the blueprint is no longer needed, it can be unassigned from the management group or subscription. During blueprint unassignment, the following occurs:
 
-- Verwijderen van [blauw druk-resource vergrendeling](resource-locking.md)
-- Het verwijderen van de blauw druk toewijzings object
-- Waarden Als een door het **systeem toegewezen beheerde identiteit** is gebruikt, wordt deze ook verwijderd
+- Removal of [blueprint resource locking](resource-locking.md)
+- Deletion of the blueprint assignment object
+- (Conditional) If a **system-assigned managed identity** was used, it's also deleted
 
 > [!NOTE]
-> Alle resources die worden geïmplementeerd door de blauw druk-toewijzing, blijven aanwezig, maar worden niet langer beveiligd door Azure-blauw drukken.
+> All resources deployed by the blueprint assignment remain in place, but are no longer protected by Azure Blueprints.
 
 ## <a name="next-steps"></a>Volgende stappen
 

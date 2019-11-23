@@ -1,6 +1,6 @@
 ---
-title: Het opnieuw opstarten van een systeem voor een virtuele Azure-machine begrijpen | Microsoft Docs
-description: Een lijst met gebeurtenissen die ertoe kunnen leiden dat een VM opnieuw wordt opgestart
+title: Understand a system reboot for an Azure VM | Microsoft Docs
+description: Lists the events that can cause a VM to reboot
 services: virtual-machines
 documentationcenter: ''
 author: genlin
@@ -13,113 +13,113 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: a536eb89f2040333617329e963ce00f5c6b1ba7a
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 4026de0b13a143a6bd3905e3d4fbb5071e196c21
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086964"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74384229"
 ---
-# <a name="understand-a-system-reboot-for-azure-vm"></a>Meer informatie over het opnieuw opstarten van het systeem voor Azure VM
+# <a name="understand-a-system-reboot-for-azure-vm"></a>Understand a system reboot for Azure VM
 
-Azure virtual machines (Vm's) kunnen soms niet opnieuw worden opgestart, zonder dat er een bewijs van de opstart bewerking is gestart. In dit artikel worden de acties en gebeurtenissen vermeld waarmee Vm's opnieuw kunnen worden opgestart en inzicht krijgen in de manier om onverwachte herstart problemen te voor komen of de impact van dergelijke problemen te verminderen.
+Azure virtual machines (VMs) might sometimes reboot for no apparent reason, without evidence of your having initiated the reboot operation. This article lists the actions and events that can cause VMs to reboot and provides insight into how to avoid unexpected reboot issues or reduce the impact of such issues.
 
-## <a name="configure-the-vms-for-high-availability"></a>Configureer de Vm's voor hoge Beschik baarheid
+## <a name="configure-the-vms-for-high-availability"></a>Configure the VMs for high availability
 
-De beste manier om een toepassing die wordt uitgevoerd op Azure te beveiligen tegen het opnieuw opstarten van de VM en uitval tijd is het configureren van de virtuele machines voor maximale Beschik baarheid.
+The best way to protect an application that's running on Azure against VM reboots and downtime is to configure the VMs for high availability.
 
-U wordt aangeraden twee of meer virtuele machines in een beschikbaarheidsset te groeperen om dit niveau van redundantie voor uw toepassing te bieden. Deze configuratie zorgt ervoor dat tijdens een geplande of ongeplande onderhouds gebeurtenis ten minste één virtuele machine beschikbaar is en voldoet aan het 99,95 procent van [Azure Sla](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
+To provide this level of redundancy to your application, we recommend that you group two or more VMs in an availability set. This configuration ensures that during either a planned or unplanned maintenance event, at least one VM is available and meets the 99.95 percent [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_5/).
 
-Raadpleeg de volgende artikelen voor meer informatie over beschikbaarheids sets:
+For more information about availability sets, see the following articles:
 
-- [De beschik baarheid van Vm's beheren](../windows/manage-availability.md)
-- [De beschik baarheid van Vm's configureren](../windows/classic/configure-availability.md)
+- [Manage the availability of VMs](../windows/manage-availability.md)
+- [Configure availability of VMs](../windows/classic/configure-availability.md)
 
-## <a name="resource-health-information"></a>Resource Health informatie
+## <a name="resource-health-information"></a>Resource Health information
 
-Azure Resource Health is een service die de status van afzonderlijke Azure-resources weergeeft en praktische richt lijnen biedt voor het oplossen van problemen. In een cloud omgeving waar het niet mogelijk is om rechtstreeks toegang te krijgen tot servers of infrastructuur elementen, is het doel van Resource Health om de tijd te verminderen die u besteedt aan het oplossen van problemen. Met name het doel is om de tijd te verkorten die nodig is om te bepalen of de hoofdmap van het probleem zich in de toepassing bevindt of in een gebeurtenis binnen het Azure-platform. Zie [resource Health begrijpen en gebruiken](../../resource-health/resource-health-overview.md)voor meer informatie.
+Azure Resource Health is a service that exposes the health of individual Azure resources and provides actionable guidance for troubleshooting problems. In a cloud environment where it isn’t possible to directly access servers or infrastructure elements, the goal of Resource Health is to reduce the time that you spend on troubleshooting. In particular, the aim is to reduce the time that you spend determining whether the root of the problem lies in the application or in an event inside the Azure platform. For more information, see [Understand and use Resource Health](../../resource-health/resource-health-overview.md).
 
-## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Acties en gebeurtenissen die ertoe kunnen leiden dat de VM opnieuw wordt opgestart
+## <a name="actions-and-events-that-can-cause-the-vm-to-reboot"></a>Actions and events that can cause the VM to reboot
 
 ### <a name="planned-maintenance"></a>Gepland onderhoud
 
-Microsoft Azure regel matig updates uitvoeren over de hele wereld om de betrouw baarheid, prestaties en beveiliging te verbeteren van de host-infra structuur die gebruikmaakt van Vm's. Veel van deze updates, waaronder updates op geheugen behoud, worden uitgevoerd zonder dat dit van invloed is op uw virtuele machines of Cloud Services.
+Microsoft Azure periodically performs updates across the globe to improve the reliability, performance, and security of the host infrastructure that underlies VMs. Many of these updates, including memory-preserving updates, are performed without any impact on your VMs or cloud services.
 
-Voor sommige updates is het echter nood zakelijk dat de computer opnieuw wordt opgestart. In dergelijke gevallen worden de Vm's afgesloten terwijl de infra structuur wordt bijgewerkt, waarna de Vm's opnieuw worden gestart.
+However, some updates do require a reboot. In such cases, the VMs are shut down while we patch the infrastructure, and then the VMs are restarted.
 
-Zie de artikelen die hier worden vermeld als u wilt weten wat het geplande onderhoud van Azure is en hoe dit kan van invloed zijn op de beschik baarheid van uw virtuele Linux-machines. Deze artikelen bieden achtergrondinformatie over het proces van gepland onderhoud in Azure, en over hoe u gepland onderhoud kunt inplannen om de impact ervan nog verder te beperken.
+To understand what Azure planned maintenance is and how it can affect the availability of your Linux VMs, see the articles listed here. Deze artikelen bieden achtergrondinformatie over het proces van gepland onderhoud in Azure, en over hoe u gepland onderhoud kunt inplannen om de impact ervan nog verder te beperken.
 
 - [Gepland onderhoud voor VM's in Azure](../windows/planned-maintenance.md)
 - [Gepland onderhoud inplannen voor Azure-VM's](../windows/classic/planned-maintenance-schedule.md)
 
 ### <a name="memory-preserving-updates"></a>Updates met geheugenbehoud
 
-Voor deze klasse van updates in Microsoft Azure hebben gebruikers geen invloed op hun actieve Vm's. Dit zijn veelal updates van onderdelen of services die kunnen worden bijgewerkt zonder de actieve sessie te verstoren. Sommige zijn platform infrastructuur updates op het hostbesturingssysteem dat kan worden toegepast zonder dat de virtuele machines opnieuw moeten worden opgestart.
+For this class of updates in Microsoft Azure, users experience no impact on their running VMs. Dit zijn veelal updates van onderdelen of services die kunnen worden bijgewerkt zonder de actieve sessie te verstoren. Some are platform infrastructure updates on the host operating system that can be applied without a reboot of the VMs.
 
-Deze updates met geheugenbehoud worden uitgevoerd met technologie die in-place livemigratie mogelijk maakt. Wanneer de virtuele machine wordt bijgewerkt, wordt deze in de status *onderbroken* gezet. In deze status blijft de geheugeninhoud in het RAM behouden. Ondertussen ontvangt het besturingssysteem van de onderliggende host de noodzakelijke updates en patches. De VM wordt 30 seconden na het onderbreken weer hervat. Op dat moment wordt de klok van de VM automatisch gesynchroniseerd.
+Deze updates met geheugenbehoud worden uitgevoerd met technologie die in-place livemigratie mogelijk maakt. When it is being updated, the VM is placed in a *paused* state. In deze status blijft de geheugeninhoud in het RAM behouden. Ondertussen ontvangt het besturingssysteem van de onderliggende host de noodzakelijke updates en patches. De VM wordt 30 seconden na het onderbreken weer hervat. Op dat moment wordt de klok van de VM automatisch gesynchroniseerd.
 
-Als gevolg van de korte pauze periode, vermindert het implementeren van updates via dit mechanisme de impact op de Vm's aanzienlijk. Niet alle updates kunnen echter op deze manier worden geïmplementeerd. 
+Because of the short pause period, deploying updates through this mechanism greatly reduces the impact on the VMs. However, not all updates can be deployed in this way. 
 
 Updates voor meerdere exemplaren (voor VM's in een beschikbaarheidsset) worden telkens voor één updatedomein tegelijk toegepast.
 
 > [!NOTE]
-> Linux-machines met oude kernel-versies worden beïnvloed door een kernel-paniek tijdens deze update methode. Als u dit probleem wilt voor komen, werkt u bij met de kernel-versie 3.10.0-327.10.1 of hoger. Voor meer informatie, Zie [een Azure Linux-machine op een 3,10-kernel paniek na een upgrade van een host-knoop punt](https://support.microsoft.com/help/3212236).
+> Linux machines that have old kernel versions are affected by a kernel panic during this update method. To avoid this issue, update to kernel version 3.10.0-327.10.1 or later. For more information, see [An Azure Linux VM on a 3.10-based kernel panics after a host node upgrade](https://support.microsoft.com/help/3212236).
 
-### <a name="user-initiated-reboot-or-shutdown-actions"></a>Door de gebruiker geïnitieerde herstart-of afsluit acties
+### <a name="user-initiated-reboot-or-shutdown-actions"></a>User-initiated reboot or shutdown actions
 
-Als u de computer opnieuw opstart vanaf de Azure Portal, de Azure PowerShell, de opdracht regel interface of de API opnieuw instellen, kunt u de gebeurtenis vinden in het [Azure-activiteiten logboek](../../azure-monitor/platform/activity-logs-overview.md).
+If you perform a reboot from the Azure portal, Azure PowerShell, command-line interface, or REST API, you can find the event in the [Azure Activity Log](../../azure-monitor/platform/activity-logs-overview.md).
 
-Als u de actie uitvoert vanuit het besturings systeem van de virtuele machine, kunt u de gebeurtenis in de systeem logboeken vinden.
+If you perform the action from the VM's operating system, you can find the event in the system logs.
 
-Andere scenario's die doorgaans ertoe leiden dat de virtuele machine opnieuw wordt opgestart, omvat het meerdere acties voor configuratie wijziging. Normaal gesp roken wordt een waarschuwing weer gegeven dat aangeeft dat het uitvoeren van een bepaalde actie resulteert in het opnieuw opstarten van de virtuele machine. Voor beelden zijn onder andere het wijzigen van VM-bewerkingen, het aanpassen van het wacht woord van het beheerders account en het instellen van een statisch IP-adres.
+Other scenarios that usually cause the VM to reboot include multiple configuration-change actions. You'll ordinarily see a warning message indicating that executing a particular action will result in a reboot of the VM. Examples include any VM resize operations, changing the password of the administrative account, and setting a static IP address.
 
-### <a name="azure-security-center-and-windows-update"></a>Azure Security Center en Windows Update
+### <a name="azure-security-center-and-windows-update"></a>Azure Security Center and Windows Update
 
-Azure Security Center bewaakt dagelijks Windows-en Linux-Vm's voor ontbrekende updates van het besturings systeem. Security Center haalt een lijst met beschik bare beveiligings-en essentiële updates op van Windows Update of Windows Server Update Services (WSUS), afhankelijk van welke service is geconfigureerd op een Windows-VM. Security Center controleert ook op de nieuwste updates voor Linux-systemen. Als op uw virtuele machine een systeem update ontbreekt, wordt Security Center aanbevolen om systeem updates toe te passen. De toepassing van deze systeem updates wordt beheerd via de Security Center in de Azure Portal. Nadat u een aantal updates hebt toegepast, is het mogelijk dat het opnieuw opstarten van de VM vereist is. Zie [systeem updates Toep assen in azure Security Center](../../security-center/security-center-apply-system-updates.md)voor meer informatie.
+Azure Security Center monitors daily Windows and Linux VMs for missing operating-system updates. Security Center retrieves a list of available security and critical updates from Windows Update or Windows Server Update Services (WSUS), depending on which service is configured on a Windows VM. Security Center also checks for the latest updates for Linux systems. If your VM is missing a system update, Security Center recommends that you apply system updates. The application of these system updates is controlled through the Security Center in the Azure portal. After you apply some updates, VM reboots might be required. For more information, see [Apply system updates in Azure Security Center](../../security-center/security-center-apply-system-updates.md).
 
-Net als bij on-premises servers pusht Azure geen updates van Windows Update naar Windows-Vm's, omdat deze machines zijn bedoeld om te worden beheerd door hun gebruikers. U wordt echter aangemoedigd om de instelling automatische Windows Update ingeschakeld te laten. Automatische installatie van updates van Windows Update kan er ook voor zorgen dat de computer opnieuw wordt opgestart nadat de updates zijn toegepast. Zie [Windows Update Veelgestelde vragen](https://support.microsoft.com/help/12373/windows-update-faq)voor meer informatie.
+Like on-premises servers, Azure does not push updates from Windows Update to Windows VMs, because these machines are intended to be managed by their users. You are, however, encouraged to leave the automatic Windows Update setting enabled. Automatic installation of updates from Windows Update can also cause reboots to occur after the updates are applied. For more information, see [Windows Update FAQ](https://support.microsoft.com/help/12373/windows-update-faq).
 
-### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Andere situaties die van invloed zijn op de beschik baarheid van uw virtuele machine
+### <a name="other-situations-affecting-the-availability-of-your-vm"></a>Other situations affecting the availability of your VM
 
-Er zijn andere gevallen waarin Azure het gebruik van een virtuele machine actief kan opschorten. U ontvangt e-mail meldingen voordat deze actie wordt uitgevoerd, zodat u de onderliggende problemen kunt oplossen. Voor beelden van problemen die van invloed zijn op de VM-Beschik baarheid, zijn beveiligings schendingen en de verval datum van betalings methoden.
+There are other cases in which Azure might actively suspend the use of a VM. You'll receive email notifications before this action is taken, so you'll have a chance to resolve the underlying issues. Examples of issues that affect VM availability include security violations and the expiration of payment methods.
 
-### <a name="host-server-faults"></a>Server fouten op de host
+### <a name="host-server-faults"></a>Host server faults
 
-De virtuele machine wordt gehost op een fysieke server die binnen een Azure-Data Center wordt uitgevoerd. Naast enkele andere onderdelen van Azure voert de fysieke server een agent uit die de Hosta Gent wordt genoemd. Wanneer deze onderdelen van Azure-software op de fysieke server niet meer reageren, activeert het bewakings systeem het opnieuw opstarten van de hostserver om te proberen het herstel uit te voeren. De virtuele machine is doorgaans binnen vijf minuten opnieuw beschikbaar en blijft actief op dezelfde host als voorheen.
+The VM is hosted on a physical server that is running inside an Azure datacenter. The physical server runs an agent called the Host Agent in addition to a few other Azure components. When these Azure software components on the physical server become unresponsive, the monitoring system triggers a reboot of the host server to attempt recovery. The VM is usually available again within five minutes and continues to live on the same host as previously.
 
-Server fouten worden meestal veroorzaakt door hardwarestoringen, zoals het mislukken van een harde schijf of een Solid-State station. Azure bewaakt deze instanties voortdurend, identificeert de onderliggende bugs en implementeert updates nadat de oplossing is geïmplementeerd en getest.
+Server faults are usually caused by hardware failure, such as the failure of a hard disk or solid-state drive. Azure continuously monitors these occurrences, identifies the underlying bugs, and rolls out updates after the mitigation has been implemented and tested.
 
-Omdat sommige hostserver fouten specifiek kunnen zijn voor die server, kan een herhaalde VM-opstart situatie worden verbeterd door de virtuele machine hand matig opnieuw te implementeren op een andere hostserver. Deze bewerking kan worden geactiveerd met behulp van de optie opnieuw **implementeren** op de pagina Details van de virtuele machine, of door de virtuele machine te stoppen en opnieuw op te starten in de Azure Portal.
+Because some host server faults can be specific to that server, a repeated VM reboot situation might be improved by manually redeploying the VM to another host server. This operation can be triggered by using the **redeploy** option on the details page of the VM, or by stopping and restarting the VM in the Azure portal.
 
-### <a name="auto-recovery"></a>Automatisch herstel
+### <a name="auto-recovery"></a>Auto-recovery
 
-Als de hostserver om welke reden dan ook niet opnieuw kan worden opgestart, initieert het Azure-platform een actie voor automatisch herstel om de defecte hostserver uit te wisselen voor verdere onderzoek. 
+If the host server cannot reboot for any reason, the Azure platform initiates an auto-recovery action to take the faulty host server out of rotation for further investigation. 
 
-Alle Vm's op die host worden automatisch verplaatst naar een andere, gezonde hostserver. Dit proces is meestal binnen vijf tien minuten voltooid. Zie [automatisch herstel van virtuele machines](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines)voor meer informatie over het automatische herstel proces.
+All VMs on that host are automatically relocated to a different, healthy host server. This process is usually complete within 15 minutes. To learn more about the auto-recovery process, see [Auto-recovery of VMs](https://azure.microsoft.com/blog/service-healing-auto-recovery-of-virtual-machines).
 
-### <a name="unplanned-maintenance"></a>Niet-gepland onderhoud
+### <a name="unplanned-maintenance"></a>Unplanned maintenance
 
-In zeldzame gevallen moet het Azure Operations-team mogelijk onderhouds activiteiten uitvoeren om te zorgen voor de algehele status van het Azure-platform. Dit gedrag kan van invloed zijn op de beschik baarheid van de virtuele machine en resulteert doorgaans in dezelfde automatische herstel actie zoals eerder beschreven.  
+On rare occasions, the Azure operations team might need to perform maintenance activities to ensure the overall health of the Azure platform. This behavior might affect VM availability, and it usually results in the same auto-recovery action as described earlier.  
 
-Niet-gepland onderhoud omvat het volgende:
+Unplanned maintenance include the following:
 
-- Defragmentatie van urgente knoop punten
-- Updates voor dringende netwerk switch
+- Urgent node defragmentation
+- Urgent network switch updates
 
-### <a name="vm-crashes"></a>VM loopt vast
+### <a name="vm-crashes"></a>VM crashes
 
-Vm's worden mogelijk opnieuw opgestart vanwege problemen binnen de VM zelf. De werk belasting of rol die op de virtuele machine wordt uitgevoerd, kan een fout controle activeren binnen het gast besturingssysteem. Raadpleeg de systeem-en toepassings logboeken voor Windows-Vm's en de seriële logboeken voor Linux Vm's voor meer informatie over het bepalen van de reden voor het vastlopen.
+VMs might restart because of issues within the VM itself. The workload or role that's running on the VM might trigger a bug check within the guest operating system. For help determining the reason for the crash, view the system and application logs for Windows VMs, and the serial logs for Linux VMs.
 
-### <a name="storage-related-forced-shutdowns"></a>Geforceerde afsluit gebeurtenissen met betrekking tot opslag
+### <a name="storage-related-forced-shutdowns"></a>Storage-related forced shutdowns
 
-Vm's in azure zijn afhankelijk van virtuele schijven voor besturings systeem en gegevens opslag die worden gehost op de Azure Storage-infra structuur. Wanneer de beschik baarheid of de verbinding tussen de virtuele machine en de bijbehorende schijven langer dan 120 seconden van invloed is op het Azure-platform, worden de Vm's geforceerd afgesloten om beschadiging van gegevens te voor komen. De Vm's worden automatisch ingeschakeld nadat de opslag verbinding is hersteld. 
+VMs in Azure rely on virtual disks for operating system and data storage that is hosted on the Azure Storage infrastructure. Whenever the availability or connectivity between the VM and the associated virtual disks is affected for more than 120 seconds, the Azure platform performs a forced shutdown of the VMs to avoid data corruption. The VMs are automatically powered back on after storage connectivity has been restored. 
 
-De duur van de afsluiting kan korter zijn dan vijf minuten, maar kan aanzienlijk langer duren. Hier volgt een van de specifieke gevallen die zijn gekoppeld aan opslag gerelateerd geforceerde afsluitingen: 
+The duration of the shutdown can be as short as five minutes but can be significantly longer. The following is one of the specific cases that is associated with storage-related forced shutdowns: 
 
-**Overschrijden IO-limieten**
+**Exceeding IO limits**
 
-Vm's kunnen tijdelijk worden afgesloten wanneer I/O-aanvragen consistent worden beperkt omdat het volume van I/O-bewerkingen per seconde (IOPS) de I/O-limieten voor de schijf overschrijdt. (Standaard schijf opslag is beperkt tot 500 IOPS.) U kunt dit probleem oplossen door schijf striping te gebruiken of de opslag ruimte in de gast-VM te configureren, afhankelijk van de werk belasting. Zie [virtuele machines van Azure configureren voor optimale opslag prestaties](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx)voor meer informatie.
+VMs might be temporarily shut down when I/O requests are consistently throttled because the volume of I/O operations per second (IOPS) exceeds the I/O limits for the disk. (Standard disk storage is limited to 500 IOPS.) To mitigate this issue, use disk striping or configure the storage space inside the guest VM, depending on the workload. For details, see [Configuring Azure VMs for Optimal Storage Performance](https://blogs.msdn.com/b/mast/archive/2014/10/14/configuring-azure-virtual-machines-for-optimal-storage-performance.aspx).
 
-### <a name="other-incidents"></a>Andere incidenten
+### <a name="other-incidents"></a>Other incidents
 
-In zeldzame gevallen kan een algemeen probleem van invloed zijn op meerdere servers in een Azure-Data Center. Als dit probleem optreedt, verzendt het Azure-team e-mail meldingen naar de betrokken abonnementen. U kunt het [Azure service Health-dash board](https://azure.microsoft.com/status/) en de Azure Portal controleren op de status van lopende storingen en eerdere incidenten.
+In rare circumstances, a widespread issue can affect multiple servers in an Azure datacenter. If this issue occurs, the Azure team sends email notifications to the affected subscriptions. You can check the [Azure Service Health dashboard](https://azure.microsoft.com/status/) and the Azure portal for the status of ongoing outages and past incidents.

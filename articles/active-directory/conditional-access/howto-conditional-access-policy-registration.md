@@ -1,6 +1,6 @@
 ---
-title: Voorwaardelijke toegang-gecombineerde beveiligings informatie-Azure Active Directory
-description: Een aangepast beleid voor voorwaardelijke toegang maken voor het vereisen van een vertrouwde locatie voor de registratie van beveiligings gegevens
+title: Conditional Access - Combined security information - Azure Active Directory
+description: Create a custom Conditional Access policy to require a trusted location for security info registration
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
@@ -11,44 +11,44 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 771e4e0ecbda4baf1f38aacd1f39397875bbd0dc
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 5864424f003ce9254a6452d8374d78c54516f2bc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73150760"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74322733"
 ---
-# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Voorwaardelijke toegang: vertrouwde locatie vereisen voor MFA-registratie
+# <a name="conditional-access-require-trusted-location-for-mfa-registration"></a>Conditional Access: Require trusted location for MFA registration
 
-Beveiligen wanneer en hoe gebruikers zich registreren voor Azure Multi-Factor Authentication en self-service voor wacht woord opnieuw instellen is nu mogelijk met gebruikers acties in het beleid voor voorwaardelijke toegang. Deze preview-functie is beschikbaar voor organisaties die de [gecombineerde registratie preview](../authentication/concept-registration-mfa-sspr-combined.md)hebben ingeschakeld. Deze functionaliteit kan worden ingeschakeld in organisaties waar gebruikers moeten registreren voor Azure Multi-Factor Authentication en SSPR vanaf een centrale locatie, zoals een vertrouwde netwerk locatie tijdens het uitvoeren van een HR-systeem. Zie het artikel [Wat is de locatie voorwaarde in azure Active Directory voorwaardelijke toegang?](../conditional-access/location-condition.md#named-locations) voor meer informatie over het maken van vertrouwde locaties in voorwaardelijke toegang.
+Securing when and how users register for Azure Multi-Factor Authentication and self-service password reset is now possible with user actions in Conditional Access policy. This preview feature is available to organizations who have enabled the [combined registration preview](../authentication/concept-registration-mfa-sspr-combined.md). This functionality may be enabled in organizations where they want users to register for Azure Multi-Factor Authentication and SSPR from a central location such as a trusted network location during HR onboarding. For more information about creating trusted locations in Conditional Access, see the article [What is the location condition in Azure Active Directory Conditional Access?](../conditional-access/location-condition.md#named-locations)
 
-## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Een beleid maken om registratie van een vertrouwde locatie te vereisen
+## <a name="create-a-policy-to-require-registration-from-a-trusted-location"></a>Create a policy to require registration from a trusted location
 
-Het volgende beleid is van toepassing op alle geselecteerde gebruikers die zich willen registreren met de gecombineerde registratie-ervaring en blokkeert de toegang tenzij ze verbinding maken vanaf een locatie die is gemarkeerd als vertrouwd netwerk.
+The following policy applies to all selected users, who attempt to register using the combined registration experience, and blocks access unless they are connecting from a location marked as trusted network.
 
-1. Blader in het **Azure Portal**naar **Azure Active Directory** **voorwaardelijke toegang** > .
-1. Selecteer **Nieuw beleid**.
-1. Voer bij naam een naam in voor dit beleid. Bijvoorbeeld **registratie van gegevens over gecombineerde beveiliging op vertrouwde netwerken**.
-1. Klik onder **toewijzingen**op **gebruikers en groepen**en selecteer de gebruikers en groepen waarop u dit beleid wilt Toep assen.
+1. In the **Azure portal**, browse to **Azure Active Directory** > **Conditional Access**.
+1. Select **New policy**.
+1. In Name, Enter a Name for this policy. For example, **Combined Security Info Registration on Trusted Networks**.
+1. Under **Assignments**, click **Users and groups**, and select the users and groups you want this policy to apply to.
 
    > [!WARNING]
-   > Gebruikers moeten zijn ingeschakeld voor de [gecombineerde registratie preview](../authentication/howto-registration-mfa-sspr-combined.md).
+   > Users must be enabled for the [combined registration preview](../authentication/howto-registration-mfa-sspr-combined.md).
 
-1. Selecteer onder **Cloud-apps of-acties** **gebruikers acties**, Controleer de **beveiligings gegevens registreren (preview-versie)** .
-1. Onder **voor waarden** > **locaties**.
-   1. Configureer **Ja**.
-   1. **Een wille keurige locatie**bevatten.
-   1. **Alle vertrouwde locaties**uitsluiten.
-   1. Klik op **gereed** op de Blade locaties.
-   1. Klik op **gereed** op de Blade voor waarden.
-1. Onder **Access controls** > **Grant**.
-   1. Klik op **toegang blok keren**.
+1. Under **Cloud apps or actions**, select **User actions**, check **Register security information (preview)** .
+1. Under **Conditions** > **Locations**.
+   1. Configure **Yes**.
+   1. Include **Any location**.
+   1. Exclude **All trusted locations**.
+   1. Click **Done** on the Locations blade.
+   1. Click **Done** on the Conditions blade.
+1. Under **Access controls** > **Grant**.
+   1. Click **Block access**.
    1. Klik vervolgens op **Selecteren**.
-1. Stel **beleid inschakelen** op aan **in**.
-1. Klik vervolgens op **Maken**.
+1. Set **Enable policy** to **On**.
+1. Klik vervolgens op **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Algemeen beleid voor voorwaardelijke toegang](concept-conditional-access-policy-common.md)
+[Conditional Access common policies](concept-conditional-access-policy-common.md)
 
-[Aanmeld gedrag simuleren met het What If hulp programma voor voorwaardelijke toegang](troubleshoot-conditional-access-what-if.md)
+[Simulate sign in behavior using the Conditional Access What If tool](troubleshoot-conditional-access-what-if.md)

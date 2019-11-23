@@ -5,18 +5,18 @@ author: mumian
 ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 73d8abcbc6e902855592f4bf3ca0373b8582130d
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: df41094d163b8e3ecb78827df1a52dafab0aec1f
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150433"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326521"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Zelfstudie: Meerdere resource-instanties maken met Resource Manager-sjablonen
 
 Leer hoe u een Azure Resource Manager-sjabloon herhaaldelijk gebruikt om meerdere instanties van een Azure-resource te maken. In deze zelfstudie wijzigt u een sjabloon om drie instanties van het opslagaccount te maken.
 
-![Azure Resource Manager maakt meerdere exemplaren diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
+![Azure Resource Manager creates multiple instances diagram](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -31,7 +31,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* [Visual Studio Code](https://code.visualstudio.com/) met de [extensie Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
@@ -49,7 +49,7 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="edit-the-template"></a>De sjabloon bewerken
 
-Met de bestaande sjabloon wordt één opslagaccount gemaakt. U past de sjabloon aan om drie opslagaccounts te maken.  
+Met de bestaande sjabloon wordt één opslagaccount gemaakt. U past de sjabloon aan om drie opslagaccounts te maken.
 
 Breng vanuit Visual Studio Code de volgende vier wijzigingen aan:
 
@@ -118,7 +118,7 @@ Raadpleeg de sectie [De sjabloon implementeren](./resource-manager-quickstart-cr
 
 Als u alle drie de opslagaccounts wilt weergeven, laat u de parameter --name weg:
 
-# <a name="azure-clitabazure-cli"></a>[Azure-CLI](#tab/azure-cli)
+# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
 echo "Enter the Resource Group name:" &&
 read resourceGroupName &&
