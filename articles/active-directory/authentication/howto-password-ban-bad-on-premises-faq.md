@@ -1,164 +1,164 @@
 ---
-title: Veelgestelde vragen over on-premises Azure AD-wachtwoord beveiliging-Azure Active Directory
-description: Veelgestelde vragen over on-premises Azure AD-wachtwoord beveiliging
+title: On-premises password protection FAQ - Azure Active Directory
+description: On-premises Azure AD Password Protection FAQ
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
-ms.date: 02/01/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 473fe43bb4cf18c61f30d9b7e057da888dc6da62
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 9ee5d6328c6a3e4ea0b4a6359d4a21494e3ae62c
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74167904"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381690"
 ---
-# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>On-premises Veelgestelde vragen over Azure AD-wachtwoord beveiliging
+# <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Azure AD Password Protection on-premises - Frequently asked questions
 
-In deze sectie vindt u antwoorden op veel Veelgestelde vragen over Azure AD-wachtwoord beveiliging.
+This section provides answers to many commonly asked questions about Azure AD Password Protection.
 
 ## <a name="general-questions"></a>Algemene vragen
 
-**V: welke richt lijnen moeten gebruikers worden gegeven om een veilig wacht woord te selecteren?**
+**Q: What guidance should users be given on how to select a secure password?**
 
-De huidige richt lijnen voor dit onderwerp van micro soft zijn te vinden op de volgende koppeling:
+Microsoft's current guidance on this topic can be found at the following link:
 
-[Richt lijnen voor micro soft-wacht woorden](https://www.microsoft.com/research/publication/password-guidance)
+[Microsoft Password Guidance](https://www.microsoft.com/research/publication/password-guidance)
 
-**V: is on-premises Azure AD-wachtwoord beveiliging ondersteund in niet-open bare Clouds?**
+**Q: Is on-premises Azure AD Password Protection supported in non-public clouds?**
 
-Geen on-premises Azure AD-wachtwoord beveiliging wordt alleen ondersteund in de open bare Cloud. Er is geen datum aangekondigd voor Beschik baarheid van niet-open bare Clouds.
+No - on-premises Azure AD Password Protection is only supported in the public cloud. No date has been announced for non-public cloud availability.
 
-Met de Azure AD-Portal kunt u de configuratie van on-premises specifieke ' wachtwoord beveiliging voor Windows Server Active Directory ', zelfs in niet-open bare Clouds, wijzigen. dergelijke wijzigingen blijven behouden, maar worden anders nooit van kracht. Registratie van on-premises proxy agenten of-forests wordt niet ondersteund wanneer niet-open bare Cloud referenties worden gebruikt, en dergelijke registratie pogingen zullen altijd mislukken.
+The Azure AD portal does allow modification of the on-premises-specific "Password protection for Windows Server Active Directory" configuration even in non-public clouds; such changes will be persisted but otherwise will never take effect. Registration of on-premises proxy agents or forests is unsupported when non-public cloud credentials are used, and any such registration attempts will always fail.
 
-**V: hoe kan ik de voor delen van Azure AD-wachtwoord beveiliging Toep assen op een subset van mijn on-premises gebruikers?**
+**Q: How can I apply Azure AD Password Protection benefits to a subset of my on-premises users?**
 
-Wordt niet ondersteund. Als Azure AD-wachtwoord beveiliging eenmaal is geïmplementeerd en ingeschakeld, krijgen alle gebruikers dezelfde beveiligings voordelen.
+Wordt niet ondersteund. Once deployed and enabled, Azure AD Password Protection doesn't discriminate - all users receive equal security benefits.
 
-**V: wat is het verschil tussen een wachtwoord wijziging en een wachtwoordset (of opnieuw instellen)?**
+**Q: What is the difference between a password change and a password set (or reset)?**
 
-Een wijziging van het wacht woord is wanneer een gebruiker een nieuw wacht woord kiest nadat ze kennis hebben van het oude wacht woord. Een wachtwoord wijziging is bijvoorbeeld wat er gebeurt wanneer een gebruiker zich aanmeldt bij Windows en vervolgens wordt gevraagd om een nieuw wacht woord te kiezen.
+A password change is when a user chooses a new password after proving they have knowledge of the old password. For example, a password change is what happens when a user logs into Windows and is then prompted to choose a new password.
 
-Een wachtwoordset (ook wel wacht woord opnieuw instellen genoemd) is wanneer een beheerder het wacht woord voor een account vervangt door een nieuw wacht woord, bijvoorbeeld met behulp van het beheer programma Active Directory gebruikers en computers. Voor deze bewerking is een hoog bevoegdheids niveau (meestal domein beheerder) vereist. de persoon die de bewerking uitvoert, heeft doorgaans geen kennis van het oude wacht woord. Help Desk-scenario's voeren vaak wachtwoord sets in, bijvoorbeeld bij het helpen van een gebruiker die het wacht woord is verg eten. U ziet ook wachtwoord sets wanneer er voor de eerste keer een nieuwe gebruikers account wordt gemaakt met een wacht woord.
+A password set (sometimes called a password reset) is when an administrator replaces the password on an account with a new password, for example by using the Active Directory Users and Computers management tool. This operation requires a high level of privilege (usually Domain Admin), and the person performing the operation usually does not have knowledge of the old password. Help-desk scenarios often perform password sets, for instance when assisting a user who has forgotten their password. You will also see password set events when a brand new user account is being created for the first time with a password.
 
-Het wachtwoord validatie beleid gedraagt zich hetzelfde, ongeacht of er een wacht woord is gewijzigd of ingesteld. De Azure AD-Agent service voor wachtwoord beveiliging registreert verschillende gebeurtenissen om u te informeren of een wacht woord is gewijzigd of een set-bewerking is uitgevoerd.  Zie [Azure AD-controle programma voor wachtwoord beveiliging en logboek registratie](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
+The password validation policy behaves the same regardless of whether a password change or set is being done. The Azure AD Password Protection DC Agent service does log different events to inform you whether a password change or set operation was done.  See [Azure AD Password Protection monitoring and logging](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
-**V: Waarom worden duplicaat gebeurtenissen voor het afkeuren van wacht woorden vastgelegd bij het instellen van een zwak wacht woord met behulp van de Active Directory-module gebruikers en computers beheren?**
+**Q: Why are duplicated password rejection events logged when attempting to set a weak password using the Active Directory Users and Computers management snap-in?**
 
-De Active Directory-module gebruikers en computers wordt eerst geprobeerd het nieuwe wacht woord in te stellen met behulp van het Kerberos-protocol. Als de module is mislukt, wordt een tweede poging gedaan om het wacht woord in te stellen met behulp van een verouderd (SAM RPC)-protocol (de gebruikte specifieke protocollen zijn niet belang rijk). Als het nieuwe wacht woord wordt beschouwd als ongemerkt door Azure AD-wachtwoord beveiliging, worden in dit geval twee sets uitzonderings gebeurtenissen voor wachtwoord herstel vastgelegd.
+The Active Directory Users and Computers management snap-in will first try to set the new password using the Kerberos protocol. Upon failure, the snap-in will make a second attempt to set the password using a legacy (SAM RPC) protocol (the specific protocols used are not important). If the new password is considered weak by Azure AD Password Protection, this snap-in behavior will result in two sets of password reset rejection events being logged.
 
-**V: Waarom worden wachtwoord validatie gebeurtenissen van Azure AD-wacht woord met een lege gebruikers naam vastgelegd?**
+**Q: Why are Azure AD Password Protection password validation events being logged with an empty user name?**
 
-Active Directory ondersteunt de mogelijkheid om een wacht woord te testen om te zien of de huidige wachtwoord complexiteits vereisten van het domein worden door gegeven, bijvoorbeeld met behulp van de [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) -API. Wanneer een wacht woord op deze manier wordt gevalideerd, omvat het testen ook de validatie van op wacht woord-filter-dll gebaseerde producten, zoals Azure AD-wachtwoord beveiliging, maar de gebruikers namen die zijn door gegeven aan een opgegeven wachtwoord filter-dll zijn leeg. In dit scenario zal Azure AD-wachtwoord beveiliging het wacht woord nog steeds valideren met behulp van het wachtwoord beleid dat momenteel wordt gebruikt en wordt er een gebeurtenis logboek bericht weer gegeven om het resultaat vast te leggen, maar het gebeurtenis logboek bericht bevat lege velden voor gebruikers namen.
+Active Directory supports the ability to test a password to see if it passes the domain's current password complexity requirements, for example using the [NetValidatePasswordPolicy](https://docs.microsoft.com/windows/win32/api/lmaccess/nf-lmaccess-netvalidatepasswordpolicy) api. When a password is validated in this way, the testing also includes validation by password-filter-dll based products such as Azure AD Password Protection - but the user names passed to a given password filter dll will be empty. In this scenario, Azure AD Password Protection will still validate the password using the currently in-effect password policy and will issue an event log message to capture the outcome, however the event log message will have empty user name fields.
 
-**V: wordt it ondersteund voor het installeren van Azure AD-wachtwoord beveiliging naast elkaar met andere op wacht woorden gebaseerde producten?**
+**Q: Is it supported to install Azure AD Password Protection side by side with other password-filter-based products?**
 
-Ja. Ondersteuning voor meerdere geregistreerde wachtwoord filter-dll's is een kern functie van Windows en is niet specifiek voor Azure AD-wachtwoord beveiliging. Alle geregistreerde wachtwoord filter-dll's moeten overeenkomen voordat een wacht woord wordt geaccepteerd.
+Ja. Support for multiple registered password filter dlls is a core Windows feature and not specific to Azure AD Password Protection. All registered password filter dlls must agree before a password is accepted.
 
-**V: hoe kan ik Azure AD-wachtwoord beveiliging in mijn Active Directory omgeving implementeren en configureren zonder Azure te gebruiken?**
+**Q: How can I deploy and configure Azure AD Password Protection in my Active Directory environment without using Azure?**
 
-Wordt niet ondersteund. Azure AD-wachtwoord beveiliging is een Azure-functie die ondersteuning biedt voor uitgebreid in een on-premises Active Directory omgeving.
+Wordt niet ondersteund. Azure AD Password Protection is an Azure feature that supports being extended into an on-premises Active Directory environment.
 
-**V: hoe kan ik de inhoud van het beleid op het Active Directory niveau wijzigen?**
+**Q: How can I modify the contents of the policy at the Active Directory level?**
 
-Wordt niet ondersteund. Het beleid kan alleen worden beheerd via de Azure AD-Portal. Zie ook de vorige vraag.
+Wordt niet ondersteund. The policy can only be administered using the Azure AD portal. Also see previous question.
 
-**V: Waarom is DFSR vereist voor SYSVOL-replicatie?**
+**Q: Why is DFSR required for sysvol replication?**
 
-FRS (de voorafgaande technologie naar DFSR) heeft veel bekende problemen en wordt volledig niet ondersteund in nieuwere versies van Windows Server Active Directory. Het testen van Azure AD-wachtwoord beveiliging op nul wordt uitgevoerd op met FRS geconfigureerde domeinen.
+FRS (the predecessor technology to DFSR) has many known problems and is entirely unsupported in newer versions of Windows Server Active Directory. Zero testing of Azure AD Password Protection will be done on FRS-configured domains.
 
-Raadpleeg de volgende artikelen voor meer informatie:
+For more information, please see the following articles:
 
-[Het geval voor de migratie van SYSVOL-replicatie naar DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[The Case for Migrating sysvol replication to DFSR](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[Het einde is nigh voor FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[The End is Nigh for FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-Als het domein niet al gebruikmaakt van DFSR, moet u het migreren naar DFSR voordat u Azure AD-wachtwoord beveiliging installeert. Zie de volgende koppeling voor meer informatie:
+If your domain is not already using DFSR, you MUST migrate it to use DFSR before installing Azure AD Password Protection. For more information, see the following link:
 
-[Migratie handleiding voor SYSVOL-replicatie: FRS naar DSF-replicatie](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
+[SYSVOL Replication Migration Guide: FRS to DFS Replication](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd640019(v=ws.10))
 
 > [!WARNING]
-> De Azure AD-agent software voor wachtwoord beveiliging wordt momenteel geïnstalleerd op domein controllers in domeinen die nog steeds gebruikmaken van FRS voor SYSVOL-replicatie, maar de software zal niet goed werken in deze omgeving. Bijkomende negatieve neven effecten omvatten afzonderlijke bestanden die niet worden gerepliceerd, en SYSVOL-herstel procedures die worden uitgevoerd, maar die niet op de achtergrond worden gerepliceerd. U moet uw domein zo snel mogelijk migreren naar het gebruik van DFSR en de implementatie van Azure AD-wachtwoord beveiliging blok keren. Toekomstige versies van de software worden automatisch uitgeschakeld wanneer ze worden uitgevoerd in een domein dat nog steeds FRS gebruikt.
+> The Azure AD Password Protection DC Agent software will currently install on domain controllers in domains that are still using FRS for sysvol replication, but the software will NOT work properly in this environment. Additional negative side-effects include individual files failing to replicate, and sysvol restore procedures appearing to succeed but silently failing to replicate all files. You should migrate your domain to use DFSR as soon as possible, both for DFSR's inherent benefits and also to unblock the deployment of Azure AD Password Protection. Future versions of the software will be automatically disabled when running in a domain that is still using FRS.
 
-**V: hoeveel schijf ruimte heeft de functie nodig op de SYSVOL-share van het domein?**
+**Q: How much disk space does the feature require on the domain sysvol share?**
 
-De nauw keurigheid van de ruimte is afhankelijk van factoren zoals het aantal en de lengte van de verboden tokens in de lijst met algemene micro soft-gebruikers namen en de aangepaste lijst per Tenant, plus de overhead voor versleuteling. De inhoud van deze lijsten is waarschijnlijk in de toekomst groeien. Met het oog op een redelijke verwachting is dat de functie ten minste vijf (5) MB aan ruimte op de SYSVOL-share van het domein nodig heeft.
+The precise space usage varies since it depends on factors such as the number and length of the banned tokens in the Microsoft global banned list and the per-tenant custom list, plus encryption overhead. The contents of these lists are likely to grow in the future. With that in mind, a reasonable expectation is that the feature will need at least five (5) megabytes of space on the domain sysvol share.
 
-**V: Waarom moet het systeem opnieuw worden opgestart om de software van de DC-agent te installeren of bij te werken?**
+**Q: Why is a reboot required to install or upgrade the DC agent software?**
 
-Deze vereiste wordt veroorzaakt door het kern gedrag van Windows.
+This requirement is caused by core Windows behavior.
 
-**V: is er een manier om een DC-agent te configureren voor het gebruik van een specifieke proxy server?**
+**Q: Is there any way to configure a DC agent to use a specific proxy server?**
 
-Nee. Omdat de proxy server stateless is, is het niet belang rijk welke specifieke proxy server wordt gebruikt.
+Nee. Since the proxy server is stateless, it's not important which specific proxy server is used.
 
-**V: is het een goed hulp middel om de Azure AD-proxy service voor wachtwoord beveiliging te implementeren naast andere services, zoals Azure AD Connect?**
+**Q: Is it okay to deploy the Azure AD Password Protection Proxy service side by side with other services such as Azure AD Connect?**
 
-Ja. De Azure AD-proxy service voor wachtwoord beveiliging en Azure AD Connect mogen nooit direct met elkaar conflicteren.
+Ja. The Azure AD Password Protection Proxy service and Azure AD Connect should never conflict directly with each other.
 
-Helaas is er een incompatibiliteit gevonden tussen de versie van de Microsoft Azure AD connect agent Updater-service die is geïnstalleerd door de Azure AD-proxy software voor wachtwoord beveiliging en de versie van de service die door de [Azure Active Directory-toepassingsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) -software is geïnstalleerd. Deze incompatibiliteit kan ertoe leiden dat de agent Updater-service geen verbinding kan maken met Azure voor software-updates. Het wordt niet aanbevolen om Azure AD-wachtwoord beveiligings proxy en Azure Active Directory-toepassingsproxy op dezelfde computer te installeren.
+Unfortunately, an incompatibility has been found between the version of the Microsoft Azure AD Connect Agent Updater service that is installed by the Azure AD Password Protection Proxy software and the version of the service that is installed by the [Azure Active Directory Application Proxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy) software. This incompatibility may result in the Agent Updater service being unable to contact Azure for software updates. It is not recommended to install Azure AD Password Protection Proxy and Azure Active Directory Application Proxy on the same machine.
 
-**V: in welke volg orde moeten de DC-agents en-proxy's worden geïnstalleerd en geregistreerd?**
+**Q: In what order should the DC agents and proxies be installed and registered?**
 
-Elke volg orde van de installatie van de proxy-agent, de installatie van de DC-agent, de registratie van het forest en de proxy registratie wordt ondersteund.
+Any ordering of Proxy agent installation, DC agent installation, forest registration, and Proxy registration  is supported.
 
-**V: moet ik zorgen dat de prestaties van mijn domein controllers worden gedistribueerd om deze functie te implementeren?**
+**Q: Should I be concerned about the performance hit on my domain controllers from deploying this feature?**
 
-De Azure AD-Agent service voor wachtwoord beveiliging heeft geen grote invloed op de prestaties van de domein controller in een bestaande gezonde Active Directory-implementatie.
+The Azure AD Password Protection DC Agent service shouldn't significantly impact domain controller performance in an existing healthy Active Directory deployment.
 
-Voor de meeste Active Directory implementaties is het wijzigen van wacht woorden een klein deel van de totale werk belasting op elke wille keurige domein controller. Stel dat een Active Directory domein met 10000-gebruikers accounts en een MaxPasswordAge-beleid is ingesteld op 30 dagen. Gemiddeld bevat dit domein 10000/30 = ~ 333-wachtwoord wijzigings bewerkingen elke dag, wat een klein aantal bewerkingen voor zelfs een enkele domein controller is. Houd rekening met een mogelijk slechtste scenario: Stel dat deze ~ 333-wachtwoord wijzigingen voor één enkele enkele uur zijn uitgevoerd. Dit scenario kan bijvoorbeeld optreden wanneer een groot aantal mede werkers op maandag morgen aan het werk zijn. Zelfs in dat geval kijken we eens naar ~ 333/60 minuten = zes wachtwoord wijzigingen per minuut. Dit is niet een aanzienlijke belasting.
+For most Active Directory deployments password change operations are a small proportion of the overall workload on any given domain controller. As an example, imagine an Active Directory domain with 10000 user accounts and a MaxPasswordAge policy set to 30 days. On average, this domain will see 10000/30=~333 password change operations each day, which is a minor number of operations for even a single domain controller. Consider a potential worst case scenario: suppose those ~333 password changes on a single DC were done over a single hour. For example, this scenario may occur when many employees all come to work on a Monday morning. Even in that case, we're still looking at ~333/60 minutes = six password changes per minute, which again is not a significant load.
 
-Als uw huidige domein controllers echter al worden uitgevoerd op prestatie-beperkende niveaus (bijvoorbeeld benut uit het oogpunt van CPU, schijf ruimte, schijf-I/O, etc.), is het raadzaam extra domein controllers toe te voegen of beschik bare schijf ruimte uit te breiden voordat u deze functie implementeert. Zie ook bovenstaande vraag over het gebruik van SYSVOL-schijf ruimte hierboven.
+However if your current domain controllers are already running at performance-limited levels (for example, maxed out with respect to CPU, disk space, disk I/O, etc.), it is advisable to add additional domain controllers or expand available disk space, before deploying this feature. Also see question above about sysvol disk space usage above.
 
-**V: Ik wil Azure AD-wachtwoord beveiliging op slechts enkele Dc's in mijn domein testen. Is het mogelijk om wijzigingen in het gebruikers wachtwoord af te dwingen om deze specifieke Dc's te gebruiken?**
+**Q: I want to test Azure AD Password Protection on just a few DCs in my domain. Is it possible to force user password changes to use those specific DCs?**
 
-Nee. Het besturings systeem Windows-client bepaalt welke domein controller wordt gebruikt wanneer een gebruiker het wacht woord wijzigt. De domein controller wordt geselecteerd op basis van factoren zoals Active Directory site-en subnet toewijzingen, omgevings specifieke netwerk configuratie, enzovoort. Azure AD-wachtwoord beveiliging heeft geen invloed op deze factoren en kan niet bepalen welke domein controller is geselecteerd voor het wijzigen van het wacht woord van een gebruiker.
+Nee. The Windows client OS controls which domain controller is used when a user changes their password. The domain controller is selected based on factors such as Active Directory site and subnet assignments, environment-specific network configuration, etc. Azure AD Password Protection does not control these factors and cannot influence which domain controller is selected to change a user's password.
 
-Een manier om dit doel gedeeltelijk te bereiken, is het implementeren van Azure AD-wachtwoord beveiliging op alle domein controllers in een bepaalde Active Directory-site. Deze benadering biedt een redelijke dekking voor de Windows-clients die aan die site zijn toegewezen, en daarom ook voor gebruikers die zich aanmelden bij deze clients en hun wacht woord wijzigen.
+One way to partially reach this goal would be to deploy Azure AD Password Protection on all of the domain controllers in a given Active Directory site. This approach will provide reasonable coverage for the Windows clients that are assigned to that site, and therefore also for the users that are logging into those clients and changing their passwords.
 
-**V: als ik de DC-Agent service van Azure AD-wachtwoord beveiliging op alleen de primaire domein controller (PDC) Installeer, worden alle andere domein controllers in het domein ook beschermd?**
+**Q: If I install the Azure AD Password Protection DC Agent service on just the Primary Domain Controller (PDC), will all other domain controllers in the domain also be protected?**
 
-Nee. Wanneer het wacht woord van een gebruiker op een bepaalde niet-PDC-domein controller wordt gewijzigd, wordt het wacht woord voor lees bare tekst nooit verzonden naar de PDC (dit is een veelvoorkomende mis-bewerking). Zodra een nieuw wacht woord op een bepaalde domein controller wordt geaccepteerd, gebruikt die domein controller dat wacht woord om de verschillende verificatie-protocolspecifieke hashes van dat wacht woord te maken. vervolgens worden deze hashes in de Directory bewaard. Het wacht woord voor de Lees bare tekst wordt niet bewaard. De bijgewerkte hashes worden vervolgens gerepliceerd naar de PDC. Gebruikers wachtwoorden kunnen in sommige gevallen rechtstreeks worden gewijzigd op de primaire domein controller, afhankelijk van verschillende factoren, zoals netwerk topologie en Active Directory site ontwerp. (Zie de vorige vraag.)
+Nee. When a user's password is changed on a given non-PDC domain controller, the clear-text password is never sent to the PDC (this idea is a common mis-perception). Once a new password is accepted on a given DC, that DC uses that password to create the various authentication-protocol-specific hashes of that password and then persists those hashes in the directory. The clear-text password is not persisted. The updated hashes are then replicated to the PDC. User passwords may in some cases be changed directly on the PDC, again depending on various factors such as network topology and Active Directory site design. (See the previous question.)
 
-In samen vatting is de implementatie van de Azure AD-Agent service voor wachtwoord beveiliging op de PDC vereist om een beveiligings dekking van 100% voor het hele domein te bereiken. Het implementeren van de functie op de primaire domein controller biedt geen Azure AD-beveiligings voordelen voor wachtwoord beveiliging voor andere domein controllers in het domein.
+In summary, deployment of the Azure AD Password Protection DC Agent service on the PDC is required to reach 100% security coverage of the feature across the domain. Deploying the feature on the PDC only does not provide Azure AD Password Protection security benefits for any other DCs in the domain.
 
-**V: Waarom werkt aangepaste slimme vergren deling niet, zelfs niet nadat de agents zijn geïnstalleerd in mijn on-premises Active Directory omgeving?**
+**Q: Why is custom smart lockout not working even after the agents are installed in my on-premises Active Directory environment?**
 
-Aangepaste slimme vergren deling wordt alleen ondersteund in azure AD. Wijzigingen in de aangepaste instellingen voor slim vergren delen in de Azure AD-Portal hebben geen invloed op de on-premises Active Directory omgeving, zelfs niet als de agents zijn geïnstalleerd.
+Custom smart lockout is only supported in Azure AD. Changes to the custom smart lockout settings in the Azure AD portal have no effect on the on-premises Active Directory environment, even with the agents installed.
 
-**V: is er een System Center Operations Manager management pack beschikbaar voor Azure AD-wachtwoord beveiliging?**
+**Q: Is a System Center Operations Manager management pack available for Azure AD Password Protection?**
 
 Nee.
 
-**V: Waarom wordt er nog steeds zwakke wacht woorden door Azure AD afgewezen, zelfs als ik het beleid in de controle modus heb geconfigureerd?**
+**Q: Why is Azure AD still rejecting weak passwords even though I've configured the policy to be in Audit mode?**
 
-De controle modus wordt alleen ondersteund in de on-premises Active Directory omgeving. Azure AD wordt impliciet altijd in de modus ' afdwingen ' wanneer wacht woorden worden geëvalueerd.
+Audit mode is only supported in the on-premises Active Directory environment. Azure AD is implicitly always in "enforce" mode when it evaluates passwords.
 
-**V: mijn gebruikers zien het traditionele Windows-fout bericht wanneer een wacht woord wordt geweigerd door Azure AD-wachtwoord beveiliging. Is het mogelijk om dit fout bericht aan te passen zodat gebruikers weten wat er echt is gebeurd?**
+**Q: My users see the traditional Windows error message when a password is rejected by Azure AD Password Protection. Is it possible to customize this error message so that users know what really happened?**
 
-Nee. Het fout bericht dat door gebruikers wordt weer gegeven wanneer een wacht woord wordt geweigerd door een domein controller, wordt beheerd door de client computer, niet door de domein controller. Dit gedrag treedt op of een wacht woord wordt geweigerd door de standaard Active Directory wachtwoord beleid of door een oplossing op basis van een wacht woord filter, zoals Azure AD-wachtwoord beveiliging.
+Nee. The error message seen by users when a password is rejected by a domain controller is controlled by the client machine, not by the domain controller. This behavior happens whether a password is rejected by the default Active Directory password policies or by a password-filter-based solution such as Azure AD Password Protection.
 
-## <a name="additional-content"></a>Aanvullende inhoud
+## <a name="additional-content"></a>Additional content
 
-De volgende koppelingen maken geen deel uit van de Azure AD-documentatie voor wachtwoord beveiliging, maar kunnen een nuttige bron zijn van aanvullende informatie over de functie.
+The following links are not part of the core Azure AD Password Protection documentation but may be a useful source of additional information on the feature.
 
-[Azure AD-wachtwoord beveiliging is nu algemeen beschikbaar.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
+[Azure AD Password Protection is now generally available!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[Hand leiding e-mail phishing Protection – deel 15: implementeer de Microsoft Azure AD-wachtwoord beveiligings service (voor on-premises)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
-[Azure AD-wachtwoord beveiliging en slimme vergren delingen zijn nu beschikbaar als open bare preview.](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
 
-## <a name="microsoft-premierunified-support-training-available"></a>Micro soft Premier\Unified-ondersteunings training beschikbaar
+## <a name="microsoft-premierunified-support-training-available"></a>Microsoft Premier\Unified support training available
 
-Als u meer wilt weten over het beveiligen van Azure AD-wacht woorden en het implementeren ervan in uw omgeving, kunt u profiteren van een micro soft proactieve service die beschikbaar is voor klanten met een Premier-of Unified-ondersteunings contract. De service heet Azure Active Directory: wachtwoord beveiliging. Neem contact op met uw Technical Account Manager voor meer informatie.
+If you're interested in learning more about Azure AD Password Protection and deploying it in your environment, you can take advantage of a Microsoft proactive service available to those customers with a Premier or Unified support contract. The service is called Azure Active Directory: Password Protection. Contact your Technical Account Manager for more information.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u een on-premises Azure AD-vraag voor wachtwoord beveiliging hebt die hier niet wordt beantwoord, kunt u hieronder een feedback-item verzenden.
+If you have an on-premises Azure AD Password Protection question that isn't answered here, submit a Feedback item below - thank you!
 
 [Wachtwoordbeveiliging in Azure AD implementeren](howto-password-ban-bad-on-premises-deploy.md)

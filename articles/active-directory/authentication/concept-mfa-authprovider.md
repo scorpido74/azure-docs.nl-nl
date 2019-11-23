@@ -1,76 +1,76 @@
 ---
-title: Wanneer en hoe een Azure multi-factor Authentication-provider gebruiken? - Azure Active Directory
-description: Wanneer moet u een verificatie provider met Azure MFA gebruiken?
+title: Azure Multi-Factor Auth Providers - Azure Active Directory
+description: When should you use an Auth Provider with Azure MFA?
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 399fccf9aaaeb9e252527e80a6549ee286bb1898
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: 9d4b89f7416847e01cad8cb4f9bc52248d09170d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68369374"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382007"
 ---
-# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>Wanneer u een Azure multi-factor Authentication-provider gebruikt
+# <a name="when-to-use-an-azure-multi-factor-authentication-provider"></a>When to use an Azure Multi-Factor Authentication Provider
 
 Verificatie in twee stappen is standaard beschikbaar voor globale beheerders van Azure Active Directory- en Office 365-gebruikers. Als u echter wilt profiteren van [geavanceerde functies](howto-mfa-mfasettings.md), moet u de volledige versie van Azure Multi-Factor Authentication (MFA) aanschaffen.
 
-Een Azure multi-factor Authentication-provider wordt gebruikt om gebruik te maken van functies van Azure multi-factor Authentication voor gebruikers die **geen licenties hebben**.
+An Azure Multi-Factor Auth Provider is used to take advantage of features provided by Azure Multi-Factor Authentication for users who **do not have licenses**.
 
 > [!NOTE]
-> Vanaf 1 september 2018 nieuwe verificatie providers kunnen niet meer worden gemaakt. Bestaande verificatie providers kunnen blijven gebruiken en worden bijgewerkt, maar migratie is niet meer mogelijk. Multi-factor Authentication blijft beschikbaar als onderdeel van Azure AD Premium-licenties.
+> Effective September 1st, 2018 new auth providers may no longer be created. Existing auth providers may continue to be used and updated, but migration is no longer possible. Multi-factor authentication will continue to be available as a feature in Azure AD Premium licenses.
 
-## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Aanvullende opmerkingen met betrekking tot de Azure MFA SDK
+## <a name="caveats-related-to-the-azure-mfa-sdk"></a>Caveats related to the Azure MFA SDK
 
-Opmerking: de SDK is afgeschaft en blijft tot 14 november 2018. Na deze datum kan de SDK niet meer worden aangeroepen.
+Note the SDK has been deprecated and will only continue to work until November 14, 2018. Na deze datum kan de SDK niet meer worden aangeroepen.
 
 ## <a name="what-is-an-mfa-provider"></a>Wat is een MFA-provider?
 
-Er zijn twee soorten auth-providers en het onderscheid wordt uitgelegd hoe uw Azure-abonnement in rekening wordt gebracht. De optie Per verificatie berekent het aantal verificaties die in een maand op uw tenant worden uitgevoerd. Deze optie wordt aanbevolen als u een aantal gebruikers hebt die slechts sporadisch verifiëren. De optie Per gebruiker berekent het aantal personen in uw tenant die in een maand verificatie in twee stappen uitvoeren. Deze optie wordt aanbevolen als u een aantal gebruikers met licenties hebt, maar MFA wilt uitbreiden naar meer gebruikers buiten de restricties van uw licentie.
+There are two types of Auth providers, and the distinction is around how your Azure subscription is charged. De optie Per verificatie berekent het aantal verificaties die in een maand op uw tenant worden uitgevoerd. Deze optie wordt aanbevolen als u een aantal gebruikers hebt die slechts sporadisch verifiëren. De optie Per gebruiker berekent het aantal personen in uw tenant die in een maand verificatie in twee stappen uitvoeren. Deze optie wordt aanbevolen als u een aantal gebruikers met licenties hebt, maar MFA wilt uitbreiden naar meer gebruikers buiten de restricties van uw licentie.
 
 ## <a name="manage-your-mfa-provider"></a>Uw MFA-provider beheren
 
 U kunt het gebruiksmodel (per ingeschakelde gebruiker of per verificatie) niet wijzigen nadat een MFA-provider is gemaakt.
 
-Als u voldoende licenties hebt aangeschaft voor alle gebruikers die zijn ingeschakeld voor MFA, kunt u de MFA-provider helemaal verwijderen.
+If you purchased enough licenses to cover all users that are enabled for MFA, you can delete the MFA provider altogether.
 
-Als de MFA-provider niet is gekoppeld aan een Azure AD-tenant, of als u de nieuwe MFA-provider koppelt aan een andere Azure AD-tenant, worden de gebruikersinstellingen en configuratieopties niet overgedragen. Daarnaast moeten bestaande Azure MFA-servers opnieuw worden geactiveerd met behulp van activerings referenties die zijn gegenereerd via de MFA-provider. Het opnieuw activeren van de MFA-servers om deze te koppelen aan de MFA-provider is niet van invloed op telefoon gesprekken en SMS-berichten, maar de meldingen voor mobiele apps werken niet meer voor alle gebruikers totdat ze de mobiele app opnieuw activeren.
+Als de MFA-provider niet is gekoppeld aan een Azure AD-tenant, of als u de nieuwe MFA-provider koppelt aan een andere Azure AD-tenant, worden de gebruikersinstellingen en configuratieopties niet overgedragen. Also, existing Azure MFA Servers need to be reactivated using activation credentials generated through the MFA Provider. Reactivating the MFA Servers to link them to the MFA Provider doesn't impact phone call and text message authentication, but mobile app notifications stop working for all users until they reactivate the mobile app.
 
-### <a name="removing-an-authentication-provider"></a>Een verificatie provider verwijderen
+### <a name="removing-an-authentication-provider"></a>Removing an authentication provider
 
 > [!CAUTION]
-> Er wordt geen bevestiging gevraagd wanneer u een verificatie provider verwijdert. Het selecteren van **verwijderen** is een permanent proces.
+> There is no confirmation when deleting an authentication provider. Selecting **Delete** is a permanent process.
 
-Verificatie providers vindt u in de **Azure Portal** > **Azure Active Directory** > **MFA** > -**providers**. Klik op vermelde providers om de details en configuraties te bekijken die aan deze provider zijn gekoppeld.
+Authentication providers can be found in the **Azure portal** > **Azure Active Directory** > **MFA** > **Providers**. Click on listed providers to see details and configurations associated with that provider.
 
-Voordat u een verificatie provider verwijdert, moet u rekening houden met de aangepaste instellingen die zijn geconfigureerd in uw provider. Bepaal welke instellingen moeten worden gemigreerd naar algemene MFA-instellingen van uw provider en voltooi de migratie van deze instellingen. 
+Before removing an authentication provider, take note of any customized settings configured in your provider. Decide what settings need to be migrated to general MFA settings from your provider and complete the migration of those settings. 
 
-Azure MFA-servers die zijn gekoppeld aan providers, moeten opnieuw worden geactiveerd met de referenties die zijn gegenereerd onder **Azure Portal** > **Azure Active Directory** > **MFA** > -**Server instellingen**. Voordat u opnieuw activeert, moeten de volgende bestanden worden verwijderd `\Program Files\Multi-Factor Authentication Server\Data\` uit de directory op de Azure MFA-servers in uw omgeving:
+Azure MFA Servers linked to providers will need to be reactivated using credentials generated under **Azure portal** > **Azure Active Directory** > **MFA** > **Server settings**. Before reactivating, the following files must be deleted from the `\Program Files\Multi-Factor Authentication Server\Data\` directory on Azure MFA Servers in your environment:
 
 - caCert
-- certificaat
+- cert
 - groupCACert
 - groupKey
 - groupName
 - licenseKey
 - pkey
 
-![Een authenticatie provider verwijderen uit de Azure Portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
+![Delete an auth provider from the Azure portal](./media/concept-mfa-authprovider/authentication-provider-removal.png)
 
-Wanneer u hebt bevestigd dat alle instellingen zijn gemigreerd, kunt u naar de **Azure Portal** > **Azure Active Directory** > **MFA** > -**providers** bladeren en de weglatings tekens selecteren **...** en selecteer **verwijderen**.
+When you have confirmed that all settings have been migrated, you can browse to the **Azure portal** > **Azure Active Directory** > **MFA** > **Providers** and select the ellipses **...** and select **Delete**.
 
 > [!WARNING]
-> Wanneer u een verificatie provider verwijdert, worden alle rapportage gegevens verwijderd die aan deze provider zijn gekoppeld. Het is raadzaam om activiteiten rapporten op te slaan voordat u uw provider verwijdert.
+> Deleting an authentication provider will delete any reporting information associated with that provider. You may want to save activity reports before deleting your provider.
 
 > [!NOTE]
-> Gebruikers met oudere versies van de Microsoft Authenticator-app en de Azure MFA-server moeten mogelijk hun app opnieuw registreren.
+> Users with older versions of the Microsoft Authenticator app and Azure MFA Server may need to re-register their app.
 
 ## <a name="next-steps"></a>Volgende stappen
 

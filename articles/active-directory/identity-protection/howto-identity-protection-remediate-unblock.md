@@ -1,94 +1,94 @@
 ---
-title: Risico's herstellen en gebruikers deblokkeren in Azure AD Identity Protection
-description: Meer informatie over de opties die u hebt voor het sluiten van actieve risico detecties.
+title: Remediate risks and unblock users in Azure AD Identity Protection
+description: Learn about the options you have close active risk detections.
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61fe0e14fbb6c6251b3bf19843b9c065df60dd86
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 350e7b37d36be70cea345db52cdfb639b2f1c1a8
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72887518"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382100"
 ---
-# <a name="remediate-risks-and-unblock-users"></a>Risico's herstellen en gebruikers deblokkeren
+# <a name="remediate-risks-and-unblock-users"></a>Remediate risks and unblock users
 
-Na het volt ooien van uw [onderzoek](howto-identity-protection-investigate-risk.md)moet u actie ondernemen om het risico te herstellen of gebruikers te deblokkeren. Organisaties hebben ook de mogelijkheid om automatisch herstel in te scha kelen met behulp van hun [risico beleid](howto-identity-protection-configure-risk-policies.md). Organisaties moeten proberen alle risico detecties te sluiten die worden weer gegeven in een periode waarin uw organisatie vertrouwd is. Micro soft raadt aan om gebeurtenissen zo snel mogelijk te sluiten, omdat er tijd is om te werken met Risico's.
+After completing your [investigation](howto-identity-protection-investigate-risk.md), you will want to take action to remediate the risk or unblock users. Organizations also have the option to enable automated remediation using their [risk policies](howto-identity-protection-configure-risk-policies.md). Organizations should try to close all risk detections that they are presented with in a time period your organization is comfortable with. Microsoft recommends closing events as soon as possible because time matters when working with risk.
 
-## <a name="remediation"></a>Herstel
+## <a name="remediation"></a>Remediation
 
-Alle actieve risico detecties dragen bij aan de berekening van een waarde met de naam gebruikers risico niveau. Het risico niveau van de gebruiker is een indicator (laag, gemiddeld, hoog) voor de kans dat een account is aangetast. Als beheerder wilt u alle risico detecties sluiten, zodat de betrokken gebruikers niet langer risico lopen.
+All active risk detections contribute to the calculation of a value called user risk level. The user risk level is an indicator (low, medium, high) for the probability that an account has been compromised. As an administrator, you want to get all risk detections closed, so that the affected users are no longer at risk.
 
-Sommige detecties van Risico's kunnen worden gemarkeerd met identiteits beveiliging als ' gesloten (systeem) ', omdat de gebeurtenissen niet meer kunnen worden beschouwd als riskant.
+Some risks detections may be marked by Identity Protection as "Closed (system)" because the events were no longer determined to be risky.
 
-Beheerders hebben de volgende opties om het probleem te verhelpen:
+Administrators have the following options to remediate:
 
-- Automatisch herstel met risico beleid
-- Hand matig opnieuw instellen van wacht woorden
-- Gebruikers risico negeren
-- Afzonderlijke risico detecties hand matig sluiten
+- Self-remediation with risk policy
+- Manual password reset
+- Dismiss user risk
+- Close individual risk detections manually
 
-### <a name="self-remediation-with-risk-policy"></a>Automatisch herstel met risico beleid
+### <a name="self-remediation-with-risk-policy"></a>Self-remediation with risk policy
 
-Als u gebruikers toestaat zichzelf te herstellen met Azure Multi-Factor Authentication (MFA) en self-service voor het opnieuw instellen van wacht woorden (SSPR) in uw risico beleid, kunnen ze zichzelf deblokkeren wanneer risico wordt gedetecteerd. Deze detecties worden vervolgens als gesloten beschouwd. Gebruikers moeten eerder zijn geregistreerd voor Azure MFA en SSPR om te kunnen gebruiken wanneer risico wordt gedetecteerd.
+If you allow users to self-remediate, with Azure Multi-Factor Authentication (MFA) and self-service password reset (SSPR) in your risk policies, they can unblock themselves when risk is detected. These detections are then considered closed. Users must have previously registered for Azure MFA and SSPR in order to use when risk is detected.
 
-Sommige detecties veroorzaken mogelijk geen risico op het niveau van een door de gebruiker herstelde herbemiddeling, maar beheerders moeten deze detecties wel evalueren. Beheerders kunnen bepalen dat aanvullende maat regelen nodig zijn, zoals het [blok keren van toegang vanaf locaties](../conditional-access/howto-conditional-access-policy-location.md) of het verlagen van het acceptabele risico in hun beleid.
+Some detections may not raise risk to the level where a user self-remediation would be required but administrators should still evaluate these detections. Administrators may determine that additional measures are necessary like [blocking access from locations](../conditional-access/howto-conditional-access-policy-location.md) or lowering the acceptable risk in their policies.
 
-### <a name="manual-password-reset"></a>Hand matig opnieuw instellen van wacht woorden
+### <a name="manual-password-reset"></a>Manual password reset
 
-Als het vereisen van een wacht woord opnieuw moet worden ingesteld met behulp van een gebruikers risico beleid is geen optie, kunnen beheerders alle risico detecties sluiten voor een gebruiker met hand matig opnieuw instellen van het wacht woord.
+If requiring a password reset using a user risk policy is not an option, administrators can close all risk detections for a user with a manual password reset.
 
-Beheerders krijgen twee opties bij het opnieuw instellen van een wacht woord voor hun gebruikers:
+Administrators are given two options when resetting a password for their users:
 
-- **Een tijdelijk wacht woord genereren** : door een tijdelijk wacht woord te genereren, kunt u direct een identiteit weer in een veilige staat zetten. Voor deze methode moet contact worden gemaakt met de betrokken gebruikers omdat ze moeten weten wat het tijdelijke wacht woord is. Omdat het wacht woord tijdelijk is, wordt de gebruiker gevraagd het wacht woord te wijzigen in iets nieuw tijdens de volgende aanmelding.
+- **Generate a temporary password** - By generating a temporary password, you can immediately bring an identity back into a safe state. This method requires contacting the affected users because they need to know what the temporary password is. Because the password is temporary, the user is prompted to change the password to something new during the next sign-in.
 
-- **De gebruiker verplichten om wacht woord opnieuw in te stellen** : als u wilt dat gebruikers hun wacht woorden opnieuw moeten instellen, kunnen ze zelf herstel zonder contact opnemen met de Help Desk of een beheerder. Deze methode is alleen van toepassing op gebruikers die zijn geregistreerd voor Azure MFA en SSPR. Voor gebruikers die niet zijn geregistreerd, is deze optie niet beschikbaar.
+- **Require the user to reset password** - Requiring the users to reset passwords enables self-recovery without contacting help desk or an administrator. This method only applies to users that are registered for Azure MFA and SSPR. For users that have not been registered, this option isn't available.
 
-### <a name="dismiss-user-risk"></a>Gebruikers risico negeren
+### <a name="dismiss-user-risk"></a>Dismiss user risk
 
-Als het opnieuw instellen van een wacht woord geen optie is, omdat de gebruiker bijvoorbeeld is verwijderd, kunt u de detectie van gebruikers Risico's negeren.
+If a password reset is not an option for you, because for example the user has been deleted, you can choose to dismiss user risk detections.
 
-Wanneer u op **gebruikers risico negeren**klikt, worden alle gebeurtenissen gesloten en loopt de betrokken gebruiker geen risico meer. Omdat deze methode echter geen invloed heeft op het bestaande wacht woord, wordt de bijbehorende identiteit niet opnieuw in een veilige staat gebracht. 
+When you click **Dismiss user risk**, all events are closed and the affected user is no longer at risk. However, because this method doesn't have an impact on the existing password, it doesn't bring the related identity back into a safe state. 
 
-### <a name="close-individual-risk-detections-manually"></a>Afzonderlijke risico detecties hand matig sluiten
+### <a name="close-individual-risk-detections-manually"></a>Close individual risk detections manually
 
-U kunt afzonderlijke risico detecties hand matig sluiten. Door risico detecties hand matig te sluiten, kunt u het risico niveau van de gebruiker verlagen. Normaal gesp roken worden risico detecties hand matig gesloten als reactie op een gerelateerd onderzoek. Als er bijvoorbeeld een gesprek met een gebruiker laat zien dat een actieve risico detectie niet meer nodig is. 
+You can close individual risk detections manually. By closing risk detections manually, you can lower the user risk level. Typically, risk detections are closed manually in response to a related investigation. For example, when talking to a user reveals that an active risk detection is not required anymore. 
  
-Wanneer u risico detecties hand matig wilt afsluiten, kunt u een van de volgende acties uitvoeren om de status van een risico detectie te wijzigen:
+When closing risk detections manually, you can choose to take any of the following actions to change the status of a risk detection:
 
-- Gebruikers problemen bevestigen
-- Gebruikers risico negeren
-- Aanmelden bevestigen veilig
-- Aanmelden bevestigen is beschadigd
+- Confirm user compromised
+- Dismiss user risk
+- Confirm sign-in safe
+- Confirm sign-in compromised
 
-## <a name="unblocking-users"></a>Blok keren van gebruikers opheffen
+## <a name="unblocking-users"></a>Unblocking users
 
-Een beheerder kan ervoor kiezen om een aanmelding te blok keren op basis van het risico beleid of onderzoek. Een blok kan zich voordoen op basis van de aanmelding of het risico van de gebruiker.
+An administrator may choose to block a sign-in based on their risk policy or investigations. A block may occur based on either sign-in or user risk.
 
-### <a name="unblocking-based-on-user-risk"></a>Blok kering opheffen op basis van gebruikers risico
+### <a name="unblocking-based-on-user-risk"></a>Unblocking based on user risk
 
-Beheerders hebben de volgende opties om de blok kering van een account dat is geblokkeerd vanwege gebruikers Risico's:
+To unblock an account blocked due to user risk, administrators have the following options:
 
-1. **Wacht woord opnieuw instellen** : u kunt het wacht woord van de gebruiker opnieuw instellen.
-1. **Gebruikers risico negeren** : het gebruikers risico beleid blokkeert een gebruiker als het geconfigureerde risico niveau van de gebruiker voor het blok keren van de toegang is bereikt. U kunt het risico niveau van een gebruiker verlagen door de gebruikers Risico's te negeren of door gerapporteerde risico detecties hand matig af te sluiten.
-1. **De gebruiker uitsluiten van het beleid** : als u denkt dat de huidige configuratie van uw aanmeldings beleid problemen veroorzaakt voor specifieke gebruikers, kunt u de gebruikers ervan uitsluiten. Zie voor meer informatie de sectie uitsluitingen in het artikel [procedure: risico beleid configureren en inschakelen](howto-identity-protection-configure-risk-policies.md#exclusions).
-1. **Beleid uitschakelen** : als u denkt dat uw beleids configuratie problemen veroorzaakt voor al uw gebruikers, kunt u het beleid uitschakelen. Zie voor meer informatie het artikel [procedure: risico beleid configureren en inschakelen](howto-identity-protection-configure-risk-policies.md).
+1. **Reset password** - You can reset the user's password.
+1. **Dismiss user risk** - The user risk policy blocks a user if the configured user risk level for blocking access has been reached. You can reduce a user's risk level by dismissing user risk or manually closing reported risk detections.
+1. **Exclude the user from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. For more information, see the section Exclusions in the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md#exclusions).
+1. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. For more information, see the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md).
 
-### <a name="unblocking-based-on-sign-in-risk"></a>Blok kering opheffen op basis van het aanmeldings risico
+### <a name="unblocking-based-on-sign-in-risk"></a>Unblocking based on sign-in risk
 
-Beheerders hebben de volgende opties voor het deblokkeren van een account op basis van het aanmeldings risico:
+To unblock an account based on sign-in risk, administrators have the following options:
 
-1. **Aanmelden vanaf een bekende locatie of apparaat** : een veelvoorkomende reden voor geblokkeerde verdachte aanmeldingen is aanmeldings pogingen vanaf onbekende locaties of apparaten. Uw gebruikers kunnen snel bepalen of deze reden de blokkerings reden is door u te proberen zich aan te melden vanaf een vertrouwde locatie of apparaat.
-1. **De gebruiker uitsluiten van het beleid** : als u denkt dat de huidige configuratie van uw aanmeldings beleid problemen veroorzaakt voor specifieke gebruikers, kunt u de gebruikers ervan uitsluiten. Zie voor meer informatie de sectie uitsluitingen in het artikel [procedure: risico beleid configureren en inschakelen](howto-identity-protection-configure-risk-policies.md#exclusions).
-1. **Beleid uitschakelen** : als u denkt dat uw beleids configuratie problemen veroorzaakt voor al uw gebruikers, kunt u het beleid uitschakelen. Zie voor meer informatie het artikel [procedure: risico beleid configureren en inschakelen](howto-identity-protection-configure-risk-policies.md).
+1. **Sign in from a familiar location or device** - A common reason for blocked suspicious sign-ins are sign-in attempts from unfamiliar locations or devices. Your users can quickly determine whether this reason is the blocking reason by trying to sign-in from a familiar location or device.
+1. **Exclude the user from policy** - If you think that the current configuration of your sign-in policy is causing issues for specific users, you can exclude the users from it. For more information, see the section Exclusions in the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md#exclusions).
+1. **Disable policy** - If you think that your policy configuration is causing issues for all your users, you can disable the policy. For more information, see the article [How To: Configure and enable risk policies](howto-identity-protection-configure-risk-policies.md).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie overzicht van de [Azure AD Identity Protection](overview-identity-protection.md)voor een overzicht van Azure AD Identity Protection.
+To get an overview of Azure AD Identity Protection, see the [Azure AD Identity Protection overview](overview-identity-protection.md).

@@ -1,38 +1,34 @@
 ---
-title: Block Chain configureren Data Manager-Azure CLI
-description: Block Chain-Data Manager maken en beheren met Azure CLI
-services: azure-blockchain
-author: PatAltimore
-ms.author: patricka
+title: Configure Blockchain Data Manager using Azure CLI - Azure Blockchain Service
+description: Create and manage a Blockchain Data Manager for Azure Blockchain Service using Azure CLI
 ms.date: 11/04/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: chroyal
-ms.openlocfilehash: 9f408b090db40e5145b424034c39cdba4de14a8f
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 88abea691219a78ee16702e231337de055dbf5e4
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73605904"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326244"
 ---
-# <a name="configure-blockchain-data-manager-using-azure-cli"></a>Block Chain Data Manager configureren met behulp van Azure CLI
+# <a name="configure-blockchain-data-manager-using-azure-cli"></a>Blockchain Data Manager configureren met behulp van Azure CLI
 
-Configureer Block Chain Data Manager voor de Azure Block Chain-service om Block Chain-gegevens vast te leggen naar een Azure Event Grid onderwerp.
+Configure Blockchain Data Manager for Azure Blockchain Service to capture blockchain data send it to an Azure Event Grid Topic.
 
-Als u een Block Chain Data Manager-exemplaar wilt configureren, doet u het volgende:
+To configure a Blockchain Data Manager instance, you:
 
-* Een instantie van Block chain manager maken
-* Een invoer maken naar een Azure Block Chain Service-transactie knooppunt
-* Een uitvoer maken naar een Azure Event Grid onderwerp
-* Een Block Chain-toepassing toevoegen
-* Een exemplaar starten
+* Create a Blockchain Manager instance
+* Create an input to an Azure Blockchain Service transaction node
+* Create an output to an Azure Event Grid Topic
+* Add a blockchain application
+* Start an instance
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Installeer de nieuwste [Azure cli](https://docs.microsoft.com/cli/azure/install-azure-cli) en meld u aan met `az login`.
-* Volledige [Snelstartgids: Visual Studio code gebruiken om verbinding te maken met een Azure Block Chain Service consortium-netwerk](connect-vscode.md)
-* Een [Event grid onderwerp](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic) maken
-* Meer informatie over [gebeurtenis-handlers in azure Event grid](../../event-grid/event-handlers.md)
+* Install the latest [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) and signed in using `az login`.
+* Complete [Quickstart: Use Visual Studio Code to connect to a Azure Blockchain Service consortium network](connect-vscode.md)
+* Create an [Event Grid Topic](../../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)
+* Learn about [Event handlers in Azure Event Grid](../../event-grid/event-handlers.md)
 
 ## <a name="launch-azure-cloud-shell"></a>Azure Cloud Shell starten
 
@@ -40,7 +36,7 @@ Azure Cloud Shell is een gratis interactieve shell waarmee u de stappen in dit a
 
 Als u Cloud Shell wilt openen, selecteert u **Proberen** in de rechterbovenhoek van een codeblok. U kunt Cloud Shell ook openen in een afzonderlijk browsertabblad door naar [https://shell.azure.com/bash](https://shell.azure.com/bash) te gaan. Klik op **Kopiëren** om de codeblokken te kopiëren, plak deze in Cloud Shell en druk vervolgens op Enter om de code uit te voeren.
 
-Als u liever de CLI lokaal wilt installeren en gebruiken, is voor deze Snelstartgids Azure CLI-versie 2.0.51 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Als u wilt installeren of upgraden, raadpleegt u [Azure cli installeren](https://docs.microsoft.com/cli/azure/install-azure-cli).
+If you prefer to install and use the CLI locally, this quickstart requires Azure CLI version 2.0.51 or later. Voer `az --version` uit om de versie te bekijken. If you need to install or upgrade, see [install Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Een resourcegroep maken
 
@@ -50,9 +46,9 @@ Een resourcegroep maken met de opdracht [az group create](https://docs.microsoft
 az group create --name myRG --location eastus
 ```
 
-## <a name="create-instance"></a>Exemplaar maken
+## <a name="create-instance"></a>Create instance
 
-Een Block Chain Data Manager-exemplaar bewaakt een Azure Block Chain Service-transactie knooppunt. Een exemplaar legt alle onbewerkte blok keringen en ruwe transactie gegevens vast van het trans actie-knoop punt.
+A Blockchain Data Manager instance monitors an Azure Blockchain Service transaction node. An instance captures all raw block and raw transaction data from the transaction node.
 
 ``` azurecli
 az resource create \
@@ -65,15 +61,15 @@ az resource create \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| resource-group | De naam van de resource groep waar de Block Chain-Data Manager-instantie moet worden gemaakt. |
-| naam | De naam van het block Chain-Data Manager exemplaar. |
-| resource-type | Het resource type voor een Block Chain Data Manager-exemplaar is **micro soft. Block Chain/** volgers. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties bevatten voor de Watcher-resource. |
-| properties | JSON-indelings teken reeks met eigenschappen voor de Watcher-resource. Kan worden door gegeven als een teken reeks of een bestand.  |
+| resource-group | Resource group name where to create the Blockchain Data Manager instance. |
+| name | Name of the Blockchain Data Manager instance. |
+| resource-type | The resource type for a Blockchain Data Manager instance is **Microsoft.blockchain/watchers**. |
+| is-full-object | Indicates properties contain options for the watcher resource. |
+| properties | JSON-formatted string containing properties for the watcher resource. Can be passed as a string or a file.  |
 
-### <a name="create-instance-examples"></a>Voor beelden van exemplaren maken
+### <a name="create-instance-examples"></a>Create instance examples
 
-Voor beeld van JSON-configuratie voor het maken van een Block chain manager-exemplaar in de regio **VS-Oost** .
+JSON configuration example to create a Blockchain Manager instance in the **East US** region.
 
 ``` json
 {
@@ -85,10 +81,10 @@ Voor beeld van JSON-configuratie voor het maken van een Block chain manager-exem
 
 | Element | Beschrijving |
 |---------|-------------|
-| location | Regio waar de Watcher-resource moet worden gemaakt |
-| properties | Eigenschappen die moeten worden ingesteld bij het maken van de Watcher-resource |
+| location | Region where to create the watcher resource |
+| properties | Properties to set when creating the watcher resource |
 
-Maak een Block Chain-Data Manager instantie met de naam *mywatcher* met behulp van een JSON-teken reeks voor configuratie.
+Create a Blockchain Data Manager instance named *mywatcher* using a JSON string for configuration.
 
 ``` azurecli-interactive
 az resource create \
@@ -99,7 +95,7 @@ az resource create \
                      --properties '{"location":"eastus"}'
 ```
 
-Maak een Block Chain-Data Manager instantie met de naam *mywatcher* met behulp van een JSON-configuratie bestand.
+Create a Blockchain Data Manager instance named *mywatcher* using a JSON configuration file.
 
 ``` azurecli
 az resource create \
@@ -110,9 +106,9 @@ az resource create \
                     --properties @watcher.json
 ```
 
-## <a name="create-input"></a>Invoer maken
+## <a name="create-input"></a>Create input
 
-Een invoer verbindt Block Chain Data Manager met een Azure Block Chain Service-transactie knooppunt. Alleen gebruikers met toegang tot het transactie knooppunt kunnen een verbinding maken.
+An input connects Blockchain Data Manager to an Azure Blockchain Service transaction node. Only users with access to the transaction node can create a connection.
 
 ``` azurecli
 az resource create \
@@ -127,17 +123,17 @@ az resource create \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| resource-group | De naam van de resource groep waar de invoer bron wordt gemaakt. |
-| naam | De naam van de invoer. |
-| naamruimte | Gebruik de naam ruimte van de **micro soft. Block Chain** -provider. |
-| resource-type | Het resource type voor een Block Chain-Data Manager invoer **is**inputs. |
-| schijf | Het pad naar de Watcher waaraan de invoer is gekoppeld. Bijvoorbeeld volgers **/mywatcher**. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de invoer bron bevatten. |
-| properties | JSON-indelings teken reeks met eigenschappen voor de invoer bron. Kan worden door gegeven als een teken reeks of een bestand. |
+| resource-group | Resource group name where to create the input resource. |
+| name | Name of the input. |
+| naamruimte | Use the **Microsoft.Blockchain** provider namespace. |
+| resource-type | The resource type for a Blockchain Data Manager input is **inputs**. |
+| parent | The path to the watcher to which the input is associated. For example, **watchers/mywatcher**. |
+| is-full-object | Indicates properties contain options for the input resource. |
+| properties | JSON-formatted string containing properties for the input resource. Can be passed as a string or a file. |
 
-### <a name="input-examples"></a>Invoer voorbeelden
+### <a name="input-examples"></a>Input examples
 
-Configuratie-JSON-voor beeld voor het maken van een invoer bron in de regio *VS-Oost* die is verbonden met \<Block Chain-lid\>.
+Configuration JSON example to create an input resource in the *East US* region that is connected to \<Blockchain member\>.
 
 ``` json
 {
@@ -153,11 +149,11 @@ Configuratie-JSON-voor beeld voor het maken van een invoer bron in de regio *VS-
 
 | Element | Beschrijving |
 |---------|-------------|
-| location | De regio waar de invoer bron wordt gemaakt. |
-| Type | Het grootboek type van het lid van de Azure Block Chain-service. Momenteel wordt **Ethereum** ondersteund. |
-| resourceId | Het transactie knooppunt waarmee de invoer is verbonden. Vervang \<abonnements-ID\>, \<resource groep\>en \<Block Chain member\> met de waarden voor de bron van het transactie knooppunt. De invoer maakt verbinding met het standaard transactie knooppunt voor het lid van de Azure Block Chain-service. |
+| location | Region where to create the input resource. |
+| inputType | Ledger type of the Azure Blockchain Service member. Currently, **Ethereum** is supported. |
+| resourceId | Transaction node to which the input is connected. Replace \<Subscription ID\>, \<Resource group\>, and \<Blockchain member\> with the values for the transaction node resource. The input connects to the default transaction node for the Azure Blockchain Service member. |
 
-Maak een invoer met de naam *myInput* voor *mywatcher* met BEhulp van een JSON-teken reeks voor configuratie.
+Create an input named *myInput* for *mywatcher* using a JSON string for configuration.
 
 ``` azurecli-interactive
 az resource create \
@@ -170,7 +166,7 @@ az resource create \
                    --properties '{"location":"eastus", "properties":{"inputType":"Ethereum","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/BlockchainMembers/<Blockchain member>/transactionNodes/transaction-node"}}}'
 ```
 
-Maak een invoer met de naam *myInput* voor *mywatcher* met BEhulp van een JSON-configuratie bestand.
+Create an input named *myInput* for *mywatcher* using a JSON configuration file.
 
 ``` azurecli
 az resource create \
@@ -182,9 +178,9 @@ az resource create \
                    --properties @input.json
 ```
 
-## <a name="create-output"></a>Uitvoer maken
+## <a name="create-output"></a>Create output
 
-Een uitgaande verbinding verzendt Block Chain-gegevens naar Azure Event Grid. U kunt Block Chain-gegevens naar één bestemming verzenden of block Chain-gegevens verzenden naar meerdere bestemmingen. Block Chain Data Manager ondersteunt meerdere uitgaande verbindingen van Event Grid onderwerp voor een gegeven block Chain Data Manager exemplaar.
+An outbound connection sends blockchain data to Azure Event Grid. You can send blockchain data to a single destination or send blockchain data to multiple destinations. Blockchain Data Manager supports multiple Event Grid Topic outbound connections for any given Blockchain Data Manager instance.
 
 ``` azurecli
 az resource create \
@@ -199,17 +195,17 @@ az resource create \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| resource-group | De naam van de resource groep waar de uitvoer resource moet worden gemaakt. |
-| naam | De naam van de uitvoer. |
-| naamruimte | Gebruik de naam ruimte van de **micro soft. Block Chain** -provider. |
-| resource-type | Het resource type voor een Block Chain-Data Manager uitvoer is **uitvoer**. |
-| schijf | Het pad naar de Watcher waaraan de uitvoer is gekoppeld. Bijvoorbeeld volgers **/mywatcher**. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de uitvoer bron bevatten. |
-| properties | JSON-indelings teken reeks met eigenschappen voor de uitvoer bron. Kan worden door gegeven als een teken reeks of een bestand. |
+| resource-group | Resource group name where to create the output resource. |
+| name | Name of the output. |
+| naamruimte | Use the **Microsoft.Blockchain** provider namespace. |
+| resource-type | The resource type for a Blockchain Data Manager output is **outputs**. |
+| parent | The path to the watcher to which the output is associated. For example, **watchers/mywatcher**. |
+| is-full-object | Indicates properties contain options for the output resource. |
+| properties | JSON-formatted string containing properties for the output resource. Can be passed as a string or a file. |
 
-### <a name="output-examples"></a>Uitvoer voorbeelden
+### <a name="output-examples"></a>Output examples
 
-Configuratie-JSON-voor beeld om een uitvoer bron te maken in de regio *VS-Oost* die is verbonden met een event grid-onderwerp met de naam \<Event grid-onderwerp\>.
+Configuration JSON example to create an output resource in the *East US* region that is connected to an event grid topic named \<event grid topic\>.
 
 ``` json
 {
@@ -225,11 +221,11 @@ Configuratie-JSON-voor beeld om een uitvoer bron te maken in de regio *VS-Oost* 
 
 | Element | Beschrijving |
 |---------|-------------|
-| location | De regio waar de uitvoer bron wordt gemaakt. |
-| Type | Type uitvoer. Momenteel wordt **EventGrid** ondersteund. |
-| resourceId | De resource waarmee de uitvoer is verbonden. Vervang \<abonnements-ID\>, \<resource groep\>en \<Block Chain member\> met de waarden voor de gebeurtenis grid-resource. |
+| location | Region where to create the output resource. |
+| outputType | Type of output. Currently, **EventGrid** is supported. |
+| resourceId | Resource to which the output is connected. Replace \<Subscription ID\>, \<Resource group\>, and \<Blockchain member\> with the values for the event grid resource. |
 
-Maak een uitvoer met de naam *MYOUTPUT* voor *mywatcher* die verbinding maakt met een event grid-onderwerp met BEhulp van een JSON-configuratie teken reeks.
+Create an output named *myoutput* for *mywatcher* that connects to an event grid topic using a JSON configuration string.
 
 ``` azurecli-interactive
 az resource create \
@@ -242,7 +238,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"outputType":"EventGrid","dataSource":{"resourceId":"/subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.EventGrid/topics/<event grid topic>"}}}'
 ```
 
-Maak een uitvoer met de naam *MYOUTPUT* voor *mywatcher* die verbinding maakt met een event grid-onderwerp met BEhulp van een JSON-configuratie bestand.
+Create an output named *myoutput* for *mywatcher* that connects to an event grid topic using a JSON configuration file.
 
 ``` azurecli
 az resource create \
@@ -255,13 +251,13 @@ az resource create \
                    --properties @output.json
 ```
 
-## <a name="add-blockchain-application"></a>Block Chain-toepassing toevoegen
+## <a name="add-blockchain-application"></a>Add blockchain application
 
-Als u een Block Chain-toepassing toevoegt, Block Chain Data Manager de status van de gebeurtenis en eigenschap decoderen voor de toepassing. Anders worden alleen onbewerkte en onbewerkte transactie gegevens verzonden. Block Chain Data Manager detecteert ook contract adressen wanneer het contract wordt geïmplementeerd. U kunt meerdere Block Chain-toepassingen toevoegen aan een Block Chain Data Manager-exemplaar.
+If you add a blockchain application, Blockchain Data Manager decodes event and property state for the application. Otherwise, only raw block and raw transaction data is sent. Blockchain Data Manager also discovers contract addresses when the contract is deployed. You can add multiple blockchain applications to a Blockchain Data Manager instance.
 
 
 > [!IMPORTANT]
-> Momenteel worden Block Chain-toepassingen die een type vaste- [matrix](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) of [toewijzings typen](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) declareren, niet volledig ondersteund. Eigenschappen die zijn gedeclareerd als matrix-of toewijzings typen, worden niet gedecodeerd in *ContractPropertiesMsg* -of *DecodedContractEventsMsg* -berichten.
+> Currently, blockchain applications that declare Solidity [array types](https://solidity.readthedocs.io/en/v0.5.12/types.html#arrays) or [mapping types](https://solidity.readthedocs.io/en/v0.5.12/types.html#mapping-types) are not fully supported. Properties declared as array or mapping types will not be decoded in *ContractPropertiesMsg* or *DecodedContractEventsMsg* messages.
 
 ``` azurecli
 az resource create \
@@ -276,17 +272,17 @@ az resource create \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| resource-group | De naam van de resource groep waar de toepassings resource moet worden gemaakt. |
-| naam | De naam van de toepassing. |
-| naamruimte | Gebruik de naam ruimte van de **micro soft. Block Chain** -provider. |
-| resource-type | Het resource type voor een Block Chain-Data Manager toepassing is **artefacten**. |
-| schijf | Het pad naar de Watcher waaraan de toepassing is gekoppeld. Bijvoorbeeld volgers **/mywatcher**. |
-| is-Full-object | Hiermee wordt aangegeven dat eigenschappen opties voor de toepassings bron bevatten. |
-| properties | JSON-indelings teken reeks met eigenschappen voor de toepassings bron. Kan worden door gegeven als een teken reeks of een bestand. |
+| resource-group | Resource group name where to create the application resource. |
+| name | Name of the application. |
+| naamruimte | Use the **Microsoft.Blockchain** provider namespace. |
+| resource-type | The resource type for a Blockchain Data Manager application is **artifacts**. |
+| parent | The path to the watcher to which the application is associated. For example, **watchers/mywatcher**. |
+| is-full-object | Indicates properties contain options for the application resource. |
+| properties | JSON-formatted string containing properties for the application resource. Can be passed as a string or a file. |
 
-### <a name="blockchain-application-examples"></a>Voor beelden van Block Chain-toepassingen
+### <a name="blockchain-application-examples"></a>Blockchain application examples
 
-Configuratie-JSON-voor beeld om een toepassings bron te maken in de regio *VS-Oost* , die een slim contract bewaakt dat is gedefinieerd door de ABI en byte code van het contract.
+Configuration JSON example to create an application resource in the *East US* region that monitors a smart contract defined by the contract ABI and bytecode.
 
 ``` json
 {
@@ -307,13 +303,13 @@ Configuratie-JSON-voor beeld om een toepassings bron te maken in de regio *VS-Oo
 
 | Element | Beschrijving |
 |---------|-------------|
-| location | De regio waar de toepassings resource moet worden gemaakt. |
-| artifactType | Type toepassing. Momenteel wordt **EthereumSmartContract** ondersteund. |
-| abiFileUrl | URL voor het JSON-bestand van het ABI voor Smart contract. Voor meer informatie over het verkrijgen van contract ABI en het maken van een URL raadpleegt u [contract Abi en byte code ophalen](data-manager-portal.md#get-contract-abi-and-bytecode) en [contract-Abi en byte code-URL maken](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
-| bytecodeFileUrl | URL voor het JSON-bestand van de geïmplementeerde byte code van het slimme contract. Zie voor meer informatie over het verkrijgen van de gedistribueerde gegevensbyte code voor het slimme contract en het maken van een URL [Get contract Abi en byte code](data-manager-portal.md#get-contract-abi-and-bytecode) en [Create contract Abi en byte code-URL](data-manager-portal.md#create-contract-abi-and-bytecode-url). Opmerking: voor Block Chain Data Manager is de **geïmplementeerde byte code**vereist. |
-| queryTargetTypes | Gepubliceerde bericht typen. Opgeven van **ContractProperties** publiceert *ContractPropertiesMsg* -bericht type. Opgeven van **ContractEvents** publiceert *DecodedContractEventsMsg* -bericht type. Opmerking: *RawBlockAndTransactionMsg* -en *RawTransactionContractCreationMsg* -bericht typen worden altijd gepubliceerd. |
+| location | Region where to create the application resource. |
+| artifactType | Type of application. Currently, **EthereumSmartContract** is supported. |
+| abiFileUrl | URL for smart contract ABI JSON file. For more information on obtaining contract ABI and creating a URL, see [Get Contract ABI and bytecode](data-manager-portal.md#get-contract-abi-and-bytecode) and [Create contract ABI and bytecode URL](data-manager-portal.md#create-contract-abi-and-bytecode-url). |
+| bytecodeFileUrl | URL for smart contract deployed bytecode JSON file. For more information on obtaining the smart contract deployed bytecode and creating a URL, see [Get Contract ABI and bytecode](data-manager-portal.md#get-contract-abi-and-bytecode) and [Create contract ABI and bytecode URL](data-manager-portal.md#create-contract-abi-and-bytecode-url). Note: Blockchain Data Manager requires the **deployed bytecode**. |
+| queryTargetTypes | Published message types. Specifying **ContractProperties** publishes *ContractPropertiesMsg* message type. Specifying **ContractEvents** publishes *DecodedContractEventsMsg* message type. Note: *RawBlockAndTransactionMsg* and *RawTransactionContractCreationMsg* message types are always published. |
 
-Maak een toepassing met de naam *mijn toepassing* voor *mywatcher* die een slim contract bewaakt dat is gedefinieerd door een JSON-teken reeks.
+Create an application named *myApplication* for *mywatcher* that monitors a smart contract defined by a JSON string.
 
 ``` azurecli-interactive
 az resource create \
@@ -326,7 +322,7 @@ az resource create \
                    --properties '{"location":"eastus","properties":{"artifactType":"EthereumSmartContract","content":{"abiFileUrl":"<ABI URL>","bytecodeFileUrl":"<Bytecode URL>","queryTargetTypes":["ContractProperties","ContractEvents"]}}}'
 ```
 
-Maak een toepassing met de naam *mijn toepassing* voor *mywatcher* die een slim contract controleert dat is gedefinieerd met BEhulp van een JSON-configuratie bestand.
+Create an application named *myApplication* for *mywatcher* that watches a smart contract defined using a JSON configuration file.
 
 ``` azurecli
 az resource create \
@@ -339,9 +335,9 @@ az resource create \
                    --properties @artifact.json
 ```
 
-## <a name="start-instance"></a>Exemplaar starten
+## <a name="start-instance"></a>Start instance
 
-Wanneer deze wordt uitgevoerd, controleert een Block chain manager-instantie Block Chain-gebeurtenissen van de gedefinieerde invoer en verzendt deze gegevens naar de gedefinieerde uitvoer.
+When running, a Blockchain Manager instance monitors blockchain events from the defined inputs and sends data to the defined outputs.
 
 ``` azurecli
 az resource invoke-action \
@@ -351,12 +347,12 @@ az resource invoke-action \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| action | Gebruik **Start** om de Watcher uit te voeren. |
-| id's | Watcher-Resource-ID. Vervang \<abonnements-ID\>, \<resource groep\>en \<Watcher naam\> met de waarden voor de Watcher-resource.|
+| action | Use **start** to run the watcher. |
+| ids | Watcher resource ID. Replace \<Subscription ID\>, \<Resource group\>, and \<Watcher name\> with the values for the watcher resource.|
 
-### <a name="start-instance-example"></a>Voor beeld van start-exemplaar
+### <a name="start-instance-example"></a>Start instance example
 
-Start een Block Chain-Data Manager instantie met de naam *mywatcher*.
+Start a Blockchain Data Manager instance named *mywatcher*.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -364,9 +360,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
 ```
 
-## <a name="stop-instance"></a>Exemplaar stoppen
+## <a name="stop-instance"></a>Stop instance
 
-Stop een Block Chain Data Manager-exemplaar.
+Stop a Blockchain Data Manager instance.
 
 ``` azurecli
 az resource invoke-action \
@@ -376,12 +372,12 @@ az resource invoke-action \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| action | Gebruik **stoppen** om de Watcher te stoppen. |
-| id's | De naam van de Watcher. Vervang \<abonnements-ID\>, \<resource groep\>en \<Watcher naam\> met de waarden voor de Watcher-resource. |
+| action | Use **stop** to stop the watcher. |
+| ids | Name of the watcher. Replace \<Subscription ID\>, \<Resource group\>, and \<Watcher name\> with the values for the watcher resource. |
 
-### <a name="stop-watcher-example"></a>Stoppen van Watcher-voor beeld
+### <a name="stop-watcher-example"></a>Stop watcher example
 
-Stop een instantie met de naam *mywatcher*.
+Stop an instance named *mywatcher*.
 
 ``` azurecli-interactive
 az resource invoke-action \
@@ -389,9 +385,9 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/mywatcher
 ```
 
-## <a name="delete-instance"></a>Exemplaar verwijderen
+## <a name="delete-instance"></a>Delete instance
 
-Verwijder een Block Chain Data Manager-exemplaar.
+Delete a Blockchain Data Manager instance.
 
 ``` azurecli
 az resource delete \
@@ -402,13 +398,13 @@ az resource delete \
 
 | Parameter | Beschrijving |
 |-----------|-------------|
-| resource-group | De naam van de resource groep van de Watcher die u wilt verwijderen. |
-| naam | De naam van de Watcher die moet worden verwijderd. |
-| resource-type | Het resource type voor een Block Chain Data Manager Watcher is **micro soft. Block Chain/** volgers. |
+| resource-group | Resource group name of the watcher to delete. |
+| name | Name of the watcher to delete. |
+| resource-type | The resource type for a Blockchain Data Manager watcher is **Microsoft.blockchain/watchers**. |
 
-### <a name="delete-instance-example"></a>Voor beeld van instantie verwijderen
+### <a name="delete-instance-example"></a>Delete instance example
 
-Verwijder een instantie met de naam *mywatcher* in de resource groep *myRG* .
+Delete an instance named *mywatcher* in the *myRG* resource group.
 
 ``` azurecli-interactive
 az resource delete \
@@ -419,7 +415,7 @@ az resource delete \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Maak een Block Chain-transactie bericht Verkenner met block Chain Data Manager en Azure Cosmos DB.
+Try creating a blockchain transaction message explorer using Blockchain Data Manager and Azure Cosmos DB.
 
 > [!div class="nextstepaction"]
-> [Zelf studie: Block Chain Data Manager gebruiken om gegevens te verzenden naar Azure Cosmos DB](data-manager-cosmosdb.md)
+> [Tutorial: Use Blockchain Data Manager to send data to Azure Cosmos DB](data-manager-cosmosdb.md)

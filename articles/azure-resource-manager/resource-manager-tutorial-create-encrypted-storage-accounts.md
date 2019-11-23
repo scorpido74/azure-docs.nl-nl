@@ -6,20 +6,20 @@ ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 8957f661665811679c088de7ac4a4b026e9d28c7
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 99ec64529b90c7a80aea62090f80c55cf4e23510
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149368"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326484"
 ---
-# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Zelf studie: de referentie voor de Azure Resource Manager-sjabloon gebruiken
+# <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Tutorial: Utilize the Azure Resource Manager template reference
 
 Meer informatie over het zoeken van de sjabloonschema-informatie en het gebruiken van deze informatie om Azure Resource Manager-sjablonen te maken.
 
 In deze zelfstudie gebruikt u een basissjabloon uit Azure-snelstartsjablonen. U past de sjabloon aan door middel van referentiemateriaal voor sjablonen om een versleuteld opslagaccount te maken.
 
-![Resource Manager-sjabloon referentie implementeren versleuteld opslag account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
+![Resource Manager template reference deploy encrypted storage account](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -36,7 +36,7 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* [Visual Studio Code](https://code.visualstudio.com/) met de [extensie Resource Manager Tools](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
 
 ## <a name="open-a-quickstart-template"></a>Een snelstartsjabloon openen
 
@@ -70,15 +70,15 @@ Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
 ## <a name="find-the-template-reference"></a>De sjabloonverwijzing zoeken
 
-1. Blader naar de [Naslag informatie voor Azure-sjablonen](https://docs.microsoft.com/azure/templates/).
-2. Voer in het vak **filteren op titel** **opslag accounts**in.
-3. Selecteer **verwijzing/sjabloon verwijzing/opslag/&lt;versie >/Storage-accounts** , zoals in de volgende scherm afbeelding wordt weer gegeven:
+1. Browse to [Azure Template reference](https://docs.microsoft.com/azure/templates/).
+2. In the **Filter by title** box, enter **storage accounts**.
+3. Select **Reference/Template reference/Storage/&lt;Version>/Storage Accounts** as shown in the following screenshot:
 
     ![Resource Manager-sjabloon verwijzing opslagaccount](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-resources-reference-storage-accounts.png)
 
     Als u niet weet welke versie u moet kiezen, gebruik dan de nieuwste versie.
 
-4. Zoek de aan versleuteling gerelateerde definitie-informatie.  
+4. Zoek de aan versleuteling gerelateerde definitie-informatie.
 
     ```json
     "encryption": {

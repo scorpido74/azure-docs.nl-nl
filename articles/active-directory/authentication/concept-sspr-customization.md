@@ -1,92 +1,92 @@
 ---
-title: De self-service voor wachtwoord herstel van Azure AD aanpassen-Azure Active Directory
-description: Aanpassings opties voor de selfservice voor wachtwoord herstel van Azure AD
+title: Customize self-service password reset - Azure Active Directory
+description: Customization options for Azure AD self-service password reset
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/30/2019
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 527dd99f122ec70cc47305947a5cbce3207b9664
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 0dfd035f73ea529ddb55bac6ce601185fda51a4d
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68666305"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381942"
 ---
-# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>De Azure AD-functionaliteit aanpassen voor Self-service voor wachtwoord herstel
+# <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Customize the Azure AD functionality for self-service password reset
 
-IT-professionals die self-service voor wachtwoord herstel (SSPR) in azure Active Directory (Azure AD) willen implementeren, kunnen de ervaring aanpassen aan de behoeften van hun gebruikers.
+IT professionals who want to deploy self-service password reset (SSPR) in Azure Active directory (Azure AD) can customize the experience to match their users' needs.
 
-## <a name="customize-the-contact-your-administrator-link"></a>Pas de koppeling ' Neem contact op met de beheerder ' aan
+## <a name="customize-the-contact-your-administrator-link"></a>Customize the "Contact your administrator" link
 
-Gebruikers met een self-service voor wacht woord opnieuw instellen hebben de koppeling ' Neem contact op met de beheerder ' in de portal voor het opnieuw instellen van wacht woorden. Als een gebruiker deze koppeling selecteert, wordt een van de volgende twee dingen gedaan:
+Self-service password reset users have a "Contact your administrator" link available to them in the password reset portal. If a user selects this link, it will do one of two things:
 
-* Als dit de standaard status heeft:
-   * E-mail wordt verzonden naar uw beheerders en vraagt om hulp bij het wijzigen van het wacht woord van de gebruiker. Zie de onderstaande [Voorbeeld-e-mail](#sample-email) .
-* Indien aangepast:
-   * Stuurt uw gebruiker naar een webpagina of e-mail adres dat door de beheerder is opgegeven voor ondersteuning.
+* If left in the default state:
+   * Email is sent to your administrators and asks them to provide assistance in changing the user's password. See the [sample email](#sample-email) below.
+* If customized:
+   * Sends your user to a webpage or email address specified by the administrator for assistance.
 
 > [!TIP]
-> Als u dit aanpast, wordt aangeraden om dit in te stellen voor gebruikers die al bekend zijn met het oog op ondersteuning
+> If you customize this, we recommend setting this to something users are already familiar with for support
 
 > [!WARNING]
-> Als u deze instelling aanpast met een e-mail adres en account waarvoor een wacht woord opnieuw moet worden ingesteld, kan de gebruiker mogelijk niet om hulp vragen.
+> If you customize this setting with an email address and account that needs a password reset the user may be unable to ask for assistance.
 
-### <a name="sample-email"></a>Voor beeld-e-mail
+### <a name="sample-email"></a>Sample email
 
-![Voorbeeld aanvraag voor het opnieuw instellen van e-mail die is verzonden naar de beheerder][Contact]
+![Sample request to reset email sent to Administrator][Contact]
 
-De contact-e-mail wordt in de volgende volg orde verzonden naar de volgende ontvangers:
+The contact email is sent to the following recipients in the following order:
 
-1. Als de rol **Wachtwoord beheerder** is toegewezen, worden beheerders met deze rol hiervan op de hoogte gesteld.
-2. Als er geen wachtwoord beheerders zijn toegewezen, worden beheerders met de rol **gebruikers beheerder** hiervan op de hoogte gesteld.
-3. Als geen van de vorige rollen zijn toegewezen, worden de **globale beheerders** hiervan op de hoogte gesteld.
+1. If the **password administrator** role is assigned, administrators with this role are notified.
+2. If no password administrators are assigned, then administrators with the **user administrator** role are notified.
+3. If neither of the previous roles are assigned, then the **global administrators** are notified.
 
-In alle gevallen worden Maxi maal 100 ontvangers hiervan op de hoogte gebracht.
+In all cases, a maximum of 100 recipients are notified.
 
-Zie [beheerders rollen toewijzen in azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md)voor meer informatie over de verschillende beheerders rollen en hoe u deze toewijst.
+To find out more about the different administrator roles and how to assign them, see [Assigning administrator roles in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
 
-### <a name="disable-contact-your-administrator-emails"></a>E-mail berichten van contact opnemen met de beheerder uitschakelen
+### <a name="disable-contact-your-administrator-emails"></a>Disable "Contact your administrator" emails
 
-Als uw organisatie beheerders niet wil informeren over aanvragen voor het opnieuw instellen van wacht woorden, kunt u de volgende configuratie inschakelen:
+If your organization does not want to notify administrators about password reset requests, you can enable the following configuration:
 
-* Schakel self-service voor wachtwoord herstel in voor alle eind gebruikers. Deze optie bevindt zich onder**instellingen**voor **wacht woord opnieuw instellen** > . Als u niet wilt dat gebruikers hun eigen wacht woord opnieuw instellen, kunt u de toegang tot een lege groep bereiken. *Deze optie wordt niet aanbevolen.*
-* De Help Desk aanpassen om een web-URL of mailto:-adres op te geven dat gebruikers kunnen gebruiken om hulp te krijgen. Deze optie wordt onder **wacht woord opnieuw instellen** > **aanpassen** > **aangepaste Help Desk e-mail of URL**.
+* Enable self-service password reset for all end users. This option is under **Password Reset** > **Properties**. If you don't want users to reset their own passwords, you can scope access to an empty group. *We don't recommend this option.*
+* Customize the helpdesk link to provide a web URL or mailto: address that users can use to get assistance. This option is under **Password Reset** > **Customization** > **Custom helpdesk email or URL**.
 
-## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>De AD FS-aanmeldings pagina voor SSPR aanpassen
+## <a name="customize-the-ad-fs-sign-in-page-for-sspr"></a>Customize the AD FS sign-in page for SSPR
 
-Beheerders van Active Directory Federation Services (AD FS) kunnen een koppeling toevoegen aan de aanmeldings pagina met behulp van de instructies in het artikel beschrijving van het toevoegen van een [aanmeldings pagina](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) .
+Active Directory Federation Services (AD FS) administrators can add a link to their sign-in page by using the guidance found in the [Add sign-in page description](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/add-sign-in-page-description) article.
 
-Als u een koppeling naar de aanmeldings pagina van AD FS wilt toevoegen, gebruikt u de volgende opdracht op uw AD FS-server. Gebruikers kunnen deze pagina gebruiken om de SSPR-werk stroom in te voeren.
+To add a link to the AD FS sign-in page, use the following command on your AD FS server. Users can use this page to enter the SSPR workflow.
 
 ``` powershell
 Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href='https://passwordreset.microsoftonline.com' target='_blank'>Can’t access your account?</A></p>"
 ```
 
-## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>De aanmeldings pagina en het uiterlijk van het toegangs venster aanpassen
+## <a name="customize-the-sign-in-page-and-access-panel-look-and-feel"></a>Customize the sign-in page and access panel look and feel
 
-U kunt de aanmeldings pagina aanpassen. U kunt een logo toevoegen dat samen met de afbeelding wordt weer gegeven die past bij de huis stijl van uw bedrijf.
+You can customize the sign-in page. You can add a logo that appears along with the image that fits your company branding.
 
-De afbeeldingen die u kiest, worden in de volgende omstandigheden weer gegeven:
+The graphics you choose are shown in the following circumstances:
 
-* Nadat een gebruiker de gebruikers naam heeft ingevoerd
-* Als de gebruiker toegang heeft tot de aangepaste URL:
-   * Door de `whr` para meter door te geven aan de pagina voor het opnieuw instellen van wacht woorden, zoals`https://login.microsoftonline.com/?whr=contoso.com`
-   * Door de `username` para meter door te geven aan de pagina voor het opnieuw instellen van wacht woorden, zoals`https://login.microsoftonline.com/?username=admin@contoso.com`
+* After a user enters their username
+* If the user accesses the customized URL:
+   * By passing the `whr` parameter to the password reset page, like `https://login.microsoftonline.com/?whr=contoso.com`
+   * By passing the `username` parameter to the password reset page, like `https://login.microsoftonline.com/?username=admin@contoso.com`
 
-Meer informatie over het configureren van de huis stijl van een bedrijf vindt u in het artikel [huis stijl van bedrijf toevoegen aan uw aanmeldings pagina in azure AD](../fundamentals/customize-branding.md).
+Find details on how to configure company branding in the article [Add company branding to your sign-in page in Azure AD](../fundamentals/customize-branding.md).
 
-### <a name="directory-name"></a>Adreslijstnaam
+### <a name="directory-name"></a>Directory name
 
-U kunt het kenmerk Directory naam onder **Azure Active Directory** > **Eigenschappen**wijzigen. U kunt een beschrijvende organisatie naam die wordt weer gegeven in de portal en in automatische communicatie. Deze optie is het meest zichtbaar in automatische e-mail berichten in de volgende formulieren:
+You can change the directory name attribute under **Azure Active Directory** > **Properties**. You can show a friendly organization name that is seen in the portal and in the automated communications. This option is the most visible in automated emails in the forms that follow:
 
-* De beschrijvende naam in het e-mail bericht, bijvoorbeeld ' micro soft namens de CONTOSO-demo '
-* De regel onderwerp in het e-mail bericht, bijvoorbeeld ' CONTOSO-demo account e-mail verificatie code '
+* The friendly name in the email, for example “Microsoft on behalf of CONTOSO demo”
+* The subject line in the email, for example “CONTOSO demo account email verification code”
 
 ## <a name="next-steps"></a>Volgende stappen
 
@@ -100,7 +100,7 @@ U kunt het kenmerk Directory naam onder **Azure Active Directory** > **Eigenscha
 * [Wat is Wachtwoord terugschrijven en waarom is dit van belang?](howto-sspr-writeback.md)
 * [Hoe maak ik rapporten van activiteit in selfservice voor wachtwoordherstel?](howto-sspr-reporting.md)
 * [Wat zijn alle opties in selfservice voor wachtwoordherstel en wat houden ze in?](concept-sspr-howitworks.md)
-* [Ik denk dat er iets misgaat. Hoe los ik problemen in selfservice voor wachtwoordherstel op?](active-directory-passwords-troubleshoot.md)
+* [I think something is broken. How do I troubleshoot SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ik heb een vraag die nog niet is beantwoord](active-directory-passwords-faq.md)
 
-[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Neem contact op met de beheerder voor meer informatie over het opnieuw instellen van uw wacht woord e-mail adres"
+[Contact]: ./media/concept-sspr-customization/sspr-contact-admin.png "Contact your administrator for help with resetting your password email example"

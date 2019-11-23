@@ -1,69 +1,69 @@
 ---
-title: Azure Log Analytics-werk ruimte verwijderen en herstellen | Microsoft Docs
-description: Meer informatie over het verwijderen van uw Log Analytics-werk ruimte als u deze in een persoonlijk abonnement hebt gemaakt of uw werkruimte model opnieuw hebt gestructureerd.
+title: Delete and recover Azure Log Analytics workspace | Microsoft Docs
+description: Learn how to delete your Log Analytics workspace if you created one in a personal subscription or restructure your workspace model.
 ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 author: MGoedtel
 ms.author: magoedte
 ms.date: 10/28/2019
-ms.openlocfilehash: 709d63b2c764049a698bc538d9ec451b4e75feaa
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: b8fdefb5e8555e90b5c9065672f4593e5bf98e06
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044248"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326498"
 ---
-# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Azure Log Analytics-werk ruimte verwijderen en herstellen
+# <a name="delete-and-restore-azure-log-analytics-workspace"></a>Delete and restore Azure Log Analytics workspace
 
-In dit artikel wordt uitgelegd hoe u met de procedure voor het uitvoeren van Azure Log Analytics Workspace kunt verwijderen en hoe u de verwijderde werk ruimte herstelt. 
+This article explains the concept of Azure Log Analytics workspace soft-delete and how to recover deleted workspace. 
 
-## <a name="considerations-when-deleting-a-workspace"></a>Overwegingen bij het verwijderen van een werk ruimte
+## <a name="considerations-when-deleting-a-workspace"></a>Considerations when deleting a workspace
 
-Wanneer u een Log Analytics-werk ruimte verwijdert, wordt er een tijdelijke Verwijder bewerking uitgevoerd om het herstel van de werk ruimte met inbegrip van gegevens en verbonden agents binnen 14 dagen toe te staan, of het verwijderen per ongeluk of opzettelijk is geslaagd. Na de periode voor het voorlopig verwijderen zijn de werk ruimte en de bijbehorende gegevens niet herstelbaar en worden ze binnen 30 dagen in de wachtrij geplaatst voor permanente verwijdering.
+When you delete a Log Analytics workspace, a soft-delete operation is performed to allow the recovery of the workspace including its data and connected agents within 14 days, whether the deletion was accidental or intentional. After the soft-delete period, the workspace and its data are non-recoverable – data is queued for permanent deletion within 30 days and the workspace name is available and can be used to create a new workspace.
 
-U wilt voorzichtig zijn wanneer u een werk ruimte verwijdert, omdat er mogelijk belang rijke gegevens en configuratie zijn die uw service bewerking negatief kunnen beïnvloeden. Bekijk welke agents, oplossingen en andere Azure-Services en-bronnen uw gegevens opslaan in Log Analytics, zoals:
+You want to exercise caution when you delete a workspace because there might be important data and configuration that may negatively impact your service operation. Review what agents, solutions, and other Azure services and sources that store their data in Log Analytics, such as:
 
 * Beheeroplossingen
 * Azure Automation
-* Agents die worden uitgevoerd op virtuele Windows-en Linux-machines
-* Agents die worden uitgevoerd op Windows-en Linux-computers in uw omgeving
+* Agents running on Windows and Linux virtual machines
+* Agents running on Windows and Linux computers in your environment
 * System Center Operations Manager
 
-De bewerking voor zacht verwijderen verwijdert de werkruimte resource en de machtigingen van de bijbehorende gebruikers worden verbroken. Als gebruikers zijn gekoppeld aan andere werk ruimten, kunnen ze Log Analytics blijven gebruiken met die andere werk ruimten.
+The soft-delete operation deletes the workspace resource and any associated users’ permission is broken. If users are associated with other workspaces, then they can continue using Log Analytics with those other workspaces.
 
-## <a name="soft-delete-behavior"></a>Gedrag bij zacht verwijderen
+## <a name="soft-delete-behavior"></a>Soft-delete behavior
 
-Met de bewerking voor het verwijderen van de werk ruimte wordt de resource manager-bron van de werk ruimte verwijderd, maar de configuratie en gegevens worden gedurende 14 dagen bewaard, terwijl het uiterlijk van de werk ruimte wordt verwijderd. Alle agents en System Center Operations Manager-beheer groepen die zijn geconfigureerd om te rapporteren aan de werk ruimte, blijven behouden in een zwevende status tijdens de tijdelijke periode voor het verwijderen. De service biedt verder een mechanisme voor het herstellen van de verwijderde werk ruimte, inclusief de bijbehorende gegevens en verbonden resources, waardoor het verwijderen in feite ongedaan wordt gemaakt.
+The workspace delete operation removes the workspace Resource Manager resource, but its configuration and data are kept for 14 days, while giving the appearance that the workspace is deleted. Any agents and System Center Operations Manager management groups configured to report to the workspace remain in an orphaned state during the soft-delete period. The service further provides a mechanism for recovering the deleted workspace including its data and connected resources, essentially undoing the deletion.
 
 > [!NOTE] 
-> Geïnstalleerde oplossingen en gekoppelde services, zoals uw Azure Automation account, worden permanent verwijderd uit de werk ruimte tijdens het verwijderen en kunnen niet worden hersteld. Deze moeten na de herstel bewerking opnieuw worden geconfigureerd om de werk ruimte naar de eerder geconfigureerde status te brengen.
+> Installed solutions and linked services like your Azure Automation account are permanently removed from the workspace at deletion time and can’t be recovered. These should be reconfigured after the recovery operation to bring the workspace to its previously configured state.
 
-U kunt een werk ruimte verwijderen met behulp van [Power shell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [rest API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)of in de [Azure Portal](https://portal.azure.com).
+You can delete a workspace using [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete), or in the [Azure portal](https://portal.azure.com).
 
-### <a name="delete-workspace-in-azure-portal"></a>Werk ruimte in Azure Portal verwijderen
+### <a name="delete-workspace-in-azure-portal"></a>Delete workspace in Azure portal
 
-1. Als u zich wilt aanmelden, gaat u naar de [Azure Portal](https://portal.azure.com). 
-2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Selecteer **log Analytics-werk ruimten**.
-3. Selecteer een werk ruimte in de lijst met Log Analytics-werk ruimten en klik vervolgens op **verwijderen** boven in het middelste deel venster.
-   optie ![verwijderen uit het deel venster Eigenschappen van werk ruimte](media/delete-workspace/log-analytics-delete-workspace.png)
-4. Wanneer het venster bevestigings bericht wordt weer gegeven waarin u wordt gevraagd om het verwijderen van de werk ruimte te bevestigen, klikt u op **Ja**.
-   verwijdering van werk ruimte](media/delete-workspace/log-analytics-delete-workspace-confirm.png) ![bevestigen
+1. To sign in, go to the [Azure portal](https://portal.azure.com). 
+2. Selecteer in de Azure-portal de optie **Alle services**. Typ in de lijst met resources **Log Analytics**. Als u begint te typen, wordt de lijst gefilterd op basis van uw invoer. Select **Log Analytics workspaces**.
+3. In the list of Log Analytics workspaces, select a workspace and then click **Delete**  from the top of the middle pane.
+   ![Delete option from Workspace properties pane](media/delete-workspace/log-analytics-delete-workspace.png)
+4. When the confirmation message window appears asking you to confirm deletion of the workspace, click **Yes**.
+   ![Confirm deletion of workspace](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 
-## <a name="recover-workspace"></a>Werk ruimte herstellen
+## <a name="recover-workspace"></a>Recover workspace
 
-Als u Inzender machtigingen hebt voor het abonnement en de resource groep waaraan de werk ruimte is gekoppeld vóór de tijdelijke bewerking, kunt u deze herstellen tijdens de tijdelijke verwijderings periode, inclusief gegevens, configuratie en verbonden agents. Na de periode voor het voorlopig verwijderen is de werk ruimte niet-herstelbaar en toegewezen voor permanente verwijdering. Namen van verwijderde werk ruimten blijven behouden tijdens de tijdelijke periode en kunnen niet worden gebruikt bij het maken van een nieuwe werk ruimte.  
+If you have Contributor permissions to the subscription and resource group where the workspace was associated before the soft-delete operation, you can recover it during its soft-delete period including its data, configuration and connected agents. After the soft-delete period, the workspace is non-recoverable and assigned for permanent deletion. Names of deleted workspaces are preserved during the soft-delete period and can't be used when attempting to create a new workspace.  
 
-U kunt een werk ruimte herstellen door deze opnieuw te maken met behulp van de volgende werk ruimte Create-methoden: [Power shell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) of [rest API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , zolang de volgende eigenschappen zijn gevuld met de verwijderde werkruimte Details:
+You can recover a workspace by re-creating it using the following workspace create methods: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) or [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) as long as the following properties are populated with the deleted workspace details:
 
 * Abonnements-id
-* Naam van resource groep
-* Werkruimte naam
+* Resource Group name
+* Workspace name
 * Regio
 
-De werk ruimte en alle bijbehorende gegevens worden teruggezet na de herstel bewerking. Oplossingen en gekoppelde services zijn permanent verwijderd uit de werk ruimte toen ze werd verwijderd en moeten opnieuw worden geconfigureerd om de werk ruimte naar de eerder geconfigureerde status te brengen. Sommige gegevens zijn mogelijk niet beschikbaar voor de query nadat de werk ruimte is hersteld en de bijbehorende schema's worden toegevoegd aan de werk ruimte.
+The workspace and all its data are brought back after the recovery operation. Solutions and linked services were permanently removed from the workspace when it was deleted and these should be reconfigured to bring the workspace to its previously configured state. Some of the data may not be available for query after the workspace recovery until the associated solutions are re-installed and their schemas are added to the workspace.
 
 > [!NOTE]
-> * Werkruimte herstel wordt niet ondersteund in de [Azure Portal](https://portal.azure.com). 
-> * Wanneer u tijdens de tijdelijke verwijderings periode een werk ruimte opnieuw maakt, geeft u een indicatie dat deze werkruimte naam al in gebruik is. 
+> * Workspace recovery isn't supported in the [Azure portal](https://portal.azure.com). 
+> * Re-creating a workspace during the soft-delete period gives an indication that this workspace name is already in use. 
 > 

@@ -1,7 +1,7 @@
 ---
-title: 'Quickstart: Entiteiten zoeken met de Bing Entity Search SDK voor python'
+title: 'Quickstart: Search for entities with the SDK for Python - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
-description: Gebruik deze Snelstartgids om entiteiten te zoeken met de Bing Entity Search SDK voor python.
+description: Use this quickstart to search for entities with the Bing Entity Search SDK for Python.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 07/24/2019
 ms.author: aahi
-ms.openlocfilehash: 0a4a4e3ce6f318a693b8ee760a0d892eaecb2c82
-ms.sourcegitcommit: 75a56915dce1c538dc7a921beb4a5305e79d3c7a
+ms.openlocfilehash: 7720304cc017db86b052cee39ca0430e5c1bf9c2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/24/2019
-ms.locfileid: "68479007"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327131"
 ---
-# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Quickstart: Bing Entiteiten zoeken SDK met Python
+# <a name="quickstart-bing-entity-search-sdk-with-python"></a>Snelstart: Bing Entiteiten zoeken-SDK met Python
 
-Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoeken-SDK voor Python. Hoewel Bing Entiteiten zoeken een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden op [GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
+Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoeken-SDK voor Python. Hoewel Bing Entity Search een REST-API heeft die compatibel is met de meeste moderne programmeertalen, biedt de SDK een eenvoudige manier om de service te integreren in uw toepassingen. De broncode voor dit voorbeeld is te vinden [op GitHub](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/entity_search_samples.py).
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,7 +27,7 @@ Gebruik deze quickstart om te zoeken naar entiteiten met de Bing Entiteiten zoek
 
 * De [Bing Entiteiten zoeken-SDK voor Python](https://pypi.org/project/azure-cognitiveservices-search-entitysearch/)
 
-U kunt het best een virtuele Python-omgeving gebruiken. U kunt een virtuele omgeving installeren en initialiseren met de venv-module. U kunt virtualenv installeren met:
+U kunt het best een virtuele Python-omgeving gebruiken. U kunt een virtuele omgeving installeren en initialiseren met de venv-module. You can install virtualenv with:
 
 ```Console
 python -m venv mytestenv

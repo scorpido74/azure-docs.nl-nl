@@ -1,46 +1,46 @@
 ---
-title: Beheerde identiteiten in azure HDInsight
-description: Hierin wordt een overzicht gegeven van de implementatie van beheerde identiteiten in azure HDInsight.
+title: Managed identities in Azure HDInsight
+description: Provides an overview of the implementation of managed identities in Azure HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.openlocfilehash: 02ea164a1fa29b494801623d418be73fc47d069c
-ms.sourcegitcommit: 8ef0a2ddaece5e7b2ac678a73b605b2073b76e88
+ms.custom: hdinsightactive
+ms.date: 11/20/2019
+ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71077086"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327376"
 ---
-# <a name="managed-identities-in-azure-hdinsight"></a>Beheerde identiteiten in azure HDInsight
+# <a name="managed-identities-in-azure-hdinsight"></a>Managed identities in Azure HDInsight
 
-Een beheerde identiteit is een identiteit die is geregistreerd in Azure Active Directory (Azure AD) waarvan de referenties door Azure worden beheerd. Met beheerde identiteiten hoeft u geen service-principals te registreren in azure AD of referenties zoals certificaten te behouden.
+A managed identity is an identity registered in Azure Active Directory (Azure AD) whose credentials are managed by Azure. With managed identities, you don't need to register service principals in Azure AD, or maintain credentials such as certificates.
 
-Beheerde identiteiten kunnen worden gebruikt in azure HDInsight om uw clusters toegang te geven tot Azure AD Domain Services, toegang te krijgen tot Azure Key Vault of toegang te krijgen tot bestanden in Azure Data Lake Storage Gen2.
+Managed identities can be used in Azure HDInsight to allow your clusters to access Azure AD domain services, access Azure Key Vault, or access files in Azure Data Lake Storage Gen2.
 
-Er zijn twee soorten beheerde identiteiten: aan de gebruiker toegewezen en het systeem toegewezen. Azure HDInsight maakt gebruik van door de gebruiker toegewezen beheerde identiteiten. Een door de gebruiker toegewezen beheerde identiteit wordt gemaakt als een zelfstandige Azure-resource die u vervolgens kunt toewijzen aan een of meer Azure-service-exemplaren. Daarentegen wordt een door het systeem toegewezen beheerde identiteit gemaakt in azure AD en vervolgens automatisch direct ingeschakeld op een bepaald exemplaar van de Azure-service. De levens duur van de door het systeem toegewezen beheerde identiteit wordt vervolgens gekoppeld aan de levens duur van het service-exemplaar waarop het is ingeschakeld.
+There are two types of managed identities: user-assigned and system-assigned. Azure HDInsight uses user-assigned managed identities. A user-assigned managed identity is created as a standalone Azure resource, which you can then assign to one or more Azure service instances. In contrast, a system-assigned managed identity is created in Azure AD and then enabled directly on a particular Azure service instance automatically. The life of that system-assigned managed identity is then tied to the life of the service instance that it's enabled on.
 
-## <a name="hdinsight-managed-identity-implementation"></a>Implementatie van door HDInsight beheerde identiteit
+## <a name="hdinsight-managed-identity-implementation"></a>HDInsight managed identity implementation
 
-In azure HDInsight worden beheerde identiteiten ingericht op elk knoop punt van het cluster. Deze identiteits onderdelen kunnen echter alleen worden gebruikt door de HDInsight-service. Er is momenteel geen ondersteunde methode voor het genereren van toegangs tokens met behulp van de beheerde identiteiten die zijn geïnstalleerd op HDInsight-cluster knooppunten. Voor sommige Azure-Services worden beheerde identiteiten geïmplementeerd met een eind punt dat u kunt gebruiken voor het verkrijgen van toegangs tokens voor interactie met andere Azure-Services.
+In Azure HDInsight, managed identities are provisioned on each node of the cluster. These identity components, however, are only usable by the HDInsight service. There's currently no supported method for you to generate access tokens using the managed identities installed on HDInsight cluster nodes. For some Azure services, managed identities are implemented with an endpoint that you can use to acquire access tokens for interacting with other Azure services on your own.
 
-## <a name="create-a-managed-identity"></a>Een beheerde identiteit maken
+## <a name="create-a-managed-identity"></a>Create a managed identity
 
-Beheerde identiteiten kunnen worden gemaakt met een van de volgende methoden:
+Managed identities can be created with any of the following methods:
 
 * [Azure-portal](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 * [Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)
 * [Azure Resource Manager](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)
-* [Azure-CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
+* [Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
-De resterende stappen voor het configureren van de beheerde identiteit zijn afhankelijk van het scenario waarin het wordt gebruikt.
+The remaining steps for configuring the managed identity depend on the scenario where it will be used.
 
-## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Scenario's voor beheerde identiteiten in azure HDInsight
+## <a name="managed-identity-scenarios-in-azure-hdinsight"></a>Managed identity scenarios in Azure HDInsight
 
-Beheerde identiteiten worden in meerdere scenario's gebruikt in azure HDInsight. Raadpleeg de gerelateerde documenten voor gedetailleerde installatie-en configuratie-instructies:
+Managed identities are used in Azure HDInsight in multiple scenarios. See the related documents for detailed setup and configuration instructions:
 
 * [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
 * [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)

@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Een zoekaanvraag naar de REST-API van Bing Entiteiten zoeken sturen met C#'
+title: 'Quickstart: Send a search request to the REST API using C# - Bing Entity Search'
 titleSuffix: Azure Cognitive Services
 description: Gebruik deze quickstart om een aanvraag naar de Bing Entiteiten zoeken-REST API te verzenden via C# en een JSON-antwoord te ontvangen.
 services: cognitive-services
@@ -10,31 +10,31 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 03/12/2019
 ms.author: aahi
-ms.openlocfilehash: e41d99b4ddee41778e97aac9b5b947c0aa0eac5a
-ms.sourcegitcommit: 9dc7517db9c5817a3acd52d789547f2e3efff848
+ms.openlocfilehash: efb2c646d364a93910d2105edb6527ad1116ccb2
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68404951"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327172"
 ---
-# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Quickstart: Een zoekaanvraag naar de REST-API van Bing Entiteiten zoeken sturen met C#
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-c"></a>Quickstart: Send a search request to the Bing Entity Search REST API using C#
 
-Gebruik deze quickstart om voor het eerst de Bing Entiteiten zoeken-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
+Gebruik deze quickstart om voor het eerst de Bing Entity Search REST-API aan te roepen en het JSON-antwoord te bekijken. Deze eenvoudige C#-toepassing stuurt een query naar de API om nieuws te zoeken en geeft het antwoord weer. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingEntitySearchv7.cs).
 
 Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal.
 
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
+- Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
 
-- Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket. Het NuGet-pakket installeren in Visual Studio:
+- Het [Json.NET](https://www.newtonsoft.com/json)-framework, beschikbaar als NuGet-pakket. To install the NuGet package in Visual Studio:
 
-   1. Klik met de rechter muisknop op uw project in **Solution Explorer**.
-   2. Selecteer **NuGet-pakketten beheren**.
-   3. Zoek naar *Newton soft. json* en installeer het pakket.
+   1. Right click your project in **Solution Explorer**.
+   2. Select **Manage NuGet Packages**.
+   3. Search for *Newtonsoft.Json* and install the package.
 
-- Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [mono](https://www.mono-project.com/).
+- If you're using Linux/MacOS, this application can be run by  using [Mono](https://www.mono-project.com/).
 
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
@@ -77,7 +77,7 @@ Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die
 
    1. Maak de URI voor uw aanvraag door de host en het pad te combineren. Voeg vervolgens uw markt toe en pas URL-codering toe op uw query.
    2. Await op `client.GetAsync()` voor een HTTP-antwoord heeft opgehaald en sla vervolgens het json-antwoord op via een await op `ReadAsStringAsync()`.
-   3. De JSON-teken reeks `JsonConvert.DeserializeObject()` Format teren met en afdrukken naar de-console.
+   3. Format the JSON string with `JsonConvert.DeserializeObject()` and print it to the console.
 
       ```csharp
       async static void Search()

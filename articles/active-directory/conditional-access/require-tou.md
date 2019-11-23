@@ -1,31 +1,31 @@
 ---
-title: Snelstartgids - gebruiksrechtovereenkomst moet zijn geaccepteerd voordat u toegang tot cloud-apps die zijn beveiligd met Azure Active Directory voor voorwaardelijke toegang vereisen | Microsoft Docs
-description: In deze snelstartgids leert u hoe u kunt vereisen dat de gebruiksrechtovereenkomst worden geaccepteerd voordat de toegang tot de geselecteerde cloud-apps met Azure Active Directory voor voorwaardelijke toegang wordt verleend.
+title: Conditional Access require terms of use - Azure Active Directory
+description: In this quickstart, you learn how you can require that your terms of use are accepted before access to selected cloud apps is granted by Azure Active Directory Conditional Access.
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: quickstart
-ms.date: 12/14/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba684209b497792cd2f520f6b530168959e62d7f
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 3dd1b4cf554e773f49a15ac5cedcbcc5b3e710b9
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67506907"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74380104"
 ---
-# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Quickstart: Gebruiksrechtovereenkomst moet zijn geaccepteerd voordat u toegang tot cloud-apps vereisen
+# <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Quickstart: Require terms of use to be accepted before accessing cloud apps
 
-Voordat u toegang tot bepaalde cloud-apps in uw omgeving, is het raadzaam om op te halen van toestemming van gebruikers in de vorm van het accepteren van de gebruiksrechtovereenkomst (gebruiksvoorwaarden). Voorwaardelijke toegang van Azure Active Directory (Azure AD) beschikt u over:
+Before accessing certain cloud apps in your environment, you might want to get consent from users in form of accepting your terms of use (ToU). Azure Active Directory (Azure AD) Conditional Access provides you with:
 
-- Een eenvoudige methode voor het configureren van gebruiksvoorwaarden
-- De optie voor het accepteren van de gebruiksrechtovereenkomst via beleid voor voorwaardelijke toegang vereisen  
+- A simple method to configure ToU
+- The option to require accepting your terms of use through a Conditional Access policy  
 
-Deze quickstart laat zien hoe u configureert een [Azure AD voorwaardelijke toegangsbeleid](../active-directory-conditional-access-azure-portal.md) waarvoor een gebruiksrechtovereenkomst kunnen worden geaccepteerd voor een geselecteerde cloud-app in uw omgeving is vereist.
+This quickstart shows how to configure an [Azure AD Conditional Access policy](../active-directory-conditional-access-azure-portal.md) that requires a ToU to be accepted for a selected cloud app in your environment.
 
 ![Beleid maken](./media/require-tou/5555.png)
 
@@ -33,181 +33,181 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 ## <a name="prerequisites"></a>Vereisten
 
-Als u wilt het scenario in deze snelstartgids hebt voltooid, hebt u het volgende nodig:
+To complete the scenario in this quickstart, you need:
 
-- **Toegang tot een Azure AD Premium-editie** -Azure AD voor voorwaardelijke toegang is een Azure AD Premium-capaciteit.
-- **Een testaccount met de naam Isabella Simonsen** : als u niet hoe ik een testaccount maakt weet, Zie [cloudgebruikers toevoegen](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
+- **Access to an Azure AD Premium edition** - Azure AD Conditional Access is an Azure AD Premium capability.
+- **A test account called Isabella Simonsen** - If you don't know how to create a test account, see [Add cloud-based users](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
-## <a name="test-your-sign-in"></a>Test de aanmelding
+## <a name="test-your-sign-in"></a>Test your sign-in
 
-Het doel van deze stap is om een indruk van de ervaring aanmelden zonder een beleid voor voorwaardelijke toegang.
+The goal of this step is to get an impression of the sign-in experience without a Conditional Access policy.
 
-**Voor het testen van de aanmelding:**
+**To test your sign-in:**
 
-1. Aanmelden bij uw [Azure-portal](https://portal.azure.com/) als Isabella Simonsen.
+1. Sign in to your [Azure portal](https://portal.azure.com/) as Isabella Simonsen.
 1. Meld u af.
 
-## <a name="create-your-terms-of-use"></a>Uw gebruiksvoorwaarden maken
+## <a name="create-your-terms-of-use"></a>Create your terms of use
 
-In deze sectie biedt u de stappen voor het maken van een voorbeeld van een gebruiksvoorwaarden. Als u een gebruiksvoorwaarden maakt, selecteert u een waarde voor **afdwingen met sjablonen voor voorwaardelijke toegang voor**. Selecteren **aangepast beleid** opent u het dialoogvenster voor het maken van een nieuw beleid voor voorwaardelijke toegang zodra uw gebruiksvoorwaarden is gemaakt.
+This section provides you with the steps to create a sample ToU. When you create a ToU, you select a value for **Enforce with Conditional Access policy templates**. Selecting **Custom policy** opens the dialog to create a new Conditional Access policy as soon as your ToU has been created.
 
-**Uw gebruiksvoorwaarden maken:**
+**To create your terms of use:**
 
-1. Maak een nieuw document in Microsoft Word.
-1. Type **mijn gebruiksvoorwaarden**, en sla het document op uw computer als **mytou.pdf**.
-1. Aanmelden bij uw [Azure-portal](https://portal.azure.com) als hoofdbeheerder, beveiligingsbeheerder of een beheerder van voorwaardelijke toegang.
-1. Klik in de Azure-portal op de navigatiebalk links op **Azure Active Directory**.
+1. In Microsoft Word, create a new document.
+1. Type **My terms of use**, and then save the document on your computer as **mytou.pdf**.
+1. Sign in to your [Azure portal](https://portal.azure.com) as global administrator, security administrator, or a Conditional Access administrator.
+1. In the Azure portal, on the left navbar, click **Azure Active Directory**.
 
    ![Azure Active Directory](./media/require-tou/02.png)
 
-1. Op de **Azure Active Directory** pagina, in de **Security** sectie, klikt u op **voorwaardelijke toegang**.
+1. On the **Azure Active Directory** page, in the **Security** section, click **Conditional Access**.
 
    ![Voorwaardelijke toegang](./media/require-tou/03.png)
 
-1. In de **beheren** sectie, klikt u op **gebruiksvoorwaarden**.
+1. In the **Manage** section, click **Terms of use**.
 
    ![Gebruiksvoorwaarden](./media/require-tou/04.png)
 
-1. Klik in het menu aan de bovenkant op **nieuwe voorwaarden**.
+1. In the menu on the top, click **New terms**.
 
    ![Gebruiksvoorwaarden](./media/require-tou/05.png)
 
-1. Op de **nieuwe gebruiksvoorwaarden** pagina:
+1. On the **New terms of use** page:
 
    ![Gebruiksvoorwaarden](./media/require-tou/112.png)
 
-   1. In de **naam** tekstvak, type **mijn gebruiksvoorwaarden**.
-   1. In de **weergavenaam** tekstvak, type **mijn gebruiksvoorwaarden**.
-   1. Upload de voorwaarden van de PDF-bestanden gebruiken.
-   1. Als **taal**, selecteer **Engels**.
-   1. Als **vereisen dat gebruikers om uit te breiden de gebruiksvoorwaarden**, selecteer **op**.
-   1. Als **afdwingen met sjablonen voor voorwaardelijke toegang voor**, selecteer **aangepast beleid**.
-   1. Klik op **Create**.
+   1. In the **Name** textbox, type **My TOU**.
+   1. In the **Display name** textbox, type **My TOU**.
+   1. Upload your terms of use PDF file.
+   1. As **Language**, select **English**.
+   1. As **Require users to expand the terms of use**, select **On**.
+   1. As **Enforce with Conditional Access policy templates**, select **Custom policy**.
+   1. Klik op **Maken**.
 
-## <a name="create-your-conditional-access-policy"></a>Uw beleid voor voorwaardelijke toegang maken
+## <a name="create-your-conditional-access-policy"></a>Create your Conditional Access policy
 
-Deze sectie wordt beschreven hoe u het vereiste beleid voor voorwaardelijke toegang maken. Maakt gebruik van het scenario in deze Quick Start:
+This section shows how to create the required Conditional Access policy. The scenario in this quickstart uses:
 
-- De Azure-portal als tijdelijke aanduiding voor een cloud-app waarvoor uw gebruiksvoorwaarden worden geaccepteerd. 
-- De voorbeeldgebruiker in voor het testen van het beleid voor voorwaardelijke toegang.  
+- The Azure portal as placeholder for a cloud app that requires your ToU to be accepted. 
+- Your sample user to test the Conditional Access policy.  
 
-Stel in het beleid:
+In your policy, set:
 
-| Instelling | Value |
+| Instelling | Waarde |
 | --- | --- |
 | Gebruikers en groepen | Isabella Simonsen |
-| Cloud-apps | Microsoft Azure Management |
-| Toegang verlenen | Mijn gebruiksvoorwaarden |
+| Cloud apps | Microsoft Azure Management |
+| Toegang verlenen | My TOU |
 
 ![Beleid maken](./media/require-tou/1234.png)
 
-**Uw beleid voor voorwaardelijke toegang configureren:**
+**To configure your Conditional Access policy:**
 
-1. Op de **nieuw** pagina, in de **naam** tekstvak, type **vereisen gebruiksvoorwaarden voor Isabella**.
+1. On the **New** page, in the **Name** textbox, type **Require TOU for Isabella**.
 
-   ![Name](./media/require-tou/71.png)
+   ![Naam](./media/require-tou/71.png)
 
-1. In de **toewijzing** sectie, klikt u op **gebruikers en groepen**.
+1. In the **Assignment** section, click **Users and groups**.
 
    ![Gebruikers en groepen](./media/require-tou/06.png)
 
-1. Op de **gebruikers en groepen** pagina:
+1. On the **Users and groups** page:
 
    ![Gebruikers en groepen](./media/require-tou/24.png)
 
-   1. Klik op **gebruikers en groepen selecteren**, en selecteer vervolgens **gebruikers en groepen**.
+   1. Click **Select users and groups**, and then select **Users and groups**.
    1. Klik op **Selecteren**.
-   1. Op de **Selecteer** pagina, selecteert u **Isabella Simonsen**, en klik vervolgens op **Selecteer**.
-   1. Op de **gebruikers en groepen** pagina, klikt u op **gedaan**.
-1. Klik op **Cloud-apps**.
+   1. On the **Select** page, select **Isabella Simonsen**, and then click **Select**.
+   1. On the **Users and groups** page, click **Done**.
+1. Click **Cloud apps**.
 
-   ![Cloud-apps](./media/require-tou/08.png)
+   ![Cloud apps](./media/require-tou/08.png)
 
-1. Op de **Cloud-apps** pagina:
+1. On the **Cloud apps** page:
 
-   ![Cloud-apps selecteren](./media/require-tou/26.png)
+   ![Select cloud apps](./media/require-tou/26.png)
 
-   1. Klik op **apps selecteren**.
+   1. Click **Select apps**.
    1. Klik op **Selecteren**.
-   1. Op de **Selecteer** pagina, selecteert u **Microsoft Azure Management**, en klik vervolgens op **Selecteer**.
-   1. Op de **Cloud-apps** pagina, klikt u op **gedaan**.
-1. In de **besturingselementen voor toegang** sectie, klikt u op **verlenen**.
+   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
+   1. On the **Cloud apps** page, click **Done**.
+1. In the **Access controls** section, click **Grant**.
 
-   ![Besturingselementen voor toegang](./media/require-tou/10.png)
+   ![Access controls](./media/require-tou/10.png)
 
-1. Op de **verlenen** pagina:
+1. On the **Grant** page:
 
-   ![Verlenen](./media/require-tou/111.png)
+   ![Grant](./media/require-tou/111.png)
 
-   1. Selecteer **toegang verlenen**.
-   1. Selecteer **mijn gebruiksvoorwaarden**.
+   1. Select **Grant access**.
+   1. Select **My TOU**.
    1. Klik op **Selecteren**.
-1. In de **beleid inschakelen** sectie, klikt u op **op**.
+1. In the **Enable policy** section, click **On**.
 
-   ![Beleid inschakelen](./media/require-tou/18.png)
+   ![Enable policy](./media/require-tou/18.png)
 
-1. Klik op **Create**.
+1. Klik op **Maken**.
 
-## <a name="evaluate-a-simulated-sign-in"></a>Een gesimuleerde aanmelding evalueren
+## <a name="evaluate-a-simulated-sign-in"></a>Evaluate a simulated sign-in
 
-Nu dat u uw beleid voor voorwaardelijke toegang hebt geconfigureerd, wilt u waarschijnlijk weet of deze werkt zoals verwacht. Gebruik als een eerste stap de voorwaardelijke toegang beleid hulpprogramma what-if om te simuleren een aanmelding van uw testgebruiker. De simulatie schat de impact van deze aanmelding op uw beleid in en genereert een simulatierapport.  
+Now that you have configured your Conditional Access policy, you probably want to know whether it works as expected. As a first step, use the Conditional Access what if policy tool to simulate a sign-in of your test user. Met de simulatie wordt de impact van deze aanmelding op uw beleid geschat en wordt een simulatierapport gegenereerd.  
 
-Initialiseren de **wat gebeurt er als** hulpprogramma voor het evalueren van beleid instellen:
+To initialize the **What If** policy evaluation tool, set:
 
-- **Isabella Simonsen** als gebruiker
-- **Microsoft Azure Management** als cloud-app
+- **Isabella Simonsen** as user
+- **Microsoft Azure Management** as cloud app
 
-Te klikken op **wat gebeurt er als** maakt u een simulatierapport waarin wordt weergegeven:
+Clicking **What If** creates a simulation report that shows:
 
-- **Gebruiksvoorwaarden vereisen voor Isabella** onder **beleidsregels die worden toegepast**
-- **Mijn gebruiksvoorwaarden** als **verlenen besturingselementen**.
+- **Require TOU for Isabella** under **Policies that will apply**
+- **My TOU** as **Grant Controls**.
 
-![Wat gebeurt er als hulpprogramma voor beleid](./media/require-tou/79.png)
+![What if policy tool](./media/require-tou/79.png)
 
-**Uw beleid voor voorwaardelijke toegang evalueren:**
+**To evaluate your Conditional Access policy:**
 
-1. Op de [voorwaardelijke toegang - beleid](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) in het menu bovenaan op de pagina, klikt u op **wat gebeurt er als**.  
+1. On the [Conditional Access - Policies](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) page, in the menu on the top, click **What If**.  
 
-   ![Wat als](./media/require-tou/14.png)
+   ![What If](./media/require-tou/14.png)
 
-1. Klik op **gebruikers**, selecteer **Isabella Simonsen**, en klik vervolgens op **Selecteer**.
+1. Click **Users**, select **Isabella Simonsen**, and then click **Select**.
 
    ![Gebruiker](./media/require-tou/15.png)
 
-1. Selecteer een cloud-app:
+1. To select a cloud app:
 
-   ![Cloud-apps](./media/require-tou/16.png)
+   ![Cloud apps](./media/require-tou/16.png)
 
-   1. Klik op **Cloud-apps**.
-   1. Op de **pagina voor Cloud-apps**, klikt u op **apps selecteren**.
+   1. Click **Cloud apps**.
+   1. On the **Cloud apps page**, click **Select apps**.
    1. Klik op **Selecteren**.
-   1. Op de **Selecteer** pagina, selecteert u **Microsoft Azure Management**, en klik vervolgens op **Selecteer**.
-   1. Klik op de pagina van de cloud-apps op **gedaan**.
-1. Klik op **wat gebeurt er als**.
+   1. On the **Select** page, select **Microsoft Azure Management**, and then click **Select**.
+   1. On the cloud apps page, click **Done**.
+1. Click **What If**.
 
-## <a name="test-your-conditional-access-policy"></a>Testen van uw beleid voor voorwaardelijke toegang
+## <a name="test-your-conditional-access-policy"></a>Test your Conditional Access policy
 
-In de vorige sectie hebt u geleerd hoe u een gesimuleerde aanmelding evalueren. Naast een simulatie, moet u ook testen van uw beleid voor voorwaardelijke toegang om ervoor te zorgen dat deze naar verwachting werkt.
+In the previous section, you have learned how to evaluate a simulated sign-in. In addition to a simulation, you should also test your Conditional Access policy to ensure that it works as expected.
 
-Als u wilt testen van uw beleid, willen aanmelden bij uw [Azure-portal](https://portal.azure.com) met behulp van uw **Isabella Simonsen** test-account. U ziet een dialoogvenster waarin u moet de gebruiksvoorwaarden accepteren.
+To test your policy, try to sign-in to your [Azure portal](https://portal.azure.com) using your **Isabella Simonsen** test account. You should see a dialog that requires you to accept your terms of use.
 
 ![Gebruiksvoorwaarden](./media/require-tou/57.png)
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u niet meer nodig hebt, verwijdert u de testgebruiker en het beleid voor voorwaardelijke toegang:
+When no longer needed, delete the test user and the Conditional Access policy:
 
-- Als u niet hoe u een Azure AD-gebruiker verwijdert weet, Zie [gebruikers verwijderen uit Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
-- Als u wilt verwijderen van uw beleid, selecteert u uw beleid en klik vervolgens op **verwijderen** in de werkbalk Snelle toegang.
+- If you don't know how to delete an Azure AD user, see [Delete users from Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
+- To delete your policy, select your policy, and then click **Delete** in the quick access toolbar.
 
     ![Multi-Factor Authentication](./media/require-tou/33.png)
 
-- Als u wilt verwijderen van uw gebruiksvoorwaarden, selecteert u deze en klik vervolgens op **voorwaarden verwijderen** in de werkbalk bovenaan.
+- To delete your terms of use, select it, and then click **Delete terms** in the toolbar on top.
 
     ![Multi-Factor Authentication](./media/require-tou/29.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [MFA vereisen voor specifieke apps](app-based-mfa.md)
-> [toegang blokkeren als er een risico voor de sessie wordt gedetecteerd](app-sign-in-risk.md)
+> [Require MFA for specific apps](app-based-mfa.md)
+> [Block access when a session risk is detected](app-sign-in-risk.md)

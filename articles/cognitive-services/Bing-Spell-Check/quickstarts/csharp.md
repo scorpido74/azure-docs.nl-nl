@@ -1,5 +1,5 @@
 ---
-title: 'Snelstartgids: Controleer de spelling met de Bing Spellingcontrole REST API enC#'
+title: 'Quickstart: Check spelling with the REST API and C# - Bing Spell Check'
 titleSuffix: Azure Cognitive Services
 description: Aan de slag met de Bing Spellingcontrole-REST API om spelling en grammatica te controleren.
 services: cognitive-services
@@ -10,31 +10,31 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 04/11/2019
 ms.author: aahi
-ms.openlocfilehash: 93b5c395a0d121305c092229d862bf9ecaa4789c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: e51c1220e120d157ea4a413b95a7beb20c950518
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936064"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74378910"
 ---
-# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Snelstartgids: Controleer de spelling met de Bing Spellingcontrole REST API enC#
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Quickstart: Check spelling with the Bing Spell Check REST API and C#
 
 Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole REST API te maken. Deze eenvoudige C#-toepassing verzendt een aanvraag naar de API en retourneert een lijst met voorgestelde correcties. Hoewel deze toepassing in C# is geschreven, is de API een RESTful-webservice die compatibel is met vrijwel elke programmeertaal. De broncode voor deze toepassing is beschikbaar [op GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs).
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een versie van [Visual Studio 2017 of hoger](https://www.visualstudio.com/downloads/).
-* `Newtonsoft.Json` installeren als een NuGet-pakket in Visual Studio:
-    1. Klik in **Solution Explorer**met de rechter muisknop op het oplossings bestand.
-    1. Selecteer **NuGet-pakketten beheren voor oplossing**.
-    1. Zoek naar `Newtonsoft.Json` en installeer het pakket.
+* Any edition of [Visual Studio 2017 or later](https://www.visualstudio.com/downloads/).
+* To install `Newtonsoft.Json` as a NuGet package in Visual studio:
+    1. In **Solution Explorer**, right-click the Solution file.
+    1. Select **Manage NuGet Packages for Solution**.
+    1. Search for `Newtonsoft.Json` and install the package.
 * Als u Linux/MacOS gebruikt, kan deze toepassing worden uitgevoerd met behulp van [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
 ## <a name="create-and-initialize-a-project"></a>Een project maken en initialiseren
 
-1. Maak in Visual Studio een nieuwe console oplossing met de naam `SpellCheckSample`. Voeg de volgende naamruimten in het hoofdcodebestand in.
+1. Create a new console solution named `SpellCheckSample` in Visual Studio. Voeg de volgende naamruimten in het hoofdcodebestand in.
     
     ```csharp
     using System;
@@ -62,7 +62,7 @@ Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole RE
     }
     ```
 
-3. Doe hetzelfde voor uw zoekparameters. Voeg uw markt code toe na `mkt=`. De markt code is het land van waaruit u de aanvraag maakt. Voeg ook de modus voor spelling controle toe na `&mode=`. De modus is `proof` (de meeste spelling-en grammatica fouten worden onderschept) of `spell` (de meeste spelling wordt niet zo veel grammaticale fouten onderschept).
+3. Doe hetzelfde voor uw zoekparameters. Append your market code after `mkt=`. The market code is the country you make the request from. Also, append your spell-check mode after `&mode=`. Mode is either `proof` (catches most spelling/grammar errors) or `spell` (catches most spelling but not as many grammar errors).
     
     ```csharp
     static string params_ = "mkt=en-US&mode=proof";
@@ -83,7 +83,7 @@ Gebruik deze snelstartgids om uw eerste aanroep naar de Bing Spellingcontrole RE
     }
     ```
 
-2. Maak de URI voor uw aanvraag door de host, het pad en de para meters toe te voegen.
+2. Create the URI for your request by appending your host, path, and parameters.
     
     ```csharp
     string uri = host + path + params_;

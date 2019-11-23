@@ -1,21 +1,21 @@
 ---
-title: 'Zelfstudie: ETL-bewerkingen (extraheren, transformeren, laden) uitvoeren met Apache Hive in Azure HDInsight'
+title: 'Tutorial: Extract, transform, and load data by using Azure HDInsight'
 description: In deze zelfstudie leert u hoe u gegevens uit een set met onbewerkte CSV-gegevens extraheert, de gegevens met Apache Hive in Azure HDInsight transformeert en de getransformeerde gegevens ten slotte laadt in Azure SQL Database met behulp van Sqoop.
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: f58785b17a1e6236636744c32dac07a6c9ed138d
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: c9ed675dc970b093f6407d15b3db2ac2668c626b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992258"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327562"
 ---
-# <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>Zelfstudie: Gegevens extraheren, transformeren en laden met Apache Hive in Azure HDInsight
+# <a name="tutorial-extract-transform-and-load-data-by-using-azure-hdinsight"></a>Tutorial: Extract, transform, and load data by using Azure HDInsight
 
 In deze zelfstudie voert u een ETL-bewerking uit: gegevens extraheren, transformeren en laden. U neemt een CSV-bestand met onbewerkte gegevens, importeert deze in een Azure HDInsight-cluster, transformeert deze met Apache Hive en laadt de gegevens in een Azure SQL-database met Apache Sqoop.
 
@@ -36,13 +36,13 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 * **Een Hadoop-cluster op basis van Linux in HDInsight**
 
-    Zie [Quickstart: Aan de slag met Apache Hadoop en Apache Hive in Azure HDInsight met behulp van de Azure-portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
+    See [Quickstart: Get started with Apache Hadoop and Apache Hive in Azure HDInsight using the Azure portal](https://docs.microsoft.com/azure/hdinsight/hadoop/apache-hadoop-linux-create-cluster-get-started-portal).
 
-* **Azure SQL Database**: U gebruikt een Azure SQL-database als doelgegevensopslag. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](../../sql-database/sql-database-get-started.md).
+* **Azure SQL Database**: You use an Azure SQL database as a destination data store. Als u geen SQL-database hebt, raadpleegt u [Een Azure SQL-database maken in Azure Portal](../../sql-database/sql-database-get-started.md).
 
-* **Azure CLI**: Als u de Azure CLI nog niet hebt geïnstalleerd, raadpleegt u [Azure CLI installeren](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* **Azure CLI**: If you haven't installed the Azure CLI, see [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-* **Een SSH-client (Secure Shell)** : Zie voor meer informatie [Verbinding maken met HDInsight (Hadoop) via SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
+* **A Secure Shell (SSH) client**: For more information, see [Connect to HDInsight (Hadoop) by using SSH](../../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="download-the-flight-data"></a>De vluchtgegevens downloaden
 
@@ -92,13 +92,13 @@ In deze sectie gaat u gegevens uploaden in uw HDInsight-cluster en vervolgens di
 
    Met deze opdracht wordt een **CSV**-bestand uitgepakt.
 
-4. Gebruik de volgende opdracht om de Data Lake Storage Gen2-container te maken.
+4. Use the following command to create the Data Lake Storage Gen2 container.
 
    ```bash
    hadoop fs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<container-name>@<storage-account-name>.dfs.core.windows.net/
    ```
 
-   Vervang de `<container-name>` tijdelijke aanduiding door de naam die u wilt toewijzen aan de container.
+   Replace the `<container-name>` placeholder with the name that you want to give your container.
 
    Vervang de tijdelijke plaatsaanduiding `<storage-account-name>` door de naam van uw opslagaccount.
 
@@ -116,7 +116,7 @@ In deze sectie gaat u gegevens uploaden in uw HDInsight-cluster en vervolgens di
 
    Gebruik aanhalingstekens rond de bestandsnaam als de bestandsnaam spaties of speciale tekens bevat.
 
-## <a name="transform-the-data"></a>De gegevens te transformeren
+## <a name="transform-the-data"></a>De gegevens transformeren
 
 In deze sectie gebruikt u Beeline om een Apache Hive-taak uit te voeren.
 
@@ -128,7 +128,7 @@ Als onderdeel van de Apache Hive-taak, importeert u de gegevens uit het CSV-best
    nano flightdelays.hql
    ```
 
-2. Wijzig de tekst `<container-name>` en `<storage-account-name>` Vervang de tijdelijke aanduidingen door de naam van de container en het opslag account. Kopieer en plak de tekst in de nano-console, door de SHIFT-toets ingedrukt te houden en op de rechtermuisknop te klikken.
+2. Modify the following text by replace the `<container-name>` and `<storage-account-name>` placeholders with your container and storage account name. Kopieer en plak de tekst in de nano-console, door de SHIFT-toets ingedrukt te houden en op de rechtermuisknop te klikken.
 
     ```hiveql
     DROP TABLE delays_raw;
@@ -234,7 +234,7 @@ Voor deze bewerking hebt u de servernaam van uw SQL-database nodig. Voer deze st
 
 4. Filter op de naam van de database die u wilt gebruiken. De naam van de server wordt vermeld in de kolom **Server**.
 
-    ![Gegevens van Azure SQL-server opvragen](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Gegevens van Azure SQL-server opvragen")
+    ![Get Azure SQL server details](./media/data-lake-storage-tutorial-extract-transform-load-hive/get-azure-sql-server-details.png "Get Azure SQL server details")
 
     Er zijn veel manieren om verbinding te maken met SQL Database en een tabel te maken. In de volgende stappen wordt [FreeTDS](https://www.freetds.org/) gebruikt vanuit het HDInsight-cluster.
 

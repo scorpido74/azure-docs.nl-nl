@@ -1,100 +1,100 @@
 ---
-title: Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
+title: Bedrijfscontinuïteit en herstel na noodgevallen
 services: azure-dev-spaces
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
 ms.topic: conceptual
 description: Snelle Kubernetes-ontwikkeling met containers en microservices in Azure
-keywords: 'Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S '
+keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s '
 manager: gwallace
-ms.openlocfilehash: f2c2767d23a99644ee4ecb4e1040162c58a72b1a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+ms.openlocfilehash: c7594059a5627c3967aba52144ed3dc99cb510e3
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280093"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327299"
 ---
-# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Bedrijfs continuïteit en herstel na nood gevallen in azure dev Spaces
+# <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Business continuity and disaster recovery in Azure Dev Spaces
 
-## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Raadpleeg de richt lijnen voor herstel na nood gevallen voor Azure Kubernetes service (AKS)
+## <a name="review-disaster-recovery-guidance-for-azure-kubernetes-service-aks"></a>Review disaster recovery guidance for Azure Kubernetes Service (AKS)
 
-Azure dev Spaces is een functie van Azure Kubernetes service (AKS). U moet rekening houden met richt lijnen voor herstel na nood gevallen in AKS en u kunt overwegen of ze van toepassing zijn op de AKS-clusters die u gebruikt voor dev-ruimten. Raadpleeg [Aanbevolen procedures voor bedrijfs continuïteit en herstel na nood gevallen in azure Kubernetes service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region) voor meer informatie.
+Azure Dev Spaces is a feature of Azure Kubernetes Service (AKS). You should be aware of guidelines for disaster recovery in AKS and consider whether they apply to the AKS clusters that you use for Dev Spaces. For more information, please reference [Best practices for business continuity and disaster recovery in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region)
 
-## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Ontwikkel ruimten in AKS-clusters in verschillende regio's inschakelen
+## <a name="enable-dev-spaces-on-aks-clusters-in-different-regions"></a>Enable Dev Spaces on AKS clusters in different regions
 
-Door ontwikkel ruimten in AKS-clusters in verschillende regio's in te scha kelen, kunt u direct na een storing in de Azure-regio het gebruik van dev Spaces hervatten.
+Enabling Dev Spaces on AKS clusters in different regions allows you to resume using Dev Spaces immediately after an Azure region failure.
 
-Voor algemene informatie over implementaties met meerdere regio's van AKS raadpleegt u [implementatie van meerdere regio's plannen](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
+For general information about multi-region deployments of AKS, see [Plan for multi-region deployment](https://docs.microsoft.com/azure/aks/operator-best-practices-multi-region#plan-for-multiregion-deployment)
 
-Zie [een Kubernetes-cluster maken met Azure Cloud shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell) voor meer informatie over het implementeren van een AKS-cluster dat compatibel is met Azure dev Spaces.
+For information about deploying an AKS cluster that is compatible with Azure Dev Spaces, see [Create a Kubernetes cluster using Azure Cloud Shell](https://docs.microsoft.com/azure/dev-spaces/how-to/create-cluster-cloud-shell)
 
-### <a name="enable-dev-spaces-via-the-azure-portal"></a>Ontwikkel ruimten inschakelen via de Azure Portal
+### <a name="enable-dev-spaces-via-the-azure-portal"></a>Enable Dev Spaces via the Azure portal
 
-Klik op het navigatie-item voor de **dev Space** onder de eigenschappen van elk cluster in de Azure Portal. Kies vervolgens de optie voor het inschakelen van dev spaties.
+Click the **Dev Spaces** navigation item under the properties of each cluster in the Azure portal. Then choose the option to enable Dev Spaces.
 
-![Ontwikkel ruimten inschakelen via Azure Portal](../media/common/enable-dev-spaces.jpg)
+![Enabling Dev Spaces via Azure portal](../media/common/enable-dev-spaces.jpg)
 
-Herhaal dit proces voor elk cluster.
+Repeat this process for each cluster.
 
-### <a name="enable-dev-spaces-via-the-azure-cli"></a>Ontwikkel ruimten inschakelen via de Azure CLI
+### <a name="enable-dev-spaces-via-the-azure-cli"></a>Enable Dev Spaces via the Azure CLI
 
-U kunt ook dev Spaces inschakelen op de opdracht regel:
+You can also enable Dev Spaces at the command line:
 
 ```cmd
 az aks use-dev-spaces -g <resource group name> -n <cluster name>
 ```
 
-## <a name="deploy-your-teams-baseline-to-each-cluster"></a>De basis lijn van uw team implementeren voor elk cluster
+## <a name="deploy-your-teams-baseline-to-each-cluster"></a>Deploy your team's baseline to each cluster
 
-Wanneer u met dev Spaces werkt, implementeert u doorgaans de volledige toepassing naar een bovenliggende ontwikkel ruimte op uw Kubernetes-cluster. Standaard wordt de `default` ruimte gebruikt. De eerste implementatie omvat alle services en de externe resources waarvan deze services afhankelijk zijn, zoals data bases of wacht rijen. Dit staat bekend als de *basis lijn*. Zodra u een basis lijn in de bovenliggende ontwikkel ruimte hebt ingesteld, kunt u de afzonderlijke services in onderliggende ontwikkel ruimten opsporen en fout opsporing uitvoeren.
+When working with Dev Spaces, you typically deploy the entire application to a parent dev space on your Kubernetes cluster. By default, the `default` space is used. The initial deployment includes all services as well as the external resources that those services depend on, such as databases or queues. This is known as the *baseline*. Once you set up a baseline in the parent dev space, you iterate on and debug individual services inside child dev spaces.
 
-U moet de meest recente versies van uw Baseline set services implementeren voor clusters in meerdere regio's. Als u de basislijn Services op deze manier bijwerkt, kunt u ontwikkel ruimten blijven gebruiken als er sprake is van een Azure-regio fout. Als u bijvoorbeeld de basis lijn via een CI/CD-pijp lijn implementeert, wijzigt u de pijp lijn zodanig dat deze wordt geïmplementeerd in meerdere clusters in verschillende regio's.
+You should deploy the most recent versions of your baseline set of services to clusters in multiple regions. Updating your baseline services in this manner ensures that you can continue to use Dev Spaces if there is an Azure region failure. For example, if you deploy your baseline via a CI/CD pipeline, modify the pipeline so that it deploys to multiple clusters in different regions.
 
-## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Selecteer het juiste AKS-cluster om te gebruiken voor dev-ruimten
+## <a name="select-the-correct-aks-cluster-to-use-for-dev-spaces"></a>Select the correct AKS cluster to use for Dev Spaces
 
-Zodra u een back-upcluster hebt geconfigureerd waarop de basis lijn van uw team wordt uitgevoerd, kunt u op elk gewenst moment snel overschakelen naar het back-upcluster. Vervolgens kunt u de afzonderlijke services die u aan het werk bent, opnieuw uitvoeren in dev Spaces.
+Once you've properly configured a backup cluster running your team's baseline, you can quickly switch over to the backup cluster at any time. Then you can rerun the individual services that you are working on in Dev Spaces.
 
-Selecteer een ander cluster met de volgende CLI-opdracht:
+Select a different cluster with the following CLI command:
 
 ```cmd
 az aks use-dev-spaces -g <new resource group name> -n <new cluster name>
 ```
 
-U kunt de beschik bare ontwikkel ruimten op het nieuwe cluster weer geven met de volgende opdracht:
+You can list the available dev spaces on the new cluster with the following command:
 
 ```cmd
 azds space list
 ```
 
-U kunt een nieuwe ontwikkel ruimte maken om in te werken of een bestaande dev-ruimte selecteren met de volgende opdracht:
+You can create a new dev space to work in, or select an existing dev space, with the following command:
 
 ```cmd
 azds space select -n <space name>
 ```
 
-Na het uitvoeren van deze opdrachten worden de geselecteerde cluster-en dev-ruimte gebruikt voor volgende CLI-bewerkingen en voor het opsporen van fouten in projecten met de Visual Studio code Extension voor Azure dev Spaces.
+After running these commands, the selected cluster and dev space will be used for subsequent CLI operations, and for debugging projects using the Visual Studio Code extension for Azure Dev Spaces.
 
-Als u Visual Studio gebruikt, kunt u via de volgende stappen overschakelen naar het cluster dat door een bestaand project wordt gebruikt:
+If you are using Visual Studio, you can switch the cluster used by an existing project through the following steps:
 
-1. Open uw project in Visual Studio.
-1. Klik met de rechter muisknop op de project naam in Solution Explorer en klik op **Eigenschappen**
-1. Klik in het linkerdeel venster op **fouten opsporen**
-1. Klik op de pagina eigenschappen van fout opsporing op de vervolg keuzelijst **profiel** en kies **Azure dev Spaces**.
-1. Klik op de knop **wijzigen** .
-1. Selecteer in het dialoog venster dat wordt weer gegeven het AKS-cluster dat u wilt gebruiken. Kies indien gewenst een andere ontwikkel ruimte om in te werken of maak een nieuwe ontwikkel ruimte door de gewenste optie te selecteren in de vervolg keuzelijst **ruimte** .
+1. Open your project in Visual Studio.
+1. Right click the project name in Solution Explorer and click **Properties**
+1. In the left pane, click **Debug**
+1. On the Debug properties page, click the **Profile** drop-down list and choose **Azure Dev Spaces**.
+1. Click the **Change** button.
+1. In the dialog that appears, select the AKS cluster that you wish to use. If desired, choose a different dev space to work in, or create a new dev space, by selecting the appropriate option from the **Space** drop-down list.
 
-Wanneer u het juiste cluster en de benodigde ruimte hebt geselecteerd, kunt u op F5 drukken om de service uit te voeren in dev Spaces.
+Once you have selected the correct cluster and space, you can press F5 to run the service in Dev Spaces.
 
-Herhaal deze stappen voor andere projecten die zijn geconfigureerd voor gebruik van het oorspronkelijke cluster.
+Repeat these steps for any other projects configured to use the original cluster.
 
-## <a name="access-a-service-on-a-backup-cluster"></a>Toegang tot een service op een back-upcluster
+## <a name="access-a-service-on-a-backup-cluster"></a>Access a service on a backup cluster
 
-Als u uw service hebt geconfigureerd voor het gebruik van een open bare DNS-naam, heeft de service een andere URL als u deze uitvoert op een back-upcluster. Open bare DNS-namen zijn altijd in de indeling `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Als u overschakelt naar een ander cluster, worden de cluster-GUID en de regio mogelijk gewijzigd.
+If you have configured your service to use a public DNS name, then the service will have a different URL if you run it on a backup cluster. Public DNS names are always in the format `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. If you switch to a different cluster, the cluster GUID and possibly the region will change.
 
-In dev ruimten wordt altijd de juiste URL voor de service weer gegeven wanneer `azds up`wordt uitgevoerd, of in het uitvoer venster in Visual Studio onder **Azure dev Spaces**.
+Dev Spaces always shows the correct URL for the service when running `azds up`, or in the Output window in Visual Studio under **Azure Dev Spaces**.
 
-U kunt de URL ook vinden door de `azds list-uris` opdracht uit te voeren:
+You can also find the URL by running the `azds list-uris` command:
 ```
 $ azds list-uris
 Uri                                                     Status
@@ -102,4 +102,4 @@ Uri                                                     Status
 http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
-Gebruik deze URL voor toegang tot de service.
+Use this URL when accessing the service.

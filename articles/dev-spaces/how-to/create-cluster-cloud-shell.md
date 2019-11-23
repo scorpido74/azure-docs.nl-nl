@@ -1,24 +1,24 @@
 ---
-title: Een Kubernetes-cluster maken dat is ingeschakeld voor Azure-ontwikkel ruimten met behulp van Azure Cloud Shell
+title: Create a Kubernetes cluster with Azure Dev Spaces enabled - Azure Cloud Shell
 services: azure-dev-spaces
 ms.date: 10/04/2018
 ms.topic: conceptual
-description: Meer informatie over hoe u snel een Kubernetes-cluster kunt maken dat rechtstreeks vanuit uw browser kan worden geactiveerd zonder dat u iets hoeft te installeren.
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, helm, service-net, service mesh routing, kubectl, K8S
-ms.openlocfilehash: dbdc9226e417b3142284386ae3586819cda802d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
-ms.translationtype: HT
+description: Learn how to quickly create a Kubernetes cluster enabled for Azure Dev Spaces directly from your browser without installing anything.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
+ms.openlocfilehash: ac825caa7aacbc6ac21dd1f9fe7acbb9cf12e900
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280103"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325760"
 ---
-# <a name="create-a-kubernetes-cluster-using-azure-cloud-shell"></a>Een Kubernetes-cluster maken met behulp van Azure Cloud Shell
+# <a name="create-a-kubernetes-cluster-with-azure-dev-spaces-enabled-with-azure-cloud-shell"></a>Create a Kubernetes cluster with Azure Dev Spaces enabled with Azure Cloud Shell
 
-U kunt [Azure Cloud shell](/azure/cloud-shell) gebruiken om een Azure Kubernetes-service cluster te maken met behulp van de knop **try it** van deze pagina. Als u niet bent aangemeld, volgt u de aanwijzingen om u aan te melden met een Azure-account. vervolgens typt u de opdrachten op de Azure Cloud Shell prompt wanneer deze wordt weer gegeven.
+You can use [Azure Cloud Shell](/azure/cloud-shell) to create an Azure Kubernetes Service cluster by using the **Try It** button from this page. If you aren't signed in, follow the prompts to sign in with an Azure account, then type the commands at the Azure Cloud Shell prompt when it appears.
 
 ## <a name="create-the-cluster"></a>Het cluster maken
 
-Maak eerst de resource groep in een [regio die Azure-ontwikkel ruimten ondersteunt][supported-regions].
+First, create the resource group in a [region that supports Azure Dev Spaces][supported-regions].
 
 ```azurecli-interactive
 az group create --name MyResourceGroup --location <region>
@@ -30,14 +30,14 @@ Maak een Kubernetes-cluster met de volgende opdracht:
 az aks create -g MyResourceGroup -n MyAKS --location <region> --disable-rbac --generate-ssh-keys
 ```
 
-Het duurt een paar minuten om het cluster te maken.  Als het gereed is wordt de uitvoer weergegeven in de JSON-indeling. Zoek naar `provisioningState` en controleer of er `Succeeded` staat.
+Het duurt een paar minuten om het cluster te maken.  When complete, the output is shown in the JSON format. Look for `provisioningState` and verify it's `Succeeded`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [Azure dev Spaces](/azure/dev-spaces/) voor koppelingen naar volledige zelf studies.
+See [Azure Dev Spaces](/azure/dev-spaces/) for links to full tutorials.
 
 > [!IMPORTANT]
-> Veel van de Azure dev Spaces Quick starts en zelf studies gebruiken de Azure dev Spaces CLI om bewerkingen uit te voeren. U kunt de CLI voor Azure dev Spaces niet installeren in de Azure Cloud Shell.
+> Many of the Azure Dev Spaces quickstarts and tutorials use the Azure Dev Spaces CLI to perform operations. You cannot install the Azure Dev Spaces CLI in the Azure Cloud Shell.
 
 
 [supported-regions]: ../about.md#supported-regions-and-configurations

@@ -1,83 +1,83 @@
 ---
-title: Verificatie op basis van certificaten op Android - Azure Active Directory
-description: Meer informatie over de ondersteunde scenario's en de vereisten voor certificaten gebaseerde verificatie configureren in oplossingen met Android-apparaten
+title: Android certificate-based authentication - Azure Active Directory
+description: Learn about the supported scenarios and the requirements for configuring certificate-based authentication in solutions with Android devices
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b55b439f61c76d6d0524c1f01ba5fef745187d04
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: effa03f042b44890fccd474128e75bd1c0f782a3
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60416167"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74381991"
 ---
-# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory gebaseerde verificatie op Android
+# <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Azure Active Directory certificate-based authentication on Android
 
-Android-apparaten kunnen u certificaten gebaseerde verificatie gebruiken om te verifiëren bij Azure Active Directory met een clientcertificaat op hun apparaat bij het verbinden met:
+Android devices can use certificate-based authentication (CBA) to authenticate to Azure Active Directory using a client certificate on their device when connecting to:
 
-* Mobiele Office-toepassingen zoals Microsoft Outlook en Microsoft Word
+* Office mobile applications such as Microsoft Outlook and Microsoft Word
 * Exchange ActiveSync (EAS) clients
 
-Configuratie van deze functie elimineert de noodzaak om een combinatie van gebruikersnaam en wachtwoord bepaalde e-mail en Microsoft Office-toepassingen in uw mobiele apparaat.
+Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
 
-In dit onderwerp vindt u met de vereisten en de ondersteunde scenario's voor het configureren van deze verificatie op een apparaat iOS(Android) voor gebruikers van tenants in Office 365 Enterprise, bedrijven, onderwijs, US Government, China en Duitsland-abonnementen.
+This topic provides you with the requirements and the supported scenarios for configuring CBA on an iOS(Android) device for users of tenants in Office 365 Enterprise, Business, Education, US Government, China, and Germany plans.
 
-Deze functie is beschikbaar in preview in Office 365 US Government Defense en federale plannen.
+This feature is available in preview in Office 365 US Government Defense and Federal plans.
 
-## <a name="microsoft-mobile-applications-support"></a>Ondersteuning voor mobiele toepassingen van Microsoft
+## <a name="microsoft-mobile-applications-support"></a>Microsoft mobile applications support
 
 | Apps | Ondersteuning |
 | --- | --- |
-| Azure Information Protection-app |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Intune-bedrijfsportal |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Microsoft Teams |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| OneNote |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| OneDrive |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Outlook |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Power BI |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Skype voor Bedrijven |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Word / Excel / PowerPoint |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
-| Yammer |![Vinkje, wat inhoudt ondersteuning voor deze toepassing][1] |
+| Azure Information Protection app |![Check mark signifying support for this application][1] |
+| Intune Company Portal |![Check mark signifying support for this application][1] |
+| Microsoft Teams |![Check mark signifying support for this application][1] |
+| OneNote |![Check mark signifying support for this application][1] |
+| OneDrive |![Check mark signifying support for this application][1] |
+| Outlook |![Check mark signifying support for this application][1] |
+| Power BI |![Check mark signifying support for this application][1] |
+| Skype voor Bedrijven |![Check mark signifying support for this application][1] |
+| Word / Excel / PowerPoint |![Check mark signifying support for this application][1] |
+| Yammer |![Check mark signifying support for this application][1] |
 
-### <a name="implementation-requirements"></a>Vereisten voor implementatie
+### <a name="implementation-requirements"></a>Implementation requirements
 
-De versie van het besturingssysteem van het apparaat moet Android 5.0 (Lollipop) en hoger.
+The device OS version must be Android 5.0 (Lollipop) and above.
 
-Een federation-server moet worden geconfigureerd.
+A federation server must be configured.
 
-Voor Azure Active Directory om een clientcertificaat intrekken, moet de AD FS-token hebben de volgende claims:
+For Azure Active Directory to revoke a client certificate, the ADFS token must have the following claims:
 
-* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (Het serienummer van het clientcertificaat)
-* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (De tekenreeks voor de verlener van het clientcertificaat)
+* `http://schemas.microsoft.com/ws/2008/06/identity/claims/<serialnumber>` (The serial number of the client certificate)
+* `http://schemas.microsoft.com/2012/12/certificatecontext/field/<issuer>` (The string for the issuer of the client certificate)
 
-Deze claims voor het vernieuwingstoken dat door Azure Active Directory toegevoegd als deze beschikbaar in de AD FS-token (of andere SAML-token zijn). Wanneer het vernieuwingstoken dat worden gevalideerd moet, wordt deze informatie wordt gebruikt om te controleren of de certificaatintrekkingslijst.
+Azure Active Directory adds these claims to the refresh token if they are available in the ADFS token (or any other SAML token). When the refresh token needs to be validated, this information is used to check the revocation.
 
-Als een best practice, moet u van uw organisatie AD FS-foutpagina's bijwerken met de volgende informatie:
+As a best practice, you should update your organization's ADFS error pages with the following information:
 
-* De vereiste voor het installeren van de Microsoft Authenticator voor Android.
-* Instructies voor het ophalen van het certificaat van een gebruiker.
+* The requirement for installing the Microsoft Authenticator on Android.
+* Instructions on how to get a user certificate.
 
-Zie voor meer informatie, [aanpassen van de AD FS Sign-in's](https://technet.microsoft.com/library/dn280950.aspx).
+For more information, see [Customizing the AD FS Sign-in Pages](https://technet.microsoft.com/library/dn280950.aspx).
 
-Sommige Office-apps (met moderne verificatie ingeschakeld) verzenden '*prompt = aanmelding*' naar Azure AD in de aanvraag. Standaard Azure AD wordt omgezet '*prompt = aanmelding*'in de aanvraag voor AD FS als'*wauth = usernamepassworduri*' (AD FS wilt U/P Auth vraagt) en '*wfresh = 0*' (AD FS om te vragen negeren van SSO-staat en voer een nieuwe verificatie). Als u verificatie inschakelen op basis van certificaten voor deze apps wilt, moet u het standaardgedrag van de Azure AD te wijzigen. Stel de '*PromptLoginBehavior*'in de instellingen van uw federatief domein naar'*uitgeschakelde*'.
-U kunt de [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet deze taak uit te voeren:
+Some Office apps (with modern authentication enabled) send ‘*prompt=login*’ to Azure AD in their request. By default, Azure AD translates ‘*prompt=login*’ in the request to ADFS as ‘*wauth=usernamepassworduri*’ (asks ADFS to do U/P Auth) and ‘*wfresh=0*’ (asks ADFS to ignore SSO state and do a fresh authentication). If you want to enable certificate-based authentication for these apps, you need to modify the default Azure AD behavior. Set the ‘*PromptLoginBehavior*’ in your federated domain settings to ‘*Disabled*‘.
+You can use the [MSOLDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0) cmdlet to perform this task:
 
 `Set-MSOLDomainFederationSettings -domainname <domain> -PromptLoginBehavior Disabled`
 
-## <a name="exchange-activesync-clients-support"></a>Ondersteuning voor Exchange ActiveSync-clients
+## <a name="exchange-activesync-clients-support"></a>Exchange ActiveSync clients support
 
-Bepaalde Exchange ActiveSync-toepassingen met Android 5.0 (Lollipop) of later worden ondersteund. Om te bepalen als deze functie biedt ondersteuning voor uw e-mailtoepassing, neem contact op met de ontwikkelaar van uw toepassing.
+Certain Exchange ActiveSync applications on Android 5.0 (Lollipop) or later are supported. To determine if your email application does support this feature, contact your application developer.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Als u configureren van verificatie op basis van het certificaat in uw omgeving wilt, Zie [aan de slag met verificatie op basis van certificaten op Android](active-directory-certificate-based-authentication-get-started.md) voor instructies.
+If you want to configure certificate-based authentication in your environment, see [Get started with certificate-based authentication on Android](active-directory-certificate-based-authentication-get-started.md) for instructions.
 
 <!--Image references-->
 [1]: ./media/active-directory-certificate-based-authentication-android/ic195031.png

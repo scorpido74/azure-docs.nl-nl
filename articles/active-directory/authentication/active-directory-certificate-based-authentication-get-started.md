@@ -1,69 +1,69 @@
 ---
-title: Aan de slag met certificaten gebaseerde verificatie - Azure Active Directory
-description: Informatie over het configureren van verificatie op basis van het certificaat in uw omgeving
+title: Certificate-based authentication - Azure Active Directory
+description: Learn how to configure certificate-based authentication in your environment
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 11/21/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f57d4615fc80df6c5df9ba295288ad71ae12fa23
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8bfe306f089a26258ba9c7a07c54925f4540b44b
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60359072"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74382025"
 ---
-# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Aan de slag met verificatie op basis van certificaten in Azure Active Directory
+# <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Get started with certificate-based authentication in Azure Active Directory
 
-Verificatie op basis van certificaten kunt u moeten worden geverifieerd door Azure Active Directory met een clientcertificaat op een Windows-, Android- of iOS-apparaat verbinding te maken met uw Exchange online-account aan:
+Certificate-based authentication enables you to be authenticated by Azure Active Directory with a client certificate on a Windows, Android, or iOS device when connecting your Exchange online account to:
 
-- Mobiele toepassingen van Microsoft, zoals Microsoft Outlook en Microsoft Word
+- Microsoft mobile applications such as Microsoft Outlook and Microsoft Word
 - Exchange ActiveSync (EAS) clients
 
-Configuratie van deze functie elimineert de noodzaak om een combinatie van gebruikersnaam en wachtwoord bepaalde e-mail en Microsoft Office-toepassingen in uw mobiele apparaat.
+Configuring this feature eliminates the need to enter a username and password combination into certain mail and Microsoft Office applications on your mobile device.
 
-In dit onderwerp:
+This topic:
 
-- Biedt u de stappen voor het configureren en gebruikmaken van verificatie op basis van certificaten voor gebruikers van tenants in Office 365 Enterprise, Business, onderwijs en US Government-abonnementen. Deze functie is beschikbaar in preview in Office 365 China, US Government Defense en Amerikaanse overheid federale overheid plannen.
-- Wordt ervan uitgegaan dat u al een [openbare-sleutelinfrastructuur (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) en [AD FS](../hybrid/how-to-connect-fed-whatis.md) geconfigureerd.
+- Provides you with the steps to configure and utilize certificate-based authentication for users of tenants in Office 365 Enterprise, Business, Education, and US Government plans. This feature is available in preview in Office 365 China, US Government Defense, and US Government Federal plans.
+- Assumes that you already have a [public key infrastructure (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) and [AD FS](../hybrid/how-to-connect-fed-whatis.md) configured.
 
 ## <a name="requirements"></a>Vereisten
 
-Als u wilt configureren op certificaten gebaseerde verificatie, moeten de volgende instructies waar zijn:
+To configure certificate-based authentication, the following statements must be true:
 
-- Certificaten gebaseerde verificatie wordt alleen ondersteund voor federatieve omgevingen voor browser- of systeemeigen clients met moderne verificatie (ADAL). De enige uitzondering hierop is Exchange Active Sync (EAS) voor Exchange Online (EXO), die kan worden gebruikt voor federatieve en beheerde accounts.
-- De basiscertificeringsinstantie en tussenliggende certificeringsinstanties moeten worden geconfigureerd in Azure Active Directory.
-- Elke CA moet een certificaatintrekkingslijst (CRL) die kan worden verwezen via de URL van een internetverbinding hebben.
-- U moet ten minste één certificeringsinstantie geconfigureerd in Azure Active Directory hebben. U vindt gerelateerde stappen in de [configureren van de certificeringsinstanties](#step-2-configure-the-certificate-authorities) sectie.
-- Voor Exchange ActiveSync-clients moet het clientcertificaat routeerbaar e-mailadres van de gebruiker in Exchange online in de Principal-naam of de waarde RFC822-naam van het veld alternatieve naam voor onderwerp. Azure Active Directory wordt de waarde RFC822 toegewezen aan het kenmerk Proxy-adres in de map.
-- Uw client-apparaat moet toegang hebben tot ten minste één certificeringsinstantie die certificaten uitgeeft.
-- Een clientcertificaat voor clientverificatie moet zijn uitgegeven aan de client.
+- Certificate-based authentication (CBA) is only supported for Federated environments for browser applications or native clients using modern authentication (ADAL). The one exception is Exchange Active Sync (EAS) for Exchange Online (EXO), which can be used for  federated and managed accounts.
+- The root certificate authority and any intermediate certificate authorities must be configured in Azure Active Directory.
+- Each certificate authority must have a certificate revocation list (CRL) that can be referenced via an internet-facing URL.
+- You must have at least one certificate authority configured in Azure Active Directory. You can find related steps in the [Configure the certificate authorities](#step-2-configure-the-certificate-authorities) section.
+- For Exchange ActiveSync clients, the client certificate must have the user’s routable email address in Exchange online in either the Principal Name or the RFC822 Name value of the Subject Alternative Name field. Azure Active Directory maps the RFC822 value to the Proxy Address attribute in the directory.
+- Your client device must have access to at least one certificate authority that issues client certificates.
+- A client certificate for client authentication must have been issued to your client.
 
-## <a name="step-1-select-your-device-platform"></a>Stap 1: Selecteer uw apparaatplatform
+## <a name="step-1-select-your-device-platform"></a>Step 1: Select your device platform
 
-U moet als eerste stap voor het apparaatplatform dat u geïnteresseerd bent, controleert u het volgende:
+As a first step, for the device platform you care about, you need to review the following:
 
-- Ondersteuning voor de mobiele Office-toepassingen
-- De specifieke implementatie-vereisten
+- The Office mobile applications support
+- The specific implementation requirements
 
-De gerelateerde gegevens bestaat voor de volgende apparaatplatformen:
+The related information exists for the following device platforms:
 
 - [Android](active-directory-certificate-based-authentication-android.md)
 - [iOS](active-directory-certificate-based-authentication-ios.md)
 
-## <a name="step-2-configure-the-certificate-authorities"></a>Stap 2: De certificeringsinstanties configureren
+## <a name="step-2-configure-the-certificate-authorities"></a>Step 2: Configure the certificate authorities
 
-Als u wilt configureren van uw certificaat uploaden instanties in Azure Active Directory, voor elke certificeringsinstantie, het volgende:
+To configure your certificate authorities in Azure Active Directory, for each certificate authority, upload the following:
 
-* Het openbare gedeelte van het certificaat in *.cer* indeling
-* De internetgerichte-URL's waarop de certificaatintrekkingslijsten (CRL's) zich bevinden
+* The public portion of the certificate, in *.cer* format
+* The internet-facing URLs where the Certificate Revocation Lists (CRLs) reside
 
-Het schema voor een certificeringsinstantie ziet er als volgt uit:
+The schema for a certificate authority looks as follows:
 
     class TrustedCAsForPasswordlessAuth
     {
@@ -87,30 +87,30 @@ Het schema voor een certificeringsinstantie ziet er als volgt uit:
         IntermediateAuthority = 1
     }
 
-Voor de configuratie, kunt u de [Azure Active Directory PowerShell versie 2](/powershell/azure/install-adv2?view=azureadps-2.0):
+For the configuration, you can use the [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0):
 
-1. Start Windows PowerShell met beheerdersbevoegdheden.
-2. Installeer de Azure AD-moduleversie [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) of hoger.
+1. Start Windows PowerShell with administrator privileges.
+2. Install the Azure AD module version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) or higher.
 
         Install-Module -Name AzureAD –RequiredVersion 2.0.0.33
 
-Als een eerste configuratiestap moet u een verbinding maken met uw tenant. Zodra een verbinding met uw tenant bestaat, kunt u bekijken, toevoegen, verwijderen en wijzigen van de vertrouwde certificeringsinstanties die zijn gedefinieerd in uw directory.
+As a first configuration step, you need to establish a connection with your tenant. As soon as a connection to your tenant exists, you can review, add, delete, and modify the trusted certificate authorities that are defined in your directory.
 
-### <a name="connect"></a>Verbinding maken
+### <a name="connect"></a>Connect
 
-Als u wilt een verbinding maken met uw tenant, gebruikt u de [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
+To establish a connection with your tenant, use the [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0) cmdlet:
 
     Connect-AzureAD
 
-### <a name="retrieve"></a>Ophalen
+### <a name="retrieve"></a>Retrieve
 
-Als u wilt ophalen van de vertrouwde certificeringsinstanties die zijn gedefinieerd in uw directory, gebruiken de [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet.
+To retrieve the trusted certificate authorities that are defined in your directory, use the [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet.
 
     Get-AzureADTrustedCertificateAuthority
 
 ### <a name="add"></a>Toevoegen
 
-Voor het maken van een vertrouwde certificeringsinstantie gebruikt de [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet en stel de **crlDistributionPoint** kenmerk voor een correcte waarde:
+To create a trusted certificate authority, use the [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet and set the **crlDistributionPoint** attribute to a correct value:
 
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
     $new_ca=New-Object -TypeName Microsoft.Open.AzureAD.Model.CertificateAuthorityInformation
@@ -121,89 +121,89 @@ Voor het maken van een vertrouwde certificeringsinstantie gebruikt de [New-Azure
 
 ### <a name="remove"></a>Verwijderen
 
-Als u wilt verwijderen van een vertrouwde certificeringsinstantie, gebruikt u de [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+To remove a trusted certificate authority, use the [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     Remove-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[2]
 
 ### <a name="modify"></a>Wijzigen
 
-Als u wilt wijzigen van een vertrouwde certificeringsinstantie, gebruikt u de [Set AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
+To modify a trusted certificate authority, use the [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0) cmdlet:
 
     $c=Get-AzureADTrustedCertificateAuthority
     $c[0].AuthorityType=1
     Set-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $c[0]
 
-## <a name="step-3-configure-revocation"></a>Stap 3: Intrekking configureren
+## <a name="step-3-configure-revocation"></a>Step 3: Configure revocation
 
-Als u wilt een clientcertificaat intrekt, Azure Active Directory worden opgehaald van de certificaatintrekkingslijst (CRL) via de URL's geüpload als onderdeel van de informatie over certificeringsinstantie en opgeslagen in het cachegeheugen. De laatste tijdstempel publiceren (**ingangsdatum** eigenschap) in de CRL wordt gebruikt om te controleren of de CRL is nog geldig. De CRL wordt periodiek verwezen om in te trekken van toegang tot de certificaten die deel van de lijst uitmaken.
+To revoke a client certificate, Azure Active Directory fetches the certificate revocation list (CRL) from the URLs uploaded as part of certificate authority information and caches it. The last publish timestamp (**Effective Date** property) in the CRL is used to ensure the CRL is still valid. The CRL is periodically referenced to revoke access to certificates that are a part of the list.
 
-Als een meer directe intrekken is vereist (bijvoorbeeld als een gebruiker verliest een apparaat), het Autorisatietoken van de gebruiker kan ongeldig worden gemaakt. Als u wilt het Autorisatietoken ongeldig te maken, stelt de **StsRefreshTokenValidFrom** veld voor deze bepaalde gebruiker met behulp van Windows PowerShell. U moet bijwerken de **StsRefreshTokenValidFrom** veld voor elke gebruiker die u wilt intrekken van toegang voor.
+If a more instant revocation is required (for example, if a user loses a device), the authorization token of the user can be invalidated. To invalidate the authorization token, set the **StsRefreshTokenValidFrom** field for this particular user using Windows PowerShell. You must update the **StsRefreshTokenValidFrom** field for each user you want to revoke access for.
 
-Om ervoor te zorgen dat de intrekking zich blijft voordoen, moet u instellen de **ingangsdatum** van de CRL naar een datum na de ingestelde waarde bij **StsRefreshTokenValidFrom** en zorg ervoor dat de betreffende certificaat bevindt zich in de CRL.
+To ensure that the revocation persists, you must set the **Effective Date** of the CRL to a date after the value set by **StsRefreshTokenValidFrom** and ensure the certificate in question is in the CRL.
 
-De volgende stappen beschrijven het proces voor het bijwerken en het Autorisatietoken ongeldig door in te stellen de **StsRefreshTokenValidFrom** veld.
+The following steps outline the process for updating and invalidating the authorization token by setting the **StsRefreshTokenValidFrom** field.
 
-**Het configureren van intrekken:**
+**To configure revocation:**
 
-1. Verbinding maken met Administrator-referenties voor de MSOL-service:
+1. Connect with admin credentials to the MSOL service:
 
         $msolcred = get-credential
         connect-msolservice -credential $msolcred
 
-2. De huidige StsRefreshTokensValidFrom-waarde voor een gebruiker ophalen:
+2. Retrieve the current StsRefreshTokensValidFrom value for a user:
 
         $user = Get-MsolUser -UserPrincipalName test@yourdomain.com`
         $user.StsRefreshTokensValidFrom
 
-3. Configureer een nieuwe StsRefreshTokensValidFrom-waarde voor de gebruiker gelijk is aan de huidige tijdstempel:
+3. Configure a new StsRefreshTokensValidFrom value for the user equal to the current timestamp:
 
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 
-De datum die u instelt moet in de toekomst worden. Als de datum niet in de toekomst wordt is de **StsRefreshTokensValidFrom** eigenschap niet is ingesteld. Als de datum in de toekomst **StsRefreshTokensValidFrom** is ingesteld op de huidige tijd (niet de datum die is aangegeven door de opdracht Set-MsolUser).
+The date you set must be in the future. If the date is not in the future, the **StsRefreshTokensValidFrom** property is not set. If the date is in the future, **StsRefreshTokensValidFrom** is set to the current time (not the date indicated by Set-MsolUser command).
 
-## <a name="step-4-test-your-configuration"></a>Stap 4: Configuratie van de testen
+## <a name="step-4-test-your-configuration"></a>Step 4: Test your configuration
 
-### <a name="testing-your-certificate"></a>Testen van uw certificaat
+### <a name="testing-your-certificate"></a>Testing your certificate
 
-Als een eerste configuratietest, moet u proberen zich aanmeldt bij [Outlook Web Access](https://outlook.office365.com) of [SharePoint Online](https://microsoft.sharepoint.com) met behulp van uw **browser op het apparaat**.
+As a first configuration test, you should try to sign in to [Outlook Web Access](https://outlook.office365.com) or [SharePoint Online](https://microsoft.sharepoint.com) using your **on-device browser**.
 
-Als de aanmelding geslaagd is, weet u dat:
+If your sign-in is successful, then you know that:
 
-- Het gebruikerscertificaat is ingericht voor uw testapparaat
-- AD FS is juist geconfigureerd
+- The user certificate has been provisioned to your test device
+- AD FS is configured correctly
 
-### <a name="testing-office-mobile-applications"></a>Testen van mobiele Office-toepassingen
+### <a name="testing-office-mobile-applications"></a>Testing Office mobile applications
 
-**Om te testen op certificaten gebaseerde verificatie op uw mobiele Office-toepassing:**
+**To test certificate-based authentication on your mobile Office application:**
 
-1. Installeer een mobiele Office-toepassing (bijvoorbeeld OneDrive) op uw testapparaat.
-3. Start de toepassing.
-4. Voer uw gebruikersnaam en selecteer vervolgens het gebruikerscertificaat dat u wilt gebruiken.
+1. On your test device, install an Office mobile application (for example, OneDrive).
+3. Launch the application.
+4. Enter your username, and then select the user certificate you want to use.
 
-U moet worden aangemeld.
+You should be successfully signed in.
 
-### <a name="testing-exchange-activesync-client-applications"></a>Testen van toepassingen voor Exchange ActiveSync-client
+### <a name="testing-exchange-activesync-client-applications"></a>Testing Exchange ActiveSync client applications
 
-Voor toegang tot Exchange ActiveSync (EAS) via verificatie op basis van certificaten, moet een EAS-profiel met het clientcertificaat voor de toepassing beschikbaar.
+To access Exchange ActiveSync (EAS) via certificate-based authentication, an EAS profile containing the client certificate must be available to the application.
 
-De EAS-profiel moet de volgende informatie bevatten:
+The EAS profile must contain the following information:
 
-- Het certificaat van de gebruiker moet worden gebruikt voor verificatie
+- The user certificate to be used for authentication
 
-- De EAS-eindpunt (bijvoorbeeld outlook.office365.com)
+- The EAS endpoint (for example, outlook.office365.com)
 
-Een EAS-profiel kan worden geconfigureerd en worden geplaatst op het apparaat via het gebruik van beheer van mobiele apparaten (MDM) zoals Intune, of door handmatig het certificaat in de EAS-profiel op het apparaat.
+An EAS profile can be configured and placed on the device through the utilization of Mobile device management (MDM) such as Intune or by manually placing the certificate in the EAS profile on the device.
 
-### <a name="testing-eas-client-applications-on-android"></a>Testen van toepassingen voor EAS-client op Android
+### <a name="testing-eas-client-applications-on-android"></a>Testing EAS client applications on Android
 
-**Voor het testen van verificatie via certificaat:**
+**To test certificate authentication:**
 
-1. Een EAS-profiel configureren in de toepassing die voldoet aan de vereisten in de vorige sectie.
-2. Open de toepassing en controleer of dat e-mail wordt gesynchroniseerd.
+1. Configure an EAS profile in the application that satisfies the requirements in the prior section.
+2. Open the application, and verify that mail is synchronizing.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-[Meer informatie over verificatie op basis van certificaten op Android-apparaten.](active-directory-certificate-based-authentication-android.md)
+[Additional information about certificate-based authentication on Android devices.](active-directory-certificate-based-authentication-android.md)
 
-[Meer informatie over verificatie op basis van certificaten op iOS-apparaten.](active-directory-certificate-based-authentication-ios.md)
+[Additional information about certificate-based authentication on iOS devices.](active-directory-certificate-based-authentication-ios.md)

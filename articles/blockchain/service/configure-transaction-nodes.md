@@ -1,143 +1,137 @@
 ---
-title: Azure Block Chain Service-transactie knooppunten configureren
-description: Service transactie knooppunten van Azure Block Chain configureren
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Configure Azure Blockchain Service transaction nodes
+description: How to configure Azure Blockchain Service transaction nodes
 ms.date: 11/20/2019
 ms.topic: article
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 2885e5c9376264875cba03865c45b6b1e5d4aaf2
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 4a9a4f660dd171e65b600ec4cd66714ca476b091
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286885"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326303"
 ---
-# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Azure Block Chain Service-transactie knooppunten configureren
+# <a name="configure-azure-blockchain-service-transaction-nodes"></a>Configure Azure Blockchain Service transaction nodes
 
-Trans actie knooppunten worden gebruikt voor het verzenden van Block Chain-trans acties naar de Azure Block Chain-service via een openbaar eind punt. Het standaard transactie knooppunt bevat de persoonlijke sleutel van het Ethereum-account dat is geregistreerd bij de Block Chain, en kan niet worden verwijderd.
+Transaction nodes are used to send blockchain transactions to Azure Blockchain Service through a public endpoint. The default transaction node contains the private key of the Ethereum account registered on the blockchain, and as such cannot be deleted.
 
-Details van het standaard transactie knooppunt weer geven:
+To view the default transaction node details:
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Navigeer naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten**.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Navigate to your Azure Blockchain Service member. Select **Transaction nodes**.
 
-    ![Standaard transactie knooppunt selecteren](./media/configure-transaction-nodes/nodes.png)
+    ![Select default transaction node](./media/configure-transaction-nodes/nodes.png)
 
-    Overzichts gegevens zijn open bare eindpunt adressen en open bare sleutel.
+    Overview details include public endpoint addresses and public key.
 
-## <a name="create-transaction-node"></a>Transactie knooppunt maken
+## <a name="create-transaction-node"></a>Create transaction node
 
-U kunt Maxi maal negen extra transactie knooppunten toevoegen aan uw Block Chain-lid, voor een totaal van 10 transactie knooppunten. Door transactie knooppunten toe te voegen, kunt u de schaal baarheid verg Roten of de belasting verdelen. U kunt bijvoorbeeld een eind punt voor een trans actie-knoop punt hebben voor verschillende client toepassingen.
+You can add up to nine additional transaction nodes to your blockchain member, for a total of 10 transaction nodes. By adding transaction nodes, you can increase scalability or distribute load. For example, you could have a transaction node endpoint for different client applications.
 
-Een transactie knooppunt toevoegen:
+To add a transaction node:
 
-1. Ga in het Azure Portal naar het lid van de Azure Block Chain-service en selecteer **transactie knooppunten > toevoegen**.
-1. Voltooi de instellingen voor het nieuwe trans actie-knoop punt.
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Add**.
+1. Complete the settings for the new transaction node.
 
-    ![Transactie knooppunt toevoegen](./media/configure-transaction-nodes/add-node.png)
+    ![Add transaction node](./media/configure-transaction-nodes/add-node.png)
 
     | Instelling | Beschrijving |
     |---------|-------------|
-    | Naam | Naam van het transactie knooppunt. De naam wordt gebruikt voor het maken van het DNS-adres voor het eind punt van het transactie knooppunt. Bijvoorbeeld `newnode-myblockchainmember.blockchain.azure.com`. De naam van het knoop punt kan niet worden gewijzigd nadat deze is gemaakt. |
-    | Wachtwoord | Stel een sterk wacht woord in. Gebruik het wacht woord voor toegang tot het knoop punt van het transactie knooppunt met basis verificatie.
+    | Naam | Transaction node name. The name is used to create the DNS address for the transaction node endpoint. Bijvoorbeeld `newnode-myblockchainmember.blockchain.azure.com`. The node name cannot be changed once it is created. |
+    | Wachtwoord | Set a strong password. Use the password to access the transaction node endpoint with basic authentication.
 
 1. Selecteer **Maken**.
 
-    Het inrichten van een nieuw transactie knooppunt duurt ongeveer 10 minuten. Extra transactie knooppunten zijn kosten in rekening gebracht. Zie [Azure-prijzen](https://aka.ms/ABSPricing)voor meer informatie over de kosten.
+    Provisioning a new transaction node takes about 10 minutes. Additional transaction nodes incur cost. For more information on costs, see [Azure pricing](https://aka.ms/ABSPricing).
 
 ## <a name="endpoints"></a>Eindpunten
 
-Transactie knooppunten hebben een unieke DNS-naam en open bare eind punten.
+Transaction nodes have a unique DNS name and public endpoints.
 
-De eindpunt Details van een transactie knooppunt weer geven:
+To view a transaction node's endpoint details:
 
-1. Ga in het Azure Portal naar een van uw trans actie knooppunten van de Azure Block Chain-service en selecteer **overzicht**.
+1. In the Azure portal, navigate to one of your Azure Blockchain Service member transaction nodes and select **Overview**.
 
     ![Eindpunten](./media/configure-transaction-nodes/endpoints.png)
 
-De eind punten van het transactie knooppunt zijn veilig en vereisen authenticatie. U kunt verbinding maken met een trans actie-eind punt met behulp van Azure AD-verificatie, HTTPS-basis verificatie en met behulp van een toegangs sleutel via HTTPS of WebSocket via SSL.
+Transaction node endpoints are secure and require authentication. You can connect to a transaction endpoint using Azure AD authentication, HTTPS basic authentication, and using an access key over HTTPS or Websocket over SSL.
 
 ### <a name="azure-active-directory-access-control"></a>Toegangsbeheer Azure Active Directory
 
-Azure Block Chain Service Trans Action node-eind punten ondersteunen Azure Active Directory-verificatie (Azure AD). U kunt Azure AD-gebruikers,-groepen en-Service-Principal toegang verlenen tot uw eind punt.
+Azure Blockchain Service transaction node endpoints support Azure Active Directory (Azure AD) authentication. You can grant Azure AD user, group, and service principal access to your endpoint.
 
-Toegangs beheer voor Azure AD aan uw eind punt verlenen:
+To grant Azure AD access control to your endpoint:
 
-1. Ga in het Azure Portal naar het lid van de Azure Block Chain-service en selecteer **transactie knooppunten > toegangs beheer (IAM) > voeg > roltoewijzing**toe.
-1. Maak een nieuwe roltoewijzing voor een gebruiker, groep of Service-Principal (toepassings rollen).
+1. In the Azure portal, navigate to your Azure Blockchain Service member and select **Transaction nodes > Access control (IAM) > Add > Add role assignment**.
+1. Create a new role assignment for a user, group, or service principal (application roles).
 
-    ![IAM-rol toevoegen](./media/configure-transaction-nodes/add-role.png)
+    ![Add IAM role](./media/configure-transaction-nodes/add-role.png)
 
-    | Instelling | Actie |
+    | Instelling | Bewerking |
     |---------|-------------|
-    | Rol | Selecteer **eigenaar**, **bijdrager**of **lezer**.
-    | Toegang toewijzen aan | Selecteer **Azure AD-gebruiker,-groep of-Service-Principal**.
-    | Selecteer | Zoek naar de gebruiker, groep of service-principal die u wilt toevoegen.
+    | Rol | Select **Owner**, **Contributor**, or **Reader**.
+    | Assign access to | Select **Azure AD user, group, or service principal**.
+    | Selecteer | Search for the user, group, or service principal you want to add.
 
-1. Selecteer **Opslaan** om de roltoewijzing toe te voegen.
+1. Select **Save** to add the role assignment.
 
-Zie [toegang tot Azure-resources beheren met RBAC en de Azure Portal](../../role-based-access-control/role-assignments-portal.md) voor meer informatie over Azure AD-toegangs beheer.
+For more information on Azure AD access control, see [Manage access to Azure resources using RBAC and the Azure portal](../../role-based-access-control/role-assignments-portal.md)
 
-Zie [verbinding maken met uw knoop punt met behulp van Aad-verificatie](configure-aad.md)voor meer informatie over het maken van verbinding met Azure AD-verificatie.
+For details on how to connect using Azure AD authentication, see [connect to your node using AAD authentication](configure-aad.md).
 
 ### <a name="basic-authentication"></a>Basisverificatie
 
-Voor HTTPS-basis verificatie worden gebruikers naam-en wachtwoord referenties door gegeven in de HTTPS-header van de aanvraag voor het eind punt.
+For HTTPS basic authentication, user name and password credentials are passed in the HTTPS header of the request to the endpoint.
 
-U kunt de eindpunt Details van de basis verificatie van een transactie knooppunt weer geven in de Azure Portal. Navigeer naar een van uw trans actie knooppunten van de Azure Block Chain-service en selecteer **basis verificatie** in instellingen.
+You can view a transaction node's basic authentication endpoint details in the Azure portal. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Basic Authentication** in settings.
 
 ![Basisverificatie](./media/configure-transaction-nodes/basic.png)
 
-De gebruikers naam is de naam van het knoop punt en kan niet worden gewijzigd.
+The user name is the name of your node and cannot be changed.
 
-Als u de URL wilt gebruiken, vervangt u \<wachtwoord\> door het wacht woord dat is ingesteld wanneer het knoop punt is ingericht. U kunt het wacht woord bijwerken door **wacht woord opnieuw instellen**te selecteren.
+To use the URL, replace \<password\> with the password set when the node was provisioned. You can update the password by selecting **Reset password**.
 
 ### <a name="access-keys"></a>Toegangssleutels
 
-Voor toegangs sleutel verificatie is de toegangs sleutel opgenomen in de eind punt-URL. Wanneer het transactie knooppunt is ingericht, worden er twee toegangs sleutels gegenereerd. De toegangs sleutel kan worden gebruikt voor verificatie. Met twee sleutels kunt u sleutels wijzigen en draaien.
+For access key authentication, the access key is included in the endpoint URL. When the transaction node is provisioned, two access keys are generated. Either access key can be used for authentication. Two keys enable you to change and rotate keys.
 
-U kunt de toegangs sleutel gegevens van een transactie knooppunt bekijken en eindpunt adressen kopiëren die de toegangs sleutels bevatten. Ga naar een van de trans actie knooppunten van uw Azure Block Chain service-lid en selecteer **toegangs sleutels** in instellingen.
+You can view a transaction node's access key details and copy endpoint addresses that include the access keys. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Access Keys** in settings.
 
 ### <a name="firewall-rules"></a>Firewall-regels
 
-Met firewall regels kunt u de IP-adressen beperken waarmee wordt geprobeerd om zich te verifiëren bij uw transactie knooppunt.  Als er geen firewall regels zijn geconfigureerd voor uw transactie knooppunt, is deze niet toegankelijk voor een partij.  
+Firewall rules enable you to limit the IP addresses that can attempt to authenticate to your transaction node.  If no firewall rules are configured for your transaction node, it cannot be accessed by any party.  
 
-Als u de firewall regels van een transactie knooppunt wilt weer geven, gaat u naar een van uw Azure Block Chain Service-trans actie knooppunten en selecteert u **firewall regels** in instellingen.
+To view a transaction node's firewall rules, navigate to one of your Azure Blockchain Service member transaction nodes and select **Firewall rules** in settings.
 
-U kunt Firewall regels toevoegen door de naam van de regel, het eerste IP-adres en het laatste IP-adres in het raster van de **firewall regels** in te voeren.
+You can add firewall rules by entering a rule name, starting IP address, and an ending IP address in the **Firewall rules** grid.
 
 ![Firewall-regels](./media/configure-transaction-nodes/firewall-rules.png)
 
-In te scha kelen:
+To enable:
 
-* **Eén IP-adres:** Configureer hetzelfde IP-adres voor de begin-en eind-IP-adressen.
-* **IP-adres bereik:** Het begin-en eind-IP-adres bereik configureren. Bijvoorbeeld: een bereik vanaf 10.221.34.0 en eindigend op 10.221.34.255 zou het hele 10.221.34.xxx-subnet mogelijk maken.
-* **Alle IP-adressen toestaan:** Configureer het begin-IP-adres naar 0.0.0.0 en het laatste IP-adres in 255.255.255.255.
+* **Single IP address:** Configure the same IP address for the starting and ending IP addresses.
+* **IP address range:** Configure the starting and ending IP address range. For example, a range starting at 10.221.34.0 and ending at 10.221.34.255 would enable the entire 10.221.34.xxx subnet.
+* **Allow all IP addresses:** Configure the starting IP address to 0.0.0.0 and the ending IP address to 255.255.255.255.
 
 ## <a name="connection-strings"></a>Verbindingsreeksen
 
-De syntaxis van de verbindings reeks voor uw transactie knooppunt wordt verschaft voor basis verificatie of het gebruik van toegangs sleutels. Verbindings reeksen met toegangs sleutels via HTTPS en websockets worden meegeleverd.
+Connection string syntax for your transaction node is provided for basic authentication or using access keys. Connection strings including access keys over HTTPS and WebSockets are provided.
 
-U kunt de verbindings reeksen van een transactie knooppunt weer geven en eindpunt adressen kopiëren. Navigeer naar een van uw trans actie knooppunten van de Azure Block Chain-service en selecteer **verbindings reeksen** in instellingen.
+You can view a transaction node's connection strings and copy endpoint addresses. Navigate to one of your Azure Blockchain Service member transaction nodes and select **Connection strings** in settings.
 
 ![Verbindingsreeksen](./media/configure-transaction-nodes/connection-strings.png)
 
 ## <a name="sample-code"></a>Voorbeeldcode
 
-De voorbeeld code is beschikbaar om snel verbinding te maken met uw transactie knooppunt via Web3, Nethereum, Web3js en Truffle.
+Sample code is provided to quickly enable connecting to your transaction node via Web3, Nethereum, Web3js, and Truffle.
 
-U kunt de voorbeeld verbindings code van een transactie knooppunt bekijken en deze kopiëren voor gebruik met populaire ontwikkel hulpprogramma's. Ga naar een van de trans actie knooppunten van een Azure Block Chain-service en selecteer **voorbeeld code** in instellingen.
+You can view a transaction node's sample connection code and copy it to use with popular developer tools. Go to one of your Azure Blockchain Service member transaction nodes and select **Sample Code** in settings.
 
-Kies het tabblad Web3, Nethereum, Truffle of Web3j om het code voorbeeld te bekijken dat u wilt gebruiken.
+Choose the Web3, Nethereum, Truffle, or Web3j tab to view the code sample you want to use.
 
 ![Voorbeeldcode](./media/configure-transaction-nodes/sample-code.png)
 
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Transactie knooppunten configureren met behulp van Azure CLI](manage-cli.md)
+> [Configure transaction nodes using Azure CLI](manage-cli.md)

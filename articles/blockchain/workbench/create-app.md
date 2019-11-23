@@ -1,23 +1,17 @@
 ---
-title: Een Block Chain-toepassing maken-Azure Block Chain workbench
-description: Zelf studie over het maken van een Block Chain-toepassing in azure Block Chain Workbench preview.
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Create a blockchain application - Azure Blockchain Workbench
+description: Tutorial on how to create a blockchain application for Azure Blockchain Workbench Preview.
 ms.date: 10/14/2019
 ms.topic: tutorial
-ms.service: azure-blockchain
 ms.reviewer: brendal
-manager: femila
-ms.openlocfilehash: a7d7c68840999772461655090d0213ada0997a7a
-ms.sourcegitcommit: 1d0b37e2e32aad35cc012ba36200389e65b75c21
+ms.openlocfilehash: 33a9e9c10c07d0808626353a7edfd505e0f60bc9
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72329096"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74324813"
 ---
-# <a name="tutorial-create-a-blockchain-application-in-azure-blockchain-workbench"></a>Zelf studie: een Block Chain-toepassing maken in azure Block Chain workbench
+# <a name="tutorial-create-a-blockchain-application-for-azure-blockchain-workbench"></a>Tutorial: Create a blockchain application for Azure Blockchain Workbench
 
 U kunt Azure Blockchain Workbench gebruiken om een blockchain-toepassing te maken waarmee werkstromen voor meerdere partijen worden gerepresenteerd die door configuratie en slimme-contractcode worden gedefinieerd.
 

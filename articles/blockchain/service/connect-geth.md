@@ -1,73 +1,67 @@
 ---
-title: Geth gebruiken om aan de Azure Block Chain-service te koppelen
-description: Koppelen aan een Geth-exemplaar in het Azure Block Chain Service-transactie knooppunt
-services: azure-blockchain
-keywords: ''
-author: PatAltimore
-ms.author: patricka
+title: Use Geth to attach to Azure Blockchain Service
+description: Attach to a Geth instance on Azure Blockchain Service transaction node
 ms.date: 11/20/2019
 ms.topic: quickstart
-ms.service: azure-blockchain
 ms.reviewer: janders
-manager: femila
-ms.openlocfilehash: 1c285a7b5cc04aa330e9f68fdb82cfd099a19e03
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
-ms.translationtype: HT
+ms.openlocfilehash: 1da38ebd3a264ea173626cc0858d82cd1fc3f30e
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285297"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74325328"
 ---
-# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Snelstartgids: Geth gebruiken om aan een Azure Block Chain Service-transactie knooppunt te koppelen
+# <a name="quickstart-use-geth-to-attach-to-an-azure-blockchain-service-transaction-node"></a>Quickstart: Use Geth to attach to an Azure Blockchain Service transaction node
 
-In deze Quick Start gebruikt u de Geth-client om te koppelen aan een Geth-exemplaar in een Azure Block Chain Service Trans Action-knoop punt. Na de koppeling gebruikt u de Geth java script-console om een Web3 java script Dapp-API aan te roepen.
+In this quickstart, you use the Geth client to attach to a Geth instance on an Azure Blockchain Service transaction node. Once attached, you use the Geth JavaScript console to call a web3 JavaScript Dapp API.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
-* [Geth](https://github.com/ethereum/go-ethereum/wiki/geth) installeren
-* Volledige [Snelstartgids: Maak een Block Chain-lid met behulp van de Azure Portal](create-member.md) of [Quick Start: een Azure Block Chain Service Block Chain-lid maken met behulp van Azure cli](create-member-cli.md)
+* Install [Geth](https://github.com/ethereum/go-ethereum/wiki/geth)
+* Complete [Quickstart: Create a blockchain member using the Azure portal](create-member.md) or [Quickstart: Create an Azure Blockchain Service blockchain member using Azure CLI](create-member-cli.md)
 
-## <a name="get-geth-connection-string"></a>Geth connection string ophalen
+## <a name="get-geth-connection-string"></a>Get Geth connection string
 
-U kunt de Geth-connection string voor een Azure Block Chain Service-transactie knooppunt ophalen in de Azure Portal.
+You can get the Geth connection string for an Azure Blockchain Service transaction node in the Azure portal.
 
-1. Meld u aan bij de [Azure Portal](https://portal.azure.com).
-1. Ga naar uw Azure Block Chain service-lid. Selecteer **transactie knooppunten** en de koppeling standaard transactie knooppunt.
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
+1. Go to your Azure Blockchain Service member. Select **Transaction nodes** and the default transaction node link.
 
-    ![Standaard transactie knooppunt selecteren](./media/connect-geth/transaction-nodes.png)
+    ![Select default transaction node](./media/connect-geth/transaction-nodes.png)
 
-1. Selecteer **verbindings reeksen**.
-1. Kopieer de connection string van **https (toegangs sleutel 1)** . U hebt de teken reeks nodig voor de volgende sectie.
+1. Select **Connection strings**.
+1. Copy the connection string from **HTTPS (Access key 1)** . You need the string for the next section.
 
     ![Verbindingsreeks](./media/connect-geth/connection-string.png)
 
-## <a name="connect-to-geth"></a>Verbinding maken met Geth
+## <a name="connect-to-geth"></a>Connect to Geth
 
-1. Open een opdrachtprompt of de shell.
-1. Gebruik de subopdracht Geth attach om aan het actieve Geth-exemplaar in uw transactie knooppunt te koppelen. Plak de connection string als een argument voor de subopdracht attach. Bijvoorbeeld:
+1. Open a command prompt or shell.
+1. Use the Geth attach subcommand to attach to the running Geth instance on your transaction node. Paste the connection string as an argument for the attach subcommand. Bijvoorbeeld:
 
     ``` bash
     geth attach <connection string>
     ```
 
-1. Wanneer u bent verbonden met de Ethereum-console van het transactie knooppunt, kunt u de Web3 java script Dapp API of de beheer-API aanroepen.
+1. Once connected to the transaction node's Ethereum console, you can call the web3 JavaScript Dapp API or the admin API.
 
-    Gebruik bijvoorbeeld de volgende API om de chainId te vinden.
+    For example, use the following API to find out the chainId.
 
     ``` bash
     admin.nodeInfo.protocols.istanbul.config.chainId
     ```
 
-    In dit voor beeld is de chainId 661.
+    In this example, the chainId is 661.
 
-    ![Optie voor Azure Block Chain-Service](./media/connect-geth/geth-attach.png)
+    ![Azure Blockchain Service option](./media/connect-geth/geth-attach.png)
 
-1. Als u de verbinding met de console wilt verbreken, typt u `exit`.
+1. To disconnect from the console, type `exit`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Quick Start hebt u de Geth-client gebruikt om een Geth-exemplaar te koppelen aan een Azure Block Chain Service-transactie knooppunt. Probeer de volgende zelf studie voor het gebruik van Azure Block Chain Development Kit voor Ethereum voor het maken, bouwen, implementeren en uitvoeren van een slimme contract functie via een trans actie.
+In this quickstart, you used the Geth client to attach to a Geth instance on an Azure Blockchain Service transaction node. Try the next tutorial to use Azure Blockchain Development Kit for Ethereum to create, build, deploy, and execute a smart contract function via a transaction.
 
 > [!div class="nextstepaction"]
-> [Visual Studio code gebruiken om slimme contracten te maken, te bouwen en te implementeren](send-transaction.md)
+> [Use Visual Studio Code to create, build, and deploy smart contracts](send-transaction.md)

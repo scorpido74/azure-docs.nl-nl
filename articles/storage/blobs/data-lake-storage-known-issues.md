@@ -1,6 +1,6 @@
 ---
-title: Bekende problemen met Azure Data Lake Storage Gen2 | Microsoft Docs
-description: Meer informatie over de beperkingen en bekende problemen met Azure Data Lake Storage Gen2
+title: Known issues with Azure Data Lake Storage Gen2 | Microsoft Docs
+description: Learn about the limitations and known issues with Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
@@ -8,67 +8,67 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 78693dceaac119279b1c1d06a6c3a18cc4fdb485
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 5253ab1d9599c2758127156e46e1dbf2e8e1eddc
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033942"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74327961"
 ---
-# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekende problemen met Azure Data Lake Storage Gen2
+# <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Known issues with Azure Data Lake Storage Gen2
 
-Dit artikel bevat een overzicht van de functies en hulpprogram ma's die nog niet worden ondersteund of die slechts gedeeltelijk worden ondersteund met opslag accounts die een hiërarchische naam ruimte (Azure Data Lake Storage Gen2) hebben.
+This article lists the features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
 
 <a id="blob-apis-disabled" />
 
-## <a name="issues-and-limitations-with-using-blob-apis"></a>Problemen en beperkingen bij het gebruik van BLOB-Api's
+## <a name="issues-and-limitations-with-using-blob-apis"></a>Issues and limitations with using Blob APIs
 
-BLOB-Api's en Data Lake Storage Gen2-Api's kunnen op dezelfde gegevens worden gebruikt.
+Blob APIs and Data Lake Storage Gen2 APIs can operate on the same data.
 
-In deze sectie worden de problemen en beperkingen beschreven met het gebruik van BLOB-Api's en Data Lake Storage Gen2 Api's om op dezelfde gegevens te werken.
+This section describes issues and limitations with using blob APIs and Data Lake Storage Gen2 APIs to operate on the same data.
 
-* U kunt niet zowel BLOB-Api's als Data Lake Storage Api's gebruiken om naar hetzelfde exemplaar van een bestand te schrijven. Als u naar een bestand schrijft met behulp van Data Lake Storage Gen2 Api's, zijn de blokken van dat bestand niet zichtbaar voor aanroepen naar de BLOB-API voor [blok keren ophalen](https://docs.microsoft.com/rest/api/storageservices/get-block-list) . U kunt een bestand overschrijven door gebruik te maken van Data Lake Storage Gen2 Api's of BLOB-Api's. Dit heeft geen invloed op de bestands eigenschappen.
+* You can't use both Blob APIs and Data Lake Storage APIs to write to the same instance of a file. If you write to a file by using Data Lake Storage Gen2 APIs, then that file's blocks won't be visible to calls to the [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API. You can overwrite a file by using either Data Lake Storage Gen2 APIs or Blob APIs. This won't affect file properties.
 
-* Wanneer u de bewerking [lijst-blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) gebruikt zonder een scheidings teken op te geven, bevatten de resultaten zowel directory's als blobs. Als u een scheidings teken wilt gebruiken, moet u alleen een slash (`/`) gebruiken. Dit is het enige ondersteunde scheidings teken.
+* When you use the [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) operation without specifying a delimiter, the results will include both directories and blobs. If you choose to use a delimiter, use only a forward slash (`/`). This is the only supported delimiter.
 
-* Als u de [Delete BLOB](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API gebruikt om een map te verwijderen, wordt die map alleen verwijderd als deze leeg is. Dit betekent dat u de BLOB-API niet recursief kunt gebruiken.
+* If you use the [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API to delete a directory, that directory will be deleted only if it's empty. This means that you can't use the Blob API delete directories recursively.
 
-Deze BLOB REST Api's worden niet ondersteund:
+These Blob REST APIs aren't supported:
 
-* [BLOB plaatsen (pagina)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Pagina plaatsen](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Paginabereiken ophalen](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [BLOB voor incrementele kopie](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Pagina van URL plaatsen](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Put-BLOB (toevoegen)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Blok toevoegen](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Blok van URL toevoegen](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
+* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
+* [Put Blob (Append)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
+* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
 
-Niet-beheerde VM-schijven worden niet ondersteund in accounts met een hiërarchische naam ruimte. Als u een hiërarchische naam ruimte wilt inschakelen op een opslag account, plaatst u onbeheerde VM-schijven in een opslag account waarvoor de functie hiërarchische naam ruimte niet is ingeschakeld.
+Unmanaged VM disks are not supported in accounts that have a hierarchical namespace. If you want to enable a hierarchical namespace on a storage account, place unmanaged VM disks into a storage account that doesn't have the hierarchical namespace feature enabled.
 
-## <a name="support-for-other-blob-storage-features"></a>Ondersteuning voor andere Blob Storage-functies
+## <a name="support-for-other-blob-storage-features"></a>Support for other Blob Storage features
 
-De volgende tabel bevat alle andere functies en hulpprogram ma's die nog niet worden ondersteund of die slechts gedeeltelijk worden ondersteund met opslag accounts die een hiërarchische naam ruimte (Azure Data Lake Storage Gen2) hebben.
+The following table lists all other features and tools that are not yet supported or only partially supported with storage accounts that have a hierarchical namespace (Azure Data Lake Storage Gen2).
 
-| Functie/hulp programma    | Meer informatie    |
+| Feature / Tool    | Meer informatie    |
 |--------|-----------|
-| **Data Lake Storage Gen2-Api's** | Gedeeltelijk ondersteund <br><br>In de huidige versie kunt u Data Lake Storage Gen2 **rest** -api's gebruiken om te communiceren met mappen en toegangs beheer lijsten (acl's) instellen, maar er zijn geen andere sdk's (bijvoorbeeld: .net, Java of python) om deze taken uit te voeren. Als u andere taken wilt uitvoeren, zoals het uploaden en downloaden van bestanden, kunt u de BLOB Sdk's gebruiken.  |
-| **AzCopy** | Versie-specifieke ondersteuning <br><br>Gebruik alleen de meest recente versie van AzCopy ([AzCopy V10 toevoegen](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Eerdere versies van AzCopy, zoals AzCopy v 8.1, worden niet ondersteund.|
-| **Beheer beleid voor Azure Blob Storage levenscyclus** | Alle toegangs lagen worden ondersteund. De Access-laag voor het archief is momenteel beschikbaar als preview-versie. Het verwijderen van BLOB-moment opnamen wordt nog niet ondersteund. |
-| **Azure-Content Delivery Network (CDN)** | Nog niet ondersteund|
-| **Azure Search** |Ondersteund (preview-versie)|
-| **Azure-opslagverkenner** | Versie-specifieke ondersteuning <br><br>Gebruik alleen versies `1.6.0` via `1.10.0`. <br> Versie `1.10.0` is beschikbaar als [gratis down load](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). Versie `1.11.0` wordt nog niet ondersteund.|
-| **BLOB-container-Acl's** |Nog niet ondersteund|
-| **Blobfuse** |Nog niet ondersteund|
-| **Aangepaste domeinen** |Nog niet ondersteund|
-| **Storage Explorer in de Azure Portal** | Beperkte ondersteuning. Acl's worden nog niet ondersteund. |
-| **Registratie in diagnoselogboek** |Diagnostische logboeken worden ondersteund (preview).<br><br>Het inschakelen van Logboeken in het Azure Portal wordt momenteel niet ondersteund. Hier volgt een voor beeld van het inschakelen van de logboeken met behulp van Power shell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Zorg ervoor dat u `Blob` opgeeft als de waarde van de para meter `-ServiceType`, zoals wordt weer gegeven in dit voor beeld. <br><br>Momenteel kan Azure Storage Explorer niet worden gebruikt voor het weer geven van Diagnostische logboeken. Als u logboeken wilt weer geven, gebruikt u AzCopy of Sdk's.
-| **Onveranderbare opslag** |Nog niet ondersteund <br><br>Onveranderbare opslag biedt de mogelijkheid om gegevens op te slaan in een [worm (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) .|
-| **Lagen op object niveau** |De lagen cool en Archive worden ondersteund. De Archive-laag is beschikbaar als preview-versie. Alle andere toegangs lagen worden nog niet ondersteund.|
-| **Ondersteuning voor Power shell en CLI** | Beperkte functionaliteit <br><br>BLOB-bewerkingen worden ondersteund. Werken met mappen en toegangs beheer lijsten (Acl's) instellen wordt nog niet ondersteund. |
-| **Statische websites** |Nog niet ondersteund <br><br>Met name de mogelijkheid om bestanden te leveren aan [statische websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
-| **Toepassingen van derden** | Beperkte ondersteuning <br><br>Toepassingen van derden die gebruikmaken van REST-Api's voor werken, blijven werken als u ze gebruikt met Data Lake Storage Gen2. <br>Toepassingen die BLOB-Api's aanroepen, werken waarschijnlijk.|
-|**Voorlopig verwijderen** |Nog niet ondersteund|
-| **Versie functies** |Nog niet ondersteund <br><br>Dit omvat het [voorlopig verwijderen](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)en andere versies van functies, zoals [moment opnamen](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
+| **Data Lake Storage Gen2 APIs** | Partially supported <br><br>In the current release, you can use Data Lake Storage Gen2 **REST** APIs to interact with directories and set access control lists (ACLs), but there are no other SDKs (For example: .NET, Java, or Python) to perform those tasks. To perform other tasks such as uploading and downloading files, you can use the Blob SDKs.  |
+| **AzCopy** | Version-specific support <br><br>Use only the latest version of AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Earlier versions of AzCopy such as AzCopy v8.1, are not supported.|
+| **Azure Blob Storage lifecycle management policies** | All access tiers are supported. The archive access tier is currently in preview. The deletion of blob snapshots is not yet supported. |
+| **Azure Content Delivery Network (CDN)** | Not yet supported|
+| **Azure search** |Supported (Preview)|
+| **Azure-opslagverkenner** | Version-specific support. <br><br>Use only versions `1.6.0` or higher. <br> There is currently a storage bug affecting version `1.11.0` that can result in authentication errors in certain scenarios. A fix for the storage bug is being rolled out, but as a workaround, we recommend that you use version `1.10.x` which is available as a [free download](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-relnotes). `1.10.x` is not affected by the storage bug.|
+| **Blob container ACLs** |Not yet supported|
+| **Blobfuse** |Not yet supported|
+| **Aangepaste domeinen** |Not yet supported|
+| **Storage Explorer in the Azure portal** | Limited support. ACLs are not yet supported. |
+| **Registratie in diagnoselogboek** |Diagnostic logs are supported (Preview).<br><br>Enabling logs in the Azure portal is not currently supported. Here's an example of how to enable the logs by using PowerShell. <br><br>`$storageAccount = Get-AzStorageAccount -ResourceGroupName <resourceGroup> -Name <storageAccountName>`<br><br>`Set-AzStorageServiceLoggingProperty -Context $storageAccount.Context -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays <days>`. <br><br>Make sure to specify `Blob` as the value of the `-ServiceType` parameter as shown in this example. <br><br>Currently, Azure Storage Explorer can't be used for viewing diagnostic logs. To view logs, please use AzCopy or SDKs.
+| **Immutable storage** |Not yet supported <br><br>Immutable storage gives the ability to store data in a [WORM (Write Once, Read Many)](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) state.|
+| **Object-level tiers** |Cool and archive tiers are supported. The archive tier is in preview. All other access tiers are not yet supported.|
+| **Powershell and CLI support** | Limited functionality <br><br>Blob operations are supported. Working with directories and setting access control lists (ACLs) is not yet supported. |
+| **Static websites** |Not yet supported <br><br>Specifically, the ability to serve files to [Static websites](https://docs.microsoft.com/azure/storage/blobs/storage-blob-static-website).|
+| **Third party applications** | Limited support <br><br>Third party applications that use REST APIs to work will continue to work if you use them with Data Lake Storage Gen2. <br>Applications that call Blob APIs will likely work.|
+|**Voorlopig verwijderen** |Not yet supported|
+| **Versioning features** |Not yet supported <br><br>This includes  [soft delete](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete), and other versioning features such as [snapshots](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob).|
 
 

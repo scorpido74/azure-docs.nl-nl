@@ -1,5 +1,5 @@
 ---
-title: 'Quickstart: Inzichten in afbeeldingen met behulp van de Bing Visual Search REST-API en Ruby ophalen'
+title: 'Quickstart: Get image insights using the REST API and Ruby - Bing Visual Search'
 titleSuffix: Azure Cognitive Services
 description: Leer hoe u een afbeelding uploadt naar de Bing Visual Search-API en inzichten in de afbeelding verkrijgt.
 services: cognitive-services
@@ -10,29 +10,29 @@ ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 563c0d39eb5c057aef9b9c7cdcba798dc6ee4cbb
-ms.sourcegitcommit: 36c50860e75d86f0d0e2be9e3213ffa9a06f4150
+ms.openlocfilehash: 55bf189195cc2d9eca0700fd703840da38c71592
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 05/16/2019
-ms.locfileid: "65796516"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383123"
 ---
-# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Inzichten in afbeeldingen met behulp van de Bing Visual Search REST-API en Ruby ophalen
+# <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>Quickstart: Get image insights using the Bing Visual Search REST API and Ruby
 
-Deze snelstart gebruikt de Ruby-programmeertaal aanroepen van Bing visuele zoekopdrachten en resultaten weer te geven. Een POST-aanvraag wordt een installatiekopie geüpload naar de API-eindpunt. De resultaten bevatten de URL's en beschrijvende informatie over installatiekopieën die vergelijkbaar is met de geüploade installatiekopie.
+This quickstart uses the Ruby programming language to call Bing Visual Search and display results. A POST request uploads an image to the API endpoint. The results include URLs and descriptive information about images similar to the uploaded image.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Om uit te voeren in deze Quick Start:
+To run this quickstart:
 
-* Installeer [Ruby 2.4 of hoger](https://www.ruby-lang.org/en/downloads/)
-* De abonnementssleutel van een ophalen:
+* Install [Ruby 2.4 or later](https://www.ruby-lang.org/en/downloads/)
+* Get a subscription key:
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-## <a name="project-and-required-modules"></a>Project en de vereiste modules
+## <a name="project-and-required-modules"></a>Project and required modules
 
-Maak een nieuwe Ruby-project in uw IDE of editor. Importeren `net/http`, `uri` , en `json` voor het afhandelen van de JSON-tekst van de resultaten. De `base64` bibliotheek wordt gebruikt voor het coderen van de tekenreeks met de bestandsnaam: 
+Create a new Ruby project in your IDE or editor. Import `net/http`, `uri` , and `json` to handle the JSON text of results. The `base64` library is used to encode the file name string: 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>Variabelen definiëren
 
-De volgende code wordt toegewezen vereist variabelen. Controleer of het eindpunt juist en vervang de `accessKey` waarde met een abonnementssleutel van uw Azure-account.  De `batchNumber` is een GUID die is vereist voor voorloopspaties en afsluitende grenzen van de POST-gegevens.  De `fileName` variabele identificeert het afbeeldingsbestand voor het bericht.  De `if` blokkeren van de tests voor de sleutel van een geldig abonnement.
+The following code assigns required variables. Confirm that the endpoint is correct and replace the `accessKey` value with a subscription key from your Azure account.  The `batchNumber` is a GUID required for leading and trailing boundaries of the POST data.  The `fileName` variable identifies the image file for the POST.  The `if` block tests for a valid subscription key.
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>Formuliergegevens voor POST-aanvraag
+## <a name="form-data-for-post-request"></a>Form data for POST request
 
-De image-gegevens naar bericht hekjes voorloopspaties en afsluitende grenzen. De volgende functies instellen de grenzen:
+The image data to POST is enclosed by leading and trailing boundaries. The following functions set the boundaries:
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -76,7 +76,7 @@ def BuildFormDataEnd(batNum)
 end
 ```
 
-De URI van het eindpunt en een matrix te bevatten de hoofdtekst van het bericht vervolgens samenstellen.  De vorige functie gebruiken om het laden van de grens start in de matrix. Het afbeeldingsbestand dat in de matrix gelezen. Lees vervolgens de end-grens bij de matrix:
+Next, construct the endpoint URI and an array to contain the POST body.  Use the previous function to load the start boundary into the array. Read the image file into the array. Then, read the end boundary into the array:
 
 ```
 uri = URI(uri + path)
@@ -92,9 +92,9 @@ post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 post_body << BuildFormDataEnd(batchNumber)
 ```
 
-## <a name="create-the-http-request"></a>De HTTP-aanvraag maken
+## <a name="create-the-http-request"></a>Create the HTTP request
 
-Stel de `Ocp-Apim-Subscription-Key` header.  Maak de aanvraag. Vervolgens de kop- en type inhoud toewijzen. Deelnemen aan de hoofdtekst van de boeken die eerder zijn gemaakt op de aanvraag:
+Set the `Ocp-Apim-Subscription-Key` header.  Maak de aanvraag. Then, assign the header and content type. Join the POST body created previously to the request:
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -106,9 +106,9 @@ request.body = post_body.join
 
 ```
 
-## <a name="request-and-response"></a>Aanvragen en reacties
+## <a name="request-and-response"></a>Request and response
 
-Ruby stuurt de aanvraag en het-antwoord met de volgende regel code opgehaald:
+Ruby sends the request and gets the response with the following line of code:
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -117,9 +117,9 @@ end
 
 ```
 
-## <a name="print-the-results"></a>De resultaten afdrukken
+## <a name="print-the-results"></a>Print the results
 
-De kopteksten van het antwoord af en gebruik van de JSON-bibliotheek om uitvoer te delen:
+Print the headers of the response, and use the JSON library to format output:
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -136,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>Resultaten
 
-De volgende JSON wordt een segment van de uitvoer:
+The following JSON is a segment of the output:
 
 ```
 Relevant Headers:
@@ -284,5 +284,5 @@ JSON Response:
 ## <a name="next-steps"></a>Volgende stappen
 
 > [!div class="nextstepaction"]
-> [Overzicht van de Bing visuele zoekopdrachten](../overview.md)
-> [een visuele zoekopdrachten één pagina web-app bouwen](../tutorial-bing-visual-search-single-page-app.md)
+> [Bing Visual Search overview](../overview.md)
+> [Build a Visual Search single-page web app](../tutorial-bing-visual-search-single-page-app.md)

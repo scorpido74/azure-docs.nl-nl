@@ -1,22 +1,22 @@
 ---
-title: Beveiligde artefacten in sjablonen
+title: Secure artifacts in templates
 description: Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen.
 author: mumian
 ms.date: 10/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 4aea85fe7f71d09c77b0596b4a8ec54922c8eee8
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: b37f7e284b655a362c5a4231a7c1da3719762644
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74150430"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326428"
 ---
-# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Zelf studie: veilige artefacten in Azure Resource Manager sjabloon implementaties
+# <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Tutorial: Secure artifacts in Azure Resource Manager template deployments
 
-Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen met behulp van een Azure Storage-account met Shared Access Signatures (SAS). Implementatieartefacten zijn, naast het hoofdsjabloonbestand, bestanden die vereist zijn om een implementatie te voltooien. In de [zelf studie: SQL BACPAC-bestanden met Azure Resource Manager sjablonen importeren](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), wordt met de hoofd sjabloon een Azure SQL database gemaakt. Er wordt ook een BACPAC-bestand aangeroepen om tabellen te maken en gegevens in te voegen. Het BACPAC-bestand is een artefact. Het artefact wordt opgeslagen in een Azure Storage-account met openbare toegang. In deze zelfstudie gebruikt u SAS om beperkte toegang tot het BACPAC-bestand in uw eigen Azure Storage-account te verlenen. Zie [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Shared Access Signatures (SAS) gebruiken) voor meer informatie.
+Meer informatie over het beveiligen van de gebruikte artefacten in uw Azure Resource Manager-sjablonen met behulp van een Azure Storage-account met Shared Access Signatures (SAS). Implementatieartefacten zijn, naast het hoofdsjabloonbestand, bestanden die vereist zijn om een implementatie te voltooien. For example, in [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md), the main template creates an Azure SQL Database; it also calls a BACPAC file to create tables and insert data. Het BACPAC-bestand is een artefact. Het artefact wordt opgeslagen in een Azure Storage-account met openbare toegang. In deze zelfstudie gebruikt u SAS om beperkte toegang tot het BACPAC-bestand in uw eigen Azure Storage-account te verlenen. Zie [Using Shared Access Signatures (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) (Shared Access Signatures (SAS) gebruiken) voor meer informatie.
 
-Zie [zelf studie: gekoppelde Azure Resource Manager sjablonen maken](./resource-manager-tutorial-create-linked-templates.md)voor meer informatie over het beveiligen van gekoppelde sjablonen.
+To learn how to secure linked template, see [Tutorial: Create linked Azure Resource Manager templates](./resource-manager-tutorial-create-linked-templates.md).
 
 Deze zelfstudie bestaat uit de volgende taken:
 
@@ -33,8 +33,8 @@ Als u geen abonnement op Azure hebt, maakt u een [gratis account](https://azure.
 
 Als u dit artikel wilt voltooien, hebt u het volgende nodig:
 
-* [Visual Studio Code](https://code.visualstudio.com/) met de extensie Resource Manager Tools. Zie [De extensie installeren](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
-* Lees [zelf studie: SQL BACPAC-bestanden met Azure Resource Manager sjablonen importeren](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). De sjabloon die in deze zelfstudie wordt gebruikt, is ontwikkeld in die zelfstudie. Dit artikel bevat een koppeling waarmee u de voltooide sjabloon kunt downloaden.
+* Visual Studio Code with Resource Manager Tools extension. See [Use Visual Studio Code to create Azure Resource Manager templates](./resource-manager-tools-vs-code.md).
+* Review [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md). De sjabloon die in deze zelfstudie wordt gebruikt, is ontwikkeld in die zelfstudie. Dit artikel bevat een koppeling waarmee u de voltooide sjabloon kunt downloaden.
 * Gebruik een gegenereerd wachtwoord voor het beheerdersaccount van SQL Server om de beveiliging te verbeteren. Hier volgt een voorbeeld voor het genereren van een wachtwoord:
 
     ```azurecli-interactive
@@ -66,10 +66,10 @@ Download het [BACPAC-bestand](https://github.com/Azure/azure-docs-json-samples/r
 2. Voer de volgende eigenschappen in:
 
     * **Abonnement**: selecteer uw Azure-abonnement.
-    * **Resource groep**: Selecteer **nieuwe maken** en geef deze een naam. Een resourcegroep is een container voor Azure-resources voor beheerdoeleinden. In deze zelfstudie, kunt u dezelfde resourcegroep voor het opslagaccount en de Azure SQL Database gebruiken. Noteer de naam van deze resourcegroep. U hebt deze nodig wanneer u de Azure SQL Database later in de zelfstudies maakt.
-    * **Locatie**: Selecteer een regio. Bijvoorbeeld **US - centraal**.
+    * **Resource Group**: Select **Create new** and give it a name. Een resourcegroep is een container voor Azure-resources voor beheerdoeleinden. In deze zelfstudie, kunt u dezelfde resourcegroep voor het opslagaccount en de Azure SQL Database gebruiken. Noteer de naam van deze resourcegroep. U hebt deze nodig wanneer u de Azure SQL Database later in de zelfstudies maakt.
+    * **Location**: Select a region. Bijvoorbeeld **US - centraal**.
     * **Type opslagaccount**: Gebruik de standaardwaarde, **Standard_LRS**.
-    * **Locatie**: gebruik de standaard waarde **([resourceGroup (). locatie]** . Dit betekent dat u de locatie van de resourcegroep gebruikt voor het opslagaccount.
+    * **Location**: Use the default value, which is **[resourceGroup().location]** . Dit betekent dat u de locatie van de resourcegroep gebruikt voor het opslagaccount.
     * **Ik ga akkoord met de bovenstaande voorwaarden**: (geselecteerd)
 3. Selecteer **Aankoop**.
 4. Selecteer het meldingspictogram (het belpictogram) in de rechterbovenhoek van de portal om de implementatiestatus te bekijken.
@@ -101,8 +101,8 @@ Een blobcontainer is vereist voordat u bestanden kunt uploaden.
 1. Selecteer **Uploaden**.
 2. Voer de volgende waarden in:
 
-    * **Bestanden**: Volg de instructies om het BACPAC-bestand te selecteren dat u eerder hebt gedownload. De standaardnaam is **SQLDatabaseExtension.bacpac**.
-    * **Verificatie type**: Selecteer **SAS**.  *SAS* is de standaardwaarde.
+    * **Files**: Following the instructions to select the BACPAC file you downloaded earlier. De standaardnaam is **SQLDatabaseExtension.bacpac**.
+    * **Authentication type**: Select **SAS**.  *SAS* is de standaardwaarde.
 3. Selecteer **Uploaden**.  Zodra het bestand is geüpload, wordt de bestandsnaam vermeld in de container.
 
 ### <a name="a-namegenerate-a-sas-token-generate-a-sas-token"></a><a name="generate-a-sas-token" />Een SAS-token genereren
@@ -110,23 +110,23 @@ Een blobcontainer is vereist voordat u bestanden kunt uploaden.
 1. Klik met de rechtermuisknop op **SQLDatabaseExtension.bacpac** in de container en selecteer vervolgens **SAS genereren**.
 2. Voer de volgende waarden in:
 
-    * **Machtiging**: gebruik de standaard instelling, **Lees**.
-    * **Begin-en eind datum/-tijd**: de standaard waarde biedt u acht uur voor het gebruik van het SAS-token. Als u meer tijd nodig hebt om deze zelfstudie te voltooien, verhoogt u de **verlooptijd**.
-    * **Toegestane IP-adressen**: laat dit veld leeg.
-    * **Toegestane protocollen**: gebruik de standaard waarde: **https**.
-    * **Handtekening sleutel**: gebruik de standaard waarde: **sleutel 1**.
+    * **Permission**: Use the default, **Read**.
+    * **Start and expiry date/time**: The default value gives you eight hours to use the SAS token. Als u meer tijd nodig hebt om deze zelfstudie te voltooien, verhoogt u de **verlooptijd**.
+    * **Allowed IP addresses**: Leave this field blank.
+    * **Allowed protocols**: use the default value: **HTTPS**.
+    * **Signing key**: use the default value: **Key 1**.
 3. Selecteer **Blob-SAS-token en -URL genereren**.
 4. Kopieer de **Blob-SAS-URL**. In het midden van de URL staat de bestandsnaam **SQLDatabaseExtension.bacpac**.  De bestandsnaam verdeelt de URL in drie delen:
 
    - **Locatie van het artefact**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Zorg ervoor dat de locatie eindigt op een '/'.
-   - **BACPAC bestands naam**: SQLDatabaseExtension. BACPAC.
-   - **SAS-token van artefact locatie**: Zorg ervoor dat het token voorafgaat aan een '? '
+   - **BACPAC file name**: SQLDatabaseExtension.bacpac.
+   - **Artifact location SAS token**: Make sure the token precedes with a "?."
 
      U hebt deze drie waarden nodig voor het [implementeren van de sjabloon](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Een bestaande sjabloon openen
 
-In deze sessie wijzigt u de sjabloon die u hebt gemaakt in de [zelf studie: IMPORTEER SQL BACPAC-bestanden met Azure Resource Manager sjablonen](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) om het BACPAC-bestand aan te roepen met een SAS-token.  De sjabloon die is ontwikkeld in de zelf studie over de SQL-uitbrei ding wordt gedeeld in [github](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
+In this session, you modify the template you created in [Tutorial: Import SQL BACPAC files with Azure Resource Manager templates](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md) to call the BACPAC file with a SAS token.  The template developed in the SQL extension tutorial is shared in [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/tutorial-sql-extension/azuredeploy.json).
 
 1. Selecteer in Visual Studio Code **Bestand**>**Bestand openen**.
 2. Plak de volgende URL in **Bestandsnaam**:
@@ -229,7 +229,7 @@ Schoon de geïmplementeerd Azure-resources, wanneer u deze niet meer nodig hebt,
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een SQL Server en een SQL Database geïmplementeerd en een BACPAC-bestand geïmporteerd met behulp van een SAS-token. Zie voor meer informatie over het maken van een Azure-pijp lijn om voortdurend Resource Manager-sjablonen te ontwikkelen en te implementeren.
+In deze zelfstudie hebt u een SQL Server en een SQL Database geïmplementeerd en een BACPAC-bestand geïmporteerd met behulp van een SAS-token. To learn how to create an Azure Pipeline to continuously develop and deploy Resource Manager templates, see
 
 > [!div class="nextstepaction"]
-> [Continue integratie met Azure-pijp lijn](./resource-manager-tutorial-use-azure-pipelines.md)
+> [Continuous integration with Azure Pipeline](./resource-manager-tutorial-use-azure-pipelines.md)

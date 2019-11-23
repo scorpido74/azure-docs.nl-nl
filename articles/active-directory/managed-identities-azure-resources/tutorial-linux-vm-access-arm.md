@@ -1,5 +1,5 @@
 ---
-title: Quick Start`:` een beheerde identiteit gebruiken om toegang te krijgen tot Azure Resource Manager-Azure AD
+title: Quickstart`:` Use a managed identity to access Azure Resource Manager - Azure AD
 description: Een snelstart waarbij u het proces doorloopt voor het gebruiken van een door het Linux-VM-systeem toegewezen beheerde identiteit om toegang te krijgen tot Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a322a32a2ac0f875d81e9c8400653afb0a99435
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 8ee10a73579e8533cd14ecfeeebab44e726ba16b
+ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74183441"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74326326"
 ---
 # <a name="use-a-linux-vm-system-assigned-managed-identity-to-access-azure-resource-manager"></a>Een door het Linux-VM-systeem toegewezen beheerde identiteit gebruiken voor toegang tot Azure Resource Manager
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Deze snelstart laat zien hoe u toegang krijgt tot de Azure Resource Manager-API met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM). Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. Procedures voor:
+Deze snelstart laat zien hoe u toegang krijgt tot de Azure Resource Manager-API met een door het systeem toegewezen identiteit voor een virtuele Linux-machine (VM). Beheerde entiteiten voor Azure-resources worden automatisch beheerd in Azure en stellen u in staat om te verifiëren bij services die Microsoft Azure AD-verificatie ondersteunen, zonder referenties in code te hoeven invoegen. In deze zelfstudie leert u procedures om het volgende te doen:
 
 > [!div class="checklist"]
 > * Uw virtuele machine toegang verlenen tot een resourcegroep in Azure Resource Manager 
@@ -65,7 +65,7 @@ U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruik
     ```
     
     > [!NOTE]
-    > De waarde van de parameter 'resource' moet exact overeenkomen met wat er in Azure AD wordt verwacht.  In het geval van de Resource Manager-Resource-ID moet u de afsluitende slash toevoegen aan de URI. 
+    > De waarde van de parameter 'resource' moet exact overeenkomen met wat er in Azure AD wordt verwacht.  In the case of the Resource Manager resource ID, you must include the trailing slash on the URI. 
     
     Het antwoord bevat het toegangstoken dat u nodig hebt voor toegang tot Azure Resource Manager. 
     
@@ -81,7 +81,7 @@ U hebt een SSH-client nodig om deze stappen uit te voeren. Als u Windows gebruik
     "token_type":"Bearer"} 
     ```
     
-    U kunt dit toegangstoken gebruiken voor toegang tot Azure Resource Manager, bijvoorbeeld om de details te bekijken van de resourcegroep waaraan u deze virtuele machine eerder toegang hebt verleend. Vervang de waarden van \<ABONNEMENTS-ID\>, \<RESOURCE groep\>en \<toegangs TOKEN\> met de instellingen die u eerder hebt gemaakt. 
+    U kunt dit toegangstoken gebruiken voor toegang tot Azure Resource Manager, bijvoorbeeld om de details te bekijken van de resourcegroep waaraan u deze virtuele machine eerder toegang hebt verleend. Replace the values of \<SUBSCRIPTION ID\>, \<RESOURCE GROUP\>, and \<ACCESS TOKEN\> with the ones you created earlier. 
     
     > [!NOTE]
     > De URL is hoofdlettergevoelig, dus gebruik precies dezelfde naam van de resourcegroep als hiervoor, met inbegrip van de hoofdletter 'G' in 'resourceGroup'.  
@@ -101,3 +101,4 @@ In deze snelstart hebt u geleerd hoe u toegang krijgt tot de Azure Resource Mana
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview)
+>[Create, list or delete a user-assigned managed identity using Azure PowerShell](how-to-manage-ua-identity-powershell.md)
