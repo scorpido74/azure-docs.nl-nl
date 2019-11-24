@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 09/19/2019
+ms.date: 11/21/2019
 ms.author: dapine
-ms.openlocfilehash: 5ec535fe2ce23a2ead1163e870aae97fd104ef09
-ms.sourcegitcommit: 2ed6e731ffc614f1691f1578ed26a67de46ed9c2
+ms.openlocfilehash: 35e7b85d31e9696f04dce610b6f2cf942543dc68
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71130070"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383491"
 ---
 ### <a name="deploy-the-key-phrase-extraction-container-to-an-aks-cluster"></a>De Sleuteltermextractie-container implementeren in een AKS-cluster
 
@@ -24,7 +24,7 @@ ms.locfileid: "71130070"
     az login
     ```
 
-1. Meld u aan bij het AKS-cluster. Vervang `your-cluster-name` en`your-resource-group` door de juiste waarden.
+1. Meld u aan bij het AKS-cluster. Vervang `your-cluster-name` en `your-resource-group` door de juiste waarden.
 
     ```azurecli
     az aks get-credentials -n your-cluster-name -g -your-resource-group
@@ -37,7 +37,7 @@ ms.locfileid: "71130070"
     ```
 
     > [!WARNING]
-    > Als er meerdere abonnementen voor u beschikbaar zijn in uw Azure-account en `az aks get-credentials` de opdracht wordt geretourneerd met een fout, is een veelvoorkomend probleem dat u het verkeerde abonnement gebruikt. Stel de context van uw Azure CLI-sessie in op het gebruik van hetzelfde abonnement dat u hebt gemaakt voor de resources en probeer het opnieuw.
+    > Als er meerdere abonnementen voor u beschikbaar zijn in uw Azure-account en de `az aks get-credentials`-opdracht wordt geretourneerd met een fout, is een veelvoorkomend probleem dat u het verkeerde abonnement gebruikt. Stel de context van uw Azure CLI-sessie in op het gebruik van hetzelfde abonnement dat u hebt gemaakt voor de resources en probeer het opnieuw.
     > ```azurecli
     >  az account set -s subscription-id
     > ```
@@ -48,7 +48,7 @@ ms.locfileid: "71130070"
     code .
     ```
 
-1. Maak in de tekst editor een nieuw bestand met de naam *yaml*en plak de volgende YAML hierin. Vervang `billing/value` en`apikey/value` door uw eigen gegevens.
+1. Maak in de tekst editor een nieuw bestand met de naam *yaml*en plak de volgende YAML hierin. Vervang `billing/value` en `apikey/value` door uw eigen gegevens.
 
     ```yaml
     apiVersion: apps/v1beta1
@@ -66,6 +66,13 @@ ms.locfileid: "71130070"
             image: mcr.microsoft.com/azure-cognitive-services/keyphrase
             ports:
             - containerPort: 5000
+            resources:
+              requests:
+                memory: 2Gi
+                cpu: 1
+              limits:
+                memory: 4Gi
+                cpu: 1
             env:
             - name: EULA
               value: "accept"
@@ -88,10 +95,10 @@ ms.locfileid: "71130070"
     ```
 
 1. Sla het bestand op en sluit de tekst editor.
-1. Voer de opdracht `apply` Kubernetes uit met het bestand *woordgroep. yaml* als doel:
+1. Voer de Kubernetes-`apply` opdracht uit met het *yaml* -bestand als doel:
 
     ```console
-    kuberctl apply -f keyphrase.yaml
+    kubectl apply -f keyphrase.yaml
     ```
 
     Nadat de opdracht de implementatie configuratie heeft toegepast, wordt een bericht weer gegeven zoals in de volgende uitvoer:

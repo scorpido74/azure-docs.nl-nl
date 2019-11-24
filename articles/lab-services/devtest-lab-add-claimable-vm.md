@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: a3b8085a4dd2ece384ece72578ffafbd0e2e0b9d
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 13d642597fdf5d0eae6c6fd4f0cab16181f033c2
+ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184294"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74383961"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Bewering bare Vm's maken en beheren in Azure DevTest Labs
 U voegt een claim bare virtuele machine toe aan een lab op ongeveer dezelfde manier om [een standaard-VM toe te voegen](devtest-lab-add-vm.md) : van een *basis* die een [aangepaste afbeelding](devtest-lab-create-template.md), [formule](devtest-lab-manage-formulas.md)of [Marketplace-installatie kopie](devtest-lab-configure-marketplace-images.md)is. In deze zelf studie wordt u begeleid bij het gebruik van de Azure Portal om een claim bare virtuele machine toe te voegen aan een lab in DevTest Labs en worden de processen weer gegeven die een gebruiker volgt om de virtuele machine te claimen en te claimen.
@@ -72,7 +72,7 @@ Een gebruiker kan een van de volgende stappen uitvoeren om een wille keurige VM 
   ![Een claim bare VM aanvragen.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
-Nadat een gebruiker een virtuele machine heeft geclaimd, wordt de machine door DevTest Labs gestart en wordt deze in de lijst met ' mijn virtuele machines ' van de test gebruiker geplaatst. Dit betekent dat de test gebruiker nu eigenaar privilegdes op deze mahcine heeft. De tijd die nodig is voor deze stap kan variëren, afhankelijk van de opstart tijd en eventuele andere aangepaste acties die worden uitgevoerd tijdens de claim gebeurtenis. Zodra de computer is geclaimd, is deze niet meer beschikbaar in de claim bare groep.  
+Nadat een gebruiker een virtuele machine heeft geclaimd, wordt de machine door DevTest Labs gestart en wordt deze in de lijst met ' mijn virtuele machines ' van de test gebruiker geplaatst. Dit betekent dat de test gebruiker nu eigenaar bevoegdheden heeft op deze computer. De tijd die nodig is voor deze stap kan variëren, afhankelijk van de opstart tijd en eventuele andere aangepaste acties die worden uitgevoerd tijdens de claim gebeurtenis. Zodra de computer is geclaimd, is deze niet meer beschikbaar in de claim bare groep.  
 
 ## <a name="unclaim-a-vm"></a>De claim van een virtuele machine ongedaan maken
 

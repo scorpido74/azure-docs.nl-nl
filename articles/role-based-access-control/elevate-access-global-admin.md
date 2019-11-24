@@ -123,7 +123,7 @@ Ga als volgt te werk om een toewijzing van de rol beheerder van gebruikers toega
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 
-## <a name="rest-api"></a>REST-API
+## <a name="rest-api"></a>REST API
 
 ### <a name="elevate-access-for-a-global-administrator"></a>Toegang verhogen voor een globale beheerder
 
@@ -176,7 +176,7 @@ U kunt alle weiger toewijzingen voor een gebruiker in het hoofd bereik (`/`) wee
 
 ### <a name="remove-elevated-access"></a>Verhoogde toegang verwijderen
 
-Wanneer u `elevateAccess` aanroept, maakt u een roltoewijzing voor uzelf, zodat u die bevoegdheden kunt intrekken die u nodig hebt om de toewijzing te verwijderen.
+Wanneer u `elevateAccess`aanroept, maakt u een roltoewijzing voor uzelf, zodat u die bevoegdheden kunt intrekken die u nodig hebt om de toewijzing te verwijderen.
 
 1. Roep [Get roleDefinitionse](/rest/api/authorization/roledefinitions/get) aan waarbij `roleName` gelijk is aan de beheerder van de gebruikers toegang om de naam-id van de beheerder van de gebruikers toegang te bepalen.
 
