@@ -8,19 +8,19 @@ ms.custom: include file
 ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
-ms.date: 09/02/2018
+ms.date: 09/02/2019
 ms.author: diberry
-ms.openlocfilehash: 591e6f1fc114994dd29b0f41d92fc4f099b6ea49
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 3064211fe44a416a6288b86c977ed7e2337a7ccd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70256814"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451627"
 ---
-Het beheer van bijdragen van mede werkers is afhankelijk van de huidige status van de app.
+Management of contributions from collaborators depends on the current status of the app.
 
-**Voor [gemigreerde](../luis-migration-authoring.md) apps voor**het maken van een resource: _inzenders_ worden beheerd in de Azure portal voor de ontwerp bron, met behulp van de **toegangs beheer pagina (IAM)** . Voeg een gebruiker toe met behulp van het e-mail adres van de samen werker en de rol _Inzender_ . 
+**For [authoring resource migrated](../luis-migration-authoring.md) apps**: _contributors_ are managed in the Azure portal for the authoring resource, using the **Access control (IAM)** page. Add a user, using the collaborator's email address and the _contributor_ role. 
 
-**Voor apps die nog niet zijn gemigreerd**: _alle mede_ werkers worden beheerd in de Luis-Portal op de pagina werk **nemers van de beheer >** van elke app. Voeg op deze pagina [het e-mail adres van een gebruiker toe](../luis-how-to-collaborate.md). Hiermee hebt u alleen toegang tot deze app. 
+**For apps that have not migrated yet**: all _collaborators_ are managed in the LUIS portal from each app's **Manage -> Collaborators** page. On this page, [add a user's email address](../luis-how-to-collaborate.md). This provides authoring access to this app only. 
 
 

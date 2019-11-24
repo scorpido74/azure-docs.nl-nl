@@ -4,22 +4,22 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 7c081b3bc5f9e6273f680b24897f9aced4999afa
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: aac2f3ea2b52ac0319f96279deed13c1145749bd
+ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67176419"
+ms.lasthandoff: 11/23/2019
+ms.locfileid: "74451569"
 ---
 ## <a name="deploy-template-from-cloud-shell"></a>Sjabloon implementeren vanuit Cloud Shell
 
-U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjabloon te implementeren. Voor het implementeren van een externe-sjabloon, geeft u de URI van de sjabloon, precies zoals u zou voor elke externe implementatie doen. Voor het implementeren van een lokale sjabloon, moet u eerst uw sjabloon laden in het opslagaccount voor Cloud Shell. In deze sectie wordt beschreven hoe u de sjabloon om uw cloud shell-account te laden en implementeren als een lokaal bestand. Als u dit nog niet hebt Cloud Shell gebruikt, Zie [overzicht van Azure Cloud Shell](../articles/cloud-shell/overview.md) voor informatie over het instellen.
+U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjabloon te implementeren. To deploy an external template, provide the URI of the template exactly as you would for any external deployment. To deploy a local template, you must first load your template into the storage account for your Cloud Shell. This section describes how to load the template to your cloud shell account, and deploy it as a local file. If you haven't used Cloud Shell, see [Overview of Azure Cloud Shell](../articles/cloud-shell/overview.md) for information about setting it up.
 
-1. Meld u aan bij [Azure Portal](https://portal.azure.com).
+1. Meld u aan bij de [Azure-portal](https://portal.azure.com).
 
 1. Selecteer de Cloud Shell-resourcegroep. Het naampatroon is `cloud-shell-storage-<region>`.
 
-   ![Resourcegroep selecteren](./media/resource-manager-cloud-shell-deploy/select-cs-resource-group.png)
+   ![Resourcegroep selecteren](./media/resource-manager-cloud-shell-deploy/select-cloud-shell-resource-group.png)
 
 1. Selecteer het opslagaccount voor Cloud Shell.
 
@@ -33,29 +33,29 @@ U kunt [Cloud Shell](../articles/cloud-shell/overview.md) gebruiken om uw sjablo
 
    ![Container toevoegen](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. Geef uw container een naam en een niveau van toegang. De voorbeeldsjabloon in dit artikel bevat geen gevoelige informatie, waardoor het anonieme leestoegang. Selecteer **OK**.
+1. Give your container a name and an access level. The sample template in this article contains no sensitive information, so allow anonymous read access. Selecteer **OK**.
 
-   ![Container-waarden opgeven](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
+   ![Provide container values](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. Selecteer de container die u hebt gemaakt.
+1. Select the container you created.
 
-   ![Nieuwe container selecteren](./media/resource-manager-cloud-shell-deploy/select-container.png)
+   ![Select new container](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. Selecteer **Uploaden**.
 
-   ![Blob uploaden](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
+   ![Upload blob](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. Zoek de sjabloon en upload deze.
 
    ![Bestand uploaden](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
 
-1. Nadat deze is geüpload, selecteert u de sjabloon.
+1. After it has uploaded, select the template.
 
-   ![Selecteer de nieuwe sjabloon](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+   ![Select new template](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
 
-1. Kopieer de URL.
+1. Copy the URL.
 
-   ![URL kopiëren](./media/resource-manager-cloud-shell-deploy/copy-url.png)
+   ![Copy URL](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. Open de prompt.
 
