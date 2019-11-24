@@ -17,10 +17,6 @@
           href: time-series-insights-update-quickstart.md
 - name: Zelfstudies
   items:
-    - name: JavaScript-clientbibliotheek van Time Series Insights
-      href: tutorial-explore-js-client-lib.md
-    - name: Een web-app met één pagina maken
-      href: tutorial-create-tsi-sample-spa.md
     - name: Azure Time Series Insights GA
       items:
         - name: Een Time Series Insights-omgeving maken
