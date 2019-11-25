@@ -1,62 +1,62 @@
 ---
-title: Quick Start-Azure Key Vault-client bibliotheek voor python
-description: Meer informatie over het maken, ophalen en verwijderen van geheimen van een Azure-sleutel kluis met behulp van de python-client bibliotheek
+title: Quickstart -  Azure Key Vault client library for Python
+description: Learn how to create, retrieve, and delete secrets from an Azure key vault using the Python client library
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: b8a6099bb4beb7a3c3b6b132584dcb397f69ead5
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 7f1b238eb0e355d7e82b985ff82d7cb6cacfad59
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158696"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457583"
 ---
-# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Snelstartgids: Azure Key Vault-client bibliotheek voor python
+# <a name="quickstart-azure-key-vault-client-library-for-python"></a>Quickstart: Azure Key Vault client library for Python
 
-Ga aan de slag met de Azure Key Vault-client bibliotheek voor python. Volg de onderstaande stappen om het pakket te installeren en voorbeeld code voor basis taken uit te proberen.
+Get started with the Azure Key Vault client library for Python. Follow the steps below to install the package and try out example code for basic tasks.
 
-Met Azure Key Vault kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Gebruik de Key Vault-client bibliotheek voor python voor het volgende:
+Met Azure Sleutelkluis kunt u de cryptografische sleutels en geheimen beveiligen die door cloudtoepassingen en -services worden gebruikt. Use the Key Vault client library for Python to:
 
-- Verbeter de beveiliging en controle over sleutels en wacht woorden.
-- Versleutelings sleutels maken en importeren in een paar minuten.
-- Verminder de latentie met Cloud schaal en wereld wijde redundantie.
-- Vereenvoudig en Automatiseer taken voor SSL/TLS-certificaten.
-- Gebruik FIPS 140-2 level 2 Validated Hsm's.
+- Increase security and control over keys and passwords.
+- Create and import encryption keys in minutes.
+- Reduce latency with cloud scale and global redundancy.
+- Simplify and automate tasks for SSL/TLS certificates.
+- Use FIPS 140-2 Level 2 validated HSMs.
 
-[API-referentie documentatie](/python/api/overview/azure/key-vault?view=azure-python) | - [bibliotheek bron code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [pakket (python-pakket index)](https://pypi.org/project/azure-keyvault/)
+[API reference documentation](/python/api/overview/azure/key-vault?view=azure-python) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [Package (Python Package Index)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Vereisten
 
-- Een Azure-abonnement: [Maak er gratis een](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Python 2,7, 3.5.3 of hoger
-- [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) of [Azure PowerShell](/powershell/azure/overview)
+- An Azure subscription - [create one for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Python 2.7, 3.5.3, or later
+- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) or [Azure PowerShell](/powershell/azure/overview)
 
-In deze Snelstartgids wordt ervan uitgegaan dat u [Azure cli](/cli/azure/install-azure-cli?view=azure-cli-latest) uitvoert in een Linux-Terminal venster.
+This quickstart assumes you are running [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) in a Linux terminal window.
 
-## <a name="setting-up"></a>Instellen
+## <a name="setting-up"></a>Setting up
 
-### <a name="install-the-package"></a>Het pakket installeren
+### <a name="install-the-package"></a>Install the package
 
-Installeer in het console venster de Azure Key Vault geheimen-bibliotheek voor python.
+From the console window, install the Azure Key Vault secrets library for Python.
 
 ```console
 pip install azure-keyvault-secrets
 ```
 
-Voor deze Quick start moet u ook het Azure. Identity-pakket installeren:
+For this quickstart, you will need to install the azure.identity package as well:
 
 ```console
 pip install azure.identity
 ```
 
-### <a name="create-a-resource-group-and-key-vault"></a>Een resource groep en sleutel kluis maken
+### <a name="create-a-resource-group-and-key-vault"></a>Create a resource group and key vault
 
-In deze Snelstartgids wordt gebruikgemaakt van een vooraf gemaakte Azure-sleutel kluis. U kunt een sleutel kluis maken met behulp van de stappen in de [Snelstartgids van Azure cli](quick-create-cli.md), [Azure PowerShell Snelstartgids](quick-create-powershell.md)of [Azure Portal Quick](quick-create-portal.md)start. U kunt ook de volgende Azure CLI-opdrachten uitvoeren.
+This quickstart uses a pre-created Azure key vault. You can create a key vault by following the steps in the [Azure CLI quickstart](quick-create-cli.md), [Azure PowerShell quickstart](quick-create-powershell.md), or [Azure portal quickstart](quick-create-portal.md). Alternatively, you can run the Azure CLI commands below.
 
 > [!Important]
-> Elke sleutel kluis moet een unieke naam hebben. Vervang < uw-unieke kluis naam > door de naam van uw sleutel kluis in de volgende voor beelden.
+> Each key vault must have a unique name. Replace <your-unique-keyvault-name> with the name of your key vault in the following examples.
 
 ```azurecli
 az group create --name "myResourceGroup" -l "EastUS"
@@ -66,15 +66,15 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 ### <a name="create-a-service-principal"></a>Een service-principal maken
 
-De eenvoudigste manier om een op de cloud gebaseerde .NET-toepassing te verifiëren, is met een beheerde identiteit. Zie [een beheerde app Service-id gebruiken voor toegang tot Azure Key Vault](managed-identity.md) voor meer informatie. Deze Quick Start maakt echter een .NET-console toepassing. Als u een bureaublad toepassing met Azure wilt verifiëren, moet u een Service-Principal en toegangs beheer beleid gebruiken.
+The simplest way to authenticate a cloud-based .NET application is with a managed identity; see [Use an App Service managed identity to access Azure Key Vault](managed-identity.md) for details. For the sake of simplicity however, this quickstart creates a .NET console application. Authenticating a desktop application with Azure requires the use of a service principal and an access control policy.
 
-Maak een service-principal met behulp van de opdracht Azure CLI [AZ AD SP create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
+Create a service principle using the Azure CLI [az ad sp create-for-rbac](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) command:
 
 ```azurecli
 az ad sp create-for-rbac -n "http://mySP" --sdk-auth
 ```
 
-Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd. 
+This operation will return a series of key / value pairs. 
 
 ```console
 {
@@ -91,21 +91,21 @@ Met deze bewerking wordt een reeks sleutel-waardeparen geretourneerd.
 }
 ```
 
-Noteer de clientId-en clientSecret, aangezien we deze gebruiken in de stap [omgevings variabele instellen](#set-environmental-variables) hieronder.
+Take note of the clientId and clientSecret, as we will use them in the [Set environmental variable](#set-environmental-variables) step below.
 
-#### <a name="give-the-service-principal-access-to-your-key-vault"></a>De Service-Principal toegang verlenen tot uw sleutel kluis
+#### <a name="give-the-service-principal-access-to-your-key-vault"></a>Give the service principal access to your key vault
 
-Maak een toegangs beleid voor de sleutel kluis die machtigingen verleent aan uw Service-Principal door de clientId door te geven aan de opdracht [AZ-set-Policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) . Geef de Service-Principal Get, List en stel machtigingen voor zowel sleutels als geheimen.
+Create an access policy for your key vault that grants permission to your service principal by passing the clientId to the [az keyvault set-policy](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-set-policy) command. Give the service principal get, list, and set permissions for both keys and secrets.
 
 ```azurecli
 az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
 ```
 
-#### <a name="set-environmental-variables"></a>Omgevings variabelen instellen
+#### <a name="set-environmental-variables"></a>Set environmental variables
 
-De methode DefaultAzureCredential in onze toepassing is afhankelijk van drie omgevings variabelen: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`en `AZURE_TENANT_ID`. Stel deze variabelen in op de clientId-, clientSecret-en tenantId-waarden die u hebt genoteerd in de stap [een service-principal maken](#create-a-service-principal) met behulp van de `export VARNAME=VALUE` indeling. (Met deze methode worden alleen de variabelen ingesteld voor uw huidige shell en processen die zijn gemaakt op basis van de shell; als u deze variabelen permanent wilt toevoegen aan uw omgeving, bewerkt u het `/etc/environment ` bestand.) 
+The DefaultAzureCredential method in our application relies on three environmental variables: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`, and `AZURE_TENANT_ID`. Set these variables to the clientId, clientSecret, and tenantId values you noted in the [Create a service principal](#create-a-service-principal) step using the `export VARNAME=VALUE` format. (This method only sets the variables for your current shell and processes created from the shell; to permanently add these variables to your environment, edit your `/etc/environment ` file.) 
 
-U moet de naam van de sleutel kluis ook opslaan als een omgevings variabele met de naam `KEY_VAULT_NAME`.
+You will also need to save your key vault name as an environment variable called `KEY_VAULT_NAME`.
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -119,15 +119,15 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="object-model"></a>Object model
 
-Met de Azure Key Vault-client bibliotheek voor python kunt u sleutels en gerelateerde assets beheren, zoals certificaten en geheimen. In de onderstaande code voorbeelden ziet u hoe u een-client maakt, een geheim instelt, een geheim ophaalt en een geheim verwijdert.
+The Azure Key Vault client library for Python allows you to manage keys and related assets such as certificates and secrets. The code samples below will show you how to create a client, set a secret, retrieve a secret, and delete a secret.
 
-De volledige console-app is beschikbaar op https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+The entire console app is available at https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Code voorbeelden
+## <a name="code-examples"></a>Code examples
 
-### <a name="add-directives"></a>Instructies toevoegen
+### <a name="add-directives"></a>Add directives
 
-Voeg de volgende instructies toe aan het begin van de code:
+Add the following directives to the top of your code:
 
 ```python
 import os
@@ -135,9 +135,9 @@ from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 ```
 
-### <a name="authenticate-and-create-a-client"></a>Een client verifiëren en maken
+### <a name="authenticate-and-create-a-client"></a>Authenticate and create a client
 
-Het verifiëren van uw sleutel kluis en het maken van een sleutel kluis-client is afhankelijk van de omgevings variabelen in de bovenstaande stap [omgevings variabelen instellen](#set-environmental-variables) . De naam van de sleutel kluis wordt uitgebreid naar de sleutel kluis-URI, in de indeling https://< uw-sleutel-kluis naam >. kluis. Azure. net.
+Authenticating to your key vault and creating a key vault client depends on the environmental variables in the [Set environmental variables](#set-environmental-variables) step above. The name of your key vault is expanded to the key vault URI, in the format "https://<your-key-vault-name>.vault.azure.net".
 
 ```python
 credential = DefaultAzureCredential()
@@ -145,39 +145,39 @@ credential = DefaultAzureCredential()
 client = SecretClient(vault_endpoint=KVUri, credential=credential)
 ```
 
-### <a name="save-a-secret"></a>Een geheim opslaan
+### <a name="save-a-secret"></a>Save a secret
 
-Nu uw toepassing is geverifieerd, kunt u een geheim in uw sleutel kluis plaatsen met behulp van de client. SetSecret-methode] (/DotNet/API/Microsoft.Azure.keyvault.keyvaultclientextensions.setsecretasync) voor dit voor beeld is een naam vereist voor het geheim: we gebruiken ' mySecret ' in deze steek proef.  
+Now that your application is authenticated, you can put a secret into your keyvault using the client.SetSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.setsecretasync) This requires a name for the secret -- we're using "mySecret" in this sample.  
 
 ```python
 client.set_secret(secretName, secretValue);
 ```
 
-U kunt controleren of het geheim is ingesteld met de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
+You can verify that the secret has been set with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 ```
 
-### <a name="retrieve-a-secret"></a>Een geheim ophalen
+### <a name="retrieve-a-secret"></a>Retrieve a secret
 
-U kunt nu de eerder ingestelde waarde met de [client ophalen. Methode GetSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+You can now retrieve the previously set value with the [client.GetSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
 retrieved_secret = client.get_secret(secretName)
  ```
 
-Uw geheim wordt nu opgeslagen als `retrieved_secret.value`.
+Your secret is now saved as `retrieved_secret.value`.
 
 ### <a name="delete-a-secret"></a>Een geheim verwijderen
 
-Ten slotte gaan we het geheim verwijderen uit de sleutel kluis met de- [client. Methode DeleteSecret](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
+Finally, let's delete the secret from your key vault with the [client.DeleteSecret method](/dotnet/api/microsoft.azure.keyvault.keyvaultclientextensions.getsecretasync).
 
 ```python
 client.delete_secret(secretName);
 ```
 
-U kunt controleren of het geheim is verdwenen met de opdracht [AZ sleutel kluis Secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) :
+You can verify that the secret is gone with the [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) command:
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
@@ -185,7 +185,7 @@ az keyvault secret show --vault-name <your-unique-keyvault-name> --name mySecret
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, kunt u de Azure CLI of Azure PowerShell gebruiken om uw sleutel kluis en de bijbehorende resource groep te verwijderen.
+When no longer needed, you can use the Azure CLI or Azure PowerShell to remove your key vault and the corresponding  resource group.
 
 ```azurecli
 az group delete -g "myResourceGroup" -l "EastUS" 
@@ -203,14 +203,13 @@ import cmd
 from azure.keyvault.secrets import SecretClient
 from azure.identity import DefaultAzureCredential
 
-secretName = "mySecret";
-
 keyVaultName = os.environ["KEY_VAULT_NAME"];
 KVUri = "https://" + keyVaultName + ".vault.azure.net";
 
 credential = DefaultAzureCredential()
-
 client = SecretClient(vault_endpoint=KVUri, credential=credential)
+
+secretName = "mySecret";
 
 print("Input the value of your secret > ");
 secretValue = raw_input();
@@ -239,11 +238,11 @@ print(" done.");
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze Snelstartgids hebt u een sleutel kluis gemaakt, een geheim opgeslagen en dat geheim opgehaald. Bekijk de [volledige console-app in github](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
+In this quickstart you created a key vault, stored a secret, and retrieved that secret. See the [entire console app in GitHub](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 
-Ga verder met de volgende artikelen voor meer informatie over Key Vault en hoe u deze integreert met uw toepassingen.
+To learn more about Key Vault and how to integrate it with your applications, continue on to the articles below.
 
-- Een [overzicht van Azure Key Vault](key-vault-overview.md) lezen
-- Raadpleeg de [Azure Key Vault hand leiding voor ontwikkel aars](key-vault-developers-guide.md)
-- Meer informatie over [sleutels, geheimen en certificaten](about-keys-secrets-and-certificates.md)
-- [Azure Key Vault aanbevolen procedures](key-vault-best-practices.md) controleren
+- Read an [Overview of Azure Key Vault](key-vault-overview.md)
+- See the [Azure Key Vault developer's guide](key-vault-developers-guide.md)
+- Learn about [keys, secrets, and certificates](about-keys-secrets-and-certificates.md)
+- Review [Azure Key Vault best practices](key-vault-best-practices.md)

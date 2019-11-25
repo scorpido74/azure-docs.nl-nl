@@ -1,6 +1,6 @@
 ---
-title: Informatie over hoe modules logische uitvoeren op uw apparaten - Azure IoT Edge | Microsoft Docs
-description: Azure IoT Edge-modules zijn containers eenheden van de logica die kan worden geïmplementeerd en extern worden beheerd, zodat u bedrijfslogica op IoT Edge apparaten uitvoeren kunt
+title: Learn how modules run logic on your devices - Azure IoT Edge | Microsoft Docs
+description: Azure IoT Edge modules are containerized units of logic that can be deployed and managed remotely so that you can run business logic on IoT Edge devices
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,53 +8,52 @@ ms.date: 03/21/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 65cac484a9395aca47a38e2ba430b80c868267f5
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 744a901c6b0260f4fc14a2f06b88dfb36973b0f8
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65152655"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456582"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Informatie over Azure IoT Edge-modules
 
-Azure IoT Edge kunt u implementeren en beheren van zakelijke logica aan de rand in de vorm van *modules*. Azure IoT Edge-modules zijn de kleinste rekeneenheid beheerd door IoT Edge en Azure-services (zoals Azure Stream Analytics) of uw eigen oplossingsspecifieke code kunnen bevatten. Om te begrijpen hoe modules worden ontwikkeld, geïmplementeerd en beheerd, helpt het om te zien van de vier algemene onderdelen van een module:
+Azure IoT Edge lets you deploy and manage business logic on the edge in the form of *modules*. Azure IoT Edge modules are the smallest unit of computation managed by IoT Edge, and can contain Azure services (such as Azure Stream Analytics) or your own solution-specific code. To understand how modules are developed, deployed, and maintained, it helps to think of the four conceptual elements of a module:
 
-* Een **installatiekopie module** is een pakket met de software die een module definieert.
-* Een **module-exemplaar** is de specifieke rekeneenheid waarop u de installatiekopie van de module wordt uitgevoerd op een IoT Edge-apparaat. De module-exemplaar wordt gestart door de IoT Edge-runtime.
-* Een **module identiteit** is een stukje informatie (met inbegrip van beveiligingsreferenties) die zijn opgeslagen in IoT-Hub die is gekoppeld aan elk exemplaar van de module.
-* Een **moduledubbel** is een JSON-document dat is opgeslagen in IoT Hub, met informatie over de status voor een module-exemplaar, met inbegrip van metagegevens, configuraties en voorwaarden. 
+* A **module image** is a package containing the software that defines a module.
+* A **module instance** is the specific unit of computation running the module image on an IoT Edge device. The module instance is started by the IoT Edge runtime.
+* A **module identity** is a piece of information (including security credentials) stored in IoT Hub, that is associated to each module instance.
+* A **module twin** is a JSON document stored in IoT Hub, that contains state information for a module instance, including metadata, configurations, and conditions. 
 
-## <a name="module-images-and-instances"></a>Module-afbeeldingen en instanties
+## <a name="module-images-and-instances"></a>Module images and instances
 
-IoT Edge module afbeeldingen bevatten toepassingen die van het beheer, beveiliging en functies voor communicatie van de IoT Edge-runtime profiteren. U kunt uw eigen installatiekopieën module ontwikkelen of exporteren van een ondersteunde Azure-service, zoals Azure Stream Analytics.
-De afbeeldingen aanwezig zijn in de cloud en ze kunnen worden bijgewerkt, gewijzigd en geïmplementeerd in verschillende oplossingen. Bijvoorbeeld, bestaat een module die maakt gebruik van machine learning om te voorspellen van de uitvoer van de productielijn als een afzonderlijke installatiekopie dan een module die gebruikmaakt van computer vision voor het beheren van een drone. 
+IoT Edge module images contain applications that take advantage of the management, security, and communication features of the IoT Edge runtime. You can develop your own module images, or export one from a supported Azure service, such as Azure Stream Analytics.
+The images exist in the cloud and they can be updated, changed, and deployed in different solutions. For instance, a module that uses machine learning to predict production line output exists as a separate image than a module that uses computer vision to control a drone. 
 
-Telkens wanneer de installatiekopie van een module is geïmplementeerd op een apparaat en aan de slag door de IoT Edge-runtime, is een nieuw exemplaar van die module gemaakt. Twee apparaten in verschillende onderdelen van de hele wereld kunnen dezelfde installatiekopie van een module gebruiken. Elk apparaat moet echter een eigen instantie van de module wanneer de module wordt gestart op het apparaat. 
+Each time a module image is deployed to a device and started by the IoT Edge runtime, a new instance of that module is created. Two devices in different parts of the world could use the same module image. However, each device would have its own module instance when the module is started on the device. 
 
-![Diagram - Module afbeeldingen in de cloud, module-exemplaren op apparaten](./media/iot-edge-modules/image_instance.png)
+![Diagram - Module images in cloud, module instances on devices](./media/iot-edge-modules/image_instance.png)
 
-In uitvoering, modules installatiekopieën bestaan als containerinstallatiekopieën in een opslagplaats en module-exemplaren zijn containers op apparaten. 
+In implementation, modules images exist as container images in a repository, and module instances are containers on devices. 
 
 <!--
 As use cases for Azure IoT Edge grow, new types of module images and instances will be created. For example, resource constrained devices cannot run containers so may require module images that exist as dynamic link libraries and instances that are executables. 
 -->
 
-## <a name="module-identities"></a>Module-id 's
+## <a name="module-identities"></a>Module identities
 
-Wanneer een nieuw exemplaar van de module wordt gemaakt door de IoT Edge-runtime, wordt het exemplaar is gekoppeld aan een overeenkomstige module-id. De identiteit van de module is opgeslagen in IoT Hub, en wordt gebruikt als bereik voor adressen en beveiliging voor alle lokale en cloud-communicatie voor die specifieke module-exemplaar.
+When a new module instance is created by the IoT Edge runtime, the instance is associated with a corresponding module identity. The module identity is stored in IoT Hub, and is employed as the addressing and security scope for all local and cloud communications for that specific module instance.
 
-De identiteit die is gekoppeld aan een module-exemplaar afhankelijk is van de identiteit van het apparaat op waarop het exemplaar wordt uitgevoerd en de naam die u voor die module in uw oplossing opgeeft. Bijvoorbeeld, als u aanroepen `insight` een module die gebruikmaakt van een Azure Stream Analytics, en u deze implementeren op een apparaat met de naam `Hannover01`, IoT Edge-runtime maakt u een overeenkomstige module-id met de naam `/devices/Hannover01/modules/insight`.
+The identity associated with a module instance depends on the identity of the device on which the instance is running and the name you provide to that module in your solution. For instance, if you call `insight` a module that uses an Azure Stream Analytics, and you deploy it on a device called `Hannover01`, the IoT Edge runtime creates a corresponding module identity called `/devices/Hannover01/modules/insight`.
 
-Duidelijk in scenario's kunt als u wilt implementeren een installatiekopie van de module meerdere keren op hetzelfde apparaat, u implementeren dezelfde installatiekopie van meerdere keren met verschillende namen.
+Clearly, in scenarios when you need to deploy one module image multiple times on the same device, you can deploy the same image multiple times with different names.
 
-![Diagram - Module-id's zijn uniek binnen apparaten en alle apparaten](./media/iot-edge-modules/identity.png)
+![Diagram - Module identities are unique within devices and across devices](./media/iot-edge-modules/identity.png)
 
-## <a name="module-twins"></a>Moduledubbels
+## <a name="module-twins"></a>Module twins
 
-Elk exemplaar van de module heeft ook een bijbehorende moduledubbel die u gebruiken kunt voor het configureren van de module-exemplaar. Het exemplaar en het dubbele zijn gekoppeld met elkaar via de identiteit van de module. 
+Each module instance also has a corresponding module twin that you can use to configure the module instance. The instance and the twin are associated with each other through the module identity. 
 
-Een moduledubbel is een JSON-document waarin de eigenschappen van de informatie en configuratie van de module. Dit concept werkt parallel de [apparaatdubbel](../iot-hub/iot-hub-devguide-device-twins.md) concept van IoT Hub. De structuur van een moduledubbel is hetzelfde als een apparaatdubbel. De API's gebruikt om te communiceren met beide typen dubbels zijn ook hetzelfde. Het enige verschil tussen de twee is de identiteit die wordt gebruikt voor het starten van de client-SDK. 
+A module twin is a JSON document that stores module information and configuration properties. This concept parallels the [device twin](../iot-hub/iot-hub-devguide-device-twins.md) concept from IoT Hub. The structure of a module twin is the same as a device twin. The APIs used to interact with both types of twins are also the same. The only difference between the two is the identity used to instantiate the client SDK. 
 
 ```csharp
 // Create a ModuleClient object. This ModuleClient will act on behalf of a 
@@ -69,9 +68,9 @@ Twin twin = await client.GetTwinAsync(); 
 
 ## <a name="offline-capabilities"></a>Functionaliteiten offline
 
-Azure IoT Edge-modules kunnen offline werken voor onbepaalde tijd na het synchroniseren met IoT Hub ten minste één keer. IoT Edge-apparaten kunnen ook uitbreiden, deze offlinefunctionaliteit met andere IoT-apparaten. Zie voor meer informatie, [begrijpen uitgebreid offline-mogelijkheden voor IoT Edge-apparaten, modules en onderliggende apparaten](offline-capabilities.md).
+Azure IoT Edge modules can operate offline indefinitely after syncing with IoT Hub at least once. IoT Edge devices can also extend this offline capability to other IoT devices. For more information, see [Understand extended offline capabilities for IoT Edge devices, modules, and child devices](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Volgende stappen
- - [Informatie over de vereisten en hulpprogramma's voor het ontwikkelen van IoT Edge-modules](module-development.md)
- - [De Azure IoT Edge-runtime en de bijbehorende architectuur begrijpen](iot-edge-runtime.md)
+ - [Understand the requirements and tools for developing IoT Edge modules](module-development.md)
+ - [Understand the Azure IoT Edge runtime and its architecture](iot-edge-runtime.md)
 

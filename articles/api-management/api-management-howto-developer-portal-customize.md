@@ -1,6 +1,6 @@
 ---
-title: De beheerde ontwikkelaars Portal openen en aanpassen-Azure API Management | Microsoft Docs
-description: Meer informatie over het gebruik van de beheerde versie van de ontwikkelaars Portal in API Management.
+title: Access and customize the managed developer portal - Azure API Management | Microsoft Docs
+description: Learn how to use the managed version of the developer portal in API Management.
 services: api-management
 documentationcenter: API Management
 author: mikebudzynski
@@ -10,121 +10,124 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 11/04/2019
+ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 28ef082d6aac5557998f7b67443d4dafd3a0fb15
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 8629d07830622770c3b30dacdd1fabc8417d7f52
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74285580"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454418"
 ---
-# <a name="access-and-customize-developer-portal"></a>De ontwikkelaars Portal openen en aanpassen
+# <a name="access-and-customize-developer-portal"></a>Access and customize developer portal
 
-Ontwikkelaars Portal is een automatisch gegenereerde, volledig aanpas bare website met de documentatie van uw Api's. Het is waar API-gebruikers uw Api's kunnen detecteren, meer informatie over het gebruik ervan en toegang vragen.
+Developer portal is an automatically generated, fully customizable website with the documentation of your APIs. It is where API consumers can discover your APIs, learn how to use them, and request access.
 
 In deze zelfstudie leert u het volgende:
 
 > [!div class="checklist"]
-> * Toegang tot de beheerde versie van de ontwikkelaars Portal
-> * Navigeren door de beheer interface
-> * De inhoud aanpassen
-> * De wijzigingen publiceren
-> * De gepubliceerde portal weer geven
+> * Access the managed version of the developer portal
+> * Navigate its administrative interface
+> * Customize the content
+> * Publish the changes
+> * View the published portal
 
-Meer informatie over de ontwikkelaars Portal vindt u in het overzicht van de [Azure API Management-ontwikkelaars Portal](api-management-howto-developer-portal.md).
+You can find more details on the developer portal in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
 
-![API Management ontwikkelaars Portal-beheer modus](media/api-management-howto-developer-portal-customize/cover.png)
+![API Management developer portal - admin mode](media/api-management-howto-developer-portal-customize/cover.png)
 
 ## <a name="prerequisites"></a>Vereisten
 
 - Lees de volgende snelstart: [Een Azure API Management-exemplaar maken](get-started-create-service-instance.md)
-- Importeer en publiceer een Azure API Management-exemplaar. Zie voor meer informatie [importeren en publiceren](import-and-publish.md)
+- Import and publish an Azure API Management instance. For more information, see [Import and publish](import-and-publish.md)
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="access-the-portal-as-an-administrator"></a>Toegang krijgen tot de portal als beheerder
+## <a name="access-the-portal-as-an-administrator"></a>Access the portal as an administrator
 
-Volg de onderstaande stappen om toegang te krijgen tot de beheerde versie van de portal.
+Follow the steps below to access the managed version of the portal.
 
-1. Ga naar uw API Management service-exemplaar in de Azure Portal.
-1. Klik op de knop **ontwikkelaars Portal** in de bovenste navigatie balk. Er wordt een nieuw browser tabblad met een beheer versie van de portal geopend.
+1. Go to your API Management service instance in the Azure portal.
+1. Click on the **Developer portal** button in the top navigation bar. A new browser tab with an administrative version of the portal will open.
 
-## <a name="understand-the-portals-administrative-interface"></a>Meer informatie over de beheer interface van de portal
+## <a name="understand-the-portals-administrative-interface"></a>Understand the portal's administrative interface
 
-### <a name="default-content"></a>Standaard inhoud 
+### <a name="default-content"></a>Default content 
 
-Als u de portal voor de eerste keer opent, wordt de standaard inhoud automatisch op de achtergrond ingericht. Standaard inhoud is ontworpen om de mogelijkheden van de portal te presen teren en de hoeveelheid aanpassingen te minimaliseren die nodig zijn om uw portal aan te passen. Meer informatie over wat er is opgenomen in de Portal-inhoud, vindt u in het overzicht van de [Azure API Management-ontwikkelaars Portal](api-management-howto-developer-portal.md).
+If you're accessing the portal for the first time, the default content will be automatically provisioned in the background. Default content has been designed to showcase portal's capabilities and minimize the amount of customizations needed to personalize your portal. You can learn more about what is included in the portal content in the [Azure API Management developer portal overview](api-management-howto-developer-portal.md).
 
-### <a name="visual-editor"></a>Visuele editor
+### <a name="visual-editor"></a>Visual editor
 
-U kunt de inhoud van de portal aanpassen met de editor voor visuele elementen. Met de menu secties aan de linkerkant kunt u pagina's, media, indelingen, menu's, stijlen of website-instellingen maken of wijzigen. Met de menu opdrachten aan de onderkant kunt u scha kelen tussen View ports (bijvoorbeeld Mobile of desktop), de elementen van de portal weer geven die zichtbaar zijn voor geverifieerde of anonieme gebruikers of acties voor opslaan of ongedaan maken.
+You can customize the content of the portal with the visual editor. The menu sections on the left let you create or modify pages, media, layouts, menus, styles, or website settings. The menu items on the bottom let you switch between viewports (for example, mobile or desktop), view the elements of the portal visible to authenticated or anonymous users, or save or undo actions.
 
-U kunt rijen toevoegen aan een pagina door te klikken op een blauw pictogram met een plus teken. Widgets (bijvoorbeeld tekst, afbeeldingen of Api's lijst) kunnen worden toegevoegd door op een grijs pictogram met een plus teken te drukken. U kunt items op een pagina opnieuw rangschikken met de interactie slepen en neerzetten. 
+You can add rows to a page by clicking on a blue icon with a plus sign. Widgets (for example, text, images, or APIs list) can be added by pressing a grey icon with a plus sign. You can rearrange items in a page with the drag-and-drop interaction. 
 
-### <a name="layouts-and-pages"></a>Indelingen en pagina's
+### <a name="layouts-and-pages"></a>Layouts and pages
 
-![Pagina's en indelingen](media/api-management-howto-developer-portal-customize/pages-layouts.png)
+![Pages and layouts](media/api-management-howto-developer-portal-customize/pages-layouts.png)
 
-Indelingen bepalen hoe pagina's worden weer gegeven. In de standaard inhoud zijn er bijvoorbeeld twee indelingen: een is van toepassing op de start pagina en de andere op alle resterende pagina's.
+Layouts define how pages are displayed. For example, in the default content, there are two layouts - one applies to the home page, and the other to all remaining pages.
 
-Een indeling wordt toegepast op een pagina door te voldoen aan de URL-sjabloon van de pagina. Indeling met een URL-sjabloon van `/wiki/*` wordt bijvoorbeeld toegepast op elke pagina met het `/wiki/` segment in de URL: `/wiki/getting-started`, `/wiki/styles`, enzovoort.
+A layout gets applied to a page by matching its URL template to the page's URL. For example, layout with a URL template of `/wiki/*` will be applied to every page with the `/wiki/` segment in the URL: `/wiki/getting-started`, `/wiki/styles`, etc.
 
-In de bovenstaande afbeelding wordt inhoud die deel uitmaakt van de lay-out blauw gemarkeerd, terwijl de pagina rood is gemarkeerd. De menu secties zijn respectievelijk gemarkeerd.
+In the image above, content belonging to the layout is marked in blue, while the page is marked in red. The menu sections are marked respectively.
 
-### <a name="styling-guide"></a>Stijl gids
+### <a name="styling-guide"></a>Styling guide
 
-![Stijl gids](media/api-management-howto-developer-portal-customize/styling-guide.png)
+![Styling guide](media/api-management-howto-developer-portal-customize/styling-guide.png)
 
-Stijl gids is een paneel dat is gemaakt met ontwerpers. Het maakt het mogelijk om alle visuele elementen in uw portal te overzien en te stijlen. De stijl is hiërarchisch: veel elementen nemen eigenschappen over van andere elementen. Knop elementen gebruiken bijvoorbeeld kleuren voor tekst en achtergrond. Als u de kleur van een knop wilt wijzigen, moet u de oorspronkelijke kleur variant wijzigen.
+Styling guide is a panel created with designers in mind. It allows for overseeing and styling all the visual elements in your portal. The styling is hierarchical - many elements inherit properties from other elements. For example, button elements use colors for text and background. To change a button's color, you need to change the original color variant.
 
-Als u een variant wilt bewerken, klikt u erop en selecteert u het potlood pictogram dat boven op de pagina wordt weer gegeven. Wanneer u de wijzigingen in het pop-upvenster hebt aangebracht, sluit u het.
+To edit a variant, click on it and select the pencil icon that appears on top of it. Once you make the changes in the pop-up window, close it.
 
 ### <a name="save-button"></a>De knop Opslaan
 
 ![De knop Opslaan](media/api-management-howto-developer-portal-customize/save-button.png)
 
-Wanneer u een wijziging aanbrengt in de portal, moet u deze hand matig opslaan door op de knop **Opslaan** in het menu onderaan te drukken. Wanneer u uw wijzigingen opslaat, wordt de gewijzigde inhoud automatisch naar uw API Management-service geüpload.
+Whenever you make a change in the portal, you need to save it manually by pressing the **Save** button in the menu at the bottom. When you save your changes, the modified content is automatically uploaded to your API Management service.
 
-## <a name="customize-the-portals-content"></a>De inhoud van de portal aanpassen
+## <a name="customize-the-portals-content"></a>Customize the portal's content
 
-Voordat u uw portal voor de bezoekers beschikbaar maakt, moet u de automatisch gegenereerde inhoud personaliseren. De aanbevolen wijzigingen zijn de indelingen, stijlen en de inhoud van de start pagina.
+Before you make your portal available to the visitors, you should personalize the automatically generated content. Recommended changes include the layouts, styles, and the content of the home page.
 
 > [!NOTE]
-> Vanwege integratie overwegingen kunnen de volgende pagina's niet worden verwijderd of verplaatst onder een andere URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef``/publish`, `/signin`, `/signin-sso``/signup`.
+> Due to integration considerations, the following pages can't be removed or moved under a different URL: `/404`, `/500`, `/captcha`, `/change-password`, `/config.json`, `/confirm/invitation`, `/confirm-v2/identities/basic/signup`, `/confirm-v2/password`, `/internal-status-0123456789abcdef`, `/publish`, `/signin`, `/signin-sso`, `/signup`.
 
 ### <a name="home-page"></a>Startpagina
 
-De standaard **Startpagina** wordt gevuld met een dummy-inhoud. U kunt de volledige secties met de inhoud verwijderen of de structuur hand haven en de elementen één voor één aanpassen. Vervang de gegenereerde tekst en afbeeldingen met uw eigen afbeelding en zorg ervoor dat de koppelingen naar de gewenste locaties verwijzen.
+The default **Home** page is filled with dummy content. You can either remove the whole sections with the content or keep the structure and adjust the elements one by one. Replace the generated text and images with your own and make sure the links point to desired locations.
 
-### <a name="layouts"></a>Indelingen
+### <a name="layouts"></a>Layouts
 
-Vervang het automatisch gegenereerde logo in de navigatie balk door uw eigen afbeelding.
+Replace the automatically generated logo in the navigation bar with your own image.
 
-### <a name="styling"></a>Opmaak
+### <a name="styling"></a>Styling
 
-Hoewel u geen stijlen hoeft aan te passen, kunt u overwegen bepaalde elementen aan te passen. Wijzig de primaire kleur bijvoorbeeld zodat deze overeenkomt met de kleur van uw merk.
+Although you don't need to adjust any styles, you may consider adjusting particular elements. For example, change the primary color to match your brand's color.
 
-### <a name="customization-example"></a>Voor beeld van aanpassing
+### <a name="customization-example"></a>Customization example
 
-In de onderstaande video laten we zien hoe u de inhoud van de portal kunt bewerken, het uiterlijk van de website kunt aanpassen en de wijzigingen publiceert.
+In the video below we demonstrate how to edit the content of the portal, customize the website's look, and publish the changes.
 
 > [!VIDEO https://www.youtube.com/embed/5mMtUSmfUlw]
 
-## <a name="publish-the-portal"></a>De portal publiceren
+## <a name="publish"> </a>Publish the portal
 
-Als u uw portal en de meest recente wijzigingen beschikbaar wilt maken voor bezoekers, moet u deze publiceren.
+To make your portal and its latest changes available to visitors, you need to publish it.
 
-1. Zorg ervoor dat u uw wijzigingen hebt opgeslagen door te klikken op het pictogram **Opslaan** .
-1. Klik op **website publiceren** in het gedeelte **bewerkingen** van het menu. Deze bewerking kan enkele minuten duren.  
-    ![Portal publiceren](media/api-management-howto-developer-portal-customize/publish-portal.png)
+1. Make sure you saved your changes by clicking on the **Save** icon.
+1. Click on **Publish website** in the **Operations** section of the menu. Deze bewerking kan enkele minuten duren.  
+    ![Publish portal](media/api-management-howto-developer-portal-customize/publish-portal.png)
 
-## <a name="visit-the-published-portal"></a>Ga naar de gepubliceerde Portal
+> [!NOTE]
+> The portal needs to be republished after API Management service configuration changes, such as assigning a custom domain, updating the identity providers, setting delegation, specifying sign-in and product terms, and more.
 
-Nadat u de portal hebt gepubliceerd, kunt u deze openen op dezelfde URL als het deel venster beheer, bijvoorbeeld `https://contoso-api.developer.azure-api.net`. Bekijk het in een afzonderlijke browser sessie (incognito/private Browse mode) als een externe gebruiker.
+## <a name="visit-the-published-portal"></a>Visit the published portal
+
+After you publish the portal, you can access it at the same URL as the administrative panel, for example `https://contoso-api.developer.azure-api.net`. View it in a separate browser session (incognito / private browsing mode) as an external visitor.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over de ontwikkelaars portal:
+Learn more about the developer portal:
 
-- [Overzicht van Azure API Management-ontwikkelaars Portal](api-management-howto-developer-portal.md)
+- [Azure API Management developer portal overview](api-management-howto-developer-portal.md)

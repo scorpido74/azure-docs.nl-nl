@@ -1,113 +1,108 @@
 ---
-title: Beleid voor het bewaren van niet-gecodeerde manifesten in Azure Container Registry
-description: Meer informatie over het inschakelen van een Bewaar beleid in uw Azure container Registry voor het automatisch verwijderen van niet-gecodeerde manifesten na een opgegeven periode.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Policy to retain untagged manifests
+description: Learn how to enable a retention policy in your Azure container registry, for automatic deletion of untagged manifests after a defined period.
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: danlep
-ms.openlocfilehash: 79b3e48373114bfcee6dca2e6142f23bed1699e6
-ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/05/2019
-ms.locfileid: "71972658"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454810"
 ---
-# <a name="set-a-retention-policy-for-untagged-manifests"></a>Een Bewaar beleid voor niet-gecodeerde manifesten instellen
+# <a name="set-a-retention-policy-for-untagged-manifests"></a>Set a retention policy for untagged manifests
 
-Azure Container Registry biedt u de mogelijkheid om een *Bewaar beleid* in te stellen voor opgeslagen afbeeldings manifesten die geen gekoppelde labels (niet-*gecodeerde manifesten*) hebben. Wanneer een Bewaar beleid is ingeschakeld, worden niet-gecodeerde manifesten in het REGI ster automatisch verwijderd na een aantal dagen dat u instelt. Deze functie voor komt dat het REGI ster wordt gevuld met artefacten die niet nodig zijn en helpt u bij het besparen van opslag kosten. Als het kenmerk `delete-enabled` van een niet-gelabeld manifest is ingesteld op `false`, kan het manifest niet worden verwijderd en is het Bewaar beleid niet van toepassing.
+Azure Container Registry gives you the option to set a *retention policy* for stored image manifests that don't have any associated tags (*untagged manifests*). When a retention policy is enabled, untagged manifests in the registry are automatically deleted after a number of days you set. This feature prevents the registry from filling up with artifacts that aren't needed and helps you save on storage costs. If the `delete-enabled` attribute of an untagged manifest is set to `false`, the manifest can't be deleted, and the retention policy doesn't apply.
 
-U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken om de opdracht voorbeelden in dit artikel uit te voeren. Als u het lokaal wilt gebruiken, is versie 2.0.74 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+You can use the Azure Cloud Shell or a local installation of the Azure CLI to run the command examples in this article. If you'd like to use it locally, version 2.0.74 or later is required. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
 > [!IMPORTANT]
-> Deze functie is momenteel beschikbaar als preview-versie en er [zijn enkele beperkingen van toepassing](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
+> This feature is currently in preview, and some [limitations apply](#preview-limitations). Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden][terms-of-use]. Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 > [!WARNING]
-> Een Bewaar beleid met caret instellen: verwijderde afbeeldings gegevens zijn onherstelbaar. Als u systemen hebt die installatie kopieën pullen per manifest Digest (in plaats van de naam van de installatie kopie), moet u geen Bewaar beleid voor niet-gecodeerde manifesten instellen. Als u niet-gelabelde afbeeldingen verwijdert, kunnen die systemen de installatie kopieën niet uit het REGI ster halen. In plaats van op manifest te halen, kunt u overwegen om een uniek schema voor *labels* te gebruiken, een [Aanbevolen best practice](container-registry-image-tag-version.md).
+> Set a retention policy with care--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not set a retention policy for untagged manifests. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
 ## <a name="preview-limitations"></a>Preview-beperkingen
 
-* Alleen een **Premium** container Registry kan worden geconfigureerd met een Bewaar beleid. Zie [Azure container Registry sku's](container-registry-skus.md)voor meer informatie over de service lagen van het REGI ster.
-* U kunt alleen een Bewaar beleid voor niet-gecodeerde manifesten instellen.
-* Het Bewaar beleid is momenteel alleen van toepassing op manifesten die niet zijn gelabeld *nadat* het beleid is ingeschakeld. Bestaande niet-gecodeerde manifesten in het REGI ster vallen niet onder het beleid. Als u bestaande niet-gecodeerde manifesten wilt verwijderen, raadpleegt u voor beelden in [container installatie kopieën verwijderen in azure container Registry](container-registry-delete.md).
+* Only a **Premium** container registry can be configured with a retention policy. For information about registry service tiers, see [Azure Container Registry SKUs](container-registry-skus.md).
+* You can only set a retention policy for untagged manifests.
+* The retention policy currently applies only to manifests that are untagged *after* the policy is enabled. Existing untagged manifests in the registry aren't subject to the policy. To delete existing untagged manifests, see examples in [Delete container images in Azure Container Registry](container-registry-delete.md).
 
-## <a name="about-the-retention-policy"></a>Over het Bewaar beleid
+## <a name="about-the-retention-policy"></a>About the retention policy
 
-Azure Container Registry verwijst naar het tellen van manifesten in het REGI ster. Wanneer een manifest wordt ontlabeld, wordt het Bewaar beleid gecontroleerd. Als een Bewaar beleid is ingeschakeld, wordt een manifest verwijderings bewerking in de wachtrij geplaatst, met een specifieke datum, op basis van het aantal dagen dat is ingesteld in het beleid.
+Azure Container Registry does reference counting for manifests in the registry. When a manifest is untagged, it checks the retention policy. If a retention policy is enabled, a manifest delete operation is queued, with a specific date, according to the number of days set in the policy.
 
-Een afzonderlijke taak wachtrij beheer verwerkt voortdurend berichten en schaalt naar behoefte. Stel dat u twee manifesten, 1 uur gescheiden, in een REGI ster hebt gelabeld met een Bewaar beleid van 30 dagen. Er worden twee berichten in de wachtrij geplaatst. Vervolgens worden de berichten 30 dagen later, ongeveer 1 uur van elkaar, opgehaald uit de wachtrij en verwerkt, ervan uitgaande dat het beleid nog steeds van kracht is.
+A separate queue management job constantly processes messages, scaling as needed. As an example, suppose you untagged two manifests, 1 hour apart, in a registry with a retention policy of 30 days. Two messages would be queued. Then, 30 days later, approximately 1 hour apart, the messages would be retrieved from the queue and processed, assuming the policy was still in effect.
 
-## <a name="set-a-retention-policy---cli"></a>Een Bewaar beleid instellen-CLI
+## <a name="set-a-retention-policy---cli"></a>Set a retention policy - CLI
 
-In het volgende voor beeld ziet u hoe u de Azure CLI gebruikt om een Bewaar beleid voor niet-gecodeerde manifesten in een REGI ster in te stellen.
+The following example shows you how to use the Azure CLI to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Een Bewaar beleid inschakelen
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-Standaard is geen Bewaar beleid ingesteld in een container register. Als u een Bewaar beleid wilt instellen of bijwerken, voert u de opdracht [AZ ACR config retention update][az-acr-config-retention-update] uit in de Azure cli. U kunt een aantal dagen tussen 0 en 365 opgeven om de niet-gecodeerde manifesten te bewaren. Als u geen aantal dagen opgeeft, stelt de opdracht een standaard waarde van 7 dagen in. Na de Bewaar periode worden alle niet-gelabelde manifesten in het REGI ster automatisch verwijderd.
+By default, no retention policy is set in a container registry. To set or update a retention policy, run the [az acr config retention update][az-acr-config-retention-update] command in the Azure CLI. You can specify a number of days between 0 and 365 to retain the untagged manifests. If you don't specify a number of days, the command sets a default of 7 days. After the retention period, all untagged manifests in the registry are automatically deleted.
 
-In het volgende voor beeld wordt een Bewaar beleid van 30 dagen voor niet-gecodeerde manifesten in het REGI ster *myregistry*:
+The following example sets a retention policy of 30 days for untagged manifests in the registry *myregistry*:
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 30 --type UntaggedManifests
 ```
 
-In het volgende voor beeld wordt een beleid ingesteld voor het verwijderen van een manifest in het REGI ster zodra het een label heeft. Maak dit beleid door een Bewaar periode van 0 dagen in te stellen. 
+The following example sets a policy to delete any manifest in the registry as soon as it's untagged. Create this policy by setting a retention period of 0 days. 
 
 ```azurecli
 az acr config retention update --registry myregistry --status enabled --days 0 --type UntaggedManifests
 ```
 
-### <a name="validate-a-retention-policy"></a>Een Bewaar beleid valideren
+### <a name="validate-a-retention-policy"></a>Validate a retention policy
 
-Als u het voor gaande beleid inschakelt met een Bewaar periode van 0 dagen, kunt u snel controleren of niet-gecodeerde manifesten worden verwijderd:
+If you enable the preceding policy with a retention period of 0 days, you can quickly verify that untagged manifests are deleted:
 
-1. Push een test installatie kopie `hello-world:latest`-afbeelding naar het REGI ster of vervang een andere test installatie kopie naar keuze.
-1. Tag de `hello-world:latest`-afbeelding, bijvoorbeeld met behulp van de opdracht [AZ ACR repository tag][az-acr-repository-untag] . Het niet-gelabelde manifest blijft in het REGI ster.
+1. Push a test image `hello-world:latest` image to your registry, or substitute another test image of your choice.
+1. Untag the `hello-world:latest` image, for example, using the [az acr repository untag][az-acr-repository-untag] command. The untagged manifest remains in the registry.
     ```azurecli
     az acr repository untag --name myregistry --image hello-world:latest
     ```
-1. Binnen een paar seconden wordt het niet-gelabelde manifest verwijderd. U kunt het verwijderen controleren door manifesten in de opslag plaats weer te geven, bijvoorbeeld met behulp van de opdracht [AZ ACR repository show-manifests][az-acr-repository-show-manifests] . Als de test installatie kopie de enige is in de opslag plaats, wordt de opslag plaats zelf verwijderd.
+1. Within a few seconds, the untagged manifest is deleted. You can verify the deletion by listing manifests in the repository, for example, using the [az acr repository show-manifests][az-acr-repository-show-manifests] command. If the test image was the only one in the repository, the repository itself is deleted.
 
-### <a name="disable-a-retention-policy"></a>Een Bewaar beleid uitschakelen
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-Als u wilt zien hoe het Bewaar beleid is ingesteld in een REGI ster, voert u de opdracht [AZ ACR config retentie show][az-acr-config-retention-show] uit:
+To see the retention policy set in a registry, run the [az acr config retention show][az-acr-config-retention-show] command:
 
 ```azurecli
 az acr config retention show --registry myregistry
 ```
 
-Als u een Bewaar beleid wilt uitschakelen in een REGI ster, voert u de opdracht [AZ ACR config retention update][az-acr-config-retention-update] uit en stelt u `--status disabled` in:
+To disable a retention policy in a registry, run the [az acr config retention update][az-acr-config-retention-update] command and set `--status disabled`:
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests
 ```
 
-## <a name="set-a-retention-policy---portal"></a>Een Bewaar beleid instellen-Portal
+## <a name="set-a-retention-policy---portal"></a>Set a retention policy - portal
 
-U kunt ook het Bewaar beleid van een REGI ster instellen in de [Azure Portal](https://portal.azure.com). In het volgende voor beeld ziet u hoe u de portal kunt gebruiken om een Bewaar beleid voor niet-gecodeerde manifesten in een REGI ster in te stellen.
+You can also set a registry's retention policy in the [Azure portal](https://portal.azure.com). The following example shows you how to use the portal to set a retention policy for untagged manifests in a registry.
 
-### <a name="enable-a-retention-policy"></a>Een Bewaar beleid inschakelen
+### <a name="enable-a-retention-policy"></a>Enable a retention policy
 
-1. Navigeer naar uw Azure container Registry. Onder **beleids regels**selecteert u **bewaren** (preview-versie).
-1. Selecteer in **status** **ingeschakeld**.
-1. Selecteer een aantal dagen tussen 0 en 365 om de niet-gecodeerde manifesten te bewaren. Selecteer **Opslaan**.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Enabled**.
+1. Select a number of days between 0 and 365 to retain the untagged manifests. Selecteer **Opslaan**.
 
-![Een Bewaar beleid inschakelen in Azure Portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
+![Enable a retention policy in Azure portal](media/container-registry-retention-policy/container-registry-retention-policy01.png)
 
-### <a name="disable-a-retention-policy"></a>Een Bewaar beleid uitschakelen
+### <a name="disable-a-retention-policy"></a>Disable a retention policy
 
-1. Navigeer naar uw Azure container Registry. Onder **beleids regels**selecteert u **bewaren** (preview-versie).
-1. Selecteer in **status**de optie **uitgeschakeld**. Selecteer **Opslaan**.
+1. Navigate to your Azure container registry. Under **Policies**, select **Retention** (Preview).
+1. In **Status**, select **Disabled**. Selecteer **Opslaan**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over opties voor het [verwijderen van installatie kopieën en opslag](container-registry-delete.md) plaatsen in azure container Registry
+* Learn more about options to [delete images and repositories](container-registry-delete.md) in Azure Container Registry
 
-* Meer informatie over het [automatisch verwijderen](container-registry-auto-purge.md) van geselecteerde installatie kopieën en manifesten uit een REGI ster
+* Learn how to [automatically purge](container-registry-auto-purge.md) selected images and manifests from a registry
 
-* Meer informatie over opties voor het [vergren delen van afbeeldingen en manifesten](container-registry-image-lock.md) in een REGI ster
+* Learn more about options to [lock images and manifests](container-registry-image-lock.md) in a registry
 
 <!-- LINKS - external -->
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/

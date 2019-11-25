@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge installeren op Windows | Microsoft Docs
-description: Installatie-instructies Azure IoT Edge voor Windows 10, Windows Server en Windows IoT core
+title: Install Azure IoT Edge on Windows | Microsoft Docs
+description: Azure IoT Edge installation instructions on Windows 10, Windows Server, and Windows IoT Core
 author: kgremban
 manager: philmea
 ms.reviewer: veyalla
@@ -9,294 +9,293 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: kgremban
-ms.custom: seodec18
-ms.openlocfilehash: ae3f866ff5e4266983117e93f2aab5982065947e
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 401e988e41a25a999c047bf93b6794388d38461e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964387"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456801"
 ---
-# <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Installeer de Azure IoT Edge runtime op Windows
+# <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Install the Azure IoT Edge runtime on Windows
 
-Met de Azure IoT Edge runtime wordt een apparaat omgezet in een IoT Edge apparaat. De runtime kan worden geïmplementeerd op apparaten als een Raspberry Pi of zo groot als een industriële server. Zodra een apparaat is geconfigureerd met de IoT Edge runtime, kunt u beginnen met het implementeren van bedrijfs logica vanuit de Cloud. 
+The Azure IoT Edge runtime is what turns a device into an IoT Edge device. The runtime can be deployed on devices as small as a Raspberry Pi or as large as an industrial server. Once a device is configured with the IoT Edge runtime, you can start deploying business logic to it from the cloud. 
 
-Zie [inzicht in de Azure IOT Edge runtime en de architectuur](iot-edge-runtime.md)voor meer informatie over de IOT Edge runtime.
+To learn more about the IoT Edge runtime, see [Understand the Azure IoT Edge runtime and its architecture](iot-edge-runtime.md).
 
-Dit artikel bevat de stappen voor het installeren van de Azure IoT Edge runtime op uw Windows x64-systeem (AMD/Intel) met behulp van Windows-containers.
+This article lists the steps to install the Azure IoT Edge runtime on your Windows x64 (AMD/Intel) system using Windows containers.
 
 > [!NOTE]
-> Een bekende probleem met een Windows-besturings systeem verhindert de overgang naar de energie status van de slaap stand en sluimer stand wanneer IoT Edge modules (geïsoleerde Windows nano server-containers) worden uitgevoerd. Dit probleem heeft gevolgen voor de levens duur van de accu op het apparaat.
+> A known Windows operating system issue prevents transition to sleep and hibernate power states when IoT Edge modules (process-isolated Windows Nano Server containers) are running. This issue impacts battery life on the device.
 >
-> Als tijdelijke oplossing gebruikt u de opdracht `Stop-Service iotedge` om alle actieve IoT Edge modules te stoppen voordat u deze energie status gebruikt. 
+> As a workaround, use the command `Stop-Service iotedge` to stop any running IoT Edge modules before using these power states. 
 
-Het gebruik van Linux-containers op Windows-systemen is geen aanbevolen of ondersteunde productie configuratie voor Azure IoT Edge. Het kan echter worden gebruikt voor ontwikkelings-en test doeleinden. Zie [IOT Edge gebruiken in Windows om Linux-containers uit te voeren](how-to-install-iot-edge-windows-with-linux.md)voor meer informatie.
+Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes. To learn more, see [Use IoT Edge on Windows to run Linux containers](how-to-install-iot-edge-windows-with-linux.md).
 
-Zie [Azure IOT Edge releases](https://github.com/Azure/azure-iotedge/releases)voor informatie over wat er in de nieuwste versie van IOT Edge is opgenomen.
+For information about what's included in the latest version of IoT Edge, see [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
 ## <a name="prerequisites"></a>Vereisten
 
-Gebruik deze sectie om te controleren of uw Windows-apparaat IoT Edge kan ondersteunen en om dit voor te bereiden voor een container engine vóór de installatie. 
+Use this section to review whether your Windows device can support IoT Edge, and to prepare it for a container engine before installation. 
 
-### <a name="supported-windows-versions"></a>Ondersteunde Windows-versies
+### <a name="supported-windows-versions"></a>Supported Windows versions
 
-Voor ontwikkel-en test scenario's kunnen Azure IoT Edge met Windows-containers worden geïnstalleerd op elke versie van Windows 10 of Windows Server 2019 (build 17763) die ondersteuning biedt voor de functie containers. Zie [Azure IOT Edge ondersteunde systemen](support.md#operating-systems)voor meer informatie over welke besturings systemen momenteel worden ondersteund voor productie scenario's. 
+For development and test scenarios, Azure IoT Edge with Windows containers can be installed on any version of Windows 10 or Windows Server 2019 (build 17763) that supports the containers feature. For information about which operating systems are currently supported for production scenarios, see [Azure IoT Edge supported systems](support.md#operating-systems). 
 
-IoT core-apparaten moeten de optionele functie IoT core-Windows-containers bevatten ter ondersteuning van de IoT Edge runtime. Gebruik de volgende opdracht in een [externe Power shell-sessie](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) om te controleren of Windows-containers op uw apparaat worden ondersteund: 
+IoT Core devices must include the IoT Core- Windows Containers optional feature to support the IoT Edge runtime. Use the following command in a [remote PowerShell session](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) to check that Windows containers are supported on your device: 
 
 ```powershell
 Get-Service vmcompute
 ```
 
-Als de service aanwezig is, moet u een geslaagde reactie krijgen met de status van de service die **wordt uitgevoerd**. Als de vmcompute-service niet wordt gevonden, voldoet het apparaat niet aan de vereisten voor IoT Edge. Neem contact op met uw hardwareprovider om te vragen over ondersteuning voor deze functie. 
+If the service is present, you should get a successful response with the service status listed as **running**. If the vmcompute service is not found, then your device does not meet the requirements for IoT Edge. Contact your hardware provider to ask about support for this feature. 
 
-### <a name="prepare-for-a-container-engine"></a>Voorbereiden op een container engine 
+### <a name="prepare-for-a-container-engine"></a>Prepare for a container engine 
 
-Azure IoT Edge is afhankelijk van een met [OCI compatibele](https://www.opencontainers.org/) container engine. Gebruik voor productie scenario's de Moby-engine die is opgenomen in het installatie script om Windows-containers uit te voeren op uw Windows-apparaat. 
+Azure IoT Edge relies on a [OCI-compatible](https://www.opencontainers.org/) container engine. For production scenarios, use the Moby engine included in the installation script to run Windows containers on your Windows device. 
 
-## <a name="install-iot-edge-on-a-new-device"></a>IoT Edge installeren op een nieuw apparaat
+## <a name="install-iot-edge-on-a-new-device"></a>Install IoT Edge on a new device
 
 >[!NOTE]
->Azure IoT Edge software pakketten zijn onderworpen aan de licentie voorwaarden in de pakketten (in de licentie lijst). Lees de licentie voorwaarden voordat u het pakket gebruikt. Uw installatie en het gebruik van het pakket zijn uw acceptatie van deze voor waarden. Als u niet akkoord gaat met de licentie voorwaarden, mag u het pakket niet gebruiken.
+>Azure IoT Edge software packages are subject to the license terms located in the packages (in the LICENSE directory). Please read the license terms prior to using the package. Your installation and use of the package constitutes your acceptance of these terms. If you do not agree with the license terms, do not use the package.
 
-Met een Power shell-script wordt de Azure IoT Edge Security daemon gedownload en geïnstalleerd. De Security daemon start vervolgens de eerste van twee runtime modules, de IoT Edge-agent, waarmee externe implementaties van andere modules worden ingeschakeld. 
+A PowerShell script downloads and installs the Azure IoT Edge security daemon. The security daemon then starts the first of two runtime modules, the IoT Edge agent, which enables remote deployments of other modules. 
 
 >[!TIP]
->Voor IoT core-apparaten kunt u het beste de installatie opdrachten uitvoeren met behulp van een RemotePowerShell-sessie. Zie [using Power shell for Windows IOT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell)(Engelstalig) voor meer informatie.
+>For IoT Core devices, we recommend running the installation commands using a RemotePowerShell session. For more information, see [Using PowerShell for Windows IoT](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell).
 
-Wanneer u de IoT Edge runtime voor de eerste keer op een apparaat installeert, moet u het apparaat inrichten met een identiteit van een IoT-hub. Eén IoT Edge apparaat kan hand matig worden ingericht met behulp van een apparaat connection string dat door IoT Hub wordt geleverd. U kunt ook gebruikmaken van de Device Provisioning Service (DPS) voor het automatisch inrichten van apparaten. Dit is handig als u veel apparaten hebt om in te stellen. Afhankelijk van uw inrichtings keuze, kiest u het juiste installatie script. 
+When you install the IoT Edge runtime for the first time on a device, you need to provision the device with an identity from an IoT hub. A single IoT Edge device can be provisioned manually using a device connection string provided by IoT Hub. Or, you can use the Device Provisioning Service (DPS) to automatically provision devices, which is helpful when you have many devices to set up. Depending on your provisioning choice, choose the appropriate installation script. 
 
-In de volgende secties worden de algemene use cases en para meters voor het IoT Edge-installatie script op een nieuw apparaat beschreven. 
+The following sections describe the common use cases and parameters for the IoT Edge installation script on a new device. 
 
-### <a name="option-1-install-and-manually-provision"></a>Optie 1: installeren en hand matig inrichten
+### <a name="option-1-install-and-manually-provision"></a>Option 1: Install and manually provision
 
-In deze eerste optie geeft u een **apparaat Connection String** gegenereerd door IOT hub om het apparaat in te richten. 
+In this first option, you provide a **device connection string** generated by IoT Hub to provision the device. 
 
-In dit voor beeld ziet u een hand matige installatie met Windows-containers:
+This example demonstrates a manual installation with Windows containers:
 
-1. Als u dit nog niet hebt gedaan, registreert u een nieuw IoT Edge apparaat en haalt u het **apparaat Connection String**op. Kopieer de connection string voor gebruik verderop in deze sectie. U kunt deze stap volt ooien met behulp van de volgende hulpprogram ma's:
+1. If you haven't already, register a new IoT Edge device and retrieve the **device connection string**. Copy the connection string to use later in this section. You can complete this step using the following tools:
 
    * [Azure-portal](how-to-register-device.md#register-in-the-azure-portal)
    * [Azure CLI](how-to-register-device.md#register-with-the-azure-cli)
    * [Visual Studio Code](how-to-register-device.md#register-with-visual-studio-code)
 
-2. Voer Power shell uit als beheerder.
+2. Run PowerShell as an administrator.
 
    >[!NOTE]
-   >Gebruik een AMD64-sessie van Power shell om IoT Edge, niet Power shell (x86), te installeren. Als u niet zeker weet welk sessie type u gebruikt, voert u de volgende opdracht uit:
+   >Use an AMD64 session of PowerShell to install IoT Edge, not PowerShell (x86). If you're not sure which session type you're using, run the following command:
    >
    >```powershell
    >(Get-Process -Id $PID).StartInfo.EnvironmentVariables["PROCESSOR_ARCHITECTURE"]
    >```
 
-3. Met de opdracht **Deploy-IoTEdge** wordt gecontroleerd of de Windows-computer een ondersteunde versie heeft, wordt de functie containers ingeschakeld, waarna de Moby-runtime en de IOT Edge-runtime worden gedownload. De opdracht wordt standaard ingesteld op het gebruik van Windows-containers. 
+3. The **Deploy-IoTEdge** command checks that your Windows machine is on a supported version, turns on the containers feature, and then downloads the moby runtime and the IoT Edge runtime. The command defaults to using Windows containers. 
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Deploy-IoTEdge
    ```
 
-4. Op dit moment kunnen IoT-kern apparaten automatisch opnieuw worden opgestart. Op andere Windows 10-of Windows Server-apparaten wordt u mogelijk gevraagd om opnieuw op te starten. Als dit het geval is, start u het apparaat nu opnieuw op. Zodra het apparaat klaar is, voert u Power shell als beheerder opnieuw uit.
+4. At this point, IoT Core devices may restart automatically. Other Windows 10 or Windows Server devices may prompt you to restart. If so, restart your device now. Once your device is ready, run PowerShell as an administrator again.
 
-5. De **initialisatie-IoTEdge-** opdracht configureert de IOT Edge runtime op de computer. De opdracht wordt standaard ingesteld op hand matig inrichten met Windows-containers. 
+5. The **Initialize-IoTEdge** command configures the IoT Edge runtime on your machine. The command defaults to manual provisioning with Windows containers. 
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
    Initialize-IoTEdge
    ```
 
-6. Wanneer u hierom wordt gevraagd, geeft u de connection string op van het apparaat dat u in stap 1 hebt opgehaald. Het apparaat connection string het fysieke apparaat koppelt aan een apparaat-ID in IoT Hub. 
+6. When prompted, provide the device connection string that you retrieved in step 1. The device connection string associates the physical device with a device ID in IoT Hub. 
 
-   De connection string van het apparaat heeft de volgende indeling en mag geen aanhalings tekens bevatten: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
+   The device connection string takes the following format, and should not include quotation marks: `HostName={IoT hub name}.azure-devices.net;DeviceId={device name};SharedAccessKey={key}`
 
-7. Volg de stappen in [verifiëren geslaagde installatie](#verify-successful-installation) om de status van IOT Edge op het apparaat te controleren. 
+7. Use the steps in [Verify successful installation](#verify-successful-installation) to check the status of IoT Edge on your device. 
 
-Wanneer u een apparaat hand matig installeert en inricht, kunt u extra para meters gebruiken voor het wijzigen van de installatie, waaronder:
+When you install and provision a device manually, you can use additional parameters to modify the installation including:
 
-* Direct verkeer om een proxy server te passeren
-* Het installatie programma naar een offline Directory laten verwijzen
-* Een specifieke agent container installatie kopie declareren en referenties opgeven als deze zich in een persoonlijk REGI ster bevinden
+* Direct traffic to go through a proxy server
+* Point the installer to an offline directory
+* Declare a specific agent container image, and provide credentials if it's in a private registry
 
-Meer informatie over deze installatie opties kunt u overs Laan om meer te weten te komen over [alle installatie parameters](#all-installation-parameters).
+For more information about these installation options, skip ahead to learn about [all installation parameters](#all-installation-parameters).
 
-### <a name="option-2-install-and-automatically-provision"></a>Optie 2: installeren en automatisch inrichten
+### <a name="option-2-install-and-automatically-provision"></a>Option 2: Install and automatically provision
 
-In deze tweede optie richt u het apparaat in met behulp van de IoT Hub Device Provisioning Service. Geef de **bereik-id** van een Device Provisioning service-exemplaar op, samen met alle andere informatie die specifiek is voor uw voorkeurs [Attestation-mechanisme](../iot-dps/concepts-security.md#attestation-mechanism):
+In this second option, you provision the device using the IoT Hub Device Provisioning Service. Provide the **Scope ID** from a Device Provisioning Service instance along with any other information specific to your preferred [attestation mechanism](../iot-dps/concepts-security.md#attestation-mechanism):
 
-* [Een gesimuleerd IoT Edge-apparaat maken en inrichten met een virtuele TPM in Windows](how-to-auto-provision-simulated-device-windows.md)
-* [Een IoT Edge apparaat maken en inrichten met behulp van symmetrische sleutel attest](how-to-auto-provision-symmetric-keys.md)
+* [Create and provision a simulated IoT Edge device with a virtual TPM on Windows](how-to-auto-provision-simulated-device-windows.md)
+* [Create and provision an IoT Edge device using symmetric key attestation](how-to-auto-provision-symmetric-keys.md)
 
-Wanneer u een apparaat automatisch installeert en inricht, kunt u extra para meters gebruiken voor het wijzigen van de installatie, waaronder:
+When you install and provision a device automatically, you can use additional parameters to modify the installation including:
 
-* Direct verkeer om een proxy server te passeren
-* Het installatie programma naar een offline Directory laten verwijzen
-* Een specifieke agent container installatie kopie declareren en referenties opgeven als deze zich in een persoonlijk REGI ster bevinden
+* Direct traffic to go through a proxy server
+* Point the installer to an offline directory
+* Declare a specific agent container image, and provide credentials if it's in a private registry
 
-Voor meer informatie over deze installatie opties gaat u verder met het lezen van dit artikel of gaat u naar meer informatie over [de installatie parameters](#all-installation-parameters).
+For more information about these installation options, continue reading this article or skip to learn about [All installation parameters](#all-installation-parameters).
 
-## <a name="offline-installation"></a>Offline-installatie
+## <a name="offline-installation"></a>Offline installation
 
-Tijdens de installatie worden twee bestanden gedownload:
+During installation two files are downloaded:
 
-* Microsoft Azure IoT Edge cab, dat de IoT Edge Security daemon (iotedged), Moby container engine en Moby CLI bevat.
-* Visual C++ Redistributable Package (VC runtime) MSI
+* Microsoft Azure IoT Edge cab, which contains the IoT Edge security daemon (iotedged), Moby container engine, and Moby CLI.
+* Visual C++ redistributable package (VC runtime) msi
 
-U kunt een of beide van deze bestanden van tevoren naar het apparaat downloaden en vervolgens het installatie script aanwijzen in de map met de bestanden. Het installatie programma controleert eerst de Directory en downloadt alleen de onderdelen die niet worden gevonden. Als alle bestanden offline beschikbaar zijn, kunt u installeren zonder Internet verbinding. U kunt deze functie ook gebruiken om een specifieke versie van de onderdelen te installeren.  
+You can download one or both of these files ahead of time to the device, then point the installation script at the directory that contains the files. The installer checks the directory first, and then only downloads components that aren't found. If all the files are available offline, you can install with no internet connection. You can also use this feature to install a specific version of the components.  
 
-Zie [Azure IOT Edge releases](https://github.com/Azure/azure-iotedge/releases)voor de nieuwste IOT Edge installatie bestanden samen met vorige versies.
+For the latest IoT Edge installation files along with previous versions, see [Azure IoT Edge releases](https://github.com/Azure/azure-iotedge/releases).
 
-Als u met offline onderdelen wilt installeren, gebruikt u de para meter `-OfflineInstallationPath` als onderdeel van de opdracht Deploy-IoTEdge en geeft u het absolute pad naar de bestands directory op. Bijvoorbeeld:
+To install with offline components, use the `-OfflineInstallationPath` parameter as part of the Deploy-IoTEdge command and provide the absolute path to the file directory. Bijvoorbeeld:
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Deploy-IoTEdge -OfflineInstallationPath C:\Downloads\iotedgeoffline
 ```
 
-U kunt ook de para meter Offline installatiepad gebruiken met de opdracht update-IoTEdge, die verderop in dit artikel wordt geïntroduceerd. 
+You can also use the offline installation path parameter with the Update-IoTEdge command, introduced later in this article. 
 
-## <a name="verify-successful-installation"></a>Geslaagde installatie controleren
+## <a name="verify-successful-installation"></a>Verify successful installation
 
-Controleer de status van de IoT Edge-service. Deze moet worden weer gegeven als actief.  
+Controleer de status van de IoT Edge-service. It should be listed as running.  
 
 ```powershell
 Get-Service iotedge
 ```
 
-Bekijk service Logboeken in de afgelopen vijf minuten. Als u de IoT Edge runtime zojuist hebt geïnstalleerd, ziet u mogelijk een lijst met fouten uit de tijd tussen het uitvoeren van **Deploy-IoTEdge** en **Initialize-IoTEdge**. Deze fouten worden verwacht, omdat de service probeert te starten voordat deze wordt geconfigureerd. 
+Examine service logs from the last 5 minutes. If you just finished installing the IoT Edge runtime, you may see a list of errors from the time between running **Deploy-IoTEdge** and **Initialize-IoTEdge**. These errors are expected, as the service is trying to start before being configured. 
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
 ```
 
-Voer een automatische controle uit voor de meest voorkomende configuratie-en netwerk fouten.
+Run an automated check for the most common configuration and networking errors.
 
 ```powershell
 iotedge check
 ```
 
-Een lijst met actieve modules weer geven. Na een nieuwe installatie is de enige module die u moet zien, **edgeAgent**. Nadat u [IOT Edge-modules](how-to-deploy-modules-portal.md) voor de eerste keer hebt geïmplementeerd, wordt de andere systeem module, **edgeHub**, ook op het apparaat gestart. 
+List running modules. After a new installation, the only module you should see running is **edgeAgent**. After you [deploy IoT Edge modules](how-to-deploy-modules-portal.md) for the first time, the other system module, **edgeHub**, will start on the device too. 
 
 ```powershell
 iotedge list
 ```
 
-## <a name="manage-module-containers"></a>Module containers beheren
+## <a name="manage-module-containers"></a>Manage module containers
 
-De IoT Edge-service vereist een container engine die op uw apparaat wordt uitgevoerd. Wanneer u een module implementeert op een apparaat, gebruikt de IoT Edge runtime de container-Engine om de container installatie kopie uit een REGI ster in de cloud te halen. De IoT Edge-service stelt u in staat om te communiceren met uw modules en logboeken op te halen, maar soms wilt u de container engine gebruiken om met de container zelf te communiceren. 
+The IoT Edge service requires a container engine running on your device. When you deploy a module to a device, the IoT Edge runtime uses the container engine to pull the container image from a registry in the cloud. The IoT Edge service enables you to interact with your modules and retrieve logs, but sometimes you may want to use the container engine to interact with the container itself. 
 
-Zie voor meer informatie over module concepten [begrijpen Azure IOT Edge-modules](iot-edge-modules.md). 
+For more information about module concepts, see [Understand Azure IoT Edge modules](iot-edge-modules.md). 
 
-Als u Windows-containers op uw Windows IoT Edge-apparaat uitvoert, bevat de IoT Edge installatie de Moby-container engine. De Moby-engine is gebaseerd op dezelfde standaarden als docker en is ontworpen om parallel te worden uitgevoerd op dezelfde computer als docker Desktop. Daarom moet u, als u de containers wilt behalen die worden beheerd door de Moby-engine, deze engine specifiek richten in plaats van docker. 
+If you're running Windows containers on your Windows IoT Edge device, then the IoT Edge installation included the Moby container engine. The Moby engine was based on the same standards as Docker, and was designed to run in parallel on the same machine as Docker Desktop. For that reason, if you want to target containers managed by the Moby engine, you have to specifically target that engine instead of Docker. 
 
-Als u bijvoorbeeld alle docker-installatie kopieën wilt weer geven, gebruikt u de volgende opdracht:
+For example, to list all Docker images, use the following command:
 
 ```powershell
 docker images
 ```
 
-Als u alle Moby-installatie kopieën wilt weer geven, wijzigt u dezelfde opdracht met een verwijzing naar de Moby-Engine: 
+To list all Moby images, modify the same command with a pointer to the Moby engine: 
 
 ```powershell
 docker -H npipe:////./pipe/iotedge_moby_engine images
 ```
 
-De engine-URI wordt vermeld in de uitvoer van het installatie script of u kunt deze vinden in de sectie container runtime-instellingen voor het bestand config. yaml. 
+The engine URI is listed in the output of the installation script, or you can find it in the container runtime settings section for the config.yaml file. 
 
-![moby_runtime-URI in config. yaml](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+![moby_runtime uri in config.yaml](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
 
-Zie [docker-opdracht regel interfaces](https://docs.docker.com/engine/reference/commandline/docker/)voor meer informatie over de opdrachten die u kunt gebruiken om te communiceren met containers en installatie kopieën die op uw apparaat worden uitgevoerd.
+For more information about commands you can use to interact with containers and images running on your device, see [Docker command-line interfaces](https://docs.docker.com/engine/reference/commandline/docker/).
 
-## <a name="update-an-existing-installation"></a>Een bestaande installatie bijwerken
+## <a name="update-an-existing-installation"></a>Update an existing installation
 
-Als u de IoT Edge runtime al hebt geïnstalleerd op een apparaat voordat u het hebt ingericht met een identiteit van IoT Hub, kunt u de runtime bijwerken zonder dat u de apparaatgegevens opnieuw hoeft in te voeren. 
+If you've already installed the IoT Edge runtime on a device before and provisioned it with an identity from IoT Hub, then you can update the runtime without having to reenter your device information. 
 
-Zie [IOT Edge Security daemon en runtime bijwerken](how-to-update-iot-edge.md)voor meer informatie.
+For more information, see [Update the IoT Edge security daemon and runtime](how-to-update-iot-edge.md).
 
-In dit voor beeld ziet u een installatie die naar een bestaand configuratie bestand verwijst en gebruikmaakt van Windows-containers: 
+This example shows an installation that points to an existing configuration file, and uses Windows containers: 
 
 ```powershell
 . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
 Update-IoTEdge
 ```
 
-Wanneer u IoT Edge bijwerkt, kunt u aanvullende para meters gebruiken om de update te wijzigen, waaronder:
+When you update IoT Edge, you can use additional parameters to modify the update, including:
 
-* Direct verkeer om een proxy server te passeren, of
-* Het installatie programma naar een offline Directory laten verwijzen 
-* Opnieuw opstarten zonder dat u zo nodig wordt gevraagd
+* Direct traffic to go through a proxy server, or
+* Point the installer to an offline directory 
+* Restarting without a prompt if necessary
 
-U kunt geen container installatie kopie van de IoT Edge agent declareren met script parameters omdat die informatie al is ingesteld in het configuratie bestand van de vorige installatie. Als u de installatie kopie van de agent container wilt wijzigen, doet u dat in het bestand config. yaml. 
+You can't declare an IoT Edge agent container image with script parameters because that information is already set in the configuration file from the previous installation. If you want to modify the agent container image, do so in the config.yaml file. 
 
-Voor meer informatie over deze update opties gebruikt u de opdracht `Get-Help Update-IoTEdge -full` of raadpleegt u [alle installatie parameters](#all-installation-parameters).
+For more information about these update options, use the command `Get-Help Update-IoTEdge -full` or refer to [all installation parameters](#all-installation-parameters).
 
-## <a name="uninstall-iot-edge"></a>IoT Edge verwijderen
+## <a name="uninstall-iot-edge"></a>Uninstall IoT Edge
 
-Als u de IoT Edge-installatie wilt verwijderen van uw Windows-apparaat, gebruikt u de volgende opdracht in een beheer-Power shell-venster. Met deze opdracht wordt de IoT Edge runtime verwijderd, samen met uw bestaande configuratie en de Moby-Engine gegevens. 
+If you want to remove the IoT Edge installation from your Windows device, use the following command from an administrative PowerShell window. This command removes the IoT Edge runtime, along with your existing configuration and the Moby engine data. 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
 Uninstall-IoTEdge
 ```
 
-De opdracht uninstall-IoTEdge werkt niet in Windows IoT core. Als u IoT Edge van Windows IoT core-apparaten wilt verwijderen, moet u uw Windows IoT Core-installatie kopie opnieuw implementeren. 
+The Uninstall-IoTEdge command does not work on Windows IoT Core. To remove IoT Edge from Windows IoT Core devices, you need to redeploy your Windows IoT Core image. 
 
-Gebruik de opdracht `Get-Help Uninstall-IoTEdge -full` voor meer informatie over verwijderings opties. 
+For more information about uninstallation options, use the command `Get-Help Uninstall-IoTEdge -full`. 
 
-## <a name="all-installation-parameters"></a>Alle installatie parameters
+## <a name="all-installation-parameters"></a>All installation parameters
 
-In de vorige secties werden veelvoorkomende installatie scenario's geïntroduceerd met voor beelden van het gebruik van para meters voor het wijzigen van het installatie script. Deze sectie bevat naslag tabellen van de algemene para meters die worden gebruikt om IoT Edge te installeren, bij te werken of te verwijderen. 
+The previous sections introduced common installation scenarios with examples of how to use parameters to modify the installation script. This section provides reference tables of the common parameters used to install, update, or uninstall IoT Edge. 
 
-### <a name="deploy-iotedge"></a>Implementeren-IoTEdge
+### <a name="deploy-iotedge"></a>Deploy-IoTEdge
 
-Met de opdracht Deploy-IoTEdge worden de IoT Edge Security daemon en de bijbehorende afhankelijkheden gedownload en geïmplementeerd. De implementatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht `Get-Help Deploy-IoTEdge -full` voor de volledige lijst.  
+The Deploy-IoTEdge command downloads and deploys the IoT Edge Security Daemon and its dependencies. The deployment command accepts these common parameters, among others. For the full list, use the command `Get-Help Deploy-IoTEdge -full`.  
 
-| Parameter | Geaccepteerde waarden | Opmerkingen |
+| Parameter | Accepted values | Opmerkingen |
 | --------- | --------------- | -------- |
-| **ContainerOs** | **Windows** of **Linux** | Als er geen container besturings systeem is opgegeven, is Windows de standaard waarde.<br><br>Voor Windows-containers maakt IoT Edge gebruik van de Moby-container engine die is opgenomen in de installatie. Voor Linux-containers moet u een container Engine installeren voordat u de installatie start. |
-| **Webtoepassingsproxy** | Proxy-URL | Neem deze para meter op als uw apparaat een proxy server moet door lopen om het Internet te bereiken. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
-| **OfflineInstallationPath** | Mappad | Als deze para meter is opgenomen, controleert het installatie programma de vermelde map voor de IoT Edge cab-en VC runtime-bestanden die nodig zijn voor de installatie. Bestanden die niet in de map zijn gevonden, worden gedownload. Als beide bestanden zich in de map bevinden, kunt u IoT Edge installeren zonder een Internet verbinding. U kunt deze para meter ook gebruiken om een specifieke versie te gebruiken. |
-| **InvokeWebRequestParameters** | Hashtabel van para meters en waarden | Tijdens de installatie worden er diverse webaanvragen gedaan. Gebruik dit veld om para meters in te stellen voor deze webaanvragen. Deze para meter is handig voor het configureren van referenties voor proxy servers. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
-| **RestartIfNeeded** | geen | Met deze vlag kan het implementatie script de computer opnieuw opstarten zonder te vragen, indien nodig. |
+| **ContainerOs** | **Windows** or **Linux** | If no container operating system is specified, Windows is the default value.<br><br>For Windows containers, IoT Edge uses the moby container engine included in the installation. For Linux containers, you need to install a container engine before starting the installation. |
+| **Proxy** | Proxy URL | Include this parameter if your device needs to go through a proxy server to reach the internet. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md). |
+| **OfflineInstallationPath** | Directory path | If this parameter is included, the installer will check the listed directory for the IoT Edge cab and VC Runtime MSI files required for installation. Any files not found in the directory are downloaded. If both files are in the directory, you can install IoT Edge without an internet connection. You can also use this parameter to use a specific version. |
+| **InvokeWebRequestParameters** | Hashtable of parameters and values | During installation, several web requests are made. Use this field to set parameters for those web requests. This parameter is useful to configure credentials for proxy servers. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md). |
+| **RestartIfNeeded** | geen | This flag allows the deployment script to restart the machine without prompting, if necessary. |
 
-### <a name="initialize-iotedge"></a>Initialisatie-IoTEdge
+### <a name="initialize-iotedge"></a>Initialize-IoTEdge
 
-De initialisatie-IoTEdge-opdracht configureert IoT Edge met uw apparaat connection string en operationele gegevens. Veel van de gegevens die door deze opdracht worden gegenereerd, worden vervolgens opgeslagen in het iotedge\config.yaml-bestand. De initialisatie opdracht accepteert deze algemene para meters, onder andere. Gebruik de opdracht `Get-Help Initialize-IoTEdge -full` voor de volledige lijst. 
+The Initialize-IoTEdge command configures IoT Edge with your device connection string and operational details. Much of the information generated by this command is then stored in the iotedge\config.yaml file. The initialization command accepts these common parameters, among others. For the full list, use the command `Get-Help Initialize-IoTEdge -full`. 
 
-| Parameter | Geaccepteerde waarden | Opmerkingen |
+| Parameter | Accepted values | Opmerkingen |
 | --------- | --------------- | -------- |
-| **Handmatig** | Geen | **Switch-para meter**. Als er geen inrichtings type is opgegeven, is hand matig de standaard waarde.<br><br>Declareert dat u een apparaat connection string opgeeft om het apparaat hand matig in te richten |
-| **DPS** | Geen | **Switch-para meter**. Als er geen inrichtings type is opgegeven, is hand matig de standaard waarde.<br><br>Declareert dat u een DPS-scope-ID (Device Provisioning Service) opgeeft en de registratie-ID van uw apparaat moet worden ingericht via DPS.  |
-| **DeviceConnectionString** | Een connection string van een IoT Edge apparaat dat is geregistreerd in een IoT Hub, in enkele aanhalings tekens | **Vereist** voor hand matige installatie. Als u geen connection string in de script parameters opgeeft, wordt u tijdens de installatie gevraagd om er een te maken. |
-| **Scope** | Een bereik-ID van een instantie van Device Provisioning Service die is gekoppeld aan uw IoT Hub. | **Vereist** voor de installatie van DPS. Als u geen bereik-ID in de script parameters opgeeft, wordt u tijdens de installatie gevraagd om er een te maken. |
-| **Registratie** | Een registratie-ID die is gegenereerd door uw apparaat | **Vereist** voor de installatie van DPS als TPM of symmetrische sleutel attest wordt gebruikt. |
-| **SymmetricKey** | De symmetrische sleutel die wordt gebruikt om de IoT Edge apparaat-id in te richten wanneer DPS wordt gebruikt | **Vereist** voor de installatie van DPS als gebruikmaakt van symmetrische sleutel Attestation. |
-| **ContainerOs** | **Windows** of **Linux** | Als er geen container besturings systeem is opgegeven, is Windows de standaard waarde.<br><br>Voor Windows-containers maakt IoT Edge gebruik van de Moby-container engine die is opgenomen in de installatie. Voor Linux-containers moet u een container Engine installeren voordat u de installatie start. |
-| **InvokeWebRequestParameters** | Hashtabel van para meters en waarden | Tijdens de installatie worden er diverse webaanvragen gedaan. Gebruik dit veld om para meters in te stellen voor deze webaanvragen. Deze para meter is handig voor het configureren van referenties voor proxy servers. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
-| **AgentImage** | URI-installatie kopie van IoT Edge agent | Een nieuwe IoT Edge-installatie maakt standaard gebruik van de nieuwste roulerende tag voor de installatie kopie van de IoT Edge agent. Gebruik deze para meter om een specifieke tag voor de installatie kopie versie in te stellen of om uw eigen agent installatie kopie op te geven. Zie voor meer informatie [IOT Edge Tags begrijpen](how-to-update-iot-edge.md#understand-iot-edge-tags). |
-| **Gebruikersnaam** | Gebruikers naam container register | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef een gebruikers naam op die toegang heeft tot het REGI ster. |
-| **Wachtwoord** | Teken reeks met beveiligd wacht woord | Gebruik deze para meter alleen als u de para meter-AgentImage instelt op een container in een persoonlijk REGI ster. Geef het wacht woord op voor toegang tot het REGI ster. |
+| **Manual** | Geen | **Switch parameter**. If no provisioning type is specified, manual is the default value.<br><br>Declares that you will provide a device connection string to provision the device manually |
+| **Dps** | Geen | **Switch parameter**. If no provisioning type is specified, manual is the default value.<br><br>Declares that you will provide a Device Provisioning Service (DPS) scope ID and your device's Registration ID to provision through DPS.  |
+| **DeviceConnectionString** | A connection string from an IoT Edge device registered in an IoT Hub, in single quotes | **Required** for manual installation. If you don't provide a connection string in the script parameters, you will be prompted for one during installation. |
+| **ScopeId** | A scope ID from an instance of Device Provisioning Service associated with your IoT Hub. | **Required** for DPS installation. If you don't provide a scope ID in the script parameters, you will be prompted for one during installation. |
+| **RegistrationId** | A registration ID generated by your device | **Required** for DPS installation if using TPM or symmetric key attestation. |
+| **SymmetricKey** | The symmetric key used to provision the IoT Edge device identity when using DPS | **Required** for DPS installation if using symmetric key attestation. |
+| **ContainerOs** | **Windows** or **Linux** | If no container operating system is specified, Windows is the default value.<br><br>For Windows containers, IoT Edge uses the moby container engine included in the installation. For Linux containers, you need to install a container engine before starting the installation. |
+| **InvokeWebRequestParameters** | Hashtable of parameters and values | During installation, several web requests are made. Use this field to set parameters for those web requests. This parameter is useful to configure credentials for proxy servers. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md). |
+| **AgentImage** | IoT Edge agent image URI | By default, a new IoT Edge installation uses the latest rolling tag for the IoT Edge agent image. Use this parameter to set a specific tag for the image version, or to provide your own agent image. For more information, see [Understand IoT Edge tags](how-to-update-iot-edge.md#understand-iot-edge-tags). |
+| **Gebruikersnaam** | Container registry username | Use this parameter only if you set the -AgentImage parameter to a container in a private registry. Provide a username with access to the registry. |
+| **Wachtwoord** | Secure password string | Use this parameter only if you set the -AgentImage parameter to a container in a private registry. Provide the password to access the registry. |
 
 ### <a name="update-iotedge"></a>Update-IoTEdge
 
-| Parameter | Geaccepteerde waarden | Opmerkingen |
+| Parameter | Accepted values | Opmerkingen |
 | --------- | --------------- | -------- |
-| **ContainerOs** | **Windows** of **Linux** | Als er geen container besturingssysteem is opgegeven, is Windows de standaard waarde. Voor Windows-containers wordt een container engine opgenomen in de installatie. Voor Linux-containers moet u een container Engine installeren voordat u de installatie start. |
-| **Webtoepassingsproxy** | Proxy-URL | Neem deze para meter op als uw apparaat een proxy server moet door lopen om het Internet te bereiken. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
-| **InvokeWebRequestParameters** | Hashtabel van para meters en waarden | Tijdens de installatie worden er diverse webaanvragen gedaan. Gebruik dit veld om para meters in te stellen voor deze webaanvragen. Deze para meter is handig voor het configureren van referenties voor proxy servers. Zie [een IOT edge apparaat configureren om te communiceren via een proxy server](how-to-configure-proxy-support.md)voor meer informatie. |
-| **OfflineInstallationPath** | Mappad | Als deze para meter is opgenomen, controleert het installatie programma de vermelde map voor de IoT Edge cab-en VC runtime-bestanden die nodig zijn voor de installatie. Bestanden die niet in de map zijn gevonden, worden gedownload. Als beide bestanden zich in de map bevinden, kunt u IoT Edge installeren zonder een Internet verbinding. U kunt deze para meter ook gebruiken om een specifieke versie te gebruiken. |
-| **RestartIfNeeded** | geen | Met deze vlag kan het implementatie script de computer opnieuw opstarten zonder te vragen, indien nodig. |
+| **ContainerOs** | **Windows** or **Linux** | If no container OS is specified, Windows is the default value. For Windows containers, a container engine will be included in the installation. For Linux containers, you need to install a container engine before starting the installation. |
+| **Proxy** | Proxy URL | Include this parameter if your device needs to go through a proxy server to reach the internet. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md). |
+| **InvokeWebRequestParameters** | Hashtable of parameters and values | During installation, several web requests are made. Use this field to set parameters for those web requests. This parameter is useful to configure credentials for proxy servers. For more information, see [Configure an IoT Edge device to communicate through a proxy server](how-to-configure-proxy-support.md). |
+| **OfflineInstallationPath** | Directory path | If this parameter is included, the installer will check the listed directory for the IoT Edge cab and VC Runtime MSI files required for installation. Any files not found in the directory are downloaded. If both files are in the directory, you can install IoT Edge without an internet connection. You can also use this parameter to use a specific version. |
+| **RestartIfNeeded** | geen | This flag allows the deployment script to restart the machine without prompting, if necessary. |
 
 ### <a name="uninstall-iotedge"></a>Uninstall-IoTEdge
 
-| Parameter | Geaccepteerde waarden | Opmerkingen |
+| Parameter | Accepted values | Opmerkingen |
 | --------- | --------------- | -------- |
-| **Verkopers** | geen | Met deze vlag wordt de verwijdering afgedwongen als de vorige poging om te verwijderen is mislukt. 
-| **RestartIfNeeded** | geen | Met deze vlag kan het uninstall-script de computer opnieuw opstarten zonder te vragen, indien nodig. |
+| **Force** | geen | This flag forces the uninstallation in case the previous attempt to uninstall was unsuccessful. 
+| **RestartIfNeeded** | geen | This flag allows the uninstall script to restart the machine without prompting, if necessary. |
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u een IoT Edge apparaat hebt ingericht terwijl de runtime is geïnstalleerd, kunt u [IOT Edge modules implementeren](how-to-deploy-modules-portal.md).
+Now that you have an IoT Edge device provisioned with the runtime installed, you can [deploy IoT Edge modules](how-to-deploy-modules-portal.md).
 
-Als u problemen ondervindt met de installatie van IoT Edge op de juiste wijze, raadpleegt u de pagina [probleem oplossing](troubleshoot.md) .
+If you are having problems installing IoT Edge properly, check out the [troubleshooting](troubleshoot.md) page.
 
-Zie [de IOT Edge Security daemon en runtime bijwerken](how-to-update-iot-edge.md)als u een bestaande installatie wilt bijwerken naar de nieuwste versie van IOT Edge.
+To update an existing installation to the newest version of IoT Edge, see [Update the IoT Edge security daemon and runtime](how-to-update-iot-edge.md).

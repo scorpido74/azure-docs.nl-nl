@@ -1,22 +1,17 @@
 ---
-title: 'Zelf studie: app implementeren vanuit geo-gerepliceerde Azure Container Registry'
+title: Tutorial - Deploy from geo-replicated registry
 description: Een op Linux gebaseerde web-app implementeren in twee verschillende Azure-regio's met behulp van een containerinstallatiekopie van een Azure-containerregister met geo-replicatie. Deel twee van een serie van drie.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: tutorial
 ms.date: 08/20/2018
-ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 0aebc31e1b8e6849d4cc0aeccc0e0a79edf0e65d
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 5b075e1065ef8c30837000f490cc93525b4b61cc
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931418"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456099"
 ---
-# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Zelf studie: een web-app implementeren vanuit een geografisch gerepliceerd Azure container Registry
+# <a name="tutorial-deploy-a-web-app-from-a-geo-replicated-azure-container-registry"></a>Tutorial: Deploy a web app from a geo-replicated Azure container registry
 
 Dit is deel twee van een serie met drie zelfstudies. In [deel één](container-registry-tutorial-prepare-registry.md) is er een geo-gerepliceerd privécontainerregister gemaakt en is er een containerinstallatiekopie gemaakt op basis van de bron en naar het register gepusht. In dit artikel implementeert u de container naar twee web-app-instanties in twee verschillende Azure-regio's om ervan te profiteren dat het geo-gerepliceerde register dicht bij het netwerk is. Met de containerinstallatiekopie wordt vervolgens elke instantie opgehaald uit het dichtstbijzijnde register.
 
@@ -59,7 +54,7 @@ Onder **Web App for Containers**, dat wordt weergegeven na selectie van Deploy t
 | **Besturingssysteem** | Linux |
 
 > [!NOTE]
-> Wanneer u een nieuw app service-plan maakt om uw container-app te implementeren, wordt automatisch een standaard abonnement geselecteerd om uw toepassing te hosten. Het standaard plan is afhankelijk van de instelling van het besturings systeem.
+> When you create a new app service plan to deploy your containerized app, a default plan is automatically selected to host your application. The default plan depends on the operating system setting.
 
 Selecteer **Maken** om de web-app voor de regio *US - west* in te richten.
 

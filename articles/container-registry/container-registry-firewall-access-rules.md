@@ -1,53 +1,48 @@
 ---
-title: Firewall regels voor toegang tot Azure Container Registry
-description: Configureer regels voor toegang tot een Azure container Registry van achter een firewall.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Firewall access rules
+description: Configure rules to access an Azure container registry from behind a firewall.
 ms.topic: article
 ms.date: 07/17/2019
-ms.author: danlep
-ms.openlocfilehash: 88b6da4e9bd2938adadadc1ef0e696399fc3c75e
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 6a0a169f7e5a7e07771cb9fee474b7f4a9391a4e
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68828000"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455184"
 ---
-# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Regels configureren voor toegang tot een Azure container Registry achter een firewall
+# <a name="configure-rules-to-access-an-azure-container-registry-behind-a-firewall"></a>Configure rules to access an Azure container registry behind a firewall
 
-In dit artikel wordt uitgelegd hoe u regels kunt configureren op uw firewall om toegang te krijgen tot een Azure container Registry. Bijvoorbeeld, een Azure IoT Edge apparaat achter een firewall of proxy server moet mogelijk toegang hebben tot een container register om een container installatie kopie te halen. Het is ook mogelijk dat een vergrendelde server in een on-premises netwerk toegang nodig heeft tot het pushen van een installatie kopie.
+This article explains how to configure rules on your firewall to allow access to an Azure container registry. For example, an Azure IoT Edge device behind a firewall or proxy server might need to access a container registry to pull a container image. Or, a locked-down server in an on-premises network might need access to push an image.
 
-Zie [toegang tot een Azure-container register beperken op basis van een virtueel netwerk](container-registry-vnet.md)als u in plaats daarvan binnenkomende regels voor netwerk toegang wilt configureren in een container register om alleen toegang te verlenen binnen een virtueel netwerk van Azure of een openbaar IP-adres bereik.
+If instead you want to configure inbound network access rules on a container registry to allow access only within an Azure virtual network or a public IP address range, see [Restrict access to an Azure container registry from a virtual network](container-registry-vnet.md).
 
-## <a name="about-registry-endpoints"></a>Over register eindpunten
+## <a name="about-registry-endpoints"></a>About registry endpoints
 
-Om installatie kopieën of andere artefacten te halen of pushen naar een Azure container Registry, moet een client, zoals een docker-daemon, communiceren via HTTPS met twee verschillende eind punten.
+To pull or push images or other artifacts to an Azure container registry, a client such as a Docker daemon needs to interact over HTTPS with two distinct endpoints.
 
-* **Register-rest API** -verificatie-en register beheer bewerkingen worden verwerkt via het open bare rest API eindpunt van het REGI ster. Dit eind punt is de URL van de aanmeldings server van het REGI ster of een gekoppeld IP-adres bereik. 
+* **Registry REST API endpoint** - Authentication and registry management operations are handled through the registry's public REST API endpoint. This endpoint is the login server URL of the registry, or an associated IP address range. 
 
-* **Opslag eindpunt** : Azure [wijst de Blob-opslag](container-registry-storage.md) in azure Storage-accounts uit naam van elk REGI ster toe om container installatie kopieën en andere artefacten te beheren. Wanneer een client afbeeldings lagen in een Azure container Registry opent, worden er aanvragen gemaakt met behulp van een eind punt voor het opslag account dat wordt meegeleverd met het REGI ster.
+* **Storage endpoint** - Azure [allocates blob storage](container-registry-storage.md) in Azure storage accounts on behalf of each registry to manage container images and other artifacts. When a client accesses image layers in an Azure container registry, it makes requests using a storage account endpoint provided by the registry.
 
-Als uw REGI ster [geo-gerepliceerd](container-registry-geo-replication.md)is, moet een client mogelijk communiceren met rest-en opslag eindpunten in een bepaalde regio of in meerdere gerepliceerde regio's.
+If your registry is [geo-replicated](container-registry-geo-replication.md), a client might need to interact with REST and storage endpoints in a specific region or in multiple replicated regions.
 
-## <a name="allow-access-to-rest-and-storage-urls"></a>Toegang tot REST-en opslag-Url's toestaan
+## <a name="allow-access-to-rest-and-storage-urls"></a>Allow access to REST and storage URLs
 
-* **Rest-eind punt** : toegang tot de URL van de register server toestaan, zoals`myregistry.azurecr.io`
-* **Opslag eindpunt** : toegang tot alle Azure Blob Storage-accounts toestaan met het Joker teken`*.blob.core.windows.net`
+* **REST endpoint** - Allow access to the registry server URL, such as  `myregistry.azurecr.io`
+* **Storage endpoint** - Allow access to all Azure blob storage accounts using the wildcard `*.blob.core.windows.net`
 
 
-## <a name="allow-access-by-ip-address-range"></a>Toegang toestaan op basis van IP-adres bereik
+## <a name="allow-access-by-ip-address-range"></a>Allow access by IP address range
 
-Als u toegang tot specifieke IP-adressen wilt toestaan, downloadt u [Azure IP-bereiken en service Tags – open bare Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
+If you need to allow access to specific IP addresses, download [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519).
 
-Zoek naar **AzureContainerRegistry** in het JSON-bestand om de IP-bereiken van het ACR rest-eind punt te vinden.
+To find the ACR REST endpoint IP ranges, search for **AzureContainerRegistry** in the JSON file.
 
 > [!IMPORTANT]
-> IP-adresbereiken voor Azure-Services kunnen worden gewijzigd en updates worden wekelijks gepubliceerd. Down load het JSON-bestand regel matig en breng de benodigde updates in uw toegangs regels. Als uw scenario bestaat uit het configureren van regels voor netwerk beveiligings groepen in een virtueel Azure-netwerk om toegang te krijgen tot Azure Container Registry, gebruikt u in plaats daarvan de **AzureContainerRegistry** - [service label](#allow-access-by-service-tag) .
+> IP address ranges for Azure services can change, and updates are published weekly. Download the JSON file regularly, and make necessary updates in your access rules. If your scenario involves configuring network security group rules in an Azure virtual network to access Azure Container Registry, use the **AzureContainerRegistry** [service tag](#allow-access-by-service-tag) instead.
 >
 
-### <a name="rest-ip-addresses-for-all-regions"></a>REST IP-adressen voor alle regio's
+### <a name="rest-ip-addresses-for-all-regions"></a>REST IP addresses for all regions
 
 ```json
 {
@@ -63,9 +58,9 @@ Zoek naar **AzureContainerRegistry** in het JSON-bestand om de IP-bereiken van h
     [...]
 ```
 
-### <a name="rest-ip-addresses-for-a-specific-region"></a>REST IP-adressen voor een specifieke regio
+### <a name="rest-ip-addresses-for-a-specific-region"></a>REST IP addresses for a specific region
 
-Zoek naar de specifieke regio, bijvoorbeeld **AzureContainerRegistry. AustraliaEast**.
+Search for the specific region, such as **AzureContainerRegistry.AustraliaEast**.
 
 ```json
 {
@@ -81,7 +76,7 @@ Zoek naar de specifieke regio, bijvoorbeeld **AzureContainerRegistry. AustraliaE
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-all-regions"></a>IP-adressen voor opslag voor alle regio's
+### <a name="storage-ip-addresses-for-all-regions"></a>Storage IP addresses for all regions
 
 ```json
 {
@@ -97,9 +92,9 @@ Zoek naar de specifieke regio, bijvoorbeeld **AzureContainerRegistry. AustraliaE
     [...]
 ```
 
-### <a name="storage-ip-addresses-for-specific-regions"></a>IP-adressen van opslag voor specifieke regio's
+### <a name="storage-ip-addresses-for-specific-regions"></a>Storage IP addresses for specific regions
 
-Zoek naar de specifieke regio, zoals **Storage. AustraliaCentral**.
+Search for the specific region, such as **Storage.AustraliaCentral**.
 
 ```json
 {
@@ -115,17 +110,17 @@ Zoek naar de specifieke regio, zoals **Storage. AustraliaCentral**.
     [...]
 ```
 
-## <a name="allow-access-by-service-tag"></a>Toegang per service-tag toestaan
+## <a name="allow-access-by-service-tag"></a>Allow access by service tag
 
-Gebruik in een virtueel Azure-netwerk netwerk beveiligings regels voor het filteren van verkeer van een bron, zoals een virtuele machine, naar een container register. Gebruik het **AzureContainerRegistry** - [service label](../virtual-network/security-overview.md#service-tags)om het maken van de regels van het Azure-netwerk te vereenvoudigen. Een servicetag vertegenwoordigt een groep IP-adres voorvoegsels voor de toegang tot een Azure-service wereld wijd of per Azure-regio. Het label wordt automatisch bijgewerkt wanneer adressen worden gewijzigd. 
+In an Azure virtual network, use network security rules to filter traffic from a resource such as a virtual machine to a container registry. To simplify the creation of the Azure network rules, use the **AzureContainerRegistry** [service tag](../virtual-network/security-overview.md#service-tags). A service tag represents a group of IP address prefixes to access an Azure service globally or per Azure region. The tag is automatically updated when addresses change. 
 
-Maak bijvoorbeeld een regel voor een uitgaande netwerk beveiligings groep met het doel **AzureContainerRegistry** om verkeer naar een Azure container Registry toe te staan. Als u alleen toegang tot de servicetag wilt toestaan in een specifieke regio, geeft u de regio op in de volgende indeling: **AzureContainerRegistry**. [*regio naam*].
+For example, create an outbound network security group rule with destination **AzureContainerRegistry** to allow traffic to an Azure container registry. To allow access to the service tag only in a specific region, specify the region in the following format: **AzureContainerRegistry**.[*region name*].
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* Meer informatie over [Aanbevolen procedures voor Azure voor netwerk beveiliging](../security/fundamentals/network-best-practices.md)
+* Learn about [Azure best practices for network security](../security/fundamentals/network-best-practices.md)
 
-* Meer informatie over [beveiligings groepen](/azure/virtual-network/security-overview) in een virtueel Azure-netwerk
+* Learn more about [security groups](/azure/virtual-network/security-overview) in an Azure virtual network
 
 
 

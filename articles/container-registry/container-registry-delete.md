@@ -1,51 +1,46 @@
 ---
-title: Afbeeldings resources in Azure Container Registry verwijderen
-description: Meer informatie over het effectief beheren van de register grootte door container installatie kopie gegevens te verwijderen met behulp van Azure CLI-opdrachten.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
+title: Delete image resources
+description: Details on how to effectively manage registry size by deleting container image data using Azure CLI commands.
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: danlep
-ms.openlocfilehash: d415bef80ed8c96ff6e5df81ae9281ae681a4879
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 8d20bf2be1d472855c3e67dd79ea1725c152e3d2
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300188"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455263"
 ---
-# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Container installatie kopieën in Azure Container Registry verwijderen met behulp van de Azure CLI
+# <a name="delete-container-images-in-azure-container-registry-using-the-azure-cli"></a>Delete container images in Azure Container Registry using the Azure CLI
 
-Als u de grootte van uw Azure container Registry wilt behouden, moet u regel matig verouderde afbeeldings gegevens verwijderen. Hoewel sommige container installatie kopieën die in productie zijn geïmplementeerd, mogelijk meer-termijn opslag vereisen, kunnen anderen doorgaans sneller worden verwijderd. In een geautomatiseerd build-en test scenario kan uw REGI ster bijvoorbeeld snel worden gevuld met installatie kopieën die nooit zijn geïmplementeerd en kunnen ze kort na het volt ooien van de build-en test fase worden verwijderd.
+To maintain the size of your Azure container registry, you should periodically delete stale image data. While some container images deployed into production may require longer-term storage, others can typically be deleted more quickly. For example, in an automated build and test scenario, your registry can quickly fill with images that might never be deployed, and can be purged shortly after completing the build and test pass.
 
-Omdat u de afbeeldings gegevens op verschillende manieren kunt verwijderen, is het belang rijk om te begrijpen hoe elke Verwijder bewerking van invloed is op het gebruik van de opslag. In dit artikel worden verschillende methoden beschreven voor het verwijderen van afbeeldings gegevens:
+Because you can delete image data in several different ways, it's important to understand how each delete operation affects storage usage. This article covers several methods for deleting image data:
 
-* Een [opslag plaats](#delete-repository)verwijderen: Hiermee verwijdert u alle installatie kopieën en alle unieke lagen in de opslag plaats.
-* Verwijderen per [tag](#delete-by-tag): Hiermee verwijdert u een afbeelding, de tag, alle unieke lagen waarnaar wordt verwezen door de afbeelding en alle andere tags die aan de afbeelding zijn gekoppeld.
-* Verwijderen per [manifest Digest](#delete-by-manifest-digest): Hiermee verwijdert u een afbeelding, alle unieke lagen waarnaar wordt verwezen door de afbeelding en alle labels die aan de afbeelding zijn gekoppeld.
+* Delete a [repository](#delete-repository): Deletes all images and all unique layers within the repository.
+* Delete by [tag](#delete-by-tag): Deletes an image, the tag, all unique layers referenced by the image, and all other tags associated with the image.
+* Delete by [manifest digest](#delete-by-manifest-digest): Deletes an image, all unique layers referenced by the image, and all tags associated with the image.
 
-Er worden voorbeeld scripts gegeven om verwijderings bewerkingen te automatiseren.
+Sample scripts are provided to help automate delete operations.
 
-Zie voor een inleiding tot deze concepten [over registers, opslag plaatsen en installatie kopieën](container-registry-concepts.md).
+For an introduction to these concepts, see [About registries, repositories, and images](container-registry-concepts.md).
 
-## <a name="delete-repository"></a>Opslag plaats verwijderen
+## <a name="delete-repository"></a>Delete repository
 
-Als u een opslag plaats verwijdert, worden alle installatie kopieën uit de opslag plaats verwijderd, inclusief alle labels, unieke lagen en manifesten. Wanneer u een opslag plaats verwijdert, herstelt u de opslag ruimte die wordt gebruikt door de installatie kopieën die verwijzen naar unieke lagen in die opslag plaats.
+Deleting a repository deletes all of the images in the repository, including all tags, unique layers, and manifests. When you delete a repository, you recover the storage space used by the images that reference unique layers in that repository.
 
-Met de volgende Azure CLI-opdracht verwijdert u de opslag plaats ' ACR-HelloWorld ' en alle labels en manifesten in de opslag plaats. Als er geen andere installatie kopieën in het REGI ster verwijzen naar lagen waarnaar wordt verwezen door de verwijderde manifesten, worden ook de laag gegevens verwijderd en wordt de opslag ruimte hersteld.
+The following Azure CLI command deletes the "acr-helloworld" repository and all tags and manifests within the repository. If layers referenced by the deleted manifests are not referenced by any other images in the registry, their layer data is also deleted, recovering the storage space.
 
 ```azurecli
  az acr repository delete --name myregistry --repository acr-helloworld
 ```
 
-## <a name="delete-by-tag"></a>Verwijderen per tag
+## <a name="delete-by-tag"></a>Delete by tag
 
-U kunt afzonderlijke installatie kopieën uit een opslag plaats verwijderen door de naam en tag van de opslag plaats op te geven in de Verwijder bewerking. Wanneer u per tag verwijdert, herstelt u de opslag ruimte die wordt gebruikt door een unieke laag in de afbeelding (lagen die niet worden gedeeld door andere installatie kopieën in het REGI ster).
+You can delete individual images from a repository by specifying the repository name and tag in the delete operation. When you delete by tag, you recover the storage space used by any unique layers in the image (layers not shared by any other images in the registry).
 
-Als u wilt verwijderen per tag, gebruikt u [AZ ACR repository delete][az-acr-repository-delete] en geeft u de `--image` naam van de installatie kopie op in de para meter. Alle lagen die uniek zijn voor de afbeelding en alle andere tags die aan de afbeelding zijn gekoppeld, worden verwijderd.
+To delete by tag, use [az acr repository delete][az-acr-repository-delete] and specify the image name in the `--image` parameter. All layers unique to the image, and any other tags associated with the image are deleted.
 
-U kunt bijvoorbeeld de installatie kopie ' ACR-HelloWorld: nieuwste ' verwijderen uit het REGI ster ' myregistry ':
+For example, deleting the "acr-helloworld:latest" image from registry "myregistry":
 
 ```azurecli
 $ az acr repository delete --name myregistry --image acr-helloworld:latest
@@ -54,13 +49,13 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> Verwijderen *per label* mag niet worden verward met het verwijderen van een tag (code ring opzeggen). U kunt een tag verwijderen met de Azure CLI-opdracht [AZ ACR repository tag][az-acr-repository-untag]. Er wordt geen ruimte vrijgemaakt wanneer u een installatie kopie tag, omdat het [manifest](container-registry-concepts.md#manifest) en de laag gegevens in het REGI ster blijven. Alleen de tag-verwijzing zelf wordt verwijderd.
+> Deleting *by tag* shouldn't be confused with deleting a tag (untagging). You can delete a tag with the Azure CLI command [az acr repository untag][az-acr-repository-untag]. No space is freed when you untag an image because its [manifest](container-registry-concepts.md#manifest) and layer data remain in the registry. Only the tag reference itself is deleted.
 
-## <a name="delete-by-manifest-digest"></a>Verwijderen per manifest Digest
+## <a name="delete-by-manifest-digest"></a>Delete by manifest digest
 
-Een [manifest Digest](container-registry-concepts.md#manifest-digest) kan worden gekoppeld aan een, geen of meerdere labels. Wanneer u per Digest verwijdert, worden alle tags waarnaar wordt verwezen door het manifest, verwijderd als laag gegevens voor alle lagen die uniek zijn voor de afbeelding. Gegevens van gedeelde laag worden niet verwijderd.
+A [manifest digest](container-registry-concepts.md#manifest-digest) can be associated with one, none, or multiple tags. When you delete by digest, all tags referenced by the manifest are deleted, as is layer data for any layers unique to the image. Shared layer data is not deleted.
 
-Als u wilt verwijderen per Digest, vermeldt u eerst de manifest samenvattingen voor de opslag plaats met de installatie kopieën die u wilt verwijderen. Bijvoorbeeld:
+To delete by digest, first list the manifest digests for the repository containing the images you wish to delete. Bijvoorbeeld:
 
 ```console
 $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -83,13 +78,13 @@ $ az acr repository show-manifests --name myregistry --repository acr-helloworld
 ]
 ```
 
-Geef vervolgens de samen vatting op die u wilt verwijderen in de opdracht [AZ ACR repository delete][az-acr-repository-delete] . De indeling van de opdracht is als volgt:
+Next, specify the digest you wish to delete in the [az acr repository delete][az-acr-repository-delete] command. De indeling van de opdracht is als volgt:
 
 ```azurecli
 az acr repository delete --name <acrName> --image <repositoryName>@<digest>
 ```
 
-Als u bijvoorbeeld het laatste manifest wilt verwijderen dat wordt vermeld in de voor gaande uitvoer (met de tag ' v2 '):
+For example, to delete the last manifest listed in the preceding output (with the tag "v2"):
 
 ```console
 $ az acr repository delete --name myregistry --image acr-helloworld@sha256:3168a21b98836dda7eb7a846b3d735286e09a32b0aa2401773da518e7eba3b57
@@ -97,23 +92,23 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-De `acr-helloworld:v2` afbeelding wordt uit het REGI ster verwijderd, evenals de laag gegevens die voor die afbeelding uniek zijn. Als een manifest is gekoppeld aan meerdere tags, worden alle gekoppelde labels ook verwijderd.
+The `acr-helloworld:v2` image is deleted from the registry, as is any layer data unique to that image. If a manifest is associated with multiple tags, all associated tags are also deleted.
 
-## <a name="delete-digests-by-timestamp"></a>Samen vattingen verwijderen per tijds tempel
+## <a name="delete-digests-by-timestamp"></a>Delete digests by timestamp
 
-Als u de grootte van een opslag plaats of REGI ster wilt behouden, moet u mogelijk periodiek manifest samenvattingen verwijderen die ouder zijn dan een bepaalde datum.
+To maintain the size of a repository or registry, you might need to periodically delete manifest digests older than a certain date.
 
-Met de volgende Azure CLI-opdracht wordt een lijst weer gegeven met alle manifest samenvatting in een opslag plaats die ouder is dan een opgegeven tijds tempel, in oplopende volg orde. Vervang `<acrName>` en`<repositoryName>` door de waarden die van toepassing zijn voor uw omgeving. De tijds tempel kan een volledige datum-tijd expressie of een datum zijn, zoals in dit voor beeld.
+The following Azure CLI command lists all manifest digest in a repository older than a specified timestamp, in ascending order. Replace `<acrName>` and `<repositoryName>` with values appropriate for your environment. The timestamp could be a full date-time expression or a date, as in this example.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> \
 --orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
 ```
 
-Nadat u de verouderde manifest samenvattingen hebt geïdentificeerd, kunt u het volgende bash-script uitvoeren om manifest-samen vattingen te verwijderen die ouder zijn dan een opgegeven tijds tempel. Hiervoor zijn de Azure CLI en **xargs**vereist. Standaard wordt het script niet verwijderd. Wijzig de `ENABLE_DELETE` waarde in `true` om het verwijderen van de installatie kopie in te scha kelen.
+After identifying stale manifest digests, you can run the following Bash script to delete manifest digests older than a specified timestamp. It requires the Azure CLI and **xargs**. By default, the script performs no deletion. Change the `ENABLE_DELETE` value to `true` to enable image deletion.
 
 > [!WARNING]
-> Gebruik het volgende voorbeeld script met een waarschuwing: verwijderde afbeeldings gegevens zijn onherstelbaar. Als u systemen hebt die installatie kopieën pullen per manifest Digest (in plaats van de naam van de installatie kopie), moet u deze scripts niet uitvoeren. Als u de manifest-samen vattingen verwijdert, voor komt u dat deze systemen de installatie kopieën uit het REGI ster halen. In plaats van op manifest te halen, kunt u overwegen om een uniek schema voor *labels* te gebruiken, een [Aanbevolen best practice](container-registry-image-tag-version.md). 
+> Use the following sample script with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not run these scripts. Deleting the manifest digests will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md). 
 
 ```bash
 #!/bin/bash
@@ -146,12 +141,12 @@ else
 fi
 ```
 
-## <a name="delete-untagged-images"></a>Niet-gelabelde afbeeldingen verwijderen
+## <a name="delete-untagged-images"></a>Delete untagged images
 
-Zoals vermeld in de sectie [manifest Digest](container-registry-concepts.md#manifest-digest) , het pushen van een gewijzigde installatie kopie met behulp van een bestaande tag, ontlabelt de eerder gepushte afbeelding, wat resulteert in een zwevende afbeelding (of "Dangling"). Het manifest van de vorige gepushte afbeelding, en de laag gegevens ervan, blijft aanwezig in het REGI ster. Houd rekening met de volgende reeks gebeurtenissen:
+As mentioned in the [Manifest digest](container-registry-concepts.md#manifest-digest) section, pushing a modified image using an existing tag **untags** the previously pushed image, resulting in an orphaned (or "dangling") image. The previously pushed image's manifest--and its layer data--remains in the registry. Consider the following sequence of events:
 
-1. Push installatie kopie *ACR-HelloWorld* met tag **nieuwste**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. Raadpleeg de manifesten voor de opslag plaats *ACR-HelloWorld*:
+1. Push image *acr-helloworld* with tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Check manifests for repository *acr-helloworld*:
 
    ```console
    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -166,9 +161,9 @@ Zoals vermeld in de sectie [manifest Digest](container-registry-concepts.md#mani
    ]
    ```
 
-1. *ACR wijzigen-HelloWorld* Dockerfile
-1. Push installatie kopie *ACR-HelloWorld* met tag **nieuwste**:`docker push myregistry.azurecr.io/acr-helloworld:latest`
-1. Raadpleeg de manifesten voor de opslag plaats *ACR-HelloWorld*:
+1. Modify *acr-helloworld* Dockerfile
+1. Push image *acr-helloworld* with tag **latest**: `docker push myregistry.azurecr.io/acr-helloworld:latest`
+1. Check manifests for repository *acr-helloworld*:
 
    ```console
    $ az acr repository show-manifests --name myregistry --repository acr-helloworld
@@ -188,24 +183,24 @@ Zoals vermeld in de sectie [manifest Digest](container-registry-concepts.md#mani
    ]
    ```
 
-Zoals u kunt zien in de uitvoer van de laatste stap in de reeks, is er nu een zwevend manifest waarvan `"tags"` de eigenschap een lege lijst is. Dit manifest bevindt zich nog in het REGI ster, samen met eventuele unieke laag gegevens waarnaar wordt verwezen. **Als u dergelijke zwevende afbeeldingen en hun laag gegevens wilt verwijderen, moet u verwijderen per manifest Digest**.
+As you can see in the output of the last step in the sequence, there is now an orphaned manifest whose `"tags"` property is an empty list. This manifest still exists within the registry, along with any unique layer data that it references. **To delete such orphaned images and their layer data, you must delete by manifest digest**.
 
-## <a name="delete-all-untagged-images"></a>Alle niet-gelabelde afbeeldingen verwijderen
+## <a name="delete-all-untagged-images"></a>Delete all untagged images
 
-U kunt alle niet-gelabelde afbeeldingen in uw opslag plaats weer geven met behulp van de volgende Azure CLI-opdracht. Vervang `<acrName>` en`<repositoryName>` door de waarden die van toepassing zijn voor uw omgeving.
+You can list all untagged images in your repository using the following Azure CLI command. Replace `<acrName>` and `<repositoryName>` with values appropriate for your environment.
 
 ```azurecli
 az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
-Als u deze opdracht in een script gebruikt, kunt u alle niet-gelabelde afbeeldingen in een opslag plaats verwijderen.
+Using this command in a script, you can delete all untagged images in a repository.
 
 > [!WARNING]
-> Gebruik de volgende voorbeeld scripts met een waarschuwing: verwijderde afbeeldings gegevens zijn onherstelbaar. Als u systemen hebt die installatie kopieën pullen per manifest Digest (in plaats van de naam van de installatie kopie), moet u deze scripts niet uitvoeren. Als u niet-gelabelde afbeeldingen verwijdert, kunnen die systemen de installatie kopieën niet uit het REGI ster halen. In plaats van op manifest te halen, kunt u overwegen om een uniek schema voor *labels* te gebruiken, een [Aanbevolen best practice](container-registry-image-tag-version.md).
+> Use the following sample scripts with caution--deleted image data is UNRECOVERABLE. If you have systems that pull images by manifest digest (as opposed to image name), you should not run these scripts. Deleting untagged images will prevent those systems from pulling the images from your registry. Instead of pulling by manifest, consider adopting a *unique tagging* scheme, a [recommended best practice](container-registry-image-tag-version.md).
 
-**Azure CLI in bash**
+**Azure CLI in Bash**
 
-Met het volgende bash-script worden alle niet-gelabelde afbeeldingen uit een opslag plaats verwijderd. Hiervoor zijn de Azure CLI en **xargs**vereist. Standaard wordt het script niet verwijderd. Wijzig de `ENABLE_DELETE` waarde in `true` om het verwijderen van de installatie kopie in te scha kelen.
+The following Bash script deletes all untagged images from a repository. It requires the Azure CLI and **xargs**. By default, the script performs no deletion. Change the `ENABLE_DELETE` value to `true` to enable image deletion.
 
 ```bash
 #!/bin/bash
@@ -233,9 +228,9 @@ else
 fi
 ```
 
-**Azure CLI in Power shell**
+**Azure CLI in PowerShell**
 
-Met het volgende Power shell-script worden alle niet-gelabelde afbeeldingen uit een opslag plaats verwijderd. Hiervoor is Power shell en de Azure CLI vereist. Standaard wordt het script niet verwijderd. Wijzig de `$enableDelete` waarde in `$TRUE` om het verwijderen van de installatie kopie in te scha kelen.
+The following PowerShell script deletes all untagged images from a repository. It requires PowerShell and the Azure CLI. By default, the script performs no deletion. Change the `$enableDelete` value to `$TRUE` to enable image deletion.
 
 ```powershell
 # WARNING! This script deletes data!
@@ -262,13 +257,13 @@ if ($enableDelete) {
 
 ## <a name="automatically-purge-tags-and-manifests-preview"></a>Automatisch tags en manifesten leegmaken (preview)
 
-Als alternatief voor het uitvoeren van scripts van Azure CLI-opdrachten voert u een taak op aanvraag of geplande ACR uit om alle labels te verwijderen die ouder zijn dan een bepaalde duur of die overeenkomen met een opgegeven naam filter. Zie [automatisch installatie kopieën verwijderen uit een Azure container Registry](container-registry-auto-purge.md)voor meer informatie.
+As an alternative to scripting Azure CLI commands, run an on-demand or scheduled ACR task to delete all tags that are older than a certain duration or match a specified name filter. For more information, see [Automatically purge images from an Azure container registry](container-registry-auto-purge.md).
 
-Stel eventueel een [Bewaar beleid](container-registry-retention-policy.md) in voor elk REGI ster om niet-gecodeerde manifesten te beheren. Wanneer u een Bewaar beleid inschakelt, worden installatie kopieën in het REGI ster die geen gekoppelde labels hebben en de onderliggende laag gegevens, automatisch verwijderd na een ingestelde periode.
+Optionally set a [retention policy](container-registry-retention-policy.md) for each registry, to manage untagged manifests. When you enable a retention policy, image manifests in the registry that don't have any associated tags, and the underlying layer data, are automatically deleted after a set period.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Zie [opslag van container installatie kopieën in azure container Registry](container-registry-storage.md)voor meer informatie over de opslag van installatie kopieën in azure container Registry.
+For more information about image storage in Azure Container Registry see [Container image storage in Azure Container Registry](container-registry-storage.md).
 
 <!-- IMAGES -->
 [manifest-digest]: ./media/container-registry-delete/01-manifest-digest.png

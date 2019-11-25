@@ -1,5 +1,5 @@
 ---
-title: Zelf studie de node. js-module ontwikkelen voor Linux-Azure IoT Edge | Microsoft Docs
+title: Tutorial develop Node.js module for Linux - Azure IoT Edge | Microsoft Docs
 description: In deze zelfstudie ziet u hoe u een IoT Edge-module met Node.js-code maakt en deze implementeert op een Edge-apparaat
 services: iot-edge
 author: shizn
@@ -8,17 +8,17 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc, seodec18
-ms.openlocfilehash: f6304c554858a29e8c6c886bcdec3b51efd635b6
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.custom: mvc
+ms.openlocfilehash: 16212f7229dc84b9495976bd40b6d48b3f2686bd
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68840090"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74457645"
 ---
-# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Zelfstudie: Een node. js-IoT Edge module ontwikkelen en implementeren voor Linux-apparaten
+# <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Tutorial: Develop and deploy a Node.js IoT Edge module for Linux devices
 
-Gebruik Visual Studio code voor het ontwikkelen van node. js-code en implementeer deze op een Linux-apparaat met Azure IoT Edge. 
+Use Visual Studio Code to develop Node.js code and deploy it to a Linux device running Azure IoT Edge. 
 
 U kunt IoT Edge-modules gebruiken voor het implementeren van code die uw bedrijfslogica rechtstreeks op uw IoT Edge-apparaten implementeert. In deze zelfstudie leert u een IoT Edge-module te maken die sensorgegevens filtert. U gebruikt het gesimuleerde IoT Edge-apparaat dat u hebt gemaakt in de snelstarts. In deze zelfstudie leert u het volgende:    
 
@@ -33,32 +33,32 @@ De IoT Edge-module die u maakt in deze zelfstudie filtert de temperatuurgegevens
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="solution-scope"></a>Oplossings bereik
+## <a name="solution-scope"></a>Solution scope
 
-In deze zelf studie wordt gedemonstreerd hoe u een module in **node. js** kunt ontwikkelen met **Visual Studio code**en hoe u deze implementeert op een **Linux-apparaat**. IoT Edge biedt geen ondersteuning voor node. js-modules voor Windows-apparaten.
+This tutorial demonstrates how to develop a module in **Node.js** using **Visual Studio Code**, and how to deploy it to a **Linux device**. IoT Edge does not support Node.js modules for Windows devices.
 
-Gebruik de volgende tabel om inzicht te krijgen in de opties voor het ontwikkelen en implementeren van node. js-modules: 
+Use the following table to understand your options for developing and deploying Node.js modules: 
 
 | Node.js | Visual Studio Code | Visual Studio 2017/2019 | 
 | - | ------------------ | ------------------ |
-| **Linux AMD64** | ![VS-code gebruiken voor node. js-modules op Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![VS-code gebruiken voor node. js-modules op Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![Use VS Code for Node.js modules on Linux AMD64](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![Use VS Code for Node.js modules on Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Vereisten
 
-Voordat u met deze zelf studie begint, moet u de vorige zelf studie hebben door lopen om uw ontwikkel omgeving in te stellen voor de ontwikkeling van Linux-containers: [Ontwikkel IOT Edge-modules voor Linux-apparaten](tutorial-develop-for-linux.md). Door een van deze zelf studies te volt ooien, moet u aan de volgende vereisten voldoen: 
+Before beginning this tutorial, you should have gone through the previous tutorial to set up your development environment for Linux container development: [Develop IoT Edge modules for Linux devices](tutorial-develop-for-linux.md). By completing either of those tutorials, you should have the following prerequisites in place: 
 
-* Een gratis of standaard [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
-* Een [Linux-apparaat met Azure IOT Edge](quickstart-linux.md)
-* Een container register, zoals [Azure container Registry](https://docs.microsoft.com/azure/container-registry/).
-* [Visual Studio-code](https://code.visualstudio.com/) die is geconfigureerd met de [Azure IOT-hulpprogram ma's](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
-* [Docker CE](https://docs.docker.com/install/) is geconfigureerd voor het uitvoeren van Linux-containers.
+* Een gratis of reguliere [IoT Hub](../iot-hub/iot-hub-create-through-portal.md)-laag in Azure.
+* A [Linux device running Azure IoT Edge](quickstart-linux.md)
+* A container registry, like [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* [Visual Studio Code](https://code.visualstudio.com/) configured with the [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+* [Docker CE](https://docs.docker.com/install/) configured to run Linux containers.
 
-Als u een IoT Edge module wilt ontwikkelen in node. js, installeert u de volgende aanvullende vereisten op uw ontwikkel computer: 
+To develop an IoT Edge module in Node.js, install the following additional prerequisites on your development machine: 
 
 * [Node.js en NPM](https://nodejs.org). Het NPM-pakket wordt gedistribueerd met Node.js. Dit betekent dat NMP automatisch wordt geïnstalleerd op de computer wanneer u Node.js downloadt.
 
-## <a name="create-a-module-project"></a>Een module project maken
+## <a name="create-a-module-project"></a>Create a module project
 De volgende stappen laten zien hoe u een IoT-Edge Node.js-module maakt met behulp van Visual Studio Code en de Azure IoT-hulpprogramma's.
 
 ### <a name="create-a-new-project"></a>Een nieuw project maken
@@ -75,9 +75,9 @@ Gebruik **NPM** om een Node.js-oplossingssjabloon te maken waarop u verder kunt 
 
 3. Selecteer **View** > **Command Palette** om het VS Code-opdrachtpalet te openen. 
 
-3. Typ in het opdrachtenpalet de opdracht **Azure: Aanmelden** in, voer deze uit en volg de instructies om u aan te melden bij uw Azure-account. Als u zich al hebt aangemeld, kunt u deze stap overslaan.
+3. Typ in het opdrachtpalet de opdracht **Azure: Sign in** en voer deze uit. Volg vervolgens de instructies om u aan te melden bij uw Azure-account. Als u zich al hebt aangemeld, kunt u deze stap overslaan.
 
-4. Typ in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** in en voer deze uit. Volg de aanwijzingen in het opdrachtpalet om uw oplossing te maken.
+4. Typ in het opdrachtpalet de opdracht **Azure IoT Edge: New IoT Edge solution** en voer deze uit. Volg de aanwijzingen in het opdrachtpalet om uw oplossing te maken.
 
    | Veld | Waarde |
    | ----- | ----- |
@@ -98,17 +98,17 @@ In het omgevingsbestand worden de referenties voor de containeropslagplaats opge
 2. Werk de velden **gebruikersnaam** en **wachtwoord** bij met de waarden die u hebt gekopieerd uit het Azure-containerregister. 
 3. Sla dit bestand op. 
 
-### <a name="select-your-target-architecture"></a>Selecteer uw doel architectuur
+### <a name="select-your-target-architecture"></a>Select your target architecture
 
-Momenteel kunt u met Visual Studio code node. js-modules ontwikkelen voor Linux AMD64-en Linux ARM32v7-apparaten. U moet selecteren welke architectuur u wilt richten op elke oplossing, omdat de container is gebouwd en anders wordt uitgevoerd voor elk type architectuur. De standaard waarde is Linux AMD64. 
+Currently, Visual Studio Code can develop Node.js modules for Linux AMD64 and Linux ARM32v7 devices. You need to select which architecture you're targeting with each solution, because the container is built and run differently for each architecture type. The default is Linux AMD64. 
 
-1. Open het opdracht palet en zoek naar **Azure IOT Edge: Stel het standaard doel platform voor rand**oplossing in of selecteer het snelkoppelings pictogram in de zijbalk aan de onderkant van het venster. 
+1. Open the command palette and search for **Azure IoT Edge: Set Default Target Platform for Edge Solution**, or select the shortcut icon in the side bar at the bottom of the window. 
 
-2. Selecteer in het opdracht palet de doel architectuur in de lijst met opties. Voor deze zelf studie gebruiken we een virtuele machine van Ubuntu als het IoT Edge-apparaat, zodat de standaard **amd64**wordt bewaard.
+2. In the command palette, select the target architecture from the list of options. For this tutorial, we're using an Ubuntu virtual machine as the IoT Edge device, so will keep the default **amd64**.
 
 ### <a name="update-the-module-with-custom-code"></a>De module bijwerken met aangepaste code
 
-Elke sjabloon wordt geleverd met voorbeeld code, waarmee gesimuleerde sensor gegevens van de **SimulatedTemperatureSensor** -module worden opgehaald en doorgestuurd naar IOT hub. Voeg in deze sectie code toe om de berichten te analyseren met NodeModule voordat u ze verzendt. 
+Each template comes with sample code included, which takes simulated sensor data from the **SimulatedTemperatureSensor** module and routes it to IoT Hub. Voeg in deze sectie code toe om de berichten te analyseren met NodeModule voordat u ze verzendt. 
 
 1. Open in VS Code Explorer **modules** > **NodeModule** > **app.js**.
 
@@ -182,37 +182,37 @@ Elke sjabloon wordt geleverd met voorbeeld code, waarmee gesimuleerde sensor geg
 9. Sla het bestand deployment.template.json op.
 
 
-## <a name="build-and-push-your-module"></a>Uw module bouwen en pushen
+## <a name="build-and-push-your-module"></a>Build and push your module
 
-In de vorige sectie hebt u een IoT Edge oplossing gemaakt en code toegevoegd aan de NodeModule waarmee berichten worden gefilterd waarbij de gerapporteerde machine temperatuur binnen de aanvaard bare limieten valt. Nu moet u de oplossing bouwen als een containerinstallatiekopie en deze naar het containerregister pushen.
+In the previous section, you created an IoT Edge solution and added code to the NodeModule that will filter out messages where the reported machine temperature is within the acceptable limits. Nu moet u de oplossing bouwen als een containerinstallatiekopie en deze naar het containerregister pushen.
 
 1. Open de met VS Code geïntegreerde terminal door **View** > **Terminal** te selecteren.
 
-1. Meld u aan bij docker door de volgende opdracht in te voeren in de Terminal. Meld u aan met de gebruikers naam, het wacht woord en de aanmeldings server vanuit uw Azure container Registry. U kunt deze waarden ophalen uit de sectie **toegangs sleutels** van het REGI ster in de Azure Portal.
+1. Sign in to Docker by entering the following command in the terminal. Sign in with the username, password, and login server from your Azure container registry. You can retrieve these values from the **Access keys** section of your registry in the Azure portal.
      
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Mogelijk wordt een beveiligings waarschuwing weer gegeven waarin wordt aanbevolen het `--password-stdin`gebruik van te gebruiken. Hoewel dat best practice wordt aanbevolen voor productie scenario's, valt het buiten het bereik van deze zelf studie. Zie voor meer informatie de koppeling naar docker- [aanmelding](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   You may receive a security warning recommending the use of `--password-stdin`. While that best practice is recommended for production scenarios, it's outside the scope of this tutorial. For more information, see the [docker login](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) reference.
 
 2. Klik in VS Code Explorer met de rechtermuisknop op het bestand **deployment.template.json** en selecteer **Build and Push IoT Edge solution**.
 
-   Met de opdracht build en push worden drie bewerkingen gestart. Eerst wordt een nieuwe map gemaakt in de oplossing **config** met het volledige implementatie manifest, gebaseerd op de gegevens in de implementatie sjabloon en andere oplossings bestanden. Ten tweede wordt `docker build` de container installatie kopie gemaakt op basis van de juiste dockerfile voor uw doel architectuur. Vervolgens wordt `docker push` de opslag plaats voor de installatie kopie naar het container register pusht.
+   The build and push command starts three operations. First, it creates a new folder in the solution called **config** that holds the full deployment manifest, built out of information in the deployment template and other solution files. Second, it runs `docker build` to build the container image based on the appropriate dockerfile for your target architecture. Then, it runs `docker push` to push the image repository to your container registry.
 
-## <a name="deploy-modules-to-device"></a>Modules implementeren op het apparaat
+## <a name="deploy-modules-to-device"></a>Deploy modules to device
 
-Gebruik Visual Studio code Explorer en de uitbrei ding Azure IoT tools om het module project te implementeren op uw IoT Edge-apparaat. U hebt al een implementatie manifest voor bereid voor uw scenario, het bestand **Deployment. json** in de map Config. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
+Use the Visual Studio Code explorer and the Azure IoT Tools extension to deploy the module project to your IoT Edge device. You already have a deployment manifest prepared for your scenario, the **deployment.json** file in the config folder. U hoeft nu alleen nog maar een apparaat te selecteren dat de implementatie moet ontvangen.
 
-Zorg ervoor dat uw IoT Edge-apparaat actief is.
+Make sure that your IoT Edge device is up and running.
 
-1. Vouw in Visual Studio code Explorer de sectie **Azure IOT Hub-apparaten** uit om uw lijst met IOT-apparaten weer te geven.
+1. In the Visual Studio Code explorer, expand the **Azure IoT Hub Devices** section to see your list of IoT devices.
 
 2. Klik met de rechtermuisknop op de naam van het IoT Edge-apparaat en selecteer **Implementatie voor één apparaat maken**.
 
 3. Selecteer het bestand **deployment.json** in de **configuratiemap** en klik vervolgens op **Edge-distributiemanifest selecteren**. Gebruik niet het bestand deployment.template.json.
 
-4. Klik op de knop Vernieuwen. De nieuwe **NodeModule** die worden uitgevoerd, worden samen met de **SimulatedTemperatureSensor** -module en de **$edgeAgent** en **$edgeHub**weer geven.
+4. Klik op de knop Vernieuwen. You should see the new **NodeModule** running along with the **SimulatedTemperatureSensor** module and the **$edgeAgent** and **$edgeHub**.
 
 ## <a name="view-generated-data"></a>Gegenereerde gegevens weergeven
 
@@ -220,25 +220,25 @@ Als u het implementatiemanifest op uw IoT Edge-apparaat toepast, verzamelt de Io
 
 U kunt de status van uw IoT Edge-apparaat bekijken via de sectie **Azure IoT Hub Devices** van de Visual Studio Code explorer. Vouw de details van uw apparaat uit voor een overzicht van de modules die worden geïmplementeerd en uitgevoerd.
 
-1. Klik in Visual Studio code Explorer met de rechter muisknop op de naam van uw IoT Edge apparaat en selecteer controle van het **ingebouwde gebeurtenis-eind punt starten**.
+1. In the Visual Studio Code explorer, right-click the name of your IoT Edge device and select **Start Monitoring Built-in Event Endpoint**.
 
-2. Bekijk de berichten die op uw IoT Hub arriveren. Het kan enige tijd duren voordat de berichten binnenkomen, omdat het IoT Edge apparaat de nieuwe implementatie moet ontvangen en alle modules kan starten. Vervolgens worden de wijzigingen die we hebben aangebracht in de NodeModule-code gewacht totdat de computer temperatuur 25 graden bereikt voordat berichten worden verzonden. Het bericht type **waarschuwing** wordt ook toegevoegd aan berichten die de drempel waarde voor de Tempe ratuur bereiken. 
+2. View the messages arriving at your IoT Hub. It may take a while for the messages to arrive, because the IoT Edge device has to receive its new deployment and start all the modules. Then, the changes we made to the NodeModule code wait until the machine temperature reaches 25 degrees before sending messages. It also adds the message type **Alert** to any messages that reach that temperature threshold. 
 
-## <a name="edit-the-module-twin"></a>De module twee bewerken
+## <a name="edit-the-module-twin"></a>Edit the module twin
 
-We hebben de NodeModule-module twee maal in het implementatie manifest gebruikt om de drempel waarde voor de Tempe ratuur op 25 graden in te stellen. U kunt de module twee gebruiken om de functionaliteit te wijzigen zonder dat u de module code hoeft bij te werken.
+We used the NodeModule module twin in the deployment manifest to set the temperature threshold at 25 degrees. You can use the module twin to change the functionality without having to update the module code.
 
-1. Vouw in Visual Studio code de details onder uw IoT Edge apparaat uit om de actieve modules weer te geven. 
+1. In Visual Studio Code, expand the details under your IoT Edge device to see the running modules. 
 
-2. Klik met de rechter muisknop op **NodeModule** en selecteer **module bewerken**. 
+2. Right-click **NodeModule** and select **Edit module twin**. 
 
-3. Zoek **TemperatureThreshold** in de gewenste eigenschappen. Wijzig de waarde in een nieuwe Tempe ratuur van vijf graden tot 10 graden hoger dan de laatste gerapporteerde Tempe ratuur. 
+3. Find **TemperatureThreshold** in the desired properties. Change its value to a new temperature 5 degrees to 10 degrees higher than the latest reported temperature. 
 
-4. Sla het dubbele bestand van de module op.
+4. Save the module twin file.
 
-5. Klik met de rechter muisknop op een wille keurige plaats in het deel venster module dubbel bewerken en selecteer **Update module**. 
+5. Right-click anywhere in the module twin editing pane and select **Update module twin**. 
 
-6. Bewaak de binnenkomende apparaat-naar-Cloud-berichten. U ziet dat de berichten stoppen totdat de nieuwe temperatuur drempel is bereikt. 
+6. Monitor the incoming device-to-cloud messages. You should see the messages stop until the new temperature threshold is reached. 
 
 ## <a name="clean-up-resources"></a>Resources opschonen 
 
@@ -250,7 +250,7 @@ Anders kunt u de lokale configuraties en Azure-resources die u in dit artikel he
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie hebt u een IoT Edge-module gemaakt die code bevat voor het filteren van onbewerkte gegevens die worden gegenereerd door uw IoT Edge-apparaat. Wanneer u klaar bent om uw eigen modules te bouwen, kunt u meer te weten komen over [het ontwikkelen van uw eigen IOT Edge modules](module-development.md) of het [ontwikkelen van modules met Visual Studio code](how-to-vs-code-develop-module.md). U kunt door gaan met de volgende zelf studies om te leren hoe Azure IoT Edge u kan helpen bij de implementatie van Azure Cloud Services voor het verwerken en analyseren van gegevens aan de rand.
+In deze zelfstudie hebt u een IoT Edge-module gemaakt die code bevat voor het filteren van onbewerkte gegevens die worden gegenereerd door uw IoT Edge-apparaat. When you're ready to build your own modules, you can learn more about [developing your own IoT Edge modules](module-development.md) or how to [develop modules with Visual Studio Code](how-to-vs-code-develop-module.md). You can continue on to the next tutorials to learn how Azure IoT Edge can help you deploy Azure cloud services to process and analyze data at the edge.
 
 > [!div class="nextstepaction"]
 > [Functions](tutorial-deploy-function.md)

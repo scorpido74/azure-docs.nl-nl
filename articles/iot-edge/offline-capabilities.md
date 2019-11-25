@@ -1,77 +1,76 @@
 ---
-title: Apparaten offline werken-Azure IoT Edge | Microsoft Docs
-description: Krijg inzicht in de manier waarop IoT Edge apparaten en modules zonder Internet verbinding kunnen werken gedurende lange tijd tijden en hoe IoT Edge regel matige IoT-apparaten mogelijk offline kunt werken.
+title: Operate devices offline - Azure IoT Edge | Microsoft Docs
+description: Understand how IoT Edge devices and modules can operate without internet connection for extended periods of time, and how IoT Edge can enable regular IoT devices to operate offline too.
 author: kgremban
 ms.author: kgremban
 ms.date: 08/04/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
-ms.openlocfilehash: 3fc90e685a3c6a077250028bae5602e95f114c03
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: b16a8d8ddd4ac23a59db8e7fed48f1c39752d130
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72293436"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74456885"
 ---
-# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Uitgebreide offline mogelijkheden voor IoT Edge apparaten, modules en onderliggende apparaten begrijpen
+# <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>Understand extended offline capabilities for IoT Edge devices, modules, and child devices
 
-Azure IoT Edge ondersteunt uitgebreide offline bewerkingen op uw IoT Edge apparaten en schakelt offline bewerkingen op niet-IoT Edge onderliggende apparaten uit. Zolang een IoT Edge apparaat een kans heeft om verbinding te maken met IoT Hub, kunnen IT en onderliggende apparaten blijven functioneren met een onregelmatige of geen Internet verbinding. 
+Azure IoT Edge supports extended offline operations on your IoT Edge devices, and enables offline operations on non-IoT Edge child devices too. As long as an IoT Edge device has had one opportunity to connect to IoT Hub, it and any child devices can continue to function with intermittent or no internet connection. 
 
 
 ## <a name="how-it-works"></a>Het werkt als volgt
 
-Wanneer een IoT Edge apparaat in de offline modus wordt gezet, neemt de IoT Edge hub drie rollen in beslag. Eerst worden berichten opgeslagen die naar de upstream gaan en deze opslaan totdat het apparaat opnieuw verbinding maakt. Ten tweede fungeert deze namens IoT Hub om modules en onderliggende apparaten te verifiëren, zodat ze kunnen blijven werken. Ten derde wordt er communicatie mogelijk tussen onderliggende apparaten die normaal gesp roken via IoT Hub. 
+When an IoT Edge device goes into offline mode, the IoT Edge hub takes on three roles. First, it stores any messages that would go upstream and saves them until the device reconnects. Second, it acts on behalf of IoT Hub to authenticate modules and child devices so that they can continue to operate. Third, it enables communication between child devices that normally would go through IoT Hub. 
 
-In het volgende voor beeld ziet u hoe een IoT Edge scenario in de offline modus werkt:
+The following example shows how an IoT Edge scenario operates in offline mode:
 
-1. **Apparaten configureren**
+1. **Configure devices**
 
-   Voor IoT Edge apparaten zijn automatisch offline mogelijkheden ingeschakeld. Als u deze mogelijkheid wilt uitbreiden naar andere IoT-apparaten, moet u een bovenliggende/onderliggende relatie tussen de apparaten in IoT Hub declareren. Vervolgens configureert u de onderliggende apparaten om hun toegewezen bovenliggende apparaat te vertrouwen en de apparaat-naar-Cloud-communicatie te routeren via de bovenliggende computer als gateway. 
+   IoT Edge devices automatically have offline capabilities enabled. To extend that capability to other IoT devices, you need to declare a parent-child relationship between the devices in IoT Hub. Then, you configure the child devices to trust their assigned parent device and route the device-to-cloud communications through the parent as a gateway. 
 
-2. **Synchroniseren met IoT Hub**
+2. **Sync with IoT Hub**
 
-   Ten minste één keer na de installatie van de IoT Edge runtime moet het IoT Edge-apparaat online zijn om te kunnen synchroniseren met IoT Hub. In deze synchronisatie krijgt het IoT Edge apparaat Details over alle onderliggende apparaten die hieraan zijn toegewezen. De lokale cache van het IoT Edge apparaat wordt ook veilig bijgewerkt om offline bewerkingen in te scha kelen en instellingen op te halen voor de lokale opslag van telemetrie-berichten. 
+   At least once after installation of the IoT Edge runtime, the IoT Edge device needs to be online to sync with IoT Hub. In this sync, the IoT Edge device gets details about any child devices assigned to it. The IoT Edge device also securely updates its local cache to enable offline operations and retrieves settings for local storage of telemetry messages. 
 
-3. **Offline gaan**
+3. **Go offline**
 
-   Als de verbinding met IoT Hub is verbroken, kunnen het IoT Edge apparaat, de geïmplementeerde modules en alle onderliggende IoT-apparaten voor onbepaalde tijd worden uitgevoerd. Modules en onderliggende apparaten kunnen worden gestart en opnieuw worden opgestart door te verifiëren met de IoT Edge hub terwijl ze offline zijn. De upstream van de telemetrie naar IoT Hub lokaal opgeslagen. Communicatie tussen modules of tussen onderliggende IoT-apparaten wordt onderhouden via directe methoden of berichten. 
+   While disconnected from IoT Hub, the IoT Edge device, its deployed modules, and any children IoT devices can operate indefinitely. Modules and child devices can start and restart by authenticating with the IoT Edge hub while offline. Telemetry bound upstream to IoT Hub is stored locally. Communication between modules or between child IoT devices is maintained through direct methods or messages. 
 
-4. **Opnieuw verbinding maken en opnieuw synchroniseren met IoT Hub**
+4. **Reconnect and resync with IoT Hub**
 
-   Zodra de verbinding met IoT Hub is hersteld, wordt het IoT Edge apparaat opnieuw gesynchroniseerd. Lokaal opgeslagen berichten worden in dezelfde volg orde bezorgd als waarin ze zijn opgeslagen. Eventuele verschillen tussen de gewenste en gerapporteerde eigenschappen van de modules en apparaten worden afgestemd. Op het IoT Edge-apparaat worden wijzigingen in de set toegewezen onderliggende IoT-apparaten bijgewerkt.
+   Once the connection with IoT Hub is restored, the IoT Edge device syncs again. Locally stored messages are delivered in the same order in which they were stored. Any differences between the desired and reported properties of the modules and devices are reconciled. The IoT Edge device updates any changes to its set of assigned child IoT devices.
 
-## <a name="restrictions-and-limits"></a>Beperkingen en limieten
+## <a name="restrictions-and-limits"></a>Restrictions and limits
 
-De uitgebreide offline mogelijkheden die in dit artikel worden beschreven, zijn beschikbaar in [IOT Edge versie 1.0.7 of hoger](https://github.com/Azure/azure-iotedge/releases). Eerdere versies hebben een subset van offline functies. Bestaande IoT Edge apparaten die geen uitgebreide offline mogelijkheden hebben, kunnen niet worden bijgewerkt door de runtime versie te wijzigen, maar moet opnieuw worden geconfigureerd met een nieuwe IoT Edge apparaat-id om deze functies te verkrijgen. 
+The extended offline capabilities described in this article are available in [IoT Edge version 1.0.7 or higher](https://github.com/Azure/azure-iotedge/releases). Earlier versions have a subset of offline features. Existing IoT Edge devices that don't have extended offline capabilities can't be upgraded by changing the runtime version, but must be reconfigured with a new IoT Edge device identity to gain these features. 
 
-Uitgebreide offline ondersteuning is beschikbaar in alle regio's waar IoT Hub beschikbaar is, **behalve** VS-Oost.
+Extended offline support is available in all regions where IoT Hub is available, **except** East US.
 
-Alleen apparaten die niet IoT Edge zijn, kunnen als onderliggende apparaten worden toegevoegd. 
+Only non-IoT Edge devices can be added as child devices. 
 
-IoT Edge apparaten en hun toegewezen onderliggende apparaten kunnen tijdens de eerste, eenmalige synchronisatie oneindig offline werken. De opslag van berichten is echter afhankelijk van de TTL-instelling (time to Live) en de beschik bare schijf ruimte voor het opslaan van de berichten. 
+IoT Edge devices and their assigned child devices can function indefinitely offline after the initial, one-time sync. However, storage of messages depends on the time to live (TTL) setting and the available disk space for storing the messages. 
 
-## <a name="set-up-parent-and-child-devices"></a>Bovenliggende en onderliggende apparaten instellen
+## <a name="set-up-parent-and-child-devices"></a>Set up parent and child devices
 
-Als u wilt dat een IoT Edge apparaat de uitgebreide offline mogelijkheden van de onderliggende IoT-apparaten uitbreidt, moet u twee stappen volt ooien. Declareer eerst de relaties tussen bovenliggende en onderliggende items in de Azure Portal. Vervolgens maakt u een vertrouwens relatie tussen het bovenliggende apparaat en eventuele onderliggende apparaten en configureert u apparaat-naar-Cloud-communicatie om door de bovenliggende site als gateway te gaan. 
+For an IoT Edge device to extend its extended offline capabilities to child IoT devices, you need to complete two steps. First, declare the parent-child relationships in the Azure portal. Second, create a trust relationship between the parent device and any child devices, then configure device-to-cloud communications to go through the parent as a gateway. 
 
-### <a name="assign-child-devices"></a>Onderliggende apparaten toewijzen
+### <a name="assign-child-devices"></a>Assign child devices
 
-Onderliggende apparaten kunnen elk niet-IoT Edge apparaat zijn dat is geregistreerd bij dezelfde IoT Hub. Bovenliggende apparaten kunnen meerdere onderliggende apparaten hebben, maar een onderliggend apparaat heeft slechts één bovenliggend object. Er zijn drie opties voor het instellen van onderliggende apparaten op een edge-apparaat: via de Azure Portal, met behulp van de Azure CLI of de IoT Hub Service-SDK. 
+Child devices can be any non-IoT Edge device registered to the same IoT Hub. Parent devices can have multiple child devices, but a child device only has one parent. There are three options to set child devices to an edge device: through the Azure portal, using the Azure CLI, or using the IoT Hub service SDK. 
 
-De volgende secties bevatten voor beelden van de manier waarop u de bovenliggende/onderliggende relatie in IoT Hub kunt declareren voor bestaande IoT-apparaten. Als u nieuwe apparaat-id's voor uw onderliggende apparaten wilt maken, raadpleegt u [een downstream-apparaat verifiëren bij Azure IOT hub](how-to-authenticate-downstream-device.md) voor meer informatie.
+The following sections provide examples of how you can declare the parent/child relationship in IoT Hub for existing IoT devices. If you're creating new device identities for your child devices, see [Authenticate a downstream device to Azure IoT Hub](how-to-authenticate-downstream-device.md) for more information.
 
-#### <a name="option-1-iot-hub-portal"></a>Optie 1: IoT Hub Portal
+#### <a name="option-1-iot-hub-portal"></a>Option 1: IoT Hub Portal
 
-U kunt de relatie bovenliggend/onderliggend declareren bij het maken van een nieuw apparaat. Voor bestaande apparaten kunt u de relatie declareren vanaf de pagina Details van apparaat van het bovenliggende IoT Edge apparaat of het onderliggende IoT-apparaat. 
+You can declare the parent-child relationship when creating a new device. Or for existing devices, you can declare the relationship from the device details page of either the parent IoT Edge device or the child IoT device. 
 
-   ![Onderliggende apparaten beheren via de pagina Details van IoT Edge apparaat](./media/offline-capabilities/manage-child-devices.png)
+   ![Manage child devices from the IoT Edge device details page](./media/offline-capabilities/manage-child-devices.png)
 
 
-#### <a name="option-2-use-the-az-command-line-tool"></a>Optie 2: het opdracht regel programma `az` gebruiken
+#### <a name="option-2-use-the-az-command-line-tool"></a>Option 2: Use the `az` command-line tool
 
-Met de [Azure-opdracht regel interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) met [IOT-extensie](https://github.com/azure/azure-iot-cli-extension) (v 0.7.0 of hoger) kunt u bovenliggende onderliggende relaties beheren met de subopdrachten van het [apparaat-id](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) . In het onderstaande voor beeld wordt met behulp van een query alle niet-IoT Edge apparaten in de hub aan onderliggende apparaten van een IoT Edge apparaat toegewezen. 
+Using the [Azure command-line interface](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) with [IoT extension](https://github.com/azure/azure-iot-cli-extension) (v0.7.0 or newer), you can manage parent child relationships with the [device-identity](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity?view=azure-cli-latest) subcommands. The example below uses a query to assign all non-IoT Edge devices in the hub to be child devices of an IoT Edge device. 
 
 ```shell
 # Set IoT Edge parent device
@@ -94,35 +93,35 @@ az iot hub device-identity add-children \
   --subscription replace-with-sub-name 
 ```
 
-U kunt de [query](../iot-hub/iot-hub-devguide-query-language.md) wijzigen om een andere subset van apparaten te selecteren. De opdracht kan enkele seconden duren als u een grote set apparaten opgeeft.
+You can modify the [query](../iot-hub/iot-hub-devguide-query-language.md) to select a different subset of devices. The command may take several seconds if you specify a large set of devices.
 
-#### <a name="option-3-use-iot-hub-service-sdk"></a>Optie 3: de IoT Hub Service-SDK gebruiken 
+#### <a name="option-3-use-iot-hub-service-sdk"></a>Option 3: Use IoT Hub Service SDK 
 
-Ten slotte kunt u de C#bovenliggende onderliggende relaties programmatisch beheren via een Java-of node. js-IOT hub Service-SDK. Hier volgt een [voor beeld van het toewijzen van een onderliggend apparaat](https://aka.ms/set-child-iot-device-c-sharp) met behulp van de C# SDK.
+Finally, you can manage parent child relationships programmatically using either C#, Java or Node.js IoT Hub Service SDK. Here is an [example of assigning a child device](https://aka.ms/set-child-iot-device-c-sharp) using the C# SDK.
 
-### <a name="set-up-the-parent-device-as-a-gateway"></a>Het bovenliggende apparaat instellen als een gateway
+### <a name="set-up-the-parent-device-as-a-gateway"></a>Set up the parent device as a gateway
 
-U kunt een bovenliggende/onderliggende relatie beschouwen als een transparante gateway, waarbij het onderliggende apparaat een eigen identiteit heeft in IoT Hub, maar via de Cloud communiceert via de bovenliggende site. Voor beveiligde communicatie moet het onderliggende apparaat kunnen controleren of het bovenliggende apparaat afkomstig is van een vertrouwde bron. Anders kunnen derden schadelijke apparaten instellen om ouders te imiteren en communicatie te onderscheppen. 
+You can think of a parent/child relationship as a transparent gateway, where the child device has its own identity in IoT Hub but communicates through the cloud via its parent. For secure communication, the child device needs to be able to verify that the parent device comes from a trusted source. Otherwise, third-parties could set up malicious devices to impersonate parents and intercept communications. 
 
-Een manier om deze vertrouwens relatie te maken, wordt gedetailleerd beschreven in de volgende artikelen: 
+One way to create this trust relationship is described in detail in the following articles: 
 * [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
-* [Een downstream (onderliggend) apparaat verbinden met een Azure IoT Edge gateway](how-to-connect-downstream-device.md)
+* [Connect a downstream (child) device to an Azure IoT Edge gateway](how-to-connect-downstream-device.md)
 
-## <a name="specify-dns-servers"></a>DNS-servers opgeven 
+## <a name="specify-dns-servers"></a>Specify DNS servers 
 
-Ter verbetering van de robuustheid wordt u ten zeerste aangeraden de DNS-server adressen op te geven die in uw omgeving worden gebruikt. Als u uw DNS-server voor IoT Edge wilt instellen, raadpleegt u de oplossing voor de [module Edge agent doorlopend het ' lege configuratie bestand ' en worden er geen modules gestart op het apparaat](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) in het artikel over probleem oplossing.
+To improve robustness, it is highly recommended you specify the DNS server addresses used in your environment. To set your DNS server for IoT Edge, see the resolution for [Edge Agent module continually reports 'empty config file' and no modules start on device](troubleshoot.md#edge-agent-module-continually-reports-empty-config-file-and-no-modules-start-on-the-device) in the troubleshooting article.
 
-## <a name="optional-offline-settings"></a>Optionele offline-instellingen
+## <a name="optional-offline-settings"></a>Optional offline settings
 
-Als uw apparaten offline gaan, slaat het IoT Edge bovenliggende apparaat alle apparaat-naar-Cloud-berichten op totdat de verbinding opnieuw tot stand is gebracht. De module IoT Edge hub beheert de opslag en het door sturen van offline berichten. Voor apparaten die gedurende lange tijd offline kunnen gaan, optimaliseert u de prestaties door twee IoT Edge hub-instellingen te configureren. 
+If your devices go offline, the IoT Edge parent device stores all device-to-cloud messages until the connection is reestablished. The IoT Edge hub module manages the storage and forwarding of offline messages. For devices that may go offline for extended periods of time, optimize performance by configuring two IoT Edge hub settings. 
 
-Verg root de time-to-Live-instelling, zodat de IoT Edge hub berichten lang genoeg blijft voordat het apparaat opnieuw verbinding maakt. Voeg vervolgens extra schijf ruimte toe voor bericht opslag. 
+First, increase the time to live setting so that the IoT Edge hub will keep messages long enough for your device to reconnect. Then, add additional disk space for message storage. 
 
 ### <a name="time-to-live"></a>Time To Live
 
-De instelling time to Live is de hoeveelheid tijd (in seconden) die een bericht kan wachten voordat het verloopt. De standaard waarde is 7200 seconden (twee uur). De maximum waarde wordt alleen beperkt door de maximum waarde van een variabele geheel getal, ongeveer 2.000.000.000. 
+The time to live setting is the amount of time (in seconds) that a message can wait to be delivered before it expires. The default is 7200 seconds (two hours). The maximum value is only limited by the maximum value of an integer variable, which is around 2 billion. 
 
-Deze instelling is een gewenste eigenschap van de IoT Edge hub, die wordt opgeslagen in de module dubbele. U kunt deze configureren in de Azure Portal of rechtstreeks in het implementatie manifest. 
+This setting is a desired property of the IoT Edge hub, which is stored in the module twin. You can configure it in the Azure portal or directly in the deployment manifest. 
 
 ```json
 "$edgeHub": {
@@ -136,13 +135,13 @@ Deze instelling is een gewenste eigenschap van de IoT Edge hub, die wordt opgesl
 }
 ```
 
-### <a name="host-storage-for-system-modules"></a>Host Storage voor systeem modules
+### <a name="host-storage-for-system-modules"></a>Host storage for system modules
 
-Berichten en informatie over de status van de module worden standaard opgeslagen in het lokale container systeem van de IoT Edge hub. Voor een betere betrouw baarheid, met name wanneer u offline werkt, kunt u ook opslag op de host toewijzen IoT Edge apparaat. Zie [modules toegang bieden tot de lokale opslag van een apparaat](how-to-access-host-storage-from-module.md) voor meer informatie.
+Messages and module state information are stored in the IoT Edge hub's local container filesystem by default. For improved reliability, especially when operating offline, you can also dedicate storage on the host IoT Edge device. For more information, see [Give modules access to a device's local storage](how-to-access-host-storage-from-module.md)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over het instellen van een transparante gateway voor de verbindingen van een bovenliggend/onderliggend apparaat: 
+Learn more about how to set up a transparent gateway for your parent/child device connections: 
 
 * [Een IoT Edge-apparaat configureren zodat deze werkt als een transparante gateway](how-to-create-transparent-gateway.md)
 * [Een downstreamapparaat verifiëren voor Azure IoT Hub](how-to-authenticate-downstream-device.md)

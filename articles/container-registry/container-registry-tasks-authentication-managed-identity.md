@@ -1,6 +1,6 @@
 ---
-title: Een beheerde identiteit met Azure Container Registry taken gebruiken
-description: Een beheerde identiteit inschakelen voor Azure-resources in een Azure Container Registry taak, zodat de taak toegang kan krijgen tot andere Azure-resources, waaronder andere persoonlijke container registers.
+title: Managed identity in ACR task
+description: Enable a managed identity for Azure Resources in an Azure Container Registry task to allow the task to access other Azure resources including other private container registries.
 services: container-registry
 author: dlepow
 manager: gwallace
@@ -8,51 +8,51 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: danlep
-ms.openlocfilehash: 9f7c083a079e42172a9e2865f90293fa4d6813d8
-ms.sourcegitcommit: 3877b77e7daae26a5b367a5097b19934eb136350
+ms.openlocfilehash: c86553d7658e57032393c682628d4b12d6945381
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68640423"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74454729"
 ---
-# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Een door Azure beheerde identiteit gebruiken in ACR-taken 
+# <a name="use-an-azure-managed-identity-in-acr-tasks"></a>Use an Azure-managed identity in ACR Tasks 
 
-Een [beheerde identiteit inschakelen voor Azure-resources](../active-directory/managed-identities-azure-resources/overview.md) in een [ACR-taak](container-registry-tasks-overview.md), zodat de taak toegang kan krijgen tot andere Azure-resources, zonder dat hiervoor referenties moeten worden verstrekt of beheerd. Gebruik bijvoorbeeld een beheerde identiteit om een taak stap in te scha kelen om container installatie kopieën naar een ander REGI ster te halen of te pushen.
+Enable a [managed identity for Azure resources](../active-directory/managed-identities-azure-resources/overview.md) in an [ACR task](container-registry-tasks-overview.md), so the task can access other Azure resources, without needing to provide or manage credentials. For example, use a managed identity to enable a task step to pull or push container images to another registry.
 
-In dit artikel leert u hoe u de Azure CLI gebruikt om een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit in te scha kelen voor een ACR-taak. U kunt de Azure Cloud Shell of een lokale installatie van de Azure CLI gebruiken. Als u het lokaal wilt gebruiken, is versie 2.0.68 of hoger vereist. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
+In this article, you learn how to use the Azure CLI to enable a user-assigned or system-assigned managed identity on an ACR task. You can use the Azure Cloud Shell or a local installation of the Azure CLI. If you'd like to use it locally, version 2.0.68 or later is required. Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli-install] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Zie voor scenario's voor toegang tot beveiligde resources van een ACR-taak met behulp van een beheerde identiteit:
+For scenarios to access secured resources from an ACR task using a managed identity, see:
 
-* [Verificatie tussen het REGI ster](container-registry-tasks-cross-registry-authentication.md)
-* [Toegang krijgen tot externe resources met geheimen die zijn opgeslagen in Azure Key Vault](container-registry-tasks-authentication-key-vault.md)
+* [Cross-registry authentication](container-registry-tasks-cross-registry-authentication.md)
+* [Access external resources with secrets stored in Azure Key Vault](container-registry-tasks-authentication-key-vault.md)
 
-## <a name="why-use-a-managed-identity"></a>Waarom een beheerde identiteit gebruiken?
+## <a name="why-use-a-managed-identity"></a>Why use a managed identity?
 
-Een beheerde identiteit voor Azure-resources biedt geselecteerde Azure-Services met een automatisch beheerde identiteit in Azure Active Directory (Azure AD). U kunt een ACR-taak met een beheerde identiteit configureren zodat de taak toegang kan krijgen tot andere beveiligde Azure-resources zonder dat referenties in de taak stappen worden door gegeven.
+A managed identity for Azure resources provides selected Azure services with an automatically managed identity in Azure Active Directory (Azure AD). You can configure an ACR task with a managed identity so that the task can access other secured Azure resources, without passing credentials in the task steps.
 
-Beheerde identiteiten zijn van twee typen:
+Managed identities are of two types:
 
-* Door de *gebruiker toegewezen identiteiten*, die u kunt toewijzen aan meerdere resources en die zo lang als gewenst blijven. Door de gebruiker toegewezen identiteiten zijn momenteel beschikbaar als preview-versie.
+* *User-assigned identities*, which you can assign to multiple resources and persist for as long as you want. User-assigned identities are currently in preview.
 
-* Een door het *systeem toegewezen identiteit*, die uniek is voor een specifieke resource, zoals een ACR-taak en de laatste tijd voor de levens duur van die resource.
+* A *system-assigned identity*, which is unique to a specific resource such as an ACR task and lasts for the lifetime of that resource.
 
-U kunt een of beide typen identiteiten inschakelen in een ACR-taak. Verleen de identiteit toegang tot een andere resource, net zoals elke beveiligingsprincipal. Wanneer de taak wordt uitgevoerd, wordt de identiteit gebruikt voor toegang tot de resource in elke taak stap waarvoor toegang is vereist.
+You can enable either or both types of identity in an ACR task. Grant the identity access to another resource, just like any security principal. When the task runs, it uses the identity to access the resource in any task steps that require access.
 
-## <a name="steps-to-use-a-managed-identity"></a>Stappen voor het gebruik van een beheerde identiteit
+## <a name="steps-to-use-a-managed-identity"></a>Steps to use a managed identity
 
-Volg deze stappen op hoog niveau om een beheerde identiteit met een ACR-taak te gebruiken.
+Follow these high-level steps to use a managed identity with an ACR task.
 
-### <a name="1-optional-create-a-user-assigned-identity"></a>1. Beschrijving Een door de gebruiker toegewezen identiteit maken
+### <a name="1-optional-create-a-user-assigned-identity"></a>1. (Optional) Create a user-assigned identity
 
-Als u van plan bent een door de gebruiker toegewezen identiteit te gebruiken, kunt u een bestaande identiteit gebruiken. U kunt ook de identiteit maken met behulp van de Azure CLI of andere Azure-hulpprogram ma's. Gebruik bijvoorbeeld de opdracht [AZ Identity Create][az-identity-create] . 
+If you plan to use a user-assigned identity, you can use an existing identity. Or, create the identity using the Azure CLI or other Azure tools. For example, use the [az identity create][az-identity-create] command. 
 
-Als u van plan bent om alleen een door het systeem toegewezen identiteit te gebruiken, slaat u deze stap over. U kunt een door het systeem toegewezen identiteit maken wanneer u de taak ACR maakt.
+If you plan to use only a system-assigned identity, skip this step. You can create a system-assigned identity when you create the ACR task.
 
-### <a name="2-enable-identity-on-an-acr-task"></a>2. Identiteit inschakelen voor een ACR-taak
+### <a name="2-enable-identity-on-an-acr-task"></a>2. Enable identity on an ACR task
 
-Wanneer u een ACR-taak maakt, kunt optioneel een door de gebruiker toegewezen identiteit, een door het systeem toegewezen identiteit of beide inschakelen. Geef bijvoorbeeld de `--assign-identity` para meter door als u de opdracht [AZ ACR Task Create][az-acr-task-create] uitvoert in de Azure cli.
+When you create an ACR task, optionally enable a user-assigned identity, a system-assigned identity, or both. For example, pass the `--assign-identity` parameter when you run the [az acr task create][az-acr-task-create] command in the Azure CLI.
 
-Om een door `--assign-identity` het systeem toegewezen identiteit in te scha kelen, zonder `assign-identity [system]`waarde of. Met de volgende opdracht wordt een Linux-taak gemaakt vanuit een open bare github `hello-world` -opslag plaats die de installatie kopie bouwt met een Git-doorvoer trigger en met een door het systeem toegewezen beheerde identiteit:
+To enable a system-assigned identity, pass `--assign-identity` with no value or `assign-identity [system]`. The following command creates a Linux task from a public GitHub repository which builds the `hello-world` image with a Git commit trigger and with a system-assigned managed identity:
 
 ```azurecli
 az acr task create \
@@ -63,7 +63,7 @@ az acr task create \
     --assign-identity
 ```
 
-Als u een door de gebruiker toegewezen identiteit wilt `--assign-identity` inschakelen, geeft u een waarde op voor de *resource-id* van de identiteit. Met de volgende opdracht wordt een Linux-taak gemaakt vanuit een open bare github `hello-world` -opslag plaats die de installatie kopie bouwt met een Git-doorvoer trigger en met een door de gebruiker toegewezen beheerde identiteit:
+To enable a user-assigned identity, pass `--assign-identity` with a value of the *resource ID* of the identity. The following command creates a Linux task from a public GitHub repository which builds the `hello-world` image with a Git commit trigger and with a user-assigned managed identity:
 
 ```azurecli
 az acr task create \
@@ -74,33 +74,33 @@ az acr task create \
     --assign-identity <resourceID>
 ```
 
-U kunt de resource-ID van de identiteit ophalen door de opdracht [AZ Identity show][az-identity-show] uit te voeren. De resource-ID voor de ID *myUserAssignedIdentity* in de resource groep *myResourceGroup* is van het formulier. 
+You can get the resource ID of the identity by running the [az identity show][az-identity-show] command. The resource ID for the ID *myUserAssignedIdentity* in resource group *myResourceGroup* is of the form. 
 
 ```
 "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
 ```
 
-### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. De identiteits machtigingen verlenen voor toegang tot andere Azure-resources
+### <a name="3-grant-the-identity-permissions-to-access-other-azure-resources"></a>3. Grant the identity permissions to access other Azure resources
 
-Geef, afhankelijk van de vereisten van uw taak, de identiteits machtigingen voor toegang tot andere Azure-resources. Voorbeelden zijn:
+Depending on the requirements of your task, grant the identity permissions to access other Azure resources. Voorbeelden:
 
-* Wijs de beheerde identiteit een rol toe met pull, push en pull of andere machtigingen voor een doel container register in Azure. Zie [Azure container Registry rollen en machtigingen](container-registry-roles.md)voor een volledige lijst met register rollen. 
-* Wijs de beheerde identiteit een rol toe voor het lezen van geheimen in een Azure-sleutel kluis.
+* Assign the managed identity a role with pull, push and pull, or other permissions to a target container registry in Azure. For a complete list of registry roles, see [Azure Container Registry roles and permissions](container-registry-roles.md). 
+* Assign the managed identity a role to read secrets in an Azure key vault.
 
-Gebruik de [Azure cli](../role-based-access-control/role-assignments-cli.md) -of andere Azure-hulpprogram ma's om op rollen gebaseerde toegang tot resources te beheren. Voer bijvoorbeeld de opdracht [AZ Role Assignment Create][az-role-assignment-create] uit om de identiteit van een rol toe te wijzen aan de identiteit. 
+Use the [Azure CLI](../role-based-access-control/role-assignments-cli.md) or other Azure tools to manage role-based access to resources. For example, run the [az role assignment create][az-role-assignment-create] command to assign the identity a role to the identity. 
 
-In het volgende voor beeld wordt een beheerde identiteit toegewezen om uit een container register te halen. Met de opdracht wordt de *Service-Principal-id* van de identiteit en de *bron-id* van het doel register opgegeven.
+The following example assigns a managed identity the permissions to pull from a container registry. The command specifies the *service principal ID* of the identity and the *resource ID* of the target registry.
 
 
 ```azurecli
 az role assignment create --assignee <servicePrincipalID> --scope <registryID> --role acrpull
 ```
 
-### <a name="4-optional-add-credentials-to-the-task"></a>4. Beschrijving Referenties toevoegen aan de taak
+### <a name="4-optional-add-credentials-to-the-task"></a>4. (Optional) Add credentials to the task
 
-Als uw taak installatie kopieën ophaalt of naar een ander Azure container Registry pusht, voegt u referenties toe aan de taak voor het verifiëren van de identiteit. Voer de opdracht [AZ ACR taak Credential add][az-acr-task-credential-add] uit en geef `--use-identity` de para meter door om de referenties van de identiteit aan de taak toe te voegen. 
+If your task pulls or pushes images to another Azure container registry, add credentials to the task for the identity to authenticate. Run the [az acr task credential add][az-acr-task-credential-add] command and pass the `--use-identity` parameter to add the identity's credentials to the task. 
 
-Als u bijvoorbeeld referenties wilt toevoegen voor een door het systeem toegewezen identiteit voor verificatie met hetREGI ster targetregistry `use-identity [system]`, geeft u het volgende door:
+For example, to add credentials for a system-assigned identity to authenticate with the registry *targetregistry*, pass `use-identity [system]`:
 
 ```azurecli
 az acr task credential add \
@@ -110,7 +110,7 @@ az acr task credential add \
     --use-identity [system]
 ```
 
-Als u referenties wilt toevoegen voor een door de gebruiker toegewezen identiteit voor verificatiemet de register `use-identity` targetregistry, geeft u een waarde van de *client-id* van de identiteit door. Bijvoorbeeld:
+To add credentials for a user-assigned identity to authenticate with the registry *targetregistry*, pass `use-identity` with a value of the *client ID* of the identity. Bijvoorbeeld:
 
 ```azurecli
 az acr task credential add \
@@ -120,14 +120,14 @@ az acr task credential add \
     --use-identity <clientID>
 ```
 
-U kunt de client-ID van de identiteit ophalen door de opdracht [AZ Identity show][az-identity-show] uit te voeren. De client-ID is een GUID van het `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`formulier.
+You can get the client ID of the identity by running the [az identity show][az-identity-show] command. The client ID is a GUID of the form `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In dit artikel hebt u geleerd hoe u een door de gebruiker toegewezen of door het systeem toegewezen beheerde identiteit kunt inschakelen en gebruiken voor een ACR-taak. Zie voor scenario's voor toegang tot beveiligde resources van een ACR-taak met behulp van een beheerde identiteit:
+In this article, you learned how to enable and use a user-assigned or system-assigned managed identity on an ACR task. For scenarios to access secured resources from an ACR task using a managed identity, see:
 
-* [Verificatie tussen het REGI ster](container-registry-tasks-cross-registry-authentication.md)
-* [Toegang krijgen tot externe resources met geheimen die zijn opgeslagen in Azure Key Vault](container-registry-tasks-authentication-key-vault.md)
+* [Cross-registry authentication](container-registry-tasks-cross-registry-authentication.md)
+* [Access external resources with secrets stored in Azure Key Vault](container-registry-tasks-authentication-key-vault.md)
 
 
 <!-- LINKS - Internal -->

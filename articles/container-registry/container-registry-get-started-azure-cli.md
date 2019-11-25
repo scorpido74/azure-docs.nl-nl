@@ -1,28 +1,23 @@
 ---
-title: 'Quick Start: REGI ster maken-Azure CLI-Azure Container Registry'
+title: Quickstart - Create registry - Azure CLI
 description: Leer snel hoe u een persoonlijk Docker-containerregister maakt met behulp van Azure CLI.
-services: container-registry
-author: dlepow
-manager: gwallace
-ms.service: container-registry
 ms.topic: quickstart
 ms.date: 01/22/2019
-ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017, mvc
-ms.openlocfilehash: 562f8d41e1f91e408263809bdfc78905317912a1
-ms.sourcegitcommit: a10074461cf112a00fec7e14ba700435173cd3ef
+ms.openlocfilehash: 551a3659feb39943c9f794484abb6f2da4367f39
+ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73931603"
+ms.lasthandoff: 11/24/2019
+ms.locfileid: "74455170"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snelstartgids: een persoonlijk container register maken met behulp van Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Quickstart: Create a private container registry using the Azure CLI
 
 Azure Container Registry is een beheerde service voor Docker-containerregisters die wordt gebruikt voor het opslaan van installatiekopieën van persoonlijke Docker-containers. In deze handleiding vindt u instructies voor het maken van een Azure Container Registry-exemplaar met behulp van Azure CLI. Gebruik vervolgens Docker-opdrachten om een containerinstallatiekopie naar het register pushen, waarna u de installatiekopie ophaalt en uitvoert vanuit het register.
 
 Voor deze snelstart moet u Azure CLI uitvoeren (versie 2.0.55 of later aanbevolen). Voer `az --version` uit om de versie te bekijken. Zie [Azure CLI installeren][azure-cli] als u de CLI wilt installeren of een upgrade wilt uitvoeren.
 
-Docker moet ook lokaal zijn geïnstalleerd. Docker biedt pakketten waarmee docker eenvoudig kan worden geconfigureerd op een [macOS][docker-mac]-, [Windows][docker-windows]-of [Linux][docker-linux] -systeem.
+Docker moet ook lokaal zijn geïnstalleerd. Docker provides packages that easily configure Docker on any [macOS][docker-mac], [Windows][docker-windows], or [Linux][docker-linux] system.
 
 Omdat Azure Cloud-Shell niet alle vereiste Docker-onderdelen bevat (de `dockerd`-daemon), kunt u de Cloud Shell niet voor deze snelstart gebruiken.
 
@@ -38,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Een containerregister maken
 
-In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. Zie [sku's voor container registers][container-registry-skus]voor meer informatie over de beschik bare service lagen.
+In deze quickstart maakt u een *Basic*-register. Dit is een voor kosten geoptimaliseerde optie voor ontwikkelaars die meer willen leren over Azure Container Registry. For details on available service tiers, see [Container registry SKUs][container-registry-skus].
 
 Maak een ACR-exemplaar met de opdracht [az acr create][az-acr-create]. De registernaam moet uniek zijn binnen Azure en mag 5 tot 50 alfanumerieke tekens bevatten. In het volgende voorbeeld wordt *myContainerRegistry007* gebruikt. Werk deze waarde bij naar een unieke waarde.
 
@@ -99,7 +94,7 @@ Result
 hello-world
 ```
 
-In het volgende voor beeld worden de tags in de opslag plaats **Hello-wereld** weer gegeven.
+The following example lists the tags on the **hello-world** repository.
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository hello-world --output table
@@ -117,7 +112,7 @@ v1
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u deze niet meer nodig hebt, kunt u de opdracht [AZ Group delete][az-group-delete] gebruiken om de resource groep, het container register en de container installatie kopieën die daar zijn opgeslagen, te verwijderen.
+When no longer needed, you can use the [az group delete][az-group-delete] command to remove the resource group, the container registry, and the container images stored there.
 
 ```azurecli
 az group delete --name myResourceGroup
@@ -128,7 +123,7 @@ az group delete --name myResourceGroup
 In deze quickstart hebt u een Azure Container Registry gemaakt met de Azure-CLI. U hebt een containerinstallatiekopie naar het register gepusht en de installatiekopie uit het register opgehaald en uitgevoerd. Ga verder met de zelfstudies voor Azure Container Registry om meer te leren over ACR.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry zelf studies][container-registry-tutorial-quick-task]
+> [Azure Container Registry tutorials][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
