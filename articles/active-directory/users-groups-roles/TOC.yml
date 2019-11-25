@@ -86,6 +86,8 @@
           href: groups-members-owners-search.md
         - name: Groep maken (Azure-portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
+        - name: Gevoeligheidslabels toewijzen (preview)
+          href: groups-assign-sensitivity-labels.md
         - name: Groepen beheren met PowerShell voor Graph (v2)
           href: groups-settings-v2-cmdlets.md
         - name: Groepen beheren met PowerShell MSOnline

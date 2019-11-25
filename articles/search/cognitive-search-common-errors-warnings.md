@@ -1,5 +1,5 @@
 ---
-title: Fouten en waarschuwingen van Indexeer functie
+title: Fouten en waarschuwingen voor indexeerfunctie
 titleSuffix: Azure Cognitive Search
 description: In dit artikel vindt u informatie en oplossingen voor veelvoorkomende fouten en waarschuwingen die u kunt tegen komen tijdens AI-verrijking in azure Cognitive Search.
 manager: nitinme
@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4a0a005d096702b864c770675a427184547a2b44
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: a86c809e239a84b2ec6910c47a17b935c440c741
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185707"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74287000"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Veelvoorkomende fouten en waarschuwingen voor Indexeer functies in azure Cognitive Search oplossen
 
@@ -291,3 +291,19 @@ Uitvoer veld toewijzingen die naar niet-bestaande/null-gegevens verwijzen, gener
 
 ## <a name="warning-the-data-change-detection-policy-is-configured-to-use-key-column-x"></a>Waarschuwing: het detectie beleid voor gegevens wijzigingen is geconfigureerd voor het gebruik van sleutel kolom X
 Voor het [beleid voor gegevens wijzigings detectie](https://docs.microsoft.com/rest/api/searchservice/create-data-source#data-change-detection-policies) gelden specifieke vereisten voor de kolommen die worden gebruikt om de wijziging te detecteren. Een van deze vereisten is dat deze kolom wordt bijgewerkt telkens wanneer het bron item wordt gewijzigd. Een andere vereiste is dat de nieuwe waarde voor deze kolom groter is dan de vorige waarde. Sleutel kolommen voldoen niet aan deze vereiste omdat ze niet worden gewijzigd bij elke update. U kunt dit probleem omzeilen door een andere kolom te selecteren voor het beleid voor wijzigings detectie.
+
+<a name="document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"/>
+
+## <a name="warning-document-text-appears-to-be-utf-16-encoded-but-is-missing-a-byte-order-mark"></a>Waarschuwing: de document tekst lijkt UTF-16-code ring te zijn, maar er ontbreekt een byte order mark
+
+De [indexerings modi van de Indexeer functie](https://docs.microsoft.com/rest/api/searchservice/create-indexer#blob-configuration-parameters) moeten weten hoe tekst moet worden gecodeerd voordat deze wordt geparseerd. De twee meest voorkomende manieren voor het coderen van tekst zijn UTF-16 en UTF-8. UTF-8 is een code ring met variabele lengte waarbij elk teken tussen 1 en 4 bytes lang is. UTF-16 is een code ring met een vaste lengte waarbij elk teken 2 bytes lang is. UTF-16 heeft twee verschillende varianten: ' big endian ' en ' little endian '. Tekst codering wordt bepaald door een ' byte order mark ', een reeks bytes voor de tekst.
+
+| Encoding | Byte order markering |
+| --- | --- |
+| UTF-16 big endian | 0xFF 0xFE |
+| UTF-16 little endian | 0xFF 0xFE |
+| UTF-8 | 0xEF 0xBB 0xBF |
+
+Als er geen byte order mark aanwezig is, wordt ervan uitgegaan dat de tekst als UTF-8 wordt gecodeerd.
+
+Om deze waarschuwing te omzeilen, bepaalt u wat de tekst codering voor deze blob is en voegt u de juiste byte order mark toe.

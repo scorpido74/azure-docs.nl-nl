@@ -836,8 +836,10 @@
               href: insights/container-insights-update-metrics.md
             - name: Configuratie van statuscontrole
               href: insights/container-insights-health-monitors-config.md
-            - name: Bewaking uitschakelen
+            - name: Bewaking van AKS uitschakelen
               href: insights/container-insights-optout.md
+            - name: Bewaking van Red Hat OpenShift uitschakelen
+              href: insights/container-insights-optout-openshift.md
             - name: Problemen oplossen
               href: insights/container-insights-troubleshoot.md
         - name: Docker- en Windows-containers bewaken

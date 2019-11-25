@@ -1,14 +1,14 @@
 ---
 title: CAF-blauwdrukvoorbeeld voor de migratielandingszone - Overzicht
-description: Overzicht en architectuur van het CAF-blauwdrukvoorbeeld voor de migratielandingszone.
+description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor blauwdrukvoorbeeld van Azure Migration-landingszone.
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: cba1eb6d4761ae8e236f22fa22ff08c129d9637e
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: e007c7af4d788016d74f085ba39b63ee218d6de0
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038471"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404755"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-migration-landing-zone-blueprint-sample"></a>Overzicht van het Microsoft Cloud Adoption Framework-blauwdrukvoorbeeld voor de Azure-migratielandingszone
 
@@ -43,7 +43,7 @@ Zie [Microsoft Cloud Adoption Framework voor Azure: migreren](/azure/architectur
 U hebt het overzicht en de architectuur van het CAF-blauwdrukvoorbeeld voor de migratielandingszone doorgenomen.
 
 > [!div class="nextstepaction"]
->  [CAF-blauwdrukvoorbeeld voor de migratielandingszone - Implementatiestappen](./deploy.md)
+> [CAF-blauwdrukvoorbeeld voor de migratielandingszone - Implementatiestappen](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

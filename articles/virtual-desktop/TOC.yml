@@ -34,32 +34,42 @@
           href: connect-macos.md
         - name: Verbinding maken met de iOS-client
           href: connect-ios.md
-    - name: Een hostpool maken met een Azure Resource Manager-sjabloon
-      href: create-host-pools-arm-template.md
-    - name: Een hostpool maken met PowerShell
-      href: create-host-pools-powershell.md
-    - name: Een virtuele Windows 7-machine implementeren in Windows Virtual Desktop
-      href: deploy-windows-7-virtual-machine.md
-    - name: Windows-licentie toepassen op Windows Virtual Desktop-sessiehosts
+    - name: Een hostpool en sessiehosts maken
+      items:
+        - name: Azure Resource Manager-sjabloon
+          href: create-host-pools-arm-template.md
+        - name: PowerShell
+          href: create-host-pools-powershell.md
+        - name: Een virtuele Windows 7-machine implementeren
+          href: deploy-windows-7-virtual-machine.md
+        - name: Een sessiehost op basis van GPU implementeren
+          href: configure-vm-gpu.md
+    - name: Een profielcontainer maken
+      items:
+        - name: Een bestandsshare op VM-basis gebruiken
+          href: create-host-pools-user-profile.md
+        - name: Azure NetApp Files gebruiken
+          href: create-fslogix-profile-container.md
+    - name: Poolinstellingen van de host configureren
+      items:
+        - name: RDP-eigenschappen
+          href: customize-rdp-properties.md
+        - name: Load balancer voor gepoolde hostpools
+          href: configure-host-pool-load-balancing.md
+    - name: Windows Virtual Desktop-licentie gebruiken
       href: apply-windows-license.md
     - name: Een profielcontainer maken voor een hostpool met behulp van een bestandsshare
       href: create-host-pools-user-profile.md
-    - name: Een profielcontainer maken voor een hostpool met behulp van Azure NetApp Files
-      href: create-fslogix-profile-container.md
-    - name: De taakverdelingsmethode voor Windows Virtual Desktop configureren
-      href: configure-host-pool-load-balancing.md
-    - name: Een VHD-hoofdinstallatiekopie voorbereiden en aanpassen
-      href: set-up-customize-master-image.md
-    - name: Office installeren op een master-VHD-installatiekopie
-      href: install-office-on-wvd-master-image.md
-    - name: Een GPU configureren voor Windows Virtual Desktop
-      href: configure-vm-gpu.md
+    - name: Image van sessiehost aanpassen
+      items:
+        - name: Een mast-VHD-installatiekopie instellen
+          href: set-up-customize-master-image.md
+        - name: Office installeren op een master-VHD-installatiekopie
+          href: install-office-on-wvd-master-image.md
     - name: Schaalsessie host dynamisch
       href: set-up-scaling-script.md
-    - name: Feed aanpassen voor Windows Virtual Desktop-gebruikers
+    - name: Feed aanpassen
       href: customize-feed-for-virtual-desktop-users.md
-    - name: RDP-eigenschappen aanpassen
-      href: customize-rdp-properties.md
     - name: Het diagnosehulpprogramma implementeren
       href: deploy-diagnostics.md
     - name: MSIX-app-koppeling instellen

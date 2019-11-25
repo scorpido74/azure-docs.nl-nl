@@ -12,12 +12,8 @@
       href: quickstarts/create-publish-knowledge-base.md
     - name: Vragen toevoegen met metagegevens
       href: quickstarts/add-question-metadata-portal.md
-    - name: Antwoord ophalen
-      items:
-        - name: Met Postman
-          href: Quickstarts/get-answer-from-kb-using-postman.md
-        - name: Met cURL
-          href: Quickstarts/get-answer-from-kb-using-cURL.md
+    - name: Antwoord ophalen met behulp van Postman of cURL
+      href: Quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - name: REST API's gebruiken
       items:
         - name: Een knowledge base maken

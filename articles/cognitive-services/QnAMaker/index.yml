@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: Documentatie voor QnA Maker
   description: QnA Maker is een cloudgebaseerde API-service voor het maken van een vraag- en antwoordlaag over uw gegevens in gespreksstijl. Met QnA Maker kunt u een vraag- en antwoordservice maken op basis van uw semi-gestructureerde inhoud zoals FAQ-documenten, URL's en producthandleidingen. De QnA Maker-service beantwoordt de in natuurlijke taal gestelde vragen van uw gebruikers door deze te koppelen aan de best mogelijke antwoorden uit de QnA's in uw Knowledge Base.
-  ms.openlocfilehash: 091d2007d115c5e08904af6081d0f67b2eb60071
-  ms.sourcegitcommit: c2e7595a2966e84dc10afb9a22b74400c4b500ed
+  ms.openlocfilehash: f88336107203a166b61df98c55b680f1f11f79f6
+  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 10/05/2019
-  ms.locfileid: "71971457"
+  ms.lasthandoff: 11/23/2019
+  ms.locfileid: "74422640"
 landingContent:
 - title: Over QnA Maker
   linkLists:
@@ -64,10 +64,8 @@ landingContent:
   linkLists:
   - linkListType: get-started
     links:
-    - text: 'Quickstart: Met Postman'
-      url: quickstarts/get-answer-from-kb-using-postman.md
-    - text: 'Quickstart: Met cURL'
-      url: quickstarts/get-answer-from-kb-using-curl.md
+    - text: 'Quickstart: Met behulp van Postman of cURL'
+      url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - text: 'Quickstart: REST en C# gebruiken'
       url: quickstarts/get-answer-from-knowledge-base-csharp.md
     - text: 'Quickstart: NuGet en C# gebruiken'

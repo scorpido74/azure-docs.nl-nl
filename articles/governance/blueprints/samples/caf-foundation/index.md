@@ -1,14 +1,14 @@
 ---
 title: CAF Foundation-blauwdrukvoorbeeld - Overzicht
-description: Overzicht en architectuur van het CAF Foundation-blauwdrukvoorbeeld.
+description: Overzicht en architectuur van het Cloud Adoption Framework (CAF) voor Azure Foundation-blauwdrukvoorbeeld
 ms.date: 08/20/2019
 ms.topic: sample
-ms.openlocfilehash: a353f92be995412702a93219c8fb1af967368beb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2943d3327fe6ea3c935694118aaa995b8e96ace6
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038490"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74404785"
 ---
 # <a name="overview-of-the-microsoft-cloud-adoption-framework-for-azure-foundation-blueprint-sample"></a>Overzicht van Microsoft Cloud Adoption Framework voor het Azure Foundation-blauwdrukvoorbeeld
 
@@ -30,7 +30,7 @@ Deze implementatie omvat verschillende Azure-services die worden gebruikt om een
   - Resources bijvoegen in resourcegroep met de CostCenter-tag
   - Toegestane Azure-regio voor resources en resourcegroepen
   - Toegestane opslagaccount-SKU's (kiezen tijden het implementeren)
-  - Toegestane Azure-VM-SKU’s (kiezen tijdens het implementeren)
+  - Toegestane Azure-VM-SKU's (kiezen tijdens het implementeren)
   - Vereisen dat Network Watch wordt geïmplementeerd 
   - Veilige overdrachtversleuteling voor Azure-opslagaccount vereisen
   - Resourcetypen weigeren (kiezen tijdens implementeren)  
@@ -50,7 +50,7 @@ Zie [Microsoft Cloud Adoption Framework voor Azure - Ready](/azure/architecture/
 U hebt het overzicht en de architectuur van het CAF Foundation-blauwdrukvoorbeeld doorgenomen.
 
 > [!div class="nextstepaction"]
->  [CAF Foundation-blauwdruk - Implementatiestappen](./deploy.md)
+> [CAF Foundation-blauwdruk - Implementatiestappen](./deploy.md)
 
 Aanvullende artikelen over blauwdrukken en het gebruik hiervan:
 

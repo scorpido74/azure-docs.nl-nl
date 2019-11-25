@@ -4,12 +4,12 @@ ms.date: 10-19-2019
 ms.topic: hub-page
 title: Documentatie voor Speech Service
 description: Aan de slag met de spraakservice.
-ms.openlocfilehash: 0a07125764908b661216c20279ab4bdf80ae91ca
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: e9fda2788b28ba882b5c5eb232bfd2ffbc85f049
+ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
 ms.translationtype: HT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73580334"
+ms.lasthandoff: 11/22/2019
+ms.locfileid: "74406176"
 ---
 <div id="main" class="v2">    
     <div class="container">
@@ -271,7 +271,7 @@ ms.locfileid: "73580334"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Spraak, intenties en entiteiten herkennen</h3>
-                                                    <p>Gebruik de Speech SDK en LUIS om spraak, intenties en entiteiten te herkennen.</p>
+                                                    <p>Gebruik de Speech SDK en Language Understanding (LUIS) om spraak, intenties en entiteiten te herkennen.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +289,7 @@ ms.locfileid: "73580334"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Documentatie voor LUIS</h3>
+                                                    <h3>Documentatie voor Language Understanding (LUIS)</h3>
                                                     <p>Meer informatie over de Language Understanding Service (LUIS) en Natural Language Processing (NLP).</p>
                                                 </div>
                                             </div>
@@ -308,7 +308,7 @@ ms.locfileid: "73580334"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>LUIS-portal</h3>
+                                                    <h3>Language Understanding-portal (LUIS)</h3>
                                                     <p>Bouw natuurlijke taal in apps, bots en IoT-apparaten.</p>
                                                 </div>
                                             </div>

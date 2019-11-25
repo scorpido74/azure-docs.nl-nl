@@ -173,11 +173,14 @@
           href: troubleshoot-recovery-disks-linux.md
         - name: Azure Portal
           href: troubleshoot-recovery-disks-portal-linux.md
-- name: Opstartfouten
-  href: boot-error-troubleshoot.md
+- name: Linux-opstartfouten
+  href: boot-error-troubleshoot-linux.md
   items:
     - name: Grub Rescue
       href: troubleshoot-vm-boot-error.md
+- name: Windows-opstartfouten
+  href: boot-error-troubleshoot.md
+  items:
     - name: Diagnostische gegevens over opstarten
       href: boot-diagnostics.md
     - name: BitLocker-fouten

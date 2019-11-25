@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Documentatie voor Language Understanding (LUIS)
-summary: Informatie over hoe u de service LUIS gebruikt om uw toepassing in staat te stellen te begrijpen wat een persoon in zijn eigen woorden wil zeggen.
+summary: Informatie over hoe Language Understanding ervoor zorgt dat uw toepassingen begrijpen wat een persoon, in zijn eigen woorden, wilt.
 metadata:
   ms.topic: landing-page
-  ms.date: 09/19/2019
+  ms.date: 11/22/2019
   ms.author: nitinme
   author: nitinme
   ms.service: cognitive-services
@@ -11,13 +11,13 @@ metadata:
   services: cognitive-services
   title: Documentatie voor Language Understanding (LUIS)
   titleSuffix: Azure Cognitive Services
-  description: Met de service LUIS kunt u uw toepassing in staat stellen te begrijpen wat een persoon in zijn eigen woorden wil zeggen. Met behulp van machine learning geeft LUIS ontwikkelaars de mogelijkheid om toepassingen te ontwikkelen die gebruikersinvoer in een natuurlijke taal ontvangen en hieraan betekenis geven.
-  ms.openlocfilehash: 70249b540e53ab8182a25f81d7401697b2b888c1
-  ms.sourcegitcommit: 116bc6a75e501b7bba85e750b336f2af4ad29f5a
+  description: Met de Language Understanding-service (LUIS) begrijpt uw toepassing wat een persoon in zijn eigen woorden wilt. Met behulp van machine learning geeft LUIS ontwikkelaars de mogelijkheid om toepassingen te ontwikkelen die gebruikersinvoer in een natuurlijke taal ontvangen en hieraan betekenis geven.
+  ms.openlocfilehash: 14386a08b92814b16fb007e4dd01cb4bb5238c0a
+  ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
   ms.translationtype: HT
   ms.contentlocale: nl-NL
-  ms.lasthandoff: 09/20/2019
-  ms.locfileid: "71155019"
+  ms.lasthandoff: 11/22/2019
+  ms.locfileid: "74406158"
 landingContent:
 - title: Over Language Understanding (LUIS)
   linkLists:
@@ -25,16 +25,18 @@ landingContent:
     links:
     - text: Wat is Language Understanding?
       url: what-is-luis.md
-    - text: Nieuwe functies
-      url: whats-new.md
     - text: LUIS-portal
       url: https://www.luis.ai
   - linkListType: concept
     links:
     - text: Uw app plannen
       url: luis-how-plan-your-app.md
-    - text: De ontwerpcyclus van uw app
+    - text: Interatief app-ontwerp
       url: luis-concept-app-iteration.md
+  - linkListType: whats-new
+    links:
+    - text: Wat is nieuw?
+      url: whats-new.md
   - linkListType: video
     links:
     - text: 'AI-roadshow: LUIS'
@@ -47,7 +49,7 @@ landingContent:
       url: luis-concept-intent.md
     - text: Entiteiten
       url: luis-concept-entity-types.md
-    - text: Een goede voorbeelduiting
+    - text: Utterances
       url: luis-concept-utterance.md
     - text: Woordgroepenlijstfuncties
       url: luis-concept-feature.md
@@ -91,13 +93,13 @@ landingContent:
     links:
     - text: Versiebeheer van uw app
       url: luis-how-to-manage-versions.md
-    - text: Interactief testen
+    - text: Interactieve tests uitvoeren
       url: luis-interactive-test.md
     - text: Batchgewijs testen
       url: luis-how-to-batch-test.md
     - text: Uw app trainen
       url: luis-how-to-train.md
-    - text: Publiceren om voorspellingseindpunt te gebruiken
+    - text: Eindpuntvoorspelling publiceren
       url: luis-how-to-publish-app.md
 - title: Voorspelling uit eindpunt ophalen
   linkLists:
@@ -123,7 +125,7 @@ landingContent:
     links:
     - text: Resources voor ontwikkelaars
       url: developer-reference-resource.md
-    - text: App-limieten
+    - text: App-beperkingen
       url: luis-boundaries.md
     - text: Vooraf gemaakte entiteiten
       url: luis-reference-prebuilt-entities.md
