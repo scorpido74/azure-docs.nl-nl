@@ -12,14 +12,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 11/20/2019
 ms.author: damaerte
-ms.openlocfilehash: ee68400d000ca823816c8efc6bcbc224d1388832
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 8e04e7c1919deaf60e083aba4588943147ebd6bf
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082981"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284817"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Bestanden in Azure Cloud Shell persistent maken
 Cloud Shell maakt gebruik van Azure File Storage om bestanden in verschillende sessies op te slaan. Bij de eerste keer starten Cloud Shell u gevraagd om een nieuwe of bestaande bestands share te koppelen om bestanden in verschillende sessies te behouden.
@@ -38,14 +38,11 @@ Wanneer u basis instellingen gebruikt en alleen een abonnement selecteert, maakt
 
 De bestands share koppelt als `clouddrive` in uw `$Home` map. Dit is een eenmalige actie, waarna de bestands share automatisch wordt gekoppeld in volgende sessies. 
 
-> [!NOTE]
-> Voor beveiliging moet elke gebruiker hun eigen opslag account inrichten.  Voor op rollen gebaseerd toegangs beheer (RBAC) moeten gebruikers Inzender toegang of hoger hebben op het niveau van het opslag account.
-
 De bestands share bevat ook een installatie kopie van 5 GB die voor u is gemaakt en die automatisch gegevens persistent maakt in uw `$Home` Directory. Dit geldt voor zowel bash als Power shell.
 
 ## <a name="use-existing-resources"></a>Bestaande resources gebruiken
 
-U kunt bestaande resources koppelen met behulp van de geavanceerde optie. Wanneer u een Cloud Shell regio selecteert, moet u een opslag account voor back-ups in dezelfde regio selecteren. Als uw toegewezen regio bijvoorbeeld VS-West is, moet u ook een bestands share die zich binnen de VS-West US bevindt, koppelen.
+U kunt bestaande resources koppelen met behulp van de geavanceerde optie. Wanneer u een Cloud Shell regio selecteert, moet u een opslag account voor back-ups in dezelfde regio selecteren. Als uw toegewezen regio bijvoorbeeld VS-West is, moet u een bestands share koppelen die zich ook in de Verenigde Staten bevindt.
 
 Wanneer de prompt voor het instellen van de opslag wordt weer gegeven, selecteert u **Geavanceerde instellingen weer** geven om extra opties weer te geven. Het gevulde opslag opties filter voor lokaal redundante opslag (LRS), geo-redundante opslag (GRS) en ZRS-accounts (zone-redundante opslag). 
 
@@ -54,7 +51,14 @@ Wanneer de prompt voor het instellen van de opslag wordt weer gegeven, selecteer
 
 ![De instelling van de resource groep](media/persisting-shell-storage/advanced-storage.png)
 
-### <a name="supported-storage-regions"></a>Ondersteunde opslag regio's
+## <a name="securing-storage-access"></a>Toegang tot opslag beveiligen
+Voor beveiliging moet elke gebruiker hun eigen opslag account inrichten.  Voor op rollen gebaseerd toegangs beheer (RBAC) moeten gebruikers Inzender toegang of hoger hebben op het niveau van het opslag account.
+
+Cloud Shell gebruikt een Azure-bestands share in een opslag account binnen een opgegeven abonnement. Als gevolg van overgenomen machtigingen, hebben gebruikers met voldoende toegangs rechten voor het abonnement toegang tot alle opslag accounts en bestands shares in het abonnement.
+
+Gebruikers moeten de toegang tot hun bestanden vergren delen door de machtigingen in te stellen op het opslag account of het abonnements niveau.
+
+## <a name="supported-storage-regions"></a>Ondersteunde opslag regio's
 Gekoppelde Azure Storage-accounts moeten zich in dezelfde regio bevinden als de Cloud Shell machine waarnaar u ze koppelt. Als u uw huidige regio wilt zoeken, kunt u `env` uitvoeren in bash en de variabele `ACC_LOCATION`zoeken. Bestands shares ontvangen een installatie kopie van 5 GB die voor u is gemaakt om uw `$Home` Directory te behouden.
 
 Cloud Shell machines bestaan in de volgende regio's:
@@ -67,8 +71,6 @@ Cloud Shell machines bestaan in de volgende regio's:
 
 ## <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Het maken van resources beperken met een Azure-resource beleid
 Opslag accounts die u in Cloud Shell maakt, worden gelabeld met `ms-resource-usage:azure-cloud-shell`. Als u wilt voor komen dat gebruikers opslag accounts maken in Cloud Shell, maakt u een [Azure-resource beleid voor Tags](../azure-policy/json-samples.md) die worden geactiveerd door deze specifieke tag.
-
-
 
 ## <a name="how-cloud-shell-storage-works"></a>Hoe Cloud Shell Storage werkt 
 Cloud Shell bestanden persistent maken via de volgende methoden: 

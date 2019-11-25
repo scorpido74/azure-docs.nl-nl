@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 78604a4f6fd5a6bcd21d0adc80c1c60278068836
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 9b0602f526991be37b7a9cce1d621dc2138dec48
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037053"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279137"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Een gegevens schijf koppelen aan een virtuele Linux-machine met behulp van de portal 
 Dit artikel laat u zien hoe u met de Azure Portal zowel nieuwe als bestaande schijven kunt koppelen aan een virtuele Linux-machine. U kunt ook [een gegevens schijf koppelen aan een virtuele Windows-machine in de Azure Portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -183,6 +183,15 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
+
+#### <a name="alternate-method-using-parted"></a>Alternatieve methode met behulp van opgenomen
+Het hulp programma fdisk heeft interactieve invoer nodig en is daarom niet ideaal voor gebruik in Automation-scripts. [Het hulp](https://www.gnu.org/software/parted/) programma met functies kan echter worden gescripteerd en is daarom beter in automatiserings scenario's. Het hulp programma parted kan worden gebruikt voor het partitioneren en Format teren van een gegevens schijf. Voor de onderstaande procedure gebruiken we een nieuwe/dev/SDC voor de gegevens schijf en Format teer deze met het bestands systeem [xfs](https://xfs.wiki.kernel.org/) .
+```bash
+sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+partprobe /dev/sdc1
+```
+Zoals hierboven weer gegeven, gebruiken we het [partprobe](https://linux.die.net/man/8/partprobe) -hulp programma om ervoor te zorgen dat de kernel onmiddellijk op de hoogte is van de nieuwe partitie en het bestands systeem. Het gebruik van partprobe kan ertoe leiden dat de blkid-of lslbk-opdrachten de UUID voor het nieuwe bestands systeem niet direct retour neren.
+
 ### <a name="mount-the-disk"></a>De schijf koppelen
 Maak een map om het bestands systeem met behulp van `mkdir`te koppelen. In het volgende voor beeld maakt u een map op */datadrive*:
 

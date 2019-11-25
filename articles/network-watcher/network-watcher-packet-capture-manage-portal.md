@@ -1,5 +1,6 @@
 ---
-title: Pakket opnames beheren met Azure Network Watcher-Azure Portal | Microsoft Docs
+title: Pakket opnames beheren-Azure Portal
+titleSuffix: Azure Network Watcher
 description: Meer informatie over het beheren van de functie voor het vastleggen van pakketten van Network Watcher met behulp van de Azure Portal.
 services: network-watcher
 documentationcenter: na
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00349a7e681beab447e585139e481c04755b7879
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4950ef8b763967e4e852e319429cc263a4a85f6c
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70102854"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277855"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Pakket opnames beheren met Azure Network Watcher met behulp van de portal
 
@@ -41,22 +42,22 @@ Als er een netwerk beveiligings groep is gekoppeld aan de netwerk interface of h
 1. Ga in uw browser naar de [Azure Portal](https://portal.azure.com) en selecteer **alle services**, en selecteer vervolgens **Network Watcher** in het **gedeelte netwerken**.
 2. Selecteer **pakket opname** onder **Diagnostische hulpprogram Ma's**voor het netwerk. Bestaande pakket opnames worden weer gegeven, ongeacht hun status.
 3. Selecteer **toevoegen** om een pakket opname te maken. U kunt waarden selecteren voor de volgende eigenschappen:
-   - **Abonnement**: Het abonnement waarvan u de pakket opname wilt maken, is in.
-   - **Resourcegroep**: De resource groep van de virtuele machine.
-   - **Doel-virtuele-machine**: De virtuele machine waarvoor u de pakket opname wilt maken.
-   - **Naam van pakket opname**: Een naam voor het vastleggen van pakketten.
-   - **Opslag account of-bestand**: Selecteer **opslag account**, **bestand**of beide. Als u **bestand**selecteert, wordt de vastleg ging geschreven naar een pad binnen de virtuele machine.
-   - **Lokaal**bestandspad: Het lokale pad op de virtuele machine waarop de pakket opname wordt opgeslagen (alleen geldig wanneer het *bestand* is geselecteerd). Het pad moet een geldig pad zijn. Als u een virtuele Linux-machine gebruikt, moet het pad beginnen met */var/captures*.
+   - **Abonnement**: het abonnement van de virtuele machine waarvoor u de pakket opname wilt maken, is in.
+   - **Resource groep**: de resource groep van de virtuele machine.
+   - **Doel-virtuele machine**: de virtuele machine waarvoor u de pakket opname wilt maken.
+   - **Naam van pakket opname**: een naam voor het vastleggen van pakketten.
+   - **Opslag account of-bestand**: Selecteer een **opslag account**, een **bestand**of beide. Als u **bestand**selecteert, wordt de vastleg ging geschreven naar een pad binnen de virtuele machine.
+   - **Lokaal**bestandspad: het lokale pad op de virtuele machine waarop de pakket opname wordt opgeslagen (alleen geldig wanneer het *bestand* is geselecteerd). Het pad moet een geldig pad zijn. Als u een virtuele Linux-machine gebruikt, moet het pad beginnen met */var/captures*.
    - **Opslag accounts**: Selecteer een bestaand opslag account als u een *opslag account*hebt geselecteerd. Deze optie is alleen beschikbaar als u **opslag**hebt geselecteerd.
    
      > [!NOTE]
      > Premium Storage-accounts worden momenteel niet ondersteund voor het opslaan van pakket opnames.
 
-   - **Maximum aantal bytes per pakket**: Het aantal bytes van elk pakket dat is vastgelegd. Als dit veld leeg blijft, worden alle bytes vastgelegd.
-   - **Maximum aantal bytes per sessie**: Het totale aantal bytes dat is vastgelegd. Zodra de waarde is bereikt, stopt het vastleggen van pakketten.
-   - **Tijds limiet (seconden)** : De tijds limiet voordat het vastleggen van pakketten wordt gestopt. De standaard waarde is 18.000 seconden.
+   - **Maximum aantal bytes per pakket**: het aantal bytes van elk pakket dat is vastgelegd. Als dit veld leeg blijft, worden alle bytes vastgelegd.
+   - **Maximum aantal bytes per sessie**: het aantal bytes dat is vastgelegd. Zodra de waarde is bereikt, stopt het vastleggen van pakketten.
+   - **Tijds limiet (seconden)**: de tijds limiet voordat het vastleggen van pakketten wordt gestopt. De standaard waarde is 18.000 seconden.
    - Filteren (optioneel). Selecteer **+ filter toevoegen**
-     - **Protocol**: Het protocol dat moet worden gefilterd voor de pakket opname. De beschik bare waarden zijn TCP, UDP en any.
+     - **Protocol**: het protocol dat moet worden gefilterd voor de pakket opname. De beschik bare waarden zijn TCP, UDP en any.
      - **Lokaal IP-adres**: Hiermee wordt de pakket opname gefilterd op pakketten waarbij het lokale IP-adres overeenkomt met deze waarde.
      - **Lokale poort**: Hiermee wordt de pakket opname gefilterd op pakketten waarbij de lokale poort overeenkomt met deze waarde.
      - **Extern IP-adres**: Hiermee wordt de pakket opname gefilterd op pakketten waarbij het externe IP-adres overeenkomt met deze waarde.
@@ -96,7 +97,7 @@ Als er een opslag account is opgegeven, worden pakket opname bestanden opgeslage
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-Als u tijdens het maken van de opname het bestand hebt geselecteerd, kunt u het bestand weer geven of downloaden vanuit het pad dat u hebt geconfigureerd op de virtuele machine.
+Als u tijdens het maken van de opname **het bestand hebt** geselecteerd, kunt u het bestand weer geven of downloaden vanuit het pad dat u hebt geconfigureerd op de virtuele machine.
 
 ## <a name="next-steps"></a>Volgende stappen
 

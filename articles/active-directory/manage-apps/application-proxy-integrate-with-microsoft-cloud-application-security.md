@@ -1,6 +1,6 @@
 ---
-title: On-premises apps integreren met Cloud App Security - Azure Active Directory | Microsoft Docs
-description: Configureer een on-premises toepassing in Azure Active Directory om te werken met Microsoft Cloud App Security (MCAS). Gebruik de MCAS voorwaardelijke toegang tot App-beheer te bewaken en beheren van sessies in realtime op basis van beleid voor voorwaardelijke toegang. U kunt deze beleidsregels toepassen op de on-premises toepassingen die gebruikmaken van Application Proxy in Azure Active Directory (Azure AD).
+title: On-premises apps integreren met Cloud App Security-Azure AD
+description: Configureer een on-premises toepassing in Azure Active Directory om te werken met Microsoft Cloud App Security (MCAS). Gebruik de MCAS-App-beheer voor voorwaardelijke toegang om sessies in realtime te bewaken en te beheren op basis van beleid voor voorwaardelijke toegang. U kunt dit beleid Toep assen op on-premises toepassingen die gebruikmaken van toepassings proxy in Azure Active Directory (Azure AD).
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
@@ -11,61 +11,61 @@ ms.date: 12/19/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7b9b27a3b8329f906b1adfd48d28892a7edc4d1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: eb97f9dd87277215a5d4708d3a6f49564c490204
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67108449"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74275500"
 ---
-# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Realtime toegang toepassingsbewaking configureren met Microsoft Cloud App Security en Azure Active Directory
-Een on-premises toepassing in Azure Active Directory (Azure AD) naar Microsoft Cloud App Security (MCAS) gebruiken voor realtime-controle configureren. MCAS maakt gebruik van App-beheer voor voorwaardelijke toegang voor het bewaken van en controle-sessies in realtime op basis van beleid voor voorwaardelijke toegang. U kunt deze beleidsregels toepassen op de on-premises toepassingen die gebruikmaken van Application Proxy in Azure Active Directory (Azure AD).
+# <a name="configure-real-time-application-access-monitoring-with-microsoft-cloud-app-security-and-azure-active-directory"></a>Realtime toegangs bewaking voor toepassingen configureren met Microsoft Cloud App Security en Azure Active Directory
+Configureer een on-premises toepassing in Azure Active Directory (Azure AD) voor het gebruik van Microsoft Cloud App Security (MCAS) voor realtime-bewaking. MCAS maakt gebruik van App-beheer voor voorwaardelijke toegang om sessies in realtime te bewaken en te beheren op basis van beleid voor voorwaardelijke toegang. U kunt dit beleid Toep assen op on-premises toepassingen die gebruikmaken van toepassings proxy in Azure Active Directory (Azure AD).
 
-Hier volgen enkele voorbeelden van de typen beleidsregels die u met MCAS maken kunt:
+Hier volgen enkele voor beelden van de typen beleids regels die u kunt maken met MCAS:
 
-- Blokkeren of het downloaden van gevoelige documenten op niet-beheerde apparaten te beveiligen.
-- Monitor als met een hoog risico gebruikers bij toepassingen aanmelden en meld u vervolgens de acties op basis van binnen de sessie. Met deze informatie kunt kunt u gedrag van gebruikers om te bepalen hoe om toe te passen sessiebeleid analyseren.
-- Clientcertificaten of het nalevingsbeleid voor apparaten gebruiken voor toegang tot specifieke toepassingen blokkeren van niet-beheerde apparaten.
-- Gebruikerssessies voorkomen dat niet-bedrijfsnetwerken. U kunt beperkte toegang verlenen aan gebruikers met toegang tot een toepassing buiten uw bedrijfsnetwerk. Deze beperkte toegang kan bijvoorbeeld worden geblokkeerd dat de gebruiker van gevoelige documenten downloaden.
+- Het downloaden van gevoelige documenten op onbeheerde apparaten blok keren of beveiligen.
+- Bewaak wanneer gebruikers met een hoog risico zich aanmelden bij toepassingen en vervolgens hun acties vanuit de sessie registreren. Met deze informatie kunt u het gebruikers gedrag analyseren om te bepalen hoe sessie beleid moet worden toegepast.
+- Client certificaten of apparaatcompatibiliteit gebruiken om de toegang tot specifieke toepassingen van niet-beheerde apparaten te blok keren.
+- Gebruikers sessies beperken voor niet-bedrijfs netwerken. U kunt beperkte toegang verlenen aan gebruikers die toegang hebben tot een toepassing buiten uw bedrijfs netwerk. Deze beperkte toegang kan bijvoorbeeld voor komen dat de gebruiker gevoelige documenten downloadt.
 
-Zie voor meer informatie, [apps beveiligen met Microsoft Cloud App Security-App beheer voor voorwaardelijke toegang](/cloud-app-security/proxy-intro-aad).
+Zie [apps met Microsoft Cloud App Security app-beheer voor voorwaardelijke toegang beveiligen](/cloud-app-security/proxy-intro-aad)voor meer informatie.
 
 ## <a name="requirements"></a>Vereisten
 
-Licentie:
+Houders
 
-- EMS E5-licentie, of 
-- Azure Active Directory Premium P1 en MCAS zelfstandige.
+- EMS E5-licentie of 
+- Azure Active Directory Premium P1 en MCAS standalone.
 
 On-premises toepassing:
 
-- De on-premises toepassing moet Kerberos-beperkte delegatie (KCD) gebruiken
+- De on-premises toepassing moet gebruikmaken van Kerberos-beperkte delegering (KCD)
 
-Toepassingsproxy configureren:
+Toepassings proxy configureren:
 
-- Azure AD voor het gebruik van Application Proxy, met inbegrip van uw omgeving voorbereiden en het installeren van de Application Proxy-connector configureren. Zie voor een zelfstudie [toevoegen van een on-premises toepassingen voor externe toegang via Application Proxy in Azure AD](application-proxy-add-on-premises-application.md). 
+- Configureer Azure AD voor het gebruik van toepassings proxy, met inbegrip van het voorbereiden van uw omgeving en het installeren van de connector voor de toepassings proxy. Zie [een on-premises toepassing voor externe toegang toevoegen via toepassings proxy in azure AD](application-proxy-add-on-premises-application.md)voor een zelf studie. 
 
-## <a name="add-on-premises-application-to-azure-ad"></a>On-premises toepassing naar Azure AD toevoegen
+## <a name="add-on-premises-application-to-azure-ad"></a>Een on-premises toepassing toevoegen aan Azure AD
 
-Toevoegen van een on-premises toepassing naar Azure AD. Zie voor een snelstartgids [een on-premises app toevoegen aan Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad). Bij het toevoegen van de toepassing, moet u de volgende twee instellingen instellen in de **toevoegen van uw on-premises toepassing** blade:
+Voeg een on-premises toepassing toe aan Azure AD. Zie [een on-premises app toevoegen aan Azure AD](application-proxy-add-on-premises-application.md#add-an-on-premises-app-to-azure-ad)voor een Snelstartgids. Wanneer u de toepassing toevoegt, moet u de volgende twee instellingen instellen op de Blade **on-premises toepassing toevoegen** :
 
-- **Verificatie vooraf**: Enter **Azure Active Directory**.
-- **URL's vertalen in de hoofdtekst van de toepassing**: Kies **Ja**.
+- **Pre-authenticatie**: Voer **Azure Active Directory**in.
+- **Url's vertalen in de hoofd tekst van de toepassing**: Kies **Ja**.
 
-Deze twee instellingen zijn vereist voor de toepassing om te werken met MCAS.
+Deze twee instellingen zijn vereist voor de toepassing om met MCAS te werken.
 
 ## <a name="test-the-on-premises-application"></a>De on-premises toepassing testen
 
-Na het toevoegen van uw toepassing naar Azure AD, gebruikt u de stappen in [de toepassing testen](application-proxy-add-on-premises-application.md#test-the-application) aan een gebruiker toevoegen voor het testen en test de aanmelding. 
+Nadat u uw toepassing aan Azure AD hebt toegevoegd, gebruikt u de stappen in [test de toepassing](application-proxy-add-on-premises-application.md#test-the-application) om een gebruiker toe te voegen voor testen en om de aanmelding te testen. 
 
 ## <a name="deploy-conditional-access-app-control"></a>App-beheer voor voorwaardelijke toegang implementeren
 
-Volg de instructies in voor het configureren van uw toepassing met de Toepassingsbeheer voor voorwaardelijke toegang, [Toepassingsbeheer voor voorwaardelijke toegang voor Azure AD-apps implementeren](/cloud-app-security/proxy-deployment-aad).
+Als u uw toepassing wilt configureren met het toepassings beheer voor voorwaardelijke toegang, volgt u de instructies in [toepassings beheer voor voorwaardelijke toegang implementeren voor Azure AD-apps](/cloud-app-security/proxy-deployment-aad).
 
 
-## <a name="test-conditional-access-app-control"></a>App-beheer voor voorwaardelijke toegang van test
+## <a name="test-conditional-access-app-control"></a>App-beheer voor voorwaardelijke toegang testen
 
-Als u wilt testen van de implementatie van Azure AD-toepassingen met beheer van de toepassing voor voorwaardelijke toegang, volg de instructies in [testen van de implementatie voor Azure AD-apps](/cloud-app-security/proxy-deployment-aad).
+Als u de implementatie van Azure AD-toepassingen met toepassings beheer voor voorwaardelijke toegang wilt testen, volgt u de instructies in [de implementatie testen voor Azure AD-apps](/cloud-app-security/proxy-deployment-aad).
 
 
 

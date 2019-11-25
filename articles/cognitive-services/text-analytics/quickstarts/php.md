@@ -10,19 +10,19 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 08/28/2019
 ms.author: aahi
-ms.openlocfilehash: a1e3484c544478fa6e9414eea1e139b81652ace3
-ms.sourcegitcommit: d200cd7f4de113291fbd57e573ada042a393e545
+ms.openlocfilehash: 3b95109ea3389cc8ee7e748e06265870d5f903a4
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 08/29/2019
-ms.locfileid: "70135014"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74284765"
 ---
 # <a name="quickstart-using-php-to-call-the-text-analytics-cognitive-service"></a>Quickstart: PHP gebruiken om de Text Analytics Cognitive Service aan te roepen
 <a name="HOLTop"></a>
 
-In dit artikel ziet u hoe u de  [Text Analytics-API's](//go.microsoft.com/fwlink/?LinkID=759711)  met PHP kunt gebruiken om [taal te detecteren](#Detect), [sentiment te analyseren](#SentimentAnalysis), [sleuteltermen op te halen](#KeyPhraseExtraction) en [gekoppelde entiteiten te identificeren](#Entities).
+In dit artikel ziet u hoe u de [Text Analytics-API's](#Detect)[ met PHP kunt gebruiken om ](#SentimentAnalysis)taal te detecteren[, ](#KeyPhraseExtraction)sentiment te analyseren[, ](#Entities)sleuteltermen op te halen [ en ](//go.microsoft.com/fwlink/?LinkID=759711)gekoppelde entiteiten te identificeren .
 
-Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor technische documentatie voor de API's.
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -34,7 +34,7 @@ Raadpleeg de [API-definities](//go.microsoft.com/fwlink/?LinkID=759346) voor tec
 
 Met de Language Detection-API wordt de taal van een tekstdocument gedetecteerd met behulp van de [methode Detect Language](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
 1. Voer het programma uit.
@@ -151,7 +151,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 Met de Sentiment Analysis-API wordt een set tekstrecords gedetecteerd met behulp van de [methode Sentiment](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9). In het volgende voorbeeld worden twee documenten beoordeeld, één in het Engels en één in het Spaans.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
 1. Voer het programma uit.
@@ -244,11 +244,11 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 <a name="KeyPhraseExtraction"></a>
 
-## <a name="extract-key-phrases"></a>Sleuteltermen ophalen
+## <a name="extract-key-phrases"></a>Belangrijke woordgroepen herkennen
 
 Met de Key Phrase Extraction-API worden sleuteltermen opgehaald uit een tekstdocument met behulp van de [methode Key Phrases](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). In het volgende voorbeeld worden sleuteltermen opgehaald voor zowel de Engelse als Spaanse documenten.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
 1. Voer het programma uit.
@@ -359,7 +359,7 @@ Een geslaagd antwoord wordt geretourneerd in de JSON-indeling, zoals u kunt zien
 
 De Entities-API identificeert bekende entiteiten in een tekstdocument, met behulp van de [methode Entities](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634). In het volgende voorbeeld worden entiteiten geïdentificeerd voor Engelse documenten.
 
-1. Maak omgevings `TEXT_ANALYTICS_SUBSCRIPTION_KEY` variabelen `TEXT_ANALYTICS_ENDPOINT` en voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
+1. Omgevings variabelen maken `TEXT_ANALYTICS_SUBSCRIPTION_KEY` en `TEXT_ANALYTICS_ENDPOINT` voor het Azure-eind punt en de abonnements sleutel van uw resource. Als u deze omgevings variabelen hebt gemaakt nadat u begon met het bewerken van de toepassing, moet u de editor, IDE of shell die u gebruikt voor toegang tot de variabelen sluiten en opnieuw openen.
 1. Maak een nieuw PHP-project in uw favoriete IDE.
 1. Voeg de onderstaande code toe.
 1. Voer het programma uit.

@@ -1,6 +1,6 @@
 ---
-title: Een toepassing gebruikerservaring in Azure Active Directory verbergen | Microsoft Docs
-description: Hoe u een toepassing gebruikerservaring in de toegangsdeelvensters van de Azure Active Directory of Office 365 voor ruimtevaartuigen verbergen.
+title: Een toepassing verbergen voor gebruikers ervaring in azure AD
+description: Hoe u een toepassing kunt verbergen voor gebruikers ervaring in Azure Active Directory toegangs Vensters of Office 365-starters.
 services: active-directory
 author: msmimart
 manager: CelesteDG
@@ -12,52 +12,52 @@ ms.date: 11/12/2018
 ms.author: mimart
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3dd98aa974f2adcd363c04c10b7a10cef6ca8ce7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1e01c79c5cc9391922333af4e9a60ba44a6a6b13
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65824543"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74274009"
 ---
-# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Toepassingen van eindgebruikers in Azure Active Directory verbergen
+# <a name="hide-applications-from-end-users-in-azure-active-directory"></a>Toepassingen verbergen voor eind gebruikers in Azure Active Directory
 
-Instructies voor het verbergen van eindgebruikers MyApps deelvenster of Office 365-startprogramma voor toepassingen. Wanneer een toepassing verborgen is, hebben gebruikers nog steeds de machtigingen voor de toepassing. 
+Instructies voor het verbergen van toepassingen van het deel venster MyApps of Office 365 Launcher van eind gebruikers. Wanneer een toepassing wordt verborgen, hebben gebruikers nog steeds machtigingen voor de toepassing. 
 
 ## <a name="prerequisites"></a>Vereisten
 
-Toepassing administrator-bevoegdheden zijn vereist voor het verbergen van een toepassing van de MyApps-Configuratiescherm en startprogramma voor Office 365.
+De bevoegdheden van de toepassings beheerder zijn vereist voor het verbergen van een toepassing uit het deel venster MyApps en Office 365 Launcher.
 
-Globale beheerder-bevoegdheden zijn vereist om te verbergen alle Office 365-toepassingen.
+Globale beheerders bevoegdheden zijn vereist om alle Office 365-toepassingen te verbergen.
 
 
-## <a name="hide-an-application-from-the-end-user"></a>Een toepassing de eindgebruiker verbergen
-Gebruik de volgende stappen uit om te een toepassing van MyApps Configuratiescherm en startprogramma voor toepassingen van Office 365 verbergen.
+## <a name="hide-an-application-from-the-end-user"></a>Een toepassing verbergen voor de eind gebruiker
+Voer de volgende stappen uit om een toepassing te verbergen in het MyApps-deel venster en het start programma voor Office 365 Application.
 
-1.  Aanmelden bij de [Azure-portal](https://portal.azure.com) als globale beheerder voor uw directory.
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder voor uw Directory.
 2.  Selecteer **Azure Active Directory**.
-3.  Selecteer **bedrijfstoepassingen**. De **bedrijfstoepassingen - alle toepassingen** blade wordt geopend.
-4.  Onder **toepassingstype**, selecteer **bedrijfstoepassingen**, als deze nog niet is geselecteerd.
-5.  Zoeken naar de toepassing die u wilt verbergen, en klik op de toepassing.  Overzicht van de toepassing wordt geopend.
+3.  Selecteer **bedrijfs toepassingen**. De Blade **bedrijfs toepassingen-alle toepassingen** wordt geopend.
+4.  Onder **toepassings type**selecteert u **bedrijfs toepassingen**, als deze nog niet is geselecteerd.
+5.  Zoek de toepassing die u wilt verbergen en klik op de toepassing.  Het overzicht van de toepassing wordt geopend.
 6.  Klik op **Eigenschappen**. 
-7.  Voor de **zichtbaar voor gebruikers?** vraag, klikt u op **Nee**.
+7.  Voor de **zicht bare gebruiker?** vraag, klikt u op **Nee**.
 8.  Klik op **Opslaan**.
 
 
-## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-toepassingen in het deelvenster MyApps verbergen
+## <a name="hide-office-365-applications-from-the-myapps-panel"></a>Office 365-toepassingen verbergen in het deel venster MyApps
 
-Gebruik de volgende stappen uit om te verbergen alle Office 365-toepassingen in het deelvenster MyApps. De toepassingen zijn nog steeds wordt weergegeven in de Office 365-beheerportal.
+Gebruik de volgende stappen om alle Office 365-toepassingen te verbergen in het deel venster MyApps. De toepassingen zijn nog steeds zichtbaar in de Office 365-Portal.
 
-1.  Aanmelden bij de [Azure-portal](https://portal.azure.com) als globale beheerder voor uw directory.
+1.  Meld u aan bij de [Azure Portal](https://portal.azure.com) als globale beheerder voor uw Directory.
 2.  Selecteer **Azure Active Directory**.
-3.  Selecteer **gebruikersinstellingen**.
-4.  Onder **bedrijfstoepassingen**, klikt u op **beheren hoe eindgebruikers starten en weergeven van hun toepassingen.**
-5.  Voor **gebruikers zien alleen Office 365-apps in de Office 365-beheerportal**, klikt u op **Ja**.
+3.  **Gebruikers instellingen**selecteren.
+4.  Onder **bedrijfs toepassingen**klikt **u op beheren hoe eind gebruikers hun toepassingen starten en weer geven.**
+5.  Voor **gebruikers kunnen alleen office 365-apps in de office 365-Portal zien**, klikt u op **Ja**.
 6.  Klik op **Opslaan**.
 
 
 ## <a name="next-steps"></a>Volgende stappen
-* [Mijn groepen bekijken](../fundamentals/active-directory-groups-view-azure-portal.md)
-* [Een gebruiker of groep toewijzen aan een enterprise-app](assign-user-or-group-access-portal.md)
-* [De toewijzing van een gebruiker of groep verwijderen uit een enterprise-app](remove-user-or-group-access-portal.md)
+* [Alle groepen weer geven](../fundamentals/active-directory-groups-view-azure-portal.md)
+* [Een gebruiker of groep toewijzen aan een bedrijfs-app](assign-user-or-group-access-portal.md)
+* [Een gebruiker of groeps toewijzing verwijderen uit een bedrijfs-app](remove-user-or-group-access-portal.md)
 * [De naam of het logo van een zakelijke app wijzigen](change-name-or-logo-portal.md)
 

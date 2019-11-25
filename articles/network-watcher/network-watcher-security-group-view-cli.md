@@ -1,6 +1,7 @@
 ---
-title: Analyseren van netwerkbeveiliging met Azure Network Watcher weergave van de beveiligingsgroep - Azure CLI | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u Azure CLI gebruiken voor het analyseren van een beveiliging voor virtuele machines met de weergave van de beveiligingsgroep.
+title: Netwerk beveiliging analyseren met de weer gave beveiligings groep-Azure CLI
+titleSuffix: Azure Network Watcher
+description: In dit artikel wordt beschreven hoe u Azure CLI gebruikt voor het analyseren van de beveiliging van virtuele machines met een beveiligings groep.
 services: network-watcher
 documentationcenter: na
 author: KumudD
@@ -14,57 +15,57 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: kumud
-ms.openlocfilehash: 68222a90eb60ab4f84a34b5e46833128ea081ec1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 70460d3b46baa094f227f96733f8ac98fae9285b
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64724436"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277852"
 ---
-# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analyseren van de beveiliging van uw virtuele machines met de weergave van de beveiligingsgroep met behulp van Azure CLI
+# <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>De beveiliging van uw virtuele machine analyseren met de weer gave van de beveiligings groep met behulp van Azure CLI
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure-CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
-Weergave van de beveiligingsgroep retourneert geconfigureerde en toegepaste netwerkbeveiligingsgroepsregels beveiligingsregels die worden toegepast op een virtuele machine. Deze mogelijkheid is handig om te controleren en onderzoeken van Netwerkbeveiligingsgroepen en regels die zijn geconfigureerd op een virtuele machine om te controleren of verkeer wordt toegestaan of geweigerd correct. In dit artikel hebben we laten zien hoe u aan een virtuele machine met behulp van Azure CLI de geconfigureerde en effectieve beveiligingsregels ophalen
+De weer gave beveiligings groep retourneert geconfigureerde en efficiënte netwerk beveiligings regels die worden toegepast op een virtuele machine. Deze mogelijkheid is nuttig bij het controleren en diagnosticeren van netwerk beveiligings groepen en-regels die zijn geconfigureerd op een virtuele machine om ervoor te zorgen dat verkeer correct wordt toegestaan of geweigerd. In dit artikel laten we zien hoe u de geconfigureerde en efficiënte beveiligings regels kunt ophalen voor een virtuele machine met behulp van Azure CLI
 
-Als u wilt de stappen in dit artikel uitvoert, moet u [installeren van de Azure-opdrachtregelinterface voor Mac, Linux en Windows (CLI)](/cli/azure/install-azure-cli).
+Als u de stappen in dit artikel wilt uitvoeren, moet u [de Azure-opdracht regel interface voor Mac, Linux en Windows (CLI) installeren](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Voordat u begint
 
-In dit scenario wordt ervan uitgegaan dat u de stappen in al hebt gevolgd [maken van een Network Watcher](network-watcher-create.md) te maken van een Network Watcher.
+In dit scenario wordt ervan uitgegaan dat u de stappen in [Create a Network Watcher](network-watcher-create.md) voor het maken van een Network Watcher, al hebt gevolgd.
 
 ## <a name="scenario"></a>Scenario
 
-Het scenario in dit artikel besproken wordt de geconfigureerde en effectieve beveiligingsregels voor een bepaalde virtuele machine opgehaald.
+In het scenario dat in dit artikel wordt behandeld, worden de geconfigureerde en efficiënte beveiligings regels voor een bepaalde virtuele machine opgehaald.
 
-## <a name="get-a-vm"></a>Een VM ophalen
+## <a name="get-a-vm"></a>Een virtuele machine ophalen
 
-Een virtuele machine is vereist om uit te voeren de `vm list` cmdlet. De volgende opdracht worden de virtuele machines in een resourcegroep:
+Een virtuele machine is vereist om de `vm list`-cmdlet uit te voeren. Met de volgende opdracht worden de virtuele machines in een resource groep weer gegeven:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Zodra u weet de virtuele machine dat, kunt u de `vm show` cmdlet om op te halen van de resource-Id:
+Wanneer u de virtuele machine kent, kunt u de cmdlet `vm show` gebruiken om de resource-id op te halen:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName
 ```
 
-## <a name="retrieve-security-group-view"></a>Weergave van de beveiligingsgroep ophalen
+## <a name="retrieve-security-group-view"></a>Weer gave van beveiligings groep ophalen
 
-De volgende stap is om op te halen van het resultaat van beveiliging groep weergeven.
+De volgende stap is het ophalen van het resultaat van de beveiligings groep weer geven.
 
 ```azurecli
 az network watcher show-security-group-view --resource-group resourceGroupName --vm vmName
 ```
 
-## <a name="viewing-the-results"></a>De resultaten weer te geven
+## <a name="viewing-the-results"></a>De resultaten weer geven
 
-Het volgende voorbeeld wordt een afgekorte respons van de geretourneerde resultaten. De resultaten staat dat alle de effectief en toegepaste beveiligingsregels op de virtuele machine onderverdeeld in groepen van **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**, en  **EffectiveSecurityRules**.
+Het volgende voor beeld is een kortere reactie op de geretourneerde resultaten. De resultaten tonen alle effectief en toegepaste beveiligings regels op de virtuele machine, onderverdeeld in groepen **NetworkInterfaceSecurityRules**, **DefaultSecurityRules**en **EffectiveSecurityRules**.
 
 ```json
 {
@@ -156,6 +157,6 @@ Het volgende voorbeeld wordt een afgekorte respons van de geretourneerde resulta
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Ga naar [controle Netwerkbeveiligingsgroep groepen (NSG) met Network Watcher](network-watcher-nsg-auditing-powershell.md) voor informatie over het automatiseren van validatie van Netwerkbeveiligingsgroepen.
+Ga naar [controle netwerk beveiligings groepen (NSG) met Network Watcher](network-watcher-nsg-auditing-powershell.md) voor meer informatie over het automatiseren van de validatie van netwerk beveiligings groepen.
 
-Meer informatie over de beveiligingsregels die worden toegepast op uw netwerkbronnen, recentst [overzicht van Netwerkbeveiligingsgroepen weergeven](network-watcher-security-group-view-overview.md)
+Meer informatie over de beveiligings regels die worden toegepast op uw netwerk bronnen vindt u in [overzicht van beveiligings groepen weer geven](network-watcher-security-group-view-overview.md)

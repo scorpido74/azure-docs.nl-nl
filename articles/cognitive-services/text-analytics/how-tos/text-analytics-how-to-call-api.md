@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: 5697ae4c8864e0b9c4cbfc9e1e1048e1c3d60f77
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
+ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837219"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74286609"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>De Text Analytics aanroepen REST API
 
@@ -25,8 +25,7 @@ Elke aanvraag moet uw toegangs sleutel en een HTTP-eind punt bevatten. Met het e
 
 Intrekken dat Text Analytics stateless is, zodat er geen gegevensassets zijn om te beheren. Uw tekst wordt geüpload, geanalyseerd na ontvangst en de resultaten worden direct naar de aanroepende toepassing geretourneerd.
 
-> [!Tip]
-> Voor eenmalige aanroepen om te zien hoe de API werkt, kunt u POST-aanvragen verzenden via de ingebouwde **API-test console**, die beschikbaar is op elke [API-document pagina](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6). Er is geen installatie en de enige vereisten zijn het plakken van een toegangs sleutel en de JSON-documenten in de aanvraag. 
+[!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 ## <a name="prerequisites"></a>Vereisten
 

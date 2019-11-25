@@ -1,6 +1,6 @@
 ---
-title: B2B-samenwerking gebruiker claims toewijzen - Azure Active Directory | Microsoft Docs
-description: De gebruikersclaims die zijn uitgegeven in het SAML-token voor Azure Active Directory (Azure AD) B2B-gebruikers aanpassen.
+title: Koppeling van gebruikers claims voor B2B-samen werking-Azure Active Directory
+description: Pas de gebruikers claims aan die zijn uitgegeven in het SAML-token voor Azure Active Directory (Azure AD) B2B-gebruikers.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,33 +11,33 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: edb18c31f40de3358ad987be4a9c67ed3a5079e8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3508865d9f89501cf70e09087c6a609beb6662b2
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65811930"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74273188"
 ---
-# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>B2B-samenwerking gebruiker claims toewijzen in Azure Active Directory
+# <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Toewijzing van gebruikers claims voor B2B-samen werking in Azure Active Directory
 
-Azure Active Directory (Azure AD) biedt ondersteuning voor aanpassen van de claims die zijn uitgegeven in het SAML-token voor gebruikers van B2B-samenwerking. Wanneer een gebruiker wordt geverifieerd op de toepassing, geeft Azure AD een SAML-token aan de app die gegevens (of claims) bevat over de gebruiker die een unieke identificatie ze. Dit omvat standaard, gebruikersnaam, e-mailadres, voornaam en achternaam van de gebruiker.
+Azure Active Directory (Azure AD) biedt ondersteuning voor het aanpassen van de claims die in het SAML-token voor B2B-samenwerkings gebruikers worden uitgegeven. Wanneer een gebruiker zich bij de toepassing bevindt, geeft Azure AD een SAML-token door aan de app die informatie (of claims) bevat over de gebruiker die deze unieke identificeert. Dit omvat standaard de gebruikers naam, het e-mail adres, de voor naam en de achternaam van de gebruiker.
 
-In de [Azure-portal](https://portal.azure.com), u kunt weergeven of bewerken van de claims die in het SAML-token naar de toepassing worden verzonden. Voor toegang tot de instellingen, selecteer **Azure Active Directory** > **bedrijfstoepassingen** > de toepassing die geconfigureerd voor eenmalige aanmelding > **eenmalige aanmelding** . Zie de instellingen voor de SAML-token in de **gebruikerskenmerken** sectie.
+In de [Azure Portal](https://portal.azure.com)kunt u de claims weer geven of bewerken die in het SAML-token naar de toepassing worden verzonden. Als u toegang wilt krijgen tot de instellingen, selecteert u **Azure Active Directory** **bedrijfs toepassingen** > > de toepassing die is geconfigureerd voor eenmalige aanmelding > eenmalige **aanmelding**. Zie de SAML-token instellingen in de sectie **gebruikers kenmerken** .
 
-![Bevat de kenmerken van SAML-token in de gebruikersinterface](media/claims-mapping/view-claims-in-saml-token.png)
+![Hiermee worden de kenmerken van SAML-tokens in de gebruikers interface weer gegeven](media/claims-mapping/view-claims-in-saml-token.png)
 
-Er zijn twee mogelijke redenen waarom u mogelijk de claims die zijn uitgegeven in het SAML-token bewerken:
+Er zijn twee mogelijke redenen waarom u de claims die in het SAML-token zijn uitgegeven, mogelijk moet bewerken:
 
-1. De toepassing vereist een andere set claimen van URI's of claimwaarden.
+1. Voor de toepassing is een andere set claim-Uri's of claim waarden vereist.
 
-2. De toepassing moet de claim NameIdentifier dan de UPN (user Principal name) die zijn opgeslagen in Azure AD.
+2. Voor de toepassing moet de claim van de NameIdentifier iets anders zijn dan de user principal name (UPN) die is opgeslagen in azure AD.
 
-Zie voor meer informatie over het toevoegen en bewerken van claims [in het SAML-token voor bedrijfstoepassingen in Azure Active Directory wordt uitgegeven claims aanpassen](../develop/active-directory-saml-claims-customization.md).
+Zie [claims aanpassen die zijn uitgegeven in het SAML-token voor zakelijke toepassingen in azure Active Directory](../develop/active-directory-saml-claims-customization.md)voor informatie over het toevoegen en bewerken van claims.
 
-B2B-samenwerking mogelijk gebruikers, cross-tenant-NameID en UPN-toewijzing niet uit veiligheidsoverwegingen.
+Voor B2B-samenwerkings gebruikers worden NameID en UPN-cross-Tenant om veiligheids redenen voor komen.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Zie voor meer informatie over de eigenschappen van gebruikers van B2B-samenwerking [eigenschappen van de gebruiker van een Azure Active Directory B2B-samenwerking](user-properties.md).
-- Zie voor meer informatie over gebruikerstokens voor gebruikers van B2B-samenwerking [begrijpen gebruikerstokens in Azure AD B2B-samenwerking](user-token.md).
+- Zie [Eigenschappen van een Azure Active Directory B2B-samenwerkings gebruiker](user-properties.md)voor meer informatie over gebruikers eigenschappen van B2B-samen werking.
+- Zie voor meer informatie over gebruikers tokens voor B2B-samenwerkings gebruikers [inzicht in gebruikers tokens in azure AD B2B-samen werking](user-token.md).
 

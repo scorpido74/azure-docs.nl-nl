@@ -1,49 +1,49 @@
 ---
-title: Over het maken en Ga naar ankers die gebruikmaken van Azure ruimtelijke ankers in Objective-C | Microsoft Docs
-description: Uitgebreidere uitleg over het maken en Ga naar ankers die gebruikmaken van Azure ruimtelijke ankers in Objective-c
+title: Ankers maken & vinden in doel stelling-C
+description: Uitgebreide uitleg over het maken en vinden van ankers met behulp van ruimtelijke beankeringen van Azure in doel-C.
 author: ramonarguelles
-manager: vicenterivera
+manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d9638c96c06c06bd92690e568364551bdc299c80
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 119cf971a18ce7a9c2f2c22aba18d4dd3d9642ec
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67672049"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74277337"
 ---
-# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Over het maken en Ga naar ankers die gebruikmaken van Azure ruimtelijke ankers in Objective-C
+# <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Ankers maken en vinden met behulp van ruimtelijke beankeringen van Azure in doel-C
 
 > [!div  class="op_single_selector"]
 > * [Unity](create-locate-anchors-unity.md)
 > * [Objective-C](create-locate-anchors-objc.md)
 > * [Swift](create-locate-anchors-swift.md)
-> * [Android Java](create-locate-anchors-java.md)
+> * [Android java](create-locate-anchors-java.md)
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Met Azure Spatial Anchors kunt u ankers delen tussen verschillende apparaten. Deze biedt ondersteuning voor diverse verschillende ontwikkelomgevingen. In dit artikel gaat we hoe u met de Azure ruimtelijke ankers SDK, in Objective-C, duiken:
+Met Azure Spatial Anchors kunt u ankers delen tussen verschillende apparaten. Er worden verschillende ontwikkel omgevingen ondersteund. In dit artikel gaan we in op het gebruik van de Azure spatiale-ankers SDK in doel-C tot:
 
-- Juist instellen en beheren van een Azure-ruimtelijke ankers-sessie.
-- Maken en instellen van eigenschappen voor lokale ankers.
-- Upload deze naar de cloud.
-- Zoek en verwijder ruimtelijke cloudankers.
+- Een Azure spatiale-anker sessie correct instellen en beheren.
+- Eigenschappen voor lokale ankers maken en instellen.
+- Upload deze naar de Cloud.
+- Zoek en verwijder ruimtelijke ruimtelijk-ankers.
 
 ## <a name="prerequisites"></a>Vereisten
 
-Zorg ervoor dat u hebt voor het voltooien van deze handleiding:
+Zorg ervoor dat u over het volgende beschikt om deze hand leiding te volt ooien:
 
-- Lees de [Azure ruimtelijke ankers overzicht](../overview.md).
-- Voltooid op een van de [5 minuten durende Quickstarts](../index.yml).
-- Basiskennis van Objective-c
-- Basiskennis van <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>.
+- Lees het [overzicht van ruimtelijke ankers in azure](../overview.md).
+- Een van de Quick starts van [5 minuten](../index.yml)is voltooid.
+- Basis kennis op doel-C.
+- Basis kennis op <a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 
-Meer informatie over de [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) klasse.
+Meer informatie over de [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) -klasse.
 
 ```objc
     ASACloudSpatialAnchorSession *_cloudSession;
@@ -53,7 +53,7 @@ Meer informatie over de [ASACloudSpatialAnchorSession](https://docs.microsoft.co
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
 
-Meer informatie over de [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) klasse.
+Meer informatie over de [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) -klasse.
 
 ```objc
     _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -67,7 +67,7 @@ Meer informatie over de [ASASessionConfiguration](https://docs.microsoft.com/obj
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
 
-Meer informatie over de [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protocol-methode.
+Meer informatie over de methode [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protocol.
 
 ```objc
     - (void)tokenRequired:(ASACloudSpatialAnchorSession *)cloudSession :(ASATokenRequiredEventArgs *)args {
@@ -115,7 +115,7 @@ Meer informatie over de [tokenRequired](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
-Meer informatie over de [start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) methode.
+Meer informatie over de [Start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) -methode.
 
 ```objc0
     _cloudSession.session = self.sceneView.session;
@@ -125,7 +125,7 @@ Meer informatie over de [start](https://docs.microsoft.com/objectivec/api/spatia
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
-Meer informatie over de [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) methode.
+Meer informatie over de [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) -methode.
 
 ```objc
     [_cloudSession processFrame:_sceneView.session.currentFrame];
@@ -133,7 +133,7 @@ Meer informatie over de [processFrame](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
 
-Meer informatie over de [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protocol-methode.
+Meer informatie over de methode [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protocol.
 
 ```objc
     - (void)sessionUpdated:(ASACloudSpatialAnchorSession *)cloudSession :(ASASessionUpdatedEventArgs *)args {
@@ -148,7 +148,7 @@ Meer informatie over de [sessionUpdated](https://docs.microsoft.com/objectivec/a
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
 
-Meer informatie over de [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) klasse.
+Meer informatie over de [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) -klasse.
 
 ```objc
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -175,7 +175,7 @@ Meer informatie over de [ASACloudSpatialAnchor](https://docs.microsoft.com/objec
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
-Meer informatie over de [getSessionStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) methode.
+Meer informatie over de [getSessionStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) -methode.
 
 ```objc
     [_cloudSession getSessionStatusWithCompletionHandler:^(ASASessionStatus *value, NSError *error) {
@@ -190,7 +190,7 @@ Meer informatie over de [getSessionStatusWithCompletionHandler](https://docs.mic
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
-Meer informatie over de [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) eigenschap.
+Meer informatie over de eigenschap [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) .
 
 ```objc
     ASACloudSpatialAnchor *cloudAnchor = [[ASACloudSpatialAnchor alloc] init];
@@ -203,7 +203,7 @@ Meer informatie over de [appProperties](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
-Meer informatie over de [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) methode.
+Meer informatie over de [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) -methode.
 
 ```objc
     ASACloudSpatialAnchor *anchor = /* locate your anchor */;
@@ -215,7 +215,7 @@ Meer informatie over de [updateAnchorProperties](https://docs.microsoft.com/obje
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
 
-Meer informatie over de [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) methode.
+Meer informatie over de [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) -methode.
 
 ```objc
     [_cloudSession getAnchorProperties:@"anchorId" withCompletionHandler:^(SCCCloudSpatialAnchor *anchor, NSError *error) {
@@ -234,7 +234,7 @@ Meer informatie over de [getAnchorProperties](https://docs.microsoft.com/objecti
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
-Meer informatie over de [verlopen](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) eigenschap.
+Meer informatie over de eigenschap [Expires](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) .
 
 ```objc
     int secondsInAWeek = 60 * 60 * 24 * 7;
@@ -244,7 +244,7 @@ Meer informatie over de [verlopen](https://docs.microsoft.com/objectivec/api/spa
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
-Meer informatie over de [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) methode.
+Meer informatie over de [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) -methode.
 
 ```objc
     ASAAnchorLocateCriteria *criteria = [ASAAnchorLocateCriteria new];
@@ -254,7 +254,7 @@ Meer informatie over de [createWatcher](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
 
-Meer informatie over de [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protocol-methode.
+Meer informatie over de methode [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protocol.
 
 ```objc
     - (void)anchorLocated:(ASACloudSpatialAnchorSession *)cloudSession :(ASAAnchorLocatedEventArgs *)args {
@@ -282,7 +282,7 @@ Meer informatie over de [anchorLocated](https://docs.microsoft.com/objectivec/ap
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
-Meer informatie over de [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) methode.
+Meer informatie over de [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) -methode.
 
 ```objc
     [_cloudSession deleteAnchor:cloudAnchor withCompletionHandler:^(NSError *error) {
@@ -292,7 +292,7 @@ Meer informatie over de [deleteAnchor](https://docs.microsoft.com/objectivec/api
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
-Meer informatie over de [stoppen](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) methode.
+Meer informatie over de methode [Stop](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) .
 
 ```objc
     [_cloudSession stop];
@@ -300,7 +300,7 @@ Meer informatie over de [stoppen](https://docs.microsoft.com/objectivec/api/spat
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
 
-Meer informatie over de [opnieuw](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) methode.
+Meer informatie over de methode [Reset](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) .
 
 ```objc
     [_cloudSession reset];

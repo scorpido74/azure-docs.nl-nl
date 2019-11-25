@@ -3,12 +3,12 @@ title: Inzicht krijgen in de werking van effecten
 description: Azure Policy definities hebben verschillende effecten die bepalen hoe de naleving wordt beheerd en gerapporteerd.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: c345f96ef5176c4afb3d46aaca2e9903c7911fb1
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 8338f3bf965f121a553a56c551d2095bf60e4880
+ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73959893"
+ms.lasthandoff: 11/21/2019
+ms.locfileid: "74279515"
 ---
 # <a name="understand-azure-policy-effects"></a>Informatie over Azure Policy-effecten
 
@@ -571,6 +571,6 @@ Elke toewijzing afzonderlijk geëvalueerd. Daarom is er geen een kans op een res
 - Bekijk voor beelden op [Azure Policy voor beelden](../samples/index.md).
 - Lees over de [structuur van Azure Policy-definities](definition-structure.md).
 - Meer informatie over het [programmatisch maken van beleids regels](../how-to/programmatically-create.md).
-- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/getting-compliance-data.md).
+- Meer informatie over het [ophalen van compatibiliteits gegevens](../how-to/get-compliance-data.md).
 - Meer informatie over het [oplossen van niet-compatibele resources](../how-to/remediate-resources.md).
 - Bekijk wat een beheer groep is met [het organiseren van uw resources met Azure-beheer groepen](../../management-groups/overview.md).
