@@ -1,6 +1,6 @@
 ---
-title: Analyseer uw media met behulp van de Azure Portal | Microsoft Docs
-description: In dit onderwerp wordt beschreven hoe u uw media met behulp van de Azure Portal met Media Analytics media-processors (MPs) kunt verwerken.
+title: Analyze your media using the Azure portal | Microsoft Docs
+description: This topic discusses how to process your media with Media Analytics media processors (MPs) using the Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,135 +14,131 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 26a951ffaf0253371ffe69c6df798120f0464082
-ms.sourcegitcommit: 7efb2a638153c22c93a5053c3c6db8b15d072949
+ms.openlocfilehash: 0e49e90209c7337081458b7c214d27b37d3b4da1
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 10/24/2019
-ms.locfileid: "72881900"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74462611"
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Uw media analyseren met de Azure-portal 
 
 > [!IMPORTANT]
-> Bekijk de [pensioen plannen](media-services-analytics-overview.md#retirement-plans) van sommige media processors.
+> Review the [retirement plans](media-services-analytics-overview.md#retirement-plans) of some media processors.
 
 ## <a name="overview"></a>Overzicht
-Azure Media Services Analytics is een verzameling spraak-en visie onderdelen (op ENTER prise-schaal, naleving, beveiliging en wereld wijd bereik) waarmee organisaties en ondernemingen eenvoudig inzicht kunnen verkrijgen uit hun video bestanden. Zie [Dit](media-services-analytics-overview.md) onderwerp voor meer gedetailleerd overzicht van Azure Media Services Analytics. 
+Azure Media Services Analytics is a collection of speech and vision components (at enterprise scale, compliance, security and global reach) that make it easier for organizations and enterprises to derive actionable insights from their video files. For more detailed overview of Azure Media Services Analytics see [this](media-services-analytics-overview.md) topic. 
 
-In dit onderwerp wordt beschreven hoe u uw media met behulp van de Azure Portal met Media Analytics media-processors (MPs) kunt verwerken. Media Analytics MPs produceert MP4-bestanden of JSON-bestanden. Als een media processor een MP4-bestand produceert, kunt u het bestand progressief downloaden. Als een media processor een JSON-bestand produceert, kunt u het bestand downloaden uit de Azure Blob-opslag. 
+This topic discusses how to process your media with Media Analytics media processors (MPs) using the Azure portal. Media Analytics MPs produce MP4 files or JSON files. If a media processor produced an MP4 file, you progressively download the file. If a media processor produced a JSON file, you download the file from the Azure blob storage. 
 
-## <a name="choose-an-asset-that-you-want-to-analyze"></a>Kies een Asset die u wilt analyseren
+## <a name="choose-an-asset-that-you-want-to-analyze"></a>Choose an asset that you want to analyze
 1. Selecteer uw Azure Media Services-account in [Azure Portal](https://portal.azure.com/).
 2. Selecteer in het venster **Instellingen** de optie **Assets**.  
    
     ![Video's analyseren](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
-3. Selecteer de activa die u wilt analyseren en druk op de knop **analyseren** .
+3. Select the asset that you would like to analyze and press the **Analyze** button.
    
     ![Video's analyseren](./media/media-services-portal-analyze/media-services-portal-analyze002.png)
-4. Selecteer de processor in het venster **Media-activum verwerken met Media Analytics** . 
+4. In the **Process media asset with  Media Analytics** window, select the processor. 
    
-    In de rest van het artikel wordt uitgelegd waarom en hoe u elke processor gebruikt. 
-5. Druk op **maken** om de taak te starten.
+    The rest of the article explains why and how to use each processor. 
+5. Press **Create** to the start a job.
 
 ## <a name="azure-media-indexer"></a>Azure Media Indexer
-Met de **Azure media indexer** -media processor kunt u media bestanden en inhoud doorzoekbaar maken, evenals ondertitelings tracks genereren. In deze sectie vindt u enkele informatie over de opties die u voor dit Management Pack opgeeft.
+The **Azure Media Indexer** media processor enables you to make media files and content searchable, as well as generate closed captioning tracks. This section gives some details about options that you specify for this MP.
 
 ![Video's analyseren](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
 ### <a name="language"></a>Taal
-De natuurlijke taal die moet worden herkend in het multimedia bestand. Bijvoorbeeld Engels of Spaans. 
+The natural language to be recognized in the multimedia file. For example, English or Spanish. 
 
-### <a name="captions"></a>Bijschriften
-U kunt een titel indeling kiezen die wordt gegenereerd op basis van uw inhoud. Een indexerings taak kan ondertitelings bestanden genereren in de volgende indelingen:  
-
-* **Sami**
+### <a name="captions"></a>Captions
+You can choose a caption format that will be generated from your content. An indexing job can generate closed caption files in the following formats:  
+ 
 * **TTML**
 * **WebVTT**
 
-Ondertitelings bestanden (CC) in deze indelingen kunnen worden gebruikt om audio-en video bestanden toegankelijk te maken voor mensen met een gehoor handicap.
-
-### <a name="aib-file"></a>AIB-bestand
-Selecteer deze optie als u het Blobbestand van de audio-index wilt genereren voor gebruik met de aangepaste SQL Server IFilter. Zie [deze](https://azure.microsoft.com/blog/using-aib-files-with-azure-media-indexer-and-sql-server/) blog voor meer informatie.
+Closed Caption (CC) files in these formats can be used to make audio and video files accessible to people with hearing disability.
 
 ### <a name="keywords"></a>Trefwoorden
-Selecteer deze optie als u een XML-bestand met tref woorden wilt genereren. Dit bestand bevat tref woorden die zijn geëxtraheerd uit de spraak inhoud, met frequentie en verschuivings informatie.
+Select this option if you would like to generate a keywords XML file. This file contains keywords extracted from the speech content, with frequency and offset information.
 
 ### <a name="job-name"></a>Taaknaam
-Een beschrijvende naam waarmee u de taak kunt identificeren. In [Dit](media-services-portal-check-job-progress.md) artikel wordt beschreven hoe u de voortgang van een taak kunt bewaken. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Uitvoerbestand
-Een beschrijvende naam waarmee u de uitvoer inhoud kunt identificeren. 
+A friendly name that lets you identify the output content. 
 
 ### <a name="speed"></a>Snelheid
-Geef de snelheid op waarmee de invoer video wordt versneld. De uitvoer is een gestabiliseerde en tijdgebonden vertoning van de invoer video.
+Specify the speed with which to speed up the input video. The output is a stabilized and time-lapsed rendition of the input video.
 
 ### <a name="job-name"></a>Taaknaam
-Een beschrijvende naam waarmee u de taak kunt identificeren. In [Dit](media-services-portal-check-job-progress.md) artikel wordt beschreven hoe u de voortgang van een taak kunt bewaken. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Uitvoerbestand
-Een beschrijvende naam waarmee u de uitvoer inhoud kunt identificeren. 
+A friendly name that lets you identify the output content. 
 
 ## <a name="azure-media-face-detector"></a>Azure Media Face Detector
-Met de **Azure media face detector** media processor (MP) kunt u het aantal bewegingen en de inschakeling van de publieks-en reactie activiteiten via gezichts uitdrukkingen tellen, bijhouden en meten. Deze service bevat twee functies: 
+The **Azure Media Face Detector** media processor (MP) enables you to count, track movements, and even gauge audience participation and reaction via facial expressions. This service contains two features: 
 
-* **Gezichts detectie**
+* **Face detection**
   
-    Met gezichts detectie wordt geconstateerd en getraceerd voor menselijke gezichten in een video. Er kunnen meerdere gezichten worden gedetecteerd en vervolgens worden gevolgd wanneer ze worden verplaatst, met de tijd en locatie-meta gegevens die zijn geretourneerd in een JSON-bestand. Tijdens het bijhouden wordt geprobeerd een consistente ID te geven aan hetzelfde gezicht, terwijl de persoon op het scherm gaat, zelfs als ze niet meer of korter zijn dan het frame.
+    Face detection finds and tracks human faces within a video. Multiple faces can be detected and subsequently be tracked as they move around, with the time and location metadata returned in a JSON file. During tracking, it will attempt to give a consistent ID to the same face while the person is moving around on screen, even if they are obstructed or briefly leave the frame.
   
   > [!NOTE]
-  > Deze services voeren geen gezichts herkenning uit. Een persoon die het frame verlaat of gedurende te lang wordt belemmerd, krijgt een nieuwe ID wanneer deze wordt geretourneerd.
+  > This services does not perform facial recognition. An individual who leaves the frame or becomes obstructed for too long will be given a new ID when they return.
   > 
   > 
-* **Emotion-detectie**
+* **Emotion detection**
   
-    Emotion Detection is een optioneel onderdeel van de Gezichtsdetectie media processor dat analyse op meerdere emotioneel-kenmerken van de gedetecteerde gezichten retourneert, waaronder blij, verdriet, vrezen, boosheid en meer. 
+    Emotion Detection is an optional component of the Face Detection Media Processor that returns analysis on multiple emotional attributes from the faces detected, including happiness, sadness, fear, anger, and more. 
 
 ![Video's analyseren](./media/media-services-portal-analyze/media-services-portal-analyze005.png)
 
-### <a name="detection-mode"></a>Detectie modus
-Een van de volgende modi kan door de processor worden gebruikt:
+### <a name="detection-mode"></a>Detection mode
+One of the following modes can be used by the processor:
 
-* gezichts detectie
-* Emotion detectie per gezicht
-* cumulatieve Emotion-detectie
+* face detection
+* per face emotion detection
+* aggregate emotion detection
 
 ### <a name="job-name"></a>Taaknaam
-Een beschrijvende naam waarmee u de taak kunt identificeren. In [Dit](media-services-portal-check-job-progress.md) artikel wordt beschreven hoe u de voortgang van een taak kunt bewaken. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Uitvoerbestand
-Een beschrijvende naam waarmee u de uitvoer inhoud kunt identificeren. 
+A friendly name that lets you identify the output content. 
 
 ## <a name="azure-media-motion-detector"></a>Azure Media Motion Detector
-Met de **Azure Media Motion detector** media processor (MP) kunt u op efficiënte wijze gedeelten van interesses identificeren binnen een andere, lange en niet-gebeurtenisloze video. Bewegings detectie kan worden gebruikt voor statische camera beelden om secties van de video te identificeren waar beweging optreedt. Er wordt een JSON-bestand gegenereerd met een meta gegevens met tijds tempels en het grens gebied waarin de gebeurtenis plaatsvond.
+The **Azure Media Motion Detector** media processor (MP) enables you to efficiently identify sections of interest within an otherwise long and uneventful video. Motion detection can be used on static camera footage to identify sections of the video where motion occurs. It generates a JSON file containing a metadata with timestamps and the bounding region where the event occurred.
 
-Deze technologie is gericht op beveiligings videofeeds en kan bewegingen in relevante gebeurtenissen categoriseren en fout-positieven, zoals scha duwen en belichtings veranderingen. Op deze manier kunt u beveiligings waarschuwingen genereren van camera feeds zonder spam met oneindig irrelevante gebeurtenissen, terwijl u de momenten van interesse kunt ophalen van extreem lange bewakings Video's.
+Targeted towards security video feeds, this technology is able to categorize motion into relevant events and false positives such as shadows and lighting changes. This allows you to generate security alerts from camera feeds without being spammed with endless irrelevant events, while being able to extract moments of interest from extremely long surveillance videos.
 
 ![Video's analyseren](./media/media-services-portal-analyze/media-services-portal-analyze006.png)
 
 ## <a name="azure-media-video-thumbnails"></a>Azure Media Video Thumbnails
-Deze processor kan u helpen samen vattingen van lange Video's te maken door automatisch interessante fragmenten uit de bron video te selecteren. Dit is handig als u een kort overzicht wilt geven van wat u in een lange video kunt verwachten. Zie [Azure Media video thumbnails gebruiken om een video samenvatting te maken](media-services-video-summarization.md) voor meer informatie en voor beelden
+This processor can help you create summaries of long videos by automatically selecting interesting snippets from the source video. This is useful when you want to provide a quick overview of what to expect in a long video. For detailed information and examples, see [Use Azure Media Video Thumbnails to Create a Video Summarization](media-services-video-summarization.md)
 
 ![Video's analyseren](./media/media-services-portal-analyze/media-services-portal-analyze008.png)
 
 ### <a name="job-name"></a>Taaknaam
-Een beschrijvende naam waarmee u de taak kunt identificeren. In [Dit](media-services-portal-check-job-progress.md) artikel wordt beschreven hoe u de voortgang van een taak kunt bewaken. 
+A friendly name that lets you identify the job. [This](media-services-portal-check-job-progress.md) article describes how you can monitor the progress of a job. 
 
 ### <a name="output-file"></a>Uitvoerbestand
-Een beschrijvende naam waarmee u de uitvoer inhoud kunt identificeren. 
+A friendly name that lets you identify the output content. 
 
 ## <a name="azure-media-content-moderator"></a>Azure Media Content Moderator
-Deze processor helpt u potentiële inhoud van de volwassene en ongepaste in Video's te detecteren. De processor detecteert automatisch opnamen en keyframes in de video. Hiermee worden de keyframes voor mogelijke inhoud voor volwassenen of ongepaste beoordeeld en worden beoordelingen voorgesteld op basis van de standaard drempel waarden. Voor gedetailleerde informatie en voor beelden raadpleegt [u Azure Media Content moderator gebruiken voor gemiddeld aantal Video's](media-services-content-moderation.md)
+This processor helps you detect potential adult and racy content in videos. The processor automatically detects shots and keyframes in the video. It scores the keyframes for possible adult or racy content, and suggests reviews based on default thresholds. For detailed information and examples, see [Use Azure Media Content Moderator to moderate videos](media-services-content-moderation.md)
 
-![Gemiddeld Video's](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
+![Moderate videos](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
 
 ### <a name="version"></a>Version 
-Gebruik ' 2,0 '.
+Use "2.0".
 
 ### <a name="mode"></a>Modus
-De 2,0-versie negeren de `Mode` instelling.
+The 2.0 version ignore the `Mode` setting.
 
 ## <a name="next-steps"></a>Volgende stappen
-Media Services leer trajecten weer geven.
+View Media Services learning paths.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

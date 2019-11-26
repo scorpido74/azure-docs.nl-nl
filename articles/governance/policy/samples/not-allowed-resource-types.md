@@ -1,18 +1,18 @@
 ---
 title: 'Voorbeeld: niet toegestane resourcetypen'
-description: Deze voorbeeldbeleidsdefinitie voorkomt de implementatie van de opgegeven brontypen.
+description: This sample policy definition prohibits the deployment of specified resource types defined in a parameter.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: 35bbf4f07ce7deb8458f5dee84710b06b92732b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 2ca0718ce730c3bede3fc65fcf48758de1617029
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076168"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463571"
 ---
 # <a name="sample---not-allowed-resource-types"></a>Voorbeeld: niet toegestane resourcetypen
 
-Voorkomt de implementatie van de opgegeven brontypen. U geeft een matrix met resourcetypen op die niet zijn toegestaan.
+Voorkomt de implementatie van de opgegeven brontypen. U geeft een matrix met brontypen op die niet zijn toegestaan.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -24,7 +24,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![het voor beeld van het beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fnot-allowed-resourcetypes%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fnot-allowed-resourcetypes%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

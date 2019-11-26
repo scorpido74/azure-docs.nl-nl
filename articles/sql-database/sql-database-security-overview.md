@@ -1,6 +1,6 @@
 ---
 title: Beveiligingsoverzicht
-description: Meer informatie over Azure SQL Database en SQL Server beveiliging, met inbegrip van de verschillen tussen de Cloud en SQL Server on-premises.
+description: Learn about Azure SQL Database and SQL Server security, including the differences between the cloud and SQL Server on-premises.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,151 +11,147 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 ms.date: 05/14/2019
-ms.openlocfilehash: d952229ab327440771db6cc5ac64db2256491179
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b318d4b5076ff24612d5b5ce0ba619f0b38ac280
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823259"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483847"
 ---
-# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Een overzicht van Azure SQL Database beveiligings mogelijkheden
+# <a name="an-overview-of-azure-sql-database-security-capabilities"></a>An overview of Azure SQL Database security capabilities
 
-In dit artikel vindt u een overzicht van de basis principes van het beveiligen van de gegevenslaag van een toepassing met behulp van Azure SQL Database. De beschreven beveiligings strategie volgt de gelaagde ingrijpende aanpak zoals wordt weer gegeven in de onderstaande afbeelding, en verplaatst van de buiten kant naar:
+This article outlines the basics of securing the data tier of an application using Azure SQL Database. The security strategy described follows the layered defense-in-depth approach as shown in the picture below, and moves from the outside in:
 
-![SQL-Security-Layer. png](media/sql-database-security-overview/sql-security-layer.png)
+![sql-security-layer.png](media/sql-database-security-overview/sql-security-layer.png)
 
 ## <a name="network-security"></a>Netwerkbeveiliging
 
-Microsoft Azure SQL Database biedt een relationele database service voor Cloud-en bedrijfs toepassingen. Om klant gegevens te helpen beschermen, worden netwerk toegang tot de database server voor komen wanneer de toegang expliciet wordt verleend op basis van het IP-adres of het virtuele netwerk verkeer van Azure.
+Microsoft Azure SQL Database provides a relational database service for cloud and enterprise applications. To help protect customer data, firewalls prevent network access to the database server until access is explicitly granted based on IP address or Azure Virtual network traffic origin.
 
-### <a name="ip-firewall-rules"></a>IP-firewall regels
+### <a name="ip-firewall-rules"></a>IP firewall rules
 
-IP-firewall regels verlenen toegang tot data bases op basis van het oorspronkelijke IP-adres van elke aanvraag. Zie [overzicht van Azure SQL database en SQL Data Warehouse firewall regels](sql-database-firewall-configure.md)voor meer informatie.
+IP firewall rules grant access to databases based on the originating IP address of each request. For more information, see [Overview of Azure SQL Database and SQL Data Warehouse firewall rules](sql-database-firewall-configure.md).
 
 ### <a name="virtual-network-firewall-rules"></a>Firewallregels voor virtueel netwerk
 
-Met [virtuele netwerk service-eind punten](../virtual-network/virtual-network-service-endpoints-overview.md) wordt de verbinding van het virtuele netwerk via de Azure-backbone uitgebreid en kunnen Azure SQL database het subnet van het virtuele netwerk identificeren waaruit het verkeer afkomstig is. Als u wilt toestaan dat verkeer wordt bereikt Azure SQL Database, gebruikt u de SQL [service-Tags](../virtual-network/security-overview.md) om uitgaand verkeer via netwerk beveiligings groepen toe te staan.
+[Virtual network service endpoints](../virtual-network/virtual-network-service-endpoints-overview.md) extend your virtual network connectivity over the Azure backbone and enable Azure SQL Database to identify the virtual network subnet that traffic originates from. To allow traffic to reach Azure SQL Database, use the SQL [service tags](../virtual-network/security-overview.md) to allow outbound traffic through Network Security Groups.
 
-Met [regels voor virtuele netwerken](sql-database-vnet-service-endpoint-rule-overview.md) kunnen Azure SQL database alleen communicatie accepteren die worden verzonden vanuit geselecteerde subnetten binnen een virtueel netwerk.
+[Virtual network rules](sql-database-vnet-service-endpoint-rule-overview.md) enable Azure SQL Database to only accept communications that are sent from selected subnets inside a virtual network.
 
 > [!NOTE]
-> Het beheren van toegang met firewall regels is *niet* van toepassing op **een beheerd exemplaar**. Zie [verbinding maken met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie over de benodigde netwerk configuratie
+> Controlling access with firewall rules does *not* apply to **a managed instance**. For more information about the networking configuration needed, see [connecting to a managed instance](sql-database-managed-instance-connect-app.md)
 
 ## <a name="access-management"></a>Toegangsbeheer
 
 > [!IMPORTANT]
-> Het beheren van data bases en database servers binnen Azure wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie op [rollen gebaseerd toegangs beheer in azure Portal](../role-based-access-control/overview.md)voor meer informatie over dit artikel.
+> Managing databases and database servers within Azure is controlled by your portal user account's role assignments. For more information on this article, see [Role-based access control in Azure portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Verificatie
 
-Verificatie is het proces waarbij de gebruiker wordt geclaimd. Azure SQL Database ondersteunt twee typen verificatie:
+Authentication is the process of proving the user is who they claim to be. Azure SQL Database supports two types of authentication:
 
-- **SQL-verificatie**:
+- **SQL authentication**:
 
-    SQL database-verificatie verwijst naar de verificatie van een gebruiker bij het maken van verbinding met [Azure SQL database](sql-database-technical-overview.md) met behulp van de gebruikers naam en het wacht woord. Tijdens het maken van de database server voor de data base moet een ' Server beheerder ' een aanmelding met een gebruikers naam en wacht woord opgeven. Als u deze referenties gebruikt, kan een ' Server-beheerder ' zich verifiëren bij elke Data Base op die database server als de eigenaar van de data base. Daarna kunnen extra SQL-aanmeldingen en-gebruikers worden gemaakt door de server beheerder, waarmee gebruikers verbinding maken met behulp van de gebruikers naam en het wacht woord.
+    SQL database authentication refers to the authentication of a user when connecting to [Azure SQL Database](sql-database-technical-overview.md) using username and password. During the database server creation for the database, a "Server admin" login with a username and password must be specified. Using these credentials, a “server admin” can authenticate to any database on that database server as the database owner. After that, additional SQL logins and users can be created by the server admin, which enable users to connect using username and password.
 
-- **Azure Active Directory-verificatie**:
+- **Azure Active Directory authentication**:
 
-    Azure Active Directory-verificatie is een mechanisme om verbinding te maken met [Azure SQL database](sql-database-technical-overview.md) en [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) met behulp van identiteiten in azure Active Directory (Azure AD). Met Azure AD-verificatie kunnen beheerders de identiteiten en machtigingen van database gebruikers centraal beheren, samen met andere micro soft-Services op één centrale locatie. Dit omvat de minimale wacht woord opslag en maakt beleid voor gecentraliseerde wachtwoord rotatie mogelijk.
+    Azure Active Directory authentication is a mechanism of connecting to [Azure SQL Database](sql-database-technical-overview.md) and [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) by using identities in Azure Active Directory (Azure AD). Azure AD authentication allows administrators to centrally manage the identities and permissions of database users along with other Microsoft services in one central location. This includes the minimization of password storage and enables centralized password rotation policies.
 
-     Een server beheerder met de naam **Active Directory beheerder** moet worden gemaakt voor het gebruik van Azure AD-verificatie met SQL database. Zie [verbinding maken met SQL database met behulp van Azure Active Directory-verificatie](sql-database-aad-authentication.md)voor meer informatie. Azure AD-verificatie ondersteunt zowel beheerde als federatieve accounts. De federatieve accounts ondersteunen Windows-gebruikers en-groepen voor een klant domein Federated met Azure AD.
+     A server admin called the **Active Directory administrator** must be created to use Azure AD authentication with SQL Database. For more information, see [Connecting to SQL Database By Using Azure Active Directory Authentication](sql-database-aad-authentication.md). Azure AD authentication supports both managed and federated accounts. The federated accounts support Windows users and groups for a customer domain federated with Azure AD.
 
-    Er zijn extra Azure AD-verificatie opties beschikbaar [Active Directory universele verificatie voor SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) verbindingen, waaronder [multi-factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) en [voorwaardelijke toegang](sql-database-conditional-access.md).
+    Additional Azure AD authentication options available are [Active Directory Universal Authentication for SQL Server Management Studio](sql-database-ssms-mfa-authentication.md) connections including [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) and [Conditional Access](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> Het beheren van data bases en servers binnen Azure wordt bepaald door de roltoewijzingen van uw portal-gebruikers account. Zie op [rollen gebaseerd toegangs beheer in azure Portal](../role-based-access-control/overview.md)voor meer informatie over dit artikel. Het beheren van toegang met firewall regels is *niet* van toepassing op **een beheerd exemplaar**. Raadpleeg het volgende artikel over het [maken van een verbinding met een beheerd exemplaar](sql-database-managed-instance-connect-app.md) voor meer informatie over de benodigde netwerk configuratie.
+> Managing databases and servers within Azure is controlled by your portal user account's role assignments. For more information on this article, see [Role-based access control in Azure portal](../role-based-access-control/overview.md). Controlling access with firewall rules does *not* apply to **a managed instance**. Please see the following article on [connecting to a managed instance](sql-database-managed-instance-connect-app.md) for more information about the networking configuration needed.
 
 ## <a name="authorization"></a>Autorisatie
 
-Autorisatie verwijst naar de machtigingen die zijn toegewezen aan een gebruiker binnen een Azure SQL Database en bepaalt wat de gebruiker mag doen. Machtigingen worden beheerd door gebruikers accounts toe te voegen aan [database rollen](/sql/relational-databases/security/authentication-access/database-level-roles) en machtigingen op database niveau toe te wijzen aan deze rollen of door de gebruiker bepaalde [machtigingen op object niveau](/sql/relational-databases/security/permissions-database-engine)toe te kennen. Zie [aanmeldingen en gebruikers](sql-database-manage-logins.md) voor meer informatie
+Authorization refers to the permissions assigned to a user within an Azure SQL Database, and determines what the user is allowed to do. Permissions are controlled by adding user accounts to [database roles](/sql/relational-databases/security/authentication-access/database-level-roles) and assigning database-level permissions to those roles or by granting the user certain [object-level permissions](/sql/relational-databases/security/permissions-database-engine). For more information, see [Logins and users](sql-database-manage-logins.md)
 
-Maak als best practice aangepaste rollen wanneer dat nodig is. Voeg gebruikers toe aan de rol met de mini maal benodigde bevoegdheden voor het uitvoeren van hun functie. Wijs machtigingen niet rechtstreeks toe aan gebruikers. Het account van de server beheerder is lid van de ingebouwde db_owner rol, met uitgebreide machtigingen en mag alleen worden toegekend aan een beperkt aantal gebruikers met beheerders rechten. Gebruik voor Azure SQL Database toepassingen de [uitvoeren als](/sql/t-sql/statements/execute-as-clause-transact-sql) om de uitvoerings context van de aangeroepen module op te geven of gebruik [toepassings rollen](/sql/relational-databases/security/authentication-access/application-roles) met beperkte machtigingen. Op deze manier zorgt u ervoor dat de toepassing die verbinding maakt met de data base, over de minste bevoegdheden beschikt die nodig zijn voor de toepassing. Het volgen van deze aanbevolen procedures bevordert ook de schei ding van taken.
+As a best practice, create custom roles when needed. Add users to the role with the least privileges required to do their job function. Do not assign permissions directly to users. The server admin account is a member of the built-in db_owner role, which has extensive permissions and should only be granted to few users with administrative duties. For Azure SQL Database applications, use the [EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql) to specify the execution context of the called module or use [Application Roles](/sql/relational-databases/security/authentication-access/application-roles) with limited permissions. This practice ensures that the application that connects to the database has the least privileges needed by the application. Following these best practices also fosters separation of duties.
 
 ### <a name="row-level-security"></a>Beveiliging op rijniveau
 
-Met beveiliging op rijniveau kunnen klanten de toegang tot rijen in een database tabel beheren op basis van de kenmerken van de gebruiker die een query uitvoert (bijvoorbeeld groepslid maatschap of uitvoerings context). Beveiliging op rijniveau kan ook worden gebruikt voor het implementeren van op aangepaste labels gebaseerde beveiligings concepten. Zie [Beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) voor meer informatie.
+Row-Level Security enables customers to control access to rows in a database table based on the characteristics of the user executing a query (for example, group membership or execution context). Row-Level Security can also be used to implement custom Label-based security concepts. Zie [Beveiliging op rijniveau](/sql/relational-databases/security/row-level-security) voor meer informatie.
 
-![Azure-database-RLS. png](media/sql-database-security-overview/azure-database-rls.png)
+![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Bescherming tegen bedreigingen
 
-SQL Database klant gegevens beveiligen door de mogelijkheden voor controle en detectie van bedreigingen op te geven.
+SQL Database secures customer data by providing auditing and threat detection capabilities.
 
-### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL-controle in Azure Monitor logboeken en Event Hubs
+### <a name="sql-auditing-in-azure-monitor-logs-and-event-hubs"></a>SQL auditing in Azure Monitor logs and Event Hubs
 
-SQL Database controle houdt database activiteiten bij en helpt bij het onderhouden van de naleving van beveiligings standaarden door database gebeurtenissen te registreren in een audit logboek in een Azure-opslag account van een klant. Met controle kunnen gebruikers doorlopende database activiteiten bewaken en historische activiteiten analyseren en onderzoeken om mogelijke dreigingen of verdachte misbruik en beveiligings schendingen te identificeren. Zie aan de slag met [SQL database auditing](sql-database-auditing.md)voor meer informatie.  
+SQL Database auditing tracks database activities and helps to maintain compliance with security standards by recording database events to an audit log in a customer-owned Azure storage account. Auditing allows users to monitor ongoing database activities, as well as analyze and investigate historical activity to identify potential threats or suspected abuse and security violations. For more information, see Get started with [SQL Database Auditing](sql-database-auditing.md).  
 
 ### <a name="advanced-threat-protection"></a>Advanced Threat Protection
 
-Geavanceerde beveiliging tegen bedreigingen is het analyseren van uw SQL Server logboeken voor het detecteren van ongebruikelijk gedrag en mogelijk schadelijke pogingen om data bases te openen of te exploiteren. Er worden waarschuwingen gemaakt voor verdachte activiteiten, zoals SQL-injectie, mogelijke gegevens infiltratie en beveiligings aanvallen, of voor afwijkingen in toegangs patronen om escalaties van bevoegdheden te ondervangen en gekraakte referenties te gebruiken. Er worden waarschuwingen weer gegeven uit de [Azure Security Center](https://azure.microsoft.com/services/security-center/), waar de details van de verdachte activiteiten worden verstrekt en aanbevelingen voor verder onderzoek worden gegeven, samen met acties voor het beperken van de dreiging. Geavanceerde beveiliging tegen bedreigingen kan per server worden ingeschakeld voor extra kosten. Zie [aan de slag met SQL database Advanced Threat Protection](sql-database-threat-detection.md)voor meer informatie.
+Advanced Threat Protection is analyzing your SQL Server logs to detect unusual behavior and potentially harmful attempts to access or exploit databases. Alerts are created for suspicious activities such as SQL injection, potential data infiltration, and brute force attacks or for anomalies in access patterns to catch privilege escalations and breached credentials use. Alerts are viewed from the  [Azure Security Center](https://azure.microsoft.com/services/security-center/), where the details of the suspicious activities are provided and recommendations for further investigation given along with actions to mitigate the threat. Advanced Threat Protection can be enabled per server for an additional fee. For more information, see [Get started with SQL Database Advanced Threat Protection](sql-database-threat-detection.md).
 
-![Azure-database-TD. jpg](media/sql-database-security-overview/azure-database-td.jpg)
+![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
-## <a name="information-protection-and-encryption"></a>Gegevens beveiliging en-versleuteling
+## <a name="information-protection-and-encryption"></a>Information protection and encryption
 
-### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security TLS (versleuteling-in-transit)
+### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security TLS (Encryption-in-transit)
 
-SQL Database klant gegevens beveiligen door gegevens in beweging te versleutelen met [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+SQL Database secures customer data by encrypting data in motion with [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
-SQL Server dwingt te allen tijde versleuteling (SSL/TLS) af voor alle verbindingen. Dit zorgt ervoor dat alle gegevens in transit tussen de client en server worden versleuteld, ongeacht de instelling van **versleutelen** of **TrustServerCertificate** in de Connection String.
+Sql Server enforces encryption (SSL/TLS) at all times for all connections. This ensures all data is encrypted "in transit" between the client and server irrespective of the setting of **Encrypt** or **TrustServerCertificate** in the connection string.
 
-Als best practice kunt u het beste een versleutelde verbinding opgeven in de connection string van uw toepassing en het server certificaat _**niet**_ vertrouwen. Dit dwingt uw toepassing af om het server certificaat te verifiëren en zorgt er daarom voor dat uw toepassing kwetsbaar is voor man in het middelste type aanvallen.
+As a best practice, recommend that in your application's connection string you specify an encrypted connection and _**not**_ trust the server certificate. This forces your application to verify the server certificate and thus prevents your application from being vulnerable to man in the middle type attacks.
 
-Als u bijvoorbeeld het ADO.NET-stuur programma gebruikt, wordt dit bereikt via **versleutelen = True** en **TrustServerCertificate = False**. Als u uw connection string van de Azure Portal opvraagt, worden de juiste instellingen weer geven.
+For example when using the ADO.NET driver this is accomplished via  **Encrypt=True** and **TrustServerCertificate=False**. If you obtain your connection string from the Azure portal, it will have the correct settings.
 
 > [!IMPORTANT]
-> Houd er rekening mee dat sommige niet-micro soft-Stuur Programma's standaard geen gebruikmaken van TLS of gebruikmaken van een oudere versie van TLS (< 1.2) om te kunnen functioneren. In dit geval kunt SQL Server nog steeds verbinding maken met uw data base. We raden u echter aan de beveiligings Risico's te evalueren waarmee dergelijke Stuur Programma's en toepassingen verbinding kunnen maken met SQL Database, met name als u gevoelige gegevens opslaat. 
+> Note that some non-Microsoft drivers may not use TLS by default or rely on an older version of TLS (<1.2) in order to function. In this case SQL Server still allows you to connect to your database. However, we recommend that you evaluate the security risks of allowing such drivers and application to connect to SQL Database, especially if you store sensitive data. 
 >
-> Zie voor meer informatie over TLS en connectiviteit [TLS-overwegingen](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
+> For further information about TLS and connectivity, see [TLS considerations](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 
-### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparent Data Encryption (versleuteling-at-rest)
+### <a name="transparent-data-encryption-encryption-at-rest"></a>Transparent Data Encryption (Encryption-at-rest)
 
-[Transparent Data Encryption (TDE) voor Azure SQL database](transparent-data-encryption-azure-sql.md) voegt een beveiligingslaag toe om gegevens op rest te beschermen tegen onbevoegde of offline toegang tot onbewerkte bestanden of back-ups. Veelvoorkomende scenario's zijn onder meer Data Center-dief stal of onbeveiligde verwijdering van hardware of media, zoals schijf stations en back-uptapes. TDE versleutelt de gehele data base met behulp van een AES-versleutelings algoritme, waarvoor ontwikkel aars van toepassingen geen wijzigingen in bestaande toepassingen hoeven aan te brengen.
+[Transparent Data Encryption (TDE) for Azure SQL Database](transparent-data-encryption-azure-sql.md) adds a layer of security to help protect data at rest from unauthorized or offline access to raw files or backups. Common scenarios include datacenter theft or unsecured disposal of hardware or media such as disk drives and backup tapes. TDE encrypts the entire database using an AES encryption algorithm, which doesn’t require application developers to make any changes to existing applications.
 
-In Azure worden alle nieuw gemaakte SQL-data bases standaard versleuteld en wordt de database versleutelings sleutel beveiligd door een ingebouwd server certificaat.  Het onderhoud en de rotatie van het certificaat worden beheerd door de service en vereist geen invoer van de gebruiker. Klanten die de controle over de versleutelings sleutels liever overnemen, kunnen de sleutels in [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md)beheren.
+In Azure, all newly created SQL databases are encrypted by default and the database encryption key is protected by a built-in server certificate.  Certificate maintenance and rotation are managed by the service and requires no input from the user. Customers who prefer to take control of the encryption keys can manage the keys in [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md).
 
-### <a name="key-management-with-azure-key-vault"></a>Sleutel beheer met Azure Key Vault
+### <a name="key-management-with-azure-key-vault"></a>Key management with Azure Key Vault
 
-Met [Bring your own Key](transparent-data-encryption-byok-azure-sql.md) -ondersteuning (BYOK) voor [transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) kunnen klanten eigenaar worden van sleutel beheer en draaiing met behulp van [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), het op de cloud gebaseerde externe sleutel beheer systeem van Azure. Als de data base toegang tot de sleutel kluis wordt ingetrokken, kan een Data Base niet worden ontsleuteld en in het geheugen worden gelezen. Azure Key Vault biedt een centraal platform voor sleutel beheer, maakt gebruik van nauw bewaakte Hardware Security modules (Hsm's) en stelt schei ding van taken mogelijk te maken tussen het beheer van sleutels en gegevens om te voldoen aan de vereisten voor naleving van de beveiliging.
+[Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md) (BYOK) support for [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption) (TDE) allows customers to take ownership of key management and rotation using [Azure Key Vault](../key-vault/key-vault-secure-your-key-vault.md), Azure’s cloud-based external key management system. If the database's access to the key vault is revoked, a database cannot be decrypted and read into memory. Azure Key Vault provides a central key management platform, leverages tightly monitored hardware security modules (HSMs), and enables separation of duties between management of keys and data to help meet security compliance requirements.
 
-### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (versleuteling-in-gebruik)
+### <a name="always-encrypted-encryption-in-use"></a>Always Encrypted (Encryption-in-use)
 
-![Azure-database-AE. png](media/sql-database-security-overview/azure-database-ae.png)
+![azure-database-ae.png](media/sql-database-security-overview/azure-database-ae.png)
 
-[Always encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) is een functie die is ontworpen om gevoelige gegevens die zijn opgeslagen in specifieke database kolommen, te beveiligen tegen toegang (bijvoorbeeld creditcard nummers, nationale identificatie nummers of gegevens die op basis van _kennis moeten worden_ genoteerd). Dit zijn onder andere database beheerders of andere bevoegde gebruikers die gemachtigd zijn om toegang te krijgen tot de data base om beheer taken uit te voeren, maar geen toegang hebben tot de specifieke gegevens in de versleutelde kolommen. De gegevens worden altijd versleuteld, wat betekent dat de versleutelde gegevens alleen worden ontsleuteld voor verwerking door client toepassingen met toegang tot de versleutelings sleutel.  De versleutelings sleutel wordt nooit blootgesteld aan SQL en kan worden opgeslagen in het [Windows-certificaat archief](sql-database-always-encrypted.md) of in [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
+[Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) is a feature designed to protect sensitive data stored in specific database columns from access (for example, credit card numbers, national identification numbers, or data on a _need to know_ basis). This includes database administrators or other privileged users who are authorized to access the database to perform management tasks, but have no business need to access the particular data in the encrypted columns. The data is always encrypted, which means the encrypted data is decrypted only for processing by client applications with access to the encryption key.  The encryption key is never exposed to SQL and can be stored either in the [Windows Certificate Store](sql-database-always-encrypted.md) or in [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md).
 
 ### <a name="dynamic-data-masking"></a>Dynamische gegevensmaskering
 
-![Azure-database-DDM. png](media/sql-database-security-overview/azure-database-ddm.png)
+![azure-database-ddm.png](media/sql-database-security-overview/azure-database-ddm.png)
 
-SQL Database dynamische gegevens maskering beperkt de bloot stelling van gevoelige gegevens door deze te maskeren voor niet-bevoegde gebruikers. Met dynamische gegevens maskering worden mogelijk gevoelige gegevens in Azure SQL Database automatisch gedetecteerd en kunnen actie bare aanbevelingen worden gemaskeerd om deze velden te maskeren, met minimale gevolgen voor de toepassingslaag. Dit werkt als volgt: de gevoelige gegevens in de resultatenset van een query die is uitgevoerd op toegewezen databasevelden, worden bedekt, terwijl de gegevens in de database niet worden gewijzigd. Zie [aan de slag met SQL database dynamische gegevens maskering](sql-database-dynamic-data-masking-get-started.md)voor meer informatie.
+SQL Database dynamic data masking limits sensitive data exposure by masking it to non-privileged users. Dynamic data masking automatically discovers potentially sensitive data in Azure SQL Database and provides actionable recommendations to mask these fields, with minimal impact on the application layer. Dit werkt als volgt: de gevoelige gegevens in de resultatenset van een query die is uitgevoerd op toegewezen databasevelden, worden bedekt, terwijl de gegevens in de database niet worden gewijzigd. For more information, see [Get started with SQL Database dynamic data masking](sql-database-dynamic-data-masking-get-started.md).
 
 ## <a name="security-management"></a>Beveiligingsbeheer
 
-### <a name="vulnerability-assessment"></a>Beoordeling van beveiligingslekken
+### <a name="vulnerability-assessment"></a>Evaluatie van beveiligingsproblemen
 
-[Evaluatie van beveiligings problemen](sql-vulnerability-assessment.md) is een eenvoudig te configureren service waarmee mogelijke beveiligings problemen met een Data Base kunnen worden gedetecteerd, gevolgd en opgelost, waardoor de algehele beveiliging van de data base proactief wordt verbeterd. De evaluatie van beveiligings problemen (VA) maakt deel uit van de aanbieding voor geavanceerde gegevens beveiliging (ADS), een uniform pakket voor geavanceerde SQL-beveiligings mogelijkheden. De evaluatie van beveiligings problemen kan worden geopend en beheerd via de centrale SQL ADS-Portal.
+[Vulnerability assessment](sql-vulnerability-assessment.md) is an easy to configure service that can discover, track, and help remediate potential database vulnerabilities with the goal to proactively improve overall database security. Vulnerability assessment (VA) is part of the advanced data security (ADS) offering, which is a unified package for advanced SQL security capabilities. Vulnerability assessment can be accessed and managed via the central SQL ADS portal.
 
 ### <a name="data-discovery--classification"></a>Gegevensdetectie en -classificatie
 
-Gegevens detectie & classificatie (momenteel in Preview) biedt geavanceerde mogelijkheden die zijn ingebouwd in Azure SQL Database voor het detecteren, classificeren, labelen en beveiligen van gevoelige gegevens in uw data bases. Het detecteren en classificeren van uw meest gevoelige gegevens (bedrijfs-en financiële, gezondheids zorg, persoonlijke gegevens, enz.) kunnen een rol draaien in uw organisatie voor Information Protection stature. Dit kan dienen als infra structuur voor:
+Data discovery & classification (currently in preview) provides advanced capabilities built into Azure SQL Database for discovering, classifying, labeling, and protecting the sensitive data in your databases. Discovering and classifying your utmost sensitive data (business/financial, healthcare, personal data, etc.) can play a pivotal role in your organizational Information protection stature. It can serve as infrastructure for:
 
-- Diverse beveiligings scenario's, zoals controle (controle) en waarschuwingen over afwijkende toegang tot gevoelige gegevens.
-- Het beheren van toegang tot en het beveiligen van de beveiliging van data bases met zeer gevoelige gegevens.
-- Helpt te voldoen aan de normen voor gegevens beveiliging en naleving van regelgeving.
+- Various security scenarios, such as monitoring (auditing) and alerting on anomalous access to sensitive data.
+- Controlling access to, and hardening the security of, databases containing highly sensitive data.
+- Helping meet data privacy standards and regulatory compliance requirements.
 
-Zie [aan de slag met gegevens detectie & classificatie](sql-database-data-discovery-and-classification.md)voor meer informatie.
+For more information, see [Get started with data discovery & classification](sql-database-data-discovery-and-classification.md).
 
 ### <a name="compliance"></a>Naleving
 
-Naast de bovenstaande functies en functionaliteit die uw toepassing kunnen helpen voldoen aan verschillende beveiligings vereisten, is Azure SQL Database ook betrokken bij regel matige controles en is gecertificeerd voor een aantal nalevings standaarden. Zie het [vertrouwens centrum van Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) voor meer informatie over de meest recente lijst met SQL database nalevings certificeringen.
-
-### <a name="feature-restrictions"></a>Functiebeperkingen
-
-Functie beperkingen helpen voor komen dat sommige vormen van SQL-injecties gegevens over de data base lekken, zelfs wanneer de SQL-injectie is geslaagd. Zie [Azure SQL database-functie beperkingen](sql-database-feature-restrictions.md)voor meer informatie.
+In addition to the above features and functionality that can help your application meet various security requirements, Azure SQL Database also participates in regular audits, and has been certified against a number of compliance standards. For more information, see the [Microsoft Azure Trust Center](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) where you can find the most current list of SQL Database compliance certifications.
 
 ## <a name="next-steps"></a>Volgende stappen
 
 - Zie [Toegang beheren](sql-database-control-access.md) voor een discussie over het gebruik van functies voor toegangsbeheer in SQL Database.
-- Zie [SQL database controle](sql-database-auditing.md)voor een bespreking van database controle.
-- Zie [SQL database Threat Detection](sql-database-threat-detection.md)(Engelstalig) voor een bespreking van detectie van bedreigingen.
+- For a discussion of database auditing, see [SQL Database auditing](sql-database-auditing.md).
+- For a discussion of threat detection, see [SQL Database threat detection](sql-database-threat-detection.md).

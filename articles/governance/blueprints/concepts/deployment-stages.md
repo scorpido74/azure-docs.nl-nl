@@ -1,58 +1,58 @@
 ---
 title: Stappen in een blauwdrukimplementatie
-description: Meer informatie over de stappen die tijdens een implementatie door de Azure Blueprint services worden uitgevoerd.
+description: Learn the security and artifact related steps the Azure Blueprint services goes through while creating a blueprint assignment.
 ms.date: 11/13/2019
 ms.topic: conceptual
-ms.openlocfilehash: b329613e4e4954a1ea1452017a6e6c8b7343f2d3
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 4c1d0cd47e0f43b73e3178e18a4ba5d705048a72
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048619"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463551"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Stappen in een blauwdrukimplementatie
 
-Wanneer een blauw druk wordt geïmplementeerd, wordt er een reeks acties uitgevoerd door de service Azure-blauw drukken om de resources te implementeren die zijn gedefinieerd op de blauw druk. In dit artikel vindt u informatie over wat elke stap omvat.
+When a blueprint gets deployed, a series of actions is taken by the Azure Blueprints service to deploy the resources defined in the blueprint. This article provides details about what each step involves.
 
-De implementatie van blauw druk wordt geactiveerd door een blauw druk aan een abonnement toe te wijzen of [een bestaande toewijzing](../how-to/update-existing-assignments.md)bij te werken. Tijdens de implementatie neemt blauw drukken de volgende stappen op hoog niveau:
+Blueprint deployment is triggered by assigning a blueprint to a subscription or [updating an existing assignment](../how-to/update-existing-assignments.md). During the deployment, Blueprints takes the following high-level steps:
 
 > [!div class="checklist"]
-> - Blauw drukken met eigendoms rechten
-> - Het toewijzings object blauw druk wordt gemaakt
-> - Optionele-blauw drukken maakt door het **systeem toegewezen** beheerde identiteit
-> - De beheerde identiteit implementeert blauw druk artefacten
-> - De service blauw drukken en door **het systeem toegewezen** beheerde identiteits rechten worden ingetrokken
+> - Blueprints granted owner rights
+> - The blueprint assignment object is created
+> - Optional - Blueprints creates **system-assigned** managed identity
+> - The managed identity deploys blueprint artifacts
+> - Blueprint service and **system-assigned** managed identity rights are revoked
 
-## <a name="blueprints-granted-owner-rights"></a>Blauw drukken met eigendoms rechten
+## <a name="blueprints-granted-owner-rights"></a>Blueprints granted owner rights
 
-De service-principal van Azure Blauwsen krijgt eigendoms rechten voor het toegewezen abonnement of de abonnementen wanneer een door het [systeem toegewezen beheerde](../../../active-directory/managed-identities-azure-resources/overview.md) identiteit wordt gebruikt. Met de verleende rol kunnen blauw drukken de door het **systeem toegewezen** beheerde identiteit maken en later intrekken. Als u een door de **gebruiker toegewezen** beheerde identiteit gebruikt, wordt de service-principal van Azure blauw niet ontvangen en heeft deze geen eigenaars rechten voor het abonnement.
+The Azure Blueprints service principal is granted owner rights to the assigned subscription or subscriptions when a [system-assigned managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) managed identity is used. The granted role allows Blueprints to create, and later revoke, the **system-assigned** managed identity. If using a **user-assigned** managed identity, the Azure Blueprints service principal doesn't get and doesn't need owner rights on the subscription.
 
-De rechten worden automatisch verleend als de toewijzing wordt uitgevoerd via de portal. Als de toewijzing echter wordt uitgevoerd via de REST API, moet het verlenen van de rechten worden uitgevoerd met een afzonderlijke API-aanroep. De Azure Blueprint AppId is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, maar de Service-Principal is afhankelijk van de Tenant. Gebruik [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) en rest endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) om de Service-Principal op te halen. Ken vervolgens het Azure-blauw drukken toe aan de rol van _eigenaar_ via de [Portal](../../../role-based-access-control/role-assignments-portal.md), de [Azure cli](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [rest API](../../../role-based-access-control/role-assignments-rest.md)of een [Resource Manager-sjabloon](../../../role-based-access-control/role-assignments-template.md).
+The rights are granted automatically if the assignment is done through the portal. However, if the assignment is done through the REST API, granting the rights needs to be done with a separate API call. The Azure Blueprint AppId is `f71766dc-90d9-4b7d-bd9d-4499c4331c3f`, but the service principal varies by tenant. Use [Azure Active Directory Graph API](../../../active-directory/develop/active-directory-graph-api.md) and REST endpoint [servicePrincipals](/graph/api/resources/serviceprincipal) to get the service principal. Then, grant the Azure Blueprints the _Owner_ role through the [Portal](../../../role-based-access-control/role-assignments-portal.md), [Azure CLI](../../../role-based-access-control/role-assignments-cli.md), [Azure PowerShell](../../../role-based-access-control/role-assignments-powershell.md), [REST API](../../../role-based-access-control/role-assignments-rest.md), or a [Resource Manager template](../../../role-based-access-control/role-assignments-template.md).
 
-De blauw drukken-service implementeert de resources niet rechtstreeks.
+The Blueprints service doesn't directly deploy the resources.
 
-## <a name="the-blueprint-assignment-object-is-created"></a>Het toewijzings object blauw druk wordt gemaakt
+## <a name="the-blueprint-assignment-object-is-created"></a>The blueprint assignment object is created
 
-Een gebruiker, groep of Service-Principal wijst een blauw druk toe aan een abonnement. Het toewijzings object bestaat op het abonnements niveau waar de blauw druk is toegewezen. Resources die zijn gemaakt door de implementatie, worden niet uitgevoerd in de context van de implementatie-entiteit.
+A user, group, or service principal assigns a blueprint to a subscription. The assignment object exists at the subscription level where the blueprint was assigned. Resources created by the deployment aren't done in context of the deploying entity.
 
-Tijdens het maken van de blauw druk-toewijzing wordt het type [beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md) geselecteerd. De standaard waarde is een door het **systeem toegewezen** beheerde identiteit. Een door de **gebruiker toegewezen** beheerde identiteit kan worden gekozen. Wanneer u een door de **gebruiker toegewezen** beheerde identiteit gebruikt, moet u deze definiëren en machtigingen verlenen voordat de blauw druk-toewijzing wordt gemaakt. Beide ingebouwde rollen van de operator [eigenaar](../../../role-based-access-control/built-in-roles.md#owner) en [blauw](../../../role-based-access-control/built-in-roles.md#blueprint-operator) drukken hebben de benodigde `blueprintAssignment/write` machtiging om een toewijzing te maken die gebruikmaakt van een door de **gebruiker toegewezen** beheerde identiteit.
+While creating the blueprint assignment, the type of [managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) is selected. The default is a **system-assigned** managed identity. A **user-assigned** managed identity can be chosen. When using a **user-assigned** managed identity, it must be defined and granted permissions before the blueprint assignment is created. Both the [Owner](../../../role-based-access-control/built-in-roles.md#owner) and [Blueprint Operator](../../../role-based-access-control/built-in-roles.md#blueprint-operator) built-in roles have the necessary `blueprintAssignment/write` permission to create an assignment that uses a **user-assigned** managed identity.
 
-## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optionele-blauw drukken maakt door het systeem toegewezen beheerde identiteit
+## <a name="optional---blueprints-creates-system-assigned-managed-identity"></a>Optional - Blueprints creates system-assigned managed identity
 
-Wanneer door het [systeem toegewezen beheerde identiteit](../../../active-directory/managed-identities-azure-resources/overview.md) wordt geselecteerd tijdens de toewijzing, wordt de identiteit door blauw drukken gemaakt en wordt de beheerde identiteit verleend aan de rol van [eigenaar](../../../role-based-access-control/built-in-roles.md#owner) . Als een [bestaande toewijzing wordt bijgewerkt](../how-to/update-existing-assignments.md), gebruikt blauw drukken de eerder gemaakte beheerde identiteit.
+When [system-assigned managed identity](../../../active-directory/managed-identities-azure-resources/overview.md) is selected during assignment, Blueprints creates the identity and grants the managed identity the [owner](../../../role-based-access-control/built-in-roles.md#owner) role. If an [existing assignment is upgraded](../how-to/update-existing-assignments.md), Blueprints uses the previously created managed identity.
 
-De beheerde identiteit van de blauw druk-toewijzing wordt gebruikt om de resources die zijn gedefinieerd op de blauw druk te implementeren of opnieuw te implementeren. Dit ontwerp voor komt dat toewijzingen per ongeluk met elkaar conflicteren.
-Dit ontwerp biedt ook ondersteuning voor de functie voor het [vergren delen van resources](./resource-locking.md) door de beveiliging van elke geïmplementeerde resource van de blauw druk te beheren.
+The managed identity related to the blueprint assignment is used to deploy or redeploy the resources defined in the blueprint. This design avoids assignments inadvertently interfering with each other.
+This design also supports the [resource locking](./resource-locking.md) feature by controlling the security of each deployed resource from the blueprint.
 
-## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>De beheerde identiteit implementeert blauw druk artefacten
+## <a name="the-managed-identity-deploys-blueprint-artifacts"></a>The managed identity deploys blueprint artifacts
 
-De beheerde identiteit activeert vervolgens de Resource Manager-implementaties van de artefacten in de blauw druk in de gedefinieerde [volg orde voor sequentiëren](./sequencing-order.md). De volg orde kan worden aangepast om ervoor te zorgen dat artefacten die afhankelijk zijn van andere artefacten in de juiste volg orde worden geïmplementeerd.
+The managed identity then triggers the Resource Manager deployments of the artifacts within the blueprint in the defined [sequencing order](./sequencing-order.md). The order can be adjusted to ensure artifacts dependent on other artifacts are deployed in the correct order.
 
-Een toegangs fout van een implementatie is vaak het resultaat van het toegangs niveau dat aan de beheerde identiteit wordt verleend. De blauw drukken-service beheert de beveiligings levenscyclus van de door het **systeem toegewezen** beheerde identiteit. De gebruiker is echter verantwoordelijk voor het beheer van de rechten en levens cyclus van een door de **gebruiker toegewezen** beheerde identiteit.
+An access failure by a deployment is often the result of the level of access granted to the managed identity. The Blueprints service manages the security lifecycle of the **system-assigned** managed identity. However, the user is responsible for managing the rights and lifecycle of a **user-assigned** managed identity.
 
-## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>De service blauw drukken en door het systeem toegewezen beheerde identiteits rechten worden ingetrokken
+## <a name="blueprint-service-and-system-assigned-managed-identity-rights-are-revoked"></a>Blueprint service and system-assigned managed identity rights are revoked
 
-Zodra de implementaties zijn voltooid, trekt blauw drukken de rechten van de door het **systeem toegewezen** beheerde identiteit uit het abonnement. Vervolgens trekt de service blauw drukken de rechten van het abonnement. Het verwijderen van rechten voor komt dat blauw drukken een permanente eigenaar van een abonnement wordt.
+Once the deployments are completed, Blueprints revokes the rights of the **system-assigned** managed identity from the subscription. Then, the Blueprints service revokes its rights from the subscription. Rights removal prevents Blueprints from becoming a permanent owner on a subscription.
 
 ## <a name="next-steps"></a>Volgende stappen
 

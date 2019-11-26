@@ -1,7 +1,7 @@
 ---
-title: 'Zelf studie: ML pijp lijnen voor batch scores'
+title: 'Tutorial: ML pipelines for batch scoring'
 titleSuffix: Azure Machine Learning
-description: Bouw een machine learning-pijp lijn voor het uitvoeren van batch scoreing voor een afbeeldings classificatie model in Azure Machine Learning. Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op uw expertise-machine learning in plaats van op infra structuur en automatisering.
+description: In this tutorial, you build a machine learning pipeline for running batch scoring on an image classification model in Azure Machine Learning. Machine learning pipelines optimize your workflow with speed, portability, and reuse, so you can focus on your expertise - machine learning - instead of on infrastructure and automation.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,55 +10,55 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 11/04/2019
-ms.openlocfilehash: ccd29952693ecbc1db5927d5deabae874b6e9933
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 11d57031405939e37afade9a9452c5d3a8b9e1e4
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796698"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483292"
 ---
-# <a name="build--use-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Bouwen & een Azure Machine Learning pijp lijn voor batch scores gebruiken
+# <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Tutorial: Build an Azure Machine Learning pipeline for batch scoring
 
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-In deze zelf studie gebruikt u een pijp lijn in Azure Machine Learning om een batch Score taak uit te voeren. In het voor beeld wordt het convolutional Neural Network tensor flow model van het vooraf getrainde start [-v3-](https://arxiv.org/abs/1512.00567) netwerk gebruikt om niet-gelabelde afbeeldingen te classificeren. Nadat u een pijp lijn hebt gemaakt en gepubliceerd, configureert u een REST-eind punt dat u kunt gebruiken om de pijp lijn te activeren vanuit elke HTTP-bibliotheek op elk platform.
+In this tutorial, you use a pipeline in Azure Machine Learning to run a batch scoring job. The example uses the pretrained [Inception-V3](https://arxiv.org/abs/1512.00567) convolutional neural network Tensorflow model to classify unlabeled images. After you build and publish a pipeline, you configure a REST endpoint that you can use to trigger the pipeline from any HTTP library on any platform.
 
-Machine learning-pijp lijnen Optimaliseer uw werk stroom met snelheid, portabiliteit en hergebruik, zodat u zich kunt concentreren op uw expertise-machine learning in plaats van op infra structuur en automatisering. Meer [informatie over machine learning pijp lijnen](concept-ml-pipelines.md).
+Machine learning pipelines optimize your workflow with speed, portability, and reuse, so you can focus on your expertise - machine learning - instead of on infrastructure and automation. [Learn more about machine learning pipelines](concept-ml-pipelines.md).
 
 In deze zelfstudie voert u de volgende taken uit:
 
 > [!div class="checklist"]
-> * Een werk ruimte configureren en voorbeeld gegevens downloaden
-> * Gegevens objecten maken om gegevens op te halen en uit te voeren
-> * Het model downloaden, voorbereiden en registreren in uw werk ruimte
-> * Berekenings doelen inrichten en een score script maken
-> * Een pijp lijn bouwen, uitvoeren en publiceren
-> * Een REST-eind punt inschakelen voor de pijp lijn
+> * Configure workspace and download sample data
+> * Create data objects to fetch and output data
+> * Download, prepare, and register the model in your workspace
+> * Provision compute targets and create a scoring script
+> * Build, run, and publish a pipeline
+> * Enable a REST endpoint for the pipeline
 
-Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Probeer vandaag nog de [gratis of betaalde versie van Azure machine learning](https://aka.ms/AMLFree) .
+Als u nog geen Azure-abonnement hebt, maakt u een gratis account voordat u begint. Try the [free or paid version of Azure Machine Learning](https://aka.ms/AMLFree) today.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Als u nog geen virtuele machine voor Azure Machine Learning-werk ruimte of-notebook hebt, kunt u [deel 1 van de zelf studie voor Setup](tutorial-1st-experiment-sdk-setup.md)volt ooien.
-* Wanneer u de installatie-zelf studie hebt voltooid, gebruikt u dezelfde notebook server om het notitie blok *zelf studies/tutorial-pipeline-batch-scoring-Classification. ipynb* te openen.
+* If you don't already have an Azure Machine Learning workspace or notebook virtual machine, complete [Part 1 of the setup tutorial](tutorial-1st-experiment-sdk-setup.md).
+* When you finish the setup tutorial, use the same notebook server to open the *tutorials/tutorial-pipeline-batch-scoring-classification.ipynb* notebook.
 
-Als u de installatie-zelf studie in uw eigen [lokale omgeving](how-to-configure-environment.md#local)wilt uitvoeren, kunt u de zelf studie openen op [github](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Voer `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` uit om de vereiste pakketten op te halen.
+If you want to run the setup tutorial in your own [local environment](how-to-configure-environment.md#local), you can access the tutorial on [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials). Run `pip install azureml-sdk[notebooks] azureml-pipeline-core azureml-pipeline-steps pandas requests` to get the required packages.
 
-## <a name="configure-workspace-and-create-a-datastore"></a>Een werk ruimte configureren en een gegevens opslag maken
+## <a name="configure-workspace-and-create-a-datastore"></a>Configure workspace and create a datastore
 
-Maak een werkruimte object op basis van de bestaande Azure Machine Learning-werk ruimte.
+Create a workspace object from the existing Azure Machine Learning workspace.
 
-- Een [werk ruimte](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is een klasse die uw Azure-abonnement en resource gegevens accepteert. De werk ruimte maakt ook een Cloud resource die u kunt gebruiken om uw model uitvoeringen te bewaken en bij te houden. 
-- `Workspace.from_config()` leest het `config.json` bestand en laadt vervolgens de verificatie gegevens in een object met de naam `ws`. Het `ws`-object wordt in de code in deze zelf studie gebruikt.
+- A [workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) is a class that accepts your Azure subscription and resource information. The workspace also creates a cloud resource you can use to monitor and track your model runs. 
+- `Workspace.from_config()` reads the `config.json` file and then loads the authentication details into an object named `ws`. The `ws` object is used in the code throughout this tutorial.
 
 ```python
 from azureml.core import Workspace
 ws = Workspace.from_config()
 ```
 
-### <a name="create-a-datastore-for-sample-images"></a>Een gegevens opslag voor voorbeeld installatie kopieën maken
+### <a name="create-a-datastore-for-sample-images"></a>Create a datastore for sample images
 
-Op het `pipelinedata`-account haalt u het voor beeld van de open bare gegevens van de ImageNet-evaluatie uit de open bare BLOB-container van `sampledata`. Roep `register_azure_blob_container()` aan om de gegevens beschikbaar te maken voor de werk ruimte onder de naam `images_datastore`. Vervolgens stelt u de werk ruimte standaard gegevens opslag in als uitvoer gegevens opslag. Gebruik de uitvoer gegevens opslag voor de Score van de uitvoer in de pijp lijn.
+On the `pipelinedata` account, get the ImageNet evaluation public data sample from the `sampledata` public blob container. Call `register_azure_blob_container()` to make the data available to the workspace under the name `images_datastore`. Then, set the workspace default datastore as the output datastore. Use the output datastore to score output in the pipeline.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -72,18 +72,18 @@ batchscore_blob = Datastore.register_azure_blob_container(ws,
 def_data_store = ws.get_default_datastore()
 ```
 
-## <a name="create-data-objects"></a>Gegevens objecten maken
+## <a name="create-data-objects"></a>Create data objects
 
-Wanneer u een pijp lijn bouwt, worden in een `DataReference`-object gegevens uit de werk ruimte opslag plek gelezen. Met een `PipelineData` object worden tussenliggende gegevens tussen pijplijn stappen overgedragen.
+When you build a pipeline, a `DataReference` object reads data from the workspace datastore. A `PipelineData` object transfers intermediate data between pipeline steps.
 
 > [!Important]
-> In het voor beeld van een batch Score in deze zelf studie wordt slechts één pijplijn stap gebruikt. In use-cases met meerdere stappen bevat de typische stroom de volgende stappen:
+> The batch scoring example in this tutorial uses only one pipeline step. In use cases that have multiple steps, the typical flow will include these steps:
 >
-> 1. Gebruik `DataReference`-objecten als *invoer* om onbewerkte gegevens op te halen, een bepaalde trans formatie uit te voeren en vervolgens een `PipelineData`- *object te laten* uitvoeren.
+> 1. Use `DataReference` objects as *inputs* to fetch raw data, perform some transformation, and then *output* a `PipelineData` object.
 >
-> 2. Gebruik het `PipelineData` *uitvoer object* in de voor gaande stap als *invoer object*. Herhaal dit voor de volgende stappen.
+> 2. Use the `PipelineData` *output object* in the preceding step as an *input object*. Repeat it for subsequent steps.
 
-In dit scenario maakt u `DataReference`-objecten die overeenkomen met de gegevens opslag mappen voor zowel de invoer installatie kopieën als de classificatie labels (y-test waarden). U maakt ook een `PipelineData`-object voor de batch Score-uitvoer gegevens.
+In this scenario, you create `DataReference` objects that correspond to the datastore directories for both the input images and the classification labels (y-test values). You also create a `PipelineData` object for the batch scoring output data.
 
 ```python
 from azureml.data.data_reference import DataReference
@@ -106,9 +106,9 @@ output_dir = PipelineData(name="scores",
                           output_path_on_compute="batchscoring/results")
 ```
 
-## <a name="download-and-register-the-model"></a>Het model downloaden en registreren
+## <a name="download-and-register-the-model"></a>Download and register the model
 
-Down load het voortrainde tensor flow-model om het te gebruiken voor batch scoreing in een pijp lijn. Maak eerst een lokale map waarin u het model opslaat. Vervolgens downloadt en extraheert u het model.
+Download the pretrained Tensorflow model to use it for batch scoring in a pipeline. First, create a local directory where you store the model. Then, download and extract the model.
 
 ```python
 import os
@@ -123,7 +123,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Registreer vervolgens het model in uw werk ruimte, zodat u het model eenvoudig kunt ophalen in het pijplijn proces. In de functie `register()` static is de para meter `model_name` de sleutel die u gebruikt om uw model in de SDK te vinden.
+Next, register the model to your workspace, so you can easily retrieve the model in the pipeline process. In the `register()` static function, the `model_name` parameter is the key you use to locate your model throughout the SDK.
 
 ```python
 from azureml.core.model import Model
@@ -135,11 +135,11 @@ model = Model.register(model_path="models/inception_v3.ckpt",
                        workspace=ws)
 ```
 
-## <a name="create-and-attach-the-remote-compute-target"></a>Het externe Compute-doel maken en koppelen
+## <a name="create-and-attach-the-remote-compute-target"></a>Create and attach the remote compute target
 
-Machine learning-pijp lijnen kunnen niet lokaal worden uitgevoerd, dus u kunt ze uitvoeren op cloud resources of *externe Compute-doelen*. Een extern Compute-doel is een herbruikbare virtuele Compute-omgeving waarin u experimenten en machine learning werk stromen uitvoert. 
+Machine learning pipelines can't be run locally, so you run them on cloud resources or *remote compute targets*. A remote compute target is a reusable virtual compute environment where you run experiments and machine learning workflows. 
 
-Voer de volgende code uit om een [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) doel met GPU te maken en koppel deze vervolgens aan uw werk ruimte. Zie het [conceptuele artikel](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target)voor meer informatie over Compute-doelen.
+Run the following code to create a GPU-enabled [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) target, and then attach it to your workspace. For more information about compute targets, see the [conceptual article](https://docs.microsoft.com/azure/machine-learning/service/concept-compute-target).
 
 
 ```python
@@ -160,19 +160,19 @@ except ComputeTargetException:
     compute_target.wait_for_completion(show_output=True, min_node_count=None, timeout_in_minutes=20)
 ```
 
-## <a name="write-a-scoring-script"></a>Een score script schrijven
+## <a name="write-a-scoring-script"></a>Write a scoring script
 
-Als u de score wilt uitvoeren, maakt u een batch Score script met de naam `batch_scoring.py`en schrijft u het naar de huidige map. Het script accepteert invoer installatie kopieën, past het classificatie model toe en voert vervolgens de voor spellingen uit naar een bestand met resultaten.
+To do the scoring, create a batch scoring script called `batch_scoring.py`, and then write it to the current directory. The script takes input images, applies the classification model, and then outputs the predictions to a results file.
 
-Het `batch_scoring.py` script neemt de volgende para meters, die worden door gegeven uit de pijplijn stap die u later in deze zelf studie maakt:
+The `batch_scoring.py` script takes the following parameters, which are passed from the pipeline step that you create later in this tutorial:
 
-- `--model_name`: de naam van het model dat wordt gebruikt.
-- `--label_dir`: de map die het `labels.txt`-bestand bevat.
-- `--dataset_path`: de map met de invoer installatie kopieën.
-- `--output_dir`: de uitvoermap voor het `results-label.txt`-bestand nadat het script het model op de gegevens heeft uitgevoerd.
-- `--batch_size`: de Batch grootte die wordt gebruikt voor het uitvoeren van het model.
+- `--model_name`: The name of the model being used.
+- `--label_dir`: The directory that holds the `labels.txt` file.
+- `--dataset_path`: The directory that contains the input images.
+- `--output_dir`: The output directory for the `results-label.txt` file after the script runs the model on the data.
+- `--batch_size`: The batch size used in running the model.
 
-De pijplijn infrastructuur gebruikt de `ArgumentParser` klasse om para meters door te geven aan pijplijn stappen. De eerste argument `--model_name` bijvoorbeeld in de volgende code de eigenschaps-id `model_name`. In de functie `main()` wordt `Model.get_model_path(args.model_name)` gebruikt om toegang te krijgen tot deze eigenschap.
+The pipeline infrastructure uses the `ArgumentParser` class to pass parameters into pipeline steps. For example, in the following code, the first argument `--model_name` is given the property identifier `model_name`. In the `main()` function, `Model.get_model_path(args.model_name)` is used to access this property.
 
 
 ```python
@@ -294,11 +294,11 @@ if __name__ == "__main__":
 ```
 
 > [!TIP]
-> De pijp lijn in deze zelf studie heeft slechts één stap en schrijft de uitvoer naar een bestand. Voor pijp lijnen met meerdere stappen kunt u `ArgumentParser` ook gebruiken om een directory te definiëren voor het schrijven van uitvoer gegevens voor invoer naar volgende stappen. Zie het [notitie blok](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb)voor een voor beeld van het door geven van gegevens tussen meerdere pijplijn stappen met behulp van het `ArgumentParser` ontwerp patroon.
+> The pipeline in this tutorial has only one step, and it writes the output to a file. For multi-step pipelines, you also use `ArgumentParser` to define a directory to write output data for input to subsequent steps. For an example of passing data between multiple pipeline steps by using the `ArgumentParser` design pattern, see the [notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
-## <a name="build-and-run-the-pipeline"></a>De pijp lijn bouwen en uitvoeren
+## <a name="build-and-run-the-pipeline"></a>Build and run the pipeline
 
-Voordat u de pijp lijn uitvoert, maakt u een-object dat de python-omgeving definieert en maakt u de afhankelijkheden die uw `batch_scoring.py` script nodig heeft. De vereiste belangrijkste afhankelijkheid is tensor flow, maar u installeert ook `azureml-defaults` van de SDK voor achtergrond processen. Maak een `RunConfiguration`-object met behulp van de afhankelijkheden. Geef ook docker en docker-GPU-ondersteuning op.
+Before you run the pipeline, create an object that defines the Python environment and creates the dependencies that your `batch_scoring.py` script requires. The main dependency required is Tensorflow, but you also install `azureml-defaults` from the SDK for background processes. Create a `RunConfiguration` object by using the dependencies. Also, specify Docker and Docker-GPU support.
 
 ```python
 from azureml.core.runconfig import DEFAULT_GPU_IMAGE
@@ -312,29 +312,29 @@ amlcompute_run_config.environment.docker.base_image = DEFAULT_GPU_IMAGE
 amlcompute_run_config.environment.spark.precache_packages = False
 ```
 
-### <a name="parameterize-the-pipeline"></a>De pijp lijn para meters
+### <a name="parameterize-the-pipeline"></a>Parameterize the pipeline
 
-Definieer een aangepaste para meter voor de pijp lijn om de Batch grootte te bepalen. Nadat de pijp lijn is gepubliceerd en weer beschikbaar is via een REST-eind punt, worden geconfigureerde para meters ook weer gegeven. U kunt aangepaste para meters opgeven in de JSON-nettolading wanneer u de pijp lijn opnieuw uitvoert via een HTTP-aanvraag.
+Define a custom parameter for the pipeline to control the batch size. After the pipeline is published and exposed via a REST endpoint, any configured parameters are also exposed. You can specify custom parameters in the JSON payload when you rerun the pipeline via an HTTP request.
 
-Maak een `PipelineParameter`-object om dit gedrag in te scha kelen en een naam en standaard waarde te definiëren.
+Create a `PipelineParameter` object to enable this behavior and to define a name and default value.
 
 ```python
 from azureml.pipeline.core.graph import PipelineParameter
 batch_size_param = PipelineParameter(name="param_batch_size", default_value=20)
 ```
 
-### <a name="create-the-pipeline-step"></a>De pijplijn stap maken
+### <a name="create-the-pipeline-step"></a>Create the pipeline step
 
-Een pijplijn stap is een object dat alles inkapselt dat u nodig hebt om een pijp lijn uit te voeren, waaronder:
+A pipeline step is an object that encapsulates everything you need to run a pipeline, including:
 
-* Omgeving en afhankelijkheids instellingen
-* De reken resource waarmee de pijp lijn moet worden uitgevoerd
-* Invoer-en uitvoer gegevens en aangepaste para meters
-* Verwijzing naar een script of SDK-logica om uit te voeren tijdens de stap
+* Environment and dependency settings
+* The compute resource to run the pipeline on
+* Input and output data, and any custom parameters
+* Reference to a script or SDK logic to run during the step
 
-Meerdere klassen nemen eigenschappen over van de bovenliggende klasse [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). U kunt klassen kiezen voor het gebruik van specifieke frameworks of stapels om een stap te maken. In dit voor beeld gebruikt u de klasse [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) om uw stap logica te definiëren met behulp van een aangepast python-script. Als een argument voor uw script een invoer is voor de stap of een uitvoer van de stap, moet het argument *zowel* in de `arguments`-matrix *als* in de `input` of de `output` para meter worden gedefinieerd. 
+Multiple classes inherit from the parent class [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). You can choose classes to use specific frameworks or stacks to build a step. In this example, you use the [`PythonScriptStep`](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) class to define your step logic by using a custom Python script. If an argument to your script is either an input to the step or an output of the step, the argument must be defined *both* in the `arguments` array *and* in either the `input` or the `output` parameter, respectively. 
 
-In scenario's waarin er meer dan één stap is, wordt een object verwijzing in de matrix van `outputs` beschikbaar als *invoer* voor een volgende pijplijn stap.
+In scenarios where there is more than one step, an object reference in the `outputs` array becomes available as an *input* for a subsequent pipeline step.
 
 ```python
 from azureml.pipeline.steps import PythonScriptStep
@@ -354,16 +354,16 @@ batch_score_step = PythonScriptStep(
 )
 ```
 
-Zie het [pakket stappen](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py)voor een lijst met alle klassen die u voor verschillende stap typen kunt gebruiken.
+For a list of all the classes you can use for different step types, see the [steps package](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps?view=azure-ml-py).
 
 ### <a name="run-the-pipeline"></a>De pijplijn uitvoeren
 
-Voer nu de pijp lijn uit. Maak eerst een `Pipeline`-object met behulp van uw werkruimte referentie en de door u gemaakte pijplijn stap. De para meter `steps` is een matrix met stappen. In dit geval is er slechts één stap voor batch scoreing. Als u pijp lijnen met meerdere stappen wilt maken, plaatst u de stappen in volg orde in deze matrix.
+Now, run the pipeline. First, create a `Pipeline` object by using your workspace reference and the pipeline step you created. The `steps` parameter is an array of steps. In this case, there's only one step for batch scoring. To build pipelines that have multiple steps, place the steps in order in this array.
 
-Gebruik vervolgens de functie `Experiment.submit()` om de pijp lijn voor uitvoering in te dienen. U geeft ook de aangepaste para meter `param_batch_size`op. De functie `wait_for_completion` voert Logboeken uit tijdens het bouwen van de pijp lijn. U kunt de Logboeken gebruiken om de huidige voortgang te bekijken.
+Next, use the `Experiment.submit()` function to submit the pipeline for execution. You also specify the custom parameter `param_batch_size`. The `wait_for_completion` function outputs logs during the pipeline build process. You can use the logs to see current progress.
 
 > [!IMPORTANT]
-> De eerste uitvoering van de pijp lijn duurt ongeveer *15 minuten*. Alle afhankelijkheden moeten worden gedownload, een docker-installatie kopie wordt gemaakt en de python-omgeving wordt ingericht en gemaakt. Het uitvoeren van de pijp lijn vergt aanzienlijk minder tijd, omdat deze resources opnieuw worden gebruikt in plaats van worden gemaakt. De totale uitvoerings tijd voor de pijp lijn is echter afhankelijk van de werk belasting van uw scripts en de processen die in elke pijplijn stap worden uitgevoerd.
+> The first pipeline run takes roughly *15 minutes*. All dependencies must be downloaded, a Docker image is created, and the Python environment is provisioned and created. Running the pipeline again takes significantly less time because those resources are reused instead of created. However, total run time for the pipeline depends on the workload of your scripts and the processes that are running in each pipeline step.
 
 ```python
 from azureml.core import Experiment
@@ -374,9 +374,9 @@ pipeline_run = Experiment(ws, 'batch_scoring').submit(pipeline, pipeline_paramet
 pipeline_run.wait_for_completion(show_output=True)
 ```
 
-### <a name="download-and-review-output"></a>De uitvoer downloaden en bekijken
+### <a name="download-and-review-output"></a>Download and review output
 
-Voer de volgende code uit om het uitvoer bestand te downloaden dat is gemaakt op basis van het `batch_scoring.py` script. Bekijk vervolgens de Score resultaten.
+Run the following code to download the output file that's created from the `batch_scoring.py` script. Then, explore the scoring results.
 
 ```python
 import pandas as pd
@@ -404,70 +404,70 @@ df.head(10)
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Bestands</th>
-      <th>Voorspellings</th>
+      <th>Filename</th>
+      <th>Prediction</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>0</td>
-      <td>ILSVRC2012_val_00000102. JPEG</td>
+      <td>ILSVRC2012_val_00000102.JPEG</td>
       <td>Rhodesian Ridgeback</td>
     </tr>
     <tr>
       <td>1</td>
-      <td>ILSVRC2012_val_00000103. JPEG</td>
-      <td>stat</td>
+      <td>ILSVRC2012_val_00000103.JPEG</td>
+      <td>tripod</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>ILSVRC2012_val_00000104. JPEG</td>
-      <td>Typewriter-toetsen bord</td>
+      <td>ILSVRC2012_val_00000104.JPEG</td>
+      <td>typewriter keyboard</td>
     </tr>
     <tr>
       <td>3</td>
-      <td>ILSVRC2012_val_00000105. JPEG</td>
-      <td>zijde Terrier</td>
+      <td>ILSVRC2012_val_00000105.JPEG</td>
+      <td>silky terrier</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>ILSVRC2012_val_00000106. JPEG</td>
-      <td>Windsor koppelen</td>
+      <td>ILSVRC2012_val_00000106.JPEG</td>
+      <td>Windsor tie</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>ILSVRC2012_val_00000107. JPEG</td>
-      <td>oogstman</td>
+      <td>ILSVRC2012_val_00000107.JPEG</td>
+      <td>harvestman</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>ILSVRC2012_val_00000108. JPEG</td>
-      <td>viool</td>
+      <td>ILSVRC2012_val_00000108.JPEG</td>
+      <td>violin</td>
     </tr>
     <tr>
       <td>7</td>
-      <td>ILSVRC2012_val_00000109. JPEG</td>
-      <td>luid</td>
+      <td>ILSVRC2012_val_00000109.JPEG</td>
+      <td>loudspeaker</td>
     </tr>
     <tr>
       <td>8</td>
-      <td>ILSVRC2012_val_00000110. JPEG</td>
+      <td>ILSVRC2012_val_00000110.JPEG</td>
       <td>apron</td>
     </tr>
     <tr>
       <td>9</td>
-      <td>ILSVRC2012_val_00000111. JPEG</td>
-      <td>Amerikaans Lobster</td>
+      <td>ILSVRC2012_val_00000111.JPEG</td>
+      <td>American lobster</td>
     </tr>
   </tbody>
 </table>
 </div>
 
-## <a name="publish-and-run-from-a-rest-endpoint"></a>Publiceren en uitvoeren vanuit een REST-eind punt
+## <a name="publish-and-run-from-a-rest-endpoint"></a>Publish and run from a REST endpoint
 
-Voer de volgende code uit om de pijp lijn te publiceren naar uw werk ruimte. In uw werk ruimte in Azure Machine Learning Studio kunt u meta gegevens voor de pijp lijn zien, inclusief uitvoerings geschiedenis en duur. U kunt de pijp lijn ook hand matig uitvoeren vanuit de Studio.
+Run the following code to publish the pipeline to your workspace. In your workspace in Azure Machine Learning studio, you can see metadata for the pipeline, including run history and durations. You can also run the pipeline manually from the studio.
 
-Als u de pijp lijn publiceert, wordt een REST-eind punt ingeschakeld dat u kunt gebruiken om de pijp lijn uit te voeren vanuit elke HTTP-bibliotheek op elk platform.
+Publishing the pipeline enables a REST endpoint that you can use to run the pipeline from any HTTP library on any platform.
 
 ```python
 published_pipeline = pipeline_run.publish_pipeline(
@@ -476,11 +476,11 @@ published_pipeline = pipeline_run.publish_pipeline(
 published_pipeline
 ```
 
-Als u de pijp lijn vanuit het REST-eind punt wilt uitvoeren, hebt u een OAuth2-verificatie-header nodig. In het volgende voor beeld wordt gebruikgemaakt van interactieve verificatie (voor beeld doeleinden), maar voor de meeste productie scenario's waarvoor geautomatiseerde of headless authenticatie is vereist, gebruikt u Service-Principal-verificatie, zoals [beschreven in dit notitie blok](https://aka.ms/pl-restep-auth).
+To run the pipeline from the REST endpoint, you need an OAuth2 Bearer-type authentication header. The following example uses interactive authentication (for illustration purposes), but for most production scenarios that require automated or headless authentication, use service principal authentication as [described in this notebook](https://aka.ms/pl-restep-auth).
 
-Voor Service-Principal-verificatie is het maken van een *app-registratie* in *Azure Active Directory*vereist. Eerst genereert u een client geheim en verleent u vervolgens uw Service Principal *Role toegang* tot uw machine learning-werk ruimte. Gebruik de klasse [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) om uw verificatie stroom te beheren. 
+Service principal authentication involves creating an *App Registration* in *Azure Active Directory*. First, you generate a client secret, and then you grant your service principal *role access* to your machine learning workspace. Use the [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) class to manage your authentication flow. 
 
-Zowel [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) als `ServicePrincipalAuthentication` nemen over van `AbstractAuthentication`. In beide gevallen gebruikt u de functie [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) op dezelfde manier om de header op te halen:
+Both [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) and `ServicePrincipalAuthentication` inherit from `AbstractAuthentication`. In both cases, use the [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) function in the same way to fetch the header:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -489,11 +489,11 @@ interactive_auth = InteractiveLoginAuthentication()
 auth_header = interactive_auth.get_authentication_header()
 ```
 
-Haal de REST-URL op uit de eigenschap `endpoint` van het gepubliceerde pijplijn object. U kunt ook de REST-URL vinden in uw werk ruimte in Azure Machine Learning Studio. 
+Get the REST URL from the `endpoint` property of the published pipeline object. You can also find the REST URL in your workspace in Azure Machine Learning studio. 
 
-Bouw een HTTP POST-aanvraag voor het eind punt. Geef uw Authentication-Header op in de aanvraag. Voeg een JSON Payload-object toe met de naam van het experiment en de para meter voor Batch grootte. Zoals eerder in de zelf studie is vermeld, wordt `param_batch_size` door gegeven aan uw `batch_scoring.py` script omdat u deze hebt gedefinieerd als een `PipelineParameter`-object in de stap configuratie.
+Build an HTTP POST request to the endpoint. Specify your authentication header in the request. Add a JSON payload object that has the experiment name and the batch size parameter. As noted earlier in the tutorial, `param_batch_size` is passed through to your `batch_scoring.py` script because you defined it as a `PipelineParameter` object in the step configuration.
 
-Voer de aanvraag uit om de uitvoering te activeren. Neem code op om toegang te krijgen tot de `Id` sleutel uit de antwoord woordenlijst om de waarde van de run-ID op te halen.
+Make the request to trigger the run. Include code to access the `Id` key from the response dictionary to get the value of the run ID.
 
 ```python
 import requests
@@ -506,9 +506,9 @@ response = requests.post(rest_endpoint,
 run_id = response.json()["Id"]
 ```
 
-Gebruik de run-ID om de status van de nieuwe uitvoering te controleren. De nieuwe uitvoering heeft nog een 10-15 minuten om te volt ooien. 
+Use the run ID to monitor the status of the new run. The new run takes another 10-15 min to finish. 
 
-De nieuwe uitvoering ziet er ongeveer uit zoals de pijp lijn die u eerder in de zelf studie hebt uitgevoerd. U kunt ervoor kiezen om de volledige uitvoer niet weer te geven.
+The new run will look similar to the pipeline you ran earlier in the tutorial. You can choose not to view the full output.
 
 ```python
 from azureml.pipeline.core.run import PipelineRun
@@ -520,30 +520,30 @@ RunDetails(published_pipeline_run).show()
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Vul deze sectie niet in als u andere zelf studies van Azure Machine Learning wilt uitvoeren.
+Don't complete this section if you plan to run other Azure Machine Learning tutorials.
 
-### <a name="stop-the-notebook-vm"></a>De VM van het notebook stoppen
+### <a name="stop-the-notebook-vm"></a>Stop the Notebook VM
 
 [!INCLUDE [aml-stop-server](../../../includes/aml-stop-server.md)]
 
-### <a name="delete-everything"></a>Alles verwijderen
+### <a name="delete-everything"></a>Delete everything
 
 Als u niet van plan bent om gebruik te maken van de resources die u hebt gemaakt, kunt u ze verwijderen zodat er geen kosten voor in rekening worden gebracht:
 
-1. Selecteer **resource groepen**in het menu links in de Azure Portal.
-1. Selecteer in de lijst met resource groepen de resource groep die u hebt gemaakt.
+1. In the Azure portal, in the left menu, select **Resource groups**.
+1. In the list of resource groups, select the resource group you created.
 1. Selecteer **Resourcegroep verwijderen**.
-1. Voer de naam van de resourcegroup in. Selecteer vervolgens **verwijderen**.
+1. Voer de naam van de resourcegroup in. Then, select **Delete**.
 
-U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Geef de werk ruimte-eigenschappen weer en selecteer vervolgens **verwijderen**.
+U kunt de resourcegroep ook bewaren en slechts één werkruimte verwijderen. Display the workspace properties, and then select **Delete**.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze machine learning zelf studie over pijp lijnen hebt u de volgende taken gedaan:
+In this machine learning pipelines tutorial, you did the following tasks:
 
 > [!div class="checklist"]
-> * Een pijp lijn met omgevings afhankelijkheden gebouwd om te worden uitgevoerd op een externe GPU-reken resource.
-> * Een score script gemaakt voor het uitvoeren van batch voorspellingen met behulp van een pretraind tensor flow-model.
-> * Er is een pijp lijn gepubliceerd en deze ingeschakeld om te worden uitgevoerd vanaf een REST-eind punt.
+> * Built a pipeline with environment dependencies to run on a remote GPU compute resource.
+> * Created a scoring script to run batch predictions by using a pretrained Tensorflow model.
+> * Published a pipeline and enabled it to be run from a REST endpoint.
 
-Voor meer voor beelden van het bouwen van pijp lijnen met behulp van de machine learning SDK, raadpleegt u de [opslag plaats voor notebooks](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines).
+For more examples of how to build pipelines by using the machine learning SDK, see the [notebook repository](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/machine-learning-pipelines).

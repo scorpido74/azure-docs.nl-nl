@@ -1,157 +1,157 @@
 ---
-title: Een managed services-aanbod publiceren naar Azure Marketplace
-description: Meer informatie over het publiceren van een Managed Service-aanbod waarmee klanten worden vrijgegeven aan het beheer van de gedelegeerde resources van Azure.
+title: Publish a managed services offer to Azure Marketplace
+description: Learn how to publish a managed service offer that onboards customers to Azure delegated resource management.
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: 29f17e6227d3c50a4d9fe13f7525ac71f7550632
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: be9d93c2b71bb3db7df86ddd44e0171bec522294
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131290"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483179"
 ---
-# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Een managed services-aanbod publiceren naar Azure Marketplace
+# <a name="publish-a-managed-services-offer-to-azure-marketplace"></a>Publish a managed services offer to Azure Marketplace
 
-In dit artikel leert u hoe u een aanbieding voor open bare of privé beheerde services publiceert naar [Azure Marketplace](https://azuremarketplace.microsoft.com) met behulp van de [Cloud Partner-Portal](https://cloudpartner.azure.com/), waardoor een klant die de aanbieding heeft gekocht, resources kan kopen voor Azure-gedelegeerde resources CRM.
+In this article, you'll learn how to publish a public or private managed services offer to [Azure Marketplace](https://azuremarketplace.microsoft.com) using the [Cloud Partner Portal](https://cloudpartner.azure.com/), enabling a customer who purchases the offer to onboard resources for Azure delegated resource management.
 
 > [!NOTE]
-> U hebt een geldig [account in het partner centrum](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) nodig om deze aanbiedingen te maken en te publiceren. Als u nog geen account hebt, wordt u door het [aanmeldings proces](https://aka.ms/joinmarketplace) geleid door de stappen voor het maken van een account in partner centrum en het inschrijven van het commerciële Marketplace-programma. Uw Microsoft Partner Network-ID (MPN) wordt [automatisch gekoppeld](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) aan de aanbiedingen die u publiceert voor het bijhouden van invloed op de klant afspraken.
+> You need to have a valid [account in Partner Center](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) to create and publish these offers. If you don’t have an account already, the [sign-up process](https://aka.ms/joinmarketplace) will lead you through the steps of creating an account in Partner Center and enrolling in the Commercial Marketplace program. Your Microsoft Partner Network (MPN) ID will be [automatically associated](https://docs.microsoft.com/azure/billing/billing-partner-admin-link-started) with the offers you publish to track your impact across customer engagements.
 >
-> Als u een aanbieding niet wilt publiceren naar Azure Marketplace, kunt u klanten hand matig voorbereiden door Azure Resource Manager sjablonen te gebruiken. Zie voor meer informatie [onboarding van een klant naar Azure gedelegeerd resource beheer](onboard-customer.md).
+> If you don't want to publish an offer to Azure Marketplace, you can onboard customers manually by using Azure Resource Manager templates. For more info, see [Onboard a customer to Azure delegated resource management](onboard-customer.md).
 
-Het publiceren van een managed services-aanbod is vergelijkbaar met het publiceren van een ander type aanbieding naar Azure Marketplace. Zie voor meer informatie over dat proces [Azure Marketplace en AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) en [beheer Azure en AppSource Marketplace-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). U moet ook het [beleid voor commerciële Marketplace-certificerings](https://docs.microsoft.com/legal/marketplace/certification-policies)instanties, met name de sectie [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) , bekijken.
+Publishing a Managed Services offer is similar to publishing any other type of offer to Azure Marketplace. To learn about that process, see [Azure Marketplace and AppSource Publishing Guide](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) and [Manage Azure and AppSource Marketplace offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-manage-offers). You should also review the [commercial marketplace certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies), particularly the [Managed Services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services) section.
 
-Zodra een klant uw aanbieding heeft toegevoegd, kunnen ze een of meer specifieke abonnementen of resource groepen delegeren die vervolgens voor het [beheer van gedelegeerde resources van Azure](#the-customer-onboarding-process)worden uitgevoerd. Houd er rekening mee dat voordat een abonnement (of resource groepen binnen een abonnement) kan worden opvolgd, het abonnement moet worden geautoriseerd voor onboarding door de resource provider **micro soft. ManagedServices** hand matig te registreren.
+Once a customer adds your offer, they will be able to delegate one or more specific subscriptions or resource groups which will then be [onboarded for Azure delegated resource management](#the-customer-onboarding-process). Note that before a subscription (or resource groups within a subscription) can be onboarded, the subscription must be authorized for onboarding by manually registering the **Microsoft.ManagedServices** resource provider.
 
 > [!IMPORTANT]
-> Elk abonnement in een beheerde services-aanbieding bevat een sectie **manifest Details** , waarin u de Azure Active Directory (Azure AD)-entiteiten in uw Tenant definieert die toegang hebben tot de gedelegeerde resource groepen en/of-abonnementen voor klanten die Koop dat plan. Het is belang rijk te weten dat elke groep (of gebruiker of Service-Principal) die u hier opgeeft, dezelfde machtigingen heeft voor elke klant die het plan heeft gekocht. Als u verschillende groepen wilt toewijzen voor gebruik met elke klant, moet u een afzonderlijk privé plan publiceren dat exclusief is voor elke klant.
+> Each plan in a managed services offer includes a **Manifest Details** section, where you define the Azure Active Directory (Azure AD) entities in your tenant that will have access to the delegated resource groups and/or subscriptions for customers who purchase that plan. It’s important to be aware that any group (or user or service principal) that you include here will have the same permissions for every customer who purchases the plan. To assign different groups to work with each customer, you’ll need to publish a separate private plan that is exclusive to each customer.
 
-## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Maak uw aanbieding in de Cloud Partner-portal
+## <a name="create-your-offer-in-the-cloud-partner-portal"></a>Create your offer in the Cloud Partner Portal
 
-1. Meld u aan bij de [Cloud Partner-Portal](https://cloudpartner.azure.com/).
-2. Selecteer **nieuwe aanbieding**in het navigatie menu links en selecteer vervolgens **beheerde services**.
-3. U ziet een **Editor** sectie voor uw aanbieding met vier delen om in te vullen: **aanbiedings instellingen**, **abonnementen**, **Marketplace**en **ondersteuning**. Zie voor richt lijnen over het volt ooien van deze secties.
+1. Sign in to the [Cloud Partner Portal](https://cloudpartner.azure.com/).
+2. From the left navigation menu, select **New offer**, then select **Managed services**.
+3. You'll see an **Editor** section for your offer with four parts to fill in: **Offer Settings**, **Plans**, **Marketplace**, and **Support**. Read on for guidance on how to complete these sections.
 
-## <a name="enter-offer-settings"></a>Aanbiedings instellingen invoeren
+## <a name="enter-offer-settings"></a>Enter offer settings
 
-Geef in de sectie **instellingen van aanbieding** het volgende op:
-
-|Veld  |Beschrijving  |
-|---------|---------|
-|**Aanbiedings-ID**     | Een unieke id voor uw aanbieding (binnen uw Publisher-profiel). Deze ID mag alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. Houd er rekening mee dat de aanbiedings-ID mogelijk zichtbaar is voor klanten op plaatsen als product-Url's en facturerings rapporten. Zodra u de aanbieding hebt gepubliceerd, kunt u deze waarde niet meer wijzigen.        |
-|**Uitgevers-ID**     | De uitgevers-ID die aan de aanbieding wordt gekoppeld. Als u meer dan één uitgever-ID hebt, kunt u het abonnement selecteren dat u wilt gebruiken voor deze aanbieding.       |
-|**Naam**     | De naam (Maxi maal 50 tekens) die klanten te zien krijgen voor uw aanbieding in azure Marketplace en in de Azure Portal. Gebruik een herken bare merk naam die klanten begrijpen — als u dit aanbod via uw eigen website promoveert, moet u ervoor zorgen dat u deze precies dezelfde naam gebruikt.        |
-
-Wanneer u klaar bent, selecteert u **Opslaan**. U bent nu klaar om door te gaan naar de sectie **plannen** .
-
-## <a name="create-plans"></a>Plannen maken
-
-Elke aanbieding moet een of meer abonnementen hebben (ook wel Sku's genoemd). U kunt meerdere plannen toevoegen om verschillende functie sets tegen verschillende prijzen te ondersteunen of om een specifiek abonnement voor een beperkt publiek van specifieke klanten aan te passen. Klanten kunnen de plannen weer geven die voor hen beschikbaar zijn onder de bovenliggende aanbieding.
-
-Selecteer in de sectie plannen de optie **nieuw plan**. Voer vervolgens een **plan-id**in. Deze ID mag alleen kleine letters, streepjes en onderstrepings tekens bevatten, met een maximum van 50 tekens. De plan-ID is mogelijk zichtbaar voor klanten op plaatsen als in product-Url's en facturerings rapporten. Zodra u de aanbieding hebt gepubliceerd, kunt u deze waarde niet meer wijzigen.
-
-### <a name="plan-details"></a>Details van plan
-
-Voer de volgende secties uit in de sectie **Plan Details** :
+In the **Offer settings** section, provide the following:
 
 |Veld  |Beschrijving  |
 |---------|---------|
-|**Titel**     | Beschrijvende naam voor het plan dat moet worden weer gegeven. Maximale lengte van 50 tekens.        |
-|**Samenvatting**     | Beknopt overzicht van het plan voor weer gave onder de titel. Maximale lengte van 100 tekens.        |
-|**Beschrijving**     | Beschrijvende tekst voor een gedetailleerde uitleg van het plan.         |
-|**Facturerings model**     | Er zijn twee facturerings modellen die hier worden weer gegeven, maar u moet **Bring your own License** voor aanbiedingen voor beheerde services kiezen. Dit betekent dat u uw klanten rechtstreeks factureert voor kosten met betrekking tot deze aanbieding, en micro soft brengt geen kosten in rekening.   |
-|**Is dit een privé abonnement?**     | Hiermee wordt aangegeven of de SKU privé of openbaar is. De standaard waarde is **Nee** (openbaar). Als u deze selectie verlaat, is uw abonnement niet beperkt tot specifieke klanten (of een bepaald aantal klanten). Nadat u een openbaar abonnement hebt gepubliceerd, kunt u dit later niet meer wijzigen in persoonlijk. Als u dit plan alleen beschikbaar wilt maken voor specifieke klanten, selecteert u **Ja**. Wanneer u dit doet, moet u de klanten identificeren door hun abonnement-Id's op te geven. Deze kunnen worden ingevoerd op één (voor Maxi maal 10 abonnementen) of door een CSV-bestand (voor Maxi maal 20.000 abonnementen) te uploaden. Zorg ervoor dat u hier uw eigen abonnementen opneemt, zodat u de aanbieding kunt testen en valideren. Zie voor meer informatie [persoonlijke sku's en abonnementen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+|**Offer ID**     | A unique identifier for your offer (within your publisher profile). This ID can only contain lowercase alphanumeric characters, dashes, and underscores, with a maximum of 50 characters. Keep in mind that the Offer ID may be visible to customers in places like in product URLs and billing reports. Once you publish the offer, you can't change this value.        |
+|**Publisher ID**     | The publisher ID that will be associated with the offer. If you have more than one publisher ID, you can select the one you wish to use for this offer.       |
+|**Naam**     | The name (up to 50 characters) that customers will see for your offer in Azure Marketplace and in the Azure portal. Use a recognizable brand name that customers will understand—if you're promoting this offer through your own website, be sure to use the exact same name here.        |
 
-### <a name="manifest-details"></a>Details van manifest
+When you've finished, select **Save**. Now you're ready to move on to the **Plans** section.
 
-Vul de sectie **manifest Details** in voor uw abonnement. Hiermee maakt u een manifest met autorisatie-informatie voor het beheren van klant resources. Deze informatie is vereist om Azure delegated resource management in te scha kelen.
+## <a name="create-plans"></a>Create plans
+
+Each offer must have one or more plans (sometimes referred to as SKUs). You might add multiple plans to support different feature sets at different prices or to customize a specific plan for a limited audience of specific customers. Customers can view the plans that are available to them under the parent offer.
+
+In the Plans section, select **New Plan**. Then enter a **Plan ID**. This ID can only contain lowercase alphanumeric characters, dashes, and underscores, with a maximum of 50 characters. The plan ID may be visible to customers in places like in product URLs and billing reports. Once you publish the offer, you can't change this value.
+
+### <a name="plan-details"></a>Plan details
+
+Complete the following sections in the **Plan Details** section:
+
+|Veld  |Beschrijving  |
+|---------|---------|
+|**Titel**     | Friendly name for the plan for display. Maximum length of 50 characters.        |
+|**Samenvatting**     | Succinct description of the plan for display under the title. Maximum length of 100 characters.        |
+|**Beschrijving**     | Description text that provides a more detailed explanation of the plan.         |
+|**Billing model**     | There are 2 billing models shown here, but you must choose **Bring your own license** for managed services offers. This means that you will bill your customers directly for costs related to this offer, and Microsoft does not charge any fees to you.   |
+|**Is this a private Plan?**     | Indicates whether the SKU is private or public. The default is **No** (public). If you leave this selection, your plan will not be restricted to specific customers (or to a certain number of customers); after you publish a public plan, you can't later change it to private. To make this plan available only to specific customers, select **Yes**. When you do so, you'll need to identify the customers by providing their subscription IDs. These can be entered one by one (for up to 10 subscriptions) or by uploading a .csv file (for up to 20,000 subscriptions). Be sure to include your own subscriptions here so you can test and validate the offer. For more information, see [Private SKUs and Plans](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-azure-private-skus).  |
+
+### <a name="manifest-details"></a>Manifest details
+
+Complete the **Manifest Details** section for your plan. This creates a manifest with authorization information for managing customer resources. This information is required in order to enable Azure delegated resource management.
 
 > [!NOTE]
-> Zoals hierboven vermeld, worden de gebruikers en rollen in uw **autorisatie** vermeldingen toegepast op elke klant die het plan heeft gekocht. Als u de toegang tot een specifieke klant wilt beperken, moet u een privé-abonnement publiceren voor hun exclusieve gebruik.
+> As noted above, the users and roles in your **Authorization** entries will apply to every customer who purchases the plan. If you want to limit access to a specific customer, you'll need to publish a private plan for their exclusive use.
 
-Geef eerst een **versie** op voor het manifest. Gebruik de indeling *n. n. n* (bijvoorbeeld 1.2.5).
+First, provide a **Version** for the manifest. Use the format *n.n.n* (for example, 1.2.5).
 
-Voer vervolgens uw **Tenant-id**in. Dit is een GUID die is gekoppeld aan de Azure Active Directory Tenant-ID van uw organisatie (dat wil zeggen, de Tenant waarmee u werkt om de resources van uw klanten te beheren). Als u dit niet hebt, kunt u het vinden door over te grenzen van de account naam in de rechter bovenhoek van de Azure Portal of door te klikken op **overschakelen naar een andere map**.
+Next, enter your **Tenant ID**. This is a GUID associated with the Azure Active Directory tenant ID of your organization (i.e., the tenant which you will be working in to manage your customers' resources). If you don't have this handy, you can find it by hovering over your account name on the upper right-hand side of the Azure portal, or by selecting **Switch directory**.
 
-Voeg ten slotte een of meer **autorisatie** vermeldingen toe aan uw abonnement. Autorisaties definiëren de entiteiten die toegang hebben tot resources en abonnementen voor klanten die het plan hebben gekocht, en rollen toewijzen die specifieke toegangs niveaus verlenen. Zie [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md)voor meer informatie over ondersteunde rollen.
+Finally, add one or more **Authorization** entries to your plan. Authorizations define the entities who can access resources and subscriptions for customers who purchase the plan, and assign roles that grant specific levels of access. For details about supported roles, see [Tenants, roles, and users in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
 
-Voor elke **autorisatie**moet u het volgende opgeven. U kunt vervolgens zo vaak als nodig **nieuwe autorisatie** selecteren om meer gebruikers en roldefinities toe te voegen.
+For each **Authorization**, you'll need to provide the following. You can then select **New authorization** as many times as needed to add more users and role definitions.
 
-- **Azure AD-object-id**: de Azure ad-id van een gebruiker, gebruikers groep of toepassing waaraan bepaalde machtigingen worden toegekend (zoals beschreven in de roldefinitie) voor de resources van uw klanten.
-- **Weergave naam van Azure AD-object**: een beschrijvende naam om de klant te helpen het doel van deze autorisatie te begrijpen. De klant krijgt deze naam te zien bij het delegeren van resources.
-- **Roldefinitie**: Selecteer een van de beschik bare ingebouwde Azure AD-rollen in de lijst. Met deze rol bepaalt u de machtigingen die de gebruiker in het veld ID van het **Azure AD-object** heeft op de resources van uw klanten. Zie voor beschrijvingen van deze rollen [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) en [functie ondersteuning voor Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
-- **Toewijs bare rollen**: dit is alleen vereist als u gebruikers toegangs beheerder hebt geselecteerd in de **roldefinitie** voor deze autorisatie. Als dat het geval is, moet u hier een of meer toewijs bare rollen toevoegen. De gebruiker in het **object-ID-veld van Azure AD** kan deze **toewijs bare rollen** toewijzen aan [beheerde identiteiten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), wat vereist is om [beleid te implementeren dat kan worden hersteld](deploy-policy-remediation.md). Houd er rekening mee dat er geen andere machtigingen zijn gekoppeld aan de rol beheerder van gebruikers toegang voor deze gebruiker. Als u hier niet een of meer rollen selecteert, wordt er door uw inzending geen certificering door gegeven. (Als u geen beheerder voor gebruikers toegang hebt geselecteerd voor de roldefinitie van deze gebruiker, heeft dit veld geen effect.)
+- **Azure AD Object ID**: The Azure AD identifier of a user, user group, or application which will be granted certain permissions (as described by the Role Definition) to your customers' resources.
+- **Azure AD Object Display Name**: A friendly name to help the customer understand the purpose of this authorization. The customer will see this name when delegating resources.
+- **Role Definition**: Select one of the available Azure AD built-in roles from the list. This role will determine the permissions that the user in the **Azure AD Object ID** field will have on your customers' resources. For descriptions of these roles, see [Built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) and [Role support for Azure delegated resource management](../concepts/tenants-users-roles.md#role-support-for-azure-delegated-resource-management)
+- **Assignable Roles**: This is required only if you have selected User Access Administrator in the **Role Definition** for this authorization. If so, you must add one or more assignable roles here. The user in the **Azure AD Object ID** field will be able to assign these **Assignable Roles** to [managed identities](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview), which is required in order to [deploy policies that can be remediated](deploy-policy-remediation.md). Note that no other permissions normally associated with the User Access Administrator role will apply to this user. If you do not select one or more roles here, your submission will not pass certification. (If you did not select User Access Administrator for this user’s Role Definition, this field has no effect.)
 
 > [!TIP]
-> In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen. Zie voor aanvullende aanbevelingen [tenants, rollen en gebruikers in azure Lighthouse-scenario's](../concepts/tenants-users-roles.md).
+> In most cases, you'll want to assign permissions to an Azure AD user group or service principal, rather than to a series of individual user accounts. This lets you add or remove access for individual users without having to update and republish the plan when your access requirements change. For additional recommendations, see [Tenants, roles, and users in Azure Lighthouse scenarios](../concepts/tenants-users-roles.md).
 
-Zodra u de gegevens hebt voltooid, kunt u een **nieuw plan** selecteren, net zo vaak als nodig is om extra plannen te maken. Wanneer u klaar bent, selecteert u **Opslaan**en gaat u verder met de sectie **Marketplace** .
+Once you've completed the info, you can select **New plan** as many times as you need to create additional plans. When you're done, select **Save**, and then continue to the **Marketplace** section.
 
-## <a name="provide-marketplace-text-and-images"></a>Tekst en afbeeldingen voor Marketplace opgeven
+## <a name="provide-marketplace-text-and-images"></a>Provide Marketplace text and images
 
-In het gedeelte **Marketplace** kunt u de tekst en afbeeldingen opgeven die klanten kunnen zien in azure Marketplace en de Azure Portal.
+The **Marketplace** section is where you provide the text and images which customers will see in Azure Marketplace and the Azure portal.
 
-Vul de volgende velden in in het gedeelte **overzicht** :
+Complete the following fields in the **Overview** section:
 
 |Veld  |Beschrijving  |
 |---------|---------|
-|**Titel**     |  Titel van de aanbieding, vaak de lange, formele naam. Deze titel wordt prominent weer gegeven in de Marketplace. Maximale lengte van 50 tekens. In de meeste gevallen moet dit hetzelfde zijn als de **naam** die u hebt opgegeven in de sectie instellingen voor de **aanbieding** .       |
-|**Samenvatting**     | Kort doel of functie van uw aanbieding. Dit wordt meestal weer gegeven onder de titel. Maximale lengte van 100 tekens.        |
-|**Lange samen vatting**     | Een langere samen vatting van het doel of de functie van uw aanbieding. Maximale lengte van 256 tekens.        |
-|**Beschrijving**     | Meer informatie over uw aanbieding. Dit veld heeft een maximale lengte van 3000 tekens en ondersteunt eenvoudige HTML-opmaak. U moet de woorden "beheerde service" of "Managed Services" ergens in uw beschrijving toevoegen.       |
-|**Marketing-id**     | Een unieke URL-beschrijvende id. deze wordt gebruikt in Marketplace-Url's voor deze aanbieding. Als uw uitgevers-ID bijvoorbeeld *Contoso* is en uw marketing-id *sampleApp*is, wordt de URL voor uw aanbieding in azure Marketplace *https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp* .        |
-|**Preview-abonnement-Id's**     | Voeg een id toe aan 100-abonnement. De klanten die aan deze abonnementen zijn gekoppeld, kunnen de aanbieding in azure Marketplace bekijken voordat deze live gaat. We stellen uw eigen abonnementen hier voor, zodat u kunt bekijken hoe uw aanbieding wordt weer gegeven op de Azure Marketplace voordat deze beschikbaar is voor klanten.  (Micro soft-ondersteunings-en engineering teams kunnen tijdens deze preview-periode ook uw aanbieding bekijken.)   |
-|**Nuttige koppelingen**     | Url's die betrekking hebben op uw aanbieding, zoals documentatie, release opmerkingen, veelgestelde vragen, enzovoort.        |
-|**Voorgestelde categorieën (Maxi maal 5)**     | Een of meer categorieën (Maxi maal vijf) die van toepassing zijn op uw aanbieding. Deze categorieën helpen klanten uw aanbieding te ontdekken in azure Marketplace en de Azure Portal.        |
+|**Titel**     |  Title of the offer, often the long, formal name. This title will be displayed prominently in the marketplace. Maximum length of 50 characters. In most cases, this should be the same as the **Name** you entered in the **Offer Settings** section.       |
+|**Samenvatting**     | Brief purpose or function of your offer. This is usually displayed under the title. Maximum length of 100 characters.        |
+|**Long Summary**     | A longer summary of the purpose or function of your offer. Maximum length of 256 characters.        |
+|**Beschrijving**     | More information about your offer. This field has a maximum length of 3000 characters and supports simple HTML formatting. You must include the words "managed service" or "managed services" somewhere in your description.       |
+|**Marketing Identifier**     | A unique URL-friendly identifier. This identifier can only contain lowercase alphanumeric characters and dashes. It will be used in Marketplace URLs for this offer. For example, if your publisher ID is *contoso* and your marketing identifier is *sampleApp*, the URL for your offer in Azure Marketplace will be *https://azuremarketplace.microsoft.com/marketplace/apps/contoso-sampleApp* .        |
+|**Preview Subscription IDs**     | Add one to 100 subscription identifiers. The customers associated with these subscriptions will be able to view the offer in Azure Marketplace before it goes live. We suggest including your own subscriptions here so you can preview how your offer appears in the Azure Marketplace before making it available to customers.  (Microsoft support and engineering teams will also be able to view your offer during this preview period.)   |
+|**Useful Links**     | URLs related to your offer, such as documentation, release notes, FAQs, etc.        |
+|**Suggested Categories (Max 5)**     | One or more categories (up to five) which apply to your offer. These categories help customers discover your offer in Azure Marketplace and the Azure portal.        |
 
-In het gedeelte **marketing artefacten** kunt u logo's en andere assets uploaden die met uw aanbieding moeten worden weer gegeven. U kunt desgewenst scherm afbeeldingen of koppelingen uploaden naar Video's die klanten kunnen helpen bij het begrijpen van uw aanbieding.
+In the **Marketing Artifacts** section, you can upload logos and other assets to be shown with your offer. You can optionally upload screenshots or links to videos that can help customers understand your offer.
 
-Er zijn vier logo grootten vereist: **Small (40x40)** , **medium (90x90)** , **large (115x115)** en **Wide (255x155)** . Volg deze richt lijnen voor uw logo's:
+Four logo sizes are required: **Small (40x40)** , **Medium (90x90)** , **Large (115x115)** , and **Wide (255x115)** . Follow these guidelines for your logos:
 
 - Het Azure-ontwerp heeft een eenvoudig kleurenpalet. Beperk het aantal primaire en secundaire kleuren in uw logo.
 - De themakleuren van de portal zijn wit en zwart. Gebruik deze kleuren niet als de achtergrondkleur voor uw logo. Gebruik een kleur waardoor uw logo opvalt in de portal. We adviseren eenvoudige primaire kleuren.
-- Als u een transparante achtergrond gebruikt, moet u ervoor zorgen dat het logo en de tekst niet wit, zwart of blauw zijn.
+- If you use a transparent background, make sure that the logo and text aren't white, black, or blue.
 - Het uiterlijk van uw logo moet plat zijn, zonder kleurovergangen. Gebruik geen achtergrond met een kleurovergang in het logo.
 - Plaats geen tekst in het logo, ook niet de naam van uw bedrijf of merk.
 - Zorg ervoor dat het logo niet is uitgerekt.
 
-Het **held-logo (815x290)** is optioneel, maar wordt aanbevolen. Als u een held logo bijvoegt, volgt u deze richt lijnen:
+The **Hero (815x290)** logo is optional but recommended. If you include a hero logo, follow these guidelines:
 
-- Neem geen tekst op in het held-logo en zorg ervoor dat er 415 pixels aan lege ruimte aan de rechter kant van het logo staan. Dit is vereist om ruimte te laten voor tekst elementen die programmatisch worden inge sloten: de weergave naam van de uitgever, de titel van het abonnement, een lange samen vatting van de aanbieding.
-- De achtergrond van uw held-logo mag niet zwart, wit of transparant zijn. Zorg ervoor dat de achtergrond kleur niet te licht is, omdat de Inge sloten tekst wit wordt weer gegeven.
-- Zodra u uw aanbieding met een held pictogram hebt gepubliceerd, kunt u deze niet meer verwijderen (hoewel u deze desgewenst kunt bijwerken met een andere versie).
+- Don't include any text in the hero logo, and be sure to leave 415 pixels of empty space on the right side of the logo. This is required to leave room for text elements that will be embedded programmatically: your publisher display name, plan title, offer long summary.
+- Your hero logo's background may not be black, white, or transparent. Make sure your background color isn't too light, because the embedded text will be displayed in white.
+- Once you publish your offer with a hero icon, you can't remove it (although you can update it with a different version if desired).
 
-In de sectie **lead beheer** kunt u het CRM-systeem selecteren waarop uw leads worden opgeslagen. Houd er rekening mee dat volgens het [certificerings beleid van beheerde services](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)een doel voor de **lead** is vereist.
+In the **Lead Management** section, you can select the CRM system where your leads will be stored. Note that per the [Managed Services certification policies](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services), a **Lead Destination** is required.
 
-Ten slotte geeft u de URL van uw **Privacybeleid** en **Gebruiksvoorwaarden** op in het **juridische** gedeelte. U kunt hier ook opgeven of u het [standaard contract](https://docs.microsoft.com/azure/marketplace/standard-contract) wilt gebruiken voor deze aanbieding.
+Finally, provide your **Privacy Policy URL** and **Terms of use** in the **Legal** section. You can also specify here whether or not to use the [Standard Contract](https://docs.microsoft.com/azure/marketplace/standard-contract) for this offer.
 
-Zorg ervoor dat u uw wijzigingen opslaat voordat u verdergaat met het **ondersteunings** gedeelte.
+Be sure to save your changes before moving on to the **Support** section.
 
-## <a name="add-support-info"></a>Ondersteunings informatie toevoegen
+## <a name="add-support-info"></a>Add support info
 
-Geef in de sectie **ondersteuning** de naam, het e-mail adres en het telefoon nummer op voor een technische contact persoon en een contact persoon voor klant ondersteuning. U moet ook ondersteunings-Url's opgeven. Micro soft kan deze informatie gebruiken om contact met u op te nemen over bedrijfs-en ondersteunings problemen.
+In the **Support** section, provide the name, email, and phone number for an engineering contact and a customer support contact. You'll also need to provide support URLs. Microsoft may use this information when we need to contact you about business and support issues.
 
-Nadat u deze gegevens hebt toegevoegd, selecteert u **opslaan.**
+Once you've added this info, select **Save.**
 
 ## <a name="publish-your-offer"></a>Uw aanbieding publiceren
 
-Zodra u alle secties hebt voltooid, is de volgende stap het publiceren van de aanbieding op Azure Marketplace. Selecteer de knop **publiceren** om het proces van het live-aanbod te initiëren. Zie voor meer informatie over dit proces [Azure Marketplace publiceren en AppSource-aanbiedingen](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
+Once you've completed all of the sections, your next step is to publish the offer to Azure Marketplace. Select the **Publish** button to initiate the process of making your offer live. For more about this process, see [Publish Azure Marketplace and AppSource offers](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-publish-offer).
 
-U kunt op elk gewenst moment [een bijgewerkte versie van uw aanbieding publiceren](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) . U kunt bijvoorbeeld een nieuwe functie definitie toevoegen aan een eerder gepubliceerde aanbieding. Als u dit doet, krijgen klanten die de aanbieding al hebben toegevoegd, een pictogram op de pagina [**service providers**](view-manage-service-providers.md) in de Azure Portal waarmee ze kunnen zien dat er een update beschikbaar is. Elke klant kan [de wijzigingen controleren](view-manage-service-providers.md#update-service-provider-offers) en besluiten of ze willen bijwerken naar de nieuwe versie. 
+You can [publish an updated version of your offer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/manage-offers/cpp-update-offer) at any time. For example, you may want to add a new role definition to a previously-published offer. When you do so, customers who have already added the offer will see an icon in the [**Service providers**](view-manage-service-providers.md) page in the Azure portal that lets them know an update is available. Each customer will be able to [review the changes](view-manage-service-providers.md#update-service-provider-offers) and decide whether they want to update to the new version. 
 
-## <a name="the-customer-onboarding-process"></a>Het onboarding-proces van de klant
+## <a name="the-customer-onboarding-process"></a>The customer onboarding process
 
-Nadat een klant uw aanbieding heeft toegevoegd, kunnen ze [een of meer specifieke abonnementen of resource groepen delegeren](view-manage-service-providers.md#delegate-resources), die vervolgens worden uitgevoerd voor het beheer van de gedelegeerde resources van Azure. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft gedelegeerd, wordt op de pagina [**service providers**](view-manage-service-providers.md) van de Azure Portal een opmerking weer geven boven aan de **provider** .
+After a customer adds your offer, they'll be able to [delegate one or more specific subscriptions or resource groups](view-manage-service-providers.md#delegate-resources), which will then be onboarded for Azure delegated resource management. If a customer has accepted an offer but has not yet delegated any resources, they'll see a note at the top of the **Provider offers** section of the [**Service providers**](view-manage-service-providers.md) page in the Azure portal.
 
 > [!IMPORTANT]
-> Delegering moet worden uitgevoerd door een niet-gast account in de Tenant van de klant waarvan de [eigenaar ingebouwde rol](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) heeft voor het abonnement (of de resource groepen bevat die worden uitgevoerd). Als u alle gebruikers wilt zien die het abonnement kunnen delegeren, kan een gebruiker in de Tenant van de klant het abonnement selecteren in de Azure Portal, **toegangs beheer openen (IAM)** en [alle gebruikers met de rol eigenaar weer geven](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
+> Delegation must be done by a non-guest account in the customer’s tenant which has the [Owner built-in role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) for the subscription being onboarded (or which contains the resource groups that are being onboarded). To see all users who can delegate the subscription, a user in the customer's tenant can select the subscription in the Azure portal, open **Access control (IAM)** , and [view all users with the Owner role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal#view-roles-and-permissions).
 
-Nadat de klant een abonnement (of een of meer resource groepen binnen een abonnement) heeft gedelegeerd, wordt de resource provider **micro soft. ManagedServices** geregistreerd voor dat abonnement en kunnen gebruikers in uw Tenant toegang krijgen tot de gedelegeerde resources volgens de autorisaties in uw aanbieding.
+After the customer delegates a subscription (or one or more resource groups within a subscription), the **Microsoft.ManagedServices** resource provider will be registered for that subscription, and users in your tenant will be able to access the delegated resources according to the authorizations in your offer.
 
 > [!NOTE]
-> Op dit moment kunnen abonnementen (of resource groepen binnen een abonnement) niet worden gedelegeerd als het abonnement gebruikmaakt van Azure Databricks. Als er al een abonnement (of resource groepen binnen een abonnement) is gedelegeerd, is het op dit moment niet mogelijk om Databricks-werk ruimten in dat abonnement te maken.
+> At this time, subscriptions (or resource groups within a subscription) can't be delegated if the subscription uses Azure Databricks. Similarly, if a subscription (or resource groups within a subscription) has already been delegated, it currently isn't possible to create Databricks workspaces in that subscription.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
-- [Bekijk en beheer klanten](view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.
+- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).
+- [View and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.

@@ -1,6 +1,6 @@
 ---
-title: IoT Central beheren vanuit Azure CLI | Microsoft Docs
-description: In dit artikel wordt beschreven hoe u uw IoT Central-toepassing maakt en beheert met behulp van CLI. U kunt de toepassing weer geven, wijzigen en verwijderen met behulp van CLI.
+title: Manage IoT Central from Azure CLI | Microsoft Docs
+description: This article describes how to create and manage your IoT Central application using CLI. You can view, modify and remove the application using CLI.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -8,18 +8,18 @@ ms.author: dobett
 ms.date: 08/23/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 80f91849a35bcb94b934941a204d4503ddda376b
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c5622f32dbf849b9a21a1fd2e458f35b8aa1d098
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278860"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480389"
 ---
-# <a name="manage-iot-central-from-azure-cli"></a>IoT Central beheren vanuit Azure CLI
+# <a name="manage-iot-central-from-azure-cli"></a>Manage IoT Central from Azure CLI
 
 [!INCLUDE [iot-central-selector-manage](../../../includes/iot-central-selector-manage.md)]
 
-In plaats van IoT Central-toepassingen te maken en te beheren op de website van [azure IOT Central Application Manager](https://aka.ms/iotcentral) , kunt u [Azure cli](/cli/azure/) gebruiken voor het beheren van uw toepassingen.
+Instead of creating and managing IoT Central applications on the [Azure IoT Central application manager](https://aka.ms/iotcentral) website, you can use [Azure CLI](/cli/azure/) to manage your applications.
 
 ## <a name="prerequisites"></a>Vereisten
 
@@ -27,11 +27,11 @@ Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://a
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Als u liever Azure CLI op uw lokale computer wilt uitvoeren, raadpleegt u [de Azure cli installeren](/cli/azure/install-azure-cli). Wanneer u Azure CLI lokaal uitvoert, gebruikt u de opdracht **AZ login** om u aan te melden bij Azure voordat u de opdrachten in dit artikel probeert uit te voeren.
+If you prefer to run Azure CLI on your local machine, see [Install the Azure CLI](/cli/azure/install-azure-cli). When you run Azure CLI locally, use the **az login** command to sign in to Azure before you try the commands in this article.
 
 ## <a name="create-an-application"></a>Een app maken
 
-Gebruik de opdracht [AZ iotcentral app Create](/cli/azure/iotcentral/app#az-iotcentral-app-create) om een IOT Central-toepassing te maken in uw Azure-abonnement. Bijvoorbeeld:
+Use the [az iotcentral app create](/cli/azure/iotcentral/app#az-iotcentral-app-create) command to create an IoT Central application in your Azure subscription. Bijvoorbeeld:
 
 ```azurecli-interactive
 # Create a resource group for the IoT Central application
@@ -48,36 +48,54 @@ az iotcentral app create \
   --display-name "My Custom Display Name"
 ```
 
-Met deze opdrachten maakt u eerst een resource groep op de locatie VS-Oost voor de toepassing. In de volgende tabel worden de para meters beschreven die worden gebruikt met de opdracht **AZ iotcentral app Create** :
+These commands first create a resource group in the east US location for the application. The following table describes the parameters used with the **az iotcentral app create** command:
 
 | Parameter         | Beschrijving |
 | ----------------- | ----------- |
-| resource-group    | De resource groep die de toepassing bevat. Deze resource groep moet al bestaan in uw abonnement. |
-| location          | Deze opdracht maakt standaard gebruik van de locatie uit de resource groep. Op dit moment kunt u een IoT Central-toepassing maken in de **Verenigde Staten**, **Australië**, **Azië en Stille Oceaan**of in de **Europe** -locaties. |
-| name              | De naam van de toepassing in de Azure Portal. |
-| subdomein         | Het subdomein in de URL van de toepassing. In het voor beeld is de toepassings-URL https://mysubdomain.azureiotcentral.com. |
-| sku               | Op dit moment is de enige waarde **S1** (Standard-laag). Zie [prijzen voor Azure IOT Central](https://azure.microsoft.com/pricing/details/iot-central/). |
-| sjabloon          | De toepassings sjabloon die moet worden gebruikt. Zie de volgende tabel voor meer informatie: |
-| weergave naam      | De naam van de toepassing, zoals deze wordt weer gegeven in de gebruikers interface. |
+| resource-group    | The resource group that contains the application. This resource group must already exist in your subscription. |
+| location          | By default, this command uses the location from the resource group. Currently, you can create an IoT Central application in the **United States**, **Australia**, **Asia Pacific**, or in the **Europe** locations. |
+| name              | The name of the application in the Azure portal. |
+| subdomain         | The subdomain in the URL of the application. In the example, the application URL is https://mysubdomain.azureiotcentral.com. |
+| sku               | Currently, the only value is **S1** (standard tier). See [Azure IoT Central pricing](https://azure.microsoft.com/pricing/details/iot-central/). |
+| sjabloon          | The application template to use. For more information, see the following table: |
+| display-name      | The name of the application as displayed in the UI. |
 
-**Toepassings sjablonen**
+**Application templates with generally available features**
 
 | Naam van sjabloon            | Beschrijving |
 | ------------------------ | ----------- |
 | iotc-default@1.0.0       | Hiermee maakt u een lege toepassing die u kunt vullen met uw eigen apparaatsjablonen en apparaten. |
 | iotc-demo@1.0.0          | Hiermee maakt u een toepassing die onder andere een vooraf gemaakte apparaatjabloon voor een gekoelde verkoopautomaat bevat. Gebruik deze sjabloon als u wilt beginnen met het verkennen van Azure IoT Central. |
-| iotc-devkit-sample@1.0.0 | Hiermee maakt u een toepassing met apparaatsjablonen die u in staat stelt verbinding te maken met een MXChip- of Raspberry Pi-apparaat. Gebruik deze sjabloon als u een ontwikkelaar van een apparaat wilt experimenteren met een van deze apparaten. |
+| iotc-devkit-sample@1.0.0 | Hiermee maakt u een toepassing met apparaatsjablonen die u in staat stelt verbinding te maken met een MXChip- of Raspberry Pi-apparaat. Use this template if you're a device developer experimenting with any of these devices. |
+
+
+**Application templates with public preview features**
+
+| Naam van sjabloon            | Beschrijving |
+| ------------------------ | ----------- |
+| iotc-pnp-preview@1.0.0   | Creates an empty plug and play preview application for you to populate with your own device templates and devices. |
+| iotc-condition@1.0.0     | Creates an application with a in-store analytics – condition monitoring template. Use this template to connect and monitor store environment. |
+| iotc-consumption@1.0.0   | Creates an application with water consumption monitoring template. Use this template to monitor and control water flow. |
+| iotc-distribution@1.0.0  | Creates an application with a Digital distribution template. Use this template to improve warehouse output efficiency by digitalizing key assets and actions. |
+| iotc-inventory@1.0.0     | Creates an application with a smart inventory management template. Use this template to automate receiving, product movement, cycle counting, and tracking of sensors. |
+| iotc-logistics@1.0.0     | Creates an application with a Connected logistics template. Use this template to track your shipment in real-time across air, water and land with location and condition monitoring. |
+| iotc-meter@1.0.0         | Creates an application with smart meter monitoring template. Use this template to monitor energy consumption, network status, and identify trends to improve customer support and smart meter management.  |
+| iotc-patient@1.0.0       | Creates an application with continuous patient monitoring template. Use this template to extend patient care, re-admissions, and manage diseases. |
+| iotc-power@1.0.0         | Creates an application with solar panel monitoring template. Use this template to monitor solar panel status, energy generation trends. |
+| iotc-quality@1.0.0       | Creates an application with water quality monitoring template. Use this template to digitally monitor water quality.|
+| iotc-store@1.0.0         | Creates an application with a in-store analytics – checkout template. Use this template to monitor and manage the checkout flow inside your store. |
+| iotc-waste@1.0.0         | Creates an application with a Connected waste management template. Use this template to monitor waste bins and dispatch field operators. |
 
 > [!NOTE]
-> De **Preview-toepassings** sjabloon is momenteel alleen beschikbaar in de locaties van **Europa** en de **VS** .
+> The preview application templates are currently only available in the **Europe** and **United States** locations.
 
 ## <a name="view-your-applications"></a>Uw toepassingen bekijken
 
-Gebruik de opdracht [AZ iotcentral app List](/cli/azure/iotcentral/app#az-iotcentral-app-list) om uw IOT Central toepassingen te vermelden en meta gegevens weer te geven.
+Use the [az iotcentral app list](/cli/azure/iotcentral/app#az-iotcentral-app-list) command to list your IoT Central applications and view metadata.
 
-## <a name="modify-an-application"></a>Een toepassing wijzigen
+## <a name="modify-an-application"></a>Modify an application
 
-Gebruik de opdracht [AZ iotcentral App Update](/cli/azure/iotcentral/app#az-iotcentral-app-update) om de meta gegevens van een IOT Central-toepassing bij te werken. Als u bijvoorbeeld de weergave naam van uw toepassing wilt wijzigen:
+Use the [az iotcentral app update](/cli/azure/iotcentral/app#az-iotcentral-app-update) command to update the metadata of an IoT Central application. For example, to change the display name of your application:
 
 ```azurecli-interactive
 az iotcentral app update --name myiotcentralapp \
@@ -87,7 +105,7 @@ az iotcentral app update --name myiotcentralapp \
 
 ## <a name="remove-an-application"></a>Een toepassing verwijderen
 
-Gebruik de opdracht [AZ iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) om een IOT Central-toepassing te verwijderen. Bijvoorbeeld:
+Use the [az iotcentral app delete](/cli/azure/iotcentral/app#az-iotcentral-app-delete) command to delete an IoT Central application. Bijvoorbeeld:
 
 ```azurecli-interactive
 az iotcentral app delete --name myiotcentralapp \
@@ -96,7 +114,7 @@ az iotcentral app delete --name myiotcentralapp \
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u Azure IoT Central-toepassingen kunt beheren vanuit Azure CLI, is dit de voorgestelde volgende stap:
+Now that you've learned how to manage Azure IoT Central applications from Azure CLI, here is the suggested next step:
 
 > [!div class="nextstepaction"]
-> [Uw toepassing beheren](howto-administer.md)
+> [Administer your application](howto-administer.md)

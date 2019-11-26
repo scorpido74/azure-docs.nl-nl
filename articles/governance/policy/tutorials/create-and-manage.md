@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Build policies to enforce compliance'
 description: In this tutorial, you use policies to enforce standards, control costs, maintain security, and impose enterprise wide design principles.
-ms.date: 02/04/2019
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 38c41c94600da1f028c7857febc7de1eef2436ae
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 75a1d892a88f2b5bbdbec2a1b8d525245bb1e86f
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74216896"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74482366"
 ---
 # <a name="tutorial-create-and-manage-policies-to-enforce-compliance"></a>Tutorial: Create and manage policies to enforce compliance
 
@@ -20,7 +20,11 @@ Als u aan uw bedrijfsnormen en serviceovereenkomsten wilt blijven voldoen, is he
 > - Problemen met een bron die niet voldoet of is geweigerd oplossen
 > - Een nieuw beleid binnen een organisatie implementeren
 
-Als u een beleid wilt toewijzen voor het identificeren van de huidige nalevingsstatus van uw bestaande bronnen, raadpleegt u de quickstart-artikelen over dit ontwerp. Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
+Als u een beleid wilt toewijzen voor het identificeren van de huidige nalevingsstatus van uw bestaande bronnen, raadpleegt u de quickstart-artikelen over dit ontwerp.
+
+## <a name="prerequisites"></a>Vereisten
+
+Als u nog geen abonnement op Azure hebt, maak dan een [gratis account](https://azure.microsoft.com/free/) aan voordat u begint.
 
 ## <a name="assign-a-policy"></a>Een beleid toewijzen
 
@@ -443,7 +447,7 @@ Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle bovenstaande to
 
 1. Klik met de rechtermuisknop op de rij of selecteer de weglatingstekens aan het einde van de definitie (of de toewijzing) en selecteer **Definitie verwijderen** (of **Toewijzing verwijderen**).
 
-## <a name="next-steps"></a>Volgende stappen
+## <a name="review"></a>Beoordelen
 
 In deze zelfstudie hebt u de volgende taken uitgevoerd:
 
@@ -452,6 +456,8 @@ In deze zelfstudie hebt u de volgende taken uitgevoerd:
 > - Een initiatiefdefinitie gemaakt en toegewezen om naleving bij te houden voor meerdere bronnen
 > - Problemen met een bron die niet voldoet of is geweigerd, opgelost
 > - Een nieuw beleid binnen een organisatie geïmplementeerd
+
+## <a name="next-steps"></a>Volgende stappen
 
 Lees het volgende artikel voor meer informatie over de structuur van beleidsdefinities:
 

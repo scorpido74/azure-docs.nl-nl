@@ -1,67 +1,67 @@
 ---
 title: Serviceproviders weergeven en beheren
-description: Klanten kunnen de pagina service providers in het Azure Portal gebruiken om informatie over service providers, aanbiedingen van providers en gedelegeerde resources weer te geven.
+description: Customers can use the Service providers page in the Azure portal to view info about service providers, service provider offers, and delegated resources.
 ms.date: 11/15/2019
-ms.topic: overview
-ms.openlocfilehash: 12ddafe1d1e425ed1c1f1188be1377a584e03936
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.topic: conceptual
+ms.openlocfilehash: 453f5d3ba4ed5c49b5e71c7530298bc0a03c73ee
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74169641"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463812"
 ---
 # <a name="view-and-manage-service-providers"></a>Serviceproviders weergeven en beheren
 
-Klanten kunnen de pagina **service providers** in het [Azure Portal](https://portal.azure.com) gebruiken om informatie over service providers en service providers weer te geven, specifieke resources te delegeren via [Azure delegated resource management](../concepts/azure-delegated-resource-management.md)en een winkel te bieden voor extra service providers. Hoewel we hier naar service providers en klanten verwijzen, kunnen bedrijven die meerdere tenants beheren, hetzelfde proces gebruiken om hun beheer ervaring te consolideren.
+Customers can use the **Service providers** page in the [Azure portal](https://portal.azure.com) to view info about service providers and service provider offers, delegate specific resources through [Azure delegated resource management](../concepts/azure-delegated-resource-management.md), and shop for additional service provider offers. While we'll refer to service providers and customers here, enterprises managing multiple tenants can use the same process to consolidate their management experience.
 
-Om toegang te krijgen tot de pagina **service providers** in de Azure Portal, kan de klant **alle services**selecteren en vervolgens zoeken naar **service providers** en selecteren. Deze kunnen ook worden gevonden door ' service providers ' in te voeren in het zoekvak boven aan de Azure Portal.
+To access the **Service providers** page in the Azure portal, the customer can select **All services**, then search for **Service providers** and select it. They can also find it by entering “Service providers” in the search box near the top of the Azure portal.
 
-Houd er wel op dat op de pagina **service providers** alleen informatie wordt weer gegeven over de service providers die toegang hebben tot de abonnementen of resource groepen van de klant via het beheer van gedelegeerde resources van Azure. Als een klant werkt met aanvullende service providers die geen Azure delegated Resource Management gebruiken om toegang te krijgen tot de resources van de klant, wordt hier geen informatie over die service providers weer gegeven.
+Keep in mind that the **Service providers** page only shows info about the service providers which have access to the customer's subscriptions or resource groups through Azure delegated resource management. If a customer works with additional service providers who don't use Azure delegated resource management to access the customer's resources, info about those service providers is not shown here.
 
 > [!NOTE]
-> Service providers kunnen informatie over hun klanten weer geven door te navigeren naar **mijn klanten** in de Azure Portal. Zie [klanten en gedelegeerde resources weer geven en beheren](view-manage-customers.md)voor meer informatie.
+> Service providers can view info about their customers by navigating to **My customers** in the Azure portal. For more info, see [View and manage customers and delegated resources](view-manage-customers.md).
 
-## <a name="view-service-provider-details"></a>Details van service provider weer geven
+## <a name="view-service-provider-details"></a>View service provider details
 
-Als u informatie wilt weer geven over de service provider (s) waarmee een klant werkt, kunt u de **provider aanbiedingen** selecteren aan de linkerkant van de pagina **service providers** .
+To view info about the service provider(s) that a customer is working with, they can select **Provider offers** on the left side of the **Service providers** page.
 
-Voor elke service provider-aanbieding ziet de klant de naam van de service provider en de bijbehorende aanbieding, samen met de naam die de klant tijdens het voorbereidings proces heeft ingevoerd.
+For each service provider offer, the customer will see the service provider's name and the offer associated with it, along with the name that the customer entered during the onboarding process.
 
-In de kolom **delegaties** ziet de klant hoeveel abonnementen en/of resource groepen zijn overgedragen aan de service provider voor die aanbieding. De service provider kan deze abonnementen en/of resource groepen openen en beheren op basis van de toegangs niveaus die zijn opgegeven in de aanbieding.
+In the **Delegations** column, the customer sees how many subscriptions and/or resource groups have been delegated to the service provider for that offer. The service provider will be able to access and manage these subscriptions and/or resource groups according to the access levels specified in the offer.
 
-## <a name="delegate-resources"></a>Resources delegeren
+## <a name="delegate-resources"></a>Delegate resources
 
-Voordat een service provider de resources van een klant kan openen en beheren, moeten ze worden gedelegeerd. Als een klant een aanbieding heeft geaccepteerd, maar nog geen resources heeft overgedragen, ziet u boven aan de sectie **aanbiedingen van providers** een opmerking. Zo kan de klant weten dat hij actie moet ondernemen voordat de service provider toegang kan krijgen tot de resources van de klant.
+Before a service provider can access and manage a customer's resources, they must be delegated. If a customer has accepted an offer but has not yet delegated any resources, they'll see a note at the top of the **Provider offers** section. This lets the customer know that they need to take action before the service provider can access any of the customer's resources.
 
-Abonnementen of resource groepen delegeren:
+To delegate subscriptions or resource groups:
 
-1. Schakel het selectie vakje in voor de rij met de service provider, de aanbieding en de naam. Selecteer vervolgens **resources delegeren** boven aan het scherm.
-1. Bekijk de details over de service provider en aanbieding in het gedeelte Details van de **aanbieding** van de pagina **gemachtigde resources** . Als u roltoewijzingen voor de aanbieding wilt controleren, selecteert u **hier Klik hier om de details van de geselecteerde aanbieding te bekijken**.
-1. Selecteer in de sectie **gemachtigde** de optie **abonnementen overdragen** of **resource groepen delegeren**.
-1. Kies de abonnementen en/of resource groepen die u wilt delegeren voor deze aanbieding en selecteer vervolgens **toevoegen**.
-1. Schakel het selectie vakje onder aan de pagina in om te bevestigen dat u deze service provider toegang wilt geven tot de resources die u hebt geselecteerd, en selecteer vervolgens **delegeren**.
+1. Check the box for the row containing the service provider, offer, and name. Then select **Delegate resources** at the top of the screen.
+1. In the **Offer details** section of the **Delegate resources** page, review the details about the service provider and offer. To review role assignments for the offer, select **Click here to see the details of the selected offer**.
+1. In the **Delegate** section, select **Delegate subscriptions** or **Delegate resource groups**.
+1. Choose the subscriptions and/or resource groups you'd like to delegate for this offer, then select **Add**.
+1. Select the checkbox at the bottom of the page to confirm that you want to grant this service provider access to the resources that you've selected, then select **Delegate**.
 
-## <a name="add-or-remove-service-provider-offers"></a>Aanbiedingen voor service providers toevoegen of verwijderen
+## <a name="add-or-remove-service-provider-offers"></a>Add or remove service provider offers
 
-Een klant kan een nieuwe aanbieding voor een service provider toevoegen via de pagina aanbiedingen van de **provider** door **aanbieding toevoegen**te selecteren. De service provider moet een aanbieding hebben gepubliceerd voor deze klant. De klant kan vervolgens die aanbieding selecteren in het scherm **persoonlijke aanbiedingen** en vervolgens **maken**selecteren.
+A customer can add a new service provider offer from the **Provider offers** page by selecting **Add offer**. The service provider must have published an offer for this customer. The customer can then select that offer from the **Private offers** screen and then select **Create**.
 
-Als de klant een service provider-aanbieding wil verwijderen, kunnen ze het prullenbak pictogram in de rij voor die aanbieding selecteren. Nadat de verwijdering is bevestigd, heeft die service provider geen toegang meer tot de resources van de klant die voorheen zijn gedelegeerd voor die aanbieding.
+If the customer wants to remove a service provider offer, they can select the trash can icon in the row for that offer. After confirming the deletion, that service provider will no longer have access to the customer resources that were formerly delegated for that offer.
 
-## <a name="update-service-provider-offers"></a>Aanbiedingen van service providers bijwerken
+## <a name="update-service-provider-offers"></a>Update service provider offers
 
-Nadat een klant een aanbieding heeft toegevoegd, kan een service provider een bijgewerkte versie van dezelfde aanbieding publiceren op Azure Marketplace. Het is bijvoorbeeld mogelijk dat een nieuwe roldefinitie moet worden toegevoegd. Als er een nieuwe versie van de aanbieding is gepubliceerd, wordt op de pagina met **aanbiedingen** een pictogram voor de update weer gegeven in de rij voor die aanbieding. De klant kan dit pictogram selecteren voor een overzicht van de verschillen tussen de huidige versie van de aanbieding en de nieuwe.
+After a customer has added an offer, a service provider may publish an updated version of the same offer to Azure Marketplace. For example, they may want to add a new role definition. If a new version of the offer has been published, the **Provider offers** page will show an "update" icon in the row for that offer. The customer can select this icon to see the differences between the current version of the offer and the new one.
 
- ![Pictogram aanbieding bijwerken](../media/update-offer.jpg)
+ ![Update offer icon](../media/update-offer.jpg)
 
-Nadat u de wijzigingen hebt bekeken, kan de klant ervoor kiezen om bij te werken naar de nieuwe versie. Als dit het geval is, worden de autorisaties en andere instellingen die zijn opgegeven in de nieuwe versie toegepast op alle abonnementen en/of resource groepen die zijn gedelegeerd voor die aanbieding.
+After reviewing the changes, the customer can choose to update to the new version. Once they do, the authorizations and other settings specified in the new version will apply to any subscriptions and/or resource groups that have been delegated for that offer.
 
-## <a name="view-delegations"></a>Delegaties weer geven
+## <a name="view-delegations"></a>View delegations
 
-Delegaties vertegenwoordigen de roltoewijzingen die machtigingen verlenen aan de service provider voor de resources die een klant heeft gedelegeerd. Als u deze informatie wilt weer geven, selecteert u **delegaties** aan de linkerkant van de pagina **service providers** .
+Delegations represent the role assignments that grant permissions to the service provider for the resources a customer has delegated. To view this info, select **Delegations** on the left side of the **Service providers** page.
 
-Met filters boven aan de pagina kunt u uw delegatie gegevens sorteren en groeperen of filteren op specifieke klanten, aanbiedingen of tref woorden.
+Filters at the top of the page let you sort and group your delegation info or filter by specific customers, offers, or keywords.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Lighthouse](../overview.md).
-- Meer informatie over hoe service providers [klanten kunnen bekijken en beheren](view-manage-customers.md) door naar **mijn klanten** te gaan in de Azure Portal.
+- Learn more about [Azure Lighthouse](../overview.md).
+- Learn how service providers can [view and manage customers](view-manage-customers.md) by going to **My customers** in the Azure portal.

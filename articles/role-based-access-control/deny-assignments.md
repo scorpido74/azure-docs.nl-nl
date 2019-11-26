@@ -1,6 +1,6 @@
 ---
-title: Informatie over toewijzingen voor Azure-resources te weigeren | Microsoft Docs
-description: Meer informatie over weigeren toewijzingen in op rollen gebaseerd toegangsbeheer (RBAC) voor Azure-resources.
+title: Understand deny assignments for Azure resources | Microsoft Docs
+description: Learn about deny assignments in role-based access control (RBAC) for Azure resources.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,65 +11,68 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/13/2019
+ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: f15d6fd81337aa4a859539e86f37a516848c9370
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 2c663b587d2e9ee278fc774c2841899b060ccbcf
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 06/17/2019
-ms.locfileid: "67165985"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74479360"
 ---
-# <a name="understand-deny-assignments-for-azure-resources"></a>Informatie over toewijzingen voor Azure-resources te weigeren
+# <a name="understand-deny-assignments-for-azure-resources"></a>Understand deny assignments for Azure resources
 
-Vergelijkbaar met een roltoewijzing een *weigeren toewijzing* wordt een reeks acties voor weigeren aan een gebruiker, groep of service-principal bij een bepaald bereik voor de toegang wordt geweigerd. Weigeren toewijzingen voorkomen dat gebruikers van het uitvoeren van acties die specifieke Azure-resource, zelfs als een roltoewijzing deze toegang wordt verleend.
+Similar to a role assignment, a *deny assignment* attaches a set of deny actions to a user, group, or service principal at a particular scope for the purpose of denying access. Deny assignments block users from performing specific Azure resource actions even if a role assignment grants them access.
 
-Dit artikel wordt beschreven hoe weigeren toewijzingen zijn gedefinieerd.
+This article describes how deny assignments are defined.
 
-## <a name="how-deny-assignments-are-created"></a>Hoe weigeren toewijzingen worden gemaakt
+## <a name="how-deny-assignments-are-created"></a>How deny assignments are created
 
-Weigeren toewijzingen worden gemaakt en beheerd door Azure-resources beveiligen. Bijvoorbeeld, blauwdrukken voor Azure en Azure beheerde apps gebruik weigeren toewijzingen om systeem beheerde resources te beschermen. Zie voor meer informatie, [nieuwe resources beveiligen met blauwdrukken voor Azure-resourcevergrendelingen](../governance/blueprints/tutorials/protect-new-resources.md).
+Deny assignments are created and managed by Azure to protect resources. Azure Blueprints and Azure managed apps use deny assignments to protect system-managed resources. Azure Blueprints and Azure managed apps are the only way that deny assignments can be created. You can't directly create your own deny assignments.  For more information, see [Protect new resources with Azure Blueprints resource locks](../governance/blueprints/tutorials/protect-new-resources.md).
 
-## <a name="compare-role-assignments-and-deny-assignments"></a>Roltoewijzingen vergelijken en toewijzingen weigeren
+> [!NOTE]
+> You can't directly create your own deny assignments.
 
-Weigeren toewijzingen volgen een vergelijkbaar patroon als roltoewijzingen, maar ook enkele verschillen.
+## <a name="compare-role-assignments-and-deny-assignments"></a>Compare role assignments and deny assignments
 
-| Mogelijkheid | Roltoewijzing | Toewijzing weigeren |
+Deny assignments follow a similar pattern as role assignments, but also have some differences.
+
+| Mogelijkheid | Roltoewijzing | Deny assignment |
 | --- | --- | --- |
 | Toegang verlenen | :heavy_check_mark: |  |
 | Toegang weigeren |  | :heavy_check_mark: |
-| Kan rechtstreeks worden gemaakt | :heavy_check_mark: |  |
-| Met een bereik toepassen | :heavy_check_mark: | :heavy_check_mark: |
-| Uitsluiten van beveiligings-principals |  | :heavy_check_mark: |
-| Voorkomen dat de overname van onderliggende bereiken |  | :heavy_check_mark: |
-| Van toepassing op [klassiek abonnementsbeheerder](rbac-and-directory-admin-roles.md) toewijzingen |  | :heavy_check_mark: |
+| Can be directly created | :heavy_check_mark: |  |
+| Apply at a scope | :heavy_check_mark: | :heavy_check_mark: |
+| Exclude principals |  | :heavy_check_mark: |
+| Prevent inheritance to child scopes |  | :heavy_check_mark: |
+| Apply to [classic subscription administrator](rbac-and-directory-admin-roles.md) assignments |  | :heavy_check_mark: |
 
-## <a name="deny-assignment-properties"></a>Van toewijzingseigenschappen weigeren
+## <a name="deny-assignment-properties"></a>Deny assignment properties
 
- De toewijzing van een weigeren heeft de volgende eigenschappen:
+ A deny assignment has the following properties:
 
 > [!div class="mx-tableFixed"]
-> | Eigenschap | Vereist | Type | Description |
+> | Eigenschap | Verplicht | Type | Beschrijving |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Ja | String | De weergavenaam van de toewijzing weigeren. Namen moeten uniek zijn voor een bepaald bereik. |
-> | `Description` | Nee | String | De beschrijving van de toewijzing weigeren. |
-> | `Permissions.Actions` | Ten minste één acties of één DataActions | String[] | Een matrix met tekenreeksen die de bewerkingen waarvoor de toewijzing weigeren toegang wordt geblokkeerd opgeeft. |
-> | `Permissions.NotActions` | Nee | String[] | Een matrix met tekenreeksen die de beheerbewerkingen die moeten worden uitgesloten van de toewijzing weigeren opgeeft. |
-> | `Permissions.DataActions` | Ten minste één acties of één DataActions | String[] | Een matrix met tekenreeksen die de gegevensbewerkingen waarop de toewijzing weigeren blokkeert de toegang te geven. |
-> | `Permissions.NotDataActions` | Nee | String[] | Een matrix met tekenreeksen die de gegevensbewerkingen moeten worden uitgesloten van de toewijzing weigeren opgeeft. |
-> | `Scope` | Nee | String | Een tekenreeks waarmee het bereik dat de weigeren-toewijzing is van toepassing op. |
-> | `DoNotApplyToChildScopes` | Nee | Boolean | Hiermee geeft u op of de toewijzing weigeren van toepassing op het onderliggende bereik is. Standaardwaarde is false. |
-> | `Principals[i].Id` | Ja | String[] | Een matrix met Azure AD principal object-id's (gebruiker, groep, service-principal of beheerde identiteit) waarop de toewijzing weigeren van toepassing is. Ingesteld op een lege GUID `00000000-0000-0000-0000-000000000000` om weer te geven van alle beveiligings-principals. |
-> | `Principals[i].Type` | Nee | String[] | Een matrix met de objecttypen die wordt vertegenwoordigd door Principals [i] .id. Ingesteld op `SystemDefined` om weer te geven van alle beveiligings-principals. |
-> | `ExcludePrincipals[i].Id` | Nee | String[] | Een matrix met Azure AD principal object-id's (gebruiker, groep, service-principal of beheerde identiteit) waarop de toewijzing weigeren is niet van toepassing. |
-> | `ExcludePrincipals[i].Type` | Nee | String[] | Een matrix met de objecttypen die wordt vertegenwoordigd door .id ExcludePrincipals [i]. |
-> | `IsSystemProtected` | Nee | Boolean | Hiermee geeft u op of dit weigeren toewijzing is gemaakt door Azure en kan niet worden bewerkt of verwijderd. Op dit moment weigeren alle toewijzingen worden door het systeem beveiligd. |
+> | `DenyAssignmentName` | Ja | Tekenreeks | The display name of the deny assignment. Names must be unique for a given scope. |
+> | `Description` | Nee | Tekenreeks | The description of the deny assignment. |
+> | `Permissions.Actions` | At least one Actions or one DataActions | String[] | An array of strings that specify the management operations to which the deny assignment blocks access. |
+> | `Permissions.NotActions` | Nee | String[] | An array of strings that specify the management operations to exclude from the deny assignment. |
+> | `Permissions.DataActions` | At least one Actions or one DataActions | String[] | An array of strings that specify the data operations to which the deny assignment blocks access. |
+> | `Permissions.NotDataActions` | Nee | String[] | An array of strings that specify the data operations to exclude from the deny assignment. |
+> | `Scope` | Nee | Tekenreeks | A string that specifies the scope that the deny assignment applies to. |
+> | `DoNotApplyToChildScopes` | Nee | Booleaans | Specifies whether the deny assignment applies to child scopes. Default value is false. |
+> | `Principals[i].Id` | Ja | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment applies. Set to an empty GUID `00000000-0000-0000-0000-000000000000` to represent all principals. |
+> | `Principals[i].Type` | Nee | String[] | An array of object types represented by Principals[i].Id. Set to `SystemDefined` to represent all principals. |
+> | `ExcludePrincipals[i].Id` | Nee | String[] | An array of Azure AD principal object IDs (user, group, service principal, or managed identity) to which the deny assignment does not apply. |
+> | `ExcludePrincipals[i].Type` | Nee | String[] | An array of object types represented by ExcludePrincipals[i].Id. |
+> | `IsSystemProtected` | Nee | Booleaans | Specifies whether this deny assignment was created by Azure and cannot be edited or deleted. Currently, all deny assignments are system protected. |
 
-## <a name="the-all-principals-principal"></a>De principal alle beveiligings-Principals
+## <a name="the-all-principals-principal"></a>The All Principals principal
 
-Voor ondersteuning weigeren toewijzingen, een systeem gedefinieerde principal met de naam *alle Principals* is geïntroduceerd. Deze principal vertegenwoordigt alle gebruikers, groepen, service-principals en beheerde identiteiten in Azure AD-adreslijst. Als de principal-ID een nul GUID is `00000000-0000-0000-0000-000000000000` en het type principal `SystemDefined`, de principal vertegenwoordigt alle beveiligings-principals. In de uitvoer van Azure PowerShell lijkt alle Principals op het volgende:
+To support deny assignments, a system-defined principal named *All Principals* has been introduced. This principal represents all users, groups, service principals, and managed identities in an Azure AD directory. If the principal ID is a zero GUID `00000000-0000-0000-0000-000000000000` and the principal type is `SystemDefined`, the principal represents all principals. In Azure PowerShell output, All Principals looks like the following:
 
 ```azurepowershell
 Principals              : {
@@ -79,12 +82,12 @@ Principals              : {
                           }
 ```
 
-Alle beveiligings-Principals kunnen worden gecombineerd met `ExcludePrincipals` voor het weigeren van alle beveiligings-principals met uitzondering van bepaalde gebruikers. Alle Principals heeft de volgende beperkingen:
+All Principals can be combined with `ExcludePrincipals` to deny all principals except some users. All Principals has the following constraints:
 
-- Alleen in kan worden gebruikt `Principals` en kan niet worden gebruikt `ExcludePrincipals`.
-- `Principals[i].Type` moet worden ingesteld op `SystemDefined`.
+- Can be used only in `Principals` and cannot be used in `ExcludePrincipals`.
+- `Principals[i].Type` must be set to `SystemDefined`.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-* [Lijst weigeren toewijzingen voor Azure-resources met behulp van de Azure portal](deny-assignments-portal.md)
-* [Informatie over roldefinities voor Azure-resources](role-definitions.md)
+* [List deny assignments for Azure resources using the Azure portal](deny-assignments-portal.md)
+* [Understand role definitions for Azure resources](role-definitions.md)

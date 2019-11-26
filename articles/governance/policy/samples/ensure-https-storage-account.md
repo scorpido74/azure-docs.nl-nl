@@ -1,14 +1,14 @@
 ---
-title: 'Voor beeld: Controleer HTTPS-verkeer voor opslag accounts'
-description: Dit voorbeeld van een beleidsdefinitie vereist dat opslagaccounts HTTPS-verkeer gebruiken.
+title: Sample - Ensure HTTPS traffic for storage accounts
+description: This sample policy definition requires all Azure storage accounts to allow only secure HTTPS traffic.
 ms.date: 01/23/2019
 ms.topic: sample
-ms.openlocfilehash: c61ccecb72d568ff3a1f4bfce542a2cbbf7d8330
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 4d6b6f7e494d2f8c5278c546ead1f9697f245f38
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74076241"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463582"
 ---
 # <a name="sample---ensure-https-traffic-only-for-storage-account"></a>Voorbeeld - HTTPs-verkeer voor opslagaccounts vereisen
 
@@ -24,7 +24,7 @@ U kunt deze sjabloon implementeren met behulp van [Azure Portal](#deploy-with-th
 
 ## <a name="deploy-with-the-portal"></a>Implementeren met portal
 
-[![het voor beeld van het beleid implementeren naar Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/?feature.customportal=false&microsoft_azure_policy=true&microsoft_azure_policy_policyinsights=true&feature.microsoft_azure_security_policy=true&microsoft_azure_marketplace_policy=true#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2FStorage%2Fhttps-traffic-only%2Fazurepolicy.json)
 
 ## <a name="deploy-with-powershell"></a>Implementeren met PowerShell
 

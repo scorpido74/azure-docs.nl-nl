@@ -1,24 +1,24 @@
 ---
-title: Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
-description: Meer informatie over hoe u met Azure delegated resource management een beleids definitie en beleids toewijzing kunt implementeren voor meerdere tenants.
+title: Deploy Azure Policy to delegated subscriptions at scale
+description: Learn how Azure delegated resource management lets you deploy a policy definition and policy assignment across multiple tenants.
 ms.date: 11/8/2019
-ms.topic: overview
-ms.openlocfilehash: fd335e77feb26241d573db48c2e96c725f70d031
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: 3853e8fc163dfc662adc675dd3df1d15958d329a
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131282"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463869"
 ---
-# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Azure Policy implementeren voor gedelegeerde abonnementen op de juiste schaal
+# <a name="deploy-azure-policy-to-delegated-subscriptions-at-scale"></a>Deploy Azure Policy to delegated subscriptions at scale
 
-Als service provider hebt u mogelijk meerdere tenants voor klanten voor het beheer van gedelegeerde resources voor Azure voor bereid. Met [Azure Lighthouse](../overview.md) kunnen service providers bewerkingen op verschillende tijdstippen in meerdere tenants tegelijk uitvoeren, waardoor beheer taken efficiënter zijn.
+As a service provider, you may have onboarded multiple customer tenants for Azure delegated resource management. [Azure Lighthouse](../overview.md) allows service providers to perform operations at scale across several tenants at once, making management tasks more efficient.
 
-In dit onderwerp wordt beschreven hoe u [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) kunt gebruiken om een beleids definitie en beleids toewijzing te implementeren voor meerdere tenants met behulp van Power shell-opdrachten. In dit voor beeld zorgt de beleids definitie ervoor dat opslag accounts worden beveiligd door alleen HTTPS-verkeer toe te staan.
+This topic shows you how to use [Azure Policy](https://docs.microsoft.com/azure/governance/policy/) to deploy a policy definition and policy assignment across multiple tenants using PowerShell commands. In this example, the policy definition ensures that storage accounts are secured by allowing only HTTPS traffic.
 
-## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Azure resource Graph gebruiken voor het uitvoeren van een query op de tenants van de klant
+## <a name="use-azure-resource-graph-to-query-across-customer-tenants"></a>Use Azure Resource Graph to query across customer tenants
 
-U kunt [Azure resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) gebruiken om een query uit te zoeken voor alle abonnementen in de tenants van de klant die u beheert. In dit voor beeld identificeren we opslag accounts in deze abonnementen die momenteel geen HTTPS-verkeer vereisen.  
+You can use [Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/) to query across all subscriptions in the customer tenants that you manage. In this example, we’ll identify any storage accounts in these subscriptions that do not currently require HTTPS traffic.  
 
 ```powershell
 $MspTenant = "insert your managing tenantId here"
@@ -30,9 +30,9 @@ $ManagedSubscriptions = Search-AzGraph -Query "ResourceContainers | where type =
 Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Storage/storageAccounts' | project name, location, subscriptionId, tenantId, properties.supportsHttpsTrafficOnly" -subscription $ManagedSubscriptions.subscriptionId | convertto-json
 ```
 
-## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Een beleid implementeren over meerdere tenants van de klant
+## <a name="deploy-a-policy-across-multiple-customer-tenants"></a>Deploy a policy across multiple customer tenants
 
-In het onderstaande voor beeld ziet u hoe u een [Azure Resource Manager sjabloon](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) gebruikt om een beleids definitie en beleids toewijzing te implementeren voor gedelegeerde abonnementen in meerdere tenants van klanten. Deze beleids definitie vereist dat alle opslag accounts gebruikmaken van HTTPS-verkeer, waardoor er geen nieuwe opslag accounts kunnen worden gemaakt die niet voldoen aan bestaande opslag accounts en zonder de instelling worden gemarkeerd als niet-compatibel.
+The example below shows how to use an [Azure Resource Manager template](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/Azure-Delegated-Resource-Management/templates/policy-enforce-https-storage/enforceHttpsStorage.json) to deploy a policy definition and policy assignment across delegated subscriptions in multiple customer tenants. This policy definition requires all storage accounts to use HTTPS traffic, preventing the creation of any new storage accounts that don’t comply and marking existing storage accounts without the setting as non-compliant.
 
 ```powershell
 Write-Output "In total, there are $($ManagedSubscriptions.Count) delegated customer subscriptions to be managed"
@@ -48,9 +48,9 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 }
 ```
 
-## <a name="validate-the-policy-deployment"></a>De beleids implementatie valideren
+## <a name="validate-the-policy-deployment"></a>Validate the policy deployment
 
-Nadat u de Azure Resource Manager sjabloon hebt geïmplementeerd, kunt u controleren of de beleids definitie is toegepast door te proberen een opslag account te maken waarvoor **EnableHttpsTrafficOnly** is ingesteld op **False** in een van uw gedelegeerde abonnementen. U kunt dit opslag account niet maken vanwege de beleids toewijzing.  
+After you’ve deployed the Azure Resource Manager template, you can confirm that the policy definition was successfully applied by attempting to create a storage account with **EnableHttpsTrafficOnly** set to **false** in one of your delegated subscriptions. Because of the policy assignment, you should be unable to create this storage account.  
 
 ```powershell
 New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -Location eastus -Force).ResourceGroupName `
@@ -63,7 +63,7 @@ New-AzStorageAccount -ResourceGroupName (New-AzResourceGroup -name policy-test -
 
 ## <a name="clean-up-resources"></a>Resources opschonen
 
-Wanneer u klaar bent, verwijdert u de beleids definitie en toewijzing die door de implementatie is gemaakt.
+When you’re finished, remove the policy definition and assignment created by the deployment.
 
 ```powershell
 foreach ($ManagedSub in $ManagedSubscriptions)
@@ -90,5 +90,5 @@ foreach ($ManagedSub in $ManagedSubscriptions)
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
-- Meer informatie over de [ervaring op het beheer van cross-tenants](../concepts/cross-tenant-management-experience.md).
+- Learn about [Azure Policy](https://docs.microsoft.com/azure/governance/policy/).
+- Learn about [cross-tenant management experiences](../concepts/cross-tenant-management-experience.md).

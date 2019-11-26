@@ -1,6 +1,6 @@
 ---
-title: Een Azure IoT Central-toepassing exporteren | Microsoft Docs
-description: Als oplossings beheerder wilt u een toepassings sjabloon exporteren zodat deze opnieuw kan worden gebruikt.
+title: Export an Azure IoT Central application | Microsoft Docs
+description: As a solution manager, I want to export an application template to be able to reuse it.
 author: dominicbetts
 ms.author: dobett
 ms.date: 10/17/2019
@@ -8,89 +8,95 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 81e24712de186e2d5ec03e33ecabe485cc0d9f31
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 0edc1a7e470b7f0f3773b69635bbc26ab4d283b3
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73894758"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480352"
 ---
-# <a name="export-your-application-preview-features"></a>Uw toepassing exporteren (preview-functies)
+# <a name="export-your-application-preview-features"></a>Export your application (preview features)
 
 [!INCLUDE [iot-central-pnp-original](../../../includes/iot-central-pnp-original-note.md)]
 
-In dit artikel wordt beschreven hoe, als oplossings beheerder, een IoT Central toepassing moet exporteren om deze opnieuw te kunnen gebruiken.
+This article describes how, as a solution manager, to export an IoT Central application to be able to reuse it.
 
 U hebt hiervoor twee opties:
 
-- U kunt een kopie van uw toepassing maken als u alleen een duplicaat kopie van uw toepassing wilt maken.
-- U kunt een toepassings sjabloon maken op basis van uw toepassing als u meerdere kopieën wilt maken.
+- You can create a copy of your application if you just need to create a duplicate copy of your application.
+- You can create an application template from your application if you plan to create multiple copies.
 
-## <a name="copy-your-application"></a>Uw toepassing kopiëren
+## <a name="copy-your-application"></a>Copy your application
 
-U kunt een kopie maken van elke toepassing, min eventuele exemplaren van apparaten, geschiedenis van apparaatgegevens en gebruikers gegevens. De kopie is een betalen per gebruik-toepassing waarvoor u kosten in rekening brengt. U kunt geen proef toepassing maken door een toepassing te kopiëren.
+You can create a copy of any application, minus any device instances, device data history, and user data. The copy is a Pay-As-You-Go application that you'll be charged for. You can't create a Trial application by copying an application.
 
-Selecteer **kopiëren**. Voer in het dialoog venster de details in voor de nieuwe toepassing voor betalen naar gebruik. Selecteer vervolgens **kopiëren** om te bevestigen dat u wilt door gaan. Zie de Snelstartgids [een toepassing maken](quick-deploy-iot-central.md) voor meer informatie over de velden in het formulier.
+Select **Copy**. In the dialog box, enter the details for the new Pay-As-You-Go application. Then select **Copy** to confirm that you want to continue. To learn more about the fields in the form, see the [Create an application](quick-deploy-iot-central.md) quickstart.
 
-![Pagina Toepassings instellingen](media/howto-use-app-templates/appcopy2.png)
+> [!NOTE]
+> You can **Copy your application** to **Europe** and **US** locations only.
 
-Nadat de Kopieer bewerking van de app is voltooid, kunt u naar de nieuwe toepassing navigeren met behulp van de koppeling.
+![Application settings page](media/howto-use-app-templates/appcopy2.png)
 
-![Pagina Toepassings instellingen](media/howto-use-app-templates/appcopy3a.png)
+After the app copy operation succeeds, you can navigate to the new application using the link.
 
-Als u een toepassing kopieert, wordt ook de definitie van regels en e-mail acties gekopieerd. Sommige acties, zoals flow en Logic Apps, zijn gekoppeld aan specifieke regels via de regel-ID. Wanneer een regel naar een andere toepassing wordt gekopieerd, krijgt deze een eigen regel-ID. In dit geval moeten gebruikers een nieuwe actie maken en vervolgens de nieuwe regel koppelen. Over het algemeen is het een goed idee om de regels en acties te controleren om er zeker van te zijn dat ze up-to-date zijn in de nieuwe app.
+![Application settings page](media/howto-use-app-templates/appcopy3a.png)
 
-> [!WARNING]
-> Als een dash board tegels bevat waarin informatie over specifieke apparaten wordt weer gegeven, worden in die tegels **de aangevraagde bron niet** in de nieuwe toepassing gevonden. U moet deze tegels opnieuw configureren om informatie weer te geven over apparaten in de nieuwe toepassing.
-
-## <a name="create-an-application-template"></a>Een toepassings sjabloon maken
-
-Wanneer u een Azure IoT Central-toepassing maakt, hebt u de keuze uit ingebouwde voorbeeld sjablonen. U kunt ook uw eigen toepassings sjablonen maken op basis van bestaande IoT Central toepassingen. U kunt vervolgens uw eigen toepassings sjablonen gebruiken wanneer u nieuwe toepassingen maakt.
-
-Wanneer u een toepassings sjabloon maakt, worden de volgende items uit uw bestaande toepassing opgenomen:
-
-- Het standaard toepassings dashboard, met inbegrip van de indeling van het dash board en alle tegels die u hebt gedefinieerd.
-- Apparaatinstellingen, waaronder metingen, instellingen, eigenschappen, opdrachten en dash board.
-- Wetgeving. Alle regel definities zijn opgenomen. Acties, met uitzonde ring van e-mail acties, worden echter niet meegenomen.
-- Apparaatsets, met inbegrip van de voor waarden en dash boards.
+Copying an application also copies the definition of rules and email action. Some actions, such as Flow and  Logic Apps, are tied to specific rules via the Rule ID. When a rule is copied to a different application, it gets its own Rule ID. In this case, users will have to create a new action and then associate the new rule with it. In general, it's a good idea to check the rules and actions to make sure they're up-to-date in the new app.
 
 > [!WARNING]
-> Als een dash board tegels bevat waarin informatie over specifieke apparaten wordt weer gegeven, worden in die tegels **de aangevraagde bron niet** in de nieuwe toepassing gevonden. U moet deze tegels opnieuw configureren om informatie weer te geven over apparaten in de nieuwe toepassing.
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
 
-Wanneer u een toepassings sjabloon maakt, bevat deze geen de volgende items:
+## <a name="create-an-application-template"></a>Create an application template
+
+When you create an Azure IoT Central application, you have a choice of built-in sample templates. You can also create your own application templates from existing IoT Central applications. You can then use your own application templates when you create new applications.
+
+When you create an application template, it includes the following items from your existing application:
+
+- The default application dashboard, including the dashboard layout and all the tiles you've defined.
+- Device templates, including measurements, settings, properties, commands, and dashboard.
+- Rules. All rule definitions are included. However actions, except for email actions, aren't included.
+- Device sets, including their conditions and dashboards.
+
+> [!WARNING]
+> If a dashboard includes tiles that display information about specific devices, then those tiles show **The requested resource was not found** in the new application. You must reconfigure these tiles to display information about devices in your new application.
+
+When you create an application template, it doesn't include the following items:
 
 - Apparaten
 - Gebruikers
-- Taak definities
-- Definities voor continue gegevens export
+- Job definitions
+- Continuous data export definitions
 
-Voeg deze items hand matig toe aan alle toepassingen die zijn gemaakt op basis van een toepassings sjabloon.
+Add these items manually to any applications created from an application template.
 
-Een toepassings sjabloon maken op basis van een bestaande IoT Central-toepassing:
+To create an application template from an existing IoT Central application:
 
-1. Ga naar de sectie **beheer** in uw toepassing.
-1. Selecteer **toepassings sjabloon exporteren**.
-1. Voer op de pagina **toepassings sjabloon exporteren** een naam en een beschrijving in voor uw sjabloon.
-1. Selecteer de knop **exporteren** om de toepassings sjabloon te maken. U kunt nu de **deel bare koppeling** kopiëren waarmee iemand een nieuwe toepassing kan maken op basis van de sjabloon:
+1. Go to the **Administration** section in your application.
+1. Select **Application Template Export**.
+1. On the **Application Template Export** page, enter a name and description for your template.
+1. Select the **Export** button to create the application template. You can now copy the **Shareable Link** that enables someone to create a new application from the template:
 
-![Een toepassings sjabloon maken](media/howto-use-app-templates/create-template.png)
+![Create an application template](media/howto-use-app-templates/create-template.png)
 
-### <a name="use-an-application-template"></a>Een toepassings sjabloon gebruiken
+### <a name="use-an-application-template"></a>Use an application template
 
-Als u een toepassings sjabloon wilt gebruiken om een nieuwe IoT Central-toepassing te maken, hebt u een eerder gemaakte **deel bare koppeling**nodig. Plak de **koppeling** die u wilt delen in de adres balk van uw browser. De pagina **een toepassing maken** wordt weer gegeven als u uw aangepaste toepassings sjabloon hebt geselecteerd:
+To use an application template to create a new IoT Central application, you need a previously created **Shareable Link**. Paste the **Shareable Link** into your browser's address bar. The **Create an application** page displays with your custom application template selected:
 
-![Een toepassing maken op basis van een sjabloon](media/howto-use-app-templates/create-app.png)
+![Create an application from a template](media/howto-use-app-templates/create-app.png)
 
-Selecteer uw betalings plan en vul de andere velden in het formulier in. Selecteer vervolgens **maken** om een nieuwe IOT Central-toepassing te maken op basis van de toepassings sjabloon.
+Select your payment plan and fill out the other fields on the form. Then select **Create** to create a new IoT Central application from the application template.
 
-### <a name="manage-application-templates"></a>Toepassings sjablonen beheren
+> [!NOTE]
+> When an application is created using **Shareable Link** the available locations are **Europe** and **US**.
 
-Op de pagina **exporteren van toepassings sjablonen** kunt u de toepassings sjabloon verwijderen of bijwerken.
+### <a name="manage-application-templates"></a>Manage application templates
 
-Als u een toepassings sjabloon verwijdert, kunt u de eerder gegenereerde koppeling niet meer gebruiken om nieuwe toepassingen te maken.
+On the **Application Template Export** page, you can delete or update the application template.
 
-Als u uw toepassings sjabloon wilt bijwerken, wijzigt u de naam of beschrijving van de sjabloon op de pagina **export van toepassings sjabloon** . Selecteer vervolgens de knop **exporteren** opnieuw. Met deze actie wordt een nieuwe **deel bare koppeling** gegenereerd en wordt een vorige **deel bare koppelings** -URL ongeldig gemaakt.
+If you delete an application template, you can no longer use the previously generated shareable link to create new applications.
+
+To update your application template, change the template name or description on the **Application Template Export** page. Then select the **Export** button again. This action generates a new **Shareable link** and invalidates any previous **Shareable link** URL.
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Nu u hebt geleerd hoe u toepassings sjablonen kunt gebruiken, is de voorgestelde volgende stap informatie over het [beheren van IOT Central van de Azure Portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)
+Now that you've learned how to use application templates, the suggested next step is to learn how to [Manage IoT Central from the Azure portal](../core/howto-manage-iot-central-from-portal.md?toc=/azure/iot-central/preview/toc.json&bc=/azure/iot-central/preview/breadcrumb/toc.json)

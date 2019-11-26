@@ -1,77 +1,77 @@
 ---
-title: GitHub-acties & Azure Kubernetes-service
+title: GitHub Actions & Azure Kubernetes Service
 services: azure-dev-spaces
 ms.date: 11/04/2019
 ms.topic: conceptual
-description: Bekijk en test wijzigingen van een pull-aanvraag rechtstreeks in azure Kubernetes service met behulp van GitHub-acties en Azure dev Spaces.
-keywords: Docker, Kubernetes, azure, AKS, Azure Kubernetes service, containers, GitHub acties, helm, Service-Mesh, Service-Mesh-route ring, kubectl, K8S
+description: Review and test changes from a pull request directly in Azure Kubernetes Service using GitHub Actions and Azure Dev Spaces.
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, GitHub Actions, Helm, service mesh, service mesh routing, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f362e75b834cd33f209dfeb261b0e6ff1df57cb3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: e20efc6b109eeef234dcd621374d25b812cdc0ce
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280165"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483935"
 ---
-# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub acties & Azure Kubernetes service (preview)
+# <a name="github-actions--azure-kubernetes-service-preview"></a>GitHub Actions & Azure Kubernetes Service (preview)
 
-Azure dev Spaces biedt een werk stroom met behulp van GitHub-acties waarmee u wijzigingen van een pull-aanvraag rechtstreeks in AKS kunt testen voordat de pull-aanvraag wordt samengevoegd in de hoofd vertakking van de opslag plaats. Als een toepassing wordt uitgevoerd om de wijzigingen van een pull-aanvraag te bekijken, kan het vertrouwen van zowel de ontwikkelaar als de team leden toenemen. Deze actieve toepassing kan ook team leden, zoals product managers en ontwerpers, deel nemen aan het beoordelings proces tijdens de eerste fase van de ontwikkeling.
+Azure Dev Spaces provides a workflow using GitHub Actions that allows you to test changes from a pull request directly in AKS before the pull request is merged into your repository’s main branch. Having a running application to review changes of a pull request can increase the confidence of both the developer as well as team members. This running application can also help team members such as, product managers and designers, become part of the review process during early stages of development.
 
 In deze handleiding leert u het volgende:
 
-* Stel Azure-ontwikkel ruimten in op een beheerd Kubernetes-cluster in Azure.
-* Implementeer een grote toepassing met meerdere micro Services naar een dev-ruimte.
-* Stel CI/CD in met GitHub-acties.
-* Test één micro service in een geïsoleerde ontwikkel ruimte binnen de context van de volledige toepassing.
+* Set up Azure Dev Spaces on a managed Kubernetes cluster in Azure.
+* Deploy a large application with multiple microservices to a dev space.
+* Set up CI/CD with GitHub actions.
+* Test a single microservice in an isolated dev space within the context of the full application.
 
 > [!IMPORTANT]
 > Deze functie is momenteel beschikbaar als preview-product. Previews worden voor u beschikbaar gesteld op voorwaarde dat u akkoord gaat met de [aanvullende gebruiksvoorwaarden](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Sommige aspecten van deze functie worden mogelijk nog gewijzigd voordat de functie algemeen beschikbaar wordt.
 
 ## <a name="prerequisites"></a>Vereisten
 
-* Een Azure-abonnement. Als u geen abonnement op Azure hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
+* Een Azure-abonnement. Als u geen Azure-abonnement hebt, kunt u een [gratis account](https://azure.microsoft.com/free) maken.
 * [Azure CLI geïnstalleerd][azure-cli-installed].
-* [Helm 2,13 of hoger is geïnstalleerd][helm-installed].
-* Een GitHub-account waarvoor [github-acties zijn ingeschakeld][github-actions-beta-signup].
-* De [Azure dev Spaces Bike-voorbeeld toepassing](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) die wordt uitgevoerd op een AKS-cluster.
+* [Helm 2.13 - 2.16 installed][helm-installed].
+* A GitHub Account with [GitHub Actions enabled][github-actions-beta-signup].
+* The [Azure Dev Spaces Bike Sharing sample application](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp/README.md) running on an AKS cluster.
 
 ## <a name="create-an-azure-container-registry"></a>Een Azure Container Registry maken
 
-Een Azure Container Registry maken (ACR):
+Create an Azure Container Registry (ACR):
 
 ```cmd
 az acr create --resource-group MyResourceGroup --name <acrName> --sku Basic
 ```
 
 > [!IMPORTANT]
-> De naam van uw ACR moet uniek zijn binnen Azure en mag 5-50 alfanumerieke tekens bevatten. De letters die u gebruikt, moeten kleine letters zijn.
+> The name your ACR must be unique within Azure and contain 5-50 alphanumeric characters. Any letters you use must be lower case.
 
-Sla de waarde *login server* op uit de uitvoer omdat deze wordt gebruikt in een latere stap.
+Save the *loginServer* value from the output because it is used in a later step.
 
-## <a name="create-a-service-principal-for-authentication"></a>Een service-principal voor verificatie maken
+## <a name="create-a-service-principal-for-authentication"></a>Create a service principal for authentication
 
-Gebruik [AZ AD SP create-for-RBAC][az-ad-sp-create-for-rbac] om een service-principal te maken. Bijvoorbeeld:
+Use [az ad sp create-for-rbac][az-ad-sp-create-for-rbac] to create a service principal. Bijvoorbeeld:
 
 ```cmd
 az ad sp create-for-rbac --sdk-auth --skip-assignment
 ```
 
-Sla de JSON-uitvoer op omdat deze wordt gebruikt in een latere stap.
+Save the JSON output because it is used in a later step.
 
 
-Gebruik [AZ AKS show][az-aks-show] om de id van uw AKS *-* cluster weer te geven:
+Use [az aks show][az-aks-show] to display the *id* of your AKS cluster:
 
 ```cmd
 az aks show -g MyResourceGroup -n MyAKS  --query id
 ```
 
-Gebruik [AZ ACR show][az-acr-show] om de *id* van de ACR weer te geven:
+Use [az acr show][az-acr-show] to display the *id* of the ACR:
 
 ```cmd
 az acr show --name <acrName> --query id
 ```
 
-Gebruik [AZ Role Assignment Create][az-role-assignment-create] om *Inzender* toegang te geven tot uw AKS-cluster en *AcrPush* toegang tot uw ACR.
+Use [az role assignment create][az-role-assignment-create] to give *Contributor* access to your AKS cluster and *AcrPush* access to your ACR.
 
 ```cmd
 az role assignment create --assignee <ClientId> --scope <AKSId> --role Contributor
@@ -79,46 +79,46 @@ az role assignment create --assignee <ClientId>  --scope <ACRId> --role AcrPush
 ```
 
 > [!IMPORTANT]
-> U moet de eigenaar zijn van uw AKS-cluster en ACR om uw Service-Principal toegang te geven tot deze resources.
+> You must be the owner of both your AKS cluster and ACR in order to give your service principal access to those resources.
 
-## <a name="configure-your-github-action"></a>Uw GitHub-actie configureren
+## <a name="configure-your-github-action"></a>Configure your GitHub action
 
 > [!IMPORTANT]
-> U moet GitHub-acties hebben ingeschakeld voor uw opslag plaats. Als u GitHub-acties voor uw opslag plaats wilt inschakelen, gaat u naar uw opslag plaats op GitHub, klikt u op het tabblad acties en kiest u acties inschakelen voor deze opslag plaats.
+> You must have GitHub Actions enabled for your repository. To enable GitHub Actions for your repository, navigate to your repository on GitHub, click on the Actions tab, and choose to enable actions for this repository.
 
-Navigeer naar uw gevorkte opslag plaats en klik op *instellingen*. Klik op *geheimen* in de zijbalk links. Klik op *een nieuw geheim toevoegen* om elk nieuw geheim hieronder toe te voegen:
+Navigate to your forked repository and click *Settings*. Click on *Secrets* in the left sidebar. Click *Add a new secret* to add each new secret below:
 
-1. *AZURE_CREDENTIALS*: de volledige uitvoer van het maken van de Service-Principal.
-1. *RESOURCE_GROUP*: de resource groep voor uw AKS-cluster, in dit voor beeld *MyResourceGroup*.
-1. *CLUSTER_NAME*: de naam van uw AKS-cluster, in dit voor beeld *MyAKS*.
-1. *CONTAINER_REGISTRY*: de *login server* voor de ACR.
-1. *Host*: de host voor uw dev-ruimte, die de vorm *< MASTER_SPACE >. < APP_NAME >. <* HOST_SUFFIX >, die in dit voor beeld is *dev.bikesharingweb.fedcab0987.Eus.azds.io*.
-1. *HOST_SUFFIX*: het achtervoegsel van de host voor uw dev-ruimte, in dit voor beeld *fedcab0987.Eus.azds.io*.
-1. *IMAGE_PULL_SECRET*: de naam van het geheim dat u wilt gebruiken, bijvoorbeeld *demo-geheim*.
-1. *MASTER_SPACE*: de naam van de bovenliggende ontwikkel ruimte, die in dit voor beeld *dev*is.
-1. *REGISTRY_USERNAME*: de *CLIENTID* van de JSON-uitvoer van de Service-Principal is gemaakt.
-1. *REGISTRY_PASSWORD*: de *CLIENTSECRET* van de JSON-uitvoer van de Service-Principal is gemaakt.
+1. *AZURE_CREDENTIALS*: the entire output from the service principal creation.
+1. *RESOURCE_GROUP*: the resource group for your AKS cluster, which in this example is *MyResourceGroup*.
+1. *CLUSTER_NAME*: the name of your AKS cluster, which in this example is *MyAKS*.
+1. *CONTAINER_REGISTRY*: the *loginServer* for the ACR.
+1. *HOST*: the host for your Dev Space, which takes the form *<MASTER_SPACE>.<APP_NAME>.<HOST_SUFFIX>* , which in this example is *dev.bikesharingweb.fedcab0987.eus.azds.io*.
+1. *HOST_SUFFIX*: the host suffix for your Dev Space, which in this example is *fedcab0987.eus.azds.io*.
+1. *IMAGE_PULL_SECRET*: the name of the secret you wish to use, for example *demo-secret*.
+1. *MASTER_SPACE*: the name of your parent Dev Space, which in this example is *dev*.
+1. *REGISTRY_USERNAME*: the *clientId* from the JSON output from the service principal creation.
+1. *REGISTRY_PASSWORD*: the *clientSecret* from the JSON output from the service principal creation.
 
 > [!NOTE]
-> Al deze geheimen worden gebruikt door de GitHub-actie en zijn geconfigureerd in [. github/workflows/Bikes. yml][github-action-yaml].
+> All of these secrets are used by the GitHub action and are configured in [.github/workflows/bikes.yml][github-action-yaml].
 
-## <a name="create-a-new-branch-for-code-changes"></a>Een nieuwe vertakking maken voor code wijzigingen
+## <a name="create-a-new-branch-for-code-changes"></a>Create a new branch for code changes
 
-Ga naar `BikeSharingApp/` en maak een nieuwe vertakking met de naam *Bikes-installatie kopieën*.
+Navigate to `BikeSharingApp/` and create a new branch called *bike-images*.
 
 ```cmd
 cd dev-spaces/samples/BikeSharingApp/
 git checkout -b bike-images
 ```
 
-Edit [Bikes/server. js][bikes-server-js] om de regels 232 en 233 te verwijderen:
+Edit [Bikes/server.js][bikes-server-js] to remove lines 232 and 233:
 
 ```javascript
     // Hard code image url *FIX ME*
     theBike.imageUrl = "/static/logo.svg";
 ```
 
-De sectie moet er nu als volgt uitzien:
+The section should now look like:
 
 ```javascript
     var theBike = result;
@@ -126,37 +126,37 @@ De sectie moet er nu als volgt uitzien:
     delete theBike._id;
 ```
 
-Sla het bestand op en gebruik `git add` en `git commit` om uw wijzigingen te bewerken.
+Save the file then use `git add` and `git commit` to stage your changes.
 
 ```cmd
 git add Bikes/server.js 
 git commit -m "Removing hard coded imageUrl from /bikes/:id route"
 ```
 
-## <a name="push-your-changes"></a>Uw wijzigingen pushen
+## <a name="push-your-changes"></a>Push your changes
 
-Gebruik `git push` om uw nieuwe vertakking naar uw gevorkte opslag plaats te pushen:
+Use `git push` to push your new branch to your forked repository:
 
 ```cmd
 git push origin bike-images
 ```
 
-Nadat de push is voltooid, gaat u naar de gesplitste opslag plaats op GitHub om een pull-aanvraag te maken met de *hoofd* vertakking in uw gevorkte opslag plaats als basis vertakking in vergelijking met de vertakking van de *fiets installatie kopieën* .
+After the push is complete, navigate to your forked repository on GitHub to create a pull request with the *master* branch in your forked repository as the base branch compared to the *bike-images* branch.
 
-Nadat uw pull-aanvraag is geopend, gaat u naar het tabblad *acties* . Controleer of de nieuwe actie is gestart en bouwt de *Bikes* -service.
+After your pull request is opened, navigate to the *Actions* tab. Verify a new action has started and is building the *Bikes* service.
 
-## <a name="view-the-child-space-with-your-changes"></a>De onderliggende ruimte met uw wijzigingen weer geven
+## <a name="view-the-child-space-with-your-changes"></a>View the child space with your changes
 
-Nadat de actie is voltooid, ziet u een opmerking met een URL naar uw nieuwe onderliggende ruimte op basis van de wijzigingen in de pull-aanvraag.
+After the action has completed, you will see a comment with a URL to your new child space based the changes in the pull request.
 
 > [!div class="mx-imgBorder"]
-> ![actie-URL voor GitHub](../media/github-actions/github-action-url.png)
+> ![GitHub Action Url](../media/github-actions/github-action-url.png)
 
-Ga naar de *bikesharingweb* -service door de URL te openen in de opmerking. Selecteer *Aurelia Briggs (klant)* als de gebruiker en selecteer vervolgens een te huur fiets. Controleer of de tijdelijke aanduiding voor de fiets niet meer wordt weer geven.
+Navigate to the *bikesharingweb* service by opening the URL from the comment. Select *Aurelia Briggs (customer)* as the user, then select a bike to rent. Verify you no longer see the placeholder image for the bike.
 
-Als u uw wijzigingen in de *hoofd* vertakking in uw Fork samenvoegt, wordt er een andere actie uitgevoerd om uw hele toepassing opnieuw te bouwen en uit te voeren in de bovenliggende ontwikkel ruimte. In dit voor beeld is de bovenliggende ruimte *dev*. Deze actie is geconfigureerd in [. github/workflows/bikesharing. yml][github-action-bikesharing-yaml].
+If you merge your changes into the *master* branch in your fork, another action will run to rebuild and run your entire application in the parent dev space. In this example, the parent space is *dev*. This action is configured in [.github/workflows/bikesharing.yml][github-action-bikesharing-yaml].
 
-## <a name="clean-up-your-azure-resources"></a>Uw Azure-resources opschonen
+## <a name="clean-up-your-azure-resources"></a>Clean up your Azure resources
 
 ```cmd
 az group delete --name MyResourceGroup --yes --no-wait
@@ -164,10 +164,10 @@ az group delete --name MyResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Volgende stappen
 
-Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te ontwikkelen in meerdere containers en hoe u samenwerkings ontwikkeling kunt vereenvoudigen door te werken met verschillende versies of vertakkingen van uw code in verschillende ruimten.
+Learn how Azure Dev Spaces helps you develop more complex applications across multiple containers, and how you can simplify collaborative development by working with different versions or branches of your code in different spaces.
 
 > [!div class="nextstepaction"]
-> [Team ontwikkeling in azure dev Spaces][team-quickstart]
+> [Team development in Azure Dev Spaces][team-quickstart]
 
 [azure-cli-installed]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
@@ -180,7 +180,7 @@ Meer informatie over hoe Azure dev Spaces u helpt om complexere toepassingen te 
 [github-actions-beta-signup]: https://github.com/features/actions
 [github-action-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikes.yml
 [github-action-bikesharing-yaml]: https://github.com/Azure/dev-spaces/blob/master/.github/workflows/bikesharing.yml
-[helm-installed]: https://helm.sh/docs/using_helm/#installing-helm
+[helm-installed]: https://v2.helm.sh/docs/using_helm/#installing-helm
 [tiller-rbac]: https://helm.sh/docs/using_helm/#role-based-access-control
 [supported-regions]: ../about.md#supported-regions-and-configurations
 [sp-acr]: ../../container-registry/container-registry-auth-service-principal.md

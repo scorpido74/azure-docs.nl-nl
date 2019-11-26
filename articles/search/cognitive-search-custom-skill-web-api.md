@@ -1,28 +1,28 @@
 ---
-title: Aangepaste web API-vaardigheid in vaardig heden
+title: Custom Web API skill in skillsets
 titleSuffix: Azure Cognitive Search
-description: Breid mogelijkheden van Azure Cognitive Search vaardig heden uit door aan te roepen naar web-Api's. Gebruik de aangepaste web API-vaardigheid om uw aangepaste code te integreren.
+description: Extend capabilities of Azure Cognitive Search skillsets by calling out to Web APIs. Use the Custom Web API skill to integrate your custom code.
 manager: nitinme
 author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: defe6711049e191ada1a2f6e46d6643debdca86e
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 29928d78c2cfc2f21def363341f8383c4efa89d2
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113790"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484110"
 ---
-# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Aangepaste web API-vaardigheid in een Azure Cognitive Search-verrijkings pijplijn
+# <a name="custom-web-api-skill-in-an-azure-cognitive-search-enrichment-pipeline"></a>Custom Web API skill in an Azure Cognitive Search enrichment pipeline
 
-Met de **aangepaste web API** -vaardigheid kunt u AI-verrijking uitbreiden door een web-API-eind punt aan te roepen waarmee aangepaste bewerkingen worden uitgevoerd. Net als bij ingebouwde vaardig heden bevat een **aangepaste web-API** -vaardigheid invoer en uitvoer. Afhankelijk van de invoer, ontvangt uw web-API een JSON-nettolading wanneer de Indexeer functie wordt uitgevoerd en voert deze een JSON-nettolading uit als antwoord, samen met de status code geslaagd. Er wordt verwacht dat het antwoord de uitvoer bevat die is opgegeven door uw aangepaste vaardigheid. Elk ander antwoord wordt als een fout beschouwd en er worden geen verrijkingen uitgevoerd.
+The **Custom Web API** skill allows you to extend AI enrichment by calling out to a Web API endpoint providing custom operations. Similar to built-in skills, a **Custom Web API** skill has inputs and outputs. Depending on the inputs, your Web API receives a JSON payload when the indexer runs, and outputs a JSON payload as a response, along with a success status code. The response is expected to have the outputs specified by your custom skill. Any other response is considered an error and no enrichments are performed.
 
-De structuur van de JSON-nettoladingen wordt verder beschreven in dit document.
+The structure of the JSON payloads are described further down in this document.
 
 > [!NOTE]
-> De Indexeer functie voert twee keer opnieuw uit voor bepaalde standaard HTTP-status codes die worden geretourneerd door de Web-API. Deze HTTP-status codes zijn: 
+> The indexer will retry twice for certain standard HTTP status codes returned from the Web API. These HTTP status codes are: 
 > * `502 Bad Gateway`
 > * `503 Service Unavailable`
 > * `429 Too Many Requests`
@@ -30,29 +30,29 @@ De structuur van de JSON-nettoladingen wordt verder beschreven in dit document.
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Custom.WebApiSkill
 
-## <a name="skill-parameters"></a>Vaardigheids parameters
+## <a name="skill-parameters"></a>Skill parameters
 
-Para meters zijn hoofdletter gevoelig.
+Parameters are case-sensitive.
 
 | Parameternaam     | Beschrijving |
 |--------------------|-------------|
-| URI | De URI van de Web-API waarnaar de _JSON_ -nettolading wordt verzonden. Alleen **https** URI-schema is toegestaan |
-| httpMethod | De methode die moet worden gebruikt bij het verzenden van de payload. Toegestane methoden zijn `PUT` of `POST` |
-| httpHeaders | Een verzameling sleutel-waardeparen waarbij de sleutels koptekst namen en-waarden vertegenwoordigen header waarden die worden verzonden naar uw web-API en de payload. De volgende headers mogen niet voor komen in deze verzameling: `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
-| timeout | Beschrijving Hiermee geeft u de time-out op voor de HTTP-client die de API-aanroep maakt. Deze moet worden ingedeeld als een XSD ' dayTimeDuration-waarde (een beperkte subset van een [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) -waarde). Bijvoorbeeld `PT60S` 60 seconden. Als deze niet is ingesteld, wordt de standaard waarde van 30 seconden gekozen. De time-out kan worden ingesteld op een maximum van 230 seconden en een minimum van 1 seconde. |
-| batchSize | Beschrijving Hiermee wordt aangegeven hoeveel ' gegevens records ' (Zie de structuur van de _JSON_ -nettolading hieronder) per API-aanroep worden verzonden. Als deze niet is ingesteld, wordt de standaard waarde 1000 gekozen. We raden u aan gebruik te maken van deze para meter om een geschikte verhouding te krijgen tussen het door voeren van de indexering en de belasting van uw API |
-| degreeOfParallelism | Beschrijving Indien opgegeven, wordt hiermee het aantal aanroepen aangegeven dat de Indexeer functie parallel moet maken aan het eind punt dat u hebt opgegeven. U kunt deze waarde verlagen als uw eind punt met een te hoge belasting van de aanvraag is mislukt of als u het wilt verhogen als uw eind punt meer aanvragen kan accepteren en u de prestaties van de Indexeer functie wilt verhogen.  Als deze niet is ingesteld, wordt de standaard waarde 5 gebruikt. De degreeOfParallelism kan worden ingesteld op een maximum van 10 en een minimum van 1. |
+| uri | The URI of the Web API to which the _JSON_ payload will be sent. Only **https** URI scheme is allowed |
+| httpMethod | The method to use while sending the payload. Allowed methods are `PUT` or `POST` |
+| httpHeaders | A collection of key-value pairs where the keys represent header names and values represent header values that will be sent to your Web API along with the payload. The following headers are prohibited from being in this collection:  `Accept`, `Accept-Charset`, `Accept-Encoding`, `Content-Length`, `Content-Type`, `Cookie`, `Host`, `TE`, `Upgrade`, `Via` |
+| timeout | (Optional) When specified, indicates the timeout for the http client making the API call. It must be formatted as an XSD "dayTimeDuration" value (a restricted subset of an [ISO 8601 duration](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) value). For example, `PT60S` for 60 seconds. If not set, a default value of 30 seconds is chosen. The timeout can be set to a maximum of 230 seconds and a minimum of 1 second. |
+| batchSize | (Optional) Indicates how many "data records" (see _JSON_ payload structure below) will be sent per API call. If not set, a default of 1000 is chosen. We recommend that you make use of this parameter to achieve a suitable tradeoff between indexing throughput and load on your API |
+| degreeOfParallelism | (Optional) When specified, indicates the number of calls the indexer will make in parallel to the endpoint you have provided. You can decrease this value if your endpoint is failing under too high of a request load, or raise it if your endpoint is able to accept more requests and you would like an increase in the performance of the indexer.  If not set, a default value of 5 is used. The degreeOfParallelism can be set to a maximum of 10 and a minimum of 1. |
 
-## <a name="skill-inputs"></a>Vaardigheids invoer
+## <a name="skill-inputs"></a>Skill inputs
 
-Er zijn geen "vooraf gedefinieerde" invoer voor deze vaardigheid. U kunt een of meer velden kiezen die al beschikbaar zijn op het moment dat de uitvoering van deze vaardigheid als invoer wordt uitgevoerd en de _JSON_ -nettolading die naar de Web-API wordt verzonden, verschillende velden heeft.
+There are no "predefined" inputs for this skill. You can choose one or more fields that would be already available at the time of this skill's execution as inputs and the _JSON_ payload sent to the Web API will have different fields.
 
-## <a name="skill-outputs"></a>Vaardigheids uitvoer
+## <a name="skill-outputs"></a>Skill outputs
 
-Er zijn geen vooraf gedefinieerde uitvoer voor deze vaardigheid. Afhankelijk van de reactie die uw web-API retourneert, voegt u uitvoer velden toe zodat deze kunnen worden opgehaald uit het _JSON_ -antwoord.
+There are no "predefined" outputs for this skill. Depending on the response your Web API will return, add output fields so that they can be picked up from the _JSON_ response.
 
 
-## <a name="sample-definition"></a>Voorbeeld definitie
+## <a name="sample-definition"></a>Sample definition
 
 ```json
   {
@@ -82,15 +82,15 @@ Er zijn geen vooraf gedefinieerde uitvoer voor deze vaardigheid. Afhankelijk van
         ]
       }
 ```
-## <a name="sample-input-json-structure"></a>Voorbeeld structuur voor de invoer van JSON
+## <a name="sample-input-json-structure"></a>Sample input JSON structure
 
-Deze _JSON_ -structuur vertegenwoordigt de nettolading die wordt verzonden naar uw web-API.
-Deze beperkingen worden altijd gevolgd:
+This _JSON_ structure represents the payload that will be sent to your Web API.
+It will always follow these constraints:
 
-* De entiteit op het hoogste niveau heet `values` en is een matrix met objecten. Het aantal objecten is de meeste `batchSize`
-* Elk object in de `values` matrix heeft
-    * Een `recordId` eigenschap die een **unieke** teken reeks is, die wordt gebruikt om die record te identificeren.
-    * Een `data` eigenschap die een _JSON_ -object is. De velden van de eigenschap `data` komen overeen met de namen die zijn opgegeven in de sectie `inputs` van de definitie van de vaardigheid. De waarde van deze velden wordt uit de `source` van die velden (die mogelijk afkomstig zijn uit een veld in het document of mogelijk van een andere vaardigheid)
+* The top-level entity is called `values` and will be an array of objects. The number of such objects will be at most the `batchSize`
+* Each object in the `values` array will have
+    * A `recordId` property that is a **unique** string, used to identify that record.
+    * A `data` property that is a _JSON_ object. The fields of the `data` property will correspond to the "names" specified in the `inputs` section of the skill definition. The value of those fields will be from the `source` of those fields (which could be from a field in the document, or potentially from another skill)
 
 ```json
 {
@@ -135,18 +135,18 @@ Deze beperkingen worden altijd gevolgd:
 }
 ```
 
-## <a name="sample-output-json-structure"></a>Voor beeld van JSON-structuur van uitvoer
+## <a name="sample-output-json-structure"></a>Sample output JSON structure
 
-De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API. De Web-API mag alleen een _JSON_ -nettolading retour neren (gecontroleerd door te kijken naar de `Content-Type` reactie header) en moet voldoen aan de volgende beperkingen:
+The "output" corresponds to the response returned from your Web API. The Web API should only return a _JSON_ payload (verified by looking at the `Content-Type` response header) and should satisfy the following constraints:
 
-* Er moet een entiteit op het hoogste niveau worden aangeroepen `values` die een matrix met objecten moet zijn.
-* Het aantal objecten in de matrix moet hetzelfde zijn als het aantal objecten dat naar de Web-API wordt verzonden.
-* Elk object moet het volgende hebben:
-   * Een `recordId` eigenschap
-   * Een `data` eigenschap, die een object is waarbij de velden verrijkingen zijn die overeenkomen met de ' namen ' in de `output` en waarvan de waarde wordt beschouwd als de verrijking.
-   * Een `errors`-eigenschap, een matrix met eventuele fouten die worden toegevoegd aan de uitvoerings geschiedenis van de Indexeer functie. Deze eigenschap is vereist, maar kan een `null`-waarde hebben.
-   * Een `warnings`-eigenschap, een matrix met waarschuwingen die worden toegevoegd aan de uitvoerings geschiedenis van de Indexeer functie. Deze eigenschap is vereist, maar kan een `null`-waarde hebben.
-* De objecten in de `values` matrix moeten zich niet in dezelfde volg orde besturen als de objecten in de `values` matrix die als een aanvraag voor de Web-API worden verzonden. De `recordId` wordt echter gebruikt voor correlatie, zodat alle records in het antwoord met een `recordId` die geen deel uitmaken van de oorspronkelijke aanvraag voor de Web-API, worden verwijderd.
+* There should be a top-level entity called `values` which should be an array of objects.
+* The number of objects in the array should be the same as the number of objects sent to the Web API.
+* Each object should have:
+   * A `recordId` property
+   * A `data` property, which is an object where the fields are enrichments matching the "names" in the `output` and whose value is considered the enrichment.
+   * An `errors` property, an array listing any errors encountered that will be added to the indexer execution history. This property is required, but can have a `null` value.
+   * A `warnings` property, an array listing any warnings encountered that will be added to the indexer execution history. This property is required, but can have a `null` value.
+* The objects in the `values` array need not be in the same order as the objects in the `values` array sent as a request to the Web API. However, the `recordId` is used for correlation so any record in the response containing a `recordId` which was not part of the original request to the Web API will be discarded.
 
 ```json
 {
@@ -193,16 +193,16 @@ De "uitvoer" komt overeen met de reactie die wordt geretourneerd door de Web-API
 
 ```
 
-## <a name="error-cases"></a>Fout cases
-Naast de Web-API die niet beschikbaar is, of het verzenden van niet-geslaagde status codes, worden de volgende als foutieve cases beschouwd:
+## <a name="error-cases"></a>Error cases
+In addition to your Web API being unavailable, or sending out non-successful status codes the following are considered erroneous cases:
 
-* Als de Web-API een succes status code retourneert, maar het antwoord geeft aan dat deze niet `application/json`, wordt het antwoord beschouwd als ongeldig en worden er geen verrijkingen uitgevoerd.
-* Als er **Ongeldige** records zijn (met `recordId` niet in de oorspronkelijke aanvraag of met dubbele waarden) in de antwoord `values` matrix, wordt er geen verrijking uitgevoerd voor **deze** records.
+* If the Web API returns a success status code but the response indicates that it is not `application/json` then the response is considered invalid and no enrichments will be performed.
+* If there are **invalid** (with `recordId` not in the original request, or with duplicate values) records in the response `values` array, no enrichment will be performed for **those** records.
 
-Als de Web-API niet beschikbaar is of een HTTP-fout retourneert, wordt een beschrijvende fout met alle beschik bare Details over de HTTP-fout toegevoegd aan de indexerings geschiedenis.
+For cases when the Web API is unavailable or returns a HTTP error, a friendly error with any available details about the HTTP error will be added to the indexer execution history.
 
 ## <a name="see-also"></a>Zie ook
 
-+ [Een vaardig heden definiëren](cognitive-search-defining-skillset.md)
-+ [Aangepaste vaardigheid toevoegen aan een AI-verrijkings pijplijn](cognitive-search-custom-skill-interface.md)
-+ [Voor beeld: het maken van een aangepaste vaardigheid voor AI-verrijking (cognitieve-Search-Create-Custom-vaardigheid-example.md)
++ [How to define a skillset](cognitive-search-defining-skillset.md)
++ [Add custom skill to an AI enrichment pipeline](cognitive-search-custom-skill-interface.md)
++ [Example: Creating a custom skill for AI enrichment](cognitive-search-create-custom-skill-example.md)

@@ -1,14 +1,14 @@
 ---
 title: 'Tutorial: Create a custom policy definition'
 description: In this tutorial, you craft a custom policy definition for Azure Policy to enforce custom business rules on your Azure resources.
-ms.date: 11/21/2019
+ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: d93f1acb383782de055983ec9ec33ce5576619d1
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: e30d47ed6e01c4fd8ff061398b1045f9446e466a
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327415"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74483988"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Tutorial: Create a custom policy definition
 
@@ -450,6 +450,16 @@ Nu alle drie delen van het beleid zijn gedefinieerd, volgt hier de voltooide def
 ```
 
 De voltooide definitie kan worden gebruikt om een nieuw beleid te maken. Portal en elke SDK (Azure CLI, Azure PowerShell en REST API) accepteren de definitie op verschillende manieren; bekijk de opdrachten voor elk ervan om het juiste gebruik te valideren. Wijs het beleid vervolgens met behulp van het geparameteriseerde effect toe aan de juiste resources om de veiligheid van uw opslagaccounts te beheren.
+
+## <a name="clean-up-resources"></a>Resources opschonen
+
+Als u niet wilt doorgaan, gebruikt u de volgende stappen om alle bovenstaande toewijzingen of definities te verwijderen:
+
+1. Selecteer **Definities** (of **Toewijzingen** als u een toewijzing wilt verwijderen) onder **Ontwerpen** in het linkerdeelvenster van de Azure Policy-pagina.
+
+1. Zoek naar de nieuwe initiatief- of beleidsdefinitie (of toewijzing) die u zojuist hebt gemaakt.
+
+1. Klik met de rechtermuisknop op de rij of selecteer de weglatingstekens aan het einde van de definitie (of de toewijzing) en selecteer **Definitie verwijderen** (of **Toewijzing verwijderen**).
 
 ## <a name="review"></a>Beoordelen
 

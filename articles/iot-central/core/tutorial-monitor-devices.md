@@ -1,6 +1,6 @@
 ---
-title: 'Zelf studie: uw apparaten bewaken in azure IoT Central'
-description: 'Zelf studie: als operator gebruikt u uw Azure IoT Central-toepassing om uw apparaten te bewaken.'
+title: 'Tutorial: Monitor your devices in Azure IoT Central'
+description: 'Tutorial: As an operator, use your Azure IoT Central application to monitor your devices.'
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/13/2019
@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: db3a9a6ba51394a0473f64a2ccede97e5283bba1
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a07a822e863c5ff5d695a20c02bd8d295721efda
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106566"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74480251"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Zelfstudie: Azure IoT Central gebruiken om uw apparaten te bewaken
 
@@ -41,7 +41,7 @@ Voordat u begint, moet de bouwer ten minste de eerste drie zelfstudies voor bouw
 
 Azure IoT Central verzendt meldingen over apparaten als e-mailberichten. De bouwer heeft een regel toegevoegd om een ​​melding te verzenden wanneer de temperatuur in een aangesloten airconditioningapparaat een drempel overschrijdt. Controleer de e-mails die zijn verzonden naar het account dat de bouwer heeft gekozen voor het ontvangen van meldingen.
 
-Open het e-mailbericht dat u aan het einde van de zelfstudie [Regels en acties voor uw apparaat configureren](tutorial-configure-rules.md) hebt ontvangen. Selecteer in het e-mail bericht de koppeling naar het apparaat naast **apparaatnaam** in het gedeelte **Details** :
+Open het e-mailbericht dat u aan het einde van de zelfstudie [Regels en acties voor uw apparaat configureren](tutorial-configure-rules.md) hebt ontvangen. In the email, select the link to the device next to **Device Name** in the **Details** section:
 
 ![E-mailwaarschuwing](media/tutorial-monitor-devices/email.png)
 
@@ -57,7 +57,7 @@ Kies de weergave **Dashboard** om informatie over het apparaat te bekijken.
 
 ![Apparaatdashboard](media/tutorial-monitor-devices/initial_screen.png)
 
-De grafiek op het dashboard toont een grafische voorstelling van de temperatuur van het apparaat. U kunt ook de huidige doel temperatuur voor het apparaat zien op de tegel eigenschappen van het **apparaat** . U besluit dat de doeltemperatuur te hoog is.
+De grafiek op het dashboard toont een grafische voorstelling van de temperatuur van het apparaat. You can also see the current target temperature for the device in the **Device properties** tile. U besluit dat de doeltemperatuur te hoog is.
 
 ## <a name="remediate-an-issue"></a>Een probleem oplossen
 
@@ -73,7 +73,7 @@ Gebruik de pagina **Instellingen** om de doeltemperatuur van het apparaat te wij
 
 ## <a name="next-steps"></a>Volgende stappen
 
-In deze zelfstudie heeft u het volgende geleerd:
+In deze zelfstudie hebt u het volgende geleerd:
 
 > [!div class="nextstepaction"]
 > * Een melding ontvangen

@@ -1,14 +1,14 @@
 ---
 title: Voorbeeld - Toegestane locaties
-description: Deze voorbeeldbeleidsdefinitie vereist dat alle resources worden geïmplementeerd naar de goedgekeurde locaties.
+description: This sample policy definition requires that all resources are deployed to the approved locations defined in a parameter.
 ms.date: 01/26/2019
 ms.topic: sample
-ms.openlocfilehash: 7561e57a00f440e50701fa75bd54676ad014e1d5
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 7620055c82a49c1e805da69205d14c5f0a925e8c
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74071920"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463704"
 ---
 # <a name="sample---allowed-region-locations"></a>Voorbeeld - Toegestane regiolocaties
 
@@ -19,7 +19,7 @@ U kunt dit voorbeeldbeleid implementeren met behulp van:
 - [Azure Portal](#azure-portal)
 - [Azure PowerShell](#azure-powershell)
 - [Azure CLI](#azure-cli)
-- [REST-API](#rest-api)
+- [REST API](#rest-api)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 
@@ -70,8 +70,8 @@ In deze voorbeeldparameter zijn alleen de locaties _eastus2_ of _westus_ toegest
 
 ## <a name="azure-portal"></a>Azure Portal
 
-[![het voor beeld van het beleid implementeren naar azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
-[![het voor beeld van het beleid implementeren naar Azure gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure](https://azuredeploy.net/deploybutton.png)](https://portal.azure.com/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
+[![Deploy the Policy sample to Azure Gov](https://docs.microsoft.com/azure/governance/policy/media/deploy/deployGovbutton.png)](https://portal.azure.us/#blade/Microsoft_Azure_Policy/CreatePolicyDefinitionBlade/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-policy%2Fmaster%2Fsamples%2Fbuilt-in-policy%2Fallowed-locations%2Fazurepolicy.json)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
@@ -107,7 +107,7 @@ Remove-AzPolicyDefinition -Id $definition.ResourceId
 
 ### <a name="azure-powershell-explanation"></a>Toelichting van Azure PowerShell
 
-De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. Elke opdracht in onderstaande tabel is een link naar opdracht-specifieke documentatie:
+De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. Elke opdracht in de volgende tabel is een koppeling naar opdrachtspecifieke documentatie:
 
 | Opdracht | Opmerkingen |
 |---|---|
@@ -117,7 +117,7 @@ De scripts voor implementeren en verwijderen gebruiken de volgende opdrachten. E
 | [Remove-AzPolicyAssignment](/powershell/module/az.resources/Remove-Azpolicyassignment) | Hiermee verwijdert u een bestaande Azure Policy-toewijzing. |
 | [Remove-AzPolicyDefinition](/powershell/module/az.resources/Remove-Azpolicydefinition) | Hiermee verwijdert u een bestaande Azure Policy-definitie. |
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
 [!INCLUDE [sample-cli-install](../../../../includes/sample-cli-install.md)]
 
@@ -159,11 +159,11 @@ az policy definition delete --name `echo $definition | jq '.name' -r`
 | [az policy assignment delete](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-delete) | Hiermee verwijdert u een bestaande Azure Policy-toewijzing. |
 | [az policy definition delete](/cli/azure/policy/definition?view=azure-cli-latest#az-policy-definition-delete) | Hiermee verwijdert u een bestaande Azure Policy-definitie. |
 
-## <a name="rest-api"></a>REST API
+## <a name="rest-api"></a>REST-API
 
 Er zijn verschillende hulpprogramma's die u kunt gebruiken om te communiceren met de REST-API van Resource Manager, zoals [ARMClient](https://github.com/projectkudu/ARMClient) of PowerShell.
 
-### <a name="deploy-with-rest-api"></a>Implementeren met REST-API
+### <a name="deploy-with-rest-api"></a>Implementeren met REST API
 
 - Maak de beleidsdefinitie (abonnementsbereik). Gebruik de [beleidsdefinitie](#policy-definition) geschreven in JSON voor de body van de aanvraag.
 

@@ -1,45 +1,45 @@
 ---
-title: Tenants, rollen en gebruikers in azure Lighthouse-scenario's
-description: Inzicht in de concepten van Azure Active Directory-tenants, gebruikers en rollen, en hoe ze kunnen worden gebruikt in azure Lighthouse-scenario's.
+title: Tenants, roles, and users in Azure Lighthouse scenarios
+description: Understand the concepts of Azure Active Directory tenants, users, and roles, as well as how they can be used in Azure Lighthouse scenarios.
 ms.date: 11/05/2019
-ms.topic: overview
-ms.openlocfilehash: 73c5cd592f07a23edaad23796e498ea9243c5d26
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.topic: conceptual
+ms.openlocfilehash: a1ad004c79f90f4642640405da9e8876b9202e98
+ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74131338"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74463926"
 ---
-# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, rollen en gebruikers in azure Lighthouse-scenario's
+# <a name="tenants-roles-and-users-in-azure-lighthouse-scenarios"></a>Tenants, roles, and users in Azure Lighthouse scenarios
 
-Het is belang rijk om te begrijpen hoe Azure Active Directory (Azure AD)-tenants, gebruikers en rollen werken, en hoe ze kunnen worden gebruikt in azure [Lighthouse-scenario's](azure-delegated-resource-management.md).
+Before onboarding customers for [Azure delegated resource management](azure-delegated-resource-management.md), it's important to understand how Azure Active Directory (Azure AD) tenants, users, and roles work, as well as how they can be used in Azure Lighthouse scenarios.
 
-Een *Tenant* is een speciaal en vertrouwd exemplaar van Azure AD. Normaal gesp roken vertegenwoordigt elke Tenant één organisatie. Met het gedelegeerde resource beheer van Azure kunt u resources van de ene Tenant naar een andere Tenant maken. Hierdoor kunnen gebruikers in de Tenant beheren (zoals één van een service provider) toegang krijgen tot gedelegeerde resources in de Tenant van een klant, of kunnen [ondernemingen met meerdere tenants hun beheer bewerkingen centraliseren](enterprise.md).
+A *tenant* is a dedicated and trusted instance of Azure AD. Typically, each tenant represents a single organization. Azure delegated resource management enables logical projection of resources from one tenant to another tenant. This allows users in the managing tenant (such as one belonging to a service provider) to access delegated resources in a customer's tenant, or lets [enterprises with multiple tenants centralize their management operations](enterprise.md).
 
-Als u deze logische projectie wilt uitvoeren, moet een abonnement (of een of meer resource groepen binnen een abonnement) in de *Tenant van de klant worden* opvolgd voor het beheer van de gedelegeerde resources van Azure. Dit voorbereidings proces kan worden uitgevoerd [via Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een open bare of persoonlijke aanbieding naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
+In order to achieve this logical projection, a subscription (or one or more resource groups within a subscription) in the customer tenant must be *onboarded* for Azure delegated resource management. This onboarding process can be done either [through Azure Resource Manager templates](../how-to/onboard-customer.md) or by [publishing a public or private offer to Azure Marketplace](../how-to/publish-managed-services-offers.md).
 
-Welke methode u ook kiest, u moet *autorisaties*definiëren. Elke autorisatie geeft een gebruikers account op in de beheer-Tenant die toegang heeft tot de gedelegeerde resources en een ingebouwde rol die de machtigingen instelt die elk van deze gebruikers voor deze resources heeft.
+Whichever onboarding method you choose, you will need to define *authorizations*. Each authorization specifies a user account in the managing tenant which will have access to the delegated resources, and a built-in role that sets the permissions that each of these users will have for these resources.
 
-## <a name="role-support-for-azure-delegated-resource-management"></a>Functie ondersteuning voor Azure delegated resource management
+## <a name="role-support-for-azure-delegated-resource-management"></a>Role support for Azure delegated resource management
 
-Bij het definiëren van een autorisatie moet aan elk gebruikers account een van de [ingebouwde rollen op basis van op rollen gebaseerd toegangs beheer (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)worden toegewezen. Aangepaste rollen en [beheerders rollen voor klassieke abonnementen](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) worden niet ondersteund.
+When defining an authorization, each user account must be assigned one of the [role-based access control (RBAC) built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles). Custom roles and [classic subscription administrator roles](https://docs.microsoft.com/azure/role-based-access-control/classic-administrators) are not supported.
 
-Alle [ingebouwde rollen](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) worden momenteel ondersteund met Azure delegated resource management, met de volgende uitzonde ringen:
+All [built-in roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) are currently supported with Azure delegated resource management, with the following exceptions:
 
-- De rol van [eigenaar](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) wordt niet ondersteund.
-- Ingebouwde rollen met de machtiging [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) worden niet ondersteund.
-- De ingebouwde rol [gebruikers toegangs beheerder](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) wordt ondersteund, maar alleen voor het beperkte doel van het [toewijzen van rollen aan een beheerde identiteit in de Tenant van de klant](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). Er worden gewoonlijk geen andere machtigingen verleend door deze rol. Als u een gebruiker met deze rol definieert, moet u ook de ingebouwde rol (len) opgeven die deze gebruiker aan beheerde identiteiten kan toewijzen.
+- The [Owner](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) role is not supported.
+- Any built-in roles with [DataActions](https://docs.microsoft.com/azure/role-based-access-control/role-definitions#dataactions) permission are not supported.
+- The [User Access Administrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in role is supported, but only for the limited purpose of [assigning roles to a managed identity in the customer tenant](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant). No other permissions typically granted by this role will apply. If you define a user with this role, you must also specify the built-in role(s) that this user can assign to managed identities.
 
-## <a name="best-practices-for-defining-users-and-roles"></a>Aanbevolen procedures voor het definiëren van gebruikers en rollen
+## <a name="best-practices-for-defining-users-and-roles"></a>Best practices for defining users and roles
 
-Wanneer u een autorisatie maakt, raden we u aan de volgende aanbevolen procedures uit te voeren:
+When creating your authorizations, we recommend the following best practices:
 
-- In de meeste gevallen moet u machtigingen toewijzen aan een Azure AD-gebruikers groep of Service-Principal, in plaats van aan een reeks afzonderlijke gebruikers accounts. Hiermee kunt u toegang voor afzonderlijke gebruikers toevoegen of verwijderen zonder dat u het plan hoeft bij te werken en opnieuw te publiceren wanneer uw toegangs vereisten veranderen.
-- Zorg ervoor dat u het principe van minimale bevoegdheden volgt, zodat gebruikers alleen over de benodigde machtigingen beschikken om hun taak te volt ooien, waardoor de kans op onbedoelde fouten wordt verminderd. Zie [aanbevolen beveiligings procedures](../concepts/recommended-security-practices.md)voor meer informatie.
-- Neem een gebruiker op met de functie voor het verwijderen van de [registratie toewijzing van beheerde services](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) , zodat u [de toegang tot de overdracht](../how-to/onboard-customer.md#remove-access-to-a-delegation) later indien nodig kunt verwijderen. Als deze rol niet is toegewezen, kunnen gedelegeerde resources alleen worden verwijderd door een gebruiker in de Tenant van de klant.
-- Zorg ervoor dat alle gebruikers die [de pagina mijn klanten moeten weer geven in de Azure Portal](../how-to/view-manage-customers.md) over de rol van [lezer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) beschikken (of een andere ingebouwde rol die lezers toegang bevat).
+- In most cases, you'll want to assign permissions to an Azure AD user group or service principal, rather than to a series of individual user accounts. This lets you add or remove access for individual users without having to update and republish the plan when your access requirements change.
+- Be sure to follow the principle of least privilege so that users only have the permissions needed to complete their job, helping to reduce the chance of inadvertent errors. For more info, see [Recommended security practices](../concepts/recommended-security-practices.md).
+- Include a user with the [Managed Services Registration Assignment Delete Role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-services-registration-assignment-delete-role) so that you can [remove access to the delegation](../how-to/onboard-customer.md#remove-access-to-a-delegation) later if needed. If this role is not assigned, delegated resources can only be removed by a user in the customer's tenant.
+- Be sure that any user who needs to [view the My customers page in the Azure portal](../how-to/view-manage-customers.md) has the [Reader](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) role (or another built-in role which includes Reader access).
 
 ## <a name="next-steps"></a>Volgende stappen
 
-- Meer informatie over [aanbevolen beveiligings procedures voor het beheer van gedelegeerde resources van Azure](recommended-security-practices.md).
-- Laat uw klanten onboarded resource management ongedaan maken, hetzij met [behulp van Azure Resource Manager sjablonen](../how-to/onboard-customer.md) of door [een aanbieding voor privé-of openbaar beheerde services naar Azure Marketplace te publiceren](../how-to/publish-managed-services-offers.md).
+- Learn about [recommended security practices for Azure delegated resource management](recommended-security-practices.md).
+- Onboard your customers to Azure delegated resource management, either by [using Azure Resource Manager templates](../how-to/onboard-customer.md) or by [publishing a private or public managed services offer to Azure Marketplace](../how-to/publish-managed-services-offers.md).

@@ -1,93 +1,93 @@
 ---
-title: Implementatiegeschiedenis
-description: Hierin wordt beschreven hoe u Azure Resource Manager implementatie bewerkingen kunt weer geven met de portal, Power shell, Azure CLI en REST API.
+title: Deployment history
+description: Describes how to view Azure Resource Manager deployment operations with the portal, PowerShell, Azure CLI, and REST API.
 tags: top-support-issue
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: d8daf7191bb22f7c7057f6ef6b220a18868872cc
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 23687ddcfb7911a999ee06ac8df8badf341b41d9
+ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
 ms.translationtype: MT
 ms.contentlocale: nl-NL
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74149566"
+ms.lasthandoff: 11/25/2019
+ms.locfileid: "74484195"
 ---
-# <a name="view-deployment-history-with-azure-resource-manager"></a>Implementatie geschiedenis met Azure Resource Manager weer geven
+# <a name="view-deployment-history-with-azure-resource-manager"></a>View deployment history with Azure Resource Manager
 
-Met Azure Resource Manager kunt u de implementatie geschiedenis bekijken en specifieke bewerkingen in eerdere implementaties onderzoeken. U kunt de resources zien die zijn geïmplementeerd en informatie over eventuele fouten ophalen.
+Azure Resource Manager enables you to view your deployment history and examine specific operations in past deployments. You can see the resources that were deployed, and get information about any errors.
 
-Zie [algemene fouten oplossen bij het implementeren van resources in azure met Azure Resource Manager](resource-manager-common-deployment-errors.md)voor hulp bij het oplossen van bepaalde implementatie fouten.
+For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
 
 ## <a name="portal"></a>Portal
 
-Voor meer informatie over een implementatie in de implementatie geschiedenis.
+To get details about a deployment from the deployment history.
 
-1. Selecteer de resource groep die u wilt bekijken.
+1. Select the resource group you want to examine.
 
-1. Selecteer de koppeling onder **implementaties**.
+1. Select the link under **Deployments**.
 
-   ![Implementatie geschiedenis selecteren](./media/resource-manager-deployment-operations/select-deployment-history.png)
+   ![Select deployment history](./media/resource-manager-deployment-operations/select-deployment-history.png)
 
-1. Selecteer een van de implementaties in de implementatie geschiedenis.
+1. Select one of the deployments from the deployment history.
 
-   ![Implementatie selecteren](./media/resource-manager-deployment-operations/select-details.png)
+   ![Select deployment](./media/resource-manager-deployment-operations/select-details.png)
 
-1. Er wordt een samen vatting van de implementatie weer gegeven, met inbegrip van een lijst met de resources die zijn geïmplementeerd.
+1. A summary of the deployment is displayed, including a list of the resources that were deployed.
 
-    ![Implementatie samenvatting](./media/resource-manager-deployment-operations/view-deployment-summary.png)
+    ![Deployment summary](./media/resource-manager-deployment-operations/view-deployment-summary.png)
 
-1. Selecteer **sjabloon**om de sjabloon weer te geven die wordt gebruikt voor de implementatie. U kunt de sjabloon downloaden om deze opnieuw te gebruiken.
+1. To view the template used for the deployment, select **Template**. You can download the template to reuse it.
 
-    ![Sjabloon weer geven](./media/resource-manager-deployment-operations/show-template-from-history.png)
+    ![Show template](./media/resource-manager-deployment-operations/show-template-from-history.png)
 
-1. Als de implementatie is mislukt, wordt een fout bericht weer gegeven. Selecteer het fout bericht voor meer informatie.
+1. If your deployment failed, you see an error message. Select the error message for more details.
 
-    ![Mislukte implementatie weer geven](./media/resource-manager-deployment-operations/show-error.png)
+    ![View failed deployment](./media/resource-manager-deployment-operations/show-error.png)
 
-1. Het gedetailleerde fout bericht wordt weer gegeven.
+1. The detailed error message is displayed.
 
-    ![Fout details weer geven](./media/resource-manager-deployment-operations/show-details.png)
+    ![View error details](./media/resource-manager-deployment-operations/show-details.png)
 
-1. De correlatie-ID wordt gebruikt voor het bijhouden van gerelateerde gebeurtenissen en kan nuttig zijn bij het werken met technische ondersteuning bij het oplossen van problemen met een implementatie.
+1. The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
 
-    ![Correlatie-ID ophalen](./media/resource-manager-deployment-operations/get-correlation-id.png)
+    ![Get correlation ID](./media/resource-manager-deployment-operations/get-correlation-id.png)
 
-1. Selecteer **bewerkings Details**voor meer informatie over de stap die is mislukt.
+1. To learn more about the step that failed, select **Operation details**.
 
-    ![Implementatie bewerkingen selecteren](./media/resource-manager-deployment-operations/select-deployment-operations.png)
+    ![Select deployment operations](./media/resource-manager-deployment-operations/select-deployment-operations.png)
 
-1. U ziet de Details voor die stap van de implementatie.
+1. You see the details for that step of the deployment.
 
-    ![Bewerkings details weer geven](./media/resource-manager-deployment-operations/show-operation-details.png)
+    ![Show operation details](./media/resource-manager-deployment-operations/show-operation-details.png)
 
 ## <a name="powershell"></a>PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Gebruik de opdracht **Get-AzResourceGroupDeployment** om de algehele status van een implementatie te verkrijgen.
+To get the overall status of a deployment, use the **Get-AzResourceGroupDeployment** command.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup
 ```
 
-U kunt ook de resultaten filteren voor alleen de implementaties die zijn mislukt.
+Or, you can filter the results for only those deployments that have failed.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
 ```
 
-De correlatie-ID wordt gebruikt voor het bijhouden van gerelateerde gebeurtenissen en kan nuttig zijn bij het werken met technische ondersteuning bij het oplossen van problemen met een implementatie. Als u de correlatie-ID wilt ophalen, gebruikt u:
+The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment. To get the correlation ID, use:
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
 ```
 
-Elke implementatie bevat meerdere bewerkingen. Elke bewerking vertegenwoordigt een stap in het implementatie proces. Als u wilt weten wat er mis ging met een implementatie, moet u doorgaans details over de implementatie bewerkingen zien. U kunt de status van de bewerkingen zien met **Get-AzResourceGroupDeploymentOperation**.
+Each deployment includes multiple operations. Each operation represents a step in the deployment process. To discover what went wrong with a deployment, you usually need to see details about the deployment operations. You can see the status of the operations with **Get-AzResourceGroupDeploymentOperation**.
 
 ```azurepowershell-interactive
 Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName azuredeploy
 ```
 
-Hiermee worden meerdere bewerkingen met elke bewerking in de volgende notatie geretourneerd:
+Which returns multiple operations with each one in the following format:
 
 ```powershell
 Id             : /subscriptions/{guid}/resourceGroups/ExampleGroup/providers/Microsoft.Resources/deployments/Microsoft.Template/operations/A3EB2DA598E0A780
@@ -99,13 +99,13 @@ PropertiesText : {duration:PT23.0227078S, provisioningOperation:Create, provisio
                 serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
 ```
 
-Voor meer informatie over mislukte bewerkingen haalt u de eigenschappen op voor bewerkingen met de status **mislukt** .
+To get more details about failed operations, retrieve the properties for operations with **Failed** state.
 
 ```azurepowershell-interactive
 (Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
 ```
 
-Hiermee worden alle mislukte bewerkingen met elk een van de volgende indelingen geretourneerd:
+Which returns all the failed operations with each one in the following format:
 
 ```powershell
 provisioningOperation : Create
@@ -121,15 +121,15 @@ targetResource        : @{id=/subscriptions/{guid}/resourceGroups/ExampleGroup/p
                        resourceType=Microsoft.Network/publicIPAddresses; resourceName=myPublicIP}
 ```
 
-Noteer de serviceRequestId en de trackingId voor de bewerking. De serviceRequestId kan handig zijn bij het werken met technische ondersteuning bij het oplossen van problemen met een implementatie. U gebruikt de trackingId in de volgende stap om te focussen op een bepaalde bewerking.
+Note the serviceRequestId and the trackingId for the operation. The serviceRequestId can be helpful when working with technical support to troubleshoot a deployment. You'll use the trackingId in the next step to focus on a particular operation.
 
-Als u het status bericht van een bepaalde mislukte bewerking wilt ophalen, gebruikt u de volgende opdracht:
+To get the status message of a particular failed operation, use the following command:
 
 ```azurepowershell-interactive
 ((Get-AzResourceGroupDeploymentOperation -DeploymentName azuredeploy -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
 ```
 
-Hiermee wordt het volgende geretourneerd:
+Which returns:
 
 ```powershell
 code           message                                                                        details
@@ -137,9 +137,9 @@ code           message                                                          
 DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
 ```
 
-Elke implementatie bewerking in azure bevat informatie over de aanvraag en het antwoord. Tijdens de implementatie kunt u de para meter **DeploymentDebugLogLevel** gebruiken om op te geven dat de aanvraag en/of het antwoord worden vastgelegd.
+Every deployment operation in Azure includes request and response content. During deployment, you can use **DeploymentDebugLogLevel** parameter to specify that the request and/or response are logged.
 
-U ontvangt deze informatie uit het logboek en slaat deze lokaal op met behulp van de volgende Power shell-opdrachten:
+You get that information from the log, and save it locally by using the following PowerShell commands:
 
 ```powershell
 (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.request | ConvertTo-Json |  Out-File -FilePath <PathToFile>
@@ -147,21 +147,21 @@ U ontvangt deze informatie uit het logboek en slaat deze lokaal op met behulp va
 (Get-AzResourceGroupDeploymentOperation -DeploymentName "TestDeployment" -ResourceGroupName "Test-RG").Properties.response | ConvertTo-Json |  Out-File -FilePath <PathToFile>
 ```
 
-## <a name="azure-cli"></a>Azure-CLI
+## <a name="azure-cli"></a>Azure CLI
 
-Als u de algehele status van een implementatie wilt weten, gebruikt u de opdracht **show Azure Group Deployment** .
+To get the overall status of a deployment, use the **azure group deployment show** command.
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment
 ```
   
-De correlatie-ID wordt gebruikt voor het bijhouden van gerelateerde gebeurtenissen en kan nuttig zijn bij het werken met technische ondersteuning bij het oplossen van problemen met een implementatie.
+The correlation ID is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
 
 ```azurecli-interactive
 az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
 ```
 
-Als u de bewerkingen voor een implementatie wilt bekijken, gebruikt u:
+To see the operations for a deployment, use:
 
 ```azurecli-interactive
 az group deployment operation list -g ExampleGroup -n ExampleDeployment
@@ -169,13 +169,13 @@ az group deployment operation list -g ExampleGroup -n ExampleDeployment
 
 ## <a name="rest"></a>REST
 
-Als u informatie wilt ophalen over een implementatie, gebruikt u de bewerking [informatie over een sjabloon implementeren](https://docs.microsoft.com/rest/api/resources/deployments) .
+The following example shows how to get information about a deployment. For documentation about the latest API version, see the [Deployments - Get](/rest/api/resources/deployments/get) operation.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
 ```
 
-Bekijk in het antwoord met name de **provisioningState**, **correlationId**en **fout** elementen. De **correlationId** wordt gebruikt voor het bijhouden van gerelateerde gebeurtenissen en kan nuttig zijn bij het werken met technische ondersteuning bij het oplossen van problemen met een implementatie.
+In the response, note in particular the **provisioningState**, **correlationId**, and **error** elements. The **correlationId** is used to track related events, and can be helpful when working with technical support to troubleshoot a deployment.
 
 ```json
 { 
@@ -192,13 +192,13 @@ Bekijk in het antwoord met name de **provisioningState**, **correlationId**en **
 }
 ```
 
-Voor informatie over implementaties, gebruikt u [lijst met alle sjabloon implementatie bewerkingen](https://docs.microsoft.com/rest/api/resources/deployments). 
+The following example shows how to get deployment operations. For documentation about the latest API version, see the [Deployment Operations - List](/rest/api/resources/deploymentoperations/list) operation.
 
 ```
 GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
 ```
    
-Het antwoord bevat aanvraag-en/of reactie gegevens op basis van wat u tijdens de implementatie hebt opgegeven in de eigenschap **debugSetting** .
+The response includes request and/or response information based on what you specified in the **debugSetting** property during deployment.
 
 ```json
 {
@@ -226,7 +226,7 @@ Het antwoord bevat aanvraag-en/of reactie gegevens op basis van wat u tijdens de
 ```
 
 ## <a name="next-steps"></a>Volgende stappen
-* Zie [algemene fouten oplossen bij het implementeren van resources in azure met Azure Resource Manager](resource-manager-common-deployment-errors.md)voor hulp bij het oplossen van bepaalde implementatie fouten.
-* Zie [activiteiten logboeken weer geven om Azure-resources te beheren](resource-group-audit.md)voor meer informatie over het gebruik van de activiteiten logboeken voor het controleren van andere typen acties.
-* Zie [een resource groep implementeren met Azure Resource Manager sjabloon](resource-group-template-deploy.md)om uw implementatie te valideren voordat u deze uitvoert.
+* For help with resolving particular deployment errors, see [Resolve common errors when deploying resources to Azure with Azure Resource Manager](resource-manager-common-deployment-errors.md).
+* To learn about using the activity logs to monitor other types of actions, see [View activity logs to manage Azure resources](resource-group-audit.md).
+* To validate your deployment before executing it, see [Deploy a resource group with Azure Resource Manager template](resource-group-template-deploy.md).
 
