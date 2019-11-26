@@ -45,6 +45,8 @@
       href: batch-api-basics.md
     - name: API's en hulpprogramma’s
       href: batch-apis-tools.md
+    - name: Aanbevolen procedures
+      href: best-practices.md
     - name: Quota en limieten
       href: batch-quota-limit.md
     - name: Ondersteunde VM-grootten

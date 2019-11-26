@@ -175,6 +175,10 @@
   items:
     - name: Enkele server
       items:
+        - name: Een server beheren
+          items:
+            - name: Azure Portal
+              href: howto-create-manage-server-portal.md
         - name: Verificatie
           items:
             - name: Gebruikers maken
