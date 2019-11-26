@@ -127,7 +127,7 @@
               href: map-add-custom-html.md
             - name: Verkeer weergeven
               href: map-show-traffic.md
-            - name: Interactie met muisgebeurtenissen
+            - name: Reageren op gebeurtenissen
               href: map-events.md
             - name: Uw app toegankelijk maken
               href: map-accessibility.md

@@ -71,6 +71,8 @@
           href: howto-version-device-template.md
         - name: Uw apparaten beheren
           href: howto-manage-devices.md
+        - name: Regels configureren
+          href: howto-configure-rules.md
         - name: Uw apparaatgegevens analyseren
           href: howto-create-analytics.md
         - name: Tegels toevoegen aan uw dashboard

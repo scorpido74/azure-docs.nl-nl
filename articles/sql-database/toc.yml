@@ -124,8 +124,6 @@
               href: sql-database-threat-detection-overview.md
             - name: Beveiligingskenmerken
               href: sql-database-security-attributes.md
-            - name: Functiebeperkingen
-              href: sql-database-feature-restrictions.md
         - name: Beveiliging van individuele databases
           items:
             - name: Netwerktoegangsbeheer
