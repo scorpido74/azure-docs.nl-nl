@@ -226,7 +226,7 @@
       maintainContext: true
     - name: Gegevens
       items:
-        - name: Databricks-bestandssysteem
+        - name: Databricks-bestandssysteem (DBFS)
           href: /azure/databricks/data/databricks-file-system
           maintainContext: true
         - name: Databases en tabellen
@@ -242,7 +242,7 @@
             - name: SQL-databases met behulp van JDBC
               href: /azure/databricks/data/data-sources/sql-databases
               maintainContext: true
-            - name: Azure SQL Database met behulp van de Apache Spark-connector
+            - name: SQL-databases met de Apache Spark-connector
               href: /azure/databricks/data/data-sources/sql-databases-azure
               maintainContext: true
             - name: Azure Blob Storage
@@ -254,7 +254,7 @@
             - name: Azure Data Lake Storage
               href: /azure/databricks/data/data-sources/azure/azure-datalake
               maintainContext: true
-            - name: Azure Data Lake Storage-passthrough
+            - name: Passthrough van Azure Data Lake Storage-referenties
               href: /azure/databricks/data/data-sources/azure/adls-passthrough
               maintainContext: true
             - name: Cosmos DB
@@ -263,7 +263,7 @@
             - name: Azure SQL Data Warehouse
               href: /azure/databricks/data/data-sources/azure/sql-data-warehouse
               maintainContext: true
-            - name: Binaire bestanden
+            - name: Binair bestand
               href: /azure/databricks/data/data-sources/binary-file
               maintainContext: true
             - name: Cassandra
@@ -275,7 +275,7 @@
             - name: ElasticSearch
               href: /azure/databricks/data/data-sources/elasticsearch
               maintainContext: true
-            - name: Installatiekopieën
+            - name: Installatiekopie
               href: /azure/databricks/data/data-sources/image
               maintainContext: true
             - name: Hive-tabellen
@@ -641,7 +641,7 @@
             - name: Omgaan met slechte records en bestanden
               href: /azure/databricks/spark/latest/spark-sql/handling-bad-records
               maintainContext: true
-            - name: Toe-eigening van taken voor hoge gelijktijdigheid
+            - name: Taken toe-eigenen voor hoge gelijktijdigheid
               href: /azure/databricks/spark/latest/spark-sql/preemption
               maintainContext: true
             - name: Omgaan met grote query's in interactieve werkstromen
@@ -764,16 +764,16 @@
               href: /azure/databricks/applications/deep-learning/data-prep/ddl-data
               maintainContext: true
             - name: Gegevens laden met Petastorm
-              href: /azure/databricks//applications/deep-learning/data-prep/petastorm
+              href: /azure/databricks/applications/deep-learning/data-prep/petastorm
               maintainContext: true
             - name: DataFrames en gegevenssets opslaan naar TFRecord-bestanden
-              href: /azure/databricks//applications/deep-learning/data-prep/dataset-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/dataset-to-tfrecords
               maintainContext: true
             - name: Gegevens van TFRecord-bestanden laden met TensorFlow
-              href: /azure/databricks//applications/deep-learning/data-prep/tfrecords-to-tensorflow
+              href: /azure/databricks/applications/deep-learning/data-prep/tfrecords-to-tensorflow
               maintainContext: true
             - name: Gegevens naar TFRecord-bestanden opslaan met TensorFlow
-              href: /azure/databricks//applications/deep-learning/data-prep/tensorflow-to-tfrecords
+              href: /azure/databricks/applications/deep-learning/data-prep/tensorflow-to-tfrecords
               maintainContext: true
         - name: Training met een enkel knooppunt
           items:
@@ -1061,6 +1061,17 @@
         - name: Werkruimteopslag beheren
           href: /azure/databricks/administration-guide/workspace-storage/storage
           maintainContext: true
+        - name: Clusterconfiguratie inschakelen
+          items:
+            - name: Overzicht van clusterconfiguratie
+              href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Containerservices inschakelen
+              href: /azure/databricks/administration-guide/clusters/container-services
+              maintainContext: true
+            - name: Databricks Runtime voor Genomics inschakelen
+              href: /azure/databricks/administration-guide/clusters/genomics-runtime
+              maintainContext: true
         - name: Virtuele netwerken beheren
           items:
             - name: Overzicht van virtuele netwerken
@@ -1084,7 +1095,7 @@
     - name: Problemen oplossen
       items:
         - name: Veelgestelde vragen
-          href: /azure/databricks//azure/azure-databricks/frequently-asked-questions-databricks
+          href: /azure/azure-databricks/frequently-asked-questions-databricks
           maintainContext: true
         - name: Beheer
           items:

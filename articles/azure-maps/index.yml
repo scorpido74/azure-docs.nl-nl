@@ -45,6 +45,8 @@ sections:
         style: unordered
         items:
           - html: <a href="/azure/azure-maps/tutorial-geofence">Een geofence instellen</a>
+          - html: <a href="/azure-maps/tutorial-iot-hub-maps">Ruimtelijke analyse</a>
+          - html: <a href=/azure/azure-maps/tutorial-ev-routing">EV-routering met Azure Notebooks (Python)</a>
   - title: Naslaginformatie
     items:
       - type: list
@@ -52,6 +54,6 @@ sections:
         className: cardsW
         items:
           - title: Javascript
-            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Kaartbesturingselement</a></p>'
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Kaartbesturingselement</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-drawing-tools/">Module voor tekenprogramma''s</a></p><p><a href="https://docs.microsoft.com/javascript/api/azure-maps-rest/">Services-module</a></p>'
           - title: REST
             html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">Gegevensservice</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Geolocatie-service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/mobility">Mobility-service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Service voor rendering</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Routeservice</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Zoekservice</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Ruimtelijke service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Tijdzone-service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Verkeersservice</a></p>'

@@ -61,6 +61,8 @@
   items:
     - name: Schalen
       items:
+        - name: Eén exemplaar
+          href: signalr-howto-scale-signalr.md
         - name: Meerdere exemplaren
           href: signalr-howto-scale-multi-instances.md
     - name: Beveiligen

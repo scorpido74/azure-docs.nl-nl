@@ -289,6 +289,8 @@
               items:
                 - name: ADFS-ondersteuning in MSAL.NET
                   href: msal-net-adfs-support.md
+                - name: ADFS-ondersteuning in MSAL voor Python
+                  href: msal-python-adfs-support.md
                 - name: ADFS-ondersteuning in MSAL voor Java
                   href: msal-java-adfs-support.md
             - name: Integreren met Azure AD B2C

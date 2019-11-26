@@ -151,7 +151,7 @@
         - name: Co-locatie
           href: co-location.md
         - name: Netwerkprestaties
-          href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+          href: ../../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: VM-typen en -groottes
       href: sizes.md
       items:
@@ -209,7 +209,7 @@
     - name: Toegewezen hosts
       href: dedicated-hosts.md
     - name: Onderhoud en updates
-      href: maintenance-and-updates.md
+      href: ../maintenance-and-updates.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: File Storage
       items:
         - name: Inleiding tot beheerde schijven
@@ -376,18 +376,32 @@
           href: download-template.md
         - name: Azure VM-agent
           href: ../extensions/agent-windows.md
-        - name: Gepland onderhoud
-          href: maintenance-notifications.md
         - name: Speculatieve uitvoering beperken
           href: mitigate-se.md
-        - name: Geplande gebeurtenissen
-          href: scheduled-events.md
-        - name: Geplande gebeurtenissen bewaken
-          href: scheduled-event-service.md
         - name: Metagegevens bewaken
           href: instance-metadata-service.md
         - name: Geneste virtualisatie inschakelen
           href: nested-virtualization.md
+    - name: Platformonderhoud
+      items:
+        - name: Onderhoudsmeldingen
+          items:
+            - name: Overzicht
+              href: maintenance-notifications.md
+            - name: CLI
+              href: ../maintenance-notifications-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: Portal
+              href: ../maintenance-notifications-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+            - name: PowerShell
+              href: ../maintenance-notifications-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Onderhoudsbeheer
+          items:
+            - name: CLI
+              href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Geplande gebeurtenissen
+          href: scheduled-events.md
+        - name: Windows-service voor geplande gebeurtenissen
+          href: scheduled-event-service.md
     - name: Virtuele machines bewaken
       items:
         - name: Azure Monitor voor virtuele machines
